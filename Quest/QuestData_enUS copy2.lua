@@ -131,7 +131,7 @@ Inst1Quest9_Note = "You start this Questline at Christopher Hewen (Westfall - Se
 Inst1Quest9_Prequest = "The Harvest Golem Mystery VIII" -- 40477
 Inst1Quest9_Folgequest = "The Harvest Golem Mystery X" --40479
 --
-Inst1Quest9name1 = "Tinkering Belt "
+Inst1Quest9name1 = "Tinkering Belt"
 Inst1Quest9name2 = "Safety Wraps"
 Inst1Quest9name3 = "Harvest Golem Arm"
 
@@ -145,7 +145,7 @@ Inst1Quest10_Note = "You start this Questline at the same NPC. Drop from Jared V
 Inst1Quest10_Prequest = "Drones In Westfall -> Venture Delivery" -- 41390, 41391
 Inst1Quest10_Folgequest = "No"
 --
-Inst1Quest10name1 = "Operative Cloak "
+Inst1Quest10name1 = "Operative Cloak"
 Inst1Quest10name2 = "Cuffs of Integrity"
 
 --Quest 1 Horde
@@ -154,7 +154,7 @@ Inst1Quest1_HORDE_Level = "18"
 Inst1Quest1_HORDE_Attain = "16"
 Inst1Quest1_HORDE_Aim = "Bring the Prototype Shredder X0-1 Schematic to Wrix Ozzlenut."
 Inst1Quest1_HORDE_Location = "Wrix Ozzlenut (Durotar - Sparkwater Port; "..yellow.."58.3,25.7"..white..")"
-Inst1Quest1_HORDE_Note = "\nSneed drops the Prototype Shredder X0-1 Schematic "..yellow.."[3]"..white.."."
+Inst1Quest1_HORDE_Note = "Sneed drops the Prototype Shredder X0-1 Schematic "..yellow.."[3]"..white.."."
 Inst1Quest1_HORDE_Prequest = "No"
 Inst1Quest1_HORDE_Folgequest = "No"
 --

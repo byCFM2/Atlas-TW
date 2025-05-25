@@ -101,6 +101,17 @@ Inst1Quest9ITC3 = green
 Inst1Quest9description3 = AQITEM_TWOHAND..AQITEM_MACE
 Inst1Quest9ID3 = "60686"
 
+--Quest 10 Alliance
+Inst1Quest10Rewardtext = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"
+--ITEM1
+Inst1Quest10ITC1 = green
+Inst1Quest10description1 = AQITEM_BACK
+Inst1Quest10ID1 = "70239"
+--ITEM2
+Inst1Quest10ITC2 = green
+Inst1Quest10description2 = AQITEM_WRIST..AQITEM_CLOTH
+Inst1Quest10ID2 = "70240"
+
 --Quest 1 Horde
 Inst1Quest1Rewardtext_HORDE = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"
 --ITEM1
