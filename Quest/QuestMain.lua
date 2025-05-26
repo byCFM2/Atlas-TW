@@ -277,132 +277,219 @@ end
 -- Set Story Text
 -----------------------------------------------------------------------------
 function KQuestButtonStory_SetText()
-	-- first clear display
-	KQClearALL()
-	-- show right story text
-	if _G["Inst"..AtlasKTW.Instances.."Story"] ~= nil then
-		KQuestName:SetText(blue.._G["Inst"..AtlasKTW.Instances.."Caption"])
-		if type(_G["Inst"..AtlasKTW.Instances.."Story"]) == "table" then
-			KQuestStory:SetText(white.._G["Inst"..AtlasKTW.Instances.."Story"]["Page1"])
-			-- Show Next side button if next site is avaiable
-			if _G["Inst"..AtlasKTW.Instances.."Story"]["Page2"] ~= nil then
-				ShowUIPanel(KQNextPageButton_Right)
-				AtlasKTW.Q.CurrentPage = 1
-				-- shows total amount of pages
-				KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/".._G["Inst"..AtlasKTW.Instances.."Story"]["MaxPages"])
-				-- count to make a diffrent between story and normal text
-				AQ_NextPageCount = "Story"
-			end
-		elseif type(_G["Inst"..AtlasKTW.Instances.."Story"]) == "string" then
-			KQuestStory:SetText(white.._G["Inst"..AtlasKTW.Instances.."Story"])
-		end
-		-- added to work with future versions of atlas (before i update e.g. before you dl the update)
-	elseif _G["Inst"..AtlasKTW.Instances.."Story"] == nil then
-		KQuestName:SetText(AQNotAvailable)
-		KQuestStory:SetText(AQNotAvailable)
-	end
+    -- Clear display
+    KQClearALL()
+
+    -- Get story information directly from KQuestInstanceData
+    local instanceData = KQuestInstanceData[AtlasKTW.Instances]
+    local story = instanceData and instanceData.Story
+    local caption = instanceData and instanceData.Caption
+
+    -- Show story text if available
+    if story then
+        if type(story) == "table" then
+            -- Display first page of multi-page story
+            KQuestName:SetText(blue..caption[1])
+            KQuestStory:SetText(white..story["Page1"])
+
+            -- Show navigation buttons if more than one page
+            if story["Page2"] then
+                ShowUIPanel(KQNextPageButton_Right)
+                AtlasKTW.Q.CurrentPage = 1
+
+                -- Show page counter
+                local maxPages = story["MaxPages"] or 0
+                for i = 1, 20 do  -- Reasonable upper limit
+                    if not story["Page"..i] then
+                        maxPages = i - 1
+                        break
+                    end
+                end
+
+                KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..maxPages)
+
+                -- Set page type
+                AQ_NextPageCount = "Story"
+            end
+        elseif type(story) == "string" then
+            -- Display single page story
+            KQuestName:SetText(blue..caption)
+            KQuestStory:SetText(white..story)
+        end
+    else
+        -- No story available
+        KQuestName:SetText(AQNotAvailable)
+        KQuestStory:SetText(AQNotAvailable)
+    end
 end
 -----------------------------------------------------------------------------
 -- shows the next side
 -----------------------------------------------------------------------------
 function KQNextPageR_OnClick()
-	local SideAfterThis = 0
-	local shit
-	local suffix = AtlasKTW.isHorde and "_HORDE" or ""
-	SideAfterThis = AtlasKTW.Q.CurrentPage + 2
-	AtlasKTW.Q.CurrentPage = AtlasKTW.Q.CurrentPage + 1
-	-- first clear display
-	KQClearALL()
-	-- it is a story text
-	if AQ_NextPageCount == "Story" then
-		KQuestStory:SetText(white.._G["Inst"..AtlasKTW.Instances.."Story"]["Page"..AtlasKTW.Q.CurrentPage])
-		KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/".._G["Inst"..AtlasKTW.Instances.."Story"]["MaxPages"])
-		if _G["Inst"..AtlasKTW.Instances.."Caption"..AtlasKTW.Q.CurrentPage] ~= nil then
-			KQuestName:SetText(blue.._G["Inst"..AtlasKTW.Instances.."Caption"..AtlasKTW.Q.CurrentPage])
-		else
-			KQuestName:SetText(blue.._G["Inst"..AtlasKTW.Instances.."Caption"])
-		end
-		-- hide button if no next side
-		if _G["Inst"..AtlasKTW.Instances.."Story"]["Page"..SideAfterThis] == nil then
-			HideUIPanel(KQNextPageButton_Right)
-		else
-			ShowUIPanel(KQNextPageButton_Right)
-		end
-	end
-	-- it is a quest text
-	if AQ_NextPageCount == "Quest" then
-		shit = _G["Inst"..AtlasKTW.Instances.."Quest"..AtlasKTW.Q.ShownQuest..suffix.."_Page"]
-		KQuestStory:SetText(white..shit[AtlasKTW.Q.CurrentPage])
-		KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..shit[1])
-		-- hide button if no next side
-		if shit[SideAfterThis] == nil then
-			HideUIPanel(KQNextPageButton_Right)
-		else
-			ShowUIPanel(KQNextPageButton_Right)
-		end
-	end
-	-- it is a boss text
-	if AQ_NextPageCount == "Boss" then
-		KQuestName:SetText(blue.._G["Inst"..AtlasKTW.Instances.."General"][AtlasKTW.Q.CurrentPage][1])
-		KQuestStory:SetText(white.._G["Inst"..AtlasKTW.Instances.."General"][AtlasKTW.Q.CurrentPage][2].."\n \n".._G["Inst"..AtlasKTW.Instances.."General"][AtlasKTW.Q.CurrentPage][3])
-		-- Show Next side button if next site is avaiable
-		if _G["Inst"..AtlasKTW.Instances.."General"][SideAfterThis] ~= nil then
-			ShowUIPanel(KQNextPageButton_Right)
-		end
-		-- shows total amount of pages
-		KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..getn(_G["Inst"..AtlasKTW.Instances.."General"]))
-	end
-	-- Show backwards button
-	ShowUIPanel(KQNextPageButton_Left)
+    local SideAfterThis = AtlasKTW.Q.CurrentPage + 2
+    AtlasKTW.Q.CurrentPage = AtlasKTW.Q.CurrentPage + 1
+    -- Clear display
+    KQClearALL()
+
+    -- Handle story text pages
+    if AQ_NextPageCount == "Story" then
+        local story = KQuestInstanceData[AtlasKTW.Instances].Story
+        local caption = KQuestInstanceData[AtlasKTW.Instances].Caption
+
+        if type(story) == "table" then
+            -- Display current page content
+            KQuestStory:SetText(white..story["Page"..AtlasKTW.Q.CurrentPage])
+            KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..story["MaxPages"])
+
+            -- Handle page-specific captions if available
+            local pageCaption = KQuestInstanceData[AtlasKTW.Instances].Caption[AtlasKTW.Q.CurrentPage]
+            KQuestName:SetText(blue..(pageCaption or caption))
+
+            -- Hide next button if we're on the last page
+            if not story["Page"..SideAfterThis] then
+                HideUIPanel(KQNextPageButton_Right)
+            else
+                ShowUIPanel(KQNextPageButton_Right)
+            end
+        end
+    end
+
+    -- Handle quest text pages
+    if AQ_NextPageCount == "Quest" then
+        local faction = AtlasKTW.isHorde and "Horde" or "Alliance"
+        local questData = KQuestInstanceData[AtlasKTW.Instances].Quests[faction][AtlasKTW.Q.ShownQuest]
+
+        -- Check for Page
+        if questData and questData.Page then
+            local pageContent = questData.Page[AtlasKTW.Q.CurrentPage]
+            local pageCount = questData.Page.Count or questData.Page[1]
+
+            if pageContent then
+                KQuestStory:SetText(white..pageContent)
+                KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..pageCount)
+
+                -- Hide next button if we're on the last page
+                if AtlasKTW.Q.CurrentPage >= pageCount then
+                    HideUIPanel(KQNextPageButton_Right)
+                else
+                    ShowUIPanel(KQNextPageButton_Right)
+                end
+            end
+        else
+            -- Fallback to old format for backward compatibility
+            local suffix = AtlasKTW.isHorde and "_HORDE" or ""
+            local pageTable = _G["Inst"..AtlasKTW.Instances.."Quest"..AtlasKTW.Q.ShownQuest..suffix.."_Page"]
+
+            if pageTable and pageTable[AtlasKTW.Q.CurrentPage] then
+                KQuestStory:SetText(white..pageTable[AtlasKTW.Q.CurrentPage])
+                KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..pageTable[1])
+
+                -- Hide next button if no more pages
+                if not pageTable[SideAfterThis] then
+                    HideUIPanel(KQNextPageButton_Right)
+                else
+                    ShowUIPanel(KQNextPageButton_Right)
+                end
+            end
+        end
+    end
+
+    -- Handle boss text pages
+    if AQ_NextPageCount == "Boss" then
+        local bossData = KQuestInstanceData[AtlasKTW.Instances].General
+        if not bossData then
+            -- Fallback to old format
+            bossData = _G["Inst"..AtlasKTW.Instances.."General"]
+        end
+
+        if bossData and bossData[AtlasKTW.Q.CurrentPage] then
+            KQuestName:SetText(blue..bossData[AtlasKTW.Q.CurrentPage][1])
+            KQuestStory:SetText(white..bossData[AtlasKTW.Q.CurrentPage][2].."\n \n"..bossData[AtlasKTW.Q.CurrentPage][3])
+
+            -- Show Next button if more pages available
+            if bossData[SideAfterThis] then
+                ShowUIPanel(KQNextPageButton_Right)
+            else
+                HideUIPanel(KQNextPageButton_Right)
+            end
+
+            -- Update page counter
+            local totalPages = bossData
+            KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..totalPages)
+        end
+    end
+
+    -- Show back button
+    ShowUIPanel(KQNextPageButton_Left)
 end
 
 -----------------------------------------------------------------------------
 -- shows the side before this side
 -----------------------------------------------------------------------------
 function KQNextPageL_OnClick()
-	local shit
-	AtlasKTW.Q.CurrentPage = AtlasKTW.Q.CurrentPage - 1
-	-- it is a story text
-	if AQ_NextPageCount == "Story" then
-		KQuestStory:SetText(white.._G["Inst"..AtlasKTW.Instances.."Story"]["Page"..AtlasKTW.Q.CurrentPage])
-		KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/".._G["Inst"..AtlasKTW.Instances.."Story"]["MaxPages"])
-		if _G["Inst"..AtlasKTW.Instances.."Caption"..AtlasKTW.Q.CurrentPage] ~= nil then
-			KQuestName:SetText(blue.._G["Inst"..AtlasKTW.Instances.."Caption"..AtlasKTW.Q.CurrentPage])
-		else
-			KQuestName:SetText(blue.._G["Inst"..AtlasKTW.Instances.."Caption"])
-		end
-		-- hide button if first side
-		if AtlasKTW.Q.CurrentPage == 1 then
-			HideUIPanel(KQNextPageButton_Left)
-		end
-	end
-	-- it is a quest text
-	if AQ_NextPageCount == "Quest" then
-		-- shit is added to make the code smaller it give back the right link for horde or alliance
-		if AtlasKTW.isHorde then
-			shit = _G["Inst"..AtlasKTW.Instances.."Quest"..AtlasKTW.Q.ShownQuest.."_HORDE_Page"]
-		else
-			shit = _G["Inst"..AtlasKTW.Instances.."Quest"..AtlasKTW.Q.ShownQuest.."_Page"]
-		end
-		if AtlasKTW.Q.CurrentPage == 1 then
-			KQButton_SetText()
-		else
-			KQuestStory:SetText(white..shit[AtlasKTW.Q.CurrentPage])
-		end
-		KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..shit[1])
-	end
-	-- it is a boss text
-	if AQ_NextPageCount == "Boss" then
-		KQuestName:SetText(blue.._G["Inst"..AtlasKTW.Instances.."General"][AtlasKTW.Q.CurrentPage][1])
-		KQuestStory:SetText(white.._G["Inst"..AtlasKTW.Instances.."General"][AtlasKTW.Q.CurrentPage][2].."\n \n".._G["Inst"..AtlasKTW.Instances.."General"][AtlasKTW.Q.CurrentPage][3])
-		-- Show Next side button if next site is avaiable
-		if AtlasKTW.Q.CurrentPage == 1 then
-			HideUIPanel(KQNextPageButton_Left)
-		end
-		-- shows total amount of pages
-		KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..getn(_G["Inst"..AtlasKTW.Instances.."General"]))
-	end
-	ShowUIPanel(KQNextPageButton_Right)
+    AtlasKTW.Q.CurrentPage = AtlasKTW.Q.CurrentPage - 1
+
+    -- Handle story text pages
+    if AQ_NextPageCount == "Story" then
+        local story = KQuestInstanceData[AtlasKTW.Instances].Story
+        local caption = KQuestInstanceData[AtlasKTW.Instances].Caption
+
+        if type(story) == "table" then
+            -- Display current page content
+            KQuestStory:SetText(white..story["Page"..AtlasKTW.Q.CurrentPage])
+            KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..story["MaxPages"])
+
+            -- Handle page-specific captions if available
+            local pageCaption = KQuestInstanceData[AtlasKTW.Instances].Caption[AtlasKTW.Q.CurrentPage]
+            KQuestName:SetText(blue..(pageCaption or caption))
+
+            -- Hide back button if we're on the first page
+            if AtlasKTW.Q.CurrentPage == 1 then
+                HideUIPanel(KQNextPageButton_Left)
+            end
+        end
+    end
+    -- Handle quest text pages
+    if AQ_NextPageCount == "Quest" then
+        local faction = AtlasKTW.isHorde and "Horde" or "Alliance"
+        local questData = KQuestInstanceData[AtlasKTW.Instances].Quests[faction][AtlasKTW.Q.ShownQuest]
+        -- Go back to main quest text if we're returning to page 1
+        if AtlasKTW.Q.CurrentPage == 1 then
+            KQButton_SetText()
+        else
+            -- Check for Page
+            if questData and questData.Page then
+                local pageContent = questData.Page[AtlasKTW.Q.CurrentPage]
+                local pageCount = questData.Pages.Count or questData.Page
+                if pageContent then
+                    KQuestStory:SetText(white..pageContent)
+                    KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..pageCount)
+                end
+            end
+        end
+    end
+
+    -- Handle boss text pages
+    if AQ_NextPageCount == "Boss" then
+        bossData = _G["Inst"..AtlasKTW.Instances.."General"]
+        if bossData and bossData[AtlasKTW.Q.CurrentPage] then
+            KQuestName:SetText(blue..bossData[AtlasKTW.Q.CurrentPage][1])
+            KQuestStory:SetText(white ..
+            bossData[AtlasKTW.Q.CurrentPage][2] .. "\n \n" .. bossData[AtlasKTW.Q.CurrentPage][3])
+
+            -- Hide back button if we're on the first page
+            if AtlasKTW.Q.CurrentPage == 1 then
+                HideUIPanel(KQNextPageButton_Left)
+            end
+
+            -- Update page counter
+            local totalPages = bossData
+            KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..totalPages)
+        end
+    end
+
+    -- Always show next button when going back
+    ShowUIPanel(KQNextPageButton_Right)
 end
 
 -----------------------------------------------------------------------------

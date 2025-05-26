@@ -174,7 +174,8 @@ KQuestInstanceData[1].Quests.Alliance[6] = {
             Color = blue,
             Description = AQITEM_TWOHAND..AQITEM_MACE,
         },
-    }
+    },
+    Page = {2, "Only Paladins can get this quest!\n\n1. You get the  Whitestone Oak Lumber from Goblin Woodcarvers in "..yellow.."[Deadmines]"..white.." near "..yellow.."[3]"..white..".\n\n2. To get the Bailor's Refined Ore Shipment you must talk to Bailor Stonehand (Loch Modan - Thelsamar; "..yellow.."35,44"..white.."). He gives you the 'Bailor's Ore Shipment' quest. You find the Jordan's Ore Shipment behind a tree at "..yellow.."71,21"..white.."\n\n3. You get Jordan's Smithing Hammer in "..yellow.."[Shadowfang Keep]"..white.." at "..yellow.."[3]"..white..".\n\n4. To get a Kor Gem you have to go to Thundris Windweaver (Darkshore - Auberdine; "..yellow.."37,40"..white..") and do the 'Seeking the Kor Gem' quest. For this quest, you must kill Blackfathom oracles or priestesses before "..yellow.."[Blackfathom Deeps]"..white..". They drop a corrupted Kor Gem. Thundris Windweaver will clean it for you.", };
 }
 KQuestInstanceData[1].Quests.Alliance[7] = {
     Title = "7. The Unsent Letter",
@@ -4292,7 +4293,8 @@ KQuestInstanceData[13].Quests.Alliance[4] = {
             Color = green,
             Description = AQITEM_TRINKET,
         },
-    }
+    },
+    page = {2, "You find the Centaur Pariah in the south of desolace. He walks between "..yellow.."44,85"..white.." and "..yellow.."50,87"..white..".\nFirst, you have to kill the The Nameless Prophet ("..yellow.."[A] on Entrance Map"..white.."). You find him before you enter the instance, before the point where you can choose whether you take the purple or the orange entrance. After killing him you must kill the 5 Kahns. You find the first if you choose the way in the middle ("..yellow.."[1] on Entrance Map"..white.."). The second is in the purple part of Maraudon but before you enter the instance ("..yellow.."[2] on Entrance Map"..white.."). The third is in the orange part before you enter the instance ("..yellow.."[3] on Entrance Map"..white.."). The fourth is near "..yellow.."[4]"..white.." and the fifth is near  "..yellow.."[1]"..white..".", },
 }
 KQuestInstanceData[13].Quests.Alliance[5] = {
     Title = "5. Legends of Maraudon",
@@ -5856,7 +5858,8 @@ KQuestInstanceData[24].Quests.Alliance[1] = {
             Color = blue,
             Description = AQITEM_TWOHAND..AQITEM_MACE,
         },
-    }
+    },
+    Page = KQuestInstanceData[1].Quests.Alliance[6].Page
 }
 KQuestInstanceData[24].Quests.Alliance[2] = {
     Title = "2. The Orb of Soran'ruk",
