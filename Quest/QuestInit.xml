@@ -7,6 +7,5 @@
 	<Include file="QuestOptionUI.lua"/>
 	<Include file="QuestUI.lua"/>
 	<Include file="QuestInstances.lua"/>
-	<Include file="QuestItems.lua"/>
 	<Include file="QuestMain.lua"/>
 </Ui>
