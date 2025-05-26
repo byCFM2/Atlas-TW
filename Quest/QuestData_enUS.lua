@@ -13,7 +13,7 @@ local purple = "|cffa335ee"
 ------------- Quest Instance Data ------------
 ----------------------------------------------
 
-local KQuestInstanceData = {}
+KQuestInstanceData = {}
 
 --------------- INST1 - The Deadmines ---------------
 KQuestInstanceData[1] = {
@@ -2117,8 +2117,17 @@ KQuestInstanceData[5].Quests.Horde[23] = KQuestInstanceData[5].Quests.Alliance[2
 
 --------------- INST6 - Blackwing Lair ---------------
 KQuestInstanceData[6] = {
-    Story = "",
-    Caption = "Blackwing Lair",
+    Story = {
+	    ["Page1"] = "Blackwing Lair can be found at the very height of Blackrock Spire. It is there in the dark recesses of the mountain's peak that Nefarian has begun to unfold the final stages of his plan to destroy Ragnaros once and for all and lead his army to undisputed supremacy over all the races of Azeroth.",
+	    ["Page2"] = "The mighty fortress carved within the fiery bowels of Blackrock Mountain was designed by the master dwarf-mason, Franclorn Forgewright. Intended to be the symbol of Dark Iron power, the fortress was held by the sinister dwarves for centuries. However, Nefarian - the cunning son of the dragon, Deathwing - had other plans for the great keep. He and his draconic minions took control of the upper Spire and made war on the dwarves' holdings in the mountain's volcanic depths, which serve as the seat of power for Ragnaros the Firelord. Ragnaros has uncovered the secret to creating life from stone and plans to build an army of unstoppable golems to aid him in conquering the whole of Blackrock Mountain.",
+	    ["Page3"] = "Nefarian has vowed to crush Ragnaros. To this end, he has recently begun efforts to bolster his forces, much as his father Deathwing had attempted to do in ages past. However, where Deathwing failed, it now seems the scheming Nefarian may be succeeding. Nefarian's mad bid for dominance has even attracted the ire of the Red Dragon Flight, which has always been the Black Flight's greatest foe. Though Nefarian's intentions are known, the methods he is using to achieve them remain a mystery. It is believed, however that Nefarian has been experimenting with the blood of all of the various Dragon Flights to produce unstoppable warriors.\n \nNefarian's sanctum, Blackwing Lair, can be found at the very height of Blackrock Spire. It is there in the dark recesses of the mountain's peak that Nefarian has begun to unfold the final stages of his plan to destroy Ragnaros once and for all and lead his army to undisputed supremacy over all the races of Azeroth.";
+        ["MaxPages"] = "3",
+	},
+    Caption = {
+        "Blackwing Lair",
+        "Blackwing Lair (Story Part 1)",
+        "Blackwing Lair (Story Part 2)",
+    },
     QAA = "6 Quests",
     QAH = "6 Quests",
     Quests = {
@@ -3634,7 +3643,7 @@ KQuestInstanceData[10].Quests.Horde[9] = KQuestInstanceData[10].Quests.Alliance[
 
 --------------- INST11 - Dire Maul (North) ---------------
 KQuestInstanceData[11] = {
-    Story = "",
+    Story = KQuestInstanceData[10].Story,
     Caption = "Dire Maul (North)",
     QAA = "4 Quests",
     QAH = "4 Quests",
@@ -3732,7 +3741,7 @@ KQuestInstanceData[11].Quests.Horde[4] = KQuestInstanceData[11].Quests.Alliance[
 
 --------------- INST12 - Dire Maul (West) ---------------
 KQuestInstanceData[12] = {
-    Story = "",
+    Story = KQuestInstanceData[10].Story,
     Caption = "Dire Maul (West)",
     QAA = "21 Quests",
     QAH = "21 Quests",
@@ -5389,7 +5398,7 @@ KQuestInstanceData[19].Quests.Horde[5] = {
 
 --------------- INST20 - SM: Armory ---------------
 KQuestInstanceData[20] = {
-    Story = "",
+    Story = KQuestInstanceData[19].Story,
     Caption = "SM: Armory",
     QAA = "1 Quest",
     QAH = "3 Quests",
@@ -5398,50 +5407,9 @@ KQuestInstanceData[20] = {
         Horde = {}
     }
 }
-KQuestInstanceData[20].Quests.Horde[1] = {
-    Title = "1. In the Name of the Light",
-    Level = "40",
-    Attain = "34",
-    Aim = "Kill High Inquisitor Whitemane, Scarlet Commander Mograine, Herod, the Scarlet Champion and Houndmaster Loksey and then report back to Raleigh the Devout in Southshore.",
-    Location = "Raleigh the Devout (Hillsbrad Foothills - Southshore; "..yellow.."51,58"..white..")",
-    Note = "This quest line starts at Brother Crowley with quest 'Brother Anton' in Stormwind - Cathedral of Light ("..yellow.."42,24"..white..").\nYou can find High Inquisitor Whitemane and Scarlet Commander Mograine at "..yellow.."SM: Cathedral [2]"..white..", Herod at "..yellow.."SM: Armory [1]"..white.." and Houndmaster Loksey at "..yellow.."SM: Library [1]"..white..".",
-    Prequest = "Brother Anton -> Down the Scarlet Path",
-    Folgequest = "No",
-    Rewards = {
-        Text = AQNoReward,
-        {
-            Name = "Sword of Serenity",
-        },
-        {
-            Name = "Bonebiter",
-        },
-        {
-            Name = "Black Menace",
-        },
-        {
-            Name = "Orb of Lorica",
-        },
-    }
-}
-KQuestInstanceData[20].Quests.Horde[2] = {
-    Title = "2. Mythology of the Titans",
-    Level = "38",
-    Attain = "28",
-    Aim = "Retrieve Mythology of the Titans from the Monastery and bring it to Librarian Mae Paledust in Ironforge.",
-    Location = "Librarian Mae Paledust (Ironforge - Hall of Explorers; "..yellow.."74,12"..white..")",
-    Note = "The book is on the floor on the left side of one of the corridors leading to Arcanist Doan ("..yellow.."[2]"..white..").",
-    Prequest = "No",
-    Folgequest = "No",
-    Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
-        {
-            Name = "Explorers' League Commendation",
-            ID = "6802",
-            Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
-        },
-    }
-}
+KQuestInstanceData[20].Quests.Alliance[1] = KQuestInstanceData[19].Quests.Alliance[1]
+KQuestInstanceData[20].Quests.Horde[1] = KQuestInstanceData[19].Quests.Horde[1]
+KQuestInstanceData[20].Quests.Horde[2] = KQuestInstanceData[19].Quests.Horde[2]
 KQuestInstanceData[20].Quests.Horde[3] = {
     Title = "3. Reminiscent of Steel",
     Level = "39",
@@ -5470,7 +5438,7 @@ KQuestInstanceData[20].Quests.Horde[3] = {
 
 --------------- INST21 - SM: Cathedral ---------------
 KQuestInstanceData[21] = {
-    Story = "",
+    Story = KQuestInstanceData[19].Story,
     Caption = "SM: Cathedral",
     QAA = "3 Quest",
     QAH = "2 Quests",
@@ -5479,6 +5447,7 @@ KQuestInstanceData[21] = {
         Horde = {}
     }
 }
+KQuestInstanceData[21].Quests.Alliance[1] = KQuestInstanceData[19].Quests.Alliance[1]
 KQuestInstanceData[21].Quests.Alliance[2] = {
     Title = "The Orb of Kaladus",
     Level = "38",
@@ -5529,54 +5498,12 @@ KQuestInstanceData[21].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[21].Quests.Horde[1] = {
-    Title = "1. In the Name of the Light",
-    Level = "40",
-    Attain = "34",
-    Aim = "Kill High Inquisitor Whitemane, Scarlet Commander Mograine, Herod, the Scarlet Champion and Houndmaster Loksey and then report back to Raleigh the Devout in Southshore.",
-    Location = "Raleigh the Devout (Hillsbrad Foothills - Southshore; "..yellow.."51,58"..white..")",
-    Note = "This quest line starts at Brother Crowley with quest 'Brother Anton' in Stormwind - Cathedral of Light ("..yellow.."42,24"..white..").\nYou can find High Inquisitor Whitemane and Scarlet Commander Mograine at "..yellow.."SM: Cathedral [2]"..white..", Herod at "..yellow.."SM: Armory [1]"..white.." and Houndmaster Loksey at "..yellow.."SM: Library [1]"..white..".",
-    Prequest = "Brother Anton -> Down the Scarlet Path",
-    Folgequest = "No",
-    Rewards = {
-        Text = AQNoReward,
-        {
-            Name = "Sword of Serenity",
-        },
-        {
-            Name = "Bonebiter",
-        },
-        {
-            Name = "Black Menace",
-        },
-        {
-            Name = "Orb of Lorica",
-        },
-    }
-}
-KQuestInstanceData[21].Quests.Horde[2] = {
-    Title = "2. Mythology of the Titans",
-    Level = "38",
-    Attain = "28",
-    Aim = "Retrieve Mythology of the Titans from the Monastery and bring it to Librarian Mae Paledust in Ironforge.",
-    Location = "Librarian Mae Paledust (Ironforge - Hall of Explorers; "..yellow.."74,12"..white..")",
-    Note = "The book is on the floor on the left side of one of the corridors leading to Arcanist Doan ("..yellow.."[2]"..white..").",
-    Prequest = "No",
-    Folgequest = "No",
-    Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
-        {
-            Name = "Explorers' League Commendation",
-            ID = "6802",
-            Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
-        },
-    }
-}
+KQuestInstanceData[21].Quests.Horde[1] = KQuestInstanceData[19].Quests.Horde[1]
+KQuestInstanceData[21].Quests.Horde[2] = KQuestInstanceData[19].Quests.Horde[2]
 
 --------------- INST22 - SM: Graveyard ---------------
 KQuestInstanceData[22] = {
-    Story = "",
+    Story = KQuestInstanceData[19].Story,
     Caption = "SM: Graveyard",
     QAA = "No Quest",
     QAH = "3 Quests",
@@ -5585,31 +5512,7 @@ KQuestInstanceData[22] = {
         Horde = {}
     }
 }
-KQuestInstanceData[22].Quests.Horde[1] = {
-    Title = "1. In the Name of the Light",
-    Level = "40",
-    Attain = "34",
-    Aim = "Kill High Inquisitor Whitemane, Scarlet Commander Mograine, Herod, the Scarlet Champion and Houndmaster Loksey and then report back to Raleigh the Devout in Southshore.",
-    Location = "Raleigh the Devout (Hillsbrad Foothills - Southshore; "..yellow.."51,58"..white..")",
-    Note = "This quest line starts at Brother Crowley with quest 'Brother Anton' in Stormwind - Cathedral of Light ("..yellow.."42,24"..white..").\nYou can find High Inquisitor Whitemane and Scarlet Commander Mograine at "..yellow.."SM: Cathedral [2]"..white..", Herod at "..yellow.."SM: Armory [1]"..white.." and Houndmaster Loksey at "..yellow.."SM: Library [1]"..white..".",
-    Prequest = "Brother Anton -> Down the Scarlet Path",
-    Folgequest = "No",
-    Rewards = {
-        Text = AQNoReward,
-        {
-            Name = "Sword of Serenity",
-        },
-        {
-            Name = "Bonebiter",
-        },
-        {
-            Name = "Black Menace",
-        },
-        {
-            Name = "Orb of Lorica",
-        },
-    }
-}
+KQuestInstanceData[22].Quests.Horde[1] = KQuestInstanceData[19].Quests.Horde[1]
 KQuestInstanceData[22].Quests.Horde[2] = {
     Title = "2. Vorrel's Revenge",
     Level = "33",
@@ -7850,7 +7753,11 @@ KQuestInstanceData[30].Quests.Horde[9] = {
 
 --------------- INST31 - Zul'Gurub ---------------
 KQuestInstanceData[31] = {
-    Story = "",
+    Story = {
+        ["Page1"] = "Over a thousand years ago the powerful Gurubashi Empire was torn apart by a massive civil war. An influential group of troll priests, known as the Atal'ai, called forth the avatar of an ancient and terrible blood god named Hakkar the Soulflayer. Though the priests were defeated and ultimately exiled, the great troll empire collapsed upon itself. The exiled priests fled far to the north, into the Swamp of Sorrows, where they erected a great temple to Hakkar in order to prepare for his arrival into the physical world.",
+        ["Page2"] = "In time, the Atal'ai priests discovered that Hakkar's physical form could only be summoned within the ancient capital of the Gurubashi Empire, Zul'Gurub. Unfortunately, the priests have met with recent success in their quest to call forth Hakkar - reports confirm the presence of the dreaded Soulflayer in the heart of the Gurubashi ruins.\n\nIn order to quell the blood god, the trolls of the land banded together and sent a contingent of High Priests into the ancient city. Each priest was a powerful champion of the Primal Gods - Bat, Panther, Tiger, Spider, and Snake - but despite their best efforts, they fell under the sway of Hakkar. Now the champions and their Primal God aspects feed the awesome power of the Soulflayer. Any adventurers brave enough to venture into the foreboding ruins must overcome the High Priests if they are to have any hope of confronting the mighty blood god.",
+        ["MaxPages"] = "2",
+    },
     Caption = "Zul'Gurub",
     QAA = "4 Quests",
     QAH = "4 Quests",
@@ -8400,8 +8307,23 @@ KQuestInstanceData[32].Quests.Horde[7] = {
 
 --------------- INST33 - Dragons of Nightmare ---------------
 KQuestInstanceData[33] = {
-    Story = "",
-    Caption = "Dragons of Nightmare",
+    Story = {
+	    ["Page1"] = "There is a disturbance at the Great Trees. A new threat menaces these secluded areas found in Ashenvale, Duskwood, Feralas, and Hinterlands. Four great guardians of the green Dragonflight have arrived from the Dream, but these once-proud protectors now seek only destruction and death. Take arms with your fellows and march to these hidden groves -- only you can defend Azeroth from the corruption they bring.",
+	    ["Page2"] = "Ysera, the great Dreaming dragon Aspect rules over the enigmatic Green dragonflight. Her domain is the fantastic, mystical realm of the Emerald Dream - and it is said that from there she guides the evolutionary path of the world itself. She is the protector of nature and imagination, and it is the charge of her flight to guard all of the Great Trees across the world, which only druids use to enter the Dream itself. In recent times, Ysera's most trusted lieutenants have been warped by a dark new power within the Emerald Dream. Now these wayward sentinels have passed through the Great Trees into Azeroth, intending to spread madness and terror throughout the mortal kingdoms. Even the mightiest of adventurers would be well advised to give the dragons a wide berth, or suffer the consequences of their misguided wrath.",
+	    ["Page3"] = "Lethon's exposure to the aberration within the Emerald Dream not only darkened the hue of the mighty dragon's scales, but also empowered him with the ability to extract malevolent shades from his enemies. Once joined with their master, the shades imbue the dragon with healing energies. It should come as no surprise, then, that Lethon is considered to be among the most formidable of Ysera's wayward lieutenants",
+	    ["Page4"] = "A  mysterious dark power within the Emerald Dream has transformed the once-majestic Emeriss into a rotting, diseased monstrosity. Reports from the few who have survived encounters with the dragon have told horrifying tales of putrid mushrooms erupting from the corpses of their dead companions. Emeriss is truly the most gruesome and appalling of Ysera's estranged green dragons.",
+	    ["Page5"] = "Taerar was perhaps the most affected of Ysera's rogue lieutenants. His interaction with the dark force within the Emerald Dream shattered Taerar's sanity as well as his corporeal form. The dragon now exists as a specter with the ability to split into multiple entities, each of which possesses destructive magical powers. Taerar is a cunning and relentless foe who is intent on turning the madness of his existence into reality for the inhabitants of Azeroth.",
+	    ["Page6"] = "Once one of Ysera's most trusted lieutenants, Ysondre has now gone rogue, sewing terror and chaos across the land of Azeroth. Her formerly beneficent healing powers have given way to dark magics, enabling her to cast smoldering lightning waves and summon the aid of fiendish druids. Ysondre and her kin also possess the ability to induce sleep, sending her unfortunate mortal foes to the realm of their most terrifying nightmares.",
+	    ["MaxPages"] = "6",
+    },
+    Caption = {
+        "Dragons of Nightmare",
+        "Ysera and the Green Dragonflight",
+        "Lethon",
+        "Emeriss",
+        "Taerar",
+        "Ysondre",
+    },
     QAA = "1 Quest",
     QAH = "1 Quest",
     Quests = {

@@ -69,38 +69,19 @@ function AQGeneral_OnClick(button)
 	else
 		ShowUIPanel(KQuestInsideFrame)
 	end
-	
-	-- Check for new format data first
-	local instanceData = KQuestInstanceData and KQuestInstanceData[AtlasKTW.Instances]
-	if instanceData and instanceData.General then
-		local generalData = instanceData.General
-		-- Set first page content
-		KQuestName:SetText(BLUE..generalData[1][1])
-		KQuestStory:SetText(WHITE..generalData[1][2].."\n \n"..generalData[1][3])
-		-- Show Next button if more pages available
-		AQ_NextPageCount = "Boss"
-		if generalData[2] then
-			ShowUIPanel(KQNextPageButton_Right)
-			AtlasKTW.Q.CurrentPage = 1
-			-- shows total amount of pages
-			KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..#generalData)
-		end
-	-- Fallback to old format if new format not available
-	else
-		local instGeneral = _G["Inst"..AtlasKTW.Instances.."General"]
-		if instGeneral ~= nil then
-			KQuestName:SetText(BLUE..instGeneral[1][1])
-			KQuestStory:SetText(WHITE..instGeneral[1][2].."\n \n"..instGeneral[1][3])
-			-- Show Next side button if next site is avaiable
-			AQ_NextPageCount = "Boss"
-			if instGeneral[2] ~= nil then
-				ShowUIPanel(KQNextPageButton_Right)
-				AtlasKTW.Q.CurrentPage = 1
-				-- shows total amount of pages
-				KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..getn(instGeneral))
-			end
-		end
-	end
+    local instGeneral = _G["Inst"..AtlasKTW.Instances.."General"]
+    if instGeneral ~= nil then
+        KQuestName:SetText(BLUE..instGeneral[1][1])
+        KQuestStory:SetText(WHITE..instGeneral[1][2].."\n \n"..instGeneral[1][3])
+        -- Show Next side button if next site is avaiable
+        AQ_NextPageCount = "Boss"
+        if instGeneral[2] ~= nil then
+            ShowUIPanel(KQNextPageButton_Right)
+            AtlasKTW.Q.CurrentPage = 1
+            -- shows total amount of pages
+            KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..getn(instGeneral))
+        end
+    end
 end
 
 -----------------------------------------------------------------------------
@@ -110,8 +91,6 @@ local function kQInsertQuestInformation()
 	-- Get current quest ID from global variable
 	local questID = AtlasKTW.Q.ShownQuest
 	local faction = AtlasKTW.isHorde and "Horde" or "Alliance"
-	
-	-- Try to get quest name from new format
 	local questName = nil
 	if KQuestInstanceData and 
 	   KQuestInstanceData[AtlasKTW.Instances] and 
@@ -119,23 +98,7 @@ local function kQInsertQuestInformation()
 	   KQuestInstanceData[AtlasKTW.Instances].Quests[faction] and
 	   KQuestInstanceData[AtlasKTW.Instances].Quests[faction][questID] then
 		questName = KQuestInstanceData[AtlasKTW.Instances].Quests[faction][questID].Title
-	else
-		-- Fallback to old format
-		local questNameKey, questOffset
-		local suffix = AtlasKTW.isHorde and "_HORDE" or ""
-		-- Determine the offset for removing quest level number based on quest ID
-		if questID <= 9 then
-			questOffset = 4
-		else
-			questOffset = 5
-		end
-		questNameKey = "Inst"..AtlasKTW.Instances.."Quest"..questID..suffix
-		-- Extract quest name without level number prefix
-		if _G[questNameKey] then
-			questName = strsub(_G[questNameKey], questOffset)
-		end
 	end
-	
 	-- Insert formatted quest name into chat box if found
 	if questName then
 		-- Remove level prefix if present (pattern like "60. " at the beginning)
@@ -174,7 +137,7 @@ function Quest_OnClick(button)
 	end
 end
 -----------------------------------------------------------------------------
--- AtlasQuest Frame creation
+-- Quest Frame creation
 -----------------------------------------------------------------------------
 function CreateKQuestFrame()
     local frame = CreateFrame("Frame", "KQuestFrame", AtlasFrame)
