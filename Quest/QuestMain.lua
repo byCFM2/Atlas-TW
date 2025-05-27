@@ -101,7 +101,7 @@ local function kQGetQuestData(instanceId, questId, faction, field)
     end
     -- Field wasn't found
     return nil
-end --updated not all
+end --updated
 
 -----------------------------------------------------------------------------
 -- Helper function to check if a quest exists
@@ -542,7 +542,7 @@ function KQNextPageR_OnClick()
 
     -- Show back button
     ShowUIPanel(KQNextPageButton_Left)
-end --updated not all
+end --updated not all--TODO
 
 -----------------------------------------------------------------------------
 -- shows the side before this side
@@ -611,7 +611,7 @@ function KQNextPageL_OnClick()
 
     -- Always show next button when going back
     ShowUIPanel(KQNextPageButton_Right)
-end --updated not all
+end --updated not all--TODO
 
 -----------------------------------------------------------------------------
 -- Checkbox for the finished quest option
@@ -761,7 +761,7 @@ local function KDisplayQuestDetails(questNum)
     -- Display details for both factions
     DisplayFactionQuestDetails("")        -- Alliance
     DisplayFactionQuestDetails("HORDE")   -- Horde
-end
+end --TODO
 
 -----------------------------------------------------------------------------
 -- Slashcommand!! show/hide panel
@@ -892,7 +892,7 @@ local function kQuestCommand(param)
     if commands[cmd] then
         commands[cmd]()
     end
-end
+end --TODO
 
 -----------------------------------------------------------------------------
 -- Slash command added
@@ -901,7 +901,7 @@ local function kQuestSlashCommand()
 	SlashCmdList["ATLASQ"]=kQuestCommand
 	SLASH_ATLASQ1="/aq"
 	SLASH_ATLASQ2="/atlasquest"
-end --updated
+end --updated --TODO
 
 -----------------------------------------------------------------------------
 -- Call OnLoad set Variables and hides the panel
@@ -1199,7 +1199,7 @@ function KQuestItem_OnEnter()
     -- Show the tooltip
     KAtlasTooltip:Show()
 
-end
+end --updated
 
 -----------------------------------------------------------------------------
 -- Ask Server right-click
@@ -1279,7 +1279,7 @@ function KQuestItem_OnClick(mouseButton)
     if IsControlKeyDown() and GetItemInfo(itemId) then
         DressUpItemLink(itemId)
     end
-end
+end --updated
 
 -- Initialize frames on addon load
 CreateKQuestFrame()
