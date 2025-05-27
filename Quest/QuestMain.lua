@@ -99,18 +99,6 @@ local function kQGetQuestData(instanceId, questId, faction, field)
     if (field or "Title") then
         return KQuestInstanceData[instanceId].Quests[faction][questId][field]
     end
-
-    -- Special case for instance-level fields
-    if field == "Story" then
-        return KQuestInstanceData[instanceId].Story
-    elseif field == "Caption" then
-        return KQuestInstanceData[instanceId].Caption
-    elseif field == "QAA" then
-        return KQuestInstanceData[instanceId].QAA
-    elseif field == "QAH" then
-        return KQuestInstanceData[instanceId].QAH
-    end
-
     -- Field wasn't found
     return nil
 end --updated not all
@@ -956,39 +944,40 @@ end --updated
 -- QuestStart icon are shown if InstXQuestYPreQuest = "true"
 -----------------------------------------------------------------------------
 function KQuestSetTextandButtons()
-	local isHorde = AtlasKTW.isHorde
+    local isHorde = AtlasKTW.isHorde
+	local instanceId = AtlasKTW.Instances
 	local faction = isHorde and "Horde" or "Alliance"
 	local questName
 	local playerLevel = UnitLevel("player")
 	-- Hide inner frame if instance changed
-	if kQuestInstChanged ~= AtlasKTW.Instances then
+	if kQuestInstChanged ~= instanceId then
 		HideUIPanel(KQuestInsideFrame)
 	end
 	-- Enable/disable general button based on instance info availability
-	AQGeneralButton[_G["Inst"..AtlasKTW.Instances.."General"] and "Enable" or "Disable"](AQGeneralButton)
+	AQGeneralButton[_G["Inst"..instanceId.."General"] and "Enable" or "Disable"](AQGeneralButton)
 	-- Update current instance
-	kQuestInstChanged = AtlasKTW.Instances
+	kQuestInstChanged = instanceId
 	-- Set quest count text
 	local questCountKey = isHorde and "QAH" or "QAA"
-	local questCount = _G["Inst"..AtlasKTW.Instances..questCountKey]
+	local questCount = KQuestInstanceData[instanceId][questCountKey]
 	AtlasQuestAnzahl:SetText(questCount or "")
 	-- Process quests
 	for b = 1, kQMAXQUESTS do
 		-- Define keys for current faction
 	    -- Check for quest existence
-        if kQQuestExists(AtlasKTW.Instances, b, faction) then
+        if kQQuestExists(instanceId, b, faction) then
              -- Define keys for current faction (for both formats)
-            local finishedKey = "KQFinishedQuest_Inst"..AtlasKTW.Instances.."Quest"..b..(isHorde and "_HORDE" or "")
+            local finishedKey = "KQFinishedQuest_Inst"..instanceId.."Quest"..b..(isHorde and "_HORDE" or "")
             -- Get quest data
-            questName = kQGetQuestData(AtlasKTW.Instances, b, faction, "Title")
-            local followQuest = kQGetQuestData(AtlasKTW.Instances, b, faction, "Folgequest")
-            local preQuest = kQGetQuestData(AtlasKTW.Instances, b, faction, "PreQuest")
-            local questLevel = tonumber(kQGetQuestData(AtlasKTW.Instances, b, faction, "Level"))
+            questName = kQGetQuestData(instanceId, b, faction, "Title")
+            local followQuest = kQGetQuestData(instanceId, b, faction, "Folgequest")
+            local preQuest = kQGetQuestData(instanceId, b, faction, "Prequest")
+            local questLevel = tonumber(kQGetQuestData(instanceId, b, faction, "Level"))
             -- Set quest line arrows
-            local arrowTexture = nil
-            if followQuest then
+            local arrowTexture
+            if preQuest ~= "No" then
                 arrowTexture = "Interface\\Glues\\Login\\UI-BackArrow"
-            elseif preQuest then
+            elseif followQuest ~= "No" then
                 arrowTexture = "Interface\\GossipFrame\\PetitionGossipIcon"
             end
             -- Check for completed quests
@@ -996,7 +985,7 @@ function KQuestSetTextandButtons()
                 arrowTexture = "Interface\\GossipFrame\\BinderGossipIcon"
             end
             -- Apply arrow texture
-            local arrow = _G["AQQuestlineArrow_"..b]
+            local arrow = _G["KQuestlineArrow_"..b]
             if arrowTexture then
                 arrow:SetTexture(arrowTexture)
                 arrow:Show()
@@ -1037,7 +1026,7 @@ function KQuestSetTextandButtons()
 			_G["AQQuestbutton"..b]:Disable()
 			_G["AQBUTTONTEXT"..b]:SetText()
             -- Hide arrow
-            _G["AQQuestlineArrow_"..b]:Hide()
+            _G["KQuestlineArrow_"..b]:Hide()
 		end
 	end
 end --updated

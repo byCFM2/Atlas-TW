@@ -239,7 +239,7 @@ function CreateKQuestFrame()
     end
     -- Function to create an arrow
     local function CreateArrow(index, relativeTo, yOffset)
-        local arrow = frame:CreateTexture("AQQuestlineArrow_"..index, "OVERLAY")
+        local arrow = frame:CreateTexture("KQuestlineArrow_"..index, "OVERLAY")
         arrow:SetWidth(13)
         arrow:SetHeight(15)
         if index ~= 1 then

@@ -8394,6 +8394,9 @@ KQuestInstanceData[34].Quests.Alliance[2] = {
     Note = "You can find Narain Soothfancy in Tanaris at "..yellow.."65.17"..white..".",
     Prequest = "The Charge of the Dragonflights",
     Folgequest = "Translating the Ledger",
+    Rewards = {
+        Text = AQNoReward,
+    }
 }
 KQuestInstanceData[34].Quests.Horde[1] = KQuestInstanceData[34].Quests.Alliance[1]
 KQuestInstanceData[34].Quests.Horde[2] = KQuestInstanceData[34].Quests.Alliance[2]
