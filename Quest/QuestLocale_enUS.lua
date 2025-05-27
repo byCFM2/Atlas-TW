@@ -16,7 +16,7 @@ AQOptionsCaptionTEXT = "AtlasQuest Options"
 AQ_OK = "Done"
 AQ_Quests = "Quests"
 AQNotAvailable = "Not Available"
-AQQuestFinished = "Quest finished:"
+AQQuestFinished = "- Quest finished"
 -- Autoshow
 KQAutoshowOptionLocal = "Show AtlasQuest panel with Atlas.";
 AQAtlasAutoON = "The AtlasQuest panel will be automatically displayed when atlas is opened."..green.."(default)"
