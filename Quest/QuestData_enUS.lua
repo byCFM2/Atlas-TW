@@ -9214,6 +9214,9 @@ KQuestInstanceData[41].Quests.Alliance[2] = {
     Rewards = {
         {
             Name = "Recipe: Empowering Herbal Salad",
+            ID = "92045",
+            Color = blue,
+            Description = AQITEM_ITEM,
         },
     }
 }
