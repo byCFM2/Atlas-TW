@@ -1,0 +1,216 @@
+---
+--- Created by Vitali.
+--- DateTime: 29.05.2025 19:46
+---
+Проанализировав код, вижу несколько областей для улучшения структуры для WoW 1.12. Вот мои рекомендации:
+
+## **1. Модуляризация и организация кода**
+
+<snippet-file>QuestConfig.lua</snippet-file>
+```lua
+-- Конфигурация и константы
+KQuestConfig = {
+    -- Цвета
+    Colors = {
+        red = "|cffff0000",
+        white = "|cffFFFFFF",
+        grey = "|cff808080",
+        orange = "|cffff8000",
+        blue = "|cff0070dd",
+        green = "|cff00FF00",
+        yellow = "|cffffd200",
+        purple = "|cffa335ee"
+    },
+
+    -- Константы
+    Constants = {
+        MAX_INSTANCES = 98,
+        MAX_QUESTS = 23,
+        NO_PREQUEST = "No",
+        NO_FOLGEQUEST = "No"
+    },
+
+    -- Позиции UI
+    UI = {
+        LEFT_POSITION = {point = "TOP", relativeTo = "AtlasFrame", x = -556, y = -36},
+        RIGHT_POSITION = {point = "TOP", relativeTo = "AtlasFrame", x = 567, y = -36}
+    }
+}
+```
+
+
+## **2. Упрощение обработчиков событий в QuestOptionUI.lua**
+
+<snippet-file>QuestOptionUI.lua</snippet-file>
+```lua
+-- Объединенный обработчик для всех опций
+local OptionHandlers = {
+    autoshow = function()
+        AtlasKTW.Q.WithAtlas = not AtlasKTW.Q.WithAtlas
+        KQAutoshowOption:SetChecked(AtlasKTW.Q.WithAtlas)
+        ChatFrame1:AddMessage(AtlasKTW.Q.WithAtlas and AQAtlasAutoON or AQAtlasAutoOFF)
+    end,
+
+    position = function(side)
+        KQuestFrame:ClearAllPoints()
+        local pos = side == "Right" and KQuestConfig.UI.RIGHT_POSITION or KQuestConfig.UI.LEFT_POSITION
+        KQuestFrame:SetPoint(pos.point, pos.relativeTo, pos.x, pos.y)
+
+        KQRIGHTOption:SetChecked(side == "Right")
+        KQLEFTOption:SetChecked(side == "Left")
+        AtlasKTW.Q.ShownSide = side
+
+        if side == "Left" and AtlasKTW.Q.ShownSide ~= "Left" then
+            ChatFrame1:AddMessage(AQShowLeft)
+        end
+    end,
+
+    color = function()
+        AtlasKTW.Q.ColourCheck = not AtlasKTW.Q.ColourCheck
+        KQColourOption:SetChecked(AtlasKTW.Q.ColourCheck)
+        ChatFrame1:AddMessage(AtlasKTW.Q.ColourCheck and AQCCON or AQCCOFF)
+        AtlasKTW.QUpdateNOW = true
+    end
+}
+
+-- Упрощенные обработчики
+function KQAutoshowOption_OnClick()
+    OptionHandlers.autoshow()
+    KQuest_SaveData()
+end
+
+function KQRIGHTOption_OnClick()
+    OptionHandlers.position("Right")
+    KQuest_SaveData()
+end
+
+function KQLEFTOption_OnClick()
+    OptionHandlers.position("Left")
+    KQuest_SaveData()
+end
+```
+
+## **5. Упрощение QuestMain.lua**
+
+<snippet-file>QuestMain.lua</snippet-file>
+```lua
+-- Утилиты для работы с квестами
+local KQuestUtils = {
+    -- Получение данных квеста
+    getQuestData = function(instanceId, questId, faction, field)
+        instanceId = instanceId or AtlasKTW.Instances
+        questId = questId or AtlasKTW.Q.ShownQuest
+        faction = faction or (AtlasKTW.isHorde and "Horde" or "Alliance")
+        field = field or "Title"
+
+        local instanceData = KQuestInstanceData[instanceId]
+        if not instanceData or not instanceData.Quests or
+           not instanceData.Quests[faction] or
+           not instanceData.Quests[faction][questId] then
+            return nil
+        end
+
+        return instanceData.Quests[faction][questId][field]
+    end,
+
+    -- Проверка существования квеста
+    questExists = function(instanceId, questId, faction)
+        return KQuestUtils.getQuestData(instanceId, questId, faction) ~= nil
+    end,
+
+    -- Очистка UI
+    clearAllFrames = function()
+        local elementsToHide = {
+            "KQuestPageCount", "KQNextPageButton_Right", "KQNextPageButton_Left",
+            "KQuestName", "KQuestLevel", "KQuestDetails", "KQuestAttainLevel",
+            "KQuestReward", "KQuestStory", "KQuestFinishedText", "KQuestFinished"
+        }
+
+        for _, elementName in ipairs(elementsToHide) do
+            local element = _G[elementName]
+            if element then
+                if element.SetText then
+                    element:SetText()
+                else
+                    HideUIPanel(element)
+                end
+            end
+        end
+
+        -- Очистка фреймов предметов
+        for i = 1, 6 do
+            local frameName = "KQuestItemframe" .. i
+            _G[frameName .. "_Icon"]:SetTexture()
+            _G[frameName .. "_Name"]:SetText()
+            _G[frameName .. "_Extra"]:SetText()
+            _G[frameName]:Disable()
+        end
+    end
+}
+
+-- Замена глобальных функций на утилиты
+function KQClearALL()
+    KQuestUtils.clearAllFrames()
+end
+
+function kQGetQuestData(instanceId, questId, faction, field)
+    return KQuestUtils.getQuestData(instanceId, questId, faction, field)
+end
+
+function kQQuestExists(instanceId, questId, faction)
+    return KQuestUtils.questExists(instanceId, questId, faction)
+end
+```
+
+
+## **6. Создание системы валидации**
+
+<snippet-file>QuestValidator.lua</snippet-file>
+```lua
+-- Система валидации квестов
+local KQuestValidator = {
+    validateQuest = function(questData)
+        local errors = {}
+
+        if not questData.Title or questData.Title == "" then
+            table.insert(errors, "Missing quest title")
+        end
+
+        if not questData.Aim or questData.Aim == "" then
+            table.insert(errors, "Missing quest aim")
+        end
+
+        if not questData.Level or questData.Level == "" then
+            table.insert(errors, "Missing quest level")
+        end
+
+        return table.getn(errors) == 0, errors
+    end,
+
+    validateInstance = function(instanceData)
+        if not instanceData.Caption then
+            return false, "Missing instance caption"
+        end
+
+        if not instanceData.Quests or
+           (not instanceData.Quests.Alliance and not instanceData.Quests.Horde) then
+            return false, "No quest data found"
+        end
+
+        return true, "OK"
+    end
+}
+```
+
+
+## **Основные улучшения:**
+
+1. **Модульность**: Разделение кода на логические блоки
+2. **Конфигурация**: Вынос констант и настроек в отдельные таблицы
+3. **Фабрики**: Упрощение создания повторяющихся UI элементов
+4. **Утилиты**: Общие функции для работы с данными
+5. **Кеширование**: Оптимизация производительности
+6. **Валидация**: Проверка корректности данных
+7. **Совместимость**: Все изменения совместимы с Lua 5.0 в WoW 1.12
+
+Эти изменения значительно упростят поддержку кода и добавление нового функционала.

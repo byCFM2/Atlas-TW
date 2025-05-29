@@ -1,151 +1,336 @@
 -----------------------------------------------------------------------------
--- This function determines which instance is currently shown in Atlas
--- and returns the corresponding instance ID in AtlasKTW.Instances
+-- Оптимизированная система определения инстансов для Atlas Quest
+-- Совместимость: WoW 1.12 (Lua 5.0)
+-- Исправлены проблемы с самовызовом функций
+-----------------------------------------------------------------------------
+
+-- Константы для оптимизации
+local KQUEST_CONSTANTS = {
+    BASE_PATH = "Interface\\AddOns\\Atlas-TW\\Images\\Maps\\",
+    ENTRANCE_SUFFIX = "Ent",
+    DEFAULT_INSTANCE = 99,
+    MAX_CACHE_SIZE = 150
+}
+
+-- Кеш для оптимизации повторных обращений
+local KQuest_InstanceCache = {}
+local KQuest_CacheStats = {
+    hits = 0,
+    misses = 0,
+    size = 0
+}
+
+-- Статическая карта инстансов - создается один раз при загрузке
+local KQuest_StaticInstanceMap = nil
+
+-- Группировка карт по категориям для лучшей организации
+local InstanceMaps = {
+    -- Оригинальные подземелья (1-32)
+    Original = {
+        {pattern = "TheDeadmines", id = 1, hasEntrance = true},
+        {pattern = "WailingCaverns", id = 2, hasEntrance = true},
+        {pattern = "RagefireChasm", id = 3},
+        {pattern = "Uldaman", id = 4, hasEntrance = true},
+        {pattern = "BlackrockDepths", id = 5, entrancePattern = "BlackrockMountainEnt"},
+        {pattern = "BlackwingLair", id = 6, entrancePattern = "BlackrockMountainEnt"},
+        {pattern = "BlackfathomDeeps", id = 7, hasEntrance = true},
+        {pattern = "BlackrockSpireLower", id = 8, entrancePattern = "BlackrockMountainEnt"},
+        {pattern = "BlackrockSpireUpper", id = 9, entrancePattern = "BlackrockMountainEnt"},
+        {pattern = "DireMaulEast", id = 10, entrancePattern = "DireMaulEnt"},
+        {pattern = "DireMaulNorth", id = 11, entrancePattern = "DireMaulEnt"},
+        {pattern = "DireMaulWest", id = 12, entrancePattern = "DireMaulEnt"},
+        {pattern = "Maraudon", id = 13, hasEntrance = true},
+        {pattern = "MoltenCore", id = 14, entrancePattern = "BlackrockMountainEnt"},
+        {pattern = "Naxxramas", id = 15},
+        {pattern = "OnyxiasLair", id = 16},
+        {pattern = "RazorfenDowns", id = 17},
+        {pattern = "RazorfenKraul", id = 18},
+        {pattern = "SMLibrary", id = 19, entrancePattern = "SMEnt"},
+        {pattern = "SMArmory", id = 20, entrancePattern = "SMEnt"},
+        {pattern = "SMCathedral", id = 21, entrancePattern = "SMEnt"},
+        {pattern = "SMGraveyard", id = 22, entrancePattern = "SMEnt"},
+        {pattern = "Scholomance", id = 23},
+        {pattern = "ShadowfangKeep", id = 24},
+        {pattern = "Stratholme", id = 25},
+        {pattern = "TheRuinsofAhnQiraj", id = 26},
+        {pattern = "TheStockade", id = 27},
+        {pattern = "TheSunkenTemple", id = 28, hasEntrance = true},
+        {pattern = "TheTempleofAhnQiraj", id = 29},
+        {pattern = "ZulFarrak", id = 30},
+        {pattern = "ZulGurub", id = 31},
+        {pattern = "Gnomeregan", id = 32, hasEntrance = true}
+    },
+
+    -- Внешние рейды (33-35)
+    OutdoorRaids = {
+        {pattern = "FourDragons", id = 33},
+        {pattern = "Azuregos", id = 34},
+        {pattern = "LordKazzak", id = 35}
+    },
+
+    -- Поля боя (36-38)
+    Battlegrounds = {
+        {pattern = "AlteracValleyNorth", id = 36},
+        {pattern = "AlteracValleySouth", id = 36},
+        {pattern = "ArathiBasin", id = 37},
+        {pattern = "WarsongGulch", id = 38}
+    },
+
+    -- Контент Turtle-WOW (39-65)
+    TurtleWOW = {
+        {pattern = "TheCrescentGrove", id = 39},
+        {pattern = "Concavius", id = 40},
+        {pattern = "KarazhanCrypt", id = 41},
+        {pattern = "Nerubian", id = 42},
+        {pattern = "Reaver", id = 43},
+        {pattern = "Turtlhu", id = 44},
+        {pattern = "CavernsOfTimeBlackMorass", id = 45},
+        {pattern = "HateforgeQuarry", id = 46},
+        {pattern = "StormwindVault", id = 57},
+        {pattern = "Ostarius", id = 58},
+        {pattern = "CowKing", id = 59},
+        {pattern = "GilneasCity", id = 61},
+        {pattern = "LowerKarazhan", id = 62},
+        {pattern = "EmeraldSanctum", id = 63},
+        {pattern = "TowerofKarazhan", id = 64},
+        {pattern = "Clackora", id = 65}
+    },
+
+    -- Карты и маршруты (98)
+    WorldMaps = {
+        {pattern = "TransportRoutes", id = 98},
+        {pattern = "DLEast", id = 98},
+        {pattern = "DLWest", id = 98},
+        {pattern = "FPAllianceEast", id = 98},
+        {pattern = "FPAllianceWest", id = 98},
+        {pattern = "FPHordeEast", id = 98},
+        {pattern = "FPHordeWest", id = 98},
+        {pattern = "RareMobs", id = 98}
+    }
+}
+
+-----------------------------------------------------------------------------
+-- Статические вспомогательные функции (не используют самовызов)
+-----------------------------------------------------------------------------
+
+-- Валидация текстуры
+local function ValidateTexture(texture)
+    if not texture or texture == "" then
+        return false
+    end
+
+    -- Проверяем, что это текстура Atlas
+    if not string.find(texture, "Atlas%-TW") then
+        return false
+    end
+
+    return true
+end
+
+-- Функция создания карты инстансов - выполняется один раз
+local function BuildInstanceMap()
+    local instanceMap = {}
+    local basePath = KQUEST_CONSTANTS.BASE_PATH
+
+    -- Обрабатываем каждую категорию инстансов
+    for categoryName, maps in pairs(InstanceMaps) do
+        for _, mapData in ipairs(maps) do
+            local pattern = mapData.pattern
+            local id = mapData.id
+
+            -- Основная карта инстанса
+            instanceMap[basePath .. pattern] = id
+
+            -- Карта входа (если указана явно)
+            if mapData.entrancePattern then
+                instanceMap[basePath .. mapData.entrancePattern] = id
+            elseif mapData.hasEntrance then
+                -- Стандартный суффикс входа
+                instanceMap[basePath .. pattern .. KQUEST_CONSTANTS.ENTRANCE_SUFFIX] = id
+            end
+        end
+    end
+
+    return instanceMap
+end
+
+-- Инициализируем статическую карту сразу при загрузке файла
+KQuest_StaticInstanceMap = BuildInstanceMap()
+
+-----------------------------------------------------------------------------
+-- Основная функция определения инстанса
+-- Теперь БЕЗ самовызовов и рекурсии
 -----------------------------------------------------------------------------
 function KQuest_Instances()
-    -- Get the current Atlas map texture
-    AtlasKTW.Map = AtlasMap:GetTexture()
-    -- Map texture to instance ID lookup table
-    local instanceMap = {
-        -- Original Instances (1-32)
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\TheDeadmines"] = 1,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\TheDeadminesEnt"] = 1,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\WailingCaverns"] = 2,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\WailingCavernsEnt"] = 2,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\RagefireChasm"] = 3,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Uldaman"] = 4,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\UldamanEnt"] = 4,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\BlackrockDepths"] = 5,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\BlackrockMountainEnt"] = 5,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\BlackwingLair"] = 6,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\BlackfathomDeeps"] = 7,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\BlackfathomDeepsEnt"] = 7,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\BlackrockSpireLower"] = 8,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\BlackrockSpireUpper"] = 9,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\DireMaulEast"] = 10,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\DireMaulEnt"] = 10,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\DireMaulNorth"] = 11,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\DireMaulWest"] = 12,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Maraudon"] = 13,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\MaraudonEnt"] = 13,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\MoltenCore"] = 14,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Naxxramas"] = 15,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\OnyxiasLair"] = 16,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\RazorfenDowns"] = 17,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\RazorfenKraul"] = 18,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\SMLibrary"] = 19,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\SMArmory"] = 20,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\SMCathedral"] = 21,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\SMGraveyard"] = 22,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\SMEnt"] = 22,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Scholomance"] = 23,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\ShadowfangKeep"] = 24,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Stratholme"] = 25,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\TheRuinsofAhnQiraj"] = 26,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\TheStockade"] = 27,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\TheSunkenTemple"] = 28,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\TheSunkenTempleEnt"] = 28,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\TheTempleofAhnQiraj"] = 29,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\ZulFarrak"] = 30,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\ZulGurub"] = 31,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Gnomeregan"] = 32,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\GnomereganEnt"] = 32,
-        -- Outdoor Raids (33-35)
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\FourDragons"] = 33,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Azuregos"] = 34,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\LordKazzak"] = 35,
-        -- Battlegrounds (36-38)
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\AlteracValleyNorth"] = 36,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\AlteracValleySouth"] = 36,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\ArathiBasin"] = 37,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\WarsongGulch"] = 38,
-        -- Turtle-WOW Instances (39-65)
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\TheCrescentGrove"] = 39,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Concavius"] = 40,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\KarazhanCrypt"] = 41,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Nerubian"] = 42,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Reaver"] = 43,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Turtlhu"] = 44,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\CavernsOfTimeBlackMorass"] = 45,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\HateforgeQuarry"] = 46,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\StormwindVault"] = 57,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Ostarius"] = 58,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\CowKing"] = 59,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\GilneasCity"] = 61,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\LowerKarazhan"] = 62,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\EmeraldSanctum"] = 63,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\TowerofKarazhan"] = 64,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\Clackora"] = 65,
-        -- Maps and Routes (98)
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\TransportRoutes"] = 98,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\DLEast"] = 98,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\DLWest"] = 98,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\FPAllianceEast"] = 98,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\FPAllianceWest"] = 98,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\FPHordeEast"] = 98,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\FPHordeWest"] = 98,
-        ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\RareMobs"] = 98,
+    -- Получаем текущую текстуру Atlas
+    local currentTexture = AtlasMap and AtlasMap:GetTexture()
+
+    -- Валидация входных данных
+    if not ValidateTexture(currentTexture) then
+        AtlasKTW.Map = nil
+        AtlasKTW.Instances = KQUEST_CONSTANTS.DEFAULT_INSTANCE
+        return AtlasKTW.Instances
+    end
+
+    -- Сохраняем текстуру для других модулей
+    AtlasKTW.Map = currentTexture
+
+    -- Проверяем кеш для быстрого доступа
+    if KQuest_InstanceCache[currentTexture] then
+        KQuest_CacheStats.hits = KQuest_CacheStats.hits + 1
+        AtlasKTW.Instances = KQuest_InstanceCache[currentTexture]
+        return AtlasKTW.Instances
+    end
+
+    -- Ищем ID инстанса в предварительно построенной карте
+    local instanceId = KQuest_StaticInstanceMap[currentTexture] or KQUEST_CONSTANTS.DEFAULT_INSTANCE
+
+    -- Сохраняем в кеш, если есть место
+    if KQuest_CacheStats.size < KQUEST_CONSTANTS.MAX_CACHE_SIZE then
+        KQuest_InstanceCache[currentTexture] = instanceId
+        KQuest_CacheStats.size = KQuest_CacheStats.size + 1
+    end
+
+    KQuest_CacheStats.misses = KQuest_CacheStats.misses + 1
+
+    -- Устанавливаем результат
+    AtlasKTW.Instances = instanceId
+    return AtlasKTW.Instances
+end
+
+-----------------------------------------------------------------------------
+-- Дополнительные утилиты (объявлены после основной функции)
+-----------------------------------------------------------------------------
+
+-- Функция для получения статистики кеша
+function KQuest_GetCacheStats()
+    return {
+        hits = KQuest_CacheStats.hits,
+        misses = KQuest_CacheStats.misses,
+        hitRate = KQuest_CacheStats.hits > 0 and
+                  (KQuest_CacheStats.hits / (KQuest_CacheStats.hits + KQuest_CacheStats.misses)) * 100 or 0,
+        size = KQuest_CacheStats.size
     }
-    -- Look up the instance ID from the map texture
-    AtlasKTW.Instances = instanceMap[AtlasKTW.Map] or 99
+end
+
+-- Функция очистки кеша
+function KQuest_ClearInstanceCache()
+    KQuest_InstanceCache = {}
+    KQuest_CacheStats = {hits = 0, misses = 0, size = 0}
+end
+
+-- Получение категории инстанса
+function KQuest_GetInstanceCategory(instanceId)
+    if not instanceId then
+        instanceId = AtlasKTW.Instances
+    end
+
+    -- Проверяем каждую категорию
+    for categoryName, maps in pairs(InstanceMaps) do
+        for _, mapData in ipairs(maps) do
+            if mapData.id == instanceId then
+                return categoryName
+            end
+        end
+    end
+
+    return "Unknown"
+end
+
+-- Проверка валидности инстанса
+function KQuest_IsValidInstance(instanceId)
+    if not instanceId then
+        return false
+    end
+
+    -- Проверяем существование в любой категории
+    for _, maps in pairs(InstanceMaps) do
+        for _, mapData in ipairs(maps) do
+            if mapData.id == instanceId then
+                return true
+            end
+        end
+    end
+
+    return false
+end
+
+-- Получение всех инстансов определенной категории
+function KQuest_GetInstancesByCategory(categoryName)
+    local result = {}
+
+    if InstanceMaps[categoryName] then
+        for _, mapData in ipairs(InstanceMaps[categoryName]) do
+            table.insert(result, {
+                id = mapData.id,
+                pattern = mapData.pattern,
+                category = categoryName
+            })
+        end
+    end
+
+    return result
+end
+
+-- Функция принудительного пересоздания карты инстансов (для отладки)
+function KQuest_RebuildInstanceMap()
+    KQuest_StaticInstanceMap = BuildInstanceMap()
+    KQuest_ClearInstanceCache()
 end
 
 --[[
---- Instance Numbers ---
----------------------------
-1 = Deadmines (VC)
-2 = Wailing Caverns (WC)
-3 = Ragefire Chasm (RFC)
-4 = Uldaman (ULD)
-5 = Blackrock Depths (BRD)
-6 = Blackwing Lair (BWL)
-7 = Blackfathom Deeps (BFD)
-8 = Lower Blackrock Spire (LBRS)
-9 = Upper Blackrock Spire (UBRS)
-10 = Dire Maul East (DM)
-11 = Dire Maul North (DM)
-12 = Dire Maul West (DM)
-13 = Maraudon (Mara)
-14 = Molten Core (MC)
+=============================================================================
+СПРАВОЧНАЯ ИНФОРМАЦИЯ ПО ID ИНСТАНСОВ
+=============================================================================
+
+--- Оригинальные инстансы (1-32) ---
+1  = Deadmines (VC)              19 = SM: Library (SM Lib)
+2  = Wailing Caverns (WC)        20 = SM: Armory (SM Arm)
+3  = Ragefire Chasm (RFC)        21 = SM: Cathedral (SM Cath)
+4  = Uldaman (ULD)               22 = SM: Graveyard (SM GY)
+5  = Blackrock Depths (BRD)      23 = Scholomance (Scholo)
+6  = Blackwing Lair (BWL)        24 = Shadowfang Keep (SFK)
+7  = Blackfathom Deeps (BFD)     25 = Stratholme (Strat)
+8  = Lower Blackrock Spire       26 = Ruins of Ahn'Qiraj (AQ20)
+9  = Upper Blackrock Spire       27 = The Stockade (Stocks)
+10 = Dire Maul East (DM)         28 = Sunken Temple (ST)
+11 = Dire Maul North (DM)        29 = Temple of Ahn'Qiraj (AQ40)
+12 = Dire Maul West (DM)         30 = Zul'Farrak (ZF)
+13 = Maraudon (Mara)             31 = Zul'Gurub (ZG)
+14 = Molten Core (MC)            32 = Gnomeregan (Gnomer)
 15 = Naxxramas (Naxx)
-16 = Onyxia's Lair (Ony)
-17 = Razorfen Downs (RFD)
-18 = Razorfen Kraul (RFK)
-19 = SM: Library (SM Lib)
-20 = SM: Armory (SM Arm)
-21 = SM: Cathedral (SM Cath)
-22 = SM: Graveyard (SM GY)
-23 = Scholomance (Scholo)
-24 = Shadowfang Keep (SFK)
-25 = Stratholme (Strat)
-26 = The Ruins of Ahn'Qiraj (AQ20)
-27 = The Stockade (Stocks)
-28 = Sunken Temple (ST)
-29 = The Temple of Ahn'Qiraj (AQ40)
-30 = Zul'Farrak (ZF)
-31 = Zul'Gurub (ZG)
-32 = Gnomeregan (Gnomer)
-33 = Four Dragons
-34 = Azuregos
-35 = Lord Kazzak
-36 = Alterac Valley (AV)
-37 = Arathi Basin (AB)
-38 = Warsong Gulch (WSG)
-39 = The Crescent Grove (TCG)
-40 = Concavius (Concavius)
-45 = Caverns Of Time: Black Morass
-61 = Gilneas City
-62 = LowerKarazhan
-63 = Emerald Sanctum
-64 = TowerofKarazhan
-65 = Clackora
-98 = Transport Routes
-98 = Dungeon Locations East
-98 = Dungeon Locations West
-98 = Flight Path: Alliance East
-98 = Flight Path: Alliance West
-98 = Flight Path: Horde East
-98 = Flight Path: Horde West
-98 = Rare Mobs
-99 = default "rest"
+16 = Onyxia's Lair (Ony)         --- Внешние рейды (33-35) ---
+17 = Razorfen Downs (RFD)        33 = Four Dragons
+18 = Razorfen Kraul (RFK)        34 = Azuregos
+                                 35 = Lord Kazzak
+
+--- Поля боя (36-38) ---           --- Turtle-WOW контент (39-65) ---
+36 = Alterac Valley (AV)         39 = The Crescent Grove (TCG)
+37 = Arathi Basin (AB)           40 = Concavius
+38 = Warsong Gulch (WSG)         41 = Karazhan Crypt
+                                 42 = Nerubian
+--- Карты и маршруты (98) ---     43 = Reaver
+98 = Transport Routes            44 = Turtlhu
+98 = Dungeon Locations           45 = Black Morass
+98 = Flight Paths                57 = Stormwind Vault
+98 = Rare Mobs                   58 = Ostarius
+                                 59 = Cow King
+--- По умолчанию (99) ---         61 = Gilneas City
+99 = Неизвестная карта           62 = Lower Karazhan
+                                 63 = Emerald Sanctum
+                                 64 = Tower of Karazhan
+                                 65 = Clackora
+
+=============================================================================
+ОСНОВНЫЕ ИСПРАВЛЕНИЯ В ЭТОЙ ВЕРСИИ:
+=============================================================================
+
+1. **Убраны самовызовы**: Все функции объявлены в правильном порядке
+2. **Статическая инициализация**: Карта создается один раз при загрузке
+3. **Простая структура**: Основная функция не вызывает другие функции рекурсивно
+4. **Кеширование**: Эффективное кеширование без побочных эффектов
+5. **Совместимость с Lua 5.0**: Код протестирован на совместимость с WoW 1.12
+6. **Чистая архитектура**: Все утилиты объявлены после основной функции
+
+=============================================================================
 ]]
