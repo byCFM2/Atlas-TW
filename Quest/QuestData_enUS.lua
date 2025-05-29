@@ -1,19 +1,19 @@
 ---------------
 --- COLOURS ---
 ---------------
-local red = "|cffff0000"
-local white = "|cffFFFFFF"
-local green = "|cff1eff00"
-local blue = "|cff0070dd"
-local yellow = "|cffFFd200"
-local orange = "|cffFF8000"
-local purple = "|cffa335ee"
+local red = KQuestConfig.Colors.red
+local white = KQuestConfig.Colors.white
+local green = KQuestConfig.Colors.green
+local blue = KQuestConfig.Colors.blue
+local yellow = KQuestConfig.Colors.yellow
+local orange = KQuestConfig.Colors.orange
+local purple = KQuestConfig.Colors.purple
 
 ----------------------------------------------
 ------------- Quest Instance Data ------------
 ----------------------------------------------
 
-KQuestInstanceData = {}
+KQuestInstanceData = KQuestInstanceData or {}
 
 --------------- INST1 - The Deadmines ---------------
 KQuestInstanceData[1] = {

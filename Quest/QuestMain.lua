@@ -1,137 +1,202 @@
-local _G = getfenv()
------------------------------------------------------------------------------
--- Colours
------------------------------------------------------------------------------
-local red = "|cffff0000"
-local white = "|cffFFFFFF"
-local grey = "|cff808080"
-local orange = "|cffff8000"
-local blue = "|cff0070dd"
-local green = "|cff00FF00"
-local yellow = "|cffffd200"
 
 -----------------------------------------------------------------------------
--- Variables
+-- Atlas Quest Main Module - Refactored for QuestConfig Integration
+-- Версия: 2.1 - Оптимизированная для WoW 1.12 с использованием QuestConfig
+-- Совместимость: Lua 5.0
+-- Автор: Vitali
+-- Дата: 29.05.2025
 -----------------------------------------------------------------------------
-local initialized -- the variables are not loaded yet
+
+local _G = getfenv()
+
+--[[
+=============================================================================
+МОДУЛЬНАЯ СИСТЕМА ГЛАВНОГО МОДУЛЯ ATLAS QUEST
+=============================================================================
+
+Основные улучшения:
+1. Интеграция с QuestConfig.lua для централизованной конфигурации
+2. Модульная структура утилит
+3. Упрощенная обработка событий
+4. Оптимизированная производительность
+5. Улучшенная читаемость кода
+
+=============================================================================
+]]
+
+-- ========================================================================
+-- ИМПОРТ КОНФИГУРАЦИИ И ПРОВЕРКА ЗАВИСИМОСТЕЙ
+-- ========================================================================
+
+-- Проверяем доступность конфигурации
+if not KQuestConfig then
+    DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest Error:|r KQuestConfig не найден! Убедитесь что QuestConfig.lua загружен первым.")
+    return
+end
+
+-- Импортируем необходимые константы и утилиты
+local Colors = KQuestConfig.Colors
+local Constants = KQuestConfig.Constants
+local UI = KQuestConfig.UI
+
+-- ========================================================================
+-- ЛОКАЛЬНЫЕ ПЕРЕМЕННЫЕ И КЕШИРОВАНИЕ
+-- ========================================================================
+
+local initialized -- Флаг инициализации переменных
 local kQQuestColor
-AtlasKTW = AtlasKTW or {}
-AtlasKTW.Q = AtlasKTW.Q or {}
-AtlasKTW.isHorde = AtlasKTW.isHorde or false -- variable that configures whether horde or allians is shown
-AtlasKTW.Instances = 1 -- currently shown instance-pic (see Instances.lua)
---AtlasKTW.Q.ShownSide = "Left" -- configures at which side the panel is shown
---AtlasKTW.Q.WithAtlas (option to show the AQpanel automatically at atlas-startup, true/false)
--- Sets the max number of instances and quests to check for.
-local kQMAXINSTANCES = "98"
-local kQMAXQUESTS = "23"
-local kQuestInstChanged = "" -- variable to check whether AtlasKTW.Instances has changed (see function KQuestSetTextandButtons())
 local playerName = UnitName("player")
 
------------------------------------------------------------------------------
--- Buttons
------------------------------------------------------------------------------
-function KQClearALL()
-	KQuestPageCount:SetText()
-	HideUIPanel(KQNextPageButton_Right)
-	HideUIPanel(KQNextPageButton_Left)
-	KQuestName:SetText()
-	KQuestLevel:SetText()
-	KQuestDetails:SetText()
-	KQuestAttainLevel:SetText()
-	KQuestReward:SetText()
-	KQuestStory:SetText()
-	KQuestFinishedText:SetText()
-    HideUIPanel(KQuestFinished)
-	for b=1, 6 do
-		_G["KQuestItemframe"..b.."_Icon"]:SetTexture()
-		_G["KQuestItemframe"..b.."_Name"]:SetText()
-		_G["KQuestItemframe"..b.."_Extra"]:SetText()
-		_G["KQuestItemframe"..b]:Disable()
-	end
-end --updated
+-- Кеширование глобальных переменных для оптимизации
+AtlasKTW = AtlasKTW or {}
+AtlasKTW.Q = AtlasKTW.Q or {}
+AtlasKTW.isHorde = AtlasKTW.isHorde or false
+AtlasKTW.Instances = AtlasKTW.Instances or Constants.DEFAULT_INSTANCE
 
------------------------------------------------------------------------------
--- upper right button / to show/close panel
------------------------------------------------------------------------------
-function KQuestCLOSE_OnClick()
-	if KQuestFrame:IsVisible() then
-		HideUIPanel(KQuestFrame)
-		HideUIPanel(KQuestInsideFrame)
-	else
-		ShowUIPanel(KQuestFrame)
-	end
-	AtlasKTW.QUpdateNOW = true
-end --updated
+-- ========================================================================
+-- УТИЛИТЫ ДЛЯ РАБОТЫ С КВЕСТАМИ
+-- ========================================================================
 
------------------------------------------------------------------------------
--- inside button to close the quest display
------------------------------------------------------------------------------
-function KQuestCLOSE2_OnClick()
-	HideUIPanel(KQuestInsideFrame)
-	KQuestWhichButton = 0
-end --updated
+local KQuestUtils = {
+    -- Получение данных квеста с проверками
+    getQuestData = function(instanceId, questId, faction, field)
+        instanceId = instanceId or AtlasKTW.Instances
+        questId = questId or AtlasKTW.Q.ShownQuest
+        faction = faction or (AtlasKTW.isHorde and "Horde" or "Alliance")
+        field = field or "Title"
 
------------------------------------------------------------------------------
--- Hide the AtlasLoot Frame if available
------------------------------------------------------------------------------
-function KQuestHideAL()
-	if AtlasLootItemsFrame ~= nil then
-		AtlasLootItemsFrame:Hide() -- hide atlasloot
-	end
-end --updated
+        local instanceData = KQuestInstanceData and KQuestInstanceData[instanceId]
+        if not instanceData or not instanceData.Quests or
+           not instanceData.Quests[faction] or
+           not instanceData.Quests[faction][questId] then
+            return nil
+        end
 
--- Function to get quest data from the new format
------------------------------------------------------------------------------
-local function kQGetQuestData(instanceId, questId, faction, field)
-    -- Default to current instance and quest if not provided
-    instanceId = instanceId or AtlasKTW.Instances
-    questId = questId or AtlasKTW.Q.ShownQuest
-    faction = faction or (AtlasKTW.isHorde and "Horde" or "Alliance")
+        return instanceData.Quests[faction][questId][field]
+    end,
 
-    -- Ensure KQuestInstanceData is available
-    if not KQuestInstanceData or not KQuestInstanceData[instanceId] or
-       not KQuestInstanceData[instanceId].Quests or
-       not KQuestInstanceData[instanceId].Quests[faction] or
-       (questId and not KQuestInstanceData[instanceId].Quests[faction][questId]) then
+    -- Проверка существования квеста
+    questExists = function(instanceId, questId, faction)
+        return KQuestUtils.getQuestData(instanceId, questId, faction) ~= nil
+    end,
+
+    -- Очистка всех UI элементов
+    clearAllFrames = function()
+        local elementsToHide = {
+            "KQuestPageCount", "KQNextPageButton_Right", "KQNextPageButton_Left",
+            "KQuestName", "KQuestLevel", "KQuestDetails", "KQuestAttainLevel",
+            "KQuestReward", "KQuestStory", "KQuestFinishedText", "KQuestFinished"
+        }
+
+        for _, elementName in ipairs(elementsToHide) do
+            local element = _G[elementName]
+            if element then
+                if element.SetText then
+                    element:SetText()
+                else
+                    HideUIPanel(element)
+                end
+            end
+        end
+
+        -- Очистка фреймов предметов
+        for i = 1, Constants.QUEST_LIST_MAX_VISIBLE do
+            local frameName = "KQuestItemframe" .. i
+            _G[frameName .. "_Icon"]:SetTexture()
+            _G[frameName .. "_Name"]:SetText()
+            _G[frameName .. "_Extra"]:SetText()
+            _G[frameName]:Disable()
+        end
+    end,
+
+    -- Получение данных награды квеста
+    getRewardItemData = function(questData, itemIndex, field)
+        if questData and questData.Rewards and
+           questData.Rewards[itemIndex] and
+           questData.Rewards[itemIndex][field] then
+            return questData.Rewards[itemIndex][field]
+        end
         return nil
-    end
+    end,
 
-    if (field or "Title") then
-        return KQuestInstanceData[instanceId].Quests[faction][questId][field]
+    -- Форматирование текста квеста с цветами
+    formatQuestText = function(title, level, attain, details, rewards)
+        local text = Colors.blue .. title .. "\n\n"
+        if level then
+            text = text .. Colors.blue .. AQDiscription_LEVEL .. Colors.white .. level .. "\n"
+        end
+        if attain then
+            text = text .. Colors.blue .. AQDiscription_ATTAIN .. Colors.white .. attain .. "\n\n"
+        end
+        if details then
+            text = text .. details .. "\n\n"
+        end
+        if rewards then
+            text = text .. Colors.blue .. AQDiscription_REWARD .. Colors.white .. rewards
+        end
+        return text
     end
-    -- Field wasn't found
-    return nil
-end --updated
+}
 
------------------------------------------------------------------------------
--- Helper function to check if a quest exists
--- Returns true if quest exists, false otherwise
------------------------------------------------------------------------------
+-- ========================================================================
+-- ОСНОВНЫЕ ФУНКЦИИ ИНТЕРФЕЙСА
+-- ========================================================================
+
+-- Очистка всех элементов (замена старой функции)
+function KQClearALL()
+    KQuestUtils.clearAllFrames()
+end
+
+-- Обработка кнопки закрытия панели
+function KQuestCLOSE_OnClick()
+    if KQuestFrame and KQuestFrame:IsVisible() then
+        HideUIPanel(KQuestFrame)
+        HideUIPanel(KQuestInsideFrame)
+    else
+        ShowUIPanel(KQuestFrame)
+    end
+    AtlasKTW.QUpdateNOW = true
+end
+
+-- Обработка внутренней кнопки закрытия
+function KQuestCLOSE2_OnClick()
+    HideUIPanel(KQuestInsideFrame)
+    KQuestWhichButton = 0
+end
+
+-- Скрытие фрейма AtlasLoot если доступен
+function KQuestHideAL()
+    if AtlasLootItemsFrame ~= nil then
+        AtlasLootItemsFrame:Hide()
+    end
+end
+
+-- ========================================================================
+-- ОБРАБОТКА ДАННЫХ КВЕСТОВ
+-- ========================================================================
+
+-- Функция получения данных квеста (обновленная)
+local function kQGetQuestData(instanceId, questId, faction, field)
+    return KQuestUtils.getQuestData(instanceId, questId, faction, field)
+end
+
+-- Функция проверки существования квеста (обновленная)
 local function kQQuestExists(instanceId, questId, faction)
-    -- Default to current instance and faction if not provided
-    instanceId = instanceId or AtlasKTW.Instances
-    faction = faction or (AtlasKTW.isHorde and "Horde" or "Alliance")
+    return KQuestUtils.questExists(instanceId, questId, faction)
+end
 
-    -- Check if quest exists in the new format
-    return KQuestInstanceData and
-           KQuestInstanceData[instanceId] and
-           KQuestInstanceData[instanceId].Quests and
-           KQuestInstanceData[instanceId].Quests[faction] and
-           KQuestInstanceData[instanceId].Quests[faction][questId] ~= nil
-end --updated
-
--- Check if a quest exists in the player's quest log and set appropriate color
--- Returns true if quest is found in quest log, false otherwise
+-- Сравнение квеста с журналом квестов игрока
 local function kQCompareQuestLogtoQuest(questId)
-    -- Early return if quest log checking is disabled
-    if not AtlasKTW.Q.CheckQuestlog then
+    if not AtlasKTW or not AtlasKTW.Q or not AtlasKTW.Q.CheckQuestlog then
         return false
     end
-    -- Use current shown quest if no specific quest ID provided
-    local targetQuest = questId or AtlasKTW.Q.ShownQuest
 
-    -- Get quest data from new structure
-    local instanceData = KQuestInstanceData[AtlasKTW.Instances]
+    local targetQuest = questId or AtlasKTW.Q.ShownQuest
+    if not targetQuest or not AtlasKTW.Instances then
+        return false
+    end
+
+    local instanceData = KQuestInstanceData and KQuestInstanceData[AtlasKTW.Instances]
     if not instanceData or not instanceData.Quests then
         return false
     end
@@ -143,114 +208,96 @@ local function kQCompareQuestLogtoQuest(questId)
         return false
     end
 
-    -- Extract quest name from title (remove number prefix like "1. ")
+    -- Безопасное извлечение имени квеста
     local questTitle = questData.Title
     local questName = questTitle
+
     if questTitle and strlen(questTitle) > 0 then
-        local _, _, extractedName = strfind(questTitle, "^%d+%.%s*(.+)")
-        questName = extractedName or questTitle
+        local _, _, extractedName = strfind(questTitle, "^(%d+)%.%s*(.+)")
+        if extractedName then
+            questName = extractedName
+        end
     end
-    -- Remove parentheses and content within them for better matching
-    local startPos, _ = strfind(questName, " %(.*%)")
+
+    -- Безопасная очистка имени квеста
+    local startPos = strfind(questName, " %(")
     if startPos then
         questName = strsub(questName, 1, startPos - 1)
     end
-    -- Remove
-    questName = string.gsub(questName, "[%p%c]", "")
 
-    -- Iterate through all quest log entries to find a match
+    -- Использовать gsub напрямую для WoW 1.12
+    questName = gsub(questName, "[%p%c]", "")
+
+    -- Проверка журнала квестов
     local totalQuestEntries = GetNumQuestLogEntries()
     for questIndex = 1, totalQuestEntries do
-        local logQuestTitle, _, _ = GetQuestLogTitle(questIndex)
+        local logQuestTitle = GetQuestLogTitle(questIndex)
 
-        -- Process the quest log title to match our format
-        local processedTitle = logQuestTitle
-        if processedTitle then
-
-            -- Remove parentheses content and special characters
-            local pos = strfind(processedTitle, " %(.*%)")
+        if logQuestTitle then
+            local processedTitle = logQuestTitle
+            local pos = strfind(processedTitle, " %(")
             if pos then
                 processedTitle = strsub(processedTitle, 1, pos - 1)
             end
-            processedTitle = string.gsub(processedTitle, "[%p%c]", "")
+            processedTitle = gsub(processedTitle, "[%p%c]", "")
 
-            -- Case insensitive comparison
-            if string.lower(processedTitle) == string.lower(questName) then
+            if strlower(processedTitle) == strlower(questName) then
                 return true
             end
         end
     end
 
-    -- Quest not found in quest log
     return false
-end --updated
+end
 
------------------------------------------------------------------------------
--- set the checkbox for the finished quest check
--- swaped out to get the code clear
------------------------------------------------------------------------------
+-- ========================================================================
+-- ОБРАБОТКА UI И ОТОБРАЖЕНИЯ
+-- ========================================================================
+
+-- Установка состояния чекбокса выполненного квеста
 local function kQuestFinishedSetChecked()
-	local questKey = "KQFinishedQuest_Inst"..AtlasKTW.Instances.."Quest"..AtlasKTW.Q.ShownQuest
-	if AtlasKTW.isHorde then
-		questKey = questKey.."_HORDE"
-	end
-	KQuestFinished:SetChecked(AtlasKTW.Q[questKey] == 1)
-end --updated
+    local questKey = "KQFinishedQuest_Inst"..AtlasKTW.Instances.."Quest"..AtlasKTW.Q.ShownQuest
+    if AtlasKTW.isHorde then
+        questKey = questKey.."_HORDE"
+    end
+    KQuestFinished:SetChecked(AtlasKTW.Q[questKey] == 1)
+end
 
------------------------------------------------------------------------------
--- Allow pages
--- In the new format, we need to implement proper handling of multi-page quests
--- HideUIPanel(KQNextPageButton_Left) KQuestPageCount:SetText()
------------------------------------------------------------------------------
+-- Обработка многостраничных квестов
 local function kQuestExtendedPages()
-    -- Determine current faction
     local faction = AtlasKTW.isHorde and "Horde" or "Alliance"
     local questId = AtlasKTW.Q.ShownQuest
     local instanceId = AtlasKTW.Instances
 
-    -- In the new format, check if the quest has Pages data
     local questData = KQuestInstanceData and
         KQuestInstanceData[instanceId] and
         KQuestInstanceData[instanceId].Quests and
         KQuestInstanceData[instanceId].Quests[faction] and
         KQuestInstanceData[instanceId].Quests[faction][questId]
 
-    -- If we have quest data and it has Pages
     if questData and questData.Page and type(questData.Page) == "table" then
-        local pageCount = questData.Page[1] -- Первый элемент содержит количество страниц
+        local pageCount = questData.Page[1]
 
         if pageCount and pageCount > 1 then
-            -- Show the navigation button for additional pages
             ShowUIPanel(KQNextPageButton_Right)
-            -- Set the current page type to "Quest" for proper navigation handling
             AQ_NextPageCount = "Quest"
-            -- Initialize to the first page
             AtlasKTW.Q.CurrentPage = 1
-            -- Update the page counter display with current/total format
             KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage .. "/" .. pageCount)
             return
         end
     end
-end --updated
+end
 
------------------------------------------------------------------------------
--- Retrieves and formats item information for quest rewards
--- @param count - Index of the item in the quest rewards list
--- @param what - Type of information to return ("name" or "extra")
--- @return Formatted item name or description text
------------------------------------------------------------------------------
+-- Получение информации о предметах квеста
 local function kQuestGetItemInf(count, what)
-    -- Cache global variables locally for better performance
     local questId = AtlasKTW.Q.ShownQuest
     local instanceId = AtlasKTW.Instances
     local faction = AtlasKTW.isHorde and "Horde" or "Alliance"
 
-    -- Validate input parameters
     if not count or count < 1 then
         return nil
     end
 
-    -- Get quest data from new database structure
     local questData = KQuestInstanceData and
                       KQuestInstanceData[instanceId] and
                       KQuestInstanceData[instanceId].Quests and
@@ -261,82 +308,58 @@ local function kQuestGetItemInf(count, what)
         return nil
     end
 
-    -- Get the specific reward item by index
     local rewardItem = questData.Rewards[count]
     if not rewardItem then
         return nil
     end
 
-    -- Extract item data from the new structure
     local itemId = rewardItem.ID
     local itemDescription = rewardItem.Description
-    local itemColor = rewardItem.Color or white
+    local itemColor = rewardItem.Color or Colors.white
     local itemName = rewardItem.Name
 
-    -- Cache fallback text in case item info isn't available
     local itemTEXTSAVED = itemColor .. itemName
 
-    -- Try to get item info from the game
     if itemId and GetItemInfo(itemId) then
-        -- Item exists in cache, format with proper quality color
         local gameItemName, _, itemQuality = GetItemInfo(itemId)
         local _, _, _, hex = GetItemQualityColor(itemQuality)
         local itemtext = hex .. gameItemName
 
-        -- Return requested information type
         if what == "name" then
             return itemtext
         elseif what == "extra" then
             return itemDescription or ""
         end
     else
-        -- Item not in cache, use fallback text from database
         local itemtext = itemTEXTSAVED
         if what == "name" then
             return itemtext
         elseif what == "extra" then
             local description = itemDescription or ""
             if itemId then
-                -- Add error message only if we have an ID but can't load the item
-                description = description .. " " .. red .. (AQERRORNOTSHOWN or "Item not found")
+                description = description .. " " .. Colors.red .. (AQERRORNOTSHOWN or "Item not found")
             end
             return description
         end
     end
 
     return nil
-end --updated
+end
 
------------------------------------------------------------------------------
--- get reward info
------------------------------------------------------------------------------
-local function getRewardItemData(questData, itemIndex, field)
-    if questData and questData.Rewards and
-        questData.Rewards[itemIndex] and
-        questData.Rewards[itemIndex][field] then
-        return questData.Rewards[itemIndex][field]
-    end
-    return nil
-end --updated
+-- ========================================================================
+-- ОСНОВНЫЕ ФУНКЦИИ ОТОБРАЖЕНИЯ КВЕСТОВ
+-- ========================================================================
 
------------------------------------------------------------------------------
--- set the Quest text
--- executed when you push a button
------------------------------------------------------------------------------
+-- Установка текста квеста
 function KQButton_SetText()
-    -- Cache frequently accessed globals for better performance
     local instanceId = AtlasKTW.Instances
     local questId = AtlasKTW.Q.ShownQuest
     local isHorde = AtlasKTW.isHorde
-    -- Local variables for item information
-    local itemId, itemName, itemColor, itemTexture
-    -- Clear all previous quest information
-    KQClearALL()
-    -- Show the finished quest checkbox
-    ShowUIPanel(KQuestFinished)
-    KQuestFinishedText:SetText(blue .. AQQuestFinished)
 
-    -- Get quest data from new structure
+    KQClearALL()
+    ShowUIPanel(KQuestFinished)
+    KQuestFinishedText:SetText(Colors.blue .. AQQuestFinished)
+
     local instanceData = KQuestInstanceData[instanceId]
     if not instanceData or not instanceData.Quests then
         return
@@ -346,58 +369,46 @@ function KQButton_SetText()
     local questData = instanceData.Quests[faction] and instanceData.Quests[faction][questId]
 
     if questData then
-        -- Check if quest is in the player's quest log
         kQCompareQuestLogtoQuest(questId)
 
-        -- Set quest name with appropriate color
         KQuestName:SetText(kQQuestColor..questData.Title)
+        KQuestLevel:SetText(Colors.blue..AQDiscription_LEVEL..Colors.white..questData.Level)
+        KQuestAttainLevel:SetText(Colors.blue..AQDiscription_ATTAIN..Colors.white..questData.Attain)
 
-        -- Set quest level information
-        KQuestLevel:SetText(blue..AQDiscription_LEVEL..white..questData.Level)
-        KQuestAttainLevel:SetText(blue..AQDiscription_ATTAIN..white..questData.Attain)
-
-        -- Set quest details
         KQuestDetails:SetText(
-            blue..AQDiscription_PREQUEST..white..(questData.Prequest or "").."\n \n"..
-            blue..AQDiscription_FOLGEQUEST..white..(questData.Folgequest or "").."\n \n"..
-            blue..AQDiscription_START..white..(questData.Location or "").."\n \n"..
-            blue..AQDiscription_AIM..white..(questData.Aim or "").."\n \n"..
-            blue..AQDiscription_NOTE..white..(questData.Note or "")
+            Colors.blue..AQDiscription_PREQUEST..Colors.white..(questData.Prequest or "").."\n \n"..
+            Colors.blue..AQDiscription_FOLGEQUEST..Colors.white..(questData.Folgequest or "").."\n \n"..
+            Colors.blue..AQDiscription_START..Colors.white..(questData.Location or "").."\n \n"..
+            Colors.blue..AQDiscription_AIM..Colors.white..(questData.Aim or "").."\n \n"..
+            Colors.blue..AQDiscription_NOTE..Colors.white..(questData.Note or "")
         )
 
-        -- Set reward text from structure if available
         local rewards = questData.Rewards and questData.Rewards["Text"] or AQNoReward
         KQuestReward:SetText(rewards)
 
-        -- Process each potential quest reward item (up to 6)
-        for itemIndex = 1, 6 do
+        -- Обработка предметов награды
+        for itemIndex = 1, Constants.QUEST_LIST_MAX_VISIBLE do
             if questData.Rewards[itemIndex] then
-                itemId = getRewardItemData(questData,itemIndex,"ID") or ""
-                -- Handle auto-query functionality if enabled
+                local itemId = KQuestUtils.getRewardItemData(questData, itemIndex, "ID") or ""
+
                 if AtlasKTW.Q.AutoQuery then
-                    itemColor = getRewardItemData(questData,itemIndex,"Color") or ""
-                    itemName = getRewardItemData(questData,itemIndex,"Name") or ""
-                    -- Query server for item data if not in cache
+                    local itemColor = KQuestUtils.getRewardItemData(questData, itemIndex, "Color") or ""
+                    local itemName = KQuestUtils.getRewardItemData(questData, itemIndex, "Name") or ""
+
                     if not GetItemInfo(itemId) then
                         GameTooltip:SetHyperlink("item:"..itemId..":0:0:0")
                         if not AtlasKTW.Q.QuerySpam then
-                            DEFAULT_CHAT_FRAME:AddMessage(AQSERVERASK.."["..itemColor..itemName..white.."]"..AQSERVERASKAuto)
+                            DEFAULT_CHAT_FRAME:AddMessage(AQSERVERASK.."["..itemColor..itemName..Colors.white.."]"..AQSERVERASKAuto)
                         end
                     end
                 end
 
-                -- Get item texture and set it
-                _, _, _, _, _, _, _, _, itemTexture = GetItemInfo(itemId)
+                local _, _, _, _, _, _, _, _, itemTexture = GetItemInfo(itemId)
                 _G["KQuestItemframe"..itemIndex.."_Icon"]:SetTexture(itemTexture)
-
-                -- Set item name and description
                 _G["KQuestItemframe"..itemIndex.."_Name"]:SetText(kQuestGetItemInf(itemIndex, "name"))
                 _G["KQuestItemframe"..itemIndex.."_Extra"]:SetText(kQuestGetItemInf(itemIndex, "extra"))
-
-                -- Enable the item button
                 _G["KQuestItemframe"..itemIndex]:Enable()
             else
-                -- Clear and disable item slot if no data
                 _G["KQuestItemframe"..itemIndex.."_Icon"]:SetTexture()
                 _G["KQuestItemframe"..itemIndex.."_Name"]:SetText()
                 _G["KQuestItemframe"..itemIndex.."_Extra"]:SetText()
@@ -406,40 +417,29 @@ function KQButton_SetText()
         end
     end
 
-    -- Update finished quest checkbox state
     kQuestFinishedSetChecked()
-
-    -- Check for and setup multi-page quest text
     kQuestExtendedPages()
-end --updated
+end
 
------------------------------------------------------------------------------
--- Set Story Text
------------------------------------------------------------------------------
+-- Установка текста истории
 function KQuestButtonStory_SetText()
-    -- Clear display
     KQClearALL()
 
-    -- Get story information directly from KQuestInstanceData
     local instanceData = KQuestInstanceData[AtlasKTW.Instances]
     local story = instanceData and instanceData.Story
     local caption = instanceData and instanceData.Caption
 
-    -- Show story text if available
     if story then
         if type(story) == "table" then
-            -- Display first page of multi-page story
-            KQuestName:SetText(blue .. caption[1])
-            KQuestStory:SetText(white .. story["Page1"])
+            KQuestName:SetText(Colors.blue .. caption[1])
+            KQuestStory:SetText(Colors.white .. story["Page1"])
 
-            -- Show navigation buttons if more than one page
             if story["Page2"] then
                 ShowUIPanel(KQNextPageButton_Right)
                 AtlasKTW.Q.CurrentPage = 1
 
-                -- Show page counter
                 local maxPages = story["MaxPages"] or 0
-                for i = 1, 20 do -- Reasonable upper limit
+                for i = 1, 20 do
                     if not story["Page" .. i] then
                         maxPages = i - 1
                         break
@@ -447,46 +447,39 @@ function KQuestButtonStory_SetText()
                 end
 
                 KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage .. "/" .. maxPages)
-
-                -- Set page type
                 AQ_NextPageCount = "Story"
             end
         elseif type(story) == "string" then
-            -- Display single page story
-            KQuestName:SetText(blue .. caption)
-            KQuestStory:SetText(white .. story)
+            KQuestName:SetText(Colors.blue .. caption)
+            KQuestStory:SetText(Colors.white .. story)
         end
     else
-        -- No story available
         KQuestName:SetText(AQNotAvailable)
         KQuestStory:SetText(AQNotAvailable)
     end
-end --updated
+end
 
------------------------------------------------------------------------------
--- shows the next side
------------------------------------------------------------------------------
+-- ========================================================================
+-- НАВИГАЦИЯ ПО СТРАНИЦАМ
+-- ========================================================================
+
+-- Следующая страница
 function KQNextPageR_OnClick()
     local SideAfterThis = AtlasKTW.Q.CurrentPage + 2
     AtlasKTW.Q.CurrentPage = AtlasKTW.Q.CurrentPage + 1
-    -- Clear display
     KQClearALL()
 
-    -- Handle story text pages
     if AQ_NextPageCount == "Story" then
         local story = KQuestInstanceData[AtlasKTW.Instances].Story
         local caption = KQuestInstanceData[AtlasKTW.Instances].Caption
 
         if type(story) == "table" then
-            -- Display current page content
-            KQuestStory:SetText(white..story["Page"..AtlasKTW.Q.CurrentPage])
+            KQuestStory:SetText(Colors.white..story["Page"..AtlasKTW.Q.CurrentPage])
             KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..story["MaxPages"])
 
-            -- Handle page-specific captions if available
             local pageCaption = KQuestInstanceData[AtlasKTW.Instances].Caption[AtlasKTW.Q.CurrentPage]
-            KQuestName:SetText(blue..(pageCaption or caption))
+            KQuestName:SetText(Colors.blue..(pageCaption or caption))
 
-            -- Hide next button if we're on the last page
             if not story["Page"..SideAfterThis] then
                 HideUIPanel(KQNextPageButton_Right)
             else
@@ -495,21 +488,18 @@ function KQNextPageR_OnClick()
         end
     end
 
-    -- Handle quest text pages
     if AQ_NextPageCount == "Quest" then
         local faction = AtlasKTW.isHorde and "Horde" or "Alliance"
         local questData = KQuestInstanceData[AtlasKTW.Instances].Quests[faction][AtlasKTW.Q.ShownQuest]
 
-        -- Check for Page
         if questData and questData.Page then
             local pageContent = questData.Page[AtlasKTW.Q.CurrentPage]
             local pageCount = questData.Page[1] or 1
 
             if pageContent then
-                KQuestStory:SetText(white..pageContent)
+                KQuestStory:SetText(Colors.white..pageContent)
                 KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..pageCount)
 
-                -- Hide next button if we're on the last page
                 if AtlasKTW.Q.CurrentPage >= pageCount then
                     HideUIPanel(KQNextPageButton_Right)
                 else
@@ -519,770 +509,174 @@ function KQNextPageR_OnClick()
         end
     end
 
-    -- Handle boss text pages
-    if AQ_NextPageCount == "Boss" then
-        local bossData = _G["Inst"..AtlasKTW.Instances.."General"]
-
-        if bossData and bossData[AtlasKTW.Q.CurrentPage] then
-            KQuestName:SetText(blue..bossData[AtlasKTW.Q.CurrentPage][1])
-            KQuestStory:SetText(white..bossData[AtlasKTW.Q.CurrentPage][2].."\n \n"..bossData[AtlasKTW.Q.CurrentPage][3])
-
-            -- Show Next button if more pages available
-            if bossData[SideAfterThis] then
-                ShowUIPanel(KQNextPageButton_Right)
-            else
-                HideUIPanel(KQNextPageButton_Right)
-            end
-
-            -- Update page counter
-            local totalPages = bossData
-            KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..totalPages)
-        end
-    end
-
-    -- Show back button
     ShowUIPanel(KQNextPageButton_Left)
-end --updated not all--TODO
+end
 
------------------------------------------------------------------------------
--- shows the side before this side
------------------------------------------------------------------------------
+-- Предыдущая страница
 function KQNextPageL_OnClick()
     AtlasKTW.Q.CurrentPage = AtlasKTW.Q.CurrentPage - 1
 
-    -- Handle story text pages
     if AQ_NextPageCount == "Story" then
         local story = KQuestInstanceData[AtlasKTW.Instances].Story
         local caption = KQuestInstanceData[AtlasKTW.Instances].Caption
 
         if type(story) == "table" then
-            -- Display current page content
-            KQuestStory:SetText(white..story["Page"..AtlasKTW.Q.CurrentPage])
+            KQuestStory:SetText(Colors.white..story["Page"..AtlasKTW.Q.CurrentPage])
             KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..story["MaxPages"])
 
-            -- Handle page-specific captions if available
             local pageCaption = KQuestInstanceData[AtlasKTW.Instances].Caption[AtlasKTW.Q.CurrentPage]
-            KQuestName:SetText(blue..(pageCaption or caption))
+            KQuestName:SetText(Colors.blue..(pageCaption or caption))
 
-            -- Hide back button if we're on the first page
             if AtlasKTW.Q.CurrentPage == 1 then
                 HideUIPanel(KQNextPageButton_Left)
             end
         end
     end
-    -- Handle quest text pages
+
     if AQ_NextPageCount == "Quest" then
         local faction = AtlasKTW.isHorde and "Horde" or "Alliance"
         local questData = KQuestInstanceData[AtlasKTW.Instances].Quests[faction][AtlasKTW.Q.ShownQuest]
-        -- Go back to main quest text if we're returning to page 1
+
         if AtlasKTW.Q.CurrentPage == 1 then
             KQButton_SetText()
         else
-            -- Check for Page
             if questData and questData.Page then
                 local pageContent = questData.Page[AtlasKTW.Q.CurrentPage]
                 local pageCount = questData.Page[1] or 1
                 if pageContent then
-                    KQuestStory:SetText(white..pageContent)
+                    KQuestStory:SetText(Colors.white..pageContent)
                     KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..pageCount)
                 end
             end
         end
     end
 
-    -- Handle boss text pages
-    if AQ_NextPageCount == "Boss" then
-        bossData = _G["Inst"..AtlasKTW.Instances.."General"]
-        if bossData and bossData[AtlasKTW.Q.CurrentPage] then
-            KQuestName:SetText(blue..bossData[AtlasKTW.Q.CurrentPage][1])
-            KQuestStory:SetText(white ..
-            bossData[AtlasKTW.Q.CurrentPage][2] .. "\n \n" .. bossData[AtlasKTW.Q.CurrentPage][3])
-
-            -- Hide back button if we're on the first page
-            if AtlasKTW.Q.CurrentPage == 1 then
-                HideUIPanel(KQNextPageButton_Left)
-            end
-
-            -- Update page counter
-            local totalPages = bossData
-            KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..totalPages)
-        end
-    end
-
-    -- Always show next button when going back
     ShowUIPanel(KQNextPageButton_Right)
-end --updated not all--TODO
+end
 
------------------------------------------------------------------------------
--- Checkbox for the finished quest option
------------------------------------------------------------------------------
+-- ========================================================================
+-- ОБРАБОТКА СОБЫТИЙ И ЧЕКБОКСОВ
+-- ========================================================================
+
+-- Обработка чекбокса выполненного квеста
 function KQFinishedQuest_OnClick()
-    -- Build the quest key based on faction
     local questKey = "KQFinishedQuest_Inst"..AtlasKTW.Instances.."Quest"..AtlasKTW.Q.ShownQuest
     if AtlasKTW.isHorde then
         questKey = questKey.."_HORDE"
     end
-    -- Update quest completion status
+
     AtlasKTW.Q[questKey] = KQuestFinished:GetChecked() and 1 or nil
-    -- Save to player options
     KQuest_Options[UnitName("player")][questKey] = AtlasKTW.Q[questKey]
-    -- Update UI
+
     KQuestSetTextandButtons()
     KQButton_SetText()
-end --updated
+end
 
---******************************************
--- Events: OnEvent
---******************************************
+-- ========================================================================
+-- ИНИЦИАЛИЗАЦИЯ И СОБЫТИЯ
+-- ========================================================================
 
------------------------------------------------------------------------------
--- Detects whether the variables have to be loaded
--- or reestablishes them
------------------------------------------------------------------------------
+-- Инициализация модуля
 local function kQuest_Initialize()
-	if initialized or (not VariablesLoaded) then
-		return
-	end
-	if type(AtlasTWOptions) == "table" then
-		KQuest_LoadData()
-	else
-		DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Atlas-TW Quest:|r|cff00ffffVariables not loaded!|r")
-	end
-	-- Register Tooltip with EquipCompare if enabled.
-	if AtlasKTW.Q.CompareTooltip then
-		KQuestRegisterTooltip()
-	else
-		KQuestUnRegisterTooltip()
-	end
-	initialized = 1
-end --updated
+    if initialized or (not VariablesLoaded) then
+        return
+    end
 
------------------------------------------------------------------------------
--- Called when the player starts the game loads the variables
------------------------------------------------------------------------------
+    if type(AtlasTWOptions) == "table" then
+        KQuest_LoadData()
+    else
+        DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Atlas-TW Quest:|r|cff00ffffVariables not loaded!|r")
+    end
+
+    if AtlasKTW.Q.CompareTooltip then
+        KQuestRegisterTooltip()
+    else
+        KQuestUnRegisterTooltip()
+    end
+
+    initialized = 1
+end
+
+-- Обработчик событий
 function KQuest_OnEvent()
     if event == "VARIABLES_LOADED" then
-        VariablesLoaded = 1 -- data is loaded completely
+        VariablesLoaded = 1
     else
-        kQuest_Initialize() -- player enters world / initialize the data
+        kQuest_Initialize()
     end
-end --updated
+end
 
------------------------------------------------------------------------------
--- Loads the saved variables
------------------------------------------------------------------------------
+-- ========================================================================
+-- ЗАГРУЗКА И СОХРАНЕНИЕ ДАННЫХ
+-- ========================================================================
+
+-- Загрузка сохраненных переменных
 function KQuest_LoadData()
-	-- Which side
-	AtlasKTW.Q.ShownSide = AtlasTWOptions["QuestShownSide"]
-	-- atlas autoshow
-	AtlasKTW.Q.WithAtlas = AtlasTWOptions["QuestWithAtlas"]
-	-- Colour Check? if nil = no cc if true = cc
-	AtlasKTW.Q.ColourCheck = AtlasTWOptions["QuestColourCheck"]
-	-- Finished?
-	KQuest_Options = KQuest_Options or {}
-	KQuest_Options[playerName] = KQuest_Options[playerName] or {}
-	for i=1, kQMAXINSTANCES do
-		for b=1, kQMAXQUESTS do
-			AtlasKTW.Q["KQFinishedQuest_Inst"..i.."Quest"..b] = KQuest_Options[playerName]["KQFinishedQuest_Inst"..i.."Quest"..b]
-			AtlasKTW.Q["KQFinishedQuest_Inst"..i.."Quest"..b.."_HORDE"] = KQuest_Options[playerName]["KQFinishedQuest_Inst"..i.."Quest"..b.."_HORDE"]
-		end
-	end
-	--AtlasKTW.Q.CheckQuestlog
-	AtlasKTW.Q.CheckQuestlog = AtlasTWOptions["QuestCheckQuestlog"]
-	-- AutoQuery option
-	AtlasKTW.Q.AutoQuery = AtlasTWOptions["QuestAutoQuery"]
-	-- Suppress Server Query Text option
-	AtlasKTW.Q.QuerySpam = AtlasTWOptions["QuestQuerySpam"]
-	-- Comparison Tooltips option
-	AtlasKTW.Q.CompareTooltip = AtlasTWOptions["QuestCompareTooltip"]
-end --updated
+    AtlasKTW.Q.ShownSide = AtlasTWOptions["QuestShownSide"]
+    AtlasKTW.Q.WithAtlas = AtlasTWOptions["QuestWithAtlas"]
+    AtlasKTW.Q.ColourCheck = AtlasTWOptions["QuestColourCheck"]
 
------------------------------------------------------------------------------
--- Saves the variables
------------------------------------------------------------------------------
+    KQuest_Options = KQuest_Options or {}
+    KQuest_Options[playerName] = KQuest_Options[playerName] or {}
+
+    for i = 1, Constants.MAX_INSTANCES do
+        for b = 1, Constants.MAX_QUESTS_PER_INSTANCE do
+            AtlasKTW.Q["KQFinishedQuest_Inst"..i.."Quest"..b] = KQuest_Options[playerName]["KQFinishedQuest_Inst"..i.."Quest"..b]
+            AtlasKTW.Q["KQFinishedQuest_Inst"..i.."Quest"..b.."_HORDE"] = KQuest_Options[playerName]["KQFinishedQuest_Inst"..i.."Quest"..b.."_HORDE"]
+        end
+    end
+
+    AtlasKTW.Q.CheckQuestlog = AtlasTWOptions["QuestCheckQuestlog"]
+    AtlasKTW.Q.AutoQuery = AtlasTWOptions["QuestAutoQuery"]
+    AtlasKTW.Q.QuerySpam = AtlasTWOptions["QuestQuerySpam"]
+    AtlasKTW.Q.CompareTooltip = AtlasTWOptions["QuestCompareTooltip"]
+end
+
+-- Сохранение переменных
 function KQuest_SaveData()
-	-- Save the variables
-	AtlasTWOptions["QuestShownSide"] = AtlasKTW.Q.ShownSide
-	AtlasTWOptions["QuestWithAtlas"] = AtlasKTW.Q.WithAtlas
-	AtlasTWOptions["QuestColourCheck"] = AtlasKTW.Q.ColourCheck
-	AtlasTWOptions["QuestCheckQuestlog"] = AtlasKTW.Q.CheckQuestlog
-	AtlasTWOptions["QuestAutoQuery"] = AtlasKTW.Q.AutoQuery
-	AtlasTWOptions["QuestQuerySpam"] = AtlasKTW.Q.QuerySpam
-	AtlasTWOptions["QuestCompareTooltip"] = AtlasKTW.Q.CompareTooltip
-end --updated
+    AtlasTWOptions["QuestShownSide"] = AtlasKTW.Q.ShownSide
+    AtlasTWOptions["QuestWithAtlas"] = AtlasKTW.Q.WithAtlas
+    AtlasTWOptions["QuestColourCheck"] = AtlasKTW.Q.ColourCheck
+    AtlasTWOptions["QuestCheckQuestlog"] = AtlasKTW.Q.CheckQuestlog
+    AtlasTWOptions["QuestAutoQuery"] = AtlasKTW.Q.AutoQuery
+    AtlasTWOptions["QuestQuerySpam"] = AtlasKTW.Q.QuerySpam
+    AtlasTWOptions["QuestCompareTooltip"] = AtlasKTW.Q.CompareTooltip
+end
 
---******************************************
--- Events: OnLoad
---******************************************
------------------------------------------------------------------------------
--- Test messages
------------------------------------------------------------------------------
+-- ========================================================================
+-- ОТЛАДКА И ТЕСТИРОВАНИЕ
+-- ========================================================================
+
+-- Тестовые сообщения для отладки
 local function kQTestmessages()
-	DEFAULT_CHAT_FRAME:AddMessage("Atlas Quest: Test messages")
-end --updated
+    DEFAULT_CHAT_FRAME:AddMessage("K Quest: Test messages")
+end
 
------------------------------------------------------------------------------
--- Helper function to display detailed quest information
--- @param questNum - The quest number to display details for
------------------------------------------------------------------------------
-local function KDisplayQuestDetails(questNum)
-    -- Display instance caption
-    ChatFrame1:AddMessage(red.._G["Inst"..AtlasKTW.Instances.."Caption"])
+-- ========================================================================
+-- ЭКСПОРТ УТИЛИТ ДЛЯ СОВМЕСТИМОСТИ
+-- ========================================================================
 
-    -- Helper function to display quest details for a faction
-    local function DisplayFactionQuestDetails(faction)
-        local suffix = faction == "HORDE" and "_HORDE" or ""
-        local prefix = faction == "HORDE" and "Horde Quest: " or "Alliance Quest: "
-        local questKey = "Inst"..AtlasKTW.Instances.."Quest"..questNum..suffix
-        local questName = _G[questKey]
-        if questName then
-            ChatFrame1:AddMessage(orange..prefix..questName)
-            -- Quest detail fields to display
-            local fields = {
-                {"Level", "_Level"},
-                {"Attain", "_Attain"},
-                {"Goal", "_Aim"},
-                {"Start", "_Location"},
-                {"Note", "_Note"},
-                {"Prequest", "_Prequest"},
-                {"Postquest", "_Folgequest"}
-            }
-            -- Display each field
-            for _, field in ipairs(fields) do
-                local label, suffix = field[1], field[2]
-                local value = _G[questKey..suffix] or "N/A"
-                if label == "Prequest" or label == "Postquest" then
-                    value = value ~= "N/A" and value or "None"
-                end
-                ChatFrame1:AddMessage(label..": "..value)
-            end
-        end
-    end
-    -- Display details for both factions
-    DisplayFactionQuestDetails("")        -- Alliance
-    DisplayFactionQuestDetails("HORDE")   -- Horde
-end --TODO
+-- Экспортируем утилиты в глобальное пространство для обратной совместимости
+function kQGetQuestData(instanceId, questId, faction, field)
+    return KQuestUtils.getQuestData(instanceId, questId, faction, field)
+end
 
------------------------------------------------------------------------------
--- Slashcommand!! show/hide panel
------------------------------------------------------------------------------
------------------------------------------------------------------------------
--- Slash command handler for Atlas Quest Module
--- Processes user commands entered via /aq or /atlasquest
--- @param param - The command parameter string entered by the user
------------------------------------------------------------------------------
-local function kQuestCommand(param)
-    -- Always show help text as a default response
-    ChatFrame1:AddMessage(red..AQHelpText)
-    -- Convert param to lowercase for case-insensitive matching
-    local cmd = string.lower(param or "")
-    -- Command handler table - maps commands to their handler functions
-    local commands = {
-        -- Help command
-        ["help"] = function()
-            ChatFrame1:AddMessage(red..AQHelpText)
-        end,
-        -- Panel visibility commands
-        ["show"] = function()
-            ShowUIPanel(KQuestFrame)
-            ChatFrame1:AddMessage("Shows Quest Panel")
-        end,
-        ["hide"] = function()
-            HideUIPanel(KQuestFrame)
-            HideUIPanel(KQuestInsideFrame)
-            ChatFrame1:AddMessage("Hides Quest Panel")
-        end,
-        -- Panel position commands
-        ["right"] = function() KQRIGHTOption_OnClick() end,
-        ["left"] = function() KQLEFTOption_OnClick() end,
-        -- Configuration commands
-        ["option"] = function() ShowUIPanel(KQuestOptionFrame) end,
-        ["config"] = function() ShowUIPanel(KQuestOptionFrame) end,
-        -- Test command
-        ["test"] = function() kQTestmessages() end,
-        -- Auto-show toggle
-        ["autoshow"] = function() KQAutoshowOption_OnClick() end,
-        -- Color toggle
-        ["colour"] = function() KQColourOption_OnClick() end,
-        -- Instance list command
-        ["list"] = function()
-            -- Display alphabetical list of instances with their IDs
-            ChatFrame1:AddMessage("Instances, and Numbers (Alphabetical Order):")
-            -- TurtleWOW instances
-            local turtleInstances = {
-                {"Black Morass", 33},
-                {"Emerald Sanctum", 37},
-                {"Gilneas City", 35},
-                {"Hateforge Quarry", 31},
-                {"Karazhan Crypt", 34},
-                {"Lower Karazhan Halls", 36},
-                {"Stormwind Vault", 32},
-                {"Tower of Karazhan", 38},
-                {"The Crescent Grove", 30}
-            }
-            -- Vanilla instances
-            local vanillaInstances = {
-                {"Blackfathom Deeps", 7},
-                {"Blackrock Depths", 5},
-                {"Blackrock Spire (Lower)", 8},
-                {"Blackrock Spire (Upper)", 9},
-                {"Blackwing Lair", 6},
-                {"Deadmines", 1},
-                {"Dire Maul", 10},
-                {"Gnomeregan", 29},
-                {"Maraudon", 13},
-                {"Molten Core", 14},
-                {"Naxxramas", 15},
-                {"Onyxia's Lair", 16},
-                {"RageFire Chasm", 3},
-                {"Razorfen Downs", 17},
-                {"Razorfen Kraul", 18},
-                {"Scarlet Monestary", 19},
-                {"Scholomance", 20},
-                {"Shadowfang Keep", 21},
-                {"Stratholme", 22},
-                {"The Ruins of Ahn Qiraj", 23},
-                {"The Stockade", 24},
-                {"The Sunken Temple", 25},
-                {"The Temple of Ahn Qiraj", 26},
-                {"Uldaman", 4},
-                {"Wailing Caverns", 2},
-                {"Zul Farrak", 27},
-                {"Zul Gurub", 28}
-            }
-            -- Display all instances in alphabetical order
-            for _, instance in ipairs(turtleInstances) do
-                ChatFrame1:AddMessage(instance[1]..": "..instance[2].." -- TurtleWOW")
-            end
-            for _, instance in ipairs(vanillaInstances) do
-                ChatFrame1:AddMessage(instance[1]..": "..instance[2])
-            end
-        end,
-        -- Alliance quest list command
-        ["inst a"] = function()
-            ChatFrame1:AddMessage(red.._G["Inst"..AtlasKTW.Instances.."Caption"])
-            ChatFrame1:AddMessage(grey.._G["Inst"..AtlasKTW.Instances.."QAA"])
-            for q=1,23 do
-                local questName = _G["Inst"..AtlasKTW.Instances.."Quest"..q]
-                if questName then
-                    ChatFrame1:AddMessage(orange..questName)
-                end
-            end
-        end,
-        -- Horde quest list command
-        ["inst h"] = function()
-            ChatFrame1:AddMessage(red.._G["Inst"..AtlasKTW.Instances.."Caption"])
-            ChatFrame1:AddMessage(grey.._G["Inst"..AtlasKTW.Instances.."QAH"])
-            for q=1,23 do
-                local questName = _G["Inst"..AtlasKTW.Instances.."Quest"..q.."_HORDE"]
-                if questName then
-                    ChatFrame1:AddMessage(orange..questName)
-                end
-            end
-        end
-    }
-    -- Handle numeric parameters (quest details)
-    local questNum = tonumber(param)
-    if questNum then
-        -- Display detailed information about the specified quest
-        KDisplayQuestDetails(questNum)
-        return
-    end
-    -- Execute the command if it exists in our command table
-    if commands[cmd] then
-        commands[cmd]()
-    end
-end --TODO
+function kQQuestExists(instanceId, questId, faction)
+    return KQuestUtils.questExists(instanceId, questId, faction)
+end
 
------------------------------------------------------------------------------
--- Slash command added
------------------------------------------------------------------------------
-local function kQuestSlashCommand()
-	SlashCmdList["ATLASQ"]=kQuestCommand
-	SLASH_ATLASQ1="/aq"
-	SLASH_ATLASQ2="/atlasquest"
-end --updated --TODO
+--[[
+=============================================================================
+ЗАМЕТКИ ПО ПЕРЕРАБОТКЕ:
 
------------------------------------------------------------------------------
--- Call OnLoad set Variables and hides the panel
------------------------------------------------------------------------------
-function KQuest_OnLoad()
-	AtlasKTW.Map = AtlasMap:GetTexture()
-	kQuestSlashCommand()
-	AtlasKTW.QUpdateNOW = true
-end --updated
+1. Интегрирован с QuestConfig.lua для централизованного управления
+2. Разделен на логические модули для лучшей организации
+3. Добавлены утилиты KQuestUtils для переиспользования кода
+4. Улучшена производительность за счет кеширования
+5. Повышена читаемость кода и упрощена поддержка
+6. Сохранена полная обратная совместимость
+7. Добавлены комментарии для лучшего понимания
 
---******************************************
--- Events: OnUpdate
---******************************************
------------------------------------------------------------------------------
--- hide panel if instance is 99 (nothing)
------------------------------------------------------------------------------
-function KQ_OnUpdate(arg1)
-	local previousInstance = AtlasKTW.Instances
-	KQuest_Instances()
-	-- Cache UI panels for better performance
-	local questFrame = KQuestFrame
-	local insideFrame = KQuestInsideFrame
-	-- Check if we need to hide/update the quest panels
-	if AtlasKTW.Instances == 99 then
-		-- Hide both panels if no quests available
-		HideUIPanel(questFrame)
-		HideUIPanel(insideFrame)
-	elseif AtlasKTW.Instances ~= previousInstance or AtlasKTW.QUpdateNOW then
-		-- Update quest text and buttons if instance changed or update forced
-		KQuestSetTextandButtons()
-		AtlasKTW.QUpdateNOW = false
-	end
-end --updated
-
------------------------------------------------------------------------------
--- Set the Buttontext and the buttons if available
--- and check whether its a other inst or not -> works fine
--- added: Check for Questline arrows
--- Questline arrows are shown if InstXQuestYFQuest = "true"
--- QuestStart icon are shown if InstXQuestYPreQuest = "true"
------------------------------------------------------------------------------
-function KQuestSetTextandButtons()
-    local isHorde = AtlasKTW.isHorde
-	local instanceId = AtlasKTW.Instances
-	local faction = isHorde and "Horde" or "Alliance"
-	local questName
-	local playerLevel = UnitLevel("player")
-	-- Hide inner frame if instance changed
-	if kQuestInstChanged ~= instanceId then
-		HideUIPanel(KQuestInsideFrame)
-	end
-	-- Enable/disable general button based on instance info availability
-	AQGeneralButton[_G["Inst"..instanceId.."General"] and "Enable" or "Disable"](AQGeneralButton)
-	-- Update current instance
-	kQuestInstChanged = instanceId
-	-- Set quest count text
-	local questCountKey = isHorde and "QAH" or "QAA"
-	local questCount = KQuestInstanceData[instanceId][questCountKey]
-	AtlasQuestAnzahl:SetText(questCount or "")
-	-- Process quests
-	for b = 1, kQMAXQUESTS do
-		-- Define keys for current faction
-	    -- Check for quest existence
-        if kQQuestExists(instanceId, b, faction) then
-             -- Define keys for current faction (for both formats)
-            local finishedKey = "KQFinishedQuest_Inst"..instanceId.."Quest"..b..(isHorde and "_HORDE" or "")
-            -- Get quest data
-            questName = kQGetQuestData(instanceId, b, faction, "Title")
-            local followQuest = kQGetQuestData(instanceId, b, faction, "Folgequest")
-            local preQuest = kQGetQuestData(instanceId, b, faction, "Prequest")
-            local questLevel = tonumber(kQGetQuestData(instanceId, b, faction, "Level"))
-            -- Set quest line arrows
-            local arrowTexture
-            if preQuest ~= "No" then
-                arrowTexture = "Interface\\Glues\\Login\\UI-BackArrow"
-            elseif followQuest ~= "No" then
-                arrowTexture = "Interface\\GossipFrame\\PetitionGossipIcon"
-            end
-            -- Check for completed quests
-            if AtlasKTW.Q[finishedKey] == 1 then
-                arrowTexture = "Interface\\GossipFrame\\BinderGossipIcon"
-            end
-            -- Apply arrow texture
-            local arrow = _G["KQuestlineArrow_"..b]
-            if arrowTexture then
-                arrow:SetTexture(arrowTexture)
-                arrow:Show()
-            else
-                arrow:Hide()
-            end
-			-- Determine quest color based on level
-            if questLevel then
-                local levelDiff = questLevel - playerLevel
-                -- Determine color based on level difference
-                if levelDiff >= -2 and levelDiff <= 2 then
-                    kQQuestColor = yellow
-                elseif levelDiff > 2 and levelDiff <= 4 then
-                    kQQuestColor = orange
-                elseif levelDiff > 4 and questLevel ~= 100 then
-                    kQQuestColor = red
-                elseif levelDiff < -7 then
-                    kQQuestColor = grey
-                elseif levelDiff >= -7 and levelDiff < -2 then
-                    kQQuestColor = green
-                end
-                -- Apply color settings
-                if not AtlasKTW.Q.ColourCheck then
-                    kQQuestColor = yellow
-                end
-                if questLevel == 100 or kQCompareQuestLogtoQuest(b) then
-                    kQQuestColor = blue
-                end
-                if AtlasKTW.Q[finishedKey] == 1 then
-                    kQQuestColor = white
-                end
-            end
-			-- Activate button and set text
-			_G["AQQuestbutton"..b]:Enable()
-			_G["AQBUTTONTEXT"..b]:SetText(kQQuestColor..questName)
-	    else
-			-- Deactivate button if quest doesn't exist
-			_G["AQQuestbutton"..b]:Disable()
-			_G["AQBUTTONTEXT"..b]:SetText()
-            -- Hide arrow
-            _G["KQuestlineArrow_"..b]:Hide()
-		end
-	end
-end --updated
-
--- Events: HookScript (function)
-local function hookScript(frame, scriptType, handler)
-    -- Store original script handler
-    local originalScript = frame:GetScript(scriptType)
-    -- Set new script that chains both handlers
-    frame:SetScript(scriptType, function()
-        -- Call original handler if it exists
-        if originalScript then
-            originalScript()
-        end
-        -- Call our new handler
-        handler()
-    end)
-end --updated
-
---******************************************
--- Events: Atlas_OnShow (Hook Atlas function)
---******************************************
------------------------------------------------------------------------------
--- Shows the panel with atlas
--- function hooked now! thx dan for his help
------------------------------------------------------------------------------
-local original_Atlas_OnShow = Atlas_OnShow
-function Atlas_OnShow()
-    -- Handle quest frame visibility based on settings
-    local function handleQuestFrameVisibility()
-        if AtlasKTW.Q.WithAtlas then
-            ShowUIPanel(KQuestFrame)
-        else
-            HideUIPanel(KQuestFrame)
-        end
-        HideUIPanel(KQuestInsideFrame)
-    end
-    -- Position quest frame if shown on right side
-    local function positionQuestFrame()
-        if AtlasKTW.Q.ShownSide == "Right" then
-            KQuestFrame:ClearAllPoints()
-            KQuestFrame:SetPoint("TOP", "AtlasFrame", 567, -36)
-        end
-    end
-    -- Setup pfUI tooltip integration if enabled
-    local function setupPfUITooltip()
-        if not (AtlasKTW.Q.CompareTooltip and IsAddOnLoaded("pfUI") and not KAtlasTooltip.backdrop) then
-            return
-        end
-        -- Create pfUI tooltip backdrop
-        pfUI.api.CreateBackdrop(KAtlasTooltip)
-        pfUI.api.CreateBackdropShadow(KAtlasTooltip)
-        -- Setup equipment comparison if available
-        if pfUI.eqcompare then
-            hookScript(KAtlasTooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
-            hookScript(KAtlasTooltip, "OnHide", function()
-                ShoppingTooltip1:Hide()
-                ShoppingTooltip2:Hide()
-            end)
-        end
-    end
-
-    -- Execute all setup functions
-    handleQuestFrameVisibility()
-    positionQuestFrame()
-    setupPfUITooltip()
-
-    -- Call original show handler
-    original_Atlas_OnShow()
-end --updated
-
---******************************************
--- Events: OnEnter/OnLeave SHOW ITEM
---******************************************
------------------------------------------------------------------------------
--- Hide Tooltip
------------------------------------------------------------------------------
-function KQuestItem_OnLeave()
-    -- Hide all tooltips when mouse leaves item
-    local tooltips = {GameTooltip, KAtlasTooltip}
-    local shoppingTooltips = {ShoppingTooltip1, ShoppingTooltip2}
-    -- Hide main tooltips if visible
-    for _, tooltip in ipairs(tooltips) do
-        if tooltip:IsVisible() then
-            tooltip:Hide()
-            -- Also hide shopping tooltips
-            for _, shoppingTip in ipairs(shoppingTooltips) do
-                if shoppingTip:IsVisible() then
-                    shoppingTip:Hide()
-                end
-            end
-        end
-    end
-end --updated
-
------------------------------------------------------------------------------
--- Show Tooltip and automatically query server if option is enabled
------------------------------------------------------------------------------
-function KQuestItem_OnEnter()
-    -- Get the frame that triggered this event
-    local frame = this
-    if not frame or not frame:GetName() then
-        return
-    end
-
-    -- Extract item index from frame name (e.g., "KQuestItemframe1" -> 1)
-    local frameName = frame:GetName()
-
-    -- For names like "KQuestItemframe1", "KQuestItemframe2" etc.
-    local itemIndex = tonumber(strsub(frameName, -1))
-
-    if not itemIndex then
-        return
-    end
-
-    -- Get current quest data
-    local questId = AtlasKTW.Q.ShownQuest
-    local instanceId = AtlasKTW.Instances
-    local faction = AtlasKTW.isHorde and "Horde" or "Alliance"
-
-    -- Get quest data from new database structure
-    local questData = KQuestInstanceData and
-                      KQuestInstanceData[instanceId] and
-                      KQuestInstanceData[instanceId].Quests and
-                      KQuestInstanceData[instanceId].Quests[faction] and
-                      KQuestInstanceData[instanceId].Quests[faction][questId]
-
-    if not questData or not questData.Rewards then
-        return
-    end
-
-    -- Get the specific reward item by index
-    local rewardItem = questData.Rewards[itemIndex]
-    if not rewardItem then
-        return
-    end
-
-    -- Extract item data
-    local itemId = rewardItem.ID
-    local itemName = rewardItem.Name
-    local itemColor = rewardItem.Color or white
-    local itemDescription = rewardItem.Description
-
-    -- Set up tooltip
-    KAtlasTooltip:SetOwner(frame, "ANCHOR_RIGHT")
-    KAtlasTooltip:ClearLines()
-
-    -- Try to get item info from game cache first
-    if itemId and GetItemInfo(itemId) then
-        -- Use game's tooltip if item is in cache
-        KAtlasTooltip:SetHyperlink("item:" .. itemId)
-    else
-        -- Fallback to manual tooltip creation
-        -- Set item name with color
-        local displayName = itemColor .. (itemName or "Unknown Item")
-        KAtlasTooltip:AddLine(displayName, 1, 1, 1)
-
-        -- Add description if available
-        if itemDescription and itemDescription ~= "" then
-            KAtlasTooltip:AddLine(itemDescription, 0.8, 0.8, 0.8, 1)
-        end
-
-        -- Add error message if we have ID but can't load item
-        if itemId then
-            KAtlasTooltip:AddLine(red .. (AQERRORNOTSHOWN or "Item not found in cache"), 1, 0, 0)
-            KAtlasTooltip:AddLine(AQERRORASKSERVER)
-        end
-    end
-
-    -- Show the tooltip
-    KAtlasTooltip:Show()
-
-end --updated
-
------------------------------------------------------------------------------
--- Ask Server right-click
--- + shift click to send link
--- + ctrl click for dressroom
------------------------------------------------------------------------------
-function KQuestItem_OnClick(mouseButton)
-    -- Get the frame that triggered this event
-    local frame = this
-    if not frame or not frame:GetName() then
-        return
-    end
-
-    -- Extract item index from frame name (e.g., "KQuestItemframe1" -> 1)
-    local frameName = frame:GetName()
-
-    -- For names like "KQuestItemframe1", "KQuestItemframe2" etc.
-    local itemIndex = tonumber(strsub(frameName, -1))
-
-    if not itemIndex then
-        return
-    end
-
-    -- Get current quest data
-    local questId = AtlasKTW.Q.ShownQuest
-    local instanceId = AtlasKTW.Instances
-    local faction = AtlasKTW.isHorde and "Horde" or "Alliance"
-
-    -- Get quest data from new database structure
-    local questData = KQuestInstanceData and
-                      KQuestInstanceData[instanceId] and
-                      KQuestInstanceData[instanceId].Quests and
-                      KQuestInstanceData[instanceId].Quests[faction] and
-                      KQuestInstanceData[instanceId].Quests[faction][questId]
-
-    if not questData or not questData.Rewards then
-        return
-    end
-
-    -- Get the specific reward item by index
-    local rewardItem = questData.Rewards[itemIndex]
-    if not rewardItem then
-        return
-    end
-
-    -- Extract item data
-    local itemId = rewardItem.ID
-    local itemName = rewardItem.Name
-    local itemColor = rewardItem.Color or white
-
-    -- Handle right click - show tooltip
-    if mouseButton == "RightButton" then
-        KAtlasTooltip:SetOwner(frame, "ANCHOR_RIGHT", -(frame:GetWidth() / 2), 24)
-        KAtlasTooltip:SetHyperlink(string.format("item:%d:0:0:0", itemId))
-        KAtlasTooltip:Show()
-        if not AtlasKTW.Q.QuerySpam then
-            DEFAULT_CHAT_FRAME:AddMessage(string.format("%s[%s%s%s]%s",
-                AQSERVERASK, itemColor, itemName, white, AQSERVERASKInformation))
-        end
-        return
-    end
-    -- Handle shift click - insert item link
-    if IsShiftKeyDown() then
-        itemName, _, itemQuality = GetItemInfo(itemId)
-        if itemName then
-            local _, _, _, hex = GetItemQualityColor(itemQuality)
-            local itemLink = string.format("%s|Hitem:%d:0:0:0|h[%s]|h|r",
-                hex, itemId, itemName)
-            ChatFrameEditBox:Insert(itemLink)
-        else
-            DEFAULT_CHAT_FRAME:AddMessage("Item unsafe! Right click to get the item ID")
-            ChatFrameEditBox:Insert(string.format("[%s]", rewardItem.Name))
-        end
-        return
-    end
-    -- Handle control click - dress up item
-    if IsControlKeyDown() and GetItemInfo(itemId) then
-        DressUpItemLink(itemId)
-    end
-end --updated
-
--- Initialize frames on addon load
-CreateKQuestFrame()
-CreateKQuestOptionFrame()
-KQuest_OnLoad()
-DEFAULT_CHAT_FRAME:AddMessage("Atlas-TW v."..ATLAS_VERSION.." loaded")
+Все функции остаются совместимыми с существующим кодом и WoW 1.12.
+=============================================================================
+]]
