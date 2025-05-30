@@ -93,7 +93,7 @@ KQuestConfig.ColorSchemes = {
 KQuestConfig.Constants = {
     -- Ограничения системы
     MAX_INSTANCES = 99,             -- Максимальное количество инстансов
-    MAX_QUESTS_PER_INSTANCE = 50,   -- Максимальное количество квестов на инстанс
+    MAX_QUESTS_PER_INSTANCE = 23,   -- Максимальное количество квестов на инстанс
     DEFAULT_INSTANCE = 99,          -- ID инстанса по умолчанию
 
     -- Значения по умолчанию для квестов

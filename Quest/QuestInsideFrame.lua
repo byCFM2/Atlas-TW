@@ -6,7 +6,7 @@
 -- ========================================================================
 -- КОНФИГУРАЦИЯ
 -- ========================================================================
-local _G = getfenv()
+local _G = _ENV or getfenv(0)
 -- Константы для создания UI элементов
 local QUEST_FRAME_CONFIG = {
     MAIN_FRAME = {
@@ -383,33 +383,31 @@ local KQuestToggleFactory = {
 -- ИНИЦИАЛИЗАЦИЯ ВСЕХ ЭЛЕМЕНТОВ
 -- ========================================================================
 
--- Создание основного фрейма
-local KQuestInsideFrame = KQuestUIFactory.createMainFrame()
-
--- Создание всех фреймов квестов (передаем parentFrame явно)
-local questFrames = {}
-for i = 1, 6 do
-    local position = QUEST_FRAME_POSITIONS[i]
-    local frame, elements = KQuestUIFactory.createQuestFrame(i, position, KQuestInsideFrame)
-    questFrames[i] = {frame = frame, elements = elements}
+-- Проверяем, что AtlasFrame существует
+if not AtlasFrame then
+    DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Quest Error:|r AtlasFrame не найден!")
+    return
 end
 
--- Создание кнопки закрытия
-local closeButton = KQuestUIFactory.createCloseButton(KQuestInsideFrame)
+-- Создание основного фрейма ТОЛЬКО ОДИН РАЗ
+local KQuestInsideFrame, questFrames, closeButton, finishedQuestCheckbox, navigationButtons, textElements
+if not _G["KQuestInsideFrame"] then
+    KQuestInsideFrame = KQuestUIFactory.createMainFrame()
 
--- Создание чекбокса завершенных квестов
-local finishedQuestCheckbox = KQuestUIFactory.createFinishedQuestCheckbox(KQuestInsideFrame)
+    -- Создание всех фреймов квестов
+    questFrames = {}
+    for i = 1, 6 do
+        local position = QUEST_FRAME_POSITIONS[i]
+        local frame, elements = KQuestUIFactory.createQuestFrame(i, position, KQuestInsideFrame)
+        questFrames[i] = {frame = frame, elements = elements}
+    end
 
--- Создание навигационных кнопок
-local navigationButtons = KQuestUIFactory.createNavigationButtons(KQuestInsideFrame)
-
--- Создание текстовых элементов
-local textElements = KQuestUIFactory.createTextElements(KQuestInsideFrame)
-
--- Настройка обработчика событий
-KQuestInsideFrame:SetScript("OnEvent", function()
-    AQ_OnEvent(event)
-end)
+    -- Создание остальных элементов
+    closeButton = KQuestUIFactory.createCloseButton(KQuestInsideFrame)
+    finishedQuestCheckbox = KQuestUIFactory.createFinishedQuestCheckbox(KQuestInsideFrame)
+    navigationButtons = KQuestUIFactory.createNavigationButtons(KQuestInsideFrame)
+    textElements = KQuestUIFactory.createTextElements(KQuestInsideFrame)
+end
 
 -- ========================================================================
 -- СОЗДАНИЕ TOGGLE ФРЕЙМА И КНОПКИ
