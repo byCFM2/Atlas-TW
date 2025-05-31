@@ -1,4 +1,0 @@
----
---- Created by Vitali.
---- DateTime: 31.05.2025 22:42
----

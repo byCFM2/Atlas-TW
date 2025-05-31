@@ -368,11 +368,6 @@ local kQuestToggleFactory = {
 -- ========================================================================
 -- ИНИЦИАЛИЗАЦИЯ ВСЕХ ЭЛЕМЕНТОВ
 -- ========================================================================
--- Отладочные сообщения
-DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Quest Debug:|r Начинаем инициализацию Quest модуля")
-DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Quest Debug:|r AtlasFrame существует: " .. tostring(AtlasFrame ~= nil))
-DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Quest Debug:|r AQ_Quests = " .. tostring(AQ_Quests))
-
 -- Проверяем, что AtlasFrame существует
 if not AtlasFrame then
     DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Quest Error:|r AtlasFrame не найден!")

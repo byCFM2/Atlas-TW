@@ -468,6 +468,32 @@ local kQuestUIFactory = {
 
         text:SetText(index)
         return text
+    end,
+
+    createMainFrame = function()
+        local config = FRAME_CONFIG.Main
+        local frame = CreateFrame("Frame", config.name, UIParent)
+ 
+        frame:SetWidth(config.width)
+        frame:SetHeight(config.height)
+        frame:SetFrameStrata(config.strata)
+        frame:EnableMouse(true)
+        frame:SetMovable(false)
+        frame:SetPoint("TOP", "AtlasFrame", -556, -30)
+        -- Устанавливаем фон
+        if config.backdrop then
+            frame:SetBackdrop(config.backdrop)
+            frame:SetBackdropColor(0, 0, 0, 0.8)
+            frame:SetBackdropBorderColor(1, 1, 1, 1)
+        end
+ 
+        -- События
+        frame:SetScript("OnEvent", function() KQuest_OnEvent() end)
+        frame:SetScript("OnShow", function() KQ_OnShow() end)
+        frame:SetScript("OnUpdate", function() KQ_OnUpdate() end)
+        frame:Hide()
+
+        return frame
     end
 }
 
@@ -492,13 +518,11 @@ function KQuestFrame_SetInitialPosition()
 
     if position and AtlasFrame then
         KQuestFrame:ClearAllPoints()
-        KQuestFrame:SetPoint(
-            position.point,
-            _G[position.relativeTo] or AtlasFrame,
-            position.relativePoint,
-            position.x,
-            position.y
-        )
+       -- KQuestFrame:SetPoint(position.point,_G[position.relativeTo] or AtlasFrame,position.relativePoint,position.x,position.y)
+       KQuestFrame:SetPoint(position.point,AtlasFrame,position.relativePoint,position.x,position.y)
+    else
+        -- Позиция по умолчанию если нет AtlasFrame
+        KQuestFrame:SetPoint("CENTER", UIParent, "CENTER", -300, 0)
     end
 end
 
@@ -511,31 +535,9 @@ function KQuestFrame_CreateUI()
         DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest:|r AtlasFrame не найден!")
         return
     end
-    -- Создаем основной фрейм
-    local mainConfig = FRAME_CONFIG.Main
-    local frame = CreateFrame("Frame", mainConfig.name, AtlasFrame)
 
-    frame:SetWidth(mainConfig.width)
-    frame:SetHeight(mainConfig.height)
-    frame:SetFrameStrata(mainConfig.strata)
-    frame:SetBackdrop(mainConfig.backdrop)
-    frame:SetBackdropColor(0, 0, 0, 1)
-
-    -- ДОБАВЛЯЕМ НАСТРОЙКИ ФРЕЙМА
-    frame:EnableMouse(true)
-    frame:SetMovable(false)
-    frame:Hide()
-    frame:SetPoint("TOP", "AtlasFrame", -556, -30)
-
-    -- ДОБАВЛЯЕМ РЕГИСТРАЦИЮ СОБЫТИЙ
-    frame:RegisterEvent("VARIABLES_LOADED")
-    frame:RegisterEvent("PLAYER_ENTERING_WORLD")
-
-    -- ДОБАВЛЯЕМ ОБРАБОТЧИКИ СОБЫТИЙ
-    frame:SetScript("OnEvent", KQuest_OnEvent)
-    frame:SetScript("OnShow", KQ_OnShow)
-    frame:SetScript("OnUpdate", KQ_OnUpdate)
-
+      -- Создаем основной фрейм
+    local frame = kQuestUIFactory.createMainFrame()
     -- Устанавливаем позицию
     KQuestFrame_SetInitialPosition()
 
@@ -547,7 +549,6 @@ function KQuestFrame_CreateUI()
     -- Создаем чекбоксы фракций
     for faction, config in pairs(FRAME_CONFIG.FactionCheckboxes) do
         local checkbox = kQuestUIFactory.createCheckbox(frame, config)
-        -- ДОБАВЛЯЕМ УСТАНОВКУ НАЧАЛЬНОГО СОСТОЯНИЯ
         if faction == "Alliance" then
             checkbox:SetChecked(true)
         end
@@ -615,7 +616,7 @@ end
 -- ========================================================================
 
 -- Автоматическая инициализация UI при загрузке
-local function InitializeKQuestUI()
+function InitializeKQuestUI()
     if not AtlasFrame then
         DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest:|r AtlasFrame не найден!")
         return
@@ -624,18 +625,3 @@ local function InitializeKQuestUI()
         KQuestFrame_CreateUI()
     end
 end
-
--- Отложенная инициализация через событие
-local initFrame = CreateFrame("Frame")
-initFrame:RegisterEvent("ADDON_LOADED")
-initFrame:RegisterEvent("VARIABLES_LOADED")
-initFrame:SetScript("OnEvent", function()
-    if (event == "ADDON_LOADED" and arg1 == "Atlas-TW") or event == "VARIABLES_LOADED" then
-        InitializeKQuestUI()
-        if event == "ADDON_LOADED" then
-            initFrame:UnregisterEvent("ADDON_LOADED")
-        else
-            initFrame:UnregisterEvent("VARIABLES_LOADED")
-        end
-    end
-end)

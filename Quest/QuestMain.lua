@@ -54,19 +54,6 @@ AtlasKTW.Q = AtlasKTW.Q or {}
 AtlasKTW.isHorde = AtlasKTW.isHorde or false
 local current_instance = variables.CURRENT_INSTANCE or constants.DEFAULT_INSTANCE
 
-local function handleQuestFrameVisibility()
-    -- Принудительная синхронизация
-    if AtlasTWOptions and AtlasTWOptions["QuestWithAtlas"] ~= nil then
-        AtlasKTW.Q.WithAtlas = AtlasTWOptions["QuestWithAtlas"]
-    end
-    
-    if AtlasKTW.Q.WithAtlas then
-        ShowUIPanel(KQuestFrame)
-    else
-        HideUIPanel(KQuestFrame)
-    end
-    HideUIPanel(KQuestInsideFrame)
-end
 -- ========================================================================
 -- УТИЛИТЫ ДЛЯ РАБОТЫ С КВЕСТАМИ
 -- ========================================================================
@@ -145,10 +132,6 @@ end
 
 -- Обработка кнопки закрытия панели
 function KQuestCLOSE_OnClick()
-    DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Quest Debug:|r KQuestCLOSE_OnClick вызвана")
-    DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Quest Debug:|r KQuestFrame существует: " .. tostring(KQuestFrame ~= nil))
-    DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Quest Debug:|r AtlasTWOptions[QuestWithAtlas]: " .. tostring(AtlasTWOptions["QuestWithAtlas"]))
-    
     if not KQuestFrame then
         DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Error:|r KQuestFrame не существует!")
         return
@@ -1055,9 +1038,9 @@ function KQuest_SaveData()
 end
 
 -- Initialize frames on addon load
+InitializeKQuestUI()
 CreateKQuestOptionFrame()
 KQuest_OnLoad()
-handleQuestFrameVisibility()
 DEFAULT_CHAT_FRAME:AddMessage("Atlas-TW v."..ATLAS_VERSION.." loaded")
 
 --[[
