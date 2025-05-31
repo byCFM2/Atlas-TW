@@ -6,7 +6,8 @@
 -- ========================================================================
 -- КОНФИГУРАЦИЯ
 -- ========================================================================
-local _G = _ENV or getfenv(0)
+local _G = getfenv()
+
 -- Константы для создания UI элементов
 local QUEST_FRAME_CONFIG = {
     MAIN_FRAME = {
@@ -51,7 +52,7 @@ local QUEST_FRAME_CONFIG = {
 }
 
 -- Позиции фреймов квестов (левая и правая колонки)
-local QUEST_FRAME_POSITIONS = {
+local quest_Frame_Positions = {
     {x = 20, y = 120},   -- Left column, top
     {x = 266, y = 120},  -- Right column, top
     {x = 20, y = 70},    -- Left column, middle
@@ -96,7 +97,7 @@ local function CreateQuestFrameElements(parent, baseName)
 end
 
 -- Функция настройки событий для фрейма квеста
-local function SetupQuestFrameEvents(frame, frameNumber)
+local function setupQuestFrameEvents(frame, frameNumber)
     frame:RegisterForClicks("LeftButtonDown", "RightButtonDown")
 
     frame:SetScript("OnEnter", function()
@@ -118,10 +119,10 @@ local function SetupQuestFrameEvents(frame, frameNumber)
 end
 
 -- ========================================================================
--- ФАБРИКА UI ЭЛЕМЕНТОВ (БЕЗ самовызовов)
+-- ФАБРИКА UI ЭЛЕМЕНТОВ
 -- ========================================================================
 
-local KQuestUIFactory = {
+local kQuestUIFactory = {
 
     -- Создание основного фрейма
     createMainFrame = function()
@@ -153,7 +154,7 @@ local KQuestUIFactory = {
         local elements = CreateQuestFrameElements(frame, frameName)
 
         -- Настройка событий через локальную функцию
-        SetupQuestFrameEvents(frame, frameNumber)
+        setupQuestFrameEvents(frame, frameNumber)
 
         return frame, elements
     end,
@@ -335,7 +336,7 @@ local KQuestUIFactory = {
 -- СОЗДАНИЕ ФРЕЙМА TOGGLE КНОПКИ
 -- ========================================================================
 
-local KQuestToggleFactory = {
+local kQuestToggleFactory = {
     createToggleFrame = function()
         local frame = CreateFrame("Frame", "KQuestButtonFrame", AtlasFrame)
         frame:SetWidth(1)
@@ -355,7 +356,7 @@ local KQuestToggleFactory = {
         button:SetPoint("TOPRIGHT", -120, -61)
 
         -- Установка текста кнопки
-        getglobal("KQCloseButton_3Text"):SetText(AQ_Quests)
+        _G("KQCloseButton_3Text"):SetText(AQ_Quests)
 
         button:SetScript("OnClick", function()
             KQuestCLOSE_OnClick()
@@ -389,24 +390,24 @@ if not AtlasFrame then
     return
 end
 
--- Создание основного фрейма ТОЛЬКО ОДИН РАЗ
+-- Создание основного фрейма
 local KQuestInsideFrame, questFrames, closeButton, finishedQuestCheckbox, navigationButtons, textElements
 if not _G["KQuestInsideFrame"] then
-    KQuestInsideFrame = KQuestUIFactory.createMainFrame()
+    KQuestInsideFrame = kQuestUIFactory.createMainFrame()
 
     -- Создание всех фреймов квестов
     questFrames = {}
     for i = 1, 6 do
-        local position = QUEST_FRAME_POSITIONS[i]
-        local frame, elements = KQuestUIFactory.createQuestFrame(i, position, KQuestInsideFrame)
+        local position = quest_Frame_Positions[i]
+        local frame, elements = kQuestUIFactory.createQuestFrame(i, position, KQuestInsideFrame)
         questFrames[i] = {frame = frame, elements = elements}
     end
 
     -- Создание остальных элементов
-    closeButton = KQuestUIFactory.createCloseButton(KQuestInsideFrame)
-    finishedQuestCheckbox = KQuestUIFactory.createFinishedQuestCheckbox(KQuestInsideFrame)
-    navigationButtons = KQuestUIFactory.createNavigationButtons(KQuestInsideFrame)
-    textElements = KQuestUIFactory.createTextElements(KQuestInsideFrame)
+    closeButton = kQuestUIFactory.createCloseButton(KQuestInsideFrame)
+    finishedQuestCheckbox = kQuestUIFactory.createFinishedQuestCheckbox(KQuestInsideFrame)
+    navigationButtons = kQuestUIFactory.createNavigationButtons(KQuestInsideFrame)
+    textElements = kQuestUIFactory.createTextElements(KQuestInsideFrame)
 end
 
 -- ========================================================================
@@ -414,10 +415,10 @@ end
 -- ========================================================================
 
 -- Создание фрейма для кнопки переключения
-local atlasQuestButtonFrame = KQuestToggleFactory.createToggleFrame()
+local atlasQuestButtonFrame = kQuestToggleFactory.createToggleFrame()
 
 -- Создание кнопки переключения
-local questsToggleButton = KQuestToggleFactory.createToggleButton(atlasQuestButtonFrame)
+local questsToggleButton = kQuestToggleFactory.createToggleButton(atlasQuestButtonFrame)
 
 -- ========================================================================
 -- ЭКСПОРТ ИНТЕРФЕЙСА ДЛЯ ВНЕШНЕГО ИСПОЛЬЗОВАНИЯ
@@ -440,7 +441,7 @@ _G.KQuestUIElements = {
 =============================================================================
 
 1. **Убран самовызов**: 
-   - Функции CreateQuestFrameElements и SetupQuestFrameEvents вынесены 
+   - Функции CreateQuestFrameElements и setupQuestFrameEvents вынесены 
      как локальные функции ДО объявления фабрики
    - createQuestFrame теперь вызывает локальные функции, а не методы фабрики
 

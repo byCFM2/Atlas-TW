@@ -13,10 +13,10 @@ local purple = KQuestConfig.Colors.purple
 ------------- Quest Instance Data ------------
 ----------------------------------------------
 
-KQuestInstanceData = KQuestInstanceData or {}
+local kQuestInstanceData = _G.KQuestInstanceData or {}
 
 --------------- INST1 - The Deadmines ---------------
-KQuestInstanceData[1] = {
+kQuestInstanceData[1] = {
     Story = "Once the greatest gold production center in the human lands, the Dead Mines were abandoned when the Horde razed Stormwind city during the First War. Now the Defias Brotherhood has taken up residence and turned the dark tunnels into their private sanctum. It is rumored that the thieves have conscripted the clever goblins to help them build something terrible at the bottom of the mines - but what that may be is still uncertain. Rumor has it that the way into the Deadmines lies through the quiet, unassuming village of Moonbrook.",
     Caption = "The Deadmines",
     QAA = "10 Quests",
@@ -26,7 +26,7 @@ KQuestInstanceData[1] = {
         Horde = {}
     }
 }
-KQuestInstanceData[1].Quests.Alliance[1] = {
+kQuestInstanceData[1].Quests.Alliance[1] = {
     Title = "1. Red Silk Bandanas",
     Level = "17",
     Attain = "14",
@@ -57,7 +57,7 @@ KQuestInstanceData[1].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[1].Quests.Alliance[2] = {
+kQuestInstanceData[1].Quests.Alliance[2] = {
     Title = "2. Collecting Memories",
     Level = "18",
     Attain = "14",
@@ -82,7 +82,7 @@ KQuestInstanceData[1].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[1].Quests.Alliance[3] = {
+kQuestInstanceData[1].Quests.Alliance[3] = {
     Title = "3. Oh Brother. . .",
     Level = "20",
     Attain = "15",
@@ -101,7 +101,7 @@ KQuestInstanceData[1].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[1].Quests.Alliance[4] = {
+kQuestInstanceData[1].Quests.Alliance[4] = {
     Title = "4. Underground Assault",
     Level = "20",
     Attain = "15",
@@ -126,7 +126,7 @@ KQuestInstanceData[1].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[1].Quests.Alliance[5] = {
+kQuestInstanceData[1].Quests.Alliance[5] = {
     Title = "5. The Defias Brotherhood",
     Level = "22",
     Attain = "14",
@@ -157,7 +157,7 @@ KQuestInstanceData[1].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[1].Quests.Alliance[6] = {
+kQuestInstanceData[1].Quests.Alliance[6] = {
     Title = "6. The Test of Righteousness",
     Level = "22",
     Attain = "20",
@@ -177,7 +177,7 @@ KQuestInstanceData[1].Quests.Alliance[6] = {
     },
     Page = {2, "Only Paladins can get this quest!\n\n1. You get the  Whitestone Oak Lumber from Goblin Woodcarvers in "..yellow.."[Deadmines]"..white.." near "..yellow.."[3]"..white..".\n\n2. To get the Bailor's Refined Ore Shipment you must talk to Bailor Stonehand (Loch Modan - Thelsamar; "..yellow.."35,44"..white.."). He gives you the 'Bailor's Ore Shipment' quest. You find the Jordan's Ore Shipment behind a tree at "..yellow.."71,21"..white.."\n\n3. You get Jordan's Smithing Hammer in "..yellow.."[Shadowfang Keep]"..white.." at "..yellow.."[3]"..white..".\n\n4. To get a Kor Gem you have to go to Thundris Windweaver (Darkshore - Auberdine; "..yellow.."37,40"..white..") and do the 'Seeking the Kor Gem' quest. For this quest, you must kill Blackfathom oracles or priestesses before "..yellow.."[Blackfathom Deeps]"..white..". They drop a corrupted Kor Gem. Thundris Windweaver will clean it for you.", };
 }
-KQuestInstanceData[1].Quests.Alliance[7] = {
+kQuestInstanceData[1].Quests.Alliance[7] = {
     Title = "7. The Unsent Letter",
     Level = "22",
     Attain = "16",
@@ -190,7 +190,7 @@ KQuestInstanceData[1].Quests.Alliance[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[1].Quests.Alliance[8] = {
+kQuestInstanceData[1].Quests.Alliance[8] = {
     Title = "8. Captain Grayson's Revenge",
     Level = "22",
     Attain = "15",
@@ -209,7 +209,7 @@ KQuestInstanceData[1].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[1].Quests.Alliance[9] = {
+kQuestInstanceData[1].Quests.Alliance[9] = {
     Title = "9. The Harvest Golem Mystery",
     Level = "19",
     Attain = "15",
@@ -240,7 +240,7 @@ KQuestInstanceData[1].Quests.Alliance[9] = {
         },
     }
 }
-KQuestInstanceData[1].Quests.Alliance[10] = {
+kQuestInstanceData[1].Quests.Alliance[10] = {
     Title = "10. Turning Off The Tap",
     Level = "20",
     Attain = "14",
@@ -265,7 +265,7 @@ KQuestInstanceData[1].Quests.Alliance[10] = {
         },
     }
 }
-KQuestInstanceData[1].Quests.Horde[1] = {
+kQuestInstanceData[1].Quests.Horde[1] = {
     Title = "1. Prototype Thievery",
     Level = "18",
     Attain = "16",
@@ -290,7 +290,7 @@ KQuestInstanceData[1].Quests.Horde[1] = {
         },
     }
 }
-KQuestInstanceData[1].Quests.Horde[2] = {
+kQuestInstanceData[1].Quests.Horde[2] = {
     Title = "2. Captain Grayson's Revenge",
     Level = "22",
     Attain = "15",
@@ -309,7 +309,7 @@ KQuestInstanceData[1].Quests.Horde[2] = {
         },
     }
 }
-KQuestInstanceData[1].Quests.Horde[3] = {
+kQuestInstanceData[1].Quests.Horde[3] = {
     Title = "3. Horde Defender's Axe",
     Level = "18",
     Attain = "15",
@@ -330,7 +330,7 @@ KQuestInstanceData[1].Quests.Horde[3] = {
 }
 
 --------------- INST2 - Wailing Caverns ---------------
-KQuestInstanceData[2] = {
+kQuestInstanceData[2] = {
     Story = "Recently, a night elf druid named Naralex discovered a network of underground caverns within the heart of the Barrens. Dubbed the 'Wailing Caverns', these natural caves were filled with steam fissures which produced long, mournful wails as they vented. Naralex believed he could use the caverns' underground springs to restore lushness and fertility to the Barrens - but to do so would require siphoning the energies of the fabled Emerald Dream. Once connected to the Dream however, the druid's vision somehow became a nightmare. Soon the Wailing Caverns began to change - the waters turned foul and the once-docile creatures inside metamorphosed into vicious, deadly predators. It is said that Naralex himself still resides somewhere inside the heart of the labyrinth, trapped beyond the edges of the Emerald Dream. Even his former acolytes have been corrupted by their master's waking nightmare - transformed into the wicked Druids of the Fang.",
     Caption = "Wailing Caverns",
     QAA = "8 Quests",
@@ -340,7 +340,7 @@ KQuestInstanceData[2] = {
         Horde = {}
     }
 }
-KQuestInstanceData[2].Quests.Alliance[1] = {
+kQuestInstanceData[2].Quests.Alliance[1] = {
     Title = "1. Deviate Hides",
     Level = "17",
     Attain = "13",
@@ -365,7 +365,7 @@ KQuestInstanceData[2].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[2].Quests.Alliance[2] = {
+kQuestInstanceData[2].Quests.Alliance[2] = {
     Title = "2. Trouble at the Docks",
     Level = "18",
     Attain = "14",
@@ -378,7 +378,7 @@ KQuestInstanceData[2].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[2].Quests.Alliance[3] = {
+kQuestInstanceData[2].Quests.Alliance[3] = {
     Title = "3. Smart Drinks",
     Level = "18",
     Attain = "13",
@@ -391,7 +391,7 @@ KQuestInstanceData[2].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[2].Quests.Alliance[4] = {
+kQuestInstanceData[2].Quests.Alliance[4] = {
     Title = "4. Deviate Eradication",
     Level = "21",
     Attain = "15",
@@ -422,7 +422,7 @@ KQuestInstanceData[2].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[2].Quests.Alliance[5] = {
+kQuestInstanceData[2].Quests.Alliance[5] = {
     Title = "5. The Glowing Shard",
     Level = "26",
     Attain = "15",
@@ -447,7 +447,7 @@ KQuestInstanceData[2].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[2].Quests.Alliance[6] = {
+kQuestInstanceData[2].Quests.Alliance[6] = {
     Title = "6. Serpentbloom",
     Level = "18",
     Attain = "16",
@@ -472,7 +472,7 @@ KQuestInstanceData[2].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[2].Quests.Alliance[7] = {
+kQuestInstanceData[2].Quests.Alliance[7] = {
     Title = "7. Trapped in the Nightmare",
     Level = "19",
     Attain = "16",
@@ -497,7 +497,7 @@ KQuestInstanceData[2].Quests.Alliance[7] = {
         },
     }
 }
-KQuestInstanceData[2].Quests.Alliance[8] = {
+kQuestInstanceData[2].Quests.Alliance[8] = {
     Title = "8. Rampant Weeds",
     Level = "20",
     Attain = "17?",
@@ -522,9 +522,9 @@ KQuestInstanceData[2].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[2].Quests.Horde[1] = KQuestInstanceData[2].Quests.Alliance[1]
-KQuestInstanceData[2].Quests.Horde[2] = KQuestInstanceData[2].Quests.Alliance[2]
-KQuestInstanceData[2].Quests.Horde[3] = {
+kQuestInstanceData[2].Quests.Horde[1] = kQuestInstanceData[2].Quests.Alliance[1]
+kQuestInstanceData[2].Quests.Horde[2] = kQuestInstanceData[2].Quests.Alliance[2]
+kQuestInstanceData[2].Quests.Horde[3] = {
     Title = "3. Serpentbloom",
     Level = "18",
     Attain = "14",
@@ -543,7 +543,7 @@ KQuestInstanceData[2].Quests.Horde[3] = {
         },
     }
 }
-KQuestInstanceData[2].Quests.Horde[4] = {
+kQuestInstanceData[2].Quests.Horde[4] = {
     Title = "4. Smart Drinks",
     Level = "18",
     Attain = "13",
@@ -556,7 +556,7 @@ KQuestInstanceData[2].Quests.Horde[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[2].Quests.Horde[5] = {
+kQuestInstanceData[2].Quests.Horde[5] = {
     Title = "5. Deviate Eradication",
     Level = "21",
     Attain = "15",
@@ -587,7 +587,7 @@ KQuestInstanceData[2].Quests.Horde[5] = {
         },
     }
 }
-KQuestInstanceData[2].Quests.Horde[6] = {
+kQuestInstanceData[2].Quests.Horde[6] = {
     Title = "6. Leaders of the Fang",
     Level = "22",
     Attain = "11",
@@ -612,7 +612,7 @@ KQuestInstanceData[2].Quests.Horde[6] = {
         },
     }
 }
-KQuestInstanceData[2].Quests.Horde[7] = {
+kQuestInstanceData[2].Quests.Horde[7] = {
     Title = "7. The Glowing Shard",
     Level = "26",
     Attain = "15",
@@ -637,7 +637,7 @@ KQuestInstanceData[2].Quests.Horde[7] = {
         },
     }
 }
-KQuestInstanceData[2].Quests.Horde[8] = {
+kQuestInstanceData[2].Quests.Horde[8] = {
     Title = "8. Arcane Arms",
     Level = "18",
     Attain = "14",
@@ -662,7 +662,7 @@ KQuestInstanceData[2].Quests.Horde[8] = {
         },
     }
 }
-KQuestInstanceData[2].Quests.Horde[9] = {
+kQuestInstanceData[2].Quests.Horde[9] = {
     Title = "9. Against the Kolkar Dream",
     Level = "23",
     Attain = "??",
@@ -683,7 +683,7 @@ KQuestInstanceData[2].Quests.Horde[9] = {
 }
 
 --------------- INST3 - Ragefire Chasm ---------------
-KQuestInstanceData[3] = {
+kQuestInstanceData[3] = {
     Story = "Ragefire Chasm consists of a network of volcanic caverns that lie below the orcs' new capital city of Orgrimmar. Recently, rumors have spread that a cult loyal to the demonic Shadow Council has taken up residence within the Chasm's fiery depths. This cult, known as the Burning Blade, threatens the very sovereignty of Durotar. Many believe that the orc Warchief, Thrall, is aware of the Blade's existence and has chosen not to destroy it in the hopes that its members might lead him straight to the Shadow Council. Either way, the dark powers emanating from Ragefire Chasm could undo all that the orcs have fought to attain.",
     Caption = "Ragefire Chasm",
     QAA = "No Quests",
@@ -693,7 +693,7 @@ KQuestInstanceData[3] = {
         Horde = {}
     }
 }
-KQuestInstanceData[3].Quests.Horde[1] = {
+kQuestInstanceData[3].Quests.Horde[1] = {
     Title = "1. Testing an Enemy's Strength",
     Level = "15",
     Attain = "9",
@@ -706,7 +706,7 @@ KQuestInstanceData[3].Quests.Horde[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[3].Quests.Horde[2] = {
+kQuestInstanceData[3].Quests.Horde[2] = {
     Title = "2. The Power to Destroy...",
     Level = "16",
     Attain = "9",
@@ -737,7 +737,7 @@ KQuestInstanceData[3].Quests.Horde[2] = {
         },
     }
 }
-KQuestInstanceData[3].Quests.Horde[3] = {
+kQuestInstanceData[3].Quests.Horde[3] = {
     Title = "3. Searching for the Lost Satchel",
     Level = "16",
     Attain = "9",
@@ -762,7 +762,7 @@ KQuestInstanceData[3].Quests.Horde[3] = {
         },
     }
 }
-KQuestInstanceData[3].Quests.Horde[4] = {
+kQuestInstanceData[3].Quests.Horde[4] = {
     Title = "4. Hidden Enemies",
     Level = "16",
     Attain = "9",
@@ -799,7 +799,7 @@ KQuestInstanceData[3].Quests.Horde[4] = {
         },
     }
 }
-KQuestInstanceData[3].Quests.Horde[5] = {
+kQuestInstanceData[3].Quests.Horde[5] = {
     Title = "5. Slaying the Beast",
     Level = "16",
     Attain = "9",
@@ -814,7 +814,7 @@ KQuestInstanceData[3].Quests.Horde[5] = {
 }
 
 --------------- INST4 - Uldaman ---------------
-KQuestInstanceData[4] = {
+kQuestInstanceData[4] = {
     Story = "Uldaman is an ancient Titan vault that has laid buried deep within the earth since the world's creation. Dwarven excavations have recently penetrated this forgotten city, releasing the Titans' first failed creations: the troggs. Legends say that the Titans created troggs from stone. When they deemed the experiment a failure, the Titans locked the troggs away and tried again - resulting in the creation of the dwarven race. The secrets of the dwarves' creation are recorded on the fabled Discs of Norgannon - massive Titan artifacts that lie at the very bottom of the ancient city. Recently, the Dark Iron dwarves have launched a series of incursions into Uldaman, hoping to claim the discs for their fiery master, Ragnaros. However, protecting the buried city are several guardians - giant constructs of living stone that crush any hapless intruders they find. The Discs themselves are guarded by a massive, sentient Stonekeeper called Archaedas. Some rumors even suggest that the dwarves' stone-skinned ancestors, the earthen, still dwell deep within the city's hidden recesses.",
     Caption = "Uldaman",
     QAA = "17 Quests",
@@ -824,7 +824,7 @@ KQuestInstanceData[4] = {
         Horde = {}
     }
 }
-KQuestInstanceData[4].Quests.Alliance[1] = {
+kQuestInstanceData[4].Quests.Alliance[1] = {
     Title = "1. A Sign of Hope",
     Level = "35",
     Attain = "33",
@@ -837,7 +837,7 @@ KQuestInstanceData[4].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Alliance[2] = {
+kQuestInstanceData[4].Quests.Alliance[2] = {
     Title = "2. Amulet of Secrets",
     Level = "40",
     Attain = "35",
@@ -850,7 +850,7 @@ KQuestInstanceData[4].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Alliance[3] = {
+kQuestInstanceData[4].Quests.Alliance[3] = {
     Title = "3. The Lost Tablets of Will",
     Level = "45",
     Attain = "35",
@@ -869,7 +869,7 @@ KQuestInstanceData[4].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Alliance[4] = {
+kQuestInstanceData[4].Quests.Alliance[4] = {
     Title = "4. Power Stones",
     Level = "36",
     Attain = "30",
@@ -900,7 +900,7 @@ KQuestInstanceData[4].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Alliance[5] = {
+kQuestInstanceData[4].Quests.Alliance[5] = {
     Title = "5. Agmond's Fate",
     Level = "38",
     Attain = "30",
@@ -919,7 +919,7 @@ KQuestInstanceData[4].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Alliance[6] = {
+kQuestInstanceData[4].Quests.Alliance[6] = {
     Title = "6. Solution to Doom",
     Level = "40",
     Attain = "30",
@@ -938,7 +938,7 @@ KQuestInstanceData[4].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Alliance[7] = {
+kQuestInstanceData[4].Quests.Alliance[7] = {
     Title = "7. The Lost Dwarves",
     Level = "40",
     Attain = "35",
@@ -951,7 +951,7 @@ KQuestInstanceData[4].Quests.Alliance[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Alliance[8] = {
+kQuestInstanceData[4].Quests.Alliance[8] = {
     Title = "8. The Hidden Chamber",
     Level = "40",
     Attain = "35",
@@ -976,7 +976,7 @@ KQuestInstanceData[4].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Alliance[9] = {
+kQuestInstanceData[4].Quests.Alliance[9] = {
     Title = "9. The Shattered Necklace",
     Level = "41",
     Attain = "37",
@@ -989,7 +989,7 @@ KQuestInstanceData[4].Quests.Alliance[9] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Alliance[10] = {
+kQuestInstanceData[4].Quests.Alliance[10] = {
     Title = "10. Back to Uldaman",
     Level = "42",
     Attain = "37",
@@ -1002,7 +1002,7 @@ KQuestInstanceData[4].Quests.Alliance[10] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Alliance[11] = {
+kQuestInstanceData[4].Quests.Alliance[11] = {
     Title = "11. Find the Gems",
     Level = "43",
     Attain = "40",
@@ -1015,7 +1015,7 @@ KQuestInstanceData[4].Quests.Alliance[11] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Alliance[12] = {
+kQuestInstanceData[4].Quests.Alliance[12] = {
     Title = "12. Restoring the Necklace",
     Level = "44",
     Attain = "37",
@@ -1034,7 +1034,7 @@ KQuestInstanceData[4].Quests.Alliance[12] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Alliance[13] = {
+kQuestInstanceData[4].Quests.Alliance[13] = {
     Title = "13. Uldaman Reagent Run",
     Level = "42",
     Attain = "36",
@@ -1053,7 +1053,7 @@ KQuestInstanceData[4].Quests.Alliance[13] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Alliance[14] = {
+kQuestInstanceData[4].Quests.Alliance[14] = {
     Title = "14. Reclaimed Treasures",
     Level = "43",
     Attain = "33",
@@ -1066,7 +1066,7 @@ KQuestInstanceData[4].Quests.Alliance[14] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Alliance[15] = {
+kQuestInstanceData[4].Quests.Alliance[15] = {
     Title = "15. The Platinum Discs",
     Level = "47",
     Attain = "40",
@@ -1097,7 +1097,7 @@ KQuestInstanceData[4].Quests.Alliance[15] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Alliance[16] = {
+kQuestInstanceData[4].Quests.Alliance[16] = {
     Title = "16. Power in Uldaman",
     Level = "40",
     Attain = "35",
@@ -1110,7 +1110,7 @@ KQuestInstanceData[4].Quests.Alliance[16] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Alliance[17] = {
+kQuestInstanceData[4].Quests.Alliance[17] = {
     Title = "17. Stealing a Core",
     Level = "45",
     Attain = "45",
@@ -1129,7 +1129,7 @@ KQuestInstanceData[4].Quests.Alliance[17] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Horde[1] = {
+kQuestInstanceData[4].Quests.Horde[1] = {
     Title = "1. Power Stones",
     Level = "36",
     Attain = "30",
@@ -1160,7 +1160,7 @@ KQuestInstanceData[4].Quests.Horde[1] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Horde[2] = {
+kQuestInstanceData[4].Quests.Horde[2] = {
     Title = "2. Solution to Doom",
     Level = "40",
     Attain = "30",
@@ -1179,7 +1179,7 @@ KQuestInstanceData[4].Quests.Horde[2] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Horde[3] = {
+kQuestInstanceData[4].Quests.Horde[3] = {
     Title = "3. Necklace Recovery",
     Level = "41",
     Attain = "37",
@@ -1192,7 +1192,7 @@ KQuestInstanceData[4].Quests.Horde[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Horde[4] = {
+kQuestInstanceData[4].Quests.Horde[4] = {
     Title = "4. Necklace Recovery, Take 2",
     Level = "41",
     Attain = "37",
@@ -1205,7 +1205,7 @@ KQuestInstanceData[4].Quests.Horde[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Horde[5] = {
+kQuestInstanceData[4].Quests.Horde[5] = {
     Title = "5. Translating the Journal",
     Level = "42",
     Attain = "37",
@@ -1218,7 +1218,7 @@ KQuestInstanceData[4].Quests.Horde[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Horde[6] = {
+kQuestInstanceData[4].Quests.Horde[6] = {
     Title = "6. Find the Gems and Power Source",
     Level = "44",
     Attain = "37",
@@ -1237,7 +1237,7 @@ KQuestInstanceData[4].Quests.Horde[6] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Horde[7] = {
+kQuestInstanceData[4].Quests.Horde[7] = {
     Title = "7. Uldaman Reagent Run",
     Level = "42",
     Attain = "36",
@@ -1256,7 +1256,7 @@ KQuestInstanceData[4].Quests.Horde[7] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Horde[8] = {
+kQuestInstanceData[4].Quests.Horde[8] = {
     Title = "8. Reclaimed Treasures",
     Level = "43",
     Attain = "33",
@@ -1269,7 +1269,7 @@ KQuestInstanceData[4].Quests.Horde[8] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Horde[9] = {
+kQuestInstanceData[4].Quests.Horde[9] = {
     Title = "9. The Platinum Discs",
     Level = "47",
     Attain = "40",
@@ -1300,7 +1300,7 @@ KQuestInstanceData[4].Quests.Horde[9] = {
         },
     }
 }
-KQuestInstanceData[4].Quests.Horde[10] = {
+kQuestInstanceData[4].Quests.Horde[10] = {
     Title = "10. Power in Uldaman",
     Level = "40",
     Attain = "35",
@@ -1313,7 +1313,7 @@ KQuestInstanceData[4].Quests.Horde[10] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[4].Quests.Horde[11] = {
+kQuestInstanceData[4].Quests.Horde[11] = {
     Title = "11. Requisitioning a Core",
     Level = "45",
     Attain = "45",
@@ -1334,7 +1334,7 @@ KQuestInstanceData[4].Quests.Horde[11] = {
 }
 
 --------------- INST5 - Blackrock Depths ---------------
-KQuestInstanceData[5] = {
+kQuestInstanceData[5] = {
     Story = "Once the capital city of the Dark Iron dwarves, this volcanic labyrinth now serves as the seat of power for Ragnaros the Firelord. Ragnaros has uncovered the secret to creating life from stone and plans to build an army of unstoppable golems to aid him in conquering the whole of Blackrock Mountain. Obsessed with defeating Nefarian and his draconic minions, Ragnaros will go to any extreme to achieve final victory.",
     Caption = "Blackrock Depths",
     QAA = "23 Quests",
@@ -1344,7 +1344,7 @@ KQuestInstanceData[5] = {
         Horde = {}
     }
 }
-KQuestInstanceData[5].Quests.Alliance[1] = {
+kQuestInstanceData[5].Quests.Alliance[1] = {
     Title = "1. Dark Iron Legacy",
     Level = "52",
     Attain = "48",
@@ -1363,7 +1363,7 @@ KQuestInstanceData[5].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[2] = {
+kQuestInstanceData[5].Quests.Alliance[2] = {
     Title = "2. Ribbly Screwspigot",
     Level = "53",
     Attain = "48",
@@ -1394,7 +1394,7 @@ KQuestInstanceData[5].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[3] = {
+kQuestInstanceData[5].Quests.Alliance[3] = {
     Title = "3. The Love Potion",
     Level = "54",
     Attain = "50",
@@ -1419,7 +1419,7 @@ KQuestInstanceData[5].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[4] = {
+kQuestInstanceData[5].Quests.Alliance[4] = {
     Title = "4. Hurley Blackbreath",
     Level = "55",
     Attain = "50",
@@ -1450,7 +1450,7 @@ KQuestInstanceData[5].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[5] = {
+kQuestInstanceData[5].Quests.Alliance[5] = {
     Title = "5. Incendius!",
     Level = "56",
     Attain = "48",
@@ -1487,7 +1487,7 @@ KQuestInstanceData[5].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[6] = {
+kQuestInstanceData[5].Quests.Alliance[6] = {
     Title = "6. The Heart of the Mountain",
     Level = "55",
     Attain = "50",
@@ -1500,7 +1500,7 @@ KQuestInstanceData[5].Quests.Alliance[6] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[5].Quests.Alliance[7] = {
+kQuestInstanceData[5].Quests.Alliance[7] = {
     Title = "7. The Good Stuff",
     Level = "56",
     Attain = "50",
@@ -1519,7 +1519,7 @@ KQuestInstanceData[5].Quests.Alliance[7] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[8] = {
+kQuestInstanceData[5].Quests.Alliance[8] = {
     Title = "8. Marshal Windsor",
     Level = "54",
     Attain = "48",
@@ -1550,7 +1550,7 @@ KQuestInstanceData[5].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[9] = {
+kQuestInstanceData[5].Quests.Alliance[9] = {
     Title = "9. A Crumpled Up Note",
     Level = "58",
     Attain = "50",
@@ -1563,7 +1563,7 @@ KQuestInstanceData[5].Quests.Alliance[9] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[5].Quests.Alliance[10] = {
+kQuestInstanceData[5].Quests.Alliance[10] = {
     Title = "10. A Shred of Hope",
     Level = "58",
     Attain = "50",
@@ -1576,7 +1576,7 @@ KQuestInstanceData[5].Quests.Alliance[10] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[5].Quests.Alliance[11] = {
+kQuestInstanceData[5].Quests.Alliance[11] = {
     Title = "11. Jail Break!",
     Level = "58",
     Attain = "50",
@@ -1607,7 +1607,7 @@ KQuestInstanceData[5].Quests.Alliance[11] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[12] = {
+kQuestInstanceData[5].Quests.Alliance[12] = {
     Title = "12. A Taste of Flame",
     Level = "58",
     Attain = "52",
@@ -1638,7 +1638,7 @@ KQuestInstanceData[5].Quests.Alliance[12] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[13] = {
+kQuestInstanceData[5].Quests.Alliance[13] = {
     Title = "13. Kharan Mighthammer",
     Level = "59",
     Attain = "50",
@@ -1651,7 +1651,7 @@ KQuestInstanceData[5].Quests.Alliance[13] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[5].Quests.Alliance[14] = {
+kQuestInstanceData[5].Quests.Alliance[14] = {
     Title = "14. The Fate of the Kingdom",
     Level = "59",
     Attain = "50",
@@ -1676,7 +1676,7 @@ KQuestInstanceData[5].Quests.Alliance[14] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[15] = {
+kQuestInstanceData[5].Quests.Alliance[15] = {
     Title = "15. Attunement to the Core",
     Level = "60",
     Attain = "55",
@@ -1689,7 +1689,7 @@ KQuestInstanceData[5].Quests.Alliance[15] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[5].Quests.Alliance[16] = {
+kQuestInstanceData[5].Quests.Alliance[16] = {
     Title = "16. The Challenge",
     Level = "60",
     Attain = "58",
@@ -1702,7 +1702,7 @@ KQuestInstanceData[5].Quests.Alliance[16] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[5].Quests.Alliance[17] = {
+kQuestInstanceData[5].Quests.Alliance[17] = {
     Title = "17. The Spectral Chalice",
     Level = "55",
     Attain = "40",
@@ -1715,7 +1715,7 @@ KQuestInstanceData[5].Quests.Alliance[17] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[5].Quests.Alliance[18] = {
+kQuestInstanceData[5].Quests.Alliance[18] = {
     Title = "18. Operation Help Jabbey",
     Level = "58",
     Attain = "50",
@@ -1740,7 +1740,7 @@ KQuestInstanceData[5].Quests.Alliance[18] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[19] = {
+kQuestInstanceData[5].Quests.Alliance[19] = {
     Title = "19. The Dark Iron Desecrator",
     Level = "60",
     Attain = "55",
@@ -1759,7 +1759,7 @@ KQuestInstanceData[5].Quests.Alliance[19] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[20] = {
+kQuestInstanceData[5].Quests.Alliance[20] = {
     Title = "20. Senatorial Revenge",
     Level = "56",
     Attain = "45",
@@ -1778,7 +1778,7 @@ KQuestInstanceData[5].Quests.Alliance[20] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[21] = {
+kQuestInstanceData[5].Quests.Alliance[21] = {
     Title = "21. The Arcane Golem Core",
     Level = "55",
     Attain = "45",
@@ -1796,7 +1796,7 @@ KQuestInstanceData[5].Quests.Alliance[21] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[22] = {
+kQuestInstanceData[5].Quests.Alliance[22] = {
     Title = "22. To Build a Pounder",
     Level = "60",
     Attain = "30",
@@ -1833,7 +1833,7 @@ KQuestInstanceData[5].Quests.Alliance[22] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Alliance[23] = {
+kQuestInstanceData[5].Quests.Alliance[23] = {
     Title = "23. Winter Veil Brew",
     Level = "55",
     Attain = "45",
@@ -1846,10 +1846,10 @@ KQuestInstanceData[5].Quests.Alliance[23] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[5].Quests.Horde[1] = KQuestInstanceData[5].Quests.Alliance[1]
-KQuestInstanceData[5].Quests.Horde[2] = KQuestInstanceData[5].Quests.Alliance[2]
-KQuestInstanceData[5].Quests.Horde[3] = KQuestInstanceData[5].Quests.Alliance[3]
-KQuestInstanceData[5].Quests.Horde[4] = {
+kQuestInstanceData[5].Quests.Horde[1] = kQuestInstanceData[5].Quests.Alliance[1]
+kQuestInstanceData[5].Quests.Horde[2] = kQuestInstanceData[5].Quests.Alliance[2]
+kQuestInstanceData[5].Quests.Horde[3] = kQuestInstanceData[5].Quests.Alliance[3]
+kQuestInstanceData[5].Quests.Horde[4] = {
     Title = "4. Lost Thunderbrew Recipe",
     Level = "55",
     Attain = "50",
@@ -1886,7 +1886,7 @@ KQuestInstanceData[5].Quests.Horde[4] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Horde[5] = {
+kQuestInstanceData[5].Quests.Horde[5] = {
     Title = "5. The Heart of the Mountain",
     Level = "55",
     Attain = "50",
@@ -1899,7 +1899,7 @@ KQuestInstanceData[5].Quests.Horde[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[5].Quests.Horde[6] = {
+kQuestInstanceData[5].Quests.Horde[6] = {
     Title = "6. KILL ON SIGHT: Dark Iron Dwarves",
     Level = "52",
     Attain = "48",
@@ -1912,7 +1912,7 @@ KQuestInstanceData[5].Quests.Horde[6] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[5].Quests.Horde[7] = {
+kQuestInstanceData[5].Quests.Horde[7] = {
     Title = "7. KILL ON SIGHT: High Ranking Dark Iron Officials",
     Level = "54",
     Attain = "50",
@@ -1925,7 +1925,7 @@ KQuestInstanceData[5].Quests.Horde[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[5].Quests.Horde[8] = {
+kQuestInstanceData[5].Quests.Horde[8] = {
     Title = "8. Operation: Death to Angerforge",
     Level = "58",
     Attain = "52",
@@ -1944,7 +1944,7 @@ KQuestInstanceData[5].Quests.Horde[8] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Horde[9] = {
+kQuestInstanceData[5].Quests.Horde[9] = {
     Title = "9. The Rise of the Machines",
     Level = "58",
     Attain = "52",
@@ -1981,7 +1981,7 @@ KQuestInstanceData[5].Quests.Horde[9] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Horde[10] = {
+kQuestInstanceData[5].Quests.Horde[10] = {
     Title = "10. A Taste of Flame",
     Level = "58",
     Attain = "52",
@@ -2012,7 +2012,7 @@ KQuestInstanceData[5].Quests.Horde[10] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Horde[11] = {
+kQuestInstanceData[5].Quests.Horde[11] = {
     Title = "11. Disharmony of Fire",
     Level = "56",
     Attain = "48",
@@ -2049,7 +2049,7 @@ KQuestInstanceData[5].Quests.Horde[11] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Horde[12] = {
+kQuestInstanceData[5].Quests.Horde[12] = {
     Title = "12. The Last Element",
     Level = "54",
     Attain = "48",
@@ -2068,7 +2068,7 @@ KQuestInstanceData[5].Quests.Horde[12] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Horde[13] = {
+kQuestInstanceData[5].Quests.Horde[13] = {
     Title = "13. Commander Gor'shak",
     Level = "52",
     Attain = "48",
@@ -2081,7 +2081,7 @@ KQuestInstanceData[5].Quests.Horde[13] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[5].Quests.Horde[14] = {
+kQuestInstanceData[5].Quests.Horde[14] = {
     Title = "14. The Royal Rescue",
     Level = "59",
     Attain = "48",
@@ -2106,18 +2106,18 @@ KQuestInstanceData[5].Quests.Horde[14] = {
         },
     }
 }
-KQuestInstanceData[5].Quests.Horde[15] = KQuestInstanceData[5].Quests.Alliance[15]
-KQuestInstanceData[5].Quests.Horde[16] = KQuestInstanceData[5].Quests.Alliance[16]
-KQuestInstanceData[5].Quests.Horde[17] = KQuestInstanceData[5].Quests.Alliance[17]
-KQuestInstanceData[5].Quests.Horde[18] = KQuestInstanceData[5].Quests.Alliance[18]
-KQuestInstanceData[5].Quests.Horde[19] = KQuestInstanceData[5].Quests.Alliance[19]
-KQuestInstanceData[5].Quests.Horde[20] = KQuestInstanceData[5].Quests.Alliance[20]
-KQuestInstanceData[5].Quests.Horde[21] = KQuestInstanceData[5].Quests.Alliance[21]
-KQuestInstanceData[5].Quests.Horde[22] = KQuestInstanceData[5].Quests.Alliance[22]
-KQuestInstanceData[5].Quests.Horde[23] = KQuestInstanceData[5].Quests.Alliance[23]
+kQuestInstanceData[5].Quests.Horde[15] = kQuestInstanceData[5].Quests.Alliance[15]
+kQuestInstanceData[5].Quests.Horde[16] = kQuestInstanceData[5].Quests.Alliance[16]
+kQuestInstanceData[5].Quests.Horde[17] = kQuestInstanceData[5].Quests.Alliance[17]
+kQuestInstanceData[5].Quests.Horde[18] = kQuestInstanceData[5].Quests.Alliance[18]
+kQuestInstanceData[5].Quests.Horde[19] = kQuestInstanceData[5].Quests.Alliance[19]
+kQuestInstanceData[5].Quests.Horde[20] = kQuestInstanceData[5].Quests.Alliance[20]
+kQuestInstanceData[5].Quests.Horde[21] = kQuestInstanceData[5].Quests.Alliance[21]
+kQuestInstanceData[5].Quests.Horde[22] = kQuestInstanceData[5].Quests.Alliance[22]
+kQuestInstanceData[5].Quests.Horde[23] = kQuestInstanceData[5].Quests.Alliance[23]
 
 --------------- INST6 - Blackwing Lair ---------------
-KQuestInstanceData[6] = {
+kQuestInstanceData[6] = {
     Story = {
 	    ["Page1"] = "Blackwing Lair can be found at the very height of Blackrock Spire. It is there in the dark recesses of the mountain's peak that Nefarian has begun to unfold the final stages of his plan to destroy Ragnaros once and for all and lead his army to undisputed supremacy over all the races of Azeroth.",
 	    ["Page2"] = "The mighty fortress carved within the fiery bowels of Blackrock Mountain was designed by the master dwarf-mason, Franclorn Forgewright. Intended to be the symbol of Dark Iron power, the fortress was held by the sinister dwarves for centuries. However, Nefarian - the cunning son of the dragon, Deathwing - had other plans for the great keep. He and his draconic minions took control of the upper Spire and made war on the dwarves' holdings in the mountain's volcanic depths, which serve as the seat of power for Ragnaros the Firelord. Ragnaros has uncovered the secret to creating life from stone and plans to build an army of unstoppable golems to aid him in conquering the whole of Blackrock Mountain.",
@@ -2136,7 +2136,7 @@ KQuestInstanceData[6] = {
         Horde = {}
     }
 }
-KQuestInstanceData[6].Quests.Alliance[1] = {
+kQuestInstanceData[6].Quests.Alliance[1] = {
     Title = "1. Nefarius's Corruption",
     Level = "60",
     Attain = "60",
@@ -2161,7 +2161,7 @@ KQuestInstanceData[6].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[6].Quests.Alliance[2] = {
+kQuestInstanceData[6].Quests.Alliance[2] = {
     Title = "2. The Lord of Blackrock",
     Level = "60",
     Attain = "60",
@@ -2192,7 +2192,7 @@ KQuestInstanceData[6].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[6].Quests.Alliance[3] = {
+kQuestInstanceData[6].Quests.Alliance[3] = {
     Title = "3. Only One May Rise",
     Level = "60",
     Attain = "60",
@@ -2205,7 +2205,7 @@ KQuestInstanceData[6].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[6].Quests.Alliance[4] = {
+kQuestInstanceData[6].Quests.Alliance[4] = {
     Title = "4. The Only Prescription",
     Level = "60",
     Attain = "60",
@@ -2224,7 +2224,7 @@ KQuestInstanceData[6].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[6].Quests.Alliance[5] = {
+kQuestInstanceData[6].Quests.Alliance[5] = {
     Title = "5. The Key to Karazhan IX",
     Level = "60",
     Attain = "58",
@@ -2243,7 +2243,7 @@ KQuestInstanceData[6].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[6].Quests.Alliance[6] = {
+kQuestInstanceData[6].Quests.Alliance[6] = {
     Title = "6. Scythe of the Goddess",
     Level = "60",
     Attain = "58",
@@ -2256,8 +2256,8 @@ KQuestInstanceData[6].Quests.Alliance[6] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[6].Quests.Horde[1] = KQuestInstanceData[6].Quests.Alliance[1]
-KQuestInstanceData[6].Quests.Horde[2] = {
+kQuestInstanceData[6].Quests.Horde[1] = kQuestInstanceData[6].Quests.Alliance[1]
+kQuestInstanceData[6].Quests.Horde[2] = {
     Title = "2. The Lord of Blackrock",
     Level = "60",
     Attain = "60",
@@ -2266,15 +2266,15 @@ KQuestInstanceData[6].Quests.Horde[2] = {
     Note = "The follow up sends you to High Overlord Saurfang (Orgrimmar - Valley of Strength; "..yellow.."51,76"..white..") for the reward.",
     Prequest = "No",
     Folgequest = "The Lord of Blackrock",
-    Rewards = KQuestInstanceData[6].Quests.Alliance[2].Rewards
+    Rewards = kQuestInstanceData[6].Quests.Alliance[2].Rewards
 }
-KQuestInstanceData[6].Quests.Horde[3] = KQuestInstanceData[6].Quests.Alliance[3]
-KQuestInstanceData[6].Quests.Horde[4] = KQuestInstanceData[6].Quests.Alliance[4]
-KQuestInstanceData[6].Quests.Horde[5] = KQuestInstanceData[6].Quests.Alliance[5]
-KQuestInstanceData[6].Quests.Horde[6] = KQuestInstanceData[6].Quests.Alliance[6]
+kQuestInstanceData[6].Quests.Horde[3] = kQuestInstanceData[6].Quests.Alliance[3]
+kQuestInstanceData[6].Quests.Horde[4] = kQuestInstanceData[6].Quests.Alliance[4]
+kQuestInstanceData[6].Quests.Horde[5] = kQuestInstanceData[6].Quests.Alliance[5]
+kQuestInstanceData[6].Quests.Horde[6] = kQuestInstanceData[6].Quests.Alliance[6]
 
 --------------- INST7 - Blackfathom Deeps ---------------
-KQuestInstanceData[7] = {
+kQuestInstanceData[7] = {
     Story = "Situated along the Zoram Strand of Ashenvale, Blackfathom Deeps was once a glorious temple dedicated to the night elves' moon-goddess, Elune. However, the great Sundering shattered the temple - sinking it beneath the waves of the Veiled Sea. There it remained untouched - until, drawn by its ancient power - the naga and satyr emerged to plumb its secrets. Legends hold that the ancient beast, Aku'mai, has taken up residence within the temple's ruins. Aku'mai, a favored pet of the primordial Old Gods, has preyed upon the area ever since. Drawn to Aku'mai's presence, the cult known as the Twilight's Hammer has also come to bask in the Old Gods' evil presence.",
     Caption = "Blackfathom Deeps",
     QAA = "6 Quests",
@@ -2284,7 +2284,7 @@ KQuestInstanceData[7] = {
         Horde = {}
     }
 }
-KQuestInstanceData[7].Quests.Alliance[1] = {
+kQuestInstanceData[7].Quests.Alliance[1] = {
     Title = "1. Knowledge in the Deeps",
     Level = "23",
     Attain = "10",
@@ -2303,7 +2303,7 @@ KQuestInstanceData[7].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[7].Quests.Alliance[2] = {
+kQuestInstanceData[7].Quests.Alliance[2] = {
     Title = "2. Researching the Corruption",
     Level = "24",
     Attain = "18",
@@ -2328,7 +2328,7 @@ KQuestInstanceData[7].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[7].Quests.Alliance[3] = {
+kQuestInstanceData[7].Quests.Alliance[3] = {
     Title = "3. In Search of Thaelrid",
     Level = "24",
     Attain = "18",
@@ -2341,7 +2341,7 @@ KQuestInstanceData[7].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[7].Quests.Alliance[4] = {
+kQuestInstanceData[7].Quests.Alliance[4] = {
     Title = "4. Blackfathom Villainy",
     Level = "27",
     Attain = "18",
@@ -2366,7 +2366,7 @@ KQuestInstanceData[7].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[7].Quests.Alliance[5] = {
+kQuestInstanceData[7].Quests.Alliance[5] = {
     Title = "5. Twilight Falls",
     Level = "25",
     Attain = "20",
@@ -2391,7 +2391,7 @@ KQuestInstanceData[7].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[7].Quests.Alliance[6] = {
+kQuestInstanceData[7].Quests.Alliance[6] = {
     Title = "6. The Orb of Soran'ruk",
     Level = "25",
     Attain = "20",
@@ -2416,7 +2416,7 @@ KQuestInstanceData[7].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[7].Quests.Horde[1] = {
+kQuestInstanceData[7].Quests.Horde[1] = {
     Title = "1. The Essence of Aku'Mai",
     Level = "22",
     Attain = "17",
@@ -2429,7 +2429,7 @@ KQuestInstanceData[7].Quests.Horde[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[7].Quests.Horde[2] = {
+kQuestInstanceData[7].Quests.Horde[2] = {
     Title = "2. Allegiance to the Old Gods",
     Level = "26",
     Attain = "17",
@@ -2454,7 +2454,7 @@ KQuestInstanceData[7].Quests.Horde[2] = {
         },
     }
 }
-KQuestInstanceData[7].Quests.Horde[3] = {
+kQuestInstanceData[7].Quests.Horde[3] = {
     Title = "3. Amongst the Ruins",
     Level = "27",
     Attain = "21",
@@ -2467,7 +2467,7 @@ KQuestInstanceData[7].Quests.Horde[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[7].Quests.Horde[4] = {
+kQuestInstanceData[7].Quests.Horde[4] = {
     Title = "4. Blackfathom Villainy",
     Level = "27",
     Attain = "18",
@@ -2476,9 +2476,9 @@ KQuestInstanceData[7].Quests.Horde[4] = {
     Note = "Twilight Lord Kelris is at "..yellow.."[8]"..white..". You find Bashana Runetotem in Thunderbluff - The Elder Rise ("..yellow.."70,33"..white.."). \n\nATTENTION! If you turn on the flames beside Lord Kelris, enemies appear and attack you.",
     Prequest = "No",
     Folgequest = "No",
-    Rewards = KQuestInstanceData[7].Quests.Alliance[4].Rewards
+    Rewards = kQuestInstanceData[7].Quests.Alliance[4].Rewards
 }
-KQuestInstanceData[7].Quests.Horde[5] = {
+kQuestInstanceData[7].Quests.Horde[5] = {
     Title = "5. The Orb of Soran'ruk",
     Level = "25",
     Attain = "20",
@@ -2503,7 +2503,7 @@ KQuestInstanceData[7].Quests.Horde[5] = {
         },
     }
 }
-KQuestInstanceData[7].Quests.Horde[6] = {
+kQuestInstanceData[7].Quests.Horde[6] = {
     Title = "6. Baron Aquanis",
     Level = "30",
     Attain = "21",
@@ -2530,7 +2530,7 @@ KQuestInstanceData[7].Quests.Horde[6] = {
 }
 
 --------------- INST8 - Lower Blackrock Spire ---------------
-KQuestInstanceData[8] = {
+kQuestInstanceData[8] = {
     Story = "The mighty fortress carved within the fiery bowels of Blackrock Mountain was designed by the master dwarf-mason, Franclorn Forgewright. Intended to be the symbol of Dark Iron power, the fortress was held by the sinister dwarves for centuries. However, Nefarian - the cunning son of the dragon, Deathwing - had other plans for the great keep. He and his draconic minions took control of the upper Spire and made war on the dwarves' holdings in the mountain's volcanic depths. Realizing that the dwarves were led by the mighty fire elemental, Ragnaros - Nefarian vowed to crush his enemies and claim the whole of Blackrock mountain for himself.",
     Caption = "Lower Blackrock Spire",
     QAA = "15 Quests",
@@ -2540,7 +2540,7 @@ KQuestInstanceData[8] = {
         Horde = {}
     }
 }
-KQuestInstanceData[8].Quests.Alliance[1] = {
+kQuestInstanceData[8].Quests.Alliance[1] = {
     Title = "1. The Final Tablets",
     Level = "58",
     Attain = "40",
@@ -2565,7 +2565,7 @@ KQuestInstanceData[8].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Alliance[2] = {
+kQuestInstanceData[8].Quests.Alliance[2] = {
     Title = "2. Kibler's Exotic Pets",
     Level = "59",
     Attain = "55",
@@ -2584,7 +2584,7 @@ KQuestInstanceData[8].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Alliance[3] = {
+kQuestInstanceData[8].Quests.Alliance[3] = {
     Title = "3. En-Ay-Es-Tee-Why",
     Level = "59",
     Attain = "55",
@@ -2603,7 +2603,7 @@ KQuestInstanceData[8].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Alliance[4] = {
+kQuestInstanceData[8].Quests.Alliance[4] = {
     Title = "4. Mother's Milk",
     Level = "60",
     Attain = "55",
@@ -2622,7 +2622,7 @@ KQuestInstanceData[8].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Alliance[5] = {
+kQuestInstanceData[8].Quests.Alliance[5] = {
     Title = "5. Put Her Down",
     Level = "59",
     Attain = "55",
@@ -2653,7 +2653,7 @@ KQuestInstanceData[8].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Alliance[6] = {
+kQuestInstanceData[8].Quests.Alliance[6] = {
     Title = "6. Urok Doomhowl",
     Level = "60",
     Attain = "55",
@@ -2672,7 +2672,7 @@ KQuestInstanceData[8].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Alliance[7] = {
+kQuestInstanceData[8].Quests.Alliance[7] = {
     Title = "7. Bijou's Belongings",
     Level = "59",
     Attain = "55",
@@ -2685,7 +2685,7 @@ KQuestInstanceData[8].Quests.Alliance[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[8].Quests.Alliance[8] = {
+kQuestInstanceData[8].Quests.Alliance[8] = {
     Title = "8. Maxwell's Mission",
     Level = "60",
     Attain = "55",
@@ -2728,7 +2728,7 @@ KQuestInstanceData[8].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Alliance[9] = {
+kQuestInstanceData[8].Quests.Alliance[9] = {
     Title = "9. Seal of Ascension",
     Level = "60",
     Attain = "57",
@@ -2741,7 +2741,7 @@ KQuestInstanceData[8].Quests.Alliance[9] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[8].Quests.Alliance[10] = {
+kQuestInstanceData[8].Quests.Alliance[10] = {
     Title = "10. General Drakkisath's Command",
     Level = "60",
     Attain = "55",
@@ -2754,7 +2754,7 @@ KQuestInstanceData[8].Quests.Alliance[10] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[8].Quests.Alliance[11] = {
+kQuestInstanceData[8].Quests.Alliance[11] = {
     Title = "11. The Left Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -2767,7 +2767,7 @@ KQuestInstanceData[8].Quests.Alliance[11] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[8].Quests.Alliance[12] = {
+kQuestInstanceData[8].Quests.Alliance[12] = {
     Title = "12. The Right Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -2780,7 +2780,7 @@ KQuestInstanceData[8].Quests.Alliance[12] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[8].Quests.Alliance[13] = {
+kQuestInstanceData[8].Quests.Alliance[13] = {
     Title = "13. Snakestone of the Shadow Huntress",
     Level = "60",
     Attain = "50",
@@ -2799,7 +2799,7 @@ KQuestInstanceData[8].Quests.Alliance[13] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Alliance[14] = {
+kQuestInstanceData[8].Quests.Alliance[14] = {
     Title = "14. Hot Fiery Death",
     Level = "60",
     Attain = "60",
@@ -2824,7 +2824,7 @@ KQuestInstanceData[8].Quests.Alliance[14] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Alliance[15] = {
+kQuestInstanceData[8].Quests.Alliance[15] = {
     Title = "15. The Dark Iron Desecrator",
     Level = "60",
     Attain = "55",
@@ -2843,11 +2843,11 @@ KQuestInstanceData[8].Quests.Alliance[15] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Horde[1] = KQuestInstanceData[8].Quests.Alliance[1]
-KQuestInstanceData[8].Quests.Horde[2] = KQuestInstanceData[8].Quests.Alliance[2]
-KQuestInstanceData[8].Quests.Horde[3] = KQuestInstanceData[8].Quests.Alliance[3]
-KQuestInstanceData[8].Quests.Horde[4] = KQuestInstanceData[8].Quests.Alliance[4]
-KQuestInstanceData[8].Quests.Horde[5] = {
+kQuestInstanceData[8].Quests.Horde[1] = kQuestInstanceData[8].Quests.Alliance[1]
+kQuestInstanceData[8].Quests.Horde[2] = kQuestInstanceData[8].Quests.Alliance[2]
+kQuestInstanceData[8].Quests.Horde[3] = kQuestInstanceData[8].Quests.Alliance[3]
+kQuestInstanceData[8].Quests.Horde[4] = kQuestInstanceData[8].Quests.Alliance[4]
+kQuestInstanceData[8].Quests.Horde[5] = {
     Title = "5. The Pack Mistress",
     Level = "59",
     Attain = "55",
@@ -2856,10 +2856,10 @@ KQuestInstanceData[8].Quests.Horde[5] = {
     Note = "You find Halycon at "..yellow.."[17]"..white..".",
     Prequest = "No",
     Folgequest = "No",
-    Rewards = KQuestInstanceData[8].Quests.Alliance[5].Rewards
+    Rewards = kQuestInstanceData[8].Quests.Alliance[5].Rewards
 }
-KQuestInstanceData[8].Quests.Horde[6] = KQuestInstanceData[8].Quests.Alliance[6]
-KQuestInstanceData[8].Quests.Horde[7] = {
+kQuestInstanceData[8].Quests.Horde[6] = kQuestInstanceData[8].Quests.Alliance[6]
+kQuestInstanceData[8].Quests.Horde[7] = {
     Title = "7. Operative Bijou",
     Level = "59",
     Attain = "55",
@@ -2872,7 +2872,7 @@ KQuestInstanceData[8].Quests.Horde[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[8].Quests.Horde[8] = {
+kQuestInstanceData[8].Quests.Horde[8] = {
     Title = "8. Bijou's Belongings",
     Level = "59",
     Attain = "55",
@@ -2897,8 +2897,8 @@ KQuestInstanceData[8].Quests.Horde[8] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Horde[9] = KQuestInstanceData[8].Quests.Alliance[9]
-KQuestInstanceData[8].Quests.Horde[10] = {
+kQuestInstanceData[8].Quests.Horde[9] = kQuestInstanceData[8].Quests.Alliance[9]
+kQuestInstanceData[8].Quests.Horde[10] = {
     Title = "10. Warlord's Command",
     Level = "60",
     Attain = "55",
@@ -2941,12 +2941,12 @@ KQuestInstanceData[8].Quests.Horde[10] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Horde[11] = KQuestInstanceData[8].Quests.Alliance[11]
-KQuestInstanceData[8].Quests.Horde[12] = KQuestInstanceData[8].Quests.Alliance[12]
-KQuestInstanceData[8].Quests.Horde[13] = KQuestInstanceData[8].Quests.Alliance[13]
-KQuestInstanceData[8].Quests.Horde[14] = KQuestInstanceData[8].Quests.Alliance[14]
-KQuestInstanceData[8].Quests.Horde[15] = KQuestInstanceData[8].Quests.Alliance[15]
-KQuestInstanceData[8].Quests.Horde[16] = {
+kQuestInstanceData[8].Quests.Horde[11] = kQuestInstanceData[8].Quests.Alliance[11]
+kQuestInstanceData[8].Quests.Horde[12] = kQuestInstanceData[8].Quests.Alliance[12]
+kQuestInstanceData[8].Quests.Horde[13] = kQuestInstanceData[8].Quests.Alliance[13]
+kQuestInstanceData[8].Quests.Horde[14] = kQuestInstanceData[8].Quests.Alliance[14]
+kQuestInstanceData[8].Quests.Horde[15] = kQuestInstanceData[8].Quests.Alliance[15]
+kQuestInstanceData[8].Quests.Horde[16] = {
     Title = "16. Forest Troll Scum",
     Level = "60",
     Attain = "48",
@@ -2965,7 +2965,7 @@ KQuestInstanceData[8].Quests.Horde[16] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Horde[17] = {
+kQuestInstanceData[8].Quests.Horde[17] = {
     Title = "17. Raider's Raid",
     Level = "58",
     Attain = "50",
@@ -2996,7 +2996,7 @@ KQuestInstanceData[8].Quests.Horde[17] = {
         },
     }
 }
-KQuestInstanceData[8].Quests.Horde[18] = {
+kQuestInstanceData[8].Quests.Horde[18] = {
     Title = "18. The Final Crack",
     Level = "59",
     Attain = "50",
@@ -3017,7 +3017,7 @@ KQuestInstanceData[8].Quests.Horde[18] = {
 }
 
 --------------- INST9 - Upper Blackrock Spire ---------------
-KQuestInstanceData[9] = {
+kQuestInstanceData[9] = {
     Story = "The mighty fortress carved within the fiery bowels of Blackrock Mountain was designed by the master dwarf-mason, Franclorn Forgewright. Intended to be the symbol of Dark Iron power, the fortress was held by the sinister dwarves for centuries. However, Nefarian - the cunning son of the dragon, Deathwing - had other plans for the great keep. He and his draconic minions took control of the upper Spire and made war on the dwarves' holdings in the mountain's volcanic depths. Realizing that the dwarves were led by the mighty fire elemental, Ragnaros - Nefarian vowed to crush his enemies and claim the whole of Blackrock mountain for himself.",
     Caption = "Upper Blackrock Spire",
     QAA = "12 Quests",
@@ -3027,7 +3027,7 @@ KQuestInstanceData[9] = {
         Horde = {}
     }
 }
-KQuestInstanceData[9].Quests.Alliance[1] = {
+kQuestInstanceData[9].Quests.Alliance[1] = {
     Title = "1. The Matron Protectorate",
     Level = "60",
     Attain = "57",
@@ -3040,7 +3040,7 @@ KQuestInstanceData[9].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[9].Quests.Alliance[2] = {
+kQuestInstanceData[9].Quests.Alliance[2] = {
     Title = "2. Finkle Einhorn, At Your Service!",
     Level = "60",
     Attain = "55",
@@ -3053,7 +3053,7 @@ KQuestInstanceData[9].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[9].Quests.Alliance[3] = {
+kQuestInstanceData[9].Quests.Alliance[3] = {
     Title = "3. Egg Freezing",
     Level = "60",
     Attain = "57",
@@ -3066,7 +3066,7 @@ KQuestInstanceData[9].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[9].Quests.Alliance[4] = {
+kQuestInstanceData[9].Quests.Alliance[4] = {
     Title = "4. Eye of the Emberseer",
     Level = "60",
     Attain = "56",
@@ -3079,7 +3079,7 @@ KQuestInstanceData[9].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[9].Quests.Alliance[5] = {
+kQuestInstanceData[9].Quests.Alliance[5] = {
     Title = "5. General Drakkisath's Demise",
     Level = "60",
     Attain = "55",
@@ -3110,7 +3110,7 @@ KQuestInstanceData[9].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[9].Quests.Alliance[6] = {
+kQuestInstanceData[9].Quests.Alliance[6] = {
     Title = "6. Doomrigger's Clasp",
     Level = "60",
     Attain = "57",
@@ -3135,7 +3135,7 @@ KQuestInstanceData[9].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[9].Quests.Alliance[7] = {
+kQuestInstanceData[9].Quests.Alliance[7] = {
     Title = "7. Drakefire Amulet",
     Level = "60",
     Attain = "50",
@@ -3154,7 +3154,7 @@ KQuestInstanceData[9].Quests.Alliance[7] = {
         },
     }
 }
-KQuestInstanceData[9].Quests.Alliance[8] = {
+kQuestInstanceData[9].Quests.Alliance[8] = {
     Title = "8. Blackhand's Command",
     Level = "60",
     Attain = "55",
@@ -3167,7 +3167,7 @@ KQuestInstanceData[9].Quests.Alliance[8] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[9].Quests.Alliance[9] = {
+kQuestInstanceData[9].Quests.Alliance[9] = {
     Title = "9. Final Preparations",
     Level = "60",
     Attain = "58",
@@ -3180,7 +3180,7 @@ KQuestInstanceData[9].Quests.Alliance[9] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[9].Quests.Alliance[10] = {
+kQuestInstanceData[9].Quests.Alliance[10] = {
     Title = "10. Mea Culpa, Lord Valthalak",
     Level = "60",
     Attain = "58",
@@ -3205,7 +3205,7 @@ KQuestInstanceData[9].Quests.Alliance[10] = {
         },
     }
 }
-KQuestInstanceData[9].Quests.Alliance[11] = {
+kQuestInstanceData[9].Quests.Alliance[11] = {
     Title = "11. The Demon Forge",
     Level = "60",
     Attain = "55",
@@ -3236,7 +3236,7 @@ KQuestInstanceData[9].Quests.Alliance[11] = {
         },
     }
 }
-KQuestInstanceData[9].Quests.Alliance[12] = {
+kQuestInstanceData[9].Quests.Alliance[12] = {
     Title = "12. The Upper Binding I",
     Level = "60",
     Attain = "55",
@@ -3255,11 +3255,11 @@ KQuestInstanceData[9].Quests.Alliance[12] = {
         },
     }
 }
-KQuestInstanceData[9].Quests.Horde[1] = KQuestInstanceData[9].Quests.Alliance[1]
-KQuestInstanceData[9].Quests.Horde[2] = KQuestInstanceData[9].Quests.Alliance[2]
-KQuestInstanceData[9].Quests.Horde[3] = KQuestInstanceData[9].Quests.Alliance[3]
-KQuestInstanceData[9].Quests.Horde[4] = KQuestInstanceData[9].Quests.Alliance[4]
-KQuestInstanceData[9].Quests.Horde[5] = {
+kQuestInstanceData[9].Quests.Horde[1] = kQuestInstanceData[9].Quests.Alliance[1]
+kQuestInstanceData[9].Quests.Horde[2] = kQuestInstanceData[9].Quests.Alliance[2]
+kQuestInstanceData[9].Quests.Horde[3] = kQuestInstanceData[9].Quests.Alliance[3]
+kQuestInstanceData[9].Quests.Horde[4] = kQuestInstanceData[9].Quests.Alliance[4]
+kQuestInstanceData[9].Quests.Horde[5] = {
     Title = "5. The Darkstone Tablet",
     Level = "60",
     Attain = "57",
@@ -3284,7 +3284,7 @@ KQuestInstanceData[9].Quests.Horde[5] = {
         },
     }
 }
-KQuestInstanceData[9].Quests.Horde[6] = {
+kQuestInstanceData[9].Quests.Horde[6] = {
     Title = "6. For The Horde!",
     Level = "60",
     Attain = "55",
@@ -3315,7 +3315,7 @@ KQuestInstanceData[9].Quests.Horde[6] = {
         },
     }
 }
-KQuestInstanceData[9].Quests.Horde[7] = {
+kQuestInstanceData[9].Quests.Horde[7] = {
     Title = "7. Oculus Illusions",
     Level = "60",
     Attain = "55",
@@ -3328,7 +3328,7 @@ KQuestInstanceData[9].Quests.Horde[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[9].Quests.Horde[8] = {
+kQuestInstanceData[9].Quests.Horde[8] = {
     Title = "8. Blood of the Black Dragon Champion",
     Level = "60",
     Attain = "55",
@@ -3347,7 +3347,7 @@ KQuestInstanceData[9].Quests.Horde[8] = {
         },
     }
 }
-KQuestInstanceData[9].Quests.Horde[9] = {
+kQuestInstanceData[9].Quests.Horde[9] = {
     Title = "9. Blackhand's Command",
     Level = "60",
     Attain = "55",
@@ -3360,7 +3360,7 @@ KQuestInstanceData[9].Quests.Horde[9] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[9].Quests.Horde[10] = {
+kQuestInstanceData[9].Quests.Horde[10] = {
     Title = "10. Final Preparations",
     Level = "60",
     Attain = "58",
@@ -3373,7 +3373,7 @@ KQuestInstanceData[9].Quests.Horde[10] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[9].Quests.Horde[11] = {
+kQuestInstanceData[9].Quests.Horde[11] = {
     Title = "11. Mea Culpa, Lord Valthalak",
     Level = "60",
     Attain = "58",
@@ -3398,7 +3398,7 @@ KQuestInstanceData[9].Quests.Horde[11] = {
         },
     }
 }
-KQuestInstanceData[9].Quests.Horde[12] = {
+kQuestInstanceData[9].Quests.Horde[12] = {
     Title = "12. The Demon Forge",
     Level = "60",
     Attain = "55",
@@ -3429,7 +3429,7 @@ KQuestInstanceData[9].Quests.Horde[12] = {
         },
     }
 }
-KQuestInstanceData[9].Quests.Horde[13] = {
+kQuestInstanceData[9].Quests.Horde[13] = {
     Title = "13. The Upper Binding I",
     Level = "60",
     Attain = "55",
@@ -3450,7 +3450,7 @@ KQuestInstanceData[9].Quests.Horde[13] = {
 }
 
 --------------- INST10 - Dire Maul (East) ---------------
-KQuestInstanceData[10] = {
+kQuestInstanceData[10] = {
     Story = "Built twelve thousand years ago by a covert sect of night elf sorcerers, the ancient city of Eldre'Thalas was used to protect Queen Azshara's most prized arcane secrets. Though it was ravaged by the Great Sundering of the world, much of the wondrous city still stands as the imposing Dire Maul. The ruins' three distinct districts have been overrun by all manner of creatures - especially the spectral highborne, foul satyr and brutish ogres. Only the most daring party of adventurers can enter this broken city and face the ancient evils locked within its ancient vaults.",
     Caption = "Dire Maul (East)",
     QAA = "9 Quests",
@@ -3460,7 +3460,7 @@ KQuestInstanceData[10] = {
         Horde = {}
     }
 }
-KQuestInstanceData[10].Quests.Alliance[1] = {
+kQuestInstanceData[10].Quests.Alliance[1] = {
     Title = "1. Pusillin and the Elder Azj'Tordin",
     Level = "58",
     Attain = "54",
@@ -3485,7 +3485,7 @@ KQuestInstanceData[10].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[10].Quests.Alliance[2] = {
+kQuestInstanceData[10].Quests.Alliance[2] = {
     Title = "2. Lethtendris's Web",
     Level = "57",
     Attain = "54",
@@ -3504,7 +3504,7 @@ KQuestInstanceData[10].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[10].Quests.Alliance[3] = {
+kQuestInstanceData[10].Quests.Alliance[3] = {
     Title = "3. Shards of the Felvine",
     Level = "60",
     Attain = "56",
@@ -3529,7 +3529,7 @@ KQuestInstanceData[10].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[10].Quests.Alliance[4] = {
+kQuestInstanceData[10].Quests.Alliance[4] = {
     Title = "4. The Left Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -3542,7 +3542,7 @@ KQuestInstanceData[10].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[10].Quests.Alliance[5] = {
+kQuestInstanceData[10].Quests.Alliance[5] = {
     Title = "5. The Right Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -3555,7 +3555,7 @@ KQuestInstanceData[10].Quests.Alliance[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[10].Quests.Alliance[6] = {
+kQuestInstanceData[10].Quests.Alliance[6] = {
     Title = "6. The Prison's Bindings",
     Level = "60",
     Attain = "60",
@@ -3568,7 +3568,7 @@ KQuestInstanceData[10].Quests.Alliance[6] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[10].Quests.Alliance[7] = {
+kQuestInstanceData[10].Quests.Alliance[7] = {
     Title = "7. Arcane Refreshment",
     Level = "60",
     Attain = "60",
@@ -3578,7 +3578,7 @@ KQuestInstanceData[10].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "A Special Kind of Summons",
 }
-KQuestInstanceData[10].Quests.Alliance[8] = {
+kQuestInstanceData[10].Quests.Alliance[8] = {
     Title = "8. The Wildshaper",
     Level = "60",
     Attain = "55",
@@ -3603,7 +3603,7 @@ KQuestInstanceData[10].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[10].Quests.Alliance[9] = {
+kQuestInstanceData[10].Quests.Alliance[9] = {
     Title = "9. Wrapping Warpwood",
     Level = "61",
     Attain = "60",
@@ -3622,8 +3622,8 @@ KQuestInstanceData[10].Quests.Alliance[9] = {
         },
     }
 }
-KQuestInstanceData[10].Quests.Horde[1] = KQuestInstanceData[10].Quests.Alliance[1]
-KQuestInstanceData[10].Quests.Horde[2] = {
+kQuestInstanceData[10].Quests.Horde[1] = kQuestInstanceData[10].Quests.Alliance[1]
+kQuestInstanceData[10].Quests.Horde[2] = {
     Title = "2. Lethtendris's Web",
     Level = "57",
     Attain = "54",
@@ -3632,19 +3632,19 @@ KQuestInstanceData[10].Quests.Horde[2] = {
     Note = "Lethtendris is in Dire Maul "..yellow.."East"..white.." at "..yellow.."[3]"..white..". The prequest comes from Warcaller Gorlach in Orgrimmar. He roams the entire city.",
     Prequest = "Camp Mojache",
     Folgequest = "No",
-    Rewards = KQuestInstanceData[10].Quests.Alliance[2].Rewards
+    Rewards = kQuestInstanceData[10].Quests.Alliance[2].Rewards
 }
-KQuestInstanceData[10].Quests.Horde[3] = KQuestInstanceData[10].Quests.Alliance[3]
-KQuestInstanceData[10].Quests.Horde[4] = KQuestInstanceData[10].Quests.Alliance[4]
-KQuestInstanceData[10].Quests.Horde[5] = KQuestInstanceData[10].Quests.Alliance[5]
-KQuestInstanceData[10].Quests.Horde[6] = KQuestInstanceData[10].Quests.Alliance[6]
-KQuestInstanceData[10].Quests.Horde[7] = KQuestInstanceData[10].Quests.Alliance[7]
-KQuestInstanceData[10].Quests.Horde[8] = KQuestInstanceData[10].Quests.Alliance[8]
-KQuestInstanceData[10].Quests.Horde[9] = KQuestInstanceData[10].Quests.Alliance[9]
+kQuestInstanceData[10].Quests.Horde[3] = kQuestInstanceData[10].Quests.Alliance[3]
+kQuestInstanceData[10].Quests.Horde[4] = kQuestInstanceData[10].Quests.Alliance[4]
+kQuestInstanceData[10].Quests.Horde[5] = kQuestInstanceData[10].Quests.Alliance[5]
+kQuestInstanceData[10].Quests.Horde[6] = kQuestInstanceData[10].Quests.Alliance[6]
+kQuestInstanceData[10].Quests.Horde[7] = kQuestInstanceData[10].Quests.Alliance[7]
+kQuestInstanceData[10].Quests.Horde[8] = kQuestInstanceData[10].Quests.Alliance[8]
+kQuestInstanceData[10].Quests.Horde[9] = kQuestInstanceData[10].Quests.Alliance[9]
 
 --------------- INST11 - Dire Maul (North) ---------------
-KQuestInstanceData[11] = {
-    Story = KQuestInstanceData[10].Story,
+kQuestInstanceData[11] = {
+    Story = kQuestInstanceData[10].Story,
     Caption = "Dire Maul (North)",
     QAA = "4 Quests",
     QAH = "4 Quests",
@@ -3653,7 +3653,7 @@ KQuestInstanceData[11] = {
         Horde = {}
     }
 }
-KQuestInstanceData[11].Quests.Alliance[1] = {
+kQuestInstanceData[11].Quests.Alliance[1] = {
     Title = "1. A Broken Trap",
     Level = "60",
     Attain = "56",
@@ -3666,7 +3666,7 @@ KQuestInstanceData[11].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[11].Quests.Alliance[2] = {
+kQuestInstanceData[11].Quests.Alliance[2] = {
     Title = "2. The Gordok Ogre Suit",
     Level = "60",
     Attain = "56",
@@ -3685,7 +3685,7 @@ KQuestInstanceData[11].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[11].Quests.Alliance[3] = {
+kQuestInstanceData[11].Quests.Alliance[3] = {
     Title = "3. Free Knot!",
     Level = "60",
     Attain = "57",
@@ -3698,7 +3698,7 @@ KQuestInstanceData[11].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[11].Quests.Alliance[4] = {
+kQuestInstanceData[11].Quests.Alliance[4] = {
     Title = "4. Unfinished Gordok Business",
     Level = "60",
     Attain = "56",
@@ -3735,14 +3735,14 @@ KQuestInstanceData[11].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[11].Quests.Horde[1] = KQuestInstanceData[11].Quests.Alliance[1]
-KQuestInstanceData[11].Quests.Horde[2] = KQuestInstanceData[11].Quests.Alliance[2]
-KQuestInstanceData[11].Quests.Horde[3] = KQuestInstanceData[11].Quests.Alliance[3]
-KQuestInstanceData[11].Quests.Horde[4] = KQuestInstanceData[11].Quests.Alliance[4]
+kQuestInstanceData[11].Quests.Horde[1] = kQuestInstanceData[11].Quests.Alliance[1]
+kQuestInstanceData[11].Quests.Horde[2] = kQuestInstanceData[11].Quests.Alliance[2]
+kQuestInstanceData[11].Quests.Horde[3] = kQuestInstanceData[11].Quests.Alliance[3]
+kQuestInstanceData[11].Quests.Horde[4] = kQuestInstanceData[11].Quests.Alliance[4]
 
 --------------- INST12 - Dire Maul (West) ---------------
-KQuestInstanceData[12] = {
-    Story = KQuestInstanceData[10].Story,
+kQuestInstanceData[12] = {
+    Story = kQuestInstanceData[10].Story,
     Caption = "Dire Maul (West)",
     QAA = "21 Quests",
     QAH = "21 Quests",
@@ -3751,7 +3751,7 @@ KQuestInstanceData[12] = {
         Horde = {}
     }
 }
-KQuestInstanceData[12].Quests.Alliance[1] = {
+kQuestInstanceData[12].Quests.Alliance[1] = {
     Title = "1. Elven Legends",
     Level = "60",
     Attain = "54",
@@ -3764,7 +3764,7 @@ KQuestInstanceData[12].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[12].Quests.Alliance[2] = {
+kQuestInstanceData[12].Quests.Alliance[2] = {
     Title = "2. The Madness Within",
     Level = "60",
     Attain = "56",
@@ -3777,7 +3777,7 @@ KQuestInstanceData[12].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[12].Quests.Alliance[3] = {
+kQuestInstanceData[12].Quests.Alliance[3] = {
     Title = "3. The Treasure of the Shen'dralar",
     Level = "60",
     Attain = "56",
@@ -3808,7 +3808,7 @@ KQuestInstanceData[12].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[4] = {
+kQuestInstanceData[12].Quests.Alliance[4] = {
     Title = "4. Dreadsteed of Xoroth",
     Level = "60",
     Attain = "60",
@@ -3821,7 +3821,7 @@ KQuestInstanceData[12].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[12].Quests.Alliance[5] = {
+kQuestInstanceData[12].Quests.Alliance[5] = {
     Title = "5. The Emerald Dream...",
     Level = "60",
     Attain = "54",
@@ -3840,7 +3840,7 @@ KQuestInstanceData[12].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[6] = {
+kQuestInstanceData[12].Quests.Alliance[6] = {
     Title = "6. The Greatest Race of Hunters",
     Level = "60",
     Attain = "54",
@@ -3859,7 +3859,7 @@ KQuestInstanceData[12].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[7] = {
+kQuestInstanceData[12].Quests.Alliance[7] = {
     Title = "7. The Arcanist's Cookbook",
     Level = "60",
     Attain = "54",
@@ -3878,7 +3878,7 @@ KQuestInstanceData[12].Quests.Alliance[7] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[8] = {
+kQuestInstanceData[12].Quests.Alliance[8] = {
     Title = "8. The Light and How To Swing It",
     Level = "60",
     Attain = "54",
@@ -3897,7 +3897,7 @@ KQuestInstanceData[12].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[9] = {
+kQuestInstanceData[12].Quests.Alliance[9] = {
     Title = "9. Holy Bologna: What the Light Won't Tell You",
     Level = "60",
     Attain = "56",
@@ -3916,7 +3916,7 @@ KQuestInstanceData[12].Quests.Alliance[9] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[10] = {
+kQuestInstanceData[12].Quests.Alliance[10] = {
     Title = "10. Garona: A Study on Stealth and Treachery",
     Level = "60",
     Attain = "54",
@@ -3935,7 +3935,7 @@ KQuestInstanceData[12].Quests.Alliance[10] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[11] = {
+kQuestInstanceData[12].Quests.Alliance[11] = {
     Title = "11. Frost Shock and You",
     Level = "60",
     Attain = "54",
@@ -3954,7 +3954,7 @@ KQuestInstanceData[12].Quests.Alliance[11] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[12] = {
+kQuestInstanceData[12].Quests.Alliance[12] = {
     Title = "12. Harnessing Shadows",
     Level = "60",
     Attain = "54",
@@ -3973,7 +3973,7 @@ KQuestInstanceData[12].Quests.Alliance[12] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[13] = {
+kQuestInstanceData[12].Quests.Alliance[13] = {
     Title = "13. Codex of Defense",
     Level = "60",
     Attain = "54",
@@ -3992,7 +3992,7 @@ KQuestInstanceData[12].Quests.Alliance[13] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[14] = {
+kQuestInstanceData[12].Quests.Alliance[14] = {
     Title = "14. Libram of Focus",
     Level = "60",
     Attain = "58",
@@ -4011,7 +4011,7 @@ KQuestInstanceData[12].Quests.Alliance[14] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[15] = {
+kQuestInstanceData[12].Quests.Alliance[15] = {
     Title = "15. Libram of Protection",
     Level = "60",
     Attain = "58",
@@ -4030,7 +4030,7 @@ KQuestInstanceData[12].Quests.Alliance[15] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[16] = {
+kQuestInstanceData[12].Quests.Alliance[16] = {
     Title = "16. Libram of Rapidity",
     Level = "60",
     Attain = "58",
@@ -4049,7 +4049,7 @@ KQuestInstanceData[12].Quests.Alliance[16] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[17] = {
+kQuestInstanceData[12].Quests.Alliance[17] = {
     Title = "17. Foror's Compendium",
     Level = "60",
     Attain = "60",
@@ -4062,7 +4062,7 @@ KQuestInstanceData[12].Quests.Alliance[17] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[12].Quests.Alliance[18] = {
+kQuestInstanceData[12].Quests.Alliance[18] = {
     Title = "18. Keeping Secrets",
     Level = "58",
     Attain = "45",
@@ -4087,7 +4087,7 @@ KQuestInstanceData[12].Quests.Alliance[18] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[19] = {
+kQuestInstanceData[12].Quests.Alliance[19] = {
     Title = "19. The Upper Binding III",
     Level = "60",
     Attain = "55",
@@ -4106,7 +4106,7 @@ KQuestInstanceData[12].Quests.Alliance[19] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Alliance[20] = {
+kQuestInstanceData[12].Quests.Alliance[20] = {
     Title = "20. The Key to Karazhan VIII",
     Level = "60",
     Attain = "58",
@@ -4119,7 +4119,7 @@ KQuestInstanceData[12].Quests.Alliance[20] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[12].Quests.Alliance[21] = {
+kQuestInstanceData[12].Quests.Alliance[21] = {
     Title = "21. Into the Dream III",
     Level = "60",
     Attain = "58",
@@ -4138,7 +4138,7 @@ KQuestInstanceData[12].Quests.Alliance[21] = {
         },
     }
 }
-KQuestInstanceData[12].Quests.Horde[1] = {
+kQuestInstanceData[12].Quests.Horde[1] = {
     Title = "1. Elven Legends",
     Level = "60",
     Attain = "54",
@@ -4151,29 +4151,29 @@ KQuestInstanceData[12].Quests.Horde[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[12].Quests.Horde[2] = KQuestInstanceData[12].Quests.Alliance[2]
-KQuestInstanceData[12].Quests.Horde[3] = KQuestInstanceData[12].Quests.Alliance[3]
-KQuestInstanceData[12].Quests.Horde[4] = KQuestInstanceData[12].Quests.Alliance[4]
-KQuestInstanceData[12].Quests.Horde[5] = KQuestInstanceData[12].Quests.Alliance[5]
-KQuestInstanceData[12].Quests.Horde[6] = KQuestInstanceData[12].Quests.Alliance[6]
-KQuestInstanceData[12].Quests.Horde[7] = KQuestInstanceData[12].Quests.Alliance[7]
-KQuestInstanceData[12].Quests.Horde[8] = KQuestInstanceData[12].Quests.Alliance[8]
-KQuestInstanceData[12].Quests.Horde[9] = KQuestInstanceData[12].Quests.Alliance[9]
-KQuestInstanceData[12].Quests.Horde[10] = KQuestInstanceData[12].Quests.Alliance[10]
-KQuestInstanceData[12].Quests.Horde[11] = KQuestInstanceData[12].Quests.Alliance[11]
-KQuestInstanceData[12].Quests.Horde[12] = KQuestInstanceData[12].Quests.Alliance[12]
-KQuestInstanceData[12].Quests.Horde[13] = KQuestInstanceData[12].Quests.Alliance[13]
-KQuestInstanceData[12].Quests.Horde[14] = KQuestInstanceData[12].Quests.Alliance[14]
-KQuestInstanceData[12].Quests.Horde[15] = KQuestInstanceData[12].Quests.Alliance[15]
-KQuestInstanceData[12].Quests.Horde[16] = KQuestInstanceData[12].Quests.Alliance[16]
-KQuestInstanceData[12].Quests.Horde[17] = KQuestInstanceData[12].Quests.Alliance[17]
-KQuestInstanceData[12].Quests.Horde[18] = KQuestInstanceData[12].Quests.Alliance[18]
-KQuestInstanceData[12].Quests.Horde[19] = KQuestInstanceData[12].Quests.Alliance[19]
-KQuestInstanceData[12].Quests.Horde[20] = KQuestInstanceData[12].Quests.Alliance[20]
-KQuestInstanceData[12].Quests.Horde[21] = KQuestInstanceData[12].Quests.Alliance[21]
+kQuestInstanceData[12].Quests.Horde[2] = kQuestInstanceData[12].Quests.Alliance[2]
+kQuestInstanceData[12].Quests.Horde[3] = kQuestInstanceData[12].Quests.Alliance[3]
+kQuestInstanceData[12].Quests.Horde[4] = kQuestInstanceData[12].Quests.Alliance[4]
+kQuestInstanceData[12].Quests.Horde[5] = kQuestInstanceData[12].Quests.Alliance[5]
+kQuestInstanceData[12].Quests.Horde[6] = kQuestInstanceData[12].Quests.Alliance[6]
+kQuestInstanceData[12].Quests.Horde[7] = kQuestInstanceData[12].Quests.Alliance[7]
+kQuestInstanceData[12].Quests.Horde[8] = kQuestInstanceData[12].Quests.Alliance[8]
+kQuestInstanceData[12].Quests.Horde[9] = kQuestInstanceData[12].Quests.Alliance[9]
+kQuestInstanceData[12].Quests.Horde[10] = kQuestInstanceData[12].Quests.Alliance[10]
+kQuestInstanceData[12].Quests.Horde[11] = kQuestInstanceData[12].Quests.Alliance[11]
+kQuestInstanceData[12].Quests.Horde[12] = kQuestInstanceData[12].Quests.Alliance[12]
+kQuestInstanceData[12].Quests.Horde[13] = kQuestInstanceData[12].Quests.Alliance[13]
+kQuestInstanceData[12].Quests.Horde[14] = kQuestInstanceData[12].Quests.Alliance[14]
+kQuestInstanceData[12].Quests.Horde[15] = kQuestInstanceData[12].Quests.Alliance[15]
+kQuestInstanceData[12].Quests.Horde[16] = kQuestInstanceData[12].Quests.Alliance[16]
+kQuestInstanceData[12].Quests.Horde[17] = kQuestInstanceData[12].Quests.Alliance[17]
+kQuestInstanceData[12].Quests.Horde[18] = kQuestInstanceData[12].Quests.Alliance[18]
+kQuestInstanceData[12].Quests.Horde[19] = kQuestInstanceData[12].Quests.Alliance[19]
+kQuestInstanceData[12].Quests.Horde[20] = kQuestInstanceData[12].Quests.Alliance[20]
+kQuestInstanceData[12].Quests.Horde[21] = kQuestInstanceData[12].Quests.Alliance[21]
 
 --------------- INST13 - Maraudon ---------------
-KQuestInstanceData[13] = {
+kQuestInstanceData[13] = {
     Story = "Protected by the fierce Maraudine centaur, Maraudon is one of the most sacred sites within Desolace. The great temple/cavern is the burial place of Zaetar, one of two immortal sons born to the demigod, Cenarius. Legend holds that Zaetar and the earth elemental princess, Theradras, sired the misbegotten centaur race. It is said that upon their emergence, the barbaric centaur turned on their father and killed him. Some believe that Theradras, in her grief, trapped Zaetar's spirit within the winding cavern - used its energies for some malign purpose. The subterranean tunnels are populated by the vicious, long-dead ghosts of the Centaur Khans, as well as Theradras' own raging, elemental minions.",
     Caption = "Maraudon",
     QAA = "11 Quests",
@@ -4183,7 +4183,7 @@ KQuestInstanceData[13] = {
         Horde = {}
     }
 }
-KQuestInstanceData[13].Quests.Alliance[1] = {
+kQuestInstanceData[13].Quests.Alliance[1] = {
     Title = "1. Shadowshard Fragments",
     Level = "42",
     Attain = "38",
@@ -4208,7 +4208,7 @@ KQuestInstanceData[13].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[13].Quests.Alliance[2] = {
+kQuestInstanceData[13].Quests.Alliance[2] = {
     Title = "2. Vyletongue Corruption",
     Level = "47",
     Attain = "41",
@@ -4239,7 +4239,7 @@ KQuestInstanceData[13].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[13].Quests.Alliance[3] = {
+kQuestInstanceData[13].Quests.Alliance[3] = {
     Title = "3. Twisted Evils",
     Level = "47",
     Attain = "41",
@@ -4276,7 +4276,7 @@ KQuestInstanceData[13].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[13].Quests.Alliance[4] = {
+kQuestInstanceData[13].Quests.Alliance[4] = {
     Title = "4. The Pariah's Instructions",
     Level = "48",
     Attain = "39",
@@ -4296,7 +4296,7 @@ KQuestInstanceData[13].Quests.Alliance[4] = {
     },
     page = {2, "You find the Centaur Pariah in the south of desolace. He walks between "..yellow.."44,85"..white.." and "..yellow.."50,87"..white..".\nFirst, you have to kill the The Nameless Prophet ("..yellow.."[A] on Entrance Map"..white.."). You find him before you enter the instance, before the point where you can choose whether you take the purple or the orange entrance. After killing him you must kill the 5 Kahns. You find the first if you choose the way in the middle ("..yellow.."[1] on Entrance Map"..white.."). The second is in the purple part of Maraudon but before you enter the instance ("..yellow.."[2] on Entrance Map"..white.."). The third is in the orange part before you enter the instance ("..yellow.."[3] on Entrance Map"..white.."). The fourth is near "..yellow.."[4]"..white.." and the fifth is near  "..yellow.."[1]"..white..".", },
 }
-KQuestInstanceData[13].Quests.Alliance[5] = {
+kQuestInstanceData[13].Quests.Alliance[5] = {
     Title = "5. Legends of Maraudon",
     Level = "49",
     Attain = "41",
@@ -4309,7 +4309,7 @@ KQuestInstanceData[13].Quests.Alliance[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[13].Quests.Alliance[6] = {
+kQuestInstanceData[13].Quests.Alliance[6] = {
     Title = "6. The Scepter of Celebras",
     Level = "49",
     Attain = "41",
@@ -4328,7 +4328,7 @@ KQuestInstanceData[13].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[13].Quests.Alliance[7] = {
+kQuestInstanceData[13].Quests.Alliance[7] = {
     Title = "7. Corruption of Earth and Seed",
     Level = "51",
     Attain = "45",
@@ -4359,7 +4359,7 @@ KQuestInstanceData[13].Quests.Alliance[7] = {
         },
     }
 }
-KQuestInstanceData[13].Quests.Alliance[8] = {
+kQuestInstanceData[13].Quests.Alliance[8] = {
     Title = "8. Seed of Life",
     Level = "51",
     Attain = "45",
@@ -4372,7 +4372,7 @@ KQuestInstanceData[13].Quests.Alliance[8] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[13].Quests.Alliance[9] = {
+kQuestInstanceData[13].Quests.Alliance[9] = {
     Title = "9. Harness of Chimaeran",
     Level = "48",
     Attain = "38",
@@ -4391,7 +4391,7 @@ KQuestInstanceData[13].Quests.Alliance[9] = {
         },
     }
 }
-KQuestInstanceData[13].Quests.Alliance[10] = {
+kQuestInstanceData[13].Quests.Alliance[10] = {
     Title = "10. Why Not Both?",
     Level = "50",
     Attain = "40",
@@ -4410,7 +4410,7 @@ KQuestInstanceData[13].Quests.Alliance[10] = {
         },
     }
 }
-KQuestInstanceData[13].Quests.Alliance[11] = {
+kQuestInstanceData[13].Quests.Alliance[11] = {
     Title = "11. Preparation",
     Level = "48",
     Attain = "34",
@@ -4423,7 +4423,7 @@ KQuestInstanceData[13].Quests.Alliance[11] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[13].Quests.Horde[1] = {
+kQuestInstanceData[13].Quests.Horde[1] = {
     Title = "1. Shadowshard Fragments",
     Level = "42",
     Attain = "38",
@@ -4432,9 +4432,9 @@ KQuestInstanceData[13].Quests.Horde[1] = {
     Note = "You get the Shadowshard Fragments from 'Shadowshard Rumbler' or 'Shadowshard Smasher' outside the instance on the Purple side.",
     Prequest = "No",
     Folgequest = "No",
-    Rewards = KQuestInstanceData[13].Quests.Alliance[1].Rewards
+    Rewards = kQuestInstanceData[13].Quests.Alliance[1].Rewards
 }
-KQuestInstanceData[13].Quests.Horde[2] = {
+kQuestInstanceData[13].Quests.Horde[2] = {
     Title = "2. Vyletongue Corruption",
     Level = "47",
     Attain = "41",
@@ -4443,13 +4443,13 @@ KQuestInstanceData[13].Quests.Horde[2] = {
     Note = "You can fill the Vial at any pool outside the instance on the Orange side. The plants are in the orange and purple areas inside the instance.",
     Prequest = "No",
     Folgequest = "No",
-    Rewards = KQuestInstanceData[13].Quests.Alliance[2].Rewards
+    Rewards = kQuestInstanceData[13].Quests.Alliance[2].Rewards
 }
-KQuestInstanceData[13].Quests.Horde[3] = KQuestInstanceData[13].Quests.Alliance[3]
-KQuestInstanceData[13].Quests.Horde[4] = KQuestInstanceData[13].Quests.Alliance[4]
-KQuestInstanceData[13].Quests.Horde[5] = KQuestInstanceData[13].Quests.Alliance[5]
-KQuestInstanceData[13].Quests.Horde[6] = KQuestInstanceData[13].Quests.Alliance[6]
-KQuestInstanceData[13].Quests.Horde[7] = {
+kQuestInstanceData[13].Quests.Horde[3] = kQuestInstanceData[13].Quests.Alliance[3]
+kQuestInstanceData[13].Quests.Horde[4] = kQuestInstanceData[13].Quests.Alliance[4]
+kQuestInstanceData[13].Quests.Horde[5] = kQuestInstanceData[13].Quests.Alliance[5]
+kQuestInstanceData[13].Quests.Horde[6] = kQuestInstanceData[13].Quests.Alliance[6]
+kQuestInstanceData[13].Quests.Horde[7] = {
     Title = "7. Corruption of Earth and Seed",
     Level = "51",
     Attain = "45",
@@ -4458,10 +4458,10 @@ KQuestInstanceData[13].Quests.Horde[7] = {
     Note = "You find Princess Theradras at "..yellow.."[11]"..white..".",
     Prequest = "No",
     Folgequest = "Seed of Life",
-    Rewards = KQuestInstanceData[13].Quests.Alliance[7].Rewards
+    Rewards = kQuestInstanceData[13].Quests.Alliance[7].Rewards
 }
-KQuestInstanceData[13].Quests.Horde[8] = KQuestInstanceData[13].Quests.Alliance[8]
-KQuestInstanceData[13].Quests.Horde[9] = {
+kQuestInstanceData[13].Quests.Horde[8] = kQuestInstanceData[13].Quests.Alliance[8]
+kQuestInstanceData[13].Quests.Horde[9] = {
     Title = "11. Preparation",
     Level = "48",
     Attain = "34",
@@ -4476,7 +4476,7 @@ KQuestInstanceData[13].Quests.Horde[9] = {
 }
 
 --------------- INST14 - Molten Core ---------------
-KQuestInstanceData[14] = {
+kQuestInstanceData[14] = {
     Story = "The Molten Core lies at the very bottom of Blackrock Depths. It is the heart of Blackrock Mountain and the exact spot where, long ago in a desperate bid to turn the tide of the dwarven civil war, Emperor Thaurissan summoned the elemental Firelord, Ragnaros, into the world. Though the fire lord is incapable of straying far from the blazing Core, it is believed that his elemental minions command the Dark Iron dwarves, who are in the midst of creating armies out of living stone. The burning lake where Ragnaros lies sleeping acts as a rift connecting to the plane of fire, allowing the malicious elementals to pass through. Chief among Ragnaros' agents is Majordomo Executus - for this cunning elemental is the only one capable of calling the Firelord from his slumber.",
     Caption = "Molten Core",
     QAA = "7 Quests",
@@ -4486,7 +4486,7 @@ KQuestInstanceData[14] = {
         Horde = {}
     }
 }
-KQuestInstanceData[14].Quests.Alliance[1] = {
+kQuestInstanceData[14].Quests.Alliance[1] = {
     Title = "1. The Molten Core",
     Level = "60",
     Attain = "57",
@@ -4499,7 +4499,7 @@ KQuestInstanceData[14].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[14].Quests.Alliance[2] = {
+kQuestInstanceData[14].Quests.Alliance[2] = {
     Title = "2. Hands of the Enemy",
     Level = "60",
     Attain = "60",
@@ -4512,7 +4512,7 @@ KQuestInstanceData[14].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[14].Quests.Alliance[3] = {
+kQuestInstanceData[14].Quests.Alliance[3] = {
     Title = "3. Thunderaan the Windseeker",
     Level = "60",
     Attain = "60",
@@ -4525,7 +4525,7 @@ KQuestInstanceData[14].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[14].Quests.Alliance[4] = {
+kQuestInstanceData[14].Quests.Alliance[4] = {
     Title = "4. A Binding Contract",
     Level = "60",
     Attain = "60",
@@ -4544,7 +4544,7 @@ KQuestInstanceData[14].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[14].Quests.Alliance[5] = {
+kQuestInstanceData[14].Quests.Alliance[5] = {
     Title = "5. The Ancient Leaf",
     Level = "60",
     Attain = "60",
@@ -4557,7 +4557,7 @@ KQuestInstanceData[14].Quests.Alliance[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[14].Quests.Alliance[6] = {
+kQuestInstanceData[14].Quests.Alliance[6] = {
     Title = "6. The Only Prescription",
     Level = "60",
     Attain = "60",
@@ -4576,7 +4576,7 @@ KQuestInstanceData[14].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[14].Quests.Alliance[7] = {
+kQuestInstanceData[14].Quests.Alliance[7] = {
     Title = "7. Scrying Goggles? No Problem!",
     Level = "60",
     Attain = "60",
@@ -4595,16 +4595,16 @@ KQuestInstanceData[14].Quests.Alliance[7] = {
         },
     }
 }
-KQuestInstanceData[14].Quests.Horde[1] = KQuestInstanceData[14].Quests.Alliance[1]
-KQuestInstanceData[14].Quests.Horde[2] = KQuestInstanceData[14].Quests.Alliance[2]
-KQuestInstanceData[14].Quests.Horde[3] = KQuestInstanceData[14].Quests.Alliance[3]
-KQuestInstanceData[14].Quests.Horde[4] = KQuestInstanceData[14].Quests.Alliance[4]
-KQuestInstanceData[14].Quests.Horde[5] = KQuestInstanceData[14].Quests.Alliance[5]
-KQuestInstanceData[14].Quests.Horde[6] = KQuestInstanceData[14].Quests.Alliance[6]
-KQuestInstanceData[14].Quests.Horde[7] = KQuestInstanceData[14].Quests.Alliance[7]
+kQuestInstanceData[14].Quests.Horde[1] = kQuestInstanceData[14].Quests.Alliance[1]
+kQuestInstanceData[14].Quests.Horde[2] = kQuestInstanceData[14].Quests.Alliance[2]
+kQuestInstanceData[14].Quests.Horde[3] = kQuestInstanceData[14].Quests.Alliance[3]
+kQuestInstanceData[14].Quests.Horde[4] = kQuestInstanceData[14].Quests.Alliance[4]
+kQuestInstanceData[14].Quests.Horde[5] = kQuestInstanceData[14].Quests.Alliance[5]
+kQuestInstanceData[14].Quests.Horde[6] = kQuestInstanceData[14].Quests.Alliance[6]
+kQuestInstanceData[14].Quests.Horde[7] = kQuestInstanceData[14].Quests.Alliance[7]
 
 --------------- INST15 - Naxxramas ---------------
-KQuestInstanceData[15] = {
+kQuestInstanceData[15] = {
     Story = "Floating above the Plaguelands, the necropolis known as Naxxramas serves as the seat of one of the Lich King's most powerful officers, the dreaded lich Kel'Thuzad. Horrors of the past and new terrors yet to be unleashed are gathering inside the necropolis as the Lich King's servants prepare their assault. Soon the Scourge will march again...",
     Caption = "Naxxramas",
     QAA = "5 Quests",
@@ -4614,7 +4614,7 @@ KQuestInstanceData[15] = {
         Horde = {}
     }
 }
-KQuestInstanceData[15].Quests.Alliance[1] = {
+kQuestInstanceData[15].Quests.Alliance[1] = {
     Title = "1. The Fall of Kel'Thuzad",
     Level = "60",
     Attain = "60",
@@ -4639,7 +4639,7 @@ KQuestInstanceData[15].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[15].Quests.Alliance[2] = {
+kQuestInstanceData[15].Quests.Alliance[2] = {
     Title = "2. The Only Song I Know...",
     Level = "60",
     Attain = "60",
@@ -4676,7 +4676,7 @@ KQuestInstanceData[15].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[15].Quests.Alliance[3] = {
+kQuestInstanceData[15].Quests.Alliance[3] = {
     Title = "3. Echoes of War",
     Level = "60",
     Attain = "60",
@@ -4689,7 +4689,7 @@ KQuestInstanceData[15].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[15].Quests.Alliance[4] = {
+kQuestInstanceData[15].Quests.Alliance[4] = {
     Title = "4. The Fate of Ramaladni",
     Level = "60",
     Attain = "60",
@@ -4702,7 +4702,7 @@ KQuestInstanceData[15].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[15].Quests.Alliance[5] = {
+kQuestInstanceData[15].Quests.Alliance[5] = {
     Title = "5. Ramaladni's Icy Grasp",
     Level = "60",
     Attain = "60",
@@ -4721,14 +4721,14 @@ KQuestInstanceData[15].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[15].Quests.Horde[1] = KQuestInstanceData[15].Quests.Alliance[1]
-KQuestInstanceData[15].Quests.Horde[2] = KQuestInstanceData[15].Quests.Alliance[2]
-KQuestInstanceData[15].Quests.Horde[3] = KQuestInstanceData[15].Quests.Alliance[3]
-KQuestInstanceData[15].Quests.Horde[4] = KQuestInstanceData[15].Quests.Alliance[4]
-KQuestInstanceData[15].Quests.Horde[5] = KQuestInstanceData[15].Quests.Alliance[5]
+kQuestInstanceData[15].Quests.Horde[1] = kQuestInstanceData[15].Quests.Alliance[1]
+kQuestInstanceData[15].Quests.Horde[2] = kQuestInstanceData[15].Quests.Alliance[2]
+kQuestInstanceData[15].Quests.Horde[3] = kQuestInstanceData[15].Quests.Alliance[3]
+kQuestInstanceData[15].Quests.Horde[4] = kQuestInstanceData[15].Quests.Alliance[4]
+kQuestInstanceData[15].Quests.Horde[5] = kQuestInstanceData[15].Quests.Alliance[5]
 
 --------------- INST16 - Onyxias Lair ---------------
-KQuestInstanceData[16] = {
+kQuestInstanceData[16] = {
     Story = "Onyxia is the daughter of the mighty dragon Deathwing, and sister of the scheming Nefarion Lord of Blackrock Spire. It is said that Onyxia delights in corrupting the mortal races by meddling in their political affairs. To this end it is believed that she takes on various humanoid forms and uses her charm and power to influence delicate matters between the different races. Some believe that Onyxia has even assumed an alias once used by her father - the title of the royal House Prestor. When not meddling in mortal concerns, Onyxia resides in a fiery cave below the Dragonmurk, a dismal swamp located within Dustwallow Marsh. There she is guarded by her kin, the remaining members of the insidious Black Dragon Flight.",
     Caption = "Onyxias Lair",
     QAA = "3 Quests",
@@ -4738,7 +4738,7 @@ KQuestInstanceData[16] = {
         Horde = {}
     }
 }
-KQuestInstanceData[16].Quests.Alliance[1] = {
+kQuestInstanceData[16].Quests.Alliance[1] = {
     Title = "1. The Forging of Quel'Serrar",
     Level = "60",
     Attain = "60",
@@ -4757,7 +4757,7 @@ KQuestInstanceData[16].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[16].Quests.Alliance[2] = {
+kQuestInstanceData[16].Quests.Alliance[2] = {
     Title = "2. Victory for the Alliance",
     Level = "60",
     Attain = "60",
@@ -4787,7 +4787,7 @@ KQuestInstanceData[16].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[16].Quests.Alliance[3] = {
+kQuestInstanceData[16].Quests.Alliance[3] = {
     Title = "3. The Only Prescription",
     Level = "60",
     Attain = "60",
@@ -4806,8 +4806,8 @@ KQuestInstanceData[16].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[16].Quests.Horde[1] = KQuestInstanceData[16].Quests.Alliance[1]
-KQuestInstanceData[16].Quests.Horde[2] = {
+kQuestInstanceData[16].Quests.Horde[1] = kQuestInstanceData[16].Quests.Alliance[1]
+kQuestInstanceData[16].Quests.Horde[2] = {
     Title = "2. Victory for the Horde",
     Level = "60",
     Attain = "60",
@@ -4816,12 +4816,12 @@ KQuestInstanceData[16].Quests.Horde[2] = {
     Note = "Thrall is at (Orgrimmar - Valley of Wisdom; "..yellow.."31,37"..white.."). Only one person in the raid can loot this item and the quest can only be done one time.\nRewards listed are for the followup.",
     Prequest = "No",
     Folgequest = "For All To See",
-    Rewards = KQuestInstanceData[16].Quests.Alliance[2].Rewards
+    Rewards = kQuestInstanceData[16].Quests.Alliance[2].Rewards
 }
-KQuestInstanceData[16].Quests.Horde[3] = KQuestInstanceData[16].Quests.Alliance[3]
+kQuestInstanceData[16].Quests.Horde[3] = kQuestInstanceData[16].Quests.Alliance[3]
 
 --------------- INST17 - Razorfen Downs ---------------
-KQuestInstanceData[17] = {
+kQuestInstanceData[17] = {
     Story = "Crafted  from the same mighty vines as Razorfen Kraul, Razorfen Downs is the traditional capital city of the quillboar race. The sprawling, thorn-ridden labyrinth houses a veritable army of loyal quillboar as well as their high priests - the Death's Head tribe. Recently, however, a looming shadow has fallen over the crude den. Agents of the undead Scourge - led by the lich, Amnennar the Coldbringer - have taken control over the quillboar race and turned the maze of thorns into a bastion of undead might. Now the quillboar fight a desperate battle to reclaim their beloved city before Amnennar spreads his control across the Barrens.",
     Caption = "Razorfen Downs",
     QAA = "3 Quests",
@@ -4831,7 +4831,7 @@ KQuestInstanceData[17] = {
         Horde = {}
     }
 }
-KQuestInstanceData[17].Quests.Alliance[1] = {
+kQuestInstanceData[17].Quests.Alliance[1] = {
     Title = "1. A Host of Evil",
     Level = "35",
     Attain = "28",
@@ -4844,7 +4844,7 @@ KQuestInstanceData[17].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[17].Quests.Alliance[2] = {
+kQuestInstanceData[17].Quests.Alliance[2] = {
     Title = "2. Extinguishing the Idol",
     Level = "37",
     Attain = "32",
@@ -4863,7 +4863,7 @@ KQuestInstanceData[17].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[17].Quests.Alliance[3] = {
+kQuestInstanceData[17].Quests.Alliance[3] = {
     Title = "3. Bring the Light",
     Level = "42",
     Attain = "39",
@@ -4888,8 +4888,8 @@ KQuestInstanceData[17].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[17].Quests.Horde[1] = KQuestInstanceData[17].Quests.Alliance[1]
-KQuestInstanceData[17].Quests.Horde[2] = {
+kQuestInstanceData[17].Quests.Horde[1] = kQuestInstanceData[17].Quests.Alliance[1]
+kQuestInstanceData[17].Quests.Horde[2] = {
     Title = "2. An Unholy Alliance",
     Level = "36",
     Attain = "28",
@@ -4920,7 +4920,7 @@ KQuestInstanceData[17].Quests.Horde[2] = {
         },
     }
 }
-KQuestInstanceData[17].Quests.Horde[3] = {
+kQuestInstanceData[17].Quests.Horde[3] = {
     Title = "3. Extinguishing the Idol",
     Level = "37",
     Attain = "32",
@@ -4939,7 +4939,7 @@ KQuestInstanceData[17].Quests.Horde[3] = {
         },
     }
 }
-KQuestInstanceData[17].Quests.Horde[4] = {
+kQuestInstanceData[17].Quests.Horde[4] = {
     Title = "4. Bring the End",
     Level = "42",
     Attain = "37",
@@ -4964,7 +4964,7 @@ KQuestInstanceData[17].Quests.Horde[4] = {
         },
     }
 }
-KQuestInstanceData[17].Quests.Horde[5] = {
+kQuestInstanceData[17].Quests.Horde[5] = {
     Title = "5. The Powers Beyond",
     Level = "44",
     Attain = "38",
@@ -4997,7 +4997,7 @@ KQuestInstanceData[17].Quests.Horde[5] = {
 }
 
 --------------- INST18 - Razorfen Kraul ---------------
-KQuestInstanceData[18] = {
+kQuestInstanceData[18] = {
     Story = "Ten thousand years ago - during the War of the Ancients, the mighty demigod, Agamaggan, came forth to battle the Burning Legion. Though the colossal boar fell in combat, his actions helped save Azeroth from ruin. Yet over time, in the areas where his blood fell, massive thorn-ridden vines sprouted from the earth. The quillboar - believed to be the mortal offspring of the mighty god, came to occupy these regions and hold them sacred. The heart of these thorn-colonies was known as the Razorfen. The great mass of Razorfen Kraul was conquered by the old crone, Charlga Razorflank. Under her rule, the shamanistic quillboar stage attacks on rival tribes as well as Horde villages. Some speculate that Charlga has even been negotiating with agents of the Scourge - aligning her unsuspecting tribe with the ranks of the Undead for some insidious purpose.",
     Caption = "Razorfen Kraul",
     QAA = "5 Quests",
@@ -5007,7 +5007,7 @@ KQuestInstanceData[18] = {
         Horde = {}
     }
 }
-KQuestInstanceData[18].Quests.Alliance[1] = {
+kQuestInstanceData[18].Quests.Alliance[1] = {
     Title = "1. Blueleaf Tubers",
     Level = "26",
     Attain = "20",
@@ -5026,7 +5026,7 @@ KQuestInstanceData[18].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[18].Quests.Alliance[2] = {
+kQuestInstanceData[18].Quests.Alliance[2] = {
     Title = "2. Mortality Wanes",
     Level = "30",
     Attain = "25",
@@ -5051,7 +5051,7 @@ KQuestInstanceData[18].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[18].Quests.Alliance[3] = {
+kQuestInstanceData[18].Quests.Alliance[3] = {
     Title = "3. Willix the Importer",
     Level = "30",
     Attain = "23",
@@ -5082,7 +5082,7 @@ KQuestInstanceData[18].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[18].Quests.Alliance[4] = {
+kQuestInstanceData[18].Quests.Alliance[4] = {
     Title = "4. The Crone of the Kraul",
     Level = "34",
     Attain = "29",
@@ -5113,7 +5113,7 @@ KQuestInstanceData[18].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[18].Quests.Alliance[5] = {
+kQuestInstanceData[18].Quests.Alliance[5] = {
     Title = "5. Fire Hardened Mail",
     Level = "28",
     Attain = "20",
@@ -5126,8 +5126,8 @@ KQuestInstanceData[18].Quests.Alliance[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[18].Quests.Horde[1] = KQuestInstanceData[18].Quests.Alliance[1]
-KQuestInstanceData[18].Quests.Horde[2] = {
+kQuestInstanceData[18].Quests.Horde[1] = kQuestInstanceData[18].Quests.Alliance[1]
+kQuestInstanceData[18].Quests.Horde[2] = {
     Title = "2. Willix the Importer",
     Level = "30",
     Attain = "23",
@@ -5158,7 +5158,7 @@ KQuestInstanceData[18].Quests.Horde[2] = {
         },
     }
 }
-KQuestInstanceData[18].Quests.Horde[3] = {
+kQuestInstanceData[18].Quests.Horde[3] = {
     Title = "3. Going, Going, Guano!",
     Level = "33",
     Attain = "30",
@@ -5171,7 +5171,7 @@ KQuestInstanceData[18].Quests.Horde[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[18].Quests.Horde[4] = {
+kQuestInstanceData[18].Quests.Horde[4] = {
     Title = "4. A Vengeful Fate",
     Level = "34",
     Attain = "29",
@@ -5202,7 +5202,7 @@ KQuestInstanceData[18].Quests.Horde[4] = {
         },
     }
 }
-KQuestInstanceData[18].Quests.Horde[5] = {
+kQuestInstanceData[18].Quests.Horde[5] = {
     Title = "5. Brutal Armor",
     Level = "30",
     Attain = "20",
@@ -5217,7 +5217,7 @@ KQuestInstanceData[18].Quests.Horde[5] = {
 }
 
 --------------- INST19 - SM: Library ---------------
-KQuestInstanceData[19] = {
+kQuestInstanceData[19] = {
     Story = "The Monastery was once a proud bastion of Lordaeron's priesthood - a center for learning and enlightenment. With the rise of the undead Scourge during the Third War, the peaceful Monastery was converted into a stronghold of the fanatical Scarlet Crusade. The Crusaders are intolerant of all non-human races, regardless of alliance or affiliation. They believe that any and all outsiders are potential carriers of the undead plague - and must be destroyed. Reports indicate that adventurers who enter the monastery are forced to contend with Scarlet Commander Mograine - who commands a large garrison of fanatically devoted warriors. However, the monastery's true master is High Inquisitor Whitemane - a fearsome priestess who possesses the ability to resurrect fallen warriors to do battle in her name.",
     Caption = "SM: Library",
     QAA = "3 Quests",
@@ -5227,7 +5227,7 @@ KQuestInstanceData[19] = {
         Horde = {}
     }
 }
-KQuestInstanceData[19].Quests.Alliance[1] = {
+kQuestInstanceData[19].Quests.Alliance[1] = {
     Title = "1. In the Name of the Light",
     Level = "40",
     Attain = "34",
@@ -5264,7 +5264,7 @@ KQuestInstanceData[19].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[19].Quests.Alliance[2] = {
+kQuestInstanceData[19].Quests.Alliance[2] = {
     Title = "2. Mythology of the Titans",
     Level = "38",
     Attain = "28",
@@ -5283,7 +5283,7 @@ KQuestInstanceData[19].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[19].Quests.Alliance[3] = {
+kQuestInstanceData[19].Quests.Alliance[3] = {
     Title = "3. Rituals of Power",
     Level = "40",
     Attain = "30",
@@ -5296,7 +5296,7 @@ KQuestInstanceData[19].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[19].Quests.Horde[1] = {
+kQuestInstanceData[19].Quests.Horde[1] = {
     Title = "1. Hearts of Zeal",
     Level = "33",
     Attain = "30",
@@ -5309,7 +5309,7 @@ KQuestInstanceData[19].Quests.Horde[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[19].Quests.Horde[2] = {
+kQuestInstanceData[19].Quests.Horde[2] = {
     Title = "2. Into The Scarlet Monastery",
     Level = "42",
     Attain = "33",
@@ -5340,7 +5340,7 @@ KQuestInstanceData[19].Quests.Horde[2] = {
         },
     }
 }
-KQuestInstanceData[19].Quests.Horde[3] = {
+kQuestInstanceData[19].Quests.Horde[3] = {
     Title = "3. Compendium of the Fallen",
     Level = "38",
     Attain = "28",
@@ -5371,7 +5371,7 @@ KQuestInstanceData[19].Quests.Horde[3] = {
         },
     }
 }
-KQuestInstanceData[19].Quests.Horde[4] = {
+kQuestInstanceData[19].Quests.Horde[4] = {
     Title = "4. Test of Lore",
     Level = "36",
     Attain = "25",
@@ -5384,7 +5384,7 @@ KQuestInstanceData[19].Quests.Horde[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[19].Quests.Horde[5] = {
+kQuestInstanceData[19].Quests.Horde[5] = {
     Title = "5. Rituals of Power",
     Level = "40",
     Attain = "30",
@@ -5399,8 +5399,8 @@ KQuestInstanceData[19].Quests.Horde[5] = {
 }
 
 --------------- INST20 - SM: Armory ---------------
-KQuestInstanceData[20] = {
-    Story = KQuestInstanceData[19].Story,
+kQuestInstanceData[20] = {
+    Story = kQuestInstanceData[19].Story,
     Caption = "SM: Armory",
     QAA = "1 Quest",
     QAH = "3 Quests",
@@ -5409,10 +5409,10 @@ KQuestInstanceData[20] = {
         Horde = {}
     }
 }
-KQuestInstanceData[20].Quests.Alliance[1] = KQuestInstanceData[19].Quests.Alliance[1]
-KQuestInstanceData[20].Quests.Horde[1] = KQuestInstanceData[19].Quests.Horde[1]
-KQuestInstanceData[20].Quests.Horde[2] = KQuestInstanceData[19].Quests.Horde[2]
-KQuestInstanceData[20].Quests.Horde[3] = {
+kQuestInstanceData[20].Quests.Alliance[1] = kQuestInstanceData[19].Quests.Alliance[1]
+kQuestInstanceData[20].Quests.Horde[1] = kQuestInstanceData[19].Quests.Horde[1]
+kQuestInstanceData[20].Quests.Horde[2] = kQuestInstanceData[19].Quests.Horde[2]
+kQuestInstanceData[20].Quests.Horde[3] = {
     Title = "3. Reminiscent of Steel",
     Level = "39",
     Attain = "33",
@@ -5439,8 +5439,8 @@ KQuestInstanceData[20].Quests.Horde[3] = {
 }
 
 --------------- INST21 - SM: Cathedral ---------------
-KQuestInstanceData[21] = {
-    Story = KQuestInstanceData[19].Story,
+kQuestInstanceData[21] = {
+    Story = kQuestInstanceData[19].Story,
     Caption = "SM: Cathedral",
     QAA = "3 Quest",
     QAH = "2 Quests",
@@ -5449,8 +5449,8 @@ KQuestInstanceData[21] = {
         Horde = {}
     }
 }
-KQuestInstanceData[21].Quests.Alliance[1] = KQuestInstanceData[19].Quests.Alliance[1]
-KQuestInstanceData[21].Quests.Alliance[2] = {
+kQuestInstanceData[21].Quests.Alliance[1] = kQuestInstanceData[19].Quests.Alliance[1]
+kQuestInstanceData[21].Quests.Alliance[2] = {
     Title = "The Orb of Kaladus",
     Level = "38",
     Attain = "30",
@@ -5481,7 +5481,7 @@ KQuestInstanceData[21].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[21].Quests.Alliance[3] = {
+kQuestInstanceData[21].Quests.Alliance[3] = {
     Title = "3. Scarlet Corruption",
     Level = "44",
     Attain = "35",
@@ -5500,12 +5500,12 @@ KQuestInstanceData[21].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[21].Quests.Horde[1] = KQuestInstanceData[19].Quests.Horde[1]
-KQuestInstanceData[21].Quests.Horde[2] = KQuestInstanceData[19].Quests.Horde[2]
+kQuestInstanceData[21].Quests.Horde[1] = kQuestInstanceData[19].Quests.Horde[1]
+kQuestInstanceData[21].Quests.Horde[2] = kQuestInstanceData[19].Quests.Horde[2]
 
 --------------- INST22 - SM: Graveyard ---------------
-KQuestInstanceData[22] = {
-    Story = KQuestInstanceData[19].Story,
+kQuestInstanceData[22] = {
+    Story = kQuestInstanceData[19].Story,
     Caption = "SM: Graveyard",
     QAA = "No Quest",
     QAH = "3 Quests",
@@ -5514,8 +5514,8 @@ KQuestInstanceData[22] = {
         Horde = {}
     }
 }
-KQuestInstanceData[22].Quests.Horde[1] = KQuestInstanceData[19].Quests.Horde[1]
-KQuestInstanceData[22].Quests.Horde[2] = {
+kQuestInstanceData[22].Quests.Horde[1] = kQuestInstanceData[19].Quests.Horde[1]
+kQuestInstanceData[22].Quests.Horde[2] = {
     Title = "2. Vorrel's Revenge",
     Level = "33",
     Attain = "25",
@@ -5546,7 +5546,7 @@ KQuestInstanceData[22].Quests.Horde[2] = {
         },
     }
 }
-KQuestInstanceData[22].Quests.Horde[3] = {
+kQuestInstanceData[22].Quests.Horde[3] = {
     Title = "3. Paint the Roses Red",
     Level = "29",
     Attain = "27",
@@ -5579,7 +5579,7 @@ KQuestInstanceData[22].Quests.Horde[3] = {
 }
 
 --------------- INST23 - Scholomance ---------------
-KQuestInstanceData[23] = {
+kQuestInstanceData[23] = {
     Story = "The Scholomance is housed within a series of crypts that lie beneath the ruined keep of Caer Darrow. Once owned by the noble Barov family, Caer Darrow fell to ruin following the Second War. As the wizard Kel'thuzad enlisted followers for his Cult of the Damned he would often promise immortality in exchange for serving his Lich King. The Barov family fell to Kel'thuzad's charismatic influence and donated the keep and its crypts to the Scourge. The cultists then killed the Barovs and turned the ancient crypts into a school for necromancy known as the Scholomance. Though Kel'thuzad no longer resides in the crypts, devoted cultists and instructors still remain. The powerful lich, Ras Frostwhisper, rules over the site and guards it in the Scourge's name - while the mortal necromancer, Darkmaster Gandling, serves as the school's insidious headmaster.",
     Caption = "Scholomance",
     QAA = "12 Quests",
@@ -5589,7 +5589,7 @@ KQuestInstanceData[23] = {
         Horde = {}
     }
 }
-KQuestInstanceData[23].Quests.Alliance[1] = {
+kQuestInstanceData[23].Quests.Alliance[1] = {
     Title = "1. Plagued Hatchlings",
     Level = "58",
     Attain = "55",
@@ -5602,7 +5602,7 @@ KQuestInstanceData[23].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[23].Quests.Alliance[2] = {
+kQuestInstanceData[23].Quests.Alliance[2] = {
     Title = "2. Healthy Dragon Scale",
     Level = "58",
     Attain = "55",
@@ -5615,7 +5615,7 @@ KQuestInstanceData[23].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[23].Quests.Alliance[3] = {
+kQuestInstanceData[23].Quests.Alliance[3] = {
     Title = "3. Doctor Theolen Krastinov, the Butcher",
     Level = "60",
     Attain = "55",
@@ -5628,7 +5628,7 @@ KQuestInstanceData[23].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[23].Quests.Alliance[4] = {
+kQuestInstanceData[23].Quests.Alliance[4] = {
     Title = "4. Krastinov's Bag of Horrors",
     Level = "60",
     Attain = "55",
@@ -5641,7 +5641,7 @@ KQuestInstanceData[23].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[23].Quests.Alliance[5] = {
+kQuestInstanceData[23].Quests.Alliance[5] = {
     Title = "5. Kirtonos the Herald",
     Level = "60",
     Attain = "55",
@@ -5672,7 +5672,7 @@ KQuestInstanceData[23].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[23].Quests.Alliance[6] = {
+kQuestInstanceData[23].Quests.Alliance[6] = {
     Title = "6. The Lich, Ras Frostwhisper",
     Level = "60",
     Attain = "57",
@@ -5709,7 +5709,7 @@ KQuestInstanceData[23].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[23].Quests.Alliance[7] = {
+kQuestInstanceData[23].Quests.Alliance[7] = {
     Title = "7. Barov Family Fortune",
     Level = "60",
     Attain = "52",
@@ -5722,7 +5722,7 @@ KQuestInstanceData[23].Quests.Alliance[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[23].Quests.Alliance[8] = {
+kQuestInstanceData[23].Quests.Alliance[8] = {
     Title = "8. Dawn's Gambit",
     Level = "60",
     Attain = "57",
@@ -5747,7 +5747,7 @@ KQuestInstanceData[23].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[23].Quests.Alliance[9] = {
+kQuestInstanceData[23].Quests.Alliance[9] = {
     Title = "9. Imp Delivery",
     Level = "60",
     Attain = "60",
@@ -5760,7 +5760,7 @@ KQuestInstanceData[23].Quests.Alliance[9] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[23].Quests.Alliance[10] = {
+kQuestInstanceData[23].Quests.Alliance[10] = {
     Title = "10. The Left Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -5773,7 +5773,7 @@ KQuestInstanceData[23].Quests.Alliance[10] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[23].Quests.Alliance[11] = {
+kQuestInstanceData[23].Quests.Alliance[11] = {
     Title = "11. The Right Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -5786,7 +5786,7 @@ KQuestInstanceData[23].Quests.Alliance[11] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[23].Quests.Alliance[12] = {
+kQuestInstanceData[23].Quests.Alliance[12] = {
     Title = "12. A Favor for Farsan",
     Level = "58",
     Attain = "55",
@@ -5805,13 +5805,13 @@ KQuestInstanceData[23].Quests.Alliance[12] = {
         },
     }
 }
-KQuestInstanceData[23].Quests.Horde[1] = KQuestInstanceData[23].Quests.Alliance[1]
-KQuestInstanceData[23].Quests.Horde[2] = KQuestInstanceData[23].Quests.Alliance[2]
-KQuestInstanceData[23].Quests.Horde[3] = KQuestInstanceData[23].Quests.Alliance[3]
-KQuestInstanceData[23].Quests.Horde[4] = KQuestInstanceData[23].Quests.Alliance[4]
-KQuestInstanceData[23].Quests.Horde[5] = KQuestInstanceData[23].Quests.Alliance[5]
-KQuestInstanceData[23].Quests.Horde[6] = KQuestInstanceData[23].Quests.Alliance[6]
-KQuestInstanceData[23].Quests.Horde[7] = {
+kQuestInstanceData[23].Quests.Horde[1] = kQuestInstanceData[23].Quests.Alliance[1]
+kQuestInstanceData[23].Quests.Horde[2] = kQuestInstanceData[23].Quests.Alliance[2]
+kQuestInstanceData[23].Quests.Horde[3] = kQuestInstanceData[23].Quests.Alliance[3]
+kQuestInstanceData[23].Quests.Horde[4] = kQuestInstanceData[23].Quests.Alliance[4]
+kQuestInstanceData[23].Quests.Horde[5] = kQuestInstanceData[23].Quests.Alliance[5]
+kQuestInstanceData[23].Quests.Horde[6] = kQuestInstanceData[23].Quests.Alliance[6]
+kQuestInstanceData[23].Quests.Horde[7] = {
     Title = "7. Barov Family Fortune",
     Level = "60",
     Attain = "52",
@@ -5824,14 +5824,14 @@ KQuestInstanceData[23].Quests.Horde[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[23].Quests.Horde[8] = KQuestInstanceData[23].Quests.Alliance[8]
-KQuestInstanceData[23].Quests.Horde[9] = KQuestInstanceData[23].Quests.Alliance[9]
-KQuestInstanceData[23].Quests.Horde[10] = KQuestInstanceData[23].Quests.Alliance[10]
-KQuestInstanceData[23].Quests.Horde[11] = KQuestInstanceData[23].Quests.Alliance[11]
-KQuestInstanceData[23].Quests.Horde[12] = KQuestInstanceData[23].Quests.Alliance[12]
+kQuestInstanceData[23].Quests.Horde[8] = kQuestInstanceData[23].Quests.Alliance[8]
+kQuestInstanceData[23].Quests.Horde[9] = kQuestInstanceData[23].Quests.Alliance[9]
+kQuestInstanceData[23].Quests.Horde[10] = kQuestInstanceData[23].Quests.Alliance[10]
+kQuestInstanceData[23].Quests.Horde[11] = kQuestInstanceData[23].Quests.Alliance[11]
+kQuestInstanceData[23].Quests.Horde[12] = kQuestInstanceData[23].Quests.Alliance[12]
 
 --------------- INST24 - Shadowfang Keep ---------------
-KQuestInstanceData[24] = {
+kQuestInstanceData[24] = {
     Story = "During the Third War, the wizards of the Kirin Tor battled against the undead armies of the Scourge. When the wizards of Dalaran died in battle, they would rise soon after - adding their former might to the growing Scourge. Frustrated by their lack of progress (and against the advice of his peers) the Archmage, Arugal elected to summon extra-dimensional entities to bolster Dalaran's diminishing ranks. Arugal's summoning brought the ravenous worgen into the world of Azeroth. The feral wolf-men slaughtered not only the Scourge, but quickly turned on the wizards themselves. The worgen laid siege to the keep of the noble, Baron Silverlaine. Situated above the tiny hamlet of Pyrewood, the keep quickly fell into shadow and ruin. Driven mad with guilt, Arugal adopted the worgen as his children and retreated to the newly dubbed 'Shadowfang Keep'. It's said he still resides there, protected by his massive pet, Fenrus - and haunted by the vengeful ghost of Baron Silverlaine.",
     Caption = "Shadowfang Keep",
     QAA = "5 Quests",
@@ -5841,7 +5841,7 @@ KQuestInstanceData[24] = {
         Horde = {}
     }
 }
-KQuestInstanceData[24].Quests.Alliance[1] = {
+kQuestInstanceData[24].Quests.Alliance[1] = {
     Title = "1. The Test of Righteousness",
     Level = "22",
     Attain = "20",
@@ -5859,9 +5859,9 @@ KQuestInstanceData[24].Quests.Alliance[1] = {
             Description = AQITEM_TWOHAND..AQITEM_MACE,
         },
     },
-    Page = KQuestInstanceData[1].Quests.Alliance[6].Page
+    Page = kQuestInstanceData[1].Quests.Alliance[6].Page
 }
-KQuestInstanceData[24].Quests.Alliance[2] = {
+kQuestInstanceData[24].Quests.Alliance[2] = {
     Title = "2. The Orb of Soran'ruk",
     Level = "25",
     Attain = "20",
@@ -5886,7 +5886,7 @@ KQuestInstanceData[24].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[24].Quests.Alliance[3] = {
+kQuestInstanceData[24].Quests.Alliance[3] = {
     Title = "3. Arugal's Folly",
     Level = "27",
     Attain = "22",
@@ -5905,7 +5905,7 @@ KQuestInstanceData[24].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[24].Quests.Alliance[4] = {
+kQuestInstanceData[24].Quests.Alliance[4] = {
     Title = "4. The Missing Sorcerer",
     Level = "24",
     Attain = "22",
@@ -5918,7 +5918,7 @@ KQuestInstanceData[24].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[24].Quests.Alliance[5] = {
+kQuestInstanceData[24].Quests.Alliance[5] = {
     Title = "5. Blood of Vorgendor",
     Level = "60",
     Attain = "60",
@@ -5931,7 +5931,7 @@ KQuestInstanceData[24].Quests.Alliance[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[24].Quests.Horde[1] = {
+kQuestInstanceData[24].Quests.Horde[1] = {
     Title = "1. Deathstalkers in Shadowfang",
     Level = "25",
     Attain = "18",
@@ -5950,7 +5950,7 @@ KQuestInstanceData[24].Quests.Horde[1] = {
         },
     }
 }
-KQuestInstanceData[24].Quests.Horde[2] = {
+kQuestInstanceData[24].Quests.Horde[2] = {
     Title = "2. The Book of Ur",
     Level = "26",
     Attain = "16",
@@ -5975,7 +5975,7 @@ KQuestInstanceData[24].Quests.Horde[2] = {
         },
     }
 }
-KQuestInstanceData[24].Quests.Horde[3] = {
+kQuestInstanceData[24].Quests.Horde[3] = {
     Title = "3. Arugal Must Die",
     Level = "27",
     Attain = "18",
@@ -5994,7 +5994,7 @@ KQuestInstanceData[24].Quests.Horde[3] = {
         },
     }
 }
-KQuestInstanceData[24].Quests.Horde[4] = {
+kQuestInstanceData[24].Quests.Horde[4] = {
     Title = "4. The Orb of Soran'ruk",
     Level = "25",
     Attain = "20",
@@ -6013,7 +6013,7 @@ KQuestInstanceData[24].Quests.Horde[4] = {
         },
     }
 }
-KQuestInstanceData[24].Quests.Horde[5] = {
+kQuestInstanceData[24].Quests.Horde[5] = {
     Title = "5. Into The Jaws",
     Level = "25",
     Attain = "15",
@@ -6038,7 +6038,7 @@ KQuestInstanceData[24].Quests.Horde[5] = {
         },
     }
 }
-KQuestInstanceData[24].Quests.Horde[6] = {
+kQuestInstanceData[24].Quests.Horde[6] = {
     Title = "6. Too Late to Prelate",
     Level = "22",
     Attain = "16",
@@ -6057,7 +6057,7 @@ KQuestInstanceData[24].Quests.Horde[6] = {
         },
     }
 }
-KQuestInstanceData[24].Quests.Horde[7] = {
+kQuestInstanceData[24].Quests.Horde[7] = {
     Title = "7. The Wolf, the Crone and the Scythe",
     Level = "60",
     Attain = "60",
@@ -6072,7 +6072,7 @@ KQuestInstanceData[24].Quests.Horde[7] = {
 }
 
 --------------- INST25 - Stratholme ---------------
-KQuestInstanceData[25] = {
+kQuestInstanceData[25] = {
     Story = "Once the jewel of northern Lordaeron, the city of Stratholme is where Prince Arthas turned against his mentor, Uther Lightbringer, and slaughtered hundreds of his own subjects who were believed to have contracted the dreaded plague of undeath. Arthas' downward spiral and ultimate surrender to the Lich King soon followed. The broken city is now inhabited by the undead Scourge - led by the powerful lich, Kel'thuzad. A contingent of Scarlet Crusaders, led by Grand Crusader Dathrohan, also holds a portion of the ravaged city. The two sides are locked in constant, violent combat. Those adventurers brave (or foolish) enough to enter Stratholme will be forced to contend with both factions before long. It is said that the city is guarded by three massive watchtowers, as well as powerful necromancers, banshees and abominations. There have also been reports of a malefic Death Knight riding atop an unholy steed - dispensing indiscriminate wrath on all those who venture within the realm of the Scourge.",
     Caption = "Stratholme",
     QAA = "21 Quests",
@@ -6082,7 +6082,7 @@ KQuestInstanceData[25] = {
         Horde = {}
     }
 }
-KQuestInstanceData[25].Quests.Alliance[1] = {
+kQuestInstanceData[25].Quests.Alliance[1] = {
     Title = "1. The Flesh Does Not Lie",
     Level = "60",
     Attain = "55",
@@ -6095,7 +6095,7 @@ KQuestInstanceData[25].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[25].Quests.Alliance[2] = {
+kQuestInstanceData[25].Quests.Alliance[2] = {
     Title = "2. The Active Agent",
     Level = "60",
     Attain = "55",
@@ -6120,7 +6120,7 @@ KQuestInstanceData[25].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Alliance[3] = {
+kQuestInstanceData[25].Quests.Alliance[3] = {
     Title = "3. Houses of the Holy",
     Level = "60",
     Attain = "55",
@@ -6157,7 +6157,7 @@ KQuestInstanceData[25].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Alliance[4] = {
+kQuestInstanceData[25].Quests.Alliance[4] = {
     Title = "4. The Great Fras Siabi",
     Level = "60",
     Attain = "55",
@@ -6176,7 +6176,7 @@ KQuestInstanceData[25].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Alliance[5] = {
+kQuestInstanceData[25].Quests.Alliance[5] = {
     Title = "5. The Restless Souls",
     Level = "60",
     Attain = "55",
@@ -6195,7 +6195,7 @@ KQuestInstanceData[25].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Alliance[6] = {
+kQuestInstanceData[25].Quests.Alliance[6] = {
     Title = "6. Of Love and Family",
     Level = "60",
     Attain = "52",
@@ -6208,7 +6208,7 @@ KQuestInstanceData[25].Quests.Alliance[6] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[25].Quests.Alliance[7] = {
+kQuestInstanceData[25].Quests.Alliance[7] = {
     Title = "7. Menethil's Gift",
     Level = "60",
     Attain = "57",
@@ -6221,7 +6221,7 @@ KQuestInstanceData[25].Quests.Alliance[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[25].Quests.Alliance[8] = {
+kQuestInstanceData[25].Quests.Alliance[8] = {
     Title = "8. Aurius' Reckoning",
     Level = "60",
     Attain = "55",
@@ -6246,7 +6246,7 @@ KQuestInstanceData[25].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Alliance[9] = {
+kQuestInstanceData[25].Quests.Alliance[9] = {
     Title = "9. The Archivist",
     Level = "60",
     Attain = "55",
@@ -6259,7 +6259,7 @@ KQuestInstanceData[25].Quests.Alliance[9] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[25].Quests.Alliance[10] = {
+kQuestInstanceData[25].Quests.Alliance[10] = {
     Title = "10. The Truth Comes Crashing Down",
     Level = "60",
     Attain = "55",
@@ -6272,7 +6272,7 @@ KQuestInstanceData[25].Quests.Alliance[10] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[25].Quests.Alliance[11] = {
+kQuestInstanceData[25].Quests.Alliance[11] = {
     Title = "11. Above and Beyond",
     Level = "60",
     Attain = "55",
@@ -6303,7 +6303,7 @@ KQuestInstanceData[25].Quests.Alliance[11] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Alliance[12] = {
+kQuestInstanceData[25].Quests.Alliance[12] = {
     Title = "12. Dead Man's Plea",
     Level = "60",
     Attain = "58",
@@ -6316,7 +6316,7 @@ KQuestInstanceData[25].Quests.Alliance[12] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[25].Quests.Alliance[13] = {
+kQuestInstanceData[25].Quests.Alliance[13] = {
     Title = "13. The Left Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -6329,7 +6329,7 @@ KQuestInstanceData[25].Quests.Alliance[13] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[25].Quests.Alliance[14] = {
+kQuestInstanceData[25].Quests.Alliance[14] = {
     Title = "14. The Right Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -6342,7 +6342,7 @@ KQuestInstanceData[25].Quests.Alliance[14] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[25].Quests.Alliance[15] = {
+kQuestInstanceData[25].Quests.Alliance[15] = {
     Title = "15. Atiesh, Greatstaff of the Guardian",
     Level = "60",
     Attain = "60",
@@ -6379,7 +6379,7 @@ KQuestInstanceData[25].Quests.Alliance[15] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Alliance[16] = {
+kQuestInstanceData[25].Quests.Alliance[16] = {
     Title = "16. Corruption",
     Level = "60",
     Attain = "50",
@@ -6398,7 +6398,7 @@ KQuestInstanceData[25].Quests.Alliance[16] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Alliance[17] = {
+kQuestInstanceData[25].Quests.Alliance[17] = {
     Title = "17. Sweet Serenity",
     Level = "60",
     Attain = "50",
@@ -6417,7 +6417,7 @@ KQuestInstanceData[25].Quests.Alliance[17] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Alliance[18] = {
+kQuestInstanceData[25].Quests.Alliance[18] = {
     Title = "18. To Build a Pounder",
     Level = "60",
     Attain = "30",
@@ -6454,7 +6454,7 @@ KQuestInstanceData[25].Quests.Alliance[18] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Alliance[19] = {
+kQuestInstanceData[25].Quests.Alliance[19] = {
     Title = "19. To Wake The Ashbringer",
     Level = "60",
     Attain = "60",
@@ -6473,7 +6473,7 @@ KQuestInstanceData[25].Quests.Alliance[19] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Alliance[20] = {
+kQuestInstanceData[25].Quests.Alliance[20] = {
     Title = "20. Rothlen Family Brooch",
     Level = "60",
     Attain = "55",
@@ -6483,7 +6483,7 @@ KQuestInstanceData[25].Quests.Alliance[20] = {
     Prequest = "Scribbled Cooking Notes "..yellow.."[Karazhan]"..white.." -> Lost and Found "..yellow.."[Karazhan]"..white.."", -- 40998, 40999",
     Folgequest = "The Secret Recipe ("..yellow.."[Karazhan]"..white..")" -- 41001",
 }
-KQuestInstanceData[25].Quests.Alliance[21] = {
+kQuestInstanceData[25].Quests.Alliance[21] = {
     Title = "21. The Key to Karazhan VII",
     Level = "60",
     Attain = "58",
@@ -6493,24 +6493,24 @@ KQuestInstanceData[25].Quests.Alliance[21] = {
     Prequest = "The Key to Karazhan VI",
     Folgequest = "The Key to Karazhan VIII ("..yellow.."Dire Maul West"..white..")" -- 40827",
 }
-KQuestInstanceData[25].Quests.Horde[1] = KQuestInstanceData[25].Quests.Alliance[1]
-KQuestInstanceData[25].Quests.Horde[2] = KQuestInstanceData[25].Quests.Alliance[2]
-KQuestInstanceData[25].Quests.Horde[3] = KQuestInstanceData[25].Quests.Alliance[3]
-KQuestInstanceData[25].Quests.Horde[4] = KQuestInstanceData[25].Quests.Alliance[4]
-KQuestInstanceData[25].Quests.Horde[5] = KQuestInstanceData[25].Quests.Alliance[5]
-KQuestInstanceData[25].Quests.Horde[6] = KQuestInstanceData[25].Quests.Alliance[6]
-KQuestInstanceData[25].Quests.Horde[7] = KQuestInstanceData[25].Quests.Alliance[7]
-KQuestInstanceData[25].Quests.Horde[8] = KQuestInstanceData[25].Quests.Alliance[8]
-KQuestInstanceData[25].Quests.Horde[9] = KQuestInstanceData[25].Quests.Alliance[9]
-KQuestInstanceData[25].Quests.Horde[10] = KQuestInstanceData[25].Quests.Alliance[10]
-KQuestInstanceData[25].Quests.Horde[11] = KQuestInstanceData[25].Quests.Alliance[11]
-KQuestInstanceData[25].Quests.Horde[12] = KQuestInstanceData[25].Quests.Alliance[12]
-KQuestInstanceData[25].Quests.Horde[13] = KQuestInstanceData[25].Quests.Alliance[13]
-KQuestInstanceData[25].Quests.Horde[14] = KQuestInstanceData[25].Quests.Alliance[14]
-KQuestInstanceData[25].Quests.Horde[15] = KQuestInstanceData[25].Quests.Alliance[15]
-KQuestInstanceData[25].Quests.Horde[16] = KQuestInstanceData[25].Quests.Alliance[16]
-KQuestInstanceData[25].Quests.Horde[17] = KQuestInstanceData[25].Quests.Alliance[17]
-KQuestInstanceData[25].Quests.Horde[18] = {
+kQuestInstanceData[25].Quests.Horde[1] = kQuestInstanceData[25].Quests.Alliance[1]
+kQuestInstanceData[25].Quests.Horde[2] = kQuestInstanceData[25].Quests.Alliance[2]
+kQuestInstanceData[25].Quests.Horde[3] = kQuestInstanceData[25].Quests.Alliance[3]
+kQuestInstanceData[25].Quests.Horde[4] = kQuestInstanceData[25].Quests.Alliance[4]
+kQuestInstanceData[25].Quests.Horde[5] = kQuestInstanceData[25].Quests.Alliance[5]
+kQuestInstanceData[25].Quests.Horde[6] = kQuestInstanceData[25].Quests.Alliance[6]
+kQuestInstanceData[25].Quests.Horde[7] = kQuestInstanceData[25].Quests.Alliance[7]
+kQuestInstanceData[25].Quests.Horde[8] = kQuestInstanceData[25].Quests.Alliance[8]
+kQuestInstanceData[25].Quests.Horde[9] = kQuestInstanceData[25].Quests.Alliance[9]
+kQuestInstanceData[25].Quests.Horde[10] = kQuestInstanceData[25].Quests.Alliance[10]
+kQuestInstanceData[25].Quests.Horde[11] = kQuestInstanceData[25].Quests.Alliance[11]
+kQuestInstanceData[25].Quests.Horde[12] = kQuestInstanceData[25].Quests.Alliance[12]
+kQuestInstanceData[25].Quests.Horde[13] = kQuestInstanceData[25].Quests.Alliance[13]
+kQuestInstanceData[25].Quests.Horde[14] = kQuestInstanceData[25].Quests.Alliance[14]
+kQuestInstanceData[25].Quests.Horde[15] = kQuestInstanceData[25].Quests.Alliance[15]
+kQuestInstanceData[25].Quests.Horde[16] = kQuestInstanceData[25].Quests.Alliance[16]
+kQuestInstanceData[25].Quests.Horde[17] = kQuestInstanceData[25].Quests.Alliance[17]
+kQuestInstanceData[25].Quests.Horde[18] = {
     Title = "18. Ramstein",
     Level = "60",
     Attain = "56",
@@ -6535,7 +6535,7 @@ KQuestInstanceData[25].Quests.Horde[18] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Horde[19] = {
+kQuestInstanceData[25].Quests.Horde[19] = {
     Title = "19. To Build a Pounder",
     Level = "60",
     Attain = "30",
@@ -6572,7 +6572,7 @@ KQuestInstanceData[25].Quests.Horde[19] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Horde[20] = {
+kQuestInstanceData[25].Quests.Horde[20] = {
     Title = "20. To Wake The Ashbringer",
     Level = "60",
     Attain = "60",
@@ -6591,7 +6591,7 @@ KQuestInstanceData[25].Quests.Horde[20] = {
         },
     }
 }
-KQuestInstanceData[25].Quests.Horde[21] = {
+kQuestInstanceData[25].Quests.Horde[21] = {
     Title = "21. Rothlen Family Brooch",
     Level = "60",
     Attain = "55",
@@ -6601,7 +6601,7 @@ KQuestInstanceData[25].Quests.Horde[21] = {
     Prequest = "Scribbled Cooking Notes "..yellow.."[Karazhan]"..white.." -> Lost and Found "..yellow.."[Karazhan]"..white.."", -- 40998, 40999",
     Folgequest = "The Secret Recipe ("..yellow.."[Karazhan]"..white..")" -- 41001",
 }
-KQuestInstanceData[25].Quests.Horde[22] = {
+kQuestInstanceData[25].Quests.Horde[22] = {
     Title = "22. The Key to Karazhan VII",
     Level = "60",
     Attain = "58",
@@ -6613,7 +6613,7 @@ KQuestInstanceData[25].Quests.Horde[22] = {
 }
 
 --------------- INST26 - Ruins of Ahn'Qiraj ---------------
-KQuestInstanceData[26] = {
+kQuestInstanceData[26] = {
     Story = "During the final hours of the War of the Shifting Sands, the combined forces of the night elves and the four dragonflights drove the battle to the very heart of the qiraji empire, to the fortress city of Ahn'Qiraj. Yet at the city gates, the armies of Kalimdor encountered a concentration of silithid war drones more massive than any they had encountered before. Ultimately the silithid and their qiraji masters were not defeated, but merely imprisoned inside a magical barrier, and the war left the cursed city in ruins. A thousand years have passed since that day, but the qiraji forces have not been idle. A new and terrible army has been spawned from the hives, and the ruins of Ahn'Qiraj are teeming once again with swarming masses of silithid and qiraji. This threat must be eliminated, or else all of Azeroth may fall before the terrifying might of the new qiraji army.",
     Caption = "Ruins of Ahn'Qiraj",
     QAA = "3 Quests",
@@ -6623,7 +6623,7 @@ KQuestInstanceData[26] = {
         Horde = {}
     }
 }
-KQuestInstanceData[26].Quests.Alliance[1] = {
+kQuestInstanceData[26].Quests.Alliance[1] = {
     Title = "1. The Fall of Ossirian",
     Level = "60",
     Attain = "60",
@@ -6660,7 +6660,7 @@ KQuestInstanceData[26].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[26].Quests.Alliance[2] = {
+kQuestInstanceData[26].Quests.Alliance[2] = {
     Title = "2. The Perfect Poison",
     Level = "60",
     Attain = "60",
@@ -6709,7 +6709,7 @@ KQuestInstanceData[26].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[26].Quests.Alliance[3] = {
+kQuestInstanceData[26].Quests.Alliance[3] = {
     Title = "3. Lost to the Sands",
     Level = "60",
     Attain = "60",
@@ -6728,12 +6728,12 @@ KQuestInstanceData[26].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[26].Quests.Horde[1] = KQuestInstanceData[26].Quests.Alliance[1]
-KQuestInstanceData[26].Quests.Horde[2] = KQuestInstanceData[26].Quests.Alliance[2]
-KQuestInstanceData[26].Quests.Horde[3] = KQuestInstanceData[26].Quests.Alliance[3]
+kQuestInstanceData[26].Quests.Horde[1] = kQuestInstanceData[26].Quests.Alliance[1]
+kQuestInstanceData[26].Quests.Horde[2] = kQuestInstanceData[26].Quests.Alliance[2]
+kQuestInstanceData[26].Quests.Horde[3] = kQuestInstanceData[26].Quests.Alliance[3]
 
 --------------- INST27 - The Stockade ---------------
-KQuestInstanceData[27] = {
+kQuestInstanceData[27] = {
     Story = "The Stockades are a high-security prison complex, hidden beneath the canal district of Stormwind city. Presided over by Warden Thelwater, the Stockades are home to petty crooks, political insurgents, murderers and a score of the most dangerous criminals in the land. Recently, a prisoner-led revolt has resulted in a state of pandemonium within the Stockades - where the guards have been driven out and the convicts roam free. Warden Thelwater has managed to escape the holding area and is currently enlisting brave thrill-seekers to venture into the prison and kill the uprising's mastermind - the cunning felon, Bazil Thredd.",
     Caption = "The Stockade",
     QAA = "7 Quests",
@@ -6743,7 +6743,7 @@ KQuestInstanceData[27] = {
         Horde = {}
     }
 }
-KQuestInstanceData[27].Quests.Alliance[1] = {
+kQuestInstanceData[27].Quests.Alliance[1] = {
     Title = "1. What Comes Around...",
     Level = "25",
     Attain = "22",
@@ -6768,7 +6768,7 @@ KQuestInstanceData[27].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[27].Quests.Alliance[2] = {
+kQuestInstanceData[27].Quests.Alliance[2] = {
     Title = "2. Crime and Punishment",
     Level = "26",
     Attain = "22",
@@ -6793,7 +6793,7 @@ KQuestInstanceData[27].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[27].Quests.Alliance[3] = {
+kQuestInstanceData[27].Quests.Alliance[3] = {
     Title = "3. Quell The Uprising",
     Level = "26",
     Attain = "22",
@@ -6806,7 +6806,7 @@ KQuestInstanceData[27].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[27].Quests.Alliance[4] = {
+kQuestInstanceData[27].Quests.Alliance[4] = {
     Title = "4. The Color of Blood",
     Level = "26",
     Attain = "22",
@@ -6819,7 +6819,7 @@ KQuestInstanceData[27].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[27].Quests.Alliance[5] = {
+kQuestInstanceData[27].Quests.Alliance[5] = {
     Title = "5. The Fury Runs Deep",
     Level = "27",
     Attain = "22",
@@ -6844,7 +6844,7 @@ KQuestInstanceData[27].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[27].Quests.Alliance[6] = {
+kQuestInstanceData[27].Quests.Alliance[6] = {
     Title = "6. The Stockade Riots",
     Level = "29",
     Attain = "16",
@@ -6857,7 +6857,7 @@ KQuestInstanceData[27].Quests.Alliance[6] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[27].Quests.Alliance[7] = {
+kQuestInstanceData[27].Quests.Alliance[7] = {
     Title = "7. The Stockade's Search",
     Level = "24",
     Attain = "18",
@@ -6890,7 +6890,7 @@ KQuestInstanceData[27].Quests.Alliance[7] = {
 }
 
 --------------- INST28 - The Sunken Temple ---------------
-KQuestInstanceData[28] = {
+kQuestInstanceData[28] = {
     Story = "Over a thousand years ago, the powerful Gurubashi Empire was torn apart by a massive civil war. An influential group of troll priests, known as the Atal'ai, attempted to bring back an ancient blood god named Hakkar the Soulflayer. Though the priests were defeated and ultimately exiled, the great troll empire buckled in upon itself. The exiled priests fled far to the north, into the Swamp of Sorrows. There they erected a great temple to Hakkar - where they could prepare for his arrival into the physical world. The great dragon Aspect, Ysera, learned of the Atal'ai's plans and smashed the temple beneath the marshes. To this day, the temple's drowned ruins are guarded by the green dragons who prevent anyone from getting in or out. However, it is believed that some of the fanatical Atal'ai may have survived Ysera's wrath - and recommitted themselves to the dark service of Hakkar.",
     Caption = "The Sunken Temple",
     QAA = "19 Quests",
@@ -6900,7 +6900,7 @@ KQuestInstanceData[28] = {
         Horde = {}
     }
 }
-KQuestInstanceData[28].Quests.Alliance[1] = {
+kQuestInstanceData[28].Quests.Alliance[1] = {
     Title = "1. Into The Temple of Atal'Hakkar",
     Level = "50",
     Attain = "41",
@@ -6919,7 +6919,7 @@ KQuestInstanceData[28].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[2] = {
+kQuestInstanceData[28].Quests.Alliance[2] = {
     Title = "2. Into the Depths",
     Level = "51",
     Attain = "46",
@@ -6932,7 +6932,7 @@ KQuestInstanceData[28].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[28].Quests.Alliance[3] = {
+kQuestInstanceData[28].Quests.Alliance[3] = {
     Title = "3. Secret of the Circle",
     Level = "51",
     Attain = "46",
@@ -6951,7 +6951,7 @@ KQuestInstanceData[28].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[4] = {
+kQuestInstanceData[28].Quests.Alliance[4] = {
     Title = "4. Haze of Evil",
     Level = "52",
     Attain = "47",
@@ -6961,7 +6961,7 @@ KQuestInstanceData[28].Quests.Alliance[4] = {
     Prequest = "Muigin and Larion -> A Visit to Gregan",
     Folgequest = "No",
 }
-KQuestInstanceData[28].Quests.Alliance[5] = {
+kQuestInstanceData[28].Quests.Alliance[5] = {
     Title = "5. The God Hakkar",
     Level = "53",
     Attain = "40",
@@ -6992,7 +6992,7 @@ KQuestInstanceData[28].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[6] = {
+kQuestInstanceData[28].Quests.Alliance[6] = {
     Title = "6. Jammal'an the Prophet",
     Level = "53",
     Attain = "38",
@@ -7017,7 +7017,7 @@ KQuestInstanceData[28].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[7] = {
+kQuestInstanceData[28].Quests.Alliance[7] = {
     Title = "7. The Essence of Eranikus",
     Level = "55",
     Attain = "48",
@@ -7036,7 +7036,7 @@ KQuestInstanceData[28].Quests.Alliance[7] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[8] = {
+kQuestInstanceData[28].Quests.Alliance[8] = {
     Title = "8. Trolls of a Feather",
     Level = "52",
     Attain = "50",
@@ -7067,7 +7067,7 @@ KQuestInstanceData[28].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[9] = {
+kQuestInstanceData[28].Quests.Alliance[9] = {
     Title = "9. Voodoo Feathers",
     Level = "52",
     Attain = "50",
@@ -7098,7 +7098,7 @@ KQuestInstanceData[28].Quests.Alliance[9] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[10] = {
+kQuestInstanceData[28].Quests.Alliance[10] = {
     Title = "10. A Better Ingredient",
     Level = "52",
     Attain = "50",
@@ -7129,7 +7129,7 @@ KQuestInstanceData[28].Quests.Alliance[10] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[11] = {
+kQuestInstanceData[28].Quests.Alliance[11] = {
     Title = "11. The Green Drake",
     Level = "52",
     Attain = "50",
@@ -7160,7 +7160,7 @@ KQuestInstanceData[28].Quests.Alliance[11] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[12] = {
+kQuestInstanceData[28].Quests.Alliance[12] = {
     Title = "12. Destroy Morphaz",
     Level = "52",
     Attain = "50",
@@ -7191,7 +7191,7 @@ KQuestInstanceData[28].Quests.Alliance[12] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[13] = {
+kQuestInstanceData[28].Quests.Alliance[13] = {
     Title = "13. Blood of Morphaz",
     Level = "52",
     Attain = "50",
@@ -7222,7 +7222,7 @@ KQuestInstanceData[28].Quests.Alliance[13] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[14] = {
+kQuestInstanceData[28].Quests.Alliance[14] = {
     Title = "14. The Azure Key",
     Level = "52",
     Attain = "50",
@@ -7253,7 +7253,7 @@ KQuestInstanceData[28].Quests.Alliance[14] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[15] = {
+kQuestInstanceData[28].Quests.Alliance[15] = {
     Title = "15. Forging the Mightstone",
     Level = "52",
     Attain = "50",
@@ -7290,7 +7290,7 @@ KQuestInstanceData[28].Quests.Alliance[15] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[16] = {
+kQuestInstanceData[28].Quests.Alliance[16] = {
     Title = "16. Eranikus, Tyrant of the Dream",
     Level = "60",
     Attain = "60",
@@ -7303,7 +7303,7 @@ KQuestInstanceData[28].Quests.Alliance[16] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[28].Quests.Alliance[17] = {
+kQuestInstanceData[28].Quests.Alliance[17] = {
     Title = "17. By Any Means Necessary IV",
     Level = "53",
     Attain = "47",
@@ -7322,7 +7322,7 @@ KQuestInstanceData[28].Quests.Alliance[17] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[18] = {
+kQuestInstanceData[28].Quests.Alliance[18] = {
     Title = "18. Into the Dream III",
     Level = "60",
     Attain = "58",
@@ -7341,7 +7341,7 @@ KQuestInstanceData[28].Quests.Alliance[18] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Alliance[19] = {
+kQuestInstanceData[28].Quests.Alliance[19] = {
     Title = "19. The Riftwalker's Cane",
     Level = "54",
     Attain = "30",
@@ -7360,7 +7360,7 @@ KQuestInstanceData[28].Quests.Alliance[19] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Horde[1] = {
+kQuestInstanceData[28].Quests.Horde[1] = {
     Title = "1. The Temple of Atal'Hakkar",
     Level = "50",
     Attain = "38",
@@ -7369,11 +7369,11 @@ KQuestInstanceData[28].Quests.Horde[1] = {
     Note = "All Enemys in the Temple drop Fetishes.\nQuestline starts at Fel'Zerul (Swamp of Sorrows - Stonard; "..yellow.."47,54"..white..")",
     Prequest = "Pool of Tears -> Return to Fel'Zerul",
     Folgequest = "No",
-    Rewards = KQuestInstanceData[28].Quests.Alliance[1].Rewards
+    Rewards = kQuestInstanceData[28].Quests.Alliance[1].Rewards
 }
-KQuestInstanceData[28].Quests.Horde[2] = KQuestInstanceData[28].Quests.Alliance[2]
-KQuestInstanceData[28].Quests.Horde[3] = KQuestInstanceData[28].Quests.Alliance[3]
-KQuestInstanceData[28].Quests.Horde[4] = {
+kQuestInstanceData[28].Quests.Horde[2] = kQuestInstanceData[28].Quests.Alliance[2]
+kQuestInstanceData[28].Quests.Horde[3] = kQuestInstanceData[28].Quests.Alliance[3]
+kQuestInstanceData[28].Quests.Horde[4] = {
     Title = "4. Zapper Fuel",
     Level = "52",
     Attain = "47",
@@ -7386,17 +7386,17 @@ KQuestInstanceData[28].Quests.Horde[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[28].Quests.Horde[5] = KQuestInstanceData[28].Quests.Alliance[5]
-KQuestInstanceData[28].Quests.Horde[6] = KQuestInstanceData[28].Quests.Alliance[6]
-KQuestInstanceData[28].Quests.Horde[7] = KQuestInstanceData[28].Quests.Alliance[7]
-KQuestInstanceData[28].Quests.Horde[8] = KQuestInstanceData[28].Quests.Alliance[8]
-KQuestInstanceData[28].Quests.Horde[9] = KQuestInstanceData[28].Quests.Alliance[9]
-KQuestInstanceData[28].Quests.Horde[10] = KQuestInstanceData[28].Quests.Alliance[10]
-KQuestInstanceData[28].Quests.Horde[11] = KQuestInstanceData[28].Quests.Alliance[11]
-KQuestInstanceData[28].Quests.Horde[12] = KQuestInstanceData[28].Quests.Alliance[12]
-KQuestInstanceData[28].Quests.Horde[13] = KQuestInstanceData[28].Quests.Alliance[13]
-KQuestInstanceData[28].Quests.Horde[14] = KQuestInstanceData[28].Quests.Alliance[14]
-KQuestInstanceData[28].Quests.Horde[15] = {
+kQuestInstanceData[28].Quests.Horde[5] = kQuestInstanceData[28].Quests.Alliance[5]
+kQuestInstanceData[28].Quests.Horde[6] = kQuestInstanceData[28].Quests.Alliance[6]
+kQuestInstanceData[28].Quests.Horde[7] = kQuestInstanceData[28].Quests.Alliance[7]
+kQuestInstanceData[28].Quests.Horde[8] = kQuestInstanceData[28].Quests.Alliance[8]
+kQuestInstanceData[28].Quests.Horde[9] = kQuestInstanceData[28].Quests.Alliance[9]
+kQuestInstanceData[28].Quests.Horde[10] = kQuestInstanceData[28].Quests.Alliance[10]
+kQuestInstanceData[28].Quests.Horde[11] = kQuestInstanceData[28].Quests.Alliance[11]
+kQuestInstanceData[28].Quests.Horde[12] = kQuestInstanceData[28].Quests.Alliance[12]
+kQuestInstanceData[28].Quests.Horde[13] = kQuestInstanceData[28].Quests.Alliance[13]
+kQuestInstanceData[28].Quests.Horde[14] = kQuestInstanceData[28].Quests.Alliance[14]
+kQuestInstanceData[28].Quests.Horde[15] = {
     Title = "15. Da Voodoo",
     Level = "52",
     Attain = "50",
@@ -7427,9 +7427,9 @@ KQuestInstanceData[28].Quests.Horde[15] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Horde[16] = KQuestInstanceData[28].Quests.Alliance[16]
-KQuestInstanceData[28].Quests.Horde[17] = KQuestInstanceData[28].Quests.Alliance[17]
-KQuestInstanceData[28].Quests.Horde[18] = {
+kQuestInstanceData[28].Quests.Horde[16] = kQuestInstanceData[28].Quests.Alliance[16]
+kQuestInstanceData[28].Quests.Horde[17] = kQuestInstanceData[28].Quests.Alliance[17]
+kQuestInstanceData[28].Quests.Horde[18] = {
     Title = "18. The Maul'ogg Crisis VII",
     Level = "54",
     Attain = "45",
@@ -7460,7 +7460,7 @@ KQuestInstanceData[28].Quests.Horde[18] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Horde[19] = {
+kQuestInstanceData[28].Quests.Horde[19] = {
     Title = "19. Into the Dream III",
     Level = "60",
     Attain = "58",
@@ -7479,7 +7479,7 @@ KQuestInstanceData[28].Quests.Horde[19] = {
         },
     }
 }
-KQuestInstanceData[28].Quests.Horde[20] = {
+kQuestInstanceData[28].Quests.Horde[20] = {
     Title = "20. The Riftwalker's Cane",
     Level = "54",
     Attain = "30",
@@ -7500,7 +7500,7 @@ KQuestInstanceData[28].Quests.Horde[20] = {
 }
 
 --------------- INST29 - Temple of Ahn'Qiraj ---------------
-KQuestInstanceData[29] = {
+kQuestInstanceData[29] = {
     Story = "At the heart of Ahn'Qiraj lies an ancient temple complex. Built in the time before recorded history, it is both a monument to unspeakable gods and a massive breeding ground for the qiraji army. Since the War of the Shifting Sands ended a thousand years ago, the Twin Emperors of the qiraji empire have been trapped inside their temple, barely contained behind the magical barrier erected by the bronze dragon Anachronos and the night elves. Now that the Scepter of the Shifting Sands has been reassembled and the seal has been broken, the way into the inner sanctum of Ahn'Qiraj is open. Beyond the crawling madness of the hives, beneath the Temple of Ahn'Qiraj, legions of qiraji prepare for invasion. They must be stopped at all costs before they can unleash their voracious insectoid armies on Kalimdor once again, and a second War of the Shifting Sands breaks loose!",
     Caption = "Temple of Ahn'Qiraj",
     QAA = "2 Quests",
@@ -7510,7 +7510,7 @@ KQuestInstanceData[29] = {
         Horde = {}
     }
 }
-KQuestInstanceData[29].Quests.Alliance[1] = {
+kQuestInstanceData[29].Quests.Alliance[1] = {
     Title = "1. C'Thun's Legacy",
     Level = "60",
     Attain = "60",
@@ -7541,7 +7541,7 @@ KQuestInstanceData[29].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[29].Quests.Alliance[2] = {
+kQuestInstanceData[29].Quests.Alliance[2] = {
     Title = "2. Secrets of the Qiraji",
     Level = "60",
     Attain = "60",
@@ -7554,11 +7554,11 @@ KQuestInstanceData[29].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[29].Quests.Horde[1] = KQuestInstanceData[29].Quests.Alliance[1]
-KQuestInstanceData[29].Quests.Horde[2] = KQuestInstanceData[29].Quests.Alliance[2]
+kQuestInstanceData[29].Quests.Horde[1] = kQuestInstanceData[29].Quests.Alliance[1]
+kQuestInstanceData[29].Quests.Horde[2] = kQuestInstanceData[29].Quests.Alliance[2]
 
 --------------- INST30 - Zul'Farrak ---------------
-KQuestInstanceData[30] = {
+kQuestInstanceData[30] = {
     Story = "This sun-blasted city is home to the Sandfury trolls, known for their particular ruthlessness and dark mysticism. Troll legends tell of a powerful sword called Sul'thraze the Lasher, a weapon capable of instilling fear and weakness in even the most formidable of foes. Long ago, the weapon was split in half. However, rumors have circulated that the two halves may be found somewhere within Zul'Farrak's walls. Reports have also suggested that a band of mercenaries fleeing Gadgetzan wandered into the city and became trapped. Their fate remains unknown. But perhaps most disturbing of all are the hushed whispers of an ancient creature sleeping within a sacred pool at the city's heart - a mighty demigod who will wreak untold destruction upon any adventurer foolish enough to awaken him.",
     Caption = "Zul'Farrak",
     QAA = "8 Quests",
@@ -7568,7 +7568,7 @@ KQuestInstanceData[30] = {
         Horde = {}
     }
 }
-KQuestInstanceData[30].Quests.Alliance[1] = {
+kQuestInstanceData[30].Quests.Alliance[1] = {
     Title = "1. Nekrum's Medallion",
     Level = "47",
     Attain = "40",
@@ -7581,7 +7581,7 @@ KQuestInstanceData[30].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[30].Quests.Alliance[2] = {
+kQuestInstanceData[30].Quests.Alliance[2] = {
     Title = "2. Troll Temper",
     Level = "45",
     Attain = "40",
@@ -7594,7 +7594,7 @@ KQuestInstanceData[30].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[30].Quests.Alliance[3] = {
+kQuestInstanceData[30].Quests.Alliance[3] = {
     Title = "3. Scarab Shells",
     Level = "45",
     Attain = "40",
@@ -7607,7 +7607,7 @@ KQuestInstanceData[30].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[30].Quests.Alliance[4] = {
+kQuestInstanceData[30].Quests.Alliance[4] = {
     Title = "4. Tiara of the Deep",
     Level = "46",
     Attain = "40",
@@ -7632,7 +7632,7 @@ KQuestInstanceData[30].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[30].Quests.Alliance[5] = {
+kQuestInstanceData[30].Quests.Alliance[5] = {
     Title = "5. The Prophecy of Mosh'aru",
     Level = "47",
     Attain = "40",
@@ -7645,7 +7645,7 @@ KQuestInstanceData[30].Quests.Alliance[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[30].Quests.Alliance[6] = {
+kQuestInstanceData[30].Quests.Alliance[6] = {
     Title = "6. Divino-matic Rod",
     Level = "47",
     Attain = "40",
@@ -7670,7 +7670,7 @@ KQuestInstanceData[30].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[30].Quests.Alliance[7] = {
+kQuestInstanceData[30].Quests.Alliance[7] = {
     Title = "7. Gahz'rilla",
     Level = "50",
     Attain = "40",
@@ -7689,7 +7689,7 @@ KQuestInstanceData[30].Quests.Alliance[7] = {
         },
     }
 }
-KQuestInstanceData[30].Quests.Alliance[8] = {
+kQuestInstanceData[30].Quests.Alliance[8] = {
     Title = "8. Drifting Across the Sand",
     Level = "46",
     Attain = "40",
@@ -7708,7 +7708,7 @@ KQuestInstanceData[30].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[30].Quests.Horde[1] = {
+kQuestInstanceData[30].Quests.Horde[1] = {
     Title = "1. The Spider God",
     Level = "45",
     Attain = "40",
@@ -7721,14 +7721,14 @@ KQuestInstanceData[30].Quests.Horde[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[30].Quests.Horde[2] = KQuestInstanceData[30].Quests.Alliance[2]
-KQuestInstanceData[30].Quests.Horde[3] = KQuestInstanceData[30].Quests.Alliance[3]
-KQuestInstanceData[30].Quests.Horde[4] = KQuestInstanceData[30].Quests.Alliance[4]
-KQuestInstanceData[30].Quests.Horde[5] = KQuestInstanceData[30].Quests.Alliance[5]
-KQuestInstanceData[30].Quests.Horde[6] = KQuestInstanceData[30].Quests.Alliance[6]
-KQuestInstanceData[30].Quests.Horde[7] = KQuestInstanceData[30].Quests.Alliance[7]
-KQuestInstanceData[30].Quests.Horde[8] = KQuestInstanceData[30].Quests.Alliance[8]
-KQuestInstanceData[30].Quests.Horde[9] = {
+kQuestInstanceData[30].Quests.Horde[2] = kQuestInstanceData[30].Quests.Alliance[2]
+kQuestInstanceData[30].Quests.Horde[3] = kQuestInstanceData[30].Quests.Alliance[3]
+kQuestInstanceData[30].Quests.Horde[4] = kQuestInstanceData[30].Quests.Alliance[4]
+kQuestInstanceData[30].Quests.Horde[5] = kQuestInstanceData[30].Quests.Alliance[5]
+kQuestInstanceData[30].Quests.Horde[6] = kQuestInstanceData[30].Quests.Alliance[6]
+kQuestInstanceData[30].Quests.Horde[7] = kQuestInstanceData[30].Quests.Alliance[7]
+kQuestInstanceData[30].Quests.Horde[8] = kQuestInstanceData[30].Quests.Alliance[8]
+kQuestInstanceData[30].Quests.Horde[9] = {
     Title = "9. End Ukorz Sandscalp",
     Level = "48",
     Attain = "40",
@@ -7755,7 +7755,7 @@ KQuestInstanceData[30].Quests.Horde[9] = {
 }
 
 --------------- INST31 - Zul'Gurub ---------------
-KQuestInstanceData[31] = {
+kQuestInstanceData[31] = {
     Story = {
         ["Page1"] = "Over a thousand years ago the powerful Gurubashi Empire was torn apart by a massive civil war. An influential group of troll priests, known as the Atal'ai, called forth the avatar of an ancient and terrible blood god named Hakkar the Soulflayer. Though the priests were defeated and ultimately exiled, the great troll empire collapsed upon itself. The exiled priests fled far to the north, into the Swamp of Sorrows, where they erected a great temple to Hakkar in order to prepare for his arrival into the physical world.",
         ["Page2"] = "In time, the Atal'ai priests discovered that Hakkar's physical form could only be summoned within the ancient capital of the Gurubashi Empire, Zul'Gurub. Unfortunately, the priests have met with recent success in their quest to call forth Hakkar - reports confirm the presence of the dreaded Soulflayer in the heart of the Gurubashi ruins.\n\nIn order to quell the blood god, the trolls of the land banded together and sent a contingent of High Priests into the ancient city. Each priest was a powerful champion of the Primal Gods - Bat, Panther, Tiger, Spider, and Snake - but despite their best efforts, they fell under the sway of Hakkar. Now the champions and their Primal God aspects feed the awesome power of the Soulflayer. Any adventurers brave enough to venture into the foreboding ruins must overcome the High Priests if they are to have any hope of confronting the mighty blood god.",
@@ -7769,7 +7769,7 @@ KQuestInstanceData[31] = {
         Horde = {}
     }
 }
-KQuestInstanceData[31].Quests.Alliance[1] = {
+kQuestInstanceData[31].Quests.Alliance[1] = {
     Title = "1. A Collection of Heads",
     Level = "60",
     Attain = "58",
@@ -7806,7 +7806,7 @@ KQuestInstanceData[31].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[31].Quests.Alliance[2] = {
+kQuestInstanceData[31].Quests.Alliance[2] = {
     Title = "2. The Heart of Hakkar",
     Level = "60",
     Attain = "58",
@@ -7837,7 +7837,7 @@ KQuestInstanceData[31].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[31].Quests.Alliance[3] = {
+kQuestInstanceData[31].Quests.Alliance[3] = {
     Title = "3. Nat's Measuring Tape",
     Level = "60",
     Attain = "58",
@@ -7850,7 +7850,7 @@ KQuestInstanceData[31].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[31].Quests.Alliance[4] = {
+kQuestInstanceData[31].Quests.Alliance[4] = {
     Title = "4. The Perfect Poison",
     Level = "60",
     Attain = "60",
@@ -7899,13 +7899,13 @@ KQuestInstanceData[31].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[31].Quests.Horde[1] = KQuestInstanceData[31].Quests.Alliance[1]
-KQuestInstanceData[31].Quests.Horde[2] = KQuestInstanceData[31].Quests.Alliance[2]
-KQuestInstanceData[31].Quests.Horde[3] = KQuestInstanceData[31].Quests.Alliance[3]
-KQuestInstanceData[31].Quests.Horde[4] = KQuestInstanceData[31].Quests.Alliance[4]
+kQuestInstanceData[31].Quests.Horde[1] = kQuestInstanceData[31].Quests.Alliance[1]
+kQuestInstanceData[31].Quests.Horde[2] = kQuestInstanceData[31].Quests.Alliance[2]
+kQuestInstanceData[31].Quests.Horde[3] = kQuestInstanceData[31].Quests.Alliance[3]
+kQuestInstanceData[31].Quests.Horde[4] = kQuestInstanceData[31].Quests.Alliance[4]
 
 --------------- INST32 - Gnomeregan ---------------
-KQuestInstanceData[32] = {
+kQuestInstanceData[32] = {
     Story = "Located in Dun Morogh, the technological wonder known as Gnomeregan has been the gnomes' capital city for generations. Recently, a hostile race of mutant troggs infested several regions of Dun Morogh - including the great gnome city. In a desperate attempt to destroy the invading troggs, High Tinker Mekkatorque ordered the emergency venting of the city's radioactive waste tanks. Several gnomes sought shelter from the airborne pollutants as they waited for the troggs to die or flee. Unfortunately, though the troggs became irradiated from the toxic assault - their siege continued, unabated. Those gnomes who were not killed by noxious seepage were forced to flee, seeking refuge in the nearby dwarven city of Ironforge. There, High Tinker Mekkatorque set out to enlist brave souls to help his people reclaim their beloved city. It is rumored that Mekkatorque's once-trusted advisor, Mekgineer Thermaplugg, betrayed his people by allowing the invasion to happen. Now, his sanity shattered, Thermaplug remains in Gnomeregan - furthering his dark schemes and acting as the city's new techno-overlord.",
     Caption = "Gnomeregan",
     QAA = "13 Quests",
@@ -7915,7 +7915,7 @@ KQuestInstanceData[32] = {
         Horde = {}
     }
 }
-KQuestInstanceData[32].Quests.Alliance[1] = {
+kQuestInstanceData[32].Quests.Alliance[1] = {
     Title = "1. Save Techbot's Brain!",
     Level = "26",
     Attain = "20",
@@ -7928,7 +7928,7 @@ KQuestInstanceData[32].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[32].Quests.Alliance[2] = {
+kQuestInstanceData[32].Quests.Alliance[2] = {
     Title = "2. Gnogaine",
     Level = "27",
     Attain = "20",
@@ -7941,7 +7941,7 @@ KQuestInstanceData[32].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[32].Quests.Alliance[3] = {
+kQuestInstanceData[32].Quests.Alliance[3] = {
     Title = "3. The Only Cure is More Green Glow",
     Level = "30",
     Attain = "20",
@@ -7954,7 +7954,7 @@ KQuestInstanceData[32].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[32].Quests.Alliance[4] = {
+kQuestInstanceData[32].Quests.Alliance[4] = {
     Title = "4. Gyrodrillmatic Excavationators",
     Level = "30",
     Attain = "20",
@@ -7979,7 +7979,7 @@ KQuestInstanceData[32].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[32].Quests.Alliance[5] = {
+kQuestInstanceData[32].Quests.Alliance[5] = {
     Title = "5. Essential Artificials",
     Level = "30",
     Attain = "24",
@@ -7992,7 +7992,7 @@ KQuestInstanceData[32].Quests.Alliance[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[32].Quests.Alliance[6] = {
+kQuestInstanceData[32].Quests.Alliance[6] = {
     Title = "6. Data Rescue",
     Level = "30",
     Attain = "25",
@@ -8017,7 +8017,7 @@ KQuestInstanceData[32].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[32].Quests.Alliance[7] = {
+kQuestInstanceData[32].Quests.Alliance[7] = {
     Title = "7. A Fine Mess",
     Level = "30",
     Attain = "24",
@@ -8042,7 +8042,7 @@ KQuestInstanceData[32].Quests.Alliance[7] = {
         },
     }
 }
-KQuestInstanceData[32].Quests.Alliance[8] = {
+kQuestInstanceData[32].Quests.Alliance[8] = {
     Title = "8. The Grand Betrayal",
     Level = "35",
     Attain = "25",
@@ -8073,7 +8073,7 @@ KQuestInstanceData[32].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[32].Quests.Alliance[9] = {
+kQuestInstanceData[32].Quests.Alliance[9] = {
     Title = "9. Grime-Encrusted Ring",
     Level = "34",
     Attain = "28",
@@ -8086,7 +8086,7 @@ KQuestInstanceData[32].Quests.Alliance[9] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[32].Quests.Alliance[10] = {
+kQuestInstanceData[32].Quests.Alliance[10] = {
     Title = "10. Return of the Ring",
     Level = "34",
     Attain = "28",
@@ -8105,7 +8105,7 @@ KQuestInstanceData[32].Quests.Alliance[10] = {
         },
     }
 }
-KQuestInstanceData[32].Quests.Alliance[11] = {
+kQuestInstanceData[32].Quests.Alliance[11] = {
     Title = "11. A Pounding Brain",
     Level = "30",
     Attain = "30",
@@ -8118,7 +8118,7 @@ KQuestInstanceData[32].Quests.Alliance[11] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[32].Quests.Alliance[12] = {
+kQuestInstanceData[32].Quests.Alliance[12] = {
     Title = "12. High Energy Regulator",
     Level = "33",
     Attain = "25",
@@ -8137,7 +8137,7 @@ KQuestInstanceData[32].Quests.Alliance[12] = {
         },
     }
 }
-KQuestInstanceData[32].Quests.Alliance[13] = {
+kQuestInstanceData[32].Quests.Alliance[13] = {
     Title = "13. Backup System Activation",
     Level = "33",
     Attain = "25",
@@ -8168,7 +8168,7 @@ KQuestInstanceData[32].Quests.Alliance[13] = {
         },
     }
 }
-KQuestInstanceData[32].Quests.Horde[1] = {
+kQuestInstanceData[32].Quests.Horde[1] = {
     Title = "1. Gnomer-gooooone!",
     Level = "35",
     Attain = "20",
@@ -8181,7 +8181,7 @@ KQuestInstanceData[32].Quests.Horde[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[32].Quests.Horde[2] = {
+kQuestInstanceData[32].Quests.Horde[2] = {
     Title = "2. A Fine Mess",
     Level = "30",
     Attain = "24",
@@ -8206,7 +8206,7 @@ KQuestInstanceData[32].Quests.Horde[2] = {
         },
     }
 }
-KQuestInstanceData[32].Quests.Horde[3] = {
+kQuestInstanceData[32].Quests.Horde[3] = {
     Title = "3. Rig Wars",
     Level = "35",
     Attain = "25",
@@ -8237,7 +8237,7 @@ KQuestInstanceData[32].Quests.Horde[3] = {
         },
     }
 }
-KQuestInstanceData[32].Quests.Horde[4] = {
+kQuestInstanceData[32].Quests.Horde[4] = {
     Title = "4. Grime-Encrusted Ring",
     Level = "34",
     Attain = "28",
@@ -8250,7 +8250,7 @@ KQuestInstanceData[32].Quests.Horde[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[32].Quests.Horde[5] = {
+kQuestInstanceData[32].Quests.Horde[5] = {
     Title = "5. Return of the Ring",
     Level = "34",
     Attain = "28",
@@ -8269,7 +8269,7 @@ KQuestInstanceData[32].Quests.Horde[5] = {
         },
     }
 }
-KQuestInstanceData[32].Quests.Horde[6] = {
+kQuestInstanceData[32].Quests.Horde[6] = {
     Title = "6. A Pounding Brain",
     Level = "30",
     Attain = "30",
@@ -8282,7 +8282,7 @@ KQuestInstanceData[32].Quests.Horde[6] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[32].Quests.Horde[7] = {
+kQuestInstanceData[32].Quests.Horde[7] = {
     Title = "7. Backup Capacitor",
     Level = "34",
     Attain = "29",
@@ -8309,7 +8309,7 @@ KQuestInstanceData[32].Quests.Horde[7] = {
 }
 
 --------------- INST33 - Dragons of Nightmare ---------------
-KQuestInstanceData[33] = {
+kQuestInstanceData[33] = {
     Story = {
 	    ["Page1"] = "There is a disturbance at the Great Trees. A new threat menaces these secluded areas found in Ashenvale, Duskwood, Feralas, and Hinterlands. Four great guardians of the green Dragonflight have arrived from the Dream, but these once-proud protectors now seek only destruction and death. Take arms with your fellows and march to these hidden groves -- only you can defend Azeroth from the corruption they bring.",
 	    ["Page2"] = "Ysera, the great Dreaming dragon Aspect rules over the enigmatic Green dragonflight. Her domain is the fantastic, mystical realm of the Emerald Dream - and it is said that from there she guides the evolutionary path of the world itself. She is the protector of nature and imagination, and it is the charge of her flight to guard all of the Great Trees across the world, which only druids use to enter the Dream itself. In recent times, Ysera's most trusted lieutenants have been warped by a dark new power within the Emerald Dream. Now these wayward sentinels have passed through the Great Trees into Azeroth, intending to spread madness and terror throughout the mortal kingdoms. Even the mightiest of adventurers would be well advised to give the dragons a wide berth, or suffer the consequences of their misguided wrath.",
@@ -8334,7 +8334,7 @@ KQuestInstanceData[33] = {
         Horde = {}
     }
 }
-KQuestInstanceData[33].Quests.Alliance[1] = {
+kQuestInstanceData[33].Quests.Alliance[1] = {
     Title = "1. Shrouded in Nightmare",
     Level = "60",
     Attain = "60",
@@ -8353,10 +8353,10 @@ KQuestInstanceData[33].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[33].Quests.Horde[1] = KQuestInstanceData[33].Quests.Alliance[1]
+kQuestInstanceData[33].Quests.Horde[1] = kQuestInstanceData[33].Quests.Alliance[1]
 
 --------------- INST34 - Azuregos ---------------
-KQuestInstanceData[34] = {
+kQuestInstanceData[34] = {
     Story = "Before the Great Sundering, the night elf city of Eldarath flourished in the land that is now known as Azshara. It is believed that many ancient and powerful Highborne artifacts may be found among the ruins of the once-mighty stronghold. For countless generations, the Blue Dragon Flight has safeguarded powerful artifacts and magical lore, ensuring that they do not fall into mortal hands. The presence of Azuregos, the Blue dragon, seems to suggest that items of extreme significance, perhaps the fabled Vials of Eternity themselves, may be found in the wilderness of Azshara. Whatever Azuregos seeks, one thing is certain: he will fight to the death to defend Azshara's magical treasures.",
     Caption = "Azuregos",
     QAA = "2 Quests",
@@ -8366,7 +8366,7 @@ KQuestInstanceData[34] = {
         Horde = {}
     }
 }
-KQuestInstanceData[34].Quests.Alliance[1] = {
+kQuestInstanceData[34].Quests.Alliance[1] = {
     Title = "1. Ancient Sinew Wrapped Lamina",
     Level = "60",
     Attain = "60",
@@ -8385,7 +8385,7 @@ KQuestInstanceData[34].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[34].Quests.Alliance[2] = {
+kQuestInstanceData[34].Quests.Alliance[2] = {
     Title = "2. Azuregos's Magical Ledger",
     Level = "60",
     Attain = "60",
@@ -8398,11 +8398,11 @@ KQuestInstanceData[34].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[34].Quests.Horde[1] = KQuestInstanceData[34].Quests.Alliance[1]
-KQuestInstanceData[34].Quests.Horde[2] = KQuestInstanceData[34].Quests.Alliance[2]
+kQuestInstanceData[34].Quests.Horde[1] = kQuestInstanceData[34].Quests.Alliance[1]
+kQuestInstanceData[34].Quests.Horde[2] = kQuestInstanceData[34].Quests.Alliance[2]
 
 --------------- INST35 - Lord Kazzak ---------------
-KQuestInstanceData[35] = {
+kQuestInstanceData[35] = {
     Story = "Following the defeat of the Burning Legion at the end of the Third War, the remaining enemy forces, led by the colossal demon Lord Kazzak, pulled back to the Blasted Lands. They continue to dwell there to this day in an area called the Tainted Scar, awaiting the reopening of the Dark Portal. It is rumored that once the Portal is reopened, Kazzak will travel with his remaining forces to Outland. Once the orc homeworld of Draenor, Outland was ripped apart by the simultaneous activation of several portals created by the orc shaman Ner'zhul, and now exists as a shattered world occupied by legions of demonic agents under command of the night elf betrayer, Illidan.",
     Caption = "Lord Kazzak",
     QAA = "No Quests",
@@ -8414,7 +8414,7 @@ KQuestInstanceData[35] = {
 }
 
 --------------- INST36 - Alterac Valley ---------------
-KQuestInstanceData[36] = {
+kQuestInstanceData[36] = {
     Story = "Long ago, before the First War, the warlock Gul'dan exiled a clan of orcs called the Frostwolves to a hidden valley deep in the heart of the Alterac Mountains. It is here in the valley's southern reaches that the Frostwolves eked out a living until the coming of Thrall.\nAfter Thrall's triumphant uniting of the clans, the Frostwolves, now led by the Orc Shaman Drek'Thar, chose to remain in the valley they had for so long called their home. In recent times, however, the relative peace of the Frostwolves has been challenged by the arrival of the Dwarven Stormpike Expedition.\nThe Stormpikes have set up residence in the valley to search for natural resources and ancient relics. Despite their intentions, the Dwarven presence has sparked heated conflict with the Frostwolf Orcs to the south, who have vowed to drive the interlopers from their lands. ",
     Caption = "Alterac Valley",
     QAA = "17 Quests",
@@ -8424,7 +8424,7 @@ KQuestInstanceData[36] = {
         Horde = {}
     }
 }
-KQuestInstanceData[36].Quests.Alliance[1] = {
+kQuestInstanceData[36].Quests.Alliance[1] = {
     Title = "1. The Sovereign Imperative",
     Level = "60",
     Attain = "51",
@@ -8437,7 +8437,7 @@ KQuestInstanceData[36].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[2] = {
+kQuestInstanceData[36].Quests.Alliance[2] = {
     Title = "2. Proving Grounds",
     Level = "60",
     Attain = "51",
@@ -8462,7 +8462,7 @@ KQuestInstanceData[36].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[36].Quests.Alliance[3] = {
+kQuestInstanceData[36].Quests.Alliance[3] = {
     Title = "3. The Battle of Alterac",
     Level = "60",
     Attain = "51",
@@ -8499,7 +8499,7 @@ KQuestInstanceData[36].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[36].Quests.Alliance[4] = {
+kQuestInstanceData[36].Quests.Alliance[4] = {
     Title = "4. The Quartermaster",
     Level = "60",
     Attain = "51",
@@ -8512,7 +8512,7 @@ KQuestInstanceData[36].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[5] = {
+kQuestInstanceData[36].Quests.Alliance[5] = {
     Title = "5. Coldtooth Supplies",
     Level = "60",
     Attain = "51",
@@ -8525,7 +8525,7 @@ KQuestInstanceData[36].Quests.Alliance[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[6] = {
+kQuestInstanceData[36].Quests.Alliance[6] = {
     Title = "6. Irondeep Supplies",
     Level = "60",
     Attain = "51",
@@ -8538,7 +8538,7 @@ KQuestInstanceData[36].Quests.Alliance[6] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[7] = {
+kQuestInstanceData[36].Quests.Alliance[7] = {
     Title = "7. Armor Scraps",
     Level = "60",
     Attain = "51",
@@ -8551,7 +8551,7 @@ KQuestInstanceData[36].Quests.Alliance[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[8] = {
+kQuestInstanceData[36].Quests.Alliance[8] = {
     Title = "8. Capture a Mine",
     Level = "60",
     Attain = "51",
@@ -8564,7 +8564,7 @@ KQuestInstanceData[36].Quests.Alliance[8] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[9] = {
+kQuestInstanceData[36].Quests.Alliance[9] = {
     Title = "9. Towers and Bunkers",
     Level = "60",
     Attain = "51",
@@ -8577,7 +8577,7 @@ KQuestInstanceData[36].Quests.Alliance[9] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[10] = {
+kQuestInstanceData[36].Quests.Alliance[10] = {
     Title = "10. Alterac Valley Graveyards",
     Level = "60",
     Attain = "51",
@@ -8590,7 +8590,7 @@ KQuestInstanceData[36].Quests.Alliance[10] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[11] = {
+kQuestInstanceData[36].Quests.Alliance[11] = {
     Title = "11. Empty Stables",
     Level = "60",
     Attain = "51",
@@ -8603,7 +8603,7 @@ KQuestInstanceData[36].Quests.Alliance[11] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[12] = {
+kQuestInstanceData[36].Quests.Alliance[12] = {
     Title = "12. Ram Riding Harnesses",
     Level = "60",
     Attain = "51",
@@ -8616,7 +8616,7 @@ KQuestInstanceData[36].Quests.Alliance[12] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[13] = {
+kQuestInstanceData[36].Quests.Alliance[13] = {
     Title = "13. Crystal Cluster",
     Level = "60",
     Attain = "51",
@@ -8629,7 +8629,7 @@ KQuestInstanceData[36].Quests.Alliance[13] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[14] = {
+kQuestInstanceData[36].Quests.Alliance[14] = {
     Title = "14. Ivus the Forest Lord",
     Level = "60",
     Attain = "51",
@@ -8642,7 +8642,7 @@ KQuestInstanceData[36].Quests.Alliance[14] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[15] = {
+kQuestInstanceData[36].Quests.Alliance[15] = {
     Title = "15. Call of Air - Slidore's Fleet",
     Level = "60",
     Attain = "51",
@@ -8655,7 +8655,7 @@ KQuestInstanceData[36].Quests.Alliance[15] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[16] = {
+kQuestInstanceData[36].Quests.Alliance[16] = {
     Title = "16. Call of Air - Vipore's Fleet",
     Level = "60",
     Attain = "51",
@@ -8668,7 +8668,7 @@ KQuestInstanceData[36].Quests.Alliance[16] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Alliance[17] = {
+kQuestInstanceData[36].Quests.Alliance[17] = {
     Title = "17. Call of Air - Ichman's Fleet",
     Level = "60",
     Attain = "51",
@@ -8681,7 +8681,7 @@ KQuestInstanceData[36].Quests.Alliance[17] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[1] = {
+kQuestInstanceData[36].Quests.Horde[1] = {
     Title = "1. In Defense of Frostwolf",
     Level = "60",
     Attain = "51",
@@ -8694,7 +8694,7 @@ KQuestInstanceData[36].Quests.Horde[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[2] = {
+kQuestInstanceData[36].Quests.Horde[2] = {
     Title = "2. Proving Grounds",
     Level = "60",
     Attain = "51",
@@ -8719,7 +8719,7 @@ KQuestInstanceData[36].Quests.Horde[2] = {
         },
     }
 }
-KQuestInstanceData[36].Quests.Horde[3] = {
+kQuestInstanceData[36].Quests.Horde[3] = {
     Title = "3. The Battle for Alterac",
     Level = "60",
     Attain = "51",
@@ -8728,9 +8728,9 @@ KQuestInstanceData[36].Quests.Horde[3] = {
     Note = "Vanndar Stormpike is at (Alterac Valley - North; "..yellow.."[B]"..white.."). He does not actually need to be killed to complete the quest. The battleground just has to be won by your side in any manner.\nAfter turning this quest in, talk to the NPC again for the reward.",
     Prequest = "No",
     Folgequest = "Hero of the Frostwolf",
-    Rewards = KQuestInstanceData[36].Quests.Alliance[3].Rewards
+    Rewards = kQuestInstanceData[36].Quests.Alliance[3].Rewards
 }
-KQuestInstanceData[36].Quests.Horde[4] = {
+kQuestInstanceData[36].Quests.Horde[4] = {
     Title = "4. Speak with our Quartermaster",
     Level = "60",
     Attain = "51",
@@ -8743,7 +8743,7 @@ KQuestInstanceData[36].Quests.Horde[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[5] = {
+kQuestInstanceData[36].Quests.Horde[5] = {
     Title = "5. Coldtooth Supplies",
     Level = "60",
     Attain = "51",
@@ -8756,7 +8756,7 @@ KQuestInstanceData[36].Quests.Horde[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[6] = {
+kQuestInstanceData[36].Quests.Horde[6] = {
     Title = "6. Irondeep Supplies",
     Level = "60",
     Attain = "51",
@@ -8769,7 +8769,7 @@ KQuestInstanceData[36].Quests.Horde[6] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[7] = {
+kQuestInstanceData[36].Quests.Horde[7] = {
     Title = "7. Enemy Booty",
     Level = "60",
     Attain = "51",
@@ -8782,7 +8782,7 @@ KQuestInstanceData[36].Quests.Horde[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[8] = {
+kQuestInstanceData[36].Quests.Horde[8] = {
     Title = "8. Capture a Mine",
     Level = "60",
     Attain = "51",
@@ -8795,7 +8795,7 @@ KQuestInstanceData[36].Quests.Horde[8] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[9] = {
+kQuestInstanceData[36].Quests.Horde[9] = {
     Title = "9. Towers and Bunkers",
     Level = "60",
     Attain = "51",
@@ -8808,7 +8808,7 @@ KQuestInstanceData[36].Quests.Horde[9] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[10] = {
+kQuestInstanceData[36].Quests.Horde[10] = {
     Title = "10. The Graveyards of Alterac",
     Level = "60",
     Attain = "51",
@@ -8821,7 +8821,7 @@ KQuestInstanceData[36].Quests.Horde[10] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[11] = {
+kQuestInstanceData[36].Quests.Horde[11] = {
     Title = "11. Empty Stables",
     Level = "60",
     Attain = "51",
@@ -8834,7 +8834,7 @@ KQuestInstanceData[36].Quests.Horde[11] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[12] = {
+kQuestInstanceData[36].Quests.Horde[12] = {
     Title = "12. Ram Hide Harnesses",
     Level = "60",
     Attain = "51",
@@ -8847,7 +8847,7 @@ KQuestInstanceData[36].Quests.Horde[12] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[13] = {
+kQuestInstanceData[36].Quests.Horde[13] = {
     Title = "13. A Gallon of Blood",
     Level = "60",
     Attain = "51",
@@ -8860,7 +8860,7 @@ KQuestInstanceData[36].Quests.Horde[13] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[14] = {
+kQuestInstanceData[36].Quests.Horde[14] = {
     Title = "14. Lokholar the Ice Lord",
     Level = "60",
     Attain = "51",
@@ -8873,7 +8873,7 @@ KQuestInstanceData[36].Quests.Horde[14] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[15] = {
+kQuestInstanceData[36].Quests.Horde[15] = {
     Title = "15. Call of Air - Guse's Fleet",
     Level = "60",
     Attain = "51",
@@ -8886,7 +8886,7 @@ KQuestInstanceData[36].Quests.Horde[15] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[16] = {
+kQuestInstanceData[36].Quests.Horde[16] = {
     Title = "16. Call of Air - Jeztor's Fleet",
     Level = "60",
     Attain = "51",
@@ -8899,7 +8899,7 @@ KQuestInstanceData[36].Quests.Horde[16] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[36].Quests.Horde[17] = {
+kQuestInstanceData[36].Quests.Horde[17] = {
     Title = "17. Call of Air - Mulverick's Fleet",
     Level = "60",
     Attain = "51",
@@ -8914,7 +8914,7 @@ KQuestInstanceData[36].Quests.Horde[17] = {
 }
 
 --------------- INST37 - Arathi Basin ---------------
-KQuestInstanceData[37] = {
+kQuestInstanceData[37] = {
     Story = "Arathi Basin, located in Arathi Highlands, is a fast and exciting Battleground. The Basin itself is rich with resources and coveted by both the Horde and the Alliance. The Forsaken Defilers and the League of Arathor have arrived at Arathi Basin to wage war over these natural resources and claim them on behalf of their respective sides.",
     Caption = "Arathi Basin",
     QAA = "3 Quests",
@@ -8924,7 +8924,7 @@ KQuestInstanceData[37] = {
         Horde = {}
     }
 }
-KQuestInstanceData[37].Quests.Alliance[1] = {
+kQuestInstanceData[37].Quests.Alliance[1] = {
     Title = "1. The Battle for Arathi Basin!",
     Level = "55",
     Attain = "50",
@@ -8937,7 +8937,7 @@ KQuestInstanceData[37].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[37].Quests.Alliance[2] = {
+kQuestInstanceData[37].Quests.Alliance[2] = {
     Title = "2. Control Four Bases",
     Level = "60",
     Attain = "60",
@@ -8950,7 +8950,7 @@ KQuestInstanceData[37].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[37].Quests.Alliance[3] = {
+kQuestInstanceData[37].Quests.Alliance[3] = {
     Title = "3. Control Five Bases",
     Level = "60",
     Attain = "60",
@@ -8969,7 +8969,7 @@ KQuestInstanceData[37].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[37].Quests.Horde[1] = {
+kQuestInstanceData[37].Quests.Horde[1] = {
     Title = "1. The Battle for Arathi Basin!",
     Level = "25",
     Attain = "25",
@@ -8982,7 +8982,7 @@ KQuestInstanceData[37].Quests.Horde[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[37].Quests.Horde[2] = {
+kQuestInstanceData[37].Quests.Horde[2] = {
     Title = "2. Take Four Bases",
     Level = "60",
     Attain = "60",
@@ -8995,7 +8995,7 @@ KQuestInstanceData[37].Quests.Horde[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[37].Quests.Horde[3] = {
+kQuestInstanceData[37].Quests.Horde[3] = {
     Title = "3. Take Five Bases",
     Level = "60",
     Attain = "60",
@@ -9016,7 +9016,7 @@ KQuestInstanceData[37].Quests.Horde[3] = {
 }
 
 --------------- INST38 - Warsong Gulch ---------------
-KQuestInstanceData[38] = {
+kQuestInstanceData[38] = {
     Story = "Nestled in the southern region of Ashenvale forest, Warsong Gulch is near the area where Grom Hellscream and his Orcs chopped away huge swaths of forest during the events of the Third War. Some orcs have remained in the vicinity, continuing their deforestation to fuel the Horde's expansion. They call themselves the Warsong Outriders.\nThe Night Elves, who have begun a massive push to retake the forests of Ashenvale, are now focusing their attention on ridding their land of the Outriders once and for all. And so, the Silverwing Sentinels have answered the call and sworn that they will not rest until every last Orc is defeated and cast out of Warsong Gulch. ",
     Caption = "Warsong Gulch",
     QAA = "No Quests",
@@ -9028,7 +9028,7 @@ KQuestInstanceData[38] = {
 }
 
 --------------- INST39 - The Crescent Grove ---------------
-KQuestInstanceData[39] = {
+kQuestInstanceData[39] = {
     Story = "A hidden grove in southern Ashenvale overlooking Mystral Lake that was once a retreat for druids for several years, an evil presence has taken root in the region.\nOriginally a hidden grove that served as a calm retreat for druids, in recent times the Groveweald tribe has moved in while fleeing the madness of the Foulweald tribe, expelling several of the original inhabitants in the process. However, in spite of their attempts to escape the madness, they succumbed to it in time.\nKalanar Brightshine once lived here, before he was expelled from the Grove by the Groveweald furbolgs and his home was burned down.\nDemonic forces of the Burning Legion led by the doomguard Master Raxxieth have established themselves within the grove, beginning to corrupt the glade. Already, the Legion has left their mark in the form of the Vilethorn Scar, upsetting the balance and disturbing spirits.",
     Caption = "The Crescent Grove",
     QAA = "4 Quests",
@@ -9038,7 +9038,7 @@ KQuestInstanceData[39] = {
         Horde = {}
     }
 }
-KQuestInstanceData[39].Quests.Alliance[1] = {
+kQuestInstanceData[39].Quests.Alliance[1] = {
     Title = "1. The Rampant Groveweald",
     Level = "33",
     Attain = "26",
@@ -9051,7 +9051,7 @@ KQuestInstanceData[39].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[39].Quests.Alliance[2] = {
+kQuestInstanceData[39].Quests.Alliance[2] = {
     Title = "2. The Unwise Elders",
     Level = "34",
     Attain = "26",
@@ -9070,7 +9070,7 @@ KQuestInstanceData[39].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[39].Quests.Alliance[3] = {
+kQuestInstanceData[39].Quests.Alliance[3] = {
     Title = "3. The Crescent Grove",
     Level = "37",
     Attain = "28",
@@ -9107,7 +9107,7 @@ KQuestInstanceData[39].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[39].Quests.Alliance[4] = {
+kQuestInstanceData[39].Quests.Alliance[4] = {
     Title = "4. Kalanar's Mallet",
     Level = "33",
     Attain = "25",
@@ -9120,9 +9120,9 @@ KQuestInstanceData[39].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[39].Quests.Horde[1] = KQuestInstanceData[39].Quests.Alliance[1]
-KQuestInstanceData[39].Quests.Horde[2] = KQuestInstanceData[39].Quests.Alliance[2]
-KQuestInstanceData[39].Quests.Horde[3] = {
+kQuestInstanceData[39].Quests.Horde[1] = kQuestInstanceData[39].Quests.Alliance[1]
+kQuestInstanceData[39].Quests.Horde[2] = kQuestInstanceData[39].Quests.Alliance[2]
+kQuestInstanceData[39].Quests.Horde[3] = {
     Title = "3. Rooting Out Evil",
     Level = "37",
     Attain = "26",
@@ -9161,7 +9161,7 @@ KQuestInstanceData[39].Quests.Horde[3] = {
 }
 
 --------------- INST41 - Karazhan Crypt ---------------
-KQuestInstanceData[41] = {
+kQuestInstanceData[41] = {
     Story = "Karazhan Crypt is an instance dungeon located in the Deadwind Pass. Something is twisting the dead back to life in the forlorn catacombs, find the source so the dead may rest again.",
     Caption = "Karazhan Crypt",
     QAA = "2 Quest",
@@ -9171,7 +9171,7 @@ KQuestInstanceData[41] = {
         Horde = {}
     }
 }
-KQuestInstanceData[41].Quests.Alliance[1] = {
+kQuestInstanceData[41].Quests.Alliance[1] = {
     Title = "1. The Mystery of Karazhan VII",
     Level = "60",
     Attain = "58",
@@ -9202,7 +9202,7 @@ KQuestInstanceData[41].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[41].Quests.Alliance[2] = {
+kQuestInstanceData[41].Quests.Alliance[2] = {
     Title = "2. No Honor Among Chefs",
     Level = "61",
     Attain = "60",
@@ -9220,7 +9220,7 @@ KQuestInstanceData[41].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[41].Quests.Horde[1] = {
+kQuestInstanceData[41].Quests.Horde[1] = {
     Title = "1. The Depths of Karazhan VII",
     Level = "60",
     Attain = "58",
@@ -9251,10 +9251,10 @@ KQuestInstanceData[41].Quests.Horde[1] = {
         },
     }
 }
-KQuestInstanceData[41].Quests.Horde[2] = KQuestInstanceData[41].Quests.Alliance[2]
+kQuestInstanceData[41].Quests.Horde[2] = kQuestInstanceData[41].Quests.Alliance[2]
 
 --------------- INST45 - Caverns Of Time: Black Morass ---------------
-KQuestInstanceData[45] = {
+kQuestInstanceData[45] = {
     Story = "",
     Caption = "Caverns Of Time: Black Morass",
     QAA = "4 Quest",
@@ -9264,7 +9264,7 @@ KQuestInstanceData[45] = {
         Horde = {}
     }
 }
-KQuestInstanceData[45].Quests.Alliance[1] = {
+kQuestInstanceData[45].Quests.Alliance[1] = {
     Title = "1. The First Opening of The Dark Portal",
     Level = "60",
     Attain = "60",
@@ -9301,7 +9301,7 @@ KQuestInstanceData[45].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[45].Quests.Alliance[2] = {
+kQuestInstanceData[45].Quests.Alliance[2] = {
     Title = "2. The Bronze Betrayal",
     Level = "60",
     Attain = "58",
@@ -9332,7 +9332,7 @@ KQuestInstanceData[45].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[45].Quests.Alliance[3] = {
+kQuestInstanceData[45].Quests.Alliance[3] = {
     Title = "3. Corrupted Sand",
     Level = "60",
     Attain = "58",
@@ -9345,7 +9345,7 @@ KQuestInstanceData[45].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[45].Quests.Alliance[4] = {
+kQuestInstanceData[45].Quests.Alliance[4] = {
     Title = "4. Sand in Bulk",
     Level = "60",
     Attain = "58",
@@ -9358,13 +9358,13 @@ KQuestInstanceData[45].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[45].Quests.Horde[1] = KQuestInstanceData[45].Quests.Alliance[1]
-KQuestInstanceData[45].Quests.Horde[2] = KQuestInstanceData[45].Quests.Alliance[2]
-KQuestInstanceData[45].Quests.Horde[3] = KQuestInstanceData[45].Quests.Alliance[3]
-KQuestInstanceData[45].Quests.Horde[4] = KQuestInstanceData[45].Quests.Alliance[4]
+kQuestInstanceData[45].Quests.Horde[1] = kQuestInstanceData[45].Quests.Alliance[1]
+kQuestInstanceData[45].Quests.Horde[2] = kQuestInstanceData[45].Quests.Alliance[2]
+kQuestInstanceData[45].Quests.Horde[3] = kQuestInstanceData[45].Quests.Alliance[3]
+kQuestInstanceData[45].Quests.Horde[4] = kQuestInstanceData[45].Quests.Alliance[4]
 
 --------------- INST46 - Hateforge Quarry ---------------
-KQuestInstanceData[46] = {
+kQuestInstanceData[46] = {
     Story = "Hateforge Quarry is an instance dungeon located in the Burning Steppes. Hidden away at the southeastern walls of the Burning Steppes, the Hateforge Quarry is the Dark Iron dwarves' newest effort to find of a new weapon to use against their adversaries. The innocent-looking quarry hides an insidious cavern, where the Shadowforge dwarves plot new schemes against all those that oppose them.",
     Caption = "Hateforge Quarry",
     QAA = "5 Quest",
@@ -9374,7 +9374,7 @@ KQuestInstanceData[46] = {
         Horde = {}
     }
 }
-KQuestInstanceData[46].Quests.Alliance[1] = {
+kQuestInstanceData[46].Quests.Alliance[1] = {
     Title = "1. Rival Presence",
     Level = "54",
     Attain = "47",
@@ -9387,7 +9387,7 @@ KQuestInstanceData[46].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[46].Quests.Alliance[2] = {
+kQuestInstanceData[46].Quests.Alliance[2] = {
     Title = "2. Miners Union Mutiny II",
     Level = "50",
     Attain = "45",
@@ -9406,7 +9406,7 @@ KQuestInstanceData[46].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[46].Quests.Alliance[3] = {
+kQuestInstanceData[46].Quests.Alliance[3] = {
     Title = "3. The True High Foreman",
     Level = "51",
     Attain = "45",
@@ -9437,7 +9437,7 @@ KQuestInstanceData[46].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[46].Quests.Alliance[4] = {
+kQuestInstanceData[46].Quests.Alliance[4] = {
     Title = "4. Rumors of Hateforge Brew",
     Level = "54",
     Attain = "45",
@@ -9462,7 +9462,7 @@ KQuestInstanceData[46].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[46].Quests.Alliance[5] = {
+kQuestInstanceData[46].Quests.Alliance[5] = {
     Title = "5. Assaulting Hateforge",
     Level = "57",
     Attain = "45",
@@ -9493,7 +9493,7 @@ KQuestInstanceData[46].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[46].Quests.Alliance[6] = {
+kQuestInstanceData[46].Quests.Alliance[6] = {
     Title = "6. Why Not Both?",
     Level = "50",
     Attain = "40",
@@ -9512,10 +9512,10 @@ KQuestInstanceData[46].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[46].Quests.Horde[1] = KQuestInstanceData[46].Quests.Alliance[1]
-KQuestInstanceData[46].Quests.Horde[2] = KQuestInstanceData[46].Quests.Alliance[2]
-KQuestInstanceData[46].Quests.Horde[3] = KQuestInstanceData[46].Quests.Alliance[3]
-KQuestInstanceData[46].Quests.Horde[4] = {
+kQuestInstanceData[46].Quests.Horde[1] = kQuestInstanceData[46].Quests.Alliance[1]
+kQuestInstanceData[46].Quests.Horde[2] = kQuestInstanceData[46].Quests.Alliance[2]
+kQuestInstanceData[46].Quests.Horde[3] = kQuestInstanceData[46].Quests.Alliance[3]
+kQuestInstanceData[46].Quests.Horde[4] = {
     Title = "4. Hunting Engineer Figgles",
     Level = "55",
     Attain = "48",
@@ -9552,7 +9552,7 @@ KQuestInstanceData[46].Quests.Horde[4] = {
         },
     }
 }
-KQuestInstanceData[46].Quests.Horde[5] = {
+kQuestInstanceData[46].Quests.Horde[5] = {
     Title = "5. Of New and Old IV",
     Level = "57",
     Attain = "45",
@@ -9585,7 +9585,7 @@ KQuestInstanceData[46].Quests.Horde[5] = {
 }
 
 --------------- INST57 - Stormwind Vault ---------------
-KQuestInstanceData[57] = {
+kQuestInstanceData[57] = {
     Story = "Stormwind Vault is an instance dungeon located in Stormwind. The Vault's runes of warding are weakening as the horrors within threaten Azeroth once again, you must venture down and stop these fiends once and for all.",
     Caption = "Stormwind Vault",
     QAA = "4 Quest",
@@ -9595,7 +9595,7 @@ KQuestInstanceData[57] = {
         Horde = {}
     }
 }
-KQuestInstanceData[57].Quests.Alliance[1] = {
+kQuestInstanceData[57].Quests.Alliance[1] = {
     Title = "1. Recovering Vault Shackles",
     Level = "63",
     Attain = "55",
@@ -9608,7 +9608,7 @@ KQuestInstanceData[57].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[57].Quests.Alliance[2] = {
+kQuestInstanceData[57].Quests.Alliance[2] = {
     Title = "2. Ending Arc'Tiras",
     Level = "63",
     Attain = "55",
@@ -9639,7 +9639,7 @@ KQuestInstanceData[57].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[57].Quests.Alliance[3] = {
+kQuestInstanceData[57].Quests.Alliance[3] = {
     Title = "3. The Enemy Lays",
     Level = "62",
     Attain = "60",
@@ -9670,7 +9670,7 @@ KQuestInstanceData[57].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[57].Quests.Alliance[4] = {
+kQuestInstanceData[57].Quests.Alliance[4] = {
     Title = "4. The Tome of Arcane Intricacies and Magical Phenomenon IX",
     Level = "63",
     Attain = "58",
@@ -9689,12 +9689,12 @@ KQuestInstanceData[57].Quests.Alliance[4] = {
         },
     }
 }
-KQuestInstanceData[57].Quests.Horde[1] = KQuestInstanceData[57].Quests.Alliance[1]
-KQuestInstanceData[57].Quests.Horde[2] = KQuestInstanceData[57].Quests.Alliance[2]
-KQuestInstanceData[57].Quests.Horde[3] = KQuestInstanceData[57].Quests.Alliance[3]
+kQuestInstanceData[57].Quests.Horde[1] = kQuestInstanceData[57].Quests.Alliance[1]
+kQuestInstanceData[57].Quests.Horde[2] = kQuestInstanceData[57].Quests.Alliance[2]
+kQuestInstanceData[57].Quests.Horde[3] = kQuestInstanceData[57].Quests.Alliance[3]
 
 --------------- INST58 - Ostarius ---------------
-KQuestInstanceData[58] = {
+kQuestInstanceData[58] = {
     Story = "",
     Caption = "Ostarius",
     QAA = "1 Quest",
@@ -9704,7 +9704,7 @@ KQuestInstanceData[58] = {
         Horde = {}
     }
 }
-KQuestInstanceData[58].Quests.Alliance[1] = {
+kQuestInstanceData[58].Quests.Alliance[1] = {
     Title = "1. Gate Keeper",
     Level = "60",
     Attain = "58",
@@ -9717,7 +9717,7 @@ KQuestInstanceData[58].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[58].Quests.Horde[1] = {
+kQuestInstanceData[58].Quests.Horde[1] = {
     Title = "1. Guardian of the Gate",
     Level = "60",
     Attain = "58",
@@ -9732,7 +9732,7 @@ KQuestInstanceData[58].Quests.Horde[1] = {
 }
 
 --------------- INST61 - Gilneas City ---------------
-KQuestInstanceData[61] = {
+kQuestInstanceData[61] = {
     Story = "Gilneas City is an instance dungeon located in Gilneas. Located at the heart of this once-isolated land, Gilneas City was once a bastion of hope for its people. Established after breaking free from the rule of the Arathorian lords, it stood as a symbol of resilience and prosperity. However, it is now a mere shell of its former beauty, with a dark presence casting a gripping shadow over Gilneas and serving as a reminder of its once glorious past. Distant howls echo through the city, haunting reminders of its new occupants. Yet, there is a possibility that not everyone is gone and that their accursed king may still live.",
     Caption = "Gilneas City",
     QAA = "10 Quest",
@@ -9742,7 +9742,7 @@ KQuestInstanceData[61] = {
         Horde = {}
     }
 }
-KQuestInstanceData[61].Quests.Alliance[1] = {
+kQuestInstanceData[61].Quests.Alliance[1] = {
     Title = "1. The Judge and the Phantom",
     Level = "46",
     Attain = "35",
@@ -9773,7 +9773,7 @@ KQuestInstanceData[61].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[61].Quests.Alliance[2] = {
+kQuestInstanceData[61].Quests.Alliance[2] = {
     Title = "2. Behind The Wall",
     Level = "41",
     Attain = "36",
@@ -9798,7 +9798,7 @@ KQuestInstanceData[61].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[61].Quests.Alliance[3] = {
+kQuestInstanceData[61].Quests.Alliance[3] = {
     Title = "3. The Deed to Ravenshire",
     Level = "45",
     Attain = "38",
@@ -9835,7 +9835,7 @@ KQuestInstanceData[61].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[61].Quests.Alliance[4] = {
+kQuestInstanceData[61].Quests.Alliance[4] = {
     Title = "4. Ravencroft's Ambition",
     Level = "45",
     Attain = "40",
@@ -9848,7 +9848,7 @@ KQuestInstanceData[61].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[61].Quests.Alliance[5] = {
+kQuestInstanceData[61].Quests.Alliance[5] = {
     Title = "5. Undoing Draconic Presence",
     Level = "47",
     Attain = "35",
@@ -9873,7 +9873,7 @@ KQuestInstanceData[61].Quests.Alliance[5] = {
         },
     }
 }
-KQuestInstanceData[61].Quests.Alliance[6] = {
+kQuestInstanceData[61].Quests.Alliance[6] = {
     Title = "6. The Fall and Rise of Greymane",
     Level = "42",
     Attain = "35",
@@ -9910,7 +9910,7 @@ KQuestInstanceData[61].Quests.Alliance[6] = {
         },
     }
 }
-KQuestInstanceData[61].Quests.Alliance[7] = {
+kQuestInstanceData[61].Quests.Alliance[7] = {
     Title = "7. Manuscript on Hydromancy II",
     Level = "45",
     Attain = "38",
@@ -9929,7 +9929,7 @@ KQuestInstanceData[61].Quests.Alliance[7] = {
         },
     }
 }
-KQuestInstanceData[61].Quests.Alliance[8] = {
+kQuestInstanceData[61].Quests.Alliance[8] = {
     Title = "8. Left In Bad Faith",
     Level = "44",
     Attain = "40",
@@ -9948,7 +9948,7 @@ KQuestInstanceData[61].Quests.Alliance[8] = {
         },
     }
 }
-KQuestInstanceData[61].Quests.Alliance[9] = {
+kQuestInstanceData[61].Quests.Alliance[9] = {
     Title = "9. Blood of Vorgendor",
     Level = "60",
     Attain = "60",
@@ -9961,7 +9961,7 @@ KQuestInstanceData[61].Quests.Alliance[9] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[61].Quests.Alliance[10] = {
+kQuestInstanceData[61].Quests.Alliance[10] = {
     Title = "10. Gilnean Pricolich",
     Level = "60",
     Attain = "60",
@@ -9974,8 +9974,8 @@ KQuestInstanceData[61].Quests.Alliance[10] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[61].Quests.Horde[1] = KQuestInstanceData[61].Quests.Alliance[1]
-KQuestInstanceData[61].Quests.Horde[2] = {
+kQuestInstanceData[61].Quests.Horde[1] = kQuestInstanceData[61].Quests.Alliance[1]
+kQuestInstanceData[61].Quests.Horde[2] = {
     Title = "2. Ebonmere Affairs",
     Level = "45",
     Attain = "35",
@@ -10012,7 +10012,7 @@ KQuestInstanceData[61].Quests.Horde[2] = {
         },
     }
 }
-KQuestInstanceData[61].Quests.Horde[3] = {
+kQuestInstanceData[61].Quests.Horde[3] = {
     Title = "3. A Royal Heist",
     Level = "45",
     Attain = "40",
@@ -10025,7 +10025,7 @@ KQuestInstanceData[61].Quests.Horde[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[61].Quests.Horde[4] = {
+kQuestInstanceData[61].Quests.Horde[4] = {
     Title = "4. The Evil Made Me Do It",
     Level = "46",
     Attain = "35",
@@ -10044,7 +10044,7 @@ KQuestInstanceData[61].Quests.Horde[4] = {
         },
     }
 }
-KQuestInstanceData[61].Quests.Horde[5] = {
+kQuestInstanceData[61].Quests.Horde[5] = {
     Title = "5. Genn Greymane Must Die!",
     Level = "49",
     Attain = "40",
@@ -10075,7 +10075,7 @@ KQuestInstanceData[61].Quests.Horde[5] = {
         },
     }
 }
-KQuestInstanceData[61].Quests.Horde[6] = {
+kQuestInstanceData[61].Quests.Horde[6] = {
     Title = "6. The Greymane Stone",
     Level = "47",
     Attain = "38",
@@ -10106,7 +10106,7 @@ KQuestInstanceData[61].Quests.Horde[6] = {
         },
     }
 }
-KQuestInstanceData[61].Quests.Horde[7] = {
+kQuestInstanceData[61].Quests.Horde[7] = {
     Title = "7. Foreign Knowledge",
     Level = "44",
     Attain = "34",
@@ -10125,7 +10125,7 @@ KQuestInstanceData[61].Quests.Horde[7] = {
         },
     }
 }
-KQuestInstanceData[61].Quests.Horde[8] = {
+kQuestInstanceData[61].Quests.Horde[8] = {
     Title = "8. The Wolf, the Crone and the Scythe",
     Level = "60",
     Attain = "60",
@@ -10138,7 +10138,7 @@ KQuestInstanceData[61].Quests.Horde[8] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[61].Quests.Horde[9] = {
+kQuestInstanceData[61].Quests.Horde[9] = {
     Title = "9. Gilnean Pricolich",
     Level = "60",
     Attain = "60",
@@ -10153,7 +10153,7 @@ KQuestInstanceData[61].Quests.Horde[9] = {
 }
 
 --------------- INST62 - Lower Karazhan Halls ---------------
-KQuestInstanceData[62] = {
+kQuestInstanceData[62] = {
     Story = "",
     Caption = "Lower Karazhan Halls",
     QAA = "18 Quest",
@@ -10163,7 +10163,7 @@ KQuestInstanceData[62] = {
         Horde = {}
     }
 }
-KQuestInstanceData[62].Quests.Alliance[1] = {
+kQuestInstanceData[62].Quests.Alliance[1] = {
     Title = "1. Suitable Accomodations",
     Level = "60",
     Attain = "55",
@@ -10176,7 +10176,7 @@ KQuestInstanceData[62].Quests.Alliance[1] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[2] = {
+kQuestInstanceData[62].Quests.Alliance[2] = {
     Title = "2. A Drink to Sleep",
     Level = "60",
     Attain = "55",
@@ -10189,7 +10189,7 @@ KQuestInstanceData[62].Quests.Alliance[2] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[3] = {
+kQuestInstanceData[62].Quests.Alliance[3] = {
     Title = "3. Spectral Wine",
     Level = "60",
     Attain = "55",
@@ -10202,7 +10202,7 @@ KQuestInstanceData[62].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[4] = {
+kQuestInstanceData[62].Quests.Alliance[4] = {
     Title = "4. Wine for Kyleson",
     Level = "60",
     Attain = "55",
@@ -10215,7 +10215,7 @@ KQuestInstanceData[62].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[5] = {
+kQuestInstanceData[62].Quests.Alliance[5] = {
     Title = "5. The Key to Karazhan I",
     Level = "60",
     Attain = "58",
@@ -10228,7 +10228,7 @@ KQuestInstanceData[62].Quests.Alliance[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[6] = {
+kQuestInstanceData[62].Quests.Alliance[6] = {
     Title = "6. The Key to Karazhan II",
     Level = "60",
     Attain = "58",
@@ -10241,7 +10241,7 @@ KQuestInstanceData[62].Quests.Alliance[6] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[7] = {
+kQuestInstanceData[62].Quests.Alliance[7] = {
     Title = "7. The Key to Karazhan III",
     Level = "60",
     Attain = "58",
@@ -10254,7 +10254,7 @@ KQuestInstanceData[62].Quests.Alliance[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[8] = {
+kQuestInstanceData[62].Quests.Alliance[8] = {
     Title = "8. Scribbled Cooking Notes",
     Level = "60",
     Attain = "55",
@@ -10267,7 +10267,7 @@ KQuestInstanceData[62].Quests.Alliance[8] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[9] = {
+kQuestInstanceData[62].Quests.Alliance[9] = {
     Title = "9. Lost and Found",
     Level = "60",
     Attain = "55",
@@ -10280,7 +10280,7 @@ KQuestInstanceData[62].Quests.Alliance[9] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[10] = {
+kQuestInstanceData[62].Quests.Alliance[10] = {
     Title = "10. Rothlen Family Brooch",
     Level = "60",
     Attain = "55",
@@ -10293,7 +10293,7 @@ KQuestInstanceData[62].Quests.Alliance[10] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[11] = {
+kQuestInstanceData[62].Quests.Alliance[11] = {
     Title = "11. The Secret Recipe",
     Level = "60",
     Attain = "55",
@@ -10306,7 +10306,7 @@ KQuestInstanceData[62].Quests.Alliance[11] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[12] = {
+kQuestInstanceData[62].Quests.Alliance[12] = {
     Title = "12. The Doorman of Karazhan",
     Level = "60",
     Attain = "55",
@@ -10319,7 +10319,7 @@ KQuestInstanceData[62].Quests.Alliance[12] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[13] = {
+kQuestInstanceData[62].Quests.Alliance[13] = {
     Title = "13. Charge of Karazhan",
     Level = "60",
     Attain = "55",
@@ -10332,7 +10332,7 @@ KQuestInstanceData[62].Quests.Alliance[13] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[14] = {
+kQuestInstanceData[62].Quests.Alliance[14] = {
     Title = "14. Le Fishe Au Chocolat",
     Level = "60",
     Attain = "55",
@@ -10357,7 +10357,7 @@ KQuestInstanceData[62].Quests.Alliance[14] = {
         },
     }
 }
-KQuestInstanceData[62].Quests.Alliance[15] = {
+kQuestInstanceData[62].Quests.Alliance[15] = {
     Title = "15. Scythe of the Goddess",
     Level = "60",
     Attain = "60",
@@ -10370,7 +10370,7 @@ KQuestInstanceData[62].Quests.Alliance[15] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Alliance[16] = {
+kQuestInstanceData[62].Quests.Alliance[16] = {
     Title = "16. Contribution to the Church",
     Level = "60",
     Attain = "55",
@@ -10407,7 +10407,7 @@ KQuestInstanceData[62].Quests.Alliance[16] = {
         },
     }
 }
-KQuestInstanceData[62].Quests.Alliance[17] = {
+kQuestInstanceData[62].Quests.Alliance[17] = {
     Title = "17. Comically Large Candle",
     Level = "61",
     Attain = "60",
@@ -10426,7 +10426,7 @@ KQuestInstanceData[62].Quests.Alliance[17] = {
         },
     }
 }
-KQuestInstanceData[62].Quests.Alliance[18] = {
+kQuestInstanceData[62].Quests.Alliance[18] = {
     Title = "18. Blood of Vorgendor",
     Level = "60",
     Attain = "60",
@@ -10439,13 +10439,13 @@ KQuestInstanceData[62].Quests.Alliance[18] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Horde[1] = KQuestInstanceData[62].Quests.Alliance[1]
-KQuestInstanceData[62].Quests.Horde[2] = KQuestInstanceData[62].Quests.Alliance[2]
-KQuestInstanceData[62].Quests.Horde[3] = KQuestInstanceData[62].Quests.Alliance[3]
-KQuestInstanceData[62].Quests.Horde[4] = KQuestInstanceData[62].Quests.Alliance[4]
-KQuestInstanceData[62].Quests.Horde[5] = KQuestInstanceData[62].Quests.Alliance[5]
-KQuestInstanceData[62].Quests.Horde[6] = KQuestInstanceData[62].Quests.Alliance[6]
-KQuestInstanceData[62].Quests.Horde[7] = {
+kQuestInstanceData[62].Quests.Horde[1] = kQuestInstanceData[62].Quests.Alliance[1]
+kQuestInstanceData[62].Quests.Horde[2] = kQuestInstanceData[62].Quests.Alliance[2]
+kQuestInstanceData[62].Quests.Horde[3] = kQuestInstanceData[62].Quests.Alliance[3]
+kQuestInstanceData[62].Quests.Horde[4] = kQuestInstanceData[62].Quests.Alliance[4]
+kQuestInstanceData[62].Quests.Horde[5] = kQuestInstanceData[62].Quests.Alliance[5]
+kQuestInstanceData[62].Quests.Horde[6] = kQuestInstanceData[62].Quests.Alliance[6]
+kQuestInstanceData[62].Quests.Horde[7] = {
     Title = "7. The Key to Karazhan III",
     Level = "60",
     Attain = "58",
@@ -10458,17 +10458,17 @@ KQuestInstanceData[62].Quests.Horde[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[62].Quests.Horde[8] = KQuestInstanceData[62].Quests.Alliance[8]
-KQuestInstanceData[62].Quests.Horde[9] = KQuestInstanceData[62].Quests.Alliance[9]
-KQuestInstanceData[62].Quests.Horde[10] = KQuestInstanceData[62].Quests.Alliance[10]
-KQuestInstanceData[62].Quests.Horde[11] = KQuestInstanceData[62].Quests.Alliance[11]
-KQuestInstanceData[62].Quests.Horde[12] = KQuestInstanceData[62].Quests.Alliance[12]
-KQuestInstanceData[62].Quests.Horde[13] = KQuestInstanceData[62].Quests.Alliance[13]
-KQuestInstanceData[62].Quests.Horde[14] = KQuestInstanceData[62].Quests.Alliance[14]
-KQuestInstanceData[62].Quests.Horde[15] = KQuestInstanceData[62].Quests.Alliance[15]
-KQuestInstanceData[62].Quests.Horde[16] = KQuestInstanceData[62].Quests.Alliance[16]
-KQuestInstanceData[62].Quests.Horde[17] = KQuestInstanceData[62].Quests.Alliance[17]
-KQuestInstanceData[62].Quests.Horde[18] = {
+kQuestInstanceData[62].Quests.Horde[8] = kQuestInstanceData[62].Quests.Alliance[8]
+kQuestInstanceData[62].Quests.Horde[9] = kQuestInstanceData[62].Quests.Alliance[9]
+kQuestInstanceData[62].Quests.Horde[10] = kQuestInstanceData[62].Quests.Alliance[10]
+kQuestInstanceData[62].Quests.Horde[11] = kQuestInstanceData[62].Quests.Alliance[11]
+kQuestInstanceData[62].Quests.Horde[12] = kQuestInstanceData[62].Quests.Alliance[12]
+kQuestInstanceData[62].Quests.Horde[13] = kQuestInstanceData[62].Quests.Alliance[13]
+kQuestInstanceData[62].Quests.Horde[14] = kQuestInstanceData[62].Quests.Alliance[14]
+kQuestInstanceData[62].Quests.Horde[15] = kQuestInstanceData[62].Quests.Alliance[15]
+kQuestInstanceData[62].Quests.Horde[16] = kQuestInstanceData[62].Quests.Alliance[16]
+kQuestInstanceData[62].Quests.Horde[17] = kQuestInstanceData[62].Quests.Alliance[17]
+kQuestInstanceData[62].Quests.Horde[18] = {
     Title = "18. The Wolf, the Crone and the Scythe",
     Level = "60",
     Attain = "60",
@@ -10483,7 +10483,7 @@ KQuestInstanceData[62].Quests.Horde[18] = {
 }
 
 --------------- INST63 - Emerald Sanctum ---------------
-KQuestInstanceData[63] = {
+kQuestInstanceData[63] = {
     Story = "Emerald Sanctum is an instance raid located in Hyjal. A fog of corruption has descended upon the Emerald Dream, twisting the morals and intentions of even the noblest and purest. The corrupted Wakener is preparing to send a premature call of awakening; if not stopped, his kin will arise and go on a frenzied rampage across Azeroth.",
     Caption = "Emerald Sanctum",
     QAA = "3 Quest",
@@ -10493,7 +10493,7 @@ KQuestInstanceData[63] = {
         Horde = {}
     }
 }
-KQuestInstanceData[63].Quests.Alliance[1] = {
+kQuestInstanceData[63].Quests.Alliance[1] = {
     Title = "1. Smoldering Dream Essence",
     Level = "60",
     Attain = "55",
@@ -10512,7 +10512,7 @@ KQuestInstanceData[63].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[63].Quests.Alliance[2] = {
+kQuestInstanceData[63].Quests.Alliance[2] = {
     Title = "2. Head of Solnius",
     Level = "60",
     Attain = "58",
@@ -10543,7 +10543,7 @@ KQuestInstanceData[63].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[63].Quests.Alliance[3] = {
+kQuestInstanceData[63].Quests.Alliance[3] = {
     Title = "3. The Claw of Erennius",
     Level = "60",
     Attain = "55",
@@ -10574,12 +10574,12 @@ KQuestInstanceData[63].Quests.Alliance[3] = {
         },
     }
 }
-KQuestInstanceData[63].Quests.Horde[1] = KQuestInstanceData[63].Quests.Alliance[1]
-KQuestInstanceData[63].Quests.Horde[2] = KQuestInstanceData[63].Quests.Alliance[2]
-KQuestInstanceData[63].Quests.Horde[3] = KQuestInstanceData[63].Quests.Alliance[3]
+kQuestInstanceData[63].Quests.Horde[1] = kQuestInstanceData[63].Quests.Alliance[1]
+kQuestInstanceData[63].Quests.Horde[2] = kQuestInstanceData[63].Quests.Alliance[2]
+kQuestInstanceData[63].Quests.Horde[3] = kQuestInstanceData[63].Quests.Alliance[3]
 
 --------------- INST64 - Tower of Karazhan ---------------
-KQuestInstanceData[64] = {
+kQuestInstanceData[64] = {
     Story = "",
     Caption = "Tower of Karazhan",
     QAA = "9 Quest",
@@ -10589,7 +10589,7 @@ KQuestInstanceData[64] = {
         Horde = {}
     }
 }
-KQuestInstanceData[64].Quests.Alliance[1] = {
+kQuestInstanceData[64].Quests.Alliance[1] = {
     Title = "1. The Scepter Rod of Medivh",
     Level = "60",
     Attain = "60",
@@ -10608,7 +10608,7 @@ KQuestInstanceData[64].Quests.Alliance[1] = {
         },
     }
 }
-KQuestInstanceData[64].Quests.Alliance[2] = {
+kQuestInstanceData[64].Quests.Alliance[2] = {
     Title = "2. Tirisfal's Vestige",
     Level = "60",
     Attain = "60",
@@ -10627,7 +10627,7 @@ KQuestInstanceData[64].Quests.Alliance[2] = {
         },
     }
 }
-KQuestInstanceData[64].Quests.Alliance[3] = {
+kQuestInstanceData[64].Quests.Alliance[3] = {
     Title = "3. I Am No Rat",
     Level = "61",
     Attain = "60",
@@ -10640,7 +10640,7 @@ KQuestInstanceData[64].Quests.Alliance[3] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[64].Quests.Alliance[4] = {
+kQuestInstanceData[64].Quests.Alliance[4] = {
     Title = "4. A Chef's Majesty",
     Level = "60",
     Attain = "60",
@@ -10653,7 +10653,7 @@ KQuestInstanceData[64].Quests.Alliance[4] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[64].Quests.Alliance[5] = {
+kQuestInstanceData[64].Quests.Alliance[5] = {
     Title = "5. Cold is the Night",
     Level = "62",
     Attain = "60",
@@ -10666,7 +10666,7 @@ KQuestInstanceData[64].Quests.Alliance[5] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[64].Quests.Alliance[6] = {
+kQuestInstanceData[64].Quests.Alliance[6] = {
     Title = "6. A Study of Magical Trees",
     Level = "61",
     Attain = "60",
@@ -10679,7 +10679,7 @@ KQuestInstanceData[64].Quests.Alliance[6] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[64].Quests.Alliance[7] = {
+kQuestInstanceData[64].Quests.Alliance[7] = {
     Title = "7. Scythe of the Goddess",
     Level = "60",
     Attain = "60",
@@ -10692,7 +10692,7 @@ KQuestInstanceData[64].Quests.Alliance[7] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[64].Quests.Alliance[8] = {
+kQuestInstanceData[64].Quests.Alliance[8] = {
     Title = "8. Pricolich Gnarlmoon",
     Level = "60",
     Attain = "60",
@@ -10705,7 +10705,7 @@ KQuestInstanceData[64].Quests.Alliance[8] = {
         Text = AQNoReward,
     }
 }
-KQuestInstanceData[64].Quests.Alliance[9] = {
+kQuestInstanceData[64].Quests.Alliance[9] = {
     Title = "9. Scythe of the Goddess",
     Level = "60",
     Attain = "60",
@@ -10724,12 +10724,15 @@ KQuestInstanceData[64].Quests.Alliance[9] = {
         },
     }
 }
-KQuestInstanceData[64].Quests.Horde[1] = KQuestInstanceData[64].Quests.Alliance[1]
-KQuestInstanceData[64].Quests.Horde[2] = KQuestInstanceData[64].Quests.Alliance[2]
-KQuestInstanceData[64].Quests.Horde[3] = KQuestInstanceData[64].Quests.Alliance[3]
-KQuestInstanceData[64].Quests.Horde[4] = KQuestInstanceData[64].Quests.Alliance[4]
-KQuestInstanceData[64].Quests.Horde[5] = KQuestInstanceData[64].Quests.Alliance[5]
-KQuestInstanceData[64].Quests.Horde[6] = KQuestInstanceData[64].Quests.Alliance[6]
-KQuestInstanceData[64].Quests.Horde[7] = KQuestInstanceData[64].Quests.Alliance[7]
-KQuestInstanceData[64].Quests.Horde[8] = KQuestInstanceData[64].Quests.Alliance[8]
-KQuestInstanceData[64].Quests.Horde[9] = KQuestInstanceData[64].Quests.Alliance[9]
+kQuestInstanceData[64].Quests.Horde[1] = kQuestInstanceData[64].Quests.Alliance[1]
+kQuestInstanceData[64].Quests.Horde[2] = kQuestInstanceData[64].Quests.Alliance[2]
+kQuestInstanceData[64].Quests.Horde[3] = kQuestInstanceData[64].Quests.Alliance[3]
+kQuestInstanceData[64].Quests.Horde[4] = kQuestInstanceData[64].Quests.Alliance[4]
+kQuestInstanceData[64].Quests.Horde[5] = kQuestInstanceData[64].Quests.Alliance[5]
+kQuestInstanceData[64].Quests.Horde[6] = kQuestInstanceData[64].Quests.Alliance[6]
+kQuestInstanceData[64].Quests.Horde[7] = kQuestInstanceData[64].Quests.Alliance[7]
+kQuestInstanceData[64].Quests.Horde[8] = kQuestInstanceData[64].Quests.Alliance[8]
+kQuestInstanceData[64].Quests.Horde[9] = kQuestInstanceData[64].Quests.Alliance[9]
+
+-- Глобальные ссылки для использования базы данных
+_G.KQuestInstanceData = kQuestInstanceData

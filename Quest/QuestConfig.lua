@@ -30,16 +30,17 @@
 -- ГЛОБАЛЬНОЕ ПРОСТРАНСТВО ИМЕН
 -- ========================================================================
 local _G = getfenv()
--- Создание основного пространства имен для конфигурации
-if not KQuestConfig then
-    KQuestConfig = {}
-end
+
+-- ========================================================================
+-- ПРОВЕРКА И ИНИЦИАЛИЗАЦИЯ
+-- ========================================================================
+local kQuestConfig = _G.KQuestConfig or {}
 
 -- ========================================================================
 -- 1. ЦВЕТА И ФОРМАТИРОВАНИЕ ТЕКСТА
 -- ========================================================================
 
-KQuestConfig.Colors = {
+kQuestConfig.Colors = {
     -- Основные цвета качества предметов
     white = "|cffFFFFFF",           -- Обычный
     grey = "|cff808080",            -- Серый
@@ -68,21 +69,21 @@ KQuestConfig.Colors = {
 }
 
 -- Цветовые схемы для различных типов контента
-KQuestConfig.ColorSchemes = {
+kQuestConfig.ColorSchemes = {
     questLevel = {
-        trivial = KQuestConfig.Colors.grey,
-        easy = KQuestConfig.Colors.green,
-        normal = KQuestConfig.Colors.yellow,
-        hard = KQuestConfig.Colors.orange,
-        elite = KQuestConfig.Colors.red
+        trivial = kQuestConfig.Colors.grey,
+        easy = kQuestConfig.Colors.green,
+        normal = kQuestConfig.Colors.yellow,
+        hard = kQuestConfig.Colors.orange,
+        elite = kQuestConfig.Colors.red
     },
 
     questType = {
-        elite = KQuestConfig.Colors.red,
-        dungeon = KQuestConfig.Colors.blue,
-        raid = KQuestConfig.Colors.purple,
-        pvp = KQuestConfig.Colors.orange,
-        daily = KQuestConfig.Colors.green
+        elite = kQuestConfig.Colors.red,
+        dungeon = kQuestConfig.Colors.blue,
+        raid = kQuestConfig.Colors.purple,
+        pvp = kQuestConfig.Colors.orange,
+        daily = kQuestConfig.Colors.green
     }
 }
 
@@ -90,7 +91,7 @@ KQuestConfig.ColorSchemes = {
 -- 2. КОНСТАНТЫ СИСТЕМЫ
 -- ========================================================================
 
-KQuestConfig.Constants = {
+kQuestConfig.Constants = {
     -- Ограничения системы
     MAX_INSTANCES = 99,             -- Максимальное количество инстансов
     MAX_QUESTS_PER_INSTANCE = 23,   -- Максимальное количество квестов на инстанс
@@ -116,7 +117,7 @@ KQuestConfig.Constants = {
     CACHE_CLEANUP_THRESHOLD = 150,  -- Порог для очистки кеша
 
     -- Версионирование
-    CONFIG_VERSION = "2.0",         -- Версия конфигурации
+    CONFIG_VERSION = "1.0",         -- Версия конфигурации
     MIN_ATLAS_VERSION = "1.30"     -- Минимальная версия Atlas
 }
 
@@ -124,7 +125,7 @@ KQuestConfig.Constants = {
 -- 3. НАСТРОЙКИ UI И ПОЗИЦИОНИРОВАНИЯ
 -- ========================================================================
 
-KQuestConfig.UI = {
+kQuestConfig.UI = {
     -- Основное окно квестов
     MainFrame = {
         width = 510,
@@ -233,7 +234,7 @@ KQuestConfig.UI = {
 -- 4. КОНФИГУРАЦИЯ КВЕСТОВ
 -- ========================================================================
 
-KQuestConfig.Quest = {
+kQuestConfig.Quest = {
     -- Настройки отображения
     Display = {
         showLevel = true,               -- Показывать уровень квеста
@@ -280,7 +281,7 @@ KQuestConfig.Quest = {
 -- 5. НАСТРОЙКИ ПРОИЗВОДИТЕЛЬНОСТИ
 -- ========================================================================
 
-KQuestConfig.Performance = {
+kQuestConfig.Performance = {
     -- Кеширование
     Cache = {
         enabled = true,                 -- Включить кеширование
@@ -309,13 +310,13 @@ KQuestConfig.Performance = {
 -- 6. НАСТРОЙКИ ЛОКАЛИЗАЦИИ
 -- ========================================================================
 
-KQuestConfig.Localization = {
+kQuestConfig.Localization = {
     -- Текущая локаль
     currentLocale = GetLocale() or "enUS",
 
     -- Поддерживаемые локали
     supportedLocales = {
-        "enUS", "deDE", "frFR", "esES", "ruRU", "zhCN", "zhTW", "koKR"
+        "enUS",
     },
 
     -- Форматирование
@@ -331,12 +332,12 @@ KQuestConfig.Localization = {
 -- 7. НАСТРОЙКИ ИНТЕГРАЦИИ
 -- ========================================================================
 
-KQuestConfig.Integration = {
+kQuestConfig.Integration = {
     -- Интеграция с Atlas
     Atlas = {
         autoShow = true,                -- Автоматически показывать с Atlas
         followMapChanges = true,        -- Следовать за изменениями карты
-        sharePosition = false,          -- Использовать ту же позицию
+        sharePosition = true,          -- Использовать ту же позицию
         syncVisibility = true           -- Синхронизировать видимость
     },
 
@@ -359,7 +360,7 @@ KQuestConfig.Integration = {
 -- ========================================================================
 
 -- Утилиты для работы с цветами
-KQuestConfig.ColorUtils = {
+kQuestConfig.ColorUtils = {
     -- Применение цвета к тексту
     colorText = function(text, color)
         if not text or not color then
@@ -374,34 +375,34 @@ KQuestConfig.ColorUtils = {
         local diff = questLevel - playerLevel
 
         if diff >= 5 then
-            return KQuestConfig.ColorSchemes.questLevel.elite
+            return kQuestConfig.ColorSchemes.questLevel.elite
         elseif diff >= 3 then
-            return KQuestConfig.ColorSchemes.questLevel.hard
+            return kQuestConfig.ColorSchemes.questLevel.hard
         elseif diff >= -2 then
-            return KQuestConfig.ColorSchemes.questLevel.normal
+            return kQuestConfig.ColorSchemes.questLevel.normal
         elseif diff >= -7 then
-            return KQuestConfig.ColorSchemes.questLevel.easy
+            return kQuestConfig.ColorSchemes.questLevel.easy
         else
-            return KQuestConfig.ColorSchemes.questLevel.trivial
+            return kQuestConfig.ColorSchemes.questLevel.trivial
         end
     end,
 
     -- Получение цвета качества предмета
     getQualityColor = function(quality)
         local colors = {
-            [0] = KQuestConfig.Colors.grey,     -- Серый
-            [1] = KQuestConfig.Colors.white,    -- Белый
-            [2] = KQuestConfig.Colors.green,    -- Зеленый
-            [3] = KQuestConfig.Colors.blue,     -- Синий
-            [4] = KQuestConfig.Colors.purple,   -- Фиолетовый
-            [5] = KQuestConfig.Colors.orange    -- Оранжевый
+            [0] = kQuestConfig.Colors.grey,     -- Серый
+            [1] = kQuestConfig.Colors.white,    -- Белый
+            [2] = kQuestConfig.Colors.green,    -- Зеленый
+            [3] = kQuestConfig.Colors.blue,     -- Синий
+            [4] = kQuestConfig.Colors.purple,   -- Фиолетовый
+            [5] = kQuestConfig.Colors.orange    -- Оранжевый
         }
-        return colors[quality] or KQuestConfig.Colors.white
+        return colors[quality] or kQuestConfig.Colors.white
     end
 }
 
 -- Утилиты для работы с UI
-KQuestConfig.UIUtils = {
+kQuestConfig.UIUtils = {
     -- Безопасное получение элемента UI
     getUIElement = function(name)
         return _G[name]
@@ -435,11 +436,54 @@ KQuestConfig.UIUtils = {
         if config.level then frame:SetFrameLevel(config.level) end
 
         return frame
-    end
+    end,
+    -- Безопасное обновление чекбокса
+    safeUpdateCheckbox = function(name, checked)
+        local checkbox = _G[name]
+        if checkbox and checkbox.SetChecked then
+            checkbox:SetChecked(checked)
+            return true
+        end
+        return false
+    end,
+
+    -- Безопасное обновление текстового элемента
+    updateTextElement = function(name, text)
+        local element = _G[name]
+        if element and element.SetText then
+            element:SetText(text)
+            return true
+        end
+        return false
+    end,
+
+    -- Переключение видимости элемента
+    toggleElementVisibility = function(name)
+        local element = _G[name]
+        if element then
+            if element:IsVisible() then
+                HideUIPanel(element)
+            else
+                ShowUIPanel(element)
+            end
+            return true
+        end
+        return false
+    end,
+
+    -- Безопасная установка позиции элемента
+    safeSetPosition = function(element, point, relative, relativePoint, x, y)
+        if element and element.SetPoint then
+            element:ClearAllPoints()
+            element:SetPoint(point, relative, relativePoint, x, y)
+            return false
+        end
+        return false
+    end,
 }
 
 -- Утилиты для валидации
-KQuestConfig.Validator = {
+kQuestConfig.Validator = {
     -- Проверка корректности данных квеста
     validateQuestData = function(questData)
         if not questData then
@@ -463,7 +507,7 @@ KQuestConfig.Validator = {
             return false
         end
 
-        for _, supportedLocale in ipairs(KQuestConfig.Localization.supportedLocales) do
+        for _, supportedLocale in ipairs(kQuestConfig.Localization.supportedLocales) do
             if locale == supportedLocale then
                 return true
             end
@@ -495,14 +539,14 @@ KQuestConfig.Validator = {
 -- ========================================================================
 
 -- Функция инициализации конфигурации
-function KQuestConfig.Initialize()
+function kQuestConfig.Initialize()
     -- Проверяем версию WoW
     local version, build, date, tocversion = GetBuildInfo()
     if tocversion and tocversion < 11200 then
         DEFAULT_CHAT_FRAME:AddMessage(
-            KQuestConfig.ColorUtils.colorText(
+            kQuestConfig.ColorUtils.colorText(
                 "Внимание: Atlas Quest может работать нестабильно на версии WoW ниже 1.12",
-                KQuestConfig.Colors.warning
+                kQuestConfig.Colors.warning
             )
         )
     end
@@ -523,38 +567,22 @@ function KQuestConfig.Initialize()
     end
 
     -- Регистрируем события
-    if KQuestConfig.Integration.Atlas.followMapChanges then
+    if kQuestConfig.Integration.Atlas.followMapChanges then
         -- Здесь можно зарегистрировать события для отслеживания изменений Atlas
     end
 end
 
--- ========================================================================
--- 10. ЭКСПОРТ И СОВМЕСТИМОСТЬ
--- ========================================================================
-
--- Экспорт основных функций в глобальное пространство для совместимости
-_G.KQuestConfig = KQuestConfig
-
--- Алиасы для обратной совместимости
-_G.red = KQuestConfig.Colors.red
-_G.white = KQuestConfig.Colors.white
-_G.green = KQuestConfig.Colors.green
-_G.blue = KQuestConfig.Colors.blue
-_G.yellow = KQuestConfig.Colors.yellow
-_G.orange = KQuestConfig.Colors.orange
-_G.purple = KQuestConfig.Colors.purple
-
 -- Автоматическая инициализация при загрузке
 if AtlasFrame then
     -- Atlas уже загружен, инициализируем сразу
-    KQuestConfig.Initialize()
+    kQuestConfig.Initialize()
 else
     -- Ждем загрузки Atlas
     local initFrame = CreateFrame("Frame")
     initFrame:RegisterEvent("ADDON_LOADED")
     initFrame:SetScript("OnEvent", function()
         if arg1 == "Atlas" or arg1 == "Atlas-TW" then
-            KQuestConfig.Initialize()
+            kQuestConfig.Initialize()
             initFrame:UnregisterEvent("ADDON_LOADED")
         end
     end)
@@ -564,7 +592,14 @@ end
 -- ========================================================================
 
 -- Устанавливаем флаг загрузки
-KQuestConfig.isLoaded = true
+kQuestConfig.isLoaded = true
+
+-- ========================================================================
+-- 10. ЭКСПОРТ
+-- ========================================================================
+
+-- Экспорт основных функций в глобальное пространство
+_G.KQuestConfig = kQuestConfig
 
 --[[
 =============================================================================
@@ -583,10 +618,10 @@ KQuestConfig.isLoaded = true
 8. **Интеграцию**: Настройки для работы с другими аддонами
 
 Использование:
-- KQuestConfig.Colors.red - для получения красного цвета
-- KQuestConfig.UI.MainFrame - для настроек основного окна
-- KQuestConfig.ColorUtils.colorText(text, color) - для окрашивания текста
-- KQuestConfig.Validator.validateQuestData(data) - для проверки данных
+- kQuestConfig.Colors.red - для получения красного цвета
+- kQuestConfig.UI.MainFrame - для настроек основного окна
+- kQuestConfig.ColorUtils.colorText(text, color) - для окрашивания текста
+- kQuestConfig.Validator.validateQuestData(data) - для проверки данных
 
 =============================================================================
 ]]

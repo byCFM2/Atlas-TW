@@ -156,6 +156,41 @@ local FRAME_CONFIG = {
 -- ОБРАБОТЧИКИ СОБЫТИЙ
 -- ========================================================================
 
+-- Обработчик очистки
+local function KQClearALL()
+    if KQuestConfig and UIUtils then
+        -- Используем новую систему очистки
+        DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest UI:|r Очистка всех квестов...")
+        local elementsToHide = {
+            "KQuestPageCount", "KQNextPageButton_Right", "KQNextPageButton_Left",
+            "KQuestName", "KQuestLevel", "KQuestDetails", "KQuestAttainLevel",
+            "KQuestReward", "KQuestStory", "KQuestFinishedText", "KQuestFinished"
+        }
+
+        for _, elementName in ipairs(elementsToHide) do
+            UIUtils.updateTextElement(elementName, "")
+        end
+
+        -- Очистка фреймов предметов
+        for i = 1, 6 do
+            local frameName = "KQuestItemframe" .. i
+            UIUtils.updateTextElement(frameName .. "_Name", "")
+            UIUtils.updateTextElement(frameName .. "_Extra", "")
+
+            local icon = _G[frameName .. "_Icon"]
+            if icon and icon.SetTexture then
+                icon:SetTexture()
+            end
+
+            local frame = _G[frameName]
+            if frame and frame.Disable then
+                frame:Disable()
+            end
+        end
+    end
+end
+
+
 -- Автоматическое определение фракции при показе
 function KQ_OnShow()
     local isHorde = UnitFactionGroup("player") == "Horde"
@@ -224,7 +259,7 @@ function Horde_OnClick()
 end
 
 -- Обработчик общей кнопки
-function AQGeneral_OnClick(button)
+function KQuestGeneral_OnClick()
     KQClearALL()
     KQuestHideAL()
 
@@ -314,7 +349,7 @@ end
 -- УЛУЧШЕННАЯ ФАБРИКА UI ЭЛЕМЕНТОВ
 -- ========================================================================
 
-local KQuestUIFactory = {
+local kQuestUIFactory = {
     -- Создание кнопки с полной конфигурацией
     createButton = function(parent, config)
         local template = config.template or "OptionsButtonTemplate"
@@ -370,15 +405,15 @@ local KQuestUIFactory = {
     -- Создание кнопки квеста
     createQuestButton = function(index, parent, prevButton)
         local config = FRAME_CONFIG.QuestButton
-        local button = CreateFrame("Button", "AQQuestbutton" .. index, parent)
+        local button = CreateFrame("Button", "KQuestbutton" .. index, parent)
 
         button:SetWidth(config.width)
         button:SetHeight(config.height)
 
-        if index == 1 then
-            button:SetPoint(config.point, parent, config.point, config.x, config.startY)
-        else
+        if index ~= 1 then
             button:SetPoint(config.point, prevButton, config.point, 0, config.spacing)
+        else
+            button:SetPoint(config.point, parent, config.point, config.x, config.startY)
         end
 
         button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
@@ -417,7 +452,7 @@ local KQuestUIFactory = {
     -- Создание текста кнопки
     createButtonText = function(index, parent, prevText)
         local config = FRAME_CONFIG.QuestButton
-        local text = parent:CreateFontString("AQBUTTONTEXT" .. index, "OVERLAY", "GameFontNormalSmall")
+        local text = parent:CreateFontString("KQuestButtonText" .. index, "OVERLAY", "GameFontNormalSmall")
 
         text:SetWidth(config.width)
         text:SetHeight(config.height)
@@ -485,7 +520,7 @@ function KQuestFrame_CreateUI()
     frame:SetBackdrop(mainConfig.backdrop)
     frame:SetBackdropColor(0, 0, 0, 1)
 
-    -- ДОБАВЛЯЕМ ОТСУТСТВУЮЩИЕ НАСТРОЙКИ ФРЕЙМА
+    -- ДОБАВЛЯЕМ НАСТРОЙКИ ФРЕЙМА
     frame:EnableMouse(true)
     frame:SetMovable(false)
     frame:Hide()
@@ -505,12 +540,12 @@ function KQuestFrame_CreateUI()
 
     -- Создаем кнопки
     for buttonType, config in pairs(FRAME_CONFIG.Buttons) do
-        KQuestUIFactory.createButton(frame, config)
+        kQuestUIFactory.createButton(frame, config)
     end
 
     -- Создаем чекбоксы фракций
     for faction, config in pairs(FRAME_CONFIG.FactionCheckboxes) do
-        local checkbox = KQuestUIFactory.createCheckbox(frame, config)
+        local checkbox = kQuestUIFactory.createCheckbox(frame, config)
         -- ДОБАВЛЯЕМ УСТАНОВКУ НАЧАЛЬНОГО СОСТОЯНИЯ
         if faction == "Alliance" then
             checkbox:SetChecked(true)
@@ -519,10 +554,10 @@ function KQuestFrame_CreateUI()
 
     -- Создаем текстуры фракций
     for faction, config in pairs(FRAME_CONFIG.FactionTextures) do
-        KQuestUIFactory.createFactionTexture(frame, config)
+        kQuestUIFactory.createFactionTexture(frame, config)
     end
 
-    -- ДОБАВЛЯЕМ ОТСУТСТВУЮЩУЮ ОБЩУЮЮ КНОПКУ
+    -- ДОБАВЛЯЕМ ОБЩУЮ КНОПКУ
     local generalButton = CreateFrame("Button", "KQGeneralButton", frame)
     generalButton:SetWidth(165)
     generalButton:SetHeight(20)
@@ -530,13 +565,13 @@ function KQuestFrame_CreateUI()
     generalButton:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
     generalButton:SetText("G")
     generalButton:SetScript("OnClick", function()
-        AQGeneral_OnClick(arg1)
+        KQuestGeneral_OnClick()
     end)
     generalButton:SetScript("OnShow", function()
         this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
     end)
 
-    -- ДОБАВЛЯЕМ ОТСУТСТВУЮЩИЙ СЧЕТЧИК КВЕСТОВ
+    -- ДОБАВЛЯЕМ СЧЕТЧИК КВЕСТОВ
     local qcount = frame:CreateFontString("KQuestCount", "ARTWORK", "GameFontNormal")
     qcount:SetWidth(60)
     qcount:SetHeight(40)
@@ -552,15 +587,15 @@ function KQuestFrame_CreateUI()
 
     for i = 1, questConfig.maxCount do
         -- Создаем кнопку
-        local button = KQuestUIFactory.createQuestButton(i, frame, prevButton)
+        local button = kQuestUIFactory.createQuestButton(i, frame, prevButton)
         prevButton = button
 
         -- Создаем стрелку
-        local arrow = KQuestUIFactory.createArrow(i, frame, prevArrow)
+        local arrow = kQuestUIFactory.createArrow(i, frame, prevArrow)
         prevArrow = arrow
 
         -- Создаем текст
-        local text = KQuestUIFactory.createButtonText(i, frame, prevText)
+        local text = kQuestUIFactory.createButtonText(i, frame, prevText)
         prevText = text
     end
 
@@ -576,86 +611,6 @@ function KQuestFrame_CreateUI()
 end
 
 -- ========================================================================
--- РАСШИРЕННЫЕ УТИЛИТЫ ДЛЯ UI
--- ========================================================================
-
--- Добавляем дополнительные утилиты в KQuestConfig.UIUtils
-if KQuestConfig.UIUtils then
-    -- Безопасное обновление чекбокса
-    KQuestConfig.UIUtils.safeUpdateCheckbox = function(name, checked)
-        local checkbox = _G[name]
-        if checkbox and checkbox.SetChecked then
-            checkbox:SetChecked(checked)
-        end
-    end
-
-    -- Безопасное обновление текстового элемента
-    KQuestConfig.UIUtils.updateTextElement = function(name, text)
-        local element = _G[name]
-        if element and element.SetText then
-            element:SetText(text)
-        end
-    end
-
-    -- Переключение видимости элемента
-    KQuestConfig.UIUtils.toggleElementVisibility = function(name)
-        local element = _G[name]
-        if element then
-            if element:IsVisible() then
-                HideUIPanel(element)
-            else
-                ShowUIPanel(element)
-            end
-        end
-    end
-
-    -- Безопасная установка позиции элемента
-    KQuestConfig.UIUtils.safeSetPosition = function(element, point, relative, relativePoint, x, y)
-        if element and element.SetPoint then
-            element:ClearAllPoints()
-            element:SetPoint(point, relative, relativePoint, x, y)
-        end
-    end
-end
-
--- ========================================================================
--- ФУНКЦИИ СОВМЕСТИМОСТИ (для существующего кода)
--- ========================================================================
-
--- Функция очистки всех элементов (совместимость)
-function KQClearALL()
-    if KQuestConfig and KQuestConfig.UIUtils then
-        -- Используем новую систему очистки
-        local elementsToHide = {
-            "KQuestPageCount", "KQNextPageButton_Right", "KQNextPageButton_Left",
-            "KQuestName", "KQuestLevel", "KQuestDetails", "KQuestAttainLevel",
-            "KQuestReward", "KQuestStory", "KQuestFinishedText", "KQuestFinished"
-        }
-
-        for _, elementName in ipairs(elementsToHide) do
-            KQuestConfig.UIUtils.updateTextElement(elementName, "")
-        end
-
-        -- Очистка фреймов предметов
-        for i = 1, 6 do
-            local frameName = "KQuestItemframe" .. i
-            KQuestConfig.UIUtils.updateTextElement(frameName .. "_Name", "")
-            KQuestConfig.UIUtils.updateTextElement(frameName .. "_Extra", "")
-
-            local icon = _G[frameName .. "_Icon"]
-            if icon and icon.SetTexture then
-                icon:SetTexture()
-            end
-
-            local frame = _G[frameName]
-            if frame and frame.Disable then
-                frame:Disable()
-            end
-        end
-    end
-end
-
--- ========================================================================
 -- ИНИЦИАЛИЗАЦИЯ
 -- ========================================================================
 
@@ -665,7 +620,6 @@ local function InitializeKQuestUI()
         DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest:|r AtlasFrame не найден!")
         return
     end
-
     if not _G["KQuestFrame"] then
         KQuestFrame_CreateUI()
     end
@@ -677,16 +631,8 @@ initFrame:RegisterEvent("ADDON_LOADED")
 initFrame:RegisterEvent("VARIABLES_LOADED")
 initFrame:SetScript("OnEvent", function()
     if (event == "ADDON_LOADED" and arg1 == "Atlas-TW") or event == "VARIABLES_LOADED" then
-        -- Небольшая задержка для гарантии загрузки всех зависимостей
-        local delayFrame = CreateFrame("Frame")
-        local elapsed = 0
-        delayFrame:SetScript("OnUpdate", function()
-            elapsed = elapsed + arg1
-            if elapsed > 0.5 then -- Задержка 0.5 секунды
-                InitializeKQuestUI()
-                delayFrame:SetScript("OnUpdate", nil)
-            end
-        end)
+
+        InitializeKQuestUI()
 
         if event == "ADDON_LOADED" then
             initFrame:UnregisterEvent("ADDON_LOADED")

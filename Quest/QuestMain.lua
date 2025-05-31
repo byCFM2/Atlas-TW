@@ -146,11 +146,11 @@ KQuestUtils = {
 -- Очистка всех элементов (замена старой функции)
 function KQClearALL()
     KQuestUtils.clearAllFrames()
+    DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Function:|r KQClearALL вызван!")
 end
 
 -- Обработка кнопки закрытия панели
 function KQuestCLOSE_OnClick()
-    DEFAULT_CHAT_FRAME:AddMessage("KQuestCLOSE_OnClick вызван")
 
     if not KQuestFrame then
         DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Error:|r KQuestFrame не существует!")
@@ -158,13 +158,11 @@ function KQuestCLOSE_OnClick()
     end
 
     if KQuestFrame and KQuestFrame:IsVisible() then
-        DEFAULT_CHAT_FRAME:AddMessage("Скрываем KQuestFrame")
         HideUIPanel(KQuestFrame)
         if KQuestInsideFrame then
             HideUIPanel(KQuestInsideFrame)
         end
     else
-        DEFAULT_CHAT_FRAME:AddMessage("Показываем KQuestFrame")
         ShowUIPanel(KQuestFrame)
     end
     AtlasKTW.QUpdateNOW = true
@@ -187,12 +185,12 @@ end
 -- ОБРАБОТКА ДАННЫХ КВЕСТОВ
 -- ========================================================================
 
--- Функция получения данных квеста (обновленная)
+-- Функция получения данных квеста
 local function kQGetQuestData(instanceId, questId, faction, field)
     return KQuestUtils.getQuestData(instanceId, questId, faction, field)
 end
 
--- Функция проверки существования квеста (обновленная)
+-- Функция проверки существования квеста
 local function kQQuestExists(instanceId, questId, faction)
     return KQuestUtils.questExists(instanceId, questId, faction)
 end
@@ -223,9 +221,8 @@ local function kQCompareQuestLogtoQuest(questId)
     -- Безопасное извлечение имени квеста
     local questTitle = questData.Title
     local questName = questTitle
-
     if questTitle and strlen(questTitle) > 0 then
-        local _, _, extractedName = strfind(questTitle, "^(%d+)%.%s*(.+)")
+        local _, _, extractedName = strfind(questTitle, "^%d+%.%s*(.+)")
         if extractedName then
             questName = extractedName
         end
@@ -237,7 +234,6 @@ local function kQCompareQuestLogtoQuest(questId)
         questName = strsub(questName, 1, startPos - 1)
     end
 
-    -- Использовать gsub напрямую для WoW 1.12
     questName = gsub(questName, "[%p%c]", "")
 
     -- Проверка журнала квестов
@@ -252,7 +248,6 @@ local function kQCompareQuestLogtoQuest(questId)
                 processedTitle = strsub(processedTitle, 1, pos - 1)
             end
             processedTitle = gsub(processedTitle, "[%p%c]", "")
-
             if strlower(processedTitle) == strlower(questName) then
                 return true
             end
@@ -703,12 +698,12 @@ function KQuestSetTextandButtons()
                 end
             end
 			-- Activate button and set text
-			_G["AQQuestbutton"..b]:Enable()
-			_G["AQBUTTONTEXT"..b]:SetText(kQQuestColor..questName)
+			_G["KQuestbutton"..b]:Enable()
+			_G["KQuestButtonText"..b]:SetText(kQQuestColor..questName)
 	    else
 			-- Deactivate button if quest doesn't exist
-			_G["AQQuestbutton"..b]:Disable()
-			_G["AQBUTTONTEXT"..b]:SetText()
+			_G["KQuestbutton"..b]:Disable()
+			_G["KQuestButtonText"..b]:SetText()
             -- Hide arrow
             _G["KQuestlineArrow_"..b]:Hide()
 		end
