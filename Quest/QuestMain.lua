@@ -28,19 +28,17 @@ local _G = getfenv()
 -- ИМПОРТ КОНФИГУРАЦИИ И ПРОВЕРКА ЗАВИСИМОСТЕЙ
 -- ========================================================================
 
-local questconfig = KQuestConfig
+local questconfig = _G.KQuestConfig
 
 -- Проверяем доступность конфигурации
-if not (questconfig and questconfig.isLoaded) then
+if not questconfig then
     DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest Error:|r Quest config не найден! Убедитесь что QuestConfig.lua загружен первым.")
     return
 end
 
--- Импортируем необходимые константы и утилиты
 local colors = questconfig.Colors
 local constants = questconfig.Constants
 local variables = questconfig.Variables
-
 -- ========================================================================
 -- ЛОКАЛЬНЫЕ ПЕРЕМЕННЫЕ И КЕШИРОВАНИЕ
 -- ========================================================================
@@ -56,6 +54,19 @@ AtlasKTW.Q = AtlasKTW.Q or {}
 AtlasKTW.isHorde = AtlasKTW.isHorde or false
 local current_instance = variables.CURRENT_INSTANCE or constants.DEFAULT_INSTANCE
 
+local function handleQuestFrameVisibility()
+    -- Принудительная синхронизация
+    if AtlasTWOptions and AtlasTWOptions["QuestWithAtlas"] ~= nil then
+        AtlasKTW.Q.WithAtlas = AtlasTWOptions["QuestWithAtlas"]
+    end
+    
+    if AtlasKTW.Q.WithAtlas then
+        ShowUIPanel(KQuestFrame)
+    else
+        HideUIPanel(KQuestFrame)
+    end
+    HideUIPanel(KQuestInsideFrame)
+end
 -- ========================================================================
 -- УТИЛИТЫ ДЛЯ РАБОТЫ С КВЕСТАМИ
 -- ========================================================================
@@ -120,24 +131,6 @@ KQuestUtils = {
             return questData.Rewards[itemIndex][field]
         end
         return nil
-    end,
-
-    -- Форматирование текста квеста с цветами
-    formatQuestText = function(title, level, attain, details, rewards)
-        local text = colors.blue .. title .. "\n\n"
-        if level then
-            text = text .. colors.blue .. AQDiscription_LEVEL .. colors.white .. level .. "\n"
-        end
-        if attain then
-            text = text .. colors.blue .. AQDiscription_ATTAIN .. colors.white .. attain .. "\n\n"
-        end
-        if details then
-            text = text .. details .. "\n\n"
-        end
-        if rewards then
-            text = text .. colors.blue .. AQDiscription_REWARD .. colors.white .. rewards
-        end
-        return text
     end
 }
 
@@ -148,12 +141,14 @@ KQuestUtils = {
 -- Очистка всех элементов (замена старой функции)
 function KQClearALL()
     KQuestUtils.clearAllFrames()
-    DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Function:|r KQClearALL вызван!")
 end
 
 -- Обработка кнопки закрытия панели
 function KQuestCLOSE_OnClick()
-
+    DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Quest Debug:|r KQuestCLOSE_OnClick вызвана")
+    DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Quest Debug:|r KQuestFrame существует: " .. tostring(KQuestFrame ~= nil))
+    DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Quest Debug:|r AtlasTWOptions[QuestWithAtlas]: " .. tostring(AtlasTWOptions["QuestWithAtlas"]))
+    
     if not KQuestFrame then
         DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Error:|r KQuestFrame не существует!")
         return
@@ -631,7 +626,7 @@ function KQuestSetTextandButtons()
 		HideUIPanel(KQuestInsideFrame)
 	end
 	-- Enable/disable general button based on instance info availability
-	KQGeneralButton[_G["Inst"..current_instance.."General"] and "Enable" or "Disable"](KQGeneralButton)
+	KQuestGeneralButton[_G["Inst"..current_instance.."General"] and "Enable" or "Disable"](KQuestGeneralButton)
 	-- Update current instance
 	kQuestInstChanged = current_instance
 	-- Set quest count text
@@ -815,16 +810,16 @@ function Atlas_OnShow()
     end
     -- Setup pfUI tooltip integration if enabled
     local function setupPfUITooltip()
-        if not (AtlasKTW.Q.CompareTooltip and IsAddOnLoaded("pfUI") and not KAtlasTooltip.backdrop) then
+        if not (AtlasKTW.Q.CompareTooltip and IsAddOnLoaded("pfUI") and not KQuestTooltip.backdrop) then
             return
         end
         -- Create pfUI tooltip backdrop
-        pfUI.api.CreateBackdrop(KAtlasTooltip)
-        pfUI.api.CreateBackdropShadow(KAtlasTooltip)
+        pfUI.api.CreateBackdrop(KQuestTooltip)
+        pfUI.api.CreateBackdropShadow(KQuestTooltip)
         -- Setup equipment comparison if available
         if pfUI.eqcompare then
-            hookScript(KAtlasTooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
-            hookScript(KAtlasTooltip, "OnHide", function()
+            hookScript(KQuestTooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
+            hookScript(KQuestTooltip, "OnHide", function()
                 ShoppingTooltip1:Hide()
                 ShoppingTooltip2:Hide()
             end)
@@ -848,7 +843,7 @@ end
 -----------------------------------------------------------------------------
 function KQuestItem_OnLeave()
     -- Hide all tooltips when mouse leaves item
-    local tooltips = {GameTooltip, KAtlasTooltip}
+    local tooltips = {GameTooltip, KQuestTooltip}
     local shoppingTooltips = {ShoppingTooltip1, ShoppingTooltip2}
     -- Hide main tooltips if visible
     for _, tooltip in ipairs(tooltips) do
@@ -912,33 +907,33 @@ function KQuestItem_OnEnter()
     local itemDescription = rewardItem.Description
 
     -- Set up tooltip
-    KAtlasTooltip:SetOwner(frame, "ANCHOR_RIGHT")
-    KAtlasTooltip:ClearLines()
+    KQuestTooltip:SetOwner(frame, "ANCHOR_RIGHT")
+    KQuestTooltip:ClearLines()
 
     -- Try to get item info from game cache first
     if itemId and GetItemInfo(itemId) then
         -- Use game's tooltip if item is in cache
-        KAtlasTooltip:SetHyperlink("item:" .. itemId)
+        KQuestTooltip:SetHyperlink("item:" .. itemId)
     else
         -- Fallback to manual tooltip creation
         -- Set item name with color
         local displayName = itemColor .. (itemName or "Unknown Item")
-        KAtlasTooltip:AddLine(displayName, 1, 1, 1)
+        KQuestTooltip:AddLine(displayName, 1, 1, 1)
 
         -- Add description if available
         if itemDescription and itemDescription ~= "" then
-            KAtlasTooltip:AddLine(itemDescription, 0.8, 0.8, 0.8, 1)
+            KQuestTooltip:AddLine(itemDescription, 0.8, 0.8, 0.8, 1)
         end
 
         -- Add error message if we have ID but can't load item
         if itemId then
-            KAtlasTooltip:AddLine(colors.red .. (AQERRORNOTSHOWN or "Item not found in cache"), 1, 0, 0)
-            KAtlasTooltip:AddLine(AQERRORASKSERVER)
+            KQuestTooltip:AddLine(colors.red .. (AQERRORNOTSHOWN or "Item not found in cache"), 1, 0, 0)
+            KQuestTooltip:AddLine(AQERRORASKSERVER)
         end
     end
 
     -- Show the tooltip
-    KAtlasTooltip:Show()
+    KQuestTooltip:Show()
 
 end
 
@@ -993,9 +988,9 @@ function KQuestItem_OnClick(mouseButton)
 
     -- Handle right click - show tooltip
     if mouseButton == "RightButton" then
-        KAtlasTooltip:SetOwner(frame, "ANCHOR_RIGHT", -(frame:GetWidth() / 2), 24)
-        KAtlasTooltip:SetHyperlink(string.format("item:%d:0:0:0", itemId))
-        KAtlasTooltip:Show()
+        KQuestTooltip:SetOwner(frame, "ANCHOR_RIGHT", -(frame:GetWidth() / 2), 24)
+        KQuestTooltip:SetHyperlink(string.format("item:%d:0:0:0", itemId))
+        KQuestTooltip:Show()
         if not AtlasKTW.Q.QuerySpam then
             DEFAULT_CHAT_FRAME:AddMessage(string.format("%s[%s%s%s]%s",
                 AQSERVERASK, itemColor, itemName, colors.white, AQSERVERASKInformation))
@@ -1062,6 +1057,7 @@ end
 -- Initialize frames on addon load
 CreateKQuestOptionFrame()
 KQuest_OnLoad()
+handleQuestFrameVisibility()
 DEFAULT_CHAT_FRAME:AddMessage("Atlas-TW v."..ATLAS_VERSION.." loaded")
 
 --[[

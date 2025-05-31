@@ -26,7 +26,7 @@ local _G = getfenv()
 -- ИМПОРТ КОНФИГУРАЦИИ И ПРОВЕРКА ЗАВИСИМОСТЕЙ
 -- ========================================================================
 
-local questconfig = KQuestConfig
+local questconfig = _G.KQuestConfig
 
 if not questconfig then
     DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest UI Error:|r Quest Config не найден! Убедитесь что QuestConfig.lua загружен первым.")
@@ -163,8 +163,7 @@ local FRAME_CONFIG = {
 -- Обработчик очистки
 local function KQClearALL()
     if questconfig and uiUtils then
-        -- Используем новую систему очистки
-        DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest UI:|r Очистка всех квестов...")
+        -- Очистка элементов
         local elementsToHide = {
             "KQuestPageCount", "KQNextPageButton_Right", "KQNextPageButton_Left",
             "KQuestName", "KQuestLevel", "KQuestDetails", "KQuestAttainLevel",
@@ -199,10 +198,9 @@ end
 function KQ_OnShow()
     local isHorde = UnitFactionGroup("player") == "Horde"
     AtlasKTW.isHorde = isHorde
-
-    -- Безопасное обновление чекбоксов
-    uiUtils.safeUpdateCheckbox("KQuestHordeCheckBox", isHorde)
-    uiUtils.safeUpdateCheckbox("KQuestAllianceCheckBox", not isHorde)
+    -- Обновляем чекбоксы
+    uiUtils.UpdateCheckbox("KQuestHordeCheckBox", isHorde)
+    uiUtils.UpdateCheckbox("KQuestAllianceCheckBox", not isHorde)
 
     KQuestSetTextandButtons()
 end
@@ -245,8 +243,8 @@ end
 -- Обработчик чекбокса Альянса
 function Alliance_OnClick()
     AtlasKTW.isHorde = false
-    uiUtils.safeUpdateCheckbox("KQuestAllianceCheckBox", true)
-    uiUtils.safeUpdateCheckbox("KQuestHordeCheckBox", false)
+    uiUtils.UpdateCheckbox("KQuestAllianceCheckBox", true)
+    uiUtils.UpdateCheckbox("KQuestHordeCheckBox", false)
 
     KQuest_SaveData()
     variables.NEED_UPDATE = true
@@ -255,8 +253,8 @@ end
 -- Обработчик чекбокса Орды
 function Horde_OnClick()
     AtlasKTW.isHorde = true
-    uiUtils.safeUpdateCheckbox("KQuestAllianceCheckBox", false)
-    uiUtils.safeUpdateCheckbox("KQuestHordeCheckBox", true)
+    uiUtils.UpdateCheckbox("KQuestAllianceCheckBox", false)
+    uiUtils.UpdateCheckbox("KQuestHordeCheckBox", true)
 
     KQuest_SaveData()
     variables.NEED_UPDATE = true
@@ -462,10 +460,10 @@ local kQuestUIFactory = {
         text:SetHeight(config.height)
         text:SetJustifyH("LEFT")
 
-        if index == 1 then
-            text:SetPoint("TOPLEFT", parent, "TOPLEFT", config.x + 15, config.startY)
-        else
+        if index ~= 1 then
             text:SetPoint("TOPLEFT", prevText, "TOPLEFT", 0, config.spacing)
+        else
+            text:SetPoint("TOPLEFT", parent, "TOPLEFT", config.x + 15, config.startY)
         end
 
         text:SetText(index)
@@ -513,7 +511,6 @@ function KQuestFrame_CreateUI()
         DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest:|r AtlasFrame не найден!")
         return
     end
-
     -- Создаем основной фрейм
     local mainConfig = FRAME_CONFIG.Main
     local frame = CreateFrame("Frame", mainConfig.name, AtlasFrame)
@@ -562,7 +559,7 @@ function KQuestFrame_CreateUI()
     end
 
     -- ДОБАВЛЯЕМ ОБЩУЮ КНОПКУ
-    local generalButton = CreateFrame("Button", "KQGeneralButton", frame)
+    local generalButton = CreateFrame("Button", "KQuestGeneralButton", frame)
     generalButton:SetWidth(165)
     generalButton:SetHeight(20)
     generalButton:SetPoint("TOPLEFT", frame, "TOPLEFT", 15, -30)
@@ -610,7 +607,6 @@ function KQuestFrame_CreateUI()
             AtlasKTW.Q.ShownQuest = 0
         end
     end)
-
     return frame
 end
 
@@ -624,7 +620,7 @@ local function InitializeKQuestUI()
         DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest:|r AtlasFrame не найден!")
         return
     end
-    if not _G["KQuestFrame"] then
+    if not KQuestFrame then
         KQuestFrame_CreateUI()
     end
 end
@@ -635,9 +631,7 @@ initFrame:RegisterEvent("ADDON_LOADED")
 initFrame:RegisterEvent("VARIABLES_LOADED")
 initFrame:SetScript("OnEvent", function()
     if (event == "ADDON_LOADED" and arg1 == "Atlas-TW") or event == "VARIABLES_LOADED" then
-
         InitializeKQuestUI()
-
         if event == "ADDON_LOADED" then
             initFrame:UnregisterEvent("ADDON_LOADED")
         else

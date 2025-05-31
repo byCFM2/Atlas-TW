@@ -447,8 +447,8 @@ kQuestConfig.UIUtils = {
 
         return frame
     end,
-    -- Безопасное обновление чекбокса
-    safeUpdateCheckbox = function(name, checked)
+    -- Обновление чекбокса
+    UpdateCheckbox = function(name, checked)
         local checkbox = _G[name]
         if checkbox and checkbox.SetChecked then
             checkbox:SetChecked(checked)
@@ -481,8 +481,8 @@ kQuestConfig.UIUtils = {
         return false
     end,
 
-    -- Безопасная установка позиции элемента
-    safeSetPosition = function(element, point, relative, relativePoint, x, y)
+    -- Установка позиции элемента
+    SetPosition = function(element, point, relative, relativePoint, x, y)
         if element and element.SetPoint then
             element:ClearAllPoints()
             element:SetPoint(point, relative, relativePoint, x, y)

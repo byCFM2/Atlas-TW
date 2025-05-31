@@ -157,7 +157,6 @@ function KQuest_Instances()
         quest_variables.CURRENT_INSTANCE = quest_const.DEFAULT_INSTANCE
         return quest_variables.CURRENT_INSTANCE
     end
-
     -- Сохраняем текстуру для других модулей
     quest_variables.CURRENT_MAP_TEXTURE = currentTexture
 

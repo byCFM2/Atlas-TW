@@ -8,7 +8,7 @@
 local _G = getfenv()
 
 -- Константы для создания UI элементов
-local QUEST_FRAME_CONFIG = {
+local questFrameConfig = {
     MAIN_FRAME = {
         width = 510,
         height = 510,
@@ -65,8 +65,8 @@ local quest_Frame_Positions = {
 -- ========================================================================
 
 -- Функция создания дочерних элементов фрейма квеста
-local function CreateQuestFrameElements(parent, baseName)
-    local config = QUEST_FRAME_CONFIG.QUEST_ITEM
+local function createQuestFrameElements(parent, baseName)
+    local config = questFrameConfig.QUEST_ITEM
 
     -- Иконка предмета
     local icon = parent:CreateTexture(baseName .. "_Icon", "ARTWORK")
@@ -125,7 +125,7 @@ local kQuestUIFactory = {
 
     -- Создание основного фрейма
     createMainFrame = function()
-        local config = QUEST_FRAME_CONFIG.MAIN_FRAME
+        local config = questFrameConfig.MAIN_FRAME
         local frame = CreateFrame("Frame", "KQuestInsideFrame", AtlasFrame)
 
         frame:SetWidth(config.width)
@@ -140,7 +140,7 @@ local kQuestUIFactory = {
 
     -- Создание фрейма квеста БЕЗ самовызова
     createQuestFrame = function(frameNumber, position, parentFrame)
-        local config = QUEST_FRAME_CONFIG.QUEST_ITEM
+        local config = questFrameConfig.QUEST_ITEM
         local frameName = "KQuestItemframe" .. frameNumber
 
         local frame = CreateFrame("Button", frameName, parentFrame)
@@ -150,7 +150,7 @@ local kQuestUIFactory = {
         frame:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
 
         -- Создание дочерних элементов через локальную функцию
-        local elements = CreateQuestFrameElements(frame, frameName)
+        local elements = createQuestFrameElements(frame, frameName)
 
         -- Настройка событий через локальную функцию
         setupQuestFrameEvents(frame, frameNumber)
@@ -160,7 +160,7 @@ local kQuestUIFactory = {
 
     -- Создание кнопки закрытия
     createCloseButton = function(parent)
-        local config = QUEST_FRAME_CONFIG.CLOSE_BUTTON
+        local config = questFrameConfig.CLOSE_BUTTON
         local button = CreateFrame("Button", "CLOSEbutton2", parent, "UIPanelCloseButton")
 
         button:SetWidth(config.width)
@@ -181,7 +181,7 @@ local kQuestUIFactory = {
 
     -- Создание чекбокса для завершенных квестов
     createFinishedQuestCheckbox = function(parent)
-        local config = QUEST_FRAME_CONFIG.CHECKBOX
+        local config = questFrameConfig.CHECKBOX
         local checkbox = CreateFrame("CheckButton", "KQuestFinished", parent, "OptionsCheckButtonTemplate")
 
         checkbox:SetWidth(config.width)
@@ -203,7 +203,7 @@ local kQuestUIFactory = {
 
     -- Создание навигационных кнопок
     createNavigationButtons = function(parent)
-        local config = QUEST_FRAME_CONFIG.NAV_BUTTON
+        local config = questFrameConfig.NAV_BUTTON
         local buttons = {}
 
         -- Кнопка "Вперед"
@@ -349,13 +349,13 @@ local kQuestToggleFactory = {
     end,
 
     createToggleButton = function(parent)
-        local button = CreateFrame("Button", "KQCloseButton_3", parent, "OptionsButtonTemplate")
+        local button = CreateFrame("Button", "KQuestCloseButton_3", parent, "OptionsButtonTemplate")
         button:SetWidth(90)
         button:SetHeight(20)
         button:SetPoint("TOPRIGHT", -120, -61)
 
         -- Установка текста кнопки
-        _G["KQCloseButton_3Text"]:SetText(AQ_Quests)
+        button:SetText(AQ_Quests)
 
         button:SetScript("OnClick", function()
             KQuestCLOSE_OnClick()
@@ -368,6 +368,10 @@ local kQuestToggleFactory = {
 -- ========================================================================
 -- ИНИЦИАЛИЗАЦИЯ ВСЕХ ЭЛЕМЕНТОВ
 -- ========================================================================
+-- Отладочные сообщения
+DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Quest Debug:|r Начинаем инициализацию Quest модуля")
+DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Quest Debug:|r AtlasFrame существует: " .. tostring(AtlasFrame ~= nil))
+DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Quest Debug:|r AQ_Quests = " .. tostring(AQ_Quests))
 
 -- Проверяем, что AtlasFrame существует
 if not AtlasFrame then
@@ -376,23 +380,23 @@ if not AtlasFrame then
 end
 
 -- Создание основного фрейма
-local KQuestInsideFrame, questFrames, closeButton, finishedQuestCheckbox, navigationButtons, textElements
+local kQuestInsideFrame, questFrames, closeButton, finishedQuestCheckbox, navigationButtons, textElements
 if not _G["KQuestInsideFrame"] then
-    KQuestInsideFrame = kQuestUIFactory.createMainFrame()
+    kQuestInsideFrame = kQuestUIFactory.createMainFrame()
 
     -- Создание всех фреймов квестов
     questFrames = {}
     for i = 1, 6 do
         local position = quest_Frame_Positions[i]
-        local frame, elements = kQuestUIFactory.createQuestFrame(i, position, KQuestInsideFrame)
+        local frame, elements = kQuestUIFactory.createQuestFrame(i, position, kQuestInsideFrame)
         questFrames[i] = {frame = frame, elements = elements}
     end
 
     -- Создание остальных элементов
-    closeButton = kQuestUIFactory.createCloseButton(KQuestInsideFrame)
-    finishedQuestCheckbox = kQuestUIFactory.createFinishedQuestCheckbox(KQuestInsideFrame)
-    navigationButtons = kQuestUIFactory.createNavigationButtons(KQuestInsideFrame)
-    textElements = kQuestUIFactory.createTextElements(KQuestInsideFrame)
+    closeButton = kQuestUIFactory.createCloseButton(kQuestInsideFrame)
+    finishedQuestCheckbox = kQuestUIFactory.createFinishedQuestCheckbox(kQuestInsideFrame)
+    navigationButtons = kQuestUIFactory.createNavigationButtons(kQuestInsideFrame)
+    textElements = kQuestUIFactory.createTextElements(kQuestInsideFrame)
 end
 
 -- ========================================================================
@@ -410,7 +414,7 @@ local questsToggleButton = kQuestToggleFactory.createToggleButton(atlasQuestButt
 -- ========================================================================
 
 -- Глобальные ссылки для совместимости со старым кодом
-_G.KQuestInsideFrame = KQuestInsideFrame
+_G.KQuestInsideFrame = kQuestInsideFrame
 _G.KQuestFrames = questFrames
 _G.KQuestUIElements = {
     closeButton = closeButton,
