@@ -1,4 +1,3 @@
-
 -- FRAME INSIDE ATLAS
 -- AtlasTW Quest Inside Atlas frame
 -- Исправлена проблема с самовызовом функций для совместимости с Lua 5.0 (WoW 1.12)
@@ -356,24 +355,10 @@ local kQuestToggleFactory = {
         button:SetPoint("TOPRIGHT", -120, -61)
 
         -- Установка текста кнопки
-        _G("KQCloseButton_3Text"):SetText(AQ_Quests)
+        _G["KQCloseButton_3Text"]:SetText(AQ_Quests)
 
         button:SetScript("OnClick", function()
             KQuestCLOSE_OnClick()
-        end)
-
-        button:SetScript("OnUpdate", function()
-            if not AtlasFrame then
-                this:Hide()
-                return
-            end
-        end)
-
-        button:SetScript("OnShow", function()
-            if not AtlasFrame then
-                this:Hide()
-                return
-            end
         end)
 
         return button

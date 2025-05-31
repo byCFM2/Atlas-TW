@@ -4,20 +4,8 @@
 -- Исправлены проблемы с самовызовом функций
 -----------------------------------------------------------------------------
 -- Константы для оптимизации
-local KQUEST_CONSTANTS = {
-    BASE_PATH = "Interface\\AddOns\\Atlas-TW\\Images\\Maps\\",
-    ENTRANCE_SUFFIX = "Ent",
-    DEFAULT_INSTANCE = 99,
-    MAX_CACHE_SIZE = 150
-}
-
--- Кеш для оптимизации повторных обращений
-local KQuest_InstanceCache = {}
-local KQuest_CacheStats = {
-    hits = 0,
-    misses = 0,
-    size = 0
-}
+local quest_const = KQuestConfig and KQuestConfig.Constants
+local quest_variables = KQuestConfig and KQuestConfig.Variables
 
 -- Статическая карта инстансов - создается один раз при загрузке
 local KQuest_StaticInstanceMap = nil
@@ -85,6 +73,7 @@ local InstanceMaps = {
         {pattern = "Turtlhu", id = 44},
         {pattern = "CavernsOfTimeBlackMorass", id = 45},
         {pattern = "HateforgeQuarry", id = 46},
+        {pattern = "StormwroughtRuins", id = 47},
         {pattern = "StormwindVault", id = 57},
         {pattern = "Ostarius", id = 58},
         {pattern = "CowKing", id = 59},
@@ -129,7 +118,7 @@ end
 -- Функция создания карты инстансов - выполняется один раз
 local function BuildInstanceMap()
     local instanceMap = {}
-    local basePath = KQUEST_CONSTANTS.BASE_PATH
+    local basePath = quest_const.MAP_PATH
 
     -- Обрабатываем каждую категорию инстансов
     for categoryName, maps in pairs(InstanceMaps) do
@@ -140,12 +129,12 @@ local function BuildInstanceMap()
             -- Основная карта инстанса
             instanceMap[basePath .. pattern] = id
 
-            -- Карта входа (если указана явно)
+            -- Карта входа
             if mapData.entrancePattern then
                 instanceMap[basePath .. mapData.entrancePattern] = id
             elseif mapData.hasEntrance then
                 -- Стандартный суффикс входа
-                instanceMap[basePath .. pattern .. KQUEST_CONSTANTS.ENTRANCE_SUFFIX] = id
+                instanceMap[basePath .. pattern .. quest_const.ENTRANCE_SUFFIX] = id
             end
         end
     end
@@ -158,70 +147,34 @@ KQuest_StaticInstanceMap = BuildInstanceMap()
 
 -----------------------------------------------------------------------------
 -- Основная функция определения инстанса
--- Теперь БЕЗ самовызовов и рекурсии
 -----------------------------------------------------------------------------
 function KQuest_Instances()
     -- Получаем текущую текстуру Atlas
     local currentTexture = AtlasMap and AtlasMap:GetTexture()
-
     -- Валидация входных данных
     if not ValidateTexture(currentTexture) then
-        AtlasKTW.Map = nil
-        AtlasKTW.Instances = KQUEST_CONSTANTS.DEFAULT_INSTANCE
-        return AtlasKTW.Instances
+        quest_variables.CURRENT_MAP_TEXTURE = nil
+        quest_variables.CURRENT_INSTANCE = quest_const.DEFAULT_INSTANCE
+        return quest_variables.CURRENT_INSTANCE
     end
 
     -- Сохраняем текстуру для других модулей
-    AtlasKTW.Map = currentTexture
+    quest_variables.CURRENT_MAP_TEXTURE = currentTexture
 
-    -- Проверяем кеш для быстрого доступа
-    if KQuest_InstanceCache[currentTexture] then
-        KQuest_CacheStats.hits = KQuest_CacheStats.hits + 1
-        AtlasKTW.Instances = KQuest_InstanceCache[currentTexture]
-        return AtlasKTW.Instances
-    end
+    -- Ищем ID инстанса в предварительно построенной карте и устанавливаем результат 
+    quest_variables.CURRENT_INSTANCE = KQuest_StaticInstanceMap[currentTexture] or quest_const.DEFAULT_INSTANCE
 
-    -- Ищем ID инстанса в предварительно построенной карте
-    local instanceId = KQuest_StaticInstanceMap[currentTexture] or KQUEST_CONSTANTS.DEFAULT_INSTANCE
-
-    -- Сохраняем в кеш, если есть место
-    if KQuest_CacheStats.size < KQUEST_CONSTANTS.MAX_CACHE_SIZE then
-        KQuest_InstanceCache[currentTexture] = instanceId
-        KQuest_CacheStats.size = KQuest_CacheStats.size + 1
-    end
-
-    KQuest_CacheStats.misses = KQuest_CacheStats.misses + 1
-
-    -- Устанавливаем результат
-    AtlasKTW.Instances = instanceId
-    return AtlasKTW.Instances
+    return quest_variables.CURRENT_INSTANCE
 end
 
 -----------------------------------------------------------------------------
 -- Дополнительные утилиты (объявлены после основной функции)
 -----------------------------------------------------------------------------
 
--- Функция для получения статистики кеша
-function KQuest_GetCacheStats()
-    return {
-        hits = KQuest_CacheStats.hits,
-        misses = KQuest_CacheStats.misses,
-        hitRate = KQuest_CacheStats.hits > 0 and
-                  (KQuest_CacheStats.hits / (KQuest_CacheStats.hits + KQuest_CacheStats.misses)) * 100 or 0,
-        size = KQuest_CacheStats.size
-    }
-end
-
--- Функция очистки кеша
-function KQuest_ClearInstanceCache()
-    KQuest_InstanceCache = {}
-    KQuest_CacheStats = {hits = 0, misses = 0, size = 0}
-end
-
 -- Получение категории инстанса
 function KQuest_GetInstanceCategory(instanceId)
     if not instanceId then
-        instanceId = AtlasKTW.Instances
+        instanceId = quest_variables.CURRENT_INSTANCE
     end
 
     -- Проверяем каждую категорию
@@ -271,12 +224,6 @@ function KQuest_GetInstancesByCategory(categoryName)
     return result
 end
 
--- Функция принудительного пересоздания карты инстансов (для отладки)
-function KQuest_RebuildInstanceMap()
-    KQuest_StaticInstanceMap = BuildInstanceMap()
-    KQuest_ClearInstanceCache()
-end
-
 --[[
 =============================================================================
 СПРАВОЧНАЯ ИНФОРМАЦИЯ ПО ID ИНСТАНСОВ
@@ -308,13 +255,15 @@ end
 37 = Arathi Basin (AB)           40 = Concavius
 38 = Warsong Gulch (WSG)         41 = Karazhan Crypt
                                  42 = Nerubian
---- Карты и маршруты (98) ---     43 = Reaver
+--- Карты и маршруты (98) ---    43 = Reaver
 98 = Transport Routes            44 = Turtlhu
 98 = Dungeon Locations           45 = Black Morass
-98 = Flight Paths                57 = Stormwind Vault
-98 = Rare Mobs                   58 = Ostarius
+98 = Flight Paths                46 = Hateforge Quarry
+98 = Rare Mobs                   47 = Stormwrought Ruins
+                                 57 = Stormwind Vault
+                                 58 = Ostarius
                                  59 = Cow King
---- По умолчанию (99) ---         61 = Gilneas City
+--- По умолчанию (99) ---        61 = Gilneas City
 99 = Неизвестная карта           62 = Lower Karazhan
                                  63 = Emerald Sanctum
                                  64 = Tower of Karazhan

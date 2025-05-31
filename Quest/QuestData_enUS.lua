@@ -1,19 +1,20 @@
+local _G = getfenv()
+local questConfig = _G.KQuestConfig
 ---------------
 --- COLOURS ---
 ---------------
-local red = KQuestConfig.Colors.red
-local white = KQuestConfig.Colors.white
-local green = KQuestConfig.Colors.green
-local blue = KQuestConfig.Colors.blue
-local yellow = KQuestConfig.Colors.yellow
-local orange = KQuestConfig.Colors.orange
-local purple = KQuestConfig.Colors.purple
+local red = questConfig.Colors.red
+local white = questConfig.Colors.white
+local green = questConfig.Colors.green
+local blue = questConfig.Colors.blue
+local yellow = questConfig.Colors.yellow
+local orange = questConfig.Colors.orange
+local purple = questConfig.Colors.purple
 
 ----------------------------------------------
 ------------- Quest Instance Data ------------
 ----------------------------------------------
-
-local kQuestInstanceData = _G.KQuestInstanceData or {}
+local kQuestInstanceData = {}
 
 --------------- INST1 - The Deadmines ---------------
 kQuestInstanceData[1] = {

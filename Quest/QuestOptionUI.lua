@@ -24,11 +24,13 @@ local _G = getfenv()
 -- ========================================================================
 -- ИМПОРТ КОНФИГУРАЦИИ И ЗАВИСИМОСТЕЙ
 -- ========================================================================
-
+local questConfig = KQuestConfig
 -- Убеждаемся что конфигурация загружена
-if not KQuestConfig then
-    DEFAULT_CHAT_FRAME:AddMessage("KQuestConfig не найден! Убедитесь что QuestConfig.lua загружен первым.")
+if not questConfig then
+    DEFAULT_CHAT_FRAME:AddMessage("Quest config не найден! Убедитесь что QuestConfig.lua загружен первым.")
 end
+local variables = questConfig.Variables
+local ui = questConfig.UI
 
 -- ========================================================================
 -- КОНСТАНТЫ И НАСТРОЙКИ
@@ -184,8 +186,8 @@ local OptionUtils = {
         KQuestFrame:ClearAllPoints()
 
         if side == "Right" then
-            if KQuestConfig and KQuestConfig.UI and KQuestConfig.UI.Positions then
-                local pos = KQuestConfig.UI.Positions.Right
+            if questConfig and ui and ui.Positions then
+                local pos = ui.Positions.Right
                 local atlasFrame = _G[pos.relativeTo]
                 if atlasFrame then
                     KQuestFrame:SetPoint(pos.point, atlasFrame, pos.relativePoint, pos.x, pos.y)
@@ -195,8 +197,8 @@ local OptionUtils = {
                 end
             end
         else -- Left
-            if KQuestConfig and KQuestConfig.UI and KQuestConfig.UI.Positions then
-                local pos = KQuestConfig.UI.Positions.Left
+            if questConfig and ui and ui.Positions then
+                local pos = ui.Positions.Left
                 local atlasFrame = _G[pos.relativeTo]
                 if atlasFrame then
                     KQuestFrame:SetPoint(pos.point, atlasFrame, pos.relativePoint, pos.x, pos.y)
@@ -303,7 +305,7 @@ local OptionHandlers = {
         OptionUtils.sendChatMessage(OptionUtils.getLocalizedText(messageKey))
 
         -- Помечаем что нужно обновить UI
-        AtlasKTW.QUpdateNOW = true
+        variables.NEED_UPDATE = true
     end,
 
     -- Проверка журнала квестов
@@ -319,7 +321,7 @@ local OptionHandlers = {
         end
 
         -- Помечаем что нужно обновить UI
-        AtlasKTW.QUpdateNOW = true
+        variables.NEED_UPDATE = true
     end,
 
     -- Автоматический запрос

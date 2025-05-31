@@ -1,16 +1,5 @@
---[[
-Name: Babble-Zone-2.2a
-Revision: $Rev: 17779 $
-Author(s): ckknight (ckknight@gmail.com)
-Website: http://ckknight.wowinterface.com/
-Documentation: http://wiki.wowace.com/index.php/Babble-Zone-2.2a
-SVN: http://svn.wowace.com/root/trunk/Babble-2.2/Babble-Zone-2.2a
-Description: A library to provide localizations for zones.
-Dependencies: AceLibrary, AceLocale-2.2
-]]
-
 local MAJOR_VERSION = "Babble-Zone-2.2a"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 17779 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 17780 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 
@@ -28,12 +17,13 @@ local BabbleZone = AceLibrary("AceLocale-2.2"):new(MAJOR_VERSION)
 
 BabbleZone:RegisterTranslations("enUS", function()
 	return {
+		["Balor"] = true,
+		["Stormwrought Ruins"] = true,
 		["Icepoint Rock"] = true,
 		["Thalassian Highlands"] = true,
 		["Lapidis Isle"] = true,
 		["Tel'Abim"] = true,
 		["Gillijim's Isle"] = true,
-		["Battlegrounds"] = true,
 		["Tower of Karazhan"] = true,
 		["The Black Morass"] = true,
 		["Upper Karazhan Halls"] = true,

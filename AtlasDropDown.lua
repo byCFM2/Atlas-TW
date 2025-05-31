@@ -1,27 +1,4 @@
---[[
-	
-	Atlas, a World of Warcraft instance map browser
-	Copyright 2005 - 2008 Dan Gilbert
-	Email me at loglow@gmail.com
-	
-	This file is part of Atlas.
-	
-	Atlas is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
-	
-	Atlas is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-	
-	You should have received a copy of the GNU General Public License
-	along with Atlas; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-	
---]]
-local GREEN = "|cff66cc33"
+local green = "|cff66cc33"
 
 Atlas_DropDownLayouts_Order = {
 	[1] = ATLAS_DDL_CONTINENT,
@@ -33,11 +10,11 @@ Atlas_DropDownLayouts_Order = {
 		[1] = ATLAS_DDL_CONTINENT_EASTERN,
 		[2] = ATLAS_DDL_CONTINENT_KALIMDOR, 
 		[3] = ATLAS_DDL_WORLD,
-		[4] = GREEN..ATLAS_DDL_TYPE_ENTRANCE,
-		[5] = GREEN..ATLAS_DDL_BGS,
-		[6] = GREEN..ATLAS_DDL_DUNGEON_LOCATIONS,
-		[7] = GREEN..ATLAS_DDL_FLIGHT_PATHS,
-		[8] = GREEN..ATLAS_DDL_TRANSPORT_ROUTES,
+		[4] = green..ATLAS_DDL_TYPE_ENTRANCE,
+		[5] = green..ATLAS_DDL_BGS,
+		[6] = green..ATLAS_DDL_DUNGEON_LOCATIONS,
+		[7] = green..ATLAS_DDL_FLIGHT_PATHS,
+		[8] = green..ATLAS_DDL_TRANSPORT_ROUTES,
 	},
 	[ATLAS_DDL_PARTYSIZE] = {
 		[1] = ATLAS_DDL_PARTYSIZE_5,
@@ -45,11 +22,11 @@ Atlas_DropDownLayouts_Order = {
 		[3] = ATLAS_DDL_PARTYSIZE_20,
 		[4] = ATLAS_DDL_PARTYSIZE_40,
 		[5] = ATLAS_DDL_WORLD,
-		[6] = GREEN..ATLAS_DDL_TYPE_ENTRANCE,
-		[7] = GREEN..ATLAS_DDL_BGS,
-		[8] = GREEN..ATLAS_DDL_DUNGEON_LOCATIONS,
-		[9] = GREEN..ATLAS_DDL_FLIGHT_PATHS,
-		[10] = GREEN..ATLAS_DDL_TRANSPORT_ROUTES,
+		[6] = green..ATLAS_DDL_TYPE_ENTRANCE,
+		[7] = green..ATLAS_DDL_BGS,
+		[8] = green..ATLAS_DDL_DUNGEON_LOCATIONS,
+		[9] = green..ATLAS_DDL_FLIGHT_PATHS,
+		[10] = green..ATLAS_DDL_TRANSPORT_ROUTES,
 	},
 	[ATLAS_DDL_LEVEL] = {
 		[1] = ATLAS_DDL_LEVEL_10TO20,
@@ -59,31 +36,31 @@ Atlas_DropDownLayouts_Order = {
 		[5] = ATLAS_DDL_LEVEL_50TO60,
 		[6] = ATLAS_DDL_LEVEL_60,
 		[7] = ATLAS_DDL_WORLD,
-		[8] = GREEN..ATLAS_DDL_TYPE_ENTRANCE,
-		[9] = GREEN..ATLAS_DDL_BGS,
-		[10] = GREEN..ATLAS_DDL_DUNGEON_LOCATIONS,
-		[11] = GREEN..ATLAS_DDL_FLIGHT_PATHS,
-		[12] = GREEN..ATLAS_DDL_TRANSPORT_ROUTES,
+		[8] = green..ATLAS_DDL_TYPE_ENTRANCE,
+		[9] = green..ATLAS_DDL_BGS,
+		[10] = green..ATLAS_DDL_DUNGEON_LOCATIONS,
+		[11] = green..ATLAS_DDL_FLIGHT_PATHS,
+		[12] = green..ATLAS_DDL_TRANSPORT_ROUTES,
 	},
 	[ATLAS_DDL_TYPE] = {
 		[1] = ATLAS_DDL_TYPE_DUNGEONS,
 		[2] = ATLAS_DDL_TYPE_RAIDS,
 		[3] = ATLAS_DDL_WORLD,
-		[4] = GREEN..ATLAS_DDL_TYPE_ENTRANCE,
-		[5] = GREEN..ATLAS_DDL_BGS,
-		[6] = GREEN..ATLAS_DDL_DUNGEON_LOCATIONS,
-		[7] = GREEN..ATLAS_DDL_FLIGHT_PATHS,
-		[8] = GREEN..ATLAS_DDL_TRANSPORT_ROUTES,
+		[4] = green..ATLAS_DDL_TYPE_ENTRANCE,
+		[5] = green..ATLAS_DDL_BGS,
+		[6] = green..ATLAS_DDL_DUNGEON_LOCATIONS,
+		[7] = green..ATLAS_DDL_FLIGHT_PATHS,
+		[8] = green..ATLAS_DDL_TRANSPORT_ROUTES,
 	},
 	[ATLAS_DDL_ALL] = {
 		[1] = ATLAS_DDL_ALL_MENU1,
 		[2] = ATLAS_DDL_ALL_MENU2,
 		[3] = ATLAS_DDL_WORLD,
-		[4] = GREEN..ATLAS_DDL_TYPE_ENTRANCE,
-		[5] = GREEN..ATLAS_DDL_BGS,
-		[6] = GREEN..ATLAS_DDL_DUNGEON_LOCATIONS,
-		[7] = GREEN..ATLAS_DDL_FLIGHT_PATHS,
-		[8] = GREEN..ATLAS_DDL_TRANSPORT_ROUTES,
+		[4] = green..ATLAS_DDL_TYPE_ENTRANCE,
+		[5] = green..ATLAS_DDL_BGS,
+		[6] = green..ATLAS_DDL_DUNGEON_LOCATIONS,
+		[7] = green..ATLAS_DDL_FLIGHT_PATHS,
+		[8] = green..ATLAS_DDL_TRANSPORT_ROUTES,
 	}
 }
 
@@ -108,6 +85,7 @@ Atlas_DropDownLayouts = {
 			"SMCathedral",
 			"SMGraveyard",
 			"SMLibrary",
+			"StormwroughtRuins",
 			"StormwindVault",
 			"Stratholme",
 			"TheDeadmines",
@@ -147,7 +125,7 @@ Atlas_DropDownLayouts = {
 			"Clackora",
 			"RareMobs",
 		},
-		[GREEN..ATLAS_DDL_TYPE_ENTRANCE] = {
+		[green..ATLAS_DDL_TYPE_ENTRANCE] = {
 			"BlackfathomDeepsEnt",
 			"BlackrockMountainEnt",
 			"DireMaulEnt",
@@ -159,23 +137,23 @@ Atlas_DropDownLayouts = {
 			"UldamanEnt",
 			"WailingCavernsEnt",
 		},
-		[GREEN..ATLAS_DDL_BGS] = {
+		[green..ATLAS_DDL_BGS] = {
 			"AlteracValleyNorth",
 			"AlteracValleySouth",
 			"ArathiBasin",
 			"WarsongGulch",
 		},
-		[GREEN..ATLAS_DDL_DUNGEON_LOCATIONS] = {
+		[green..ATLAS_DDL_DUNGEON_LOCATIONS] = {
 			"DLEast",
 			"DLWest",
 		},
-		[GREEN..ATLAS_DDL_FLIGHT_PATHS] = {
+		[green..ATLAS_DDL_FLIGHT_PATHS] = {
 			"FPAllianceEast",
 			"FPAllianceWest",
 			"FPHordeEast",
 			"FPHordeWest",
 		},
-		[GREEN..ATLAS_DDL_TRANSPORT_ROUTES] = {
+		[green..ATLAS_DDL_TRANSPORT_ROUTES] = {
 			"TransportRoutes",
 		},
 	},
@@ -204,6 +182,7 @@ Atlas_DropDownLayouts = {
 			"SMCathedral",
 			"SMGraveyard",
 			"SMLibrary",
+			"StormwroughtRuins",
 			"TheCrescentGrove",
 			"TheStockade",
 			"TheSunkenTemple",
@@ -244,7 +223,7 @@ Atlas_DropDownLayouts = {
 			"Clackora",
 			"RareMobs",
 		},
-		[GREEN..ATLAS_DDL_TYPE_ENTRANCE] = {
+		[green..ATLAS_DDL_TYPE_ENTRANCE] = {
 			"BlackfathomDeepsEnt",
 			"BlackrockMountainEnt",
 			"DireMaulEnt",
@@ -256,23 +235,23 @@ Atlas_DropDownLayouts = {
 			"UldamanEnt",
 			"WailingCavernsEnt",
 		},
-		[GREEN..ATLAS_DDL_BGS] = {
+		[green..ATLAS_DDL_BGS] = {
 			"AlteracValleyNorth",
 			"AlteracValleySouth",
 			"ArathiBasin",
 			"WarsongGulch",
 		},
-		[GREEN..ATLAS_DDL_DUNGEON_LOCATIONS] = {
+		[green..ATLAS_DDL_DUNGEON_LOCATIONS] = {
 			"DLEast",
 			"DLWest",
 		},
-		[GREEN..ATLAS_DDL_FLIGHT_PATHS] = {
+		[green..ATLAS_DDL_FLIGHT_PATHS] = {
 			"FPAllianceEast",
 			"FPAllianceWest",
 			"FPHordeEast",
 			"FPHordeWest",
 		},
-		[GREEN..ATLAS_DDL_TRANSPORT_ROUTES] = {
+		[green..ATLAS_DDL_TRANSPORT_ROUTES] = {
 			"TransportRoutes"
 		},
 	},
@@ -295,6 +274,7 @@ Atlas_DropDownLayouts = {
 			"SMCathedral",
 			"SMGraveyard",
 			"SMLibrary",
+			"StormwroughtRuins",
 			"TheCrescentGrove",
 			"Uldaman",
 		},
@@ -329,7 +309,6 @@ Atlas_DropDownLayouts = {
 			"TheTempleofAhnQiraj",
 			"Naxxramas",
 			"TowerofKarazhan",
-			
 		},
 		[ATLAS_DDL_WORLD] = {
 			"Azuregos",
@@ -344,7 +323,7 @@ Atlas_DropDownLayouts = {
 			"Clackora",
 			"RareMobs",
 		},
-		[GREEN..ATLAS_DDL_TYPE_ENTRANCE] = {
+		[green..ATLAS_DDL_TYPE_ENTRANCE] = {
 			"BlackfathomDeepsEnt",
 			"BlackrockMountainEnt",
 			"DireMaulEnt",
@@ -356,23 +335,23 @@ Atlas_DropDownLayouts = {
 			"UldamanEnt",
 			"WailingCavernsEnt",
 		},
-		[GREEN..ATLAS_DDL_BGS] = {
+		[green..ATLAS_DDL_BGS] = {
 			"AlteracValleyNorth",
 			"AlteracValleySouth",
 			"ArathiBasin",
 			"WarsongGulch",
 		},
-		[GREEN..ATLAS_DDL_DUNGEON_LOCATIONS] = {
+		[green..ATLAS_DDL_DUNGEON_LOCATIONS] = {
 			"DLEast",
 			"DLWest",
 		},
-		[GREEN..ATLAS_DDL_FLIGHT_PATHS] = {
+		[green..ATLAS_DDL_FLIGHT_PATHS] = {
 			"FPAllianceEast",
 			"FPAllianceWest",
 			"FPHordeEast",
 			"FPHordeWest",
 		},
-		[GREEN..ATLAS_DDL_TRANSPORT_ROUTES] = {
+		[green..ATLAS_DDL_TRANSPORT_ROUTES] = {
 			"TransportRoutes"
 		},
 	},	
@@ -399,6 +378,7 @@ Atlas_DropDownLayouts = {
 			"SMCathedral",
 			"SMGraveyard",
 			"SMLibrary",
+			"StormwroughtRuins",
 			"StormwindVault",
 			"Stratholme",
 			"TheDeadmines",
@@ -435,7 +415,7 @@ Atlas_DropDownLayouts = {
 			"Clackora",
 			"RareMobs",
 		},
-		[GREEN..ATLAS_DDL_TYPE_ENTRANCE] = {
+		[green..ATLAS_DDL_TYPE_ENTRANCE] = {
 			"BlackfathomDeepsEnt",
 			"BlackrockMountainEnt",
 			"DireMaulEnt",
@@ -447,23 +427,23 @@ Atlas_DropDownLayouts = {
 			"UldamanEnt",
 			"WailingCavernsEnt",
 		},
-		[GREEN..ATLAS_DDL_BGS] = {
+		[green..ATLAS_DDL_BGS] = {
 			"AlteracValleyNorth",
 			"AlteracValleySouth",
 			"ArathiBasin",
 			"WarsongGulch",
 		},
-		[GREEN..ATLAS_DDL_DUNGEON_LOCATIONS] = {
+		[green..ATLAS_DDL_DUNGEON_LOCATIONS] = {
 			"DLEast",
 			"DLWest",
 		},
-		[GREEN..ATLAS_DDL_FLIGHT_PATHS] = {
+		[green..ATLAS_DDL_FLIGHT_PATHS] = {
 			"FPAllianceEast",
 			"FPAllianceWest",
 			"FPHordeEast",
 			"FPHordeWest"
 		},
-		[GREEN..ATLAS_DDL_TRANSPORT_ROUTES] = {
+		[green..ATLAS_DDL_TRANSPORT_ROUTES] = {
 			"TransportRoutes"
 		},
 	},
@@ -495,11 +475,12 @@ Atlas_DropDownLayouts = {
 			"DireMaulNorth",
 			"CavernsOfTimeBlackMorass",
 			"Scholomance",
+			"StormwroughtRuins",
 			"StormwindVault",
 			"Stratholme",
-			"KarazhanCrypt",
 		},
 		[ATLAS_DDL_ALL_MENU2] = {
+			"KarazhanCrypt",
 			"LowerKarazhan",
 			"BlackrockSpireLower",
 			"BlackrockSpireUpper",
@@ -526,7 +507,7 @@ Atlas_DropDownLayouts = {
 			"Clackora",
 			"RareMobs",
 		},
-		[GREEN..ATLAS_DDL_TYPE_ENTRANCE] = {
+		[green..ATLAS_DDL_TYPE_ENTRANCE] = {
 			"BlackfathomDeepsEnt",
 			"BlackrockMountainEnt",
 			"DireMaulEnt",
@@ -538,23 +519,23 @@ Atlas_DropDownLayouts = {
 			"UldamanEnt",
 			"WailingCavernsEnt"
 		},
-		[GREEN..ATLAS_DDL_BGS] = {
+		[green..ATLAS_DDL_BGS] = {
 			"AlteracValleyNorth",
 			"AlteracValleySouth",
 			"ArathiBasin",
 			"WarsongGulch",
 		},
-		[GREEN..ATLAS_DDL_DUNGEON_LOCATIONS] = {
+		[green..ATLAS_DDL_DUNGEON_LOCATIONS] = {
 			"DLEast",
 			"DLWest"
 		},
-		[GREEN..ATLAS_DDL_FLIGHT_PATHS] = {
+		[green..ATLAS_DDL_FLIGHT_PATHS] = {
 			"FPAllianceEast",
 			"FPAllianceWest",
 			"FPHordeEast",
 			"FPHordeWest"
 		},
-		[GREEN..ATLAS_DDL_TRANSPORT_ROUTES] = {
+		[green..ATLAS_DDL_TRANSPORT_ROUTES] = {
 			"TransportRoutes"
 		},
 	}

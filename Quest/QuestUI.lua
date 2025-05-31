@@ -26,17 +26,21 @@ local _G = getfenv()
 -- ИМПОРТ КОНФИГУРАЦИИ И ПРОВЕРКА ЗАВИСИМОСТЕЙ
 -- ========================================================================
 
-if not KQuestConfig then
-    DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest UI Error:|r KQuestConfig не найден! Убедитесь что QuestConfig.lua загружен первым.")
+local questconfig = KQuestConfig
+
+if not questconfig then
+    DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest UI Error:|r Quest Config не найден! Убедитесь что QuestConfig.lua загружен первым.")
     return
 end
 
 -- Импортируем конфигурацию
-local Colors = KQuestConfig.Colors
-local UI = KQuestConfig.UI
-local Constants = KQuestConfig.Constants
-local ColorUtils = KQuestConfig.ColorUtils
-local UIUtils = KQuestConfig.UIUtils
+local colors = questconfig.Colors
+local ui = questconfig.UI
+local constants = questconfig.Constants
+local variables = questconfig.Variables
+local currentInstance = questconfig.Variables.CURRENT_INSTANCE
+local colorUtils = questconfig.ColorUtils
+local uiUtils = questconfig.UIUtils
 
 -- ========================================================================
 -- КОНФИГУРАЦИЯ UI ЭЛЕМЕНТОВ
@@ -148,7 +152,7 @@ local FRAME_CONFIG = {
         spacing = -20,
         point = "TOPLEFT",
         x = 15,
-        maxCount = Constants.MAX_QUESTS_PER_INSTANCE
+        maxCount = constants.MAX_QUESTS_PER_INSTANCE
     }
 }
 
@@ -158,7 +162,7 @@ local FRAME_CONFIG = {
 
 -- Обработчик очистки
 local function KQClearALL()
-    if KQuestConfig and UIUtils then
+    if questconfig and uiUtils then
         -- Используем новую систему очистки
         DEFAULT_CHAT_FRAME:AddMessage("|cffff0000Atlas Quest UI:|r Очистка всех квестов...")
         local elementsToHide = {
@@ -168,14 +172,14 @@ local function KQClearALL()
         }
 
         for _, elementName in ipairs(elementsToHide) do
-            UIUtils.updateTextElement(elementName, "")
+            uiUtils.updateTextElement(elementName, "")
         end
 
         -- Очистка фреймов предметов
         for i = 1, 6 do
             local frameName = "KQuestItemframe" .. i
-            UIUtils.updateTextElement(frameName .. "_Name", "")
-            UIUtils.updateTextElement(frameName .. "_Extra", "")
+            uiUtils.updateTextElement(frameName .. "_Name", "")
+            uiUtils.updateTextElement(frameName .. "_Extra", "")
 
             local icon = _G[frameName .. "_Icon"]
             if icon and icon.SetTexture then
@@ -197,8 +201,8 @@ function KQ_OnShow()
     AtlasKTW.isHorde = isHorde
 
     -- Безопасное обновление чекбоксов
-    UIUtils.safeUpdateCheckbox("KQuestHordeCheckBox", isHorde)
-    UIUtils.safeUpdateCheckbox("KQuestAllianceCheckBox", not isHorde)
+    uiUtils.safeUpdateCheckbox("KQuestHordeCheckBox", isHorde)
+    uiUtils.safeUpdateCheckbox("KQuestAllianceCheckBox", not isHorde)
 
     KQuestSetTextandButtons()
 end
@@ -210,7 +214,7 @@ end
 
 -- Обработчик кнопки опций
 function KQOPTION1_OnClick()
-    local optionFrame = UIUtils.getUIElement("KQuestOptionFrame")
+    local optionFrame = uiUtils.getUIElement("KQuestOptionFrame")
     if optionFrame then
         if optionFrame:IsVisible() then
             HideUIPanel(optionFrame)
@@ -223,16 +227,16 @@ end
 -- Обработчик кнопки истории
 function KQSTORY1_OnClick()
     KQuestHideAL()
-    local insideFrame = UIUtils.getUIElement("KQuestInsideFrame")
+    local insideFrame = uiUtils.getUIElement("KQuestInsideFrame")
     if insideFrame then
         if not insideFrame:IsVisible() then
             ShowUIPanel(insideFrame)
-            KQuestWhichButton = STORY
+            KQuestWhichButton = -1
             KQuestButtonStory_SetText()
-        elseif KQuestWhichButton == STORY then
+        elseif KQuestWhichButton == -1 then
             HideUIPanel(insideFrame)
         else
-            KQuestWhichButton = STORY
+            KQuestWhichButton = -1
             KQuestButtonStory_SetText()
         end
     end
@@ -241,21 +245,21 @@ end
 -- Обработчик чекбокса Альянса
 function Alliance_OnClick()
     AtlasKTW.isHorde = false
-    UIUtils.safeUpdateCheckbox("KQuestAllianceCheckBox", true)
-    UIUtils.safeUpdateCheckbox("KQuestHordeCheckBox", false)
+    uiUtils.safeUpdateCheckbox("KQuestAllianceCheckBox", true)
+    uiUtils.safeUpdateCheckbox("KQuestHordeCheckBox", false)
 
     KQuest_SaveData()
-    AtlasKTW.QUpdateNOW = true
+    variables.NEED_UPDATE = true
 end
 
 -- Обработчик чекбокса Орды
 function Horde_OnClick()
     AtlasKTW.isHorde = true
-    UIUtils.safeUpdateCheckbox("KQuestAllianceCheckBox", false)
-    UIUtils.safeUpdateCheckbox("KQuestHordeCheckBox", true)
+    uiUtils.safeUpdateCheckbox("KQuestAllianceCheckBox", false)
+    uiUtils.safeUpdateCheckbox("KQuestHordeCheckBox", true)
 
     KQuest_SaveData()
-    AtlasKTW.QUpdateNOW = true
+    variables.NEED_UPDATE = true
 end
 
 -- Обработчик общей кнопки
@@ -263,7 +267,7 @@ function KQuestGeneral_OnClick()
     KQClearALL()
     KQuestHideAL()
 
-    local insideFrame = UIUtils.getUIElement("KQuestInsideFrame")
+    local insideFrame = uiUtils.getUIElement("KQuestInsideFrame")
     if insideFrame then
         if insideFrame:IsVisible() then
             HideUIPanel(insideFrame)
@@ -272,23 +276,23 @@ function KQuestGeneral_OnClick()
         end
     end
 
-    local instGeneral = _G["Inst"..AtlasKTW.Instances.."General"]
+    local instGeneral = _G["Inst"..currentInstance.."General"]
     if instGeneral then
-        UIUtils.updateTextElement("KQuestName",
-            ColorUtils.colorText(instGeneral[1][1], Colors.blue))
+        uiUtils.updateTextElement("KQuestName",
+            colorUtils.colorText(instGeneral[1][1], colors.blue))
 
-        local storyText = ColorUtils.colorText(instGeneral[1][2], Colors.white) ..
+        local storyText = colorUtils.colorText(instGeneral[1][2], colors.white) ..
                          "\n \n" .. instGeneral[1][3]
-        UIUtils.updateTextElement("KQuestStory", storyText)
+        uiUtils.updateTextElement("KQuestStory", storyText)
 
         -- Показываем кнопку следующей страницы если доступна
         AQ_NextPageCount = "Boss"
         if instGeneral[2] then
-            local rightButton = UIUtils.getUIElement("KQNextPageButton_Right")
+            local rightButton = uiUtils.getUIElement("KQNextPageButton_Right")
             if rightButton then ShowUIPanel(rightButton) end
 
             AtlasKTW.Q.CurrentPage = 1
-            UIUtils.updateTextElement("KQuestPageCount",
+            uiUtils.updateTextElement("KQuestPageCount",
                 AtlasKTW.Q.CurrentPage.."/"..getn(instGeneral))
         end
     end
@@ -305,11 +309,11 @@ local function kQInsertQuestInformation()
     local questName = nil
 
     if KQuestInstanceData and
-       KQuestInstanceData[AtlasKTW.Instances] and
-       KQuestInstanceData[AtlasKTW.Instances].Quests and
-       KQuestInstanceData[AtlasKTW.Instances].Quests[faction] and
-       KQuestInstanceData[AtlasKTW.Instances].Quests[faction][questID] then
-        questName = KQuestInstanceData[AtlasKTW.Instances].Quests[faction][questID].Title
+       KQuestInstanceData[currentInstance] and
+       KQuestInstanceData[currentInstance].Quests and
+       KQuestInstanceData[currentInstance].Quests[faction] and
+       KQuestInstanceData[currentInstance].Quests[faction][questID] then
+        questName = KQuestInstanceData[currentInstance].Quests[faction][questID].Title
     end
 
     if questName then
@@ -321,14 +325,14 @@ local function kQInsertQuestInformation()
 end
 
 -- Обработчик кликов по кнопкам квестов
-function Quest_OnClick(button)
+function Quest_OnClick()
     if ChatFrameEditBox:IsVisible() and IsShiftKeyDown() then
         kQInsertQuestInformation()
     else
         KQuestHideAL()
-        UIUtils.updateTextElement("KQuestStory", "")
+        uiUtils.updateTextElement("KQuestStory", "")
 
-        local insideFrame = UIUtils.getUIElement("KQuestInsideFrame")
+        local insideFrame = uiUtils.getUIElement("KQuestInsideFrame")
         if insideFrame then
             if not insideFrame:IsVisible() then
                 ShowUIPanel(insideFrame)
@@ -484,8 +488,8 @@ function KQuestFrame_SetInitialPosition()
         side = AtlasKTW.Q.ShownSide
     end
 
-    -- Используем конфигурацию позиций из KQuestConfig
-    local positions = UI.Positions
+    -- Используем конфигурацию позиций из kQuestConfig
+    local positions = ui.Positions
     local position = positions[side] or positions.Right
 
     if position and AtlasFrame then
@@ -578,14 +582,14 @@ function KQuestFrame_CreateUI()
     qcount:SetPoint("TOP", frame, "TOP", 0, -25)
 
     -- Создаем кнопки квестов
-    local questConfig = FRAME_CONFIG.QuestButton
-    questConfig.maxCount = Constants.MAX_QUESTS_PER_INSTANCE
+    local qConfig = FRAME_CONFIG.QuestButton
+    qConfig.maxCount = constants.MAX_QUESTS_PER_INSTANCE
 
     local prevButton = nil
     local prevArrow = nil
     local prevText = nil
 
-    for i = 1, questConfig.maxCount do
+    for i = 1, qConfig.maxCount do
         -- Создаем кнопку
         local button = kQuestUIFactory.createQuestButton(i, frame, prevButton)
         prevButton = button
