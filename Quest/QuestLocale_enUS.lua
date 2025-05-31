@@ -1,12 +1,12 @@
 ---------------
 --- COLOURS ---
 ---------------
-local grey = KQuestConfig.Colors.grey
-local red = KQuestConfig.Colors.red
-local white = KQuestConfig.Colors.white
-local green = KQuestConfig.Colors.green
-local blue = KQuestConfig.Colors.blue
-local yellow = KQuestConfig.Colors.yellow
+local grey = "|cff999999"
+local red = "|cffff0000"
+local white = "|cffFFFFFF"
+local green = "|cff1eff00"
+local blue = "|cff0070dd"
+local yellow = "|cffFFd200"
 
 ---------------
 --- OPTIONS ---

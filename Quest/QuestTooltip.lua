@@ -1,5 +1,5 @@
 -- Create Tooltip
-local tooltip = CreateFrame("GameTooltip", "KQuestTooltip", UIParent, "GameTooltipTemplate")
+local tooltip = CreateFrame("GameTooltip", "KAtlasTooltip", UIParent, "GameTooltipTemplate")
 tooltip:Hide()
 
 -- Register Tooltip

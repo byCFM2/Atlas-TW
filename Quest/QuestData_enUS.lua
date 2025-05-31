@@ -1,19 +1,19 @@
 local _G = getfenv()
-local questConfig = _G.KQuestConfig
 ---------------
 --- COLOURS ---
 ---------------
-local red = questConfig.Colors.red
-local white = questConfig.Colors.white
-local green = questConfig.Colors.green
-local blue = questConfig.Colors.blue
-local yellow = questConfig.Colors.yellow
-local orange = questConfig.Colors.orange
-local purple = questConfig.Colors.purple
+local red = "|cffff0000"
+local white = "|cffFFFFFF"
+local green = "|cff1eff00"
+local blue = "|cff0070dd"
+local yellow = "|cffFFd200"
+local orange = "|cffFF8000"
+local purple = "|cffa335ee"
 
 ----------------------------------------------
 ------------- Quest Instance Data ------------
 ----------------------------------------------
+
 local kQuestInstanceData = {}
 
 --------------- INST1 - The Deadmines ---------------
@@ -3578,6 +3578,15 @@ kQuestInstanceData[10].Quests.Alliance[7] = {
     Note = red.."Mage Only"..white..": Hydrospawn Essence drop from [3] Hydrospawn. Reward: you can use Conjured Crystal Water.",
     Prequest = "No",
     Folgequest = "A Special Kind of Summons",
+    Rewards = {
+        Text = AQDiscription_REWARD..white.."1",
+        {
+            Name = "Tome of Refreshment Ritual",
+            ID = "83002",
+            Color = white,
+            Description = AQITEM_PATTERN,
+        },
+    }
 }
 kQuestInstanceData[10].Quests.Alliance[8] = {
     Title = "8. The Wildshaper",
@@ -6482,7 +6491,10 @@ kQuestInstanceData[25].Quests.Alliance[20] = {
     Location = "Duke Rothlen (Karazhan; "..yellow.."[Karazhan - c]"..white..")",
     Note = "Rothlen Family Brooch next to boss The Unforgiven "..yellow.."[4]"..white.." in the chest.\nQuest chain starts with epic item random drop 'Scribbled Cooking Notes' "..yellow.."[Karazhan]"..white..".",
     Prequest = "Scribbled Cooking Notes "..yellow.."[Karazhan]"..white.." -> Lost and Found "..yellow.."[Karazhan]"..white.."", -- 40998, 40999",
-    Folgequest = "The Secret Recipe ("..yellow.."[Karazhan]"..white..")" -- 41001",
+    Folgequest = "The Secret Recipe ("..yellow.."[Karazhan]"..white..")",
+    Rewards = {
+        Text = AQNoReward,
+    }
 }
 kQuestInstanceData[25].Quests.Alliance[21] = {
     Title = "21. The Key to Karazhan VII",
@@ -6492,7 +6504,10 @@ kQuestInstanceData[25].Quests.Alliance[21] = {
     Location = "Dolvan Bracewind (Dustwallow Marsh - Westhaven Hollow; "..yellow.."[71.1,73.2]"..white..")",
     Note = "Second Feather of Medivh on the ground in the place where Elder Farwhisper (Lunar Festival) "..yellow.."[5]"..white.." is.\nFirst Feather of Medivh "..yellow.."[Undercity]"..white.." behind the entrance throne.\nThird Feather of Medivh "..yellow.."[Alterac Mountain]"..white.." on the end of first(western) cliff "..yellow.."[30.8,87.4]"..white..".\nFourth Feather of Medivh "..yellow.."[Hyjal]"..white.." on the end of the cliff "..yellow.."[31.8,70.5]"..white..".",
     Prequest = "The Key to Karazhan VI",
-    Folgequest = "The Key to Karazhan VIII ("..yellow.."Dire Maul West"..white..")" -- 40827",
+    Folgequest = "The Key to Karazhan VIII ("..yellow.."Dire Maul West"..white..")",
+    Rewards = {
+        Text = AQNoReward,
+    }
 }
 kQuestInstanceData[25].Quests.Horde[1] = kQuestInstanceData[25].Quests.Alliance[1]
 kQuestInstanceData[25].Quests.Horde[2] = kQuestInstanceData[25].Quests.Alliance[2]
@@ -6600,7 +6615,10 @@ kQuestInstanceData[25].Quests.Horde[21] = {
     Location = "Duke Rothlen (Karazhan; "..yellow.."[Karazhan - c]"..white..")",
     Note = "Rothlen Family Brooch next to boss The Unforgiven "..yellow.."[4]"..white.." in the chest.\nQuest chain starts with epic item random drop 'Scribbled Cooking Notes' "..yellow.."[Karazhan]"..white..".",
     Prequest = "Scribbled Cooking Notes "..yellow.."[Karazhan]"..white.." -> Lost and Found "..yellow.."[Karazhan]"..white.."", -- 40998, 40999",
-    Folgequest = "The Secret Recipe ("..yellow.."[Karazhan]"..white..")" -- 41001",
+    Folgequest = "The Secret Recipe ("..yellow.."[Karazhan]"..white..")",
+    Rewards = {
+        Text = AQNoReward,
+    }
 }
 kQuestInstanceData[25].Quests.Horde[22] = {
     Title = "22. The Key to Karazhan VII",
@@ -6610,7 +6628,10 @@ kQuestInstanceData[25].Quests.Horde[22] = {
     Location = "Dolvan Bracewind (Dustwallow Marsh - Westhaven Hollow; "..yellow.."[71.1,73.2]"..white..")",
     Note = "Second Feather of Medivh on the ground in the place where Elder Farwhisper (Lunar Festival) "..yellow.."[5]"..white.." is.\nFirst Feather of Medivh "..yellow.."[Undercity]"..white.." behind the entrance throne.\nThird Feather of Medivh "..yellow.."[Alterac Mountain]"..white.." on the end of first(western) cliff "..yellow.."[30.8,87.4]"..white..".\nFourth Feather of Medivh "..yellow.."[Hyjal]"..white.." on the end of the cliff "..yellow.."[31.8,70.5]"..white..".",
     Prequest = "The Key to Karazhan VI",
-    Folgequest = "The Key to Karazhan VIII ("..yellow.."Dire Maul West"..white..")" -- 40827",
+    Folgequest = "The Key to Karazhan VIII ("..yellow.."Dire Maul West"..white..")",
+    Rewards = {
+        Text = AQNoReward,
+    }
 }
 
 --------------- INST26 - Ruins of Ahn'Qiraj ---------------
@@ -6943,7 +6964,7 @@ kQuestInstanceData[28].Quests.Alliance[3] = {
     Prequest = "Into the Depths",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = AQDiscription_REWARD..white.."1",
         {
             Name = "Hakkari Urn",
             ID = "10773",
@@ -6961,6 +6982,9 @@ kQuestInstanceData[28].Quests.Alliance[4] = {
     Note = "The Prequest 'Muigin and Larion' starts at Muigin (Un'Goro Crater - Marshal's Refuge; "..yellow.."42,9"..white.."). You get the Haze from Deep Lurkers, Murk Worms or Oozes in the Temple.",
     Prequest = "Muigin and Larion -> A Visit to Gregan",
     Folgequest = "No",
+    Rewards = {
+        Text = AQNoReward,
+    }
 }
 kQuestInstanceData[28].Quests.Alliance[5] = {
     Title = "5. The God Hakkar",
@@ -7762,7 +7786,10 @@ kQuestInstanceData[31] = {
         ["Page2"] = "In time, the Atal'ai priests discovered that Hakkar's physical form could only be summoned within the ancient capital of the Gurubashi Empire, Zul'Gurub. Unfortunately, the priests have met with recent success in their quest to call forth Hakkar - reports confirm the presence of the dreaded Soulflayer in the heart of the Gurubashi ruins.\n\nIn order to quell the blood god, the trolls of the land banded together and sent a contingent of High Priests into the ancient city. Each priest was a powerful champion of the Primal Gods - Bat, Panther, Tiger, Spider, and Snake - but despite their best efforts, they fell under the sway of Hakkar. Now the champions and their Primal God aspects feed the awesome power of the Soulflayer. Any adventurers brave enough to venture into the foreboding ruins must overcome the High Priests if they are to have any hope of confronting the mighty blood god.",
         ["MaxPages"] = "2",
     },
-    Caption = "Zul'Gurub",
+    Caption = {
+        "Zul'Gurub",
+        "Zul'Gurub (page 2)",
+    },
     QAA = "4 Quests",
     QAH = "4 Quests",
     Quests = {
@@ -10734,6 +10761,4 @@ kQuestInstanceData[64].Quests.Horde[6] = kQuestInstanceData[64].Quests.Alliance[
 kQuestInstanceData[64].Quests.Horde[7] = kQuestInstanceData[64].Quests.Alliance[7]
 kQuestInstanceData[64].Quests.Horde[8] = kQuestInstanceData[64].Quests.Alliance[8]
 kQuestInstanceData[64].Quests.Horde[9] = kQuestInstanceData[64].Quests.Alliance[9]
-
--- Глобальные ссылки для использования базы данных
 _G.KQuestInstanceData = kQuestInstanceData
