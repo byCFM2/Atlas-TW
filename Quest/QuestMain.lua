@@ -954,14 +954,12 @@ function KQuestSetTextandButtons()
 	if kQuestInstChanged ~= instanceId then
 		HideUIPanel(KQuestInsideFrame)
 	end
-	-- Enable/disable general button based on instance info availability
-	AQGeneralButton[_G["Inst"..instanceId.."General"] and "Enable" or "Disable"](AQGeneralButton)
 	-- Update current instance
 	kQuestInstChanged = instanceId
 	-- Set quest count text
 	local questCountKey = isHorde and "QAH" or "QAA"
 	local questCount = kQuestInstanceData[instanceId] and kQuestInstanceData[instanceId][questCountKey]
-	AtlasQuestAnzahl:SetText(questCount or "")
+	KQuestCounter:SetText(questCount or "")
 	-- Process quests
 	for b = 1, kQMAXQUESTS do
 		-- Define keys for current faction

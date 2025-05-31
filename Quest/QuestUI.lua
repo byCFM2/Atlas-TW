@@ -59,31 +59,6 @@ local function Horde_OnClick()
     KQuest_SaveData()
     AtlasKTW.QUpdateNOW = true
 end
--- General button handler
-local function AQGeneral_OnClick()
-	-- first clear display
-	--KQClearALL()
-    DEFAULT_CHAT_FRAME:AddMessage("|cff00FF00 AQGeneral_OnClick run!")
-	KQuestHideAL()
-	if KQuestInsideFrame:IsVisible() then
-		HideUIPanel(KQuestInsideFrame)
-	else
-		ShowUIPanel(KQuestInsideFrame)
-	end
-    local instGeneral = _G["Inst"..AtlasKTW.Instances.."General"]
-    if instGeneral ~= nil then
-        KQuestName:SetText(BLUE..instGeneral[1][1])
-        KQuestStory:SetText(WHITE..instGeneral[1][2].."\n \n"..instGeneral[1][3])
-        -- Show Next side button if next site is avaiable
-        AQ_NextPageCount = "Boss"
-        if instGeneral[2] ~= nil then
-            ShowUIPanel(KQNextPageButton_Right)
-            AtlasKTW.Q.CurrentPage = 1
-            -- shows total amount of pages
-            KQuestPageCount:SetText(AtlasKTW.Q.CurrentPage.."/"..getn(instGeneral))
-        end
-    end
-end
 
 -----------------------------------------------------------------------------
 -- Insert Quest Information into the chat box
@@ -111,7 +86,7 @@ end
 
 -- Quest buttons handler
 -- Handles click events on quest buttons in the Atlas interface
-function Quest_OnClick(button)
+local function Quest_OnClick()
 	-- Check if shift-click while chat edit box is open (for quest linking)
 	if ChatFrameEditBox:IsVisible() and IsShiftKeyDown() then
 		kQInsertQuestInformation()
@@ -275,25 +250,11 @@ function CreateKQuestFrame()
     CreateFactionTexture("Alliance")
     CreateFactionTexture("Horde")
 
-    -- Create general button
-    local generalButton = CreateFrame("Button", "AQGeneralButton", frame)
-    generalButton:SetWidth(165)
-    generalButton:SetHeight(20)
-    generalButton:SetPoint("TOPLEFT", frame, "TOPLEFT", 15, -30)
-    generalButton:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
-    generalButton:SetText("G")
-    generalButton:SetScript("OnClick", function()
-        AQGeneral_OnClick()
-    end)
-    generalButton:SetScript("OnShow", function()
-        this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-    end)
-
     -- Create quest count text field
-    local anzahl = frame:CreateFontString("AtlasQuestAnzahl", "ARTWORK", "GameFontNormal")
-    anzahl:SetWidth(60)
-    anzahl:SetHeight(40)
-    anzahl:SetPoint("TOP", frame, "TOP", 0, -25)
+    local countQuest = frame:CreateFontString("KQuestCounter", "ARTWORK", "GameFontNormal")
+    countQuest:SetWidth(60)
+    countQuest:SetHeight(40)
+    countQuest:SetPoint("TOP", frame, "TOP", 0, -25)
     -- Create quest buttons, arrows and texts
     local prevButton = nil
     local prevArrow = nil
