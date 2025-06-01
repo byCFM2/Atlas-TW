@@ -3,18 +3,27 @@
 local _G = getfenv()
 
 -- Main container frame
-local KQuestInsideFrame = CreateFrame("Frame", "KQuestInsideFrame", AtlasFrame)
-KQuestInsideFrame:SetWidth(510)
-KQuestInsideFrame:SetHeight(510)
-KQuestInsideFrame:SetPoint("TOPLEFT", 18, -84)
-KQuestInsideFrame:EnableMouse(true)
-KQuestInsideFrame:SetToplevel(true)
-KQuestInsideFrame:Show()
+local frameMain = CreateFrame("Frame", "KQuestInsideFrame", AtlasFrame)
+frameMain:SetWidth(510)
+frameMain:SetHeight(510)
+frameMain:SetPoint("TOPLEFT", 18, -84)
+frameMain:EnableMouse(true)
+frameMain:SetToplevel(true)
+frameMain:Show()
+
+-- Helper function to set frame level +1 on show
+local function setFrameLevelOnShow()
+    this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
+end
+-- Helper function to set frame level +2 on show
+local function setFrameLevel2OnShow()
+    this:SetFrameLevel(this:GetParent():GetFrameLevel() + 2)
+end
 
 -- Helper function to create quest item frames
 local function CreateQuestItemFrame(frameNumber, xOffset, yOffset)
     local frameName = "KQuestItemframe" .. frameNumber
-    local frame = CreateFrame("Button", frameName, KQuestInsideFrame)
+    local frame = CreateFrame("Button", frameName, frameMain)
     frame:SetWidth(236)
     frame:SetHeight(30)
     frame:SetPoint("BOTTOMLEFT", xOffset, yOffset)
@@ -52,9 +61,7 @@ local function CreateQuestItemFrame(frameNumber, xOffset, yOffset)
     frame:SetScript("OnClick", function()
         KQuestItem_OnClick(arg1)
     end)
-    frame:SetScript("OnShow", function()
-        this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-    end)
+    frame:SetScript("OnShow", setFrameLevelOnShow)
 
     return frame
 end
@@ -67,19 +74,17 @@ CreateQuestItemFrame(5, 20, 20)   -- Left column, bottom
 CreateQuestItemFrame(6, 266, 20)  -- Right column, bottom
 
 -- Close button
-local closeButton = CreateFrame("Button", "", KQuestInsideFrame, "UIPanelCloseButton")
+local closeButton = CreateFrame("Button", "", frameMain, "UIPanelCloseButton")
 closeButton:SetWidth(30)
 closeButton:SetHeight(30)
 closeButton:SetPoint("TOPRIGHT", -5, -3)
 closeButton:SetScript("OnClick", function()
     KQuestCLOSE2_OnClick()
 end)
-closeButton:SetScript("OnShow", function()
-    this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-end)
+closeButton:SetScript("OnShow", setFrameLevelOnShow)
 
 -- Finished quest checkbox
-local finishedQuestCheckbox = CreateFrame("CheckButton", "KQuestFinished", KQuestInsideFrame, "OptionsCheckButtonTemplate")
+local finishedQuestCheckbox = CreateFrame("CheckButton", "KQuestFinished", frameMain, "OptionsCheckButtonTemplate")
 finishedQuestCheckbox:SetWidth(25)
 finishedQuestCheckbox:SetHeight(25)
 finishedQuestCheckbox:SetPoint("TOP", 150, -43)
@@ -88,12 +93,10 @@ finishedQuestCheckbox:SetHitRectInsets(0, 0, 0, 0)
 finishedQuestCheckbox:SetScript("OnClick", function()
     KQFinishedQuest_OnClick()
 end)
-finishedQuestCheckbox:SetScript("OnShow", function()
-    this:SetFrameLevel(this:GetParent():GetFrameLevel() + 2)
-end)
+finishedQuestCheckbox:SetScript("OnShow", setFrameLevel2OnShow)
 
 -- Navigation buttons
-local nextPageButtonRight = CreateFrame("Button", "KQNextPageButton_Right", KQuestInsideFrame)
+local nextPageButtonRight = CreateFrame("Button", "KQNextPageButton_Right", frameMain)
 nextPageButtonRight:SetWidth(40)
 nextPageButtonRight:SetHeight(40)
 nextPageButtonRight:SetPoint("BOTTOM", 45, 10)
@@ -104,11 +107,9 @@ nextPageButtonRight:Hide()
 nextPageButtonRight:SetScript("OnClick", function()
     KQNextPageR_OnClick()
 end)
-nextPageButtonRight:SetScript("OnShow", function() 
-    this:SetFrameLevel(this:GetParent():GetFrameLevel() + 2)
-end)
+nextPageButtonRight:SetScript("OnShow", setFrameLevel2OnShow)
 
-local nextPageButtonLeft = CreateFrame("Button", "KQNextPageButton_Left", KQuestInsideFrame)
+local nextPageButtonLeft = CreateFrame("Button", "KQNextPageButton_Left", frameMain)
 nextPageButtonLeft:SetWidth(40)
 nextPageButtonLeft:SetHeight(40)
 nextPageButtonLeft:SetPoint("BOTTOM", -45, 10)
@@ -119,71 +120,69 @@ nextPageButtonLeft:Hide()
 nextPageButtonLeft:SetScript("OnClick", function()
     KQNextPageL_OnClick()
 end)
-nextPageButtonLeft:SetScript("OnShow", function() 
-    this:SetFrameLevel(this:GetParent():GetFrameLevel() + 2)
-end)
+nextPageButtonLeft:SetScript("OnShow", setFrameLevel2OnShow)
 
 -- Background texture
-local background = KQuestInsideFrame:CreateTexture(nil, "BACKGROUND")
-background:SetAllPoints(KQuestInsideFrame)
+local background = frameMain:CreateTexture(nil, "BACKGROUND")
+background:SetAllPoints(frameMain)
 background:SetTexture(0, 0, 0, 0.75)
 
 -- Font strings for quest information
-local questName = KQuestInsideFrame:CreateFontString("KQuestName", "BACKGROUND", "GameFontNormal")
+local questName = frameMain:CreateFontString("KQuestName", "BACKGROUND", "GameFontNormal")
 questName:SetWidth(400)
 questName:SetHeight(12)
 questName:SetPoint("TOP", 0, -20)
 
-local questLevelText = KQuestInsideFrame:CreateFontString("KQuestLevel", "BACKGROUND", "GameFontNormal")
+local questLevelText = frameMain:CreateFontString("KQuestLevel", "BACKGROUND", "GameFontNormal")
 questLevelText:SetWidth(400)
 questLevelText:SetHeight(12)
 questLevelText:SetPoint("TOPLEFT", 20, -50)
 questLevelText:SetJustifyH("LEFT")
 questLevelText:SetJustifyV("TOP")
 
-local questAttainLevelText = KQuestInsideFrame:CreateFontString("KQuestAttainLevel", "BACKGROUND", "GameFontNormal")
+local questAttainLevelText = frameMain:CreateFontString("KQuestAttainLevel", "BACKGROUND", "GameFontNormal")
 questAttainLevelText:SetWidth(400)
 questAttainLevelText:SetHeight(12)
 questAttainLevelText:SetPoint("TOPLEFT", 140, -50)
 questAttainLevelText:SetJustifyH("LEFT")
 questAttainLevelText:SetJustifyV("TOP")
 
-local prerequisiteText = KQuestInsideFrame:CreateFontString("KQuestDetails", "BACKGROUND", "GameFontNormal")
+local prerequisiteText = frameMain:CreateFontString("KQuestDetails", "BACKGROUND", "GameFontNormal")
 prerequisiteText:SetWidth(450)
 prerequisiteText:SetHeight(500)
 prerequisiteText:SetPoint("TOPLEFT", 20, -75)
 prerequisiteText:SetJustifyH("LEFT")
 prerequisiteText:SetJustifyV("TOP")
 
-local storyText = KQuestInsideFrame:CreateFontString("KQuestStory", "BACKGROUND", "GameFontNormal")
+local storyText = frameMain:CreateFontString("KQuestStory", "BACKGROUND", "GameFontNormal")
 storyText:SetWidth(410)
 storyText:SetHeight(450)
 storyText:SetPoint("TOPLEFT", 50, -50)
 storyText:SetJustifyH("LEFT")
 storyText:SetJustifyV("TOP")
 
-local rewardsText = KQuestInsideFrame:CreateFontString("KQuestReward", "BACKGROUND", "GameFontNormal")
+local rewardsText = frameMain:CreateFontString("KQuestReward", "BACKGROUND", "GameFontNormal")
 rewardsText:SetWidth(400)
 rewardsText:SetHeight(12)
 rewardsText:SetPoint("BOTTOMLEFT", 20, 155)
 rewardsText:SetJustifyH("LEFT")
 rewardsText:SetJustifyV("TOP")
 
-local finishedQuestText = KQuestInsideFrame:CreateFontString("KQuestFinishedText", "BACKGROUND", "GameFontNormal")
+local finishedQuestText = frameMain:CreateFontString("KQuestFinishedText", "BACKGROUND", "GameFontNormal")
 finishedQuestText:SetWidth(150)
 finishedQuestText:SetHeight(12)
 finishedQuestText:SetPoint("TOPRIGHT", -10, -50)
 finishedQuestText:SetJustifyH("LEFT")
 finishedQuestText:SetJustifyV("TOP")
 
-local pageCountText = KQuestInsideFrame:CreateFontString("KQuestPageCount", "BACKGROUND", "GameFontNormal")
+local pageCountText = frameMain:CreateFontString("KQuestPageCount", "BACKGROUND", "GameFontNormal")
 pageCountText:SetWidth(50)
 pageCountText:SetHeight(20)
 pageCountText:SetPoint("BOTTOM", 0, 18)
 pageCountText:SetJustifyV("TOP")
 
 -- Event handler
-KQuestInsideFrame:SetScript("OnEvent", function()
+frameMain:SetScript("OnEvent", function()
     AQ_OnEvent(event)
 end)
 

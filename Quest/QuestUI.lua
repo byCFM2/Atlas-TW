@@ -2,36 +2,35 @@ local variables = AtlasKTW
 -----------------------------------------------------------------------------
 -- Button handlers
 -----------------------------------------------------------------------------
+
 -----------------------------------------------------------------------------
 -- Automatically show Horde or Alliance quests 
 -- based on player's faction when AtlasQuest is opened.
 -----------------------------------------------------------------------------
-local function KQ_OnShow()
-	if UnitFactionGroup("player") == "Horde" then
-		variables.isHorde = true
-		KQuestHordeCheckBox:SetChecked(variables.isHorde)
-		KQuestAllianceCheckBox:SetChecked(not variables.isHorde)
-	else
-		variables.isHorde = false
-		KQuestHordeCheckBox:SetChecked(variables.isHorde)
-		KQuestAllianceCheckBox:SetChecked(not variables.isHorde)
-	end
-	KQuestSetTextandButtons()
+local function kQuest_OnShow()
+    local isHorde = UnitFactionGroup("player") == "Horde"
+    variables.isHorde = isHorde
+    KQuestHordeCheckBox:SetChecked(isHorde)
+    KQuestAllianceCheckBox:SetChecked(not isHorde)
+    KQuestSetTextandButtons()
 end
+
 -- Close button
-local function KQCLOSE1_OnClick()
+local function kQuestClose1_OnClick()
     HideUIPanel(KQuestFrame)
 end
+
 -- Options button
-local function KQOPTION1_OnClick()
+local function kQuestOption1_OnClick()
     if KQuestOptionFrame:IsVisible() then
         HideUIPanel(KQuestOptionFrame)
     else
         KQuestOptionFrame:Show()
     end
 end
+
 -- Story button
-local function KQSTORY1_OnClick()
+local function kQuestStory1_OnClick()
 	KQuestHideAL()
 	if KQuestInsideFrame:IsVisible() == nil then
 		ShowUIPanel(KQuestInsideFrame)
@@ -44,76 +43,75 @@ local function KQSTORY1_OnClick()
 		KQuestButtonStory_SetText()
 	end
 end
+
 -- Alliance handler
-local function Alliance_OnClick()
+local function kQuestAlliance_OnClick()
 	variables.isHorde = false
-    KQuestAllianceCheckBox:SetChecked(not variables.isHorde)
-    KQuestHordeCheckBox:SetChecked(variables.isHorde)
+    KQuestAllianceCheckBox:SetChecked(true)
+    KQuestHordeCheckBox:SetChecked(false)
     KQuest_SaveData()
-    variables.QUpdateNOW = true
+    variables.QUpdateNow = true  --TODO run update instantly from functions and purge function OnUpdate, without use global var
+
 end
+
 -- Horde handler
-local function Horde_OnClick()
+local function kQuestHorde_OnClick()
 	variables.isHorde = true
-    KQuestAllianceCheckBox:SetChecked(not variables.isHorde)
-    KQuestHordeCheckBox:SetChecked(variables.isHorde)
+    KQuestAllianceCheckBox:SetChecked(false)
+    KQuestHordeCheckBox:SetChecked(true)
     KQuest_SaveData()
-    variables.QUpdateNOW = true
+    variables.QUpdateNow = true
 end
 
 -----------------------------------------------------------------------------
 -- Insert Quest Information into the chat box
 -----------------------------------------------------------------------------
 local function kQInsertQuestInformation()
-	-- Get current quest ID from global variable
-	local questID = variables.QCurrentQuest
+    local questID = variables.QCurrentQuest
     local instanceID = variables.QCurrentInstance
-	local faction = variables.isHorde and "Horde" or "Alliance"
-	local questName = nil
-	if KQuestInstanceData and 
-	   KQuestInstanceData[instanceID] and 
-	   KQuestInstanceData[instanceID].Quests and
-	   KQuestInstanceData[instanceID].Quests[faction] and
-	   KQuestInstanceData[instanceID].Quests[faction][questID] then
-		questName = KQuestInstanceData[instanceID].Quests[faction][questID].Title
-	end
-	-- Insert formatted quest name into chat box if found
-	if questName then
-		-- Remove level prefix if present (pattern like "60. " at the beginning)
-		local levelPattern = "^%d+%. "
-		questName = string.gsub(questName, levelPattern, "")
-		ChatFrameEditBox:Insert("["..questName.."]")
-	end
+    local faction = variables.isHorde and "Horde" or "Alliance"
+
+    local questData = KQuestInstanceData and
+                      KQuestInstanceData[instanceID] and
+                      KQuestInstanceData[instanceID].Quests and
+                      KQuestInstanceData[instanceID].Quests[faction] and
+                      KQuestInstanceData[instanceID].Quests[faction][questID]
+
+    if questData and questData.Title then
+        local questName = questData.Title
+        -- Remove level prefix if present (pattern like "60. " at the beginning)
+        local levelPattern = "^%d+%. "
+        questName = string.gsub(questName, levelPattern, "")
+        ChatFrameEditBox:Insert("["..questName.."]")   --TODO support pfQuest links
+    end
 end
 
 -- Quest buttons handler
 -- Handles click events on quest buttons in the Atlas interface
-local function Quest_OnClick()
-	-- Check if shift-click while chat edit box is open (for quest linking)
-	if ChatFrameEditBox:IsVisible() and IsShiftKeyDown() then
-		kQInsertQuestInformation()
-	else
-		-- Hide the AtlasLoot frame if it's visible
-		KQuestHideAL()
-		-- Clear the story text
-		KQuestStory:SetText("")
-		-- Toggle quest details frame visibility
-		if not KQuestInsideFrame:IsVisible() then
-			-- Show quest frame if not visible
-			ShowUIPanel(KQuestInsideFrame)
-			variables.QCurrentButton = variables.QCurrentQuest
-			KQButton_SetText()
-		elseif variables.QCurrentButton == variables.QCurrentQuest then
-			-- Hide quest frame if showing the same quest
-			HideUIPanel(KQuestInsideFrame)
-			variables.QCurrentButton = 0
-		else
-			-- Update quest frame to show different quest
-			variables.QCurrentButton = variables.QCurrentQuest
-			KQButton_SetText()
-		end
-	end
+local function kQuest_OnClick()
+    -- Check if shift-click while chat edit box is open (for quest linking)
+    if ChatFrameEditBox:IsVisible() and IsShiftKeyDown() then
+        kQInsertQuestInformation()
+    else
+        -- Hide the AtlasLoot frame if it's visible
+        KQuestHideAL()
+        -- Clear the story text
+        KQuestStory:SetText("")
+
+        -- Toggle quest details frame visibility
+        if KQuestInsideFrame:IsVisible() and variables.QCurrentButton == variables.QCurrentQuest then
+            -- Hide quest frame if showing the same quest
+            HideUIPanel(KQuestInsideFrame)
+            variables.QCurrentButton = nil
+        else
+            -- Show quest frame if not visible, or update to show different quest
+            ShowUIPanel(KQuestInsideFrame)
+            variables.QCurrentButton = variables.QCurrentQuest
+            KQButton_SetText()
+        end
+    end
 end
+
 -----------------------------------------------------------------------------
 -- Quest Frame creation
 -----------------------------------------------------------------------------
@@ -133,23 +131,29 @@ function CreateKQuestFrame()
         edgeSize = 32,
         insets = { left = 5, right = 5, top = 5, bottom = 5 }
     })
+
     -- Register events
     frame:RegisterEvent("VARIABLES_LOADED")
     frame:RegisterEvent("PLAYER_ENTERING_WORLD")
     -- Set event handler
     frame:SetScript("OnEvent", KQuest_OnEvent)
-    frame:SetScript("OnShow", KQ_OnShow)
-    frame:SetScript("OnUpdate", KQ_OnUpdate)
+    frame:SetScript("OnShow", kQuest_OnShow)
+    frame:SetScript("OnUpdate", KQuest_OnUpdate)
+
+    -- Helper function to set frame level on show
+    local function setFrameLevelOnShow()
+        this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
+    end
+
     -- Create close button
     local closeButton = CreateFrame("Button", "", frame, "UIPanelCloseButton")
     closeButton:SetWidth(27)
     closeButton:SetHeight(27)
     closeButton:SetPoint("TOPLEFT", frame, "TOPLEFT", 10, -10)
     closeButton:SetText("X")
-    closeButton:SetScript("OnClick", KQCLOSE1_OnClick)
-    closeButton:SetScript("OnShow", function()
-        this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-    end)
+    closeButton:SetScript("OnClick", kQuestClose1_OnClick)
+    closeButton:SetScript("OnShow", setFrameLevelOnShow)
+
     -- Function to create a button
     local function CreateButton(name, width, height, point, relativePoint, relativeTo, xOffset, yOffset, text, onClick)
         local button = CreateFrame("Button", name, frame, "OptionsButtonTemplate")
@@ -158,15 +162,15 @@ function CreateKQuestFrame()
         button:SetPoint(point, relativeTo or frame, relativePoint or point, xOffset, yOffset)
         button:SetText(text)
         button:SetScript("OnClick", onClick)
-        button:SetScript("OnShow", function()
-            this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-        end)
+        button:SetScript("OnShow", setFrameLevelOnShow)
         return button
     end
+
     -- Create options button
-    CreateButton("OPTIONbutton", 80, 20, "BOTTOMRIGHT", nil, nil, -20, 15, AQOptionB, KQOPTION1_OnClick)
+    CreateButton("OPTIONbutton", 80, 20, "BOTTOMRIGHT", nil, nil, -20, 15, AQOptionB, kQuestOption1_OnClick)
     -- Create story button
-    CreateButton("STORYbutton", 70, 20, "TOP", nil, nil, 0, -13, AQStoryB, KQSTORY1_OnClick)
+    CreateButton("STORYbutton", 70, 20, "TOP", nil, nil, 0, -13, AQStoryB, kQuestStory1_OnClick)
+
     -- Function to create a checkbox
     local function CreateCheckbox(name, point, relativePoint, relativeTo, xOffset, yOffset, onClick)
         local checkbox = CreateFrame("CheckButton", name, frame, "OptionsCheckButtonTemplate")
@@ -176,12 +180,11 @@ function CreateKQuestFrame()
         checkbox:SetChecked(false)
         checkbox:SetHitRectInsets(0, 0, 0, 0)
         checkbox:SetScript("OnClick", onClick)
-        checkbox:SetScript("OnShow", function()
-            this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-        end)
+        checkbox:SetScript("OnShow", setFrameLevelOnShow)
         return checkbox
     end
-    -- Function to create an fraction texture
+
+    -- Function to create a faction texture
     local function CreateFactionTexture(faction)
         local texture = frame:CreateTexture("KQuest"..faction.."Texture", "OVERLAY")
         texture:SetWidth(50)
@@ -194,6 +197,7 @@ function CreateKQuestFrame()
         texture:SetTexture("Interface\\TargetingFrame\\UI-PVP-"..faction)
         return texture
     end
+
     -- Function to create a quest button
     local function CreateQuestButton(index, relativeTo, yOffset)
         local button = CreateFrame("Button", "KQuestButton"..index, frame)
@@ -205,13 +209,12 @@ function CreateKQuestFrame()
         button:SetText(index)
         button:SetScript("OnClick", function()
             variables.QCurrentQuest = index
-            Quest_OnClick()
+            kQuest_OnClick()
         end)
-        button:SetScript("OnShow", function()
-            this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-        end)
+        button:SetScript("OnShow", setFrameLevelOnShow)
         return button
     end
+
     -- Function to create an arrow
     local function CreateArrow(index, relativeTo, yOffset)
         local arrow = frame:CreateTexture("KQuestlineArrow_"..index, "OVERLAY")
@@ -222,6 +225,7 @@ function CreateKQuestFrame()
         arrow:SetTexture("Interface\\Glues\\Login\\UI-BackArrow")
         return arrow
     end
+
     -- Function to create button text
     local function CreateButtonText(index, relativeTo, yOffset)
         local text = frame:CreateFontString("KQuestButtonText"..index, "OVERLAY", "GameFontNormalSmall")
@@ -235,9 +239,9 @@ function CreateKQuestFrame()
     end
 
     -- Create Alliance and Horde checkboxes
-    local allianceCheckbox = CreateCheckbox("KQuestAllianceCheckBox", "TOPLEFT", nil, nil, 12, -30, Alliance_OnClick)
+    local allianceCheckbox = CreateCheckbox("KQuestAllianceCheckBox", "TOPLEFT", nil, nil, 12, -30, kQuestAlliance_OnClick)
     allianceCheckbox:SetChecked(true)
-    CreateCheckbox("KQuestHordeCheckBox", "TOPRIGHT", nil, nil, -12, -30, Horde_OnClick)
+    CreateCheckbox("KQuestHordeCheckBox", "TOPRIGHT", nil, nil, -12, -30, kQuestHorde_OnClick)
 
     -- Create Alliance and Horde textures
     CreateFactionTexture("Alliance")

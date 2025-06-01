@@ -188,7 +188,7 @@ end
 -----------------------------------------------------------------------------
 local function kQuestFinishedSetChecked()
 	local questKey = "KQFinishedQuest_Inst"..variables.QCurrentInstance.."Quest"..variables.QCurrentQuest
-	questKey = questKey..(variables.isHorde and "HORDE" or nil)
+	questKey = questKey..(variables.isHorde and "HORDE" or "")
 	KQuestFinished:SetChecked(variables.Q[questKey] == 1)
 end
 
@@ -576,7 +576,7 @@ end
 function KQFinishedQuest_OnClick()
     -- Build the quest key based on faction
     local questKey = "KQFinishedQuest_Inst"..variables.QCurrentInstance.."Quest"..variables.QCurrentQuest
-    questKey = questKey..(variables.isHorde and "HORDE" or nil)
+    questKey = questKey..(variables.isHorde and "HORDE" or "")
     -- Update quest completion status
     variables.Q[questKey] = KQuestFinished:GetChecked() and 1 or nil
     -- Save to player options
@@ -584,6 +584,28 @@ function KQFinishedQuest_OnClick()
     -- Update UI
     KQuestSetTextandButtons()
     KQButton_SetText()
+end
+
+-----------------------------------------------------------------------------
+-- Loads the saved variables
+-----------------------------------------------------------------------------
+local function kQuest_LoadData()
+	variables.QCurrentSide = AtlasTWOptions["QuestShownSide"]
+	variables.QWithAtlas = AtlasTWOptions["QuestWithAtlas"]
+	variables.QColourCheck = AtlasTWOptions["QuestColourCheck"]
+	KQuest_Options = KQuest_Options or {}
+	KQuest_Options[playerName] = KQuest_Options[playerName] or {}
+	for i=1, variables.QMAXINSTANCES do
+		for b=1, variables.QMAXQUESTS do
+			variables.Q["KQFinishedQuest_Inst"..i.."Quest"..b] = KQuest_Options[playerName]["KQFinishedQuest_Inst"..i.."Quest"..b]
+			variables.Q["KQFinishedQuest_Inst"..i.."Quest"..b.."HORDE"] = KQuest_Options[playerName]["KQFinishedQuest_Inst"..i.."Quest"..b.."HORDE"]
+		end
+	end
+	variables.QCheckQuestlog = AtlasTWOptions["QuestCheckQuestlog"]
+	variables.QAutoQuery = AtlasTWOptions["QuestAutoQuery"]
+	variables.QQuerySpam = AtlasTWOptions["QuestQuerySpam"]
+	variables.QCompareTooltip = AtlasTWOptions["QuestCompareTooltip"]
+    variables.QLoaded = true
 end
 
 --******************************************
@@ -598,7 +620,7 @@ local function kQuest_Initialize()
 		return
 	end
 	if type(AtlasTWOptions) == "table" then
-		KQuest_LoadData()
+		kQuest_LoadData()
 	else
 		DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Atlas-TW Quest:|r|cff00ffffVariables not loaded!|r")
 	end
@@ -622,28 +644,6 @@ function KQuest_OnEvent()
 end
 
 -----------------------------------------------------------------------------
--- Loads the saved variables
------------------------------------------------------------------------------
-function KQuest_LoadData()
-	variables.QCurrentSide = AtlasTWOptions["QuestShownSide"]
-	variables.QWithAtlas = AtlasTWOptions["QuestWithAtlas"]
-	variables.QColourCheck = AtlasTWOptions["QuestColourCheck"]
-	KQuest_Options = KQuest_Options or {}
-	KQuest_Options[playerName] = KQuest_Options[playerName] or {}
-	for i=1, variables.QMAXINSTANCES do
-		for b=1, variables.QMAXQUESTS do
-			variables.Q["KQFinishedQuest_Inst"..i.."Quest"..b] = KQuest_Options[playerName]["KQFinishedQuest_Inst"..i.."Quest"..b]
-			variables.Q["KQFinishedQuest_Inst"..i.."Quest"..b.."HORDE"] = KQuest_Options[playerName]["KQFinishedQuest_Inst"..i.."Quest"..b.."HORDE"]
-		end
-	end
-	variables.QCheckQuestlog = AtlasTWOptions["QuestCheckQuestlog"]
-	variables.QAutoQuery = AtlasTWOptions["QuestAutoQuery"]
-	variables.QQuerySpam = AtlasTWOptions["QuestQuerySpam"]
-	variables.QCompareTooltip = AtlasTWOptions["QuestCompareTooltip"]
-    variables.QLoaded = true
-end
-
------------------------------------------------------------------------------
 -- Saves the variables
 -----------------------------------------------------------------------------
 function KQuest_SaveData()
@@ -664,7 +664,7 @@ end
 -----------------------------------------------------------------------------
 -- Call OnLoad set Variables and hides the panel
 -----------------------------------------------------------------------------
-function KQuest_OnLoad()
+local function kQuest_OnLoad()
 	variables.CurrentMap = AtlasMap:GetTexture()
 	variables.QUpdateNow = true
 end
@@ -675,7 +675,7 @@ end
 -----------------------------------------------------------------------------
 -- hide panel if instance is 99 (nothing)
 -----------------------------------------------------------------------------
-function KQ_OnUpdate(arg1)
+function KQuest_OnUpdate()
 	local previousInstance = variables.QCurrentInstance
 	-- Update instance information
 	KQuest_Instances()
@@ -1035,9 +1035,8 @@ function KQuestItem_OnClick(mouseButton)
     end
 end
 
--- Initialize frames on addon load
+-- Initialize variables and frames on addon load
+kQuest_OnLoad()
 CreateKQuestFrame()
-CreateKQuestOptionFrame()
-KQuest_OnLoad()
 -- Show version message
 DEFAULT_CHAT_FRAME:AddMessage(red.."A"..yellow.."t"..green.."l"..orange.."a"..blue.."s"..white.."-|cff800080TW |cff00FFFFv.|cffFFC0CB"..ATLAS_VERSION.." |cffA52A2Aloaded.")

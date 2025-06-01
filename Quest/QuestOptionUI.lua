@@ -6,7 +6,7 @@ local variables = AtlasKTW
 -----------------------------------------------------------------------------
 
 -- Autoshow
-function KQAutoshowOption_OnClick()
+local function kQAutoshowOption_OnClick()
 	variables.QWithAtlas = not variables.QWithAtlas
 	KQAutoshowOption:SetChecked(variables.QWithAtlas)
 	ChatFrame1:AddMessage(variables.QWithAtlas and AQAtlasAutoON or AQAtlasAutoOFF)
@@ -14,7 +14,7 @@ function KQAutoshowOption_OnClick()
 end
 
 -- Right position
-function KQRIGHTOption_OnClick()
+local function kQuestRightOption_OnClick()
 	KQuestFrame:ClearAllPoints()
 	KQuestFrame:SetPoint("TOP", "AtlasFrame", 567, -36)
 	KQRIGHTOption:SetChecked(true)
@@ -24,7 +24,7 @@ function KQRIGHTOption_OnClick()
 end
 
 -- Left position
-function KQLEFTOption_OnClick()
+local function kQuestLeftOption_OnClick()
 	if variables.QCurrentSide == "Right" then
 		KQuestFrame:ClearAllPoints()
 		KQuestFrame:SetPoint("TOP", "AtlasFrame", -556, -36)
@@ -39,7 +39,7 @@ function KQLEFTOption_OnClick()
 end
 
 -- Color check
-function KQColourOption_OnClick()
+local function kQuestColourOption_OnClick()
 	variables.QColourCheck = not variables.QColourCheck
 	KQColourOption:SetChecked(variables.QColourCheck)
 	ChatFrame1:AddMessage(variables.QColourCheck and AQCCON or AQCCOFF)
@@ -48,7 +48,7 @@ function KQColourOption_OnClick()
 end
 
 -- Questlog check
-function KQCheckQuestlogButton_OnClick()
+local function kQuestCheckQuestlogButton_OnClick()
 	variables.QCheckQuestlog = not variables.QCheckQuestlog
 	KQCheckQuestlogButton:SetChecked(variables.QCheckQuestlog)
 	KQuest_SaveData()
@@ -56,21 +56,21 @@ function KQCheckQuestlogButton_OnClick()
 end
 
 -- Auto query
-function KQAutoQueryOption_OnClick()
+local function kQuestAutoQueryOption_OnClick()
 	variables.QAutoQuery = not variables.QAutoQuery
 	KQAutoQueryOption:SetChecked(variables.QAutoQuery)
 	KQuest_SaveData()
 end
 
 -- Query spam suppression
-function KQQuerySpamOption_OnClick()
+local function kQuestQuerySpamOption_OnClick()
 	variables.QQuerySpam = not variables.QQuerySpam
 	KQQuerySpamOption:SetChecked(variables.QQuerySpam)
 	KQuest_SaveData()
 end
 
 -- Tooltip comparison
-function KQCompareTooltipOption_OnClick()
+local function kQuestCompareTooltipOption_OnClick()
 	variables.QCompareTooltip = not variables.QCompareTooltip
 	KQCompareTooltipOption:SetChecked(variables.QCompareTooltip)
 	if variables.QCompareTooltip then
@@ -86,7 +86,7 @@ function KQCompareTooltipOption_OnClick()
 end
 
 -- Options panel initialization
-function KQuestOptionFrame_OnShow()
+local function kQuestOptionFrame_OnShow()
 	-- Autoshow
 	KQAutoshowOption:SetChecked(variables.QWithAtlas)
 
@@ -113,7 +113,7 @@ end
 -----------------------------------------------------------------------------
 -- Options frame creation
 -----------------------------------------------------------------------------
-function CreateKQuestOptionFrame()
+local function createKQuestOptionFrame()
 	local frame = CreateFrame("Frame", "KQuestOptionFrame", UIParent)
 	frame:EnableMouse(true)
 	frame:SetMovable(true)
@@ -131,14 +131,14 @@ function CreateKQuestOptionFrame()
 	})
 	-- Registration of events and handlers
 	frame:RegisterForDrag("LeftButton")
-	frame:SetScript("OnShow", KQuestOptionFrame_OnShow)
+	frame:SetScript("OnShow", kQuestOptionFrame_OnShow)
 	frame:SetScript("OnKeyDown", function()
 		if arg1 == "ESCAPE" then
 			HideUIPanel(this)
 		end
 	end)
 	frame:SetScript("OnHide", function()
-		KQuestOptionFrame:StopMovingOrSizing()
+		this:StopMovingOrSizing()
 	end)
 	frame:SetScript("OnDragStart", function()
 		this:StartMoving()
@@ -148,6 +148,10 @@ function CreateKQuestOptionFrame()
 		this:StopMovingOrSizing()
 		this.isMoving = false
 	end)
+    -- Helper function to set frame level on show
+    local function setFrameLevelOnShow()
+        this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
+    end
 	-- Title
 	local title = frame:CreateFontString("$parent_Title", "ARTWORK", "GameFontNormal")
 	title:SetPoint("TOP", 0, -15)
@@ -160,11 +164,9 @@ function CreateKQuestOptionFrame()
 	closeButton:SetPoint("BOTTOM", 0, 15)
 	closeButton:SetText(AQ_OK)
 	closeButton:SetScript("OnClick", function()
-		HideUIPanel(KQuestOptionFrame)
+		HideUIPanel(this:GetParent())
 	end)
-	closeButton:SetScript("OnShow", function()
-		this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-	end)
+	closeButton:SetScript("OnShow", setFrameLevelOnShow)
 	-- Function to create option text
 	local function CreateOptionText(name, yOffset, height)
 		local text = frame:CreateFontString(name, "ARTWORK", "GameFontNormalSmall")
@@ -184,9 +186,7 @@ function CreateKQuestOptionFrame()
 		checkbox:SetChecked(true)
 		checkbox:SetHitRectInsets(0, 0, 0, 0)
 		checkbox:SetScript("OnClick", onClick)
-		checkbox:SetScript("OnShow", function()
-			this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-		end)
+		checkbox:SetScript("OnShow", setFrameLevelOnShow)
 		return checkbox
 	end
 
@@ -201,14 +201,17 @@ function CreateKQuestOptionFrame()
 	CreateOptionText("KQCompareTooltipTEXT", -260, 35)
 
 	-- Create checkboxes
-	CreateCheckbox("KQAutoshowOption", -50, KQAutoshowOption_OnClick)
-	CreateCheckbox("KQLEFTOption", -80, KQLEFTOption_OnClick)
-	CreateCheckbox("KQRIGHTOption", -110, KQRIGHTOption_OnClick)
-	CreateCheckbox("KQColourOption", -140, KQColourOption_OnClick)
-	CreateCheckbox("KQCheckQuestlogButton", -170, KQCheckQuestlogButton_OnClick)
-	CreateCheckbox("KQAutoQueryOption", -200, KQAutoQueryOption_OnClick)
-	CreateCheckbox("KQQuerySpamOption", -230, KQQuerySpamOption_OnClick)
-	CreateCheckbox("KQCompareTooltipOption", -260, KQCompareTooltipOption_OnClick)
+	CreateCheckbox("KQAutoshowOption", -50, kQAutoshowOption_OnClick)
+	CreateCheckbox("KQLEFTOption", -80, kQuestLeftOption_OnClick)
+	CreateCheckbox("KQRIGHTOption", -110, kQuestRightOption_OnClick)
+	CreateCheckbox("KQColourOption", -140, kQuestColourOption_OnClick)
+	CreateCheckbox("KQCheckQuestlogButton", -170, kQuestCheckQuestlogButton_OnClick)
+	CreateCheckbox("KQAutoQueryOption", -200, kQuestAutoQueryOption_OnClick)
+	CreateCheckbox("KQQuerySpamOption", -230, kQuestQuerySpamOption_OnClick)
+	CreateCheckbox("KQCompareTooltipOption", -260, kQuestCompareTooltipOption_OnClick)
 
 	return frame
 end
+
+-- Create the options frame
+createKQuestOptionFrame()
