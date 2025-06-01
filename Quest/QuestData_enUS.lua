@@ -2152,7 +2152,7 @@ kQuestInstanceData[6].Quests.Alliance[1] = {
             Name = "Onyx Embedded Leggings",
             ID = "21530",
             Color = purple,
-            Description = AQITEM_LEGS,
+            Description = AQITEM_LEGS..AQITEM_MAIL,
         },
         {
             Name = "Amulet of Shadow Shielding",
@@ -2183,7 +2183,7 @@ kQuestInstanceData[6].Quests.Alliance[2] = {
             Name = "Master Dragonslayer's Orb",
             ID = "19366",
             Color = purple,
-            Description = AQITEM_OFFHAND,
+            Description = AQITEM_HELDOFFHAND,
         },
         {
             Name = "Master Dragonslayer's Ring",

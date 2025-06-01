@@ -181,7 +181,7 @@ function CreateKQuestFrame()
     end
     -- Function to create an fraction texture
     local function CreateFactionTexture(faction)
-        local texture = frame:CreateTexture("AQ_"..faction.."Texture", "OVERLAY")
+        local texture = frame:CreateTexture("KQuest"..faction.."Texture", "OVERLAY")
         texture:SetWidth(50)
         texture:SetHeight(50)
         if faction == "Alliance" then
@@ -194,7 +194,7 @@ function CreateKQuestFrame()
     end
     -- Function to create a quest button
     local function CreateQuestButton(index, relativeTo, yOffset)
-        local button = CreateFrame("Button", "AQQuestbutton"..index, frame)
+        local button = CreateFrame("Button", "KQuestButton"..index, frame)
         button:SetWidth(165)
         button:SetHeight(20)
         if index ~= 1 then
@@ -206,7 +206,7 @@ function CreateKQuestFrame()
         button:SetText(index)
         button:SetScript("OnClick", function()
             AtlasKTW.Q.ShownQuest = index
-            Quest_OnClick(arg1)
+            Quest_OnClick()
         end)
         button:SetScript("OnShow", function()
             this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
@@ -228,7 +228,7 @@ function CreateKQuestFrame()
     end
     -- Function to create button text
     local function CreateButtonText(index, relativeTo, yOffset)
-        local text = frame:CreateFontString("AQBUTTONTEXT"..index, "OVERLAY", "GameFontNormalSmall")
+        local text = frame:CreateFontString("KQuestButtonText"..index, "OVERLAY", "GameFontNormalSmall")
         text:SetWidth(165)
         text:SetHeight(20)
         text:SetJustifyH("LEFT")
