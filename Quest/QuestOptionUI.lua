@@ -1,12 +1,15 @@
+local _G = getfenv()
+local variables = AtlasKTW
+
 -----------------------------------------------------------------------------
 -- Option handlers
 -----------------------------------------------------------------------------
 
 -- Autoshow
 function KQAutoshowOption_OnClick()
-	AtlasKTW.Q.WithAtlas = not AtlasKTW.Q.WithAtlas
-	KQAutoshowOption:SetChecked(AtlasKTW.Q.WithAtlas)
-	ChatFrame1:AddMessage(AtlasKTW.Q.WithAtlas and AQAtlasAutoON or AQAtlasAutoOFF)
+	variables.QWithAtlas = not variables.QWithAtlas
+	KQAutoshowOption:SetChecked(variables.QWithAtlas)
+	ChatFrame1:AddMessage(variables.QWithAtlas and AQAtlasAutoON or AQAtlasAutoOFF)
 	KQuest_SaveData()
 end
 
@@ -16,61 +19,61 @@ function KQRIGHTOption_OnClick()
 	KQuestFrame:SetPoint("TOP", "AtlasFrame", 567, -36)
 	KQRIGHTOption:SetChecked(true)
 	KQLEFTOption:SetChecked(false)
-	AtlasKTW.Q.ShownSide = "Right"
+	variables.QCurrentSide = "Right"
 	KQuest_SaveData()
 end
 
 -- Left position
 function KQLEFTOption_OnClick()
-	if AtlasKTW.Q.ShownSide == "Right" then
+	if variables.QCurrentSide == "Right" then
 		KQuestFrame:ClearAllPoints()
 		KQuestFrame:SetPoint("TOP", "AtlasFrame", -556, -36)
 	end
 	KQRIGHTOption:SetChecked(false)
 	KQLEFTOption:SetChecked(true)
-	if AtlasKTW.Q.ShownSide ~= "Left" then
+	if variables.QCurrentSide ~= "Left" then
 		ChatFrame1:AddMessage(AQShowLeft)
 	end
-	AtlasKTW.Q.ShownSide = "Left"
+	variables.QCurrentSide = "Left"
 	KQuest_SaveData()
 end
 
 -- Color check
 function KQColourOption_OnClick()
-	AtlasKTW.Q.ColourCheck = not AtlasKTW.Q.ColourCheck
-	KQColourOption:SetChecked(AtlasKTW.Q.ColourCheck)
-	ChatFrame1:AddMessage(AtlasKTW.Q.ColourCheck and AQCCON or AQCCOFF)
+	variables.QColourCheck = not variables.QColourCheck
+	KQColourOption:SetChecked(variables.QColourCheck)
+	ChatFrame1:AddMessage(variables.QColourCheck and AQCCON or AQCCOFF)
 	KQuest_SaveData()
-	AtlasKTW.QUpdateNOW = true
+	variables.QUpdateNow = true
 end
 
 -- Questlog check
 function KQCheckQuestlogButton_OnClick()
-	AtlasKTW.Q.CheckQuestlog = not AtlasKTW.Q.CheckQuestlog
-	KQCheckQuestlogButton:SetChecked(AtlasKTW.Q.CheckQuestlog)
+	variables.QCheckQuestlog = not variables.QCheckQuestlog
+	KQCheckQuestlogButton:SetChecked(variables.QCheckQuestlog)
 	KQuest_SaveData()
-	AtlasKTW.QUpdateNOW = true
+	variables.QUpdateNow = true
 end
 
 -- Auto query
 function KQAutoQueryOption_OnClick()
-	AtlasKTW.Q.AutoQuery = not AtlasKTW.Q.AutoQuery
-	KQAutoQueryOption:SetChecked(AtlasKTW.Q.AutoQuery)
+	variables.QAutoQuery = not variables.QAutoQuery
+	KQAutoQueryOption:SetChecked(variables.QAutoQuery)
 	KQuest_SaveData()
 end
 
 -- Query spam suppression
 function KQQuerySpamOption_OnClick()
-	AtlasKTW.Q.QuerySpam = not AtlasKTW.Q.QuerySpam
-	KQQuerySpamOption:SetChecked(AtlasKTW.Q.QuerySpam)
+	variables.QQuerySpam = not variables.QQuerySpam
+	KQQuerySpamOption:SetChecked(variables.QQuerySpam)
 	KQuest_SaveData()
 end
 
 -- Tooltip comparison
 function KQCompareTooltipOption_OnClick()
-	AtlasKTW.Q.CompareTooltip = not AtlasKTW.Q.CompareTooltip
-	KQCompareTooltipOption:SetChecked(AtlasKTW.Q.CompareTooltip)
-	if AtlasKTW.Q.CompareTooltip then
+	variables.QCompareTooltip = not variables.QCompareTooltip
+	KQCompareTooltipOption:SetChecked(variables.QCompareTooltip)
+	if variables.QCompareTooltip then
 		if KQuestRegisterTooltip then
 			KQuestRegisterTooltip()
 		end
@@ -85,26 +88,26 @@ end
 -- Options panel initialization
 function KQuestOptionFrame_OnShow()
 	-- Autoshow
-	KQAutoshowOption:SetChecked(AtlasKTW.Q.WithAtlas)
+	KQAutoshowOption:SetChecked(variables.QWithAtlas)
 
 	-- Position (left/right)
-	local isLeft = AtlasKTW.Q.ShownSide == "Left"
+	local isLeft = variables.QCurrentSide == "Left"
 	KQLEFTOption:SetChecked(isLeft)
 	KQRIGHTOption:SetChecked(not isLeft)
 
 	-- Color check
-	KQColourOption:SetChecked(AtlasKTW.Q.ColourCheck)
+	KQColourOption:SetChecked(variables.QColourCheck)
 	-- Questlog check
-	KQCheckQuestlogButton:SetChecked(AtlasKTW.Q.CheckQuestlog)
+	KQCheckQuestlogButton:SetChecked(variables.QCheckQuestlog)
 
 	-- Auto query
-	KQAutoQueryOption:SetChecked(AtlasKTW.Q.AutoQuery)
+	KQAutoQueryOption:SetChecked(variables.QAutoQuery)
 
 	-- Query spam suppression
-	KQQuerySpamOption:SetChecked(AtlasKTW.Q.QuerySpam)
+	KQQuerySpamOption:SetChecked(variables.QQuerySpam)
 
 	-- Tooltip comparison
-	KQCompareTooltipOption:SetChecked(AtlasKTW.Q.CompareTooltip)
+	KQCompareTooltipOption:SetChecked(variables.QCompareTooltip)
 end
 
 -----------------------------------------------------------------------------
@@ -169,7 +172,7 @@ function CreateKQuestOptionFrame()
 		text:SetHeight(height or 25)
 		text:SetPoint("TOPLEFT", 45, yOffset)
 		text:SetJustifyH("LEFT")
-		text:SetText(getglobal(string.gsub(name, "TEXT", "Local")))
+		text:SetText(_G[string.gsub(name, "TEXT", "Local")])
 		return text
 	end
 	-- Function to create checkbox

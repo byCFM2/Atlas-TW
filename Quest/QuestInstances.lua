@@ -1,10 +1,12 @@
+local variables = AtlasKTW
+
 -----------------------------------------------------------------------------
 -- This function determines which instance is currently shown in Atlas
 -- and returns the corresponding instance ID in AtlasKTW.Instances
 -----------------------------------------------------------------------------
 function KQuest_Instances()
     -- Get the current Atlas map texture
-    AtlasKTW.Map = AtlasMap:GetTexture()
+    variables.CurrentMap = AtlasMap:GetTexture()
     -- Map texture to instance ID lookup table
     local instanceMap = {
         -- Original Instances (1-32)
@@ -87,7 +89,7 @@ function KQuest_Instances()
         ["Interface\\AddOns\\Atlas-TW\\Images\\Maps\\RareMobs"] = 98,
     }
     -- Look up the instance ID from the map texture
-    AtlasKTW.Instances = instanceMap[AtlasKTW.Map] or 99
+    variables.QCurrentInstance = instanceMap[variables.CurrentMap] or 99
 end
 
 --[[

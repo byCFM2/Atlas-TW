@@ -1,3 +1,4 @@
+local variables = AtlasKTW
 -----------------------------------------------------------------------------
 -- Button handlers
 -----------------------------------------------------------------------------
@@ -7,13 +8,13 @@
 -----------------------------------------------------------------------------
 local function KQ_OnShow()
 	if UnitFactionGroup("player") == "Horde" then
-		AtlasKTW.isHorde = true
-		KQuestHordeCheckBox:SetChecked(AtlasKTW.isHorde)
-		KQuestAllianceCheckBox:SetChecked(not AtlasKTW.isHorde)
+		variables.isHorde = true
+		KQuestHordeCheckBox:SetChecked(variables.isHorde)
+		KQuestAllianceCheckBox:SetChecked(not variables.isHorde)
 	else
-		AtlasKTW.isHorde = false
-		KQuestHordeCheckBox:SetChecked(AtlasKTW.isHorde)
-		KQuestAllianceCheckBox:SetChecked(not AtlasKTW.isHorde)
+		variables.isHorde = false
+		KQuestHordeCheckBox:SetChecked(variables.isHorde)
+		KQuestAllianceCheckBox:SetChecked(not variables.isHorde)
 	end
 	KQuestSetTextandButtons()
 end
@@ -34,30 +35,30 @@ local function KQSTORY1_OnClick()
 	KQuestHideAL()
 	if KQuestInsideFrame:IsVisible() == nil then
 		ShowUIPanel(KQuestInsideFrame)
-		KQuestWhichButton = -1
+		variables.QCurrentButton = -1
 		KQuestButtonStory_SetText()
-	elseif KQuestWhichButton == -1 then
+	elseif variables.QCurrentButton == -1 then
 		HideUIPanel(KQuestInsideFrame)
 	else
-		KQuestWhichButton = -1
+		variables.QCurrentButton = -1
 		KQuestButtonStory_SetText()
 	end
 end
 -- Alliance handler
 local function Alliance_OnClick()
-	AtlasKTW.isHorde = false
-    KQuestAllianceCheckBox:SetChecked(not AtlasKTW.isHorde)
-    KQuestHordeCheckBox:SetChecked(AtlasKTW.isHorde)
+	variables.isHorde = false
+    KQuestAllianceCheckBox:SetChecked(not variables.isHorde)
+    KQuestHordeCheckBox:SetChecked(variables.isHorde)
     KQuest_SaveData()
-    AtlasKTW.QUpdateNOW = true
+    variables.QUpdateNOW = true
 end
 -- Horde handler
 local function Horde_OnClick()
-	AtlasKTW.isHorde = true
-    KQuestAllianceCheckBox:SetChecked(not AtlasKTW.isHorde)
-    KQuestHordeCheckBox:SetChecked(AtlasKTW.isHorde)
+	variables.isHorde = true
+    KQuestAllianceCheckBox:SetChecked(not variables.isHorde)
+    KQuestHordeCheckBox:SetChecked(variables.isHorde)
     KQuest_SaveData()
-    AtlasKTW.QUpdateNOW = true
+    variables.QUpdateNOW = true
 end
 
 -----------------------------------------------------------------------------
@@ -65,15 +66,16 @@ end
 -----------------------------------------------------------------------------
 local function kQInsertQuestInformation()
 	-- Get current quest ID from global variable
-	local questID = AtlasKTW.Q.ShownQuest
-	local faction = AtlasKTW.isHorde and "Horde" or "Alliance"
+	local questID = variables.QCurrentQuest
+    local instanceID = variables.QCurrentInstance
+	local faction = variables.isHorde and "Horde" or "Alliance"
 	local questName = nil
 	if KQuestInstanceData and 
-	   KQuestInstanceData[AtlasKTW.Instances] and 
-	   KQuestInstanceData[AtlasKTW.Instances].Quests and
-	   KQuestInstanceData[AtlasKTW.Instances].Quests[faction] and
-	   KQuestInstanceData[AtlasKTW.Instances].Quests[faction][questID] then
-		questName = KQuestInstanceData[AtlasKTW.Instances].Quests[faction][questID].Title
+	   KQuestInstanceData[instanceID] and 
+	   KQuestInstanceData[instanceID].Quests and
+	   KQuestInstanceData[instanceID].Quests[faction] and
+	   KQuestInstanceData[instanceID].Quests[faction][questID] then
+		questName = KQuestInstanceData[instanceID].Quests[faction][questID].Title
 	end
 	-- Insert formatted quest name into chat box if found
 	if questName then
@@ -99,15 +101,15 @@ local function Quest_OnClick()
 		if not KQuestInsideFrame:IsVisible() then
 			-- Show quest frame if not visible
 			ShowUIPanel(KQuestInsideFrame)
-			KQuestWhichButton = AtlasKTW.Q.ShownQuest
+			variables.QCurrentButton = variables.QCurrentQuest
 			KQButton_SetText()
-		elseif KQuestWhichButton == AtlasKTW.Q.ShownQuest then
+		elseif variables.QCurrentButton == variables.QCurrentQuest then
 			-- Hide quest frame if showing the same quest
 			HideUIPanel(KQuestInsideFrame)
-			KQuestWhichButton = 0
+			variables.QCurrentButton = 0
 		else
 			-- Update quest frame to show different quest
-			KQuestWhichButton = AtlasKTW.Q.ShownQuest
+			variables.QCurrentButton = variables.QCurrentQuest
 			KQButton_SetText()
 		end
 	end
@@ -184,28 +186,25 @@ function CreateKQuestFrame()
         local texture = frame:CreateTexture("KQuest"..faction.."Texture", "OVERLAY")
         texture:SetWidth(50)
         texture:SetHeight(50)
-        if faction == "Alliance" then
-            texture:SetPoint("TOPLEFT", frame, "TOPLEFT", 38, -30)
-        else
-            texture:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -26, -30)
-        end
+        texture:SetPoint(
+            faction == "Alliance" and "TOPLEFT" or "TOPRIGHT",
+            frame, faction == "Alliance" and "TOPLEFT" or "TOPRIGHT",
+            faction == "Alliance" and 38 or -26, -30
+        )
         texture:SetTexture("Interface\\TargetingFrame\\UI-PVP-"..faction)
         return texture
     end
     -- Function to create a quest button
     local function CreateQuestButton(index, relativeTo, yOffset)
         local button = CreateFrame("Button", "KQuestButton"..index, frame)
+        local isNotFirst = index ~= 1
         button:SetWidth(165)
         button:SetHeight(20)
-        if index ~= 1 then
-            button:SetPoint("TOPLEFT", relativeTo, "TOPLEFT", 0, yOffset)
-        else
-            button:SetPoint("TOPLEFT", frame, "TOPLEFT", 15, -60)
-        end
+        button:SetPoint("TOPLEFT", isNotFirst and relativeTo or frame, "TOPLEFT", isNotFirst and 0 or 15, isNotFirst and yOffset or -60)
         button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
         button:SetText(index)
         button:SetScript("OnClick", function()
-            AtlasKTW.Q.ShownQuest = index
+            variables.QCurrentQuest = index
             Quest_OnClick()
         end)
         button:SetScript("OnShow", function()
@@ -216,27 +215,21 @@ function CreateKQuestFrame()
     -- Function to create an arrow
     local function CreateArrow(index, relativeTo, yOffset)
         local arrow = frame:CreateTexture("KQuestlineArrow_"..index, "OVERLAY")
+        local isNotFirst = index ~= 1
         arrow:SetWidth(13)
         arrow:SetHeight(15)
-        if index ~= 1 then
-            arrow:SetPoint("TOPLEFT", relativeTo, "TOPLEFT", 0, yOffset)
-        else
-            arrow:SetPoint("TOPLEFT", frame, "TOPLEFT", 16, -65)
-        end
+        arrow:SetPoint("TOPLEFT", isNotFirst and relativeTo or frame, "TOPLEFT", isNotFirst and 0 or 16, isNotFirst and yOffset or -65)
         arrow:SetTexture("Interface\\Glues\\Login\\UI-BackArrow")
         return arrow
     end
     -- Function to create button text
     local function CreateButtonText(index, relativeTo, yOffset)
         local text = frame:CreateFontString("KQuestButtonText"..index, "OVERLAY", "GameFontNormalSmall")
+        local isNotFirst = index ~= 1
         text:SetWidth(165)
         text:SetHeight(20)
         text:SetJustifyH("LEFT")
-        if index ~= 1 then
-            text:SetPoint("TOPLEFT", relativeTo, "TOPLEFT", 0, yOffset)
-        else
-            text:SetPoint("TOPLEFT", frame, "TOPLEFT", 30, -60)
-        end
+        text:SetPoint("TOPLEFT", isNotFirst and relativeTo or frame, "TOPLEFT",  isNotFirst and 0 or 30, isNotFirst and yOffset or -60)
         text:SetText(index)
         return text
     end
@@ -255,20 +248,15 @@ function CreateKQuestFrame()
     countQuest:SetWidth(60)
     countQuest:SetHeight(40)
     countQuest:SetPoint("TOP", frame, "TOP", 0, -25)
+
     -- Create quest buttons, arrows and texts
     local prevButton = nil
     local prevArrow = nil
     local prevText = nil
-    for i = 1, 23 do
-        if i ~=1 then
-            prevButton = CreateQuestButton(i, prevButton, -20)
-            prevArrow = CreateArrow(i, prevArrow, -20)
-            prevText = CreateButtonText(i, prevText, -20)
-        else
-            prevButton = CreateQuestButton(i, nil, 0)
-            prevArrow = CreateArrow(i, nil, 0)
-            prevText = CreateButtonText(i, nil, 0)
-        end
+    for i = 1, variables.QMAXQUESTS do
+        prevButton = CreateQuestButton(i,i ~=1 and prevButton or nil,i ~=1 and -20 or 0)
+        prevArrow = CreateArrow(i,i ~=1 and prevArrow or nil,i ~=1 and -20 or 0)
+        prevText = CreateButtonText(i,i ~=1 and prevText or nil,i ~=1 and -20 or 0)
     end
 
     return frame
