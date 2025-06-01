@@ -1,5 +1,6 @@
 -- FRAME INSIDE ATLAS
 -- AtlasTW Quest Inside Atlas frame
+local _G = getfenv()
 
 -- Main container frame
 local KQuestInsideFrame = CreateFrame("Frame", "KQuestInsideFrame", AtlasFrame)
@@ -66,11 +67,10 @@ CreateQuestItemFrame(5, 20, 20)   -- Left column, bottom
 CreateQuestItemFrame(6, 266, 20)  -- Right column, bottom
 
 -- Close button
-local closeButton = CreateFrame("Button", "CLOSEbutton2", KQuestInsideFrame, "UIPanelCloseButton")
+local closeButton = CreateFrame("Button", "", KQuestInsideFrame, "UIPanelCloseButton")
 closeButton:SetWidth(30)
 closeButton:SetHeight(30)
 closeButton:SetPoint("TOPRIGHT", -5, -3)
-closeButton:SetText("X")
 closeButton:SetScript("OnClick", function()
     KQuestCLOSE2_OnClick()
 end)
@@ -187,34 +187,11 @@ KQuestInsideFrame:SetScript("OnEvent", function()
     AQ_OnEvent(event)
 end)
 
--- Show/Hide button frame (AtlasQuest toggle button)
-local atlasQuestButtonFrame = CreateFrame("Frame", "AtlasQuestButtonFrame", AtlasFrame)
-atlasQuestButtonFrame:SetWidth(1)
-atlasQuestButtonFrame:SetHeight(1)
-atlasQuestButtonFrame:SetPoint("TOPRIGHT", AtlasFrame, "TOPRIGHT", 0, 0)
-atlasQuestButtonFrame:EnableMouse(true)
-atlasQuestButtonFrame:SetToplevel(true)
-atlasQuestButtonFrame:Show()
-
-local questsToggleButton = CreateFrame("Button", "CLOSEbutton3", atlasQuestButtonFrame, "OptionsButtonTemplate")
-questsToggleButton:SetWidth(90)
+local questsToggleButton = CreateFrame("Button", "", AtlasFrame, "OptionsButtonTemplate")
+questsToggleButton:SetWidth(70)
 questsToggleButton:SetHeight(20)
 questsToggleButton:SetPoint("TOPRIGHT", -120, -61)
-getglobal("CLOSEbutton3Text"):SetText(AQ_Quests)
+questsToggleButton:SetText(AQ_Quests)
 questsToggleButton:SetScript("OnClick", function()
     KQuestCLOSE_OnClick()
-end)
-questsToggleButton:SetScript("OnUpdate", function()
-    -- Check if AtlasFrame exists and update visibility accordingly
-    if not AtlasFrame then
-        this:Hide()
-        return
-    end
-end)
-questsToggleButton:SetScript("OnShow", function()
-    -- Ensure button is only shown when AtlasFrame exists
-    if not AtlasFrame then
-        this:Hide()
-        return
-    end
 end)

@@ -139,7 +139,7 @@ function CreateKQuestFrame()
     frame:SetScript("OnShow", KQ_OnShow)
     frame:SetScript("OnUpdate", KQ_OnUpdate)
     -- Create close button
-    local closeButton = CreateFrame("Button", "CLOSEbutton", frame, "UIPanelCloseButton")
+    local closeButton = CreateFrame("Button", "", frame, "UIPanelCloseButton")
     closeButton:SetWidth(27)
     closeButton:SetHeight(27)
     closeButton:SetPoint("TOPLEFT", frame, "TOPLEFT", 10, -10)
