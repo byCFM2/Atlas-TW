@@ -31,15 +31,7 @@ Libs\Babble-Zone-2.2a\Babble-Zone-2.2a.lua
 Libs\Babble-Boss-2.2a\Babble-Boss-2.2a.lua
 Libs\Babble-Spell-2.2a\Babble-Spell-2.2a.lua
 
-Atlas-enUS.lua
-AtlasMaps.lua
-AtlasDropDown.lua
-Atlas.lua
-Atlas.xml
-AtlasButton.lua
-AtlasButton.xml
-AtlasOptions.lua
-AtlasOptions.xml
+AtlasInit.xml
 
 Loot\Sets.lua
 Loot\Crafting.lua

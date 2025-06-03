@@ -1,0 +1,13 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
+	<!-- Include files -->
+	<Include file="Atlas-enUS.lua"/>
+	<Include file="AtlasMaps.lua"/>
+	<Include file="AtlasDropDown.lua"/>
+	<Include file="Atlas.lua"/>
+	<Include file="Atlas.xml"/>
+	<Include file="AtlasButton.lua"/>
+	<!--<Include file="AtlasButton.xml"/>-->
+	<Include file="AtlasUI.lua"/>
+	<Include file="AtlasOptions.lua"/>
+	<Include file="AtlasOptionsUI.lua"/>
+</Ui>

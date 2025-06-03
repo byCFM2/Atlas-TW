@@ -1,16 +1,13 @@
 --************************************************
--- Global Atlas Strings
+-- Localized Strings
 --************************************************
-AtlasKTW = AtlasKTW or {}
-
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
 AtlasSortIgnore = {"the (.+)"}
 
-BINDING_HEADER_ATLAS_TITLE = "Atlas Bindings"
-BINDING_NAME_ATLAS_TOGGLE = "Toggle Atlas"
-BINDING_NAME_ATLAS_OPTIONS = "Toggle Options"
-BINDING_NAME_ATLAS_AUTOSEL = "Auto-Select"
+BINDING_HEADER_ATLASTW_TITLE = "Atlas Bindings"
+BINDING_NAME_ATLASTW_TOGGLE = "Toggle Atlas"
+BINDING_NAME_ATLASTW_OPTIONS = "Toggle Options"
 
 ATLAS_SUBTITLE = "Instance Map Browser"
 ATLAS_DESC = "Atlas is an instance map browser."
@@ -82,11 +79,11 @@ AtlasZoneSubstitutions = {
 }
 
 L:RegisterTranslations("enUS", function() return {
-	
+
 	--************************************************
 	-- Zone Names, Acronyms, and Common Strings
 	--************************************************
-	
+
 	--Common strings
 	["Atlas Options"] = true,
 	--Colors
@@ -120,14 +117,14 @@ L:RegisterTranslations("enUS", function() return {
 	["East"] = true,
 	["North"] = true,
 	["South"] = true,
-	["West"] = true,		
+	["West"] = true,
 	["Battlegrounds"] = true,
-	["Lower"] = true,	
-	["Upper"] = true,		
+	["Lower"] = true,
+	["Upper"] = true,
 	["Entrance"] = true,
-	["Exit"] = true,		
+	["Exit"] = true,
 	["Chase Begins"] = true,
-	["Chase Ends"] = true,		
+	["Chase Ends"] = true,
 	["AKA"] = true,
 	["Attunement Required"] = true,
 	["Back"] = true,
@@ -163,14 +160,14 @@ L:RegisterTranslations("enUS", function() return {
 	["Varies"] = true,
 	["Various"] = true,
 	["Wanders"] = true,
-	
+
 	--Instance names and acronyms
 	["Armory"] = true,
 	["Cathedral"] = true,
 	["Graveyard"] = true,
 	["Library"] = true,
 	["Sunken Temple"] = true,
-	
+
 	--Set names
 	["Set: "] = true,
 	["Tier 0/0.5 Sets"] = true,
@@ -181,18 +178,18 @@ L:RegisterTranslations("enUS", function() return {
 	["Tier 1 Sets"] = true,
 	["Tier 2 Sets"] = true,
 	["Tier 3 Sets"] = true,
-	
+
 	--************************************************
 	-- Kalimdor Instance Data
 	--************************************************
-	
+
 	--Ragefire Chasm
 	["Maur Grimtotem"] = true,
 	["Oggleflint"] = true,
-	
+
 	--Wailing Caverns
 	["Mysterious Wailing Caverns Chest"] = true,
-	
+
 	--Blackfathom Deeps
 	["Lorgalis Manuscript"] = true,
 	["Argent Guard Thaelrid"] = true,
@@ -200,17 +197,17 @@ L:RegisterTranslations("enUS", function() return {
 	["Fathom Stone"] = true,
 	["Morridune"] = true,
 	["Altar of the Deeps"] = true,
-	
+
 	--Razorfen Kraul
 	["Razorfen Spearhide"] = true,
 	["Willix the Importer"] = true,
 	["Heralath Fallowbrook"] = true,
-	
+
 	--Razorfen Downs
 	["Henry Stern"] = true,
 	["Belnistrasz"] = true,
 	["Sah'rhee"] = true,
-	
+
 	--Zul'Farrak
 	["Mallet of Zul'Farrak"] = true,
 	["Theka the Martyr"] = true,
@@ -227,19 +224,19 @@ L:RegisterTranslations("enUS", function() return {
 	["Elder Wildmane"] = true,
 	["Zerillis"] = true,
 	["Sandarr Dunereaver"] = true,
-	
+
 	--Maraudon	
 	["Scepter of Celebras"] = true,
 	["Veng"] = true,
 	["Maraudos"] = true,
 	["Elder Splitrock"] = true,
-	
+
 	--Dire Maul (East)
 	["Old Ironbark"] = true,
 	["A Dusty Tome"] = true,
 	["Felvine Shard"] = true,
 	["Dire Maul Books"] = true,
-	
+
 	--Dire Maul (North)
 	["Crescent Key"] = true,
 	["Gordok Courtyard Key"] = true,
@@ -248,7 +245,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Stomper Kreeg"] = true,
 	["Knot Thimblejack"] = true,
 	["Tribute Run"] = true,
-	
+
 	--Dire Maul (West)
 	["J'eevee's Jar"] = true,
 	["Pylons"] = true,
@@ -263,12 +260,12 @@ L:RegisterTranslations("enUS", function() return {
 	["Shen'dralar Provisioner"] = true,
 	["Skeletal Remains of Kariel Winthalus"] = true,
 	["The Prince's Chest"] = true,
-	
+
 	--Onyxia's Lair
 	["Drakefire Amulet"] = true,
 	["Onyxian Warders"] = true,
 	["Whelp Eggs"] = true,
-	
+
 	--Temple of Ahn'Qiraj
 	["Bug Trio"] = true,
 	["Andorgos"] = true,
@@ -279,7 +276,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Merithra of the Dream"] = true,
 	["AQ Enchants"] = true,
 	["AQ Opening Quest Chain"] = true,
-	
+
 	--Ruins of Ahn'Qiraj
 	["Four Kaldorei Elites"] = true,
 	["Captain Qeez"] = true,
@@ -291,11 +288,11 @@ L:RegisterTranslations("enUS", function() return {
 	["Colonel Zerran"] = true,
 	["Safe Room"] = true,
 	["Class Books"] = true,
-	
+
 	--****************************
 	-- Eastern Kingdoms Instances
 	--****************************
-	
+
 	--Blackrock Depths
 	["Shadowforge Key"] = true,
 	["Prison Cell Key"] = true,
@@ -335,7 +332,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Core Fragment"] = true,
 	["Overmaster Pyron"] = true,
 	["The Behemoth"] = true,
-	
+
 	--Blackrock Spire (Lower)
 	["Vaelan"] = true,
 	["Warosh"] = true,
@@ -352,7 +349,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Unfired Plate Gauntlets"] = true,
 	["Urok's Tribute Pile"] = true,
 	["Burning Felguard"] = true,
-	
+
 	--Blackrock Spire (Upper)
 	["Seal of Ascension"] = true,
 	["Father Flame"] = true,
@@ -361,12 +358,12 @@ L:RegisterTranslations("enUS", function() return {
 	["Awbee"] = true,
 	["Finkle Einhorn"] = true,
 	["Drakkisath's Brand"] = true,
-	
+
 	--Blackwing Lair
 	["Draconic for Dummies"] = true,
 	["Master Elemental Shaper Krixix"] = true,
 	["Alchemy Lab"] = true,
-	
+
 	--Gnomeregan
 	["Workshop Key"] = true,
 	["Blastmaster Emi Shortfuse"] = true,
@@ -379,12 +376,12 @@ L:RegisterTranslations("enUS", function() return {
 	["Matrix Punchograph 3005-B"] = true,
 	["Matrix Punchograph 3005-C"] = true,
 	["Matrix Punchograph 3005-D"] = true,
-	
+
 	--Molten Core
 	["Aqual Quintessence"] = true,
 	["Eternal Quintessence"] = true,
 	["Random Boss Loot"] = true,
-	
+
 	--Naxxramas
 	["Archmage Tarsis Kir-Moldir"] = true,
 	["Mr. Bigglesworth"] = true,
@@ -395,16 +392,16 @@ L:RegisterTranslations("enUS", function() return {
 	["Plague Wing"] = true,
 	["Frostwyrm Lair"] = true,
 	["Icebellow Anvil"] = true,
-	
+
 	--SM: Library
 	["Doan's Strongbox"] = true,
-	
+
 	--SM: Armory
 	["The Scarlet Key"] = true,--omitted from SM: Cathedral
-	
+
 	--SM: Graveyard
 	["Vorrel Sengutz"] = true,
-	
+
 	--Scholomance
 	["Skeleton Key"] = true,
 	["Viewing Room Key"] = true,
@@ -419,7 +416,7 @@ L:RegisterTranslations("enUS", function() return {
 	["The Deed to Caer Darrow"] = true,
 	["Torch Lever"] = true,
 	["Old Treasure Chest"] = true,
-	
+
 	--Shadowfang Keep
 	["Sorcerer Ashcrombe"] = true,
 	["Deathstalker Adamant"] = true,
@@ -430,7 +427,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Crate of Ingots"] = true,
 	["Arugal's Voidwalker"] = true,
 	["The Book of Ur"] = true,
-	
+
 	--Stratholme
 	["Key to the City"] = true,
 	["Various Postbox Keys"] = true,
@@ -453,11 +450,11 @@ L:RegisterTranslations("enUS", function() return {
 	["King's Square Postbox"] = true,
 	["Fras Siabi's Postbox"] = true,
 	["Third Postbox Opened"] = true,
-	
+
 	--The Deadmines
 	["Sneed's Shredder"] = true,
 	["Defias Gunpowder"] = true,
-	
+
 	--The Sunken Temple
 	["Yeh'kinya's Scroll"] = true,
 	["Balcony Minibosses"] = true,
@@ -467,7 +464,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Elder Starsong"] = true,
 	["Statue Activation Order"] = true,
 	["Malfurion Stormrage"] = true,
-	
+
 	--Uldaman
 	["Staff of Prehistoria"] = true,
 	["Baelog's Chest"] = true,
@@ -478,7 +475,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Shadowforge Cache"] = true,
 	["The Discs of Norgannon"] = true,
 	["Ancient Treasure"] = true,
-	
+
 	--Zul'Gurub
 	["Mudskunk Lure"] = true,
 	["Gurubashi Mojo Madness"] = true,
@@ -490,25 +487,25 @@ L:RegisterTranslations("enUS", function() return {
 	["Muddy Churning Waters"] = true,
 	["Jinxed Hoodoo Pile"] = true,
 	["ZG Enchants"] = true,
-	
+
 	--************************************************
 	-- Instance Entrance Maps
 	--************************************************
-	
+
 	--Blackrock Mountain (Entrance)
 	["Bodley"] = true,
 	["Lothos Riftwaker"] = true,
 	["Franclorn Forgewright"] = true,
 	["Orb of Command"] = true,
 	["Scarshield Quartermaster"] = true,
-	
+
 	--Gnomeregan (Entrance)
 	["Transpolyporter"] = true,
 	["Sprok"] = true,
 	["Matrix Punchograph 3005-A"] = true,
 	["Namdo Bizzfizzle"] = true,
 	["Techbot"] = true,
-	
+
 	--Maraudon (Entrance)
 	["The Nameless Prophet"] = true,
 	["Kolk"] = true,
@@ -516,18 +513,18 @@ L:RegisterTranslations("enUS", function() return {
 	["Magra"] = true,
 	["Cavindra"] = true,
 	["Cursed Centaur"] = true,
-	
+
 	--The Deadmines (Entrance)
 	["Marisa du'Paige"] = true,
 	["Brainwashed Noble"] = true,
 	["Foreman Thistlenettle"] = true,
-	
+
 	--Sunken Temple (Entrance)
 	["Jade"] = true,
 	["Kazkaz the Unholy"] = true,
 	["Zekkis"] = true,
 	["Veyzhak the Cannibal"] = true,
-	
+
 	--Uldaman (Entrance)
 	["Hammertoe Grez"] = true,
 	["Magregan Deepshadow"] = true,
@@ -535,7 +532,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Krom Stoutarm's Chest"] = true,
 	["Garrett Family Chest"] = true,
 	["Digmaster Shovelphlange"] = true,
-	
+
 	--Wailing Caverns (Entrance)
 	["Mad Magglish"] = true,
 	["Trigore the Lasher"] = true,
@@ -545,7 +542,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Nalpak"] = true,
 	["Kalldan Felmoon"] = true,
 	["Waldor"] = true,
-	
+
 	--Dire Maul (Entrance)
 	["Dire Pool"] = true,
 	["Dire Maul Arena"] = true,
@@ -554,21 +551,21 @@ L:RegisterTranslations("enUS", function() return {
 	["The Razza"] = true,
 	["Elder Mistwalker"] = true,
 	["Griniblix the Spectator"] = true,
-	
+
 	--World
 	["Emerald Dragons"] = true,
 	["Spirit of Azuregos"] = true,
 	["Emerald Dragons Trash"] = true,
 	["Nethergarde Keep"] = true,
-	
+
 	--Battlegrounds
-	
+
 	--Places
 	["Friendly Reputation Rewards"] = true,
 	["Honored Reputation Rewards"] = true,
 	["Revered Reputation Rewards"] = true,
 	["Exalted Reputation Rewards"] = true,
-	
+
 	--Alterac Valley (North)
 	["Stormpike Guard"] = true,
 	["Dun Baldar"] = true,
@@ -633,7 +630,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Bunkers, Towers, Destroyable Areas"] = true,
 	["Assault NPCs, Quest Areas"] = true,
 	["Steamsaw"] = true,
-	
+
 	--Alterac Valley (South)
 	["Frostwolf Clan"] = true,
 	["Frostwolf Keep"] = true,
@@ -671,7 +668,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Frostwolf Relief Hut"] = true,
 	["Wildpaw Cavern"] = true,
 	["Frostwolf Banner"] = true,
-	
+
 	--Arathi Basin
 	["The Defilers"] = true,
 	["The League of Arathor"] = true,
@@ -682,13 +679,13 @@ L:RegisterTranslations("enUS", function() return {
 	["Blacksmith"] = true,
 	["Lumber Mill"] = true,
 	["Farm"] = true,
-	
+
 	--Warsong Gulch
 	["Warsong Outriders"] = true,
 	["Silverwing Sentinels"] = true,
 	["Silverwing Hold"] = true,
 	["Warsong Lumber Mill"] = true,
-	
+
 	--Flight points
 	["Flight Path Maps"] = true,
 	["Druid-only"] = true,
@@ -762,7 +759,8 @@ L:RegisterTranslations("enUS", function() return {
 	["Favor of Erennius (ES Hard Mode)"] = true,
 	["Hateforge Chemistry Documents"] = true,
 	["Tome of Arcane Intricacies and Magical Phenomenon IX"] = true,
- --Atlasloot
+
+	--Atlasloot
 	["AtlasLoot"] = true,
 	["Atlas"] = true,
 	["No match found for"] = true,

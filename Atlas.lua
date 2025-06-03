@@ -29,7 +29,7 @@ local function debug(info)
 	end
 end
 
-ATLAS_VERSION = GetAddOnMetadata("Atlas-TW", "Version")
+ATLASTW_VERSION = GetAddOnMetadata("Atlas-TW", "Version")
 
 --all in one place now
 ATLAS_DROPDOWNS = {}
@@ -43,7 +43,7 @@ ATLAS_DATA = {}
 ATLAS_SEARCH_METHOD = nil
 
 local DefaultAtlasOptions = {
-	["AtlasVersion"] = ATLAS_VERSION,
+	["AtlasVersion"] = ATLASTW_VERSION,
 	["AtlasZone"] = 1,
 	["AtlasAlpha"] = 1.0,
 	["AtlasLocked"] = false,
@@ -380,7 +380,7 @@ function Atlas_Init()
 	MainMenuBarOverlayFrame:SetFrameStrata("MEDIUM")
 
 	--clear saved vars for a new version (or a new install!)
-	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= ATLAS_VERSION then
+	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= ATLASTW_VERSION then
 		Atlas_FreshOptions()
 	end
 

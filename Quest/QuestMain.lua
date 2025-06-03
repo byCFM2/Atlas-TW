@@ -1039,4 +1039,4 @@ end
 kQuest_OnLoad()
 CreateKQuestFrame()
 -- Show version message
-DEFAULT_CHAT_FRAME:AddMessage(red.."A"..yellow.."t"..green.."l"..orange.."a"..blue.."s"..white.."-|cff800080TW |cff00FFFFv.|cffFFC0CB"..ATLAS_VERSION.." |cffA52A2Aloaded.")
+DEFAULT_CHAT_FRAME:AddMessage(red.."A"..yellow.."t"..green.."l"..orange.."a"..blue.."s"..white.."-|cff800080TW |cff00FFFFv.|cffFFC0CB"..ATLASTW_VERSION.." |cffA52A2Aloaded.")

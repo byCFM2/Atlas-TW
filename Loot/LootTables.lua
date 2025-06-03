@@ -15,7 +15,7 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 --Table of loot titles
 AtlasLoot_TableNames = {
-	
+
 	--Keys
 	["VanillaKeys"] = { L["Keys"], "AtlasLootItems" },
 	--Blackfathom Deeps
@@ -534,7 +534,7 @@ AtlasLoot_TableNames = {
 	------------
 	--- Sets ---
 	------------
-	
+
 	--Vanilla WoW Sets
 	["DEADMINES"] = { L["Set: "]..BIS["Defias Leather"], "AtlasLootSetItems" },
 	["WAILING"] = { L["Set: "]..BIS["Embrace of the Viper"], "AtlasLootSetItems" },
@@ -690,7 +690,7 @@ AtlasLoot_TableNames = {
 	------------------------
 	--- Misc Collections ---
 	------------------------
-	
+
 	["CraftedWeapons1"] = { L["Crafted Epic Weapons"], "AtlasLootCrafting" },
 	["WorldBluesHead"] = { L["World Blues"].." - "..L["Head"], "AtlasLootSetItems" },
 	["WorldBluesNeck"] = { L["World Blues"].." - "..L["Neck"], "AtlasLootSetItems" },
@@ -723,7 +723,7 @@ AtlasLoot_TableNames = {
 	["WorldEpics1"] = { L["World Epics"].." - "..L["Level 30-39"], "AtlasLootSetItems" },
 	["WorldEpics2"] = { L["World Epics"].." - "..L["Level 40-49"], "AtlasLootSetItems" },
 	["WorldEpics3"] = { L["World Epics"].." - "..L["Level 50-60"], "AtlasLootSetItems" },
-	
+
 	--------------------
 	--- World ---
 	--------------------	
@@ -743,7 +743,7 @@ AtlasLoot_TableNames = {
 	["DTaerar"] = { BZ["Ashenvale"].."/"..BZ["Duskwood"].."/"..BZ["Feralas"].."/"..BZ["The Hinterlands"].. " - " ..BB["Taerar"], "AtlasLootWBItems" },
 	["DYsondre"] = { BZ["Ashenvale"].."/"..BZ["Duskwood"].."/"..BZ["Feralas"].."/"..BZ["The Hinterlands"].. " - " ..BB["Ysondre"], "AtlasLootWBItems" },
 	["DTrash"] = { L["Trash Mobs"].." ("..L["Emerald Dragons"]..")", "AtlasLootWBItems" },
-	
+
     --------------------------
     --- Rare Spawns (1.16) ---
     --------------------------
@@ -787,13 +787,13 @@ AtlasLoot_TableNames = {
 	["BarkskinFisher"] = { "Barkskin Fisher", "AtlasLootWBItems" },
 	["ShadeflayerGoliath"] = { "Shadeflayer Goliath", "AtlasLootWBItems" },
 	["M0L1Y"] = { "M-0L1Y", "AtlasLootWBItems" },
-	
-	
-	
+
+
+
 	--------------
 	--- Events ---
 	--------------
-	
+
 	--Abyssal Council
 	["AbyssalTemplars"] = { "Abyssal Council - Templars", "AtlasLootWorldEvents" },
 	["AbyssalDukes"] = { "Abyssal Council - Dukes", "AtlasLootWorldEvents" },
@@ -817,11 +817,11 @@ AtlasLoot_TableNames = {
 	["GurubashiArena"] = { L["Gurubashi Arena"], "AtlasLootWorldEvents" },
 	["ScourgeInvasionEvent1"] = { L["Scourge Invasion"], "AtlasLootWorldEvents" },
 	["ScourgeInvasionEvent2"] = { L["Scourge Invasion Bosses"], "AtlasLootWorldEvents" },
-	
+
 	------------------------
 	--- Classic Factions ---
 	------------------------
-	
+
 	--Argent Dawn
 	["Argent1"] = { BF["Argent Dawn"]..": "..L["Token Hand-Ins"], "AtlasLootRepItems" },
 	["Argent2"] = { BF["Argent Dawn"], "AtlasLootRepItems" },
@@ -881,11 +881,11 @@ AtlasLoot_TableNames = {
 	["ThunderBluff"] = { BZ["Thunder Bluff"], "AtlasLootRepItems" },
 	["Dalaran"] = { BZ["Dalaran"], "AtlasLootRepItems" },
 	["Wildhammer"] = { BF["Wildhammer Clan"], "AtlasLootRepItems" },
-	
+
 	--------------
 	--- Trades ---
 	--------------
-	
+
 	--Alchemy
 	["AlchemyApprentice1"] = { BS["Alchemy"]..": "..L["Apprentice"], "AtlasLootCrafting" },
 	["AlchemyJourneyman1"] = { BS["Alchemy"]..": "..L["Journeyman"], "AtlasLootCrafting" },
@@ -981,7 +981,7 @@ AtlasLoot_TableNames = {
 	["Tribal1"] = { BS["Tribal Leatherworking"], "AtlasLootCrafting" },
 	["LeatherHelm1"] = { BS["Leatherworking"] .. ": " .. L["Helm"], "AtlasLootCrafting" },
 	["LeatherShoulders1"] = { BS["Leatherworking"] .. ": " .. L["Shoulders"], "AtlasLootCrafting" },
-	["LeatherCloak1"] = { BS["Leatherworking"] .. ": " .. L["Cloak"], "AtlasLootCrafting" },	
+	["LeatherCloak1"] = { BS["Leatherworking"] .. ": " .. L["Cloak"], "AtlasLootCrafting" },
 	["LeatherChest1"] = { BS["Leatherworking"] .. ": " .. L["Chest"], "AtlasLootCrafting" },
 	["LeatherChest2"] = { BS["Leatherworking"] .. ": " .. L["Chest"], "AtlasLootCrafting" },
 	["LeatherBracers1"] = { BS["Leatherworking"] .. ": " .. L["Bracers"], "AtlasLootCrafting" },
@@ -1013,7 +1013,7 @@ AtlasLoot_TableNames = {
 	["TailoringArtisan5"] = { BS["Tailoring"] .. ": " .. L["Artisan"], "AtlasLootCrafting" },
 	["TailoringHelm1"] = { BS["Tailoring"] .. ": " .. L["Helm"], "AtlasLootCrafting" },
 	["TailoringShoulders1"] = { BS["Tailoring"] .. ": " .. L["Shoulders"], "AtlasLootCrafting" },
-	["TailoringCloak1"] = { BS["Tailoring"] .. ": " .. L["Cloak"], "AtlasLootCrafting" },	
+	["TailoringCloak1"] = { BS["Tailoring"] .. ": " .. L["Cloak"], "AtlasLootCrafting" },
 	["TailoringChest1"] = { BS["Tailoring"] .. ": " .. L["Chest"], "AtlasLootCrafting" },
 	["TailoringChest2"] = { BS["Tailoring"] .. ": " .. L["Chest"], "AtlasLootCrafting" },
 	["TailoringBracers1"] = { BS["Tailoring"] .. ": " .. L["Bracers"], "AtlasLootCrafting" },
@@ -1058,11 +1058,11 @@ AtlasLoot_TableNames = {
 	["Survival2"] = { BS["Garderning"], "AtlasLootCrafting" },
 	--Poisons
 	["Poisons1"] = { BC["Rogue"]..": "..BS["Poisons"], "AtlasLootCrafting" },
-	
+
 	-----------
 	--- PvP ---
 	-----------
-	
+
 	--Battlegrounds
 	--Blood Ring
 	["BRRepFriendly"] = { "Blood Ring" .. " " .. L["Friendly Rewards"], "AtlasLootBGItems" },
@@ -1125,11 +1125,11 @@ AtlasLoot_TableNames = {
 	["PVPShaman"] = { BC["Shaman"].." - "..L["PvP Sets"], "AtlasLootGeneralPvPItems" },
 	["PVPWarlock"] = { BC["Warlock"].." - "..L["PvP Sets"], "AtlasLootGeneralPvPItems" },
 	["PVPWarrior"] = { BC["Warrior"].." - "..L["PvP Sets"], "AtlasLootGeneralPvPItems" },
-	
+
 	-------------
 	--- Other ---
 	-------------
-	
+
 	--Menus, the entry does nothing, but makes the generalised loot table code less complex
 	["DUNGEONSMENU1"] = { "dummy", "dummy" },
 	["DUNGEONSMENU2"] = { "dummy", "dummy" },
@@ -1167,7 +1167,7 @@ AtlasLoot_TableNames = {
 	["TAILORINGMENU"] = { "dummy", "dummy" },
 	["COOKINGMENU"] = { "dummy", "dummy" },
 	["FIRSTAIDMENU"] = { "dummy", "dummy" },
-	["JEWELCRAFTMENU"] = { "dummy", "dummy" },	
+	["JEWELCRAFTMENU"] = { "dummy", "dummy" },
 	["WORLDMENU"] = { "dummy", "dummy" },
 	["SURVIVALMENU"] = { "dummy", "dummy" },
 	["WishList"] = { L["WishList"], "AtlasLootCharDB" },
@@ -1177,7 +1177,7 @@ AtlasLoot_TableNames = {
 }
 
 AtlasLoot_TableNamesBoss = {
-	
+
 	[L["Keys"]] = {
 		["VanillaKeys"] = { L["Keys"], "AtlasLootItems" },
 	},
@@ -1456,7 +1456,7 @@ AtlasLoot_TableNamesBoss = {
 		["RFCOggleflint"] = { BB["Oggleflint"], "AtlasLootItems" },
 		["RFCTaragaman"] = { BB["Taragaman the Hungerer"], "AtlasLootItems" },
 		["RFCJergosh"] = { BB["Jergosh the Invoker"], "AtlasLootItems" },
-		["Bazzalan"] = {BB["Bazzalan"], "AtlasLootItems"}, 
+		["Bazzalan"] = {BB["Bazzalan"], "AtlasLootItems"},
 	},
 	[BZ["Razorfen Downs"]] = {
 		["RFDTutenkash"] = { BB["Tuten'kash"], "AtlasLootItems" },
@@ -1746,11 +1746,11 @@ AtlasLoot_TableNamesBoss = {
 		["LKHTrash"] = { L["Trash Mobs"], "AtlasLootItems" },
 		["LKHEchants"] = { BZ["Lower Karazhan Halls"]..L["Enchants"], "AtlasLootItems" },
 	},
-	
+
 	------------
 	--- Sets ---
 	------------
-	
+
 	[L["Sets"]] = {
 		["DEADMINES"] = { L["Set: "]..BIS["Defias Leather"], "AtlasLootSetItems" },
 		["WAILING"] = { L["Set: "]..BIS["Embrace of the Viper"], "AtlasLootSetItems" },
@@ -1944,15 +1944,15 @@ AtlasLoot_TableNamesBoss = {
 		["T35Warlock"] = { BC["Warlock"] .. " - " .. L["Kara40 Sets"], "AtlasLootSetItems" },
 		["T35Warrior"] = { BC["Warrior"] .. " - " .. L["Kara40 Sets"], "AtlasLootSetItems" },
 	},
-	
+
 	------------------------
 	--- Misc Collections ---
 	------------------------
-	
+
 	--------------------
 	--- Rare mobs ---
 	--------------------
-	
+
 	[L["Rare Mobs"]] = {
 		["Tarangos"] = { BZ["Azshara"].." Tarangos <The Dampener> (56)".." ("..L["Rare"]..")", "AtlasLootWBItems" },
 		["Kargron"] = { BZ["Burning Steppes"].." Blademaster Kargron (59)".." ("..L["Rare"]..")", "AtlasLootWBItems" },
@@ -1992,11 +1992,11 @@ AtlasLoot_TableNamesBoss = {
 		["ShadeflayerGoliath"] = { BZ["Hyjal"].." Shadeflayer Goliath (61)".." ("..L["Rare"]..")", "AtlasLootWBItems" },
 		["M0L1Y"] = { BZ["Icepoint Rock"].." M0L1Y (47)".." ("..L["Rare"]..")", "AtlasLootWBItems" },
 	},
-	
+
 	--------------------
 	--- World ---
 	--------------------
-	
+
 	[L["World"]] = {
 		["AAzuregos"] = { BB["Azuregos"], "AtlasLootWBItems" },
 		["ASpiritA"] = { BB["Spirit of Azuregos"], "AtlasLootWBItems" },
@@ -2016,11 +2016,11 @@ AtlasLoot_TableNamesBoss = {
 		["DYsondre"] = { BB["Ysondre"], "AtlasLootWBItems" },
 		["DTrash"] = { L["Trash Mobs"].." ("..L["Emerald Dragons"]..")", "AtlasLootWBItems" },
 	},
-	
+
 	--------------
 	--- Events ---
 	--------------
-	
+
 	[L["World Events"]] = {
 		["AbyssalTemplars"] = { L["Abyssal Council"].." - "..L["Templars"], "AtlasLootWorldEvents" },
 		["AbyssalDukes"] = { L["Abyssal Council"].." - "..L["Dukes"], "AtlasLootWorldEvents" },
@@ -2045,7 +2045,7 @@ AtlasLoot_TableNamesBoss = {
 		["ScourgeInvasionEvent1"] = { L["Scourge Invasion"], "AtlasLootWorldEvents" },
 		["ScourgeInvasionEvent2"] = { L["Scourge Invasion Bosses"], "AtlasLootWorldEvents" },
 	},
-	
+
 	------------------------
 	--- Classic Factions ---
 	------------------------
@@ -2108,7 +2108,7 @@ AtlasLoot_TableNamesBoss = {
 		["Dalaran"] = { BZ["Dalaran"], "AtlasLootRepItems" },
 		["Wildhammer"] = { BF["Wildhammer Clan"], "AtlasLootRepItems" },
 	},
-	
+
 	--------------
 	--- Trades ---
 	--------------
@@ -2209,7 +2209,7 @@ AtlasLoot_TableNamesBoss = {
 		["Tribal1"] = { BS["Tribal Leatherworking"], "AtlasLootCrafting" },
 		["LeatherHelm1"] = { BS["Leatherworking"] .. ": " .. L["Helm"], "AtlasLootCrafting" },
 		["LeatherShoulders1"] = { BS["Leatherworking"] .. ": " .. L["Shoulders"], "AtlasLootCrafting" },
-		["LeatherCloak1"] = { BS["Leatherworking"] .. ": " .. L["Cloak"], "AtlasLootCrafting" },	
+		["LeatherCloak1"] = { BS["Leatherworking"] .. ": " .. L["Cloak"], "AtlasLootCrafting" },
 		["LeatherChest1"] = { BS["Leatherworking"] .. ": " .. L["Chest"], "AtlasLootCrafting" },
 		["LeatherChest2"] = { BS["Leatherworking"] .. ": " .. L["Chest"], "AtlasLootCrafting" },
 		["LeatherBracers1"] = { BS["Leatherworking"] .. ": " .. L["Bracers"], "AtlasLootCrafting" },
@@ -2241,7 +2241,7 @@ AtlasLoot_TableNamesBoss = {
 		["TailoringArtisan5"] = { BS["Tailoring"] .. ": " .. L["Artisan"], "AtlasLootCrafting" },
 		["TailoringHelm1"] = { BS["Tailoring"] .. ": " .. L["Helm"], "AtlasLootCrafting" },
 		["TailoringShoulders1"] = { BS["Tailoring"] .. ": " .. L["Shoulders"], "AtlasLootCrafting" },
-		["TailoringCloak1"] = { BS["Tailoring"] .. ": " .. L["Cloak"], "AtlasLootCrafting" },	
+		["TailoringCloak1"] = { BS["Tailoring"] .. ": " .. L["Cloak"], "AtlasLootCrafting" },
 		["TailoringChest1"] = { BS["Tailoring"] .. ": " .. L["Chest"], "AtlasLootCrafting" },
 		["TailoringChest2"] = { BS["Tailoring"] .. ": " .. L["Chest"], "AtlasLootCrafting" },
 		["TailoringBracers1"] = { BS["Tailoring"] .. ": " .. L["Bracers"], "AtlasLootCrafting" },
@@ -2288,11 +2288,11 @@ AtlasLoot_TableNamesBoss = {
 		--Poisons
 		["Poisons1"] = { BC["Rogue"]..": "..BS["Poisons"], "AtlasLootCrafting" },
 	},
-	
+
 	-----------
 	--- PvP ---
 	-----------
-	
+
 	[L["Battlegrounds"]] = {
         --Blood Ring
         ["BRRepFriendly"] = { BZ["Blood Ring"] .. " " .. L["Friendly Rewards"], "AtlasLootBGItems" },
