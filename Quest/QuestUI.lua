@@ -82,7 +82,12 @@ local function kQInsertQuestInformation()
         -- Remove level prefix if present (pattern like "60. " at the beginning)
         local levelPattern = "^%d+%. "
         questName = string.gsub(questName, levelPattern, "")
-        ChatFrameEditBox:Insert("["..questName.."]")   --TODO support pfQuest links
+        -- pfQuest quest link
+        if pfQuestCompat then
+            pfQuestCompat.InsertQuestLink(0,questName)
+        else
+            ChatFrameEditBox:Insert("["..questName.."]")
+        end
     end
 end
 

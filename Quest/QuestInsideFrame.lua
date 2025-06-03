@@ -11,6 +11,11 @@ frameMain:EnableMouse(true)
 frameMain:SetToplevel(true)
 frameMain:Show()
 
+-- Event handler
+frameMain:SetScript("OnEvent", function()
+    AQ_OnEvent(event)
+end)
+
 -- Helper function to set frame level +1 on show
 local function setFrameLevelOnShow()
     this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
@@ -181,10 +186,6 @@ pageCountText:SetHeight(20)
 pageCountText:SetPoint("BOTTOM", 0, 18)
 pageCountText:SetJustifyV("TOP")
 
--- Event handler
-frameMain:SetScript("OnEvent", function()
-    AQ_OnEvent(event)
-end)
 
 local questsToggleButton = CreateFrame("Button", "", AtlasFrame, "OptionsButtonTemplate")
 questsToggleButton:SetWidth(70)
