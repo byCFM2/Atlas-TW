@@ -1,34 +1,3 @@
---[[
-	
-	Atlas, a World of Warcraft instance map browser
-	Copyright 2005 - 2008 Dan Gilbert
-	Email me at loglow@gmail.com
-	
-	This file is part of Atlas.
-	
-	Atlas is free software, you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation, either version 2 of the License, or
-	(at your option) any later version.
-	
-	Atlas is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY, without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-	
-	You should have received a copy of the GNU General Public License
-	along with Atlas, if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
-	
---]]
-
--- Atlas Data
--- Compiled by Dan Gilbert
--- loglow@gmail.com
--- Many thanks to all contributors!
--- Now with GUIDs!
--- Now externally localized!
-
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local BC = AceLibrary("Babble-Class-2.2")
 local BZ = AceLibrary("Babble-Zone-2.2a")
@@ -53,11 +22,11 @@ local FACTION = 5
 local QUEST = 6
 
 AtlasMaps = {
-	
+
 	--************************************************
 	-- Kalimdor Instances
 	--************************************************
-	
+
 	RagefireChasm = {
 		ZoneName = { BZ["Ragefire Chasm"], 2437 },
 		Acronym = "RFC",
@@ -442,7 +411,7 @@ AtlasMaps = {
 	--************************************************
 	-- Eastern Kingdoms Instances
 	--************************************************
-	
+
 	BlackrockDepths = {
 		ZoneName = { BZ["Blackrock Depths"], 1584 },
 		Acronym = "BRD",
@@ -1110,7 +1079,7 @@ AtlasMaps = {
 		{ "" },
 		{ ORNG..L["Damage: "]..L["Nature"] }
 	},
-	
+
 	--************************************************
 	-- Instance Entrance Maps
 	--************************************************
@@ -1450,6 +1419,7 @@ AtlasMaps = {
 		{ GREY.."4) "..BB["Damian"], NPC, 80854 },
 		{ GREY.."5) "..BB["Volkan Cruelblade"], NPC, 80851 },
 		{ GREY.."6) "..L["Arc'tiras / Vault Armory Equipment"], NPC, 93107 },
+		{ "" },
 		{ GREY..INDENT..L["Trash Mobs"] },
 	},
 	CavernsOfTimeBlackMorass = {
@@ -1899,7 +1869,7 @@ AtlasMaps = {
 		{ GREY.."3) "..BZ["Naxxramas"]..", ".._RED..BZ["Eastern Plaguelands"], ZONE, 3456, 139 },
 		{ GREY.."4) "..BZ["Scholomance"]..", ".._RED..BZ["Western Plaguelands"], ZONE, 2057, 28 },
 		{ GREY.."5) "..BZ["Shadowfang Keep"]..", ".._RED..BZ["Silverpine Forest"], ZONE, 209, 130 },
-		{ GREY.."6) "..BZ["Gilneas City"]..", ".._RED..BZ["Gilneas"], ZONE, 133, 1 },		
+		{ GREY.."6) "..BZ["Gilneas City"]..", ".._RED..BZ["Gilneas"], ZONE, 133, 1 },
 		{ GREY.."7) "..BZ["Gnomeregan"]..", ".._RED..BZ["Dun Morogh"], ZONE, 133, 1 },
 		{ GREY.."8) "..BZ["Uldaman"]..", ".._RED..BZ["Badlands"], ZONE, 1337, 3 },
 		{ GREY.."9) "..BZ["Blackwing Lair"]..", ".._RED..BZ["Blackrock Spire"], ZONE, 2677, 1583 },
@@ -2052,7 +2022,7 @@ AtlasMaps = {
 		{ GREY.."12) "..BZ["Menethil Harbor"]..", "..BLUE..BZ["Wetlands"], ZONE, 405 },
 		{ GREY.."13) "..BZ["Ironforge"]..", "..BLUE..BZ["Dun Morogh"], ZONE, 215 },
 		{ GREY.."15) "..BZ["Stormwind City"]..", "..BLUE..BZ["Elwynn Forest"], ZONE, 15 },
-		{ "" },	
+		{ "" },
 		{ GREY.."3) "..BZ["Orgrimmar"]..", ".._RED..BZ["The Barrens"], ZONE, 440 },
 		{ GREY.."4) ".."Sparkwater Port"..", ".._RED..BZ["The Barrens"], ZONE, 361 },
 		{ GREY.."6) "..BZ["Thunder Bluff"]..", ".._RED..BZ["Mulgore"], ZONE, 16 },
@@ -2060,7 +2030,7 @@ AtlasMaps = {
 		{ GREY.."11) ".."Revantusk Village"..", ".._RED..BZ["The Hinterlands"], ZONE, 17 },
 		{ GREY.."14) ".."Kargath"..", ".._RED..BZ["Badlands"], ZONE, 17 },
 		{ GREY.."16) ".."Grom'Gol Base Camp"..", ".._RED..BZ["Stranglethorn Vale"], ZONE, 440 },
-		{ "" },	
+		{ "" },
 		{ GREY.."5) "..BZ["Ratchet"]..", "..ORNG..BZ["The Barrens"], ZONE, 331 },
 		{ GREY.."17) "..BZ["Booty Bay"]..", "..ORNG..BZ["Stranglethorn Vale"], ZONE, 357 },
 	},

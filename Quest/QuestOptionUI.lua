@@ -132,11 +132,9 @@ local function createKQuestOptionFrame()
 	-- Registration of events and handlers
 	frame:RegisterForDrag("LeftButton")
 	frame:SetScript("OnShow", kQuestOptionFrame_OnShow)
-	frame:SetScript("OnKeyDown", function()
-		if arg1 == "ESCAPE" then
-			HideUIPanel(this)
-		end
-	end)
+	--Allows QuestOptionFrame to be closed with the Escape key
+	tinsert(UISpecialFrames, "KQuestOptionFrame")
+
 	frame:SetScript("OnHide", function()
 		this:StopMovingOrSizing()
 	end)

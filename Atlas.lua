@@ -1,27 +1,4 @@
---[[
-	Atlas, a World of Warcraft instance map browser
-	Copyright 2005 - 2008 Dan Gilbert
-	Email me at loglow@gmail.com
-	This file is part of Atlas.
-	Atlas is free software; you can redistribute it and/or modify
-	it under the terms of the GNU General Public License as published by
-	the Free Software Foundation; either version 2 of the License, or
-	(at your option) any later version.
-	Atlas is distributed in the hope that it will be useful,
-	but WITHOUT ANY WARRANTY; without even the implied warranty of
-	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	GNU General Public License for more details.
-	You should have received a copy of the GNU General Public License
-	along with Atlas; if not, write to the Free Software
-	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
---]]
-
---Atlas, an instance map browser
---Author: Dan Gilbert
---Email: loglow@gmail.com
---AIM: dan5981
 local _G = getfenv()
-
 local Atlas_DebugMode = false
 local function debug(info)
 	if Atlas_DebugMode then
@@ -47,7 +24,7 @@ local DefaultAtlasOptions = {
 	["AtlasZone"] = 1,
 	["AtlasAlpha"] = 1.0,
 	["AtlasLocked"] = false,
-	["AtlasAutoSelect"] = true,
+	["AtlasAutoSelect"] = false,
 	["AtlasButtonPosition"] = 336,
 	["AtlasButtonRadius"] = 78,
 	["AtlasButtonShown"] = true,
@@ -57,7 +34,7 @@ local DefaultAtlasOptions = {
 	["AtlasScale"] = 1.0,
 	["AtlasClamped"] = true,
 	["AtlasSortBy"] = 1,
-	["QuestShownSide"] = "Left",
+	["QuestCurrentSide"] = "Left",
 	["QuestWithAtlas"] = true,
 	["QuestColourCheck"] = true,
 	["QuestCheckQuestlog"] = true,
@@ -212,7 +189,7 @@ function CloneTable(t)				-- return a copy of the table t
 	while i do
 		if type(v)=="table" then
 			v=CloneTable(v)
-		end 
+		end
 		new[i] = v
 		i, v = next(t, i)			-- get next index
 	end
@@ -240,7 +217,7 @@ function Atlas_RegisterPlugin(name, myCategory, myData)
 		AtlasTWOptions.AtlasType = ATLAS_OLD_TYPE
 		AtlasTWOptions.AtlasZone = ATLAS_OLD_ZONE
 	end
-	
+
 	Atlas_PopulateDropdowns()
 	Atlas_Refresh()
 end
@@ -269,23 +246,6 @@ function Atlas_SearchAndRefresh(text)
 	AtlasScrollBar_Update()
 end
 
---Called when the Atlas frame is first loaded
---We CANNOT assume that data in other files is available yet!
-function Atlas_OnLoad()
-	
-	--Register the Atlas frame for the following events
-	this:RegisterEvent("PLAYER_LOGIN")
-	this:RegisterEvent("ADDON_LOADED")
-	--Allows Atlas to be closed with the Escape key
-	tinsert(UISpecialFrames, "AtlasFrame")
-	--Dragging involves some special registration
-	AtlasFrame:RegisterForDrag("LeftButton")
-	--Setting up slash commands involves referencing some strage auto-generated variables
-	SLASH_ATLAS1 = "/atlas"
-	SlashCmdList["ATLAS"] = Atlas_SlashCommand
-end
-
-
 --Removal of articles in map names (for proper alphabetic sorting)
 --For example: "The Deadmines" will become "Deadmines"
 --Thus it will be sorted under D and not under T
@@ -293,11 +253,11 @@ local function Atlas_SanitizeName(text)
 	text = string.lower(text)
 	if AtlasSortIgnore then
 		for _,v in pairs(AtlasSortIgnore) do
-			local match 
-			if string.gmatch then 
+			local match
+			if string.gmatch then
 				match = string.gmatch(text, v)()
-			else 
-				match = string.gfind(text, v)() 
+			else
+				match = string.gfind(text, v)()
 			end
 			if match and (string.len(text) - string.len(match)) <= 4 then
 				return match
@@ -318,11 +278,9 @@ end
 
 --Main Atlas event handler
 function Atlas_OnEvent()
-
 	if event == "ADDON_LOADED" and arg1 == "Atlas-TW" then
 		Atlas_Init()
 	end
-
 end
 
 function Atlas_PopulateDropdowns()
@@ -338,7 +296,7 @@ function Atlas_PopulateDropdowns()
 			table.insert(ATLAS_DROPDOWNS[n], v)
 		end
 
-		if subcatOrder[n] ~= ATLAS_DDL_ALL_MENU1 and subcatOrder[n] ~= ATLAS_DDL_ALL_MENU2 and subcatOrder[n] ~= ATLAS_DDL_WORLD then 
+		if subcatOrder[n] ~= ATLAS_DDL_ALL_MENU1 and subcatOrder[n] ~= ATLAS_DDL_ALL_MENU2 and subcatOrder[n] ~= ATLAS_DDL_WORLD then
 			table.sort(ATLAS_DROPDOWNS[n], Atlas_SortZonesAlpha)
 		end
 
@@ -495,8 +453,6 @@ function Atlas_Refresh()
 
 	local tLoc = ""
 	local tLR = ""
-	local tHP = ""
-	local tMP = ""
 	local tML = ""
 	local tPL = ""
 	if base.Location[1] then
@@ -504,12 +460,6 @@ function Atlas_Refresh()
 	end
 	if base.LevelRange then
 		tLR = ATLAS_STRING_LEVELRANGE..": "..base.LevelRange
-	end
-	if base.Health then
-		tHP = ATLAS_STRING_HEALTH..": "..base.Health
-	end
-	if base.Mana then
-		tMP = ATLAS_STRING_MANA..": "..base.Mana
 	end
 	if base.MinLevel then
 		tML = ATLAS_STRING_MINLEVEL..": "..base.MinLevel
@@ -519,8 +469,6 @@ function Atlas_Refresh()
 	end
 	AtlasText_Location_Text:SetText(tLoc)
 	AtlasText_LevelRange_Text:SetText(tLR)
-	AtlasText_Health_Text:SetText(tHP)
-	AtlasText_Mana_Text:SetText(tMP)
 	AtlasText_MinLevel_Text:SetText(tML)
 	AtlasText_PlayerLimit_Text:SetText(tPL)
 
@@ -544,11 +492,11 @@ function Atlas_Refresh()
 	Atlas_Search("")
 	AtlasSearchEditBox:SetText("")
 	AtlasSearchEditBox:ClearFocus()
-	
+
 	--create and align any new entry buttons that we need
 	for i=1,ATLAS_CUR_LINES do
 		if not _G["AtlasEntry"..i] then
-			local f = CreateFrame("Button", "AtlasEntry"..i, AtlasFrame, "AtlasEntryTemplate")
+			local f = CreateAtlasEntryTemplate("AtlasEntry"..i, AtlasFrame)
 			if i==1 then
 				f:SetPoint("TOPLEFT", "AtlasScrollBar", "TOPLEFT", 16, -2)
 			else
@@ -807,7 +755,7 @@ function Atlas_AutoSelect()
 		end
 		debug("Searching through all maps for a ZoneName match.")
 		for ka,va in pairs(ATLAS_DROPDOWNS) do
-			for kb,vb in pairs(va) do 
+			for kb,vb in pairs(va) do
 				-- Compare the currentZone to the new substr of ZoneName
 				if currentZone == strsub(AtlasMaps[vb].ZoneName[1], strlen(AtlasMaps[vb].ZoneName[1]) - strlen(currentZone) + 1) then
 					AtlasTWOptions.AtlasType = ka
@@ -867,20 +815,20 @@ function AtlasSimpleSearch(data, text)
 	local i
 	local v
 	local n
-	
+
 	local search_text = string.lower(text)
 	search_text = string.gsub(search_text, "([%^%$%(%)%%%.%[%]%+%-%?])", "%%%1")
 	search_text = string.gsub(search_text, "%*", ".*")
 	local match
-	
+
 	i, v = next(data, nil)-- i is an index of data, v = data[i]
 	n = i
 	while i do
 		if type(i) == "number" then
-			if string.gmatch then 
+			if string.gmatch then
 				match = string.gmatch(string.lower(data[i][1]), search_text)()
 			else
-				match = string.gfind(string.lower(data[i][1]), search_text)() 
+				match = string.gfind(string.lower(data[i][1]), search_text)()
 			end
 			if match then
 				new[n] = {}
@@ -891,9 +839,4 @@ function AtlasSimpleSearch(data, text)
 		i, v = next(data, i)-- get next index
 	end
 	return new
-end
-
-local function round(num, idp)
-	local mult = 10 ^ (idp or 0)
-	return math.floor(num * mult + 0.5) / mult
 end

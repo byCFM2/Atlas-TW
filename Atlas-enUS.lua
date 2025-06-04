@@ -14,8 +14,6 @@ ATLAS_DESC = "Atlas is an instance map browser."
 
 ATLAS_STRING_LOCATION = "Location"
 ATLAS_STRING_LEVELRANGE = "Level Range"
-ATLAS_STRING_HEALTH = "Health"
-ATLAS_STRING_MANA = "Mana"
 ATLAS_STRING_PLAYERLIMIT = "Player Limit"
 ATLAS_STRING_SELECT_CAT = "Select Category"
 ATLAS_STRING_SELECT_MAP = "Select Map"

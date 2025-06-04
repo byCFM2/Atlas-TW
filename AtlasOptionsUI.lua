@@ -15,6 +15,8 @@ local function atlasOptions_CreateFrames()
     optionsFrame:SetClampedToScreen(true)
     optionsFrame:Hide()
 
+	tinsert(UISpecialFrames, "AtlasOptionsFrame")
+
     -- Frame scripts
     optionsFrame:SetScript("OnDragStart", function()
         this:StartMoving()

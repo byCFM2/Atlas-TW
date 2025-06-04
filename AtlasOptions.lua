@@ -47,20 +47,6 @@ function AtlasOptions_ClampedToggle()
 	Atlas_Refresh()
 end
 
-function AtlasOptions_CtrlToggle()
-	if AtlasTWOptions.AtlasCtrl then
-		AtlasTWOptions.AtlasCtrl = false
-	else
-		AtlasTWOptions.AtlasCtrl = true
-	end
-	AtlasOptions_Init()
-	Atlas_Refresh()
-end
-
-function AtlasOptions_OnLoad()
-	UIPanelWindows['AtlasOptionsFrame'] = {area = 'center', pushable = 0}
-end
-
 function AtlasOptions_Init()
 	AtlasOptionsFrameToggleButton:SetChecked(AtlasTWOptions.AtlasButtonShown)
 	AtlasOptionsFrameAutoSelect:SetChecked(AtlasTWOptions.AtlasAutoSelect)
@@ -89,7 +75,7 @@ function AtlasOptions_SetupSlider(text, mymin, mymax, step)
 	_G[this:GetName().."Low"]:SetText(mymin)
 	_G[this:GetName().."High"]:SetText(mymax)
 	this:SetValueStep(step)
-end
+end -- TODO эта функция не используется, попробовать ее задействовать
 
 local function round(num, idp)
 	local mult = 10 ^ (idp or 0)
@@ -101,26 +87,7 @@ function AtlasOptions_UpdateSlider(text)
 end
 
 
-function AtlasOptionsFrameDropDownCats_Initialize()
-	local info
-	for i = 1, getn(Atlas_DropDownLayouts_Order), 1 do
-		info = {
-			text = Atlas_DropDownLayouts_Order[i],
-			func = AtlasOptionsFrameDropDownCats_OnClick
-		}
-		UIDropDownMenu_AddButton(info)
-	end
-end
-
-
-function AtlasOptionsFrameDropDownCats_OnShow()
-	UIDropDownMenu_Initialize(AtlasOptionsFrameDropDownCats, AtlasOptionsFrameDropDownCats_Initialize)
-	UIDropDownMenu_SetSelectedID(AtlasOptionsFrameDropDownCats, AtlasTWOptions.AtlasSortBy)
-	UIDropDownMenu_SetWidth(100, AtlasOptionsFrameDropDownCats)
-end
-
-
-function AtlasOptionsFrameDropDownCats_OnClick()
+local function atlasOptionsFrameDropDownCats_OnClick()
 	local thisID = this:GetID()
 	UIDropDownMenu_SetSelectedID(AtlasOptionsFrameDropDownCats, thisID)
 	AtlasTWOptions.AtlasSortBy = thisID
@@ -130,4 +97,21 @@ function AtlasOptionsFrameDropDownCats_OnClick()
 	Atlas_Refresh()
 	AtlasFrameDropDownType_OnShow()
 	AtlasFrameDropDown_OnShow()
+end
+
+local function atlasOptionsFrameDropDownCats_Initialize()
+	local info
+	for i = 1, getn(Atlas_DropDownLayouts_Order), 1 do
+		info = {
+			text = Atlas_DropDownLayouts_Order[i],
+			func = atlasOptionsFrameDropDownCats_OnClick
+		}
+		UIDropDownMenu_AddButton(info)
+	end
+end
+
+function AtlasOptionsFrameDropDownCats_OnShow()
+	UIDropDownMenu_Initialize(AtlasOptionsFrameDropDownCats, atlasOptionsFrameDropDownCats_Initialize)
+	UIDropDownMenu_SetSelectedID(AtlasOptionsFrameDropDownCats, AtlasTWOptions.AtlasSortBy)
+	UIDropDownMenu_SetWidth(100, AtlasOptionsFrameDropDownCats)
 end

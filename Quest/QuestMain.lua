@@ -590,7 +590,7 @@ end
 -- Loads the saved variables
 -----------------------------------------------------------------------------
 local function kQuest_LoadData()
-	variables.QCurrentSide = AtlasTWOptions["QuestShownSide"]
+	variables.QCurrentSide = AtlasTWOptions["QuestCurrentSide"]
 	variables.QWithAtlas = AtlasTWOptions["QuestWithAtlas"]
 	variables.QColourCheck = AtlasTWOptions["QuestColourCheck"]
 	KQuest_Options = KQuest_Options or {}
@@ -648,7 +648,7 @@ end
 -----------------------------------------------------------------------------
 function KQuest_SaveData()
 	-- Save the variables
-	AtlasTWOptions["QuestShownSide"] = variables.QCurrentSide
+	AtlasTWOptions["QuestCurrentSide"] = variables.QCurrentSide
 	AtlasTWOptions["QuestWithAtlas"] = variables.QWithAtlas
 	AtlasTWOptions["QuestColourCheck"] = variables.QColourCheck
 	AtlasTWOptions["QuestCheckQuestlog"] = variables.QCheckQuestlog
