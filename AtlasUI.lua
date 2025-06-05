@@ -1,4 +1,5 @@
 local _G = getfenv()
+local atlasTW = _G.AtlasTW
 
 -- Функция для создания шаблона AtlasEntryTemplate (кнопки-текст для боссов)
 function CreateAtlasEntryTemplate(name, parent)
@@ -20,13 +21,12 @@ function CreateAtlasEntryTemplate(name, parent)
     fontString:SetPoint("TOPLEFT", button, "TOPLEFT", 0, 0)
 
     -- Сохраняем ссылку на FontString в кнопке для удобства доступа
- --   button.text = fontString
+ --   button.text = fontString --TODO проверить нужна ли ссылка на FontString
 
     return button
 end
 
 local function atlas_CreateFrames()
-
     -- Create the main Atlas frame
     local atlasFrame = CreateFrame("Frame", "AtlasFrame", UIParent)
     atlasFrame:SetFrameStrata("HIGH")
@@ -37,8 +37,6 @@ local function atlas_CreateFrames()
     atlasFrame:SetMovable(true)
     atlasFrame:EnableMouse(true)
 	atlasFrame:RegisterForDrag("LeftButton")
-	--Register the Atlas frame for the following events
-	atlasFrame:RegisterEvent("PLAYER_LOGIN")
 	atlasFrame:RegisterEvent("ADDON_LOADED")
 	--Allows Atlas to be closed with the Escape key
 	tinsert(UISpecialFrames, "AtlasFrame")
@@ -288,11 +286,11 @@ local function atlas_CreateFrames()
     rightTexture:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 512, 0)
 
     local titleText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-    titleText:SetText("Atlas-TW")
+    titleText:SetText(atlasTW.Name)
     titleText:SetPoint("TOP", atlasFrame, "TOP", 20, -17)
 
     local versionText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
-    versionText:SetText(ATLASTW_VERSION)
+    versionText:SetText(atlasTW.Version)
     versionText:SetTextColor(0.4, 0.4, 0.4)
     versionText:SetPoint("TOPRIGHT", atlasFrame, "TOPRIGHT", -52, -18)
 

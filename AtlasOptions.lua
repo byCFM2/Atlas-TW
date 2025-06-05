@@ -1,117 +1,204 @@
+-- Локальные ссылки на глобальные функции для повышения производительности
 local _G = getfenv()
+local uIDropDownMenu_SetSelectedID = UIDropDownMenu_SetSelectedID
 
+-- Локальные переменные для часто используемых элементов UI
+local atlasOptionsFrame
+local atlasFrame
+local atlasTWOptions
+
+-- Инициализация локальных ссылок
+local function initializeLocalReferences()
+    atlasOptionsFrame = AtlasOptionsFrame
+    atlasFrame = AtlasFrame
+    atlasTWOptions = AtlasTWOptions
+end
+
+-- Утилитарная функция для округления
+local function round(num, idp)
+    local mult = 10 ^ (idp or 0)
+    return math.floor(num * mult + 0.5) / mult
+end
+
+-- Основные функции переключения опций
 function AtlasOptions_Toggle()
-	if AtlasOptionsFrame:IsVisible() then
-		AtlasOptionsFrame:Hide()
-	else
-		AtlasOptionsFrame:Show()
-	end
+    if not atlasOptionsFrame then
+        initializeLocalReferences()
+    end
+
+    if atlasOptionsFrame:IsVisible() then
+        atlasOptionsFrame:Hide()
+    else
+        atlasOptionsFrame:Show()
+    end
 end
 
 function AtlasOptions_AutoSelectToggle()
-	if AtlasTWOptions.AtlasAutoSelect then
-		AtlasTWOptions.AtlasAutoSelect = false
-	else
-		AtlasTWOptions.AtlasAutoSelect = true
-	end
-	AtlasOptions_Init()
+    if not atlasTWOptions then
+        initializeLocalReferences()
+    end
+
+    atlasTWOptions.AtlasAutoSelect = not atlasTWOptions.AtlasAutoSelect
+    AtlasOptions_Init()
 end
 
 function AtlasOptions_RightClickToggle()
-	if AtlasTWOptions.AtlasRightClick then
-		AtlasTWOptions.AtlasRightClick = false
-	else
-		AtlasTWOptions.AtlasRightClick = true
-	end
-	AtlasOptions_Init()
+    if not atlasTWOptions then
+        initializeLocalReferences()
+    end
+
+    atlasTWOptions.AtlasRightClick = not atlasTWOptions.AtlasRightClick
+    AtlasOptions_Init()
 end
 
 function AtlasOptions_AcronymsToggle()
-	if AtlasTWOptions.AtlasAcronyms then
-		AtlasTWOptions.AtlasAcronyms = false
-	else
-		AtlasTWOptions.AtlasAcronyms = true
-	end
-	AtlasOptions_Init()
-	Atlas_Refresh()
+    if not atlasTWOptions then
+        initializeLocalReferences()
+    end
+
+    atlasTWOptions.AtlasAcronyms = not atlasTWOptions.AtlasAcronyms
+    AtlasOptions_Init()
+    Atlas_Refresh()
 end
 
 function AtlasOptions_ClampedToggle()
-	if AtlasTWOptions.AtlasClamped then
-		AtlasTWOptions.AtlasClamped = false
-	else
-	AtlasTWOptions.AtlasClamped = true
-	end
-	AtlasFrame:SetClampedToScreen(AtlasTWOptions.AtlasClamped)
-	AtlasOptions_Init()
-	Atlas_Refresh()
+    if not atlasTWOptions or not atlasFrame then
+        initializeLocalReferences()
+    end
+
+    atlasTWOptions.AtlasClamped = not atlasTWOptions.AtlasClamped
+    atlasFrame:SetClampedToScreen(atlasTWOptions.AtlasClamped)
+    AtlasOptions_Init()
+    Atlas_Refresh()
 end
 
+-- Инициализация настроек
 function AtlasOptions_Init()
-	AtlasOptionsFrameToggleButton:SetChecked(AtlasTWOptions.AtlasButtonShown)
-	AtlasOptionsFrameAutoSelect:SetChecked(AtlasTWOptions.AtlasAutoSelect)
-	AtlasOptionsFrameRightClick:SetChecked(AtlasTWOptions.AtlasRightClick)
-	AtlasOptionsFrameAcronyms:SetChecked(AtlasTWOptions.AtlasAcronyms)
-	AtlasOptionsFrameClamped:SetChecked(AtlasTWOptions.AtlasClamped)
-	AtlasOptionsFrameSliderButtonPos:SetValue(AtlasTWOptions.AtlasButtonPosition)
-	AtlasOptionsFrameSliderButtonRad:SetValue(AtlasTWOptions.AtlasButtonRadius)
-	AtlasOptionsFrameSliderAlpha:SetValue(AtlasTWOptions.AtlasAlpha)
-	AtlasOptionsFrameSliderScale:SetValue(AtlasTWOptions.AtlasScale)
+    if not atlasTWOptions then
+        initializeLocalReferences()
+    end
+
+    -- Локальные ссылки на элементы UI для повышения производительности
+    local toggleButton = AtlasOptionsFrameToggleButton
+    local autoSelect = AtlasOptionsFrameAutoSelect
+    local rightClick = AtlasOptionsFrameRightClick
+    local acronyms = AtlasOptionsFrameAcronyms
+    local clamped = AtlasOptionsFrameClamped
+    local sliderButtonPos = AtlasOptionsFrameSliderButtonPos
+    local sliderButtonRad = AtlasOptionsFrameSliderButtonRad
+    local sliderAlpha = AtlasOptionsFrameSliderAlpha
+    local sliderScale = AtlasOptionsFrameSliderScale
+
+    -- Установка значений
+    toggleButton:SetChecked(atlasTWOptions.AtlasButtonShown)
+    autoSelect:SetChecked(atlasTWOptions.AtlasAutoSelect)
+    rightClick:SetChecked(atlasTWOptions.AtlasRightClick)
+    acronyms:SetChecked(atlasTWOptions.AtlasAcronyms)
+    clamped:SetChecked(atlasTWOptions.AtlasClamped)
+    sliderButtonPos:SetValue(atlasTWOptions.AtlasButtonPosition)
+    sliderButtonRad:SetValue(atlasTWOptions.AtlasButtonRadius)
+    sliderAlpha:SetValue(atlasTWOptions.AtlasAlpha)
+    sliderScale:SetValue(atlasTWOptions.AtlasScale)
 end
 
+-- Сброс позиции
 function AtlasOptions_ResetPosition()
-	AtlasFrame:ClearAllPoints()
-	AtlasFrame:SetPoint("TOPLEFT", 0, -104)
-	AtlasTWOptions.AtlasButtonPosition = 336
-	AtlasTWOptions.AtlasButtonRadius = 78
-	AtlasTWOptions.AtlasAlpha = 1.0
-	AtlasTWOptions.AtlasScale = 1.0
-	AtlasOptions_Init()
+    if not atlasFrame or not atlasTWOptions then
+        initializeLocalReferences()
+    end
+
+    atlasFrame:ClearAllPoints()
+    atlasFrame:SetPoint("TOPLEFT", 0, -104)
+
+    -- Сброс настроек к значениям по умолчанию
+    atlasTWOptions.AtlasButtonPosition = 336
+    atlasTWOptions.AtlasButtonRadius = 78
+    atlasTWOptions.AtlasAlpha = 1.0
+    atlasTWOptions.AtlasScale = 1.0
+
+    AtlasOptions_Init()
 end
 
+-- Настройка слайдера (улучшенная версия)
 function AtlasOptions_SetupSlider(text, mymin, mymax, step)
-	_G[this:GetName().."Text"]:SetText(text.." ("..this:GetValue()..")")
-	this:SetMinMaxValues(mymin, mymax)
-	_G[this:GetName().."Low"]:SetText(mymin)
-	_G[this:GetName().."High"]:SetText(mymax)
-	this:SetValueStep(step)
-end -- TODO эта функция не используется, попробовать ее задействовать
+    local sliderName = this:GetName()
+    local textElement = _G[sliderName .. "Text"]
+    local lowElement = _G[sliderName .. "Low"]
+    local highElement = _G[sliderName .. "High"]
 
-local function round(num, idp)
-	local mult = 10 ^ (idp or 0)
-	return math.floor(num * mult + 0.5) / mult
+    if textElement then
+        textElement:SetText(text .. " (" .. this:GetValue() .. ")")
+    end
+
+    this:SetMinMaxValues(mymin, mymax)
+
+    if lowElement then
+        lowElement:SetText(mymin)
+    end
+
+    if highElement then
+        highElement:SetText(mymax)
+    end
+
+    this:SetValueStep(step)
 end
 
+-- Обновление слайдера
 function AtlasOptions_UpdateSlider(text)
-	_G[this:GetName().."Text"]:SetText(text.." ("..round(this:GetValue(),2)..")")
+    local sliderName = this:GetName()
+    local textElement = _G[sliderName .. "Text"]
+
+    if textElement then
+        textElement:SetText(text .. " (" .. round(this:GetValue(), 2) .. ")")
+    end
 end
 
-
+-- Локальные функции для dropdown меню
 local function atlasOptionsFrameDropDownCats_OnClick()
-	local thisID = this:GetID()
-	UIDropDownMenu_SetSelectedID(AtlasOptionsFrameDropDownCats, thisID)
-	AtlasTWOptions.AtlasSortBy = thisID
-	AtlasTWOptions.AtlasZone = 1
-	AtlasTWOptions.AtlasType = 1
-	Atlas_PopulateDropdowns()
-	Atlas_Refresh()
-	AtlasFrameDropDownType_OnShow()
-	AtlasFrameDropDown_OnShow()
+    local thisID = this:GetID()
+
+    if not atlasTWOptions then
+        initializeLocalReferences()
+    end
+
+    uIDropDownMenu_SetSelectedID(AtlasOptionsFrameDropDownCats, thisID)
+    atlasTWOptions.AtlasSortBy = thisID
+    atlasTWOptions.AtlasZone = 1
+    atlasTWOptions.AtlasType = 1
+
+    -- Обновление интерфейса
+    Atlas_PopulateDropdowns()
+    Atlas_Refresh()
+    AtlasFrameDropDownType_OnShow()
+    AtlasFrameDropDown_OnShow()
 end
 
 local function atlasOptionsFrameDropDownCats_Initialize()
-	local info
-	for i = 1, getn(Atlas_DropDownLayouts_Order), 1 do
-		info = {
-			text = Atlas_DropDownLayouts_Order[i],
-			func = atlasOptionsFrameDropDownCats_OnClick
-		}
-		UIDropDownMenu_AddButton(info)
-	end
+    local info
+    local dropDownOrder = Atlas_DropDownLayouts_Order
+
+    if not dropDownOrder then
+        return
+    end
+
+    for i = 1, getn(dropDownOrder) do
+        info = {
+            text = dropDownOrder[i],
+            func = atlasOptionsFrameDropDownCats_OnClick
+        }
+        UIDropDownMenu_AddButton(info)
+    end
 end
 
+-- Показ dropdown категорий
 function AtlasOptionsFrameDropDownCats_OnShow()
-	UIDropDownMenu_Initialize(AtlasOptionsFrameDropDownCats, atlasOptionsFrameDropDownCats_Initialize)
-	UIDropDownMenu_SetSelectedID(AtlasOptionsFrameDropDownCats, AtlasTWOptions.AtlasSortBy)
-	UIDropDownMenu_SetWidth(100, AtlasOptionsFrameDropDownCats)
+    if not atlasTWOptions then
+        initializeLocalReferences()
+    end
+
+    local dropDownCats = AtlasOptionsFrameDropDownCats
+
+    UIDropDownMenu_Initialize(dropDownCats, atlasOptionsFrameDropDownCats_Initialize)
+    uIDropDownMenu_SetSelectedID(dropDownCats, atlasTWOptions.AtlasSortBy)
+    UIDropDownMenu_SetWidth(100, dropDownCats)
 end

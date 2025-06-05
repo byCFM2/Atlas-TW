@@ -482,9 +482,11 @@ end
 	Replacement for Atlas_Refresh, required as the template for the boss buttons in Atlas is insufficient
 	Called whenever the state of Atlas changes
 ]]
+
 function AtlasLoot_Refresh()
 	--Reset which loot page is 'current'
 	AtlasLootItemsFrame.activeBoss = nil
+
 	--Get map selection info from Atlas
 	local zoneID = ATLAS_DROPDOWNS[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
 	local data = AtlasMaps
@@ -493,20 +495,14 @@ function AtlasLoot_Refresh()
 	for k,v in pairs(data[zoneID]) do
 		base[k] = v
 	end
+
 	--Display the newly selected texture
 	AtlasMap:ClearAllPoints()
 	AtlasMap:SetWidth(512)
 	AtlasMap:SetHeight(512)
 	AtlasMap:SetPoint("TOPLEFT", "AtlasFrame", "TOPLEFT", 18, -84)
-	local builtIn = AtlasMap:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\Maps\\"..zoneID)
-	--If texture was not found in the core Atlas mod, check plugins
-	if not builtIn then
-		for k,v in pairs(ATLAS_PLUGINS) do
-			if AtlasMap:SetTexture("Interface\\AddOns\\"..v.."\\Images\\"..zoneID) then
-				break
-			end
-		end
-	end
+	AtlasMap:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\Maps\\"..zoneID)
+
 	--Setup info panel above boss listing
 	local tName = base.ZoneName[1]
 	if AtlasTWOptions.AtlasAcronyms and base.Acronym ~= nil then
