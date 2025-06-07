@@ -5,7 +5,7 @@
 	<Include file="AtlasMaps.lua"/>
 	<Include file="AtlasDropDown.lua"/>
 	<Include file="Atlas.lua"/>
-	<Include file="AtlasButton.lua"/>
+	<Include file="AtlasMinimapButton.lua"/>
 	<Include file="AtlasUI.lua"/>
 	<Include file="AtlasOptions.lua"/>
 	<Include file="AtlasOptionsUI.lua"/>

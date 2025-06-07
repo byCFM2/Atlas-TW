@@ -19,7 +19,6 @@ local NPC = 2
 local ITEM = 3
 local OBJECT = 4
 local FACTION = 5
-local QUEST = 6
 
 AtlasMaps = {
 

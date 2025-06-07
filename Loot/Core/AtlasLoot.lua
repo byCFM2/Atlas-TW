@@ -35,23 +35,13 @@ AtlasLoot_HewdropSubMenu = AceLibrary("Hewdrop-2.0")
 ATLASLOOT_DEBUGSHOWN = false
 
 -- Colours stored for code readability
-local GREY = "|cff999999"
 local RED = "|cffff0000"
 local WHITE = "|cffFFFFFF"
-local GREEN = "|cff1eff00"
-local PURPLE = "|cff9F3FFF"
 local BLUE = "|cff0070dd"
-local ORANGE = "|cffFF8400"
 local DEFAULT = "|cffFFd200"
-
---Establish number of boss lines in the Atlas frame for scrolling
-local ATLAS_LOOT_BOSS_LINES = 24
 
 --Set the default anchor for the loot frame to the Atlas frame
 AtlasLoot_AnchorFrame = AtlasLootDefaultFrame
-
---Variables to hold hooked Atlas functions
-Hooked_AtlasScrollBar_Update = nil
 
 AtlasLootCharDB={}
 
@@ -178,9 +168,6 @@ function AtlasLoot_OnVariablesLoaded()
 	if AtlasButton_LoadAtlas then
 		AtlasButton_LoadAtlas()
 	end
-	--Instead of hooking, replace the scrollbar driver function
-	Hooked_AtlasScrollBar_Update = AtlasScrollBar_Update
-	AtlasScrollBar_Update = AtlasLoot_AtlasScrollBar_Update
 	--Disable options that don't have the supporting mods
 	if not LootLink_SetTooltip and AtlasLootCharDB.LootlinkTT == true then
 		AtlasLootCharDB.LootlinkTT = false
@@ -403,7 +390,6 @@ end
 
 --[[
 	AtlasLoot_AtlasScrollBar_Update:
-	Hooks the Atlas scroll frame. 
 	Required as the Atlas function cannot deal with the AtlasLoot button template or the added Atlasloot entries
 ]]
 function AtlasLoot_AtlasScrollBar_Update()
@@ -411,15 +397,15 @@ function AtlasLoot_AtlasScrollBar_Update()
 	if _G["AtlasBossLine1_Text"] ~= nil then
 		local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
 		--Update the contents of the Atlas scroll frame
-		FauxScrollFrame_Update(AtlasScrollBar,ATLAS_CUR_LINES,ATLAS_LOOT_BOSS_LINES,15)
+		FauxScrollFrame_Update(AtlasScrollBar, atlasTW.CurrentLine, atlasTW.NUM_LINES, 15)
 		--Make note of how far in the scroll frame we are
 		for line=1,AtlasTW.NUM_LINES do
 			lineplusoffset = line + FauxScrollFrame_GetOffset(AtlasScrollBar)
 			local bossLine = _G["AtlasBossLine"..line]
-			if lineplusoffset <= ATLAS_CUR_LINES then
+			if lineplusoffset <= atlasTW.CurrentLine then
 				local loot = _G["AtlasBossLine"..line.."_Loot"]
 				local selected = _G["AtlasBossLine"..line.."_Selected"]
-				_G["AtlasBossLine"..line.."_Text"]:SetText(ATLAS_SCROLL_LIST[lineplusoffset])
+				_G["AtlasBossLine"..line.."_Text"]:SetText(atlasTW.ScrollList[lineplusoffset])
 				if AtlasLootItemsFrame.activeBoss == lineplusoffset then
 					bossLine:Enable()
 					loot:Hide()
@@ -465,19 +451,10 @@ function AtlasLoot_Atlas_OnShow()
 	--saved on the item frame, so restore it in Atlas
 	if AtlasLootItemsFrame.activeBoss ~= nil then
 		AtlasLootItemsFrame:Show()
-	else
-
-		--If no loot table is selected, set up icons next to boss names
-		for i=1,ATLAS_CUR_LINES do
-			if _G["AtlasEntry"..i.."_Selected"] and _G["AtlasEntry"..i.."_Selected"]:IsVisible() then
-				_G["AtlasEntry"..i.."_Loot"]:Show()
-				_G["AtlasEntry"..i.."_Selected"]:Hide()
-			end
-		end
 	end
 
 	--Consult the saved variable table to see whether to show the bottom panel
-	if AtlasLootCharDB.HidePanel == true then
+	if AtlasLootCharDB.HidePanel then
 		AtlasLootPanel:Hide()
 	else
 		AtlasLootPanel:Show()
@@ -1536,8 +1513,8 @@ function AtlasLootItemsFrame_OnCloseButton()
 	AtlasLootItemsFrame.activeBoss = nil
 	--Fix the boss buttons so the correct icons are displayed
 	if AtlasFrame and AtlasFrame:IsVisible() then
-		if ATLAS_CUR_LINES then
-			for i=1,ATLAS_CUR_LINES do
+		if atlasTW.CurrentLine then
+			for i = 1, atlasTW.CurrentLine do
 				if _G["AtlasBossLine"..i.."_Selected"]:IsVisible() then
 					_G["AtlasBossLine"..i.."_Selected"]:Hide()
 					_G["AtlasBossLine"..i.."_Loot"]:Show()

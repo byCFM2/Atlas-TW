@@ -125,14 +125,10 @@ AtlasTW = {
     },
 
     --variables
+    DebugMode = true,
     Name = "Atlas-TW",
     Version = nil,
     DropDowns = {},
-}
-
-AtlasTWOptions = {
-    AtlasAlpha = 1,
-    AtlasAcronyms = true,
-    AtlasClamped = true,
-    DebugMode = false,
+    CurrentLine = 0,
+    ScrollList = {},
 }

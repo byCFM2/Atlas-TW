@@ -12,6 +12,7 @@ function AtlasButton_Init()
 	else
 		AtlasButtonFrame:Hide()
 	end
+	AtlasButton_UpdatePosition()
 end
 
 -- Переключение видимости кнопки

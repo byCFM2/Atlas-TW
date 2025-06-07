@@ -1,31 +1,6 @@
 local _G = getfenv()
 local atlasTW = _G.AtlasTW
 
--- Функция для создания шаблона AtlasEntryTemplate (кнопки-текст для боссов)
-function CreateAtlasEntryTemplate(name, parent)
-    -- Создаем кнопку с заданным именем и родителем
-    local button = CreateFrame("Button", name, parent)
-    button:SetWidth(330)
-    button:SetHeight(15)
-    button:Hide()
-    button:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
-
-    -- Создаем FontString для текста
-    local fontString = button:CreateFontString(name and (name .. "_Text") or nil, "OVERLAY")
-    fontString:SetFontObject(GameFontHighlight)
-    fontString:SetWidth(330)
-    fontString:SetHeight(15)
-    fontString:SetJustifyH("LEFT")
-    fontString:SetPoint("TOPLEFT", button, "TOPLEFT", 0, 0)
-
-    -- Сохраняем ссылку на FontString в кнопке для удобства доступа
- --   button.text = fontString --TODO проверить нужна ли ссылка на FontString
-
-    return button
-end
-
 local function atlas_CreateFrames()
     -- Create the main Atlas frame
     local atlasFrame = CreateFrame("Frame", "AtlasFrame", UIParent)
@@ -155,10 +130,10 @@ local function atlas_CreateFrames()
     scrollBar:SetHeight(367)
     scrollBar:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 530, -186)
     scrollBar:SetScript("OnVerticalScroll", function()
-        FauxScrollFrame_OnVerticalScroll(15, AtlasScrollBar_Update)
+        FauxScrollFrame_OnVerticalScroll(15, AtlasLoot_AtlasScrollBar_Update)
     end)
     scrollBar:SetScript("OnShow", function()
-        AtlasScrollBar_Update()
+        AtlasLoot_AtlasScrollBar_Update()
     end)
 
     -- Search container
@@ -296,7 +271,6 @@ local function atlas_CreateFrames()
 
     -- Map texture
     atlasFrame:CreateTexture("AtlasMap", "BACKGROUND")
-	AtlasMap:ClearAllPoints()
 	AtlasMap:SetWidth(512)
 	AtlasMap:SetHeight(512)
 	AtlasMap:SetPoint("TOPLEFT", "AtlasFrame", "TOPLEFT", 18, -84)
@@ -357,7 +331,6 @@ local function atlasButton_CreateFrames()
     -- Frame scripts
     buttonFrame:SetScript("OnEvent", function()
         AtlasButton_Init()
-        AtlasButton_UpdatePosition()
     end)
 
     -- Create the button

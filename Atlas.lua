@@ -1,7 +1,10 @@
 local _G = getfenv()
 local atlasTW = _G.AtlasTW
+local atlas_Ints_Ent_DropDown = {}
+local atlasData = {}
+local frame
 
-atlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version")
+atlasTW.Version = GetAddOnMetadata(atlasTW.Name, "Version")
 
 local function debug(info)
 	if atlasTW.DebugMode then
@@ -9,40 +12,31 @@ local function debug(info)
 	end
 end
 
---all in one place now
-local atlas_Ints_Ent_DropDown = {}
-
-ATLAS_CUR_LINES = 0
-ATLAS_SCROLL_LIST = {}
-
-ATLAS_DATA = {}
-ATLAS_SEARCH_METHOD = nil
-
-local DefaultAtlasTWOptions = {
-	["AtlasVersion"] = atlasTW.Version,
-	["AtlasZone"] = 1,
-	["AtlasAlpha"] = 1.0,
-	["AtlasLocked"] = false,
-	["AtlasAutoSelect"] = false,
-	["AtlasButtonPosition"] = 336,
-	["AtlasButtonRadius"] = 78,
-	["AtlasButtonShown"] = true,
-	["AtlasRightClick"] = false,
-	["AtlasType"] = 1,
-	["AtlasAcronyms"] = true,
-	["AtlasScale"] = 1.0,
-	["AtlasClamped"] = true,
-	["AtlasSortBy"] = 1,
-	["QuestCurrentSide"] = "Left",
-	["QuestWithAtlas"] = true,
-	["QuestColourCheck"] = true,
-	["QuestCheckQuestlog"] = true,
-	["QuestAutoQuery"] = true,
-	["QuestQuerySpam"] = true,
-	["QuestCompareTooltip"] = true,
+local defaultAtlasTWOptions = {
+    AtlasButtonPosition = 336,
+    AtlasButtonRadius = 78,
+    AtlasButtonShown = true,
+    AtlasRightClick = false,
+    AtlasType = 1,
+    AtlasScale = 1,
+    AtlasVersion = atlasTW.Version,
+    AtlasZone = 1,
+    AtlasSortBy = 1,
+    AtlasAutoSelect = false,
+    AtlasLocked = false,
+    AtlasAlpha = 1.0,
+    AtlasAcronyms = true,
+    AtlasClamped = true,
+    QuestCurrentSide = "Left",
+    QuestWithAtlas = true,
+    QuestColourCheck = true,
+    QuestCheckQuestlog = true,
+    QuestAutoQuery = true,
+    QuestQuerySpam = true,
+    QuestCompareTooltip = true,
 }
 
-local function cloneTable(t)				-- return a copy of the table t
+local function cloneTable(t)
 	local new = {}					-- create a new table
 	local i, v = next(t, nil)		-- i is an index of t, v = t[i]
 	while i do
@@ -56,32 +50,56 @@ local function cloneTable(t)				-- return a copy of the table t
 end
 
 --resets all saved variables to the default values
-function Atlas_FreshOptions()
-	AtlasTWOptions = cloneTable(DefaultAtlasTWOptions)
+local function atlas_FreshOptions()
+	AtlasTWOptions = cloneTable(defaultAtlasTWOptions)
 end
 
-function Atlas_Search(text)
-	local data = nil
-
-	if ATLAS_SEARCH_METHOD == nil then
-		data = ATLAS_DATA
-	else
-		data = ATLAS_SEARCH_METHOD(ATLAS_DATA, text)
+local function atlasSimpleSearch(data, text)
+	if not text then
+		return
 	end
+	local new = {}
+	local i, n
+	local search_text = string.lower(text)
+	search_text = string.gsub(search_text, "([%^%$%(%)%%%.%[%]%+%-%?])", "%%%1")
+	search_text = string.gsub(search_text, "%*", ".*")
+	local match
+	i,_ = next(data, nil)-- i is an index of data, v = data[i]
+	n = i
+	while i do
+		if type(i) == "number" then
+			if string.gmatch then
+				match = string.gmatch(string.lower(data[i][1]), search_text)()
+			else
+				match = string.gfind(string.lower(data[i][1]), search_text)()
+			end
+			if match then
+				new[n] = {}
+				new[n][1] = data[i][1]
+				n = n + 1
+			end
+		end
+		i,_ = next(data, i)
+	end
+	return new
+end
+
+local function atlas_Search(text)
+	local data = atlasSimpleSearch(atlasData, text)
 
 	--populate the scroll frame entries list, the update func will do the rest
 	local i = 1
-	while ( data[i] ~= nil ) do
-		ATLAS_SCROLL_LIST[i] = data[i][1]
+	while ( data and data[i] ~= nil ) do
+		atlasTW.ScrollList[i] = data[i][1]
 		i = i + 1
 	end
 
-	ATLAS_CUR_LINES = i - 1
+	atlasTW.CurrentLine = i - 1
 end
 
 function Atlas_SearchAndRefresh(text)
-	Atlas_Search(text)
-	AtlasScrollBar_Update()
+	atlas_Search(text)
+	AtlasLoot_AtlasScrollBar_Update()
 end
 
 --Removal of articles in map names (for proper alphabetic sorting)
@@ -129,7 +147,7 @@ end
 local function atlas_Init()
 	--clear saved vars for a new ver (or a new install!)
 	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= atlasTW.Version then
-		Atlas_FreshOptions()
+		atlas_FreshOptions()
 	end
 
 	--populate the dropdown lists...yeeeah this is so much nicer!
@@ -159,7 +177,7 @@ end
 function Atlas_PopulateDropdowns()
 	local catName = Atlas_DropDownLayouts_Order[AtlasTWOptions.AtlasSortBy]
 	local subcatOrder = Atlas_DropDownLayouts_Order[catName]
-	for n = 1, getn(subcatOrder), 1 do
+	for n = 1, getn(subcatOrder) do
 		local subcatItems = Atlas_DropDownLayouts[catName][subcatOrder[n]]
 		atlasTW.DropDowns[n] = {}
 		for _,v in pairs(subcatItems) do
@@ -173,18 +191,13 @@ end
 
 --Simple function to toggle the Atlas frame's lock status and update it's appearance
 function Atlas_ToggleLock()
-	if(AtlasTWOptions.AtlasLocked) then
-		AtlasTWOptions.AtlasLocked = false
-		atlas_UpdateLock()
-	else
-		AtlasTWOptions.AtlasLocked = true
-		atlas_UpdateLock()
-	end
+	AtlasTWOptions.AtlasLocked = not AtlasTWOptions.AtlasLocked
+	atlas_UpdateLock()
 end
 
 --Begin moving the Atlas frame if it's unlocked
 function Atlas_StartMoving()
-	if(not AtlasTWOptions.AtlasLocked) then
+	if not AtlasTWOptions.AtlasLocked then
 		AtlasFrame:StartMoving()
 	end
 end
@@ -192,7 +205,7 @@ end
 --Parses slash commands
 --If an unrecognized command is given, toggle Atlas
 function Atlas_SlashCommand(msg)
-	if(msg == "options" or msg == "opt") then
+	if msg == "options" or msg == "opt" then
 		AtlasOptions_Toggle()
 	else
 		Atlas_Toggle()
@@ -211,7 +224,7 @@ end
 
 --Simple function to toggle the visibility of the Atlas frame
 function Atlas_Toggle()
-	if(AtlasFrame:IsVisible()) then
+	if AtlasFrame:IsVisible() then
 		HideUIPanel(AtlasFrame)
 	else
 		ShowUIPanel(AtlasFrame)
@@ -247,6 +260,12 @@ local function atlasSwitchDD_OnLoad()
 	end
 end
 
+local function atlasSwitchDD_Sort(a, b)
+	local aa = AtlasMaps[a].ZoneName[1]
+	local bb = AtlasMaps[b].ZoneName[1]
+	return aa < bb
+end
+
 --Refreshes the Atlas frame, usually because a new map needs to be displayed
 --The zoneID variable represents the internal name used for each map
 --Also responsible for updating all the text when a map is changed
@@ -254,11 +273,11 @@ function Atlas_Refresh()
 	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
 	local data = AtlasMaps
 	local base = {}
-	local textLocation = ""
-	local tLR = ""
-	local tML = ""
-	local tPL = ""
+	local textLocation, textLevelRange, textMinLevel, textPlayerLimit = "", "", "", ""
+	local red = "|cffcc6666"
 	AtlasLoot_SetupForAtlas()
+
+	debug("Refreshing Atlas")
 
 	--If a first time user, set up options
 	if AtlasLootCharDB.FirstTime == nil or AtlasLootCharDB.FirstTime == true then
@@ -280,71 +299,48 @@ function Atlas_Refresh()
 	--Setup info panel above boss listing
 	local tName = base.ZoneName[1]
 	if AtlasTWOptions.AtlasAcronyms and base.Acronym ~= nil then
-		local _RED = "|cffcc6666"
-		tName = tName.._RED.." ["..base.Acronym.."]"
+		tName = tName..red.." ["..base.Acronym.."]"
 	end
 	AtlasText_ZoneName_Text:SetText(tName)
 	if base.Location[1] then
 		textLocation = ATLAS_STRING_LOCATION..": "..base.Location[1]
 	end
 	if base.LevelRange then
-		tLR = ATLAS_STRING_LEVELRANGE..": "..base.LevelRange
+		textLevelRange = ATLAS_STRING_LEVELRANGE..": "..base.LevelRange
 	end
 	if base.MinLevel then
-		tML = ATLAS_STRING_MINLEVEL..": "..base.MinLevel
+		textMinLevel = ATLAS_STRING_MINLEVEL..": "..base.MinLevel
 	end
 	if base.PlayerLimit then
-		tPL = ATLAS_STRING_PLAYERLIMIT..": "..base.PlayerLimit
+		textPlayerLimit = ATLAS_STRING_PLAYERLIMIT..": "..base.PlayerLimit
 	end
 	AtlasText_Location_Text:SetText(textLocation)
-	AtlasText_LevelRange_Text:SetText(tLR)
-	AtlasText_MinLevel_Text:SetText(tML)
-	AtlasText_PlayerLimit_Text:SetText(tPL)
+	AtlasText_LevelRange_Text:SetText(textLevelRange)
+	AtlasText_MinLevel_Text:SetText(textMinLevel)
+	AtlasText_PlayerLimit_Text:SetText(textPlayerLimit)
 
-	--Hide any Atlas objects lurking around that have now been replaced
-	for i=1,ATLAS_CUR_LINES do
-		if _G["AtlasEntry"..i] then
-			_G["AtlasEntry"..i]:Hide()
-		end
-	end
-
-	ATLAS_DATA = base
-	ATLAS_SEARCH_METHOD = data.Search
-
-	--Deal with Atlas's search function
-	if data.Search == nil then
-		ATLAS_SEARCH_METHOD = AtlasSimpleSearch
-	end
-	if data.Search ~= false then
-		AtlasSearchEditBox:Show()
-		AtlasNoSearch:Hide()
-	else
-		AtlasSearchEditBox:Hide()
-		AtlasNoSearch:Show()
-		ATLAS_SEARCH_METHOD = nil
-	end
+	atlasData = base
 
 	--populate the scroll frame entries list, the update func will do the rest
-	Atlas_Search("")
+	atlas_Search("")
 	AtlasSearchEditBox:SetText("")
 	AtlasSearchEditBox:ClearFocus()
 
 	--create and align any new entry buttons that we need
-	for i=1,ATLAS_CUR_LINES do
-		local f
+ 	for i = 1, atlasTW.CurrentLine do
 		if not _G["AtlasBossLine"..i] then
-			f = CreateFrame("Button", "AtlasBossLine"..i, AtlasFrame, "AtlasLootNewBossLineTemplate")
-			f:SetFrameStrata("HIGH")
+			frame = CreateFrame("Button", "AtlasBossLine"..i, AtlasFrame, "AtlasLootNewBossLineTemplate")
+			frame:SetFrameStrata("HIGH")
 			if i ~= 1 then
-				f:SetPoint("TOPLEFT", "AtlasBossLine"..(i-1), "BOTTOMLEFT")
+				frame:SetPoint("TOPLEFT", "AtlasBossLine"..(i-1), "BOTTOMLEFT")
 			else
-				f:SetPoint("TOPLEFT", "AtlasScrollBar", "TOPLEFT", 16, -3)
+				frame:SetPoint("TOPLEFT", "AtlasScrollBar", "TOPLEFT", 16, -3)
 			end
 		else
 			_G["AtlasBossLine"..i.."_Loot"]:Hide()
 			_G["AtlasBossLine"..i.."_Selected"]:Hide()
 		end
-	end
+	end --TODO try create frames when atlasloot initialize
 
 	--Hide the loot frame now that a pristine Atlas instance is created
 	AtlasLootItemsFrame:Hide()
@@ -353,7 +349,7 @@ function Atlas_Refresh()
 	AtlasLoot_AtlasScrollBar_Update()
 
 	--see if we should display the entrance/instance button or not, and decide what it should say
-	local matchFound = {nil}
+	local matchFound = {}
 	local sayEntrance = nil
 	for k,v in pairs(atlasTW.EntToInstMatches) do
 		if k == zoneID then
@@ -376,7 +372,7 @@ function Atlas_Refresh()
 		for _,v in pairs(matchFound) do
 			table.insert(atlas_Ints_Ent_DropDown, v)
 		end
-		table.sort(atlas_Ints_Ent_DropDown, AtlasSwitchDD_Sort)
+		table.sort(atlas_Ints_Ent_DropDown, atlasSwitchDD_Sort)
 		if sayEntrance then
 			AtlasSwitchButton:SetText(ATLAS_ENTRANCE_BUTTON)
 		else
@@ -400,12 +396,6 @@ function AtlasSwitchButton_OnClick()
 		--more than one link, so it's dropdown menu time
 		ToggleDropDownMenu(1, nil, AtlasSwitchDD, "AtlasSwitchButton", 0, 0)
 	end
-end
-
-function AtlasSwitchDD_Sort(a, b)
-	local aa = AtlasMaps[a].ZoneName[1]
-	local bb = AtlasMaps[b].ZoneName[1]
-	return aa < bb
 end
 
 --Called whenever an item in the map type dropdown menu is clicked
@@ -433,13 +423,6 @@ local function atlasFrameDropDownType_Initialize()
 	end
 end
 
---Called whenever the map type dropdown menu is shown
-function AtlasFrameDropDownType_OnShow()
-	UIDropDownMenu_Initialize(AtlasFrameDropDownType, atlasFrameDropDownType_Initialize)
-	UIDropDownMenu_SetSelectedID(AtlasFrameDropDownType, AtlasTWOptions.AtlasType)
-	UIDropDownMenu_SetWidth(190, AtlasFrameDropDownType)
-end
-
 --Called whenever an item in the main dropdown menu is clicked
 --Sets the newly selected map as current and refreshes the frame
 local function atlasFrameDropDown_OnClick()
@@ -460,13 +443,6 @@ local function atlasFrameDropDown_Initialize()
 		}
 		UIDropDownMenu_AddButton(info)
 	end
-end
-
---Called whenever the main dropdown menu is shown
-function AtlasFrameDropDown_OnShow()
-	UIDropDownMenu_Initialize(AtlasFrameDropDown, atlasFrameDropDown_Initialize)
-	UIDropDownMenu_SetSelectedID(AtlasFrameDropDown, AtlasTWOptions.AtlasZone)
-	UIDropDownMenu_SetWidth(190, AtlasFrameDropDown)
 end
 
 --Modifies the value of GetRealZoneText to account for some naming conventions
@@ -567,6 +543,20 @@ local function atlas_AutoSelect()
 	debug("Nothing changed because no match was found.")
 end
 
+--Called whenever the map type dropdown menu is shown
+function AtlasFrameDropDownType_OnShow()
+	UIDropDownMenu_Initialize(AtlasFrameDropDownType, atlasFrameDropDownType_Initialize)
+	UIDropDownMenu_SetSelectedID(AtlasFrameDropDownType, AtlasTWOptions.AtlasType)
+	UIDropDownMenu_SetWidth(190, AtlasFrameDropDownType)
+end
+
+--Called whenever the main dropdown menu is shown
+function AtlasFrameDropDown_OnShow()
+	UIDropDownMenu_Initialize(AtlasFrameDropDown, atlasFrameDropDown_Initialize)
+	UIDropDownMenu_SetSelectedID(AtlasFrameDropDown, AtlasTWOptions.AtlasZone)
+	UIDropDownMenu_SetWidth(190, AtlasFrameDropDown)
+end
+
 --Called whenever the Atlas frame is displayed
 function Atlas_OnShow()
 	AtlasTWQuest_Run()
@@ -589,49 +579,4 @@ function Atlas_OnClick()
 			ToggleWorldMap()
 		end
 	end
-end
-
-function AtlasScrollBar_Update()
-	GameTooltip:Hide()
-	local lineplusoffset
-	FauxScrollFrame_Update(AtlasScrollBar,ATLAS_CUR_LINES,AtlasTW.NUM_LINES,15)
-	for line=1,AtlasTW.NUM_LINES do
-		lineplusoffset = line + FauxScrollFrame_GetOffset(AtlasScrollBar)
-		if lineplusoffset <= ATLAS_CUR_LINES then
-			_G["AtlasEntry"..line.."_Text"]:SetText(ATLAS_SCROLL_LIST[lineplusoffset])
-			_G["AtlasEntry"..line]:Show()
-		elseif _G["AtlasEntry"..line] then
-			_G["AtlasEntry"..line]:Hide()
-		end
-	end
-end
-
-function AtlasSimpleSearch(data, text)
-	if not text then
-		return
-	end
-	local new = {}
-	local i, n
-	local search_text = string.lower(text)
-	search_text = string.gsub(search_text, "([%^%$%(%)%%%.%[%]%+%-%?])", "%%%1")
-	search_text = string.gsub(search_text, "%*", ".*")
-	local match
-	i,_ = next(data, nil)-- i is an index of data, v = data[i]
-	n = i
-	while i do
-		if type(i) == "number" then
-			if string.gmatch then
-				match = string.gmatch(string.lower(data[i][1]), search_text)()
-			else
-				match = string.gfind(string.lower(data[i][1]), search_text)()
-			end
-			if match then
-				new[n] = {}
-				new[n][1] = data[i][1]
-				n = n + 1
-			end
-		end
-		i,_ = next(data, i)
-	end
-	return new
 end
