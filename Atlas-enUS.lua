@@ -5,12 +5,12 @@ local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
 AtlasSortIgnore = {"the (.+)"}
 
-BINDING_HEADER_ATLASTW_TITLE = "Atlas Bindings"
-BINDING_NAME_ATLASTW_TOGGLE = "Toggle Atlas"
+BINDING_HEADER_ATLASTW_TITLE = "Atlas-TW Bindings"
+BINDING_NAME_ATLASTW_TOGGLE = "Toggle Atlas-TW"
 BINDING_NAME_ATLASTW_OPTIONS = "Toggle Options"
 
 ATLAS_SUBTITLE = "Instance Map Browser"
-ATLAS_DESC = "Atlas is an instance map browser."
+ATLAS_DESC = "Atlas-TW is an instance map browser."
 
 ATLAS_STRING_LOCATION = "Location"
 ATLAS_STRING_LEVELRANGE = "Level Range"
@@ -36,8 +36,7 @@ ATLAS_OPTIONS_BUTRAD = "Button Radius"
 ATLAS_OPTIONS_CLAMPED = "Clamp window to screen"
 ATLAS_OPTIONS_HELP = "Left-click and drag to move this window."
 
-ATLAS_BUTTON_TOOLTIP_HINT = "Left-click to open Atlas.\nMiddle-click for Atlas options.\nRight-click and drag to move this button."
-ATLAS_TITAN_HINT = "Left-click to open Atlas.\nMiddle-click for Atlas options.\nRight-click for the display menu."
+ATLAS_BUTTON_TOOLTIP_HINT = "Left-click to open Atlas-TW.\nMiddle-click for Atlas-TW options.\nRight-click and drag to move this button."
 
 ATLAS_OPTIONS_CATDD = "Sort Instance Maps by:"
 ATLAS_DDL_CONTINENT = "Continent"

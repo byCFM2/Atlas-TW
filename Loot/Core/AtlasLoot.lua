@@ -10,6 +10,7 @@ BINDING_NAME_ATLASLOOT_WISHLIST = "WishList"
 AtlasLoot = AceLibrary("AceAddon-2.0"):new("AceDBa-2.0")
 
 local _G = getfenv()
+local atlasTW = _G.AtlasTW
 
 --Instance required libraries
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
@@ -46,15 +47,10 @@ local DEFAULT = "|cffFFd200"
 --Establish number of boss lines in the Atlas frame for scrolling
 local ATLAS_LOOT_BOSS_LINES = 24
 
---Flag so that error messages do not spam
-local ATLASLOOT_POPUPSHOWN = false
-
 --Set the default anchor for the loot frame to the Atlas frame
 AtlasLoot_AnchorFrame = AtlasLootDefaultFrame
 
 --Variables to hold hooked Atlas functions
-Hooked_Atlas_Refresh = nil
-Hooked_Atlas_OnShow = nil
 Hooked_AtlasScrollBar_Update = nil
 
 AtlasLootCharDB={}
@@ -182,11 +178,6 @@ function AtlasLoot_OnVariablesLoaded()
 	if AtlasButton_LoadAtlas then
 		AtlasButton_LoadAtlas()
 	end
-	--Hook the necessary Atlas functions
-	Hooked_Atlas_Refresh = Atlas_Refresh
-	Atlas_Refresh = AtlasLoot_Refresh
-	Hooked_Atlas_OnShow = Atlas_OnShow
-	Atlas_OnShow = AtlasLoot_Atlas_OnShow
 	--Instead of hooking, replace the scrollbar driver function
 	Hooked_AtlasScrollBar_Update = AtlasScrollBar_Update
 	AtlasScrollBar_Update = AtlasLoot_AtlasScrollBar_Update
@@ -208,20 +199,6 @@ function AtlasLoot_OnVariablesLoaded()
 	else
 		AtlasLootItemsFrame_Back:SetTexture(0, 0, 0, 0.65)
 	end
-	--If Atlas is installed, set up for Atlas
-	if Hooked_Atlas_Refresh then
-		AtlasLoot_SetupForAtlas()
-		--If a first time user, set up options
-		if AtlasLootCharDB.FirstTime == nil or AtlasLootCharDB.FirstTime == true then
-			StaticPopup_Show ("ATLASLOOT_SETUP")
-			AtlasLootCharDB.FirstTime = false
-		end
-		Hooked_Atlas_Refresh()
-	else
-		--If we are not using Atlas, keep the items frame out of the way
-		AtlasLootItemsFrame:Hide()
-	end
-	
 
 	--Set up the menu in the loot browser
 	AtlasLoot_HewdropRegister()
@@ -432,11 +409,11 @@ end
 function AtlasLoot_AtlasScrollBar_Update()
 	local lineplusoffset
 	if _G["AtlasBossLine1_Text"] ~= nil then
-		local zoneID = ATLAS_DROPDOWNS[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
+		local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
 		--Update the contents of the Atlas scroll frame
 		FauxScrollFrame_Update(AtlasScrollBar,ATLAS_CUR_LINES,ATLAS_LOOT_BOSS_LINES,15)
 		--Make note of how far in the scroll frame we are
-		for line=1,ATLAS_NUM_LINES do
+		for line=1,AtlasTW.NUM_LINES do
 			lineplusoffset = line + FauxScrollFrame_GetOffset(AtlasScrollBar)
 			local bossLine = _G["AtlasBossLine"..line]
 			if lineplusoffset <= ATLAS_CUR_LINES then
@@ -477,170 +454,19 @@ function AtlasLoot_AtlasScrollBar_Update()
 	end
 end
 
---[[
-	AtlasLoot_Refresh:
-	Replacement for Atlas_Refresh, required as the template for the boss buttons in Atlas is insufficient
-	Called whenever the state of Atlas changes
-]]
-
-function AtlasLoot_Refresh()
-	--Reset which loot page is 'current'
-	AtlasLootItemsFrame.activeBoss = nil
-
-	--Get map selection info from Atlas
-	local zoneID = ATLAS_DROPDOWNS[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
-	local data = AtlasMaps
-	local base = {}
-	--Get boss name information
-	for k,v in pairs(data[zoneID]) do
-		base[k] = v
-	end
-
-	--Display the newly selected texture
-	AtlasMap:ClearAllPoints()
-	AtlasMap:SetWidth(512)
-	AtlasMap:SetHeight(512)
-	AtlasMap:SetPoint("TOPLEFT", "AtlasFrame", "TOPLEFT", 18, -84)
-	AtlasMap:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\Maps\\"..zoneID)
-
-	--Setup info panel above boss listing
-	local tName = base.ZoneName[1]
-	if AtlasTWOptions.AtlasAcronyms and base.Acronym ~= nil then
-		local _RED = "|cffcc6666"
-		tName = tName.._RED.." ["..base.Acronym.."]"
-	end
-	AtlasText_ZoneName_Text:SetText(tName)
-	local tLoc = ""
-	local tLR = ""
-	local tML = ""
-	local tPL = ""
-	if base.Location[1] then
-		tLoc = ATLAS_STRING_LOCATION..": "..base.Location[1]
-	end
-	if base.LevelRange then
-		tLR = ATLAS_STRING_LEVELRANGE..": "..base.LevelRange
-	end
-	if base.MinLevel then
-		tML = ATLAS_STRING_MINLEVEL..": "..base.MinLevel
-	end
-	if base.PlayerLimit then
-		tPL = ATLAS_STRING_PLAYERLIMIT..": "..base.PlayerLimit
-	end
-	AtlasText_Location_Text:SetText(tLoc)
-	AtlasText_LevelRange_Text:SetText(tLR)
-	AtlasText_MinLevel_Text:SetText(tML)
-	AtlasText_PlayerLimit_Text:SetText(tPL)
-	Atlastextbase = base
-	--Get the size of the Atlas text to append stuff to the bottom. Looks for empty lines
-	local i = 1
-	local j = 2
-	while (Atlastextbase[i] ~= nil and Atlastextbase[i]~="") or (Atlastextbase[j] ~= nil and Atlastextbase[j]~="") do
-		i = i + 1
-		j = i + 1
-	end
-	--Hide any Atlas objects lurking around that have now been replaced
-	for i=1,ATLAS_CUR_LINES do
-		if _G["AtlasEntry"..i] then
-			_G["AtlasEntry"..i]:Hide()
-		end
-	end
-	ATLAS_DATA = Atlastextbase
-	ATLAS_SEARCH_METHOD = data.Search
-	--Deal with Atlas's search function
-	if data.Search == nil then
-		ATLAS_SEARCH_METHOD = AtlasSimpleSearch
-	end
-	if data.Search ~= false then
-		AtlasSearchEditBox:Show()
-		AtlasNoSearch:Hide()
-	else
-		AtlasSearchEditBox:Hide()
-		AtlasNoSearch:Show()
-		ATLAS_SEARCH_METHOD = nil
-	end
-	--populate the scroll frame entries list, the update func will do the rest
-	Atlas_Search("")
-	AtlasSearchEditBox:SetText("")
-	AtlasSearchEditBox:ClearFocus()
-	--create and align any new entry buttons that we need
-	for i=1,ATLAS_CUR_LINES do
-		local f
-		if not _G["AtlasBossLine"..i] then
-			f = CreateFrame("Button", "AtlasBossLine"..i, AtlasFrame, "AtlasLootNewBossLineTemplate")
-			f:SetFrameStrata("HIGH")
-			if i==1 then
-				f:SetPoint("TOPLEFT", "AtlasScrollBar", "TOPLEFT", 16, -3)
-			else
-				f:SetPoint("TOPLEFT", "AtlasBossLine"..(i-1), "BOTTOMLEFT")
-			end
-		else
-			_G["AtlasBossLine"..i.."_Loot"]:Hide()
-			_G["AtlasBossLine"..i.."_Selected"]:Hide()
-		end
-	end
-	--Hide the loot frame now that a pristine Atlas instance is created
-	AtlasLootItemsFrame:Hide()
-	Atlas_Search("")
-	--Make sure the scroll bar is correctly offset
-	AtlasLoot_AtlasScrollBar_Update()
-	--see if we should display the entrance/instance button or not, and decide what it should say
-	local matchFound = {nil}
-	local sayEntrance = nil
-	for k,v in pairs(Atlas_EntToInstMatches) do
-		if k == zoneID then
-			matchFound = v
-			sayEntrance = false
-		end
-	end
-	if not matchFound[1] then
-		for k,v in pairs(Atlas_InstToEntMatches) do
-			if k == zoneID then
-				matchFound = v
-				sayEntrance = true
-			end
-		end
-	end
-	--set the button's text, populate the dropdown menu, and show or hide the button
-	if matchFound[1] ~= nil then
-		ATLAS_INST_ENT_DROPDOWN = {}
-		for k,v in pairs(matchFound) do
-			table.insert(ATLAS_INST_ENT_DROPDOWN, v)
-		end
-		table.sort(ATLAS_INST_ENT_DROPDOWN, AtlasSwitchDD_Sort)
-		if sayEntrance then
-			AtlasSwitchButton:SetText(ATLAS_ENTRANCE_BUTTON)
-		else
-			AtlasSwitchButton:SetText(ATLAS_INSTANCE_BUTTON)
-		end
-		AtlasSwitchButton:Show()
-		UIDropDownMenu_Initialize(AtlasSwitchDD, AtlasSwitchDD_OnLoad)
-	else
-		AtlasSwitchButton:Hide()
-	end
-	if TitanPanelButton_UpdateButton then
-		TitanPanelButton_UpdateButton("Atlas")
-	end
-end
-
---[[
-	AtlasLoot_Atlas_OnShow:
-	Hooks Atlas_OnShow() to add extra setup routines that AtlasLoot needs for
-	integration purposes.
-]]
 function AtlasLoot_Atlas_OnShow()
-	Atlas_Refresh()
 	--We don't want Atlas and the Loot Browser open at the same time, so the Loot Browser is close
 	if AtlasLootDefaultFrame then
 		AtlasLootDefaultFrame:Hide()
 		AtlasLoot_SetupForAtlas()
 	end
-	--Call the Atlas function
-	Hooked_Atlas_OnShow()
+
 	--If we were looking at a loot table earlier in the session, it is still
 	--saved on the item frame, so restore it in Atlas
 	if AtlasLootItemsFrame.activeBoss ~= nil then
 		AtlasLootItemsFrame:Show()
 	else
+
 		--If no loot table is selected, set up icons next to boss names
 		for i=1,ATLAS_CUR_LINES do
 			if _G["AtlasEntry"..i.."_Selected"] and _G["AtlasEntry"..i.."_Selected"]:IsVisible() then
@@ -649,6 +475,7 @@ function AtlasLoot_Atlas_OnShow()
 			end
 		end
 	end
+
 	--Consult the saved variable table to see whether to show the bottom panel
 	if AtlasLootCharDB.HidePanel == true then
 		AtlasLootPanel:Hide()
@@ -676,7 +503,7 @@ end
 	Shows a loot page if one is associated with the button
 ]]
 function AtlasLootBoss_OnClick(name)
-	local zoneID = ATLAS_DROPDOWNS[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
+	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
 	local id = this.idnum
 	--If the loot table was already shown and boss clicked again, hide the loot table and fix boss list icons
 	if _G[name.."_Selected"]:IsVisible() then

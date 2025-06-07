@@ -1,6 +1,8 @@
 local _G = getfenv()
 local atlasTW = _G.AtlasTW
+
 atlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version")
+
 local function debug(info)
 	if atlasTW.DebugMode then
 		DEFAULT_CHAT_FRAME:AddMessage("["..atlasTW.Name.."] "..info)
@@ -8,18 +10,15 @@ local function debug(info)
 end
 
 --all in one place now
-ATLAS_DROPDOWNS = {}
-ATLAS_INST_ENT_DROPDOWN = {}
+local atlas_Ints_Ent_DropDown = {}
 
-ATLAS_NUM_LINES = 24
-Atlas_MapTypes = {}
 ATLAS_CUR_LINES = 0
 ATLAS_SCROLL_LIST = {}
 
 ATLAS_DATA = {}
 ATLAS_SEARCH_METHOD = nil
 
-local DefaultAtlasOptions = {
+local DefaultAtlasTWOptions = {
 	["AtlasVersion"] = atlasTW.Version,
 	["AtlasZone"] = 1,
 	["AtlasAlpha"] = 1.0,
@@ -43,141 +42,6 @@ local DefaultAtlasOptions = {
 	["QuestCompareTooltip"] = true,
 }
 
---yes, the following two tables are redundant, but they're both here in case there's ever more than one entrance map for an instance
-
---entrance maps to instance maps
-Atlas_EntToInstMatches = {
-	["BlackfathomDeepsEnt"] =		{"BlackfathomDeeps"},
-	["BlackrockMountainEnt"] =		{"BlackrockSpireLower","BlackrockSpireUpper","BlackwingLair","BlackrockDepths","MoltenCore"},
-	["GnomereganEnt"] =				{"Gnomeregan"},
-	["MaraudonEnt"] =				{"Maraudon"},
-	["TheDeadminesEnt"] =			{"TheDeadmines"},
-	["TheSunkenTempleEnt"] =		{"TheSunkenTemple"},
-	["UldamanEnt"] =				{"Uldaman"},
-	["WailingCavernsEnt"] =			{"WailingCaverns"},
-	["DireMaulEnt"] =				{"DireMaulEast","DireMaulNorth","DireMaulWest"},
-	["SMEnt"] =						{"SMArmory","SMLibrary","SMCathedral","SMGraveyard"}
-}
-
---instance maps to entrance maps
-Atlas_InstToEntMatches = {
-	["BlackfathomDeeps"] =			{"BlackfathomDeepsEnt"},
-	["BlackrockSpireLower"] =		{"BlackrockMountainEnt"},
-	["BlackrockSpireUpper"] =		{"BlackrockMountainEnt"},
-	["BlackwingLair"] =				{"BlackrockMountainEnt"},
-	["BlackrockDepths"] =			{"BlackrockMountainEnt"},
-	["MoltenCore"] =				{"BlackrockMountainEnt"},
-	["Gnomeregan"] =				{"GnomereganEnt"},
-	["Maraudon"] =					{"MaraudonEnt"},
-	["TheDeadmines"] =				{"TheDeadminesEnt"},
-	["TheSunkenTemple"] =			{"TheSunkenTempleEnt"},
-	["Uldaman"] =					{"UldamanEnt"},
-	["WailingCaverns"] =			{"WailingCavernsEnt"},
-	["DireMaulEast"] =				{"DireMaulEnt"},
-	["DireMaulNorth"] =				{"DireMaulEnt"},
-	["DireMaulWest"] =				{"DireMaulEnt"},
-	["SMArmory"] =					{"SMEnt"},
-	["SMLibrary"] =					{"SMEnt"},
-	["SMCathedral"] =				{"SMEnt"},
-	["SMGraveyard"] =				{"SMEnt"}
-}
-
---Links maps together that are part of the same instance
-Atlas_SubZoneAssoc = {
-	["DireMaulNorth"] =				"Dire Maul",
-	["DireMaulEast"] =				"Dire Maul",
-	["DireMaulWest"] =				"Dire Maul",
-	["DireMaulEnt"] =				"Dire Maul",
-	["BlackrockSpireLower"] =		"Blackrock Spire",
-	["BlackrockSpireUpper"] =		"Blackrock Spire",
-	["BlackrockMountainEnt"] =		"Blackrock Spire",
-	["SMGraveyard"] =				"Scarlet Monastery",
-	["SMLibrary"] =					"Scarlet Monastery",
-	["SMArmory"] =					"Scarlet Monastery",
-	["SMCathedral"] =				"Scarlet Monastery",
-	["SMEnt"] =						"Scarlet Monastery"
-}
-
---Default map to auto-select to when no SubZone data is available
-Atlas_AssocDefaults = {
-	["Dire Maul"] =					"DireMaulNorth",
-	["Blackrock Spire"] =			"BlackrockSpireLower",
-	["Scarlet Monastery"] =			"SMEnt"
-}
-
---Links SubZone values with specific instance maps
-Atlas_SubZoneData = {
-	["Halls of Destruction"] =		"DireMaulNorth",
-	["Gordok's Seat"] =				"DireMaulNorth",
-	["Warpwood Quarter"] =			"DireMaulEast",
-	["The Hidden Reach"] =			"DireMaulEast",
-	["The Conservatory"] =			"DireMaulEast",
-	["The Shrine of Eldretharr"] =	"DireMaulEast",
-	["Capital Gardens"] =			"DireMaulWest",
-	["Court of the Highborne"] =	"DireMaulWest",
-	["Prison of Immol'thar"] =		"DireMaulWest",
-	["The Athenaeum"] =				"DireMaulWest",
-	["Hordemar City"] =				"BlackrockSpireLower",
-	["Mok'Doom"] =					"BlackrockSpireLower",
-	["Tazz'Alaor"] =				"BlackrockSpireLower",
-	["Skitterweb Tunnels"] =		"BlackrockSpireLower",
-	["The Storehouse"] =			"BlackrockSpireLower",
-	["Chamber of Battle"] =			"BlackrockSpireLower",
-	["Dragonspire Hall"] =			"BlackrockSpireUpper",
-	["Hall of Binding"] =			"BlackrockSpireUpper",
-	["The Rookery"] =				"BlackrockSpireUpper",
-	["Hall of Blackhand"] =			"BlackrockSpireUpper",
-	["Blackrock Stadium"] =			"BlackrockSpireUpper",
-	["The Furnace"] =				"BlackrockSpireUpper",
-	["Hordemar City"] =				"BlackrockSpireUpper",
-	["Spire Throne"] =				"BlackrockSpireUpper",
-	["Chamber of Atonement"] =		"SMGraveyard",
-	["Forlorn Cloister"] =			"SMGraveyard",
-	["Honor's Tomb"] =				"SMGraveyard",
-	["Huntsman's Cloister"] =		"SMLibrary",
-	["Gallery of Treasures"] =		"SMLibrary",
-	["Athenaeum"] =					"SMLibrary",
-	["Training Grounds"] =			"SMArmory",
-	["Footman's Armory"] =			"SMArmory",
-	["Crusader's Armory"] =			"SMArmory",
-	["Hall of Champions"] =			"SMArmory",
-	["Chapel Gardens"] =			"SMCathedral",
-	["Crusader's Chapel"] =			"SMCathedral",
-	["The Grand Vestibule"] =		"SMEnt"
-}
-
---Maps to auto-select to from outdoor zones.
---Duplicates are commented out. Fuck, I hate auto-select.
-Atlas_OutdoorZoneToAtlas = {
-	["Ashenvale"] =					"BlackfathomDeepsEnt",
-	["Badlands"] =					"UldamanEnt",
-	["Blackrock Mountain"] =		"BlackrockMountainEnt",
-	["Burning Steppes"] = 			"HateforgeQuarry", -- TurtleWOW
-	["Deadwind Pass"] = 			"KarazhanCrypt",    -- TurtleWOW
-	["Desolace"] =					"MaraudonEnt",
-	["Dun Morogh"] =				"GnomereganEnt",
-	["Feralas"] =					"DireMaulEnt",
-	["Searing Gorge"] =				"BlackrockMountainEnt",
-	["Swamp of Sorrows"] =			"TheSunkenTempleEnt",
-	["Tanaris"] =					"ZulFarrak",
-	["The Barrens"] =				"WailingCavernsEnt",
-	["Gilneas"] =					"GilneasCityEnt",
-	--["The Barrens"] =				"RazorfenKraul",
-	--["The Barrens"] =				"RazorfenDowns",
-	["Tirisfal Glades"]	=			"SMEnt",
-	["Westfall"] =					"TheDeadminesEnt",
-	["Orgrimmar"] =					"RagefireChasm",
-	["Dustwallow Marsh"] =			"OnyxiasLair",
-	["Silithus"] =					"TheTempleofAhnQiraj",
-	--["Silithus"] =					"TheRuinsofAhnQiraj",
-	["Western Plaguelands"] =		"Scholomance",
-	["Silverpine Forest"] =			"ShadowfangKeep",
-	["Eastern Plaguelands"] =		"Stratholme",
-	--["Eastern Plaguelands"] =			"Naxxramas",
-	["Stormwind City"] =			"TheStockade",
-	["Stranglethorn Vale"] =		"ZulGurub"
-}
-
 local function cloneTable(t)				-- return a copy of the table t
 	local new = {}					-- create a new table
 	local i, v = next(t, nil)		-- i is an index of t, v = t[i]
@@ -193,7 +57,7 @@ end
 
 --resets all saved variables to the default values
 function Atlas_FreshOptions()
-	AtlasTWOptions = cloneTable(DefaultAtlasOptions)
+	AtlasTWOptions = cloneTable(DefaultAtlasTWOptions)
 end
 
 function Atlas_Search(text)
@@ -271,7 +135,7 @@ local function atlas_Init()
 	--populate the dropdown lists...yeeeah this is so much nicer!
 	Atlas_PopulateDropdowns()
 
-	if ATLAS_DROPDOWNS[AtlasTWOptions.AtlasType] == nil then
+	if atlasTW.DropDowns[AtlasTWOptions.AtlasType] == nil then
 		AtlasTWOptions.AtlasType = 1
 		AtlasTWOptions.AtlasZone = 1
 	end
@@ -297,12 +161,12 @@ function Atlas_PopulateDropdowns()
 	local subcatOrder = Atlas_DropDownLayouts_Order[catName]
 	for n = 1, getn(subcatOrder), 1 do
 		local subcatItems = Atlas_DropDownLayouts[catName][subcatOrder[n]]
-		ATLAS_DROPDOWNS[n] = {}
+		atlasTW.DropDowns[n] = {}
 		for _,v in pairs(subcatItems) do
-			table.insert(ATLAS_DROPDOWNS[n], v)
+			table.insert(atlasTW.DropDowns[n], v)
 		end
 		if subcatOrder[n] ~= ATLAS_DDL_ALL_MENU1 and subcatOrder[n] ~= ATLAS_DDL_ALL_MENU2 and subcatOrder[n] ~= ATLAS_DDL_WORLD then
-			table.sort(ATLAS_DROPDOWNS[n], atlas_SortZonesAlpha)
+			table.sort(atlasTW.DropDowns[n], atlas_SortZonesAlpha)
 		end
 	end
 end
@@ -354,35 +218,74 @@ function Atlas_Toggle()
 	end
 end
 
+local function atlasSwitchDD_Set(index)
+	for k,v in pairs(atlasTW.DropDowns) do
+		for k2,v2 in pairs(v) do
+			if v2 == atlas_Ints_Ent_DropDown[index] then
+				AtlasTWOptions.AtlasType = k
+				AtlasTWOptions.AtlasZone = k2
+			end
+		end
+	end
+	AtlasFrameDropDownType_OnShow()
+	AtlasFrameDropDown_OnShow()
+	Atlas_Refresh()
+end
+
+local function atlasSwitchDD_OnClick()
+	atlasSwitchDD_Set(this:GetID())
+end
+
+local function atlasSwitchDD_OnLoad()
+	local info
+	for _,v in pairs(atlas_Ints_Ent_DropDown) do
+		info = {
+			text = AtlasMaps[v].ZoneName[1],
+			func = atlasSwitchDD_OnClick
+		}
+		UIDropDownMenu_AddButton(info)
+	end
+end
+
 --Refreshes the Atlas frame, usually because a new map needs to be displayed
 --The zoneID variable represents the internal name used for each map
 --Also responsible for updating all the text when a map is changed
 function Atlas_Refresh()
-
-	local zoneID = ATLAS_DROPDOWNS[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
+	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
 	local data = AtlasMaps
-	local base = data[zoneID]
-	local tLoc = ""
+	local base = {}
+	local textLocation = ""
 	local tLR = ""
 	local tML = ""
 	local tPL = ""
+	AtlasLoot_SetupForAtlas()
 
-	AtlasMap:ClearAllPoints()
-	AtlasMap:SetWidth(512)
-	AtlasMap:SetHeight(512)
-	AtlasMap:SetPoint("TOPLEFT", "AtlasFrame", "TOPLEFT", 18, -84)
-	if not zoneID then zoneID = ATLAS_DROPDOWNS[1][1] end
+	--If a first time user, set up options
+	if AtlasLootCharDB.FirstTime == nil or AtlasLootCharDB.FirstTime == true then
+		StaticPopup_Show("ATLASLOOT_SETUP")
+		AtlasLootCharDB.FirstTime = false
+	end
+
+	--Reset which loot page is 'current'
+	AtlasLootItemsFrame.activeBoss = nil
+
+	--Get boss name information
+	for k,v in pairs(data[zoneID]) do
+		base[k] = v
+	end
+
+	--Display the newly selected texture
 	AtlasMap:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\Maps\\"..zoneID)
 
+	--Setup info panel above boss listing
 	local tName = base.ZoneName[1]
 	if AtlasTWOptions.AtlasAcronyms and base.Acronym ~= nil then
 		local _RED = "|cffcc6666"
 		tName = tName.._RED.." ["..base.Acronym.."]"
 	end
 	AtlasText_ZoneName_Text:SetText(tName)
-
 	if base.Location[1] then
-		tLoc = ATLAS_STRING_LOCATION..": "..base.Location[1]
+		textLocation = ATLAS_STRING_LOCATION..": "..base.Location[1]
 	end
 	if base.LevelRange then
 		tLR = ATLAS_STRING_LEVELRANGE..": "..base.LevelRange
@@ -393,18 +296,25 @@ function Atlas_Refresh()
 	if base.PlayerLimit then
 		tPL = ATLAS_STRING_PLAYERLIMIT..": "..base.PlayerLimit
 	end
-	AtlasText_Location_Text:SetText(tLoc)
+	AtlasText_Location_Text:SetText(textLocation)
 	AtlasText_LevelRange_Text:SetText(tLR)
 	AtlasText_MinLevel_Text:SetText(tML)
 	AtlasText_PlayerLimit_Text:SetText(tPL)
 
+	--Hide any Atlas objects lurking around that have now been replaced
+	for i=1,ATLAS_CUR_LINES do
+		if _G["AtlasEntry"..i] then
+			_G["AtlasEntry"..i]:Hide()
+		end
+	end
+
 	ATLAS_DATA = base
 	ATLAS_SEARCH_METHOD = data.Search
 
+	--Deal with Atlas's search function
 	if data.Search == nil then
 		ATLAS_SEARCH_METHOD = AtlasSimpleSearch
 	end
-
 	if data.Search ~= false then
 		AtlasSearchEditBox:Show()
 		AtlasNoSearch:Hide()
@@ -421,102 +331,75 @@ function Atlas_Refresh()
 
 	--create and align any new entry buttons that we need
 	for i=1,ATLAS_CUR_LINES do
-		if not _G["AtlasEntry"..i] then
-			local f = CreateAtlasEntryTemplate("AtlasEntry"..i, AtlasFrame)
-			if i==1 then
-				f:SetPoint("TOPLEFT", "AtlasScrollBar", "TOPLEFT", 16, -2)
+		local f
+		if not _G["AtlasBossLine"..i] then
+			f = CreateFrame("Button", "AtlasBossLine"..i, AtlasFrame, "AtlasLootNewBossLineTemplate")
+			f:SetFrameStrata("HIGH")
+			if i ~= 1 then
+				f:SetPoint("TOPLEFT", "AtlasBossLine"..(i-1), "BOTTOMLEFT")
 			else
-				f:SetPoint("TOPLEFT", "AtlasEntry"..(i-1), "BOTTOMLEFT")
+				f:SetPoint("TOPLEFT", "AtlasScrollBar", "TOPLEFT", 16, -3)
 			end
+		else
+			_G["AtlasBossLine"..i.."_Loot"]:Hide()
+			_G["AtlasBossLine"..i.."_Selected"]:Hide()
 		end
 	end
 
-	AtlasScrollBar_Update()
+	--Hide the loot frame now that a pristine Atlas instance is created
+	AtlasLootItemsFrame:Hide()
 
-	--deal with the switch to entrance/instance button here
-	--only display if appropriat
+	--Make sure the scroll bar is correctly offset
+	AtlasLoot_AtlasScrollBar_Update()
 
-	--see if we should display the button or not, and decide what it should say
+	--see if we should display the entrance/instance button or not, and decide what it should say
 	local matchFound = {nil}
 	local sayEntrance = nil
-	for k,v in pairs(Atlas_EntToInstMatches) do
+	for k,v in pairs(atlasTW.EntToInstMatches) do
 		if k == zoneID then
 			matchFound = v
 			sayEntrance = false
 		end
 	end
 	if not matchFound[1] then
-		for k,v in pairs(Atlas_InstToEntMatches) do
+		for k,v in pairs(atlasTW.InstToEntMatches) do
 			if k == zoneID then
 				matchFound = v
 				sayEntrance = true
 			end
 		end
 	end
+
 	--set the button's text, populate the dropdown menu, and show or hide the button
 	if matchFound[1] ~= nil then
-		ATLAS_INST_ENT_DROPDOWN = {}
-		for k,v in pairs(matchFound) do
-			table.insert(ATLAS_INST_ENT_DROPDOWN, v)
+		atlas_Ints_Ent_DropDown = {}
+		for _,v in pairs(matchFound) do
+			table.insert(atlas_Ints_Ent_DropDown, v)
 		end
-		table.sort(ATLAS_INST_ENT_DROPDOWN, AtlasSwitchDD_Sort)
+		table.sort(atlas_Ints_Ent_DropDown, AtlasSwitchDD_Sort)
 		if sayEntrance then
 			AtlasSwitchButton:SetText(ATLAS_ENTRANCE_BUTTON)
 		else
 			AtlasSwitchButton:SetText(ATLAS_INSTANCE_BUTTON)
 		end
 		AtlasSwitchButton:Show()
-		UIDropDownMenu_Initialize(AtlasSwitchDD, AtlasSwitchDD_OnLoad)
+		UIDropDownMenu_Initialize(AtlasSwitchDD, atlasSwitchDD_OnLoad)
 	else
 		AtlasSwitchButton:Hide()
 	end
-	if TitanPanelButton_UpdateButton then
-		TitanPanelButton_UpdateButton("Atlas")
-	end
-end
-
-
-
-function AtlasSwitchDD_OnLoad()
-	local info
-	for _,v in pairs(ATLAS_INST_ENT_DROPDOWN) do
-		info = {
-			text = AtlasMaps[v].ZoneName[1],
-			func = AtlasSwitchDD_OnClick
-		}
-		UIDropDownMenu_AddButton(info)
-	end
-end
-
-local function atlasSwitchDD_Set(index)
-	for k,v in pairs(ATLAS_DROPDOWNS) do
-		for k2,v2 in pairs(v) do
-			if v2 == ATLAS_INST_ENT_DROPDOWN[index] then
-				AtlasTWOptions.AtlasType = k
-				AtlasTWOptions.AtlasZone = k2
-			end
-		end
-	end
-	AtlasFrameDropDownType_OnShow()
-	AtlasFrameDropDown_OnShow()
-	Atlas_Refresh()
 end
 
 --when the switch button is clicked
 --we can basically assume that there's a match
 --find it, set it, then update menus and the maps
 function AtlasSwitchButton_OnClick()
-	if getn(ATLAS_INST_ENT_DROPDOWN) == 1 then
+	if getn(atlas_Ints_Ent_DropDown) == 1 then
 		--one link, so we can just go there right away
 		atlasSwitchDD_Set(1)
 	else
 		--more than one link, so it's dropdown menu time
 		ToggleDropDownMenu(1, nil, AtlasSwitchDD, "AtlasSwitchButton", 0, 0)
 	end
-end
-
-function AtlasSwitchDD_OnClick()
-	atlasSwitchDD_Set(this:GetID())
 end
 
 function AtlasSwitchDD_Sort(a, b)
@@ -537,7 +420,6 @@ local function atlasFrameDropDownType_OnClick()
 end
 
 --Function used to initialize the map type dropdown menu
---Cycle through Atlas_MapTypes to populate the dropdown
 local function atlasFrameDropDownType_Initialize()
 	local info
 	local catName = Atlas_DropDownLayouts_Order[AtlasTWOptions.AtlasSortBy]
@@ -545,13 +427,6 @@ local function atlasFrameDropDownType_Initialize()
 	for i = 1, getn(subcatOrder) do
 		info = {
 			text = subcatOrder[i],
-			func = atlasFrameDropDownType_OnClick
-		}
-		UIDropDownMenu_AddButton(info)
-	end
-	for i = 1, getn(Atlas_MapTypes) do
-		info = {
-			text = Atlas_MapTypes[i],
 			func = atlasFrameDropDownType_OnClick
 		}
 		UIDropDownMenu_AddButton(info)
@@ -578,7 +453,7 @@ end
 --Looks at the status of AtlasType to determine how to populate the list
 local function atlasFrameDropDown_Initialize()
 	local info
-	for k,v in pairs(ATLAS_DROPDOWNS[AtlasTWOptions.AtlasType]) do
+	for _,v in pairs(atlasTW.DropDowns[AtlasTWOptions.AtlasType]) do
 		info = {
 			text = AtlasMaps[v].ZoneName[1],
 			func = atlasFrameDropDown_OnClick
@@ -611,13 +486,13 @@ local function atlas_AutoSelect()
 	local currentSubZone = GetSubZoneText()
 	debug("Using auto-select to open the best map.")
 
-	if Atlas_AssocDefaults[currentZone] then
+	if atlasTW.AssocDefaults[currentZone] then
 		debug("You're in a zone where SubZone data is relevant.")
-		if Atlas_SubZoneData[currentSubZone] then
+		if atlasTW.SubZoneData[currentSubZone] then
 			debug("There's data for your current SubZone.")
-			for ka,va in pairs(ATLAS_DROPDOWNS) do
+			for ka,va in pairs(atlasTW.DropDowns) do
 				for kb,vb in pairs(va) do
-					if Atlas_SubZoneData[currentSubZone] == vb then
+					if atlasTW.SubZoneData[currentSubZone] == vb then
 						AtlasTWOptions.AtlasType = ka
 						AtlasTWOptions.AtlasZone = kb
 						Atlas_Refresh()
@@ -628,13 +503,13 @@ local function atlas_AutoSelect()
 			end
 		else
 			debug("No applicable SubZone data exists.")
-			if currentZone == Atlas_SubZoneAssoc[ATLAS_DROPDOWNS[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
+			if currentZone == atlasTW.SubZoneAssoc[atlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
 				debug("You're in the same instance as the former map. Doing nothing.")
 				return
 			else
-				for ka,va in pairs(ATLAS_DROPDOWNS) do
+				for ka,va in pairs(atlasTW.DropDowns) do
 					for kb,vb in pairs(va) do
-						if Atlas_AssocDefaults[currentZone] == vb then
+						if atlasTW.AssocDefaults[currentZone] == vb then
 							AtlasTWOptions.AtlasType = ka
 							AtlasTWOptions.AtlasZone = kb
 							Atlas_Refresh()
@@ -647,11 +522,11 @@ local function atlas_AutoSelect()
 		end
 	else
 		debug("SubZone data isn't relevant here.")
-		if Atlas_OutdoorZoneToAtlas[currentZone] then
+		if atlasTW.OutdoorZoneToAtlas[currentZone] then
 			debug("This world zone is associated with a map.")
-			for ka,va in pairs(ATLAS_DROPDOWNS) do
+			for ka,va in pairs(atlasTW.DropDowns) do
 				for kb,vb in pairs(va) do
-					if Atlas_OutdoorZoneToAtlas[currentZone] == vb then
+					if atlasTW.OutdoorZoneToAtlas[currentZone] == vb then
 						AtlasTWOptions.AtlasType = ka
 						AtlasTWOptions.AtlasZone = kb
 						Atlas_Refresh()
@@ -660,15 +535,15 @@ local function atlas_AutoSelect()
 					end
 				end
 			end
-		elseif Atlas_InstToEntMatches[ATLAS_DROPDOWNS[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
-			for ka,va in pairs(Atlas_InstToEntMatches[ATLAS_DROPDOWNS[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
+		elseif atlasTW.InstToEntMatches[atlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
+			for _,va in pairs(atlasTW.InstToEntMatches[atlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
 				if currentZone == AtlasMaps[va].ZoneName[1] then
 					debug("Instance/entrance pair found. Doing nothing.")
 					return
 				end
 			end
-		elseif Atlas_EntToInstMatches[ATLAS_DROPDOWNS[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
-			for ka,va in pairs(Atlas_EntToInstMatches[ATLAS_DROPDOWNS[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
+		elseif atlasTW.EntToInstMatches[atlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
+			for _,va in pairs(atlasTW.EntToInstMatches[atlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
 				if currentZone == AtlasMaps[va].ZoneName[1] then
 					debug("Instance/entrance pair found. Doing nothing.")
 					return
@@ -676,7 +551,7 @@ local function atlas_AutoSelect()
 			end
 		end
 		debug("Searching through all maps for a ZoneName match.")
-		for ka,va in pairs(ATLAS_DROPDOWNS) do
+		for ka,va in pairs(atlasTW.DropDowns) do
 			for kb,vb in pairs(va) do
 				-- Compare the currentZone to the new substr of ZoneName
 				if currentZone == strsub(AtlasMaps[vb].ZoneName[1], strlen(AtlasMaps[vb].ZoneName[1]) - strlen(currentZone) + 1) then
@@ -694,12 +569,16 @@ end
 
 --Called whenever the Atlas frame is displayed
 function Atlas_OnShow()
+	AtlasTWQuest_Run()
 	if(AtlasTWOptions.AtlasAutoSelect) then
 		atlas_AutoSelect()
 	end
+
 	--sneakiness
 	AtlasFrameDropDownType_OnShow()
 	AtlasFrameDropDown_OnShow()
+	Atlas_Refresh()
+	AtlasLoot_Atlas_OnShow()
 end
 
 --RightButton closes Atlas and open the World Map if the RightClick option is turned on
@@ -715,8 +594,8 @@ end
 function AtlasScrollBar_Update()
 	GameTooltip:Hide()
 	local lineplusoffset
-	FauxScrollFrame_Update(AtlasScrollBar,ATLAS_CUR_LINES,ATLAS_NUM_LINES,15)
-	for line=1,ATLAS_NUM_LINES do
+	FauxScrollFrame_Update(AtlasScrollBar,ATLAS_CUR_LINES,AtlasTW.NUM_LINES,15)
+	for line=1,AtlasTW.NUM_LINES do
 		lineplusoffset = line + FauxScrollFrame_GetOffset(AtlasScrollBar)
 		if lineplusoffset <= ATLAS_CUR_LINES then
 			_G["AtlasEntry"..line.."_Text"]:SetText(ATLAS_SCROLL_LIST[lineplusoffset])

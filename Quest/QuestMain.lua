@@ -802,15 +802,7 @@ local function hookScript(frame, scriptType, handler)
     end)
 end
 
---******************************************
--- Events: Atlas_OnShow (Hook Atlas function)
---******************************************
------------------------------------------------------------------------------
--- Shows the panel with atlas
--- function hooked now! thx dan for his help
------------------------------------------------------------------------------
-local original_Atlas_OnShow = Atlas_OnShow
-function Atlas_OnShow()
+function AtlasTWQuest_Run()
     -- Handle quest frame visibility based on settings
     local function handleQuestFrameVisibility()
         if variables.QWithAtlas then
@@ -849,9 +841,6 @@ function Atlas_OnShow()
     handleQuestFrameVisibility()
     positionQuestFrame()
     setupPfUITooltip()
-
-    -- Call original show handler
-    original_Atlas_OnShow()
 end
 
 --******************************************

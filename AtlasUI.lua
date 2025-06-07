@@ -296,6 +296,10 @@ local function atlas_CreateFrames()
 
     -- Map texture
     atlasFrame:CreateTexture("AtlasMap", "BACKGROUND")
+	AtlasMap:ClearAllPoints()
+	AtlasMap:SetWidth(512)
+	AtlasMap:SetHeight(512)
+	AtlasMap:SetPoint("TOPLEFT", "AtlasFrame", "TOPLEFT", 18, -84)
 
     -- Scripts
     atlasFrame:SetScript("OnEvent", function()
