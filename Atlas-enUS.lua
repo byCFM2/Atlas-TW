@@ -9,9 +9,6 @@ BINDING_HEADER_ATLASTW_TITLE = "Atlas-TW Bindings"
 BINDING_NAME_ATLASTW_TOGGLE = "Toggle Atlas-TW"
 BINDING_NAME_ATLASTW_OPTIONS = "Toggle Options"
 
-ATLAS_SUBTITLE = "Instance Map Browser"
-ATLAS_DESC = "Atlas-TW is an instance map browser."
-
 ATLAS_STRING_LOCATION = "Location"
 ATLAS_STRING_LEVELRANGE = "Level Range"
 ATLAS_STRING_PLAYERLIMIT = "Player Limit"
@@ -327,8 +324,6 @@ L:RegisterTranslations("enUS", function() return {
 	["High Priestess of Thaurissan"] = true,
 	["The Black Forge"] = true,
 	["Core Fragment"] = true,
-	["Overmaster Pyron"] = true,
-	["The Behemoth"] = true,
 
 	--Blackrock Spire (Lower)
 	["Vaelan"] = true,
@@ -491,51 +486,28 @@ L:RegisterTranslations("enUS", function() return {
 
 	--Blackrock Mountain (Entrance)
 	["Bodley"] = true,
-	["Lothos Riftwaker"] = true,
-	["Franclorn Forgewright"] = true,
 	["Orb of Command"] = true,
-	["Scarshield Quartermaster"] = true,
 
 	--Gnomeregan (Entrance)
 	["Transpolyporter"] = true,
-	["Sprok"] = true,
 	["Matrix Punchograph 3005-A"] = true,
-	["Namdo Bizzfizzle"] = true,
-	["Techbot"] = true,
 
 	--Maraudon (Entrance)
 	["The Nameless Prophet"] = true,
-	["Kolk"] = true,
-	["Gelk"] = true,
-	["Magra"] = true,
-	["Cavindra"] = true,
-	["Cursed Centaur"] = true,
 
 	--The Deadmines (Entrance)
-	["Marisa du'Paige"] = true,
-	["Brainwashed Noble"] = true,
-	["Foreman Thistlenettle"] = true,
 
 	--Sunken Temple (Entrance)
 	["Jade"] = true,
-	["Kazkaz the Unholy"] = true,
-	["Zekkis"] = true,
-	["Veyzhak the Cannibal"] = true,
 
 	--Uldaman (Entrance)
-	["Hammertoe Grez"] = true,
-	["Magregan Deepshadow"] = true,
 	["Tablet of Ryun'Eh"] = true,
 	["Krom Stoutarm's Chest"] = true,
 	["Garrett Family Chest"] = true,
 	["Digmaster Shovelphlange"] = true,
 
 	--Wailing Caverns (Entrance)
-	["Mad Magglish"] = true,
-	["Trigore the Lasher"] = true,
-	["Boahn"] = true,
 	["Above the Entrance:"] = true,
-	["Ebru"] = true,
 	["Nalpak"] = true,
 	["Kalldan Felmoon"] = true,
 	["Waldor"] = true,
@@ -569,6 +541,10 @@ L:RegisterTranslations("enUS", function() return {
 	["Vanndar Stormpike"] = true,
 	["Dun Baldar North Marshal"] = true,
 	["Dun Baldar South Marshal"] = true,
+	["West Frostwolf Tower Marshal"] = true,
+	["East Frostwolf Tower Marshal"] = true,
+	["Warmaster Laggrond"] = true,
+	["Thanthaldis Snowgleam"] = true,
 	["Icewing Marshal"] = true,
 	["Iceblood Marshal"] = true,
 	["Stonehearth Marshal"] = true,
@@ -1341,4 +1317,9 @@ L:RegisterTranslations("enUS", function() return {
 	["Barkskin Fisher"] = true,
 	["Crusader Larsarius"] = true,
 	["Shadeflayer Goliath"] = true,
+	["Nature, Fire, Arcane, Shadow, Frost"] = true,
+	["Ironspine"] = true,
+	["Nature, Shadow"] = true,
+	["Karazhan Crypt Key"] = true,
+	["Mini Bosses"] = true,
 } end)

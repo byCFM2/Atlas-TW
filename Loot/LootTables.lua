@@ -28,10 +28,10 @@ AtlasLoot_TableNames = {
 	["BFDAkumai"] = { BZ["Blackfathom Deeps"].." - "..BB["Aku'mai"], "AtlasLootItems" },
 	["BFDTrash"] = { L["Trash Mobs"].." ("..BZ["Blackfathom Deeps"]..")", "AtlasLootItems" },
 	--Blackrock Mountain
-	["BRMBehemoth"] = { BZ["Blackrock Mountain"].." - "..L["The Behemoth"], "AtlasLootItems" },
-	["BRMScarshieldQuartermaster"] = { BZ["Blackrock Mountain"].." - "..L["Scarshield Quartermaster"], "AtlasLootItems" },
+	["BRMBehemoth"] = { BZ["Blackrock Mountain"].." - "..BB["The Behemoth"], "AtlasLootItems" },
+	["BRMScarshieldQuartermaster"] = { BZ["Blackrock Mountain"].." - "..BB["Scarshield Quartermaster"], "AtlasLootItems" },
 	--Blackrock Depths
-	["BRDPyron"] = { BZ["Blackrock Depths"].." - "..L["Overmaster Pyron"], "AtlasLootItems" },
+	["BRDPyron"] = { BZ["Blackrock Depths"].." - "..BB["Overmaster Pyron"], "AtlasLootItems" },
 	["BRDLordRoccor"] = { BZ["Blackrock Depths"].." - "..BB["Lord Roccor"], "AtlasLootItems" },
 	["BRDHighInterrogatorGerstahn"] = { BZ["Blackrock Depths"].." - "..BB["High Interrogator Gerstahn"], "AtlasLootItems" },
 	["BRDAnubshiah"] = { BZ["Blackrock Depths"].." - "..BB["Anub'shiah"], "AtlasLootItems" },
@@ -106,9 +106,9 @@ AtlasLoot_TableNames = {
 	["BWLNefarian"] = { BZ["Blackwing Lair"].." - "..BB["Nefarian"], "AtlasLootItems" },
 	["BWLTrashMobs"] = { L["Trash Mobs"].." ("..BZ["Blackwing Lair"]..")", "AtlasLootItems" },
 	--The Deadmines
-	["DMMarisaduPaige"] = { BZ["The Deadmines"].." - "..L["Marisa du'Paige"].." ("..L["Rare"]..")", "AtlasLootItems" },
-	["DMBrainwashedNoble"] = { BZ["The Deadmines"].." - "..L["Brainwashed Noble"].." ("..L["Rare"]..")", "AtlasLootItems" },
-	["DMForemanThistlenettle"] = { BZ["The Deadmines"].." - "..L["Foreman Thistlenettle"], "AtlasLootItems" },
+	["DMMarisaduPaige"] = { BZ["The Deadmines"].." - "..BB["Marisa du'Paige"].." ("..L["Rare"]..")", "AtlasLootItems" },
+	["DMBrainwashedNoble"] = { BZ["The Deadmines"].." - "..BB["Brainwashed Noble"].." ("..L["Rare"]..")", "AtlasLootItems" },
+	["DMForemanThistlenettle"] = { BZ["The Deadmines"].." - "..BB["Foreman Thistlenettle"], "AtlasLootItems" },
 	["DMJaredVoss"] = { BZ["The Deadmines"].." - "..BB["Jared Voss"], "AtlasLootItems" },
 	["DMRhahkZor"] = { BZ["The Deadmines"].." - "..BB["Rhahk'Zor"], "AtlasLootItems" },
 	["DMMinerJohnson"] = { BZ["The Deadmines"].." - "..BB["Miner Johnson"].." ("..L["Rare"]..")", "AtlasLootItems" },
@@ -157,8 +157,8 @@ AtlasLoot_TableNames = {
 	["DMWShendralarProvisioner"] = { BZ["Dire Maul (West)"].." - "..L["Shen'dralar Provisioner"], "AtlasLootItems" },
 	["DMWTrash"] = { L["Trash Mobs"].." ("..BZ["Dire Maul (West)"]..")", "AtlasLootItems" },
 	--Gnomeregan
-	["GnNamdoBizzfizzle"] = { BZ["Gnomeregan"].." - "..L["Namdo Bizzfizzle"], "AtlasLootItems" },
-	["GnTechbot"] = { BZ["Gnomeregan"].." - "..L["Techbot"], "AtlasLootItems" },
+	["GnNamdoBizzfizzle"] = { BZ["Gnomeregan"].." - "..BB["Namdo Bizzfizzle"], "AtlasLootItems" },
+	["GnTechbot"] = { BZ["Gnomeregan"].." - "..BB["Techbot"], "AtlasLootItems" },
 	["GnGrubbis"] = { BZ["Gnomeregan"].." - "..BB["Grubbis"], "AtlasLootItems" },
 	["GnViscousFallout"] = { BZ["Gnomeregan"].." - "..BB["Viscous Fallout"], "AtlasLootItems" },
 	["GnElectrocutioner6000"] = { BZ["Gnomeregan"].." - "..BB["Electrocutioner 6000"], "AtlasLootItems" },
@@ -173,9 +173,9 @@ AtlasLoot_TableNames = {
 	["GnPunchographD"] = { BZ["Gnomeregan"].." - "..L["Matrix Punchograph 3005-D"], "AtlasLootItems" },
 	--Maraudon
 	["MaraNamelesProphet"] = { BZ["Maraudon"].." - "..L["The Nameles Prophet"], "AtlasLootItems" },
-	["MaraKhanKolk"] = { BZ["Maraudon"].." - "..L["Kolk"].." (The First Khan)", "AtlasLootItems" },
-	["MaraKhanGelk"] = { BZ["Maraudon"].." - "..L["Gelk"].." (The Second Khan)", "AtlasLootItems" },
-	["MaraKhanMagra"] = { BZ["Maraudon"].." - "..L["Magra"].." (The Third Khan)", "AtlasLootItems" },
+	["MaraKhanKolk"] = { BZ["Maraudon"].." - "..BB["Kolk"].." (The First Khan)", "AtlasLootItems" },
+	["MaraKhanGelk"] = { BZ["Maraudon"].." - "..BB["Gelk"].." (The Second Khan)", "AtlasLootItems" },
+	["MaraKhanMagra"] = { BZ["Maraudon"].." - "..BB["Magra"].." (The Third Khan)", "AtlasLootItems" },
 	["MaraKhanVeng"] = { BZ["Maraudon"].." - "..L["Veng"].." (The Fifth Khan)", "AtlasLootItems" },
 	["MaraNoxxion"] = { BZ["Maraudon"].." - "..BB["Noxxion"], "AtlasLootItems" },
 	["MaraRazorlash"] = { BZ["Maraudon"].." - "..BB["Razorlash"], "AtlasLootItems" },
@@ -435,7 +435,7 @@ AtlasLoot_TableNames = {
 	["AQ40Trash2"] = { L["Trash Mobs"].." ("..BZ["Temple of Ahn'Qiraj"]..")", "AtlasLootItems" },
 	["AQOpening"] = { L["AQ Opening Quest Chain"], "AtlasLootItems" },
 	--Uldaman
-	["UldMagreganDeepshadow"] = { BZ["Uldaman"].." - "..L["Magregan Deepshadow"], "AtlasLootItems" },
+	["UldMagreganDeepshadow"] = { BZ["Uldaman"].." - "..BB["Magregan Deepshadow"], "AtlasLootItems" },
 	["UldTabletofRyuneh"] = { BZ["Uldaman"].." - "..L["Tablet of Ryun'eh"], "AtlasLootItems" },
 	["UldKromStoutarmChest"] = { BZ["Uldaman"].." - "..L["Krom Stoutarm's Chest"], "AtlasLootItems" },
 	["UldGarrettFamilyChest"] = { BZ["Uldaman"].." - "..L["Garrett Family Chest"], "AtlasLootItems" },
@@ -466,9 +466,9 @@ AtlasLoot_TableNames = {
 	["GCTrash"] = { L["Trash Mobs"].." ("..BZ["Gilneas City"]..")", "AtlasLootItems" },
 	--Wailing Caverns
 	["WCKalldanFelmoon"] = { BZ["Wailing Caverns"].." - "..L["Kalldan Felmoon"], "AtlasLootItems" },
-	["WCMadMagglish"] = { BZ["Wailing Caverns"].." - "..L["Mad Magglish"], "AtlasLootItems" },
-	["WCTrigoretheLasher"] = { BZ["Wailing Caverns"].." - "..L["Trigore the Lasher"].." ("..L["Rare"]..")", "AtlasLootItems" },
-	["WCBoahn"] = { BZ["Wailing Caverns"].." - "..L["Boahn"].." ("..L["Rare"]..")", "AtlasLootItems" },
+	["WCMadMagglish"] = { BZ["Wailing Caverns"].." - "..BB["Mad Magglish"], "AtlasLootItems" },
+	["WCTrigoretheLasher"] = { BZ["Wailing Caverns"].." - "..BB["Trigore the Lasher"].." ("..L["Rare"]..")", "AtlasLootItems" },
+	["WCBoahn"] = { BZ["Wailing Caverns"].." - "..BB["Boahn"].." ("..L["Rare"]..")", "AtlasLootItems" },
 	["WCLordCobrahn"] = { BZ["Wailing Caverns"].." - "..BB["Lord Cobrahn"], "AtlasLootItems" },
 	["WCLadyAnacondra"] = { BZ["Wailing Caverns"].." - "..BB["Lady Anacondra"], "AtlasLootItems" },
 	["WCKresh"] = { BZ["Wailing Caverns"].." - "..BB["Kresh"], "AtlasLootItems" },
@@ -1192,9 +1192,9 @@ AtlasLoot_TableNamesBoss = {
 		["BFDTrash"] = { L["Trash Mobs"].." ("..BZ["Blackfathom Deeps"]..")", "AtlasLootItems" },
 	},
 	[BZ["Blackrock Mountain"]] = {
-		["BRMBehemoth"] = { L["The Behemoth"], "AtlasLootItems" },
-		["BRMScarshieldQuartermaster"] = { L["Scarshield Quartermaster"], "AtlasLootItems" },
-		["BRDPyron"] = { L["Overmaster Pyron"], "AtlasLootItems" },
+		["BRMBehemoth"] = { BB["The Behemoth"], "AtlasLootItems" },
+		["BRMScarshieldQuartermaster"] = { BB["Scarshield Quartermaster"], "AtlasLootItems" },
+		["BRDPyron"] = { BB["Overmaster Pyron"], "AtlasLootItems" },
 	},
 	[BZ["Blackrock Depths"]] = {
 		["BRDLordRoccor"] = { BB["Lord Roccor"], "AtlasLootItems" },
@@ -1275,9 +1275,9 @@ AtlasLoot_TableNamesBoss = {
 		["BWLTrashMobs"] = { L["Trash Mobs"].." ("..BZ["Blackwing Lair"]..")", "AtlasLootItems" },
 	},
 	["The Deadmines Entrance"] = {
-		["DMMarisaduPaige"] = { L["Marisa du'Paige"].." ("..L["Rare"]..")", "AtlasLootItems" },
-		["DMBrainwashedNoble"] = { L["Brainwashed Noble"].." ("..L["Rare"]..")", "AtlasLootItems" },
-		["DMForemanThistlenettle"] = { L["Foreman Thistlenettle"], "AtlasLootItems" },
+		["DMMarisaduPaige"] = { BB["Marisa du'Paige"].." ("..L["Rare"]..")", "AtlasLootItems" },
+		["DMBrainwashedNoble"] = { BB["Brainwashed Noble"].." ("..L["Rare"]..")", "AtlasLootItems" },
+		["DMForemanThistlenettle"] = { BB["Foreman Thistlenettle"], "AtlasLootItems" },
 	},
 	[BZ["Hateforge Quarry"]] = {
 		["HQHighForemanBargulBlackhammer"] = { BB["High Foreman Bargul Blackhammer"], "AtlasLootItems" },
@@ -1380,8 +1380,8 @@ AtlasLoot_TableNamesBoss = {
 		["DMWTrash"] = { L["Trash Mobs"].." ("..BZ["Dire Maul (West)"]..")", "AtlasLootItems" },
 	},
 	[BZ["Gnomeregan"].." ("..L["Entrance"]..")"] = {
-		["GnNamdoBizzfizzle"] = { L["Namdo Bizzfizzle"], "AtlasLootItems" },
-		["GnTechbot"] = { L["Techbot"], "AtlasLootItems" },
+		["GnNamdoBizzfizzle"] = { BB["Namdo Bizzfizzle"], "AtlasLootItems" },
+		["GnTechbot"] = { BB["Techbot"], "AtlasLootItems" },
 		["GnPunchographA"] = { L["Matrix Punchograph 3005-A"], "AtlasLootItems" },
 		["GnOutsideTrash"] = { L["Trash Mobs"].." ("..BZ["Gnomeregan"].." "..L["Entrance"]..")", "AtlasLootItems" },
 	},
@@ -1399,9 +1399,9 @@ AtlasLoot_TableNamesBoss = {
 	},
 	[BZ["Maraudon"].." ("..L["Entrance"]..")"] = {
 		["MaraNamelesProphet"] = { L["The Nameles Prophet"], "AtlasLootItems" },
-		["MaraKhanKolk"] = { L["Kolk"].." (The First Khan)", "AtlasLootItems" },
-		["MaraKhanGelk"] = { L["Gelk"].." (The Second Khan)", "AtlasLootItems" },
-		["MaraKhanMagra"] = { L["Magra"].." (The Third Khan)", "AtlasLootItems" },
+		["MaraKhanKolk"] = { BB["Kolk"].." (The First Khan)", "AtlasLootItems" },
+		["MaraKhanGelk"] = { BB["Gelk"].." (The Second Khan)", "AtlasLootItems" },
+		["MaraKhanMagra"] = { BB["Magra"].." (The Third Khan)", "AtlasLootItems" },
 	},
 	[BZ["Maraudon"]] = {
 		["MaraKhanVeng"] = { L["Veng"].." (The Fifth Khan)", "AtlasLootItems" },
@@ -1640,7 +1640,7 @@ AtlasLoot_TableNamesBoss = {
 		["K40Trash"] = { L["Trash Mobs"], "AtlasLootItems" },
 	},
 	[BZ["Uldaman"].." ("..L["Entrance"]..")"] = {
-		["UldMagreganDeepshadow"] = { L["Magregan Deepshadow"], "AtlasLootItems" },
+		["UldMagreganDeepshadow"] = { BB["Magregan Deepshadow"], "AtlasLootItems" },
 		["UldTabletofRyuneh"] = { L["Tablet of Ryun'eh"], "AtlasLootItems" },
 		["UldKromStoutarmChest"] = { L["Krom Stoutarm's Chest"], "AtlasLootItems" },
 		["UldGarrettFamilyChest"] = { L["Garrett Family Chest"], "AtlasLootItems" },
@@ -1675,11 +1675,11 @@ AtlasLoot_TableNamesBoss = {
 	},
 	[BZ["Wailing Caverns"].." ("..L["Entrance"]..")"] = {
 		["WCKalldanFelmoon"] = { L["Kalldan Felmoon"], "AtlasLootItems" },
-		["WCMadMagglish"] = { L["Mad Magglish"], "AtlasLootItems" },
-		["WCTrigoretheLasher"] = { L["Trigore the Lasher"].." ("..L["Rare"]..")", "AtlasLootItems" },
+		["WCMadMagglish"] = { BB["Mad Magglish"], "AtlasLootItems" },
+		["WCTrigoretheLasher"] = { BB["Trigore the Lasher"].." ("..L["Rare"]..")", "AtlasLootItems" },
 	},
 	[BZ["Wailing Caverns"]] = {
-		["WCBoahn"] = { L["Boahn"].." ("..L["Rare"]..")", "AtlasLootItems" },
+		["WCBoahn"] = { BB["Boahn"].." ("..L["Rare"]..")", "AtlasLootItems" },
 		["WCLordCobrahn"] = { BB["Lord Cobrahn"], "AtlasLootItems" },
 		["WCLadyAnacondra"] = { BB["Lady Anacondra"], "AtlasLootItems" },
 		["WCKresh"] = { BB["Kresh"], "AtlasLootItems" },

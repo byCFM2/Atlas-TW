@@ -748,8 +748,8 @@ AtlasLootBossButtons = {
 		"SWStTrash",
 	},
 	TheSunkenTemple = {
-		"",
 		"VanillaKeys",
+		"",
 		"",
 		"",
 		"STBalconyMinibosses",
@@ -5702,6 +5702,20 @@ AtlasLoot_Data["AtlasLootItems"] = {
 		{ 0, "", "", "" },
 		{ 11446, "INV_Misc_Note_05", "=q1=A Crumpled Up Note", "=ds=#m2#" },
 	},
+	BRDPyron = {
+		{ 14486, "INV_Scroll_03", "=q3=Pattern: Cloak of Fire", "=ds=#p8# #m16#", "18%" },
+	},
+	BRMScarshieldQuartermaster = {
+		{ 13254, "INV_Shield_12", "=q3=Astral Guard", "=ds=#w8#", "3%" },
+		{ 13248, "INV_Weapon_Rifle_06", "=q3=Burstshot Harquebus", "=ds=#w5#", "3%" },
+		{ 0, "", "", "" },
+		{ 18987, "INV_Letter_17", "=q1=Blackhand's Command", "=ds=#m2#", "100%" },
+	},
+	BRMBehemoth = {
+		{ 11603, "Ability_Whirlwind", "=q3=Vilerend Slicer", "=ds=#h3#, #w13#", "99%" },
+		{ 0, "", "", "" },
+		{ 11446, "INV_Misc_Note_05", "=q1=A Crumpled Up Note", "=ds=#m2#", "25%"  },
+	},
 	RFCTaragaman = {
 		{ 14149, "INV_Misc_Cape_18", "=q2=Subterranean Cape", "=ds=#s4#", "33.33%" },
 		{ 14148, "INV_Bracer_13", "=q2=Crystalline Cuffs", "=ds=#s8#, #a1#", "33.33%" },
@@ -7745,15 +7759,6 @@ AtlasLoot_Data["AtlasLootItems"] = {
 		{ 0, "", "", "" },
 		{ 23055, "INV_Scroll_02", "=q1=Word of Thawing", "=ds=#e12#", "0.58-11%" },
 		{ 22682, "INV_Misc_Rune_09", "=q3=Frozen Rune", "=ds=#e12#, #m25#" },
-	},
-	BRDPyron = {
-		{ 14486, "INV_Scroll_03", "=q3=Pattern: Cloak of Fire", "=ds=#p8# #m16#", "18%" },
-	},
-	BRMScarshieldQuartermaster = {
-		{ 13254, "INV_Shield_12", "=q3=Astral Guard", "=ds=#w8#", "3%" },
-		{ 13248, "INV_Weapon_Rifle_06", "=q3=Burstshot Harquebus", "=ds=#w5#", "3%" },
-		{ 0, "", "", "" },
-		{ 18987, "INV_Letter_17", "=q1=Blackhand's Command", "=ds=#m2#", "100%" },
 	},
 	DMMarisaduPaige = {
 		{ 3019, "INV_Chest_Cloth_38", "=q2=Noble's Robe", "=ds=#s5#, #a1#", "25%" },

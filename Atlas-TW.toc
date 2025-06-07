@@ -32,15 +32,5 @@ Libs\Babble-Boss-2.2a\Babble-Boss-2.2a.lua
 Libs\Babble-Spell-2.2a\Babble-Spell-2.2a.lua
 
 AtlasInit.xml
-
-Loot\Sets.lua
-Loot\Crafting.lua
-Loot\Battlegrounds.lua
-Loot\WorldEvents.lua
-Loot\Factions.lua
-Loot\Instances.lua
-Loot\World.lua
-Loot\LootTables.lua
-Loot\Core\AtlasLoot.xml
-
+Loot\LootInit.xml
 Quest\QuestInit.xml

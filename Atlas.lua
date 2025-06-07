@@ -145,12 +145,30 @@ end
 --Initializes everything relating to saved variables and data in other lua files
 --This should be called ONLY when we're sure our variables are in memory
 local function atlas_Init()
+	-- Валидация данных AtlasMaps
+	if atlasTW.DebugMode then
+		local errors = AtlasUtils.ValidateAllData()
+		for _, dungeonErrors in pairs(errors) do
+			for _, error in pairs(dungeonErrors) do
+				debug("Data validation error: " .. error)
+			end
+		end
+	end
 	--clear saved vars for a new ver (or a new install!)
 	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= atlasTW.Version then
 		atlas_FreshOptions()
 	end
 
 	--populate the dropdown lists...yeeeah this is so much nicer!
+	-- Добавить валидацию dropdown данных
+    if atlasTW.DebugMode then
+        local dropdownErrors = AtlasTW_DropDownValidateData()
+        if table.getn(dropdownErrors) > 0 then
+            for _, error in pairs(dropdownErrors) do
+                debug("DropDown validation error: " .. error)
+            end
+        end
+    end
 	Atlas_PopulateDropdowns()
 
 	if atlasTW.DropDowns[AtlasTWOptions.AtlasType] == nil then
@@ -175,18 +193,19 @@ function Atlas_OnEvent()
 end
 
 function Atlas_PopulateDropdowns()
-	local catName = Atlas_DropDownLayouts_Order[AtlasTWOptions.AtlasSortBy]
-	local subcatOrder = Atlas_DropDownLayouts_Order[catName]
-	for n = 1, getn(subcatOrder) do
-		local subcatItems = Atlas_DropDownLayouts[catName][subcatOrder[n]]
-		atlasTW.DropDowns[n] = {}
-		for _,v in pairs(subcatItems) do
-			table.insert(atlasTW.DropDowns[n], v)
-		end
-		if subcatOrder[n] ~= ATLAS_DDL_ALL_MENU1 and subcatOrder[n] ~= ATLAS_DDL_ALL_MENU2 and subcatOrder[n] ~= ATLAS_DDL_WORLD then
-			table.sort(atlasTW.DropDowns[n], atlas_SortZonesAlpha)
-		end
-	end
+    local sortType = AtlasTW_DropDownSortOrder[AtlasTWOptions.AtlasSortBy]
+    local subcatOrder = AtlasTW_DropDownGetLayoutOrder(sortType)
+    local layouts = AtlasTW_DropDownGetLayout(sortType)
+    for n = 1, getn(subcatOrder) do
+        local subcatItems = layouts[subcatOrder[n]]
+        atlasTW.DropDowns[n] = {}
+        for _,v in pairs(subcatItems) do
+            table.insert(atlasTW.DropDowns[n], v)
+        end
+        if subcatOrder[n] ~= ATLAS_DDL_ALL_MENU1 and subcatOrder[n] ~= ATLAS_DDL_ALL_MENU2 and subcatOrder[n] ~= ATLAS_DDL_WORLD then
+            table.sort(atlasTW.DropDowns[n], atlas_SortZonesAlpha)
+        end
+    end
 end
 
 --Simple function to toggle the Atlas frame's lock status and update it's appearance
@@ -275,9 +294,16 @@ function Atlas_Refresh()
 	local base = {}
 	local textLocation, textLevelRange, textMinLevel, textPlayerLimit = "", "", "", ""
 	local red = "|cffcc6666"
-	AtlasLoot_SetupForAtlas()
 
-	debug("Refreshing Atlas")
+	-- Валидация текущего подземелья
+    local errors = AtlasUtils.ValidateDungeonData(zoneID, data[zoneID])
+    if table.getn(errors) > 0 and atlasTW.DebugMode then
+        for _, error in pairs(errors) do
+            debug("Current dungeon validation error: " .. error)
+        end
+    end
+
+	AtlasLoot_SetupForAtlas()
 
 	--If a first time user, set up options
 	if AtlasLootCharDB.FirstTime == nil or AtlasLootCharDB.FirstTime == true then
@@ -340,7 +366,7 @@ function Atlas_Refresh()
 			_G["AtlasBossLine"..i.."_Loot"]:Hide()
 			_G["AtlasBossLine"..i.."_Selected"]:Hide()
 		end
-	end --TODO try create frames when atlasloot initialize
+	end --TODO try create frames when atlasloot UI initialize
 
 	--Hide the loot frame now that a pristine Atlas instance is created
 	AtlasLootItemsFrame:Hide()
@@ -412,15 +438,15 @@ end
 --Function used to initialize the map type dropdown menu
 local function atlasFrameDropDownType_Initialize()
 	local info
-	local catName = Atlas_DropDownLayouts_Order[AtlasTWOptions.AtlasSortBy]
-	local subcatOrder = Atlas_DropDownLayouts_Order[catName]
-	for i = 1, getn(subcatOrder) do
-		info = {
-			text = subcatOrder[i],
-			func = atlasFrameDropDownType_OnClick
-		}
-		UIDropDownMenu_AddButton(info)
-	end
+    local sortType = AtlasTW_DropDownSortOrder[AtlasTWOptions.AtlasSortBy]
+    local subcatOrder = AtlasTW_DropDownGetLayoutOrder(sortType)
+    for i = 1, getn(subcatOrder) do
+        info = {
+            text = subcatOrder[i],
+            func = atlasFrameDropDownType_OnClick
+        }
+        UIDropDownMenu_AddButton(info)
+    end
 end
 
 --Called whenever an item in the main dropdown menu is clicked

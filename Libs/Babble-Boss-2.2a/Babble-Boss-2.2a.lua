@@ -10,7 +10,7 @@ Dependencies: AceLibrary, AceLocale-2.2
 ]]
 
 local MAJOR_VERSION = "Babble-Boss-2.2a"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 20010 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 20011 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 
@@ -28,6 +28,31 @@ local BabbleBoss = AceLibrary("AceLocale-2.2"):new(MAJOR_VERSION)
 
 BabbleBoss:RegisterTranslations("enUS", function()
 	return {
+		["Trigore the Lasher"] = true,
+		["Boahn"] = true,
+		["Mad Magglish"] = true,
+		["Ebru"] = true,
+		["Marisa du'Paige"] = true,
+		["Brainwashed Noble"] = true,
+		["Foreman Thistlenettle"] = true,
+		["Kazkaz the Unholy"] = true,
+		["Zekkis"] = true,
+		["Veyzhak the Cannibal"] = true,
+		["Hammertoe Grez"] = true,
+		["Magregan Deepshadow"] = true,
+		["Kolk"] = true,
+		["Gelk"] = true,
+		["Magra"] = true,
+		["Cavindra"] = true,
+		["Cursed Centaur"] = true,
+		["Sprok"] = true,
+		["Namdo Bizzfizzle"] = true,
+		["Techbot"] = true,
+		["The Behemoth"] = true,
+		["Scarshield Quartermaster"] = true,
+		["Franclorn Forgewright"] = true,
+		["Lothos Riftwaker"] = true,
+		["Overmaster Pyron"] = true,
 		["Mephistroth"] = true,
 		["Kruul"] = true,
 		["Rupturan the Broken"] = true,

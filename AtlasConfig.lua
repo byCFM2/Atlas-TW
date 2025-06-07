@@ -125,7 +125,7 @@ AtlasTW = {
     },
 
     --variables
-    DebugMode = true,
+    DebugMode = false,
     Name = "Atlas-TW",
     Version = nil,
     DropDowns = {},

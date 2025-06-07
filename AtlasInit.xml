@@ -7,6 +7,6 @@
 	<Include file="Atlas.lua"/>
 	<Include file="AtlasMinimapButton.lua"/>
 	<Include file="AtlasUI.lua"/>
-	<Include file="AtlasOptions.lua"/>
 	<Include file="AtlasOptionsUI.lua"/>
+	<Include file="AtlasOptions.lua"/>
 </Ui>
