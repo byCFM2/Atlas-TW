@@ -307,7 +307,7 @@ function Atlas_Refresh()
         end
     end
 
-	--AtlasLoot_SetupForAtlas()
+	AtlasLoot_SetupForAtlas()
 
 	--If a first time user, set up options
 	if AtlasLootCharDB.FirstTime == nil or AtlasLootCharDB.FirstTime == true then
@@ -376,7 +376,7 @@ function Atlas_Refresh()
 	AtlasLootItemsFrame:Hide()
 
 	--Make sure the scroll bar is correctly offset
-	--AtlasLoot_AtlasScrollBar_Update()
+	AtlasLoot_AtlasScrollBar_Update()
 
 	--see if we should display the entrance/instance button or not, and decide what it should say
 	local matchFound = {}

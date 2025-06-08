@@ -10,6 +10,11 @@
 	<Include file="LootTables.lua"/>
 
 	<!-- Include core functionality -->
+	<Include file="Core\Sets.lua"/>
+	<Include file="Core\WorldEvents.lua"/>
+	<Include file="Core\Crafting.lua"/>
+	<Include file="Core\Factions.lua"/>
+	<Include file="Core\World.lua"/>
 	<Include file="Core\ButtonRegistry.lua"/>
 	<Include file="Core\TextParsing.lua"/>
 	<Include file="Core\Spells.lua"/>
@@ -20,7 +25,7 @@
 	<Include file="Core\Dungeons.lua"/>
 	<Include file="Core\Tooltip.lua"/>
 	
-	<!-- Include UI last -->
+	<!-- Include UI -->
 	<Include file="LootUI.lua"/>
 	
 	<!-- <Include file="Core\AtlasLoot.xml"/> -->

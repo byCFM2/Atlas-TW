@@ -148,7 +148,6 @@ function AtlasLoot_OnEvent()
 end
 
 --[[
-	AtlasLoot_OnVariablesLoaded:
 	Invoked by the VARIABLES_LOADED event. Now that we are sure all the assets
 	the addon needs are in place, we can properly set up the mod
 ]]
@@ -180,6 +179,7 @@ function AtlasLoot_OnVariablesLoaded()
 		AtlasLootCharDB.EquipCompare = false
 	end
 	--If using an opaque items frame, change the alpha value of the backing texture
+
 	if AtlasLootCharDB.Opaque then
 		AtlasLootItemsFrame_Back:SetTexture(0, 0, 0, 1)
 	else
@@ -858,7 +858,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 		AtlasLootWarriorSetMenu()
 	else
 		--Iterate through each item object and set its properties
-		for i = 1, 30, 1 do
+		for i = 1, 30 do
 			--Check for a valid object (that it exists, and that it has a name)
 			if dataSource[dataID][i] ~= nil and dataSource[dataID][i][3] ~= "" then
 				if string.sub(dataSource[dataID][i][1], 1, 1) == "s" then
@@ -871,6 +871,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 					isSpell = false
 				else
 					isItem = true
+					DEFAULT_CHAT_FRAME:AddMessage("item type!")
 					isEnchant = false
 					isSpell = false
 				end
@@ -1199,8 +1200,8 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 			end
 		end
 	end
-	--For Alphamap and Atlas integration, show a 'close' button to hide the loot table and restore the map view
-	if AtlasLootItemsFrame:GetParent() == AlphaMapAlphaMapFrame or AtlasLootItemsFrame:GetParent() == AtlasFrame then
+	--Show a 'close' button to hide the loot table and restore the map view
+	if AtlasLootItemsFrame:GetParent() == AtlasFrame then
 		AtlasLootItemsFrame_CloseButton:Show()
 	else
 		AtlasLootItemsFrame_CloseButton:Hide()
@@ -3568,7 +3569,8 @@ function AtlasLoot_ShowContainerFrame()
 		col = 0
 		for j = 1, getn(containerTable[i]) do
 			if not containerItems[buttonIndex] then
-				containerItems[buttonIndex] = CreateFrame("Button", "AtlasLootContainerItem"..buttonIndex, AtlasLootItemsFrameContainer, "AtlasLootContainerItemTemplate")
+				containerItems[buttonIndex] = CreateFrame("Button", "AtlasLootContainerItem"..buttonIndex, AtlasLootItemsFrameContainer)
+				AtlasLoot_ApplyContainerItemTemplate(containerItems[buttonIndex])
 			end
 			local itemButton = getglobal("AtlasLootContainerItem"..buttonIndex)
 			local itemID = containerTable[i][j][1]

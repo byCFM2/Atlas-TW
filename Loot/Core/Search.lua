@@ -44,13 +44,13 @@ function AtlasLoot:Search(Text)
 							table.insert(AtlasLootCharDB["SearchResult"], { v[1], v[2], itemName, v[4], dataID.."|"..dataSource })
 						end
 					-- spell
-					elseif (v[1] ~= nil) and (v[1] ~= "") and (string.sub(v[1], 1, 1) == "s") then 
+					elseif (v[1] ~= nil) and (v[1] ~= "") and (string.sub(v[1], 1, 1) == "s") then
 						local spellName
 						if not spellName then
-							if (string.sub(v[3], 1, 2) == "=d") then  
+							if (string.sub(v[3], 1, 2) == "=d") then
 								spellName = gsub(v[3], "=ds=", "")
 							else
-								spellName = gsub(v[3], "=q%d=", "") 
+								spellName = gsub(v[3], "=q%d=", "")
 							end
 						end
 						local found
@@ -64,13 +64,13 @@ function AtlasLoot:Search(Text)
 							table.insert(AtlasLootCharDB["SearchResult"], { v[1], v[2], spellName, v[4], dataID.."|"..dataSource })
 						end
 					-- enchant
-					elseif (v[1] ~= nil) and (v[1] ~= "") and (string.sub(v[1], 1, 1) == "e") then 
+					elseif (v[1] ~= nil) and (v[1] ~= "") and (string.sub(v[1], 1, 1) == "e") then
 						local spellName
 						if not spellName then
-							if (string.sub(v[3], 1, 2) == "=d") then  
+							if (string.sub(v[3], 1, 2) == "=d") then
 								spellName = gsub(v[3], "=ds=", "")
 							else
-								spellName = gsub(v[3], "=q%d=", "") 
+								spellName = gsub(v[3], "=q%d=", "")
 							end
 						end
 						local found
@@ -88,11 +88,11 @@ function AtlasLoot:Search(Text)
 			end
 		end
 	end
-	
+
 	AtlasLootCharDB["SearchResult"] = {}
 	AtlasLootCharDB.LastSearchedText = Text
 	for dataSource in pairs(AtlasLoot_Data) do search(dataSource) end
-	
+
 	if getn(AtlasLootCharDB["SearchResult"]) == 0 then
 		DEFAULT_CHAT_FRAME:AddMessage(RED.."AtlasLoot"..": "..WHITE..L["No match found for"].." \""..Text.."\".")
 	else

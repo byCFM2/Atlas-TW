@@ -1322,4 +1322,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Nature, Shadow"] = true,
 	["Karazhan Crypt Key"] = true,
 	["Mini Bosses"] = true,
+	["Previous"] = true,
+	["Next"] = true,
+
 } end)
