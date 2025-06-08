@@ -137,16 +137,14 @@ function AtlasLootDefaultFrame_OnShow()
 end
 
 --[[
-	AtlasLoot_OnEvent(event):
+	AtlasLoot_OnEven(event):
 	event - Name of the event, passed from the API
 	Invoked whenever a relevant event is detected by the engine. The function then
 	decides what action to take depending on the event.
 ]]
-function AtlasLoot_OnEvent(event)
+function AtlasLoot_OnEvent()
 	--Addons all loaded
-	if event == "VARIABLES_LOADED" then
-		AtlasLoot_OnVariablesLoaded()
-	end
+	AtlasLoot_OnVariablesLoaded()
 end
 
 --[[
@@ -159,6 +157,7 @@ function AtlasLoot_OnVariablesLoaded()
 	if not AtlasLootCharDB["WishList"] then AtlasLootCharDB["WishList"] = {} end
 	if not AtlasLootCharDB["QuickLooks"] then AtlasLootCharDB["QuickLooks"] = {} end
 	if not AtlasLootCharDB["SearchResult"] then AtlasLootCharDB["SearchResult"] = {} end
+
 	--Add the loot browser to the special frames tables to enable closing wih the ESC key
 	tinsert(UISpecialFrames, "AtlasLootDefaultFrame")
 	tinsert(UISpecialFrames, "AtlasLootOptionsFrame")
@@ -296,7 +295,6 @@ end
 	the required resources are in place
 ]]
 function AtlasLoot_OnLoad()
-	this:RegisterEvent("VARIABLES_LOADED")
 	--Enable the use of /al or /atlasloot to open the loot browser
 	SLASH_ATLASLOOT1 = "/atlasloot"
 	SLASH_ATLASLOOT2 = "/al"
@@ -1758,12 +1756,12 @@ function AtlasLoot_ShowBossLoot(dataID, boss, pFrame)
 	end
 end
 
-function AtlasLootOptions_SetupSlider(text, mymin, mymax, step)
-	_G[this:GetName().."Text"]:SetText(text.." ("..this:GetValue()..")")
-	this:SetMinMaxValues(mymin, mymax)
-	_G[this:GetName().."Low"]:SetText(mymin)
-	_G[this:GetName().."High"]:SetText(mymax)
-	this:SetValueStep(step)
+function AtlasLootOptions_SetupSliderWithFrame(slider, text, mymin, mymax, step)
+    _G[slider:GetName().."Text"]:SetText(text.." ("..slider:GetValue()..")")
+    slider:SetMinMaxValues(mymin, mymax)
+    _G[slider:GetName().."Low"]:SetText(mymin)
+    _G[slider:GetName().."High"]:SetText(mymax)
+    slider:SetValueStep(step)
 end
 
 --[[
@@ -1820,8 +1818,8 @@ local function around(num, idp)
 	return math.floor(num * mult + 0.5) / mult
 end
 
-function AtlasLootOptions_UpdateSlider(text)
-	_G[this:GetName().."Text"]:SetText(text.." ("..around(this:GetValue(),2)..")")
+function AtlasLootOptions_UpdateSliderWithFrame(slider, text)
+    _G[slider:GetName().."Text"]:SetText(text.." ("..around(slider:GetValue(),2)..")")
 end
 
 function AtlasLootOptions_ResetPosition()
@@ -3662,13 +3660,13 @@ function AtlasLoot_ContainerItem_OnClick(arg1)
 			AtlasLoot_AddToWishlist(itemID, tex, name, extra, lootpage.."|"..dataSource)
 		elseif AtlasLootItemsFrame.refresh then
 			local dataID = AtlasLootItemsFrame.refresh[1]
-			local dataSource = AtlasLootItemsFrame.refresh[2]
+			local dataSource2 = AtlasLootItemsFrame.refresh[2]
 			if dataID == "WishList" then
 				AtlasLoot_DeleteFromWishList(this.itemID)
 			elseif dataID == "SearchResult" then
 				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(itemID))
 			else
-				AtlasLoot_AddToWishlist(itemID, tex, name, extra, dataID.."|"..dataSource)
+				AtlasLoot_AddToWishlist(itemID, tex, name, extra, dataID.."|"..dataSource2)
 			end
 		end
 	end

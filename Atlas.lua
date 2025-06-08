@@ -144,7 +144,7 @@ end
 
 --Initializes everything relating to saved variables and data in other lua files
 --This should be called ONLY when we're sure our variables are in memory
-local function atlas_Init()
+function Atlas_Init()
 	-- Валидация данных AtlasMaps
 	if atlasTW.DebugMode then
 		local errors = AtlasUtils.ValidateAllData()
@@ -154,6 +154,10 @@ local function atlas_Init()
 			end
 		end
 	end
+
+	-- Инициализируем UI фреймы
+	AtlasLoot_InitializeUI()
+
 	--clear saved vars for a new ver (or a new install!)
 	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= atlasTW.Version then
 		atlas_FreshOptions()
@@ -188,7 +192,7 @@ end
 --Main Atlas event handler
 function Atlas_OnEvent()
 	if arg1 == atlasTW.Name then
-		atlas_Init()
+		Atlas_Init()
 	end
 end
 
@@ -303,7 +307,7 @@ function Atlas_Refresh()
         end
     end
 
-	AtlasLoot_SetupForAtlas()
+	--AtlasLoot_SetupForAtlas()
 
 	--If a first time user, set up options
 	if AtlasLootCharDB.FirstTime == nil or AtlasLootCharDB.FirstTime == true then
@@ -355,7 +359,7 @@ function Atlas_Refresh()
 	--create and align any new entry buttons that we need
  	for i = 1, atlasTW.CurrentLine do
 		if not _G["AtlasBossLine"..i] then
-			frame = CreateFrame("Button", "AtlasBossLine"..i, AtlasFrame, "AtlasLootNewBossLineTemplate")
+			frame = AtlasLoot_CreateButtonFromTemplate("AtlasBossLine"..i, AtlasFrame, "AtlasLootNewBossLineTemplate")
 			frame:SetFrameStrata("HIGH")
 			if i ~= 1 then
 				frame:SetPoint("TOPLEFT", "AtlasBossLine"..(i-1), "BOTTOMLEFT")
@@ -372,7 +376,7 @@ function Atlas_Refresh()
 	AtlasLootItemsFrame:Hide()
 
 	--Make sure the scroll bar is correctly offset
-	AtlasLoot_AtlasScrollBar_Update()
+	--AtlasLoot_AtlasScrollBar_Update()
 
 	--see if we should display the entrance/instance button or not, and decide what it should say
 	local matchFound = {}

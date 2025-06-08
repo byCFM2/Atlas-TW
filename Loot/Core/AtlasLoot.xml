@@ -1,19 +1,6 @@
 
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
-	<Include file="ButtonRegistry.lua"/>
-	<Include file="TextParsing.lua"/>
-	<Include file="Spells.lua"/>
-	<Include file="Sets.lua"/>
-	<Include file="Factions.lua"/>
-	<Include file="WorldEvents.lua"/>
-	<Include file="PvP.lua"/>
-	<Include file="Crafting.lua"/>
-	<Include file="AtlasLoot.lua"/>
-	<Include file="WishList.lua"/>
-	<Include file="Search.lua"/>
-	<Include file="World.lua"/>
-	<Include file="Dungeons.lua"/>
-	<Include file="Tooltip.lua"/>
+
 	<Button name="AtlasLootContainerItemTemplate" virtual="true">
 		<Size x="40" y="40"/>
 		<Backdrop name="$parentBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">

@@ -1,5 +1,5 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
-	<!-- Include files -->
+	<!-- Include data files first -->
 	<Include file="Sets.lua"/>
 	<Include file="Crafting.lua"/>
 	<Include file="Battlegrounds.lua"/>
@@ -9,5 +9,19 @@
 	<Include file="World.lua"/>
 	<Include file="LootTables.lua"/>
 
-	<Include file="Core\AtlasLoot.xml"/>
+	<!-- Include core functionality -->
+	<Include file="Core\ButtonRegistry.lua"/>
+	<Include file="Core\TextParsing.lua"/>
+	<Include file="Core\Spells.lua"/>
+	<Include file="Core\PvP.lua"/>
+	<Include file="Core\AtlasLoot.lua"/>
+	<Include file="Core\WishList.lua"/>
+	<Include file="Core\Search.lua"/>
+	<Include file="Core\Dungeons.lua"/>
+	<Include file="Core\Tooltip.lua"/>
+	
+	<!-- Include UI last -->
+	<Include file="LootUI.lua"/>
+	
+	<!-- <Include file="Core\AtlasLoot.xml"/> -->
 </Ui>
