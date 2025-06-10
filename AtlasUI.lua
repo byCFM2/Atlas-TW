@@ -14,8 +14,10 @@ local function atlas_CreateFrames()
     atlasFrame:EnableMouse(true)
 	atlasFrame:RegisterForDrag("LeftButton")
 	atlasFrame:RegisterEvent("ADDON_LOADED")
-	--Allows Atlas to be closed with the Escape key
+
+    --Allows Atlas to be closed with the Escape key
 	tinsert(UISpecialFrames, "AtlasFrame")
+
 	--Setting up slash commands involves referencing some strage auto-generated variables
 	SLASH_ATLAS1 = "/atlas"
 	SlashCmdList["ATLAS"] = Atlas_SlashCommand
@@ -173,9 +175,7 @@ local function atlas_CreateFrames()
     locationText:SetWidth(351)
     locationText:SetHeight(15)
     locationText:SetAllPoints(location)
-
     locationText:SetJustifyH("LEFT")
-
 
     location:SetScript("OnLeave", function()
         GameTooltip:Hide()

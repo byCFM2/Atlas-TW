@@ -200,13 +200,13 @@ function AtlasLoot_OnVariablesLoaded()
 	end
 
 	--Position relevant UI objects for loot browser and set up menu
-	AtlasLootDefaultFrame_SelectedCategory:SetPoint("TOP", "AtlasLootDefaultFrame_Menu", "BOTTOM", 0, -4)
-	AtlasLootDefaultFrame_SelectedTable:SetPoint("TOP", "AtlasLootDefaultFrame_SubMenu", "BOTTOM", 0, -4)
+	AtlasLootDefaultFrame_SelectedCategory:SetPoint("TOP", "AtlasLootItemsFrame_Menu", "BOTTOM", 0, -4)
+	AtlasLootDefaultFrame_SelectedTable:SetPoint("TOP", "AtlasLootItemsFrame_SubMenu", "BOTTOM", 0, -4)
 	AtlasLootDefaultFrame_SelectedCategory:SetText(AtlasLootCharDB.LastBossText)
 	AtlasLootDefaultFrame_SelectedTable:SetText("")
 	AtlasLootDefaultFrame_SelectedCategory:Show()
 	AtlasLootDefaultFrame_SelectedTable:Show()
-	AtlasLootDefaultFrame_SubMenu:Disable()
+	AtlasLootItemsFrame_SubMenu:Disable()
 end
 
 --[[
@@ -1217,11 +1217,11 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 	end
 	if subMenu then
 		AtlasLoot_HewdropSubMenuRegister(subMenu)
-		AtlasLootDefaultFrame_SubMenu:Enable()
+		AtlasLootItemsFrame_SubMenu:Enable()
 		AtlasLootDefaultFrame_SelectedTable:SetText(bossName)
 		AtlasLootDefaultFrame_SelectedTable:Show()
 	else
-		AtlasLootDefaultFrame_SubMenu:Disable()
+		AtlasLootItemsFrame_SubMenu:Disable()
 		AtlasLootDefaultFrame_SelectedTable:Hide()
 	end
 	--Anchor the item frame where it is supposed to be
@@ -1239,29 +1239,29 @@ end
 function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	AtlasLootCharDB.LastMenu = { tablename, text, tabletype }
 	--Definition of where I want the loot table to be shown
-	pFrame = { "TOPLEFT", "AtlasLootDefaultFrame_LootBackground", "TOPLEFT", "2", "-2" }
+	--pFrame = { "TOPLEFT", "AtlasLootDefaultFrame_LootBackground", "TOPLEFT", "2", "-2" }
 	--If the button clicked was linked to a loot table
 	if tabletype == "Table" then
 		--Show the loot table
-		AtlasLoot_ShowBossLoot(tablename, text, pFrame)
+		AtlasLoot_ShowBossLoot(tablename, text, nil)
 		--Save needed info for fuure re-display of the table
 		AtlasLootCharDB.LastBoss = tablename
 		AtlasLootCharDB.LastBossText = text
 		--Purge the text label for the submenu and disable the submenu
-		AtlasLootDefaultFrame_SubMenu:Disable()
+		AtlasLootItemsFrame_SubMenu:Disable()
 		AtlasLootDefaultFrame_SelectedTable:SetText("")
 		AtlasLootDefaultFrame_SelectedTable:Show()
 	--If the button links to a sub menu definition
 	else
 		--Enable the submenu button
-		AtlasLootDefaultFrame_SubMenu:Enable()
+		AtlasLootItemsFrame_SubMenu:Enable()
 		--Show the first loot table associated with the submenu
-		AtlasLoot_ShowBossLoot(AtlasLoot_HewdropDown_SubTables[tablename][1][2], AtlasLoot_HewdropDown_SubTables[tablename][1][1], pFrame)
+		AtlasLoot_ShowBossLoot(AtlasLoot_HewdropDown_SubTables[tablename][1][2], AtlasLoot_HewdropDown_SubTables[tablename][1][1], nil)
 		--Save needed info for fuure re-display of the table
 		AtlasLootCharDB.LastBoss = AtlasLoot_HewdropDown_SubTables[tablename][1][2]
 		AtlasLootCharDB.LastBossText = AtlasLoot_HewdropDown_SubTables[tablename][1][1]
 		--Load the correct submenu and associated with the button
-		AtlasLoot_HewdropSubMenu:Unregister(AtlasLootDefaultFrame_SubMenu)
+		AtlasLoot_HewdropSubMenu:Unregister(AtlasLootItemsFrame_SubMenu)
 		AtlasLoot_HewdropSubMenuRegister(AtlasLoot_HewdropDown_SubTables[tablename])
 		--Show a text label of what has been selected
 		AtlasLootDefaultFrame_SelectedTable:SetText(AtlasLoot_HewdropDown_SubTables[tablename][1][1])
@@ -1281,9 +1281,9 @@ end
 ]]
 function AtlasLoot_HewdropSubMenuClick(tablename, text)
 	--Definition of where I want the loot table to be shown
-	pFrame = { "TOPLEFT", "AtlasLootDefaultFrame_LootBackground", "TOPLEFT", "2", "-2" }
+	--pFrame = { "TOPLEFT", "AtlasLootDefaultFrame_LootBackground", "TOPLEFT", "2", "-2" }
 	--Show the select loot table
-	AtlasLoot_ShowBossLoot(tablename, text, pFrame)
+	AtlasLoot_ShowBossLoot(tablename, text, nil)
 	--Save needed info for fuure re-display of the table
 	AtlasLootCharDB.LastBoss = tablename
 	AtlasLootCharDB.LastBossText = text
@@ -1299,7 +1299,7 @@ end
 	Generates the sub menu needed by passing a table of loot tables and titles
 ]]
 function AtlasLoot_HewdropSubMenuRegister(loottable)
-	AtlasLoot_HewdropSubMenu:Register(AtlasLootDefaultFrame_SubMenu,
+	AtlasLoot_HewdropSubMenu:Register(AtlasLootItemsFrame_SubMenu,
 		'point', function(parent)
 			return "TOP", "BOTTOM"
 		end,
@@ -1325,7 +1325,8 @@ end
 	Constructs the main category menu from a tiered table
 ]]
 function AtlasLoot_HewdropRegister()
-	AtlasLoot_Hewdrop:Register(AtlasLootDefaultFrame_Menu,
+	--AtlasLoot_Hewdrop:Register(AtlasLootDefaultFrame_Menu,
+	AtlasLoot_Hewdrop:Register(AtlasLootItemsFrame_Menu,
 		'point', function(parent)
 			return "TOP", "BOTTOM"
 		end,
@@ -1476,7 +1477,7 @@ function AtlasLoot_OpenMenu(menuName)
 	AtlasLootQuickLooksButton:Hide()
 	AtlasLootServerQueryButton:Hide()
 	AtlasLootDefaultFrame_SelectedCategory:SetText(menuName)
-	AtlasLootDefaultFrame_SubMenu:Disable()
+	AtlasLootItemsFrame_SubMenu:Disable()
 	AtlasLootDefaultFrame_SelectedTable:SetText("")
 	AtlasLootDefaultFrame_SelectedTable:Show()
 	AtlasLootCharDB.LastBoss = this.lootpage
@@ -1570,12 +1571,12 @@ function AtlasLoot_NavButton_OnClick()
 		if AtlasLootItemsFrame.refresh[1] == "DUNGEONSMENU1" then
 			AtlasLootItemsFrame.refresh[1] = "DUNGEONSMENU2"
 			AtlasLoot_DungeonsMenu2()
-			AtlasLootDefaultFrame_SubMenu:Disable()
+			AtlasLootItemsFrame_SubMenu:Disable()
 			return
 		elseif AtlasLootItemsFrame.refresh[1] == "DUNGEONSMENU2" then
 			AtlasLootItemsFrame.refresh[1] = "DUNGEONSMENU1"
 			AtlasLoot_DungeonsMenu1()
-			AtlasLootDefaultFrame_SubMenu:Disable()
+			AtlasLootItemsFrame_SubMenu:Disable()
 			return
 		end
 		if string.sub(this.lootpage, 1, 16) == "SearchResultPage" then
@@ -1600,7 +1601,7 @@ function AtlasLoot_NavButton_OnClick()
 	end
 	for k,v in pairs(AtlasLoot_MenuList) do
 		if this.lootpage == v then
-			AtlasLootDefaultFrame_SubMenu:Disable()
+			AtlasLootItemsFrame_SubMenu:Disable()
 			AtlasLootDefaultFrame_SelectedCategory:SetText(AtlasLootCharDB.LastBossText)
 			AtlasLootDefaultFrame_SelectedTable:SetText()
 		end

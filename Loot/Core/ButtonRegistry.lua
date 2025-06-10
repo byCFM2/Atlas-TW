@@ -3024,9 +3024,9 @@ AtlasLoot_ButtonRegistry = {
 	},
 	-- World
 	["AAzuregos"] = {
-		Title = "Azuregos",
+		Title = BB["Azuregos"],
 		Next_Page = "DEmeriss",
-		Next_Title = "Emeriss",
+		Next_Title = BB["Emeriss"],
 		Prev_Page = "Clackora",
 		Prev_Title = BB["Cla'ckora"],
 		Back_Page = "WORLDMENU",
@@ -3037,7 +3037,7 @@ AtlasLoot_ButtonRegistry = {
 		Next_Page = "DLethon",
 		Next_Title = "Lethon",
 		Prev_Page = "AAzuregos",
-		Prev_Title = "Azuregos",
+		Prev_Title = BB["Azuregos"],
 		Back_Page = "WORLDMENU",
 		Back_Title = L["World"]
 	},
@@ -3132,8 +3132,8 @@ AtlasLoot_ButtonRegistry = {
 		Back_Title = L["World"]
 	},
 	["Clackora"] = {
-		Title = "Cla'ckora",
-		Next_Page =	"Azuregos",
+		Title = BB["Cla'ckora"],
+		Next_Page =	"AAzuregos",
 		Next_Title = BB["Azuregos"],
 		Prev_Page = "CowKing",
 		Prev_Title = BB["Moo"],

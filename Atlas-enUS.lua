@@ -754,7 +754,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Skill:"] = true,
 	["Level:"] = true,
 	["QuickLook"] = true,
-	["Add to QuickLooks:"] = true,
+	["Add to QuickLooks"] = true,
 	["Assign this loot table to QuickLook"] = true,
 	["Query Server"] = true,
 	["Dungeons & Raids"] = true,

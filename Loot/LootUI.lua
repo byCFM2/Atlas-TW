@@ -467,15 +467,16 @@ function AtlasLoot_CreateItemsFrame()
                 backButton:SetWidth(100)
                 backButton:SetPoint("RIGHT", frame, "RIGHT", -154, 0)
             end
-            _G["AtlasLoot_QuickLooks"]:SetText(L["Add to QuickLooks:"])
     end)
     frame:SetScript("OnMouseWheel", function()
+        DEFAULT_CHAT_FRAME:AddMessage("OnMouseWheel triggered!")
         if arg1 == 1 and AtlasLootItemsFrame_NEXT:IsVisible() then
             AtlasLootItemsFrame_NEXT:Click()
         elseif arg1 == -1 and AtlasLootItemsFrame_PREV:IsVisible() then
+            DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Atlas-TW|r: "..L["Scrolling is AtlasLootItemsFrame_PREV."])
             AtlasLootItemsFrame_PREV:Click()
         end
-    end)
+    end) --TODO не работает колесико мышки
     frame:Hide()
 
     -- Background texture
@@ -539,14 +540,14 @@ function AtlasLoot_CreateItemsFrame()
 
     -- QuickLooks button
     local quickLooksButton = CreateFrame("Button", "AtlasLootQuickLooksButton", frame)
-    quickLooksButton:SetWidth(25)
-    quickLooksButton:SetHeight(25)
-    quickLooksButton:SetPoint("BOTTOM", frame, "BOTTOM", -10, 8)
+    quickLooksButton:SetWidth(32)
+    quickLooksButton:SetHeight(32)
+    quickLooksButton:SetPoint("BOTTOM", frame, "BOTTOM", -20, 5)
     quickLooksButton:Hide()
 
-    quickLooksButton:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Up")
-    quickLooksButton:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Down")
-    quickLooksButton:SetDisabledTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Disabled")
+    quickLooksButton:SetNormalTexture("Interface\\Buttons\\UI-ScrollBar-ScrollDownButton-Up")
+    quickLooksButton:SetPushedTexture("Interface\\Buttons\\UI-ScrollBar-ScrollDownButton-Down")
+    quickLooksButton:SetDisabledTexture("Interface\\Buttons\\UI-ScrollBar-ScrollDownButton-Disabled")
     quickLooksButton:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
 
     quickLooksButton:SetScript("OnShow", function()
@@ -560,6 +561,14 @@ function AtlasLoot_CreateItemsFrame()
 
     quickLooksButton:SetScript("OnClick", function()
         AtlasLoot_ShowQuickLooks(this)
+    end)
+    quickLooksButton:SetScript("OnEnter", function()
+        GameTooltip:SetOwner(this, "ANCHOR_LEFT")
+        GameTooltip:SetText(L["Add to QuickLooks"])
+        GameTooltip:Show()
+    end)
+    quickLooksButton:SetScript("OnLeave", function()
+        GameTooltip:Hide()
     end)
 
     -- Container frame
@@ -628,7 +637,7 @@ function AtlasLoot_CreateItemsFrame()
 
     -- Back button
     local backButton = CreateFrame("Button", frame:GetName().."_BACK", frame, "OptionsButtonTemplate")
-    backButton:SetPoint("BOTTOM", frame, "BOTTOM", 0, 8)
+    backButton:SetPoint("BOTTOM", frame, "BOTTOM", -20, 8)
     backButton:Hide()
     backButton:SetScript("OnShow", function()
         this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
@@ -649,7 +658,7 @@ function AtlasLoot_CreateItemsFrame()
     -- Prev button
     local prevButton = CreateFrame("Button", frame:GetName().."_PREV", frame)
     AtlasLoot_ApplyNavigationButtonTemplate(prevButton, "prev")
-    prevButton:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 5, 5)
+    prevButton:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 0, 5)
     prevButton:SetScript("OnShow", function()
         this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
     end)
@@ -669,7 +678,7 @@ function AtlasLoot_CreateItemsFrame()
     -- Next button
     local nextButton = CreateFrame("Button", frame:GetName().."_NEXT", frame)
     AtlasLoot_ApplyNavigationButtonTemplate(nextButton, "next")
-    nextButton:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -5, 5)
+    nextButton:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", 0, 5)
     nextButton:SetScript("OnShow", function()
         this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
     end)
@@ -684,6 +693,40 @@ function AtlasLoot_CreateItemsFrame()
     nextButton:SetScript("OnClick", function()
         AtlasLoot_NavButton_OnClick()
         CloseDropDownMenus()
+    end)
+
+    -- Menu button
+    local menuButton = CreateFrame("Button", frame:GetName().."_Menu", frame, "OptionsButtonTemplate")
+    menuButton:SetWidth(120)
+    menuButton:SetHeight(20)
+    menuButton:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 30, 10)
+    menuButton:SetScript("OnClick", function()
+        if AtlasLoot_Hewdrop:IsOpen() then
+            AtlasLoot_Hewdrop:Close()
+        else
+            AtlasLoot_Hewdrop:Open(this)
+        end
+    end)
+    menuButton:SetScript("OnShow", function()
+        this:SetText(L["Select Loot Table"])
+        this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
+    end)
+
+    -- SubMenu button
+    local subMenuButton = CreateFrame("Button", frame:GetName().."_SubMenu", frame, "OptionsButtonTemplate")
+    subMenuButton:SetWidth(120)
+    subMenuButton:SetHeight(20)
+    subMenuButton:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -35, 10)
+    subMenuButton:SetScript("OnClick", function()
+        if AtlasLoot_HewdropSubMenu:IsOpen() then
+            AtlasLoot_HewdropSubMenu:Close()
+        else
+            AtlasLoot_HewdropSubMenu:Open(this)
+        end
+    end)
+    subMenuButton:SetScript("OnShow", function()
+        this:SetText(L["Select Sub-Table"])
+        this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
     end)
 
     return frame
@@ -1326,7 +1369,7 @@ function AtlasLoot_CreateDefaultFrame()
     frame:SetHeight(700)
     frame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
     frame:SetFrameStrata("HIGH")
-   -- frame:SetToplevel(true)
+    frame:SetToplevel(true)
     frame:SetMovable(true)
     frame:EnableMouse(true)
     frame:EnableKeyboard(true)
@@ -1404,7 +1447,7 @@ function AtlasLoot_CreateDefaultFrame()
         this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
     end)
 
-    -- Menu button
+--[[     -- Menu button
     local menuButton = CreateFrame("Button", frame:GetName().."_Menu", frame, "OptionsButtonTemplate")
     menuButton:SetWidth(130)
     menuButton:SetHeight(20)
@@ -1436,7 +1479,7 @@ function AtlasLoot_CreateDefaultFrame()
     subMenuButton:SetScript("OnShow", function()
         this:SetText(L["Select Sub-Table"])
         this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-    end)
+    end) ]]
 
     -- Loot background frame
     local lootBg = CreateFrame("Frame", frame:GetName().."_LootBackground", frame)
