@@ -392,6 +392,7 @@ end
 ]]
 function AtlasLoot_AtlasScrollBar_Update()
 	local lineplusoffset
+	local highlightTexture
 	if _G["AtlasBossLine1_Text"] ~= nil then
 		local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
 		--Update the contents of the Atlas scroll frames
@@ -401,8 +402,10 @@ function AtlasLoot_AtlasScrollBar_Update()
 			lineplusoffset = line + FauxScrollFrame_GetOffset(AtlasScrollBar)
 			local bossLine = _G["AtlasBossLine"..line]
 			if lineplusoffset <= atlasTW.CurrentLine then
-				-- Включаем интерактивность для видимых кнопок
+				-- Включаем интерактивность и текстуру для видимых кнопок
 				bossLine:EnableMouse(true)
+				highlightTexture = bossLine:GetHighlightTexture()
+				highlightTexture:Show()
 				local loot = _G["AtlasBossLine"..line.."_Loot"]
 				local selected = _G["AtlasBossLine"..line.."_Selected"]
 				_G["AtlasBossLine"..line.."_Text"]:SetText(atlasTW.ScrollList[lineplusoffset])
@@ -437,7 +440,7 @@ function AtlasLoot_AtlasScrollBar_Update()
 				-- Полностью отключаем интерактивность
 				bossLine:EnableMouse(false)
 				-- Скрываем HighlightTexture явно
-				local highlightTexture = bossLine:GetHighlightTexture()
+				highlightTexture = bossLine:GetHighlightTexture()
 				if highlightTexture then
 					highlightTexture:Hide()
 				end
