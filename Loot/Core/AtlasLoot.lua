@@ -378,7 +378,7 @@ function AtlasLoot_SetItemInfoFrame(pFrame)
 		AtlasLootItemsFrame:ClearAllPoints()
 		AtlasLootItemsFrame:SetParent(AtlasFrame)
 		AtlasLootItemsFrame:SetPoint("TOPLEFT", "AtlasFrame", "TOPLEFT", 18, -84)
-	elseif ( AtlasDefaultFrame ) then
+	elseif ( AtlasLootDefaultFrame ) then
 		AtlasLootItemsFrame:ClearAllPoints()
 		AtlasLootItemsFrame:SetParent(AtlasLootDefaultFrame)
 		AtlasLootItemsFrame:SetPoint("TOPLEFT", "AtlasLootDefaultFrame", "TOPLEFT", 0, 0)
@@ -394,13 +394,15 @@ function AtlasLoot_AtlasScrollBar_Update()
 	local lineplusoffset
 	if _G["AtlasBossLine1_Text"] ~= nil then
 		local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
-		--Update the contents of the Atlas scroll frame
+		--Update the contents of the Atlas scroll frames
 		FauxScrollFrame_Update(AtlasScrollBar, atlasTW.CurrentLine, atlasTW.NUM_LINES, 15)
 		--Make note of how far in the scroll frame we are
 		for line=1,AtlasTW.NUM_LINES do
 			lineplusoffset = line + FauxScrollFrame_GetOffset(AtlasScrollBar)
 			local bossLine = _G["AtlasBossLine"..line]
 			if lineplusoffset <= atlasTW.CurrentLine then
+				-- Включаем интерактивность для видимых кнопок
+				bossLine:EnableMouse(true)
 				local loot = _G["AtlasBossLine"..line.."_Loot"]
 				local selected = _G["AtlasBossLine"..line.."_Selected"]
 				_G["AtlasBossLine"..line.."_Text"]:SetText(atlasTW.ScrollList[lineplusoffset])
@@ -409,9 +411,8 @@ function AtlasLoot_AtlasScrollBar_Update()
 					loot:Hide()
 					selected:Show()
 				elseif AtlasLootBossButtons[zoneID]~=nil and
-				AtlasLootBossButtons[zoneID][lineplusoffset] ~= nil and
-				AtlasLootBossButtons[zoneID][lineplusoffset] ~= ""
-				then
+				 AtlasLootBossButtons[zoneID][lineplusoffset] ~= nil and
+				 AtlasLootBossButtons[zoneID][lineplusoffset] ~= "" then
 					bossLine:Enable()
 					loot:Show()
 					selected:Hide()
@@ -433,6 +434,13 @@ function AtlasLoot_AtlasScrollBar_Update()
 			elseif bossLine then
 				--Hide lines that are not needed
 				bossLine:Hide()
+				-- Полностью отключаем интерактивность
+				bossLine:EnableMouse(false)
+				-- Скрываем HighlightTexture явно
+				local highlightTexture = bossLine:GetHighlightTexture()
+				if highlightTexture then
+					highlightTexture:Hide()
+				end
 			end
 		end
 	end
@@ -486,7 +494,7 @@ function AtlasLootBoss_OnClick(name)
 		_G[name.."_Loot"]:Show()
 		AtlasLootItemsFrame:Hide()
 		AtlasLootItemsFrame.activeBoss = nil
-	else	
+	else
 		--If an loot table is associated with the button, show it. Note multiple tables need to be checked due to the database structure
 		if AtlasLootBossButtons[zoneID] ~= nil and AtlasLootBossButtons[zoneID][id] ~= nil and AtlasLootBossButtons[zoneID][id] ~= "" then
 			if AtlasLoot_IsLootTableAvailable(AtlasLootBossButtons[zoneID][id]) then
@@ -498,8 +506,8 @@ function AtlasLootBoss_OnClick(name)
 				AtlasLoot_AtlasScrollBar_Update()
 				AtlasLootCharDB.LastBoss = AtlasLootBossButtons[zoneID][id]
 				--dont show navigation buttons if its not rep or set
-				local match = string.find(boss, L["Reputation"]) or string.find(boss, L["Set"])
-				--[[if not match then
+				--[[local match = string.find(boss, L["Reputation"]) or string.find(boss, L["Set"])
+				if not match then
 					AtlasLootItemsFrame_BACK:Hide()
 					AtlasLootItemsFrame_NEXT:Hide()
 					AtlasLootItemsFrame_PREV:Hide()
@@ -548,10 +556,8 @@ end
 	Toggles SafeLinks. Items uncached will be linked as their names.
 ]]
 function AtlasLootOptions_SafeLinksToggle()
+	AtlasLootCharDB.SafeLinks = not AtlasLootCharDB.SafeLinks
 	if AtlasLootCharDB.SafeLinks then
-		AtlasLootCharDB.SafeLinks = false
-	else
-		AtlasLootCharDB.SafeLinks = true
 		AtlasLootCharDB.AllLinks = false
 	end
 	AtlasLootOptions_Init()
@@ -562,10 +568,8 @@ end
 	Toggles AllLinks. All items will be linked.
 ]]
 function AtlasLootOptions_AllLinksToggle()
+	AtlasLootCharDB.AllLinks = not AtlasLootCharDB.AllLinks
 	if AtlasLootCharDB.AllLinks then
-		AtlasLootCharDB.AllLinks = false
-	else
-		AtlasLootCharDB.AllLinks = true
 		AtlasLootCharDB.SafeLinks = false
 	end
 	AtlasLootOptions_Init()
@@ -605,11 +609,7 @@ function AtlasLootOptions_ItemSyncTTToggle()
 end
 
 function AtlasLootOptions_ShowSourceToggle()
-	if(AtlasLootCharDB.ShowSource) then
-		AtlasLootCharDB.ShowSource = false
-	else
-		AtlasLootCharDB.ShowSource = true
-	end
+	AtlasLootCharDB.ShowSource = not AtlasLootCharDB.ShowSource
 	AtlasLootOptions_Init()
 end
 --[[
@@ -617,18 +617,9 @@ end
 	Toggles EquipCompare. Adds a tooltip with the equipped item (if it's the case) next to the default one.
 ]]
 function AtlasLootOptions_EquipCompareToggle()
+	AtlasLootCharDB.EquipCompare = not AtlasLootCharDB.EquipCompare
 	if AtlasLootCharDB.EquipCompare then
-		AtlasLootCharDB.EquipCompare = false
-		if IsAddOnLoaded("EquipCompare") then
-			EquipCompare_UnregisterTooltip(AtlasLootTooltip)
-			EquipCompare_UnregisterTooltip(AtlasLootTooltip2)
-		end
-		if IsAddOnLoaded("EQCompare") then
-			EQCompare:UnRegisterTooltip(AtlasLootTooltip)
-			EQCompare:UnRegisterTooltip(AtlasLootTooltip2)
-		end
-	else
-		AtlasLootCharDB.EquipCompare = true
+		-- Register tooltips if EquipCompare is enabled
 		if IsAddOnLoaded("EquipCompare") then
 			EquipCompare_RegisterTooltip(AtlasLootTooltip)
 			EquipCompare_RegisterTooltip(AtlasLootTooltip2)
@@ -636,6 +627,16 @@ function AtlasLootOptions_EquipCompareToggle()
 		if IsAddOnLoaded("EQCompare") then
 			EQCompare:RegisterTooltip(AtlasLootTooltip)
 			EQCompare:RegisterTooltip(AtlasLootTooltip2)
+		end
+	else
+		-- Unregister tooltips if EquipCompare is disabled
+		if IsAddOnLoaded("EquipCompare") then
+			EquipCompare_UnregisterTooltip(AtlasLootTooltip)
+			EquipCompare_UnregisterTooltip(AtlasLootTooltip2)
+		end
+		if IsAddOnLoaded("EQCompare") then
+			EQCompare:UnRegisterTooltip(AtlasLootTooltip)
+			EQCompare:UnRegisterTooltip(AtlasLootTooltip2)
 		end
 	end
 	AtlasLootOptions_Init()
@@ -660,11 +661,7 @@ AtlasLootOptions_ItemIDToggle:
 Toggles items ID.
 ]]
 function AtlasLootOptions_ItemIDToggle()
-	if AtlasLootCharDB.ItemIDs then
-		AtlasLootCharDB.ItemIDs = false
-	else
-		AtlasLootCharDB.ItemIDs = true
-	end
+	AtlasLootCharDB.ItemIDs = not AtlasLootCharDB.ItemIDs
 	AtlasLootOptions_Init()
 end
 
@@ -673,11 +670,7 @@ AtlasLootOptions_ItemSpam:
 Toggles item query spam.
 ]]
 function AtlasLootOptions_ItemSpam()
-	if AtlasLootCharDB.ItemSpam then
-		AtlasLootCharDB.ItemSpam = false
-	else
-		AtlasLootCharDB.ItemSpam = true
-	end
+	AtlasLootCharDB.ItemSpam = not AtlasLootCharDB.ItemSpam
 	AtlasLootOptions_Init()
 end
 
@@ -687,16 +680,16 @@ Toggle on/off the options window
 ]]
 function AtlasLootOptions_Toggle()
 	if AtlasLootOptionsFrame:IsVisible() then
-		--Hide the options frame if already shown
 		AtlasLootOptionsFrame:Hide()
 	else
 		AtlasLootOptionsFrame:Show()
-		--Workaround for a weird quirk where tooltip settings so not immediately take effect
-		if AtlasLootCharDB.DefaultTT == true then
+
+		-- Refresh tooltip settings to ensure they take effect immediately
+		if AtlasLootCharDB.DefaultTT then
 			AtlasLootOptions_DefaultTTToggle()
-		elseif AtlasLootCharDB.LootlinkTT == true then
+		elseif AtlasLootCharDB.LootlinkTT then
 			AtlasLootOptions_LootlinkTTToggle()
-		elseif AtlasLootCharDB.ItemSyncTT == true then
+		elseif AtlasLootCharDB.ItemSyncTT then
 			AtlasLootOptions_ItemSyncTTToggle()
 		end
 	end
@@ -871,7 +864,6 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 					isSpell = false
 				else
 					isItem = true
-					DEFAULT_CHAT_FRAME:AddMessage("item type!")
 					isEnchant = false
 					isSpell = false
 				end
@@ -1591,7 +1583,7 @@ function AtlasLoot_NavButton_OnClick()
 			AtlasLootCharDB.LastBoss = this.lootpage
 			AtlasLootCharDB.LastBossText = this.title
 			AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.refresh[2], this.title, pFrame)
-			if AtlasLootDefaultFrame_SelectedTable:GetText()~=nil then 
+			if AtlasLootDefaultFrame_SelectedTable:GetText()~=nil then
 				AtlasLootDefaultFrame_SelectedTable:SetText(AtlasLoot_BossName:GetText())
 			else
 				AtlasLootDefaultFrame_SelectedCategory:SetText(AtlasLoot_BossName:GetText())
@@ -1804,7 +1796,7 @@ end
 	Function to move the minimap button around the minimap.
 ]]
 function AtlasLootMinimapButton_UpdatePosition()
-	AtlasLootMinimapButtonFrame:SetPoint(	
+	AtlasLootMinimapButtonFrame:SetPoint(
 		"TOPLEFT",
 		"Minimap",
 		"TOPLEFT",
@@ -1862,10 +1854,10 @@ end
 	Function to move the minimap button around the minimap.
 ]]
 function AtlasLootMinimapButton_BeingDragged()
-	local xpos,ypos = GetCursorPosition() 
-	local xmin,ymin = Minimap:GetLeft(), Minimap:GetBottom() 
-	xpos = xmin-xpos/UIParent:GetScale()+70 
-	ypos = ypos/UIParent:GetScale()-ymin-70 
+	local xpos,ypos = GetCursorPosition()
+	local xmin,ymin = Minimap:GetLeft(), Minimap:GetBottom()
+	xpos = xmin-xpos/UIParent:GetScale()+70
+	ypos = ypos/UIParent:GetScale()-ymin-70
 	AtlasLootMinimapButton_SetPosition(math.deg(math.atan2(ypos,xpos)))
 end
 
@@ -2540,7 +2532,7 @@ AtlasLoot_HewdropDown_SubTables = {
 		{ BB["Lord Hel'nurath"].." ("..L["Rare"]..")", "DMWHelnurath" },
 		{ BB["Prince Tortheldrin"], "DMWPrinceTortheldrin" },
 		{ L["Trash Mobs"], "DMWTrash" },
-		{ L["Dire Maul Books"], "DMBooks" }, 
+		{ L["Dire Maul Books"], "DMBooks" },
 	},
 	["DireMaulNorth"] = {
 		{ BB["Guard Mol'dar"], "DMNGuardMoldar" },
@@ -2934,7 +2926,7 @@ AtlasLoot_HewdropDown_SubTables = {
 		{ "|cffc69b6d"..BC["Warrior"], "ZGWarrior" },
 		{ L["Zul'Gurub Rings"], "ZGRings" },
 		{ BIS["The Twin Blades of Hakkari"], "HakkariBlades" },
-									   
+
 	},
 	["Pre60Sets"] = {
 		{ BIS["Bloodmail Regalia"], "ScholoMail" },
@@ -3613,7 +3605,7 @@ function AtlasLoot_AddContainerItemTooltip(frame ,itemID)
         local numLines = AtlasLootTooltip:NumLines()
 		if AtlasLootCharDB.ItemIDs then
 			if numLines and numLines > 0 then
-				local lastLine = getglobal("AtlasLootTooltipTextLeft"..numLines)  
+				local lastLine = getglobal("AtlasLootTooltipTextLeft"..numLines)
 				if lastLine:GetText() then
 					lastLine:SetText(lastLine:GetText().."\n\n"..DEFAULT..L["ItemID:"].." "..itemID)
 				end

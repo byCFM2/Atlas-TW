@@ -351,6 +351,15 @@ function Atlas_Refresh()
 
 	atlasData = base
 
+	if (data.Search ~= false) then
+		AtlasSearchEditBox:Show();
+		AtlasNoSearch:Hide();
+	else
+		AtlasSearchEditBox:Hide();
+		AtlasNoSearch:Show();
+		ATLAS_SEARCH_METHOD = nil;
+	end
+
 	--populate the scroll frame entries list, the update func will do the rest
 	atlas_Search("")
 	AtlasSearchEditBox:SetText("")
@@ -366,11 +375,21 @@ function Atlas_Refresh()
 			else
 				frame:SetPoint("TOPLEFT", "AtlasScrollBar", "TOPLEFT", 16, -3)
 			end
+			-- Ограничиваем кнопки границами скролла (24 линии * 15 пикселей = 360 пикселей)
+			if i > 24 then
+				frame:EnableMouse(false)
+				frame:Hide()
+			end
 		else
 			_G["AtlasBossLine"..i.."_Loot"]:Hide()
 			_G["AtlasBossLine"..i.."_Selected"]:Hide()
+			-- Также ограничиваем существующие кнопки
+			if i > 24 then
+				_G["AtlasBossLine"..i]:EnableMouse(false)
+				_G["AtlasBossLine"..i]:Hide()
+			end
 		end
-	end --TODO try create frames when atlasloot UI initialize
+	end --TODO нужно постараться создавать в уи файле
 
 	--Hide the loot frame now that a pristine Atlas instance is created
 	AtlasLootItemsFrame:Hide()

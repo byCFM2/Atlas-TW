@@ -432,20 +432,15 @@ function AtlasLoot_CreateInfoFrame()
         this:SetText(L["Loot Panel"])
     end)
 
+    -- Toggle panel visibility on click
     hidePanelButton:SetScript("OnClick", function()
-        if AtlasLootCharDB.HidePanel then
-            AtlasLootCharDB.HidePanel = false
-            if AtlasFrame then
-                if AtlasFrame:IsVisible() then
-                    AtlasLootPanel:Show()
-                end
-            end
-        else
-            AtlasLootCharDB.HidePanel = true
-            if AtlasFrame then
-                if AtlasFrame:IsVisible() then
-                    AtlasLootPanel:Hide()
-                end
+        local hidePanelStatus = AtlasLootCharDB.HidePanel
+        AtlasLootCharDB.HidePanel = not hidePanelStatus
+        if AtlasFrame and AtlasFrame:IsVisible() then
+            if hidePanelStatus then
+                AtlasLootPanel:Show()
+            else
+                AtlasLootPanel:Hide()
             end
         end
         AtlasLootOptionsFrameHidePanel:SetChecked(AtlasLootCharDB.HidePanel)
@@ -723,7 +718,6 @@ function AtlasLoot_CreateOptionsFrame()
     -- CheckButtons
     local safeLinks = CreateFrame("CheckButton", frame:GetName().."SafeLinks", frame, "OptionsCheckButtonTemplate")
     safeLinks:SetPoint("TOPLEFT", 20, -40)
-    safeLinks:Disable()
 
     local allLinks = CreateFrame("CheckButton", frame:GetName().."AllLinks", frame, "OptionsCheckButtonTemplate")
     allLinks:SetPoint("TOPLEFT", 20, -70)
@@ -791,6 +785,7 @@ function AtlasLoot_CreateOptionsFrame()
     frame:SetScript("OnDragStop", function() this:StopMovingOrSizing() end)
 
     -- Event handlers for checkboxes and buttons
+    safeLinks:SetScript("OnClick", function() AtlasLootOptions_SafeLinksToggle() end)
     allLinks:SetScript("OnClick", function() AtlasLootOptions_AllLinksToggle() end)
     defaultTT:SetScript("OnClick", function() AtlasLootOptions_DefaultTTToggle() end)
     lootlinkTT:SetScript("OnClick", function() AtlasLootOptions_DefaultTTToggle() end)
@@ -805,11 +800,7 @@ function AtlasLoot_CreateOptionsFrame()
     defaultSettingsButton:SetScript("OnClick", function() AtlasLootOptions_DefaultSettings() end)
 
     minimap:SetScript("OnClick", function()
-        if AtlasLootCharDB.MinimapButton == true then
-            AtlasLootCharDB.MinimapButton = false
-        else
-            AtlasLootCharDB.MinimapButton = true
-        end
+        AtlasLootCharDB.MinimapButton = not AtlasLootCharDB.MinimapButton
         AtlasLootMinimapButton_Init()
     end)
 
@@ -1046,8 +1037,7 @@ function AtlasLoot_CreatePanel()
     end)
     preset1:SetScript("OnClick", function()
         if AtlasLoot_IsLootTableAvailable(AtlasLootCharDB["QuickLooks"][1][1]) then
-            pFrame = { "TOPLEFT", "AtlasLootDefaultFrame_LootBackground", "TOPLEFT", "2", "-2" }
-            AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][1][1], AtlasLootCharDB["QuickLooks"][1][2], AtlasLootCharDB["QuickLooks"][1][3], pFrame)
+            AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][1][1], AtlasLootCharDB["QuickLooks"][1][2], AtlasLootCharDB["QuickLooks"][1][3], nil)
         end
     end)
     preset1:SetScript("OnEnter", function()
@@ -1080,8 +1070,7 @@ function AtlasLoot_CreatePanel()
     end)
     preset2:SetScript("OnClick", function()
         if AtlasLoot_IsLootTableAvailable(AtlasLootCharDB["QuickLooks"][2][1]) then
-            pFrame = { "TOPLEFT", "AtlasLootDefaultFrame_LootBackground", "TOPLEFT", "2", "-2" }
-            AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][2][1], AtlasLootCharDB["QuickLooks"][2][2], AtlasLootCharDB["QuickLooks"][2][3], pFrame)
+            AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][2][1], AtlasLootCharDB["QuickLooks"][2][2], AtlasLootCharDB["QuickLooks"][2][3], nil)
         end
     end)
     preset2:SetScript("OnEnter", function()
@@ -1114,8 +1103,7 @@ function AtlasLoot_CreatePanel()
     end)
     preset3:SetScript("OnClick", function()
         if AtlasLoot_IsLootTableAvailable(AtlasLootCharDB["QuickLooks"][3][1]) then
-            pFrame = { "TOPLEFT", "AtlasLootDefaultFrame_LootBackground", "TOPLEFT", "2", "-2" }
-            AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][3][1], AtlasLootCharDB["QuickLooks"][3][2], AtlasLootCharDB["QuickLooks"][3][3], pFrame)
+            AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][3][1], AtlasLootCharDB["QuickLooks"][3][2], AtlasLootCharDB["QuickLooks"][3][3], nil)
         end
     end)
     preset3:SetScript("OnEnter", function()
@@ -1142,18 +1130,13 @@ function AtlasLoot_CreatePanel()
         preset4:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
         if ((not AtlasLootCharDB["QuickLooks"][4]) or (not AtlasLootCharDB["QuickLooks"][4][1])) or (AtlasLootCharDB["QuickLooks"][4][1]==nil) then
             preset4:Disable()
-            DEFAULT_CHAT_FRAME:AddMessage("|cffff0000".."QuickLook".." 4|r ".."is Disabled!")
         else
             preset4:Enable()
-            DEFAULT_CHAT_FRAME:AddMessage("|cffff0000".."QuickLook".." 4|r ".."is Enabled!")
         end
     end)
     preset4:SetScript("OnClick", function()
-        DEFAULT_CHAT_FRAME:AddMessage("|cffff0000".."QuickLook".." 4|r ".."is pressed!")
         if AtlasLoot_IsLootTableAvailable(AtlasLootCharDB["QuickLooks"][4][1]) then
-            DEFAULT_CHAT_FRAME:AddMessage("|cffff0000".."AtlasLoot_IsLootTableAvailable".." 4|r ".."is true!"..AtlasLootCharDB["QuickLooks"][4][1])
-            pFrame = { "TOPLEFT", "AtlasLootDefaultFrame_LootBackground", "TOPLEFT", "2", "-2" }
-            AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][4][1], AtlasLootCharDB["QuickLooks"][4][2], AtlasLootCharDB["QuickLooks"][4][3], pFrame)
+            AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][4][1], AtlasLootCharDB["QuickLooks"][4][2], AtlasLootCharDB["QuickLooks"][4][3], nil)
         end
     end)
     preset4:SetScript("OnEnter", function()
@@ -1343,7 +1326,7 @@ function AtlasLoot_CreateDefaultFrame()
     frame:SetHeight(700)
     frame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
     frame:SetFrameStrata("HIGH")
-    frame:SetToplevel(true)
+   -- frame:SetToplevel(true)
     frame:SetMovable(true)
     frame:EnableMouse(true)
     frame:EnableKeyboard(true)
@@ -1393,7 +1376,6 @@ function AtlasLoot_CreateDefaultFrame()
     atlasButton:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -38, -15)
     atlasButton:SetWidth(130)
     atlasButton:SetHeight(20)
-    atlasButton:Hide()
     atlasButton:SetScript("OnClick", function()
         if AtlasLootDefaultFrameSearchBox:GetText() ~= "" then
             AtlasLootSearchBox:SetText(AtlasLootDefaultFrameSearchBox:GetText())
@@ -1412,7 +1394,6 @@ function AtlasLoot_CreateDefaultFrame()
     local optionsButton = CreateFrame("Button", frame:GetName().."_Options", frame, "OptionsButtonTemplate")
     optionsButton:SetWidth(130)
     optionsButton:SetHeight(20)
-    optionsButton:Hide()
     optionsButton:SetPoint("TOPLEFT", frame, "TOPLEFT", 15, -15)
     optionsButton:SetScript("OnClick", function()
         AtlasLootOptions_Toggle()

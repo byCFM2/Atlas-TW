@@ -5,6 +5,7 @@ local function atlas_CreateFrames()
     -- Create the main Atlas frame
     local atlasFrame = CreateFrame("Frame", "AtlasFrame", UIParent)
     atlasFrame:SetFrameStrata("HIGH")
+    atlasFrame:SetToplevel(true)
     atlasFrame:SetWidth(921)
     atlasFrame:SetHeight(601)
     atlasFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 0, -104)
@@ -68,7 +69,6 @@ local function atlas_CreateFrames()
     searchBox:SetHeight(32)
     searchBox:SetPoint("BOTTOMRIGHT", atlasFrame, "BOTTOMRIGHT", -160, 15)
     searchBox:SetMaxLetters(80)
-    -- Initialize searchBox directly instead of using OnLoad
     searchBox:SetAutoFocus(false)
     searchBox:SetTextInsets(0, 8, 0, 0)
 
@@ -77,10 +77,10 @@ local function atlas_CreateFrames()
         this:ClearFocus()
     end)
 
-    local searchString = searchBox:CreateFontString("AtlasSearchString", "BACKGROUND", "GameFontNormal")
+    searchBox:CreateFontString("AtlasSearchString", "BACKGROUND", "GameFontNormal")
 
     -- Switch dropdown
-    local switchDD = CreateFrame("Frame", "AtlasSwitchDD", atlasFrame, "UIDropDownMenuTemplate")
+    CreateFrame("Frame", "AtlasSwitchDD", atlasFrame, "UIDropDownMenuTemplate")
 
     -- Switch button
     local switchButton = CreateFrame("Button", "AtlasSwitchButton", searchBox, "UIPanelButtonTemplate2")
@@ -137,7 +137,7 @@ local function atlas_CreateFrames()
     end)
 
     -- Search container
-    local searchContainer = CreateFrame("Frame", "AtlasSearchContainer", v)
+    local searchContainer = CreateFrame("Frame", "AtlasSearchContainer", atlasFrame)
     searchContainer:SetWidth(362)
     searchContainer:SetHeight(32)
     searchContainer:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 540, -555)
@@ -303,7 +303,7 @@ local function atlas_CreateFrames()
         Atlas_OnClick()
     end)
 
-    -- World map frame -- TODO не знаю зачем это
+--[[     -- World map frame -- TODO не знаю зачем это
     local worldMapFrame = CreateFrame("Frame", "Atlas_WorldMap_Frame", WorldMapFrame)
     worldMapFrame:Hide()
 
@@ -313,7 +313,7 @@ local function atlas_CreateFrames()
     worldMapFrame:SetScript("OnHide", function()
         SetMapToCurrentZone()
     end)
-
+ ]]
     return atlasFrame
 end
 
