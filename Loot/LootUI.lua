@@ -133,60 +133,61 @@ end
 
 -- Create Preset buttons (QuickLook buttons)
 function AtlasLoot_CreatePresetButtons(frame)
-    local presetButtons = {}
-
+    local presetButton = {}
     for i = 1, 4 do
-        local presetButton = CreateFrame("Button", frame:GetName().."_Preset"..i, frame, "OptionsButtonTemplate")
-        presetButton:SetWidth(130)
-        presetButton:SetHeight(20)
-        presetButton:Hide()
+        presetButton[i] = CreateFrame("Button", frame:GetName().."_Preset"..i, frame, "OptionsButtonTemplate")
+        presetButton[i]:SetText(L["QuickLook"].." "..i)
         if i ~= 1 then
-            presetButton:SetPoint("LEFT", presetButtons[i-1], "RIGHT", 0, 0)
+            presetButton[i]:SetPoint("LEFT", presetButton[i-1], "RIGHT", 0, 0)
         else
-            presetButton:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 40, 75)
+            presetButton[i]:SetPoint("LEFT", frame, "LEFT", 195, 1)
         end
 
-        presetButton:SetScript("OnEnter", function()
+        -- Создаем локальную переменную для захвата правильного индекса
+        local buttonIndex = i
+        presetButton[i]:SetScript("OnEnter", function()
             if this:IsEnabled() then
                 GameTooltip:ClearLines()
                 GameTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 5)
-                GameTooltip:AddLine(AtlasLootCharDB["QuickLooks"][i][3])
+                if AtlasLootCharDB and AtlasLootCharDB["QuickLooks"] and AtlasLootCharDB["QuickLooks"][buttonIndex] and AtlasLootCharDB["QuickLooks"][buttonIndex][3] then
+                    GameTooltip:AddLine(AtlasLootCharDB["QuickLooks"][buttonIndex][3])
+                end
                 GameTooltip:AddLine(L["|cff9d9d9dALT+Click to clear|r"])
                 GameTooltip:Show()
             end
         end)
 
-        presetButton:SetScript("OnLeave", function()
+        presetButton[i]:SetScript("OnLeave", function()
             if GameTooltip:IsVisible() then
                 GameTooltip:Hide()
             end
         end)
 
-        presetButton:SetScript("OnMouseUp", function()
+        presetButton[i]:SetScript("OnMouseUp", function()
             if IsAltKeyDown() then
-                AtlasLoot_ClearQuickLookButton(i)
+                AtlasLoot_ClearQuickLookButton(buttonIndex)
             end
         end)
 
-        presetButton:SetScript("OnClick", function()
-            if AtlasLoot_IsLootTableAvailable(AtlasLootCharDB["QuickLooks"][i][1]) then
-                pFrame = { "TOPLEFT", "AtlasLootDefaultFrame_LootBackground", "TOPLEFT", "2", "-2" }
-                AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][i][1], AtlasLootCharDB["QuickLooks"][i][2], AtlasLootCharDB["QuickLooks"][i][3], pFrame)
+        presetButton[i]:SetScript("OnClick", function()
+            if AtlasLootCharDB and AtlasLootCharDB["QuickLooks"] and AtlasLootCharDB["QuickLooks"][buttonIndex] and AtlasLootCharDB["QuickLooks"][buttonIndex][1] then
+                if AtlasLoot_IsLootTableAvailable(AtlasLootCharDB["QuickLooks"][buttonIndex][1]) then
+                    AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][buttonIndex][1], AtlasLootCharDB["QuickLooks"][buttonIndex][2], AtlasLootCharDB["QuickLooks"][buttonIndex][3], nil)
+                end
             end
         end)
 
-        presetButton:SetScript("OnShow", function()
-            this:SetText(L["QuickLook"].." "..i)
+        presetButton[i]:SetScript("OnShow", function()
             this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-            if ((not AtlasLootCharDB["QuickLooks"][i]) or (not AtlasLootCharDB["QuickLooks"][i][1])) or (AtlasLootCharDB["QuickLooks"][i][1]==nil) then
+            if (not AtlasLootCharDB) or (not AtlasLootCharDB["QuickLooks"]) or (not AtlasLootCharDB["QuickLooks"][buttonIndex]) or (not AtlasLootCharDB["QuickLooks"][buttonIndex][1]) or (AtlasLootCharDB["QuickLooks"][buttonIndex][1] == nil) then
                 this:Disable()
+            else
+                this:Enable()
             end
         end)
-
-        presetButtons[i] = presetButton
     end
 
-    return presetButtons
+    return presetButton
 end
 
 -- Create Search Box and related buttons
@@ -206,7 +207,7 @@ function AtlasLoot_CreateSearchElements(frame)
     end)
 
     -- Search String (label)
-    local searchString = searchBox:CreateFontString("AtlasLootDefaultFrameSearchString", "ARTWORK", "GameFontNormal")
+    searchBox:CreateFontString("AtlasLootDefaultFrameSearchString", "ARTWORK", "GameFontNormal")
 
     -- Search Button
     local searchButton = CreateFrame("Button", "AtlasLootDefaultFrameSearchButton", searchBox, "UIPanelButtonTemplate2")
@@ -286,8 +287,8 @@ function AtlasLoot_CreateSearchElements(frame)
     wishListButton:SetScript("OnClick", function()
         AtlasLoot_ShowWishList()
         CloseDropDownMenus()
-        AtlasLootDefaultFrame_SubMenu:Disable()
-        AtlasLootDefaultFrame_SelectedTable:Hide()
+        AtlasLootItemsFrame_SubMenu:Disable()
+        AtlasLootItemsFrame_SelectedTable:Hide()
         AtlasLootQuickLooksButton:Hide()
         AtlasLoot_QuickLooks:Hide()
     end)
@@ -323,22 +324,17 @@ end
 
 -- Create FontStrings for the frame
 function AtlasLoot_CreateFontStrings(frame)
-    -- Notice text
-    local notice = frame:CreateFontString(frame:GetName().."_Notice", "ARTWORK", "GameFontNormal")
-    notice:SetPoint("BOTTOM", frame, "BOTTOM", 0, 17)
-
     -- Selected Category text
     local selectedCategory = frame:CreateFontString(frame:GetName().."_SelectedCategory", "OVERLAY", "GameFontNormal")
-    selectedCategory:SetPoint("TOP", frame, "TOP", 0, -50)
+    selectedCategory:SetPoint("TOP", "AtlasLootItemsFrame_Menu", "TOP", 0, 15)
     selectedCategory:SetText("Test")
 
     -- Selected Table text
     local selectedTable = frame:CreateFontString(frame:GetName().."_SelectedTable", "OVERLAY", "GameFontNormal")
-    selectedTable:SetPoint("TOP", frame, "TOP", 0, -50)
+	selectedTable:SetPoint("TOP", "AtlasLootItemsFrame_SubMenu", "TOP", 0, 15)
     selectedTable:SetText("Test")
 
     return {
-        notice = notice,
         selectedCategory = selectedCategory,
         selectedTable = selectedTable
     }
@@ -456,6 +452,9 @@ function AtlasLoot_CreateItemsFrame()
     frame:SetWidth(510)
     frame:SetHeight(510)
     frame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
+    -- Включаем обработку событий мыши
+    frame:EnableMouse(true)
+    frame:EnableMouseWheel(true)
 	frame:RegisterEvent("VARIABLES_LOADED")
     frame:SetScript("OnEvent", function()
             AtlasLoot_OnEvent()
@@ -469,14 +468,12 @@ function AtlasLoot_CreateItemsFrame()
             end
     end)
     frame:SetScript("OnMouseWheel", function()
-        DEFAULT_CHAT_FRAME:AddMessage("OnMouseWheel triggered!")
         if arg1 == 1 and AtlasLootItemsFrame_NEXT:IsVisible() then
             AtlasLootItemsFrame_NEXT:Click()
         elseif arg1 == -1 and AtlasLootItemsFrame_PREV:IsVisible() then
-            DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Atlas-TW|r: "..L["Scrolling is AtlasLootItemsFrame_PREV."])
             AtlasLootItemsFrame_PREV:Click()
         end
-    end) --TODO не работает колесико мышки
+    end)
     frame:Hide()
 
     -- Background texture
@@ -728,6 +725,9 @@ function AtlasLoot_CreateItemsFrame()
         this:SetText(L["Select Sub-Table"])
         this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
     end)
+
+    -- Font strings
+    AtlasLoot_CreateFontStrings(frame)
 
     return frame
 end
@@ -1066,139 +1066,8 @@ function AtlasLoot_CreatePanel()
         GameTooltip:Hide()
     end)
 
-    -- Preset buttons
-    local preset1 = CreateFrame("Button", frame:GetName().."_Preset1", frame, "OptionsButtonTemplate")
-    preset1:SetPoint("TOP", reputation, "BOTTOM", 0, -2)
-    preset1:SetScript("OnShow", function()
-        preset1:SetText(L["QuickLook"].." 1")
-        preset1:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-        if ((not AtlasLootCharDB["QuickLooks"][1]) or (not AtlasLootCharDB["QuickLooks"][1][1])) or (AtlasLootCharDB["QuickLooks"][1][1]==nil) then
-            preset1:Disable()
-        else
-            preset1:Enable()
-        end
-    end)
-    preset1:SetScript("OnClick", function()
-        if AtlasLoot_IsLootTableAvailable(AtlasLootCharDB["QuickLooks"][1][1]) then
-            AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][1][1], AtlasLootCharDB["QuickLooks"][1][2], AtlasLootCharDB["QuickLooks"][1][3], nil)
-        end
-    end)
-    preset1:SetScript("OnEnter", function()
-        if this:IsEnabled() then
-            GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
-            GameTooltip:AddLine(AtlasLootCharDB["QuickLooks"][1][3])
-            GameTooltip:AddLine(L["|cff9d9d9dALT+Click to clear|r"])
-            GameTooltip:Show()
-        end
-    end)
-    preset1:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
-    preset1:SetScript("OnMouseUp", function()
-        if IsAltKeyDown() then
-            AtlasLoot_ClearQuickLookButton(1)
-        end
-    end)
-
-    local preset2 = CreateFrame("Button", frame:GetName().."_Preset2", frame, "OptionsButtonTemplate")
-    preset2:SetPoint("TOP", pvp, "BOTTOM", 0, -2)
-    preset2:SetScript("OnShow", function()
-        preset2:SetText(L["QuickLook"].." 2")
-        preset2:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-        if ((not AtlasLootCharDB["QuickLooks"][2]) or (not AtlasLootCharDB["QuickLooks"][2][1])) or (AtlasLootCharDB["QuickLooks"][2][1]==nil) then
-            preset2:Disable()
-        else
-            preset2:Enable()
-        end
-    end)
-    preset2:SetScript("OnClick", function()
-        if AtlasLoot_IsLootTableAvailable(AtlasLootCharDB["QuickLooks"][2][1]) then
-            AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][2][1], AtlasLootCharDB["QuickLooks"][2][2], AtlasLootCharDB["QuickLooks"][2][3], nil)
-        end
-    end)
-    preset2:SetScript("OnEnter", function()
-        if this:IsEnabled() then
-            GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
-            GameTooltip:AddLine(AtlasLootCharDB["QuickLooks"][2][3])
-            GameTooltip:AddLine(L["|cff9d9d9dALT+Click to clear|r"])
-            GameTooltip:Show()
-        end
-    end)
-    preset2:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
-    preset2:SetScript("OnMouseUp", function()
-        if IsAltKeyDown() then
-            AtlasLoot_ClearQuickLookButton(2)
-        end
-    end)
-
-    local preset3 = CreateFrame("Button", frame:GetName().."_Preset3", frame, "OptionsButtonTemplate")
-    preset3:SetPoint("TOP", crafting, "BOTTOM", 0, -2)
-    preset3:SetScript("OnShow", function()
-        preset3:SetText(L["QuickLook"].." 3")
-        preset3:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-        if ((not AtlasLootCharDB["QuickLooks"][3]) or (not AtlasLootCharDB["QuickLooks"][3][1])) or (AtlasLootCharDB["QuickLooks"][3][1]==nil) then
-            preset3:Disable()
-        else
-            preset3:Enable()
-        end
-    end)
-    preset3:SetScript("OnClick", function()
-        if AtlasLoot_IsLootTableAvailable(AtlasLootCharDB["QuickLooks"][3][1]) then
-            AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][3][1], AtlasLootCharDB["QuickLooks"][3][2], AtlasLootCharDB["QuickLooks"][3][3], nil)
-        end
-    end)
-    preset3:SetScript("OnEnter", function()
-        if this:IsEnabled() then
-            GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
-            GameTooltip:AddLine(AtlasLootCharDB["QuickLooks"][3][3])
-            GameTooltip:AddLine(L["|cff9d9d9dALT+Click to clear|r"])
-            GameTooltip:Show()
-        end
-    end)
-    preset3:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
-    preset3:SetScript("OnMouseUp", function()
-        if IsAltKeyDown() then
-            AtlasLoot_ClearQuickLookButton(3)
-        end
-    end)
-
-    local preset4 = CreateFrame("Button", frame:GetName().."_Preset4", frame, "OptionsButtonTemplate")
-    preset4:SetPoint("TOP", wishList, "BOTTOM", 0, -2)
-    preset4:SetScript("OnShow", function()
-        preset4:SetText(L["QuickLook"].." 4")
-        preset4:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-        if ((not AtlasLootCharDB["QuickLooks"][4]) or (not AtlasLootCharDB["QuickLooks"][4][1])) or (AtlasLootCharDB["QuickLooks"][4][1]==nil) then
-            preset4:Disable()
-        else
-            preset4:Enable()
-        end
-    end)
-    preset4:SetScript("OnClick", function()
-        if AtlasLoot_IsLootTableAvailable(AtlasLootCharDB["QuickLooks"][4][1]) then
-            AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][4][1], AtlasLootCharDB["QuickLooks"][4][2], AtlasLootCharDB["QuickLooks"][4][3], nil)
-        end
-    end)
-    preset4:SetScript("OnEnter", function()
-        if this:IsEnabled() then
-            GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
-            GameTooltip:AddLine(AtlasLootCharDB["QuickLooks"][4][3])
-            GameTooltip:AddLine(L["|cff9d9d9dALT+Click to clear|r"])
-            GameTooltip:Show()
-        end
-    end)
-    preset4:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
-    preset4:SetScript("OnMouseUp", function()
-        if IsAltKeyDown() then
-            AtlasLoot_ClearQuickLookButton(4)
-        end
-    end)
-
+    -- Preset buttons (QuickLooks)
+    AtlasLoot_CreatePresetButtons(frame)
     -- Search elements
     local searchBox = CreateFrame("EditBox", "AtlasLootSearchBox", frame, "InputBoxTemplate")
     searchBox:SetWidth(200)
@@ -1408,7 +1277,7 @@ function AtlasLoot_CreateDefaultFrame()
     local closeButton = CreateFrame("Button", frame:GetName().."_CloseButton", frame, "UIPanelCloseButton")
     closeButton:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -10, -10)
     closeButton:SetScript("OnClick", function()
-        AtlasLootDefaultFrame:Hide()
+        AtlasLootItemsFrame:Hide()
     end)
     closeButton:SetScript("OnShow", function()
         this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
@@ -1447,40 +1316,6 @@ function AtlasLoot_CreateDefaultFrame()
         this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
     end)
 
---[[     -- Menu button
-    local menuButton = CreateFrame("Button", frame:GetName().."_Menu", frame, "OptionsButtonTemplate")
-    menuButton:SetWidth(130)
-    menuButton:SetHeight(20)
-    menuButton:SetPoint("TOP", frame, "TOP", -130, -40)
-    menuButton:SetScript("OnClick", function()
-        if AtlasLoot_Hewdrop:IsOpen() then
-            AtlasLoot_Hewdrop:Close()
-        else
-            AtlasLoot_Hewdrop:Open(this)
-        end
-    end)
-    menuButton:SetScript("OnShow", function()
-        this:SetText(L["Select Loot Table"])
-        this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-    end)
-
-    -- SubMenu button
-    local subMenuButton = CreateFrame("Button", frame:GetName().."_SubMenu", frame, "OptionsButtonTemplate")
-    subMenuButton:SetWidth(130)
-    subMenuButton:SetHeight(20)
-    subMenuButton:SetPoint("TOP", frame, "TOP", 130, -40)
-    subMenuButton:SetScript("OnClick", function()
-        if AtlasLoot_HewdropSubMenu:IsOpen() then
-            AtlasLoot_HewdropSubMenu:Close()
-        else
-            AtlasLoot_HewdropSubMenu:Open(this)
-        end
-    end)
-    subMenuButton:SetScript("OnShow", function()
-        this:SetText(L["Select Sub-Table"])
-        this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-    end) ]]
-
     -- Loot background frame
     local lootBg = CreateFrame("Frame", frame:GetName().."_LootBackground", frame)
     lootBg:SetWidth(515)
@@ -1492,9 +1327,9 @@ function AtlasLoot_CreateDefaultFrame()
     lootBgTexture:SetVertexColor(0, 0, 1, 0.5)
 
     -- Create all child elements
-    AtlasLoot_CreatePresetButtons(frame)
-    AtlasLoot_CreateSearchElements(frame)
-    AtlasLoot_CreateFontStrings(frame)
+  --  AtlasLoot_CreatePresetButtons(frame)
+   -- AtlasLoot_CreateSearchElements(frame)
+  --  AtlasLoot_CreateFontStrings(frame)
 
     return frame
 end
@@ -1504,7 +1339,7 @@ function AtlasLoot_InitializeUI()
     AtlasLoot_CreateTooltips()
     AtlasLoot_CreateInfoFrame()
     AtlasLoot_CreateItemsFrame()
-    AtlasLoot_CreateDefaultFrame()
+    --AtlasLoot_CreateDefaultFrame()
     AtlasLoot_CreateOptionsFrame()
     AtlasLoot_CreatePanel()
     AtlasLoot_CreateMinimapButton()

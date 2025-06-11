@@ -563,7 +563,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 61584, "INV_Bracer_08", "=q2=Ogre Fighter's Bracers", "=ds=#s8#, #a4#", "40%" },
 		{ 61585, "INV_Misc_Bone_03", "=q2=Brawling Trophy", "=ds=#s14#", "20%" },
 	},
-	Duskskitter = {
+	Duskskitterer = {
 		{ 61610, "INV_Spear_04", "=q2=Old Farmer's Pitchfork", "=ds=#h2#, #w7#", "33%" },
 		{ 61611, "INV_Jewelry_Necklace_01", "=q2=Emerald Pendant", "=ds=#s2#", "33%" },
 		{ 61612, "INV_Sword_06", "=q2=Holy Sword", "=ds=#h2#, #w10#", "33%" },

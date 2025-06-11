@@ -41,7 +41,7 @@ local BLUE = "|cff0070dd"
 local DEFAULT = "|cffFFd200"
 
 --Set the default anchor for the loot frame to the Atlas frame
-AtlasLoot_AnchorFrame = AtlasLootDefaultFrame
+AtlasLoot_AnchorFrame = AtlasLootItemsFrame
 
 AtlasLootCharDB={}
 
@@ -112,12 +112,52 @@ AtlasLoot_MenuList = {
 	"WarriorSet",
 }
 
+-- Функция для ограничения длины текста с учетом паттернов
+local function StripFormatting(text)
+    -- Сначала удаляем все виды скобок и их содержимое
+    text = string.gsub(text, "%(.-%)" , "")  -- Круглые скобки ()
+    text = string.gsub(text, "%[.-%]" , "")  -- Квадратные скобки []
+    text = string.gsub(text, "%{.-%}" , "")  -- Фигурные скобки {}
+    text = string.gsub(text, "<.->", "")     -- Угловые скобки <>
+    -- Удаляем все возможные коды форматирования WoW
+    -- Цветовые коды |cffRRGGBB...|r
+    text = string.gsub(text, "|c%x%x%x%x%x%x%x%x(.-)|r", "%1")
+    -- Удаляем оставшиеся |r коды (завершающие цветовые коды)
+    text = string.gsub(text, "|r", "")
+    -- Удаляем ссылки |Hlink|htext|h
+    text = string.gsub(text, "|H(.-)|h(.-)|h", "%2")
+    -- Удаляем иконки |Tpath|t
+    text = string.gsub(text, "|T.-|t", "")
+    -- Удаляем переводы строк |n
+    text = string.gsub(text, "|n", "")
+    -- Удаляем любые другие коды, начинающиеся с |
+    text = string.gsub(text, "|%w+", "")
+    text = string.gsub(text, "|%d+", "")
+    -- Удаляем оставшиеся одиночные | символы
+    text = string.gsub(text, "|", "")
+    return text
+end
+
+local function TruncateText(text, maxLength)
+    local stripped_text = StripFormatting(text)
+    local current_len = string.len(stripped_text)
+    if current_len > maxLength then
+        -- Если maxLength слишком мало для "...", то просто возвращаем "..."
+        if maxLength <= 3 then
+            return "..."
+        end
+
+        local truncated_stripped_text = string.sub(stripped_text, 1, maxLength - 3) .. "..."
+        return truncated_stripped_text
+    else
+        return stripped_text
+    end
+end
 --[[
-	AtlasLootDefaultFrame_OnShow:
 	Called whenever the loot browser is shown and sets up buttons and loot tables
 ]]
 function AtlasLootDefaultFrame_OnShow()
-	--Definition of where I want the loot table to be shown
+--[[ 	--Definition of where I want the loot table to be shown
 	pFrame = { "TOPLEFT", "AtlasLootDefaultFrame_LootBackground", "TOPLEFT", "2", "-2" }
 	--Having the Atlas and loot browser frames shown at the same time would
 	--cause conflicts, so I hide the Atlas frame when the loot browser appears
@@ -133,7 +173,7 @@ function AtlasLootDefaultFrame_OnShow()
 		AtlasLoot_ShowBossLoot(AtlasLootItemsFrame.refresh[1], AtlasLootItemsFrame.refresh[3], pFrame)
 	else
 		AtlasLoot_ShowBossLoot(AtlasLootCharDB.LastBoss, AtlasLootCharDB.LastBossText, pFrame)
-	end
+	end ]]
 end
 
 --[[
@@ -158,7 +198,7 @@ function AtlasLoot_OnVariablesLoaded()
 	if not AtlasLootCharDB["SearchResult"] then AtlasLootCharDB["SearchResult"] = {} end
 
 	--Add the loot browser to the special frames tables to enable closing wih the ESC key
-	tinsert(UISpecialFrames, "AtlasLootDefaultFrame")
+	--tinsert(UISpecialFrames, "AtlasLootDefaultFrame")
 	tinsert(UISpecialFrames, "AtlasLootOptionsFrame")
 	--Set up options frame
 	AtlasLootOptions_OnLoad()
@@ -200,12 +240,12 @@ function AtlasLoot_OnVariablesLoaded()
 	end
 
 	--Position relevant UI objects for loot browser and set up menu
-	AtlasLootDefaultFrame_SelectedCategory:SetPoint("TOP", "AtlasLootItemsFrame_Menu", "BOTTOM", 0, -4)
-	AtlasLootDefaultFrame_SelectedTable:SetPoint("TOP", "AtlasLootItemsFrame_SubMenu", "BOTTOM", 0, -4)
-	AtlasLootDefaultFrame_SelectedCategory:SetText(AtlasLootCharDB.LastBossText)
-	AtlasLootDefaultFrame_SelectedTable:SetText("")
-	AtlasLootDefaultFrame_SelectedCategory:Show()
-	AtlasLootDefaultFrame_SelectedTable:Show()
+--	AtlasLootItemsFrame_SelectedCategory:SetPoint("TOP", "AtlasLootItemsFrame_Menu", "BOTTOM", 0, -4)
+--	AtlasLootItemsFrame_SelectedTable:SetPoint("TOP", "AtlasLootItemsFrame_SubMenu", "BOTTOM", 0, -4)
+	AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasLootCharDB.LastBossText, 30))
+	AtlasLootItemsFrame_SelectedTable:SetText("")
+	AtlasLootItemsFrame_SelectedCategory:Show()
+	AtlasLootItemsFrame_SelectedTable:Show()
 	AtlasLootItemsFrame_SubMenu:Disable()
 end
 
@@ -319,7 +359,6 @@ function AtlasLoot_SlashCommand(msg)
 end
 
 --[[
-	AtlasLootDefaultFrame_OnHide:
 	When we close the loot browser, re-bind the item table to Atlas
 	and close all Hewdrop menus
 ]]
@@ -476,11 +515,11 @@ end
 	Simple function to toggle the visibility of the AtlasLoot frame.
 ]]
 function AtlasLoot_Toggle()
-	if AtlasLootDefaultFrame:IsVisible() then
+--[[ 	if AtlasLootDefaultFrame:IsVisible() then
 		HideUIPanel(AtlasLootDefaultFrame)
 	else
 		ShowUIPanel(AtlasLootDefaultFrame)
-	end
+	end ]]
 end
 
 --[[
@@ -1218,11 +1257,11 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 	if subMenu then
 		AtlasLoot_HewdropSubMenuRegister(subMenu)
 		AtlasLootItemsFrame_SubMenu:Enable()
-		AtlasLootDefaultFrame_SelectedTable:SetText(bossName)
-		AtlasLootDefaultFrame_SelectedTable:Show()
+		AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(bossName, 30))
+		AtlasLootItemsFrame_SelectedTable:Show()
 	else
 		AtlasLootItemsFrame_SubMenu:Disable()
-		AtlasLootDefaultFrame_SelectedTable:Hide()
+		AtlasLootItemsFrame_SelectedTable:Hide()
 	end
 	--Anchor the item frame where it is supposed to be
 	AtlasLoot_SetItemInfoFrame(pFrame)
@@ -1238,8 +1277,6 @@ end
 ]]
 function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	AtlasLootCharDB.LastMenu = { tablename, text, tabletype }
-	--Definition of where I want the loot table to be shown
-	--pFrame = { "TOPLEFT", "AtlasLootDefaultFrame_LootBackground", "TOPLEFT", "2", "-2" }
 	--If the button clicked was linked to a loot table
 	if tabletype == "Table" then
 		--Show the loot table
@@ -1249,8 +1286,8 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 		AtlasLootCharDB.LastBossText = text
 		--Purge the text label for the submenu and disable the submenu
 		AtlasLootItemsFrame_SubMenu:Disable()
-		AtlasLootDefaultFrame_SelectedTable:SetText("")
-		AtlasLootDefaultFrame_SelectedTable:Show()
+		AtlasLootItemsFrame_SelectedTable:SetText("")
+		AtlasLootItemsFrame_SelectedTable:Show()
 	--If the button links to a sub menu definition
 	else
 		--Enable the submenu button
@@ -1264,12 +1301,12 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 		AtlasLoot_HewdropSubMenu:Unregister(AtlasLootItemsFrame_SubMenu)
 		AtlasLoot_HewdropSubMenuRegister(AtlasLoot_HewdropDown_SubTables[tablename])
 		--Show a text label of what has been selected
-		AtlasLootDefaultFrame_SelectedTable:SetText(AtlasLoot_HewdropDown_SubTables[tablename][1][1])
-		AtlasLootDefaultFrame_SelectedTable:Show()
+		AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(AtlasLoot_HewdropDown_SubTables[tablename][1][1], 30))
+		AtlasLootItemsFrame_SelectedTable:Show()
 	end
 	--Show the category that has been selected
-	AtlasLootDefaultFrame_SelectedCategory:SetText(text)
-	AtlasLootDefaultFrame_SelectedCategory:Show()
+	AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(text, 30))
+	AtlasLootItemsFrame_SelectedCategory:Show()
 	AtlasLoot_Hewdrop:Close(1)
 end
 
@@ -1280,16 +1317,14 @@ end
 	Called when a button in AtlasLoot_HewdropSubMenu is clicked
 ]]
 function AtlasLoot_HewdropSubMenuClick(tablename, text)
-	--Definition of where I want the loot table to be shown
-	--pFrame = { "TOPLEFT", "AtlasLootDefaultFrame_LootBackground", "TOPLEFT", "2", "-2" }
 	--Show the select loot table
 	AtlasLoot_ShowBossLoot(tablename, text, nil)
 	--Save needed info for fuure re-display of the table
 	AtlasLootCharDB.LastBoss = tablename
 	AtlasLootCharDB.LastBossText = text
 	--Show the table that has been selected
-	AtlasLootDefaultFrame_SelectedTable:SetText(text)
-	AtlasLootDefaultFrame_SelectedTable:Show()
+	AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(text, 30))
+	AtlasLootItemsFrame_SelectedTable:Show()
 	AtlasLoot_HewdropSubMenu:Close(1)
 end
 
@@ -1300,12 +1335,12 @@ end
 ]]
 function AtlasLoot_HewdropSubMenuRegister(loottable)
 	AtlasLoot_HewdropSubMenu:Register(AtlasLootItemsFrame_SubMenu,
-		'point', function(parent)
+		'point', function()
 			return "TOP", "BOTTOM"
 		end,
-		'children', function(level, value)
+		'children', function(level, _)
 			if level == 1 then
-				for k,v in pairs(loottable) do
+				for _,v in pairs(loottable) do
 					AtlasLoot_HewdropSubMenu:AddLine(
 						'text', v[1],
 						'func', AtlasLoot_HewdropSubMenuClick,
@@ -1325,15 +1360,14 @@ end
 	Constructs the main category menu from a tiered table
 ]]
 function AtlasLoot_HewdropRegister()
-	--AtlasLoot_Hewdrop:Register(AtlasLootDefaultFrame_Menu,
 	AtlasLoot_Hewdrop:Register(AtlasLootItemsFrame_Menu,
-		'point', function(parent)
+		'point', function()
 			return "TOP", "BOTTOM"
 		end,
 		'children', function(level, value)
 			if level == 1 then
 				if AtlasLoot_HewdropDown then
-					for k,v in ipairs(AtlasLoot_HewdropDown) do
+					for _,v in ipairs(AtlasLoot_HewdropDown) do
 						--If a link to show a submenu
 						if type(v[1]) == "table" and type(v[1][1]) == "string" then
 							if v[1][3] == "Submenu" then
@@ -1373,7 +1407,7 @@ function AtlasLoot_HewdropRegister()
 				end
 			elseif level == 2 then
 				if value then
-					for k,v in ipairs(value) do
+					for _,v in ipairs(value) do
 						if type(v) == "table" then
 							if type(v[1]) == "table" and type(v[1][1]) == "string" then
 								--If an entry to show a submenu
@@ -1476,10 +1510,10 @@ function AtlasLoot_OpenMenu(menuName)
 	AtlasLoot_QuickLooks:Hide()
 	AtlasLootQuickLooksButton:Hide()
 	AtlasLootServerQueryButton:Hide()
-	AtlasLootDefaultFrame_SelectedCategory:SetText(menuName)
+	AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(menuName, 30))
 	AtlasLootItemsFrame_SubMenu:Disable()
-	AtlasLootDefaultFrame_SelectedTable:SetText("")
-	AtlasLootDefaultFrame_SelectedTable:Show()
+	AtlasLootItemsFrame_SelectedTable:SetText("")
+	AtlasLootItemsFrame_SelectedTable:Show()
 	AtlasLootCharDB.LastBoss = this.lootpage
 	AtlasLootCharDB.LastBossText = menuName
 	if menuName == L["Crafting"] then
@@ -1557,8 +1591,8 @@ function AtlasLootMenuItem_OnClick()
 		AtlasLootCharDB.LastBoss = this.lootpage
 		AtlasLootCharDB.LastBossText = pagename
 		AtlasLoot_ShowBossLoot(this.lootpage, pagename, AtlasLoot_AnchorFrame)
-		AtlasLootDefaultFrame_SelectedCategory:SetText(pagename)
-		AtlasLootDefaultFrame_SelectedCategory:Show()
+		AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(pagename, 30))
+		AtlasLootItemsFrame_SelectedCategory:Show()
 	end
 end
 
@@ -1587,10 +1621,10 @@ function AtlasLoot_NavButton_OnClick()
 			AtlasLootCharDB.LastBoss = this.lootpage
 			AtlasLootCharDB.LastBossText = this.title
 			AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.refresh[2], this.title, pFrame)
-			if AtlasLootDefaultFrame_SelectedTable:GetText()~=nil then
-				AtlasLootDefaultFrame_SelectedTable:SetText(AtlasLoot_BossName:GetText())
+			if AtlasLootItemsFrame_SelectedTable:GetText()~=nil then
+				AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(AtlasLoot_BossName:GetText(), 30))
 			else
-				AtlasLootDefaultFrame_SelectedCategory:SetText(AtlasLoot_BossName:GetText())
+				AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasLoot_BossName:GetText(), 30))
 			end
 		end
 	elseif AtlasLootItemsFrame.refresh and AtlasLootItemsFrame.refresh[2] then
@@ -1602,8 +1636,8 @@ function AtlasLoot_NavButton_OnClick()
 	for k,v in pairs(AtlasLoot_MenuList) do
 		if this.lootpage == v then
 			AtlasLootItemsFrame_SubMenu:Disable()
-			AtlasLootDefaultFrame_SelectedCategory:SetText(AtlasLootCharDB.LastBossText)
-			AtlasLootDefaultFrame_SelectedTable:SetText()
+			AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasLootCharDB.LastBossText, 30))
+			AtlasLootItemsFrame_SelectedTable:SetText()
 		end
 	end
 end
@@ -1707,10 +1741,10 @@ function AtlasLoot_RefreshQuickLookButtons()
 	while i<5 do
 		if not AtlasLootCharDB["QuickLooks"][i] or not AtlasLootCharDB["QuickLooks"][i][1] or AtlasLootCharDB["QuickLooks"][i][1]==nil then
 			_G["AtlasLootPanel_Preset"..i]:Disable()
-			_G["AtlasLootDefaultFrame_Preset"..i]:Disable()
+			--_G["AtlasLootItemsFrame_Preset"..i]:Disable()
 		else
 			_G["AtlasLootPanel_Preset"..i]:Enable()
-			_G["AtlasLootDefaultFrame_Preset"..i]:Enable()
+			--_G["AtlasLootItemsFrame_Preset"..i]:Enable()
 		end
 		i=i+1
 	end
@@ -1740,7 +1774,7 @@ function AtlasLoot_ShowBossLoot(dataID, boss, pFrame)
 	if tableavailable then
 		AtlasLootItemsFrame:Hide()
 		--If the loot table is already being displayed, it is hidden and the current table selection cancelled
-		if dataID == AtlasLootItemsFrame.externalBoss and AtlasLootItemsFrame:GetParent() ~= AtlasFrame and AtlasLootItemsFrame:GetParent() ~= AtlasLootDefaultFrame_LootBackground then
+		if dataID == AtlasLootItemsFrame.externalBoss and AtlasLootItemsFrame:GetParent() ~= AtlasFrame then
 			AtlasLootItemsFrame.externalBoss = nil
 		else
 			--Use the original WoW instance data by default
@@ -1789,7 +1823,7 @@ end
 ]]
 function AtlasLootMinimapButton_OnEnter()
 	GameTooltip:SetOwner(this, "ANCHOR_LEFT")
-	GameTooltip:SetText("AtlasLoot Enhanced")
+	GameTooltip:SetText("Atlas Loot")
 	GameTooltipTextLeft1:SetTextColor(1, 1, 1)
 	GameTooltip:AddLine(L["Left-click to open AtlasLoot.\nMiddle-click for AtlasLoot options.\nRight-click and drag to move this button."])
 	GameTooltip:Show()
@@ -1842,8 +1876,8 @@ function AtlasLootOptions_DefaultSettings()
 	AtlasLootCharDB.PartialMatching = true
 	AtlasLootCharDB.LastBoss = "DUNGEONSMENU1"
 	AtlasLootCharDB.LastBossText = L["Dungeons & Raids"]
-	AtlasLootDefaultFrame:ClearAllPoints()
-	AtlasLootDefaultFrame:SetPoint("TOP", "UIParent", "TOP", 0, -30)
+	AtlasLootItemsFrame:ClearAllPoints()
+	AtlasLootItemsFrame:SetPoint("TOP", "UIParent", "TOP", 0, -30)
 	AtlasLootOptionsFrame:ClearAllPoints()
 	AtlasLootOptionsFrame:SetPoint("CENTER", "UIParent", "CENTER", 0, 100)
 	AtlasLootCharDB["QuickLooks"] = {}
@@ -2687,6 +2721,7 @@ AtlasLoot_HewdropDown_SubTables = {
 		{ BB["Concavius"], "Concavius" },
 		{ BB["Moo"], "CowKing" },
 		{ BB["Cla'ckora"], "Clackora" },
+		{ L["Rare Mobs"], "RareMobs" },
 	},
 	["RareMobs"] = {
         { WHITE.."[17]"..DEFAULT.." "..L["Shade Mage"]             .." "..WHITE.."("..BZ["Tirisfal Glades"]     ..")", "ShadeMage" },
@@ -2698,7 +2733,7 @@ AtlasLoot_HewdropDown_SubTables = {
         { WHITE.."[40]"..DEFAULT.." "..L["Dawnhowl"]               .." "..WHITE.."("..BZ["Gilneas"]             ..")", "Dawnhowl" },
         { WHITE.."[43]"..DEFAULT.." "..L["Maltimor's Prototype"]   .." "..WHITE.."("..BZ["Gilneas"]             ..")", "MaltimorsPrototype" },
         { WHITE.."[44]"..DEFAULT.." "..L["Bonecruncher"]           .." "..WHITE.."("..BZ["Gilneas"]             ..")", "Bonecruncher" },
-        { WHITE.."[44]"..DEFAULT.." "..L["Duskskitter"]            .." "..WHITE.."("..BZ["Gilneas"]             ..")", "Duskskitter" },
+        { WHITE.."[44]"..DEFAULT.." "..L["Duskskitterer"]            .." "..WHITE.."("..BZ["Gilneas"]             ..")", "Duskskitterer" },
         { WHITE.."[45]"..DEFAULT.." "..L["Baron Perenolde"]        .." "..WHITE.."("..BZ["Gilneas"]             ..")", "BaronPerenolde" },
         { WHITE.."[45]"..DEFAULT.." "..L["Kin'Tozo"]               .." "..WHITE.."("..BZ["Stranglethorn Vale"]  ..")", "KinTozo" },
         { WHITE.."[47]"..DEFAULT.." "..L["Grug'thok the Seer"]     .." "..WHITE.."("..BZ["Feralas"]             ..")", "Grugthok" },

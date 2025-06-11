@@ -1289,7 +1289,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Dawnhowl"] = true,
 	["Maltimor's Prototype"] = true,
 	["Bonecruncher"] = true,
-	["Duskskitter"] = true,
+	["Duskskitterer"] = true,
 	["Baron Perenolde"] = true,
 	["Kin'Tozo"] = true,
 	["Grug'thok the Seer"] = true,
