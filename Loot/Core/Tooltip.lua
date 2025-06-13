@@ -449,7 +449,7 @@ function AtlasLootTip.extendTooltip(tooltip)
 					break
 				end
 			end
-			
+
 			if not sourceStr then
 				return
 			end

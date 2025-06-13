@@ -204,7 +204,9 @@ AtlasMaps = {
             CreateIndentedNPCEntry("Oggleflint", 11517),
             CreateNPCEntry("2", "Taragaman the Hungerer", 11520),
             CreateNPCEntry("3", "Jergosh the Invoker", 11518),
-            CreateNPCEntry("4", "Bazzalan", 11519)
+            CreateNPCEntry("4", "Bazzalan", 11519),
+            CreateEmptyEntry(),
+            CreateTrashMobsEntry(),
         }
     }),
 

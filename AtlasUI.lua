@@ -371,7 +371,7 @@ local function atlasButton_CreateFrames()
     end)
 
     button:SetScript("OnUpdate", function()
-        if(this.dragme == true) then
+        if (this.dragme == true) then
             AtlasButton_BeingDragged()
         end
     end)

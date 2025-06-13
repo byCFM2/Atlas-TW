@@ -223,6 +223,7 @@ AtlasLoot_TableNames = {
 	["Onyxia"] = { BZ["Onyxia's Lair"].." - "..BB["Onyxia"], "AtlasLootItems" },
 	--Ragefire Chasm
 	["RFCBazzalan"] = { BZ["Ragefire Chasm"].." - "..BB["Bazzalan"], "AtlasLootItems" },
+	["RFCTrash"] = { BZ["Ragefire Chasm"].." - "..L["Trash Mobs"], "AtlasLootItems" },
 	["RFCOggleflint"] = { BZ["Ragefire Chasm"].." - "..BB["Oggleflint"], "AtlasLootItems" },
 	["RFCTaragaman"] = { BZ["Ragefire Chasm"].." - "..BB["Taragaman the Hungerer"], "AtlasLootItems" },
 	["RFCJergosh"] = { BZ["Ragefire Chasm"].." - "..BB["Jergosh the Invoker"], "AtlasLootItems" },

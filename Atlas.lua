@@ -629,7 +629,6 @@ function Atlas_OnShow()
 	else
 		AtlasLootPanel:Show()
 	end
---	AtlasLoot_Atlas_OnShow()
 end
 
 --RightButton closes Atlas and open the World Map if the RightClick option is turned on

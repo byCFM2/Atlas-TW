@@ -24,11 +24,11 @@ function AtlasLoot_GetDataSource(dataID)
 end
 
 function AtlasLoot_PrepMenu(backPage, title)
-	for i = 1, 30, 1 do
+	for i = 1, 30 do
 		_G["AtlasLootItem_" .. i]:Hide()
 		_G["AtlasLootItem_" .. i.."Border"]:Hide()
 	end
-	for i = 1, 30, 1 do
+	for i = 1, 30 do
 		local button = _G["AtlasLootMenuItem_" .. i]
 		_G["AtlasLootMenuItem_" .. i.."Border"]:Hide()
 		button:Hide()
@@ -46,7 +46,7 @@ function AtlasLoot_PrepMenu(backPage, title)
 	AtlasLootItemsFrame_NEXT:Hide()
 	AtlasLootItemsFrame_PREV:Hide()
 	AtlasLootServerQueryButton:Hide()
-	for i = 1, 30, 1 do
+	for i = 1, 30 do
 		_G["AtlasLootMenuItem_" .. i .. "_Extra"]:Show()
 	end
 	AtlasLoot_BossName:SetText("|cffFFFFFF" .. title)

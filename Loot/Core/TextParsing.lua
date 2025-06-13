@@ -100,7 +100,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#sk2#", L["Journeyman"])
     text = gsub(text, "#sk3#", L["Expert"])
     text = gsub(text, "#sk4#", L["Artisan"])
-	
+
     --Professions
     text = gsub(text, "#p1#", BS["Alchemy"])
     text = gsub(text, "#p2#", BS["Blacksmithing"])
@@ -136,7 +136,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#b4#", BF["Warsong Outriders"])
     text = gsub(text, "#b5#", BF["The League of Arathor"])
     text = gsub(text, "#b6#", BF["The Defilers"])
-    
+
     --BRDArena
     text = gsub(text, "#brd1#", BB["Anub'shiah"])
     text = gsub(text, "#brd2#", BB["Eviscerator"])
@@ -205,7 +205,7 @@ function AtlasLoot_FixText(text)
 	text = gsub(text, "#m49#", L["Festive Gift"])
 	text = gsub(text, "#m50#", L["Gaily Wrapped Present"])
 	text = gsub(text, "#m51#", L["Smokywood Pastures"])
-	
+
 	-- Random names
     text = gsub(text, "#x1#", BB["Lord Cobrahn"])
     text = gsub(text, "#x2#", BB["Lady Anacondra"])
@@ -370,7 +370,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#craftlwm2#", BIS["Blue Dragon Mail"])
     text = gsub(text, "#craftlwm3#", BIS["Black Dragon Mail"])
     text = gsub(text, "#craftlwm4#", BIS["Red Dragon Mail"])
-    
+
 	-- Chests, boxes
     text = gsub(text, "#cb1#", L["Doan's Strongbox"])
     text = gsub(text, "#cb2#", L["Fengus's Chest"])
@@ -391,7 +391,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#cb17#", L["Chest of The Seven"])
     text = gsub(text, "#cb18#", L["Dark Coffer"])
     text = gsub(text, "#cb19#", L["Secret Safe"])
-	
+
     --Other Sets
     text = gsub(text, "#oth_s1#", BIS["Defias Leather"])
     text = gsub(text, "#oth_s2#", BIS["Embrace of the Viper"])
@@ -430,7 +430,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#zgs7#", BIS["Augur's Regalia"])
     text = gsub(text, "#zgs8#", BIS["Demoniac's Threads"])
     text = gsub(text, "#zgs9#", BIS["Vindicator's Battlegear"])
-    
+
     --AQ20 Sets
     text = gsub(text, "#aq20s1#", BIS["Symbols of Unending Life"])
     text = gsub(text, "#aq20s2#", BIS["Trappings of the Unseen Path"])
@@ -441,7 +441,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#aq20s7#", BIS["Gift of the Gathering Storm"])
     text = gsub(text, "#aq20s8#", BIS["Implements of Unspoken Names"])
     text = gsub(text, "#aq20s9#", BIS["Battlegear of Unyielding Strength"])
-    
+
     --AQ40 Sets
     text = gsub(text, "#aq40s1#", BIS["Genesis Raiment"])
     text = gsub(text, "#aq40s2#", BIS["Striker's Garb"])
@@ -452,7 +452,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#aq40s7#", BIS["Stormcaller's Garb"])
     text = gsub(text, "#aq40s8#", BIS["Doomcaller's Attire"])
     text = gsub(text, "#aq40s9#", BIS["Conqueror's Battlegear"])
-    
+
     --T0 Sets
     text = gsub(text, "#t0s1#", BIS["Wildheart Raiment"])
     text = gsub(text, "#t0s2#", BIS["Beaststalker Armor"])
@@ -463,7 +463,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#t0s7#", BIS["The Elements"])
     text = gsub(text, "#t0s8#", BIS["Dreadmist Raiment"])
     text = gsub(text, "#t0s9#", BIS["Battlegear of Valor"])
-    
+
     --T0.5 Sets
     text = gsub(text, "#t05s1#", BIS["Feralheart Raiment"])
     text = gsub(text, "#t05s2#", BIS["Beastmaster Armor"])
@@ -474,7 +474,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#t05s7#", BIS["The Five Thunders"])
     text = gsub(text, "#t05s8#", BIS["Deathmist Raiment"])
     text = gsub(text, "#t05s9#", BIS["Battlegear of Heroism"])
-    
+
     --T1 Sets
     text = gsub(text, "#t1s1#", BIS["Cenarion Raiment"])
     text = gsub(text, "#t1s2#", BIS["Giantstalker Armor"])
@@ -485,7 +485,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#t1s7#", BIS["The Earthfury"])
     text = gsub(text, "#t1s8#", BIS["Felheart Raiment"])
     text = gsub(text, "#t1s9#", BIS["Battlegear of Might"])
-    
+
     --T2 Sets
     text = gsub(text, "#t2s1#", BIS["Stormrage Raiment"])
     text = gsub(text, "#t2s2#", BIS["Dragonstalker Armor"])
@@ -496,7 +496,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#t2s7#", BIS["The Ten Storms"])
     text = gsub(text, "#t2s8#", BIS["Nemesis Raiment"])
     text = gsub(text, "#t2s9#", BIS["Battlegear of Wrath"])
-    
+
     --T3 Sets
     text = gsub(text, "#t3s1#", BIS["Dreamwalker Raiment"])
     text = gsub(text, "#t3s2#", BIS["Cryptstalker Armor"])
@@ -507,12 +507,12 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#t3s7#", BIS["The Earthshatterer"])
     text = gsub(text, "#t3s8#", BIS["Plagueheart Raiment"])
     text = gsub(text, "#t3s9#", BIS["Dreadnaught's Battlegear"])
-    
+
     --BoN
     text = gsub(text, "#pob1#", L["Path of the Conqueror"])
     text = gsub(text, "#pob2#", L["Path of the Invoker"])
     text = gsub(text, "#pob3#", L["Path of the Protector"])
-    
+
     --PvP Epic Horde Sets
     text = gsub(text, "#pvpeh1#", BIS["Warlord's Sanctuary"])
     text = gsub(text, "#pvpeh2#", BIS["Warlord's Pursuit"])
@@ -522,7 +522,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#pvpeh6#", BIS["Warlord's Earthshaker"])
     text = gsub(text, "#pvpeh7#", BIS["Warlord's Threads"])
     text = gsub(text, "#pvpeh8#", BIS["Warlord's Battlegear"])
-    
+
     --PvP Epic Alliance Sets
     text = gsub(text, "#pvpea1#", BIS["Field Marshal's Sanctuary"])
     text = gsub(text, "#pvpea2#", BIS["Field Marshal's Pursuit"])
@@ -532,7 +532,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#pvpea6#", BIS["Field Marshal's Vestments"])
     text = gsub(text, "#pvpea7#", BIS["Field Marshal's Threads"])
     text = gsub(text, "#pvpea8#", BIS["Field Marshal's Battlegear"])
-    
+
     --PvP Rare Horde Sets
     text = gsub(text, "#pvprh1#", BIS["Champion's Refuge"])
     text = gsub(text, "#pvprh2#", BIS["Champion's Pursuance"])
@@ -542,7 +542,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#pvprh6#", BIS["Champion's Stormcaller"])
     text = gsub(text, "#pvprh7#", BIS["Champion's Dreadgear"])
     text = gsub(text, "#pvprh8#", BIS["Champion's Battlearmor"])
-    
+
     --PvP Rare Alliance Sets
     text = gsub(text, "#pvpra1#", BIS["Lieutenant Commander's Refuge"])
     text = gsub(text, "#pvpra2#", BIS["Lieutenant Commander's Pursuance"])
@@ -552,11 +552,11 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#pvpra6#", BIS["Lieutenant Commander's Guard"])
     text = gsub(text, "#pvpra7#", BIS["Lieutenant Commander's Dreadgear"])
     text = gsub(text, "#pvpra8#", BIS["Lieutenant Commander's Battlearmor"])
-    
+
     --Rogue
     text = gsub(text, "#rp1#", BS["Poisons"])
     text = gsub(text, "#rp2#", L["Reagent"])
-    
+
     --Crafting
     text = gsub(text, "#sr#", L["Skill:"])
     text = gsub(text, "#lr#", L["Level:"])
@@ -564,11 +564,11 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "=so2=", "|cffffff00") --yellow skill
     text = gsub(text, "=so3=", "|cff3fbf3f") --green skill
     text = gsub(text, "=so4=", "|cff7f7f7f") --gray skill
-	
+
     --Misc PvP Set Text
     text = gsub(text, "#pvps1#", L["Epic Set"])
     text = gsub(text, "#pvps2#", L["Rare Set"])
-    
+
     --Text coloring
     text = gsub(text, "=q0=", "|cff9d9d9d")
     text = gsub(text, "=q1=", "|cffFFFFFF")
@@ -592,7 +592,7 @@ function AtlasLoot_FixText(text)
 	text = gsub(text, "=q19=", "|cffe6cc80") -- horde rank color
     text = gsub(text, "=ec1=", "|cffFF8400")
     text = gsub(text, "=ds=", "|cffFFd200")
-	
+
 	--Dropped by names
     text = gsub(text, "#db1#", BB["Patchwerk"])
     text = gsub(text, "#db2#", BB["Grobbulus"])
@@ -665,23 +665,18 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#db69#", BB["Scorn"])
     text = gsub(text, "#db70#", BB["Sever"])
     text = gsub(text, "#db71#", BB["Lady Falther'ess"])
-	
+
 	--Zones abbreviations
     text = gsub(text, "#z1#", "MC")
     text = gsub(text, "#z2#", "Scholo")
     text = gsub(text, "#z3#", "Strat")
     text = gsub(text, "#z4#", "LBRS")
     text = gsub(text, "#z5#", "UBRS")
-    
+
     --Currency Icons
-    text = gsub(text, "#gold#", "Interface\\AddOns\\AtlasLoot\\Images\\gold")
-    text = gsub(text, "#silver#", "Interface\\AddOns\\AtlasLoot\\Images\\silver")
-    text = gsub(text, "#copper#", "Interface\\AddOns\\AtlasLoot\\Images\\bronze")
     text = gsub(text, "#wsg#", "Interface\\Icons\\INV_Misc_Rune_07")
     text = gsub(text, "#ab#", "Interface\\Icons\\INV_Jewelry_Amulet_07")
     text = gsub(text, "#av#", "Interface\\Icons\\INV_Jewelry_Necklace_21")
-    text = gsub(text, "#horde#", "Interface\\AddOns\\AtlasLoot\\Images\\Horde")
-    text = gsub(text, "#alliance#", "Interface\\AddOns\\AtlasLoot\\Images\\Alliance")
     text = gsub(text, "#darkmoon#", "Interface\\Icons\\INV_Misc_Ticket_Darkmoon_01")
     text = gsub(text, "#ccombat#", "Interface\\Icons\\INV_Jewelry_Talisman_06")
     text = gsub(text, "#ctactical#", "Interface\\Icons\\INV_Jewelry_Amulet_02")
@@ -689,7 +684,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#cremulos#", "Interface\\Icons\\INV_Jewelry_Necklace_14")
     text = gsub(text, "#ccenarius#", "Interface\\Icons\\INV_Jewelry_Necklace_12")
     text = gsub(text, "#zandalar#", "Interface\\Icons\\INV_Misc_Coin_08")
-    
+
 	--Ranks
     text = gsub(text, "#rank1#", L["Rank 1"])
     text = gsub(text, "#rank2#", L["Rank 2"])
@@ -711,7 +706,7 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#ev2#", L["Love is in the Air"])
     text = gsub(text, "#ev3#", L["Midsummer Fire Festival"])
     text = gsub(text, "#ev4#", L["Children's Week"])
-	
+
 	--Zones
     text = gsub(text, "#zone1#", BZ["Stratholme"])
     text = gsub(text, "#zone2#", BZ["Scholomance"])
@@ -723,5 +718,8 @@ function AtlasLoot_FixText(text)
     text = gsub(text, "#zone8#", BZ["Winterspring"])
     text = gsub(text, "#zone9#", BZ["Azshara"])
     text = gsub(text, "#zone10#", BZ["Silithus"])
+
+    text = gsub(text, "#lvl1#", L["Level One Lunatic Challenge"])
+
 	return text
 end

@@ -1335,5 +1335,5 @@ L:RegisterTranslations("enUS", function() return {
 	["Mini Bosses"] = true,
 	["Previous"] = true,
 	["Next"] = true,
-
+	["Level One Lunatic Challenge"] = true,
 } end)

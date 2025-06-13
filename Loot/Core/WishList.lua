@@ -8,14 +8,9 @@ local currentPage = 1
 -- Colours stored for code readability
 local GREY = "|cff999999"
 local RED = "|cffff0000"
-local WHITE = "|cffFFFFFF"
-local GREEN = "|cff1eff00"
-local PURPLE = "|cff9F3FFF"
 local BLUE = "|cff0070dd"
-local ORANGE = "|cffFF8400"
 
 --[[
-AtlasLoot_ShowWishList()
 Displays the WishList
 ]]
 function AtlasLoot_ShowWishList()
@@ -23,7 +18,6 @@ function AtlasLoot_ShowWishList()
 end
 
 --[[
-AtlasLoot_AddToWishlist(itemID, itemTexture, itemName, extraText, sourcePage)
 Looks for an empty slot in the wishlist and slots the item in
 ]]
 function AtlasLoot_AddToWishlist(itemID, itemTexture, itemName, extraText, sourcePage)
@@ -39,7 +33,6 @@ function AtlasLoot_AddToWishlist(itemID, itemTexture, itemName, extraText, sourc
 end
 
 --[[
-AtlasLoot_DeleteFromWishList(itemID)
 Deletes the specified items from the wishlist
 ]]
 function AtlasLoot_DeleteFromWishList(itemID)
@@ -57,7 +50,6 @@ function AtlasLoot_DeleteFromWishList(itemID)
 end
 
 --[[
-AtlasLoot_WishListSort()
 Sorts the Wishlist
 ]]
 function AtlasLoot_WishListSort()
@@ -83,7 +75,6 @@ function AtlasLoot_WishListSort()
 end
 
 --[[
-AtlasLoot_WishListSortCheck(temp1, temp2)
 Checks if temp1 > temp2
 Sorts by rarity, then alphabetically.
 ]]
@@ -141,7 +132,6 @@ function AtlasLoot_WishListSortCheck(temp1, temp2)
 end
 
 --[[
-local RecursiveSearchZoneName(dataTable, zoneID):
 A recursive function iterate AtlasLoot_HewdropDown table for the zone name
 ]]
 local function RecursiveSearchZoneName(dataTable, zoneID)
@@ -157,7 +147,6 @@ local function RecursiveSearchZoneName(dataTable, zoneID)
 end
 
 --[[
-AtlasLoot_GetWishListSubheading(dataID):
 Iterating through dropdown data tables to search backward for zone name with specified dataID
 ]]
 function AtlasLoot_GetWishListSubheading(dataID)
@@ -205,7 +194,6 @@ function GetLootTableParent(dataID)
 end
 
 --[[
-AtlasLoot_CategorizeWishList(wlTable):
 Group items with zone/event name etc, and format them by adding subheadings and empty lines
 This function returns a single table with all items, use AtlasLoot_GetWishListPage to split it
 wlTable: is AtlasLootCharDB["WishList"], parameterized for flexible
@@ -250,7 +238,6 @@ function AtlasLoot_CategorizeWishList(wlTable)
 end
 
 --[[
-AtlasLoot_GetWishListPage(page):
 Return partial data of WishList table
 page: the page number needed
 ]]

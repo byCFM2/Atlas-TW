@@ -724,6 +724,7 @@ AtlasLoot_HewdropDown_SubTables = {
         { BB["Oggleflint"], "RFCOggleflint" },
         { BB["Jergosh the Invoker"], "RFCJergosh" },
         { BB["Bazzalan"], "RFCBazzalan" },
+        { L["Trash Mobs"], "RFCTrash" },
     },
     ["RazorfenDowns"] = {
         { BB["Tuten'kash"], "RFDTutenkash" },
