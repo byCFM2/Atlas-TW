@@ -10,6 +10,7 @@
 	<Include file="LootTables.lua"/>
 
 	<!-- Include core functionality -->
+	<Include file="Core\LootConfig.lua"/>
 	<Include file="Core\Sets.lua"/>
 	<Include file="Core\WorldEvents.lua"/>
 	<Include file="Core\Crafting.lua"/>

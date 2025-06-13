@@ -617,7 +617,19 @@ function Atlas_OnShow()
 	AtlasFrameDropDownType_OnShow()
 	AtlasFrameDropDown_OnShow()
 	Atlas_Refresh()
-	AtlasLoot_Atlas_OnShow()
+
+	--If a boss has been selected, show the loot frame
+	if AtlasLootItemsFrame.activeBoss then
+		AtlasLootItemsFrame:Show()
+	end
+
+	--Consult the saved variable table to see whether to show the bottom panel
+	if AtlasLootCharDB.HidePanel then
+		AtlasLootPanel:Hide()
+	else
+		AtlasLootPanel:Show()
+	end
+--	AtlasLoot_Atlas_OnShow()
 end
 
 --RightButton closes Atlas and open the World Map if the RightClick option is turned on

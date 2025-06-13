@@ -1,11 +1,6 @@
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
-local GREY = "|cff999999"
 local RED = "|cffff0000"
 local WHITE = "|cffFFFFFF"
-local GREEN = "|cff1eff00"
-local PURPLE = "|cff9F3FFF"
-local BLUE = "|cff0070dd"
-local ORANGE = "|cffFF8400"
 
 local currentPage = 1
 local SearchResult = nil

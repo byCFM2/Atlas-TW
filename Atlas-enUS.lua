@@ -5,9 +5,18 @@ local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
 AtlasSortIgnore = {"the (.+)"}
 
+--Bindings
 BINDING_HEADER_ATLASTW_TITLE = "Atlas-TW Bindings"
 BINDING_NAME_ATLASTW_TOGGLE = "Toggle Atlas-TW"
 BINDING_NAME_ATLASTW_OPTIONS = "Toggle Options"
+BINDING_HEADER_ATLASLOOT_TITLE = "AtlasLoot Bindings"
+BINDING_NAME_ATLASLOOT_TOGGLE = "Toggle AtlasLoot"
+BINDING_NAME_ATLASLOOT_OPTIONS = "Toggle Options"
+BINDING_NAME_ATLASLOOT_QL1 = "QuickLook 1"
+BINDING_NAME_ATLASLOOT_QL2 = "QuickLook 2"
+BINDING_NAME_ATLASLOOT_QL3 = "QuickLook 3"
+BINDING_NAME_ATLASLOOT_QL4 = "QuickLook 4"
+BINDING_NAME_ATLASLOOT_WISHLIST = "WishList"
 
 ATLAS_STRING_LOCATION = "Location"
 ATLAS_STRING_LEVELRANGE = "Level Range"
@@ -107,7 +116,9 @@ L:RegisterTranslations("enUS", function() return {
 	["Hallow's End"] = true,
 	["Scourge Invasion"] = true,
 	["Lunar Festival"] = true,
+
 	--Other
+	["Quests"] = true,
 	["East"] = true,
 	["North"] = true,
 	["South"] = true,
@@ -742,7 +753,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Select Loot Table"] = true,
 	["Select Sub-Table"] = true,
 	["Drop Rate: "] = true,
-	["Left-click to open AtlasLoot.\nMiddle-click for AtlasLoot options.\nRight-click and drag to move this button."] = true,
+	--["Left-click to open AtlasLoot.\nMiddle-click for AtlasLoot options.\nRight-click and drag to move this button."] = true,
 	["Various Locations"] = true,
 	["NoticeFrame"] = "If you find anything missing, please report it at |cffbe5effhttps://github.com/KasVital/Atlas-TW/issues/|r.",
 	[" is safe."] = true,

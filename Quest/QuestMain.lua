@@ -48,13 +48,16 @@ end
 -- upper right button / to show/close panel
 -----------------------------------------------------------------------------
 function KQuestCLOSE_OnClick()
-	if KQuestFrame:IsVisible() then
+	variables.QWithAtlas = not variables.QWithAtlas
+	if not variables.QWithAtlas then
 		HideUIPanel(KQuestFrame)
 		HideUIPanel(KQuestInsideFrame)
 	else
 		ShowUIPanel(KQuestFrame)
 	end
 	variables.QUpdateNow = true
+    KQAutoshowOption:SetChecked(variables.QWithAtlas)
+    KQuest_SaveData()
 end
 
 -----------------------------------------------------------------------------
@@ -69,7 +72,7 @@ end
 -- Hide the AtlasLoot Frame if available
 -----------------------------------------------------------------------------
 function KQuestHideAL()
-	if AtlasLootItemsFrame ~= nil then
+	if AtlasLootItemsFrame then
 		AtlasLootItemsFrame:Hide() -- hide atlasloot
 	end
 end

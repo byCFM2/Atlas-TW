@@ -185,13 +185,3 @@ pageCountText:SetWidth(50)
 pageCountText:SetHeight(20)
 pageCountText:SetPoint("BOTTOM", 0, 18)
 pageCountText:SetJustifyV("TOP")
-
-
-local questsToggleButton = CreateFrame("Button", "", AtlasFrame, "OptionsButtonTemplate")
-questsToggleButton:SetWidth(70)
-questsToggleButton:SetHeight(20)
-questsToggleButton:SetPoint("TOPRIGHT", -120, -61)
-questsToggleButton:SetText(AQ_Quests)
-questsToggleButton:SetScript("OnClick", function()
-    KQuestCLOSE_OnClick()
-end)

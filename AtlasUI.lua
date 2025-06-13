@@ -1,5 +1,6 @@
 local _G = getfenv()
 local atlasTW = _G.AtlasTW
+local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
 local function atlas_CreateFrames()
     -- Create the main Atlas frame
@@ -34,15 +35,14 @@ local function atlas_CreateFrames()
     lockButton:SetScript("OnClick", function()
         Atlas_ToggleLock()
     end)
+
     -- Создаем глобальные текстуры
     local lockNorm = lockButton:CreateTexture("AtlasLockNorm", "BORDER")
     lockButton:SetNormalTexture(lockNorm)
     lockNorm:SetAllPoints(lockButton)
-
     local lockPush  = lockButton:CreateTexture("AtlasLockPush", "BORDER")
     lockButton:SetPushedTexture(lockPush)
     lockPush:SetAllPoints(lockButton)
-
     local lockHighlight = lockButton:CreateTexture(nil, "HIGHLIGHT")
     lockHighlight:SetTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Highlight")
     lockHighlight:SetBlendMode("ADD")
@@ -52,7 +52,6 @@ local function atlas_CreateFrames()
     -- Type dropdown
     local dropDownType = CreateFrame("Button", "AtlasFrameDropDownType", atlasFrame, "UIDropDownMenuTemplate")
     dropDownType:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 60, -50)
-
     local dropDownTypeLabel = dropDownType:CreateFontString("AtlasFrameDropDownTypeLabel", "BACKGROUND", "GameFontNormalSmall")
     dropDownTypeLabel:SetText(ATLAS_STRING_SELECT_CAT)
     dropDownTypeLabel:SetPoint("BOTTOMLEFT", dropDownType, "TOPLEFT", 21, 0)
@@ -60,7 +59,6 @@ local function atlas_CreateFrames()
     -- Map dropdown
     local dropDown = CreateFrame("Button", "AtlasFrameDropDown", atlasFrame, "UIDropDownMenuTemplate")
     dropDown:SetPoint("LEFT", dropDownType, "RIGHT", 0, 0)
-
     local dropDownLabel = dropDown:CreateFontString("AtlasFrameDropDownLabel", "BACKGROUND", "GameFontNormalSmall")
     dropDownLabel:SetText(ATLAS_STRING_SELECT_MAP)
     dropDownLabel:SetPoint("BOTTOMLEFT", dropDown, "TOPLEFT", 21, 0)
@@ -119,11 +117,34 @@ local function atlas_CreateFrames()
     -- Options button
     local optionsButton = CreateFrame("Button", "AtlasFrameOptionsButton", atlasFrame, "UIPanelButtonTemplate2")
     optionsButton:SetWidth(80)
-    optionsButton:SetHeight(20)
     optionsButton:SetPoint("TOPRIGHT", atlasFrame, "TOPRIGHT", -18, -60)
     optionsButton:SetText(ATLAS_OPTIONS_BUTTON)
     optionsButton:SetScript("OnClick", function()
         AtlasOptions_Toggle()
+    end)
+
+    -- Hide Quests button
+    local questsToggleButton = CreateFrame("Button", "", atlasFrame, "OptionsButtonTemplate")
+    questsToggleButton:SetPoint("LEFT", optionsButton, "LEFT", -95, 0)
+    questsToggleButton:SetText(L["Quests"])
+    questsToggleButton:SetScript("OnClick", function()
+        KQuestCLOSE_OnClick()
+    end)
+
+    -- Hide Loot Panel button
+    local hidePanelButton = CreateFrame("Button", "", atlasFrame, "OptionsButtonTemplate")
+    hidePanelButton:SetText(L["Loot Panel"])
+    hidePanelButton:SetPoint("LEFT", questsToggleButton, "LEFT", -95, 0)
+    hidePanelButton:SetScript("OnClick", function()
+        local hidePanelStatus = AtlasLootCharDB.HidePanel
+        AtlasLootCharDB.HidePanel = not hidePanelStatus
+        if hidePanelStatus then
+            AtlasLootPanel:Show()
+        else
+            AtlasLootPanel:Hide()
+        end
+      --  AtlasLootOptionsFrameHidePanel:SetChecked(AtlasLootCharDB.HidePanel)
+        AtlasLoot_SetupForAtlas()
     end)
 
     -- Scroll frame

@@ -412,7 +412,7 @@ function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
 end
 
 -- Create AtlasLootInfo frame
-function AtlasLoot_CreateInfoFrame()
+--[[ function AtlasLoot_CreateInfoFrame()
     local frame = CreateFrame("Frame", "AtlasLootInfo", UIParent)
     frame:SetWidth(128)
     frame:SetHeight(75)
@@ -444,7 +444,7 @@ function AtlasLoot_CreateInfoFrame()
     end)
 
     return frame
-end
+end ]]
 
 -- Create фрейм with all item buttons
 function AtlasLoot_CreateItemsFrame()
@@ -457,7 +457,7 @@ function AtlasLoot_CreateItemsFrame()
     frame:EnableMouseWheel(true)
 	frame:RegisterEvent("VARIABLES_LOADED")
     frame:SetScript("OnEvent", function()
-            AtlasLoot_OnEvent()
+            AtlasLoot_OnVariablesLoaded()
             AtlasLoot_OnLoad()
             local backButton = _G["AtlasLootItemsFrame_BACK"]
             if backButton then
@@ -783,18 +783,18 @@ function AtlasLoot_CreateOptionsFrame()
     local itemID = CreateFrame("CheckButton", frame:GetName().."ItemID", frame, "OptionsCheckButtonTemplate")
     itemID:SetPoint("TOPLEFT", 20, -280)
 
-    local minimap = CreateFrame("CheckButton", frame:GetName().."Minimap", frame, "OptionsCheckButtonTemplate")
-    minimap:SetPoint("TOP", 20, -40)
+--[[     local minimap = CreateFrame("CheckButton", frame:GetName().."Minimap", frame, "OptionsCheckButtonTemplate")
+    minimap:SetPoint("TOP", 20, -40) ]]
 
-    local hidePanel = CreateFrame("CheckButton", frame:GetName().."HidePanel", frame, "OptionsCheckButtonTemplate")
-    hidePanel:SetPoint("TOP", 20, -70)
+--[[     local hidePanel = CreateFrame("CheckButton", frame:GetName().."HidePanel", frame, "OptionsCheckButtonTemplate")
+    hidePanel:SetPoint("TOP", 20, -70) ]]
 
     local opaque = CreateFrame("CheckButton", frame:GetName().."Opaque", frame, "OptionsCheckButtonTemplate")
     opaque:SetPoint("TOP", 20, -100)
 
     local itemSpam = CreateFrame("CheckButton", frame:GetName().."ItemSpam", frame, "OptionsCheckButtonTemplate")
     itemSpam:SetPoint("TOP", 20, -160)
-
+--[[ 
     -- Sliders
     local sliderButtonRad = CreateFrame("Slider", frame:GetName().."SliderButtonRad", frame, "OptionsSliderTemplate")
     sliderButtonRad:SetWidth(240)
@@ -804,7 +804,7 @@ function AtlasLoot_CreateOptionsFrame()
     local sliderButtonPos = CreateFrame("Slider", frame:GetName().."SliderButtonPos", frame, "OptionsSliderTemplate")
     sliderButtonPos:SetWidth(240)
     sliderButtonPos:SetHeight(16)
-    sliderButtonPos:SetPoint("TOP", 128, -220)
+    sliderButtonPos:SetPoint("TOP", 128, -220) ]]
 
     -- Buttons
     local doneButton = CreateFrame("Button", frame:GetName().."Done", frame, "UIPanelButtonTemplate2")
@@ -812,10 +812,10 @@ function AtlasLoot_CreateOptionsFrame()
     doneButton:SetHeight(20)
     doneButton:SetPoint("BOTTOM", 0, 20)
 
-    local resetPosButton = CreateFrame("Button", frame:GetName().."ResetPosition", frame, "UIPanelButtonTemplate2")
+--[[     local resetPosButton = CreateFrame("Button", frame:GetName().."ResetPosition", frame, "UIPanelButtonTemplate2")
     resetPosButton:SetWidth(160)
     resetPosButton:SetHeight(20)
-    resetPosButton:SetPoint("BOTTOM", 168, 20)
+    resetPosButton:SetPoint("BOTTOM", 168, 20) ]]
 
     local defaultSettingsButton = CreateFrame("Button", frame:GetName().."DefaultSettings", frame, "UIPanelButtonTemplate2")
     defaultSettingsButton:SetWidth(160)
@@ -839,32 +839,25 @@ function AtlasLoot_CreateOptionsFrame()
     opaque:SetScript("OnClick", function() AtlasLootOptions_OpaqueToggle() end)
     itemSpam:SetScript("OnClick", function() AtlasLootOptions_ItemSpam() end)
     doneButton:SetScript("OnClick", function() AtlasLootOptions_Toggle() end)
-    resetPosButton:SetScript("OnClick", function() AtlasLootOptions_ResetPosition() end)
+   -- resetPosButton:SetScript("OnClick", function() AtlasLootOptions_ResetPosition() end)
     defaultSettingsButton:SetScript("OnClick", function() AtlasLootOptions_DefaultSettings() end)
 
-    minimap:SetScript("OnClick", function()
+--[[     minimap:SetScript("OnClick", function()
         AtlasLootCharDB.MinimapButton = not AtlasLootCharDB.MinimapButton
         AtlasLootMinimapButton_Init()
-    end)
+    end) ]]
 
-    hidePanel:SetScript("OnClick", function()
-        if AtlasLootCharDB.HidePanel == true then
-            AtlasLootCharDB.HidePanel = false
-            if (AtlasFrame) then
-                if AtlasFrame:IsVisible() then
-                    AtlasLootPanel:Show()
-                end
-            end
-        else
-            AtlasLootCharDB.HidePanel = true
-            if (AtlasFrame) then
-                if AtlasFrame:IsVisible() then
-                    AtlasLootPanel:Hide()
-                end
+--[[     hidePanel:SetScript("OnClick", function()
+        AtlasLootCharDB.HidePanel = not AtlasLootCharDB.HidePanel
+        if AtlasFrame and AtlasFrame:IsVisible() then
+            if AtlasLootCharDB.HidePanel then
+                AtlasLootPanel:Hide()
+            else
+                AtlasLootPanel:Show()
             end
         end
-    end)
-
+    end) ]]
+--[[ 
     sliderButtonRad:SetScript("OnValueChanged", function()
         -- Передаем слайдер явно в функцию
         AtlasLootOptions_UpdateSliderWithFrame(sliderButtonRad, L["Button Radius"])
@@ -877,16 +870,17 @@ function AtlasLoot_CreateOptionsFrame()
         AtlasLootOptions_UpdateSliderWithFrame(sliderButtonPos, L["Button Position"])
         AtlasLootCharDB.MinimapButtonPosition = sliderButtonPos:GetValue()
         AtlasLootMinimapButton_UpdatePosition()
-    end)
+    end) ]]
 
     return frame
 end
 
 -- AtlasLootPanel
 function AtlasLoot_CreatePanel()
-    local frame = CreateFrame("Frame", "AtlasLootPanel", UIParent)
+    local frame = CreateFrame("Frame", "AtlasLootPanel", AtlasFrame)
     frame:SetWidth(570)
     frame:SetHeight(90)
+	frame:SetPoint("TOP", "AtlasFrame", "BOTTOM", 0, 9)
     frame:Hide()
     frame:EnableMouse(true)
 
@@ -1044,7 +1038,7 @@ function AtlasLoot_CreatePanel()
         GameTooltip:Hide()
     end)
 
-    local atlasLoot = CreateFrame("Button", frame:GetName().."_AtlasLoot", frame, "OptionsButtonTemplate")
+--[[     local atlasLoot = CreateFrame("Button", frame:GetName().."_AtlasLoot", frame, "OptionsButtonTemplate")
     atlasLoot:SetPoint("TOP", sets, "BOTTOM", 0, -2)
     atlasLoot:SetScript("OnClick", function()
         if AtlasLootSearchBox:GetText() ~= "" then
@@ -1064,10 +1058,11 @@ function AtlasLoot_CreatePanel()
     end)
     atlasLoot:SetScript("OnLeave", function()
         GameTooltip:Hide()
-    end)
+    end) ]]
 
     -- Preset buttons (QuickLooks)
     AtlasLoot_CreatePresetButtons(frame)
+
     -- Search elements
     local searchBox = CreateFrame("EditBox", "AtlasLootSearchBox", frame, "InputBoxTemplate")
     searchBox:SetWidth(200)
@@ -1140,7 +1135,7 @@ function AtlasLoot_CreatePanel()
 end
 
 -- AtlasLootMinimapButtonFrame
-function AtlasLoot_CreateMinimapButton()
+--[[ function AtlasLoot_CreateMinimapButton()
     local frame = CreateFrame("Frame", "AtlasLootMinimapButtonFrame", Minimap)
     frame:SetWidth(32)
     frame:SetHeight(32)
@@ -1180,7 +1175,7 @@ function AtlasLoot_CreateMinimapButton()
     frame:SetScript("OnEvent", function() AtlasLootMinimapButton_Init() end)
 
     return frame
-end
+end ]]
 
 -- Функция инициализации опций (заменяет OnLoad события)
 function AtlasLoot_InitializeOptionsFrame()
@@ -1196,43 +1191,24 @@ function AtlasLoot_InitializeOptionsFrame()
     _G["AtlasLootOptionsFrameShowSourceText"]:SetText(L["Show Source on Tooltips"])
     _G["AtlasLootOptionsFrameEquipCompareText"]:SetText(L["Use EquipCompare"])
     _G["AtlasLootOptionsFrameItemIDText"]:SetText(L["Show IDs at all times"])
-    _G["AtlasLootOptionsFrameMinimapText"]:SetText(L["Show Minimap Button"])
-    _G["AtlasLootOptionsFrameHidePanelText"]:SetText(L["Hide AtlasLoot Panel"])
+  --  _G["AtlasLootOptionsFrameMinimapText"]:SetText(L["Show Minimap Button"])
+ --   _G["AtlasLootOptionsFrameHidePanelText"]:SetText(L["Hide AtlasLoot Panel"])
     _G["AtlasLootOptionsFrameOpaqueText"]:SetText(L["Make Loot Table Opaque"])
     _G["AtlasLootOptionsFrameItemSpamText"]:SetText(L["Suppress text spam when querying items"])
 
     -- Инициализация слайдеров
-    AtlasLootOptions_SetupSliderWithFrame(AtlasLootOptionsFrameSliderButtonRad, L["Button Radius"], 0, 200, 1)
+--[[     AtlasLootOptions_SetupSliderWithFrame(AtlasLootOptionsFrameSliderButtonRad, L["Button Radius"], 0, 200, 1)
     AtlasLootOptions_SetupSliderWithFrame(AtlasLootOptionsFrameSliderButtonPos, L["Button Position"], 0, 360, 1)
-
+ ]]
     -- Инициализация кнопок
     _G["AtlasLootOptionsFrameDone"]:SetText(L["Done"])
-    _G["AtlasLootOptionsFrameResetPosition"]:SetText(L["Reset Position"])
+ --   _G["AtlasLootOptionsFrameResetPosition"]:SetText(L["Reset Position"])
     _G["AtlasLootOptionsFrameDefaultSettings"]:SetText(L["Default Settings"])
 end
 
--- Функция инициализации панели (заменяет OnShow события)
-function AtlasLoot_InitializePanelButtons()
-    -- Инициализация текстов кнопок
---[[     _G["AtlasLootPanel_WorldEvents"]:SetText(L["World Events"])
-    _G["AtlasLootPanel_Sets"]:SetText(L["Collections"])
-    _G["AtlasLootPanel_Reputation"]:SetText(L["Factions"])
-    _G["AtlasLootPanel_PvP"]:SetText(L["PvP Rewards"])
-    _G["AtlasLootPanel_Crafting"]:SetText(L["Crafting"])
-    _G["AtlasLootPanel_WishList"]:SetText(L["WishList"])
-    _G["AtlasLootPanel_Options"]:SetText(L["Options"])
-    _G["AtlasLootPanel_AtlasLoot"]:SetText(L["AtlasLoot"])
-    _G["AtlasLootPanel_Preset1"]:SetText(L["QuickLook"].." 1")
-    _G["AtlasLootPanel_Preset2"]:SetText(L["QuickLook"].." 2")
-    _G["AtlasLootPanel_Preset3"]:SetText(L["QuickLook"].." 3")
-    _G["AtlasLootPanel_Preset4"]:SetText(L["QuickLook"].." 4")
-    _G["AtlasLootSearchButton"]:SetText(L["Search"])
-    _G["AtlasLootSearchClearButton"]:SetText(L["Clear"])
-    _G["AtlasLootLastResultButton"]:SetText(L["Last Result"]) ]]
-end
 
 -- Create main AtlasLootDefaultFrame with all child elements
-function AtlasLoot_CreateDefaultFrame()
+--[[ function AtlasLoot_CreateDefaultFrame()
     local frame = CreateFrame("Frame", "AtlasLootDefaultFrame", UIParent)
     frame:SetWidth(600)
     frame:SetHeight(700)
@@ -1332,19 +1308,18 @@ function AtlasLoot_CreateDefaultFrame()
   --  AtlasLoot_CreateFontStrings(frame)
 
     return frame
-end
+end ]]
 
 -- Updated initialization function
 function AtlasLoot_InitializeUI()
     AtlasLoot_CreateTooltips()
-    AtlasLoot_CreateInfoFrame()
+   -- AtlasLoot_CreateInfoFrame()
     AtlasLoot_CreateItemsFrame()
     --AtlasLoot_CreateDefaultFrame()
     AtlasLoot_CreateOptionsFrame()
     AtlasLoot_CreatePanel()
-    AtlasLoot_CreateMinimapButton()
+  --  AtlasLoot_CreateMinimapButton()
 
     -- Инициализируем тексты после создания фреймов
     AtlasLoot_InitializeOptionsFrame()
-    AtlasLoot_InitializePanelButtons()
 end

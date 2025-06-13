@@ -14,7 +14,6 @@ local yellow = "|cffFFd200"
 AQHelpText = "type /aq or atlasquest "..white.."[command]"..yellow.."\ncommands: help; option/config; show/hide; left/right; colour; autoshow"..red.."(only Atlas)"
 AQOptionsCaptionTEXT = "AtlasQuest Options"
 AQ_OK = "Done"
-AQ_Quests = "Quests"
 AQNotAvailable = "Not Available"
 AQQuestFinished = "- Quest finished"
 -- Autoshow
