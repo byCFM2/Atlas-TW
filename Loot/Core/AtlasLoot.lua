@@ -45,7 +45,6 @@ StaticPopupDialogs["ATLASLOOT_SETUP"] = {
 AtlasLoot_Data["AtlasLootFallback"] = {
 	EmptyInstance = {}
 }
-
 -- Функция для ограничения длины текста с учетом паттернов
 local function StripFormatting(text)
     -- Сначала удаляем все виды скобок и их содержимое
@@ -521,7 +520,6 @@ function AtlasLootOptions_Toggle()
 end
 
 --[[
-	AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame):
 	dataID - Name of the loot table
 	dataSource - Table in the database where the loot table is stored
 	boss - Text string to use as a title for the loot page
@@ -538,14 +536,6 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 	local spellName, spellIcon
 	if dataID == "SearchResult" and dataID == "WishList" then
 		AtlasLoot_IsLootTableAvailable(dataID)
-	end
-	--If the data source has not been passed, throw up a debugging statement
-	if dataSource == nil then
-		DEFAULT_CHAT_FRAME:AddMessage("No dataSource!")
-	end
-	--If the loot table name has not been passed, throw up a debugging statement
-	if dataID == nil then
-		DEFAULT_CHAT_FRAME:AddMessage("No dataID!")
 	end
 	local dataSource_backup = dataSource
 	if dataSource ~= "dummy" then
@@ -675,14 +665,10 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 	elseif(dataID=="WarriorSet") then
 		AtlasLootWarriorSetMenu()
 	else
-		--Check if we have valid dataSource and dataID before proceeding
-		if dataSource == nil or dataID == nil or dataSource[dataID] == nil then
-			return
-		end
 		--Iterate through each item object and set its properties
 		for i = 1, 30 do
 			--Check for a valid object (that it exists, and that it has a name)
-			if dataSource[dataID][i] ~= nil and dataSource[dataID][i][3] ~= "" then
+			if dataSource and dataSource[dataID] and dataSource[dataID][i] and dataSource[dataID][i][3] ~= "" then
 				if string.sub(dataSource[dataID][i][1], 1, 1) == "s" then
 					isItem = false
 					isEnchant = false
@@ -1000,17 +986,18 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 				_G["AtlasLootItemsFrame_BACK"]:Show()
 				_G["AtlasLootItemsFrame_BACK"].lootpage = tablebase.Back_Page
 				_G["AtlasLootItemsFrame_BACK"].title = tablebase.Back_Title
+
 				--Hide navigation buttons if we click Quicklooks in Atlas
 				if AtlasFrame and AtlasFrame:IsVisible() then
 					if this.sourcePage then
-						local _, dataSource = AtlasLoot_Strsplit("|", this.sourcePage)
-						if dataSource == "AtlasLootItems" then
+						local _, dataSource2 = AtlasLoot_Strsplit("|", this.sourcePage)
+						if dataSource2 == "AtlasLootItems" then
 							AtlasLootItemsFrame_BACK:Hide()
 							AtlasLootItemsFrame_NEXT:Hide()
 							AtlasLootItemsFrame_PREV:Hide()
 						end
 					end
-					for i=1, 4 do
+					for i = 1, 4 do
 						if AtlasLootCharDB["QuickLooks"][i] and dataID == AtlasLootCharDB["QuickLooks"][i][1] then
 							AtlasLootItemsFrame_BACK:Hide()
 							AtlasLootItemsFrame_NEXT:Hide()
@@ -1021,6 +1008,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss, pFrame)
 			end
 		end
 	end
+
 	--Show a 'close' button to hide the loot table and restore the map view
 	if AtlasLootItemsFrame:GetParent() == AtlasFrame then
 		AtlasLootItemsFrame_CloseButton:Show()
@@ -1386,11 +1374,19 @@ function AtlasLoot_NavButton_OnClick()
 	-- Определяем текущую страницу и заголовок
 	local currentLootpage = nil
 	local currentTitle = nil
-	if this and this.lootpage then
+
+	-- Для DUNGEONSMENU используем refresh, для остальных - this.lootpage
+	if AtlasLootItemsFrame.refresh and AtlasLootItemsFrame.refresh[1] and 
+	   (AtlasLootItemsFrame.refresh[1] == "DUNGEONSMENU1" or AtlasLootItemsFrame.refresh[1] == "DUNGEONSMENU2") then
+		-- Для меню подземелий используем refresh
+		currentLootpage = AtlasLootItemsFrame.refresh[1]
+		currentTitle = AtlasLootCharDB.LastBossText or "Unknown"
+	elseif this and this.lootpage then
+		-- Для навигационных кнопок используем this.lootpage
 		currentLootpage = this.lootpage
 		currentTitle = this.title
 	elseif AtlasLootItemsFrame.refresh and AtlasLootItemsFrame.refresh[1] then
-		-- Если this.lootpage не установлен, используем информацию из refresh
+		-- Общий fallback на refresh
 		currentLootpage = AtlasLootItemsFrame.refresh[1]
 		currentTitle = AtlasLootCharDB.LastBossText or "Unknown"
 	else
@@ -1418,7 +1414,7 @@ function AtlasLoot_NavButton_OnClick()
 			AtlasLootCharDB.LastBoss = currentLootpage
 			AtlasLootCharDB.LastBossText = currentTitle
 			AtlasLoot_ShowItemsFrame(currentLootpage, AtlasLootItemsFrame.refresh[2], currentTitle, pFrame)
-	
+
 			if AtlasLootItemsFrame_SelectedTable:GetText()~=nil then
 				local truncatedText = TruncateText(AtlasLoot_BossName:GetText(), 30)
 				AtlasLootItemsFrame_SelectedTable:SetText(truncatedText)
@@ -1437,20 +1433,14 @@ function AtlasLoot_NavButton_OnClick()
 		end
 	end
 
-	-- DEBUG: Проверка меню списка
-	local menuFound = false
 	for _,v in pairs(AtlasLoot_MenuList) do
 		if currentLootpage == v then
-			menuFound = true
 			AtlasLootItemsFrame_SubMenu:Disable()
 			local truncatedBossText = TruncateText(AtlasLootCharDB.LastBossText, 30)
 			AtlasLootItemsFrame_SelectedCategory:SetText(truncatedBossText)
 			AtlasLootItemsFrame_SelectedTable:SetText()
 			break
 		end
-	end
-	if not menuFound then
-		DEFAULT_CHAT_FRAME:AddMessage("[AtlasLoot DEBUG] Совпадений в MenuList не найдено")
 	end
 end
 
@@ -1461,7 +1451,7 @@ end
 function AtlasLoot_IsLootTableAvailable(dataID)
 	if not dataID then return false end
 	local menu_check=false
-	for k,v in pairs(AtlasLoot_MenuList) do
+	for _,v in pairs(AtlasLoot_MenuList) do
 		if v == dataID then
 			menu_check=true
 		end
