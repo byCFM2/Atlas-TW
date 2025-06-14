@@ -384,6 +384,19 @@ function AtlasLootBoss_OnClick(name)
 	end
 end
 
+function AtlasLoot_Atlas_OnShow()
+	--We don't want Atlas and the Loot Browser open at the same time, so the Loot Browser is close
+ 	-- if AtlasLootDefaultFrame then
+		-- AtlasLootDefaultFrame:Hide()
+		-- AtlasLoot_SetupForAtlas()
+	-- end
+ 
+	--If we were looking at a loot table earlier in the session, it is still
+	--saved on the item frame, so restore it in Atlas
+
+	pFrame = AtlasFrame
+end
+
 --[[
 	Toggles SafeLinks. Items uncached will be linked as their names.
 ]]
@@ -1286,8 +1299,7 @@ function AtlasLoot_OpenMenu(menuName)
 	AtlasLootItemsFrame_SubMenu:Disable()
 	AtlasLootItemsFrame_SelectedTable:SetText("")
 	AtlasLootItemsFrame_SelectedTable:Show()
-	-- Не устанавливаем LastBoss для элементов меню, так как у них нет lootpage
-	-- AtlasLootCharDB.LastBoss будет установлен в соответствующих функциях меню
+	AtlasLootCharDB.LastBoss = this.lootpage
 	AtlasLootCharDB.LastBossText = menuName
 	if menuName == L["Crafting"] then
 		AtlasLoot_ShowItemsFrame("CRAFTINGMENU", "dummy", "dummy", pFrame)
@@ -1302,7 +1314,7 @@ function AtlasLoot_OpenMenu(menuName)
 	elseif menuName == L["World"] then
 		AtlasLoot_ShowItemsFrame("WORLDMENU", "dummy", "dummy", pFrame)
 	elseif menuName == L["Dungeons & Raids"] then
-		AtlasLoot_ShowItemsFrame("DUNGEONSMENU1", nil, L["Dungeons & Raids"], pFrame)
+		AtlasLoot_ShowItemsFrame("DUNGEONSMENU1", "dummy", "dummy", pFrame)
 	end
 	CloseDropDownMenus()
 end
@@ -1371,75 +1383,43 @@ end
 	Called when <-, -> or 'Back' are pressed and calls up the appropriate loot page
 ]]
 function AtlasLoot_NavButton_OnClick()
-	-- Определяем текущую страницу и заголовок
-	local currentLootpage = nil
-	local currentTitle = nil
-
-	-- Для DUNGEONSMENU используем refresh, для остальных - this.lootpage
-	if AtlasLootItemsFrame.refresh and AtlasLootItemsFrame.refresh[1] and 
-	   (AtlasLootItemsFrame.refresh[1] == "DUNGEONSMENU1" or AtlasLootItemsFrame.refresh[1] == "DUNGEONSMENU2") then
-		-- Для меню подземелий используем refresh
-		currentLootpage = AtlasLootItemsFrame.refresh[1]
-		currentTitle = AtlasLootCharDB.LastBossText or "Unknown"
-	elseif this and this.lootpage then
-		-- Для навигационных кнопок используем this.lootpage
-		currentLootpage = this.lootpage
-		currentTitle = this.title
-	elseif AtlasLootItemsFrame.refresh and AtlasLootItemsFrame.refresh[1] then
-		-- Общий fallback на refresh
-		currentLootpage = AtlasLootItemsFrame.refresh[1]
-		currentTitle = AtlasLootCharDB.LastBossText or "Unknown"
-	else
-		return
-	end
-
-	-- Специальная обработка для меню подземелий
-	if currentLootpage == "DUNGEONSMENU1" then
-		AtlasLoot_ShowItemsFrame("DUNGEONSMENU2", nil, L["Dungeons & Raids"], pFrame)
-		AtlasLootItemsFrame_SubMenu:Disable()
-		return
-	elseif currentLootpage == "DUNGEONSMENU2" then
-		AtlasLoot_ShowItemsFrame("DUNGEONSMENU1", nil, L["Dungeons & Raids"], pFrame)
-		AtlasLootItemsFrame_SubMenu:Disable()
-		return
-	end
-
-	-- Проверяем наличие полной refresh структуры для обычных страниц
 	if AtlasLootItemsFrame.refresh and AtlasLootItemsFrame.refresh[1] and AtlasLootItemsFrame.refresh[2] and AtlasLootItemsFrame.refresh[4] then
-		if string.sub(currentLootpage, 1, 16) == "SearchResultPage" then
-			AtlasLoot_ShowItemsFrame("SearchResult", currentLootpage, string.format((L["Search Result: %s"]), AtlasLootCharDB.LastSearchedText or ""), AtlasLootItemsFrame.refresh[4])
-		elseif string.sub(currentLootpage, 1, 12) == "WishListPage" then
-			AtlasLoot_ShowItemsFrame("WishList", currentLootpage, L["WishList"], AtlasLootItemsFrame.refresh[4])
+		if AtlasLootItemsFrame.refresh[1] == "DUNGEONSMENU1" then
+			AtlasLootItemsFrame.refresh[1] = "DUNGEONSMENU2"
+			AtlasLoot_DungeonsMenu2()
+			AtlasLootItemsFrame_SubMenu:Disable()
+			return
+		elseif AtlasLootItemsFrame.refresh[1] == "DUNGEONSMENU2" then
+			AtlasLootItemsFrame.refresh[1] = "DUNGEONSMENU1"
+			AtlasLoot_DungeonsMenu1()
+			AtlasLootItemsFrame_SubMenu:Disable()
+			return
+		end
+		if string.sub(this.lootpage, 1, 16) == "SearchResultPage" then
+			AtlasLoot_ShowItemsFrame("SearchResult", this.lootpage, string.format((L["Search Result: %s"]), AtlasLootCharDB.LastSearchedText or ""), AtlasLootItemsFrame.refresh[4])
+		elseif string.sub(this.lootpage, 1, 12) == "WishListPage" then
+			AtlasLoot_ShowItemsFrame("WishList", this.lootpage, L["WishList"], AtlasLootItemsFrame.refresh[4])
 		else
-			AtlasLootCharDB.LastBoss = currentLootpage
-			AtlasLootCharDB.LastBossText = currentTitle
-			AtlasLoot_ShowItemsFrame(currentLootpage, AtlasLootItemsFrame.refresh[2], currentTitle, pFrame)
-
+			AtlasLootCharDB.LastBoss = this.lootpage
+			AtlasLootCharDB.LastBossText = this.title
+			AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.refresh[2], this.title, pFrame)
 			if AtlasLootItemsFrame_SelectedTable:GetText()~=nil then
-				local truncatedText = TruncateText(AtlasLoot_BossName:GetText(), 30)
-				AtlasLootItemsFrame_SelectedTable:SetText(truncatedText)
+				AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(AtlasLoot_BossName:GetText(), 30))
 			else
-				local truncatedText = TruncateText(AtlasLoot_BossName:GetText(), 30)
-				AtlasLootItemsFrame_SelectedCategory:SetText(truncatedText)
+				AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasLoot_BossName:GetText(), 30))
 			end
 		end
 	elseif AtlasLootItemsFrame.refresh and AtlasLootItemsFrame.refresh[2] then
-		AtlasLoot_ShowItemsFrame(currentLootpage, AtlasLootItemsFrame.refresh[2], currentTitle, pFrame)
+		AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.refresh[2], this.title, pFrame)
 	else
 		--Fallback for if the requested loot page is a menu and does not have a .refresh instance
-		if currentLootpage and currentTitle then
-			AtlasLoot_ShowItemsFrame(currentLootpage, nil, currentTitle, pFrame)
-		else
-		end
+		AtlasLoot_ShowItemsFrame(this.lootpage, "dummy", this.title, pFrame)
 	end
-
-	for _,v in pairs(AtlasLoot_MenuList) do
-		if currentLootpage == v then
+	for k,v in pairs(AtlasLoot_MenuList) do
+		if this.lootpage == v then
 			AtlasLootItemsFrame_SubMenu:Disable()
-			local truncatedBossText = TruncateText(AtlasLootCharDB.LastBossText, 30)
-			AtlasLootItemsFrame_SelectedCategory:SetText(truncatedBossText)
+			AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasLootCharDB.LastBossText, 30))
 			AtlasLootItemsFrame_SelectedTable:SetText()
-			break
 		end
 	end
 end
