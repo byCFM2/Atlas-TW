@@ -1,3 +1,12 @@
+---------------
+--- COLOURS ---
+---------------
+local grey = "|cff999999"
+local red = "|cffff0000"
+local white = "|cffFFFFFF"
+local green = "|cff1eff00"
+local blue = "|cff0070dd"
+local yellow = "|cffFFd200"
 --************************************************
 -- Localized Strings
 --************************************************
@@ -10,8 +19,6 @@ BINDING_HEADER_ATLASTW_TITLE = "Atlas-TW Bindings"
 BINDING_NAME_ATLASTW_TOGGLE = "Toggle Atlas-TW"
 BINDING_NAME_ATLASTW_OPTIONS = "Toggle Options"
 BINDING_HEADER_ATLASLOOT_TITLE = "AtlasLoot Bindings"
-BINDING_NAME_ATLASLOOT_TOGGLE = "Toggle AtlasLoot"
-BINDING_NAME_ATLASLOOT_OPTIONS = "Toggle Options"
 BINDING_NAME_ATLASLOOT_QL1 = "QuickLook 1"
 BINDING_NAME_ATLASLOOT_QL2 = "QuickLook 2"
 BINDING_NAME_ATLASLOOT_QL3 = "QuickLook 3"
@@ -22,29 +29,10 @@ ATLAS_STRING_LOCATION = "Location"
 ATLAS_STRING_LEVELRANGE = "Level Range"
 ATLAS_STRING_PLAYERLIMIT = "Player Limit"
 ATLAS_STRING_SELECT_CAT = "Select Category"
-ATLAS_STRING_SELECT_MAP = "Select Map"
-ATLAS_STRING_SEARCH = "Search"
-ATLAS_STRING_CLEAR = "Clear"
 ATLAS_STRING_MINLEVEL = "Minimum Level"
-
-ATLAS_OPTIONS_BUTTON = "Options"
-ATLAS_OPTIONS_SHOWBUT = "Show Button on Minimap"
-ATLAS_OPTIONS_AUTOSEL = "Auto-Select Instance Map"
-ATLAS_OPTIONS_BUTPOS = "Button Position"
-ATLAS_OPTIONS_TRANS = "Transparency"
-ATLAS_OPTIONS_DONE = "Done"
-ATLAS_OPTIONS_RCLICK = "Right-Click for World Map"
-ATLAS_OPTIONS_SHOWMAPNAME = "Show map name"
-ATLAS_OPTIONS_RESETPOS = "Reset Position"
-ATLAS_OPTIONS_ACRONYMS = "Display Acronyms"
-ATLAS_OPTIONS_SCALE = "Scale"
-ATLAS_OPTIONS_BUTRAD = "Button Radius"
-ATLAS_OPTIONS_CLAMPED = "Clamp window to screen"
-ATLAS_OPTIONS_HELP = "Left-click and drag to move this window."
 
 ATLAS_BUTTON_TOOLTIP_HINT = "Left-click to open Atlas-TW.\nMiddle-click for Atlas-TW options.\nRight-click and drag to move this button."
 
-ATLAS_OPTIONS_CATDD = "Sort Instance Maps by:"
 ATLAS_DDL_CONTINENT = "Continent"
 ATLAS_DDL_CONTINENT_EASTERN = "Eastern Kingdoms Instances"
 ATLAS_DDL_CONTINENT_KALIMDOR = "Kalimdor Instances"
@@ -77,6 +65,26 @@ ATLAS_INSTANCE_BUTTON = "Instance"
 ATLAS_ENTRANCE_BUTTON = "Entrance"
 ATLAS_SEARCH_UNAVAIL = "Search Unavailable"
 
+-- Autoshow
+KQAutoshowOptionLocal = "Show AtlasQuest panel with Atlas.";
+AQAtlasAutoON = "The AtlasQuest panel will be automatically displayed when atlas is opened."..green.."(default)"
+AQAtlasAutoOFF = "The AtlasQuest panel "..red.."will not"..white.." be displayed when you open atlas."
+-- Right/Left
+KQLEFTOptionLocal = "Show the AtlasQuest panel "..red.."left."
+KQRIGHTOptionLocal = "Show the AtlasQuest panel "..red.."right."
+-- Colour Check
+KQColourOptionLocal = "Recolour the quests depending on their levels."
+AQCCON = "AtlasQuest will now recolour quests depending on their levels."
+AQCCOFF = "AtlasQuest will not recolour quests."
+-- QuestLog Colour Check
+KQCheckQuestlogButtonLocal = "Colours all quest, you have in your Questlog "..blue.."blue."
+-- AutoQuery Quest Rewards
+KQAutoQueryOptionLocal = "Automatically query the server for items you haven't seen."
+-- Suppress Server Query text
+KQQuerySpamOptionLocal = "Suppress Server Query spam."
+-- Use Comparison Tooltips
+KQCompareTooltipOptionLocal = "Compare rewards to currently equipped items (need /rl)."
+
 AtlasZoneSubstitutions = {
 	["The Temple of Atal'Hakkar"] = "Sunken Temple"
 }
@@ -86,10 +94,8 @@ L:RegisterTranslations("enUS", function() return {
 	--************************************************
 	-- Zone Names, Acronyms, and Common Strings
 	--************************************************
-
-	--Common strings
-	["Atlas Options"] = true,
 	--Colors
+	["Level Range"] = true,
 	["Blue"] = true,
 	["Purple"] = true,
 	["Red"] = true,
@@ -118,7 +124,20 @@ L:RegisterTranslations("enUS", function() return {
 	["Lunar Festival"] = true,
 
 	--Other
+	["Scale"] = true,
+	["Reset"] = true,
+	["Close"] = true,
+	["Sort Instance by:"] = true,
+	["Select Map"] = true,
+	["Show Button on Minimap"] = true,
+	["Auto-Select Instance Map"] = true,
+	["Transparency"] = true,
+	["Right-Click for World Map"] = true,
+	["Show map name"] = true,
+	["Show Acronyms"] = true,
+	["Clamp window to screen"] = true,
 	["Quests"] = true,
+	["Quest"] = true,
 	["East"] = true,
 	["North"] = true,
 	["South"] = true,
@@ -776,9 +795,8 @@ L:RegisterTranslations("enUS", function() return {
 	["has been reset!"] = true,
 	["|cff9d9d9dALT+Click to clear|r"] = true,
 	["ALT+Click on item to add or remove it from WishList"] = true,
-	["Atlasloot Options"] = true,
 	["Safe Chat Links |cff1eff00(recommended)|r"] = true,
-	["Enable all Chat Links |cffff0000(use at own risk)|r"] = true,
+	["Enable all Chat Links"] = true,
 	["Default Tooltips"] = true,
 	["Lootlink Tooltips"] = true,
 	["|cff9d9d9dLootlink Tooltips|r"] = true,
@@ -793,6 +811,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Suppress text spam when querying items"] = true,
 	["Done"] = true,
 	["Loot Panel"] = true,
+	["Loot"] = true,
 	["WishList"] = true,
 	["Search Result: %s"] = true,
 	["Last Result"] = true,

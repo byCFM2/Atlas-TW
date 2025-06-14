@@ -114,7 +114,7 @@ function AtlasLoot_OnVariablesLoaded()
 		AtlasLootOptionsFrameEquipCompareText:SetText(L["|cff9d9d9dUse EquipCompare|r"])
 	end
 	--Set up options frame
-	AtlasLootOptions_Init()
+	AtlasOptions_Init()
 	UIPanelWindows['AtlasLootOptionsFrame'] = {area = 'center', pushable = 0}
 	--Legacy code for those using the ultimately failed attempt at making Atlas load on demand
 	if AtlasButton_LoadAtlas then
@@ -154,8 +154,6 @@ function AtlasLoot_OnVariablesLoaded()
 	end
 
 	--Position relevant UI objects for loot browser and set up menu
---	AtlasLootItemsFrame_SelectedCategory:SetPoint("TOP", "AtlasLootItemsFrame_Menu", "BOTTOM", 0, -4)
---	AtlasLootItemsFrame_SelectedTable:SetPoint("TOP", "AtlasLootItemsFrame_SubMenu", "BOTTOM", 0, -4)
 	AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasLootCharDB.LastBossText, 30))
 	AtlasLootItemsFrame_SelectedTable:SetText("")
 	AtlasLootItemsFrame_SelectedCategory:Show()
@@ -218,10 +216,6 @@ end
 function AtlasLoot_SlashCommand(msg)
 	if msg == "default" then
 		AtlasLootOptions_DefaultSettings()
-	elseif msg == "options" then
-		AtlasLootOptions_Toggle()
-	else
-		--AtlasLootDefaultFrame:Show()
 	end
 end
 
@@ -388,128 +382,13 @@ function AtlasLoot_Atlas_OnShow()
 	--We don't want Atlas and the Loot Browser open at the same time, so the Loot Browser is close
  	-- if AtlasLootDefaultFrame then
 		-- AtlasLootDefaultFrame:Hide()
-		-- AtlasLoot_SetupForAtlas()
+		 AtlasLoot_SetupForAtlas()
 	-- end
  
 	--If we were looking at a loot table earlier in the session, it is still
 	--saved on the item frame, so restore it in Atlas
 
 	pFrame = AtlasFrame
-end
-
---[[
-	Toggles SafeLinks. Items uncached will be linked as their names.
-]]
-function AtlasLootOptions_SafeLinksToggle()
-	AtlasLootCharDB.SafeLinks = not AtlasLootCharDB.SafeLinks
-	if AtlasLootCharDB.SafeLinks then
-		AtlasLootCharDB.AllLinks = false
-	end
-	AtlasLootOptions_Init()
-end
-
---[[
-	Toggles AllLinks. All items will be linked.
-]]
-function AtlasLootOptions_AllLinksToggle()
-	AtlasLootCharDB.AllLinks = not AtlasLootCharDB.AllLinks
-	if AtlasLootCharDB.AllLinks then
-		AtlasLootCharDB.SafeLinks = false
-	end
-	AtlasLootOptions_Init()
-end
-
---[[
-	Toggles DefaultTooltips. Uses default tooltips.
-]]
-function AtlasLootOptions_DefaultTTToggle()
-	AtlasLootCharDB.DefaultTT = true
-	AtlasLootCharDB.LootlinkTT = false
-	AtlasLootCharDB.ItemSyncTT = false
-	AtlasLootOptions_Init()
-end
-
---[[
-	Toggles Lootlink tooltips instead of the default ones.
-]]
-function AtlasLootOptions_LootlinkTTToggle()
-	AtlasLootCharDB.DefaultTT = false
-	AtlasLootCharDB.LootlinkTT = true
-	AtlasLootCharDB.ItemSyncTT = false
-	AtlasLootOptions_Init()
-end
-
---[[
-	Toggles ItemSync tooltips instead of the default ones.
-]]
-function AtlasLootOptions_ItemSyncTTToggle()
-	AtlasLootCharDB.DefaultTT = false
-	AtlasLootCharDB.LootlinkTT = false
-	AtlasLootCharDB.ItemSyncTT = true
-	AtlasLootOptions_Init()
-end
-
-function AtlasLootOptions_ShowSourceToggle()
-	AtlasLootCharDB.ShowSource = not AtlasLootCharDB.ShowSource
-	AtlasLootOptions_Init()
-end
-
---[[
-	Toggles EquipCompare. Adds a tooltip with the equipped item (if it's the case) next to the default one.
-]]
-function AtlasLootOptions_EquipCompareToggle()
-	AtlasLootCharDB.EquipCompare = not AtlasLootCharDB.EquipCompare
-	if AtlasLootCharDB.EquipCompare then
-		-- Register tooltips if EquipCompare is enabled
-		if IsAddOnLoaded("EquipCompare") then
-			EquipCompare_RegisterTooltip(AtlasLootTooltip)
-			EquipCompare_RegisterTooltip(AtlasLootTooltip2)
-		end
-		if IsAddOnLoaded("EQCompare") then
-			EQCompare:RegisterTooltip(AtlasLootTooltip)
-			EQCompare:RegisterTooltip(AtlasLootTooltip2)
-		end
-	else
-		-- Unregister tooltips if EquipCompare is disabled
-		if IsAddOnLoaded("EquipCompare") then
-			EquipCompare_UnregisterTooltip(AtlasLootTooltip)
-			EquipCompare_UnregisterTooltip(AtlasLootTooltip2)
-		end
-		if IsAddOnLoaded("EQCompare") then
-			EQCompare:UnRegisterTooltip(AtlasLootTooltip)
-			EQCompare:UnRegisterTooltip(AtlasLootTooltip2)
-		end
-	end
-	AtlasLootOptions_Init()
-end
-
---[[
-	Toggles opacity of the items frame.
-]]
-function AtlasLootOptions_OpaqueToggle()
-	AtlasLootCharDB.Opaque=AtlasLootOptionsFrameOpaque:GetChecked()
-	if AtlasLootCharDB.Opaque then
-		AtlasLootItemsFrame_Back:SetTexture(0, 0, 0, 1)
-	else
-		AtlasLootItemsFrame_Back:SetTexture(0, 0, 0, 0.65)
-	end
-	AtlasLootOptions_Init()
-end
-
---[[
-Toggles items ID.
-]]
-function AtlasLootOptions_ItemIDToggle()
-	AtlasLootCharDB.ItemIDs = not AtlasLootCharDB.ItemIDs
-	AtlasLootOptions_Init()
-end
-
---[[
-Toggles item query spam.
-]]
-function AtlasLootOptions_ItemSpam()
-	AtlasLootCharDB.ItemSpam = not AtlasLootCharDB.ItemSpam
-	AtlasLootOptions_Init()
 end
 
 --[[
@@ -1580,16 +1459,12 @@ function AtlasLootOptions_DefaultSettings()
 	AtlasLootCharDB.PartialMatching = true
 	AtlasLootCharDB.LastBoss = "DUNGEONSMENU1"
 	AtlasLootCharDB.LastBossText = L["Dungeons & Raids"]
-	AtlasLootItemsFrame:ClearAllPoints()
-	AtlasLootItemsFrame:SetPoint("TOP", "UIParent", "TOP", 0, -30)
-	AtlasLootOptionsFrame:ClearAllPoints()
-	AtlasLootOptionsFrame:SetPoint("CENTER", "UIParent", "CENTER", 0, 100)
 	AtlasLootCharDB["QuickLooks"] = {}
 	AtlasLootCharDB["WishList"] = {}
 	AtlasLoot_RefreshQuickLookButtons()
-	AtlasLootOptions_Init()
-	DEFAULT_CHAT_FRAME:AddMessage(BLUE.."AtlasLoot"..": "..RED..L["Default settings applied!"])
-end
+	AtlasOptions_Init()
+	DEFAULT_CHAT_FRAME:AddMessage(BLUE.."Atlas-TW"..": "..RED..L["Default settings applied!"])
+end --TODO move to atlasTW and change vars
 
 function AtlasLoot_Strsplit(delim, str, maxNb, onlyLast)
 	-- Eliminate bad cases...
@@ -1835,6 +1710,13 @@ function AtlasLootItem_OnLeave()
 		ShoppingTooltip2:Hide()
 		ShoppingTooltip1:Hide()
 	end
+end
+
+local function AtlasLoot_GetChatLink(id)
+	local a, b, c = GetItemInfo(tonumber(id))
+	local _, _, _, d = GetItemQualityColor(c)
+	local e = string.sub(d, 2)
+	return "\124"..e.."\124H"..b.."\124h["..a.."]\124h\124r"
 end
 
 --------------------------------------------------------------------------------
@@ -2367,11 +2249,4 @@ function AtlasLoot_SayItemReagents(id, color, name, safe)
 			SendChatMessage("\124"..string.sub(color, 2).."\124Hitem:"..id..":0:0:0\124h["..name.."]\124h\124r", channel, nil, chatnumber)
 		end
 	end
-end
-
-function AtlasLoot_GetChatLink(id)
-	local a, b, c = GetItemInfo(tonumber(id))
-	local _, _, _, d = GetItemQualityColor(c)
-	local e = string.sub(d, 2)
-	return "\124"..e.."\124H"..b.."\124h["..a.."]\124h\124r"
 end

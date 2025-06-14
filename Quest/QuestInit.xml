@@ -1,11 +1,9 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
 	<!-- Include files -->
-	<Include file="QuestConfig.lua"/>
 	<Include file="QuestLocale_enUS.lua"/>
 	<Include file="QuestData_enUS.lua"/>
 	<Include file="QuestInsideFrame.lua"/>
 	<Include file="QuestTooltip.lua"/>
-	<Include file="QuestOptionUI.lua"/>
 	<Include file="QuestUI.lua"/>
 	<Include file="QuestInstances.lua"/>
 	<Include file="QuestMain.lua"/>

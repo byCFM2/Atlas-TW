@@ -672,95 +672,7 @@ function AtlasLoot_CreateItemsFrame()
     return frame
 end
 
--- AtlasLootOptionsFrame
-function AtlasLoot_CreateOptionsFrame()
-    local frame = CreateFrame("Frame", "AtlasLootOptionsFrame", UIParent)
-    frame:SetWidth(650)
-    frame:SetHeight(370)
-    frame:Hide()
-    frame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
-    frame:SetFrameStrata("DIALOG")
-    frame:SetToplevel(true)
-    frame:SetMovable(true)
-    frame:EnableMouse(true)
-    frame:EnableKeyboard(true)
-    frame:Hide()
 
-    -- Backdrop
-    frame:SetBackdrop({
-        bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-        edgeFile = "",
-        tile = false,
-        insets = { left = 11, right = 12, top = 12, bottom = 11 }
-    })
-
-    -- Title
-    local title = frame:CreateFontString(frame:GetName().."_Title", "ARTWORK", "GameFontNormal")
-    title:SetPoint("TOP", 0, -15)
-
-    -- CheckButtons
-    local safeLinks = CreateFrame("CheckButton", frame:GetName().."SafeLinks", frame, "OptionsCheckButtonTemplate")
-    safeLinks:SetPoint("TOPLEFT", 20, -40)
-
-    local allLinks = CreateFrame("CheckButton", frame:GetName().."AllLinks", frame, "OptionsCheckButtonTemplate")
-    allLinks:SetPoint("TOPLEFT", 20, -70)
-
-    local defaultTT = CreateFrame("CheckButton", frame:GetName().."DefaultTT", frame, "OptionsCheckButtonTemplate")
-    defaultTT:SetPoint("TOPLEFT", 20, -130)
-
-    local lootlinkTT = CreateFrame("CheckButton", frame:GetName().."LootlinkTT", frame, "OptionsCheckButtonTemplate")
-    lootlinkTT:SetPoint("TOPLEFT", 20, -160)
-
-    local itemSyncTT = CreateFrame("CheckButton", frame:GetName().."ItemSyncTT", frame, "OptionsCheckButtonTemplate")
-    itemSyncTT:SetPoint("TOPLEFT", 20, -190)
-
-    local showSource = CreateFrame("CheckButton", frame:GetName().."ShowSource", frame, "OptionsCheckButtonTemplate")
-    showSource:SetPoint("TOPLEFT", 20, -220)
-
-    local equipCompare = CreateFrame("CheckButton", frame:GetName().."EquipCompare", frame, "OptionsCheckButtonTemplate")
-    equipCompare:SetPoint("TOPLEFT", 20, -250)
-
-    local itemID = CreateFrame("CheckButton", frame:GetName().."ItemID", frame, "OptionsCheckButtonTemplate")
-    itemID:SetPoint("TOPLEFT", 20, -280)
-
-    local opaque = CreateFrame("CheckButton", frame:GetName().."Opaque", frame, "OptionsCheckButtonTemplate")
-    opaque:SetPoint("TOP", 20, -100)
-
-    local itemSpam = CreateFrame("CheckButton", frame:GetName().."ItemSpam", frame, "OptionsCheckButtonTemplate")
-    itemSpam:SetPoint("TOP", 20, -160)
-
-    -- Buttons
-    local doneButton = CreateFrame("Button", frame:GetName().."Done", frame, "UIPanelButtonTemplate2")
-    doneButton:SetWidth(80)
-    doneButton:SetHeight(20)
-    doneButton:SetPoint("BOTTOM", 0, 20)
-
-    local defaultSettingsButton = CreateFrame("Button", frame:GetName().."DefaultSettings", frame, "UIPanelButtonTemplate2")
-    defaultSettingsButton:SetWidth(160)
-    defaultSettingsButton:SetHeight(20)
-    defaultSettingsButton:SetPoint("BOTTOM", -168, 20)
-
-    -- Scripts
-    frame:RegisterForDrag("LeftButton")
-    frame:SetScript("OnDragStart", function() this:StartMoving() end)
-    frame:SetScript("OnDragStop", function() this:StopMovingOrSizing() end)
-
-    -- Event handlers for checkboxes and buttons
-    safeLinks:SetScript("OnClick", function() AtlasLootOptions_SafeLinksToggle() end)
-    allLinks:SetScript("OnClick", function() AtlasLootOptions_AllLinksToggle() end)
-    defaultTT:SetScript("OnClick", function() AtlasLootOptions_DefaultTTToggle() end)
-    lootlinkTT:SetScript("OnClick", function() AtlasLootOptions_DefaultTTToggle() end)
-    itemSyncTT:SetScript("OnClick", function() AtlasLootOptions_DefaultTTToggle() end)
-    showSource:SetScript("OnClick", function() AtlasLootOptions_ShowSourceToggle() end)
-    equipCompare:SetScript("OnClick", function() AtlasLootOptions_EquipCompareToggle() end)
-    itemID:SetScript("OnClick", function() AtlasLootOptions_ItemIDToggle() end)
-    opaque:SetScript("OnClick", function() AtlasLootOptions_OpaqueToggle() end)
-    itemSpam:SetScript("OnClick", function() AtlasLootOptions_ItemSpam() end)
-    doneButton:SetScript("OnClick", function() AtlasLootOptions_Toggle() end)
-    defaultSettingsButton:SetScript("OnClick", function() AtlasLootOptions_DefaultSettings() end)
-
-    return frame
-end
 
 -- AtlasLootPanel
 function AtlasLoot_CreatePanel()
@@ -999,35 +911,10 @@ function AtlasLoot_CreatePanel()
     return frame
 end
 
--- Функция инициализации опций (заменяет OnLoad события)
-function AtlasLoot_InitializeOptionsFrame()
-    -- Инициализация заголовка
-    _G["AtlasLootOptionsFrame_Title"]:SetText(L["Atlasloot Options"])
-
-    -- Инициализация текстов чекбоксов
-    _G["AtlasLootOptionsFrameSafeLinksText"]:SetText(L["Safe Chat Links |cff1eff00(recommended)|r"])
-    _G["AtlasLootOptionsFrameAllLinksText"]:SetText(L["Enable all Chat Links |cffff0000(use at own risk)|r"])
-    _G["AtlasLootOptionsFrameDefaultTTText"]:SetText(L["Default Tooltips"])
-    _G["AtlasLootOptionsFrameLootlinkTTText"]:SetText(L["Lootlink Tooltips"])
-    _G["AtlasLootOptionsFrameItemSyncTTText"]:SetText(L["ItemSync Tooltips"])
-    _G["AtlasLootOptionsFrameShowSourceText"]:SetText(L["Show Source on Tooltips"])
-    _G["AtlasLootOptionsFrameEquipCompareText"]:SetText(L["Use EquipCompare"])
-    _G["AtlasLootOptionsFrameItemIDText"]:SetText(L["Show IDs at all times"])
-    _G["AtlasLootOptionsFrameOpaqueText"]:SetText(L["Make Loot Table Opaque"])
-    _G["AtlasLootOptionsFrameItemSpamText"]:SetText(L["Suppress text spam when querying items"])
-
-    -- Инициализация кнопок
-    _G["AtlasLootOptionsFrameDone"]:SetText(L["Done"])
-    _G["AtlasLootOptionsFrameDefaultSettings"]:SetText(L["Default Settings"])
-end
-
 -- Updated initialization function
 function AtlasLoot_InitializeUI()
     AtlasLoot_CreateTooltips()
     AtlasLoot_CreateItemsFrame()
-    AtlasLoot_CreateOptionsFrame()
+  --  AtlasLoot_CreateOptionsFrame()
     AtlasLoot_CreatePanel()
-
-    -- Инициализируем тексты после создания фреймов
-    AtlasLoot_InitializeOptionsFrame()
 end

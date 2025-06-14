@@ -1,5 +1,6 @@
 -- Локальные ссылки на глобальные функции для повышения производительности
 local _G = getfenv()
+local variables = AtlasKTW
 local uIDropDownMenu_SetSelectedID = UIDropDownMenu_SetSelectedID
 
 -- Локальные переменные для часто используемых элементов UI
@@ -73,7 +74,7 @@ function AtlasOptions_Init()
         return
     end
 
-    -- Установка значений напрямую
+    -- Установка значений при загрузке
     AtlasOptionsFrameToggleButton:SetChecked(atlasTWOptions.AtlasButtonShown)
     AtlasOptionsFrameAutoSelect:SetChecked(atlasTWOptions.AtlasAutoSelect)
     AtlasOptionsFrameRightClick:SetChecked(atlasTWOptions.AtlasRightClick)
@@ -83,6 +84,31 @@ function AtlasOptions_Init()
     AtlasOptionsFrameSliderButtonRad:SetValue(atlasTWOptions.AtlasButtonRadius)
     AtlasOptionsFrameSliderAlpha:SetValue(atlasTWOptions.AtlasAlpha)
     AtlasOptionsFrameSliderScale:SetValue(atlasTWOptions.AtlasScale)
+
+	-- Quest Options
+	KQAutoshowOption:SetChecked(variables.QWithAtlas)
+	KQLEFTOption:SetChecked(variables.QCurrentSide == "Left")
+	KQRIGHTOption:SetChecked(variables.QCurrentSide ~= "Left")
+	KQColourOption:SetChecked(variables.QColourCheck)
+	KQCheckQuestlogButton:SetChecked(variables.QCheckQuestlog)
+	KQAutoQueryOption:SetChecked(variables.QAutoQuery)
+	KQQuerySpamOption:SetChecked(variables.QQuerySpam)
+	KQCompareTooltipOption:SetChecked(variables.QCompareTooltip)
+
+    -- Loot Options
+	if AtlasLootCharDB.FirstTime == nil then
+		AtlasLootOptions_Fresh()
+	end
+	AtlasLootOptionsFrameSafeLinks:SetChecked(AtlasLootCharDB.SafeLinks)
+	AtlasLootOptionsFrameAllLinks:SetChecked(AtlasLootCharDB.AllLinks)
+	AtlasLootOptionsFrameDefaultTT:SetChecked(AtlasLootCharDB.DefaultTT)
+	AtlasLootOptionsFrameLootlinkTT:SetChecked(AtlasLootCharDB.LootlinkTT)
+	AtlasLootOptionsFrameItemSyncTT:SetChecked(AtlasLootCharDB.ItemSyncTT)
+	AtlasLootOptionsFrameShowSource:SetChecked(AtlasLootCharDB.ShowSource)
+	AtlasLootOptionsFrameEquipCompare:SetChecked(AtlasLootCharDB.EquipCompare)
+	AtlasLootOptionsFrameOpaque:SetChecked(AtlasLootCharDB.Opaque)
+	AtlasLootOptionsFrameItemID:SetChecked(AtlasLootCharDB.ItemIDs)
+	AtlasLootOptionsFrameItemSpam:SetChecked(AtlasLootCharDB.ItemSpam)
 end
 
 -- Сброс позиции
@@ -184,5 +210,5 @@ function AtlasOptionsFrameDropDownCats_OnShow()
 
     UIDropDownMenu_Initialize(dropDownCats, atlasOptionsFrameDropDownCats_Initialize)
     uIDropDownMenu_SetSelectedID(dropDownCats, atlasTWOptions.AtlasSortBy)
-    UIDropDownMenu_SetWidth(100, dropDownCats)
+   -- UIDropDownMenu_SetWidth(100, dropDownCats)
 end

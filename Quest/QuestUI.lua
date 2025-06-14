@@ -166,8 +166,6 @@ function CreateKQuestFrame()
         return button
     end
 
-    -- Create options button
-    CreateButton("OPTIONbutton", 80, 20, "BOTTOMRIGHT", nil, nil, -20, 15, AQOptionB, kQuestOption1_OnClick)
     -- Create story button
     CreateButton("STORYbutton", 70, 20, "TOP", nil, nil, 0, -13, AQStoryB, kQuestStory1_OnClick)
 

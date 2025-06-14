@@ -16,25 +16,6 @@ AQOptionsCaptionTEXT = "AtlasQuest Options"
 AQ_OK = "Done"
 AQNotAvailable = "Not Available"
 AQQuestFinished = "- Quest finished"
--- Autoshow
-KQAutoshowOptionLocal = "Show AtlasQuest panel with Atlas.";
-AQAtlasAutoON = "The AtlasQuest panel will be automatically displayed when atlas is opened."..green.."(default)"
-AQAtlasAutoOFF = "The AtlasQuest panel "..red.."will not"..white.." be displayed when you open atlas."
--- Right/Left
-KQLEFTOptionLocal = "Show the AtlasQuest panel "..red.."left."
-KQRIGHTOptionLocal = "Show the AtlasQuest panel "..red.."right."
--- Colour Check
-KQColourOptionLocal = "Recolour the quests depending on their levels."
-AQCCON = "AtlasQuest will now recolour quests depending on their levels."
-AQCCOFF = "AtlasQuest will not recolour quests."
--- QuestLog Colour Check
-KQCheckQuestlogLocal = "Colours all quest, you have in your Questlog "..blue.."blue."
--- AutoQuery Quest Rewards
-KQAutoQueryLocal = "Automatically query the server for items you haven't seen."
--- Suppress Server Query text
-KQQuerySpamLocal = "Suppress Server Query spam."
--- Use Comparison Tooltips
-KQCompareTooltipLocal = "Compare rewards to currently equipped items (need /rl)."
 
 AQAbilities = blue .. "Abilities:" .. white
 AQSERVERASKInformation = " Please click right until you see the Item frame."
@@ -42,7 +23,7 @@ AQSERVERASKAuto = " Try moving the cursor over the item in a second."
 AQSERVERASK = "AtlasQuest is querying the server for: "
 AQERRORNOTSHOWN = "This item is not safe!"
 AQERRORASKSERVER = "You can right-click to attempt to query the server. You may be disconnected."
-AQOptionB = "Options"
+--AQOptionB = "Options"
 AQStoryB = "Story"
 AQNoReward = ""..blue.." No Rewards"
 AQDiscription_OR = ""..grey.." or "..white..""
