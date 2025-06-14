@@ -44,6 +44,15 @@ local function kQuestClearAll()
 	end
 end
 
+function KQuestClose1_OnClick()
+	variables.QWithAtlas = not variables.QWithAtlas
+    HideUIPanel(KQuestFrame)
+    HideUIPanel(KQuestInsideFrame)
+	variables.QUpdateNow = true
+    KQAutoshowOption:SetChecked(variables.QWithAtlas)
+    KQuest_SaveData()
+end
+
 -----------------------------------------------------------------------------
 -- upper right button / to show/close panel
 -----------------------------------------------------------------------------

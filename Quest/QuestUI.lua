@@ -15,11 +15,6 @@ local function kQuest_OnShow()
     KQuestSetTextandButtons()
 end
 
--- Close button
-local function kQuestClose1_OnClick()
-    HideUIPanel(KQuestFrame)
-end
-
 -- Options button
 local function kQuestOption1_OnClick()
     if KQuestOptionFrame:IsVisible() then
@@ -156,7 +151,7 @@ function CreateKQuestFrame()
     closeButton:SetHeight(27)
     closeButton:SetPoint("TOPLEFT", frame, "TOPLEFT", 10, -10)
     closeButton:SetText("X")
-    closeButton:SetScript("OnClick", kQuestClose1_OnClick)
+    closeButton:SetScript("OnClick", KQuestClose1_OnClick)
     closeButton:SetScript("OnShow", setFrameLevelOnShow)
 
     -- Function to create a button
