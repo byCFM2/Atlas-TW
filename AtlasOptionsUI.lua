@@ -105,21 +105,21 @@ local function AtlasLootOptions_AllLinksToggle()
 	AtlasOptions_Init()
 end
 
-local function AtlasLootOptions_DefaultTTToggle()
+function AtlasLootOptions_DefaultTTToggle()
 	AtlasLootCharDB.DefaultTT = true
 	AtlasLootCharDB.LootlinkTT = false
 	AtlasLootCharDB.ItemSyncTT = false
 	AtlasOptions_Init()
 end
 
-local function AtlasLootOptions_LootlinkTTToggle()
+function AtlasLootOptions_LootlinkTTToggle()
 	AtlasLootCharDB.DefaultTT = false
 	AtlasLootCharDB.LootlinkTT = true
 	AtlasLootCharDB.ItemSyncTT = false
 	AtlasOptions_Init()
 end
 
-local function AtlasLootOptions_ItemSyncTTToggle()
+function AtlasLootOptions_ItemSyncTTToggle()
 	AtlasLootCharDB.DefaultTT = false
 	AtlasLootCharDB.LootlinkTT = false
 	AtlasLootCharDB.ItemSyncTT = true

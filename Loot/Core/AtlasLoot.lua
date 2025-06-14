@@ -35,7 +35,7 @@ StaticPopupDialogs["ATLASLOOT_SETUP"] = {
 	text = "Welcome to Atlas TW Edition. Please take a moment to set your preferences.",
 	button1 = L["Setup"],
 	OnAccept = function()
-		AtlasLootOptions_Toggle()
+		AtlasOptions_Toggle()
 	end,
 	timeout = 0,
 	whileDead = 1,
@@ -394,7 +394,7 @@ end
 --[[
 Toggle on/off the options window
 ]]
-function AtlasLootOptions_Toggle()
+--[[ function AtlasLootOptions_Toggle()
 	if AtlasLootOptionsFrame:IsVisible() then
 		AtlasLootOptionsFrame:Hide()
 	else
@@ -409,7 +409,7 @@ function AtlasLootOptions_Toggle()
 			AtlasLootOptions_ItemSyncTTToggle()
 		end
 	end
-end
+end ]]
 
 --[[
 	dataID - Name of the loot table

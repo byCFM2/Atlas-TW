@@ -24,6 +24,14 @@ function AtlasOptions_Toggle()
     else
         atlasOptionsFrame:Show()
     end
+    -- Refresh tooltip settings to ensure they take effect immediately
+    if AtlasLootCharDB.DefaultTT then
+        AtlasLootOptions_DefaultTTToggle()
+    elseif AtlasLootCharDB.LootlinkTT then
+        AtlasLootOptions_LootlinkTTToggle()
+    elseif AtlasLootCharDB.ItemSyncTT then
+        AtlasLootOptions_ItemSyncTTToggle()
+    end
 end
 
 function AtlasOptions_AutoSelectToggle()
