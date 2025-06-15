@@ -32,7 +32,7 @@ AtlasLoot:RegisterDB("AtlasLootDB")
 
 --Popup Box for first time users
 StaticPopupDialogs["ATLASLOOT_SETUP"] = {
-	text = "Welcome to Atlas TW Edition. Please take a moment to set your preferences.",
+	text = "Welcome to Atlas-TW Edition. Please take a moment to set your preferences.",
 	button1 = L["Setup"],
 	OnAccept = function()
 		AtlasOptions_Toggle()
@@ -159,20 +159,20 @@ function AtlasLoot_OnVariablesLoaded()
 	AtlasLootItemsFrame_SelectedCategory:Show()
 	AtlasLootItemsFrame_SelectedTable:Show()
 	AtlasLootItemsFrame_SubMenu:Disable()
-	
+--[[ 	
 	--Enable the use of /al or /atlasloot to open the loot browser
 	SLASH_ATLASLOOT1 = "/atlasloot"
 	SLASH_ATLASLOOT2 = "/al"
-	SlashCmdList["ATLASLOOT"] = AtlasLoot_SlashCommand
+	SlashCmdList["ATLASLOOT"] = AtlasLoot_SlashCommand ]]
 end
 
 --[[
 Initiates the options.
 ]]
-function AtlasLootOptions_Init()
+--[[ function AtlasLootOptions_Init()
 	--clear saved vars for a new version (or a new install!)
 	if AtlasLootCharDB.FirstTime == nil then
-		AtlasLootOptions_Fresh()
+		AtlasLootOptions_DefaultSettings()
 	end
 	--Initialise all the check boxes on the options frame
 	AtlasLootOptionsFrameSafeLinks:SetChecked(AtlasLootCharDB.SafeLinks)
@@ -185,13 +185,13 @@ function AtlasLootOptions_Init()
 	AtlasLootOptionsFrameOpaque:SetChecked(AtlasLootCharDB.Opaque)
 	AtlasLootOptionsFrameItemID:SetChecked(AtlasLootCharDB.ItemIDs)
 	AtlasLootOptionsFrameItemSpam:SetChecked(AtlasLootCharDB.ItemSpam)
-end
+end ]]
 
 --[[
 Atlas_FreshOptions:
 Sets default options on a fresh start.
 ]]
-function AtlasLootOptions_Fresh()
+--[[ function AtlasLootOptions_Fresh()
 	AtlasLootCharDB.SafeLinks = false
 	AtlasLootCharDB.AllLinks = true
 	AtlasLootCharDB.DefaultTT = true
@@ -203,28 +203,26 @@ function AtlasLootOptions_Fresh()
 	AtlasLootCharDB.ItemIDs = false
 	AtlasLootCharDB.FirstTime = true
 	AtlasLootCharDB.ItemSpam = false
-	AtlasLootCharDB.HidePanel = true
+	AtlasLootCharDB.ShowPanel = true
 	AtlasLootCharDB.LastBoss = "DUNGEONSMENU1"
 	AtlasLootCharDB.LastBossText = L["Dungeons & Raids"]
-	AtlasLootCharDB.PartialMatching = true
-end
+	AtlasLootCharDB.PartialMatching = true 
+end ]]
 
 --[[
 	msg - takes the argument for the /atlasloot command so that the appropriate action can be performed
 	If someone types /atlasloot, bring up the options box
 ]]
-function AtlasLoot_SlashCommand(msg)
+--[[ function AtlasLoot_SlashCommand(msg)
 	if msg == "default" then
 		AtlasLootOptions_DefaultSettings()
 	end
-end
+end ]]
 
 function AtlasLoot_SetupForAtlas()--TODO dont need later
-	--TODO
 	AtlasLoot_SetItemInfoFrame()
 	AtlasLootItemsFrame:Hide()
 	AtlasLoot_AnchorFrame = AtlasFrame
-	--TODO
 end
 
 --[[
@@ -233,7 +231,7 @@ end
 	If no pFrame is specified, the Atlas Frame is used if Atlas is installed.
 ]]
 function AtlasLoot_SetItemInfoFrame(pFrame) --TODO dont need later
-	if pFrame then
+--[[ 	if pFrame then
 		--If a pFrame is specified, use it
 		if pFrame==AtlasFrame and AtlasFrame then
 			AtlasLootItemsFrame:ClearAllPoints()
@@ -250,7 +248,7 @@ function AtlasLoot_SetItemInfoFrame(pFrame) --TODO dont need later
 		AtlasLootItemsFrame:ClearAllPoints()
 		AtlasLootItemsFrame:SetParent(AtlasFrame)
 		AtlasLootItemsFrame:SetPoint("TOPLEFT", "AtlasFrame", "TOPLEFT", 18, -84)
-	end
+	end ]]
 	AtlasLootItemsFrame:Show()
 end
 
@@ -382,7 +380,7 @@ function AtlasLoot_Atlas_OnShow()
 	--We don't want Atlas and the Loot Browser open at the same time, so the Loot Browser is close
  	-- if AtlasLootDefaultFrame then
 		-- AtlasLootDefaultFrame:Hide()
-		 AtlasLoot_SetupForAtlas()
+		-- AtlasLoot_SetupForAtlas()
 	-- end
  
 	--If we were looking at a loot table earlier in the session, it is still
@@ -415,7 +413,7 @@ end ]]
 	dataID - Name of the loot table
 	dataSource - Table in the database where the loot table is stored
 	boss - Text string to use as a title for the loot page
-	pFrame - Data structure describing how and where to anchor the item frame (more details, see the function AtlasLoot_SetItemInfoFrame)
+	pFrame - Data structure describing how and where to anchor the item frame
 	This fuction is not normally called directly, it is usually invoked by AtlasLoot_ShowBossLoot.
 	It is the workhorse of the mod and allows the loot tables to be displayed any way anywhere in any mod.
 ]]
@@ -1421,7 +1419,7 @@ end
 --[[
 	dataID - Name of the loot table
 	boss - Text string to be used as the title for the loot page
-	pFrame - Data structure describing how and where to anchor the item frame (more details, see the function AtlasLoot_SetItemInfoFrame)
+	pFrame - Data structure describing how and where to anchor the item frame
 	This is the intended API for external mods to use for displaying loot pages.
 	This function figures out where the loot table is stored, then sends the relevant info to AtlasLoot_ShowItemsFrame
 ]]
@@ -1444,7 +1442,7 @@ function AtlasLoot_ShowBossLoot(dataID, boss, pFrame)
 end
 
 
-function AtlasLootOptions_DefaultSettings()
+--[[ function AtlasLootOptions_DefaultSettings()
 	AtlasLootCharDB.SafeLinks = false
 	AtlasLootCharDB.AllLinks = true
 	AtlasLootCharDB.DefaultTT = true
@@ -1452,10 +1450,11 @@ function AtlasLootOptions_DefaultSettings()
 	AtlasLootCharDB.ItemSyncTT = false
 	AtlasLootCharDB.ShowSource = true
 	AtlasLootCharDB.EquipCompare = false
-	AtlasLootCharDB.Opaque = false
+	AtlasLootCharDB.FirstTime = true
+	AtlasLootCharDB.Opaque = true
 	AtlasLootCharDB.ItemIDs = true
 	AtlasLootCharDB.ItemSpam = true
-	AtlasLootCharDB.HidePanel = true
+	AtlasLootCharDB.ShowPanel = true
 	AtlasLootCharDB.PartialMatching = true
 	AtlasLootCharDB.LastBoss = "DUNGEONSMENU1"
 	AtlasLootCharDB.LastBossText = L["Dungeons & Raids"]
@@ -1464,7 +1463,7 @@ function AtlasLootOptions_DefaultSettings()
 	AtlasLoot_RefreshQuickLookButtons()
 	AtlasOptions_Init()
 	DEFAULT_CHAT_FRAME:AddMessage(BLUE.."Atlas-TW"..": "..RED..L["Default settings applied!"])
-end --TODO move to atlasTW and change vars
+end ]] --TODO move to atlasTW and change vars
 
 function AtlasLoot_Strsplit(delim, str, maxNb, onlyLast)
 	-- Eliminate bad cases...

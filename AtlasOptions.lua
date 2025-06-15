@@ -1,6 +1,11 @@
+---------------
+--- COLOURS ---
+---------------
+local red = "|cffff0000"
+local blue = "|cff0070dd"
 -- Локальные ссылки на глобальные функции для повышения производительности
 local _G = getfenv()
-local variables = AtlasKTW
+local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local uIDropDownMenu_SetSelectedID = UIDropDownMenu_SetSelectedID
 
 -- Локальные переменные для часто используемых элементов UI
@@ -15,6 +20,64 @@ end
 local function round(num, idp)
     local mult = 10 ^ (idp or 0)
     return math.floor(num * mult + 0.5) / mult
+end
+
+-- Установка значений по умолчанию
+function AtlasOptions_DefaultSettings()
+	AtlasLootCharDB.SafeLinks = false
+	AtlasLootCharDB.AllLinks = true
+	AtlasLootCharDB.DefaultTT = true
+	AtlasLootCharDB.LootlinkTT = false
+	AtlasLootCharDB.ItemSyncTT = false
+	AtlasLootCharDB.ShowSource = true
+	AtlasLootCharDB.EquipCompare = false
+	AtlasLootCharDB.FirstTime = true
+	AtlasLootCharDB.Opaque = true
+	AtlasLootCharDB.ItemIDs = true
+	AtlasLootCharDB.ItemSpam = true
+	AtlasLootCharDB.ShowPanel = true
+	AtlasLootCharDB.PartialMatching = true
+	AtlasLootCharDB.LastBoss = "DUNGEONSMENU1"
+	AtlasLootCharDB.LastBossText = L["Dungeons & Raids"]
+	AtlasLootCharDB["QuickLooks"] = {}
+	AtlasLootCharDB["WishList"] = {}
+    AtlasKTW = {
+        AtlasButtonPosition = 305,
+        AtlasButtonRadius = 76,
+        AtlasButtonShown = true,
+        AtlasRightClick = false,
+        AtlasType = 1,
+        AtlasScale = 1,
+        AtlasVersion = AtlasTW.Version,
+        AtlasZone = 1,
+        AtlasSortBy = 1,
+        AtlasAutoSelect = false,
+        AtlasLocked = false,
+        AtlasAlpha = 1.0,
+        AtlasAcronyms = true,
+        AtlasClamped = true,
+        QuestCurrentSide = "Left",
+        QuestWithAtlas = true,
+        QuestColourCheck = true,
+        QuestCheckQuestlog = true,
+        QuestAutoQuery = true,
+        QuestQuerySpam = true,
+        QuestCompareTooltip = true,
+    }
+	AtlasLoot_RefreshQuickLookButtons()
+	AtlasOptions_Init()
+	DEFAULT_CHAT_FRAME:AddMessage(blue.."Atlas-TW"..": "..red..L["Default settings applied!"])
+end
+
+function AtlasOptionsShowPanelButton_OnClick()
+    local showPanelStatus = AtlasLootCharDB.ShowPanel
+    AtlasLootCharDB.ShowPanel = not showPanelStatus
+    if showPanelStatus then
+        AtlasLootPanel:Hide()
+    else
+        AtlasLootPanel:Show()
+    end
+    AtlasLootOptionsFrameShowPanel:SetChecked(AtlasLootCharDB.ShowPanel)
 end
 
 -- Основные функции переключения опций
@@ -81,32 +144,34 @@ function AtlasOptions_Init()
         DEFAULT_CHAT_FRAME:AddMessage(AtlasTW.Name..": Failed to initialize local references.")
         return
     end
-
+	--Consult the saved variable table to see whether to show the bottom panel
+	if AtlasLootCharDB.ShowPanel then
+		AtlasLootPanel:Show()
+	else
+		AtlasLootPanel:Hide()
+	end
     -- Установка значений при загрузке
-    AtlasOptionsFrameToggleButton:SetChecked(atlasTWOptions.AtlasButtonShown)
-    AtlasOptionsFrameAutoSelect:SetChecked(atlasTWOptions.AtlasAutoSelect)
-    AtlasOptionsFrameRightClick:SetChecked(atlasTWOptions.AtlasRightClick)
-    AtlasOptionsFrameAcronyms:SetChecked(atlasTWOptions.AtlasAcronyms)
-    AtlasOptionsFrameClamped:SetChecked(atlasTWOptions.AtlasClamped)
-    AtlasOptionsFrameSliderButtonPos:SetValue(atlasTWOptions.AtlasButtonPosition)
-    AtlasOptionsFrameSliderButtonRad:SetValue(atlasTWOptions.AtlasButtonRadius)
-    AtlasOptionsFrameSliderAlpha:SetValue(atlasTWOptions.AtlasAlpha)
-    AtlasOptionsFrameSliderScale:SetValue(atlasTWOptions.AtlasScale)
+    AtlasOptionsFrameToggleButton:SetChecked(AtlasKTW.AtlasButtonShown)
+    AtlasOptionsFrameAutoSelect:SetChecked(AtlasKTW.AtlasAutoSelect)
+    AtlasOptionsFrameRightClick:SetChecked(AtlasKTW.AtlasRightClick)
+    AtlasOptionsFrameAcronyms:SetChecked(AtlasKTW.AtlasAcronyms)
+    AtlasOptionsFrameClamped:SetChecked(AtlasKTW.AtlasClamped)
+    AtlasOptionsFrameSliderButtonPos:SetValue(AtlasKTW.AtlasButtonPosition)
+    AtlasOptionsFrameSliderButtonRad:SetValue(AtlasKTW.AtlasButtonRadius)
+    AtlasOptionsFrameSliderAlpha:SetValue(AtlasKTW.AtlasAlpha)
+    AtlasOptionsFrameSliderScale:SetValue(AtlasKTW.AtlasScale)
 
 	-- Quest Options
-	KQAutoshowOption:SetChecked(variables.QWithAtlas)
-	KQLEFTOption:SetChecked(variables.QCurrentSide == "Left")
-	KQRIGHTOption:SetChecked(variables.QCurrentSide ~= "Left")
-	KQColourOption:SetChecked(variables.QColourCheck)
-	KQCheckQuestlogButton:SetChecked(variables.QCheckQuestlog)
-	KQAutoQueryOption:SetChecked(variables.QAutoQuery)
-	KQQuerySpamOption:SetChecked(variables.QQuerySpam)
-	KQCompareTooltipOption:SetChecked(variables.QCompareTooltip)
+	KQAutoshowOption:SetChecked(AtlasKTW.QWithAtlas)
+	KQLEFTOption:SetChecked(AtlasKTW.QCurrentSide == "Left")
+	KQRIGHTOption:SetChecked(AtlasKTW.QCurrentSide ~= "Left")
+	KQColourOption:SetChecked(AtlasKTW.QColourCheck)
+	KQCheckQuestlogButton:SetChecked(AtlasKTW.QCheckQuestlog)
+	KQAutoQueryOption:SetChecked(AtlasKTW.QAutoQuery)
+	KQQuerySpamOption:SetChecked(AtlasKTW.QQuerySpam)
+	KQCompareTooltipOption:SetChecked(AtlasKTW.QCompareTooltip)
 
-    -- Loot Options
-	if AtlasLootCharDB.FirstTime == nil then
-		AtlasLootOptions_Fresh()
-	end
+	-- Loot Options
 	AtlasLootOptionsFrameSafeLinks:SetChecked(AtlasLootCharDB.SafeLinks)
 	AtlasLootOptionsFrameAllLinks:SetChecked(AtlasLootCharDB.AllLinks)
 	AtlasLootOptionsFrameDefaultTT:SetChecked(AtlasLootCharDB.DefaultTT)
@@ -117,6 +182,7 @@ function AtlasOptions_Init()
 	AtlasLootOptionsFrameOpaque:SetChecked(AtlasLootCharDB.Opaque)
 	AtlasLootOptionsFrameItemID:SetChecked(AtlasLootCharDB.ItemIDs)
 	AtlasLootOptionsFrameItemSpam:SetChecked(AtlasLootCharDB.ItemSpam)
+    AtlasLootOptionsFrameShowPanel:SetChecked(AtlasLootCharDB.ShowPanel)
 end
 
 -- Сброс позиции
@@ -126,46 +192,21 @@ function AtlasOptions_ResetPosition()
     end
 
     atlasFrame:ClearAllPoints()
-    atlasFrame:SetPoint("TOPLEFT", 0, -104)
+    atlasFrame:SetPoint("TOP", 0, -104)
 
     -- Сброс настроек к значениям по умолчанию
-    atlasTWOptions.AtlasButtonPosition = 336
-    atlasTWOptions.AtlasButtonRadius = 78
+    atlasTWOptions.AtlasButtonPosition = 305
+    atlasTWOptions.AtlasButtonRadius = 76
     atlasTWOptions.AtlasAlpha = 1.0
     atlasTWOptions.AtlasScale = 1.0
 
     AtlasOptions_Init()
 end
 
--- Настройка слайдера (улучшенная версия)
-function AtlasOptions_SetupSlider(text, mymin, mymax, step)
-    local sliderName = this:GetName()
-    local textElement = _G[sliderName .. "Text"]
-    local lowElement = _G[sliderName .. "Low"]
-    local highElement = _G[sliderName .. "High"]
-
-    if textElement then
-        textElement:SetText(text .. " (" .. this:GetValue() .. ")")
-    end
-
-    this:SetMinMaxValues(mymin, mymax)
-
-    if lowElement then
-        lowElement:SetText(mymin)
-    end
-
-    if highElement then
-        highElement:SetText(mymax)
-    end
-
-    this:SetValueStep(step)
-end
-
 -- Обновление слайдера
 function AtlasOptions_UpdateSlider(text)
     local sliderName = this:GetName()
     local textElement = _G[sliderName .. "Text"]
-
     if textElement then
         textElement:SetText(text .. " (" .. round(this:GetValue(), 2) .. ")")
     end
@@ -174,11 +215,9 @@ end
 -- Локальные функции для dropdown меню
 local function atlasOptionsFrameDropDownCats_OnClick()
     local thisID = this:GetID()
-
     if not atlasTWOptions then
         initializeLocalReferences()
     end
-
     uIDropDownMenu_SetSelectedID(AtlasOptionsFrameDropDownCats, thisID)
     atlasTWOptions.AtlasSortBy = thisID
     atlasTWOptions.AtlasZone = 1

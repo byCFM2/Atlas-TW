@@ -9,7 +9,6 @@ local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local function KQAutoshowOption_OnClick()
 	variables.QWithAtlas = not variables.QWithAtlas
 	KQAutoshowOption:SetChecked(variables.QWithAtlas)
-	ChatFrame1:AddMessage(variables.QWithAtlas and AQAtlasAutoON or AQAtlasAutoOFF)
 	KQuest_SaveData()
 end
 
@@ -31,9 +30,6 @@ local function KQLEFTOption_OnClick()
 	end
 	KQRIGHTOption:SetChecked(false)
 	KQLEFTOption:SetChecked(true)
-	if variables.QCurrentSide ~= "Left" then
-		ChatFrame1:AddMessage(AQShowLeft)
-	end
 	variables.QCurrentSide = "Left"
 	KQuest_SaveData()
 end
@@ -42,7 +38,6 @@ end
 local function KQColourOption_OnClick()
 	variables.QColourCheck = not variables.QColourCheck
 	KQColourOption:SetChecked(variables.QColourCheck)
-	ChatFrame1:AddMessage(variables.QColourCheck and AQCCON or AQCCOFF)
 	KQuest_SaveData()
 	variables.QUpdateNow = true
 end
@@ -131,6 +126,11 @@ local function AtlasLootOptions_ShowSourceToggle()
 	AtlasOptions_Init()
 end
 
+local function AtlasLootOptions_ShowPanel_OnClick()
+	AtlasLootCharDB.ShowPanel = not AtlasLootCharDB.ShowPanel
+	AtlasOptions_Init()
+end
+
 local function AtlasLootOptions_EquipCompareToggle()
 	AtlasLootCharDB.EquipCompare = not AtlasLootCharDB.EquipCompare
 	if AtlasLootCharDB.EquipCompare then
@@ -184,27 +184,13 @@ local function atlasOptions_CreateFrames()
     optionsFrame:SetToplevel(true)
     optionsFrame:SetWidth(550)
     optionsFrame:SetHeight(550)
-    optionsFrame:SetPoint("CENTER", UIParent, "CENTER")
+    optionsFrame:SetPoint("CENTER", 0, 0)
     optionsFrame:SetMovable(true)
     optionsFrame:RegisterForDrag("LeftButton")
     optionsFrame:EnableMouse(true)
     optionsFrame:SetClampedToScreen(true)
     optionsFrame:Hide()
-
 	tinsert(UISpecialFrames, "AtlasOptionsFrame")
-
-    -- Frame scripts
-    optionsFrame:SetScript("OnDragStart", function()
-        this:StartMoving()
-        this.isMoving = true
-    end)
-
-    optionsFrame:SetScript("OnDragStop", function()
-        this:StopMovingOrSizing()
-        this.isMoving = false
-    end)
-
-    -- Background
     optionsFrame:SetBackdrop({
         bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
         edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
@@ -216,10 +202,20 @@ local function atlasOptions_CreateFrames()
     optionsFrame:SetBackdropColor(0, 0, 0, 1)
     optionsFrame:SetBackdropBorderColor(0, 0, 0, 1)
 
-    -- Close button
-
+    -- Frame scripts
+    optionsFrame:SetScript("OnDragStart", function()
+        this:StartMoving()
+        this.isMoving = true
+    end)
+    optionsFrame:SetScript("OnDragStop", function()
+        this:StopMovingOrSizing()
+        this.isMoving = false
+    end)
     -- Set up frame show script to initialize values
     optionsFrame:SetScript("OnShow", function()
+        if AtlasLootCharDB.FirstTime == nil then
+            AtlasOptions_DefaultSettings()
+        end
         AtlasOptions_Init()
     end)
 
@@ -233,125 +229,98 @@ local function atlasOptions_CreateFrames()
     atlasOptionText:SetPoint("BOTTOM", title, "BOTTOM", -160, -25)
     atlasOptionText:SetText(L["Atlas"])
 
-    -- Toggle button
-    local toggleButton = CreateFrame("CheckButton", "AtlasOptionsFrameToggleButton", optionsFrame, "OptionsCheckButtonTemplate")
-    toggleButton:SetPoint("BOTTOM", atlasOptionText, "BOTTOM", -80, -35)
-    _G[toggleButton:GetName().."Text"]:SetText(L["Show Button on Minimap"])
-    toggleButton:SetScript("OnClick", function()
-        AtlasButton_Toggle()
-    end)
+    -- Atlas Options Checkboxes Data
+    local atlasCheckboxes = {
+        { name = "AtlasOptionsFrameToggleButton", text = L["Show Button on Minimap"], script = function() AtlasButton_Toggle() end },
+        { name = "AtlasOptionsFrameAutoSelect", text = L["Auto-Select Instance Map"], script = function() AtlasOptions_AutoSelectToggle() end },
+        { name = "AtlasOptionsFrameRightClick", text = L["Right-Click for World Map"], script = function() AtlasOptions_RightClickToggle() end },
+        { name = "AtlasOptionsFrameAcronyms", text = L["Show Acronyms"], script = function() AtlasOptions_AcronymsToggle() end },
+        { name = "AtlasOptionsFrameClamped", text = L["Clamp window to screen"], script = function() AtlasOptions_ClampedToggle() end }
+    }
 
-    -- Auto select button
-    local autoSelect = CreateFrame("CheckButton", "AtlasOptionsFrameAutoSelect", optionsFrame, "OptionsCheckButtonTemplate")
-    autoSelect:SetPoint("BOTTOM", toggleButton, "BOTTOM", 0, -25)
-    _G[autoSelect:GetName().."Text"]:SetText(L["Auto-Select Instance Map"])
-    autoSelect:SetScript("OnClick", function()
-        AtlasOptions_AutoSelectToggle()
-    end)
+    -- Optimized function to create atlas checkboxes
+    local function CreateAtlasCheckboxes()
+        local previousElement = atlasOptionText
+        for i, config in ipairs(atlasCheckboxes) do
+            local checkbox = CreateFrame("CheckButton", config.name, optionsFrame, "OptionsCheckButtonTemplate")
+            if i == 1 then
+                checkbox:SetPoint("BOTTOM", previousElement, "BOTTOM", -80, -35)
+            else
+                checkbox:SetPoint("BOTTOM", previousElement, "BOTTOM", 0, -25)
+            end
+            _G[checkbox:GetName().."Text"]:SetText(config.text)
+            checkbox:SetScript("OnClick", config.script)
+            previousElement = checkbox
+        end
+        return previousElement
+    end
 
-    -- Right click button
-    local rightClick = CreateFrame("CheckButton", "AtlasOptionsFrameRightClick", optionsFrame, "OptionsCheckButtonTemplate")
-    rightClick:SetPoint("BOTTOM", autoSelect, "BOTTOM", 0, -25)
-    _G[rightClick:GetName().."Text"]:SetText(L["Right-Click for World Map"])
-    rightClick:SetScript("OnClick", function()
-        AtlasOptions_RightClickToggle()
-    end)
 
-    -- Acronyms button
-    local acronyms = CreateFrame("CheckButton", "AtlasOptionsFrameAcronyms", optionsFrame, "OptionsCheckButtonTemplate")
-    acronyms:SetPoint("BOTTOM", rightClick, "BOTTOM", 0, -25)
-    _G[acronyms:GetName().."Text"]:SetText(L["Show Acronyms"])
-    acronyms:SetScript("OnClick", function()
-        AtlasOptions_AcronymsToggle()
-    end)
+    -- Atlas Options Sliders Data
+    local atlasSliders = {
+        { name = "AtlasOptionsFrameSliderButtonPos", label = L["Button Position"], min = 0, max = 360, step = 1, value = 336,
+            option = "AtlasButtonPosition", updateFunc = AtlasButton_UpdatePosition },
+        { name = "AtlasOptionsFrameSliderButtonRad", label = L["Button Radius"], min = 0, max = 200, step = 1, value = 78,
+            option = "AtlasButtonRadius", updateFunc = AtlasButton_UpdatePosition },
+        { name = "AtlasOptionsFrameSliderAlpha", label = L["Transparency"], min = 0.25, max = 1.0, step = 0.01, value = 1.0,
+            option = "AtlasAlpha", updateFunc = Atlas_UpdateAlpha },
+        { name = "AtlasOptionsFrameSliderScale", label = L["Scale"], min = 0.25, max = 1.5, step = 0.01, value = 1.0,
+            option = "AtlasScale", updateFunc = Atlas_UpdateScale }
+    }
+    -- Creates slider controls for Atlas options
+    -- @param startElement - The UI element to position sliders relative to
+    -- @return The last created slider element for further positioning
+    -- Each slider controls different Atlas settings like button position, transparency etc.
+    local function CreateAtlasSliders(startElement)
+        local previousElement = startElement
+        local xOffset, yOffset = 0, -27
+        for i, config in ipairs(atlasSliders) do
+            if config and config.name and config.label then
+                local slider = CreateFrame("Slider", config.name, optionsFrame, "OptionsSliderTemplate")
+                slider:SetWidth(180)
+                xOffset = (i == 1) and 78 or 0
+                slider:SetPoint("BOTTOM", previousElement, "BOTTOM", xOffset, yOffset)
+                slider:SetMinMaxValues(config.min or 0, config.max or 1)
+                slider:SetValueStep(config.step or 0.01)
+                slider:SetValue(config.value or 0)
+                _G[slider:GetName().."Text"]:SetText(config.label.." ("..slider:GetValue()..")")
+                _G[slider:GetName().."Low"]:SetText(tostring(config.min or 0))
+                _G[slider:GetName().."High"]:SetText(tostring(config.max or 1))
+                local sliderLabel = config.label
+                local optionName = config.option
+                local updateFunc = config.updateFunc
+                slider:SetScript("OnValueChanged", function()
+                    AtlasOptions_UpdateSlider(sliderLabel)
+                    AtlasTWOptions[optionName] = this:GetValue()
+                    updateFunc()
+                end)
+                previousElement = slider
+            end
+        end
+        return previousElement
+    end
 
-    -- Clamped button
-    local clamped = CreateFrame("CheckButton", "AtlasOptionsFrameClamped", optionsFrame, "OptionsCheckButtonTemplate")
-    clamped:SetPoint("BOTTOM", acronyms, "BOTTOM", 0, -25)
-    _G[clamped:GetName().."Text"]:SetText(L["Clamp window to screen"])
-    clamped:SetScript("OnClick", function()
-        AtlasOptions_ClampedToggle()
-    end)
-
-    -- Button position slider
-    local sliderButtonPos = CreateFrame("Slider", "AtlasOptionsFrameSliderButtonPos", optionsFrame, "OptionsSliderTemplate")
-    sliderButtonPos:SetWidth(180)
-    sliderButtonPos:SetPoint("BOTTOM", clamped, "BOTTOM", 78, -27)
-    sliderButtonPos:SetMinMaxValues(0, 360)
-    sliderButtonPos:SetValueStep(1)
-    sliderButtonPos:SetValue(336)
-    _G[sliderButtonPos:GetName().."Text"]:SetText(L["Button Position"].." ("..sliderButtonPos:GetValue()..")")
-    _G[sliderButtonPos:GetName().."Low"]:SetText("0")
-    _G[sliderButtonPos:GetName().."High"]:SetText("360")
-    sliderButtonPos:SetScript("OnValueChanged", function()
-        AtlasOptions_UpdateSlider(L["Button Position"])
-        AtlasTWOptions.AtlasButtonPosition = this:GetValue()
-        AtlasButton_UpdatePosition()
-    end)
-
-    -- Button radius slider
-    local sliderButtonRad = CreateFrame("Slider", "AtlasOptionsFrameSliderButtonRad", optionsFrame, "OptionsSliderTemplate")
-    sliderButtonRad:SetWidth(180)
-    sliderButtonRad:SetPoint("BOTTOM", sliderButtonPos, "BOTTOM", 0, -27)
-    sliderButtonRad:SetMinMaxValues(0, 200)
-    sliderButtonRad:SetValueStep(1)
-    sliderButtonRad:SetValue(78)
-    _G[sliderButtonRad:GetName().."Text"]:SetText(L["Button Radius"].." ("..sliderButtonRad:GetValue()..")")
-    _G[sliderButtonRad:GetName().."Low"]:SetText("0")
-    _G[sliderButtonRad:GetName().."High"]:SetText("200")
-    sliderButtonRad:SetScript("OnValueChanged", function()
-        AtlasOptions_UpdateSlider(L["Button Radius"])
-        AtlasTWOptions.AtlasButtonRadius = this:GetValue()
-        AtlasButton_UpdatePosition()
-    end)
-    -- Alpha slider
-    local sliderAlpha = CreateFrame("Slider", "AtlasOptionsFrameSliderAlpha", optionsFrame, "OptionsSliderTemplate")
-    sliderAlpha:SetWidth(180)
-    sliderAlpha:SetPoint("BOTTOM", sliderButtonRad, "BOTTOM", 0, -27)
-    sliderAlpha:SetMinMaxValues(0.25, 1.0)
-    sliderAlpha:SetValueStep(0.01)
-    sliderAlpha:SetValue(1.0)
-    _G[sliderAlpha:GetName().."Text"]:SetText(L["Transparency"].." ("..sliderAlpha:GetValue()..")")
-    _G[sliderAlpha:GetName().."Low"]:SetText("0.25")
-    _G[sliderAlpha:GetName().."High"]:SetText("1.0")
-    sliderAlpha:SetScript("OnValueChanged", function()
-        AtlasOptions_UpdateSlider(L["Transparency"])
-        AtlasTWOptions.AtlasAlpha = this:GetValue()
-        Atlas_UpdateAlpha()
-    end)
-
-    -- Scale slider
-    local sliderScale = CreateFrame("Slider", "AtlasOptionsFrameSliderScale", optionsFrame, "OptionsSliderTemplate")
-    sliderScale:SetWidth(180)
-    sliderScale:SetPoint("BOTTOM", sliderAlpha, "BOTTOM", 0, -27)
-    sliderScale:SetMinMaxValues(0.25, 1.5)
-    sliderScale:SetValueStep(0.01)
-    sliderScale:SetValue(1.0)
-    _G[sliderScale:GetName().."Text"]:SetText(L["Scale"].." ("..sliderScale:GetValue()..")")
-    _G[sliderScale:GetName().."Low"]:SetText("0.25")
-    _G[sliderScale:GetName().."High"]:SetText("1.5")
-    sliderScale:SetScript("OnValueChanged", function()
-        AtlasOptions_UpdateSlider(L["Scale"])
-        AtlasTWOptions.AtlasScale = this:GetValue()
-        Atlas_UpdateScale()
-    end)
-
+    local lastElement = CreateAtlasCheckboxes()
+    lastElement = CreateAtlasSliders(lastElement)
 
     -- Reset position button
-    local resetPosition = CreateFrame("Button", "AtlasOptionsFrameResetPosition", optionsFrame, "UIPanelButtonTemplate2")
-    resetPosition:SetWidth(160)
-    resetPosition:SetHeight(32)
-    resetPosition:SetPoint("BOTTOMLEFT", optionsFrame, "BOTTOMLEFT", 22, 18)
+    local resetPosition = CreateFrame("Button", "nil", optionsFrame, "OptionsButtonTemplate")
+    resetPosition:SetPoint("BOTTOMLEFT", 20, 15)
     resetPosition:SetText(L["Reset Position"])
     resetPosition:SetScript("OnClick", function()
         AtlasOptions_ResetPosition()
     end)
 
+    -- Default settings button
+    local defaultSettingsButton = CreateFrame("Button", "asd", resetPosition, "OptionsButtonTemplate")
+    defaultSettingsButton:SetPoint("RIGHT", 100, 0)
+    defaultSettingsButton:SetText(L["Reset Settings"])
+    defaultSettingsButton:SetScript("OnClick", function()
+        AtlasOptions_DefaultSettings()
+    end)
     -- Done button
-    local doneButton = CreateFrame("Button", "AtlasOptionsFrameDone", optionsFrame, "UIPanelButtonTemplate2")
-    doneButton:SetWidth(80)
-    doneButton:SetHeight(32)
-    doneButton:SetPoint("BOTTOMRIGHT", optionsFrame, "BOTTOMRIGHT", -22, 18)
+    local doneButton = CreateFrame("Button", "AtlasOptionsFrameDone", optionsFrame, "OptionsButtonTemplate")
+    doneButton:SetPoint("BOTTOMRIGHT", -20, 15)
     doneButton:SetText(L["Done"])
     doneButton:SetScript("OnClick", function()
         AtlasOptions_Toggle()
@@ -375,107 +344,76 @@ local function atlasOptions_CreateFrames()
     questOptionText:SetPoint("BOTTOM", title, "BOTTOM", 100, -25)
     questOptionText:SetText(L["Quest"])
 
-    -- Checkboxes
-    local checkboxesQuest = {
-        "KQAutoshowOption",
-        "KQLEFTOption",
-        "KQRIGHTOption",
-        "KQColourOption",
-        "KQCheckQuestlogButton",
-        "KQAutoQueryOption",
-        "KQQuerySpamOption",
-        "KQCompareTooltipOption"
+    -- Quest Checkboxes Data
+    local questCheckboxes = {
+        { name = "KQAutoshowOption", script = KQAutoshowOption_OnClick },
+        { name = "KQLEFTOption", script = KQLEFTOption_OnClick },
+        { name = "KQRIGHTOption", script = KQRIGHTOption_OnClick },
+        { name = "KQColourOption", script = KQColourOption_OnClick },
+        { name = "KQCheckQuestlogButton", script = KQCheckQuestlogButton_OnClick },
+        { name = "KQAutoQueryOption", script = KQAutoQueryOption_OnClick },
+        { name = "KQQuerySpamOption", script = KQQuerySpamOption_OnClick },
+        { name = "KQCompareTooltipOption", script = KQCompareTooltipOption_OnClick }
     }
 
-    -- List of OnClick functions
-    local scriptQuest = {
-        KQAutoshowOption_OnClick,
-        KQLEFTOption_OnClick,
-        KQRIGHTOption_OnClick,
-        KQColourOption_OnClick,
-        KQCheckQuestlogButton_OnClick,
-        KQAutoQueryOption_OnClick,
-        KQQuerySpamOption_OnClick,
-        KQCompareTooltipOption_OnClick
-    }
-
-    -- Function to create checkbox
+    -- Optimized function to create quest checkboxes
 	local function CreateCheckboxesQuest()
-        for i = 1, table.getn(checkboxesQuest) do
-            local name = checkboxesQuest[i]
-            local checkbox = CreateFrame("CheckButton", name, optionsFrame, "OptionsCheckButtonTemplate")
-            if i ~= 1 then
-                checkbox:SetPoint("BOTTOM", checkboxesQuest[i-1], "BOTTOM", 0, -25)
-            else
+        local previousCheckbox = nil
+        for i, config in ipairs(questCheckboxes) do
+            local checkbox = CreateFrame("CheckButton", config.name, optionsFrame, "OptionsCheckButtonTemplate")
+            if i == 1 then
                 checkbox:SetPoint("BOTTOM", questOptionText, "BOTTOM", -145, -35)
+            else
+                checkbox:SetPoint("BOTTOM", previousCheckbox, "BOTTOM", 0, -25)
             end
-            _G[name.."Text"]:SetText(_G[name.."Local"])
-            checkbox:SetScript("OnClick", scriptQuest[i])
+            _G[config.name .. "Text"]:SetText(_G[config.name .. "Local"])
+            checkbox:SetScript("OnClick", config.script)
+            previousCheckbox = checkbox
         end
-	end
+    end
 
     -- Loot Options Text
     local lootOptionText = optionsFrame:CreateFontString("", "ARTWORK", "GameFontNormal")
-    lootOptionText:SetPoint("BOTTOM", sliderScale, "BOTTOM", 0, -25)
+    lootOptionText:SetPoint("BOTTOM", lastElement, "BOTTOM", 0, -25)
     lootOptionText:SetText(L["Loot"])
 
-    -- Checkboxes
-    local checkboxLoot = {
-        "AtlasLootOptionsFrameSafeLinks",
-        "AtlasLootOptionsFrameAllLinks",
-        "AtlasLootOptionsFrameDefaultTT",
-        "AtlasLootOptionsFrameLootlinkTT",
-        "AtlasLootOptionsFrameItemSyncTT",
-        "AtlasLootOptionsFrameShowSource",
-        "AtlasLootOptionsFrameEquipCompare",
-        "AtlasLootOptionsFrameItemID",
-        "AtlasLootOptionsFrameOpaque",
-        "AtlasLootOptionsFrameItemSpam"
+    -- Checkbox configuration
+    local lootCheckboxes = {
+        { name = "AtlasLootOptionsFrameSafeLinks", text = L["Safe Chat Links |cff1eff00(recommended)|r"], script = AtlasLootOptions_SafeLinksToggle },
+        { name = "AtlasLootOptionsFrameAllLinks", text = L["Enable all Chat Links"], script = AtlasLootOptions_AllLinksToggle },
+        { name = "AtlasLootOptionsFrameDefaultTT", text = L["Default Tooltips"], script = AtlasLootOptions_DefaultTTToggle },
+        { name = "AtlasLootOptionsFrameLootlinkTT", text = L["Lootlink Tooltips"], script = AtlasLootOptions_LootlinkTTToggle },
+        { name = "AtlasLootOptionsFrameItemSyncTT", text = L["ItemSync Tooltips"], script = AtlasLootOptions_ItemSyncTTToggle },
+        { name = "AtlasLootOptionsFrameShowSource", text = L["Show Source on Tooltips"], script = AtlasLootOptions_ShowSourceToggle },
+        { name = "AtlasLootOptionsFrameShowPanel", text = L["Show Loot Panel with Atlas"], script = AtlasLootOptions_ShowPanel_OnClick },
+        { name = "AtlasLootOptionsFrameEquipCompare", text = L["Use EquipCompare"], script = AtlasLootOptions_EquipCompareToggle },
+        { name = "AtlasLootOptionsFrameItemID", text = L["Show IDs at all times"], script = AtlasLootOptions_ItemIDToggle },
+        { name = "AtlasLootOptionsFrameOpaque", text = L["Make Loot Table Opaque"], script = AtlasLootOptions_OpaqueToggle },
+        { name = "AtlasLootOptionsFrameItemSpam", text = L["Suppress text spam when querying items"], script = AtlasLootOptions_ItemSpam }
     }
 
-    -- List of scripts
-    local scriptLoot = {
-        AtlasLootOptions_SafeLinksToggle,
-        AtlasLootOptions_AllLinksToggle,
-        AtlasLootOptions_DefaultTTToggle,
-        AtlasLootOptions_LootlinkTTToggle,
-        AtlasLootOptions_ItemSyncTTToggle,
-        AtlasLootOptions_ShowSourceToggle,
-        AtlasLootOptions_EquipCompareToggle,
-        AtlasLootOptions_ItemIDToggle,
-        AtlasLootOptions_OpaqueToggle,
-        AtlasLootOptions_ItemSpam,
-    }
+    -- Optimized function to create checkboxes
+    local function CreateCheckboxesLoot()
+        local previousCheckbox = nil
+        for i, config in ipairs(lootCheckboxes) do
+            local checkbox = CreateFrame("CheckButton", config.name, optionsFrame, "OptionsCheckButtonTemplate")
 
-    -- List of text for checkboxes
-    local textCheckboxLoot = {
-    	L["Safe Chat Links |cff1eff00(recommended)|r"],
-    	L["Enable all Chat Links"],
-    	L["Default Tooltips"],
-    	L["Lootlink Tooltips"],
-    	L["ItemSync Tooltips"],
-    	L["Show Source on Tooltips"],
-    	L["Use EquipCompare"],
-        L["Show IDs at all times"],
-        L["Make Loot Table Opaque"],
-        L["Suppress text spam when querying items"]
-    }
-        -- Function to create checkbox
-	local function CreateCheckboxesLoot()
-        for i = 1, table.getn(checkboxLoot) do
-            local name = checkboxLoot[i]
-            local checkbox = CreateFrame("CheckButton", name, optionsFrame, "OptionsCheckButtonTemplate")
-            if i > 1 and i <= 6 then
-                checkbox:SetPoint("BOTTOM", checkboxLoot[i-1], "BOTTOM", 0, -25)
-            elseif i > 6 then
-                checkbox:SetPoint("RIGHT", checkboxLoot[i-6], "RIGHT", 195, 0)
-            else
+            -- Simplified positioning logic
+            if i == 1 then
                 checkbox:SetPoint("BOTTOM", lootOptionText, "BOTTOM", -78, -35)
+            elseif i <= 6 then
+                checkbox:SetPoint("BOTTOM", previousCheckbox, "BOTTOM", 0, -25)
+            else
+                -- Second column (items 7-10)
+                local referenceCheckbox = lootCheckboxes[i - 6].name
+                checkbox:SetPoint("RIGHT", referenceCheckbox, "RIGHT", 195, 0)
             end
-            _G[name.."Text"]:SetText(textCheckboxLoot[i])
-            checkbox:SetScript("OnClick", scriptLoot[i])
+
+            _G[config.name .. "Text"]:SetText(config.text)
+            checkbox:SetScript("OnClick", config.script)
+            previousCheckbox = checkbox
         end
-	end
+    end
 
 	-- Create checkboxes
 	CreateCheckboxesQuest()

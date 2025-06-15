@@ -132,18 +132,12 @@ local function atlas_CreateFrames()
     end)
 
     -- Hide Loot Panel button
-    local hidePanelButton = CreateFrame("Button", "", atlasFrame, "OptionsButtonTemplate")
-    hidePanelButton:SetText(L["Loot Panel"])
-    hidePanelButton:SetPoint("LEFT", questsToggleButton, "LEFT", -95, 0)
-    hidePanelButton:SetScript("OnClick", function()
-        local hidePanelStatus = AtlasLootCharDB.HidePanel
-        AtlasLootCharDB.HidePanel = not hidePanelStatus
-        if hidePanelStatus then
-            AtlasLootPanel:Show()
-        else
-            AtlasLootPanel:Hide()
-        end
-        AtlasLoot_SetupForAtlas()
+    local ShowPanelButton = CreateFrame("Button", "", atlasFrame, "OptionsButtonTemplate")
+    ShowPanelButton:SetText(L["Loot Panel"])
+    ShowPanelButton:SetPoint("LEFT", questsToggleButton, "LEFT", -95, 0)
+    ShowPanelButton:SetScript("OnClick", function()
+        AtlasOptionsShowPanelButton_OnClick()
+       -- AtlasLoot_SetupForAtlas()
     end)
 
     -- Scroll frame

@@ -12,8 +12,8 @@ local function debug(info)
 	end
 end
 
-local defaultAtlasTWOptions = {
-    AtlasButtonPosition = 336,
+--[[local defaultAtlasTWOptions = {
+     AtlasButtonPosition = 336,
     AtlasButtonRadius = 78,
     AtlasButtonShown = true,
     AtlasRightClick = false,
@@ -33,10 +33,11 @@ local defaultAtlasTWOptions = {
     QuestCheckQuestlog = true,
     QuestAutoQuery = true,
     QuestQuerySpam = true,
-    QuestCompareTooltip = true,
+    QuestCompareTooltip = true, 
 }
+]]
 
-local function cloneTable(t)
+--[[ local function cloneTable(t)
 	local new = {}					-- create a new table
 	local i, v = next(t, nil)		-- i is an index of t, v = t[i]
 	while i do
@@ -47,12 +48,12 @@ local function cloneTable(t)
 		i, v = next(t, i)			-- get next index
 	end
 	return new
-end
+end ]]
 
 --resets all saved variables to the default values
-local function atlas_FreshOptions()
-	AtlasTWOptions = cloneTable(defaultAtlasTWOptions)
-end
+--[[ local function atlas_FreshOptions()
+	--AtlasTWOptions = cloneTable(defaultAtlasTWOptions)
+end ]]
 
 local function atlasSimpleSearch(data, text)
 	if not text then
@@ -160,7 +161,7 @@ function Atlas_Init()
 
 	--clear saved vars for a new ver (or a new install!)
 	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= atlasTW.Version then
-		atlas_FreshOptions()
+		AtlasOptions_DefaultSettings()
 	end
 
 	--populate the dropdown lists...yeeeah this is so much nicer!
@@ -307,7 +308,7 @@ function Atlas_Refresh()
         end
     end
 
-	AtlasLoot_SetupForAtlas()
+	--AtlasLoot_SetupForAtlas()
 
 	--If a first time user, set up options
 	if AtlasLootCharDB.FirstTime == nil or AtlasLootCharDB.FirstTime == true then
@@ -623,12 +624,6 @@ function Atlas_OnShow()
 		AtlasLootItemsFrame:Show()
 	end
 
-	--Consult the saved variable table to see whether to show the bottom panel
-	if AtlasLootCharDB.HidePanel then
-		AtlasLootPanel:Hide()
-	else
-		AtlasLootPanel:Show()
-	end
 	AtlasLoot_Atlas_OnShow()
 end
 
