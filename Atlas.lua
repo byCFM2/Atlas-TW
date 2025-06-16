@@ -7,53 +7,42 @@ local frame
 atlasTW.Version = GetAddOnMetadata(atlasTW.Name, "Version")
 
 local function debug(info)
-	if atlasTW.DebugMode then
+	if atlasTW.DEBUGMODE then
 		DEFAULT_CHAT_FRAME:AddMessage("["..atlasTW.Name.."] "..info)
 	end
 end
 
---[[local defaultAtlasTWOptions = {
-     AtlasButtonPosition = 336,
-    AtlasButtonRadius = 78,
-    AtlasButtonShown = true,
-    AtlasRightClick = false,
-    AtlasType = 1,
-    AtlasScale = 1,
-    AtlasVersion = atlasTW.Version,
-    AtlasZone = 1,
-    AtlasSortBy = 1,
-    AtlasAutoSelect = false,
-    AtlasLocked = false,
-    AtlasAlpha = 1.0,
-    AtlasAcronyms = true,
-    AtlasClamped = true,
-    QuestCurrentSide = "Left",
-    QuestWithAtlas = true,
-    QuestColourCheck = true,
-    QuestCheckQuestlog = true,
-    QuestAutoQuery = true,
-    QuestQuerySpam = true,
-    QuestCompareTooltip = true, 
-}
-]]
+-- Events: HookScript (function)
+local function hookScript(frame1, scriptType, handler)
+    -- Store original script handler
+    local originalScript = frame1:GetScript(scriptType)
+    -- Set new script that chains both handlers
+    frame1:SetScript(scriptType, function()
+        -- Call original handler if it exists
+        if originalScript then
+            originalScript()
+        end
+        -- Call our new handler
+        handler()
+    end)
+end
 
---[[ local function cloneTable(t)
-	local new = {}					-- create a new table
-	local i, v = next(t, nil)		-- i is an index of t, v = t[i]
-	while i do
-		if type(v)=="table" then
-			v=cloneTable(v)
-		end
-		new[i] = v
-		i, v = next(t, i)			-- get next index
+local function setupPfUITooltip()
+	if not (AtlasTWOptions.QuestCompareTooltip and IsAddOnLoaded("pfUI") and not KQuestTooltip.backdrop) then
+		return
 	end
-	return new
-end ]]
-
---resets all saved variables to the default values
---[[ local function atlas_FreshOptions()
-	--AtlasTWOptions = cloneTable(defaultAtlasTWOptions)
-end ]]
+	-- Create pfUI tooltip backdrop
+	pfUI.api.CreateBackdrop(KQuestTooltip)
+	pfUI.api.CreateBackdropShadow(KQuestTooltip)
+	-- Setup equipment comparison if available
+	if pfUI.eqcompare then
+		hookScript(KQuestTooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
+		hookScript(KQuestTooltip, "OnHide", function()
+			ShoppingTooltip1:Hide()
+			ShoppingTooltip2:Hide()
+		end)
+	end
+end
 
 local function atlasSimpleSearch(data, text)
 	if not text then
@@ -147,7 +136,7 @@ end
 --This should be called ONLY when we're sure our variables are in memory
 function Atlas_Init()
 	-- Валидация данных AtlasMaps
-	if atlasTW.DebugMode then
+	if atlasTW.DEBUGMODE then
 		local errors = AtlasUtils.ValidateAllData()
 		for _, dungeonErrors in pairs(errors) do
 			for _, error in pairs(dungeonErrors) do
@@ -160,13 +149,13 @@ function Atlas_Init()
 	AtlasLoot_InitializeUI()
 
 	--clear saved vars for a new ver (or a new install!)
-	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= atlasTW.Version then
+	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= atlasTW.Version or AtlasTWCharDB.FirstTime then
 		AtlasOptions_DefaultSettings()
 	end
 
 	--populate the dropdown lists...yeeeah this is so much nicer!
 	-- Добавить валидацию dropdown данных
-    if atlasTW.DebugMode then
+    if atlasTW.DEBUGMODE then
         local dropdownErrors = AtlasTW_DropDownValidateData()
         if table.getn(dropdownErrors) > 0 then
             for _, error in pairs(dropdownErrors) do
@@ -174,6 +163,7 @@ function Atlas_Init()
             end
         end
     end
+
 	Atlas_PopulateDropdowns()
 
 	if atlasTW.DropDowns[AtlasTWOptions.AtlasType] == nil then
@@ -302,7 +292,7 @@ function Atlas_Refresh()
 
 	-- Валидация текущего подземелья
     local errors = AtlasUtils.ValidateDungeonData(zoneID, data[zoneID])
-    if table.getn(errors) > 0 and atlasTW.DebugMode then
+    if table.getn(errors) > 0 and atlasTW.DEBUGMODE then
         for _, error in pairs(errors) do
             debug("Current dungeon validation error: " .. error)
         end
@@ -311,9 +301,9 @@ function Atlas_Refresh()
 	--AtlasLoot_SetupForAtlas()
 
 	--If a first time user, set up options
-	if AtlasLootCharDB.FirstTime == nil or AtlasLootCharDB.FirstTime == true then
+	if AtlasTWCharDB.FirstTime == nil or AtlasTWCharDB.FirstTime == true then
 		StaticPopup_Show("ATLASLOOT_SETUP")
-		AtlasLootCharDB.FirstTime = false
+		AtlasTWCharDB.FirstTime = false
 	end
 
 	--Reset which loot page is 'current'
@@ -325,8 +315,11 @@ function Atlas_Refresh()
 	end
 
 	--Display the newly selected texture
-	AtlasMap:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\Maps\\"..zoneID)
-
+	AtlasMap:SetTexture(atlasTW.MAPPATH..zoneID)
+	--Update the quest frame
+--	DEFAULT_CHAT_FRAME:AddMessage("Atlas_Refresh run!")
+	atlasTW.CurrentMap = zoneID
+	KQuest_Update()
 	--Setup info panel above boss listing
 	local tName = base.ZoneName[1]
 	if AtlasTWOptions.AtlasAcronyms and base.Acronym ~= nil then
@@ -609,12 +602,11 @@ end
 
 --Called whenever the Atlas frame is displayed
 function Atlas_OnShow()
-	AtlasTWQuest_Run()
+	setupPfUITooltip()
 	if(AtlasTWOptions.AtlasAutoSelect) then
 		atlas_AutoSelect()
 	end
 
-	--sneakiness
 	AtlasFrameDropDownType_OnShow()
 	AtlasFrameDropDown_OnShow()
 	Atlas_Refresh()

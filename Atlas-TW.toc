@@ -13,7 +13,7 @@
 ## X-Category: MYADDONS_CATEGORY_MAP
 ## X-OptionsFrame: AtlasOptionsFrame
 ## SavedVariables: AtlasTWOptions
-## SavedVariablesPerCharacter: KQuest_Options, AtlasLootCharDB
+## SavedVariablesPerCharacter: AtlasTWCharDB
 ## OptionalDeps: Titan, myAddOns, EarthFeatureFrame, Alphamap, AtlasLoader, LootLink, ItemSync, EquipCompare, EQCompare
 
 Libs\AceLibrary\AceLibrary.lua

@@ -317,7 +317,7 @@ function AtlasTW_DropDownGetLayout(sortType)
 end
 
 -- Debug function
-if AtlasTW and AtlasTW.DebugMode then
+if AtlasTW and AtlasTW.DEBUGMODE then
     local errors = AtlasDropDown:ValidateData()
     if table.getn(errors) > 0 then
         DEFAULT_CHAT_FRAME:AddMessage("[Atlas] DropDown validation errors:")

@@ -1,4 +1,4 @@
-local variables = AtlasKTW
+local variables = AtlasTW
 -----------------------------------------------------------------------------
 -- Button handlers
 -----------------------------------------------------------------------------
@@ -8,20 +8,9 @@ local variables = AtlasKTW
 -- based on player's faction when AtlasQuest is opened.
 -----------------------------------------------------------------------------
 local function kQuest_OnShow()
-    local isHorde = UnitFactionGroup("player") == "Horde"
-    variables.isHorde = isHorde
-    KQuestHordeCheckBox:SetChecked(isHorde)
-    KQuestAllianceCheckBox:SetChecked(not isHorde)
+    KQuestHordeCheckBox:SetChecked(variables.isHorde)
+    KQuestAllianceCheckBox:SetChecked(not variables.isHorde)
     KQuestSetTextandButtons()
-end
-
--- Options button
-local function kQuestOption1_OnClick()
-    if KQuestOptionFrame:IsVisible() then
-        HideUIPanel(KQuestOptionFrame)
-    else
-        KQuestOptionFrame:Show()
-    end
 end
 
 -- Story button
@@ -44,9 +33,8 @@ local function kQuestAlliance_OnClick()
 	variables.isHorde = false
     KQuestAllianceCheckBox:SetChecked(true)
     KQuestHordeCheckBox:SetChecked(false)
-    KQuest_SaveData()
-    variables.QUpdateNow = true  --TODO run update instantly from functions and purge function OnUpdate, without use global var
-
+    AtlasOptions_Init()
+    KQuestSetTextandButtons()
 end
 
 -- Horde handler
@@ -54,8 +42,8 @@ local function kQuestHorde_OnClick()
 	variables.isHorde = true
     KQuestAllianceCheckBox:SetChecked(false)
     KQuestHordeCheckBox:SetChecked(true)
-    KQuest_SaveData()
-    variables.QUpdateNow = true
+    AtlasOptions_Init()
+    KQuestSetTextandButtons()
 end
 
 -----------------------------------------------------------------------------
@@ -133,12 +121,10 @@ function CreateKQuestFrame()
     })
 
     -- Register events
-    frame:RegisterEvent("VARIABLES_LOADED")
     frame:RegisterEvent("PLAYER_ENTERING_WORLD")
     -- Set event handler
     frame:SetScript("OnEvent", KQuest_OnEvent)
     frame:SetScript("OnShow", kQuest_OnShow)
-    frame:SetScript("OnUpdate", KQuest_OnUpdate)
 
     -- Helper function to set frame level on show
     local function setFrameLevelOnShow()

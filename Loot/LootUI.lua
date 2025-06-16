@@ -149,8 +149,8 @@ function AtlasLoot_CreatePresetButtons(frame)
             if this:IsEnabled() then
                 GameTooltip:ClearLines()
                 GameTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 5)
-                if AtlasLootCharDB and AtlasLootCharDB["QuickLooks"] and AtlasLootCharDB["QuickLooks"][buttonIndex] and AtlasLootCharDB["QuickLooks"][buttonIndex][3] then
-                    GameTooltip:AddLine(AtlasLootCharDB["QuickLooks"][buttonIndex][3])
+                if AtlasTWCharDB and AtlasTWCharDB["QuickLooks"] and AtlasTWCharDB["QuickLooks"][buttonIndex] and AtlasTWCharDB["QuickLooks"][buttonIndex][3] then
+                    GameTooltip:AddLine(AtlasTWCharDB["QuickLooks"][buttonIndex][3])
                 end
                 GameTooltip:AddLine(L["|cff9d9d9dALT+Click to clear|r"])
                 GameTooltip:Show()
@@ -170,16 +170,16 @@ function AtlasLoot_CreatePresetButtons(frame)
         end)
 
         presetButton[i]:SetScript("OnClick", function()
-            if AtlasLootCharDB and AtlasLootCharDB["QuickLooks"] and AtlasLootCharDB["QuickLooks"][buttonIndex] and AtlasLootCharDB["QuickLooks"][buttonIndex][1] then
-                if AtlasLoot_IsLootTableAvailable(AtlasLootCharDB["QuickLooks"][buttonIndex][1]) then
-                    AtlasLoot_ShowItemsFrame(AtlasLootCharDB["QuickLooks"][buttonIndex][1], AtlasLootCharDB["QuickLooks"][buttonIndex][2], AtlasLootCharDB["QuickLooks"][buttonIndex][3], nil)
+            if AtlasTWCharDB and AtlasTWCharDB["QuickLooks"] and AtlasTWCharDB["QuickLooks"][buttonIndex] and AtlasTWCharDB["QuickLooks"][buttonIndex][1] then
+                if AtlasLoot_IsLootTableAvailable(AtlasTWCharDB["QuickLooks"][buttonIndex][1]) then
+                    AtlasLoot_ShowItemsFrame(AtlasTWCharDB["QuickLooks"][buttonIndex][1], AtlasTWCharDB["QuickLooks"][buttonIndex][2], AtlasTWCharDB["QuickLooks"][buttonIndex][3], nil)
                 end
             end
         end)
 
         presetButton[i]:SetScript("OnShow", function()
             this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-            if (not AtlasLootCharDB) or (not AtlasLootCharDB["QuickLooks"]) or (not AtlasLootCharDB["QuickLooks"][buttonIndex]) or (not AtlasLootCharDB["QuickLooks"][buttonIndex][1]) or (AtlasLootCharDB["QuickLooks"][buttonIndex][1] == nil) then
+            if (not AtlasTWCharDB) or (not AtlasTWCharDB["QuickLooks"]) or (not AtlasTWCharDB["QuickLooks"][buttonIndex]) or (not AtlasTWCharDB["QuickLooks"][buttonIndex][1]) or (AtlasTWCharDB["QuickLooks"][buttonIndex][1] == nil) then
                 this:Disable()
             else
                 this:Enable()

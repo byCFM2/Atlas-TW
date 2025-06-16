@@ -7,8 +7,8 @@ local ORANGE = "|cffFF8400"
 
 function AtlasLootPvPMenu()
 	AtlasLoot_PrepMenu(nil, L["PvP Rewards"])
-	AtlasLootCharDB.LastBoss = "PVPMENU"
-	AtlasLootCharDB.LastBossText = L["PvP Rewards"]
+	AtlasTWCharDB.LastBoss = "PVPMENU"
+	AtlasTWCharDB.LastBossText = L["PvP Rewards"]
 	-- Alterac Valley Rewards
 	AtlasLootMenuItem_2_Name:SetText(BZ["Alterac Valley"])
 	AtlasLootMenuItem_2_Extra:SetText("")

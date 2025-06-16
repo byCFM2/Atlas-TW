@@ -4,8 +4,8 @@ local BF = AceLibrary("Babble-Faction-2.2a")
 
 function AtlasLoot_DungeonsMenu1()
 	AtlasLoot_PrepMenu(nil, L["Dungeons & Raids"])
-	AtlasLootCharDB.LastBoss = "DUNGEONSMENU1"
-	AtlasLootCharDB.LastBossText = L["Dungeons & Raids"]
+	AtlasTWCharDB.LastBoss = "DUNGEONSMENU1"
+	AtlasTWCharDB.LastBossText = L["Dungeons & Raids"]
 	AtlasLootItemsFrame_PREV:Show()
 	AtlasLootItemsFrame_NEXT:Show()
     --RFC
@@ -192,8 +192,8 @@ end
 
 function AtlasLoot_DungeonsMenu2()
 	AtlasLoot_PrepMenu(nil, L["Dungeons & Raids"])
-	AtlasLootCharDB.LastBoss = "DUNGEONSMENU2"
-	AtlasLootCharDB.LastBossText = L["Dungeons & Raids"]
+	AtlasTWCharDB.LastBoss = "DUNGEONSMENU2"
+	AtlasTWCharDB.LastBossText = L["Dungeons & Raids"]
 	AtlasLootItemsFrame_PREV:Show()
 	AtlasLootItemsFrame_NEXT:Show()
 	--SWV

@@ -4,6 +4,5 @@
 	<Include file="QuestInsideFrame.lua"/>
 	<Include file="QuestTooltip.lua"/>
 	<Include file="QuestUI.lua"/>
-	<Include file="QuestInstances.lua"/>
 	<Include file="QuestMain.lua"/>
 </Ui>

@@ -55,8 +55,8 @@ end
 
 function AtlasLootSetMenu()
 	AtlasLoot_PrepMenu(nil, L["Collections"])
-	AtlasLootCharDB.LastBoss = "SETMENU"
-	AtlasLootCharDB.LastBossText = "Collections"
+	AtlasTWCharDB.LastBoss = "SETMENU"
+	AtlasTWCharDB.LastBossText = "Collections"
 	--Pre 60 Sets
 	AtlasLootMenuItem_1_Name:SetText(L["Pre 60 Sets"])
 	AtlasLootMenuItem_1_Extra:SetText("")

@@ -5,8 +5,8 @@ local BZ = AceLibrary("Babble-Zone-2.2a")
 
 function AtlasLootRepMenu()
 	AtlasLoot_PrepMenu(nil, L["Factions"])
-	AtlasLootCharDB.LastBoss = "REPMENU"
-	AtlasLootCharDB.LastBossText = "Factions"
+	AtlasTWCharDB.LastBoss = "REPMENU"
+	AtlasTWCharDB.LastBossText = "Factions"
 	--Argent Dawn
 	AtlasLootMenuItem_1_Name:SetText(BF["Argent Dawn"])
 	AtlasLootMenuItem_1_Extra:SetText("")

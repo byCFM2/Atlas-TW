@@ -6,8 +6,8 @@ local WHITE = "|cffFFFFFF";
 
 function AtlasLoot_WorldMenu()
 	AtlasLoot_PrepMenu(nil, L["World"])
-	AtlasLootCharDB.LastBoss = "WORLDMENU"
-	AtlasLootCharDB.LastBossText = L["World"]
+	AtlasTWCharDB.LastBoss = "WORLDMENU"
+	AtlasTWCharDB.LastBossText = L["World"]
 	--Azuregos
 	AtlasLootMenuItem_1_Name:SetText(BB["Azuregos"]);
 	AtlasLootMenuItem_1_Extra:SetText(WHITE..BZ["Azshara"]);

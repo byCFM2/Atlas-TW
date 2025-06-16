@@ -1171,8 +1171,8 @@ AtlasLoot_TableNames = {
 	["JEWELCRAFTMENU"] = { "dummy", "dummy" },
 	["WORLDMENU"] = { "dummy", "dummy" },
 	["SURVIVALMENU"] = { "dummy", "dummy" },
-	["WishList"] = { L["WishList"], "AtlasLootCharDB" },
-    ["SearchResult"] = { L["Search"], "AtlasLootCharDB" },
+	["WishList"] = { L["WishList"], "AtlasTWCharDB" },
+    ["SearchResult"] = { L["Search"], "AtlasTWCharDB" },
 	--If all else fails!
 	["EmptyInstance"] = { "AtlasLoot", "AtlasLootFallback" },
 }

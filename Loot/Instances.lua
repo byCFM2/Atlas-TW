@@ -993,7 +993,7 @@ AtlasLootBossButtons = {
 	},
 }
 --------------------------------------------------------------------------------
--- ItemIDs (default english)
+-- LootItemIDs (default english)
 --------------------------------------------------------------------------------
 AtlasLoot_Data["AtlasLootItems"] = {
 	EmptyInstance = {},

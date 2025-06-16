@@ -14,7 +14,7 @@ local yellow = "|cffffd200"
 -- Variables
 -----------------------------------------------------------------------------
 local kQQuestColor
-local variables = AtlasKTW
+local variables = AtlasTW
 local kQuestNextPageCount
 local kQuestInstChanged
 local playerName = UnitName("player")
@@ -45,28 +45,26 @@ local function kQuestClearAll()
 end
 
 function KQuestClose1_OnClick()
-	variables.QWithAtlas = not variables.QWithAtlas
+	AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
     HideUIPanel(KQuestFrame)
     HideUIPanel(KQuestInsideFrame)
-	variables.QUpdateNow = true
-    KQAutoshowOption:SetChecked(variables.QWithAtlas)
-    KQuest_SaveData()
+    KQAutoshowOption:SetChecked(AtlasTWOptions.QuestWithAtlas)
+    AtlasOptions_Init()
 end
 
 -----------------------------------------------------------------------------
 -- upper right button / to show/close panel
 -----------------------------------------------------------------------------
 function KQuestCLOSE_OnClick()
-	variables.QWithAtlas = not variables.QWithAtlas
-	if not variables.QWithAtlas then
+	AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
+	if not AtlasTWOptions.QuestWithAtlas then
 		HideUIPanel(KQuestFrame)
 		HideUIPanel(KQuestInsideFrame)
 	else
 		ShowUIPanel(KQuestFrame)
 	end
-	variables.QUpdateNow = true
-    KQAutoshowOption:SetChecked(variables.QWithAtlas)
-    KQuest_SaveData()
+    KQAutoshowOption:SetChecked(AtlasTWOptions.QuestWithAtlas)
+    AtlasOptions_Init()
 end
 
 -----------------------------------------------------------------------------
@@ -130,7 +128,7 @@ end
 -- Returns true if quest is found in quest log, false otherwise
 local function kQCompareQuestLogtoQuest(questId)
     -- Early return if quest log checking is disabled
-    if not variables.QCheckQuestlog then
+    if not AtlasTWOptions.QuestCheckQuestlog then
         return false
     end
 
@@ -376,13 +374,13 @@ function KQButton_SetText()
                 if questData.Rewards[itemIndex] then
                     itemId = getRewardItemData(questData,itemIndex,"ID") or ""
                     -- Handle auto-query functionality if enabled
-                    if variables.QAutoQuery then
+                    if AtlasTWOptions.QuestAutoQuery then
                         itemColor = getRewardItemData(questData,itemIndex,"Color") or ""
                         itemName = getRewardItemData(questData,itemIndex,"Name") or ""
                         -- Query server for item data if not in cache
                         if not GetItemInfo(itemId) then
                             GameTooltip:SetHyperlink("item:"..itemId..":0:0:0")
-                            if not variables.QQuerySpam then
+                            if not variables.QuestQuerySpam then
                                 DEFAULT_CHAT_FRAME:AddMessage(AQSERVERASK.."["..itemColor..itemName..white.."]"..AQSERVERASKAuto)
                             end
                         end
@@ -592,7 +590,7 @@ function KQFinishedQuest_OnClick()
     -- Update quest completion status
     variables.Q[questKey] = KQuestFinished:GetChecked() and 1 or nil
     -- Save to player options
-    KQuest_Options[UnitName("player")][questKey] = variables.Q[questKey]
+    AtlasTWCharDB[questKey] = variables.Q[questKey]
     -- Update UI
     KQuestSetTextandButtons()
     KQButton_SetText()
@@ -602,45 +600,12 @@ end
 -- Loads the saved variables
 -----------------------------------------------------------------------------
 local function kQuest_LoadData()
-	variables.QCurrentSide = AtlasTWOptions["QuestCurrentSide"]
-	variables.QWithAtlas = AtlasTWOptions["QuestWithAtlas"]
-	variables.QColourCheck = AtlasTWOptions["QuestColourCheck"]
-	KQuest_Options = KQuest_Options or {}
-	KQuest_Options[playerName] = KQuest_Options[playerName] or {}
+    AtlasTWCharDB = AtlasTWCharDB or {}
 	for i=1, variables.QMAXINSTANCES do
 		for b=1, variables.QMAXQUESTS do
-			variables.Q["KQFinishedQuest_Inst"..i.."Quest"..b] = KQuest_Options[playerName]["KQFinishedQuest_Inst"..i.."Quest"..b]
-			variables.Q["KQFinishedQuest_Inst"..i.."Quest"..b.."HORDE"] = KQuest_Options[playerName]["KQFinishedQuest_Inst"..i.."Quest"..b.."HORDE"]
+			variables.Q["KQFinishedQuest_Inst"..i.."Quest"..b] = AtlasTWCharDB["KQFinishedQuest_Inst"..i.."Quest"..b]
+			variables.Q["KQFinishedQuest_Inst"..i.."Quest"..b.."HORDE"] = AtlasTWCharDB["KQFinishedQuest_Inst"..i.."Quest"..b.."HORDE"]
 		end
-	end
-	variables.QCheckQuestlog = AtlasTWOptions["QuestCheckQuestlog"]
-	variables.QAutoQuery = AtlasTWOptions["QuestAutoQuery"]
-	variables.QQuerySpam = AtlasTWOptions["QuestQuerySpam"]
-	variables.QCompareTooltip = AtlasTWOptions["QuestCompareTooltip"]
-    variables.QLoaded = true
-end
-
---******************************************
--- Events: OnEvent
---******************************************
------------------------------------------------------------------------------
--- Detects whether the variables have to be loaded
--- or reestablishes them
------------------------------------------------------------------------------
-local function kQuest_Initialize()
-	if not (variables.QLoaded or VariablesLoaded) then
-		return
-	end
-	if type(AtlasTWOptions) == "table" then
-		kQuest_LoadData()
-	else
-		DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Atlas-TW Quest:|r|cff00ffffVariables not loaded!|r")
-	end
-	-- Register Tooltip with EquipCompare if enabled.
-	if variables.QCompareTooltip then
-		KQuestRegisterTooltip()
-	else
-		KQuestUnRegisterTooltip()
 	end
 end
 
@@ -648,37 +613,17 @@ end
 -- Called when the player starts the game loads the variables
 -----------------------------------------------------------------------------
 function KQuest_OnEvent()
-    if event == "VARIABLES_LOADED" then
-        VariablesLoaded = 1 -- data is loaded completely
+    if type(AtlasTWOptions) == "table" then
+        kQuest_LoadData()
     else
-        kQuest_Initialize() -- player enters world / initialize the data
+        DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Atlas-TW Quest:|r|cff00ffffVariables not loaded!|r")
     end
-end
-
------------------------------------------------------------------------------
--- Saves the variables
------------------------------------------------------------------------------
-function KQuest_SaveData()
-	-- Save the variables
-	AtlasTWOptions["QuestCurrentSide"] = variables.QCurrentSide
-	AtlasTWOptions["QuestWithAtlas"] = variables.QWithAtlas
-	AtlasTWOptions["QuestColourCheck"] = variables.QColourCheck
-	AtlasTWOptions["QuestCheckQuestlog"] = variables.QCheckQuestlog
-	AtlasTWOptions["QuestAutoQuery"] = variables.QAutoQuery
-	AtlasTWOptions["QuestQuerySpam"] = variables.QQuerySpam
-	AtlasTWOptions["QuestCompareTooltip"] = variables.QCompareTooltip
-end
-
---******************************************
--- Events: OnLoad
---******************************************
-
------------------------------------------------------------------------------
--- Call OnLoad set Variables and hides the panel
------------------------------------------------------------------------------
-local function kQuest_OnLoad()
-	variables.CurrentMap = AtlasMap:GetTexture()
-	variables.QUpdateNow = true
+    -- Register Tooltip with EquipCompare if enabled.
+    if AtlasTWOptions.QuestCompareTooltip then
+        KQuestRegisterTooltip()
+    else
+        KQuestUnRegisterTooltip()
+    end
 end
 
 --******************************************
@@ -687,22 +632,16 @@ end
 -----------------------------------------------------------------------------
 -- hide panel if instance is 99 (nothing)
 -----------------------------------------------------------------------------
-function KQuest_OnUpdate()
+function KQuest_Update()
 	local previousInstance = variables.QCurrentInstance
 	-- Update instance information
-	KQuest_Instances()
-	-- Cache UI panels for better performance
-	local questFrame = KQuestFrame
-	local insideFrame = KQuestInsideFrame
+    AtlasTW.QCurrentInstance = variables.INSTANCEMAP[AtlasTW.CurrentMap] or 99
 	-- Check if we need to hide/update the quest panels
-	if variables.QCurrentInstance ~= previousInstance or variables.QUpdateNow then
-		-- Update quest text and buttons if instance changed or update forced
+	if variables.QCurrentInstance ~= previousInstance then
 		KQuestSetTextandButtons()
-		variables.QUpdateNow = false
 	elseif variables.QCurrentInstance == 99 then
-		-- Hide both panels if no quests available
-		HideUIPanel(questFrame)
-		HideUIPanel(insideFrame)
+		HideUIPanel(KQuestFrame)
+		HideUIPanel(KQuestInsideFrame)
 	end
 end
 
@@ -776,7 +715,7 @@ function KQuestSetTextandButtons()
                     kQQuestColor = green
                 end
                 -- Apply color settings
-                if not variables.QColourCheck then
+                if not AtlasTWOptions.QuestColourCheck then
                     kQQuestColor = yellow
                 end
                 if questLevel == 100 or kQCompareQuestLogtoQuest(b) then
@@ -797,62 +736,6 @@ function KQuestSetTextandButtons()
             _G["KQuestlineArrow_"..b]:Hide()
 		end
 	end
-end
-
--- Events: HookScript (function)
-local function hookScript(frame, scriptType, handler)
-    -- Store original script handler
-    local originalScript = frame:GetScript(scriptType)
-    -- Set new script that chains both handlers
-    frame:SetScript(scriptType, function()
-        -- Call original handler if it exists
-        if originalScript then
-            originalScript()
-        end
-        -- Call our new handler
-        handler()
-    end)
-end
-
-function AtlasTWQuest_Run()
-    -- Handle quest frame visibility based on settings
-    local function handleQuestFrameVisibility()
-        if variables.QWithAtlas then
-            ShowUIPanel(KQuestFrame)
-        else
-            HideUIPanel(KQuestFrame)
-        end
-        HideUIPanel(KQuestInsideFrame)
-    end
-    -- Position quest frame if shown on right side
-    local function positionQuestFrame()
-        if variables.QCurrentSide == "Right" then
-            KQuestFrame:ClearAllPoints()
-            KQuestFrame:SetPoint("TOP", "AtlasFrame", 567, -36)
-        end
-    end
-    -- Setup pfUI tooltip integration if enabled
-    local function setupPfUITooltip()
-        if not (variables.QCompareTooltip and IsAddOnLoaded("pfUI") and not KQuestTooltip.backdrop) then
-            return
-        end
-        -- Create pfUI tooltip backdrop
-        pfUI.api.CreateBackdrop(KQuestTooltip)
-        pfUI.api.CreateBackdropShadow(KQuestTooltip)
-        -- Setup equipment comparison if available
-        if pfUI.eqcompare then
-            hookScript(KQuestTooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
-            hookScript(KQuestTooltip, "OnHide", function()
-                ShoppingTooltip1:Hide()
-                ShoppingTooltip2:Hide()
-            end)
-        end
-    end
-
-    -- Execute all setup functions
-    handleQuestFrameVisibility()
-    positionQuestFrame()
-    setupPfUITooltip()
 end
 
 --******************************************
@@ -1010,7 +893,7 @@ function KQuestItem_OnClick(mouseButton)
         KQuestTooltip:SetOwner(frame, "ANCHOR_RIGHT", -(frame:GetWidth() / 2), 24)
         KQuestTooltip:SetHyperlink(string.format("item:%d:0:0:0", itemId))
         KQuestTooltip:Show()
-        if not variables.QQuerySpam then
+        if not AtlasTWOptions.QuestQuerySpam then
             DEFAULT_CHAT_FRAME:AddMessage(string.format("%s[%s%s%s]%s",
                 AQSERVERASK, itemColor, itemName, white, AQSERVERASKInformation))
         end
@@ -1037,7 +920,6 @@ function KQuestItem_OnClick(mouseButton)
 end
 
 -- Initialize variables and frames on addon load
-kQuest_OnLoad()
 CreateKQuestFrame()
 -- Show version message
 DEFAULT_CHAT_FRAME:AddMessage(red.."A"..yellow.."t"..green.."l"..orange.."a"..blue.."s"..white.."-|cff800080TW |cff00FFFFv.|cffFFC0CB"..AtlasTW.Version.." |cffA52A2Aloaded.")

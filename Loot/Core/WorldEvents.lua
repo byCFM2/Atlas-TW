@@ -6,8 +6,8 @@ local ORANGE = "|cffFF8400"
 
 function AtlasLootWorldEventMenu()
 	AtlasLoot_PrepMenu(nil, L["World Events"])
-	AtlasLootCharDB.LastBoss = "WORLDEVENTMENU"
-	AtlasLootCharDB.LastBossText = L["World Events"]
+	AtlasTWCharDB.LastBoss = "WORLDEVENTMENU"
+	AtlasTWCharDB.LastBossText = L["World Events"]
 	--Abyssal Council
 	AtlasLootMenuItem_2_Name:SetText(L["Abyssal Council"])
 	AtlasLootMenuItem_2_Extra:SetText(ORANGE..BZ["Silithus"])

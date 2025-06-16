@@ -10,8 +10,8 @@ local WHITE = "|cffFFFFFF"
 
 function AtlasLoot_CraftingMenu()
 	AtlasLoot_PrepMenu(nil, L["Crafting"])
-	AtlasLootCharDB.LastBoss = "CRAFTINGMENU"
-	AtlasLootCharDB.LastBossText = L["Crafting"]
+	AtlasTWCharDB.LastBoss = "CRAFTINGMENU"
+	AtlasTWCharDB.LastBossText = L["Crafting"]
 	--Alchemy
 	AtlasLootMenuItem_2_Name:SetText(BS["Alchemy"])
 	AtlasLootMenuItem_2_Extra:SetText("")

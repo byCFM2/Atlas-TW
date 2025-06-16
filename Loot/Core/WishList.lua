@@ -21,15 +21,15 @@ end
 Looks for an empty slot in the wishlist and slots the item in
 ]]
 function AtlasLoot_AddToWishlist(itemID, itemTexture, itemName, extraText, sourcePage)
-	for _, v in ipairs(AtlasLootCharDB["WishList"]) do
+	for _, v in ipairs(AtlasTWCharDB["WishList"]) do
 		if v[1] == itemID then
 			DEFAULT_CHAT_FRAME:AddMessage(BLUE.."AtlasLoot"..": "..AtlasLoot_FixText(itemName)..RED..L[" already in the WishList!"])
 			return
 		end
 	end
-	table.insert(AtlasLootCharDB["WishList"], { itemID, itemTexture, itemName, extraText, sourcePage })
+	table.insert(AtlasTWCharDB["WishList"], { itemID, itemTexture, itemName, extraText, sourcePage })
 	DEFAULT_CHAT_FRAME:AddMessage(BLUE.."AtlasLoot"..": "..AtlasLoot_FixText(itemName)..GREY..L[" added to the WishList."])
-	AtlasLoot_WishList = AtlasLoot_CategorizeWishList(AtlasLootCharDB["WishList"])
+	AtlasLoot_WishList = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishList"])
 end
 
 --[[
@@ -37,14 +37,14 @@ Deletes the specified items from the wishlist
 ]]
 function AtlasLoot_DeleteFromWishList(itemID)
 	if itemID and itemID == 0 then return end
-	for i, v in ipairs(AtlasLootCharDB["WishList"]) do
+	for i, v in ipairs(AtlasTWCharDB["WishList"]) do
 		if v[1] == itemID then
 			DEFAULT_CHAT_FRAME:AddMessage(RED.."AtlasLoot"..": "..AtlasLoot_FixText(v[3])..GREY..L[" deleted from the WishList."])
-			table.remove(AtlasLootCharDB["WishList"], i)
+			table.remove(AtlasTWCharDB["WishList"], i)
 			break
 		end
 	end
-	AtlasLoot_WishList = AtlasLoot_CategorizeWishList(AtlasLootCharDB["WishList"])
+	AtlasLoot_WishList = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishList"])
 	AtlasLootItemsFrame:Hide()
 	AtlasLoot_ShowItemsFrame("WishList", "WishListPage"..currentPage, L["WishList"], pFrame)
 end
@@ -60,15 +60,15 @@ function AtlasLoot_WishListSort()
 	local check=false
 
 	while(P<31) do
-		temp=AtlasLootCharDB["WishList"][P]
+		temp=AtlasTWCharDB["WishList"][P]
 		j=P
-		check=AtlasLoot_WishListSortCheck(AtlasLootCharDB["WishList"][j-1], temp)
+		check=AtlasLoot_WishListSortCheck(AtlasTWCharDB["WishList"][j-1], temp)
 		while((j>1) and check) do
-			AtlasLootCharDB["WishList"][j] = AtlasLootCharDB["WishList"][j-1]
+			AtlasTWCharDB["WishList"][j] = AtlasTWCharDB["WishList"][j-1]
 			j=j-1
-			check=AtlasLoot_WishListSortCheck(AtlasLootCharDB["WishList"][j-1], temp)
+			check=AtlasLoot_WishListSortCheck(AtlasTWCharDB["WishList"][j-1], temp)
 		end
-		AtlasLootCharDB["WishList"][j]=temp
+		AtlasTWCharDB["WishList"][j]=temp
 		P=P+1
 	end
 
@@ -196,7 +196,7 @@ end
 --[[
 Group items with zone/event name etc, and format them by adding subheadings and empty lines
 This function returns a single table with all items, use AtlasLoot_GetWishListPage to split it
-wlTable: is AtlasLootCharDB["WishList"], parameterized for flexible
+wlTable: is AtlasTWCharDB["WishList"], parameterized for flexible
 ]]
 function AtlasLoot_CategorizeWishList(wlTable)
 	local subheadings, categories, result = {}, {}, {}
@@ -242,7 +242,7 @@ Return partial data of WishList table
 page: the page number needed
 ]]
 function AtlasLoot_GetWishListPage(page)
-	if not AtlasLoot_WishList then AtlasLoot_WishList = AtlasLoot_CategorizeWishList(AtlasLootCharDB["WishList"]) end
+	if not AtlasLoot_WishList then AtlasLoot_WishList = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishList"]) end
 	-- Calc for maximal pages
 	local pageMax = math.ceil(table.getn(AtlasLoot_WishList) / 30)
 	if page < 1 then page = 1 end

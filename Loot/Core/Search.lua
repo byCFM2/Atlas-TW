@@ -6,7 +6,7 @@ local currentPage = 1
 local SearchResult = nil
 
 function AtlasLoot:ShowSearchResult()
-	AtlasLoot_ShowItemsFrame("SearchResult", "SearchResultPage"..currentPage, string.format((L["Search Result: %s"]), AtlasLootCharDB.LastSearchedText or ""), pFrame)
+	AtlasLoot_ShowItemsFrame("SearchResult", "SearchResultPage"..currentPage, string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""), pFrame)
 end
 
 local function strtrim(s)
@@ -19,7 +19,7 @@ function AtlasLoot:Search(Text)
 	local text = string.lower(Text)
 	local search = function(dataSource)
 		if dataSource == "AtlasLootFallback" then return end
-		local partial = AtlasLootCharDB.PartialMatching
+		local partial = AtlasTWCharDB.PartialMatching
 		for dataID, data in pairs(AtlasLoot_Data[dataSource]) do
 			for _, v in ipairs(data) do
 				if type(v[1]) ~= "table" then
@@ -36,7 +36,7 @@ function AtlasLoot:Search(Text)
 						if found then
 							local _, _, quality = string.find(v[3], "=q(%d)=")
 							if quality then itemName = "=q"..quality.."="..itemName end
-							table.insert(AtlasLootCharDB["SearchResult"], { v[1], v[2], itemName, v[4], dataID.."|"..dataSource })
+							table.insert(AtlasTWCharDB["SearchResult"], { v[1], v[2], itemName, v[4], dataID.."|"..dataSource })
 						end
 					-- spell
 					elseif (v[1] ~= nil) and (v[1] ~= "") and (string.sub(v[1], 1, 1) == "s") then
@@ -56,7 +56,7 @@ function AtlasLoot:Search(Text)
 						end
 						if found then
 							spellName = string.sub(v[3], 1, 4)..spellName
-							table.insert(AtlasLootCharDB["SearchResult"], { v[1], v[2], spellName, v[4], dataID.."|"..dataSource })
+							table.insert(AtlasTWCharDB["SearchResult"], { v[1], v[2], spellName, v[4], dataID.."|"..dataSource })
 						end
 					-- enchant
 					elseif (v[1] ~= nil) and (v[1] ~= "") and (string.sub(v[1], 1, 1) == "e") then
@@ -76,7 +76,7 @@ function AtlasLoot:Search(Text)
 						end
 						if found then
 							spellName = string.sub(v[3], 1, 4)..spellName
-							table.insert(AtlasLootCharDB["SearchResult"], { v[1], v[2], spellName, v[4], dataID.."|"..dataSource })
+							table.insert(AtlasTWCharDB["SearchResult"], { v[1], v[2], spellName, v[4], dataID.."|"..dataSource })
 						end
 					end
 				end
@@ -84,16 +84,16 @@ function AtlasLoot:Search(Text)
 		end
 	end
 
-	AtlasLootCharDB["SearchResult"] = {}
-	AtlasLootCharDB.LastSearchedText = Text
+	AtlasTWCharDB["SearchResult"] = {}
+	AtlasTWCharDB.LastSearchedText = Text
 	for dataSource in pairs(AtlasLoot_Data) do search(dataSource) end
 
-	if getn(AtlasLootCharDB["SearchResult"]) == 0 then
+	if getn(AtlasTWCharDB["SearchResult"]) == 0 then
 		DEFAULT_CHAT_FRAME:AddMessage(RED.."AtlasLoot"..": "..WHITE..L["No match found for"].." \""..Text.."\".")
 	else
 		currentPage = 1
-		SearchResult = AtlasLoot_CategorizeWishList(AtlasLootCharDB["SearchResult"])
-		AtlasLoot_ShowItemsFrame("SearchResult", "SearchResultPage1", string.format((L["Search Result: %s"]), AtlasLootCharDB.LastSearchedText or ""), pFrame)
+		SearchResult = AtlasLoot_CategorizeWishList(AtlasTWCharDB["SearchResult"])
+		AtlasLoot_ShowItemsFrame("SearchResult", "SearchResultPage1", string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""), pFrame)
 	end
 end
 
@@ -110,10 +110,10 @@ function AtlasLoot:ShowSearchOptions(button)
 			)
 			Hewdrop:AddLine(
 				"text", L["Partial matching"],
-				"checked", AtlasLootCharDB.PartialMatching,
+				"checked", AtlasTWCharDB.PartialMatching,
 				"tooltipTitle", L["Partial matching"],
 				"tooltipText", L["If checked, AtlasLoot searches item names for a partial match."],
-				"func", function() AtlasLootCharDB.PartialMatching = not AtlasLootCharDB.PartialMatching end
+				"func", function() AtlasTWCharDB.PartialMatching = not AtlasTWCharDB.PartialMatching end
 			)
 		end
 		Hewdrop:Open(button,
@@ -126,14 +126,14 @@ function AtlasLoot:ShowSearchOptions(button)
 end
 
 function AtlasLoot:GetOriginalDataFromSearchResult(itemID)
-	for i, v in ipairs(AtlasLootCharDB["SearchResult"]) do
+	for i, v in ipairs(AtlasTWCharDB["SearchResult"]) do
 		if v[1] == itemID then return unpack(v) end
 	end
 end
 
 -- Copied and modified from AtlasLoot_GetWishListPage
 function AtlasLoot:GetSearchResultPage(page)
-	if not SearchResult then SearchResult = AtlasLoot_CategorizeWishList(AtlasLootCharDB["SearchResult"]) end
+	if not SearchResult then SearchResult = AtlasLoot_CategorizeWishList(AtlasTWCharDB["SearchResult"]) end
 	-- Calc for maximal pages
 	local pageMax = math.ceil(getn(SearchResult) / 30)
 	if page < 1 then page = 1 end

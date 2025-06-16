@@ -190,7 +190,7 @@ end
 
 local lastItemID, lastSourceStr, lastDropRate
 function AtlasLootTip.extendTooltip(tooltip)
-	if not AtlasLootCharDB.ShowSource then
+	if not AtlasTWOptions.LootShowSource then
 		return
 	end
 	local tooltipName = tooltip:GetName()

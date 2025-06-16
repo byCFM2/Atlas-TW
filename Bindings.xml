@@ -6,28 +6,28 @@
 		AtlasOptions_Toggle()
 	</Binding>
 	<Binding name="ATLASLOOT_QL1" header="ATLASLOOT_TITLE">
-		if AtlasLootCharDB["QuickLooks"][1] then
+		if AtlasTWCharDB["QuickLooks"][1] then
 			if AtlasFrame and AtlasFrame:IsVisible() then
 				AtlasLootPanel_Preset1:Click()
 			end
 		end
 	</Binding>
 	<Binding name="ATLASLOOT_QL2">
-		if AtlasLootCharDB["QuickLooks"][2] then
+		if AtlasTWCharDB["QuickLooks"][2] then
 			if AtlasFrame and AtlasFrame:IsVisible() then
 				AtlasLootPanel_Preset2:Click()
 			end
 		end
 	</Binding>
 	<Binding name="ATLASLOOT_QL3">
-		if AtlasLootCharDB["QuickLooks"][3] then
+		if AtlasTWCharDB["QuickLooks"][3] then
 			if AtlasFrame and AtlasFrame:IsVisible() then
 				AtlasLootPanel_Preset3:Click()
 			end
 		end
 	</Binding>
 	<Binding name="ATLASLOOT_QL4">
-		if AtlasLootCharDB["QuickLooks"][4] then
+		if AtlasTWCharDB["QuickLooks"][4] then
 			if AtlasFrame and AtlasFrame:IsVisible() then
 				AtlasLootPanel_Preset4:Click()
 			end
