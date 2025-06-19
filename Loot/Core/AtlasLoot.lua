@@ -2,7 +2,6 @@ AtlasLoot = AceLibrary("AceAddon-2.0"):new("AceDBa-2.0")
 
 local _G = getfenv()
 local atlasTW = _G.AtlasTW
-
 --Instance required libraries
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
@@ -291,8 +290,8 @@ function AtlasLootBoss_OnClick(name)
 	--This has been invoked from Atlas, so we remove any claim external mods have on the loot table
 	AtlasLootItemsFrame.externalBoss = nil
 	--Hide the AtlasQuest frame if present so that the AtlasLoot items frame is not stuck under it
-	if KQuestInsideFrame then
-		HideUIPanel(KQuestInsideFrame)
+	if AtlasTW.Quest.UI.InsideAtlasFrame then
+		HideUIPanel(AtlasTW.Quest.UI.InsideAtlasFrame)
 	end
 end
 
@@ -326,8 +325,8 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 		end
 	end
 	--Get AtlasQuest out of the way
-	if KQuestInsideFrame then
-		HideUIPanel(KQuestInsideFrame)
+	if AtlasTW.Quest.UI.InsideAtlasFrame then
+		HideUIPanel(AtlasTW.Quest.UI.InsideAtlasFrame)
 	end
 	--Ditch the Quicklook selector
 	AtlasLoot_QuickLooks:Hide()

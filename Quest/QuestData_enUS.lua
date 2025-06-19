@@ -10761,4 +10761,4 @@ kQuestInstanceData[64].Quests.Horde[6] = kQuestInstanceData[64].Quests.Alliance[
 kQuestInstanceData[64].Quests.Horde[7] = kQuestInstanceData[64].Quests.Alliance[7]
 kQuestInstanceData[64].Quests.Horde[8] = kQuestInstanceData[64].Quests.Alliance[8]
 kQuestInstanceData[64].Quests.Horde[9] = kQuestInstanceData[64].Quests.Alliance[9]
-_G.KQuestInstanceData = kQuestInstanceData
+AtlasTW.Quest.DataBase = kQuestInstanceData

@@ -18,41 +18,25 @@ local yellow = "|cffffd200"
 -- Local reference to the UI elements for convenience
 local UI = AtlasTW.Quest.UI or {}
 
--- This function should be called when the frame is initialized
-function AtlasTW.Quest.Initialize()
-    -- Get a local reference to the UI table created in QuestInsideFrame.lua
-    if not UI then return end
-    -- Initial population of the quest list
-    AtlasTW.Quest.UpdateQuestList()
-end
-
-function AtlasTW.Quest.OnItemEnter()
-    -- Get the frame that triggered this event
-    local frame = this
-    if not frame or not frame:GetName() then
-        return
-    end
-
-    -- Extract item index from frame name (e.g., "KQuestItemframe1" -> 1)
-    local frameName = frame:GetName()
-
-    -- For names like "KQuestItemframe1", "KQuestItemframe2" etc.
-    local itemIndex = tonumber(strsub(frameName, -1))
-
+function AtlasTW.Quest.OnItemEnter(itemIndex)
     if not itemIndex then
-        return
+        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnItemEnter failed itemIndex!")
     end
-
+    local frame = this
+    -- Get the frame that triggered this event
+    if not frame then
+        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnItemEnter failed frame and name!")
+    end
     -- Get current quest data
     local instanceId = AtlasTW.QCurrentInstance
     local faction = AtlasTW.isHorde and "Horde" or "Alliance"
 
     -- Get quest data from new database structure
-    local questData = KQuestInstanceData and
-                      KQuestInstanceData[instanceId] and
-                      KQuestInstanceData[instanceId].Quests and
-                      KQuestInstanceData[instanceId].Quests[faction] and
-                      KQuestInstanceData[instanceId].Quests[faction][AtlasTW.QCurrentQuest]
+    local questData = AtlasTW.Quest.DataBase and
+                      AtlasTW.Quest.DataBase[instanceId] and
+                      AtlasTW.Quest.DataBase[instanceId].Quests and
+                      AtlasTW.Quest.DataBase[instanceId].Quests[faction] and
+                      AtlasTW.Quest.DataBase[instanceId].Quests[faction][AtlasTW.QCurrentQuest]
 
     if not questData or not questData.Rewards then
         return
@@ -118,33 +102,24 @@ function AtlasTW.Quest.OnItemLeave()
     end
 end
 
-function AtlasTW.Quest.OnItemClick(mouseButton)
-    -- Get the frame that triggered this event
-    local frame = this
-    if not frame or not frame:GetName() then
-        return
-    end
-
-    -- Extract item index from frame name (e.g., "KQuestItemframe1" -> 1)
-    local frameName = frame:GetName()
-
-    -- For names like "KQuestItemframe1", "KQuestItemframe2" etc.
-    local itemIndex = tonumber(strsub(frameName, -1))
-
+function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
     if not itemIndex then
-        return
+        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnItemClick failed itemIndex!")
     end
-
+    local frame = this
+    if not frame then
+        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnItemClick failed frame or name!")
+    end
     -- Get current quest data
     local instanceId = AtlasTW.QCurrentInstance
     local faction = AtlasTW.isHorde and "Horde" or "Alliance"
 
     -- Get quest data from new database structure
-    local questData = KQuestInstanceData and
-                      KQuestInstanceData[instanceId] and
-                      KQuestInstanceData[instanceId].Quests and
-                      KQuestInstanceData[instanceId].Quests[faction] and
-                      KQuestInstanceData[instanceId].Quests[faction][AtlasTW.QCurrentQuest]
+    local questData = AtlasTW.Quest.DataBase and
+                      AtlasTW.Quest.DataBase[instanceId] and
+                      AtlasTW.Quest.DataBase[instanceId].Quests and
+                      AtlasTW.Quest.DataBase[instanceId].Quests[faction] and
+                      AtlasTW.Quest.DataBase[instanceId].Quests[faction][AtlasTW.QCurrentQuest]
 
     if not questData or not questData.Rewards then
         return
@@ -158,7 +133,6 @@ function AtlasTW.Quest.OnItemClick(mouseButton)
 
     -- Extract item data
     local itemId = rewardItem.ID
-    local itemName = rewardItem.Name
     local itemColor = rewardItem.Color or white
 
     -- Handle right click - show tooltip
@@ -168,13 +142,13 @@ function AtlasTW.Quest.OnItemClick(mouseButton)
         AtlasTW.Quest.Tooltip:Show()
         if not AtlasTWOptions.QuestQuerySpam then
             DEFAULT_CHAT_FRAME:AddMessage(string.format("%s[%s%s%s]%s",
-                AQSERVERASK, itemColor, itemName, white, AQSERVERASKInformation))
+                AQSERVERASK, itemColor, rewardItem.Name, white, AQSERVERASKInformation))
         end
         return
     end
     -- Handle shift click - insert item link
     if IsShiftKeyDown() then
-        itemName, _, itemQuality = GetItemInfo(itemId)
+        local itemName, _, itemQuality = GetItemInfo(itemId)
         if itemName then
             local _, _, _, hex = GetItemQualityColor(itemQuality)
             local itemLink = string.format("%s|Hitem:%d:0:0:0|h[%s]|h|r",
@@ -194,7 +168,7 @@ end
 
 -- Function to close the quest details frame
 function AtlasTW.Quest.CloseDetails()
-    HideUIPanel(KQuestInsideFrame)
+    HideUIPanel(UI.InsideAtlasFrame)
     AtlasTW.QCurrentButton = 0
 end
 
@@ -221,17 +195,17 @@ function AtlasTW.Quest.NextPage()
 
     -- Handle story text pages
     if AtlasTW.Quest.NextPageCount == "Story" then
-        local story = KQuestInstanceData[AtlasTW.QCurrentInstance].Story
-        local caption = KQuestInstanceData[AtlasTW.QCurrentInstance].Caption
+        local story = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Story
+        local caption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption
 
         if type(story) == "table" then
             -- Display current page content
-            KQuestStory:SetText(white..story["Page"..AtlasTW.QCurrentPage])
-            KQuestPageCount:SetText(AtlasTW.QCurrentPage.."/"..story["MaxPages"])
+            UI.Story:SetText(white..story["Page"..AtlasTW.QCurrentPage])
+            UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..story["MaxPages"])
 
             -- Handle page-specific captions if available
-            local pageCaption = KQuestInstanceData[AtlasTW.QCurrentInstance].Caption[AtlasTW.QCurrentPage]
-            KQuestName:SetText(blue..(pageCaption or caption))
+            local pageCaption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption[AtlasTW.QCurrentPage]
+            UI.QuestName:SetText(blue..(pageCaption or caption))
 
             -- Hide next button if we're on the last page
             if not story["Page"..SideAfterThis] then
@@ -245,7 +219,7 @@ function AtlasTW.Quest.NextPage()
     -- Handle quest text pages
     if AtlasTW.Quest.NextPageCount == "Quest" then
         local faction = AtlasTW.isHorde and "Horde" or "Alliance"
-        local questData = KQuestInstanceData[AtlasTW.QCurrentInstance].Quests[faction][AtlasTW.QCurrentQuest]
+        local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Quests[faction][AtlasTW.QCurrentQuest]
 
         -- Check for Page
         if questData and questData.Page then
@@ -253,8 +227,8 @@ function AtlasTW.Quest.NextPage()
             local pageCount = questData.Page[1] or 1
 
             if pageContent then
-                KQuestStory:SetText(white..pageContent)
-                KQuestPageCount:SetText(AtlasTW.QCurrentPage.."/"..pageCount)
+                UI.Story:SetText(white..pageContent)
+                UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..pageCount)
 
                 -- Hide next button if we're on the last page
                 if AtlasTW.QCurrentPage >= pageCount then
@@ -274,17 +248,17 @@ function AtlasTW.Quest.PreviousPage()
 
     -- Handle story text pages
     if AtlasTW.Quest.NextPageCount == "Story" then
-        local story = KQuestInstanceData[AtlasTW.QCurrentInstance].Story
-        local caption = KQuestInstanceData[AtlasTW.QCurrentInstance].Caption
+        local story = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Story
+        local caption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption
 
         if type(story) == "table" then
             -- Display current page content
-            KQuestStory:SetText(white..story["Page"..AtlasTW.QCurrentPage])
-            KQuestPageCount:SetText(AtlasTW.QCurrentPage.."/"..story["MaxPages"])
+            UI.Story:SetText(white..story["Page"..AtlasTW.QCurrentPage])
+            UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..story["MaxPages"])
 
             -- Handle page-specific captions if available
-            local pageCaption = KQuestInstanceData[AtlasTW.QCurrentInstance].Caption[AtlasTW.QCurrentPage]
-            KQuestName:SetText(blue..(pageCaption or caption))
+            local pageCaption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption[AtlasTW.QCurrentPage]
+            UI.QuestName:SetText(blue..(pageCaption or caption))
 
             -- Hide back button if we're on the first page
             if AtlasTW.QCurrentPage == 1 then
@@ -295,7 +269,7 @@ function AtlasTW.Quest.PreviousPage()
     -- Handle quest text pages
     if AtlasTW.Quest.NextPageCount == "Quest" then
         local faction = AtlasTW.isHorde and "Horde" or "Alliance"
-        local questData = KQuestInstanceData[AtlasTW.QCurrentInstance].Quests[faction][AtlasTW.QCurrentQuest]
+        local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Quests[faction][AtlasTW.QCurrentQuest]
         -- Go back to main quest text if we're returning to page 1
         if AtlasTW.QCurrentPage == 1 then
             KQButton_SetText()
@@ -305,8 +279,8 @@ function AtlasTW.Quest.PreviousPage()
                 local pageContent = questData.Page[AtlasTW.QCurrentPage]
                 local pageCount = questData.Page[1] or 1
                 if pageContent then
-                    KQuestStory:SetText(white..pageContent)
-                    KQuestPageCount:SetText(AtlasTW.QCurrentPage.."/"..pageCount)
+                    UI.Story:SetText(white..pageContent)
+                    UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..pageCount)
                 end
             end
         end

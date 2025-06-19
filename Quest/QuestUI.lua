@@ -1,4 +1,5 @@
-local variables = AtlasTW
+local AtlasTW = AtlasTW
+local UI = AtlasTW.Quest.UI
 -----------------------------------------------------------------------------
 -- Button handlers
 -----------------------------------------------------------------------------
@@ -8,29 +9,29 @@ local variables = AtlasTW
 -- based on player's faction when AtlasQuest is opened.
 -----------------------------------------------------------------------------
 local function kQuest_OnShow()
-    KQuestHordeCheckBox:SetChecked(variables.isHorde)
-    KQuestAllianceCheckBox:SetChecked(not variables.isHorde)
+    KQuestHordeCheckBox:SetChecked(AtlasTW.isHorde)
+    KQuestAllianceCheckBox:SetChecked(not AtlasTW.isHorde)
     KQuestSetTextandButtons()
 end
 
 -- Story button
 local function kQuestStory1_OnClick()
 	KQuestHideAL()
-	if KQuestInsideFrame:IsVisible() == nil then
-		ShowUIPanel(KQuestInsideFrame)
-		variables.QCurrentButton = -1
+	if UI.InsideAtlasFrame:IsVisible() == nil then
+		ShowUIPanel(UI.InsideAtlasFrame)
+		AtlasTW.QCurrentButton = -1
 		KQuestButtonStory_SetText()
-	elseif variables.QCurrentButton == -1 then
-		HideUIPanel(KQuestInsideFrame)
+	elseif AtlasTW.QCurrentButton == -1 then
+		HideUIPanel(UI.InsideAtlasFrame)
 	else
-		variables.QCurrentButton = -1
+		AtlasTW.QCurrentButton = -1
 		KQuestButtonStory_SetText()
 	end
 end
 
 -- Alliance handler
 local function kQuestAlliance_OnClick()
-	variables.isHorde = false
+	AtlasTW.isHorde = false
     KQuestAllianceCheckBox:SetChecked(true)
     KQuestHordeCheckBox:SetChecked(false)
     AtlasOptions_Init()
@@ -39,7 +40,7 @@ end
 
 -- Horde handler
 local function kQuestHorde_OnClick()
-	variables.isHorde = true
+	AtlasTW.isHorde = true
     KQuestAllianceCheckBox:SetChecked(false)
     KQuestHordeCheckBox:SetChecked(true)
     AtlasOptions_Init()
@@ -50,15 +51,15 @@ end
 -- Insert Quest Information into the chat box
 -----------------------------------------------------------------------------
 local function kQInsertQuestInformation()
-    local questID = variables.QCurrentQuest
-    local instanceID = variables.QCurrentInstance
-    local faction = variables.isHorde and "Horde" or "Alliance"
+    local questID = AtlasTW.QCurrentQuest
+    local instanceID = AtlasTW.QCurrentInstance
+    local faction = AtlasTW.isHorde and "Horde" or "Alliance"
 
-    local questData = KQuestInstanceData and
-                      KQuestInstanceData[instanceID] and
-                      KQuestInstanceData[instanceID].Quests and
-                      KQuestInstanceData[instanceID].Quests[faction] and
-                      KQuestInstanceData[instanceID].Quests[faction][questID]
+    local questData = AtlasTW.Quest.DataBase and
+                      AtlasTW.Quest.DataBase[instanceID] and
+                      AtlasTW.Quest.DataBase[instanceID].Quests and
+                      AtlasTW.Quest.DataBase[instanceID].Quests[faction] and
+                      AtlasTW.Quest.DataBase[instanceID].Quests[faction][questID]
 
     if questData and questData.Title then
         local questName = questData.Title
@@ -84,17 +85,17 @@ local function kQuest_OnClick()
         -- Hide the AtlasLoot frame if it's visible
         KQuestHideAL()
         -- Clear the story text
-        KQuestStory:SetText("")
+        UI.Story:SetText("")
 
         -- Toggle quest details frame visibility
-        if KQuestInsideFrame:IsVisible() and variables.QCurrentButton == variables.QCurrentQuest then
+        if UI.InsideAtlasFrame:IsVisible() and AtlasTW.QCurrentButton == AtlasTW.QCurrentQuest then
             -- Hide quest frame if showing the same quest
-            HideUIPanel(KQuestInsideFrame)
-            variables.QCurrentButton = nil
+            HideUIPanel(UI.InsideAtlasFrame)
+            AtlasTW.QCurrentButton = nil
         else
             -- Show quest frame if not visible, or update to show different quest
-            ShowUIPanel(KQuestInsideFrame)
-            variables.QCurrentButton = variables.QCurrentQuest
+            ShowUIPanel(UI.InsideAtlasFrame)
+            AtlasTW.QCurrentButton = AtlasTW.QCurrentQuest
             KQButton_SetText()
         end
     end
@@ -192,7 +193,7 @@ function CreateKQuestFrame()
         button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
         button:SetText(index)
         button:SetScript("OnClick", function()
-            variables.QCurrentQuest = index
+            AtlasTW.QCurrentQuest = index
             kQuest_OnClick()
         end)
         button:SetScript("OnShow", setFrameLevelOnShow)
@@ -241,7 +242,7 @@ function CreateKQuestFrame()
     local prevButton = nil
     local prevArrow = nil
     local prevText = nil
-    for i = 1, variables.QMAXQUESTS do
+    for i = 1, AtlasTW.QMAXQUESTS do
         prevButton = CreateQuestButton(i,i ~=1 and prevButton or nil,i ~=1 and -20 or 0)
         prevArrow = CreateArrow(i,i ~=1 and prevArrow or nil,i ~=1 and -20 or 0)
         prevText = CreateButtonText(i,i ~=1 and prevText or nil,i ~=1 and -20 or 0)

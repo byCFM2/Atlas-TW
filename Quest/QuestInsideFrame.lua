@@ -1,7 +1,5 @@
 -- AtlasTW Quest Inside Atlas frame
 
-local L = AtlasTW.L
-
 -- Constants for configuration
 local FRAME_WIDTH = 510
 local FRAME_HEIGHT = 510
@@ -21,20 +19,15 @@ local QUEST_ITEM_POSITIONS = {
 }
 
 -- Main container frame
-local frameMain = CreateFrame("Frame", "KQuestInsideFrame", AtlasFrame)
+local frameMain = CreateFrame("Frame", "", AtlasFrame)
 frameMain:SetHeight(FRAME_HEIGHT)
 frameMain:SetWidth(FRAME_WIDTH)
 frameMain:SetPoint(unpack(FRAME_POINT))
 frameMain:EnableMouse(true)
 frameMain:Show()
 
--- Initialize the logic associated with this frame
-frameMain:SetScript("OnLoad", function()
-    AtlasTW.Quest.Initialize()
-end)
-
 -- Table to hold our UI elements for easy access
-local UI = {}
+local UI = {InsideAtlasFrame = frameMain}
 
 -- Helper function to create UI elements
 local function CreateElement(type, name, parent, template, width, height, point, text)
@@ -60,32 +53,32 @@ end
 -- Create Quest Item Frames using a loop
 UI.QuestItems = {}
 for i, pos in ipairs(QUEST_ITEM_POSITIONS) do
-    local frameName = "KQuestItemframe" .. i
-    local frame = CreateElement("Button", frameName, frameMain, nil, QUEST_ITEM_WIDTH, QUEST_ITEM_HEIGHT, { "BOTTOMLEFT", pos.x, pos.y })
+    local index = i
+    local frame = CreateElement("Button", "", frameMain, nil, QUEST_ITEM_WIDTH, QUEST_ITEM_HEIGHT, { "BOTTOMLEFT", pos.x, pos.y })
     frame:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
 
-    local icon = frame:CreateTexture(frameName .. "_Icon", "ARTWORK")
+    local icon = frame:CreateTexture("", "ARTWORK")
     icon:SetWidth(24)
     icon:SetHeight(24)
     icon:SetPoint("TOPLEFT", 0, 0)
 
-    local name = CreateText(frameName .. "_Name", frame, "GameFontNormal", { "TOPLEFT", icon, "TOPRIGHT", 3, 0 }, 205, 12, "LEFT")
-    local extra = CreateText(frameName .. "_Extra", frame, "GameFontNormalSmall", { "TOPLEFT", name, "BOTTOMLEFT" }, 205, 10, "LEFT")
+    local name = CreateText("", frame, "GameFontNormal", { "TOPLEFT", icon, "TOPRIGHT", 3, 0 }, 205, 12, "LEFT")
+    local extra = CreateText("", frame, "GameFontNormalSmall", { "TOPLEFT", name, "BOTTOMLEFT" }, 205, 10, "LEFT")
     frame:RegisterForClicks("LeftButtonDown", "RightButtonDown")
     frame:SetScript("OnEnter", function()
-        AtlasTW.Quest.OnItemEnter()
+        AtlasTW.Quest.OnItemEnter(index)
     end)
     frame:SetScript("OnLeave", function()
         AtlasTW.Quest.OnItemLeave()
     end)
     frame:SetScript("OnClick", function()
-        AtlasTW.Quest.OnItemClick(arg1)
+        AtlasTW.Quest.OnItemClick(arg1, index)
     end)
     frame:SetScript("OnShow", function()
         frame:SetFrameLevel(frameMain:GetFrameLevel() + 1)
     end)
 
-    UI.QuestItems[i] = { frame = frame, icon = icon, name = name, extra = extra }
+    UI.QuestItems[i] = { Frame = frame, Icon = icon, Name = name, Extra = extra }
 end
 
 -- Control Buttons
@@ -125,14 +118,14 @@ background:SetAllPoints(frameMain)
 background:SetTexture(0, 0, 0, 0.75)
 
 -- Text Fields
-UI.QuestName = CreateText("KQuestName", frameMain, "GameFontNormal", { "TOP", 0, -20 }, 400, 12)
-UI.QuestLevel = CreateText("KQuestLevel", frameMain, "GameFontNormal", { "TOPLEFT", 20, -50 }, 400, 12, "LEFT", "TOP")
-UI.QuestAttainLevel = CreateText("KQuestAttainLevel", frameMain, "GameFontNormal", { "TOPLEFT", 140, -50 }, 400, 12, "LEFT", "TOP")
-UI.Prerequisite = CreateText("KQuestDetails", frameMain, "GameFontNormal", { "TOPLEFT", 20, -75 }, 450, 500, "LEFT", "TOP")
-UI.Story = CreateText("KQuestStory", frameMain, "GameFontNormal", { "TOPLEFT", 50, -50 }, 410, 450, "LEFT", "TOP")
-UI.Rewards = CreateText("KQuestReward", frameMain, "GameFontNormal", { "BOTTOMLEFT", 20, 155 }, 400, 12, "LEFT", "TOP")
+UI.QuestName = CreateText("", frameMain, "GameFontNormal", { "TOP", 0, -20 }, 400, 12)
+UI.QuestLevel = CreateText("", frameMain, "GameFontNormal", { "TOPLEFT", 20, -50 }, 400, 12, "LEFT", "TOP")
+UI.QuestAttainLevel = CreateText("", frameMain, "GameFontNormal", { "TOPLEFT", 140, -50 }, 400, 12, "LEFT", "TOP")
+UI.Prerequisite = CreateText("", frameMain, "GameFontNormal", { "TOPLEFT", 20, -75 }, 450, 500, "LEFT", "TOP")
+UI.Story = CreateText("", frameMain, "GameFontNormal", { "TOPLEFT", 50, -50 }, 410, 450, "LEFT", "TOP")
+UI.Rewards = CreateText("", frameMain, "GameFontNormal", { "BOTTOMLEFT", 20, 155 }, 400, 12, "LEFT", "TOP")
 UI.FinishedQuestText = CreateText("", UI.FinishedQuestCheckbox, "GameFontNormal", { "RIGHT", 0, 2 }, 150, 12)
-UI.PageCount = CreateText("KQuestPageCount", frameMain, "GameFontNormal", { "BOTTOM", 0, 18 }, 50, 20, "CENTER", "TOP")
+UI.PageCount = CreateText("", frameMain, "GameFontNormal", { "BOTTOM", 0, 18 }, 50, 20, "CENTER", "TOP")
 
 -- Assign UI table to the global namespace for access from other files
 AtlasTW.Quest.UI = UI
