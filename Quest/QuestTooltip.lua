@@ -1,23 +1,27 @@
--- Create Tooltip
-local tooltip = CreateFrame("GameTooltip", "KQuestTooltip", UIParent, "GameTooltipTemplate")
-tooltip:Hide()
+AtlasTW = AtlasTW or {}
+AtlasTW.Quest = AtlasTW.Quest or {}
 
--- Register Tooltip
-function KQuestRegisterTooltip()
-    if IsAddOnLoaded("EquipCompare") then
-        EquipCompare_RegisterTooltip(tooltip)
+local QuestTooltip = CreateFrame("GameTooltip", "QuestTooltip", UIParent, "GameTooltipTemplate")
+QuestTooltip:Hide()
+
+function QuestTooltip:Register()
+    if IsAddOnLoaded("EquipCompare") and EquipCompare_RegisterTooltip then
+        EquipCompare_RegisterTooltip(self)
     end
-    if IsAddOnLoaded("EQCompare") then
-        EQCompare:RegisterTooltip(tooltip)
+    if IsAddOnLoaded("EQCompare") and EQCompare and EQCompare.RegisterTooltip then
+        EQCompare:RegisterTooltip(self)
     end
+    self.isRegistered = true
 end
 
--- Unregister Tooltip
-function KQuestUnRegisterTooltip()
-    if IsAddOnLoaded("EquipCompare") then
-        EquipCompare_UnregisterTooltip(tooltip)
+function QuestTooltip:Unregister()
+    if IsAddOnLoaded("EquipCompare") and EquipCompare_UnregisterTooltip then
+        EquipCompare_UnregisterTooltip(self)
     end
-    if IsAddOnLoaded("EQCompare") then
-        EQCompare:UnRegisterTooltip(tooltip)
+    if IsAddOnLoaded("EQCompare") and EQCompare and EQCompare.UnRegisterTooltip then
+        EQCompare:UnRegisterTooltip(self)
     end
+    self.isRegistered = false
 end
+
+AtlasTW.Quest.Tooltip = QuestTooltip

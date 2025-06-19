@@ -5,8 +5,7 @@ local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local function atlas_CreateFrames()
     -- Create the main Atlas frame
     local atlasFrame = CreateFrame("Frame", "AtlasFrame", UIParent)
-    atlasFrame:SetFrameStrata("HIGH")
-    atlasFrame:SetToplevel(true)
+    atlasFrame:SetFrameStrata("LOW")
     atlasFrame:SetWidth(921)
     atlasFrame:SetHeight(601)
     atlasFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 0, -104)
@@ -331,7 +330,7 @@ local function atlas_CreateFrames()
     return atlasFrame
 end
 
-local function atlasButton_CreateFrames()
+local function atlasMinimapButton_CreateFrames()
     -- Create the minimap button frame
     local buttonFrame = CreateFrame("Frame", "AtlasButtonFrame", Minimap)
     buttonFrame:SetFrameStrata("LOW")
@@ -411,4 +410,4 @@ end
 
 -- Call the function to create frames when this file is loaded
 atlas_CreateFrames()
-atlasButton_CreateFrames()
+atlasMinimapButton_CreateFrames()

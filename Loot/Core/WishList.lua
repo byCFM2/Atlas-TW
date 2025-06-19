@@ -14,7 +14,7 @@ local BLUE = "|cff0070dd"
 Displays the WishList
 ]]
 function AtlasLoot_ShowWishList()
-	AtlasLoot_ShowItemsFrame("WishList", "WishListPage"..currentPage, L["WishList"], pFrame)
+	AtlasLoot_ShowItemsFrame("WishList", "WishListPage"..currentPage, L["WishList"])
 end
 
 --[[
@@ -46,7 +46,7 @@ function AtlasLoot_DeleteFromWishList(itemID)
 	end
 	AtlasLoot_WishList = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishList"])
 	AtlasLootItemsFrame:Hide()
-	AtlasLoot_ShowItemsFrame("WishList", "WishListPage"..currentPage, L["WishList"], pFrame)
+	AtlasLoot_ShowItemsFrame("WishList", "WishListPage"..currentPage, L["WishList"])
 end
 
 --[[
@@ -183,7 +183,7 @@ end
 function GetLootTableParent(dataID)
 	local parentID 
 	for i, v in pairs(AtlasLoot_TableNamesBoss) do
-		for j,k in pairs(v) do
+		for j,_ in pairs(v) do
 			if dataID == j then
 				parentID = i
 				break

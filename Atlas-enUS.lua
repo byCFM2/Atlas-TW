@@ -84,7 +84,7 @@ AtlasZoneSubstitutions = {
 }
 
 AQNotAvailable = "Not Available"
-AQQuestFinished = "- Quest finished"
+AQQuestFinished = "Quest finished:"
 
 AQSERVERASKInformation = " Please click right until you see the Item frame."
 AQSERVERASKAuto = " Try moving the cursor over the item in a second."
@@ -856,7 +856,7 @@ L:RegisterTranslations("enUS", function() return {
 	["QuickLook"] = true,
 	["Add to QuickLooks"] = true,
 	["Assign this loot table to QuickLook"] = true,
-	["Query Server"] = true,
+	--["Query Server"] = true,
 	["Dungeons & Raids"] = true,
 	["Button Position"] = true,
 	["Button Radius"] = true,
@@ -888,10 +888,10 @@ L:RegisterTranslations("enUS", function() return {
 	["Search options"] = true,
 	["Partial matching"] = true,
 	["If checked, AtlasLoot searches item names for a partial match."] = true,
-	["Queries the server for all items"] = true,
+--[[ 	["Queries the server for all items"] = true,
 	["on this page. The items will be"] = true,
 	["refreshed when you next mouse"] = true,
-	["over them."] = true,
+	["over them."] = true, ]]
 	["Default settings applied!"] = true,
 	["Reset Settings"] = true,
 	["AtlasLoot Error!"] = true,

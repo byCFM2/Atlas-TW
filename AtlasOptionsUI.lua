@@ -1,5 +1,5 @@
 local _G = getfenv()
-local variables = AtlasTW
+local AtlasTW = AtlasTW
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
 -----------------------------------------------------------------------------
@@ -69,13 +69,9 @@ local function KQCompareTooltipOption_OnClick()
 	AtlasTWOptions.QuestCompareTooltip = not AtlasTWOptions.QuestCompareTooltip
 	KQCompareTooltipOption:SetChecked(AtlasTWOptions.QuestCompareTooltip)
 	if AtlasTWOptions.QuestCompareTooltip then
-		if KQuestRegisterTooltip then
-			KQuestRegisterTooltip()
-		end
+		AtlasTW.Quest.Tooltip:Register()
 	else
-		if KQuestUnRegisterTooltip then
-			KQuestUnRegisterTooltip()
-		end
+		AtlasTW.Quest.Tooltip:Unregister()
 	end
 	AtlasOptions_Init()
 end
@@ -180,8 +176,7 @@ end
 local function atlasOptions_CreateFrames()
     -- Create the main options frame
     local optionsFrame = CreateFrame("Frame", "AtlasOptionsFrame", UIParent)
-    optionsFrame:SetFrameStrata("HIGH")
-    optionsFrame:SetToplevel(true)
+    optionsFrame:SetFrameStrata("MEDIUM")
     optionsFrame:SetWidth(550)
     optionsFrame:SetHeight(550)
     optionsFrame:SetPoint("CENTER", 0, 0)

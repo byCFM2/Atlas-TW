@@ -1,187 +1,138 @@
--- FRAME INSIDE ATLAS
 -- AtlasTW Quest Inside Atlas frame
-local _G = getfenv()
+
+local L = AtlasTW.L
+
+-- Constants for configuration
+local FRAME_WIDTH = 510
+local FRAME_HEIGHT = 510
+local FRAME_POINT = { "TOPLEFT", 18, -84 }
+
+local QUEST_ITEM_WIDTH = 236
+local QUEST_ITEM_HEIGHT = 30
+
+-- Data-driven configuration for quest items
+local QUEST_ITEM_POSITIONS = {
+    { x = 20,  y = 120 }, -- Left column, top
+    { x = 266, y = 120 }, -- Right column, top
+    { x = 20,  y = 70 },  -- Left column, middle
+    { x = 266, y = 70 },  -- Right column, middle
+    { x = 20,  y = 20 },  -- Left column, bottom
+    { x = 266, y = 20 },  -- Right column, bottom
+}
 
 -- Main container frame
 local frameMain = CreateFrame("Frame", "KQuestInsideFrame", AtlasFrame)
-frameMain:SetWidth(510)
-frameMain:SetHeight(510)
-frameMain:SetPoint("TOPLEFT", 18, -84)
+frameMain:SetHeight(FRAME_HEIGHT)
+frameMain:SetWidth(FRAME_WIDTH)
+frameMain:SetPoint(unpack(FRAME_POINT))
 frameMain:EnableMouse(true)
-frameMain:SetToplevel(true)
 frameMain:Show()
 
--- Event handler
-frameMain:SetScript("OnEvent", function()
-    AQ_OnEvent(event)
+-- Initialize the logic associated with this frame
+frameMain:SetScript("OnLoad", function()
+    AtlasTW.Quest.Initialize()
 end)
 
--- Helper function to set frame level +1 on show
-local function setFrameLevelOnShow()
-    this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-end
--- Helper function to set frame level +2 on show
-local function setFrameLevel2OnShow()
-    this:SetFrameLevel(this:GetParent():GetFrameLevel() + 2)
+-- Table to hold our UI elements for easy access
+local UI = {}
+
+-- Helper function to create UI elements
+local function CreateElement(type, name, parent, template, width, height, point, text)
+    local element = CreateFrame(type, name, parent, template)
+    element:SetWidth(width)
+    element:SetHeight(height)
+    element:SetPoint(unpack(point))
+    if text then element:SetText(text) end
+    return element
 end
 
--- Helper function to create quest item frames
-local function CreateQuestItemFrame(frameNumber, xOffset, yOffset)
-    local frameName = "KQuestItemframe" .. frameNumber
-    local frame = CreateFrame("Button", frameName, frameMain)
-    frame:SetWidth(236)
-    frame:SetHeight(30)
-    frame:SetPoint("BOTTOMLEFT", xOffset, yOffset)
+-- Helper function to create FontStrings
+local function CreateText(name, parent, font, point, width, height, justifyH, justifyV)
+    local text = parent:CreateFontString(name, "ARTWORK", font)
+    text:SetWidth(width)
+    text:SetHeight(height)
+    text:SetPoint(unpack(point))
+    text:SetJustifyH(justifyH or "CENTER")
+    text:SetJustifyV(justifyV or "MIDDLE")
+    return text
+end
+
+-- Create Quest Item Frames using a loop
+UI.QuestItems = {}
+for i, pos in ipairs(QUEST_ITEM_POSITIONS) do
+    local frameName = "KQuestItemframe" .. i
+    local frame = CreateElement("Button", frameName, frameMain, nil, QUEST_ITEM_WIDTH, QUEST_ITEM_HEIGHT, { "BOTTOMLEFT", pos.x, pos.y })
     frame:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
 
-    -- Create icon texture
     local icon = frame:CreateTexture(frameName .. "_Icon", "ARTWORK")
     icon:SetWidth(24)
     icon:SetHeight(24)
-    icon:SetPoint("TOPLEFT", frame, "TOPLEFT")
+    icon:SetPoint("TOPLEFT", 0, 0)
 
-    -- Create name font string
-    local name = frame:CreateFontString(frameName .. "_Name", "ARTWORK", "GameFontNormal")
-    name:SetWidth(205)
-    name:SetHeight(12)
-    name:SetPoint("TOPLEFT", icon, "TOPRIGHT", 3, 0)
-    name:SetJustifyH("LEFT")
-
-    -- Create extra info font string
-    local extra = frame:CreateFontString(frameName .. "_Extra", "ARTWORK", "GameFontNormalSmall")
-    extra:SetWidth(205)
-    extra:SetHeight(10)
-    extra:SetPoint("TOPLEFT", name, "BOTTOMLEFT")
-    extra:SetJustifyH("LEFT")
-
-    -- Register events and scripts
+    local name = CreateText(frameName .. "_Name", frame, "GameFontNormal", { "TOPLEFT", icon, "TOPRIGHT", 3, 0 }, 205, 12, "LEFT")
+    local extra = CreateText(frameName .. "_Extra", frame, "GameFontNormalSmall", { "TOPLEFT", name, "BOTTOMLEFT" }, 205, 10, "LEFT")
     frame:RegisterForClicks("LeftButtonDown", "RightButtonDown")
     frame:SetScript("OnEnter", function()
-        AQTHISISSHOWN = frameNumber
-        KQuestItem_OnEnter()
+        AtlasTW.Quest.OnItemEnter()
     end)
     frame:SetScript("OnLeave", function()
-        KQuestItem_OnLeave()
+        AtlasTW.Quest.OnItemLeave()
     end)
     frame:SetScript("OnClick", function()
-        KQuestItem_OnClick(arg1)
+        AtlasTW.Quest.OnItemClick(arg1)
     end)
-    frame:SetScript("OnShow", setFrameLevelOnShow)
+    frame:SetScript("OnShow", function()
+        frame:SetFrameLevel(frameMain:GetFrameLevel() + 1)
+    end)
 
-    return frame
+    UI.QuestItems[i] = { frame = frame, icon = icon, name = name, extra = extra }
 end
 
-CreateQuestItemFrame(1, 20, 120)   -- Left column, top
-CreateQuestItemFrame(2, 266, 120) -- Right column, top
-CreateQuestItemFrame(3, 20, 70)   -- Left column, middle
-CreateQuestItemFrame(4, 266, 70)  -- Right column, middle
-CreateQuestItemFrame(5, 20, 20)   -- Left column, bottom
-CreateQuestItemFrame(6, 266, 20)  -- Right column, bottom
+-- Control Buttons
+UI.CloseButton = CreateElement("Button", "", frameMain, "UIPanelCloseButton", 30, 30, { "TOPRIGHT", -5, -3 })
+UI.CloseButton:SetScript("OnClick", function() AtlasTW.Quest.CloseDetails() end)
 
--- Close button
-local closeButton = CreateFrame("Button", "", frameMain, "UIPanelCloseButton")
-closeButton:SetWidth(30)
-closeButton:SetHeight(30)
-closeButton:SetPoint("TOPRIGHT", -5, -3)
-closeButton:SetScript("OnClick", function()
-    KQuestCLOSE2_OnClick()
-end)
-closeButton:SetScript("OnShow", setFrameLevelOnShow)
+UI.FinishedQuestCheckbox = CreateElement("CheckButton", "", frameMain, "OptionsCheckButtonTemplate", 25, 25, { "TOPRIGHT", -10, -50 })
+UI.FinishedQuestCheckbox:SetHitRectInsets(0, 0, 0, 0)
+UI.FinishedQuestCheckbox:SetScript("OnClick", function() AtlasTW.Quest.ToggleFinishedFilter(UI.FinishedQuestCheckbox:GetChecked()) end)
 
--- Finished quest checkbox
-local finishedQuestCheckbox = CreateFrame("CheckButton", "KQuestFinished", frameMain, "OptionsCheckButtonTemplate")
-finishedQuestCheckbox:SetWidth(25)
-finishedQuestCheckbox:SetHeight(25)
-finishedQuestCheckbox:SetPoint("TOP", 150, -43)
-finishedQuestCheckbox:SetChecked(false)
-finishedQuestCheckbox:SetHitRectInsets(0, 0, 0, 0)
-finishedQuestCheckbox:SetScript("OnClick", function()
-    KQFinishedQuest_OnClick()
-end)
-finishedQuestCheckbox:SetScript("OnShow", setFrameLevel2OnShow)
+-- Navigation Buttons
+UI.NextPageButtonRight = CreateElement("Button", "", frameMain, nil, 40, 40, { "BOTTOM", 45, 10 })
+UI.NextPageButtonRight:SetNormalTexture("Interface\\Glues\\Common\\Glue-RightArrow-Button-Up")
+UI.NextPageButtonRight:SetPushedTexture("Interface\\Glues\\Common\\Glue-RightArrow-Button-Down")
+UI.NextPageButtonRight:SetHighlightTexture("Interface\\Glues\\Common\\Glue-RightArrow-Button-Highlight", "ADD")
+UI.NextPageButtonRight:SetScript("OnClick", function() AtlasTW.Quest.NextPage() end)
+UI.NextPageButtonRight:Hide()
 
--- Navigation buttons
-local nextPageButtonRight = CreateFrame("Button", "KQNextPageButton_Right", frameMain)
-nextPageButtonRight:SetWidth(40)
-nextPageButtonRight:SetHeight(40)
-nextPageButtonRight:SetPoint("BOTTOM", 45, 10)
-nextPageButtonRight:SetNormalTexture("Interface\\Glues\\Common\\Glue-RightArrow-Button-Up")
-nextPageButtonRight:SetPushedTexture("Interface\\Glues\\Common\\Glue-RightArrow-Button-Down")
-nextPageButtonRight:SetHighlightTexture("Interface\\Glues\\Common\\Glue-RightArrow-Button-Highlight", "ADD")
-nextPageButtonRight:Hide()
-nextPageButtonRight:SetScript("OnClick", function()
-    KQNextPageR_OnClick()
-end)
-nextPageButtonRight:SetScript("OnShow", setFrameLevel2OnShow)
+UI.NextPageButtonLeft = CreateElement("Button", "", frameMain, nil, 40, 40, { "BOTTOM", -45, 10 })
+UI.NextPageButtonLeft:SetNormalTexture("Interface\\Glues\\Common\\Glue-LeftArrow-Button-Up")
+UI.NextPageButtonLeft:SetPushedTexture("Interface\\Glues\\Common\\Glue-LeftArrow-Button-Down")
+UI.NextPageButtonLeft:SetHighlightTexture("Interface\\Glues\\Common\\Glue-LeftArrow-Button-Highlight", "ADD")
+UI.NextPageButtonLeft:SetScript("OnClick", function() AtlasTW.Quest.PreviousPage() end)
+UI.NextPageButtonLeft:Hide()
 
-local nextPageButtonLeft = CreateFrame("Button", "KQNextPageButton_Left", frameMain)
-nextPageButtonLeft:SetWidth(40)
-nextPageButtonLeft:SetHeight(40)
-nextPageButtonLeft:SetPoint("BOTTOM", -45, 10)
-nextPageButtonLeft:SetNormalTexture("Interface\\Glues\\Common\\Glue-LeftArrow-Button-Up")
-nextPageButtonLeft:SetPushedTexture("Interface\\Glues\\Common\\Glue-LeftArrow-Button-Down")
-nextPageButtonLeft:SetHighlightTexture("Interface\\Glues\\Common\\Glue-LeftArrow-Button-Highlight", "ADD")
-nextPageButtonLeft:Hide()
-nextPageButtonLeft:SetScript("OnClick", function()
-    KQNextPageL_OnClick()
-end)
-nextPageButtonLeft:SetScript("OnShow", setFrameLevel2OnShow)
+-- Set FrameLevels for controls
+for _, control in pairs({ UI.CloseButton, UI.FinishedQuestCheckbox, UI.NextPageButtonRight, UI.NextPageButtonLeft }) do
+    local frame = control
+    control:SetScript("OnShow", function()
+        frame:SetFrameLevel(frameMain:GetFrameLevel() + 2) -- Higher level for controls
+    end)
+end
 
--- Background texture
+-- Background
 local background = frameMain:CreateTexture(nil, "BACKGROUND")
 background:SetAllPoints(frameMain)
 background:SetTexture(0, 0, 0, 0.75)
 
--- Font strings for quest information
-local questName = frameMain:CreateFontString("KQuestName", "BACKGROUND", "GameFontNormal")
-questName:SetWidth(400)
-questName:SetHeight(12)
-questName:SetPoint("TOP", 0, -20)
+-- Text Fields
+UI.QuestName = CreateText("KQuestName", frameMain, "GameFontNormal", { "TOP", 0, -20 }, 400, 12)
+UI.QuestLevel = CreateText("KQuestLevel", frameMain, "GameFontNormal", { "TOPLEFT", 20, -50 }, 400, 12, "LEFT", "TOP")
+UI.QuestAttainLevel = CreateText("KQuestAttainLevel", frameMain, "GameFontNormal", { "TOPLEFT", 140, -50 }, 400, 12, "LEFT", "TOP")
+UI.Prerequisite = CreateText("KQuestDetails", frameMain, "GameFontNormal", { "TOPLEFT", 20, -75 }, 450, 500, "LEFT", "TOP")
+UI.Story = CreateText("KQuestStory", frameMain, "GameFontNormal", { "TOPLEFT", 50, -50 }, 410, 450, "LEFT", "TOP")
+UI.Rewards = CreateText("KQuestReward", frameMain, "GameFontNormal", { "BOTTOMLEFT", 20, 155 }, 400, 12, "LEFT", "TOP")
+UI.FinishedQuestText = CreateText("", UI.FinishedQuestCheckbox, "GameFontNormal", { "RIGHT", 0, 2 }, 150, 12)
+UI.PageCount = CreateText("KQuestPageCount", frameMain, "GameFontNormal", { "BOTTOM", 0, 18 }, 50, 20, "CENTER", "TOP")
 
-local questLevelText = frameMain:CreateFontString("KQuestLevel", "BACKGROUND", "GameFontNormal")
-questLevelText:SetWidth(400)
-questLevelText:SetHeight(12)
-questLevelText:SetPoint("TOPLEFT", 20, -50)
-questLevelText:SetJustifyH("LEFT")
-questLevelText:SetJustifyV("TOP")
-
-local questAttainLevelText = frameMain:CreateFontString("KQuestAttainLevel", "BACKGROUND", "GameFontNormal")
-questAttainLevelText:SetWidth(400)
-questAttainLevelText:SetHeight(12)
-questAttainLevelText:SetPoint("TOPLEFT", 140, -50)
-questAttainLevelText:SetJustifyH("LEFT")
-questAttainLevelText:SetJustifyV("TOP")
-
-local prerequisiteText = frameMain:CreateFontString("KQuestDetails", "BACKGROUND", "GameFontNormal")
-prerequisiteText:SetWidth(450)
-prerequisiteText:SetHeight(500)
-prerequisiteText:SetPoint("TOPLEFT", 20, -75)
-prerequisiteText:SetJustifyH("LEFT")
-prerequisiteText:SetJustifyV("TOP")
-
-local storyText = frameMain:CreateFontString("KQuestStory", "BACKGROUND", "GameFontNormal")
-storyText:SetWidth(410)
-storyText:SetHeight(450)
-storyText:SetPoint("TOPLEFT", 50, -50)
-storyText:SetJustifyH("LEFT")
-storyText:SetJustifyV("TOP")
-
-local rewardsText = frameMain:CreateFontString("KQuestReward", "BACKGROUND", "GameFontNormal")
-rewardsText:SetWidth(400)
-rewardsText:SetHeight(12)
-rewardsText:SetPoint("BOTTOMLEFT", 20, 155)
-rewardsText:SetJustifyH("LEFT")
-rewardsText:SetJustifyV("TOP")
-
-local finishedQuestText = frameMain:CreateFontString("KQuestFinishedText", "BACKGROUND", "GameFontNormal")
-finishedQuestText:SetWidth(150)
-finishedQuestText:SetHeight(12)
-finishedQuestText:SetPoint("TOPRIGHT", -10, -50)
-finishedQuestText:SetJustifyH("LEFT")
-finishedQuestText:SetJustifyV("TOP")
-
-local pageCountText = frameMain:CreateFontString("KQuestPageCount", "BACKGROUND", "GameFontNormal")
-pageCountText:SetWidth(50)
-pageCountText:SetHeight(20)
-pageCountText:SetPoint("BOTTOM", 0, 18)
-pageCountText:SetJustifyV("TOP")
+-- Assign UI table to the global namespace for access from other files
+AtlasTW.Quest.UI = UI

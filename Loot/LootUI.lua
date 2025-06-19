@@ -84,7 +84,7 @@ end
 function AtlasLoot_ApplyNavigationButtonTemplate(button, buttonType)
     button:SetWidth(32)
     button:SetHeight(32)
-    button:SetFrameStrata("HIGH")
+    button:SetFrameStrata("MEDIUM")
     if buttonType == "next" then
         button:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Up")
         button:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Down")
@@ -172,7 +172,7 @@ function AtlasLoot_CreatePresetButtons(frame)
         presetButton[i]:SetScript("OnClick", function()
             if AtlasTWCharDB and AtlasTWCharDB["QuickLooks"] and AtlasTWCharDB["QuickLooks"][buttonIndex] and AtlasTWCharDB["QuickLooks"][buttonIndex][1] then
                 if AtlasLoot_IsLootTableAvailable(AtlasTWCharDB["QuickLooks"][buttonIndex][1]) then
-                    AtlasLoot_ShowItemsFrame(AtlasTWCharDB["QuickLooks"][buttonIndex][1], AtlasTWCharDB["QuickLooks"][buttonIndex][2], AtlasTWCharDB["QuickLooks"][buttonIndex][3], nil)
+                    AtlasLoot_ShowItemsFrame(AtlasTWCharDB["QuickLooks"][buttonIndex][1], AtlasTWCharDB["QuickLooks"][buttonIndex][2], AtlasTWCharDB["QuickLooks"][buttonIndex][3])
                 end
             end
         end)
@@ -461,12 +461,12 @@ function AtlasLoot_CreateItemsFrame()
         this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
     end)
 
-    -- Query Server button
+ --[[    -- Query Server button
     local queryButton = CreateFrame("Button", "AtlasLootServerQueryButton", frame, "OptionsButtonTemplate")
     queryButton:SetWidth(120)
     queryButton:SetHeight(25)
     queryButton:SetPoint("BOTTOM", frame, "BOTTOM", 160, 8)
-    queryButton:Hide()
+ --   queryButton:Hide()
 
     queryButton:SetScript("OnShow", function()
         this:SetText(L["Query Server"])
@@ -489,7 +489,7 @@ function AtlasLoot_CreateItemsFrame()
         GameTooltip:Hide()
 		AtlasLoot_QueryLootPage()
 		CloseDropDownMenus()
-    end)
+    end) ]]
 
     -- QuickLooks button
     local quickLooksButton = CreateFrame("Button", "AtlasLootQuickLooksButton", frame)
@@ -530,9 +530,8 @@ function AtlasLoot_CreateItemsFrame()
     container:SetHeight(40)
     container:SetPoint("TOPLEFT", frame, "TOPRIGHT", 0, 0)
     container:EnableMouse(true)
-    container:SetFrameStrata("TOOLTIP")
+    container:SetFrameStrata("HIGH")
     container:Hide()
-    container:SetToplevel(true)
     container:SetMovable(true)
     container:SetClampedToScreen(true)
 

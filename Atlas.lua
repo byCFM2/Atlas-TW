@@ -28,16 +28,16 @@ local function hookScript(frame1, scriptType, handler)
 end
 
 local function setupPfUITooltip()
-	if not (AtlasTWOptions.QuestCompareTooltip and IsAddOnLoaded("pfUI") and not KQuestTooltip.backdrop) then
+	if not (AtlasTWOptions.QuestCompareTooltip and IsAddOnLoaded("pfUI") and not AtlasTW.Quest.Tooltip.backdrop) then
 		return
 	end
 	-- Create pfUI tooltip backdrop
-	pfUI.api.CreateBackdrop(KQuestTooltip)
-	pfUI.api.CreateBackdropShadow(KQuestTooltip)
+	pfUI.api.CreateBackdrop(AtlasTW.Quest.Tooltip)
+	pfUI.api.CreateBackdropShadow(AtlasTW.Quest.Tooltip)
 	-- Setup equipment comparison if available
 	if pfUI.eqcompare then
-		hookScript(KQuestTooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
-		hookScript(KQuestTooltip, "OnHide", function()
+		hookScript(AtlasTW.Quest.Tooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
+		hookScript(AtlasTW.Quest.Tooltip, "OnHide", function()
 			ShoppingTooltip1:Hide()
 			ShoppingTooltip2:Hide()
 		end)
@@ -363,7 +363,7 @@ function Atlas_Refresh()
  	for i = 1, atlasTW.CurrentLine do
 		if not _G["AtlasBossLine"..i] then
 			frame = AtlasLoot_CreateButtonFromTemplate("AtlasBossLine"..i, AtlasFrame, "AtlasLootNewBossLineTemplate")
-			frame:SetFrameStrata("HIGH")
+			frame:SetFrameStrata("MEDIUM")
 			if i ~= 1 then
 				frame:SetPoint("TOPLEFT", "AtlasBossLine"..(i-1), "BOTTOMLEFT")
 			else
@@ -615,8 +615,6 @@ function Atlas_OnShow()
 	if AtlasLootItemsFrame.activeBoss then
 		AtlasLootItemsFrame:Show()
 	end
-
-	AtlasLoot_Atlas_OnShow()
 end
 
 --RightButton closes Atlas and open the World Map if the RightClick option is turned on
