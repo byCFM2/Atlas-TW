@@ -239,9 +239,9 @@ end
 --Simple function to toggle the visibility of the Atlas frame
 function Atlas_Toggle()
 	if AtlasFrame:IsVisible() then
-		HideUIPanel(AtlasFrame)
+		AtlasFrame:Hide()
 	else
-		ShowUIPanel(AtlasFrame)
+		AtlasFrame:Show()
 	end
 end
 

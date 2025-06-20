@@ -13,8 +13,6 @@ local yellow = "|cffffd200"
 -- AtlasTW
 -----------------------------------------------------------------------------
 AtlasTW = AtlasTW or {}
-local UI = AtlasTW.Quest.UI or {}
-local UI_Main = AtlasTW.Quest.UI_Main
 local kQuestInstChanged
 local kQQuestColor
 
@@ -22,22 +20,22 @@ local kQQuestColor
 -- Buttons
 -----------------------------------------------------------------------------
 function AtlasTW.Quest.ClearAll()
-	UI.PageCount:SetText()
-	HideUIPanel(UI.NextPageButtonRight)
-	HideUIPanel(UI.NextPageButtonLeft)
-	UI.QuestName:SetText()
-	UI.QuestLevel:SetText()
-	UI.Prerequisite:SetText()
-	UI.QuestAttainLevel:SetText()
-	UI.Rewards:SetText()
-	UI.Story:SetText()
-	UI.FinishedQuestText:SetText()
-    HideUIPanel(UI.FinishedQuestCheckbox)
+	AtlasTW.Quest.UI.PageCount:SetText()
+	AtlasTW.Quest.UI.NextPageButtonRight:Hide()
+	AtlasTW.Quest.UI.NextPageButtonLeft:Hide()
+	AtlasTW.Quest.UI.QuestName:SetText()
+	AtlasTW.Quest.UI.QuestLevel:SetText()
+	AtlasTW.Quest.UI.Prerequisite:SetText()
+	AtlasTW.Quest.UI.QuestAttainLevel:SetText()
+	AtlasTW.Quest.UI.Rewards:SetText()
+	AtlasTW.Quest.UI.Story:SetText()
+	AtlasTW.Quest.UI.FinishedQuestText:SetText()
+    AtlasTW.Quest.UI.FinishedQuestCheckbox:Hide()
 	for b = 1, AtlasTW.QMAXQUESTITEMS do
-        UI.QuestItems[b].Icon:SetTexture()
-        UI.QuestItems[b].Name:SetText()
-        UI.QuestItems[b].Extra:SetText()
-        UI.QuestItems[b].Frame:Disable()
+        AtlasTW.Quest.UI.QuestItems[b].Icon:SetTexture()
+        AtlasTW.Quest.UI.QuestItems[b].Name:SetText()
+        AtlasTW.Quest.UI.QuestItems[b].Extra:SetText()
+        AtlasTW.Quest.UI.QuestItems[b].Frame:Disable()
 	end
 end
 
@@ -164,14 +162,13 @@ end
 -----------------------------------------------------------------------------
 local function kQuestFinishedSetChecked()
 	local questKey = "AtlasTWQuestFinishedInst"..AtlasTW.QCurrentInstance.."Quest"..AtlasTW.QCurrentQuest
-	questKey = questKey..(AtlasTW.isHorde and "HORDE" or "")
-	UI.FinishedQuestCheckbox:SetChecked(AtlasTW.Q[questKey] == 1)
+	questKey = questKey..(AtlasTW.isHorde and "Horde" or "Alliance")
+	AtlasTW.Quest.UI.FinishedQuestCheckbox:SetChecked(AtlasTW.Q[questKey] == 1)
 end
 
 -----------------------------------------------------------------------------
 -- Allow pages
 -- In the new format, we need to implement proper handling of multi-page quests
--- HideUIPanel() :SetText()
 -----------------------------------------------------------------------------
 local function kQuestExtendedPages()
     -- Determine current faction
@@ -192,13 +189,13 @@ local function kQuestExtendedPages()
 
         if pageCount and pageCount > 1 then
             -- Show the navigation button for additional pages
-            ShowUIPanel(UI.NextPageButtonRight)
+            AtlasTW.Quest.UI.NextPageButtonRight:Show()
             -- Set the current page type to "Quest" for proper navigation handling
             AtlasTW.Quest.NextPageCount = "Quest"
             -- Initialize to the first page
             AtlasTW.QCurrentPage = 1
             -- Update the page counter display with current/total format
-            UI.PageCount:SetText(AtlasTW.QCurrentPage .. "/" .. pageCount)
+            AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage .. "/" .. pageCount)
             return
         end
     end
@@ -299,8 +296,8 @@ function AtlasTW.Quest.SetQuestText()
     -- Clear all previous quest information
     AtlasTW.Quest.ClearAll()
     -- Show the finished quest checkbox
-    ShowUIPanel(UI.FinishedQuestCheckbox)
-    UI.FinishedQuestText:SetText(blue .. AQQuestFinished)
+    AtlasTW.Quest.UI.FinishedQuestCheckbox:Show()
+    AtlasTW.Quest.UI.FinishedQuestText:SetText(blue .. AQQuestFinished)
 
     -- Get quest data from new structure
     local instanceData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance]
@@ -316,14 +313,14 @@ function AtlasTW.Quest.SetQuestText()
         kQCompareQuestLogtoQuest(AtlasTW.QCurrentQuest)
 
         -- Set quest name with appropriate color
-        UI.QuestName:SetText(kQQuestColor..questData.Title)
+        AtlasTW.Quest.UI.QuestName:SetText(kQQuestColor..questData.Title)
 
         -- Set quest level information
-        UI.QuestLevel:SetText(blue..AQDiscription_LEVEL..white..questData.Level)
-        UI.QuestAttainLevel:SetText(blue..AQDiscription_ATTAIN..white..questData.Attain)
+        AtlasTW.Quest.UI.QuestLevel:SetText(blue..AQDiscription_LEVEL..white..questData.Level)
+        AtlasTW.Quest.UI.QuestAttainLevel:SetText(blue..AQDiscription_ATTAIN..white..questData.Attain)
 
         -- Set quest details
-        UI.Prerequisite:SetText(
+        AtlasTW.Quest.UI.Prerequisite:SetText(
             blue..AQDiscription_PREQUEST..white..(questData.Prequest or "").."\n \n"..
             blue..AQDiscription_FOLGEQUEST..white..(questData.Folgequest or "").."\n \n"..
             blue..AQDiscription_START..white..(questData.Location or "").."\n \n"..
@@ -333,7 +330,7 @@ function AtlasTW.Quest.SetQuestText()
 
         -- Set reward text from structure if available
         local rewards = questData.Rewards and questData.Rewards["Text"] or AQNoReward
-        UI.Rewards:SetText(rewards)
+        AtlasTW.Quest.UI.Rewards:SetText(rewards)
         if rewards ~= AQNoReward then
             -- Process each potential quest reward item (up to 6)
             for itemIndex = 1, AtlasTW.QMAXQUESTITEMS do
@@ -354,28 +351,28 @@ function AtlasTW.Quest.SetQuestText()
 
                     -- Get item texture and set it
                     _, _, _, _, _, _, _, _, itemTexture = GetItemInfo(itemId)
-                    UI.QuestItems[itemIndex].Icon:SetTexture(itemTexture)
+                    AtlasTW.Quest.UI.QuestItems[itemIndex].Icon:SetTexture(itemTexture)
 
                     -- Set item name and description
-                    UI.QuestItems[itemIndex].Name:SetText(kQuestGetItemInf(itemIndex, "name"))
-                    UI.QuestItems[itemIndex].Extra:SetText(kQuestGetItemInf(itemIndex, "extra"))
+                    AtlasTW.Quest.UI.QuestItems[itemIndex].Name:SetText(kQuestGetItemInf(itemIndex, "name"))
+                    AtlasTW.Quest.UI.QuestItems[itemIndex].Extra:SetText(kQuestGetItemInf(itemIndex, "extra"))
                     -- Enable the item button
-                    UI.QuestItems[itemIndex].Frame:Enable()
+                    AtlasTW.Quest.UI.QuestItems[itemIndex].Frame:Enable()
                 else
                     -- Clear and disable item slot if no data
-                    UI.QuestItems[itemIndex].Icon:SetTexture()
-                    UI.QuestItems[itemIndex].Name:SetText()
-                    UI.QuestItems[itemIndex].Extra:SetText()
-                    UI.QuestItems[itemIndex].Frame:Disable()
+                    AtlasTW.Quest.UI.QuestItems[itemIndex].Icon:SetTexture()
+                    AtlasTW.Quest.UI.QuestItems[itemIndex].Name:SetText()
+                    AtlasTW.Quest.UI.QuestItems[itemIndex].Extra:SetText()
+                    AtlasTW.Quest.UI.QuestItems[itemIndex].Frame:Disable()
                 end
             end
         else
             -- Disable items frame if no rewards are available
             for itemIndex = 1, AtlasTW.QMAXQUESTITEMS do
-                UI.QuestItems[itemIndex].Icon:SetTexture()
-                UI.QuestItems[itemIndex].Name:SetText()
-                UI.QuestItems[itemIndex].Extra:SetText()
-                UI.QuestItems[itemIndex].Frame:Disable()
+                AtlasTW.Quest.UI.QuestItems[itemIndex].Icon:SetTexture()
+                AtlasTW.Quest.UI.QuestItems[itemIndex].Name:SetText()
+                AtlasTW.Quest.UI.QuestItems[itemIndex].Extra:SetText()
+                AtlasTW.Quest.UI.QuestItems[itemIndex].Frame:Disable()
             end
         end
     end
@@ -403,12 +400,12 @@ function AtlasTW.Quest.SetStoryText()
     if story then
         if type(story) == "table" then
             -- Display first page of multi-page story
-            UI.QuestName:SetText(blue .. caption[1])
-            UI.Story:SetText(white .. story["Page1"])
+            AtlasTW.Quest.UI.QuestName:SetText(blue .. caption[1])
+            AtlasTW.Quest.UI.Story:SetText(white .. story["Page1"])
 
             -- Show navigation buttons if more than one page
             if story["Page2"] then
-                ShowUIPanel(UI.NextPageButtonRight)
+                AtlasTW.Quest.UI.NextPageButtonRight:Show()
                 AtlasTW.QCurrentPage = 1
 
                 -- Show page counter
@@ -420,20 +417,20 @@ function AtlasTW.Quest.SetStoryText()
                     end
                 end
 
-                UI.PageCount:SetText(AtlasTW.QCurrentPage .. "/" .. maxPages)
+                AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage .. "/" .. maxPages)
 
                 -- Set page type
                 AtlasTW.Quest.NextPageCount = "Story"
             end
         elseif type(story) == "string" then
             -- Display single page story
-            UI.QuestName:SetText(blue .. caption)
-            UI.Story:SetText(white .. story)
+            AtlasTW.Quest.UI.QuestName:SetText(blue .. caption)
+            AtlasTW.Quest.UI.Story:SetText(white .. story)
         end
     else
         -- No story available
-        UI.QuestName:SetText(AQNotAvailable)
-        UI.Story:SetText(AQNotAvailable)
+        AtlasTW.Quest.UI.QuestName:SetText(AQNotAvailable)
+        AtlasTW.Quest.UI.Story:SetText(AQNotAvailable)
     end
 end
 
@@ -444,8 +441,8 @@ function AtlasTW.Quest.LoadFinishedQuests()
     AtlasTWCharDB = AtlasTWCharDB or {}
 	for i=1, AtlasTW.QMAXINSTANCES do
 		for b=1, AtlasTW.QMAXQUESTS do
-			AtlasTW.Q["AtlasTWQuestFinishedInst"..i.."Quest"..b] = AtlasTWCharDB["AtlasTWQuestFinishedInst"..i.."Quest"..b]
-			AtlasTW.Q["AtlasTWQuestFinishedInst"..i.."Quest"..b.."HORDE"] = AtlasTWCharDB["AtlasTWQuestFinishedInst"..i.."Quest"..b.."HORDE"]
+			AtlasTW.Q["AtlasTWQuestFinishedInst"..i.."Quest"..b.."Alliance"] = AtlasTWCharDB["AtlasTWQuestFinishedInst"..i.."Quest"..b.."Alliance"]
+			AtlasTW.Q["AtlasTWQuestFinishedInst"..i.."Quest"..b.."Horde"] = AtlasTWCharDB["AtlasTWQuestFinishedInst"..i.."Quest"..b.."Horde"]
 		end
 	end
 end
@@ -464,8 +461,8 @@ function AtlasTW.Quest.Update()
 	if AtlasTW.QCurrentInstance ~= previousInstance then
 		AtlasTW.Quest.SetQuestButtons()
 	elseif AtlasTW.QCurrentInstance == 99 then
-		HideUIPanel(UI_Main.Frame)
-		HideUIPanel(UI.InsideAtlasFrame)
+		AtlasTW.Quest.UI_Main.Frame:Hide()
+		AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
 	end
 end
 
@@ -484,21 +481,21 @@ function AtlasTW.Quest.SetQuestButtons()
 	local playerLevel = UnitLevel("player")
 	-- Hide inner frame if instance changed
 	if kQuestInstChanged ~= instanceId then
-		HideUIPanel(UI.InsideAtlasFrame)
+		AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
 	end
 	-- Update current instance
 	kQuestInstChanged = instanceId
 	-- Set quest count text
 	local questCountKey = isHorde and "QAH" or "QAA"
 	local questCount = AtlasTW.Quest.DataBase[instanceId] and AtlasTW.Quest.DataBase[instanceId][questCountKey]
-	UI_Main.QuestCounter:SetText(questCount or "")
+	AtlasTW.Quest.UI_Main.QuestCounter:SetText(questCount or "")
 	-- Process quests
 	for b = 1, AtlasTW.QMAXQUESTS do
 		-- Define keys for current faction
 	    -- Check for quest existence
         if kQQuestExists(instanceId, b, faction) then
              -- Define keys for current faction (for both formats)
-            local finishedKey = "AtlasTWQuestFinishedInst"..instanceId.."Quest"..b..(isHorde and "HORDE" or "")
+            local finishedKey = "AtlasTWQuestFinishedInst"..instanceId.."Quest"..b..(isHorde and "Horde" or "Alliance")
             -- Get quest data
             questName = kQGetQuestData(instanceId, b, faction, "Title")
             local followQuest = kQGetQuestData(instanceId, b, faction, "Folgequest")
@@ -516,7 +513,7 @@ function AtlasTW.Quest.SetQuestButtons()
                 arrowTexture = "Interface\\GossipFrame\\BinderGossipIcon"
             end
             -- Apply arrow texture
-            local arrow = UI_Main.QuestButtons[b].Arrow
+            local arrow = AtlasTW.Quest.UI_Main.QuestButtons[b].Arrow
             if arrowTexture then
                 arrow:SetTexture(arrowTexture)
                 arrow:Show()
@@ -550,14 +547,14 @@ function AtlasTW.Quest.SetQuestButtons()
                 end
             end
 			-- Activate button and set text
-            UI_Main.QuestButtons[b].Button:Enable()
-            UI_Main.QuestButtons[b].Text:SetText(kQQuestColor..questName)
+            AtlasTW.Quest.UI_Main.QuestButtons[b].Button:Enable()
+            AtlasTW.Quest.UI_Main.QuestButtons[b].Text:SetText(kQQuestColor..questName)
 	    else
 			-- Deactivate button if quest doesn't exist
-            UI_Main.QuestButtons[b].Button:Disable()
-			UI_Main.QuestButtons[b].Text:SetText()
+            AtlasTW.Quest.UI_Main.QuestButtons[b].Button:Disable()
+			AtlasTW.Quest.UI_Main.QuestButtons[b].Text:SetText()
             -- Hide arrow
-            UI_Main.QuestButtons[b].Arrow:Hide()
+            AtlasTW.Quest.UI_Main.QuestButtons[b].Arrow:Hide()
 		end
 	end
 end

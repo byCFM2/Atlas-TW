@@ -87,7 +87,7 @@ UI.CloseButton:SetScript("OnClick", function() AtlasTW.Quest.CloseDetails() end)
 
 UI.FinishedQuestCheckbox = CreateElement("CheckButton", "", frameMain, "OptionsCheckButtonTemplate", 25, 25, { "TOPRIGHT", -10, -50 })
 UI.FinishedQuestCheckbox:SetHitRectInsets(0, 0, 0, 0)
-UI.FinishedQuestCheckbox:SetScript("OnClick", function() AtlasTW.Quest.ToggleFinishedFilter(UI.FinishedQuestCheckbox:GetChecked()) end)
+UI.FinishedQuestCheckbox:SetScript("OnClick", function() AtlasTW.Quest.ToggleFinishedFilter() end)
 
 -- Navigation Buttons
 UI.NextPageButtonRight = CreateElement("Button", "", frameMain, nil, 40, 40, { "BOTTOM", 45, 10 })

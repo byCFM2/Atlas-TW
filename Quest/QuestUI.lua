@@ -56,25 +56,25 @@ end
 
 -- Close Button
 UI_Main.CloseButton = CreateElement("Button", "", frame, "UIPanelCloseButton", 27, 27, { "TOPLEFT", 10, -10 })
-UI_Main.CloseButton:SetScript("OnClick", AtlasTW.Quest.CloseQuestFrame)
+UI_Main.CloseButton:SetScript("OnClick", function () AtlasTW.Quest.CloseQuestFrame() end)
 UI_Main.CloseButton:SetScript("OnShow", setFrameLevelOnShow)
 
 -- Story Button
 UI_Main.StoryButton = CreateElement("Button", "", frame, "OptionsButtonTemplate", 70, 20, { "TOP", 0, -13 }, AQStoryB)
-UI_Main.StoryButton:SetScript("OnClick", AtlasTW.Quest.OnStoryClick)
+UI_Main.StoryButton:SetScript("OnClick", function () AtlasTW.Quest.OnStoryClick() end)
 UI_Main.StoryButton:SetScript("OnShow", setFrameLevelOnShow)
 
 -- Checkboxes
 UI_Main.AllianceCheck = CreateElement("CheckButton", "", frame, "OptionsCheckButtonTemplate", 30, 30, { "TOPLEFT", 12, -30 })
 UI_Main.AllianceCheck:SetChecked(true)
 UI_Main.AllianceCheck:SetHitRectInsets(0, 0, 0, 0)
-UI_Main.AllianceCheck:SetScript("OnClick", AtlasTW.Quest.OnAllianceClick)
+UI_Main.AllianceCheck:SetScript("OnClick", function () AtlasTW.Quest.OnAllianceClick() end)
 UI_Main.AllianceCheck:SetScript("OnShow", setFrameLevelOnShow)
 
 UI_Main.HordeCheck = CreateElement("CheckButton", "", frame, "OptionsCheckButtonTemplate", 30, 30, { "TOPRIGHT", -12, -30 })
 UI_Main.HordeCheck:SetChecked(false)
 UI_Main.HordeCheck:SetHitRectInsets(0, 0, 0, 0)
-UI_Main.HordeCheck:SetScript("OnClick", AtlasTW.Quest.OnHordeClick)
+UI_Main.HordeCheck:SetScript("OnClick", function () AtlasTW.Quest.OnHordeClick() end)
 UI_Main.HordeCheck:SetScript("OnShow", setFrameLevelOnShow)
 
 -- Faction Textures
@@ -96,7 +96,7 @@ UI_Main.QuestCounter = CreateText("", frame, "GameFontNormal", { "TOP", 0, -25 }
 -- Quest Buttons, Arrows, and Texts
 UI_Main.QuestButtons = {}
 for i = 1, AtlasTW.QMAXQUESTS do
-    local index = 1
+    local index = i
     local yOffset = -60 - (i - 1) * 20
     local button = CreateElement("Button", "", frame, nil, 165, 20, { "TOPLEFT", 15, yOffset })
     button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
@@ -116,8 +116,8 @@ end
 
 -- Register Events
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
-frame:SetScript("OnEvent", AtlasTW.Quest.OnEvent)
-frame:SetScript("OnShow", AtlasTW.Quest.OnQuestFrameShow)
+frame:SetScript("OnEvent", function () AtlasTW.Quest.OnEvent() end)
+frame:SetScript("OnShow", function () AtlasTW.Quest.OnQuestFrameShow() end)
 
 -- Assign UI table to the global namespace
 AtlasTW.Quest.UI_Main = UI_Main

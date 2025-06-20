@@ -9,15 +9,7 @@ AtlasTW.Quest = AtlasTW.Quest or {}
 -----------------------------------------------------------------------------
 local red = "|cffff0000"
 local white = "|cffFFFFFF"
-local grey = "|cff808080"
-local orange = "|cffff8000"
 local blue = "|cff0070dd"
-local green = "|cff00FF00"
-local yellow = "|cffffd200"
-
--- Local reference to the UI elements for convenience
-local UI = AtlasTW.Quest.UI or {}
---local AtlasTW.Quest.UI_Main = AtlasTW.Quest.UI_Main or {}
 
 function AtlasTW.Quest.OnItemEnter(itemIndex)
     if not itemIndex then
@@ -169,168 +161,12 @@ end
 
 -- Function to close the quest details frame
 function AtlasTW.Quest.CloseDetails()
-    HideUIPanel(UI.InsideAtlasFrame)
+    AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
     AtlasTW.QCurrentButton = 0
 end
 
--- Toggles the finished status of a quest and updates the UI
-function AtlasTW.Quest.ToggleFinishedFilter()
-    -- Build the quest key based on faction
-    local questKey = "AtlasTWQuestFinishedInst"..AtlasTW.QCurrentInstance.."Quest"..AtlasTW.QCurrentQuest
-    questKey = questKey..(AtlasTW.isHorde and "HORDE" or "")
-    -- Update quest completion status
-    AtlasTW.Q[questKey] = UI.FinishedQuestCheckbox:GetChecked() and 1 or nil
-    -- Save to player options
-    AtlasTWCharDB[questKey] = AtlasTW.Q[questKey]
-    -- Update UI
-    AtlasTW.Quest.SetQuestButtons()
-    AtlasTW.Quest.SetQuestText()
-end
 
-function AtlasTW.Quest.NextPage()
-    local SideAfterThis = AtlasTW.QCurrentPage + 2
-    AtlasTW.QCurrentPage = AtlasTW.QCurrentPage + 1
-
-    -- Clear display
-    AtlasTW.Quest.ClearAll()
-
-    -- Handle story text pages
-    if AtlasTW.Quest.NextPageCount == "Story" then
-        local story = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Story
-        local caption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption
-
-        if type(story) == "table" then
-            -- Display current page content
-            UI.Story:SetText(white..story["Page"..AtlasTW.QCurrentPage])
-            UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..story["MaxPages"])
-
-            -- Handle page-specific captions if available
-            local pageCaption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption[AtlasTW.QCurrentPage]
-            UI.QuestName:SetText(blue..(pageCaption or caption))
-
-            -- Hide next button if we're on the last page
-            if not story["Page"..SideAfterThis] then
-                HideUIPanel(UI.NextPageButtonRight)
-            else
-                ShowUIPanel(UI.NextPageButtonRight)
-            end
-        end
-    end
-
-    -- Handle quest text pages
-    if AtlasTW.Quest.NextPageCount == "Quest" then
-        local faction = AtlasTW.isHorde and "Horde" or "Alliance"
-        local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Quests[faction][AtlasTW.QCurrentQuest]
-
-        -- Check for Page
-        if questData and questData.Page then
-            local pageContent = questData.Page[AtlasTW.QCurrentPage]
-            local pageCount = questData.Page[1] or 1
-
-            if pageContent then
-                UI.Story:SetText(white..pageContent)
-                UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..pageCount)
-
-                -- Hide next button if we're on the last page
-                if AtlasTW.QCurrentPage >= pageCount then
-                    HideUIPanel(UI.NextPageButtonRight)
-                else
-                    ShowUIPanel(UI.NextPageButtonRight)
-                end
-            end
-        end
-    end
-    -- Show back button
-    ShowUIPanel(UI.NextPageButtonLeft)
-end
-
-function AtlasTW.Quest.PreviousPage()
-    AtlasTW.QCurrentPage = AtlasTW.QCurrentPage - 1
-
-    -- Handle story text pages
-    if AtlasTW.Quest.NextPageCount == "Story" then
-        local story = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Story
-        local caption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption
-
-        if type(story) == "table" then
-            -- Display current page content
-            UI.Story:SetText(white..story["Page"..AtlasTW.QCurrentPage])
-            UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..story["MaxPages"])
-
-            -- Handle page-specific captions if available
-            local pageCaption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption[AtlasTW.QCurrentPage]
-            UI.QuestName:SetText(blue..(pageCaption or caption))
-
-            -- Hide back button if we're on the first page
-            if AtlasTW.QCurrentPage == 1 then
-                HideUIPanel(UI.NextPageButtonLeft)
-            end
-        end
-    end
-    -- Handle quest text pages
-    if AtlasTW.Quest.NextPageCount == "Quest" then
-        local faction = AtlasTW.isHorde and "Horde" or "Alliance"
-        local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Quests[faction][AtlasTW.QCurrentQuest]
-        -- Go back to main quest text if we're returning to page 1
-        if AtlasTW.QCurrentPage == 1 then
-            AtlasTW.Quest.SetQuestText()
-        else
-            -- Check for Page
-            if questData and questData.Page then
-                local pageContent = questData.Page[AtlasTW.QCurrentPage]
-                local pageCount = questData.Page[1] or 1
-                if pageContent then
-                    UI.Story:SetText(white..pageContent)
-                    UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..pageCount)
-                end
-            end
-        end
-    end
-    -- Always show next button when going back
-    ShowUIPanel(UI.NextPageButtonRight)
-end
-
--- Logic for the main Quest UI Frame
-function AtlasTW.Quest.OnQuestFrameShow()
-    if not AtlasTW.Quest.UI_Main then return end
-    AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(AtlasTW.isHorde)
-    AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(not AtlasTW.isHorde)
-    AtlasTW.Quest.SetQuestButtons()
-end
-
-function AtlasTW.Quest.OnStoryClick()
-	AtlasTW.Quest.HideAtlasLootFrame()
-	if not UI.InsideAtlasFrame:IsVisible() then
-		ShowUIPanel(UI.InsideAtlasFrame)
-		AtlasTW.QCurrentButton = -1
-		AtlasTW.Quest.SetStoryText()
-	elseif AtlasTW.QCurrentButton == -1 then
-		HideUIPanel(UI.InsideAtlasFrame)
-	else
-		AtlasTW.QCurrentButton = -1
-		AtlasTW.Quest.SetStoryText()
-	end
-end
-
-function AtlasTW.Quest.OnAllianceClick()
-    if not AtlasTW.Quest.UI_Main then return end
-	AtlasTW.isHorde = false
-    AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(true)
-    AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(false)
-    AtlasTW.OptionsInit()
-    AtlasTW.Quest.SetQuestButtons()
-end
-
-function AtlasTW.Quest.OnHordeClick()
-    if not AtlasTW.Quest.UI_Main then return end
-	AtlasTW.isHorde = true
-    AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(false)
-    AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(true)
-    AtlasTW.OptionsInit()
-    AtlasTW.Quest.SetQuestButtons()
-end
-
-function AtlasTW.Quest.InsertQuestLink()
+local function atlasTWQuestInsertQuestLink()
     local questID = AtlasTW.QCurrentQuest
     local instanceID = AtlasTW.QCurrentInstance
     local faction = AtlasTW.isHorde and "Horde" or "Alliance"
@@ -354,30 +190,195 @@ function AtlasTW.Quest.InsertQuestLink()
 end
 
 function AtlasTW.Quest.OnQuestClick(questIndex)
+    if not questIndex then return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnQuestClick without questIndex.") end
     AtlasTW.QCurrentQuest = questIndex
-    local UI_Inside = AtlasTW.Quest.UI
+    if not AtlasTW.Quest.UI or not AtlasTW.Quest.UI.InsideAtlasFrame then
+        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnQuestClick: Quest UI not fully loaded.")
+    end
     if ChatFrameEditBox:IsVisible() and IsShiftKeyDown() then
-        AtlasTW.Quest.InsertQuestLink()
+        atlasTWQuestInsertQuestLink()
     else
         AtlasTW.Quest.HideAtlasLootFrame()
-        UI_Inside.Story:SetText("")
+        AtlasTW.Quest.UI.Story:SetText("")
 
-        if UI_Inside.InsideAtlasFrame:IsVisible() and AtlasTW.QCurrentButton == AtlasTW.QCurrentQuest then
-            HideUIPanel(UI_Inside.InsideAtlasFrame)
+        if AtlasTW.Quest.UI.InsideAtlasFrame:IsVisible() and AtlasTW.QCurrentButton == AtlasTW.QCurrentQuest then
+            AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
             AtlasTW.QCurrentButton = nil
         else
-            ShowUIPanel(UI_Inside.InsideAtlasFrame)
+            AtlasTW.Quest.UI.InsideAtlasFrame:Show()
             AtlasTW.QCurrentButton = AtlasTW.QCurrentQuest
-            AtlasTW.Quest.SetQuestButtons()
+            AtlasTW.Quest.SetQuestText()
         end
     end
+end
+
+function AtlasTW.Quest.ToggleFinishedFilter()
+    -- Build the quest key based on faction
+    local questKey = "AtlasTWQuestFinishedInst"..AtlasTW.QCurrentInstance.."Quest"..AtlasTW.QCurrentQuest
+    questKey = questKey..(AtlasTW.isHorde and "Horde" or "Alliance")
+    -- Update quest completion status
+    AtlasTW.Q[questKey] = AtlasTW.Quest.UI.FinishedQuestCheckbox:GetChecked() and 1 or nil
+    -- Save to player options
+    AtlasTWCharDB[questKey] = AtlasTW.Q[questKey]
+    -- Update UI
+    AtlasTW.Quest.SetQuestButtons()
+    AtlasTW.Quest.SetQuestText()
+end
+
+function AtlasTW.Quest.NextPage()
+    local SideAfterThis = AtlasTW.QCurrentPage + 2
+    AtlasTW.QCurrentPage = AtlasTW.QCurrentPage + 1
+
+    -- Clear display
+    AtlasTW.Quest.ClearAll()
+
+    -- Handle story text pages
+    if AtlasTW.Quest.NextPageCount == "Story" then
+        local story = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Story
+        local caption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption
+
+        if type(story) == "table" then
+            -- Display current page content
+            AtlasTW.Quest.UI.Story:SetText(white..story["Page"..AtlasTW.QCurrentPage])
+            AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..story["MaxPages"])
+
+            -- Handle page-specific captions if available
+            local pageCaption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption[AtlasTW.QCurrentPage]
+            AtlasTW.Quest.UI.QuestName:SetText(blue..(pageCaption or caption))
+
+            -- Hide next button if we're on the last page
+            if not story["Page"..SideAfterThis] then
+                AtlasTW.Quest.UI.NextPageButtonRight:Hide()
+            else
+                AtlasTW.Quest.UI.NextPageButtonRight:Show()
+            end
+        end
+    end
+
+    -- Handle quest text pages
+    if AtlasTW.Quest.NextPageCount == "Quest" then
+        local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+        local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Quests[faction][AtlasTW.QCurrentQuest]
+
+        -- Check for Page
+        if questData and questData.Page then
+            local pageContent = questData.Page[AtlasTW.QCurrentPage]
+            local pageCount = questData.Page[1] or 1
+
+            if pageContent then
+                AtlasTW.Quest.UI.Story:SetText(white..pageContent)
+                AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..pageCount)
+
+                -- Hide next button if we're on the last page
+                if AtlasTW.QCurrentPage >= pageCount then
+                    AtlasTW.Quest.UI.NextPageButtonRight:Hide()
+                else
+                    AtlasTW.Quest.UI.NextPageButtonRight:Show()
+                end
+            end
+        end
+    end
+    -- Show back button
+    AtlasTW.Quest.UI.NextPageButtonLeft:Show()
+end
+
+function AtlasTW.Quest.PreviousPage()
+    AtlasTW.QCurrentPage = AtlasTW.QCurrentPage - 1
+
+    -- Handle story text pages
+    if AtlasTW.Quest.NextPageCount == "Story" then
+        local story = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Story
+        local caption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption
+
+        if type(story) == "table" then
+            -- Display current page content
+            AtlasTW.Quest.UI.Story:SetText(white..story["Page"..AtlasTW.QCurrentPage])
+            AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..story["MaxPages"])
+
+            -- Handle page-specific captions if available
+            local pageCaption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption[AtlasTW.QCurrentPage]
+            AtlasTW.Quest.UI.QuestName:SetText(blue..(pageCaption or caption))
+
+            -- Hide back button if we're on the first page
+            if AtlasTW.QCurrentPage == 1 then
+                AtlasTW.Quest.UI.NextPageButtonLeft:Hide()
+            end
+        end
+    end
+    -- Handle quest text pages
+    if AtlasTW.Quest.NextPageCount == "Quest" then
+        local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+        local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Quests[faction][AtlasTW.QCurrentQuest]
+        -- Go back to main quest text if we're returning to page 1
+        if AtlasTW.QCurrentPage == 1 then
+            AtlasTW.Quest.SetQuestText()
+        else
+            -- Check for Page
+            if questData and questData.Page then
+                local pageContent = questData.Page[AtlasTW.QCurrentPage]
+                local pageCount = questData.Page[1] or 1
+                if pageContent then
+                    AtlasTW.Quest.UI.Story:SetText(white..pageContent)
+                    AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..pageCount)
+                end
+            end
+        end
+    end
+    -- Always show next button when going back
+    AtlasTW.Quest.UI.NextPageButtonRight:Show()
+end
+
+-- Logic for the main Quest UI Frame
+function AtlasTW.Quest.OnQuestFrameShow()
+    if not AtlasTW.Quest.UI_Main then
+        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnQuestFrameShow: Quest UI not fully loaded.")
+    end
+    AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(AtlasTW.isHorde)
+    AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(not AtlasTW.isHorde)
+    AtlasTW.Quest.SetQuestButtons()
+end
+
+function AtlasTW.Quest.OnStoryClick()
+	AtlasTW.Quest.HideAtlasLootFrame()
+	if not AtlasTW.Quest.UI.InsideAtlasFrame:IsVisible() then
+		AtlasTW.Quest.UI.InsideAtlasFrame:Show()
+		AtlasTW.QCurrentButton = -1
+		AtlasTW.Quest.SetStoryText()
+	elseif AtlasTW.QCurrentButton == -1 then
+		AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
+	else
+		AtlasTW.QCurrentButton = -1
+		AtlasTW.Quest.SetStoryText()
+	end
+end
+
+function AtlasTW.Quest.OnAllianceClick()
+    if not AtlasTW.Quest.UI_Main then
+        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnAllianceClick: Quest UI not fully loaded.")
+    end
+	AtlasTW.isHorde = false
+    AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(true)
+    AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(false)
+    AtlasTW.OptionsInit()
+    AtlasTW.Quest.SetQuestButtons()
+end
+
+function AtlasTW.Quest.OnHordeClick()
+    if not AtlasTW.Quest.UI_Main then
+        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnHordeClick: Quest UI not fully loaded.")
+    end
+	AtlasTW.isHorde = true
+    AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(false)
+    AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(true)
+    AtlasTW.OptionsInit()
+    AtlasTW.Quest.SetQuestButtons()
 end
 
 -- Function to close the quest frame
 function AtlasTW.Quest.CloseQuestFrame()
     AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
-    HideUIPanel(AtlasTW.Quest.UI_Main.Frame)
-    HideUIPanel(AtlasTW.Quest.UI.InsideAtlasFrame)
+    AtlasTW.Quest.UI_Main.Frame:Hide()
+    AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
     KQAutoshowOption:SetChecked(AtlasTWOptions.QuestWithAtlas)
     AtlasTW.OptionsInit()
 end
@@ -386,10 +387,10 @@ end
 function AtlasTW.Quest.ToggleQuestFrame()
     AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
     if not AtlasTWOptions.QuestWithAtlas then
-        HideUIPanel(AtlasTW.Quest.UI_Main.Frame)
-        HideUIPanel(AtlasTW.Quest.UI.InsideAtlasFrame)
+        AtlasTW.Quest.UI_Main.Frame:Hide()
+        AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
     else
-        ShowUIPanel(AtlasTW.Quest.UI_Main.Frame)
+        AtlasTW.Quest.UI_Main.Frame:Show()
     end
     KQAutoshowOption:SetChecked(AtlasTWOptions.QuestWithAtlas)
     AtlasTW.OptionsInit()

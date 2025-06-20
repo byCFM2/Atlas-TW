@@ -231,5 +231,4 @@ AtlasTW = {
     QCurrentButton = 0,
     QCurrentInstance = 0,
 }
-
 AtlasTWCharDB = AtlasTWCharDB or { FirstTime = true }

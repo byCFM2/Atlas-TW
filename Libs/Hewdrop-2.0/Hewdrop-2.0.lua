@@ -470,7 +470,7 @@ local function AcquireButton(self, level)
 						end
 					end
 					self:Close(1)
-					ShowUIPanel(ColorPickerFrame)
+					ColorPickerFrame:Show()
 				elseif this.func then
 					local level = button.level
 					if type(this.func) == "string" then

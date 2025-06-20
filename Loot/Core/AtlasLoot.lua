@@ -291,7 +291,7 @@ function AtlasLootBoss_OnClick(name)
 	AtlasLootItemsFrame.externalBoss = nil
 	--Hide the AtlasQuest frame if present so that the AtlasLoot items frame is not stuck under it
 	if AtlasTW.Quest.UI.InsideAtlasFrame then
-		HideUIPanel(AtlasTW.Quest.UI.InsideAtlasFrame)
+		AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
 	end
 end
 
@@ -326,7 +326,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 	end
 	--Get AtlasQuest out of the way
 	if AtlasTW.Quest.UI.InsideAtlasFrame then
-		HideUIPanel(AtlasTW.Quest.UI.InsideAtlasFrame)
+		AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
 	end
 	--Ditch the Quicklook selector
 	AtlasLoot_QuickLooks:Hide()
