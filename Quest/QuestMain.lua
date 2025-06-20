@@ -343,7 +343,7 @@ function AtlasTW.Quest.SetQuestText()
                         -- Query server for item data if not in cache
                         if not GetItemInfo(itemId) then
                             GameTooltip:SetHyperlink("item:"..itemId..":0:0:0")
-                            if not AtlasTW.QuestQuerySpam then
+                            if not AtlasTWOptions.QuestQuerySpam then
                                 DEFAULT_CHAT_FRAME:AddMessage(AQSERVERASK.."["..itemColor..itemName..white.."]"..AQSERVERASKAuto)
                             end
                         end
