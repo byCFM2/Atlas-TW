@@ -24,7 +24,7 @@ function AtlasButton_Toggle()
 		AtlasButtonFrame:Show()
 		AtlasTWOptions.AtlasButtonShown = true
 	end
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()()
 end
 
 -- Обновление позиции кнопки
@@ -38,7 +38,7 @@ function AtlasButton_UpdatePosition()
 		54 - (radius * cos(position)),
 		(radius * sin(position)) - 55
 	)
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 -- Обработка перетаскивания кнопки

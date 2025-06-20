@@ -1,5 +1,7 @@
 local _G = getfenv()
 local atlasTW = _G.AtlasTW
+AtlasTW.Quest = AtlasTW.Quest or {}
+
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
 local function atlas_CreateFrames()
@@ -127,7 +129,7 @@ local function atlas_CreateFrames()
     questsToggleButton:SetPoint("LEFT", optionsButton, "LEFT", -95, 0)
     questsToggleButton:SetText(L["Quests"])
     questsToggleButton:SetScript("OnClick", function()
-        KQuestCLOSE_OnClick()
+        AtlasTW.Quest.ToggleQuestFrame()
     end)
 
     -- Hide Loot Panel button

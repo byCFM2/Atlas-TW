@@ -112,7 +112,7 @@ function AtlasLoot_OnVariablesLoaded()
 		AtlasLootOptionsFrameEquipCompareText:SetText(L["|cff9d9d9dUse EquipCompare|r"])
 	end
 	--Set up options frame
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 	UIPanelWindows['AtlasLootOptionsFrame'] = {area = 'center', pushable = 0}
 	--Legacy code for those using the ultimately failed attempt at making Atlas load on demand
 	if AtlasButton_LoadAtlas then

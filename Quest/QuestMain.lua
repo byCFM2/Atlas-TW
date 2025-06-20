@@ -14,6 +14,7 @@ local yellow = "|cffffd200"
 -----------------------------------------------------------------------------
 AtlasTW = AtlasTW or {}
 local UI = AtlasTW.Quest.UI or {}
+local UI_Main = AtlasTW.Quest.UI_Main
 local kQuestInstChanged
 local kQQuestColor
 
@@ -40,33 +41,10 @@ function AtlasTW.Quest.ClearAll()
 	end
 end
 
-function KQuestClose1_OnClick()
-	AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
-    HideUIPanel(KQuestFrame)
-    HideUIPanel(UI.InsideAtlasFrame)
-    KQAutoshowOption:SetChecked(AtlasTWOptions.QuestWithAtlas)
-    AtlasOptions_Init()
-end
-
------------------------------------------------------------------------------
--- upper right button / to show/close panel
------------------------------------------------------------------------------
-function KQuestCLOSE_OnClick()
-	AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
-	if not AtlasTWOptions.QuestWithAtlas then
-		HideUIPanel(KQuestFrame)
-		HideUIPanel(UI.InsideAtlasFrame)
-	else
-		ShowUIPanel(KQuestFrame)
-	end
-    KQAutoshowOption:SetChecked(AtlasTWOptions.QuestWithAtlas)
-    AtlasOptions_Init()
-end
-
 -----------------------------------------------------------------------------
 -- Hide the AtlasLoot Frame if available
 -----------------------------------------------------------------------------
-function KQuestHideAL()
+function AtlasTW.Quest.HideAtlasLootFrame()
 	if AtlasLootItemsFrame then
 		AtlasLootItemsFrame:Hide() -- hide atlasloot
 	end
@@ -315,7 +293,7 @@ end
 -- set the Quest text
 -- executed when you push a button
 -----------------------------------------------------------------------------
-function KQButton_SetText()
+function AtlasTW.Quest.SetQuestText()
     -- Local AtlasTW for item information
     local itemId, itemName, itemColor, itemTexture
     -- Clear all previous quest information
@@ -412,7 +390,7 @@ end
 -----------------------------------------------------------------------------
 -- Set Story Text
 -----------------------------------------------------------------------------
-function KQuestButtonStory_SetText()
+function AtlasTW.Quest.SetStoryText()
     -- Clear display
     AtlasTW.Quest.ClearAll()
 
@@ -462,7 +440,7 @@ end
 -----------------------------------------------------------------------------
 -- Loads the saved AtlasTW
 -----------------------------------------------------------------------------
-local function kQuest_LoadData()
+function AtlasTW.Quest.LoadFinishedQuests()
     AtlasTWCharDB = AtlasTWCharDB or {}
 	for i=1, AtlasTW.QMAXINSTANCES do
 		for b=1, AtlasTW.QMAXQUESTS do
@@ -472,38 +450,21 @@ local function kQuest_LoadData()
 	end
 end
 
------------------------------------------------------------------------------
--- Called when the player starts the game loads the AtlasTW
------------------------------------------------------------------------------
-function KQuest_OnEvent()
-    if type(AtlasTWOptions) == "table" then
-        kQuest_LoadData()
-    else
-        DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
-    end
-    -- Register Tooltip with EquipCompare if enabled.
-    if AtlasTWOptions.QuestCompareTooltip then
-        AtlasTW.Quest.Tooltip:Register()
-    else
-        AtlasTW.Quest.Tooltip:Unregister()
-    end
-end
-
 --******************************************
 -- Events: OnUpdate
 --******************************************
 -----------------------------------------------------------------------------
 -- hide panel if instance is 99 (nothing)
 -----------------------------------------------------------------------------
-function KQuest_Update()
+function AtlasTW.Quest.Update()
 	local previousInstance = AtlasTW.QCurrentInstance
 	-- Update instance information
     AtlasTW.QCurrentInstance = AtlasTW.INSTANCEMAP[AtlasTW.CurrentMap] or 99
 	-- Check if we need to hide/update the quest panels
 	if AtlasTW.QCurrentInstance ~= previousInstance then
-		KQuestSetTextandButtons()
+		AtlasTW.Quest.SetQuestButtons()
 	elseif AtlasTW.QCurrentInstance == 99 then
-		HideUIPanel(KQuestFrame)
+		HideUIPanel(UI_Main.Frame)
 		HideUIPanel(UI.InsideAtlasFrame)
 	end
 end
@@ -515,7 +476,7 @@ end
 -- Questline arrows are shown if InstXQuestYFQuest = "true"
 -- QuestStart icon are shown if InstXQuestYPreQuest = "true"
 -----------------------------------------------------------------------------
-function KQuestSetTextandButtons()
+function AtlasTW.Quest.SetQuestButtons()
     local isHorde = AtlasTW.isHorde
 	local instanceId = AtlasTW.QCurrentInstance
 	local faction = isHorde and "Horde" or "Alliance"
@@ -530,7 +491,7 @@ function KQuestSetTextandButtons()
 	-- Set quest count text
 	local questCountKey = isHorde and "QAH" or "QAA"
 	local questCount = AtlasTW.Quest.DataBase[instanceId] and AtlasTW.Quest.DataBase[instanceId][questCountKey]
-	KQuestCounter:SetText(questCount or "")
+	UI_Main.QuestCounter:SetText(questCount or "")
 	-- Process quests
 	for b = 1, AtlasTW.QMAXQUESTS do
 		-- Define keys for current faction
@@ -555,7 +516,7 @@ function KQuestSetTextandButtons()
                 arrowTexture = "Interface\\GossipFrame\\BinderGossipIcon"
             end
             -- Apply arrow texture
-            local arrow = _G["KQuestlineArrow_"..b]
+            local arrow = UI_Main.QuestButtons[b].Arrow
             if arrowTexture then
                 arrow:SetTexture(arrowTexture)
                 arrow:Show()
@@ -589,19 +550,17 @@ function KQuestSetTextandButtons()
                 end
             end
 			-- Activate button and set text
-			_G["KQuestButton"..b]:Enable()
-			_G["KQuestButtonText"..b]:SetText(kQQuestColor..questName)
+            UI_Main.QuestButtons[b].Button:Enable()
+            UI_Main.QuestButtons[b].Text:SetText(kQQuestColor..questName)
 	    else
 			-- Deactivate button if quest doesn't exist
-			_G["KQuestButton"..b]:Disable()
-			_G["KQuestButtonText"..b]:SetText()
+            UI_Main.QuestButtons[b].Button:Disable()
+			UI_Main.QuestButtons[b].Text:SetText()
             -- Hide arrow
-            _G["KQuestlineArrow_"..b]:Hide()
+            UI_Main.QuestButtons[b].Arrow:Hide()
 		end
 	end
 end
 
--- Initialize AtlasTW and frames on addon load
-CreateKQuestFrame()
 -- Show version message
 DEFAULT_CHAT_FRAME:AddMessage(red.."A"..yellow.."t"..green.."l"..orange.."a"..blue.."s"..white.."-|cff800080TW |cff00FFFFv.|cffFFC0CB"..AtlasTW.Version.." |cffA52A2Aloaded.")

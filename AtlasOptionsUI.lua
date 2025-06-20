@@ -1,5 +1,5 @@
 local _G = getfenv()
-local AtlasTW = AtlasTW
+local AtlasTW = AtlasTW or {}
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
 -----------------------------------------------------------------------------
@@ -9,59 +9,59 @@ local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local function KQAutoshowOption_OnClick()
 	AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
 	KQAutoshowOption:SetChecked(AtlasTWOptions.QuestWithAtlas)
-    AtlasOptions_Init()
+    AtlasTW.OptionsInit()
 end
 
 -- Right position
 local function KQRIGHTOption_OnClick()
-    KQuestFrame:ClearAllPoints()
-    KQuestFrame:SetPoint("TOP", "AtlasFrame", 567, -36)
+    AtlasTW.Quest.UI_Main.Frame:ClearAllPoints()
+    AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasFrame", 567, -36)
 	KQRIGHTOption:SetChecked(true)
 	KQLEFTOption:SetChecked(false)
 	AtlasTWOptions.QuestCurrentSide = "Right"
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 -- Left position
 local function KQLEFTOption_OnClick()
     if AtlasTWOptions.QuestCurrentSide == "Right" then
-        KQuestFrame:ClearAllPoints()
-        KQuestFrame:SetPoint("TOP", "AtlasFrame", -556, -36)
+        AtlasTW.Quest.UI_Main.Frame:ClearAllPoints()
+        AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasFrame", -556, -36)
     end
 	KQRIGHTOption:SetChecked(false)
 	KQLEFTOption:SetChecked(true)
 	AtlasTWOptions.QuestCurrentSide = "Left"
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 -- Color check
 local function KQColourOption_OnClick()
 	AtlasTWOptions.QuestColourCheck = not AtlasTWOptions.QuestColourCheck
 	KQColourOption:SetChecked(AtlasTWOptions.QuestColourCheck)
-	AtlasOptions_Init()
-    KQuestSetTextandButtons()
+	AtlasTW.OptionsInit()
+    AtlasTW.Quest.SetQuestButtons()
 end
 
 -- Questlog check
 local function KQCheckQuestlogButton_OnClick()
 	AtlasTWOptions.QuestCheckQuestlog = not AtlasTWOptions.QuestCheckQuestlog
 	KQCheckQuestlogButton:SetChecked(AtlasTWOptions.QuestCheckQuestlog)
-	AtlasOptions_Init()
-    KQuestSetTextandButtons()
+	AtlasTW.OptionsInit()
+    AtlasTW.Quest.SetQuestButtons()
 end
 
 -- Auto query
 local function KQAutoQueryOption_OnClick()
 	AtlasTWOptions.QuestAutoQuery = not AtlasTWOptions.QuestAutoQuery
 	KQAutoQueryOption:SetChecked(AtlasTWOptions.QuestAutoQuery)
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 -- Query spam suppression
 local function KQQuerySpamOption_OnClick()
 	AtlasTWOptions.QuestQuerySpam = not AtlasTWOptions.QuestQuerySpam
 	KQQuerySpamOption:SetChecked(AtlasTWOptions.QuestQuerySpam)
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 -- Tooltip comparison
@@ -73,7 +73,7 @@ local function KQCompareTooltipOption_OnClick()
 	else
 		AtlasTW.Quest.Tooltip:Unregister()
 	end
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 local function AtlasLootOptions_SafeLinksToggle()
@@ -83,7 +83,7 @@ local function AtlasLootOptions_SafeLinksToggle()
     else
 		AtlasTWOptions.LootAllLinks = true
 	end
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 local function AtlasLootOptions_AllLinksToggle()
@@ -93,38 +93,38 @@ local function AtlasLootOptions_AllLinksToggle()
     else
 		AtlasTWOptions.LootSafeLinks = true
 	end
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 function AtlasLootOptions_DefaultTTToggle()
 	AtlasTWOptions.LootDefaultTT = true
 	AtlasTWOptions.LootlinkTT = false
 	AtlasTWOptions.LootItemSyncTT = false
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 function AtlasLootOptions_LootlinkTTToggle()
 	AtlasTWOptions.LootDefaultTT = false
 	AtlasTWOptions.LootlinkTT = true
 	AtlasTWOptions.LootItemSyncTT = false
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 function AtlasLootOptions_ItemSyncTTToggle()
 	AtlasTWOptions.LootDefaultTT = false
 	AtlasTWOptions.LootlinkTT = false
 	AtlasTWOptions.LootItemSyncTT = true
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 local function AtlasLootOptions_ShowSourceToggle()
 	AtlasTWOptions.LootShowSource = not AtlasTWOptions.LootShowSource
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 local function AtlasLootOptions_ShowPanel_OnClick()
 	AtlasTWOptions.LootShowPanel = not AtlasTWOptions.LootShowPanel
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 local function AtlasLootOptions_EquipCompareToggle()
@@ -150,7 +150,7 @@ local function AtlasLootOptions_EquipCompareToggle()
 			EQCompare:UnRegisterTooltip(AtlasLootTooltip2)
 		end
 	end
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 local function AtlasLootOptions_OpaqueToggle()
@@ -160,17 +160,17 @@ local function AtlasLootOptions_OpaqueToggle()
 	else
 		AtlasLootItemsFrame_Back:SetTexture(0, 0, 0, 0.65)
 	end
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 local function AtlasLootOptions_ItemIDToggle()
 	AtlasTWOptions.LootItemIDs = not AtlasTWOptions.LootItemIDs
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 local function AtlasLootOptions_ItemSpam()
 	AtlasTWOptions.LootItemSpam = not AtlasTWOptions.LootItemSpam
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 local function atlasOptions_CreateFrames()
@@ -208,7 +208,7 @@ local function atlasOptions_CreateFrames()
     end)
     -- Set up frame show script to initialize values
     optionsFrame:SetScript("OnShow", function()
-        AtlasOptions_Init()
+        AtlasTW.OptionsInit()
     end)
 
     -- Title

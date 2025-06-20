@@ -177,7 +177,7 @@ function Atlas_Init()
 	Atlas_UpdateAlpha()
 	AtlasFrame:SetClampedToScreen(AtlasTWOptions.AtlasClamped)
 	AtlasButton_UpdatePosition()
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 end
 
 --Main Atlas event handler
@@ -319,7 +319,7 @@ function Atlas_Refresh()
 	--Update the quest frame
 --	DEFAULT_CHAT_FRAME:AddMessage("Atlas_Refresh run!")
 	atlasTW.CurrentMap = zoneID
-	KQuest_Update()
+	AtlasTW.Quest.Update()
 	--Setup info panel above boss listing
 	local tName = base.ZoneName[1]
 	if AtlasTWOptions.AtlasAcronyms and base.Acronym ~= nil then

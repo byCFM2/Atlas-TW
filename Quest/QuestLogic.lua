@@ -17,6 +17,7 @@ local yellow = "|cffffd200"
 
 -- Local reference to the UI elements for convenience
 local UI = AtlasTW.Quest.UI or {}
+--local AtlasTW.Quest.UI_Main = AtlasTW.Quest.UI_Main or {}
 
 function AtlasTW.Quest.OnItemEnter(itemIndex)
     if not itemIndex then
@@ -182,8 +183,8 @@ function AtlasTW.Quest.ToggleFinishedFilter()
     -- Save to player options
     AtlasTWCharDB[questKey] = AtlasTW.Q[questKey]
     -- Update UI
-    KQuestSetTextandButtons()
-    KQButton_SetText()
+    AtlasTW.Quest.SetQuestButtons()
+    AtlasTW.Quest.SetQuestText()
 end
 
 function AtlasTW.Quest.NextPage()
@@ -272,7 +273,7 @@ function AtlasTW.Quest.PreviousPage()
         local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Quests[faction][AtlasTW.QCurrentQuest]
         -- Go back to main quest text if we're returning to page 1
         if AtlasTW.QCurrentPage == 1 then
-            KQButton_SetText()
+            AtlasTW.Quest.SetQuestText()
         else
             -- Check for Page
             if questData and questData.Page then
@@ -287,4 +288,126 @@ function AtlasTW.Quest.PreviousPage()
     end
     -- Always show next button when going back
     ShowUIPanel(UI.NextPageButtonRight)
+end
+
+-- Logic for the main Quest UI Frame
+function AtlasTW.Quest.OnQuestFrameShow()
+    if not AtlasTW.Quest.UI_Main then return end
+    AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(AtlasTW.isHorde)
+    AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(not AtlasTW.isHorde)
+    AtlasTW.Quest.SetQuestButtons()
+end
+
+function AtlasTW.Quest.OnStoryClick()
+	AtlasTW.Quest.HideAtlasLootFrame()
+	if not UI.InsideAtlasFrame:IsVisible() then
+		ShowUIPanel(UI.InsideAtlasFrame)
+		AtlasTW.QCurrentButton = -1
+		AtlasTW.Quest.SetStoryText()
+	elseif AtlasTW.QCurrentButton == -1 then
+		HideUIPanel(UI.InsideAtlasFrame)
+	else
+		AtlasTW.QCurrentButton = -1
+		AtlasTW.Quest.SetStoryText()
+	end
+end
+
+function AtlasTW.Quest.OnAllianceClick()
+    if not AtlasTW.Quest.UI_Main then return end
+	AtlasTW.isHorde = false
+    AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(true)
+    AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(false)
+    AtlasTW.OptionsInit()
+    AtlasTW.Quest.SetQuestButtons()
+end
+
+function AtlasTW.Quest.OnHordeClick()
+    if not AtlasTW.Quest.UI_Main then return end
+	AtlasTW.isHorde = true
+    AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(false)
+    AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(true)
+    AtlasTW.OptionsInit()
+    AtlasTW.Quest.SetQuestButtons()
+end
+
+function AtlasTW.Quest.InsertQuestLink()
+    local questID = AtlasTW.QCurrentQuest
+    local instanceID = AtlasTW.QCurrentInstance
+    local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+
+    local questData = AtlasTW.Quest.DataBase and
+                      AtlasTW.Quest.DataBase[instanceID] and
+                      AtlasTW.Quest.DataBase[instanceID].Quests and
+                      AtlasTW.Quest.DataBase[instanceID].Quests[faction] and
+                      AtlasTW.Quest.DataBase[instanceID].Quests[faction][questID]
+
+    if questData and questData.Title then
+        local questName = questData.Title
+        local levelPattern = "^%d+%. "
+        questName = string.gsub(questName, levelPattern, "")
+        if pfQuestCompat then
+            pfQuestCompat.InsertQuestLink(0,questName)
+        else
+            ChatFrameEditBox:Insert("["..questName.."]")
+        end
+    end
+end
+
+function AtlasTW.Quest.OnQuestClick(questIndex)
+    AtlasTW.QCurrentQuest = questIndex
+    local UI_Inside = AtlasTW.Quest.UI
+    if ChatFrameEditBox:IsVisible() and IsShiftKeyDown() then
+        AtlasTW.Quest.InsertQuestLink()
+    else
+        AtlasTW.Quest.HideAtlasLootFrame()
+        UI_Inside.Story:SetText("")
+
+        if UI_Inside.InsideAtlasFrame:IsVisible() and AtlasTW.QCurrentButton == AtlasTW.QCurrentQuest then
+            HideUIPanel(UI_Inside.InsideAtlasFrame)
+            AtlasTW.QCurrentButton = nil
+        else
+            ShowUIPanel(UI_Inside.InsideAtlasFrame)
+            AtlasTW.QCurrentButton = AtlasTW.QCurrentQuest
+            AtlasTW.Quest.SetQuestButtons()
+        end
+    end
+end
+
+-- Function to close the quest frame
+function AtlasTW.Quest.CloseQuestFrame()
+    AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
+    HideUIPanel(AtlasTW.Quest.UI_Main.Frame)
+    HideUIPanel(AtlasTW.Quest.UI.InsideAtlasFrame)
+    KQAutoshowOption:SetChecked(AtlasTWOptions.QuestWithAtlas)
+    AtlasTW.OptionsInit()
+end
+
+-- Function to toggle the quest frame
+function AtlasTW.Quest.ToggleQuestFrame()
+    AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
+    if not AtlasTWOptions.QuestWithAtlas then
+        HideUIPanel(AtlasTW.Quest.UI_Main.Frame)
+        HideUIPanel(AtlasTW.Quest.UI.InsideAtlasFrame)
+    else
+        ShowUIPanel(AtlasTW.Quest.UI_Main.Frame)
+    end
+    KQAutoshowOption:SetChecked(AtlasTWOptions.QuestWithAtlas)
+    AtlasTW.OptionsInit()
+end
+
+-----------------------------------------------------------------------------
+-- Called when the player starts the game loads the AtlasTW
+-----------------------------------------------------------------------------
+function AtlasTW.Quest.OnEvent()
+    if type(AtlasTWCharDB) == "table" then
+        AtlasTW.Quest.LoadFinishedQuests()
+    else
+        DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
+    end
+    -- Register Tooltip with EquipCompare if enabled.
+    if AtlasTWOptions.QuestCompareTooltip then
+        AtlasTW.Quest.Tooltip:Register()
+    else
+        AtlasTW.Quest.Tooltip:Unregister()
+    end
 end

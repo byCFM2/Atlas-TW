@@ -5,6 +5,7 @@ local red = "|cffff0000"
 local blue = "|cff0070dd"
 -- Локальные ссылки на глобальные функции для повышения производительности
 local _G = getfenv()
+local AtlasTW = _G.AtlasTW
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local uIDropDownMenu_SetSelectedID = UIDropDownMenu_SetSelectedID
 
@@ -59,7 +60,7 @@ function AtlasOptions_DefaultSettings()
 	AtlasTWCharDB["QuickLooks"] = {}
 	AtlasTWCharDB["WishList"] = {}
 	AtlasLoot_RefreshQuickLookButtons()
-	AtlasOptions_Init()
+	AtlasTW.OptionsInit()
 	DEFAULT_CHAT_FRAME:AddMessage(blue.."Atlas-TW"..": "..red..L["Default settings applied!"])
 end
 
@@ -93,38 +94,38 @@ end
 
 function AtlasOptions_AutoSelectToggle()
     AtlasTWOptions.AtlasAutoSelect = not AtlasTWOptions.AtlasAutoSelect
-    AtlasOptions_Init()
+    AtlasTW.OptionsInit()
 end
 
 function AtlasOptions_RightClickToggle()
     AtlasTWOptions.AtlasRightClick = not AtlasTWOptions.AtlasRightClick
-    AtlasOptions_Init()
+    AtlasTW.OptionsInit()
 end
 
 function AtlasOptions_AcronymsToggle()
 
     AtlasTWOptions.AtlasAcronyms = not AtlasTWOptions.AtlasAcronyms
-    AtlasOptions_Init()
+    AtlasTW.OptionsInit()
     Atlas_Refresh()
 end
 
 function AtlasOptions_ClampedToggle()
     AtlasTWOptions.AtlasClamped = not AtlasTWOptions.AtlasClamped
     atlasFrame:SetClampedToScreen(AtlasTWOptions.AtlasClamped)
-    AtlasOptions_Init()
+    AtlasTW.OptionsInit()
     Atlas_Refresh()
 end
 
 -- Инициализация настроек
-function AtlasOptions_Init()
+function AtlasTW.OptionsInit()
     if not AtlasTWOptions then
         DEFAULT_CHAT_FRAME:AddMessage(AtlasTW.Name..": Failed to initialize local references.")
         return
     end
     if AtlasTWOptions.QuestWithAtlas then
-        KQuestFrame:Show()
+        AtlasTW.Quest.UI_Main.Frame:Show()
     else
-        KQuestFrame:Hide()
+        AtlasTW.Quest.UI_Main.Frame:Hide()
     end
 	--Consult the saved variable table to see whether to show the bottom panel
 	if AtlasTWOptions.LootShowPanel then
@@ -148,9 +149,9 @@ function AtlasOptions_Init()
 	KQLEFTOption:SetChecked(AtlasTWOptions.QuestCurrentSide == "Left")
 	KQRIGHTOption:SetChecked(AtlasTWOptions.QuestCurrentSide == "Right")
      if KQRIGHTOption:GetChecked() then
-        KQuestFrame:SetPoint("TOP", "AtlasFrame", 567, -36)
+        AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasFrame", 567, -36)
     else
-        KQuestFrame:SetPoint("TOP", "AtlasFrame", -556, -36)
+        AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasFrame", -556, -36)
     end
 	KQColourOption:SetChecked(AtlasTWOptions.QuestColourCheck)
 	KQCheckQuestlogButton:SetChecked(AtlasTWOptions.QuestCheckQuestlog)
@@ -183,7 +184,7 @@ function AtlasOptions_ResetPosition()
     AtlasTWOptions.AtlasAlpha = 1.0
     AtlasTWOptions.AtlasScale = 1.0
 
-    AtlasOptions_Init()
+    AtlasTW.OptionsInit()
 end
 
 -- Обновление слайдера
