@@ -1,5 +1,6 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
+local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local atlas_Ints_Ent_DropDown = {}
 local atlasData = {}
 local frame
@@ -417,9 +418,9 @@ function Atlas_Refresh()
 		end
 		table.sort(atlas_Ints_Ent_DropDown, atlasSwitchDD_Sort)
 		if sayEntrance then
-			AtlasSwitchButton:SetText(ATLAS_ENTRANCE_BUTTON)
+			AtlasSwitchButton:SetText(L["Entrance"])
 		else
-			AtlasSwitchButton:SetText(ATLAS_INSTANCE_BUTTON)
+			AtlasSwitchButton:SetText(L["Instance"])
 		end
 		AtlasSwitchButton:Show()
 		UIDropDownMenu_Initialize(AtlasSwitchDD, atlasSwitchDD_OnLoad)

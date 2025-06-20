@@ -59,9 +59,6 @@ ATLAS_DDL_DUNGEON_LOCATIONS = "Dungeon Locations"
 ATLAS_DDL_FLIGHT_PATHS = "Flight Path Maps"
 ATLAS_DDL_TRANSPORT_ROUTES = "Transport Routes"
 
-ATLAS_INSTANCE_BUTTON = "Instance"
-ATLAS_ENTRANCE_BUTTON = "Entrance"
-ATLAS_SEARCH_UNAVAIL = "Search Unavailable"
 
 -- Autoshow
 KQAutoshowOptionLocal = "Show AtlasQuest panel with Atlas.";
@@ -71,40 +68,22 @@ KQRIGHTOptionLocal = "Show the AtlasQuest panel "..red.."right."
 -- Colour Check
 KQColourOptionLocal = "Recolour the quests depending on their levels."
 -- QuestLog Colour Check
-KQCheckQuestlogButtonLocal = "Colours all quest, you have in your Questlog "..blue.."blue."
+KQCheckQuestlogButtonLocal = "Color Quests like in Questlog"..blue.."blue."
 -- AutoQuery Quest Rewards
-KQAutoQueryOptionLocal = "Automatically query the server for items you haven't seen."
+KQAutoQueryOptionLocal = "Auto-Query Unknown Items."
 -- Suppress Server Query text
 KQQuerySpamOptionLocal = "Suppress Server Query spam."
 -- Use Comparison Tooltips
-KQCompareTooltipOptionLocal = "Compare rewards to currently equipped items (need /rl)."
+KQCompareTooltipOptionLocal = "Compare rewards and gear (maybe need /rl)."
 
 AtlasZoneSubstitutions = {
 	["The Temple of Atal'Hakkar"] = "Sunken Temple"
 }
 
-AQNotAvailable = "Not Available"
-AQQuestFinished = "Quest finished:"
-
-AQSERVERASKInformation = " Please click right until you see the Item frame."
-AQSERVERASKAuto = " Try moving the cursor over the item in a second."
-AQSERVERASK = "AtlasQuest is querying the server for: "
-AQERRORNOTSHOWN = "This item is not safe!"
-AQERRORASKSERVER = "You can right-click to attempt to query the server. You may be disconnected."
-
---AQOptionB = "Options"
-AQStoryB = "Story"
 AQNoReward = ""..blue.." No Rewards"
 AQDiscription_OR = ""..grey.." or "..white..""
 AQDiscription_AND = ""..grey.." and "..white..""
 AQDiscription_REWARD = ""..blue.." Reward: "
-AQDiscription_ATTAIN = "Attain: "
-AQDiscription_LEVEL = "Level: "
-AQDiscription_START = "Starts at: \n"
-AQDiscription_AIM = "Objective: \n"
-AQDiscription_NOTE = "Note: \n"
-AQDiscription_PREQUEST= "Prequest: "
-AQDiscription_FOLGEQUEST = "Quest follows: "
 
 ------------------
 --- ITEM TYPES ---
@@ -181,18 +160,38 @@ L:RegisterTranslations("enUS", function() return {
 	["Panther"] = true,
 	["Pet"] = true,
 	["Engineer"] = true,
+
 	--Magic types
 	["Fire"] = true,
 	["Nature"] = true,
 	["Frost"] = true,
 	["Shadow"] = true,
 	["Arcane"] = true,
+
 	--Events
 	["Hallow's End"] = true,
 	["Scourge Invasion"] = true,
 	["Lunar Festival"] = true,
 
 	--Other
+	["Instance"] = true,
+	["Search Unavailable"] = true,
+	["Not Available"] = true,
+	["Quest finished:"] = true,
+	[" Please click right until you see the Item frame."] = true,
+	[" Try moving the cursor over the item in a second."] = true,
+	["AtlasQuest is querying the server for: "] = true,
+	["This item is not safe!"] = true,
+	["Item not found in cache"] = true,
+	["Item not found"] = true,
+	["Attain: "] = true,
+	["Level: "] = true,
+	["Starts at: \n"] = true,
+	["Objective: \n"] = true,
+	["Note: \n"] = true,
+	["Prequest: "] = true,
+	["Quest follows: "] = true,
+	["Story"] = true,
 	["Scale"] = true,
 	["Reset"] = true,
 	["Close"] = true,

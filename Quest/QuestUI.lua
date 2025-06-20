@@ -1,5 +1,6 @@
 -- AtlasTW Quest UI Frame Creation
 local _G = getfenv()
+local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 AtlasTW = _G.AtlasTW
 
 -- Constants
@@ -59,7 +60,7 @@ UI_Main.CloseButton:SetScript("OnClick", function () AtlasTW.Quest.CloseQuestFra
 UI_Main.CloseButton:SetScript("OnShow", setFrameLevelOnShow)
 
 -- Story Button
-UI_Main.StoryButton = CreateElement("Button", "", frame, "OptionsButtonTemplate", 70, 20, { "TOP", 0, -13 }, AQStoryB)
+UI_Main.StoryButton = CreateElement("Button", "", frame, "OptionsButtonTemplate", 70, 20, { "TOP", 0, -13 }, L["Story"])
 UI_Main.StoryButton:SetScript("OnClick", function () AtlasTW.Quest.OnStoryClick() end)
 UI_Main.StoryButton:SetScript("OnShow", setFrameLevelOnShow)
 

@@ -1,5 +1,6 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
+local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 -----------------------------------------------------------------------------
 -- Colours
 -----------------------------------------------------------------------------
@@ -265,13 +266,13 @@ local function kQuestGetItemInf(count, what)
             local description = itemDescription or ""
             if itemId then
                 -- Add error message only if we have an ID but can't load the item
-                description = description .. " " .. red .. (AQERRORNOTSHOWN or "Item not found")
+                description = description .. " " .. red .. (L["This item is not safe!"] or L["Item not found"])
             end
             return description
         end
     end
 
-    return nil
+    return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW: Failed with kQuestGetItemInf.")
 end
 
 -----------------------------------------------------------------------------
@@ -283,7 +284,7 @@ local function getRewardItemData(questData, itemIndex, field)
         questData.Rewards[itemIndex][field] then
         return questData.Rewards[itemIndex][field]
     end
-    return nil
+    return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW: Failed with getRewardItemData.")
 end
 
 -----------------------------------------------------------------------------
@@ -297,7 +298,7 @@ function AtlasTW.Quest.SetQuestText()
     AtlasTW.Quest.ClearAll()
     -- Show the finished quest checkbox
     AtlasTW.Quest.UI.FinishedQuestCheckbox:Show()
-    AtlasTW.Quest.UI.FinishedQuestText:SetText(blue .. AQQuestFinished)
+    AtlasTW.Quest.UI.FinishedQuestText:SetText(blue .. L["Quest finished:"])
 
     -- Get quest data from new structure
     local instanceData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance]
@@ -316,16 +317,16 @@ function AtlasTW.Quest.SetQuestText()
         AtlasTW.Quest.UI.QuestName:SetText(kQQuestColor..questData.Title)
 
         -- Set quest level information
-        AtlasTW.Quest.UI.QuestLevel:SetText(blue..AQDiscription_LEVEL..white..questData.Level)
-        AtlasTW.Quest.UI.QuestAttainLevel:SetText(blue..AQDiscription_ATTAIN..white..questData.Attain)
+        AtlasTW.Quest.UI.QuestLevel:SetText(blue..L["Level: "]..white..questData.Level)
+        AtlasTW.Quest.UI.QuestAttainLevel:SetText(blue..L["Attain: "]..white..questData.Attain)
 
         -- Set quest details
         AtlasTW.Quest.UI.Prerequisite:SetText(
-            blue..AQDiscription_PREQUEST..white..(questData.Prequest or "").."\n \n"..
-            blue..AQDiscription_FOLGEQUEST..white..(questData.Folgequest or "").."\n \n"..
-            blue..AQDiscription_START..white..(questData.Location or "").."\n \n"..
-            blue..AQDiscription_AIM..white..(questData.Aim or "").."\n \n"..
-            blue..AQDiscription_NOTE..white..(questData.Note or "")
+            blue..L["Prequest: "]..white..(questData.Prequest or "").."\n \n"..
+            blue..L["Quest follows: "]..white..(questData.Folgequest or "").."\n \n"..
+            blue..L["Starts at: \n"]..white..(questData.Location or "").."\n \n"..
+            blue..L["Objective: \n"]..white..(questData.Aim or "").."\n \n"..
+            blue..L["Note: \n"]..white..(questData.Note or "")
         )
 
         -- Set reward text from structure if available
@@ -344,7 +345,8 @@ function AtlasTW.Quest.SetQuestText()
                         if not GetItemInfo(itemId) then
                             GameTooltip:SetHyperlink("item:"..itemId..":0:0:0")
                             if not AtlasTWOptions.QuestQuerySpam then
-                                DEFAULT_CHAT_FRAME:AddMessage(AQSERVERASK.."["..itemColor..itemName..white.."]"..AQSERVERASKAuto)
+                                DEFAULT_CHAT_FRAME:AddMessage(L["AtlasQuest is querying the server for: "]..
+                                "["..itemColor..itemName..white.."]"..L[" Try moving the cursor over the item in a second."])
                             end
                         end
                     end
@@ -416,7 +418,6 @@ function AtlasTW.Quest.SetStoryText()
                         break
                     end
                 end
-
                 AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage .. "/" .. maxPages)
 
                 -- Set page type
@@ -429,8 +430,8 @@ function AtlasTW.Quest.SetStoryText()
         end
     else
         -- No story available
-        AtlasTW.Quest.UI.QuestName:SetText(AQNotAvailable)
-        AtlasTW.Quest.UI.Story:SetText(AQNotAvailable)
+        AtlasTW.Quest.UI.QuestName:SetText(L["Not Available"])
+        AtlasTW.Quest.UI.Story:SetText(L["Not Available"])
     end
 end
 
@@ -466,13 +467,6 @@ function AtlasTW.Quest.Update()
 	end
 end
 
------------------------------------------------------------------------------
--- Set the Buttontext and the buttons if available
--- and check whether its a other inst or not -> works fine
--- added: Check for Questline arrows
--- Questline arrows are shown if InstXQuestYFQuest = "true"
--- QuestStart icon are shown if InstXQuestYPreQuest = "true"
------------------------------------------------------------------------------
 function AtlasTW.Quest.SetQuestButtons()
     local isHorde = AtlasTW.isHorde
 	local instanceId = AtlasTW.QCurrentInstance

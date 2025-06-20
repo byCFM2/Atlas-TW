@@ -188,7 +188,7 @@ local function atlas_CreateFrames()
     searchContainer:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 540, -555)
 
     local noSearch = searchContainer:CreateFontString("AtlasNoSearch", "ARTWORK", "GameFontDisableSmall")
-    noSearch:SetText(ATLAS_SEARCH_UNAVAIL)
+    noSearch:SetText(L["Search Unavailable"])
     noSearch:SetPoint("CENTER", searchContainer, "CENTER")
     noSearch:SetTextColor(1, 1, 1, 0.4)
 

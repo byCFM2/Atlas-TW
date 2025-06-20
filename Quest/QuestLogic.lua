@@ -1,5 +1,6 @@
 -- AtlasTW Quest Logic for the Inside Frame
 local _G = getfenv()
+local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 AtlasTW = _G.AtlasTW
 
 -----------------------------------------------------------------------------
@@ -66,8 +67,8 @@ function AtlasTW.Quest.OnItemEnter(itemIndex)
 
         -- Add error message if we have ID but can't load item
         if itemId then
-            AtlasTW.Quest.Tooltip:AddLine(red .. (AQERRORNOTSHOWN or "Item not found in cache"), 1, 0, 0)
-            AtlasTW.Quest.Tooltip:AddLine(AQERRORASKSERVER)
+            AtlasTW.Quest.Tooltip:AddLine(red .. (L["This item is not safe!"] or L["Item not found in cache"]), 1, 0, 0)
+            AtlasTW.Quest.Tooltip:AddLine(L["You can right-click to attempt to query the server. You may be disconnected."])
         end
     end
 
@@ -133,7 +134,7 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
         AtlasTW.Quest.Tooltip:Show()
         if not AtlasTWOptions.QuestQuerySpam then
             DEFAULT_CHAT_FRAME:AddMessage(string.format("%s[%s%s%s]%s",
-                AQSERVERASK, itemColor, rewardItem.Name, white, AQSERVERASKInformation))
+                L["AtlasQuest is querying the server for: "], itemColor, rewardItem.Name, white, L[" Please click right until you see the Item frame."]))
         end
         return
     end
