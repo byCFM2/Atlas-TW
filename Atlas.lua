@@ -133,7 +133,7 @@ end
 
 --Initializes everything relating to saved variables and data in other lua files
 --This should be called ONLY when we're sure our variables are in memory
-function Atlas_Init()
+local function Atlas_Init()
 	-- Валидация данных AtlasMaps
 	if AtlasTW.DEBUGMODE then
 		local errors = AtlasUtils.ValidateAllData()
@@ -143,7 +143,6 @@ function Atlas_Init()
 			end
 		end
 	end
-
 	-- Инициализируем UI фреймы
 	AtlasLoot_InitializeUI()
 
@@ -182,8 +181,9 @@ end
 --Main Atlas event handler
 function Atlas_OnEvent()
 	if arg1 == AtlasTW.Name then
-	    AtlasTW.isHorde = UnitFactionGroup("player") == "Horde"
 		Atlas_Init()
+	elseif not arg1 then
+		AtlasTW.isHorde = UnitFactionGroup("player") == "Horde"
 	end
 end
 

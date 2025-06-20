@@ -16,6 +16,35 @@ local function atlas_CreateFrames()
     atlasFrame:EnableMouse(true)
 	atlasFrame:RegisterForDrag("LeftButton")
 	atlasFrame:RegisterEvent("ADDON_LOADED")
+    atlasFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+
+    -- Scripts
+    atlasFrame:SetScript("OnEvent", function()
+        Atlas_OnEvent()
+    end)
+
+    atlasFrame:SetScript("OnShow", function()
+        Atlas_OnShow()
+    end)
+
+    atlasFrame:SetScript("OnHide", function()
+        atlasFrame:StopMovingOrSizing()
+    end)
+
+    atlasFrame:SetScript("OnDragStart", function()
+        if(arg1 == "LeftButton") then
+            Atlas_StartMoving()
+        end
+    end)
+
+    atlasFrame:SetScript("OnDragStop", function()
+        atlasFrame:StopMovingOrSizing()
+    end)
+
+    atlasFrame:SetScript("OnMouseUp", function()
+        atlasFrame:StopMovingOrSizing()
+        Atlas_OnClick()
+    end)
 
     --Allows Atlas to be closed with the Escape key
 	tinsert(UISpecialFrames, "AtlasFrame")
@@ -138,7 +167,6 @@ local function atlas_CreateFrames()
     ShowPanelButton:SetPoint("LEFT", questsToggleButton, "LEFT", -95, 0)
     ShowPanelButton:SetScript("OnClick", function()
         AtlasOptionsShowPanelButton_OnClick()
-       -- AtlasLoot_SetupForAtlas()
     end)
 
     -- Scroll frame
@@ -289,34 +317,6 @@ local function atlas_CreateFrames()
 	AtlasMap:SetWidth(512)
 	AtlasMap:SetHeight(512)
 	AtlasMap:SetPoint("TOPLEFT", "AtlasFrame", "TOPLEFT", 18, -84)
-
-    -- Scripts
-    atlasFrame:SetScript("OnEvent", function()
-        Atlas_OnEvent()
-    end)
-
-    atlasFrame:SetScript("OnShow", function()
-        Atlas_OnShow()
-    end)
-
-    atlasFrame:SetScript("OnHide", function()
-        atlasFrame:StopMovingOrSizing()
-    end)
-
-    atlasFrame:SetScript("OnDragStart", function()
-        if(arg1 == "LeftButton") then
-            Atlas_StartMoving()
-        end
-    end)
-
-    atlasFrame:SetScript("OnDragStop", function()
-        atlasFrame:StopMovingOrSizing()
-    end)
-
-    atlasFrame:SetScript("OnMouseUp", function()
-        atlasFrame:StopMovingOrSizing()
-        Atlas_OnClick()
-    end)
 
 --[[     -- World map frame -- TODO не знаю зачем это
     local worldMapFrame = CreateFrame("Frame", "Atlas_WorldMap_Frame", WorldMapFrame)

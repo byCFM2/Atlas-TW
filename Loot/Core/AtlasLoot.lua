@@ -89,7 +89,7 @@ end
 	Invoked by the VARIABLES_LOADED event. Now that we are sure all the assets
 	the addon needs are in place, we can properly set up the mod
 ]]
-function AtlasLoot_OnVariablesLoaded()
+function AtlasLoot_OnEvent()
 	if not AtlasTWCharDB then AtlasTWCharDB = {} end
 	if not AtlasTWCharDB["WishList"] then AtlasTWCharDB["WishList"] = {} end
 	if not AtlasTWCharDB["QuickLooks"] then AtlasTWCharDB["QuickLooks"] = {} end
@@ -111,13 +111,17 @@ function AtlasLoot_OnVariablesLoaded()
 		AtlasLootOptionsFrameEquipCompare:Disable()
 		AtlasLootOptionsFrameEquipCompareText:SetText(L["|cff9d9d9dUse EquipCompare|r"])
 	end
+
 	--Set up options frame
 	AtlasTW.OptionsInit()
+
 	UIPanelWindows['AtlasLootOptionsFrame'] = {area = 'center', pushable = 0}
+
 	--Legacy code for those using the ultimately failed attempt at making Atlas load on demand
 	if AtlasButton_LoadAtlas then
 		AtlasButton_LoadAtlas()
 	end
+
 	--Disable options that don't have the supporting mods
 	if not LootLink_SetTooltip and AtlasTWOptions.LootlinkTT == true then
 		AtlasTWOptions.LootlinkTT = false
@@ -158,18 +162,6 @@ function AtlasLoot_OnVariablesLoaded()
 	AtlasLootItemsFrame_SelectedTable:Show()
 	AtlasLootItemsFrame_SubMenu:Disable()
 end
-
---[[ function AtlasLoot_SetupForAtlas()--TODO dont need later
-	AtlasLoot_AnchorFrame = AtlasFrame
-end ]]
-
---[[
-	 - Data structure with anchor info. Format: {Anchor Point, Relative Frame, Relative Point, X Offset, Y Offset }
-	This function anchors the item frame where appropriate. The main Atlas frame can be passed instead of a custom .
-	If no  is specified, the Atlas Frame is used if Atlas is installed.
-]]
---[[ function AtlasLoot_SetItemInfoFrame() --TODO dont need later
-end ]]
 
 --[[
 	Required as the Atlas function cannot deal with the AtlasLoot button template or the added Atlasloot entries

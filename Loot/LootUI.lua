@@ -3,7 +3,7 @@ local _G = getfenv()
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
 -- Функция для копирования свойств родительского шаблона
-function AtlasLoot_ApplyParentTemplate(frame)
+local function AtlasLoot_ApplyParentTemplate(frame)
     frame:SetWidth(236)
     frame:SetHeight(28)
     frame:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
@@ -81,7 +81,7 @@ function AtlasLoot_ApplyParentTemplate(frame)
 end
 
 -- Функция для применения свойств навигационных кнопок
-function AtlasLoot_ApplyNavigationButtonTemplate(button, buttonType)
+local function AtlasLoot_ApplyNavigationButtonTemplate(button, buttonType)
     button:SetWidth(32)
     button:SetHeight(32)
     button:SetFrameStrata("MEDIUM")
@@ -132,7 +132,7 @@ function AtlasLoot_ApplyContainerItemTemplate(button)
 end
 
 -- Create Preset buttons (QuickLook buttons)
-function AtlasLoot_CreatePresetButtons(frame)
+local function AtlasLoot_CreatePresetButtons(frame)
     local presetButton = {}
     for i = 1, 4 do
         presetButton[i] = CreateFrame("Button", frame:GetName().."_Preset"..i, frame, "OptionsButtonTemplate")
@@ -191,7 +191,7 @@ function AtlasLoot_CreatePresetButtons(frame)
 end
 
 -- Create Search Box and related buttons
-function AtlasLoot_CreateSearchElements(frame)
+local function AtlasLoot_CreateSearchElements(frame)
     -- Search Box
     local searchBox = CreateFrame("EditBox", "AtlasLootDefaultFrameSearchBox", frame, "InputBoxTemplate")
     searchBox:SetWidth(180)
@@ -323,7 +323,7 @@ function AtlasLoot_CreateSearchElements(frame)
 end
 
 -- Create FontStrings for the frame
-function AtlasLoot_CreateFontStrings(frame)
+local function AtlasLoot_CreateFontStrings(frame)
     -- Selected Category text
     local selectedCategory = frame:CreateFontString(frame:GetName().."_SelectedCategory", "OVERLAY", "GameFontNormal")
     selectedCategory:SetPoint("TOP", "AtlasLootItemsFrame_Menu", "TOP", 0, 15)
@@ -341,7 +341,7 @@ function AtlasLoot_CreateFontStrings(frame)
 end
 
 -- Create tooltips
-function AtlasLoot_CreateTooltips()
+local function AtlasLoot_CreateTooltips()
     local tooltip1 = CreateFrame("GameTooltip", "AtlasLootTooltip", UIParent, "GameTooltipTemplate")
     tooltip1:Hide()
 
@@ -412,7 +412,7 @@ function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
 end
 
 -- Create фрейм with all item buttons
-function AtlasLoot_CreateItemsFrame()
+local function AtlasLoot_CreateItemsFrame()
     local frame = CreateFrame("Frame", "AtlasLootItemsFrame", AtlasFrame)
     frame:SetWidth(510)
     frame:SetHeight(510)
@@ -421,7 +421,7 @@ function AtlasLoot_CreateItemsFrame()
     frame:EnableMouseWheel(true)
 	frame:RegisterEvent("VARIABLES_LOADED")
     frame:SetScript("OnEvent", function()
-            AtlasLoot_OnVariablesLoaded()
+        AtlasLoot_OnEvent()
     end)
     frame:SetScript("OnMouseWheel", function()
         if arg1 == 1 and AtlasLootItemsFrame_NEXT:IsVisible() then
@@ -460,36 +460,6 @@ function AtlasLoot_CreateItemsFrame()
     closeButton:SetScript("OnShow", function()
         this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
     end)
-
- --[[    -- Query Server button
-    local queryButton = CreateFrame("Button", "AtlasLootServerQueryButton", frame, "OptionsButtonTemplate")
-    queryButton:SetWidth(120)
-    queryButton:SetHeight(25)
-    queryButton:SetPoint("BOTTOM", frame, "BOTTOM", 160, 8)
- --   queryButton:Hide()
-
-    queryButton:SetScript("OnShow", function()
-        this:SetText(L["Query Server"])
-        this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-    end)
-    queryButton:SetScript("OnEnter", function()
-        GameTooltip:ClearLines()
-        GameTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 5)
-        GameTooltip:AddLine("|cffff0000"..L["Query Server"])
-        GameTooltip:AddLine(L["Queries the server for all items"])
-        GameTooltip:AddLine(L["on this page. The items will be"])
-        GameTooltip:AddLine(L["refreshed when you next mouse"])
-        GameTooltip:AddLine(L["over them."])
-        GameTooltip:Show()
-    end)
-    queryButton:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
-    queryButton:SetScript("OnClick", function()
-        GameTooltip:Hide()
-		AtlasLoot_QueryLootPage()
-		CloseDropDownMenus()
-    end) ]]
 
     -- QuickLooks button
     local quickLooksButton = CreateFrame("Button", "AtlasLootQuickLooksButton", frame)
@@ -671,10 +641,8 @@ function AtlasLoot_CreateItemsFrame()
     return frame
 end
 
-
-
 -- AtlasLootPanel
-function AtlasLoot_CreatePanel()
+local function AtlasLoot_CreatePanel()
     local frame = CreateFrame("Frame", "AtlasLootPanel", AtlasFrame)
     frame:SetWidth(570)
     frame:SetHeight(90)
@@ -900,6 +868,5 @@ end
 function AtlasLoot_InitializeUI()
     AtlasLoot_CreateTooltips()
     AtlasLoot_CreateItemsFrame()
-  --  AtlasLoot_CreateOptionsFrame()
     AtlasLoot_CreatePanel()
 end
