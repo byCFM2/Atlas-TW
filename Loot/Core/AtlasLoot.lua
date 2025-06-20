@@ -1417,7 +1417,11 @@ function AtlasLootItem_OnEnter()
 				if GetItemInfo(this.itemID) ~= nil then
 					_G[this:GetName().."_Unsafe"]:Hide()
 				end
-				ItemSync:ButtonEnter()
+				if ISync then
+					ISync:ButtonEnter()
+				else
+					ItemSync:ButtonEnter()
+				end
 				if AtlasTWOptions.LootItemIDs then
 					GameTooltip:AddLine(BLUE..L["ItemID:"].." "..this.itemID, nil, nil, nil, 1)
 				end

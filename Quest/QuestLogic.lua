@@ -1,8 +1,6 @@
 -- AtlasTW Quest Logic for the Inside Frame
-
--- Ensure the namespace exists
-AtlasTW = AtlasTW or {}
-AtlasTW.Quest = AtlasTW.Quest or {}
+local _G = getfenv()
+AtlasTW = _G.AtlasTW
 
 -----------------------------------------------------------------------------
 -- Colours

@@ -1,14 +1,13 @@
 local _G = getfenv()
-local atlasTW = _G.AtlasTW
+AtlasTW = _G.AtlasTW
 local atlas_Ints_Ent_DropDown = {}
 local atlasData = {}
 local frame
-
-atlasTW.Version = GetAddOnMetadata(atlasTW.Name, "Version")
+AtlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version")
 
 local function debug(info)
-	if atlasTW.DEBUGMODE then
-		DEFAULT_CHAT_FRAME:AddMessage("["..atlasTW.Name.."] "..info)
+	if AtlasTW.DEBUGMODE then
+		DEFAULT_CHAT_FRAME:AddMessage("["..AtlasTW.Name.."] "..info)
 	end
 end
 
@@ -80,11 +79,11 @@ local function atlas_Search(text)
 	--populate the scroll frame entries list, the update func will do the rest
 	local i = 1
 	while ( data and data[i] ~= nil ) do
-		atlasTW.ScrollList[i] = data[i][1]
+		AtlasTW.ScrollList[i] = data[i][1]
 		i = i + 1
 	end
 
-	atlasTW.CurrentLine = i - 1
+	AtlasTW.CurrentLine = i - 1
 end
 
 function Atlas_SearchAndRefresh(text)
@@ -136,7 +135,7 @@ end
 --This should be called ONLY when we're sure our variables are in memory
 function Atlas_Init()
 	-- Валидация данных AtlasMaps
-	if atlasTW.DEBUGMODE then
+	if AtlasTW.DEBUGMODE then
 		local errors = AtlasUtils.ValidateAllData()
 		for _, dungeonErrors in pairs(errors) do
 			for _, error in pairs(dungeonErrors) do
@@ -149,13 +148,13 @@ function Atlas_Init()
 	AtlasLoot_InitializeUI()
 
 	--clear saved vars for a new ver (or a new install!)
-	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= atlasTW.Version or AtlasTWCharDB.FirstTime then
+	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= AtlasTW.Version or AtlasTWCharDB.FirstTime then
 		AtlasOptions_DefaultSettings()
 	end
 
 	--populate the dropdown lists...yeeeah this is so much nicer!
 	-- Добавить валидацию dropdown данных
-    if atlasTW.DEBUGMODE then
+    if AtlasTW.DEBUGMODE then
         local dropdownErrors = AtlasTW_DropDownValidateData()
         if table.getn(dropdownErrors) > 0 then
             for _, error in pairs(dropdownErrors) do
@@ -166,7 +165,7 @@ function Atlas_Init()
 
 	Atlas_PopulateDropdowns()
 
-	if atlasTW.DropDowns[AtlasTWOptions.AtlasType] == nil then
+	if AtlasTW.DropDowns[AtlasTWOptions.AtlasType] == nil then
 		AtlasTWOptions.AtlasType = 1
 		AtlasTWOptions.AtlasZone = 1
 	end
@@ -182,7 +181,8 @@ end
 
 --Main Atlas event handler
 function Atlas_OnEvent()
-	if arg1 == atlasTW.Name then
+	if arg1 == AtlasTW.Name then
+	    AtlasTW.isHorde = UnitFactionGroup("player") == "Horde"
 		Atlas_Init()
 	end
 end
@@ -193,12 +193,12 @@ function Atlas_PopulateDropdowns()
     local layouts = AtlasTW_DropDownGetLayout(sortType)
     for n = 1, getn(subcatOrder) do
         local subcatItems = layouts[subcatOrder[n]]
-        atlasTW.DropDowns[n] = {}
+        AtlasTW.DropDowns[n] = {}
         for _,v in pairs(subcatItems) do
-            table.insert(atlasTW.DropDowns[n], v)
+            table.insert(AtlasTW.DropDowns[n], v)
         end
         if subcatOrder[n] ~= ATLAS_DDL_ALL_MENU1 and subcatOrder[n] ~= ATLAS_DDL_ALL_MENU2 and subcatOrder[n] ~= ATLAS_DDL_WORLD then
-            table.sort(atlasTW.DropDowns[n], atlas_SortZonesAlpha)
+            table.sort(AtlasTW.DropDowns[n], atlas_SortZonesAlpha)
         end
     end
 end
@@ -246,7 +246,7 @@ function Atlas_Toggle()
 end
 
 local function atlasSwitchDD_Set(index)
-	for k,v in pairs(atlasTW.DropDowns) do
+	for k,v in pairs(AtlasTW.DropDowns) do
 		for k2,v2 in pairs(v) do
 			if v2 == atlas_Ints_Ent_DropDown[index] then
 				AtlasTWOptions.AtlasType = k
@@ -292,7 +292,7 @@ function Atlas_Refresh()
 
 	-- Валидация текущего подземелья
     local errors = AtlasUtils.ValidateDungeonData(zoneID, data[zoneID])
-    if table.getn(errors) > 0 and atlasTW.DEBUGMODE then
+    if table.getn(errors) > 0 and AtlasTW.DEBUGMODE then
         for _, error in pairs(errors) do
             debug("Current dungeon validation error: " .. error)
         end
@@ -315,10 +315,10 @@ function Atlas_Refresh()
 	end
 
 	--Display the newly selected texture
-	AtlasMap:SetTexture(atlasTW.MAPPATH..zoneID)
+	AtlasMap:SetTexture(AtlasTW.MAPPATH..zoneID)
 	--Update the quest frame
 --	DEFAULT_CHAT_FRAME:AddMessage("Atlas_Refresh run!")
-	atlasTW.CurrentMap = zoneID
+	AtlasTW.CurrentMap = zoneID
 	AtlasTW.Quest.Update()
 	--Setup info panel above boss listing
 	local tName = base.ZoneName[1]
@@ -360,7 +360,7 @@ function Atlas_Refresh()
 	AtlasSearchEditBox:ClearFocus()
 
 	--create and align any new entry buttons that we need
- 	for i = 1, atlasTW.CurrentLine do
+ 	for i = 1, AtlasTW.CurrentLine do
 		if not _G["AtlasBossLine"..i] then
 			frame = AtlasLoot_CreateButtonFromTemplate("AtlasBossLine"..i, AtlasFrame, "AtlasLootNewBossLineTemplate")
 			frame:SetFrameStrata("MEDIUM")
@@ -394,14 +394,14 @@ function Atlas_Refresh()
 	--see if we should display the entrance/instance button or not, and decide what it should say
 	local matchFound = {}
 	local sayEntrance = nil
-	for k,v in pairs(atlasTW.EntToInstMatches) do
+	for k,v in pairs(AtlasTW.EntToInstMatches) do
 		if k == zoneID then
 			matchFound = v
 			sayEntrance = false
 		end
 	end
 	if not matchFound[1] then
-		for k,v in pairs(atlasTW.InstToEntMatches) do
+		for k,v in pairs(AtlasTW.InstToEntMatches) do
 			if k == zoneID then
 				matchFound = v
 				sayEntrance = true
@@ -479,7 +479,7 @@ end
 --Looks at the status of AtlasType to determine how to populate the list
 local function atlasFrameDropDown_Initialize()
 	local info
-	for _,v in pairs(atlasTW.DropDowns[AtlasTWOptions.AtlasType]) do
+	for _,v in pairs(AtlasTW.DropDowns[AtlasTWOptions.AtlasType]) do
 		info = {
 			text = AtlasMaps[v].ZoneName[1],
 			func = atlasFrameDropDown_OnClick
@@ -505,13 +505,13 @@ local function atlas_AutoSelect()
 	local currentSubZone = GetSubZoneText()
 	debug("Using auto-select to open the best map.")
 
-	if atlasTW.AssocDefaults[currentZone] then
+	if AtlasTW.AssocDefaults[currentZone] then
 		debug("You're in a zone where SubZone data is relevant.")
-		if atlasTW.SubZoneData[currentSubZone] then
+		if AtlasTW.SubZoneData[currentSubZone] then
 			debug("There's data for your current SubZone.")
-			for ka,va in pairs(atlasTW.DropDowns) do
+			for ka,va in pairs(AtlasTW.DropDowns) do
 				for kb,vb in pairs(va) do
-					if atlasTW.SubZoneData[currentSubZone] == vb then
+					if AtlasTW.SubZoneData[currentSubZone] == vb then
 						AtlasTWOptions.AtlasType = ka
 						AtlasTWOptions.AtlasZone = kb
 						Atlas_Refresh()
@@ -522,13 +522,13 @@ local function atlas_AutoSelect()
 			end
 		else
 			debug("No applicable SubZone data exists.")
-			if currentZone == atlasTW.SubZoneAssoc[atlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
+			if currentZone == AtlasTW.SubZoneAssoc[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
 				debug("You're in the same instance as the former map. Doing nothing.")
 				return
 			else
-				for ka,va in pairs(atlasTW.DropDowns) do
+				for ka,va in pairs(AtlasTW.DropDowns) do
 					for kb,vb in pairs(va) do
-						if atlasTW.AssocDefaults[currentZone] == vb then
+						if AtlasTW.AssocDefaults[currentZone] == vb then
 							AtlasTWOptions.AtlasType = ka
 							AtlasTWOptions.AtlasZone = kb
 							Atlas_Refresh()
@@ -541,11 +541,11 @@ local function atlas_AutoSelect()
 		end
 	else
 		debug("SubZone data isn't relevant here.")
-		if atlasTW.OutdoorZoneToAtlas[currentZone] then
+		if AtlasTW.OutdoorZoneToAtlas[currentZone] then
 			debug("This world zone is associated with a map.")
-			for ka,va in pairs(atlasTW.DropDowns) do
+			for ka,va in pairs(AtlasTW.DropDowns) do
 				for kb,vb in pairs(va) do
-					if atlasTW.OutdoorZoneToAtlas[currentZone] == vb then
+					if AtlasTW.OutdoorZoneToAtlas[currentZone] == vb then
 						AtlasTWOptions.AtlasType = ka
 						AtlasTWOptions.AtlasZone = kb
 						Atlas_Refresh()
@@ -554,15 +554,15 @@ local function atlas_AutoSelect()
 					end
 				end
 			end
-		elseif atlasTW.InstToEntMatches[atlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
-			for _,va in pairs(atlasTW.InstToEntMatches[atlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
+		elseif AtlasTW.InstToEntMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
+			for _,va in pairs(AtlasTW.InstToEntMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
 				if currentZone == AtlasMaps[va].ZoneName[1] then
 					debug("Instance/entrance pair found. Doing nothing.")
 					return
 				end
 			end
-		elseif atlasTW.EntToInstMatches[atlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
-			for _,va in pairs(atlasTW.EntToInstMatches[atlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
+		elseif AtlasTW.EntToInstMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
+			for _,va in pairs(AtlasTW.EntToInstMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
 				if currentZone == AtlasMaps[va].ZoneName[1] then
 					debug("Instance/entrance pair found. Doing nothing.")
 					return
@@ -570,7 +570,7 @@ local function atlas_AutoSelect()
 			end
 		end
 		debug("Searching through all maps for a ZoneName match.")
-		for ka,va in pairs(atlasTW.DropDowns) do
+		for ka,va in pairs(AtlasTW.DropDowns) do
 			for kb,vb in pairs(va) do
 				-- Compare the currentZone to the new substr of ZoneName
 				if currentZone == strsub(AtlasMaps[vb].ZoneName[1], strlen(AtlasMaps[vb].ZoneName[1]) - strlen(currentZone) + 1) then

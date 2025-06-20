@@ -1,4 +1,5 @@
 local _G = getfenv()
+AtlasTW = _G.AtlasTW
 ---------------
 --- COLOURS ---
 ---------------

@@ -224,7 +224,7 @@ AtlasTW = {
     --quest
     Q = {},
     Quest = {NextPageCount = 0},
-    isHorde = UnitFactionGroup("player") == "Horde" or false,
+    isHorde = false,
     CurrentMap = nil,
     QCurrentPage = 0,
     QCurrentQuest = 0,

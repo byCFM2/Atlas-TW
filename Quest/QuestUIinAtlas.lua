@@ -1,4 +1,6 @@
 -- AtlasTW Quest Inside Atlas frame
+local _G = getfenv()
+AtlasTW = _G.AtlasTW
 
 -- Constants for configuration
 local FRAME_WIDTH = 510

@@ -1,7 +1,6 @@
 -- AtlasTW Quest UI Frame Creation
-
-AtlasTW = AtlasTW or {}
-AtlasTW.Quest = AtlasTW.Quest or {}
+local _G = getfenv()
+AtlasTW = _G.AtlasTW
 
 -- Constants
 local FRAME_WIDTH = 220
@@ -66,13 +65,11 @@ UI_Main.StoryButton:SetScript("OnShow", setFrameLevelOnShow)
 
 -- Checkboxes
 UI_Main.AllianceCheck = CreateElement("CheckButton", "", frame, "OptionsCheckButtonTemplate", 30, 30, { "TOPLEFT", 12, -30 })
-UI_Main.AllianceCheck:SetChecked(true)
 UI_Main.AllianceCheck:SetHitRectInsets(0, 0, 0, 0)
 UI_Main.AllianceCheck:SetScript("OnClick", function () AtlasTW.Quest.OnAllianceClick() end)
 UI_Main.AllianceCheck:SetScript("OnShow", setFrameLevelOnShow)
 
 UI_Main.HordeCheck = CreateElement("CheckButton", "", frame, "OptionsCheckButtonTemplate", 30, 30, { "TOPRIGHT", -12, -30 })
-UI_Main.HordeCheck:SetChecked(false)
 UI_Main.HordeCheck:SetHitRectInsets(0, 0, 0, 0)
 UI_Main.HordeCheck:SetScript("OnClick", function () AtlasTW.Quest.OnHordeClick() end)
 UI_Main.HordeCheck:SetScript("OnShow", setFrameLevelOnShow)
