@@ -24,7 +24,7 @@ function AtlasButton_Toggle()
 		AtlasButtonFrame:Show()
 		AtlasTWOptions.AtlasButtonShown = true
 	end
-	AtlasTW.OptionsInit()()
+	AtlasTW.OptionsInit()
 end
 
 -- Обновление позиции кнопки
