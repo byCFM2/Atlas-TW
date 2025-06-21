@@ -1,5 +1,6 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
+AtlasTW.UI = AtlasTW.UI or {}
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local atlas_Ints_Ent_DropDown = {}
 local atlasData = {}
@@ -337,7 +338,6 @@ function Atlas_Refresh()
 	if AtlasTWOptions.AtlasAcronyms and base.Acronym ~= nil then
 		tName = tName..red.." ["..base.Acronym.."]"
 	end
-	AtlasText_ZoneName_Text:SetText(tName)
 	if base.Location[1] then
 		textLocation = L["Location"]..": "..base.Location[1]
 	end
@@ -350,19 +350,20 @@ function Atlas_Refresh()
 	if base.PlayerLimit then
 		textPlayerLimit = L["Player Limit"]..": "..base.PlayerLimit
 	end
-	AtlasText_Location_Text:SetText(textLocation)
-	AtlasText_LevelRange_Text:SetText(textLevelRange)
-	AtlasText_MinLevel_Text:SetText(textMinLevel)
-	AtlasText_PlayerLimit_Text:SetText(textPlayerLimit)
+	AtlasTW.UI.ZoneNameText:SetText(tName)
+	AtlasTW.UI.LocationText:SetText(textLocation)
+	AtlasTW.UI.LevelRangeText:SetText(textLevelRange)
+	AtlasTW.UI.MinLevelText:SetText(textMinLevel)
+	AtlasTW.UI.PlayerLimitText:SetText(textPlayerLimit)
 
 	atlasData = base
 
 	if (data.Search ~= false) then
 		AtlasSearchEditBox:Show();
-		AtlasNoSearch:Hide();
+		AtlasTW.UI.NoSearch:Hide();
 	else
 		AtlasSearchEditBox:Hide();
-		AtlasNoSearch:Show();
+		AtlasTW.UI.NoSearch:Show();
 		ATLAS_SEARCH_METHOD = nil;
 	end
 

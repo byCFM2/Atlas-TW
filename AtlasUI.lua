@@ -17,7 +17,6 @@ local function atlas_CreateFrames()
 	atlasFrame:RegisterForDrag("LeftButton")
 	atlasFrame:RegisterEvent("ADDON_LOADED")
     atlasFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-    --atlasFrame:RegisterEvent("WORLD_MAP_UPDATE")
 
     -- Scripts
     atlasFrame:SetScript("OnEvent", function()
@@ -146,9 +145,9 @@ local function atlas_CreateFrames()
     end)
 
     -- Options button
-    local optionsButton = CreateFrame("Button", "AtlasFrameOptionsButton", atlasFrame, "UIPanelButtonTemplate2")
+    local optionsButton = CreateFrame("Button", "", atlasFrame, "UIPanelButtonTemplate2")
     optionsButton:SetWidth(80)
-    optionsButton:SetPoint("TOPRIGHT", atlasFrame, "TOPRIGHT", -18, -60)
+    optionsButton:SetPoint("TOPRIGHT", -18, -60)
     optionsButton:SetText(L["Options"])
     optionsButton:SetScript("OnClick", function()
         AtlasOptions_Toggle()
@@ -174,7 +173,7 @@ local function atlas_CreateFrames()
     local scrollBar = CreateFrame("ScrollFrame", "AtlasScrollBar", atlasFrame, "FauxScrollFrameTemplate")
     scrollBar:SetWidth(351)
     scrollBar:SetHeight(367)
-    scrollBar:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 530, -186)
+    scrollBar:SetPoint("TOPLEFT", 530, -186)
     scrollBar:SetScript("OnVerticalScroll", function()
         FauxScrollFrame_OnVerticalScroll(15, AtlasLoot_AtlasScrollBar_Update)
     end)
@@ -183,153 +182,114 @@ local function atlas_CreateFrames()
     end)
 
     -- Search container
-    local searchContainer = CreateFrame("Frame", "AtlasSearchContainer", atlasFrame)
-    searchContainer:SetWidth(362)
-    searchContainer:SetHeight(32)
-    searchContainer:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 540, -555)
-
-    local noSearch = searchContainer:CreateFontString("AtlasNoSearch", "ARTWORK", "GameFontDisableSmall")
+    local noSearch = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontDisableSmall")
     noSearch:SetText(L["Search Unavailable"])
-    noSearch:SetPoint("CENTER", searchContainer, "CENTER")
+    noSearch:SetPoint("TOPLEFT", 540, -555)
     noSearch:SetTextColor(1, 1, 1, 0.4)
 
-    -- Zone name frame
-    local zoneName = CreateFrame("Frame", "AtlasText_ZoneName", atlasFrame)
-    zoneName:SetWidth(351)
-    zoneName:SetHeight(20)
-    zoneName:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 546, -97)
-
-    local zoneText = zoneName:CreateFontString("AtlasText_ZoneName_Text", "OVERLAY", "GameFontHighlightLarge")
+    local zoneText = atlasFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightLarge")
     zoneText:SetWidth(351)
     zoneText:SetHeight(20)
-    zoneText:SetAllPoints(zoneName)
+    zoneText:SetPoint("TOPLEFT", 546, -97)
     zoneText:SetJustifyH("LEFT")
 
-    zoneName:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
-
-    -- Location frame
-    local location = CreateFrame("Frame", "AtlasText_Location", atlasFrame)
-    location:SetWidth(351)
-    location:SetHeight(15)
-    location:SetPoint("TOPLEFT", zoneName, "TOPLEFT", 0, -20)
-
-    local locationText = location:CreateFontString("AtlasText_Location_Text", "OVERLAY", "GameFontNormal")
+    local locationText = atlasFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     locationText:SetWidth(351)
     locationText:SetHeight(15)
-    locationText:SetAllPoints(location)
+    locationText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -20)
     locationText:SetJustifyH("LEFT")
 
-    location:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
-
-    -- Level range frame
-    local levelRange = CreateFrame("Frame", "AtlasText_LevelRange", atlasFrame)
-    levelRange:SetWidth(351)
-    levelRange:SetHeight(15)
-    levelRange:SetPoint("TOPLEFT", zoneName, "TOPLEFT", 0, -35)
-
-    local levelRangeText = levelRange:CreateFontString("AtlasText_LevelRange_Text", "OVERLAY", "GameFontNormal")
+    local levelRangeText = atlasFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     levelRangeText:SetWidth(351)
     levelRangeText:SetHeight(15)
-    levelRangeText:SetAllPoints(levelRange)
+    levelRangeText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -35)
     levelRangeText:SetJustifyH("LEFT")
 
-    levelRange:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
-
-    -- Min level frame
-    local minLevel = CreateFrame("Frame", "AtlasText_MinLevel", atlasFrame)
-    minLevel:SetWidth(351)
-    minLevel:SetHeight(15)
-    minLevel:SetPoint("TOPLEFT", zoneName, "TOPLEFT", 0, -50)
-
-    local minLevelText = minLevel:CreateFontString("AtlasText_MinLevel_Text", "OVERLAY", "GameFontNormal")
+    local minLevelText = atlasFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     minLevelText:SetWidth(351)
     minLevelText:SetHeight(15)
-    minLevelText:SetAllPoints(minLevel)
+    minLevelText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -50)
     minLevelText:SetJustifyH("LEFT")
 
-    minLevel:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
-
-    -- Player limit frame
-    local playerLimit = CreateFrame("Frame", "AtlasText_PlayerLimit", atlasFrame)
-    playerLimit:SetWidth(351)
-    playerLimit:SetHeight(15)
-    playerLimit:SetPoint("TOPLEFT", zoneName, "TOPLEFT", 0, -65)
-
-    local playerLimitText = playerLimit:CreateFontString("AtlasText_PlayerLimit_Text", "OVERLAY", "GameFontNormal")
+    local playerLimitText = atlasFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     playerLimitText:SetWidth(351)
     playerLimitText:SetHeight(15)
-    playerLimitText:SetAllPoints(playerLimit)
+    playerLimitText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -65)
     playerLimitText:SetJustifyH("LEFT")
-
-    playerLimit:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
 
     -- Textures
     local topTexture = atlasFrame:CreateTexture(nil, "ARTWORK")
     topTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasFrame-Top")
     topTexture:SetWidth(512)
     topTexture:SetHeight(128)
-    topTexture:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 0, 0)
+    topTexture:SetPoint("TOPLEFT", 0, 0)
 
     local leftTexture = atlasFrame:CreateTexture(nil, "ARTWORK")
     leftTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasFrame-Left")
     leftTexture:SetWidth(32)
     leftTexture:SetHeight(256)
-    leftTexture:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 0, -128)
+    leftTexture:SetPoint("TOPLEFT", 0, -128)
 
     local bottomTexture = atlasFrame:CreateTexture(nil, "ARTWORK")
     bottomTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasFrame-Bottom")
     bottomTexture:SetWidth(512)
     bottomTexture:SetHeight(256)
-    bottomTexture:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 0, -384)
+    bottomTexture:SetPoint("TOPLEFT", 0, -384)
 
     local bottom2Texture = atlasFrame:CreateTexture(nil, "ARTWORK")
     bottom2Texture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasFrame-Bottom2")
     bottom2Texture:SetWidth(512)
     bottom2Texture:SetHeight(128)
-    bottom2Texture:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 512, -512)
+    bottom2Texture:SetPoint("TOPLEFT", 512, -512)
 
     local rightTexture = atlasFrame:CreateTexture(nil, "ARTWORK")
     rightTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasFrame-Right")
     rightTexture:SetWidth(512)
     rightTexture:SetHeight(512)
-    rightTexture:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 512, 0)
+    rightTexture:SetPoint("TOPLEFT", 512, 0)
 
     local titleText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-    titleText:SetText(atlasTW.Name)
-    titleText:SetPoint("TOP", atlasFrame, "TOP", 20, -17)
+    titleText:SetText("|cFFD8D800"..atlasTW.Name)
+    titleText:SetPoint("TOPLEFT", 200, -17)
 
     local versionText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
     versionText:SetText(atlasTW.Version)
     versionText:SetTextColor(0.4, 0.4, 0.4)
-    versionText:SetPoint("TOPRIGHT", atlasFrame, "TOPRIGHT", -52, -18)
+    versionText:SetPoint("TOPRIGHT", -52, -17)
+
+    -- Notice text
+    local noticeText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
+    noticeText:SetText(L["NoticeText"])
+    noticeText:SetPoint("TOP", -20, -17)
+
+    -- Notice link
+    local noticeBox = CreateFrame("EditBox", nil, atlasFrame, "InputBoxTemplate")
+    noticeBox:SetWidth(230)
+    noticeBox:SetHeight(16)
+    noticeBox:SetPoint("TOP", 240, -15)
+    noticeBox:SetMaxLetters(48)
+    noticeBox:SetAutoFocus(false)
+    noticeBox:SetText(L["NoticeLink"])
+    noticeBox:SetScript("OnTextChanged", function()
+        if noticeBox:GetText() ~= L["NoticeLink"] then
+            noticeBox:SetText(L["NoticeLink"])
+        end
+    end)
 
     -- Map texture
     atlasFrame:CreateTexture("AtlasMap", "BACKGROUND")
 	AtlasMap:SetWidth(512)
 	AtlasMap:SetHeight(512)
-	AtlasMap:SetPoint("TOPLEFT", "AtlasFrame", "TOPLEFT", 18, -84)
+	AtlasMap:SetPoint("TOPLEFT", 18, -84)
 
---[[     -- World map frame -- TODO не знаю зачем это
-    local worldMapFrame = CreateFrame("Frame", "Atlas_WorldMap_Frame", WorldMapFrame)
-    worldMapFrame:Hide()
+    AtlasTW.UI.PlayerLimitText = playerLimitText
+    AtlasTW.UI.MinLevelText = minLevelText
+    AtlasTW.UI.ZoneNameText = zoneText
+    AtlasTW.UI.LocationText = locationText
+    AtlasTW.UI.LevelRangeText = levelRangeText
+    --AtlasTW.UI.ScrollBar = scrollBar
+    AtlasTW.UI.NoSearch = noSearch
 
-    local worldMapText = worldMapFrame:CreateFontString("Atlas_WorldMap_Frame_Text", "OVERLAY", "GameFontHighlightSmall")
-    worldMapText:SetPoint("BOTTOM", WorldMapPositioningGuide, "BOTTOM", 0, 11)
-
-    worldMapFrame:SetScript("OnHide", function()
-        SetMapToCurrentZone()
-    end)
- ]]
     return atlasFrame
 end
 
@@ -339,7 +299,7 @@ local function atlasMinimapButton_CreateFrames()
     buttonFrame:SetFrameStrata("LOW")
     buttonFrame:SetWidth(32)
     buttonFrame:SetHeight(32)
-    buttonFrame:SetPoint("TOPLEFT", Minimap, "RIGHT", 2, 0)
+    buttonFrame:SetPoint("TOPLEFT", 2, 0)
     buttonFrame:EnableMouse(true)
     buttonFrame:RegisterEvent("VARIABLES_LOADED")
     buttonFrame:Show()
@@ -353,7 +313,7 @@ local function atlasMinimapButton_CreateFrames()
     local button = CreateFrame("Button", "AtlasButton", buttonFrame)
     button:SetWidth(33)
     button:SetHeight(33)
-    button:SetPoint("TOPLEFT", buttonFrame, "TOPLEFT", 0, 0)
+    button:SetPoint("TOPLEFT", 0, 0)
     button:RegisterForDrag("RightButton")
     button.dragme = false
 
@@ -394,14 +354,14 @@ local function atlasMinimapButton_CreateFrames()
     icon:SetTexture("Interface\\WorldMap\\WorldMap-Icon")
     icon:SetWidth(20)
     icon:SetHeight(20)
-    icon:SetPoint("CENTER", button, "CENTER", -2, 1)
+    icon:SetPoint("CENTER", -2, 1)
     icon:SetVertexColor(1, 1, 0)
 
     local border = button:CreateTexture("AtlasButtonBorder", "OVERLAY")
     border:SetTexture("Interface\\Minimap\\MiniMap-TrackingBorder")
     border:SetWidth(52)
     border:SetHeight(52)
-    border:SetPoint("TOPLEFT", button, "TOPLEFT")
+    border:SetPoint("TOPLEFT", 0, 0)
 
     local highlight = button:CreateTexture()
     highlight:SetTexture("Interface\\Minimap\\UI-Minimap-ZoomButton-Highlight")

@@ -1728,7 +1728,10 @@ AtlasMaps = {
             CreateNPCEntry("3", "Boahn", 3672, true),
             CreateEmptyEntry(),
             CreateEntry(Colors.ORANGE, L["Above the Entrance:"]),
-            CreateIndentedNPCEntry("Ebru", 5768)
+            CreateEntry(Colors.GREY, "Ebru", EntityTypes.NPC, 5768),
+            CreateEntry(Colors.GREY, "Nalpak", EntityTypes.NPC, 5767),
+            CreateEntry(Colors.GREY, "Kalldan Felmoon", EntityTypes.NPC, 5783),
+            CreateEntry(Colors.GREY, "Waldor", EntityTypes.NPC, 5784),
         }
     }),
 

@@ -177,8 +177,8 @@ local function atlasOptions_CreateFrames()
     -- Create the main options frame
     local optionsFrame = CreateFrame("Frame", "AtlasOptionsFrame", UIParent)
     optionsFrame:SetFrameStrata("MEDIUM")
-    optionsFrame:SetWidth(550)
     optionsFrame:SetHeight(550)
+    optionsFrame:SetWidth(550)
     optionsFrame:SetPoint("CENTER", 0, 0)
     optionsFrame:SetMovable(true)
     optionsFrame:RegisterForDrag("LeftButton")
@@ -381,7 +381,7 @@ local function atlasOptions_CreateFrames()
         { name = "AtlasLootOptionsFrameEquipCompare", text = L["Use EquipCompare"], script = AtlasLootOptions_EquipCompareToggle },
         { name = "AtlasLootOptionsFrameItemID", text = L["Show IDs at all times"], script = AtlasLootOptions_ItemIDToggle },
         { name = "AtlasLootOptionsFrameOpaque", text = L["Make Loot Table Opaque"], script = AtlasLootOptions_OpaqueToggle },
-        { name = "AtlasLootOptionsFrameItemSpam", text = L["Suppress text spam when querying items"], script = AtlasLootOptions_ItemSpam }
+        { name = "AtlasLootOptionsFrameItemSpam", text = L["Suppress Text Spam"], script = AtlasLootOptions_ItemSpam }
     }
 
     -- Optimized function to create checkboxes
