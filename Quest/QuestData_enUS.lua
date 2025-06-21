@@ -6,6 +6,7 @@ AtlasTW = _G.AtlasTW
 local red = "|cffff0000"
 local white = "|cffFFFFFF"
 local green = "|cff1eff00"
+local grey = "|cff9d9d9d"
 local blue = "|cff0070dd"
 local yellow = "|cffFFd200"
 local orange = "|cffFF8000"
@@ -18,7 +19,7 @@ local purple = "|cffa335ee"
 local kQuestInstanceData = {}
 
 --------------- INST1 - The Deadmines ---------------
-kQuestInstanceData[1] = {
+kQuestInstanceData["TheDeadmines"] = {
     Story = "Once the greatest gold production center in the human lands, the Dead Mines were abandoned when the Horde razed Stormwind city during the First War. Now the Defias Brotherhood has taken up residence and turned the dark tunnels into their private sanctum. It is rumored that the thieves have conscripted the clever goblins to help them build something terrible at the bottom of the mines - but what that may be is still uncertain. Rumor has it that the way into the Deadmines lies through the quiet, unassuming village of Moonbrook.",
     Caption = "The Deadmines",
     QAA = "10 Quests",
@@ -28,7 +29,7 @@ kQuestInstanceData[1] = {
         Horde = {}
     }
 }
-kQuestInstanceData[1].Quests.Alliance[1] = {
+kQuestInstanceData["TheDeadmines"].Quests.Alliance[1] = {
     Title = "1. Red Silk Bandanas",
     Level = "17",
     Attain = "14",
@@ -38,28 +39,28 @@ kQuestInstanceData[1].Quests.Alliance[1] = {
     Prequest = "The Defias Brotherhood",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Solid Shortblade",
             ID = "2074",
             Color = green,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
         {
             Name = "Scrimshaw Dagger",
             ID = "2089",
             Color = green,
-            Description = AQITEM_ONEHAND..AQITEM_DAGGER,
+            Description = "One-Hand, Dagger",
         },
         {
             Name = "Piercing Axe",
             ID = "6094",
             Color = green,
-            Description = AQITEM_TWOHAND..AQITEM_AXE,
+            Description = "Two-Hand, Axe",
         },
     }
 }
-kQuestInstanceData[1].Quests.Alliance[2] = {
+kQuestInstanceData["TheDeadmines"].Quests.Alliance[2] = {
     Title = "2. Collecting Memories",
     Level = "18",
     Attain = "14",
@@ -69,22 +70,22 @@ kQuestInstanceData[1].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Tunneler's Boots",
             ID = "2037",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_MAIL,
+            Description = "Feet, Mail",
         },
         {
             Name = "Dusty Mining Gloves",
             ID = "2036",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_LEATHER,
+            Description = "Hands, Leather",
         },
     }
 }
-kQuestInstanceData[1].Quests.Alliance[3] = {
+kQuestInstanceData["TheDeadmines"].Quests.Alliance[3] = {
     Title = "3. Oh Brother. . .",
     Level = "20",
     Attain = "15",
@@ -94,16 +95,16 @@ kQuestInstanceData[1].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Miner's Revenge",
             ID = "1893",
             Color = green,
-            Description = AQITEM_TWOHAND..AQITEM_AXE,
+            Description = "Two-Hand, Axe",
         },
     }
 }
-kQuestInstanceData[1].Quests.Alliance[4] = {
+kQuestInstanceData["TheDeadmines"].Quests.Alliance[4] = {
     Title = "4. Underground Assault",
     Level = "20",
     Attain = "15",
@@ -113,22 +114,22 @@ kQuestInstanceData[1].Quests.Alliance[4] = {
     Prequest = "Speak with Shoni",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Polar Gauntlets",
             ID = "7606",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_MAIL,
+            Description = "Hands, Mail",
         },
         {
             Name = "Sable Wand",
             ID = "7607",
             Color = green,
-            Description = AQITEM_WAND,
+            Description = "Wand",
         },
     }
 }
-kQuestInstanceData[1].Quests.Alliance[5] = {
+kQuestInstanceData["TheDeadmines"].Quests.Alliance[5] = {
     Title = "5. The Defias Brotherhood",
     Level = "22",
     Attain = "14",
@@ -138,28 +139,28 @@ kQuestInstanceData[1].Quests.Alliance[5] = {
     Prequest = "The Defias Brotherhood",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Chausses of Westfall",
             ID = "6087",
             Color = blue,
-            Description = AQITEM_LEGS..AQITEM_MAIL,
+            Description = "Legs, Mail",
         },
         {
             Name = "Tunic of Westfall",
             ID = "2041",
             Color = blue,
-            Description = AQITEM_CHEST..AQITEM_LEATHER,
+            Description = "Chest, Leather",
         },
         {
             Name = "Staff of Westfall",
             ID = "2042",
             Color = blue,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
     }
 }
-kQuestInstanceData[1].Quests.Alliance[6] = {
+kQuestInstanceData["TheDeadmines"].Quests.Alliance[6] = {
     Title = "6. The Test of Righteousness",
     Level = "22",
     Attain = "20",
@@ -169,17 +170,17 @@ kQuestInstanceData[1].Quests.Alliance[6] = {
     Prequest = "The Tome of Valor -> The Test of Righteousness",
     Folgequest = "The Test of Righteousness",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Verigan's Fist",
             ID = "6953",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_MACE,
+            Description = "Two-Hand, Mace",
         },
     },
     Page = {2, "Only Paladins can get this quest!\n\n1. You get the  Whitestone Oak Lumber from Goblin Woodcarvers in "..yellow.."[Deadmines]"..white.." near "..yellow.."[3]"..white..".\n\n2. To get the Bailor's Refined Ore Shipment you must talk to Bailor Stonehand (Loch Modan - Thelsamar; "..yellow.."35,44"..white.."). He gives you the 'Bailor's Ore Shipment' quest. You find the Jordan's Ore Shipment behind a tree at "..yellow.."71,21"..white.."\n\n3. You get Jordan's Smithing Hammer in "..yellow.."[Shadowfang Keep]"..white.." at "..yellow.."[3]"..white..".\n\n4. To get a Kor Gem you have to go to Thundris Windweaver (Darkshore - Auberdine; "..yellow.."37,40"..white..") and do the 'Seeking the Kor Gem' quest. For this quest, you must kill Blackfathom oracles or priestesses before "..yellow.."[Blackfathom Deeps]"..white..". They drop a corrupted Kor Gem. Thundris Windweaver will clean it for you.", };
 }
-kQuestInstanceData[1].Quests.Alliance[7] = {
+kQuestInstanceData["TheDeadmines"].Quests.Alliance[7] = {
     Title = "7. The Unsent Letter",
     Level = "22",
     Attain = "16",
@@ -189,10 +190,10 @@ kQuestInstanceData[1].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "Bazil Thredd",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[1].Quests.Alliance[8] = {
+kQuestInstanceData["TheDeadmines"].Quests.Alliance[8] = {
     Title = "8. Captain Grayson's Revenge",
     Level = "22",
     Attain = "15",
@@ -202,16 +203,16 @@ kQuestInstanceData[1].Quests.Alliance[8] = {
     Prequest = "Food for Sailing Thoughts?",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Grayson's Hat",
             ID = "70070",
             Color = green,
-            Description = AQITEM_HEAD..AQITEM_CLOTH,
+            Description = "Head, Cloth",
         },
     }
 }
-kQuestInstanceData[1].Quests.Alliance[9] = {
+kQuestInstanceData["TheDeadmines"].Quests.Alliance[9] = {
     Title = "9. The Harvest Golem Mystery",
     Level = "19",
     Attain = "15",
@@ -221,28 +222,28 @@ kQuestInstanceData[1].Quests.Alliance[9] = {
     Prequest = "The Harvest Golem Mystery VIII",
     Folgequest = "The Harvest Golem Mystery X",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Tinkering Belt",
             ID = "60684",
             Color = green,
-            Description = AQITEM_WAIST..AQITEM_LEATHER,
+            Description = "Waist, Leather",
         },
         {
             Name = "Safety Wraps",
             ID = "60685",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_CLOTH,
+            Description = "Wrist, Cloth",
         },
         {
             Name = "Harvest Golem Arm",
             ID = "60686",
             Color = green,
-            Description = AQITEM_TWOHAND..AQITEM_MACE,
+            Description = "Two-Hand, Mace",
         },
     }
 }
-kQuestInstanceData[1].Quests.Alliance[10] = {
+kQuestInstanceData["TheDeadmines"].Quests.Alliance[10] = {
     Title = "10. Turning Off The Tap",
     Level = "20",
     Attain = "14",
@@ -252,22 +253,22 @@ kQuestInstanceData[1].Quests.Alliance[10] = {
     Prequest = "Drones In Westfall -> Venture Delivery",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Operative Cloak",
             ID = "70239",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Cuffs of Integrity",
             ID = "70240",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_CLOTH,
+            Description = "Wrist, Cloth",
         },
     }
 }
-kQuestInstanceData[1].Quests.Horde[1] = {
+kQuestInstanceData["TheDeadmines"].Quests.Horde[1] = {
     Title = "1. Prototype Thievery",
     Level = "18",
     Attain = "16",
@@ -277,22 +278,22 @@ kQuestInstanceData[1].Quests.Horde[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Foe Chopper",
             ID = "81316",
             Color = green,
-            Description = AQITEM_TWOHAND..AQITEM_AXE,
+            Description = "Two-Hand, Axe",
         },
         {
             Name = "Shining Electro-lantern",
             ID = "81317",
             Color = green,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
     }
 }
-kQuestInstanceData[1].Quests.Horde[2] = {
+kQuestInstanceData["TheDeadmines"].Quests.Horde[2] = {
     Title = "2. Captain Grayson's Revenge",
     Level = "22",
     Attain = "15",
@@ -302,16 +303,16 @@ kQuestInstanceData[1].Quests.Horde[2] = {
     Prequest = "Food for Sailing Thoughts?",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Grayson's Hat",
             ID = "70070",
             Color = green,
-            Description = AQITEM_HEAD..AQITEM_CLOTH,
+            Description = "Head, Cloth",
         },
     }
 }
-kQuestInstanceData[1].Quests.Horde[3] = {
+kQuestInstanceData["TheDeadmines"].Quests.Horde[3] = {
     Title = "3. Horde Defender's Axe",
     Level = "18",
     Attain = "15",
@@ -321,18 +322,18 @@ kQuestInstanceData[1].Quests.Horde[3] = {
     Prequest = "Horde Defender's Axe",
     Folgequest = "Horde Defender's Axe",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Horde Defender's Axe",
             ID = "40065",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_AXE,
+            Description = "Two-Hand, Axe",
         },
     }
 }
 
 --------------- INST2 - Wailing Caverns ---------------
-kQuestInstanceData[2] = {
+kQuestInstanceData["WailingCaverns"] = {
     Story = "Recently, a night elf druid named Naralex discovered a network of underground caverns within the heart of the Barrens. Dubbed the 'Wailing Caverns', these natural caves were filled with steam fissures which produced long, mournful wails as they vented. Naralex believed he could use the caverns' underground springs to restore lushness and fertility to the Barrens - but to do so would require siphoning the energies of the fabled Emerald Dream. Once connected to the Dream however, the druid's vision somehow became a nightmare. Soon the Wailing Caverns began to change - the waters turned foul and the once-docile creatures inside metamorphosed into vicious, deadly predators. It is said that Naralex himself still resides somewhere inside the heart of the labyrinth, trapped beyond the edges of the Emerald Dream. Even his former acolytes have been corrupted by their master's waking nightmare - transformed into the wicked Druids of the Fang.",
     Caption = "Wailing Caverns",
     QAA = "8 Quests",
@@ -342,7 +343,7 @@ kQuestInstanceData[2] = {
         Horde = {}
     }
 }
-kQuestInstanceData[2].Quests.Alliance[1] = {
+kQuestInstanceData["WailingCaverns"].Quests.Alliance[1] = {
     Title = "1. Deviate Hides",
     Level = "17",
     Attain = "13",
@@ -352,22 +353,22 @@ kQuestInstanceData[2].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Slick Deviate Leggings",
             ID = "6480",
             Color = green,
-            Description = AQITEM_LEGS..AQITEM_LEATHER,
+            Description = "Legs, Leather",
         },
         {
             Name = "Deviate Hide Pack",
             ID = "918",
             Color = white,
-            Description = AQITEM_BAG,
+            Description = "Bag",
         },
     }
 }
-kQuestInstanceData[2].Quests.Alliance[2] = {
+kQuestInstanceData["WailingCaverns"].Quests.Alliance[2] = {
     Title = "2. Trouble at the Docks",
     Level = "18",
     Attain = "14",
@@ -377,10 +378,10 @@ kQuestInstanceData[2].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[2].Quests.Alliance[3] = {
+kQuestInstanceData["WailingCaverns"].Quests.Alliance[3] = {
     Title = "3. Smart Drinks",
     Level = "18",
     Attain = "13",
@@ -390,10 +391,10 @@ kQuestInstanceData[2].Quests.Alliance[3] = {
     Prequest = "Raptor Horns",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[2].Quests.Alliance[4] = {
+kQuestInstanceData["WailingCaverns"].Quests.Alliance[4] = {
     Title = "4. Deviate Eradication",
     Level = "21",
     Attain = "15",
@@ -403,28 +404,28 @@ kQuestInstanceData[2].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Pattern: Deviate Scale Belt",
             ID = "6476",
             Color = green,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
         {
             Name = "Sizzle Stick",
             ID = "8071",
             Color = green,
-            Description = AQITEM_WAND,
+            Description = "Wand",
         },
         {
             Name = "Dagmire Gauntlets",
             ID = "6481",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_MAIL,
+            Description = "Hands, Mail",
         },
     }
 }
-kQuestInstanceData[2].Quests.Alliance[5] = {
+kQuestInstanceData["WailingCaverns"].Quests.Alliance[5] = {
     Title = "5. The Glowing Shard",
     Level = "26",
     Attain = "15",
@@ -434,22 +435,22 @@ kQuestInstanceData[2].Quests.Alliance[5] = {
     Prequest = "No",
     Folgequest = "In Nightmares",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Talbar Mantle",
             ID = "10657",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_CLOTH,
+            Description = "Shoulder, Cloth",
         },
         {
             Name = "Quagmire Galoshes",
             ID = "10658",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_MAIL,
+            Description = "Feet, Mail",
         },
     }
 }
-kQuestInstanceData[2].Quests.Alliance[6] = {
+kQuestInstanceData["WailingCaverns"].Quests.Alliance[6] = {
     Title = "6. Serpentbloom",
     Level = "18",
     Attain = "16",
@@ -459,22 +460,22 @@ kQuestInstanceData[2].Quests.Alliance[6] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Greenweave Sash",
             ID = "51850",
             Color = green,
-            Description = AQITEM_WAIST..AQITEM_CLOTH,
+            Description = "Waist, Cloth",
         },
         {
             Name = "Verdant Boots",
             ID = "51851",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_MAIL,
+            Description = "Feet, Mail",
         },
     }
 }
-kQuestInstanceData[2].Quests.Alliance[7] = {
+kQuestInstanceData["WailingCaverns"].Quests.Alliance[7] = {
     Title = "7. Trapped in the Nightmare",
     Level = "19",
     Attain = "16",
@@ -484,22 +485,22 @@ kQuestInstanceData[2].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Ancient Elven Robes",
             ID = "51848",
             Color = blue,
-            Description = AQITEM_CHEST..AQITEM_CLOTH,
+            Description = "Chest, Cloth",
         },
         {
             Name = "Thunderhorn",
             ID = "51849",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_SWORD,
+            Description = "Two-Hand, Sword",
         },
     }
 }
-kQuestInstanceData[2].Quests.Alliance[8] = {
+kQuestInstanceData["WailingCaverns"].Quests.Alliance[8] = {
     Title = "8. Rampant Weeds",
     Level = "20",
     Attain = "17?",
@@ -509,24 +510,24 @@ kQuestInstanceData[2].Quests.Alliance[8] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1 (x3)"..AQDiscription_OR..white.."2 (x3)",
+        Text = blue.."Reward: 1 (x3) or 2 (x3)",
         {
             Name = "Mana Potion",
             ID = "3827",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
         {
             Name = "Greater Healing Potion",
             ID = "1710",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
     }
 }
-kQuestInstanceData[2].Quests.Horde[1] = kQuestInstanceData[2].Quests.Alliance[1]
-kQuestInstanceData[2].Quests.Horde[2] = kQuestInstanceData[2].Quests.Alliance[2]
-kQuestInstanceData[2].Quests.Horde[3] = {
+kQuestInstanceData["WailingCaverns"].Quests.Horde[1] = kQuestInstanceData["WailingCaverns"].Quests.Alliance[1]
+kQuestInstanceData["WailingCaverns"].Quests.Horde[2] = kQuestInstanceData["WailingCaverns"].Quests.Alliance[2]
+kQuestInstanceData["WailingCaverns"].Quests.Horde[3] = {
     Title = "3. Serpentbloom",
     Level = "18",
     Attain = "14",
@@ -536,16 +537,16 @@ kQuestInstanceData[2].Quests.Horde[3] = {
     Prequest = "Fungal Spores -> Apothecary Zamah",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Apothecary Gloves",
             ID = "10919",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_CLOTH,
+            Description = "Hands, Cloth",
         },
     }
 }
-kQuestInstanceData[2].Quests.Horde[4] = {
+kQuestInstanceData["WailingCaverns"].Quests.Horde[4] = {
     Title = "4. Smart Drinks",
     Level = "18",
     Attain = "13",
@@ -555,10 +556,10 @@ kQuestInstanceData[2].Quests.Horde[4] = {
     Prequest = "Raptor Horns",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[2].Quests.Horde[5] = {
+kQuestInstanceData["WailingCaverns"].Quests.Horde[5] = {
     Title = "5. Deviate Eradication",
     Level = "21",
     Attain = "15",
@@ -568,28 +569,28 @@ kQuestInstanceData[2].Quests.Horde[5] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Pattern: Deviate Scale Belt",
             ID = "6476",
             Color = green,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
         {
             Name = "Sizzle Stick",
             ID = "8071",
             Color = green,
-            Description = AQITEM_WAND,
+            Description = "Wand",
         },
         {
             Name = "Dagmire Gauntlets",
             ID = "6481",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_MAIL,
+            Description = "Hands, Mail",
         },
     }
 }
-kQuestInstanceData[2].Quests.Horde[6] = {
+kQuestInstanceData["WailingCaverns"].Quests.Horde[6] = {
     Title = "6. Leaders of the Fang",
     Level = "22",
     Attain = "11",
@@ -599,22 +600,22 @@ kQuestInstanceData[2].Quests.Horde[6] = {
     Prequest = "The Barrens Oases -> Nara Wildmane",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Crescent Staff",
             ID = "6505",
             Color = blue,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Wingblade",
             ID = "6504",
             Color = blue,
-            Description = AQITEM_MAINHAND..AQITEM_SWORD,
+            Description = "Main Hand, Sword",
         },
     }
 }
-kQuestInstanceData[2].Quests.Horde[7] = {
+kQuestInstanceData["WailingCaverns"].Quests.Horde[7] = {
     Title = "7. The Glowing Shard",
     Level = "26",
     Attain = "15",
@@ -624,22 +625,22 @@ kQuestInstanceData[2].Quests.Horde[7] = {
     Prequest = "No",
     Folgequest = "In Nightmares",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Talbar Mantle",
             ID = "10657",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_CLOTH,
+            Description = "Shoulder, Cloth",
         },
         {
             Name = "Quagmire Galoshes",
             ID = "10658",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_MAIL,
+            Description = "Feet, Mail",
         },
     }
 }
-kQuestInstanceData[2].Quests.Horde[8] = {
+kQuestInstanceData["WailingCaverns"].Quests.Horde[8] = {
     Title = "8. Arcane Arms",
     Level = "18",
     Attain = "14",
@@ -649,22 +650,22 @@ kQuestInstanceData[2].Quests.Horde[8] = {
     Prequest = "Mastering the Arcane",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Staff of the Arcane Path",
             ID = "80860",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Spellweaving Dagger",
             ID = "80861",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_DAGGER,
+            Description = "One-Hand, Dagger",
         },
     }
 }
-kQuestInstanceData[2].Quests.Horde[9] = {
+kQuestInstanceData["WailingCaverns"].Quests.Horde[9] = {
     Title = "9. Against the Kolkar Dream",
     Level = "23",
     Attain = "??",
@@ -674,18 +675,18 @@ kQuestInstanceData[2].Quests.Horde[9] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Kolkar Drape",
             ID = "70224",
             Color = blue,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
     }
 }
 
 --------------- INST3 - Ragefire Chasm ---------------
-kQuestInstanceData[3] = {
+kQuestInstanceData["RagefireChasm"] = {
     Story = "Ragefire Chasm consists of a network of volcanic caverns that lie below the orcs' new capital city of Orgrimmar. Recently, rumors have spread that a cult loyal to the demonic Shadow Council has taken up residence within the Chasm's fiery depths. This cult, known as the Burning Blade, threatens the very sovereignty of Durotar. Many believe that the orc Warchief, Thrall, is aware of the Blade's existence and has chosen not to destroy it in the hopes that its members might lead him straight to the Shadow Council. Either way, the dark powers emanating from Ragefire Chasm could undo all that the orcs have fought to attain.",
     Caption = "Ragefire Chasm",
     QAA = "No Quests",
@@ -695,7 +696,7 @@ kQuestInstanceData[3] = {
         Horde = {}
     }
 }
-kQuestInstanceData[3].Quests.Horde[1] = {
+kQuestInstanceData["RagefireChasm"].Quests.Horde[1] = {
     Title = "1. Testing an Enemy's Strength",
     Level = "15",
     Attain = "9",
@@ -705,10 +706,10 @@ kQuestInstanceData[3].Quests.Horde[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[3].Quests.Horde[2] = {
+kQuestInstanceData["RagefireChasm"].Quests.Horde[2] = {
     Title = "2. The Power to Destroy...",
     Level = "16",
     Attain = "9",
@@ -718,28 +719,28 @@ kQuestInstanceData[3].Quests.Horde[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Ghastly Trousers",
             ID = "15449",
             Color = green,
-            Description = AQITEM_LEGS..AQITEM_CLOTH,
+            Description = "Legs, Cloth",
         },
         {
             Name = "Dredgemire Leggings",
             ID = "15450",
             Color = green,
-            Description = AQITEM_LEGS..AQITEM_LEATHER,
+            Description = "Legs, Leather",
         },
         {
             Name = "Gargoyle Leggings",
             ID = "15451",
             Color = green,
-            Description = AQITEM_LEGS..AQITEM_MAIL,
+            Description = "Legs, Mail",
         },
     }
 }
-kQuestInstanceData[3].Quests.Horde[3] = {
+kQuestInstanceData["RagefireChasm"].Quests.Horde[3] = {
     Title = "3. Searching for the Lost Satchel",
     Level = "16",
     Attain = "9",
@@ -749,22 +750,22 @@ kQuestInstanceData[3].Quests.Horde[3] = {
     Prequest = "No",
     Folgequest = "Returning the Lost Satchel",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Featherbead Bracers",
             ID = "15452",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_CLOTH,
+            Description = "Wrist, Cloth",
         },
         {
             Name = "Savannah Bracers",
             ID = "15453",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_LEATHER,
+            Description = "Wrist, Leather",
         },
     }
 }
-kQuestInstanceData[3].Quests.Horde[4] = {
+kQuestInstanceData["RagefireChasm"].Quests.Horde[4] = {
     Title = "4. Hidden Enemies",
     Level = "16",
     Attain = "9",
@@ -774,34 +775,34 @@ kQuestInstanceData[3].Quests.Horde[4] = {
     Prequest = "Hidden Enemies",
     Folgequest = "Hidden Enemies",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Kris of Orgrimmar",
             ID = "15443",
             Color = green,
-            Description = AQITEM_ONEHAND..AQITEM_DAGGER,
+            Description = "One-Hand, Dagger",
         },
         {
             Name = "Hammer of Orgrimmar",
             ID = "15445",
             Color = green,
-            Description = AQITEM_MAINHAND..AQITEM_MACE,
+            Description = "Main Hand, Mace",
         },
         {
             Name = "Axe of Orgrimmar",
             ID = "15424",
             Color = green,
-            Description = AQITEM_TWOHAND..AQITEM_AXE,
+            Description = "Two-Hand, Axe",
         },
         {
             Name = "Staff of Orgrimmar",
             ID = "15444",
             Color = green,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
     }
 }
-kQuestInstanceData[3].Quests.Horde[5] = {
+kQuestInstanceData["RagefireChasm"].Quests.Horde[5] = {
     Title = "5. Slaying the Beast",
     Level = "16",
     Attain = "9",
@@ -811,12 +812,12 @@ kQuestInstanceData[3].Quests.Horde[5] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
 
 --------------- INST4 - Uldaman ---------------
-kQuestInstanceData[4] = {
+kQuestInstanceData["Uldaman"] = {
     Story = "Uldaman is an ancient Titan vault that has laid buried deep within the earth since the world's creation. Dwarven excavations have recently penetrated this forgotten city, releasing the Titans' first failed creations: the troggs. Legends say that the Titans created troggs from stone. When they deemed the experiment a failure, the Titans locked the troggs away and tried again - resulting in the creation of the dwarven race. The secrets of the dwarves' creation are recorded on the fabled Discs of Norgannon - massive Titan artifacts that lie at the very bottom of the ancient city. Recently, the Dark Iron dwarves have launched a series of incursions into Uldaman, hoping to claim the discs for their fiery master, Ragnaros. However, protecting the buried city are several guardians - giant constructs of living stone that crush any hapless intruders they find. The Discs themselves are guarded by a massive, sentient Stonekeeper called Archaedas. Some rumors even suggest that the dwarves' stone-skinned ancestors, the earthen, still dwell deep within the city's hidden recesses.",
     Caption = "Uldaman",
     QAA = "17 Quests",
@@ -826,7 +827,7 @@ kQuestInstanceData[4] = {
         Horde = {}
     }
 }
-kQuestInstanceData[4].Quests.Alliance[1] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[1] = {
     Title = "1. A Sign of Hope",
     Level = "35",
     Attain = "33",
@@ -836,10 +837,10 @@ kQuestInstanceData[4].Quests.Alliance[1] = {
     Prequest = "A Sign of Hope",
     Folgequest = "Amulet of Secrets",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Alliance[2] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[2] = {
     Title = "2. Amulet of Secrets",
     Level = "40",
     Attain = "35",
@@ -849,10 +850,10 @@ kQuestInstanceData[4].Quests.Alliance[2] = {
     Prequest = "A Sign of Hope",
     Folgequest = "Prospect of Faith",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Alliance[3] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[3] = {
     Title = "3. The Lost Tablets of Will",
     Level = "45",
     Attain = "35",
@@ -862,16 +863,16 @@ kQuestInstanceData[4].Quests.Alliance[3] = {
     Prequest = "Amulet of Secrets -> An Ambassador of Evil",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Medal of Courage",
             ID = "6723",
             Color = green,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[4].Quests.Alliance[4] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[4] = {
     Title = "4. Power Stones",
     Level = "36",
     Attain = "30",
@@ -881,28 +882,28 @@ kQuestInstanceData[4].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Energized Stone Circle",
             ID = "9522",
             Color = green,
-            Description = AQITEM_SHIELD,
+            Description = "Shield",
         },
         {
             Name = "Duracin Bracers",
             ID = "10358",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_MAIL,
+            Description = "Wrist, Mail",
         },
         {
             Name = "Everlast Boots",
             ID = "10359",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_CLOTH,
+            Description = "Feet, Cloth",
         },
     }
 }
-kQuestInstanceData[4].Quests.Alliance[5] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[5] = {
     Title = "5. Agmond's Fate",
     Level = "38",
     Attain = "30",
@@ -912,16 +913,16 @@ kQuestInstanceData[4].Quests.Alliance[5] = {
     Prequest = "Ironband Wants You! -> Murdaloc",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Prospector Gloves",
             ID = "4980",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_LEATHER,
+            Description = "Hands, Leather",
         },
     }
 }
-kQuestInstanceData[4].Quests.Alliance[6] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[6] = {
     Title = "6. Solution to Doom",
     Level = "40",
     Attain = "30",
@@ -931,16 +932,16 @@ kQuestInstanceData[4].Quests.Alliance[6] = {
     Prequest = "No",
     Folgequest = "To Ironforge for Yagyin's Digest",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Doomsayer's Robe",
             ID = "4746",
             Color = green,
-            Description = AQITEM_CHEST..AQITEM_CLOTH,
+            Description = "Chest, Cloth",
         },
     }
 }
-kQuestInstanceData[4].Quests.Alliance[7] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[7] = {
     Title = "7. The Lost Dwarves",
     Level = "40",
     Attain = "35",
@@ -950,10 +951,10 @@ kQuestInstanceData[4].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "The Hidden Chamber",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Alliance[8] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[8] = {
     Title = "8. The Hidden Chamber",
     Level = "40",
     Attain = "35",
@@ -963,22 +964,22 @@ kQuestInstanceData[4].Quests.Alliance[8] = {
     Prequest = "The Lost Dwarves",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Dwarven Charge",
             ID = "9626",
             Color = green,
-            Description = AQITEM_TWOHAND..AQITEM_AXE,
+            Description = "Two-Hand, Axe",
         },
         {
             Name = "Explorer's League Lodestar",
             ID = "9627",
             Color = green,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
     }
 }
-kQuestInstanceData[4].Quests.Alliance[9] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[9] = {
     Title = "9. The Shattered Necklace",
     Level = "41",
     Attain = "37",
@@ -988,10 +989,10 @@ kQuestInstanceData[4].Quests.Alliance[9] = {
     Prequest = "No",
     Folgequest = "Lore for a Price",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Alliance[10] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[10] = {
     Title = "10. Back to Uldaman",
     Level = "42",
     Attain = "37",
@@ -1001,10 +1002,10 @@ kQuestInstanceData[4].Quests.Alliance[10] = {
     Prequest = "Lore for a Price",
     Folgequest = "Find the Gems",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Alliance[11] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[11] = {
     Title = "11. Find the Gems",
     Level = "43",
     Attain = "40",
@@ -1014,10 +1015,10 @@ kQuestInstanceData[4].Quests.Alliance[11] = {
     Prequest = "Back to Uldaman",
     Folgequest = "Restoring the Necklace",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Alliance[12] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[12] = {
     Title = "12. Restoring the Necklace",
     Level = "44",
     Attain = "37",
@@ -1027,16 +1028,16 @@ kQuestInstanceData[4].Quests.Alliance[12] = {
     Prequest = "Find the Gems",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Talvash's Enhancing Necklace",
             ID = "7673",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[4].Quests.Alliance[13] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[13] = {
     Title = "13. Uldaman Reagent Run",
     Level = "42",
     Attain = "36",
@@ -1046,16 +1047,16 @@ kQuestInstanceData[4].Quests.Alliance[13] = {
     Prequest = "Badlands Reagent Run",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1(x5)",
+        Text = blue.."Reward:(x5)",
         {
             Name = "Restorative Potion",
             ID = "9030",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
     }
 }
-kQuestInstanceData[4].Quests.Alliance[14] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[14] = {
     Title = "14. Reclaimed Treasures",
     Level = "43",
     Attain = "33",
@@ -1065,10 +1066,10 @@ kQuestInstanceData[4].Quests.Alliance[14] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Alliance[15] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[15] = {
     Title = "15. The Platinum Discs",
     Level = "47",
     Attain = "40",
@@ -1078,28 +1079,28 @@ kQuestInstanceData[4].Quests.Alliance[15] = {
     Prequest = "No",
     Folgequest = "Portents of Uldum",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2(x5)"..AQDiscription_OR..white.."3(x5)",
+        Text = blue.."Reward: 1 and 2 (x5) 3 (x5)",
         {
             Name = "Thawpelt Sack",
             ID = "9587",
             Color = white,
-            Description = AQITEM_BAG,
+            Description = "Bag",
         },
         {
             Name = "Superior Healing Potion",
             ID = "3928",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
         {
             Name = "Greater Mana Potion",
             ID = "6149",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
     }
 }
-kQuestInstanceData[4].Quests.Alliance[16] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[16] = {
     Title = "16. Power in Uldaman",
     Level = "40",
     Attain = "35",
@@ -1109,10 +1110,10 @@ kQuestInstanceData[4].Quests.Alliance[16] = {
     Prequest = "The Exorcism",
     Folgequest = "Mana Surges",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Alliance[17] = {
+kQuestInstanceData["Uldaman"].Quests.Alliance[17] = {
     Title = "17. Stealing a Core",
     Level = "45",
     Attain = "45",
@@ -1122,16 +1123,16 @@ kQuestInstanceData[4].Quests.Alliance[17] = {
     Prequest = "An Ancient Acquisition",
     Folgequest = "The Activation",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Broken Core Pendant",
             ID = "60518",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[4].Quests.Horde[1] = {
+kQuestInstanceData["Uldaman"].Quests.Horde[1] = {
     Title = "1. Power Stones",
     Level = "36",
     Attain = "30",
@@ -1141,28 +1142,28 @@ kQuestInstanceData[4].Quests.Horde[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Energized Stone Circle",
             ID = "9522",
             Color = green,
-            Description = AQITEM_SHIELD,
+            Description = "Shield",
         },
         {
             Name = "Duracin Bracers",
             ID = "10358",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_MAIL,
+            Description = "Wrist, Mail",
         },
         {
             Name = "Everlast Boots",
             ID = "10359",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_CLOTH,
+            Description = "Feet, Cloth",
         },
     }
 }
-kQuestInstanceData[4].Quests.Horde[2] = {
+kQuestInstanceData["Uldaman"].Quests.Horde[2] = {
     Title = "2. Solution to Doom",
     Level = "40",
     Attain = "30",
@@ -1172,16 +1173,16 @@ kQuestInstanceData[4].Quests.Horde[2] = {
     Prequest = "No",
     Folgequest = "To Ironforge for Yagyin's Digest",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Doomsayer's Robe",
             ID = "4746",
             Color = green,
-            Description = AQITEM_CHEST..AQITEM_CLOTH,
+            Description = "Chest, Cloth",
         },
     }
 }
-kQuestInstanceData[4].Quests.Horde[3] = {
+kQuestInstanceData["Uldaman"].Quests.Horde[3] = {
     Title = "3. Necklace Recovery",
     Level = "41",
     Attain = "37",
@@ -1191,10 +1192,10 @@ kQuestInstanceData[4].Quests.Horde[3] = {
     Prequest = "No",
     Folgequest = "Necklace Recovery, Take 2",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Horde[4] = {
+kQuestInstanceData["Uldaman"].Quests.Horde[4] = {
     Title = "4. Necklace Recovery, Take 2",
     Level = "41",
     Attain = "37",
@@ -1204,10 +1205,10 @@ kQuestInstanceData[4].Quests.Horde[4] = {
     Prequest = "Necklace Recovery",
     Folgequest = "Translating the Journal",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Horde[5] = {
+kQuestInstanceData["Uldaman"].Quests.Horde[5] = {
     Title = "5. Translating the Journal",
     Level = "42",
     Attain = "37",
@@ -1217,10 +1218,10 @@ kQuestInstanceData[4].Quests.Horde[5] = {
     Prequest = "Necklace Recovery, Take 2",
     Folgequest = "Find the Gems and Power Source",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Horde[6] = {
+kQuestInstanceData["Uldaman"].Quests.Horde[6] = {
     Title = "6. Find the Gems and Power Source",
     Level = "44",
     Attain = "37",
@@ -1230,16 +1231,16 @@ kQuestInstanceData[4].Quests.Horde[6] = {
     Prequest = "Translating the Journal",
     Folgequest = "Deliver the Gems",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Jarkal's Enhancing Necklace",
             ID = "7888",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[4].Quests.Horde[7] = {
+kQuestInstanceData["Uldaman"].Quests.Horde[7] = {
     Title = "7. Uldaman Reagent Run",
     Level = "42",
     Attain = "36",
@@ -1249,16 +1250,16 @@ kQuestInstanceData[4].Quests.Horde[7] = {
     Prequest = "Badlands Reagent Run",
     Folgequest = "Badlands Reagent Run II",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1(x5)",
+        Text = blue.."Reward:(x5)",
         {
             Name = "Restorative Potion",
             ID = "9030",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
     }
 }
-kQuestInstanceData[4].Quests.Horde[8] = {
+kQuestInstanceData["Uldaman"].Quests.Horde[8] = {
     Title = "8. Reclaimed Treasures",
     Level = "43",
     Attain = "33",
@@ -1268,10 +1269,10 @@ kQuestInstanceData[4].Quests.Horde[8] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Horde[9] = {
+kQuestInstanceData["Uldaman"].Quests.Horde[9] = {
     Title = "9. The Platinum Discs",
     Level = "47",
     Attain = "40",
@@ -1281,28 +1282,28 @@ kQuestInstanceData[4].Quests.Horde[9] = {
     Prequest = "No",
     Folgequest = "Portents of Uldum",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2(x5)"..AQDiscription_OR..white.."3(x5)",
+        Text = blue.."Reward: 1 or 2 (x5) or 3 (x5)",
         {
             Name = "Thawpelt Sack",
             ID = "9587",
             Color = white,
-            Description = AQITEM_BAG,
+            Description = "Bag",
         },
         {
             Name = "Superior Healing Potion",
             ID = "3928",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
         {
             Name = "Greater Mana Potion",
             ID = "6149",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
     }
 }
-kQuestInstanceData[4].Quests.Horde[10] = {
+kQuestInstanceData["Uldaman"].Quests.Horde[10] = {
     Title = "10. Power in Uldaman",
     Level = "40",
     Attain = "35",
@@ -1312,10 +1313,10 @@ kQuestInstanceData[4].Quests.Horde[10] = {
     Prequest = "The Exorcism",
     Folgequest = "Mana Surges",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[4].Quests.Horde[11] = {
+kQuestInstanceData["Uldaman"].Quests.Horde[11] = {
     Title = "11. Requisitioning a Core",
     Level = "45",
     Attain = "45",
@@ -1325,18 +1326,18 @@ kQuestInstanceData[4].Quests.Horde[11] = {
     Prequest = "A Profitable Acquisition",
     Folgequest = "The Profitable Activation",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Broken Core Pendant",
             ID = "60518",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
 
 --------------- INST5 - Blackrock Depths ---------------
-kQuestInstanceData[5] = {
+kQuestInstanceData["BlackrockDepths"] = {
     Story = "Once the capital city of the Dark Iron dwarves, this volcanic labyrinth now serves as the seat of power for Ragnaros the Firelord. Ragnaros has uncovered the secret to creating life from stone and plans to build an army of unstoppable golems to aid him in conquering the whole of Blackrock Mountain. Obsessed with defeating Nefarian and his draconic minions, Ragnaros will go to any extreme to achieve final victory.",
     Caption = "Blackrock Depths",
     QAA = "23 Quests",
@@ -1346,7 +1347,7 @@ kQuestInstanceData[5] = {
         Horde = {}
     }
 }
-kQuestInstanceData[5].Quests.Alliance[1] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[1] = {
     Title = "1. Dark Iron Legacy",
     Level = "52",
     Attain = "48",
@@ -1356,16 +1357,16 @@ kQuestInstanceData[5].Quests.Alliance[1] = {
     Prequest = "Dark Iron Legacy",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Shadowforge Key",
             ID = "11000",
             Color = white,
-            Description = AQITEM_KEY,
+            Description = "Key",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[2] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[2] = {
     Title = "2. Ribbly Screwspigot",
     Level = "53",
     Attain = "48",
@@ -1375,28 +1376,28 @@ kQuestInstanceData[5].Quests.Alliance[2] = {
     Prequest = "Yuka Screwspigot",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Rancor Boots",
             ID = "11865",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_CLOTH,
+            Description = "Feet, Cloth",
         },
         {
             Name = "Penance Spaulders",
             ID = "11963",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_LEATHER,
+            Description = "Shoulder, Leather",
         },
         {
             Name = "Splintsteel Armor",
             ID = "12049",
             Color = green,
-            Description = AQITEM_CHEST..AQITEM_MAIL,
+            Description = "Chest, Mail",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[3] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[3] = {
     Title = "3. The Love Potion",
     Level = "54",
     Attain = "50",
@@ -1406,22 +1407,22 @@ kQuestInstanceData[5].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Manacle Cuffs",
             ID = "11962",
             Color = blue,
-            Description = AQITEM_WRIST..AQITEM_CLOTH,
+            Description = "Wrist, Cloth",
         },
         {
             Name = "Nagmara's Whipping Belt",
             ID = "11866",
             Color = blue,
-            Description = AQITEM_WAIST..AQITEM_LEATHER,
+            Description = "Waist, Leather",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[4] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[4] = {
     Title = "4. Hurley Blackbreath",
     Level = "55",
     Attain = "50",
@@ -1431,28 +1432,28 @@ kQuestInstanceData[5].Quests.Alliance[4] = {
     Prequest = "Ragnar Thunderbrew",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1(x10)"..AQDiscription_AND..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: 1 (x10) and 2 or 3",
         {
             Name = "Dark Dwarven Lager",
             ID = "12003",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
         {
             Name = "Swiftstrike Cudgel",
             ID = "11964",
             Color = green,
-            Description = AQITEM_MAINHAND..AQITEM_MACE,
+            Description = "Main Hand, Mace",
         },
         {
             Name = "Limb Cleaver",
             ID = "12000",
             Color = green,
-            Description = AQITEM_TWOHAND..AQITEM_AXE,
+            Description = "Two-Hand, Axe",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[5] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[5] = {
     Title = "5. Incendius!",
     Level = "56",
     Attain = "48",
@@ -1462,34 +1463,34 @@ kQuestInstanceData[5].Quests.Alliance[5] = {
     Prequest = "Overmaster Pyron",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Sunborne Cape",
             ID = "12113",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Nightfall Gloves",
             ID = "12114",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_LEATHER,
+            Description = "Hands, Leather",
         },
         {
             Name = "Crypt Demon Bracers",
             ID = "12112",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_MAIL,
+            Description = "Wrist, Mail",
         },
         {
             Name = "Stalwart Clutch",
             ID = "12115",
             Color = green,
-            Description = AQITEM_WAIST..AQITEM_PLATE,
+            Description = "Waist, Plate",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[6] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[6] = {
     Title = "6. The Heart of the Mountain",
     Level = "55",
     Attain = "50",
@@ -1499,10 +1500,10 @@ kQuestInstanceData[5].Quests.Alliance[6] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[5].Quests.Alliance[7] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[7] = {
     Title = "7. The Good Stuff",
     Level = "56",
     Attain = "50",
@@ -1512,16 +1513,16 @@ kQuestInstanceData[5].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "A Dingy Fanny Pack",
             ID = "11883",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Container",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[8] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[8] = {
     Title = "8. Marshal Windsor",
     Level = "54",
     Attain = "48",
@@ -1531,28 +1532,28 @@ kQuestInstanceData[5].Quests.Alliance[8] = {
     Prequest = "Dragonkin Menace -> The True Masters",
     Folgequest = "Abandoned Hope",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Conservator Helm",
             ID = "12018",
             Color = green,
-            Description = AQITEM_HEAD..AQITEM_MAIL,
+            Description = "Head, Mail",
         },
         {
             Name = "Shieldplate Sabatons",
             ID = "12021",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_PLATE,
+            Description = "Feet, Plate",
         },
         {
             Name = "Windshear Leggings",
             ID = "12041",
             Color = green,
-            Description = AQITEM_LEGS..AQITEM_LEATHER,
+            Description = "Legs, Leather",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[9] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[9] = {
     Title = "9. A Crumpled Up Note",
     Level = "58",
     Attain = "50",
@@ -1562,10 +1563,10 @@ kQuestInstanceData[5].Quests.Alliance[9] = {
     Prequest = "Abandoned Hope",
     Folgequest = "A Shred of Hope",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[5].Quests.Alliance[10] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[10] = {
     Title = "10. A Shred of Hope",
     Level = "58",
     Attain = "50",
@@ -1575,10 +1576,10 @@ kQuestInstanceData[5].Quests.Alliance[10] = {
     Prequest = "A Crumpled Up Note",
     Folgequest = "Jail Break!",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[5].Quests.Alliance[11] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[11] = {
     Title = "11. Jail Break!",
     Level = "58",
     Attain = "50",
@@ -1588,28 +1589,28 @@ kQuestInstanceData[5].Quests.Alliance[11] = {
     Prequest = "A Shred of Hope",
     Folgequest = "Stormwind Rendezvous",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: 1 and 2 or 3",
         {
             Name = "Ward of the Elements",
             ID = "12065",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Blade of Reckoning",
             ID = "12061",
             Color = green,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
         {
             Name = "Skilled Fighting Blade",
             ID = "12062",
             Color = green,
-            Description = AQITEM_ONEHAND..AQITEM_DAGGER,
+            Description = "One-Hand, Dagger",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[12] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[12] = {
     Title = "12. A Taste of Flame",
     Level = "58",
     Attain = "52",
@@ -1619,28 +1620,28 @@ kQuestInstanceData[5].Quests.Alliance[12] = {
     Prequest = "The Flawless Flame -> A Taste of Flame",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Shaleskin Cape",
             ID = "12066",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Wyrmhide Spaulders",
             ID = "12082",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_LEATHER,
+            Description = "Shoulder, Leather",
         },
         {
             Name = "Valconian Sash",
             ID = "12083",
             Color = green,
-            Description = AQITEM_WAIST..AQITEM_CLOTH,
+            Description = "Waist, Cloth",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[13] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[13] = {
     Title = "13. Kharan Mighthammer",
     Level = "59",
     Attain = "50",
@@ -1650,10 +1651,10 @@ kQuestInstanceData[5].Quests.Alliance[13] = {
     Prequest = "The Smoldering Ruins of Thaurissan",
     Folgequest = "Kharan's Tale",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[5].Quests.Alliance[14] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[14] = {
     Title = "14. The Fate of the Kingdom",
     Level = "59",
     Attain = "50",
@@ -1663,22 +1664,22 @@ kQuestInstanceData[5].Quests.Alliance[14] = {
     Prequest = "The Bearer of Bad News",
     Folgequest = "The Princess's Surprise",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Magni's Will",
             ID = "12548",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Songstone of Ironforge",
             ID = "12543",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[15] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[15] = {
     Title = "15. Attunement to the Core",
     Level = "60",
     Attain = "55",
@@ -1688,10 +1689,10 @@ kQuestInstanceData[5].Quests.Alliance[15] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[5].Quests.Alliance[16] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[16] = {
     Title = "16. The Challenge",
     Level = "60",
     Attain = "58",
@@ -1701,10 +1702,10 @@ kQuestInstanceData[5].Quests.Alliance[16] = {
     Prequest = "The Instigator's Enchantment",
     Folgequest = "(Class Quests)",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[5].Quests.Alliance[17] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[17] = {
     Title = "17. The Spectral Chalice",
     Level = "55",
     Attain = "40",
@@ -1714,10 +1715,10 @@ kQuestInstanceData[5].Quests.Alliance[17] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[5].Quests.Alliance[18] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[18] = {
     Title = "18. Operation Help Jabbey",
     Level = "58",
     Attain = "50",
@@ -1727,41 +1728,41 @@ kQuestInstanceData[5].Quests.Alliance[18] = {
     Prequest = "Operation Screwfuse 1000 -> Operation FIX Screwfuse 1000",
     Folgequest = "Operation Help Jabbey 2 - > Operation Return to Screwfuse -> Operation Final Repairs - >Secrets of the Dark Iron Desecrator -> The Dark Iron Desecrator",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_AND..white.."3",
+        Text = blue.."Reward: 1 or 2 and 3",
         {
             Name = "Bixxle's Necklace of Control",
             ID = "60996",
             Color = green,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Bixxle's Necklace of Mastery",
             ID = "60997",
             Color = green,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[19] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[19] = {
     Title = "19. The Dark Iron Desecrator",
     Level = "60",
     Attain = "55",
-    Aim = "I need a Magma Condensor from within Blackrock Depths, you can find it near the Golem Laboratory"..yellow.."[25]"..white..".",
+    Aim = "I need a Magma Condensor from within Blackrock Depths, you can find it near the Golem Laboratory "..yellow.."[25]"..white..".",
     Location = "Bixxle Screwfuse (Tel'Abim Island east from Tanaris)",
     Note = "This quest requires to collect 4 items.\n1) Magma Condensor (Blackrock Depths in Magma Condensor Crate) \n2) Intricate Arcanite Barrel (Blackrock Spire in Intricate Arcanite Barrels container)\n3) Molten Fragment (Molten Core from Molten Destroyer).\n4) Dark Iron Rifle (crafted by Engineers).\nTo finish the construction, I will also need Fiery Core(x3) found in Molten Core, and Enchanted Thorium Bars(x10).",
     Prequest = "Operation Help Jabbey -> Secrets of the Dark Iron Desecrator",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Dark Iron Desecrator",
             ID = "61068",
             Color = purple,
-            Description = AQITEM_GUN,
+            Description = "Gun",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[20] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[20] = {
     Title = "20. Senatorial Revenge",
     Level = "56",
     Attain = "45",
@@ -1771,20 +1772,20 @@ kQuestInstanceData[5].Quests.Alliance[20] = {
     Prequest = "Gaining Orvak's Trust -> Hearing Orvak's Story -> The Sternrock Stash",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Badge of Shadowforge",
             ID = "60668",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[21] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[21] = {
     Title = "21. The Arcane Golem Core",
     Level = "55",
     Attain = "45",
-    Aim = "Find, and collect an Arcane Golem Core from Golem Lord Argelmach"..yellow.."[14]"..white.."in Blackrock Depths and return to Radgan Deepblaze at Blackrock Pass in Burning Steppes.",
+    Aim = "Find, and collect an Arcane Golem Core from Golem Lord Argelmach "..yellow.."[14]"..white.." in Blackrock Depths and return to Radgan Deepblaze at Blackrock Pass in Burning Steppes.",
     Location = " Radgan Deepblaze (after Redridge Mountains - Burning Steppes pass "..yellow.."76,68"..white..", west from alliance camp)",
     Note = "This questline starts at Radgan Deepblaze next to Orvak Sternrock with quest 'Gaining Orvak's Trust'",
     Prequest = "Gaining Orvak's Trust -> Hearing Orvak's Story -> The Sternrock Stash -> Discovering Golem Secrets -> To Purchase Secret Information",
@@ -1794,11 +1795,11 @@ kQuestInstanceData[5].Quests.Alliance[21] = {
             Name = "Energized Golem Core",
             ID = "60672",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[22] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[22] = {
     Title = "22. To Build a Pounder",
     Level = "60",
     Attain = "30",
@@ -1808,34 +1809,34 @@ kQuestInstanceData[5].Quests.Alliance[22] = {
     Prequest = "A Pounding Brain "..red.."(Engineers only)", --80398
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Reinforced Red Pounder",
             ID = "81253",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Mount",
         },
         {
             Name = "Reinforced Green Pounder",
             ID = "81252",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Mount",
         },
         {
             Name = "Reinforced Blue Pounder",
             ID = "81251",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Mount",
         },
         {
             Name = "Reinforced Black Pounder",
             ID = "81250",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Mount",
         },
     }
 }
-kQuestInstanceData[5].Quests.Alliance[23] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Alliance[23] = {
     Title = "23. Winter Veil Brew",
     Level = "55",
     Attain = "45",
@@ -1845,13 +1846,13 @@ kQuestInstanceData[5].Quests.Alliance[23] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[5].Quests.Horde[1] = kQuestInstanceData[5].Quests.Alliance[1]
-kQuestInstanceData[5].Quests.Horde[2] = kQuestInstanceData[5].Quests.Alliance[2]
-kQuestInstanceData[5].Quests.Horde[3] = kQuestInstanceData[5].Quests.Alliance[3]
-kQuestInstanceData[5].Quests.Horde[4] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[1] = kQuestInstanceData["BlackrockDepths"].Quests.Alliance[1]
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[2] = kQuestInstanceData["BlackrockDepths"].Quests.Alliance[2]
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[3] = kQuestInstanceData["BlackrockDepths"].Quests.Alliance[3]
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[4] = {
     Title = "4. Lost Thunderbrew Recipe",
     Level = "55",
     Attain = "50",
@@ -1861,34 +1862,34 @@ kQuestInstanceData[5].Quests.Horde[4] = {
     Prequest = "Vivian Lagrave",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1(x5)"..AQDiscription_AND..white.."2(x5)"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: 1 (x5) and 2 (x5) and 3 or 4",
         {
             Name = "Superior Healing Potion",
             ID = "3928",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
         {
             Name = "Greater Mana Potion",
             ID = "6149",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
         {
             Name = "Swiftstrike Cudgel",
             ID = "11964",
             Color = green,
-            Description = AQITEM_MAINHAND..AQITEM_MACE,
+            Description = "Main Hand, Mace",
         },
         {
             Name = "Limb Cleaver",
             ID = "12000",
             Color = green,
-            Description = AQITEM_TWOHAND..AQITEM_AXE,
+            Description = "Two-Hand, Axe",
         },
     }
 }
-kQuestInstanceData[5].Quests.Horde[5] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[5] = {
     Title = "5. The Heart of the Mountain",
     Level = "55",
     Attain = "50",
@@ -1898,10 +1899,10 @@ kQuestInstanceData[5].Quests.Horde[5] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[5].Quests.Horde[6] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[6] = {
     Title = "6. KILL ON SIGHT: Dark Iron Dwarves",
     Level = "52",
     Attain = "48",
@@ -1911,10 +1912,10 @@ kQuestInstanceData[5].Quests.Horde[6] = {
     Prequest = "No",
     Folgequest = "KILL ON SIGHT: High Ranking Dark Iron Officials",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[5].Quests.Horde[7] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[7] = {
     Title = "7. KILL ON SIGHT: High Ranking Dark Iron Officials",
     Level = "54",
     Attain = "50",
@@ -1924,10 +1925,10 @@ kQuestInstanceData[5].Quests.Horde[7] = {
     Prequest = "KILL ON SIGHT: Dark Iron Dwarves",
     Folgequest = "Grark Lorkrub -> Precarious Predicament (Escort quest)",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[5].Quests.Horde[8] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[8] = {
     Title = "8. Operation: Death to Angerforge",
     Level = "58",
     Attain = "52",
@@ -1937,16 +1938,16 @@ kQuestInstanceData[5].Quests.Horde[8] = {
     Prequest = "Grark Lorkrub -> Precarious Predicament",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Conqueror's Medallion",
             ID = "12059",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[5].Quests.Horde[9] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[9] = {
     Title = "9. The Rise of the Machines",
     Level = "58",
     Attain = "52",
@@ -1956,34 +1957,34 @@ kQuestInstanceData[5].Quests.Horde[9] = {
     Prequest = "The Rise of the Machines",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Azure Moon Amice",
             ID = "12109",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Raincaster Drape",
             ID = "12110",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Basaltscale Armor",
             ID = "12108",
             Color = green,
-            Description = AQITEM_CHEST..AQITEM_MAIL,
+            Description = "Chest, Mail",
         },
         {
             Name = "Lavaplate Gauntlets",
             ID = "12111",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_PLATE,
+            Description = "Hands, Plate",
         },
     }
 }
-kQuestInstanceData[5].Quests.Horde[10] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[10] = {
     Title = "10. A Taste of Flame",
     Level = "58",
     Attain = "52",
@@ -1993,28 +1994,28 @@ kQuestInstanceData[5].Quests.Horde[10] = {
     Prequest = "The Flawless Flame -> A Taste of Flame",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Shaleskin Cape",
             ID = "12066",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Wyrmhide Spaulders",
             ID = "12082",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_LEATHER,
+            Description = "Shoulder, Leather",
         },
         {
             Name = "Valconian Sash",
             ID = "12083",
             Color = green,
-            Description = AQITEM_WAIST..AQITEM_CLOTH,
+            Description = "Waist, Cloth",
         },
     }
 }
-kQuestInstanceData[5].Quests.Horde[11] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[11] = {
     Title = "11. Disharmony of Fire",
     Level = "56",
     Attain = "48",
@@ -2024,34 +2025,34 @@ kQuestInstanceData[5].Quests.Horde[11] = {
     Prequest = "Disharmony of Flame",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Sunborne Cape",
             ID = "12113",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Nightfall Gloves",
             ID = "12114",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_LEATHER,
+            Description = "Hands, Leather",
         },
         {
             Name = "Crypt Demon Bracers",
             ID = "12112",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_MAIL,
+            Description = "Wrist, Mail",
         },
         {
             Name = "Stalwart Clutch",
             ID = "12115",
             Color = green,
-            Description = AQITEM_WAIST..AQITEM_PLATE,
+            Description = "Waist, Plate",
         },
     }
 }
-kQuestInstanceData[5].Quests.Horde[12] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[12] = {
     Title = "12. The Last Element",
     Level = "54",
     Attain = "48",
@@ -2061,16 +2062,16 @@ kQuestInstanceData[5].Quests.Horde[12] = {
     Prequest = "Disharmony of Flame",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Lagrave's Seal",
             ID = "12038",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[5].Quests.Horde[13] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[13] = {
     Title = "13. Commander Gor'shak",
     Level = "52",
     Attain = "48",
@@ -2080,10 +2081,10 @@ kQuestInstanceData[5].Quests.Horde[13] = {
     Prequest = "Disharmony of Flame",
     Folgequest = "What Is Going On?",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[5].Quests.Horde[14] = {
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[14] = {
     Title = "14. The Royal Rescue",
     Level = "59",
     Attain = "48",
@@ -2093,33 +2094,33 @@ kQuestInstanceData[5].Quests.Horde[14] = {
     Prequest = "Commander Gor'shak -> What Is Going On? (x2) -> The Eastern Kingdom",
     Folgequest = "The Princess Saved?",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Thrall's Resolve",
             ID = "12544",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Eye of Orgrimmar",
             ID = "12545",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[5].Quests.Horde[15] = kQuestInstanceData[5].Quests.Alliance[15]
-kQuestInstanceData[5].Quests.Horde[16] = kQuestInstanceData[5].Quests.Alliance[16]
-kQuestInstanceData[5].Quests.Horde[17] = kQuestInstanceData[5].Quests.Alliance[17]
-kQuestInstanceData[5].Quests.Horde[18] = kQuestInstanceData[5].Quests.Alliance[18]
-kQuestInstanceData[5].Quests.Horde[19] = kQuestInstanceData[5].Quests.Alliance[19]
-kQuestInstanceData[5].Quests.Horde[20] = kQuestInstanceData[5].Quests.Alliance[20]
-kQuestInstanceData[5].Quests.Horde[21] = kQuestInstanceData[5].Quests.Alliance[21]
-kQuestInstanceData[5].Quests.Horde[22] = kQuestInstanceData[5].Quests.Alliance[22]
-kQuestInstanceData[5].Quests.Horde[23] = kQuestInstanceData[5].Quests.Alliance[23]
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[15] = kQuestInstanceData["BlackrockDepths"].Quests.Alliance[15]
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[16] = kQuestInstanceData["BlackrockDepths"].Quests.Alliance[16]
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[17] = kQuestInstanceData["BlackrockDepths"].Quests.Alliance[17]
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[18] = kQuestInstanceData["BlackrockDepths"].Quests.Alliance[18]
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[19] = kQuestInstanceData["BlackrockDepths"].Quests.Alliance[19]
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[20] = kQuestInstanceData["BlackrockDepths"].Quests.Alliance[20]
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[21] = kQuestInstanceData["BlackrockDepths"].Quests.Alliance[21]
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[22] = kQuestInstanceData["BlackrockDepths"].Quests.Alliance[22]
+kQuestInstanceData["BlackrockDepths"].Quests.Horde[23] = kQuestInstanceData["BlackrockDepths"].Quests.Alliance[23]
 
 --------------- INST6 - Blackwing Lair ---------------
-kQuestInstanceData[6] = {
+kQuestInstanceData["BlackwingLair"] = {
     Story = {
 	    ["Page1"] = "Blackwing Lair can be found at the very height of Blackrock Spire. It is there in the dark recesses of the mountain's peak that Nefarian has begun to unfold the final stages of his plan to destroy Ragnaros once and for all and lead his army to undisputed supremacy over all the races of Azeroth.",
 	    ["Page2"] = "The mighty fortress carved within the fiery bowels of Blackrock Mountain was designed by the master dwarf-mason, Franclorn Forgewright. Intended to be the symbol of Dark Iron power, the fortress was held by the sinister dwarves for centuries. However, Nefarian - the cunning son of the dragon, Deathwing - had other plans for the great keep. He and his draconic minions took control of the upper Spire and made war on the dwarves' holdings in the mountain's volcanic depths, which serve as the seat of power for Ragnaros the Firelord. Ragnaros has uncovered the secret to creating life from stone and plans to build an army of unstoppable golems to aid him in conquering the whole of Blackrock Mountain.",
@@ -2138,7 +2139,7 @@ kQuestInstanceData[6] = {
         Horde = {}
     }
 }
-kQuestInstanceData[6].Quests.Alliance[1] = {
+kQuestInstanceData["BlackwingLair"].Quests.Alliance[1] = {
     Title = "1. Nefarius's Corruption",
     Level = "60",
     Attain = "60",
@@ -2148,22 +2149,22 @@ kQuestInstanceData[6].Quests.Alliance[1] = {
     Prequest = "The Charge of the Dragonflights",
     Folgequest = "The Might of Kalimdor (Must complete green & blue quest chains as well)",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Onyx Embedded Leggings",
             ID = "21530",
             Color = purple,
-            Description = AQITEM_LEGS..AQITEM_MAIL,
+            Description = "Legs, Mail",
         },
         {
             Name = "Amulet of Shadow Shielding",
             ID = "21529",
             Color = purple,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[6].Quests.Alliance[2] = {
+kQuestInstanceData["BlackwingLair"].Quests.Alliance[2] = {
     Title = "2. The Lord of Blackrock",
     Level = "60",
     Attain = "60",
@@ -2173,28 +2174,28 @@ kQuestInstanceData[6].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "The Lord of Blackrock",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Master Dragonslayer's Medallion",
             ID = "19383",
             Color = purple,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Master Dragonslayer's Orb",
             ID = "19366",
             Color = purple,
-            Description = AQITEM_HELDOFFHAND,
+            Description = "Held In Off-hand",
         },
         {
             Name = "Master Dragonslayer's Ring",
             ID = "19384",
             Color = purple,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[6].Quests.Alliance[3] = {
+kQuestInstanceData["BlackwingLair"].Quests.Alliance[3] = {
     Title = "3. Only One May Rise",
     Level = "60",
     Attain = "60",
@@ -2204,10 +2205,10 @@ kQuestInstanceData[6].Quests.Alliance[3] = {
     Prequest = "What Tomorrow Brings",
     Folgequest = "The Path of the Righteous",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[6].Quests.Alliance[4] = {
+kQuestInstanceData["BlackwingLair"].Quests.Alliance[4] = {
     Title = "4. The Only Prescription",
     Level = "60",
     Attain = "60",
@@ -2217,16 +2218,16 @@ kQuestInstanceData[6].Quests.Alliance[4] = {
     Prequest = "Decoy!",
     Folgequest = "The Good News and The Bad News (Must complete Stewvul, Ex-B.F.F. and Never Ask Me About My Business quest chains)",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Gnomish Turban of Psychic Might",
             ID = "21517",
             Color = purple,
-            Description = AQITEM_HEAD..AQITEM_CLOTH,
+            Description = "Head, Cloth",
         },
     }
 }
-kQuestInstanceData[6].Quests.Alliance[5] = {
+kQuestInstanceData["BlackwingLair"].Quests.Alliance[5] = {
     Title = "5. The Key to Karazhan IX",
     Level = "60",
     Attain = "58",
@@ -2236,16 +2237,16 @@ kQuestInstanceData[6].Quests.Alliance[5] = {
     Prequest = "The Key to Karazhan VIII (DMW)",
     Folgequest = "The Key to Karazhan X",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Upper Karazhan Tower Key",
             ID = "61234",
             Color = blue,
-            Description = AQITEM_KEY,
+            Description = "Key",
         },
     }
 }
-kQuestInstanceData[6].Quests.Alliance[6] = {
+kQuestInstanceData["BlackwingLair"].Quests.Alliance[6] = {
     Title = "6. Scythe of the Goddess",
     Level = "60",
     Attain = "58",
@@ -2255,11 +2256,11 @@ kQuestInstanceData[6].Quests.Alliance[6] = {
     Prequest = "Scythe of the Goddess",
     Folgequest = "Scythe of the Goddess "..yellow.."[Upper Karazhan]"..white.." ", -- 41087
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[6].Quests.Horde[1] = kQuestInstanceData[6].Quests.Alliance[1]
-kQuestInstanceData[6].Quests.Horde[2] = {
+kQuestInstanceData["BlackwingLair"].Quests.Horde[1] = kQuestInstanceData["BlackwingLair"].Quests.Alliance[1]
+kQuestInstanceData["BlackwingLair"].Quests.Horde[2] = {
     Title = "2. The Lord of Blackrock",
     Level = "60",
     Attain = "60",
@@ -2268,15 +2269,15 @@ kQuestInstanceData[6].Quests.Horde[2] = {
     Note = "The follow up sends you to High Overlord Saurfang (Orgrimmar - Valley of Strength; "..yellow.."51,76"..white..") for the reward.",
     Prequest = "No",
     Folgequest = "The Lord of Blackrock",
-    Rewards = kQuestInstanceData[6].Quests.Alliance[2].Rewards
+    Rewards = kQuestInstanceData["BlackwingLair"].Quests.Alliance[2].Rewards
 }
-kQuestInstanceData[6].Quests.Horde[3] = kQuestInstanceData[6].Quests.Alliance[3]
-kQuestInstanceData[6].Quests.Horde[4] = kQuestInstanceData[6].Quests.Alliance[4]
-kQuestInstanceData[6].Quests.Horde[5] = kQuestInstanceData[6].Quests.Alliance[5]
-kQuestInstanceData[6].Quests.Horde[6] = kQuestInstanceData[6].Quests.Alliance[6]
+kQuestInstanceData["BlackwingLair"].Quests.Horde[3] = kQuestInstanceData["BlackwingLair"].Quests.Alliance[3]
+kQuestInstanceData["BlackwingLair"].Quests.Horde[4] = kQuestInstanceData["BlackwingLair"].Quests.Alliance[4]
+kQuestInstanceData["BlackwingLair"].Quests.Horde[5] = kQuestInstanceData["BlackwingLair"].Quests.Alliance[5]
+kQuestInstanceData["BlackwingLair"].Quests.Horde[6] = kQuestInstanceData["BlackwingLair"].Quests.Alliance[6]
 
 --------------- INST7 - Blackfathom Deeps ---------------
-kQuestInstanceData[7] = {
+kQuestInstanceData["BlackfathomDeeps"] = {
     Story = "Situated along the Zoram Strand of Ashenvale, Blackfathom Deeps was once a glorious temple dedicated to the night elves' moon-goddess, Elune. However, the great Sundering shattered the temple - sinking it beneath the waves of the Veiled Sea. There it remained untouched - until, drawn by its ancient power - the naga and satyr emerged to plumb its secrets. Legends hold that the ancient beast, Aku'mai, has taken up residence within the temple's ruins. Aku'mai, a favored pet of the primordial Old Gods, has preyed upon the area ever since. Drawn to Aku'mai's presence, the cult known as the Twilight's Hammer has also come to bask in the Old Gods' evil presence.",
     Caption = "Blackfathom Deeps",
     QAA = "6 Quests",
@@ -2286,7 +2287,7 @@ kQuestInstanceData[7] = {
         Horde = {}
     }
 }
-kQuestInstanceData[7].Quests.Alliance[1] = {
+kQuestInstanceData["BlackfathomDeeps"].Quests.Alliance[1] = {
     Title = "1. Knowledge in the Deeps",
     Level = "23",
     Attain = "10",
@@ -2296,16 +2297,16 @@ kQuestInstanceData[7].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Sustaining Ring",
             ID = "6743",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[7].Quests.Alliance[2] = {
+kQuestInstanceData["BlackfathomDeeps"].Quests.Alliance[2] = {
     Title = "2. Researching the Corruption",
     Level = "24",
     Attain = "18",
@@ -2315,22 +2316,22 @@ kQuestInstanceData[7].Quests.Alliance[2] = {
     Prequest = "The Corruption Abroad",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Beetle Clasps",
             ID = "7003",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_MAIL,
+            Description = "Wrist, Mail",
         },
         {
             Name = "Prelacy Cape",
             ID = "7004",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
     }
 }
-kQuestInstanceData[7].Quests.Alliance[3] = {
+kQuestInstanceData["BlackfathomDeeps"].Quests.Alliance[3] = {
     Title = "3. In Search of Thaelrid",
     Level = "24",
     Attain = "18",
@@ -2340,10 +2341,10 @@ kQuestInstanceData[7].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "Blackfathom Villainy",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[7].Quests.Alliance[4] = {
+kQuestInstanceData["BlackfathomDeeps"].Quests.Alliance[4] = {
     Title = "4. Blackfathom Villainy",
     Level = "27",
     Attain = "18",
@@ -2353,22 +2354,22 @@ kQuestInstanceData[7].Quests.Alliance[4] = {
     Prequest = "In Search of Thaelrid",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Gravestone Scepter",
             ID = "7001",
             Color = blue,
-            Description = AQITEM_WAND,
+            Description = "Wand",
         },
         {
             Name = "Arctic Buckler",
             ID = "7002",
             Color = blue,
-            Description = AQITEM_SHIELD,
+            Description = "Shield",
         },
     }
 }
-kQuestInstanceData[7].Quests.Alliance[5] = {
+kQuestInstanceData["BlackfathomDeeps"].Quests.Alliance[5] = {
     Title = "5. Twilight Falls",
     Level = "25",
     Attain = "20",
@@ -2378,22 +2379,22 @@ kQuestInstanceData[7].Quests.Alliance[5] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2",
+        Text = blue.."Rewards:",
         {
             Name = "Nimbus Boots",
             ID = "6998",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_CLOTH,
+            Description = "Feet, Cloth",
         },
         {
             Name = "Heartwood Girdle",
             ID = "7000",
             Color = green,
-            Description = AQITEM_WAIST..AQITEM_LEATHER,
+            Description = "Waist, Leather",
         },
     }
 }
-kQuestInstanceData[7].Quests.Alliance[6] = {
+kQuestInstanceData["BlackfathomDeeps"].Quests.Alliance[6] = {
     Title = "6. The Orb of Soran'ruk",
     Level = "25",
     Attain = "20",
@@ -2403,22 +2404,22 @@ kQuestInstanceData[7].Quests.Alliance[6] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Orb of Soran'ruk",
             ID = "6898",
             Color = green,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
         {
             Name = "Staff of Soran'ruk",
             ID = "15109",
             Color = green,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
     }
 }
-kQuestInstanceData[7].Quests.Horde[1] = {
+kQuestInstanceData["BlackfathomDeeps"].Quests.Horde[1] = {
     Title = "1. The Essence of Aku'Mai",
     Level = "22",
     Attain = "17",
@@ -2428,10 +2429,10 @@ kQuestInstanceData[7].Quests.Horde[1] = {
     Prequest = "Trouble in the Deeps",
     Folgequest = "Amongst the Ruins",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[7].Quests.Horde[2] = {
+kQuestInstanceData["BlackfathomDeeps"].Quests.Horde[2] = {
     Title = "2. Allegiance to the Old Gods",
     Level = "26",
     Attain = "17",
@@ -2441,22 +2442,22 @@ kQuestInstanceData[7].Quests.Horde[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Band of the Fist",
             ID = "17694",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Chestnut Mantle",
             ID = "17695",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_CLOTH,
+            Description = "Shoulder, Cloth",
         },
     }
 }
-kQuestInstanceData[7].Quests.Horde[3] = {
+kQuestInstanceData["BlackfathomDeeps"].Quests.Horde[3] = {
     Title = "3. Amongst the Ruins",
     Level = "27",
     Attain = "21",
@@ -2466,10 +2467,10 @@ kQuestInstanceData[7].Quests.Horde[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[7].Quests.Horde[4] = {
+kQuestInstanceData["BlackfathomDeeps"].Quests.Horde[4] = {
     Title = "4. Blackfathom Villainy",
     Level = "27",
     Attain = "18",
@@ -2478,9 +2479,9 @@ kQuestInstanceData[7].Quests.Horde[4] = {
     Note = "Twilight Lord Kelris is at "..yellow.."[8]"..white..". You find Bashana Runetotem in Thunderbluff - The Elder Rise ("..yellow.."70,33"..white.."). \n\nATTENTION! If you turn on the flames beside Lord Kelris, enemies appear and attack you.",
     Prequest = "No",
     Folgequest = "No",
-    Rewards = kQuestInstanceData[7].Quests.Alliance[4].Rewards
+    Rewards = kQuestInstanceData["BlackfathomDeeps"].Quests.Alliance[4].Rewards
 }
-kQuestInstanceData[7].Quests.Horde[5] = {
+kQuestInstanceData["BlackfathomDeeps"].Quests.Horde[5] = {
     Title = "5. The Orb of Soran'ruk",
     Level = "25",
     Attain = "20",
@@ -2490,22 +2491,22 @@ kQuestInstanceData[7].Quests.Horde[5] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Orb of Soran'ruk",
             ID = "6898",
             Color = green,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
         {
             Name = "Staff of Soran'ruk",
             ID = "15109",
             Color = green,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
     }
 }
-kQuestInstanceData[7].Quests.Horde[6] = {
+kQuestInstanceData["BlackfathomDeeps"].Quests.Horde[6] = {
     Title = "6. Baron Aquanis",
     Level = "30",
     Attain = "21",
@@ -2515,24 +2516,24 @@ kQuestInstanceData[7].Quests.Horde[6] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Outlaw Sabre",
             ID = "16886",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
         {
             Name = "Witch's Finger",
             ID = "16887",
             Color = blue,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
     }
 }
 
 --------------- INST8 - Lower Blackrock Spire ---------------
-kQuestInstanceData[8] = {
+kQuestInstanceData["BlackrockSpireLower"] = {
     Story = "The mighty fortress carved within the fiery bowels of Blackrock Mountain was designed by the master dwarf-mason, Franclorn Forgewright. Intended to be the symbol of Dark Iron power, the fortress was held by the sinister dwarves for centuries. However, Nefarian - the cunning son of the dragon, Deathwing - had other plans for the great keep. He and his draconic minions took control of the upper Spire and made war on the dwarves' holdings in the mountain's volcanic depths. Realizing that the dwarves were led by the mighty fire elemental, Ragnaros - Nefarian vowed to crush his enemies and claim the whole of Blackrock mountain for himself.",
     Caption = "Lower Blackrock Spire",
     QAA = "15 Quests",
@@ -2542,7 +2543,7 @@ kQuestInstanceData[8] = {
         Horde = {}
     }
 }
-kQuestInstanceData[8].Quests.Alliance[1] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[1] = {
     Title = "1. The Final Tablets",
     Level = "58",
     Attain = "40",
@@ -2552,22 +2553,22 @@ kQuestInstanceData[8].Quests.Alliance[1] = {
     Prequest = "The Lost Tablets of Mosh'aru",
     Folgequest = "Confront Yeh'kinya",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Faded Hakkari Cloak",
             ID = "20218",
             Color = blue,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Tattered Hakkari Cape",
             ID = "20219",
             Color = blue,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
     }
 }
-kQuestInstanceData[8].Quests.Alliance[2] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[2] = {
     Title = "2. Kibler's Exotic Pets",
     Level = "59",
     Attain = "55",
@@ -2577,16 +2578,16 @@ kQuestInstanceData[8].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Worg Carrier",
             ID = "12264",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Pet",
         },
     }
 }
-kQuestInstanceData[8].Quests.Alliance[3] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[3] = {
     Title = "3. En-Ay-Es-Tee-Why",
     Level = "59",
     Attain = "55",
@@ -2596,16 +2597,16 @@ kQuestInstanceData[8].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Smolderweb Carrier",
             ID = "12529",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Pet",
         },
     }
 }
-kQuestInstanceData[8].Quests.Alliance[4] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[4] = {
     Title = "4. Mother's Milk",
     Level = "60",
     Attain = "55",
@@ -2615,16 +2616,16 @@ kQuestInstanceData[8].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Ragged John's Neverending Cup",
             ID = "15873",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[8].Quests.Alliance[5] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[5] = {
     Title = "5. Put Her Down",
     Level = "59",
     Attain = "55",
@@ -2634,28 +2635,28 @@ kQuestInstanceData[8].Quests.Alliance[5] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Astoria Robes",
             ID = "15824",
             Color = green,
-            Description = AQITEM_CHEST .. AQITEM_CLOTH,
+            Description = "Chest, Cloth",
         },
         {
             Name = "Traphook Jerkin",
             ID = "15825",
             Color = green,
-            Description = AQITEM_CHEST .. AQITEM_LEATHER,
+            Description = "Chest, Leather",
         },
         {
             Name = "Jadescale Breastplate",
             ID = "15827",
             Color = green,
-            Description = AQITEM_CHEST .. AQITEM_MAIL,
+            Description = "Chest, Mail",
         },
     }
 }
-kQuestInstanceData[8].Quests.Alliance[6] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[6] = {
     Title = "6. Urok Doomhowl",
     Level = "60",
     Attain = "55",
@@ -2665,16 +2666,16 @@ kQuestInstanceData[8].Quests.Alliance[6] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Prismcharm",
             ID = "15867",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[8].Quests.Alliance[7] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[7] = {
     Title = "7. Bijou's Belongings",
     Level = "59",
     Attain = "55",
@@ -2684,10 +2685,10 @@ kQuestInstanceData[8].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "Message to Maxwell",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[8].Quests.Alliance[8] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[8] = {
     Title = "8. Maxwell's Mission",
     Level = "60",
     Attain = "55",
@@ -2697,40 +2698,40 @@ kQuestInstanceData[8].Quests.Alliance[8] = {
     Prequest = "Message to Maxwell",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4"..AQDiscription_OR..white.."5",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Wyrmthalak's Shackles",
             ID = "13958",
             Color = blue,
-            Description = AQITEM_WRIST .. AQITEM_CLOTH,
+            Description = "Wrist, Cloth",
         },
         {
             Name = "Omokk's Girth Restrainer",
             ID = "13959",
             Color = blue,
-            Description = AQITEM_WAIST .. AQITEM_PLATE,
+            Description = "Waist, Plate",
         },
         {
             Name = "Halycon's Muzzle",
             ID = "13961",
             Color = blue,
-            Description = AQITEM_SHOULDER .. AQITEM_LEATHER,
+            Description = "Shoulder, Leather",
         },
         {
             Name = "Vosh'gajin's Strand",
             ID = "13962",
             Color = blue,
-            Description = AQITEM_WAIST .. AQITEM_LEATHER,
+            Description = "Waist, Leather",
         },
         {
             Name = "Voone's Vice Grips",
             ID = "13963",
             Color = blue,
-            Description = AQITEM_HANDS .. AQITEM_MAIL,
+            Description = "Hands, Mail",
         },
     }
 }
-kQuestInstanceData[8].Quests.Alliance[9] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[9] = {
     Title = "9. Seal of Ascension",
     Level = "60",
     Attain = "57",
@@ -2740,10 +2741,10 @@ kQuestInstanceData[8].Quests.Alliance[9] = {
     Prequest = "No",
     Folgequest = "Seal of Ascension",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[8].Quests.Alliance[10] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[10] = {
     Title = "10. General Drakkisath's Command",
     Level = "60",
     Attain = "55",
@@ -2753,10 +2754,10 @@ kQuestInstanceData[8].Quests.Alliance[10] = {
     Prequest = "No",
     Folgequest = "General Drakkisath's Demise ("..yellow.."Upper Blackrock Spire"..white..")", -- 5102
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[8].Quests.Alliance[11] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[11] = {
     Title = "11. The Left Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -2766,10 +2767,10 @@ kQuestInstanceData[8].Quests.Alliance[11] = {
     Prequest = "Components of Importance",
     Folgequest = "I See Alcaz Island In Your Future...",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[8].Quests.Alliance[12] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[12] = {
     Title = "12. The Right Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -2779,10 +2780,10 @@ kQuestInstanceData[8].Quests.Alliance[12] = {
     Prequest = "More Components of Importance",
     Folgequest = "Final Preparations ("..yellow.."Upper Blackrock Spire"..white..")", -- 8994
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[8].Quests.Alliance[13] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[13] = {
     Title = "13. Snakestone of the Shadow Huntress",
     Level = "60",
     Attain = "50",
@@ -2792,16 +2793,16 @@ kQuestInstanceData[8].Quests.Alliance[13] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Plans: Dawn's Edge",
             ID = "12821",
             Color = blue,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
     }
 }
-kQuestInstanceData[8].Quests.Alliance[14] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[14] = {
     Title = "14. Hot Fiery Death",
     Level = "60",
     Attain = "60",
@@ -2811,22 +2812,22 @@ kQuestInstanceData[8].Quests.Alliance[14] = {
     Prequest = "No",
     Folgequest = "Fiery Plate Gauntlets",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Plans: Fiery Plate Gauntlets",
             ID = "12699",
             Color = blue,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
         {
             Name = "Fiery Plate Gauntlets",
             ID = "12631",
             Color = blue,
-            Description = AQITEM_HANDS..AQITEM_PLATE,
+            Description = "Hands, Plate",
         },
     }
 }
-kQuestInstanceData[8].Quests.Alliance[15] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[15] = {
     Title = "15. The Dark Iron Desecrator",
     Level = "60",
     Attain = "55",
@@ -2836,20 +2837,20 @@ kQuestInstanceData[8].Quests.Alliance[15] = {
     Prequest = "Secrets of the Dark Iron Desecrator",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Dark Iron Desecrator",
             ID = "61068",
             Color = purple,
-            Description = AQITEM_GUN,
+            Description = "Gun",
         },
     }
 }
-kQuestInstanceData[8].Quests.Horde[1] = kQuestInstanceData[8].Quests.Alliance[1]
-kQuestInstanceData[8].Quests.Horde[2] = kQuestInstanceData[8].Quests.Alliance[2]
-kQuestInstanceData[8].Quests.Horde[3] = kQuestInstanceData[8].Quests.Alliance[3]
-kQuestInstanceData[8].Quests.Horde[4] = kQuestInstanceData[8].Quests.Alliance[4]
-kQuestInstanceData[8].Quests.Horde[5] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[1] = kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[1]
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[2] = kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[2]
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[3] = kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[3]
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[4] = kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[4]
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[5] = {
     Title = "5. The Pack Mistress",
     Level = "59",
     Attain = "55",
@@ -2858,10 +2859,10 @@ kQuestInstanceData[8].Quests.Horde[5] = {
     Note = "You find Halycon at "..yellow.."[17]"..white..".",
     Prequest = "No",
     Folgequest = "No",
-    Rewards = kQuestInstanceData[8].Quests.Alliance[5].Rewards
+    Rewards = kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[5].Rewards
 }
-kQuestInstanceData[8].Quests.Horde[6] = kQuestInstanceData[8].Quests.Alliance[6]
-kQuestInstanceData[8].Quests.Horde[7] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[6] = kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[6]
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[7] = {
     Title = "7. Operative Bijou",
     Level = "59",
     Attain = "55",
@@ -2871,10 +2872,10 @@ kQuestInstanceData[8].Quests.Horde[7] = {
     Prequest = "No",
     Folgequest = "Bijou's Belongings",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[8].Quests.Horde[8] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[8] = {
     Title = "8. Bijou's Belongings",
     Level = "59",
     Attain = "55",
@@ -2884,23 +2885,23 @@ kQuestInstanceData[8].Quests.Horde[8] = {
     Prequest = "Operative Bijou",
     Folgequest = "Bijou's Reconnaissance Report",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Freewind Gloves",
             ID = "15858",
             Color = green,
-            Description = AQITEM_HANDS .. AQITEM_CLOTH,
+            Description = "Hands, Cloth",
         },
         {
             Name = "Seapost Girdle",
             ID = "15859",
             Color = green,
-            Description = AQITEM_WAIST .. AQITEM_MAIL,
+            Description = "Waist, Mail",
         },
     }
 }
-kQuestInstanceData[8].Quests.Horde[9] = kQuestInstanceData[8].Quests.Alliance[9]
-kQuestInstanceData[8].Quests.Horde[10] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[9] = kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[9]
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[10] = {
     Title = "10. Warlord's Command",
     Level = "60",
     Attain = "55",
@@ -2910,45 +2911,45 @@ kQuestInstanceData[8].Quests.Horde[10] = {
     Prequest = "No",
     Folgequest = "Eitrigg's Wisdom -> For the Horde! ("..yellow.."Upper Blackrock Spire"..white..")",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4"..AQDiscription_OR..white.."5",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Wyrmthalak's Shackles",
             ID = "13958",
             Color = blue,
-            Description = AQITEM_WRIST .. AQITEM_CLOTH,
+            Description = "Wrist, Cloth",
         },
         {
             Name = "Omokk's Girth Restrainer",
             ID = "13959",
             Color = blue,
-            Description = AQITEM_WAIST .. AQITEM_PLATE,
+            Description = "Waist, Plate",
         },
         {
             Name = "Halycon's Muzzle",
             ID = "13961",
             Color = blue,
-            Description = AQITEM_SHOULDER .. AQITEM_LEATHER,
+            Description = "Shoulder, Leather",
         },
         {
             Name = "Vosh'gajin's Strand",
             ID = "13962",
             Color = blue,
-            Description = AQITEM_WAIST .. AQITEM_LEATHER,
+            Description = "Waist, Leather",
         },
         {
             Name = "Voone's Vice Grips",
             ID = "13963",
             Color = blue,
-            Description = AQITEM_HANDS .. AQITEM_MAIL,
+            Description = "Hands, Mail",
         },
     }
 }
-kQuestInstanceData[8].Quests.Horde[11] = kQuestInstanceData[8].Quests.Alliance[11]
-kQuestInstanceData[8].Quests.Horde[12] = kQuestInstanceData[8].Quests.Alliance[12]
-kQuestInstanceData[8].Quests.Horde[13] = kQuestInstanceData[8].Quests.Alliance[13]
-kQuestInstanceData[8].Quests.Horde[14] = kQuestInstanceData[8].Quests.Alliance[14]
-kQuestInstanceData[8].Quests.Horde[15] = kQuestInstanceData[8].Quests.Alliance[15]
-kQuestInstanceData[8].Quests.Horde[16] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[11] = kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[11]
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[12] = kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[12]
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[13] = kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[13]
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[14] = kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[14]
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[15] = kQuestInstanceData["BlackrockSpireLower"].Quests.Alliance[15]
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[16] = {
     Title = "16. Forest Troll Scum",
     Level = "60",
     Attain = "48",
@@ -2958,16 +2959,16 @@ kQuestInstanceData[8].Quests.Horde[16] = {
     Prequest = "The Firegut Task",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Taskmaster Whip",
             ID = "60715",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[8].Quests.Horde[17] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[17] = {
     Title = "17. Raider's Raid",
     Level = "58",
     Attain = "50",
@@ -2977,28 +2978,28 @@ kQuestInstanceData[8].Quests.Horde[17] = {
     Prequest = "Raider's Revenge -> Raider's New Mount",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Worg Rider Sash",
             ID = "60717",
             Color = green,
-            Description = AQITEM_WAIST .. AQITEM_LEATHER,
+            Description = "Waist, Leather",
         },
         {
             Name = "Sootwalker Sandals",
             ID = "60718",
             Color = green,
-            Description = AQITEM_FEET .. AQITEM_CLOTH,
+            Description = "Feet, Cloth",
         },
         {
             Name = "Axe of Fargosh",
             ID = "60719",
             Color = green,
-            Description = AQITEM_MAINHAND .. AQITEM_AXE,
+            Description = "Main Hand, Axe",
         },
     }
 }
-kQuestInstanceData[8].Quests.Horde[18] = {
+kQuestInstanceData["BlackrockSpireLower"].Quests.Horde[18] = {
     Title = "18. The Final Crack",
     Level = "59",
     Attain = "50",
@@ -3008,18 +3009,18 @@ kQuestInstanceData[8].Quests.Horde[18] = {
     Prequest = "Protecting Fresh Blood -> Report to Molk -> Destroy All Traces... -> Take No Chances",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Tarnished Lancelot Ring",
             ID = "60739",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
 
 --------------- INST9 - Upper Blackrock Spire ---------------
-kQuestInstanceData[9] = {
+kQuestInstanceData["BlackrockSpireUpper"] = {
     Story = "The mighty fortress carved within the fiery bowels of Blackrock Mountain was designed by the master dwarf-mason, Franclorn Forgewright. Intended to be the symbol of Dark Iron power, the fortress was held by the sinister dwarves for centuries. However, Nefarian - the cunning son of the dragon, Deathwing - had other plans for the great keep. He and his draconic minions took control of the upper Spire and made war on the dwarves' holdings in the mountain's volcanic depths. Realizing that the dwarves were led by the mighty fire elemental, Ragnaros - Nefarian vowed to crush his enemies and claim the whole of Blackrock mountain for himself.",
     Caption = "Upper Blackrock Spire",
     QAA = "12 Quests",
@@ -3029,7 +3030,7 @@ kQuestInstanceData[9] = {
         Horde = {}
     }
 }
-kQuestInstanceData[9].Quests.Alliance[1] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[1] = {
     Title = "1. The Matron Protectorate",
     Level = "60",
     Attain = "57",
@@ -3039,10 +3040,10 @@ kQuestInstanceData[9].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "Wrath of the Blue Flight",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[9].Quests.Alliance[2] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[2] = {
     Title = "2. Finkle Einhorn, At Your Service!",
     Level = "60",
     Attain = "55",
@@ -3052,10 +3053,10 @@ kQuestInstanceData[9].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "Leggings of Arcana, Cap of the Scarlet Savant, Breastplate of Bloodthirst and Shoulderguards of the Lightbringer",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[9].Quests.Alliance[3] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[3] = {
     Title = "3. Egg Freezing",
     Level = "60",
     Attain = "57",
@@ -3065,10 +3066,10 @@ kQuestInstanceData[9].Quests.Alliance[3] = {
     Prequest = "Broodling Essence -> Tinkee Steamboil",
     Folgequest = "Egg Collection -> Leonid Barthalomew -> Dawn's Gambit ("..yellow.."Scholomance"..white..")",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[9].Quests.Alliance[4] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[4] = {
     Title = "4. Eye of the Emberseer",
     Level = "60",
     Attain = "56",
@@ -3078,10 +3079,10 @@ kQuestInstanceData[9].Quests.Alliance[4] = {
     Prequest = "Poisoned Water, Stormers and Rumblers",
     Folgequest = "The Molten Core",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[9].Quests.Alliance[5] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[5] = {
     Title = "5. General Drakkisath's Demise",
     Level = "60",
     Attain = "55",
@@ -3091,28 +3092,28 @@ kQuestInstanceData[9].Quests.Alliance[5] = {
     Prequest = "General Drakkisath's Command ("..yellow.."Lower Blackrock Spire"..white..")",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Mark of Tyranny",
             ID = "13966",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Eye of the Beast",
             ID = "13968",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Blackhand's Breadth",
             ID = "13965",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[9].Quests.Alliance[6] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[6] = {
     Title = "6. Doomrigger's Clasp",
     Level = "60",
     Attain = "57",
@@ -3122,22 +3123,22 @@ kQuestInstanceData[9].Quests.Alliance[6] = {
     Prequest = "Mayara Brightwing",
     Folgequest = "Delivery to Ridgewell",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Swiftfoot Treads",
             ID = "15861",
             Color = green,
-            Description = AQITEM_FEET .. AQITEM_LEATHER,
+            Description = "Feet, Leather",
         },
         {
             Name = "Blinkstrike Armguards",
             ID = "15860",
             Color = green,
-            Description = AQITEM_WRIST .. AQITEM_PLATE,
+            Description = "Wrist, Plate",
         },
     }
 }
-kQuestInstanceData[9].Quests.Alliance[7] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[7] = {
     Title = "7. Drakefire Amulet",
     Level = "60",
     Attain = "50",
@@ -3147,16 +3148,16 @@ kQuestInstanceData[9].Quests.Alliance[7] = {
     Prequest = "The Dragon's Eye",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Drakefire Amulet",
             ID = "16309",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[9].Quests.Alliance[8] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[8] = {
     Title = "8. Blackhand's Command",
     Level = "60",
     Attain = "55",
@@ -3166,10 +3167,10 @@ kQuestInstanceData[9].Quests.Alliance[8] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[9].Quests.Alliance[9] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[9] = {
     Title = "9. Final Preparations",
     Level = "60",
     Attain = "58",
@@ -3179,10 +3180,10 @@ kQuestInstanceData[9].Quests.Alliance[9] = {
     Prequest = "The Right Piece of Lord Valthalak's Amulet ("..yellow.."Upper Blackrock Spire"..white..")",
     Folgequest = "Mea Culpa, Lord Valthalak",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[9].Quests.Alliance[10] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[10] = {
     Title = "10. Mea Culpa, Lord Valthalak",
     Level = "60",
     Attain = "58",
@@ -3192,22 +3193,22 @@ kQuestInstanceData[9].Quests.Alliance[10] = {
     Prequest = "Final Preparations",
     Folgequest = "Return to Bodley",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Brazier of Invocation",
             ID = "22057",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Item",
         },
         {
             Name = "Brazier of Invocation: User's Manual",
             ID = "22344",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Item",
         },
     }
 }
-kQuestInstanceData[9].Quests.Alliance[11] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[11] = {
     Title = "11. The Demon Forge",
     Level = "60",
     Attain = "55",
@@ -3217,28 +3218,28 @@ kQuestInstanceData[9].Quests.Alliance[11] = {
     Prequest = "Lorax's Tale",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2 (x5)"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: 1 and 2 (x5) and 3",
         {
             Name = "Plans: Demon Forged Breastplate",
             ID = "12696",
             Color = blue,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
         {
             Name = "Elixir of Demonslaying",
             ID = "9224",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
         {
             Name = "Demon Kissed Sack",
             ID = "12849",
             Color = green,
-            Description = AQITEM_ITEM,
+            Description = "Container",
         },
     }
 }
-kQuestInstanceData[9].Quests.Alliance[12] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[12] = {
     Title = "12. The Upper Binding I",
     Level = "60",
     Attain = "55",
@@ -3248,20 +3249,20 @@ kQuestInstanceData[9].Quests.Alliance[12] = {
     Prequest = "The Binding of Xanthar",
     Folgequest = "The Upper Binding II -> The Upper Binding III "..yellow.."[Dire Maul West]"..white.." -> The Upper Binding IV",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "The Upper Binding of Xanthar",
             ID = "61696",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Quest Item",
         },
     }
 }
-kQuestInstanceData[9].Quests.Horde[1] = kQuestInstanceData[9].Quests.Alliance[1]
-kQuestInstanceData[9].Quests.Horde[2] = kQuestInstanceData[9].Quests.Alliance[2]
-kQuestInstanceData[9].Quests.Horde[3] = kQuestInstanceData[9].Quests.Alliance[3]
-kQuestInstanceData[9].Quests.Horde[4] = kQuestInstanceData[9].Quests.Alliance[4]
-kQuestInstanceData[9].Quests.Horde[5] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[1] = kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[1]
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[2] = kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[2]
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[3] = kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[3]
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[4] = kQuestInstanceData["BlackrockSpireUpper"].Quests.Alliance[4]
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[5] = {
     Title = "5. The Darkstone Tablet",
     Level = "60",
     Attain = "57",
@@ -3271,22 +3272,22 @@ kQuestInstanceData[9].Quests.Horde[5] = {
     Prequest = "Vivian Lagrave and the Darkstone Tablet",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Swiftfoot Treads",
             ID = "15861",
             Color = green,
-            Description = AQITEM_FEET .. AQITEM_LEATHER,
+            Description = "Feet, Leather",
         },
         {
             Name = "Blinkstrike Armguards",
             ID = "15860",
             Color = green,
-            Description = AQITEM_WRIST .. AQITEM_PLATE,
+            Description = "Wrist, Plate",
         },
     }
 }
-kQuestInstanceData[9].Quests.Horde[6] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[6] = {
     Title = "6. For The Horde!",
     Level = "60",
     Attain = "55",
@@ -3296,28 +3297,28 @@ kQuestInstanceData[9].Quests.Horde[6] = {
     Prequest = "Warlord's Command -> Eitrigg's Wisdom",
     Folgequest = "What the Wind Carries",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Mark of Tyranny",
             ID = "13966",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Eye of the Beast",
             ID = "13968",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Blackhand's Breadth",
             ID = "13965",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[9].Quests.Horde[7] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[7] = {
     Title = "7. Oculus Illusions",
     Level = "60",
     Attain = "55",
@@ -3327,10 +3328,10 @@ kQuestInstanceData[9].Quests.Horde[7] = {
     Prequest = "For The Horde! -> What the Wind Carries -> The Testament of Rexxar",
     Folgequest = "Emberstrife",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[9].Quests.Horde[8] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[8] = {
     Title = "8. Blood of the Black Dragon Champion",
     Level = "60",
     Attain = "55",
@@ -3340,16 +3341,16 @@ kQuestInstanceData[9].Quests.Horde[8] = {
     Prequest = "Emberstrife -> Ascension...",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Drakefire Amulet",
             ID = "16309",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[9].Quests.Horde[9] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[9] = {
     Title = "9. Blackhand's Command",
     Level = "60",
     Attain = "55",
@@ -3359,10 +3360,10 @@ kQuestInstanceData[9].Quests.Horde[9] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[9].Quests.Horde[10] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[10] = {
     Title = "10. Final Preparations",
     Level = "60",
     Attain = "58",
@@ -3372,10 +3373,10 @@ kQuestInstanceData[9].Quests.Horde[10] = {
     Prequest = "The Right Piece of Lord Valthalak's Amulet ("..yellow.."Upper Blackrock Spire"..white..")",
     Folgequest = "Mea Culpa, Lord Valthalak",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[9].Quests.Horde[11] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[11] = {
     Title = "11. Mea Culpa, Lord Valthalak",
     Level = "60",
     Attain = "58",
@@ -3385,22 +3386,22 @@ kQuestInstanceData[9].Quests.Horde[11] = {
     Prequest = "Final Preparations",
     Folgequest = "Return to Bodley",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Brazier of Invocation",
             ID = "22057",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Item",
         },
         {
             Name = "Brazier of Invocation: User's Manual",
             ID = "22344",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Item",
         },
     }
 }
-kQuestInstanceData[9].Quests.Horde[12] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[12] = {
     Title = "12. The Demon Forge",
     Level = "60",
     Attain = "55",
@@ -3410,28 +3411,28 @@ kQuestInstanceData[9].Quests.Horde[12] = {
     Prequest = "Lorax's Tale",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2 (x5)"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: 1 or 2 (x5) or 3",
         {
             Name = "Plans: Demon Forged Breastplate",
             ID = "12696",
             Color = blue,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
         {
             Name = "Elixir of Demonslaying",
             ID = "9224",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
         {
             Name = "Demon Kissed Sack",
             ID = "12849",
             Color = green,
-            Description = AQITEM_ITEM,
+            Description = "Container",
         },
     }
 }
-kQuestInstanceData[9].Quests.Horde[13] = {
+kQuestInstanceData["BlackrockSpireUpper"].Quests.Horde[13] = {
     Title = "13. The Upper Binding I",
     Level = "60",
     Attain = "55",
@@ -3441,18 +3442,18 @@ kQuestInstanceData[9].Quests.Horde[13] = {
     Prequest = "The Binding of Xanthar",
     Folgequest = "The Upper Binding II -> The Upper Binding III "..yellow.."[Dire Maul West]"..white.." -> The Upper Binding IV",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "The Upper Binding of Xanthar",
             ID = "61696",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Quest Item",
         },
     }
 }
 
 --------------- INST10 - Dire Maul (East) ---------------
-kQuestInstanceData[10] = {
+kQuestInstanceData["DireMaulEast"] = {
     Story = "Built twelve thousand years ago by a covert sect of night elf sorcerers, the ancient city of Eldre'Thalas was used to protect Queen Azshara's most prized arcane secrets. Though it was ravaged by the Great Sundering of the world, much of the wondrous city still stands as the imposing Dire Maul. The ruins' three distinct districts have been overrun by all manner of creatures - especially the spectral highborne, foul satyr and brutish ogres. Only the most daring party of adventurers can enter this broken city and face the ancient evils locked within its ancient vaults.",
     Caption = "Dire Maul (East)",
     QAA = "9 Quests",
@@ -3462,7 +3463,7 @@ kQuestInstanceData[10] = {
         Horde = {}
     }
 }
-kQuestInstanceData[10].Quests.Alliance[1] = {
+kQuestInstanceData["DireMaulEast"].Quests.Alliance[1] = {
     Title = "1. Pusillin and the Elder Azj'Tordin",
     Level = "58",
     Attain = "54",
@@ -3472,22 +3473,22 @@ kQuestInstanceData[10].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Spry Boots",
             ID = "18411",
             Color = green,
-            Description = AQITEM_FEET .. AQITEM_LEATHER,
+            Description = "Feet, Leather",
         },
         {
             Name = "Sprinter's Sword",
             ID = "18410",
             Color = green,
-            Description = AQITEM_TWOHAND .. AQITEM_SWORD,
+            Description = "Two-Hand, Sword",
         },
     }
 }
-kQuestInstanceData[10].Quests.Alliance[2] = {
+kQuestInstanceData["DireMaulEast"].Quests.Alliance[2] = {
     Title = "2. Lethtendris's Web",
     Level = "57",
     Attain = "54",
@@ -3497,16 +3498,16 @@ kQuestInstanceData[10].Quests.Alliance[2] = {
     Prequest = "Feathermoon Stronghold",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Lorespinner",
             ID = "18491",
             Color = blue,
-            Description = AQITEM_MAINHAND .. AQITEM_DAGGER,
+            Description = "Main Hand, Dagger",
         },
     }
 }
-kQuestInstanceData[10].Quests.Alliance[3] = {
+kQuestInstanceData["DireMaulEast"].Quests.Alliance[3] = {
     Title = "3. Shards of the Felvine",
     Level = "60",
     Attain = "56",
@@ -3516,22 +3517,22 @@ kQuestInstanceData[10].Quests.Alliance[3] = {
     Prequest = "A Reliquary of Purity",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Milli's Shield",
             ID = "18535",
             Color = blue,
-            Description = AQITEM_SHIELD,
+            Description = "Shield",
         },
         {
             Name = "Milli's Lexicon",
             ID = "18536",
             Color = blue,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
     }
 }
-kQuestInstanceData[10].Quests.Alliance[4] = {
+kQuestInstanceData["DireMaulEast"].Quests.Alliance[4] = {
     Title = "4. The Left Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -3541,10 +3542,10 @@ kQuestInstanceData[10].Quests.Alliance[4] = {
     Prequest = "Components of Importance",
     Folgequest = "I See Alcaz Island In Your Future...",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[10].Quests.Alliance[5] = {
+kQuestInstanceData["DireMaulEast"].Quests.Alliance[5] = {
     Title = "5. The Right Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -3554,10 +3555,10 @@ kQuestInstanceData[10].Quests.Alliance[5] = {
     Prequest = "More Components of Importance",
     Folgequest = "Final Preparations ("..yellow.."Upper Blackrock Spire"..white..")",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[10].Quests.Alliance[6] = {
+kQuestInstanceData["DireMaulEast"].Quests.Alliance[6] = {
     Title = "6. The Prison's Bindings",
     Level = "60",
     Attain = "60",
@@ -3567,10 +3568,10 @@ kQuestInstanceData[10].Quests.Alliance[6] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[10].Quests.Alliance[7] = {
+kQuestInstanceData["DireMaulEast"].Quests.Alliance[7] = {
     Title = "7. Arcane Refreshment",
     Level = "60",
     Attain = "60",
@@ -3580,16 +3581,16 @@ kQuestInstanceData[10].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "A Special Kind of Summons",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Tome of Refreshment Ritual",
             ID = "83002",
             Color = white,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
     }
 }
-kQuestInstanceData[10].Quests.Alliance[8] = {
+kQuestInstanceData["DireMaulEast"].Quests.Alliance[8] = {
     Title = "8. The Wildshaper",
     Level = "60",
     Attain = "55",
@@ -3599,22 +3600,22 @@ kQuestInstanceData[10].Quests.Alliance[8] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2",
+        Text = blue.."Rewards:",
         {
             Name = "Bright Dream Shard",
             ID = "61199",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Reagent",
         },
         {
             Name = "Talisman of the Dreamshaper",
             ID = "61703",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[10].Quests.Alliance[9] = {
+kQuestInstanceData["DireMaulEast"].Quests.Alliance[9] = {
     Title = "9. Wrapping Warpwood",
     Level = "61",
     Attain = "60",
@@ -3624,17 +3625,17 @@ kQuestInstanceData[10].Quests.Alliance[9] = {
     Prequest = "A Study of Magical Trees",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Glyph of the Arcane Treant",
             ID = "51070",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Glyph",
         },
     }
 }
-kQuestInstanceData[10].Quests.Horde[1] = kQuestInstanceData[10].Quests.Alliance[1]
-kQuestInstanceData[10].Quests.Horde[2] = {
+kQuestInstanceData["DireMaulEast"].Quests.Horde[1] = kQuestInstanceData["DireMaulEast"].Quests.Alliance[1]
+kQuestInstanceData["DireMaulEast"].Quests.Horde[2] = {
     Title = "2. Lethtendris's Web",
     Level = "57",
     Attain = "54",
@@ -3643,19 +3644,19 @@ kQuestInstanceData[10].Quests.Horde[2] = {
     Note = "Lethtendris is in Dire Maul "..yellow.."East"..white.." at "..yellow.."[3]"..white..". The prequest comes from Warcaller Gorlach in Orgrimmar. He roams the entire city.",
     Prequest = "Camp Mojache",
     Folgequest = "No",
-    Rewards = kQuestInstanceData[10].Quests.Alliance[2].Rewards
+    Rewards = kQuestInstanceData["DireMaulEast"].Quests.Alliance[2].Rewards
 }
-kQuestInstanceData[10].Quests.Horde[3] = kQuestInstanceData[10].Quests.Alliance[3]
-kQuestInstanceData[10].Quests.Horde[4] = kQuestInstanceData[10].Quests.Alliance[4]
-kQuestInstanceData[10].Quests.Horde[5] = kQuestInstanceData[10].Quests.Alliance[5]
-kQuestInstanceData[10].Quests.Horde[6] = kQuestInstanceData[10].Quests.Alliance[6]
-kQuestInstanceData[10].Quests.Horde[7] = kQuestInstanceData[10].Quests.Alliance[7]
-kQuestInstanceData[10].Quests.Horde[8] = kQuestInstanceData[10].Quests.Alliance[8]
-kQuestInstanceData[10].Quests.Horde[9] = kQuestInstanceData[10].Quests.Alliance[9]
+kQuestInstanceData["DireMaulEast"].Quests.Horde[3] = kQuestInstanceData["DireMaulEast"].Quests.Alliance[3]
+kQuestInstanceData["DireMaulEast"].Quests.Horde[4] = kQuestInstanceData["DireMaulEast"].Quests.Alliance[4]
+kQuestInstanceData["DireMaulEast"].Quests.Horde[5] = kQuestInstanceData["DireMaulEast"].Quests.Alliance[5]
+kQuestInstanceData["DireMaulEast"].Quests.Horde[6] = kQuestInstanceData["DireMaulEast"].Quests.Alliance[6]
+kQuestInstanceData["DireMaulEast"].Quests.Horde[7] = kQuestInstanceData["DireMaulEast"].Quests.Alliance[7]
+kQuestInstanceData["DireMaulEast"].Quests.Horde[8] = kQuestInstanceData["DireMaulEast"].Quests.Alliance[8]
+kQuestInstanceData["DireMaulEast"].Quests.Horde[9] = kQuestInstanceData["DireMaulEast"].Quests.Alliance[9]
 
 --------------- INST11 - Dire Maul (North) ---------------
-kQuestInstanceData[11] = {
-    Story = kQuestInstanceData[10].Story,
+kQuestInstanceData["DireMaulNorth"] = {
+    Story = kQuestInstanceData["DireMaulEast"].Story,
     Caption = "Dire Maul (North)",
     QAA = "4 Quests",
     QAH = "4 Quests",
@@ -3664,7 +3665,7 @@ kQuestInstanceData[11] = {
         Horde = {}
     }
 }
-kQuestInstanceData[11].Quests.Alliance[1] = {
+kQuestInstanceData["DireMaulNorth"].Quests.Alliance[1] = {
     Title = "1. A Broken Trap",
     Level = "60",
     Attain = "56",
@@ -3674,10 +3675,10 @@ kQuestInstanceData[11].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[11].Quests.Alliance[2] = {
+kQuestInstanceData["DireMaulNorth"].Quests.Alliance[2] = {
     Title = "2. The Gordok Ogre Suit",
     Level = "60",
     Attain = "56",
@@ -3687,16 +3688,16 @@ kQuestInstanceData[11].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Gordok Ogre Suit",
             ID = "18258",
             Color = green,
-            Description = AQITEM_ITEM,
+            Description = "Disguise",
         },
     }
 }
-kQuestInstanceData[11].Quests.Alliance[3] = {
+kQuestInstanceData["DireMaulNorth"].Quests.Alliance[3] = {
     Title = "3. Free Knot!",
     Level = "60",
     Attain = "57",
@@ -3706,10 +3707,10 @@ kQuestInstanceData[11].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[11].Quests.Alliance[4] = {
+kQuestInstanceData["DireMaulNorth"].Quests.Alliance[4] = {
     Title = "4. Unfinished Gordok Business",
     Level = "60",
     Attain = "56",
@@ -3719,41 +3720,41 @@ kQuestInstanceData[11].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Gordok's Handwraps",
             ID = "18369",
             Color = blue,
-            Description = AQITEM_HANDS .. AQITEM_CLOTH,
+            Description = "Hands, Cloth",
         },
         {
             Name = "Gordok's Gloves",
             ID = "18368",
             Color = blue,
-            Description = AQITEM_HANDS ..AQITEM_LEATHER,
+            Description = "Hands, Leather",
         },
         {
             Name = "Gordok's Gauntlets",
             ID = "18367",
             Color = blue,
-            Description = AQITEM_HANDS .. AQITEM_MAIL,
+            Description = "Hands, Mail",
         },
         {
             Name = "Gordok's Handguards",
             ID = "18366",
             Color = blue,
-            Description = AQITEM_HANDS .. AQITEM_PLATE,
+            Description = "Hands, Plate",
         },
     }
 }
-kQuestInstanceData[11].Quests.Horde[1] = kQuestInstanceData[11].Quests.Alliance[1]
-kQuestInstanceData[11].Quests.Horde[2] = kQuestInstanceData[11].Quests.Alliance[2]
-kQuestInstanceData[11].Quests.Horde[3] = kQuestInstanceData[11].Quests.Alliance[3]
-kQuestInstanceData[11].Quests.Horde[4] = kQuestInstanceData[11].Quests.Alliance[4]
+kQuestInstanceData["DireMaulNorth"].Quests.Horde[1] = kQuestInstanceData["DireMaulNorth"].Quests.Alliance[1]
+kQuestInstanceData["DireMaulNorth"].Quests.Horde[2] = kQuestInstanceData["DireMaulNorth"].Quests.Alliance[2]
+kQuestInstanceData["DireMaulNorth"].Quests.Horde[3] = kQuestInstanceData["DireMaulNorth"].Quests.Alliance[3]
+kQuestInstanceData["DireMaulNorth"].Quests.Horde[4] = kQuestInstanceData["DireMaulNorth"].Quests.Alliance[4]
 
 --------------- INST12 - Dire Maul (West) ---------------
-kQuestInstanceData[12] = {
-    Story = kQuestInstanceData[10].Story,
+kQuestInstanceData["DireMaulWest"] = {
+    Story = kQuestInstanceData["DireMaulEast"].Story,
     Caption = "Dire Maul (West)",
     QAA = "21 Quests",
     QAH = "21 Quests",
@@ -3762,7 +3763,7 @@ kQuestInstanceData[12] = {
         Horde = {}
     }
 }
-kQuestInstanceData[12].Quests.Alliance[1] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[1] = {
     Title = "1. Elven Legends",
     Level = "60",
     Attain = "54",
@@ -3772,10 +3773,10 @@ kQuestInstanceData[12].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[12].Quests.Alliance[2] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[2] = {
     Title = "2. The Madness Within",
     Level = "60",
     Attain = "56",
@@ -3785,10 +3786,10 @@ kQuestInstanceData[12].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "The Treasure of the Shen'dralar",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[12].Quests.Alliance[3] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[3] = {
     Title = "3. The Treasure of the Shen'dralar",
     Level = "60",
     Attain = "56",
@@ -3798,28 +3799,28 @@ kQuestInstanceData[12].Quests.Alliance[3] = {
     Prequest = "The Madness Within",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Sedge Boots",
             ID = "18424",
             Color = blue,
-            Description = AQITEM_FEET .. AQITEM_LEATHER,
+            Description = "Feet, Leather",
         },
         {
             Name = "Backwood Helm",
             ID = "18421",
             Color = blue,
-            Description = AQITEM_HEAD ..AQITEM_MAIL,
+            Description = "Head, Mail",
         },
         {
             Name = "Bonecrusher",
             ID = "18420",
             Color = blue,
-            Description = AQITEM_TWOHAND .. AQITEM_MACE,
+            Description = "Two-Hand, Mace",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[4] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[4] = {
     Title = "4. Dreadsteed of Xoroth",
     Level = "60",
     Attain = "60",
@@ -3829,10 +3830,10 @@ kQuestInstanceData[12].Quests.Alliance[4] = {
     Prequest = "Imp Delivery ("..yellow.."Scholomance"..white..")", -- 7629",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[12].Quests.Alliance[5] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[5] = {
     Title = "5. The Emerald Dream...",
     Level = "60",
     Attain = "54",
@@ -3842,16 +3843,16 @@ kQuestInstanceData[12].Quests.Alliance[5] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Royal Seal of Eldre'Thalas",
             ID = "18470",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[6] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[6] = {
     Title = "6. The Greatest Race of Hunters",
     Level = "60",
     Attain = "54",
@@ -3861,16 +3862,16 @@ kQuestInstanceData[12].Quests.Alliance[6] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Royal Seal of Eldre'Thalas",
             ID = "18473",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[7] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[7] = {
     Title = "7. The Arcanist's Cookbook",
     Level = "60",
     Attain = "54",
@@ -3880,16 +3881,16 @@ kQuestInstanceData[12].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Royal Seal of Eldre'Thalas",
             ID = "18468",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[8] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[8] = {
     Title = "8. The Light and How To Swing It",
     Level = "60",
     Attain = "54",
@@ -3899,16 +3900,16 @@ kQuestInstanceData[12].Quests.Alliance[8] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Royal Seal of Eldre'Thalas",
             ID = "18472",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[9] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[9] = {
     Title = "9. Holy Bologna: What the Light Won't Tell You",
     Level = "60",
     Attain = "56",
@@ -3918,16 +3919,16 @@ kQuestInstanceData[12].Quests.Alliance[9] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Royal Seal of Eldre'Thalas",
             ID = "18469",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[10] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[10] = {
     Title = "10. Garona: A Study on Stealth and Treachery",
     Level = "60",
     Attain = "54",
@@ -3937,16 +3938,16 @@ kQuestInstanceData[12].Quests.Alliance[10] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Royal Seal of Eldre'Thalas",
             ID = "18465",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[11] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[11] = {
     Title = "11. Frost Shock and You",
     Level = "60",
     Attain = "54",
@@ -3956,16 +3957,16 @@ kQuestInstanceData[12].Quests.Alliance[11] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Royal Seal of Eldre'Thalas",
             ID = "18471",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[12] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[12] = {
     Title = "12. Harnessing Shadows",
     Level = "60",
     Attain = "54",
@@ -3975,16 +3976,16 @@ kQuestInstanceData[12].Quests.Alliance[12] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Royal Seal of Eldre'Thalas",
             ID = "18467",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[13] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[13] = {
     Title = "13. Codex of Defense",
     Level = "60",
     Attain = "54",
@@ -3994,16 +3995,16 @@ kQuestInstanceData[12].Quests.Alliance[13] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Royal Seal of Eldre'Thalas",
             ID = "18466",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[14] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[14] = {
     Title = "14. Libram of Focus",
     Level = "60",
     Attain = "58",
@@ -4013,16 +4014,16 @@ kQuestInstanceData[12].Quests.Alliance[14] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Arcanum of Focus",
             ID = "18330",
             Color = green,
-            Description = AQITEM_ENCHANT,
+            Description = "Enchant",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[15] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[15] = {
     Title = "15. Libram of Protection",
     Level = "60",
     Attain = "58",
@@ -4032,16 +4033,16 @@ kQuestInstanceData[12].Quests.Alliance[15] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Arcanum of Protection",
             ID = "18331",
             Color = green,
-            Description = AQITEM_ENCHANT,
+            Description = "Enchant",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[16] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[16] = {
     Title = "16. Libram of Rapidity",
     Level = "60",
     Attain = "58",
@@ -4051,16 +4052,16 @@ kQuestInstanceData[12].Quests.Alliance[16] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Arcanum of Rapidity",
             ID = "18329",
             Color = green,
-            Description = AQITEM_ENCHANT,
+            Description = "Enchant",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[17] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[17] = {
     Title = "17. Foror's Compendium",
     Level = "60",
     Attain = "60",
@@ -4070,10 +4071,10 @@ kQuestInstanceData[12].Quests.Alliance[17] = {
     Prequest = "No",
     Folgequest = "The Forging of Quel'Serrar",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[12].Quests.Alliance[18] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[18] = {
     Title = "18. Keeping Secrets",
     Level = "58",
     Attain = "45",
@@ -4083,22 +4084,22 @@ kQuestInstanceData[12].Quests.Alliance[18] = {
     Prequest = "Restoring the Ley Lines",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Azshara Keeper's Staff",
             ID = "60333",
             Color = blue,
-            Description = AQITEM_TWOHAND .. AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Ring of Eldara",
             ID = "60334",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[19] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[19] = {
     Title = "19. The Upper Binding III",
     Level = "60",
     Attain = "55",
@@ -4108,16 +4109,16 @@ kQuestInstanceData[12].Quests.Alliance[19] = {
     Prequest = "The Binding of Xanthar -> The Upper Binding I "..yellow.."[Upper Blackrock Spire]"..white.." -> The Upper Binding II", --41015, 41011, 41012",
     Folgequest = "The Upper Binding IV",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "The Upper Binding of Xanthar",
             ID = "61696",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Quest Item",
         },
     }
 }
-kQuestInstanceData[12].Quests.Alliance[20] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[20] = {
     Title = "20. The Key to Karazhan VIII",
     Level = "60",
     Attain = "58",
@@ -4127,10 +4128,10 @@ kQuestInstanceData[12].Quests.Alliance[20] = {
     Prequest = "The Key to Karazhan I - VI -> The Key to Karazhan VII "..yellow.."[Stratholme]"..white.." ", --40817",
     Folgequest = "The Key to Karazhan IX (BWL) -> The Key to Karazhan X",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[12].Quests.Alliance[21] = {
+kQuestInstanceData["DireMaulWest"].Quests.Alliance[21] = {
     Title = "21. Into the Dream III",
     Level = "60",
     Attain = "58",
@@ -4140,16 +4141,16 @@ kQuestInstanceData[12].Quests.Alliance[21] = {
     Prequest = "Into the Dream I -> Into the Dream II",
     Folgequest = "Into the Dream IV - VI",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Gemstone of Ysera",
             ID = "50545",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[12].Quests.Horde[1] = {
+kQuestInstanceData["DireMaulWest"].Quests.Horde[1] = {
     Title = "1. Elven Legends",
     Level = "60",
     Attain = "54",
@@ -4159,32 +4160,32 @@ kQuestInstanceData[12].Quests.Horde[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[12].Quests.Horde[2] = kQuestInstanceData[12].Quests.Alliance[2]
-kQuestInstanceData[12].Quests.Horde[3] = kQuestInstanceData[12].Quests.Alliance[3]
-kQuestInstanceData[12].Quests.Horde[4] = kQuestInstanceData[12].Quests.Alliance[4]
-kQuestInstanceData[12].Quests.Horde[5] = kQuestInstanceData[12].Quests.Alliance[5]
-kQuestInstanceData[12].Quests.Horde[6] = kQuestInstanceData[12].Quests.Alliance[6]
-kQuestInstanceData[12].Quests.Horde[7] = kQuestInstanceData[12].Quests.Alliance[7]
-kQuestInstanceData[12].Quests.Horde[8] = kQuestInstanceData[12].Quests.Alliance[8]
-kQuestInstanceData[12].Quests.Horde[9] = kQuestInstanceData[12].Quests.Alliance[9]
-kQuestInstanceData[12].Quests.Horde[10] = kQuestInstanceData[12].Quests.Alliance[10]
-kQuestInstanceData[12].Quests.Horde[11] = kQuestInstanceData[12].Quests.Alliance[11]
-kQuestInstanceData[12].Quests.Horde[12] = kQuestInstanceData[12].Quests.Alliance[12]
-kQuestInstanceData[12].Quests.Horde[13] = kQuestInstanceData[12].Quests.Alliance[13]
-kQuestInstanceData[12].Quests.Horde[14] = kQuestInstanceData[12].Quests.Alliance[14]
-kQuestInstanceData[12].Quests.Horde[15] = kQuestInstanceData[12].Quests.Alliance[15]
-kQuestInstanceData[12].Quests.Horde[16] = kQuestInstanceData[12].Quests.Alliance[16]
-kQuestInstanceData[12].Quests.Horde[17] = kQuestInstanceData[12].Quests.Alliance[17]
-kQuestInstanceData[12].Quests.Horde[18] = kQuestInstanceData[12].Quests.Alliance[18]
-kQuestInstanceData[12].Quests.Horde[19] = kQuestInstanceData[12].Quests.Alliance[19]
-kQuestInstanceData[12].Quests.Horde[20] = kQuestInstanceData[12].Quests.Alliance[20]
-kQuestInstanceData[12].Quests.Horde[21] = kQuestInstanceData[12].Quests.Alliance[21]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[2] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[2]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[3] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[3]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[4] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[4]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[5] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[5]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[6] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[6]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[7] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[7]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[8] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[8]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[9] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[9]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[10] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[10]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[11] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[11]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[12] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[12]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[13] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[13]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[14] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[14]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[15] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[15]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[16] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[16]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[17] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[17]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[18] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[18]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[19] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[19]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[20] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[20]
+kQuestInstanceData["DireMaulWest"].Quests.Horde[21] = kQuestInstanceData["DireMaulWest"].Quests.Alliance[21]
 
 --------------- INST13 - Maraudon ---------------
-kQuestInstanceData[13] = {
+kQuestInstanceData["Maraudon"] = {
     Story = "Protected by the fierce Maraudine centaur, Maraudon is one of the most sacred sites within Desolace. The great temple/cavern is the burial place of Zaetar, one of two immortal sons born to the demigod, Cenarius. Legend holds that Zaetar and the earth elemental princess, Theradras, sired the misbegotten centaur race. It is said that upon their emergence, the barbaric centaur turned on their father and killed him. Some believe that Theradras, in her grief, trapped Zaetar's spirit within the winding cavern - used its energies for some malign purpose. The subterranean tunnels are populated by the vicious, long-dead ghosts of the Centaur Khans, as well as Theradras' own raging, elemental minions.",
     Caption = "Maraudon",
     QAA = "11 Quests",
@@ -4194,7 +4195,7 @@ kQuestInstanceData[13] = {
         Horde = {}
     }
 }
-kQuestInstanceData[13].Quests.Alliance[1] = {
+kQuestInstanceData["Maraudon"].Quests.Alliance[1] = {
     Title = "1. Shadowshard Fragments",
     Level = "42",
     Attain = "38",
@@ -4204,22 +4205,22 @@ kQuestInstanceData[13].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Zealous Shadowshard Pendant",
             ID = "17772",
             Color = green,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Prodigious Shadowshard Pendant",
             ID = "17773",
             Color = green,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[13].Quests.Alliance[2] = {
+kQuestInstanceData["Maraudon"].Quests.Alliance[2] = {
     Title = "2. Vyletongue Corruption",
     Level = "47",
     Attain = "41",
@@ -4229,28 +4230,28 @@ kQuestInstanceData[13].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Woodseed Hoop",
             ID = "17768",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Sagebrush Girdle",
             ID = "17778",
             Color = green,
-            Description = AQITEM_WAIST..AQITEM_LEATHER,
+            Description = "Waist, Leather",
         },
         {
             Name = "Branchclaw Gauntlets",
             ID = "17770",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_PLATE,
+            Description = "Hands, Plate",
         },
     }
 }
-kQuestInstanceData[13].Quests.Alliance[3] = {
+kQuestInstanceData["Maraudon"].Quests.Alliance[3] = {
     Title = "3. Twisted Evils",
     Level = "47",
     Attain = "41",
@@ -4260,34 +4261,34 @@ kQuestInstanceData[13].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Acumen Robes",
             ID = "17775",
             Color = green,
-            Description = AQITEM_CHEST..AQITEM_CLOTH,
+            Description = "Chest, Cloth",
         },
         {
             Name = "Sprightring Helm",
             ID = "17776",
             Color = green,
-            Description = AQITEM_HEAD..AQITEM_LEATHER,
+            Description = "Head, Leather",
         },
         {
             Name = "Relentless Chain",
             ID = "17777",
             Color = green,
-            Description = AQITEM_CHEST..AQITEM_MAIL,
+            Description = "Chest, Mail",
         },
         {
             Name = "Hulkstone Pauldrons",
             ID = "17779",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_PLATE,
+            Description = "Shoulder, Plate",
         },
     }
 }
-kQuestInstanceData[13].Quests.Alliance[4] = {
+kQuestInstanceData["Maraudon"].Quests.Alliance[4] = {
     Title = "4. The Pariah's Instructions",
     Level = "48",
     Attain = "39",
@@ -4297,17 +4298,17 @@ kQuestInstanceData[13].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Mark of the Chosen",
             ID = "17774",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     },
     page = {2, "You find the Centaur Pariah in the south of desolace. He walks between "..yellow.."44,85"..white.." and "..yellow.."50,87"..white..".\nFirst, you have to kill the The Nameless Prophet ("..yellow.."[A] on Entrance Map"..white.."). You find him before you enter the instance, before the point where you can choose whether you take the purple or the orange entrance. After killing him you must kill the 5 Kahns. You find the first if you choose the way in the middle ("..yellow.."[1] on Entrance Map"..white.."). The second is in the purple part of Maraudon but before you enter the instance ("..yellow.."[2] on Entrance Map"..white.."). The third is in the orange part before you enter the instance ("..yellow.."[3] on Entrance Map"..white.."). The fourth is near "..yellow.."[4]"..white.." and the fifth is near  "..yellow.."[1]"..white..".", },
 }
-kQuestInstanceData[13].Quests.Alliance[5] = {
+kQuestInstanceData["Maraudon"].Quests.Alliance[5] = {
     Title = "5. Legends of Maraudon",
     Level = "49",
     Attain = "41",
@@ -4317,10 +4318,10 @@ kQuestInstanceData[13].Quests.Alliance[5] = {
     Prequest = "No",
     Folgequest = "The Scepter of Celebras",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[13].Quests.Alliance[6] = {
+kQuestInstanceData["Maraudon"].Quests.Alliance[6] = {
     Title = "6. The Scepter of Celebras",
     Level = "49",
     Attain = "41",
@@ -4330,16 +4331,16 @@ kQuestInstanceData[13].Quests.Alliance[6] = {
     Prequest = "Legends of Maraudon",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Scepter of Celebras",
             ID = "17191",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Item",
         },
     }
 }
-kQuestInstanceData[13].Quests.Alliance[7] = {
+kQuestInstanceData["Maraudon"].Quests.Alliance[7] = {
     Title = "7. Corruption of Earth and Seed",
     Level = "51",
     Attain = "45",
@@ -4349,28 +4350,28 @@ kQuestInstanceData[13].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "Seed of Life",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Thrash Blade",
             ID = "17705",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
         {
             Name = "Resurgence Rod",
             ID = "17743",
             Color = blue,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Verdant Keeper's Aim",
             ID = "17753",
             Color = blue,
-            Description = AQITEM_BOW,
+            Description = "Bow",
         },
     }
 }
-kQuestInstanceData[13].Quests.Alliance[8] = {
+kQuestInstanceData["Maraudon"].Quests.Alliance[8] = {
     Title = "8. Seed of Life",
     Level = "51",
     Attain = "45",
@@ -4380,10 +4381,10 @@ kQuestInstanceData[13].Quests.Alliance[8] = {
     Prequest = "Corruption of Earth and Seed",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[13].Quests.Alliance[9] = {
+kQuestInstanceData["Maraudon"].Quests.Alliance[9] = {
     Title = "9. Harness of Chimaeran",
     Level = "48",
     Attain = "38",
@@ -4393,16 +4394,16 @@ kQuestInstanceData[13].Quests.Alliance[9] = {
     Prequest = "Cleansing the Roost -> Feeding the Younglings",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Chimaera's Eye",
             ID = "61517",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[13].Quests.Alliance[10] = {
+kQuestInstanceData["Maraudon"].Quests.Alliance[10] = {
     Title = "10. Why Not Both?",
     Level = "50",
     Attain = "40",
@@ -4412,16 +4413,16 @@ kQuestInstanceData[13].Quests.Alliance[10] = {
     Prequest = "Proving A Point -> I've Read It In A Book Once",
     Folgequest = "Thunderforge Mastery",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Thunderforge Lance",
             ID = "40080",
             Color = blue,
-            Description = AQITEM_POLEARM,
+            Description = "Polearm",
         },
     }
 }
-kQuestInstanceData[13].Quests.Alliance[11] = {
+kQuestInstanceData["Maraudon"].Quests.Alliance[11] = {
     Title = "11. Preparation",
     Level = "48",
     Attain = "34",
@@ -4431,10 +4432,10 @@ kQuestInstanceData[13].Quests.Alliance[11] = {
     Prequest = "Mastering Gemology -> The Lifeblood -> Demonstration",
     Folgequest = "The Final Cut",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[13].Quests.Horde[1] = {
+kQuestInstanceData["Maraudon"].Quests.Horde[1] = {
     Title = "1. Shadowshard Fragments",
     Level = "42",
     Attain = "38",
@@ -4443,9 +4444,9 @@ kQuestInstanceData[13].Quests.Horde[1] = {
     Note = "You get the Shadowshard Fragments from 'Shadowshard Rumbler' or 'Shadowshard Smasher' outside the instance on the Purple side.",
     Prequest = "No",
     Folgequest = "No",
-    Rewards = kQuestInstanceData[13].Quests.Alliance[1].Rewards
+    Rewards = kQuestInstanceData["Maraudon"].Quests.Alliance[1].Rewards
 }
-kQuestInstanceData[13].Quests.Horde[2] = {
+kQuestInstanceData["Maraudon"].Quests.Horde[2] = {
     Title = "2. Vyletongue Corruption",
     Level = "47",
     Attain = "41",
@@ -4454,13 +4455,13 @@ kQuestInstanceData[13].Quests.Horde[2] = {
     Note = "You can fill the Vial at any pool outside the instance on the Orange side. The plants are in the orange and purple areas inside the instance.",
     Prequest = "No",
     Folgequest = "No",
-    Rewards = kQuestInstanceData[13].Quests.Alliance[2].Rewards
+    Rewards = kQuestInstanceData["Maraudon"].Quests.Alliance[2].Rewards
 }
-kQuestInstanceData[13].Quests.Horde[3] = kQuestInstanceData[13].Quests.Alliance[3]
-kQuestInstanceData[13].Quests.Horde[4] = kQuestInstanceData[13].Quests.Alliance[4]
-kQuestInstanceData[13].Quests.Horde[5] = kQuestInstanceData[13].Quests.Alliance[5]
-kQuestInstanceData[13].Quests.Horde[6] = kQuestInstanceData[13].Quests.Alliance[6]
-kQuestInstanceData[13].Quests.Horde[7] = {
+kQuestInstanceData["Maraudon"].Quests.Horde[3] = kQuestInstanceData["Maraudon"].Quests.Alliance[3]
+kQuestInstanceData["Maraudon"].Quests.Horde[4] = kQuestInstanceData["Maraudon"].Quests.Alliance[4]
+kQuestInstanceData["Maraudon"].Quests.Horde[5] = kQuestInstanceData["Maraudon"].Quests.Alliance[5]
+kQuestInstanceData["Maraudon"].Quests.Horde[6] = kQuestInstanceData["Maraudon"].Quests.Alliance[6]
+kQuestInstanceData["Maraudon"].Quests.Horde[7] = {
     Title = "7. Corruption of Earth and Seed",
     Level = "51",
     Attain = "45",
@@ -4469,10 +4470,10 @@ kQuestInstanceData[13].Quests.Horde[7] = {
     Note = "You find Princess Theradras at "..yellow.."[11]"..white..".",
     Prequest = "No",
     Folgequest = "Seed of Life",
-    Rewards = kQuestInstanceData[13].Quests.Alliance[7].Rewards
+    Rewards = kQuestInstanceData["Maraudon"].Quests.Alliance[7].Rewards
 }
-kQuestInstanceData[13].Quests.Horde[8] = kQuestInstanceData[13].Quests.Alliance[8]
-kQuestInstanceData[13].Quests.Horde[9] = {
+kQuestInstanceData["Maraudon"].Quests.Horde[8] = kQuestInstanceData["Maraudon"].Quests.Alliance[8]
+kQuestInstanceData["Maraudon"].Quests.Horde[9] = {
     Title = "11. Preparation",
     Level = "48",
     Attain = "34",
@@ -4482,12 +4483,12 @@ kQuestInstanceData[13].Quests.Horde[9] = {
     Prequest = "Mastering Gemology -> The Lifeblood -> Demonstration",
     Folgequest = "The Final Cut",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
 
 --------------- INST14 - Molten Core ---------------
-kQuestInstanceData[14] = {
+kQuestInstanceData["MoltenCore"] = {
     Story = "The Molten Core lies at the very bottom of Blackrock Depths. It is the heart of Blackrock Mountain and the exact spot where, long ago in a desperate bid to turn the tide of the dwarven civil war, Emperor Thaurissan summoned the elemental Firelord, Ragnaros, into the world. Though the fire lord is incapable of straying far from the blazing Core, it is believed that his elemental minions command the Dark Iron dwarves, who are in the midst of creating armies out of living stone. The burning lake where Ragnaros lies sleeping acts as a rift connecting to the plane of fire, allowing the malicious elementals to pass through. Chief among Ragnaros' agents is Majordomo Executus - for this cunning elemental is the only one capable of calling the Firelord from his slumber.",
     Caption = "Molten Core",
     QAA = "7 Quests",
@@ -4497,7 +4498,7 @@ kQuestInstanceData[14] = {
         Horde = {}
     }
 }
-kQuestInstanceData[14].Quests.Alliance[1] = {
+kQuestInstanceData["MoltenCore"].Quests.Alliance[1] = {
     Title = "1. The Molten Core",
     Level = "60",
     Attain = "57",
@@ -4507,10 +4508,10 @@ kQuestInstanceData[14].Quests.Alliance[1] = {
     Prequest = "Eye of the Emberseer ("..yellow.."Upper Blackrock Spire"..white..")", -- 6821",
     Folgequest = "Agent of Hydraxis",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[14].Quests.Alliance[2] = {
+kQuestInstanceData["MoltenCore"].Quests.Alliance[2] = {
     Title = "2. Hands of the Enemy",
     Level = "60",
     Attain = "60",
@@ -4520,10 +4521,10 @@ kQuestInstanceData[14].Quests.Alliance[2] = {
     Prequest = "Agent of Hydraxis",
     Folgequest = "A Hero's Reward",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[14].Quests.Alliance[3] = {
+kQuestInstanceData["MoltenCore"].Quests.Alliance[3] = {
     Title = "3. Thunderaan the Windseeker",
     Level = "60",
     Attain = "60",
@@ -4533,10 +4534,10 @@ kQuestInstanceData[14].Quests.Alliance[3] = {
     Prequest = "Examine the Vessel",
     Folgequest = "Rise, Thunderfury!",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[14].Quests.Alliance[4] = {
+kQuestInstanceData["MoltenCore"].Quests.Alliance[4] = {
     Title = "4. A Binding Contract",
     Level = "60",
     Attain = "60",
@@ -4546,16 +4547,16 @@ kQuestInstanceData[14].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Plans: Sulfuron Hammer",
             ID = "18592",
             Color = purple,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
     }
 }
-kQuestInstanceData[14].Quests.Alliance[5] = {
+kQuestInstanceData["MoltenCore"].Quests.Alliance[5] = {
     Title = "5. The Ancient Leaf",
     Level = "60",
     Attain = "60",
@@ -4565,10 +4566,10 @@ kQuestInstanceData[14].Quests.Alliance[5] = {
     Prequest = "No",
     Folgequest = "Ancient Sinew Wrapped Lamina ("..yellow.."Azuregos"..white..")", -- 7634",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[14].Quests.Alliance[6] = {
+kQuestInstanceData["MoltenCore"].Quests.Alliance[6] = {
     Title = "6. The Only Prescription",
     Level = "60",
     Attain = "60",
@@ -4578,16 +4579,16 @@ kQuestInstanceData[14].Quests.Alliance[6] = {
     Prequest = "Decoy!",
     Folgequest = "The Good News and The Bad News (Must complete Stewvul, Ex-B.F.F. and Never Ask Me About My Business quest chains)",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Gnomish Turban of Psychic Might",
             ID = "21517",
             Color = purple,
-            Description = AQITEM_HEAD..AQITEM_CLOTH,
+            Description = "Head, Cloth",
         },
     }
 }
-kQuestInstanceData[14].Quests.Alliance[7] = {
+kQuestInstanceData["MoltenCore"].Quests.Alliance[7] = {
     Title = "7. Scrying Goggles? No Problem!",
     Level = "60",
     Attain = "60",
@@ -4597,25 +4598,25 @@ kQuestInstanceData[14].Quests.Alliance[7] = {
     Prequest = "Stewvul, Ex-B.F.F.",
     Folgequest = "The Good News and The Bad News (Must complete Draconic for Dummies and Never Ask Me About My Business quest chains)",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1(x3)",
+        Text = blue.."Reward:(x3)",
         {
             Name = "Major Rejuvenation Potion",
             ID = "18253",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
     }
 }
-kQuestInstanceData[14].Quests.Horde[1] = kQuestInstanceData[14].Quests.Alliance[1]
-kQuestInstanceData[14].Quests.Horde[2] = kQuestInstanceData[14].Quests.Alliance[2]
-kQuestInstanceData[14].Quests.Horde[3] = kQuestInstanceData[14].Quests.Alliance[3]
-kQuestInstanceData[14].Quests.Horde[4] = kQuestInstanceData[14].Quests.Alliance[4]
-kQuestInstanceData[14].Quests.Horde[5] = kQuestInstanceData[14].Quests.Alliance[5]
-kQuestInstanceData[14].Quests.Horde[6] = kQuestInstanceData[14].Quests.Alliance[6]
-kQuestInstanceData[14].Quests.Horde[7] = kQuestInstanceData[14].Quests.Alliance[7]
+kQuestInstanceData["MoltenCore"].Quests.Horde[1] = kQuestInstanceData["MoltenCore"].Quests.Alliance[1]
+kQuestInstanceData["MoltenCore"].Quests.Horde[2] = kQuestInstanceData["MoltenCore"].Quests.Alliance[2]
+kQuestInstanceData["MoltenCore"].Quests.Horde[3] = kQuestInstanceData["MoltenCore"].Quests.Alliance[3]
+kQuestInstanceData["MoltenCore"].Quests.Horde[4] = kQuestInstanceData["MoltenCore"].Quests.Alliance[4]
+kQuestInstanceData["MoltenCore"].Quests.Horde[5] = kQuestInstanceData["MoltenCore"].Quests.Alliance[5]
+kQuestInstanceData["MoltenCore"].Quests.Horde[6] = kQuestInstanceData["MoltenCore"].Quests.Alliance[6]
+kQuestInstanceData["MoltenCore"].Quests.Horde[7] = kQuestInstanceData["MoltenCore"].Quests.Alliance[7]
 
 --------------- INST15 - Naxxramas ---------------
-kQuestInstanceData[15] = {
+kQuestInstanceData["Naxxramas"] = {
     Story = "Floating above the Plaguelands, the necropolis known as Naxxramas serves as the seat of one of the Lich King's most powerful officers, the dreaded lich Kel'Thuzad. Horrors of the past and new terrors yet to be unleashed are gathering inside the necropolis as the Lich King's servants prepare their assault. Soon the Scourge will march again...",
     Caption = "Naxxramas",
     QAA = "5 Quests",
@@ -4625,7 +4626,7 @@ kQuestInstanceData[15] = {
         Horde = {}
     }
 }
-kQuestInstanceData[15].Quests.Alliance[1] = {
+kQuestInstanceData["Naxxramas"].Quests.Alliance[1] = {
     Title = "1. The Fall of Kel'Thuzad",
     Level = "60",
     Attain = "60",
@@ -4635,22 +4636,22 @@ kQuestInstanceData[15].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Mark of the Champion",
             ID = "23206",
             Color = purple,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Mark of the Champion",
             ID = "23207",
             Color = purple,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[15].Quests.Alliance[2] = {
+kQuestInstanceData["Naxxramas"].Quests.Alliance[2] = {
     Title = "2. The Only Song I Know...",
     Level = "60",
     Attain = "60",
@@ -4660,34 +4661,34 @@ kQuestInstanceData[15].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Glacial Leggings",
             ID = "22700",
             Color = purple,
-            Description = AQITEM_LEGS..AQITEM_CLOTH,
+            Description = "Legs, Cloth",
         },
         {
             Name = "Icebane Leggings",
             ID = "22699",
             Color = purple,
-            Description = AQITEM_LEGS..AQITEM_PLATE,
+            Description = "Legs, Plate",
         },
         {
             Name = "Icy Scale Leggings",
             ID = "22702",
             Color = purple,
-            Description = AQITEM_LEGS..AQITEM_MAIL,
+            Description = "Legs, Mail",
         },
         {
             Name = "Polar Leggings",
             ID = "22701",
             Color = purple,
-            Description = AQITEM_LEGS..AQITEM_LEATHER,
+            Description = "Legs, Leather",
         },
     }
 }
-kQuestInstanceData[15].Quests.Alliance[3] = {
+kQuestInstanceData["Naxxramas"].Quests.Alliance[3] = {
     Title = "3. Echoes of War",
     Level = "60",
     Attain = "60",
@@ -4697,10 +4698,10 @@ kQuestInstanceData[15].Quests.Alliance[3] = {
     Prequest = "The Dread Citadel - Naxxramas",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[15].Quests.Alliance[4] = {
+kQuestInstanceData["Naxxramas"].Quests.Alliance[4] = {
     Title = "4. The Fate of Ramaladni",
     Level = "60",
     Attain = "60",
@@ -4710,10 +4711,10 @@ kQuestInstanceData[15].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "Ramaladni's Icy Grasp",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[15].Quests.Alliance[5] = {
+kQuestInstanceData["Naxxramas"].Quests.Alliance[5] = {
     Title = "5. Ramaladni's Icy Grasp",
     Level = "60",
     Attain = "60",
@@ -4723,23 +4724,23 @@ kQuestInstanceData[15].Quests.Alliance[5] = {
     Prequest = "The Fate of Ramaladni",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Ramaladni's Icy Grasp",
             ID = "22707",
             Color = purple,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[15].Quests.Horde[1] = kQuestInstanceData[15].Quests.Alliance[1]
-kQuestInstanceData[15].Quests.Horde[2] = kQuestInstanceData[15].Quests.Alliance[2]
-kQuestInstanceData[15].Quests.Horde[3] = kQuestInstanceData[15].Quests.Alliance[3]
-kQuestInstanceData[15].Quests.Horde[4] = kQuestInstanceData[15].Quests.Alliance[4]
-kQuestInstanceData[15].Quests.Horde[5] = kQuestInstanceData[15].Quests.Alliance[5]
+kQuestInstanceData["Naxxramas"].Quests.Horde[1] = kQuestInstanceData["Naxxramas"].Quests.Alliance[1]
+kQuestInstanceData["Naxxramas"].Quests.Horde[2] = kQuestInstanceData["Naxxramas"].Quests.Alliance[2]
+kQuestInstanceData["Naxxramas"].Quests.Horde[3] = kQuestInstanceData["Naxxramas"].Quests.Alliance[3]
+kQuestInstanceData["Naxxramas"].Quests.Horde[4] = kQuestInstanceData["Naxxramas"].Quests.Alliance[4]
+kQuestInstanceData["Naxxramas"].Quests.Horde[5] = kQuestInstanceData["Naxxramas"].Quests.Alliance[5]
 
 --------------- INST16 - Onyxias Lair ---------------
-kQuestInstanceData[16] = {
+kQuestInstanceData["OnyxiasLair"] = {
     Story = "Onyxia is the daughter of the mighty dragon Deathwing, and sister of the scheming Nefarion Lord of Blackrock Spire. It is said that Onyxia delights in corrupting the mortal races by meddling in their political affairs. To this end it is believed that she takes on various humanoid forms and uses her charm and power to influence delicate matters between the different races. Some believe that Onyxia has even assumed an alias once used by her father - the title of the royal House Prestor. When not meddling in mortal concerns, Onyxia resides in a fiery cave below the Dragonmurk, a dismal swamp located within Dustwallow Marsh. There she is guarded by her kin, the remaining members of the insidious Black Dragon Flight.",
     Caption = "Onyxias Lair",
     QAA = "3 Quests",
@@ -4749,7 +4750,7 @@ kQuestInstanceData[16] = {
         Horde = {}
     }
 }
-kQuestInstanceData[16].Quests.Alliance[1] = {
+kQuestInstanceData["OnyxiasLair"].Quests.Alliance[1] = {
     Title = "1. The Forging of Quel'Serrar",
     Level = "60",
     Attain = "60",
@@ -4759,16 +4760,16 @@ kQuestInstanceData[16].Quests.Alliance[1] = {
     Prequest = "Foror's Compendium ("..yellow.."Dire Maul West"..white..") -> The Forging of Quel'Serrar", -- 7507 -> 7508",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Quel'Serrar",
             ID = "18348",
             Color = purple,
-            Description = AQITEM_SWORD,
+            Description = "Main Hand, Sword",
         },
     }
 }
-kQuestInstanceData[16].Quests.Alliance[2] = {
+kQuestInstanceData["OnyxiasLair"].Quests.Alliance[2] = {
     Title = "2. Victory for the Alliance",
     Level = "60",
     Attain = "60",
@@ -4782,23 +4783,23 @@ kQuestInstanceData[16].Quests.Alliance[2] = {
             Name = "Onyxia Blood Talisman",
             ID = "18406",
             Color = purple,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Dragonslayer's Signet",
             ID = "18403",
             Color = purple,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Onyxia Tooth Pendant",
             ID = "18404",
             Color = purple,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[16].Quests.Alliance[3] = {
+kQuestInstanceData["OnyxiasLair"].Quests.Alliance[3] = {
     Title = "3. The Only Prescription",
     Level = "60",
     Attain = "60",
@@ -4808,17 +4809,17 @@ kQuestInstanceData[16].Quests.Alliance[3] = {
     Prequest = "Decoy!",
     Folgequest = "The Good News and The Bad News (Must complete Stewvul, Ex-B.F.F. and Never Ask Me About My Business quest chains)",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Gnomish Turban of Psychic Might",
             ID = "21517",
             Color = purple,
-            Description = AQITEM_HEAD..AQITEM_CLOTH,
+            Description = "Head, Cloth",
         },
     }
 }
-kQuestInstanceData[16].Quests.Horde[1] = kQuestInstanceData[16].Quests.Alliance[1]
-kQuestInstanceData[16].Quests.Horde[2] = {
+kQuestInstanceData["OnyxiasLair"].Quests.Horde[1] = kQuestInstanceData["OnyxiasLair"].Quests.Alliance[1]
+kQuestInstanceData["OnyxiasLair"].Quests.Horde[2] = {
     Title = "2. Victory for the Horde",
     Level = "60",
     Attain = "60",
@@ -4827,12 +4828,12 @@ kQuestInstanceData[16].Quests.Horde[2] = {
     Note = "Thrall is at (Orgrimmar - Valley of Wisdom; "..yellow.."31,37"..white.."). Only one person in the raid can loot this item and the quest can only be done one time.\nRewards listed are for the followup.",
     Prequest = "No",
     Folgequest = "For All To See",
-    Rewards = kQuestInstanceData[16].Quests.Alliance[2].Rewards
+    Rewards = kQuestInstanceData["OnyxiasLair"].Quests.Alliance[2].Rewards
 }
-kQuestInstanceData[16].Quests.Horde[3] = kQuestInstanceData[16].Quests.Alliance[3]
+kQuestInstanceData["OnyxiasLair"].Quests.Horde[3] = kQuestInstanceData["OnyxiasLair"].Quests.Alliance[3]
 
 --------------- INST17 - Razorfen Downs ---------------
-kQuestInstanceData[17] = {
+kQuestInstanceData["RazorfenDowns"] = {
     Story = "Crafted  from the same mighty vines as Razorfen Kraul, Razorfen Downs is the traditional capital city of the quillboar race. The sprawling, thorn-ridden labyrinth houses a veritable army of loyal quillboar as well as their high priests - the Death's Head tribe. Recently, however, a looming shadow has fallen over the crude den. Agents of the undead Scourge - led by the lich, Amnennar the Coldbringer - have taken control over the quillboar race and turned the maze of thorns into a bastion of undead might. Now the quillboar fight a desperate battle to reclaim their beloved city before Amnennar spreads his control across the Barrens.",
     Caption = "Razorfen Downs",
     QAA = "3 Quests",
@@ -4842,7 +4843,7 @@ kQuestInstanceData[17] = {
         Horde = {}
     }
 }
-kQuestInstanceData[17].Quests.Alliance[1] = {
+kQuestInstanceData["RazorfenDowns"].Quests.Alliance[1] = {
     Title = "1. A Host of Evil",
     Level = "35",
     Attain = "28",
@@ -4852,10 +4853,10 @@ kQuestInstanceData[17].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[17].Quests.Alliance[2] = {
+kQuestInstanceData["RazorfenDowns"].Quests.Alliance[2] = {
     Title = "2. Extinguishing the Idol",
     Level = "37",
     Attain = "32",
@@ -4865,16 +4866,16 @@ kQuestInstanceData[17].Quests.Alliance[2] = {
     Prequest = "Scourge of the Downs",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Dragonclaw Ring",
             ID = "10710",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[17].Quests.Alliance[3] = {
+kQuestInstanceData["RazorfenDowns"].Quests.Alliance[3] = {
     Title = "3. Bring the Light",
     Level = "42",
     Attain = "39",
@@ -4884,23 +4885,23 @@ kQuestInstanceData[17].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2",
+        Text = blue.."Rewards:",
         {
             Name = "Vanquisher's Sword",
             ID = "10823",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
         {
             Name = "Amberglow Talisman",
             ID = "10824",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[17].Quests.Horde[1] = kQuestInstanceData[17].Quests.Alliance[1]
-kQuestInstanceData[17].Quests.Horde[2] = {
+kQuestInstanceData["RazorfenDowns"].Quests.Horde[1] = kQuestInstanceData["RazorfenDowns"].Quests.Alliance[1]
+kQuestInstanceData["RazorfenDowns"].Quests.Horde[2] = {
     Title = "2. An Unholy Alliance",
     Level = "36",
     Attain = "28",
@@ -4910,28 +4911,28 @@ kQuestInstanceData[17].Quests.Horde[2] = {
     Prequest = "An Unholy Alliance",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Skullbreaker",
             ID = "17039",
             Color = green,
-            Description = AQITEM_MAINHAND..AQITEM_MACE,
+            Description = "Main Hand, Mace",
         },
         {
             Name = "Nail Spitter",
             ID = "17042",
             Color = green,
-            Description = AQITEM_GUN,
+            Description = "Gun",
         },
         {
             Name = "Zealot's Robe",
             ID = "17043",
             Color = green,
-            Description = AQITEM_CHEST..AQITEM_CLOTH,
+            Description = "Chest, Cloth",
         },
     }
 }
-kQuestInstanceData[17].Quests.Horde[3] = {
+kQuestInstanceData["RazorfenDowns"].Quests.Horde[3] = {
     Title = "3. Extinguishing the Idol",
     Level = "37",
     Attain = "32",
@@ -4941,16 +4942,16 @@ kQuestInstanceData[17].Quests.Horde[3] = {
     Prequest = "Scourge of the Downs",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Dragonclaw Ring",
             ID = "10710",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[17].Quests.Horde[4] = {
+kQuestInstanceData["RazorfenDowns"].Quests.Horde[4] = {
     Title = "4. Bring the End",
     Level = "42",
     Attain = "37",
@@ -4960,22 +4961,22 @@ kQuestInstanceData[17].Quests.Horde[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2",
+        Text = blue.."Rewards:",
         {
             Name = "Vanquisher's Sword",
             ID = "10823",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
         {
             Name = "Amberglow Talisman",
             ID = "10824",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[17].Quests.Horde[5] = {
+kQuestInstanceData["RazorfenDowns"].Quests.Horde[5] = {
     Title = "5. The Powers Beyond",
     Level = "44",
     Attain = "38",
@@ -4985,30 +4986,30 @@ kQuestInstanceData[17].Quests.Horde[5] = {
     Prequest = "Through Greater Magic -> The Ravenwood Scepter",
     Folgequest = "The Greymane Stone "..yellow.."[Gilneas City]"..white.."-> Gift of the Dark Bishop", -- 40996, 40997",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Garalon's Might",
             ID = "61660",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_SWORD,
+            Description = "Two-Hand, Sword",
         },
         {
             Name = "Varimathras' Cunning",
             ID = "61661",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Stillward Amulet",
             ID = "61662",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
 
 --------------- INST18 - Razorfen Kraul ---------------
-kQuestInstanceData[18] = {
+kQuestInstanceData["RazorfenKraul"] = {
     Story = "Ten thousand years ago - during the War of the Ancients, the mighty demigod, Agamaggan, came forth to battle the Burning Legion. Though the colossal boar fell in combat, his actions helped save Azeroth from ruin. Yet over time, in the areas where his blood fell, massive thorn-ridden vines sprouted from the earth. The quillboar - believed to be the mortal offspring of the mighty god, came to occupy these regions and hold them sacred. The heart of these thorn-colonies was known as the Razorfen. The great mass of Razorfen Kraul was conquered by the old crone, Charlga Razorflank. Under her rule, the shamanistic quillboar stage attacks on rival tribes as well as Horde villages. Some speculate that Charlga has even been negotiating with agents of the Scourge - aligning her unsuspecting tribe with the ranks of the Undead for some insidious purpose.",
     Caption = "Razorfen Kraul",
     QAA = "5 Quests",
@@ -5018,7 +5019,7 @@ kQuestInstanceData[18] = {
         Horde = {}
     }
 }
-kQuestInstanceData[18].Quests.Alliance[1] = {
+kQuestInstanceData["RazorfenKraul"].Quests.Alliance[1] = {
     Title = "1. Blueleaf Tubers",
     Level = "26",
     Attain = "20",
@@ -5028,16 +5029,16 @@ kQuestInstanceData[18].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "A Small Container of Gems",
             ID = "6755",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Container",
         },
     }
 }
-kQuestInstanceData[18].Quests.Alliance[2] = {
+kQuestInstanceData["RazorfenKraul"].Quests.Alliance[2] = {
     Title = "2. Mortality Wanes",
     Level = "30",
     Attain = "25",
@@ -5047,22 +5048,22 @@ kQuestInstanceData[18].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Mourning Shawl",
             ID = "6751",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Lancer Boots",
             ID = "6752",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_LEATHER,
+            Description = "Feet, Leather",
         },
     }
 }
-kQuestInstanceData[18].Quests.Alliance[3] = {
+kQuestInstanceData["RazorfenKraul"].Quests.Alliance[3] = {
     Title = "3. Willix the Importer",
     Level = "30",
     Attain = "23",
@@ -5072,28 +5073,28 @@ kQuestInstanceData[18].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Monkey Ring",
             ID = "6748",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Snake Hoop",
             ID = "6750",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Tiger Band",
             ID = "6749",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[18].Quests.Alliance[4] = {
+kQuestInstanceData["RazorfenKraul"].Quests.Alliance[4] = {
     Title = "4. The Crone of the Kraul",
     Level = "34",
     Attain = "29",
@@ -5103,28 +5104,28 @@ kQuestInstanceData[18].Quests.Alliance[4] = {
     Prequest = "Lonebrow's Journal",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: 1 and 2 or 3",
         {
             Name = "Berylline Pads",
             ID = "4197",
             Color = blue,
-            Description = AQITEM_SHOULDER..AQITEM_CLOTH,
+            Description = "Shoulder, Cloth",
         },
         {
             Name = "Stonefist Girdle",
             ID = "6742",
             Color = blue,
-            Description = AQITEM_WAIST..AQITEM_MAIL,
+            Description = "Waist, Mail",
         },
         {
             Name = "Marbled Buckler",
             ID = "6725",
             Color = blue,
-            Description = AQITEM_SHIELD,
+            Description = "Shield",
         },
     }
 }
-kQuestInstanceData[18].Quests.Alliance[5] = {
+kQuestInstanceData["RazorfenKraul"].Quests.Alliance[5] = {
     Title = "5. Fire Hardened Mail",
     Level = "28",
     Attain = "20",
@@ -5134,11 +5135,11 @@ kQuestInstanceData[18].Quests.Alliance[5] = {
     Prequest = "The Shieldsmith",
     Folgequest = "(See Note)",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[18].Quests.Horde[1] = kQuestInstanceData[18].Quests.Alliance[1]
-kQuestInstanceData[18].Quests.Horde[2] = {
+kQuestInstanceData["RazorfenKraul"].Quests.Horde[1] = kQuestInstanceData["RazorfenKraul"].Quests.Alliance[1]
+kQuestInstanceData["RazorfenKraul"].Quests.Horde[2] = {
     Title = "2. Willix the Importer",
     Level = "30",
     Attain = "23",
@@ -5148,28 +5149,28 @@ kQuestInstanceData[18].Quests.Horde[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Monkey Ring",
             ID = "6748",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Snake Hoop",
             ID = "6750",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Tiger Band",
             ID = "6749",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[18].Quests.Horde[3] = {
+kQuestInstanceData["RazorfenKraul"].Quests.Horde[3] = {
     Title = "3. Going, Going, Guano!",
     Level = "33",
     Attain = "30",
@@ -5179,10 +5180,10 @@ kQuestInstanceData[18].Quests.Horde[3] = {
     Prequest = "No",
     Folgequest = "Hearts of Zeal ("..yellow.."[Scarlet Monastery]"..white..")", -- 1113",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[18].Quests.Horde[4] = {
+kQuestInstanceData["RazorfenKraul"].Quests.Horde[4] = {
     Title = "4. A Vengeful Fate",
     Level = "34",
     Attain = "29",
@@ -5192,28 +5193,28 @@ kQuestInstanceData[18].Quests.Horde[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Berylline Pads",
             ID = "4197",
             Color = blue,
-            Description = AQITEM_SHOULDER..AQITEM_CLOTH,
+            Description = "Shoulder, Cloth",
         },
         {
             Name = "Stonefist Girdle",
             ID = "6742",
             Color = blue,
-            Description = AQITEM_WAIST..AQITEM_MAIL,
+            Description = "Waist, Mail",
         },
         {
             Name = "Marbled Buckler",
             ID = "6725",
             Color = blue,
-            Description = AQITEM_SHIELD,
+            Description = "Shield",
         },
     }
 }
-kQuestInstanceData[18].Quests.Horde[5] = {
+kQuestInstanceData["RazorfenKraul"].Quests.Horde[5] = {
     Title = "5. Brutal Armor",
     Level = "30",
     Attain = "20",
@@ -5223,12 +5224,12 @@ kQuestInstanceData[18].Quests.Horde[5] = {
     Prequest = "Speak with Thun'grim",
     Folgequest = "(See Note)",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
 
 --------------- INST19 - SM: Library ---------------
-kQuestInstanceData[19] = {
+kQuestInstanceData["SMLibrary"] = {
     Story = "The Monastery was once a proud bastion of Lordaeron's priesthood - a center for learning and enlightenment. With the rise of the undead Scourge during the Third War, the peaceful Monastery was converted into a stronghold of the fanatical Scarlet Crusade. The Crusaders are intolerant of all non-human races, regardless of alliance or affiliation. They believe that any and all outsiders are potential carriers of the undead plague - and must be destroyed. Reports indicate that adventurers who enter the monastery are forced to contend with Scarlet Commander Mograine - who commands a large garrison of fanatically devoted warriors. However, the monastery's true master is High Inquisitor Whitemane - a fearsome priestess who possesses the ability to resurrect fallen warriors to do battle in her name.",
     Caption = "SM: Library",
     QAA = "3 Quests",
@@ -5238,7 +5239,7 @@ kQuestInstanceData[19] = {
         Horde = {}
     }
 }
-kQuestInstanceData[19].Quests.Alliance[1] = {
+kQuestInstanceData["SMLibrary"].Quests.Alliance[1] = {
     Title = "1. In the Name of the Light",
     Level = "40",
     Attain = "34",
@@ -5248,34 +5249,34 @@ kQuestInstanceData[19].Quests.Alliance[1] = {
     Prequest = "Brother Anton -> Down the Scarlet Path",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Sword of Serenity",
             ID = "6829",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
         {
             Name = "Bonebiter",
             ID = "6830",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_AXE,
+            Description = "Two-Hand, Axe",
         },
         {
             Name = "Black Menace",
             ID = "6831",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_DAGGER,
+            Description = "One-Hand, Dagger",
         },
         {
             Name = "Orb of Lorica",
             ID = "11262",
             Color = blue,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
     }
 }
-kQuestInstanceData[19].Quests.Alliance[2] = {
+kQuestInstanceData["SMLibrary"].Quests.Alliance[2] = {
     Title = "2. Mythology of the Titans",
     Level = "38",
     Attain = "28",
@@ -5285,16 +5286,16 @@ kQuestInstanceData[19].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Explorers' League Commendation",
             ID = "7746",
             Color = green,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[19].Quests.Alliance[3] = {
+kQuestInstanceData["SMLibrary"].Quests.Alliance[3] = {
     Title = "3. Rituals of Power",
     Level = "40",
     Attain = "30",
@@ -5304,10 +5305,10 @@ kQuestInstanceData[19].Quests.Alliance[3] = {
     Prequest = "Get the Scoop",
     Folgequest = "Mage's Wand",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[19].Quests.Horde[1] = {
+kQuestInstanceData["SMLibrary"].Quests.Horde[1] = {
     Title = "1. Hearts of Zeal",
     Level = "33",
     Attain = "30",
@@ -5317,10 +5318,10 @@ kQuestInstanceData[19].Quests.Horde[1] = {
     Prequest = "Going, Going, Guano! ("..yellow.."[Razorfen Kraul]"..white..")", -- 1109",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[19].Quests.Horde[2] = {
+kQuestInstanceData["SMLibrary"].Quests.Horde[2] = {
     Title = "2. Into The Scarlet Monastery",
     Level = "42",
     Attain = "33",
@@ -5330,28 +5331,28 @@ kQuestInstanceData[19].Quests.Horde[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Sword of Omen",
             ID = "6802",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
         {
             Name = "Prophetic Cane",
             ID = "6803",
             Color = blue,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
         {
             Name = "Dragon's Blood Necklace",
             ID = "10711",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[19].Quests.Horde[3] = {
+kQuestInstanceData["SMLibrary"].Quests.Horde[3] = {
     Title = "3. Compendium of the Fallen",
     Level = "38",
     Attain = "28",
@@ -5361,28 +5362,28 @@ kQuestInstanceData[19].Quests.Horde[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Vile Protector",
             ID = "7747",
             Color = green,
-            Description = AQITEM_SHIELD,
+            Description = "Shield",
         },
         {
             Name = "Forcestone Buckler",
             ID = "17508",
             Color = green,
-            Description = AQITEM_SHIELD,
+            Description = "Shield",
         },
         {
             Name = "Omega Orb",
             ID = "7749",
             Color = green,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
     }
 }
-kQuestInstanceData[19].Quests.Horde[4] = {
+kQuestInstanceData["SMLibrary"].Quests.Horde[4] = {
     Title = "4. Test of Lore",
     Level = "36",
     Attain = "25",
@@ -5392,10 +5393,10 @@ kQuestInstanceData[19].Quests.Horde[4] = {
     Prequest = "Test of Faith - > Test of Lore",
     Folgequest = "Test of Lore",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[19].Quests.Horde[5] = {
+kQuestInstanceData["SMLibrary"].Quests.Horde[5] = {
     Title = "5. Rituals of Power",
     Level = "40",
     Attain = "30",
@@ -5405,13 +5406,13 @@ kQuestInstanceData[19].Quests.Horde[5] = {
     Prequest = "Get the Scoop",
     Folgequest = "Mage's Wand",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
 
 --------------- INST20 - SM: Armory ---------------
-kQuestInstanceData[20] = {
-    Story = kQuestInstanceData[19].Story,
+kQuestInstanceData["SMArmory"] = {
+    Story = kQuestInstanceData["SMLibrary"].Story,
     Caption = "SM: Armory",
     QAA = "1 Quest",
     QAH = "3 Quests",
@@ -5420,10 +5421,10 @@ kQuestInstanceData[20] = {
         Horde = {}
     }
 }
-kQuestInstanceData[20].Quests.Alliance[1] = kQuestInstanceData[19].Quests.Alliance[1]
-kQuestInstanceData[20].Quests.Horde[1] = kQuestInstanceData[19].Quests.Horde[1]
-kQuestInstanceData[20].Quests.Horde[2] = kQuestInstanceData[19].Quests.Horde[2]
-kQuestInstanceData[20].Quests.Horde[3] = {
+kQuestInstanceData["SMArmory"].Quests.Alliance[1] = kQuestInstanceData["SMLibrary"].Quests.Alliance[1]
+kQuestInstanceData["SMArmory"].Quests.Horde[1] = kQuestInstanceData["SMLibrary"].Quests.Horde[1]
+kQuestInstanceData["SMArmory"].Quests.Horde[2] = kQuestInstanceData["SMLibrary"].Quests.Horde[2]
+kQuestInstanceData["SMArmory"].Quests.Horde[3] = {
     Title = "3. Reminiscent of Steel",
     Level = "39",
     Attain = "33",
@@ -5433,25 +5434,25 @@ kQuestInstanceData[20].Quests.Horde[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Solid Sharpening Stone",
             ID = "7964",
             Color = white,
-            Description = AQITEM_ENCHANT,
+            Description = "Enchant",
         },
         {
             Name = "Solid Weightstone",
             ID = "7965",
             Color = white,
-            Description = AQITEM_ENCHANT,
+            Description = "Enchant",
         },
     }
 }
 
 --------------- INST21 - SM: Cathedral ---------------
-kQuestInstanceData[21] = {
-    Story = kQuestInstanceData[19].Story,
+kQuestInstanceData["SMCathedral"] = {
+    Story = kQuestInstanceData["SMLibrary"].Story,
     Caption = "SM: Cathedral",
     QAA = "3 Quest",
     QAH = "2 Quests",
@@ -5460,8 +5461,8 @@ kQuestInstanceData[21] = {
         Horde = {}
     }
 }
-kQuestInstanceData[21].Quests.Alliance[1] = kQuestInstanceData[19].Quests.Alliance[1]
-kQuestInstanceData[21].Quests.Alliance[2] = {
+kQuestInstanceData["SMCathedral"].Quests.Alliance[1] = kQuestInstanceData["SMLibrary"].Quests.Alliance[1]
+kQuestInstanceData["SMCathedral"].Quests.Alliance[2] = {
     Title = "The Orb of Kaladus",
     Level = "38",
     Attain = "30",
@@ -5471,28 +5472,28 @@ kQuestInstanceData[21].Quests.Alliance[2] = {
     Prequest = "Tales of the Past -> The Forgotten Tome -> Returning to Janathos",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Truthkeeper Mantle",
             ID = "60316",
             Color = blue,
-            Description = AQITEM_SHOULDER..AQITEM_PLATE,
+            Description = "Shoulder, Plate",
         },
         {
             Name = "Lightgraced Mallet",
             ID = "60317",
             Color = blue,
-            Description = AQITEM_MAINHAND..AQITEM_MACE,
+            Description = "Main Hand, Mace",
         },
         {
             Name = "Sorrowguard Clutch",
             ID = "60318",
             Color = blue,
-            Description = AQITEM_WAIST..AQITEM_LEATHER,
+            Description = "Waist, Leather",
         },
     }
 }
-kQuestInstanceData[21].Quests.Alliance[3] = {
+kQuestInstanceData["SMCathedral"].Quests.Alliance[3] = {
     Title = "3. Scarlet Corruption",
     Level = "44",
     Attain = "35",
@@ -5502,21 +5503,21 @@ kQuestInstanceData[21].Quests.Alliance[3] = {
     Prequest = "Allies Against Undeath",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Ring of Holy Sacrement",
             ID = "61478",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[21].Quests.Horde[1] = kQuestInstanceData[19].Quests.Horde[1]
-kQuestInstanceData[21].Quests.Horde[2] = kQuestInstanceData[19].Quests.Horde[2]
+kQuestInstanceData["SMCathedral"].Quests.Horde[1] = kQuestInstanceData["SMLibrary"].Quests.Horde[1]
+kQuestInstanceData["SMCathedral"].Quests.Horde[2] = kQuestInstanceData["SMLibrary"].Quests.Horde[2]
 
 --------------- INST22 - SM: Graveyard ---------------
-kQuestInstanceData[22] = {
-    Story = kQuestInstanceData[19].Story,
+kQuestInstanceData["SMGraveyard"] = {
+    Story = kQuestInstanceData["SMLibrary"].Story,
     Caption = "SM: Graveyard",
     QAA = "No Quest",
     QAH = "3 Quests",
@@ -5525,8 +5526,8 @@ kQuestInstanceData[22] = {
         Horde = {}
     }
 }
-kQuestInstanceData[22].Quests.Horde[1] = kQuestInstanceData[19].Quests.Horde[1]
-kQuestInstanceData[22].Quests.Horde[2] = {
+kQuestInstanceData["SMGraveyard"].Quests.Horde[1] = kQuestInstanceData["SMLibrary"].Quests.Horde[1]
+kQuestInstanceData["SMGraveyard"].Quests.Horde[2] = {
     Title = "2. Vorrel's Revenge",
     Level = "33",
     Attain = "25",
@@ -5536,28 +5537,28 @@ kQuestInstanceData[22].Quests.Horde[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: 1 and 2 or 3",
         {
             Name = "Vorrel's Boots",
             ID = "7751",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_LEATHER,
+            Description = "Feet, Leather",
         },
         {
             Name = "Mantle of Woe",
             ID = "7750",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_CLOTH,
+            Description = "Shoulder, Cloth",
         },
         {
             Name = "Grimsteel Cape",
             ID = "4643",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
     }
 }
-kQuestInstanceData[22].Quests.Horde[3] = {
+kQuestInstanceData["SMGraveyard"].Quests.Horde[3] = {
     Title = "3. Paint the Roses Red",
     Level = "29",
     Attain = "27",
@@ -5567,30 +5568,30 @@ kQuestInstanceData[22].Quests.Horde[3] = {
     Prequest = "Scarlet with Rage",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Nathrezim Wedge",
             ID = "51832",
             Color = blue,
-            Description = AQITEM_MAINHAND..AQITEM_AXE,
+            Description = "Main Hand, Axe",
         },
         {
             Name = "Femur Staff",
             ID = "51833",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Scarlet Pillar",
             ID = "51834",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_MACE,
+            Description = "Two-Hand, Mace",
         },
     }
 }
 
 --------------- INST23 - Scholomance ---------------
-kQuestInstanceData[23] = {
+kQuestInstanceData["Scholomance"] = {
     Story = "The Scholomance is housed within a series of crypts that lie beneath the ruined keep of Caer Darrow. Once owned by the noble Barov family, Caer Darrow fell to ruin following the Second War. As the wizard Kel'thuzad enlisted followers for his Cult of the Damned he would often promise immortality in exchange for serving his Lich King. The Barov family fell to Kel'thuzad's charismatic influence and donated the keep and its crypts to the Scourge. The cultists then killed the Barovs and turned the ancient crypts into a school for necromancy known as the Scholomance. Though Kel'thuzad no longer resides in the crypts, devoted cultists and instructors still remain. The powerful lich, Ras Frostwhisper, rules over the site and guards it in the Scourge's name - while the mortal necromancer, Darkmaster Gandling, serves as the school's insidious headmaster.",
     Caption = "Scholomance",
     QAA = "12 Quests",
@@ -5600,7 +5601,7 @@ kQuestInstanceData[23] = {
         Horde = {}
     }
 }
-kQuestInstanceData[23].Quests.Alliance[1] = {
+kQuestInstanceData["Scholomance"].Quests.Alliance[1] = {
     Title = "1. Plagued Hatchlings",
     Level = "58",
     Attain = "55",
@@ -5610,10 +5611,10 @@ kQuestInstanceData[23].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "Healthy Dragon Scale",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[23].Quests.Alliance[2] = {
+kQuestInstanceData["Scholomance"].Quests.Alliance[2] = {
     Title = "2. Healthy Dragon Scale",
     Level = "58",
     Attain = "55",
@@ -5623,10 +5624,10 @@ kQuestInstanceData[23].Quests.Alliance[2] = {
     Prequest = "Plagued Hatchlings",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[23].Quests.Alliance[3] = {
+kQuestInstanceData["Scholomance"].Quests.Alliance[3] = {
     Title = "3. Doctor Theolen Krastinov, the Butcher",
     Level = "60",
     Attain = "55",
@@ -5636,10 +5637,10 @@ kQuestInstanceData[23].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "Krastinov's Bag of Horrors",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[23].Quests.Alliance[4] = {
+kQuestInstanceData["Scholomance"].Quests.Alliance[4] = {
     Title = "4. Krastinov's Bag of Horrors",
     Level = "60",
     Attain = "55",
@@ -5649,10 +5650,10 @@ kQuestInstanceData[23].Quests.Alliance[4] = {
     Prequest = "Doctor Theolen Krastinov, the Butcher",
     Folgequest = "Kirtonos the Herald",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[23].Quests.Alliance[5] = {
+kQuestInstanceData["Scholomance"].Quests.Alliance[5] = {
     Title = "5. Kirtonos the Herald",
     Level = "60",
     Attain = "55",
@@ -5662,28 +5663,28 @@ kQuestInstanceData[23].Quests.Alliance[5] = {
     Prequest = "Krastinov's Bag of Horrors",
     Folgequest = "The Human, Ras Frostwhisper",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: 1 and 2 or 3",
         {
             Name = "Spectral Essence",
             ID = "13544",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Penelope's Rose",
             ID = "15805",
             Color = blue,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
         {
             Name = "Mirah's Song",
             ID = "15806",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
     }
 }
-kQuestInstanceData[23].Quests.Alliance[6] = {
+kQuestInstanceData["Scholomance"].Quests.Alliance[6] = {
     Title = "6. The Lich, Ras Frostwhisper",
     Level = "60",
     Attain = "57",
@@ -5693,34 +5694,34 @@ kQuestInstanceData[23].Quests.Alliance[6] = {
     Prequest = "The Human, Ras Frostwhisper - > Soulbound Keepsake",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: 1 and 2 or 3 or 4",
         {
             Name = "Darrowshire Strongguard",
             ID = "14002",
             Color = blue,
-            Description = AQITEM_SHIELD,
+            Description = "Shield",
         },
         {
             Name = "Warblade of Caer Darrow",
             ID = "13982",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_SWORD,
+            Description = "Two-Hand, Sword",
         },
         {
             Name = "Crown of Caer Darrow",
             ID = "13986",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_CLOTH,
+            Description = "Head, Cloth",
         },
         {
             Name = "Darrowspike",
             ID = "13984",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_DAGGER,
+            Description = "One-Hand, Dagger",
         },
     }
 }
-kQuestInstanceData[23].Quests.Alliance[7] = {
+kQuestInstanceData["Scholomance"].Quests.Alliance[7] = {
     Title = "7. Barov Family Fortune",
     Level = "60",
     Attain = "52",
@@ -5730,10 +5731,10 @@ kQuestInstanceData[23].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "The Last Barov",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[23].Quests.Alliance[8] = {
+kQuestInstanceData["Scholomance"].Quests.Alliance[8] = {
     Title = "8. Dawn's Gambit",
     Level = "60",
     Attain = "57",
@@ -5743,22 +5744,22 @@ kQuestInstanceData[23].Quests.Alliance[8] = {
     Prequest = "Broodling Essence - > Betina Bigglezink",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2",
+        Text = blue.."Rewards:",
         {
             Name = "Windreaper",
             ID = "15853",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_AXE,
+            Description = "One-Hand, Axe",
         },
         {
             Name = "Dancing Sliver",
             ID = "15854",
             Color = blue,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
     }
 }
-kQuestInstanceData[23].Quests.Alliance[9] = {
+kQuestInstanceData["Scholomance"].Quests.Alliance[9] = {
     Title = "9. Imp Delivery",
     Level = "60",
     Attain = "60",
@@ -5768,10 +5769,10 @@ kQuestInstanceData[23].Quests.Alliance[9] = {
     Prequest = "Mor'zul Bloodbringer - > Xorothian Stardust",
     Folgequest = "Dreadsteed of Xoroth ("..yellow.."Dire Maul West"..white..")", -- 7631",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[23].Quests.Alliance[10] = {
+kQuestInstanceData["Scholomance"].Quests.Alliance[10] = {
     Title = "10. The Left Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -5781,10 +5782,10 @@ kQuestInstanceData[23].Quests.Alliance[10] = {
     Prequest = "Components of Importance",
     Folgequest = "I See Alcaz Island In Your Future...",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[23].Quests.Alliance[11] = {
+kQuestInstanceData["Scholomance"].Quests.Alliance[11] = {
     Title = "11. The Right Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -5794,10 +5795,10 @@ kQuestInstanceData[23].Quests.Alliance[11] = {
     Prequest = "More Components of Importance",
     Folgequest = "Final Preparations ("..yellow.."Upper Blackrock Spire"..white..")", -- 8994",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[23].Quests.Alliance[12] = {
+kQuestInstanceData["Scholomance"].Quests.Alliance[12] = {
     Title = "12. A Favor for Farsan",
     Level = "58",
     Attain = "55",
@@ -5807,22 +5808,22 @@ kQuestInstanceData[23].Quests.Alliance[12] = {
     Prequest = "A New Rune-Frontier -> The Secrets of Darkforging -> The Secrets of Darkforging",
     Folgequest = "A Meeting With The Dreadlord",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Tempered Runeblade",
             ID = "81060",
             Color = purple,
-            Description = AQITEM_TWOHAND..AQITEM_SWORD,
+            Description = "Two-Hand, Sword",
         },
     }
 }
-kQuestInstanceData[23].Quests.Horde[1] = kQuestInstanceData[23].Quests.Alliance[1]
-kQuestInstanceData[23].Quests.Horde[2] = kQuestInstanceData[23].Quests.Alliance[2]
-kQuestInstanceData[23].Quests.Horde[3] = kQuestInstanceData[23].Quests.Alliance[3]
-kQuestInstanceData[23].Quests.Horde[4] = kQuestInstanceData[23].Quests.Alliance[4]
-kQuestInstanceData[23].Quests.Horde[5] = kQuestInstanceData[23].Quests.Alliance[5]
-kQuestInstanceData[23].Quests.Horde[6] = kQuestInstanceData[23].Quests.Alliance[6]
-kQuestInstanceData[23].Quests.Horde[7] = {
+kQuestInstanceData["Scholomance"].Quests.Horde[1] = kQuestInstanceData["Scholomance"].Quests.Alliance[1]
+kQuestInstanceData["Scholomance"].Quests.Horde[2] = kQuestInstanceData["Scholomance"].Quests.Alliance[2]
+kQuestInstanceData["Scholomance"].Quests.Horde[3] = kQuestInstanceData["Scholomance"].Quests.Alliance[3]
+kQuestInstanceData["Scholomance"].Quests.Horde[4] = kQuestInstanceData["Scholomance"].Quests.Alliance[4]
+kQuestInstanceData["Scholomance"].Quests.Horde[5] = kQuestInstanceData["Scholomance"].Quests.Alliance[5]
+kQuestInstanceData["Scholomance"].Quests.Horde[6] = kQuestInstanceData["Scholomance"].Quests.Alliance[6]
+kQuestInstanceData["Scholomance"].Quests.Horde[7] = {
     Title = "7. Barov Family Fortune",
     Level = "60",
     Attain = "52",
@@ -5832,17 +5833,17 @@ kQuestInstanceData[23].Quests.Horde[7] = {
     Prequest = "No",
     Folgequest = "The Last Barov",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[23].Quests.Horde[8] = kQuestInstanceData[23].Quests.Alliance[8]
-kQuestInstanceData[23].Quests.Horde[9] = kQuestInstanceData[23].Quests.Alliance[9]
-kQuestInstanceData[23].Quests.Horde[10] = kQuestInstanceData[23].Quests.Alliance[10]
-kQuestInstanceData[23].Quests.Horde[11] = kQuestInstanceData[23].Quests.Alliance[11]
-kQuestInstanceData[23].Quests.Horde[12] = kQuestInstanceData[23].Quests.Alliance[12]
+kQuestInstanceData["Scholomance"].Quests.Horde[8] = kQuestInstanceData["Scholomance"].Quests.Alliance[8]
+kQuestInstanceData["Scholomance"].Quests.Horde[9] = kQuestInstanceData["Scholomance"].Quests.Alliance[9]
+kQuestInstanceData["Scholomance"].Quests.Horde[10] = kQuestInstanceData["Scholomance"].Quests.Alliance[10]
+kQuestInstanceData["Scholomance"].Quests.Horde[11] = kQuestInstanceData["Scholomance"].Quests.Alliance[11]
+kQuestInstanceData["Scholomance"].Quests.Horde[12] = kQuestInstanceData["Scholomance"].Quests.Alliance[12]
 
 --------------- INST24 - Shadowfang Keep ---------------
-kQuestInstanceData[24] = {
+kQuestInstanceData["ShadowfangKeep"] = {
     Story = "During the Third War, the wizards of the Kirin Tor battled against the undead armies of the Scourge. When the wizards of Dalaran died in battle, they would rise soon after - adding their former might to the growing Scourge. Frustrated by their lack of progress (and against the advice of his peers) the Archmage, Arugal elected to summon extra-dimensional entities to bolster Dalaran's diminishing ranks. Arugal's summoning brought the ravenous worgen into the world of Azeroth. The feral wolf-men slaughtered not only the Scourge, but quickly turned on the wizards themselves. The worgen laid siege to the keep of the noble, Baron Silverlaine. Situated above the tiny hamlet of Pyrewood, the keep quickly fell into shadow and ruin. Driven mad with guilt, Arugal adopted the worgen as his children and retreated to the newly dubbed 'Shadowfang Keep'. It's said he still resides there, protected by his massive pet, Fenrus - and haunted by the vengeful ghost of Baron Silverlaine.",
     Caption = "Shadowfang Keep",
     QAA = "5 Quests",
@@ -5852,7 +5853,7 @@ kQuestInstanceData[24] = {
         Horde = {}
     }
 }
-kQuestInstanceData[24].Quests.Alliance[1] = {
+kQuestInstanceData["ShadowfangKeep"].Quests.Alliance[1] = {
     Title = "1. The Test of Righteousness",
     Level = "22",
     Attain = "20",
@@ -5862,17 +5863,17 @@ kQuestInstanceData[24].Quests.Alliance[1] = {
     Prequest = "The Tome of Valor -> The Test of Righteousness",
     Folgequest = "The Test of Righteousness",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Verigan's Fist",
             ID = "6953",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_MACE,
+            Description = "Two-Hand, Mace",
         },
     },
-    Page = kQuestInstanceData[1].Quests.Alliance[6].Page
+    Page = kQuestInstanceData["TheDeadmines"].Quests.Alliance[6].Page
 }
-kQuestInstanceData[24].Quests.Alliance[2] = {
+kQuestInstanceData["ShadowfangKeep"].Quests.Alliance[2] = {
     Title = "2. The Orb of Soran'ruk",
     Level = "25",
     Attain = "20",
@@ -5882,22 +5883,22 @@ kQuestInstanceData[24].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Orb of Soran'ruk",
             ID = "6898",
             Color = green,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
         {
             Name = "Staff of Soran'ruk",
             ID = "15109",
             Color = green,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
     }
 }
-kQuestInstanceData[24].Quests.Alliance[3] = {
+kQuestInstanceData["ShadowfangKeep"].Quests.Alliance[3] = {
     Title = "3. Arugal's Folly",
     Level = "27",
     Attain = "22",
@@ -5907,16 +5908,16 @@ kQuestInstanceData[24].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Signet of Arugal",
             ID = "51805",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[24].Quests.Alliance[4] = {
+kQuestInstanceData["ShadowfangKeep"].Quests.Alliance[4] = {
     Title = "4. The Missing Sorcerer",
     Level = "24",
     Attain = "22",
@@ -5926,10 +5927,10 @@ kQuestInstanceData[24].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[24].Quests.Alliance[5] = {
+kQuestInstanceData["ShadowfangKeep"].Quests.Alliance[5] = {
     Title = "5. Blood of Vorgendor",
     Level = "60",
     Attain = "60",
@@ -5939,10 +5940,10 @@ kQuestInstanceData[24].Quests.Alliance[5] = {
     Prequest = "Scythe of the Goddess",
     Folgequest = "Wolfblood",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[24].Quests.Horde[1] = {
+kQuestInstanceData["ShadowfangKeep"].Quests.Horde[1] = {
     Title = "1. Deathstalkers in Shadowfang",
     Level = "25",
     Attain = "18",
@@ -5952,16 +5953,16 @@ kQuestInstanceData[24].Quests.Horde[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Ghostly Mantle",
             ID = "3324",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_CLOTH,
+            Description = "Shoulder, Cloth",
         },
     }
 }
-kQuestInstanceData[24].Quests.Horde[2] = {
+kQuestInstanceData["ShadowfangKeep"].Quests.Horde[2] = {
     Title = "2. The Book of Ur",
     Level = "26",
     Attain = "16",
@@ -5971,22 +5972,22 @@ kQuestInstanceData[24].Quests.Horde[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Grizzled Boots",
             ID = "6335",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_LEATHER,
+            Description = "Feet, Leather",
         },
         {
             Name = "Steel-clasped Bracers",
             ID = "4534",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_MAIL,
+            Description = "Wrist, Mail",
         },
     }
 }
-kQuestInstanceData[24].Quests.Horde[3] = {
+kQuestInstanceData["ShadowfangKeep"].Quests.Horde[3] = {
     Title = "3. Arugal Must Die",
     Level = "27",
     Attain = "18",
@@ -5996,16 +5997,16 @@ kQuestInstanceData[24].Quests.Horde[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Seal of Sylvanas",
             ID = "6414",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[24].Quests.Horde[4] = {
+kQuestInstanceData["ShadowfangKeep"].Quests.Horde[4] = {
     Title = "4. The Orb of Soran'ruk",
     Level = "25",
     Attain = "20",
@@ -6015,16 +6016,16 @@ kQuestInstanceData[24].Quests.Horde[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Orb of Soran'ruk",
             ID = "6898",
             Color = green,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
     }
 }
-kQuestInstanceData[24].Quests.Horde[5] = {
+kQuestInstanceData["ShadowfangKeep"].Quests.Horde[5] = {
     Title = "5. Into The Jaws",
     Level = "25",
     Attain = "15",
@@ -6034,22 +6035,22 @@ kQuestInstanceData[24].Quests.Horde[5] = {
     Prequest = "Darlthos Heritage -> A Different Type of Lock -> Ways of Magic",
     Folgequest = "Darlthos Legacy",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Sword of Laneron",
             ID = "60392",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_SWORD,
+            Description = "Two-Hand, Sword",
         },
         {
             Name = "Shield of Mathela",
             ID = "60393",
             Color = blue,
-            Description = AQITEM_SHIELD,
+            Description = "Shield",
         },
     }
 }
-kQuestInstanceData[24].Quests.Horde[6] = {
+kQuestInstanceData["ShadowfangKeep"].Quests.Horde[6] = {
     Title = "6. Too Late to Prelate",
     Level = "22",
     Attain = "16",
@@ -6059,16 +6060,16 @@ kQuestInstanceData[24].Quests.Horde[6] = {
     Prequest = "To Guard the Undead -> To Aid Brightcopf",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Necklace of Redemption",
             ID = "70225",
             Color = green,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[24].Quests.Horde[7] = {
+kQuestInstanceData["ShadowfangKeep"].Quests.Horde[7] = {
     Title = "7. The Wolf, the Crone and the Scythe",
     Level = "60",
     Attain = "60",
@@ -6078,12 +6079,12 @@ kQuestInstanceData[24].Quests.Horde[7] = {
     Prequest = "Scythe of the Goddess",
     Folgequest = "Wolfblood",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
 
 --------------- INST25 - Stratholme ---------------
-kQuestInstanceData[25] = {
+kQuestInstanceData["Stratholme"] = {
     Story = "Once the jewel of northern Lordaeron, the city of Stratholme is where Prince Arthas turned against his mentor, Uther Lightbringer, and slaughtered hundreds of his own subjects who were believed to have contracted the dreaded plague of undeath. Arthas' downward spiral and ultimate surrender to the Lich King soon followed. The broken city is now inhabited by the undead Scourge - led by the powerful lich, Kel'thuzad. A contingent of Scarlet Crusaders, led by Grand Crusader Dathrohan, also holds a portion of the ravaged city. The two sides are locked in constant, violent combat. Those adventurers brave (or foolish) enough to enter Stratholme will be forced to contend with both factions before long. It is said that the city is guarded by three massive watchtowers, as well as powerful necromancers, banshees and abominations. There have also been reports of a malefic Death Knight riding atop an unholy steed - dispensing indiscriminate wrath on all those who venture within the realm of the Scourge.",
     Caption = "Stratholme",
     QAA = "21 Quests",
@@ -6093,7 +6094,7 @@ kQuestInstanceData[25] = {
         Horde = {}
     }
 }
-kQuestInstanceData[25].Quests.Alliance[1] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[1] = {
     Title = "1. The Flesh Does Not Lie",
     Level = "60",
     Attain = "55",
@@ -6103,10 +6104,10 @@ kQuestInstanceData[25].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "The Active Agent",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[25].Quests.Alliance[2] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[2] = {
     Title = "2. The Active Agent",
     Level = "60",
     Attain = "55",
@@ -6116,22 +6117,22 @@ kQuestInstanceData[25].Quests.Alliance[2] = {
     Prequest = "The Flesh Does Not Lie",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Seal of the Dawn",
             ID = "13209",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Rune of the Dawn",
             ID = "19812",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[25].Quests.Alliance[3] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[3] = {
     Title = "3. Houses of the Holy",
     Level = "60",
     Attain = "55",
@@ -6141,34 +6142,34 @@ kQuestInstanceData[25].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1 (x5)"..AQDiscription_AND..white.."2 (x5)"..AQDiscription_AND..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: 1 (x5) and 2 (x5) and 3 or 4",
         {
             Name = "Superior Healing Potion",
             ID = "3928",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
         {
             Name = "Greater Mana Potion",
             ID = "6149",
             Color = white,
-            Description = AQITEM_POTION,
+            Description = "Potion",
         },
         {
             Name = "Crown of the Penitent",
             ID = "13216",
             Color = green,
-            Description = AQITEM_HEAD .. AQITEM_CLOTH,
+            Description = "Head, Cloth",
         },
         {
             Name = "Band of the Penitent",
             ID = "13217",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[25].Quests.Alliance[4] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[4] = {
     Title = "4. The Great Fras Siabi",
     Level = "60",
     Attain = "55",
@@ -6178,16 +6179,16 @@ kQuestInstanceData[25].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Smokey's Lighter",
             ID = "13171",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[25].Quests.Alliance[5] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[5] = {
     Title = "5. The Restless Souls",
     Level = "60",
     Attain = "55",
@@ -6197,16 +6198,16 @@ kQuestInstanceData[25].Quests.Alliance[5] = {
     Prequest = "The Restless Souls",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Testament of Hope",
             ID = "13315",
             Color = green,
-            Description = AQITEM_OFFHAND,
+            Description = "Held In Off-hand",
         },
     }
 }
-kQuestInstanceData[25].Quests.Alliance[6] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[6] = {
     Title = "6. Of Love and Family",
     Level = "60",
     Attain = "52",
@@ -6216,10 +6217,10 @@ kQuestInstanceData[25].Quests.Alliance[6] = {
     Prequest = "Redemption - > Of Love and Family",
     Folgequest = "Find Myranda",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[25].Quests.Alliance[7] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[7] = {
     Title = "7. Menethil's Gift",
     Level = "60",
     Attain = "57",
@@ -6229,10 +6230,10 @@ kQuestInstanceData[25].Quests.Alliance[7] = {
     Prequest = "The Human Ras Frostraunen - > The Dying, Ras Frostwhisper",
     Folgequest = "Menethil's Gift",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[25].Quests.Alliance[8] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[8] = {
     Title = "8. Aurius' Reckoning",
     Level = "60",
     Attain = "55",
@@ -6242,22 +6243,22 @@ kQuestInstanceData[25].Quests.Alliance[8] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Will of the Martyr",
             ID = "17044",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Blood of the Martyr",
             ID = "17045",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[25].Quests.Alliance[9] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[9] = {
     Title = "9. The Archivist",
     Level = "60",
     Attain = "55",
@@ -6267,10 +6268,10 @@ kQuestInstanceData[25].Quests.Alliance[9] = {
     Prequest = "No",
     Folgequest = "The Truth Comes Crashing Down",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[25].Quests.Alliance[10] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[10] = {
     Title = "10. The Truth Comes Crashing Down",
     Level = "60",
     Attain = "55",
@@ -6280,10 +6281,10 @@ kQuestInstanceData[25].Quests.Alliance[10] = {
     Prequest = "The Archivist",
     Folgequest = "Above and Beyond",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[25].Quests.Alliance[11] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[11] = {
     Title = "11. Above and Beyond",
     Level = "60",
     Attain = "55",
@@ -6293,28 +6294,28 @@ kQuestInstanceData[25].Quests.Alliance[11] = {
     Prequest = "The Truth Comes Crashing Down",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Argent Defender",
             ID = "13243",
             Color = blue,
-            Description = AQITEM_SHIELD,
+            Description = "Shield",
         },
         {
             Name = "Argent Crusader",
             ID = "13249",
             Color = blue,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Argent Avenger",
             ID = "13246",
             Color = blue,
-            Description = AQITEM_ONEHAND .. AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
     }
 }
-kQuestInstanceData[25].Quests.Alliance[12] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[12] = {
     Title = "12. Dead Man's Plea",
     Level = "60",
     Attain = "58",
@@ -6324,10 +6325,10 @@ kQuestInstanceData[25].Quests.Alliance[12] = {
     Prequest = "In Search of Anthion",
     Folgequest = "Proof of Life",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[25].Quests.Alliance[13] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[13] = {
     Title = "13. The Left Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -6337,10 +6338,10 @@ kQuestInstanceData[25].Quests.Alliance[13] = {
     Prequest = "Components of Importance",
     Folgequest = "I See Alcaz Island In Your Future...",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[25].Quests.Alliance[14] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[14] = {
     Title = "14. The Right Piece of Lord Valthalak's Amulet",
     Level = "60",
     Attain = "58",
@@ -6350,10 +6351,10 @@ kQuestInstanceData[25].Quests.Alliance[14] = {
     Prequest = "More Components of Importance",
     Folgequest = "Final Preparations ("..yellow.."Upper Blackrock Spire"..white..")", -- 8994",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[25].Quests.Alliance[15] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[15] = {
     Title = "15. Atiesh, Greatstaff of the Guardian",
     Level = "60",
     Attain = "60",
@@ -6363,34 +6364,34 @@ kQuestInstanceData[25].Quests.Alliance[15] = {
     Prequest = "Frame of Atiesh -> Atiesh, the Befouled Greatstaff",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Atiesh, Greatstaff of the Guardian",
             ID = "22589",
             Color = purple,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Atiesh, Greatstaff of the Guardian",
             ID = "22630",
             Color = purple,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Atiesh, Greatstaff of the Guardian",
             ID = "22631",
             Color = purple,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Atiesh, Greatstaff of the Guardian",
             ID = "22632",
             Color = purple,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
     }
 }
-kQuestInstanceData[25].Quests.Alliance[16] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[16] = {
     Title = "16. Corruption",
     Level = "60",
     Attain = "50",
@@ -6400,16 +6401,16 @@ kQuestInstanceData[25].Quests.Alliance[16] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Plans: Blazing Rapier",
             ID = "12825",
             Color = green,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
     }
 }
-kQuestInstanceData[25].Quests.Alliance[17] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[17] = {
     Title = "17. Sweet Serenity",
     Level = "60",
     Attain = "50",
@@ -6419,16 +6420,16 @@ kQuestInstanceData[25].Quests.Alliance[17] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Plans: Enchanted Battlehammer",
             ID = "12824",
             Color = green,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
     }
 }
-kQuestInstanceData[25].Quests.Alliance[18] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[18] = {
     Title = "18. To Build a Pounder",
     Level = "60",
     Attain = "30",
@@ -6438,34 +6439,34 @@ kQuestInstanceData[25].Quests.Alliance[18] = {
     Prequest = "A Pounding Brain",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Reinforced Red Pounder",
             ID = "81253",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Mount",
         },
         {
             Name = "Reinforced Green Pounder",
             ID = "81252",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Mount",
         },
         {
             Name = "Reinforced Blue Pounder",
             ID = "81251",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Mount",
         },
         {
             Name = "Reinforced Black Pounder",
             ID = "81250",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Mount",
         },
     }
 }
-kQuestInstanceData[25].Quests.Alliance[19] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[19] = {
     Title = "19. To Wake The Ashbringer",
     Level = "60",
     Attain = "60",
@@ -6475,16 +6476,16 @@ kQuestInstanceData[25].Quests.Alliance[19] = {
     Prequest = "Orb of Pure Light -> Seek Help Elsewhere",
     Folgequest = "Spirit of the Ashbringer",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Tabard of the Ashbringer",
             ID = "82002",
             Color = purple,
-            Description = AQITEM_TABARD,
+            Description = "Tabard",
         },
     }
 }
-kQuestInstanceData[25].Quests.Alliance[20] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[20] = {
     Title = "20. Rothlen Family Brooch",
     Level = "60",
     Attain = "55",
@@ -6494,10 +6495,10 @@ kQuestInstanceData[25].Quests.Alliance[20] = {
     Prequest = "Scribbled Cooking Notes "..yellow.."[Karazhan]"..white.." -> Lost and Found "..yellow.."[Karazhan]"..white.."", -- 40998, 40999",
     Folgequest = "The Secret Recipe ("..yellow.."[Karazhan]"..white..")",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[25].Quests.Alliance[21] = {
+kQuestInstanceData["Stratholme"].Quests.Alliance[21] = {
     Title = "21. The Key to Karazhan VII",
     Level = "60",
     Attain = "58",
@@ -6507,27 +6508,27 @@ kQuestInstanceData[25].Quests.Alliance[21] = {
     Prequest = "The Key to Karazhan VI",
     Folgequest = "The Key to Karazhan VIII ("..yellow.."Dire Maul West"..white..")",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[25].Quests.Horde[1] = kQuestInstanceData[25].Quests.Alliance[1]
-kQuestInstanceData[25].Quests.Horde[2] = kQuestInstanceData[25].Quests.Alliance[2]
-kQuestInstanceData[25].Quests.Horde[3] = kQuestInstanceData[25].Quests.Alliance[3]
-kQuestInstanceData[25].Quests.Horde[4] = kQuestInstanceData[25].Quests.Alliance[4]
-kQuestInstanceData[25].Quests.Horde[5] = kQuestInstanceData[25].Quests.Alliance[5]
-kQuestInstanceData[25].Quests.Horde[6] = kQuestInstanceData[25].Quests.Alliance[6]
-kQuestInstanceData[25].Quests.Horde[7] = kQuestInstanceData[25].Quests.Alliance[7]
-kQuestInstanceData[25].Quests.Horde[8] = kQuestInstanceData[25].Quests.Alliance[8]
-kQuestInstanceData[25].Quests.Horde[9] = kQuestInstanceData[25].Quests.Alliance[9]
-kQuestInstanceData[25].Quests.Horde[10] = kQuestInstanceData[25].Quests.Alliance[10]
-kQuestInstanceData[25].Quests.Horde[11] = kQuestInstanceData[25].Quests.Alliance[11]
-kQuestInstanceData[25].Quests.Horde[12] = kQuestInstanceData[25].Quests.Alliance[12]
-kQuestInstanceData[25].Quests.Horde[13] = kQuestInstanceData[25].Quests.Alliance[13]
-kQuestInstanceData[25].Quests.Horde[14] = kQuestInstanceData[25].Quests.Alliance[14]
-kQuestInstanceData[25].Quests.Horde[15] = kQuestInstanceData[25].Quests.Alliance[15]
-kQuestInstanceData[25].Quests.Horde[16] = kQuestInstanceData[25].Quests.Alliance[16]
-kQuestInstanceData[25].Quests.Horde[17] = kQuestInstanceData[25].Quests.Alliance[17]
-kQuestInstanceData[25].Quests.Horde[18] = {
+kQuestInstanceData["Stratholme"].Quests.Horde[1] = kQuestInstanceData["Stratholme"].Quests.Alliance[1]
+kQuestInstanceData["Stratholme"].Quests.Horde[2] = kQuestInstanceData["Stratholme"].Quests.Alliance[2]
+kQuestInstanceData["Stratholme"].Quests.Horde[3] = kQuestInstanceData["Stratholme"].Quests.Alliance[3]
+kQuestInstanceData["Stratholme"].Quests.Horde[4] = kQuestInstanceData["Stratholme"].Quests.Alliance[4]
+kQuestInstanceData["Stratholme"].Quests.Horde[5] = kQuestInstanceData["Stratholme"].Quests.Alliance[5]
+kQuestInstanceData["Stratholme"].Quests.Horde[6] = kQuestInstanceData["Stratholme"].Quests.Alliance[6]
+kQuestInstanceData["Stratholme"].Quests.Horde[7] = kQuestInstanceData["Stratholme"].Quests.Alliance[7]
+kQuestInstanceData["Stratholme"].Quests.Horde[8] = kQuestInstanceData["Stratholme"].Quests.Alliance[8]
+kQuestInstanceData["Stratholme"].Quests.Horde[9] = kQuestInstanceData["Stratholme"].Quests.Alliance[9]
+kQuestInstanceData["Stratholme"].Quests.Horde[10] = kQuestInstanceData["Stratholme"].Quests.Alliance[10]
+kQuestInstanceData["Stratholme"].Quests.Horde[11] = kQuestInstanceData["Stratholme"].Quests.Alliance[11]
+kQuestInstanceData["Stratholme"].Quests.Horde[12] = kQuestInstanceData["Stratholme"].Quests.Alliance[12]
+kQuestInstanceData["Stratholme"].Quests.Horde[13] = kQuestInstanceData["Stratholme"].Quests.Alliance[13]
+kQuestInstanceData["Stratholme"].Quests.Horde[14] = kQuestInstanceData["Stratholme"].Quests.Alliance[14]
+kQuestInstanceData["Stratholme"].Quests.Horde[15] = kQuestInstanceData["Stratholme"].Quests.Alliance[15]
+kQuestInstanceData["Stratholme"].Quests.Horde[16] = kQuestInstanceData["Stratholme"].Quests.Alliance[16]
+kQuestInstanceData["Stratholme"].Quests.Horde[17] = kQuestInstanceData["Stratholme"].Quests.Alliance[17]
+kQuestInstanceData["Stratholme"].Quests.Horde[18] = {
     Title = "18. Ramstein",
     Level = "60",
     Attain = "56",
@@ -6537,22 +6538,22 @@ kQuestInstanceData[25].Quests.Horde[18] = {
     Prequest = "The Ranger Lord's Behest -> Duskwing, Oh How I Hate Thee...",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Royal Seal of Alexis",
             ID = "18022",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Elemental Circle",
             ID = "17001",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[25].Quests.Horde[19] = {
+kQuestInstanceData["Stratholme"].Quests.Horde[19] = {
     Title = "19. To Build a Pounder",
     Level = "60",
     Attain = "30",
@@ -6562,34 +6563,34 @@ kQuestInstanceData[25].Quests.Horde[19] = {
     Prequest = "A Pounding Brain",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Reinforced Red Pounder",
             ID = "81253",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Mount",
         },
         {
             Name = "Reinforced Green Pounder",
             ID = "81252",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Mount",
         },
         {
             Name = "Reinforced Blue Pounder",
             ID = "81251",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Mount",
         },
         {
             Name = "Reinforced Black Pounder",
             ID = "81250",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Mount",
         },
     }
 }
-kQuestInstanceData[25].Quests.Horde[20] = {
+kQuestInstanceData["Stratholme"].Quests.Horde[20] = {
     Title = "20. To Wake The Ashbringer",
     Level = "60",
     Attain = "60",
@@ -6599,16 +6600,16 @@ kQuestInstanceData[25].Quests.Horde[20] = {
     Prequest = "Orb of Pure Light -> Seek Help Elsewhere",
     Folgequest = "Spirit of the Ashbringer",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Tabard of the Ashbringer",
             ID = "82002",
             Color = purple,
-            Description = AQITEM_TABARD,
+            Description = "Tabard",
         },
     }
 }
-kQuestInstanceData[25].Quests.Horde[21] = {
+kQuestInstanceData["Stratholme"].Quests.Horde[21] = {
     Title = "21. Rothlen Family Brooch",
     Level = "60",
     Attain = "55",
@@ -6618,10 +6619,10 @@ kQuestInstanceData[25].Quests.Horde[21] = {
     Prequest = "Scribbled Cooking Notes "..yellow.."[Karazhan]"..white.." -> Lost and Found "..yellow.."[Karazhan]"..white.."", -- 40998, 40999",
     Folgequest = "The Secret Recipe ("..yellow.."[Karazhan]"..white..")",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[25].Quests.Horde[22] = {
+kQuestInstanceData["Stratholme"].Quests.Horde[22] = {
     Title = "22. The Key to Karazhan VII",
     Level = "60",
     Attain = "58",
@@ -6631,12 +6632,12 @@ kQuestInstanceData[25].Quests.Horde[22] = {
     Prequest = "The Key to Karazhan VI",
     Folgequest = "The Key to Karazhan VIII ("..yellow.."Dire Maul West"..white..")",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
 
 --------------- INST26 - Ruins of Ahn'Qiraj ---------------
-kQuestInstanceData[26] = {
+kQuestInstanceData["TheRuinsofAhnQiraj"] = {
     Story = "During the final hours of the War of the Shifting Sands, the combined forces of the night elves and the four dragonflights drove the battle to the very heart of the qiraji empire, to the fortress city of Ahn'Qiraj. Yet at the city gates, the armies of Kalimdor encountered a concentration of silithid war drones more massive than any they had encountered before. Ultimately the silithid and their qiraji masters were not defeated, but merely imprisoned inside a magical barrier, and the war left the cursed city in ruins. A thousand years have passed since that day, but the qiraji forces have not been idle. A new and terrible army has been spawned from the hives, and the ruins of Ahn'Qiraj are teeming once again with swarming masses of silithid and qiraji. This threat must be eliminated, or else all of Azeroth may fall before the terrifying might of the new qiraji army.",
     Caption = "Ruins of Ahn'Qiraj",
     QAA = "3 Quests",
@@ -6646,7 +6647,7 @@ kQuestInstanceData[26] = {
         Horde = {}
     }
 }
-kQuestInstanceData[26].Quests.Alliance[1] = {
+kQuestInstanceData["TheRuinsofAhnQiraj"].Quests.Alliance[1] = {
     Title = "1. The Fall of Ossirian",
     Level = "60",
     Attain = "60",
@@ -6656,34 +6657,34 @@ kQuestInstanceData[26].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Charm of the Shifting Sands",
             ID = "21504",
             Color = purple,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Amulet of the Shifting Sands",
             ID = "21507",
             Color = purple,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Choker of the Shifting Sands",
             ID = "21505",
             Color = purple,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Pendant of the Shifting Sands",
             ID = "21506",
             Color = purple,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[26].Quests.Alliance[2] = {
+kQuestInstanceData["TheRuinsofAhnQiraj"].Quests.Alliance[2] = {
     Title = "2. The Perfect Poison",
     Level = "60",
     Attain = "60",
@@ -6693,46 +6694,46 @@ kQuestInstanceData[26].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4"..AQDiscription_OR..white.."5"..AQDiscription_OR..white.."6",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Ravenholdt Slicer",
             ID = "22378",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
         {
             Name = "Shivsprocket's Shiv",
             ID = "22379",
             Color = blue,
-            Description = AQITEM_MAINHAND..AQITEM_DAGGER,
+            Description = "Main Hand, Dagger",
         },
         {
             Name = "The Thunderwood Poker",
             ID = "22377",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_DAGGER,
+            Description = "One-Hand, Dagger",
         },
         {
             Name = "Doomulus Prime",
             ID = "22348",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_MACE,
+            Description = "Two-Hand, Mace",
         },
         {
             Name = "Fahrad's Reloading Repeater",
             ID = "22347",
             Color = blue,
-            Description = AQITEM_CROSSBOW,
+            Description = "Crossbow",
         },
         {
             Name = "Simone's Cultivating Hammer",
             ID = "22380",
             Color = blue,
-            Description = AQITEM_MAINHAND..AQITEM_MACE,
+            Description = "Main Hand, Mace",
         },
     }
 }
-kQuestInstanceData[26].Quests.Alliance[3] = {
+kQuestInstanceData["TheRuinsofAhnQiraj"].Quests.Alliance[3] = {
     Title = "3. Lost to the Sands",
     Level = "60",
     Attain = "60",
@@ -6742,21 +6743,21 @@ kQuestInstanceData[26].Quests.Alliance[3] = {
     Prequest = "Arcane Refreshment -> A Special Kind of Summons",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Tome of Refreshment Ritual",
             ID = "83002",
             Color = white,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
     }
 }
-kQuestInstanceData[26].Quests.Horde[1] = kQuestInstanceData[26].Quests.Alliance[1]
-kQuestInstanceData[26].Quests.Horde[2] = kQuestInstanceData[26].Quests.Alliance[2]
-kQuestInstanceData[26].Quests.Horde[3] = kQuestInstanceData[26].Quests.Alliance[3]
+kQuestInstanceData["TheRuinsofAhnQiraj"].Quests.Horde[1] = kQuestInstanceData["TheRuinsofAhnQiraj"].Quests.Alliance[1]
+kQuestInstanceData["TheRuinsofAhnQiraj"].Quests.Horde[2] = kQuestInstanceData["TheRuinsofAhnQiraj"].Quests.Alliance[2]
+kQuestInstanceData["TheRuinsofAhnQiraj"].Quests.Horde[3] = kQuestInstanceData["TheRuinsofAhnQiraj"].Quests.Alliance[3]
 
 --------------- INST27 - The Stockade ---------------
-kQuestInstanceData[27] = {
+kQuestInstanceData["TheStockade"] = {
     Story = "The Stockades are a high-security prison complex, hidden beneath the canal district of Stormwind city. Presided over by Warden Thelwater, the Stockades are home to petty crooks, political insurgents, murderers and a score of the most dangerous criminals in the land. Recently, a prisoner-led revolt has resulted in a state of pandemonium within the Stockades - where the guards have been driven out and the convicts roam free. Warden Thelwater has managed to escape the holding area and is currently enlisting brave thrill-seekers to venture into the prison and kill the uprising's mastermind - the cunning felon, Bazil Thredd.",
     Caption = "The Stockade",
     QAA = "7 Quests",
@@ -6766,7 +6767,7 @@ kQuestInstanceData[27] = {
         Horde = {}
     }
 }
-kQuestInstanceData[27].Quests.Alliance[1] = {
+kQuestInstanceData["TheStockade"].Quests.Alliance[1] = {
     Title = "1. What Comes Around...",
     Level = "25",
     Attain = "22",
@@ -6776,22 +6777,22 @@ kQuestInstanceData[27].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Lucine Longsword",
             ID = "3400",
             Color = green,
-            Description = AQITEM_MAINHAND..AQITEM_SWORD,
+            Description = "Main Hand, Sword",
         },
         {
             Name = "Hardened Root Staff",
             ID = "1317",
             Color = green,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
     }
 }
-kQuestInstanceData[27].Quests.Alliance[2] = {
+kQuestInstanceData["TheStockade"].Quests.Alliance[2] = {
     Title = "2. Crime and Punishment",
     Level = "26",
     Attain = "22",
@@ -6801,22 +6802,22 @@ kQuestInstanceData[27].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Ambassador's Boots",
             ID = "2033",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_LEATHER,
+            Description = "Feet, Leather",
         },
         {
             Name = "Darkshire Mail Leggings",
             ID = "2906",
             Color = green,
-            Description = AQITEM_LEGS..AQITEM_MAIL,
+            Description = "Legs, Mail",
         },
     }
 }
-kQuestInstanceData[27].Quests.Alliance[3] = {
+kQuestInstanceData["TheStockade"].Quests.Alliance[3] = {
     Title = "3. Quell The Uprising",
     Level = "26",
     Attain = "22",
@@ -6826,10 +6827,10 @@ kQuestInstanceData[27].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[27].Quests.Alliance[4] = {
+kQuestInstanceData["TheStockade"].Quests.Alliance[4] = {
     Title = "4. The Color of Blood",
     Level = "26",
     Attain = "22",
@@ -6839,10 +6840,10 @@ kQuestInstanceData[27].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[27].Quests.Alliance[5] = {
+kQuestInstanceData["TheStockade"].Quests.Alliance[5] = {
     Title = "5. The Fury Runs Deep",
     Level = "27",
     Attain = "22",
@@ -6852,22 +6853,22 @@ kQuestInstanceData[27].Quests.Alliance[5] = {
     Prequest = "The Dark Iron War",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Belt of Vindication",
             ID = "3562",
             Color = green,
-            Description = AQITEM_WAIST..AQITEM_LEATHER,
+            Description = "Waist, Leather",
         },
         {
             Name = "Headbasher",
             ID = "1264",
             Color = green,
-            Description = AQITEM_TWOHAND..AQITEM_MACE,
+            Description = "Two-Hand, Mace",
         },
     }
 }
-kQuestInstanceData[27].Quests.Alliance[6] = {
+kQuestInstanceData["TheStockade"].Quests.Alliance[6] = {
     Title = "6. The Stockade Riots",
     Level = "29",
     Attain = "16",
@@ -6877,10 +6878,10 @@ kQuestInstanceData[27].Quests.Alliance[6] = {
     Prequest = "The Defias Brotherhood -> Bazil Thredd",
     Folgequest = "The Curious Visitor",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[27].Quests.Alliance[7] = {
+kQuestInstanceData["TheStockade"].Quests.Alliance[7] = {
     Title = "7. The Stockade's Search",
     Level = "24",
     Attain = "18",
@@ -6890,30 +6891,30 @@ kQuestInstanceData[27].Quests.Alliance[7] = {
     Prequest = "Robb's Report",
     Folgequest = "Investigating Corinth",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Valiant Medallion",
             ID = "81416",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Ambient Talisman",
             ID = "81417",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Magnificent Necklace",
             ID = "81418",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
 
 --------------- INST28 - The Sunken Temple ---------------
-kQuestInstanceData[28] = {
+kQuestInstanceData["TheSunkenTemple"] = {
     Story = "Over a thousand years ago, the powerful Gurubashi Empire was torn apart by a massive civil war. An influential group of troll priests, known as the Atal'ai, attempted to bring back an ancient blood god named Hakkar the Soulflayer. Though the priests were defeated and ultimately exiled, the great troll empire buckled in upon itself. The exiled priests fled far to the north, into the Swamp of Sorrows. There they erected a great temple to Hakkar - where they could prepare for his arrival into the physical world. The great dragon Aspect, Ysera, learned of the Atal'ai's plans and smashed the temple beneath the marshes. To this day, the temple's drowned ruins are guarded by the green dragons who prevent anyone from getting in or out. However, it is believed that some of the fanatical Atal'ai may have survived Ysera's wrath - and recommitted themselves to the dark service of Hakkar.",
     Caption = "The Sunken Temple",
     QAA = "19 Quests",
@@ -6923,7 +6924,7 @@ kQuestInstanceData[28] = {
         Horde = {}
     }
 }
-kQuestInstanceData[28].Quests.Alliance[1] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[1] = {
     Title = "1. Into The Temple of Atal'Hakkar",
     Level = "50",
     Attain = "41",
@@ -6933,16 +6934,16 @@ kQuestInstanceData[28].Quests.Alliance[1] = {
     Prequest = "In Search of The Temple -> Rhapsody's Tale",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Guardian Talisman",
             ID = "1490",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[2] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[2] = {
     Title = "2. Into the Depths",
     Level = "51",
     Attain = "46",
@@ -6952,10 +6953,10 @@ kQuestInstanceData[28].Quests.Alliance[2] = {
     Prequest = "The Stone Circle",
     Folgequest = "Secret of the Circle",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[28].Quests.Alliance[3] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[3] = {
     Title = "3. Secret of the Circle",
     Level = "51",
     Attain = "46",
@@ -6965,16 +6966,16 @@ kQuestInstanceData[28].Quests.Alliance[3] = {
     Prequest = "Into the Depths",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Hakkari Urn",
             ID = "10773",
             Color = green,
-            Description = AQITEM_ITEM,
+            Description = "Container",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[4] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[4] = {
     Title = "4. Haze of Evil",
     Level = "52",
     Attain = "47",
@@ -6984,10 +6985,10 @@ kQuestInstanceData[28].Quests.Alliance[4] = {
     Prequest = "Muigin and Larion -> A Visit to Gregan",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[28].Quests.Alliance[5] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[5] = {
     Title = "5. The God Hakkar",
     Level = "53",
     Attain = "40",
@@ -6997,28 +6998,28 @@ kQuestInstanceData[28].Quests.Alliance[5] = {
     Prequest = "Screecher Spirits -> The Ancient Egg",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Avenguard Helm",
             ID = "10749",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_PLATE,
+            Description = "Head, Plate",
         },
         {
             Name = "Lifeforce Dirk",
             ID = "10750",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_DAGGER,
+            Description = "One-Hand, Dagger",
         },
         {
             Name = "Gemburst Circlet",
             ID = "10751",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_CLOTH,
+            Description = "Head, Cloth",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[6] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[6] = {
     Title = "6. Jammal'an the Prophet",
     Level = "53",
     Attain = "38",
@@ -7028,22 +7029,22 @@ kQuestInstanceData[28].Quests.Alliance[6] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Rainstrider Leggings",
             ID = "11123",
             Color = blue,
-            Description = AQITEM_LEGS..AQITEM_CLOTH,
+            Description = "Legs, Cloth",
         },
         {
             Name = "Helm of Exile",
             ID = "11124",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_MAIL,
+            Description = "Head, Mail",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[7] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[7] = {
     Title = "7. The Essence of Eranikus",
     Level = "55",
     Attain = "48",
@@ -7053,16 +7054,16 @@ kQuestInstanceData[28].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "The Essence of Eranikus",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Chained Essence of Eranikus",
             ID = "10455",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[8] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[8] = {
     Title = "8. Trolls of a Feather",
     Level = "52",
     Attain = "50",
@@ -7072,28 +7073,28 @@ kQuestInstanceData[28].Quests.Alliance[8] = {
     Prequest = "An Imp's Request -> The Wrong Stuff",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Soul Harvester",
             ID = "20536",
             Color = blue,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Abyss Shard",
             ID = "20534",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Robes of Servitude",
             ID = "20530",
             Color = blue,
-            Description = AQITEM_CHEST..AQITEM_CLOTH,
+            Description = "Chest, Cloth",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[9] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[9] = {
     Title = "9. Voodoo Feathers",
     Level = "52",
     Attain = "50",
@@ -7103,28 +7104,28 @@ kQuestInstanceData[28].Quests.Alliance[9] = {
     Prequest = "A Troubled Spirit -> War on the Shadowsworn",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Fury Visor",
             ID = "20521",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_PLATE,
+            Description = "Head, Plate",
         },
         {
             Name = "Diamond Flask",
             ID = "20130",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Razorsteel Shoulders",
             ID = "20517",
             Color = blue,
-            Description = AQITEM_SHOULDER..AQITEM_PLATE,
+            Description = "Shoulder, Plate",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[10] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[10] = {
     Title = "10. A Better Ingredient",
     Level = "52",
     Attain = "50",
@@ -7134,28 +7135,28 @@ kQuestInstanceData[28].Quests.Alliance[10] = {
     Prequest = "Torwa Pathfinder -> Toxic Test",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Grizzled Pelt",
             ID = "22274",
             Color = blue,
-            Description = AQITEM_CHEST..AQITEM_LEATHER,
+            Description = "Chest, Leather",
         },
         {
             Name = "Forest's Embrace",
             ID = "22272",
             Color = blue,
-            Description = AQITEM_CHEST..AQITEM_LEATHER,
+            Description = "Chest, Leather",
         },
         {
             Name = "Moonshadow Stave",
             ID = "22458",
             Color = blue,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[11] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[11] = {
     Title = "11. The Green Drake",
     Level = "52",
     Attain = "50",
@@ -7165,28 +7166,28 @@ kQuestInstanceData[28].Quests.Alliance[11] = {
     Prequest = "The Hunter's Charm -> Wavethrashing",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Hunting Spear",
             ID = "20083",
             Color = blue,
-            Description = AQITEM_POLEARM,
+            Description = "Polearm",
         },
         {
             Name = "Devilsaur Eye",
             ID = "19991",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Devilsaur Tooth",
             ID = "19992",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[12] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[12] = {
     Title = "12. Destroy Morphaz",
     Level = "52",
     Attain = "50",
@@ -7196,28 +7197,28 @@ kQuestInstanceData[28].Quests.Alliance[12] = {
     Prequest = "Magic Dust -> The Siren's Coral",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Glacial Spike",
             ID = "20035",
             Color = blue,
-            Description = AQITEM_DAGGER,
+            Description = "One-Hand, Dagger",
         },
         {
             Name = "Arcane Crystal Pendant",
             ID = "20037",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Fire Ruby",
             ID = "20036",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[13] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[13] = {
     Title = "13. Blood of Morphaz",
     Level = "52",
     Attain = "50",
@@ -7227,28 +7228,28 @@ kQuestInstanceData[28].Quests.Alliance[13] = {
     Prequest = "Cenarion Aid -> The Ichor of Undeath",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Blessed Prayer Beads",
             ID = "19990",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Woestave",
             ID = "20082",
             Color = blue,
-            Description = AQITEM_WAND,
+            Description = "Wand",
         },
         {
             Name = "Circle of Hope",
             ID = "20006",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[14] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[14] = {
     Title = "14. The Azure Key",
     Level = "52",
     Attain = "50",
@@ -7258,28 +7259,28 @@ kQuestInstanceData[28].Quests.Alliance[14] = {
     Prequest = "A Simple Request -> Encoded Fragments",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Ebon Mask",
             ID = "19984",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_LEATHER,
+            Description = "Head, Leather",
         },
         {
             Name = "Whisperwalk Boots",
             ID = "20255",
             Color = blue,
-            Description = AQITEM_FEET..AQITEM_LEATHER,
+            Description = "Feet, Leather",
         },
         {
             Name = "Duskbat Drape",
             ID = "19982",
             Color = blue,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[15] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[15] = {
     Title = "15. Forging the Mightstone",
     Level = "52",
     Attain = "50",
@@ -7289,34 +7290,34 @@ kQuestInstanceData[28].Quests.Alliance[15] = {
     Prequest = "Inert Scourgestones",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: 1 and 2 or 3 or 4",
         {
             Name = "Holy Mightstone",
             ID = "20620",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Enchant",
         },
         {
             Name = "Lightforged Blade",
             ID = "20504",
             Color = blue,
-            Description = AQITEM_SWORD,
+            Description = "Two-Hand, Sword",
         },
         {
             Name = "Sanctified Orb",
             ID = "20512",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Chivalrous Signet",
             ID = "20505",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[16] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[16] = {
     Title = "16. Eranikus, Tyrant of the Dream",
     Level = "60",
     Attain = "60",
@@ -7326,10 +7327,10 @@ kQuestInstanceData[28].Quests.Alliance[16] = {
     Prequest = "The Charge of the Dragonflights",
     Folgequest = "Tyrande and Remulos",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[28].Quests.Alliance[17] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[17] = {
     Title = "17. By Any Means Necessary IV",
     Level = "53",
     Attain = "47",
@@ -7339,16 +7340,16 @@ kQuestInstanceData[28].Quests.Alliance[17] = {
     Prequest = "By Any Means Necessary I -> By Any Means Necessary II -> By Any Means Necessary III",
     Folgequest = "By Any Means Necessary V",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Darkwind Glaive",
             ID = "60536",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[18] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[18] = {
     Title = "18. Into the Dream III",
     Level = "60",
     Attain = "58",
@@ -7358,16 +7359,16 @@ kQuestInstanceData[28].Quests.Alliance[18] = {
     Prequest = "Into the Dream I -> Into the Dream II",
     Folgequest = "Into the Dream IV",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Gemstone of Ysera",
             ID = "50545",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[28].Quests.Alliance[19] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[19] = {
     Title = "19. The Riftwalker's Cane",
     Level = "54",
     Attain = "30",
@@ -7377,16 +7378,16 @@ kQuestInstanceData[28].Quests.Alliance[19] = {
     Prequest = "The Sanv Charm ->> Finding Akh Z'ador -> Rift Fatigue: Body",
     Folgequest = "Novice In A Barren Land",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Pure Draenethyst Gemstone",
             ID = "41385",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Quest Item",
         },
     }
 }
-kQuestInstanceData[28].Quests.Horde[1] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[1] = {
     Title = "1. The Temple of Atal'Hakkar",
     Level = "50",
     Attain = "38",
@@ -7395,11 +7396,11 @@ kQuestInstanceData[28].Quests.Horde[1] = {
     Note = "All Enemys in the Temple drop Fetishes.\nQuestline starts at Fel'Zerul (Swamp of Sorrows - Stonard; "..yellow.."47,54"..white..")",
     Prequest = "Pool of Tears -> Return to Fel'Zerul",
     Folgequest = "No",
-    Rewards = kQuestInstanceData[28].Quests.Alliance[1].Rewards
+    Rewards = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[1].Rewards
 }
-kQuestInstanceData[28].Quests.Horde[2] = kQuestInstanceData[28].Quests.Alliance[2]
-kQuestInstanceData[28].Quests.Horde[3] = kQuestInstanceData[28].Quests.Alliance[3]
-kQuestInstanceData[28].Quests.Horde[4] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[2] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[2]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[3] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[3]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[4] = {
     Title = "4. Zapper Fuel",
     Level = "52",
     Attain = "47",
@@ -7409,20 +7410,20 @@ kQuestInstanceData[28].Quests.Horde[4] = {
     Prequest = "Larion and Muigin -> Marvon's Workshop",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[28].Quests.Horde[5] = kQuestInstanceData[28].Quests.Alliance[5]
-kQuestInstanceData[28].Quests.Horde[6] = kQuestInstanceData[28].Quests.Alliance[6]
-kQuestInstanceData[28].Quests.Horde[7] = kQuestInstanceData[28].Quests.Alliance[7]
-kQuestInstanceData[28].Quests.Horde[8] = kQuestInstanceData[28].Quests.Alliance[8]
-kQuestInstanceData[28].Quests.Horde[9] = kQuestInstanceData[28].Quests.Alliance[9]
-kQuestInstanceData[28].Quests.Horde[10] = kQuestInstanceData[28].Quests.Alliance[10]
-kQuestInstanceData[28].Quests.Horde[11] = kQuestInstanceData[28].Quests.Alliance[11]
-kQuestInstanceData[28].Quests.Horde[12] = kQuestInstanceData[28].Quests.Alliance[12]
-kQuestInstanceData[28].Quests.Horde[13] = kQuestInstanceData[28].Quests.Alliance[13]
-kQuestInstanceData[28].Quests.Horde[14] = kQuestInstanceData[28].Quests.Alliance[14]
-kQuestInstanceData[28].Quests.Horde[15] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[5] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[5]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[6] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[6]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[7] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[7]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[8] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[8]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[9] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[9]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[10] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[10]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[11] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[11]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[12] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[12]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[13] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[13]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[14] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[14]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[15] = {
     Title = "15. Da Voodoo",
     Level = "52",
     Attain = "50",
@@ -7432,30 +7433,30 @@ kQuestInstanceData[28].Quests.Horde[15] = {
     Prequest = "Spirit Totem",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Azurite Fists",
             ID = "20369",
             Color = blue,
-            Description = AQITEM_HANDS..AQITEM_MAIL,
+            Description = "Hands, Mail",
         },
         {
             Name = "Enamored Water Spirit",
             ID = "20503",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Wildstaff",
             ID = "20556",
             Color = blue,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
     }
 }
-kQuestInstanceData[28].Quests.Horde[16] = kQuestInstanceData[28].Quests.Alliance[16]
-kQuestInstanceData[28].Quests.Horde[17] = kQuestInstanceData[28].Quests.Alliance[17]
-kQuestInstanceData[28].Quests.Horde[18] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[16] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[16]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[17] = kQuestInstanceData["TheSunkenTemple"].Quests.Alliance[17]
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[18] = {
     Title = "18. The Maul'ogg Crisis VII",
     Level = "54",
     Attain = "45",
@@ -7465,28 +7466,28 @@ kQuestInstanceData[28].Quests.Horde[18] = {
     Prequest = "The Maul'ogg Crisis VI",
     Folgequest = "The Maul'ogg Crisis VIII",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "The Ogre Mantle",
             ID = "60346",
             Color = blue,
-            Description = AQITEM_SHOULDER..AQITEM_LEATHER,
+            Description = "Shoulder, Leather",
         },
         {
             Name = "Staff of the Ogre Seer",
             ID = "60347",
             Color = blue,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Favor of Cruk'Zogg",
             ID = "60348",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[28].Quests.Horde[19] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[19] = {
     Title = "19. Into the Dream III",
     Level = "60",
     Attain = "58",
@@ -7496,16 +7497,16 @@ kQuestInstanceData[28].Quests.Horde[19] = {
     Prequest = "Into the Dream I -> Into the Dream II",
     Folgequest = "Into the Dream IV",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Gemstone of Ysera",
             ID = "50545",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[28].Quests.Horde[20] = {
+kQuestInstanceData["TheSunkenTemple"].Quests.Horde[20] = {
     Title = "20. The Riftwalker's Cane",
     Level = "54",
     Attain = "30",
@@ -7515,18 +7516,18 @@ kQuestInstanceData[28].Quests.Horde[20] = {
     Prequest = "The Sanv Charm ->> Finding Akh Z'ador -> Rift Fatigue: Body",
     Folgequest = "Novice In A Barren Land",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Pure Draenethyst Gemstone",
             ID = "41385",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Quest Item",
         },
     }
 }
 
 --------------- INST29 - Temple of Ahn'Qiraj ---------------
-kQuestInstanceData[29] = {
+kQuestInstanceData["TheTempleofAhnQiraj"] = {
     Story = "At the heart of Ahn'Qiraj lies an ancient temple complex. Built in the time before recorded history, it is both a monument to unspeakable gods and a massive breeding ground for the qiraji army. Since the War of the Shifting Sands ended a thousand years ago, the Twin Emperors of the qiraji empire have been trapped inside their temple, barely contained behind the magical barrier erected by the bronze dragon Anachronos and the night elves. Now that the Scepter of the Shifting Sands has been reassembled and the seal has been broken, the way into the inner sanctum of Ahn'Qiraj is open. Beyond the crawling madness of the hives, beneath the Temple of Ahn'Qiraj, legions of qiraji prepare for invasion. They must be stopped at all costs before they can unleash their voracious insectoid armies on Kalimdor once again, and a second War of the Shifting Sands breaks loose!",
     Caption = "Temple of Ahn'Qiraj",
     QAA = "2 Quests",
@@ -7536,7 +7537,7 @@ kQuestInstanceData[29] = {
         Horde = {}
     }
 }
-kQuestInstanceData[29].Quests.Alliance[1] = {
+kQuestInstanceData["TheTempleofAhnQiraj"].Quests.Alliance[1] = {
     Title = "1. C'Thun's Legacy",
     Level = "60",
     Attain = "60",
@@ -7546,28 +7547,28 @@ kQuestInstanceData[29].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "The Savior of Kalimdor",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Amulet of the Fallen God",
             ID = "21712",
             Color = purple,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Cloak of the Fallen God",
             ID = "21710",
             Color = purple,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Ring of the Fallen God",
             ID = "21709",
             Color = purple,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[29].Quests.Alliance[2] = {
+kQuestInstanceData["TheTempleofAhnQiraj"].Quests.Alliance[2] = {
     Title = "2. Secrets of the Qiraji",
     Level = "60",
     Attain = "60",
@@ -7577,14 +7578,14 @@ kQuestInstanceData[29].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[29].Quests.Horde[1] = kQuestInstanceData[29].Quests.Alliance[1]
-kQuestInstanceData[29].Quests.Horde[2] = kQuestInstanceData[29].Quests.Alliance[2]
+kQuestInstanceData["TheTempleofAhnQiraj"].Quests.Horde[1] = kQuestInstanceData["TheTempleofAhnQiraj"].Quests.Alliance[1]
+kQuestInstanceData["TheTempleofAhnQiraj"].Quests.Horde[2] = kQuestInstanceData["TheTempleofAhnQiraj"].Quests.Alliance[2]
 
 --------------- INST30 - Zul'Farrak ---------------
-kQuestInstanceData[30] = {
+kQuestInstanceData["ZulFarrak"] = {
     Story = "This sun-blasted city is home to the Sandfury trolls, known for their particular ruthlessness and dark mysticism. Troll legends tell of a powerful sword called Sul'thraze the Lasher, a weapon capable of instilling fear and weakness in even the most formidable of foes. Long ago, the weapon was split in half. However, rumors have circulated that the two halves may be found somewhere within Zul'Farrak's walls. Reports have also suggested that a band of mercenaries fleeing Gadgetzan wandered into the city and became trapped. Their fate remains unknown. But perhaps most disturbing of all are the hushed whispers of an ancient creature sleeping within a sacred pool at the city's heart - a mighty demigod who will wreak untold destruction upon any adventurer foolish enough to awaken him.",
     Caption = "Zul'Farrak",
     QAA = "8 Quests",
@@ -7594,7 +7595,7 @@ kQuestInstanceData[30] = {
         Horde = {}
     }
 }
-kQuestInstanceData[30].Quests.Alliance[1] = {
+kQuestInstanceData["ZulFarrak"].Quests.Alliance[1] = {
     Title = "1. Nekrum's Medallion",
     Level = "47",
     Attain = "40",
@@ -7604,10 +7605,10 @@ kQuestInstanceData[30].Quests.Alliance[1] = {
     Prequest = "Witherbark Cages -> Thadius Grimshade",
     Folgequest = "The Divination",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[30].Quests.Alliance[2] = {
+kQuestInstanceData["ZulFarrak"].Quests.Alliance[2] = {
     Title = "2. Troll Temper",
     Level = "45",
     Attain = "40",
@@ -7617,10 +7618,10 @@ kQuestInstanceData[30].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[30].Quests.Alliance[3] = {
+kQuestInstanceData["ZulFarrak"].Quests.Alliance[3] = {
     Title = "3. Scarab Shells",
     Level = "45",
     Attain = "40",
@@ -7630,10 +7631,10 @@ kQuestInstanceData[30].Quests.Alliance[3] = {
     Prequest = "Tran'rek",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[30].Quests.Alliance[4] = {
+kQuestInstanceData["ZulFarrak"].Quests.Alliance[4] = {
     Title = "4. Tiara of the Deep",
     Level = "46",
     Attain = "40",
@@ -7643,22 +7644,22 @@ kQuestInstanceData[30].Quests.Alliance[4] = {
     Prequest = "Tabetha's Task",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2",
+        Text = blue.."Rewards:",
         {
             Name = "Spellshifter Rod",
             ID = "9527",
             Color = green,
-            Description = AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Gemshale Pauldrons",
             ID = "9531",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_PLATE,
+            Description = "Shoulder, Plate",
         },
     }
 }
-kQuestInstanceData[30].Quests.Alliance[5] = {
+kQuestInstanceData["ZulFarrak"].Quests.Alliance[5] = {
     Title = "5. The Prophecy of Mosh'aru",
     Level = "47",
     Attain = "40",
@@ -7668,10 +7669,10 @@ kQuestInstanceData[30].Quests.Alliance[5] = {
     Prequest = "Screecher Spirits",
     Folgequest = "The Ancient Egg",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[30].Quests.Alliance[6] = {
+kQuestInstanceData["ZulFarrak"].Quests.Alliance[6] = {
     Title = "6. Divino-matic Rod",
     Level = "47",
     Attain = "40",
@@ -7681,22 +7682,22 @@ kQuestInstanceData[30].Quests.Alliance[6] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Masons Fraternity Ring",
             ID = "9533",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Engineer's Guild Headpiece",
             ID = "9534",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_LEATHER,
+            Description = "Head, Leather",
         },
     }
 }
-kQuestInstanceData[30].Quests.Alliance[7] = {
+kQuestInstanceData["ZulFarrak"].Quests.Alliance[7] = {
     Title = "7. Gahz'rilla",
     Level = "50",
     Attain = "40",
@@ -7706,16 +7707,16 @@ kQuestInstanceData[30].Quests.Alliance[7] = {
     Prequest = "The Brassbolts Brothers",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Carrot on a Stick",
             ID = "11122",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[30].Quests.Alliance[8] = {
+kQuestInstanceData["ZulFarrak"].Quests.Alliance[8] = {
     Title = "8. Drifting Across the Sand",
     Level = "46",
     Attain = "40",
@@ -7725,16 +7726,16 @@ kQuestInstanceData[30].Quests.Alliance[8] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Southmoon Pendant",
             ID = "60759",
             Color = green,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[30].Quests.Horde[1] = {
+kQuestInstanceData["ZulFarrak"].Quests.Horde[1] = {
     Title = "1. The Spider God",
     Level = "45",
     Attain = "40",
@@ -7744,17 +7745,17 @@ kQuestInstanceData[30].Quests.Horde[1] = {
     Prequest = "Venom Bottles -> Consult Master Gadrin",
     Folgequest = "Summoning Shadra",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[30].Quests.Horde[2] = kQuestInstanceData[30].Quests.Alliance[2]
-kQuestInstanceData[30].Quests.Horde[3] = kQuestInstanceData[30].Quests.Alliance[3]
-kQuestInstanceData[30].Quests.Horde[4] = kQuestInstanceData[30].Quests.Alliance[4]
-kQuestInstanceData[30].Quests.Horde[5] = kQuestInstanceData[30].Quests.Alliance[5]
-kQuestInstanceData[30].Quests.Horde[6] = kQuestInstanceData[30].Quests.Alliance[6]
-kQuestInstanceData[30].Quests.Horde[7] = kQuestInstanceData[30].Quests.Alliance[7]
-kQuestInstanceData[30].Quests.Horde[8] = kQuestInstanceData[30].Quests.Alliance[8]
-kQuestInstanceData[30].Quests.Horde[9] = {
+kQuestInstanceData["ZulFarrak"].Quests.Horde[2] = kQuestInstanceData["ZulFarrak"].Quests.Alliance[2]
+kQuestInstanceData["ZulFarrak"].Quests.Horde[3] = kQuestInstanceData["ZulFarrak"].Quests.Alliance[3]
+kQuestInstanceData["ZulFarrak"].Quests.Horde[4] = kQuestInstanceData["ZulFarrak"].Quests.Alliance[4]
+kQuestInstanceData["ZulFarrak"].Quests.Horde[5] = kQuestInstanceData["ZulFarrak"].Quests.Alliance[5]
+kQuestInstanceData["ZulFarrak"].Quests.Horde[6] = kQuestInstanceData["ZulFarrak"].Quests.Alliance[6]
+kQuestInstanceData["ZulFarrak"].Quests.Horde[7] = kQuestInstanceData["ZulFarrak"].Quests.Alliance[7]
+kQuestInstanceData["ZulFarrak"].Quests.Horde[8] = kQuestInstanceData["ZulFarrak"].Quests.Alliance[8]
+kQuestInstanceData["ZulFarrak"].Quests.Horde[9] = {
     Title = "9. End Ukorz Sandscalp",
     Level = "48",
     Attain = "40",
@@ -7764,24 +7765,24 @@ kQuestInstanceData[30].Quests.Horde[9] = {
     Prequest = "Plight of the Sandfury",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "The Dune Blade",
             ID = "60764",
             Color = green,
-            Description = AQITEM_MAINHAND..AQITEM_SWORD,
+            Description = "Main Hand, Sword",
         },
         {
             Name = "Sandmoon Greaves",
             ID = "60765",
             Color = green,
-            Description = AQITEM_LEGS..AQITEM_MAIL,
+            Description = "Legs, Mail",
         },
     }
 }
 
 --------------- INST31 - Zul'Gurub ---------------
-kQuestInstanceData[31] = {
+kQuestInstanceData["ZulGurub"] = {
     Story = {
         ["Page1"] = "Over a thousand years ago the powerful Gurubashi Empire was torn apart by a massive civil war. An influential group of troll priests, known as the Atal'ai, called forth the avatar of an ancient and terrible blood god named Hakkar the Soulflayer. Though the priests were defeated and ultimately exiled, the great troll empire collapsed upon itself. The exiled priests fled far to the north, into the Swamp of Sorrows, where they erected a great temple to Hakkar in order to prepare for his arrival into the physical world.",
         ["Page2"] = "In time, the Atal'ai priests discovered that Hakkar's physical form could only be summoned within the ancient capital of the Gurubashi Empire, Zul'Gurub. Unfortunately, the priests have met with recent success in their quest to call forth Hakkar - reports confirm the presence of the dreaded Soulflayer in the heart of the Gurubashi ruins.\n\nIn order to quell the blood god, the trolls of the land banded together and sent a contingent of High Priests into the ancient city. Each priest was a powerful champion of the Primal Gods - Bat, Panther, Tiger, Spider, and Snake - but despite their best efforts, they fell under the sway of Hakkar. Now the champions and their Primal God aspects feed the awesome power of the Soulflayer. Any adventurers brave enough to venture into the foreboding ruins must overcome the High Priests if they are to have any hope of confronting the mighty blood god.",
@@ -7798,7 +7799,7 @@ kQuestInstanceData[31] = {
         Horde = {}
     }
 }
-kQuestInstanceData[31].Quests.Alliance[1] = {
+kQuestInstanceData["ZulGurub"].Quests.Alliance[1] = {
     Title = "1. A Collection of Heads",
     Level = "60",
     Attain = "58",
@@ -7808,34 +7809,34 @@ kQuestInstanceData[31].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Belt of Shrunken Heads",
             ID = "20213",
             Color = blue,
-            Description = AQITEM_WAIST..AQITEM_PLATE,
+            Description = "Waist, Plate",
         },
         {
             Name = "Belt of Shriveled Heads",
             ID = "20215",
             Color = blue,
-            Description = AQITEM_WAIST..AQITEM_MAIL,
+            Description = "Waist, Mail",
         },
         {
             Name = "Belt of Preserved Heads",
             ID = "20216",
             Color = blue,
-            Description = AQITEM_WAIST..AQITEM_LEATHER,
+            Description = "Waist, Leather",
         },
         {
             Name = "Belt of Tiny Heads",
             ID = "20217",
             Color = blue,
-            Description = AQITEM_WAIST..AQITEM_CLOTH,
+            Description = "Waist, Cloth",
         },
     }
 }
-kQuestInstanceData[31].Quests.Alliance[2] = {
+kQuestInstanceData["ZulGurub"].Quests.Alliance[2] = {
     Title = "2. The Heart of Hakkar",
     Level = "60",
     Attain = "58",
@@ -7845,28 +7846,28 @@ kQuestInstanceData[31].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Zandalarian Hero Badge",
             ID = "19948",
             Color = purple,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Zandalarian Hero Charm",
             ID = "19950",
             Color = purple,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Zandalarian Hero Medallion",
             ID = "19949",
             Color = purple,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[31].Quests.Alliance[3] = {
+kQuestInstanceData["ZulGurub"].Quests.Alliance[3] = {
     Title = "3. Nat's Measuring Tape",
     Level = "60",
     Attain = "58",
@@ -7876,10 +7877,10 @@ kQuestInstanceData[31].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[31].Quests.Alliance[4] = {
+kQuestInstanceData["ZulGurub"].Quests.Alliance[4] = {
     Title = "4. The Perfect Poison",
     Level = "60",
     Attain = "60",
@@ -7889,52 +7890,52 @@ kQuestInstanceData[31].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4"..AQDiscription_OR..white.."5"..AQDiscription_OR..white.."6",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Ravenholdt Slicer",
             ID = "22378",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_SWORD,
+            Description = "One-Hand, Sword",
         },
         {
             Name = "Shivsprocket's Shiv",
             ID = "22379",
             Color = blue,
-            Description = AQITEM_MAINHAND..AQITEM_DAGGER,
+            Description = "Main Hand, Dagger",
         },
         {
             Name = "The Thunderwood Poker",
             ID = "22377",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_DAGGER,
+            Description = "One-Hand, Dagger",
         },
         {
             Name = "Doomulus Prime",
             ID = "22348",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_MACE,
+            Description = "Two-Hand, Mace",
         },
         {
             Name = "Fahrad's Reloading Repeater",
             ID = "22347",
             Color = blue,
-            Description = AQITEM_CROSSBOW,
+            Description = "Crossbow",
         },
         {
             Name = "Simone's Cultivating Hammer",
             ID = "22380",
             Color = blue,
-            Description = AQITEM_MAINHAND..AQITEM_MACE,
+            Description = "Main Hand, Mace",
         },
     }
 }
-kQuestInstanceData[31].Quests.Horde[1] = kQuestInstanceData[31].Quests.Alliance[1]
-kQuestInstanceData[31].Quests.Horde[2] = kQuestInstanceData[31].Quests.Alliance[2]
-kQuestInstanceData[31].Quests.Horde[3] = kQuestInstanceData[31].Quests.Alliance[3]
-kQuestInstanceData[31].Quests.Horde[4] = kQuestInstanceData[31].Quests.Alliance[4]
+kQuestInstanceData["ZulGurub"].Quests.Horde[1] = kQuestInstanceData["ZulGurub"].Quests.Alliance[1]
+kQuestInstanceData["ZulGurub"].Quests.Horde[2] = kQuestInstanceData["ZulGurub"].Quests.Alliance[2]
+kQuestInstanceData["ZulGurub"].Quests.Horde[3] = kQuestInstanceData["ZulGurub"].Quests.Alliance[3]
+kQuestInstanceData["ZulGurub"].Quests.Horde[4] = kQuestInstanceData["ZulGurub"].Quests.Alliance[4]
 
 --------------- INST32 - Gnomeregan ---------------
-kQuestInstanceData[32] = {
+kQuestInstanceData["Gnomeregan"] = {
     Story = "Located in Dun Morogh, the technological wonder known as Gnomeregan has been the gnomes' capital city for generations. Recently, a hostile race of mutant troggs infested several regions of Dun Morogh - including the great gnome city. In a desperate attempt to destroy the invading troggs, High Tinker Mekkatorque ordered the emergency venting of the city's radioactive waste tanks. Several gnomes sought shelter from the airborne pollutants as they waited for the troggs to die or flee. Unfortunately, though the troggs became irradiated from the toxic assault - their siege continued, unabated. Those gnomes who were not killed by noxious seepage were forced to flee, seeking refuge in the nearby dwarven city of Ironforge. There, High Tinker Mekkatorque set out to enlist brave souls to help his people reclaim their beloved city. It is rumored that Mekkatorque's once-trusted advisor, Mekgineer Thermaplugg, betrayed his people by allowing the invasion to happen. Now, his sanity shattered, Thermaplug remains in Gnomeregan - furthering his dark schemes and acting as the city's new techno-overlord.",
     Caption = "Gnomeregan",
     QAA = "13 Quests",
@@ -7944,7 +7945,7 @@ kQuestInstanceData[32] = {
         Horde = {}
     }
 }
-kQuestInstanceData[32].Quests.Alliance[1] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[1] = {
     Title = "1. Save Techbot's Brain!",
     Level = "26",
     Attain = "20",
@@ -7954,10 +7955,10 @@ kQuestInstanceData[32].Quests.Alliance[1] = {
     Prequest = "Tinkmaster Overspark",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[32].Quests.Alliance[2] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[2] = {
     Title = "2. Gnogaine",
     Level = "27",
     Attain = "20",
@@ -7967,10 +7968,10 @@ kQuestInstanceData[32].Quests.Alliance[2] = {
     Prequest = "The Day After",
     Folgequest = "The Only Cure is More Green Glow",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[32].Quests.Alliance[3] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[3] = {
     Title = "3. The Only Cure is More Green Glow",
     Level = "30",
     Attain = "20",
@@ -7980,10 +7981,10 @@ kQuestInstanceData[32].Quests.Alliance[3] = {
     Prequest = "Gnogaine",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[32].Quests.Alliance[4] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[4] = {
     Title = "4. Gyrodrillmatic Excavationators",
     Level = "30",
     Attain = "20",
@@ -7993,22 +7994,22 @@ kQuestInstanceData[32].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Shoni's Disarming Tool",
             ID = "9608",
             Color = green,
-            Description = AQITEM_OFFHAND..AQITEM_AXE,
+            Description = "Off Hand, Axe",
         },
         {
             Name = "Shilly Mitts",
             ID = "9609",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_CLOTH,
+            Description = "Hands, Cloth",
         },
     }
 }
-kQuestInstanceData[32].Quests.Alliance[5] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[5] = {
     Title = "5. Essential Artificials",
     Level = "30",
     Attain = "24",
@@ -8018,10 +8019,10 @@ kQuestInstanceData[32].Quests.Alliance[5] = {
     Prequest = "Klockmort's Essentials",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[32].Quests.Alliance[6] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[6] = {
     Title = "6. Data Rescue",
     Level = "30",
     Attain = "25",
@@ -8031,22 +8032,22 @@ kQuestInstanceData[32].Quests.Alliance[6] = {
     Prequest = "Castpipe's Task",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2",
+        Text = blue.."Rewards:",
         {
             Name = "Repairman's Cape",
             ID = "9605",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Mechanic's Pipehammer",
             ID = "9604",
             Color = green,
-            Description = AQITEM_TWOHAND..AQITEM_MACE,
+            Description = "Two-Hand, Mace",
         },
     }
 }
-kQuestInstanceData[32].Quests.Alliance[7] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[7] = {
     Title = "7. A Fine Mess",
     Level = "30",
     Attain = "24",
@@ -8056,22 +8057,22 @@ kQuestInstanceData[32].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Fire-welded Bracers",
             ID = "9535",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_MAIL,
+            Description = "Wrist, Mail",
         },
         {
             Name = "Fairywing Mantle",
             ID = "9536",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_CLOTH,
+            Description = "Shoulder, Cloth",
         },
     }
 }
-kQuestInstanceData[32].Quests.Alliance[8] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[8] = {
     Title = "8. The Grand Betrayal",
     Level = "35",
     Attain = "25",
@@ -8081,28 +8082,28 @@ kQuestInstanceData[32].Quests.Alliance[8] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Civinad Robes",
             ID = "9623",
             Color = blue,
-            Description = AQITEM_CHEST..AQITEM_CLOTH,
+            Description = "Chest, Cloth",
         },
         {
             Name = "Triprunner Dungarees",
             ID = "9624",
             Color = blue,
-            Description = AQITEM_LEGS..AQITEM_LEATHER,
+            Description = "Legs, Leather",
         },
         {
             Name = "Dual Reinforced Leggings",
             ID = "9625",
             Color = blue,
-            Description = AQITEM_LEGS..AQITEM_MAIL,
+            Description = "Legs, Mail",
         },
     }
 }
-kQuestInstanceData[32].Quests.Alliance[9] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[9] = {
     Title = "9. Grime-Encrusted Ring",
     Level = "34",
     Attain = "28",
@@ -8112,10 +8113,10 @@ kQuestInstanceData[32].Quests.Alliance[9] = {
     Prequest = "No",
     Folgequest = "Return of the Ring",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[32].Quests.Alliance[10] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[10] = {
     Title = "10. Return of the Ring",
     Level = "34",
     Attain = "28",
@@ -8125,16 +8126,16 @@ kQuestInstanceData[32].Quests.Alliance[10] = {
     Prequest = "Grime-Encrusted Ring",
     Folgequest = "Gnome Improvement",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Brilliant Gold Ring",
             ID = "9362",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[32].Quests.Alliance[11] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[11] = {
     Title = "11. A Pounding Brain",
     Level = "30",
     Attain = "30",
@@ -8144,10 +8145,10 @@ kQuestInstanceData[32].Quests.Alliance[11] = {
     Prequest = "No",
     Folgequest = "To Build a Pounder",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[32].Quests.Alliance[12] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[12] = {
     Title = "12. High Energy Regulator",
     Level = "33",
     Attain = "25",
@@ -8157,16 +8158,16 @@ kQuestInstanceData[32].Quests.Alliance[12] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Low Energy Regulator",
             ID = "61393",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[32].Quests.Alliance[13] = {
+kQuestInstanceData["Gnomeregan"].Quests.Alliance[13] = {
     Title = "13. Backup System Activation",
     Level = "33",
     Attain = "25",
@@ -8176,28 +8177,28 @@ kQuestInstanceData[32].Quests.Alliance[13] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Intricate Gnomish Blunderbuss",
             ID = "61383",
             Color = blue,
-            Description = AQITEM_GUN,
+            Description = "Gun",
         },
         {
             Name = "Ionized Metal Grips",
             ID = "61384",
             Color = blue,
-            Description = AQITEM_HANDS..AQITEM_MAIL,
+            Description = "Hands, Mail",
         },
         {
             Name = "Magnetic Band",
             ID = "61385",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[32].Quests.Horde[1] = {
+kQuestInstanceData["Gnomeregan"].Quests.Horde[1] = {
     Title = "1. Gnomer-gooooone!",
     Level = "35",
     Attain = "20",
@@ -8207,10 +8208,10 @@ kQuestInstanceData[32].Quests.Horde[1] = {
     Prequest = "Chief Engineer Scooty",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[32].Quests.Horde[2] = {
+kQuestInstanceData["Gnomeregan"].Quests.Horde[2] = {
     Title = "2. A Fine Mess",
     Level = "30",
     Attain = "24",
@@ -8220,22 +8221,22 @@ kQuestInstanceData[32].Quests.Horde[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Fire-welded Bracers",
             ID = "9535",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_MAIL,
+            Description = "Wrist, Mail",
         },
         {
             Name = "Fairywing Mantle",
             ID = "9536",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_CLOTH,
+            Description = "Shoulder, Cloth",
         },
     }
 }
-kQuestInstanceData[32].Quests.Horde[3] = {
+kQuestInstanceData["Gnomeregan"].Quests.Horde[3] = {
     Title = "3. Rig Wars",
     Level = "35",
     Attain = "25",
@@ -8245,28 +8246,28 @@ kQuestInstanceData[32].Quests.Horde[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Civinad Robes",
             ID = "9623",
             Color = blue,
-            Description = AQITEM_CHEST..AQITEM_CLOTH,
+            Description = "Chest, Cloth",
         },
         {
             Name = "Triprunner Dungarees",
             ID = "9624",
             Color = blue,
-            Description = AQITEM_LEGS..AQITEM_LEATHER,
+            Description = "Legs, Leather",
         },
         {
             Name = "Dual Reinforced Leggings",
             ID = "9625",
             Color = blue,
-            Description = AQITEM_LEGS..AQITEM_MAIL,
+            Description = "Legs, Mail",
         },
     }
 }
-kQuestInstanceData[32].Quests.Horde[4] = {
+kQuestInstanceData["Gnomeregan"].Quests.Horde[4] = {
     Title = "4. Grime-Encrusted Ring",
     Level = "34",
     Attain = "28",
@@ -8276,10 +8277,10 @@ kQuestInstanceData[32].Quests.Horde[4] = {
     Prequest = "No",
     Folgequest = "Return of the Ring",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[32].Quests.Horde[5] = {
+kQuestInstanceData["Gnomeregan"].Quests.Horde[5] = {
     Title = "5. Return of the Ring",
     Level = "34",
     Attain = "28",
@@ -8289,16 +8290,16 @@ kQuestInstanceData[32].Quests.Horde[5] = {
     Prequest = "Grime-Encrusted Ring",
     Folgequest = "Nogg's Ring Redo",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Brilliant Gold Ring",
             ID = "9362",
             Color = green,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[32].Quests.Horde[6] = {
+kQuestInstanceData["Gnomeregan"].Quests.Horde[6] = {
     Title = "6. A Pounding Brain",
     Level = "30",
     Attain = "30",
@@ -8308,10 +8309,10 @@ kQuestInstanceData[32].Quests.Horde[6] = {
     Prequest = "No",
     Folgequest = "To Build a Pounder",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[32].Quests.Horde[7] = {
+kQuestInstanceData["Gnomeregan"].Quests.Horde[7] = {
     Title = "7. Backup Capacitor",
     Level = "34",
     Attain = "29",
@@ -8321,24 +8322,24 @@ kQuestInstanceData[32].Quests.Horde[7] = {
     Prequest = "A New Power Source",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Razorblade Buckler",
             ID = "81319",
             Color = blue,
-            Description = AQITEM_SHIELD,
+            Description = "Shield",
         },
         {
             Name = "Crackling Zapper",
             ID = "81320",
             Color = blue,
-            Description = AQITEM_WAND,
+            Description = "Wand",
         },
     }
 }
 
 --------------- INST33 - Dragons of Nightmare ---------------
-kQuestInstanceData[33] = {
+kQuestInstanceData["FourDragons"] = {
     Story = {
 	    ["Page1"] = "There is a disturbance at the Great Trees. A new threat menaces these secluded areas found in Ashenvale, Duskwood, Feralas, and Hinterlands. Four great guardians of the green Dragonflight have arrived from the Dream, but these once-proud protectors now seek only destruction and death. Take arms with your fellows and march to these hidden groves -- only you can defend Azeroth from the corruption they bring.",
 	    ["Page2"] = "Ysera, the great Dreaming dragon Aspect rules over the enigmatic Green dragonflight. Her domain is the fantastic, mystical realm of the Emerald Dream - and it is said that from there she guides the evolutionary path of the world itself. She is the protector of nature and imagination, and it is the charge of her flight to guard all of the Great Trees across the world, which only druids use to enter the Dream itself. In recent times, Ysera's most trusted lieutenants have been warped by a dark new power within the Emerald Dream. Now these wayward sentinels have passed through the Great Trees into Azeroth, intending to spread madness and terror throughout the mortal kingdoms. Even the mightiest of adventurers would be well advised to give the dragons a wide berth, or suffer the consequences of their misguided wrath.",
@@ -8363,7 +8364,7 @@ kQuestInstanceData[33] = {
         Horde = {}
     }
 }
-kQuestInstanceData[33].Quests.Alliance[1] = {
+kQuestInstanceData["FourDragons"].Quests.Alliance[1] = {
     Title = "1. Shrouded in Nightmare",
     Level = "60",
     Attain = "60",
@@ -8373,19 +8374,19 @@ kQuestInstanceData[33].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "Waking Legends",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Malfurion's Signet Ring",
             ID = "20600",
             Color = purple,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[33].Quests.Horde[1] = kQuestInstanceData[33].Quests.Alliance[1]
+kQuestInstanceData["FourDragons"].Quests.Horde[1] = kQuestInstanceData["FourDragons"].Quests.Alliance[1]
 
 --------------- INST34 - Azuregos ---------------
-kQuestInstanceData[34] = {
+kQuestInstanceData["Azuregos"] = {
     Story = "Before the Great Sundering, the night elf city of Eldarath flourished in the land that is now known as Azshara. It is believed that many ancient and powerful Highborne artifacts may be found among the ruins of the once-mighty stronghold. For countless generations, the Blue Dragon Flight has safeguarded powerful artifacts and magical lore, ensuring that they do not fall into mortal hands. The presence of Azuregos, the Blue dragon, seems to suggest that items of extreme significance, perhaps the fabled Vials of Eternity themselves, may be found in the wilderness of Azshara. Whatever Azuregos seeks, one thing is certain: he will fight to the death to defend Azshara's magical treasures.",
     Caption = "Azuregos",
     QAA = "2 Quests",
@@ -8395,7 +8396,7 @@ kQuestInstanceData[34] = {
         Horde = {}
     }
 }
-kQuestInstanceData[34].Quests.Alliance[1] = {
+kQuestInstanceData["Azuregos"].Quests.Alliance[1] = {
     Title = "1. Ancient Sinew Wrapped Lamina",
     Level = "60",
     Attain = "60",
@@ -8405,16 +8406,16 @@ kQuestInstanceData[34].Quests.Alliance[1] = {
     Prequest = "The Ancient Leaf ("..yellow.."Molten Core"..white..")", -- 7632",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Ancient Sinew Wrapped Lamina",
             ID = "18714",
             Color = purple,
-            Description = AQITEM_QUIVER,
+            Description = "Quiver",
         },
     }
 }
-kQuestInstanceData[34].Quests.Alliance[2] = {
+kQuestInstanceData["Azuregos"].Quests.Alliance[2] = {
     Title = "2. Azuregos's Magical Ledger",
     Level = "60",
     Attain = "60",
@@ -8424,14 +8425,14 @@ kQuestInstanceData[34].Quests.Alliance[2] = {
     Prequest = "The Charge of the Dragonflights",
     Folgequest = "Translating the Ledger",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[34].Quests.Horde[1] = kQuestInstanceData[34].Quests.Alliance[1]
-kQuestInstanceData[34].Quests.Horde[2] = kQuestInstanceData[34].Quests.Alliance[2]
+kQuestInstanceData["Azuregos"].Quests.Horde[1] = kQuestInstanceData["Azuregos"].Quests.Alliance[1]
+kQuestInstanceData["Azuregos"].Quests.Horde[2] = kQuestInstanceData["Azuregos"].Quests.Alliance[2]
 
 --------------- INST35 - Lord Kazzak ---------------
-kQuestInstanceData[35] = {
+kQuestInstanceData["LordKazzak"] = {
     Story = "Following the defeat of the Burning Legion at the end of the Third War, the remaining enemy forces, led by the colossal demon Lord Kazzak, pulled back to the Blasted Lands. They continue to dwell there to this day in an area called the Tainted Scar, awaiting the reopening of the Dark Portal. It is rumored that once the Portal is reopened, Kazzak will travel with his remaining forces to Outland. Once the orc homeworld of Draenor, Outland was ripped apart by the simultaneous activation of several portals created by the orc shaman Ner'zhul, and now exists as a shattered world occupied by legions of demonic agents under command of the night elf betrayer, Illidan.",
     Caption = "Lord Kazzak",
     QAA = "No Quests",
@@ -8443,7 +8444,7 @@ kQuestInstanceData[35] = {
 }
 
 --------------- INST36 - Alterac Valley ---------------
-kQuestInstanceData[36] = {
+kQuestInstanceData["AlteracValleyNorth"] = {
     Story = "Long ago, before the First War, the warlock Gul'dan exiled a clan of orcs called the Frostwolves to a hidden valley deep in the heart of the Alterac Mountains. It is here in the valley's southern reaches that the Frostwolves eked out a living until the coming of Thrall.\nAfter Thrall's triumphant uniting of the clans, the Frostwolves, now led by the Orc Shaman Drek'Thar, chose to remain in the valley they had for so long called their home. In recent times, however, the relative peace of the Frostwolves has been challenged by the arrival of the Dwarven Stormpike Expedition.\nThe Stormpikes have set up residence in the valley to search for natural resources and ancient relics. Despite their intentions, the Dwarven presence has sparked heated conflict with the Frostwolf Orcs to the south, who have vowed to drive the interlopers from their lands. ",
     Caption = "Alterac Valley",
     QAA = "17 Quests",
@@ -8453,7 +8454,7 @@ kQuestInstanceData[36] = {
         Horde = {}
     }
 }
-kQuestInstanceData[36].Quests.Alliance[1] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[1] = {
     Title = "1. The Sovereign Imperative",
     Level = "60",
     Attain = "51",
@@ -8463,10 +8464,10 @@ kQuestInstanceData[36].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "Proving Grounds",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[2] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[2] = {
     Title = "2. Proving Grounds",
     Level = "60",
     Attain = "51",
@@ -8476,22 +8477,22 @@ kQuestInstanceData[36].Quests.Alliance[2] = {
     Prequest = "The Sovereign Imperative",
     Folgequest = "Rise and Be Recognized -> The Eye of Command",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2",
+        Text = blue.."Rewards:",
         {
             Name = "Stormpike Insignia Rank 1",
             ID = "17691",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "The Frostwolf Artichoke",
             ID = "19484",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Book",
         },
     }
 }
-kQuestInstanceData[36].Quests.Alliance[3] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[3] = {
     Title = "3. The Battle of Alterac",
     Level = "60",
     Attain = "51",
@@ -8501,34 +8502,34 @@ kQuestInstanceData[36].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "Hero of the Stormpike",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Bloodseeker",
             ID = "19107",
             Color = blue,
-            Description = AQITEM_CROSSBOW,
+            Description = "Crossbow",
         },
         {
             Name = "Ice Barbed Spear",
             ID = "19106",
             Color = blue,
-            Description = AQITEM_POLEARM,
+            Description = "Polearm",
         },
         {
             Name = "Wand of Biting Cold",
             ID = "19108",
             Color = blue,
-            Description = AQITEM_WAND,
+            Description = "Wand",
         },
         {
             Name = "Cold Forged Hammer",
             ID = "20648",
             Color = blue,
-            Description = AQITEM_MAINHAND..AQITEM_MACE,
+            Description = "Main Hand, Mace",
         },
     }
 }
-kQuestInstanceData[36].Quests.Alliance[4] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[4] = {
     Title = "4. The Quartermaster",
     Level = "60",
     Attain = "51",
@@ -8538,10 +8539,10 @@ kQuestInstanceData[36].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[5] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[5] = {
     Title = "5. Coldtooth Supplies",
     Level = "60",
     Attain = "51",
@@ -8551,10 +8552,10 @@ kQuestInstanceData[36].Quests.Alliance[5] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[6] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[6] = {
     Title = "6. Irondeep Supplies",
     Level = "60",
     Attain = "51",
@@ -8564,10 +8565,10 @@ kQuestInstanceData[36].Quests.Alliance[6] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[7] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[7] = {
     Title = "7. Armor Scraps",
     Level = "60",
     Attain = "51",
@@ -8577,10 +8578,10 @@ kQuestInstanceData[36].Quests.Alliance[7] = {
     Prequest = "No",
     Folgequest = "More Armor Scraps",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[8] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[8] = {
     Title = "8. Capture a Mine",
     Level = "60",
     Attain = "51",
@@ -8590,10 +8591,10 @@ kQuestInstanceData[36].Quests.Alliance[8] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[9] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[9] = {
     Title = "9. Towers and Bunkers",
     Level = "60",
     Attain = "51",
@@ -8603,10 +8604,10 @@ kQuestInstanceData[36].Quests.Alliance[9] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[10] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[10] = {
     Title = "10. Alterac Valley Graveyards",
     Level = "60",
     Attain = "51",
@@ -8616,10 +8617,10 @@ kQuestInstanceData[36].Quests.Alliance[10] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[11] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[11] = {
     Title = "11. Empty Stables",
     Level = "60",
     Attain = "51",
@@ -8629,10 +8630,10 @@ kQuestInstanceData[36].Quests.Alliance[11] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[12] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[12] = {
     Title = "12. Ram Riding Harnesses",
     Level = "60",
     Attain = "51",
@@ -8642,10 +8643,10 @@ kQuestInstanceData[36].Quests.Alliance[12] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[13] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[13] = {
     Title = "13. Crystal Cluster",
     Level = "60",
     Attain = "51",
@@ -8655,10 +8656,10 @@ kQuestInstanceData[36].Quests.Alliance[13] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[14] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[14] = {
     Title = "14. Ivus the Forest Lord",
     Level = "60",
     Attain = "51",
@@ -8668,10 +8669,10 @@ kQuestInstanceData[36].Quests.Alliance[14] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[15] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[15] = {
     Title = "15. Call of Air - Slidore's Fleet",
     Level = "60",
     Attain = "51",
@@ -8681,10 +8682,10 @@ kQuestInstanceData[36].Quests.Alliance[15] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[16] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[16] = {
     Title = "16. Call of Air - Vipore's Fleet",
     Level = "60",
     Attain = "51",
@@ -8694,10 +8695,10 @@ kQuestInstanceData[36].Quests.Alliance[16] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Alliance[17] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[17] = {
     Title = "17. Call of Air - Ichman's Fleet",
     Level = "60",
     Attain = "51",
@@ -8707,10 +8708,10 @@ kQuestInstanceData[36].Quests.Alliance[17] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[1] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[1] = {
     Title = "1. In Defense of Frostwolf",
     Level = "60",
     Attain = "51",
@@ -8720,10 +8721,10 @@ kQuestInstanceData[36].Quests.Horde[1] = {
     Prequest = "No",
     Folgequest = "Proving Grounds",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[2] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[2] = {
     Title = "2. Proving Grounds",
     Level = "60",
     Attain = "51",
@@ -8733,22 +8734,22 @@ kQuestInstanceData[36].Quests.Horde[2] = {
     Prequest = "In Defense of Frostwolf",
     Folgequest = "Rise and Be Recognized -> The Eye of Command",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2",
+        Text = blue.."Rewards:",
         {
             Name = "Frostwolf Insignia Rank 1",
             ID = "17690",
             Color = green,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Peeling the Onion",
             ID = "19483",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Book",
         },
     }
 }
-kQuestInstanceData[36].Quests.Horde[3] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[3] = {
     Title = "3. The Battle for Alterac",
     Level = "60",
     Attain = "51",
@@ -8757,9 +8758,9 @@ kQuestInstanceData[36].Quests.Horde[3] = {
     Note = "Vanndar Stormpike is at (Alterac Valley - North; "..yellow.."[B]"..white.."). He does not actually need to be killed to complete the quest. The battleground just has to be won by your side in any manner.\nAfter turning this quest in, talk to the NPC again for the reward.",
     Prequest = "No",
     Folgequest = "Hero of the Frostwolf",
-    Rewards = kQuestInstanceData[36].Quests.Alliance[3].Rewards
+    Rewards = kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[3].Rewards
 }
-kQuestInstanceData[36].Quests.Horde[4] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[4] = {
     Title = "4. Speak with our Quartermaster",
     Level = "60",
     Attain = "51",
@@ -8769,10 +8770,10 @@ kQuestInstanceData[36].Quests.Horde[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[5] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[5] = {
     Title = "5. Coldtooth Supplies",
     Level = "60",
     Attain = "51",
@@ -8782,10 +8783,10 @@ kQuestInstanceData[36].Quests.Horde[5] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[6] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[6] = {
     Title = "6. Irondeep Supplies",
     Level = "60",
     Attain = "51",
@@ -8795,10 +8796,10 @@ kQuestInstanceData[36].Quests.Horde[6] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[7] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[7] = {
     Title = "7. Enemy Booty",
     Level = "60",
     Attain = "51",
@@ -8808,10 +8809,10 @@ kQuestInstanceData[36].Quests.Horde[7] = {
     Prequest = "No",
     Folgequest = "More Booty!",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[8] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[8] = {
     Title = "8. Capture a Mine",
     Level = "60",
     Attain = "51",
@@ -8821,10 +8822,10 @@ kQuestInstanceData[36].Quests.Horde[8] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[9] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[9] = {
     Title = "9. Towers and Bunkers",
     Level = "60",
     Attain = "51",
@@ -8834,10 +8835,10 @@ kQuestInstanceData[36].Quests.Horde[9] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[10] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[10] = {
     Title = "10. The Graveyards of Alterac",
     Level = "60",
     Attain = "51",
@@ -8847,10 +8848,10 @@ kQuestInstanceData[36].Quests.Horde[10] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[11] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[11] = {
     Title = "11. Empty Stables",
     Level = "60",
     Attain = "51",
@@ -8860,10 +8861,10 @@ kQuestInstanceData[36].Quests.Horde[11] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[12] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[12] = {
     Title = "12. Ram Hide Harnesses",
     Level = "60",
     Attain = "51",
@@ -8873,10 +8874,10 @@ kQuestInstanceData[36].Quests.Horde[12] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[13] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[13] = {
     Title = "13. A Gallon of Blood",
     Level = "60",
     Attain = "51",
@@ -8886,10 +8887,10 @@ kQuestInstanceData[36].Quests.Horde[13] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[14] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[14] = {
     Title = "14. Lokholar the Ice Lord",
     Level = "60",
     Attain = "51",
@@ -8899,10 +8900,10 @@ kQuestInstanceData[36].Quests.Horde[14] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[15] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[15] = {
     Title = "15. Call of Air - Guse's Fleet",
     Level = "60",
     Attain = "51",
@@ -8912,10 +8913,10 @@ kQuestInstanceData[36].Quests.Horde[15] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[16] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[16] = {
     Title = "16. Call of Air - Jeztor's Fleet",
     Level = "60",
     Attain = "51",
@@ -8925,10 +8926,10 @@ kQuestInstanceData[36].Quests.Horde[16] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[36].Quests.Horde[17] = {
+kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[17] = {
     Title = "17. Call of Air - Mulverick's Fleet",
     Level = "60",
     Attain = "51",
@@ -8938,12 +8939,12 @@ kQuestInstanceData[36].Quests.Horde[17] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
 
 --------------- INST37 - Arathi Basin ---------------
-kQuestInstanceData[37] = {
+kQuestInstanceData["ArathiBasin"] = {
     Story = "Arathi Basin, located in Arathi Highlands, is a fast and exciting Battleground. The Basin itself is rich with resources and coveted by both the Horde and the Alliance. The Forsaken Defilers and the League of Arathor have arrived at Arathi Basin to wage war over these natural resources and claim them on behalf of their respective sides.",
     Caption = "Arathi Basin",
     QAA = "3 Quests",
@@ -8953,7 +8954,7 @@ kQuestInstanceData[37] = {
         Horde = {}
     }
 }
-kQuestInstanceData[37].Quests.Alliance[1] = {
+kQuestInstanceData["ArathiBasin"].Quests.Alliance[1] = {
     Title = "1. The Battle for Arathi Basin!",
     Level = "55",
     Attain = "50",
@@ -8963,10 +8964,10 @@ kQuestInstanceData[37].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[37].Quests.Alliance[2] = {
+kQuestInstanceData["ArathiBasin"].Quests.Alliance[2] = {
     Title = "2. Control Four Bases",
     Level = "60",
     Attain = "60",
@@ -8976,10 +8977,10 @@ kQuestInstanceData[37].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[37].Quests.Alliance[3] = {
+kQuestInstanceData["ArathiBasin"].Quests.Alliance[3] = {
     Title = "3. Control Five Bases",
     Level = "60",
     Attain = "60",
@@ -8989,16 +8990,16 @@ kQuestInstanceData[37].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Arathor Battle Tabard",
             ID = "20132",
             Color = white,
-            Description = AQITEM_TABARD,
+            Description = "Tabard",
         },
     }
 }
-kQuestInstanceData[37].Quests.Horde[1] = {
+kQuestInstanceData["ArathiBasin"].Quests.Horde[1] = {
     Title = "1. The Battle for Arathi Basin!",
     Level = "25",
     Attain = "25",
@@ -9008,10 +9009,10 @@ kQuestInstanceData[37].Quests.Horde[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[37].Quests.Horde[2] = {
+kQuestInstanceData["ArathiBasin"].Quests.Horde[2] = {
     Title = "2. Take Four Bases",
     Level = "60",
     Attain = "60",
@@ -9021,10 +9022,10 @@ kQuestInstanceData[37].Quests.Horde[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[37].Quests.Horde[3] = {
+kQuestInstanceData["ArathiBasin"].Quests.Horde[3] = {
     Title = "3. Take Five Bases",
     Level = "60",
     Attain = "60",
@@ -9034,18 +9035,18 @@ kQuestInstanceData[37].Quests.Horde[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Battle Tabard of the Defilers",
             ID = "20131",
             Color = white,
-            Description = AQITEM_TABARD,
+            Description = "Tabard",
         },
     }
 }
 
 --------------- INST38 - Warsong Gulch ---------------
-kQuestInstanceData[38] = {
+kQuestInstanceData["WarsongGulch"] = {
     Story = "Nestled in the southern region of Ashenvale forest, Warsong Gulch is near the area where Grom Hellscream and his Orcs chopped away huge swaths of forest during the events of the Third War. Some orcs have remained in the vicinity, continuing their deforestation to fuel the Horde's expansion. They call themselves the Warsong Outriders.\nThe Night Elves, who have begun a massive push to retake the forests of Ashenvale, are now focusing their attention on ridding their land of the Outriders once and for all. And so, the Silverwing Sentinels have answered the call and sworn that they will not rest until every last Orc is defeated and cast out of Warsong Gulch. ",
     Caption = "Warsong Gulch",
     QAA = "No Quests",
@@ -9057,7 +9058,7 @@ kQuestInstanceData[38] = {
 }
 
 --------------- INST39 - The Crescent Grove ---------------
-kQuestInstanceData[39] = {
+kQuestInstanceData["TheCrescentGrove"] = {
     Story = "A hidden grove in southern Ashenvale overlooking Mystral Lake that was once a retreat for druids for several years, an evil presence has taken root in the region.\nOriginally a hidden grove that served as a calm retreat for druids, in recent times the Groveweald tribe has moved in while fleeing the madness of the Foulweald tribe, expelling several of the original inhabitants in the process. However, in spite of their attempts to escape the madness, they succumbed to it in time.\nKalanar Brightshine once lived here, before he was expelled from the Grove by the Groveweald furbolgs and his home was burned down.\nDemonic forces of the Burning Legion led by the doomguard Master Raxxieth have established themselves within the grove, beginning to corrupt the glade. Already, the Legion has left their mark in the form of the Vilethorn Scar, upsetting the balance and disturbing spirits.",
     Caption = "The Crescent Grove",
     QAA = "4 Quests",
@@ -9067,7 +9068,7 @@ kQuestInstanceData[39] = {
         Horde = {}
     }
 }
-kQuestInstanceData[39].Quests.Alliance[1] = {
+kQuestInstanceData["TheCrescentGrove"].Quests.Alliance[1] = {
     Title = "1. The Rampant Groveweald",
     Level = "33",
     Attain = "26",
@@ -9077,10 +9078,10 @@ kQuestInstanceData[39].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[39].Quests.Alliance[2] = {
+kQuestInstanceData["TheCrescentGrove"].Quests.Alliance[2] = {
     Title = "2. The Unwise Elders",
     Level = "34",
     Attain = "26",
@@ -9090,16 +9091,16 @@ kQuestInstanceData[39].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Grol's Band",
             ID = "60179",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[39].Quests.Alliance[3] = {
+kQuestInstanceData["TheCrescentGrove"].Quests.Alliance[3] = {
     Title = "3. The Crescent Grove",
     Level = "37",
     Attain = "28",
@@ -9109,34 +9110,34 @@ kQuestInstanceData[39].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Chain of Denatharion",
             ID = "60180",
             Color = green,
-            Description = AQITEM_CHEST..AQITEM_MAIL,
+            Description = "Chest, Mail",
         },
         {
             Name = "Cloak of Denatharion",
             ID = "60181",
             Color = blue,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Epaulets of Denatharion",
             ID = "60182",
             Color = blue,
-            Description = AQITEM_SHOULDER..AQITEM_CLOTH,
+            Description = "Shoulder, Cloth",
         },
         {
             Name = "Mask of Denatharion",
             ID = "60183",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_LEATHER,
+            Description = "Head, Leather",
         },
     }
 }
-kQuestInstanceData[39].Quests.Alliance[4] = {
+kQuestInstanceData["TheCrescentGrove"].Quests.Alliance[4] = {
     Title = "4. Kalanar's Mallet",
     Level = "33",
     Attain = "25",
@@ -9146,12 +9147,12 @@ kQuestInstanceData[39].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[39].Quests.Horde[1] = kQuestInstanceData[39].Quests.Alliance[1]
-kQuestInstanceData[39].Quests.Horde[2] = kQuestInstanceData[39].Quests.Alliance[2]
-kQuestInstanceData[39].Quests.Horde[3] = {
+kQuestInstanceData["TheCrescentGrove"].Quests.Horde[1] = kQuestInstanceData["TheCrescentGrove"].Quests.Alliance[1]
+kQuestInstanceData["TheCrescentGrove"].Quests.Horde[2] = kQuestInstanceData["TheCrescentGrove"].Quests.Alliance[2]
+kQuestInstanceData["TheCrescentGrove"].Quests.Horde[3] = {
     Title = "3. Rooting Out Evil",
     Level = "37",
     Attain = "26",
@@ -9161,36 +9162,36 @@ kQuestInstanceData[39].Quests.Horde[3] = {
     Prequest = "Mysteries of the Grove -> Feran's Report",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Chain of Loruk",
             ID = "60213",
             Color = blue,
-            Description = AQITEM_CHEST..AQITEM_MAIL,
+            Description = "Chest, Mail",
         },
         {
             Name = "Cloak of Loruk",
             ID = "60214",
             Color = blue,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Shoulders of Loruk",
             ID = "60215",
             Color = blue,
-            Description = AQITEM_SHOULDER..AQITEM_LEATHER,
+            Description = "Shoulder, Leather",
         },
         {
             Name = "Hat of Loruk",
             ID = "60216",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_CLOTH,
+            Description = "Head, Cloth",
         },
     }
 }
 
 --------------- INST41 - Karazhan Crypt ---------------
-kQuestInstanceData[41] = {
+kQuestInstanceData["KarazhanCrypt"] = {
     Story = "Karazhan Crypt is an instance dungeon located in the Deadwind Pass. Something is twisting the dead back to life in the forlorn catacombs, find the source so the dead may rest again.",
     Caption = "Karazhan Crypt",
     QAA = "2 Quest",
@@ -9200,7 +9201,7 @@ kQuestInstanceData[41] = {
         Horde = {}
     }
 }
-kQuestInstanceData[41].Quests.Alliance[1] = {
+kQuestInstanceData["KarazhanCrypt"].Quests.Alliance[1] = {
     Title = "1. The Mystery of Karazhan VII",
     Level = "60",
     Attain = "58",
@@ -9210,28 +9211,28 @@ kQuestInstanceData[41].Quests.Alliance[1] = {
     Prequest = "The Mystery of Karazhan I >> The Mystery of Karazhan VI",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Arcane Charged Pendant",
             ID = "60463",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Orb of Kaladoon",
             ID = "60464",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
         {
             Name = "Arcane Strengthened Band",
             ID = "60465",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[41].Quests.Alliance[2] = {
+kQuestInstanceData["KarazhanCrypt"].Quests.Alliance[2] = {
     Title = "2. No Honor Among Chefs",
     Level = "61",
     Attain = "60",
@@ -9245,11 +9246,11 @@ kQuestInstanceData[41].Quests.Alliance[2] = {
             Name = "Recipe: Empowering Herbal Salad",
             ID = "92045",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Pattern",
         },
     }
 }
-kQuestInstanceData[41].Quests.Horde[1] = {
+kQuestInstanceData["KarazhanCrypt"].Quests.Horde[1] = {
     Title = "1. The Depths of Karazhan VII",
     Level = "60",
     Attain = "58",
@@ -9259,31 +9260,31 @@ kQuestInstanceData[41].Quests.Horde[1] = {
     Prequest = "The Depths of Karazhan I >> The Depths of Karazhan VI",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Charged Arcane Ring",
             ID = "60459",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Tusk of Gardon",
             ID = "60460",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Blackfire Orb",
             ID = "60461",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[41].Quests.Horde[2] = kQuestInstanceData[41].Quests.Alliance[2]
+kQuestInstanceData["KarazhanCrypt"].Quests.Horde[2] = kQuestInstanceData["KarazhanCrypt"].Quests.Alliance[2]
 
 --------------- INST45 - Caverns Of Time: Black Morass ---------------
-kQuestInstanceData[45] = {
+kQuestInstanceData["CavernsOfTimeBlackMorass"] = {
     Story = "",
     Caption = "Caverns Of Time: Black Morass",
     QAA = "4 Quest",
@@ -9293,7 +9294,7 @@ kQuestInstanceData[45] = {
         Horde = {}
     }
 }
-kQuestInstanceData[45].Quests.Alliance[1] = {
+kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Alliance[1] = {
     Title = "1. The First Opening of The Dark Portal",
     Level = "60",
     Attain = "60",
@@ -9303,34 +9304,34 @@ kQuestInstanceData[45].Quests.Alliance[1] = {
     Prequest = "A Glittering Opportunity > A Bloody Good Deed > A Letter From a Friend >> A Journey Into The Caverns",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "X-51 Arcane Ocular Implants",
             ID = "82950",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_CLOTH,
+            Description = "Head, Cloth",
         },
         {
             Name = "X-52 Stealth Ocular Implants",
             ID = "82951",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_LEATHER,
+            Description = "Head, Leather",
         },
         {
             Name = "X-53 Ranger Ocular Implants",
             ID = "82952",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_MAIL,
+            Description = "Head, Mail",
         },
         {
             Name = "X-54 Guardian Ocular Implants",
             ID = "82953",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_PLATE,
+            Description = "Head, Plate",
         },
     }
 }
-kQuestInstanceData[45].Quests.Alliance[2] = {
+kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Alliance[2] = {
     Title = "2. The Bronze Betrayal",
     Level = "60",
     Attain = "58",
@@ -9340,28 +9341,28 @@ kQuestInstanceData[45].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Pendant of Tyvadrius",
             ID = "60497",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Halberd of the Bronze Defender",
             ID = "60498",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_POLEARM,
+            Description = "Polearm",
         },
         {
             Name = "Ring of Tyvadrius",
             ID = "60499",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[45].Quests.Alliance[3] = {
+kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Alliance[3] = {
     Title = "3. Corrupted Sand",
     Level = "60",
     Attain = "58",
@@ -9371,10 +9372,10 @@ kQuestInstanceData[45].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[45].Quests.Alliance[4] = {
+kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Alliance[4] = {
     Title = "4. Sand in Bulk",
     Level = "60",
     Attain = "58",
@@ -9384,16 +9385,16 @@ kQuestInstanceData[45].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[45].Quests.Horde[1] = kQuestInstanceData[45].Quests.Alliance[1]
-kQuestInstanceData[45].Quests.Horde[2] = kQuestInstanceData[45].Quests.Alliance[2]
-kQuestInstanceData[45].Quests.Horde[3] = kQuestInstanceData[45].Quests.Alliance[3]
-kQuestInstanceData[45].Quests.Horde[4] = kQuestInstanceData[45].Quests.Alliance[4]
+kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Horde[1] = kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Alliance[1]
+kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Horde[2] = kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Alliance[2]
+kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Horde[3] = kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Alliance[3]
+kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Horde[4] = kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Alliance[4]
 
 --------------- INST46 - Hateforge Quarry ---------------
-kQuestInstanceData[46] = {
+kQuestInstanceData["HateforgeQuarry"] = {
     Story = "Hateforge Quarry is an instance dungeon located in the Burning Steppes. Hidden away at the southeastern walls of the Burning Steppes, the Hateforge Quarry is the Dark Iron dwarves' newest effort to find of a new weapon to use against their adversaries. The innocent-looking quarry hides an insidious cavern, where the Shadowforge dwarves plot new schemes against all those that oppose them.",
     Caption = "Hateforge Quarry",
     QAA = "5 Quest",
@@ -9403,7 +9404,7 @@ kQuestInstanceData[46] = {
         Horde = {}
     }
 }
-kQuestInstanceData[46].Quests.Alliance[1] = {
+kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[1] = {
     Title = "1. Rival Presence",
     Level = "54",
     Attain = "47",
@@ -9413,10 +9414,10 @@ kQuestInstanceData[46].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[46].Quests.Alliance[2] = {
+kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[2] = {
     Title = "2. Miners Union Mutiny II",
     Level = "50",
     Attain = "45",
@@ -9426,16 +9427,16 @@ kQuestInstanceData[46].Quests.Alliance[2] = {
     Prequest = "Gaining Orvak's Trust -> Hearing Orvak's Story -> The Sternrock Stash -> Miners Union Mutiny",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Cuffs of Justice",
             ID = "60673",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_PLATE,
+            Description = "Wrist, Plate",
         },
     }
 }
-kQuestInstanceData[46].Quests.Alliance[3] = {
+kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[3] = {
     Title = "3. The True High Foreman",
     Level = "51",
     Attain = "45",
@@ -9445,28 +9446,28 @@ kQuestInstanceData[46].Quests.Alliance[3] = {
     Prequest = "Gaining Orvak's Trust -> Hearing Orvak's Story -> The Sternrock Stash",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Deepblaze Signet",
             ID = "60665",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Sternrock Trudgers",
             ID = "60666",
             Color = blue,
-            Description = AQITEM_FEET..AQITEM_LEATHER,
+            Description = "Feet, Leather",
         },
         {
             Name = "Firepike's Lucky Trousers",
             ID = "60667",
             Color = blue,
-            Description = AQITEM_LEGS..AQITEM_CLOTH,
+            Description = "Legs, Cloth",
         },
     }
 }
-kQuestInstanceData[46].Quests.Alliance[4] = {
+kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[4] = {
     Title = "4. Rumors of Hateforge Brew",
     Level = "54",
     Attain = "45",
@@ -9476,22 +9477,22 @@ kQuestInstanceData[46].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_AND..white.."2",
+        Text = blue.."Rewards:",
         {
             Name = "Thunder Ale",
             ID = "2686",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Drinkable",
         },
         {
             Name = "Varlag's Clutches",
             ID = "60699",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_LEATHER,
+            Description = "Hands, Leather",
         },
     }
 }
-kQuestInstanceData[46].Quests.Alliance[5] = {
+kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[5] = {
     Title = "5. Assaulting Hateforge",
     Level = "57",
     Attain = "45",
@@ -9501,28 +9502,28 @@ kQuestInstanceData[46].Quests.Alliance[5] = {
     Prequest = "Investigating Hateforge -> The Hateforge Report -> The King's Response",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Crown of Grobi",
             ID = "60694",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_MAIL,
+            Description = "Head, Mail",
         },
         {
             Name = "Sigil of Heritage",
             ID = "60695",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Rubyheart Mallet",
             ID = "60696",
             Color = blue,
-            Description = AQITEM_ONEHAND..AQITEM_MACE,
+            Description = "One-Hand, Mace",
         },
     }
 }
-kQuestInstanceData[46].Quests.Alliance[6] = {
+kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[6] = {
     Title = "6. Why Not Both?",
     Level = "50",
     Attain = "40",
@@ -9532,19 +9533,19 @@ kQuestInstanceData[46].Quests.Alliance[6] = {
     Prequest = "Proving A Point -> I've Read It In A Book Once",
     Folgequest = "Thunderforge Mastery",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Thunderforge Lance",
             ID = "40080",
             Color = blue,
-            Description = AQITEM_POLEARM,
+            Description = "Polearm",
         },
     }
 }
-kQuestInstanceData[46].Quests.Horde[1] = kQuestInstanceData[46].Quests.Alliance[1]
-kQuestInstanceData[46].Quests.Horde[2] = kQuestInstanceData[46].Quests.Alliance[2]
-kQuestInstanceData[46].Quests.Horde[3] = kQuestInstanceData[46].Quests.Alliance[3]
-kQuestInstanceData[46].Quests.Horde[4] = {
+kQuestInstanceData["HateforgeQuarry"].Quests.Horde[1] = kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[1]
+kQuestInstanceData["HateforgeQuarry"].Quests.Horde[2] = kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[2]
+kQuestInstanceData["HateforgeQuarry"].Quests.Horde[3] = kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[3]
+kQuestInstanceData["HateforgeQuarry"].Quests.Horde[4] = {
     Title = "4. Hunting Engineer Figgles",
     Level = "55",
     Attain = "48",
@@ -9554,34 +9555,34 @@ kQuestInstanceData[46].Quests.Horde[4] = {
     Prequest = "Peculiar Won't Even Cut It",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Pyrehand Gloves",
             ID = "60771",
             Color = green,
-            Description = AQITEM_HANDS..AQITEM_CLOTH,
+            Description = "Hands, Cloth",
         },
         {
             Name = "Fur of Navakesh",
             ID = "60772",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
         {
             Name = "Blackrock Authority",
             ID = "60773",
             Color = green,
-            Description = AQITEM_ONEHAND..AQITEM_MACE,
+            Description = "One-Hand, Mace",
         },
         {
             Name = "Girdle of Galron",
             ID = "60774",
             Color = green,
-            Description = AQITEM_WAIST..AQITEM_MAIL,
+            Description = "Waist, Mail",
         },
     }
 }
-kQuestInstanceData[46].Quests.Horde[5] = {
+kQuestInstanceData["HateforgeQuarry"].Quests.Horde[5] = {
     Title = "5. Of New and Old IV",
     Level = "57",
     Attain = "45",
@@ -9591,30 +9592,30 @@ kQuestInstanceData[46].Quests.Horde[5] = {
     Prequest = "Of New and Old -> Of New and Old II -> Of New and Old III",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Blade of the Warleader",
             ID = "60734",
             Color = blue,
-            Description = AQITEM_MAINHAND..AQITEM_SWORD,
+            Description = "Main Hand, Sword",
         },
         {
             Name = "Obsidian Gem Choker",
             ID = "60735",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Battlemaster Helm",
             ID = "60736",
             Color = blue,
-            Description = AQITEM_HEAD..AQITEM_PLATE,
+            Description = "Head, Plate",
         },
     }
 }
 
 --------------- INST57 - Stormwind Vault ---------------
-kQuestInstanceData[57] = {
+kQuestInstanceData["StormwindVault"] = {
     Story = "Stormwind Vault is an instance dungeon located in Stormwind. The Vault's runes of warding are weakening as the horrors within threaten Azeroth once again, you must venture down and stop these fiends once and for all.",
     Caption = "Stormwind Vault",
     QAA = "4 Quest",
@@ -9624,7 +9625,7 @@ kQuestInstanceData[57] = {
         Horde = {}
     }
 }
-kQuestInstanceData[57].Quests.Alliance[1] = {
+kQuestInstanceData["StormwindVault"].Quests.Alliance[1] = {
     Title = "1. Recovering Vault Shackles",
     Level = "63",
     Attain = "55",
@@ -9634,10 +9635,10 @@ kQuestInstanceData[57].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[57].Quests.Alliance[2] = {
+kQuestInstanceData["StormwindVault"].Quests.Alliance[2] = {
     Title = "2. Ending Arc'Tiras",
     Level = "63",
     Attain = "55",
@@ -9647,28 +9648,28 @@ kQuestInstanceData[57].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Goldplated Royal Crossbow",
             ID = "60624",
             Color = blue,
-            Description = AQITEM_CROSSBOW,
+            Description = "Crossbow",
         },
         {
             Name = "Golden Gauntlets of Stormwind",
             ID = "60625",
             Color = blue,
-            Description = AQITEM_HANDS..AQITEM_PLATE,
+            Description = "Hands, Plate",
         },
         {
             Name = "Regal Goldthreaded Sash",
             ID = "60626",
             Color = blue,
-            Description = AQITEM_WAIST..AQITEM_CLOTH,
+            Description = "Waist, Cloth",
         },
     }
 }
-kQuestInstanceData[57].Quests.Alliance[3] = {
+kQuestInstanceData["StormwindVault"].Quests.Alliance[3] = {
     Title = "3. The Enemy Lays",
     Level = "62",
     Attain = "60",
@@ -9678,28 +9679,28 @@ kQuestInstanceData[57].Quests.Alliance[3] = {
     Prequest = "Asleep Under Snow",
     Folgequest = "Awoke at Sun Rise",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Claw of the Mageweaver",
             ID = "55133",
             Color = blue,
-            Description = AQITEM_OFFHAND..AQITEM_FIST,
+            Description = "Off Hand, Fist Weapon",
         },
         {
             Name = "Rod of Permafrost",
             ID = "55134",
             Color = blue,
-            Description = AQITEM_WAND,
+            Description = "Wand",
         },
         {
             Name = "Shard of Leyflow",
             ID = "55135",
             Color = blue,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[57].Quests.Alliance[4] = {
+kQuestInstanceData["StormwindVault"].Quests.Alliance[4] = {
     Title = "4. The Tome of Arcane Intricacies and Magical Phenomenon IX",
     Level = "63",
     Attain = "58",
@@ -9709,21 +9710,21 @@ kQuestInstanceData[57].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Ring of the Academy",
             ID = "60622",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
     }
 }
-kQuestInstanceData[57].Quests.Horde[1] = kQuestInstanceData[57].Quests.Alliance[1]
-kQuestInstanceData[57].Quests.Horde[2] = kQuestInstanceData[57].Quests.Alliance[2]
-kQuestInstanceData[57].Quests.Horde[3] = kQuestInstanceData[57].Quests.Alliance[3]
+kQuestInstanceData["StormwindVault"].Quests.Horde[1] = kQuestInstanceData["StormwindVault"].Quests.Alliance[1]
+kQuestInstanceData["StormwindVault"].Quests.Horde[2] = kQuestInstanceData["StormwindVault"].Quests.Alliance[2]
+kQuestInstanceData["StormwindVault"].Quests.Horde[3] = kQuestInstanceData["StormwindVault"].Quests.Alliance[3]
 
 --------------- INST58 - Ostarius ---------------
-kQuestInstanceData[58] = {
+kQuestInstanceData["Ostarius"] = {
     Story = "",
     Caption = "Ostarius",
     QAA = "1 Quest",
@@ -9733,7 +9734,7 @@ kQuestInstanceData[58] = {
         Horde = {}
     }
 }
-kQuestInstanceData[58].Quests.Alliance[1] = {
+kQuestInstanceData["Ostarius"].Quests.Alliance[1] = {
     Title = "1. Gate Keeper",
     Level = "60",
     Attain = "58",
@@ -9743,10 +9744,10 @@ kQuestInstanceData[58].Quests.Alliance[1] = {
     Prequest = "1.Unusual Partnership -> 2.Original Owner --> 7.Gates of Uldum",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[58].Quests.Horde[1] = {
+kQuestInstanceData["Ostarius"].Quests.Horde[1] = {
     Title = "1. Guardian of the Gate",
     Level = "60",
     Attain = "58",
@@ -9756,12 +9757,12 @@ kQuestInstanceData[58].Quests.Horde[1] = {
     Prequest = "1.The Lone Wolf -> 2.Scarms of the Past --> 7.Uldum Awaits",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
 
 --------------- INST61 - Gilneas City ---------------
-kQuestInstanceData[61] = {
+kQuestInstanceData["GilneasCity"] = {
     Story = "Gilneas City is an instance dungeon located in Gilneas. Located at the heart of this once-isolated land, Gilneas City was once a bastion of hope for its people. Established after breaking free from the rule of the Arathorian lords, it stood as a symbol of resilience and prosperity. However, it is now a mere shell of its former beauty, with a dark presence casting a gripping shadow over Gilneas and serving as a reminder of its once glorious past. Distant howls echo through the city, haunting reminders of its new occupants. Yet, there is a possibility that not everyone is gone and that their accursed king may still live.",
     Caption = "Gilneas City",
     QAA = "10 Quest",
@@ -9771,7 +9772,7 @@ kQuestInstanceData[61] = {
         Horde = {}
     }
 }
-kQuestInstanceData[61].Quests.Alliance[1] = {
+kQuestInstanceData["GilneasCity"].Quests.Alliance[1] = {
     Title = "1. The Judge and the Phantom",
     Level = "46",
     Attain = "35",
@@ -9781,28 +9782,28 @@ kQuestInstanceData[61].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Glaymore Family Breastplate",
             ID = "61620",
             Color = green,
-            Description = AQITEM_CHEST..AQITEM_MAIL,
+            Description = "Chest, Mail",
         },
         {
             Name = "Ceremonial Gilnean Pike",
             ID = "61621",
             Color = green,
-            Description = AQITEM_TWOHAND..AQITEM_POLEARM,
+            Description = "Polearm",
         },
         {
             Name = "Glaymore Shawl",
             ID = "61622",
             Color = green,
-            Description = AQITEM_BACK,
+            Description = "Back",
         },
     }
 }
-kQuestInstanceData[61].Quests.Alliance[2] = {
+kQuestInstanceData["GilneasCity"].Quests.Alliance[2] = {
     Title = "2. Behind The Wall",
     Level = "41",
     Attain = "36",
@@ -9812,22 +9813,22 @@ kQuestInstanceData[61].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Inlaid Plate Boots",
             ID = "61348",
             Color = green,
-            Description = AQITEM_FEET..AQITEM_PLATE,
+            Description = "Feet, Plate",
         },
         {
             Name = "Dwarven Battle Bludgeon",
             ID = "61349",
             Color = green,
-            Description = AQITEM_MAINHAND..AQITEM_MACE,
+            Description = "Main Hand, Mace",
         },
     }
 }
-kQuestInstanceData[61].Quests.Alliance[3] = {
+kQuestInstanceData["GilneasCity"].Quests.Alliance[3] = {
     Title = "3. The Deed to Ravenshire",
     Level = "45",
     Attain = "38",
@@ -9837,34 +9838,34 @@ kQuestInstanceData[61].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Ebonmere Axe",
             ID = "61601",
             Color = green,
-            Description = AQITEM_ONEHAND..AQITEM_AXE,
+            Description = "One-Hand, Axe",
         },
         {
             Name = "Gilneas Brigade Helmet",
             ID = "61602",
             Color = green,
-            Description = AQITEM_HEAD..AQITEM_PLATE,
+            Description = "Head, Plate",
         },
         {
             Name = "Robes of Ravenshire",
             ID = "61603",
             Color = green,
-            Description = AQITEM_CHEST..AQITEM_CLOTH,
+            Description = "Chest, Cloth",
         },
         {
             Name = "Greyshire Pauldrons",
             ID = "61604",
             Color = green,
-            Description = AQITEM_SHOULDER..AQITEM_LEATHER,
+            Description = "Shoulder, Leather",
         },
     }
 }
-kQuestInstanceData[61].Quests.Alliance[4] = {
+kQuestInstanceData["GilneasCity"].Quests.Alliance[4] = {
     Title = "4. Ravencroft's Ambition",
     Level = "45",
     Attain = "40",
@@ -9874,10 +9875,10 @@ kQuestInstanceData[61].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[61].Quests.Alliance[5] = {
+kQuestInstanceData["GilneasCity"].Quests.Alliance[5] = {
     Title = "5. Undoing Draconic Presence",
     Level = "47",
     Attain = "35",
@@ -9887,22 +9888,22 @@ kQuestInstanceData[61].Quests.Alliance[5] = {
     Prequest = "Font of Arcana -> Magical Presence -> Draconic Presence?",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Violet Sash",
             ID = "61486",
             Color = blue,
-            Description = AQITEM_WAIST..AQITEM_CLOTH,
+            Description = "Waist, Cloth",
         },
         {
             Name = "Gauntlets of Insight",
             ID = "61487",
             Color = blue,
-            Description = AQITEM_HANDS..AQITEM_MAIL,
+            Description = "Hands, Mail",
         },
     }
 }
-kQuestInstanceData[61].Quests.Alliance[6] = {
+kQuestInstanceData["GilneasCity"].Quests.Alliance[6] = {
     Title = "6. The Fall and Rise of Greymane",
     Level = "42",
     Attain = "35",
@@ -9912,34 +9913,34 @@ kQuestInstanceData[61].Quests.Alliance[6] = {
     Prequest = "Wolf Amongst Sheep -> One Chain at a Time -> On Legend's Trail -> Back to Ravenshire -> Dim Light in the Darkness -> Vilest of Men -> A Crossroads Deal -> Assaulting Freyshear Keep ",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_AND..white.."4",
+        Text = blue.."Reward: 1 or 2 or 3 and 4",
         {
             Name = "Ravenwood Belt",
             ID = "61497",
             Color = blue,
-            Description = AQITEM_WAIST..AQITEM_MAIL,
+            Description = "Waist, Mail",
         },
         {
             Name = "Signet of Gilneas",
             ID = "61498",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Ravenshire Gloves",
             ID = "61499",
             Color = blue,
-            Description = AQITEM_HANDS..AQITEM_LEATHER,
+            Description = "Hands, Leather",
         },
         {
             Name = "Ravenshire Tabard",
             ID = "61369",
             Color = white,
-            Description = AQITEM_TABARD,
+            Description = "Tabard",
         },
     }
 }
-kQuestInstanceData[61].Quests.Alliance[7] = {
+kQuestInstanceData["GilneasCity"].Quests.Alliance[7] = {
     Title = "7. Manuscript on Hydromancy II",
     Level = "45",
     Attain = "38",
@@ -9949,16 +9950,16 @@ kQuestInstanceData[61].Quests.Alliance[7] = {
     Prequest = "Mannoroc Demonic Sigil",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Tome of Teleportation: Theramore",
             ID = "92001",
             Color = green,
-            Description = AQITEM_ITEM,
+            Description = "Spell",
         },
     }
 }
-kQuestInstanceData[61].Quests.Alliance[8] = {
+kQuestInstanceData["GilneasCity"].Quests.Alliance[8] = {
     Title = "8. Left In Bad Faith",
     Level = "44",
     Attain = "40",
@@ -9968,16 +9969,16 @@ kQuestInstanceData[61].Quests.Alliance[8] = {
     Prequest = "Mastering Goldsmithing",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Plans: Alluring Citrine Choker",
             ID = "70134",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Pattern",
         },
     }
 }
-kQuestInstanceData[61].Quests.Alliance[9] = {
+kQuestInstanceData["GilneasCity"].Quests.Alliance[9] = {
     Title = "9. Blood of Vorgendor",
     Level = "60",
     Attain = "60",
@@ -9987,10 +9988,10 @@ kQuestInstanceData[61].Quests.Alliance[9] = {
     Prequest = "Scythe of the Goddess",
     Folgequest = "Wolfblood",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[61].Quests.Alliance[10] = {
+kQuestInstanceData["GilneasCity"].Quests.Alliance[10] = {
     Title = "10. Gilnean Pricolich",
     Level = "60",
     Attain = "60",
@@ -10000,11 +10001,11 @@ kQuestInstanceData[61].Quests.Alliance[10] = {
     Prequest = "Pricolich Gnarlmoon",
     Folgequest = "Pricolich Lycan",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[61].Quests.Horde[1] = kQuestInstanceData[61].Quests.Alliance[1]
-kQuestInstanceData[61].Quests.Horde[2] = {
+kQuestInstanceData["GilneasCity"].Quests.Horde[1] = kQuestInstanceData["GilneasCity"].Quests.Alliance[1]
+kQuestInstanceData["GilneasCity"].Quests.Horde[2] = {
     Title = "2. Ebonmere Affairs",
     Level = "45",
     Attain = "35",
@@ -10014,34 +10015,34 @@ kQuestInstanceData[61].Quests.Horde[2] = {
     Prequest = "Ebonmere Bat Infestation -> Ebonmere Worgen Infestation",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Ebonmere Reaver",
             ID = "61627",
             Color = green,
-            Description = AQITEM_ONEHAND..AQITEM_AXE,
+            Description = "One-Hand, Axe",
         },
         {
             Name = "Clutch of Joshua",
             ID = "61628",
             Color = green,
-            Description = AQITEM_WAIST..AQITEM_CLOTH,
+            Description = "Waist, Cloth",
         },
         {
             Name = "Farmer's Musket",
             ID = "61629",
             Color = green,
-            Description = AQITEM_GUN,
+            Description = "Gun",
         },
         {
             Name = "Ebonmere Vambracers",
             ID = "61630",
             Color = green,
-            Description = AQITEM_WRIST..AQITEM_PLATE,
+            Description = "Wrist, Plate",
         },
     }
 }
-kQuestInstanceData[61].Quests.Horde[3] = {
+kQuestInstanceData["GilneasCity"].Quests.Horde[3] = {
     Title = "3. A Royal Heist",
     Level = "45",
     Attain = "40",
@@ -10051,10 +10052,10 @@ kQuestInstanceData[61].Quests.Horde[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[61].Quests.Horde[4] = {
+kQuestInstanceData["GilneasCity"].Quests.Horde[4] = {
     Title = "4. The Evil Made Me Do It",
     Level = "46",
     Attain = "35",
@@ -10064,16 +10065,16 @@ kQuestInstanceData[61].Quests.Horde[4] = {
     Prequest = "Dead Until Dark -> All We Need is Blood -> Last of the Living Dead -> We Take It From The Living",
     Folgequest = "Blood for Blood",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Pure Bloodvial Pendant",
             ID = "61422",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[61].Quests.Horde[5] = {
+kQuestInstanceData["GilneasCity"].Quests.Horde[5] = {
     Title = "5. Genn Greymane Must Die!",
     Level = "49",
     Attain = "40",
@@ -10083,28 +10084,28 @@ kQuestInstanceData[61].Quests.Horde[5] = {
     Prequest = "'Report to Luke Agamand'-> Heist in Dryrock Mine ->> Report to Livia Strongarm -> Rendezvous with the Infiltrator ->> Quality Time with Blackthorn",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Blackthorn Gauntlets",
             ID = "61353",
             Color = blue,
-            Description = AQITEM_HANDS..AQITEM_LEATHER,
+            Description = "Hands, Leather",
         },
         {
             Name = "Banshee's Tear",
             ID = "61354",
             Color = blue,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "Dark Footpad Belt",
             ID = "61355",
             Color = blue,
-            Description = AQITEM_WAIST..AQITEM_MAIL,
+            Description = "Waist, Mail",
         },
     }
 }
-kQuestInstanceData[61].Quests.Horde[6] = {
+kQuestInstanceData["GilneasCity"].Quests.Horde[6] = {
     Title = "6. The Greymane Stone",
     Level = "47",
     Attain = "38",
@@ -10114,28 +10115,28 @@ kQuestInstanceData[61].Quests.Horde[6] = {
     Prequest = "Through Greater Magic -> The Ravenwood Scepter -> The Powers Beyond "..yellow.."[Razorfen Downs]"..white..".", -- 40993, 40994, 40995",
     Folgequest = "Gift of the Dark Bishop",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Garalon's Might",
             ID = "61660",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_SWORD,
+            Description = "Two-Hand, Sword",
         },
         {
             Name = "Varimathras' Cunning",
             ID = "61661",
             Color = blue,
-            Description = AQITEM_TWOHAND..AQITEM_STAFF,
+            Description = "Staff",
         },
         {
             Name = "Stillward Amulet",
             ID = "61662",
             Color = blue,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
     }
 }
-kQuestInstanceData[61].Quests.Horde[7] = {
+kQuestInstanceData["GilneasCity"].Quests.Horde[7] = {
     Title = "7. Foreign Knowledge",
     Level = "44",
     Attain = "34",
@@ -10145,16 +10146,16 @@ kQuestInstanceData[61].Quests.Horde[7] = {
     Prequest = "Mastering Goldsmithing",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Plans: Alluring Citrine Choker",
             ID = "70134",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Pattern",
         },
     }
 }
-kQuestInstanceData[61].Quests.Horde[8] = {
+kQuestInstanceData["GilneasCity"].Quests.Horde[8] = {
     Title = "8. The Wolf, the Crone and the Scythe",
     Level = "60",
     Attain = "60",
@@ -10164,10 +10165,10 @@ kQuestInstanceData[61].Quests.Horde[8] = {
     Prequest = "Scythe of the Goddess",
     Folgequest = "Wolfblood",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[61].Quests.Horde[9] = {
+kQuestInstanceData["GilneasCity"].Quests.Horde[9] = {
     Title = "9. Gilnean Pricolich",
     Level = "60",
     Attain = "60",
@@ -10177,12 +10178,12 @@ kQuestInstanceData[61].Quests.Horde[9] = {
     Prequest = "Pricolich Gnarlmoon",
     Folgequest = "Pricolich Lycan",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
 
 --------------- INST62 - Lower Karazhan Halls ---------------
-kQuestInstanceData[62] = {
+kQuestInstanceData["LowerKarazhan"] = {
     Story = "",
     Caption = "Lower Karazhan Halls",
     QAA = "18 Quest",
@@ -10192,7 +10193,7 @@ kQuestInstanceData[62] = {
         Horde = {}
     }
 }
-kQuestInstanceData[62].Quests.Alliance[1] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[1] = {
     Title = "1. Suitable Accomodations",
     Level = "60",
     Attain = "55",
@@ -10202,10 +10203,10 @@ kQuestInstanceData[62].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "A Drink to Sleep",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[2] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[2] = {
     Title = "2. A Drink to Sleep",
     Level = "60",
     Attain = "55",
@@ -10215,10 +10216,10 @@ kQuestInstanceData[62].Quests.Alliance[2] = {
     Prequest = "Suitable Accomodations",
     Folgequest = "Spectral Wine",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[3] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[3] = {
     Title = "3. Spectral Wine",
     Level = "60",
     Attain = "55",
@@ -10228,10 +10229,10 @@ kQuestInstanceData[62].Quests.Alliance[3] = {
     Prequest = "A Drink to Sleep",
     Folgequest = "Wine for Kyleson",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[4] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[4] = {
     Title = "4. Wine for Kyleson",
     Level = "60",
     Attain = "55",
@@ -10241,10 +10242,10 @@ kQuestInstanceData[62].Quests.Alliance[4] = {
     Prequest = "Spectral Wine",
     Folgequest = "No",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[5] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[5] = {
     Title = "5. The Key to Karazhan I",
     Level = "60",
     Attain = "58",
@@ -10254,10 +10255,10 @@ kQuestInstanceData[62].Quests.Alliance[5] = {
     Prequest = "No",
     Folgequest = "The Key to Karazhan II",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[6] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[6] = {
     Title = "6. The Key to Karazhan II",
     Level = "60",
     Attain = "58",
@@ -10267,10 +10268,10 @@ kQuestInstanceData[62].Quests.Alliance[6] = {
     Prequest = "The Key to Karazhan I",
     Folgequest = "The Key to Karazhan III",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[7] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[7] = {
     Title = "7. The Key to Karazhan III",
     Level = "60",
     Attain = "58",
@@ -10280,10 +10281,10 @@ kQuestInstanceData[62].Quests.Alliance[7] = {
     Prequest = "The Key to Karazhan II",
     Folgequest = "The Key to Karazhan IV",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[8] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[8] = {
     Title = "8. Scribbled Cooking Notes",
     Level = "60",
     Attain = "55",
@@ -10293,10 +10294,10 @@ kQuestInstanceData[62].Quests.Alliance[8] = {
     Prequest = "No",
     Folgequest = "Lost and Found",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[9] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[9] = {
     Title = "9. Lost and Found",
     Level = "60",
     Attain = "55",
@@ -10306,10 +10307,10 @@ kQuestInstanceData[62].Quests.Alliance[9] = {
     Prequest = "Scribbled Cooking Notes",
     Folgequest = "Rothlen Family Brooch",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[10] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[10] = {
     Title = "10. Rothlen Family Brooch",
     Level = "60",
     Attain = "55",
@@ -10319,10 +10320,10 @@ kQuestInstanceData[62].Quests.Alliance[10] = {
     Prequest = "Lost and Found",
     Folgequest = "The Secret Recipe",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[11] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[11] = {
     Title = "11. The Secret Recipe",
     Level = "60",
     Attain = "55",
@@ -10332,10 +10333,10 @@ kQuestInstanceData[62].Quests.Alliance[11] = {
     Prequest = "Rothlen Family Brooch",
     Folgequest = "The Doorman of Karazhan",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[12] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[12] = {
     Title = "12. The Doorman of Karazhan",
     Level = "60",
     Attain = "55",
@@ -10345,10 +10346,10 @@ kQuestInstanceData[62].Quests.Alliance[12] = {
     Prequest = "The Secret Recipe",
     Folgequest = "Charge of Karazhan",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[13] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[13] = {
     Title = "13. Charge of Karazhan",
     Level = "60",
     Attain = "55",
@@ -10358,10 +10359,10 @@ kQuestInstanceData[62].Quests.Alliance[13] = {
     Prequest = "The Doorman of Karazhan",
     Folgequest = "Le Fishe Au Chocolat",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[14] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[14] = {
     Title = "14. Le Fishe Au Chocolat",
     Level = "60",
     Attain = "55",
@@ -10371,22 +10372,22 @@ kQuestInstanceData[62].Quests.Alliance[14] = {
     Prequest = "Charge of Karazhan",
     Folgequest = "",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Recipe: Le Fishe Au Chocolat",
             ID = "61666",
             Color = purple,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
         {
             Name = "Le Fishe Au Chocolat",
             ID = "84040",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Pattern",
         },
     }
 }
-kQuestInstanceData[62].Quests.Alliance[15] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[15] = {
     Title = "15. Scythe of the Goddess",
     Level = "60",
     Attain = "60",
@@ -10396,10 +10397,10 @@ kQuestInstanceData[62].Quests.Alliance[15] = {
     Prequest = "No",
     Folgequest = "Scythe of the Goddess",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Alliance[16] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[16] = {
     Title = "16. Contribution to the Church",
     Level = "60",
     Attain = "55",
@@ -10409,34 +10410,34 @@ kQuestInstanceData[62].Quests.Alliance[16] = {
     Prequest = "No",
     Folgequest = "Invocation of Shattering, Invocation of Greater Protection, Invocation of Expansive Mind, Invocation of Greater Arcane Fortitude",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3"..AQDiscription_OR..white.."4",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Invocation of Shattering",
             ID = "92005",
             Color = blue,
-            Description = AQITEM_ENCHANT,
+            Description = "Enchant",
         },
         {
             Name = "Invocation of Greater Protection",
             ID = "92006",
             Color = blue,
-            Description = AQITEM_ENCHANT,
+            Description = "Enchant",
         },
         {
             Name = "Invocation of Expansive Mind",
             ID = "92007",
             Color = blue,
-            Description = AQITEM_ENCHANT,
+            Description = "Enchant",
         },
         {
             Name = "Invocation of Greater Arcane Fortitude",
             ID = "92008",
             Color = blue,
-            Description = AQITEM_ENCHANT,
+            Description = "Enchant",
         },
     }
 }
-kQuestInstanceData[62].Quests.Alliance[17] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[17] = {
     Title = "17. Comically Large Candle",
     Level = "61",
     Attain = "60",
@@ -10446,16 +10447,16 @@ kQuestInstanceData[62].Quests.Alliance[17] = {
     Prequest = "I Am No Rat",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Tome of Polymorph: Rodent",
             ID = "92025",
             Color = blue,
-            Description = AQITEM_ITEM,
+            Description = "Spell",
         },
     }
 }
-kQuestInstanceData[62].Quests.Alliance[18] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Alliance[18] = {
     Title = "18. Blood of Vorgendor",
     Level = "60",
     Attain = "60",
@@ -10465,16 +10466,16 @@ kQuestInstanceData[62].Quests.Alliance[18] = {
     Prequest = "Scythe of the Goddess",
     Folgequest = "Wolfblood",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Horde[1] = kQuestInstanceData[62].Quests.Alliance[1]
-kQuestInstanceData[62].Quests.Horde[2] = kQuestInstanceData[62].Quests.Alliance[2]
-kQuestInstanceData[62].Quests.Horde[3] = kQuestInstanceData[62].Quests.Alliance[3]
-kQuestInstanceData[62].Quests.Horde[4] = kQuestInstanceData[62].Quests.Alliance[4]
-kQuestInstanceData[62].Quests.Horde[5] = kQuestInstanceData[62].Quests.Alliance[5]
-kQuestInstanceData[62].Quests.Horde[6] = kQuestInstanceData[62].Quests.Alliance[6]
-kQuestInstanceData[62].Quests.Horde[7] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[1] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[1]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[2] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[2]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[3] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[3]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[4] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[4]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[5] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[5]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[6] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[6]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[7] = {
     Title = "7. The Key to Karazhan III",
     Level = "60",
     Attain = "58",
@@ -10484,20 +10485,20 @@ kQuestInstanceData[62].Quests.Horde[7] = {
     Prequest = "The Key to Karazhan II",
     Folgequest = "The Key to Karazhan IV",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[62].Quests.Horde[8] = kQuestInstanceData[62].Quests.Alliance[8]
-kQuestInstanceData[62].Quests.Horde[9] = kQuestInstanceData[62].Quests.Alliance[9]
-kQuestInstanceData[62].Quests.Horde[10] = kQuestInstanceData[62].Quests.Alliance[10]
-kQuestInstanceData[62].Quests.Horde[11] = kQuestInstanceData[62].Quests.Alliance[11]
-kQuestInstanceData[62].Quests.Horde[12] = kQuestInstanceData[62].Quests.Alliance[12]
-kQuestInstanceData[62].Quests.Horde[13] = kQuestInstanceData[62].Quests.Alliance[13]
-kQuestInstanceData[62].Quests.Horde[14] = kQuestInstanceData[62].Quests.Alliance[14]
-kQuestInstanceData[62].Quests.Horde[15] = kQuestInstanceData[62].Quests.Alliance[15]
-kQuestInstanceData[62].Quests.Horde[16] = kQuestInstanceData[62].Quests.Alliance[16]
-kQuestInstanceData[62].Quests.Horde[17] = kQuestInstanceData[62].Quests.Alliance[17]
-kQuestInstanceData[62].Quests.Horde[18] = {
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[8] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[8]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[9] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[9]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[10] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[10]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[11] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[11]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[12] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[12]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[13] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[13]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[14] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[14]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[15] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[15]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[16] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[16]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[17] = kQuestInstanceData["LowerKarazhan"].Quests.Alliance[17]
+kQuestInstanceData["LowerKarazhan"].Quests.Horde[18] = {
     Title = "18. The Wolf, the Crone and the Scythe",
     Level = "60",
     Attain = "60",
@@ -10507,12 +10508,12 @@ kQuestInstanceData[62].Quests.Horde[18] = {
     Prequest = "Scythe of the Goddess",
     Folgequest = "Wolfblood",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
 
 --------------- INST63 - Emerald Sanctum ---------------
-kQuestInstanceData[63] = {
+kQuestInstanceData["EmeraldSanctum"] = {
     Story = "Emerald Sanctum is an instance raid located in Hyjal. A fog of corruption has descended upon the Emerald Dream, twisting the morals and intentions of even the noblest and purest. The corrupted Wakener is preparing to send a premature call of awakening; if not stopped, his kin will arise and go on a frenzied rampage across Azeroth.",
     Caption = "Emerald Sanctum",
     QAA = "3 Quest",
@@ -10522,7 +10523,7 @@ kQuestInstanceData[63] = {
         Horde = {}
     }
 }
-kQuestInstanceData[63].Quests.Alliance[1] = {
+kQuestInstanceData["EmeraldSanctum"].Quests.Alliance[1] = {
     Title = "1. Smoldering Dream Essence",
     Level = "60",
     Attain = "55",
@@ -10532,16 +10533,16 @@ kQuestInstanceData[63].Quests.Alliance[1] = {
     Prequest = "No",
     Folgequest = "Purified Dream Essence",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Purified Emerald Essence",
             ID = "61445",
             Color = purple,
-            Description = AQITEM_PATTERN,
+            Description = "Pattern",
         },
     }
 }
-kQuestInstanceData[63].Quests.Alliance[2] = {
+kQuestInstanceData["EmeraldSanctum"].Quests.Alliance[2] = {
     Title = "2. Head of Solnius",
     Level = "60",
     Attain = "58",
@@ -10551,28 +10552,28 @@ kQuestInstanceData[63].Quests.Alliance[2] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Ring of Nordrassil",
             ID = "61195",
             Color = purple,
-            Description = AQITEM_RING,
+            Description = "Ring",
         },
         {
             Name = "The Heart of Dreams",
             ID = "61194",
             Color = purple,
-            Description = AQITEM_NECK,
+            Description = "Neck",
         },
         {
             Name = "Verdant Eye Necklace",
             ID = "61193",
             Color = purple,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[63].Quests.Alliance[3] = {
+kQuestInstanceData["EmeraldSanctum"].Quests.Alliance[3] = {
     Title = "3. The Claw of Erennius",
     Level = "60",
     Attain = "55",
@@ -10582,33 +10583,33 @@ kQuestInstanceData[63].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "No",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1"..AQDiscription_OR..white.."2"..AQDiscription_OR..white.."3",
+        Text = blue.."Reward: Pick One",
         {
             Name = "Jadestone Skewer",
             ID = "61650",
             Color = purple,
-            Description = AQITEM_TWOHAND..AQITEM_POLEARM,
+            Description = "Polearm",
         },
         {
             Name = "Jadestone Mallet",
             ID = "61651",
             Color = purple,
-            Description = AQITEM_MAINHAND..AQITEM_MACE,
+            Description = "Main Hand, Mace",
         },
         {
             Name = "Claw of Senthos",
             ID = "61740",
             Color = purple,
-            Description = AQITEM_MAINHAND..AQITEM_FIST,
+            Description = "Main Hand, Fist Weapon",
         },
     }
 }
-kQuestInstanceData[63].Quests.Horde[1] = kQuestInstanceData[63].Quests.Alliance[1]
-kQuestInstanceData[63].Quests.Horde[2] = kQuestInstanceData[63].Quests.Alliance[2]
-kQuestInstanceData[63].Quests.Horde[3] = kQuestInstanceData[63].Quests.Alliance[3]
+kQuestInstanceData["EmeraldSanctum"].Quests.Horde[1] = kQuestInstanceData["EmeraldSanctum"].Quests.Alliance[1]
+kQuestInstanceData["EmeraldSanctum"].Quests.Horde[2] = kQuestInstanceData["EmeraldSanctum"].Quests.Alliance[2]
+kQuestInstanceData["EmeraldSanctum"].Quests.Horde[3] = kQuestInstanceData["EmeraldSanctum"].Quests.Alliance[3]
 
 --------------- INST64 - Tower of Karazhan ---------------
-kQuestInstanceData[64] = {
+kQuestInstanceData["TowerofKarazhan"] = {
     Story = "",
     Caption = "Tower of Karazhan",
     QAA = "9 Quest",
@@ -10618,7 +10619,7 @@ kQuestInstanceData[64] = {
         Horde = {}
     }
 }
-kQuestInstanceData[64].Quests.Alliance[1] = {
+kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[1] = {
     Title = "1. The Scepter Rod of Medivh",
     Level = "60",
     Attain = "60",
@@ -10628,16 +10629,16 @@ kQuestInstanceData[64].Quests.Alliance[1] = {
     Prequest = "Wine for Kyleson, The Binding of Xanthar",
     Folgequest = "Tirisfal's Vestige",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "Scepter Rod of Medivh",
             ID = "41413",
             Color = white,
-            Description = AQITEM_ITEM,
+            Description = "Quest Item",
         },
     }
 }
-kQuestInstanceData[64].Quests.Alliance[2] = {
+kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[2] = {
     Title = "2. Tirisfal's Vestige",
     Level = "60",
     Attain = "60",
@@ -10647,16 +10648,16 @@ kQuestInstanceData[64].Quests.Alliance[2] = {
     Prequest = "Clutch of Thanlar -> Restoration",
     Folgequest = "The Sanv Charm -> A Favor Asked -> The Otherwordly Scepter of Medivh -> A Pathway Opened",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "The Scepter of Medivh",
             ID = "41415",
             Color = purple,
-            Description = AQITEM_ITEM,
+            Description = "Quest Item",
         },
     }
 }
-kQuestInstanceData[64].Quests.Alliance[3] = {
+kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[3] = {
     Title = "3. I Am No Rat",
     Level = "61",
     Attain = "60",
@@ -10666,10 +10667,10 @@ kQuestInstanceData[64].Quests.Alliance[3] = {
     Prequest = "No",
     Folgequest = "Comically Large Candle",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[64].Quests.Alliance[4] = {
+kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[4] = {
     Title = "4. A Chef's Majesty",
     Level = "60",
     Attain = "60",
@@ -10679,10 +10680,10 @@ kQuestInstanceData[64].Quests.Alliance[4] = {
     Prequest = "No",
     Folgequest = "No Honor Among Chefs",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[64].Quests.Alliance[5] = {
+kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[5] = {
     Title = "5. Cold is the Night",
     Level = "62",
     Attain = "60",
@@ -10692,10 +10693,10 @@ kQuestInstanceData[64].Quests.Alliance[5] = {
     Prequest = "No",
     Folgequest = "Embraced by the Moon",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[64].Quests.Alliance[6] = {
+kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[6] = {
     Title = "6. A Study of Magical Trees",
     Level = "61",
     Attain = "60",
@@ -10705,10 +10706,10 @@ kQuestInstanceData[64].Quests.Alliance[6] = {
     Prequest = "No",
     Folgequest = "Wrapping Warpwood",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[64].Quests.Alliance[7] = {
+kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[7] = {
     Title = "7. Scythe of the Goddess",
     Level = "60",
     Attain = "60",
@@ -10718,10 +10719,10 @@ kQuestInstanceData[64].Quests.Alliance[7] = {
     Prequest = "Scythe of the Goddess",
     Folgequest = "Scythe of the Goddess",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[64].Quests.Alliance[8] = {
+kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[8] = {
     Title = "8. Pricolich Gnarlmoon",
     Level = "60",
     Attain = "60",
@@ -10731,10 +10732,10 @@ kQuestInstanceData[64].Quests.Alliance[8] = {
     Prequest = "Scythe of the Goddess --> Wisdom of Ur",
     Folgequest = "Gilnean Pricolich",
     Rewards = {
-        Text = AQNoReward,
+        Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData[64].Quests.Alliance[9] = {
+kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[9] = {
     Title = "9. Scythe of the Goddess",
     Level = "60",
     Attain = "60",
@@ -10744,22 +10745,22 @@ kQuestInstanceData[64].Quests.Alliance[9] = {
     Prequest = "Scythe of the Goddess -->> Pricolich Lycan",
     Folgequest = "The Power of the Goddess",
     Rewards = {
-        Text = AQDiscription_REWARD..white.."1",
+        Text = blue.."Reward:",
         {
             Name = "The Scythe of Elune",
             ID = "55505",
             Color = orange,
-            Description = AQITEM_TRINKET,
+            Description = "Trinket",
         },
     }
 }
-kQuestInstanceData[64].Quests.Horde[1] = kQuestInstanceData[64].Quests.Alliance[1]
-kQuestInstanceData[64].Quests.Horde[2] = kQuestInstanceData[64].Quests.Alliance[2]
-kQuestInstanceData[64].Quests.Horde[3] = kQuestInstanceData[64].Quests.Alliance[3]
-kQuestInstanceData[64].Quests.Horde[4] = kQuestInstanceData[64].Quests.Alliance[4]
-kQuestInstanceData[64].Quests.Horde[5] = kQuestInstanceData[64].Quests.Alliance[5]
-kQuestInstanceData[64].Quests.Horde[6] = kQuestInstanceData[64].Quests.Alliance[6]
-kQuestInstanceData[64].Quests.Horde[7] = kQuestInstanceData[64].Quests.Alliance[7]
-kQuestInstanceData[64].Quests.Horde[8] = kQuestInstanceData[64].Quests.Alliance[8]
-kQuestInstanceData[64].Quests.Horde[9] = kQuestInstanceData[64].Quests.Alliance[9]
+kQuestInstanceData["TowerofKarazhan"].Quests.Horde[1] = kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[1]
+kQuestInstanceData["TowerofKarazhan"].Quests.Horde[2] = kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[2]
+kQuestInstanceData["TowerofKarazhan"].Quests.Horde[3] = kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[3]
+kQuestInstanceData["TowerofKarazhan"].Quests.Horde[4] = kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[4]
+kQuestInstanceData["TowerofKarazhan"].Quests.Horde[5] = kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[5]
+kQuestInstanceData["TowerofKarazhan"].Quests.Horde[6] = kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[6]
+kQuestInstanceData["TowerofKarazhan"].Quests.Horde[7] = kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[7]
+kQuestInstanceData["TowerofKarazhan"].Quests.Horde[8] = kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[8]
+kQuestInstanceData["TowerofKarazhan"].Quests.Horde[9] = kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[9]
 AtlasTW.Quest.DataBase = kQuestInstanceData

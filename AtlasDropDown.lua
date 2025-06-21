@@ -1,5 +1,6 @@
 -- Namespace protection
 local _G = getfenv()
+local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local AtlasDropDown = {}
 
 -- Constants
@@ -21,11 +22,11 @@ local SORT_TYPES = {
 
 -- Main dropdown layout order
 AtlasDropDown.SortOrder = {
-    [SORT_TYPES.CONTINENT] = ATLAS_DDL_CONTINENT,
-    [SORT_TYPES.PARTYSIZE] = ATLAS_DDL_PARTYSIZE,
-    [SORT_TYPES.LEVEL] = ATLAS_DDL_LEVEL,
-    [SORT_TYPES.TYPE] = ATLAS_DDL_TYPE,
-    [SORT_TYPES.ALL] = ATLAS_DDL_ALL
+    [SORT_TYPES.CONTINENT] = L["Continent"],
+    [SORT_TYPES.PARTYSIZE] = L["Party Size"],
+    [SORT_TYPES.LEVEL] = L["Level"],
+    [SORT_TYPES.TYPE] = L["Type"],
+    [SORT_TYPES.ALL] = L["All"]
 }
 
 -- Dungeon data organized by categories
@@ -156,12 +157,12 @@ local function CreateStandardLayout(mainCategories, includeSpecial)
     -- Add special categories if requested
     if includeSpecial then
         local baseIndex = table.getn(mainCategories)
-        layout[baseIndex + 1] = ATLAS_DDL_WORLD
-        layout[baseIndex + 2] = CreateColoredCategory(ATLAS_DDL_TYPE_ENTRANCE)
-        layout[baseIndex + 3] = CreateColoredCategory(ATLAS_DDL_BGS)
-        layout[baseIndex + 4] = CreateColoredCategory(ATLAS_DDL_DUNGEON_LOCATIONS)
-        layout[baseIndex + 5] = CreateColoredCategory(ATLAS_DDL_FLIGHT_PATHS)
-        layout[baseIndex + 6] = CreateColoredCategory(ATLAS_DDL_TRANSPORT_ROUTES)
+        layout[baseIndex + 1] = L["World"]
+        layout[baseIndex + 2] = CreateColoredCategory(L["Entrances"])
+        layout[baseIndex + 3] = CreateColoredCategory(L["Battlegrounds"])
+        layout[baseIndex + 4] = CreateColoredCategory(L["Dungeon Locations"])
+        layout[baseIndex + 5] = CreateColoredCategory(L["Flight Path Maps"])
+        layout[baseIndex + 6] = CreateColoredCategory(L["Transport Routes"])
     end
 
     return layout
@@ -169,83 +170,83 @@ end
 
 -- Main layout configuration
 AtlasDropDown.LayoutOrder = {
-    [ATLAS_DDL_CONTINENT] = CreateStandardLayout({
-        ATLAS_DDL_CONTINENT_EASTERN,
-        ATLAS_DDL_CONTINENT_KALIMDOR
+    [L["Continent"]] = CreateStandardLayout({
+        L["Eastern Kingdoms Instances"],
+        L["Kalimdor Instances"]
     }, true),
 
-    [ATLAS_DDL_PARTYSIZE] = CreateStandardLayout({
-        ATLAS_DDL_PARTYSIZE_5,
-        ATLAS_DDL_PARTYSIZE_10,
-        ATLAS_DDL_PARTYSIZE_20,
-        ATLAS_DDL_PARTYSIZE_40
+    [L["Party Size"]] = CreateStandardLayout({
+        L["Instances for 5 Players"],
+        L["Instances for 10 Players"],
+        L["Instances for 20 Players"],
+        L["Instances for 40 Players"]
     }, true),
 
-    [ATLAS_DDL_LEVEL] = CreateStandardLayout({
-        ATLAS_DDL_LEVEL_10TO20,
-        ATLAS_DDL_LEVEL_20TO30,
-        ATLAS_DDL_LEVEL_30TO40,
-        ATLAS_DDL_LEVEL_40TO50,
-        ATLAS_DDL_LEVEL_50TO60,
-        ATLAS_DDL_LEVEL_60
+    [L["Level"]] = CreateStandardLayout({
+        L["Instances level 10-20"],
+        L["Instances level 20-30"],
+        L["Instances level 30-40"],
+        L["Instances level 40-50"],
+        L["Instances level 50-60"],
+        L["Instances 60 level"]
     }, true),
 
-    [ATLAS_DDL_TYPE] = CreateStandardLayout({
-        ATLAS_DDL_TYPE_DUNGEONS,
-        ATLAS_DDL_TYPE_RAIDS
+    [L["Type"]] = CreateStandardLayout({
+        L["Dungeons"],
+        L["Raids"]
     }, true),
 
-    [ATLAS_DDL_ALL] = CreateStandardLayout({
-        ATLAS_DDL_ALL_MENU1,
-        ATLAS_DDL_ALL_MENU2
+    [L["All"]] = CreateStandardLayout({
+        L["Showing all instances_1"],
+        L["Showing all instances_2"]
     }, true)
 }
 
 -- Helper function to get special categories
 local function GetSpecialCategories()
     return {
-        [CreateColoredCategory(ATLAS_DDL_TYPE_ENTRANCE)] = DUNGEON_DATA.ENTRANCES,
-        [CreateColoredCategory(ATLAS_DDL_BGS)] = DUNGEON_DATA.BATTLEGROUNDS,
-        [CreateColoredCategory(ATLAS_DDL_DUNGEON_LOCATIONS)] = DUNGEON_DATA.DUNGEON_LOCATIONS,
-        [CreateColoredCategory(ATLAS_DDL_FLIGHT_PATHS)] = DUNGEON_DATA.FLIGHT_PATHS,
-        [CreateColoredCategory(ATLAS_DDL_TRANSPORT_ROUTES)] = DUNGEON_DATA.TRANSPORT_ROUTES
+        [CreateColoredCategory(L["Entrances"])] = DUNGEON_DATA.ENTRANCES,
+        [CreateColoredCategory(L["Battlegrounds"])] = DUNGEON_DATA.BATTLEGROUNDS,
+        [CreateColoredCategory(L["Dungeon Locations"])] = DUNGEON_DATA.DUNGEON_LOCATIONS,
+        [CreateColoredCategory(L["Flight Path Maps"])] = DUNGEON_DATA.FLIGHT_PATHS,
+        [CreateColoredCategory(L["Transport Routes"])] = DUNGEON_DATA.TRANSPORT_ROUTES
     }
 end
 
 -- Main layout data structure
 AtlasDropDown.Layouts = {
-    [ATLAS_DDL_CONTINENT] = {
-        [ATLAS_DDL_CONTINENT_EASTERN] = DUNGEON_DATA.EASTERN_KINGDOMS,
-        [ATLAS_DDL_CONTINENT_KALIMDOR] = DUNGEON_DATA.KALIMDOR,
-        [ATLAS_DDL_WORLD] = DUNGEON_DATA.WORLD_BOSSES
+    [L["Continent"]] = {
+        [L["Eastern Kingdoms Instances"]] = DUNGEON_DATA.EASTERN_KINGDOMS,
+        [L["Kalimdor Instances"]] = DUNGEON_DATA.KALIMDOR,
+        [L["World"]] = DUNGEON_DATA.WORLD_BOSSES
     },
 
-    [ATLAS_DDL_PARTYSIZE] = {
-        [ATLAS_DDL_PARTYSIZE_5] = PARTY_SIZE_CATEGORIES[5],
-        [ATLAS_DDL_PARTYSIZE_10] = PARTY_SIZE_CATEGORIES[10],
-        [ATLAS_DDL_PARTYSIZE_20] = PARTY_SIZE_CATEGORIES[20],
-        [ATLAS_DDL_PARTYSIZE_40] = PARTY_SIZE_CATEGORIES[40],
-        [ATLAS_DDL_WORLD] = DUNGEON_DATA.WORLD_BOSSES
+    [L["Party Size"]] = {
+        [L["Instances for 5 Players"]] = PARTY_SIZE_CATEGORIES[5],
+        [L["Instances for 10 Players"]] = PARTY_SIZE_CATEGORIES[10],
+        [L["Instances for 20 Players"]] = PARTY_SIZE_CATEGORIES[20],
+        [L["Instances for 40 Players"]] = PARTY_SIZE_CATEGORIES[40],
+        [L["World"]] = DUNGEON_DATA.WORLD_BOSSES
     },
 
-    [ATLAS_DDL_LEVEL] = {
-        [ATLAS_DDL_LEVEL_10TO20] = LEVEL_CATEGORIES["10-20"],
-        [ATLAS_DDL_LEVEL_20TO30] = LEVEL_CATEGORIES["20-30"],
-        [ATLAS_DDL_LEVEL_30TO40] = LEVEL_CATEGORIES["30-40"],
-        [ATLAS_DDL_LEVEL_40TO50] = LEVEL_CATEGORIES["40-50"],
-        [ATLAS_DDL_LEVEL_50TO60] = LEVEL_CATEGORIES["50-60"],
-        [ATLAS_DDL_LEVEL_60] = LEVEL_CATEGORIES["60"],
-        [ATLAS_DDL_WORLD] = DUNGEON_DATA.WORLD_BOSSES
+    [L["Level"]] = {
+        [L["Instances level 10-20"]] = LEVEL_CATEGORIES["10-20"],
+        [L["Instances level 20-30"]] = LEVEL_CATEGORIES["20-30"],
+        [L["Instances level 30-40"]] = LEVEL_CATEGORIES["30-40"],
+        [L["Instances level 40-50"]] = LEVEL_CATEGORIES["40-50"],
+        [L["Instances level 50-60"]] = LEVEL_CATEGORIES["50-60"],
+        [L["Instances 60 level"]] = LEVEL_CATEGORIES["60"],
+        [L["World"]] = DUNGEON_DATA.WORLD_BOSSES
     },
 
-    [ATLAS_DDL_TYPE] = {
-        [ATLAS_DDL_TYPE_DUNGEONS] = TYPE_CATEGORIES.DUNGEONS,
-        [ATLAS_DDL_TYPE_RAIDS] = TYPE_CATEGORIES.RAIDS,
-        [ATLAS_DDL_WORLD] = DUNGEON_DATA.WORLD_BOSSES
+    [L["Type"]] = {
+        [L["Dungeons"]] = TYPE_CATEGORIES.DUNGEONS,
+        [L["Raids"]] = TYPE_CATEGORIES.RAIDS,
+        [L["World"]] = DUNGEON_DATA.WORLD_BOSSES
     },
 
-    [ATLAS_DDL_ALL] = {
-        [ATLAS_DDL_ALL_MENU1] = {
+    [L["All"]] = {
+        [L["Showing all instances_1"]] = {
             "RagefireChasm", "WailingCaverns", "TheDeadmines", "ShadowfangKeep",
             "BlackfathomDeeps", "TheStockade", "Gnomeregan", "RazorfenKraul",
             "TheCrescentGrove", "SMGraveyard", "SMLibrary", "SMArmory",
@@ -255,13 +256,13 @@ AtlasDropDown.Layouts = {
             "CavernsOfTimeBlackMorass", "Scholomance", "StormwroughtRuins",
             "StormwindVault", "Stratholme"
         },
-        [ATLAS_DDL_ALL_MENU2] = {
+        [L["Showing all instances_2"]] = {
             "KarazhanCrypt", "LowerKarazhan", "BlackrockSpireLower",
             "BlackrockSpireUpper", "ZulGurub", "TheRuinsofAhnQiraj",
             "MoltenCore", "OnyxiasLair", "BlackwingLair", "TheTempleofAhnQiraj",
             "EmeraldSanctum", "Naxxramas", "TowerofKarazhan"
         },
-        [ATLAS_DDL_WORLD] = DUNGEON_DATA.WORLD_BOSSES
+        [L["World"]] = DUNGEON_DATA.WORLD_BOSSES
     }
 }
 

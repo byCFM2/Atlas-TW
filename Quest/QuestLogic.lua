@@ -20,15 +20,15 @@ function AtlasTW.Quest.OnItemEnter(itemIndex)
         return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnItemEnter failed frame and name!")
     end
     -- Get current quest data
-    local instanceId = AtlasTW.QCurrentInstance
+    local instance = AtlasTW.QCurrentInstance
     local faction = AtlasTW.isHorde and "Horde" or "Alliance"
 
     -- Get quest data from new database structure
     local questData = AtlasTW.Quest.DataBase and
-                      AtlasTW.Quest.DataBase[instanceId] and
-                      AtlasTW.Quest.DataBase[instanceId].Quests and
-                      AtlasTW.Quest.DataBase[instanceId].Quests[faction] and
-                      AtlasTW.Quest.DataBase[instanceId].Quests[faction][AtlasTW.QCurrentQuest]
+                      AtlasTW.Quest.DataBase[instance] and
+                      AtlasTW.Quest.DataBase[instance].Quests and
+                      AtlasTW.Quest.DataBase[instance].Quests[faction] and
+                      AtlasTW.Quest.DataBase[instance].Quests[faction][AtlasTW.QCurrentQuest]
 
     if not questData or not questData.Rewards then
         return
@@ -103,15 +103,15 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
         return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnItemClick failed frame or name!")
     end
     -- Get current quest data
-    local instanceId = AtlasTW.QCurrentInstance
+    local instance = AtlasTW.QCurrentInstance
     local faction = AtlasTW.isHorde and "Horde" or "Alliance"
 
     -- Get quest data from new database structure
     local questData = AtlasTW.Quest.DataBase and
-                      AtlasTW.Quest.DataBase[instanceId] and
-                      AtlasTW.Quest.DataBase[instanceId].Quests and
-                      AtlasTW.Quest.DataBase[instanceId].Quests[faction] and
-                      AtlasTW.Quest.DataBase[instanceId].Quests[faction][AtlasTW.QCurrentQuest]
+                      AtlasTW.Quest.DataBase[instance] and
+                      AtlasTW.Quest.DataBase[instance].Quests and
+                      AtlasTW.Quest.DataBase[instance].Quests[faction] and
+                      AtlasTW.Quest.DataBase[instance].Quests[faction][AtlasTW.QCurrentQuest]
 
     if not questData or not questData.Rewards then
         return
@@ -167,14 +167,14 @@ end
 
 local function atlasTWQuestInsertQuestLink()
     local questID = AtlasTW.QCurrentQuest
-    local instanceID = AtlasTW.QCurrentInstance
+    local instance = AtlasTW.QCurrentInstance
     local faction = AtlasTW.isHorde and "Horde" or "Alliance"
 
     local questData = AtlasTW.Quest.DataBase and
-                      AtlasTW.Quest.DataBase[instanceID] and
-                      AtlasTW.Quest.DataBase[instanceID].Quests and
-                      AtlasTW.Quest.DataBase[instanceID].Quests[faction] and
-                      AtlasTW.Quest.DataBase[instanceID].Quests[faction][questID]
+                      AtlasTW.Quest.DataBase[instance] and
+                      AtlasTW.Quest.DataBase[instance].Quests and
+                      AtlasTW.Quest.DataBase[instance].Quests[faction] and
+                      AtlasTW.Quest.DataBase[instance].Quests[faction][questID]
 
     if questData and questData.Title then
         local questName = questData.Title
@@ -213,8 +213,8 @@ end
 
 function AtlasTW.Quest.ToggleFinishedFilter()
     -- Build the quest key based on faction
-    local questKey = "AtlasTWQuestFinishedInst"..AtlasTW.QCurrentInstance.."Quest"..AtlasTW.QCurrentQuest
-    questKey = questKey..(AtlasTW.isHorde and "Horde" or "Alliance")
+    local questKey = "Completed_"..AtlasTW.QCurrentInstance.."_Quest_"..AtlasTW.QCurrentQuest
+    questKey = questKey..(AtlasTW.isHorde and "_Horde" or "_Alliance")
     -- Update quest completion status
     AtlasTW.Q[questKey] = AtlasTW.Quest.UI.FinishedQuestCheckbox:GetChecked() and 1 or nil
     -- Save to player options

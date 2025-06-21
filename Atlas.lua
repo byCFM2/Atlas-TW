@@ -4,6 +4,8 @@ local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local atlas_Ints_Ent_DropDown = {}
 local atlasData = {}
 local frame
+local loadingStartTime -- Время загрузки
+
 AtlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version")
 
 local function debug(info)
@@ -186,6 +188,15 @@ function Atlas_OnEvent()
 	elseif not arg1 then
 		AtlasTW.isHorde = UnitFactionGroup("player") == "Horde"
 	end
+	if event == "ADDON_LOADED" then
+		if not loadingStartTime then
+			loadingStartTime = GetTime()
+		end
+	elseif event == "PLAYER_ENTERING_WORLD" and loadingStartTime then
+		local loadingTime = (GetTime() - loadingStartTime) * 1000
+		DEFAULT_CHAT_FRAME:AddMessage(string.format("Load time: %.2f ", loadingTime))
+		loadingStartTime = nil
+	end
 end
 
 function Atlas_PopulateDropdowns()
@@ -198,7 +209,7 @@ function Atlas_PopulateDropdowns()
         for _,v in pairs(subcatItems) do
             table.insert(AtlasTW.DropDowns[n], v)
         end
-        if subcatOrder[n] ~= ATLAS_DDL_ALL_MENU1 and subcatOrder[n] ~= ATLAS_DDL_ALL_MENU2 and subcatOrder[n] ~= ATLAS_DDL_WORLD then
+        if subcatOrder[n] ~= L["Showing all instances_1"] and subcatOrder[n] ~= L["Showing all instances_2"] and subcatOrder[n] ~= L["World"] then
             table.sort(AtlasTW.DropDowns[n], atlas_SortZonesAlpha)
         end
     end
@@ -328,16 +339,16 @@ function Atlas_Refresh()
 	end
 	AtlasText_ZoneName_Text:SetText(tName)
 	if base.Location[1] then
-		textLocation = ATLAS_STRING_LOCATION..": "..base.Location[1]
+		textLocation = L["Location"]..": "..base.Location[1]
 	end
 	if base.LevelRange then
-		textLevelRange = ATLAS_STRING_LEVELRANGE..": "..base.LevelRange
+		textLevelRange = L["Level Range"]..": "..base.LevelRange
 	end
 	if base.MinLevel then
-		textMinLevel = ATLAS_STRING_MINLEVEL..": "..base.MinLevel
+		textMinLevel = L["Minimum Level"]..": "..base.MinLevel
 	end
 	if base.PlayerLimit then
-		textPlayerLimit = ATLAS_STRING_PLAYERLIMIT..": "..base.PlayerLimit
+		textPlayerLimit = L["Player Limit"]..": "..base.PlayerLimit
 	end
 	AtlasText_Location_Text:SetText(textLocation)
 	AtlasText_LevelRange_Text:SetText(textLevelRange)

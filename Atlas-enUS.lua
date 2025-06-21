@@ -1,10 +1,3 @@
----------------
---- COLOURS ---
----------------
-local red = "|cffff0000"
-local blue = "|cff0070dd"
-local grey = "|cff999999"
-local white = "|cffFFFFFF"
 --************************************************
 -- Localized Strings
 --************************************************
@@ -23,119 +16,9 @@ BINDING_NAME_ATLASLOOT_QL3 = "QuickLook 3"
 BINDING_NAME_ATLASLOOT_QL4 = "QuickLook 4"
 BINDING_NAME_ATLASLOOT_WISHLIST = "WishList"
 
-ATLAS_STRING_LOCATION = "Location"
-ATLAS_STRING_LEVELRANGE = "Level Range"
-ATLAS_STRING_PLAYERLIMIT = "Player Limit"
-ATLAS_STRING_SELECT_CAT = "Select Category"
-ATLAS_STRING_MINLEVEL = "Minimum Level"
-
-ATLAS_BUTTON_TOOLTIP_HINT = "Left-click to open Atlas-TW.\nMiddle-click for Atlas-TW options.\nRight-click and drag to move this button."
-
-ATLAS_DDL_CONTINENT = "Continent"
-ATLAS_DDL_CONTINENT_EASTERN = "Eastern Kingdoms Instances"
-ATLAS_DDL_CONTINENT_KALIMDOR = "Kalimdor Instances"
-ATLAS_DDL_LEVEL = "Level"
-ATLAS_DDL_LEVEL_10TO20 = "Instances level 10-20"
-ATLAS_DDL_LEVEL_20TO30 = "Instances level 20-30"
-ATLAS_DDL_LEVEL_30TO40 = "Instances level 30-40"
-ATLAS_DDL_LEVEL_40TO50 = "Instances level 40-50"
-ATLAS_DDL_LEVEL_50TO60 = "Instances level 50-60"
-ATLAS_DDL_LEVEL_60 = "Instances 60 level"
-ATLAS_DDL_PARTYSIZE = "Party Size"
-ATLAS_DDL_PARTYSIZE_5 = "Instances for 5 Players"
-ATLAS_DDL_PARTYSIZE_10 = "Instances for 10 Players"
-ATLAS_DDL_PARTYSIZE_20 = "Instances for 20 Players"
-ATLAS_DDL_PARTYSIZE_40 = "Instances for 40 Players"
-ATLAS_DDL_ALL = "All"
-ATLAS_DDL_ALL_MENU1 = "Showing all instances_1"
-ATLAS_DDL_ALL_MENU2 = "Showing all instances_2"
-ATLAS_DDL_TYPE = "Type"
-ATLAS_DDL_TYPE_DUNGEONS = "Dungeons"
-ATLAS_DDL_TYPE_RAIDS = "Raids"
-ATLAS_DDL_WORLD = "World"
-ATLAS_DDL_TYPE_ENTRANCE = "Entrances"
-ATLAS_DDL_BGS = "Battlegrounds"
-ATLAS_DDL_DUNGEON_LOCATIONS = "Dungeon Locations"
-ATLAS_DDL_FLIGHT_PATHS = "Flight Path Maps"
-ATLAS_DDL_TRANSPORT_ROUTES = "Transport Routes"
-
-
--- Autoshow
-KQAutoshowOptionLocal = "Show AtlasQuest panel with Atlas.";
--- Right/Left
-KQLEFTOptionLocal = "Show the AtlasQuest panel "..red.."left."
-KQRIGHTOptionLocal = "Show the AtlasQuest panel "..red.."right."
--- Colour Check
-KQColourOptionLocal = "Recolour the quests depending on their levels."
--- QuestLog Colour Check
-KQCheckQuestlogButtonLocal = "Color Quests like in Questlog"..blue.."blue."
--- AutoQuery Quest Rewards
-KQAutoQueryOptionLocal = "Auto-Query Unknown Items."
--- Suppress Server Query text
-KQQuerySpamOptionLocal = "Suppress Server Query spam."
--- Use Comparison Tooltips
-KQCompareTooltipOptionLocal = "Compare rewards and gear (maybe need /rl)."
-
 AtlasZoneSubstitutions = {
 	["The Temple of Atal'Hakkar"] = "Sunken Temple"
 }
-
-AQNoReward = ""..blue.." No Rewards"
-AQDiscription_OR = ""..grey.." or "..white..""
-AQDiscription_AND = ""..grey.." and "..white..""
-AQDiscription_REWARD = ""..blue.." Reward: "
-
-------------------
---- ITEM TYPES ---
-------------------
-AQITEM_DAGGER = " Dagger"
-AQITEM_POLEARM = "Polearm"
-AQITEM_SWORD = " Sword"
-AQITEM_AXE = " Axe"
-AQITEM_FIST = " Fist Weapon"
-AQITEM_WAND = "Wand"
-AQITEM_STAFF = "Staff"
-AQITEM_MACE = " Mace"
-AQITEM_SHIELD = "Shield"
-AQITEM_GUN = "Gun"
-AQITEM_BOW = "Bow"
-AQITEM_CROSSBOW = "Crossbow"
-AQITEM_THROWN = "Thrown"
-AQITEM_HELDOFFHAND = "Held In Off-hand"
-
-AQITEM_WAIST = "Waist,"
-AQITEM_SHOULDER = "Shoulder,"
-AQITEM_CHEST = "Chest,"
-AQITEM_LEGS = "Legs,"
-AQITEM_HANDS = "Hands,"
-AQITEM_FEET = "Feet,"
-AQITEM_WRIST = "Wrist,"
-AQITEM_HEAD = "Head,"
-AQITEM_BACK = "Back"
-AQITEM_TABARD = "Tabard"
-
-AQITEM_CLOTH = " Cloth"
-AQITEM_LEATHER = " Leather"
-AQITEM_MAIL = " Mail"
-AQITEM_PLATE = " Plate"
-
-AQITEM_OFFHAND = "Off Hand,"
-AQITEM_MAINHAND = "Main Hand,"
-AQITEM_ONEHAND = "One-Hand,"
-AQITEM_TWOHAND = "Two-Hand,"
-
-AQITEM_ITEM = "Item"
-AQITEM_TRINKET = "Trinket"
-AQITEM_RELIC = "Relic"
-AQITEM_POTION = "Potion"
-AQITEM_NECK = "Neck"
-AQITEM_PATTERN = "Pattern"
-AQITEM_BAG = "Bag"
-AQITEM_RING = "Ring"
-AQITEM_KEY = "Key"
-AQITEM_QUIVER = "Quiver"
-AQITEM_AMMOPOUCH = "Ammo Pouch"
-AQITEM_ENCHANT = "Enchant"
 
 L:RegisterTranslations("enUS", function() return {
 
@@ -143,7 +26,6 @@ L:RegisterTranslations("enUS", function() return {
 	-- Zone Names, Acronyms, and Common Strings
 	--************************************************
 	--Colors
-	["Level Range"] = true,
 	["Blue"] = true,
 	["Purple"] = true,
 	["Red"] = true,
@@ -174,6 +56,43 @@ L:RegisterTranslations("enUS", function() return {
 	["Lunar Festival"] = true,
 
 	--Other
+	["Show the Quest Panel with Atlas"] = true,
+	["Show Quest Panel on the Left"] = true,
+	["Show Quest Panel on the Right"] = true,
+	["Color Quests by Level"] = true,
+	["Color Quests from the Questlog"] = true,
+	["Auto-Query Unknown Items"] = true,
+	["Suppress Server Query Spam"] = true,
+	["Compare Rewards and Gear (/rl)"] = true,
+	["Dungeons"] = true,
+	["Raids"] = true,
+	["Entrances"] = true,
+	["Transport Routes"] = true,
+	["Showing all instances_1"] = true,
+	["Showing all instances_2"] = true,
+	["Type"] = true,
+	["All"] = true,
+	["Instances level 10-20"] = true,
+	["Instances level 20-30"] = true,
+	["Instances level 30-40"] = true,
+	["Instances level 40-50"] = true,
+	["Instances level 50-60"] = true,
+	["Instances 60 level"] = true,
+	["Party Size"] = true,
+	["Instances for 5 Players"] = true,
+	["Instances for 10 Players"] = true,
+	["Instances for 20 Players"] = true,
+	["Instances for 40 Players"] = true,
+	["Kalimdor Instances"] = true,
+	["Eastern Kingdoms Instances"] = true,
+	["Level"] = true,
+	["Continent"] = true,
+	["Location"] = true,
+	["Level Range"] = true,
+	["Player Limit"] = true,
+	["Select Category"] = true,
+	["Minimum Level"] = true,
+	["Left-click to open Atlas-TW.\nMiddle-click for Atlas-TW options.\nRight-click and drag to move this button."] = true,
 	["Instance"] = true,
 	["Search Unavailable"] = true,
 	["Not Available"] = true,

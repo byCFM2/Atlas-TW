@@ -17,6 +17,7 @@ local function atlas_CreateFrames()
 	atlasFrame:RegisterForDrag("LeftButton")
 	atlasFrame:RegisterEvent("ADDON_LOADED")
     atlasFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+    --atlasFrame:RegisterEvent("WORLD_MAP_UPDATE")
 
     -- Scripts
     atlasFrame:SetScript("OnEvent", function()
@@ -83,7 +84,7 @@ local function atlas_CreateFrames()
     local dropDownType = CreateFrame("Button", "AtlasFrameDropDownType", atlasFrame, "UIDropDownMenuTemplate")
     dropDownType:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 60, -50)
     local dropDownTypeLabel = dropDownType:CreateFontString("AtlasFrameDropDownTypeLabel", "BACKGROUND", "GameFontNormalSmall")
-    dropDownTypeLabel:SetText(ATLAS_STRING_SELECT_CAT)
+    dropDownTypeLabel:SetText(L["Select Category"])
     dropDownTypeLabel:SetPoint("BOTTOMLEFT", dropDownType, "TOPLEFT", 21, 0)
 
     -- Map dropdown

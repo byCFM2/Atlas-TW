@@ -229,6 +229,6 @@ AtlasTW = {
     QCurrentPage = 0,
     QCurrentQuest = 0,
     QCurrentButton = 0,
-    QCurrentInstance = 0,
+    QCurrentInstance = nil,
 }
 AtlasTWCharDB = AtlasTWCharDB or { FirstTime = true }

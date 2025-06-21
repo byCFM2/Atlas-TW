@@ -1,5 +1,5 @@
 -- Functions the atlas buttons logic
-
+local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 -- Обработчик клика по кнопке
 function AtlasButton_OnClick()
 	Atlas_Toggle()
@@ -65,6 +65,6 @@ function AtlasButton_OnEnter()
 	GameTooltip:SetOwner(this, "ANCHOR_LEFT")
 	GameTooltip:SetText(AtlasTW.Name)
 	GameTooltipTextLeft1:SetTextColor(1, 1, 1)
-	GameTooltip:AddLine(ATLAS_BUTTON_TOOLTIP_HINT)
+	GameTooltip:AddLine(L["Left-click to open Atlas-TW.\nMiddle-click for Atlas-TW options.\nRight-click and drag to move this button."])
 	GameTooltip:Show()
 end

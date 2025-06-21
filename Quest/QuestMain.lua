@@ -51,22 +51,22 @@ end
 
 -- Function to get quest data from the new format
 -----------------------------------------------------------------------------
-local function kQGetQuestData(instanceId, questId, faction, field)
+local function kQGetQuestData(instance, questId, faction, field)
     -- Default to current instance and quest if not provided
-    instanceId = instanceId or AtlasTW.QCurrentInstance
+    instance = instance or AtlasTW.QCurrentInstance
     questId = questId or AtlasTW.QCurrentQuest
     faction = faction or (AtlasTW.isHorde and "Horde" or "Alliance")
 
     -- Ensure AtlasTW.Quest.DataBase is available
-    if not AtlasTW.Quest.DataBase or not AtlasTW.Quest.DataBase[instanceId] or
-       not AtlasTW.Quest.DataBase[instanceId].Quests or
-       not AtlasTW.Quest.DataBase[instanceId].Quests[faction] or
-       (questId and not AtlasTW.Quest.DataBase[instanceId].Quests[faction][questId]) then
+    if not AtlasTW.Quest.DataBase or not AtlasTW.Quest.DataBase[instance] or
+       not AtlasTW.Quest.DataBase[instance].Quests or
+       not AtlasTW.Quest.DataBase[instance].Quests[faction] or
+       (questId and not AtlasTW.Quest.DataBase[instance].Quests[faction][questId]) then
         return nil
     end
 
     if (field or "Title") then
-        return AtlasTW.Quest.DataBase[instanceId].Quests[faction][questId][field]
+        return AtlasTW.Quest.DataBase[instance].Quests[faction][questId][field]
     end
     -- Field wasn't found
     return nil
@@ -76,17 +76,17 @@ end
 -- Helper function to check if a quest exists
 -- Returns true if quest exists, false otherwise
 -----------------------------------------------------------------------------
-local function kQQuestExists(instanceId, questId, faction)
+local function kQQuestExists(instance, questId, faction)
     -- Default to current instance and faction if not provided
-    instanceId = instanceId or AtlasTW.QCurrentInstance
+    instance = instance or AtlasTW.QCurrentInstance
     faction = faction or (AtlasTW.isHorde and "Horde" or "Alliance")
 
     -- Check if quest exists in the new format
     return AtlasTW.Quest.DataBase and
-           AtlasTW.Quest.DataBase[instanceId] and
-           AtlasTW.Quest.DataBase[instanceId].Quests and
-           AtlasTW.Quest.DataBase[instanceId].Quests[faction] and
-           AtlasTW.Quest.DataBase[instanceId].Quests[faction][questId] ~= nil
+           AtlasTW.Quest.DataBase[instance] and
+           AtlasTW.Quest.DataBase[instance].Quests and
+           AtlasTW.Quest.DataBase[instance].Quests[faction] and
+           AtlasTW.Quest.DataBase[instance].Quests[faction][questId] ~= nil
 end
 
 -- Check if a quest exists in the player's quest log and set appropriate color
@@ -162,8 +162,8 @@ end
 -- swaped out to get the code clear
 -----------------------------------------------------------------------------
 local function kQuestFinishedSetChecked()
-	local questKey = "AtlasTWQuestFinishedInst"..AtlasTW.QCurrentInstance.."Quest"..AtlasTW.QCurrentQuest
-	questKey = questKey..(AtlasTW.isHorde and "Horde" or "Alliance")
+	local questKey = "Completed_"..AtlasTW.QCurrentInstance.."_Quest_"..AtlasTW.QCurrentQuest
+	questKey = questKey..(AtlasTW.isHorde and "_Horde" or "_Alliance")
 	AtlasTW.Quest.UI.FinishedQuestCheckbox:SetChecked(AtlasTW.Q[questKey] == 1)
 end
 
@@ -175,14 +175,14 @@ local function kQuestExtendedPages()
     -- Determine current faction
     local faction = AtlasTW.isHorde and "Horde" or "Alliance"
     local questId = AtlasTW.QCurrentQuest
-    local instanceId = AtlasTW.QCurrentInstance
+    local instance = AtlasTW.QCurrentInstance
 
     -- In the new format, check if the quest has Pages data
     local questData = AtlasTW.Quest.DataBase and
-        AtlasTW.Quest.DataBase[instanceId] and
-        AtlasTW.Quest.DataBase[instanceId].Quests and
-        AtlasTW.Quest.DataBase[instanceId].Quests[faction] and
-        AtlasTW.Quest.DataBase[instanceId].Quests[faction][questId]
+        AtlasTW.Quest.DataBase[instance] and
+        AtlasTW.Quest.DataBase[instance].Quests and
+        AtlasTW.Quest.DataBase[instance].Quests[faction] and
+        AtlasTW.Quest.DataBase[instance].Quests[faction][questId]
 
     -- If we have quest data and it has Pages
     if questData and questData.Page and type(questData.Page) == "table" then
@@ -210,7 +210,7 @@ end
 -----------------------------------------------------------------------------
 local function kQuestGetItemInf(count, what)
     -- Local AtlasTW
-    local instanceId = AtlasTW.QCurrentInstance
+    local instance = AtlasTW.QCurrentInstance
     local faction = AtlasTW.isHorde and "Horde" or "Alliance"
 
     -- Validate input parameters
@@ -220,10 +220,10 @@ local function kQuestGetItemInf(count, what)
 
     -- Get quest data from new database structure
     local questData = AtlasTW.Quest.DataBase and
-                      AtlasTW.Quest.DataBase[instanceId] and
-                      AtlasTW.Quest.DataBase[instanceId].Quests and
-                      AtlasTW.Quest.DataBase[instanceId].Quests[faction] and
-                      AtlasTW.Quest.DataBase[instanceId].Quests[faction][AtlasTW.QCurrentQuest]
+                      AtlasTW.Quest.DataBase[instance] and
+                      AtlasTW.Quest.DataBase[instance].Quests and
+                      AtlasTW.Quest.DataBase[instance].Quests[faction] and
+                      AtlasTW.Quest.DataBase[instance].Quests[faction][AtlasTW.QCurrentQuest]
 
     if not questData or not questData.Rewards then
         return nil
@@ -330,9 +330,9 @@ function AtlasTW.Quest.SetQuestText()
         )
 
         -- Set reward text from structure if available
-        local rewards = questData.Rewards and questData.Rewards["Text"] or AQNoReward
+        local rewards = questData.Rewards and questData.Rewards["Text"] or (blue.."No Rewards")
         AtlasTW.Quest.UI.Rewards:SetText(rewards)
-        if rewards ~= AQNoReward then
+        if rewards ~= (blue.."No Rewards") then
             -- Process each potential quest reward item (up to 6)
             for itemIndex = 1, AtlasTW.QMAXQUESTITEMS do
                 if questData.Rewards[itemIndex] then
@@ -393,7 +393,6 @@ function AtlasTW.Quest.SetStoryText()
     -- Clear display
     AtlasTW.Quest.ClearAll()
 
-    -- Get story information directly from AtlasTW.Quest.DataBase
     local instanceData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance]
     local story = instanceData and instanceData.Story
     local caption = instanceData and instanceData.Caption
@@ -440,28 +439,34 @@ end
 -----------------------------------------------------------------------------
 function AtlasTW.Quest.LoadFinishedQuests()
     AtlasTWCharDB = AtlasTWCharDB or {}
-	for i=1, AtlasTW.QMAXINSTANCES do
-		for b=1, AtlasTW.QMAXQUESTS do
-			AtlasTW.Q["AtlasTWQuestFinishedInst"..i.."Quest"..b.."Alliance"] = AtlasTWCharDB["AtlasTWQuestFinishedInst"..i.."Quest"..b.."Alliance"]
-			AtlasTW.Q["AtlasTWQuestFinishedInst"..i.."Quest"..b.."Horde"] = AtlasTWCharDB["AtlasTWQuestFinishedInst"..i.."Quest"..b.."Horde"]
-		end
-	end
+    AtlasTW.Q = AtlasTW.Q or {}
+
+    -- Iterate over all known instances from the new database
+    if AtlasMaps then
+        for instanceName, _ in pairs(AtlasMaps) do
+            for _, faction in ipairs({ "_Alliance", "_Horde" }) do
+                for questId = 1, AtlasTW.QMAXQUESTS do
+                    local key = "Completed_" .. instanceName .. "_Quest_" .. questId .. faction
+                    if AtlasTWCharDB[key] then
+                        AtlasTW.Q[key] = AtlasTWCharDB[key]
+                    end
+                end
+            end
+        end
+    end
 end
 
 --******************************************
 -- Events: OnUpdate
 --******************************************
------------------------------------------------------------------------------
--- hide panel if instance is 99 (nothing)
------------------------------------------------------------------------------
 function AtlasTW.Quest.Update()
 	local previousInstance = AtlasTW.QCurrentInstance
 	-- Update instance information
-    AtlasTW.QCurrentInstance = AtlasTW.INSTANCEMAP[AtlasTW.CurrentMap] or 99
+    AtlasTW.QCurrentInstance = AtlasTW.CurrentMap or ""
 	-- Check if we need to hide/update the quest panels
 	if AtlasTW.QCurrentInstance ~= previousInstance then
 		AtlasTW.Quest.SetQuestButtons()
-	elseif AtlasTW.QCurrentInstance == 99 then
+	elseif AtlasTW.QCurrentInstance == "" then
 		AtlasTW.Quest.UI_Main.Frame:Hide()
 		AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
 	end
@@ -469,32 +474,32 @@ end
 
 function AtlasTW.Quest.SetQuestButtons()
     local isHorde = AtlasTW.isHorde
-	local instanceId = AtlasTW.QCurrentInstance
+	local instance = AtlasTW.QCurrentInstance
 	local faction = isHorde and "Horde" or "Alliance"
 	local questName
 	local playerLevel = UnitLevel("player")
 	-- Hide inner frame if instance changed
-	if kQuestInstChanged ~= instanceId then
+	if kQuestInstChanged ~= instance then
 		AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
 	end
 	-- Update current instance
-	kQuestInstChanged = instanceId
+	kQuestInstChanged = instance
 	-- Set quest count text
 	local questCountKey = isHorde and "QAH" or "QAA"
-	local questCount = AtlasTW.Quest.DataBase[instanceId] and AtlasTW.Quest.DataBase[instanceId][questCountKey]
+	local questCount = AtlasTW.Quest.DataBase[instance] and AtlasTW.Quest.DataBase[instance][questCountKey]
 	AtlasTW.Quest.UI_Main.QuestCounter:SetText(questCount or "")
 	-- Process quests
 	for b = 1, AtlasTW.QMAXQUESTS do
 		-- Define keys for current faction
 	    -- Check for quest existence
-        if kQQuestExists(instanceId, b, faction) then
+        if kQQuestExists(instance, b, faction) then
              -- Define keys for current faction (for both formats)
-            local finishedKey = "AtlasTWQuestFinishedInst"..instanceId.."Quest"..b..(isHorde and "Horde" or "Alliance")
+            local finishedKey = "Completed_"..instance.."_Quest_"..b.."_"..faction
             -- Get quest data
-            questName = kQGetQuestData(instanceId, b, faction, "Title")
-            local followQuest = kQGetQuestData(instanceId, b, faction, "Folgequest")
-            local preQuest = kQGetQuestData(instanceId, b, faction, "Prequest")
-            local questLevel = tonumber(kQGetQuestData(instanceId, b, faction, "Level"))
+            questName = kQGetQuestData(instance, b, faction, "Title")
+            local followQuest = kQGetQuestData(instance, b, faction, "Folgequest")
+            local preQuest = kQGetQuestData(instance, b, faction, "Prequest")
+            local questLevel = tonumber(kQGetQuestData(instance, b, faction, "Level"))
             -- Set quest line arrows
             local arrowTexture
             if preQuest ~= "No" then

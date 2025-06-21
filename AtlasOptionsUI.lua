@@ -338,14 +338,14 @@ local function atlasOptions_CreateFrames()
 
     -- Quest Checkboxes Data
     local questCheckboxes = {
-        { name = "KQAutoshowOption", script = KQAutoshowOption_OnClick },
-        { name = "KQLEFTOption", script = KQLEFTOption_OnClick },
-        { name = "KQRIGHTOption", script = KQRIGHTOption_OnClick },
-        { name = "KQColourOption", script = KQColourOption_OnClick },
-        { name = "KQCheckQuestlogButton", script = KQCheckQuestlogButton_OnClick },
-        { name = "KQAutoQueryOption", script = KQAutoQueryOption_OnClick },
-        { name = "KQQuerySpamOption", script = KQQuerySpamOption_OnClick },
-        { name = "KQCompareTooltipOption", script = KQCompareTooltipOption_OnClick }
+        { name = "KQAutoshowOption", text = L["Show the Quest Panel with Atlas"], script = KQAutoshowOption_OnClick },
+        { name = "KQLEFTOption", text = L["Show Quest Panel on the Left"], script = KQLEFTOption_OnClick },
+        { name = "KQRIGHTOption", text = L["Show Quest Panel on the Right"], script = KQRIGHTOption_OnClick },
+        { name = "KQColourOption", text = L["Color Quests by Level"], script = KQColourOption_OnClick },
+        { name = "KQCheckQuestlogButton", text = L["Color Quests from the Questlog"], script = KQCheckQuestlogButton_OnClick },
+        { name = "KQAutoQueryOption", text = L["Auto-Query Unknown Items"], script = KQAutoQueryOption_OnClick },
+        { name = "KQQuerySpamOption", text = L["Suppress Server Query Spam"], script = KQQuerySpamOption_OnClick },
+        { name = "KQCompareTooltipOption", text = L["Compare Rewards and Gear (/rl)"], script = KQCompareTooltipOption_OnClick }
     }
 
     -- Optimized function to create quest checkboxes
@@ -358,7 +358,7 @@ local function atlasOptions_CreateFrames()
             else
                 checkbox:SetPoint("BOTTOM", previousCheckbox, "BOTTOM", 0, -25)
             end
-            _G[config.name .. "Text"]:SetText(_G[config.name .. "Local"])
+            _G[config.name .. "Text"]:SetText(config.text)
             checkbox:SetScript("OnClick", config.script)
             previousCheckbox = checkbox
         end
