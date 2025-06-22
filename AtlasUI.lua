@@ -1,16 +1,15 @@
 local _G = getfenv()
-local atlasTW = _G.AtlasTW
-AtlasTW.Quest = AtlasTW.Quest or {}
+AtlasTW = _G.AtlasTW
 
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
-local function atlas_CreateFrames()
+do
     -- Create the main Atlas frame
     local atlasFrame = CreateFrame("Frame", "AtlasFrame", UIParent)
     atlasFrame:SetFrameStrata("LOW")
     atlasFrame:SetWidth(921)
     atlasFrame:SetHeight(601)
-    atlasFrame:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 0, -104)
+    atlasFrame:SetPoint("TOPLEFT", 0, -104)
     atlasFrame:Hide()
     atlasFrame:SetMovable(true)
     atlasFrame:EnableMouse(true)
@@ -20,30 +19,31 @@ local function atlas_CreateFrames()
 
     -- Scripts
     atlasFrame:SetScript("OnEvent", function()
-        Atlas_OnEvent()
+        AtlasTW.OnEvent()
     end)
 
     atlasFrame:SetScript("OnShow", function()
-        Atlas_OnShow()
+        AtlasTW.OnShow()
     end)
 
     atlasFrame:SetScript("OnHide", function()
         atlasFrame:StopMovingOrSizing()
+        atlasFrame.isMoving = false
     end)
 
     atlasFrame:SetScript("OnDragStart", function()
-        if(arg1 == "LeftButton") then
-            Atlas_StartMoving()
-        end
+        AtlasTW.StartMoving()
     end)
 
     atlasFrame:SetScript("OnDragStop", function()
         atlasFrame:StopMovingOrSizing()
+        atlasFrame.isMoving = false
     end)
 
     atlasFrame:SetScript("OnMouseUp", function()
         atlasFrame:StopMovingOrSizing()
-        Atlas_OnClick()
+        atlasFrame.isMoving = false
+        AtlasTW.OnClick()
     end)
 
     --Allows Atlas to be closed with the Escape key
@@ -51,11 +51,11 @@ local function atlas_CreateFrames()
 
 	--Setting up slash commands involves referencing some strage auto-generated variables
 	SLASH_ATLAS1 = "/atlas"
-	SlashCmdList["ATLAS"] = Atlas_SlashCommand
+	SlashCmdList["ATLAS"] = AtlasTW.SlashCommand
 
     -- Close button
     local closeButton = CreateFrame("Button", "AtlasFrameCloseButton", atlasFrame, "UIPanelCloseButton")
-    closeButton:SetPoint("TOPRIGHT", atlasFrame, "TOPRIGHT", 5, -7)
+    closeButton:SetPoint("TOPRIGHT", 5, -7)
 
     -- Lock button
     local lockButton = CreateFrame("Button", "AtlasFrameLockButton", atlasFrame)
@@ -63,7 +63,7 @@ local function atlas_CreateFrames()
     lockButton:SetHeight(32)
     lockButton:SetPoint("RIGHT", closeButton, "LEFT", 10, 0)
     lockButton:SetScript("OnClick", function()
-        Atlas_ToggleLock()
+        AtlasTW.ToggleLock()
     end)
 
     -- Создаем глобальные текстуры
@@ -81,7 +81,7 @@ local function atlas_CreateFrames()
 
     -- Type dropdown
     local dropDownType = CreateFrame("Button", "AtlasFrameDropDownType", atlasFrame, "UIDropDownMenuTemplate")
-    dropDownType:SetPoint("TOPLEFT", atlasFrame, "TOPLEFT", 60, -50)
+    dropDownType:SetPoint("TOPLEFT", 60, -50)
     local dropDownTypeLabel = dropDownType:CreateFontString("AtlasFrameDropDownTypeLabel", "BACKGROUND", "GameFontNormalSmall")
     dropDownTypeLabel:SetText(L["Select Category"])
     dropDownTypeLabel:SetPoint("BOTTOMLEFT", dropDownType, "TOPLEFT", 21, 0)
@@ -97,17 +97,15 @@ local function atlas_CreateFrames()
     local searchBox = CreateFrame("EditBox", "AtlasSearchEditBox", atlasFrame, "InputBoxTemplate")
     searchBox:SetWidth(132)
     searchBox:SetHeight(32)
-    searchBox:SetPoint("BOTTOMRIGHT", atlasFrame, "BOTTOMRIGHT", -160, 15)
+    searchBox:SetPoint("BOTTOMRIGHT", -160, 15)
     searchBox:SetMaxLetters(80)
     searchBox:SetAutoFocus(false)
     searchBox:SetTextInsets(0, 8, 0, 0)
 
     searchBox:SetScript("OnEnterPressed", function()
-        Atlas_SearchAndRefresh(this:GetText())
+        AtlasTW.SearchAndRefresh(this:GetText())
         this:ClearFocus()
     end)
-
-    searchBox:CreateFontString("AtlasSearchString", "BACKGROUND", "GameFontNormal")
 
     -- Switch dropdown
     CreateFrame("Frame", "AtlasSwitchDD", atlasFrame, "UIDropDownMenuTemplate")
@@ -118,43 +116,40 @@ local function atlas_CreateFrames()
     switchButton:SetHeight(20)
     switchButton:SetPoint("RIGHT", searchBox, "LEFT", -6, 0)
     switchButton:SetScript("OnClick", function()
-        AtlasSwitchButton_OnClick()
+        AtlasTW.SwitchButtonOnClick()
     end)
 
     -- Search button
-    local searchButton = CreateFrame("Button", "AtlasSearchButton", searchBox, "UIPanelButtonTemplate2")
-    searchButton:SetWidth(69)
-    searchButton:SetHeight(32)
+    local searchButton = CreateFrame("Button", nil, searchBox, "OptionsButtonTemplate")
+    searchButton:SetWidth(70)
     searchButton:SetPoint("LEFT", searchBox, "RIGHT", 1, 0)
     searchButton:SetText(L["Search"])
     searchButton:SetScript("OnClick", function()
-        Atlas_SearchAndRefresh(AtlasSearchEditBox:GetText())
+        AtlasTW.SearchAndRefresh(AtlasSearchEditBox:GetText())
         AtlasSearchEditBox:ClearFocus()
     end)
 
     -- Clear button
-    local clearButton = CreateFrame("Button", "AtlasSearchClearButton", searchBox, "UIPanelButtonTemplate2")
-    clearButton:SetWidth(72)
-    clearButton:SetHeight(32)
+    local clearButton = CreateFrame("Button", nil, searchBox, "OptionsButtonTemplate")
+    clearButton:SetWidth(70)
     clearButton:SetPoint("LEFT", searchButton, "RIGHT", 0, 0)
     clearButton:SetText(L["Clear"])
     clearButton:SetScript("OnClick", function()
         AtlasSearchEditBox:SetText("")
-        Atlas_SearchAndRefresh(AtlasSearchEditBox:GetText())
+        AtlasTW.SearchAndRefresh(AtlasSearchEditBox:GetText())
         AtlasSearchEditBox:ClearFocus()
     end)
 
     -- Options button
-    local optionsButton = CreateFrame("Button", "", atlasFrame, "UIPanelButtonTemplate2")
+    local optionsButton = CreateFrame("Button", nil, atlasFrame, "OptionsButtonTemplate")
     optionsButton:SetWidth(80)
     optionsButton:SetPoint("TOPRIGHT", -18, -60)
     optionsButton:SetText(L["Options"])
     optionsButton:SetScript("OnClick", function()
-        AtlasOptions_Toggle()
+        AtlasTW.OptionsOnClick()
     end)
-
     -- Hide Quests button
-    local questsToggleButton = CreateFrame("Button", "", atlasFrame, "OptionsButtonTemplate")
+    local questsToggleButton = CreateFrame("Button", nil, atlasFrame, "OptionsButtonTemplate")
     questsToggleButton:SetPoint("LEFT", optionsButton, "LEFT", -95, 0)
     questsToggleButton:SetText(L["Quests"])
     questsToggleButton:SetScript("OnClick", function()
@@ -162,81 +157,81 @@ local function atlas_CreateFrames()
     end)
 
     -- Hide Loot Panel button
-    local ShowPanelButton = CreateFrame("Button", "", atlasFrame, "OptionsButtonTemplate")
+    local ShowPanelButton = CreateFrame("Button", nil, atlasFrame, "OptionsButtonTemplate")
     ShowPanelButton:SetText(L["Loot Panel"])
     ShowPanelButton:SetPoint("LEFT", questsToggleButton, "LEFT", -95, 0)
     ShowPanelButton:SetScript("OnClick", function()
-        AtlasOptionsShowPanelButton_OnClick()
+        AtlasTW.OptionShowPanelOnClick()
     end)
 
     -- Scroll frame
-    local scrollBar = CreateFrame("ScrollFrame", "AtlasScrollBar", atlasFrame, "FauxScrollFrameTemplate")
+    local scrollBar = CreateFrame("ScrollFrame", "AtlasTWScrollBar", atlasFrame, "FauxScrollFrameTemplate")
     scrollBar:SetWidth(351)
     scrollBar:SetHeight(367)
     scrollBar:SetPoint("TOPLEFT", 530, -186)
     scrollBar:SetScript("OnVerticalScroll", function()
-        FauxScrollFrame_OnVerticalScroll(15, AtlasLoot_AtlasScrollBar_Update)
+        FauxScrollFrame_OnVerticalScroll(15, AtlasTW.Loot.ScrollBarUpdate)
     end)
     scrollBar:SetScript("OnShow", function()
-        AtlasLoot_AtlasScrollBar_Update()
+        AtlasTW.Loot.ScrollBarUpdate()
     end)
 
     -- Search container
-    local noSearch = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontDisableSmall")
+    local noSearch = atlasFrame:CreateFontString("AtlasTWNoSearch", "ARTWORK", "GameFontDisableSmall")
     noSearch:SetText(L["Search Unavailable"])
     noSearch:SetPoint("TOPLEFT", 540, -555)
     noSearch:SetTextColor(1, 1, 1, 0.4)
 
-    local zoneText = atlasFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightLarge")
+    local zoneText = atlasFrame:CreateFontString("AtlasTWZoneText", "OVERLAY", "GameFontHighlightLarge")
     zoneText:SetWidth(351)
     zoneText:SetHeight(20)
     zoneText:SetPoint("TOPLEFT", 546, -97)
     zoneText:SetJustifyH("LEFT")
 
-    local locationText = atlasFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    local locationText = atlasFrame:CreateFontString("AtlasTWLocationText", "OVERLAY", "GameFontNormal")
     locationText:SetWidth(351)
     locationText:SetHeight(15)
     locationText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -20)
     locationText:SetJustifyH("LEFT")
 
-    local levelRangeText = atlasFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    local levelRangeText = atlasFrame:CreateFontString("AtlasTWLevelRangeText", "OVERLAY", "GameFontNormal")
     levelRangeText:SetWidth(351)
     levelRangeText:SetHeight(15)
     levelRangeText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -35)
     levelRangeText:SetJustifyH("LEFT")
 
-    local minLevelText = atlasFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    local minLevelText = atlasFrame:CreateFontString("AtlasTWMinLevelText", "OVERLAY", "GameFontNormal")
     minLevelText:SetWidth(351)
     minLevelText:SetHeight(15)
     minLevelText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -50)
     minLevelText:SetJustifyH("LEFT")
 
-    local playerLimitText = atlasFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    local playerLimitText = atlasFrame:CreateFontString("AtlasTWPlayerLimitText", "OVERLAY", "GameFontNormal")
     playerLimitText:SetWidth(351)
     playerLimitText:SetHeight(15)
     playerLimitText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -65)
     playerLimitText:SetJustifyH("LEFT")
 
     -- Textures
-    local topTexture = atlasFrame:CreateTexture(nil, "ARTWORK")
+    local topTexture = atlasFrame:CreateTexture("ARTWORK")
     topTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasFrame-Top")
     topTexture:SetWidth(512)
     topTexture:SetHeight(128)
     topTexture:SetPoint("TOPLEFT", 0, 0)
 
-    local leftTexture = atlasFrame:CreateTexture(nil, "ARTWORK")
+    local leftTexture = atlasFrame:CreateTexture("ARTWORK")
     leftTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasFrame-Left")
     leftTexture:SetWidth(32)
     leftTexture:SetHeight(256)
     leftTexture:SetPoint("TOPLEFT", 0, -128)
 
-    local bottomTexture = atlasFrame:CreateTexture(nil, "ARTWORK")
+    local bottomTexture = atlasFrame:CreateTexture("ARTWORK")
     bottomTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasFrame-Bottom")
     bottomTexture:SetWidth(512)
     bottomTexture:SetHeight(256)
     bottomTexture:SetPoint("TOPLEFT", 0, -384)
 
-    local bottom2Texture = atlasFrame:CreateTexture(nil, "ARTWORK")
+    local bottom2Texture = atlasFrame:CreateTexture("ARTWORK")
     bottom2Texture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasFrame-Bottom2")
     bottom2Texture:SetWidth(512)
     bottom2Texture:SetHeight(128)
@@ -249,11 +244,11 @@ local function atlas_CreateFrames()
     rightTexture:SetPoint("TOPLEFT", 512, 0)
 
     local titleText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-    titleText:SetText("|cFFD8D800"..atlasTW.Name)
+    titleText:SetText("|cFFD8D800"..AtlasTW.Name)
     titleText:SetPoint("TOPLEFT", 200, -17)
 
     local versionText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
-    versionText:SetText(atlasTW.Version)
+    versionText:SetText(AtlasTW.Version)
     versionText:SetTextColor(0.4, 0.4, 0.4)
     versionText:SetPoint("TOPRIGHT", -52, -17)
 
@@ -281,19 +276,9 @@ local function atlas_CreateFrames()
 	AtlasMap:SetWidth(512)
 	AtlasMap:SetHeight(512)
 	AtlasMap:SetPoint("TOPLEFT", 18, -84)
-
-    AtlasTW.UI.PlayerLimitText = playerLimitText
-    AtlasTW.UI.MinLevelText = minLevelText
-    AtlasTW.UI.ZoneNameText = zoneText
-    AtlasTW.UI.LocationText = locationText
-    AtlasTW.UI.LevelRangeText = levelRangeText
-    --AtlasTW.UI.ScrollBar = scrollBar
-    AtlasTW.UI.NoSearch = noSearch
-
-    return atlasFrame
 end
 
-local function atlasMinimapButton_CreateFrames()
+do
     -- Create the minimap button frame
     local buttonFrame = CreateFrame("Frame", "AtlasButtonFrame", Minimap)
     buttonFrame:SetFrameStrata("LOW")
@@ -304,50 +289,43 @@ local function atlasMinimapButton_CreateFrames()
     buttonFrame:RegisterEvent("VARIABLES_LOADED")
     buttonFrame:Show()
 
+    local i = 1
     -- Frame scripts
     buttonFrame:SetScript("OnEvent", function()
-        AtlasButton_Init()
+        AtlasTW.MinimapButtonInit()
     end)
 
     -- Create the button
-    local button = CreateFrame("Button", "AtlasButton", buttonFrame)
+    local button = CreateFrame("Button", nil, buttonFrame)
     button:SetWidth(33)
     button:SetHeight(33)
     button:SetPoint("TOPLEFT", 0, 0)
     button:RegisterForDrag("RightButton")
-    button.dragme = false
 
     -- Button scripts
+    button:SetScript("OnHide", function()
+        button:StopMovingOrSizing()
+        button.isMoving = false
+    end)
     button:SetScript("OnDragStart", function()
-        this.dragme = true
+        button.isMoving = true
+        AtlasTW.MinimapButtonBeingDragged()
     end)
     button:SetScript("OnDragStop", function()
-        this.dragme = false
+        button:StopMovingOrSizing()
+        button.isMoving = false
     end)
 
-    button:SetScript("OnUpdate", function()
-        if (this.dragme == true) then
-            AtlasButton_BeingDragged()
-        end
-    end)
-
-    button:SetScript("OnClick", function()
-        AtlasButton_OnClick()
-    end)
-
+    button:SetScript("OnClick", function() AtlasTW.ToggleAtlas() end)
     button:SetScript("OnMouseUp", function()
+        button:StopMovingOrSizing()
+        button.isMoving = false
         if (arg1 == "MiddleButton") then
-            AtlasOptions_Toggle()
+            AtlasTW.OptionsOnClick()
         end
     end)
-
-    button:SetScript("OnEnter", function()
-        AtlasButton_OnEnter()
-    end)
-
-    button:SetScript("OnLeave", function()
-        GameTooltip:Hide()
-    end)
+    button:SetScript("OnEnter", function() AtlasTW.MinimapButtonOnEnter() end)
+    button:SetScript("OnLeave", function() GameTooltip:Hide() end)
 
     -- Button textures
     local icon = button:CreateTexture("AtlasButtonIcon", "BORDER")
@@ -367,10 +345,4 @@ local function atlasMinimapButton_CreateFrames()
     highlight:SetTexture("Interface\\Minimap\\UI-Minimap-ZoomButton-Highlight")
     highlight:SetBlendMode("ADD")
     button:SetHighlightTexture(highlight)
-
-    return buttonFrame
 end
-
--- Call the function to create frames when this file is loaded
-atlas_CreateFrames()
-atlasMinimapButton_CreateFrames()

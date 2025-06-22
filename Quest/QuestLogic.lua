@@ -378,7 +378,7 @@ function AtlasTW.Quest.CloseQuestFrame()
     AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
     AtlasTW.Quest.UI_Main.Frame:Hide()
     AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
-    KQAutoshowOption:SetChecked(AtlasTWOptions.QuestWithAtlas)
+    AtlasTWOptionAutoshow:SetChecked(AtlasTWOptions.QuestWithAtlas)
     AtlasTW.OptionsInit()
 end
 
@@ -391,7 +391,7 @@ function AtlasTW.Quest.ToggleQuestFrame()
     else
         AtlasTW.Quest.UI_Main.Frame:Show()
     end
-    KQAutoshowOption:SetChecked(AtlasTWOptions.QuestWithAtlas)
+    AtlasTWOptionAutoshow:SetChecked(AtlasTWOptions.QuestWithAtlas)
     AtlasTW.OptionsInit()
 end
 

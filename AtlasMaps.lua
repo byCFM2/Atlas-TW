@@ -44,7 +44,11 @@ local function CreateEntry(color, text, entityType, id)
 end
 
 local function CreateNPCEntry(number, name, id, isRare, additionalInfo)
-    local text = number .. ") " .. BB[name]
+    local text = ""
+    if number then
+        text = number.. ") "
+    end
+    text = text..BB[name]
     if isRare then
         text = text .. " (" .. L["Rare"] .. ")"
     end
@@ -408,7 +412,7 @@ AtlasMaps = {
             CreateNPCEntry("10", "Rotgrip", 13596),
             CreateNPCEntry("11", "Princess Theradras", 12201),
             CreateEntry(Colors.GREY, "12) " .. L["Elder Splitrock"] .. " (" .. L["Lunar Festival"] .. ")", EntityTypes.NPC, 15556),
-            CreateEntry(Colors.GREY, "13) " .. L["Trash Mobs"], EntityTypes.NPC, 15556)
+            CreateTrashMobsEntry()
         }
     }),
 
@@ -724,21 +728,21 @@ AtlasMaps = {
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Elder Morndeep"] .. " (" .. L["Lunar Festival"] .. ")", EntityTypes.NPC, 15549),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["High Justice Grimstone"], EntityTypes.NPC, 10096),
             CreateEntry(Colors.GREY, "7) " .. L["Monument of Franclorn Forgewright"], EntityTypes.OBJECT, 164689),
-            CreateNPCEntry("8", "Pyromancer Loregrain", 9024, true),
-            CreateEntry(Colors.GREY, "9) " .. L["The Vault"]),
-            CreateNPCEntry("10", "Warder Stilgiss", 9041, true),
-            CreateNPCEntry("11", "Verek", 9042, true),
+            CreateNPCEntry(nil, "Pyromancer Loregrain", 9024, true),
+            CreateEntry(Colors.GREY, "8) " .. L["The Vault"]),
+            CreateNPCEntry(nil, "Warder Stilgiss", 9041, true),
+            CreateNPCEntry(nil, "Verek", 9042, true),
             CreateEntry(Colors.GREY, Constants.INDENT .. BB["Watchman Doomgrip"], EntityTypes.NPC, 9476),
-            CreateNPCEntry("12", "Fineous Darkvire", 9056),
-            CreateNPCEntry("13", "Lord Incendius", 9017),
+            CreateNPCEntry("9", "Fineous Darkvire", 9056),
+            CreateNPCEntry("10", "Lord Incendius", 9017),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["The Black Anvil"]),
-            CreateNPCEntry("14", "Bael'Gar", 9016),
-            CreateEntry(Colors.GREY, "15) " .. L["Shadowforge Lock"]),
-            CreateNPCEntry("16", "General Angerforge", 9033),
-            CreateNPCEntry("17", "Golem Lord Argelmach", 8983),
+            CreateNPCEntry("11", "Bael'Gar", 9016),
+            CreateEntry(Colors.GREY, "12) " .. L["Shadowforge Lock"]),
+            CreateNPCEntry("13", "General Angerforge", 9033),
+            CreateNPCEntry("14", "Golem Lord Argelmach", 8983),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Field Repair Bot 74A"], EntityTypes.NPC, 14337),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Blacksmithing Plans"], EntityTypes.OBJECT, 173232),
-            CreateEntry(Colors.GREY, "18) " .. L["The Grim Guzzler"]),
+            CreateEntry(Colors.GREY, "15) " .. L["The Grim Guzzler"]),
             CreateIndentedNPCEntry("Hurley Blackbreath", 9537),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Lokhtos Darkbargainer"], EntityTypes.NPC, 12944),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Mistress Nagmara"], EntityTypes.NPC, 9500),
@@ -746,21 +750,21 @@ AtlasMaps = {
             CreateIndentedNPCEntry("Plugger Spazzring", 9499),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Private Rocknot"], EntityTypes.NPC, 9503),
             CreateIndentedNPCEntry("Ribbly Screwspigot", 9543),
-            CreateNPCEntry("19", "Ambassador Flamelash", 9156),
-            CreateNPCEntry("20", "Panzor the Invincible", 8923, true),
+            CreateNPCEntry("16", "Ambassador Flamelash", 9156),
+            CreateNPCEntry("17", "Panzor the Invincible", 8923, true),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Blacksmithing Plans"], EntityTypes.OBJECT, 173232),
-            CreateEntry(Colors.GREY, "21) " .. L["Summoner's Tomb"]),
+            CreateEntry(Colors.GREY, "18) " .. L["Summoner's Tomb"]),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Chest of The Seven"], EntityTypes.OBJECT, 169243),
-            CreateEntry(Colors.GREY, "22) " .. L["The Lyceum"]),
-            CreateNPCEntry("23", "Magmus", 9938),
-            CreateNPCEntry("24", "Emperor Dagran Thaurissan", 9019),
+            CreateEntry(Colors.GREY, "19) " .. L["The Lyceum"]),
+            CreateNPCEntry("20", "Magmus", 9938),
+            CreateNPCEntry("21", "Emperor Dagran Thaurissan", 9019),
             CreateIndentedNPCEntry("Princess Moira Bronzebeard", 8929),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["High Priestess of Thaurissan"], EntityTypes.NPC, 10076),
-            CreateEntry(Colors.GREY, "25) " .. L["The Black Forge"]),
-            CreateEntry(Colors.GREY, "26) " .. BZ["Molten Core"], EntityTypes.ZONE, 2717),
+            CreateEntry(Colors.GREY, "22) " .. L["The Black Forge"]),
+            CreateEntry(Colors.GREY, "23) " .. BZ["Molten Core"], EntityTypes.ZONE, 2717),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Core Fragment"], EntityTypes.OBJECT, 179553),
-            CreateNPCEntry("27","Overmaster Pyron", 9026),
-            CreateEntry(Colors.GREY, "28) " .. L["Blacksmithing Plans"], EntityTypes.OBJECT, 173232),
+            CreateNPCEntry("24","Overmaster Pyron", 9026),
+            CreateEntry(Colors.GREY, "25) " .. L["Blacksmithing Plans"], EntityTypes.OBJECT, 173232),
             CreateEmptyEntry(),
             CreateTrashMobsEntry(),
             CreateSetEntry("The Gladiator"),

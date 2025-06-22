@@ -1,7 +1,9 @@
 AtlasLoot = AceLibrary("AceAddon-2.0"):new("AceDBa-2.0")
 
 local _G = getfenv()
-local atlasTW = _G.AtlasTW
+AtlasTW = _G.AtlasTW
+AtlasTW.Loot = AtlasTW.Loot or {}
+
 --Instance required libraries
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
@@ -33,7 +35,7 @@ StaticPopupDialogs["ATLASLOOT_SETUP"] = {
 	text = "Welcome to Atlas-TW Edition. Please take a moment to set your preferences.",
 	button1 = L["Setup"],
 	OnAccept = function()
-		AtlasOptions_Toggle()
+		AtlasTW.OptionsOnClick()
 	end,
 	timeout = 0,
 	whileDead = 1,
@@ -100,16 +102,16 @@ function AtlasLoot_OnEvent()
 	tinsert(UISpecialFrames, "AtlasLootOptionsFrame")
 	--Disable checkboxes of missing addons
 	if not LootLink_SetTooltip then
-		AtlasLootOptionsFrameLootlinkTT:Disable()
-		AtlasLootOptionsFrameLootlinkTTText:SetText(L["|cff9d9d9dLootlink Tooltips|r"])
+		AtlasTWOptionLootlinkTT:Disable()
+		AtlasTWOptionLootlinkTTText:SetText(L["|cff9d9d9dLootlink Tooltips|r"])
 	end
 	if not ItemSync and not ISync then
-		AtlasLootOptionsFrameItemSyncTT:Disable()
-		AtlasLootOptionsFrameItemSyncTTText:SetText(L["|cff9d9d9dItemSync Tooltips|r"])
+		AtlasTWOptionItemSyncTT:Disable()
+		AtlasTWOptionItemSyncTTText:SetText(L["|cff9d9d9dItemSync Tooltips|r"])
 	end
 	if not IsAddOnLoaded("EQCompare") and not IsAddOnLoaded("EquipCompare") then
-		AtlasLootOptionsFrameEquipCompare:Disable()
-		AtlasLootOptionsFrameEquipCompareText:SetText(L["|cff9d9d9dUse EquipCompare|r"])
+		AtlasTWOptionEquipCompare:Disable()
+		AtlasTWOptionEquipCompareText:SetText(L["|cff9d9d9dUse EquipCompare|r"])
 	end
 
 	--Set up options frame
@@ -166,25 +168,25 @@ end
 --[[
 	Required as the Atlas function cannot deal with the AtlasLoot button template or the added Atlasloot entries
 ]]
-function AtlasLoot_AtlasScrollBar_Update()
+function AtlasTW.Loot.ScrollBarUpdate()
 	local lineplusoffset
 	local highlightTexture
 	if _G["AtlasBossLine1_Text"] ~= nil then
 		local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
 		--Update the contents of the Atlas scroll frames
-		FauxScrollFrame_Update(AtlasScrollBar, atlasTW.CurrentLine, atlasTW.NUM_LINES, 15)
+		FauxScrollFrame_Update(AtlasTWScrollBar, AtlasTW.CurrentLine, AtlasTW.NUM_LINES, 15)
 		--Make note of how far in the scroll frame we are
-		for line=1,AtlasTW.NUM_LINES do
-			lineplusoffset = line + FauxScrollFrame_GetOffset(AtlasScrollBar)
+		for line=1, AtlasTW.NUM_LINES do
+			lineplusoffset = line + FauxScrollFrame_GetOffset(AtlasTWScrollBar)
 			local bossLine = _G["AtlasBossLine"..line]
-			if lineplusoffset <= atlasTW.CurrentLine then
+			if lineplusoffset <= AtlasTW.CurrentLine then
 				-- Включаем интерактивность и текстуру для видимых кнопок
 				bossLine:EnableMouse(true)
 				highlightTexture = bossLine:GetHighlightTexture()
 				highlightTexture:Show()
 				local loot = _G["AtlasBossLine"..line.."_Loot"]
 				local selected = _G["AtlasBossLine"..line.."_Selected"]
-				_G["AtlasBossLine"..line.."_Text"]:SetText(atlasTW.ScrollList[lineplusoffset])
+				_G["AtlasBossLine"..line.."_Text"]:SetText(AtlasTW.ScrollList[lineplusoffset])
 				if AtlasLootItemsFrame.activeBoss == lineplusoffset then
 					bossLine:Enable()
 					loot:Hide()
@@ -247,7 +249,7 @@ function AtlasLootBoss_OnClick(name)
 				local _,_,boss = string.find(_G[name.."_Text"]:GetText(), "|c%x%x%x%x%x%x%x%x%s*[%dX']*[%) ]*(.*[^%,])[%,]?$")
 				AtlasLoot_ShowBossLoot(AtlasLootBossButtons[zoneID][id], boss, AtlasFrame)
 				AtlasLootItemsFrame.activeBoss = id
-				AtlasLoot_AtlasScrollBar_Update()
+				AtlasTW.Loot.ScrollBarUpdate()
 				AtlasTWCharDB.LastBoss = AtlasLootBossButtons[zoneID][id]
 				--dont show navigation buttons if its not rep or set
 				--[[local match = string.find(boss, L["Reputation"]) or string.find(boss, L["Set"])
@@ -264,7 +266,7 @@ function AtlasLootBoss_OnClick(name)
 				local _,_,boss = string.find(_G[name.."_Text"]:GetText(), "|c%x%x%x%x%x%x%x%x%s*[%dX]*[%) ]*(.*[^%,])[%,]?$")
 				AtlasLoot_ShowBossLoot(AtlasLootWBBossButtons[zoneID][id], boss, AtlasFrame)
 				AtlasLootItemsFrame.activeBoss = id
-				AtlasLoot_AtlasScrollBar_Update()
+				AtlasTW.Loot.ScrollBarUpdate()
 				AtlasTWCharDB.LastBoss = AtlasLootWBBossButtons[zoneID][id]
 			end
 		elseif AtlasLootBattlegrounds[zoneID] ~= nil and AtlasLootBattlegrounds[zoneID][id] ~= nil and AtlasLootBattlegrounds[zoneID][id] ~= "" then
@@ -274,7 +276,7 @@ function AtlasLootBoss_OnClick(name)
 				local _,_,boss = string.find(_G[name.."_Text"]:GetText(), "|c%x%x%x%x%x%x%x%x%s*[%wX]*[%) ]*(.*[^%,])[%,]?$")
 				AtlasLoot_ShowBossLoot(AtlasLootBattlegrounds[zoneID][id], boss, AtlasFrame)
 				AtlasLootItemsFrame.activeBoss = id
-				AtlasLoot_AtlasScrollBar_Update()
+				AtlasTW.Loot.ScrollBarUpdate()
 				AtlasTWCharDB.LastBoss = AtlasLootBattlegrounds[zoneID][id]
 			end
 		end
@@ -1073,8 +1075,8 @@ function AtlasLootItemsFrame_OnCloseButton()
 	AtlasLootItemsFrame.activeBoss = nil
 	--Fix the boss buttons so the correct icons are displayed
 	if AtlasFrame and AtlasFrame:IsVisible() then
-		if atlasTW.CurrentLine then
-			for i = 1, atlasTW.CurrentLine do
+		if AtlasTW.CurrentLine then
+			for i = 1, AtlasTW.CurrentLine do
 				if _G["AtlasBossLine"..i.."_Selected"]:IsVisible() then
 					_G["AtlasBossLine"..i.."_Selected"]:Hide()
 					_G["AtlasBossLine"..i.."_Loot"]:Show()

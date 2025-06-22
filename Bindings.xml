@@ -1,9 +1,11 @@
 <Bindings>
 	<Binding name="ATLASTW_TOGGLE" header="ATLASTW_TITLE">
-		Atlas_Toggle()
+		AtlasTW = AtlasTW or {}
+		AtlasTW.ToggleAtlas()
 	</Binding>
 	<Binding name="ATLASTW_OPTIONS">
-		AtlasOptions_Toggle()
+		AtlasTW = AtlasTW or {}
+		AtlasTW.OptionsOnClick()
 	</Binding>
 	<Binding name="ATLASLOOT_QL1" header="ATLASLOOT_TITLE">
 		if AtlasTWCharDB["QuickLooks"][1] then

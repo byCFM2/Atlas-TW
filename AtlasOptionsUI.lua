@@ -1,179 +1,8 @@
 local _G = getfenv()
-local AtlasTW = AtlasTW or {}
+AtlasTW = AtlasTW or {}
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
------------------------------------------------------------------------------
--- Option handlers
------------------------------------------------------------------------------
--- Autoshow
-local function KQAutoshowOption_OnClick()
-	AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
-	KQAutoshowOption:SetChecked(AtlasTWOptions.QuestWithAtlas)
-    AtlasTW.OptionsInit()
-end
-
--- Right position
-local function KQRIGHTOption_OnClick()
-    AtlasTW.Quest.UI_Main.Frame:ClearAllPoints()
-    AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasFrame", 567, -36)
-	KQRIGHTOption:SetChecked(true)
-	KQLEFTOption:SetChecked(false)
-	AtlasTWOptions.QuestCurrentSide = "Right"
-	AtlasTW.OptionsInit()
-end
-
--- Left position
-local function KQLEFTOption_OnClick()
-    if AtlasTWOptions.QuestCurrentSide == "Right" then
-        AtlasTW.Quest.UI_Main.Frame:ClearAllPoints()
-        AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasFrame", -556, -36)
-    end
-	KQRIGHTOption:SetChecked(false)
-	KQLEFTOption:SetChecked(true)
-	AtlasTWOptions.QuestCurrentSide = "Left"
-	AtlasTW.OptionsInit()
-end
-
--- Color check
-local function KQColourOption_OnClick()
-	AtlasTWOptions.QuestColourCheck = not AtlasTWOptions.QuestColourCheck
-	KQColourOption:SetChecked(AtlasTWOptions.QuestColourCheck)
-	AtlasTW.OptionsInit()
-    AtlasTW.Quest.SetQuestButtons()
-end
-
--- Questlog check
-local function KQCheckQuestlogButton_OnClick()
-	AtlasTWOptions.QuestCheckQuestlog = not AtlasTWOptions.QuestCheckQuestlog
-	KQCheckQuestlogButton:SetChecked(AtlasTWOptions.QuestCheckQuestlog)
-	AtlasTW.OptionsInit()
-    AtlasTW.Quest.SetQuestButtons()
-end
-
--- Auto query
-local function KQAutoQueryOption_OnClick()
-	AtlasTWOptions.QuestAutoQuery = not AtlasTWOptions.QuestAutoQuery
-	KQAutoQueryOption:SetChecked(AtlasTWOptions.QuestAutoQuery)
-	AtlasTW.OptionsInit()
-end
-
--- Query spam suppression
-local function KQQuerySpamOption_OnClick()
-	AtlasTWOptions.QuestQuerySpam = not AtlasTWOptions.QuestQuerySpam
-	KQQuerySpamOption:SetChecked(AtlasTWOptions.QuestQuerySpam)
-	AtlasTW.OptionsInit()
-end
-
--- Tooltip comparison
-local function KQCompareTooltipOption_OnClick()
-	AtlasTWOptions.QuestCompareTooltip = not AtlasTWOptions.QuestCompareTooltip
-	KQCompareTooltipOption:SetChecked(AtlasTWOptions.QuestCompareTooltip)
-	if AtlasTWOptions.QuestCompareTooltip then
-		AtlasTW.Quest.Tooltip:Register()
-	else
-		AtlasTW.Quest.Tooltip:Unregister()
-	end
-	AtlasTW.OptionsInit()
-end
-
-local function AtlasLootOptions_SafeLinksToggle()
-	AtlasTWOptions.LootSafeLinks = not AtlasTWOptions.LootSafeLinks
-	if AtlasTWOptions.LootSafeLinks then
-		AtlasTWOptions.LootAllLinks = false
-    else
-		AtlasTWOptions.LootAllLinks = true
-	end
-	AtlasTW.OptionsInit()
-end
-
-local function AtlasLootOptions_AllLinksToggle()
-	AtlasTWOptions.LootAllLinks = not AtlasTWOptions.LootAllLinks
-	if AtlasTWOptions.LootAllLinks then
-		AtlasTWOptions.LootSafeLinks = false
-    else
-		AtlasTWOptions.LootSafeLinks = true
-	end
-	AtlasTW.OptionsInit()
-end
-
-function AtlasLootOptions_DefaultTTToggle()
-	AtlasTWOptions.LootDefaultTT = true
-	AtlasTWOptions.LootlinkTT = false
-	AtlasTWOptions.LootItemSyncTT = false
-	AtlasTW.OptionsInit()
-end
-
-function AtlasLootOptions_LootlinkTTToggle()
-	AtlasTWOptions.LootDefaultTT = false
-	AtlasTWOptions.LootlinkTT = true
-	AtlasTWOptions.LootItemSyncTT = false
-	AtlasTW.OptionsInit()
-end
-
-function AtlasLootOptions_ItemSyncTTToggle()
-	AtlasTWOptions.LootDefaultTT = false
-	AtlasTWOptions.LootlinkTT = false
-	AtlasTWOptions.LootItemSyncTT = true
-	AtlasTW.OptionsInit()
-end
-
-local function AtlasLootOptions_ShowSourceToggle()
-	AtlasTWOptions.LootShowSource = not AtlasTWOptions.LootShowSource
-	AtlasTW.OptionsInit()
-end
-
-local function AtlasLootOptions_ShowPanel_OnClick()
-	AtlasTWOptions.LootShowPanel = not AtlasTWOptions.LootShowPanel
-	AtlasTW.OptionsInit()
-end
-
-local function AtlasLootOptions_EquipCompareToggle()
-	AtlasTWOptions.LootEquipCompare = not AtlasTWOptions.LootEquipCompare
-	if AtlasTWOptions.LootEquipCompare then
-		-- Register tooltips if EquipCompare is enabled
-		if IsAddOnLoaded("EquipCompare") then
-			EquipCompare_RegisterTooltip(AtlasLootTooltip)
-			EquipCompare_RegisterTooltip(AtlasLootTooltip2)
-		end
-		if IsAddOnLoaded("EQCompare") then
-			EQCompare:RegisterTooltip(AtlasLootTooltip)
-			EQCompare:RegisterTooltip(AtlasLootTooltip2)
-		end
-	else
-		-- Unregister tooltips if EquipCompare is disabled
-		if IsAddOnLoaded("EquipCompare") then
-			EquipCompare_UnregisterTooltip(AtlasLootTooltip)
-			EquipCompare_UnregisterTooltip(AtlasLootTooltip2)
-		end
-		if IsAddOnLoaded("EQCompare") then
-			EQCompare:UnRegisterTooltip(AtlasLootTooltip)
-			EQCompare:UnRegisterTooltip(AtlasLootTooltip2)
-		end
-	end
-	AtlasTW.OptionsInit()
-end
-
-local function AtlasLootOptions_OpaqueToggle()
-	AtlasTWOptions.LootOpaque=AtlasLootOptionsFrameOpaque:GetChecked()
-	if AtlasTWOptions.LootOpaque then
-		AtlasLootItemsFrame_Back:SetTexture(0, 0, 0, 1)
-	else
-		AtlasLootItemsFrame_Back:SetTexture(0, 0, 0, 0.65)
-	end
-	AtlasTW.OptionsInit()
-end
-
-local function AtlasLootOptions_ItemIDToggle()
-	AtlasTWOptions.LootItemIDs = not AtlasTWOptions.LootItemIDs
-	AtlasTW.OptionsInit()
-end
-
-local function AtlasLootOptions_ItemSpam()
-	AtlasTWOptions.LootItemSpam = not AtlasTWOptions.LootItemSpam
-	AtlasTW.OptionsInit()
-end
-
-local function atlasOptions_CreateFrames()
+do
     -- Create the main options frame
     local optionsFrame = CreateFrame("Frame", "AtlasOptionsFrame", UIParent)
     optionsFrame:SetFrameStrata("MEDIUM")
@@ -212,22 +41,22 @@ local function atlasOptions_CreateFrames()
     end)
 
     -- Title
-    local title = optionsFrame:CreateFontString("", "ARTWORK", "GameFontNormal")
+    local title = optionsFrame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
     title:SetPoint("TOP", optionsFrame, "TOP", 0, -15)
     title:SetText(L["Options"])
 
     -- AtlasOptionsText
-    local atlasOptionText = optionsFrame:CreateFontString("", "ARTWORK", "GameFontNormal")
+    local atlasOptionText = optionsFrame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
     atlasOptionText:SetPoint("BOTTOM", title, "BOTTOM", -160, -25)
     atlasOptionText:SetText(L["Atlas"])
 
     -- Atlas Options Checkboxes Data
     local atlasCheckboxes = {
-        { name = "AtlasOptionsFrameToggleButton", text = L["Show Button on Minimap"], script = function() AtlasButton_Toggle() end },
-        { name = "AtlasOptionsFrameAutoSelect", text = L["Auto-Select Instance Map"], script = function() AtlasOptions_AutoSelectToggle() end },
-        { name = "AtlasOptionsFrameRightClick", text = L["Right-Click for World Map"], script = function() AtlasOptions_RightClickToggle() end },
-        { name = "AtlasOptionsFrameAcronyms", text = L["Show Acronyms"], script = function() AtlasOptions_AcronymsToggle() end },
-        { name = "AtlasOptionsFrameClamped", text = L["Clamp window to screen"], script = function() AtlasOptions_ClampedToggle() end }
+        { name = "AtlasTWOptionToggleButton", text = L["Show Button on Minimap"], script = function() AtlasTW.MinimapButtonOnClick() end },
+        { name = "AtlasTWOptionAutoSelect", text = L["Auto-Select Instance Map"], script = function() AtlasTW.OptionsAutoSelectOnClick() end },
+        { name = "AtlasTWOptionRightClick", text = L["Right-Click for World Map"], script = function() AtlasTW.OptionsWorldMapOnClick() end },
+        { name = "AtlasTWOptionAcronyms", text = L["Show Acronyms"], script = function() AtlasTW.OptionsAcronymsOnClick() end },
+        { name = "AtlasTWOptionClamped", text = L["Clamp window to screen"], script = function() AtlasTW.OptionsClampedOnClick() end }
     }
 
     -- Optimized function to create atlas checkboxes
@@ -247,17 +76,16 @@ local function atlasOptions_CreateFrames()
         return previousElement
     end
 
-
     -- Atlas Options Sliders Data
     local atlasSliders = {
-        { name = "AtlasOptionsFrameSliderButtonPos", label = L["Button Position"], min = 0, max = 360, step = 1, value = 336,
-            option = "AtlasButtonPosition", updateFunc = AtlasButton_UpdatePosition },
-        { name = "AtlasOptionsFrameSliderButtonRad", label = L["Button Radius"], min = 0, max = 200, step = 1, value = 78,
-            option = "AtlasButtonRadius", updateFunc = AtlasButton_UpdatePosition },
-        { name = "AtlasOptionsFrameSliderAlpha", label = L["Transparency"], min = 0.25, max = 1.0, step = 0.01, value = 1.0,
-            option = "AtlasAlpha", updateFunc = Atlas_UpdateAlpha },
-        { name = "AtlasOptionsFrameSliderScale", label = L["Scale"], min = 0.25, max = 1.5, step = 0.01, value = 1.0,
-            option = "AtlasScale", updateFunc = Atlas_UpdateScale }
+        { name = "AtlasTWOptionSliderButtonPos", label = L["Button Position"], min = 0, max = 360, step = 1, value = 336,
+            option = "AtlasButtonPosition", updateFunc = AtlasTW.MinimapButtonUpdatePosition },
+        { name = "AtlasTWOptionSliderButtonRad", label = L["Button Radius"], min = 0, max = 200, step = 1, value = 78,
+            option = "AtlasButtonRadius", updateFunc = AtlasTW.MinimapButtonUpdatePosition },
+        { name = "AtlasTWOptionSliderAlpha", label = L["Transparency"], min = 0.25, max = 1.0, step = 0.01, value = 1.0,
+            option = "AtlasAlpha", updateFunc = AtlasTW.OptionsUpdateAlpha },
+        { name = "AtlasTWOptionSliderScale", label = L["Scale"], min = 0.25, max = 1.5, step = 0.01, value = 1.0,
+            option = "AtlasScale", updateFunc = AtlasTW.OptionsUpdateScale }
     }
     -- Creates slider controls for Atlas options
     -- @param startElement - The UI element to position sliders relative to
@@ -296,26 +124,26 @@ local function atlasOptions_CreateFrames()
     lastElement = CreateAtlasSliders(lastElement)
 
     -- Reset position button
-    local resetPosition = CreateFrame("Button", "nil", optionsFrame, "OptionsButtonTemplate")
+    local resetPosition = CreateFrame("Button", nil, optionsFrame, "OptionsButtonTemplate")
     resetPosition:SetPoint("BOTTOMLEFT", 20, 15)
     resetPosition:SetText(L["Reset Position"])
     resetPosition:SetScript("OnClick", function()
-        AtlasOptions_ResetPosition()
+        AtlasTW.OptionResetPosition()
     end)
 
     -- Default settings button
-    local defaultSettingsButton = CreateFrame("Button", "asd", resetPosition, "OptionsButtonTemplate")
+    local defaultSettingsButton = CreateFrame("Button", nil, resetPosition, "OptionsButtonTemplate")
     defaultSettingsButton:SetPoint("RIGHT", 100, 0)
     defaultSettingsButton:SetText(L["Reset Settings"])
     defaultSettingsButton:SetScript("OnClick", function()
-        AtlasOptions_DefaultSettings()
+        AtlasTW.OptionDefaultSettings()
     end)
     -- Done button
-    local doneButton = CreateFrame("Button", "AtlasOptionsFrameDone", optionsFrame, "OptionsButtonTemplate")
+    local doneButton = CreateFrame("Button", nil, optionsFrame, "OptionsButtonTemplate")
     doneButton:SetPoint("BOTTOMRIGHT", -20, 15)
     doneButton:SetText(L["Done"])
     doneButton:SetScript("OnClick", function()
-        AtlasOptions_Toggle()
+        AtlasTW.OptionsOnClick()
     end)
 
     -- Categories dropdown
@@ -323,33 +151,33 @@ local function atlasOptions_CreateFrames()
     dropDownCats:SetPoint("TOP", doneButton, "TOP", 0, 30)
     UIDropDownMenu_SetWidth(80, dropDownCats)
 
-    local dropDownCatsLabel = dropDownCats:CreateFontString("", "BACKGROUND", "GameFontNormalSmall")
+    local dropDownCatsLabel = dropDownCats:CreateFontString(nil, "BACKGROUND", "GameFontNormalSmall")
     dropDownCatsLabel:SetText(L["Sort Instance by:"])
     dropDownCatsLabel:SetPoint("TOP", 0, 10)
 
     dropDownCats:SetScript("OnShow", function()
-        AtlasOptionsFrameDropDownCats_OnShow()
+        AtlasTW.OptionFrameDropDownCatsOnShow()
     end)
 
     -- QuestOptionsText
-    local questOptionText = optionsFrame:CreateFontString("", "ARTWORK", "GameFontNormal")
+    local questOptionText = optionsFrame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
     questOptionText:SetPoint("BOTTOM", title, "BOTTOM", 100, -25)
     questOptionText:SetText(L["Quest"])
 
     -- Quest Checkboxes Data
     local questCheckboxes = {
-        { name = "KQAutoshowOption", text = L["Show the Quest Panel with Atlas"], script = KQAutoshowOption_OnClick },
-        { name = "KQLEFTOption", text = L["Show Quest Panel on the Left"], script = KQLEFTOption_OnClick },
-        { name = "KQRIGHTOption", text = L["Show Quest Panel on the Right"], script = KQRIGHTOption_OnClick },
-        { name = "KQColourOption", text = L["Color Quests by Level"], script = KQColourOption_OnClick },
-        { name = "KQCheckQuestlogButton", text = L["Color Quests from the Questlog"], script = KQCheckQuestlogButton_OnClick },
-        { name = "KQAutoQueryOption", text = L["Auto-Query Unknown Items"], script = KQAutoQueryOption_OnClick },
-        { name = "KQQuerySpamOption", text = L["Suppress Server Query Spam"], script = KQQuerySpamOption_OnClick },
-        { name = "KQCompareTooltipOption", text = L["Compare Rewards and Gear (/rl)"], script = KQCompareTooltipOption_OnClick }
+        { name = "AtlasTWOptionAutoshow", text = L["Show the Quest Panel with Atlas"], script = function() AtlasTW.OptionAutoshowOnClick() end },
+        { name = "AtlasTWOptionLeftSide", text = L["Show Quest Panel on the Left"], script = function() AtlasTW.OptionLeftSideOnClick() end },
+        { name = "AtlasTWOptionRightSide", text = L["Show Quest Panel on the Right"], script = function() AtlasTW.OptionRightSideOnClick() end },
+        { name = "AtlasTWOptionColor", text = L["Color Quests by Level"], script = function() AtlasTW.OptionColorOnClick() end },
+        { name = "AtlasTWOptionQuestlog", text = L["Color Quests from the Questlog"], script = function() AtlasTW.OptionQuestlogOnClick() end },
+        { name = "AtlasTWOptionAutoQuery", text = L["Auto-Query Unknown Items"], script = function() AtlasTW.OptionAutoQueryOnClick() end },
+        { name = "AtlasTWOptionQuerySpam", text = L["Suppress Server Query Spam"], script = function() AtlasTW.OptionQuerySpamOnClick() end },
+        { name = "AtlasTWOptionCompareTooltip", text = L["Compare Rewards and Gear (/rl)"], script = function() AtlasTW.OptionCompareTooltipOnClick() end }
     }
 
     -- Optimized function to create quest checkboxes
-	local function CreateCheckboxesQuest()
+	do
         local previousCheckbox = nil
         for i, config in ipairs(questCheckboxes) do
             local checkbox = CreateFrame("CheckButton", config.name, optionsFrame, "OptionsCheckButtonTemplate")
@@ -371,48 +199,34 @@ local function atlasOptions_CreateFrames()
 
     -- Checkbox configuration
     local lootCheckboxes = {
-        { name = "AtlasLootOptionsFrameSafeLinks", text = L["Safe Chat Links |cff1eff00(recommended)|r"], script = AtlasLootOptions_SafeLinksToggle },
-        { name = "AtlasLootOptionsFrameAllLinks", text = L["Enable all Chat Links"], script = AtlasLootOptions_AllLinksToggle },
-        { name = "AtlasLootOptionsFrameDefaultTT", text = L["Default Tooltips"], script = AtlasLootOptions_DefaultTTToggle },
-        { name = "AtlasLootOptionsFrameLootlinkTT", text = L["Lootlink Tooltips"], script = AtlasLootOptions_LootlinkTTToggle },
-        { name = "AtlasLootOptionsFrameItemSyncTT", text = L["ItemSync Tooltips"], script = AtlasLootOptions_ItemSyncTTToggle },
-        { name = "AtlasLootOptionsFrameShowSource", text = L["Show Source on Tooltips"], script = AtlasLootOptions_ShowSourceToggle },
-        { name = "AtlasLootOptionsFrameShowPanel", text = L["Show Loot Panel with Atlas"], script = AtlasLootOptions_ShowPanel_OnClick },
-        { name = "AtlasLootOptionsFrameEquipCompare", text = L["Use EquipCompare"], script = AtlasLootOptions_EquipCompareToggle },
-        { name = "AtlasLootOptionsFrameItemID", text = L["Show IDs at all times"], script = AtlasLootOptions_ItemIDToggle },
-        { name = "AtlasLootOptionsFrameOpaque", text = L["Make Loot Table Opaque"], script = AtlasLootOptions_OpaqueToggle },
-        { name = "AtlasLootOptionsFrameItemSpam", text = L["Suppress Text Spam"], script = AtlasLootOptions_ItemSpam }
+        { name = "AtlasTWOptionSafeLinks", text = L["Safe Chat Links |cff1eff00(recommended)|r"], script = function() AtlasTW.OptionSafeLinksOnClick() end },
+        { name = "AtlasTWOptionAllLinks", text = L["Enable all Chat Links"], script = function() AtlasTW.OptionAllLinksOnClick() end },
+        { name = "AtlasTWOptionDefaultTT", text = L["Default Tooltips"], script = function() AtlasTW.OptionDefaultTTOnClick() end },
+        { name = "AtlasTWOptionLootlinkTT", text = L["Lootlink Tooltips"], script = function() AtlasTW.OptionLootlinkTTOnClick() end },
+        { name = "AtlasTWOptionItemSyncTT", text = L["ItemSync Tooltips"], script = function() AtlasTW.OptionItemSyncTTOnClick() end },
+        { name = "AtlasTWOptionShowSource", text = L["Show Source on Tooltips"], script = function() AtlasTW.OptionShowSourceOnClick() end },
+        { name = "AtlasTWOptionShowPanel", text = L["Show Loot Panel with Atlas"], script = function() AtlasTW.OptionShowPanelOnClick() end},
+        { name = "AtlasTWOptionEquipCompare", text = L["Use EquipCompare"], script = function() AtlasTW.OptionEquipCompareOnClick() end },
+        { name = "AtlasTWOptionItemID", text = L["Show IDs at all times"], script = function() AtlasTW.OptionItemIDOnClick() end },
+        { name = "AtlasTWOptionOpaque", text = L["Make Loot Table Opaque"], script = function() AtlasTW.OptionOpaqueOnClick() end },
+        { name = "AtlasTWOptionItemSpam", text = L["Suppress Text Spam"], script = function() AtlasTW.OptionItemSpamOnClick() end }
     }
 
-    -- Optimized function to create checkboxes
-    local function CreateCheckboxesLoot()
+    do
         local previousCheckbox = nil
         for i, config in ipairs(lootCheckboxes) do
             local checkbox = CreateFrame("CheckButton", config.name, optionsFrame, "OptionsCheckButtonTemplate")
-
-            -- Simplified positioning logic
             if i == 1 then
                 checkbox:SetPoint("BOTTOM", lootOptionText, "BOTTOM", -78, -35)
             elseif i <= 6 then
                 checkbox:SetPoint("BOTTOM", previousCheckbox, "BOTTOM", 0, -25)
             else
-                -- Second column (items 7-10)
                 local referenceCheckbox = lootCheckboxes[i - 6].name
                 checkbox:SetPoint("RIGHT", referenceCheckbox, "RIGHT", 195, 0)
             end
-
             _G[config.name .. "Text"]:SetText(config.text)
             checkbox:SetScript("OnClick", config.script)
             previousCheckbox = checkbox
         end
     end
-
-	-- Create checkboxes
-	CreateCheckboxesQuest()
-    CreateCheckboxesLoot()
-
-    return optionsFrame
 end
-
--- Call the function to create frames when this file is loaded
-atlasOptions_CreateFrames()

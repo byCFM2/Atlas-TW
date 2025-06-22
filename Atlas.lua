@@ -92,7 +92,7 @@ end
 
 function Atlas_SearchAndRefresh(text)
 	atlas_Search(text)
-	AtlasLoot_AtlasScrollBar_Update()
+	AtlasTW.Loot.ScrollBarUpdate()
 end
 
 --Removal of articles in map names (for proper alphabetic sorting)
@@ -152,7 +152,7 @@ local function Atlas_Init()
 
 	--clear saved vars for a new ver (or a new install!)
 	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= AtlasTW.Version or AtlasTWCharDB.FirstTime then
-		AtlasOptions_DefaultSettings()
+		AtlasTW.OptionsDefaultSettings()
 	end
 
 	--populate the dropdown lists...yeeeah this is so much nicer!
@@ -174,16 +174,16 @@ local function Atlas_Init()
 	end
 
 	--Now that saved variables have been loaded, update everything accordingly
-	Atlas_Refresh()
+	AtlasTW.Refresh()
 	atlas_UpdateLock()
-	Atlas_UpdateAlpha()
+	AtlasTW.OptionsUpdateAlpha()
 	AtlasFrame:SetClampedToScreen(AtlasTWOptions.AtlasClamped)
-	AtlasButton_UpdatePosition()
+	AtlasTW.MinimapButtonUpdatePosition()
 	AtlasTW.OptionsInit()
 end
 
 --Main Atlas event handler
-function Atlas_OnEvent()
+function AtlasTW.OnEvent()
 	if arg1 == AtlasTW.Name then
 		Atlas_Init()
 	elseif not arg1 then
@@ -217,45 +217,9 @@ function Atlas_PopulateDropdowns()
 end
 
 --Simple function to toggle the Atlas frame's lock status and update it's appearance
-function Atlas_ToggleLock()
+function AtlasTW.ToggleLock()
 	AtlasTWOptions.AtlasLocked = not AtlasTWOptions.AtlasLocked
 	atlas_UpdateLock()
-end
-
---Begin moving the Atlas frame if it's unlocked
-function Atlas_StartMoving()
-	if not AtlasTWOptions.AtlasLocked then
-		AtlasFrame:StartMoving()
-	end
-end
-
---Parses slash commands
---If an unrecognized command is given, toggle Atlas
-function Atlas_SlashCommand(msg)
-	if msg == "options" or msg == "opt" then
-		AtlasOptions_Toggle()
-	else
-		Atlas_Toggle()
-	end
-end
-
---Sets the transparency of the Atlas frame based on AtlasAlpha
-function Atlas_UpdateAlpha()
-	AtlasFrame:SetAlpha(AtlasTWOptions.AtlasAlpha)
-end
-
---Sets the scale of the Atlas frame based on AtlasScale
-function Atlas_UpdateScale()
-	AtlasFrame:SetScale(AtlasTWOptions.AtlasScale)
-end
-
---Simple function to toggle the visibility of the Atlas frame
-function Atlas_Toggle()
-	if AtlasFrame:IsVisible() then
-		AtlasFrame:Hide()
-	else
-		AtlasFrame:Show()
-	end
 end
 
 local function atlasSwitchDD_Set(index)
@@ -267,9 +231,9 @@ local function atlasSwitchDD_Set(index)
 			end
 		end
 	end
-	AtlasFrameDropDownType_OnShow()
-	AtlasFrameDropDown_OnShow()
-	Atlas_Refresh()
+	AtlasTW.FrameDropDownTypeOnShow()
+	AtlasTW.FrameDropDownOnShow()
+	AtlasTW.Refresh()
 end
 
 local function atlasSwitchDD_OnClick()
@@ -296,7 +260,7 @@ end
 --Refreshes the Atlas frame, usually because a new map needs to be displayed
 --The zoneID variable represents the internal name used for each map
 --Also responsible for updating all the text when a map is changed
-function Atlas_Refresh()
+function AtlasTW.Refresh()
 	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
 	local data = AtlasMaps
 	local base = {}
@@ -330,7 +294,6 @@ function Atlas_Refresh()
 	--Display the newly selected texture
 	AtlasMap:SetTexture(AtlasTW.MAPPATH..zoneID)
 	--Update the quest frame
---	DEFAULT_CHAT_FRAME:AddMessage("Atlas_Refresh run!")
 	AtlasTW.CurrentMap = zoneID
 	AtlasTW.Quest.Update()
 	--Setup info panel above boss listing
@@ -350,20 +313,20 @@ function Atlas_Refresh()
 	if base.PlayerLimit then
 		textPlayerLimit = L["Player Limit"]..": "..base.PlayerLimit
 	end
-	AtlasTW.UI.ZoneNameText:SetText(tName)
-	AtlasTW.UI.LocationText:SetText(textLocation)
-	AtlasTW.UI.LevelRangeText:SetText(textLevelRange)
-	AtlasTW.UI.MinLevelText:SetText(textMinLevel)
-	AtlasTW.UI.PlayerLimitText:SetText(textPlayerLimit)
+	AtlasTWZoneText:SetText(tName)
+	AtlasTWLocationText:SetText(textLocation)
+	AtlasTWLevelRangeText:SetText(textLevelRange)
+	AtlasTWMinLevelText:SetText(textMinLevel)
+	AtlasTWPlayerLimitText:SetText(textPlayerLimit)
 
 	atlasData = base
 
 	if (data.Search ~= false) then
 		AtlasSearchEditBox:Show();
-		AtlasTW.UI.NoSearch:Hide();
+		AtlasTWNoSearch:Hide();
 	else
 		AtlasSearchEditBox:Hide();
-		AtlasTW.UI.NoSearch:Show();
+		AtlasTWNoSearch:Show();
 		ATLAS_SEARCH_METHOD = nil;
 	end
 
@@ -380,7 +343,7 @@ function Atlas_Refresh()
 			if i ~= 1 then
 				frame:SetPoint("TOPLEFT", "AtlasBossLine"..(i-1), "BOTTOMLEFT")
 			else
-				frame:SetPoint("TOPLEFT", "AtlasScrollBar", "TOPLEFT", 16, -3)
+				frame:SetPoint("TOPLEFT", "AtlasTWScrollBar", "TOPLEFT", 16, -3)
 			end
 			-- Ограничиваем кнопки границами скролла (24 линии * 15 пикселей = 360 пикселей)
 			if i > 24 then
@@ -402,7 +365,7 @@ function Atlas_Refresh()
 	AtlasLootItemsFrame:Hide()
 
 	--Make sure the scroll bar is correctly offset
-	AtlasLoot_AtlasScrollBar_Update()
+	AtlasTW.Loot.ScrollBarUpdate()
 
 	--see if we should display the entrance/instance button or not, and decide what it should say
 	local matchFound = {}
@@ -444,7 +407,7 @@ end
 --when the switch button is clicked
 --we can basically assume that there's a match
 --find it, set it, then update menus and the maps
-function AtlasSwitchButton_OnClick()
+function AtlasTW.SwitchButtonOnClick()
 	if getn(atlas_Ints_Ent_DropDown) == 1 then
 		--one link, so we can just go there right away
 		atlasSwitchDD_Set(1)
@@ -461,8 +424,8 @@ local function atlasFrameDropDownType_OnClick()
 	UIDropDownMenu_SetSelectedID(AtlasFrameDropDownType, thisID)
 	AtlasTWOptions.AtlasType = thisID
 	AtlasTWOptions.AtlasZone = 1
-	AtlasFrameDropDown_OnShow()
-	Atlas_Refresh()
+	AtlasTW.FrameDropDownOnShow()
+	AtlasTW.Refresh()
 end
 
 --Function used to initialize the map type dropdown menu
@@ -485,7 +448,7 @@ local function atlasFrameDropDown_OnClick()
 	local i = this:GetID()
 	UIDropDownMenu_SetSelectedID(AtlasFrameDropDown, i)
 	AtlasTWOptions.AtlasZone = i
-	Atlas_Refresh()
+	AtlasTW.Refresh()
 end
 
 --Function used to initialize the main dropdown menu
@@ -513,7 +476,7 @@ end
 
 --Checks the player's current location against all Atlas maps
 --If a match is found display that map right away
-local function atlas_AutoSelect()
+local function atlasAutoSelect()
 	local currentZone = atlas_GetFixedZoneText()
 	local currentSubZone = GetSubZoneText()
 	debug("Using auto-select to open the best map.")
@@ -527,7 +490,7 @@ local function atlas_AutoSelect()
 					if AtlasTW.SubZoneData[currentSubZone] == vb then
 						AtlasTWOptions.AtlasType = ka
 						AtlasTWOptions.AtlasZone = kb
-						Atlas_Refresh()
+						AtlasTW.Refresh()
 						debug("Map changed directly based on SubZone data.")
 						return
 					end
@@ -544,7 +507,7 @@ local function atlas_AutoSelect()
 						if AtlasTW.AssocDefaults[currentZone] == vb then
 							AtlasTWOptions.AtlasType = ka
 							AtlasTWOptions.AtlasZone = kb
-							Atlas_Refresh()
+							AtlasTW.Refresh()
 							debug("You just arrived here. Using the default map.")
 							return
 						end
@@ -561,7 +524,7 @@ local function atlas_AutoSelect()
 					if AtlasTW.OutdoorZoneToAtlas[currentZone] == vb then
 						AtlasTWOptions.AtlasType = ka
 						AtlasTWOptions.AtlasZone = kb
-						Atlas_Refresh()
+						AtlasTW.Refresh()
 						debug("Map changed to the associated map.")
 						return
 					end
@@ -589,7 +552,7 @@ local function atlas_AutoSelect()
 				if currentZone == strsub(AtlasMaps[vb].ZoneName[1], strlen(AtlasMaps[vb].ZoneName[1]) - strlen(currentZone) + 1) then
 					AtlasTWOptions.AtlasType = ka
 					AtlasTWOptions.AtlasZone = kb
-					Atlas_Refresh()
+					AtlasTW.Refresh()
 					debug("Found a match. Map has been changed.")
 					return
 				end
@@ -600,42 +563,32 @@ local function atlas_AutoSelect()
 end
 
 --Called whenever the map type dropdown menu is shown
-function AtlasFrameDropDownType_OnShow()
+function AtlasTW.FrameDropDownTypeOnShow()
 	UIDropDownMenu_Initialize(AtlasFrameDropDownType, atlasFrameDropDownType_Initialize)
 	UIDropDownMenu_SetSelectedID(AtlasFrameDropDownType, AtlasTWOptions.AtlasType)
 	UIDropDownMenu_SetWidth(190, AtlasFrameDropDownType)
 end
 
 --Called whenever the main dropdown menu is shown
-function AtlasFrameDropDown_OnShow()
+function AtlasTW.FrameDropDownOnShow()
 	UIDropDownMenu_Initialize(AtlasFrameDropDown, atlasFrameDropDown_Initialize)
 	UIDropDownMenu_SetSelectedID(AtlasFrameDropDown, AtlasTWOptions.AtlasZone)
 	UIDropDownMenu_SetWidth(190, AtlasFrameDropDown)
 end
 
 --Called whenever the Atlas frame is displayed
-function Atlas_OnShow()
+function AtlasTW.OnShow()
 	setupPfUITooltip()
 	if(AtlasTWOptions.AtlasAutoSelect) then
-		atlas_AutoSelect()
+		atlasAutoSelect()
 	end
 
-	AtlasFrameDropDownType_OnShow()
-	AtlasFrameDropDown_OnShow()
-	Atlas_Refresh()
+	AtlasTW.FrameDropDownTypeOnShow()
+	AtlasTW.FrameDropDownOnShow()
+	AtlasTW.Refresh()
 
 	--If a boss has been selected, show the loot frame
 	if AtlasLootItemsFrame.activeBoss then
 		AtlasLootItemsFrame:Show()
-	end
-end
-
---RightButton closes Atlas and open the World Map if the RightClick option is turned on
-function Atlas_OnClick()
-	if arg1 == "RightButton" then
-		if AtlasTWOptions.AtlasRightClick then
-			Atlas_Toggle()
-			ToggleWorldMap()
-		end
 	end
 end
