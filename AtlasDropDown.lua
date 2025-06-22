@@ -11,132 +11,179 @@ local COLORS = {
     YELLOW = "|cffffff00"
 }
 
--- Configuration tables
-local SORT_TYPES = {
-    CONTINENT = 1,
-    PARTYSIZE = 2,
-    LEVEL = 3,
-    TYPE = 4,
-    ALL = 5
+-- Sort types enum
+local SortType = {
+    CONTINENT = L["Continent"],
+    PARTYSIZE = L["Party Size"],
+    LEVEL = L["Level"],
+    TYPE = L["Type"],
+    ALL = L["All"]
 }
 
 -- Main dropdown layout order
 AtlasDropDown.SortOrder = {
-    [SORT_TYPES.CONTINENT] = L["Continent"],
-    [SORT_TYPES.PARTYSIZE] = L["Party Size"],
-    [SORT_TYPES.LEVEL] = L["Level"],
-    [SORT_TYPES.TYPE] = L["Type"],
-    [SORT_TYPES.ALL] = L["All"]
+    [1] = SortType.CONTINENT,
+    [2] = SortType.PARTYSIZE,
+    [3] = SortType.LEVEL,
+    [4] = SortType.TYPE,
+    [5] = SortType.ALL
 }
 
--- Dungeon data organized by categories
-local DUNGEON_DATA = {
-    -- Eastern Kingdoms dungeons
-    EASTERN_KINGDOMS = {
-        "BlackrockDepths", "BlackrockSpireLower", "BlackrockSpireUpper",
-        "BlackwingLair", "GilneasCity", "Gnomeregan", "HateforgeQuarry",
-        "KarazhanCrypt", "TowerofKarazhan", "LowerKarazhan", "MoltenCore",
-        "Naxxramas", "Scholomance", "ShadowfangKeep", "SMArmory",
-        "SMCathedral", "SMGraveyard", "SMLibrary", "StormwroughtRuins",
-        "StormwindVault", "Stratholme", "TheDeadmines", "TheStockade",
-        "TheSunkenTemple", "Uldaman", "ZulGurub"
-    },
+-- Dungeon data
+local Dungeons = {
+    -- Eastern Kingdoms
+    BlackrockDepths = { continent = "Eastern Kingdoms", level = "50-60", size = 5, type = "Dungeon" },
+    BlackrockSpireLower = { continent = "Eastern Kingdoms", level = "50-60", size = {5, 10}, type = "Dungeon" },
+    BlackrockSpireUpper = { continent = "Eastern Kingdoms", level = "60", size = 10, type = "Raid" },
+    BlackwingLair = { continent = "Eastern Kingdoms", level = "60", size = 40, type = "Raid" },
+    GilneasCity = { continent = "Eastern Kingdoms", level = "40-50", size = 5, type = "Dungeon" },
+    Gnomeregan = { continent = "Eastern Kingdoms", level = "20-30", size = 5, type = "Dungeon" },
+    HateforgeQuarry = { continent = "Eastern Kingdoms", level = "50-60", size = 5, type = "Dungeon" },
+    KarazhanCrypt = { continent = "Eastern Kingdoms", level = "50-60", size = 5, type = "Dungeon" },
+    TowerofKarazhan = { continent = "Eastern Kingdoms", level = "60", size = 40, type = "Raid" },
+    LowerKarazhan = { continent = "Eastern Kingdoms", level = "60", size = 10, type = "Raid" },
+    MoltenCore = { continent = "Eastern Kingdoms", level = "60", size = 40, type = "Raid" },
+    Naxxramas = { continent = "Eastern Kingdoms", level = "60", size = 40, type = "Raid" },
+    Scholomance = { continent = "Eastern Kingdoms", level = "50-60", size = {5, 10}, type = "Dungeon" },
+    ShadowfangKeep = { continent = "Eastern Kingdoms", level = "20-30", size = 5, type = "Dungeon" },
+    SMArmory = { continent = "Eastern Kingdoms", level = "30-40", size = 5, type = "Dungeon" },
+    SMCathedral = { continent = "Eastern Kingdoms", level = "30-40", size = 5, type = "Dungeon" },
+    SMGraveyard = { continent = "Eastern Kingdoms", level = "30-40", size = 5, type = "Dungeon" },
+    SMLibrary = { continent = "Eastern Kingdoms", level = "30-40", size = 5, type = "Dungeon" },
+    StormwroughtRuins = { continent = "Eastern Kingdoms", level = "30-40", size = 5, type = "Dungeon" },
+    StormwindVault = { continent = "Eastern Kingdoms", level = "50-60", size = 5, type = "Dungeon" },
+    Stratholme = { continent = "Eastern Kingdoms", level = "50-60", size = {5, 10}, type = "Dungeon" },
+    TheDeadmines = { continent = "Eastern Kingdoms", level = "10-20", size = 5, type = "Dungeon" },
+    TheStockade = { continent = "Eastern Kingdoms", level = "10-20", size = 5, type = "Dungeon" },
+    TheSunkenTemple = { continent = "Eastern Kingdoms", level = "40-50", size = 5, type = "Dungeon" },
+    Uldaman = { continent = "Eastern Kingdoms", level = "30-40", size = 5, type = "Dungeon" },
+    ZulGurub = { continent = "Eastern Kingdoms", level = "60", size = 20, type = "Raid" },
 
-    -- Kalimdor dungeons
-    KALIMDOR = {
-        "BlackfathomDeeps", "CavernsOfTimeBlackMorass", "DireMaulEast",
-        "DireMaulNorth", "DireMaulWest", "EmeraldSanctum", "Maraudon",
-        "OnyxiasLair", "RagefireChasm", "RazorfenDowns", "RazorfenKraul",
-        "TheCrescentGrove", "TheRuinsofAhnQiraj", "TheTempleofAhnQiraj",
-        "WailingCaverns", "ZulFarrak"
-    },
+    -- Kalimdor
+    BlackfathomDeeps = { continent = "Kalimdor", level = "20-30", size = 5, type = "Dungeon" },
+    CavernsOfTimeBlackMorass = { continent = "Kalimdor", level = "50-60", size = 5, type = "Dungeon" },
+    DireMaulEast = { continent = "Kalimdor", level = "50-60", size = 5, type = "Dungeon" },
+    DireMaulNorth = { continent = "Kalimdor", level = "50-60", size = 5, type = "Dungeon" },
+    DireMaulWest = { continent = "Kalimdor", level = "50-60", size = 5, type = "Dungeon" },
+    EmeraldSanctum = { continent = "Kalimdor", level = "60", size = 40, type = "Raid" },
+    Maraudon = { continent = "Kalimdor", level = "40-50", size = 5, type = "Dungeon" },
+    OnyxiasLair = { continent = "Kalimdor", level = "60", size = 40, type = "Raid" },
+    RagefireChasm = { continent = "Kalimdor", level = "10-20", size = 5, type = "Dungeon" },
+    RazorfenDowns = { continent = "Kalimdor", level = "30-40", size = 5, type = "Dungeon" },
+    RazorfenKraul = { continent = "Kalimdor", level = "20-30", size = 5, type = "Dungeon" },
+    TheCrescentGrove = { continent = "Kalimdor", level = "30-40", size = 5, type = "Dungeon" },
+    TheRuinsofAhnQiraj = { continent = "Kalimdor", level = "60", size = 20, type = "Raid" },
+    TheTempleofAhnQiraj = { continent = "Kalimdor", level = "60", size = 40, type = "Raid" },
+    WailingCaverns = { continent = "Kalimdor", level = "10-20", size = 5, type = "Dungeon" },
+    ZulFarrak = { continent = "Kalimdor", level = "40-50", size = 5, type = "Dungeon" },
 
-    -- World bosses
-    WORLD_BOSSES = {
-        "Azuregos", "FourDragons", "LordKazzak", "Turtlhu", "Nerubian",
-        "Reaver", "Ostarius", "Concavius", "CowKing", "Clackora", "RareMobs"
-    },
+    -- World Bosses
+    Azuregos = { type = "World Boss" },
+    FourDragons = { type = "World Boss" },
+    LordKazzak = { type = "World Boss" },
+    Turtlhu = { type = "World Boss" },
+    Nerubian = { type = "World Boss" },
+    Reaver = { type = "World Boss" },
+    Ostarius = { type = "World Boss" },
+    Concavius = { type = "World Boss" },
+    CowKing = { type = "World Boss" },
+    Clackora = { type = "World Boss" },
+    RareMobs = { type = "World Boss" },
 
-    -- Special categories
-    ENTRANCES = {
-        "BlackfathomDeepsEnt", "BlackrockMountainEnt", "DireMaulEnt",
-        "GnomereganEnt", "MaraudonEnt", "SMEnt", "TheDeadminesEnt",
-        "TheSunkenTempleEnt", "UldamanEnt", "WailingCavernsEnt"
-    },
+    -- Special
+    BlackfathomDeepsEnt = { type = "Entrance" },
+    BlackrockMountainEnt = { type = "Entrance" },
+    DireMaulEnt = { type = "Entrance" },
+    GnomereganEnt = { type = "Entrance" },
+    MaraudonEnt = { type = "Entrance" },
+    SMEnt = { type = "Entrance" },
+    TheDeadminesEnt = { type = "Entrance" },
+    TheSunkenTempleEnt = { type = "Entrance" },
+    UldamanEnt = { type = "Entrance" },
+    WailingCavernsEnt = { type = "Entrance" },
 
-    BATTLEGROUNDS = {
-        "AlteracValleyNorth", "AlteracValleySouth", "ArathiBasin", "WarsongGulch"
-    },
+    AlteracValleyNorth = { type = "Battleground" },
+    AlteracValleySouth = { type = "Battleground" },
+    ArathiBasin = { type = "Battleground" },
+    WarsongGulch = { type = "Battleground" },
 
-    DUNGEON_LOCATIONS = { "DLEast", "DLWest" },
+    DLEast = { type = "Dungeon Location" },
+    DLWest = { type = "Dungeon Location" },
 
-    FLIGHT_PATHS = {
-        "FPAllianceEast", "FPAllianceWest", "FPHordeEast", "FPHordeWest"
-    },
+    FPAllianceEast = { type = "Flight Path" },
+    FPAllianceWest = { type = "Flight Path" },
+    FPHordeEast = { type = "Flight Path" },
+    FPHordeWest = { type = "Flight Path" },
 
-    TRANSPORT_ROUTES = { "TransportRoutes" }
+    TransportRoutes = { type = "Transport Route" }
 }
 
--- Level-based categorization
-local LEVEL_CATEGORIES = {
-    ["10-20"] = { "RagefireChasm", "TheDeadmines", "TheStockade", "WailingCaverns" },
-    ["20-30"] = { "BlackfathomDeeps", "Gnomeregan", "RazorfenKraul", "ShadowfangKeep" },
-    ["30-40"] = {
-        "RazorfenDowns", "SMArmory", "SMCathedral", "SMGraveyard",
-        "SMLibrary", "StormwroughtRuins", "TheCrescentGrove", "Uldaman"
+-- Helper function to check if a table contains a value
+local function tContains(tbl, val)
+    for _, v in pairs(tbl) do
+        if v == val then
+            return true
+        end
+    end
+    return false
+end
+
+-- Category definitions
+local Categories = {
+    [SortType.CONTINENT] = {
+        [L["Eastern Kingdoms Instances"]] = function(d) return d.continent == "Eastern Kingdoms" end,
+        [L["Kalimdor Instances"]] = function(d) return d.continent == "Kalimdor" end,
     },
-    ["40-50"] = { "GilneasCity", "Maraudon", "TheSunkenTemple", "ZulFarrak" },
-    ["50-60"] = {
-        "BlackrockDepths", "BlackrockSpireLower", "CavernsOfTimeBlackMorass",
-        "DireMaulEast", "DireMaulNorth", "DireMaulWest", "HateforgeQuarry",
-        "KarazhanCrypt", "Scholomance", "StormwindVault", "Stratholme"
+    [SortType.PARTYSIZE] = {
+        [L["Instances for 5 Players"]] = function(d) return d.size == 5 or (type(d.size) == "table" and tContains(d.size, 5)) end,
+        [L["Instances for 10 Players"]] = function(d) return d.size == 10 or (type(d.size) == "table" and tContains(d.size, 10)) end,
+        [L["Instances for 20 Players"]] = function(d) return d.size == 20 end,
+        [L["Instances for 40 Players"]] = function(d) return d.size == 40 end,
     },
-    ["60"] = {
-        "BlackrockSpireUpper", "TheRuinsofAhnQiraj", "ZulGurub",
-        "LowerKarazhan", "OnyxiasLair", "MoltenCore", "EmeraldSanctum",
-        "BlackwingLair", "TheTempleofAhnQiraj", "Naxxramas", "TowerofKarazhan"
+    [SortType.LEVEL] = {
+        [L["Instances level 10-20"]] = function(d) return d.level == "10-20" end,
+        [L["Instances level 20-30"]] = function(d) return d.level == "20-30" end,
+        [L["Instances level 30-40"]] = function(d) return d.level == "30-40" end,
+        [L["Instances level 40-50"]] = function(d) return d.level == "40-50" end,
+        [L["Instances level 50-60"]] = function(d) return d.level == "50-60" end,
+        [L["Instances 60 level"]] = function(d) return d.level == "60" end,
+    },
+    [SortType.TYPE] = {
+        [L["Dungeons"]] = function(d) return d.type == "Dungeon" end,
+        [L["Raids"]] = function(d) return d.type == "Raid" end,
+    },
+    [SortType.ALL] = {
+        [L["Showing all instances_1"]] = function(d) return d.type == "Dungeon" or d.type == "Raid" end,
+        [L["Showing all instances_2"]] = function(d) return false end, -- Placeholder for split
     }
 }
 
--- Party size categorization
-local PARTY_SIZE_CATEGORIES = {
-    [5] = {
-        "BlackrockDepths", "CavernsOfTimeBlackMorass", "DireMaulEast",
-        "DireMaulNorth", "DireMaulWest", "GilneasCity", "Scholomance",
-        "StormwindVault", "Stratholme", "KarazhanCrypt", "BlackrockSpireLower",
-        "Gnomeregan", "HateforgeQuarry", "Maraudon", "TheDeadmines",
-        "RagefireChasm", "RazorfenDowns", "RazorfenKraul", "ShadowfangKeep",
-        "SMArmory", "SMCathedral", "SMGraveyard", "SMLibrary",
-        "StormwroughtRuins", "TheCrescentGrove", "TheStockade",
-        "TheSunkenTemple", "Uldaman", "WailingCaverns", "ZulFarrak"
+local CategoryOrder = {
+    [SortType.CONTINENT] = {
+        L["Eastern Kingdoms Instances"],
+        L["Kalimdor Instances"],
     },
-    [10] = {
-        "BlackrockSpireLower", "BlackrockSpireUpper", "LowerKarazhan",
-        "Scholomance", "Stratholme"
+    [SortType.PARTYSIZE] = {
+        L["Instances for 5 Players"],
+        L["Instances for 10 Players"],
+        L["Instances for 20 Players"],
+        L["Instances for 40 Players"],
     },
-    [20] = { "TheRuinsofAhnQiraj", "ZulGurub" },
-    [40] = {
-        "MoltenCore", "OnyxiasLair", "EmeraldSanctum", "BlackwingLair",
-        "TheTempleofAhnQiraj", "Naxxramas", "TowerofKarazhan"
-    }
-}
-
--- Type-based categorization
-local TYPE_CATEGORIES = {
-    DUNGEONS = {
-        "BlackfathomDeeps", "BlackrockDepths", "BlackrockSpireLower",
-        "CavernsOfTimeBlackMorass", "DireMaulEast", "DireMaulNorth",
-        "DireMaulWest", "GilneasCity", "Gnomeregan", "HateforgeQuarry",
-        "KarazhanCrypt", "Maraudon", "RagefireChasm", "RazorfenDowns",
-        "RazorfenKraul", "Scholomance", "ShadowfangKeep", "SMArmory",
-        "SMCathedral", "SMGraveyard", "SMLibrary", "StormwroughtRuins",
-        "StormwindVault", "Stratholme", "TheDeadmines", "TheCrescentGrove",
-        "TheStockade", "TheSunkenTemple", "Uldaman", "WailingCaverns", "ZulFarrak"
+    [SortType.LEVEL] = {
+        L["Instances level 10-20"],
+        L["Instances level 20-30"],
+        L["Instances level 30-40"],
+        L["Instances level 40-50"],
+        L["Instances level 50-60"],
+        L["Instances 60 level"],
     },
-    RAIDS = {
-        "BlackrockSpireUpper", "TheRuinsofAhnQiraj", "ZulGurub",
-        "LowerKarazhan", "OnyxiasLair", "MoltenCore", "EmeraldSanctum",
-        "BlackwingLair", "TheTempleofAhnQiraj", "Naxxramas", "TowerofKarazhan"
+    [SortType.TYPE] = {
+        L["Dungeons"],
+        L["Raids"],
+    },
+    [SortType.ALL] = {
+        L["Showing all instances_1"],
+        L["Showing all instances_2"],
     }
 }
 
@@ -145,134 +192,90 @@ local function CreateColoredCategory(name, color)
     return (color or COLORS.GREEN) .. name
 end
 
--- Helper function to create standard category layout
-local function CreateStandardLayout(mainCategories, includeSpecial)
-    local layout = {}
-
-    -- Add main categories
-    for i, category in ipairs(mainCategories) do
-        layout[i] = category
-    end
-
-    -- Add special categories if requested
-    if includeSpecial then
-        local baseIndex = table.getn(mainCategories)
-        layout[baseIndex + 1] = L["World"]
-        layout[baseIndex + 2] = CreateColoredCategory(L["Entrances"])
-        layout[baseIndex + 3] = CreateColoredCategory(L["Battlegrounds"])
-        layout[baseIndex + 4] = CreateColoredCategory(L["Dungeon Locations"])
-        layout[baseIndex + 5] = CreateColoredCategory(L["Flight Path Maps"])
-        layout[baseIndex + 6] = CreateColoredCategory(L["Transport Routes"])
-    end
-
-    return layout
-end
-
--- Main layout configuration
-AtlasDropDown.LayoutOrder = {
-    [L["Continent"]] = CreateStandardLayout({
-        L["Eastern Kingdoms Instances"],
-        L["Kalimdor Instances"]
-    }, true),
-
-    [L["Party Size"]] = CreateStandardLayout({
-        L["Instances for 5 Players"],
-        L["Instances for 10 Players"],
-        L["Instances for 20 Players"],
-        L["Instances for 40 Players"]
-    }, true),
-
-    [L["Level"]] = CreateStandardLayout({
-        L["Instances level 10-20"],
-        L["Instances level 20-30"],
-        L["Instances level 30-40"],
-        L["Instances level 40-50"],
-        L["Instances level 50-60"],
-        L["Instances 60 level"]
-    }, true),
-
-    [L["Type"]] = CreateStandardLayout({
-        L["Dungeons"],
-        L["Raids"]
-    }, true),
-
-    [L["All"]] = CreateStandardLayout({
-        L["Showing all instances_1"],
-        L["Showing all instances_2"]
-    }, true)
+local SpecialCategories = {
+    [L["World"]] = function(d) return d.type == "World Boss" end,
+    [CreateColoredCategory(L["Entrances"])] = function(d) return d.type == "Entrance" end,
+    [CreateColoredCategory(L["Battlegrounds"])] = function(d) return d.type == "Battleground" end,
+    [CreateColoredCategory(L["Dungeon Locations"])] = function(d) return d.type == "Dungeon Location" end,
+    [CreateColoredCategory(L["Flight Path Maps"])] = function(d) return d.type == "Flight Path" end,
+    [CreateColoredCategory(L["Transport Routes"])] = function(d) return d.type == "Transport Route" end
 }
 
--- Helper function to get special categories
-local function GetSpecialCategories()
-    return {
-        [CreateColoredCategory(L["Entrances"])] = DUNGEON_DATA.ENTRANCES,
-        [CreateColoredCategory(L["Battlegrounds"])] = DUNGEON_DATA.BATTLEGROUNDS,
-        [CreateColoredCategory(L["Dungeon Locations"])] = DUNGEON_DATA.DUNGEON_LOCATIONS,
-        [CreateColoredCategory(L["Flight Path Maps"])] = DUNGEON_DATA.FLIGHT_PATHS,
-        [CreateColoredCategory(L["Transport Routes"])] = DUNGEON_DATA.TRANSPORT_ROUTES
-    }
-end
-
--- Main layout data structure
-AtlasDropDown.Layouts = {
-    [L["Continent"]] = {
-        [L["Eastern Kingdoms Instances"]] = DUNGEON_DATA.EASTERN_KINGDOMS,
-        [L["Kalimdor Instances"]] = DUNGEON_DATA.KALIMDOR,
-        [L["World"]] = DUNGEON_DATA.WORLD_BOSSES
-    },
-
-    [L["Party Size"]] = {
-        [L["Instances for 5 Players"]] = PARTY_SIZE_CATEGORIES[5],
-        [L["Instances for 10 Players"]] = PARTY_SIZE_CATEGORIES[10],
-        [L["Instances for 20 Players"]] = PARTY_SIZE_CATEGORIES[20],
-        [L["Instances for 40 Players"]] = PARTY_SIZE_CATEGORIES[40],
-        [L["World"]] = DUNGEON_DATA.WORLD_BOSSES
-    },
-
-    [L["Level"]] = {
-        [L["Instances level 10-20"]] = LEVEL_CATEGORIES["10-20"],
-        [L["Instances level 20-30"]] = LEVEL_CATEGORIES["20-30"],
-        [L["Instances level 30-40"]] = LEVEL_CATEGORIES["30-40"],
-        [L["Instances level 40-50"]] = LEVEL_CATEGORIES["40-50"],
-        [L["Instances level 50-60"]] = LEVEL_CATEGORIES["50-60"],
-        [L["Instances 60 level"]] = LEVEL_CATEGORIES["60"],
-        [L["World"]] = DUNGEON_DATA.WORLD_BOSSES
-    },
-
-    [L["Type"]] = {
-        [L["Dungeons"]] = TYPE_CATEGORIES.DUNGEONS,
-        [L["Raids"]] = TYPE_CATEGORIES.RAIDS,
-        [L["World"]] = DUNGEON_DATA.WORLD_BOSSES
-    },
-
-    [L["All"]] = {
-        [L["Showing all instances_1"]] = {
-            "RagefireChasm", "WailingCaverns", "TheDeadmines", "ShadowfangKeep",
-            "BlackfathomDeeps", "TheStockade", "Gnomeregan", "RazorfenKraul",
-            "TheCrescentGrove", "SMGraveyard", "SMLibrary", "SMArmory",
-            "SMCathedral", "RazorfenDowns", "Uldaman", "GilneasCity",
-            "ZulFarrak", "Maraudon", "HateforgeQuarry", "TheSunkenTemple",
-            "BlackrockDepths", "DireMaulEast", "DireMaulWest", "DireMaulNorth",
-            "CavernsOfTimeBlackMorass", "Scholomance", "StormwroughtRuins",
-            "StormwindVault", "Stratholme"
-        },
-        [L["Showing all instances_2"]] = {
-            "KarazhanCrypt", "LowerKarazhan", "BlackrockSpireLower",
-            "BlackrockSpireUpper", "ZulGurub", "TheRuinsofAhnQiraj",
-            "MoltenCore", "OnyxiasLair", "BlackwingLair", "TheTempleofAhnQiraj",
-            "EmeraldSanctum", "Naxxramas", "TowerofKarazhan"
-        },
-        [L["World"]] = DUNGEON_DATA.WORLD_BOSSES
-    }
+local SpecialCategoryOrder = {
+    L["World"],
+    CreateColoredCategory(L["Entrances"]),
+    CreateColoredCategory(L["Battlegrounds"]),
+    CreateColoredCategory(L["Dungeon Locations"]),
+    CreateColoredCategory(L["Flight Path Maps"]),
+    CreateColoredCategory(L["Transport Routes"])
 }
 
--- Add special categories to all layouts
-for _, layout in pairs(AtlasDropDown.Layouts) do
-    local specialCategories = GetSpecialCategories()
-    for categoryName, dungeons in pairs(specialCategories) do
-        layout[categoryName] = dungeons
+-- Generate Layouts
+local function GenerateLayouts()
+    local layouts = {}
+    local layoutOrder = {}
+
+    -- First, populate all categories for all sort types
+    for _, sortName in ipairs(AtlasDropDown.SortOrder) do
+        layouts[sortName] = {}
+        layoutOrder[sortName] = {}
+        local categories = Categories[sortName]
+        local currentCategoryOrder = CategoryOrder[sortName]
+
+        -- Regular categories in order
+        if currentCategoryOrder then
+            for _, catName in ipairs(currentCategoryOrder) do
+                table.insert(layoutOrder[sortName], catName)
+                layouts[sortName][catName] = {}
+                local filterFunc = categories[catName]
+                if filterFunc then
+                    for dungeonName, data in pairs(Dungeons) do
+                        if filterFunc(data) then
+                            table.insert(layouts[sortName][catName], dungeonName)
+                        end
+                    end
+                    table.sort(layouts[sortName][catName]) -- Sort dungeons alphabetically within each category
+                end
+            end
+        end
+
+        -- Special categories in order
+        for _, catName in ipairs(SpecialCategoryOrder) do
+            table.insert(layoutOrder[sortName], catName)
+            layouts[sortName][catName] = {}
+            local filterFunc = SpecialCategories[catName]
+            if filterFunc then
+                for dungeonName, data in pairs(Dungeons) do
+                    if filterFunc(data) then
+                        table.insert(layouts[sortName][catName], dungeonName)
+                    end
+                end
+                table.sort(layouts[sortName][catName]) -- Sort dungeons alphabetically
+            end
+        end
     end
+
+    -- Now, handle the special case for "All" category split
+    local allDungeons = layouts[SortType.ALL][L["Showing all instances_1"]]
+    local splitIndex = 40
+    local firstList = {}
+    local secondList = {}
+
+    for i = 1, table.getn(allDungeons) do
+        if i <= splitIndex then
+            table.insert(firstList, allDungeons[i])
+        else
+            table.insert(secondList, allDungeons[i])
+        end
+    end
+
+    layouts[SortType.ALL][L["Showing all instances_1"]] = firstList
+    layouts[SortType.ALL][L["Showing all instances_2"]] = secondList
+
+    return layouts, layoutOrder
 end
+
+AtlasDropDown.Layouts, AtlasDropDown.LayoutOrder = GenerateLayouts()
 
 -- API Functions
 function AtlasDropDown:GetLayoutOrder(sortType)
@@ -290,7 +293,8 @@ function AtlasDropDown:ValidateData()
         for category, dungeons in pairs(layout) do
             if type(dungeons) ~= "table" then
                 table.insert(errors, string.format("Invalid dungeon list for %s -> %s", sortType, category))
-            elseif table.getn(dungeons) == 0 then
+            elseif table.getn(dungeons) == 0 and not (sortType == SortType.ALL and category == L["Showing all instances_2"]) then
+                -- Allow empty second list for 'All' category
                 table.insert(errors, string.format("Empty dungeon list for %s -> %s", sortType, category))
             end
         end
