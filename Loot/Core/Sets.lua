@@ -45,7 +45,6 @@ function AtlasLoot_PrepMenu(backPage, title)
 	end
 	AtlasLootItemsFrame_NEXT:Hide()
 	AtlasLootItemsFrame_PREV:Hide()
-	--AtlasLootServerQueryButton:Hide()
 	for i = 1, 30 do
 		_G["AtlasLootMenuItem_" .. i .. "_Extra"]:Show()
 	end

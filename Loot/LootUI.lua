@@ -134,13 +134,13 @@ end
 -- Create Preset buttons (QuickLook buttons)
 local function AtlasLoot_CreatePresetButtons(frame)
     local presetButton = {}
-    for i = 1, 4 do
+    for i = 1, 6 do
         presetButton[i] = CreateFrame("Button", frame:GetName().."_Preset"..i, frame, "OptionsButtonTemplate")
         presetButton[i]:SetText(L["QuickLook"].." "..i)
-        if i ~= 1 then
-            presetButton[i]:SetPoint("LEFT", presetButton[i-1], "RIGHT", 0, 0)
+        if i == 1 then
+            presetButton[i]:SetPoint("LEFT", 15, 1)
         else
-            presetButton[i]:SetPoint("LEFT", frame, "LEFT", 195, 1)
+            presetButton[i]:SetPoint("LEFT", presetButton[i-1], "RIGHT", 0, 0)
         end
 
         -- Создаем локальную переменную для захвата правильного индекса

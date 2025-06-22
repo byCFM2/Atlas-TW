@@ -325,7 +325,6 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 	--Ditch the Quicklook selector
 	AtlasLoot_QuickLooks:Hide()
 	AtlasLootQuickLooksButton:Hide()
-	--AtlasLootServerQueryButton:Hide()
 	--Hide the menu objects. These are not required for a loot table
 	for i = 1, 30 do
 		_G["AtlasLootMenuItem_"..i]:Hide()
@@ -487,7 +486,6 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 				if dataID ~= "SearchResult" and dataID ~= "WishList" then
 					AtlasLoot_QuickLooks:Show()
 					AtlasLootQuickLooksButton:Show()
-				--	AtlasLootServerQueryButton:Hide()
 				end
 				--Insert the item description
 				extra = dataSource[dataID][i][4]
@@ -754,16 +752,16 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 					if this.sourcePage then
 						local _, dataSource2 = AtlasLoot_Strsplit("|", this.sourcePage)
 						if dataSource2 == "AtlasLootItems" then
-							AtlasLootItemsFrame_BACK:Hide()
+--[[ 							AtlasLootItemsFrame_BACK:Hide()
 							AtlasLootItemsFrame_NEXT:Hide()
-							AtlasLootItemsFrame_PREV:Hide()
+							AtlasLootItemsFrame_PREV:Hide() ]]
 						end
 					end
 					for i = 1, 4 do
 						if AtlasTWCharDB["QuickLooks"][i] and dataID == AtlasTWCharDB["QuickLooks"][i][1] then
-							AtlasLootItemsFrame_BACK:Hide()
+--[[ 							AtlasLootItemsFrame_BACK:Hide()
 							AtlasLootItemsFrame_NEXT:Hide()
-							AtlasLootItemsFrame_PREV:Hide()
+							AtlasLootItemsFrame_PREV:Hide() ]]
 						end
 					end
 				end
@@ -1043,7 +1041,6 @@ end
 function AtlasLoot_OpenMenu(menuName)
 	AtlasLoot_QuickLooks:Hide()
 	AtlasLootQuickLooksButton:Hide()
-	--AtlasLootServerQueryButton:Hide()
 	AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(menuName, 30))
 	AtlasLootItemsFrame_SubMenu:Disable()
 	AtlasLootItemsFrame_SelectedTable:SetText("")
@@ -1211,46 +1208,19 @@ function AtlasLoot_ShowQuickLooks(button)
 		Hewdrop:Close(1)
 	else
 		local setOptions = function()
-			Hewdrop:AddLine(
-				"text", L["QuickLook"].." 1",
-				"tooltipTitle", L["QuickLook"].." 1",
-				"tooltipText", L["Assign this loot table to QuickLook"].." 1",
-				"func", function()
-					AtlasTWCharDB["QuickLooks"][1]={AtlasLootItemsFrame.refresh[1], AtlasLootItemsFrame.refresh[2], AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refresh[4]}
-					AtlasLoot_RefreshQuickLookButtons()
-					Hewdrop:Close(1)
-				end
-			)
-			Hewdrop:AddLine(
-				"text", L["QuickLook"].." 2",
-				"tooltipTitle", L["QuickLook"].." 2",
-				"tooltipText", L["Assign this loot table to QuickLook"].." 2",
-				"func", function()
-					AtlasTWCharDB["QuickLooks"][2]={AtlasLootItemsFrame.refresh[1], AtlasLootItemsFrame.refresh[2], AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refresh[4]}
-					AtlasLoot_RefreshQuickLookButtons()
-					Hewdrop:Close(1)
-				end
-			)
-			Hewdrop:AddLine(
-				"text", L["QuickLook"].." 3",
-				"tooltipTitle", L["QuickLook"].." 3",
-				"tooltipText", L["Assign this loot table to QuickLook"].." 3",
-				"func", function()
-					AtlasTWCharDB["QuickLooks"][3]={AtlasLootItemsFrame.refresh[1], AtlasLootItemsFrame.refresh[2], AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refresh[4]}
-					AtlasLoot_RefreshQuickLookButtons()
-					Hewdrop:Close(1)
-				end
-			)
-			Hewdrop:AddLine(
-				"text", L["QuickLook"].." 4",
-				"tooltipTitle", L["QuickLook"].." 4",
-				"tooltipText", L["Assign this loot table to QuickLook"].." 4",
-				"func", function()
-					AtlasTWCharDB["QuickLooks"][4]={AtlasLootItemsFrame.refresh[1], AtlasLootItemsFrame.refresh[2], AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refresh[4]}
-					AtlasLoot_RefreshQuickLookButtons()
-					Hewdrop:Close(1)
-				end
-			)
+			for i = 1, 6 do
+				local index = i
+				Hewdrop:AddLine(
+					"text", L["QuickLook"].." "..i,
+					"tooltipTitle", L["QuickLook"].." "..i,
+					"tooltipText", L["Assign this loot table to QuickLook"].." "..i,
+					"func", function()
+						AtlasTWCharDB["QuickLooks"][index] = {AtlasLootItemsFrame.refresh[1], AtlasLootItemsFrame.refresh[2], AtlasLootItemsFrame.refresh[3], AtlasLootItemsFrame.refresh[4]}
+						AtlasLoot_RefreshQuickLookButtons()
+						Hewdrop:Close(1)
+					end
+				)
+			end
 		end
 		Hewdrop:Open(button,
 			'point', function(parent)
@@ -1266,13 +1236,11 @@ end
 ]]
 function AtlasLoot_RefreshQuickLookButtons()
 	local i=1
-	while i<5 do
+	while i<7 do
 		if not AtlasTWCharDB["QuickLooks"][i] or not AtlasTWCharDB["QuickLooks"][i][1] or AtlasTWCharDB["QuickLooks"][i][1]==nil then
 			_G["AtlasLootPanel_Preset"..i]:Disable()
-			--_G["AtlasLootItemsFrame_Preset"..i]:Disable()
 		else
 			_G["AtlasLootPanel_Preset"..i]:Enable()
-			--_G["AtlasLootItemsFrame_Preset"..i]:Enable()
 		end
 		i=i+1
 	end
@@ -1346,6 +1314,7 @@ end
 -- Called when a loot item is moused over
 --------------------------------------------------------------------------------
 local messageShown = false
+
 function AtlasLootItem_OnEnter()
 	local isItem, isEnchant, isSpell
 	local id = this:GetID()
