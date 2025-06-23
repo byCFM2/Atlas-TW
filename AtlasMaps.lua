@@ -1162,7 +1162,7 @@ AtlasMaps = {
         locationId = 28,
         levelRange = "58-60",
         minLevel = "45",
-        playerLimit = "5",
+        playerLimit = "10",
         continent = BZ["Eastern Kingdoms"],
         reputation = {
             name = "Argent Dawn",
@@ -1262,7 +1262,7 @@ AtlasMaps = {
         locationId = 139,
         levelRange = "58-60",
         minLevel = "45",
-        playerLimit = "5",
+        playerLimit = "10",
         continent = BZ["Eastern Kingdoms"],
         reputation = {
             name = "Argent Dawn",
@@ -1386,7 +1386,7 @@ AtlasMaps = {
         acronym = "ST",
         location = BZ["Swamp of Sorrows"],
         locationId = 8,
-        levelRange = "50-60",
+        levelRange = "45-54",
         minLevel = "35",
         playerLimit = "5",
         continent = BZ["Eastern Kingdoms"],
@@ -1747,7 +1747,7 @@ AtlasMaps = {
         zoneName = BB["Azuregos"],
         location = BZ["Azshara"],
         levelRange = "60+",
-        minLevel = "--",
+        minLevel = "1",
         playerLimit = "40",
         entries = {
             CreateNPCEntry("1", "Azuregos", 6109),
@@ -1781,7 +1781,7 @@ AtlasMaps = {
         zoneName = L["Emerald Dragons"],
         location = L["Various"],
         levelRange = "60+",
-        minLevel = "--",
+        minLevel = "1",
         playerLimit = "40",
         entries = {
             CreateEntry(Colors.GREY, "1) " .. BZ["Duskwood"], EntityTypes.ZONE, 10),
@@ -1815,7 +1815,7 @@ AtlasMaps = {
         zoneName = BB["Lord Kazzak"],
         location = BZ["Blasted Lands"],
         levelRange = "60+",
-        minLevel = "--",
+        minLevel = "1",
         playerLimit = "40",
         entries = {
             CreateNPCEntry("1", "Lord Kazzak", 18728),
@@ -1878,7 +1878,7 @@ AtlasMaps = {
         zoneId = 3334,
         acronym = "KC",
         location = BZ["Deadwind Pass"],
-        levelRange = "60",
+        levelRange = "58-60",
         minLevel = "58",
         playerLimit = "5",
         continent = BZ["Eastern Kingdoms"],
@@ -1960,7 +1960,7 @@ AtlasMaps = {
         acronym = "SV",
         location = BZ["Stormwind City"],
         locationId = 1519,
-        levelRange = "60",
+        levelRange = "58-60",
         minLevel = "58",
         playerLimit = "5",
         continent = BZ["Eastern Kingdoms"],
@@ -1986,7 +1986,7 @@ AtlasMaps = {
         acronym = "BM",
         location = BZ["Tanaris"],
         locationId = 440,
-        levelRange = "60",
+        levelRange = "58-60",
         minLevel = "58",
         playerLimit = "5",
         continent = BZ["Kalimdor"],
@@ -2043,7 +2043,7 @@ AtlasMaps = {
         acronym = "ES",
         location = BZ["Hyjal"],
         locationId = 3339,
-        levelRange = "60",
+        levelRange = "60+",
         minLevel = "58",
         playerLimit = "40",
         continent = BZ["Kalimdor"],
@@ -2114,8 +2114,8 @@ AtlasMaps = {
         location = BZ["Feralas"],
         locationId = 357,
         levelRange = "60+",
-        minLevel = "--",
-        playerLimit = "--",
+        minLevel = "1",
+        playerLimit = "40",
         damageType = "Shadow",
         entries = {
             CreateEntry(Colors.GREY, "1) Turtlhu, the Black Turtle of Doom", EntityTypes.NPC, 18728),
@@ -2150,9 +2150,9 @@ AtlasMaps = {
         acronym = "Spooder",
         location = BZ["Eastern Plaguelands"],
         locationId = 28,
-        levelRange = "--",
-        minLevel = "--",
-        playerLimit = "--",
+        levelRange = "60+",
+        minLevel = "1",
+        playerLimit = "40",
         continent = BZ["Eastern Kingdoms"],
         damageType = L["Nature"] .. ", " .. L["Shadow"],
         entries = {
@@ -2188,9 +2188,9 @@ AtlasMaps = {
         acronym = "Reaver",
         location = BZ["Deadwind Pass"],
         locationId = 41,
-        levelRange = "--",
-        minLevel = "--",
-        playerLimit = "--",
+        levelRange = "60+",
+        minLevel = "1",
+        playerLimit = "40",
         continent = BZ["Eastern Kingdoms"],
         entries = {
             CreateNPCEntry("1", "Dark Reaver of Karazhan", 80936)
@@ -2204,7 +2204,7 @@ AtlasMaps = {
         location = BZ["Moomoo Grove"],
         locationId = -1,
         levelRange = "60+",
-        minLevel = "--",
+        minLevel = "1",
         playerLimit = "20+",
         continent = BZ["Eastern Kingdoms"],
         entries = {
@@ -2219,8 +2219,8 @@ AtlasMaps = {
         location = BZ["Desolace"],
         locationId = 405,
         levelRange = "60+",
-        minLevel = "--",
-        playerLimit = "20+",
+        minLevel = "1",
+        playerLimit = "40",
         continent = BZ["Kalimdor"],
         entries = {
             CreateNPCEntry("1", "Concavius", 92213)
@@ -2234,8 +2234,8 @@ AtlasMaps = {
         location = BZ["Tanaris"],
         locationId = 440,
         levelRange = "60+",
-        minLevel = "--",
-        playerLimit = "40+",
+        minLevel = "1",
+        playerLimit = "40",
         continent = BZ["Kalimdor"],
         entries = {
             CreateNPCEntry("1", "Ostarius", 80935)
@@ -2249,8 +2249,8 @@ AtlasMaps = {
         location = BZ["Azshara"],
         locationId = 16,
         levelRange = "60+",
-        minLevel = "--",
-        playerLimit = "40+",
+        minLevel = "1",
+        playerLimit = "40",
         continent = BZ["Eastern Kingdoms"],
         entries = {
             CreateNPCEntry("1", "Cla'ckora", 59963)
@@ -2262,7 +2262,8 @@ AtlasMaps = {
         zoneId = 0,
         location = "Various locations",
         locationId = 16,
-        levelRange = "17-60+",
+        levelRange = "17-60",
+        minLevel = "1",
         entries = {
             CreateEntry(Colors.GREY, "1) Shade Mage" .. Colors.RED .. " 0.4k (17L) " .. Colors.WHITE .. BZ["Tirisfal Glades"] .. Colors.ORANGE .. " [15, 68]", EntityTypes.NPC, 61499),
             CreateEntry(Colors.GREY, "2) Graypaw Alpha" .. Colors.RED .. " 0.7k (18L) " .. Colors.WHITE .. BZ["Tirisfal Glades"] .. Colors.ORANGE .. " [27, 58]", EntityTypes.NPC, 91990),
@@ -2308,7 +2309,7 @@ AtlasMaps = {
     -- PvP Battlegrounds
     --************************************************
 
-    AlteracValleyNorth = CreateDungeonTemplate({
+    BGAlteracValleyNorth = CreateDungeonTemplate({
         zoneName = BZ["Alterac Valley"] .. " (" .. L["North"] .. ")",
         zoneId = 2597,
         acronym = "AV",
@@ -2398,7 +2399,7 @@ AtlasMaps = {
         }
     }),
 
-    AlteracValleySouth = CreateDungeonTemplate({
+    BGAlteracValleySouth = CreateDungeonTemplate({
         zoneName = BZ["Alterac Valley"] .. " (" .. L["South"] .. ")",
         zoneId = 2597,
         acronym = "AV",
@@ -2470,7 +2471,7 @@ AtlasMaps = {
         }
     }),
 
-    ArathiBasin = CreateDungeonTemplate({
+    BGArathiBasin = CreateDungeonTemplate({
         zoneName = BZ["Arathi Basin"],
         zoneId = 3358,
         acronym = "AB",
@@ -2502,7 +2503,7 @@ AtlasMaps = {
         }
     }),
 
-    WarsongGulch = CreateDungeonTemplate({
+    BGWarsongGulch = CreateDungeonTemplate({
         zoneName = BZ["Warsong Gulch"],
         zoneId = 3277,
         acronym = "WSG",

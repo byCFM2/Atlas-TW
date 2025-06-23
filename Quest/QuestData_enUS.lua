@@ -8444,7 +8444,7 @@ kQuestInstanceData["LordKazzak"] = {
 }
 
 --------------- INST36 - Alterac Valley ---------------
-kQuestInstanceData["AlteracValleyNorth"] = {
+kQuestInstanceData["BGAlteracValleyNorth"] = {
     Story = "Long ago, before the First War, the warlock Gul'dan exiled a clan of orcs called the Frostwolves to a hidden valley deep in the heart of the Alterac Mountains. It is here in the valley's southern reaches that the Frostwolves eked out a living until the coming of Thrall.\nAfter Thrall's triumphant uniting of the clans, the Frostwolves, now led by the Orc Shaman Drek'Thar, chose to remain in the valley they had for so long called their home. In recent times, however, the relative peace of the Frostwolves has been challenged by the arrival of the Dwarven Stormpike Expedition.\nThe Stormpikes have set up residence in the valley to search for natural resources and ancient relics. Despite their intentions, the Dwarven presence has sparked heated conflict with the Frostwolf Orcs to the south, who have vowed to drive the interlopers from their lands. ",
     Caption = "Alterac Valley",
     QAA = "17 Quests",
@@ -8454,7 +8454,7 @@ kQuestInstanceData["AlteracValleyNorth"] = {
         Horde = {}
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[1] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[1] = {
     Title = "1. The Sovereign Imperative",
     Level = "60",
     Attain = "51",
@@ -8467,7 +8467,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[1] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[2] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[2] = {
     Title = "2. Proving Grounds",
     Level = "60",
     Attain = "51",
@@ -8492,7 +8492,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[2] = {
         },
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[3] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[3] = {
     Title = "3. The Battle of Alterac",
     Level = "60",
     Attain = "51",
@@ -8529,7 +8529,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[3] = {
         },
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[4] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[4] = {
     Title = "4. The Quartermaster",
     Level = "60",
     Attain = "51",
@@ -8542,7 +8542,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[4] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[5] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[5] = {
     Title = "5. Coldtooth Supplies",
     Level = "60",
     Attain = "51",
@@ -8555,7 +8555,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[5] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[6] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[6] = {
     Title = "6. Irondeep Supplies",
     Level = "60",
     Attain = "51",
@@ -8568,7 +8568,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[6] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[7] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[7] = {
     Title = "7. Armor Scraps",
     Level = "60",
     Attain = "51",
@@ -8581,7 +8581,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[7] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[8] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[8] = {
     Title = "8. Capture a Mine",
     Level = "60",
     Attain = "51",
@@ -8594,7 +8594,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[8] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[9] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[9] = {
     Title = "9. Towers and Bunkers",
     Level = "60",
     Attain = "51",
@@ -8607,7 +8607,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[9] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[10] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[10] = {
     Title = "10. Alterac Valley Graveyards",
     Level = "60",
     Attain = "51",
@@ -8620,7 +8620,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[10] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[11] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[11] = {
     Title = "11. Empty Stables",
     Level = "60",
     Attain = "51",
@@ -8633,7 +8633,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[11] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[12] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[12] = {
     Title = "12. Ram Riding Harnesses",
     Level = "60",
     Attain = "51",
@@ -8646,7 +8646,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[12] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[13] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[13] = {
     Title = "13. Crystal Cluster",
     Level = "60",
     Attain = "51",
@@ -8659,7 +8659,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[13] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[14] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[14] = {
     Title = "14. Ivus the Forest Lord",
     Level = "60",
     Attain = "51",
@@ -8672,7 +8672,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[14] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[15] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[15] = {
     Title = "15. Call of Air - Slidore's Fleet",
     Level = "60",
     Attain = "51",
@@ -8685,7 +8685,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[15] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[16] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[16] = {
     Title = "16. Call of Air - Vipore's Fleet",
     Level = "60",
     Attain = "51",
@@ -8698,7 +8698,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[16] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[17] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[17] = {
     Title = "17. Call of Air - Ichman's Fleet",
     Level = "60",
     Attain = "51",
@@ -8711,7 +8711,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[17] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[1] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[1] = {
     Title = "1. In Defense of Frostwolf",
     Level = "60",
     Attain = "51",
@@ -8724,7 +8724,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[1] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[2] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[2] = {
     Title = "2. Proving Grounds",
     Level = "60",
     Attain = "51",
@@ -8749,7 +8749,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[2] = {
         },
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[3] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[3] = {
     Title = "3. The Battle for Alterac",
     Level = "60",
     Attain = "51",
@@ -8758,9 +8758,9 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[3] = {
     Note = "Vanndar Stormpike is at (Alterac Valley - North; "..yellow.."[B]"..white.."). He does not actually need to be killed to complete the quest. The battleground just has to be won by your side in any manner.\nAfter turning this quest in, talk to the NPC again for the reward.",
     Prequest = "No",
     Folgequest = "Hero of the Frostwolf",
-    Rewards = kQuestInstanceData["AlteracValleyNorth"].Quests.Alliance[3].Rewards
+    Rewards = kQuestInstanceData["BGAlteracValleyNorth"].Quests.Alliance[3].Rewards
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[4] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[4] = {
     Title = "4. Speak with our Quartermaster",
     Level = "60",
     Attain = "51",
@@ -8773,7 +8773,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[4] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[5] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[5] = {
     Title = "5. Coldtooth Supplies",
     Level = "60",
     Attain = "51",
@@ -8786,7 +8786,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[5] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[6] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[6] = {
     Title = "6. Irondeep Supplies",
     Level = "60",
     Attain = "51",
@@ -8799,7 +8799,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[6] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[7] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[7] = {
     Title = "7. Enemy Booty",
     Level = "60",
     Attain = "51",
@@ -8812,7 +8812,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[7] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[8] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[8] = {
     Title = "8. Capture a Mine",
     Level = "60",
     Attain = "51",
@@ -8825,7 +8825,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[8] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[9] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[9] = {
     Title = "9. Towers and Bunkers",
     Level = "60",
     Attain = "51",
@@ -8838,7 +8838,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[9] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[10] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[10] = {
     Title = "10. The Graveyards of Alterac",
     Level = "60",
     Attain = "51",
@@ -8851,7 +8851,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[10] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[11] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[11] = {
     Title = "11. Empty Stables",
     Level = "60",
     Attain = "51",
@@ -8864,7 +8864,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[11] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[12] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[12] = {
     Title = "12. Ram Hide Harnesses",
     Level = "60",
     Attain = "51",
@@ -8877,7 +8877,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[12] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[13] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[13] = {
     Title = "13. A Gallon of Blood",
     Level = "60",
     Attain = "51",
@@ -8890,7 +8890,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[13] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[14] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[14] = {
     Title = "14. Lokholar the Ice Lord",
     Level = "60",
     Attain = "51",
@@ -8903,7 +8903,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[14] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[15] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[15] = {
     Title = "15. Call of Air - Guse's Fleet",
     Level = "60",
     Attain = "51",
@@ -8916,7 +8916,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[15] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[16] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[16] = {
     Title = "16. Call of Air - Jeztor's Fleet",
     Level = "60",
     Attain = "51",
@@ -8929,7 +8929,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[16] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[17] = {
+kQuestInstanceData["BGAlteracValleyNorth"].Quests.Horde[17] = {
     Title = "17. Call of Air - Mulverick's Fleet",
     Level = "60",
     Attain = "51",
@@ -8944,7 +8944,7 @@ kQuestInstanceData["AlteracValleyNorth"].Quests.Horde[17] = {
 }
 
 --------------- INST37 - Arathi Basin ---------------
-kQuestInstanceData["ArathiBasin"] = {
+kQuestInstanceData["BGArathiBasin"] = {
     Story = "Arathi Basin, located in Arathi Highlands, is a fast and exciting Battleground. The Basin itself is rich with resources and coveted by both the Horde and the Alliance. The Forsaken Defilers and the League of Arathor have arrived at Arathi Basin to wage war over these natural resources and claim them on behalf of their respective sides.",
     Caption = "Arathi Basin",
     QAA = "3 Quests",
@@ -8954,7 +8954,7 @@ kQuestInstanceData["ArathiBasin"] = {
         Horde = {}
     }
 }
-kQuestInstanceData["ArathiBasin"].Quests.Alliance[1] = {
+kQuestInstanceData["BGArathiBasin"].Quests.Alliance[1] = {
     Title = "1. The Battle for Arathi Basin!",
     Level = "55",
     Attain = "50",
@@ -8967,7 +8967,7 @@ kQuestInstanceData["ArathiBasin"].Quests.Alliance[1] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["ArathiBasin"].Quests.Alliance[2] = {
+kQuestInstanceData["BGArathiBasin"].Quests.Alliance[2] = {
     Title = "2. Control Four Bases",
     Level = "60",
     Attain = "60",
@@ -8980,7 +8980,7 @@ kQuestInstanceData["ArathiBasin"].Quests.Alliance[2] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["ArathiBasin"].Quests.Alliance[3] = {
+kQuestInstanceData["BGArathiBasin"].Quests.Alliance[3] = {
     Title = "3. Control Five Bases",
     Level = "60",
     Attain = "60",
@@ -8999,7 +8999,7 @@ kQuestInstanceData["ArathiBasin"].Quests.Alliance[3] = {
         },
     }
 }
-kQuestInstanceData["ArathiBasin"].Quests.Horde[1] = {
+kQuestInstanceData["BGArathiBasin"].Quests.Horde[1] = {
     Title = "1. The Battle for Arathi Basin!",
     Level = "25",
     Attain = "25",
@@ -9012,7 +9012,7 @@ kQuestInstanceData["ArathiBasin"].Quests.Horde[1] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["ArathiBasin"].Quests.Horde[2] = {
+kQuestInstanceData["BGArathiBasin"].Quests.Horde[2] = {
     Title = "2. Take Four Bases",
     Level = "60",
     Attain = "60",
@@ -9025,7 +9025,7 @@ kQuestInstanceData["ArathiBasin"].Quests.Horde[2] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["ArathiBasin"].Quests.Horde[3] = {
+kQuestInstanceData["BGArathiBasin"].Quests.Horde[3] = {
     Title = "3. Take Five Bases",
     Level = "60",
     Attain = "60",
@@ -9046,7 +9046,7 @@ kQuestInstanceData["ArathiBasin"].Quests.Horde[3] = {
 }
 
 --------------- INST38 - Warsong Gulch ---------------
-kQuestInstanceData["WarsongGulch"] = {
+kQuestInstanceData["BGWarsongGulch"] = {
     Story = "Nestled in the southern region of Ashenvale forest, Warsong Gulch is near the area where Grom Hellscream and his Orcs chopped away huge swaths of forest during the events of the Third War. Some orcs have remained in the vicinity, continuing their deforestation to fuel the Horde's expansion. They call themselves the Warsong Outriders.\nThe Night Elves, who have begun a massive push to retake the forests of Ashenvale, are now focusing their attention on ridding their land of the Outriders once and for all. And so, the Silverwing Sentinels have answered the call and sworn that they will not rest until every last Orc is defeated and cast out of Warsong Gulch. ",
     Caption = "Warsong Gulch",
     QAA = "No Quests",

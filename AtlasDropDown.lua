@@ -1,6 +1,9 @@
+-- Refactored AtlasDropDown.lua
+
 -- Namespace protection
 local _G = getfenv()
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local BZ = AceLibrary("Babble-Zone-2.2a")
 local AtlasDropDown = {}
 
 -- Constants
@@ -8,7 +11,8 @@ local COLORS = {
     GREEN = "|cff66cc33",
     WHITE = "|cffffffff",
     GRAY = "|cff999999",
-    YELLOW = "|cffffff00"
+    YELLOW = "|cffffff00",
+    RED = "|cffff0000"
 }
 
 -- Sort types enum
@@ -30,247 +34,221 @@ AtlasDropDown.SortOrder = {
 }
 
 -- Dungeon data
-local Dungeons = {
-    -- Eastern Kingdoms
-    BlackrockDepths = { continent = "Eastern Kingdoms", level = "50-60", size = 5, type = "Dungeon" },
-    BlackrockSpireLower = { continent = "Eastern Kingdoms", level = "50-60", size = {5, 10}, type = "Dungeon" },
-    BlackrockSpireUpper = { continent = "Eastern Kingdoms", level = "60", size = 10, type = "Raid" },
-    BlackwingLair = { continent = "Eastern Kingdoms", level = "60", size = 40, type = "Raid" },
-    GilneasCity = { continent = "Eastern Kingdoms", level = "40-50", size = 5, type = "Dungeon" },
-    Gnomeregan = { continent = "Eastern Kingdoms", level = "20-30", size = 5, type = "Dungeon" },
-    HateforgeQuarry = { continent = "Eastern Kingdoms", level = "50-60", size = 5, type = "Dungeon" },
-    KarazhanCrypt = { continent = "Eastern Kingdoms", level = "50-60", size = 5, type = "Dungeon" },
-    TowerofKarazhan = { continent = "Eastern Kingdoms", level = "60", size = 40, type = "Raid" },
-    LowerKarazhan = { continent = "Eastern Kingdoms", level = "60", size = 10, type = "Raid" },
-    MoltenCore = { continent = "Eastern Kingdoms", level = "60", size = 40, type = "Raid" },
-    Naxxramas = { continent = "Eastern Kingdoms", level = "60", size = 40, type = "Raid" },
-    Scholomance = { continent = "Eastern Kingdoms", level = "50-60", size = {5, 10}, type = "Dungeon" },
-    ShadowfangKeep = { continent = "Eastern Kingdoms", level = "20-30", size = 5, type = "Dungeon" },
-    SMArmory = { continent = "Eastern Kingdoms", level = "30-40", size = 5, type = "Dungeon" },
-    SMCathedral = { continent = "Eastern Kingdoms", level = "30-40", size = 5, type = "Dungeon" },
-    SMGraveyard = { continent = "Eastern Kingdoms", level = "30-40", size = 5, type = "Dungeon" },
-    SMLibrary = { continent = "Eastern Kingdoms", level = "30-40", size = 5, type = "Dungeon" },
-    StormwroughtRuins = { continent = "Eastern Kingdoms", level = "30-40", size = 5, type = "Dungeon" },
-    StormwindVault = { continent = "Eastern Kingdoms", level = "50-60", size = 5, type = "Dungeon" },
-    Stratholme = { continent = "Eastern Kingdoms", level = "50-60", size = {5, 10}, type = "Dungeon" },
-    TheDeadmines = { continent = "Eastern Kingdoms", level = "10-20", size = 5, type = "Dungeon" },
-    TheStockade = { continent = "Eastern Kingdoms", level = "10-20", size = 5, type = "Dungeon" },
-    TheSunkenTemple = { continent = "Eastern Kingdoms", level = "40-50", size = 5, type = "Dungeon" },
-    Uldaman = { continent = "Eastern Kingdoms", level = "30-40", size = 5, type = "Dungeon" },
-    ZulGurub = { continent = "Eastern Kingdoms", level = "60", size = 20, type = "Raid" },
+local Dungeons = {}
 
-    -- Kalimdor
-    BlackfathomDeeps = { continent = "Kalimdor", level = "20-30", size = 5, type = "Dungeon" },
-    CavernsOfTimeBlackMorass = { continent = "Kalimdor", level = "50-60", size = 5, type = "Dungeon" },
-    DireMaulEast = { continent = "Kalimdor", level = "50-60", size = 5, type = "Dungeon" },
-    DireMaulNorth = { continent = "Kalimdor", level = "50-60", size = 5, type = "Dungeon" },
-    DireMaulWest = { continent = "Kalimdor", level = "50-60", size = 5, type = "Dungeon" },
-    EmeraldSanctum = { continent = "Kalimdor", level = "60", size = 40, type = "Raid" },
-    Maraudon = { continent = "Kalimdor", level = "40-50", size = 5, type = "Dungeon" },
-    OnyxiasLair = { continent = "Kalimdor", level = "60", size = 40, type = "Raid" },
-    RagefireChasm = { continent = "Kalimdor", level = "10-20", size = 5, type = "Dungeon" },
-    RazorfenDowns = { continent = "Kalimdor", level = "30-40", size = 5, type = "Dungeon" },
-    RazorfenKraul = { continent = "Kalimdor", level = "20-30", size = 5, type = "Dungeon" },
-    TheCrescentGrove = { continent = "Kalimdor", level = "30-40", size = 5, type = "Dungeon" },
-    TheRuinsofAhnQiraj = { continent = "Kalimdor", level = "60", size = 20, type = "Raid" },
-    TheTempleofAhnQiraj = { continent = "Kalimdor", level = "60", size = 40, type = "Raid" },
-    WailingCaverns = { continent = "Kalimdor", level = "10-20", size = 5, type = "Dungeon" },
-    ZulFarrak = { continent = "Kalimdor", level = "40-50", size = 5, type = "Dungeon" },
+-- Helper to determine map type from its key and data
+local function getMapType(mapKey, mapData)
+    local patterns = {
+        { key = "TransportRoutes", type = "Transport Route", exact = true },
+        { pattern = "Ent$", type = "Entrance" },
+        { pattern = "^DL", type = "Dungeon Location" },
+        { pattern = "^FP", type = "Flight Path" },
+        { pattern = "^BG", type = "Battleground" },
+    }
 
-    -- World Bosses
-    Azuregos = { type = "World Boss" },
-    FourDragons = { type = "World Boss" },
-    LordKazzak = { type = "World Boss" },
-    Turtlhu = { type = "World Boss" },
-    Nerubian = { type = "World Boss" },
-    Reaver = { type = "World Boss" },
-    Ostarius = { type = "World Boss" },
-    Concavius = { type = "World Boss" },
-    CowKing = { type = "World Boss" },
-    Clackora = { type = "World Boss" },
-    RareMobs = { type = "World Boss" },
-
-    -- Special
-    BlackfathomDeepsEnt = { type = "Entrance" },
-    BlackrockMountainEnt = { type = "Entrance" },
-    DireMaulEnt = { type = "Entrance" },
-    GnomereganEnt = { type = "Entrance" },
-    MaraudonEnt = { type = "Entrance" },
-    SMEnt = { type = "Entrance" },
-    TheDeadminesEnt = { type = "Entrance" },
-    TheSunkenTempleEnt = { type = "Entrance" },
-    UldamanEnt = { type = "Entrance" },
-    WailingCavernsEnt = { type = "Entrance" },
-
-    AlteracValleyNorth = { type = "Battleground" },
-    AlteracValleySouth = { type = "Battleground" },
-    ArathiBasin = { type = "Battleground" },
-    WarsongGulch = { type = "Battleground" },
-
-    DLEast = { type = "Dungeon Location" },
-    DLWest = { type = "Dungeon Location" },
-
-    FPAllianceEast = { type = "Flight Path" },
-    FPAllianceWest = { type = "Flight Path" },
-    FPHordeEast = { type = "Flight Path" },
-    FPHordeWest = { type = "Flight Path" },
-
-    TransportRoutes = { type = "Transport Route" }
-}
-
--- Helper function to check if a table contains a value
-local function tContains(tbl, val)
-    for _, v in pairs(tbl) do
-        if v == val then
-            return true
+    for _, p in ipairs(patterns) do
+        if (p.exact and mapKey == p.key) or (not p.exact and string.find(mapKey, p.pattern)) then
+            return p.type
         end
     end
-    return false
+
+    -- Data convention in AtlasMaps: MinLevel "1" is used for World Bosses
+    if mapData.MinLevel == "1" then
+        return "World Boss"
+    end
+
+    if mapData.Continent and mapData.LevelRange and mapData.PlayerLimit and mapData.ZoneName then
+        local size = tonumber(mapData.PlayerLimit)
+        if size and size > 5 then
+            return "Raid"
+        else
+            return "Dungeon"
+        end
+    end
+
+    return nil
+end
+
+-- Populate Dungeons from AtlasMaps
+if AtlasMaps then
+    for mapKey, mapData in pairs(AtlasMaps) do
+        local mapType = getMapType(mapKey, mapData)
+
+        if mapType then
+            Dungeons[mapKey] = {
+                type = mapType,
+                continent = mapData.Continent,
+                level = mapData.LevelRange,
+                size = tonumber(mapData.PlayerLimit)
+            }
+        else
+            if AtlasTW and AtlasTW.DEBUGMODE then
+                DEFAULT_CHAT_FRAME:AddMessage(string.format("|cffffff00[Atlas] Unknown type for map: %s|r", mapKey))
+            end
+        end
+    end
+end
+
+-- Helper function to parse level range string like "10-20", "60+" or "60"
+local function ParseLevelRange(rangeStr)
+    if type(rangeStr) ~= "string" then return nil, nil end
+
+    -- e.g. 60+
+    local plusPos = string.find(rangeStr, "+")
+    if plusPos then
+        local min = tonumber(string.sub(rangeStr, 1, plusPos - 1))
+        if min then
+            return min, 60 -- Treat as 60 for calculation
+        end
+    end
+    -- e.g. 10-20
+    local sepPos = string.find(rangeStr, "-")
+    if sepPos then
+        local min = tonumber(string.sub(rangeStr, 1, sepPos - 1))
+        local max = tonumber(string.sub(rangeStr, sepPos + 1))
+        if min and max then
+            return min, max
+        end
+    end
+
+    -- e.g. 60
+    local singleLevel = tonumber(rangeStr)
+    if singleLevel then
+        return singleLevel, singleLevel
+    end
+
+    return nil, nil
+end
+
+-- Helper function to check if a dungeon's average level is within a category's range
+local function IsInRange(dungeonLevel, categoryMin, categoryMax)
+    if not dungeonLevel then return false end
+    local min, max = ParseLevelRange(dungeonLevel)
+    if not min or not max then return false end
+    local avgLevel = floor((min + max) / 2)
+    return (avgLevel >= categoryMin and avgLevel <= categoryMax)
 end
 
 -- Category definitions
-local Categories = {
+local CategoryDefinitions = {
     [SortType.CONTINENT] = {
-        [L["Eastern Kingdoms Instances"]] = function(d) return d.continent == "Eastern Kingdoms" end,
-        [L["Kalimdor Instances"]] = function(d) return d.continent == "Kalimdor" end,
+        { name = L["Eastern Kingdoms Instances"], filter = function(d) return d.continent == BZ["Eastern Kingdoms"] and (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Kalimdor Instances"], filter = function(d) return d.continent == BZ["Kalimdor"] and (d.type == "Dungeon" or d.type == "Raid") end },
     },
     [SortType.PARTYSIZE] = {
-        [L["Instances for 5 Players"]] = function(d) return d.size == 5 or (type(d.size) == "table" and tContains(d.size, 5)) end,
-        [L["Instances for 10 Players"]] = function(d) return d.size == 10 or (type(d.size) == "table" and tContains(d.size, 10)) end,
-        [L["Instances for 20 Players"]] = function(d) return d.size == 20 end,
-        [L["Instances for 40 Players"]] = function(d) return d.size == 40 end,
+        { name = L["Instances for 5 Players"], filter = function(d) return d.size == 5 and (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances for 10 Players"], filter = function(d) return d.size == 10 and (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances for 20 Players"], filter = function(d) return d.size == 20 and (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances for 40 Players"], filter = function(d) return d.size == 40 and (d.type == "Dungeon" or d.type == "Raid") end },
     },
     [SortType.LEVEL] = {
-        [L["Instances level 10-20"]] = function(d) return d.level == "10-20" end,
-        [L["Instances level 20-30"]] = function(d) return d.level == "20-30" end,
-        [L["Instances level 30-40"]] = function(d) return d.level == "30-40" end,
-        [L["Instances level 40-50"]] = function(d) return d.level == "40-50" end,
-        [L["Instances level 50-60"]] = function(d) return d.level == "50-60" end,
-        [L["Instances 60 level"]] = function(d) return d.level == "60" end,
+        { name = L["Instances level 15-29"], filter = function(d) return IsInRange(d.level, 15, 29) and (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances level 30-39"], filter = function(d) return IsInRange(d.level, 30, 39) and (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances level 40-49"], filter = function(d) return IsInRange(d.level, 40, 49) and (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances level 50-59"], filter = function(d) return IsInRange(d.level, 50, 59) and (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances 60 level"], filter = function(d) return IsInRange(d.level, 60, 60) and (d.type == "Dungeon" or d.type == "Raid") end },
     },
     [SortType.TYPE] = {
-        [L["Dungeons"]] = function(d) return d.type == "Dungeon" end,
-        [L["Raids"]] = function(d) return d.type == "Raid" end,
+        { name = L["Dungeons"], filter = function(d) return d.type == "Dungeon" end },
+        { name = L["Raids"], filter = function(d) return d.type == "Raid" end },
     },
     [SortType.ALL] = {
-        [L["Showing all instances_1"]] = function(d) return d.type == "Dungeon" or d.type == "Raid" end,
-        [L["Showing all instances_2"]] = function(d) return false end, -- Placeholder for split
+        { name = L["Showing all instances_1"], filter = function(d) return d.type == "Dungeon" or d.type == "Raid" end },
+        { name = L["Showing all instances_2"], filter = function() return false end }, -- Placeholder for split
     }
 }
 
-local CategoryOrder = {
-    [SortType.CONTINENT] = {
-        L["Eastern Kingdoms Instances"],
-        L["Kalimdor Instances"],
-    },
-    [SortType.PARTYSIZE] = {
-        L["Instances for 5 Players"],
-        L["Instances for 10 Players"],
-        L["Instances for 20 Players"],
-        L["Instances for 40 Players"],
-    },
-    [SortType.LEVEL] = {
-        L["Instances level 10-20"],
-        L["Instances level 20-30"],
-        L["Instances level 30-40"],
-        L["Instances level 40-50"],
-        L["Instances level 50-60"],
-        L["Instances 60 level"],
-    },
-    [SortType.TYPE] = {
-        L["Dungeons"],
-        L["Raids"],
-    },
-    [SortType.ALL] = {
-        L["Showing all instances_1"],
-        L["Showing all instances_2"],
-    }
-}
+local Categories = {}
+local CategoryOrder = {}
+
+for sortType, definitions in pairs(CategoryDefinitions) do
+    Categories[sortType] = {}
+    CategoryOrder[sortType] = {}
+    for _, def in ipairs(definitions) do
+        Categories[sortType][def.name] = def.filter
+        table.insert(CategoryOrder[sortType], def.name)
+    end
+end
 
 -- Helper function to create colored category names
 local function CreateColoredCategory(name, color)
     return (color or COLORS.GREEN) .. name
 end
 
-local SpecialCategories = {
-    [L["World"]] = function(d) return d.type == "World Boss" end,
-    [CreateColoredCategory(L["Entrances"])] = function(d) return d.type == "Entrance" end,
-    [CreateColoredCategory(L["Battlegrounds"])] = function(d) return d.type == "Battleground" end,
-    [CreateColoredCategory(L["Dungeon Locations"])] = function(d) return d.type == "Dungeon Location" end,
-    [CreateColoredCategory(L["Flight Path Maps"])] = function(d) return d.type == "Flight Path" end,
-    [CreateColoredCategory(L["Transport Routes"])] = function(d) return d.type == "Transport Route" end
+local SpecialCategoryDefinitions = {
+    { name = L["World"], filter = function(d) return d.type == "World Boss" end },
+    { name = L["Entrances"], filter = function(d) return d.type == "Entrance" end, colored = true },
+    { name = L["Battlegrounds"], filter = function(d) return d.type == "Battleground" end, colored = true },
+    { name = L["Dungeon Locations"], filter = function(d) return d.type == "Dungeon Location" end, colored = true },
+    { name = L["Flight Path Maps"], filter = function(d) return d.type == "Flight Path" end, colored = true },
+    { name = L["Transport Routes"], filter = function(d) return d.type == "Transport Route" end, colored = true }
 }
 
-local SpecialCategoryOrder = {
-    L["World"],
-    CreateColoredCategory(L["Entrances"]),
-    CreateColoredCategory(L["Battlegrounds"]),
-    CreateColoredCategory(L["Dungeon Locations"]),
-    CreateColoredCategory(L["Flight Path Maps"]),
-    CreateColoredCategory(L["Transport Routes"])
-}
+local SpecialCategories = {}
+local SpecialCategoryOrder = {}
 
--- Generate Layouts
+for _, def in ipairs(SpecialCategoryDefinitions) do
+    local categoryName = def.colored and CreateColoredCategory(def.name) or def.name
+    SpecialCategories[categoryName] = def.filter
+    table.insert(SpecialCategoryOrder, categoryName)
+end
+
+-- Helper function to process a list of categories and populate the layout
+local function ProcessCategoryList(layout, order, categoryList, categoryFilters, dungeons)
+    for _, catName in ipairs(categoryList) do
+        table.insert(order, catName)
+        layout[catName] = {}
+        local filterFunc = categoryFilters[catName]
+        if filterFunc then
+            for dungeonName, data in pairs(dungeons) do
+                if filterFunc(data) then
+                    table.insert(layout[catName], dungeonName)
+                end
+            end
+            table.sort(layout[catName])
+        end
+    end
+end
+
+-- Generate Layouts for the dropdown menu
 local function GenerateLayouts()
     local layouts = {}
     local layoutOrder = {}
 
-    -- First, populate all categories for all sort types
     for _, sortName in ipairs(AtlasDropDown.SortOrder) do
         layouts[sortName] = {}
         layoutOrder[sortName] = {}
-        local categories = Categories[sortName]
-        local currentCategoryOrder = CategoryOrder[sortName]
 
-        -- Regular categories in order
-        if currentCategoryOrder then
-            for _, catName in ipairs(currentCategoryOrder) do
-                table.insert(layoutOrder[sortName], catName)
-                layouts[sortName][catName] = {}
-                local filterFunc = categories[catName]
-                if filterFunc then
-                    for dungeonName, data in pairs(Dungeons) do
-                        if filterFunc(data) then
-                            table.insert(layouts[sortName][catName], dungeonName)
-                        end
-                    end
-                    table.sort(layouts[sortName][catName]) -- Sort dungeons alphabetically within each category
-                end
-            end
+        -- Add regular categories (Dungeons/Raids sorted by different criteria)
+        if CategoryOrder[sortName] then
+            ProcessCategoryList(layouts[sortName], layoutOrder[sortName], CategoryOrder[sortName], Categories[sortName], Dungeons)
         end
 
-        -- Special categories in order
-        for _, catName in ipairs(SpecialCategoryOrder) do
-            table.insert(layoutOrder[sortName], catName)
-            layouts[sortName][catName] = {}
-            local filterFunc = SpecialCategories[catName]
-            if filterFunc then
-                for dungeonName, data in pairs(Dungeons) do
-                    if filterFunc(data) then
-                        table.insert(layouts[sortName][catName], dungeonName)
-                    end
-                end
-                table.sort(layouts[sortName][catName]) -- Sort dungeons alphabetically
-            end
-        end
+        -- Add special categories (Entrances, BGs, etc.) to all sort types
+        ProcessCategoryList(layouts[sortName], layoutOrder[sortName], SpecialCategoryOrder, SpecialCategories, Dungeons)
     end
 
-    -- Now, handle the special case for "All" category split
+    -- Special handling for the "All" category to split it into two columns if it's too long
     local allDungeons = layouts[SortType.ALL][L["Showing all instances_1"]]
-    local splitIndex = 40
-    local firstList = {}
-    local secondList = {}
+    if allDungeons then
+        -- This split point can be adjusted if needed
+        local splitIndex = 40
+        if table.getn(allDungeons) > splitIndex then
+            local firstList = {}
+            local secondList = {}
 
-    for i = 1, table.getn(allDungeons) do
-        if i <= splitIndex then
-            table.insert(firstList, allDungeons[i])
-        else
-            table.insert(secondList, allDungeons[i])
+            for i = 1, table.getn(allDungeons) do
+                if i <= splitIndex then
+                    table.insert(firstList, allDungeons[i])
+                else
+                    table.insert(secondList, allDungeons[i])
+                end
+            end
+
+            layouts[SortType.ALL][L["Showing all instances_1"]] = firstList
+            layouts[SortType.ALL][L["Showing all instances_2"]] = secondList
         end
     end
-
-    layouts[SortType.ALL][L["Showing all instances_1"]] = firstList
-    layouts[SortType.ALL][L["Showing all instances_2"]] = secondList
 
     return layouts, layoutOrder
 end
@@ -288,27 +266,31 @@ end
 
 function AtlasDropDown:ValidateData()
     local errors = {}
+    local warnings = {}
 
     for sortType, layout in pairs(self.Layouts) do
         for category, dungeons in pairs(layout) do
             if type(dungeons) ~= "table" then
                 table.insert(errors, string.format("Invalid dungeon list for %s -> %s", sortType, category))
-            elseif table.getn(dungeons) == 0 and not (sortType == SortType.ALL and category == L["Showing all instances_2"]) then
-                -- Allow empty second list for 'All' category
-                table.insert(errors, string.format("Empty dungeon list for %s -> %s", sortType, category))
+            -- A category being empty is not necessarily an error, but a warning might be useful for debugging
+            elseif table.getn(dungeons) == 0 then
+                -- Exclude the placeholder category from warnings
+                if category ~= L["Showing all instances_2"] then
+                    table.insert(warnings, string.format("Empty dungeon list for %s -> %s", sortType, category))
+                end
             end
         end
     end
 
-    return errors
+    return errors, warnings
 end
 
--- Export to global namespace for compatibility
+-- Export to global namespace for compatibility with other addon files
 Atlas_DropDownLayouts_Order = AtlasDropDown.LayoutOrder
 Atlas_DropDownLayouts = AtlasDropDown.Layouts
 AtlasTW_DropDownSortOrder = AtlasDropDown.SortOrder
 
--- Экспорт функций
+-- Export functions
 function AtlasTW_DropDownValidateData()
     return AtlasDropDown:ValidateData()
 end
@@ -321,15 +303,22 @@ function AtlasTW_DropDownGetLayout(sortType)
     return AtlasDropDown:GetLayout(sortType)
 end
 
--- Debug function
+-- Debug function to print validation results on load
 if AtlasTW and AtlasTW.DEBUGMODE then
-    local errors = AtlasDropDown:ValidateData()
+    local errors, warnings = AtlasDropDown:ValidateData()
     if table.getn(errors) > 0 then
-        DEFAULT_CHAT_FRAME:AddMessage("[Atlas] DropDown validation errors:")
+        DEFAULT_CHAT_FRAME:AddMessage(COLORS.RED .. "[Atlas] DropDown validation errors:|r")
         for _, error in ipairs(errors) do
-            DEFAULT_CHAT_FRAME:AddMessage("  " .. error)
+            DEFAULT_CHAT_FRAME:AddMessage("  - " .. error)
         end
-    else
-        DEFAULT_CHAT_FRAME:AddMessage("[Atlas] DropDown data validation passed")
+    end
+    if table.getn(warnings) > 0 then
+        DEFAULT_CHAT_FRAME:AddMessage(COLORS.YELLOW .. "[Atlas] DropDown validation warnings:|r")
+        for _, warning in ipairs(warnings) do
+            DEFAULT_CHAT_FRAME:AddMessage("  - " .. warning)
+        end
+    end
+    if table.getn(errors) == 0 and table.getn(warnings) == 0 then
+        DEFAULT_CHAT_FRAME:AddMessage(COLORS.GREEN .. "[Atlas] DropDown data validation passed.|r")
     end
 end

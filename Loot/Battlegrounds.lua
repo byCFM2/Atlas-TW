@@ -79,7 +79,7 @@ AtlasLootBattlegrounds = {
 		"BRRepExalted1",
 		"BRRepTokens1",
 	},
-	AlteracValleyNorth = {
+	BGAlteracValleyNorth = {
 		"Stormpike1",
 		"",
 		"",
@@ -148,7 +148,7 @@ AtlasLootBattlegrounds = {
 		"AVRepRevered",
 		"AVRepExalted",
 	},
-	AlteracValleySouth = {
+	BGAlteracValleySouth = {
 		"Frostwolf1",
 		"",
 		"",
@@ -199,7 +199,7 @@ AtlasLootBattlegrounds = {
 		"AVRepRevered",
 		"AVRepExalted",
 	},
-	ArathiBasin = {
+	BGArathiBasin = {
 		"",
 		"",
 		"",
@@ -214,7 +214,7 @@ AtlasLootBattlegrounds = {
 		"ABRepRevered5059",
 		"ABRepExalted",
 	},
-	WarsongGulch = {
+	BGWarsongGulch = {
 		"",
 		"",
 		"",
