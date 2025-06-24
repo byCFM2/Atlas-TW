@@ -23,34 +23,6 @@ function AtlasLoot_GetDataSource(dataID)
 	return source
 end
 
-function AtlasLoot_PrepMenu(backPage, title)
-	for i = 1, 30 do
-		_G["AtlasLootItem_" .. i]:Hide()
-		_G["AtlasLootItem_" .. i.."Border"]:Hide()
-	end
-	for i = 1, 30 do
-		local button = _G["AtlasLootMenuItem_" .. i]
-		_G["AtlasLootMenuItem_" .. i.."Border"]:Hide()
-		button:Hide()
-		button.isheader = false
-		button.container = nil
-		button.dataSource = nil
-		_G["AtlasLootMenuItem_" .. i .. "_Icon"]:SetTexCoord(0, 1, 0, 1)
-	end
-	if backPage then
-		AtlasLootItemsFrame_BACK:Show()
-		AtlasLootItemsFrame_BACK.lootpage = backPage
-	else
-		AtlasLootItemsFrame_BACK:Hide()
-	end
-	AtlasLootItemsFrame_NEXT:Hide()
-	AtlasLootItemsFrame_PREV:Hide()
-	for i = 1, 30 do
-		_G["AtlasLootMenuItem_" .. i .. "_Extra"]:Show()
-	end
-	AtlasLoot_BossName:SetText("|cffFFFFFF" .. title)
-	AtlasLootItemsFrame:Show()
-end
 
 function AtlasLootSetMenu()
 	AtlasLoot_PrepMenu(nil, L["Collections"])

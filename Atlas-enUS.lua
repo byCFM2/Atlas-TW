@@ -1271,6 +1271,7 @@ L:RegisterTranslations("enUS", function() return {
 	["[23-32] Blackfathom Deeps"] = "|cffffffff[23-32]|cffffd200 Blackfathom Deeps",
 	["[50-60] The Sunken Temple"] = "|cffffffff[50-60]|cffffd200 The Sunken Temple",
 	["[RAID] Tower of Karazhan"] = "|cffff0000[RAID]|cffffd200 Tower of Karazhan",
+	["[35-42] Stormwrought Ruins"] = "|cffffffff[35-42]|cffffd200 Stormwrought Ruins",
 	["Earthcaller Rezengal"] = true,
 	["Graypaw Alpha"] = true,
 	["Shade Mage"] = true,
