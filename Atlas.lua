@@ -152,7 +152,7 @@ local function Atlas_Init()
 
 	--clear saved vars for a new ver (or a new install!)
 	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= AtlasTW.Version or AtlasTWCharDB.FirstTime then
-		AtlasTW.OptionsDefaultSettings()
+		AtlasTW.OptionDefaultSettings()
 	end
 
 	--populate the dropdown lists...yeeeah this is so much nicer!
