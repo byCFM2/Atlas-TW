@@ -47,27 +47,29 @@ AtlasLoot_Data["AtlasLootFallback"] = {
 }
 -- Функция для ограничения длины текста с учетом паттернов
 local function StripFormatting(text)
-    -- Сначала удаляем все виды скобок и их содержимое
-    text = string.gsub(text, "%(.-%)" , "")  -- Круглые скобки ()
-    text = string.gsub(text, "%[.-%]" , "")  -- Квадратные скобки []
-    text = string.gsub(text, "%{.-%}" , "")  -- Фигурные скобки {}
-    text = string.gsub(text, "<.->", "")     -- Угловые скобки <>
-    -- Удаляем все возможные коды форматирования WoW
-    -- Цветовые коды |cffRRGGBB...|r
-    text = string.gsub(text, "|c%x%x%x%x%x%x%x%x(.-)|r", "%1")
-    -- Удаляем оставшиеся |r коды (завершающие цветовые коды)
-    text = string.gsub(text, "|r", "")
-    -- Удаляем ссылки |Hlink|htext|h
-    text = string.gsub(text, "|H(.-)|h(.-)|h", "%2")
-    -- Удаляем иконки |Tpath|t
-    text = string.gsub(text, "|T.-|t", "")
-    -- Удаляем переводы строк |n
-    text = string.gsub(text, "|n", "")
-    -- Удаляем любые другие коды, начинающиеся с |
-    text = string.gsub(text, "|%w+", "")
-    text = string.gsub(text, "|%d+", "")
-    -- Удаляем оставшиеся одиночные | символы
-    text = string.gsub(text, "|", "")
+	-- Проверяем текст на пустоту
+	if not text then return "" end
+	-- Сначала удаляем все виды скобок и их содержимое
+	text = string.gsub(text, "%(.-%)" , "")  -- Круглые скобки ()
+	text = string.gsub(text, "%[.-%]" , "")  -- Квадратные скобки []
+	text = string.gsub(text, "%{.-%}" , "")  -- Фигурные скобки {}
+	text = string.gsub(text, "<.->", "")     -- Угловые скобки <>
+	-- Удаляем все возможные коды форматирования WoW
+	-- Цветовые коды |cffRRGGBB...|r
+	text = string.gsub(text, "|c%x%x%x%x%x%x%x%x(.-)|r", "%1")
+	-- Удаляем оставшиеся |r коды (завершающие цветовые коды)
+	text = string.gsub(text, "|r", "")
+	-- Удаляем ссылки |Hlink|htext|h
+	text = string.gsub(text, "|H(.-)|h(.-)|h", "%2")
+	-- Удаляем иконки |Tpath|t
+	text = string.gsub(text, "|T.-|t", "")
+	-- Удаляем переводы строк |n
+	text = string.gsub(text, "|n", "")
+	-- Удаляем любые другие коды, начинающиеся с |
+	text = string.gsub(text, "|%w+", "")
+	text = string.gsub(text, "|%d+", "")
+	-- Удаляем оставшиеся одиночные | символы
+	text = string.gsub(text, "|", "")
     return text
 end
 
@@ -2069,33 +2071,4 @@ function AtlasLoot_SayItemReagents(id, color, name, safe)
 			SendChatMessage("\124"..string.sub(color, 2).."\124Hitem:"..id..":0:0:0\124h["..name.."]\124h\124r", channel, nil, chatnumber)
 		end
 	end
-end
-
-function AtlasLoot_PrepMenu(backPage, title)
-	for i = 1, 30 do
-		_G["AtlasLootItem_" .. i]:Hide()
-		_G["AtlasLootItem_" .. i.."Border"]:Hide()
-	end
-	for i = 1, 30 do
-		local button = _G["AtlasLootMenuItem_" .. i]
-		_G["AtlasLootMenuItem_" .. i.."Border"]:Hide()
-		button:Hide()
-		button.isheader = false
-		button.container = nil
-		button.dataSource = nil
-		_G["AtlasLootMenuItem_" .. i .. "_Icon"]:SetTexCoord(0, 1, 0, 1)
-	end
-	if backPage then
-		AtlasLootItemsFrame_BACK:Show()
-		AtlasLootItemsFrame_BACK.lootpage = backPage
-	else
-		AtlasLootItemsFrame_BACK:Hide()
-	end
-	AtlasLootItemsFrame_NEXT:Hide()
-	AtlasLootItemsFrame_PREV:Hide()
-	for i = 1, 30 do
-		_G["AtlasLootMenuItem_" .. i .. "_Extra"]:Show()
-	end
-	AtlasLoot_BossName:SetText("|cffFFFFFF" .. title)
-	AtlasLootItemsFrame:Show()
 end
