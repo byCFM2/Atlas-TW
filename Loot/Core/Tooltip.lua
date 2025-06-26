@@ -216,6 +216,7 @@ function AtlasLootTip.extendTooltip(tooltip)
 				end
 			end
 			for k, v in pairs(GetSpellInfoAtlasLootDB["enchants"]) do
+			--	DEFAULT_CHAT_FRAME:AddMessage("checking "..tostring(k).." "..tostring(v["item"]))
 				if v["item"] and v["item"] == itemID then
 					craftSpell = "e"..tostring(k)
 					break

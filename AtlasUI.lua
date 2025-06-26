@@ -289,14 +289,13 @@ do
     buttonFrame:RegisterEvent("VARIABLES_LOADED")
     buttonFrame:Show()
 
-    local i = 1
     -- Frame scripts
     buttonFrame:SetScript("OnEvent", function()
         AtlasTW.MinimapButtonInit()
     end)
 
     -- Create the button
-    local button = CreateFrame("Button", nil, buttonFrame)
+    local button = CreateFrame("Button", "AtlasMinimapButton", buttonFrame)
     button:SetWidth(33)
     button:SetHeight(33)
     button:SetPoint("TOPLEFT", 0, 0)

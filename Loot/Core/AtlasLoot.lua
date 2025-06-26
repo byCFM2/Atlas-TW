@@ -460,9 +460,14 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 					quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
 					quantityFrame:SetText("")
 				elseif isEnchant then
-					spellName = GetSpellInfoAtlasLootDB["enchants"][tonumber(string.sub(dataSource[dataID][i][1], 2))]["name"]
+					--spellName = GetSpellInfoAtlasLootDB["enchants"][tonumber(string.sub(dataSource[dataID][i][1], 2))]["name"]
+					spellName = AtlasLoot_FixText(dataSource[dataID][i][3])
 					spellIcon = dataSource[dataID][i][2]
+		--			DEFAULT_CHAT_FRAME:AddMessage(spellIcon.." spellIcon")
+		--			DEFAULT_CHAT_FRAME:AddMessage(spellName.." spellName")
+		--			DEFAULT_CHAT_FRAME:AddMessage(string.sub(dataSource[dataID][i][3], 1, 4).." spellName")
 					text = AtlasLoot_FixText(string.sub(dataSource[dataID][i][3], 1, 4)..spellName)
+		--			DEFAULT_CHAT_FRAME:AddMessage(text.." text")
 					quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
 					quantityFrame:SetText("")
 				elseif isSpell then
@@ -666,12 +671,12 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 					itemButton.dressingroomID = dataSource[dataID][i][1]
 				elseif isEnchant then
 					spellID = tonumber(string.sub(dataSource[dataID][i][1], 2))
-					if GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= nil and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= "" then
+					if GetSpellInfoAtlasLootDB["enchants"][spellID] and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= nil and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= "" then
 						itemButton.dressingroomID = GetSpellInfoAtlasLootDB["enchants"][spellID]["item"]
 					else
 						itemButton.dressingroomID = spellID
 					end
-					if GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= nil and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= "" then
+					if GetSpellInfoAtlasLootDB["enchants"][spellID] and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= nil and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= "" then
 						if not GetItemInfo(GetSpellInfoAtlasLootDB["enchants"][spellID]["item"]) then
 							GameTooltip:SetHyperlink("item:"..GetSpellInfoAtlasLootDB["enchants"][spellID]["item"]..":0:0:0")
 						end
@@ -1431,7 +1436,7 @@ function AtlasLootItem_OnEnter()
 				AtlasLootTooltip:AddLine(BLUE..L["SpellID:"].." "..spellID, nil, nil, nil, 1)
 			end
 			AtlasLootTooltip:Show()
-			if GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= nil and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= "" then
+			if GetSpellInfoAtlasLootDB["enchants"][spellID] and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= nil and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= "" then
 				AtlasLootTooltip2:SetOwner(AtlasLootTooltip, "ANCHOR_BOTTOMRIGHT", -(AtlasLootTooltip:GetWidth()), 0)
 				AtlasLootTooltip2:ClearLines()
 				AtlasLootTooltip2:SetHyperlink("item:"..GetSpellInfoAtlasLootDB["enchants"][spellID]["item"]..":0:0:0")
