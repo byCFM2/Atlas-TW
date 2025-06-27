@@ -55,12 +55,12 @@ local craftedSetMenuData = {
     {},
     {},
     {},
-    { name = RED..BS["Leatherworking"], "Leather", libExtra = L, icon = "Interface\\Icons\\INV_Chest_Leather_04", isheader = true },
+    { name = RED..BS["Leatherworking"], Extra = L["Leather"], icon = "Interface\\Icons\\INV_Chest_Leather_04", isheader = true },
     {},
     { name = BIS["Grifter's Armor"], icon = "Interface\\Icons\\INV_Helmet_33", lootpage = "GriftersArmor" },
     { name = BIS["Primalist's Trappings"], icon = "Interface\\Icons\\Inv_Chest_Plate06", lootpage = "PrimalistsTrappings" },
-    { name = BIS["Volcanic Armor"], extra = "Fire Resistance Gear", libExtra = L, icon = "Interface\\Icons\\INV_Pants_06", lootpage = "VolcanicArmor" },
-    { name = BIS["Ironfeather Armor"], icon = "Interface\\Icons\\INV_Chest_Leather_06", lootpage = "IronfeatherArmor" },
+    { name = BIS["Volcanic Armor"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_06", lootpage = "VolcanicArmor" },
+     { name = BIS["Ironfeather Armor"], icon = "Interface\\Icons\\INV_Chest_Leather_06", lootpage = "IronfeatherArmor" },
     { name = BIS["Stormshroud Armor"], icon = "Interface\\Icons\\INV_Chest_Leather_08", lootpage = "StormshroudArmor" },
     { name = BIS["Devilsaur Armor"], icon = "Interface\\Icons\\INV_Pants_Wolf", lootpage = "DevilsaurArmor" },
     { name = BIS["Blood Tiger Harness"], icon = "Interface\\Icons\\INV_Shoulder_23", lootpage = "BloodTigerH" },
@@ -75,14 +75,14 @@ function AtlasLootCraftedSetMenu()
 end
 
 local craftedSet2MenuData = {
-    { name = RED..BS["Leatherworking"], extra = "Mail", libExtra = L, icon = "Interface\\Icons\\INV_Chest_Chain_12", isheader = true },
+    { name = RED..BS["Leatherworking"], Extra = L["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_12", isheader = true },
     {},
-    { name = BIS["Red Dragon Mail"], extra = "Fire Resistance Gear", libExtra = L, icon = "Interface\\Icons\\inv_chest_chain_06", lootpage = "RedDragonM" },
-    { name = BIS["Green Dragon Mail"], extra = "Nature Resistance Gear", libExtra = L, icon = "Interface\\Icons\\INV_Pants_05", lootpage = "GreenDragonM" },
-    { name = BIS["Blue Dragon Mail"], extra = "Arcane Resistance Gear", libExtra = L, icon = "Interface\\Icons\\INV_Chest_Chain_04", lootpage = "BlueDragonM" },
-    { name = BIS["Black Dragon Mail"], extra = "Fire Resistance Gear", libExtra = L, icon = "Interface\\Icons\\INV_Pants_03", lootpage = "BlackDragonM" },
+    { name = BIS["Red Dragon Mail"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\inv_chest_chain_06", lootpage = "RedDragonM" },
+    { name = BIS["Green Dragon Mail"], Extra = L["Nature Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_05", lootpage = "GreenDragonM" },
+    { name = BIS["Blue Dragon Mail"], Extra = L["Arcane Resistance Gear"], icon = "Interface\\Icons\\INV_Chest_Chain_04", lootpage = "BlueDragonM" },
+    { name = BIS["Black Dragon Mail"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_03", lootpage = "BlackDragonM" },
     {},
-    { name = RED..BS["Blacksmithing"], extra = "Mail", libExtra = L, icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
+    { name = RED..BS["Blacksmithing"], Extra = L["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
     { name = BIS["Bloodsoul Embrace"], icon = "Interface\\Icons\\INV_Shoulder_15", lootpage = "BloodsoulEmbrace" },
     { name = BIS["Hateforge Armor"], icon = "Interface\\Icons\\INV_Helmet_10", lootpage = "HateforgeArmor" },
     { name = BIS["Towerforge Battlegear"], icon = "Interface\\Icons\\INV_Helmet_37", lootpage = "TowerforgeBattlegear" },
@@ -100,7 +100,7 @@ local craftedSet2MenuData = {
 }
 
 function AtlasLootCraftedSet2Menu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", "Crafted Sets 2")
+	AtlasLoot_PrepMenu("CRAFTINGMENU", L["Crafted Sets 2"])
     AtlasLoot_ShowMenu(craftedSet2MenuData, { maxItems = table.getn(craftedSet2MenuData) })
 end
 
@@ -137,13 +137,23 @@ local smithingMenuData = {
     { name = BS["Blacksmithing"]..": "..L["Chest"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingChest1" },
     { name = BS["Blacksmithing"]..": "..L["Bracers"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingBracers1" },
     { name = BS["Blacksmithing"]..": "..L["Gloves"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingGloves1" },
-    { name = BS["Blacksmithing"]..": "..L["Belt"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingBelt1" },
-    { name = BS["Blacksmithing"]..": "..L["Pants"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingPants1" },
-    { name = BS["Blacksmithing"]..": "..L["Boots"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingBoots1" },
-    { name = BS["Blacksmithing"]..": "..L["Shields"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingShields1" },
+    { name = BS["Blacksmithing"]..":"..L["Belt"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingBelt1" },
+    { name = BS["Blacksmithing"]..":"..L["Pants"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingPants1" },
+    { name = BS["Blacksmithing"]..":"..L["Boots"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingBoots1" },
+    { name = BS["Blacksmithing"]..":"..L["Belt Buckles"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingBuckles1" },
     {},
-    { name = BS["Blacksmithing"]..": "..L["Weapons"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingWeapons1" },
-    { name = BS["Blacksmithing"]..": "..L["Other"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingOther1" },
+    { name = BS["Blacksmithing"]..": "..L["Axes"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingAxes1" },
+    { name = BS["Blacksmithing"]..": "..L["Swords"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingSwords1" },
+    { name = BS["Blacksmithing"]..": "..L["Maces"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingMaces1" },
+    { name = BS["Blacksmithing"]..": "..L["Fist"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingFist1" },
+    { name = BS["Blacksmithing"]..": "..L["Daggers"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingDaggers1" },
+    { name = BS["Blacksmithing"]..":"..L["Misc"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingMisc1" },
+    {},
+    { name = BS["Blacksmithing"]..": "..BS["Armorsmith"], icon = "Interface\\Icons\\INV_Chest_Plate04", lootpage = "Armorsmith1" },
+    { name = BS["Blacksmithing"]..": "..BS["Weaponsmith"], icon = "Interface\\Icons\\INV_Sword_25", lootpage = "Weaponsmith1" },
+    { name = BS["Blacksmithing"]..": "..L["Master Axesmith"], icon = "Interface\\Icons\\INV_Axe_05", lootpage = "Axesmith1" },
+    { name = BS["Blacksmithing"]..": "..L["Master Hammersmith"], icon = "Interface\\Icons\\INV_Hammer_23", lootpage = "Hammersmith1" },
+    { name = BS["Blacksmithing"]..": "..L["Master Swordsmith"], icon = "Interface\\Icons\\INV_Sword_41", lootpage = "Swordsmith1" },
 }
 
 function AtlasLoot_SmithingMenu()
@@ -314,6 +324,6 @@ local survivalMenuData = {
 }
 
 function AtlasLoot_SurvivalMenu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", L["Crafting"])
+	AtlasLoot_PrepMenu("CRAFTINGMENU", BS["Survival"])
     AtlasLoot_ShowMenu(survivalMenuData, { maxItems = table.getn(survivalMenuData) })
 end

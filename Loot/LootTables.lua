@@ -1,4 +1,4 @@
-﻿--[[
+--[[
 	LootTables.lua
 	This file assigns a title to every loot table.  The primary use of this table
 	is in the search function, as when iterating through the loot tables there is no

@@ -1,11 +1,13 @@
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
 local worldEventsData = {
+	{},
     { name = L["Gurubashi Arena"], extra = "Stranglethorn Vale", icon = "Interface\\Icons\\INV_Box_02", lootpage = "GurubashiArena" },
     { name = L["Harvest Festival"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Misc_Food_Wheat_01", lootpage = "HarvestFestival" },
     { name = L["Lunar Festival"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Misc_ElvenCoins", lootpage = "LunarFestival1" },
     { name = L["Noblegarden"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Egg_03", lootpage = "Noblegarden" },
     { name = L["Stranglethorn Fishing Extravaganza"], extra = "Stranglethorn Vale", icon = "Interface\\Icons\\INV_Fishingpole_01", lootpage = "FishingExtravaganza" },
+	{},
 	{},
 	{},
 	{},

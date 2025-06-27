@@ -124,7 +124,7 @@ AtlasLoot_HewdropDown = {
         { { BB["Concavius"], "Concavius", "Table" }, },
         { { BB["Moo"], "CowKing", "Table" }, },
         { { BB["Cla'ckora"], "Clackora", "Table"}, },
-        { { L["Rare Mobs"], "RareMobs", "Submenu" }, },
+        { { L["Rare Mobs"], "RareMobs", "Table" }, },
     }, },
 
     { [L["PvP Rewards"]] = {

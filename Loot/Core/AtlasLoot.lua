@@ -26,7 +26,6 @@ local DEFAULT = "|cffFFd200"
 
 --Set the default anchor for the loot frame to the Atlas frame
 --AtlasLoot_AnchorFrame = AtlasLootItemsFrame
-AtlasLoot_AnchorFrame = AtlasFrame
 
 AtlasLoot:RegisterDB("AtlasLootDB")
 
@@ -233,59 +232,53 @@ end
 	Invoked whenever a boss line in Atlas is clicked
 	Shows a loot page if one is associated with the button
 ]]
+-- Вспомогательная функция для получения loot table ID
+local function GetLootTableID(zoneID, id)
+	local lootTables = {
+		AtlasLootBossButtons,
+		AtlasLootWBBossButtons,
+		AtlasLootBattlegrounds
+	}
+
+	for _, table in lootTables do
+		if table[zoneID] and table[zoneID][id] and table[zoneID][id] ~= "" then
+			return table[zoneID][id]
+		end
+	end
+	return nil
+end
+
+-- Вспомогательная функция для показа лута
+local function ShowLootTable(name, lootTableID, id)
+	_G[name.."_Selected"]:Show()
+	_G[name.."_Loot"]:Hide()
+	-- Извлекаем имя босса из текста
+	local _,_,boss = string.find(_G[name.."_Text"]:GetText(), "|c%x%x%x%x%x%x%x%x%s*[%dX']*[%) ]*(.*[^%,])[%,]?$")
+	AtlasLoot_ShowBossLoot(lootTableID, boss)
+	AtlasLootItemsFrame.activeBoss = id
+	AtlasTW.Loot.ScrollBarUpdate()
+	AtlasTWCharDB.LastBoss = lootTableID
+end
+
 function AtlasLootBoss_OnClick(name)
 	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
 	local id = this.idnum
-	--If the loot table was already shown and boss clicked again, hide the loot table and fix boss list icons
+	-- Если таблица лута уже показана и босс нажат снова, скрываем таблицу лута
 	if _G[name.."_Selected"]:IsVisible() then
 		_G[name.."_Selected"]:Hide()
 		_G[name.."_Loot"]:Show()
 		AtlasLootItemsFrame:Hide()
 		AtlasLootItemsFrame.activeBoss = nil
 	else
-		--If an loot table is associated with the button, show it. Note multiple tables need to be checked due to the database structure
-		if AtlasLootBossButtons[zoneID] ~= nil and AtlasLootBossButtons[zoneID][id] ~= nil and AtlasLootBossButtons[zoneID][id] ~= "" then
-			if AtlasLoot_IsLootTableAvailable(AtlasLootBossButtons[zoneID][id]) then
-				_G[name.."_Selected"]:Show()
-				_G[name.."_Loot"]:Hide()
-				local _,_,boss = string.find(_G[name.."_Text"]:GetText(), "|c%x%x%x%x%x%x%x%x%s*[%dX']*[%) ]*(.*[^%,])[%,]?$")
-				AtlasLoot_ShowBossLoot(AtlasLootBossButtons[zoneID][id], boss, AtlasFrame)
-				AtlasLootItemsFrame.activeBoss = id
-				AtlasTW.Loot.ScrollBarUpdate()
-				AtlasTWCharDB.LastBoss = AtlasLootBossButtons[zoneID][id]
-				--dont show navigation buttons if its not rep or set
-				--[[local match = string.find(boss, L["Reputation"]) or string.find(boss, L["Set"])
-				if not match then
-					AtlasLootItemsFrame_BACK:Hide()
-					AtlasLootItemsFrame_NEXT:Hide()
-					AtlasLootItemsFrame_PREV:Hide()
-				end]]
-			end
-		elseif AtlasLootWBBossButtons[zoneID] ~= nil and AtlasLootWBBossButtons[zoneID][id] ~= nil and AtlasLootWBBossButtons[zoneID][id] ~= "" then
-			if AtlasLoot_IsLootTableAvailable(AtlasLootWBBossButtons[zoneID][id]) then
-				_G[name.."_Selected"]:Show()
-				_G[name.."_Loot"]:Hide()
-				local _,_,boss = string.find(_G[name.."_Text"]:GetText(), "|c%x%x%x%x%x%x%x%x%s*[%dX]*[%) ]*(.*[^%,])[%,]?$")
-				AtlasLoot_ShowBossLoot(AtlasLootWBBossButtons[zoneID][id], boss, AtlasFrame)
-				AtlasLootItemsFrame.activeBoss = id
-				AtlasTW.Loot.ScrollBarUpdate()
-				AtlasTWCharDB.LastBoss = AtlasLootWBBossButtons[zoneID][id]
-			end
-		elseif AtlasLootBattlegrounds[zoneID] ~= nil and AtlasLootBattlegrounds[zoneID][id] ~= nil and AtlasLootBattlegrounds[zoneID][id] ~= "" then
-			if AtlasLoot_IsLootTableAvailable(AtlasLootBattlegrounds[zoneID][id]) then
-				_G[name.."_Selected"]:Show()
-				_G[name.."_Loot"]:Hide()
-				local _,_,boss = string.find(_G[name.."_Text"]:GetText(), "|c%x%x%x%x%x%x%x%x%s*[%wX]*[%) ]*(.*[^%,])[%,]?$")
-				AtlasLoot_ShowBossLoot(AtlasLootBattlegrounds[zoneID][id], boss, AtlasFrame)
-				AtlasLootItemsFrame.activeBoss = id
-				AtlasTW.Loot.ScrollBarUpdate()
-				AtlasTWCharDB.LastBoss = AtlasLootBattlegrounds[zoneID][id]
-			end
+		-- Ищем таблицу лута для данного босса
+		local lootTableID = GetLootTableID(zoneID, id)
+		if lootTableID and AtlasLoot_IsLootTableAvailable(lootTableID) then
+			ShowLootTable(name, lootTableID, id)
 		end
 	end
-	--This has been invoked from Atlas, so we remove any claim external mods have on the loot table
+	-- Убираем претензии внешних модов на таблицу лута
 	AtlasLootItemsFrame.externalBoss = nil
-	--Hide the AtlasQuest frame if present so that the AtlasLoot items frame is not stuck under it
+	-- Скрываем фрейм AtlasQuest если он есть
 	if AtlasTW.Quest.UI.InsideAtlasFrame then
 		AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
 	end
@@ -821,7 +814,7 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	--If the button clicked was linked to a loot table
 	if tabletype == "Table" then
 		--Show the loot table
-		AtlasLoot_ShowBossLoot(tablename, text, nil)
+		AtlasLoot_ShowBossLoot(tablename, text)
 		--Save needed info for fuure re-display of the table
 		AtlasTWCharDB.LastBoss = tablename
 		AtlasTWCharDB.LastBossText = text
@@ -834,7 +827,7 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 		--Enable the submenu button
 		AtlasLootItemsFrame_SubMenu:Enable()
 		--Show the first loot table associated with the submenu
-		AtlasLoot_ShowBossLoot(AtlasLoot_HewdropDown_SubTables[tablename][1][2], AtlasLoot_HewdropDown_SubTables[tablename][1][1], nil)
+		AtlasLoot_ShowBossLoot(AtlasLoot_HewdropDown_SubTables[tablename][1][2], AtlasLoot_HewdropDown_SubTables[tablename][1][1])
 		--Save needed info for fuure re-display of the table
 		AtlasTWCharDB.LastBoss = AtlasLoot_HewdropDown_SubTables[tablename][1][2]
 		AtlasTWCharDB.LastBossText = AtlasLoot_HewdropDown_SubTables[tablename][1][1]
@@ -858,7 +851,7 @@ end
 ]]
 function AtlasLoot_HewdropSubMenuClick(tablename, text)
 	--Show the select loot table
-	AtlasLoot_ShowBossLoot(tablename, text, nil)
+	AtlasLoot_ShowBossLoot(tablename, text)
 	--Save needed info for fuure re-display of the table
 	AtlasTWCharDB.LastBoss = tablename
 	AtlasTWCharDB.LastBossText = text
@@ -1054,20 +1047,19 @@ function AtlasLoot_OpenMenu(menuName)
 	AtlasLootItemsFrame_SelectedTable:Show()
 	AtlasTWCharDB.LastBoss = this.lootpage
 	AtlasTWCharDB.LastBossText = menuName
-	if menuName == L["Crafting"] then
-		AtlasLoot_ShowItemsFrame("CRAFTINGMENU", "dummy", "dummy")
-	elseif menuName == L["PvP Rewards"] then
-		AtlasLoot_ShowItemsFrame("PVPMENU", "dummy", "dummy")
-	elseif menuName == L["World Events"] then
-		AtlasLoot_ShowItemsFrame("WORLDEVENTMENU", "dummy", "dummy")
-	elseif menuName == L["Collections"] then
-		AtlasLoot_ShowItemsFrame("SETMENU", "dummy", "dummy")
-	elseif menuName == L["Factions"] then
-		AtlasLoot_ShowItemsFrame("REPMENU", "dummy", "dummy")
-	elseif menuName == L["World"] then
-		AtlasLoot_ShowItemsFrame("WORLDMENU", "dummy", "dummy")
-	elseif menuName == L["Dungeons & Raids"] then
-		AtlasLoot_ShowItemsFrame("DUNGEONSMENU1", "dummy", "dummy")
+	local menuMapping = {
+		[L["Crafting"]] = "CRAFTINGMENU",
+		[L["PvP Rewards"]] = "PVPMENU",
+		[L["World Events"]] = "WORLDEVENTMENU",
+		[L["Collections"]] = "SETMENU",
+		[L["Factions"]] = "REPMENU",
+		[L["World"]] = "WORLDMENU",
+		[L["Dungeons & Raids"]] = "DUNGEONSMENU1",
+	}
+
+	local lootTable = menuMapping[menuName]
+	if lootTable then
+		AtlasLoot_ShowItemsFrame(lootTable, "dummy", "dummy")
 	end
 	CloseDropDownMenus()
 end
@@ -1126,7 +1118,7 @@ function AtlasLootMenuItem_OnClick()
 		CloseDropDownMenus()
 		AtlasTWCharDB.LastBoss = this.lootpage
 		AtlasTWCharDB.LastBossText = pagename
-		AtlasLoot_ShowBossLoot(this.lootpage, pagename, AtlasLoot_AnchorFrame)
+		AtlasLoot_ShowBossLoot(this.lootpage, pagename)
 		AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(pagename, 30))
 		AtlasLootItemsFrame_SelectedCategory:Show()
 	end
@@ -1168,13 +1160,13 @@ function AtlasLoot_NavButton_OnClick()
 		--Fallback for if the requested loot page is a menu and does not have a .refresh instance
 		AtlasLoot_ShowItemsFrame(this.lootpage, "dummy", this.title)
 	end
-	for k,v in pairs(AtlasLoot_MenuList) do
+ 	for _,v in pairs(AtlasLoot_MenuList) do
 		if this.lootpage == v then
 			AtlasLootItemsFrame_SubMenu:Disable()
 			AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasTWCharDB.LastBossText, 30))
 			AtlasLootItemsFrame_SelectedTable:SetText()
 		end
-	end
+	end 
 end
 
 --[[
@@ -1183,17 +1175,18 @@ end
 ]]
 function AtlasLoot_IsLootTableAvailable(dataID)
 	if not dataID then return false end
-	local menu_check=false
-	for _,v in pairs(AtlasLoot_MenuList) do
+	local menu_check = false
+	for _, v in pairs(AtlasLoot_MenuList) do
 		if v == dataID then
-			menu_check=true
+			menu_check = true
 		end
 	end
 	if menu_check then
 		return true
 	else
 		if not AtlasLoot_TableNames[dataID] then
-			DEFAULT_CHAT_FRAME:AddMessage(RED..L["AtlasLoot Error!"].." "..WHITE..dataID..L[" not listed in loot table registry, please report this message to the AtlasLoot forums at https://github.com/KasVital/Addons-for-Vanilla-1.12.1-CFM"])
+			DEFAULT_CHAT_FRAME:AddMessage(RED..L["AtlasLoot Error!"].." "..
+				WHITE..dataID..L[" not listed in loot table registry, please report this message to the AtlasLoot forums at https://github.com/KasVital/Atlas-TW/issues"])
 			return false
 		end
 		local dataSource = AtlasLoot_TableNames[dataID][2]
@@ -1270,18 +1263,17 @@ end
 	This is the intended API for external mods to use for displaying loot pages.
 	This function figures out where the loot table is stored, then sends the relevant info to 
 ]]
-function AtlasLoot_ShowBossLoot(dataID, boss, pframe)
+function AtlasLoot_ShowBossLoot(dataID, boss)
 	local tableavailable = AtlasLoot_IsLootTableAvailable(dataID)
 	if tableavailable then
 		AtlasLootItemsFrame:Hide()
 		--If the loot table is already being displayed, it is hidden and the current table selection cancelled
-		if dataID == AtlasLootItemsFrame.externalBoss and AtlasLootItemsFrame:GetParent() ~= AtlasFrame then
+		if dataID == AtlasLootItemsFrame.externalBoss then
 			AtlasLootItemsFrame.externalBoss = nil
 		else
 			--Use the original WoW instance data by default
 			local dataSource = AtlasLoot_TableNames[dataID][2]
 			--Set anchor point, set selected table and call
-			AtlasLoot_AnchorFrame = pframe
 			AtlasLootItemsFrame.externalBoss = dataID
 			AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 		end
