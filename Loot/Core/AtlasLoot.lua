@@ -92,6 +92,41 @@ end
 	Invoked by the VARIABLES_LOADED event. Now that we are sure all the assets
 	the addon needs are in place, we can properly set up the mod
 ]]
+function AtlasLoot_GetBossNavigation(dataID)
+    if not dataID then return nil end
+    for instanceKey, instanceData in pairs(AtlasLoot_ButtonRegistry) do
+        if instanceData.Entry then
+            for i, bossData in ipairs(instanceData.Entry) do
+                if bossData.ID == dataID then
+                    local nav = {}
+                    nav.Title = bossData.Title
+                    local numEntries = table.getn(instanceData.Entry)
+
+                    -- Previous page (with loop)
+                    local prevIndex = i - 1
+                    if prevIndex < 1 then
+                        prevIndex = numEntries -- Loop to the last item
+                    end
+                    nav.Prev_Page = instanceData.Entry[prevIndex].ID
+                    nav.Prev_Title = instanceData.Entry[prevIndex].Title
+
+                    -- Next page (with loop)
+                    local nextIndex = i + 1
+                    if nextIndex > numEntries then
+                        nextIndex = 1 -- Loop to the first item
+                    end
+                    nav.Next_Page = instanceData.Entry[nextIndex].ID
+                    nav.Next_Title = instanceData.Entry[nextIndex].Title
+                    nav.Back_Page = instanceKey
+                    nav.Back_Title = instanceData.Name
+                    return nav
+                end
+            end
+        end
+    end
+    return nil
+end
+
 function AtlasLoot_OnEvent()
 	if not AtlasTWCharDB then AtlasTWCharDB = {} end
 	if not AtlasTWCharDB["WishList"] then AtlasTWCharDB["WishList"] = {} end
@@ -366,7 +401,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 		AtlasLootWorldEpicsMenu()
 	elseif dataID=="WORLDBLUES" then
 		AtlasLootWorldBluesMenu()
-	elseif dataID=="WORLDEVENTMENU" then
+	elseif dataID=="WorldEvents" then
 		AtlasLootWorldEventMenu()
 	elseif dataID=="AbyssalCouncil" then
 		AtlasLootAbyssalCouncilMenu()
@@ -729,43 +764,46 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 				_G["AtlasLootItemsFrame_PREV"]:Show()
 				_G["AtlasLootItemsFrame_PREV"].lootpage = dataID.."Page"..(wlPage - 1)
 			end
-		elseif AtlasLoot_ButtonRegistry[dataID] then
-			local tablebase = AtlasLoot_ButtonRegistry[dataID]
-			AtlasLoot_BossName:SetText(tablebase.Title)
-			if tablebase.Next_Page then
-				_G["AtlasLootItemsFrame_NEXT"]:Show()
-				_G["AtlasLootItemsFrame_NEXT"].lootpage = tablebase.Next_Page
-				_G["AtlasLootItemsFrame_NEXT"].title = tablebase.Next_Title
+		else
+			local nav = AtlasLoot_GetBossNavigation(dataID)
+			if nav then
+				AtlasLoot_BossName:SetText(nav.Title)
+				if nav.Next_Page then
+					_G["AtlasLootItemsFrame_NEXT"]:Show()
+					_G["AtlasLootItemsFrame_NEXT"].lootpage = nav.Next_Page
+					_G["AtlasLootItemsFrame_NEXT"].title = nav.Next_Title
+				end
+				if nav.Prev_Page then
+					_G["AtlasLootItemsFrame_PREV"]:Show()
+					_G["AtlasLootItemsFrame_PREV"].lootpage = nav.Prev_Page
+					_G["AtlasLootItemsFrame_PREV"].title = nav.Prev_Title
+				end
+				 if nav.Back_Page then
+				 	_G["AtlasLootItemsFrame_BACK"]:Show()
+				 	_G["AtlasLootItemsFrame_BACK"].lootpage = nav.Back_Page
+				 	_G["AtlasLootItemsFrame_BACK"].title = nav.Back_Title
+				 end
 			end
-			if tablebase.Prev_Page then
-				_G["AtlasLootItemsFrame_PREV"]:Show()
-				_G["AtlasLootItemsFrame_PREV"].lootpage = tablebase.Prev_Page
-				_G["AtlasLootItemsFrame_PREV"].title = tablebase.Prev_Title
-			end
-			if tablebase.Back_Page then
-				_G["AtlasLootItemsFrame_BACK"]:Show()
-				_G["AtlasLootItemsFrame_BACK"].lootpage = tablebase.Back_Page
-				_G["AtlasLootItemsFrame_BACK"].title = tablebase.Back_Title
 
 				--Hide navigation buttons if we click Quicklooks in Atlas
-				if AtlasFrame and AtlasFrame:IsVisible() then
+--[[				if AtlasFrame and AtlasFrame:IsVisible() then
 					if this.sourcePage then
 						local _, dataSource2 = AtlasLoot_Strsplit("|", this.sourcePage)
 						if dataSource2 == "AtlasLootItems" then
---[[ 							AtlasLootItemsFrame_BACK:Hide()
+ 							AtlasLootItemsFrame_BACK:Hide()
 							AtlasLootItemsFrame_NEXT:Hide()
-							AtlasLootItemsFrame_PREV:Hide() ]]
+							AtlasLootItemsFrame_PREV:Hide() 
 						end
 					end
 					for i = 1, 4 do
 						if AtlasTWCharDB["QuickLooks"][i] and dataID == AtlasTWCharDB["QuickLooks"][i][1] then
---[[ 							AtlasLootItemsFrame_BACK:Hide()
+ 							AtlasLootItemsFrame_BACK:Hide()
 							AtlasLootItemsFrame_NEXT:Hide()
-							AtlasLootItemsFrame_PREV:Hide() ]]
+							AtlasLootItemsFrame_PREV:Hide() 
 						end
 					end
 				end
-			end
+			end]]
 		end
 	end
 
@@ -1050,7 +1088,7 @@ function AtlasLoot_OpenMenu(menuName)
 	local menuMapping = {
 		[L["Crafting"]] = "CRAFTINGMENU",
 		[L["PvP Rewards"]] = "PVPMENU",
-		[L["World Events"]] = "WORLDEVENTMENU",
+		[L["World Events"]] = "WorldEvents",
 		[L["Collections"]] = "SETMENU",
 		[L["Factions"]] = "REPMENU",
 		[L["World"]] = "WORLDMENU",
@@ -1128,6 +1166,10 @@ end
 	Called when <-, -> or 'Back' are pressed and calls up the appropriate loot page
 ]]
 function AtlasLoot_NavButton_OnClick()
+	-- If the back button is clicked, set the LastBoss to the new page
+	if this == AtlasLootItemsFrame_BACK then
+		AtlasLootItemsFrame.externalBoss = this.lootpage
+	end
 	if AtlasLootItemsFrame.refresh and AtlasLootItemsFrame.refresh[1] and AtlasLootItemsFrame.refresh[2] and AtlasLootItemsFrame.refresh[4] then
 		if AtlasLootItemsFrame.refresh[1] == "DUNGEONSMENU1" then
 			AtlasLootItemsFrame.refresh[1] = "DUNGEONSMENU2"

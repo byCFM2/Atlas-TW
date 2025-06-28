@@ -163,7 +163,7 @@ local pre60SetsMenuData = {
     { name = BIS["Defias Leather"], extra = "The Deadmines", icon = "Interface\\Icons\\INV_Pants_12", lootpage = "DEADMINES", container = data.DeadminesC },
     { name = BIS["Embrace of the Viper"], extra = "Wailing Caverns", icon = "Interface\\Icons\\INV_Shirt_16", lootpage = "WAILING", container = data.WailingC },
     { name = BIS["Chain of the Scarlet Crusade"], extra = "Scarlet Monastery", icon = "Interface\\Icons\\INV_Gauntlets_19", lootpage = "SCARLET", container = data.ScarletC },
-    { name = BIS["Greymane Armor"], extra = "Greymane City", icon = "Interface\\Icons\\inv_helmet_02", lootpage = "GreymaneArmor", container = data.GilneasC },
+    { name = BIS["Greymane Armor"], extra = "Gilneas City", icon = "Interface\\Icons\\inv_helmet_02", lootpage = "GreymaneArmor", container = data.GilneasC },
     { name = BIS["Incendosaur Skin Armor"], extra = "Hateforge Quarry", icon = "Interface\\Icons\\INV_Shoulder_23", lootpage = "IncendosaurSkinArmor", container = data.HateforgeC },
     { name = BIS["The Gladiator"], extra = "Blackrock Depths", icon = "Interface\\Icons\\INV_Helmet_01", lootpage = "BLACKROCKD", container = data.BlackrockdC },
     { name = BIS["Ironweave Battlesuit"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Boots_Cloth_05", lootpage = "IRONWEAVE", container = data.IronweaveC },

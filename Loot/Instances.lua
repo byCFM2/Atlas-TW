@@ -4489,6 +4489,8 @@ AtlasLoot_Data["AtlasLootItems"] = {
 		{ 0, "", "", "" },
 		{ 60775, "inv_misc_book_10", "=q3=Manual: Intervene", "=q17=#c9#", "15%" },
 		{ 0, "", "", "" },
+		{ 41460, "INV_Hammer_03", "=q1=Fingerbreaker", "=ds=#m3#", "100%" },
+		{ 0, "", "", "" },
 		{ 51217, "INV_misc_ribbon_01", "=q2=Fashion Coin", "=ds=#e27#", "5%" },
 	},
 	HQEngineerFiggles = {

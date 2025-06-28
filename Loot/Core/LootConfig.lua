@@ -32,7 +32,7 @@ AtlasLoot_MenuList = {
 	"T0SET",
 	"WORLDEPICS",
 	"REPMENU",
-	"WORLDEVENTMENU",
+	"WorldEvents",
 	"ALCHEMYMENU",
 	"CRAFTINGMENU",
 	"SMITHINGMENU",

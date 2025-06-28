@@ -27,7 +27,7 @@ local worldEventsData = {
 
 function AtlasLootWorldEventMenu()
     AtlasLoot_PrepMenu(nil, L["World Events"])
-    AtlasTWCharDB.LastBoss = "WORLDEVENTMENU"
+    AtlasTWCharDB.LastBoss = "WorldEvents"
     AtlasTWCharDB.LastBossText = L["World Events"]
     AtlasLoot_ShowMenu(worldEventsData, { maxItems = table.getn(worldEventsData) })
 end
@@ -39,6 +39,6 @@ local abyssalCouncilData = {
 }
 
 function AtlasLootAbyssalCouncilMenu()
-	AtlasLoot_PrepMenu("WORLDEVENTMENU", L["Abyssal Council"])
+	AtlasLoot_PrepMenu("WorldEvents", L["Abyssal Council"])
     AtlasLoot_ShowMenu(abyssalCouncilData, { maxItems = table.getn(abyssalCouncilData) })
 end
