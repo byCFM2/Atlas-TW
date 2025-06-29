@@ -1270,4 +1270,6 @@ L:RegisterTranslations("enUS", function() return {
 	["Previous"] = true,
 	["Next"] = true,
 	["Level One Lunatic Challenge"] = true,
+	["Snowball"] = true,
+	["Drifting Avatar of Time"]	= true,
 } end)

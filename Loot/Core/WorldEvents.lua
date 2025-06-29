@@ -2,13 +2,13 @@ local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
 local worldEventsData = {
 	{},
+    { name = L["Abyssal Council"], extra = "Silithus", icon = "Interface\\Icons\\Spell_Nature_TimeStop", lootpage = "AbyssalTemplars" },
+    { name = L["Elemental Invasion"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Ammo_FireTar", lootpage = "ElementalInvasion" },
     { name = L["Gurubashi Arena"], extra = "Stranglethorn Vale", icon = "Interface\\Icons\\INV_Box_02", lootpage = "GurubashiArena" },
     { name = L["Harvest Festival"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Misc_Food_Wheat_01", lootpage = "HarvestFestival" },
     { name = L["Lunar Festival"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Misc_ElvenCoins", lootpage = "LunarFestival1" },
     { name = L["Noblegarden"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Egg_03", lootpage = "Noblegarden" },
     { name = L["Stranglethorn Fishing Extravaganza"], extra = "Stranglethorn Vale", icon = "Interface\\Icons\\INV_Fishingpole_01", lootpage = "FishingExtravaganza" },
-	{},
-	{},
 	{},
 	{},
 	{},
@@ -26,12 +26,10 @@ local worldEventsData = {
 }
 
 function AtlasLootWorldEventMenu()
-    AtlasLoot_PrepMenu(nil, L["World Events"])
-    AtlasTWCharDB.LastBoss = "WorldEvents"
-    AtlasTWCharDB.LastBossText = L["World Events"]
+    AtlasLoot_PrepMenu(nil, L["World Events"], "WorldEvents")
     AtlasLoot_ShowMenu(worldEventsData, { maxItems = table.getn(worldEventsData) })
 end
-
+--[[ 
 local abyssalCouncilData = {
     { name = L["Abyssal Council"].." - "..L["Templars"], icon = "Interface\\Icons\\INV_Jewelry_Talisman_05", lootpage = "AbyssalTemplars" },
     { name = L["Abyssal Council"].." - "..L["Dukes"], icon = "Interface\\Icons\\INV_Jewelry_Ring_36", lootpage = "AbyssalDukes" },
@@ -41,4 +39,4 @@ local abyssalCouncilData = {
 function AtlasLootAbyssalCouncilMenu()
 	AtlasLoot_PrepMenu("WorldEvents", L["Abyssal Council"])
     AtlasLoot_ShowMenu(abyssalCouncilData, { maxItems = table.getn(abyssalCouncilData) })
-end
+end ]]

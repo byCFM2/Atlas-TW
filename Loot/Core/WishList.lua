@@ -168,9 +168,9 @@ function AtlasLoot_GetWishListSubheadingBoss(dataID)
 	if not AtlasLoot_TableNamesBoss then
 		return
 	end
-	local zoneID 
-	for i, v in pairs(AtlasLoot_TableNamesBoss) do
-		for j,k in pairs(v) do
+	local zoneID
+	for _, v in pairs(AtlasLoot_TableNamesBoss) do
+		for j, k in pairs(v) do
 			if dataID == j then
 				zoneID = k[1]
 				break
@@ -181,7 +181,7 @@ function AtlasLoot_GetWishListSubheadingBoss(dataID)
 end
 
 function GetLootTableParent(dataID)
-	local parentID 
+	local parentID
 	for i, v in pairs(AtlasLoot_TableNamesBoss) do
 		for j,_ in pairs(v) do
 			if dataID == j then

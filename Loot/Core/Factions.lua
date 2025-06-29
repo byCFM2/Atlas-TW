@@ -46,8 +46,6 @@ local function getExtraText(itemData)
 end
 
 function AtlasLootRepMenu()
-	AtlasLoot_PrepMenu(nil, L["Factions"])
-	AtlasTWCharDB.LastBoss = "REPMENU"
-	AtlasTWCharDB.LastBossText = L["Factions"]
+	AtlasLoot_PrepMenu(nil, L["Factions"], "Factions")
     AtlasLoot_ShowMenu(factionsData, { getExtraText = getExtraText, maxItems = table.getn(factionsData) })
 end

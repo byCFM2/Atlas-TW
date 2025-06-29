@@ -11,31 +11,29 @@ end
 
 local craftingMenuData = {
     {},
-    { name = BS["Alchemy"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "ALCHEMYMENU" },
-    { name = BS["Blacksmithing"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SMITHINGMENU" },
-    { name = BS["Enchanting"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "ENCHANTINGMENU" },
-    { name = BS["Engineering"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "ENGINEERINGMENU" },
+    { name = BS["Alchemy"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "Alchemy" },
+    { name = BS["Blacksmithing"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "Blacksmithing" },
+    { name = BS["Enchanting"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "Enchanting" },
+    { name = BS["Engineering"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "Engineering" },
     { name = BS["Herbalism"], icon = "Interface\\Icons\\Trade_Herbalism", lootpage = "Herbalism1" },
-    { name = BS["Leatherworking"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LEATHERWORKINGMENU" },
-    { name = BS["Mining"], icon = "Interface\\Icons\\Trade_Mining", lootpage = "MININGMENU" },
-    { name = BS["Tailoring"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TAILORINGMENU" },
-    { name = BS["Jewelcrafting"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JEWELCRAFTMENU" },
-    { name = BS["Cooking"], icon = "Interface\\Icons\\INV_Misc_Food_15", lootpage = "COOKINGMENU" },
+    { name = BS["Leatherworking"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "Leatherworking" },
+    { name = BS["Mining"], icon = "Interface\\Icons\\Trade_Mining", lootpage = "Mining" },
+    { name = BS["Tailoring"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "Tailoring" },
+    { name = BS["Jewelcrafting"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "Jewelcrafting" },
+    { name = BS["Cooking"], icon = "Interface\\Icons\\INV_Misc_Food_15", lootpage = "Cooking" },
     { name = BS["First Aid"], icon = "Interface\\Icons\\Spell_Holy_SealOfSacrifice", lootpage = "FirstAid1" },
-    { name = BS["Survival"], icon = "Interface\\Icons\\Trade_Survival", lootpage = "SURVIVALMENU" },
+    { name = BS["Survival"], icon = "Interface\\Icons\\Trade_Survival", lootpage = "Survival" },
     {},
     { name = BS["Poisons"], extraText = BC["Rogue"], icon = "Interface\\Icons\\Trade_BrewPoison", lootpage = "Poisons1" },
     {},
-    { name = "Crafted Sets (Cloth, Leather)", icon = "Interface\\Icons\\INV_Box_01", lootpage = "CRAFTSET" },
-    { name = "Crafted Sets (Mail, Plate)", icon = "Interface\\Icons\\INV_Box_02", lootpage = "CRAFTSET2" },
+    { name = "Crafted Sets (Cloth, Leather)", icon = "Interface\\Icons\\INV_Box_01", lootpage = "CraftSet" },
+    { name = "Crafted Sets (Mail, Plate)", icon = "Interface\\Icons\\INV_Box_02", lootpage = "CraftSet2" },
     {},
     { name = L["Crafted Epic Weapons"], icon = "Interface\\Icons\\INV_Hammer_Unique_Sulfuras", lootpage = "CraftedWeapons1" },
 }
 
 function AtlasLoot_CraftingMenu()
-	AtlasLoot_PrepMenu(nil, L["Crafting"])
-	AtlasTWCharDB.LastBoss = "CRAFTINGMENU"
-	AtlasTWCharDB.LastBossText = L["Crafting"]
+	AtlasLoot_PrepMenu(nil, L["Crafting"], "Crafting")
     AtlasLoot_ShowMenu(craftingMenuData, { maxItems = table.getn(craftingMenuData), getExtraText = getExtraText })
 end
 
@@ -70,7 +68,7 @@ local craftedSetMenuData = {
 }
 
 function AtlasLootCraftedSetMenu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", L["Crafted Sets"])
+	AtlasLoot_PrepMenu("Crafting", L["Crafted Sets"])
     AtlasLoot_ShowMenu(craftedSetMenuData, { maxItems = table.getn(craftedSetMenuData) })
 end
 
@@ -100,7 +98,7 @@ local craftedSet2MenuData = {
 }
 
 function AtlasLootCraftedSet2Menu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", L["Crafted Sets 2"])
+	AtlasLoot_PrepMenu("Crafting", L["Crafted Sets"].." 2")
     AtlasLoot_ShowMenu(craftedSet2MenuData, { maxItems = table.getn(craftedSet2MenuData) })
 end
 
@@ -121,7 +119,7 @@ local alchemyMenuData = {
 }
 
 function AtlasLoot_AlchemyMenu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", BS["Alchemy"])
+	AtlasLoot_PrepMenu("Crafting", BS["Alchemy"])
     AtlasLoot_ShowMenu(alchemyMenuData, { maxItems = table.getn(alchemyMenuData) })
 end
 
@@ -157,7 +155,7 @@ local smithingMenuData = {
 }
 
 function AtlasLoot_SmithingMenu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", BS["Blacksmithing"])
+	AtlasLoot_PrepMenu("Crafting", BS["Blacksmithing"])
     AtlasLoot_ShowMenu(smithingMenuData, { maxItems = table.getn(smithingMenuData) })
 end
 
@@ -180,7 +178,7 @@ local enchantingMenuData = {
 }
 
 function AtlasLoot_EnchantingMenu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", BS["Enchanting"])
+	AtlasLoot_PrepMenu("Crafting", BS["Enchanting"])
     AtlasLoot_ShowMenu(enchantingMenuData, { maxItems = table.getn(enchantingMenuData) })
 end
 
@@ -206,7 +204,7 @@ local engineeringMenuData = {
 }
 
 function AtlasLoot_EngineeringMenu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", BS["Engineering"])
+	AtlasLoot_PrepMenu("Crafting", BS["Engineering"])
     AtlasLoot_ShowMenu(engineeringMenuData, { maxItems = table.getn(engineeringMenuData) })
 end
 
@@ -236,7 +234,7 @@ local leatherworkingMenuData = {
 }
 
 function AtlasLoot_LeatherworkingMenu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", BS["Leatherworking"])
+	AtlasLoot_PrepMenu("Crafting", BS["Leatherworking"])
     AtlasLoot_ShowMenu(leatherworkingMenuData, { maxItems = table.getn(leatherworkingMenuData) })
 end
 
@@ -247,7 +245,7 @@ local miningMenuData = {
 }
 
 function AtlasLoot_MiningMenu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", BS["Mining"])
+	AtlasLoot_PrepMenu("Crafting", BS["Mining"])
     AtlasLoot_ShowMenu(miningMenuData, { maxItems = table.getn(miningMenuData) })
 end
 
@@ -274,7 +272,7 @@ local tailoringMenuData = {
 }
 
 function AtlasLoot_TailoringMenu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", BS["Tailoring"])
+	AtlasLoot_PrepMenu("Crafting", BS["Tailoring"])
     AtlasLoot_ShowMenu(tailoringMenuData, { maxItems = table.getn(tailoringMenuData) })
 end
 
@@ -300,7 +298,7 @@ local jewelcraftMenuData = {
 }
 
 function AtlasLoot_JewelcraftingMenu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", BS["Jewelcrafting"])
+	AtlasLoot_PrepMenu("Crafting", BS["Jewelcrafting"])
     AtlasLoot_ShowMenu(jewelcraftMenuData, { maxItems = table.getn(jewelcraftMenuData) })
 end
 
@@ -313,7 +311,7 @@ local cookingMenuData = {
 }
 
 function AtlasLoot_CookingMenu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", BS["Cooking"])
+	AtlasLoot_PrepMenu("Crafting", BS["Cooking"])
     AtlasLoot_ShowMenu(cookingMenuData, { maxItems = table.getn(cookingMenuData) })
 end
 
@@ -324,6 +322,6 @@ local survivalMenuData = {
 }
 
 function AtlasLoot_SurvivalMenu()
-	AtlasLoot_PrepMenu("CRAFTINGMENU", BS["Survival"])
+	AtlasLoot_PrepMenu("Crafting", BS["Survival"])
     AtlasLoot_ShowMenu(survivalMenuData, { maxItems = table.getn(survivalMenuData) })
 end

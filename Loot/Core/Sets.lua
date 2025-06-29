@@ -11,14 +11,17 @@ local function CreateMenu(menuTitle, menuItems, prevMenu, prevMenuText)
         AtlasTWCharDB.LastBossText = prevMenuText
     end
     AtlasLoot_ShowMenu(menuItems)
+    if menuItems.name then
+        AtlasTWLoot_BackTableRegistry[menuItems.name] = "Collections"
+    end
 end
 
 local setsMenuData = {
-    { name = L["Pre 60 Sets"], icon = "Interface\\Icons\\INV_Sword_43", lootpage = "PRE60SET" },
-    { name = L["Zul'Gurub Sets"], icon = "Interface\\Icons\\INV_Sword_55", lootpage = "ZGSET" },
-    { name = L["Ruins of Ahn'Qiraj Sets"], icon = "Interface\\Icons\\INV_Axe_15", lootpage = "AQ20SET" },
-    { name = L["Temple of Ahn'Qiraj Sets"], icon = "Interface\\Icons\\INV_Sword_59", lootpage = "AQ40SET" },
-    { name = "Tower of Karazhan Sets", icon = "Interface\\Icons\\INV_Staff_Medivh", lootpage = "K40SET" },
+    { name = L["Pre 60 Sets"], icon = "Interface\\Icons\\INV_Sword_43", lootpage = "Pre60Set" },
+    { name = L["Zul'Gurub Sets"], icon = "Interface\\Icons\\INV_Sword_55", lootpage = "ZgSet" },
+    { name = L["Ruins of Ahn'Qiraj Sets"], icon = "Interface\\Icons\\INV_Axe_15", lootpage = "Aq20Set" },
+    { name = L["Temple of Ahn'Qiraj Sets"], icon = "Interface\\Icons\\INV_Sword_59", lootpage = "Aq40Set" },
+    { name = L["Tower of Karazhan Sets"], icon = "Interface\\Icons\\INV_Staff_Medivh", lootpage = "K40Set" },
     {},
     { name = "|cffffffff"..L["Priest Sets"], icon = "Interface\\Icons\\Spell_Holy_PowerWordShield", lootpage = "PriestSet" },
     { name = "|cff68ccef"..L["Mage Sets"], icon = "Interface\\Icons\\Spell_Frost_IceStorm", lootpage = "MageSet" },
@@ -29,13 +32,13 @@ local setsMenuData = {
     { name = "|cff2773ff"..L["Shaman Sets"], icon = "Interface\\Icons\\Spell_FireResistanceTotem_01", lootpage = "ShamanSet" },
     { name = "|cfff48cba"..L["Paladin Sets"], icon = "Interface\\Icons\\Spell_Holy_SealOfMight", lootpage = "PaladinSet" },
     { name = "|cffc69b6d"..L["Warrior Sets"], icon = "Interface\\Icons\\INV_Shield_05", lootpage = "WarriorSet" },
-    { name = L["Tier 0/0.5 Sets"], icon = "Interface\\Icons\\INV_Chest_Chain_03", lootpage = "T0SET" },
-    { name = L["Tier 1 Sets"], icon = "Interface\\Icons\\INV_Pants_Mail_03", lootpage = "T1SET" },
-    { name = L["Tier 2 Sets"], icon = "Interface\\Icons\\INV_Shoulder_32", lootpage = "T2SET" },
-    { name = L["Tier 3 Sets"], icon = "Interface\\Icons\\INV_Chest_Plate02", lootpage = "T3SET" },
+    { name = L["Tier 0/0.5 Sets"], icon = "Interface\\Icons\\INV_Chest_Chain_03", lootpage = "T0Set" },
+    { name = L["Tier 1 Sets"], icon = "Interface\\Icons\\INV_Pants_Mail_03", lootpage = "T1Set" },
+    { name = L["Tier 2 Sets"], icon = "Interface\\Icons\\INV_Shoulder_32", lootpage = "T2Set" },
+    { name = L["Tier 3 Sets"], icon = "Interface\\Icons\\INV_Chest_Plate02", lootpage = "T3Set" },
     {},
-    { name = L["World Blues"], icon = "Interface\\Icons\\INV_Box_01", lootpage = "WORLDBLUES" },
-    { name = L["World Epics"], icon = "Interface\\Icons\\INV_Box_04", lootpage = "WORLDEPICS" },
+    { name = L["World Blues"], icon = "Interface\\Icons\\INV_Box_01", lootpage = "WorldBlues" },
+    { name = L["World Epics"], icon = "Interface\\Icons\\INV_Box_04", lootpage = "WorldEpics" },
     { name = L["Legendary Items"], icon = "Interface\\Icons\\INV_Staff_Medivh", lootpage = "Legendaries" },
     { name = L["Artifact Items"], icon = "Interface\\Icons\\INV_Sword_07", lootpage = "Artifacts" },
     { name = L["Rare Pets"], icon = "Interface\\Icons\\Ability_Seal", lootpage = "RarePets1" },
@@ -59,7 +62,7 @@ local worldEpicsMenuData = {
 }
 
 function AtlasLootWorldEpicsMenu()
-    CreateMenu(L["World Epics"], worldEpicsMenuData, "SETMENU", L["Collections"])
+    CreateMenu(L["World Epics"], worldEpicsMenuData, "Collections", L["Collections"])
 end
 
 local worldBluesMenuData = {
@@ -96,7 +99,7 @@ local worldBluesMenuData = {
 }
 
 function AtlasLootWorldBluesMenu()
-    CreateMenu(L["World Blues"], worldBluesMenuData, "SETMENU", L["Collections"])
+    CreateMenu(L["World Blues"], worldBluesMenuData, "Collections", L["Collections"])
 end
 
 local function CreateClassSetMenu(class, color, icon)
@@ -115,47 +118,47 @@ end
 
 function AtlasLootPriestSetMenu()
     local menuData = CreateClassSetMenu("Priest", "|cffffffff", "Interface\\Icons\\Spell_Holy_PowerWordShield")
-    CreateMenu(L["Priest Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Priest Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootMageSetMenu()
     local menuData = CreateClassSetMenu("Mage", "|cff68ccef", "Interface\\Icons\\Spell_Frost_IceStorm")
-    CreateMenu(L["Mage Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Mage Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootWarlockSetMenu()
     local menuData = CreateClassSetMenu("Warlock", "|cff9382c9", "Interface\\Icons\\Spell_Shadow_CurseOfTounges")
-    CreateMenu(L["Warlock Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Warlock Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootRogueSetMenu()
     local menuData = CreateClassSetMenu("Rogue", "|cfffff468", "Interface\\Icons\\Ability_BackStab")
-    CreateMenu(L["Rogue Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Rogue Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootDruidSetMenu()
     local menuData = CreateClassSetMenu("Druid", "|cffff7c0a", "Interface\\Icons\\Spell_Nature_Regeneration")
-    CreateMenu(L["Druid Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Druid Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootHunterSetMenu()
     local menuData = CreateClassSetMenu("Hunter", "|cffaad372", "Interface\\Icons\\Ability_Hunter_RunningShot")
-    CreateMenu(L["Hunter Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Hunter Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootShamanSetMenu()
     local menuData = CreateClassSetMenu("Shaman", "|cff2773ff", "Interface\\Icons\\Spell_FireResistanceTotem_01")
-    CreateMenu(L["Shaman Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Shaman Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootPaladinSetMenu()
     local menuData = CreateClassSetMenu("Paladin", "|cfff48cba", "Interface\\Icons\\Spell_Holy_SealOfMight")
-    CreateMenu(L["Paladin Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Paladin Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootWarriorSetMenu()
     local menuData = CreateClassSetMenu("Warrior", "|cffc69b6d", "Interface\\Icons\\INV_Shield_05")
-    CreateMenu(L["Warrior Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Warrior Sets"], menuData, "Collections", L["Collections"])
 end
 
 local pre60SetsMenuData = {
@@ -185,7 +188,7 @@ local pre60SetsMenuData = {
 }
 
 function AtlasLootPRE60SetMenu()
-    CreateMenu(L["Pre 60 Sets"], pre60SetsMenuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Pre 60 Sets"], pre60SetsMenuData, "Collections", L["Collections"])
 end
 
 local function CreateDungeonSetMenu(dungeonName)
@@ -237,40 +240,40 @@ function AtlasLootZGSetMenu()
     menuData[23] = { name = L["Zul'Gurub Rings"], icon = "Interface\\Icons\\INV_Jewelry_Ring_46", lootpage = "ZGRings", container = data.ZGRingsC }
     menuData[24] = { name = L["Primal Blessing"], icon = "Interface\\Icons\\INV_Weapon_Hand_01", lootpage = "PrimalBlessing", container = data.PrimalBlessingC }
     menuData[25] = { name = L["The Twin Blades of Hakkari"], icon = "Interface\\Icons\\INV_Sword_55", lootpage = "HakkariBlades", container = data.HakkariBladesC }
-    CreateMenu(L["Zul'Gurub Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Zul'Gurub Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootAQ40SetMenu()
     local menuData = CreateDungeonSetMenu("AQ40")
-    CreateMenu(L["Temple of Ahn'Qiraj Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Temple of Ahn'Qiraj Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootAQ20SetMenu()
     local menuData = CreateDungeonSetMenu("AQ20")
-    CreateMenu(L["Ruins of Ahn'Qiraj Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Ruins of Ahn'Qiraj Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootT0SetMenu()
     local menuData = CreateDungeonSetMenu("T0")
-    CreateMenu(L["Tier 0/0.5 Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Tier 0/0.5 Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootT1SetMenu()
     local menuData = CreateDungeonSetMenu("T1")
-    CreateMenu(L["Tier 1 Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Tier 1 Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootT2SetMenu()
     local menuData = CreateDungeonSetMenu("T2")
-    CreateMenu(L["Tier 2 Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Tier 2 Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootT3SetMenu()
     local menuData = CreateDungeonSetMenu("T3")
-    CreateMenu(L["Tier 3 Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Tier 3 Sets"], menuData, "Collections", L["Collections"])
 end
 
 function AtlasLootUKSetMenu()
     local menuData = CreateDungeonSetMenu("T35")
-    CreateMenu(L["Tower of Karazhan Sets"], menuData, "SETMENU", L["Collections"])
+    CreateMenu(L["Tower of Karazhan Sets"], menuData, "Collections", L["Collections"])
 end

@@ -135,7 +135,7 @@ AtlasLootBossButtons = {
 		"UBRSTrash",
 		"IRONWEAVE",
 		"DalRend",		
-		"T0SET",
+		"T0Set",
 	},
 	BlackrockSpireLower = {
 		"VanillaKeys",
@@ -174,7 +174,7 @@ AtlasLootBossButtons = {
 		"LBRSTrash",
 		"IRONWEAVE",
 		"SpiderKiss",
-		"T0SET",
+		"T0Set",
 	},
 	BlackwingLair = {
 		"",
@@ -194,7 +194,7 @@ AtlasLootBossButtons = {
 		"",
 		"",
 		"BWLTrashMobs",
-		"T2SET",
+		"T2Set",
 	},
 	DireMaulEast = {
 		"VanillaKeys",
@@ -377,8 +377,8 @@ AtlasLootBossButtons = {
 		"",
 		"MCTrashMobs",
 		"MCRANDOMBOSSDROPS",
-		"T1SET",
-		"T2SET",
+		"T1Set",
+		"T2Set",
 	},
 	Naxxramas = {
 		"",
@@ -414,7 +414,7 @@ AtlasLootBossButtons = {
 		"NAXKelThuzard",
 		"",
 		"NAXTrash",
-		"T3SET",
+		"T3Set",
 	},
 	OnyxiasLair = {
 		"",
@@ -507,7 +507,7 @@ AtlasLootBossButtons = {
 		"ScholoMail",
 		"ScholoPlate",
 		"IRONWEAVE",
-		"T0SET",
+		"T0Set",
 	},
 	ShadowfangKeep = {
 		"",
@@ -623,7 +623,7 @@ AtlasLootBossButtons = {
 		"STRATTrash",
 		"STRAT",
 		"IRONWEAVE",
-		"T0SET",
+		"T0Set",
 	},
 	TheCrescentGrove = {
 		"",
@@ -735,7 +735,7 @@ AtlasLootBossButtons = {
 		"AQ20Trash",
 		"AQ20ClassBooks",
 		"AQEnchants",
-		"AQ20SET",
+		"Aq20Set",
 	},
 	TheStockade = {
 		"",
@@ -804,7 +804,7 @@ AtlasLootBossButtons = {
 		"",
 		"AQ40Trash1",
 		"AQEnchants",
-		"AQ40SET",
+		"Aq40Set",
 		"AQOpening",
 	},
 	Uldaman = {
@@ -946,7 +946,7 @@ AtlasLootBossButtons = {
 		"PrimalBlessing",
 		"HakkariBlades",
 		"ZGRings",
-		"ZGSET",
+		"ZgSet",
 		"ZGEnchants",
 	},
 	LowerKarazhan = {
@@ -989,7 +989,7 @@ AtlasLootBossButtons = {
 		"K40Mephistroth",
 		"",
 		"K40Trash",
-		"K40SET",
+		"K40Set",
 	},
 }
 --------------------------------------------------------------------------------

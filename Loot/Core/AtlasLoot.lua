@@ -94,7 +94,7 @@ end
 ]]
 function AtlasLoot_GetBossNavigation(dataID)
     if not dataID then return nil end
-    for instanceKey, instanceData in pairs(AtlasLoot_ButtonRegistry) do
+    for instanceKey, instanceData in pairs(AtlasLoot_TableRegistry) do
         if instanceData.Entry then
             for i, bossData in ipairs(instanceData.Entry) do
                 if bossData.ID == dataID then
@@ -108,7 +108,7 @@ function AtlasLoot_GetBossNavigation(dataID)
                         prevIndex = numEntries -- Loop to the last item
                     end
                     nav.Prev_Page = instanceData.Entry[prevIndex].ID
-                    nav.Prev_Title = instanceData.Entry[prevIndex].Title
+                    nav.Prev_Title = instanceData.Entry[prevIndex].Name
 
                     -- Next page (with loop)
                     local nextIndex = i + 1
@@ -116,9 +116,11 @@ function AtlasLoot_GetBossNavigation(dataID)
                         nextIndex = 1 -- Loop to the first item
                     end
                     nav.Next_Page = instanceData.Entry[nextIndex].ID
-                    nav.Next_Title = instanceData.Entry[nextIndex].Title
-                    nav.Back_Page = instanceKey
-                    nav.Back_Title = instanceData.Name
+                    nav.Next_Title = instanceData.Entry[nextIndex].Name
+
+					nav.Back_Page = AtlasTWLoot_BackTableRegistry[instanceData.Name] or instanceKey
+					nav.Back_Title = instanceData.Name
+
                     return nav
                 end
             end
@@ -134,7 +136,6 @@ function AtlasLoot_OnEvent()
 	if not AtlasTWCharDB["SearchResult"] then AtlasTWCharDB["SearchResult"] = {} end
 
 	--Add the loot browser to the special frames tables to enable closing wih the ESC key
-	--tinsert(UISpecialFrames, "AtlasLootDefaultFrame")
 	tinsert(UISpecialFrames, "AtlasLootOptionsFrame")
 	--Disable checkboxes of missing addons
 	if not LootLink_SetTooltip then
@@ -363,79 +364,79 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 	AtlasLootItemsFrame.refresh = {dataID, dataSource_backup, boss, AtlasFrame}
 	--Escape out of this function if creating a menu, this function only handles loot tables.
 	--Inserting escapes in this way allows consistant calling of data whether it is a loot table or a menu.
-	if dataID=="PRE60SET" then
+	if dataID=="Pre60Set" then
 		AtlasLootPRE60SetMenu()
-	elseif dataID=="ZGSET" then
+	elseif dataID=="ZgSet" then
 		AtlasLootZGSetMenu()
-	elseif dataID=="AQ40SET" then
+	elseif dataID=="Aq40Set" then
 		AtlasLootAQ40SetMenu()
-	elseif dataID=="K40SET" then
+	elseif dataID=="K40Set" then
 		AtlasLootUKSetMenu()
-	elseif dataID=="AQ20SET" then
+	elseif dataID=="Aq20Set" then
 		AtlasLootAQ20SetMenu()
-	elseif dataID=="T3SET" then
+	elseif dataID=="T3Set" then
 		AtlasLootT3SetMenu()
-	elseif dataID=="T2SET" then
+	elseif dataID=="T2Set" then
 		AtlasLootT2SetMenu()
-	elseif dataID=="T1SET" then
+	elseif dataID=="T1Set" then
 		AtlasLootT1SetMenu()
-	elseif dataID=="T0SET" then
+	elseif dataID=="T0Set" then
 		AtlasLootT0SetMenu()
-	elseif dataID=="PVPMENU" then
+	elseif dataID=="PvP" then
 		AtlasLootPvPMenu()
-	elseif(dataID=="BRRepMenu") then
-		AtlasLootBRRepMenu()
-	elseif dataID=="WSGRepMenu" then
-		AtlasLootWSGRepMenu()
-	elseif dataID=="ABRepMenu" then
-		AtlasLootABRepMenu()
-	elseif dataID=="AVRepMenu" then
-		AtlasLootAVRepMenu()
-	elseif dataID=="PVPSET" then
+	elseif dataID=="PvPSet" then
 		AtlasLootPVPSetMenu()
-	elseif dataID=="REPMENU" then
+	elseif(dataID=="BloodRing") then
+		AtlasLootBRRepMenu()
+	elseif dataID=="WarsongGulch" then
+		AtlasLootWSGRepMenu()
+	elseif dataID=="ArathiBasin" then
+		AtlasLootABRepMenu()
+	elseif dataID=="AlteracValley" then
+		AtlasLootAVRepMenu()
+	elseif dataID=="Factions" then
 		AtlasLootRepMenu()
-	elseif dataID=="SETMENU" then
+	elseif dataID=="Collections" then
 		AtlasLootSetMenu()
-	elseif dataID=="WORLDEPICS" then
+	elseif dataID=="WorldEpics" then
 		AtlasLootWorldEpicsMenu()
-	elseif dataID=="WORLDBLUES" then
+	elseif dataID=="WorldBlues" then
 		AtlasLootWorldBluesMenu()
 	elseif dataID=="WorldEvents" then
 		AtlasLootWorldEventMenu()
-	elseif dataID=="AbyssalCouncil" then
-		AtlasLootAbyssalCouncilMenu()
-	elseif dataID=="CRAFTINGMENU" then
+--	elseif dataID=="AbyssalCouncil" then
+--		AtlasLootAbyssalCouncilMenu()
+	elseif dataID=="Crafting" then
 		AtlasLoot_CraftingMenu()
-	elseif dataID=="CRAFTSET" then
+	elseif dataID=="CraftSet" then
 		AtlasLootCraftedSetMenu()
-	elseif dataID=="CRAFTSET2" then
+	elseif dataID=="CraftSet2" then
 		AtlasLootCraftedSet2Menu()
-	elseif dataID=="ALCHEMYMENU" then
+	elseif dataID=="Alchemy" then
 		AtlasLoot_AlchemyMenu()
-	elseif dataID=="SMITHINGMENU" then
+	elseif dataID=="Blacksmithing" then
 		AtlasLoot_SmithingMenu()
-	elseif dataID=="ENCHANTINGMENU" then
+	elseif dataID=="Enchanting" then
 		AtlasLoot_EnchantingMenu()
-	elseif dataID=="ENGINEERINGMENU" then
+	elseif dataID=="Engineering" then
 		AtlasLoot_EngineeringMenu()
-	elseif dataID=="LEATHERWORKINGMENU" then
+	elseif dataID=="Leatherworking" then
 		AtlasLoot_LeatherworkingMenu()
-	elseif dataID=="MININGMENU" then
+	elseif dataID=="Mining" then
 		AtlasLoot_MiningMenu()
-	elseif dataID=="TAILORINGMENU" then
+	elseif dataID=="Tailoring" then
 		AtlasLoot_TailoringMenu()
-	elseif dataID=="COOKINGMENU" then
+	elseif dataID=="Cooking" then
 		AtlasLoot_CookingMenu()
-	elseif(dataID=="SURVIVALMENU") then
+	elseif(dataID=="Survival") then
 		AtlasLoot_SurvivalMenu()
-	elseif(dataID=="WORLDMENU") then
+	elseif(dataID=="World") then
 		AtlasLoot_WorldMenu()
 	elseif(dataID=="DUNGEONSMENU1") then
 		AtlasLoot_DungeonsMenu1()
 	elseif(dataID=="DUNGEONSMENU2") then
 		AtlasLoot_DungeonsMenu2()
-	elseif(dataID=="JEWELCRAFTMENU") then
+	elseif(dataID=="Jewelcrafting") then
 		AtlasLoot_JewelcraftingMenu()
 	elseif(dataID=="PriestSet") then
 		AtlasLootPriestSetMenu()
@@ -491,11 +492,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 					--spellName = GetSpellInfoAtlasLootDB["enchants"][tonumber(string.sub(dataSource[dataID][i][1], 2))]["name"]
 					spellName = AtlasLoot_FixText(dataSource[dataID][i][3])
 					spellIcon = dataSource[dataID][i][2]
-		--			DEFAULT_CHAT_FRAME:AddMessage(spellIcon.." spellIcon")
-		--			DEFAULT_CHAT_FRAME:AddMessage(spellName.." spellName")
-		--			DEFAULT_CHAT_FRAME:AddMessage(string.sub(dataSource[dataID][i][3], 1, 4).." spellName")
 					text = AtlasLoot_FixText(string.sub(dataSource[dataID][i][3], 1, 4)..spellName)
-		--			DEFAULT_CHAT_FRAME:AddMessage(text.." text")
 					quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
 					quantityFrame:SetText("")
 				elseif isSpell then
@@ -765,7 +762,13 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 				_G["AtlasLootItemsFrame_PREV"].lootpage = dataID.."Page"..(wlPage - 1)
 			end
 		else
+--[[ 			DEFAULT_CHAT_FRAME:AddMessage("dataID: "..dataID)
 			local nav = AtlasLoot_GetBossNavigation(dataID)
+			if nav then
+				DEFAULT_CHAT_FRAME:AddMessage("nav: "..nav.Title)
+			else
+				DEFAULT_CHAT_FRAME:AddMessage("nav: nothing")
+			end
 			if nav then
 				AtlasLoot_BossName:SetText(nav.Title)
 				if nav.Next_Page then
@@ -783,28 +786,35 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 				 	_G["AtlasLootItemsFrame_BACK"].lootpage = nav.Back_Page
 				 	_G["AtlasLootItemsFrame_BACK"].title = nav.Back_Title
 				 end
-			end
-
-				--Hide navigation buttons if we click Quicklooks in Atlas
---[[				if AtlasFrame and AtlasFrame:IsVisible() then
-					if this.sourcePage then
-						local _, dataSource2 = AtlasLoot_Strsplit("|", this.sourcePage)
-						if dataSource2 == "AtlasLootItems" then
- 							AtlasLootItemsFrame_BACK:Hide()
-							AtlasLootItemsFrame_NEXT:Hide()
-							AtlasLootItemsFrame_PREV:Hide() 
-						end
-					end
-					for i = 1, 4 do
-						if AtlasTWCharDB["QuickLooks"][i] and dataID == AtlasTWCharDB["QuickLooks"][i][1] then
- 							AtlasLootItemsFrame_BACK:Hide()
-							AtlasLootItemsFrame_NEXT:Hide()
-							AtlasLootItemsFrame_PREV:Hide() 
-						end
-					end
-				end
-			end]]
+			end ]]
 		end
+	end
+
+	-- Show navigation buttons TODO TEST
+	DEFAULT_CHAT_FRAME:AddMessage("dataID: "..dataID)
+	local nav = AtlasLoot_GetBossNavigation(dataID)
+	if nav then
+		DEFAULT_CHAT_FRAME:AddMessage("nav: "..nav.Title)
+	else
+		DEFAULT_CHAT_FRAME:AddMessage("nav: nothing")
+	end
+	if nav then
+		AtlasLoot_BossName:SetText(nav.Title)
+		if nav.Next_Page then
+			_G["AtlasLootItemsFrame_NEXT"]:Show()
+			_G["AtlasLootItemsFrame_NEXT"].lootpage = nav.Next_Page
+			_G["AtlasLootItemsFrame_NEXT"].title = nav.Next_Title
+		end
+		if nav.Prev_Page then
+			_G["AtlasLootItemsFrame_PREV"]:Show()
+			_G["AtlasLootItemsFrame_PREV"].lootpage = nav.Prev_Page
+			_G["AtlasLootItemsFrame_PREV"].title = nav.Prev_Title
+		end
+			if nav.Back_Page then
+			_G["AtlasLootItemsFrame_BACK"]:Show()
+			_G["AtlasLootItemsFrame_BACK"].lootpage = nav.Back_Page
+			_G["AtlasLootItemsFrame_BACK"].title = nav.Back_Title
+			end
 	end
 
 	--Show a 'close' button to hide the loot table and restore the map view
@@ -1086,12 +1096,12 @@ function AtlasLoot_OpenMenu(menuName)
 	AtlasTWCharDB.LastBoss = this.lootpage
 	AtlasTWCharDB.LastBossText = menuName
 	local menuMapping = {
-		[L["Crafting"]] = "CRAFTINGMENU",
-		[L["PvP Rewards"]] = "PVPMENU",
+		[L["Crafting"]] = "Crafting",
+		[L["PvP Rewards"]] = "PvP",
 		[L["World Events"]] = "WorldEvents",
-		[L["Collections"]] = "SETMENU",
-		[L["Factions"]] = "REPMENU",
-		[L["World"]] = "WORLDMENU",
+		[L["Collections"]] = "Collections",
+		[L["Factions"]] = "Factions",
+		[L["World"]] = "World",
 		[L["Dungeons & Raids"]] = "DUNGEONSMENU1",
 	}
 
@@ -1189,6 +1199,7 @@ function AtlasLoot_NavButton_OnClick()
 		else
 			AtlasTWCharDB.LastBoss = this.lootpage
 			AtlasTWCharDB.LastBossText = this.title
+			DEFAULT_CHAT_FRAME:AddMessage(tostring(AtlasLootItemsFrame.refresh[2]))
 			AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.refresh[2], this.title)
 			if AtlasLootItemsFrame_SelectedTable:GetText()~=nil then
 				AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(AtlasLoot_BossName:GetText(), 30))
@@ -1208,7 +1219,7 @@ function AtlasLoot_NavButton_OnClick()
 			AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasTWCharDB.LastBossText, 30))
 			AtlasLootItemsFrame_SelectedTable:SetText()
 		end
-	end 
+	end
 end
 
 --[[
@@ -1621,7 +1632,6 @@ function AtlasLootItem_OnClick(arg1)
 			AtlasLoot_ShowItemsFrame(dataID, dataSource, bossName)
 		elseif arg1=="RightButton" and itemName then
 			AtlasLootItemsFrame:Hide()
-
 			AtlasLoot_ShowItemsFrame(dataID, dataSource, bossName)
 			if not AtlasTWOptions.LootItemSpam then
 				DEFAULT_CHAT_FRAME:AddMessage(itemName..L[" is safe."])

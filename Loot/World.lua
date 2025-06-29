@@ -5,40 +5,40 @@ AtlasLootWBBossButtons = {
 		"",
 		"",
 		"",
-		"DLethon",
-		"DEmeriss",
-		"DTaerar",
-		"DYsondre",
+		"WBLethon",
+		"WBEmeriss",
+		"WBTaerar",
+		"WBYsondre",
 		"",
-		"DTrash",
+		"WBEDTrash",
 	},
 	Azuregos = {
-		"AAzuregos",
-		"ASpiritA",
+		"WBAzuregos",
+		"WBSpiritA",
 	},
 	LordKazzak = {
-		"KKazzak",
+		"WBLordKazzak",
 	},
 	Turtlhu = {
-		"Turtlhu",
+		"WBTurtlhu",
 	},
 	Nerubian = {
-		"Nerubian",
+		"WBNerubian",
 	},
 	Reaver = {
-		"Reaver",
+		"WBReaver",
 	},
 	Ostarius = {
-		"Ostarius",
+		"WBOstarius",
 	},
 	Concavius = {
-		"Concavius",
+		"WBConcavius",
 	},
 	CowKing = {
-		"CowKing",
+		"WBCowKing",
 	},
 	Clackora = {
-		"Clackora",
+		"WBClackora",
 	},
 	RareMobs = {
 		"ShadeMage",
@@ -84,7 +84,7 @@ AtlasLootWBBossButtons = {
 AtlasLoot_Data["AtlasLootWBItems"] = {
 	EmptyInstance = {},
 
-	Reaver = {
+	WBReaver = {
 		{ 51778, "INV_Staff_05", "=q4=Lost Crusader's Artifact", "=ds=#h4#", "4%" },
 		{ 51779, "inv_axe_14", "=q4=Greataxe of the Decrepit Crypt", "=ds=#h2#, #w1#", "4%" },
 		{ 51780, "inv_weapon_rifle_11", "=q4=Ghoulslayer Shotgun", "=ds=#w5#", "4%" },
@@ -116,7 +116,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 51775, "inv_pants_04", "=q4=Legguards of the Dark Reaver", "=ds=#s11#, #a4#", "4%" },
 		{ 51774, "inv_boots_plate_05", "=q4=Sabatons of the Dark Reaver", "=ds=#s12#, #a4#", "4%" },
 	},
-	Nerubian = {
+	WBNerubian = {
 		{ 51738, "inv_chest_leather_05", "=q4=Tunnel Field Carapace", "=ds=#s5#, #a2#", "20%" },
 		{ 51737, "inv_chest_cloth_02", "=q4=Vestments of Eternal Autumn", "=ds=#s5#, #a2#", "20%" },
 		{ 51736, "inv_chest_cloth_39", "=q4=Plauge-Infected Robe", "=ds=#s5#, #a1#", "20%" },
@@ -129,7 +129,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 51733, "inv_misc_cape_20", "=q4=Shadow-Weaver's Cape", "=ds=#s4#", "20%" },
 		{ 51732, "inv_misc_cape_11", "=q4=Silken Mantle of Dying Hope", "=ds=#s4#", "20%" },
 		{ 51731, "inv_misc_cape_01", "=q4=Venom Covered Cloak", "=ds=#s4#", "20%" },
-		{ 51730, "inv_misc_cape_18", "=q4=Shawl of Nerubian Silk", "=ds=#s4#", "20%" },
+		{ 51730, "inv_misc_cape_18", "=q4=Shawl of WBNerubian Silk", "=ds=#s4#", "20%" },
 		{ 0, "", "", "", "" },
 		{ 0, "", "", "", "" },
 		{ 12717, "inv_scroll_05", "=q4=Plans: Lionheart Helm", "=ds=#sr# =so1=300 =so2=320 =so3=330 =so4=340", "5%" },
@@ -144,7 +144,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 0, "", "", "", "" },
 		{ 51739, "inv_fabric_wool_02", "=q1=Little Ball of Spider Web", "=ds=#e15#", "100%" },
 	},
-	Ostarius = {
+	WBOstarius = {
 		{ 83480, "inv_misc_book_07", "=q4=Tome of Infalliable Truth", "=ds=#h4#, #s15#", "17%" },
 		{ 83481, "inv_mace_08", "=q4=Failsafe Activation Key", "=ds=#h4#, #s15#", "17%" },
 		{ 83482, "inv_wand_06", "=q4=Distress Signal Pulser", "=ds=#h4#, #s15#", "17%" },
@@ -173,7 +173,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 83235, "inv_misc_pocketwatch_03", "=q4=Ancient Locking Mechanism", "", "100%" },
 		{ 17962, "INV_Misc_Bag_10_Blue","=q2=Blue Sack of Gems","=ds=#m23# =q2=#e25#", "100%" },
 	},
-	Concavius = {
+	WBConcavius = {
 		{ 83233, "inv_archaeology_70_highborne_inertleystonecharm", "=q4=Charm of Dark Domination", "=ds=#s2#", "17%" },
 		{ 83234, "inv_jewelry_necklace_17", "=q4=Voidclaw Choker", "=ds=#s2#", "17%" },
 		{ 83237, "inv_jewelry_ring_ahnqiraj_01", "=q4=Band of Ancient Lethality", "=ds=#s13#", "17%" },
@@ -205,7 +205,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 15416, "inv_misc_monsterscales_07", "=q1=Black Dragonscale", "Group 3", "[2-5] 20%" },
 		{ 20520, "spell_shadow_sealofkings", "=q2=Dark Rune", "Group 3", "[2-4] 20%" },
 	},
-	Turtlhu = {
+	WBTurtlhu = {
 --[[ 		{ 20633, "INV_Shoulder_29", "=q4=Unnatural Leather Spaulders", "=ds=#s3#, #a2#", "4.76%" },
 		{ 20631, "INV_Boots_Cloth_05", "=q4=Mendicant's Slippers", "=ds=#s12#, #a1#", "4.76%" },
 		{ 20634, "INV_Boots_08", "=q4=Boots of Fright", "=ds=#s12#, #a2#", "4.76%" },
@@ -234,7 +234,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 50202, "INV_Egg_03", "=q3=Egg of Turtlhu", "=ds=#e15#", "100%" },
 		{ 50203, "INV_Enchant_Dustsoul", "=q2=Corrupted Sand", "=ds=#e12#", "100%" }, ]]
 	 },
-	CowKing = {
+	WBCowKing = {
 		{ 60486, "inv_misc_fish_02", "=q4=Fishbringer", "#h3#, #w6#", "25%" },
 		{ 0, "", "", "", "" },
 		{ 60487, "INV_Misc_Cape_20", "=q4=Cloak of the Moo Lord", "#s4#", "50%" },
@@ -249,7 +249,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 0, "", "", "", "" },
 		{ 51261, "inv_misc_bell_01", "=q2=Little Cow", "#e15#", "100%" },
 	},
-	Clackora = {
+	WBClackora = {
 		{ 55494, "inv_misc_birdbeck_02", "=q4=The Abyssal Pincer", "=ds=#h3#, #w13#" },
 		{ 55495, "inv_spear_04", "=q4=Zandalar Predator's Glaive", "=ds=#h2#, #w7#" },
 		{ 55504, "INV_Generic_Anchor", "=q4=Anchor of the Wavecutter", "=ds=#h2#, #w6#" },
@@ -267,7 +267,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 55497, "INV_QirajIdol_Night", "=q4=Idol of Ebb and Flow", "=ds=#e16# =q13=#c1#" },
         { 92020, "INV_Misc_Birdbeck_02", "=q3=Spawn of Cla'ckora", "=ds=#e15#", "5%" },
 	 },
-	KKazzak = {
+	WBLordKazzak = {
 		{ 18546, "INV_Helmet_18", "=q4=Infernal Headcage", "=ds=#s1#, #a3#", "20%" },
 		{ 17112, "INV_Hammer_05", "=q4=Empyrean Demolisher", "=ds=#h3#, #w6#", "20%" },
 		{ 18204, "INV_Misc_Cape_07", "=q4=Eskhandar's Pelt", "=ds=#s4#", "20%" },
@@ -290,7 +290,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 83545, "inv_scroll_04", "=q4=Pattern: Robe of Sacrifice", "=ds=#sr# =so1=300 =so2=320 =so3=330 =so4=340", "40%" },
 		{ 65003, "inv_chest_cloth_09", "=q4=Robe of Sacrifice", "=ds=#s5#, #a1#", "40%" },
 	},
-	DTaerar = {
+	WBTaerar = {
 		{ 20633, "INV_Shoulder_29", "=q4=Unnatural Leather Spaulders", "=ds=#s3#, #a2#", "17%" },
 		{ 20631, "INV_Boots_Cloth_05", "=q4=Mendicant's Slippers", "=ds=#s12#, #a1#", "17%" },
 		{ 20634, "INV_Boots_08", "=q4=Boots of Fright", "=ds=#s12#, #a2#", "17%" },
@@ -322,7 +322,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 0, "", "", "", "" },
 		{ 20381, "INV_Misc_MonsterScales_11", "=q2=Dreamscale", "=ds=#e12# =q5=#p16# (315)" },
 	},
-	DEmeriss = {
+	WBEmeriss = {
 		{ 20623, "INV_Helmet_17", "=q4=Circlet of Restless Dreams", "=ds=#s1#, #a2#", "14%" },
 		{ 20622, "INV_Jewelry_Necklace_18", "=q4=Dragonheart Necklace", "=ds=#s2#", "14%" },
 		{ 20624, "INV_Jewelry_Ring_38", "=q4=Ring of the Unliving", "=ds=#s13#", "14%" },
@@ -354,7 +354,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 0, "", "", "", "" },
 		{ 20381, "INV_Misc_MonsterScales_11", "=q2=Dreamscale", "=ds=#e12# =q5=#p16# (315)" },
 	},
-	DLethon = {
+	WBLethon = {
 		{ 20628, "INV_Helmet_43", "=q4=Deviate Growth Cap", "=ds=#s1#, #a2#", "14%" },
 		{ 20626, "INV_Bracer_07", "=q4=Black Bark Wristbands", "=ds=#s8#, #a1#", "14%" },
 		{ 20630, "INV_Gauntlets_29", "=q4=Gauntlets of the Shining Light", "=ds=#s9#, #a4#", "14%" },
@@ -386,7 +386,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 0, "", "", "", "" },
 		{ 20381, "INV_Misc_MonsterScales_11", "=q2=Dreamscale", "=ds=#e12# =q5=#p16# (315)" },
 	},
-	DYsondre = {
+	WBYsondre = {
 		{ 20637, "INV_Shoulder_11", "=q4=Acid Inscribed Pauldrons", "=ds=#s3#, #a4#", "13%" },
 		{ 20635, "INV_Chest_Cloth_39", "=q4=Jade Inlaid Vestments", "=ds=#s5#, #a1#", "13%" },
 		{ 20638, "INV_Pants_Mail_15", "=q4=Leggings of the Demented Mind", "=ds=#s11#, #a3#", "13%" },
@@ -418,13 +418,13 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 0, "", "", "", "" },
 		{ 20381, "INV_Misc_MonsterScales_11", "=q2=Dreamscale", "=ds=#e12# =q5=#p16# (315)" }
 	},
-	DTrash	= {
+	WBEDTrash	= {
 		{ 21146, "Spell_Shadow_AntiMagicShell", "=q1=Fragment of the Nightmare's Corruption", "=ds=#m3#", "5%" },
 		{ 21147, "Spell_Shadow_AntiMagicShell", "=q1=Fragment of the Nightmare's Corruption", "=ds=#m3#", "5%" },
 		{ 21148, "Spell_Shadow_AntiMagicShell", "=q1=Fragment of the Nightmare's Corruption", "=ds=#m3#", "5%" },
 		{ 21149, "Spell_Shadow_AntiMagicShell", "=q1=Fragment of the Nightmare's Corruption", "=ds=#m3# =q7=#x71#", "100%" },
 	},
-	AAzuregos = {
+	WBAzuregos = {
 		{ 19132, "INV_Crown_01", "=q4=Crystal Adorned Crown", "=ds=#s1#, #a1#", "10%" },
 		{ 18208, "INV_Misc_Cape_04", "=q4=Drape of Benediction", "=ds=#s4#", "10%" },
 		{ 18541, "INV_Misc_Cape_06", "=q4=Puissant Cape", "=ds=#s4#", "11.71%" },
@@ -446,7 +446,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 83544, "inv_scroll_04", "=q4=Pattern: Stormscale Leggings", "=ds=#sr# =so1=300 =so2=320 =so3=330 =so4=340", "40%" },
 		{ 65006, "inv_pants_mail_15", "=q4=Pattern: Stormscale Leggings", "=ds=#s11#, #a3#" },
 	},
-	ASpiritA = {
+	WBSpiritA = {
 		{ 20949, "INV_Letter_16", "=q1=Magical Ledger", "=ds=#m2#", "" },
 	},
 	Tarangos = {

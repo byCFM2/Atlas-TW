@@ -12,7 +12,7 @@ function AtlasLoot_GetDataSource(dataID)
 	return nil
 end
 
-function AtlasLoot_PrepMenu(backPage, title)
+function AtlasLoot_PrepMenu(backPage, title, menu)
     for i = 1, 30 do
         -- Hide item buttons and borders
         _G["AtlasLootItem_" .. i]:Hide()
@@ -30,7 +30,10 @@ function AtlasLoot_PrepMenu(backPage, title)
         -- Show extra text field
         _G["AtlasLootMenuItem_" .. i .. "_Extra"]:Show()
     end
-
+    if menu then
+        AtlasTWCharDB.LastBoss = menu or nil
+        AtlasTWCharDB.LastBossText = title or "nil"
+    end
     if backPage then
         AtlasLootItemsFrame_BACK:Show()
         AtlasLootItemsFrame_BACK.lootpage = backPage

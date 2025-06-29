@@ -1,11 +1,25 @@
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BZ = AceLibrary("Babble-Zone-2.2a")
+local title = L["Dungeons & Raids"]
+--temporary
+AtlasTWLoot_BackTableRegistry = {}
 
 local function getFormString(instanceType, mainString, extraString)
+    local index
+    if extraString then
+        index = mainString.." "..extraString
+    else
+        index = mainString
+    end
+    if instanceType == "[60]" then
+        AtlasTWLoot_BackTableRegistry[index] = "DUNGEONSMENU2"
+    end
     if instanceType == "[RAID]" then
+        AtlasTWLoot_BackTableRegistry[index] = "DUNGEONSMENU2"
         return "|cffff0000"..instanceType.." |cffffd200"..BZ[mainString].." "..(extraString or "")
     else
+        AtlasTWLoot_BackTableRegistry[index] = AtlasTWLoot_BackTableRegistry[mainString] or "DUNGEONSMENU1"
         return "|cffffffff"..instanceType.." |cffffd200"..BZ[mainString].." "..(extraString or "")
     end
 end
@@ -61,18 +75,14 @@ local dungeonsMenu2Data = {
 }
 
 function AtlasLoot_DungeonsMenu1()
-    AtlasLoot_PrepMenu(nil, L["Dungeons & Raids"])
-    AtlasTWCharDB.LastBoss = "DUNGEONSMENU1"
-    AtlasTWCharDB.LastBossText = L["Dungeons & Raids"]
+    AtlasLoot_PrepMenu(nil, title, "DUNGEONSMENU1")
     AtlasLootItemsFrame_PREV:Show()
     AtlasLootItemsFrame_NEXT:Show()
     AtlasLoot_ShowMenu(dungeonsMenu1Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalIronForge", maxItems = table.getn(dungeonsMenu1Data) })
 end
 
 function AtlasLoot_DungeonsMenu2()
-    AtlasLoot_PrepMenu(nil, L["Dungeons & Raids"])
-    AtlasTWCharDB.LastBoss = "DUNGEONSMENU2"
-    AtlasTWCharDB.LastBossText = L["Dungeons & Raids"]
+    AtlasLoot_PrepMenu(nil, title, "DUNGEONSMENU2")
     AtlasLootItemsFrame_PREV:Show()
     AtlasLootItemsFrame_NEXT:Show()
     AtlasLoot_ShowMenu(dungeonsMenu2Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalOrgrimmar", maxItems = table.getn(dungeonsMenu2Data) })
