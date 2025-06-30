@@ -356,7 +356,7 @@ function AtlasLootTip.extendTooltip(tooltip)
 					if source then
 						break
 					end
-					for k2,v2 in pairs(AtlasLoot_Data["AtlasLootSetItems"][k1]) do
+					for _,v2 in pairs(AtlasLoot_Data["AtlasLootSetItems"][k1]) do
 						if v2[1] == itemID then
 							source = k1
 							isSetPiece = true
@@ -372,7 +372,7 @@ function AtlasLootTip.extendTooltip(tooltip)
 			end
 			-- check world events
 			if not isCraft and not isWBLoot and not isPvP and not isRepReward and not isSetPiece then
-				for k1,v1 in pairs(AtlasLoot_Data["AtlasLootWorldEvents"]) do
+				for k1,_ in pairs(AtlasLoot_Data["AtlasLootWorldEvents"]) do
 					if source then
 						break
 					end

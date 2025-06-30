@@ -1193,9 +1193,9 @@ function AtlasLoot_NavButton_OnClick()
 			return
 		end
 		if string.sub(this.lootpage, 1, 16) == "SearchResultPage" then
-			AtlasLoot_ShowItemsFrame("SearchResult", this.lootpage, string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""))--, AtlasLootItemsFrame.refresh[4])
+			AtlasLoot_ShowItemsFrame("SearchResult", this.lootpage, string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""))
 		elseif string.sub(this.lootpage, 1, 12) == "WishListPage" then
-			AtlasLoot_ShowItemsFrame("WishList", this.lootpage, L["WishList"])--, AtlasLootItemsFrame.refresh[4])
+			AtlasLoot_ShowItemsFrame("WishList", this.lootpage, L["WishList"])
 		else
 			AtlasTWCharDB.LastBoss = this.lootpage
 			AtlasTWCharDB.LastBossText = this.title
