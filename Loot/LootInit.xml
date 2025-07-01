@@ -17,7 +17,7 @@
 	<Include file="Core\Crafting.lua"/>
 	<Include file="Core\Factions.lua"/>
 	<Include file="Core\World.lua"/>
-	<Include file="Core\ButtonRegistryNew.lua"/>
+	<Include file="Core\ButtonRegistry.lua"/>
 	<Include file="Core\TextParsing.lua"/>
 	<Include file="Core\Spells.lua"/>
 	<Include file="Core\PvP.lua"/>
