@@ -5,6 +5,7 @@ local title = L["Dungeons & Raids"]
 --temporary
 AtlasTWLoot_BackTableRegistry = {}
 
+-- Get the formatted string for the instance and make back navigation button
 local function getFormString(instanceType, mainString, extraString)
     local index
     if extraString then
@@ -17,10 +18,10 @@ local function getFormString(instanceType, mainString, extraString)
     end
     if instanceType == "[RAID]" then
         AtlasTWLoot_BackTableRegistry[index] = "DUNGEONSMENU2"
-        return "|cffff0000"..instanceType.." |cffffd200"..BZ[mainString].." "..(extraString or "")
+        return "|cffff0000"..instanceType.." |cffffd200"..BZ[mainString]..": "..(extraString or "")
     else
-        AtlasTWLoot_BackTableRegistry[index] = AtlasTWLoot_BackTableRegistry[mainString] or "DUNGEONSMENU1"
-        return "|cffffffff"..instanceType.." |cffffd200"..BZ[mainString].." "..(extraString or "")
+        AtlasTWLoot_BackTableRegistry[index] = AtlasTWLoot_BackTableRegistry[index] or "DUNGEONSMENU1"
+        return "|cffffffff"..instanceType.." |cffffd200"..BZ[mainString]..": "..(extraString or "")
     end
 end
 -- Data for Dungeons & Raids (Page 1)

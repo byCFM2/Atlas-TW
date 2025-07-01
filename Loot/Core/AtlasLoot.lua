@@ -762,13 +762,13 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 				_G["AtlasLootItemsFrame_PREV"].lootpage = dataID.."Page"..(wlPage - 1)
 			end
 		else
---[[ 			DEFAULT_CHAT_FRAME:AddMessage("dataID: "..dataID)
 			local nav = AtlasLoot_GetBossNavigation(dataID)
+--[[  			DEFAULT_CHAT_FRAME:AddMessage("dataID: "..dataID)
 			if nav then
 				DEFAULT_CHAT_FRAME:AddMessage("nav: "..nav.Title)
 			else
 				DEFAULT_CHAT_FRAME:AddMessage("nav: nothing")
-			end
+			end ]]
 			if nav then
 				AtlasLoot_BossName:SetText(nav.Title)
 				if nav.Next_Page then
@@ -786,43 +786,11 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 				 	_G["AtlasLootItemsFrame_BACK"].lootpage = nav.Back_Page
 				 	_G["AtlasLootItemsFrame_BACK"].title = nav.Back_Title
 				 end
-			end ]]
+			end 
 		end
 	end
 
-	-- Show navigation buttons TODO TEST
-	DEFAULT_CHAT_FRAME:AddMessage("dataID: "..dataID)
-	local nav = AtlasLoot_GetBossNavigation(dataID)
-	if nav then
-		DEFAULT_CHAT_FRAME:AddMessage("nav: "..nav.Title)
-	else
-		DEFAULT_CHAT_FRAME:AddMessage("nav: nothing")
-	end
-	if nav then
-		AtlasLoot_BossName:SetText(nav.Title)
-		if nav.Next_Page then
-			_G["AtlasLootItemsFrame_NEXT"]:Show()
-			_G["AtlasLootItemsFrame_NEXT"].lootpage = nav.Next_Page
-			_G["AtlasLootItemsFrame_NEXT"].title = nav.Next_Title
-		end
-		if nav.Prev_Page then
-			_G["AtlasLootItemsFrame_PREV"]:Show()
-			_G["AtlasLootItemsFrame_PREV"].lootpage = nav.Prev_Page
-			_G["AtlasLootItemsFrame_PREV"].title = nav.Prev_Title
-		end
-			if nav.Back_Page then
-			_G["AtlasLootItemsFrame_BACK"]:Show()
-			_G["AtlasLootItemsFrame_BACK"].lootpage = nav.Back_Page
-			_G["AtlasLootItemsFrame_BACK"].title = nav.Back_Title
-			end
-	end
-
-	--Show a 'close' button to hide the loot table and restore the map view
-	if AtlasLootItemsFrame:GetParent() == AtlasFrame then
-		AtlasLootItemsFrame_CloseButton:Show()
-	else
-		AtlasLootItemsFrame_CloseButton:Hide()
-	end
+	AtlasLootItemsFrame_CloseButton:Show()
 	local subMenu = nil
 	local bossName = ""
 	for k in pairs(AtlasLoot_HewdropDown_SubTables) do
@@ -1199,7 +1167,7 @@ function AtlasLoot_NavButton_OnClick()
 		else
 			AtlasTWCharDB.LastBoss = this.lootpage
 			AtlasTWCharDB.LastBossText = this.title
-			DEFAULT_CHAT_FRAME:AddMessage(tostring(AtlasLootItemsFrame.refresh[2]))
+		--	DEFAULT_CHAT_FRAME:AddMessage(tostring(AtlasLootItemsFrame.refresh[2]))
 			AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.refresh[2], this.title)
 			if AtlasLootItemsFrame_SelectedTable:GetText()~=nil then
 				AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(AtlasLoot_BossName:GetText(), 30))

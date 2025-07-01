@@ -209,9 +209,9 @@ AtlasLootBattlegrounds = {
 		"",
 		"",
 		"",
-		"ABRepFriendly5059",
-		"ABRepHonored5059",
-		"ABRepRevered5059",
+		"ABRepFriendly2029",
+		"ABRepHonored2029",
+		"ABRepRevered2029",
 		"ABRepExalted",
 	},
 	BGWarsongGulch = {
@@ -219,10 +219,10 @@ AtlasLootBattlegrounds = {
 		"",
 		"",
 		"",
-		"WSGRepFriendly4049",
-		"WSGRepHonored5059",
-		"WSGRepRevered5059",
-		"WSGRepExalted60",
+		"WSGRepFriendly2029",
+		"WSGRepHonored1019",
+		"WSGRepRevered1019",
+		"WSGRepExalted4049",
 	}
 }
 
