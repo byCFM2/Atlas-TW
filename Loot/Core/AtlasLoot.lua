@@ -1184,6 +1184,7 @@ function AtlasLoot_NavButton_OnClick()
  	for _,v in pairs(AtlasLoot_MenuList) do
 		if this.lootpage == v then
 			AtlasLootItemsFrame_SubMenu:Disable()
+		--	DEFAULT_CHAT_FRAME:AddMessage("AtlasLoot_NavButton_OnClick: "..v)
 			AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasTWCharDB.LastBossText, 30))
 			AtlasLootItemsFrame_SelectedTable:SetText()
 		end

@@ -1131,6 +1131,9 @@ AtlasLoot_TableNames = {
 	--- Other ---
 	-------------
 
+	["WishList"] = { L["WishList"], "AtlasTWCharDB" },
+    ["SearchResult"] = { L["Search"], "AtlasTWCharDB" },
+
 	--Menus, the entry does nothing, but makes the generalised loot table code less complex
  	["DUNGEONSMENU1"] = { "dummy", "dummy" },
 	["DUNGEONSMENU2"] = { "dummy", "dummy" },
@@ -1169,8 +1172,6 @@ AtlasLoot_TableNames = {
 	["Jewelcrafting"] = { "dummy", "dummy" },
 	["World"] = { "dummy", "dummy" },
 	["Survival"] = { "dummy", "dummy" },
-	["WishList"] = { L["WishList"], "AtlasTWCharDB" },
-    ["SearchResult"] = { L["Search"], "AtlasTWCharDB" },
 	--If all else fails!
 	["EmptyInstance"] = { "AtlasLoot", "AtlasLootFallback" },
 }
