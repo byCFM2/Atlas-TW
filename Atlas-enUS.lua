@@ -55,6 +55,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Lunar Festival"] = true,
 
 	--Other
+	
 	["Show the Quest Panel with Atlas"] = true,
 	["Show Quest Panel on the Left"] = true,
 	["Show Quest Panel on the Right"] = true,
@@ -663,6 +664,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Flight Path Maps"] = true,
 	["Druid-only"] = true,
 	["Aerie Peak"] = true,
+	["Azeroth"] = true,
 	["Astranaar"] = true,
 	["Auberdine"] = true,
 	["Bloodvenom Post"] = true,
@@ -676,10 +678,18 @@ L:RegisterTranslations("enUS", function() return {
 	["Darkshire"] = true,
 	["Everlook"] = true,
 	["Feathermoon Stronghold"] = true,
+	["Mudsprocket"] = true,
+	["Nordanaar"] = true,
+	["Alah'Thalas"] = true,
+	["Dun Agrath"] = true,
+	["Ravenshire"] = true,
+	["Ironforge Airfields"] = true,
+	["Caelan's Rest"] = true,
+	["Bael Hardul"] = true,
 	["Flame Crest"] = true,
 	["Freewind Post"] = true,
-	["Gadgetzan"] = true,
-	["Grom'Gol Base Camp"] = true,
+	["Tel Co. Basecamp"] = true,
+	["Stillward Church"] = true,
 	["Hammerfall"] = true,
 	["Kargath"] = true,
 	["Lakeshire"] = true,
@@ -731,6 +741,8 @@ L:RegisterTranslations("enUS", function() return {
 	["Favor of Erennius (ES Hard Mode)"] = true,
 	["Hateforge Chemistry Documents"] = true,
 	["Tome of Arcane Intricacies and Magical Phenomenon IX"] = true,
+	["Sunnyglade Valley"] = true,
+	["Sparkwater Port"] = true,
 
 	--Atlasloot
 	["AtlasLoot"] = true,

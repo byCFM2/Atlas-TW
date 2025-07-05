@@ -536,7 +536,7 @@ AtlasLoot_TableRegistry = {
         }
     },
     ["CraftSet2"] = {
-        Name = L["Crafted Sets"],
+        Name = L["Crafted Sets"].." II",
         Entry = {
             { ID = "RedDragonM", Title = BIS["Red Dragon Mail"] },
             { ID = "GreenDragonM", Title = BIS["Green Dragon Mail"] },

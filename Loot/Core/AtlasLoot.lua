@@ -228,9 +228,7 @@ function AtlasTW.Loot.ScrollBarUpdate()
 					bossLine:Enable()
 					loot:Hide()
 					selected:Show()
-				elseif AtlasLootBossButtons[zoneID]~=nil and
-				 AtlasLootBossButtons[zoneID][lineplusoffset] ~= nil and
-				 AtlasLootBossButtons[zoneID][lineplusoffset] ~= "" then
+				elseif AtlasLootBossButtons[zoneID]~=nil and AtlasLootBossButtons[zoneID][lineplusoffset] ~= nil and AtlasLootBossButtons[zoneID][lineplusoffset] ~= "" then
 					bossLine:Enable()
 					loot:Show()
 					selected:Hide()
@@ -364,98 +362,10 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 	AtlasLootItemsFrame.refresh = {dataID, dataSource_backup, boss, AtlasFrame}
 	--Escape out of this function if creating a menu, this function only handles loot tables.
 	--Inserting escapes in this way allows consistant calling of data whether it is a loot table or a menu.
-	if dataID=="Pre60Set" then
-		AtlasLootPRE60SetMenu()
-	elseif dataID=="ZgSet" then
-		AtlasLootZGSetMenu()
-	elseif dataID=="Aq40Set" then
-		AtlasLootAQ40SetMenu()
-	elseif dataID=="K40Set" then
-		AtlasLootUKSetMenu()
-	elseif dataID=="Aq20Set" then
-		AtlasLootAQ20SetMenu()
-	elseif dataID=="T3Set" then
-		AtlasLootT3SetMenu()
-	elseif dataID=="T2Set" then
-		AtlasLootT2SetMenu()
-	elseif dataID=="T1Set" then
-		AtlasLootT1SetMenu()
-	elseif dataID=="T0Set" then
-		AtlasLootT0SetMenu()
-	elseif dataID=="PvP" then
-		AtlasLootPvPMenu()
-	elseif dataID=="PvPSet" then
-		AtlasLootPVPSetMenu()
-	elseif(dataID=="BloodRing") then
-		AtlasLootBRRepMenu()
-	elseif dataID=="WarsongGulch" then
-		AtlasLootWSGRepMenu()
-	elseif dataID=="ArathiBasin" then
-		AtlasLootABRepMenu()
-	elseif dataID=="AlteracValley" then
-		AtlasLootAVRepMenu()
-	elseif dataID=="Factions" then
-		AtlasLootRepMenu()
-	elseif dataID=="Collections" then
-		AtlasLootSetMenu()
-	elseif dataID=="WorldEpics" then
-		AtlasLootWorldEpicsMenu()
-	elseif dataID=="WorldBlues" then
-		AtlasLootWorldBluesMenu()
-	elseif dataID=="WorldEvents" then
-		AtlasLootWorldEventMenu()
---	elseif dataID=="AbyssalCouncil" then
---		AtlasLootAbyssalCouncilMenu()
-	elseif dataID=="Crafting" then
-		AtlasLoot_CraftingMenu()
-	elseif dataID=="CraftSet" then
-		AtlasLootCraftedSetMenu()
-	elseif dataID=="CraftSet2" then
-		AtlasLootCraftedSet2Menu()
-	elseif dataID=="Alchemy" then
-		AtlasLoot_AlchemyMenu()
-	elseif dataID=="Blacksmithing" then
-		AtlasLoot_SmithingMenu()
-	elseif dataID=="Enchanting" then
-		AtlasLoot_EnchantingMenu()
-	elseif dataID=="Engineering" then
-		AtlasLoot_EngineeringMenu()
-	elseif dataID=="Leatherworking" then
-		AtlasLoot_LeatherworkingMenu()
-	elseif dataID=="Mining" then
-		AtlasLoot_MiningMenu()
-	elseif dataID=="Tailoring" then
-		AtlasLoot_TailoringMenu()
-	elseif dataID=="Cooking" then
-		AtlasLoot_CookingMenu()
-	elseif(dataID=="Survival") then
-		AtlasLoot_SurvivalMenu()
-	elseif(dataID=="World") then
-		AtlasLoot_WorldMenu()
-	elseif(dataID=="DUNGEONSMENU1") then
-		AtlasLoot_DungeonsMenu1()
-	elseif(dataID=="DUNGEONSMENU2") then
-		AtlasLoot_DungeonsMenu2()
-	elseif(dataID=="Jewelcrafting") then
-		AtlasLoot_JewelcraftingMenu()
-	elseif(dataID=="PriestSet") then
-		AtlasLootPriestSetMenu()
-	elseif(dataID=="MageSet") then
-		AtlasLootMageSetMenu()
-	elseif(dataID=="WarlockSet") then
-		AtlasLootWarlockSetMenu()
-	elseif(dataID=="RogueSet") then
-		AtlasLootRogueSetMenu()
-	elseif(dataID=="DruidSet") then
-		AtlasLootDruidSetMenu()
-	elseif(dataID=="HunterSet") then
-		AtlasLootHunterSetMenu()
-	elseif(dataID=="ShamanSet") then
-		AtlasLootShamanSetMenu()
-	elseif(dataID=="PaladinSet") then
-		AtlasLootPaladinSetMenu()
-	elseif(dataID=="WarriorSet") then
-		AtlasLootWarriorSetMenu()
+	local handlerName = AtlasLoot_MenuHandlers[dataID]
+	if handlerName and type(_G[handlerName]) == "function" then
+		_G[handlerName]()
+
 	else
 		--Iterate through each item object and set its properties
 		for i = 1, 30 do
@@ -1181,13 +1091,11 @@ function AtlasLoot_NavButton_OnClick()
 		--Fallback for if the requested loot page is a menu and does not have a .refresh instance
 		AtlasLoot_ShowItemsFrame(this.lootpage, "dummy", this.title)
 	end
- 	for _,v in pairs(AtlasLoot_MenuList) do
-		if this.lootpage == v then
-			AtlasLootItemsFrame_SubMenu:Disable()
-		--	DEFAULT_CHAT_FRAME:AddMessage("AtlasLoot_NavButton_OnClick: "..v)
-			AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasTWCharDB.LastBossText, 30))
-			AtlasLootItemsFrame_SelectedTable:SetText()
-		end
+	if AtlasLoot_MenuHandlers[this.lootpage] then
+		AtlasLootItemsFrame_SubMenu:Disable()
+		--	DEFAULT_CHAT_FRAME:AddMessage("AtlasLoot_NavButton_OnClick: "..this.lootpage)
+		AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasTWCharDB.LastBossText, 30))
+		AtlasLootItemsFrame_SelectedTable:SetText()
 	end
 end
 
@@ -1197,13 +1105,7 @@ end
 ]]
 function AtlasLoot_IsLootTableAvailable(dataID)
 	if not dataID then return false end
-	local menu_check = false
-	for _, v in pairs(AtlasLoot_MenuList) do
-		if v == dataID then
-			menu_check = true
-		end
-	end
-	if menu_check then
+	if AtlasLoot_MenuHandlers[dataID] then
 		return true
 	else
 		if not AtlasLoot_TableNames[dataID] then

@@ -119,8 +119,8 @@ end
 --Comparator function for alphabetic sorting of maps
 --yey, one function for everything
 local function atlas_SortZonesAlpha(a, b)
-	local aa = atlas_SanitizeName(AtlasMaps[a].ZoneName[1])
-	local bb = atlas_SanitizeName(AtlasMaps[b].ZoneName[1])
+	local aa = atlas_SanitizeName(AtlasMaps[a].ZoneName)
+	local bb = atlas_SanitizeName(AtlasMaps[b].ZoneName)
 	return aa < bb
 end
 
@@ -138,15 +138,6 @@ end
 --Initializes everything relating to saved variables and data in other lua files
 --This should be called ONLY when we're sure our variables are in memory
 local function Atlas_Init()
-	-- Валидация данных AtlasMaps
-	if AtlasTW.DEBUGMODE then
-		local errors = AtlasUtils.ValidateAllData()
-		for _, dungeonErrors in pairs(errors) do
-			for _, error in pairs(dungeonErrors) do
-				debug("Data validation error: " .. error)
-			end
-		end
-	end
 	-- Инициализируем UI фреймы
 	AtlasLoot_InitializeUI()
 
@@ -244,7 +235,7 @@ local function atlasSwitchDD_OnLoad()
 	local info
 	for _,v in pairs(atlas_Ints_Ent_DropDown) do
 		info = {
-			text = AtlasMaps[v].ZoneName[1],
+			text = AtlasMaps[v].ZoneName,
 			func = atlasSwitchDD_OnClick
 		}
 		UIDropDownMenu_AddButton(info)
@@ -252,8 +243,8 @@ local function atlasSwitchDD_OnLoad()
 end
 
 local function atlasSwitchDD_Sort(a, b)
-	local aa = AtlasMaps[a].ZoneName[1]
-	local bb = AtlasMaps[b].ZoneName[1]
+	local aa = AtlasMaps[a].ZoneName
+	local bb = AtlasMaps[b].ZoneName
 	return aa < bb
 end
 
@@ -266,16 +257,6 @@ function AtlasTW.Refresh()
 	local base = {}
 	local textLocation, textLevelRange, textMinLevel, textPlayerLimit = "", "", "", ""
 	local red = "|cffcc6666"
-
-	-- Валидация текущего подземелья
-    local errors = AtlasUtils.ValidateDungeonData(zoneID, data[zoneID])
-    if table.getn(errors) > 0 and AtlasTW.DEBUGMODE then
-        for _, error in pairs(errors) do
-            debug("Current dungeon validation error: " .. error)
-        end
-    end
-
-	--AtlasLoot_SetupForAtlas()
 
 	--If a first time user, set up options
 	if AtlasTWCharDB.FirstTime == nil or AtlasTWCharDB.FirstTime == true then
@@ -297,12 +278,12 @@ function AtlasTW.Refresh()
 	AtlasTW.CurrentMap = zoneID
 	AtlasTW.Quest.Update()
 	--Setup info panel above boss listing
-	local tName = base.ZoneName[1]
+	local tName = base.ZoneName
 	if AtlasTWOptions.AtlasAcronyms and base.Acronym ~= nil then
 		tName = tName..red.." ["..base.Acronym.."]"
 	end
-	if base.Location[1] then
-		textLocation = L["Location"]..": "..base.Location[1]
+	if base.Location then
+		textLocation = L["Location"]..": "..base.Location
 	end
 	if base.LevelRange then
 		textLevelRange = L["Level Range"]..": "..base.LevelRange
@@ -457,7 +438,7 @@ local function atlasFrameDropDown_Initialize()
 	local info
 	for _,v in pairs(AtlasTW.DropDowns[AtlasTWOptions.AtlasType]) do
 		info = {
-			text = AtlasMaps[v].ZoneName[1],
+			text = AtlasMaps[v].ZoneName,
 			func = atlasFrameDropDown_OnClick
 		}
 		UIDropDownMenu_AddButton(info)
@@ -532,14 +513,14 @@ local function atlasAutoSelect()
 			end
 		elseif AtlasTW.InstToEntMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
 			for _,va in pairs(AtlasTW.InstToEntMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
-				if currentZone == AtlasMaps[va].ZoneName[1] then
+				if currentZone == AtlasMaps[va].ZoneName then
 					debug("Instance/entrance pair found. Doing nothing.")
 					return
 				end
 			end
 		elseif AtlasTW.EntToInstMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
 			for _,va in pairs(AtlasTW.EntToInstMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
-				if currentZone == AtlasMaps[va].ZoneName[1] then
+				if currentZone == AtlasMaps[va].ZoneName then
 					debug("Instance/entrance pair found. Doing nothing.")
 					return
 				end
@@ -549,7 +530,7 @@ local function atlasAutoSelect()
 		for ka,va in pairs(AtlasTW.DropDowns) do
 			for kb,vb in pairs(va) do
 				-- Compare the currentZone to the new substr of ZoneName
-				if currentZone == strsub(AtlasMaps[vb].ZoneName[1], strlen(AtlasMaps[vb].ZoneName[1]) - strlen(currentZone) + 1) then
+				if currentZone == strsub(AtlasMaps[vb].ZoneName, strlen(AtlasMaps[vb].ZoneName) - strlen(currentZone) + 1) then
 					AtlasTWOptions.AtlasType = ka
 					AtlasTWOptions.AtlasZone = kb
 					AtlasTW.Refresh()
