@@ -223,12 +223,14 @@ function AtlasTW.Loot.ScrollBarUpdate()
 				highlightTexture:Show()
 				local loot = _G["AtlasBossLine"..line.."_Loot"]
 				local selected = _G["AtlasBossLine"..line.."_Selected"]
-				_G["AtlasBossLine"..line.."_Text"]:SetText(AtlasTW.ScrollList[lineplusoffset])
+				-- ЛЛМ _G["AtlasBossLine"..line.."_Text"]:SetText(AtlasTW.ScrollList[lineplusoffset])
+				_G["AtlasBossLine"..line.."_Text"]:SetText(AtlasMaps[zoneID][lineplusoffset][1])
+				local hasLoot = AtlasMaps[zoneID] and AtlasMaps[zoneID][lineplusoffset] and AtlasMaps[zoneID][lineplusoffset][2]
 				if AtlasLootItemsFrame.activeBoss == lineplusoffset then
 					bossLine:Enable()
 					loot:Hide()
 					selected:Show()
-				elseif AtlasLootBossButtons[zoneID]~=nil and AtlasLootBossButtons[zoneID][lineplusoffset] ~= nil and AtlasLootBossButtons[zoneID][lineplusoffset] ~= "" then
+--[[ 	LLM 			elseif AtlasLootBossButtons[zoneID]~=nil and AtlasLootBossButtons[zoneID][lineplusoffset] ~= nil and AtlasLootBossButtons[zoneID][lineplusoffset] ~= "" then
 					bossLine:Enable()
 					loot:Show()
 					selected:Hide()
@@ -236,7 +238,8 @@ function AtlasTW.Loot.ScrollBarUpdate()
 					bossLine:Enable()
 					loot:Show()
 					selected:Hide()
-				elseif AtlasLootBattlegrounds[zoneID]~=nil and AtlasLootBattlegrounds[zoneID][lineplusoffset] ~= nil and AtlasLootBattlegrounds[zoneID][lineplusoffset] ~= "" then
+				elseif AtlasLootBattlegrounds[zoneID]~=nil and AtlasLootBattlegrounds[zoneID][lineplusoffset] ~= nil and AtlasLootBattlegrounds[zoneID][lineplusoffset] ~= "" then ]]
+				elseif hasLoot then
 					bossLine:Enable()
 					loot:Show()
 					selected:Hide()
@@ -268,16 +271,8 @@ end
 ]]
 -- Вспомогательная функция для получения loot table ID
 local function GetLootTableID(zoneID, id)
-	local lootTables = {
-		AtlasLootBossButtons,
-		AtlasLootWBBossButtons,
-		AtlasLootBattlegrounds
-	}
-
-	for _, table in lootTables do
-		if table[zoneID] and table[zoneID][id] and table[zoneID][id] ~= "" then
-			return table[zoneID][id]
-		end
+	if AtlasMaps and AtlasMaps[zoneID] and AtlasMaps[zoneID][id] and AtlasMaps[zoneID][id][2] then
+		return AtlasMaps[zoneID][id][2]
 	end
 	return nil
 end

@@ -163,7 +163,6 @@ L:RegisterTranslations("enUS", function() return {
 	["Trash Mobs"] = true,
 	["Unknown"] = true,
 	["Varies"] = true,
-	["Various"] = true,
 	["Wanders"] = true,
 
 	--Instance names and acronyms
@@ -743,6 +742,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Tome of Arcane Intricacies and Magical Phenomenon IX"] = true,
 	["Sunnyglade Valley"] = true,
 	["Sparkwater Port"] = true,
+	["Maul'ogg Refuge"] = true,
 
 	--Atlasloot
 	["AtlasLoot"] = true,

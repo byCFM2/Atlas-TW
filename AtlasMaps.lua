@@ -26,11 +26,14 @@ local Constants = {
 }
 
 -- Helper functions for creating entries
-local function CreateEntry(color, text, table)
-    return { color .. text }
+local function CreateEntry(color, text, lootTable)
+    if not text then
+        DEFAULT_CHAT_FRAME:AddMessage(tostring(color).." "..tostring(lootTable))
+    end
+    return { color .. text, lootTable}
 end
 
-local function CreateNPCEntry(number, name, table, isRare, additionalInfo)
+local function CreateNPCEntry(number, name, lootTable, isRare, additionalInfo)
     local text = ""
     if number then
         text = number.. ") "
@@ -42,15 +45,15 @@ local function CreateNPCEntry(number, name, table, isRare, additionalInfo)
     if additionalInfo then
         text = text .. " (" .. additionalInfo .. ")"
     end
-    return CreateEntry(Colors.GREY, text)
+    return CreateEntry(Colors.GREY, text, lootTable)
 end
 
-local function CreateIndentedNPCEntry(name, table, additionalInfo)
+local function CreateIndentedNPCEntry(name, lootTable, additionalInfo)
     local text = Constants.INDENT .. BB[name]
     if additionalInfo then
         text = text .. " (" .. additionalInfo .. ")"
     end
-    return CreateEntry(Colors.GREY, text)
+    return CreateEntry(Colors.GREY, text, lootTable)
 end
 
 local function CreateEntranceEntry(letter, additionalInfo)
@@ -61,60 +64,60 @@ local function CreateEntranceEntry(letter, additionalInfo)
     return CreateEntry(Colors.BLUE, text)
 end
 
-local function CreateKeyEntry(name, table, additionalInfo)
+local function CreateKeyEntry(name, lootTable, additionalInfo)
     local text = L["Key"] .. ": " .. L[name]
     if additionalInfo then
         text = text .. " (" .. additionalInfo .. ")"
     end
-    return CreateEntry(Colors.ORANGE, text)
+    return CreateEntry(Colors.ORANGE, text, lootTable)
 end
 
-local function CreateItemEntry(number, itemName, table)
+local function CreateItemEntry(number, itemName, lootTable)
     local text = number .. ") " .. L[itemName]
-    return CreateEntry(Colors.GREY, text)
+    return CreateEntry(Colors.GREY, text, lootTable)
 end
 
-local function CreateObjectEntry(number, objectName, table)
+local function CreateObjectEntry(number, objectName, lootTable)
     local text
     if number ~= Constants.INDENT then
         text = number.. ") ".. L[objectName]
     else
         text = L[objectName]
     end
-    return CreateEntry(Colors.GREY, text)
+    return CreateEntry(Colors.GREY, text, lootTable)
 end
 
-local function CreateIndentedObjectEntry(objectName, table)
+local function CreateIndentedObjectEntry(objectName, lootTable)
     local text = Constants.INDENT .. L[objectName]
-    return CreateEntry(Colors.GREY, text)
+    return CreateEntry(Colors.GREY, text, lootTable)
 end
 
-local function CreateSpecialEntry(number, name, color, table, additionalInfo)
+local function CreateSpecialEntry(number, name, color, lootTable, additionalInfo)
     local text = number .. "') " .. L[name]
     if additionalInfo then
         text = text .. " (" .. additionalInfo .. ")"
     end
-    return CreateEntry(color or Colors.GREEN, text)
+    return CreateEntry(color or Colors.GREEN, text, lootTable)
 end
 
 local function CreateEmptyEntry()
     return { "" }
 end
 
-local function CreateTrashMobsEntry(table)
-    return CreateEntry(Colors.GREY, Constants.INDENT .. L["Trash Mobs"])
+local function CreateTrashMobsEntry(lootTable)
+    return CreateEntry(Colors.GREY, Constants.INDENT .. L["Trash Mobs"], lootTable)
 end
 
-local function CreateSetEntry(setName, table)
-    return CreateEntry(Colors.GREY, Constants.INDENT .. L["Set: "] .. BIS[setName])
+local function CreateSetEntry(setName, lootTable)
+    return CreateEntry(Colors.GREY, Constants.INDENT .. L["Set: "] .. BIS[setName], lootTable)
 end
 
 local function CreateAttunementEntry()
     return CreateEntry(Colors.ORANGE, L["Attunement Required"])
 end
 
-local function CreateReputationEntry(factionName, factionTable)
-    return CreateEntry(Colors.ORANGE, L["Reputation"] .. ": " .. BF[factionName])
+local function CreateReputationEntry(factionName, lootTable)
+    return CreateEntry(Colors.ORANGE, L["Reputation"] .. ": " .. BF[factionName], lootTable)
 end
 
 local function CreateDamageEntry(damageType)
@@ -241,19 +244,19 @@ AtlasMaps = {
             { letter = "A" }
         },
         entries = {
-            CreateNPCEntry("1", "Disciple of Naralex", "WCDiscipleOfNaralex"),
+            CreateNPCEntry("1", "Disciple of Naralex"),
             CreateNPCEntry("2", "Lord Cobrahn", "WCLordCobrahn"),
             CreateNPCEntry("3", "Lady Anacondra", "WCLadyAnacondra"),
             CreateNPCEntry("4", "Kresh", "WCKresh"),
             CreateNPCEntry("5", "Deviate Faerie Dragon", "WCDeviateFaerieDragon", true),
-            CreateNPCEntry("6", "Zandara Windhoof", "WCZandaraWindhoof"),
+            CreateNPCEntry("6", "Zandara Windhoof", "WCZandara"),
             CreateNPCEntry("7", "Lord Pythas", "WCLordPythas"),
             CreateNPCEntry("8", "Skum", "WCSkum"),
             CreateNPCEntry("9", "Vangros", "WCVangros"),
             CreateNPCEntry("10", "Lord Serpentis", "WCLordSerpentis", false, L["Upper"]),
-            CreateNPCEntry("11", "Verdan the Everliving", "WCVerdanTheEverliving", false, L["Upper"]),
-            CreateNPCEntry("12", "Mutanus the Devourer", "WCMutanusTheDevourer"),
-            CreateIndentedNPCEntry("Naralex", "WCNaralex"),
+            CreateNPCEntry("11", "Verdan the Everliving", "WCVerdan", false, L["Upper"]),
+            CreateNPCEntry("12", "Mutanus the Devourer", "WCMutanus"),
+            CreateIndentedNPCEntry("Naralex"),
             CreateEmptyEntry(),
             CreateTrashMobsEntry("WCTrash"),
             CreateSetEntry("Embrace of the Viper", "WAILING")
@@ -367,7 +370,7 @@ AtlasMaps = {
             CreateNPCEntry("4", "Overlord Ramtusk", "RFKOverlordRamtusk"),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Razorfen Spearhide"] .. " (" .. L["Rare"] .. ")", "RFKRazorfenSpearhide"),
             CreateNPCEntry("5", "Agathelos the Raging", "RFKAgathelos"),
-            CreateNPCEntry("6", "Blind Hunter", "RFKBlindHunter"),
+            CreateNPCEntry("6", "Blind Hunter", "RFKBlindHunter", true),
             CreateNPCEntry("7", "Charlga Razorflank", "RFKCharlgaRazorflank"),
             CreateEntry(Colors.GREY, "8) " .. L["Willix the Importer"]),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Heralath Fallowbrook"]),
@@ -495,8 +498,8 @@ AtlasMaps = {
             { letter = "D", info = L["Exit"] }
         },
         entries = {
-            CreateNPCEntry("1", "Pusillin", L["Chase Begins"]),
-            CreateNPCEntry("2", "Pusillin", "DMEPusillin", L["Chase Begins"]),
+            CreateNPCEntry("1", "Pusillin", nil, false, L["Chase Begins"]),
+            CreateNPCEntry("2", "Pusillin", "DMEPusillin", false, L["Chase Ends"]),
             CreateNPCEntry("3", "Zevrim Thornhoof", "DMEZevrimThornhoof"),
             CreateIndentedNPCEntry("Hydrospawn", "DMEHydro"),
             CreateIndentedNPCEntry("Lethtendris", "DMELethtendris"),
@@ -646,12 +649,12 @@ AtlasMaps = {
             CreateIndentedNPCEntry("Princess Yauj"),
             CreateNPCEntry("3", "Battleguard Sartura", "AQ40Sartura"),
             CreateNPCEntry("4", "Fankriss the Unyielding", "AQ40Fankriss"),
-            CreateNPCEntry("5", "Viscidus", "AQ40Viscidus", L["Optional"]),
+            CreateNPCEntry("5", "Viscidus", "AQ40Viscidus", false, L["Optional"]),
             CreateNPCEntry("6", "Princess Huhuran", "AQ40Huhuran"),
             CreateEntry(Colors.GREY, "7) " .. BB["The Twin Emperors"], "AQ40Emperors"),
             CreateIndentedNPCEntry("Emperor Vek'lor"),
             CreateIndentedNPCEntry("Emperor Vek'nilash"),
-            CreateNPCEntry("8", "Ouro", "AQ40Ouro", L["Optional"]),
+            CreateNPCEntry("8", "Ouro", "AQ40Ouro", false, L["Optional"]),
             CreateNPCEntry("9", "C'Thun", "AQ40CThun"),
             CreateSpecialEntry("1", "Andorgos"),
             CreateEntry(Colors.GREEN, Constants.INDENT .. L["Vethsera"]),
@@ -695,16 +698,16 @@ AtlasMaps = {
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Major Yeggeth"], "AQ20CAPTAIN"),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Major Pakkon"], "AQ20CAPTAIN"),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Colonel Zerran"], "AQ20CAPTAIN"),
-            CreateNPCEntry("3", "Moam", "AQ20Moam", L["Optional"]),
-            CreateNPCEntry("4", "Buru the Gorger", "AQ20Buru", L["Optional"]),
-            CreateNPCEntry("5", "Ayamiss the Hunter", "AQ20Ayamiss", L["Optional"]),
+            CreateNPCEntry("3", "Moam", "AQ20Moam", false, L["Optional"]),
+            CreateNPCEntry("4", "Buru the Gorger", "AQ20Buru", false, L["Optional"]),
+            CreateNPCEntry("5", "Ayamiss the Hunter", "AQ20Ayamiss", false, L["Optional"]),
             CreateNPCEntry("6", "Ossirian the Unscarred", "AQ20Ossirian"),
             CreateSpecialEntry("1", "Safe Room", Colors.GREEN),
             CreateEmptyEntry(),
             CreateTrashMobsEntry("AQ20Trash"),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Class Books"], "AQ20ClassBooks"),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["AQ Enchants"], "AQEnchants"),
-            CreateEntry(Colors.GREY, Constants.INDENT .. L["Ruins of Ahn'Qiraj Sets"], "AQ20Set"),
+            CreateEntry(Colors.GREY, Constants.INDENT .. L["Ruins of Ahn'Qiraj Sets"], "Aq20Set"),
             CreateEmptyEntry()
         },
         damageType = "Nature"
@@ -784,7 +787,7 @@ AtlasMaps = {
             CreateNPCEntry("20", "Magmus", "BRDMagmus"),
             CreateNPCEntry("21", "Emperor Dagran Thaurissan", "BRDEmperorDagranThaurissan"),
             CreateIndentedNPCEntry("Princess Moira Bronzebeard", "BRDPrincess"),
-            CreateEntry(Colors.GREY, Constants.INDENT .. L["High Priestess of Thaurissan"], "BRDPriestess"),
+            CreateEntry(Colors.GREY, Constants.INDENT .. L["High Priestess of Thaurissan"], "BRDPrincess"),
             CreateEntry(Colors.GREY, "22) " .. L["The Black Forge"]),
             CreateEntry(Colors.GREY, "23) " .. BZ["Molten Core"]),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Core Fragment"]),
@@ -831,9 +834,9 @@ AtlasMaps = {
             CreateEntry(Colors.GREY, "10) " .. L["Bijou's Belongings"]),
             CreateEntry(Colors.GREY, "11) " .. L["Human Remains"] .. " (" .. L["Lower"] .. ")", "LBRSHumanRemains"),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Unfired Plate Gauntlets"] .. " (" .. L["Lower"] .. ")"),
-            CreateNPCEntry("12", "Bannok Grimaxe", true, nil, "LBRSGrimaxe"),
+            CreateNPCEntry("12", "Bannok Grimaxe", "LBRSGrimaxe", true),
             CreateNPCEntry("13", "Mother Smolderweb", "LBRSSmolderweb"),
-            CreateNPCEntry("14", "Crystal Fang", true, nil, "LBRSCrystalFang"),
+            CreateNPCEntry("14", "Crystal Fang", "LBRSCrystalFang", true),
             CreateEntry(Colors.GREY, "15) " .. L["Urok's Tribute Pile"]),
             CreateIndentedNPCEntry("Urok Doomhowl", "LBRSDoomhowl", L["Summon"]),
             CreateNPCEntry("16", "Quartermaster Zigris", "LBRSZigris"),
@@ -948,19 +951,19 @@ AtlasMaps = {
         entries = {
             CreateEntry(Colors.GREY, "1) " .. L["Blastmaster Emi Shortfuse"]),
             CreateIndentedNPCEntry("Grubbis", "GnGrubbis"),
-            CreateIndentedNPCEntry("Chomper", "GnChomper"),
+            CreateIndentedNPCEntry("Chomper"),
             CreateEntry(Colors.GREY, "2) " .. L["Clean Room"]),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Tink Sprocketwhistle"]),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["The Sparklematic 5200"]),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Mail Box"]),
             CreateEntry(Colors.GREY, "3) " .. L["Kernobee"]),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Alarm-a-bomb 2600"]),
-            CreateNPCEntry("Matrix Punchograph 3005-B", "GnPunchographB"),
+            CreateEntry(Colors.GREY, Constants.INDENT .. L["Matrix Punchograph 3005-B"], "GnPunchographB"),
             CreateNPCEntry("4", "Viscous Fallout", "GnViscousFallout"),
             CreateNPCEntry("5", "Electrocutioner 6000", "GnElectrocutioner6000"),
-            CreateNPCEntry("Matrix Punchograph 3005-C", "GnPunchographC"),
+            CreateEntry(Colors.GREY, Constants.INDENT .. L["Matrix Punchograph 3005-C"], "GnPunchographC"),
             CreateNPCEntry("6", "Crowd Pummeler 9-60", "GnCrowdPummeler960", false, L["Upper"]),
-            CreateNPCEntry("Matrix Punchograph 3005-D", "GnPunchographD"),
+            CreateEntry(Colors.GREY, Constants.INDENT .. L["Matrix Punchograph 3005-D"], "GnPunchographD"),
             CreateNPCEntry("7", "Dark Iron Ambassador", "GnDIAmbassador", true),
             CreateNPCEntry("8", "Mekgineer Thermaplugg", "GnMekgineerThermaplugg"),
             CreateEmptyEntry(),
@@ -1056,7 +1059,7 @@ AtlasMaps = {
             CreateNPCEntry("2", "Kel'Thuzad", "NAXKelThuzard"),
             CreateEmptyEntry(),
             CreateTrashMobsEntry("NAXTrash"),
-            CreateSetEntry("Tier 3 Sets", "T3Set"),
+            CreateEntry(Colors.GREY, Constants.INDENT .. L["Tier 3 Sets"], "T3Set"),
             CreateEmptyEntry(),
         },
         damageType = "Nature, Fire, Arcane, Shadow, Frost"
@@ -1147,9 +1150,9 @@ AtlasMaps = {
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Vorrel Sengutz"]),
             CreateEntry(Colors.GREY, "2) " .. BB["Scorn"] .. " (" .. L["Scourge Invasion"] .. ")", "SMScorn"),
             CreateNPCEntry("3", "Bloodmage Thalnos", "SMBloodmageThalnos"),
-            CreateSpecialEntry("1", "Ironspine", Colors.GREEN, "SMIronspine"),
-            CreateEntry(Colors.GREEN, Constants.INDENT .. BB["Azshir the Sleepless"] .. " (" .. L["Rare"] .. ")", "SMAzshir"),
-            CreateEntry(Colors.GREEN, Constants.INDENT .. BB["Fallen Champion"] .. " (" .. L["Rare"] .. ")", "SMFallenChampion"),
+             CreateEntry(Colors.GREEN, "1') "..L["Ironspine"] .. " (" .. L["Rare"] .. ")", "SMIronspine"),
+            CreateEntry(Colors.GREEN, BB["Azshir the Sleepless"] .. " (" .. L["Rare"] .. ")", "SMAzshir"),
+            CreateEntry(Colors.GREEN, BB["Fallen Champion"] .. " (" .. L["Rare"] .. ")", "SMFallenChampion"),
             CreateEntry(Colors.GREY, "4) " .. BB["Duke Dreadmoore"], "SMDukeDreadmoore"),
             CreateEmptyEntry(),
             CreateTrashMobsEntry("SMGTrash"),
@@ -1181,7 +1184,7 @@ AtlasMaps = {
             { letter = "C", info = L["Connection"] }
         },
         entries = {
-            CreateNPCEntry("1", "Blood Steward of Kirtonos", "SCHOLOBlood"),
+            CreateEntry(Colors.GREY, "1) " .. L["Blood Steward of Kirtonos"], "SCHOLOBlood"),
             CreateObjectEntry(Constants.INDENT, "The Deed to Southshore"),
             CreateNPCEntry("2", "Kirtonos the Herald", "SCHOLOKirtonostheHerald", L["Summon"]),
             CreateNPCEntry("3", "Jandice Barov", "SCHOLOJandiceBarov"),
@@ -1308,9 +1311,9 @@ AtlasMaps = {
             CreateEntry(Colors.BLUE, Constants.INDENT .. BB["Mijan"]),
             CreateEntry(Colors.BLUE, Constants.INDENT .. BB["Zul'Lor"]),
             CreateEntry(Colors.GREY, "1) " .. L["Altar of Hakkar"]),
-            CreateIndentedNPCEntry("Atal'alarion", "STAtalarion"),
-            CreateEntry(Colors.GREY, "2) " .. L["Spawn of Hakkar"] .. " (" .. L["Wanders"] .. ")", "STSpawnofHakkar"),
-            CreateNPCEntry("3", "Avatar of Hakkar", "STAvatarOfHakkar"),
+            CreateIndentedNPCEntry("Atal'alarion", "STAtalalarion"),
+            CreateEntry(Colors.GREY, "2) " .. L["Spawn of Hakkar"] .. " (" .. L["Wanders"] .. ")", "STSpawnOfHakkar"),
+            CreateNPCEntry("3", "Avatar of Hakkar", "STAvatarofHakkar"),
             CreateNPCEntry("4", "Jammal'an the Prophet", "STJammalan"),
             CreateIndentedNPCEntry("Ogom the Wretched", "STOgom"),
             CreateEntry(Colors.GREY, "5) " .. L["Elder Starsong"] .. " (" .. L["Lunar Festival"] .. ")", "LunarFestival1"),
@@ -1389,7 +1392,7 @@ AtlasMaps = {
             CreateEntry(Colors.GREY, "2) " .. BB["High Priest Venoxis"] .. " (" .. L["Snake"] .. ")", "ZGVenoxis"),
             CreateEntry(Colors.GREY, "3) " .. L["Zanza the Restless"], "ZGEnchants"),
             CreateEntry(Colors.GREY, "4) " .. BB["High Priestess Mar'li"] .. " (" .. L["Spider"] .. ")", "ZGMarli"),
-            CreateEntry(Colors.GREY, "5) " .. BB["Bloodlord Mandokir"] .. " (" .. L["Raptor"] .. ", " .. L["Optional"] .. ")", "ZGBloodlZGMandokirordMandokir"),
+            CreateEntry(Colors.GREY, "5) " .. BB["Bloodlord Mandokir"] .. " (" .. L["Raptor"] .. ", " .. L["Optional"] .. ")", "ZGMandokir"),
             CreateEntry(Colors.GREY, Constants.INDENT .. L["Ohgan"]),
             CreateEntry(Colors.GREY, "6) " .. L["Edge of Madness"] .. " (" .. L["Optional"] .. ")"),
             CreateIndentedNPCEntry("Gri'lek", "ZGGrilek", L["Random"]),
@@ -1568,6 +1571,7 @@ AtlasMaps = {
             CreateNPCEntry("5", "Mossheart", "COTBMMossheart"),
             CreateNPCEntry("6", "Antnormi", "COTBMAntnormi"),
             CreateNPCEntry("7", "Rotmaw", "COTBMRotmaw"),
+            CreateEmptyEntry(),
             CreateTrashMobsEntry("COTTrash")
         }
     }),
@@ -1885,7 +1889,7 @@ AtlasMaps = {
 
     FourDragons = CreateDungeonTemplate({
         zoneName = L["Emerald Dragons"],
-        location = L["Various"],
+        location = L["Various Locations"],
         levelRange = "60+",
         minLevel = "1",
         playerLimit = "40",
@@ -2012,7 +2016,7 @@ AtlasMaps = {
 
     RareMobs = CreateDungeonTemplate({
         zoneName = L["Rare Mobs"],
-        location = L["Various locations"],
+        location = L["Various Locations"],
         levelRange = "17-60",
         minLevel = "1",
         entries = {
@@ -2320,7 +2324,7 @@ AtlasMaps = {
         CreateEntry(Colors.GREY, "15) " .. L["Thalanaar"] .. ", " .. Colors.BLUE .. BZ["Feralas"]),
         CreateEntry(Colors.GREY, "16) " .. L["Marshal's Refuge"] .. ", " .. Colors.BLUE .. BZ["Un'Goro Crater"]),
         CreateEntry(Colors.GREY, "17) " .. L["Cenarion Hold"] .. ", " .. Colors.BLUE .. BZ["Silithus"]),
-        CreateEntry(Colors.GREY, "18) " .. L["Gadgetzan"] .. ", " .. Colors.BLUE .. BZ["Tanaris"]),
+        CreateEntry(Colors.GREY, "18) " .. BZ["Gadgetzan"] .. ", " .. Colors.BLUE .. BZ["Tanaris"]),
         CreateEntry(Colors.GREY, "19) " .. L["Tel Co. Basecamp"] .. ", " .. Colors.BLUE .. BZ["Tel'Abim"])
     },
 
@@ -2338,7 +2342,7 @@ AtlasMaps = {
         CreateEntry(Colors.GREY, "9) " .. L["Kargath"] .. ", " .. Colors.RED .. BZ["Badlands"]),
         CreateEntry(Colors.GREY, "10) " .. L["Flame Crest"] .. ", " .. Colors.RED .. BZ["Burning Steppes"]),
         CreateEntry(Colors.GREY, "11) " .. L["Stonard"] .. ", " .. Colors.RED .. BZ["Swamp of Sorrows"]),
-        CreateEntry(Colors.GREY, "12) " .. L[BZ["Grom'gol Base Camp"]] .. ", " .. Colors.RED .. BZ["Stranglethorn Vale"]),
+        CreateEntry(Colors.GREY, "12) " .. BZ["Grom'gol Base Camp"] .. ", " .. Colors.RED .. BZ["Stranglethorn Vale"]),
         CreateEntry(Colors.GREY, "13) " .. L["Booty Bay"] .. ", " .. Colors.RED .. BZ["Stranglethorn Vale"]),
         CreateEntry(Colors.GREY, "14) " .. L["Maul'ogg Refuge"] .. ", " .. Colors.RED .. BZ["Gillijim's Isle"])
     },
@@ -2367,7 +2371,7 @@ AtlasMaps = {
         CreateEntry(Colors.GREY, "18) " .. L["Freewind Post"] .. ", " .. Colors.RED .. BZ["Thousand Needles"]),
         CreateEntry(Colors.GREY, "19) " .. L["Marshal's Refuge"] .. ", " .. Colors.RED .. BZ["Un'Goro Crater"]),
         CreateEntry(Colors.GREY, "20) " .. L["Cenarion Hold"] .. ", " .. Colors.RED .. BZ["Silithus"]),
-        CreateEntry(Colors.GREY, "21) " .. L["Gadgetzan"] .. ", " .. Colors.RED .. BZ["Tanaris"]),
+        CreateEntry(Colors.GREY, "21) " .. BZ["Gadgetzan"] .. ", " .. Colors.RED .. BZ["Tanaris"]),
         CreateEntry(Colors.GREY, "22) " .. L["Tel Co. Basecamp"] .. ", " .. Colors.RED .. BZ["Tel'Abim"])
     },
 
@@ -2403,9 +2407,9 @@ AtlasMaps = {
         ZoneName = L["Dungeon Locations"] .. " (" .. BZ["Eastern Kingdoms"] .. ")",
         Location = BZ["Eastern Kingdoms"],
         Continent = BZ["Eastern Kingdoms"],
-        CreateEntry("A) " .. BZ["Alterac Valley"] .. ", " .. BZ["Alterac Mountains"] .. " / " .. BZ["Hillsbrad Foothills"]),
-        CreateEntry("B) " .. BZ["Arathi Basin"] .. ", " .. BZ["Arathi Highlands"]),
-        CreateEntry("C) " .. BZ["Blood Ring"] .. " Arena" .. ", " .. BZ["Stranglethorn Vale"]),
+        CreateEntry("", "A) " .. BZ["Alterac Valley"] .. ", " .. BZ["Alterac Mountains"] .. " / " .. BZ["Hillsbrad Foothills"]),
+        CreateEntry("", "B) " .. BZ["Arathi Basin"] .. ", " .. BZ["Arathi Highlands"]),
+        CreateEntry("", "C) " .. BZ["Blood Ring"] .. " Arena" .. ", " .. BZ["Stranglethorn Vale"]),
         CreateEntry(Colors.GREY, "1) " .. BZ["Scarlet Monastery"] .. ", " .. Colors.RED .. BZ["Tirisfal Glades"]),
         CreateEntry(Colors.GREY, "2) " .. BZ["Stratholme"] .. ", " .. Colors.RED .. BZ["Eastern Plaguelands"]),
         CreateEntry(Colors.GREY, "3) " .. BZ["Naxxramas"] .. ", " .. Colors.RED .. BZ["Eastern Plaguelands"]),
@@ -2427,16 +2431,16 @@ AtlasMaps = {
         CreateEntry(Colors.GREY, Constants.INDENT .. BZ["Tower of Karazhan"] .. ", " .. Colors.RED .. BZ["Deadwind Pass"]),
         CreateEntry(Colors.GREY, "14) " .. L["Sunken Temple"] .. ", " .. Colors.RED .. BZ["Swamp of Sorrows"]),
         CreateEntry(Colors.GREY, "15) " .. BZ["Zul'Gurub"] .. ", " .. Colors.RED .. BZ["Stranglethorn Vale"]),
-        CreateEntry(L["Blue"] .. ": " .. L["Battlegrounds"]),
-        CreateEntry(L["White"] .. ": " .. L["Instances"])
+        CreateEntry(Colors.BLUE, L["Blue"]..": "..Colors.ORANGE..L["Battlegrounds"]),
+        CreateEntry(Colors.GREY, L["White"]..": "..Colors.ORANGE..L["Instances"])
     },
 
     DLWest = {
         ZoneName = L["Dungeon Locations"] .. " (" .. BZ["Kalimdor"] .. ")",
         Location = BZ["Kalimdor"],
         Continent = BZ["Kalimdor"],
-        CreateEntry("A) " .. BZ["Warsong Gulch"] .. ", " .. BZ["The Barrens"] .. " / " .. BZ["Ashenvale"]),
-        CreateEntry("B) " .. "Sunnyglade Valley" .. ", " .. L["Caverns of Time"]),
+        CreateEntry("", "A) " .. BZ["Warsong Gulch"] .. ", " .. BZ["The Barrens"] .. " / " .. BZ["Ashenvale"]),
+        CreateEntry("", "B) " .. L["Sunnyglade Valley"] .. ", " .. L["Caverns of Time"]),
         CreateEntry(Colors.GREY, "1) " .. BZ["Emerald Sanctum"] .. ", " .. Colors.RED .. BZ["Hyjal"]),
         CreateEntry(Colors.GREY, "2) " .. BZ["Blackfathom Deeps"] .. ", " .. Colors.RED .. BZ["Ashenvale"]),
         CreateEntry(Colors.GREY, "3) " .. BZ["The Crescent Grove"] .. ", " .. Colors.RED .. BZ["Ashenvale"]),
