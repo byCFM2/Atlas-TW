@@ -1066,7 +1066,7 @@ AtlasMaps = {
     }),
 
     SMLibrary = CreateDungeonTemplate({
-        zoneName = BZ["Scarlet Monastery"] .. ": " .. L["Library"],
+        zoneName = BZ["Scarlet Monastery (Library)"],
         acronym = "SM Lib",
         location = BZ["Tirisfal Glades"],
         levelRange = "29-39",
@@ -1088,7 +1088,7 @@ AtlasMaps = {
     }),
 
     SMArmory = CreateDungeonTemplate({
-        zoneName = BZ["Scarlet Monastery"] .. ": " .. L["Armory"],
+        zoneName = BZ["Scarlet Monastery (Armory)"],
         acronym = "SM Arm",
         location = BZ["Tirisfal Glades"],
         levelRange = "33-40",
@@ -1111,7 +1111,7 @@ AtlasMaps = {
     }),
 
     SMCathedral = CreateDungeonTemplate({
-        zoneName = BZ["Scarlet Monastery"] .. ": " .. L["Cathedral"],
+        zoneName = BZ["Scarlet Monastery (Cathedral)"],
         acronym = "SM Cath",
         location = BZ["Tirisfal Glades"],
         levelRange = "35-45",
@@ -1135,7 +1135,7 @@ AtlasMaps = {
     }),
 
     SMGraveyard = CreateDungeonTemplate({
-        zoneName = BZ["Scarlet Monastery"] .. ": " .. L["Graveyard"],
+        zoneName = BZ["Scarlet Monastery (Graveyard)"],
         acronym = "SM GY",
         location = BZ["Tirisfal Glades"],
         levelRange = "26-36",

@@ -223,22 +223,13 @@ function AtlasTW.Loot.ScrollBarUpdate()
 				highlightTexture:Show()
 				local loot = _G["AtlasBossLine"..line.."_Loot"]
 				local selected = _G["AtlasBossLine"..line.."_Selected"]
-				-- ЛЛМ _G["AtlasBossLine"..line.."_Text"]:SetText(AtlasTW.ScrollList[lineplusoffset])
-				_G["AtlasBossLine"..line.."_Text"]:SetText(AtlasMaps[zoneID][lineplusoffset][1])
+				_G["AtlasBossLine"..line.."_Text"]:SetText(AtlasTW.ScrollList[lineplusoffset])
+				--_G["AtlasBossLine"..line.."_Text"]:SetText(AtlasMaps[zoneID][lineplusoffset][1])
 				local hasLoot = AtlasMaps[zoneID] and AtlasMaps[zoneID][lineplusoffset] and AtlasMaps[zoneID][lineplusoffset][2]
 				if AtlasLootItemsFrame.activeBoss == lineplusoffset then
 					bossLine:Enable()
 					loot:Hide()
 					selected:Show()
---[[ 	LLM 			elseif AtlasLootBossButtons[zoneID]~=nil and AtlasLootBossButtons[zoneID][lineplusoffset] ~= nil and AtlasLootBossButtons[zoneID][lineplusoffset] ~= "" then
-					bossLine:Enable()
-					loot:Show()
-					selected:Hide()
-				elseif AtlasLootWBBossButtons[zoneID]~=nil and AtlasLootWBBossButtons[zoneID][lineplusoffset] ~= nil and AtlasLootWBBossButtons[zoneID][lineplusoffset] ~= "" then
-					bossLine:Enable()
-					loot:Show()
-					selected:Hide()
-				elseif AtlasLootBattlegrounds[zoneID]~=nil and AtlasLootBattlegrounds[zoneID][lineplusoffset] ~= nil and AtlasLootBattlegrounds[zoneID][lineplusoffset] ~= "" then ]]
 				elseif hasLoot then
 					bossLine:Enable()
 					loot:Show()
@@ -283,6 +274,7 @@ local function ShowLootTable(name, lootTableID, id)
 	_G[name.."_Loot"]:Hide()
 	-- Извлекаем имя босса из текста
 	local _,_,boss = string.find(_G[name.."_Text"]:GetText(), "|c%x%x%x%x%x%x%x%x%s*[%dX']*[%) ]*(.*[^%,])[%,]?$")
+	DEFAULT_CHAT_FRAME:AddMessage("ShowLootTable: ".. tostring(lootTableID).." ".. tostring(boss))
 	AtlasLoot_ShowBossLoot(lootTableID, boss)
 	AtlasLootItemsFrame.activeBoss = id
 	AtlasTW.Loot.ScrollBarUpdate()
@@ -302,6 +294,7 @@ function AtlasLootBoss_OnClick(name)
 		-- Ищем таблицу лута для данного босса
 		local lootTableID = GetLootTableID(zoneID, id)
 		if lootTableID and AtlasLoot_IsLootTableAvailable(lootTableID) then
+			DEFAULT_CHAT_FRAME:AddMessage("AtlasLootBoss_OnClick: ".. tostring(lootTableID).." ".. tostring(name))
 			ShowLootTable(name, lootTableID, id)
 		end
 	end

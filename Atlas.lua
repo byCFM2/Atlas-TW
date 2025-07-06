@@ -90,7 +90,7 @@ local function atlas_Search(text)
 	AtlasTW.CurrentLine = i - 1
 end
 
-function Atlas_SearchAndRefresh(text)
+function AtlasTW.SearchAndRefresh(text)
 	atlas_Search(text)
 	AtlasTW.Loot.ScrollBarUpdate()
 end
@@ -303,12 +303,12 @@ function AtlasTW.Refresh()
 	atlasData = base
 
 	if (data.Search ~= false) then
-		AtlasSearchEditBox:Show();
-		AtlasTWNoSearch:Hide();
+		AtlasSearchEditBox:Show()
+		AtlasTWNoSearch:Hide()
 	else
-		AtlasSearchEditBox:Hide();
-		AtlasTWNoSearch:Show();
-		ATLAS_SEARCH_METHOD = nil;
+		AtlasSearchEditBox:Hide()
+		AtlasTWNoSearch:Show()
+		ATLAS_SEARCH_METHOD = nil
 	end
 
 	--populate the scroll frame entries list, the update func will do the rest

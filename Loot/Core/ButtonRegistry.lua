@@ -678,7 +678,7 @@ AtlasLoot_TableRegistry = {
             { ID = "RFKEarthcallerHalmgar", Title = BB["Earthcaller Halmgar"].." ("..L["Rare"]..")" },
         }
     },
-    ["ScarletMonastery(Graveyard)"] = {
+    ["ScarletMonasteryGraveyard"] = {
         Name = BZ["Scarlet Monastery (Graveyard)"],
         Entry = {
             { ID = "SMGTrash", Title = L["Trash Mobs"] },
