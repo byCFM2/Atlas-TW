@@ -8,10 +8,10 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 local replacements = {
     -- Armour class
-    a1 = L["Cloth"],
-    a2 = L["Leather"],
-    a3 = L["Mail"],
-    a4 = L["Plate"],
+    a1 = BS["Cloth"],
+    a2 = BS["Leather"],
+    a3 = BS["Mail"],
+    a4 = BS["Plate"],
     -- Body slot
     s1 = L["Head"],
     s2 = L["Neck"],

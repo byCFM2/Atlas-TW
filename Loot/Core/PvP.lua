@@ -2,7 +2,7 @@ local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local BC = AceLibrary("Babble-Class-2.2")
 local BZ = AceLibrary("Babble-Zone-2.2a")
 
-local pvpMenuData = {
+AtlasTW.Loot.PvpMenuData = {
     {},
     {},
     {},
@@ -29,7 +29,7 @@ local pvpMenuData = {
 
 function AtlasLootPvPMenu()
     AtlasLoot_PrepMenu(nil, L["PvP Rewards"], "PvP")
-    AtlasLoot_ShowMenu(pvpMenuData, { maxItems = table.getn(pvpMenuData) })
+    AtlasLoot_ShowMenu(AtlasTW.Loot.PvpMenuData, { maxItems = table.getn(AtlasTW.Loot.PvpMenuData) })
 end
 
 local brRepMenuData = {

@@ -1,6 +1,6 @@
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
-local worldEventsData = {
+AtlasTW.Loot.WorldEventsData = {
 	{},
     { name = L["Abyssal Council"], extra = "Silithus", icon = "Interface\\Icons\\Spell_Nature_TimeStop", lootpage = "AbyssalTemplars" },
     { name = L["Elemental Invasion"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Ammo_FireTar", lootpage = "ElementalInvasion" },
@@ -27,16 +27,5 @@ local worldEventsData = {
 
 function AtlasLootWorldEventMenu()
     AtlasLoot_PrepMenu(nil, L["World Events"], "WorldEvents")
-    AtlasLoot_ShowMenu(worldEventsData, { maxItems = table.getn(worldEventsData) })
+    AtlasLoot_ShowMenu(AtlasTW.Loot.WorldEventsData, { maxItems = table.getn(AtlasTW.Loot.WorldEventsData) })
 end
---[[ 
-local abyssalCouncilData = {
-    { name = L["Abyssal Council"].." - "..L["Templars"], icon = "Interface\\Icons\\INV_Jewelry_Talisman_05", lootpage = "AbyssalTemplars" },
-    { name = L["Abyssal Council"].." - "..L["Dukes"], icon = "Interface\\Icons\\INV_Jewelry_Ring_36", lootpage = "AbyssalDukes" },
-    { name = L["Abyssal Council"].." - "..L["High Council"], icon = "Interface\\Icons\\INV_Staff_13", lootpage = "AbyssalLords" },
-}
-
-function AtlasLootAbyssalCouncilMenu()
-	AtlasLoot_PrepMenu("WorldEvents", L["Abyssal Council"])
-    AtlasLoot_ShowMenu(abyssalCouncilData, { maxItems = table.getn(abyssalCouncilData) })
-end ]]

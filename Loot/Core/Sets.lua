@@ -11,12 +11,12 @@ local function CreateMenu(menuTitle, menuItems, prevMenu, prevMenuText)
         AtlasTWCharDB.LastBossText = prevMenuText
     end
     AtlasLoot_ShowMenu(menuItems)
-    if menuItems.name then
+--[[     if menuItems.name then
         AtlasTWLoot_BackTableRegistry[menuItems.name] = "Collections"
-    end
+    end ]]
 end
 
-local setsMenuData = {
+AtlasTW.Loot.SetsMenuData = {
     { name = L["Pre 60 Sets"], icon = "Interface\\Icons\\INV_Sword_43", lootpage = "Pre60Set" },
     { name = L["Zul'Gurub Sets"], icon = "Interface\\Icons\\INV_Sword_55", lootpage = "ZgSet" },
     { name = L["Ruins of Ahn'Qiraj Sets"], icon = "Interface\\Icons\\INV_Axe_15", lootpage = "Aq20Set" },
@@ -49,7 +49,7 @@ local setsMenuData = {
 }
 
 function AtlasLootSetMenu()
-    CreateMenu(L["Collections"], setsMenuData)
+    CreateMenu(L["Collections"], AtlasTW.Loot.SetsMenuData)
 end
 
 local worldEpicsMenuData = {

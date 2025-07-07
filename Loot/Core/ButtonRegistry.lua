@@ -6,6 +6,8 @@ local BF = AceLibrary("Babble-Faction-2.2a")
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
+-- AtlasLoot_TableRegistry больше не используется, данные берутся из AtlasMaps
+-- Оставлено для совместимости
 AtlasLoot_TableRegistry = {
     ["World"] = {
         Name = L["World"],
@@ -72,16 +74,16 @@ AtlasLoot_TableRegistry = {
             { ID = "ElementalInvasion", Title = L["Elemental Invasion"] },
             { ID = "GurubashiArena", Title = L["Gurubashi Arena"] },
             { ID = "HarvestFestival", Title = L["Harvest Festival"] },
-            { ID = "LunarFestival1", Title = L["Lunar Festival"] },
-            { ID = "LunarFestival2", Title = L["Lunar Festival"] },
+            { ID = "LunarFestival1", Title = L["Lunar Festival"].." 1" },
+            { ID = "LunarFestival2", Title = L["Lunar Festival"].." 2" },
             { ID = "Noblegarden", Title = L["Noblegarden"] },
             { ID = "FishingExtravaganza", Title = L["Stranglethorn Fishing Extravaganza"] },
             { ID = "ChildrensWeek", Title = L["Children's Week"] },
-            { ID = "Winterviel1", Title = L["Feast of Winter Veil"] },
-            { ID = "Winterviel2", Title = L["Feast of Winter Veil"] },
+            { ID = "Winterviel1", Title = L["Feast of Winter Veil"].." 1" },
+            { ID = "Winterviel2", Title = L["Feast of Winter Veil"].." 2" },
             { ID = "WintervielSnowball", Title = L["Snowball"] },
-            { ID = "Halloween1", Title = L["Hallow's End"] },
-            { ID = "Halloween2", Title = L["Hallow's End"] },
+            { ID = "Halloween1", Title = L["Hallow's End"].." 1" },
+            { ID = "Halloween2", Title = L["Hallow's End"].." 2" },
             { ID = "Valentineday", Title = L["Love is in the Air"] },
             { ID = "MidsummerFestival", Title = L["Midsummer Fire Festival"] },
             { ID = "ScourgeInvasionEvent1", Title = L["Scourge Invasion"] },
@@ -110,11 +112,13 @@ AtlasLoot_TableRegistry = {
             { ID = "T2Set", Title = L["Tier 2 Sets"] },
             { ID = "T3Set", Title = L["Tier 3 Sets"] },
             { ID = "WorldBlues", Title = L["World Blues"] },
-            { ID = "WorldEpics", Title = L["World Epics"] },]]
+            { ID = "WorldEpics1", Title = L["World Epics"] .. " 30-39" },
+            { ID = "WorldEpics2", Title = L["World Epics"] .. " 40-49" },
+            { ID = "WorldEpics3", Title = L["World Epics"] .. " 50-60" },]]
             { ID = "Legendaries", Title = L["Legendary Items"] },
             { ID = "Artifacts", Title = L["Artifact Items"] },
-            { ID = "RarePets1", Title = L["Rare Pets"] },
-            { ID = "RarePets2", Title = L["Rare Pets"] },
+            { ID = "RarePets1", Title = L["Rare Pets"].." 1" },
+            { ID = "RarePets2", Title = L["Rare Pets"].." 2" },
             { ID = "RareMounts", Title = L["Rare Mounts"] },
             { ID = "OldMounts", Title = L["Old Mounts"] },
             { ID = "UnobMounts", Title = L["Unobtainable Mounts"] },
@@ -157,22 +161,22 @@ AtlasLoot_TableRegistry = {
     ["WorldEpics"] = {
         Name = L["World Epics"],
         Entry = {
-            { ID = "WorldEpics1", Title = L["World Epics"] .. " 1" },
-            { ID = "WorldEpics2", Title = L["World Epics"] .. " 2" },
-            { ID = "WorldEpics3", Title = L["World Epics"] .. " 3" },
+            { ID = "WorldEpics1", Title = L["World Epics"] .. " 30-39" },
+            { ID = "WorldEpics2", Title = L["World Epics"] .. " 40-49" },
+            { ID = "WorldEpics3", Title = L["World Epics"] .. " 50-60" },
         }
     },
     ["Factions"] = {
         Name = L["Factions"],
         Entry = {
-            { ID = "Argent1", Title = BF["Argent Dawn"] },
-            { ID = "Argent2", Title = BF["Argent Dawn"] },
-            { ID = "Argent3", Title = BF["Argent Dawn"] },
+            { ID = "Argent1", Title = BF["Argent Dawn"].." 1" },
+            { ID = "Argent2", Title = BF["Argent Dawn"].." 2" },
+            { ID = "Argent3", Title = BF["Argent Dawn"].." 3" },
             { ID = "AQBroodRings", Title = BF["Brood of Nozdormu"] },
             { ID = "Darkmoon", Title = BF["Darkmoon Faire"] },
             { ID = "WaterLords1", Title = BF["Hydraxian Waterlords"] },
-            { ID = "Thorium1", Title = BF["Thorium Brotherhood"] },
-            { ID = "Thorium2", Title = BF["Thorium Brotherhood"] },
+            { ID = "Thorium1", Title = BF["Thorium Brotherhood"].." 1" },
+            { ID = "Thorium2", Title = BF["Thorium Brotherhood"].." 2" },
             { ID = "Wintersaber1", Title = BF["Wintersaber Trainers"] },
             { ID = "Wildhammer", Title = BF["Wildhammer Clan"] },
             { ID = "LeagueofArathor", Title = BF["The League of Arathor"] },
@@ -184,22 +188,22 @@ AtlasLoot_TableRegistry = {
             { ID = "Stormwind", Title = BF["Stormwind"] },
             { ID = "GnomereganExiles", Title = BF["Gnomeregan Exiles"] },
             { ID = "Bloodsail1", Title = BF["Bloodsail Buccaneers"] },
-            { ID = "Cenarion1", Title = BF["Cenarion Circle"] },
-            { ID = "Cenarion2", Title = BF["Cenarion Circle"] },
-            { ID = "Cenarion3", Title = BF["Cenarion Circle"] },
-            { ID = "Cenarion4", Title = BF["Cenarion Circle"] },
+            { ID = "Cenarion1", Title = BF["Cenarion Circle"].." 1" },
+            { ID = "Cenarion2", Title = BF["Cenarion Circle"].." 2" },
+            { ID = "Cenarion3", Title = BF["Cenarion Circle"].." 3" },
+            { ID = "Cenarion4", Title = BF["Cenarion Circle"].." 4" },
             { ID = "GelkisClan1", Title = BF["Gelkis Clan Centaur"] },
             { ID = "MagramClan1", Title = BF["Magram Clan Centaur"] },
             { ID = "Timbermaw", Title = BF["Timbermaw Hold"] },
-            { ID = "Zandalar1", Title = BF["Zandalar Tribe"] },
-            { ID = "Zandalar2", Title = BF["Zandalar Tribe"] },
-            { ID = "Warderns1", Title = BF["Wardens of Time"] },
-            { ID = "Warderns2", Title = BF["Wardens of Time"] },
+            { ID = "Zandalar1", Title = BF["Zandalar Tribe"].." 1" },
+            { ID = "Zandalar2", Title = BF["Zandalar Tribe"].." 2" },
+            { ID = "Warderns1", Title = BF["Wardens of Time"].." 1" },
+            { ID = "Warderns2", Title = BF["Wardens of Time"].." 2" },
             { ID = "Frostwolf1", Title = BF["Frostwolf Clan"] },
             { ID = "DarkspearTrolls", Title = BF["Darkspear Trolls"] },
-            { ID = "Revantusk", Title = BF["Revantusk Trolls"] },
-            { ID = "Revantusk2", Title = BF["Revantusk Trolls"] },
-            { ID = "Revantusk3", Title = BF["Revantusk Trolls"] },
+            { ID = "Revantusk", Title = BF["Revantusk Trolls"].." 1" },
+            { ID = "Revantusk2", Title = BF["Revantusk Trolls"].." 2" },
+            { ID = "Revantusk3", Title = BF["Revantusk Trolls"].." 3" },
             { ID = "DurotarLaborUnion", Title = BF["Durotar Labor Union"] },
             { ID = "Undercity", Title = BZ["Undercity"] },
             { ID = "Orgrimmar", Title = BZ["Orgrimmar"] },
@@ -555,7 +559,6 @@ AtlasLoot_TableRegistry = {
     ["BlackfathomDeeps"] = {
         Name = BZ["Blackfathom Deeps"],
         Entry = {
-            { ID = "BFDTrash", Title = L["Trash Mobs"] },
             { ID = "BFDGhamoora", Title = BB["Ghamoo-ra"] },
             { ID = "BFDLadySarevess", Title = BB["Lady Sarevess"] },
             { ID = "BFDGelihast", Title = BB["Gelihast"] },
@@ -563,12 +566,12 @@ AtlasLoot_TableRegistry = {
             { ID = "BFDTwilightLordKelris", Title = BB["Twilight Lord Kelris"] },
             { ID = "BFDOldSerrakis", Title = BB["Old Serra'kis"] },
             { ID = "BFDAkumai", Title = BB["Aku'mai"] },
+            { ID = "BFDTrash", Title = L["Trash Mobs"] },
         }
     },
     ["TheDeadmines"] = {
         Name = BZ["The Deadmines"],
         Entry = {
-            { ID = "DMTrash", Title = L["Trash Mobs"] },
             { ID = "DMJaredVoss", Title = BB["Jared Voss"] },
             { ID = "DMRhahkZor", Title = BB["Rhahk'Zor"] },
             { ID = "DMMinerJohnson", Title = BB["Miner Johnson"].." ("..L["Rare"]..")" },
@@ -580,22 +583,22 @@ AtlasLoot_TableRegistry = {
             { ID = "DMCookie", Title = BB["Cookie"] },
             { ID = "DMCaptainGreenskin", Title = BB["Captain Greenskin"] },
             { ID = "DMVanCleef", Title = BB["Edwin VanCleef"] },
+            { ID = "DMTrash", Title = L["Trash Mobs"] },
         }
     },
     ["RagefireChasm"] = {
         Name = BZ["Ragefire Chasm"],
         Entry = {
-            { ID = "RFCTrash", Title = L["Trash Mobs"] },
             { ID = "RFCOggleflint", Title = BB["Oggleflint"] },
             { ID = "RFCTaragaman", Title = BB["Taragaman the Hungerer"] },
             { ID = "RFCJergosh", Title = BB["Jergosh the Invoker"] },
             { ID = "RFCBazzalan", Title = BB["Bazzalan"] },
+            { ID = "RFCTrash", Title = L["Trash Mobs"] },
         },
     },
     ["ShadowfangKeep"] = {
         Name = BZ["Shadowfang Keep"],
         Entry = {
-            { ID = "SFKTrash", Title = L["Trash Mobs"] },
             { ID = "SFKRethilgore", Title = BB["Rethilgore"] },
             { ID = "SFKFelSteed", Title = L["Fel Steed"] },
             { ID = "SFKRazorclawtheButcher", Title = BB["Razorclaw the Butcher"] },
@@ -610,24 +613,24 @@ AtlasLoot_TableRegistry = {
             { ID = "SFKWolfMasterNandos", Title = BB["Wolf Master Nandos"] },
             { ID = "SFKArchmageArugal", Title = BB["Archmage Arugal"] },
             { ID = "SFKPrelate", Title = BB["Prelate Ironmane"] },
+            { ID = "SFKTrash", Title = L["Trash Mobs"] },
         }
     },
     ["TheStockade"] = {
         Name = BZ["The Stockade"],
         Entry = {
-            { ID = "SWStTrash", Title = L["Trash Mobs"] },
             { ID = "SWStTargorr", Title = BB["Targorr the Dread"] },
             { ID = "SWStKamDeepfury", Title = BB["Kam Deepfury"] },
             { ID = "SWStHamhock", Title = BB["Hamhock"] },
             { ID = "SWStBazil", Title = BB["Bazil Thredd"] },
             { ID = "SWStDextren", Title = BB["Dextren Ward"] },
             { ID = "SWStBruegalIronknuckle", Title = BB["Bruegal Ironknuckle"].." ("..L["Rare"]..")" },
+            { ID = "SWStTrash", Title = L["Trash Mobs"] },
         }
     },
     ["WailingCaverns"] = {
         Name = BZ["Wailing Caverns"],
         Entry = {
-            { ID = "WCTrash", Title = L["Trash Mobs"] },
             { ID = "WCLordCobrahn", Title = BB["Lord Cobrahn"] },
             { ID = "WCLadyAnacondra", Title = BB["Lady Anacondra"] },
             { ID = "WCKresh", Title = BB["Kresh"] },
@@ -639,35 +642,35 @@ AtlasLoot_TableRegistry = {
             { ID = "WCVerdan", Title = BB["Verdan the Everliving"] },
             { ID = "WCMutanus", Title = BB["Mutanus the Devourer"] },
             { ID = "WCDeviateFaerieDragon", Title = BB["Deviate Faerie Dragon"].." ("..L["Rare"]..")" },
+            { ID = "WCTrash", Title = L["Trash Mobs"] },
         }
     },
 	["TheCrescentGrove"] = {
 		Name = BZ["The Crescent Grove"],
 		Entry = {
-			{ ID = "TCGTrash", Title = L["Trash Mobs"] },
 			{ ID = "TCGGrovetenderEngryss", Title = BB["Grovetender Engryss"] },
 			{ ID = "TCGKeeperRanathos", Title = BB["Keeper Ranathos"] },
 			{ ID = "TCGHighPriestessAlathea", Title = BB["High Priestess A'lathea"] },
 			{ ID = "TCGFenektistheDeceiver", Title = BB["Fenektis the Deceiver"] },
 			{ ID = "TCGMasterRaxxieth", Title = BB["Master Raxxieth"] },
+			{ ID = "TCGTrash", Title = L["Trash Mobs"] },
 		},
 	},
     ["Gnomeregan"] = {
         Name = BZ["Gnomeregan"],
         Entry = {
-            { ID = "GnTrash", Title = L["Trash Mobs"] },
             { ID = "GnGrubbis", Title = BB["Grubbis"] },
             { ID = "GnViscousFallout", Title = BB["Viscous Fallout"] },
             { ID = "GnElectrocutioner6000", Title = BB["Electrocutioner 6000"] },
             { ID = "GnCrowdPummeler960", Title = BB["Crowd Pummeler 9-60"] },
             { ID = "GnDIAmbassador", Title = BB["Dark Iron Ambassador"] },
             { ID = "GnMekgineerThermaplugg", Title = BB["Mekgineer Thermaplugg"] },
+            { ID = "GnTrash", Title = L["Trash Mobs"] },
         }
     },
     ["RazorfenKraul"] = {
         Name = BZ["Razorfen Kraul"],
         Entry = {
-            { ID = "RFKTrash", Title = L["Trash Mobs"] },
             { ID = "RFKAggem", Title = BB["Aggem Thorncurse"] },
             { ID = "RFKDeathSpeakerJargba", Title = BB["Death Speaker Jargba"] },
             { ID = "RFKOverlordRamtusk", Title = BB["Overlord Ramtusk"] },
@@ -676,12 +679,12 @@ AtlasLoot_TableRegistry = {
             { ID = "RFKBlindHunter", Title = BB["Blind Hunter"].." ("..L["Rare"]..")" },
             { ID = "RFKCharlgaRazorflank", Title = BB["Charlga Razorflank"] },
             { ID = "RFKEarthcallerHalmgar", Title = BB["Earthcaller Halmgar"].." ("..L["Rare"]..")" },
+            { ID = "RFKTrash", Title = L["Trash Mobs"] },
         }
     },
     ["ScarletMonasteryGraveyard"] = {
         Name = BZ["Scarlet Monastery (Graveyard)"],
         Entry = {
-            { ID = "SMGTrash", Title = L["Trash Mobs"] },
             { ID = "SMVishas", Title = BB["Interrogator Vishas"] },
             { ID = "SMScorn", Title = BB["Scorn"].." (".."Scourge Invasion"..")" },
             { ID = "SMBloodmageThalnos", Title = BB["Bloodmage Thalnos"] },
@@ -689,23 +692,24 @@ AtlasLoot_TableRegistry = {
             { ID = "SMAzshir", Title = BB["Azshir the Sleepless"].." ("..L["Rare"]..")" },
             { ID = "SMFallenChampion", Title = BB["Fallen Champion"].." ("..L["Rare"]..")" },
             { ID = "SMDukeDreadmoore", Title = BB["Duke Dreadmoore"] },
+            { ID = "SMGTrash", Title = L["Trash Mobs"] },
         },
     },
     ["ScarletMonasteryLibrary"] = {
         Name = BZ["Scarlet Monastery (Library)"],
         Entry = {
-            { ID = "SMLTrash", Title = L["Trash Mobs"] },
             { ID = "SMHoundmasterLoksey", Title = BB["Houndmaster Loksey"] },
             { ID = "SMDoan", Title = BB["Arcanist Doan"] },
             { ID = "SMBrotherWystan", Title = BB["Brother Wystan"] },
+            { ID = "SMLTrash", Title = L["Trash Mobs"] },
         },
     },
     ["ScarletMonasteryArmory"] = {
         Name = BZ["Scarlet Monastery (Armory)"],
         Entry = {
-            { ID = "SMATrash", Title = L["Trash Mobs"] },
             { ID = "SMHerod", Title = BB["Herod"] },
             { ID = "SMQuartermasterDaghelm", Title = BB["Armory Quartermaster Daghelm"] },
+            { ID = "SMATrash", Title = L["Trash Mobs"] },
         },
     },
     ["StormwroughtRuins"] = {
@@ -717,7 +721,6 @@ AtlasLoot_TableRegistry = {
     ["GilneasCity"] = {
         Name = BZ["Gilneas City"],
         Entry = {
-            { ID = "GCTrash", Title = L["Trash Mobs"] },
             { ID = "GCMatthiasHoltz", Title = BB["Matthias Holtz"] },
             { ID = "GCPackmasterRagetooth", Title = BB["Packmaster Ragetooth"] },
             { ID = "GCJudgeSutherland", Title = BB["Judge Sutherland"] },
@@ -726,12 +729,12 @@ AtlasLoot_TableRegistry = {
             { ID = "GCHorsemasterLevvin", Title = BB["Horsemaster Levvin"] },
             { ID = "GCHarlowFamilyChest", Title = L["Harlow Family Chest"] },
             { ID = "GCGennGreymane", Title = BB["Genn Greymane"] },
+            { ID = "GCTrash", Title = L["Trash Mobs"] },
         },
     },
     ["RazorfenDowns"] = {
         Name = BZ["Razorfen Downs"],
         Entry = {
-            { ID = "RFDTrash", Title = L["Trash Mobs"] },
             { ID = "RFDTutenkash", Title = BB["Tuten'kash"] },
             { ID = "RFDHenryStern", Title = L["Henry Stern"] },
             { ID = "RFDLadyF", Title = BB["Lady Falther'ess"].." ("..L["Scourge Invasion"]..")" },
@@ -740,21 +743,21 @@ AtlasLoot_TableRegistry = {
             { ID = "RFDRagglesnout", Title = BB["Ragglesnout"].." ("..L["Rare"]..")" },
             { ID = "RFDAmnennar", Title = BB["Amnennar the Coldbringer"] },
             { ID = "RFDPlaguemaw", Title = BB["Plaguemaw the Rotting"] },
+            { ID = "RFDTrash", Title = L["Trash Mobs"] },
         }
     },
     ["ScarletMonasteryCathedral"] = {
         Name = BZ["Scarlet Monastery (Cathedral)"],
         Entry = {
-            { ID = "SMCTrash", Title = L["Trash Mobs"] },
             { ID = "SMFairbanks", Title = BB["High Inquisitor Fairbanks"] },
             { ID = "SMMograine", Title = BB["Scarlet Commander Mograine"] },
             { ID = "SMWhitemane", Title = BB["High Inquisitor Whitemane"] },
+            { ID = "SMCTrash", Title = L["Trash Mobs"] },
         },
     },
     ["SunkenTemple"] = {
         Name = BZ["The Temple of Atal'Hakkar"],
         Entry = {
-            { ID = "STTrash", Title = L["Trash Mobs"] },
             { ID = "STBalconyMinibosses", Title = L["Balcony Minibosses"] },
             { ID = "STAtalalarion", Title = BB["Atal'alarion"] },
             { ID = "STSpawnOfHakkar", Title = L["Spawn of Hakkar"] },
@@ -766,12 +769,12 @@ AtlasLoot_TableRegistry = {
             { ID = "STMorphaz", Title = BB["Morphaz"] },
             { ID = "STHazzas", Title = BB["Hazzas"] },
             { ID = "STEranikus", Title = BB["Shade of Eranikus"] },
+            { ID = "STTrash", Title = L["Trash Mobs"] },
         }
     },
     ["Uldaman"] = {
         Name = BZ["Uldaman"],
         Entry = {
-            { ID = "UldTrash", Title = L["Trash Mobs"] },
             { ID = "UldBaelog", Title = BB["Baelog"] },
             { ID = "UldEric", Title = BB["Eric \"The Swift\""] },
             { ID = "UldOlaf", Title = BB["Olaf"] },
@@ -782,12 +785,12 @@ AtlasLoot_TableRegistry = {
             { ID = "UldGalgannFirehammer", Title = BB["Galgann Firehammer"] },
             { ID = "UldGrimlok", Title = BB["Grimlok"] },
             { ID = "UldArchaedas", Title = BB["Archaedas"] },
+            { ID = "UldTrash", Title = L["Trash Mobs"] },
         }
     },
     ["ZulFarrak"] = {
         Name = BZ["Zul'Farrak"],
         Entry = {
-            { ID = "ZFTrash", Title = L["Trash Mobs"] },
             { ID = "ZFAntusul", Title = BB["Antu'sul"] },
             { ID = "ZFWitchDoctorZumrah", Title = BB["Witch Doctor Zum'rah"] },
             { ID = "ZFShadowpriestSezziz", Title = BB["Shadowpriest Sezz'ziz"] },
@@ -795,6 +798,7 @@ AtlasLoot_TableRegistry = {
             { ID = "ZFGahzrilla", Title = BB["Gahz'rilla"] },
             { ID = "ZFChiefUkorzSandscalp", Title = BB["Chief Ukorz Sandscalp"] },
             { ID = "ZFZerillis", Title = L["Zerillis"].." ("..L["Rare"]..")" },
+            { ID = "ZFTrash", Title = L["Trash Mobs"] },
         },
     },
     ["BlackrockDepths"] = {
@@ -832,7 +836,6 @@ AtlasLoot_TableRegistry = {
     ["CavernsOfTimeBlackMorass"] = {
         Name = BZ["Caverns of Time: Black Morass"],
         Entry = {
-            { ID = "COTTrash", Title = L["Trash Mobs"] },
             { ID = "COTBMChronar", Title = BB["Chronar"] },
             { ID = "COTBMEpidamu", Title = BB["Epidamu"] },
             { ID = "COTBMDriftingAvatar", Title = L["Drifting Avatar of Time"] },
@@ -840,12 +843,12 @@ AtlasLoot_TableRegistry = {
             { ID = "COTBMMossheart", Title = BB["Mossheart"] },
             { ID = "COTBMRotmaw", Title = BB["Rotmaw"] },
             { ID = "COTBMAntnormi", Title = BB["Antnormi"] },
+            { ID = "COTTrash", Title = L["Trash Mobs"] },
         }
     },
     ["DireMaulEast"] = {
         Name = BZ["Dire Maul (East)"],
         Entry = {
-            { ID = "DMETrash", Title = L["Trash Mobs"] },
             { ID = "DMEPusillin", Title = BB["Pusillin"] },
             { ID = "DMEZevrimThornhoof", Title = BB["Zevrim Thornhoof"] },
             { ID = "DMEHydro", Title = BB["Hydrospawn"] },
@@ -854,12 +857,12 @@ AtlasLoot_TableRegistry = {
             { ID = "DMEAlzzin", Title = BB["Alzzin the Wildshaper"] },
             { ID = "DMEIsalien", Title = BB["Isalien"] },
             { ID = "DMEShard", Title = L["Felvine Shard"] },
+            { ID = "DMETrash", Title = L["Trash Mobs"] },
         }
     },
     ["DireMaulNorth"] = {
         Name = BZ["Dire Maul (North)"],
         Entry = {
-            { ID = "DMNTrash", Title = L["Trash Mobs"] },
             { ID = "DMNGuardMoldar", Title = BB["Guard Mol'dar"] },
             { ID = "DMNStomperKreeg", Title = BB["Stomper Kreeg"] },
             { ID = "DMNGuardFengus", Title = BB["Guard Fengus"] },
@@ -869,12 +872,12 @@ AtlasLoot_TableRegistry = {
             { ID = "DMNKingGordok", Title = BB["King Gordok"] },
             { ID = "DMNChoRush", Title = BB["Cho'Rush the Observer"] },
             { ID = "DMNTRIBUTERUN", Title = L["Tribute Run"] },
+            { ID = "DMNTrash", Title = L["Trash Mobs"] },
         }
     },
     ["DireMaulWest"] = {
         Name = BZ["Dire Maul (West)"],
         Entry = {
-            { ID = "DMWTrash", Title = L["Trash Mobs"] },
             { ID = "DMWTendrisWarpwood", Title = BB["Tendris Warpwood"] },
             { ID = "DMWIllyannaRavenoak", Title = BB["Illyanna Ravenoak"] },
             { ID = "DMWMagisterKalendris", Title = BB["Magister Kalendris"] },
@@ -883,6 +886,7 @@ AtlasLoot_TableRegistry = {
             { ID = "DMWHelnurath", Title = BB["Lord Hel'nurath"].." ("..L["Rare"]..")" },
             { ID = "DMWPrinceTortheldrin", Title = BB["Prince Tortheldrin"] },
             { ID = "DMWRevanchion", Title = BB["Revanchion"].." (".."Scourge Invasion"..")" },
+            { ID = "DMWTrash", Title = L["Trash Mobs"] },
         }
     },
     ["HateforgeQuarry"] = {
@@ -899,7 +903,6 @@ AtlasLoot_TableRegistry = {
     ["KarazhanCrypt"] = {
         Name = BZ["Karazhan Crypt"],
         Entry = {
-            { ID = "KCTrash", Title = L["Trash Mobs"] },
             { ID = "KCMarrowspike", Title = BB["Marrowspike"] },
             { ID = "KCHivaxxis", Title = BB["Hivaxxis"] },
             { ID = "KCCorpsemuncher", Title = BB["Corpsemuncher"] },
@@ -908,12 +911,12 @@ AtlasLoot_TableRegistry = {
             { ID = "KCCommanderAndreon", Title = BB["Commander Andreon"] },
             { ID = "KCAlarus", Title = BB["Alarus"] },
             { ID = "KCTreasure", Title = L["Half-Buried Treasure Chest"] },
+            { ID = "KCTrash", Title = L["Trash Mobs"] },
         }
     },
     ["LowerBlackrockSpire"] = {
         Name = BZ["Lower Blackrock Spire"],
         Entry = {
-            { ID = "LBRSTrash", Title = L["Trash Mobs"] },
             { ID = "LBRSSpirestoneButcher", Title = L["Spirestone Butcher"].." ("..L["Rare"]..")" },
             { ID = "LBRSOmokk", Title = BB["Highlord Omokk"] },
             { ID = "LBRSSpirestoneBattleLord", Title = L["Spirestone Battle Lord"].." ("..L["Rare"]..")" },
@@ -931,12 +934,12 @@ AtlasLoot_TableRegistry = {
             { ID = "LBRSBashguud", Title = BB["Ghok Bashguud"].." ("..L["Rare"]..")" },
             { ID = "LBRSWyrmthalak", Title = BB["Overlord Wyrmthalak"] },
             { ID = "LBRSFelguard", Title = L["Burning Felguard"].." ("..L["Rare"]..")" },
+            { ID = "LBRSTrash", Title = L["Trash Mobs"] },
         }
     },
     ["LowerKarazhan"] = {
         Name = BZ["Lower Karazhan Halls"],
         Entry = {
-        	{ ID = "LKHTrash", Title = L["Trash Mobs"] },
             { ID = "LKHRolfen", Title = BB["Master Blacksmith Rolfen"] },
             { ID = "LKHBroodQueenAraxxna", Title = BB["Brood Queen Araxxna"] },
             { ID = "LKHGrizikil", Title = BB["Grizikil"] },
@@ -944,12 +947,12 @@ AtlasLoot_TableRegistry = {
             { ID = "LKHLordBlackwaldII", Title = BB["Lord Blackwald II"] },
             { ID = "LKHMoroes", Title = BB["Moroes"] },
             { ID = "LKHEnchants", Title = L["Lower Karazhan Halls Enchants"] },
+        	{ ID = "LKHTrash", Title = L["Trash Mobs"] },
         }
     },
     ["Maraudon"] = {
         Name = BZ["Maraudon"],
         Entry = {
-            { ID = "MaraTrash", Title = L["Trash Mobs"] },
             { ID = "MaraNoxxion", Title = BB["Noxxion"] },
             { ID = "MaraRazorlash", Title = BB["Razorlash"] },
             { ID = "MaraLordVyletongue", Title = BB["Lord Vyletongue"] },
@@ -959,12 +962,12 @@ AtlasLoot_TableRegistry = {
             { ID = "MaraTinkerer", Title = BB["Tinkerer Gizlock"] },
             { ID = "MaraRotgrip", Title = BB["Rotgrip"] },
             { ID = "MaraPrincess", Title = BB["Princess Theradras"] },
+            { ID = "MaraTrash", Title = L["Trash Mobs"] },
         },
     },
     ["Scholomance"] = {
         Name = BZ["Scholomance"],
         Entry = {
-            { ID = "SCHOLOTrash", Title = L["Trash Mobs"] },
             { ID = "SCHOLOBlood", Title = L["Blood Steward of Kirtonos"] },
             { ID = "SCHOLOKirtonostheHerald", Title = BB["Kirtonos the Herald"] },
             { ID = "SCHOLOJandiceBarov", Title = BB["Jandice Barov"] },
@@ -982,24 +985,24 @@ AtlasLoot_TableRegistry = {
             { ID = "SCHOLOLordAlexeiBarov", Title = BB["Lord Alexei Barov"] },
             { ID = "SCHOLOLadyIlluciaBarov", Title = BB["Lady Illucia Barov"] },
             { ID = "SCHOLODarkmasterGandling", Title = BB["Darkmaster Gandling"] },
+            { ID = "SCHOLOTrash", Title = L["Trash Mobs"] },
         },
     },
     ["StormwindVault"] = {
         Name = BZ["Stormwind Vault"],
         Entry = {
-            { ID = "SWVTrash", Title = L["Trash Mobs"] },
             { ID = "SWVAszoshGrimflame", Title = BB["Aszosh Grimflame"] },
             { ID = "SWVThamGrarr", Title = BB["Tham'Grarr"] },
             { ID = "SWVBlackBride", Title = BB["Black Bride"] },
             { ID = "SWVDamian", Title = BB["Damian"] },
             { ID = "SWVVolkanCruelblade", Title = BB["Volkan Cruelblade"] },
             { ID = "SWVVaultArmoryEquipment", Title = L["Arc'tiras / Vault Armory Equipment"] },
+            { ID = "SWVTrash", Title = L["Trash Mobs"] },
         }
     },
     ["Stratholme"] = {
         Name = BZ["Stratholme"],
         Entry = {
-            { ID = "STRATTrash", Title = L["Trash Mobs"] },
             { ID = "STRATSkull", Title = BB["Skul"] },
             { ID = "STRATStratholmeCourier", Title = BB["Stratholme Courier"] },
             { ID = "STRATFrasSiabi", Title = L["Fras Siabi"] },
@@ -1022,9 +1025,9 @@ AtlasLoot_TableRegistry = {
             { ID = "STRATNerubenkan", Title = BB["Nerub'enkan"] },
             { ID = "STRATMalekithePallid", Title = BB["Maleki the Pallid"] },
             { ID = "STRATRamsteintheGorger", Title = BB["Ramstein the Gorger"] },
-
             { ID = "STRATBaronRivendare", Title = BB["Baron Rivendare"] },
             { ID = "STRATPostmaster", Title = BB["Postmaster Malown"] },
+            { ID = "STRATTrash", Title = L["Trash Mobs"] },
         }
     },
     ["UpperBlackrockSpire"] = {
@@ -1046,7 +1049,6 @@ AtlasLoot_TableRegistry = {
     ["BlackwingLair"] = {
         Name = BZ["Blackwing Lair"],
         Entry = {
-            { ID = "BWLTrashMobs", Title = L["Trash Mobs"] },
             { ID = "BWLRazorgore", Title = BB["Razorgore the Untamed"] },
             { ID = "BWLVaelastrasz", Title = BB["Vaelastrasz the Corrupt"] },
             { ID = "BWLLashlayer", Title = BB["Broodlord Lashlayer"] },
@@ -1055,21 +1057,21 @@ AtlasLoot_TableRegistry = {
             { ID = "BWLFlamegor", Title = BB["Flamegor"] },
             { ID = "BWLChromaggus", Title = BB["Chromaggus"] },
             { ID = "BWLNefarian", Title = BB["Nefarian"] },
+            { ID = "BWLTrashMobs", Title = L["Trash Mobs"] },
         },
     },
     ["EmeraldSanctum"] = {
         Name = BZ["Emerald Sanctum"],
         Entry = {
-            { ID = "ESTrash", Title = L["Trash Mobs"] },
             { ID = "ESErennius", Title = BB["Erennius"] },
             { ID = "ESSolnius", Title = BB["Solnius the Awakener"] },
             { ID = "ESHardMode", Title = L["Favor of Erennius (ES Hard Mode)"] },
+            { ID = "ESTrash", Title = L["Trash Mobs"] },
         },
     },
     ["MoltenCore"] = {
         Name = BZ["Molten Core"],
         Entry = {
-            { ID = "MCTrashMobs", Title = L["Trash Mobs"] },
             { ID = "MCLucifron", Title = BB["Lucifron"] },
             { ID = "MCMagmadar", Title = BB["Magmadar"] },
             { ID = "MCGehennas", Title = BB["Gehennas"] },
@@ -1081,12 +1083,12 @@ AtlasLoot_TableRegistry = {
             { ID = "MCMajordomo", Title = BB["Majordomo Executus"] },
             { ID = "MCRagnaros", Title = BB["Ragnaros"] },
             { ID = "MCRANDOMBOSSDROPS", Title = L["Random Boss Loot"] },
+            { ID = "MCTrashMobs", Title = L["Trash Mobs"] },
         },
     },
     ["Naxxramas"] = {
         Name = BZ["Naxxramas"],
         Entry = {
-            { ID = "NAXTrash", Title = L["Trash Mobs"] },
             { ID = "NAXPatchwerk", Title = BB["Patchwerk"] },
             { ID = "NAXGrobbulus", Title = BB["Grobbulus"] },
             { ID = "NAXGluth", Title = BB["Gluth"] },
@@ -1102,6 +1104,7 @@ AtlasLoot_TableRegistry = {
             { ID = "NAXTheFourHorsemen", Title = BB["The Four Horsemen"] },
             { ID = "NAXSapphiron", Title = BB["Sapphiron"] },
             { ID = "NAXKelThuzard", Title = BB["Kel'Thuzad"] },
+            { ID = "NAXTrash", Title = L["Trash Mobs"] },
         },
     },
     ["Onyxia"] = {
@@ -1113,20 +1116,18 @@ AtlasLoot_TableRegistry = {
     ["AhnQirajRuins"] = {
         Name = BZ["Ruins of Ahn'Qiraj"],
         Entry = {
-            { ID = "AQ20Trash", Title = L["Trash Mobs"] },
             { ID = "AQ20Kurinnaxx", Title = BB["Kurinnaxx"] },
             { ID = "AQ20Rajaxx", Title = BB["General Rajaxx"] },
             { ID = "AQ20Moam", Title = BB["Moam"] },
             { ID = "AQ20Buru", Title = BB["Buru the Gorger"] },
             { ID = "AQ20Ayamiss", Title = BB["Ayamiss the Hunter"] },
             { ID = "AQ20Ossirian", Title = BB["Ossirian the Unscarred"] },
+            { ID = "AQ20Trash", Title = L["Trash Mobs"] },
         },
     },
     ["AhnQirajTemple"] = {
         Name = BZ["Temple of Ahn'Qiraj"],
         Entry = {
-            { ID = "AQ40Trash1", Title = L["Trash Mobs"].." 1" },
-            { ID = "AQ40Trash2", Title = L["Trash Mobs"].." 2" },
             { ID = "AQ40Skeram", Title = BB["The Prophet Skeram"] },
             { ID = "AQ40Trio", Title = BB["The Bug Family"] },
             { ID = "AQ40Sartura", Title = BB["Battleguard Sartura"] },
@@ -1136,12 +1137,13 @@ AtlasLoot_TableRegistry = {
             { ID = "AQ40Emperors", Title = BB["The Twin Emperors"] },
             { ID = "AQ40Ouro", Title = BB["Ouro"] },
             { ID = "AQ40CThun", Title = BB["C'Thun"] },
+            { ID = "AQ40Trash1", Title = L["Trash Mobs"].." 1" },
+            { ID = "AQ40Trash2", Title = L["Trash Mobs"].." 2" },
         }
     },
     ["TowerofKarazhan"] = {
         Name = BZ["Tower of Karazhan"],
         Entry = {
-            { ID = "K40Trash", Title = L["Trash Mobs"] },
             { ID = "K40Gnarlmoon", Title = BB["Keeper Gnarlmoon"] },
             { ID = "K40Incantagos", Title = BB["Ley-Watcher Incantagos"] },
             { ID = "K40Anomalus", Title = BB["Anomalus"] },
@@ -1151,13 +1153,12 @@ AtlasLoot_TableRegistry = {
             { ID = "K40Rupturan", Title = BB["Rupturan the Broken"] },
             { ID = "K40Kruul", Title = BB["Kruul"] },
             { ID = "K40Mephistroth", Title = BB["Mephistroth"] },
+            { ID = "K40Trash", Title = L["Trash Mobs"] },
         },
     },
     ["ZulGurub"] = {
         Name = BZ["Zul'Gurub"],
         Entry = {
-            { ID = "ZGTrash1", Title = L["Trash Mobs"] },
-            { ID = "ZGTrash2", Title = L["Trash Mobs"] },
             { ID = "ZGJeklik", Title = BB["High Priestess Jeklik"] },
             { ID = "ZGVenoxis", Title = BB["High Priest Venoxis"] },
             { ID = "ZGMarli", Title = BB["High Priestess Mar'li"] },
@@ -1171,6 +1172,8 @@ AtlasLoot_TableRegistry = {
             { ID = "ZGArlokk", Title = BB["High Priestess Arlokk"] },
             { ID = "ZGJindo", Title = BB["Jin'do the Hexxer"] },
             { ID = "ZGHakkar", Title = BB["Hakkar"] },
+            { ID = "ZGTrash1", Title = L["Trash Mobs"].." 1" },
+            { ID = "ZGTrash2", Title = L["Trash Mobs"].." 2" },
         },
     },
 }

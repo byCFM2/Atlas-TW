@@ -12,7 +12,7 @@
 ]]
 
 local MAJOR_VERSION = "Babble-Spell-2.2a"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 25190 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 25191 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -954,6 +954,7 @@ BabbleSpell:RegisterTranslations("enUS", function()
 		["Magma Splash"] = true,
 		["Magma Totem"] = true,
 		["Mail"] = true,
+		["Plate"] = true,
 		["Maim"] = true,
 		["Malice"] = true,
 		["Mana Burn"] = true,
@@ -2433,6 +2434,7 @@ BabbleSpell:RegisterTranslations("ruRU", function()
 		["Magma Splash"] = "Выплеск магмы",
 		["Magma Totem"] = "Тотем магмы",
 		["Mail"] = "Кольчужные доспехи",
+		["Plate"] = "Латные доспехи",
 		["Maim"] = "Maim", -- old
 		["Malice"] = "Злоба",
 		["Mana Burn"] = "Сожжение маны",
@@ -3895,6 +3897,7 @@ BabbleSpell:RegisterTranslations("deDE", function()
 		["Magma Splash"] = "Magmaspritzer",
 		["Magma Totem"] = "Totem der gl\195\188henden Magma",
 		["Mail"] = "Panzer",
+		["Plate"] = "",--  Need to translated
 		["Maim"] = "Maim",  --  Need to translated
 		["Malice"] = "T\195\188cke",
 		["Mana Burn"] = "Manabrand",
@@ -5180,6 +5183,7 @@ BabbleSpell:RegisterTranslations("frFR", function()
 		['Magma Blast'] = '',
 		["Magma Totem"] = "Totem de Magma",
 		["Mail"] = "Mailles",
+		["Plate"] = "",--  Need to translated
 		["Maim"] = "Maim",  --  Need to translated
 		["Malice"] = "Malice",
 		["Mana Burn"] = "Br\195\187lure de mana",
@@ -6356,6 +6360,7 @@ BabbleSpell:RegisterTranslations("zhCN", function()
 		['Magma Blast'] = '',
 		["Magma Totem"] = "熔岩图腾",
 		["Mail"] = "锁甲",
+		["Plate"] = "",--  Need to translated
 		["Maim"] = "Maim",  --  Need to translated
 		["Malice"] = "恶意",
 		["Mana Burn"] = "法力燃烧",
@@ -7532,6 +7537,7 @@ BabbleSpell:RegisterTranslations("zhTW", function()
 		['Magma Blast'] = '',
 		["Magma Totem"] = "熔岩圖騰",
 		["Mail"] = "鎖甲",
+		["Plate"] = "",--  Need to translated
 		["Maim"] = "Maim",  --  Need to translated
 		["Malice"] = "惡意",
 		["Mana Burn"] = "法力燃燒",
@@ -8709,6 +8715,7 @@ BabbleSpell:RegisterTranslations("koKR", function()
 		['Magma Blast'] = '',
 		["Magma Totem"] = "용암 토템",
 		["Mail"] = "사슬",
+		["Plate"] = "",--  Need to translated
 		["Maim"] = "Maim",  --  Need to translated
 		["Malice"] = "원한",
 		["Mana Burn"] = "마나 연소",
@@ -10029,6 +10036,7 @@ local spellIcons = {
 	["Magma Splash"] = "Spell_Fire_Immolation",
 	["Magma Totem"] = "Spell_Fire_SelfDestruct",
 	["Mail"] = "INV_Chest_Chain_05",
+	["Plate"] = "INV_Chest_Plate15",
 	["Malice"] = "Ability_Racial_BloodRage",
 	["Mana Burn"] = "Spell_Shadow_ManaBurn",
 	["Mana Feed"] = "Spell_Shadow_DarkRitual",

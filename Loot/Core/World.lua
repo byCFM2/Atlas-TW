@@ -1,7 +1,7 @@
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local BB = AceLibrary("Babble-Boss-2.2a")
 
-local worldBossesData = {
+AtlasTW.Loot.WorldBossesData = {
     { name = BB["Azuregos"], extra = "Azshara", icon = "Interface\\Icons\\INV_Misc_Head_Dragon_Blue", lootpage = "WBAzuregos" },
     { name = BB["Emeriss"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Misc_Head_Dragon_Green", lootpage = "WBEmeriss" },
     { name = BB["Lethon"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Misc_Head_Dragon_Green", lootpage = "WBLethon" },
@@ -16,10 +16,10 @@ local worldBossesData = {
 	{},
     { name = BB["Moo"], extra = "Moomoo Grove", icon = "Interface\\Icons\\Spell_Nature_Polymorph_Cow", lootpage = "WBCowKing" },
     { name = BB["Cla'ckora"], extra = "Azshara", icon = "Interface\\Icons\\INV_Misc_Birdbeck_02", lootpage = "WBClackora" },
-    { name = L["Rare Mobs"], extra = L["Various Locations"], libExtra = L, icon = "Interface\\Icons\\INV_Misc_Head_Undead_01", lootpage = "ShadeMage" },
+    { name = L["Rare Mobs"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Misc_Head_Undead_01", lootpage = "ShadeMage" },
 }
 
 function AtlasLoot_WorldMenu()
     AtlasLoot_PrepMenu(nil, L["World"], "World")
-    AtlasLoot_ShowMenu(worldBossesData, { maxItems = table.getn(worldBossesData) })
+    AtlasLoot_ShowMenu(AtlasTW.Loot.WorldBossesData, { maxItems = table.getn(AtlasTW.Loot.WorldBossesData) })
 end

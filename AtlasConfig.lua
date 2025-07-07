@@ -150,4 +150,6 @@ AtlasTW = {
     QCurrentButton = 0,
     QCurrentInstance = nil,
 }
+AtlasTW.Loot = AtlasTW.Loot or {}
+
 AtlasTWCharDB = AtlasTWCharDB or { FirstTime = true }

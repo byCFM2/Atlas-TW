@@ -9,7 +9,7 @@ local function getExtraText(itemData)
     return itemData.extraText or ""
 end
 
-local craftingMenuData = {
+AtlasTW.Loot.CraftingMenuData = {
     {},
     { name = BS["Alchemy"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "Alchemy" },
     { name = BS["Blacksmithing"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "Blacksmithing" },
@@ -26,15 +26,15 @@ local craftingMenuData = {
     {},
     { name = BS["Poisons"], extraText = BC["Rogue"], icon = "Interface\\Icons\\Trade_BrewPoison", lootpage = "Poisons1" },
     {},
-    { name = "Crafted Sets (Cloth, Leather)", icon = "Interface\\Icons\\INV_Box_01", lootpage = "CraftSet" },
-    { name = "Crafted Sets (Mail, Plate)", icon = "Interface\\Icons\\INV_Box_02", lootpage = "CraftSet2" },
+    { name = L["Crafted Sets"].." ("..BS["Cloth"]..", "..BS["Leather"]..")", icon = "Interface\\Icons\\INV_Box_01", lootpage = "CraftSet" },
+    { name = L["Crafted Sets"].." ("..BS["Mail"]..", "..BS["Plate"]..")", icon = "Interface\\Icons\\INV_Box_02", lootpage = "CraftSet2" },
     {},
     { name = L["Crafted Epic Weapons"], icon = "Interface\\Icons\\INV_Hammer_Unique_Sulfuras", lootpage = "CraftedWeapons1" },
 }
 
 function AtlasLoot_CraftingMenu()
 	AtlasLoot_PrepMenu(nil, L["Crafting"], "Crafting")
-    AtlasLoot_ShowMenu(craftingMenuData, { maxItems = table.getn(craftingMenuData), getExtraText = getExtraText })
+    AtlasLoot_ShowMenu(AtlasTW.Loot.CraftingMenuData, { maxItems = table.getn(AtlasTW.Loot.CraftingMenuData), getExtraText = getExtraText })
 end
 
 local craftedSetMenuData = {
@@ -53,7 +53,7 @@ local craftedSetMenuData = {
     {},
     {},
     {},
-    { name = RED..BS["Leatherworking"], Extra = L["Leather"], icon = "Interface\\Icons\\INV_Chest_Leather_04", isheader = true },
+    { name = RED..BS["Leatherworking"], Extra = BS["Leather"], icon = "Interface\\Icons\\INV_Chest_Leather_04", isheader = true },
     {},
     { name = BIS["Grifter's Armor"], icon = "Interface\\Icons\\INV_Helmet_33", lootpage = "GriftersArmor" },
     { name = BIS["Primalist's Trappings"], icon = "Interface\\Icons\\Inv_Chest_Plate06", lootpage = "PrimalistsTrappings" },
@@ -73,14 +73,14 @@ function AtlasLootCraftedSetMenu()
 end
 
 local craftedSet2MenuData = {
-    { name = RED..BS["Leatherworking"], Extra = L["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_12", isheader = true },
+    { name = RED..BS["Leatherworking"], Extra = BS["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_12", isheader = true },
     {},
     { name = BIS["Red Dragon Mail"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\inv_chest_chain_06", lootpage = "RedDragonM" },
     { name = BIS["Green Dragon Mail"], Extra = L["Nature Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_05", lootpage = "GreenDragonM" },
     { name = BIS["Blue Dragon Mail"], Extra = L["Arcane Resistance Gear"], icon = "Interface\\Icons\\INV_Chest_Chain_04", lootpage = "BlueDragonM" },
     { name = BIS["Black Dragon Mail"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_03", lootpage = "BlackDragonM" },
     {},
-    { name = RED..BS["Blacksmithing"], Extra = L["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
+    { name = RED..BS["Blacksmithing"], Extra = BS["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
     { name = BIS["Bloodsoul Embrace"], icon = "Interface\\Icons\\INV_Shoulder_15", lootpage = "BloodsoulEmbrace" },
     { name = BIS["Hateforge Armor"], icon = "Interface\\Icons\\INV_Helmet_10", lootpage = "HateforgeArmor" },
     { name = BIS["Towerforge Battlegear"], icon = "Interface\\Icons\\INV_Helmet_37", lootpage = "TowerforgeBattlegear" },
@@ -88,7 +88,7 @@ local craftedSet2MenuData = {
     {},
     {},
     {},
-    { name = RED..BS["Blacksmithing"], extra = "Plate", libExtra = L, icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
+    { name = RED..BS["Blacksmithing"], extra = "Plate", libExtra = BS, icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
     {},
     { name = BIS["Steel Plate"], icon = "Interface\\Icons\\INV_Helmet_25", lootpage = "SteelPlate" },
     { name = BIS["Imperial Plate"], icon = "Interface\\Icons\\INV_Belt_01", lootpage = "ImperialPlate" },
