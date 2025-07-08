@@ -118,7 +118,7 @@ function AtlasLoot_GetBossNavigation(dataID)
                     nav.Next_Page = instanceData.Entry[nextIndex].ID
                     nav.Next_Title = instanceData.Entry[nextIndex].Name
 
-					nav.Back_Page = AtlasTWLoot_BackTableRegistry[instanceData.Name] or instanceKey
+					nav.Back_Page = AtlasTW.Loot.BackTableRegistry[instanceData.Name] or instanceKey
 					nav.Back_Title = instanceData.Name
 
                     return nav
@@ -274,7 +274,7 @@ local function ShowLootTable(name, lootTableID, id)
 	_G[name.."_Loot"]:Hide()
 	-- Извлекаем имя босса из текста
 	local _,_,boss = string.find(_G[name.."_Text"]:GetText(), "|c%x%x%x%x%x%x%x%x%s*[%dX']*[%) ]*(.*[^%,])[%,]?$")
-	DEFAULT_CHAT_FRAME:AddMessage("ShowLootTable: ".. tostring(lootTableID).." ".. tostring(boss))
+	--DEFAULT_CHAT_FRAME:AddMessage("ShowLootTable: ".. tostring(lootTableID).." ".. tostring(boss))
 	AtlasLoot_ShowBossLoot(lootTableID, boss)
 	AtlasLootItemsFrame.activeBoss = id
 	AtlasTW.Loot.ScrollBarUpdate()
@@ -294,7 +294,7 @@ function AtlasLootBoss_OnClick(name)
 		-- Ищем таблицу лута для данного босса
 		local lootTableID = GetLootTableID(zoneID, id)
 		if lootTableID and AtlasLoot_IsLootTableAvailable(lootTableID) then
-			DEFAULT_CHAT_FRAME:AddMessage("AtlasLootBoss_OnClick: ".. tostring(lootTableID).." ".. tostring(name))
+		--	DEFAULT_CHAT_FRAME:AddMessage("AtlasLootBoss_OnClick: ".. tostring(lootTableID).." ".. tostring(name))
 			ShowLootTable(name, lootTableID, id)
 		end
 	end
@@ -725,8 +725,10 @@ end
 ]]
 function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	AtlasTWCharDB.LastMenu = { tablename, text, tabletype }
-	--If the button clicked was linked to a loot table
-	if tabletype == "Table" then
+	--If the button clicked was linked to a loot table (default behavior for simplified structure)
+	--DEFAULT_CHAT_FRAME:AddMessage("AtlasLoot_HewdropClick: tablename "..tablename)
+	if not tabletype or tabletype == "Table" then
+	--if tabletype == "Table" then
 		--Show the loot table
 		AtlasLoot_ShowBossLoot(tablename, text)
 		--Save needed info for fuure re-display of the table
@@ -869,19 +871,19 @@ function AtlasLoot_HewdropRegister()
 										'notCheckable', true
 								)
 								--An entry to show a specific loot page
-								else
-									AtlasLoot_Hewdrop:AddLine(
-										'text', v[1][1],
-										'textR', 1,
-										'textG', 0.82,
-										'textB', 0,
-										'func', AtlasLoot_HewdropClick,
-										'arg1', v[1][2],
-										'arg2', v[1][1],
-										'arg3', v[1][3],
-										'notCheckable', true
-									)
-								end
+							else
+								AtlasLoot_Hewdrop:AddLine(
+									'text', v[1][1],
+									'textR', 1,
+									'textG', 0.82,
+									'textB', 0,
+									'func', AtlasLoot_HewdropClick,
+									'arg1', v[1][2],
+									'arg2', v[1][1],
+									'arg3', v[1][3] or "Table",
+									'notCheckable', true
+								)
+							end
 							else
 								local lock=0
 								--Entry to link to a sub table
@@ -921,17 +923,17 @@ function AtlasLoot_HewdropRegister()
 									'notCheckable', true
 								)
 							else
-								AtlasLoot_Hewdrop:AddLine(
-									'text', v[1],
-									'textR', 1,
-									'textG', 0.82,
-									'textB', 0,
-									'func', AtlasLoot_HewdropClick,
-									'arg1', v[2],
-									'arg2', v[1],
-									'arg3', v[3],
-									'notCheckable', true
-								)
+							AtlasLoot_Hewdrop:AddLine(
+								'text', v[1],
+								'textR', 1,
+								'textG', 0.82,
+								'textB', 0,
+								'func', AtlasLoot_HewdropClick,
+								'arg1', v[2],
+								'arg2', v[1],
+								'arg3', v[3] or "Table",
+								'notCheckable', true
+							)
 							end
 						elseif type(v) == "table" then
 							AtlasLoot_Hewdrop:AddLine(
@@ -1008,13 +1010,13 @@ function AtlasLootMenuItem_OnClick()
 	end
 	if this.isheader == nil or this.isheader == false then
 		local pagename = _G[this:GetName().."_Name"]:GetText()
-		for _,v in ipairs(AtlasLoot_HewdropDown) do
-			if not (type(v[1]) == "table") then
+ 		for _, v in ipairs(AtlasLoot_HewdropDown) do
+			if v[1] and not (type(v[1]) == "table") then
 				for _, v2 in pairs(v) do
 					for _, v3 in pairs(v2) do
 						for _, v4 in pairs(v3) do
 							if not (type(v4[1]) == "table") then
-								if v4[1] == pagename and v4[3] ~= "Table" then
+								if v4[1] == pagename and (not v4[3] or v4[3] == "Table") then
 									AtlasLoot_HewdropClick(v4[2],v4[1],v4[3])
 								end
 							else

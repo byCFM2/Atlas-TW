@@ -1,15 +1,15 @@
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local title = L["Dungeons & Raids"]
---temporary
-AtlasTWLoot_BackTableRegistry = {}
+--table for create back navigation
+AtlasTW.Loot.BackTableRegistry = {}
 
 -- Get the formatted string for the instance and make back navigation button
 local function getFormString(instanceType, mainString)
     if instanceType == "[RAID]" then
-        AtlasTWLoot_BackTableRegistry[mainString] = "DUNGEONSMENU2"
+        AtlasTW.Loot.BackTableRegistry[mainString] = "DUNGEONSMENU2"
         return "|cffff0000"..instanceType.." |cffffd200"..mainString
     else
-        AtlasTWLoot_BackTableRegistry[mainString] = AtlasTWLoot_BackTableRegistry[mainString] or "DUNGEONSMENU1"
+        AtlasTW.Loot.BackTableRegistry[mainString] = AtlasTW.Loot.BackTableRegistry[mainString] or "DUNGEONSMENU1"
         return "|cffffffff"..instanceType.." |cffffd200"..mainString
     end
 end
@@ -65,9 +65,6 @@ local function GenerateMenuDataFromAtlasMaps()
         ["DireMaulEast"] = "DMEPusillin",
         ["CavernsOfTimeBlackMorass"] = "COTBMChronar",
         ["StormwindVault"] = "SWVAszoshGrimflame",
-
-
-
     }
     -- Skip these instances as they have special handling
     local skipInstances = {

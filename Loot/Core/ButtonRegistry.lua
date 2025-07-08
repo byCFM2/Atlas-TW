@@ -111,10 +111,10 @@ AtlasLoot_TableRegistry = {
             { ID = "T1Set", Title = L["Tier 1 Sets"] },
             { ID = "T2Set", Title = L["Tier 2 Sets"] },
             { ID = "T3Set", Title = L["Tier 3 Sets"] },
-            { ID = "WorldBlues", Title = L["World Blues"] },
+            { ID = "WorldBlues", Title = L["World Blues"] },]]
             { ID = "WorldEpics1", Title = L["World Epics"] .. " 30-39" },
             { ID = "WorldEpics2", Title = L["World Epics"] .. " 40-49" },
-            { ID = "WorldEpics3", Title = L["World Epics"] .. " 50-60" },]]
+            { ID = "WorldEpics3", Title = L["World Epics"] .. " 50-60" },
             { ID = "Legendaries", Title = L["Legendary Items"] },
             { ID = "Artifacts", Title = L["Artifact Items"] },
             { ID = "RarePets1", Title = L["Rare Pets"].." 1" },
@@ -158,14 +158,14 @@ AtlasLoot_TableRegistry = {
             { ID = "WorldBluesShields", Title = L["Shields"] },
         }
     },
-    ["WorldEpics"] = {
+--[[     ["WorldEpics"] = {
         Name = L["World Epics"],
         Entry = {
             { ID = "WorldEpics1", Title = L["World Epics"] .. " 30-39" },
             { ID = "WorldEpics2", Title = L["World Epics"] .. " 40-49" },
             { ID = "WorldEpics3", Title = L["World Epics"] .. " 50-60" },
         }
-    },
+    }, ]]
     ["Factions"] = {
         Name = L["Factions"],
         Entry = {

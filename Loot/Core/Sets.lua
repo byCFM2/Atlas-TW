@@ -12,7 +12,7 @@ local function CreateMenu(menuTitle, menuItems, prevMenu, prevMenuText)
     end
     AtlasLoot_ShowMenu(menuItems)
 --[[     if menuItems.name then
-        AtlasTWLoot_BackTableRegistry[menuItems.name] = "Collections"
+        AtlasTW.Loot.BackTableRegistry[menuItems.name] = "Collections"
     end ]]
 end
 
@@ -38,7 +38,7 @@ AtlasTW.Loot.SetsMenuData = {
     { name = L["Tier 3 Sets"], icon = "Interface\\Icons\\INV_Chest_Plate02", lootpage = "T3Set" },
     {},
     { name = L["World Blues"], icon = "Interface\\Icons\\INV_Box_01", lootpage = "WorldBlues" },
-    { name = L["World Epics"], icon = "Interface\\Icons\\INV_Box_04", lootpage = "WorldEpics" },
+    { name = L["World Epics"], icon = "Interface\\Icons\\INV_Box_04", lootpage = "WorldEpics1" },
     { name = L["Legendary Items"], icon = "Interface\\Icons\\INV_Staff_Medivh", lootpage = "Legendaries" },
     { name = L["Artifact Items"], icon = "Interface\\Icons\\INV_Sword_07", lootpage = "Artifacts" },
     { name = L["Rare Pets"], icon = "Interface\\Icons\\Ability_Seal", lootpage = "RarePets1" },
@@ -52,7 +52,7 @@ function AtlasLootSetMenu()
     CreateMenu(L["Collections"], AtlasTW.Loot.SetsMenuData)
 end
 
-local worldEpicsMenuData = {
+--[[ local worldEpicsMenuData = {
     {},
     {},
     {},
@@ -63,7 +63,7 @@ local worldEpicsMenuData = {
 
 function AtlasLootWorldEpicsMenu()
     CreateMenu(L["World Epics"], worldEpicsMenuData, "Collections", L["Collections"])
-end
+end ]]
 
 local worldBluesMenuData = {
     {},

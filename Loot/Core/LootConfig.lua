@@ -1,6 +1,18 @@
 --Instance required libraries
 local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 
+-- Кэш для локализованных строк (оптимизация)
+local LocalizedStrings = {
+    DungeonsRaids = L["Dungeons & Raids"],
+    World = L["World"],
+    PvPRewards = L["PvP Rewards"],
+    Collections = L["Collections"],
+    Factions = L["Factions"],
+    WorldEvents = L["World Events"],
+    Crafting = L["Crafting"],
+    RareMobs = L["Rare Mobs"]
+}
+
 AtlasLoot_MenuHandlers = {
     ["DUNGEONSMENU1"] = "AtlasLoot_DungeonsMenu1",
     ["DUNGEONSMENU2"] = "AtlasLoot_DungeonsMenu2",
@@ -49,157 +61,169 @@ AtlasLoot_MenuHandlers = {
     ["WarriorSet"] = "AtlasLootWarriorSetMenu",
 }
 
--- Функция для динамической генерации AtlasLoot_HewdropDown на основе AtlasTW.Loot данных
+-- Вспомогательная функция для обработки данных категории (оптимизация)
+local function ProcessCategoryData(data, categoryName, specialHandler)
+    if not data then return nil end
+
+    local category = {}
+    category[categoryName] = {}
+    local categoryList = category[categoryName]
+
+    if specialHandler then
+        return specialHandler(data, category, categoryList)
+    else
+        -- Стандартная обработка
+        for i = 1, getn(data) do
+            local item = data[i]
+            if item.name and item.lootpage then
+                categoryList[getn(categoryList) + 1] = { { item.name, item.lootpage } }
+            end
+        end
+    end
+
+    return category
+end
+
+-- Специальный обработчик для World категории (оптимизация)
+local function ProcessWorldCategory(data, category, categoryList)
+    local rareMobsEntry = nil
+
+    for i = 1, getn(data) do
+        local boss = data[i]
+        if boss.name and boss.lootpage then
+            if boss.name == LocalizedStrings.RareMobs then
+                rareMobsEntry = { { boss.name, boss.lootpage } }
+            else
+                categoryList[getn(categoryList) + 1] = { { boss.name, boss.lootpage } }
+            end
+        end
+    end
+
+    if rareMobsEntry then
+        categoryList[getn(categoryList) + 1] = rareMobsEntry
+    end
+
+    return category
+end
+
+-- Специальный обработчик для Dungeons категории (оптимизация)
+local function ProcessDungeonsCategory(menu1Data, menu2Data)
+    if not menu1Data or not menu2Data then return nil end
+
+    local category = {}
+    category[LocalizedStrings.DungeonsRaids] = {}
+    local categoryList = category[LocalizedStrings.DungeonsRaids]
+
+    -- Объединяем обработку двух массивов в один цикл
+    local totalCount = getn(menu1Data) + getn(menu2Data)
+    for i = 1, totalCount do
+        local dungeon
+        if i <= getn(menu1Data) then
+            dungeon = menu1Data[i]
+        else
+            dungeon = menu2Data[i - getn(menu1Data)]
+        end
+
+        if dungeon.name and dungeon.lootpage then
+            categoryList[getn(categoryList) + 1] = { { dungeon.name, dungeon.lootpage } }
+        end
+    end
+
+    return category
+end
+
+-- Оптимизированная функция для динамической генерации AtlasLoot_HewdropDown
 local function GenerateHewdropDown()
+
+    local lootData = AtlasTW.Loot
     local hewdropDown = {}
+    local category
 
-     -- 1. Dungeons & Raids (динамическая категория на основе AtlasTW.Loot.DungeonsMenu1Data и AtlasTW.Loot.DungeonsMenu2Data)
-    if AtlasTW and AtlasTW.Loot and AtlasTW.Loot.DungeonsMenu1Data and AtlasTW.Loot.DungeonsMenu2Data then
-        local dungeonsCategory = {}
-        dungeonsCategory[L["Dungeons & Raids"]] = {}
-
-        -- Добавляем элементы из первой страницы подземелий
-        for _, dungeon in ipairs(AtlasTW.Loot.DungeonsMenu1Data) do
-            if dungeon.name and dungeon.lootpage then
-                table.insert(dungeonsCategory[L["Dungeons & Raids"]], { { dungeon.name, dungeon.lootpage, "Table" }, })
-            end
-        end
-
-        -- Добавляем элементы из второй страницы подземелий
-        for _, dungeon in ipairs(AtlasTW.Loot.DungeonsMenu2Data) do
-            if dungeon.name and dungeon.lootpage then
-                table.insert(dungeonsCategory[L["Dungeons & Raids"]], { { dungeon.name, dungeon.lootpage, "Table" }, })
-            end
-        end
-
-        table.insert(hewdropDown, dungeonsCategory)
+    -- 1. Dungeons & Raids (оптимизированная обработка)
+    category = ProcessDungeonsCategory(lootData.DungeonsMenu1Data, lootData.DungeonsMenu2Data)
+    if category then
+        hewdropDown[getn(hewdropDown) + 1] = category
     end
 
-     -- 2. World (динамическая категория на основе AtlasTW.Loot.WorldBossesData)
-    if AtlasTW and AtlasTW.Loot and AtlasTW.Loot.WorldBossesData then
-        local worldCategory = {}
-        worldCategory[L["World"]] = {}
-        local rareMobsEntry = nil
-
-        for _, boss in ipairs(AtlasTW.Loot.WorldBossesData) do
-            -- Пропускаем пустые записи (разделители)
-            if boss.name and boss.lootpage then
-                if boss.name == L["Rare Mobs"] then
-                    -- Сохраняем Rare Mobs для добавления в конец
-                    rareMobsEntry = { { boss.name, boss.lootpage, "Table" }, }
-                else
-                    table.insert(worldCategory[L["World"]], { { boss.name, boss.lootpage, "Table" }, })
-                end
-            end
-        end
-
-        -- Добавляем Rare Mobs в конец списка
-        if rareMobsEntry then
-            table.insert(worldCategory[L["World"]], rareMobsEntry)
-        end
-
-        table.insert(hewdropDown, worldCategory)
+    -- 2. World (оптимизированная обработка)
+    category = ProcessCategoryData(lootData.WorldBossesData, LocalizedStrings.World, ProcessWorldCategory)
+    if category then
+        hewdropDown[getn(hewdropDown) + 1] = category
     end
 
-    -- 3. PvP Rewards (динамическая категория на основе AtlasTW.Loot.PvpMenuData)
-    if AtlasTW and AtlasTW.Loot and AtlasTW.Loot.PvpMenuData then
-        local pvpCategory = {}
-        pvpCategory[L["PvP Rewards"]] = {}
-
-        for _, item in ipairs(AtlasTW.Loot.PvpMenuData) do
-            if item.name and item.lootpage then
-                table.insert(pvpCategory[L["PvP Rewards"]], { { item.name, item.lootpage, "Table" }, })
-            end
-        end
-
-        table.insert(hewdropDown, pvpCategory)
+    -- 3. PvP Rewards (оптимизированная обработка)
+    category = ProcessCategoryData(lootData.PvpMenuData, LocalizedStrings.PvPRewards)
+    if category then
+        hewdropDown[getn(hewdropDown) + 1] = category
     end
 
-    -- 4. Collections (динамическая категория на основе AtlasTW.Loot.SetsMenuData)
-    if AtlasTW and AtlasTW.Loot and AtlasTW.Loot.SetsMenuData then
-        local collectionsCategory = {}
-        collectionsCategory[L["Collections"]] = {}
-
-        for _, item in ipairs(AtlasTW.Loot.SetsMenuData) do
-            if item.name and item.lootpage then
-                table.insert(collectionsCategory[L["Collections"]], { { item.name, item.lootpage, "Table" }, })
-            end
-        end
-
-        table.insert(hewdropDown, collectionsCategory)
+    -- 4. Collections (оптимизированная обработка)
+    category = ProcessCategoryData(lootData.SetsMenuData, LocalizedStrings.Collections)
+    if category then
+        hewdropDown[getn(hewdropDown) + 1] = category
     end
 
-    -- 5. Factions (динамическая категория на основе AtlasTW.Loot.FactionsData)
-    if AtlasTW and AtlasTW.Loot and AtlasTW.Loot.FactionsData then
-        local factionsCategory = {}
-        factionsCategory[L["Factions"]] = {}
-
-        for _, faction in ipairs(AtlasTW.Loot.FactionsData) do
-            if faction.name and faction.lootpage then
-                table.insert(factionsCategory[L["Factions"]], { { faction.name, faction.lootpage, "Table" }, })
-            end
-        end
-
-        table.insert(hewdropDown, factionsCategory)
+    -- 5. Factions (оптимизированная обработка)
+    category = ProcessCategoryData(lootData.FactionsData, LocalizedStrings.Factions)
+    if category then
+        hewdropDown[getn(hewdropDown) + 1] = category
     end
 
-    -- 6. World Events (динамическая категория на основе AtlasTW.Loot.WorldEventsData)
-    if AtlasTW and AtlasTW.Loot and AtlasTW.Loot.WorldEventsData then
-        local worldEventsCategory = {}
-        worldEventsCategory[L["World Events"]] = {}
-
-        for _, event in ipairs(AtlasTW.Loot.WorldEventsData) do
-            if event.name and event.lootpage then
-                table.insert(worldEventsCategory[L["World Events"]], { { event.name, event.lootpage, "Table" }, })
-            end
-        end
-
-        table.insert(hewdropDown, worldEventsCategory)
+    -- 6. World Events (оптимизированная обработка)
+    category = ProcessCategoryData(lootData.WorldEventsData, LocalizedStrings.WorldEvents)
+    if category then
+        hewdropDown[getn(hewdropDown) + 1] = category
     end
 
-    -- 7. Crafting (динамическая категория на основе AtlasTW.Loot.CraftingMenuData)
-    if AtlasTW and AtlasTW.Loot and AtlasTW.Loot.CraftingMenuData then
-        local craftingCategory = {}
-        craftingCategory[L["Crafting"]] = {}
-
-        for _, craft in ipairs(AtlasTW.Loot.CraftingMenuData) do
-            if craft.name and craft.lootpage then
-                table.insert(craftingCategory[L["Crafting"]], { { craft.name, craft.lootpage, "Table" }, })
-            end
-        end
-
-        table.insert(hewdropDown, craftingCategory)
+    -- 7. Crafting (оптимизированная обработка)
+    category = ProcessCategoryData(lootData.CraftingMenuData, LocalizedStrings.Crafting)
+    if category then
+        hewdropDown[getn(hewdropDown) + 1] = category
     end
 
     return hewdropDown
 end
 
--- Генерируем AtlasLoot_HewdropDown автоматически
-AtlasLoot_HewdropDown = GenerateHewdropDown()
-
--- Функция для автоматической генерации AtlasLoot_HewdropDown_SubTables на основе AtlasLoot_TableRegistry
+-- Оптимизированная функция для автоматической генерации AtlasLoot_HewdropDown_SubTables
 local function GenerateHewdropDownSubTables()
     local subTables = {}
-        -- Проверяем, что AtlasLoot_TableRegistry существует
+
+    -- Проверяем, что AtlasLoot_TableRegistry существует
     if not AtlasLoot_TableRegistry then
         DEFAULT_CHAT_FRAME:AddMessage("AtlasLoot: Warning - AtlasLoot_TableRegistry not found, using empty subtables")
         return subTables
     end
-    -- Проходим по всем категориям в AtlasLoot_TableRegistry
+
+    -- Оптимизированная обработка категорий
     for categoryKey, categoryData in pairs(AtlasLoot_TableRegistry) do
         if categoryData.Entry then
-            -- Создаем подтаблицу для каждой категории
+            local entryData = categoryData.Entry
+            local entryCount = getn(entryData)
+
+            -- Предварительное выделение памяти для таблицы (оптимизация)
             local categorySubTable = {}
-            for _, entry in ipairs(categoryData.Entry) do
-                -- Добавляем каждую запись как элемент подтаблицы
-                table.insert(categorySubTable, { entry.Title, entry.ID })
+
+            -- Используем числовой индекс вместо ipairs для лучшей производительности
+            for i = 1, entryCount do
+                local entry = entryData[i]
+                if entry.Title and entry.ID then
+                    categorySubTable[i] = { entry.Title, entry.ID }
+                end
             end
-            -- Добавляем подтаблицу в основную структуру
+
             subTables[categoryKey] = categorySubTable
         end
     end
+
     return subTables
 end
 
--- Генерируем AtlasLoot_HewdropDown_SubTables автоматически
-AtlasLoot_HewdropDown_SubTables = GenerateHewdropDownSubTables()
+-- Генерируем данные при загрузке (с ленивой инициализацией)
+do
+    if not AtlasLoot_HewdropDown then
+        AtlasLoot_HewdropDown = GenerateHewdropDown()
+    end
+    if not AtlasLoot_HewdropDown_SubTables then
+        AtlasLoot_HewdropDown_SubTables = GenerateHewdropDownSubTables()
+    end
+end
