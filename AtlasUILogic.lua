@@ -1,7 +1,7 @@
 -- Functions the atlas UI logic
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
+local L = AtlasTW.Local
 
 -- Minimap button logic
 -- Установка позиции кнопки

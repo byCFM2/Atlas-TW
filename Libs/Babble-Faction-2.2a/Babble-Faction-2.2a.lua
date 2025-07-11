@@ -67,8 +67,6 @@ BabbleFaction:RegisterTranslations("enUS", function()
 
 	["Silvermoon Remnant"] = true,
 	["Revantusk Trolls"] = true,
-	["Gnomeregan Exiles"] = true,
-	["Darkspear Trolls"] = true,
 	["Durotar Labor Union"] = true,
 	["Wardens of Time"] = true,
 	["The Defilers (Horde) / The League of Arathor (Alliance)"] = true,

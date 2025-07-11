@@ -1,5 +1,5 @@
 --Instance required libraries
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local L = AtlasTW.Local
 
 -- Кэш для локализованных строк (оптимизация)
 local LocalizedStrings = {

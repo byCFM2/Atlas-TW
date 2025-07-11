@@ -123,7 +123,7 @@ AtlasLoot_Data["AtlasLootWBItems"] = {
 		{ 20520, "spell_shadow_sealofkings", "=q2=Dark Rune", "Group 3", "[2-4] 20%" },
 	},
 	WBTurtlhu = {
---[[ 	{ 50202, "INV_Egg_03", "=q3=Egg of Turtlhu", "=ds=#e15#", "100%" }, ]]
+ 	--{ 50202, "INV_Egg_03", "=q3=Egg of Turtlhu", "=ds=#e15#", "100%" },
 	 },
 	WBCowKing = {
 		{ 60486, "inv_misc_fish_02", "=q4=Fishbringer", "#h3#, #w6#", "25%" },

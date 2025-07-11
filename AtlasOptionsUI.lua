@@ -1,6 +1,6 @@
 local _G = getfenv()
 AtlasTW = AtlasTW or {}
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local L = AtlasTW.Local
 
 do
     -- Create the main options frame

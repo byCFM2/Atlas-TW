@@ -1,6 +1,5 @@
 -- AtlasLootMenu.lua
 local _G = getfenv()
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 local BZ = AceLibrary("Babble-Zone-2.2a")
 
 function AtlasLoot_GetDataSource(dataID)
@@ -49,6 +48,14 @@ function AtlasLoot_PrepMenu(backPage, title, menu)
 end
 
 function AtlasLoot_ShowMenu(menuData, options)
+    -- Modern Data System Integration
+    if AtlasTW.ModernAdapter and menuData and menuData.useModern then
+        local legacyData = AtlasTW.ModernAdapter.GetLegacyData(menuData.category, menuData.boss)
+        if legacyData then
+            menuData = legacyData
+        end
+    end
+
     options = options or {}
     local maxItems = options.maxItems or 30
     local defaultIcon = options.defaultIcon or "Interface\\Icons\\INV_Misc_QuestionMark"

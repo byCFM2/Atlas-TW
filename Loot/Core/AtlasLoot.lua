@@ -5,7 +5,7 @@ AtlasTW = _G.AtlasTW
 AtlasTW.Loot = AtlasTW.Loot or {}
 
 --Instance required libraries
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local L = AtlasTW.Local
 
 --Compatibility with old EquipCompare/EQCompare
 ATLASLOOT_OPTIONS_EQUIPCOMPARE = L["Use EquipCompare"]
@@ -47,15 +47,17 @@ AtlasLoot_Data["AtlasLootFallback"] = {
 -- Функция для ограничения длины текста с учетом паттернов
 local function StripFormatting(text)
 	-- Проверяем текст на пустоту
-	if not text then return "" end
+ 	if not text then return "" end
 	-- Сначала удаляем все виды скобок и их содержимое
 	text = string.gsub(text, "%(.-%)" , "")  -- Круглые скобки ()
 	text = string.gsub(text, "%[.-%]" , "")  -- Квадратные скобки []
 	text = string.gsub(text, "%{.-%}" , "")  -- Фигурные скобки {}
 	text = string.gsub(text, "<.->", "")     -- Угловые скобки <>
+
 	-- Удаляем все возможные коды форматирования WoW
 	-- Цветовые коды |cffRRGGBB...|r
-	text = string.gsub(text, "|c%x%x%x%x%x%x%x%x(.-)|r", "%1")
+--	text = string.gsub(text, "|c%x%x%x%x%x%x%x%x(.-)|r", "%1")
+	text = string.gsub(text, "|c%x%x%x%x%x%x%x%x", "")
 	-- Удаляем оставшиеся |r коды (завершающие цветовые коды)
 	text = string.gsub(text, "|r", "")
 	-- Удаляем ссылки |Hlink|htext|h
@@ -1003,7 +1005,11 @@ end
 --[[
 	Requests the relevant loot page from a menu screen
 ]]
-function AtlasLootMenuItem_OnClick()
+function AtlasLootMenuItem_OnClick(button)
+    if button.useModern then
+        AtlasLoot_ShowMenu({useModern = true, category = button.category, boss = button.boss})
+        return
+    end
 	if this.container then
 		AtlasLoot_ShowContainerFrame()
 		return

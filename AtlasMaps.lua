@@ -2,7 +2,7 @@
 -- Compatible with WoW 1.12 and Lua 5.0
 
 -- Library dependencies
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local L = AtlasTW.Local
 local BC = AceLibrary("Babble-Class-2.2")
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")

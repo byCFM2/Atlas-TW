@@ -6,7 +6,7 @@ local blue = "|cff0070dd"
 -- Локальные ссылки на глобальные функции для повышения производительности
 local _G = getfenv()
 local AtlasTW = _G.AtlasTW
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local L = AtlasTW.Local
 local uIDropDownMenu_SetSelectedID = UIDropDownMenu_SetSelectedID
 
 -- Локальные переменные для часто используемых элементов UI

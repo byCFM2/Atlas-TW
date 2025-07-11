@@ -35,6 +35,20 @@
 			end
 		end
 	</Binding>
+	<Binding name="ATLASLOOT_QL5">
+		if AtlasTWCharDB["QuickLooks"][5] then
+			if AtlasFrame and AtlasFrame:IsVisible() then
+				AtlasLootPanel_Preset5:Click()
+			end
+		end
+	</Binding>
+	<Binding name="ATLASLOOT_QL6">
+		if AtlasTWCharDB["QuickLooks"][6] then
+			if AtlasFrame and AtlasFrame:IsVisible() then
+				AtlasLootPanel_Preset6:Click()
+			end
+		end
+	</Binding>
 	<Binding name="ATLASLOOT_WISHLIST">
 		if AtlasFrame and AtlasFrame:IsVisible() then
 			AtlasLootPanel_WishList:Click()

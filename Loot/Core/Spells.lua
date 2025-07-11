@@ -1,4 +1,4 @@
-local L = AceLibrary("AceLocale-2.2"):new("Atlas");
+local L = AtlasTW.Local
 
 --[[ local function GetEnchantIcon(enchantData)
     return enchantData.icon or GetSpellInfoAtlasLootDB["enchants"]["default_icon"]

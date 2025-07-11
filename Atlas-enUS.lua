@@ -1,7 +1,17 @@
---************************************************
--- Localized Strings
---************************************************
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+-- Простая система локализации на метатаблицах
+AtlasTW.Local = {
+    Translations = {},
+    __index = function(t, key)
+        local value = rawget(t.Translations, key)
+        if value == true or value == nil then
+            return key
+        else
+            return value
+        end
+    end
+}
+
+setmetatable(AtlasTW.Local, AtlasTW.Local)
 
 AtlasSortIgnore = {"the (.+)"}
 
@@ -14,13 +24,16 @@ BINDING_NAME_ATLASLOOT_QL1 = "QuickLook 1"
 BINDING_NAME_ATLASLOOT_QL2 = "QuickLook 2"
 BINDING_NAME_ATLASLOOT_QL3 = "QuickLook 3"
 BINDING_NAME_ATLASLOOT_QL4 = "QuickLook 4"
+BINDING_NAME_ATLASLOOT_QL5 = "QuickLook 5"
+BINDING_NAME_ATLASLOOT_QL6 = "QuickLook 6"
 BINDING_NAME_ATLASLOOT_WISHLIST = "WishList"
 
 AtlasZoneSubstitutions = {
 	["The Temple of Atal'Hakkar"] = "Sunken Temple"
 }
 
-L:RegisterTranslations("enUS", function() return {
+-- Заполняем переводы
+AtlasTW.Local.Translations = {
 
 	--************************************************
 	-- Zone Names, Acronyms, and Common Strings
@@ -55,7 +68,7 @@ L:RegisterTranslations("enUS", function() return {
 	["Lunar Festival"] = true,
 
 	--Other
-	
+
 	["Show the Quest Panel with Atlas"] = true,
 	["Show Quest Panel on the Left"] = true,
 	["Show Quest Panel on the Right"] = true,
@@ -1280,4 +1293,4 @@ L:RegisterTranslations("enUS", function() return {
 	["Level One Lunatic Challenge"] = true,
 	["Snowball"] = true,
 	["Drifting Avatar of Time"]	= true,
-} end)
+}

@@ -1,6 +1,6 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local L = AtlasTW.Local
 -----------------------------------------------------------------------------
 -- Colours
 -----------------------------------------------------------------------------

@@ -1,4 +1,4 @@
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local L = AtlasTW.Local
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BZ = AceLibrary("Babble-Zone-2.2a")
 

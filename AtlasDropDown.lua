@@ -2,7 +2,7 @@
 
 -- Namespace protection
 local _G = getfenv()
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local AtlasDropDown = {}
 

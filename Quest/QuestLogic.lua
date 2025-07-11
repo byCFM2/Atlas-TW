@@ -1,6 +1,6 @@
 -- AtlasTW Quest Logic for the Inside Frame
 local _G = getfenv()
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local L = AtlasTW.Local
 AtlasTW = _G.AtlasTW
 
 -----------------------------------------------------------------------------

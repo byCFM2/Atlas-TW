@@ -1,7 +1,7 @@
 -- AtlasTW Quest UI Frame Creation
 local _G = getfenv()
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
 AtlasTW = _G.AtlasTW
+local L = AtlasTW.Local
 
 -- Constants
 local FRAME_WIDTH = 220

@@ -1,6 +1,6 @@
 local _G = getfenv()
 
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local L = AtlasTW.Local
 
 -- Функция для копирования свойств родительского шаблона
 local function AtlasLoot_ApplyParentTemplate(frame)
@@ -364,7 +364,7 @@ function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
         AtlasLoot_ApplyParentTemplate(button)
 
         button:RegisterForClicks("LeftButtonDown", "RightButtonDown")
-        button:SetScript("OnClick", function() AtlasLootMenuItem_OnClick() end)
+        button:SetScript("OnClick", function() AtlasLootMenuItem_OnClick(this) end)
         button:SetScript("OnShow", function() this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1) end)
 
     elseif templateType == "AtlasLootNewBossLineTemplate" then

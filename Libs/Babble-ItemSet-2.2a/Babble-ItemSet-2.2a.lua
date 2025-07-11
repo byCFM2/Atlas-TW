@@ -216,10 +216,7 @@ BabbleItemSet:RegisterTranslations("enUS", function()
 		["The Highlander's Resolution"] = true,
 		["The Highlander's Resolve"] = true,
 		["The Highlander's Will"] = true,
-		
 		["Twilight Trappings"] = true,
-		
-		
 		["Lieutenant Commander's Aegis"] = true,
 		["Lieutenant Commander's Battlegear"] = true,
 		["Lieutenant Commander's Pursuit"] = true,
@@ -227,8 +224,7 @@ BabbleItemSet:RegisterTranslations("enUS", function()
 		["Lieutenant Commander's Regalia"] = true,
 		["Lieutenant Commander's Sanctuary"] = true,
 		["Lieutenant Commander's Threads"] = true,
-		["Lieutenant Commander's Vestments"] = true,	
-		
+		["Lieutenant Commander's Vestments"] = true,
 		["Champion's Battlegear"] = true,
 		["Champion's Earthshaker"] = true,
 		["Champion's Pursuit"] = true,
@@ -414,10 +410,10 @@ BabbleItemSet:RegisterTranslations("ruRU", function()
 		["The Highlander's Resolution"] = "Решимость горца",
 		["The Highlander's Resolve"] = "Твердость горца",
 		["The Highlander's Will"] = "Воля горца",
-		
+
 		["Twilight Trappings"] = "Сумеречное облачение",
-		
-		
+
+
 		["Lieutenant Commander's Aegis"] = "Эгида лейтенанта-командора",
 		["Lieutenant Commander's Battlegear"] = "Броня лейтенанта-командора",
 		["Lieutenant Commander's Pursuit"] = "Облачение лейтенанта-командора",
@@ -426,7 +422,7 @@ BabbleItemSet:RegisterTranslations("ruRU", function()
 		["Lieutenant Commander's Sanctuary"] = "Снаряжение лейтенанта-командора",
 		["Lieutenant Commander's Threads"] = "Нити лейтенанта-командора",
 		["Lieutenant Commander's Vestments"] = "Облачение лейтенанта-командора",
-		
+
 		["Champion's Battlegear"] = "Броня защитника",
 		["Champion's Earthshaker"] = "Землекрушитель Защитника",
 		["Champion's Pursuit"] = "Облачение Защитника",

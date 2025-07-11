@@ -169,7 +169,6 @@ BabbleBoss:RegisterTranslations("enUS", function()
 		["Onyxia"] = true,
 		["Azuregos"] = true,
 		["Spirit of Azuregos"] = true,
-		["Nerubian Overseer"] = true,
 		["Commander Andreon"] = true,
 		["Archlich Enkhraz"] = true,
 		["Dark Reaver of Karazhan"] = true,
@@ -330,8 +329,6 @@ BabbleBoss:RegisterTranslations("enUS", function()
 		["Zevrim Thornhoof"] = true,
 		["Zolo"] = true,
 		["Zul'Lor"] = true,
-		
-		-- From Mendeleev
 		["Cho'Rush the Observer"] = true,
 		["Lord Hel'nurath"] = true,
 		["Pimgib"] = true,
@@ -479,8 +476,6 @@ BabbleBoss:RegisterTranslations("enUS", function()
 		["Stoneskin Gargoyle"] = true,
 		["Gargoyle"] = true,
 		["Master Craftsman Omarion"] = true,
-		["Alterac Valley"] = true,
-		["Arathi Basin"] = true
 	}
 end)
 
@@ -678,7 +673,7 @@ BabbleBoss:RegisterTranslations("esES", function()
 		["Zevrim Thornhoof"] = "Zevrim Pezuñahendida",
 		["Zolo"] = "Zolo",
 		["Zul'Lor"] = "Zul'Lor",
-		
+
 		-- From Mendeleev
 		["Cho'Rush the Observer"] = "Cho'Rush el Observador",
 		["Lord Hel'nurath"] = "Lord Hel'nurath",
@@ -1028,7 +1023,7 @@ BabbleBoss:RegisterTranslations("ruRU", function()
 		["Zevrim Thornhoof"] = "Зеврим Терновое Копыто",
 		["Zolo"] = "Золо",
 		["Zul'Lor"] = "Зул'Лор",
-		
+
 		-- From Mendeleev
 		["Cho'Rush the Observer"] = "Чо'Раш Наблюдатель",
 		["Lord Hel'nurath"] = "Лорд Хел'нурат",
@@ -1047,7 +1042,7 @@ BabbleBoss:RegisterTranslations("ruRU", function()
 		["Wolf Master Nandos"] = "Командир воргенов Нандос",
 		["Rend Blackhand"] = "Ренд Чернорук",
 		["Kurinnaxx"] = "Куриннакс",
-		
+
 		["Maur Grimtotem"] = "Маур Зловещий Тотем",
 		["Taragaman the Hungerer"] = "Тарагаман Ненасытный",
 		["Jergosh the Invoker"] = "Жергош Призыватель Духов",
@@ -1091,7 +1086,7 @@ BabbleBoss:RegisterTranslations("ruRU", function()
 		["Shadowpriest Sezz'ziz"] = "Темный жрец Шезз'зиз",
 		["Gahz'rilla"] = "Газ'рилла",
 		["Chief Ukorz Sandscalp"] = "Вождь Укорз Песчаная Плешь",
-		["Ruuzlu"] = "Руузлу",	
+		["Ruuzlu"] = "Руузлу",
 		["Isalien"] = "Изалиен",
 		["Revanchion"] = "Реваншион",
 		["Lord Roccor"] = "Лорд Роккор";
@@ -1112,7 +1107,7 @@ BabbleBoss:RegisterTranslations("ruRU", function()
 		["Urok Doomhowl"] = "Аррок Смертный Вопль",
 		["Quartermaster Zigris"] = "Интендант Зигрис",
 		["Gizrul the Slavener"] = "Гизрул Поработитель",
-		["Ghok Bashguud"] = "Гок Крепкобив",	
+		["Ghok Bashguud"] = "Гок Крепкобив",
 		["Jed Runewatcher"] = "Джед Руновед";
 		["Lord Valthalak"] = "Лорд Вальтхалак";
 		["Grubbis"] = "Грязнюк";
@@ -1591,7 +1586,7 @@ BabbleBoss:RegisterTranslations("frFR", function()
 		["Zevrim Thornhoof"] = "Zevrim Thornhoof",
 		["Zolo"] = "Zolo",
 		["Zul'Lor"] = "Zul'Lor",
-		
+
 		-- From Mendeleev
 		["Cho'Rush the Observer"] = "Cho'Rush l'Observateur",
 		["Lord Hel'nurath"] = "Seigneur Hel'nurath",
@@ -1802,24 +1797,24 @@ BabbleBoss:RegisterTranslations("zhCN", function()
 		["Zevrim Thornhoof"] = "塔罗·刺蹄",
 		["Zolo"] = "祖罗",
 		["Zul'Lor"] = "祖罗尔",
-		
+
 		-- From Mendeleev 
-		["Cho'Rush the Observer"] = "观察者克鲁什", 
-		["Lord Hel'nurath"] = "赫尔努拉斯", 
-		["Pimgib"] = "匹姆吉布", 
-		["Knot Thimblejack's Cache"] = "诺特·希姆加克的储物箱", 
-		["Cannonmaster Willey"] = "炮手威利", 
-		["Emperor Dagran Thaurissian"] = "达格兰·索瑞森大帝", 
-		["Archmage Arugal"] = "大法师阿鲁高", 
-		["Archmage Arugal's Voidwalker"] = "阿鲁高的虚空行者", 
-		["Baron Silverlaine"] = "席瓦莱恩男爵", 
-		["Commander Springvale"] = "指挥官斯普林瓦尔", 
-		["Deathsworn Captain"] = "死亡之誓", 
-		["Fenrus the Devourer"] = "吞噬者芬鲁斯", 
-		["Odo the Blindwatcher"] = "盲眼守卫奥杜", 
-		["Razorclaw the Butcher"] = "屠夫拉佐克劳", 
-		["Wolf Master Nandos"] = "狼王南杜斯", 
-		["Rend Blackhand"] = "雷德·黑手", 
+		["Cho'Rush the Observer"] = "观察者克鲁什",
+		["Lord Hel'nurath"] = "赫尔努拉斯",
+		["Pimgib"] = "匹姆吉布",
+		["Knot Thimblejack's Cache"] = "诺特·希姆加克的储物箱",
+		["Cannonmaster Willey"] = "炮手威利",
+		["Emperor Dagran Thaurissian"] = "达格兰·索瑞森大帝",
+		["Archmage Arugal"] = "大法师阿鲁高",
+		["Archmage Arugal's Voidwalker"] = "阿鲁高的虚空行者",
+		["Baron Silverlaine"] = "席瓦莱恩男爵",
+		["Commander Springvale"] = "指挥官斯普林瓦尔",
+		["Deathsworn Captain"] = "死亡之誓",
+		["Fenrus the Devourer"] = "吞噬者芬鲁斯",
+		["Odo the Blindwatcher"] = "盲眼守卫奥杜",
+		["Razorclaw the Butcher"] = "屠夫拉佐克劳",
+		["Wolf Master Nandos"] = "狼王南杜斯",
+		["Rend Blackhand"] = "雷德·黑手",
 		["Kurinnaxx"] = "库林纳克斯",
 	}
 end)
@@ -2229,7 +2224,7 @@ BabbleBoss:RegisterTranslations("koKR", function()
 		["Zevrim Thornhoof"] = "제브림 쏜후프",
 		["Zolo"] = "졸로",
 		["Zul'Lor"] = "줄로",
-		
+
 		-- From Mendeleev
 		["Cho'Rush the Observer"] = "정찰병 초루쉬",
 		["Lord Hel'nurath"] = "군주 헬누라스",

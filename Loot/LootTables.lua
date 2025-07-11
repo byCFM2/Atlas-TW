@@ -5,7 +5,7 @@
 	inherant title to the loot table, given the origins of the mod as an Atlas plugin.
 ]]
 --Invoke libraries
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local L = AtlasTW.Local
 local BC = AceLibrary("Babble-Class-2.2")
 local BS = AceLibrary("Babble-Spell-2.2a")
 local BZ = AceLibrary("Babble-Zone-2.2a")

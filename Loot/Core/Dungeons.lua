@@ -1,4 +1,4 @@
-local L = AceLibrary("AceLocale-2.2"):new("Atlas")
+local L = AtlasTW.Local
 local title = L["Dungeons & Raids"]
 --table for create back navigation
 AtlasTW.Loot.BackTableRegistry = {}
@@ -86,6 +86,12 @@ local function GenerateMenuDataFromAtlasMaps()
                 -- Get lootpage name
                 local lootpage = lootpageMapping[instanceKey] or instanceKey
 
+                -- Modern Data System Integration
+                local useModern = false
+                if instanceKey == "MoltenCore" then
+                    useModern = true
+                end
+
                 -- Determine instance type and target menu
                 local instanceType
                 local targetMenu
@@ -107,7 +113,10 @@ local function GenerateMenuDataFromAtlasMaps()
                     name = getFormString(instanceType, zoneName),
                     Extra = location,
                     lootpage = lootpage,
-                    playerLimit = tonumber(playerLimit) or 5
+                    playerLimit = tonumber(playerLimit) or 5,
+                    useModern = useModern,
+                    category = "instances",
+                    boss = string.gsub(lootpage, "MC", "") -- Extract boss name from lootpage
                 }
 
                 -- Add icon for raids and level 60 instances
@@ -197,6 +206,36 @@ function AtlasLoot_DungeonsMenu1()
     AtlasLoot_PrepMenu(nil, title, "DUNGEONSMENU1")
     AtlasLootItemsFrame_PREV:Show()
     AtlasLootItemsFrame_NEXT:Show()
+    local menuData = {
+        useModern = true,
+        category = "instances",
+        boss = "Lucifron"
+    }
+    -- This is a placeholder to show how to call it for a specific boss.
+    -- In a real scenario, you would get the boss from the clicked menu item.
+    if AtlasTW.Loot.DungeonsMenu1Data[1] and AtlasTW.Loot.DungeonsMenu1Data[1].useModern then
+        AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu1Data[1])
+    else
+        AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu1Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalIronForge", maxItems = table.getn(AtlasTW.Loot.DungeonsMenu1Data) })
+    end
+end
+
+function AtlasLoot_DungeonsMenu2()
+    AtlasLoot_PrepMenu("DUNGEONSMENU1", title, "DUNGEONSMENU2")
+    AtlasLootItemsFrame_PREV:Show()
+    AtlasLootItemsFrame_NEXT:Show()
+    if AtlasTW.Loot.DungeonsMenu2Data[1] and AtlasTW.Loot.DungeonsMenu2Data[1].useModern then
+        AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu2Data[1])
+    else
+        AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu2Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalOrgrimmar", maxItems = table.getn(AtlasTW.Loot.DungeonsMenu2Data) })
+    end
+end
+
+-- Original function is being replaced, so we comment it out or remove it.
+--[[ function AtlasLoot_DungeonsMenu1()
+    AtlasLoot_PrepMenu(nil, title, "DUNGEONSMENU1")
+    AtlasLootItemsFrame_PREV:Show()
+    AtlasLootItemsFrame_NEXT:Show()
     AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu1Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalIronForge", maxItems = table.getn(AtlasTW.Loot.DungeonsMenu1Data) })
 end
 
@@ -205,4 +244,4 @@ function AtlasLoot_DungeonsMenu2()
     AtlasLootItemsFrame_PREV:Show()
     AtlasLootItemsFrame_NEXT:Show()
     AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu2Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalOrgrimmar", maxItems = table.getn(AtlasTW.Loot.DungeonsMenu2Data) })
-end
+end]]
