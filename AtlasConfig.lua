@@ -152,4 +152,8 @@ AtlasTW = {
 }
 AtlasTW.Loot = AtlasTW.Loot or {}
 
+function print(text)
+    DEFAULT_CHAT_FRAME:AddMessage(text)
+end
+
 AtlasTWCharDB = AtlasTWCharDB or { FirstTime = true }

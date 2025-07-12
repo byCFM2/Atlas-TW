@@ -1628,7 +1628,7 @@ AtlasMaps = {
 
     TowerofKarazhan = CreateDungeonTemplate({
         zoneName = BZ["Tower of Karazhan"],
-        acronym = "K40, KARA40",
+        acronym = "KARA40",
         location = BZ["Deadwind Pass"],
         levelRange = "60+",
         minLevel = "60",

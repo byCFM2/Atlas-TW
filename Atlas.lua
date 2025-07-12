@@ -7,6 +7,17 @@ local atlasData = {}
 local frame
 local loadingStartTime -- Время загрузки
 
+-- Color constants organized in a table
+local Colors = {
+    BLUE = "|cff6666ff",
+    GREY = "|cff999999",
+    GREEN = "|cff66cc33",
+    RED = "|cffcc6666",
+    ORANGE = "|cffcc9933",
+    PURPLE = "|cff9900ff",
+    WHITE = "|cffffffff"
+}
+
 AtlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version")
 
 local function debug(info)
@@ -52,27 +63,42 @@ local function atlasSimpleSearch(data, text)
 		return
 	end
 	local new = {}
-	local i, n
 	local search_text = string.lower(text)
 	search_text = string.gsub(search_text, "([%^%$%(%)%%%.%[%]%+%-%?])", "%%%1")
 	search_text = string.gsub(search_text, "%*", ".*")
-	local match
-	i,_ = next(data, nil)-- i is an index of data, v = data[i]
-	n = i
-	while i do
-		if type(i) == "number" then
-			if string.gmatch then
-				match = string.gmatch(string.lower(data[i][1]), search_text)()
-			else
-				match = string.gfind(string.lower(data[i][1]), search_text)()
-			end
-			if match then
+	local n = 1
+	for _, repData in ipairs(data["Reputation"] or {}) do
+		if repData.name then
+			local newName = Colors.ORANGE..L["Reputation"].. ": ".. repData.name
+			local _, _ = string.find(string.lower(newName), search_text)
+			if _ then
 				new[n] = {}
-				new[n][1] = data[i][1]
+				new[n][1] = newName
 				n = n + 1
 			end
 		end
-		i,_ = next(data, i)
+	end
+	for _, keyData in ipairs(data["Keys"] or {}) do
+		if keyData.name then
+			local newName = Colors.GREEN..L["Key"] .. ": " .. keyData.name
+			local _, _ = string.find(string.lower(newName), search_text)
+			if _ then
+				new[n] = {}
+				new[n][1] = newName
+				n = n + 1
+			end
+		end
+	end
+	for _, bossData in ipairs(data["Bosses"] or {}) do
+		if bossData.name then
+			local newName = Colors.WHITE..(bossData.prefix or "").." ".. bossData.name
+			local _, _ = string.find(string.lower(newName), search_text)
+			if _ then
+				new[n] = {}
+				new[n][1] = newName
+				n = n + 1
+			end
+		end
 	end
 	return new
 end
@@ -82,11 +108,10 @@ local function atlas_Search(text)
 
 	--populate the scroll frame entries list, the update func will do the rest
 	local i = 1
-	while ( data and data[i] ~= nil ) do
+	while ( data and data[i] and data[i][1] ~= nil ) do
 		AtlasTW.ScrollList[i] = data[i][1]
 		i = i + 1
 	end
-
 	AtlasTW.CurrentLine = i - 1
 end
 
@@ -253,10 +278,9 @@ end
 --Also responsible for updating all the text when a map is changed
 function AtlasTW.Refresh()
 	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
-	local data = AtlasMaps
+	--local data = AtlasMaps
+	local data = AtlasTW.InstanceData
 	local base = {}
-	local textLocation, textLevelRange, textMinLevel, textPlayerLimit = "", "", "", ""
-	local red = "|cffcc6666"
 
 	--If a first time user, set up options
 	if AtlasTWCharDB.FirstTime == nil or AtlasTWCharDB.FirstTime == true then
@@ -268,37 +292,59 @@ function AtlasTW.Refresh()
 	AtlasLootItemsFrame.activeBoss = nil
 
 	--Get boss name information
-	for k,v in pairs(data[zoneID]) do
-		base[k] = v
+	for key, value in pairs(data[zoneID] or {}) do
+		base[key] = value
 	end
 
-	--Display the newly selected texture
+	--Display the selected texture
 	AtlasMap:SetTexture(AtlasTW.MAPPATH..zoneID)
+
 	--Update the quest frame
 	AtlasTW.CurrentMap = zoneID
 	AtlasTW.Quest.Update()
+
 	--Setup info panel above boss listing
-	local tName = base.ZoneName
+	local function SetAtlasText(frame2, label, value, color)
+		local text = color or ""
+		if value then
+			if label then
+				text = text..L[label] .. ": "
+			end
+			if type(value) == "table" then
+				text = text .. value[1] .. "-" .. value[2]
+			else
+				text = text .. value
+			end
+		end
+		frame2:SetText(text)
+	end
+
+	local zoneName = base.Name
 	if AtlasTWOptions.AtlasAcronyms and base.Acronym ~= nil then
-		tName = tName..red.." ["..base.Acronym.."]"
+		zoneName = zoneName .. Colors.RED .. " [" .. base.Acronym .. "]"
 	end
-	if base.Location then
-		textLocation = L["Location"]..": "..base.Location
+	AtlasTWZoneText:SetText(zoneName)
+	SetAtlasText(AtlasTWLocationText, "Location", base.Location)
+	SetAtlasText(AtlasTWLevelRangeText, "Level", base.Level)
+	SetAtlasText(AtlasTWPlayerLimitText, "Player Limit", base.MaxPlayers)
+	SetAtlasText(AtlasTWAttunText, nil, base.Attunement and L["Attunement Required"], Colors.RED)
+	SetAtlasText(AtlasTWDamageTypeText, "Damage", base.DamageType, Colors.RED)
+	local entranceText = {}
+	for i, entranceData in ipairs(base.Entrances or {}) do
+		if entranceData and entranceData.letter then
+			entranceText[i] = entranceData.letter
+			if entranceData.info then
+				entranceText[i] = entranceText[i] .. " (" .. entranceData.info .. ")"
+			end
+		end
 	end
-	if base.LevelRange then
-		textLevelRange = L["Level Range"]..": "..base.LevelRange
+	AtlasTWTextentr:SetText("")
+	for i = 1, 5 do
+		SetAtlasText(_G["AtlasTWTextentr"..i], nil, entranceText[i], Colors.BLUE)
+		if entranceText[i] then
+			AtlasTWTextentr:SetText(L["Entrances"])
+		end
 	end
-	if base.MinLevel then
-		textMinLevel = L["Minimum Level"]..": "..base.MinLevel
-	end
-	if base.PlayerLimit then
-		textPlayerLimit = L["Player Limit"]..": "..base.PlayerLimit
-	end
-	AtlasTWZoneText:SetText(tName)
-	AtlasTWLocationText:SetText(textLocation)
-	AtlasTWLevelRangeText:SetText(textLevelRange)
-	AtlasTWMinLevelText:SetText(textMinLevel)
-	AtlasTWPlayerLimitText:SetText(textPlayerLimit)
 
 	atlasData = base
 

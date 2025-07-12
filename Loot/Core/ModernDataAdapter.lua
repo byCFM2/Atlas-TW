@@ -26,7 +26,7 @@ local function ConvertItemToLegacy(modernItem)
     if not modernItem then
         return nil
     end
-    
+
     -- Если это разделитель
     if modernItem.isSeparator then
         return {
@@ -36,12 +36,12 @@ local function ConvertItemToLegacy(modernItem)
             ""
         }
     end
-    
+
     -- Обычный предмет
     local name = "=q" .. (modernItem.quality or 1) .. "=" .. (modernItem.name or "Unknown Item")
     local description = "=ds=" .. (modernItem:GetDescription() or "")
     local dropRate = modernItem:GetDropRateText() or ""
-    
+
     return {
         modernItem.id or 0,
         modernItem.icon or "INV_Misc_QuestionMark",
@@ -54,14 +54,14 @@ end
 -- Функция получения данных в старом формате для конкретного босса/источника
 function AtlasTW.ModernAdapter.GetLegacyData(category, bossName)
     local cacheKey = category .. "_" .. bossName
-    
+
     -- Проверяем кэш
     if IsCacheValid() and dataCache[cacheKey] then
         return dataCache[cacheKey]
     end
-    
+
     local legacyData = {}
-    
+
     -- Получаем данные из новой системы
     if category == "instances" then
         -- Ищем в данных подземелий
@@ -95,17 +95,17 @@ function AtlasTW.ModernAdapter.GetLegacyData(category, bossName)
             end
         end
     end
-    
+
     -- Кэшируем результат
     dataCache[cacheKey] = legacyData
-    
+
     return legacyData
 end
 
 -- Функция получения списка всех доступных боссов/источников
 function AtlasTW.ModernAdapter.GetAvailableSources(category)
     local sources = {}
-    
+
     if category == "instances" and AtlasTW.InstanceData then
         for instanceName, instanceData in pairs(AtlasTW.InstanceData) do
             if type(instanceData) == "table" and instanceData.bosses then
@@ -147,56 +147,56 @@ function AtlasTW.ModernAdapter.GetAvailableSources(category)
             end
         end
     end
-    
+
     return sources
 end
 
 -- Функция поиска предметов с расширенными возможностями
 function AtlasTW.ModernAdapter.SearchItems(searchTerm, filters)
     filters = filters or {}
-    
+
     local allItems = AtlasTW.DataLoader.SearchItems(searchTerm)
     local filteredItems = {}
-    
+
     for i = 1, getn(allItems) do
         local item = allItems[i]
         local include = true
-        
+
         -- Фильтр по качеству
         if filters.quality and item.quality ~= filters.quality then
             include = false
         end
-        
+
         -- Фильтр по слоту
         if filters.slot and item.slot ~= filters.slot then
             include = false
         end
-        
+
         -- Фильтр по типу брони
         if filters.armorType and item.armorType ~= filters.armorType then
             include = false
         end
-        
+
         -- Фильтр по классу
         if filters.class and not item:IsValidForClass(filters.class) then
             include = false
         end
-        
+
         -- Фильтр по источнику
         if filters.source and item.source ~= filters.source then
             include = false
         end
-        
+
         -- Фильтр по зоне
         if filters.zone and item.zone ~= filters.zone then
             include = false
         end
-        
+
         if include then
             tinsert(filteredItems, item)
         end
     end
-    
+
     return filteredItems
 end
 
@@ -209,29 +209,29 @@ function AtlasTW.ModernAdapter.GetItemStatistics(category)
         bySource = {},
         byClass = {}
     }
-    
+
     local items = AtlasTW.DataLoader.GetAllItems(category)
-    
+
     for i = 1, getn(items) do
         local item = items[i]
-        
+
         if not item.isSeparator then
             stats.totalItems = stats.totalItems + 1
-            
+
             -- Статистика по качеству
             local quality = item.quality or 0
             stats.byQuality[quality] = (stats.byQuality[quality] or 0) + 1
-            
+
             -- Статистика по слотам
             if item.slot then
                 stats.bySlot[item.slot] = (stats.bySlot[item.slot] or 0) + 1
             end
-            
+
             -- Статистика по источникам
             if item.source then
                 stats.bySource[item.source] = (stats.bySource[item.source] or 0) + 1
             end
-            
+
             -- Статистика по классам
             if item.validClasses then
                 for j = 1, getn(item.validClasses) do
@@ -241,29 +241,29 @@ function AtlasTW.ModernAdapter.GetItemStatistics(category)
             end
         end
     end
-    
+
     return stats
 end
 
 -- Функция получения рекомендаций для игрока
 function AtlasTW.ModernAdapter.GetPlayerRecommendations(playerClass, playerLevel)
     local recommendations = {}
-    
+
     -- Получаем все предметы
     local allItems = {}
     local categories = {"instances", "world"}
-    
+
     for i = 1, getn(categories) do
         local categoryItems = AtlasTW.DataLoader.GetAllItems(categories[i])
         for j = 1, getn(categoryItems) do
             tinsert(allItems, categoryItems[j])
         end
     end
-    
+
     -- Фильтруем подходящие предметы
     for i = 1, getn(allItems) do
         local item = allItems[i]
-        
+
         if not item.isSeparator and item:IsValidForClass(playerClass) then
             -- Проверяем качество (эпики и легендарки приоритетнее)
             if item.quality >= AtlasTW.ItemDB.ITEM_QUALITY.RARE then
@@ -275,18 +275,18 @@ function AtlasTW.ModernAdapter.GetPlayerRecommendations(playerClass, playerLevel
             end
         end
     end
-    
+
     -- Сортируем по приоритету
     table.sort(recommendations, function(a, b)
         return a.priority > b.priority
     end)
-    
+
     -- Возвращаем топ-20 рекомендаций
     local topRecommendations = {}
     for i = 1, min(20, getn(recommendations)) do
         tinsert(topRecommendations, recommendations[i])
     end
-    
+
     return topRecommendations
 end
 
@@ -304,24 +304,24 @@ function AtlasTW.ModernAdapter.GetSystemInfo()
         loadedModules = {},
         totalItems = 0
     }
-    
+
     -- Подсчитываем размер кэша
     for key, data in pairs(dataCache) do
         info.cacheSize = info.cacheSize + getn(data)
     end
-    
+
     -- Получаем информацию о загруженных модулях
     if AtlasTW.DataLoader then
         info.loadedModules = AtlasTW.DataLoader.GetModuleStatus()
     end
-    
+
     -- Подсчитываем общее количество предметов
     local categories = {"instances", "world"}
     for i = 1, getn(categories) do
         local items = AtlasTW.DataLoader.GetAllItems(categories[i])
         info.totalItems = info.totalItems + getn(items)
     end
-    
+
     return info
 end
 
@@ -330,9 +330,9 @@ SLASH_ATLASTW_MODERN1 = "/atlastw"
 SLASH_ATLASTW_MODERN2 = "/atm"
 
 function SlashCmdList.ATLASTW_MODERN(msg)
-    local command, arg = strsplit(" ", msg, 2)
+    local command, arg = stsplit(" ", msg, 2)
     command = strlower(command or "")
-    
+
     if command == "info" then
         local info = AtlasTW.ModernAdapter.GetSystemInfo()
         DEFAULT_CHAT_FRAME:AddMessage("=== Atlas-TW Modern System Info ===")

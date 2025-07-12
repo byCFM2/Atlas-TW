@@ -1,14 +1,8 @@
-<!-- DataInit.xml - Инициализация модульной системы данных -->
-<!-- Загружает новую структуру данных для Atlas-TW -->
-
-<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ .\FrameXML\UI.xsd">
-
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
     <!-- Основные модули -->
-    <Script file="ItemDB.lua"/>
-    <Script file="DataLoader.lua"/>
-    
+    <Include file="ItemDB.lua"/>
     <!-- Данные подземелий -->
-    <Script file="Instances\Molten_Core.lua"/>
+    <Include file="Instances\Molten_Core.lua"/>
     <!-- Добавить другие подземелья по мере создания:
     <Script file="Instances\Blackwing_Lair.lua"/>
     <Script file="Instances\Onyxia.lua"/>
@@ -16,49 +10,28 @@
     <Script file="Instances\Ahn_Qiraj_20.lua"/>
     <Script file="Instances\Ahn_Qiraj_40.lua"/>
     -->
-    
-    <!-- Данные мирового контента -->
-    <Script file="World\World_Bosses.lua"/>
+    <!-- Данные мирового контента 
+    <Include file="World\World_Bosses.lua"/>-->
     <!-- Добавить другие мировые источники:
     <Script file="World\Rare_Mobs.lua"/>
     <Script file="World\World_Events.lua"/>
     -->
-    
     <!-- Данные PvP -->
     <!-- Добавить по мере создания:
     <Script file="PvP\Battlegrounds.lua"/>
     <Script file="PvP\Honor_Rewards.lua"/>
     -->
-    
     <!-- Данные репутации -->
     <!-- Добавить по мере создания:
     <Script file="Reputation\Factions.lua"/>
     -->
-    
     <!-- Данные комплектов -->
     <!-- Добавить по мере создания:
     <Script file="Sets\Tier_Sets.lua"/>
     <Script file="Sets\Dungeon_Sets.lua"/>
     -->
-    
     <!-- Данные крафта -->
     <!-- Добавить по мере создания:
     <Script file="Crafting\Professions.lua"/>
     -->
-    
-    <!-- Инициализация после загрузки всех модулей -->
-    <Frame name="AtlasTW_DataInitFrame">
-        <Scripts>
-            <OnLoad>
-                -- Инициализируем модульную систему данных
-                if AtlasTW and AtlasTW.DataLoader then
-                    AtlasTW.DataLoader.Initialize()
-                    DEFAULT_CHAT_FRAME:AddMessage("Atlas-TW: Модульная система данных инициализирована")
-                else
-                    DEFAULT_CHAT_FRAME:AddMessage("Atlas-TW: Ошибка - DataLoader не найден")
-                end
-            </OnLoad>
-        </Scripts>
-    </Frame>
-
 </Ui>

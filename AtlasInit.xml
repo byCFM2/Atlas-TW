@@ -2,9 +2,6 @@
 	<!-- Include files -->
 	<Include file="AtlasConfig.lua"/>
 	<Include file="Atlas-enUS.lua"/>
-
-	<Include file="Data\DataInit.lua"/>
-
 	<Include file="AtlasMaps.lua"/>
 	<Include file="AtlasDropDown.lua"/>
 	<Include file="AtlasUILogic.lua"/>

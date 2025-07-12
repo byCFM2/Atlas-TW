@@ -73,50 +73,48 @@ local function GenerateMenuDataFromAtlasMaps()
 
     -- Iterate through AtlasMaps
     local counter = 0
-    for instanceKey, instanceData in pairs(AtlasMaps) do
-        if type(instanceData) == "table" and instanceData.ZoneName and instanceData.LevelRange and not skipInstances[instanceKey] then
+    for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
+        if type(instanceData) == "table" and instanceData.Name and instanceData.Level and not skipInstances[instanceKey] then
             -- Skip world bosses (MinLevel = "1") and battlegrounds
-            if instanceData.MinLevel ~= "1" and not string.find(instanceKey, "^BG") then
-                local zoneName = instanceData.ZoneName
+            if instanceData.Level ~= 1 and not string.find(instanceKey, "^BG") then
+                local name = instanceData.Name
                 local location = instanceData.Location or ""
-                local levelRange = instanceData.LevelRange
-                local playerLimit = instanceData.PlayerLimit
-                local acronym = instanceData.Acronym
+                local level = instanceData.Level
+                local maxPlayers = instanceData.MaxPlayers
 
                 -- Get lootpage name
                 local lootpage = lootpageMapping[instanceKey] or instanceKey
-
-                -- Modern Data System Integration
-                local useModern = false
-                if instanceKey == "MoltenCore" then
-                    useModern = true
-                end
 
                 -- Determine instance type and target menu
                 local instanceType
                 local targetMenu
 
-                if playerLimit == "40" or playerLimit == "20" or playerLimit == "10" then
+                if maxPlayers == 40 or maxPlayers == 20 or maxPlayers == 10 then
                     instanceType = "[RAID]"
                     targetMenu = menu2Data
                 elseif counter > 29 then
-                    instanceType = "[" .. levelRange .. "]"
+                    if type(level) == "table" then
+                       instanceType = "[" .. level[1]..level[2] .. "]"
+                    else
+                        instanceType = "[".. level.. "]"
+                    end
                     targetMenu = menu2Data
                 else
                     counter = counter + 1
-                    instanceType = "[" .. levelRange .. "]"
+                    if type(level) == "table" then
+                       instanceType = "[" .. level[1]..level[2] .. "]"
+                    else
+                        instanceType = "[".. level.. "]"
+                    end
                     targetMenu = menu1Data
                 end
 
                 -- Create menu entry
                 local menuEntry = {
-                    name = getFormString(instanceType, zoneName),
+                    name = getFormString(instanceType, name),
                     Extra = location,
                     lootpage = lootpage,
-                    playerLimit = tonumber(playerLimit) or 5,
-                    useModern = useModern,
-                    category = "instances",
-                    boss = string.gsub(lootpage, "MC", "") -- Extract boss name from lootpage
+                    playerLimit = tonumber(maxPlayers) or 5
                 }
 
                 -- Add icon for raids and level 60 instances
@@ -202,37 +200,7 @@ AtlasTW.Loot.DungeonsMenu1Data = generatedMenu1Data
 -- Data for Dungeons & Raids (Page 2) - Auto-generated from AtlasMaps  
 AtlasTW.Loot.DungeonsMenu2Data = generatedMenu2Data
 
-function AtlasLoot_DungeonsMenu1()
-    AtlasLoot_PrepMenu(nil, title, "DUNGEONSMENU1")
-    AtlasLootItemsFrame_PREV:Show()
-    AtlasLootItemsFrame_NEXT:Show()
-    local menuData = {
-        useModern = true,
-        category = "instances",
-        boss = "Lucifron"
-    }
-    -- This is a placeholder to show how to call it for a specific boss.
-    -- In a real scenario, you would get the boss from the clicked menu item.
-    if AtlasTW.Loot.DungeonsMenu1Data[1] and AtlasTW.Loot.DungeonsMenu1Data[1].useModern then
-        AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu1Data[1])
-    else
-        AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu1Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalIronForge", maxItems = table.getn(AtlasTW.Loot.DungeonsMenu1Data) })
-    end
-end
-
-function AtlasLoot_DungeonsMenu2()
-    AtlasLoot_PrepMenu("DUNGEONSMENU1", title, "DUNGEONSMENU2")
-    AtlasLootItemsFrame_PREV:Show()
-    AtlasLootItemsFrame_NEXT:Show()
-    if AtlasTW.Loot.DungeonsMenu2Data[1] and AtlasTW.Loot.DungeonsMenu2Data[1].useModern then
-        AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu2Data[1])
-    else
-        AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu2Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalOrgrimmar", maxItems = table.getn(AtlasTW.Loot.DungeonsMenu2Data) })
-    end
-end
-
--- Original function is being replaced, so we comment it out or remove it.
---[[ function AtlasLoot_DungeonsMenu1()
+ function AtlasLoot_DungeonsMenu1()
     AtlasLoot_PrepMenu(nil, title, "DUNGEONSMENU1")
     AtlasLootItemsFrame_PREV:Show()
     AtlasLootItemsFrame_NEXT:Show()
@@ -244,4 +212,4 @@ function AtlasLoot_DungeonsMenu2()
     AtlasLootItemsFrame_PREV:Show()
     AtlasLootItemsFrame_NEXT:Show()
     AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu2Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalOrgrimmar", maxItems = table.getn(AtlasTW.Loot.DungeonsMenu2Data) })
-end]]
+end

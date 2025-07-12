@@ -226,17 +226,20 @@ function AtlasTW.Loot.ScrollBarUpdate()
 				local loot = _G["AtlasBossLine"..line.."_Loot"]
 				local selected = _G["AtlasBossLine"..line.."_Selected"]
 				_G["AtlasBossLine"..line.."_Text"]:SetText(AtlasTW.ScrollList[lineplusoffset])
-				--_G["AtlasBossLine"..line.."_Text"]:SetText(AtlasMaps[zoneID][lineplusoffset][1])
-				local hasLoot = AtlasMaps[zoneID] and AtlasMaps[zoneID][lineplusoffset] and AtlasMaps[zoneID][lineplusoffset][2]
+				local instData = AtlasTW.InstanceData[zoneID]
+				local hasLoot = instData and (instData.Bosses[lineplusoffset] and instData.Bosses[lineplusoffset].Items) or (instData.Reputation and instData.Reputation[1]) or (instData.Keys and instData.Keys[1])
 				if AtlasLootItemsFrame.activeBoss == lineplusoffset then
+					print("AtlasLoot.ScrollBarUpdate: Active boss = "..lineplusoffset)
 					bossLine:Enable()
 					loot:Hide()
 					selected:Show()
 				elseif hasLoot then
+					print("AtlasLoot.ScrollBarUpdate: Boss has loot = "..lineplusoffset)
 					bossLine:Enable()
 					loot:Show()
 					selected:Hide()
 				else
+					print("AtlasLoot.ScrollBarUpdate: Boss has no loot = "..lineplusoffset)
 					bossLine:Disable()
 					loot:Hide()
 					selected:Hide()
@@ -258,14 +261,39 @@ function AtlasTW.Loot.ScrollBarUpdate()
 	end
 end
 
---[[
-	Invoked whenever a boss line in Atlas is clicked
-	Shows a loot page if one is associated with the button
-]]
--- Вспомогательная функция для получения loot table ID
-local function GetLootTableID(zoneID, id)
-	if AtlasMaps and AtlasMaps[zoneID] and AtlasMaps[zoneID][id] and AtlasMaps[zoneID][id][2] then
-		return AtlasMaps[zoneID][id][2]
+-- Вспомогательная функция для получения loot зная ID
+local function GetLootByID(zoneID, id)
+	local instData = AtlasTW.InstanceData[zoneID]
+	local index = 0
+	if instData and instData.Reputation then
+		index = getn(instData.Reputation)
+		if id-index <= 0 then
+			print("AtlasLoot.ScrollBarUpdate: Reputation index = "..index)
+			return instData.Reputation[id]
+		end
+	end
+	if instData and instData.Keys then
+		index = index + getn(instData.Keys)
+		if id-index <= 0 then
+			print("AtlasLoot.ScrollBarUpdate: Keys index = "..index)
+			return instData.Keys[id]
+		end
+	end
+	if instData and instData.Bosses and instData.Bosses[id-index] and instData.Bosses[id-index].Items then
+		print("AtlasLoot.ScrollBarUpdate: Boss {id - index} = "..(id-index))
+		return instData.Bosses[id-index].Items
+	end
+	return nil
+end
+
+local function GetLootByName(zoneID, name)
+	local instData = AtlasTW.InstanceData[zoneID]
+	if instData and instData.Bosses then
+		for _, bossData in ipairs(instData.Bosses) do
+			if bossData.name == name then
+				return bossData.Items
+			end
+		end
 	end
 	return nil
 end
@@ -276,28 +304,33 @@ local function ShowLootTable(name, lootTableID, id)
 	_G[name.."_Loot"]:Hide()
 	-- Извлекаем имя босса из текста
 	local _,_,boss = string.find(_G[name.."_Text"]:GetText(), "|c%x%x%x%x%x%x%x%x%s*[%dX']*[%) ]*(.*[^%,])[%,]?$")
-	--DEFAULT_CHAT_FRAME:AddMessage("ShowLootTable: ".. tostring(lootTableID).." ".. tostring(boss))
+	print("ShowLootTable: ".. tostring(lootTableID).." ".. tostring(boss))
+	-- Вызываем функцию для показа лута
 	AtlasLoot_ShowBossLoot(lootTableID, boss)
 	AtlasLootItemsFrame.activeBoss = id
 	AtlasTW.Loot.ScrollBarUpdate()
 	AtlasTWCharDB.LastBoss = lootTableID
 end
 
-function AtlasLootBoss_OnClick(name)
+function AtlasLootBoss_OnClick(button)
 	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
 	local id = this.idnum
 	-- Если таблица лута уже показана и босс нажат снова, скрываем таблицу лута
-	if _G[name.."_Selected"]:IsVisible() then
-		_G[name.."_Selected"]:Hide()
-		_G[name.."_Loot"]:Show()
+	if _G[button.."_Selected"]:IsVisible() then
+		_G[button.."_Selected"]:Hide()
+		_G[button.."_Loot"]:Show()
 		AtlasLootItemsFrame:Hide()
 		AtlasLootItemsFrame.activeBoss = nil
 	else
 		-- Ищем таблицу лута для данного босса
-		local lootTableID = GetLootTableID(zoneID, id)
+--[[ 		local lootTableID = GetLootTableID(zoneID, id)
 		if lootTableID and AtlasLoot_IsLootTableAvailable(lootTableID) then
 		--	DEFAULT_CHAT_FRAME:AddMessage("AtlasLootBoss_OnClick: ".. tostring(lootTableID).." ".. tostring(name))
 			ShowLootTable(name, lootTableID, id)
+		end ]]
+		local loot = GetLootByID(zoneID, id)
+		if loot then
+			ShowLootTable(button, loot, id)
 		end
 	end
 	-- Убираем претензии внешних модов на таблицу лута
@@ -715,6 +748,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 		AtlasLootItemsFrame_SelectedTable:Hide()
 	end
 	--Anchor the item frame where it is supposed to be
+	AtlasLoot_QueryLootPage()
 	AtlasLootItemsFrame:Show()
 	AtlasLootItemsFrameContainer:Hide()
 end
@@ -1471,7 +1505,6 @@ function AtlasLootItem_OnClick(arg1)
 	local dataID = AtlasLootItemsFrame.refresh[1]
 	local dataSource = AtlasLootItemsFrame.refresh[2]
 	local bossName = AtlasLootItemsFrame.refresh[3]
-	local framePoint = AtlasLootItemsFrame.refresh[4]
 	if string.sub(this.itemID, 1, 1) == "s" then
 		isItem = false
 		isEnchant = false

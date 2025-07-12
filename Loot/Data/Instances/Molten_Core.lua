@@ -15,72 +15,91 @@ local ItemDB = AtlasTW.ItemDB
 
 -- Данные Огненных Недр
 AtlasTW.InstanceData.MoltenCore = {
-    name = BZ["Molten Core"],
-    location = BZ["Blackrock Depths"],
-    level = {60, 60},
-    acronym = "MC",
-    type = "raid",
-    attunement = true,
-    maxPlayers = 40,
-    reputation = {
-        name = "Hydraxian Waterlords", table = "WaterLords1"
+    Name = BZ["Molten Core"],
+    Location = BZ["Blackrock Depths"],
+    Level = 60,
+    Acronym = "MC",
+    Attunement = true,
+    MaxPlayers = 40,
+    DamageType = L["Fire"],
+    Entrances = {
+        { letter = "A"..") " .. L["Entrance"] }
     },
-    keys = {
+    Reputation = {
+        { name = "Hydraxian Waterlords", table = "WaterLords1" }
+    },
+    Keys = {
         { name = "Aqual Quintessence", table = "VanillaKeys", info = L["Boss"] },
         { name = "Eternal Quintessence", table = "VanillaKeys", info = L["Boss"] }
     },
-    entrances = {
-        { letter = "A" }
-    },
-    damageType = L["Fire"],
-    bosses = {
-        -- Лусифрон
-        Lucifron = {
+    Bosses = {
+        {
+            id = "Lucifron",
+            prefix = "1)",
             name = BB["Lucifron"],
-            items = {
-                ItemDB.CreateItem({id=16800, name=L["Arcanist Boots"], slot=ItemDB.EQUIPMENT_SLOT.FEET, slotType=ItemDB.SLOT_TYPE.CLOTH, validClasses={"PRIEST"}, dropRate="20%"}),
-                ItemDB.CreateItem({id=16829, name=L["Cenarion Boots"], slot=ItemDB.EQUIPMENT_SLOT.FEET, slotType=ItemDB.SLOT_TYPE.LEATHER, validClasses={"DRUID"}, dropRate="20%"}),
-                ItemDB.CreateItem({id=16837, name=L["Earthfury Boots"], slot=ItemDB.EQUIPMENT_SLOT.FEET, slotType=ItemDB.SLOT_TYPE.MAIL, validClasses={"SHAMAN"}, dropRate="20%"}),
-                ItemDB.CreateItem({id=16859, name=L["Lawbringer Boots"], slot=ItemDB.EQUIPMENT_SLOT.FEET, slotType=ItemDB.SLOT_TYPE.PLATE, validClasses={"PALADIN"}, dropRate="20%"}),
-                ItemDB.CreateItem({id=16863, name=L["Gauntlets of Might"], slot=ItemDB.EQUIPMENT_SLOT.HANDS, slotType=ItemDB.SLOT_TYPE.PLATE, validClasses={"WARRIOR"}, dropRate="30%"}),
-                ItemDB.CreateItem({id=16805, name=L["Felheart Gloves"], slot=ItemDB.EQUIPMENT_SLOT.HANDS, slotType=ItemDB.SLOT_TYPE.CLOTH, validClasses={"WARLOCK"}, dropRate="30%"}),
-                ItemDB.CreateItem({id=18870, name=L["Helm of the Lifegiver"], slot=ItemDB.EQUIPMENT_SLOT.HEAD, slotType=ItemDB.SLOT_TYPE.MAIL, dropRate="4%"}),
-                ItemDB.CreateItem({id=17109, name=L["Choker of Enlightenment"], slot=ItemDB.EQUIPMENT_SLOT.NECK, dropRate="20%"}),
-                ItemDB.CreateItem({id=19145, name=L["Robe of Volatile Power"], slot=ItemDB.EQUIPMENT_SLOT.CHEST, slotType=ItemDB.SLOT_TYPE.CLOTH, dropRate="4%"}),
-                ItemDB.CreateItem({id=19146, name=L["Wristguards of Stability"], slot=ItemDB.EQUIPMENT_SLOT.WRISTS, slotType=ItemDB.SLOT_TYPE.LEATHER, dropRate="4%"}),
-                ItemDB.CreateItem({id=18872, name=L["Manastorm Leggings"], slot=ItemDB.EQUIPMENT_SLOT.LEGS, slotType=ItemDB.SLOT_TYPE.CLOTH, dropRate="4%"}),
-                ItemDB.CreateItem({id=18875, name=L["Salamander Scale Pants"], slot=ItemDB.EQUIPMENT_SLOT.LEGS, slotType=ItemDB.SLOT_TYPE.LEATHER, dropRate="4%"}),
-                ItemDB.CreateItem({id=18861, name=L["Flamewaker Legplates"], slot=ItemDB.EQUIPMENT_SLOT.LEGS, slotType=ItemDB.SLOT_TYPE.PLATE, dropRate="4%"}),
-                ItemDB.CreateItem({id=18879, name=L["Heavy Dark Iron Ring"], slot=ItemDB.EQUIPMENT_SLOT.FINGER, dropRate="4%"}),
-                ItemDB.CreateItem({id=19147, name=L["Ring of Spell Power"], slot=ItemDB.EQUIPMENT_SLOT.FINGER, dropRate="4%"}),
-                ItemDB.CreateItem({id=17077, name=L["Crimson Shocker"], slot=ItemDB.EQUIPMENT_SLOT.ONE_HAND, slotType=ItemDB.SLOT_TYPE.WAND, dropRate="4%"}),
-                ItemDB.CreateItem({id=18878, name=L["Sorcerous Dagger"], slot=ItemDB.EQUIPMENT_SLOT.ONE_HAND, slotType=ItemDB.SLOT_TYPE.DAGGER, dropRate="4%"}),
-                ItemDB.CreateItem({id=16665, name=L["Tome of Tranquilizing Shot"], slot=L["Book"], slotType=BC["Hunter"], quality=ItemDB.ITEM_QUALITY.UNCOMMON, dropRate="100%"}),
+            defaults = { dropRate = 4 },
+            loot = {
+                {id=16800, dropRate=20, container=47085}, {id=16829, dropRate=20, container={47337,47345}}, {id=16837, dropRate=20, container={47127,47135}},
+                {id=16859, dropRate=20, container={47007,47015}}, {id=16863, dropRate=30, container=47244}, {id=16805, dropRate=30, container=47280},
+                {id=18870}, {id=17109, dropRate=20}, {id=19145}, {id=19146}, {id=18872}, {id=18875}, {id=18861}, {id=18879}, {id=19147}, {id=17077}, {id=18878},
+                {id=16665, slot=L["Book"], dropRate=100},
             }
         },
+        {
+            id = "Trash",
+            name = L["Trash Mobs"],
+            loot = {
 
+            },
+        },
+        {   id = "Randombossloot",
+            name = L["Random Boss Loot"],
+            loot = {
+
+            },
+        },
     },
-
-    -- Общие предметы (мусор, материалы и т.д.)
-    trash = {
-    }
 }
+
+-- Вспомогательная функция для создания предметов из таблицы loot
+local function CreateItemsFromLootTable(bossData)
+    if not bossData.loot then return {} end
+    local items = {}
+    local defaults = bossData.defaults or {}
+    for _, itemData in ipairs(bossData.loot) do
+        -- Применяем значения по умолчанию
+        for key, value in pairs(defaults) do
+            if itemData[key] == nil then
+                itemData[key] = value
+            end
+        end
+        table.insert(items, ItemDB.CreateItem(itemData))
+    end
+    return items
+end
+
+-- Инициализация предметов для всех боссов
+for _, bossData in ipairs(AtlasTW.InstanceData.MoltenCore.Bosses) do
+    bossData.Items = CreateItemsFromLootTable(bossData)
+    bossData.loot = nil -- Очищаем временные данные
+end
 
 -- Функция получения всех предметов из подземелья
 function AtlasTW.InstanceData.MoltenCore.GetAllItems()
     local allItems = {}
-    for bossName, bossData in pairs(AtlasTW.InstanceData.MoltenCore.bosses) do
-        if bossData.items then
-            for i = 1, getn(bossData.items) do
-                local item = bossData.items[i]
+    for _, bossData in ipairs(AtlasTW.InstanceData.MoltenCore.Bosses) do
+        if bossData.Items then
+            for i = 1, getn(bossData.Items) do
+                local item = bossData.Items[i]
                 tinsert(allItems, item)
             end
         end
     end
-    for i = 1, getn(AtlasTW.InstanceData.MoltenCore.trash) do
-        local item = AtlasTW.InstanceData.MoltenCore.trash[i]
-        item.source = "Trash Mobs"
-        item.zone = "Molten Core"
+    for i = 1, getn(AtlasTW.InstanceData.MoltenCore.Trash) do
+        local item = AtlasTW.InstanceData.MoltenCore.Trash[i]
+        --[[ 
+        item.source = L["Trash Mobs"]
+        item.zone = BZ["Molten Core"] ]]
         tinsert(allItems, item)
     end
     return allItems
@@ -88,8 +107,10 @@ end
 
 -- Функция получения предметов для конкретного босса
 function AtlasTW.InstanceData.MoltenCore.GetBossItems(bossName)
-    if AtlasTW.InstanceData.MoltenCore.bosses[bossName] then
-        return AtlasTW.InstanceData.MoltenCore.bosses[bossName].items
+    for _, bossData in ipairs(AtlasTW.InstanceData.MoltenCore.Bosses) do
+        if bossData.name == BB[bossName] then
+            return bossData.Items
+        end
     end
     return {}
 end

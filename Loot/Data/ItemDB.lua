@@ -132,7 +132,7 @@ local ItemPrototype = {
     -- Получить шанс выпадения как строку
     GetDropRateText = function(this)
         if this.dropRate then
-            return this.dropRate .. "%"
+            return tostring(this.dropRate) .. "%"
         end
         return ""
     end,
@@ -156,7 +156,7 @@ local ItemPrototype = {
 -- Функция создания нового предмета
 function AtlasTW.ItemDB.CreateItem(data)
     -- Проверяем обязательные поля
-    if not data.id or not data.name then
+    if not data.id then
         DEFAULT_CHAT_FRAME:AddMessage("ItemDB: Ошибка создания предмета - отсутствуют обязательные поля")
         return nil
     end
@@ -164,15 +164,16 @@ function AtlasTW.ItemDB.CreateItem(data)
     -- Устанавливаем значения по умолчанию
     local item = {
         id = data.id,
-        name = data.name,
+        name = data.name or "",
         icon = data.icon or "INV_Misc_QuestionMark",
         quality = data.quality or ITEM_QUALITY.EPIC,
-        slot = data.slot,
-        slotType = data.slotType,
-        class = data.class,
-        classQuality = data.classQuality,
-        dropRate = data.dropRate,
-        validClasses = data.validClasses,--[[ 
+        slot = data.slot or "",
+        slotType = data.slotType or "",
+        class = data.class or "",
+        classQuality = data.classQuality or "",
+        dropRate = data.dropRate or "",
+        validClasses = data.validClasses or "",
+        --[[ 
         source = data.source, -- Источник получения (босс, квест и т.д.)
         zone = data.zone,     -- Зона получения ]]
         notes = data.notes    -- Дополнительные заметки
@@ -273,9 +274,80 @@ function AtlasTW.ItemDB.ConvertFromLegacyFormat(legacyItem)
     })
 end
 
+-- Функция получения всех предметов (новый API)
+function AtlasTW.ItemDB.GetAllItems(category, subcategory)
+    local items = {}
+
+    if category == "instances" and AtlasTW.InstanceData then
+        if subcategory and AtlasTW.InstanceData[subcategory] then
+            if AtlasTW.InstanceData[subcategory].GetAllItems then
+                items = AtlasTW.InstanceData[subcategory].GetAllItems()
+            end
+        else
+            -- Получаем предметы из всех подземелий
+            for instanceName, instanceData in pairs(AtlasTW.InstanceData) do
+                if type(instanceData) == "table" and instanceData.GetAllItems then
+                    local instanceItems = instanceData.GetAllItems()
+                    for i = 1, getn(instanceItems) do
+                        tinsert(items, instanceItems[i])
+                    end
+                end
+            end
+        end
+    elseif category == "world" and AtlasTW.WorldData then
+        if subcategory and AtlasTW.WorldData[subcategory] then
+            if AtlasTW.WorldData[subcategory].GetAllItems then
+                items = AtlasTW.WorldData[subcategory].GetAllItems()
+            end
+        else
+            -- Получаем предметы из всех мировых источников
+            for sourceName, sourceData in pairs(AtlasTW.WorldData) do
+                if type(sourceData) == "table" and sourceData.GetAllItems then
+                    local sourceItems = sourceData.GetAllItems()
+                    for i = 1, getn(sourceItems) do
+                        tinsert(items, sourceItems[i])
+                    end
+                end
+            end
+        end
+    end
+
+    return items
+end
+
+-- Функция поиска предметов
+function AtlasTW.ItemDB.SearchItems(searchTerm, category)
+    local allItems
+
+    if category then
+        allItems = AtlasTW.ItemDB.GetAllItems(category)
+    else
+        -- Поиск во всех категориях
+        allItems = {}
+        local categories = {"instances", "world"}
+
+        for i = 1, getn(categories) do
+            local categoryItems = AtlasTW.ItemDB.GetAllItems(categories[i])
+            for j = 1, getn(categoryItems) do
+                tinsert(allItems, categoryItems[j])
+            end
+        end
+    end
+
+    local foundItems = {}
+    searchTerm = strlower(searchTerm)
+
+    for i = 1, getn(allItems) do
+        local item = allItems[i]
+        if item.name and strfind(strlower(item.name), searchTerm) then
+            tinsert(foundItems, item)
+        end
+    end
+
+    return foundItems
+end
+
 -- Экспорт констант
 AtlasTW.ItemDB.ITEM_QUALITY = ITEM_QUALITY
 AtlasTW.ItemDB.SLOT_TYPE = SLOT_TYPE
 AtlasTW.ItemDB.EQUIPMENT_SLOT = EQUIPMENT_SLOT
-
-DEFAULT_CHAT_FRAME:AddMessage("ItemDB: Модуль загружен")
