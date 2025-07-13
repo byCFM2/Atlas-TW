@@ -229,17 +229,14 @@ function AtlasTW.Loot.ScrollBarUpdate()
 				local instData = AtlasTW.InstanceData[zoneID]
 				local hasLoot = instData and (instData.Bosses[lineplusoffset] and instData.Bosses[lineplusoffset].Items) or (instData.Reputation and instData.Reputation[1]) or (instData.Keys and instData.Keys[1])
 				if AtlasLootItemsFrame.activeBoss == lineplusoffset then
-					print("AtlasLoot.ScrollBarUpdate: Active boss = "..lineplusoffset)
 					bossLine:Enable()
 					loot:Hide()
 					selected:Show()
 				elseif hasLoot then
-					print("AtlasLoot.ScrollBarUpdate: Boss has loot = "..lineplusoffset)
 					bossLine:Enable()
 					loot:Show()
 					selected:Hide()
 				else
-					print("AtlasLoot.ScrollBarUpdate: Boss has no loot = "..lineplusoffset)
 					bossLine:Disable()
 					loot:Hide()
 					selected:Hide()
@@ -263,27 +260,29 @@ end
 
 -- Вспомогательная функция для получения loot зная ID
 local function GetLootByID(zoneID, id)
-	local instData = AtlasTW.InstanceData[zoneID]
-	local index = 0
-	if instData and instData.Reputation then
-		index = getn(instData.Reputation)
-		if id-index <= 0 then
-			print("AtlasLoot.ScrollBarUpdate: Reputation index = "..index)
-			return instData.Reputation[id]
-		end
-	end
-	if instData and instData.Keys then
-		index = index + getn(instData.Keys)
-		if id-index <= 0 then
-			print("AtlasLoot.ScrollBarUpdate: Keys index = "..index)
-			return instData.Keys[id]
-		end
-	end
-	if instData and instData.Bosses and instData.Bosses[id-index] and instData.Bosses[id-index].Items then
-		print("AtlasLoot.ScrollBarUpdate: Boss {id - index} = "..(id-index))
-		return instData.Bosses[id-index].Items
-	end
-	return nil
+    local instData = AtlasTW.InstanceData[zoneID]
+    if not instData then return nil end
+
+    local bossIndex = id
+    if instData.Reputation then
+        if bossIndex <= getn(instData.Reputation) then
+            return instData.Reputation[bossIndex]
+        end
+        bossIndex = bossIndex - getn(instData.Reputation)
+    end
+
+    if instData.Keys then
+        if bossIndex <= getn(instData.Keys) then
+            return instData.Keys[bossIndex]
+        end
+        bossIndex = bossIndex - getn(instData.Keys)
+    end
+
+    if instData.Bosses and instData.Bosses[bossIndex] and instData.Bosses[bossIndex].Items then
+        return instData.Bosses[bossIndex].Items
+    end
+
+    return nil
 end
 
 local function GetLootByName(zoneID, name)
@@ -298,89 +297,56 @@ local function GetLootByName(zoneID, name)
 	return nil
 end
 
--- Вспомогательная функция для показа лута
-local function ShowLootTable(name, lootTableID, id)
-	_G[name.."_Selected"]:Show()
-	_G[name.."_Loot"]:Hide()
-	-- Извлекаем имя босса из текста
-	local _,_,boss = string.find(_G[name.."_Text"]:GetText(), "|c%x%x%x%x%x%x%x%x%s*[%dX']*[%) ]*(.*[^%,])[%,]?$")
-	print("ShowLootTable: ".. tostring(lootTableID).." ".. tostring(boss))
-	-- Вызываем функцию для показа лута
-	AtlasLoot_ShowBossLoot(lootTableID, boss)
-	AtlasLootItemsFrame.activeBoss = id
-	AtlasTW.Loot.ScrollBarUpdate()
-	AtlasTWCharDB.LastBoss = lootTableID
+function AtlasLootBoss_OnClick(button)
+    local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
+    local id = this.idnum
+
+    if AtlasLootItemsFrame.activeBoss == id then
+        AtlasLootItemsFrame:Hide()
+        AtlasLootItemsFrame.activeBoss = nil
+    else
+        local loot = GetLootByID(zoneID, id)
+        if loot and getn(loot) > 0 then
+            local bossName = StripFormatting(AtlasTW.ScrollList[id])
+            AtlasLoot_ShowBossLoot(loot, bossName)
+            AtlasLootItemsFrame.activeBoss = id
+        else
+            AtlasLootItemsFrame:Hide()
+            AtlasLootItemsFrame.activeBoss = nil
+        end
+    end
+
+    AtlasTW.Loot.ScrollBarUpdate()
+    AtlasLootItemsFrame.externalBoss = nil
+    if AtlasTW.Quest.UI.InsideAtlasFrame then
+        AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
+    end
 end
 
-function AtlasLootBoss_OnClick(button)
-	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
-	local id = this.idnum
-	-- Если таблица лута уже показана и босс нажат снова, скрываем таблицу лута
-	if _G[button.."_Selected"]:IsVisible() then
-		_G[button.."_Selected"]:Hide()
-		_G[button.."_Loot"]:Show()
-		AtlasLootItemsFrame:Hide()
-		AtlasLootItemsFrame.activeBoss = nil
-	else
-		-- Ищем таблицу лута для данного босса
---[[ 		local lootTableID = GetLootTableID(zoneID, id)
-		if lootTableID and AtlasLoot_IsLootTableAvailable(lootTableID) then
-		--	DEFAULT_CHAT_FRAME:AddMessage("AtlasLootBoss_OnClick: ".. tostring(lootTableID).." ".. tostring(name))
-			ShowLootTable(name, lootTableID, id)
-		end ]]
-		local loot = GetLootByID(zoneID, id)
-		if loot then
-			ShowLootTable(button, loot, id)
-		end
-	end
-	-- Убираем претензии внешних модов на таблицу лута
-	AtlasLootItemsFrame.externalBoss = nil
-	-- Скрываем фрейм AtlasQuest если он есть
-	if AtlasTW.Quest.UI.InsideAtlasFrame then
-		AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
-	end
+function AtlasLoot_ShowBossLoot(lootTable, bossName)
+	AtlasLoot_ShowItemsFrame(bossName, lootTable, bossName)
 end
 
 function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
-	--Set up local variables needed for GetItemInfo, etc
-	local iconFrame, nameFrame, extraFrame, itemButton
-	local text, extra
-	local wlPage, wlPageMax = 1, 1
-	local isItem, isEnchant, isSpell
-	local spellName, spellIcon
-	if dataID == "SearchResult" and dataID == "WishList" then
-		AtlasLoot_IsLootTableAvailable(dataID)
-	end
-	local dataSource_backup = dataSource
-	if dataSource ~= "dummy" then
-		if dataID == "SearchResult" or dataID == "WishList" then
-			dataSource = {}
-			--Match the page number to display
-			wlPage = tonumber(string.sub(dataSource_backup, string.find(dataSource_backup, "%d"), string.len(dataSource_backup)))
-			--Aquiring items of the page
-			if dataID == "SearchResult" then
-				dataSource[dataID], wlPageMax = AtlasLoot:GetSearchResultPage(wlPage)
-			elseif dataID == "WishList" then
-				dataSource[dataID], wlPageMax = AtlasLoot_GetWishListPage(wlPage)
-			end
-			--Make page number reasonable
-			if wlPage < 1 then wlPage = 1 end
-			if wlPage > wlPageMax then wlPage = wlPageMax end
-		else
-			dataSource = AtlasLoot_Data[dataSource_backup]
-		end
-	end
-	--Get AtlasQuest out of the way
-	if AtlasTW.Quest.UI.InsideAtlasFrame then
-		AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
-	end
-	--Ditch the Quicklook selector
-	AtlasLoot_QuickLooks:Hide()
-	AtlasLootQuickLooksButton:Hide()
-	--Hide the menu objects. These are not required for a loot table
-	for i = 1, 30 do
-		_G["AtlasLootMenuItem_"..i]:Hide()
-	end
+    local iconFrame, nameFrame, extraFrame, itemButton, spellName, spellIcon
+    local text, extra
+    local isItem, isEnchant, isSpell
+
+    if type(dataSource) ~= "table" then
+        dataSource = AtlasLoot_Data[dataSource]
+        if not dataSource then return end
+    end
+
+    if AtlasTW.Quest.UI.InsideAtlasFrame then
+        AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
+    end
+
+    AtlasLoot_QuickLooks:Hide()
+    AtlasLootQuickLooksButton:Hide()
+
+    for i = 1, 30 do
+        _G["AtlasLootMenuItem_"..i]:Hide()
+    end
 	--Store data about the state of the items frame to allow minor tweaks or a recall of the current loot page
 	AtlasLootItemsFrame.refresh = {dataID, dataSource_backup, boss, AtlasFrame}
 	--Escape out of this function if creating a menu, this function only handles loot tables.
@@ -388,7 +354,47 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 	local handlerName = AtlasLoot_MenuHandlers[dataID]
 	if handlerName and type(_G[handlerName]) == "function" then
 		_G[handlerName]()
+	elseif type(dataSource) == "table" then
+		-- New modular system
+		for i = 1, 30 do
+			local item = dataSource[i]
+			if item then
+				itemButton = _G["AtlasLootItem_"..i]
+				iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
+				nameFrame = _G["AtlasLootItem_"..i.."_Name"]
+				extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
 
+				local itemID = item.id
+				local itemName, itemLink, itemQuality, itemTexture
+
+				if itemID and itemID ~= 0 then
+					itemName, itemLink, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(itemID)
+					if itemName then
+						local r, g, b = GetItemQualityColor(itemQuality)
+						nameFrame:SetText(itemName)
+						nameFrame:SetTextColor(r, g, b)
+					--	itemButton:SetBackdropBorderColor(r, g, b)
+					else
+						nameFrame:SetText(item:GetFormattedName())
+					end
+				else
+					nameFrame:SetText(item:GetFormattedName())
+				end
+
+				extraFrame:SetText(AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, item.slot))
+				iconFrame:SetTexture(itemTexture or "Interface\\Icons\\INV_Misc_QuestionMark")
+				extraFrame:Show()
+
+				-- Set the drop rate text
+				if item.dropRate then itemButton.droprate = item:GetDropRateText() end
+
+				itemButton.itemID = itemID
+				itemButton.itemLink = itemLink
+				itemButton:Show()
+			else
+				_G["AtlasLootItem_"..i]:Hide()
+			end
+		end
 	else
 		--Iterate through each item object and set its properties
 		for i = 1, 30 do
@@ -1210,30 +1216,6 @@ function AtlasLoot_ClearQuickLookButton(button)
 	DEFAULT_CHAT_FRAME:AddMessage(BLUE.."AtlasLoot"..": "..WHITE..L["QuickLook"].." "..button.." "..L["has been reset!"])
 end
 
---[[
-	dataID - Name of the loot table
-	boss - Text string to be used as the title for the loot page
-	- Data structure describing how and where to anchor the item frame
-	This is the intended API for external mods to use for displaying loot pages.
-	This function figures out where the loot table is stored, then sends the relevant info to 
-]]
-function AtlasLoot_ShowBossLoot(dataID, boss)
-	local tableavailable = AtlasLoot_IsLootTableAvailable(dataID)
-	if tableavailable then
-		AtlasLootItemsFrame:Hide()
-		--If the loot table is already being displayed, it is hidden and the current table selection cancelled
-		if dataID == AtlasLootItemsFrame.externalBoss then
-			AtlasLootItemsFrame.externalBoss = nil
-		else
-			--Use the original WoW instance data by default
-			local dataSource = AtlasLoot_TableNames[dataID][2]
-			--Set anchor point, set selected table and call
-			AtlasLootItemsFrame.externalBoss = dataID
-			AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
-		end
-	end
-end
-
 function AtlasLoot_Strsplit(delim, str, maxNb, onlyLast)
 	-- Eliminate bad cases...
 	if string.find(str, delim) == nil then
@@ -1269,193 +1251,50 @@ end
 local messageShown = false
 
 function AtlasLootItem_OnEnter()
-	local isItem, isEnchant, isSpell
-	local id = this:GetID()
-	AtlasLootTooltip:ClearLines()
-	for i=1, 30 do
-		if _G["AtlasLootTooltipTextRight"..i] ~= nil then
-			_G["AtlasLootTooltipTextRight"..i]:SetText("")
-		end
-	end
-	if (this.itemID and this.itemID ~= 0) then
-		if string.sub(this.itemID, 1, 1) == "s" then
-			isItem = false
-			isEnchant = false
-			isSpell = true
-		elseif string.sub(this.itemID, 1, 1) == "e" then
-			isItem = false
-			isEnchant = true
-			isSpell = false
-		else
-			isItem = true
-			isEnchant = false
-			isSpell = false
-		end
-		if isItem then
-			local color = strsub(_G["AtlasLootItem_"..this:GetID().."_Name"]:GetText(), 3, 10)
-			local name = strsub(_G["AtlasLootItem_"..this:GetID().."_Name"]:GetText(), 11)
-			--Lootlink tooltips
-			if AtlasTWOptions.LootlinkTT then
-				--If we have seen the item, use the game tooltip to minimise same name item problems
-				if GetItemInfo(this.itemID) ~= nil then
-					_G[this:GetName().."_Unsafe"]:Hide()
-					AtlasLootTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 24)
-					AtlasLootTooltip:SetHyperlink("item:"..this.itemID..":0:0:0")
-					if AtlasTWOptions.LootItemIDs then
-						AtlasLootTooltip:AddLine(BLUE..L["ItemID:"].." "..this.itemID, nil, nil, nil, 1)
-					end
-					if this.droprate ~= nil then
-						AtlasLootTooltip:AddLine(L["Drop Rate: "]..this.droprate, 1, 1, 0)
-					end
-					AtlasLootTooltip:Show()
-					if LootLink_AddItem then
-						LootLink_AddItem(name, this.itemID..":0:0:0", color)
-					end
-				else
-					AtlasLootTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 24)
-					if LootLink_Database and LootLink_Database[this.itemID] then
-						LootLink_SetTooltip(AtlasLootTooltip, LootLink_Database[this.itemID][1], 1)
-					else
-						LootLink_SetTooltip(AtlasLootTooltip,strsub(_G["AtlasLootItem_"..this:GetID().."_Name"]:GetText(), 11), 1)
-					end
-					if AtlasTWOptions.LootItemIDs then
-						AtlasLootTooltip:AddLine(BLUE..L["ItemID:"].." "..this.itemID, nil, nil, nil, 1)
-					end
-					if this.droprate ~= nil then
-						AtlasLootTooltip:AddLine(L["Drop Rate: "]..this.droprate, 1, 1, 0, 1)
-					end
-					AtlasLootTooltip:AddLine(" ")
-					AtlasLootTooltip:AddLine(L["You can right-click to attempt to query the server. You may be disconnected."], nil, nil, nil, 1)
-					AtlasLootTooltip:Show()
-				end
-				--Item Sync tooltips
-			elseif AtlasTWOptions.LootItemSyncTT then
-				if GetItemInfo(this.itemID) ~= nil then
-					_G[this:GetName().."_Unsafe"]:Hide()
-				end
-				if ISync then
-					ISync:ButtonEnter()
-				else
-					ItemSync:ButtonEnter()
-				end
-				if AtlasTWOptions.LootItemIDs then
-					GameTooltip:AddLine(BLUE..L["ItemID:"].." "..this.itemID, nil, nil, nil, 1)
-				end
-				if this.droprate ~= nil then
-					GameTooltip:AddLine(L["Drop Rate: "]..this.droprate, 1, 1, 0)
-				end
-				GameTooltip:Show()
-				--Default game tooltips
-			else
-				if this.itemID ~= nil then
-					if GetItemInfo(this.itemID) ~= nil then
-						_G[this:GetName().."_Unsafe"]:Hide()
-						AtlasLootTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 24)
-						AtlasLootTooltip:SetHyperlink("item:"..this.itemID..":0:0:0")
-						if AtlasTWOptions.LootItemIDs then
-							AtlasLootTooltip:AddLine(BLUE..L["ItemID:"].." "..this.itemID, nil, nil, nil, 1)
-						end
-						if this.droprate ~= nil then
-							AtlasLootTooltip:AddLine(L["Drop Rate: "]..this.droprate, 1, 1, 0)
-						end
-					else
-						AtlasLoot_QueryLootPage()
-						_G["AtlasLootItem_"..id.."_Unsafe"]:Hide()
-					end
-					AtlasLootTooltip:Show()
-				end
-			end
-		elseif isEnchant then
-			local spellID = tonumber(string.sub(this.itemID, 2))
-			AtlasLootTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 24)
-			AtlasLootTooltip:ClearLines()
-			if SetAutoloot == nil or (SUPERWOW_VERSION and (tonumber(SUPERWOW_VERSION)) >= 1.2) then
-				AtlasLootTooltip:SetHyperlink("enchant:"..spellID)
-			else
-				AtlasLootTooltip:SetHyperlink("spell:"..spellID)
-				if not messageShown then
-					DEFAULT_CHAT_FRAME:AddMessage(BLUE..L["AtlasLoot"]..": "..WHITE.."Old version of SuperWoW detected, please download the latest version from https://github.com/balakethelock/SuperWoW/releases/tag/Release")
-					messageShown = true
-				end
-			end
-			if AtlasTWOptions.LootItemIDs then
-				AtlasLootTooltip:AddLine(BLUE..L["SpellID:"].." "..spellID, nil, nil, nil, 1)
-			end
-			AtlasLootTooltip:Show()
-			if GetSpellInfoAtlasLootDB["enchants"][spellID] and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= nil and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= "" then
-				AtlasLootTooltip2:SetOwner(AtlasLootTooltip, "ANCHOR_BOTTOMRIGHT", -(AtlasLootTooltip:GetWidth()), 0)
-				AtlasLootTooltip2:ClearLines()
-				AtlasLootTooltip2:SetHyperlink("item:"..GetSpellInfoAtlasLootDB["enchants"][spellID]["item"]..":0:0:0")
-				if GetSpellInfoAtlasLootDB["enchants"][spellID]["extra"] and GetSpellInfoAtlasLootDB["enchants"][spellID]["extra"] ~= nil and GetSpellInfoAtlasLootDB["enchants"][spellID]["extra"] ~= "" then
-					AtlasLootTooltip2:AddLine(GetSpellInfoAtlasLootDB["enchants"][spellID]["extra"], nil, nil, nil, 1)
-				end
-				if AtlasTWOptions.LootItemIDs then
-					AtlasLootTooltip2:AddLine(BLUE..L["ItemID:"].." "..GetSpellInfoAtlasLootDB["enchants"][spellID]["item"], nil, nil, nil, 1)
-				end
-				AtlasLootTooltip2:Show()
-			end
-		elseif isSpell then
-			local spellID = tonumber(string.sub(this.itemID, 2))
-			local TooltipTools, TooltipReagents = "", ""
-			if GetSpellInfoAtlasLootDB["craftspells"][spellID]["tools"] ~= "" then
-				for i = 1, table.getn(GetSpellInfoAtlasLootDB["craftspells"][spellID]["tools"]) do
-					AtlasLoot_CheckBagsForItems(GetSpellInfoAtlasLootDB["craftspells"][spellID]["tools"][i])
-					TooltipTools = TooltipTools..AtlasLoot_CheckBagsForItems(GetSpellInfoAtlasLootDB["craftspells"][spellID]["tools"][i])..WHITE..", "
-				end
-				TooltipTools = string.sub(TooltipTools, 1, -3)
-			end
-			if GetSpellInfoAtlasLootDB["craftspells"][spellID]["reagents"] ~= "" then
-				for i = 1, table.getn(GetSpellInfoAtlasLootDB["craftspells"][spellID]["reagents"]) do
-					local reagent = GetSpellInfoAtlasLootDB["craftspells"][spellID]["reagents"][i]
-					TooltipReagents = TooltipReagents..AtlasLoot_CheckBagsForItems(reagent[1], reagent[2])..WHITE..", "
-				end
-				TooltipReagents = string.sub(TooltipReagents, 1, -3)
-			end
-			AtlasLootTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 24)
-			AtlasLootTooltip:ClearLines()
-			AtlasLootTooltip:AddLine(GetSpellInfoAtlasLootDB["craftspells"][spellID]["name"])
-			AtlasLootTooltip:AddLine(WHITE..GetSpellInfoAtlasLootDB["craftspells"][spellID]["castTime"].." sec cast")
-			if GetSpellInfoAtlasLootDB["craftspells"][spellID]["requires"] ~= "" then
-				AtlasLootTooltip:AddLine(WHITE.."Requires: "..GetSpellInfoAtlasLootDB["craftspells"][spellID]["requires"])
-			end
-			if TooltipTools ~= "" then
-				AtlasLootTooltip:AddLine(WHITE.."Tools: "..TooltipTools, nil, nil, nil, 1)
-			end
-			if TooltipReagents ~= "" then
-				AtlasLootTooltip:AddLine(WHITE.."Reagents: "..TooltipReagents, nil, nil, nil, 1)
-			end
-			if GetSpellInfoAtlasLootDB["craftspells"][spellID]["text"] ~= "" then
-				AtlasLootTooltip:AddLine(GetSpellInfoAtlasLootDB["craftspells"][spellID]["text"], nil, nil, nil, 1)
-			end
-			if AtlasTWOptions.LootItemIDs then
-				if spellID < 100000 then
-					AtlasLootTooltip:AddLine(BLUE..L["SpellID:"].." "..spellID, nil, nil, nil, 1)
-				elseif spellID >= 100000 and spellID <= 100005 then
-					AtlasLootTooltip:AddLine(BLUE..L["SpellID:"].." 2575", nil, nil, nil, 1)
-				elseif spellID >= 100006 and spellID <= 100007 then
-					AtlasLootTooltip:AddLine(BLUE..L["SpellID:"].." 2576", nil, nil, nil, 1)
-				elseif spellID >= 100008 and spellID <= 100011 then
-					AtlasLootTooltip:AddLine(BLUE..L["SpellID:"].." 3564", nil, nil, nil, 1)
-				elseif spellID >= 100012 and spellID <= 100024 then
-					AtlasLootTooltip:AddLine(BLUE..L["SpellID:"].." 10248", nil, nil, nil, 1)
-				end
-			end
-			AtlasLootTooltip:Show()
-			local craftitem2 = GetSpellInfoAtlasLootDB["craftspells"][spellID]["craftItem"]
-			if craftitem2 ~= nil and craftitem2 ~= "" then
-				AtlasLootTooltip2:SetOwner(AtlasLootTooltip, "ANCHOR_BOTTOMRIGHT", -(AtlasLootTooltip:GetWidth()), 0)
-				AtlasLootTooltip2:ClearLines()
-				AtlasLootTooltip2:SetHyperlink("item:"..GetSpellInfoAtlasLootDB["craftspells"][spellID]["craftItem"]..":0:0:0")
-				if GetSpellInfoAtlasLootDB["craftspells"][spellID]["extra"] and GetSpellInfoAtlasLootDB["craftspells"][spellID]["extra"] ~= nil then
-					AtlasLootTooltip2:AddLine(GetSpellInfoAtlasLootDB["craftspells"][spellID]["extra"], nil, nil, nil, 1)
-				end
-				if AtlasTWOptions.LootItemIDs then
-					AtlasLootTooltip2:AddLine(BLUE..L["ItemID:"].." "..GetSpellInfoAtlasLootDB["craftspells"][spellID]["craftItem"], nil, nil, nil, 1)
-				end
-				AtlasLootTooltip2:Show()
-			end
-		end
-	end
+    if not this or not this.itemID or this.itemID == 0 then
+        return
+    end
+
+    local isItem, isEnchant, isSpell
+    if string.sub(this.itemID, 1, 1) == "s" then
+        isItem = false
+        isEnchant = false
+        isSpell = true
+    elseif string.sub(this.itemID, 1, 1) == "e" then
+        isItem = false
+        isEnchant = true
+        isSpell = false
+    else
+        isItem = true
+        isEnchant = false
+        isSpell = false
+    end
+
+    AtlasLootTooltip:SetOwner(this, "ANCHOR_RIGHT")
+
+    if isItem then
+        AtlasLootTooltip:SetHyperlink("item:"..this.itemID..":0:0:0")
+        if this.droprate then
+            AtlasLootTooltip:AddLine(L["Drop Rate:"] .. " " .. this.droprate, .1, .4, .2)
+        end
+        if AtlasTWOptions.LootItemIDs then
+            AtlasLootTooltip:AddLine(BLUE..L["ItemID:"].." "..this.itemID, nil, nil, nil, 1)
+        end
+    elseif isEnchant then
+        local enchantID = string.sub(this.itemID, 2)
+        AtlasLootTooltip:SetHyperlink("enchant:"..enchantID)
+        if AtlasTWOptions.LootItemIDs then
+            AtlasLootTooltip:AddLine(BLUE..L["SpellID:"].." "..enchantID, nil, nil, nil, 1)
+        end
+    elseif isSpell then
+        local spellID = string.sub(this.itemID, 2)
+        AtlasLootTooltip:SetHyperlink("spell:"..spellID)
+        if AtlasTWOptions.LootItemIDs then
+            AtlasLootTooltip:AddLine(BLUE..L["SpellID:"].." "..spellID, nil, nil, nil, 1)
+        end
+    end
+
+    AtlasLootTooltip:Show()
 end
 
 --------------------------------------------------------------------------------

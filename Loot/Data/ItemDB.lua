@@ -6,6 +6,37 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 AtlasTW.ItemDB = {}
 
+AtlasTW.SLOT_KEYWORDS = {
+    [L["Head"]] = 0, [L["Neck"]] = 0, [L["Shoulder"]] = 0,
+    [L["Chest"]] = 0,[L["Wrist"]] = 0, [L["Hands"]] = 0,
+    [L["Legs"]] = 0, [L["Feet"]] = 0, [L["Main Hand"]] = 0, [L["One-Hand"]] = 0,
+    [L["Off Hand"]] = 0, [L["Waist"]] = 0, [L["Two-Hand"]] = 0,
+}
+AtlasTW.SLOT2_KEYWORDS = {
+    [L["Cloth"]] = 0,
+    [L["Leather"]] = 0,
+    [L["Mail"]] = 0,
+    [L["Plate"]] = 0,
+    [L["Mace"]] = 0,
+    [L["Axe"]] = 0,
+    [L["Dagger"]] = 0,
+    [L["Sword"]] = 0,
+    [L["Held In Off-hand"]] = 0,
+    [L["Shield"]] = 0,
+    [L["Finger"]] = 0,
+    [L["Trinket"]] = 0,
+    [L["Back"]] = 0,
+    [L["Bow"]] = 0,
+    [L["Crossbow"]] = 0,
+    [L["Gun"]] = 0,
+    [L["Polearm"]] = 0,
+    [L["Relic"]] = 0,
+    [L["Staff"]] = 0,
+    [L["Thrown"]] = 0,
+    [L["Wand"]] = 0,
+    [L["Fist Weapon"]] = 0,
+    [L["Fishing Pole"]] = 0,
+}
 -- Константы качества предметов
 local ITEM_QUALITY = {
     POOR = 0,
@@ -153,6 +184,72 @@ local ItemPrototype = {
     end
 }
 
+-- Функция для парсинга подсказки предмета
+function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
+    if not itemID or itemID == 0 then return "" end
+    local tooltipName = "AtlasLootHiddenTooltip"
+    local tooltip = _G[tooltipName]
+    if not tooltip then
+        tooltip = CreateFrame("GameTooltip", tooltipName, UIParent, "GameTooltipTemplate")
+        tooltip:SetOwner(UIParent, "ANCHOR_NONE")
+    end
+
+    tooltip:ClearLines()
+    tooltip:SetHyperlink("item:"..tostring(itemID))
+    local info = {}
+    if extratext and extratext ~= "" then table.insert(info, extratext) end
+    local line, line2, text, text2
+    for i = 1, 10 do
+        line = _G[tooltipName .. "TextLeft" .. i]
+        line2 = _G[tooltipName.. "TextRight".. i]
+        if line then
+            text = line:GetText()
+            text2 = line2:GetText()
+            if text then
+                -- Ищем тип слота (Feet, Chest, etc.) и тип брони (Cloth, Leather, etc.)
+                    if AtlasTW.SLOT_KEYWORDS[text]  then
+                        table.insert(info, text)
+                        if text2 and AtlasTW.SLOT2_KEYWORDS[text2] then
+                            table.insert(info, text2)
+                        end
+                    end
+                if AtlasTW.SLOT2_KEYWORDS[text] then
+                    if text == L["Finger"] then
+                        table.insert(info, L["Ring"])
+                    else
+                        table.insert(info, text)
+                    end
+                end
+                -- Ищем строку с классами
+                if string.find(text, L["Classes"]) then
+                    local playerClass = UnitClass("player")
+                    local classText = string.gsub(text, L["Classes"]..": ", "")
+                    local colorCode = "|cffffffff" -- белый по умолчанию
+                    -- Проверяем, содержит ли текст текущий класс игрока
+                    if not string.find(classText, playerClass) then
+                        colorCode = "|cffff0000" -- красный если класс не совпадает
+                    end
+                    table.insert(info, colorCode..classText.."|r")
+                end
+                if string.find(text, L["Requires"]) then
+                    local playerLevel = UnitLevel("player")
+                    local levelText = string.gsub(text, L["Requires"].." ", "")
+                    local level = string.gsub(levelText, L["Level"].." ", "")
+                    local colorCode = "|cffffffff" -- белый по умолчанию
+                    -- Проверяем, содержит ли текст текущий класс игрока
+                    if playerLevel < (tonumber(level) or 0) then
+                        colorCode = "|cffff0000" -- красный если класс не совпадает
+                    end
+                    table.insert(info, colorCode..levelText.."|r")
+                end
+
+            end
+        end
+    end
+
+    return table.concat(info, ", ")
+end
+
 -- Функция создания нового предмета
 function AtlasTW.ItemDB.CreateItem(data)
     -- Проверяем обязательные поля
@@ -164,15 +261,15 @@ function AtlasTW.ItemDB.CreateItem(data)
     -- Устанавливаем значения по умолчанию
     local item = {
         id = data.id,
-        name = data.name or "",
-        icon = data.icon or "INV_Misc_QuestionMark",
-        quality = data.quality or ITEM_QUALITY.EPIC,
-        slot = data.slot or "",
-        slotType = data.slotType or "",
-        class = data.class or "",
-        classQuality = data.classQuality or "",
-        dropRate = data.dropRate or "",
-        validClasses = data.validClasses or "",
+        name = data.name,
+        icon = data.icon,
+        quality = data.quality,
+        slot = data.slot,
+        slotType = data.slotType,
+        class = data.class,
+        classQuality = data.classQuality,
+        dropRate = data.dropRate,
+        validClasses = data.validClasses,
         --[[ 
         source = data.source, -- Источник получения (босс, квест и т.д.)
         zone = data.zone,     -- Зона получения ]]
