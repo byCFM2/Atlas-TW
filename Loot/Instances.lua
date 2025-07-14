@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 -- LootItemIDs (default english)
 --------------------------------------------------------------------------------
-AtlasLoot_Data["AtlasLootItems"] = {
+AtlasLoot_Data = {
 	EmptyInstance = {},
 	VanillaKeys = {
 		{ 0, "INV_Box_01", "=q6=#e14#", "" },

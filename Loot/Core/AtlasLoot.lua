@@ -227,7 +227,8 @@ function AtlasTW.Loot.ScrollBarUpdate()
 				local selected = _G["AtlasBossLine"..line.."_Selected"]
 				_G["AtlasBossLine"..line.."_Text"]:SetText(AtlasTW.ScrollList[lineplusoffset])
 				local instData = AtlasTW.InstanceData[zoneID]
-				local hasLoot = instData and (instData.Bosses[lineplusoffset] and instData.Bosses[lineplusoffset].Items) or (instData.Reputation and instData.Reputation[1]) or (instData.Keys and instData.Keys[1])
+				local hasLoot = instData and (instData.Bosses[lineplusoffset] and instData.Bosses[lineplusoffset].Items)
+					or (instData.Reputation and instData.Reputation[1]) or (instData.Keys and instData.Keys[1])
 				if AtlasLootItemsFrame.activeBoss == lineplusoffset then
 					bossLine:Enable()
 					loot:Hide()
@@ -262,26 +263,24 @@ end
 local function GetLootByID(zoneID, id)
     local instData = AtlasTW.InstanceData[zoneID]
     if not instData then return nil end
-
     local bossIndex = id
     if instData.Reputation then
-        if bossIndex <= getn(instData.Reputation) then
+		local numLines = getn(instData.Reputation)
+        if bossIndex <= numLines then
             return instData.Reputation[bossIndex]
         end
-        bossIndex = bossIndex - getn(instData.Reputation)
+        bossIndex = bossIndex - numLines
     end
-
     if instData.Keys then
-        if bossIndex <= getn(instData.Keys) then
+		local numLines = getn(instData.Keys)
+        if bossIndex <= numLines then
             return instData.Keys[bossIndex]
         end
-        bossIndex = bossIndex - getn(instData.Keys)
+        bossIndex = bossIndex - numLines
     end
-
     if instData.Bosses and instData.Bosses[bossIndex] and instData.Bosses[bossIndex].Items then
         return instData.Bosses[bossIndex].Items
     end
-
     return nil
 end
 
@@ -328,15 +327,16 @@ function AtlasLoot_ShowBossLoot(lootTable, bossName)
 end
 
 function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
-    local iconFrame, nameFrame, extraFrame, itemButton, spellName, spellIcon
+    local iconFrame, nameFrame, extraFrame, itemButton, borderFrame, spellName, spellIcon
     local text, extra
     local isItem, isEnchant, isSpell
 
     if type(dataSource) ~= "table" then
-        dataSource = AtlasLoot_Data[dataSource]
+        dataSource = AtlasLoot_Data[dataSource] or nil
         if not dataSource then return end
     end
 
+	-- Hide the AtlasQuestFrame if it's open
     if AtlasTW.Quest.UI.InsideAtlasFrame then
         AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
     end
@@ -363,27 +363,41 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 				iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
 				nameFrame = _G["AtlasLootItem_"..i.."_Name"]
 				extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
+				borderFrame = _G["AtlasLootItem_"..i.."Border"]
 
 				local itemID = item.id
 				local itemName, itemLink, itemQuality, itemTexture
 
 				if itemID and itemID ~= 0 then
+					itemName = GetItemInfo(itemID)
+					if not itemName then
+						AtlasLoot_CacheItem(itemID)
+					end
 					itemName, itemLink, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(itemID)
 					if itemName then
 						local r, g, b = GetItemQualityColor(itemQuality)
 						nameFrame:SetText(itemName)
 						nameFrame:SetTextColor(r, g, b)
-					--	itemButton:SetBackdropBorderColor(r, g, b)
-					else
-						nameFrame:SetText(item:GetFormattedName())
 					end
-				else
-					nameFrame:SetText(item:GetFormattedName())
 				end
 
+				-- Set the discription text
 				extraFrame:SetText(AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, item.slot))
-				iconFrame:SetTexture(itemTexture or "Interface\\Icons\\INV_Misc_QuestionMark")
 				extraFrame:Show()
+
+				-- Set the icon
+				iconFrame:SetTexture(itemTexture or "Interface\\Icons\\INV_Misc_QuestionMark")
+
+				-- Set the container
+				itemButton.container = item.container
+				borderFrame:Hide()
+				if itemButton.container then
+					-- Cache the items in the container
+					for f = 1, getn(itemButton.container) do
+						AtlasLoot_CacheItem(itemButton.container[f])
+					end
+					borderFrame:Show()
+				end
 
 				-- Set the drop rate text
 				if item.dropRate then itemButton.droprate = item:GetDropRateText() end
@@ -702,14 +716,9 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 			end
 		else
 			local nav = AtlasLoot_GetBossNavigation(dataID)
---[[  			DEFAULT_CHAT_FRAME:AddMessage("dataID: "..dataID)
-			if nav then
-				DEFAULT_CHAT_FRAME:AddMessage("nav: "..nav.Title)
-			else
-				DEFAULT_CHAT_FRAME:AddMessage("nav: nothing")
-			end ]]
 			if nav then
 				AtlasLoot_BossName:SetText(nav.Title)
+
 				if nav.Next_Page then
 					_G["AtlasLootItemsFrame_NEXT"]:Show()
 					_G["AtlasLootItemsFrame_NEXT"].lootpage = nav.Next_Page
@@ -725,7 +734,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 				 	_G["AtlasLootItemsFrame_BACK"].lootpage = nav.Back_Page
 				 	_G["AtlasLootItemsFrame_BACK"].title = nav.Back_Title
 				 end
-			end 
+			end
 		end
 	end
 
@@ -1337,9 +1346,9 @@ end
 --------------------------------------------------------------------------------
 function AtlasLootItem_OnClick(arg1)
 	local isItem, isEnchant, isSpell
-	local color = strsub(_G["AtlasLootItem_"..this:GetID().."_Name"]:GetText(), 1, 10)
+	local color = strsub(_G["AtlasLootItem_"..this:GetID().."_Name"]:GetText() or "", 1, 10)
 	local id = this:GetID()
-	local name = strsub(_G["AtlasLootItem_"..this:GetID().."_Name"]:GetText(), 11)
+	local name = strsub(_G["AtlasLootItem_"..this:GetID().."_Name"]:GetText() or "", 11)
 	local texture = AtlasLoot_Strsplit("\\", getglobal("AtlasLootItem_"..this:GetID().."_Icon"):GetTexture(), 0, true)
 	local dataID = AtlasLootItemsFrame.refresh[1]
 	local dataSource = AtlasLootItemsFrame.refresh[2]
@@ -1590,16 +1599,16 @@ function AtlasLoot_ShowContainerFrame()
 
 	for i = 1, getn(containerTable) do
 		col = 0
-		for j = 1, getn(containerTable[i]) do
+		--for j = 1, getn(containerTable[i]) do
 			if not containerItems[buttonIndex] then
 				containerItems[buttonIndex] = CreateFrame("Button", "AtlasLootContainerItem"..buttonIndex, AtlasLootItemsFrameContainer)
 				AtlasLoot_ApplyContainerItemTemplate(containerItems[buttonIndex])
 			end
 			local itemButton = getglobal("AtlasLootContainerItem"..buttonIndex)
-			local itemID = containerTable[i][j][1]
+			local itemID = containerTable[i]--[j][1]
 			AtlasLoot_CacheItem(itemID)
-			itemButton.extraInfo = containerTable[i][j][2]
-			itemButton.dressingroomID = itemID
+			--itemButton.extraInfo = containerTable[i][j][2]
+			--itemButton.dressingroomID = itemID
 			local _,_,quality,_,_,_,_,_,tex = GetItemInfo(itemID)
 			local icon = getglobal("AtlasLootContainerItem"..buttonIndex.."Icon")
 			local r, g, b = 1, 1, 1
@@ -1620,7 +1629,7 @@ function AtlasLoot_ShowContainerFrame()
 				maxCols = col
 			end
 			buttonIndex = buttonIndex + 1
-		end
+		--end
 		row = row + 1
 	end
 	AtlasLootItemsFrameContainer:SetPoint("TOPLEFT", this , "BOTTOMLEFT", -2, 2)

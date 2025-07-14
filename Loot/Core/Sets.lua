@@ -2,7 +2,7 @@ local L = AtlasTW.Local
 local BC = AceLibrary("Babble-Class-2.2")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
-local data = AtlasLoot_Data["AtlasLootSetItems"]
+local data = AtlasLoot_Data
 
 local function CreateMenu(menuTitle, menuItems, prevMenu, prevMenuText)
     AtlasLoot_PrepMenu(prevMenu, menuTitle)

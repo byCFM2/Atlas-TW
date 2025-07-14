@@ -39,10 +39,10 @@ AtlasTW.InstanceData.MoltenCore = {
             name = BB["Lucifron"],
             defaults = { dropRate = 4 },
             loot = {
-                {id=16800, dropRate=20, container=47085}, {id=16829, dropRate=20, container={47337,47345}}, {id=16837, dropRate=20, container={47127,47135}},
-                {id=16859, dropRate=20, container={47007,47015}}, {id=16863, dropRate=30, container=47244}, {id=16805, dropRate=30, container=47280},
-                {id=18870}, {id=17109, dropRate=20}, {id=19145}, {id=19146}, {id=18872}, {id=18875}, {id=18861}, {id=18879}, {id=19147}, {id=17077}, {id=18878},
-                {id=16665, slot=L["Book"], dropRate=100},
+                {id=16800, dropRate=20, container={47085}},{id=16829, dropRate=20, container={47337,47345}}, {id=16837, dropRate=20, container={47127,47135}},
+                {id=16859, dropRate=20, container={47007,47015}}, {id=16863, dropRate=30, container={47244}}, {id=16805, dropRate=30, container={47280}},{},
+                {id=18870}, {id=17109, dropRate=20}, {id=19145}, {id=19146}, {id=18872}, {id=18875}, {id=18861}, {id=18879}, {id=19147}, {id=17077},
+                {id=18878}, {}, {id=16665, slot=L["Book"], dropRate=100},
             }
         },
         {

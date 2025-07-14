@@ -422,7 +422,19 @@ local function AtlasLoot_CreateItemsFrame()
         end
     end)
     frame:Hide()
+--[[ 
+    -- Создаем скроллбар аналогично AtlasTWScrollBar
+    local scrollBar = CreateFrame("ScrollFrame", "AtlasLootScrollBar", frame, "FauxScrollFrameTemplate")
+    scrollBar:SetPoint("TOPLEFT", frame, "TOPLEFT", 10, -30)
+    scrollBar:SetWidth(480)
+    scrollBar:SetHeight(450)
 
+    -- Child frame для содержимого
+    local scrollChild = CreateFrame("Frame", "AtlasLootScrollChild", scrollBar)
+    scrollChild:SetWidth(480)
+    scrollChild:SetHeight(450)  -- Начальная высота, будет обновляться
+    scrollBar:SetScrollChild(scrollChild)
+ ]]
     -- Background texture
     local backTexture = frame:CreateTexture(frame:GetName().."_Back", "BACKGROUND")
     backTexture:SetAllPoints(frame)
