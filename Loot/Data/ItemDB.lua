@@ -22,15 +22,15 @@ AtlasTW.ItemDB.SLOT2_KEYWORDS = {
 }
 AtlasTW.ItemDB.ClassItems = {
     [L["Druid"]] = {L["Leather"],L["Dagger"],L["Mace"],L["Fist Weapon"],L["Polearm"],L["Staff"],L["Two-Hand"].." "..L["Mace"]},
-    [L["Hunter"]] = {L["Leater"],L["Mail"],L["Axe"],L["Dagger"],L["Sword"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"],
+    [L["Hunter"]] = {L["Leather"],L["Mail"],L["Axe"],L["Dagger"],L["Sword"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"],
         L["Polearm"],L["Staff"],L["Fist Weapon"],L["Bow"],L["Crossbow"],L["Gun"],L["Thrown"]},
     [L["Mage"]] = {L["Dagger"],L["Staff"],L["Sword"],L["Wand"]},
-    [L["Paladin"]] = {L["Leater"],L["Mail"],L["Plate"],L["Sword"],L["Mace"],L["Axe"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"],L["Polearm"]},
+    [L["Paladin"]] = {L["Leather"],L["Mail"],L["Plate"],L["Sword"],L["Mace"],L["Axe"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"],L["Polearm"]},
     [L["Priest"]] = {L["Dagger"],L["Staff"],L["Mace"],L["Wand"]},
-    [L["Rogue"]] = {L["Leater"],L["Dagger"],L["Sword"],L["Mace"],L["Fist Weapon"],L["Bow"],L["Crossbow"],L["Gun"],L["Thrown"]},
-    [L["Shaman"]] = {L["Leater"],L["Mail"],L["Dagger"],L["Mace"],L["Axe"],L["Fist Weapon"],L["Staff"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"]},
+    [L["Rogue"]] = {L["Leather"],L["Dagger"],L["Sword"],L["Mace"],L["Fist Weapon"],L["Bow"],L["Crossbow"],L["Gun"],L["Thrown"]},
+    [L["Shaman"]] = {L["Leather"],L["Mail"],L["Dagger"],L["Mace"],L["Axe"],L["Fist Weapon"],L["Staff"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"]},
     [L["Warlock"]] = {L["Dagger"],L["Staff"],L["Sword"],L["Wand"]},
-    [L["Warrior"]] = {L["Leater"],L["Mail"],L["Plate"],L["Dagger"],L["Sword"],L["Mace"],L["Axe"],L["Fist Weapon"],L["Bow"],L["Crossbow"],L["Gun"],L["Thrown"],L["Polearm"],
+    [L["Warrior"]] = {L["Leather"],L["Mail"],L["Plate"],L["Dagger"],L["Sword"],L["Mace"],L["Axe"],L["Fist Weapon"],L["Bow"],L["Crossbow"],L["Gun"],L["Thrown"],L["Polearm"],
         L["Staff"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"]},
 }
 -- Константы качества предметов
@@ -215,16 +215,16 @@ local function getColoredText(text, typeText)
 end
 -- Функция для парсинга подсказки предмета
 function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
-    if not itemID or itemID == 0 then return "" end
+    if not itemID or itemID == 0 then return end
     local tooltipName = "AtlasLootHiddenTooltip"
     local tooltip = _G[tooltipName]
     if not tooltip then
         tooltip = CreateFrame("GameTooltip", tooltipName, UIParent, "GameTooltipTemplate")
         tooltip:SetOwner(UIParent, "ANCHOR_NONE")
     end
-
     tooltip:ClearLines()
     tooltip:SetHyperlink("item:"..tostring(itemID))
+    AtlasLoot_CacheItem(itemID)
     local info = {}
     if extratext and extratext ~= "" then table.insert(info, extratext) end
     local line, line2, text, text2
@@ -240,7 +240,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                     if text2 and AtlasTW.ItemDB.SLOT2_KEYWORDS[text2] then
                         table.insert(info, getColoredText(text.." "..text2, "slot"))
                     else
-                        table.insert(info, getColoredText(text, "slot"))--text~=L["Two-Hand"] and "slot" or "slo2"))
+                        table.insert(info, getColoredText(text, "slot"))
                     end
                 end
                 if AtlasTW.ItemDB.SLOT2_KEYWORDS[text] then
@@ -265,6 +265,33 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     return table.concat(info, ", ")
 end
 
+-- Функция для кэша предмета по линку или ID
+function AtlasLoot_CacheItem(linkOrID)
+    if not linkOrID or linkOrID == 0 then
+        return false
+    end
+    if tonumber(linkOrID) then
+        if GetItemInfo(linkOrID) then
+            return true
+        else
+            local item = "item:" .. linkOrID .. ":0:0:0"
+            local _, _, itemLink = string.find(item, "(item:%d+:%d+:%d+:%d+)")
+            linkOrID = itemLink
+        end
+    else
+        if type(linkOrID) ~= "string" then
+            return false
+        end
+        if string.find(linkOrID, "|", 1, true) then
+            local _, _, itemLink = string.find(linkOrID, "(item:%d+:%d+:%d+:%d+)")
+            linkOrID = itemLink
+            if GetItemInfo(AtlasLoot_IDFromLink(linkOrID)) then
+                return true
+            end
+        end
+    end
+    GameTooltip:SetHyperlink(linkOrID)
+end
 -- Функция создания нового предмета
 function AtlasTW.ItemDB.CreateItem(data)
     -- Проверяем обязательные поля
@@ -276,6 +303,7 @@ function AtlasTW.ItemDB.CreateItem(data)
     local item = {
         id = data.id,
         name = data.name,
+        info = data.info,
         icon = data.icon,
         quality = data.quality,
         slot = data.slot,
@@ -298,13 +326,11 @@ function AtlasTW.ItemDB.CreateItem(data)
 end
 
 -- Функция создания разделителя/заголовка
-function AtlasTW.ItemDB.CreateSeparator(text, quality)
+function AtlasTW.ItemDB.CreateSeparator(text, icon, quality)
     return {
-        id = 0,
         name = text or "",
-        icon = "INV_Box_01",
-        quality = quality or 6,
-        isSeparator = true
+        texture = icon and ("Interface\\Icons\\"..icon) or "Interface\\Icons\\INV_Box_01",
+        quality = quality or 5,
     }
 end
 

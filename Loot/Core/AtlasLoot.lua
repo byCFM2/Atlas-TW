@@ -267,14 +267,14 @@ local function GetLootByID(zoneID, id)
     if instData.Reputation then
 		local numLines = getn(instData.Reputation)
         if bossIndex <= numLines then
-            return instData.Reputation[bossIndex]
+            return instData.Reputation[bossIndex].loot
         end
         bossIndex = bossIndex - numLines
     end
     if instData.Keys then
 		local numLines = getn(instData.Keys)
         if bossIndex <= numLines then
-            return instData.Keys[bossIndex]
+            return instData.Keys[bossIndex].loot
         end
         bossIndex = bossIndex - numLines
     end
@@ -305,7 +305,7 @@ function AtlasLootBoss_OnClick(button)
         AtlasLootItemsFrame.activeBoss = nil
     else
         local loot = GetLootByID(zoneID, id)
-        if loot and getn(loot) > 0 then
+        if loot then
             local bossName = StripFormatting(AtlasTW.ScrollList[id])
             AtlasLoot_ShowBossLoot(loot, bossName)
             AtlasLootItemsFrame.activeBoss = id
@@ -326,10 +326,8 @@ function AtlasLoot_ShowBossLoot(lootTable, bossName)
 	AtlasLoot_ShowItemsFrame(bossName, lootTable, bossName)
 end
 
-function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
-    local iconFrame, nameFrame, extraFrame, itemButton, borderFrame, spellName, spellIcon
-    local text, extra
-    local isItem, isEnchant, isSpell
+function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
+    local iconFrame, nameFrame, extraFrame, itemButton, borderFrame, spellName, spellIcon, text, extra, isItem, isEnchant, isSpell
 
     if type(dataSource) ~= "table" then
         dataSource = AtlasLoot_Data[dataSource] or nil
@@ -348,41 +346,51 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
         _G["AtlasLootMenuItem_"..i]:Hide()
     end
 	--Store data about the state of the items frame to allow minor tweaks or a recall of the current loot page
-	AtlasLootItemsFrame.refresh = {dataID, dataSource_backup, boss, AtlasFrame}
+	AtlasLootItemsFrame.refresh = {dataID, dataSource, boss, AtlasFrame}
 	--Escape out of this function if creating a menu, this function only handles loot tables.
 	--Inserting escapes in this way allows consistant calling of data whether it is a loot table or a menu.
 	local handlerName = AtlasLoot_MenuHandlers[dataID]
 	if handlerName and type(_G[handlerName]) == "function" then
+		print("AtlasLoot_ShowItemsFrame: function")
 		_G[handlerName]()
 	elseif type(dataSource) == "table" then
 		-- New modular system
+		print("AtlasLoot_ShowItemsFrame: TABLE")
 		for i = 1, 30 do
 			local item = dataSource[i]
-			if item then
+			if item and (item.id or item.name) then
 				itemButton = _G["AtlasLootItem_"..i]
 				iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
 				nameFrame = _G["AtlasLootItem_"..i.."_Name"]
 				extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
 				borderFrame = _G["AtlasLootItem_"..i.."Border"]
-
+				local itemLink, itemQuality, itemTexture
+				local itemName =  item.name
 				local itemID = item.id
-				local itemName, itemLink, itemQuality, itemTexture
 
 				if itemID and itemID ~= 0 then
-					itemName = GetItemInfo(itemID)
+					itemName, itemLink, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(itemID)
 					if not itemName then
 						AtlasLoot_CacheItem(itemID)
-					end
-					itemName, itemLink, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(itemID)
-					if itemName then
+					else
 						local r, g, b = GetItemQualityColor(itemQuality)
-						nameFrame:SetText(itemName)
 						nameFrame:SetTextColor(r, g, b)
 					end
+					nameFrame:SetText(itemName or L["Item not found in cache"])
+				elseif item.name then
+					-- Handle the case where item is a separator
+					local table = AtlasTW.ItemDB.CreateSeparator(item.name, item.icon, item.quality)
+					itemName = table.name
+					itemQuality = table.quality
+					itemTexture = table.texture
+
+					local r, g, b = GetItemQualityColor(itemQuality)
+					nameFrame:SetTextColor(r, g, b)
+					nameFrame:SetText(itemName or L["Item not found in cache"])
 				end
 
 				-- Set the discription text
-				extraFrame:SetText(AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, item.slot))
+				extraFrame:SetText(AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, item.disc) or "")
 				extraFrame:Show()
 
 				-- Set the icon
@@ -402,7 +410,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 				-- Set the drop rate text
 				if item.dropRate then itemButton.droprate = item:GetDropRateText() end
 
-				itemButton.itemID = itemID
+				itemButton.itemID = itemID or 0
 				itemButton.itemLink = itemLink
 				itemButton:Show()
 			else
@@ -410,6 +418,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss)
 			end
 		end
 	else
+		print("AtlasLoot_ShowItemsFrame: ELSE")
 		--Iterate through each item object and set its properties
 		for i = 1, 30 do
 			--Check for a valid object (that it exists, and that it has a name)
@@ -1543,32 +1552,6 @@ function AtlasLoot_IDFromLink(link)
     return nil
 end
 
-function AtlasLoot_CacheItem(linkOrID)
-    if not linkOrID or linkOrID == 0 then
-        return false
-    end
-    if tonumber(linkOrID) then
-        if GetItemInfo(linkOrID) then
-            return true
-        else
-            local item = "item:" .. linkOrID .. ":0:0:0"
-            local _, _, itemLink = string.find(item, "(item:%d+:%d+:%d+:%d+)")
-            linkOrID = itemLink
-        end
-    else
-        if type(linkOrID) ~= "string" then
-            return false
-        end
-        if string.find(linkOrID, "|", 1, true) then
-            local _, _, itemLink = string.find(linkOrID, "(item:%d+:%d+:%d+:%d+)")
-            linkOrID = itemLink
-            if GetItemInfo(AtlasLoot_IDFromLink(linkOrID)) then
-                return true
-            end
-        end
-    end
-    GameTooltip:SetHyperlink(linkOrID)
-end
 
 local containerItems = {}
 local lastSelectedButton

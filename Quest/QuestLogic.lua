@@ -57,7 +57,7 @@ function AtlasTW.Quest.OnItemEnter(itemIndex)
     else
         -- Fallback to manual tooltip creation
         -- Set item name with color
-        local displayName = itemColor .. (itemName or "Unknown Item")
+        local displayName = itemColor .. (itemName or L["Item not found in cache"])
         AtlasTW.Quest.Tooltip:AddLine(displayName, 1, 1, 1)
 
         -- Add description if available
@@ -67,8 +67,8 @@ function AtlasTW.Quest.OnItemEnter(itemIndex)
 
         -- Add error message if we have ID but can't load item
         if itemId then
-            AtlasTW.Quest.Tooltip:AddLine(red .. (L["This item is not safe!"] or L["Item not found in cache"]), 1, 0, 0)
-            AtlasTW.Quest.Tooltip:AddLine(L["You can right-click to attempt to query the server. You may be disconnected."])
+            AtlasTW.Quest.Tooltip:AddLine(red .. L["This item is not safe!"], 1, 0, 0)
+            AtlasTW.Quest.Tooltip:AddLine(L["You can right-click to attempt to query the server."])
         end
     end
 

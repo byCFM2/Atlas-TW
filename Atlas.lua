@@ -80,7 +80,7 @@ local function atlasSimpleSearch(data, text)
 	end
 	for _, keyData in ipairs(data["Keys"] or {}) do
 		if keyData.name then
-			local newName = Colors.GREEN..L["Key"] .. ": " .. keyData.name
+			local newName = Colors.GREEN..L["Key"] .. ": " .. keyData.name.." - "..(keyData.info or "")
 			local _, _ = string.find(string.lower(newName), search_text)
 			if _ then
 				new[n] = {}
