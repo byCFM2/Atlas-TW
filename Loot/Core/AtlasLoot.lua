@@ -71,6 +71,18 @@ local function StripFormatting(text)
 	text = string.gsub(text, "|%d+", "")
 	-- Удаляем оставшиеся одиночные | символы
 	text = string.gsub(text, "|", "")
+	-- Удаляем все виды скобок и их содержимое
+	text = string.gsub(text, "%(.-%)", "")  -- Круглые скобки ()
+	text = string.gsub(text, "%[.-%]", "")  -- Квадратные скобки []
+	text = string.gsub(text, "%{.-%}", "")  -- Фигурные скобки {}
+	text = string.gsub(text, "%<.-%>", "")  -- Угловые скобки <>
+	-- Удаляем номер босса
+	text = string.gsub(text, "%d+%) ", "")
+	-- Удаляем слова Reputation:
+	text = string.gsub(text, "Reputation:", "")
+	-- Удаляем слова Key:
+	text = string.gsub(text, "Key:", "")
+
     return text
 end
 
@@ -329,6 +341,9 @@ end
 function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
     local iconFrame, nameFrame, extraFrame, itemButton, borderFrame, spellName, spellIcon, text, extra, isItem, isEnchant, isSpell
 
+    if not dataID or not dataSource then return end
+
+    local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
     if type(dataSource) ~= "table" then
         dataSource = AtlasLoot_Data[dataSource] or nil
         if not dataSource then return end
@@ -355,7 +370,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 		_G[handlerName]()
 	elseif type(dataSource) == "table" then
 		-- New modular system
-		print("AtlasLoot_ShowItemsFrame: TABLE")
+		print("AtlasLoot_ShowItemsFrame: table")
 		for i = 1, 30 do
 			local item = dataSource[i]
 			if item and (item.id or item.name) then
@@ -378,6 +393,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 					end
 					nameFrame:SetText(itemName or L["Item not found in cache"])
 				elseif item.name then
+
 					-- Handle the case where item is a separator
 					local table = AtlasTW.ItemDB.CreateSeparator(item.name, item.icon, item.quality)
 					itemName = table.name
@@ -396,6 +412,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 				-- Set the icon
 				iconFrame:SetTexture(itemTexture or "Interface\\Icons\\INV_Misc_QuestionMark")
 
+				-- Save the item button data
 				-- Set the container
 				itemButton.container = item.container
 				borderFrame:Hide()
@@ -407,16 +424,22 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 					borderFrame:Show()
 				end
 
-				-- Set the drop rate text
+				-- Set the item drop rate
 				if item.dropRate then itemButton.droprate = item:GetDropRateText() end
 
 				itemButton.itemID = itemID or 0
 				itemButton.itemLink = itemLink
+
+				-- Set the item button visibility
 				itemButton:Show()
+
 			else
 				_G["AtlasLootItem_"..i]:Hide()
 			end
 		end
+
+		-- Set the loot page name
+		AtlasLoot_LootPageName:SetText(TruncateText(dataID, 40) or "No name")
 	else
 		print("AtlasLoot_ShowItemsFrame: ELSE")
 		--Iterate through each item object and set its properties
@@ -712,7 +735,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 		_G["AtlasLootItemsFrame_BACK"]:Hide()
 		_G["AtlasLootItemsFrame_NEXT"]:Hide()
 		_G["AtlasLootItemsFrame_PREV"]:Hide()
-		AtlasLoot_BossName:SetText(boss)
+		AtlasLoot_LootPageName:SetText(boss)
 		--Consult the button registry to determine what nav buttons are required
 		if dataID == "SearchResult" or dataID == "WishList" then
 			if wlPage < wlPageMax then
@@ -726,7 +749,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 		else
 			local nav = AtlasLoot_GetBossNavigation(dataID)
 			if nav then
-				AtlasLoot_BossName:SetText(nav.Title)
+				AtlasLoot_LootPageName:SetText(nav.Title)
 
 				if nav.Next_Page then
 					_G["AtlasLootItemsFrame_NEXT"]:Show()
@@ -1134,9 +1157,9 @@ function AtlasLoot_NavButton_OnClick()
 		--	DEFAULT_CHAT_FRAME:AddMessage(tostring(AtlasLootItemsFrame.refresh[2]))
 			AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.refresh[2], this.title)
 			if AtlasLootItemsFrame_SelectedTable:GetText()~=nil then
-				AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(AtlasLoot_BossName:GetText(), 30))
+				AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(AtlasLoot_LootPageName:GetText(), 30))
 			else
-				AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasLoot_BossName:GetText(), 30))
+				AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasLoot_LootPageName:GetText(), 30))
 			end
 		end
 	elseif AtlasLootItemsFrame.refresh and AtlasLootItemsFrame.refresh[2] then

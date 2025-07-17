@@ -66,6 +66,7 @@ local function atlasSimpleSearch(data, text)
 	local search_text = string.lower(text)
 	search_text = string.gsub(search_text, "([%^%$%(%)%%%.%[%]%+%-%?])", "%%%1")
 	search_text = string.gsub(search_text, "%*", ".*")
+	-- Set name for boss lines
 	local n = 1
 	for _, repData in ipairs(data["Reputation"] or {}) do
 		if repData.name then
@@ -80,7 +81,7 @@ local function atlasSimpleSearch(data, text)
 	end
 	for _, keyData in ipairs(data["Keys"] or {}) do
 		if keyData.name then
-			local newName = Colors.GREEN..L["Key"] .. ": " .. keyData.name.." - "..(keyData.info or "")
+			local newName = Colors.GREEN..L["Key"] .. ": " .. keyData.name..(keyData.info and " <"..keyData.info..">" or "")
 			local _, _ = string.find(string.lower(newName), search_text)
 			if _ then
 				new[n] = {}
@@ -91,7 +92,7 @@ local function atlasSimpleSearch(data, text)
 	end
 	for _, bossData in ipairs(data["Bosses"] or {}) do
 		if bossData.name then
-			local newName = Colors.WHITE..(bossData.prefix or "").." ".. bossData.name
+			local newName = Colors.WHITE..(bossData.prefix and (bossData.prefix.." ") or "")..bossData.name
 			local _, _ = string.find(string.lower(newName), search_text)
 			if _ then
 				new[n] = {}

@@ -441,11 +441,11 @@ local function AtlasLoot_CreateItemsFrame()
     backTexture:SetVertexColor(0, 0, 0, 0.7)
 
     -- Boss Name FontString
-    local bossName = frame:CreateFontString("AtlasLoot_BossName", "OVERLAY", "GameFontHighlightLarge")
-    bossName:SetWidth(512)
-    bossName:SetHeight(30)
-    bossName:SetJustifyH("CENTER")
-    bossName:SetPoint("TOP", frame, "TOP", 0, 0)
+    local pageName = frame:CreateFontString("AtlasLoot_LootPageName", "OVERLAY", "GameFontHighlightLarge")
+    pageName:SetWidth(512)
+    pageName:SetHeight(30)
+    pageName:SetJustifyH("CENTER")
+    pageName:SetPoint("TOP", frame, "TOP", 0, 0)
 
     -- QuickLooks FontString
     local quickLooks = frame:CreateFontString("AtlasLoot_QuickLooks", "OVERLAY", "GameFontNormal")

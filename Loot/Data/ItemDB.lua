@@ -302,21 +302,18 @@ function AtlasTW.ItemDB.CreateItem(data)
     -- Устанавливаем значения по умолчанию
     local item = {
         id = data.id,
-        name = data.name,
-        info = data.info,
-        icon = data.icon,
-        quality = data.quality,
-        slot = data.slot,
-        slotType = data.slotType,
-        class = data.class,
-        classQuality = data.classQuality,
+       -- name = data.name,
+      --  info = data.info,
+       -- icon = data.icon,
+        disc = data.disc,
+       -- slot = data.slot,
+      --  slotType = data.slotType,
         dropRate = data.dropRate,
-        validClasses = data.validClasses,
         container = data.container,
         --[[ 
         source = data.source, -- Источник получения (босс, квест и т.д.)
         zone = data.zone,     -- Зона получения ]]
-        notes = data.notes    -- Дополнительные заметки
+        --notes = data.notes    -- Дополнительные заметки
     }
 
     -- Устанавливаем метатаблицу для доступа к методам

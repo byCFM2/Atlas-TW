@@ -43,7 +43,7 @@ function AtlasLoot_PrepMenu(backPage, title, menu)
     AtlasLootItemsFrame_NEXT:Hide()
     AtlasLootItemsFrame_PREV:Hide()
 
-    AtlasLoot_BossName:SetText("|cffFFFFFF" .. title)
+    AtlasLoot_LootPageName:SetText("|cffFFFFFF" .. title)
     AtlasLootItemsFrame:Show()
 end
 
