@@ -228,13 +228,25 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     local info = {}
     if extratext and extratext ~= "" then table.insert(info, extratext) end
     local line, line2, text, text2
-    for i = 1, 10 do
+    for i = 1, 12 do
         line = _G[tooltipName .. "TextLeft" .. i]
         line2 = _G[tooltipName.. "TextRight".. i]
         if line then
             text = line:GetText()
             text2 = line2:GetText()
             if text then
+                -- Ищем строку с предметом для задания
+                if string.find(text, L["Quest Item"]) then
+                    table.insert(info, text)
+                end
+                -- Ищем строку с маунтом
+                if string.find(text, L["mount"]) then
+                    table.insert(info, L["Mount"])
+                end
+                -- Ищем строку с начинающим задание
+                if string.find(text, L["This Item Begins a Quest"]) then
+                    table.insert(info, text)
+                end
                 -- Ищем тип слота (Feet, Chest, etc.) и тип брони (Cloth, Leather, etc.)
                 if AtlasTW.ItemDB.SLOT_KEYWORDS[text]  then
                     if text2 and AtlasTW.ItemDB.SLOT2_KEYWORDS[text2] then
@@ -254,10 +266,10 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                 if string.find(text, L["Classes"]) then
                     table.insert(info, getColoredText(text, "class"))
                 end
+                -- Ищем строку с требованиями
                 if string.find(text, L["Requires"]) then
                     table.insert(info, getColoredText(text, "requires"))
                 end
-
             end
         end
     end

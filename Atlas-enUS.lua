@@ -845,6 +845,7 @@ AtlasTW.Local.Translations = {
 	["SpellID:"] = true,
 	["You can right-click to attempt to query the server."] = true,
 	["Mount"] = true,
+	["mount"] = true,
 	["Enchant"] = true,
 	["Trade Goods"] = true,
 	["Scope"] = true,

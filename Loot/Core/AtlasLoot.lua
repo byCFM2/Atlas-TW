@@ -339,10 +339,10 @@ function AtlasLoot_ShowBossLoot(lootTable, bossName)
 end
 
 function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
-    local iconFrame, nameFrame, extraFrame, itemButton, borderFrame, spellName, spellIcon, text, extra, isItem, isEnchant, isSpell
 
     if not dataID or not dataSource then return end
 
+    local iconFrame, nameFrame, extraFrame, itemButton, borderFrame, spellName, spellIcon, text, extra, isItem, isEnchant, isSpell
     local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
     if type(dataSource) ~= "table" then
         dataSource = AtlasLoot_Data[dataSource] or nil

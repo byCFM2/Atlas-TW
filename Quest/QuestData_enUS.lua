@@ -9238,10 +9238,11 @@ kQuestInstanceData["KarazhanCrypt"].Quests.Alliance[2] = {
     Attain = "60",
     Aim = "Slay the Ravenous Strigoi in Karazhan Crypts and return to The Cook in Lower Karazhan Halls.",
     Location = "The Cook near ("..yellow.."[Lower Karazhan Halls- e]"..white..")",
-    Note = "Drop from [Ravenous Strigoi].\nThe quest line starts [Recipes of Kezan] drop in "..yellow.."[Tower of Karazhan]"..white..".",
+    Note = "Drop from [Ravenous Strigoi].\nThe quest line starts [Recipes of Kezan] get in "..yellow.."[Tower of Karazhan]"..white..".",
     Prequest = "A Chef's Majesty",
     Folgequest = "No",
     Rewards = {
+        Text = blue.."Reward:",
         {
             Name = "Recipe: Empowering Herbal Salad",
             ID = "92045",

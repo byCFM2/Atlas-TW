@@ -221,11 +221,11 @@ function AtlasLootTip.extendTooltip(tooltip)
 					break
 				end
 			end
-			for k1, _ in pairs(AtlasLoot_Data["AtlasLootCrafting"]) do
+			for k1, _ in pairs(AtlasLoot_Data) do
 				if source then
 					break
 				end
-				for _, v2 in pairs(AtlasLoot_Data["AtlasLootCrafting"][k1]) do
+				for _, v2 in pairs(AtlasLoot_Data[k1]) do
 					if v2[1] ~= 0 and v2[1] ~= "" --[[and string.sub(v2[1], 1, 1) ~= "e"]] then
 						if (v2[1] == craftSpell or v2[1] == itemID) and
 							(strfind(k1, "Apprentice", 1, true) or
@@ -295,11 +295,11 @@ function AtlasLootTip.extendTooltip(tooltip)
 			end
             -- check if its a pvp reward
             if not isCraft and not isWBLoot then
-                for k1, _ in pairs(AtlasLoot_Data["AtlasLootGeneralPvPItems"]) do
+                for k1, _ in pairs(AtlasLoot_Data) do
 					if source then
 						break
 					end
-					for _, v2 in pairs(AtlasLoot_Data["AtlasLootGeneralPvPItems"][k1]) do
+					for _, v2 in pairs(AtlasLoot_Data[k1]) do
 						if v2[1] == itemID then
 							source = k1
 							isPvP = true
@@ -312,11 +312,11 @@ function AtlasLootTip.extendTooltip(tooltip)
             -- check if its a rep reward
 			-- bgs
             if not isCraft and not isWBLoot and not isPvP then
-                for k1, _ in pairs(AtlasLoot_Data["AtlasLootBGItems"]) do
+                for k1, _ in pairs(AtlasLoot_Data) do
 					if source then
 						break
 					end
-					for _,v2 in pairs(AtlasLoot_Data["AtlasLootBGItems"][k1]) do
+					for _,v2 in pairs(AtlasLoot_Data[k1]) do
 						if v2[1] == itemID then
 							source = k1
 							isRepReward = true
@@ -331,11 +331,11 @@ function AtlasLootTip.extendTooltip(tooltip)
 					end
 				end
 				-- factions
-                for k1,v1 in pairs(AtlasLoot_Data["AtlasLootRepItems"]) do
+                for k1,v1 in pairs(AtlasLoot_Data) do
 					if source then
 						break
 					end
-					for k2,v2 in pairs(AtlasLoot_Data["AtlasLootRepItems"][k1]) do
+					for k2,v2 in pairs(AtlasLoot_Data[k1]) do
 						if v2[1] == itemID then
 							source = k1
 							isRepReward = true
@@ -352,11 +352,11 @@ function AtlasLootTip.extendTooltip(tooltip)
             end
             -- check if its a set piece
 			if not isCraft and not isWBLoot and not isPvP and not isRepReward then
-				for k1,v1 in pairs(AtlasLoot_Data["AtlasLootSetItems"]) do
+				for k1,v1 in pairs(AtlasLoot_Data) do
 					if source then
 						break
 					end
-					for _,v2 in pairs(AtlasLoot_Data["AtlasLootSetItems"][k1]) do
+					for _,v2 in pairs(AtlasLoot_Data[k1]) do
 						if v2[1] == itemID then
 							source = k1
 							isSetPiece = true
@@ -372,11 +372,11 @@ function AtlasLootTip.extendTooltip(tooltip)
 			end
 			-- check world events
 			if not isCraft and not isWBLoot and not isPvP and not isRepReward and not isSetPiece then
-				for k1,_ in pairs(AtlasLoot_Data["AtlasLootWorldEvents"]) do
+				for k1,_ in pairs(AtlasLoot_Data) do
 					if source then
 						break
 					end
-					for k2,v2 in pairs(AtlasLoot_Data["AtlasLootWorldEvents"][k1]) do
+					for k2,v2 in pairs(AtlasLoot_Data[k1]) do
 						if v2[1] == itemID then
 							source = k1
 							isWorldEvent = true
@@ -393,11 +393,11 @@ function AtlasLootTip.extendTooltip(tooltip)
 			end
             -- check if its a dungeon/raid loot
 			if not isCraft and not isWBLoot and not isPvP and not isRepReward and not isWorldEvent and not isSetPiece then
-				for k1,v1 in pairs(AtlasLoot_Data["AtlasLootItems"]) do
+				for k1,v1 in pairs(AtlasLoot_Data) do
 					if source then
 						break
 					end
-					for k2,v2 in pairs(AtlasLoot_Data["AtlasLootItems"][k1]) do
+					for k2,v2 in pairs(AtlasLoot_Data[k1]) do
 						if v2[1] == itemID then
 							if k1 ~= "VanillaKeys" then
 								source = k1
@@ -413,21 +413,21 @@ function AtlasLootTip.extendTooltip(tooltip)
 					end
 				end
 				-- check containers
-				for k1, _ in pairs(AtlasLoot_Data["AtlasLootItems"]) do
+				for k1, _ in pairs(AtlasLoot_Data) do
 					if source then
 						break
 					end
-					for _, v2 in pairs(AtlasLoot_Data["AtlasLootItems"][k1]) do
+					for _, v2 in pairs(AtlasLoot_Data[k1]) do
 						if source then
 							break
 						end
-						if v2[16] then
-							for i, _ in pairs(v2[16]) do
+						if v2["container"] then
+							for i, _ in pairs(v2["container"]) do
 								if source then
 									break
 								end
-								for i2, _ in pairs(v2[16][i]) do
-									if v2[16][i][i2][1] == itemID then
+								for i2, _ in pairs(v2["container"][i]) do
+									if v2["container"][i][i2][1] == itemID then
 										source = k1
 										break
 									end
