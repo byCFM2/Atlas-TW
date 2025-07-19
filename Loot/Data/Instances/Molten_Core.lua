@@ -173,6 +173,11 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=16804, container={47279}},{id=16825},{id=16830, container={47333,47341}},{id=16850},{id=16840, container={47123,47131}},
                 {id=16857, container={47003,47011}},{id=16861, container={47243}},{id=81260, dropRate=.2},{id=81261, dropRate=.2},{id=81262, dropRate=.2},
                 {id=81263, dropRate=.2},{id=81264, dropRate=.2},{id=81265, dropRate=.2},
+                --for test
+                {}, {id=18823}, {}, {id=19136}, {}, {id=19144}, {}, {id=18821}, {}, {id=18820},
+                {id=18822}, {}, {id=17072}, {}, {id=17074}, {}, {id=17072}, {}, {id=17074}, {},
+
+
             },
         },
         {   id = "Randombossloot",

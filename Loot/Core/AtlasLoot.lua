@@ -219,6 +219,208 @@ end
 --[[
 	Required as the Atlas function cannot deal with the AtlasLoot button template or the added Atlasloot entries
 ]]
+-- Константы для AtlasLoot скроллинга
+AtlasTW.LOOT_NUM_LINES = 30  -- Количество видимых элементов в AtlasLootItemsFrame (2 ряда по 15)
+AtlasTW.LootCurrentItems = nil  -- Текущие элементы для отображения
+
+-- Функция для получения максимального смещения скролла
+function AtlasLoot_GetMaxScrollOffset()
+	if not AtlasTW.LootCurrentItems then return 0 end
+	
+	-- Подсчитываем общее количество элементов (включая пустые)
+	local totalItems = 0
+	if type(AtlasTW.LootCurrentItems) == "table" then
+		-- Считаем все элементы в таблице, включая пустые
+		totalItems = getn(AtlasTW.LootCurrentItems)
+	end
+	
+	-- Максимальное смещение = общее количество элементов минус видимые (30)
+	-- Но не меньше 0
+	local maxOffset = totalItems > 30 and (totalItems - 30) or 0
+	return maxOffset
+end
+
+-- Функция обновления скроллбара для AtlasLootItemsFrame
+function AtlasLoot_ScrollBarUpdate()
+	if not AtlasLootScrollBar then return end
+	if not AtlasTW.LootCurrentItems then return end
+	
+	DEFAULT_CHAT_FRAME:AddMessage("AtlasLoot_ScrollBarUpdate: updating scroll with offset " .. (FauxScrollFrame_GetOffset(AtlasLootScrollBar) or 0))
+	
+	-- Подсчитываем общее количество элементов (включая пустые)
+	local totalItems = 0
+	if type(AtlasTW.LootCurrentItems) == "table" then
+		-- Считаем все элементы в таблице, включая пустые
+		totalItems = getn(AtlasTW.LootCurrentItems)
+	end
+	
+	-- Обновляем скролл для работы с отдельными элементами
+	-- Если элементов больше 30, показываем скролл
+	if totalItems > 30 then
+		FauxScrollFrame_Update(AtlasLootScrollBar, totalItems - 30, 1, 1)
+	else
+		-- Если элементов 30 или меньше, скрываем скролл
+		FauxScrollFrame_Update(AtlasLootScrollBar, 0, 1, 1)
+	end
+	
+	local offset = FauxScrollFrame_GetOffset(AtlasLootScrollBar)
+	
+	-- Обновляем содержимое и видимость кнопок AtlasLootItem_
+	for i = 1, 30 do
+		local itemButton = _G["AtlasLootItem_"..i]
+		local menuButton = _G["AtlasLootMenuItem_"..i]
+		
+		if itemButton then
+			-- Рассчитываем правильный индекс для двух рядов с поэлементной прокруткой
+			local itemIndex
+			itemIndex = i + offset
+			
+			local shouldShow = false
+			
+			-- Показываем кнопку если индекс в пределах таблицы
+			if itemIndex <= totalItems and AtlasTW.LootCurrentItems[itemIndex] then
+				local item = AtlasTW.LootCurrentItems[itemIndex]
+				
+				-- Проверяем, есть ли данные для отображения
+				if item.id or item.name then
+					-- Новая система - обновляем содержимое кнопки
+					local iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
+					local nameFrame = _G["AtlasLootItem_"..i.."_Name"]
+					local extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
+					local borderFrame = _G["AtlasLootItem_"..i.."Border"]
+					
+					local itemLink, itemQuality, itemTexture
+					local itemName = item.name
+					local itemID = item.id
+					
+					if itemID and itemID ~= 0 then
+						itemName, itemLink, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(itemID)
+						if itemName then
+							local r, g, b = GetItemQualityColor(itemQuality)
+							nameFrame:SetTextColor(r, g, b)
+						end
+						nameFrame:SetText(itemName or L["Item not found in cache"])
+					elseif item.name then
+						-- Handle the case where item is a separator
+						local table = AtlasTW.ItemDB.CreateSeparator(item.name, item.icon, item.quality)
+						itemName = table.name
+						itemQuality = table.quality
+						itemTexture = table.texture
+						
+						local r, g, b = GetItemQualityColor(itemQuality)
+						nameFrame:SetTextColor(r, g, b)
+						nameFrame:SetText(itemName or L["Item not found in cache"])
+					end
+					
+					-- Set the description text
+					extraFrame:SetText(AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, item.disc) or "")
+					extraFrame:Show()
+					
+					-- Set the icon
+					iconFrame:SetTexture(itemTexture or "Interface\\Icons\\INV_Misc_QuestionMark")
+					
+					-- Save the item button data
+					itemButton.container = item.container
+					borderFrame:Hide()
+					if itemButton.container then
+						borderFrame:Show()
+					end
+					
+					-- Set the item drop rate
+					itemButton.droprate = item:GetDropRateText()
+					
+					itemButton.itemID = itemID or 0
+					itemButton.itemLink = itemLink
+					
+					shouldShow = true
+				elseif type(item) == "table" and item[3] and item[3] ~= "" then
+					-- Старая система - обновляем содержимое кнопки
+					local iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
+					local nameFrame = _G["AtlasLootItem_"..i.."_Name"]
+					local extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
+					local borderFrame = _G["AtlasLootItem_"..i.."Border"]
+					
+					-- Обрабатываем старую систему данных
+					local isItem, isEnchant, isSpell = false, false, false
+					local text, extra
+					
+					if string.sub(item[1], 1, 1) == "s" then
+						isSpell = true
+					elseif string.sub(item[1], 1, 1) == "e" then
+						isEnchant = true
+					else
+						isItem = true
+					end
+					
+					if isItem then
+						local itemName, _, itemQuality = GetItemInfo(item[1])
+						if itemName then
+							local _, _, _, itemColor = GetItemQualityColor(itemQuality)
+							text = itemColor..itemName
+						else
+							text = item[3]
+						end
+					elseif isEnchant or isSpell then
+						text = item[3]
+					end
+					
+					-- Set name and extra text
+					nameFrame:SetText(text or "")
+					extra = item[4] or ""
+					extraFrame:SetText(extra)
+					extraFrame:Show()
+					
+					-- Set icon
+					if item[2] == "?" then
+						iconFrame:SetTexture("Interface\\Icons\\INV_Misc_QuestionMark")
+					elseif item[2] == "" then
+						local _, _, _, _, _, _, _, _, itemTexture = GetItemInfo(item[1])
+						iconFrame:SetTexture(itemTexture or "Interface\\Icons\\INV_Misc_QuestionMark")
+					else
+						iconFrame:SetTexture("Interface\\Icons\\"..item[2])
+					end
+					
+					-- Set item data
+					itemButton.itemID = isItem and tonumber(item[1]) or 0
+					itemButton.itemLink = nil
+					itemButton.container = nil
+					itemButton.droprate = nil
+					borderFrame:Hide()
+					
+					shouldShow = true
+				end
+			else
+				-- Очищаем содержимое кнопки если нет данных
+				local iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
+				local nameFrame = _G["AtlasLootItem_"..i.."_Name"]
+				local extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
+				local borderFrame = _G["AtlasLootItem_"..i.."Border"]
+				
+				if iconFrame then iconFrame:SetTexture("") end
+				if nameFrame then nameFrame:SetText("") end
+				if extraFrame then extraFrame:SetText("") extraFrame:Hide() end
+				if borderFrame then borderFrame:Hide() end
+				
+				itemButton.itemID = 0
+				itemButton.itemLink = nil
+				itemButton.container = nil
+				itemButton.droprate = nil
+			end
+			
+			if shouldShow then
+				itemButton:Show()
+			else
+				itemButton:Hide()
+			end
+		end
+		
+		-- Скрываем кнопки меню при отображении предметов
+		if menuButton then
+			menuButton:Hide()
+		end
+	end
+end
+
 function AtlasTW.Loot.ScrollBarUpdate()
 	local lineplusoffset
 	local highlightTexture
@@ -796,6 +998,18 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 	end
 	--Anchor the item frame where it is supposed to be
 	AtlasLoot_QueryLootPage()
+	
+	-- Set current items for scrollbar
+	AtlasTW.LootCurrentItems = dataSource
+	
+	-- Reset scroll position to top
+	if AtlasLootScrollBar then
+		FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
+	end
+	
+	-- Update scrollbar
+	AtlasLoot_ScrollBarUpdate()
+	
 	AtlasLootItemsFrame:Show()
 	AtlasLootItemsFrameContainer:Hide()
 end

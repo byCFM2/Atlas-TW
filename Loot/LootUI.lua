@@ -415,27 +415,37 @@ local function AtlasLoot_CreateItemsFrame()
     frame:SetScript("OnEvent", function()
         AtlasLoot_OnEvent()
     end)
-    frame:SetScript("OnMouseWheel", function()
-        if arg1 == 1 and AtlasLootItemsFrame_NEXT:IsVisible() then
-            AtlasLootItemsFrame_NEXT:Click()
-        elseif arg1 == -1 and AtlasLootItemsFrame_PREV:IsVisible() then
-            AtlasLootItemsFrame_PREV:Click()
+        frame:SetScript("OnMouseWheel", function()
+        if AtlasLootScrollBar then
+            local currentValue = FauxScrollFrame_GetOffset(AtlasLootScrollBar)
+            if arg1 > 0 then
+                FauxScrollFrame_SetOffset(AtlasLootScrollBar, currentValue - 1)
+            else
+                FauxScrollFrame_SetOffset(AtlasLootScrollBar, currentValue + 1)
+            end
+            AtlasLoot_ScrollBarUpdate()
+        else
+            -- Fallback к старому поведению
+            if arg1 < 0 and AtlasLootItemsFrame_NEXT:IsVisible() then
+                AtlasLootItemsFrame_NEXT:Click()
+            elseif arg1 > 0 and AtlasLootItemsFrame_PREV:IsVisible() then
+                AtlasLootItemsFrame_PREV:Click()
+            end
         end
     end)
     frame:Hide()
---[[ 
+
     -- Создаем скроллбар аналогично AtlasTWScrollBar
     local scrollBar = CreateFrame("ScrollFrame", "AtlasLootScrollBar", frame, "FauxScrollFrameTemplate")
-    scrollBar:SetPoint("TOPLEFT", frame, "TOPLEFT", 10, -30)
-    scrollBar:SetWidth(480)
+    scrollBar:SetPoint("TOPLEFT", frame, "TOPLEFT", 480, -30)
+    scrollBar:SetWidth(20)
     scrollBar:SetHeight(450)
-
-    -- Child frame для содержимого
-    local scrollChild = CreateFrame("Frame", "AtlasLootScrollChild", scrollBar)
-    scrollChild:SetWidth(480)
-    scrollChild:SetHeight(450)  -- Начальная высота, будет обновляться
-    scrollBar:SetScrollChild(scrollChild)
- ]]
+    scrollBar:SetScript("OnVerticalScroll", function()
+        FauxScrollFrame_OnVerticalScroll(1, AtlasLoot_ScrollBarUpdate)
+    end)
+    scrollBar:SetScript("OnShow", function()
+        AtlasLoot_ScrollBarUpdate()
+    end)
     -- Background texture
     local backTexture = frame:CreateTexture(frame:GetName().."_Back", "BACKGROUND")
     backTexture:SetAllPoints(frame)

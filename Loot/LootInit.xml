@@ -30,6 +30,4 @@
 	
 	<!-- Include UI -->
 	<Include file="LootUI.lua"/>
-	
-	<!-- <Include file="Core\AtlasLoot.xml"/> -->
 </Ui>
