@@ -179,7 +179,8 @@ local function AtlasLoot_CreatePresetButtons(frame)
 
         presetButton[i]:SetScript("OnShow", function()
             this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-            if (not AtlasTWCharDB) or (not AtlasTWCharDB["QuickLooks"]) or (not AtlasTWCharDB["QuickLooks"][buttonIndex]) or (not AtlasTWCharDB["QuickLooks"][buttonIndex][1]) or (AtlasTWCharDB["QuickLooks"][buttonIndex][1] == nil) then
+            if (not AtlasTWCharDB) or (not AtlasTWCharDB["QuickLooks"]) or (not AtlasTWCharDB["QuickLooks"][buttonIndex]) or (not AtlasTWCharDB["QuickLooks"][buttonIndex][1]) or
+                (AtlasTWCharDB["QuickLooks"][buttonIndex][1] == nil) then
                 this:Disable()
             else
                 this:Enable()

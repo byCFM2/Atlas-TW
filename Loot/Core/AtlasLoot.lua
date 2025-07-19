@@ -371,9 +371,10 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 	elseif type(dataSource) == "table" then
 		-- New modular system
 		print("AtlasLoot_ShowItemsFrame: table")
-		for i = 1, 30 do
+--[[ 		for i = 1, 30 do
 			AtlasLoot_CacheItem(dataSource[i] and dataSource[i].id)
-		end
+		end ]]
+		AtlasLoot_QueryLootPage()
 		for i = 1, 30 do
 			local item = dataSource[i]
 			if item and (item.id or item.name) then
@@ -385,7 +386,6 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 				if itemID and itemID ~= 0 then
 					itemName, itemLink, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(itemID)
 					if not itemName then
-						AtlasLoot_CacheItem(itemID)
 						print("AtlasLoot_ShowItemsFrame: item not found in cache "..itemID)
 					else
 						local r, g, b = GetItemQualityColor(itemQuality)
