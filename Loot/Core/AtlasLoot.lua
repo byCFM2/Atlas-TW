@@ -342,7 +342,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 
     if not dataID or not dataSource then return end
 
-    local iconFrame, nameFrame, extraFrame, itemButton, borderFrame, spellName, spellIcon, text, extra, isItem, isEnchant, isSpell
+    local spellName, spellIcon, text, extra, isItem, isEnchant, isSpell
     local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
     if type(dataSource) ~= "table" then
         dataSource = AtlasLoot_Data[dataSource] or nil
@@ -372,13 +372,12 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 		-- New modular system
 		print("AtlasLoot_ShowItemsFrame: table")
 		for i = 1, 30 do
+			AtlasLoot_CacheItem(dataSource[i] and dataSource[i].id)
+		end
+		for i = 1, 30 do
 			local item = dataSource[i]
 			if item and (item.id or item.name) then
-				itemButton = _G["AtlasLootItem_"..i]
-				iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
-				nameFrame = _G["AtlasLootItem_"..i.."_Name"]
-				extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
-				borderFrame = _G["AtlasLootItem_"..i.."Border"]
+				local itemButton,iconFrame,nameFrame,extraFrame,borderFrame = _G["AtlasLootItem_"..i],_G["AtlasLootItem_"..i.."_Icon"],_G["AtlasLootItem_"..i.."_Name"],_G["AtlasLootItem_"..i.."_Extra"],_G["AtlasLootItem_"..i.."Border"]
 				local itemLink, itemQuality, itemTexture
 				local itemName =  item.name
 				local itemID = item.id
@@ -387,6 +386,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 					itemName, itemLink, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(itemID)
 					if not itemName then
 						AtlasLoot_CacheItem(itemID)
+						print("AtlasLoot_ShowItemsFrame: item not found in cache "..itemID)
 					else
 						local r, g, b = GetItemQualityColor(itemQuality)
 						nameFrame:SetTextColor(r, g, b)
@@ -425,7 +425,7 @@ function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 				end
 
 				-- Set the item drop rate
-				if item.dropRate then itemButton.droprate = item:GetDropRateText() end
+				itemButton.droprate = item:GetDropRateText()
 
 				itemButton.itemID = itemID or 0
 				itemButton.itemLink = itemLink
@@ -1378,10 +1378,10 @@ end
 --------------------------------------------------------------------------------
 function AtlasLootItem_OnClick(arg1)
 	local isItem, isEnchant, isSpell
-	local color = strsub(_G["AtlasLootItem_"..this:GetID().."_Name"]:GetText() or "", 1, 10)
 	local id = this:GetID()
-	local name = strsub(_G["AtlasLootItem_"..this:GetID().."_Name"]:GetText() or "", 11)
-	local texture = AtlasLoot_Strsplit("\\", getglobal("AtlasLootItem_"..this:GetID().."_Icon"):GetTexture(), 0, true)
+	local color = strsub(_G["AtlasLootItem_"..id.."_Name"]:GetText() or "", 1, 10)
+	local name = strsub(_G["AtlasLootItem_"..id.."_Name"]:GetText() or "", 11)
+	local texture = AtlasLoot_Strsplit("\\", getglobal("AtlasLootItem_"..id.."_Icon"):GetTexture(), 0, true)
 	local dataID = AtlasLootItemsFrame.refresh[1]
 	local dataSource = AtlasLootItemsFrame.refresh[2]
 	local bossName = AtlasLootItemsFrame.refresh[3]
@@ -1399,14 +1399,15 @@ function AtlasLootItem_OnClick(arg1)
 		isSpell = false
 	end
 	if isItem then
-		local itemName, itemLink = GetItemInfo(this.itemID)
+		local itemName, itemLink, qualityId = GetItemInfo(this.itemID)
+		_, _, _, color = GetItemQualityColor(qualityId or 0)
 		--If shift-clicked, link in the chat window
 		if AtlasFrame and AtlasFrame:IsVisible() and arg1=="RightButton" then
 			getglobal("AtlasLootItem_"..id.."_Unsafe"):Hide()
 		elseif(arg1=="RightButton" and not itemName and this.itemID ~= 0) then
 			AtlasLootTooltip:SetHyperlink("item:"..this.itemID..":0:0:0")
 			if not AtlasTWOptions.LootItemSpam then
-				DEFAULT_CHAT_FRAME:AddMessage(L["Server queried for "]..color.."["..name.."]".."|r"..L[". Right click on any other item to refresh the loot page."])
+				DEFAULT_CHAT_FRAME:AddMessage(L["Server queried for "]..color.."["..itemName.."]".."|r"..L[". Right click on any other item to refresh the loot page."])
 			end
 			AtlasLootItemsFrame:Hide()
 			AtlasLoot_ShowItemsFrame(dataID, dataSource, bossName)
@@ -1420,11 +1421,11 @@ function AtlasLootItem_OnClick(arg1)
 		elseif IsShiftKeyDown() and not itemName and this.itemID ~= 0 then
 			if AtlasTWOptions.LootSafeLinks then
 				if WIM_EditBoxInFocus then
-					WIM_EditBoxInFocus:Insert("["..name.."]")
+					WIM_EditBoxInFocus:Insert("["..itemName.."]")
 				elseif ChatFrameEditBox:IsVisible() then
-					ChatFrameEditBox:Insert("["..name.."]")
+					ChatFrameEditBox:Insert("["..itemName.."]")
 				else
-					AtlasLoot_SayItemReagents(this.itemID, nil, name, true)
+					AtlasLoot_SayItemReagents(this.itemID, nil, itemName, true)
 				end
 			elseif AtlasTWOptions.LootAllLinks then
 				if WIM_EditBoxInFocus then
@@ -1437,13 +1438,13 @@ function AtlasLootItem_OnClick(arg1)
 			end
 		elseif (itemName and IsShiftKeyDown()) and this.itemID ~= 0 then
 			if WIM_EditBoxInFocus then
-				WIM_EditBoxInFocus:Insert(color.."|Hitem:"..this.itemID..":0:0:0|h["..name.."]|h|r")
+				WIM_EditBoxInFocus:Insert(color.."|Hitem:"..this.itemID..":0:0:0|h["..itemName.."]|h|r")
 			elseif ( ChatFrameEditBox:IsVisible() ) then
-				ChatFrameEditBox:Insert(color.."|Hitem:"..this.itemID..":0:0:0|h["..name.."]|h|r")
+				ChatFrameEditBox:Insert(color.."|Hitem:"..this.itemID..":0:0:0|h["..itemName.."]|h|r")
 			end
-		elseif IsShiftKeyDown() and itemName and this.itemID ~= 0 then
+--[[ 		elseif IsShiftKeyDown() and itemName and this.itemID ~= 0 then
 			AtlasLoot_SayItemReagents(this.itemID, color, name)
-			--If control-clicked, use the dressing room
+			--If control-clicked, use the dressing room ]]
 		elseif IsControlKeyDown() and itemName then
 			DressUpItemLink(itemLink)
 		elseif IsAltKeyDown() and this.itemID ~= 0 then
@@ -1452,7 +1453,6 @@ function AtlasLootItem_OnClick(arg1)
 			elseif dataID == "SearchResult" then
 				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.itemID))
 			else
-
 				AtlasLoot_AddToWishlist(this.itemID, texture, this.itemIDName, this.itemIDExtra, dataID.."|"..dataSource)
 			end
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
@@ -1612,7 +1612,7 @@ function AtlasLoot_ShowContainerFrame()
 			end
 			local itemButton = getglobal("AtlasLootContainerItem"..buttonIndex)
 			local itemID = containerTable[i]--[j][1]
-			AtlasLoot_CacheItem(itemID)
+		--	AtlasLoot_CacheItem(itemID)
 			--itemButton.extraInfo = containerTable[i][j][2]
 			--itemButton.dressingroomID = itemID
 			local _,_,quality,_,_,_,_,_,tex = GetItemInfo(itemID)

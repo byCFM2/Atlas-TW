@@ -33,186 +33,60 @@ AtlasTW.ItemDB.ClassItems = {
     [L["Warrior"]] = {L["Leather"],L["Mail"],L["Plate"],L["Dagger"],L["Sword"],L["Mace"],L["Axe"],L["Fist Weapon"],L["Bow"],L["Crossbow"],L["Gun"],L["Thrown"],L["Polearm"],
         L["Staff"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"]},
 }
--- Константы качества предметов
-local ITEM_QUALITY = {
-    POOR = 0,
-    COMMON = 1,
-    UNCOMMON = 2,
-    RARE = 3,
-    EPIC = 4,
-    LEGENDARY = 5,
-    ARTIFACT = 6
-}
-
--- Константы типов брони
-local ARMOR_TYPE_LEGACY = {
-    CLOTH = "a1",
-    LEATHER = "a2",
-    MAIL = "a3",
-    PLATE = "a4"
-}
-
-local SLOT_TYPE = {
-    CLOTH = L["Cloth"],
-    LEATHER = L["Leather"],
-    MAIL = L["Mail"],
-    PLATE = L["Plate"],
-
-    AXE = L["Axe"],
-    BOW = L["Bow"],
-    CROSSBOW = L["Crossbow"],
-    DAGGER = L["Dagger"],
-    GUN = L["Gun"],
-    MACE = L["Mace"],
-    POLEARM = L["Polearm"],
-    SHIELD = L["Shield"],
-    STAFF = L["Staff"],
-    SWORD = L["Sword"],
-    THROWN = L["Thrown"],
-    WAND = L["Wand"],
-    FISTWEAPON = L["Fist Weapon"],
-    FISHINGPOLE = L["Fishing Pole"],
-}
-
--- Константы слотов экипировки
-local EQUIPMENT_SLOT_LEGACY = {
-    HEAD = "s1",
-    NECK = "s2",
-    SHOULDER = "s3",
-    BACK = "s4",
-    CHEST = "s5",
-    WRIST = "s8",
-    HANDS = "s9",
-    WAIST = "s10",
-    LEGS = "s11",
-    FEET = "s12",
-    RING = "s13",
-    TRINKET = "s14",
-    HELDINOFFHAND = "s15",
-    RELIC = "s16",
-}
-
-local EQUIPMENT_SLOT = {
-    HEAD = L["Head"],
-    NECK = L["Neck"],
-    SHOULDER = L["Shoulder"],
-    BACK = L["Back"],
-    CHEST = L["Chest"],
-    WRIST = L["Wrist"],
-    HANDS = L["Hands"],
-    WAIST = L["Waist"],
-    LEGS = L["Legs"],
-    FEET = L["Feet"],
-    RING = L["Ring"],
-    TRINKET = L["Trinket"],
-    HELDINOFFHAND = L["Held In Off-hand"],
-    RELIC = L["Relic"],
-    ONEHAND = L["One-Hand"],
-    TWOHAND = L["Two-Hand"],
-    MAINHAND = L["Main Hand"],
-    OFFHAND = L["Off Hand"],
-
---[[     BOOK = L["Book"],
-    AMMO = L["Ammo"],
-    QUIVER = L["Quiver"],
-    CURRENCY = L["Currency"],
-    MISC = L["Miscellaneous"], ]]
-}
 
 -- Прототип предмета
 local ItemPrototype = {
-    -- Получить отформатированное имя с цветом качества
-    GetFormattedName = function(this)
-        local qualityColors = {
-            [0] = "|cff9d9d9d", -- Серый
-            [1] = "|cffffffff", -- Белый
-            [2] = "|cff1eff00", -- Зеленый
-            [3] = "|cff0070dd", -- Синий
-            [4] = "|cffa335ee", -- Фиолетовый
-            [5] = "|cffff8000", -- Оранжевый
-            [6] = "|cffe6cc80"  -- Артефакт
-        }
-
-        local color = qualityColors[this.quality] or "|cffffffff"
-        return color .. this.name .. "|r"
-    end,
-
-    -- Получить описание предмета
-    GetDescription = function(this)
-        local desc = ""
-
-        if this.slot then
-            desc = desc .. "#" .. this.slot .. "#"
-        end
-
-        if this.slotType then
-            desc = desc .. ", #" .. this.slotType .. "#"
-        end
-
-        if this.class then
-            desc = desc .. " =q" .. (this.classQuality or 1) .. "=#" .. this.class .. "#"
-        end
-
-        return desc
-    end,
-
     -- Получить шанс выпадения как строку
     GetDropRateText = function(this)
-        if this.dropRate then
-            return tostring(this.dropRate) .. "%"
-        end
-        return ""
+        if not this.dropRate or this.dropRate == 0 then return nil end
+        return this.dropRate .. "%"
     end,
-
-    -- Проверить, подходит ли предмет для класса
-    IsValidForClass = function(this, playerClass)
-        if not this.validClasses then
-            return true -- Если не указаны классы, предмет подходит всем
-        end
-
-        for i = 1, getn(this.validClasses) do
-            if this.validClasses[i] == playerClass then
-                return true
-            end
-        end
-
-        return false
-    end
 }
+
 local function getColoredText(text, typeText)
-    local colorCode = "|cff00ff00" -- зеленый по умолчанию
-    local playerClass, playerLevel = UnitClass("player"), UnitLevel("player")
-    local classText = string.gsub(text, L["Classes"]..": ", "")
-    if (typeText or nil) == "slot" then
-        local canWear = (string.find(text, L["Cloth"]) or string.find(text, L["Fishing Pole"])) and true or false
-        for _, v in pairs(AtlasTW.ItemDB.ClassItems[playerClass]) do
-            if (string.find(text, L["Two-Hand"]) and v == text) or string.find(text, v) then
-                canWear = true
-                break
+    -- Color constants
+    local COLOR_GREEN = "|cff00ff00"
+    local COLOR_RED = "|cffff0000"
+    local COLOR_END = "|r"
+    local playerClass = UnitClass("player")
+    local playerLevel = UnitLevel("player")
+
+    -- Default to green
+    local colorCode = COLOR_GREEN
+
+    -- Handle different text types
+    if typeText == "slot" then
+        local isClothOrFishingPole = string.find(text, L["Cloth"]) or string.find(text, L["Fishing Pole"])
+        local canWear = isClothOrFishingPole
+        if not canWear then
+            local classItems = AtlasTW.ItemDB.ClassItems[playerClass]
+            for _, item in pairs(classItems) do
+                if (string.find(text, L["Two-Hand"]) and item == text) or string.find(text, item) then
+                    canWear = true
+                    break
+                end
             end
         end
         if not canWear then
-            colorCode = "|cffff0000" -- красный если класс не совпадает
+            colorCode = COLOR_RED
         end
-    end
-    -- Проверяем, содержит ли текст текущий класс игрока
-    if (typeText or nil) == "class" then
+    elseif typeText == "class" then
+        local classText = string.gsub(text, L["Classes"]..": ", "")
         if classText ~= playerClass then
-            colorCode = "|cffff0000" -- красный если класс не совпадает
+            colorCode = COLOR_RED
         end
-        return colorCode..classText.."|r"
-    end
-    if (typeText or nil) == "requires" then
+        return colorCode..classText..COLOR_END
+    elseif typeText == "requires" then
         local levelText = string.gsub(text, L["Requires"].." ", "")
-        local level = string.gsub(levelText, L["Level"].." ", "")
-        -- Проверяем, содержит ли текст текущий класс игрока
-        if playerLevel < (tonumber(level) or 0) then
-            colorCode = "|cffff0000" -- красный если класс не совпадает
+        local level = tonumber(string.gsub(levelText, L["Level"].." ", "") or 0) or 0
+        if playerLevel < level then
+            colorCode = COLOR_RED
         end
-        return colorCode..levelText.."|r"
+        return colorCode..levelText..COLOR_END
     end
-    return colorCode..text.."|r"
+    return colorCode..text..COLOR_END
 end
+
 -- Функция для парсинга подсказки предмета
 function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     if not itemID or itemID == 0 then return end
@@ -221,6 +95,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     if not tooltip then
         tooltip = CreateFrame("GameTooltip", tooltipName, UIParent, "GameTooltipTemplate")
         tooltip:SetOwner(UIParent, "ANCHOR_NONE")
+        _G[tooltipName] = tooltip -- Кэшируем ссылку на фрейм в _G
     end
     tooltip:ClearLines()
     tooltip:SetHyperlink("item:"..tostring(itemID))
@@ -228,9 +103,11 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     local info = {}
     if extratext and extratext ~= "" then table.insert(info, extratext) end
     local line, line2, text, text2
+    local tooltipTextLeftPrefix = tooltipName .. "TextLeft"
+    local tooltipTextRightPrefix = tooltipName .. "TextRight"
     for i = 1, 12 do
-        line = _G[tooltipName .. "TextLeft" .. i]
-        line2 = _G[tooltipName.. "TextRight".. i]
+        line = _G[tooltipTextLeftPrefix .. i]
+        line2 = _G[tooltipTextRightPrefix .. i]
         if line then
             text = line:GetText()
             text2 = line2:GetText()
@@ -238,16 +115,15 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                 -- Ищем строку с предметом для задания
                 if string.find(text, L["Quest Item"]) then
                     table.insert(info, text)
-                end
                 -- Ищем строку с маунтом
-                if string.find(text, L["mount"]) then
+                elseif string.find(text, L["mount"]) then
                     table.insert(info, L["Mount"])
-                end
+                    break
                 -- Ищем строку с начинающим задание
-                if string.find(text, L["This Item Begins a Quest"]) then
+                elseif string.find(text, L["This Item Begins a Quest"]) then
                     table.insert(info, text)
-                end
                 -- Ищем тип слота (Feet, Chest, etc.) и тип брони (Cloth, Leather, etc.)
+                end
                 if AtlasTW.ItemDB.SLOT_KEYWORDS[text]  then
                     if text2 and AtlasTW.ItemDB.SLOT2_KEYWORDS[text2] then
                         table.insert(info, getColoredText(text.." "..text2, "slot"))
@@ -261,13 +137,11 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                     else
                         table.insert(info, getColoredText(text, "slot2"))
                     end
-                end
                 -- Ищем строку с классами
-                if string.find(text, L["Classes"]) then
+                elseif string.find(text, L["Classes"]) then
                     table.insert(info, getColoredText(text, "class"))
-                end
                 -- Ищем строку с требованиями
-                if string.find(text, L["Requires"]) then
+                elseif string.find(text, L["Requires"]) then
                     table.insert(info, getColoredText(text, "requires"))
                 end
             end
@@ -304,30 +178,20 @@ function AtlasLoot_CacheItem(linkOrID)
     end
     GameTooltip:SetHyperlink(linkOrID)
 end
+
 -- Функция создания нового предмета
 function AtlasTW.ItemDB.CreateItem(data)
     -- Проверяем обязательные поля
     if not data.id then
         return nil
     end
-
     -- Устанавливаем значения по умолчанию
     local item = {
         id = data.id,
-       -- name = data.name,
-      --  info = data.info,
-       -- icon = data.icon,
         disc = data.disc,
-       -- slot = data.slot,
-      --  slotType = data.slotType,
         dropRate = data.dropRate,
         container = data.container,
-        --[[ 
-        source = data.source, -- Источник получения (босс, квест и т.д.)
-        zone = data.zone,     -- Зона получения ]]
-        --notes = data.notes    -- Дополнительные заметки
     }
-
     -- Устанавливаем метатаблицу для доступа к методам
     setmetatable(item, {__index = ItemPrototype})
 
@@ -342,159 +206,3 @@ function AtlasTW.ItemDB.CreateSeparator(text, icon, quality)
         quality = quality or 5,
     }
 end
-
--- Функция конвертации из старого формата в новый
-function AtlasTW.ItemDB.ConvertFromLegacyFormat(legacyItem)
-    if not legacyItem or getn(legacyItem) < 4 then
-        return nil
-    end
-
-    local id = legacyItem[1]
-    local icon = legacyItem[2]
-    local nameWithQuality = legacyItem[3]
-    local description = legacyItem[4]
-    local dropRate = legacyItem[5]
-
-    -- Если это разделитель
-    if id == 0 then
-        local quality = 6 -- По умолчанию для заголовков
-        if nameWithQuality and strfind(nameWithQuality, "=q(%d)=") then
-            local _, _, q = strfind(nameWithQuality, "=q(%d)=")
-            quality = tonumber(q) or 6
-        end
-
-        local text = nameWithQuality or ""
-        text = gsub(text, "=q%d+=", "")
-
-        return AtlasTW.ItemDB.CreateSeparator(text, quality)
-    end
-
-    -- Парсим качество из имени
-    local quality = ITEM_QUALITY.COMMON
-    local name = nameWithQuality
-    if nameWithQuality and strfind(nameWithQuality, "=q(%d)=") then
-        local _, _, q = strfind(nameWithQuality, "=q(%d)=")
-        quality = tonumber(q) or ITEM_QUALITY.COMMON
-        name = gsub(nameWithQuality, "=q%d+=", "")
-    end
-
-    -- Парсим описание
-    local slot, slotType, class, classQuality
-    if description then
-        -- Парсим слот
-        if strfind(description, "#(s%d+)#") then
-            local _, _, s = strfind(description, "#(s%d+)#")
-            slot = s
-        end
-
-        -- Парсим тип брони
-        if strfind(description, "#(a%d+)#") then
-            local _, _, a = strfind(description, "#(a%d+)#")
-            slotType = a
-        end
-
-        -- Парсим класс
-        if strfind(description, "=q(%d+)=#(c%d+)#") then
-            local _, _, cq, c = strfind(description, "=q(%d+)=#(c%d+)#")
-            classQuality = tonumber(cq)
-            class = c
-        end
-    end
-
-    -- Парсим шанс выпадения
-    local dropRateNum
-    if dropRate and dropRate ~= "" then
-        local _, _, rate = strfind(dropRate, "(%d+)%%?")
-        dropRateNum = tonumber(rate)
-    end
-
-    return AtlasTW.ItemDB.CreateItem({
-        id = id,
-        name = name,
-        icon = icon,
-        quality = quality,
-        slot = slot,
-        slotType = slotType,
-        class = class,
-        classQuality = classQuality,
-        dropRate = dropRateNum
-    })
-end
-
--- Функция получения всех предметов (новый API)
-function AtlasTW.ItemDB.GetAllItems(category, subcategory)
-    local items = {}
-
-    if category == "instances" and AtlasTW.InstanceData then
-        if subcategory and AtlasTW.InstanceData[subcategory] then
-            if AtlasTW.InstanceData[subcategory].GetAllItems then
-                items = AtlasTW.InstanceData[subcategory].GetAllItems()
-            end
-        else
-            -- Получаем предметы из всех подземелий
-            for instanceName, instanceData in pairs(AtlasTW.InstanceData) do
-                if type(instanceData) == "table" and instanceData.GetAllItems then
-                    local instanceItems = instanceData.GetAllItems()
-                    for i = 1, getn(instanceItems) do
-                        tinsert(items, instanceItems[i])
-                    end
-                end
-            end
-        end
-    elseif category == "world" and AtlasTW.WorldData then
-        if subcategory and AtlasTW.WorldData[subcategory] then
-            if AtlasTW.WorldData[subcategory].GetAllItems then
-                items = AtlasTW.WorldData[subcategory].GetAllItems()
-            end
-        else
-            -- Получаем предметы из всех мировых источников
-            for sourceName, sourceData in pairs(AtlasTW.WorldData) do
-                if type(sourceData) == "table" and sourceData.GetAllItems then
-                    local sourceItems = sourceData.GetAllItems()
-                    for i = 1, getn(sourceItems) do
-                        tinsert(items, sourceItems[i])
-                    end
-                end
-            end
-        end
-    end
-
-    return items
-end
-
--- Функция поиска предметов
-function AtlasTW.ItemDB.SearchItems(searchTerm, category)
-    local allItems
-
-    if category then
-        allItems = AtlasTW.ItemDB.GetAllItems(category)
-    else
-        -- Поиск во всех категориях
-        allItems = {}
-        local categories = {"instances", "world"}
-
-        for i = 1, getn(categories) do
-            local categoryItems = AtlasTW.ItemDB.GetAllItems(categories[i])
-            for j = 1, getn(categoryItems) do
-                tinsert(allItems, categoryItems[j])
-            end
-        end
-    end
-
-    local foundItems = {}
-    searchTerm = strlower(searchTerm)
-
-    for i = 1, getn(allItems) do
-        local item = allItems[i]
-        if item.name and strfind(strlower(item.name), searchTerm) then
-            tinsert(foundItems, item)
-        end
-    end
-
-    return foundItems
-end
-
--- Экспорт констант
-AtlasTW.ItemDB.ITEM_QUALITY = ITEM_QUALITY
-AtlasTW.ItemDB.SLOT_TYPE = SLOT_TYPE
-AtlasTW.ItemDB.EQUIPMENT_SLOT = EQUIPMENT_SLOT

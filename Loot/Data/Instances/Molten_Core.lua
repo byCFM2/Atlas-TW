@@ -129,7 +129,7 @@ AtlasTW.InstanceData.MoltenCore = {
             loot = {
                 {id=16816, dropRate=33, container={47199}}, {id=16823, dropRate=30}, {id=16848, dropRate=33},
                 {id=16868, dropRate=30, container={47241}},{},{},{},{},{},{},{},{},{},{},{},{id=18870}, {id=19145},{id=19146}, {id=18872},
-                {id=18875}, {id=18861}, {id=18879}, {id=19147}, {id=17077}, {id=18878}, {id=17074, dropRate=3},{id=17223, dropRate=0},
+                {id=18875}, {id=18861}, {id=18879}, {id=19147}, {id=17077}, {id=18878},{}, {id=17074, dropRate=3},{id=17223, dropRate=0},
             }
         },
         {
