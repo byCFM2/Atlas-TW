@@ -416,23 +416,39 @@ local function AtlasLoot_CreateItemsFrame()
         AtlasLoot_OnEvent()
     end)
         frame:SetScript("OnMouseWheel", function()
-        if AtlasLootScrollBar then
-            local currentValue = FauxScrollFrame_GetOffset(AtlasLootScrollBar)
-            if arg1 > 0 then
-                FauxScrollFrame_SetOffset(AtlasLootScrollBar, currentValue - 1)
+            if AtlasLootScrollBar and AtlasLootScrollBar:IsVisible() then
+                local currentValue = FauxScrollFrame_GetOffset(AtlasLootScrollBar)
+                local newValue = currentValue
+
+                if arg1 > 0 then
+                    -- Scroll up
+                    newValue = currentValue - 1
+                else
+                    -- Scroll down
+                    newValue = currentValue + 1
+                end
+
+                -- Clamp the value
+                if newValue < 0 then
+                    newValue = 0
+                end
+                if AtlasLootScrollBar.scrollMax and newValue > AtlasLootScrollBar.scrollMax then
+                    newValue = AtlasLootScrollBar.scrollMax
+                end
+
+                if newValue ~= currentValue then
+                    FauxScrollFrame_SetOffset(AtlasLootScrollBar, newValue)
+                    AtlasLoot_ScrollBarUpdate()
+                end
             else
-                FauxScrollFrame_SetOffset(AtlasLootScrollBar, currentValue + 1)
+                -- Fallback к старому поведению
+                if arg1 < 0 and AtlasLootItemsFrame_NEXT:IsVisible() then
+                    AtlasLootItemsFrame_NEXT:Click()
+                elseif arg1 > 0 and AtlasLootItemsFrame_PREV:IsVisible() then
+                    AtlasLootItemsFrame_PREV:Click()
+                end
             end
-            AtlasLoot_ScrollBarUpdate()
-        else
-            -- Fallback к старому поведению
-            if arg1 < 0 and AtlasLootItemsFrame_NEXT:IsVisible() then
-                AtlasLootItemsFrame_NEXT:Click()
-            elseif arg1 > 0 and AtlasLootItemsFrame_PREV:IsVisible() then
-                AtlasLootItemsFrame_PREV:Click()
-            end
-        end
-    end)
+        end)
     frame:Hide()
 
     -- Создаем скроллбар аналогично AtlasTWScrollBar
