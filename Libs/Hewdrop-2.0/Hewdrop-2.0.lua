@@ -1268,7 +1268,7 @@ function Hewdrop:FeedAceOptionsTable(options, difference)
 							editBoxArg1 = handler
 							editBoxArg2 = passValue
 						end
-						
+
 						local editBoxValidateFunc, editBoxValidateArg1
 
 						if v.validate and v.validate ~= "keybinding" then
@@ -1288,7 +1288,7 @@ function Hewdrop:FeedAceOptionsTable(options, difference)
 								tooltipText = RESET_KEYBINDING_DESC
 							end
 						end
-						
+
 						self:AddLine(
 							'text', name,
 							'hasArrow', true,
@@ -1715,7 +1715,7 @@ function OpenSlider(self, parent)
 	end
 
 	sliderFrame.lastValue = parent.sliderValue
-	
+
 	local level = parent.level
 	sliderFrame:Show()
 	sliderFrame:ClearAllPoints()
@@ -1829,7 +1829,7 @@ function OpenEditBox(self, parent)
 		editBox:SetScript("OnEnterPressed", function()
 			if editBoxFrame.parent and editBoxFrame.parent.editBoxValidateFunc then
 				local a1,a2,a3,a4 = editBoxFrame.parent.editBoxValidateArg1, editBoxFrame.parent.editBoxValidateArg2, editBoxFrame.parent.editBoxValidateArg3, editBoxFrame.parent.editBoxValidateArg4
-				
+
 				local t = editBox.realText or editBox:GetText() or ""
 				local result
 				if a1 == nil then
@@ -1938,7 +1938,7 @@ function OpenEditBox(self, parent)
 				Screenshot()
 				return
 			end
-			
+
 			if arg1 == "LeftButton" then
 				arg1 = "BUTTON1"
 			elseif arg1 == "RightButton" then
@@ -1994,7 +1994,7 @@ function OpenEditBox(self, parent)
 	editBoxFrame:SetFrameLevel(parent.level:GetFrameLevel() + 3)
 	editBoxFrame.editBox:SetFrameLevel(editBoxFrame:GetFrameLevel() + 1)
 	editBoxFrame.editBox.realText = nil
-	
+
 	if parent.editBoxIsKeybinding then
 		local s = parent.editBoxText
 		editBoxFrame.editBox.realText = s
@@ -2016,7 +2016,7 @@ function OpenEditBox(self, parent)
 	else
 		editBoxFrame.editBox:SpecialSetText(parent.editBoxText)
 	end
-	
+
 	editBoxFrame.editBox.keybinding = parent.editBoxIsKeybinding
 	editBoxFrame.editBox:EnableKeyboard(not parent.editBoxIsKeybinding)
 	editBoxFrame:EnableKeyboard(parent.editBoxIsKeybinding)

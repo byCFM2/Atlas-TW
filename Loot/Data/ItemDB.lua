@@ -179,12 +179,27 @@ function AtlasLoot_CacheItem(linkOrID)
     GameTooltip:SetHyperlink(linkOrID)
 end
 
+-- Вспомогательная функция для создания предметов из таблицы loot
+function AtlasTW.CreateItemsFromLootTable(bossData)
+    if not bossData.loot then return end
+    local items = {}
+    local defaults = bossData.defaults or {}
+    for _, itemData in ipairs(bossData.loot) do
+        -- Применяем значения по умолчанию
+        for key, value in pairs(defaults) do
+            if itemData[key] == nil then
+                itemData[key] = value
+            end
+        end
+        table.insert(items, AtlasTW.ItemDB.CreateItem(itemData))
+    end
+    return items
+end
+
 -- Функция создания нового предмета
 function AtlasTW.ItemDB.CreateItem(data)
     -- Проверяем обязательные поля
-    if not data.id then
-        return nil
-    end
+    if not data.id then return nil end
     -- Устанавливаем значения по умолчанию
     local item = {
         id = data.id,

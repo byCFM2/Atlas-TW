@@ -1,13 +1,13 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
 	<!-- Include data files first -->
 	<Include file="Data\DataInit.xml"/>
-	<Include file="Sets.lua"/>
+	<!--<Include file="Sets.lua"/>
 	<Include file="Crafting.lua"/>
 	<Include file="Battlegrounds.lua"/>
-	<Include file="WorldEvents.lua"/>
-	<Include file="Factions.lua"/>
-	<Include file="Instances.lua"/>
 	<Include file="World.lua"/>
+	<Include file="WorldEvents.lua"/>
+	<Include file="Factions.lua"/>-->
+	<Include file="Instances.lua"/>
 	<Include file="LootTables.lua"/>
 
 	<!-- Include core functionality -->

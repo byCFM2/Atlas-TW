@@ -1,8 +1,7 @@
 --Table for all data to be inserted into. Included here as it is the first file loaded
-AtlasLoot_Data = {}
+AtlasLoot_Data = AtlasLoot_Data or {}
 
-AtlasLoot_Data["AtlasLootSetItems"] = {
-	EmptyInstance = {},
+AtlasLoot_Data = {
 	DEADMINES = {
 		{ 0, "", "", "" },
 		{ 0,"INV_Box_01","=q6=#oth_s1#","" },

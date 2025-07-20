@@ -103,7 +103,7 @@ do
     searchBox:SetTextInsets(0, 8, 0, 0)
 
     searchBox:SetScript("OnEnterPressed", function()
-        AtlasTW.SearchAndRefresh(this:GetText())
+        AtlasTW.Search(this:GetText())
         this:ClearFocus()
     end)
 
@@ -125,7 +125,7 @@ do
     searchButton:SetPoint("LEFT", searchBox, "RIGHT", 1, 0)
     searchButton:SetText(L["Search"])
     searchButton:SetScript("OnClick", function()
-        AtlasTW.SearchAndRefresh(AtlasSearchEditBox:GetText())
+        AtlasTW.Search(AtlasSearchEditBox:GetText())
         AtlasSearchEditBox:ClearFocus()
     end)
 
@@ -136,7 +136,7 @@ do
     clearButton:SetText(L["Clear"])
     clearButton:SetScript("OnClick", function()
         AtlasSearchEditBox:SetText("")
-        AtlasTW.SearchAndRefresh(AtlasSearchEditBox:GetText())
+        AtlasTW.Search(AtlasSearchEditBox:GetText())
         AtlasSearchEditBox:ClearFocus()
     end)
 

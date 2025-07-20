@@ -5,14 +5,10 @@ local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
-local BC = AceLibrary("Babble-Class-2.2")
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
-
--- Подключаем ItemDB для создания предметов
-local ItemDB = AtlasTW.ItemDB
 
 -- Данные Огненных Недр
 AtlasTW.InstanceData.MoltenCore = {
@@ -34,6 +30,7 @@ AtlasTW.InstanceData.MoltenCore = {
         { name = L["Eternal Quintessence"], loot = "VanillaKeys", info = L["Boss"] }
     },
     Bosses = {
+        { name = "Lololo for TEST" },
         {
             id = "Lucifron",
             prefix = "1)",
@@ -253,31 +250,15 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=18253, disc=L["Potion"]},
             },
         },
-        { name = L["Tier 1 Sets"], table = "T1Set" },
-        { name = L["Tier 2 Sets"], table = "T2Set" },
+        { name = L["Tier 1 Sets"], items = "T1Set" },
+        { name = L["Tier 2 Sets"], items = "T2Set" },
     },
 }
 
--- Вспомогательная функция для создания предметов из таблицы loot
-local function CreateItemsFromLootTable(bossData)
-    if not bossData.loot then return {} end
-    local items = {}
-    local defaults = bossData.defaults or {}
-    for _, itemData in ipairs(bossData.loot) do
-        -- Применяем значения по умолчанию
-        for key, value in pairs(defaults) do
-            if itemData[key] == nil then
-                itemData[key] = value
-            end
-        end
-        table.insert(items, ItemDB.CreateItem(itemData))
-    end
-    return items
-end
 
 -- Инициализация предметов для всех боссов
 for _, bossData in ipairs(AtlasTW.InstanceData.MoltenCore.Bosses) do
-    bossData.Items = CreateItemsFromLootTable(bossData)
+    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
     bossData.loot = nil -- Очищаем временные данные
 end
 
@@ -286,8 +267,8 @@ function AtlasTW.InstanceData.MoltenCore.GetAllItems()
     local allItems = {}
     for _, bossData in ipairs(AtlasTW.InstanceData.MoltenCore.Bosses) do
         if bossData.Items then
-            for i = 1, getn(bossData.Items) do
-                local item = bossData.Items[i]
+            for i = 1, getn(bossData.items) do
+                local item = bossData.items[i]
                 tinsert(allItems, item)
             end
         end
@@ -306,7 +287,7 @@ end
 function AtlasTW.InstanceData.MoltenCore.GetBossItems(bossName)
     for _, bossData in ipairs(AtlasTW.InstanceData.MoltenCore.Bosses) do
         if bossData.name == BB[bossName] then
-            return bossData.Items
+            return bossData.items
         end
     end
     return {}

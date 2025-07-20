@@ -221,7 +221,7 @@ local function CreateDungeonSetMenu(dungeonName)
 		if classInfo.name then
         	local lootpage = dungeonName .. classInfo.name
         	local container = data[lootpage .. "C"]
-			if AtlasLoot_Data["AtlasLootSetItems"][lootpage] then
+			if AtlasLoot_Data[lootpage] then
 				menuData[i] = {
 					name = classInfo.color .. BC[classInfo.name],
 					icon = classInfo.icon,

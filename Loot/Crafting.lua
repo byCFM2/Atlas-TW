@@ -1,4 +1,4 @@
-AtlasLoot_Data["AtlasLootCrafting"] = {
+AtlasLoot_Data = {
 	CraftedWeapons1 = {
 		{ 0, "", "", "" },
 		{ 0, "Trade_BlackSmithing", "=q6=#p2#", "" },

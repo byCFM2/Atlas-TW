@@ -3,7 +3,7 @@ AtlasTW = _G.AtlasTW
 AtlasTW.UI = AtlasTW.UI or {}
 local L = AtlasTW.Local
 local atlas_Ints_Ent_DropDown = {}
-local atlasData = {}
+--local atlasData = {}
 local frame
 local loadingStartTime -- Время загрузки
 
@@ -58,67 +58,37 @@ local function setupPfUITooltip()
 	end
 end
 
-local function atlasSimpleSearch(data, text)
-	if not text then
-		return
+local function PerformSearch(data, search_text)
+
+	local function makeBossLineText(items, new, n, searchText, format_line)
+		for _, item in ipairs(items or {}) do
+			local name = item.name
+			if name then
+				local line = format_line(item)
+				if string.find(string.lower(line), searchText) then
+					new[n] = {
+						line = line,
+						name = name,
+					}
+					n = n + 1
+				end
+			end
+		end
+		return n
 	end
+
 	local new = {}
-	local search_text = string.lower(text)
-	search_text = string.gsub(search_text, "([%^%$%(%)%%%.%[%]%+%-%?])", "%%%1")
-	search_text = string.gsub(search_text, "%*", ".*")
-	-- Set name for boss lines
 	local n = 1
-	for _, repData in ipairs(data["Reputation"] or {}) do
-		if repData.name then
-			local newName = Colors.ORANGE..L["Reputation"].. ": ".. repData.name
-			local _, _ = string.find(string.lower(newName), search_text)
-			if _ then
-				new[n] = {}
-				new[n][1] = newName
-				n = n + 1
-			end
-		end
-	end
-	for _, keyData in ipairs(data["Keys"] or {}) do
-		if keyData.name then
-			local newName = Colors.GREEN..L["Key"] .. ": " .. keyData.name..(keyData.info and " <"..keyData.info..">" or "")
-			local _, _ = string.find(string.lower(newName), search_text)
-			if _ then
-				new[n] = {}
-				new[n][1] = newName
-				n = n + 1
-			end
-		end
-	end
-	for _, bossData in ipairs(data["Bosses"] or {}) do
-		if bossData.name then
-			local newName = Colors.WHITE..(bossData.prefix and (bossData.prefix.." ") or "")..bossData.name
-			local _, _ = string.find(string.lower(newName), search_text)
-			if _ then
-				new[n] = {}
-				new[n][1] = newName
-				n = n + 1
-			end
-		end
-	end
+	n = makeBossLineText(data["Reputation"], new, n, search_text, function(item)
+		return Colors.ORANGE .. L["Reputation"] .. ": " .. item.name
+	end)
+	n = makeBossLineText(data["Keys"], new, n, search_text, function(item)
+		return Colors.GREEN .. L["Key"] .. ": " .. item.name .. (item.info and " <" .. item.info .. ">" or "")
+	end)
+	n = makeBossLineText(data["Bosses"], new, n, search_text, function(item)
+		return Colors.WHITE .. (item.prefix and (item.prefix .. " ") or "") .. item.name
+	end)
 	return new
-end
-
-local function atlas_Search(text)
-	local data = atlasSimpleSearch(atlasData, text)
-
-	--populate the scroll frame entries list, the update func will do the rest
-	local i = 1
-	while ( data and data[i] and data[i][1] ~= nil ) do
-		AtlasTW.ScrollList[i] = data[i][1]
-		i = i + 1
-	end
-	AtlasTW.CurrentLine = i - 1
-end
-
-function AtlasTW.SearchAndRefresh(text)
-	atlas_Search(text)
-	AtlasTW.Loot.ScrollBarUpdate()
 end
 
 --Removal of articles in map names (for proper alphabetic sorting)
@@ -183,7 +153,7 @@ local function Atlas_Init()
         end
     end
 
-	Atlas_PopulateDropdowns()
+	AtlasTW.PopulateDropdowns()
 
 	if AtlasTW.DropDowns[AtlasTWOptions.AtlasType] == nil then
 		AtlasTWOptions.AtlasType = 1
@@ -197,6 +167,27 @@ local function Atlas_Init()
 	AtlasFrame:SetClampedToScreen(AtlasTWOptions.AtlasClamped)
 	AtlasTW.MinimapButtonUpdatePosition()
 	AtlasTW.OptionsInit()
+end
+
+-- Performs a search through Atlas data based on input text
+-- @param text The search text to filter Atlas entries by
+function AtlasTW.Search(text)
+	if not text then text = "" end
+	local search_text = string.lower(text)
+	search_text = string.gsub(search_text, "([%^%$%(%)%%%.%[%]%+%-%?])", "%%%1")
+	search_text = string.gsub(search_text, "%*", ".*")
+	local data = PerformSearch(AtlasSearchEditBox.Data, search_text)
+
+	--populate the scroll frame entries list, the update func will do the rest
+	local i = 1
+	while ( data and data[i] and data[i].line ~= nil ) do
+		AtlasTW.ScrollList[i] = { line=data[i].line, name=data[i].name }
+		i = i + 1
+	end
+	AtlasTW.CurrentLine = i - 1
+
+	--Update the boss frame
+	AtlasTW.Loot.ScrollBarUpdate()
 end
 
 --Main Atlas event handler
@@ -217,7 +208,7 @@ function AtlasTW.OnEvent()
 	end
 end
 
-function Atlas_PopulateDropdowns()
+function AtlasTW.PopulateDropdowns()
     local sortType = AtlasTW_DropDownSortOrder[AtlasTWOptions.AtlasSortBy]
     local subcatOrder = AtlasTW_DropDownGetLayoutOrder(sortType)
     local layouts = AtlasTW_DropDownGetLayout(sortType)
@@ -347,7 +338,7 @@ function AtlasTW.Refresh()
 		end
 	end
 
-	atlasData = base
+	--atlasData = base
 
 	if (data.Search ~= false) then
 		AtlasSearchEditBox:Show()
@@ -357,11 +348,6 @@ function AtlasTW.Refresh()
 		AtlasTWNoSearch:Show()
 		ATLAS_SEARCH_METHOD = nil
 	end
-
-	--populate the scroll frame entries list, the update func will do the rest
-	atlas_Search("")
-	AtlasSearchEditBox:SetText("")
-	AtlasSearchEditBox:ClearFocus()
 
 	--create and align any new entry buttons that we need
  	for i = 1, AtlasTW.CurrentLine do
@@ -392,8 +378,12 @@ function AtlasTW.Refresh()
 	--Hide the loot frame now that a pristine Atlas instance is created
 	AtlasLootItemsFrame:Hide()
 
-	--Make sure the scroll bar is correctly offset
-	AtlasTW.Loot.ScrollBarUpdate()
+	--Store zoneLines for search
+	AtlasSearchEditBox.Data = base
+	--populate the scroll frame entries list, the update func will do the rest
+	AtlasTW.Search("")
+	AtlasSearchEditBox:SetText("")
+	AtlasSearchEditBox:ClearFocus()
 
 	--see if we should display the entrance/instance button or not, and decide what it should say
 	local matchFound = {}

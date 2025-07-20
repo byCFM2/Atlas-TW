@@ -377,20 +377,6 @@ local BS = AceLibrary("Babble-Spell-2.2a")
 		{ 17690, "INV_Jewelry_FrostwolfTrinket_01", "=q2=Frostwolf Insignia Rank 1", "=ds=#s14#, #r1#" },
 	}
 
-	AtlasLoot_Data.WaterLords1 = {
-		{ name = BF["Honored"], icon = "Spell_Frost_SummonWaterElemental_2"},
-		{ 18399, disc = L["Quest Reward"] },
-		{ 18398, disc = L["Quest Reward"] },
-		{ 17333, disc = L["Misc"] },
-		{ 91797, disc = BS["Alchemy"].." (300)" },
-		{},
-		{ name = BF["Revered"], icon = "Spell_Frost_SummonWaterElemental_2"},
-		{ 22754, disc = L["Misc"] },
-		{},
-		{  name = BF["Exalted"], icon = "Spell_Frost_SummonWaterElemental_2"},
-		{ 81254, disc = L["Pet"]  },
-	}
-
 	AtlasLoot_Data.Bloodsail1 = {
 		{ 0, "", "", "" },
 		{ 0, "INV_Helmet_66", "=q6=#r1#", "" },

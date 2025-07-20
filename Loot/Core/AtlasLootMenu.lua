@@ -49,6 +49,7 @@ end
 
 function AtlasLoot_ShowMenu(menuData, options)
     -- Modern Data System Integration
+    print("Show Menu")
     if AtlasTW.ModernAdapter and menuData and menuData.useModern then
         local legacyData = AtlasTW.ModernAdapter.GetLegacyData(menuData.category, menuData.boss)
         if legacyData then

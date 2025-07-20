@@ -1,5 +1,4 @@
-AtlasLoot_Data["AtlasLootWorldEvents"] = {
-	EmptyInstance = {},
+AtlasLoot_Data = {
 	----------------------------------
 	---- Abyssal Bosses ----
 	----------------------------------

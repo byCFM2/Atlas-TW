@@ -27,7 +27,7 @@ local function atlasOptionsFrameDropDownCats_OnClick()
     AtlasTWOptions.AtlasType = 1
 
     -- Обновление интерфейса
-    Atlas_PopulateDropdowns()
+    AtlasTW.PopulateDropdowns()
     AtlasTW.Refresh()
     AtlasTW.FrameDropDownTypeOnShow()
     AtlasTW.FrameDropDownOnShow()

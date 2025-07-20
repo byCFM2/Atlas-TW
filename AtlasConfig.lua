@@ -5,6 +5,7 @@ AtlasTW = {
     QMAXQUESTITEMS = 6,
     --atlas
     NUM_LINES = 24,
+    LOOT_NUM_LINES = 30,
     DEBUGMODE = false,
     MAPPATH = "Interface\\AddOns\\Atlas-TW\\Images\\Maps\\",
 

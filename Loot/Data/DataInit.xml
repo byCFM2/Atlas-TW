@@ -3,6 +3,7 @@
     <Include file="ItemDB.lua"/>
     <!-- Данные подземелий -->
     <Include file="Instances\Molten_Core.lua"/>
+    <Include file="Instances\Blackwing_Lair.lua"/>
     <!-- Добавить другие подземелья по мере создания:
     <Script file="Instances\Blackwing_Lair.lua"/>
     <Script file="Instances\Onyxia.lua"/>

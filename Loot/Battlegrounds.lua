@@ -1,9 +1,7 @@
 ----------------------
 -- Loot tables --
 ----------------------
-AtlasLoot_Data["AtlasLootBGItems"] = {
-	EmptyInstance = {},
-
+AtlasLoot_Data = {
 	BRRepFriendly = {
 		{ 60366, "INV_Jewelry_Ring_39", "=q3=Gore Ring of the Gladiator", "=ds=#s13#" },
 		{ 60368, "INV_Jewelry_Ring_30", "=q3=Loop of Field Medicine", "=ds=#s13#" },
@@ -937,7 +935,7 @@ AtlasLoot_Data["AtlasLootBGItems"] = {
 	}
 }
 
-AtlasLoot_Data["AtlasLootGeneralPvPItems"] = {
+AtlasLoot_Data = {
 	PVPWeapons1 = {
 		{ 0, "INV_BannerPVP_02", "=q8=#m7#", "=q7=#rank14#" },
 		{ 0, "", "", "" },

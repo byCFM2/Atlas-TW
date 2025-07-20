@@ -415,52 +415,18 @@ local function AtlasLoot_CreateItemsFrame()
     frame:SetScript("OnEvent", function()
         AtlasLoot_OnEvent()
     end)
-        frame:SetScript("OnMouseWheel", function()
-            if AtlasLootScrollBar and AtlasLootScrollBar:IsVisible() then
-                local currentValue = FauxScrollFrame_GetOffset(AtlasLootScrollBar)
-                local newValue = currentValue
-
-                if arg1 > 0 then
-                    -- Scroll up
-                    newValue = currentValue - 1
-                else
-                    -- Scroll down
-                    newValue = currentValue + 1
-                end
-
-                -- Clamp the value
-                if newValue < 0 then
-                    newValue = 0
-                end
-                if AtlasLootScrollBar.scrollMax and newValue > AtlasLootScrollBar.scrollMax then
-                    newValue = AtlasLootScrollBar.scrollMax
-                end
-
-                if newValue ~= currentValue then
-                    FauxScrollFrame_SetOffset(AtlasLootScrollBar, newValue)
-                    AtlasLoot_ScrollBarUpdate()
-                end
-            else
-                -- Fallback к старому поведению
-                if arg1 < 0 and AtlasLootItemsFrame_NEXT:IsVisible() then
-                    AtlasLootItemsFrame_NEXT:Click()
-                elseif arg1 > 0 and AtlasLootItemsFrame_PREV:IsVisible() then
-                    AtlasLootItemsFrame_PREV:Click()
-                end
-            end
-        end)
     frame:Hide()
 
-    -- Создаем скроллбар аналогично AtlasTWScrollBar
+    -- Создаем скроллбар
     local scrollBar = CreateFrame("ScrollFrame", "AtlasLootScrollBar", frame, "FauxScrollFrameTemplate")
-    scrollBar:SetPoint("TOPLEFT", frame, "TOPLEFT", 480, -30)
-    scrollBar:SetWidth(20)
-    scrollBar:SetHeight(450)
+    scrollBar:SetPoint("TOPLEFT", frame, "TOPLEFT", -8, 0)
+    scrollBar:SetWidth(500)
+    scrollBar:SetHeight(510)
     scrollBar:SetScript("OnVerticalScroll", function()
-        FauxScrollFrame_OnVerticalScroll(1, AtlasLoot_ScrollBarUpdate)
+        FauxScrollFrame_OnVerticalScroll(1, AtlasTW.Loot.ScrollBarLootUpdate)
     end)
     scrollBar:SetScript("OnShow", function()
-        AtlasLoot_ScrollBarUpdate()
+        AtlasTW.Loot.ScrollBarLootUpdate()
     end)
     -- Background texture
     local backTexture = frame:CreateTexture(frame:GetName().."_Back", "BACKGROUND")
@@ -504,7 +470,8 @@ local function AtlasLoot_CreateItemsFrame()
     quickLooksButton:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
 
     quickLooksButton:SetScript("OnShow", function()
-        if (AtlasLootItemsFrame.refresh) and ((AtlasLootItemsFrame.refresh[1] == "SearchResult") or (AtlasLootItemsFrame.refresh[1] == "WishList")) then
+        if (AtlasLootItemsFrame.storedBoss) and ((AtlasLootItemsFrame.storedBoss.name == "SearchResult")
+          or (AtlasLootItemsFrame.storedBoss.name == "WishList")) then
             this:Disable()
         else
             this:Enable()

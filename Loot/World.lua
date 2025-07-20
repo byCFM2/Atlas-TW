@@ -1,5 +1,4 @@
-AtlasLoot_Data["AtlasLootWBItems"] = {
-	EmptyInstance = {},
+AtlasLoot_Data = {
 
 	WBReaver = {
 		{ 51778, "INV_Staff_05", "=q4=Lost Crusader's Artifact", "=ds=#h4#", "4%" },
