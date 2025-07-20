@@ -223,22 +223,6 @@ end
 AtlasTW.LOOT_NUM_LINES = 30  -- Количество видимых элементов в AtlasLootItemsFrame (2 ряда по 15)
 AtlasTW.LootCurrentItems = nil  -- Текущие элементы для отображения
 
--- Функция для получения максимального смещения скролла
-function AtlasLoot_GetMaxScrollOffset()
-	if not AtlasTW.LootCurrentItems then return 0 end
-
-	-- Подсчитываем общее количество элементов (включая пустые)
-	local totalItems = 0
-	if type(AtlasTW.LootCurrentItems) == "table" then
-		-- Считаем все элементы в таблице, включая пустые
-		totalItems = getn(AtlasTW.LootCurrentItems)
-	end
-
-	-- Максимальное смещение = общее количество элементов минус видимые (30)
-	-- Но не меньше 0
-	local maxOffset = totalItems > 30 and (totalItems - 30) or 0
-	return maxOffset
-end
 
 -- Функция обновления скроллбара для AtlasLootItemsFrame
 function AtlasLoot_ScrollBarUpdate()
@@ -246,16 +230,17 @@ function AtlasLoot_ScrollBarUpdate()
     if not AtlasTW.LootCurrentItems then return end
 
     local totalItems = getn(AtlasTW.LootCurrentItems)
-    local maxOffset = 0
+    local num_scroll_steps = 0
 
     if totalItems > 30 then
-        maxOffset = totalItems - 30
+        local numRows = math.ceil(totalItems/ 2)
+        num_scroll_steps = numRows - 10
     end
 
-    FauxScrollFrame_Update(AtlasLootScrollBar, maxOffset, 1, 1)
-    AtlasLootScrollBar.scrollMax = maxOffset
+    FauxScrollFrame_Update(AtlasLootScrollBar, num_scroll_steps + 1, 1, 1)
+    AtlasLootScrollBar.scrollMax = num_scroll_steps
 
-	local offset = FauxScrollFrame_GetOffset(AtlasLootScrollBar)
+    local offset = FauxScrollFrame_GetOffset(AtlasLootScrollBar)
 
 	-- Обновляем содержимое и видимость кнопок AtlasLootItem_
 	for i = 1, 30 do
