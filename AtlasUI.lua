@@ -105,6 +105,7 @@ do
     searchBox:SetScript("OnEnterPressed", function()
         AtlasTW.Search(this:GetText())
         this:ClearFocus()
+        AtlasTW.Loot.ScrollBarUpdate()
     end)
 
     -- Switch dropdown
@@ -127,6 +128,7 @@ do
     searchButton:SetScript("OnClick", function()
         AtlasTW.Search(AtlasSearchEditBox:GetText())
         AtlasSearchEditBox:ClearFocus()
+        AtlasTW.Loot.ScrollBarUpdate()
     end)
 
     -- Clear button
@@ -138,6 +140,7 @@ do
         AtlasSearchEditBox:SetText("")
         AtlasTW.Search(AtlasSearchEditBox:GetText())
         AtlasSearchEditBox:ClearFocus()
+        AtlasTW.Loot.ScrollBarUpdate()
     end)
 
     -- Options button

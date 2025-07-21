@@ -283,11 +283,14 @@ function AtlasTW.Loot.ScrollBarUpdate()
 		--Update the contents of the Atlas scroll frames
 		FauxScrollFrame_Update(AtlasTWScrollBar, AtlasTW.CurrentLine, AtlasTW.NUM_LINES, 15)
 		--Make note of how far in the scroll frame we are
+
+		-- Теперь показываем только нужные элементы
 		for line=1, AtlasTW.NUM_LINES do
 			lineplusoffset = line + FauxScrollFrame_GetOffset(AtlasTWScrollBar)
 			local bossLine = _G["AtlasBossLine"..line]
-			if lineplusoffset <= AtlasTW.CurrentLine then
+			if bossLine and lineplusoffset <= AtlasTW.CurrentLine then
 				-- Включаем интерактивность и текстуру для видимых кнопок
+				bossLine:Show()
 				bossLine:EnableMouse(true)
 				highlightTexture = bossLine:GetHighlightTexture()
 				highlightTexture:Show()

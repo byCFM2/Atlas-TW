@@ -65,7 +65,8 @@ local function PerformSearch(data, search_text)
 			local name = item.name
 			if name then
 				local line = format_line(item)
-				if string.find(string.lower(line), searchText) then
+				-- Если поисковый запрос пустой, показываем все элементы
+				if searchText == "" or string.find(string.lower(line), searchText) then
 					new[n] = {
 						line = line,
 						name = name,
@@ -185,9 +186,6 @@ function AtlasTW.Search(text)
 		i = i + 1
 	end
 	AtlasTW.CurrentLine = i - 1
-
-	--Update the boss frame
-	AtlasTW.Loot.ScrollBarUpdate()
 end
 
 --Main Atlas event handler
@@ -270,6 +268,7 @@ end
 --Also responsible for updating all the text when a map is changed
 function AtlasTW.Refresh()
 	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
+	DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Refresh: Загружаем инстанс " .. (zoneID or "nil"))
 	--local data = AtlasMaps
 	local data = AtlasTW.InstanceData
 	local base = {}
@@ -349,7 +348,15 @@ function AtlasTW.Refresh()
 		ATLAS_SEARCH_METHOD = nil
 	end
 
-	--create and align any new entry buttons that we need
+	--Store zoneLines for search
+	AtlasSearchEditBox.Data = base
+
+	--populate the scroll frame entries list, the update func will do the rest
+	AtlasTW.Search("")
+	AtlasSearchEditBox:SetText("")
+	AtlasSearchEditBox:ClearFocus()
+
+		--create and align any new entry buttons that we need
  	for i = 1, AtlasTW.CurrentLine do
 		if not _G["AtlasBossLine"..i] then
 			frame = AtlasLoot_CreateButtonFromTemplate("AtlasBossLine"..i, AtlasFrame, "AtlasLootNewBossLineTemplate")
@@ -373,17 +380,13 @@ function AtlasTW.Refresh()
 				_G["AtlasBossLine"..i]:Hide()
 			end
 		end
-	end --TODO нужно постараться создавать в уи файле
+	end
 
 	--Hide the loot frame now that a pristine Atlas instance is created
 	AtlasLootItemsFrame:Hide()
 
-	--Store zoneLines for search
-	AtlasSearchEditBox.Data = base
-	--populate the scroll frame entries list, the update func will do the rest
-	AtlasTW.Search("")
-	AtlasSearchEditBox:SetText("")
-	AtlasSearchEditBox:ClearFocus()
+	-- Обновляем скроллбар после создания элементов
+	AtlasTW.Loot.ScrollBarUpdate()
 
 	--see if we should display the entrance/instance button or not, and decide what it should say
 	local matchFound = {}

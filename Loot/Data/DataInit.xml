@@ -4,6 +4,7 @@
     <!-- Данные подземелий -->
     <Include file="Instances\Molten_Core.lua"/>
     <Include file="Instances\Blackwing_Lair.lua"/>
+    <Include file="Instances\Emerald_Sanctum.lua"/>
     <!-- Добавить другие подземелья по мере создания:
     <Script file="Instances\Blackwing_Lair.lua"/>
     <Script file="Instances\Onyxia.lua"/>
