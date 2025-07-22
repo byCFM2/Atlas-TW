@@ -332,7 +332,7 @@ end
 -- Функция обновления скроллбара для AtlasLootItemsFrame
 function AtlasTW.Loot.ScrollBarLootUpdate()
 	--Check if the scroll bar exists
-    if not AtlasLootScrollBar then 
+    if not AtlasLootScrollBar then
 		AtlasLootItemsFrame:Hide()
 		return print("AtlasTW.Loot.ScrollBarLootUpdate: No AtlasLootScrollBar!")
 	end
@@ -1842,45 +1842,63 @@ function AtlasLoot_ShowContainerFrame()
 	local row = 0
 	local col = 0
 	local buttonIndex = 1
-	local maxCols = 1
+
+	-- Умный расчет количества столбцов на основе общего количества элементов
+	local totalItems = getn(containerTable)
+	local maxCols
+	if totalItems <= 5 then
+		maxCols = totalItems  -- Один ряд для малого количества
+	elseif totalItems <= 12 then
+		maxCols = 4  -- столбца для средних контейнеров
+	elseif totalItems <= 20 then
+		maxCols = 6   -- столбцов для больших контейнеров
+	elseif totalItems <= 35 then
+		maxCols = 7  -- столбцов для очень больших контейнеров
+	else
+		maxCols = 8  -- Максимум 8 столбцов
+	end
 
 	for i = 1, getn(containerTable) do
-		col = 0
-		--for j = 1, getn(containerTable[i]) do
-			if not containerItems[buttonIndex] then
-				containerItems[buttonIndex] = CreateFrame("Button", "AtlasLootContainerItem"..buttonIndex, AtlasLootItemsFrameContainer)
-				AtlasLoot_ApplyContainerItemTemplate(containerItems[buttonIndex])
-			end
-			local itemButton = getglobal("AtlasLootContainerItem"..buttonIndex)
-			local itemID = containerTable[i]--[j][1]
-		--	AtlasLoot_CacheItem(itemID)
-			--itemButton.extraInfo = containerTable[i][j][2]
-			--itemButton.dressingroomID = itemID
-			local _,_,quality,_,_,_,_,_,tex = GetItemInfo(itemID)
-			local icon = getglobal("AtlasLootContainerItem"..buttonIndex.."Icon")
-			local r, g, b = 1, 1, 1
-			if quality then
-				r, g, b  = GetItemQualityColor(quality)
-			end
-			if not tex then
-				tex = "Interface\\Icons\\INV_Misc_QuestionMark"
-			end
-			itemButton:SetPoint("TOPLEFT", AtlasLootItemsFrameContainer, (col * 35) + 5, -(row * 35) - 5)
-			itemButton:SetBackdropBorderColor(r, g, b)
-			itemButton:SetID(itemID)
-			itemButton:Show()
-			icon:SetTexture(tex)
-			AtlasLoot_AddContainerItemTooltip(itemButton, itemID)
-			col = col + 1
-			if col > maxCols then
-				maxCols = col
-			end
-			buttonIndex = buttonIndex + 1
-		--end
+		if not containerItems[buttonIndex] then
+			containerItems[buttonIndex] = CreateFrame("Button", "AtlasLootContainerItem"..buttonIndex, AtlasLootItemsFrameContainer)
+			AtlasLoot_ApplyContainerItemTemplate(containerItems[buttonIndex])
+		end
+		local itemButton = getglobal("AtlasLootContainerItem"..buttonIndex)
+		local itemID = containerTable[i]
+		local _,_,quality,_,_,_,_,_,tex = GetItemInfo(itemID)
+		local icon = getglobal("AtlasLootContainerItem"..buttonIndex.."Icon")
+		local r, g, b = 1, 1, 1
+		if quality then
+			r, g, b  = GetItemQualityColor(quality)
+		end
+		if not tex then
+			tex = "Interface\\Icons\\INV_Misc_QuestionMark"
+		end
+
+		-- Размещаем элементы в сетке 5x?
+		itemButton:SetPoint("TOPLEFT", AtlasLootItemsFrameContainer, (col * 35) + 5, -(row * 35) - 5)
+		itemButton:SetBackdropBorderColor(r, g, b)
+		itemButton:SetID(itemID)
+		itemButton:Show()
+		icon:SetTexture(tex)
+		AtlasLoot_AddContainerItemTooltip(itemButton, itemID)
+
+		col = col + 1
+		-- Переходим на новый ряд после maxCols элементов
+		if col >= maxCols then
+			col = 0
+			row = row + 1
+		end
+		buttonIndex = buttonIndex + 1
+	end
+
+ 	-- Если последний ряд не полный, учитываем его
+	if col > 0 then
 		row = row + 1
 	end
+
 	AtlasLootItemsFrameContainer:SetPoint("TOPLEFT", this , "BOTTOMLEFT", -2, 2)
-	AtlasLootItemsFrameContainer:SetWidth(16 + (maxCols * 35))
+	AtlasLootItemsFrameContainer:SetWidth(16 + ((row==0 and col or maxCols) * 35))
 	AtlasLootItemsFrameContainer:SetHeight(16 + (row * 35))
 end
 

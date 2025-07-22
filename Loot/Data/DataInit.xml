@@ -5,9 +5,11 @@
     <Include file="Instances\Molten_Core.lua"/>
     <Include file="Instances\Blackwing_Lair.lua"/>
     <Include file="Instances\Emerald_Sanctum.lua"/>
+    <Include file="Instances\Onyxias_Lair.lua"/>
+    <Include file="Instances\Naxxramas.lua"/>
+    <Include file="Instances\Ruins_of_AhnQiraj.lua"/>
+
     <!-- Добавить другие подземелья по мере создания:
-    <Script file="Instances\Blackwing_Lair.lua"/>
-    <Script file="Instances\Onyxia.lua"/>
     <Script file="Instances\Zul_Gurub.lua"/>
     <Script file="Instances\Ahn_Qiraj_20.lua"/>
     <Script file="Instances\Ahn_Qiraj_40.lua"/>

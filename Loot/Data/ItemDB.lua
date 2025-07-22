@@ -10,7 +10,7 @@ AtlasTW.ItemDB.SLOT_KEYWORDS = {
     [L["Head"]] = 0, [L["Shoulder"]] = 0,
     [L["Chest"]] = 0,[L["Wrist"]] = 0, [L["Hands"]] = 0,
     [L["Legs"]] = 0, [L["Feet"]] = 0, [L["Main Hand"]] = 0, [L["One-Hand"]] = 0,
-    [L["Off Hand"]] = 0, [L["Waist"]] = 0, [L["Two-Hand"]] = 0,
+    [L["Off Hand"]] = 0, [L["Waist"]] = 0, [L["Two-Hand"]] = 0, [L["Ranged"]] = 0,
 }
 AtlasTW.ItemDB.SLOT2_KEYWORDS = {
     [L["Cloth"]] = 0,  [L["Leather"]] = 0, [L["Mail"]] = 0,[L["Plate"]] = 0,
@@ -116,9 +116,15 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                 if string.find(text, L["Quest Item"]) then
                     table.insert(info, text)
                 -- Ищем строку с маунтом
-                elseif string.find(text, L["mount"]) then
+                elseif string.find(text, string.lower(L["Mount"])) then
                     table.insert(info, L["Mount"])
                     break
+                -- Ищем строку с глифом
+                elseif string.find(text, string.lower(L["Glyph"])) then
+                    table.insert(info, L["Glyph"])
+                -- Ищем строку с петом
+                elseif string.find(text, string.lower(L["Companion"])) then
+                    table.insert(info, L["Pet"])
                 -- Ищем строку с начинающим задание
                 elseif string.find(text, L["This Item Begins a Quest"]) then
                     table.insert(info, text)
