@@ -9,12 +9,8 @@
     <Include file="Instances\Naxxramas.lua"/>
     <Include file="Instances\Ruins_of_AhnQiraj.lua"/>
     <Include file="Instances\Temple_of_AhnQiraj.lua"/>
-
-    <!-- Добавить другие подземелья по мере создания:
-    <Script file="Instances\Zul_Gurub.lua"/>
-    <Script file="Instances\Ahn_Qiraj_20.lua"/>
-    <Script file="Instances\Ahn_Qiraj_40.lua"/>
-    -->
+    <Include file="Instances\Tower_of_Karazhan.lua"/>
+    <Include file="Instances\Zul_Gurub.lua"/>
     <!-- Данные мирового контента 
     <Include file="World\World_Bosses.lua"/>-->
     <!-- Добавить другие мировые источники:

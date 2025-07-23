@@ -314,7 +314,7 @@ AtlasTW.InstanceData.BlackwingLair = {
         { prefix = "1)", name = L["Alchemy Lab"], color = "|cff00FF00"},
         { prefix = "2)", name = L["Draconic for Dummies"], color = "|cff00FF00"},
         {
-            id = "Trash",
+            id = "BWLTrash",
             name = L["Trash Mobs"],
             defaults = { dropRate = 4 },
             loot = {

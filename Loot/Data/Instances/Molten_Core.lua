@@ -157,7 +157,7 @@ AtlasTW.InstanceData.MoltenCore = {
             }
         },
         {
-            id = "Trash",
+            id = "MCTrash",
             name = L["Trash Mobs"],
             defaults = {dropRate=.3},
             loot = {
@@ -240,7 +240,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=18253,disc="500"},
             },
         },
-        {   id = "Randombossloot",
+        {   id = "MCRandombossloot",
             name = L["Random Boss Loot"],
             loot = {
                 {id=18264, dropRate=1},{id=18262, disc=L["Trade Goods"]},{},{id=18292, dropRate=1},{id=18282},{},{id=18291, dropRate=1},{id=18168},{},
@@ -254,52 +254,8 @@ AtlasTW.InstanceData.MoltenCore = {
     },
 }
 
-
 -- Инициализация предметов для всех боссов
 for _, bossData in ipairs(AtlasTW.InstanceData.MoltenCore.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
     bossData.loot = nil -- Очищаем временные данные
-end
-
--- Функция получения всех предметов из подземелья
-function AtlasTW.InstanceData.MoltenCore.GetAllItems()
-    local allItems = {}
-    for _, bossData in ipairs(AtlasTW.InstanceData.MoltenCore.Bosses) do
-        if bossData.Items then
-            for i = 1, getn(bossData.items) do
-                local item = bossData.items[i]
-                tinsert(allItems, item)
-            end
-        end
-    end
-    for i = 1, getn(AtlasTW.InstanceData.MoltenCore.Trash) do
-        local item = AtlasTW.InstanceData.MoltenCore.Trash[i]
-        --[[ 
-        item.source = L["Trash Mobs"]
-        item.zone = BZ["Molten Core"] ]]
-        tinsert(allItems, item)
-    end
-    return allItems
-end
-
--- Функция получения предметов для конкретного босса
-function AtlasTW.InstanceData.MoltenCore.GetBossItems(bossName)
-    for _, bossData in ipairs(AtlasTW.InstanceData.MoltenCore.Bosses) do
-        if bossData.name == BB[bossName] then
-            return bossData.items
-        end
-    end
-    return {}
-end
-
--- Функция получения предметов для определенного класса
-function AtlasTW.InstanceData.MoltenCore.GetItemsForClass(className)
-    local classItems = {}
-    local allItems = AtlasTW.InstanceData.MoltenCore.GetAllItems()
-    for i = 1, getn(allItems) do
-        if allItems[i]:IsValidForClass(className) then
-            tinsert(classItems, allItems[i])
-        end
-    end
-    return classItems
 end

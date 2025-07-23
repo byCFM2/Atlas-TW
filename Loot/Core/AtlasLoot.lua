@@ -348,6 +348,10 @@ function AtlasTW.Loot.ScrollBarLootUpdate()
 		AtlasLootItemsFrame:Hide()
 		return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataID and dataSource!")
 	end
+	-- Скрываем QuickLooks
+    AtlasLoot_QuickLooks:Hide()
+    AtlasLootQuickLooksButton:Hide()
+
     if type(dataSource) ~= "table" then
 		print("AtlasTW.Loot.ScrollBarLootUpdate: dataSource is not a table= "..dataSource)
         dataSource = AtlasLoot_Data[dataSource] or AtlasLoot_MenuHandlers[dataSource]
@@ -361,7 +365,7 @@ function AtlasTW.Loot.ScrollBarLootUpdate()
 		print("AtlasLoot_Show2ItemsFrame: function")
 		_G[dataSource]()
 	elseif type(dataSource) == "table" then
-		--print("AtlasLoot_Show2ItemsFrame: table")	--print(tostring(dataSource).." dataSourceTable")
+		print("AtlasLoot_Show2ItemsFrame: table")	--print(tostring(dataSource).." dataSourceTable")
 		local totalItems = getn(dataSource)
 		local num_scroll_steps = 0
 
@@ -409,7 +413,6 @@ function AtlasTW.Loot.ScrollBarLootUpdate()
 				-- Показываем кнопку если индекс в пределах таблицы
 				if itemIndex <= totalItems and dataSource[itemIndex] then
 					local item = dataSource[itemIndex]
-
 					-- Проверяем, есть ли данные для отображения
 					if item and (item.id or item.name) then
 						-- Новая система - обновляем содержимое кнопки

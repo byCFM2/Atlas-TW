@@ -274,11 +274,11 @@ function AtlasLootTip.extendTooltip(tooltip)
 			end
 			-- check if its world boss loot
 			if not isCraft then
-                for k1, _ in pairs(AtlasLoot_Data["AtlasLootWBItems"]) do
+                for k1, _ in pairs(AtlasLoot_Data) do
 					if source then
 						break
 					end
-					for _, v2 in pairs(AtlasLoot_Data["AtlasLootWBItems"][k1]) do
+					for _, v2 in pairs(AtlasLoot_Data[k1]) do
 						if v2[1] == itemID then
 							source = k1
 							isWBLoot = true

@@ -120,7 +120,7 @@ AtlasTW.InstanceData.EmeraldSanctum = {
             }
         },
         {
-            id = "Trash",
+            id = "ESTrash",
             name = L["Trash Mobs"],
             defaults = { dropRate = 1 },
             loot = {

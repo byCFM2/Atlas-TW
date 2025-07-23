@@ -238,10 +238,10 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {id=21458, dropRate=18},
                 {id=21463},
                 {id=21461},
+                {},
                 {id=21459},
                 {id=21715},
                 {id=21452, dropRate=18},
-                {},
                 {},
                 {id=21220, dropRate=100, container={21504,21507,21505,21506}},
                 {},
@@ -285,6 +285,20 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {},
                 {id=22203, disc = L["Reagent"], dropRate=1},
                 {id=22202, disc = L["Reagent"], dropRate=1},
+            }
+        },
+        {
+            id = "AQEnchants",
+            name = L["AQ Enchants"],
+            defaults = { dropRate = 1 },
+            loot = {
+                {id=20728},
+                {id=20731},
+                {id=20734},
+                {id=20729},
+                {id=20736},
+                {id=20730},
+                {id=20727},
             }
         },
         {
