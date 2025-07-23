@@ -156,7 +156,7 @@ AtlasTW.InstanceData.BlackwingLair = {
                 {id=19395},
             }
         },
-        { prefix = "5)", name = L["Master Elemental Shaper Krixix"]},
+        { prefix = "5)", name = L["Master Elemental Shaper Krixix"], color = "|cff9d9d9d",},
         {
             id = "Ebonroc",
             prefix = "6)",
@@ -311,8 +311,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 {id=61760, dropRate=100},
             }
         },
-        { prefix = "1)", name = L["Alchemy Lab"]},
-        { prefix = "2)", name = L["Draconic for Dummies"]},
+        { prefix = "1)", name = L["Alchemy Lab"], color = "|cff00FF00"},
+        { prefix = "2)", name = L["Draconic for Dummies"], color = "|cff00FF00"},
         {
             id = "Trash",
             name = L["Trash Mobs"],

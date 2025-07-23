@@ -6,8 +6,14 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
-
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
+
+-- Общий лут для капитанов и майоров
+local captainLoot = {
+    {id=21809, dropRate=8},
+    {id=21810, dropRate=8},
+    {id=21806, dropRate=5},
+}
 
 -- Данные Руин Ан'Киража
 AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
@@ -20,6 +26,9 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
     DamageType = "Nature",
     Entrances = {
         { letter = "A".." " .. L["Entrance"] }
+    },
+    Reputation = {
+         { name = "Cenarion Circle", loot = "CenarionCircle" },
     },
     Bosses = {
         {
@@ -60,6 +69,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
         },
         {
             name = L["Four Kaldorei Elites"],
+            color = "|cff9d9d9d",
         },
         {
             id = "GeneralRajaxx",
@@ -91,65 +101,37 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
         },
         {
             name = L["Captain Qeez"],
-            loot = {
-                {id=21809, dropRate=8},
-                {id=21810, dropRate=8},
-                {id=21806, dropRate=5},
-            }
+            loot = captainLoot
         },
         {
             name = L["Captain Tuubid"],
-            loot = {
-                {id=21809, dropRate=8},
-                {id=21810, dropRate=8},
-                {id=21806, dropRate=5},
-            }
+            loot = captainLoot
         },
         {
             name = L["Captain Drenn"],
-            loot = {
-                {id=21809, dropRate=8},
-                {id=21810, dropRate=8},
-                {id=21806, dropRate=5},
-            }
+            loot = captainLoot
         },
         {
             name = L["Captain Xurrem"],
-            loot = {
-                {id=21809, dropRate=8},
-                {id=21810, dropRate=8},
-                {id=21806, dropRate=5},
-            }
+            loot = captainLoot
         },
         {
             name = L["Major Yeggeth"],
-            loot = {
-                {id=21809, dropRate=8},
-                {id=21810, dropRate=8},
-                {id=21806, dropRate=5},
-            }
+            loot = captainLoot
         },
         {
             name = L["Major Pakkon"],
-            loot = {
-                {id=21809, dropRate=8},
-                {id=21810, dropRate=8},
-                {id=21806, dropRate=5},
-            }
+            loot = captainLoot
         },
         {
             name = L["Colonel Zerran"],
-            loot = {
-                {id=21809, dropRate=8},
-                {id=21810, dropRate=8},
-                {id=21806, dropRate=5},
-            }
+            loot = captainLoot
         },
         {
             id = "Moam",
             prefix = "3)",
             name = BB["Moam"],
-            postfix = L["Optional"],
+            postfix = L["Optional"], --TODO show postfix
             defaults = { dropRate = 25 },
             loot = {
                 {id=21472},
@@ -267,6 +249,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {id=20886, dropRate=50, container={21392,21395,21401,21404,21398}},
             }
         },
+        { prefix = "1') ", name = L["Safe Room"], color = "|cff00FF00" },
         {
             id = "AQ20Trash",
             name = L["Trash Mobs"],

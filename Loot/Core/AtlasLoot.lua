@@ -23,6 +23,11 @@ local RED = "|cffff0000"
 local WHITE = "|cffFFFFFF"
 local BLUE = "|cff0070dd"
 local DEFAULT = "|cffFFd200"
+local GREEN = "|cff00FF00"
+local GREY = "|cff9d9d9d"
+local ORANGE = "|cffFFA500"
+local PURPLE = "|cff9370DB"
+local YELLOW = "|cffFFD700"
 
 --Set the default anchor for the loot frame to the Atlas frame
 --AtlasLoot_AnchorFrame = AtlasLootItemsFrame
@@ -362,7 +367,7 @@ function AtlasTW.Loot.ScrollBarLootUpdate()
 
 		if totalItems > AtlasTW.LOOT_NUM_LINES then
 			local numRows = math.ceil(totalItems/ 2)
-			num_scroll_steps = numRows - 10
+			num_scroll_steps = numRows - 7 -- TODO check for all pages
 		end
 		-- Set scroll bar range
 		FauxScrollFrame_Update(AtlasLootScrollBar, num_scroll_steps + 1, 2, 1)

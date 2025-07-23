@@ -25,10 +25,12 @@ AtlasTW.InstanceData.OnyxiasLair = {
         {
             prefix = "1)",
             name = L["Onyxian Warders"],
+            color = "|cff9d9d9d",
         },
         {
             prefix = "2)",
             name = L["Whelp Eggs"],
+            color = "|cff9d9d9d",
         },
         {
             id = "Onyxia",

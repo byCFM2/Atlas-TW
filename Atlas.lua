@@ -87,7 +87,9 @@ local function PerformSearch(data, search_text)
 		return Colors.GREEN .. L["Key"] .. ": " .. item.name .. (item.info and " <" .. item.info .. ">" or "")
 	end)
 	n = makeBossLineText(data["Bosses"], new, n, search_text, function(item)
-		return Colors.WHITE .. (item.prefix and (item.prefix .. " ") or "") .. item.name
+		local color = item.color or Colors.WHITE
+		local text = (item.prefix and (item.prefix .. " ") or "") .. item.name.. (item.postfix and (" <".. item.postfix)..">" or "")
+		return  color .. text
 	end)
 	return new
 end

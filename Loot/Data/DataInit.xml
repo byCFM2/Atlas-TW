@@ -8,6 +8,7 @@
     <Include file="Instances\Onyxias_Lair.lua"/>
     <Include file="Instances\Naxxramas.lua"/>
     <Include file="Instances\Ruins_of_AhnQiraj.lua"/>
+    <Include file="Instances\Temple_of_AhnQiraj.lua"/>
 
     <!-- Добавить другие подземелья по мере создания:
     <Script file="Instances\Zul_Gurub.lua"/>
