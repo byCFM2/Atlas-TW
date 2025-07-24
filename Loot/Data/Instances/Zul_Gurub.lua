@@ -13,6 +13,18 @@ AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- Общий лут для боссов Зул'Гуруба
 local zGSharedLoot = {
+    {id=22713, dropRate=10},
+    {},
+    {id=22721, dropRate=10},
+    {id=22722, dropRate=10},
+    {id=22720, dropRate=10},
+    {id=22718, dropRate=10},
+    {id=22711, dropRate=10},
+    {id=22712, dropRate=10},
+    {id=22715, dropRate=10},
+    {id=22714, dropRate=10},
+    {id=22716, dropRate=10},
+    {},
     {id=19721,dropRate=11,container={19826,19832,19845}},
     {id=19724,dropRate=11,container={19841,19834,19831}},
     {id=19723,dropRate=11,container={20033,20034,19822}},
@@ -21,7 +33,7 @@ local zGSharedLoot = {
     {id=19716,dropRate=11,container={19827,19846,19833}},
     {id=19718,dropRate=11,container={19843,19848,19840}},
     {id=19719,dropRate=11,container={19829,19835,19823}},
-    {id=19720,dropRate=11,container={19842,19849,19839}}
+    {id=19720,dropRate=11,container={19842,19849,19839}},
 }
 
 local zGEnchants = {
@@ -75,17 +87,11 @@ AtlasTW.InstanceData.ZulGurub = {
                 {id=19928},
                 {id=20262},
                 {id=20265},
-                {},
                 {id=19920},
+                {id=19881,dropRate=100},
                 {},
                 {id=19915},
                 {id=19918},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
                 unpack(zGSharedLoot),
             }
         },
@@ -99,18 +105,12 @@ AtlasTW.InstanceData.ZulGurub = {
                 {id=19904},
                 {id=19907},
                 {id=19906},
-                {},
                 {id=19905},
+                {},
+                {id=19881,dropRate=100},
                 {},
                 {id=19900},
                 {id=19903},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
                 unpack(zGSharedLoot),
             }
         },
@@ -129,18 +129,12 @@ AtlasTW.InstanceData.ZulGurub = {
                 {id=20032},
                 {id=19871},
                 {id=19919},
-                {},
                 {id=19925},
                 {id=19930},
+                {id=19881,dropRate=100},
                 {},
                 {id=81003, dropRate=10},
                 {id=19927},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
                 unpack(zGSharedLoot),
             }
         },
@@ -171,7 +165,15 @@ AtlasTW.InstanceData.ZulGurub = {
                 {},
                 {id=19872, dropRate=2},
                 {},
-                unpack(zGSharedLoot),
+                {id=19721,dropRate=11,container={19826,19832,19845}},
+                {id=19724,dropRate=11,container={19841,19834,19831}},
+                {id=19723,dropRate=11,container={20033,20034,19822}},
+                {id=19722,dropRate=11,container={19828,19825,19838}},
+                {id=19717,dropRate=11,container={19830,19836,19824}},
+                {id=19716,dropRate=11,container={19827,19846,19833}},
+                {id=19718,dropRate=11,container={19843,19848,19840}},
+                {id=19719,dropRate=11,container={19829,19835,19823}},
+                {id=19720,dropRate=11,container={19842,19849,19839}},
             }
         },
 		{
@@ -259,17 +261,11 @@ AtlasTW.InstanceData.ZulGurub = {
                 {id=19899},
                 {id=20260},
                 {id=20266},
-                {},
                 {id=19898},
-                {},
+                {id=19881,dropRate=100},
+                {id=19902, dropRate=2},
                 {id=19901},
                 {id=19896},
-                {},
-                {},
-                {},
-                {},
-                {id=19902, dropRate=2},
-                {},
                 unpack(zGSharedLoot),
             }
         },
@@ -291,20 +287,14 @@ AtlasTW.InstanceData.ZulGurub = {
             defaults = { dropRate = 20 },
             loot = {
                 {id=19913},
-                {},
                 {id=19912},
+                {},
+                {id=19914,disc=L["Bag"], dropRate=12},
+                {id=19881,dropRate=100},
                 {},
                 {id=19922},
                 {id=19909},
                 {id=19910},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {},
-                {id=19914,disc=L["Bag"], dropRate=12},
-                {},
                 unpack(zGSharedLoot),
             }
         },
@@ -330,7 +320,15 @@ AtlasTW.InstanceData.ZulGurub = {
                 {id=19884},
                 {},
 				unpack(zGidol),
-                unpack(zGSharedLoot),
+                {id=19721,dropRate=11,container={19826,19832,19845}},
+                {id=19724,dropRate=11,container={19841,19834,19831}},
+                {id=19723,dropRate=11,container={20033,20034,19822}},
+                {id=19722,dropRate=11,container={19828,19825,19838}},
+                {id=19717,dropRate=11,container={19830,19836,19824}},
+                {id=19716,dropRate=11,container={19827,19846,19833}},
+                {id=19718,dropRate=11,container={19843,19848,19840}},
+                {id=19719,dropRate=11,container={19829,19835,19823}},
+                {id=19720,dropRate=11,container={19842,19849,19839}},
             }
         },
         {
@@ -420,9 +418,9 @@ AtlasTW.InstanceData.ZulGurub = {
         { name = L["Zul'Gurub Ring Sets"], items = "ZGRings" },
         { name = L["Zul'Gurub Sets"], items = "ZGSet" },
         { name = L["Zul'Gurub Enchants"], items = zGEnchants },
-     }
- }
- 
+    }
+}
+
  -- Инициализация предметов для всех боссов
  for _, bossData in ipairs(AtlasTW.InstanceData.ZulGurub.Bosses) do
      bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
