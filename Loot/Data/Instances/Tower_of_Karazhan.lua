@@ -20,7 +20,10 @@ AtlasTW.InstanceData.TowerofKarazhan = {
     Acronym = "KARA40",
     Attunement = true,
     MaxPlayers = 40,
-    DamageType = "Arcane",
+    DamageType = L["Shadow"],L["Fire"],L["Arcane"],
+    Keys = {
+        { name = L["Upper Karazhan Tower Key"], loot = "VanillaKeys", info = L["Quests"] },
+    },
     Entrances = {
         { letter = "A".." "..L["Entrance"] },
         { letter = "B".." "..L["Connection"] }
@@ -98,7 +101,6 @@ AtlasTW.InstanceData.TowerofKarazhan = {
             id = "EchoofMedivh",
             prefix = "4)",
             name = BB["Echo of Medivh"],
-            postfix = L["Optional"],
             defaults = { dropRate = 25 },
             loot = {
                 {id=55112},
@@ -113,7 +115,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 {id=55276},
                 {},
                 {id=41485, dropRate=3.25, disc = L["Reagent"]},
-                {id=41414, disc = L["Quest Item"], dropRate=100},
+                {id=41414, dropRate=100},
             }
         },
         {

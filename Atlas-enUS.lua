@@ -61,6 +61,8 @@ AtlasTW.Local.Translations = {
 	["Nature"] = true,
 	["Frost"] = true,
 	["Shadow"] = true,
+	["Arcane"] = true,
+	["Physical"] = true,
 
 	--Events
 	["Hallow's End"] = true,

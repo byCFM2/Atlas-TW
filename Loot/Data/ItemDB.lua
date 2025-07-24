@@ -137,7 +137,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                 elseif string.find(text, string.lower(L["Glyph"])) then
                     table.insert(info, L["Glyph"])
                 -- Ищем строку с петом
-                elseif string.find(text, string.lower(L["Companion"])) then
+                elseif string.find(text, string.lower(" "..L["Companion"].." ")) then
                     table.insert(info, L["Pet"])
                 -- Ищем строку с начинающим задание
                 elseif string.find(text, L["This Item Begins a Quest"]) then

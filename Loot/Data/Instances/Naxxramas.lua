@@ -6,7 +6,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
-
+local BF = AceLibrary("Babble-Faction-2.2a")
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- Данные Наксрамаса
@@ -22,7 +22,7 @@ AtlasTW.InstanceData.Naxxramas = {
         { letter = "A"..") " .. L["Entrance"] }
     },
     Reputation = {
-           { name = "Argent Dawn", loot = "ArgentDawn" }
+           { name = BF["Argent Dawn"], loot = "ArgentDawn" }
     },
     Bosses = {
         {
@@ -424,6 +424,7 @@ AtlasTW.InstanceData.Naxxramas = {
                 {id=81283, dropRate=100},
                 {},
                 {id=22733, dropRate=100, container={22631,22589,22630,22632}},
+                {id=36666, dropRate=1},
             }
         },
         {

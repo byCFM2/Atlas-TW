@@ -12,6 +12,7 @@
     <Include file="Instances\Tower_of_Karazhan.lua"/>
     <Include file="Instances\Zul_Gurub.lua"/>
     <Include file="Instances\Upper_Blackrock_Spire.lua"/>
+    <Include file="Instances\Lower_Karazhan_Halls.lua"/>
     <!-- Данные мирового контента 
     <Include file="World\World_Bosses.lua"/>-->
     <!-- Добавить другие мировые источники:

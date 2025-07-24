@@ -33,7 +33,7 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
     Acronym = "AQ40",
     Attunement = false,
     MaxPlayers = 40,
-    DamageType = "Nature",
+    DamageType = L["Nature"],
     Entrances = {
         { letter = "A"..". "..L["Entrance"] }
     },

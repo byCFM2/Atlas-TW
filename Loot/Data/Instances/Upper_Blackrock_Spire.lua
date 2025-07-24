@@ -19,7 +19,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
     Acronym = "UBRS",
     Attunement = false,
     MaxPlayers = 10,
-    DamageType = L["Physical"],
+    DamageType = L["Fire"],L["Physical"],
     Entrances = {
         { letter = "A) ".. L["Entrance"] },
         { letter = "B)", info = BZ["Lower Blackrock Spire"]},

@@ -6,6 +6,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local BF = AceLibrary("Babble-Faction-2.2a")
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- Общий лут для капитанов и майоров
@@ -23,12 +24,12 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
     Acronym = "AQ20",
     Attunement = false,
     MaxPlayers = 20,
-    DamageType = "Nature",
+    DamageType = L["Nature"],
     Entrances = {
         { letter = "A".." " .. L["Entrance"] }
     },
     Reputation = {
-         { name = "Cenarion Circle", loot = "CenarionCircle" },
+         { name = BF["Cenarion Circle"], loot = "CenarionCircle" },
     },
     Bosses = {
         {

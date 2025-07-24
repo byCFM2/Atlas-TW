@@ -11,19 +11,50 @@ local BS = AceLibrary("Babble-Spell-2.2a")
 
 AtlasLoot_Data = {
 	WaterLords1 = {
-		{ name = BF["Honored"], icon = "Spell_Frost_SummonWaterElemental_2"},{ id = 18399, disc = L["Quest Reward"] },
-		{ id = 18398, disc = L["Quest Reward"] },{ id = 17333, disc = L["Misc"] },{ id = 91797 },{},
-		{ name = BF["Revered"], icon = "Spell_Frost_SummonWaterElemental_2"},{ id = 22754, disc = L["Misc"] },{},
-		{ name = BF["Exalted"], icon = "Spell_Frost_SummonWaterElemental_2"},{ id = 81254, disc = L["Pet"]  },
+		{ name = BF["Honored"], icon = "Spell_Frost_SummonWaterElemental_2"},
+		{ id = 18399, disc = L["Quest Reward"] },
+		{ id = 18398, disc = L["Quest Reward"] },
+		{ id = 17333, disc = L["Misc"] },
+		{ id = 91797 },
+		{},
+		{ name = BF["Revered"], icon = "Spell_Frost_SummonWaterElemental_2"},
+		{ id = 22754, disc = L["Misc"] },
+		{},
+		{ name = BF["Exalted"], icon = "Spell_Frost_SummonWaterElemental_2"},
+		{ id = 81254, disc = L["Pet"]  },
 	},
 	VanillaKeys = {
-		{ name = L["Key"] },{ id = 16309},{ id = 12344},{ id = 17191},{ id = 7146},{ id = 12382},{ id = 6893},{ id = 11000},{ id = 11140},
-		{ id = 18249},{ id = 13704},{ id = 11197},{ id = 18266},{ id = 18268},{ id = 13873},
-		{ name = L["Misc"] },{ id = 19931, disc = L["Used to summon boss"] },{ id = 9240, disc = L["Used to summon boss"] },
-		{ id = 18250, disc = L["Key"] },{ id = 17333, disc = L["Used to summon boss"] },{ id = 22754, disc = L["Used to summon boss"] },
-		{ id = 13523, disc = L["Used to summon boss"] },{ id = 18746, disc = L["Used to summon boss"] },{ id = 18663, disc = L["Used to summon boss"] },
-		{ id = 19974, disc = L["Used to summon boss"] },{ id = 7733, disc = L["Used to summon boss"] },{ id = 10818, disc = L["Used to summon boss"] },
-		{ name = L["Tier 0.5"] },{ id = 22057, disc = L["Used to summon boss"] },{ id = 21986, disc = L["Used to summon boss"] },
+		{ name = L["Key"] },
+		{ id = 16309},
+		{ id = 12344},
+		{ id = 17191},
+		{ id = 7146},
+		{ id = 12382},
+		{ id = 6893},
+		{ id = 11000},
+		{ id = 11140},
+		{ id = 18249},
+		{ id = 13704},
+		{ id = 11197},
+		{ id = 18266},
+		{ id = 18268},
+		{ id = 13873},
+		{ name = L["Misc"] }, --16
+		{ id = 19931, disc = L["Used to summon boss"] },
+		{ id = 9240, disc = L["Used to summon boss"] },
+		{ id = 18250, disc = L["Key"] },
+		{ id = 17333, disc = L["Used to summon boss"] },
+		{ id = 22754, disc = L["Used to summon boss"] },
+		{ id = 13523, disc = L["Used to summon boss"] },
+		{ id = 18746, disc = L["Used to summon boss"] },
+		{ id = 18663, disc = L["Used to summon boss"] },
+		{ id = 19974, disc = L["Used to summon boss"] },
+		{ id = 7733, disc = L["Used to summon boss"] },
+		{ id = 10818, disc = L["Used to summon boss"] },
+		{ name = L["Tier 0.5"] },
+		{ id = 22057, disc = L["Used to summon boss"] },
+		{ id = 21986, disc = L["Used to summon boss"] },-- 30
+		{ id = 61234},--key 31
 	},
 	CenarionCircle = {
 		{},
@@ -158,6 +189,9 @@ AtlasLoot_Data = {
 		{ id=65033, disc = L["Enchant"]..","..L["Shoulder"], "", "", "", "", "", "15", "#zandalar#" },
 		{ id=20013 },
 	},
+
+
+
 	-- old
 	BWLRazorgore = { --https://database.turtle-wow.org/?npc=12435
 		{ 16926, "INV_Bracer_09", "=q4=Bindings of Transcendence", "=ds=#s8#, #a1# =q9=#c5#", "11%", "", "", "", "", "", "", "", "", "", "", { {
