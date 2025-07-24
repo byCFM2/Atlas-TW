@@ -190,7 +190,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {id=12969},
                 {},
                 {id=24101,disc=L["Book"], dropRate=13},
-                {id=19227,disc=L["Darkmoon Faire Card"], dropRate=5},
+                {id=19227,disc=L["Darkmoon Faire Card"], dropRate=5, container={19288}},
                 {id=12731,disc=L["Misc"], dropRate=2},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},

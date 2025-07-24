@@ -91,7 +91,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
         {
             id = "LKHGrizikil",
             prefix = "3)",
-            name = "Grizikil",
+            name = BB["Grizikil"],
             defaults = { dropRate = 14 },
             loot = {
                 {id=61291, dropRate=20},
@@ -144,7 +144,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
         {
             id = "LKHLordBlackwaldII",
             prefix = "5)",
-            name = "Lord Blackwald II",
+            name = BB["Lord Blackwald II"],
             defaults = { dropRate = 14 },
             loot = {
                 {id=61266, dropRate=20},
@@ -183,7 +183,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
         {
             id = "LKHMoroes",
             prefix = "6)",
-            name = "Moroes",
+            name = BB["Moroes"],
             defaults = { dropRate = 10 },
             loot = {
                 {id=61284, dropRate=10},
