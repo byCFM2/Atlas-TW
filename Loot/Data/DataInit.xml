@@ -14,8 +14,8 @@
     <Include file="Instances\Upper_Blackrock_Spire.lua"/>
     <Include file="Instances\Lower_Karazhan_Halls.lua"/>
     <Include file="Instances\Scholomance.lua"/>
-    
     <Include file="Instances\Stratholme.lua"/>
+    
     <Include file="Instances\The_Black_Morass.lua"/>
     <Include file="Instances\Stormwind_Vault.lua"/>
     <Include file="Instances\Lower_Blackrock_Spire.lua"/>
