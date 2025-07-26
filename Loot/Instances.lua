@@ -55,6 +55,8 @@ AtlasLoot_Data = {
 		{ id = 22057, disc = L["Used to summon boss"] },
 		{ id = 21986, disc = L["Used to summon boss"] },-- 30
 		{ id = 61234},--key 31
+		{ id = 51356},--key 32
+
 	},
 	CenarionCircle = {
 		{},

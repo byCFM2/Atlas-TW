@@ -426,8 +426,8 @@ function AtlasLootTip.extendTooltip(tooltip)
 								if source then
 									break
 								end
-								for i2, _ in pairs(v2["container"][i]) do
-									if v2["container"][i][i2][1] == itemID then
+								for i2, _ in pairs(v2["container"]) do
+									if v2["container"] == itemID then
 										source = k1
 										break
 									end
