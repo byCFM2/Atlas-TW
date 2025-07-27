@@ -98,7 +98,7 @@ BabbleBoss:RegisterTranslations("enUS", function()
 		["Engineer Figgles"] = true,
 		["Corrosis"] = true,
 		["Hatereaver Annihilator"] = true,
-		["Hargesh Doomcaller"] = true,
+		["Har'gesh Doomcaller"] = true,
 		["Antnormi"] = true,
 		["Infinite Chromie"] = true,
 		["Stormwind Vault"] = true,

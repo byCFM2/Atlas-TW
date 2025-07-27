@@ -1520,7 +1520,7 @@ AtlasMaps = {
             CreateEntry(Colors.GREY, Constants.INDENT .. "a) " .. L["Hateforge Chemistry Documents"]),
             CreateNPCEntry("3", "Corrosis", "HQCorrosis"),
             CreateNPCEntry("4", "Hatereaver Annihilator", "HQHatereaverAnnihilator"),
-            CreateNPCEntry("5", "Hargesh Doomcaller", "HQHargeshDoomcaller"),
+            CreateNPCEntry("5", "Har'gesh Doomcaller", "HQHargeshDoomcaller"),
             CreateEmptyEntry(),
             CreateTrashMobsEntry("HQTrash"),
             CreateEmptyEntry(),

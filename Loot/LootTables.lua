@@ -375,7 +375,7 @@ AtlasLoot_TableNames = {
 	["HQEngineerFiggles"] = { BZ["Hateforge Quarry"].." - "..BB["Engineer Figgles"], "AtlasLootItems" },
 	["HQCorrosis"] = { BZ["Hateforge Quarry"].." - "..BB["Corrosis"], "AtlasLootItems" },
 	["HQHatereaverAnnihilator"] = { BZ["Hateforge Quarry"].." - "..BB["Hatereaver Annihilator"], "AtlasLootItems" },
-	["HQHargeshDoomcaller"] = { BZ["Hateforge Quarry"].." - "..BB["Hargesh Doomcaller"], "AtlasLootItems" },
+	["HQHargeshDoomcaller"] = { BZ["Hateforge Quarry"].." - "..BB["Har'gesh Doomcaller"], "AtlasLootItems" },
 	["HQTrash"] = { L["Trash Mobs"].." ("..BZ["Hateforge Quarry"]..")", "AtlasLootItems" },
 	-- The Crescent Grove
 	["TCGGrovetenderEngryss"] = { BZ["The Crescent Grove"].." - "..BB["Grovetender Engryss"], "AtlasLootItems" },
@@ -1284,7 +1284,7 @@ AtlasLoot_TableNamesBoss = {
 		["HQEngineerFiggles"] = { BB["Engineer Figgles"], "AtlasLootItems" },
 		["HQCorrosis"] = { BB["Corrosis"], "AtlasLootItems" },
 		["HQHatereaverAnnihilator"] = { BB["Hatereaver Annihilator"], "AtlasLootItems" },
-		["HQHargeshDoomcaller"] = { BB["Hargesh Doomcaller"], "AtlasLootItems" },
+		["HQHargeshDoomcaller"] = { BB["Har'gesh Doomcaller"], "AtlasLootItems" },
 		["HQTrash"] = { L["Trash Mobs"], "AtlasLootItems" },
 	},
 	[BZ["The Crescent Grove"]] = {

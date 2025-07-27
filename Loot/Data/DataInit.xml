@@ -17,10 +17,11 @@
     <Include file="Instances\Stratholme.lua"/>
     <Include file="Instances\Stormwind_Vault.lua"/>
     <Include file="Instances\Karazhan_Crypt.lua"/>
-    
-    <Include file="Instances\The_Black_Morass.lua"/>
     <Include file="Instances\BlackrockSpireLower.lua"/>
     <Include file="Instances\Maraudon.lua"/>
+    <Include file="Instances\The_Black_Morass.lua"/>
+    <Include file="Instances\HateforgeQuarry.lua"/>
+    <Include file="Instances\DireMaul.lua"/>
 
     <!-- Данные мирового контента 
     <Include file="World\World_Bosses.lua"/>-->

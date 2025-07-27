@@ -7,7 +7,7 @@ local L = AtlasTW.Local
 AtlasTW.ItemDB = {}
 
 AtlasTW.ItemDB.SLOT_KEYWORDS = {
-    [L["Head"]] = 0, [L["Shoulder"]] = 0,
+    [L["Head"]] = 0, [L["Shoulder"]] = 0, [L["Tabard"]] = 0,
     [L["Chest"]] = 0,[L["Wrist"]] = 0, [L["Hands"]] = 0, [L["Relic"]] = 0,
     [L["Legs"]] = 0, [L["Feet"]] = 0, [L["Main Hand"]] = 0, [L["One-Hand"]] = 0,
     [L["Off Hand"]] = 0, [L["Waist"]] = 0, [L["Two-Hand"]] = 0, [L["Ranged"]] = 0,
@@ -56,7 +56,7 @@ local function getColoredText(text, typeText)
 
     -- Handle different text types
     if typeText == "slot" then
-        local canWear = string.find(text, L["Cloth"]) or string.find(text, L["Fishing Pole"])
+        local canWear = string.find(text, L["Cloth"]) or string.find(text, L["Fishing Pole"]) or string.find(text, L["Tabard"])
         if not canWear then
             local classItems = AtlasTW.ItemDB.ClassItems[playerClass]
             for _, item in pairs(classItems) do

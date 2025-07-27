@@ -432,7 +432,7 @@ local BS = AceLibrary("Babble-Spell-2.2a")
 		{ 61001, "INV_Sword_34", "=q3=Claw of the Infinite", "=ds=#h1#, #w4#" },
 		{ 84602, "INV_Wand_07", "=q3=Consecrated Caduceus", "=ds=#w12#" },
 		{ 84603, "inv_staff_10", "=q3=Rod of the Churning Hourglass", "=ds=#h2#, #w9#" },
-		{ 0, "", "", "" },		
+		{ 0, "", "", "" },
 		{ 50070, "INV_Misc_Head_Dragon_Bronze", "=q1=Bronze Whelpling", "=ds=#e15#" },
 		{ 0, "", "", "" },
 		{ 0, "", "", "" },

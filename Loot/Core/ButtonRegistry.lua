@@ -896,7 +896,7 @@ AtlasLoot_TableRegistry = {
             { ID = "HQEngineerFiggles", Title = BB["Engineer Figgles"] },
             { ID = "HQCorrosis", Title = BB["Corrosis"] },
             { ID = "HQHatereaverAnnihilator", Title = BB["Hatereaver Annihilator"] },
-            { ID = "HQHargeshDoomcaller", Title = BB["Hargesh Doomcaller"] },
+            { ID = "HQHargeshDoomcaller", Title = BB["Har'gesh Doomcaller"] },
             { ID = "HQTrash", Title = L["Trash Mobs"] },
         }
     },

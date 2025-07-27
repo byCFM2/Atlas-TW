@@ -292,8 +292,9 @@ AtlasTW.InstanceData.Stratholme = {
                 {id=61791, dropRate=.25, container={61784}},
                 {id=13250},
                 {},
-                {id=70226, disc=L["Quest Item"],dropRate=3},
-                {id=41700, disc=L["Quest Item"],dropRate=100},
+                {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,
+                    70234,70235,70236,70238}},
+                {id=41700,dropRate=100,container={41704}},
                 {id=51217, disc=L["Transmogrification"], dropRate=100},
             }
         },
@@ -509,8 +510,9 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 {id=61791, dropRate=.25, container={61784}},
                 {},
-                {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=41700, disc=L["Quest Item"],dropRate=100},
+                {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,
+                    70234,70235,70236,70238}},
+                {id=41700,dropRate=100,container={41704}},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=100},
             }

@@ -24,7 +24,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
         { letter = "A) " .. L["Entrance"] }
     },
     Keys = {
-        { name = L["Karazhan Crypt Key"], loot = "VanillaKeys", info = L["Required for entry"] },
+        { name = L["Karazhan Crypt Key"], loot = "VanillaKeys" },
     },
     Bosses = {
         {
@@ -156,7 +156,8 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {},
                 {id=83571, disc=L["Book"], dropRate=15},
                 {},
-                {id=70226, disc=L["Quest Item"],dropRate=1},
+                {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,
+                    70234,70235,70236,70238}},
                 {id=51217, disc=L["Fashion Coin"], dropRate=100},
             }
         },

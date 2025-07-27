@@ -259,7 +259,6 @@ AtlasTW.Local.Translations = {
 	["Gordok Courtyard Key"] = true,
 	["Gordok Inner Door Key"] = true,
 	--"Library" omitted from here and DM West because of SM: "Library" duplicate
-	["Stomper Kreeg"] = true,
 	["Knot Thimblejack"] = true,
 	["Tribute Run"] = true,
 
@@ -905,6 +904,7 @@ AtlasTW.Local.Translations = {
 	["Random resistance"] = true,
 	["Random color"] = true,
 	["Toy"] = true,
+	["Cache"] = true,
 	["Path of the Conqueror"] = true,
 	["Path of the Invoker"] = true,
 	["Path of the Protector"] = true,

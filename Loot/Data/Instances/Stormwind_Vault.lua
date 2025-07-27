@@ -132,8 +132,8 @@ AtlasTW.InstanceData.StormwindVault = {
                 {id=83570, dropRate=15},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=80},
-                {id=41700, dropRate=100},
-                {id=41406, dropRate=100}
+                {id=41700,dropRate=100,container={41704}},
+                {id=41406, dropRate=100,container={55133,55134,55135}}
 
             }
         },
