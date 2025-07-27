@@ -9398,8 +9398,8 @@ kQuestInstanceData["CavernsOfTimeBlackMorass"].Quests.Horde[4] = kQuestInstanceD
 kQuestInstanceData["HateforgeQuarry"] = {
     Story = "Hateforge Quarry is an instance dungeon located in the Burning Steppes. Hidden away at the southeastern walls of the Burning Steppes, the Hateforge Quarry is the Dark Iron dwarves' newest effort to find of a new weapon to use against their adversaries. The innocent-looking quarry hides an insidious cavern, where the Shadowforge dwarves plot new schemes against all those that oppose them.",
     Caption = "Hateforge Quarry",
-    QAA = "5 Quest",
-    QAH = "5 Quest",
+    QAA = "7 Quest",
+    QAH = "6 Quest",
     Quests = {
         Alliance = {},
         Horde = {}
@@ -9543,6 +9543,31 @@ kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[6] = {
         },
     }
 }
+kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[7] = {
+    Title = "7. Gleaming Blood",
+    Level = "50",
+    Attain = "50",
+    Aim = "Find someone to teach you about the scalding gemstone",
+    Location = "Glimmering Shard (Hateforge Quarry"..yellow.."[74, 73]"..white..").",
+    Note = red.."(Jewelcrafting ONLY)"..white.." Find 'Glimmering Shard' and get the quest.\nYou will get the reward finishing last quest in the questline.",
+    Prequest = "No",
+    Folgequest = "Thunderforge Mastery",
+    Rewards = {
+        Text = blue.."Reward: All",
+        {
+            Name = "Gorgeous Mountain Gemstone",
+            ID = "61818",
+            Color = blue,
+            Description = "Enchant",
+        },
+        {
+            Name = "Plans: Gorgeous Mountain Gemstone",
+            ID = "70209",
+            Color = blue,
+            Description = "Pattern",
+        },
+    }
+}
 kQuestInstanceData["HateforgeQuarry"].Quests.Horde[1] = kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[1]
 kQuestInstanceData["HateforgeQuarry"].Quests.Horde[2] = kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[2]
 kQuestInstanceData["HateforgeQuarry"].Quests.Horde[3] = kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[3]
@@ -9614,6 +9639,7 @@ kQuestInstanceData["HateforgeQuarry"].Quests.Horde[5] = {
         },
     }
 }
+kQuestInstanceData["HateforgeQuarry"].Quests.Horde[6] = kQuestInstanceData["HateforgeQuarry"].Quests.Alliance[7]
 
 --------------- INST57 - Stormwind Vault ---------------
 kQuestInstanceData["StormwindVault"] = {

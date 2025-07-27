@@ -853,3 +853,8 @@ for _, bossData in ipairs(AtlasTW.InstanceData.DireMaulNorth.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
     bossData.loot = nil -- Очищаем временные данные
 end
+
+for _, bossData in ipairs(AtlasTW.InstanceData.DireMaulEnt.Bosses) do
+    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
+    bossData.loot = nil -- Очищаем временные данные
+end

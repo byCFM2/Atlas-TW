@@ -114,7 +114,7 @@ AtlasTW.InstanceData.Maraudon = {
             prefix = "4)",
             name = L["Maraudos"],
             loot = {
-                {id=17764, disc=L["Quest Item"], dropRate = 100},
+                {id=17764, disc=L["Quest Item"], dropRate = 100,container={17774}},
             }
         },
         {

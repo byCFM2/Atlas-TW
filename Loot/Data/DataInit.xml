@@ -22,6 +22,12 @@
     <Include file="Instances\The_Black_Morass.lua"/>
     <Include file="Instances\HateforgeQuarry.lua"/>
     <Include file="Instances\DireMaul.lua"/>
+    <Include file="Instances\BlackrockDepths.lua"/>
+    <Include file="Instances\GilneasCity.lua"/>
+
+    <Include file="Instances\TheCrescentGrove.lua"/>
+    <Include file="Instances\Uldaman.lua"/>
+    <Include file="Instances\TheSunkenTemple.lua"/>
 
     <!-- Данные мирового контента 
     <Include file="World\World_Bosses.lua"/>-->
