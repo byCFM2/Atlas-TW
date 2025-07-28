@@ -114,11 +114,12 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             name = BB["Atal'alarion"],
             defaults = { dropRate = 33 },
             loot = {
-                {id=10800},
-                {id=10798},
-                {id=10799},
+                {id=10800}, -- Darkwater Bracers
+                {id=10798}, -- Atal'alarion's Tusk Ring
+                {id=10799}, -- Headspike
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=5},
+                {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
+                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -127,9 +128,12 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             name = L["Spawn of Hakkar"].." ("..L["Wanders"]..")",
             defaults = { dropRate = 47 },
             loot = {
-                {id=10801},
+                {id=10801}, -- Slitherscale Boots
                 {},
-                {id=10802, dropRate=26},
+                {id=10802, dropRate=26}, -- Wingveil Cloak
+                {},
+                {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
+                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -138,16 +142,18 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             name = BB["Avatar of Hakkar"],
             defaults = { dropRate = 17 },
             loot = {
-                {id=12462, dropRate=2},
+                {id=12462, dropRate=2}, -- Embrace of the Wind Serpent
                 {},
-                {id=10843},
-                {id=10845},
-                {id=10842},
-                {id=10846},
-                {id=10838},
-                {id=10844},
+                {id=10843}, -- Might of Hakkar
+                {id=10845}, -- Warrior's Embrace
+                {id=10842}, -- Windscale Sarong
+                {id=10846}, -- Bloodshot Greaves
+                {id=10838}, -- Spire of Hakkar
+                {id=10844}, -- Featherskin Cape
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=5},
+                {id=10663, dropRate=100, container={10662}}, -- Essence of Hakkar (Quest)
+                {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
+                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -156,11 +162,13 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             name = BB["Jammal'an the Prophet"],
             defaults = { dropRate = 33 },
             loot = {
-                {id=10806},
-                {id=10808},
-                {id=10807},
+                {id=10806}, -- Vestments of the Atal'ai Prophet
+                {id=10808}, -- Gloves of the Atal'ai Prophet
+                {id=10807}, -- Kilt of the Atal'ai Prophet
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=5},
+                {id=61791, dropRate=0.25, container={61784}}, -- Plans: Arcanite Belt Buckle
+                {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
+                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -168,9 +176,12 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             name = BB["Ogom the Wretched"],
             defaults = { dropRate = 33 },
             loot = {
-                {id=10805},
-                {id=10803},
-                {id=10804},
+                {id=10805}, -- Eater of the Dead
+                {id=10803}, -- Blade of the Wretched
+                {id=10804}, -- Fist of the Damned
+                {},
+                {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
+                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -184,16 +195,17 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             name = BB["Dreamscythe"],
             defaults = { dropRate = 5 },
             loot = {
-                {id=12465},
-                {id=12466},
-                {id=12464},
-                {id=10797},
-                {id=12463},
-                {id=12243},
-                {id=10795},
-                {id=10796},
+                {id=12465}, -- Nightfall Drape
+                {id=12466}, -- Dawnspire Cord
+                {id=12464}, -- Bloodfire Talons
+                {id=10797}, -- Firebreather
+                {id=12463}, -- Drakefang Butcher
+                {id=12243}, -- Smoldering Claw
+                {id=10795}, -- Drakeclaw Band
+                {id=10796}, -- Drakestone
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=5},
+                {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
+                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -201,16 +213,18 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             name = BB["Weaver"],
             defaults = { dropRate = 5 },
             loot = {
-                {id=12465},
-                {id=12466},
-                {id=12464},
-                {id=10797},
-                {id=12463},
-                {id=12243},
-                {id=10795},
-                {id=10796},
+                {id=12465}, -- Nightfall Drape
+                {id=12466}, -- Dawnspire Cord
+                {id=12464}, -- Bloodfire Talons
+                {id=10797}, -- Firebreather
+                {id=12463}, -- Drakefang Butcher
+                {id=12243}, -- Smoldering Claw
+                {id=10795}, -- Drakeclaw Band
+                {id=10796}, -- Drakestone
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=5},
+                {id=61557, dropRate=100, container={50545}}, -- Slumberer's Shard (Quest)
+                {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
+                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -219,14 +233,21 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             name = BB["Morphaz"],
             defaults = { dropRate = 5 },
             loot = {
-                {id=12465},
-                {id=12466},
-                {id=12464},
-                {id=10797},
-                {id=12463},
-                {id=12243},
-                {id=10795},
-                {id=10796},
+                {id=12465}, -- Nightfall Drape
+                {id=12466}, -- Dawnspire Cord
+                {id=12464}, -- Bloodfire Talons
+                {id=10797}, -- Firebreather
+                {id=12463}, -- Drakefang Butcher
+                {id=12243}, -- Smoldering Claw
+                {id=10795}, -- Drakeclaw Band
+                {id=10796}, -- Drakestone
+                {},
+                {id=20019, dropRate=100, container={20083, 19991, 19992}}, -- Tooth of Morphaz (Quest) - Hunter rewards
+                {id=20022, dropRate=100, container={19984, 20255, 19982}}, -- Azure Key (Quest) - Rogue rewards
+                {id=20025, dropRate=100, container={19990, 20082, 20006}}, -- Blood of Morphaz (Quest) - Priest rewards
+                {id=20085, dropRate=100, container={20035, 20037, 20036}}, -- Arcane Shard (Quest) - Mage rewards
+                {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
+                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -234,16 +255,18 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             name = BB["Hazzas"],
             defaults = { dropRate = 5 },
             loot = {
-                {id=12465},
-                {id=12466},
-                {id=12464},
-                {id=10797},
-                {id=12463},
-                {id=12243},
-                {id=10795},
-                {id=10796},
+                {id=12465}, -- Nightfall Drape
+                {id=12466}, -- Dawnspire Cord
+                {id=12464}, -- Bloodfire Talons
+                {id=10797}, -- Firebreather
+                {id=12463}, -- Drakefang Butcher
+                {id=12243}, -- Smoldering Claw
+                {id=10795}, -- Drakeclaw Band
+                {id=10796}, -- Drakestone
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=5},
+                {id=60535, dropRate=100, container={60536}}, -- Heart of Hazzas (Quest) - Turtle WoW rewards
+                {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
+                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
