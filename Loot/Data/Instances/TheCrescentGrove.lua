@@ -15,7 +15,6 @@ AtlasTW.InstanceData.TheCrescentGrove = {
     Location = BZ["Ashenvale"],
     Level = {32,38},
     Acronym = "CG",
-    Attunement = false,
     MaxPlayers = 5,
     DamageType = L["Nature"],
     Entrances = {
@@ -42,7 +41,7 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 {},
                 {id=60176, dropRate=100},
                 {},
-                {id=51217, dropRate=1},
+                {id=51217, disc=L["Transmogrification"], dropRate=1}, -- Fashion Coin
             }
         },
         {
@@ -58,7 +57,7 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 {},
                 {id=83229, dropRate=5},
                 {},
-                {id=51217, dropRate=1},
+                {id=51217, disc=L["Transmogrification"], dropRate=1}, -- Fashion Coin
             }
         },
         {
@@ -73,7 +72,7 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 {},
                 {id=83210, dropRate=10},
                 {},
-                {id=51217, dropRate=1},
+                {id=51217, disc=L["Transmogrification"], dropRate=1}, -- Fashion Coin
             }
         },
         {
@@ -87,7 +86,7 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 {id=83214},
                 {id=83215},
                 {},
-                {id=51217, dropRate=1},
+                {id=51217, disc=L["Transmogrification"], dropRate=1}, -- Fashion Coin
             }
         },
         {
@@ -103,7 +102,7 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 {id=83218},
                 {id=83219},
                 {},
-                {id=51217, dropRate=5},
+                {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
             }
         },
         {

@@ -17,7 +17,6 @@ AtlasTW.InstanceData.Stratholme = {
     Location = BZ["Eastern Plaguelands"],
     Level = {45,60},
     Acronym = "Strat",
-    Attunement = false,
     MaxPlayers = 10,
     DamageType = L["Physical"],
     Entrances = {

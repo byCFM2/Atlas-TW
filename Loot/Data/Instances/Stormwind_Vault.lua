@@ -17,7 +17,6 @@ AtlasTW.InstanceData.StormwindVault = {
     Acronym = "SV",
     MaxPlayers = 5,
     DamageType = L["Physical"],
-    Attunement = false,
     Entrances = {
         { letter = "A", info = L["Entrance"] }
     },

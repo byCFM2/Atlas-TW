@@ -60,7 +60,7 @@ AtlasTW.InstanceData.Uldaman = {
             id = "UldBaelogsChest",
             name = L["Baelog's Chest"],
             loot = {
-                {id=7740, disc = L["Misc"], dropRate=100},
+                {id=7740, disc = L["Misc"], dropRate=100, container={7733}},
             }
         },
         {
@@ -85,7 +85,7 @@ AtlasTW.InstanceData.Uldaman = {
                 {id=9390},
                 {id=9387},
                 {},
-                {id=7741, dropRate=100, container={7733}},
+                {id=7741, disc = L["Misc"], dropRate=100, container={7733}},
             }
         },
         {

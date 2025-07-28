@@ -22,7 +22,6 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
     Location = BZ["Silithus"],
     Level = 60,
     Acronym = "AQ20",
-    Attunement = false,
     MaxPlayers = 20,
     DamageType = L["Nature"],
     Entrances = {

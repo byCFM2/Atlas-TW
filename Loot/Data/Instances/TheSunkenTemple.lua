@@ -54,7 +54,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         { letter = "C)", info = L["Balcony Minibosses"].." ("..L["Upper"]..")"},
     },
     Keys = {
-        { name = BB["Yeh'kinya's Scroll"], loot = "VanillaKeys", info = BB["Avatar of Hakkar"] },
+        { name = L["Yeh'kinya's Scroll"], loot = "VanillaKeys", info = BB["Avatar of Hakkar"] },
     },
     Bosses = {
         {
@@ -64,20 +64,20 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             color = "|cffff8000",
             defaults = { dropRate = 7 },
             loot = {
-                {id=10783},
-                {id=10784},
-                {id=10787},
+                {id=10783}, -- Atal'ai Spaulders
+                {id=10784}, -- Atal'ai Breastplate
+                {id=10787}, -- Atal'ai Gloves
                 {},
-                {id=10788},
-                {id=10785},
-                {id=10786},
+                {id=10788}, -- Atal'ai Girdle
+                {id=10785}, -- Atal'ai Leggings
+                {id=10786}, -- Atal'ai Boots
                 {},
                 {id=20606,dropRate=100,container={20369, 20503, 20556, 20536, 20534, 20530,
-                    20521,20130,20517,20504,20505,20512,20620}},
+                    20521,20130,20517,20504,20505,20512,20620}}, -- Amber Voodoo Feather
                 {id=20607,dropRate=100,container={20369, 20503, 20556, 20536, 20534, 20530,
-                    20521,20130,20517,20504,20505,20512,20620}},
+                    20521,20130,20517,20504,20505,20512,20620}}, -- Blue Voodoo Feather
                 {id=20608,dropRate=100,container={20369, 20503, 20556, 20536, 20534, 20530,
-                    20521,20130,20517,20504,20505,20512,20620}},
+                    20521,20130,20517,20504,20505,20512,20620}}, -- Green Voodoo Feather
             }
         },
         {
@@ -118,8 +118,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {id=10798}, -- Atal'alarion's Tusk Ring
                 {id=10799}, -- Headspike
                 {},
+                {id=70226, disc=L["Quest Item"], dropRate=1.2}, -- Ancient Warfare Text
                 {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
-                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -132,8 +132,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {},
                 {id=10802, dropRate=26}, -- Wingveil Cloak
                 {},
+                {id=70226, disc=L["Quest Item"], dropRate=1.2}, -- Ancient Warfare Text
                 {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
-                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -144,16 +144,16 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             loot = {
                 {id=12462, dropRate=2}, -- Embrace of the Wind Serpent
                 {},
-                {id=10843}, -- Might of Hakkar
+                {id=10843}, -- Featherskin Cape
                 {id=10845}, -- Warrior's Embrace
                 {id=10842}, -- Windscale Sarong
                 {id=10846}, -- Bloodshot Greaves
-                {id=10838}, -- Spire of Hakkar
-                {id=10844}, -- Featherskin Cape
+                {id=10838}, -- Might of Hakkar
+                {id=10844}, -- Spire of Hakkar
                 {},
-                {id=10663, dropRate=100, container={10662}}, -- Essence of Hakkar (Quest)
+                {id=10663, dropRate=100, container={10749,10750,10751}}, -- Essence of Hakkar (Quest)
+                {id=70226, disc=L["Quest Item"], dropRate=1.2}, -- Ancient Warfare Text
                 {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
-                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -166,9 +166,9 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {id=10808}, -- Gloves of the Atal'ai Prophet
                 {id=10807}, -- Kilt of the Atal'ai Prophet
                 {},
+                {id=70226, disc=L["Quest Item"], dropRate=1.2}, -- Ancient Warfare Text
                 {id=61791, dropRate=0.25, container={61784}}, -- Plans: Arcanite Belt Buckle
                 {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
-                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -180,8 +180,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {id=10803}, -- Blade of the Wretched
                 {id=10804}, -- Fist of the Damned
                 {},
+                {id=70226, disc=L["Quest Item"], dropRate=1.2}, -- Ancient Warfare Text
                 {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
-                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -204,8 +204,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {id=10795}, -- Drakeclaw Band
                 {id=10796}, -- Drakestone
                 {},
+                {id=70226, disc=L["Quest Item"], dropRate=1.2}, -- Ancient Warfare Text
                 {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
-                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -223,8 +223,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {id=10796}, -- Drakestone
                 {},
                 {id=61557, dropRate=100, container={50545}}, -- Slumberer's Shard (Quest)
+                {id=70226, disc=L["Quest Item"], dropRate=1.2}, -- Ancient Warfare Text
                 {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
-                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -246,8 +246,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {id=20022, dropRate=100, container={19984, 20255, 19982}}, -- Azure Key (Quest) - Rogue rewards
                 {id=20025, dropRate=100, container={19990, 20082, 20006}}, -- Blood of Morphaz (Quest) - Priest rewards
                 {id=20085, dropRate=100, container={20035, 20037, 20036}}, -- Arcane Shard (Quest) - Mage rewards
+                {id=70226, disc=L["Quest Item"], dropRate=1.2}, -- Ancient Warfare Text
                 {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
-                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -264,9 +264,9 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {id=10795}, -- Drakeclaw Band
                 {id=10796}, -- Drakestone
                 {},
-                {id=60535, dropRate=100, container={60536}}, -- Heart of Hazzas (Quest) - Turtle WoW rewards
+                {id=60535, dropRate=100, container={60536}}, -- Heart of Hazzas (Quest)
+                {id=70226, disc=L["Quest Item"], dropRate=1.2}, -- Ancient Warfare Text
                 {id=51217, disc=L["Transmogrification"], dropRate=5}, -- Fashion Coin
-                {id=70226, dropRate=1.2, container={70227, 70228, 70229, 70230, 70231, 70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
             }
         },
         {
@@ -275,20 +275,20 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             name = BB["Shade of Eranikus"],
             defaults = { dropRate = 17 },
             loot = {
-                {id=10847, dropRate=0.5},
+                {id=10847, dropRate=0.5}, -- Dragon's Call
                 {},
-                {id=10833},
-                {id=10829},
-                {id=10836},
-                {id=10835},
-                {id=10837},
-                {id=10828},
+                {id=10833}, -- Horns of Eranikus
+                {id=10829}, -- Dragon's Eye
+                {id=10836}, -- Rod of Corrosion
+                {id=10835}, -- Crest of Supremacy
+                {id=10837}, -- Tooth of Eranikus
+                {id=10828}, -- Dire Nail
                 {},
-                {id=70226, dropRate=3, container={70227, 70228, 70229, 70230, 70231,
-                    70232, 70233, 70234, 70235, 70236}},
-                {id=61791, dropRate=.25, container={61784}},
+                {id=70226, disc=L["Quest Item"], dropRate=3, container={70227, 70228, 70229, 70230, 70231,
+                    70232, 70233, 70234, 70235, 70236}}, -- Ancient Warfare Text
+                {id=61791, dropRate=.25, container={61784}}, -- Plans: Arcanite Belt Buckle
                 {},
-                {id=10454, dropRate=100, container={10455}},
+                {id=10454, dropRate=100, container={10455}}, -- Essence of Eranikus (Quest)
             }
         },
         {
@@ -309,23 +309,23 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             name = L["Trash Mobs"],
             defaults = { dropRate = 0.02 },
             loot = {
-                {id=10630},
-                {id=10632},
-                {id=10631},
-                {id=10633},
-                {id=10629},
-                {id=10634},
-                {id=10624},
-                {id=10623},
-                {id=10625},
-                {id=10626},
-                {id=10628},
-                {id=10627},
+                {id=10630}, -- Soulcatcher Halo
+                {id=10632}, -- Slimescale Bracers
+                {id=10631}, -- Murkwater Gauntlets
+                {id=10633}, -- Silvershell Leggings
+                {id=10629}, -- Mistwalker Boots
+                {id=10634}, -- Mindseye Circle
+                {id=10624}, -- Stinging Bow
+                {id=10623}, -- Winter's Bite
+                {id=10625}, -- Stealthblade
+                {id=10626}, -- Ragehammer
+                {id=10628}, -- Deathblow
+                {id=10627}, -- Bludgeon of the Grinning Dog
                 {},
-                {id=10780},
+                {id=10780}, -- Mark of Hakkar
                 {},
-                {id=16216, dropRate=1.48},
-                {id=15733, dropRate=4, container={15046}},
+                {id=16216, dropRate=1.48}, -- Formula: Enchant Cloak - Greater Resistance
+                {id=15733, dropRate=4, container={15046}}, -- Pattern: Green Dragonscale Leggings
             }
         }
     }
@@ -334,12 +334,12 @@ AtlasTW.InstanceData.TheSunkenTemple = {
 
 -- Инициализация предметов для всех боссов
 for _, bossData in ipairs(AtlasTW.InstanceData.TheSunkenTemple.Bosses) do
-    bossData.items = bossData.items or AtlasTW.CreateItemsFromloot(bossData)
+    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
     bossData.loot = nil -- Очищаем временные данные
 end
 
 -- Инициализация предметов для всех боссов
 for _, bossData in ipairs(AtlasTW.InstanceData.TheSunkenTempleEnt.Bosses) do
-    bossData.items = bossData.items or AtlasTW.CreateItemsFromloot(bossData)
+    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
     bossData.loot = nil -- Очищаем временные данные
 end

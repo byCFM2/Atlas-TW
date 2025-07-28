@@ -62,7 +62,6 @@ AtlasTW.InstanceData.ZulGurub = {
     Location = BZ["Stranglethorn Vale"],
     Level = {51,60},
     Acronym = "ZG",
-    Attunement = false,
     MaxPlayers = 20,
     DamageType = L["Physical"],
     Entrances = {

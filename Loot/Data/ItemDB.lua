@@ -7,16 +7,16 @@ local L = AtlasTW.Local
 AtlasTW.ItemDB = {}
 
 AtlasTW.ItemDB.SLOT_KEYWORDS = {
-    [L["Head"]] = 0, [L["Shoulder"]] = 0, [L["Tabard"]] = 0,
+    [L["Head"]] = 0, [L["Shoulder"]] = 0, [L["Tabard"]] = 0,[L["Projectile"]] = 0,
     [L["Chest"]] = 0,[L["Wrist"]] = 0, [L["Hands"]] = 0, [L["Relic"]] = 0,
     [L["Legs"]] = 0, [L["Feet"]] = 0, [L["Main Hand"]] = 0, [L["One-Hand"]] = 0,
     [L["Off Hand"]] = 0, [L["Waist"]] = 0, [L["Two-Hand"]] = 0, [L["Ranged"]] = 0,
 }
 AtlasTW.ItemDB.SLOT2_KEYWORDS = {
-    [L["Cloth"]] = 0,  [L["Leather"]] = 0, [L["Mail"]] = 0,[L["Plate"]] = 0,
+    [L["Cloth"]] = 0,  [L["Leather"]] = 0, [L["Mail"]] = 0,[L["Plate"]] = 0,[L["Bullet"]] = 0,
     [L["Mace"]] = 0, [L["Axe"]] = 0, [L["Dagger"]] = 0, [L["Sword"]] = 0, [L["Totem"]] = 0,
     [L["Held In Off-hand"]] = 0, [L["Shield"]] = 0, [L["Finger"]] = 0, [L["Neck"]] = 0,
-    [L["Trinket"]] = 0, [L["Back"]] = 0, [L["Bow"]] = 0, [L["Crossbow"]] = 0,
+    [L["Trinket"]] = 0, [L["Back"]] = 0, [L["Bow"]] = 0, [L["Crossbow"]] = 0,[L["Arrow"]] = 0,
     [L["Gun"]] = 0, [L["Polearm"]] = 0, [L["Libram"]] = 0, [L["Staff"]] = 0, [L["Idol"]] = 0,
     [L["Thrown"]] = 0, [L["Wand"]] = 0, [L["Fist Weapon"]] = 0,[L["Fishing Pole"]] = 0,
 }
@@ -56,7 +56,8 @@ local function getColoredText(text, typeText)
 
     -- Handle different text types
     if typeText == "slot" then
-        local canWear = string.find(text, L["Cloth"]) or string.find(text, L["Fishing Pole"]) or string.find(text, L["Tabard"])
+        local canWear = string.find(text, L["Cloth"]) or string.find(text, L["Fishing Pole"])
+            or string.find(text, L["Tabard"]) or string.find(text, L["Bullet"]) or string.find(text, L["Arrow"])
         if not canWear then
             local classItems = AtlasTW.ItemDB.ClassItems[playerClass]
             for _, item in pairs(classItems) do

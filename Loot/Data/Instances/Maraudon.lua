@@ -159,7 +159,7 @@ AtlasTW.InstanceData.Maraudon = {
                 {},
                 {id=60780, dropRate=3,container={65022}},
                 {},
-                {id=17684, dropRate=80},
+                {id=17684, dropRate=80,container={17775,17776,17777,17779}},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }

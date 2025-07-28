@@ -19,9 +19,9 @@ AtlasTW.InstanceData.BlackwingLair = {
     MaxPlayers = 40,
     DamageType = L["Fire"],
     Entrances = {
-        { letter = "A"..") " .. L["Entrance"] },
-        { letter = "B", info = L["Connection"] },
-        { letter = "C", info = L["Connection"] }
+        { letter = "A) ".. L["Entrance"] },
+        { letter = "B) ".. L["Connection"] },
+        { letter = "C) ".. L["Connection"] }
     },
     Bosses = {
         {
@@ -337,8 +337,102 @@ AtlasTW.InstanceData.BlackwingLair = {
         }
     }
 }
+-- Данные Blackrock Mountain Entrance
+AtlasTW.InstanceData.BlackrockMountainEnt = {
+    Name = BZ["Blackrock Mountain"] .. " (" .. L["Entrance"] .. ")",
+    Location = BZ["Blackrock Mountain"],
+    Entrances = {
+        { letter = "A) " .. BZ["Searing Gorge"] },
+        { letter = "B) " .. BZ["Burning Steppes"] },
+        { letter = "C) " .. BZ["Blackrock Depths"] .. " (BRD)" },
+        { letter = "D) " .. BZ["Lower Blackrock Spire"] .. " (LBRS)" }
+    },
+    Bosses = {
+        {
+            name = BZ["Molten Core"] .. " (MC) (" .. L["through "] .. "BRD)",
+            color = "|cff6666ff"
+        },
+        {
+            name = BZ["Upper Blackrock Spire"] .. " (UBRS)",
+            color = "|cff6666ff"
+        },
+        {
+            name = BZ["Blackwing Lair"] .. " (BWL) (" .. L["through "] .. "UBRS)",
+            color = "|cff6666ff"
+        },
+        {
+            name = L["Bodley"] .. " (" .. L["Ghost"] .. ")",
+            color = "|cff6666ff"
+        },
+        {
+            id = "BRDPyron",
+            prefix = "1)",
+            name = BB["Overmaster Pyron"],
+            postfix = L["Wanders"],
+            loot = {
+                {id=14486, dropRate=18, container={14134}},
+            }
+        },
+        {
+            prefix = "2)",
+            name = BB["Lothos Riftwaker"],
+            postfix = "MC " .. L["Teleport"],
+            color = "|cff9d9d9d",
+        },
+        {
+            prefix = "3)",
+            name = BB["Franclorn Forgewright"],
+            postfix = L["Ghost"],
+            color = "|cff9d9d9d",
+        },
+        {
+            prefix = "4)",
+            name = L["Meeting Stone"] .. " (BRD)",
+            color = "|cff9d9d9d",
+        },
+        {
+            prefix = "5)",
+            name = L["Orb of Command"] .. " (BWL " .. L["Teleport"] .. ")",
+            color = "|cff9d9d9d",
+        },
+        {
+            prefix = "6)",
+            name = L["Meeting Stone"] .. " (LBRS, UBRS)",
+            color = "|cff9d9d9d",
+        },
+        {
+            id = "BRMScarshieldQuartermaster",
+            prefix = "7)",
+            name = BB["Scarshield Quartermaster"],
+            postfix = L["Rare"],
+            loot = {
+                {id=13254, dropRate=3},
+                {id=13248, dropRate=3},
+                {},
+                {id=18987, dropRate=100},
+            }
+        },
+        {
+            id = "BRMBehemoth",
+            prefix = "8)",
+            name = BB["The Behemoth"],
+            postfix = L["Rare"],
+            loot = {
+                {id=11603, dropRate=99},
+                {},
+                {id=11446, dropRate=25,container={12061,12062,12065}},
+            }
+        }
+    }
+}
+
 -- Инициализация предметов для всех боссов
 for _, bossData in ipairs(AtlasTW.InstanceData.BlackwingLair.Bosses) do
+    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
+    bossData.loot = nil -- Очищаем временные данные
+end
+
+for _, bossData in ipairs(AtlasTW.InstanceData.BlackrockMountainEnt.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
     bossData.loot = nil -- Очищаем временные данные
 end

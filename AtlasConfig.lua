@@ -20,7 +20,7 @@ AtlasTW = {
         ["UldamanEnt"] =				{"Uldaman"},
         ["WailingCavernsEnt"] =			{"WailingCaverns"},
         ["DireMaulEnt"] =				{"DireMaulEast","DireMaulNorth","DireMaulWest"},
-        ["SMEnt"] =						{"SMArmory","SMLibrary","SMCathedral","SMGraveyard"}
+        ["ScarletMonasteryEnt"] =		{"ScarletMonasteryArmory","ScarletMonasteryLibrary","ScarletMonasteryCathedral","ScarletMonasteryGraveyard"}
     },
     --instance maps to entrance maps
     InstToEntMatches = {
@@ -39,16 +39,16 @@ AtlasTW = {
         ["DireMaulEast"] =				{"DireMaulEnt"},
         ["DireMaulNorth"] =				{"DireMaulEnt"},
         ["DireMaulWest"] =				{"DireMaulEnt"},
-        ["SMArmory"] =					{"SMEnt"},
-        ["SMLibrary"] =					{"SMEnt"},
-        ["SMCathedral"] =				{"SMEnt"},
-        ["SMGraveyard"] =				{"SMEnt"}
+        ["ScarletMonasteryArmory"] =					{"ScarletMonasteryEnt"},
+        ["ScarletMonasteryLibrary"] =					{"ScarletMonasteryEnt"},
+        ["ScarletMonasteryCathedral"] =				{"ScarletMonasteryEnt"},
+        ["ScarletMonasteryGraveyard"] =			{"ScarletMonasteryEnt"}
     },
     --Default map to auto-select to when no SubZone data is available
     AssocDefaults = {
         ["Dire Maul"] =					"DireMaulNorth",
         ["Blackrock Spire"] =			"BlackrockSpireLower",
-        ["Scarlet Monastery"] =			"SMEnt"
+        ["Scarlet Monastery"] =			"ScarletMonasteryEnt"
     },
     --Links maps together that are part of the same instance
     SubZoneAssoc = {
@@ -59,11 +59,11 @@ AtlasTW = {
         ["BlackrockSpireLower"] =		"Blackrock Spire",
         ["BlackrockSpireUpper"] =		"Blackrock Spire",
         ["BlackrockMountainEnt"] =		"Blackrock Spire",
-        ["SMGraveyard"] =				"Scarlet Monastery",
-        ["SMLibrary"] =					"Scarlet Monastery",
-        ["SMArmory"] =					"Scarlet Monastery",
-        ["SMCathedral"] =				"Scarlet Monastery",
-        ["SMEnt"] =						"Scarlet Monastery"
+        ["ScarletMonasteryGraveyard"] =			        "Scarlet Monastery",
+        ["ScarletMonasteryLibrary"] =					"Scarlet Monastery",
+        ["ScarletMonasteryArmory"] =					"Scarlet Monastery",
+        ["ScarletMonasteryCathedral"] =				    "Scarlet Monastery",
+        ["ScarletMonasteryEnt"] =						"Scarlet Monastery"
     },
     --Links SubZone values with specific instance maps
     SubZoneData = {
@@ -90,19 +90,19 @@ AtlasTW = {
         ["The Furnace"] =				"BlackrockSpireUpper",
         ["Hordemar City"] =				"BlackrockSpireUpper",
         ["Spire Throne"] =				"BlackrockSpireUpper",
-        ["Chamber of Atonement"] =		"SMGraveyard",
-        ["Forlorn Cloister"] =			"SMGraveyard",
-        ["Honor's Tomb"] =				"SMGraveyard",
-        ["Huntsman's Cloister"] =		"SMLibrary",
-        ["Gallery of Treasures"] =		"SMLibrary",
-        ["Athenaeum"] =					"SMLibrary",
-        ["Training Grounds"] =			"SMArmory",
-        ["Footman's Armory"] =			"SMArmory",
-        ["Crusader's Armory"] =			"SMArmory",
-        ["Hall of Champions"] =			"SMArmory",
-        ["Chapel Gardens"] =			"SMCathedral",
-        ["Crusader's Chapel"] =			"SMCathedral",
-        ["The Grand Vestibule"] =		"SMEnt"
+        ["Chamber of Atonement"] =		"ScarletMonasteryGraveyard",
+        ["Forlorn Cloister"] =			"ScarletMonasteryGraveyard",
+        ["Honor's Tomb"] =				"ScarletMonasteryGraveyard",
+        ["Huntsman's Cloister"] =		"ScarletMonasteryLibrary",
+        ["Gallery of Treasures"] =		"ScarletMonasteryLibrary",
+        ["Athenaeum"] =					"ScarletMonasteryLibrary",
+        ["Training Grounds"] =			"ScarletMonasteryArmory",
+        ["Footman's Armory"] =			"ScarletMonasteryArmory",
+        ["Crusader's Armory"] =			"ScarletMonasteryArmory",
+        ["Hall of Champions"] =			"ScarletMonasteryArmory",
+        ["Chapel Gardens"] =			"ScarletMonasteryCathedral",
+        ["Crusader's Chapel"] =			"ScarletMonasteryCathedral",
+        ["The Grand Vestibule"] =		"ScarletMonasteryEnt"
     },
     --Maps to auto-select to from outdoor zones.
     OutdoorZoneToAtlas = {
@@ -119,7 +119,7 @@ AtlasTW = {
         ["Tanaris"] =					"ZulFarrak",
         ["The Barrens"] =				"WailingCavernsEnt",
         ["Gilneas"] =					"GilneasCity", -- TurtleWOW
-        ["Tirisfal Glades"]	=			"SMEnt",
+        ["Tirisfal Glades"]	=			"ScarletMonasteryEnt",
         ["Westfall"] =					"TheDeadminesEnt",
         ["Orgrimmar"] =					"RagefireChasm",
         ["Dustwallow Marsh"] =			"OnyxiasLair",

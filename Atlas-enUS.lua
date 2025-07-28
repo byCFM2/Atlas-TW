@@ -1199,6 +1199,7 @@ AtlasTW.Local.Translations = {
 	["Two-Handed Maces"] = true,
 	["One-Handed Swords"] = true,
 	["Two-Handed Swords"] = true,
+	["Projectile"] = true,
 	["Fist Weapons"] = true,
 	["Polearms"] = true,
 	["Staves"] = true,

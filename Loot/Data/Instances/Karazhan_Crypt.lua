@@ -17,7 +17,6 @@ AtlasTW.InstanceData.KarazhanCrypt = {
     Location = BZ["Deadwind Pass"],
     Level = {58,60},
     Acronym = "KC",
-    Attunement = false,
     MaxPlayers = 5,
     DamageType = L["Shadow"],
     Entrances = {

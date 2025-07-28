@@ -16,11 +16,10 @@ AtlasTW.InstanceData.GilneasCity = {
     Location = BZ["Gilneas"],
     Level = {43,49},
     Acronym = "GC",
-    Attunement = false,
     MaxPlayers = 5,
     DamageType = L["Physical"],
     Entrances = {
-        { letter = "A" }
+        { letter = "A)"..L["Entrance"] }
     },
     Bosses = {
         {
@@ -173,7 +172,7 @@ AtlasTW.InstanceData.GilneasCity = {
                 {id=61338},
                 {id=61596},
                 {},
-                {id=41421, dropRate=10},
+                {id=41421, dropRate=10, container={55505}},
             }
         },
         { name = BIS["Greymane Armor"], items = "GreymaneArmor" },

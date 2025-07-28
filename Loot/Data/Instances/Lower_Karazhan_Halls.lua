@@ -35,7 +35,6 @@ AtlasTW.InstanceData.LowerKarazhan = {
     Level = {58,60},
     Acronym = "LKH",
     MaxPlayers = 10,
-    Attunement = false,
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) " .. L["Entrance"] },

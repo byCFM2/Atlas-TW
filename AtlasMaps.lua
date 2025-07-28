@@ -1065,7 +1065,7 @@ AtlasMaps = {
         damageType = "Nature, Fire, Arcane, Shadow, Frost"
     }),
 
-    SMLibrary = CreateDungeonTemplate({
+    ScarletMonasteryLibrary = CreateDungeonTemplate({
         zoneName = BZ["Scarlet Monastery (Library)"],
         acronym = "SM Lib",
         location = BZ["Tirisfal Glades"],
@@ -1087,7 +1087,7 @@ AtlasMaps = {
         }
     }),
 
-    SMArmory = CreateDungeonTemplate({
+    ScarletMonasteryArmory = CreateDungeonTemplate({
         zoneName = BZ["Scarlet Monastery (Armory)"],
         acronym = "SM Arm",
         location = BZ["Tirisfal Glades"],
@@ -1110,7 +1110,7 @@ AtlasMaps = {
         }
     }),
 
-    SMCathedral = CreateDungeonTemplate({
+    ScarletMonasteryCathedral = CreateDungeonTemplate({
         zoneName = BZ["Scarlet Monastery (Cathedral)"],
         acronym = "SM Cath",
         location = BZ["Tirisfal Glades"],
@@ -1134,7 +1134,7 @@ AtlasMaps = {
         }
     }),
 
-    SMGraveyard = CreateDungeonTemplate({
+    ScarletMonasteryGraveyard = CreateDungeonTemplate({
         zoneName = BZ["Scarlet Monastery (Graveyard)"],
         acronym = "SM GY",
         location = BZ["Tirisfal Glades"],
@@ -1699,7 +1699,7 @@ AtlasMaps = {
         }
     }),
 
-    SMEnt = CreateDungeonTemplate({
+    ScarletMonasteryEnt = CreateDungeonTemplate({
         zoneName = BZ["Scarlet Monastery"] .. " (" .. L["Entrance"] .. ")",
         acronym = "SM",
         location = BZ["Tirisfal Glades"],

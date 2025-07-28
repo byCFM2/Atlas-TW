@@ -31,7 +31,6 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
     Location = BZ["Silithus"],
     Level = 60,
     Acronym = "AQ40",
-    Attunement = false,
     MaxPlayers = 40,
     DamageType = L["Nature"],
     Entrances = {

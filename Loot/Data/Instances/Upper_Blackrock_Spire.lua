@@ -17,7 +17,6 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
     Location = BZ["Blackrock Mountain"],
     Level = {55,60},
     Acronym = "UBRS",
-    Attunement = false,
     MaxPlayers = 10,
     DamageType = L["Fire"],L["Physical"],
     Entrances = {

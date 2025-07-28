@@ -48,7 +48,6 @@ AtlasTW.InstanceData.Scholomance = {
     Location = BZ["Western Plaguelands"],
     Level = {45,60},
     Acronym = "Scholo",
-    Attunement = false,
     MaxPlayers = 5,
     DamageType = L["Shadow"],
     Entrances = {

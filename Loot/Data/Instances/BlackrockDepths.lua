@@ -16,10 +16,9 @@ AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 AtlasTW.InstanceData.BlackrockDepths = {
     Name = BZ["Blackrock Depths"],
     Location = BZ["Blackrock Mountain"],
-    LevelRange = "52-60",
+    Level = {42,60},
     Acronym = "BRD",
     MaxPlayers = 10,
-    Continent = 2,
     Keys = {
         { name = L["Shadowforge Key"], loot = "VanillaKeys" },
         { name = L["Prison Cell Key"], loot = "VanillaKeys" },

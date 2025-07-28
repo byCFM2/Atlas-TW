@@ -5229,7 +5229,7 @@ kQuestInstanceData["RazorfenKraul"].Quests.Horde[5] = {
 }
 
 --------------- INST19 - SM: Library ---------------
-kQuestInstanceData["SMLibrary"] = {
+kQuestInstanceData["ScarletMonasteryLibrary"] = {
     Story = "The Monastery was once a proud bastion of Lordaeron's priesthood - a center for learning and enlightenment. With the rise of the undead Scourge during the Third War, the peaceful Monastery was converted into a stronghold of the fanatical Scarlet Crusade. The Crusaders are intolerant of all non-human races, regardless of alliance or affiliation. They believe that any and all outsiders are potential carriers of the undead plague - and must be destroyed. Reports indicate that adventurers who enter the monastery are forced to contend with Scarlet Commander Mograine - who commands a large garrison of fanatically devoted warriors. However, the monastery's true master is High Inquisitor Whitemane - a fearsome priestess who possesses the ability to resurrect fallen warriors to do battle in her name.",
     Caption = "SM: Library",
     QAA = "3 Quests",
@@ -5239,7 +5239,7 @@ kQuestInstanceData["SMLibrary"] = {
         Horde = {}
     }
 }
-kQuestInstanceData["SMLibrary"].Quests.Alliance[1] = {
+kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Alliance[1] = {
     Title = "1. In the Name of the Light",
     Level = "40",
     Attain = "34",
@@ -5276,7 +5276,7 @@ kQuestInstanceData["SMLibrary"].Quests.Alliance[1] = {
         },
     }
 }
-kQuestInstanceData["SMLibrary"].Quests.Alliance[2] = {
+kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Alliance[2] = {
     Title = "2. Mythology of the Titans",
     Level = "38",
     Attain = "28",
@@ -5295,7 +5295,7 @@ kQuestInstanceData["SMLibrary"].Quests.Alliance[2] = {
         },
     }
 }
-kQuestInstanceData["SMLibrary"].Quests.Alliance[3] = {
+kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Alliance[3] = {
     Title = "3. Rituals of Power",
     Level = "40",
     Attain = "30",
@@ -5308,7 +5308,7 @@ kQuestInstanceData["SMLibrary"].Quests.Alliance[3] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["SMLibrary"].Quests.Horde[1] = {
+kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Horde[1] = {
     Title = "1. Hearts of Zeal",
     Level = "33",
     Attain = "30",
@@ -5321,7 +5321,7 @@ kQuestInstanceData["SMLibrary"].Quests.Horde[1] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["SMLibrary"].Quests.Horde[2] = {
+kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Horde[2] = {
     Title = "2. Into The Scarlet Monastery",
     Level = "42",
     Attain = "33",
@@ -5352,7 +5352,7 @@ kQuestInstanceData["SMLibrary"].Quests.Horde[2] = {
         },
     }
 }
-kQuestInstanceData["SMLibrary"].Quests.Horde[3] = {
+kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Horde[3] = {
     Title = "3. Compendium of the Fallen",
     Level = "38",
     Attain = "28",
@@ -5383,7 +5383,7 @@ kQuestInstanceData["SMLibrary"].Quests.Horde[3] = {
         },
     }
 }
-kQuestInstanceData["SMLibrary"].Quests.Horde[4] = {
+kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Horde[4] = {
     Title = "4. Test of Lore",
     Level = "36",
     Attain = "25",
@@ -5396,7 +5396,7 @@ kQuestInstanceData["SMLibrary"].Quests.Horde[4] = {
         Text = blue.."No Rewards",
     }
 }
-kQuestInstanceData["SMLibrary"].Quests.Horde[5] = {
+kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Horde[5] = {
     Title = "5. Rituals of Power",
     Level = "40",
     Attain = "30",
@@ -5411,8 +5411,8 @@ kQuestInstanceData["SMLibrary"].Quests.Horde[5] = {
 }
 
 --------------- INST20 - SM: Armory ---------------
-kQuestInstanceData["SMArmory"] = {
-    Story = kQuestInstanceData["SMLibrary"].Story,
+kQuestInstanceData["ScarletMonasteryArmory"] = {
+    Story = kQuestInstanceData["ScarletMonasteryLibrary"].Story,
     Caption = "SM: Armory",
     QAA = "1 Quest",
     QAH = "3 Quests",
@@ -5421,10 +5421,10 @@ kQuestInstanceData["SMArmory"] = {
         Horde = {}
     }
 }
-kQuestInstanceData["SMArmory"].Quests.Alliance[1] = kQuestInstanceData["SMLibrary"].Quests.Alliance[1]
-kQuestInstanceData["SMArmory"].Quests.Horde[1] = kQuestInstanceData["SMLibrary"].Quests.Horde[1]
-kQuestInstanceData["SMArmory"].Quests.Horde[2] = kQuestInstanceData["SMLibrary"].Quests.Horde[2]
-kQuestInstanceData["SMArmory"].Quests.Horde[3] = {
+kQuestInstanceData["ScarletMonasteryArmory"].Quests.Alliance[1] = kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Alliance[1]
+kQuestInstanceData["ScarletMonasteryArmory"].Quests.Horde[1] = kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Horde[1]
+kQuestInstanceData["ScarletMonasteryArmory"].Quests.Horde[2] = kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Horde[2]
+kQuestInstanceData["ScarletMonasteryArmory"].Quests.Horde[3] = {
     Title = "3. Reminiscent of Steel",
     Level = "39",
     Attain = "33",
@@ -5451,8 +5451,8 @@ kQuestInstanceData["SMArmory"].Quests.Horde[3] = {
 }
 
 --------------- INST21 - SM: Cathedral ---------------
-kQuestInstanceData["SMCathedral"] = {
-    Story = kQuestInstanceData["SMLibrary"].Story,
+kQuestInstanceData["ScarletMonasteryCathedral"] = {
+    Story = kQuestInstanceData["ScarletMonasteryLibrary"].Story,
     Caption = "SM: Cathedral",
     QAA = "3 Quest",
     QAH = "2 Quests",
@@ -5461,8 +5461,8 @@ kQuestInstanceData["SMCathedral"] = {
         Horde = {}
     }
 }
-kQuestInstanceData["SMCathedral"].Quests.Alliance[1] = kQuestInstanceData["SMLibrary"].Quests.Alliance[1]
-kQuestInstanceData["SMCathedral"].Quests.Alliance[2] = {
+kQuestInstanceData["ScarletMonasteryCathedral"].Quests.Alliance[1] = kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Alliance[1]
+kQuestInstanceData["ScarletMonasteryCathedral"].Quests.Alliance[2] = {
     Title = "The Orb of Kaladus",
     Level = "38",
     Attain = "30",
@@ -5493,7 +5493,7 @@ kQuestInstanceData["SMCathedral"].Quests.Alliance[2] = {
         },
     }
 }
-kQuestInstanceData["SMCathedral"].Quests.Alliance[3] = {
+kQuestInstanceData["ScarletMonasteryCathedral"].Quests.Alliance[3] = {
     Title = "3. Scarlet Corruption",
     Level = "44",
     Attain = "35",
@@ -5512,12 +5512,12 @@ kQuestInstanceData["SMCathedral"].Quests.Alliance[3] = {
         },
     }
 }
-kQuestInstanceData["SMCathedral"].Quests.Horde[1] = kQuestInstanceData["SMLibrary"].Quests.Horde[1]
-kQuestInstanceData["SMCathedral"].Quests.Horde[2] = kQuestInstanceData["SMLibrary"].Quests.Horde[2]
+kQuestInstanceData["ScarletMonasteryCathedral"].Quests.Horde[1] = kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Horde[1]
+kQuestInstanceData["ScarletMonasteryCathedral"].Quests.Horde[2] = kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Horde[2]
 
 --------------- INST22 - SM: Graveyard ---------------
-kQuestInstanceData["SMGraveyard"] = {
-    Story = kQuestInstanceData["SMLibrary"].Story,
+kQuestInstanceData["ScarletMonasteryGraveyard"] = {
+    Story = kQuestInstanceData["ScarletMonasteryLibrary"].Story,
     Caption = "SM: Graveyard",
     QAA = "No Quest",
     QAH = "3 Quests",
@@ -5526,8 +5526,8 @@ kQuestInstanceData["SMGraveyard"] = {
         Horde = {}
     }
 }
-kQuestInstanceData["SMGraveyard"].Quests.Horde[1] = kQuestInstanceData["SMLibrary"].Quests.Horde[1]
-kQuestInstanceData["SMGraveyard"].Quests.Horde[2] = {
+kQuestInstanceData["ScarletMonasteryGraveyard"].Quests.Horde[1] = kQuestInstanceData["ScarletMonasteryLibrary"].Quests.Horde[1]
+kQuestInstanceData["ScarletMonasteryGraveyard"].Quests.Horde[2] = {
     Title = "2. Vorrel's Revenge",
     Level = "33",
     Attain = "25",
@@ -5558,7 +5558,7 @@ kQuestInstanceData["SMGraveyard"].Quests.Horde[2] = {
         },
     }
 }
-kQuestInstanceData["SMGraveyard"].Quests.Horde[3] = {
+kQuestInstanceData["ScarletMonasteryGraveyard"].Quests.Horde[3] = {
     Title = "3. Paint the Roses Red",
     Level = "29",
     Attain = "27",

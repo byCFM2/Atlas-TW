@@ -24,10 +24,22 @@
     <Include file="Instances\DireMaul.lua"/>
     <Include file="Instances\BlackrockDepths.lua"/>
     <Include file="Instances\GilneasCity.lua"/>
-
     <Include file="Instances\TheCrescentGrove.lua"/>
     <Include file="Instances\Uldaman.lua"/>
     <Include file="Instances\TheSunkenTemple.lua"/>
+    <Include file="Instances\ScarletMonastery.lua"/>
+    <Include file="Instances\StormwroughtRuins.lua"/>
+    <Include file="Instances\RazorfenDowns.lua"/>
+    <Include file="Instances\ZulFarrak.lua"/>
+    <!--TODO CHECK BELOW-->
+    <Include file="Instances\Gnomeregan.lua"/>
+    <Include file="Instances\RazorfenKraul.lua"/>
+    <Include file="Instances\TheStockade.lua"/>
+    <Include file="Instances\ShadowfangKeep.lua"/>
+    <Include file="Instances\BlackfathomDeeps.lua"/>
+    <Include file="Instances\TheDeadmines.lua"/>
+    <Include file="Instances\WailingCaverns.lua"/>
+    <Include file="Instances\RagefireChasm.lua"/>
 
     <!-- Данные мирового контента 
     <Include file="World\World_Bosses.lua"/>-->
