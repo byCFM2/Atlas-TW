@@ -4,7 +4,6 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
@@ -26,28 +25,26 @@ AtlasTW.InstanceData.TheDeadmines = {
             id = "DMJaredVoss",
             prefix = "1)",
             name = BB["Jared Voss"],
-            defaults = { dropRate = 50 },
             loot = {
                 {id=55377, dropRate=50},
                 {},
                 {id=55376, dropRate=25},
                 {id=55375, dropRate=25},
                 {},
-                {id=41429, disc=L["Quest Item"], dropRate=100},
+                {id=41429, dropRate=100, container={70239, 70240}},
             }
         },
         {
             id = "DMRhahkZor",
             prefix = "2)",
             name = BB["Rhahk'Zor"],
-            defaults = { dropRate = 50 },
             loot = {
                 {id=872, dropRate=5},
                 {id=5187, dropRate=95},
                 {},
                 {id=80706, dropRate=50},
                 {},
-                {id=9496, disc=L["Transmogrification"]},
+                {id=9496, disc=L["Level One Luntic Challenge"], dropRate=100},
             }
         },
         {
@@ -56,22 +53,24 @@ AtlasTW.InstanceData.TheDeadmines = {
             name = BB["Miner Johnson"],
             postfix = L["Rare"],
             loot = {
-                {id=5443, dropRate=35},
                 {id=5444, dropRate=65},
+                {},
+                {id=5443, dropRate=35},
             }
         },
         {
             id = "DMSneed",
             prefix = "4)",
             name = BB["Sneed"],
-            defaults = { dropRate = 50 },
             loot = {
                 {id=5194, dropRate=35},
                 {id=5195, dropRate=65},
                 {},
                 {id=80707, dropRate=60},
                 {},
-                {id=50256, disc=L["Transmogrification"]},
+                {id=81315, dropRate=100, container={81316, 81317}},
+                {},
+                {id=50256, disc=L["Level One Luntic Challenge"], dropRate=100},
             }
         },
         {
@@ -80,13 +79,14 @@ AtlasTW.InstanceData.TheDeadmines = {
             loot = {
                 {id=1937, dropRate=10},
                 {id=2169, dropRate=90},
+                {},
+                {id=7365, dropRate=100, container={7606, 7607}},
             }
         },
         {
             id = "DMGilnid",
             prefix = "5)",
             name = BB["Gilnid"],
-            defaults = { dropRate = 50 },
             loot = {
                 {id=1156, dropRate=45},
                 {id=5199, dropRate=55},
@@ -96,7 +96,6 @@ AtlasTW.InstanceData.TheDeadmines = {
             id = "DMHarvester",
             prefix = "6)",
             name = BB["Masterpiece Harvester"],
-            defaults = { dropRate = 33 },
             loot = {
                 {id=55380, dropRate=50},
                 {},
@@ -108,7 +107,6 @@ AtlasTW.InstanceData.TheDeadmines = {
             id = "DMMrSmite",
             prefix = "7)",
             name = BB["Mr. Smite"],
-            defaults = { dropRate = 25 },
             loot = {
                 {id=7230, dropRate=20},
                 {id=5192, dropRate=30},
@@ -120,22 +118,22 @@ AtlasTW.InstanceData.TheDeadmines = {
             id = "DMCookie",
             prefix = "8)",
             name = BB["Cookie"],
-            defaults = { dropRate = 50 },
             loot = {
                 {id=5198, dropRate=35},
                 {id=5197, dropRate=65},
                 {id=80708, dropRate=60},
                 {},
-                {id=9338, disc=L["Transmogrification"]},
+                {id=8490, dropRate=15},
                 {},
-                {id=8490, disc=L["Pet"], dropRate=15},
+                {id=60526, dropRate=100, container={70070}},
+                {},
+                {id=9338, disc=L["Level One Luntic Challenge"], dropRate=100},
             }
         },
         {
             id = "DMCaptainGreenskin",
             prefix = "9)",
             name = BB["Captain Greenskin"],
-            defaults = { dropRate = 33 },
             loot = {
                 {id=5201, dropRate=40},
                 {id=10403, dropRate=30},
@@ -146,7 +144,6 @@ AtlasTW.InstanceData.TheDeadmines = {
             id = "DMVanCleef",
             prefix = "10)",
             name = BB["Edwin VanCleef"],
-            defaults = { dropRate = 25 },
             loot = {
                 {id=5193, dropRate=30},
                 {id=5202, dropRate=30},
@@ -154,18 +151,18 @@ AtlasTW.InstanceData.TheDeadmines = {
                 {id=5191, dropRate=20},
                 {id=81005, dropRate=8},
                 {},
-                {id=29980, disc=L["Transmogrification"]},
-                {},
-                {id=2874, disc=L["Quest Item"], dropRate=100},
+                {id=2874, dropRate=100},
+                {id=3637, dropRate=100, container={6087,2041,2042}},
                 {id=51217, disc=L["Transmogrification"], dropRate=1},
+                {},
+                {id=29980, disc=L["Level One Luntic Challenge"], dropRate=100},
             }
         },
         {
             id = "DMTrash",
             name = L["Trash Mobs"],
-            defaults = { dropRate = .02 },
             loot = {
-                {id=8492, disc=L["Pet"], dropRate=4},
+                {id=8492, dropRate=4},
                 {},
                 {id=80802, dropRate=3},
                 {id=80803, dropRate=3},
@@ -176,7 +173,7 @@ AtlasTW.InstanceData.TheDeadmines = {
                 {id=10402, dropRate=1.2},
             }
         },
-        { name = BIS["Defias Leather"], items = "DEADMINES" },
+        { name = BIS["Defias Leather"], items = "Deadmines" },
     },
 }
 

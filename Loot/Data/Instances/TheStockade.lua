@@ -28,6 +28,8 @@ AtlasTW.InstanceData.TheStockade = {
             loot = {
                 {id=80721},
                 {id=80722},
+                {},
+                {id=3630, dropRate=100, container={3400,1317}},
             }
         },
         {
@@ -38,6 +40,8 @@ AtlasTW.InstanceData.TheStockade = {
                 {id=2280, dropRate=1},
                 {},
                 {id=80723, dropRate=90},
+                {},
+                {id=3640, dropRate=100, container={3562,1264}},
             }
         },
         {
@@ -59,6 +63,11 @@ AtlasTW.InstanceData.TheStockade = {
                 {id=80730, dropRate=35},
                 {id=80731, dropRate=30},
                 {},
+                {id=80796, dropRate=.05},
+                {},
+                {id=2909, dropRate=80},
+                {id=2926, dropRate=100, container={2933}},
+                {},
                 {id=51217, disc=L["Transmogrification"], dropRate=1},
             }
         },
@@ -70,18 +79,24 @@ AtlasTW.InstanceData.TheStockade = {
                 {id=80726, dropRate=35},
                 {id=80727, dropRate=35},
                 {id=80728, dropRate=30},
+                {},
+                {id=80796, dropRate=.05},
+                {},
+                {id=2909, dropRate=40},
+                {id=3628, dropRate=100, container={2033,2906}},
             }
         },
         {
             id = "SWStBruegalIronknuckle",
             prefix = "6)",
             name = BB["Bruegal Ironknuckle"],
-            postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
                 {id=3228},
                 {id=2941},
                 {id=2942},
+                {},
+                {id=2909, dropRate=80},
             }
         },
         {
@@ -90,6 +105,8 @@ AtlasTW.InstanceData.TheStockade = {
             loot = {
                 {id=80796, dropRate=.05},
                 {id=1076, dropRate=.6},
+                {},
+                {id=2909, dropRate=80},
             }
         },
     },

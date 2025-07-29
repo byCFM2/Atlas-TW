@@ -4,7 +4,6 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -24,13 +23,12 @@ AtlasTW.InstanceData.RagefireChasm = {
             id = "RFCOggleflint",
             prefix = "1)",
             name = BB["Oggleflint"],
-            defaults = { dropRate = 33 },
             loot = {
                 {id=80700, dropRate=35},
                 {id=80701, dropRate=35},
                 {id=80702, dropRate=30},
                 {},
-                {id=17041, disc=L["Quest Item"], dropRate=100},
+                {id=17041, disc=L["Level One Lunatic Challenge"], dropRate=25},
             }
         },
         {
@@ -43,7 +41,9 @@ AtlasTW.InstanceData.RagefireChasm = {
                 {id=14148},
                 {id=14145},
                 {},
-                {id=64, disc=L["Quest Item"], dropRate=100},
+                {id=14540, dropRate=100},
+                {},
+                {id=64, disc=L["Level One Lunatic Challenge"], dropRate=25},
             }
         },
         {
@@ -56,7 +56,7 @@ AtlasTW.InstanceData.RagefireChasm = {
                 {id=14147},
                 {id=14151},
                 {},
-                {id=80111, disc=L["Quest Item"], dropRate=100},
+                {id=80111, disc=L["Level One Lunatic Challenge"], dropRate=25},
             }
         },
         {
@@ -69,7 +69,9 @@ AtlasTW.InstanceData.RagefireChasm = {
                 {id=80704},
                 {id=80703},
                 {},
-                {id=5235, disc=L["Quest Item"], dropRate=100},
+                {id=5212, dropRate=25},
+                {},
+                {id=5235, disc=L["Level One Lunatic Challenge"], dropRate=100},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=1},
             }
@@ -77,9 +79,8 @@ AtlasTW.InstanceData.RagefireChasm = {
         {
             id = "RFCTrash",
             name = L["Trash Mobs"],
-            defaults = { dropRate = 100 },
             loot = {
-                {id=12862, disc=L["Quest Item"]},
+                {id=12862, disc=L["Level One Lunatic Challenge"], dropRate=25},
             }
         },
     },

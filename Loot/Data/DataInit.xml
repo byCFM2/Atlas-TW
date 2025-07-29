@@ -31,15 +31,15 @@
     <Include file="Instances\StormwroughtRuins.lua"/>
     <Include file="Instances\RazorfenDowns.lua"/>
     <Include file="Instances\ZulFarrak.lua"/>
+    <Include file="Instances\RagefireChasm.lua"/>
+    <Include file="Instances\TheDeadmines.lua"/>
+    <Include file="Instances\TheStockade.lua"/>
     <!--TODO CHECK BELOW-->
     <Include file="Instances\Gnomeregan.lua"/>
     <Include file="Instances\RazorfenKraul.lua"/>
-    <Include file="Instances\TheStockade.lua"/>
     <Include file="Instances\ShadowfangKeep.lua"/>
     <Include file="Instances\BlackfathomDeeps.lua"/>
-    <Include file="Instances\TheDeadmines.lua"/>
     <Include file="Instances\WailingCaverns.lua"/>
-    <Include file="Instances\RagefireChasm.lua"/>
 
     <!-- Данные мирового контента 
     <Include file="World\World_Bosses.lua"/>-->
