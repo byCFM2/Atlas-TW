@@ -34,15 +34,14 @@
     <Include file="Instances\RagefireChasm.lua"/>
     <Include file="Instances\TheDeadmines.lua"/>
     <Include file="Instances\TheStockade.lua"/>
-    <!--TODO CHECK BELOW-->
     <Include file="Instances\Gnomeregan.lua"/>
+    <Include file="Instances\WailingCaverns.lua"/>
+    <Include file="Instances\BlackfathomDeeps.lua"/>
     <Include file="Instances\RazorfenKraul.lua"/>
     <Include file="Instances\ShadowfangKeep.lua"/>
-    <Include file="Instances\BlackfathomDeeps.lua"/>
-    <Include file="Instances\WailingCaverns.lua"/>
-
-    <!-- Данные мирового контента 
-    <Include file="World\World_Bosses.lua"/>-->
+    <!--TODO CHECK BELOW-->
+    <!-- Данные мирового контента -->
+    <Include file="World\Azuregos.lua"/>
     <!-- Добавить другие мировые источники:
     <Script file="World\Rare_Mobs.lua"/>
     <Script file="World\World_Events.lua"/>

@@ -4,9 +4,19 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
+
+AtlasTW.InstanceData.BlackfathomDeepsEnt = {
+    Name = BZ["Blackfathom Deeps"] .. " (" .. L["Entrance"] .. ")",
+    acronym = "BFD",
+    Location = BZ["Ashenvale"],
+    entrances = {
+        { letter = "A)" },
+        { letter = "B)", info = BZ["Blackfathom Deeps"] }
+    },
+    Bosses = {}
+}
 
 AtlasTW.InstanceData.BlackfathomDeeps = {
     Name = BZ["Blackfathom Deeps"],
@@ -18,13 +28,11 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
     Entrances = {
         { letter = "A) "..L["Entrance"] }
     },
-
     Bosses = {
         {
             id = "BFDGhamoora",
             prefix = "1)",
             name = BB["Ghamoo-ra"],
-            defaults = { dropRate = 50 },
             loot = {
                 {id=6907, dropRate=50},
                 {id=6908, dropRate=50},
@@ -45,8 +53,11 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
             defaults = { dropRate = 33 },
             loot = {
                 {id=888},
+                {},
                 {id=3078},
                 {id=11121},
+                {},
+                {id=5952, dropRate=80, container={7003,7004}},
             }
         },
         {
@@ -59,7 +70,6 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
             id = "BFDGelihast",
             prefix = "5)",
             name = BB["Gelihast"],
-            defaults = { dropRate = 50 },
             loot = {
                 {id=6906, dropRate=50},
                 {id=6905, dropRate=50},
@@ -85,27 +95,27 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
             id = "BFDBaronAquanis",
             prefix = "7)",
             name = BB["Baron Aquanis"],
-            color = "|cff9d9d9d",
+            loot = {
+                {id=16782, dropRate=100, container={16886,16887}},
+            }
         },
         {
             id = "BFDFathomStone",
             name = L["Fathom Stone"],
             loot = {
-                {id=16782, dropRate=100},
-                {id=16886, disc=L["Quest Reward"]},
-                {id=16887, disc=L["Quest Reward"]},
+                {id=16762, dropRate=100},
             }
         },
         {
             id = "BFDTwilightLordKelris",
             prefix = "8)",
             name = BB["Twilight Lord Kelris"],
-            defaults = { dropRate = 50 },
             loot = {
                 {id=1155, dropRate=50},
-                {id=6903, dropRate=50},
+                {id=6903, dropRate=35},
+                {id=80719, dropRate=15},
                 {},
-                {id=80719, dropRate=35},
+                {id=5881, dropRate=100, container={7001,7002}},
             }
         },
         {
@@ -115,8 +125,9 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
             defaults = { dropRate = 33 },
             loot = {
                 {id=6901},
-                {id=6904},
                 {id=6902},
+                {},
+                {id=6904},
             }
         },
         {
@@ -127,6 +138,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
             loot = {
                 {id=6911},
                 {id=6910},
+                {},
                 {id=6909},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=1},
@@ -145,7 +157,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         {
             id = "BFDTrash",
             name = L["Trash Mobs"],
-            defaults = { dropRate = 0.04 },
+            defaults = { dropRate = .1 },
             loot = {
                 {id=1486},
                 {id=3416},

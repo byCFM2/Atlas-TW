@@ -4,9 +4,75 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
+local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
+
+AtlasTW.InstanceData.WailingCavernsEnt = {
+    Name = BZ["Wailing Caverns"] .. " (" .. L["Entrance"] .. ")",
+    Acronym = "WC",
+    Location = BZ["The Barrens"],
+    Entrances = {
+        { letter = "A)", info = L["Entrance"] },
+        { letter = "B)", info = BZ["Wailing Caverns"] }
+    },
+    Bosses = {
+        {
+            id = "WCMadMagglish",
+            prefix = "1)",
+            name = BB["Mad Magglish"],
+            postfix = L["Varies"],
+            loot = {
+                {id=5334, dropRate=100},
+            }
+        },
+        {
+            id = "WCTrigoretheLasher",
+            prefix = "2)",
+            name = BB["Trigore the Lasher"],
+            loot = {
+                {id=5425, dropRate=50},
+                {},
+                {id=5426, dropRate=50},
+            }
+        },
+        {
+            id = "WCBoahn",
+            prefix = "3)",
+            name = BB["Boahn"],
+            loot = {
+                {id=5422, dropRate=70},
+                {},
+                {id=5423, dropRate=30},
+            }
+        },
+        {
+            name = L["Above the Entrance:"],
+            color = "|cffcc9933",
+        },
+        {
+            name = BB["Ebru"],
+            color = "|cff999999",
+        },
+        {
+            name = L["Nalpak"],
+            color = "|cff999999",
+        },
+        {
+            id = "WCKalldanFelmoon",
+            name = L["Kalldan Felmoon"],
+            loot = {
+                {id=6474, disc=L["Vendor"], container={6466}},
+                {id=6475, disc=L["Vendor"], container={6467}},
+                {id=6476, disc=L["Vendor"], container={6468}},
+            }
+        },
+        {
+            name = L["Waldor"],
+            color = "|cff999999",
+        },
+    }
+}
 
 AtlasTW.InstanceData.WailingCaverns = {
     Name = BZ["Wailing Caverns"],
@@ -37,7 +103,7 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {},
                 {id=6465},
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=1},
+                {id=9738, dropRate=100, container={6504,6505}},
             }
         },
         {
@@ -48,11 +114,14 @@ AtlasTW.InstanceData.WailingCaverns = {
             loot = {
                 {id=10412},
                 {id=5404},
-                {id=6446},
                 {},
                 {id=80709},
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=1},
+                {id=6446},
+                {},
+                {id=23800, dropRate=.2},
+                {},
+                {id=9739, dropRate=100, container={6504,6505}},
             }
         },
         {
@@ -66,7 +135,7 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {},
                 {id=80710},
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=1},
+                {id=6443, dropRate=80, container={6480,918}},
             }
         },
         {
@@ -79,7 +148,7 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {id=5243},
                 {id=6632},
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=1},
+                {id=6443, dropRate=80, container={6480,918}},
             }
         },
         {
@@ -93,7 +162,7 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {id=55369},
                 {id=55370},
                 {},
-                {id=41410, disc=L["Quest Item"], dropRate=100},
+                {id=41410, dropRate=100, container={70224}},
             }
         },
         {
@@ -102,12 +171,14 @@ AtlasTW.InstanceData.WailingCaverns = {
             name = BB["Lord Pythas"],
             defaults = { dropRate = 33 },
             loot = {
-                {id=6472},
                 {id=6473},
-                {},
                 {id=80711},
                 {},
-                {id=80864, disc=L["Quest Item"], dropRate=100},
+                {id=6472},
+                {id=80798, dropRate=.5},
+                {},
+                {id=9740, dropRate=100, container={6504,6505}},
+                {id=80864, dropRate=100, container={80860,80861}},
             }
         },
         {
@@ -116,12 +187,12 @@ AtlasTW.InstanceData.WailingCaverns = {
             name = BB["Skum"],
             defaults = { dropRate = 33 },
             loot = {
-                {id=6449},
                 {id=6448},
                 {},
+                {id=6449},
                 {id=80712},
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=1},
+                {id=6443, dropRate=80, container={6480,918}},
             }
         },
         {
@@ -134,8 +205,6 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {},
                 {id=55372},
                 {id=55373},
-                {},
-                {id=51217, disc=L["Transmogrification"], dropRate=1},
             }
         },
         {
@@ -150,8 +219,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {id=10411},
                 {id=6459},
                 {},
-                {id=9741, disc=L["Quest Item"], dropRate=100},
-                {id=80863, disc=L["Quest Item"], dropRate=100},
+                {id=9741, dropRate=100, container={6504,6505}},
+                {id=80863, container={80860,80861}},
             }
         },
         {
@@ -166,7 +235,7 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {id=6630},
                 {id=6631},
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=1},
+                {id=6443, dropRate=80, container={6480,918}},
             }
         },
         {
@@ -182,6 +251,7 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {},
                 {id=10441, container={10657,10658}},
                 {},
+                {id=6443, dropRate=80, container={6480,918}},
                 {id=51217, disc=L["Transmogrification"], dropRate=1},
             }
         },
@@ -193,18 +263,24 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCTrash",
             name = L["Trash Mobs"],
-            defaults = { dropRate = .02 },
             loot = {
                 {id=10413, dropRate=2},
                 {},
                 {id=55381, dropRate=25},
-                {id=80807},
+                {id=80807, dropRate = .02},
                 {},
-                {id=80862, disc=L["Quest Item"], dropRate=30},
+                {id=80862, dropRate=30},
             }
         },
+        { name = BIS["Embrace of the Viper"], items = "Wailing" },
     },
 }
+
+-- Инициализация предметов для всех боссов
+for _, bossData in ipairs(AtlasTW.InstanceData.WailingCavernsEnt.Bosses) do
+    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
+    bossData.loot = nil -- Очищаем временные данные
+end
 
 -- Инициализация предметов для всех боссов
 for _, bossData in ipairs(AtlasTW.InstanceData.WailingCaverns.Bosses) do

@@ -4,7 +4,6 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -18,10 +17,8 @@ AtlasTW.InstanceData.RazorfenKraul = {
     Entrances = {
         { letter = "A) "..L["Entrance"] }
     },
-
     Bosses = {
         {
-            id = "RFKRoogug",
             prefix = "1)",
             name = BB["Roogug"],
             color = "|cff9d9d9d",
@@ -32,10 +29,14 @@ AtlasTW.InstanceData.RazorfenKraul = {
             name = BB["Aggem Thorncurse"],
             defaults = { dropRate = 35 },
             loot = {
-                {id=6681, disc=L["Quest Item"], dropRate=100},
+                {id=6681, dropRate=100},
                 {},
                 {id=80732},
                 {id=80733},
+                {},
+                {id=80732, dropRate=.1},
+                {},
+                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
             }
         },
         {
@@ -44,9 +45,11 @@ AtlasTW.InstanceData.RazorfenKraul = {
             name = BB["Death Speaker Jargba"],
             defaults = { dropRate = 33 },
             loot = {
-                {id=2816},
                 {id=6685},
                 {id=6682},
+                {id=2816},
+                {},
+                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
             }
         },
         {
@@ -58,15 +61,18 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 {id=6687},
                 {id=6686},
                 {id=80734},
+                {},
+                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
             }
         },
         {
             id = "RFKRazorfenSpearhide",
             name = L["Razorfen Spearhide"],
             postfix = L["Rare"],
-            color = "|cff9d9d9d",
             loot = {
                 {id=6679, dropRate=80},
+                {},
+                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
             }
         },
         {
@@ -75,13 +81,12 @@ AtlasTW.InstanceData.RazorfenKraul = {
             name = BB["Agathelos the Raging"],
             defaults = { dropRate = 25 },
             loot = {
-                {id=6691},
                 {id=6690},
-                {},
+                {id=6691},
                 {id=80736},
                 {id=80735},
                 {},
-                {id=69170, disc=L["Pet"]},
+                {id=69170, dropRate=.5},
             }
         },
         {
@@ -106,11 +111,11 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 {id=6694},
                 {id=6692},
                 {},
-                {id=17008, disc=L["Quest Item"], dropRate=100},
-                {id=17043, disc=L["Quest Reward"]},
-                {id=17042, disc=L["Quest Reward"]},
-                {id=17039, disc=L["Quest Reward"]},
+                {id=17008, dropRate=100, container={17042,17043,17039}}, --Small Scroll
                 {},
+                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
+                {id=5792, dropRate=100, container={4197,6725,6742}}, --Razorflank's Medallion
+                {id=5793, dropRate=100, container={4197,6725,6742}}, --Razorflank's Heart
                 {id=51217, disc=L["Transmogrification"], dropRate=1},
             }
         },
@@ -135,24 +140,28 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 {id=6689},
                 {},
                 {id=6688},
+                {},
+                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
             }
         },
         {
             id = "RFKTrash",
             name = L["Trash Mobs"],
-            defaults = { dropRate = .01 },
+            defaults = { dropRate = .1 },
             loot = {
-                {id=80789, dropRate=.02},
-                {id=2264, dropRate=.02},
+                {id=80789},
+                {id=2264},
                 {id=1488},
                 {id=4438},
-                {id=1978, dropRate=.02},
-                {id=2039, dropRate=.02},
-                {id=1727, dropRate=.02},
+                {id=1978},
+                {id=2039},
+                {id=1727},
                 {id=776},
-                {id=1976, dropRate=.02},
-                {id=1975, dropRate=.02},
-                {id=2549, dropRate=.02},
+                {id=1976},
+                {id=1975},
+                {id=2549},
+                {},
+                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
             }
         },
     },

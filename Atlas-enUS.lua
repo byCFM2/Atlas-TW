@@ -436,7 +436,6 @@ AtlasTW.Local.Translations = {
 	["Deathstalker Vincent"] = true,
 	["Fel Steed"] = true,
 	["Jordan's Hammer"] = true,
-	["Arugal's Voidwalker"] = true,
 	["The Book of Ur"] = true,
 
 	--Stratholme
