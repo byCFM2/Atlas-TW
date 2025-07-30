@@ -36,7 +36,6 @@ AtlasTW.InstanceData.RazorfenDowns = {
             id = "RFDHenryStern",
             prefix = "2)",
             name = L["Henry Stern"],
-            color = "|cff9d9d9d",
             loot = {
                 {id=3826, disc=L["Consumable"]},
                 {id=10841, disc=L["Consumable"]},
@@ -56,7 +55,6 @@ AtlasTW.InstanceData.RazorfenDowns = {
             id = "RFDLadyF",
             name = BB["Lady Falther'ess"],
             postfix = L["Scourge Invasion"],
-            color = "|cff9d9d9d",
             defaults = { dropRate = 50 },
             loot = {
                 {id=23178},

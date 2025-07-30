@@ -608,7 +608,7 @@ AtlasLoot_TableRegistry = {
             { ID = "SFKOdotheBlindwatcher", Title = BB["Odo the Blindwatcher"] },
             { ID = "SFKDeathswornCaptain", Title = BB["Deathsworn Captain"].." ("..L["Rare"]..")" },
             { ID = "SFKFenrustheDevourer", Title = BB["Fenrus the Devourer"] },
-            { ID = "SFKArugalsVoidwalker", Title = BB["Archmage Arugal's Voidwalker"] },
+            { ID = "SFKArugalsVoidwalker", Title = BB["Arugal's Voidwalker"] },
             { ID = "SFKBookofUr", Title = L["The Book of Ur"] },
             { ID = "SFKWolfMasterNandos", Title = BB["Wolf Master Nandos"] },
             { ID = "SFKArchmageArugal", Title = BB["Archmage Arugal"] },

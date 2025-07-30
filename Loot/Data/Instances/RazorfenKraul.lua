@@ -34,9 +34,9 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 {id=80732},
                 {id=80733},
                 {},
-                {id=80732, dropRate=.1},
+                {id=80789, dropRate=.1},
                 {},
-                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
+                {id=5825, dropRate=10, container={6751,6752}}, --Treshala's Pendant
             }
         },
         {
@@ -49,7 +49,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 {id=6682},
                 {id=2816},
                 {},
-                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
+                {id=5825, dropRate=10, container={6751,6752}}, --Treshala's Pendant
             }
         },
         {
@@ -62,7 +62,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 {id=6686},
                 {id=80734},
                 {},
-                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
+                {id=5825, dropRate=10, container={6751,6752}}, --Treshala's Pendant
             }
         },
         {
@@ -72,7 +72,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
             loot = {
                 {id=6679, dropRate=80},
                 {},
-                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
+                {id=5825, dropRate=10, container={6751,6752}}, --Treshala's Pendant
             }
         },
         {
@@ -113,7 +113,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 {},
                 {id=17008, dropRate=100, container={17042,17043,17039}}, --Small Scroll
                 {},
-                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
+                {id=5825, dropRate=10, container={6751,6752}}, --Treshala's Pendant
                 {id=5792, dropRate=100, container={4197,6725,6742}}, --Razorflank's Medallion
                 {id=5793, dropRate=100, container={4197,6725,6742}}, --Razorflank's Heart
                 {id=51217, disc=L["Transmogrification"], dropRate=1},
@@ -141,7 +141,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 {},
                 {id=6688},
                 {},
-                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
+                {id=5825, dropRate=10, container={6751,6752}}, --Treshala's Pendant
             }
         },
         {
@@ -161,7 +161,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 {id=1975},
                 {id=2549},
                 {},
-                {id=80732, dropRate=10, container={6751,6752}}, --Treshala's Pendant
+                {id=5825, dropRate=10, container={6751,6752}}, --Treshala's Pendant
             }
         },
     },

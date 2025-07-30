@@ -39,11 +39,26 @@
     <Include file="Instances\BlackfathomDeeps.lua"/>
     <Include file="Instances\RazorfenKraul.lua"/>
     <Include file="Instances\ShadowfangKeep.lua"/>
-    <!--TODO CHECK BELOW-->
     <!-- Данные мирового контента -->
     <Include file="World\Azuregos.lua"/>
+    <Include file="World\FourDragons.lua"/>
+    <Include file="World\LordKazzak.lua"/>
+    <Include file="World\NerubianOverseer.lua"/>
+    <Include file="World\CowKing.lua"/>
+    <Include file="World\Reaver.lua"/>
+    <Include file="World\Concavius.lua"/>
+    <Include file="World\Ostarius.lua"/>
+    <Include file="World\Clackora.lua"/>
+    <Include file="World\RareMobs.lua"/>
+    <!-- Данные с доп информацией -->
+    <Include file="Info\FPAllianceEast.lua"/>
+    <Include file="Info\FPAllianceWest.lua"/>
+    <Include file="Info\FPHordeEast.lua"/>
+    <Include file="Info\FPHordeWest.lua"/>
+    <Include file="Info\TransportRoutes.lua"/>
+    <Include file="Info\DLEast.lua"/>
+    <Include file="Info\DLWest.lua"/>
     <!-- Добавить другие мировые источники:
-    <Script file="World\Rare_Mobs.lua"/>
     <Script file="World\World_Events.lua"/>
     -->
     <!-- Данные PvP -->

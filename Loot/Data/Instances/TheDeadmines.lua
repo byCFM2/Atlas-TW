@@ -151,7 +151,7 @@ AtlasTW.InstanceData.TheDeadmines = {
                 {id=5191, dropRate=20},
                 {id=81005, dropRate=8},
                 {},
-                {id=2874, dropRate=100},
+                {id=2874, dropRate=100, container={2933}},
                 {id=3637, dropRate=100, container={6087,2041,2042}},
                 {id=51217, disc=L["Transmogrification"], dropRate=1},
                 {},
@@ -177,8 +177,52 @@ AtlasTW.InstanceData.TheDeadmines = {
     },
 }
 
+AtlasTW.InstanceData.TheDeadminesEnt = {
+    Name = BZ["The Deadmines"] .. " (" .. L["Entrance"] .. ")",
+    Location = BZ["Westfall"],
+    Acronym = "DM",
+    Entrances = {
+        { letter = "A)", info = L["Entrance"] },
+        { letter = "B)", info = BZ["The Deadmines"] }
+    },
+    Bosses = {
+        {
+            id = "DMMarisaduPaige",
+            prefix = "1)",
+            name = BB["Marisa du'Paige"],
+            postfix = L["Rare"]..", "..L["Varies"],
+            loot = {
+                {id=3019, dropRate=25},
+                {id=4660, dropRate=75},
+            }
+        },
+        {
+            id = "DMBrainwashedNoble",
+            prefix = "2)",
+            name = BB["Brainwashed Noble"],
+            postfix = L["Rare"],
+            loot = {
+                {id=5967, dropRate=64},
+                {id=3902, dropRate=26},
+            }
+        },
+        {
+            id = "DMForemanThistlenettle",
+            prefix = "3)",
+            name = BB["Foreman Thistlenettle"],
+            loot = {
+                {id=1875, dropRate=100, container={1893}},
+            }
+        },
+    }
+}
 -- Инициализация предметов для всех боссов
 for _, bossData in ipairs(AtlasTW.InstanceData.TheDeadmines.Bosses) do
+    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
+    bossData.loot = nil -- Очищаем временные данные
+end
+-- Инициализация предметов для всех боссов
+for _, bossData in ipairs(AtlasTW.InstanceData.TheDeadminesEnt.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
     bossData.loot = nil -- Очищаем временные данные
 end

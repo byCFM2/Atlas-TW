@@ -250,8 +250,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {id=81006},
                 {},
                 {id=10441, container={10657,10658}},
-                {},
                 {id=6443, dropRate=80, container={6480,918}},
+                {},
                 {id=51217, disc=L["Transmogrification"], dropRate=1},
             }
         },
@@ -269,7 +269,7 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {id=55381, dropRate=25},
                 {id=80807, dropRate = .02},
                 {},
-                {id=80862, dropRate=30},
+                {id=80862, dropRate=30, container={80860,80861}},
             }
         },
         { name = BIS["Embrace of the Viper"], items = "Wailing" },

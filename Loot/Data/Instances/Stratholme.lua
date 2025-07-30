@@ -258,6 +258,7 @@ AtlasTW.InstanceData.Stratholme = {
             id = "STRATDathrohan",
             prefix = "11)",
             name = L["Grand Crusader Dathrohan"],
+            color = "|cff9d9d9d",
         },
         {
             id = "STRATBalnazzar",

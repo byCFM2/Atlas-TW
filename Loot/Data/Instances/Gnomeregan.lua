@@ -107,7 +107,7 @@ AtlasTW.InstanceData.Gnomeregan = {
                 {id=80738},
                 {id=80739},
                 {},
-                {id=9308, dropRate=15, container={9363}},
+                {id=9308, disc=L["Quest Item"], dropRate=15, container={9363}},
             }
         },
         {
@@ -219,7 +219,7 @@ AtlasTW.InstanceData.Gnomeregan = {
                 {id=9456},
                 {id=9457},
                 {},
-                {id=9308, dropRate=15, container={9363}},
+                {id=9308, disc=L["Quest Item"], dropRate=15, container={9363}},
             }
         },
         {
@@ -265,7 +265,7 @@ AtlasTW.InstanceData.Gnomeregan = {
                 {id=9490},
                 {id=80798},
                 {},
-                {id=9308, dropRate=15, container={9363}},
+                {id=9308, disc=L["Quest Item"], dropRate=15, container={9363}},
             }
         },
     },

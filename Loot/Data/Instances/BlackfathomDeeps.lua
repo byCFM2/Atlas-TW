@@ -9,10 +9,10 @@ AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.BlackfathomDeepsEnt = {
     Name = BZ["Blackfathom Deeps"] .. " (" .. L["Entrance"] .. ")",
-    acronym = "BFD",
+    Acronym = "BFD",
     Location = BZ["Ashenvale"],
-    entrances = {
-        { letter = "A)" },
+    Entrances = {
+        { letter = "A)", info = L["Entrance"] },
         { letter = "B)", info = BZ["Blackfathom Deeps"] }
     },
     Bosses = {}

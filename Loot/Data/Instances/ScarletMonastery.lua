@@ -147,7 +147,7 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
                 {id=55475},
                 {id=55474},
                 {},
-                {id=41411, disc=L["Quest Item"], dropRate=100},
+                {id=41411, container={7964, 7965}, dropRate=100},
             }
         },
         {
@@ -447,11 +447,6 @@ for _, bossData in ipairs(AtlasTW.InstanceData.ScarletMonasteryCathedral.Bosses)
 end
 
 for _, bossData in ipairs(AtlasTW.InstanceData.ScarletMonasteryGraveyard.Bosses) do
-    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil -- Очищаем временные данные
-end
-
-for _, bossData in ipairs(AtlasTW.InstanceData.ScarletMonasteryEnt.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
     bossData.loot = nil -- Очищаем временные данные
 end

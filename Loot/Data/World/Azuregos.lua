@@ -24,16 +24,16 @@ AtlasTW.InstanceData.Azuregos = {
             name = BB["Azuregos"],
             defaults = { dropRate = 10 },
             loot = {
-                {id=19132, dropRate=10}, -- Crystal Adorned Crown (голова, ткань)+
-                {id=18208, dropRate=10}, -- Drape of Benediction (плащ)+
+                {id=19132}, -- Crystal Adorned Crown (голова, ткань)+
+                {id=18208}, -- Drape of Benediction (плащ)+
                 {id=18541, dropRate=11.71}, -- Puissant Cape (плащ)
-                {id=18547, dropRate=10}, -- Unmelting Ice Girdle (пояс, пластины)
-                {id=18545, dropRate=10}, -- Leggings of Arcane Supremacy (ноги, ткань)+
-                {id=19131, dropRate=10}, -- Snowblind Shoes (ступни, ткань)
-                {id=19130, dropRate=10}, -- Cold Snap (жезл)+
-                {id=17070, dropRate=10}, -- Fang of the Mystics (кинжал, одноручное)+
-                {id=18202, dropRate=10}, -- Eskhandar's Left Claw (кулак, оружие)+
-                {id=18542, dropRate=10}, -- Typhoon (меч, двуручное)
+                {id=18547}, -- Unmelting Ice Girdle (пояс, пластины)
+                {id=18545}, -- Leggings of Arcane Supremacy (ноги, ткань)+
+                {id=19131}, -- Snowblind Shoes (ступни, ткань)
+                {id=19130}, -- Cold Snap (жезл)+
+                {id=17070}, -- Fang of the Mystics (кинжал, одноручное)+
+                {id=18202}, -- Eskhandar's Left Claw (кулак, оружие)+
+                {id=18542}, -- Typhoon (меч, двуручное)
                 {},
                 {id=18704, disc=L["Quest Item"], dropRate=100, container={18714}}, -- Mature Blue Dragon Sinew (материал для лука охотника)
                 {},

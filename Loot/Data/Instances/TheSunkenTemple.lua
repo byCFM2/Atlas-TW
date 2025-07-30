@@ -28,15 +28,18 @@ AtlasTW.InstanceData.TheSunkenTempleEnt = {
             prefix = "1)",
             name = BB["Kazkaz the Unholy"],
             postfix = L["Upper"],
+            color = "|cff9d9d9d",
         },
         {
             prefix = "2)",
             name = BB["Zekkis"],
             postfix = L["Lower"],
+            color = "|cff9d9d9d",
         },
         {
             prefix = "3)",
             name = BB["Veyzhak the Cannibal"],
+            color = "|cff9d9d9d",
         },
     }
 }
