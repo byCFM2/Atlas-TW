@@ -35,7 +35,7 @@ AtlasTW.InstanceData.MoltenCore = {
         { letter = "A) " .. L["Entrance"] }
     },
     Reputation = {
-        { name = BF["Hydraxian Waterlords"], loot = "WaterLords1" }
+        { name = BF["Hydraxian Waterlords"], loot = "WaterLords" }
     },
     Keys = {
         { name = L["Aqual Quintessence"], loot = "VanillaKeys", info = L["Boss"] },

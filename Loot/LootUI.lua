@@ -449,7 +449,7 @@ local function AtlasLoot_CreateItemsFrame()
 
     -- Close button
     local closeButton = CreateFrame("Button", frame:GetName().."_CloseButton", frame, "UIPanelCloseButton")
-    closeButton:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -5, -5)
+    closeButton:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -10, -5)
     closeButton:SetScript("OnClick", function()
         AtlasLootItemsFrame_OnCloseButton()
     end)
@@ -592,7 +592,7 @@ local function AtlasLoot_CreateItemsFrame()
     -- Next button
     local nextButton = CreateFrame("Button", frame:GetName().."_NEXT", frame)
     AtlasLoot_ApplyNavigationButtonTemplate(nextButton, "next")
-    nextButton:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", 0, 5)
+    nextButton:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -8, 5)
     nextButton:SetScript("OnEnter", function()
         GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
         GameTooltip:SetText(L["Next"])
@@ -622,7 +622,7 @@ local function AtlasLoot_CreateItemsFrame()
     -- SubMenu button
     local subMenuButton = CreateFrame("Button", frame:GetName().."_SubMenu", frame, "OptionsButtonTemplate")
     subMenuButton:SetWidth(120)
-    subMenuButton:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -35, 10)
+    subMenuButton:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -40, 10)
     subMenuButton:SetText(L["Select Sub-Table"])
     subMenuButton:SetScript("OnClick", function()
         if AtlasLoot_HewdropSubMenu:IsOpen() then

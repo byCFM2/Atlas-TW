@@ -791,7 +791,6 @@ AtlasTW.InstanceData.DireMaulEnt = {
     Name = BZ["Dire Maul"] .. " (" .. L["Entrance"] .. ")",
     Location = BZ["Feralas"],
     Acronym = "DM",
-    MaxPlayers = 5,
     Entrances = {
         { letter = "A) " .. L["Main Entrance"] },
         { letter = "B) " .. BZ["Dire Maul"] .. " (" .. L["East"] .. ")" },

@@ -15,10 +15,10 @@ AtlasTW.ItemDB.SLOT_KEYWORDS = {
 AtlasTW.ItemDB.SLOT2_KEYWORDS = {
     [L["Cloth"]] = 0,  [L["Leather"]] = 0, [L["Mail"]] = 0,[L["Plate"]] = 0,[L["Bullet"]] = 0,
     [L["Mace"]] = 0, [L["Axe"]] = 0, [L["Dagger"]] = 0, [L["Sword"]] = 0, [L["Totem"]] = 0,
-    [L["Held In Off-hand"]] = 0, [L["Shield"]] = 0, [L["Finger"]] = 0, [L["Neck"]] = 0,
+    [L["Held In Off-hand"]] = 0, [L["Shield"]] = 0, [L["Finger"]] = 0, [L["Neck"]] = 0, [L["16 Slot Ammo Pouch"]] = 0,
     [L["Trinket"]] = 0, [L["Back"]] = 0, [L["Bow"]] = 0, [L["Crossbow"]] = 0,[L["Arrow"]] = 0,
     [L["Gun"]] = 0, [L["Polearm"]] = 0, [L["Libram"]] = 0, [L["Staff"]] = 0, [L["Idol"]] = 0,
-    [L["Thrown"]] = 0, [L["Wand"]] = 0, [L["Fist Weapon"]] = 0,[L["Fishing Pole"]] = 0,
+    [L["Thrown"]] = 0, [L["Wand"]] = 0, [L["Fist Weapon"]] = 0,[L["Fishing Pole"]] = 0, [L["16 Slot Quiver"]] = 0,
 }
 AtlasTW.ItemDB.ClassItems = {
     [L["Druid"]] = {L["Leather"],L["Dagger"],L["Mace"],L["Fist Weapon"],L["Polearm"],L["Staff"],L["Two-Hand"].." "..L["Mace"],L["Idol"]},
@@ -58,6 +58,7 @@ local function getColoredText(text, typeText)
     if typeText == "slot" then
         local canWear = string.find(text, L["Cloth"]) or string.find(text, L["Fishing Pole"])
             or string.find(text, L["Tabard"]) or string.find(text, L["Bullet"]) or string.find(text, L["Arrow"])
+            or string.find(text, L["Ammo Pouch"]) or string.find(text, L["Quiver"])
         if not canWear then
             local classItems = AtlasTW.ItemDB.ClassItems[playerClass]
             for _, item in pairs(classItems) do
@@ -120,7 +121,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     local line, line2, text, text2
     local tooltipTextLeftPrefix = tooltipName .. "TextLeft"
     local tooltipTextRightPrefix = tooltipName .. "TextRight"
-    for i = 1, 12 do --TODO нужна доработка, есть проблемы с off hand
+    for i = 1, 12 do --TODO нужна доработка, есть проблемы с off hand и подсумками с разными слотами
         line = _G[tooltipTextLeftPrefix .. i]
         line2 = _G[tooltipTextRightPrefix .. i]
         if line then

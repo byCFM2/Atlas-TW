@@ -63,16 +63,15 @@
     -->
     <!-- Данные PvP -->
     <Include file="PvP\WarsongGulch.lua"/>
-
+    <Include file="PvP\ArathiBasin.lua"/>
+    <Include file="PvP\BGAlteracValleyNorth.lua"/>
+    <Include file="PvP\BGAlteracValleySouth.lua"/>
     <!--
-    
     <Script file="PvP\Battlegrounds.lua"/>
     <Script file="PvP\Honor_Rewards.lua"/>
     -->
     <!-- Данные репутации -->
-    <!-- Добавить по мере создания:
-    <Script file="Reputation\Factions.lua"/>
-    -->
+    <Include file="Reputation\Factions.lua"/>
     <!-- Данные комплектов -->
     <!-- Добавить по мере создания:
     <Script file="Sets\Tier_Sets.lua"/>
