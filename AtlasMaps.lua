@@ -1924,17 +1924,6 @@ AtlasMaps = {
     }),
 
     -- World Bosses (continued)
-    Turtlhu = CreateDungeonTemplate({
-        zoneName = "Turtlhu, the Black Turtle of Doom",
-        location = BZ["Feralas"],
-        levelRange = "60+",
-        minLevel = "1",
-        playerLimit = "40",
-        damageType = "Shadow",
-        entries = {
-            CreateEntry(Colors.GREY, "1) Turtlhu, the Black Turtle of Doom", "WBTurtlhu"),
-        }
-    }),
 
     Nerubian = CreateDungeonTemplate({
         zoneName = BB["Nerubian Overseer"],

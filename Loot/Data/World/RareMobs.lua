@@ -28,7 +28,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "GraypawAlpha",
             prefix = "2)",
-            name = L["Graypaw Alpha"] .. " 0.7k (18L) " .. BZ["Tirisfal Glades"] .. " [27, 58]",
+            name = L["Graypaw Alpha"],
+            postfix = " 0.7k (18L) " .. BZ["Tirisfal Glades"] .. " [27, 58]",
             defaults = { dropRate = 50 },
             loot = {
                 {id=60492}, -- Graypaw Leggings (ноги, кожа)
@@ -38,7 +39,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "EarthcallerRezengal",
             prefix = "3)",
-            name = L["Earthcaller Rezengal"] .. " 0.4k (18L) " .. BZ["Stonetalon Mountains"] .. " [74, 79]",
+            name = L["Earthcaller Rezengal"],
+            postfix = " 0.4k (18L) " .. BZ["Stonetalon Mountains"] .. " [74, 79]",
             defaults = { dropRate = 50 },
             loot = {
                 {id=61502}, -- Earthcaller Staff (посох, двуручное)
@@ -48,7 +50,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Blazespark",
             prefix = "4)",
-            name = L["Blazespark"] .. " 0.8k (24L) " .. BZ["Stonetalon Mountains"] .. " [21, 29]",
+            name = L["Blazespark"],
+            postfix = " 0.8k (24L) " .. BZ["Stonetalon Mountains"] .. " [21, 29]",
             defaults = { dropRate = 50 },
             loot = {
                 {id=61504}, -- Wildfire Girdle (пояс, кольчуга)
@@ -58,7 +61,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "WitchDoctorTanzo",
             prefix = "5)",
-            name = L["Witch Doctor Tan'zo"] .. " 2k (35L) " .. BZ["Arathi Highlands"] .. " [44, 13]",
+            name = L["Witch Doctor Tan'zo"],
+            postfix = " 2k (35L) " .. BZ["Arathi Highlands"] .. " [44, 13]",
             defaults = { dropRate = 40 },
             loot = {
                 {id=61507}, -- Pendant of Wilderness (шея)
@@ -69,7 +73,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Dawnhowl",
             prefix = "6)",
-            name = L["Dawnhowl"] .. " 2k (40L) " .. BZ["Gilneas"] .. " [43, 23]",
+            name = L["Dawnhowl"],
+            postfix = " 2k (40L) " .. BZ["Gilneas"] .. " [43, 23]",
             defaults = { dropRate = 33 },
             loot = {
                 {id=61580}, -- Wolf's Skull (голова, кольчуга)
@@ -80,7 +85,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "WidowoftheWoods",
             prefix = "7)",
-            name = L["Widow of the Woods"] .. " 6k (40L) " .. BZ["Gilneas"] .. " [30, 50]",
+            name = L["Widow of the Woods"],
+            postfix = " 6k (40L) " .. BZ["Gilneas"] .. " [30, 50]",
             defaults = { dropRate = 40 },
             loot = {
                 {id=61575}, -- Forgotten Veil (голова, ткань)
@@ -92,7 +98,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "MaltimorsPrototype",
             prefix = "8)",
-            name = L["Maltimor's Prototype"] .. " 6k (43L) " .. BZ["Gilneas"] .. " [48, 57]",
+            name = L["Maltimor's Prototype"],
+            postfix = " 6k (43L) " .. BZ["Gilneas"] .. " [48, 57]",
             defaults = { dropRate = 40 },
             loot = {
                 {id=61573}, -- Scrapmetal Helm (голова, пластины)
@@ -104,7 +111,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Bonecruncher",
             prefix = "9)",
-            name = L["Bonecruncher"] .. " 2k (44L) " .. BZ["Gilneas"] .. " [54, 56]",
+            name = L["Bonecruncher"],
+            postfix = " 2k (44L) " .. BZ["Gilneas"] .. " [54, 56]",
             defaults = { dropRate = 40 },
             loot = {
                 {id=61583}, -- Light Ogre Belt (пояс, кожа)
@@ -115,7 +123,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Duskskitterer",
             prefix = "10)",
-            name = L["Duskskitterer"] .. " 2k (44L) " .. BZ["Gilneas"] .. " [46, 78]",
+            name = L["Duskskitterer"],
+            postfix = " 2k (44L) " .. BZ["Gilneas"] .. " [46, 78]",
             defaults = { dropRate = 33 },
             loot = {
                 {id=61610}, -- Old Farmer's Pitchfork (древковое, двуручное)
@@ -126,7 +135,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "BaronPerenolde",
             prefix = "11)",
-            name = L["Baron Perenolde"] .. " 3k (45L) " .. BZ["Gilneas"] .. " [67, 80]",
+            name = L["Baron Perenolde"],
+            postfix = " 3k (45L) " .. BZ["Gilneas"] .. " [67, 80]",
             defaults = { dropRate = 33 },
             loot = {
                 {id=61577}, -- Lieutenant's Sword (меч, одноручное)
@@ -136,7 +146,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "KinTozo",
             prefix = "12)",
-            name = L["Kin'Tozo"] .. " 20k (45L) " .. BZ["Stranglethorn Vale"] .. " [27, 55]",
+            name = L["Kin'Tozo"],
+            postfix = " 20k (45L) " .. BZ["Stranglethorn Vale"] .. " [27, 55]",
             defaults = { dropRate = 25 },
             loot = {
                 {id=60438}, -- Vambracers of Kin'Tozo (запястья, пластины)
@@ -150,7 +161,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "M0L1Y",
             prefix = "13)",
-            name = L["M-0L1Y"] .. " 3k (47L) " .. BZ["Icepoint Rock"] .. " [54, 40]",
+            name = L["M-0L1Y"],
+            postfix = " 3k (47L) " .. BZ["Icepoint Rock"] .. " [54, 40]",
             defaults = { dropRate = 30 },
             loot = {
                 {id=41297}, -- Corrosive Sabatons (ступни, кожа)
@@ -162,7 +174,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Grugthok",
             prefix = "14)",
-            name = L["Grug'thok the Seer"] .. " 15k (47L) " .. BZ["Feralas"] .. " [58, 71]",
+            name = L["Grug'thok the Seer"],
+            postfix = " 15k (47L) " .. BZ["Feralas"] .. " [58, 71]",
             defaults = { dropRate = 25 },
             loot = {
                 {id=81380}, -- Gordunni War Harness (грудь, пластины)
@@ -175,7 +188,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Ashbeard",
             prefix = "15)",
-            name = L["Explorer Ashbeard"] .. " 16k (49L) " .. BZ["Searing Gorge"] .. " [71, 18]",
+            name = L["Explorer Ashbeard"],
+            postfix = " 16k (49L) " .. BZ["Searing Gorge"] .. " [71, 18]",
             defaults = { dropRate = 25 },
             loot = {
                 {id=83275, dropRate=0.5}, -- Ashbeard's Lucky Telescope (аксессуар)
@@ -188,7 +202,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Jalakar",
             prefix = "16)",
-            name = L["Jal'akar"] .. " 18k (50L) " .. BZ["The Hinterlands"] .. " [53, 34]",
+            name = L["Jal'akar"],
+            postfix = " 18k (50L) " .. BZ["The Hinterlands"] .. " [53, 34]",
             defaults = { dropRate = 25 },
             loot = {
                 {id=51023}, -- Vilebranch Grips (кисти, кожа)
@@ -201,7 +216,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Ripjaw",
             prefix = "17)",
-            name = L["Ripjaw"] .. " 9k (51L) " .. BZ["Lapidis Isle"] .. " [55, 21]",
+            name = L["Ripjaw"],
+            postfix = " 9k (51L) " .. BZ["Lapidis Isle"] .. " [55, 21]",
             defaults = { dropRate = 40 },
             loot = {
                 {id=61535}, -- Outlaw's Pirate Hat (голова, кожа)
@@ -213,7 +229,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Rukthok",
             prefix = "18)",
-            name = L["Ruk'thok the Pyromancer"] .. " 3k (51L) " .. BZ["Lapidis Isle"] .. " [43, 29]",
+            name = L["Ruk'thok the Pyromancer"],
+            postfix = " 3k (51L) " .. BZ["Lapidis Isle"] .. " [43, 29]",
             defaults = { dropRate = 33 },
             loot = {
                 {id=61613}, -- Burnt Explorer's Tunic (грудь, кожа)
@@ -224,7 +241,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Embereye",
             prefix = "19)",
-            name = L["Embereye"] .. " 4k (51L) " .. BZ["Gillijim's Isle"] .. " [67, 69]",
+            name = L["Embereye"],
+            postfix = " 4k (51L) " .. BZ["Gillijim's Isle"] .. " [67, 69]",
             defaults = { dropRate = 33 },
             loot = {
                 {id=61538}, -- Moonsteel Zweihander (меч, двуручное)
@@ -235,7 +253,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Xalvic",
             prefix = "20)",
-            name = L["Xalvic Blackclaw"] .. " 19k (53L) " .. BZ["Felwood"] .. " [53, 29]",
+            name = L["Xalvic Blackclaw"],
+            postfix = " 19k (53L) " .. BZ["Felwood"] .. " [53, 29]",
             defaults = { dropRate = 25 },
             loot = {
                 {id=81370}, -- Footpads of the Corruptor (ступни, ткань)
@@ -248,7 +267,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "FirstbornofArugal",
             prefix = "21)",
-            name = L["Firstborn of Arugal"] .. " 10k (55L) " .. BZ["Gilneas"] .. " [40, 37]",
+            name = L["Firstborn of Arugal"],
+            postfix = " 10k (55L) " .. BZ["Gilneas"] .. " [40, 37]",
             defaults = { dropRate = 40 },
             loot = {
                 {id=61586}, -- Explorer's Shoulders (плечи, кожа)
@@ -260,7 +280,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "MargontheMighty",
             prefix = "22)",
-            name = L["Margon the Mighty"] .. " 25k (55L) " .. BZ["Lapidis Isle"] .. " [30, 41]",
+            name = L["Margon the Mighty"],
+            postfix = " 25k (55L) " .. BZ["Lapidis Isle"] .. " [30, 41]",
             defaults = { dropRate = 33 },
             loot = {
                 {id=61531}, -- Glowing Black Pearl (аксессуар)
@@ -273,7 +294,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "WanderingKnight",
             prefix = "23)",
-            name = L["The Wandering Knight"] .. " 22k (55L) " .. BZ["Western Plaguelands"] .. " [64, 74]",
+            name = L["The Wandering Knight"],
+            postfix = " 22k (55L) " .. BZ["Western Plaguelands"] .. " [64, 74]",
             defaults = { dropRate = 25 },
             loot = {
                 {id=83257}, -- Caer Darrow Reserve Rifle (ружье)
@@ -285,7 +307,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Letashaz",
             prefix = "24)",
-            name = L["Letashaz"] .. " 25k (55L) " .. BZ["Gillijim's Isle"] .. " [29, 89]",
+            name = L["Letashaz"],
+            postfix = " 25k (55L) " .. BZ["Gillijim's Isle"] .. " [29, 89]",
             defaults = { dropRate = 33 },
             loot = {
                 {id=61542}, -- Dwarven Pickaxe (топор, двуручное)
@@ -298,7 +321,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Aquitus",
             prefix = "25)",
-            name = L["Aquitus"] .. " 7k (56L) " .. BZ["Gillijim's Isle"] .. " [27, 70]",
+            name = L["Aquitus"],
+            postfix = " 7k (56L) " .. BZ["Gillijim's Isle"] .. " [27, 70]",
             defaults = { dropRate = 40 },
             loot = {
                 {id=61529}, -- Pirate's Scimitar (меч, одноручное)
@@ -310,7 +334,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Stoneshell",
             prefix = "26)",
-            name = L["Stoneshell"] .. " 4k (56L) " .. BZ["Tel'Abim"] .. " [40, 47]",
+            name = L["Stoneshell"],
+            postfix = " 4k (56L) " .. BZ["Tel'Abim"] .. " [40, 47]",
             defaults = { dropRate = 40 },
             loot = {
                 {id=61509}, -- Stoneshell Shield (щит)
@@ -321,7 +346,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Tarangos",
             prefix = "27)",
-            name = L["Tarangos"] .. " 23k (56L) " .. BZ["Azshara"] .. " [42, 80]",
+            name = L["Tarangos"],
+            postfix = " 23k (56L) " .. BZ["Azshara"] .. " [42, 80]",
             defaults = { dropRate = 25 },
             loot = {
                 {id=81360}, -- Claw of Taranassz (кинжал)
@@ -333,7 +359,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Zareth",
             prefix = "28)",
-            name = L["Zareth Terrorblade"] .. " 23k (57L) " .. BZ["Blasted Lands"] .. " [55, 59]",
+            name = L["Zareth Terrorblade"],
+            postfix = " 23k (57L) " .. BZ["Blasted Lands"] .. " [55, 59]",
             defaults = { dropRate = 25 },
             loot = {
                 {id=83265}, -- Demon Hunter's Blindfold (голова, кожа)
@@ -346,7 +373,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "HighvaleSilverback",
             prefix = "29)",
-            name = L["Highvale Silverback"] .. " 4k (58L) " .. BZ["Tel'Abim"] .. " [57, 48]",
+            name = L["Highvale Silverback"],
+            postfix = " 4k (58L) " .. BZ["Tel'Abim"] .. " [57, 48]",
             defaults = { dropRate = 40 },
             loot = {
                 {id=61518}, -- Apefist Pummelers (кисти, кожа)
@@ -357,7 +385,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Mallon",
             prefix = "30)",
-            name = L["Mallon The Moontouched"] .. " 27k (58L) " .. BZ["Winterspring"] .. " [57, 61]",
+            name = L["Mallon The Moontouched"],
+            postfix = " 27k (58L) " .. BZ["Winterspring"] .. " [57, 61]",
             defaults = { dropRate = 25 },
             loot = {
                 {id=81375}, -- Staff of the Lost Druid (посох)
@@ -370,7 +399,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "ProfessorLysander",
             prefix = "31)",
-            name = L["Professor Lysander"] .. " 9k (59L) " .. BZ["Western Plaguelands"] .. " [12, 50]",
+            name = L["Professor Lysander"],
+            postfix = " 9k (59L) " .. BZ["Western Plaguelands"] .. " [12, 50]",
             defaults = { dropRate = 25 },
             loot = {
                 {id=41060}, -- Refined Plague Strain (аксессуар)
@@ -382,7 +412,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Kargron",
             prefix = "32)",
-            name = L["Blademaster Kargron"] .. " 28k (59L) " .. BZ["Burning Steppes"] .. " [45, 32]",
+            name = L["Blademaster Kargron"],
+            postfix = " 28k (59L) " .. BZ["Burning Steppes"] .. " [45, 32]",
             defaults = { dropRate = 25 },
             loot = {
                 {id=81365}, -- Kargron's Leggings (ноги, кожа)
@@ -394,7 +425,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Azurebeak",
             prefix = "33)",
-            name = L["Azurebeak"] .. " 20k (60L) " .. BZ["Hyjal"] .. " [23, 37]",
+            name = L["Azurebeak"],
+            postfix = " 20k (60L) " .. BZ["Hyjal"] .. " [23, 37]",
             defaults = { dropRate = 40 },
             loot = {
                 {id=61550}, -- Sanctified Helm (голова, пластины)
@@ -406,7 +438,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "BarkskinFisher",
             prefix = "34)",
-            name = L["Barkskin Fisher"] .. " 5k (60L) " .. BZ["Hyjal"] .. " [66, 53]",
+            name = L["Barkskin Fisher"],
+            postfix = " 5k (60L) " .. BZ["Hyjal"] .. " [66, 53]",
             loot = {
                 {id=84507, dropRate=100}, -- Barkskin Fisher (удочка)
             }
@@ -414,7 +447,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "AdmiralBareanWestwind",
             prefix = "35)",
-            name = L["Admiral Barean Westwind"] .. " 141k (60L) " .. BZ["Eastern Plaguelands"] .. " [66, 42]",
+            name = L["Admiral Barean Westwind"],
+            postfix = " 141k (60L) " .. BZ["Eastern Plaguelands"] .. " [66, 42]",
             defaults = { dropRate = 17 },
             loot = {
                 {id=60383}, -- Fleetmaster's Cane (посох)
@@ -430,7 +464,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "ShadeflayerGoliath",
             prefix = "36)",
-            name = L["Shadeflayer Goliath"] .. " 17k (61L) " .. BZ["Hyjal"] .. " [10, 44]",
+            name = L["Shadeflayer Goliath"],
+            postfix = " 17k (61L) " .. BZ["Hyjal"] .. " [10, 44]",
             defaults = { dropRate = 30 },
             loot = {
                 {id=61546}, -- Leggings of the Fallen Knight (ноги, пластины)
@@ -443,7 +478,8 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "CrusaderLarsarius",
             prefix = "37)",
-            name = L["Crusader Larsarius"] .. " 28k (61L) " .. BZ["Eastern Plaguelands"] .. " [47, 60]",
+            name = L["Crusader Larsarius"],
+            postfix = " 28k (61L) " .. BZ["Eastern Plaguelands"] .. " [47, 60]",
             defaults = { dropRate = 25 },
             loot = {
                 {id=60437, dropRate=.2}, -- Righteous Crusader's Helmet (голова, пластины)

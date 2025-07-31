@@ -1,7 +1,7 @@
 -- Refactored AtlasDropDown.lua
 
 -- Namespace protection
-local _G = getfenv()
+--local _G = getfenv()
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local AtlasDropDown = {}

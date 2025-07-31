@@ -62,7 +62,10 @@
     <Script file="World\World_Events.lua"/>
     -->
     <!-- Данные PvP -->
-    <!-- Добавить по мере создания:
+    <Include file="PvP\WarsongGulch.lua"/>
+
+    <!--
+    
     <Script file="PvP\Battlegrounds.lua"/>
     <Script file="PvP\Honor_Rewards.lua"/>
     -->
