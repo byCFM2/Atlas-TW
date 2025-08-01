@@ -1,4 +1,4 @@
--- BGAlteracValleySouth.lua - Данные предметов из Альтеракской долины (Юг)
+-- BGAlteracValleySouth.lua - Данные предметов из Альтеракской долины (Южная часть)
 -- Модульная структура данных для Atlas-TW
 
 local _G = getfenv()
@@ -6,6 +6,11 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
+
+-- Подключаем общий модуль данных репутации
+if not AtlasTW.AlteracValleyReputationData then
+    LoadAddOn("AlteracValleyReputationData")
+end
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -17,7 +22,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
     Acronym = "AV",
     MaxPlayers = 40,
     Reputation = {
-            { name = BF["Stormpike Guard"].." \\ "..BF["Frostwolf Clan"], loot = "StormpikeFrostwolf" },
+            { name = BF["Frostwolf Clan"].."\\"..BF["Stormpike Guard"], loot = "StormpikeFrostwolf" },
     },
     Entrances = {
         { letter = "A)", info = L["Entrance"] .. " (" .. BF["Horde"] .. ")" },
@@ -72,18 +77,16 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
             id = "AVLokholarIvus",
             prefix = "1)",
             name = L["Lokholar the Ice Lord"] .. " (" .. L["Summon"] .. ")",
-            defaults = { dropRate = 20 },
-            loot = {
+            color = "|cff9d9d9d",
+            items = {
                 {id = 19105}, --Frost Runed Headdress
                 {id = 19113}, --Yeti Hide Bracers
                 {id = 19111}, --Winteraxe Epaulets
                 {id = 19112}, --Frozen Steel Vambraces
                 {},
-                {id = 19109, dropRate=13}, --Deep Rooted Ring
+                {id = 19109}, --Deep Rooted Ring
                 {},
                 {id = 19110}, --Cold Forged Blade
-                {},
-                {id = 17306, disc=L["Quest Item"], dropRate=100}, --Stormpike Soldier's Blood
             }
         },
         {
@@ -121,6 +124,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         {
             prefix = "6)",
             name = L["Coldtooth Mine"],
+            color = "|cff9d9d9d",
         },
         {
             name = L["Taskmaster Snivvle"] .. " (" .. L["Neutral"] .. ")",
@@ -142,6 +146,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         {
             prefix = "8)",
             name = L["Wing Commander Vipore"] .. " (" .. BF["Alliance"] .. ")",
+            color = "|cff9d9d9d",
         },
         {
             name = L["Jotek"],
@@ -162,6 +167,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         {
             prefix = "9)",
             name = L["Frostwolf Stable Master"],
+            color = "|cff9d9d9d",
         },
         {
             name = L["Frostwolf Wolf Rider Commander"],
@@ -170,6 +176,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         {
             prefix = "10)",
             name = L["Frostwolf Quartermaster"],
+            color = "|cff9d9d9d",
         },
         {
             prefix = "11)",
@@ -184,6 +191,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         {
             prefix = "13)",
             name = L["Wing Commander Guse"] .. " (" .. L["Rescued"] .. ")",
+            color = "|cff9d9d9d",
         },
         {
             name = L["Wing Commander Jeztor"] .. " (" .. L["Rescued"] .. ")",
@@ -201,6 +209,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         {
             prefix = "15)",
             name = L["Wildpaw Cavern"],
+            color = "|cff9d9d9d",
         },
         {
             name = L["Frostwolf Banner"],
@@ -209,6 +218,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         {
             prefix = "16)",
             name = L["Steamsaw"] .. " (" .. BF["Alliance"] .. ")",
+            color = "|cff9d9d9d",
         },
         {
             name = L["Red"] .. ": " .. L["Graveyards, Capturable Areas"],
@@ -220,12 +230,12 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         },
         {
             name = L["White"] .. ": " .. L["Assault NPCs, Quest Areas"],
+            color = "|cff9d9d9d",
         },
     }
 }
 
--- Инициализация предметов для всех боссов
-for _, bossData in ipairs(AtlasTW.InstanceData.BGAlteracValleySouth.Bosses) do
-    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil -- Очищаем временные данные
+-- Инициализация предметов для всех наград репутации
+for _, rewardData in ipairs(AtlasTW.InstanceData.BGAlteracValleySouth.Bosses) do
+    rewardData.items = rewardData.items or AtlasTW.CreateItemsFromLootTable(rewardData)
 end

@@ -17,7 +17,7 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
     Acronym = "AV",
     MaxPlayers = 40,
     Reputation = {
-            { name = BF["Stormpike Guard"].." \\ "..BF["Frostwolf Clan"], loot = "StormpikeFrostwolf" },
+            { name = BF["Stormpike Guard"].."\\"..BF["Frostwolf Clan"], loot = "StormpikeFrostwolf" },
     },
     Entrances = {
         { letter = "A)", info = L["Entrance"] .. " (" .. BF["Alliance"] .. ")" },
@@ -231,8 +231,7 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         {
             id = "AVKorrak",
             name = L["Korrak the Bloodrager"],
-            defaults = { dropRate = 20 },
-            loot = {
+            items = {
                 {id = 13080}, --Widow's Clutch
                 {id = 12970}, --General's Ceremonial Plate
                 {},
@@ -240,8 +239,6 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
                 {id = 21135}, --Assassin's Throwing Axe
                 {},
                 {id = 17108}, --Mark of Deflection
-                {},
-                {id = 18148, dropRate=100, container={50743}}, --Skull of Korrak
             }
         },
         {
@@ -253,18 +250,15 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
             id = "AVLokholarIvus",
             prefix = "19)",
             name = L["Ivus the Forest Lord"] .. " (" .. L["Summon"] .. ")",
-            defaults = { dropRate = 20 },
-            loot = {
+            items = {
                 {id = 19105}, --Frost Runed Headdress
                 {id = 19113}, --Yeti Hide Bracers
                 {id = 19111}, --Winteraxe Epaulets
                 {id = 19112}, --Frozen Steel Vambraces
                 {},
-                {id = 19109, dropRate=13}, --Deep Rooted Ring
+                {id = 19109}, --Deep Rooted Ring
                 {},
                 {id = 19110}, --Cold Forged Blade
-                {},
-                {id = 17306, disc=L["Quest Item"], dropRate=100}, --Stormpike Soldier's Blood
             }
         },
         {
@@ -295,6 +289,7 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
             prefix = "22)",
             name = L["Steamsaw"] .. " (" .. BF["Horde"] .. ")",
         },
+
         {
             name = L["Red"] .. ": " .. L["Graveyards, Capturable Areas"],
             color = "|cffff0000",
@@ -309,8 +304,7 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
     }
 }
 
--- Инициализация предметов для всех боссов
-for _, bossData in ipairs(AtlasTW.InstanceData.BGAlteracValleyNorth.Bosses) do
-    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil -- Очищаем временные данные
+-- Инициализация предметов для всех наград репутации
+for _, rewardData in ipairs(AtlasTW.InstanceData.BGAlteracValleyNorth.Bosses) do
+    rewardData.items = rewardData.items or AtlasTW.CreateItemsFromLootTable(rewardData)
 end

@@ -6,7 +6,6 @@
 	<Include file="Battlegrounds.lua"/>
 	<Include file="World.lua"/>
 	<Include file="WorldEvents.lua"/>
-	<Include file="Factions.lua"/>
 	<Include file="Instances.lua"/>
 	<Include file="LootTables.lua"/>-->
 

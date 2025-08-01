@@ -7,105 +7,219 @@ local BF = AceLibrary("Babble-Faction-2.2a")
 local BS = AceLibrary("Babble-Spell-2.2a")
 
 AtlasLoot_Data = {
-	StormpikeFrostwolf = {
-		-- Alliance friendly
-		{ name = L["Shared"]..", "..BF["Friendly"] }, --*1
-		{id = 19318, disc=L["Consumable"]}, --Bottled Alterac Spring Water
-		{id = 17349, disc=L["Consumable"]}, --Superior Healing Draught
-		{},
-		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" },
-		{id = 19032}, --Stormpike Battle Tabard *6
-		-- Alliance honored
-		{},
-		{ name = L["Shared"]..", "..BF["Honored"] },
-		{id = 19316}, --Ice Threaded Arrow
-		{id = 17348, disc=L["Consumable"]}, --Major Healing Draught
-		{},
-		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" },
-		{id = 19301}, --Alterac Manna Biscuit
-		{id = 19098}, --Stormpike Sage's Pendant
-		{id = 19097}, --Stormpike Soldier's Pendant *15
-		-- Horde
-		{ name = L["Shared"]..", "..BF["Friendly"] }, --*1
-		{id = 19307}, --Alterac Heavy Runecloth Bandage
-		{id = 17352, disc=L["Consumable"]}, --Superior Mana Draught
-		{},
-		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },
-		{id = 19031}, --Frostwolf Battle Tabard
-		-- Horde honored
-		{},
-		{ name = L["Shared"]..", "..BF["Honored"] },
-		{id = 19317}, --Ice Threaded Bullet
-		{id = 17351, disc=L["Consumable"]}, --Major Mana Draught
-		{},
-		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },
-		{id = 19096}, --Frostwolf Advisor's Pendant
-		{id = 19095}, --Frostwolf Legionnaire's Pendant
-		{id = 19085}, --Frostwolf Advisor's Cloak *15
-		--Alliance honored
-		{id = 19086}, --Stormpike Sage's Cloak *1
-		{id = 19084}, --Stormpike Soldier's Cloak
-		{id = 19094}, --Stormpike Cloth Girdle
-		{id = 19093}, --Stormpike Leather Girdle
-		{id = 19092}, --Stormpike Mail Girdle
-		{id = 19091}, --Stormpike Plate Girdle
-		-- Alliance revered
-		{},
-		{ name = L["Shared"]..", "..BF["Revered"] },
-		{id = 19320}, --Gnoll Skin Bandolier
-		{},
-		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" },
-		{id = 19045}, --Stormpike Battle Standard
-		{id = 19100}, --Electrified Dagger
-		{id = 19104}, --Stormstrike Hammer
-		{id = 19102}, --Crackling Staff *15
-		-- Horde honored
-		{id = 19083}, --Frostwolf Legionnaire's Cloak *1
-		{id = 19090}, --Frostwolf Cloth Belt
-		{id = 19089}, --Frostwolf Leather Belt
-		{id = 19088}, --Frostwolf Mail Belt
-		{id = 19087}, --Frostwolf Plate Belt
-		{},
-		{},
-		-- Horde revered
-		{ name = L["Shared"]..", "..BF["Revered"] },
-		{id = 19319}, --Harpy Hide Quiver
-		{},
-		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },
-		{id = 19046}, --Frostwolf Battle Standard
-		{id = 19099}, --Glacial Blade
-		{id = 19103}, --Frostbite
-		{id = 19101}, --Whiteout Staff *15
-		-- Alliance exalted *0
-		{},
-		{ name = L["Shared"]..", "..BF["Exalted"] },
-		{id = 19312}, --Lei of the Lifegiver
-		{id = 19315}, --Therazane's Touch
-		{id = 19308}, --Tome of Arcane Domination
-		{id = 19311}, --Tome of Fiery Arcana
-		{id = 19309}, --Tome of Shadow Force *7
-		{},
-		{},
-		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" },
-		{id = 19030}, --Stormpike Battle Charger
-		{},
-		{},
-		{},
-		{},
-		{},
-		-- Horde exalted
-		{ name = L["Shared"]..", "..BF["Exalted"] },
-		{id = 19310}, --Tome of the Ice Lord *2
-		{id = 19325}, --Don Julio's Band
-		{id = 21563}, --Don Rodrigo's Band
-		{id = 19321}, --The Immovable Object
-		{id = 19324}, --The Lobotomizer
-		{id = 19323}, --The Unstoppable Force
-		{},
-		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },
-		{id = 19029}, --Horn of the Frostwolf Howler
+	VanillaKeys = {
+		{ name = L["Key"] },
+		{ id = 16309},
+		{ id = 12344},
+		{ id = 17191},
+		{ id = 7146},
+		{ id = 12382},
+		{ id = 6893},
+		{ id = 11000},
+		{ id = 11140},
+		{ id = 18249},
+		{ id = 13704},
+		{ id = 11197},
+		{ id = 18266},
+		{ id = 18268},
+		{ id = 13873},
+		{ name = L["Misc"] }, --16
+		{ id = 19931, disc = L["Used to summon boss"] },
+		{ id = 9240, disc = L["Used to summon boss"] },
+		{ id = 18250, disc = L["Key"] },
+		{ id = 17333, disc = L["Used to summon boss"] },
+		{ id = 22754, disc = L["Used to summon boss"] },
+		{ id = 13523, disc = L["Used to summon boss"] },
+		{ id = 18746, disc = L["Used to summon boss"] },
+		{ id = 18663, disc = L["Used to summon boss"] },
+		{ id = 19974, disc = L["Used to summon boss"] },
+		{ id = 7733, disc = L["Used to summon boss"] },
+		{ id = 10818, disc = L["Used to summon boss"] },
+		{ name = L["Tier 0.5"] },
+		{ id = 22057, disc = L["Used to summon boss"] },
+		{ id = 21986, disc = L["Used to summon boss"] },-- 30
+		{ id = 61234},--key 31
+		{ id = 51356},--key 32
+	}, --TODO need other table for this
+	WintersaberTrainers = {
+		{ name = BF["Exalted"] },
+		{ id = 13086 },
 	},
-	WaterLords = {
+	ThoriumBrotherhood = {
+		{ name = BF["Friendly"] }, --*1
+		{ id = 17051, container={17014} },
+		{ id = 17018, container={16979} },
+		{ id = 17023, container={16983} },
+		{ id = 17022, container={16982} },
+		{ id = 20761 },
+		{ id = 19444 },
+        {},
+		{ name = BF["Revered"] },
+		{ id = 18592, container={17193} },
+		{ id = 17052, container={17013} },
+		{ id = 17053, container={16988} },
+		{ id = 19220, container={19165} },
+		{ id = 19333, container={19163} },
+		{ id = 19332, container={19162} }, --*15
+		{ name = BF["Honored"] }, --*1
+		{ id = 17059, container={17015} },
+		{ id = 17060, container={17016} },
+		{ id = 17049, container={16989} },
+		{ id = 17017, container={16980} },
+		{ id = 19219, container={19156} },
+		{ id = 19330, container={19149} },
+		{ id = 17025, container={16984} },
+		{ id = 19206, container={19148} },
+		{ id = 19448 },
+        {},
+		{ name = BF["Exalted"] },
+		{ id = 20040, container={20039} },
+		{ id = 62004, container={65039} },
+		{ id = 19210, container={19170} }, --*15
+        --revered
+		{ id = 19331, container={19157} }, --*1
+		{ id = 19207, container={19164} },
+		{ id = 19208, container={19166} },
+		{ id = 19209, container={19167} },
+		{ id = 70178, container={56067} },
+		{ id = 19449 },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}, --*15
+        --exalted
+		{ id = 19211, container={19168} }, --*1
+		{ id = 19212, container={19169} },
+		{ id = 62005, container={65035} },
+		{ id = 62006, container={65036} },
+		{ id = 62007, container={65037} },
+		{ id = 62003, container={65038} },
+	},
+	DarkmoonFire = {
+		{ name = L["Decks"] },
+		{ id = 19228, container={19288} },
+		{ id = 19267, container={19289} },
+		{ id = 19257, container={19287} },
+		{ id = 19277, container={19290} },
+		{ name = L["Prizes"] },
+		{ id = 19491 }, --TODO current
+		{ id = 19426 },
+		{ id = 19296 },
+		{ id = 19297 },
+		{ id = 19298 },
+		{ id = 19291, disc=L["Bag"] },
+		{ id = 19293 },
+		{ id = 19292 },
+		{ id = 19295 },
+	},
+    GelkisClanCentaur = {
+		{ name = BF["Neutral"], icon="INV_Misc_Head_Centaur_01" },
+		{ id = 5748 },
+		{},
+		{ name = BF["Friendly"], icon="INV_Misc_Head_Centaur_01" },
+		{ id = 6773 },
+		{ id = 6774 },
+		{},
+		{ name = BF["Honored"], icon="INV_Misc_Head_Centaur_01" },
+		{ id = 60899 },
+		{ id = 60900 },
+		{ id = 60901 },
+		{ id = 60854 },
+		{ id = 60860 },
+		{ id = 60859 },
+		{},
+		{ name = BF["Revered"], icon="INV_Misc_Head_Centaur_01" },
+		{ id = 60902 },
+		{ id = 60903 },
+		{ id = 60904 },
+		{},
+		{ name = BF["Exalted"], icon="INV_Misc_Head_Centaur_01" },
+		{ id = 60905 },
+		{ id = 60964, container={60908} },
+		{ id = 60965, container={60907} },
+		{ id = 60966 },
+	},
+	MagramClanCentaur = {
+		{ name = BF["Neutral"], icon="INV_Misc_Head_Centaur_01" },
+		{ id = 5748 },
+		{},
+		{ name = BF["Friendly"], icon="INV_Misc_Head_Centaur_01" },
+		{ id = 6789 },
+		{ id = 6788 },
+		{},
+		{ name = BF["Honored"], icon="INV_Misc_Head_Centaur_01" },
+		{ id = 60879 },
+		{ id = 60880 },
+		{ id = 60881 },
+		{ id = 60853 },
+		{ id = 60854 },
+		{ id = 60855 },
+		{},
+		{ name = BF["Revered"], icon="INV_Misc_Head_Centaur_01" },
+		{ id = 60884 },
+		{ id = 60883 },
+		{ id = 60882 },
+		{},
+		{ name = BF["Exalted"], icon="INV_Misc_Head_Centaur_01" },
+		{ id = 60885 },
+		{ id = 60968, container={60910} },
+		{ id = 60967, container={60909} },
+		{ id = 60969 },
+	},
+	BloodsailBuccaneers = {
+		{ name = BF["Neutral"], icon="INV_Helmet_66" },
+		{ id = 22742 },
+		{ id = 22743 },
+		{ id = 22745 },
+		{ id = 22744 },
+		{},
+		{ name = BF["Friendly"], icon="INV_Helmet_66" },
+		{ id = 12185 },
+		{},
+		{ name = BF["Revered"], icon="INV_Helmet_66" },
+		{ id = 83494 },
+		{},
+		{},
+		{},
+		{},
+		{ name = BF["Exalted"], icon="INV_Helmet_66" },
+		{ id = 83493 },
+		{ id = 83490 },
+		{ id = 83492 },
+		{ id = 83491 },
+	},
+	TimbermawHold = {
+		{ name = BF["Friendly"], icon="INV_Misc_Horn_01" },
+		{ id = 20254, container={15065} },
+		{ id = 15742, container={15064} },
+		{ id = 22392 },
+		{ id = 13484 },
+		{ id = 91796 },
+		{},
+		{ name = BF["Honored"], icon="INV_Misc_Horn_01" },
+		{ id = 19202, container={19043} },
+		{ id = 62001, container={61648} },
+		{ id = 19326, container={19044} },
+		{ id = 19215, container={19047} },
+		{ id = 16768 },
+		{ id = 16769 },
+		{ id = 19445 },
+		{ name = BF["Revered"], icon="INV_Misc_Horn_01" },
+		{ id = 19218, container={19050} },
+		{ id = 19327, container={19049} },
+		{ id = 19204, container={19048} },
+		{ id = 62002, container={61649} },
+		{},
+		{},
+		{ name = BF["Exalted"], icon="INV_Misc_Horn_01" },
+		{ id = 21326 },
+	},
+	HydroxianWaterLords = {
 		{ name = BF["Honored"], icon = "Spell_Frost_SummonWaterElemental_2"},
 		{ id = 18399, disc = L["Quest Reward"] },
 		{ id = 18398, disc = L["Quest Reward"] },
@@ -150,42 +264,8 @@ AtlasLoot_Data = {
 		{ id=51252, disc = L["Mount"] },
 		{ id=80300 },
 	},
-	VanillaKeys = {
-		{ name = L["Key"] },
-		{ id = 16309},
-		{ id = 12344},
-		{ id = 17191},
-		{ id = 7146},
-		{ id = 12382},
-		{ id = 6893},
-		{ id = 11000},
-		{ id = 11140},
-		{ id = 18249},
-		{ id = 13704},
-		{ id = 11197},
-		{ id = 18266},
-		{ id = 18268},
-		{ id = 13873},
-		{ name = L["Misc"] }, --16
-		{ id = 19931, disc = L["Used to summon boss"] },
-		{ id = 9240, disc = L["Used to summon boss"] },
-		{ id = 18250, disc = L["Key"] },
-		{ id = 17333, disc = L["Used to summon boss"] },
-		{ id = 22754, disc = L["Used to summon boss"] },
-		{ id = 13523, disc = L["Used to summon boss"] },
-		{ id = 18746, disc = L["Used to summon boss"] },
-		{ id = 18663, disc = L["Used to summon boss"] },
-		{ id = 19974, disc = L["Used to summon boss"] },
-		{ id = 7733, disc = L["Used to summon boss"] },
-		{ id = 10818, disc = L["Used to summon boss"] },
-		{ name = L["Tier 0.5"] },
-		{ id = 22057, disc = L["Used to summon boss"] },
-		{ id = 21986, disc = L["Used to summon boss"] },-- 30
-		{ id = 61234},--key 31
-		{ id = 51356},--key 32
-	},
 	CenarionCircle = {
-		{},
+        { name = BF["Friendly"] }, --*1
 		{ id = 22772, container={22758} },
 		{ id = 22769, container={22761} },
 		{ id = 20506, container={20481} },
@@ -194,16 +274,50 @@ AtlasLoot_Data = {
 		{ id = 22209, container={22197} },
 		{ id = 22310, container={22251} },
 		{ id = 20732 },
-		{},
-		{},
-		{},
-		{},
-		{},
-		{},
-		{},
 		{ id = 21187, "5", "#ccombat#", "3", "#clogistics#", "7", "#ctactical#" }, --TODO show icon and numbers in discription
 		{ id = 21178, "5", "#ccombat#", "3", "#clogistics#", "7", "#ctactical#" },
 		{ id = 21179, "5", "#ccombat#", "3", "#clogistics#", "7", "#ctactical#" },
+		{},
+        { name = BF["Revered"] },
+		{ id = 22683, container={22660} }, --*15
+        { name = BF["Honored"] }, --*1
+		{ id = 22773, container={22757} },
+		{ id = 22770, container={22760} },
+		{ id = 20507, container={20480} },
+		{ id = 20510, container={20477} },
+		{ id = 22767, container={22763} },
+		{ id = 22214, container={22195} },
+		{ id = 20733 },
+		{},
+		{ id = 21183 },
+		{ id = 21182 },
+		{ id = 21181 },
+		{},
+        { name = BF["Exalted"] },
+		{ id = 20382, container={20380} }, --*15
+		{ id = 22774, container={22756} }, --*1
+		{ id = 22771, container={22759} },
+		{ id = 20508, container={20479} },
+		{ id = 20511, container={20478} },
+		{ id = 22766, container={22762} },
+		{ id = 22219, container={22198} },
+		{ id = 22312, container={22252} },
+		{},
+		{ id = 21186 },
+		{ id = 21184 },
+		{ id = 21189 },
+		{ id = 21185 }, --*12
+		{},
+		{},
+		{},
+		{ id = 22221, container={22191} }, --*1
+		{ id = 83548, container={65008} },
+		{ id = 83546, container={65021} },
+		{ id = 80301 },
+		{},
+		{ id = 21190 },
+		{ id = 21180 },
+		{ id = 21188 }, --*8
 	},
 	ArgentDawn = {
 		{ name = BF["Neutral"], icon = "INV_Jewelry_Talisman_08"},
@@ -712,5 +826,412 @@ AtlasLoot_Data = {
         {id = 19587}, --Forest Stalker's Bracers
         {id = 19582}, --Windtalker's Wristguards
         {id = 19578}, --Berserker Bracers *4
-    }
+    },
+    StormpikeFrostwolf = {
+		-- Alliance Neutral
+		{ name = BF["Stormpike Guard"]..", "..BF["Neutral"], icon = "INV_BannerPVP_02" }, --*1
+		{ id = 17691 }, --Stormpike Insignia Rank 1
+		-- Alliance friendly
+		{},
+		{ name = L["Shared"]..", "..BF["Friendly"] },
+		{id = 19318, disc=L["Consumable"]}, --Bottled Alterac Spring Water
+		{id = 17349, disc=L["Consumable"]}, --Superior Healing Draught
+		{},
+		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" },
+		{id = 19032}, --Stormpike Battle Tabard
+		{ id = 17900 }, --Stormpike Insignia Rank 2 *10
+		-- Alliance honored
+		{},
+		{ name = L["Shared"]..", "..BF["Honored"] },
+		{id = 19316}, --Ice Threaded Arrow
+		{id = 17348, disc=L["Consumable"]}, --Major Healing Draught
+		{id = 19301}, --Alterac Manna Biscuit --*15
+		-- Horde Neutral
+		{ name = BF["Frostwolf Clan"]..", "..BF["Neutral"], icon = "INV_BannerPVP_01" }, --*1
+		{ id = 17690 }, --Frostwolf Insignia Rank 1
+		-- Horde friendly
+		{},
+		{ name = L["Shared"]..", "..BF["Friendly"] },
+		{id = 19307}, --Alterac Heavy Runecloth Bandage
+		{id = 17352, disc=L["Consumable"]}, --Superior Mana Draught
+		{},
+		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },
+		{id = 19031}, --Frostwolf Battle Tabard
+		{ id = 17905 }, --Frostwolf Insignia Rank 2
+		-- Horde honored
+		{},
+		{ name = L["Shared"]..", "..BF["Honored"] },
+		{id = 19317}, --Ice Threaded Bullet
+		{id = 17351, disc=L["Consumable"]}, --Major Mana Draught
+		{}, --*15
+		--Alliance honored
+		{}, --*1
+		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" },
+		{id = 19098}, --Stormpike Sage's Pendant
+		{id = 19097}, --Stormpike Soldier's Pendant
+		{id = 19086}, --Stormpike Sage's Cloak
+		{id = 19084}, --Stormpike Soldier's Cloak
+		{id = 19094}, --Stormpike Cloth Girdle
+		{id = 19093}, --Stormpike Leather Girdle
+		{id = 19092}, --Stormpike Mail Girdle
+		{id = 19091}, --Stormpike Plate Girdle
+		{ id = 17901 }, --Stormpike Insignia Rank 3
+		-- Alliance revered
+		{},
+		{ name = L["Shared"]..", "..BF["Revered"] },
+		{id = 19320}, --Gnoll Skin Bandolier
+		{}, --*15
+        {}, --*1
+		-- Horde honored
+		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },
+		{id = 19096}, --Frostwolf Advisor's Pendant
+		{id = 19095}, --Frostwolf Legionnaire's Pendant
+		{id = 19085}, --Frostwolf Advisor's Cloak
+		{id = 19083}, --Frostwolf Legionnaire's Cloak
+		{id = 19090}, --Frostwolf Cloth Belt
+		{id = 19089}, --Frostwolf Leather Belt
+		{id = 19088}, --Frostwolf Mail Belt
+		{id = 19087}, --Frostwolf Plate Belt
+		{ id = 17906 }, --Frostwolf Insignia Rank 3
+		-- Horde revered
+		{},
+		{ name = L["Shared"]..", "..BF["Revered"] },
+		{id = 19319}, --Harpy Hide Quiver
+		{}, -- *15
+		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" }, -- *1
+		{id = 19045}, --Stormpike Battle Standard
+		{id = 19100}, --Electrified Dagger
+		{id = 19104}, --Stormstrike Hammer
+		{id = 19102}, --Crackling Staff
+		{ id = 17902 }, --Stormpike Insignia Rank 4
+		-- Alliance exalted
+		{},
+		{ name = L["Shared"]..", "..BF["Exalted"] },
+		{id = 19312}, --Lei of the Lifegiver
+		{id = 19315}, --Therazane's Touch
+		{id = 19308}, --Tome of Arcane Domination
+		{id = 19311}, --Tome of Fiery Arcana
+		{id = 19309}, --Tome of Shadow Force
+		{},
+		{}, --*15
+		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" }, -- *1
+		{id = 19046}, --Frostwolf Battle Standard
+		{id = 19099}, --Glacial Blade
+		{id = 19103}, --Frostbite
+		{id = 19101}, --Whiteout Staff
+		{ id = 17907 }, --Frostwolf Insignia Rank 4
+		-- Horde exalted
+		{},
+		{ name = L["Shared"]..", "..BF["Exalted"] },
+		{id = 19310}, --Tome of the Ice Lord
+		{id = 19325}, --Don Julio's Band
+		{id = 21563}, --Don Rodrigo's Band
+		{id = 19321}, --The Immovable Object
+		{id = 19324}, --The Lobotomizer
+		{id = 19323}, --The Unstoppable Force
+		{}, -- *15
+		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" }, --*1
+		{id = 19030}, --Stormpike Battle Charger
+		{ id = 17903 }, --Stormpike Insignia Rank 5
+		{ id = 17904 }, --Stormpike Insignia Rank 6 *4
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+        -- Horde exalted
+		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },--*1
+		{ id = 19029 }, --Horn of the Frostwolf Howler
+		{ id = 17908 }, --Frostwolf Insignia Rank 5
+		{ id = 17909 }, --Frostwolf Insignia Rank 6
+	},
+	Ironforge = {
+		{ name = BF["Honored"], icon = "Ability_Racial_Avatar" },
+		{ id = 81214 },
+		{ id = 81211 },
+		{ id = 81212 },
+		{ id = 81215 },
+		{ id = 81213 },
+		{},
+		{ name = BF["Exalted"], icon = "Ability_Racial_Avatar" },
+		{ id = 80303 },
+		{ id = 81233 },
+	},
+	Darnassus = {
+		{ name = BF["Honored"], icon = "Ability_Racial_ShadowMeld" },
+		{ id = 60746 },
+		{ id = 60747 },
+		{ id = 60748 },
+		{ id = 60749 },
+		{ id = 60750 },
+		{ id = 60751 },
+		{},
+		{ name = BF["Revered"], icon = "Ability_Racial_ShadowMeld" },
+		{ id = 60752 },
+		{},
+		{ name = BF["Exalted"], icon = "Ability_Racial_ShadowMeld" },
+		{ id = 80305 },
+	},
+	Stormwind = {
+		{ name = BF["Exalted"], icon = "INV_BannerPVP_02" },
+		{ id = 81225 },
+		{ id = 80320 },
+	},
+	GnomereganExiles = {
+		{ name = BF["Exalted"], icon = "INV_Gizmo_02" },
+		{ id = 81192 },
+		{ id = 81193 },
+		{ id = 81194 },
+		{ id = 81195 },
+		{},
+		{ id = 80306 },
+	},
+	DarkspearTrolls = {
+		{ name = BF["Honored"], icon = "Racial_Troll_Berserk" },
+		{ id = 83064 },
+		{},
+		{ name = BF["Revered"], icon = "Racial_Troll_Berserk" },
+		{ id = 80806 },
+		{ id = 80785 },
+		{ id = 80797 },
+		{},
+		{ name = BF["Exalted"], icon = "Racial_Troll_Berserk" },
+		{ id = 81183 },
+		{ id = 80304 },
+		{ id = 81182 },
+	},
+	DurotarLaborUnion = {
+		{ name = BF["Friendly"], icon = "INV_Misc_Coin_01" },
+		{ id = 50068 },
+		{},
+		{ name = BF["Revered"], icon = "INV_Misc_Coin_01" },
+		{ id = 81196, container = {10585} },
+		{},
+		{ name = BF["Exalted"], icon = "INV_Misc_Coin_01" },
+		{ id = 81190 },
+		{ id = 81191 },
+		{ id = 81089 },
+	},
+	Undercity = {
+		{ name = BF["Exalted"], icon = "Spell_Shadow_RaiseDead" },
+		{ id = 81244 },
+		{ id = 81245 },
+		{ id = 81246 },
+		{ id = 81247 },
+		{},
+		{ id = 80309 },
+	},
+	Orgrimmar = {
+		{ name = BF["Honored"], icon = "INV_BannerPVP_01" },
+		{ id = 81216 },
+		{ id = 81217 },
+		{},
+		{ name = BF["Exalted"], icon = "INV_BannerPVP_01" },
+		{ id = 81241 },
+		{ id = 80307 },
+	},
+	ThunderBluff = {
+		{ name = BF["Revered"], icon = "INV_Misc_Foot_Centaur" },
+		{ id = 81199 },
+		{ id = 81218 },
+		{ id = 81219 },
+		{ id = 81220 },
+		{ id = 81221 },
+		{ id = 81222 },
+		{},
+		{ name = BF["Exalted"], icon = "INV_Misc_Foot_Centaur" },
+		{ id = 81167 },
+		{ id = 81223 },
+		{ id = 81198 },
+		{ id = 81237 },
+		{ id = 80308 },
+	},
+	Dalaran = {
+		{ name = BF["Revered"], icon = "Spell_Holy_MagicalSentry" },
+		{ id = 60728 },
+		{ id = 60730 },
+		{ id = 60727 },
+		{ id = 60726 },
+		{ id = 60729 },
+		{},
+		{ name = BF["Exalted"], icon = "Spell_Holy_MagicalSentry" },
+		{ id = 60724 },
+		{ id = 60725 },
+	},
+	WildhammerClan = {
+		{ name = BF["Exalted"], icon = "Ability_Hunter_EagleEye" },
+		{ id = 81185 },
+		{ id = 81186 },
+		{ id = 81243 },
+		{ id = 80312 },
+	},
+	SilvermoonRemnant = {
+		{ name = BS["Cloth"] }, --*1l
+		{ id = 80512 },
+		{ id = 80513 },
+		{ id = 80514 },
+		{ id = 80515 },
+		{ id = 80516 },
+        {},
+		{ name = BS["Leather"] },
+		{ id = 80517 },
+		{ id = 80518 },
+		{ id = 80519 },
+		{ id = 80520 },
+		{ id = 80521 },
+        {},
+		{ name = L["Cloak"] }, --*15l
+		{ name = BS["Mail"] }, --*1r
+		{ id = 80522 },
+		{ id = 80523 },
+		{ id = 80524 },
+		{ id = 80525 },
+		{ id = 80526 },
+        {},
+		{ name = BS["Plate"] },
+		{ id = 80507 },
+		{ id = 80508 },
+		{ id = 80509 },
+		{ id = 80510 },
+		{ id = 80511 },
+        {},
+		{ name = L["Pet"] }, --*15r
+        --cloak
+		{ id = 80505 }, --*1l
+		{ id = 80506 },
+		{ id = 80527 },
+        {},
+		{ name = L["Tabards"] },
+		{ id = 80317 },
+        {},
+		{ name = L["Weapons"] },
+		{ id = 80502 },
+		{ id = 80504 },
+		{ id = 80501 },
+		{ id = 80500 },
+		{ id = 80503 },
+        {},
+		{ id = 80538 }, --*15l
+        --pets
+		{ id = 80003 }, --*1r
+		{ id = 80007 },
+		{ id = 80000 },
+		{ id = 80001 },
+        {},
+        {},
+        {},
+		{ name = L["Weapons"] },
+		{ id = 80529 },
+		{ id = 80539 },
+		{ id = 80541 },
+		{ id = 80544 },
+        {},
+		{ id = 80532 },
+		{ id = 80540 }, --*15r
+		{ id = 80546 }, --*1l
+        {},
+		{ id = 80531 },
+		{ id = 80533 },
+		{ id = 80547 },
+		{ id = 80534 },
+		{ id = 80537 },
+		{ id = 80530 },
+        {},
+		{ id = 80528 },
+		{ id = 80536 },
+        {},
+		{ id = 80535 },
+		{ id = 80543 },
+        {}, --*15l
+		{ id = 80542 }, --*1r
+		{ id = 80545 },
+	},
+	RevantuskTrolls = {
+		{ name =  BS["Cloth"] }, --*1L
+		{ id = 80612 },
+		{ id = 80613 },
+		{ id = 80614 },
+		{ id = 80615 },
+		{ id = 80616 },
+        {},
+		{ name = BS["Leather"] },
+		{ id = 80617 },
+		{ id = 80618 },
+		{ id = 80619 },
+		{ id = 80620 },
+		{ id = 80621 },
+        {},
+		{ name = L["Cloak"] }, --*15L
+		{ name = BS["Mail"] }, --*1R
+		{ id = 80622 },
+		{ id = 80623 },
+		{ id = 80624 },
+		{ id = 80625 },
+		{ id = 80626 },
+        {},
+		{ name = BS["Plate"] },
+		{ id = 80607 },
+		{ id = 80608 },
+		{ id = 80609 },
+		{ id = 80610 },
+		{ id = 80611 },
+        {},
+		{ name = L["Pet"] }, --15R
+        --cloak
+		{ id = 80605 }, --*1L
+		{ id = 80606 },
+		{ id = 80627 },
+        {},
+		{ name = L["Tabards"] },
+		{ id = 81098 },
+        {},
+		{ name = L["Weapons"] },
+		{ id = 80602 },
+		{ id = 80601 },
+		{ id = 80600 },
+		{ id = 80603 },
+		{ id = 80604 },
+        {},
+		{ id = 80632 }, --*15L
+        --pet
+		{ id = 80878 }, --*1R
+        {},
+		{ name = L["Mounts"] },
+		{ id = 81226 },
+		{ id = 80433 },
+		{ id = 80438 },
+        {},
+        --weapons
+		{ name = L["Weapons"] },
+		{ id = 80629 },
+		{ id = 80639 },
+		{ id = 80641 },
+		{ id = 80644 },
+        {},
+        {},
+		{ id = 80646 }, --*15R
+        --weapons
+		{ id = 80640 }, --*1L
+		{ id = 80642 },
+		{ id = 80645 },
+        {},
+		{ id = 80630 },
+		{ id = 80631 },
+		{ id = 80633 },
+		{ id = 80634 },
+		{ id = 80637 },
+        {},
+		{ id = 80636 },
+		{ id = 80628 },
+        {},
+		{ id = 80635 },
+		{ id = 80643 }, --*15L
+        { id = 80638 }, --*1R
+	},
 }
