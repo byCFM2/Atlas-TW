@@ -157,7 +157,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {id=20890, container={21410,21413,21416,21407}},
                 {id=20886, container={21392,21395,21401,21404,21398}},
                 {},
-                {id=83005, disc=L["Quest Item"], dropRate=100},
+                {id=83005, disc=L["Quest Item"], dropRate=100, container={83002}},
             }
         },
         {

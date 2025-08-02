@@ -9,19 +9,19 @@ local BS = AceLibrary("Babble-Spell-2.2a")
 AtlasLoot_Data = {
 	VanillaKeys = {
 		{ name = L["Key"] },
-		{ id = 16309},
-		{ id = 12344},
-		{ id = 17191},
-		{ id = 7146},
-		{ id = 12382},
-		{ id = 6893},
-		{ id = 11000},
-		{ id = 11140},
-		{ id = 18249},
-		{ id = 13704},
-		{ id = 11197},
-		{ id = 18266},
-		{ id = 18268},
+		{ id = 16309}, -- Drakefire Amulet
+		{ id = 12344}, -- Seal of Ascension
+		{ id = 17191}, -- Scepter of Celebras
+		{ id = 7146}, -- The Scarlet Key
+		{ id = 12382}, -- Key to the City
+		{ id = 6893}, -- Workshop Key
+		{ id = 11000}, -- Shadowforge Key
+		{ id = 11140}, -- Prison Cell Key
+		{ id = 18249}, -- Crescent Key
+		{ id = 13704}, -- Skeleton Key
+		{ id = 11197}, -- Dark Keeper Key
+		{ id = 18266}, -- Gordok Inner Door Key
+		{ id = 18268}, -- Gordok Courtyard Key
 		{ id = 13873},
 		{ name = L["Misc"] }, --16
 		{ id = 19931, disc = L["Used to summon boss"] },
@@ -43,16 +43,16 @@ AtlasLoot_Data = {
 	}, --TODO need other table for this
 	WintersaberTrainers = {
 		{ name = BF["Exalted"] },
-		{ id = 13086 },
+		{ id = 13086 }, -- Reins of the Winterspring Frostsaber
 	},
 	ThoriumBrotherhood = {
 		{ name = BF["Friendly"] }, --*1
-		{ id = 17051, container={17014} },
-		{ id = 17018, container={16979} },
-		{ id = 17023, container={16983} },
-		{ id = 17022, container={16982} },
-		{ id = 20761 },
-		{ id = 19444 },
+		{ id = 17051, container={17014} }, -- Plans: Dark Iron Bracers
+		{ id = 17018, container={16979} }, -- Pattern: Flarecore Gloves
+		{ id = 17023, container={16983} }, -- Pattern: Molten Helm
+		{ id = 17022, container={16982} }, -- Pattern: Corehound Boots
+		{ id = 20761 }, -- Recipe: Transmute Elemental Fire
+		{ id = 19444 }, -- Formula: Enchant Weapon - Strength
         {},
 		{ name = BF["Revered"] },
 		{ id = 18592, container={17193} },
@@ -62,15 +62,15 @@ AtlasLoot_Data = {
 		{ id = 19333, container={19163} },
 		{ id = 19332, container={19162} }, --*15
 		{ name = BF["Honored"] }, --*1
-		{ id = 17059, container={17015} },
-		{ id = 17060, container={17016} },
-		{ id = 17049, container={16989} },
-		{ id = 17017, container={16980} },
-		{ id = 19219, container={19156} },
-		{ id = 19330, container={19149} },
-		{ id = 17025, container={16984} },
-		{ id = 19206, container={19148} },
-		{ id = 19448 },
+		{ id = 17059, container={17015} }, -- Plans: Dark Iron Reaver
+		{ id = 17060, container={17016} }, -- Plans: Dark Iron Destroyer
+		{ id = 17049, container={16989} }, -- Plans: Fiery Chain Girdle
+		{ id = 17017, container={16980} }, -- Pattern: Fiery Wrath
+		{ id = 19219, container={19156} }, -- Pattern: Lava Belt
+		{ id = 19330, container={19149} }, -- Pattern: Lava Belt
+		{ id = 17025, container={16984} }, -- Pattern: Black Dragonscale Boots
+		{ id = 19206, container={19148} }, -- Pattern: Flarecore Mantle
+		{ id = 19448 }, -- Formula: Enchant Weapon - Mighty Spirit
         {},
 		{ name = BF["Exalted"] },
 		{ id = 20040, container={20039} },
@@ -82,7 +82,7 @@ AtlasLoot_Data = {
 		{ id = 19208, container={19166} },
 		{ id = 19209, container={19167} },
 		{ id = 70178, container={56067} },
-		{ id = 19449 },
+		{ id = 19449 }, -- Formula: Enchant Weapon - Mighty Intellect
         {},
         {},
         {},
@@ -102,20 +102,20 @@ AtlasLoot_Data = {
 	},
 	DarkmoonFire = {
 		{ name = L["Decks"] },
-		{ id = 19228, container={19288} },
-		{ id = 19267, container={19289} },
-		{ id = 19257, container={19287} },
-		{ id = 19277, container={19290} },
+		{ id = 19228, container={19288} }, -- Beasts Deck
+		{ id = 19267, container={19289} }, -- Elementals Deck
+		{ id = 19257, container={19287} }, -- Warlords Deck
+		{ id = 19277, container={19290} }, -- Portals Deck
 		{ name = L["Prizes"] },
-		{ id = 19491 }, --TODO current
-		{ id = 19426 },
-		{ id = 19296 },
-		{ id = 19297 },
-		{ id = 19298 },
-		{ id = 19291, disc=L["Bag"] },
-		{ id = 19293 },
-		{ id = 19292 },
-		{ id = 19295 },
+		{ id = 19491, container={{19182,1200}} },
+		{ id = 19426, container={{19182,1200}} },
+		{ id = 19291, disc=L["Bag"], container={{19182,50}} }, -- Darkmoon Storage Box
+		{ id = 19293, container={{19182,50}} }, -- Last Year's Mutton
+		{ id = 19296, container={{19182,40}} },-- Greater Darkmoon Prize
+		{ id = 19297, container={{19182,12}} }, -- Lesser Darkmoon Prize
+		{ id = 19292, container={{19182,10}} }, -- Last Month's Mutton
+		{ id = 19298, container={{19182,5}} }, -- Minor Darkmoon Prize
+		{ id = 19295, container={{19182,5}} }, -- Darkmoon Flower
 	},
     GelkisClanCentaur = {
 		{ name = BF["Neutral"], icon="INV_Misc_Head_Centaur_01" },
@@ -274,12 +274,12 @@ AtlasLoot_Data = {
 		{ id = 22209, container={22197} },
 		{ id = 22310, container={22251} },
 		{ id = 20732 },
-		{ id = 21187, "5", "#ccombat#", "3", "#clogistics#", "7", "#ctactical#" }, --TODO show icon and numbers in discription
-		{ id = 21178, "5", "#ccombat#", "3", "#clogistics#", "7", "#ctactical#" },
-		{ id = 21179, "5", "#ccombat#", "3", "#clogistics#", "7", "#ctactical#" },
 		{},
-        { name = BF["Revered"] },
-		{ id = 22683, container={22660} }, --*15
+		{ id = 21187, container={{20802,7},{20800,3},{20801,5}} },
+		{ id = 21178, container={{20802,7},{20800,3},{20801,5}} },
+		{ id = 21179, container={{20802,7},{20800,3},{20801,5}} },
+		{},
+        { name = BF["Revered"] }, --*15
         { name = BF["Honored"] }, --*1
 		{ id = 22773, container={22757} },
 		{ id = 22770, container={22760} },
@@ -289,35 +289,38 @@ AtlasLoot_Data = {
 		{ id = 22214, container={22195} },
 		{ id = 20733 },
 		{},
-		{ id = 21183 },
-		{ id = 21182 },
-		{ id = 21181 },
 		{},
-        { name = BF["Exalted"] },
-		{ id = 20382, container={20380} }, --*15
-		{ id = 22774, container={22756} }, --*1
+		{ id = 21181, container={{20802,7},{20800,4},{20801,4}} },
+		{ id = 21182, container={{20802,7},{20800,4},{20801,4}} },
+		{ id = 21183, container={{20802,7},{20800,4},{20801,4}} },
+		{},
+        { name = BF["Exalted"] }, --*15
+		{ id = 22683, container={22660} }, --*1
+		{ id = 22774, container={22756} },
 		{ id = 22771, container={22759} },
 		{ id = 20508, container={20479} },
 		{ id = 20511, container={20478} },
 		{ id = 22766, container={22762} },
 		{ id = 22219, container={22198} },
 		{ id = 22312, container={22252} },
-		{},
-		{ id = 21186 },
-		{ id = 21184 },
-		{ id = 21189 },
-		{ id = 21185 }, --*12
-		{},
+		{ id = 21184, container={{20802,15},{20800,20},{20801,17},{21515,1}} },
+		{ id = 21185, container={{20802,15},{20800,20},{20801,17},{21515,1}} },
+		{ id = 21186, container={{20802,15},{20800,20},{20801,17},{21515,1}} },
+		{ id = 21189, container={{20802,15},{20800,20},{20801,17},{21515,1}} },
 		{},
 		{},
-		{ id = 22221, container={22191} }, --*1
+		{}, --*15
+		{ id = 20382, container={20380} }, --*1
+		{ id = 22221, container={22191} },
 		{ id = 83548, container={65008} },
 		{ id = 83546, container={65021} },
 		{ id = 80301 },
 		{},
-		{ id = 21190 },
-		{ id = 21180 },
-		{ id = 21188 }, --*8
+		{},
+		{},
+		{ id = 21180, container={{20802,15},{20800,20},{20801,20},{21508,1}} },
+		{ id = 21188, container={{20802,15},{20800,20},{20801,20},{21508,1}} },
+		{ id = 21190, container={{20802,15},{20800,20},{20801,20},{21508,1}} },
 	},
 	ArgentDawn = {
 		{ name = BF["Neutral"], icon = "INV_Jewelry_Talisman_08"},
@@ -394,42 +397,116 @@ AtlasLoot_Data = {
 	},
 	ZandalarTribe = {
 		{ name = BF["Friendly"], icon = "INV_Misc_Coin_08"},
-		{ id=19766 },
-		{ id=19771 },
-		{ id=20001 },
-		{ id=19778 },
-		{ id=19781 },
-		{ id=20012 },
-		{ id=20757 },
+		{ id=19766, container={19684} },
+		{ id=19771, container={19687} },
+		{ id=20001, container={19998} },
+		{ id=19778, container={19692} },
+		{ id=19781, container={19695} },
+		{ id=20012, container={20002} },
+		{ id=20757, container={20748} },
 		{},
 		{ name = BF["Honored"], icon = "INV_Misc_Coin_08"},
-		{ id=19765 },
-		{ id=20000 },
-		{ id=19770 },
-		{ id=19773 },
-		{ id=19777 },
-		{ id=19780 },
-		{ id=20014 },
-		{ id=20756 },
-		{ id=20031, disc = L["Food"], "", "1", "#zandalar#" },
-		{},
-		{ name = BF["Revered"], icon = "INV_Misc_Coin_08"},
-		{ id=20080, disc = L["Potion"], "", "3", "#zandalar#" },
-		{ id=20079, disc = L["Potion"], "", "3", "#zandalar#" },
-		{ id=20081, disc = L["Potion"], "", "3", "#zandalar#" },
-		{ id=19764 },
-		{ id=19769 },
-		{ id=19772 },
-		{ id=19776 },
-		{ id=19779 },
-		{ id=20011 },
+		{ id=19765, container={19683} },
+		{ id=20000, container={19999} },
+		{ id=19770, container={19686} },
+		{ id=19773, container={19689} },
+		{ id=19777, container={19691} },--*15
+		{ name = BF["Revered"], icon = "INV_Misc_Coin_08"},--*1
+		{ id=20080, disc = L["Potion"], container={{19858,1}} },
+		{ id=20079, disc = L["Potion"], container={{19858,1}} },
+		{ id=20081, disc = L["Potion"], container={{19858,1}} },
+		{ id=19764, container={19682} },
+		{ id=19769, container={19685} },
+		{ id=19772, container={19688} },
+		{ id=19776, container={19690} },
+		{ id=19779, container={19693} },
+		{ id=20011, container={20007} },
 		{},
 		{ name = BF["Exalted"], icon = "INV_Misc_Coin_08"},
-		{ id=20077, disc = L["Enchant"]..","..L["Shoulder"], "", "", "", "", "", "15", "#zandalar#" },
-		{ id=20076, disc = L["Enchant"]..","..L["Shoulder"], "", "", "", "", "", "15", "#zandalar#" },
-		{ id=20078, disc = L["Enchant"]..","..L["Shoulder"], "", "", "", "", "", "15", "#zandalar#" },
-		{ id=65033, disc = L["Enchant"]..","..L["Shoulder"], "", "", "", "", "", "15", "#zandalar#" },
-		{ id=20013 },
+		{ id=20077, disc = L["Enchant"]..","..L["Shoulder"], container={{19858,15}} },
+		{ id=20076, disc = L["Enchant"]..","..L["Shoulder"], container={{19858,15}} },
+		{ id=20078, disc = L["Enchant"]..","..L["Shoulder"], container={{19858,15}} },--*15
+		{ id=19780, container={19694} },
+		{ id=20014, container={20004} },
+		{ id=20756, container={20749} },
+		{ id=20031, disc = L["Food"], container={{19858,1}}, quantity=10 },
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id=65033, disc = L["Enchant"]..","..L["Shoulder"], container={{19858,15}} },--*1
+		{ id=20013, container={20008} },
+	},
+	SteamwheedleBloodRing = {
+		{ name = BF["Friendly"], icon = "inv_jewelry_ring_04" },
+		{ id = 60366 }, -- Gore Ring of the Gladiator
+		{ id = 60368 }, -- Loop of Field Medicine
+		{ id = 60367 }, -- Auspicious Ring of the Seer
+		{},
+		{ name = BF["Honored"], icon = "inv_jewelry_ring_04" },
+		{ id = 83421 }, -- Bloody Gladiator's Handwraps
+		{ id = 83420 }, -- Bloody Gladiator's Sash
+		{ id = 83430 }, -- Bloody Gladiator's Gloves
+		{ id = 83429 }, -- Bloody Gladiator's Belt
+		{ id = 60351 }, -- Bloody Gladiator's Handguards
+		{ id = 60350 }, -- Bloody Gladiator's Cord
+		{ id = 60359 }, -- Bloody Gladiator's Gauntlets
+		{ id = 60358 }, -- Bloody Gladiator's Girdle
+		{},
+		{ name = BF["Revered"], icon = "inv_jewelry_ring_04" },
+		{ id = 83425 }, -- Bloody Gladiator's Wraps
+		{ id = 83423 }, -- Bloody Gladiator's Britches
+		{ id = 83424 }, -- Bloody Gladiator's Footwraps
+		{ id = 83433 }, -- Bloody Gladiator's Bands
+		{ id = 83431 }, -- Bloody Gladiator's Pants
+		{ id = 83432 }, -- Bloody Gladiator's Boots
+		{ id = 60354 }, -- Bloody Gladiator's Wristguards
+		{ id = 60352 }, -- Bloody Gladiator's Leggings
+		{ id = 60353 }, -- Bloody Gladiator's Trudgeons
+		{ id = 60362 }, -- Bloody Gladiator's Bracers
+		{ id = 60360 }, -- Bloody Gladiator's Legguards
+		{ id = 60361 }, -- Bloody Gladiator's Greaves
+		{},
+		{},
+		{ name = BF["Exalted"], icon = "inv_jewelry_ring_04" },--*1
+		{ id = 83428 }, -- Bloody Gladiator's Circlet
+		{ id = 83427 }, -- Bloody Gladiator's Amice
+		{ id = 83426 }, -- Bloody Gladiator's Vestments
+		{ id = 83436 }, -- Bloody Gladiator's Headband
+		{ id = 83435 }, -- Bloody Gladiator's Shoulders
+		{ id = 83434 }, -- Bloody Gladiator's Tunic
+		{ id = 60357 }, -- Bloody Gladiator's Helmet
+		{ id = 60356 }, -- Bloody Gladiator's Pauldrons
+		{ id = 60355 }, -- Bloody Gladiator's Armor
+		{ id = 60365 }, -- Bloody Gladiator's Helm
+		{ id = 60364 }, -- Bloody Gladiator's Spaulders
+		{ id = 60363 }, -- Bloody Gladiator's Breastplate
+		{ id = 60004 }, -- Loop of Triage
+		{ id = 60005 }, -- Signet of the Battlecaster *15
+		{ name = L["Token of Blood Rewards"], icon = "inv_jewelry_ring_04" }, --*1
+		{ id = 53017, container = {{61794,25}} }, -- Formula: Enchant Gloves - Major Strength
+		{ id = 61803, container = {{61794,25}, 61810} }, -- Plans: Bloody Belt Buckle
+		{ id = 61799, container = {{61794,25}, 65004} }, -- Plans: Ornate Bloodstone Dagger
+		{ id = 53016, container = {{61794,25}, 53015} }, -- Recipe: Gurubashi Gumbo *5
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 60006 }, -- Ring of Blood *1
+		{},
 	},
     ArathorDefilers = {
         -- Alliance 20-29
@@ -830,110 +907,110 @@ AtlasLoot_Data = {
     StormpikeFrostwolf = {
 		-- Alliance Neutral
 		{ name = BF["Stormpike Guard"]..", "..BF["Neutral"], icon = "INV_BannerPVP_02" }, --*1
-		{ id = 17691 }, --Stormpike Insignia Rank 1
+		{ id = 17691 }, -- Stormpike Insignia Rank 1
 		-- Alliance friendly
 		{},
 		{ name = L["Shared"]..", "..BF["Friendly"] },
-		{id = 19318, disc=L["Consumable"]}, --Bottled Alterac Spring Water
-		{id = 17349, disc=L["Consumable"]}, --Superior Healing Draught
+		{id = 19318, disc=L["Consumable"]}, -- Bottled Alterac Spring Water
+		{id = 17349, disc=L["Consumable"]}, -- Superior Healing Draught
 		{},
 		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" },
-		{id = 19032}, --Stormpike Battle Tabard
-		{ id = 17900 }, --Stormpike Insignia Rank 2 *10
+		{id = 19032}, -- Stormpike Battle Tabard
+		{ id = 17900 }, -- Stormpike Insignia Rank 2 *10
 		-- Alliance honored
 		{},
 		{ name = L["Shared"]..", "..BF["Honored"] },
-		{id = 19316}, --Ice Threaded Arrow
-		{id = 17348, disc=L["Consumable"]}, --Major Healing Draught
-		{id = 19301}, --Alterac Manna Biscuit --*15
+		{id = 19316}, -- Ice Threaded Arrow
+		{id = 17348, disc=L["Consumable"]}, -- Major Healing Draught
+		{id = 19301}, -- Alterac Manna Biscuit --*15
 		-- Horde Neutral
 		{ name = BF["Frostwolf Clan"]..", "..BF["Neutral"], icon = "INV_BannerPVP_01" }, --*1
-		{ id = 17690 }, --Frostwolf Insignia Rank 1
+		{ id = 17690 }, -- Frostwolf Insignia Rank 1
 		-- Horde friendly
 		{},
 		{ name = L["Shared"]..", "..BF["Friendly"] },
-		{id = 19307}, --Alterac Heavy Runecloth Bandage
-		{id = 17352, disc=L["Consumable"]}, --Superior Mana Draught
+		{id = 19307}, -- Alterac Heavy Runecloth Bandage
+		{id = 17352, disc=L["Consumable"]}, -- Superior Mana Draught
 		{},
 		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },
-		{id = 19031}, --Frostwolf Battle Tabard
-		{ id = 17905 }, --Frostwolf Insignia Rank 2
+		{id = 19031}, -- Frostwolf Battle Tabard
+		{ id = 17905 }, -- Frostwolf Insignia Rank 2
 		-- Horde honored
 		{},
 		{ name = L["Shared"]..", "..BF["Honored"] },
-		{id = 19317}, --Ice Threaded Bullet
-		{id = 17351, disc=L["Consumable"]}, --Major Mana Draught
+		{id = 19317}, -- Ice Threaded Bullet
+		{id = 17351, disc=L["Consumable"]}, -- Major Mana Draught
 		{}, --*15
 		--Alliance honored
 		{}, --*1
 		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" },
-		{id = 19098}, --Stormpike Sage's Pendant
-		{id = 19097}, --Stormpike Soldier's Pendant
-		{id = 19086}, --Stormpike Sage's Cloak
-		{id = 19084}, --Stormpike Soldier's Cloak
-		{id = 19094}, --Stormpike Cloth Girdle
-		{id = 19093}, --Stormpike Leather Girdle
-		{id = 19092}, --Stormpike Mail Girdle
-		{id = 19091}, --Stormpike Plate Girdle
-		{ id = 17901 }, --Stormpike Insignia Rank 3
+		{id = 19098}, -- Stormpike Sage's Pendant
+		{id = 19097}, -- Stormpike Soldier's Pendant
+		{id = 19086}, -- Stormpike Sage's Cloak
+		{id = 19084}, -- Stormpike Soldier's Cloak
+		{id = 19094}, -- Stormpike Cloth Girdle
+		{id = 19093}, -- Stormpike Leather Girdle
+		{id = 19092}, -- Stormpike Mail Girdle
+		{id = 19091}, -- Stormpike Plate Girdle
+		{ id = 17901 }, -- Stormpike Insignia Rank 3
 		-- Alliance revered
 		{},
 		{ name = L["Shared"]..", "..BF["Revered"] },
-		{id = 19320}, --Gnoll Skin Bandolier
+		{id = 19320}, -- Gnoll Skin Bandolier
 		{}, --*15
         {}, --*1
 		-- Horde honored
 		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },
-		{id = 19096}, --Frostwolf Advisor's Pendant
-		{id = 19095}, --Frostwolf Legionnaire's Pendant
-		{id = 19085}, --Frostwolf Advisor's Cloak
-		{id = 19083}, --Frostwolf Legionnaire's Cloak
-		{id = 19090}, --Frostwolf Cloth Belt
-		{id = 19089}, --Frostwolf Leather Belt
-		{id = 19088}, --Frostwolf Mail Belt
-		{id = 19087}, --Frostwolf Plate Belt
-		{ id = 17906 }, --Frostwolf Insignia Rank 3
+		{id = 19096}, -- Frostwolf Advisor's Pendant
+		{id = 19095}, -- Frostwolf Legionnaire's Pendant
+		{id = 19085}, -- Frostwolf Advisor's Cloak
+		{id = 19083}, -- Frostwolf Legionnaire's Cloak
+		{id = 19090}, -- Frostwolf Cloth Belt
+		{id = 19089}, -- Frostwolf Leather Belt
+		{id = 19088}, -- Frostwolf Mail Belt
+		{id = 19087}, -- Frostwolf Plate Belt
+		{ id = 17906 }, -- Frostwolf Insignia Rank 3
 		-- Horde revered
 		{},
 		{ name = L["Shared"]..", "..BF["Revered"] },
-		{id = 19319}, --Harpy Hide Quiver
+		{id = 19319}, -- Harpy Hide Quiver
 		{}, -- *15
 		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" }, -- *1
-		{id = 19045}, --Stormpike Battle Standard
-		{id = 19100}, --Electrified Dagger
-		{id = 19104}, --Stormstrike Hammer
-		{id = 19102}, --Crackling Staff
-		{ id = 17902 }, --Stormpike Insignia Rank 4
+		{id = 19045}, -- Stormpike Battle Standard
+		{id = 19100}, -- Electrified Dagger
+		{id = 19104}, -- Stormstrike Hammer
+		{id = 19102}, -- Crackling Staff
+		{ id = 17902 }, -- Stormpike Insignia Rank 4
 		-- Alliance exalted
 		{},
 		{ name = L["Shared"]..", "..BF["Exalted"] },
-		{id = 19312}, --Lei of the Lifegiver
-		{id = 19315}, --Therazane's Touch
-		{id = 19308}, --Tome of Arcane Domination
-		{id = 19311}, --Tome of Fiery Arcana
-		{id = 19309}, --Tome of Shadow Force
+		{id = 19312}, -- Lei of the Lifegiver
+		{id = 19315}, -- Therazane's Touch
+		{id = 19308}, -- Tome of Arcane Domination
+		{id = 19311}, -- Tome of Fiery Arcana
+		{id = 19309}, -- Tome of Shadow Force
 		{},
 		{}, --*15
 		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" }, -- *1
-		{id = 19046}, --Frostwolf Battle Standard
-		{id = 19099}, --Glacial Blade
-		{id = 19103}, --Frostbite
-		{id = 19101}, --Whiteout Staff
-		{ id = 17907 }, --Frostwolf Insignia Rank 4
+		{id = 19046}, -- Frostwolf Battle Standard
+		{id = 19099}, -- Glacial Blade
+		{id = 19103}, -- Frostbite
+		{id = 19101}, -- Whiteout Staff
+		{ id = 17907 }, -- Frostwolf Insignia Rank 4
 		-- Horde exalted
 		{},
 		{ name = L["Shared"]..", "..BF["Exalted"] },
-		{id = 19310}, --Tome of the Ice Lord
-		{id = 19325}, --Don Julio's Band
-		{id = 21563}, --Don Rodrigo's Band
-		{id = 19321}, --The Immovable Object
-		{id = 19324}, --The Lobotomizer
-		{id = 19323}, --The Unstoppable Force
+		{id = 19310}, -- Tome of the Ice Lord
+		{id = 19325}, -- Don Julio's Band
+		{id = 21563}, -- Don Rodrigo's Band
+		{id = 19321}, -- The Immovable Object
+		{id = 19324}, -- The Lobotomizer
+		{id = 19323}, -- The Unstoppable Force
 		{}, -- *15
 		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" }, --*1
-		{id = 19030}, --Stormpike Battle Charger
-		{ id = 17903 }, --Stormpike Insignia Rank 5
-		{ id = 17904 }, --Stormpike Insignia Rank 6 *4
+		{id = 19030}, -- Stormpike Battle Charger
+		{ id = 17903 }, -- Stormpike Insignia Rank 5
+		{ id = 17904 }, -- Stormpike Insignia Rank 6 *4
 		{},
 		{},
 		{},
@@ -947,258 +1024,258 @@ AtlasLoot_Data = {
 		{},
         -- Horde exalted
 		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },--*1
-		{ id = 19029 }, --Horn of the Frostwolf Howler
-		{ id = 17908 }, --Frostwolf Insignia Rank 5
-		{ id = 17909 }, --Frostwolf Insignia Rank 6
+		{ id = 19029 }, -- Horn of the Frostwolf Howler
+		{ id = 17908 }, -- Frostwolf Insignia Rank 5
+		{ id = 17909 }, -- Frostwolf Insignia Rank 6
 	},
 	Ironforge = {
 		{ name = BF["Honored"], icon = "Ability_Racial_Avatar" },
-		{ id = 81214 },
-		{ id = 81211 },
-		{ id = 81212 },
-		{ id = 81215 },
-		{ id = 81213 },
+		{ id = 81214 }, -- Girdle of Anvilmar
+		{ id = 81211 }, -- Boots of Anvilmar
+		{ id = 81212 }, -- Tunic of Anvilmar
+		{ id = 81215 }, -- Armguards of Anvilmar
+		{ id = 81213 }, -- Pants of Anvilmar
 		{},
 		{ name = BF["Exalted"], icon = "Ability_Racial_Avatar" },
-		{ id = 80303 },
-		{ id = 81233 },
+		{ id = 80303 }, -- Ironforge Tabard
+		{ id = 81233 }, -- Armored Ironforge Ram
 	},
 	Darnassus = {
 		{ name = BF["Honored"], icon = "Ability_Racial_ShadowMeld" },
-		{ id = 60746 },
-		{ id = 60747 },
-		{ id = 60748 },
-		{ id = 60749 },
-		{ id = 60750 },
-		{ id = 60751 },
+		{ id = 60746 }, -- Sentinel's Breastplate
+		{ id = 60747 }, -- Sentinel's Boots
+		{ id = 60748 }, -- Sentinel's Crown
+		{ id = 60749 }, -- Sentinel's Leggings
+		{ id = 60750 }, -- Sentinel's Gauntlets
+		{ id = 60751 }, -- Sentinel's Pauldrons
 		{},
 		{ name = BF["Revered"], icon = "Ability_Racial_ShadowMeld" },
-		{ id = 60752 },
+		{ id = 60752 }, -- Sentinel's Glaive
 		{},
 		{ name = BF["Exalted"], icon = "Ability_Racial_ShadowMeld" },
-		{ id = 80305 },
+		{ id = 80305 }, -- Darnassus Tabard
 	},
 	Stormwind = {
 		{ name = BF["Exalted"], icon = "INV_BannerPVP_02" },
-		{ id = 81225 },
-		{ id = 80320 },
+		{ id = 81225 }, -- Armored Stormwind Warhorse
+		{ id = 80320 }, -- Stormwind Tabard
 	},
 	GnomereganExiles = {
 		{ name = BF["Exalted"], icon = "INV_Gizmo_02" },
-		{ id = 81192 },
-		{ id = 81193 },
-		{ id = 81194 },
-		{ id = 81195 },
+		{ id = 81192 }, -- Black Scrapforged Mechaspider
+		{ id = 81193 }, -- Blue Scrapforged Mechaspider
+		{ id = 81194 }, -- Green Scrapforged Mechaspider
+		{ id = 81195 }, -- Red Scrapforged Mechaspider
 		{},
-		{ id = 80306 },
+		{ id = 80306 }, -- Gnomeregan Tabard
 	},
 	DarkspearTrolls = {
 		{ name = BF["Honored"], icon = "Racial_Troll_Berserk" },
-		{ id = 83064 },
+		{ id = 83064 }, -- Hexed Voodoo Pads
 		{},
 		{ name = BF["Revered"], icon = "Racial_Troll_Berserk" },
-		{ id = 80806 },
-		{ id = 80785 },
-		{ id = 80797 },
+		{ id = 80806 }, -- Healing Ward
+		{ id = 80785 }, -- Bottle of Good Mojo
+		{ id = 80797 }, -- Pendant of Troll Regeneration
 		{},
 		{ name = BF["Exalted"], icon = "Racial_Troll_Berserk" },
-		{ id = 81183 },
-		{ id = 80304 },
-		{ id = 81182 },
+		{ id = 81183 }, -- Sunscale Hatchling
+		{ id = 80304 }, -- Darkspear Tribe Tabard
+		{ id = 81182 }, -- Armored Darkspear Raptor
 	},
 	DurotarLaborUnion = {
 		{ name = BF["Friendly"], icon = "INV_Misc_Coin_01" },
-		{ id = 50068 },
+		{ id = 50068 }, -- Green Water Snake
 		{},
 		{ name = BF["Revered"], icon = "INV_Misc_Coin_01" },
-		{ id = 81196, container = {10585} },
+		{ id = 81196, container = {10585} }, -- Schematic: Goblin Radio
 		{},
 		{ name = BF["Exalted"], icon = "INV_Misc_Coin_01" },
-		{ id = 81190 },
-		{ id = 81191 },
-		{ id = 81089 },
+		{ id = 81190 }, -- Red Shredder X-0524A
+		{ id = 81191 }, -- Green Shredder X-0524B
+		{ id = 81089 }, -- Durotar Labor Union Tabard
 	},
 	Undercity = {
 		{ name = BF["Exalted"], icon = "Spell_Shadow_RaiseDead" },
-		{ id = 81244 },
-		{ id = 81245 },
-		{ id = 81246 },
-		{ id = 81247 },
+		{ id = 81244 }, -- Armored Ebon Deathcharger
+		{ id = 81245 }, -- Armored Crimson Deathcharger
+		{ id = 81246 }, -- Armored Emerald Deathcharger
+		{ id = 81247 }, -- Armored Ivory Deathcharger
 		{},
-		{ id = 80309 },
+		{ id = 80309 }, -- Undercity Tabard
 	},
 	Orgrimmar = {
 		{ name = BF["Honored"], icon = "INV_BannerPVP_01" },
-		{ id = 81216 },
-		{ id = 81217 },
+		{ id = 81216 }, -- Fur-Lined Orcish Helm
+		{ id = 81217 }, -- Protective Orcish Helm
 		{},
 		{ name = BF["Exalted"], icon = "INV_BannerPVP_01" },
-		{ id = 81241 },
-		{ id = 80307 },
+		{ id = 81241 }, -- Armored Orgrimmar Wolf
+		{ id = 80307 }, -- Orgrimmar Tabard
 	},
 	ThunderBluff = {
 		{ name = BF["Revered"], icon = "INV_Misc_Foot_Centaur" },
-		{ id = 81199 },
-		{ id = 81218 },
-		{ id = 81219 },
-		{ id = 81220 },
-		{ id = 81221 },
-		{ id = 81222 },
+		{ id = 81199 }, -- Ancestral War Totem
+		{ id = 81218 }, -- Chieftain's Ceremonial Harness
+		{ id = 81219 }, -- Chieftain's Ceremonial Anklewraps
+		{ id = 81220 }, -- Chieftain's Ceremonial Legwraps
+		{ id = 81221 }, -- Chieftain's Ceremonial Belt
+		{ id = 81222 }, -- Chieftain's Ceremonial Handwraps
 		{},
 		{ name = BF["Exalted"], icon = "INV_Misc_Foot_Centaur" },
-		{ id = 81167 },
-		{ id = 81223 },
-		{ id = 81198 },
-		{ id = 81237 },
-		{ id = 80308 },
+		{ id = 81167 }, -- Chieftain's Ceremonial Mantle
+		{ id = 81223 }, -- Chieftain's Ceremonial Headdress
+		{ id = 81198 }, -- Armored Thunder Bluff Kodo
+		{ id = 81237 }, -- Chieftain's Kodo
+		{ id = 80308 }, -- Thunder Bluff Tabard
 	},
 	Dalaran = {
 		{ name = BF["Revered"], icon = "Spell_Holy_MagicalSentry" },
-		{ id = 60728 },
-		{ id = 60730 },
-		{ id = 60727 },
-		{ id = 60726 },
-		{ id = 60729 },
+		{ id = 60728 }, -- Boots of the Hermit Magi
+		{ id = 60730 }, -- Girdle of the Warden
+		{ id = 60727 }, -- Pauldrons of Sealed Magics
+		{ id = 60726 }, -- Spellguard's Shield
+		{ id = 60729 }, -- Skulker's Gloves
 		{},
 		{ name = BF["Exalted"], icon = "Spell_Holy_MagicalSentry" },
-		{ id = 60724 },
-		{ id = 60725 },
+		{ id = 60724 }, -- Dalarani Conjurer's Hat
+		{ id = 60725 }, -- Ring of Flowing Leylines
 	},
 	WildhammerClan = {
 		{ name = BF["Exalted"], icon = "Ability_Hunter_EagleEye" },
-		{ id = 81185 },
-		{ id = 81186 },
-		{ id = 81243 },
-		{ id = 80312 },
+		{ id = 81185 }, -- Aerie Peak Gryphon
+		{ id = 81186 }, -- Armored Aerie Peak Gryphon
+		{ id = 81243 }, -- Beaky
+		{ id = 80312 }, -- Wildhammer Tabard
 	},
 	SilvermoonRemnant = {
 		{ name = BS["Cloth"] }, --*1l
-		{ id = 80512 },
-		{ id = 80513 },
-		{ id = 80514 },
-		{ id = 80515 },
-		{ id = 80516 },
+		{ id = 80512 }, -- Quel'dorei Magister's Robe
+		{ id = 80513 }, -- Quel'dorei Magister's Boots
+		{ id = 80514 }, -- Quel'dorei Magister's Belt
+		{ id = 80515 }, -- Quel'dorei Magister's Gloves
+		{ id = 80516 }, -- Quel'dorei Magister's Leggings
         {},
 		{ name = BS["Leather"] },
-		{ id = 80517 },
-		{ id = 80518 },
-		{ id = 80519 },
-		{ id = 80520 },
-		{ id = 80521 },
+		{ id = 80517 }, -- Quel'dorei Assassin's Tunic
+		{ id = 80518 }, -- Quel'dorei Assassin's Boots
+		{ id = 80519 }, -- Quel'dorei Assassin's Belt
+		{ id = 80520 }, -- Quel'dorei Assassin's Vices
+		{ id = 80521 }, -- Quel'dorei Assassin's Leggings
         {},
 		{ name = L["Cloak"] }, --*15l
 		{ name = BS["Mail"] }, --*1r
-		{ id = 80522 },
-		{ id = 80523 },
-		{ id = 80524 },
-		{ id = 80525 },
-		{ id = 80526 },
+		{ id = 80522 }, -- Quel'dorei Ranger's Hauberk
+		{ id = 80523 }, -- Quel'dorei Ranger's Boots
+		{ id = 80524 }, -- Quel'dorei Ranger's Belt
+		{ id = 80525 }, -- Quel'dorei Ranger's Gauntlets
+		{ id = 80526 }, -- Quel'dorei Ranger's Legguards
         {},
 		{ name = BS["Plate"] },
-		{ id = 80507 },
-		{ id = 80508 },
-		{ id = 80509 },
-		{ id = 80510 },
-		{ id = 80511 },
+		{ id = 80507 }, -- Quel'dorei Guardian's Chestplate
+		{ id = 80508 }, -- Quel'dorei Guardian's Boots
+		{ id = 80509 }, -- Quel'dorei Guardian's Girdle
+		{ id = 80510 }, -- Quel'dorei Guardian's Handguards
+		{ id = 80511 }, -- Quel'dorei Guardian's Legplates
         {},
 		{ name = L["Pet"] }, --*15r
         --cloak
-		{ id = 80505 }, --*1l
-		{ id = 80506 },
-		{ id = 80527 },
+		{ id = 80505 }, -- Quel'dorei Hero's Cape
+		{ id = 80506 }, -- Quel'dorei Hero's Cloak
+		{ id = 80527 }, -- Quel'dorei Hero's Drape
         {},
 		{ name = L["Tabards"] },
-		{ id = 80317 },
+		{ id = 80317 }, -- Quel'Thalas Tabard
         {},
 		{ name = L["Weapons"] },
-		{ id = 80502 },
-		{ id = 80504 },
-		{ id = 80501 },
-		{ id = 80500 },
-		{ id = 80503 },
+		{ id = 80502 }, -- Curved Ceremonial Staff
+		{ id = 80504 }, -- Hardened Root Staff
+		{ id = 80501 }, -- Sturdy Broadsword
+		{ id = 80500 }, -- Tempered Argus Mace
+		{ id = 80503 }, -- Well-balanced Short Bow
         {},
-		{ id = 80538 }, --*15l
+		{ id = 80538 }, -- Quel'dorei Ranger's Spear
         --pets
-		{ id = 80003 }, --*1r
-		{ id = 80007 },
-		{ id = 80000 },
-		{ id = 80001 },
+		{ id = 80003 }, -- Black-Footed Fox
+		{ id = 80007 }, -- Enchanted Broom
+		{ id = 80000 }, -- Golden Dragonhawk Hatchling
+		{ id = 80001 }, -- Thalassian Tender
         {},
         {},
         {},
 		{ name = L["Weapons"] },
-		{ id = 80529 },
-		{ id = 80539 },
-		{ id = 80541 },
-		{ id = 80544 },
+		{ id = 80529 }, -- Quel'dorei Magister's Channeling Blade
+		{ id = 80539 }, -- Quel'dorei Magister's Focus
+		{ id = 80541 }, -- Quel'dorei Magister's Staff
+		{ id = 80544 }, -- Quel'dorei Magister's Spellflinger
         {},
-		{ id = 80532 },
-		{ id = 80540 }, --*15r
-		{ id = 80546 }, --*1l
+		{ id = 80532 }, -- Quel'dorei Cleric's Hammer
+		{ id = 80540 }, -- Quel'dorei Cleric's Tome
+		{ id = 80546 }, -- Quel'dorei Ranger's Longbow
         {},
-		{ id = 80531 },
-		{ id = 80533 },
-		{ id = 80547 },
-		{ id = 80534 },
-		{ id = 80537 },
-		{ id = 80530 },
+		{ id = 80531 }, -- Quel'dorei Guardian's Warhammer
+		{ id = 80533 }, -- Quel'dorei Guardian's Handaxe
+		{ id = 80547 }, -- Quel'dorei Guardian's Battle Axe
+		{ id = 80534 }, -- Quel'dorei Guardian's Battle Glaive
+		{ id = 80537 }, -- Quel'dorei Guardian's Twinblade
+		{ id = 80530 }, -- Quel'dorei Guardian's Mace
         {},
-		{ id = 80528 },
-		{ id = 80536 },
+		{ id = 80528 }, -- Quel'dorei Assassin's Kris
+		{ id = 80536 }, -- Quel'dorei Assassin's Sword
         {},
-		{ id = 80535 },
-		{ id = 80543 },
-        {}, --*15l
-		{ id = 80542 }, --*1r
-		{ id = 80545 },
+		{ id = 80535 }, -- Quel'dorei Defender's Deflector
+		{ id = 80543 }, -- Quel'dorei Defender's Bulwark
+        {},
+		{ id = 80542 }, -- Quel'dorei Cleric's Staff
+		{ id = 80545 }, -- Quel'dorei Cleric's Wand
 	},
 	RevantuskTrolls = {
 		{ name =  BS["Cloth"] }, --*1L
-		{ id = 80612 },
-		{ id = 80613 },
-		{ id = 80614 },
-		{ id = 80615 },
-		{ id = 80616 },
+		{ id = 80612 }, -- Revantusk Mystic's Robe
+		{ id = 80613 }, -- Revantusk Mystic's Boots
+		{ id = 80614 }, -- Revantusk Mystic's Belt
+		{ id = 80615 }, -- Revantusk Mystic's Gloves
+		{ id = 80616 }, -- Revantusk Mystic's Leggings
         {},
 		{ name = BS["Leather"] },
-		{ id = 80617 },
-		{ id = 80618 },
-		{ id = 80619 },
-		{ id = 80620 },
-		{ id = 80621 },
+		{ id = 80617 }, -- Revantusk Stalker's Tunic
+		{ id = 80618 }, -- Revantusk Stalker's Boots
+		{ id = 80619 }, -- Revantusk Stalker's Belt
+		{ id = 80620 }, -- Revantusk Stalker's Vices
+		{ id = 80621 }, -- Revantusk Stalker's Leggings
         {},
 		{ name = L["Cloak"] }, --*15L
 		{ name = BS["Mail"] }, --*1R
-		{ id = 80622 },
-		{ id = 80623 },
-		{ id = 80624 },
-		{ id = 80625 },
-		{ id = 80626 },
+		{ id = 80622 }, -- Revantusk Shadow Hunter's Hauberk
+		{ id = 80623 }, -- Revantusk Shadow Hunter's Boots
+		{ id = 80624 }, -- Revantusk Shadow Hunter's Belt
+		{ id = 80625 }, -- Revantusk Shadow Hunter's Gauntlets
+		{ id = 80626 }, -- Revantusk Shadow Hunter's Legguards
         {},
 		{ name = BS["Plate"] },
-		{ id = 80607 },
-		{ id = 80608 },
-		{ id = 80609 },
-		{ id = 80610 },
-		{ id = 80611 },
+		{ id = 80607 }, -- Revantusk Watcher's Chestplate
+		{ id = 80608 }, -- Revantusk Watcher's Boots
+		{ id = 80609 }, -- Revantusk Watcher's Girdle
+		{ id = 80610 }, -- Revantusk Watcher's Handguards
+		{ id = 80611 }, -- Revantusk Watcher's Legplates
         {},
 		{ name = L["Pet"] }, --15R
         --cloak
-		{ id = 80605 }, --*1L
-		{ id = 80606 },
-		{ id = 80627 },
+		{ id = 80605 }, -- Revantusk Hero's Cape
+		{ id = 80606 }, -- Revantusk Hero's Cloak
+		{ id = 80627 }, -- Revantusk Hero's Drape
         {},
 		{ name = L["Tabards"] },
-		{ id = 81098 },
+		{ id = 81098 }, -- Revantusk Tabard
         {},
 		{ name = L["Weapons"] },
-		{ id = 80602 },
-		{ id = 80601 },
-		{ id = 80600 },
-		{ id = 80603 },
-		{ id = 80604 },
+		{ id = 80602 }, -- Crude Channeling Staff
+		{ id = 80601 }, -- Flesh Cutter
+		{ id = 80600 }, -- Rockslicer
+		{ id = 80603 }, -- Sturdy Short Bow
+		{ id = 80604 }, -- Withered Root Staff
         {},
-		{ id = 80632 }, --*15L
+		{ id = 80632 }, -- Revantusk Mender's Scepter
         --pet
 		{ id = 80878 }, --*1R
         {},
@@ -1214,7 +1291,7 @@ AtlasLoot_Data = {
 		{ id = 80641 },
 		{ id = 80644 },
         {},
-        {},
+        { id = 80638 },
 		{ id = 80646 }, --*15R
         --weapons
 		{ id = 80640 }, --*1L
@@ -1232,6 +1309,5 @@ AtlasLoot_Data = {
         {},
 		{ id = 80635 },
 		{ id = 80643 }, --*15L
-        { id = 80638 }, --*1R
 	},
 }

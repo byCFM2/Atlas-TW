@@ -251,7 +251,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {id=16726, disc=L["Paladin"]..", ".."T0"},
                 {id=16730, disc=L["Warrior"]..", ".."T0"},
                 {},
-                {id=51217, disc=L["Transmogrification"]..", "..L["Quantity of"].." 3", dropRate=100},
+                {id=51217, disc=L["Transmogrification"], quantity=3, dropRate=100},
             }
         },
         {

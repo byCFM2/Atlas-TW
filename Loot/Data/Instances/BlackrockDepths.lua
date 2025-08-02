@@ -45,7 +45,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {},
                 {id=11446, dropRate=25,container={12061,12062,12065}},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=11129, count={2,3},dropRate=80,container={12038}},
+                {id=11129, quantity={2,3},dropRate=80,container={12038}},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -306,9 +306,9 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=11945, dropRate=.5},
                 {id=11946, dropRate=.4},
                 {},
-                {id=11752, dropRate=100, container={11644}},
-                {id=11751, dropRate=100, container={11622}},
-                {id=11753, dropRate=100, container={11643}},
+                {id=11752, disc = L["Quest Item"], dropRate=100, container={11644}},
+                {id=11751, disc = L["Quest Item"], dropRate=100, container={11622}},
+                {id=11753, disc = L["Quest Item"], dropRate=100, container={11643}},
             }
         },
         {
@@ -358,7 +358,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=11446, dropRate=25,container={12061,12062,12065}},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=61791, dropRate=.25,container={61784}},
-                {id=11468, count={3,5}, dropRate=80,container={11883}},
+                {id=11468, quantity={3,5}, dropRate=80,container={11883}},
                 {id=10999, dropRate=100,container={11000}},
                 {id=41379, dropRate=100,container={70223}},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -378,7 +378,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=19268, dropRate=2, container={19289}},
                 {},
                 {id=11446, dropRate=25,container={12061,12062,12065}},
-                {id=11129, count={1,3},dropRate=80,container={12038}},
+                {id=11129, quantity={1,3},dropRate=80,container={12038}},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=11126, dropRate=100,container={12113,12112,12114,12115}},
                 {id=21987, dropRate=100,container={22057}},
@@ -421,7 +421,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=11446, dropRate=25,container={12061,12062,12065}},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=61791, dropRate=.25,container={61784}},
-                {id=11468, count={3,10}, dropRate=80,container={11883}},
+                {id=11468, quantity={3,10}, dropRate=80,container={11883}},
                 {id=11464, dropRate=100,container={12061,12062,12065}},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
@@ -440,7 +440,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=11446, dropRate=25,container={12061,12062,12065}},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=61791, dropRate=.25,container={61784}},
-                {id=11468, count={5,8}, dropRate=80,container={11883}},
+                {id=11468, quantity={5,8}, dropRate=80,container={11883}},
                 {id=11465, dropRate=100,container={12061,12062,12065}},
                 {id=11268, dropRate=100,container={12108,12109,12110,12111}},
                 {id=60671, dropRate=100,container={60672}},
@@ -541,7 +541,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=13483, disc=L["Vendor"], container={7076}},
                 {id=15759, disc=L["Vendor"], container={15050}},
                 {},
-                {id=11325, count={0,10}, disc=L["Vendor"]},
+                {id=11325, quantity={0,10}, disc=L["Vendor"]},
                 {},
                 {id=11602, dropRate=100, disc=L["Pickpocketed"]},
             },
@@ -580,7 +580,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=11446, dropRate=25,container={12061,12062,12065}},
-                {id=11129, count={3,5},dropRate=80,container={12038}},
+                {id=11129, quantity={3,5},dropRate=80,container={12038}},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -596,7 +596,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=11786},
                 {},
                 {id=11446, dropRate=25,container={12061,12062,12065}},
-                {id=11129, count={3,5},dropRate=80,container={12038}},
+                {id=11129, quantity={3,5},dropRate=80,container={12038}},
             }
         },
         {
@@ -629,7 +629,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
             prefix = "19)",
             name = L["The Lyceum"],
             loot = {
-                {id=11885, dropRate=94},
+                {id=11885, disc=L["Misc"], dropRate=94},
             }
         },
         {
@@ -673,7 +673,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=12033, disc=L["Container"], dropRate=2, container={12364,1206,12800,5500,7971,
                     55249,12799,3864,1705,12361,55250,7909,55251,7910,1529}},
                 {id=61463, dropRate=100,container={61465}},
-                {id=11468, count={4,9}, dropRate=80,container={11883}},
+                {id=11468, quantity={4,9}, dropRate=80,container={11883}},
                 {id=56104, disc=BS["Gemology"], dropRate=30, container={56109}},
                 {id=11446, dropRate=25,container={12061,12062,12065}},
                 {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,

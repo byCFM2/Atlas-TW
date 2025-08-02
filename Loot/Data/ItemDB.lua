@@ -232,7 +232,9 @@ function AtlasTW.ItemDB.CreateItem(data)
         disc = data.disc,
         dropRate = data.dropRate,
         container = data.container,
-        count = data.count,
+        quantity = data.quantity,
+--[[         curicon = data.curicon,
+        curqt = data.curqt, ]]
     }
     -- Устанавливаем метатаблицу для доступа к методам
     setmetatable(item, {__index = ItemPrototype})

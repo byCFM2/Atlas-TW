@@ -539,7 +539,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
                 {id=18333, disc=L["Quest Item"], container={18330}, dropRate=2},
                 {id=18334, disc=L["Quest Item"], container={18331}, dropRate=2},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=21982,dropRate=50,count={2,3},container={22149,22150}},
+                {id=21982,dropRate=50,quantity={2,3},container={22149,22150}},
                 {},
                 {id=18269, disc=L["Vendor"]},
                 {id=18284, disc=L["Vendor"]},
@@ -594,7 +594,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
                 {id=18515, dropRate=13, container={18506}},
                 {id=18516, dropRate=13, container={18508}},
                 {},
-                {id=18240, dropRate=35, container={18258}},
+                {id=18240, disc=L["Misc"], dropRate=35, container={18258}},
             }
         },
         {
@@ -623,7 +623,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
                 {id=18333, disc=L["Quest Item"], container={18330}, dropRate=2},
                 {id=18334, disc=L["Quest Item"], container={18331}, dropRate=2},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=21982,dropRate=50,count={2,3},container={22149,22150}},
+                {id=21982,dropRate=50,quantity={2,3},container={22149,22150}},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
                 {},
                 unpack(ShareLoot)
@@ -676,7 +676,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
                 {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,
                     70234,70235,70236,70238}},
                 {id=41700,dropRate=100,container={41704}},
-                {id=21982,dropRate=50,count={2,3},container={22149,22150}},
+                {id=21982,dropRate=50,quantity={2,3},container={22149,22150}},
                 {id=51217, disc=L["Transmogrification"], dropRate=100},
                 {},
                 unpack(ShareLoot)
@@ -695,7 +695,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
                 {id=18332, disc=L["Quest Item"], container={18329}, dropRate=2},
                 {id=18333, disc=L["Quest Item"], container={18330}, dropRate=2},
                 {id=18334, disc=L["Quest Item"], container={18331}, dropRate=2},
-                {id=21982,dropRate=50,count={2,3},container={22149,22150}},
+                {id=21982,dropRate=50,quantity={2,3},container={22149,22150}},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
                 {},
                 unpack(ShareLoot)
@@ -736,7 +736,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
             name = L["Trash Mobs"],
             loot = {
                 {id=18250,disc=L["Key"], dropRate=4},
-                {id=18640, dropRate=2},
+                {id=18640, disc=L["Misc"], dropRate=2},
             }
         },
         {

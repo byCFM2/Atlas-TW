@@ -285,8 +285,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {},
                 {id=80759},
                 {},
-                {id=13446, count=5}, --TODO need support for count
-                {id=13444, count=5}, --TODO need support for count
+                {id=13446, quantity=5},
+                {id=13444, quantity=5},
                 {},
                 {id=56101, disc=L["Quest Item"], dropRate=30},
                 {id=22138, disc=L["Quest Item"], dropRate=80},
@@ -367,11 +367,11 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {id=13143, dropRate=2},
                 {},
                 {id=12337, disc=L["Quest Item"], dropRate=30,container={12344}},
-                {id=16786, dropRate=80, count=2,container={16309}},
+                {id=16786, dropRate=80, quantity=2,container={16309}},
                 {id=41700,dropRate=100,container={41704}},
                 {id=61459, dropRate=100,container={61465}},
                 {},
-                {id=51217, disc=L["Transmogrification"], dropRate=100, count=2},
+                {id=51217, disc=L["Transmogrification"], dropRate=100, quantity=2},
             }
         },
         {

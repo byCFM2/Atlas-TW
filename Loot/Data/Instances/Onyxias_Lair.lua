@@ -19,7 +19,7 @@ AtlasTW.InstanceData.OnyxiasLair = {
     MaxPlayers = 40,
     DamageType = L["Fire"],
     Entrances = {
-        { letter = "A"..")"..") " .. L["Entrance"] }
+        { letter = "A) " .. L["Entrance"] }
     },
     Bosses = {
         {
@@ -48,26 +48,26 @@ AtlasTW.InstanceData.OnyxiasLair = {
                 {id=16955, container={47016,47024}},
                 {id=16963, container={47248}},
                 {},
-                {},
-                {id=18423, dropRate=100, container={18403,18404,18406,15138}},
-                {id=18422, dropRate=100, container={18403,18404,18406,15138}},
-                {},
-                {id=18705, dropRate=40, container={18714,18713,18715}},
                 {id=18205, dropRate=25},
                 {id=17078, dropRate=25},
                 {id=17067, dropRate=25},
                 {},
+                {id=18705, dropRate=40, container={18714,18713,18715}},
+                {id=18423, dropRate=100, container={18403,18404,18406,15138}},
+                {id=18422, dropRate=100, container={18403,18404,18406,15138}},
+                {},
                 {id=18813, dropRate=25},
                 {id=17064, dropRate=8},
-                {},
                 {id=17068, dropRate=8},
                 {id=17075, dropRate=8},
-                {},
                 {id=17966, disc=L["Bag"], dropRate=100},
-                {},
-                {id=17962, disc=L["Container"], dropRate=20, container={12361,1529,7909,7910,55250,55251,3864,7971,13926}}, --Blue sack of gems
-                {},
-                {id=15410, disc=L["Reagent"], dropRate=100},
+                {id=15410, disc=L["Reagent"], dropRate=100, container={17967,15138,15141}},
+                {id=21108, disc=L["Quest Item"], dropRate=100, container={21111}},
+                {id=17962, disc=L["Container"], dropRate=20, container={13926,7971,3864,55251,55250,7910,7909,1529,12361}}, -- Blue Sack of Gems
+                {id=17963, disc=L["Container"], dropRate=20, container={13926,7971,55250,7909,3864,55251,7910,1529,12364}}, -- Green Sack of Gems
+                {id=17964, disc=L["Container"], dropRate=20, container={13926,7971,55250,7909,3864,55251,7910,1529,12800}}, -- Gray Sack of Gems
+                {id=17965, disc=L["Container"], dropRate=20, container={13926,7971,55250,7909,3864,55251,7910,1529,12363}}, -- Yellow Sack of Gems
+                {id=17969, disc=L["Container"], dropRate=20, container={13926,7971,55250,7909,3864,55251,7910,1529,12799,6332}}, -- Red Sack of Gems
             }
         }
     }

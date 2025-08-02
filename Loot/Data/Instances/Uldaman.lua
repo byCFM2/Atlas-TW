@@ -31,7 +31,7 @@ AtlasTW.InstanceData.Uldaman = {
                 {id=9401},
                 {id=9400},
                 {},
-                {id=9399, dropRate=100, count={150, 200}},
+                {id=9399, dropRate=100, quantity=175},
             }
         },
         {

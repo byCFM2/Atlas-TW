@@ -41,7 +41,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {id=83440, dropRate=10},
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=51217, disc=L["Fashion Coin"], dropRate=5},
+                {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
         {
@@ -59,7 +59,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {id=83446, dropRate=10},
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=51217, disc=L["Fashion Coin"], dropRate=5},
+                {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
         {
@@ -78,7 +78,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {id=83461},
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=51217, disc=L["Fashion Coin"], dropRate=5},
+                {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
         {
@@ -95,7 +95,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {id=60791},
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=51217, disc=L["Fashion Coin"], dropRate=5},
+                {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
         {
@@ -115,7 +115,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {id=80010, dropRate=5},
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=51217, disc=L["Fashion Coin"], dropRate=5},
+                {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
         {
@@ -132,7 +132,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {id=50193},
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=51217, disc=L["Fashion Coin"], dropRate=5},
+                {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
         {
@@ -157,7 +157,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,
                     70234,70235,70236,70238}},
-                {id=51217, disc=L["Fashion Coin"], dropRate=100},
+                {id=51217, disc=L["Transmogrification"], quantity=2, dropRate=100},
             }
         },
         {

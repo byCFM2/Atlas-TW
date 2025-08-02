@@ -384,6 +384,12 @@ function AtlasTW.Loot.ScrollBarLootUpdate()
 			local menuButton = _G["AtlasLootMenuItem_"..i]
 
 			if itemButton then
+				local iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
+				local nameFrame = _G["AtlasLootItem_"..i.."_Name"]
+				local extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
+				local borderFrame = _G["AtlasLootItem_"..i.."Border"]
+				local quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
+
 				-- Вычисляем правильный индекс для двух столбцов
 				local itemIndex = i + offset
 				if offset > 0 then
@@ -416,11 +422,6 @@ function AtlasTW.Loot.ScrollBarLootUpdate()
 					-- Проверяем, есть ли данные для отображения
 					if item and (item.id or item.name) then
 						-- Новая система - обновляем содержимое кнопки
-						local iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
-						local nameFrame = _G["AtlasLootItem_"..i.."_Name"]
-						local extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
-						local borderFrame = _G["AtlasLootItem_"..i.."Border"]
-
 						local itemLink, itemQuality, itemTexture
 						local itemName = item.name
 						local itemID = item.id
@@ -448,6 +449,74 @@ function AtlasTW.Loot.ScrollBarLootUpdate()
 						extraFrame:SetText(AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, item.disc) or "")
 						extraFrame:Show()
 
+						-- Set the quantity
+						if item.quantity then
+							quantityFrame:SetText(type(item.quantity) == "table"
+								and (item.quantity[1].."-"..item.quantity[2]) or item.quantity)
+							quantityFrame:Show()
+						else
+							quantityFrame:Hide()
+						end
+						-- Set the price (Dont need more, much better container+quantity (container={{itemID,Quantity}} ))
+--[[ 						if item.curicon and item.curqt and type(item.curicon) == "table" and type(item.curqt) == "table" then
+							local activeCount = table.getn(item.curqt)
+
+							-- Показываем и позиционируем элементы
+							local activeIndex = 0
+							for f=1,5 do
+								local text = _G["AtlasLootItem_"..i.."_PriceText"..f]
+								local icon = _G["AtlasLootItem_"..i.."_PriceIcon"..f]
+								if item.curqt[f] then
+									activeIndex = activeIndex + 1
+									text:SetText(item.curqt[f])
+									icon:SetTexture("Interface\\Icons\\"..item.curicon[f])
+
+									-- Позиционирование: последний элемент справа, остальные левее
+									local offsetFromRight = (activeCount - activeIndex) * 14
+									local name = _G["AtlasLootItem_"..i.."_Name"]
+									icon:ClearAllPoints()
+									icon:SetPoint("TOPRIGHT", name, "BOTTOMRIGHT", 0 - offsetFromRight, -2)
+									text:ClearAllPoints()
+									text:SetPoint("TOPRIGHT", icon, "TOPRIGHT", 2, 2)
+
+									text:Show()
+									icon:Show()
+								else
+									text:Hide()
+									icon:Hide()
+								end
+							end
+						elseif item.curicon and item.curqt and type(item.curicon) == "string" and type(item.curqt) == "number" then
+							local text = _G["AtlasLootItem_"..i.."_PriceText1"]
+							local icon = _G["AtlasLootItem_"..i.."_PriceIcon1"]
+							local name = _G["AtlasLootItem_"..i.."_Name"]
+
+							text:SetText(item.curqt)
+							icon:SetTexture("Interface\\Icons\\"..item.curicon)
+
+							-- Позиционирование для одного элемента
+							icon:ClearAllPoints()
+							icon:SetPoint("TOPRIGHT", name, "BOTTOMRIGHT", 0, -2)
+							text:ClearAllPoints()
+							text:SetPoint("TOPRIGHT", icon, "TOPRIGHT", 2, 2)
+
+							text:Show()
+							icon:Show()
+
+							-- Скрываем остальные элементы
+							for f=2,5 do
+								_G["AtlasLootItem_"..i.."_PriceText"..f]:Hide()
+								_G["AtlasLootItem_"..i.."_PriceIcon"..f]:Hide()
+							end
+						else
+							for f=1,5 do
+								local text = _G["AtlasLootItem_"..i.."_PriceText"..f]
+								local icon = _G["AtlasLootItem_"..i.."_PriceIcon"..f]
+								text:Hide()
+								icon:Hide()
+							end
+						end ]]
+
 						-- Set the icon
 						iconFrame:SetTexture(itemTexture or "Interface\\Icons\\INV_Misc_QuestionMark")
 
@@ -470,15 +539,18 @@ function AtlasTW.Loot.ScrollBarLootUpdate()
 					end
 				else
 					-- Очищаем содержимое кнопки если нет данных
-					local iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
-					local nameFrame = _G["AtlasLootItem_"..i.."_Name"]
-					local extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
-					local borderFrame = _G["AtlasLootItem_"..i.."Border"]
-
 					if iconFrame then iconFrame:SetTexture("") end
 					if nameFrame then nameFrame:SetText("") end
 					if extraFrame then extraFrame:SetText("") extraFrame:Hide() end
 					if borderFrame then borderFrame:Hide() end
+					if quantityFrame then quantityFrame:Hide() end
+
+--[[ 					for f=1,5 do
+						local text = _G["AtlasLootItem_"..i.."_PriceText"..f]
+						local icon = _G["AtlasLootItem_"..i.."_PriceIcon"..f]
+						text:Hide()
+						icon:Hide()
+					end ]]
 
 					itemButton.itemID = 0
 					itemButton.itemLink = nil
@@ -1844,7 +1916,7 @@ function AtlasLoot_ShowContainerFrame()
 		AtlasLootItemsFrameContainer:Show()
 	end
 	local getn = table.getn
-	for i =1, getn(containerItems) do
+	for i = 1, getn(containerItems) do
 		getglobal("AtlasLootContainerItem"..i):Hide()
 	end
 	local row = 0
@@ -1866,13 +1938,22 @@ function AtlasLoot_ShowContainerFrame()
 		maxCols = 8  -- Максимум 8 столбцов
 	end
 
-	for i = 1, getn(containerTable) do
+	for i = 1, totalItems do
 		if not containerItems[buttonIndex] then
 			containerItems[buttonIndex] = CreateFrame("Button", "AtlasLootContainerItem"..buttonIndex, AtlasLootItemsFrameContainer)
 			AtlasLoot_ApplyContainerItemTemplate(containerItems[buttonIndex])
 		end
 		local itemButton = getglobal("AtlasLootContainerItem"..buttonIndex)
-		local itemID = containerTable[i]
+		local itemID
+		local quantityText = getglobal("AtlasLootContainerItem"..buttonIndex.."_Quantity")
+		if type(containerTable[i]) == "table" then
+			itemID = containerTable[i][1]
+			quantityText:SetText(containerTable[i][2])
+		else
+			itemID = containerTable[i]
+			quantityText:SetText("")
+			quantityText:Hide()
+		end
 		local _,_,quality,_,_,_,_,_,tex = GetItemInfo(itemID)
 		local icon = getglobal("AtlasLootContainerItem"..buttonIndex.."Icon")
 		local r, g, b = 1, 1, 1
@@ -1888,6 +1969,7 @@ function AtlasLoot_ShowContainerFrame()
 		itemButton:SetBackdropBorderColor(r, g, b)
 		itemButton:SetID(itemID)
 		itemButton:Show()
+		quantityText:Show()
 		icon:SetTexture(tex)
 		AtlasLoot_AddContainerItemTooltip(itemButton, itemID)
 

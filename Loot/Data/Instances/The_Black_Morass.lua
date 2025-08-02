@@ -42,7 +42,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 {id=61016},
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=50203, count={10,15}, disc=L["Quest Item"], dropRate=100},
+                {id=50203, quantity={10,15}, disc=L["Quest Item"], dropRate=100},
                 {id=41458, dropRate=100},
                 {id=60496, dropRate=100},
             }
@@ -63,7 +63,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 {id=61700},
                 {id=61698},
                 {},
-                {id=50203, count={15,20}, disc=L["Quest Item"], dropRate=100},--TODO supp for count table
+                {id=50203, quantity={15,20}, disc=L["Quest Item"], dropRate=100},
             }
         },
         {
@@ -83,7 +83,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 {id=61020, dropRate=2},
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=50203, count={15,20}, disc=L["Quest Item"], dropRate=100},--TODO supp for count table
+                {id=50203, quantity={15,20}, disc=L["Quest Item"], dropRate=100},
             }
         },
         {
@@ -104,7 +104,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 {id=61049, dropRate=0.95},
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=50203, count={15,20}, disc=L["Quest Item"], dropRate=100},--TODO supp for count table
+                {id=50203, quantity={15,20}, disc=L["Quest Item"], dropRate=100},
             }
         },
         {
@@ -121,7 +121,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 {id=61062},
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=50203, count={20,25}, disc=L["Quest Item"], dropRate=100},--TODO supp for count table
+                {id=50203, quantity={20,25}, disc=L["Quest Item"], dropRate=100},
             }
         },
         {
@@ -148,8 +148,8 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 {id=51044, disc=L["Quest Item"], dropRate=100,container={82950,82951,82952,82953}},
                 {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,
                     70234,70235,70236,70238}},
-                {id=50203, count={10,15}, disc=L["Quest Item"], dropRate=100},--TODO supp for count table
-                {id=51217, count=2, disc=L["Transmogrification"], dropRate=100},
+                {id=50203, quantity={10,15}, disc=L["Quest Item"], dropRate=100},
+                {id=51217, quantity=2, disc=L["Transmogrification"], dropRate=100},
             }
         },
         {
@@ -168,7 +168,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 {id=61701},
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
-                {id=50203, count={10,15}, disc=L["Quest Item"], dropRate=100},--TODO supp for count table
+                {id=50203, quantity={10,15}, disc=L["Quest Item"], dropRate=100},
             }
         },
         {
@@ -189,7 +189,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 {},
                 {id=61673, disc=L["Reagent"], dropRate=4},
                 {},
-                {id=50203, count={1,3}, disc=L["Quest Item"], dropRate=100},--TODO supp for count table
+                {id=50203, quantity={1,3}, disc=L["Quest Item"], dropRate=100},
             }
         },
     },

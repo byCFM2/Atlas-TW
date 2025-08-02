@@ -291,7 +291,6 @@ AtlasTW.InstanceData.BlackwingLair = {
                 {id=19002, dropRate=100, container={19383,19384,19366}},
                 {},
                 {id=36551, dropRate=1},
-                {id=17962, disc=L["Container"], dropRate=20, container={12361,1529,7909,7910,55250,55251,3864,7971,13926}}, --Blue sack of gems
                 {id=19360, dropRate=10},
                 {id=19363, dropRate=10},
                 {id=19364, dropRate=10},
@@ -307,8 +306,13 @@ AtlasTW.InstanceData.BlackwingLair = {
                 {id=19382, dropRate=20},
                 {id=19379, dropRate=20},
                 {},
+                {id=61760, dropRate=100, container={55505}},
                 {},
-                {id=61760, dropRate=100},
+                {id=17962, disc=L["Container"], dropRate=20, container={13926,7971,3864,55251,55250,7910,7909,1529,12361}}, -- Blue Sack of Gems
+                {id=17963, disc=L["Container"], dropRate=20, container={13926,7971,55250,7909,3864,55251,7910,1529,12364}}, -- Green Sack of Gems
+                {id=17964, disc=L["Container"], dropRate=20, container={13926,7971,55250,7909,3864,55251,7910,1529,12800}}, -- Gray Sack of Gems
+                {id=17965, disc=L["Container"], dropRate=20, container={13926,7971,55250,7909,3864,55251,7910,1529,12363}}, -- Yellow Sack of Gems
+                {id=17969, disc=L["Container"], dropRate=20, container={13926,7971,55250,7909,3864,55251,7910,1529,12799,6332}}, -- Red Sack of Gems
             }
         },
         { prefix = "1)", name = L["Alchemy Lab"], color = "|cff00FF00"},
@@ -331,8 +335,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 {id=19358},
                 {},
                 {id=18562, disc=L["Trade Goods"], dropRate=8},
-                {id=19183, disc=L["Consumable"], dropRate=47},
-                {id=70173,dropRate=2},
+                {id=19183, quantity={1,2}, disc=L["Consumable"], dropRate=47},
+                {id=70173, dropRate=2},
             }
         }
     }

@@ -198,7 +198,7 @@ AtlasTW.InstanceData.Gnomeregan = {
                 {id=80740},
                 {},
                 {id=9327, dropRate=1},
-                {id=9309, count={8,10}, dropRate=5, container={9608, 9609}},
+                {id=9309, quantity={8,10}, dropRate=5, container={9608, 9609}},
                 {id=81275, dropRate=.8, container={81253,81252,81251,81250}},
             }
         },
@@ -245,7 +245,7 @@ AtlasTW.InstanceData.Gnomeregan = {
                 {id=9327, dropRate=1},
                 {id=9299, dropRate=100, container={9623,9624,9625}},
                 {id=81318, dropRate=100, container={81319,81320}},
-                {id=9309, count={8,10}, dropRate=5, container={9608, 9609}},
+                {id=9309, quantity={8,10}, dropRate=5, container={9608, 9609}},
                 {id=51217, disc=L["Transmogrification"], dropRate=1},
             }
         },

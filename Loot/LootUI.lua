@@ -46,21 +46,13 @@ local function AtlasLoot_ApplyParentTemplate(frame)
         priceIcon:SetWidth(12)
         priceIcon:SetHeight(12)
         priceIcon:Hide()
-
-        if i == 1 then
-            priceText:SetWidth(60)
-            priceText:SetHeight(10)
-            priceText:SetPoint("TOPLEFT", name, "BOTTOMLEFT", 12, -1)
-            priceText:SetText("333333")
-            priceIcon:SetPoint("TOPLEFT", priceText, "TOPRIGHT")
-        else
-            priceText:SetWidth(20)
-            priceText:SetHeight(10)
-            priceText:SetText("120")
-            local prevIcon = frame:GetName().."_PriceIcon"..(i-1)
-            priceText:SetPoint("TOPLEFT", prevIcon, "TOPRIGHT")
-            priceIcon:SetPoint("TOPLEFT", priceText, "TOPRIGHT")
-        end
+        priceText:SetWidth(30)
+        priceText:SetHeight(5)
+        priceText:SetText("")
+        priceText:Hide()
+        -- Позиционирование будет установлено динамически при показе элементов
+        priceIcon:SetPoint("TOPRIGHT", name, "BOTTOMRIGHT", 20, -2)
+        priceText:SetPoint("TOPRIGHT", priceIcon, "TOPRIGHT", 2, 2)
     end
 
     -- Unsafe texture (background layer)

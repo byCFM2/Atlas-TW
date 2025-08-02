@@ -17,7 +17,7 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
     Acronym = "AV",
     MaxPlayers = 40,
     Reputation = {
-            { name = BF["Stormpike Guard"].."\\"..BF["Frostwolf Clan"], loot = "StormpikeFrostwolf" },
+            { name = BF["Stormpike Guard"], loot = "StormpikeFrostwolf" },
     },
     Entrances = {
         { letter = "A)", info = L["Entrance"] .. " (" .. BF["Alliance"] .. ")" },
