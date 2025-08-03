@@ -1,3535 +1,2398 @@
---Table for all data to be inserted into. Included here as it is the first file loaded
+local _G = getfenv()
+AtlasTW = _G.AtlasTW
+
+--Instance required libraries
+local L = AtlasTW.Local
+local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local BS = AceLibrary("Babble-Spell-2.2a")
+local BC = AceLibrary("Babble-Class-2.2")
+
 AtlasLoot_Data = AtlasLoot_Data or {}
 
-AtlasLoot_Data = {
-	DEADMINES = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Box_01","=q6=#oth_s1#","" },
-		{ 0, "", "", "" },
-		{ 81007, "INV_Misc_Bandana_03", "=q3=Blackened Defias Mask", "=ds=#s1#, #a2# =q7=#x96#", "20%" },
-		{ 10399, "INV_Chest_Leather_08", "=q3=Blackened Defias Armor", "=ds=#s5#, #a2# =q7=#x6#", "20%" },
-		{ 10401, "INV_Gauntlets_18", "=q2=Blackened Defias Gloves", "=ds=#s9#, #a2# =q7=#x9#", "1.75%" },
-		{ 10403, "INV_Belt_26", "=q2=Blackened Defias Belt", "=ds=#s10#, #a2# =q7=#x7#", "30%" },
-		{ 10400, "INV_Pants_12", "=q2=Blackened Defias Leggings", "=ds=#s11#, #a2# =q7=#x9#", "1.75%" },
-		{ 10402, "INV_Boots_05", "=q2=Blackened Defias Boots", "=ds=#s12#, #a2# =q7=#x8#", "1.23%" },
+local Sets = {}
+
+Sets = {
+	VanillaKeys = {
+		{ name = L["Key"] },
+		{ id = 16309}, -- Drakefire Amulet
+		{ id = 12344}, -- Seal of Ascension
+		{ id = 17191}, -- Scepter of Celebras
+		{ id = 7146}, -- The Scarlet Key
+		{ id = 12382}, -- Key to the City
+		{ id = 6893}, -- Workshop Key
+		{ id = 11000}, -- Shadowforge Key
+		{ id = 11140}, -- Prison Cell Key
+		{ id = 18249}, -- Crescent Key
+		{ id = 13704}, -- Skeleton Key
+		{ id = 11197}, -- Dark Keeper Key
+		{ id = 18266}, -- Gordok Inner Door Key
+		{ id = 18268}, -- Gordok Courtyard Key
+		{ id = 13873},
+		{ name = L["Misc"] }, --16
+		{ id = 19931, disc = L["Used to summon boss"] },
+		{ id = 9240, disc = L["Used to summon boss"] },
+		{ id = 18250, disc = L["Key"] },
+		{ id = 17333, disc = L["Used to summon boss"] },
+		{ id = 22754, disc = L["Used to summon boss"] },
+		{ id = 13523, disc = L["Used to summon boss"] },
+		{ id = 18746, disc = L["Used to summon boss"] },
+		{ id = 18663, disc = L["Used to summon boss"] },
+		{ id = 19974, disc = L["Used to summon boss"] },
+		{ id = 7733, disc = L["Used to summon boss"] },
+		{ id = 10818, disc = L["Used to summon boss"] },
+		{ name = L["Tier 0.5"] },
+		{ id = 22057, disc = L["Used to summon boss"] },
+		{ id = 21986, disc = L["Used to summon boss"] },-- 30
+		{ id = 61234},--key 31
+		{ id = 51356},--key 32
 	},
-	DeadminesC = {{
-			{ 81007, "=ds=#s1#, #a2# =q7=#x96#", "20%" },
-			{ 10399, "=ds=#s5#, #a2# =q7=#x6#", "20%" },
-			{ 10401, "=ds=#s9#, #a2# =q7=#x9#", "1.75%" },
-			{ 10403, "=ds=#s10#, #a2# =q7=#x7#", "30%" },
-			{ 10400, "=ds=#s11#, #a2# =q7=#x9#", "1.75%" },
-			{ 10402, "=ds=#s12#, #a2# =q7=#x8#", "1.23%" },
-		}
+	DEADMINES = {
+		{ name = BIS["Defias Leather"] },
+		{ id = 81007 }, -- Blackened Defias Mask
+		{ id = 10399 }, -- Blackened Defias Armor
+		{ id = 10401 }, -- Blackened Defias Gloves
+		{ id = 10403 }, -- Blackened Defias Belt
+		{ id = 10400 }, -- Blackened Defias Leggings
+		{ id = 10402 }, -- Blackened Defias Boots
 	},
 	WAILING = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Box_01","=q6=#oth_s2#","" },
-		{ 0, "", "", "" },
-		{ 81006, "INV_HELMET_27", "=q2=Cowl of the Fang", "=ds=#s1#, #a1#", "5%" },
-		{ 6473, "INV_Shirt_16", "=q2=Armor of the Fang", "=ds=#s5#, #a2# =q7=#x5#", "52.05%" },
-		{ 10413, "INV_Gauntlets_18", "=q2=Gloves of the Fang", "=ds=#s9#, #a2# =q7=#x4#", "1.20%" },
-		{ 10412, "INV_Belt_30", "=q2=Belt of the Fang", "=ds=#s10#, #a2# =q7=#x2#", "8.64%" },
-		{ 10410, "INV_Pants_11", "=q3=Leggings of the Fang", "=ds=#s11#, #a2# =q7=#x1#", "16.03%" },
-		{ 10411, "INV_Boots_04", "=q2=Footpads of the Fang", "=ds=#s12#, #a2# =q7=#x3#", "19.08%" },
-	},
-	WailingC = {{
-			{ 81006, "=ds=#s1#, #a1#", "5%" },
-			{ 6473, "=ds=#s5#, #a2# =q7=#x5#", "52.05%" },
-			{ 10413, "=ds=#s9#, #a2# =q7=#x4#", "1.20%" },
-			{ 10412, "=ds=#s10#, #a2# =q7=#x2#", "8.64%" },
-			{ 10410, "=ds=#s11#, #a2# =q7=#x1#", "16.03%" },
-			{ 10411, "=ds=#s12#, #a2# =q7=#x3#", "19.08%" },
-		}
+		{ name = BIS["Embrace of the Viper"] },
+		{ id = 81006 }, -- Cowl of the Fang
+		{ id = 6473 }, -- Armor of the Fang
+		{ id = 10413 }, -- Gloves of the Fang
+		{ id = 10412 }, -- Belt of the Fang
+		{ id = 10410 }, -- Leggings of the Fang
+		{ id = 10411 }, -- Footpads of the Fang
 	},
 	SCARLET = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Box_01","=q6=#oth_s3#","" },
-		{ 0, "", "", "" },
-		{ 10328, "INV_Chest_Chain_07", "=q3=Scarlet Chestpiece", "=ds=#s5#, #a3# =q7=#x35#", "0.3%"},
-		{ 10333, "INV_Bracer_03", "=q2=Scarlet Wristguards", "=ds=#s8#, #a3# =q7=#x38#=ds=/=q7=#x66#", "1.6%"},
-		{ 10331, "INV_Gauntlets_19", "=q2=Scarlet Gauntlets", "=ds=#s9#, #a3# =q7=#x36#", "1.7%" },
-		{ 10329, "INV_Belt_06", "=q2=Scarlet Belt", "=ds=#s10#, #a3# =q7=#x33#=ds=/=q7=#x39#", "1.6%"},
-		{ 10330, "INV_Pants_03", "=q3=Scarlet Leggings", "=ds=#s11#, #a3# =q7=#x37#=ds=/=q7=#x65#", "13.2%"},
-		{ 10332, "INV_Boots_02", "=q3=Scarlet Boots", "=ds=#s12#, #a3#", "0.1%"},
-	},
-	ScarletC = {{
-			{ 10328, "=ds=#s5#, #a3# =q7=#x35#", "0.3%"},
-			{ 10333, "=ds=#s8#, #a3# =q7=#x38#=ds=/=q7=#x66#", "1.6%"},
-			{ 10331, "=ds=#s9#, #a3# =q7=#x36#", "1.7%" },
-			{ 10329, "=ds=#s10#, #a3# =q7=#x33#=ds=/=q7=#x39#", "1.6%"},
-			{ 10330, "=ds=#s11#, #a3# =q7=#x37#=ds=/=q7=#x65#", "13.2%"},
-			{ 10332, "=ds=#s12#, #a3#", "0.1%"},	
-		}
+		{ name = BIS["Chain of the Scarlet Crusade"] },
+		{ id = 10328 }, -- Scarlet Chestpiece
+		{ id = 10333 }, -- Scarlet Wristguards
+		{ id = 10331 }, -- Scarlet Gauntlets
+		{ id = 10329 }, -- Scarlet Belt
+		{ id = 10330 }, -- Scarlet Leggings
+		{ id = 10332 }, -- Scarlet Boots
 	},
 	GreymaneArmor = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Box_01","=q6=#oth_s25#","" },
-		{ 0, "", "", "" },
-		{ 61313, "inv_helmet_02", "=q3=Greymane Helmet", "=ds=#s1#, #a4# =q7=#x105#", "25%" },
-		{ 61324, "inv_shoulder_12", "=q3=Greymane Shoulders", "=ds=#s3#, #a4# =q7=#x106#", "15%" },
-		{ 61376, "inv_gauntlets_22", "=q2=Greymane Gauntlets", "=ds=#s9#, #a4# =q7=#x34#", "0.08%" },
-		{ 61378, "inv_pants_04", "=q2=Greymane Legplates", "=ds=#s11#, #a4# =q7=#x34#", "0.08%" },
-		{ 61377, "inv_boots_plate_01", "=q2=Greymane Sabatons", "=ds=#s12#, #a4# =q7=#x34#", "0.08%" },
-		{ 61379, "INV_Bracer_14", "=q2=Greymane Vambraces", "=ds=#s8#, #a4# =q7=#x34#", "0.08%" },
-	},
-	GilneasC = {{
-		{ 61313, "=ds=#s1#, #a4# =q7=#x105#", "25%"},
-		{ 61324, "=ds=#s3#, #a4# =q7=#x106#", "15%"},
-		{ 61376, "=ds=#s9#, #a4# =q7=#x34#", "0,08%" },
-		{ 61378, "=ds=#s11#, #a4# =q7=#x34#", "0,08%"},
-		{ 61377, "=ds=#s12#, #a4# =q7=#x34#", "0,08%"},
-		{ 61379, "=ds=#s8#, #a4# =q7=#x34#", "0.08%"},	
-		}
+		{ name = BIS["Greymane Armor"] },
+		{ id = 61313 }, -- Greymane Helmet
+		{ id = 61324 }, -- Greymane Shoulders
+		{ id = 61376 }, -- Greymane Gauntlets
+		{ id = 61378 }, -- Greymane Legplates
+		{ id = 61377 }, -- Greymane Sabatons
+		{ id = 61379 }, -- Greymane Vambraces
 	},
 	IncendosaurSkinArmor = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Box_01","=q6=#oth_s26#","" },
-		{ 0, "", "", "" },
-		{ 60572, "INV_Shoulder_23", "=q3=Incendosaur Skin Pauldrons", "=ds=#s3#, #a2# =q7=#x34#", "0.1%" },
-		{ 60568, "INV_Boots_01", "=q3=Incendosaur Skin Boots", "=ds=#s12#, #a2# =q7=#x107#", "20%" },
-		{ 60582, "INV_Gauntlets_05", "=q3=Incendosaur Skin Gloves", "=ds=#s9#, #a2# =q7=#x34#", "0.005%" },
+		{ name = BIS["Incendosaur Skin Armor"] },
+		{ id = 60572 }, -- Incendosaur Skin Pauldrons
+		{ id = 60568 }, -- Incendosaur Skin Boots
+		{ id = 60582 }, -- Incendosaur Skin Gloves
 	},
-	HateforgeC = {{
-		{ 60572, "=ds=#s3#, #a2# =q7=#x34#", "0,1%"},
-		{ 60568, "=ds=#s12#, #a2# =q7=#x107#", "20%"},
-		{ 60582, "=ds=#s9#, #a2# =q7=#x34#", "0,005%" },
-		}
+	TheGladiator = {
+		{ name = BIS["The Gladiator"] },
+		{ id = 11729 }, -- Savage Gladiator Helm
+		{ id = 11726 }, -- Savage Gladiator Chain
+		{ id = 11730 }, -- Savage Gladiator Grips
+		{ id = 11728 }, -- Savage Gladiator Leggings
+		{ id = 11731 }, -- Savage Gladiator Greaves
 	},
-	BLACKROCKD = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Box_01","=q6=#oth_s4#","" },
-		{ 0, "", "", "" },
-		{ 11729, "INV_Helmet_01", "=q3=Savage Gladiator Helm", "=ds=#s1#, #a3# =q7=#brd4#", "10.08%" },
-		{ 11726, "INV_Chest_Chain_15", "=q4=Savage Gladiator Chain", "=ds=#s5#, #a3# =q7=#brd3#", "14.52%" },
-		{ 11730, "INV_Gauntlets_04", "=q3=Savage Gladiator Grips", "=ds=#s9#, #a3# =q7=#brd2#", "14.12%"},
-		{ 11728, "INV_Pants_03", "=q3=Savage Gladiator Leggings", "=ds=#s11#, #a3# =q7=#brd5#", "14.95%" },
-		{ 11731, "INV_Boots_01", "=q3=Savage Gladiator Greaves", "=ds=#s12#, #a3# =q7=#brd1#", "15.14%" }
-	},
-	BlackrockdC = {{
-			{ 11729, "=ds=#s1#, #a3# =q7=#brd5#", "10.08%" },
-			{ 11726, "=ds=#s5#, #a3# =q7=#brd3#", "14.52%" },
-			{ 11730, "=ds=#s9#, #a3# =q7=#brd2#", "14.12%"},
-			{ 11728, "=ds=#s11#, #a3# =q7=#brd6#", "14.95%" },
-			{ 11731, "=ds=#s12#, #a3# =q7=#brd1#", "15.14%" },
-		}
-	},
-	IRONWEAVE = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Box_01","=q6=#oth_s5#","" },
-		{ 0, "", "", "" },
-		{ 22302, "INV_Helmet_30", "=q3=Ironweave Cowl", "=ds=#s1#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "27.72%" },
-		{ 22305, "INV_Shoulder_05", "=q3=Ironweave Mantle", "=ds=#s3#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "30.39%" },
-		{ 22301, "INV_Chest_Cloth_48", "=q3=Ironweave Robe", "=ds=#s5#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "19.00%" },
-		{ 22313, "INV_Bracer_13", "=q3=Ironweave Bracers", "=ds=#s8#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "18.16%" },
-		{ 22304, "INV_Gauntlets_27", "=q3=Ironweave Gloves", "=ds=#s9#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "16.24%" },
-		{ 22306, "INV_Belt_03", "=q3=Ironweave Belt", "=ds=#s10#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "20.28%" }, 
-		{ 22303, "INV_Pants_08", "=q3=Ironweave Pants", "=ds=#s11#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "23.33%" },
-		{ 22311,"INV_Boots_Cloth_05","=q3=Ironweave Boots", "=ds=#s12#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "12.31%" },
-	},
-	IronweaveC = {{
-			{ 22302, "=ds=#s1#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "27.72%" },
-			{ 22305, "=ds=#s3#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "30.39%" },
-			{ 22301, "=ds=#s5#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "19.00%" },
-			{ 22313, "=ds=#s8#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "18.16%" },
-			{ 22304, "=ds=#s9#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "16.24%" },
-			{ 22306, "=ds=#s10#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "20.28%" },
-			{ 22303, "=ds=#s11#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "23.33%" },
-			{ 22311, "=ds=#s12#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8#", "12.31%" },
-		}
+	Ironweave = {
+		{ name = BIS["Ironweave Battlesuit"] },
+		{ id = 22302 }, -- Ironweave Cowl
+		{ id = 22305 }, -- Ironweave Mantle
+		{ id = 22301 }, -- Ironweave Robe
+		{ id = 22313 }, -- Ironweave Bracers
+		{ id = 22304 }, -- Ironweave Gloves
+		{ id = 22306 }, -- Ironweave Belt
+		{ id = 22303 }, -- Ironweave Pants
+		{ id = 22311 }, -- Ironweave Boots
 	},
 	ScholoCloth = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Box_01","=q6=#oth_s6#","" },
-		{ 0, "", "", "" },
-		{ 14633, "INV_Shoulder_02", "=q3=Necropile Mantle", "=ds=#s3#, #a1#", "1.12%" },
-		{ 14626, "INV_Chest_Cloth_43", "=q3=Necropile Robe", "=ds=#s5#, #a1#", "1.27%" },
-		{ 14629, "INV_Bracer_07", "=q3=Necropile Cuffs", "=ds=#s8#, #a1#", "1.03%" },
-		{ 14632, "INV_Pants_08", "=q3=Necropile Leggings", "=ds=#s11#, #a1#", "0.85%" },
-		{ 14631, "INV_Boots_05", "=q3=Necropile Boots", "=ds=#s12#, #a1#", "0.88%" },
-	},
-	ScholoClothC = {{
-			{ 14633, "=ds=#s3#, #a1#", "1.12%" },
-			{ 14626, "=ds=#s5#, #a1#", "1.27%" },
-			{ 14629, "=ds=#s8#, #a1#", "1.03%" },
-			{ 14632, "=ds=#s11#, #a1#", "0.85%" },
-			{ 14631, "=ds=#s12#, #a1#", "0.88%" },
-		}
+		{ name = BIS["Necropile Raiment"] },
+		{ id = 14633 }, -- Necropile Mantle
+		{ id = 14626 }, -- Necropile Robe
+		{ id = 14629 }, -- Necropile Cuffs
+		{ id = 14632 }, -- Necropile Leggings
+		{ id = 14631 }, -- Necropile Boots
 	},
 	ScholoLeather = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Box_01","=q6=#oth_s7#","" },
-		{ 0, "", "", "" },
-		{ 14637, "INV_Chest_Leather_03", "=q3=Cadaverous Armor", "=ds=#s5#, #a2#", "1.51%" },
-		{ 14640, "INV_Gauntlets_15", "=q3=Cadaverous Gloves", "=ds=#s9#, #a2#", "0.82%" },
-		{ 14636, "INV_Belt_16", "=q3=Cadaverous Belt", "=ds=#s10#, #a2#", "0.60%" },
-		{ 14638, "INV_Pants_07", "=q3=Cadaverous Leggings", "=ds=#s11#, #a2#", "1.09%" },
-		{ 14641, "INV_Boots_05", "=q3=Cadaverous Walkers", "=ds=#s12#, #a2#", "0.67%" },
-	},
-	ScholoLeatherC = {{
-			{ 14637, "=ds=#s5#, #a2#", "1.51%" },
-			{ 14640, "=ds=#s9#, #a2#", "0.82%" },
-			{ 14636, "=ds=#s10#, #a2#", "0.60%" },
-			{ 14638, "=ds=#s11#, #a2#", "1.09%" },
-			{ 14641, "=ds=#s12#, #a2#", "0.67%" },
-		}
+		{ name = BIS["Cadaverous Garb"] },
+		{ id = 14637 }, -- Cadaverous Armor
+		{ id = 14640 }, -- Cadaverous Gloves
+		{ id = 14636 }, -- Cadaverous Belt
+		{ id = 14638 }, -- Cadaverous Leggings
+		{ id = 14641 }, -- Cadaverous Walkers
 	},
 	ScholoMail = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Box_01","=q6=#oth_s8#","" },
-		{ 0, "", "", "" },
-		{ 14611, "INV_Chest_Leather_05", "=q3=Bloodmail Hauberk", "=ds=#s5#, #a3#", "0.54%" },
-		{ 14615, "INV_Gauntlets_26", "=q3=Bloodmail Gauntlets", "=ds=#s9#, #a3#", "0.09%" },
-		{ 14614, "INV_Belt_23", "=q3=Bloodmail Belt", "=ds=#s10#, #a3#", "0.60%" },
-		{ 14612, "INV_Pants_06", "=q3=Bloodmail Legguards", "=ds=#s11#, #a3#", "0.42%" },
-		{ 14616, "INV_Boots_01", "=q3=Bloodmail Boots", "=ds=#s12#, #a3#", "0.36%" },
-	},
-	ScholoMailC = {{
-			{ 14611, "=ds=#s5#, #a3#", "0.54%" },
-			{ 14615, "=ds=#s9#, #a3#", "0.09%" },
-			{ 14614, "=ds=#s10#, #a3#", "0.60%" },
-			{ 14612, "=ds=#s11#, #a3#", "0.42%" },
-			{ 14616, "=ds=#s12#, #a3#", "0.36%" },
-		}
+		{ name = BIS["Bloodmail Regalia"] },
+		{ id = 14611 }, -- Bloodmail Hauberk
+		{ id = 14615 }, -- Bloodmail Gauntlets
+		{ id = 14614 }, -- Bloodmail Belt
+		{ id = 14612 }, -- Bloodmail Legguards
+		{ id = 14616 }, -- Bloodmail Boots
 	},
 	ScholoPlate = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Box_01","=q6=#oth_s9#","" },
-		{ 0, "", "", "" },
-		{ 14624, "INV_Chest_Chain_15", "=q3=Deathbone Chestplate", "=ds=#s5#, #a4#", "0.45%" },
-		{ 14622, "INV_Gauntlets_28", "=q3=Deathbone Gauntlets", "=ds=#s9#, #a4#", "0.45%" },
-		{ 14620, "INV_Belt_12", "=q3=Deathbone Girdle", "=ds=#s10#, #a4#", "0.67%" },
-		{ 14623, "INV_Pants_04", "=q3=Deathbone Legguards", "=ds=#s11#, #a4#", "1.12%" },
-		{ 14621, "INV_Boots_01", "=q3=Deathbone Sabatons", "=ds=#s12#, #a4#", "0.57%" },
-	},
-	ScholoPlateC = {{
-			{ 14624, "=ds=#s5#, #a4#", "0.45%" },
-			{ 14622, "=ds=#s9#, #a4#", "0.45%" },
-			{ 14620, "=ds=#s10#, #a4#", "0.67%" },
-			{ 14623, "=ds=#s11#, #a4#", "1.12%" },
-			{ 14621, "=ds=#s12#, #a4#", "0.57%" },
-		}
+		{ name = BIS["Deathbone Guardian"] },
+		{ id = 14624 }, -- Deathbone Chestplate
+		{ id = 14622 }, -- Deathbone Gauntlets
+		{ id = 14620 }, -- Deathbone Girdle
+		{ id = 14623 }, -- Deathbone Legguards
+		{ id = 14621 }, -- Deathbone Sabatons
 	},
 	STRAT = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#oth_s10#", "" },
-		{ 0, "", "", "" },
-		{ 13390, "INV_Misc_Bandage_15", "=q3=The Postmaster's Band", "=ds=#s1#, #a1#", "18.58%" },
-		{ 13388, "INV_Chest_Leather_10", "=q3=The Postmaster's Tunic", "=ds=#s5#, #a1#", "17.24%" },
-		{ 13389, "INV_Pants_06", "=q3=The Postmaster's Trousers", "=ds=#s11#, #a1#", "21.04%" },
-		{ 13391, "INV_Boots_02", "=q3=The Postmaster's Treads", "=ds=#s12#, #a1#", "20.61%" },
-		{ 13392, "INV_Jewelry_Ring_23", "=q3=The Postmaster's Seal", "=ds=#s13#", "17.29%" },
-	},
-	StratC = {{
-			{ 13390, "=ds=#s1#, #a1#", "18.58%" },
-			{ 13388, "=ds=#s5#, #a1#", "17.24%" },
-			{ 13389, "=ds=#s11#, #a1#", "21.04%" },
-			{ 13391, "=ds=#s12#, #a1#", "20.61%" },
-			{ 13392, "=ds=#s13#", "17.29%" },
-		}
+		{ name = BIS["The Postmaster"] },
+		{ id = 13390 }, -- The Postmaster's Band
+		{ id = 13388 }, -- The Postmaster's Tunic
+		{ id = 13389 }, -- The Postmaster's Trousers
+		{ id = 13391 }, -- The Postmaster's Treads
+		{ id = 13392 }, -- The Postmaster's Seal
 	},
 	ScourgeInvasion = {
-		{ 0,"","","" },
-		{ 0, "INV_Jewelry_Talisman_13", "=q6=#oth_s11#", "=ec1=#a1#" },
-		{ 23085, "INV_Chest_Cloth_04", "=q3=Robe of Undead Cleansing", "=ds=#s5#, #a1#", "" },
-		{ 23091, "INV_Bracer_12", "=q3=Bracers of Undead Cleansing", "=ds=#s8#, #a1#", "" },
-		{ 23084, "INV_Gauntlets_16", "=q3=Gloves of Undead Cleansing", "=ds=#s9#, #a1#", "" },
-		{ 0,"","","" },
-		{ 0, "INV_Jewelry_Talisman_13", "=q6=#oth_s12#", "=ec1=#a2#" },
-		{ 23089, "INV_Chest_Leather_06", "=q3=Tunic of Undead Slaying", "=ds=#s5#, #a2#", "" },
-		{ 23093, "INV_Bracer_08", "=q3=Wristwraps of Undead Slaying", "=ds=#s8#, #a2#", "" },
-		{ 23081, "INV_Gauntlets_06", "=q3=Handwraps of Undead Slaying", "=ds=#s9#, #a2#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Jewelry_Talisman_13", "=q6=#oth_s13#", "=ec1=#a3#" },
-		{ 23088, "INV_Chest_Chain_08", "=q3=Chestguard of Undead Slaying", "=ds=#s5#, #a3#", "" },
-		{ 23092, "INV_Bracer_16", "=q3=Wristguards of Undead Slaying", "=ds=#s8#, #a3#", "" },
-		{ 23082, "INV_Gauntlets_11", "=q3=Handguards of Undead Slaying", "=ds=#s9#, #a3#", "" },
-		{ 0,"","","" },
-		{ 0, "INV_Jewelry_Talisman_13", "=q6=#oth_s14#", "=ec1=#a4#" },
-		{ 23087, "INV_Chest_Plate10", "=q3=Breastplate of Undead Slaying", "=ds=#s5#, #a4#", "" },
-		{ 23090, "INV_Bracer_14", "=q3=Bracers of Undead Slaying", "=ds=#s8#, #a4#", "" },
-		{ 23078, "INV_Gauntlets_29", "=q3=Gauntlets of Undead Slaying", "=ds=#s9#, #a4#", "" },
-	},
-	ScourgeInvasionC = {{
-			{ 23085, "=ds=#s5#, #a1#", "" },
-			{ 23091, "=ds=#s8#, #a1#", "" },
-			{ 23084, "=ds=#s9#, #a1#", "" },
-		},{
-			{ 23089, "=ds=#s5#, #a2#", "" },
-			{ 23093, "=ds=#s8#, #a2#", "" },
-			{ 23081, "=ds=#s9#, #a2#", "" },
-		},{
-			{ 23088, "=ds=#s5#, #a3#", "" },
-			{ 23092, "=ds=#s8#, #a3#", "" },
-			{ 23082, "=ds=#s9#, #a3#", "" },
-		},{
-			{ 23087, "=ds=#s5#, #a4#", "" },
-			{ 23090, "=ds=#s8#, #a4#", "" },
-			{ 23078, "=ds=#s9#, #a4#", "" },
-		}
+		{ name = BIS["Regalia of Undead Cleansing"], icon = "INV_Jewelry_Talisman_13" },
+		{ id = 23085 }, -- Robe of Undead Cleansing
+		{ id = 23091 }, -- Bracers of Undead Cleansing
+		{ id = 23084 }, -- Gloves of Undead Cleansing
+		{},
+		{ name = BIS["Undead Slayer's Armor"], icon = "INV_Jewelry_Talisman_13" },
+		{ id = 23089 }, -- Tunic of Undead Slaying
+		{ id = 23093 }, -- Wristwraps of Undead Slaying
+		{ id = 23081 }, -- Handwraps of Undead Slaying
+		{},
+		{ name = BIS["Garb of the Undead Slayer"], icon = "INV_Jewelry_Talisman_13" },
+		{ id = 23088 }, -- Chestguard of Undead Slaying
+		{ id = 23092 }, -- Wristguards of Undead Slaying
+		{ id = 23082 }, -- Handguards of Undead Slaying
+		{},
+		{ name = BIS["Battlegear of Undead Slaying"], icon = "INV_Jewelry_Talisman_13" },
+		{ id = 23087 }, -- Breastplate of Undead Slaying
+		{ id = 23090 }, -- Bracers of Undead Slaying
+		{ id = 23078 }, -- Gauntlets of Undead Slaying
 	},
 	ShardOfGods = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#oth_s15#", "" },
-		{ 0, "", "", "" },
-		{ 17082, "INV_Misc_Orb_05", "=q4=Shard of the Flame", "=ds=#s14#", "4.46%" }, 
-		{ 17064, "INV_Misc_MonsterScales_15", "=q4=Shard of the Scale", "=ds=#s14#", "3.71%" },
-	},
-	ShardOfGodsC = {{
-			{ 17082, "=ds=#s14#", "4.46%" },
-			{ 17064, "=ds=#s14#", "3.71%" },
-		}
+		{ name = BIS["Shard of the Gods"] },
+		{ id = 17082 }, -- Shard of the Flame
+		{ id = 17064 }, -- Shard of the Scale
 	},
 	ZGRings = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#oth_s16#", "" },
-		{ 19898, "INV_Jewelry_Ring_44", "=q3=Seal of Jin", "=ds=#s13#", "8.81%" },
-		{ 19925, "INV_Jewelry_Ring_44", "=q3=Band of Jin", "=ds=#s13#", "10.36%" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#oth_s17#", "" },
-		{ 19873, "INV_Jewelry_Ring_39", "=q3=Overlord's Crimson Band", "=ds=#s13#", "10.12%" },
-		{ 19912, "INV_Jewelry_Ring_39", "=q3=Overlord's Onyx Band", "=ds=#s13#", "14.51%" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#oth_s18#", "" },
-		{ 19863, "INV_Jewelry_Ring_47", "=q3=Primalist's Seal", "=ds=#s13#", "9.72%" },
-		{ 19920, "INV_Jewelry_Ring_47", "=q3=Primalist's Band", "=ds=#s13#", "8.95%" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#oth_s19#", "" },
-		{ 19905, "INV_Jewelry_Ring_46", "=q3=Zanzil's Band", "=ds=#s13#", "9.24%" },
-		{ 19893, "INV_Jewelry_Ring_46", "=q3=Zanzil's Seal", "=ds=#s13#", "10.12%" }
-	},
-	ZGRingsC = {{
-			{ 19898, "=ds=#s13#", "8.81%" },{ 19925, "=ds=#s13#", "10.36%" },
-			{ 19873, "=ds=#s13#", "10.12%" },{ 19912, "=ds=#s13#", "14.51%" },
-		},{
-			{ 19863, "=ds=#s13#", "9.72%" },{ 19920, "=ds=#s13#", "8.95%" },
-			{ 19905, "=ds=#s13#", "9.24%" },{ 19893, "=ds=#s13#", "10.12%" },
-		}
+		{ name = BIS["Major Mojo Infusion"] },
+		{ id = 19898 }, -- Seal of Jin
+		{ id = 19925 }, -- Band of Jin
+		{},
+		{ name = BIS["Overlord's Resolution"] },
+		{ id = 19873 }, -- Overlord's Crimson Band
+		{ id = 19912 }, -- Overlord's Onyx Band
+		{},
+		{ name = BIS["Prayer of the Primal"] },
+		{ id = 19863 }, -- Primalist's Seal
+		{ id = 19920 }, -- Primalist's Band
+		{},
+		{ name = BIS["Zanzil's Concentration"] },
+		{ id = 19905 }, -- Zanzil's Band
+		{ id = 19893 }, -- Zanzil's Seal
 	},
 	SpiritofEskhandar = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#oth_s20#", "" },
-		{ 0, "", "", "" },
-		{ 18204, "INV_Misc_Cape_07", "=q4=Eskhandar's Pelt", "=ds=#s4#", "9.16%" },
-		{ 18205, "INV_Belt_12", "=q4=Eskhandar's Collar", "=ds=#s2#", "14.29% " },
-		{ 18203, "INV_Misc_MonsterClaw_04", "=q4=Eskhandar's Right Claw", "=ds=#h3#, #w13#", "16.97%" },
-		{ 18202, "INV_Misc_MonsterClaw_04", "=q4=Eskhandar's Left Claw", "=ds=#h4#, #w13#", "12.36%" }
-	},
-	SpiritofEskhandarC = {{
-			{ 18204, "=ds=#s4#", "9.16%" },
-			{ 18205, "=ds=#s2#", "14.29% " },
-			{ 18203, "=ds=#h3#, #w13#", "16.97%" },
-			{ 18202, "=ds=#h4#, #w13#", "12.36%" },
-		}
+		{ name = BIS["Spirit of Eskhandar"] },
+		{ id = 18204 }, -- Eskhandar's Pelt
+		{ id = 18205 }, -- Eskhandar's Collar
+		{ id = 18203 }, -- Eskhandar's Right Claw
+		{ id = 18202 }, -- Eskhandar's Left Claw
 	},
 	HakkariBlades = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#oth_s21#", "" },
-		{ 0, "", "", "" },
-		{ 19865, "INV_Sword_55", "=q4=Warblade of the Hakkari", "=ds=#h3#, #w10#", "5.18%" },
-		{ 19866, "INV_Sword_55", "=q4=Warblade of the Hakkari", "=ds=#h4#, #w10#", "4.55%" }
-	},
-	HakkariBladesC = {{
-			{ 19865, "=ds=#h3#, #w10#", "5.18%" },
-			{ 19866, "=ds=#h4#, #w10#", "4.55%" },
-		}
+		{ name = BIS["The Twin Blades of Hakkari"] },
+		{ id = 19865 }, -- Warblade of the Hakkari (Main Hand)
+		{ id = 19866 }, -- Warblade of the Hakkari (Off Hand)
 	},
 	PrimalBlessing = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#oth_s22#", "" },
-		{ 0, "", "", "" },
-		{ 19896, "INV_Weapon_Hand_01", "=q4=Thekal's Grasp", "=ds=#h3#, #w13#", "5.20%" },
-		{ 19910, "INV_Weapon_Hand_01", "=q4=Arlokk's Grasp", "=ds=#h4#, #w13#", "4.54%" }
-	},
-	PrimalBlessingC = {{
-			{ 19896, "=ds=#h3#, #w13#", "5.20%" },
-			{ 19910, "=ds=#h4#, #w13#", "4.54%" },
-		}
+		{ name = BIS["Primal Blessing"] },
+		{ id = 19896 }, -- Thekal's Grasp
+		{ id = 19910 }, -- Arlokk's Grasp
 	},
 	DalRend = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#oth_s23#", "" },
-		{ 0, "", "", "" },
-		{ 12940, "INV_Sword_43", "=q3=Dal'Rend's Sacred Charge", "=ds=#h3#, #w10#", "6.62%" },
-		{ 12939, "INV_Sword_40", "=q3=Dal'Rend's Tribal Guardian", "=ds=#h4#, #w10#", "7.44%" }
-	},
-	DalRendC = {{
-			{ 12940, "=ds=#h3#, #w10#", "6.62%" },
-			{ 12939, "=ds=#h4#, #w10#", "7.44%" },
-		}
+		{ name = BIS["Dal'Rend's Arms"] },
+		{ id = 12940 }, -- Dal'Rend's Sacred Charge
+		{ id = 12939 }, -- Dal'Rend's Tribal Guardian
 	},
 	SpiderKiss = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#oth_s24#", "" },
-		{ 0, "", "", "" },
-		{ 13218, "INV_Weapon_ShortBlade_16", "=q3=Fang of the Crystal Spider", "=ds=#h1#, #w4#", "15.46%" },
-		{ 13183, "INV_Wand_10", "=q3=Venomspitter", "=ds=#h1#, #w6#", "13.07%" }
-	},
-	SpiderKissC = {{
-			{ 13218, "=ds=#h1#, #w4#", "15.46%" },
-			{ 13183, "=ds=#h1#, #w6#", "13.07%" },
-		}
+		{ name = BIS["Spider's Kiss"] },
+		{ id = 13218 }, -- Fang of the Crystal Spider
+		{ id = 13183 }, -- Venomspitter
 	},
 	--Tier 3.5
 	T35Priest = {
-		{ 0, "", "", "" },
-		{ 47228, "inv_helmet_24", "=q4=Crown of Pestilence", "=ds=#s1#, #a1#" },
-		{ 47229, "inv_shoulder_01", "=q4=Shoulderpads of Pestilence", "=ds=#s3#, #a1#" },
-		{ 47230, "INV_Chest_Leather_04", "=q4=Robes of Pestilence", "=ds=#s5#, #a1#" },
-		{ 47231, "INV_Pants_02", "=q4=Leggings of Pestilence", "=ds=#s11#, #a1#" },
-		{ 47232, "INV_Boots_Plate_03", "=q4=Boots of Pestilence", "=ds=#s12#, #a1#" },
-		{ 47233, "INV_GreenGem", "=q4=Amulet of Pestilence", "=ds=#s2#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47234, "inv_helmet_24", "=q4=Coronet of Pestilence", "=ds=#s1#, #a1#" },
-		{ 47235, "inv_shoulder_01", "=q4=Shoulderpads of Pestilence", "=ds=#s3#, #a1#" },
-		{ 47236, "INV_Chest_Leather_04", "=q4=Raiments of Pestilence", "=ds=#s5#, #a1#" },
-		{ 47237, "INV_Pants_02", "=q4=Pants of Pestilence", "=ds=#s11#, #a1#" },
-		{ 47238, "INV_Boots_Plate_03", "=q4=Sandals of Pestilence", "=ds=#s12#, #a1#" },
-		{ 47239, "INV_BlueGem", "=q4=Pendant of Pestilence", "=ds=#s2#" },
-	},
-	T35PriestC = {{
-			{ 47228, "=ds=#s1#, #a1#" },
-			{ 47229, "=ds=#s3#, #a1#" },
-			{ 47230, "=ds=#s5#, #a1#" },
-			{ 47231, "=ds=#s11#, #a1#" },
-			{ 47232, "=ds=#s12#, #a1#" },
-			{ 47233, "=ds=#s2#" },
-		},{
-			{ 47234, "=ds=#s1#, #a1#" },
-			{ 47235, "=ds=#s3#, #a1#" },
-			{ 47236, "=ds=#s5#, #a1#" },
-			{ 47237, "=ds=#s11#, #a1#" },
-			{ 47238, "=ds=#s12#, #a1#" },
-			{ 47239, "=ds=#s2#" },
-		}
+		{ name = BIS["Regalia of Pestilence"] },
+		{ id = 47228 }, -- Crown of Pestilence
+		{ id = 47229 }, -- Shoulderpads of Pestilence
+		{ id = 47230 }, -- Robes of Pestilence
+		{ id = 47231 }, -- Leggings of Pestilence
+		{ id = 47232 }, -- Boots of Pestilence
+		{ id = 47233 }, -- Amulet of Pestilence
+		{},
+		{ name = BIS["Raiments of Pestilence"] },
+		{ id = 47234 }, -- Coronet of Pestilence
+		{ id = 47235 }, -- Shoulderpads of Pestilence
+		{ id = 47236 }, -- Raiments of Pestilence
+		{ id = 47237 }, -- Pants of Pestilence
+		{ id = 47238 }, -- Sandals of Pestilence
+		{ id = 47239 }, -- Pendant of Pestilence
 	},
 	T35Mage = {
-		{ 0, "", "", "" },
-		{ 47108, "inv_helmet_51", "=q4=Crown of the Guardian", "=ds=#s1#, #a1#" },
-		{ 47109, "inv_shoulder_25", "=q4=Mantle of the Guardian", "=ds=#s3#, #a1#" },
-		{ 47110, "INV_Chest_Cloth_23", "=q4=Robes of the Guardian", "=ds=#s5#, #a1#" },
-		{ 47111, "INV_Pants_02", "=q4=Leggings of the Guardian", "=ds=#s11#, #a1#" },
-		{ 47112, "INV_Boots_Plate_03", "=q4=Boots of the Guardian", "=ds=#s12#, #a1#" },
-		{ 47113, "INV_BlueGem", "=q4=Pendant of the Guardian", "=ds=#s2#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47114, "inv_helmet_51", "=q4=Circlet of the Guardian", "=ds=#s1#, #a1#" },
-		{ 47115, "inv_shoulder_25", "=q4=Epaulets of the Guardian", "=ds=#s3#, #a1#" },
-		{ 47116, "INV_Chest_Cloth_23", "=q4=Vestments of the Guardian", "=ds=#s5#, #a1#" },
-		{ 47117, "INV_Pants_02", "=q4=Trousers of the Guardian", "=ds=#s11#, #a1#" },
-		{ 47118, "INV_Boots_Plate_03", "=q4=Slippers of the Guardian", "=ds=#s12#, #a1#" },
-		{ 47119, "INV_BlueGem", "=q4=Amulet of the Guardian", "=ds=#s2#" },
-	},
-	T35MageC = {{
-			{ 47108, "=ds=#s1#, #a1#" },
-			{ 47109, "=ds=#s3#, #a1#" },
-			{ 47110, "=ds=#s5#, #a1#" },
-			{ 47111, "=ds=#s11#, #a1#" },
-			{ 47112, "=ds=#s12#, #a1#" },
-			{ 47113, "=ds=#s2#" },
-		},{
-			{ 47114, "=ds=#s1#, #a1#" },
-			{ 47115, "=ds=#s3#, #a1#" },
-			{ 47116, "=ds=#s5#, #a1#" },
-			{ 47117, "=ds=#s11#, #a1#" },
-			{ 47118, "=ds=#s12#, #a1#" },
-			{ 47119, "=ds=#s2#" },
-		}
+		{ name = BIS["Regalia of the Guardian"] },
+		{ id = 47108 }, -- Crown of the Guardian
+		{ id = 47109 }, -- Mantle of the Guardian
+		{ id = 47110 }, -- Robes of the Guardian
+		{ id = 47111 }, -- Leggings of the Guardian
+		{ id = 47112 }, -- Boots of the Guardian
+		{ id = 47113 }, -- Pendant of the Guardian
+		{},
+		{ name = BIS["Vestments of the Guardian"] },
+		{ id = 47114 }, -- Circlet of the Guardian
+		{ id = 47115 }, -- Epaulets of the Guardian
+		{ id = 47116 }, -- Vestments of the Guardian
+		{ id = 47117 }, -- Trousers of the Guardian
+		{ id = 47118 }, -- Slippers of the Guardian
+		{ id = 47119 }, -- Amulet of the Guardian
 	},
 	T35Warlock = {
-		{ 0, "", "", "" },
-		{ 47306, "inv_helmet_24", "=q4=Nathrezim Crown", "=ds=#s1#, #a1#" },
-		{ 47307, "inv_shoulder_01", "=q4=Nathrezim Mantle", "=ds=#s3#, #a1#" },
-		{ 47308, "INV_Chest_Leather_04", "=q4=Nathrezim Raiments", "=ds=#s5#, #a1#" },
-		{ 47309, "INV_Pants_02", "=q4=Nathrezim Leggings", "=ds=#s11#, #a1#" },
-		{ 47310, "INV_Boots_Plate_03", "=q4=Nathrezim Boots", "=ds=#s12#, #a1#" },
-		{ 47311, "INV_BlueGem", "=q4=Nathrezim Amulet", "=ds=#s2#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47312, "inv_helmet_24", "=q4=Nathrezim Skullcap", "=ds=#s1#, #a1#" },
-		{ 47313, "inv_shoulder_01", "=q4=Nathrezim Spaulders", "=ds=#s3#, #a1#" },
-		{ 47314, "INV_Chest_Leather_04", "=q4=Nathrezim Robes", "=ds=#s5#, #a1#" },
-		{ 47315, "INV_Pants_02", "=q4=Nathrezim Pants", "=ds=#s11#, #a1#" },
-		{ 47316, "INV_Boots_Plate_03", "=q4=Nathrezim Slippers", "=ds=#s12#, #a1#" },
-		{ 47317, "INV_BlueGem", "=q4=Nathrezim Pendant", "=ds=#s2#" },
-	},
-	T35WarlockC = {{
-			{ 47306, "=ds=#s1#, #a1#" },
-			{ 47307, "=ds=#s3#, #a1#" },
-			{ 47308, "=ds=#s5#, #a1#" },
-			{ 47309, "=ds=#s11#, #a1#" },
-			{ 47310, "=ds=#s12#, #a1#" },
-			{ 47311, "=ds=#s2#" },
-		},{
-			{ 47312, "=ds=#s1#, #a1#" },
-			{ 47313, "=ds=#s3#, #a1#" },
-			{ 47314, "=ds=#s5#, #a1#" },
-			{ 47315, "=ds=#s11#, #a1#" },
-			{ 47316, "=ds=#s12#, #a1#" },
-			{ 47317, "=ds=#s2#" },
-		}
+		{ name = BIS["Nathrezim Raiment"] },
+		{ id = 47306 }, -- Nathrezim Crown
+		{ id = 47307 }, -- Nathrezim Mantle
+		{ id = 47308 }, -- Nathrezim Raiments
+		{ id = 47309 }, -- Nathrezim Leggings
+		{ id = 47310 }, -- Nathrezim Boots
+		{ id = 47311 }, -- Nathrezim Amulet
+		{},
+		{ name = BIS["Nathrezim Robes"] },
+		{ id = 47312 }, -- Nathrezim Skullcap
+		{ id = 47313 }, -- Nathrezim Spaulders
+		{ id = 47314 }, -- Nathrezim Robes
+		{ id = 47315 }, -- Nathrezim Pants
+		{ id = 47316 }, -- Nathrezim Slippers
+		{ id = 47317 }, -- Nathrezim Pendant
 	},
 	T35Rogue = {
-		{ 0, "", "", "" },
-		{ 47324, "inv_helmet_24", "=q4=Trickster Helmet", "=ds=#s1#, #a2#" },
-		{ 47325, "inv_shoulder_01", "=q4=Trickster Pauldrons", "=ds=#s3#, #a2#" },
-		{ 47326, "INV_Chest_Leather_04", "=q4=Trickster Breastplate", "=ds=#s5#, #a2#" },
-		{ 47327, "INV_Pants_02", "=q4=Trickster Leggings", "=ds=#s11#, #a2#" },
-		{ 47328, "INV_Boots_07", "=q4=Trickster Sabatons", "=ds=#s12#, #a2#" },
-		{ 47329, "INV_RedGem", "=q4=Trickster Choker", "=ds=#s2#" },
-	},
-	T35RogueC = {{
-			{ 47324, "=ds=#s1#, #a2#" },
-			{ 47325, "=ds=#s3#, #a2#" },
-			{ 47326, "=ds=#s5#, #a2#" },
-			{ 47327, "=ds=#s11#, #a2#" },
-			{ 47328, "=ds=#s12#, #a2#" },
-			{ 47329, "=ds=#s2#" },
-		}
+		{ name = BIS["Trickster's Garb"] },
+		{ id = 47324 }, -- Trickster Helmet
+		{ id = 47325 }, -- Trickster Pauldrons
+		{ id = 47326 }, -- Trickster Breastplate
+		{ id = 47327 }, -- Trickster Leggings
+		{ id = 47328 }, -- Trickster Sabatons
+		{ id = 47329 }, -- Trickster Choker
 	},
 	T35Druid = {
-		{ 0, "", "", "" },
-		{ 47390, "inv_helmet_24", "=q4=Helm of the Talon", "=ds=#s1#, #a2#" },
-		{ 47391, "inv_shoulder_01", "=q4=Spaulders of the Talon", "=ds=#s3#, #a2#" },
-		{ 47392, "INV_Chest_Leather_04", "=q4=Vestments of the Talon", "=ds=#s5#, #a2#" },
-		{ 47393, "INV_Pants_02", "=q4=Leggings of the Talon", "=ds=#s11#, #a2#" },
-		{ 47394, "INV_Boots_Plate_03", "=q4=Boots of the Talon", "=ds=#s12#, #a2#" },
-		{ 47395, "INV_GreenGem", "=q4=Amulet of the Talon", "=ds=#s2#" },
-		{ 0, "", "", "" },
-		{ 47396, "inv_helmet_24", "=q4=Circlet of the Talon", "=ds=#s1#, #a2#" },
-		{ 47397, "inv_shoulder_01", "=q4=Mantle of the Talon", "=ds=#s3#, #a2#" },
-		{ 47398, "INV_Chest_Leather_04", "=q4=Vest of the Talon", "=ds=#s5#, #a2#" },
-		{ 47399, "INV_Pants_02", "=q4=Trousers of the Talon", "=ds=#s11#, #a2#" },
-		{ 47400, "INV_Boots_Plate_03", "=q4=Slippers of the Talon", "=ds=#s12#, #a2#" },
-		{ 47401, "INV_BlueGem", "=q4=Pendant of the Talon", "=ds=#s2#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47402, "inv_helmet_24", "=q4=Helmet of the Talon", "=ds=#s1#, #a2#" },
-		{ 47403, "inv_shoulder_01", "=q4=Shoulderpads of the Talon", "=ds=#s3#, #a2#" },
-		{ 47404, "INV_Chest_Leather_04", "=q4=Raiments of the Talon", "=ds=#s5#, #a2#" },
-		{ 47405, "INV_Pants_02", "=q4=Pants of the Talon", "=ds=#s11#, #a2#" },
-		{ 47406, "INV_Boots_Plate_03", "=q4=Treads of the Talon", "=ds=#s12#, #a2#" },
-		{ 47407, "INV_RedGem", "=q4=Choker of the Talon", "=ds=#s2#" },
-	},
-	T35DruidC = {{
-			{ 47390, "=ds=#s1#, #a2#" },
-			{ 47391, "=ds=#s3#, #a2#" },
-			{ 47392, "=ds=#s5#, #a2#" },
-			{ 47393, "=ds=#s11#, #a2#" },
-			{ 47394, "=ds=#s12#, #a2#" },
-			{ 47395, "=ds=#s2#" },
-		},{
-			{ 47396, "=ds=#s1#, #a2#" },
-			{ 47397, "=ds=#s3#, #a2#" },
-			{ 47398, "=ds=#s5#, #a2#" },
-			{ 47399, "=ds=#s11#, #a2#" },
-			{ 47400, "=ds=#s12#, #a2#" },
-			{ 47401, "=ds=#s2#" },
-		},{
-			{ 47402, "=ds=#s1#, #a2#" },
-			{ 47403, "=ds=#s3#, #a2#" },
-			{ 47404, "=ds=#s5#, #a2#" },
-			{ 47405, "=ds=#s11#, #a2#" },
-			{ 47406, "=ds=#s12#, #a2#" },
-			{ 47407, "=ds=#s2#" },
-		}
+		{ name = BIS["Vestments of the Talon"] },
+		{ id = 47390 }, -- Helm of the Talon
+		{ id = 47391 }, -- Spaulders of the Talon
+		{ id = 47392 }, -- Vestments of the Talon
+		{ id = 47393 }, -- Leggings of the Talon
+		{ id = 47394 }, -- Boots of the Talon
+		{ id = 47395 }, -- Amulet of the Talon
+		{},
+		{ name = BIS["Vest of the Talon"] },
+		{ id = 47396 }, -- Circlet of the Talon
+		{ id = 47397 }, -- Mantle of the Talon
+		{ id = 47398 }, -- Vest of the Talon
+		{ id = 47399 }, -- Trousers of the Talon
+		{ id = 47400 }, -- Slippers of the Talon
+		{ id = 47401 }, -- Pendant of the Talon
+		{},
+		{ name = BIS["Raiments of the Talon"] },
+		{ id = 47402 }, -- Helmet of the Talon
+		{ id = 47403 }, -- Shoulderpads of the Talon
+		{ id = 47404 }, -- Raiments of the Talon
+		{ id = 47405 }, -- Pants of the Talon
+		{ id = 47406 }, -- Treads of the Talon
+		{ id = 47407 }, -- Choker of the Talon
 	},
 	T35Hunter = {
-		{ 0, "", "", "" },
-		{ 47318, "inv_helmet_24", "=q4=Ravenstalker Headpiece", "=ds=#s1#, #a3#" },
-		{ 47319, "inv_shoulder_01", "=q4=Ravenstalker Spaulders", "=ds=#s3#, #a3#" },
-		{ 47320, "INV_Chest_Leather_04", "=q4=Ravenstalker Tunic", "=ds=#s5#, #a3#" },
-		{ 47321, "INV_Pants_02", "=q4=Ravenstalker Legguards", "=ds=#s11#, #a3#" },
-		{ 47322, "INV_Boots_Plate_03", "=q4=Ravenstalker Boots", "=ds=#s12#, #a3#" },
-		{ 47323, "INV_RedGem", "=q4=Ravenstalker Choker", "=ds=#s2#" },
-	},
-	T35HunterC = {{
-			{ 47318, "=ds=#s1#, #a3#" },
-			{ 47319, "=ds=#s3#, #a3#" },
-			{ 47320, "=ds=#s5#, #a3#" },
-			{ 47321, "=ds=#s11#, #a3#" },
-			{ 47322, "=ds=#s12#, #a3#" },
-			{ 47323, "=ds=#s2#" },
-		}
+		{ name = BIS["Ravenstalker's Garb"] },
+		{ id = 47318 }, -- Ravenstalker Headpiece
+		{ id = 47319 }, -- Ravenstalker Spaulders
+		{ id = 47320 }, -- Ravenstalker Tunic
+		{ id = 47321 }, -- Ravenstalker Legguards
+		{ id = 47322 }, -- Ravenstalker Boots
+		{ id = 47323 }, -- Ravenstalker Choker
 	},
 	T35Shaman = {
-		{ 0, "", "", "" },
-		{ 47180, "inv_helmet_24", "=q4=Stormhowl Crown", "=ds=#s1#, #a3#" },
-		{ 47181, "inv_shoulder_01", "=q4=Stormhowl Pauldrons", "=ds=#s3#, #a3#" },
-		{ 47182, "INV_Chest_Leather_04", "=q4=Stormhowl Breastplate", "=ds=#s5#, #a3#" },
-		{ 47183, "INV_Pants_02", "=q4=Stormhowl Leggings", "=ds=#s11#, #a3#" },
-		{ 47184, "INV_Boots_Plate_03", "=q4=Stormhowl Sabatons", "=ds=#s12#, #a3#" },
-		{ 47185, "INV_RedGem", "=q4=Choker of the Stormhowl", "=ds=#s2#" },
-		{ 0, "", "", "" },
-		{ 47186, "inv_helmet_24", "=q4=Stormhowl Helmet", "=ds=#s1#, #a3#" },
-		{ 47187, "inv_shoulder_01", "=q4=Stormhowl Epaulets", "=ds=#s3#, #a3#" },
-		{ 47188, "INV_Chest_Leather_04", "=q4=Stormhowl Raiments", "=ds=#s5#, #a3#" },
-		{ 47189, "INV_Pants_02", "=q4=Stormhowl Legplates", "=ds=#s11#, #a3#" },
-		{ 47190, "INV_Boots_Plate_03", "=q4=Stormhowl Greaves", "=ds=#s12#, #a3#" },
-		{ 47191, "INV_BlueGem", "=q4=Pendant of the Stormhowl", "=ds=#s2#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47192, "inv_helmet_24", "=q4=Stormhowl Headpiece", "=ds=#s1#, #a3#" },
-		{ 47193, "inv_shoulder_01", "=q4=Stormhowl Spaulders", "=ds=#s3#, #a3#" },
-		{ 47194, "INV_Chest_Leather_04", "=q4=Stormhowl Tunic", "=ds=#s5#, #a3#" },
-		{ 47195, "INV_Pants_02", "=q4=Stormhowl Legguards", "=ds=#s11#, #a3#" },
-		{ 47196, "INV_Boots_Plate_03", "=q4=Stormhowl Boots", "=ds=#s12#, #a3#" },
-		{ 47197, "INV_GreenGem", "=q4=Amulet of the Stormhowl", "=ds=#s2#" },
-	},
-	T35ShamanC = {{
-			{ 47180, "=ds=#s1#, #a3#" },
-			{ 47181, "=ds=#s3#, #a3#" },
-			{ 47182, "=ds=#s5#, #a3#" },
-			{ 47183, "=ds=#s11#, #a3#" },
-			{ 47184, "=ds=#s12#, #a3#" },
-			{ 47185, "=ds=#s2#" },
-		},{
-			{ 47186, "=ds=#s1#, #a3#" },
-			{ 47187, "=ds=#s3#, #a3#" },
-			{ 47188, "=ds=#s5#, #a3#" },
-			{ 47189, "=ds=#s11#, #a3#" },
-			{ 47190, "=ds=#s12#, #a3#" },
-			{ 47191, "=ds=#s2#" },
-		},{
-			{ 47192, "=ds=#s1#, #a3#" },
-			{ 47193, "=ds=#s3#, #a3#" },
-			{ 47194, "=ds=#s5#, #a3#" },
-			{ 47195, "=ds=#s11#, #a3#" },
-			{ 47196, "=ds=#s12#, #a3#" },
-			{ 47197, "=ds=#s2#" },
-		}
+		{ name = BIS["Stormhowl Garb"] },
+		{ id = 47180 }, -- Stormhowl Crown
+		{ id = 47181 }, -- Stormhowl Pauldrons
+		{ id = 47182 }, -- Stormhowl Breastplate
+		{ id = 47183 }, -- Stormhowl Leggings
+		{ id = 47184 }, -- Stormhowl Sabatons
+		{ id = 47185 }, -- Choker of the Stormhowl
+		{},
+		{ name = BIS["Stormhowl Raiments"] },
+		{ id = 47186 }, -- Stormhowl Helmet
+		{ id = 47187 }, -- Stormhowl Epaulets
+		{ id = 47188 }, -- Stormhowl Raiments
+		{ id = 47189 }, -- Stormhowl Legplates
+		{ id = 47190 }, -- Stormhowl Greaves
+		{ id = 47191 }, -- Pendant of the Stormhowl
+		{},
+		{ name = BIS["Stormhowl Tunic"] },
+		{ id = 47192 }, -- Stormhowl Headpiece
+		{ id = 47193 }, -- Stormhowl Spaulders
+		{ id = 47194 }, -- Stormhowl Tunic
+		{ id = 47195 }, -- Stormhowl Legguards
+		{ id = 47196 }, -- Stormhowl Boots
+		{ id = 47197 }, -- Amulet of the Stormhowl
 	},
 	T35Paladin = {
-		{ 0, "", "", "" },
-		{ 47060, "inv_helmet_24", "=q4=Lionheart Headpiece", "=ds=#s1#, #a4#" },
-		{ 47061, "inv_shoulder_01", "=q4=Lionheart Spaulders", "=ds=#s3#, #a4#" },
-		{ 47062, "INV_Chest_Leather_04", "=q4=Lionheart Breastplate", "=ds=#s5#, #a4#" },
-		{ 47063, "INV_Pants_02", "=q4=Lionheart Legplates", "=ds=#s11#, #a4#" },
-		{ 47064, "INV_Boots_Plate_03", "=q4=Lionheart Boots", "=ds=#s12#, #a4#" },
-		{ 47065, "INV_GreenGem", "=q4=Lionheart Amulet", "=ds=#s2#" },
-		{ 0, "", "", "" },
-		{ 47066, "inv_helmet_24", "=q4=Lionheart Helmet", "=ds=#s1#, #a4#" },
-		{ 47067, "inv_shoulder_01", "=q4=Lionheart Shoulderguards", "=ds=#s3#, #a4#" },
-		{ 47068, "INV_Chest_Leather_04", "=q4=Lionheart Chestguard", "=ds=#s5#, #a4#" },
-		{ 47069, "INV_Pants_02", "=q4=Lionheart Legguards", "=ds=#s11#, #a4#" },
-		{ 47070, "INV_Boots_Plate_03", "=q4=Lionheart Greaves", "=ds=#s12#, #a4#" },
-		{ 47071, "INV_BlueGem", "=q4=Lionheart Pendant", "=ds=#s2#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47072, "inv_helmet_24", "=q4=Lionheart Crown", "=ds=#s1#, #a4#" },
-		{ 47073, "inv_shoulder_01", "=q4=Lionheart Pauldrons", "=ds=#s3#, #a4#" },
-		{ 47074, "INV_Chest_Leather_04", "=q4=Lionheart Chestplate", "=ds=#s5#, #a4#" },
-		{ 47075, "INV_Pants_02", "=q4=Lionheart Leggings", "=ds=#s11#, #a4#" },
-		{ 47076, "INV_Boots_Plate_03", "=q4=Lionheart Sabatons", "=ds=#s12#, #a4#" },
-		{ 47077, "INV_RedGem", "=q4=Lionheart Choker", "=ds=#s2#" },
-	},
-	T35PaladinC = {{
-			{ 47060, "=ds=#s1#, #a4#" },
-			{ 47061, "=ds=#s3#, #a4#" },
-			{ 47062, "=ds=#s5#, #a4#" },
-			{ 47063, "=ds=#s11#, #a4#" },
-			{ 47064, "=ds=#s12#, #a4#" },
-			{ 47065, "=ds=#s2#" },
-		},{
-			{ 47066, "=ds=#s1#, #a4#" },
-			{ 47067, "=ds=#s3#, #a4#" },
-			{ 47068, "=ds=#s5#, #a4#" },
-			{ 47069, "=ds=#s11#, #a4#" },
-			{ 47070, "=ds=#s12#, #a4#" },
-			{ 47071, "=ds=#s2#" },
-		},{
-			{ 47072, "=ds=#s1#, #a4#" },
-			{ 47073, "=ds=#s3#, #a4#" },
-			{ 47074, "=ds=#s5#, #a4#" },
-			{ 47075, "=ds=#s11#, #a4#" },
-			{ 47076, "=ds=#s12#, #a4#" },
-			{ 47077, "=ds=#s2#" },
-		}
+		{ name = BIS["Lionheart Garb"] },
+		{ id = 47060 }, -- Lionheart Headpiece
+		{ id = 47061 }, -- Lionheart Spaulders
+		{ id = 47062 }, -- Lionheart Breastplate
+		{ id = 47063 }, -- Lionheart Legplates
+		{ id = 47064 }, -- Lionheart Boots
+		{ id = 47065 }, -- Lionheart Amulet
+		{},
+		{ name = BIS["Lionheart Chestguard"] },
+		{ id = 47066 }, -- Lionheart Helmet
+		{ id = 47067 }, -- Lionheart Shoulderguards
+		{ id = 47068 }, -- Lionheart Chestguard
+		{ id = 47069 }, -- Lionheart Legguards
+		{ id = 47070 }, -- Lionheart Greaves
+		{ id = 47071 }, -- Lionheart Pendant
+		{},
+		{ name = BIS["Lionheart Chestplate"] },
+		{ id = 47072 }, -- Lionheart Crown
+		{ id = 47073 }, -- Lionheart Pauldrons
+		{ id = 47074 }, -- Lionheart Chestplate
+		{ id = 47075 }, -- Lionheart Leggings
+		{ id = 47076 }, -- Lionheart Sabatons
+		{ id = 47077 }, -- Lionheart Choker
 	},
 	T35Warrior = {
-		{ 47270, "inv_helmet_24", "=q4=Helmet of the Brotherhood", "=ds=#s1#, #a4#" },
-		{ 47271, "inv_shoulder_01", "=q4=Shoulderguards of the Brotherhood", "=ds=#s3#, #a4#" },
-		{ 47272, "INV_Chest_Leather_04", "=q4=Chestguard of the Brotherhood", "=ds=#s5#, #a4#" },
-		{ 47273, "INV_Pants_02", "=q4=Legguards of the Brotherhood", "=ds=#s11#, #a4#" },
-		{ 47274, "INV_Boots_07", "=q4=Greaves of the Brotherhood", "=ds=#s12#, #a4#" },
-		{ 47275, "INV_RedGem", "=q4=Choker of the Brotherhood", "=ds=#s2#" },
-	},
-	T35WarriorC = {{
-			{ 47270, "=ds=#s1#, #a4#" },
-			{ 47271, "=ds=#s3#, #a4#" },
-			{ 47272, "=ds=#s5#, #a4#" },
-			{ 47273, "=ds=#s11#, #a4#" },
-			{ 47274, "=ds=#s12#, #a4#" },
-			{ 47275, "=ds=#s2#" },
-		}
+		{ name = BIS["Garb of the Brotherhood"] },
+		{ id = 47270 }, -- Helmet of the Brotherhood
+		{ id = 47271 }, -- Shoulderguards of the Brotherhood
+		{ id = 47272 }, -- Chestguard of the Brotherhood
+		{ id = 47273 }, -- Legguards of the Brotherhood
+		{ id = 47274 }, -- Greaves of the Brotherhood
+		{ id = 47275 }, -- Choker of the Brotherhood
 	},
 	T3Mage = {
-		{ 0, "Spell_Frost_IceStorm", "=q10=#t3s3#", ""},
-		{ 0, "", "", "" },
-		{ 22498, "INV_Crown_01", "=q4=Frostfire Circlet", "=ds=#s1#, #a1# =q7=#db4#" },
-		{ 22499, "INV_Shoulder_25", "=q4=Frostfire Shoulderpads", "=ds=#s3#, #a1# =q7=#db1#=ds=, =q7=#db2#=ds=, =q7=#db3#" },
-		{ 22496, "INV_Chest_Cloth_43", "=q4=Frostfire Robe", "=ds=#s5#, #a1# =q7=#db13#" },
-		{ 22503, "INV_Bracer_13", "=q4=Frostfire Bindings", "=ds=#s8#, #a1# =q7=#db5#=ds=, =q7=#db6#=ds=, =q7=#db3#" },
-		{ 22501, "INV_Gauntlets_17", "=q4=Frostfire Gloves", "=ds=#s9#, #a1# =q7=#db7#" },
-		{ 22502, "INV_Belt_03", "=q4=Frostfire Belt", "=ds=#s10#, #a1# =q7=#db8#=ds=, =q7=#db9#=ds=, =q7=#db3#" },
-		{ 22497, "INV_Pants_Cloth_05", "=q4=Frostfire Leggings", "=ds=#s11#, #a1# =q7=#db10#" },
-		{ 22500, "INV_Boots_Fabric_01", "=q4=Frostfire Sandals", "=ds=#s12#, #a1# =q7=#db11#=ds=, =q7=#db12#=ds=, =q7=#db3#" },
-		{ 23062, "INV_Jewelry_Ring_51Naxxramas", "=q4=Frostfire Ring", "=ds=#s13# =q7=#db14#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47099, "INV_Crown_01", "=q4=Frostfire Crown", "=ds=#s1#, #a1#" },
-		{ 47100, "INV_Shoulder_25", "=q4=Frostfire Epaulets", "=ds=#s3#, #a1#" },
-		{ 47101, "INV_Chest_Cloth_43", "=q4=Frostfire Vestments", "=ds=#s5#, #a1#" },
-		{ 47102, "INV_Bracer_13", "=q4=Frostfire Bracers", "=ds=#s8#, #a1#" },
-		{ 47103, "INV_Gauntlets_17", "=q4=Frostfire Handwraps", "=ds=#s9#, #a1#" },
-		{ 47104, "INV_Belt_03", "=q4=Frostfire Cord", "=ds=#s10#, #a1#" },
-		{ 47105, "INV_Pants_Cloth_05", "=q4=Frostfire Trousers", "=ds=#s11#, #a1#" },
-		{ 47106, "INV_Boots_Fabric_01", "=q4=Frostfire Slippers", "=ds=#s12#, #a1#" },
-		{ 47107, "INV_Jewelry_Ring_51Naxxramas", "=q4=Frostfire Signet", "=ds=#s13#" },
-	},
-	T3MageC = {{
-			{ 22498, "=ds=#s1#, #a1#" },{ 22499, "=ds=#s3#, #a1#" },{ 22496, "=ds=#s5#, #a1#" },
-			{ 22503, "=ds=#s8#, #a1#" },{ 22501, "=ds=#s9#, #a1#" },{ 22502, "=ds=#s10#, #a1#" },
-			{ 22497, "=ds=#s11#, #a1#" },{ 22500, "=ds=#s12#, #a1#" },{ 23062, "=ds=#s13#" }
-		},{
-			{ 47099, "=ds=#s1#, #a1#" },{ 47100, "=ds=#s3#, #a1#" },{ 47101, "=ds=#s5#, #a1#" },
-			{ 47102, "=ds=#s8#, #a1#" },{ 47103, "=ds=#s9#, #a1#" },{ 47104, "=ds=#s10#, #a1#" },
-			{ 47105, "=ds=#s11#, #a1#" },{ 47106, "=ds=#s12#, #a1#" },{ 47107, "=ds=#s13#" }
-		},
+		{ name = BIS["Frostfire Regalia"], icon = "Spell_Frost_IceStorm" },
+		{ id = 22498 }, -- Frostfire Circlet
+		{ id = 22499 }, -- Frostfire Shoulderpads
+		{ id = 22496 }, -- Frostfire Robe
+		{ id = 22503 }, -- Frostfire Bindings
+		{ id = 22501 }, -- Frostfire Gloves
+		{ id = 22502 }, -- Frostfire Belt
+		{ id = 22497 }, -- Frostfire Leggings
+		{ id = 22500 }, -- Frostfire Sandals
+		{ id = 23062 }, -- Frostfire Ring
+		{},
+		{ id = 47099 }, -- Frostfire Crown
+		{ id = 47100 }, -- Frostfire Epaulets
+		{ id = 47101 }, -- Frostfire Vestments
+		{ id = 47102 }, -- Frostfire Bracers
+		{ id = 47103 }, -- Frostfire Handwraps
+		{ id = 47104 }, -- Frostfire Cord
+		{ id = 47105 }, -- Frostfire Trousers
+		{ id = 47106 }, -- Frostfire Slippers
+		{ id = 47107 }, -- Frostfire Signet
 	},
 	T3Warlock = {
-		{ 0, "Spell_Shadow_CurseOfTounges", "=q11=#t3s8#", "" },
-		{ 0, "", "", "" },
-		{ 22506, "INV_Crown_01", "=q4=Plagueheart Circlet", "=ds=#s1#, #a1# =q7=#db4#" },
-		{ 22507, "INV_Shoulder_25", "=q4=Plagueheart Shoulderpads", "=ds=#s3#, #a1# =q7=#db1#=ds=, =q7=#db2#=ds=, =q7=#db3#" },
-		{ 22504, "INV_Chest_Cloth_43", "=q4=Plagueheart Robe", "=ds=#s5#, #a1# =q7=#db13#" },
-		{ 22511, "INV_Bracer_13", "=q4=Plagueheart Bracers", "=ds=#s8#, #a1# =q7=#db5#=ds=, =q7=#db6#=ds=, =q7=#db3#" },
-		{ 22509, "INV_Gauntlets_17", "=q4=Plagueheart Gloves", "=ds=#s9#, #a1# =q7=#db7#" },
-		{ 22510, "INV_Belt_03", "=q4=Plagueheart Belt", "=ds=#s10#, #a1# =q7=#db8#=ds=, =q7=#db9#=ds=, =q7=#db3#" },
-		{ 22505, "INV_Pants_Cloth_05", "=q4=Plagueheart Leggings", "=ds=#s11#, #a1# =q7=#db10#" },
-		{ 22508, "INV_Boots_Fabric_01", "=q4=Plagueheart Sandals", "=ds=#s12#, #a1# =q7=#db11#=ds=, =q7=#db12#=ds=, =q7=#db3#" },
-		{ 23063, "INV_Jewelry_Ring_51Naxxramas", "=q4=Plagueheart Ring", "=ds=#s13# =q7=#db14#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47297, "INV_Crown_01", "=q4=Plagueheart Crown", "=ds=#s1#, #a1#" },
-		{ 47298, "INV_Shoulder_25", "=q4=Plagueheart Mantle", "=ds=#s3#, #a1#" },
-		{ 47299, "INV_Chest_Cloth_43", "=q4=Plagueheart Raiments", "=ds=#s5#, #a1#" },
-		{ 47300, "INV_Bracer_13", "=q4=Plagueheart Bindings", "=ds=#s8#, #a1#" },
-		{ 47301, "INV_Gauntlets_17", "=q4=Plagueheart Handwraps", "=ds=#s9#, #a1#" },
-		{ 47302, "INV_Belt_03", "=q4=Plagueheart Sash", "=ds=#s10#, #a1#" },
-		{ 47303, "INV_Pants_Cloth_05", "=q4=Plagueheart Leggings", "=ds=#s11#, #a1#" },
-		{ 47304, "INV_Boots_Fabric_01", "=q4=Plagueheart Boots", "=ds=#s12#, #a1#" },
-		{ 47305, "INV_Jewelry_Ring_51Naxxramas", "=q4=Plagueheart Signet", "=ds=#s13#" },
-	},
-	T3WarlockC = {{
-			{ 22506, "=ds=#s1#, #a1#" },{ 22507, "=ds=#s3#, #a1#" },{ 22504, "=ds=#s5#, #a1#" },
-			{ 22511, "=ds=#s8#, #a1#" },{ 22509, "=ds=#s9#, #a1#" },{ 22510, "=ds=#s10#, #a1#" },
-			{ 22505, "=ds=#s11#, #a1#" },{ 22508, "=ds=#s12#, #a1#" },{ 23063, "=ds=#s13#" }
-		},{
-			{ 47297, "=ds=#s1#, #a1#" },{ 47298, "=ds=#s3#, #a1#" },{ 47299, "=ds=#s5#, #a1#" },
-			{ 47300, "=ds=#s8#, #a1#" },{ 47301, "=ds=#s9#, #a1#" },{ 47302, "=ds=#s10#, #a1#" },
-			{ 47303, "=ds=#s11#, #a1#" },{ 47304, "=ds=#s12#, #a1#" },{ 47305, "=ds=#s13#" }
-		},
+		{ name = BIS["Plagueheart Raiment"], icon = "Spell_Shadow_CurseOfTounges" },
+		{ id = 22506 }, -- Plagueheart Circlet
+		{ id = 22507 }, -- Plagueheart Shoulderpads
+		{ id = 22504 }, -- Plagueheart Robe
+		{ id = 22511 }, -- Plagueheart Bracers
+		{ id = 22509 }, -- Plagueheart Gloves
+		{ id = 22510 }, -- Plagueheart Belt
+		{ id = 22505 }, -- Plagueheart Leggings
+		{ id = 22508 }, -- Plagueheart Sandals
+		{ id = 23063 }, -- Plagueheart Ring
+		{},
+		{ id = 47297 }, -- Plagueheart Crown
+		{ id = 47298 }, -- Plagueheart Mantle
+		{ id = 47299 }, -- Plagueheart Raiments
+		{ id = 47300 }, -- Plagueheart Bindings
+		{ id = 47301 }, -- Plagueheart Handwraps
+		{ id = 47302 }, -- Plagueheart Sash
+		{ id = 47303 }, -- Plagueheart Leggings
+		{ id = 47304 }, -- Plagueheart Boots
+		{ id = 47305 }, -- Plagueheart Signet
 	},
 	T3Priest = {
-		{ 0, "Spell_Holy_PowerWordShield", "=q9=#t3s5#", "" },
-		{ 0, "", "", "" },
-		{ 22514, "INV_Crown_01", "=q4=Circlet of Faith", "=ds=#s1#, #a1# =q7=#db4#" },
-		{ 22515, "INV_Shoulder_25", "=q4=Shoulderpads of Faith", "=ds=#s3#, #a1# =q7=#db1#=ds=, =q7=#db2#=ds=, =q7=#db3#" },
-		{ 22512, "INV_Chest_Cloth_43", "=q4=Robe of Faith", "=ds=#s5#, #a1# =q7=#db13#" },
-		{ 22519, "INV_Bracer_13", "=q4=Bindings of Faith", "=ds=#s8#, #a1# =q7=#db5#=ds=, =q7=#db6#=ds=, =q7=#db3#" },
-		{ 22517, "INV_Gauntlets_17", "=q4=Gloves of Faith", "=ds=#s9#, #a1# =q7=#db7#" },
-		{ 22518, "INV_Belt_08", "=q4=Belt of Faith", "=ds=#s10#, #a1# =q7=#db8#=ds=, =q7=#db9#=ds=, =q7=#db3#" },
-		{ 22513, "INV_Pants_Cloth_05", "=q4=Leggings of Faith", "=ds=#s11#, #a1# =q7=#db10#" },
-		{ 22516, "INV_Boots_Fabric_01", "=q4=Sandals of Faith", "=ds=#s12#, #a1# =q7=#db11#=ds=, =q7=#db12#=ds=, =q7=#db3#" },
-		{ 23061, "INV_Jewelry_Ring_51Naxxramas", "=q4=Ring of Faith", "=ds=#s13# =q7=#db14#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47219, "INV_Crown_01", "=q4=Coronet of Faith", "=ds=#s1#, #a1#" },
-		{ 47220, "INV_Shoulder_25", "=q4=Shoulderpads of Faith", "=ds=#s3#, #a1#" },
-		{ 47221, "INV_Chest_Cloth_43", "=q4=Raiments of Faith", "=ds=#s5#, #a1#" },
-		{ 47222, "INV_Bracer_13", "=q4=Bracers of Faith", "=ds=#s8#, #a1#" },
-		{ 47223, "INV_Gauntlets_17", "=q4=Handguards of Faith", "=ds=#s9#, #a1#" },
-		{ 47224, "INV_Belt_08", "=q4=Sash of Faith", "=ds=#s10#, #a1#" },
-		{ 47225, "INV_Pants_Cloth_05", "=q4=Pants of Faith", "=ds=#s11#, #a1#" },
-		{ 47226, "INV_Boots_Fabric_01", "=q4=Sandals of Faith", "=ds=#s12#, #a1#" },
-		{ 47227, "INV_Jewelry_Ring_51Naxxramas", "=q4=Ring of Faith", "=ds=#s13#" },
-	},
-	T3PriestC = {{
-			{ 22514, "=ds=#s1#, #a1#" },{ 22515, "=ds=#s3#, #a1#" },{ 22512, "=ds=#s5#, #a1#" },
-			{ 22519, "=ds=#s8#, #a1#" },{ 22517, "=ds=#s9#, #a1#" },{ 22518, "=ds=#s10#, #a1#" },
-			{ 22513, "=ds=#s11#, #a1#" },{ 22516, "=ds=#s12#, #a1#" },{ 23061, "=ds=#s13#" }
-		},{
-			{ 47219, "=ds=#s1#, #a1#" },{ 47220, "=ds=#s3#, #a1#" },{ 47221, "=ds=#s5#, #a1#" },
-			{ 47222, "=ds=#s8#, #a1#" },{ 47223, "=ds=#s9#, #a1#" },{ 47224, "=ds=#s10#, #a1#" },
-			{ 47225, "=ds=#s11#, #a1#" },{ 47226, "=ds=#s12#, #a1#" },{ 47227, "=ds=#s13#" }
-		},
+		{ name = BIS["Vestments of Faith"], icon = "Spell_Holy_PowerWordShield" },
+		{ id = 22514 }, -- Circlet of Faith
+		{ id = 22515 }, -- Shoulderpads of Faith
+		{ id = 22512 }, -- Robe of Faith
+		{ id = 22519 }, -- Bindings of Faith
+		{ id = 22517 }, -- Gloves of Faith
+		{ id = 22518 }, -- Belt of Faith
+		{ id = 22513 }, -- Leggings of Faith
+		{ id = 22516 }, -- Sandals of Faith
+		{ id = 23061 }, -- Ring of Faith
+		{},
+		{ id = 47219 }, -- Coronet of Faith
+		{ id = 47220 }, -- Shoulderpads of Faith
+		{ id = 47221 }, -- Raiments of Faith
+		{ id = 47222 }, -- Bracers of Faith
+		{ id = 47223 }, -- Handguards of Faith
+		{ id = 47224 }, -- Sash of Faith
+		{ id = 47225 }, -- Pants of Faith
+		{ id = 47226 }, -- Sandals of Faith
+		{ id = 47227 }, -- Ring of Faith
 	},
 	T3Rogue = {
-		{ 0, "Ability_BackStab", "=q12=#t3s6#", "" },
-		{ 0, "", "", "" },
-		{ 22478, "INV_Helmet_58", "=q4=Bonescythe Helmet", "=ds=#s1#, #a2# =q7=#db4#" },
-		{ 22479, "INV_Shoulder_29", "=q4=Bonescythe Pauldrons", "=ds=#s3#, #a2# =q7=#db1#=ds=, =q7=#db2#=ds=, =q7=#db3#" },
-		{ 22476, "INV_Chest_Plate02", "=q4=Bonescythe Breastplate", "=ds=#s5#, #a2# =q7=#db13#" },
-		{ 22483, "INV_Bracer_15", "=q4=Bonescythe Bracers", "=ds=#s8#, #a2# =q7=#db5#=ds=, =q7=#db6#=ds=, =q7=#db3#" },
-		{ 22481, "INV_Gauntlets_28", "=q4=Bonescythe Gauntlets", "=ds=#s9#, #a2# =q7=#db7#" },
-		{ 22482, "INV_Belt_27", "=q4=Bonescythe Waistguard", "=ds=#s10#, #a2# =q7=#db8#=ds=, =q7=#db9#=ds=, =q7=#db3#" },
-		{ 22477, "INV_Pants_Plate_05", "=q4=Bonescythe Legplates", "=ds=#s11#, #a2# =q7=#db10#" },
-		{ 22480, "INV_Boots_Plate_06", "=q4=Bonescythe Sabatons", "=ds=#s12#, #a2# =q7=#db11#=ds=, =q7=#db12#=ds=, =q7=#db3#" },
-		{ 23060, "INV_Jewelry_Ring_51Naxxramas", "=q4=Bonescythe Ring", "=ds=#s13# =q7=#db14#" }
-	},
-	T3RogueC = {{
-			{ 22478, "=ds=#s1#, #a2#" },{ 22479, "=ds=#s3#, #a2#" },{ 22476, "=ds=#s5#, #a2#" },
-			{ 22483, "=ds=#s8#, #a2#" },{ 22481, "=ds=#s9#, #a2#" },{ 22482, "=ds=#s10#, #a2#" },
-			{ 22477, "=ds=#s11#, #a2#" },{ 22480, "=ds=#s12#, #a2#" },{ 23060, "=ds=#s13#" }
-		},
+		{ name = BIS["Bonescythe Armor"], icon = "Ability_BackStab" },
+		{ id = 22478 }, -- Bonescythe Helmet
+		{ id = 22479 }, -- Bonescythe Pauldrons
+		{ id = 22476 }, -- Bonescythe Breastplate
+		{ id = 22483 }, -- Bonescythe Bracers
+		{ id = 22481 }, -- Bonescythe Gauntlets
+		{ id = 22482 }, -- Bonescythe Waistguard
+		{ id = 22477 }, -- Bonescythe Legplates
+		{ id = 22480 }, -- Bonescythe Sabatons
+		{ id = 23060 }, -- Bonescythe Ring
 	},
 	T3Druid = {
-		{ 22490, "INV_Helmet_15", "=q4=Dreamwalker Headpiece", "=ds=#s1#, #a2# =q7=#db4#" },
-		{ 22491, "INV_Shoulder_14", "=q4=Dreamwalker Spaulders", "=ds=#s3#, #a2# =q7=#db1#=ds=, =q7=#db2#=ds=, =q7=#db3#" },
-		{ 22488, "INV_Chest_Chain_15", "=q4=Dreamwalker Tunic", "=ds=#s5#, #a2# =q7=#db13#" },
-		{ 22495, "INV_Bracer_02", "=q4=Dreamwalker Bracers", "=ds=#s8#, #a2# =q7=#db5#=ds=, =q7=#db6#=ds=, =q7=#db3#" },
-		{ 22493, "INV_Gauntlets_25", "=q4=Dreamwalker Handguards", "=ds=#s9#, #a2# =q7=#db7#" },
-		{ 22494, "INV_Belt_22", "=q4=Dreamwalker Belt", "=ds=#s10#, #a2# =q7=#db8#=ds=, =q7=#db9#=ds=, =q7=#db3#" },
-		{ 22489, "INV_Pants_Mail_15", "=q4=Dreamwalker Legguards", "=ds=#s11#, #a2# =q7=#db10#" },
-		{ 22492, "INV_Boots_Chain_05", "=q4=Dreamwalker Boots", "=ds=#s12#, #a2# =q7=#db11#=ds=, =q7=#db12#=ds=, =q7=#db3#" },
-		{ 23064, "INV_Jewelry_Ring_51Naxxramas", "=q4=Ring of the Dreamwalker", "=ds=#s13# =q7=#db14#" },
-		{ 0, "", "", "" },
-		{ 47372, "INV_Helmet_15", "=q4=Dreamwalker Circlet", "=ds=#s1#, #a2#" },
-		{ 47373, "INV_Shoulder_14", "=q4=Dreamwalker Mantle", "=ds=#s3#, #a2#" },
-		{ 47374, "INV_Chest_Chain_15", "=q4=Dreamwalker Vest", "=ds=#s5#, #a2#" },
-		{ 47375, "INV_Bracer_02", "=q4=Dreamwalker Wristbands", "=ds=#s8#, #a2#" },
-		{ 47376, "INV_Gauntlets_25", "=q4=Dreamwalker Handwraps", "=ds=#s9#, #a2#" },
-		{ 47381, "INV_Helmet_15", "=q4=Dreamwalker Helmet", "=ds=#s1#, #a2#" },
-		{ 47382, "INV_Shoulder_14", "=q4=Dreamwalker Shoulderpads", "=ds=#s3#, #a2#" },
-		{ 47383, "INV_Chest_Chain_15", "=q4=Dreamwalker Raiments", "=ds=#s5#, #a2#" },
-		{ 47384, "INV_Bracer_02", "=q4=Dreamwalker Wristguards", "=ds=#s8#, #a2#" },
-		{ 47385, "INV_Gauntlets_25", "=q4=Dreamwalker Handwraps", "=ds=#s9#, #a2#" },
-		{ 47386, "INV_Belt_22", "=q4=Dreamwalker Girdle", "=ds=#s10#, #a2#" },
-		{ 47387, "INV_Pants_Mail_15", "=q4=Dreamwalker Pants", "=ds=#s11#, #a2#" },
-		{ 47388, "INV_Boots_Chain_05", "=q4=Dreamwalker Treads", "=ds=#s12#, #a2#" },
-		{ 47389, "INV_Jewelry_Ring_51Naxxramas", "=q4=Band of the Dreamwalker", "=ds=#s13#" },
-		{ 0, "", "", "" },
-		{ 47377, "INV_Belt_22", "=q4=Dreamwalker Sash", "=ds=#s10#, #a2#" },
-		{ 47378, "INV_Pants_Mail_15", "=q4=Dreamwalker Trousers", "=ds=#s11#, #a2#" },
-		{ 47379, "INV_Boots_Chain_05", "=q4=Dreamwalker Slippers", "=ds=#s12#, #a2#" },
-		{ 47380, "INV_Jewelry_Ring_51Naxxramas", "=q4=Signet of the Dreamwalker", "=ds=#s13#" },
-	},
-	T3DruidC = {{
-			{ 22490, "=ds=#s1#, #a2#" },{ 22491, "=ds=#s3#, #a2#" },{ 22488, "=ds=#s5#, #a2#" },
-			{ 22495, "=ds=#s8#, #a2#" },{ 22493, "=ds=#s9#, #a2#" },{ 22494, "=ds=#s10#, #a2#" },
-			{ 22489, "=ds=#s11#, #a2#" },{ 22492, "=ds=#s12#, #a2#" },{ 23064, "=ds=#s13#" }
-		},{
-			{ 47372, "=ds=#s1#, #a2#" },{ 47373, "=ds=#s3#, #a2#" },{ 47374, "=ds=#s5#, #a2#" },
-			{ 47375, "=ds=#s8#, #a2#" },{ 47376, "=ds=#s9#, #a2#" },{ 47377, "=ds=#s10#, #a2#" },
-			{ 47378, "=ds=#s11#, #a2#" },{ 47379, "=ds=#s12#, #a2#" },{ 47380, "=ds=#s13#" }
-		},{
-			{ 47381, "=ds=#s1#, #a2#" },{ 47382, "=ds=#s3#, #a2#" },{ 47383, "=ds=#s5#, #a2#" },
-			{ 47384, "=ds=#s8#, #a2#" },{ 47385, "=ds=#s9#, #a2#" },{ 47386, "=ds=#s10#, #a2#" },
-			{ 47387, "=ds=#s11#, #a2#" },{ 47388, "=ds=#s12#, #a2#" },{ 47389, "=ds=#s13#" }
-		},
+		{ name = BIS["Dreamwalker Raiment"] },
+		{ id = 22490 }, -- Dreamwalker Headpiece
+		{ id = 22491 }, -- Dreamwalker Spaulders
+		{ id = 22488 }, -- Dreamwalker Tunic
+		{ id = 22495 }, -- Dreamwalker Bracers
+		{ id = 22493 }, -- Dreamwalker Handguards
+		{ id = 22494 }, -- Dreamwalker Belt
+		{ id = 22489 }, -- Dreamwalker Legguards
+		{ id = 22492 }, -- Dreamwalker Boots
+		{ id = 23064 }, -- Ring of the Dreamwalker
+		{},
+		{ id = 47372 }, -- Dreamwalker Circlet
+		{ id = 47373 }, -- Dreamwalker Mantle
+		{ id = 47374 }, -- Dreamwalker Vest
+		{ id = 47375 }, -- Dreamwalker Wristbands
+		{ id = 47376 }, -- Dreamwalker Handwraps
+		{ id = 47381 }, -- Dreamwalker Helmet
+		{ id = 47382 }, -- Dreamwalker Shoulderpads
+		{ id = 47383 }, -- Dreamwalker Raiments
+		{ id = 47384 }, -- Dreamwalker Wristguards
+		{ id = 47385 }, -- Dreamwalker Handwraps
+		{ id = 47386 }, -- Dreamwalker Girdle
+		{ id = 47387 }, -- Dreamwalker Pants
+		{ id = 47388 }, -- Dreamwalker Treads
+		{ id = 47389 }, -- Band of the Dreamwalker
+		{},
+		{ id = 47377 }, -- Dreamwalker Sash
+		{ id = 47378 }, -- Dreamwalker Trousers
+		{ id = 47379 }, -- Dreamwalker Slippers
+		{ id = 47380 }, -- Signet of the Dreamwalker
 	},
 	T3Hunter = {
-		{ 0, "Ability_Hunter_RunningShot", "=q14=#t3s2#", "" },
-		{ 0, "", "", "" },
-		{ 22438, "INV_Helmet_15", "=q4=Cryptstalker Headpiece", "=ds=#s1#, #a3# =q7=#db4#" },
-		{ 22439, "INV_Shoulder_14", "=q4=Cryptstalker Spaulders", "=ds=#s3#, #a3# =q7=#db1#=ds=, =q7=#db2#=ds=, =q7=#db3#" },
-		{ 22436, "INV_Chest_Chain_15", "=q4=Cryptstalker Tunic", "=ds=#s5#, #a3# =q7=#db13#" },
-		{ 22443, "INV_Bracer_02", "=q4=Cryptstalker Wristguards", "=ds=#s8#, #a3# =q7=#db5#=ds=, =q7=#db6#=ds=, =q7=#db3#" },
-		{ 22441, "INV_Gauntlets_25", "=q4=Cryptstalker Handguards", "=ds=#s9#, #a3# =q7=#db7#" },
-		{ 22442, "INV_Belt_22", "=q4=Cryptstalker Girdle", "=ds=#s10#, #a3# =q7=#db8#=ds=, =q7=#db9#=ds=, =q7=#db3#" },
-		{ 22437, "INV_Pants_Mail_15", "=q4=Cryptstalker Legguards", "=ds=#s11#, #a3# =q7=#db10#" },
-		{ 22440, "INV_Boots_Chain_05", "=q4=Cryptstalker Boots", "=ds=#s12#, #a3# =q7=#db11#=ds=, =q7=#db12#=ds=, =q7=#db3#" },
-		{ 23067, "INV_Jewelry_Ring_51Naxxramas", "=q4=Ring of the Cryptstalker", "=ds=#s13# =q7=#db14#" },
-	},
-	T3HunterC = {{
-			{ 22438, "=ds=#s1#, #a3#" },{ 22439, "=ds=#s3#, #a3#" },{ 22436, "=ds=#s5#, #a3#" },
-			{ 22443, "=ds=#s8#, #a3#" },{ 22441, "=ds=#s9#, #a3#" },{ 22442, "=ds=#s10#, #a3#" },
-			{ 22437, "=ds=#s11#, #a3#" },{ 22440, "=ds=#s12#, #a3#" },{ 23067, "=ds=#s13#" }
-		},
+		{ name = BIS["Cryptstalker Armor"], icon = "Ability_Hunter_RunningShot" },
+		{ id = 22438 }, -- Cryptstalker Headpiece
+		{ id = 22439 }, -- Cryptstalker Spaulders
+		{ id = 22436 }, -- Cryptstalker Tunic
+		{ id = 22443 }, -- Cryptstalker Wristguards
+		{ id = 22441 }, -- Cryptstalker Handguards
+		{ id = 22442 }, -- Cryptstalker Girdle
+		{ id = 22437 }, -- Cryptstalker Legguards
+		{ id = 22440 }, -- Cryptstalker Boots
+		{ id = 23067 }, -- Ring of the Cryptstalker
 	},
 	T3Shaman = {
-		{ 22466, "INV_Helmet_15", "=q4=Earthshatter Headpiece", "=ds=#s1#, #a3# =q7=#db4#" },
-		{ 22467, "INV_Shoulder_14", "=q4=Earthshatter Spaulders", "=ds=#s3#, #a3# =q7=#db1#=ds=, =q7=#db2#=ds=, =q7=#db3#" },
-		{ 22464, "INV_Chest_Chain_15", "=q4=Earthshatter Tunic", "=ds=#s5#, #a3# =q7=#db13#" },
-		{ 22471, "INV_Bracer_02", "=q4=Earthshatter Wristguards", "=ds=#s8#, #a3# =q7=#db5#=ds=, =q7=#db6#=ds=, =q7=#db3#" },
-		{ 22469, "INV_Gauntlets_25", "=q4=Earthshatter Handguards", "=ds=#s9#, #a3# =q7=#db7#" },
-		{ 22470, "INV_Belt_22", "=q4=Earthshatter Girdle", "=ds=#s10#, #a3# =q7=#db8#=ds=, =q7=#db9#=ds=, =q7=#db3#" },
-		{ 22465, "INV_Pants_Mail_15", "=q4=Earthshatter Legguards", "=ds=#s11#, #a3# =q7=#db10#" },
-		{ 22468, "INV_Boots_Chain_05", "=q4=Earthshatter Boots", "=ds=#s12#, #a3# =q7=#db11#=ds=, =q7=#db12#=ds=, =q7=#db3#" },
-		{ 23065, "INV_Jewelry_Ring_51Naxxramas", "=q4=Ring of the Earthshatterer", "=ds=#s13# =q7=#db14#" },
-		{ 0, "", "", "" },
-		{ 47162, "INV_Helmet_15", "=q4=Earthshatter Crown", "=ds=#s1#, #a3#" },
-		{ 47163, "INV_Shoulder_14", "=q4=Earthshatter Pauldrons", "=ds=#s3#, #a3#" },
-		{ 47164, "INV_Chest_Chain_15", "=q4=Earthshatter Breastplate", "=ds=#s5#, #a3#" },
-		{ 47165, "INV_Bracer_02", "=q4=Earthshatter Bracelets", "=ds=#s8#, #a3#" },
-		{ 47166, "INV_Gauntlets_25", "=q4=Earthshatter Fists", "=ds=#s9#, #a3#" },
-		{ 47171, "INV_Helmet_15", "=q4=Earthshatter Helmet", "=ds=#s1#, #a3#" },
-		{ 47172, "INV_Shoulder_14", "=q4=Earthshatter Epaulets", "=ds=#s3#, #a3#" },
-		{ 47173, "INV_Chest_Chain_15", "=q4=Earthshatter Raiments", "=ds=#s5#, #a3#" },
-		{ 47174, "INV_Bracer_02", "=q4=Earthshatter Bindings", "=ds=#s8#, #a3#" },
-		{ 47175, "INV_Gauntlets_25", "=q4=Earthshatter Gauntlets", "=ds=#s9#, #a3#" },
-		{ 47176, "INV_Belt_22", "=q4=Earthshatter Sash", "=ds=#s10#, #a3#" },
-		{ 47177, "INV_Pants_Mail_15", "=q4=Earthshatter Legplates", "=ds=#s11#, #a3#" },
-		{ 47178, "INV_Boots_Chain_05", "=q4=Earthshatter Greaves", "=ds=#s12#, #a3#" },
-		{ 47179, "INV_Jewelry_Ring_51Naxxramas", "=q4=Loop of the Earthshatterer", "=ds=#s13#" },
-		{ 0, "", "", "" },
-		{ 47167, "INV_Belt_22", "=q4=Earthshatter Girdle", "=ds=#s10#, #a3#" },
-		{ 47168, "INV_Pants_Mail_15", "=q4=Earthshatter Leggings", "=ds=#s11#, #a3#" },
-		{ 47169, "INV_Boots_Chain_05", "=q4=Earthshatter Sabatons", "=ds=#s12#, #a3#" },
-		{ 47170, "INV_Jewelry_Ring_51Naxxramas", "=q4=Signet of the Earthshatterer", "=ds=#s13#" },
-	},
-	T3ShamanC = {{
-			{ 22466, "=ds=#s1#, #a3#" },{ 22467, "=ds=#s3#, #a3#" },{ 22464, "=ds=#s5#, #a3#" },
-			{ 22471, "=ds=#s8#, #a3#" },{ 22469, "=ds=#s9#, #a3#" },{ 22470, "=ds=#s10#, #a3#" },
-			{ 22465, "=ds=#s11#, #a3#" },{ 22468, "=ds=#s12#, #a3#" },{ 23065, "=ds=#s13#" }
-		},{
-			{ 47162, "=ds=#s1#, #a3#" },{ 47163, "=ds=#s3#, #a3#" },{ 47164, "=ds=#s5#, #a3#" },
-			{ 47165, "=ds=#s8#, #a3#" },{ 47166, "=ds=#s9#, #a3#" },{ 47167, "=ds=#s10#, #a3#" },
-			{ 47168, "=ds=#s11#, #a3#" },{ 47169, "=ds=#s12#, #a3#" },{ 47170, "=ds=#s13#" }
-		},{
-			{ 47171, "=ds=#s1#, #a3#" },{ 47172, "=ds=#s3#, #a3#" },{ 47173, "=ds=#s5#, #a3#" },
-			{ 47174, "=ds=#s8#, #a3#" },{ 47175, "=ds=#s9#, #a3#" },{ 47176, "=ds=#s10#, #a3#" },
-			{ 47177, "=ds=#s11#, #a3#" },{ 47178, "=ds=#s12#, #a3#" },{ 47179, "=ds=#s13#" }
-		},
+		{ name = BIS["The Earthshatterer"], icon = "INV_Helmet_15" },
+		{ id = 22466 }, -- Earthshatter Headpiece
+		{ id = 22467 }, -- Earthshatter Spaulders
+		{ id = 22464 }, -- Earthshatter Tunic
+		{ id = 22471 }, -- Earthshatter Wristguards
+		{ id = 22469 }, -- Earthshatter Handguards
+		{ id = 22470 }, -- Earthshatter Girdle
+		{ id = 22465 }, -- Earthshatter Legguards
+		{ id = 22468 }, -- Earthshatter Boots
+		{ id = 23065 }, -- Ring of the Earthshatterer
+		{},
+		{ id = 47162 }, -- Earthshatter Crown
+		{ id = 47163 }, -- Earthshatter Pauldrons
+		{ id = 47164 }, -- Earthshatter Breastplate
+		{ id = 47165 }, -- Earthshatter Bracelets
+		{ id = 47166 }, -- Earthshatter Fists
+		{ id = 47171 }, -- Earthshatter Helmet
+		{ id = 47172 }, -- Earthshatter Epaulets
+		{ id = 47173 }, -- Earthshatter Raiments
+		{ id = 47174 }, -- Earthshatter Bindings
+		{ id = 47175 }, -- Earthshatter Gauntlets
+		{ id = 47176 }, -- Earthshatter Sash
+		{ id = 47177 }, -- Earthshatter Legplates
+		{ id = 47178 }, -- Earthshatter Greaves
+		{ id = 47179 }, -- Loop of the Earthshatterer
+		{},
+		{ id = 47167 }, -- Earthshatter Girdle
+		{ id = 47168 }, -- Earthshatter Leggings
+		{ id = 47169 }, -- Earthshatter Sabatons
+		{ id = 47170 }, -- Signet of the Earthshatterer
 	},
 	T3Paladin = {
-		{ 22428, "INV_Helmet_15", "=q4=Redemption Helm", "=ds=#s1#, #a4# =q7=#db4#" },
-		{ 22429, "INV_Shoulder_14", "=q4=Redemption Spaulders", "=ds=#s3#, #a4# =q7=#db1#=ds=, =q7=#db2#=ds=, =q7=#db3#" },
-		{ 22425, "INV_Chest_Chain_15", "=q4=Redemption Tunic", "=ds=#s5#, #a4# =q7=#db13#" },
-		{ 22424, "INV_Bracer_02", "=q4=Redemption Bracers", "=ds=#s8#, #a4# =q7=#db5#=ds=, =q7=#db6#=ds=, =q7=#db3#" },
-		{ 22426, "INV_Gauntlets_25", "=q4=Redemption Gloves", "=ds=#s9#, #a4# =q7=#db7#" },
-		{ 22431, "INV_Belt_22", "=q4=Redemption Belt", "=ds=#s10#, #a4# =q7=#db8#=ds=, =q7=#db9#=ds=, =q7=#db3#" },
-		{ 22427, "INV_Pants_Mail_15", "=q4=Redemption Pants", "=ds=#s11#, #a4# =q7=#db10#" },
-		{ 22430, "INV_Boots_Chain_05", "=q4=Redemption Boots", "=ds=#s12#, #a4# =q7=#db11#=ds=, =q7=#db12#=ds=, =q7=#db3#" },
-		{ 23066, "INV_Jewelry_Ring_51Naxxramas", "=q4=Ring of Redemption", "=ds=#s13# =q7=#db14#" },
-		{ 0, "", "", "" },
-		{ 47042, "INV_Helmet_15", "=q4=Redemption Helmet", "=ds=#s1#, #a4#" },
-		{ 47043, "INV_Shoulder_14", "=q4=Redemption Shoulderguards", "=ds=#s3#, #a4#" },
-		{ 47044, "INV_Chest_Chain_15", "=q4=Redemption Chestguard", "=ds=#s5#, #a4#" },
-		{ 47045, "INV_Bracer_02", "=q4=Redemption Wristguards", "=ds=#s8#, #a4#" },
-		{ 47046, "INV_Gauntlets_25", "=q4=Redemption Handguards", "=ds=#s9#, #a4#" },
-		{ 47051, "INV_Helmet_15", "=q4=Redemption Crown", "=ds=#s1#, #a4#" },
-		{ 47052, "INV_Shoulder_14", "=q4=Redemption Pauldrons", "=ds=#s3#, #a4#" },
-		{ 47053, "INV_Chest_Chain_15", "=q4=Redemption Chestplate", "=ds=#s5#, #a4#" },
-		{ 47054, "INV_Bracer_02", "=q4=Redemption Bindings", "=ds=#s8#, #a4#" },
-		{ 47055, "INV_Gauntlets_25", "=q4=Redemption Gauntlets", "=ds=#s9#, #a4#" },
-		{ 47056, "INV_Belt_22", "=q4=Redemption Girdle", "=ds=#s10#, #a4#" },
-		{ 47057, "INV_Pants_Mail_15", "=q4=Redemption Leggings", "=ds=#s11#, #a4#" },
-		{ 47058, "INV_Boots_Chain_05", "=q4=Redemption Sabatons", "=ds=#s12#, #a4#" },
-		{ 47059, "INV_Jewelry_Ring_51Naxxramas", "=q4=Band of Redemption", "=ds=#s13#" },
-		{ 0, "", "", "" },
-		{ 47047, "INV_Belt_22", "=q4=Redemption Waistguard", "=ds=#s10#, #a4#" },
-		{ 47048, "INV_Pants_Mail_15", "=q4=Redemption Legguards", "=ds=#s11#, #a4#" },
-		{ 47049, "INV_Boots_Chain_05", "=q4=Redemption Greaves", "=ds=#s12#, #a4#" },
-		{ 47050, "INV_Jewelry_Ring_51Naxxramas", "=q4=Signet of Redemption", "=ds=#s13#" },
-	},
-	T3PaladinC = {{
-			{ 22428, "=ds=#s1#, #a4#" },{ 22429, "=ds=#s3#, #a4#" },{ 22425, "=ds=#s5#, #a4#" },
-			{ 22424, "=ds=#s8#, #a4#" },{ 22426, "=ds=#s9#, #a4#" },{ 22431, "=ds=#s10#, #a4#" },
-			{ 22427, "=ds=#s11#, #a4#" },{ 22430, "=ds=#s12#, #a4#" },{ 23066, "=ds=#s13#" }
-		},{
-			{ 47042, "=ds=#s1#, #a4#" },{ 47043, "=ds=#s3#, #a4#" },{ 47044, "=ds=#s5#, #a4#" },
-			{ 47045, "=ds=#s8#, #a4#" },{ 47046, "=ds=#s9#, #a4#" },{ 47047, "=ds=#s10#, #a4#" },
-			{ 47048, "=ds=#s11#, #a4#" },{ 47049, "=ds=#s12#, #a4#" },{ 47050, "=ds=#s13#" }
-		},{
-			{ 47051, "=ds=#s1#, #a4#" },{ 47052, "=ds=#s3#, #a4#" },{ 47053, "=ds=#s5#, #a4#" },
-			{ 47054, "=ds=#s8#, #a4#" },{ 47055, "=ds=#s9#, #a4#" },{ 47056, "=ds=#s10#, #a4#" },
-			{ 47057, "=ds=#s11#, #a4#" },{ 47058, "=ds=#s12#, #a4#" },{ 47059, "=ds=#s13#" },
-		}
+		{ name = BIS["Redemption Armor"] },
+		{ id = 22428 }, -- Redemption Helm
+		{ id = 22429 }, -- Redemption Spaulders
+		{ id = 22425 }, -- Redemption Tunic
+		{ id = 22424 }, -- Redemption Bracers
+		{ id = 22426 }, -- Redemption Gloves
+		{ id = 22431 }, -- Redemption Belt
+		{ id = 22427 }, -- Redemption Pants
+		{ id = 22430 }, -- Redemption Boots
+		{ id = 23066 }, -- Ring of Redemption
+		{},
+		{ id = 47042 }, -- Redemption Helmet
+		{ id = 47043 }, -- Redemption Shoulderguards
+		{ id = 47044 }, -- Redemption Chestguard
+		{ id = 47045 }, -- Redemption Wristguards
+		{ id = 47046 }, -- Redemption Handguards
+		{ id = 47051 }, -- Redemption Crown
+		{ id = 47052 }, -- Redemption Pauldrons
+		{ id = 47053 }, -- Redemption Chestplate
+		{ id = 47054 }, -- Redemption Bindings
+		{ id = 47055 }, -- Redemption Gauntlets
+		{ id = 47056 }, -- Redemption Girdle
+		{ id = 47057 }, -- Redemption Leggings
+		{ id = 47058 }, -- Redemption Sabatons
+		{ id = 47059 }, -- Band of Redemption
+		{},
+		{ id = 47047 }, -- Redemption Waistguard
+		{ id = 47048 }, -- Redemption Legguards
+		{ id = 47049 }, -- Redemption Greaves
+		{ id = 47050 }, -- Signet of Redemption
 	},
 	T3Warrior = {
-		{ 0, "INV_Shield_05", "=q17=#t3s9#", "" },
-		{ 0, "", "", "" },
-		{ 22418, "INV_Helmet_58", "=q4=Dreadnaught Helmet", "=ds=#s1#, #a4# =q7=#db4#" },
-		{ 22419, "INV_Shoulder_29", "=q4=Dreadnaught Pauldrons", "=ds=#s3#, #a4# =q7=#db1#=ds=, =q7=#db2#=ds=, =q7=#db3#" },
-		{ 22416, "INV_Chest_Plate02", "=q4=Dreadnaught Breastplate", "=ds=#s5#, #a4# =q7=#db13#" },
-		{ 22423, "INV_Bracer_15", "=q4=Dreadnaught Bracers", "=ds=#s8#, #a4# =q7=#db5#=ds=, =q7=#db6#=ds=, =q7=#db3#" },
-		{ 22421, "INV_Gauntlets_28", "=q4=Dreadnaught Gauntlets", "=ds=#s9#, #a4# =q7=#db7#" },
-		{ 22422, "INV_Belt_27", "=q4=Dreadnaught Waistguard", "=ds=#s10#, #a4# =q7=#db8#=ds=, =q7=#db9#=ds=, =q7=#db3#" },
-		{ 22417, "INV_Pants_Plate_05", "=q4=Dreadnaught Legplates", "=ds=#s11#, #a4# =q7=#db10#" },
-		{ 22420, "INV_Boots_Plate_06", "=q4=Dreadnaught Sabatons", "=ds=#s12#, #a4# =q7=#db11#=ds=, =q7=#db12#=ds=, =q7=#db3#" },
-		{ 23059, "INV_Jewelry_Ring_51Naxxramas", "=q4=Ring of the Dreadnaught", "=ds=#s13# =q7=#db14#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47261, "INV_Helmet_58", "=q4=Dreadnaught Crown", "=ds=#s1#, #a4#" },
-		{ 47262, "INV_Shoulder_29", "=q4=Dreadnaught Pauldrons", "=ds=#s3#, #a4#" },
-		{ 47263, "INV_Chest_Plate02", "=q4=Dreadnaught Chestplate", "=ds=#s5#, #a4#" },
-		{ 47264, "INV_Bracer_15", "=q4=Dreadnaught Bindings", "=ds=#s8#, #a4#" },
-		{ 47265, "INV_Gauntlets_28", "=q4=Dreadnaught Gloves", "=ds=#s9#, #a4#" },
-		{ 47266, "INV_Belt_27", "=q4=Dreadnaught Girdle", "=ds=#s10#, #a4#" },
-		{ 47267, "INV_Pants_Plate_05", "=q4=Dreadnaught Leggings", "=ds=#s11#, #a4#" },
-		{ 47268, "INV_Boots_Plate_06", "=q4=Dreadnaught Sabatons", "=ds=#s12#, #a4#" },
-		{ 47269, "INV_Jewelry_Ring_51Naxxramas", "=q4=Ring of the Dreadnaught", "=ds=#s13#" },
-	},
-	T3WarriorC = {{
-			{ 22418, "=ds=#s1#, #a4#" },{ 22419, "=ds=#s3#, #a4#" },{ 22416, "=ds=#s5#, #a4#" },
-			{ 22423, "=ds=#s8#, #a4#" },{ 22421, "=ds=#s9#, #a4#" },{ 22422, "=ds=#s10#, #a4#" },
-			{ 22417, "=ds=#s11#, #a4#" },{ 22420, "=ds=#s12#, #a4#" },{ 23059, "=ds=#s13#" }
-		},{
-			{ 47261, "=ds=#s1#, #a4#" },{ 47262, "=ds=#s3#, #a4#" },{ 47263, "=ds=#s5#, #a4#" },
-			{ 47264, "=ds=#s8#, #a4#" },{ 47265, "=ds=#s9#, #a4#" },{ 47266, "=ds=#s10#, #a4#" },
-			{ 47267, "=ds=#s11#, #a4#" },{ 47268, "=ds=#s12#, #a4#" },{ 47269, "=ds=#s13#" }
-		},
+		{ name = BIS["Dreadnaught's Battlegear"], icon = "INV_Shield_05" },
+		{ id = 22418 }, -- Dreadnaught Helmet
+		{ id = 22419 }, -- Dreadnaught Pauldrons
+		{ id = 22416 }, -- Dreadnaught Breastplate
+		{ id = 22423 }, -- Dreadnaught Bracers
+		{ id = 22421 }, -- Dreadnaught Gauntlets
+		{ id = 22422 }, -- Dreadnaught Waistguard
+		{ id = 22417 }, -- Dreadnaught Legplates
+		{ id = 22420 }, -- Dreadnaught Sabatons
+		{ id = 23059 }, -- Ring of the Dreadnaught
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 47261 }, -- Dreadnaught Crown
+		{ id = 47262 }, -- Dreadnaught Pauldrons
+		{ id = 47263 }, -- Dreadnaught Chestplate
+		{ id = 47264 }, -- Dreadnaught Bindings
+		{ id = 47265 }, -- Dreadnaught Gloves
+		{ id = 47266 }, -- Dreadnaught Girdle
+		{ id = 47267 }, -- Dreadnaught Leggings
+		{ id = 47268 }, -- Dreadnaught Sabatons
+		{ id = 47269 }, -- Ring of the Dreadnaught
 	},
 	T2Mage = {
-		{ 0, "Spell_Frost_IceStorm", "=q10=#t2s3#", "" },
-		{ 0, "", "", "" },
-		{ 16914, "INV_Helmet_70", "=q4=Netherwind Crown", "=ds=#s1#, #a1# =q7=#db15#" },
-		{ 16917, "INV_Shoulder_32", "=q4=Netherwind Mantle", "=ds=#s3#, #a1# =q7=#db23#" },
-		{ 16916, "INV_Chest_Cloth_03", "=q4=Netherwind Robes", "=ds=#s5#, #a1# =q7=#db24#" },
-		{ 16918, "INV_Bracer_09", "=q4=Netherwind Bindings", "=ds=#s8#, #a1# =q7=#db17#" },
-		{ 16913, "INV_Gauntlets_14", "=q4=Netherwind Gloves", "=ds=#s10#, #a1# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-		{ 16818, "INV_Belt_22", "=q4=Netherwind Belt", "=ds=#s10#, #a1# =q7=#db18#" },
-		{ 16915, "INV_Pants_08", "=q4=Netherwind Pants", "=ds=#s11#, #a1# =q7=#db16#" },
-		{ 16912, "INV_Boots_07", "=q4=Netherwind Boots", "=ds=#s12#, #a1# =q7=#db19#" },
-   
-			 
-		{ 0, "", "", "" },
-		{ 47086, "INV_Helmet_70", "=q4=Netherwind Circlet", "=ds=#s1#, #a1#" },
-		{ 47087, "INV_Shoulder_32", "=q4=Netherwind Epaulets", "=ds=#s3#, #a1#" },
-		{ 47088, "INV_Chest_Cloth_03", "=q4=Netherwind Vestments", "=ds=#s5#, #a1#" },
-		{ 47089, "INV_Bracer_09", "=q4=Netherwind Wristbands", "=ds=#s8#, #a1#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 70613, "INV_Helmet_70", "=q4=Netherwind Coronet", "=ds=#s1#, #a1#" },
-		{ 70614, "INV_Shoulder_32", "=q4=Netherwind Shoulderpads", "=ds=#s3#, #a1#" },
-		{ 70615, "INV_Chest_Cloth_03", "=q4=Netherwind Raiments", "=ds=#s5#, #a1#" },
-		{ 70616, "INV_Bracer_09", "=q4=Netherwind Bracers", "=ds=#s8#, #a1#" },
-		{ 70617, "INV_Gauntlets_14", "=q4=Netherwind Handguards", "=ds=#s9#, #a1#" },
-		{ 70618, "INV_Belt_22", "=q4=Netherwind Sash", "=ds=#s10#, #a1#" },
-		{ 70619, "INV_Pants_08", "=q4=Netherwind Pants", "=ds=#s11#, #a1#" },
-		{ 70620, "INV_Boots_07", "=q4=Netherwind Sandals", "=ds=#s12#, #a1#" },
-		{ 0, "", "", "" },
-		{ 47090, "INV_Gauntlets_14", "=q4=Netherwind Handwraps", "=ds=#s9#, #a1#" },
-		{ 47091, "INV_Belt_22", "=q4=Netherwind Cord", "=ds=#s10#, #a1#" },
-		{ 47092, "INV_Pants_08", "=q4=Netherwind Trousers", "=ds=#s11#, #a1#" },
-		{ 47093, "INV_Boots_07", "=q4=Netherwind Slippers", "=ds=#s12#, #a1#" },
-	},
-	T2MageC = {{
-			{ 16914, "=ds=#s1#, #a1# =q7=#db15#" },
-			{ 16917, "=ds=#s3#, #a1# =q7=#db23#" },
-			{ 16916, "=ds=#s5#, #a1# =q7=#db24#" },
-			{ 16918, "=ds=#s8#, #a1# =q7=#db17#" },
-			{ 16913, "=ds=#s10#, #a1# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-			{ 16818, "=ds=#s10#, #a1# =q7=#db18#" },
-			{ 16915, "=ds=#s11#, #a1# =q7=#db16#" },
-			{ 16912, "=ds=#s12#, #a1# =q7=#db19#" },
-		},{
-			{ 47086, "=ds=#s1#, #a1#" },
-			{ 47087, "=ds=#s3#, #a1#" },
-			{ 47088, "=ds=#s5#, #a1#" },
-			{ 47089, "=ds=#s8#, #a1#" },
-			{ 47090, "=ds=#s9#, #a1#" },
-			{ 47091, "=ds=#s10#, #a1#" },
-			{ 47092, "=ds=#s11#, #a1#" },
-			{ 47093, "=ds=#s12#, #a1#" },
-		}
+		{ name = BIS["Netherwind Regalia"], icon = "Spell_Frost_IceStorm" },
+		{ id = 16914 }, -- Netherwind Crown
+		{ id = 16917 }, -- Netherwind Mantle
+		{ id = 16916 }, -- Netherwind Robes
+		{ id = 16918 }, -- Netherwind Bindings
+		{ id = 16913 }, -- Netherwind Gloves
+		{ id = 16818 }, -- Netherwind Belt
+		{ id = 16915 }, -- Netherwind Pants
+		{ id = 16912 }, -- Netherwind Boots
+		{},
+		{ id = 47086 }, -- Netherwind Circlet
+		{ id = 47087 }, -- Netherwind Epaulets
+		{ id = 47088 }, -- Netherwind Vestments
+		{ id = 47089 }, -- Netherwind Wristbands
+		{},
+		{},
+		{ id = 70613 }, -- Netherwind Coronet
+		{ id = 70614 }, -- Netherwind Shoulderpads
+		{ id = 70615 }, -- Netherwind Raiments
+		{ id = 70616 }, -- Netherwind Bracers
+		{ id = 70617 }, -- Netherwind Handguards
+		{ id = 70618 }, -- Netherwind Sash
+		{ id = 70619 }, -- Netherwind Pants
+		{ id = 70620 }, -- Netherwind Sandals
+		{},
+		{ id = 47090 }, -- Netherwind Handwraps
+		{ id = 47091 }, -- Netherwind Cord
+		{ id = 47092 }, -- Netherwind Trousers
+		{ id = 47093 }, -- Netherwind Slippers
 	},
 	T2Priest = {
-		{ 0, "Spell_Holy_PowerWordShield", "=q9=#t2s5#", "" },
-		{ 0, "", "", "" },
-		{ 16921, "INV_Helmet_24", "=q4=Halo of Transcendence", "=ds=#s1#, #a1# =q7=#db15#" },
-		{ 16924, "INV_Shoulder_02", "=q4=Pauldrons of Transcendence", "=ds=#s3#, #a1# =q7=#db23#" },
-		{ 16923, "INV_Chest_Cloth_03", "=q4=Robes of Transcendence", "=ds=#s5#, #a1# =q7=#db24#" },
-		{ 16926, "INV_Bracer_09", "=q4=Bindings of Transcendence", "=ds=#s8#, #a1# =q7=#db17#" },
-		{ 16920, "INV_Gauntlets_14", "=q4=Handguards of Transcendence", "=ds=#s10#, #a1# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-		{ 16925, "INV_Belt_22", "=q4=Belt of Transcendence", "=ds=#s10#, #a1# =q7=#db18#" },
-		{ 16922, "INV_Pants_08", "=q4=Leggings of Transcendence", "=ds=#s11#, #a1# =q7=#db16#" },
-		{ 16919, "INV_Boots_07", "=q4=Boots of Transcendence", "=ds=#s12#, #a1# =q7=#db19#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47206, "INV_Helmet_24", "=q4=Coronet of Transcendence", "=ds=#s1#, #a1#" },
-		{ 47207, "INV_Shoulder_02", "=q4=Shoulderpads of Transcendence", "=ds=#s3#, #a1#" },
-		{ 47208, "INV_Chest_Cloth_03", "=q4=Raiments of Transcendence", "=ds=#s5#, #a1#" },
-		{ 47209, "INV_Bracer_09", "=q4=Bracers of Transcendence", "=ds=#s8#, #a1#" },
-		{ 47210, "INV_Gauntlets_14", "=q4=Handguards of Transcendence", "=ds=#s9#, #a1#" },
-		{ 47211, "INV_Belt_22", "=q4=Sash of Transcendence", "=ds=#s10#, #a1#" },
-		{ 47212, "INV_Pants_08", "=q4=Pants of Transcendence", "=ds=#s11#, #a1#" },
-		{ 47213, "INV_Boots_07", "=q4=Sandals of Transcendence", "=ds=#s12#, #a1#" },
-	},
-	T2PriestC = {{
-			{ 16921, "=ds=#s1#, #a1# =q7=#db15#" },
-			{ 16924, "=ds=#s3#, #a1# =q7=#db23#" },
-			{ 16923, "=ds=#s5#, #a1# =q7=#db24#" },
-			{ 16926, "=ds=#s8#, #a1# =q7=#db17#" },
-			{ 16920, "=ds=#s10#, #a1# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-			{ 16925, "=ds=#s10#, #a1# =q7=#db18#" },
-			{ 16922, "=ds=#s11#, #a1# =q7=#db16#" },
-			{ 16919, "=ds=#s12#, #a1# =q7=#db19#" },
-		},{
-			{ 47206, "=ds=#s1#, #a1#" },
-			{ 47207, "=ds=#s3#, #a1#" },
-			{ 47208, "=ds=#s5#, #a1#" },
-			{ 47209, "=ds=#s8#, #a1#" },
-			{ 47210, "=ds=#s9#, #a1#" },
-			{ 47211, "=ds=#s10#, #a1#" },
-			{ 47212, "=ds=#s11#, #a1#" },
-			{ 47213, "=ds=#s12#, #a1#" },
-		}
+		{ name = BIS["Vestments of Transcendence"], icon = "Spell_Holy_PowerWordShield" },
+		{ id = 16921 }, -- Halo of Transcendence
+		{ id = 16924 }, -- Pauldrons of Transcendence
+		{ id = 16923 }, -- Robes of Transcendence
+		{ id = 16926 }, -- Bindings of Transcendence
+		{ id = 16920 }, -- Handguards of Transcendence
+		{ id = 16925 }, -- Belt of Transcendence
+		{ id = 16922 }, -- Leggings of Transcendence
+		{ id = 16919 }, -- Boots of Transcendence
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 47206 }, -- Coronet of Transcendence
+		{ id = 47207 }, -- Shoulderpads of Transcendence
+		{ id = 47208 }, -- Raiments of Transcendence
+		{ id = 47209 }, -- Bracers of Transcendence
+		{ id = 47210 }, -- Handguards of Transcendence
+		{ id = 47211 }, -- Sash of Transcendence
+		{ id = 47212 }, -- Pants of Transcendence
+		{ id = 47213 }, -- Sandals of Transcendence
 	},
 	T2Warlock = {
-		{ 0, "Spell_Shadow_CurseOfTounges", "=q11=#t2s8#", "" },
-		{ 0, "", "", "" },
-		{ 16929, "INV_Helmet_08", "=q4=Nemesis Skullcap", "=ds=#s1#, #a1# =q7=#db15#" },
-		{ 16932, "INV_Shoulder_19", "=q4=Nemesis Spaulders", "=ds=#s3#, #a1# =q7=#db23#" },
-		{ 16931, "INV_Chest_Leather_01", "=q4=Nemesis Robes", "=ds=#s5#, #a1# =q7=#db24#" },
-		{ 16934, "INV_Bracer_07", "=q4=Nemesis Bracers", "=ds=#s8#, #a1# =q7=#db17#" },
-		{ 16928, "INV_Gauntlets_19", "=q4=Nemesis Gloves", "=ds=#s10#, #a1# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-		{ 16933, "INV_Belt_13", "=q4=Nemesis Belt", "=ds=#s10#, #a1# =q7=#db18#" },
-		{ 16930, "INV_Pants_07", "=q4=Nemesis Leggings", "=ds=#s11#, #a1# =q7=#db16#" },
-		{ 16927, "INV_Boots_05", "=q4=Nemesis Boots", "=ds=#s12#, #a1# =q7=#db19#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47284, "INV_Helmet_08", "=q4=Nemesis Crown", "=ds=#s1#, #a1#" },
-		{ 47285, "INV_Shoulder_19", "=q4=Nemesis Mantle", "=ds=#s3#, #a1#" },
-		{ 47286, "INV_Chest_Leather_01", "=q4=Nemesis Raiments", "=ds=#s5#, #a1#" },
-		{ 47287, "INV_Bracer_07", "=q4=Nemesis Bindings", "=ds=#s8#, #a1#" },
-		{ 47288, "INV_Gauntlets_19", "=q4=Nemesis Handwraps", "=ds=#s9#, #a1#" },
-		{ 47289, "INV_Belt_13", "=q4=Nemesis Sash", "=ds=#s10#, #a1#" },
-		{ 47290, "INV_Pants_07", "=q4=Nemesis Leggings", "=ds=#s11#, #a1#" },
-		{ 47291, "INV_Boots_05", "=q4=Nemesis Slippers", "=ds=#s12#, #a1#" },
-	},
-	T2WarlockC = {{
-			{ 16929, "=ds=#s1#, #a1# =q7=#db15#" },
-			{ 16932, "=ds=#s3#, #a1# =q7=#db23#" },
-			{ 16931, "=ds=#s5#, #a1# =q7=#db24#" },
-			{ 16934, "=ds=#s8#, #a1# =q7=#db17#" },
-			{ 16928, "=ds=#s10#, #a1# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-			{ 16933, "=ds=#s10#, #a1# =q7=#db18#" },
-			{ 16930, "=ds=#s11#, #a1# =q7=#db16#" },
-			{ 16927, "=ds=#s12#, #a1# =q7=#db19#" },
-		},{
-			{ 47284, "=ds=#s1#, #a1#" },
-			{ 47285, "=ds=#s3#, #a1#" },
-			{ 47286, "=ds=#s5#, #a1#" },
-			{ 47287, "=ds=#s8#, #a1#" },
-			{ 47288, "=ds=#s9#, #a1#" },
-			{ 47289, "=ds=#s10#, #a1#" },
-			{ 47290, "=ds=#s11#, #a1#" },
-			{ 47291, "=ds=#s12#, #a1#" },
-		}
+		{ name = BIS["Nemesis Raiment"], icon = "Spell_Shadow_CurseOfTounges" },
+		{ id = 16929 }, -- Nemesis Skullcap
+		{ id = 16932 }, -- Nemesis Spaulders
+		{ id = 16931 }, -- Nemesis Robes
+		{ id = 16934 }, -- Nemesis Bracers
+		{ id = 16928 }, -- Nemesis Gloves
+		{ id = 16933 }, -- Nemesis Belt
+		{ id = 16930 }, -- Nemesis Leggings
+		{ id = 16927 }, -- Nemesis Boots
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 47284 }, -- Nemesis Crown
+		{ id = 47285 }, -- Nemesis Mantle
+		{ id = 47286 }, -- Nemesis Raiments
+		{ id = 47287 }, -- Nemesis Bindings
+		{ id = 47288 }, -- Nemesis Handwraps
+		{ id = 47289 }, -- Nemesis Sash
+		{ id = 47290 }, -- Nemesis Leggings
+		{ id = 47291 }, -- Nemesis Slippers
 	},
 	T2Rogue = {
-		{ 0, "Ability_BackStab", "=q12=#t2s6#", "" },
-		{ 0, "", "", "" },
-		{ 16908, "INV_Helmet_41", "=q4=Bloodfang Hood", "=ds=#s1#, #a2# =q7=#db15#" },
-		{ 16832, "INV_Shoulder_23", "=q4=Bloodfang Spaulders", "=ds=#s3#, #a2# =q7=#db23#" },
-		{ 16905, "INV_Chest_Cloth_07", "=q4=Bloodfang Chestpiece", "=ds=#s5#, #a2# =q7=#db24#" },
-		{ 16911, "INV_Bracer_02", "=q4=Bloodfang Bracers", "=ds=#s8#, #a2# =q7=#db17#" },
-		{ 16907, "INV_Gauntlets_21", "=q4=Bloodfang Gloves", "=ds=#s10#, #a2# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-		{ 16910, "INV_Belt_23", "=q4=Bloodfang Belt", "=ds=#s10#, #a2# =q7=#db18#" },
-		{ 16909, "INV_Pants_06", "=q4=Bloodfang Pants", "=ds=#s11#, #a2# =q7=#db16#" },
-		{ 16906, "INV_Boots_08", "=q4=Bloodfang Boots", "=ds=#s12#, #a2# =q7=#db19#" }
-	},
-	T2RogueC = {{
-			{ 16908, "=ds=#s1#, #a2# =q7=#db15#" },
-			{ 16832, "=ds=#s3#, #a2# =q7=#db23#" },
-			{ 16905, "=ds=#s5#, #a2# =q7=#db24#" },
-			{ 16911, "=ds=#s8#, #a2# =q7=#db17#" },
-			{ 16907, "=ds=#s10#, #a2# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-			{ 16910, "=ds=#s10#, #a2# =q7=#db18#" },
-			{ 16909, "=ds=#s11#, #a2# =q7=#db16#" },
-			{ 16906, "=ds=#s12#, #a2# =q7=#db19#" },
-		}
+		{ name = BIS["Bloodfang Armor"], icon = "Ability_BackStab" },
+		{ id = 16908 }, -- Bloodfang Hood
+		{ id = 16832 }, -- Bloodfang Spaulders
+		{ id = 16905 }, -- Bloodfang Chestpiece
+		{ id = 16911 }, -- Bloodfang Bracers
+		{ id = 16907 }, -- Bloodfang Gloves
+		{ id = 16910 }, -- Bloodfang Belt
+		{ id = 16909 }, -- Bloodfang Pants
+		{ id = 16906 }, -- Bloodfang Boots
 	},
 	T2Druid = {
-		{ 0, "Spell_Nature_Regeneration", "=q13=#t2s1#", "" },
-		{ 0, "", "", "" },
-		{ 16900, "INV_Helmet_09", "=q4=Stormrage Cover", "=ds=#s1#, #a2# =q7=#db15#" },
-		{ 16902, "INV_Shoulder_07", "=q4=Stormrage Pauldrons", "=ds=#s3#, #a2# =q7=#db23#" },
-		{ 16897, "INV_Chest_Chain_16", "=q4=Stormrage Chestguard", "=ds=#s5#, #a2# =q7=#db24#" },
-		{ 16904, "INV_Bracer_03", "=q4=Stormrage Bracers", "=ds=#s8#, #a2# =q7=#db17#" },
-		{ 16899, "INV_Gauntlets_25", "=q4=Stormrage Handguards", "=ds=#s10#, #a2# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-		{ 16903, "INV_Belt_06", "=q4=Stormrage Belt", "=ds=#s10#, #a2# =q7=#db18#" },
-		{ 16901, "INV_Pants_06", "=q4=Stormrage Legguards", "=ds=#s11#, #a2# =q7=#db16#" },
-		{ 16898, "INV_Boots_08", "=q4=Stormrage Boots", "=ds=#s12#, #a2# =q7=#db19#" },
-		{ 0, "", "", "" },
-		{ 47346, "INV_Helmet_09", "=q4=Stormrage Circlet", "=ds=#s1#, #a2#" },
-		{ 47347, "INV_Shoulder_07", "=q4=Stormrage Mantle", "=ds=#s3#, #a2#" },
-		{ 47348, "INV_Chest_Cloth_06", "=q4=Stormrage Vest", "=ds=#s5#, #a2#" },
-		{ 47349, "INV_Bracer_03", "=q4=Stormrage Wristbands", "=ds=#s8#, #a2#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47354, "INV_Helmet_09", "=q4=Stormrage Helmet", "=ds=#s1#, #a2#" },
-		{ 47355, "INV_Shoulder_07", "=q4=Stormrage Shoulderpads", "=ds=#s3#, #a2#" },
-		{ 47356, "INV_Chest_Cloth_06", "=q4=Stormrage Raiments", "=ds=#s5#, #a2#" },
-		{ 47357, "INV_Bracer_03", "=q4=Stormrage Wristguards", "=ds=#s8#, #a2#" },
-		{ 47358, "INV_Gauntlets_25", "=q4=Stormrage Handguards", "=ds=#s9#, #a2#" },
-		{ 47359, "INV_Belt_06", "=q4=Stormrage Girdle", "=ds=#s10#, #a2#" },
-		{ 47360, "INV_Pants_06", "=q4=Stormrage Pants", "=ds=#s11#, #a2#" },
-		{ 47361, "INV_Boots_08", "=q4=Stormrage Treads", "=ds=#s12#, #a2#" },
-		{ 0, "", "", "" },
-		{ 47350, "INV_Gauntlets_25", "=q4=Stormrage Handwraps", "=ds=#s9#, #a2#" },
-		{ 47351, "INV_Belt_06", "=q4=Stormrage Sash", "=ds=#s10#, #a2#" },
-		{ 47352, "INV_Pants_06", "=q4=Stormrage Trousers", "=ds=#s11#, #a2#" },
-		{ 47353, "INV_Boots_08", "=q4=Stormrage Slippers", "=ds=#s12#, #a2#" },
-	},
-	T2DruidC = {{
-			{ 16900, "=ds=#s1#, #a2# =q7=#db15#" },
-			{ 16902, "=ds=#s3#, #a2# =q7=#db23#" },
-			{ 16897, "=ds=#s5#, #a2# =q7=#db24#" },
-			{ 16904, "=ds=#s8#, #a2# =q7=#db17#" },
-			{ 16899, "=ds=#s10#, #a2# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-			{ 16903, "=ds=#s10#, #a2# =q7=#db18#" },
-			{ 16901, "=ds=#s11#, #a2# =q7=#db16#" },
-			{ 16898, "=ds=#s12#, #a2# =q7=#db19#" },
-		},{
-			{ 47346, "=ds=#s1#, #a2#" },
-			{ 47347, "=ds=#s3#, #a2#" },
-			{ 47348, "=ds=#s5#, #a2#" },
-			{ 47349, "=ds=#s8#, #a2#" },
-			{ 47350, "=ds=#s9#, #a2#" },
-			{ 47351, "=ds=#s10#, #a2#" },
-			{ 47352, "=ds=#s11#, #a2#" },
-			{ 47353, "=ds=#s12#, #a2#" },
-		},{
-			{ 47354, "=ds=#s1#, #a2#" },
-			{ 47355, "=ds=#s3#, #a2#" },
-			{ 47356, "=ds=#s5#, #a2#" },
-			{ 47357, "=ds=#s8#, #a2#" },
-			{ 47358, "=ds=#s9#, #a2#" },
-			{ 47359, "=ds=#s10#, #a2#" },
-			{ 47360, "=ds=#s11#, #a2#" },
-			{ 47361, "=ds=#s12#, #a2#" },
-		}
+		{ name = BIS["Stormrage Raiment"], icon = "Spell_Nature_Regeneration" },
+		{ id = 16900 }, -- Stormrage Cover
+		{ id = 16902 }, -- Stormrage Pauldrons
+		{ id = 16897 }, -- Stormrage Chestguard
+		{ id = 16904 }, -- Stormrage Bracers
+		{ id = 16899 }, -- Stormrage Handguards
+		{ id = 16903 }, -- Stormrage Belt
+		{ id = 16901 }, -- Stormrage Legguards
+		{ id = 16898 }, -- Stormrage Boots
+		{},
+		{ id = 47346 }, -- Stormrage Circlet
+		{ id = 47347 }, -- Stormrage Mantle
+		{ id = 47348 }, -- Stormrage Vest
+		{ id = 47349 }, -- Stormrage Wristbands
+		{},
+		{},
+		{ id = 47354 }, -- Stormrage Helmet
+		{ id = 47355 }, -- Stormrage Shoulderpads
+		{ id = 47356 }, -- Stormrage Raiments
+		{ id = 47357 }, -- Stormrage Wristguards
+		{ id = 47358 }, -- Stormrage Handguards
+		{ id = 47359 }, -- Stormrage Girdle
+		{ id = 47360 }, -- Stormrage Pants
+		{ id = 47361 }, -- Stormrage Treads
+		{},
+		{ id = 47350 }, -- Stormrage Handwraps
+		{ id = 47351 }, -- Stormrage Sash
+		{ id = 47352 }, -- Stormrage Trousers
+		{ id = 47353 }, -- Stormrage Slippers
 	},
 	T2Shaman = {
-		{ 0, "Spell_FireResistanceTotem_01", "=q15=#t2s7#", "" },
-		{ 0, "", "", "" },
-		{ 16947, "INV_Helmet_69", "=q4=Helmet of Ten Storms", "=ds=#s1#, #a3# =q7=#db15#" },
-		{ 16945, "INV_Shoulder_33", "=q4=Epaulets of Ten Storms", "=ds=#s3#, #a3# =q7=#db23#" },
-		{ 16950, "INV_Chest_Chain_11", "=q4=Breastplate of Ten Storms", "=ds=#s5#, #a3# =q7=#db24#" },
-		{ 16943, "INV_Bracer_16", "=q4=Bracers of Ten Storms", "=ds=#s8#, #a3# =q7=#db17#" },
-		{ 16948, "INV_Gauntlets_11", "=q4=Gauntlets of Ten Storms", "=ds=#s10#, #a3# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-		{ 16944, "INV_Belt_14", "=q4=Belt of Ten Storms", "=ds=#s10#, #a3# =q7=#db18#" },
-		{ 16946, "INV_Pants_03", "=q4=Legplates of Ten Storms", "=ds=#s11#, #a3# =q7=#db16#" },
-		{ 16949, "INV_Boots_Plate_06", "=q4=Greaves of Ten Storms", "=ds=#s12#, #a3# =q7=#db19#" },
-		{ 0, "", "", "" },
-		{ 47136, "INV_Helmet_69", "=q4=Crown of Ten Storms", "=ds=#s1#, #a3#" },
-		{ 47137, "INV_Shoulder_33", "=q4=Pauldrons of Ten Storms", "=ds=#s3#, #a3#" },
-		{ 47138, "INV_Chest_Chain_11", "=q4=Breastplate of Ten Storms", "=ds=#s5#, #a3#" },
-		{ 47139, "INV_Bracer_16", "=q4=Bracelets of Ten Storms", "=ds=#s8#, #a3#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47144, "INV_Helmet_69", "=q4=Helmet of Ten Storms", "=ds=#s1#, #a3#" },
-		{ 47145, "INV_Shoulder_33", "=q4=Spaulders of Ten Storms", "=ds=#s3#, #a3#" },
-		{ 47146, "INV_Chest_Chain_11", "=q4=Chestpiece of Ten Storms", "=ds=#s5#, #a3#" },
-		{ 47147, "INV_Bracer_16", "=q4=Bracers of Ten Storms", "=ds=#s8#, #a3#" },
-		{ 47148, "INV_Gauntlets_11", "=q4=Gloves of Ten Storms", "=ds=#s9#, #a3#" },
-		{ 47149, "INV_Belt_14", "=q4=Belt of Ten Storms", "=ds=#s10#, #a3#" },
-		{ 47150, "INV_Pants_03", "=q4=Pants of Ten Storms", "=ds=#s11#, #a3#" },
-		{ 47151, "INV_Boots_Plate_06", "=q4=Boots of Ten Storms", "=ds=#s12#, #a3#" },
-		{ 0, "", "", "" },
-		{ 47140, "INV_Gauntlets_11", "=q4=Fists of Ten Storms", "=ds=#s9#, #a3#" },
-		{ 47141, "INV_Belt_14", "=q4=Girdle of Ten Storms", "=ds=#s10#, #a3#" },
-		{ 47142, "INV_Pants_03", "=q4=Leggings of Ten Storms", "=ds=#s11#, #a3#" },
-		{ 47143, "INV_Boots_Plate_06", "=q4=Sabatons of Ten Storms", "=ds=#s12#, #a3#" },
-	},
-	T2ShamanC = {{
-			{ 16947, "=ds=#s1#, #a3# =q7=#db15#" },
-			{ 16945, "=ds=#s3#, #a3# =q7=#db23#" },
-			{ 16950, "=ds=#s5#, #a3# =q7=#db24#" },
-			{ 16943, "=ds=#s8#, #a3# =q7=#db17#" },
-			{ 16948, "=ds=#s10#, #a3# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-			{ 16944, "=ds=#s10#, #a3# =q7=#db18#" },
-			{ 16946, "=ds=#s11#, #a3# =q7=#db16#" },
-			{ 16949, "=ds=#s12#, #a3# =q7=#db19#" },
-		},{
-			{ 47136, "=ds=#s1#, #a3#" },
-			{ 47137, "=ds=#s3#, #a3#" },
-			{ 47138, "=ds=#s5#, #a3#" },
-			{ 47139, "=ds=#s8#, #a3#" },
-			{ 47140, "=ds=#s9#, #a3#" },
-			{ 47141, "=ds=#s10#, #a3#" },
-			{ 47142, "=ds=#s11#, #a3#" },
-			{ 47143, "=ds=#s12#, #a3#" },
-		},{
-			{ 47144, "=ds=#s1#, #a3#" },
-			{ 47145, "=ds=#s3#, #a3#" },
-			{ 47146, "=ds=#s5#, #a3#" },
-			{ 47147, "=ds=#s8#, #a3#" },
-			{ 47148, "=ds=#s9#, #a3#" },
-			{ 47149, "=ds=#s10#, #a3#" },
-			{ 47150, "=ds=#s11#, #a3#" },
-			{ 47151, "=ds=#s12#, #a3#" },
-		}
+		{ name = BIS["The Ten Storms"], icon = "Spell_FireResistanceTotem_01" },
+		{ id = 16947 }, -- Helmet of Ten Storms
+		{ id = 16945 }, -- Epaulets of Ten Storms
+		{ id = 16950 }, -- Breastplate of Ten Storms
+		{ id = 16943 }, -- Bracers of Ten Storms
+		{ id = 16948 }, -- Gauntlets of Ten Storms
+		{ id = 16944 }, -- Belt of Ten Storms
+		{ id = 16946 }, -- Legplates of Ten Storms
+		{ id = 16949 }, -- Greaves of Ten Storms
+		{ id = 47136 }, -- Crown of Ten Storms
+		{ id = 47137 }, -- Pauldrons of Ten Storms
+		{ id = 47138 }, -- Breastplate of Ten Storms
+		{ id = 47139 }, -- Bracelets of Ten Storms
+		{ id = 47144 }, -- Helmet of Ten Storms
+		{ id = 47145 }, -- Spaulders of Ten Storms
+		{ id = 47146 }, -- Chestpiece of Ten Storms
+		{ id = 47147 }, -- Bracers of Ten Storms
+		{ id = 47148 }, -- Gloves of Ten Storms
+		{ id = 47149 }, -- Belt of Ten Storms
+		{ id = 47150 }, -- Pants of Ten Storms
+		{ id = 47151 }, -- Boots of Ten Storms
+		{ id = 47140 }, -- Fists of Ten Storms
+		{ id = 47141 }, -- Girdle of Ten Storms
+		{ id = 47142 }, -- Leggings of Ten Storms
+		{ id = 47143 }, -- Sabatons of Ten Storms
 	},
 	T2Hunter = {
-		{ 0, "Ability_Hunter_RunningShot", "=q14=#t2s2#", "" },
-		{ 0, "", "", "" },
-		{ 16939, "INV_Helmet_05", "=q4=Dragonstalker's Helm", "=ds=#s1#, #a3# =q7=#db15#" },
-		{ 16937, "INV_Shoulder_10", "=q4=Dragonstalker's Spaulders", "=ds=#s3#, #a3# =q7=#db23#" },
-		{ 16942, "INV_Chest_Chain_03", "=q4=Dragonstalker's Breastplate", "=ds=#s5#, #a3# =q7=#db24#" },
-		{ 16935, "INV_Bracer_17", "=q4=Dragonstalker's Bracers", "=ds=#s8#, #a3# =q7=#db17#" },
-		{ 16940, "INV_Gauntlets_10", "=q4=Dragonstalker's Gauntlets", "=ds=#s10#, #a3# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-		{ 16936, "INV_Belt_28", "=q4=Dragonstalker's Belt", "=ds=#s10#, #a3# =q7=#db18#" },
-		{ 16938, "INV_Pants_03", "=q4=Dragonstalker's Legguards", "=ds=#s11#, #a3# =q7=#db16#" },
-		{ 16941, "INV_Boots_Plate_07", "=q4=Dragonstalker's Greaves", "=ds=#s12#, #a3# =q7=#db19#" }
-	},
-	T2HunterC = {{
-			{ 16939, "=ds=#s1#, #a3# =q7=#db15#" },
-			{ 16937, "=ds=#s3#, #a3# =q7=#db23#" },
-			{ 16942, "=ds=#s5#, #a3# =q7=#db24#" },
-			{ 16935, "=ds=#s8#, #a3# =q7=#db17#" },
-			{ 16940, "=ds=#s10#, #a3# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-			{ 16936, "=ds=#s10#, #a3# =q7=#db18#" },
-			{ 16938, "=ds=#s11#, #a3# =q7=#db16#" },
-			{ 16941, "=ds=#s12#, #a3# =q7=#db19#" },
-		}
+		{ name = BIS["Dragonstalker Armor"], icon = "Ability_Hunter_RunningShot" },
+		{ id = 16939 }, -- Dragonstalker's Helm
+		{ id = 16937 }, -- Dragonstalker's Spaulders
+		{ id = 16942 }, -- Dragonstalker's Breastplate
+		{ id = 16935 }, -- Dragonstalker's Bracers
+		{ id = 16940 }, -- Dragonstalker's Gauntlets
+		{ id = 16936 }, -- Dragonstalker's Belt
+		{ id = 16938 }, -- Dragonstalker's Legguards
+		{ id = 16941 }, -- Dragonstalker's Greaves
 	},
 	T2Warrior = {
-		{ 0, "INV_Shield_05", "=q17=#t2s9#", "" },
-		{ 0, "", "", "" },
-		{ 16963, "INV_Helmet_71", "=q4=Helm of Wrath", "=ds=#s1#, #a4# =q7=#db15#" },
-		{ 16961, "INV_Shoulder_34", "=q4=Pauldrons of Wrath", "=ds=#s3#, #a4# =q7=#db23#" },
-		{ 16966, "INV_Chest_Plate16", "=q4=Breastplate of Wrath", "=ds=#s5#, #a4# =q7=#db24#" },
-		{ 16959, "INV_Bracer_19", "=q4=Bracelets of Wrath", "=ds=#s8#, #a4# =q7=#db17#" },
-		{ 16964, "INV_Gauntlets_10", "=q4=Gauntlets of Wrath", "=ds=#s10#, #a4# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-		{ 16960, "INV_Belt_09", "=q4=Waistband of Wrath", "=ds=#s10#, #a4# =q7=#db18#" },
-		{ 16962, "INV_Pants_04", "=q4=Legplates of Wrath", "=ds=#s11#, #a4# =q7=#db16#" },
-		{ 16965, "INV_Boots_Plate_04", "=q4=Sabatons of Wrath", "=ds=#s12#, #a4# =q7=#db19#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47248, "INV_Helmet_71", "=q4=Crown of Wrath", "=ds=#s1#, #a4#" },
-		{ 47249, "INV_Shoulder_34", "=q4=Pauldrons of Wrath", "=ds=#s3#, #a4#" },
-		{ 47250, "INV_Chest_Plate16", "=q4=Chestplate of Wrath", "=ds=#s5#, #a4#" },
-		{ 47251, "INV_Bracer_19", "=q4=Bindings of Wrath", "=ds=#s8#, #a4#" },
-		{ 47252, "INV_Gauntlets_10", "=q4=Gloves of Wrath", "=ds=#s9#, #a4#" },
-		{ 47253, "INV_Belt_09", "=q4=Girdle of Wrath", "=ds=#s10#, #a4#" },
-		{ 47254, "INV_Pants_04", "=q4=Leggings of Wrath", "=ds=#s11#, #a4#" },
-		{ 47255, "INV_Boots_Plate_04", "=q4=Sabatons of Wrath", "=ds=#s12#, #a4#" },
-	},
-	T2WarriorC = {{
-			{ 16963, "=ds=#s1#, #a4# =q7=#db15#" },
-			{ 16961, "=ds=#s3#, #a4# =q7=#db23#" },
-			{ 16966, "=ds=#s5#, #a4# =q7=#db24#" },
-			{ 16959, "=ds=#s8#, #a4# =q7=#db17#" },
-			{ 16964, "=ds=#s10#, #a4# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-			{ 16960, "=ds=#s10#, #a4# =q7=#db18#" },
-			{ 16962, "=ds=#s11#, #a4# =q7=#db16#" },
-			{ 16965, "=ds=#s12#, #a4# =q7=#db19#" },
-		},{
-			{ 47248, "=ds=#s1#, #a4#" },
-			{ 47249, "=ds=#s3#, #a4#" },
-			{ 47250, "=ds=#s5#, #a4#" },
-			{ 47251, "=ds=#s8#, #a4#" },
-			{ 47252, "=ds=#s9#, #a4#" },
-			{ 47253, "=ds=#s10#, #a4#" },
-			{ 47254, "=ds=#s11#, #a4#" },
-			{ 47255, "=ds=#s12#, #a4#" },
-		}
+		{ name = BIS["Battlegear of Wrath"], icon = "INV_Shield_05" },
+		{ id = 16963 }, -- Helm of Wrath
+		{ id = 16961 }, -- Pauldrons of Wrath
+		{ id = 16966 }, -- Breastplate of Wrath
+		{ id = 16959 }, -- Bracelets of Wrath
+		{ id = 16964 }, -- Gauntlets of Wrath
+		{ id = 16960 }, -- Waistband of Wrath
+		{ id = 16962 }, -- Legplates of Wrath
+		{ id = 16965 }, -- Sabatons of Wrath
+		{ id = 47248 }, -- Crown of Wrath
+		{ id = 47249 }, -- Pauldrons of Wrath
+		{ id = 47250 }, -- Chestplate of Wrath
+		{ id = 47251 }, -- Bindings of Wrath
+		{ id = 47252 }, -- Gloves of Wrath
+		{ id = 47253 }, -- Girdle of Wrath
+		{ id = 47254 }, -- Leggings of Wrath
+		{ id = 47255 }, -- Sabatons of Wrath
 	},
 	T2Paladin = {
-		{ 0, "Spell_Holy_SealOfMight", "=q16=#t2s4#", "" },
-		{ 0, "", "", "" },
-		{ 16955, "INV_Helmet_74", "=q4=Judgement Crown", "=ds=#s1#, #a4# =q7=#db15#" },
-		{ 16953, "INV_Shoulder_37", "=q4=Judgement Spaulders", "=ds=#s3#, #a4# =q7=#db23#" },
-		{ 16958, "INV_Chest_Plate03", "=q4=Judgement Breastplate", "=ds=#s5#, #a4# =q7=#db24#" },
-		{ 16951, "INV_Bracer_18", "=q4=Judgement Bindings", "=ds=#s8#, #a4# =q7=#db17#" },
-		{ 16956, "INV_Gauntlets_29", "=q4=Judgement Gauntlets", "=ds=#s10#, #a4# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-		{ 16952, "INV_Belt_27", "=q4=Judgement Belt", "=ds=#s10#, #a4# =q7=#db18#" },
-		{ 16954, "INV_Pants_04", "=q4=Judgement Legplates", "=ds=#s11#, #a4# =q7=#db16#" },
-		{ 16957, "INV_Boots_Plate_09", "=q4=Judgement Sabatons", "=ds=#s12#, #a4# =q7=#db19#" },
-		{ 0, "", "", "" },
-		{ 47016, "INV_Helmet_74", "=q4=Judgement Helmet", "=ds=#s1#, #a4#" },
-		{ 47017, "INV_Shoulder_37", "=q4=Judgement Shoulderguards", "=ds=#s3#, #a4#" },
-		{ 47018, "INV_Chest_Plate03", "=q4=Judgement Chestguard", "=ds=#s5#, #a4#" },
-		{ 47019, "INV_Bracer_18", "=q4=Judgement Wristguards", "=ds=#s8#, #a4#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47024, "INV_Helmet_74", "=q4=Judgement Crown", "=ds=#s1#, #a4#" },
-		{ 47025, "INV_Shoulder_37", "=q4=Judgement Pauldrons", "=ds=#s3#, #a4#" },
-		{ 47026, "INV_Chest_Plate03", "=q4=Judgement Chestplate", "=ds=#s5#, #a4#" },
-		{ 47027, "INV_Bracer_18", "=q4=Judgement Bindings", "=ds=#s8#, #a4#" },
-		{ 47028, "INV_Gauntlets_29", "=q4=Judgement Gauntlets", "=ds=#s9#, #a4#" },
-		{ 47029, "INV_Belt_27", "=q4=Judgement Girdle", "=ds=#s10#, #a4#" },
-		{ 47030, "INV_Pants_04", "=q4=Judgement Leggings", "=ds=#s11#, #a4#" },
-		{ 47031, "INV_Boots_Plate_09", "=q4=Judgement Sabatons", "=ds=#s12#, #a4#" },
-		{ 0, "", "", "" },
-		{ 47020, "INV_Gauntlets_29", "=q4=Judgement Handguards", "=ds=#s9#, #a4#" },
-		{ 47021, "INV_Belt_27", "=q4=Judgement Waistguard", "=ds=#s10#, #a4#" },
-		{ 47022, "INV_Pants_04", "=q4=Judgement Legguards", "=ds=#s11#, #a4#" },
-		{ 47023, "INV_Boots_Plate_09", "=q4=Judgement Greaves", "=ds=#s12#, #a4#" },
-	},
-	T2PaladinC = {{
-			{ 16955, "=ds=#s1#, #a4# =q7=#db15#" },
-			{ 16953, "=ds=#s3#, #a4# =q7=#db23#" },
-			{ 16958, "=ds=#s5#, #a4# =q7=#db24#" },
-			{ 16951, "=ds=#s8#, #a4# =q7=#db17#" },
-			{ 16956, "=ds=#s10#, #a4# =q7=#db20#=ds=, =q7=#db21#=ds=, =q7=#db22#" },
-			{ 16952, "=ds=#s10#, #a4# =q7=#db18#" },
-			{ 16954, "=ds=#s11#, #a4# =q7=#db16#" },
-			{ 16957, "=ds=#s12#, #a4# =q7=#db19#" },
-		},{
-			{ 47016, "=ds=#s1#, #a4#" },
-			{ 47017, "=ds=#s3#, #a4#" },
-			{ 47018, "=ds=#s5#, #a4#" },
-			{ 47019, "=ds=#s8#, #a4#" },
-			{ 47020, "=ds=#s9#, #a4#" },
-			{ 47021, "=ds=#s10#, #a4#" },
-			{ 47022, "=ds=#s11#, #a4#" },
-			{ 47023, "=ds=#s12#, #a4#" },
-		},{
-			{ 47024, "=ds=#s1#, #a4#" },
-			{ 47025, "=ds=#s3#, #a4#" },
-			{ 47026, "=ds=#s5#, #a4#" },
-			{ 47027, "=ds=#s8#, #a4#" },
-			{ 47028, "=ds=#s9#, #a4#" },
-			{ 47029, "=ds=#s10#, #a4#" },
-			{ 47030, "=ds=#s11#, #a4#" },
-			{ 47031, "=ds=#s12#, #a4#" },
-		}
+		{ name = BIS["Judgement Armor"], icon = "Spell_Holy_SealOfMight" },
+		{ id = 16955 }, -- Judgement Crown
+		{ id = 16953 }, -- Judgement Spaulders
+		{ id = 16958 }, -- Judgement Breastplate
+		{ id = 16951 }, -- Judgement Bindings
+		{ id = 16956 }, -- Judgement Gauntlets
+		{ id = 16952 }, -- Judgement Belt
+		{ id = 16954 }, -- Judgement Legplates
+		{ id = 16957 }, -- Judgement Sabatons
+		{ id = 47016 }, -- Judgement Helmet
+		{ id = 47017 }, -- Judgement Shoulderguards
+		{ id = 47018 }, -- Judgement Chestguard
+		{ id = 47019 }, -- Judgement Wristguards
+		{ id = 47024 }, -- Judgement Crown
+		{ id = 47025 }, -- Judgement Pauldrons
+		{ id = 47026 }, -- Judgement Chestplate
+		{ id = 47027 }, -- Judgement Bindings
+		{ id = 47028 }, -- Judgement Gauntlets
+		{ id = 47029 }, -- Judgement Girdle
+		{ id = 47030 }, -- Judgement Leggings
+		{ id = 47031 }, -- Judgement Sabatons
+		{ id = 47020 }, -- Judgement Handguards
+		{ id = 47021 }, -- Judgement Waistguard
+		{ id = 47022 }, -- Judgement Legguards
+		{ id = 47023 }, -- Judgement Greaves
 	},
 	T1Mage = {
-		{ 0, "Spell_Frost_IceStorm", "=q10=#t1s3#", "" },
-		{ 0, "", "", "" },
-		{ 16795, "INV_Helmet_53", "=q4=Arcanist Crown", "=ds=#s1#, #a1# =q7=#db28#" },
-		{ 16797, "INV_Shoulder_02", "=q4=Arcanist Mantle", "=ds=#s3#, #a1# =q7=#db29#" },
-		{ 16798, "INV_Chest_Cloth_03", "=q4=Arcanist Robes", "=ds=#s5#, #a1# =q7=#db32#" },
-		{ 16799, "INV_Belt_29", "=q4=Arcanist Bindings", "=ds=#s8#, #a1# =q7=#x34# (#z1#)" },
-		{ 16801, "INV_Gauntlets_14", "=q4=Arcanist Gloves", "=ds=#s10#, #a1# =q7=#db30#" },
-		{ 16802, "INV_Belt_30", "=q4=Arcanist Belt", "=ds=#s10#, #a1# =q7=#x34# (#z1#)" },
-		{ 16796, "INV_Pants_08", "=q4=Arcanist Leggings", "=ds=#s11#, #a1# =q7=#db26#" },
-		{ 16800, "INV_Boots_07", "=q4=Arcanist Boots", "=ds=#s12#, #a1# =q7=#db25#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47078, "INV_Helmet_53", "=q4=Arcanist Circlet", "=ds=#s1#, #a1#" },
-		{ 47079, "INV_Shoulder_02", "=q4=Arcanist Epaulets", "=ds=#s3#, #a1#" },
-		{ 47080, "INV_Chest_Cloth_03", "=q4=Arcanist Vestments", "=ds=#s5#, #a1#" },
-		{ 47081, "INV_Belt_29", "=q4=Arcanist Wristbands", "=ds=#s8#, #a1#" },
-		{ 47082, "INV_Gauntlets_14", "=q4=Arcanist Handwraps", "=ds=#s9#, #a1#" },
-		{ 47083, "INV_Belt_30", "=q4=Arcanist Cord", "=ds=#s10#, #a1#" },
-		{ 47084, "INV_Pants_08", "=q4=Arcanist Trousers", "=ds=#s11#, #a1#" },
-		{ 47085, "INV_Boots_07", "=q4=Arcanist Slippers", "=ds=#s12#, #a1#" },
-	},
-	T1MageC = {{
-			{ 16795, "=ds=#s1#, #a1# =q7=#db28#" },
-			{ 16797, "=ds=#s3#, #a1# =q7=#db29#" },
-			{ 16798, "=ds=#s5#, #a1# =q7=#db32#" },
-			{ 16799, "=ds=#s8#, #a1# =q7=#x34# #z1#" },
-			{ 16801, "=ds=#s10#, #a1# =q7=#db30#" },
-			{ 16802, "=ds=#s10#, #a1# =q7=#x34# #z1#" },
-			{ 16796, "=ds=#s11#, #a1# =q7=#db26#" },
-			{ 16800, "=ds=#s12#, #a1# =q7=#db25#" },
-		},{
-			{ 47078, "=ds=#s1#, #a1#" },
-			{ 47079, "=ds=#s3#, #a1#" },
-			{ 47080, "=ds=#s5#, #a1#" },
-			{ 47081, "=ds=#s8#, #a1#" },
-			{ 47082, "=ds=#s9#, #a1#" },
-			{ 47083, "=ds=#s10#, #a1#" },
-			{ 47084, "=ds=#s11#, #a1#" },
-			{ 47085, "=ds=#s12#, #a1#" },	
-		}
+		{ name = BIS["Arcanist Regalia"], icon = "Spell_Frost_IceStorm" },
+		{},
+		{ id = 16795 }, -- Arcanist Crown
+		{ id = 16797 }, -- Arcanist Mantle
+		{ id = 16798 }, -- Arcanist Robes
+		{ id = 16799 }, -- Arcanist Bindings
+		{ id = 16801 }, -- Arcanist Gloves
+		{ id = 16802 }, -- Arcanist Belt
+		{ id = 16796 }, -- Arcanist Leggings
+		{ id = 16800 }, -- Arcanist Boots
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 47078 }, -- Arcanist Circlet
+		{ id = 47079 }, -- Arcanist Epaulets
+		{ id = 47080 }, -- Arcanist Vestments
+		{ id = 47081 }, -- Arcanist Wristbands
+		{ id = 47082 }, -- Arcanist Handwraps
+		{ id = 47083 }, -- Arcanist Cord
+		{ id = 47084 }, -- Arcanist Trousers
+		{ id = 47085 }, -- Arcanist Slippers
 	},
 	T1Priest = {
-		{ 0, "Spell_Holy_PowerWordShield", "=q9=#t1s5#", "" },
-		{ 0, "", "", "" },
-		{ 16813, "INV_Helmet_34", "=q4=Circlet of Prophecy", "=ds=#s1#, #a1# =q7=#db28#" },
-		{ 16816, "INV_Shoulder_02", "=q4=Mantle of Prophecy", "=ds=#s3#, #a1# =q7=#db31#" },
-		{ 16815, "INV_Chest_Cloth_03", "=q4=Robes of Prophecy", "=ds=#s5#, #a1# =q7=#db32#" },
-		{ 16819, "INV_Bracer_09", "=q4=Vambraces of Prophecy", "=ds=#s8#, #a1# =q7=#x34# (#z1#)" },
-		{ 16812, "INV_Gauntlets_14", "=q4=Gloves of Prophecy", "=ds=#s9#, #a1# =q7=#db27#" },
-		{ 16817, "INV_Belt_22", "=q4=Girdle of Prophecy", "=ds=#s10#, #a1# =q7=#x34# (#z1#)" },
-		{ 16814, "INV_Pants_08", "=q4=Pants of Prophecy", "=ds=#s11#, #a1# =q7=#db26#" },
-		{ 16811, "INV_Boots_07", "=q4=Boots of Prophecy", "=ds=#s12#, #a1# =q7=#db30#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47198, "INV_Helmet_34", "=q4=Coronet of Prophecy", "=ds=#s1#, #a1#" },
-		{ 47199, "INV_Shoulder_02", "=q4=Shoulderpads of Prophecy", "=ds=#s3#, #a1#" },
-		{ 47200, "INV_Chest_Cloth_03", "=q4=Raiments of Prophecy", "=ds=#s5#, #a1#" },
-		{ 47201, "INV_Bracer_09", "=q4=Bracers of Prophecy", "=ds=#s8#, #a1#" },
-		{ 47202, "INV_Gauntlets_14", "=q4=Handguards of Prophecy", "=ds=#s9#, #a1#" },
-		{ 47203, "INV_Belt_22", "=q4=Sash of Prophecy", "=ds=#s10#, #a1#" },
-		{ 47204, "INV_Pants_08", "=q4=Pants of Prophecy", "=ds=#s11#, #a1#" },
-		{ 47205, "INV_Boots_07", "=q4=Sandals of Prophecy", "=ds=#s12#, #a1#" },
-	},
-	T1PriestC = {{
-			{ 16813, "=ds=#s1#, #a1# =q7=#db28#" },
-			{ 16816, "=ds=#s3#, #a1# =q7=#db31#" },
-			{ 16815, "=ds=#s5#, #a1# =q7=#db32#" },
-			{ 16819, "=ds=#s8#, #a1# =q7=#x34# #z1#" },
-			{ 16812, "=ds=#s9#, #a1# =q7=#db27#" },
-			{ 16817, "=ds=#s10#, #a1# =q7=#x34# #z1#" },
-			{ 16814, "=ds=#s11#, #a1# =q7=#db26#" },
-			{ 16811, "=ds=#s12#, #a1# =q7=#db30#" },
-		},{
-			{ 47198, "=ds=#s1#, #a1#" },
-			{ 47199, "=ds=#s3#, #a1#" },
-			{ 47200, "=ds=#s5#, #a1#" },
-			{ 47201, "=ds=#s8#, #a1#" },
-			{ 47202, "=ds=#s9#, #a1#" },
-			{ 47203, "=ds=#s10#, #a1#" },
-			{ 47204, "=ds=#s11#, #a1#" },
-			{ 47205, "=ds=#s12#, #a1#" },
-		}
+		{ name = BIS["Vestments of Prophecy"], icon = "Spell_Holy_PowerWordShield" },
+		{},
+		{ id = 16813 }, -- Circlet of Prophecy
+		{ id = 16816 }, -- Mantle of Prophecy
+		{ id = 16815 }, -- Robes of Prophecy
+		{ id = 16819 }, -- Vambraces of Prophecy
+		{ id = 16812 }, -- Gloves of Prophecy
+		{ id = 16817 }, -- Girdle of Prophecy
+		{ id = 16814 }, -- Pants of Prophecy
+		{ id = 16811 }, -- Boots of Prophecy
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 47198 }, -- Coronet of Prophecy
+		{ id = 47199 }, -- Shoulderpads of Prophecy
+		{ id = 47200 }, -- Raiments of Prophecy
+		{ id = 47201 }, -- Bracers of Prophecy
+		{ id = 47202 }, -- Handguards of Prophecy
+		{ id = 47203 }, -- Sash of Prophecy
+		{ id = 47204 }, -- Pants of Prophecy
+		{ id = 47205 }, -- Sandals of Prophecy
 	},
 	T1Warlock = {
-		{ 0, "Spell_Shadow_CurseOfTounges", "=q11=#t1s8#", "" },
-		{ 0, "", "", "" },
-		{ 16808, "INV_Helmet_08", "=q4=Felheart Horns", "=ds=#s1#, #a1# =q7=#db28#" },
-		{ 16807, "INV_Shoulder_23", "=q4=Felheart Shoulder Pads", "=ds=#s3#, #a1# =q7=#db29#" },
-		{ 16809, "INV_Chest_Cloth_09", "=q4=Felheart Robes", "=ds=#s5#, #a1# =q7=#db32#" },
-		{ 16804, "INV_Bracer_07", "=q4=Felheart Bracers", "=ds=#s8#, #a1# =q7=#x34# (#z1#)" },
-		{ 16805, "INV_Gauntlets_19", "=q4=Felheart Gloves", "=ds=#s9#, #a1# =q7=#db25#" },
-		{ 16806, "INV_Belt_13", "=q4=Felheart Belt", "=ds=#s10#, #a1# =q7=#x34# (#z1#)" },
-		{ 16810, "INV_Pants_Cloth_14", "=q4=Felheart Pants", "=ds=#s11#, #a1# =q7=#db26#" },
-		{ 16803, "INV_Boots_Cloth_05", "=q4=Felheart Slippers", "=ds=#s12#, #a1# =q7=#db30#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47276, "INV_Helmet_08", "=q4=Felheart Crown", "=ds=#s1#, #a1#" },
-		{ 47277, "INV_Shoulder_23", "=q4=Felheart Mantle", "=ds=#s3#, #a1#" },
-		{ 47278, "INV_Chest_Cloth_09", "=q4=Felheart Raiments", "=ds=#s5#, #a1#" },
-		{ 47279, "INV_Bracer_07", "=q4=Felheart Bindings", "=ds=#s8#, #a1#" },
-		{ 47280, "INV_Gauntlets_19", "=q4=Felheart Handwraps", "=ds=#s9#, #a1#" },
-		{ 47281, "INV_Belt_13", "=q4=Felheart Sash", "=ds=#s10#, #a1#" },
-		{ 47282, "INV_Pants_Cloth_14", "=q4=Felheart Leggings", "=ds=#s11#, #a1#" },
-		{ 47283, "INV_Boots_Cloth_05", "=q4=Felheart Boots", "=ds=#s12#, #a1#" },
-	},
-	T1WarlockC = {{
-			{ 16808, "=ds=#s1#, #a1# =q7=#db28#" },
-			{ 16807, "=ds=#s3#, #a1# =q7=#db29#" },
-			{ 16809, "=ds=#s5#, #a1# =q7=#db32#" },
-			{ 16804, "=ds=#s8#, #a1# =q7=#x34# #z1#" },
-			{ 16805, "=ds=#s9#, #a1# =q7=#db25#" },
-			{ 16806, "=ds=#s10#, #a1# =q7=#x34# #z1#" },
-			{ 16810, "=ds=#s11#, #a1# =q7=#db26#" },
-			{ 16803, "=ds=#s12#, #a1# =q7=#db30#" },
-		},{
-			{ 47276, "=ds=#s1#, #a1#" },
-			{ 47277, "=ds=#s3#, #a1#" },
-			{ 47278, "=ds=#s5#, #a1#" },
-			{ 47279, "=ds=#s8#, #a1#" },
-			{ 47280, "=ds=#s9#, #a1#" },
-			{ 47281, "=ds=#s10#, #a1#" },
-			{ 47282, "=ds=#s11#, #a1#" },
-			{ 47283, "=ds=#s12#, #a1#" },
-		}
+		{ name = BIS["Felheart Raiment"], icon = "Spell_Shadow_CurseOfTounges" },
+		{},
+		{ id = 16808 }, -- Felheart Horns
+		{ id = 16807 }, -- Felheart Shoulder Pads
+		{ id = 16809 }, -- Felheart Robes
+		{ id = 16804 }, -- Felheart Bracers
+		{ id = 16805 }, -- Felheart Gloves
+		{ id = 16806 }, -- Felheart Belt
+		{ id = 16810 }, -- Felheart Pants
+		{ id = 16803 }, -- Felheart Slippers
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 47276 }, -- Felheart Crown
+		{ id = 47277 }, -- Felheart Mantle
+		{ id = 47278 }, -- Felheart Raiments
+		{ id = 47279 }, -- Felheart Bindings
+		{ id = 47280 }, -- Felheart Handwraps
+		{ id = 47281 }, -- Felheart Sash
+		{ id = 47282 }, -- Felheart Leggings
+		{ id = 47283 }, -- Felheart Boots
 	},
 	T1Rogue = {
-		{ 0, "Ability_BackStab", "=q12=#t1s6#", "" },
-		{ 0, "", "", "" },
-		{ 16821, "INV_Helmet_41", "=q4=Nightslayer Cover", "=ds=#s1#, #a2# =q7=#db28#" },
-		{ 16823, "INV_Shoulder_25", "=q4=Nightslayer Shoulder Pads", "=ds=#s3#, #a2# =q7=#db31#" },
-		{ 16820, "INV_Chest_Cloth_07", "=q4=Nightslayer Chestpiece", "=ds=#s5#, #a2# =q7=#db32#" },
-		{ 16825, "INV_Bracer_02", "=q4=Nightslayer Bracelets", "=ds=#s8#, #a2# =q7=#x34# (#z1#)" },
-		{ 16826, "INV_Gauntlets_21", "=q4=Nightslayer Gloves", "=ds=#s9#, #a2# =q7=#db27#" },
-		{ 16827, "INV_Belt_23", "=q4=Nightslayer Belt", "=ds=#s10#, #a2# =q7=#x34# (#z1#)" },
-		{ 16822, "INV_Pants_06", "=q4=Nightslayer Pants", "=ds=#s11#, #a2# =q7=#db26#" },
-		{ 16824, "INV_Boots_08", "=q4=Nightslayer Boots", "=ds=#s12#, #a2# =q7=#db30#" }
-	},
-	T1RogueC = {{
-			{ 16821, "=ds=#s1#, #a2# =q7=#db28#" },
-			{ 16823, "=ds=#s3#, #a2# =q7=#db31#" },
-			{ 16820, "=ds=#s5#, #a2# =q7=#db32#" },
-			{ 16825, "=ds=#s8#, #a2# =q7=#x34# #z1#" },
-			{ 16826, "=ds=#s9#, #a2# =q7=#db27#" },
-			{ 16827, "=ds=#s10#, #a2# =q7=#x34# #z1#" },
-			{ 16822, "=ds=#s11#, #a2# =q7=#db26#" },
-			{ 16824, "=ds=#s12#, #a2# =q7=#db30#" },
-		}
+		{ name = BIS["Nightslayer Armor"], icon = "Ability_BackStab" },
+		{},
+		{ id = 16821 }, -- Nightslayer Cover
+		{ id = 16823 }, -- Nightslayer Shoulder Pads
+		{ id = 16820 }, -- Nightslayer Chestpiece
+		{ id = 16825 }, -- Nightslayer Bracelets
+		{ id = 16826 }, -- Nightslayer Gloves
+		{ id = 16827 }, -- Nightslayer Belt
+		{ id = 16822 }, -- Nightslayer Pants
+		{ id = 16824 }, -- Nightslayer Boots
 	},
 	T1Druid = {
-		{ 0, "Spell_Nature_Regeneration", "=q13=#t1s1#", "" },
-		{ 0, "", "", "" },
-		{ 16834, "INV_Helmet_09", "=q4=Cenarion Helm", "=ds=#s1#, #a2# =q7=#db28#" },
-		{ 16836, "INV_Shoulder_07", "=q4=Cenarion Spaulders", "=ds=#s3#, #a2# =q7=#db29#" },
-		{ 16833, "INV_Chest_Cloth_06", "=q4=Cenarion Vestments", "=ds=#s5#, #a2# =q7=#db32#" },
-		{ 16830, "INV_Bracer_03", "=q4=Cenarion Bracers", "=ds=#s8#, #a2# =q7=#x34# (#z1#)" },
-		{ 16831, "INV_Gauntlets_07", "=q4=Cenarion Gloves", "=ds=#s9#, #a2# =q7=#db30#" },
-		{ 16828, "INV_Belt_06", "=q4=Cenarion Belt", "=ds=#s10#, #a2# =q7=#x34# (#z1#)" },
-		{ 16835, "INV_Pants_06", "=q4=Cenarion Leggings", "=ds=#s11#, #a2# =q7=#db26#" },
-		{ 16829, "INV_Boots_08", "=q4=Cenarion Boots", "=ds=#s12#, #a2# =q7=#db25#" },
-		{ 0, "", "", "" },
-		{ 47330, "INV_Helmet_09", "=q4=Cenarion Circlet", "=ds=#s1#, #a2#" },
-		{ 47331, "INV_Shoulder_07", "=q4=Cenarion Mantle", "=ds=#s3#, #a2#" },
-		{ 47332, "INV_Chest_Cloth_06", "=q4=Cenarion Vest", "=ds=#s5#, #a2#" },
-		{ 47333, "INV_Bracer_03", "=q4=Cenarion Wristbands", "=ds=#s8#, #a2#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47338, "INV_Helmet_09", "=q4=Cenarion Helmet", "=ds=#s1#, #a2#" },
-		{ 47339, "INV_Shoulder_07", "=q4=Cenarion Shoulderpads", "=ds=#s3#, #a2#" },
-		{ 47340, "INV_Chest_Cloth_06", "=q4=Cenarion Raiments", "=ds=#s5#, #a2#" },
-		{ 47341, "INV_Bracer_03", "=q4=Cenarion Wristguards", "=ds=#s8#, #a2#" },
-		{ 47342, "INV_Gauntlets_07", "=q4=Cenarion Handguards", "=ds=#s9#, #a2#" },
-		{ 47343, "INV_Belt_06", "=q4=Cenarion Girdle", "=ds=#s10#, #a2#" },
-		{ 47344, "INV_Pants_06", "=q4=Cenarion Pants", "=ds=#s11#, #a2#" },
-		{ 47345, "INV_Boots_08", "=q4=Cenarion Treads", "=ds=#s12#, #a2#" },
-		{ 0, "", "", "" },
-		{ 47334, "INV_Gauntlets_07", "=q4=Cenarion Handwraps", "=ds=#s9#, #a2#" },
-		{ 47335, "INV_Belt_06", "=q4=Cenarion Sash", "=ds=#s10#, #a2#" },
-		{ 47336, "INV_Pants_06", "=q4=Cenarion Trousers", "=ds=#s11#, #a2#" },
-		{ 47337, "INV_Boots_08", "=q4=Cenarion Slippers", "=ds=#s12#, #a2#" },
-	},
-	T1DruidC = {{
-			{ 16834, "=ds=#s1#, #a2# =q7=#db28#" },
-			{ 16836, "=ds=#s3#, #a2# =q7=#db29#" },
-			{ 16833, "=ds=#s5#, #a2# =q7=#db32#" },
-			{ 16830, "=ds=#s8#, #a2# =q7=#x34# #z1#" },
-			{ 16831, "=ds=#s9#, #a2# =q7=#db30#" },
-			{ 16828, "=ds=#s10#, #a2# =q7=#x34# #z1#" },
-			{ 16835, "=ds=#s11#, #a2# =q7=#db26#" },
-			{ 16829, "=ds=#s12#, #a2# =q7=#db25#" },
-		},{
-			{ 47330, "=ds=#s1#, #a2#" },
-			{ 47331, "=ds=#s3#, #a2#" },
-			{ 47332, "=ds=#s5#, #a2#" },
-			{ 47333, "=ds=#s8#, #a2#" },
-			{ 47334, "=ds=#s9#, #a2#" },
-			{ 47335, "=ds=#s10#, #a2#" },
-			{ 47336, "=ds=#s11#, #a2#" },
-			{ 47337, "=ds=#s12#, #a2#" },
-		},{
-			{ 47338, "=ds=#s1#, #a2#" },
-			{ 47339, "=ds=#s3#, #a2#" },
-			{ 47340, "=ds=#s5#, #a2#" },
-			{ 47341, "=ds=#s8#, #a2#" },
-			{ 47342, "=ds=#s9#, #a2#" },
-			{ 47343, "=ds=#s10#, #a2#" },
-			{ 47344, "=ds=#s11#, #a2#" },
-			{ 47345, "=ds=#s12#, #a2#" },
-		}
+		{ name = BIS["Cenarion Raiment"], icon = "Spell_Nature_Regeneration" },
+		{},
+		{ id = 16834 }, -- Cenarion Helm
+		{ id = 16836 }, -- Cenarion Spaulders
+		{ id = 16833 }, -- Cenarion Vestments
+		{ id = 16830 }, -- Cenarion Bracers
+		{ id = 16831 }, -- Cenarion Gloves
+		{ id = 16828 }, -- Cenarion Belt
+		{ id = 16835 }, -- Cenarion Leggings
+		{ id = 16829 }, -- Cenarion Boots
+		{},
+		{ id = 47330 }, -- Cenarion Circlet
+		{ id = 47331 }, -- Cenarion Mantle
+		{ id = 47332 }, -- Cenarion Vest
+		{ id = 47333 }, -- Cenarion Wristbands
+		{},
+		{},
+		{ id = 47338 }, -- Cenarion Helmet
+		{ id = 47339 }, -- Cenarion Shoulderpads
+		{ id = 47340 }, -- Cenarion Raiments
+		{ id = 47341 }, -- Cenarion Wristguards
+		{ id = 47342 }, -- Cenarion Handguards
+		{ id = 47343 }, -- Cenarion Girdle
+		{ id = 47344 }, -- Cenarion Pants
+		{ id = 47345 }, -- Cenarion Treads
+		{},
+		{ id = 47334 }, -- Cenarion Handwraps
+		{ id = 47335 }, -- Cenarion Sash
+		{ id = 47336 }, -- Cenarion Trousers
+		{ id = 47337 }, -- Cenarion Slippers
 	},
 	T1Shaman = {
-		{ 0, "Spell_FireResistanceTotem_01", "=q15=#t1s7#", "" },
-		{ 0, "", "", "" },
-		{ 16842, "INV_Helmet_09", "=q4=Earthfury Helmet", "=ds=#s1#, #a3# =q7=#db28#" },
-		{ 16844, "INV_Shoulder_29", "=q4=Earthfury Epaulets", "=ds=#s3#, #a3# =q7=#db29#" },
-		{ 16841, "INV_Chest_Chain_11", "=q4=Earthfury Vestments", "=ds=#s5#, #a3# =q7=#db32#" },
-		{ 16840, "INV_Bracer_16", "=q4=Earthfury Bracers", "=ds=#s8#, #a3# =q7=#x34# (#z1#)" },
-		{ 16839, "INV_Gauntlets_11", "=q4=Earthfury Gloves", "=ds=#s9#, #a3# =q7=#db27#" },
-		{ 16838, "INV_Belt_14", "=q4=Earthfury Belt", "=ds=#s10#, #a3# =q7=#x34# (#z1#)" },
-		{ 16843, "INV_Pants_03", "=q4=Earthfury Legguards", "=ds=#s11#, #a3# =q7=#db26#" },
-		{ 16837, "INV_Boots_Plate_06", "=q4=Earthfury Boots", "=ds=#s12#, #a3# =q7=#db25#" },
-		{ 0, "", "", "" },
-		{ 47120, "INV_Helmet_09", "=q4=Earthfury Crown", "=ds=#s1#, #a3#" },
-		{ 47121, "INV_Shoulder_29", "=q4=Earthfury Pauldrons", "=ds=#s3#, #a3#" },
-		{ 47122, "INV_Chest_Chain_11", "=q4=Earthfury Breastplate", "=ds=#s5#, #a3#" },
-		{ 47123, "INV_Bracer_16", "=q4=Earthfury Bracelets", "=ds=#s8#, #a3#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47128, "INV_Helmet_09", "=q4=Earthfury Visor", "=ds=#s1#, #a3#" },
-		{ 47129, "INV_Shoulder_29", "=q4=Earthfury Epaulets", "=ds=#s3#, #a3#" },
-		{ 47130, "INV_Chest_Chain_11", "=q4=Earthfury Raiments", "=ds=#s5#, #a3#" },
-		{ 47131, "INV_Bracer_16", "=q4=Earthfury Bindings", "=ds=#s8#, #a3#" },
-		{ 47132, "INV_Gauntlets_11", "=q4=Earthfury Gauntlets", "=ds=#s9#, #a3#" },
-		{ 47133, "INV_Belt_14", "=q4=Earthfury Sash", "=ds=#s10#, #a3#" },
-		{ 47134, "INV_Pants_03", "=q4=Earthfury Legplates", "=ds=#s11#, #a3#" },
-		{ 47135, "INV_Boots_Plate_06", "=q4=Earthfury Greaves", "=ds=#s12#, #a3#" },
-		{ 0, "", "", "" },
-		{ 47124, "INV_Gauntlets_11", "=q4=Earthfury Fists", "=ds=#s9#, #a3#" },
-		{ 47125, "INV_Belt_14", "=q4=Earthfury Girdle", "=ds=#s10#, #a3#" },
-		{ 47126, "INV_Pants_03", "=q4=Earthfury Leggings", "=ds=#s11#, #a3#" },
-		{ 47127, "INV_Boots_Plate_06", "=q4=Earthfury Sabatons", "=ds=#s12#, #a3#" },
-	},
-	T1ShamanC = {{
-			{ 16842, "=ds=#s1#, #a3# =q7=#db28#" },
-			{ 16844, "=ds=#s3#, #a3# =q7=#db29#" },
-			{ 16841, "=ds=#s5#, #a3# =q7=#db32#" },
-			{ 16840, "=ds=#s8#, #a3# =q7=#x34# #z1#" },
-			{ 16839, "=ds=#s9#, #a3# =q7=#db27#" },
-			{ 16838, "=ds=#s10#, #a3# =q7=#x34# #z1#" },
-			{ 16843, "=ds=#s11#, #a3# =q7=#db26#" },
-			{ 16837, "=ds=#s12#, #a3# =q7=#db25#" },
-		},{
-			{ 47120, "=ds=#s1#, #a3#" },
-			{ 47121, "=ds=#s3#, #a3#" },
-			{ 47122, "=ds=#s5#, #a3#" },
-			{ 47123, "=ds=#s8#, #a3#" },
-			{ 47124, "=ds=#s9#, #a3#" },
-			{ 47125, "=ds=#s10#, #a3#" },
-			{ 47126, "=ds=#s11#, #a3#" },
-			{ 47127, "=ds=#s12#, #a3#" },
-		},{
-			{ 47128, "=ds=#s1#, #a3#" },
-			{ 47129, "=ds=#s3#, #a3#" },
-			{ 47130, "=ds=#s5#, #a3#" },
-			{ 47131, "=ds=#s8#, #a3#" },
-			{ 47132, "=ds=#s9#, #a3#" },
-			{ 47133, "=ds=#s10#, #a3#" },
-			{ 47134, "=ds=#s11#, #a3#" },
-			{ 47135, "=ds=#s12#, #a3#" },
-		}
+		{ name = BIS["The Earthfury"], icon = "Spell_FireResistanceTotem_01" },
+		{},
+		{ id = 16842 }, -- Earthfury Helmet
+		{ id = 16844 }, -- Earthfury Epaulets
+		{ id = 16841 }, -- Earthfury Vestments
+		{ id = 16840 }, -- Earthfury Bracers
+		{ id = 16839 }, -- Earthfury Gloves
+		{ id = 16838 }, -- Earthfury Belt
+		{ id = 16843 }, -- Earthfury Legguards
+		{ id = 16837 }, -- Earthfury Boots
+		{},
+		{ id = 47120 }, -- Earthfury Crown
+		{ id = 47121 }, -- Earthfury Pauldrons
+		{ id = 47122 }, -- Earthfury Breastplate
+		{ id = 47123 }, -- Earthfury Bracelets
+		{},
+		{},
+		{ id = 47128 }, -- Earthfury Visor
+		{ id = 47129 }, -- Earthfury Epaulets
+		{ id = 47130 }, -- Earthfury Raiments
+		{ id = 47131 }, -- Earthfury Bindings
+		{ id = 47132 }, -- Earthfury Gauntlets
+		{ id = 47133 }, -- Earthfury Sash
+		{ id = 47134 }, -- Earthfury Legplates
+		{ id = 47135 }, -- Earthfury Greaves
+		{},
+		{ id = 47124 }, -- Earthfury Fists
+		{ id = 47125 }, -- Earthfury Girdle
+		{ id = 47126 }, -- Earthfury Leggings
+		{ id = 47127 }, -- Earthfury Sabatons
 	},
 	T1Hunter = {
-		{ 0, "Ability_Hunter_RunningShot", "=q14=#t1s2#", "" },
-		{ 0, "", "", "" },
-		{ 16846, "INV_Helmet_05", "=q4=Giantstalker's Helmet", "=ds=#s1#, #a3# =q7=#db28#" },
-		{ 16848, "INV_Shoulder_10", "=q4=Giantstalker's Epaulets", "=ds=#s3#, #a3# =q7=#db31#" },
-		{ 16845, "INV_Chest_Chain_03", "=q4=Giantstalker's Breastplate", "=ds=#s5#, #a3# =q7=#db32#" },
-		{ 16850, "INV_Bracer_17", "=q4=Giantstalker's Bracers", "=ds=#s8#, #a3# =q7=#x34# (#z1#)" },
-		{ 16852, "INV_Gauntlets_10", "=q4=Giantstalker's Gloves", "=ds=#s9#, #a3# =q7=#db30#" },
-		{ 16851, "INV_Belt_28", "=q4=Giantstalker's Belt", "=ds=#s10#, #a3# =q7=#x34# (#z1#)" },
-		{ 16847, "INV_Pants_Mail_03", "=q4=Giantstalker's Leggings", "=ds=#s11#, #a3# =q7=#db26#" },
-		{ 16849, "INV_Boots_Chain_13", "=q4=Giantstalker's Boots", "=ds=#s12#, #a3# =q7=#db27#" }
-	},
-	T1HunterC = {{
-			{ 16846, "=ds=#s1#, #a3# =q7=#db28#" },
-			{ 16848, "=ds=#s3#, #a3# =q7=#db31#" },
-			{ 16845, "=ds=#s5#, #a3# =q7=#db32#" },
-			{ 16850, "=ds=#s8#, #a3# =q7=#x34# #z1#" },
-			{ 16852, "=ds=#s9#, #a3# =q7=#db30#" },
-			{ 16851, "=ds=#s10#, #a3# =q7=#x34# #z1#" },
-			{ 16847, "=ds=#s11#, #a3# =q7=#db26#" },
-			{ 16849, "=ds=#s12#, #a3# =q7=#db27#" },
-		}
+		{ name = BIS["Giantstalker Armor"], icon = "Ability_Hunter_RunningShot" },
+		{},
+		{ id = 16846 }, -- Giantstalker's Helmet
+		{ id = 16848 }, -- Giantstalker's Epaulets
+		{ id = 16845 }, -- Giantstalker's Breastplate
+		{ id = 16850 }, -- Giantstalker's Bracers
+		{ id = 16852 }, -- Giantstalker's Gloves
+		{ id = 16851 }, -- Giantstalker's Belt
+		{ id = 16847 }, -- Giantstalker's Leggings
+		{ id = 16849 }, -- Giantstalker's Boots
 	},
 	T1Warrior = {
-		{ 0, "INV_Shield_05", "=q17=#t1s9#", "" },
-		{ 0, "", "", "" },
-		{ 16866, "INV_Helmet_09", "=q4=Helm of Might", "=ds=#s1#, #a4# =q7=#db28#" },
-		{ 16868, "INV_Shoulder_15", "=q4=Pauldrons of Might", "=ds=#s3#, #a4# =q7=#db31#" },
-		{ 16865, "INV_Chest_Plate16", "=q4=Breastplate of Might", "=ds=#s5#, #a4# =q7=#db32#" },
-		{ 16861, "INV_Bracer_19", "=q4=Bracers of Might", "=ds=#s8#, #a4# =q7=#x34# (#z1#)" },
-		{ 16863, "INV_Gauntlets_10", "=q4=Gauntlets of Might", "=ds=#s9#, #a4# =q7=#db25#" },
-		{ 16864, "INV_Belt_09", "=q4=Belt of Might", "=ds=#s10#, #a4# =q7=#x34# (#z1#)" },
-		{ 16867, "INV_Pants_04", "=q4=Legplates of Might", "=ds=#s11#, #a4# =q7=#db26#" },
-		{ 16862, "INV_Boots_Plate_04", "=q4=Sabatons of Might", "=ds=#s12#, #a4# =q7=#db27#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47240, "INV_Helmet_09", "=q4=Crown of Might", "=ds=#s1#, #a4#" },
-		{ 47241, "INV_Shoulder_15", "=q4=Pauldrons of Might", "=ds=#s3#, #a4#" },
-		{ 47242, "INV_Chest_Plate16", "=q4=Chestplate of Might", "=ds=#s5#, #a4#" },
-		{ 47243, "INV_Bracer_19", "=q4=Bracers of Might", "=ds=#s8#, #a4#" },
-		{ 47244, "INV_Gauntlets_10", "=q4=Gauntlets of Might", "=ds=#s9#, #a4#" },
-		{ 47245, "INV_Belt_09", "=q4=Girdle of Might", "=ds=#s10#, #a4#" },
-		{ 47246, "INV_Pants_04", "=q4=Leggings of Might", "=ds=#s11#, #a4#" },
-		{ 47247, "INV_Boots_Plate_04", "=q4=Sabatons of Might", "=ds=#s12#, #a4#" },
-	},
-	T1WarriorC = {{
-			{ 16866, "=ds=#s1#, #a4# =q7=#db28#" },
-			{ 16868, "=ds=#s3#, #a4# =q7=#db31#" },
-			{ 16865, "=ds=#s5#, #a4# =q7=#db32#" },
-			{ 16861, "=ds=#s8#, #a4# =q7=#x34# #z1#" },
-			{ 16863, "=ds=#s9#, #a4# =q7=#db25#" },
-			{ 16864, "=ds=#s10#, #a4# =q7=#x34# #z1#" },
-			{ 16867, "=ds=#s11#, #a4# =q7=#db26#" },
-			{ 16862, "=ds=#s12#, #a4# =q7=#db27#" },
-		},{
-			{ 47240, "=ds=#s1#, #a4#" },
-			{ 47241, "=ds=#s3#, #a4#" },
-			{ 47242, "=ds=#s5#, #a4#" },
-			{ 47243, "=ds=#s8#, #a4#" },
-			{ 47244, "=ds=#s9#, #a4#" },
-			{ 47245, "=ds=#s10#, #a4#" },
-			{ 47246, "=ds=#s11#, #a4#" },
-			{ 47247, "=ds=#s12#, #a4#" },
-		}
+		{ name = BIS["Battlegear of Might"], icon = "INV_Shield_05" },
+		{},
+		{ id = 16866 }, -- Helm of Might
+		{ id = 16868 }, -- Pauldrons of Might
+		{ id = 16865 }, -- Breastplate of Might
+		{ id = 16861 }, -- Bracers of Might
+		{ id = 16863 }, -- Gauntlets of Might
+		{ id = 16864 }, -- Belt of Might
+		{ id = 16867 }, -- Legplates of Might
+		{ id = 16862 }, -- Sabatons of Might
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 47240 }, -- Crown of Might
+		{ id = 47241 }, -- Pauldrons of Might
+		{ id = 47242 }, -- Chestplate of Might
+		{ id = 47243 }, -- Bracers of Might
+		{ id = 47244 }, -- Gauntlets of Might
+		{ id = 47245 }, -- Girdle of Might
+		{ id = 47246 }, -- Leggings of Might
+		{ id = 47247 }, -- Sabatons of Might
 	},
 	T1Paladin = {
-		{ 0, "Spell_Holy_SealOfMight", "=q16=#t1s4#", "" },
-		{ 0, "", "", "" },
-		{ 16854, "INV_Helmet_05", "=q4=Lawbringer Helm", "=ds=#s1#, #a4# =q7=#db28#" },
-		{ 16856, "INV_Shoulder_20", "=q4=Lawbringer Spaulders", "=ds=#s3#, #a4# =q7=#db29#" },
-		{ 16853, "INV_Chest_Plate03", "=q4=Lawbringer Chestguard", "=ds=#s5#, #a4# =q7=#db32#" },
-		{ 16857, "INV_Bracer_18", "=q4=Lawbringer Bracers", "=ds=#s8#, #a4# =q7=#x34# (#z1#)" },
-		{ 16860, "INV_Gauntlets_29", "=q4=Lawbringer Gauntlets", "=ds=#s9#, #a4# =q7=#db27#" },
-		{ 16858, "INV_Belt_27", "=q4=Lawbringer Belt", "=ds=#s10#, #a4# =q7=#x34# (#z1#)" },
-		{ 16855, "INV_Pants_04", "=q4=Lawbringer Legplates", "=ds=#s11#, #a4# =q7=#db26#" },
-		{ 16859, "INV_Boots_Plate_09", "=q4=Lawbringer Boots", "=ds=#s12#, #a4# =q7=#db25#" },
-		{ 0, "", "", "" },
-		{ 47000, "INV_Helmet_05", "=q4=Lawbringer Helmet", "=ds=#s1#, #a4#" },
-		{ 47001, "INV_Shoulder_20", "=q4=Lawbringer Shoulderguards", "=ds=#s3#, #a4#" },
-		{ 47002, "INV_Chest_Plate03", "=q4=Lawbringer Chestguard", "=ds=#s5#, #a4#" },
-		{ 47003, "INV_Bracer_18", "=q4=Lawbringer Wristguards", "=ds=#s8#, #a4#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47008, "INV_Helmet_05", "=q4=Lawbringer Crown", "=ds=#s1#, #a4#" },
-		{ 47009, "INV_Shoulder_20", "=q4=Lawbringer Pauldrons", "=ds=#s3#, #a4#" },
-		{ 47010, "INV_Chest_Plate03", "=q4=Lawbringer Chestplate", "=ds=#s5#, #a4#" },
-		{ 47011, "INV_Bracer_18", "=q4=Lawbringer Bindings", "=ds=#s8#, #a4#" },
-		{ 47012, "INV_Gauntlets_29", "=q4=Lawbringer Gauntlets", "=ds=#s9#, #a4#" },
-		{ 47013, "INV_Belt_27", "=q4=Lawbringer Girdle", "=ds=#s10#, #a4#" },
-		{ 47014, "INV_Pants_04", "=q4=Lawbringer Leggings", "=ds=#s11#, #a4#" },
-		{ 47015, "INV_Boots_Plate_09", "=q4=Lawbringer Sabatons", "=ds=#s12#, #a4#" },
-		{ 0, "", "", "" },
-		{ 47004, "INV_Gauntlets_29", "=q4=Lawbringer Handguards", "=ds=#s9#, #a4#" },
-		{ 47005, "INV_Belt_27", "=q4=Lawbringer Waistguard", "=ds=#s10#, #a4#" },
-		{ 47006, "INV_Pants_04", "=q4=Lawbringer Legguards", "=ds=#s11#, #a4#" },
-		{ 47007, "INV_Boots_Plate_09", "=q4=Lawbringer Greaves", "=ds=#s12#, #a4#" },
-	},
-	T1PaladinC = {{
-			{ 16854, "=ds=#s1#, #a4# =q7=#db28#" },
-			{ 16856, "=ds=#s3#, #a4# =q7=#db29#" },
-			{ 16853, "=ds=#s5#, #a4# =q7=#db32#" },
-			{ 16857, "=ds=#s8#, #a4# =q7=#x34# #z1#" },
-			{ 16860, "=ds=#s9#, #a4# =q7=#db27#" },
-			{ 16858, "=ds=#s10#, #a4# =q7=#x34# #z1#" },
-			{ 16855, "=ds=#s11#, #a4# =q7=#db26#" },
-			{ 16859, "=ds=#s12#, #a4# =q7=#db25#" },
-		},{
-			{ 47000, "=ds=#s1#, #a4#" },
-			{ 47001, "=ds=#s3#, #a4#" },
-			{ 47002, "=ds=#s5#, #a4#" },
-			{ 47003, "=ds=#s8#, #a4#" },
-			{ 47004, "=ds=#s9#, #a4#" },
-			{ 47005, "=ds=#s10#, #a4#" },
-			{ 47006, "=ds=#s11#, #a4#" },
-			{ 47007, "=ds=#s12#, #a4#" },
-		},{
-			{ 47008, "=ds=#s1#, #a4#" },
-			{ 47009, "=ds=#s3#, #a4#" },
-			{ 47010, "=ds=#s5#, #a4#" },
-			{ 47011, "=ds=#s8#, #a4#" },
-			{ 47012, "=ds=#s9#, #a4#" },
-			{ 47013, "=ds=#s10#, #a4#" },
-			{ 47014, "=ds=#s11#, #a4#" },
-			{ 47015, "=ds=#s12#, #a4#" },	
-		}
+		{ name = BIS["Lawbringer Armor"], icon = "Spell_Holy_SealOfMight" },
+		{},
+		{ id = 16854 }, -- Lawbringer Helm
+		{ id = 16856 }, -- Lawbringer Spaulders
+		{ id = 16853 }, -- Lawbringer Chestguard
+		{ id = 16857 }, -- Lawbringer Bracers
+		{ id = 16860 }, -- Lawbringer Gauntlets
+		{ id = 16858 }, -- Lawbringer Belt
+		{ id = 16855 }, -- Lawbringer Legplates
+		{ id = 16859 }, -- Lawbringer Boots
+		{},
+		{ id = 47000 }, -- Lawbringer Helmet
+		{ id = 47001 }, -- Lawbringer Shoulderguards
+		{ id = 47002 }, -- Lawbringer Chestguard
+		{ id = 47003 }, -- Lawbringer Wristguards
+		{},
+		{},
+		{ id = 47008 }, -- Lawbringer Crown
+		{ id = 47009 }, -- Lawbringer Pauldrons
+		{ id = 47010 }, -- Lawbringer Chestplate
+		{ id = 47011 }, -- Lawbringer Bindings
+		{ id = 47012 }, -- Lawbringer Gauntlets
+		{ id = 47013 }, -- Lawbringer Girdle
+		{ id = 47014 }, -- Lawbringer Leggings
+		{ id = 47015 }, -- Lawbringer Sabatons
+		{},
+		{ id = 47004 }, -- Lawbringer Handguards
+		{ id = 47005 }, -- Lawbringer Waistguard
+		{ id = 47006 }, -- Lawbringer Legguards
+		{ id = 47007 }, -- Lawbringer Greaves
 	},
 	T0Mage = {
-		{ 0, "", "", "" },
-		{ 0, "Spell_Frost_IceStorm", "=q10=#t0s3#", "" },
-		{ 0, "", "", "" },
-		{ 16686, "INV_Crown_02", "=q3=Magister's Crown", "=ds=#s1#, #a1# =q7=#db33#" },
-		{ 16689, "INV_Shoulder_23", "=q3=Magister's Mantle", "=ds=#s3#, #a1# =q7=#db36#" },
-		{ 16688,"INV_Chest_Cloth_25","=q3=Magister's Robes", "=ds=#s5#, #a1# =q7=#db35#" },
-		{ 16683, "INV_Jewelry_Ring_23", "=q3=Magister's Bindings", "=ds=#s8#, #a1# =q7=#x34# (#z4#/#z5#)" },
-		{ 16684, "INV_Gauntlets_17", "=q3=Magister's Gloves", "=ds=#s9#, #a1# =q7=#db37#" },
-		{ 16685, "INV_Belt_08", "=q3=Magister's Belt", "=ds=#s10#, #a1# =q7=#x34# (#z2#/#z3#/#z4#)" },
-		{ 16687, "INV_Pants_06", "=q3=Magister's Leggings", "=ds=#s11#, #a1# =q7=#db34#" },
-		{ 16682, "INV_Boots_02", "=q3=Magister's Boots", "=ds=#s12#, #a1# =q7=#db38#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "Spell_Frost_IceStorm", "=q10=#t05s3#", "" },
-		{ 0, "", "", "" },
-		{ 22065, "INV_Crown_02", "=q4=Sorcerer's Crown", "=ds=#s1#, #a1#" },
-		{ 22068, "INV_Shoulder_23", "=q3=Sorcerer's Mantle", "=ds=#s3#, #a1#" },
-		{ 22069, "INV_Chest_Cloth_25","=q4=Sorcerer's Robes", "=ds=#s5#, #a1#" },
-		{ 22063, "INV_Jewelry_Ring_23", "=q3=Sorcerer's Bindings", "=ds=#s8#, #a1#" },
-		{ 22066, "INV_Gauntlets_17", "=q4=Sorcerer's Gloves", "=ds=#s9#, #a1#" },
-		{ 22062, "INV_Belt_08", "=q3=Sorcerer's Belt", "=ds=#s10#, #a1#" },
-		{ 22067, "INV_Pants_06", "=q3=Sorcerer's Leggings", "=ds=#s11#, #a1#" },
-		{ 22064, "INV_Boots_02", "=q4=Sorcerer's Boots", "=ds=#s12#, #a1#" }
-	},
-	T0MageC = {{
-			{ 16686, "=ds=#s1#, #a1#" },{ 16689, "=ds=#s3#, #a1#" },{ 16688, "=ds=#s5#, #a1#" },{ 16683, "=ds=#s8#, #a1#" },
-			{ 16684, "=ds=#s9#, #a1#" },{ 16685, "=ds=#s10#, #a1#" },{ 16687, "=ds=#s11#, #a1#" },{ 16682, "=ds=#s12#, #a1#" }
-		},{
-			{ 22065, "=ds=#s1#, #a1#" },{ 22068, "=ds=#s3#, #a1#" },{ 22069, "=ds=#s5#, #a1#" },{ 22063, "=ds=#s8#, #a1#" },
-			{ 22066, "=ds=#s9#, #a1#" },{ 22062, "=ds=#s10#, #a1#" },{ 22067, "=ds=#s11#, #a1#" },{ 22064, "=ds=#s12#, #a1#" }
-		},
+		{},
+		{ name = BIS["Magister's Regalia"], icon = "Spell_Frost_IceStorm" },
+		{},
+		{ id = 16686 }, -- Magister's Crown
+		{ id = 16689 }, -- Magister's Mantle
+		{ id = 16688 }, -- Magister's Robes
+		{ id = 16683 }, -- Magister's Bindings
+		{ id = 16684 }, -- Magister's Gloves
+		{ id = 16685 }, -- Magister's Belt
+		{ id = 16687 }, -- Magister's Leggings
+		{ id = 16682 }, -- Magister's Boots
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BIS["Sorcerer's Regalia"], icon = "Spell_Frost_IceStorm" },
+		{},
+		{ id = 22065 }, -- Sorcerer's Crown
+		{ id = 22068 }, -- Sorcerer's Mantle
+		{ id = 22069 }, -- Sorcerer's Robes
+		{ id = 22063 }, -- Sorcerer's Bindings
+		{ id = 22066 }, -- Sorcerer's Gloves
+		{ id = 22062 }, -- Sorcerer's Belt
+		{ id = 22067 }, -- Sorcerer's Leggings
+		{ id = 22064 }, -- Sorcerer's Boots
 	},
 	T0Priest = {
-		{ 0, "", "", "" },
-		{ 0, "Spell_Holy_PowerWordShield", "=q9=#t0s5#", "" },
-		{ 0, "", "", "" },
-		{ 16693, "INV_Crown_01", "=q3=Devout Crown", "=ds=#s1#, #a1# =q7=#db33#" },
-		{ 16695, "INV_Shoulder_02", "=q3=Devout Mantle", "=ds=#s3#, #a1# =q7=#db39#" },
-		{ 16690,"INV_Chest_Cloth_11","=q3=Devout Robe", "=ds=#s5#, #a1# =q7=#db35#" },
-		{ 16697, "INV_Belt_31", "=q3=Devout Bracers", "=ds=#s8#, #a1# =q7=#x34# (#z3#)" },
-		{ 16692, "INV_Gauntlets_14", "=q3=Devout Gloves", "=ds=#s9#, #a1# =q7=#db40#" },
-		{ 16696, "INV_Belt_10", "=q3=Devout Belt", "=ds=#s10#, #a1# =q7=#x34# (#z4#/#z5#)" },
-		{ 16694, "INV_Pants_08", "=q3=Devout Skirt", "=ds=#s11#, #a1# =q7=#db34#" },
-		{ 16691, "INV_Boots_05", "=q3=Devout Sandals", "=ds=#s12#, #a1# =q7=#db41#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "Spell_Holy_PowerWordShield", "=q9=#t05s5#", "" },
-		{ 0, "", "", "" },
-		{ 22080, "INV_Crown_01", "=q4=Virtuous Crown", "=ds=#s1#, #a1#" },
-		{ 22082, "INV_Shoulder_02", "=q3=Virtuous Mantle", "=ds=#s3#, #a1#" },
-		{ 22083,"INV_Chest_Cloth_11","=q4=Virtuous Robe", "=ds=#s5#, #a1#" },
-		{ 22079, "INV_Belt_31", "=q3=Virtuous Bracers", "=ds=#s8#, #a1#" },
-		{ 22081, "INV_Gauntlets_14", "=q4=Virtuous Gloves", "=ds=#s9#, #a1#" },
-		{ 22078, "INV_Belt_10", "=q3=Virtuous Belt", "=ds=#s10#, #a1#" },
-		{ 22085, "INV_Pants_08", "=q3=Virtuous Skirt", "=ds=#s11#, #a1#" },
-		{ 22084, "INV_Boots_05", "=q4=Virtuous Sandals", "=ds=#s12#, #a1#" }
-	},
-	T0PriestC = {{
-			{ 16693, "=ds=#s1#, #a1#" },{ 16695, "=ds=#s3#, #a1#" },{ 16690, "=ds=#s5#, #a1#" },{ 16697, "=ds=#s8#, #a1#" },
-			{ 16692, "=ds=#s9#, #a1#" },{ 16696, "=ds=#s10#, #a1#" },{ 16694, "=ds=#s11#, #a1#" },{ 16691, "=ds=#s12#, #a1#" },
-		},{
-			{ 22080, "=ds=#s1#, #a1#" },{ 22082, "=ds=#s3#, #a1#" },{ 22083, "=ds=#s5#, #a1#" },{ 22079, "=ds=#s8#, #a1#" },
-			{ 22081, "=ds=#s9#, #a1#" },{ 22078, "=ds=#s10#, #a1#" },{ 22085, "=ds=#s11#, #a1#" },{ 22084, "=ds=#s12#, #a1#" }
-		},
+		{},
+		{ name = BIS["Vestments of the Devout"], icon = "Spell_Holy_PowerWordShield" },
+		{},
+		{ id = 16693 }, -- Devout Crown
+		{ id = 16695 }, -- Devout Mantle
+		{ id = 16690 }, -- Devout Robe
+		{ id = 16697 }, -- Devout Bracers
+		{ id = 16692 }, -- Devout Gloves
+		{ id = 16696 }, -- Devout Belt
+		{ id = 16694 }, -- Devout Skirt
+		{ id = 16691 }, -- Devout Sandals
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BIS["Vestments of the Virtuous"], icon = "Spell_Holy_PowerWordShield" },
+		{},
+		{ id = 22080 }, -- Virtuous Crown
+		{ id = 22082 }, -- Virtuous Mantle
+		{ id = 22083 }, -- Virtuous Robe
+		{ id = 22079 }, -- Virtuous Bracers
+		{ id = 22081 }, -- Virtuous Gloves
+		{ id = 22078 }, -- Virtuous Belt
+		{ id = 22085 }, -- Virtuous Skirt
+		{ id = 22084 }, -- Virtuous Sandals
 	},
 	T0Warlock = {
-		{ 0, "", "", "" },
-		{ 0, "Spell_Shadow_CurseOfTounges", "=q11=#t0s8#", "" },
-		{ 0, "", "", "" },
-		{ 16698, "INV_Helmet_29", "=q3=Dreadmist Mask", "=ds=#s1#, #a1# =q7=#db33#" },
-		{ 16701, "INV_Misc_Bone_TaurenSkull_01", "=q3=Dreadmist Mantle", "=ds=#s3#, #a1# =q7=#db42#" },
-		{ 16700, "INV_Chest_Cloth_49","=q3=Dreadmist Robe", "=ds=#s5#, #a1# =q7=#db35#" },
-		{ 16703, "INV_Bracer_13", "=q3=Dreadmist Bracers", "=ds=#s8#, #a1# =q7=#x34# (#z4#/#z5#)" },
-		{ 16705, "INV_Gauntlets_32", "=q3=Dreadmist Wraps", "=ds=#s9#, #a1# =q7=#db43#" },
-		{ 16702, "INV_Belt_12", "=q3=Dreadmist Belt", "=ds=#s10#, #a1# =q7=#x34# (#z2#/#z3#)" },
-		{ 16699, "INV_Pants_08", "=q3=Dreadmist Leggings", "=ds=#s11#, #a1#=q7=#db34#" },
-		{ 16704, "INV_Boots_05", "=q3=Dreadmist Sandals", "=ds=#s12#, #a1# =q7=#db44#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "Spell_Shadow_CurseOfTounges", "=q11=#t05s8#", "" },
-		{ 0, "", "", "" },
-		{ 22074, "INV_Helmet_29", "=q4=Deathmist Mask", "=ds=#s1#, #a1#" },
-		{ 22073, "INV_Misc_Bone_TaurenSkull_01", "=q3=Deathmist Mantle", "=ds=#s3#, #a1#" },
-		{ 22075, "INV_Chest_Cloth_49","=q4=Deathmist Robe", "=ds=#s5#, #a1#" },
-		{ 22071, "INV_Bracer_13", "=q3=Deathmist Bracers", "=ds=#s8#, #a1#" },
-		{ 22077, "INV_Gauntlets_32", "=q4=Deathmist Wraps", "=ds=#s9#, #a1#" },
-		{ 22070, "INV_Belt_12", "=q3=Deathmist Belt", "=ds=#s10#, #a1#" },
-		{ 22072, "INV_Pants_08", "=q3=Deathmist Leggings", "=ds=#s11#, #a1#" },
-		{ 22076, "INV_Boots_05", "=q4=Deathmist Sandals", "=ds=#s12#, #a1#" }
-	},
-	T0WarlockC = {{
-			{ 16698, "=ds=#s1#, #a1#" },{ 16701, "=ds=#s3#, #a1#" },{ 16700, "=ds=#s5#, #a1#" },{ 16703, "=ds=#s8#, #a1#" },
-			{ 16705, "=ds=#s9#, #a1#" },{ 16702, "=ds=#s10#, #a1#" },{ 16699, "=ds=#s11#, #a1#" },{ 16704, "=ds=#s12#, #a1#" }
-		},{
-			{ 22074, "=ds=#s1#, #a1#" },{ 22073, "=ds=#s3#, #a1#" },{ 22075, "=ds=#s5#, #a1#" },{ 22071, "=ds=#s8#, #a1#" },
-			{ 22077, "=ds=#s9#, #a1#" },{ 22070, "=ds=#s10#, #a1#" },{ 22072, "=ds=#s11#, #a1#" },{ 22076, "=ds=#s12#, #a1#" }
-		},
+		{},
+		{ name = BIS["Dreadmist Raiment"], icon = "Spell_Shadow_CurseOfTounges" },
+		{},
+		{ id = 16698 }, -- Dreadmist Mask
+		{ id = 16701 }, -- Dreadmist Mantle
+		{ id = 16700 }, -- Dreadmist Robe
+		{ id = 16703 }, -- Dreadmist Bracers
+		{ id = 16705 }, -- Dreadmist Wraps
+		{ id = 16702 }, -- Dreadmist Belt
+		{ id = 16699 }, -- Dreadmist Leggings
+		{ id = 16704 }, -- Dreadmist Sandals
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BIS["Deathmist Raiment"], icon = "Spell_Shadow_CurseOfTounges" },
+		{},
+		{ id = 22074 }, -- Deathmist Mask
+		{ id = 22073 }, -- Deathmist Mantle
+		{ id = 22075 }, -- Deathmist Robe
+		{ id = 22071 }, -- Deathmist Bracers
+		{ id = 22077 }, -- Deathmist Wraps
+		{ id = 22070 }, -- Deathmist Belt
+		{ id = 22072 }, -- Deathmist Leggings
+		{ id = 22076 }, -- Deathmist Sandals
 	},
 	T0Rogue = {
-		{ 0, "", "", "" },
-		{ 0, "Ability_BackStab", "=q12=#t0s6#", "" },
-		{ 0, "", "", "" },
-		{ 16707, "INV_Helmet_41", "=q3=Shadowcraft Cap", "=ds=#s1#, #a2# =q7=#db33#" },
-		{ 16708, "INV_Shoulder_07", "=q3=Shadowcraft Spaulders", "=ds=#s3#, #a2# =q7=#db45#" },
-		{ 16721,"INV_Chest_Leather_07","=q3=Shadowcraft Tunic", "=ds=#s5#, #a2# =q7=#db35#" },
-		{ 16710, "INV_Bracer_07", "=q3=Shadowcraft Bracers", "=ds=#s8#, #a2# =q7=#db46#" },
-		{ 16712, "INV_Gauntlets_24", "=q3=Shadowcraft Gloves", "=ds=#s9#, #a2# =q7=#db47#" },
-		{ 16713, "INV_Belt_03", "=q3=Shadowcraft Belt", "=ds=#s10#, #a2# =q7=#x34# (#z2#/#z3#)" },
-		{ 16709, "INV_Pants_02", "=q3=Shadowcraft Pants", "=ds=#s11#, #a2# =q7=#db34#" },
-		{ 16711, "INV_Boots_08", "=q3=Shadowcraft Boots", "=ds=#s12#, #a2# =q7=#db48#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "Ability_BackStab", "=q12=#t05s6#", "" },
-		{ 0, "", "", "" },
-		{ 22005, "INV_Helmet_41", "=q4=Darkmantle Cap", "=ds=#s1#, #a2#" },
-		{ 22008, "INV_Shoulder_07", "=q3=Darkmantle Spaulders", "=ds=#s3#, #a2#" },
-		{ 22009,"INV_Chest_Leather_07","=q4=Darkmantle Tunic",  "=ds=#s5#, #a2#" },
-		{ 22004, "INV_Bracer_07", "=q3=Darkmantle Bracers", "=ds=#s8#, #a2#" },
-		{ 22006, "INV_Gauntlets_24", "=q4=Darkmantle Gloves", "=ds=#s9#, #a2#" },
-		{ 22002, "INV_Belt_03", "=q3=Darkmantle Belt", "=ds=#s10#, #a2#" },
-		{ 22007, "INV_Pants_02", "=q3=Darkmantle Pants", "=ds=#s11#, #a2#" },
-		{ 22003, "INV_Boots_08", "=q4=Darkmantle Boots", "=ds=#s12#, #a2#" }
-	},
-	T0RogueC = {{
-			{ 16707, "=ds=#s1#, #a2#" },{ 16708, "=ds=#s3#, #a2#" },{ 16721, "=ds=#s5#, #a2#" },{ 16710, "=ds=#s8#, #a2#" },
-			{ 16712, "=ds=#s9#, #a2#" },{ 16713, "=ds=#s10#, #a2#" },{ 16709, "=ds=#s11#, #a2#" },{ 16711, "=ds=#s12#, #a2#" }
-		},{
-			{ 22005, "=ds=#s1#, #a2#" },{ 22008, "=ds=#s3#, #a2#" },{ 22009, "=ds=#s5#, #a2#" },{ 22004, "=ds=#s8#, #a2#" },
-			{ 22006, "=ds=#s9#, #a2#" },{ 22002, "=ds=#s10#, #a2#" },{ 22007, "=ds=#s11#, #a2#" },{ 22003, "=ds=#s12#, #a2#" }
-		},
+		{},
+		{ name = BIS["Shadowcraft Armor"], icon = "Ability_BackStab" },
+		{},
+		{ id = 16707 }, -- Shadowcraft Cap
+		{ id = 16708 }, -- Shadowcraft Spaulders
+		{ id = 16721 }, -- Shadowcraft Tunic
+		{ id = 16710 }, -- Shadowcraft Bracers
+		{ id = 16712 }, -- Shadowcraft Gloves
+		{ id = 16713 }, -- Shadowcraft Belt
+		{ id = 16709 }, -- Shadowcraft Pants
+		{ id = 16711 }, -- Shadowcraft Boots
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BIS["Darkmantle Armor"], icon = "Ability_BackStab" },
+		{},
+		{ id = 22005 }, -- Darkmantle Cap
+		{ id = 22008 }, -- Darkmantle Spaulders
+		{ id = 22009 }, -- Darkmantle Tunic
+		{ id = 22004 }, -- Darkmantle Bracers
+		{ id = 22006 }, -- Darkmantle Gloves
+		{ id = 22002 }, -- Darkmantle Belt
+		{ id = 22007 }, -- Darkmantle Pants
+		{ id = 22003 }, -- Darkmantle Boots
 	},
 	T0Druid = {
-		{ 0, "", "", "" },
-		{ 0, "Spell_Nature_Regeneration", "=q13=#t0s1#", "" },
-		{ 0, "", "", "" },
-		{ 16720, "INV_Helmet_27", "=q3=Wildheart Cowl", "=ds=#s1#, #a2# =q7=#db33#" },
-		{ 16718, "INV_Shoulder_01", "=q3=Wildheart Spaulders", "=ds=#s3#, #a2# =q7=#db49#" },
-		{ 16706,"INV_Chest_Plate06","=q3=Wildheart Vest", "=ds=#s5#, #a2# =q7=#db35#" },
-		{ 16714, "INV_Bracer_09", "=q3=Wildheart Bracers", "=ds=#s8#, #a2# =q7=#x34# (#z2#/#z3#)" },
-		{ 16717, "INV_Gauntlets_17", "=q3=Wildheart Gloves", "=ds=#s9#, #a2# =q7=#db51#" },
-		{ 16716, "INV_Belt_15", "=q3=Wildheart Belt", "=ds=#s10#, #a2# =q7=#db52#" },
-		{ 16719, "INV_Pants_08", "=q3=Wildheart Kilt", "=ds=#s11#, #a2# =q7=#db34#" },
-		{ 16715, "INV_Boots_08", "=q3=Wildheart Boots", "=ds=#s12#, #a2# =q7=#db50#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "Spell_Nature_Regeneration", "=q13=#t05s1#", "" },
-		{ 0, "", "", "" },
-		{ 22109, "INV_Helmet_27", "=q4=Feralheart Cowl", "=ds=#s1#, #a2#" },
-		{ 22112, "INV_Shoulder_01", "=q3=Feralheart Spaulders",  "=ds=#s3#, #a2#" },
-		{ 22113,"INV_Chest_Plate06","=q4=Feralheart Vest", "=ds=#s5#, #a2#" },
-		{ 22108, "INV_Bracer_09", "=q3=Feralheart Bracers", "=ds=#s8#, #a2#" },
-		{ 22110, "INV_Gauntlets_17", "=q4=Feralheart Gloves", "=ds=#s9#, #a2#" },
-		{ 22106, "INV_Belt_15", "=q3=Feralheart Belt", "=ds=#s10#, #a2#" },
-		{ 22111, "INV_Pants_08", "=q3=Feralheart Kilt", "=ds=#s11#, #a2#" },
-		{ 22107, "INV_Boots_08", "=q4=Feralheart Boots", "=ds=#s12#, #a2#" }
-	},
-	T0DruidC = {{
-			{ 16720, "=ds=#s1#, #a2#" },{ 16718, "=ds=#s3#, #a2#" },{ 16706, "=ds=#s5#, #a2#" },{ 16714, "=ds=#s8#, #a2#" },
-			{ 16717, "=ds=#s9#, #a2#" },{ 16716, "=ds=#s10#, #a2#" },{ 16719, "=ds=#s11#, #a2#" },{ 16715, "=ds=#s12#, #a2#" }
-		},{
-			{ 22109, "=ds=#s1#, #a2#" },{ 22112, "=ds=#s3#, #a2#" },{ 22113, "=ds=#s5#, #a2#" },{ 22108, "=ds=#s8#, #a2#" },
-			{ 22110, "=ds=#s9#, #a2#" },{ 22106, "=ds=#s10#, #a2#" },{ 22111, "=ds=#s11#, #a2#" },{ 22107, "=ds=#s12#, #a2#" }
-		},
+		{},
+		{ name = BIS["Wildheart Raiment"], icon = "Spell_Nature_Regeneration" },
+		{},
+		{ id = 16720 }, -- Wildheart Cowl
+		{ id = 16718 }, -- Wildheart Spaulders
+		{ id = 16706 }, -- Wildheart Vest
+		{ id = 16714 }, -- Wildheart Bracers
+		{ id = 16717 }, -- Wildheart Gloves
+		{ id = 16716 }, -- Wildheart Belt
+		{ id = 16719 }, -- Wildheart Kilt
+		{ id = 16715 }, -- Wildheart Boots
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BIS["Feralheart Raiment"], icon = "Spell_Nature_Regeneration" },
+		{},
+		{ id = 22109 }, -- Feralheart Cowl
+		{ id = 22112 }, -- Feralheart Spaulders
+		{ id = 22113 }, -- Feralheart Vest
+		{ id = 22108 }, -- Feralheart Bracers
+		{ id = 22110 }, -- Feralheart Gloves
+		{ id = 22106 }, -- Feralheart Belt
+		{ id = 22111 }, -- Feralheart Kilt
+		{ id = 22107 }, -- Feralheart Boots
 	},
 	T0Hunter = {
-		{ 0, "", "", "" },
-		{ 0, "Ability_Hunter_RunningShot", "=q14=#t0s2#", "" },
-		{ 0, "", "", "" },
-		{ 16677, "INV_Helmet_24", "=q3=Beaststalker's Cap", "=ds=#s1#, #a3# =q7=#db33#" },
-		{ 16679, "INV_Shoulder_10", "=q3=Beaststalker's Mantle", "=ds=#s3#, #a3# =q7=#db53#" },
-		{ 16674, "INV_Chest_Chain_03","=q3=Beaststalker's Tunic", "=ds=#s5#, #a3# =q7=#db35#" },
-		{ 16681, "INV_Bracer_17", "=q3=Beaststalker's Bindings", "=ds=#s8#, #a3# =q7=#x34# (#z3#/#z5#)" },
-		{ 16676, "INV_Gauntlets_10", "=q3=Beaststalker's Gloves", "=ds=#s9#, #a3# =q7=#db54#" },
-		{ 16680, "INV_Belt_28", "=q3=Beaststalker's Belt", "=ds=#s10#, #a3# =q7=#x34# (#z2#/#z3#)" },
-		{ 16678, "INV_Pants_03", "=q3=Beaststalker's Pants", "=ds=#s11#, #a3# =q7=#db34#" },
-		{ 16675, "INV_Boots_Plate_07", "=q3=Beaststalker's Boots", "=ds=#s12#, #a3# =q7=#db55#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "Ability_Hunter_RunningShot", "=q14=#t05s2#", "" },
-		{ 0, "", "", "" },
-		{ 22013, "INV_Helmet_24", "=q4=Beastmaster's Cap", "=ds=#s1#, #a3#" },
-		{ 22016, "INV_Shoulder_10", "=q3=Beastmaster's Mantle", "=ds=#s3#, #a3#" },
-		{ 22060, "INV_Chest_Chain_03","=q4=Beastmaster's Tunic", "=ds=#s5#, #a3#" },
-		{ 22011, "INV_Bracer_17", "=q3=Beastmaster's Bindings", "=ds=#s8#, #a3#" },
-		{ 22015, "INV_Gauntlets_10", "=q4=Beastmaster's Gloves", "=ds=#s9#, #a3#" },
-		{ 22010, "INV_Belt_28", "=q3=Beastmaster's Belt", "=ds=#s10#, #a3#" },
-		{ 22017, "INV_Pants_03", "=q3=Beastmaster's Pants", "=ds=#s11#, #a3#" },
-		{ 22061, "INV_Boots_Plate_07", "=q4=Beastmaster's Boots", "=ds=#s12#, #a3#" }
-	},
-	T0HunterC = {{
-			{ 16677, "=ds=#s1#, #a3#" },{ 16679, "=ds=#s3#, #a3#" },{ 16674, "=ds=#s5#, #a3#" },{ 16681, "=ds=#s8#, #a3#" },
-			{ 16676, "=ds=#s9#, #a3#" },{ 16680, "=ds=#s10#, #a3#" },{ 16678, "=ds=#s11#, #a3#" },{ 16675, "=ds=#s12#, #a3#" }
-		},{
-			{ 22013, "=ds=#s1#, #a3#" },{ 22016, "=ds=#s3#, #a3#" },{ 22060, "=ds=#s5#, #a3#" },{ 22011, "=ds=#s8#, #a3#" },
-			{ 22015, "=ds=#s9#, #a3#" },{ 22010, "=ds=#s10#, #a3#" },{ 22017, "=ds=#s11#, #a3#" },{ 22061, "=ds=#s12#, #a3#" }
-		},
+		{},
+		{ name = BIS["Beaststalker Armor"], icon = "Ability_Hunter_RunningShot" },
+		{},
+		{ id = 16677 }, -- Beaststalker's Cap
+		{ id = 16679 }, -- Beaststalker's Mantle
+		{ id = 16674 }, -- Beaststalker's Tunic
+		{ id = 16681 }, -- Beaststalker's Bindings
+		{ id = 16676 }, -- Beaststalker's Gloves
+		{ id = 16680 }, -- Beaststalker's Belt
+		{ id = 16678 }, -- Beaststalker's Pants
+		{ id = 16675 }, -- Beaststalker's Boots
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BIS["Beastmaster Armor"], icon = "Ability_Hunter_RunningShot" },
+		{},
+		{ id = 22013 }, -- Beastmaster's Cap
+		{ id = 22016 }, -- Beastmaster's Mantle
+		{ id = 22060 }, -- Beastmaster's Tunic
+		{ id = 22011 }, -- Beastmaster's Bindings
+		{ id = 22015 }, -- Beastmaster's Gloves
+		{ id = 22010 }, -- Beastmaster's Belt
+		{ id = 22017 }, -- Beastmaster's Pants
+		{ id = 22061 }, -- Beastmaster's Boots
 	},
 	T0Shaman = {
-		{ 0, "", "", "" },
-		{ 0, "Spell_FireResistanceTotem_01", "=q15=#t0s7#", "" },
-		{ 0, "", "", "" },
-		{ 16667, "INV_Helmet_04", "=q3=Coif of Elements", "=ds=#s1#, #a3# =q7=#db33#" },
-		{ 16669,"INV_Shoulder_29","=q3=Pauldrons of Elements", "=ds=#s3#, #a3# =q7=#db56#" },
-		{ 16666,"INV_Chest_Chain_11","=q3=Vest of Elements", "=ds=#s5#, #a3# =q7=#db35#" },
-		{ 16671, "INV_Bracer_02", "=q3=Bindings of Elements", "=ds=#s8#, #a3# =q7=#x34# (#z2#/#z3#)" },
-		{ 16672,"INV_Gauntlets_11","=q3=Gauntlets of Elements", "=ds=#s9#, #a3# =q7=#db57#" },
-		{ 16673, "INV_Belt_16", "=q3=Cord of Elements", "=ds=#s10#, #a3# =q7=#x34# (#z4#/#z5#)" },
-		{ 16668, "INV_Pants_03", "=q3=Kilt of Elements", "=ds=#s11#, #a3# =q7=#db34#" },
-		{ 16670, "INV_Boots_Wolf", "=q3=Boots of Elements", "=ds=#s12#, #a3# =q7=#db58#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "Spell_FireResistanceTotem_01", "=q15=#t05s7#", "" },
-		{ 0, "", "", "" },
-		{ 22097, "INV_Helmet_04", "=q4=Coif of The Five Thunders", "=ds=#s1#, #a3#" },
-		{ 22101,"INV_Shoulder_29","=q3=Pauldrons of The Five Thunders","=ds=#s3#, #a3#" },
-		{ 22102,"INV_Chest_Chain_11","=q4=Vest of The Five Thunders", "=ds=#s5#, #a3#" },
-		{ 22095, "INV_Bracer_02", "=q3=Bindings of The Five Thunders", "=ds=#s8#, #a3#" },
-		{ 22099,"INV_Gauntlets_11","=q4=Gauntlets of The Five Thunders", "=ds=#s9#, #a3#" },
-		{ 22098, "INV_Belt_16", "=q3=Cord of The Five Thunders", "=ds=#s10#, #a3#" },
-		{ 22100, "INV_Pants_03", "=q3=Kilt of The Five Thunders", "=ds=#s11#, #a3#" },
-		{ 22096, "INV_Boots_Wolf", "=q4=Boots of the The Five Thunders", "=ds=#s12#, #a3#" }
-	},
-	T0ShamanC = {{
-			{ 16667, "=ds=#s1#, #a3#" },{ 16669, "=ds=#s3#, #a3#" },{ 16666, "=ds=#s5#, #a3#" },{ 16671, "=ds=#s8#, #a3#" },
-			{ 16672, "=ds=#s9#, #a3#" },{ 16673, "=ds=#s10#, #a3#" },{ 16668, "=ds=#s11#, #a3#" },{ 16670, "=ds=#s12#, #a3#" }
-		},{
-			{ 22097, "=ds=#s1#, #a3#" },{ 22101, "=ds=#s3#, #a3#" },{ 22102, "=ds=#s5#, #a3#" },{ 22095, "=ds=#s8#, #a3#" },
-			{ 22099, "=ds=#s9#, #a3#" },{ 22098, "=ds=#s10#, #a3#" },{ 22100, "=ds=#s11#, #a3#" },{ 22096, "=ds=#s12#, #a3#" }
-		},
+		{},
+		{ name = BIS["The Elements"], icon = "Spell_FireResistanceTotem_01" },
+		{},
+		{ id = 16667 }, -- Coif of Elements
+		{ id = 16669 }, -- Pauldrons of Elements
+		{ id = 16666 }, -- Vest of Elements
+		{ id = 16671 }, -- Bindings of Elements
+		{ id = 16672 }, -- Gauntlets of Elements
+		{ id = 16673 }, -- Cord of Elements
+		{ id = 16668 }, -- Kilt of Elements
+		{ id = 16670 }, -- Boots of Elements
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BIS["The Five Thunders"], icon = "Spell_FireResistanceTotem_01" },
+		{},
+		{ id = 22097 }, -- Coif of The Five Thunders
+		{ id = 22101 }, -- Pauldrons of The Five Thunders
+		{ id = 22102 }, -- Vest of The Five Thunders
+		{ id = 22095 }, -- Bindings of The Five Thunders
+		{ id = 22099 }, -- Gauntlets of The Five Thunders
+		{ id = 22098 }, -- Cord of The Five Thunders
+		{ id = 22100 }, -- Kilt of The Five Thunders
+		{ id = 22096 }, -- Boots of the The Five Thunders
 	},
 	T0Warrior = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Shield_05", "=q17=#t0s9#", "" },
-		{ 0, "", "", "" },
-		{ 16731, "INV_Helmet_02", "=q3=Helm of Valor", "=ds=#s1#, #a4# =q7=#db33#" },
-		{ 16733,"INV_Shoulder_30","=q3=Spaulders of Valor", "=ds=#s3#, #a4# =q7=#db59#" },
-		{ 16730,"INV_Chest_Plate03","=q3=Breastplate of Valor", "=ds=#s5#, #a4# =q7=#db35#" },
-		{ 16735, "INV_Bracer_18", "=q3=Bracers of Valor", "=ds=#s8#, #a4# =q7=#x34# (#z4#/#z5#)" },
-		{ 16737, "INV_Gauntlets_26", "=q3=Gauntlets of Valor", "=ds=#s9#, #a4# =q7=#db60#" },
-		{ 16736, "INV_Belt_34", "=q3=Belt of Valor", "=ds=#s10#, #a4# =q7=#x34# (#z3#/#z4#)" },
-		{ 16732, "INV_Pants_04", "=q3=Legplates of Valor", "=ds=#s11#, #a4# =q7=#db34#" },
-		{ 16734, "INV_Boots_Plate_03", "=q3=Boots of Valor", "=ds=#s12#, #a4# =q7=#db61#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "INV_Shield_05", "=q17=#t05s9#", "" },
-		{ 0, "", "", "" },
-		{ 21999, "INV_Helmet_02", "=q4=Helm of Heroism", "=ds=#s1#, #a4#" },
-		{ 22001,"INV_Shoulder_30","=q3=Spaulders of Heroism","=ds=#s3#, #a4#" },
-		{ 21997,"INV_Chest_Plate03","=q4=Breastplate of Heroism", "=ds=#s5#, #a4#" },
-		{ 21996, "INV_Bracer_18", "=q3=Bracers of Heroism", "=ds=#s8#, #a4#" },
-		{ 21998, "INV_Gauntlets_26", "=q4=Gauntlets of Heroism", "=ds=#s9#, #a4#" },
-		{ 21994, "INV_Belt_34", "=q3=Belt of Heroism", "=ds=#s10#, #a4#" },
-		{ 22000, "INV_Pants_04", "=q3=Legplates of Heroism", "=ds=#s11#, #a4#" },
-		{ 21995, "INV_Boots_Plate_03", "=q4=Boots of Heroism", "=ds=#s12#, #a4#" }
-	},
-	T0WarriorC = {{
-		{ 16731, "=ds=#s1#, #a4#" },{ 16733, "=ds=#s3#, #a4#" },{ 16730, "=ds=#s5#, #a4#" },{ 16735, "=ds=#s8#, #a4#" },
-		{ 16737, "=ds=#s9#, #a4#" },{ 16736, "=ds=#s10#, #a4#" },{ 16732, "=ds=#s11#, #a4#" },{ 16734, "=ds=#s12#, #a4#" }
-	},{
-		{ 21999, "=ds=#s1#, #a4#" },{ 22001, "=ds=#s3#, #a4#" },{ 21997, "=ds=#s5#, #a4#" },{ 21996, "=ds=#s8#, #a4#" },
-		{ 21998, "=ds=#s9#, #a4#" },{ 21994, "=ds=#s10#, #a4#" },{ 22000, "=ds=#s11#, #a4#" },{ 21995, "=ds=#s12#, #a4#" }
-	},
+		{},
+		{ name = BIS["Battlegear of Valor"], icon = "INV_Shield_05" },
+		{},
+		{ id = 16731 }, -- Helm of Valor
+		{ id = 16733 }, -- Spaulders of Valor
+		{ id = 16730 }, -- Breastplate of Valor
+		{ id = 16735 }, -- Bracers of Valor
+		{ id = 16737 }, -- Gauntlets of Valor
+		{ id = 16736 }, -- Belt of Valor
+		{ id = 16732 }, -- Legplates of Valor
+		{ id = 16734 }, -- Boots of Valor
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BIS["Battlegear of Heroism"], icon = "INV_Shield_05" },
+		{},
+		{ id = 21999 }, -- Helm of Heroism
+		{ id = 22001 }, -- Spaulders of Heroism
+		{ id = 21997 }, -- Breastplate of Heroism
+		{ id = 21996 }, -- Bracers of Heroism
+		{ id = 21998 }, -- Gauntlets of Heroism
+		{ id = 21994 }, -- Belt of Heroism
+		{ id = 22000 }, -- Legplates of Heroism
+		{ id = 21995 }, -- Boots of Heroism
 	},
 	T0Paladin = {
-		{ 0, "", "", "" },
-		{ 0, "Spell_Holy_SealOfMight", "=q16=#t0s4#", "" },
-		{ 0, "", "", "" },
-		{ 16727, "INV_Helmet_08", "=q3=Lightforge Helm", "=ds=#s1#, #a4# =q7=#db33#" },
-		{ 16729,"INV_Shoulder_10","=q3=Lightforge Spaulders", "=ds=#s3#, #a4# =q7=#db62#" },
-		{ 16726,"INV_Chest_Plate03","=q3=Lightforge Breastplate", "=ds=#s5#, #a4# =q7=#db35#" },
-		{ 16722, "INV_Bracer_14", "=q3=Lightforge Bracers", "=ds=#s8#, #a4# =q7=#db63#" },
-		{ 16724, "INV_Gauntlets_19", "=q3=Lightforge Gauntlets", "=ds=#s9#, #a4# =q7=#db64#" },
-		{ 16723, "INV_Belt_11", "=q3=Lightforge Belt", "=ds=#s10#, #a4# =q7=#x34# (#z3#)" },
-		{ 16728, "INV_Pants_04", "=q3=Lightforge Legplates", "=ds=#s11#, #a4# =q7=#db34#" },
-		{ 16725, "INV_Boots_Plate_03", "=q3=Lightforge Boots", "=ds=#s12#, #a4# =q7=#db65#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "Spell_Holy_SealOfMight", "=q16=#t05s4#", "" },
-		{ 0, "", "", "" },
-		{ 22091, "INV_Helmet_08", "=q4=Soulforge Helm", "=ds=#s1#, #a4#" },
-		{ 22093, "INV_Shoulder_10","=q3=Soulforge Spaulders", "=ds=#s3#, #a4#" },
-		{ 22089, "INV_Chest_Plate03","=q4=Soulforge Breastplate", "=ds=#s5#, #a4#" },
-		{ 22088, "INV_Bracer_14", "=q3=Soulforge Bracers", "=ds=#s8#, #a4#" },
-		{ 22090, "INV_Gauntlets_19", "=q4=Soulforge Gauntlets", "=ds=#s9#, #a4#" },
-		{ 22086, "INV_Belt_11", "=q3=Soulforge Belt", "=ds=#s10#, #a4#" },
-		{ 22092, "INV_Pants_04", "=q3=Soulforge Legplates", "=ds=#s11#, #a4#" },
-		{ 22087, "INV_Boots_Plate_03", "=q4=Soulforge Boots", "=ds=#s12#, #a4#" }
-	},
-	T0PaladinC = {{
-			{ 16727, "=ds=#s1#, #a4#" },{ 16729, "=ds=#s3#, #a4#" },{ 16726, "=ds=#s5#, #a4#" },{ 16722, "=ds=#s8#, #a4#" },
-			{ 16724, "=ds=#s9#, #a4#" },{ 16723, "=ds=#s10#, #a4#" },{ 16728, "=ds=#s11#, #a4#" },{ 16725, "=ds=#s12#, #a4#" }
-		},{
-			{ 22091, "=ds=#s1#, #a4#" },{ 22093, "=ds=#s3#, #a4#" },{ 22089, "=ds=#s5#, #a4#" },{ 22088, "=ds=#s8#, #a4#" },
-			{ 22090, "=ds=#s9#, #a4#" },{ 22086, "=ds=#s10#, #a4#" },{ 22092, "=ds=#s11#, #a4#" },{ 22087, "=ds=#s12#, #a4#" }
-		},
+		{},
+		{ name = BIS["Lightforge Armor"], icon = "Spell_Holy_SealOfMight" },
+		{},
+		{ id = 16727 }, -- Lightforge Helm
+		{ id = 16729 }, -- Lightforge Spaulders
+		{ id = 16726 }, -- Lightforge Breastplate
+		{ id = 16722 }, -- Lightforge Bracers
+		{ id = 16724 }, -- Lightforge Gauntlets
+		{ id = 16723 }, -- Lightforge Belt
+		{ id = 16728 }, -- Lightforge Legplates
+		{ id = 16725 }, -- Lightforge Boots
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BIS["Soulforge Armor"], icon = "Spell_Holy_SealOfMight" },
+		{},
+		{ id = 22091 }, -- Soulforge Helm
+		{ id = 22093 }, -- Soulforge Spaulders
+		{ id = 22089 }, -- Soulforge Breastplate
+		{ id = 22088 }, -- Soulforge Bracers
+		{ id = 22090 }, -- Soulforge Gauntlets
+		{ id = 22086 }, -- Soulforge Belt
+		{ id = 22092 }, -- Soulforge Legplates
+		{ id = 22087 }, -- Soulforge Boots
 	},
 	ZGMage = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Frost_IceStorm", "=q10=#zgs3#","" },
-		{ 0, "", "", "" },
-		{ 19959, "INV_Jewelry_Necklace_19", "=q4=Hazza'rah's Charm of Magic", "=ds=#s14#" },
-		{ 19601, "INV_Jewelry_Necklace_26", "=q4=Jewel of Kajaro", "=ds=#r5#" },
-		{ 20034, "INV_Chest_Cloth_12", "=q4=Zandalar Illusionist's Robe", "=q4=#x10#=ds=, #r4#" },
-		{ 19845, "INV_Shoulder_17", "=q4=Zandalar Illusionist's Mantle", "=q4=#x11#=ds=, #r3#" },
-		{ 19846, "INV_Bracer_07", "=q4=Zandalar Illusionist's Wraps", "=q4=#x12#=ds=, #r2#" }
-	},
-	ZGMageC = {{
-			{ 19959, "=ds=#s14#" },
-			{ 19601, "=ds=#r5#" },
-			{ 20034, "=q4=#x10#=ds=, #r4#" },
-			{ 19845, "=q4=#x11#=ds=, #r3#" },
-			{ 19846, "=q4=#x12#=ds=, #r2#" },
-		}
+		{},
+		{ name = BIS["Illusionist's Attire"], icon = "Spell_Frost_IceStorm" },
+		{},
+		{ id = 19959 }, -- Hazza'rah's Charm of Magic
+		{ id = 19601 }, -- Jewel of Kajaro
+		{ id = 20034 }, -- Zandalar Illusionist's Robe
+		{ id = 19845 }, -- Zandalar Illusionist's Mantle
+		{ id = 19846 }, -- Zandalar Illusionist's Wraps
 	},
 	ZGWarlock = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Shadow_CurseOfTounges", "=q11=#zgs8#","" },
-		{ 0, "", "", "" },
-		{ 19957, "INV_Jewelry_Necklace_19", "=q4=Hazza'rah's Charm of Destruction", "=ds=#s14#" },
-		{ 19605, "INV_Jewelry_Necklace_26", "=q4=Kezan's Unstoppable Taint", "=ds=#r5#" },
-		{ 20033, "INV_Chest_Cloth_12", "=q4=Zandalar Demoniac's Robe", "=q4=#x10#=ds=, #r4#" },
-		{ 19849, "INV_Shoulder_17", "=q4=Zandalar Demoniac's Mantle", "=q4=#x13#=ds=, #r3#" },
-		{ 19848, "INV_Bracer_07", "=q4=Zandalar Demoniac's Wraps", "=q4=#x14#=ds=, #r2#" }
-	},
-	ZGWarlockC = {{
-			{ 19957, "=ds=#s14#" },
-			{ 19605, "=ds=#r5#" },
-			{ 20033, "=q4=#x10#=ds=, #r4#" },
-			{ 19849, "=q4=#x13#=ds=, #r3#" },
-			{ 19848, "=q4=#x14#=ds=, #r2#" },
-		}
+		{},
+		{ name = BIS["Demoniac's Threads"], icon = "Spell_Shadow_CurseOfTounges" },
+		{},
+		{ id = 19957 }, -- Hazza'rah's Charm of Destruction
+		{ id = 19605 }, -- Kezan's Unstoppable Taint
+		{ id = 20033 }, -- Zandalar Demoniac's Robe
+		{ id = 19849 }, -- Zandalar Demoniac's Mantle
+		{ id = 19848 }, -- Zandalar Demoniac's Wraps
 	},
 	ZGPriest = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Holy_PowerWordShield", "=q9=#zgs5#","" },
-		{ 0, "", "", "" },
-		{ 19958, "INV_Jewelry_Necklace_19", "=q4=Hazza'rah's Charm of Healing", "=ds=#s14#" },
-		{ 19594, "INV_Jewelry_Necklace_26", "=q4=The All-Seeing Eye of Zuldazar", "=ds=#r5#" },
-		{ 19841, "INV_Shoulder_01", "=q4=Zandalar Confessor's Mantle", "=q4=#x15#=ds=, #r4#" },
-		{ 19842, "INV_Belt_08", "=q4=Zandalar Confessor's Bindings", "=q4=#x13#=ds=, #r3#" },
-		{ 19843, "INV_Bracer_07", "=q4=Zandalar Confessor's Wraps", "=q4=#x14#=ds=, #r2#" }
-	},
-	ZGPriestC = {{
-			{ 19958, "=ds=#s14#" },
-			{ 19594, "=ds=#r5#" },
-			{ 19841, "=q4=#x15#=ds=, #r4#" },
-			{ 19842, "=q4=#x13#=ds=, #r3#" },
-			{ 19843, "=q4=#x14#=ds=, #r2#" }
-		},
+		{},
+		{ name = BIS["Confessor's Raiment"], icon = "Spell_Holy_PowerWordShield" },
+		{},
+		{ id = 19958 }, -- Hazza'rah's Charm of Healing
+		{ id = 19594 }, -- The All-Seeing Eye of Zuldazar
+		{ id = 19841 }, -- Zandalar Confessor's Mantle
+		{ id = 19842 }, -- Zandalar Confessor's Bindings
+		{ id = 19843 }, -- Zandalar Confessor's Wraps
 	},
 	ZGRogue = {
-		{ 0, "", "", "" },
-		{ 0,"Ability_BackStab", "=q12=#zgs6#","" },
-		{ 0, "", "", "" },
-		{ 19954, "INV_Jewelry_Necklace_19", "=q4=Renataki's Charm of Trickery", "=ds=#s14#" },
-		{ 19617, "INV_Jewelry_Necklace_26", "=q4=Zandalarian Shadow Mastery Talisman", "=ds=#r5#" },
-		{ 19834, "INV_Chest_Leather_10", "=q4=Zandalar Madcap's Tunic", "=q4=#x15#=ds=, #r4#" },
-		{ 19835, "INV_Shoulder_29", "=q4=Zandalar Madcap's Mantle", "=q4=#x16#=ds=, #r3#" },
-		{ 19836, "INV_Bracer_14", "=q4=Zandalar Madcap's Bracers", "=q4=#x17#=ds=, #r2#" }
-	},
-	ZGRogueC = {{
-			{ 19954, "=ds=#s14#" },
-			{ 19617, "=ds=#r5#" },
-			{ 19834, "=q4=#x15#=ds=, #r4#" },
-			{ 19835, "=q4=#x16#=ds=, #r3#" },
-			{ 19836, "=q4=#x17#=ds=, #r2#" },
-		}
+		{},
+		{ name = BIS["Madcap's Outfit"], icon = "Ability_BackStab" },
+		{},
+		{ id = 19954 }, -- Renataki's Charm of Trickery
+		{ id = 19617 }, -- Zandalarian Shadow Mastery Talisman
+		{ id = 19834 }, -- Zandalar Madcap's Tunic
+		{ id = 19835 }, -- Zandalar Madcap's Mantle
+		{ id = 19836 }, -- Zandalar Madcap's Bracers
 	},
 	ZGDruid = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Nature_Regeneration", "=q13=#zgs1#","" },
-		{ 0, "", "", "" },
-		{ 19955, "INV_Jewelry_Necklace_19", "=q4=Wushoolay's Charm of Nature", "=ds=#s14#" },
-		{ 19613, "INV_Jewelry_Necklace_26", "=q4=Pristine Enchanted South Seas Kelp", "=ds=#r5#" },
-		{ 19838, "INV_Chest_Leather_06", "=q4=Zandalar Haruspex's Tunic", "=q4=#x18#=ds=, #r4#" },
-		{ 19839, "INV_Belt_01", "=q4=Zandalar Haruspex's Belt","=q4=#x13#=ds=, #r3#" },
-		{ 19840, "INV_Bracer_08", "=q4=Zandalar Haruspex's Bracers", "=q4=#x14#=ds=, #r2#" }
-	},
-	ZGDruidC = {{
-			{ 19955, "=ds=#s14#" },
-			{ 19613, "=ds=#r5#" },
-			{ 19838, "=q4=#x18#=ds=, #r4#" },
-			{ 19839, "=q4=#x13#=ds=, #r3#" },
-			{ 19840, "=q4=#x14#=ds=, #r2#" },
-		}
+		{},
+		{ name = BIS["Haruspex's Garb"], icon = "Spell_Nature_Regeneration" },
+		{},
+		{ id = 19955 }, -- Wushoolay's Charm of Nature
+		{ id = 19613 }, -- Pristine Enchanted South Seas Kelp
+		{ id = 19838 }, -- Zandalar Haruspex's Tunic
+		{ id = 19839 }, -- Zandalar Haruspex's Belt
+		{ id = 19840 }, -- Zandalar Haruspex's Bracers
 	},
 	ZGHunter = {
-		{ 0, "", "", "" },
-		{ 0,"Ability_Hunter_RunningShot", "=q14=#zgs2#","" },
-		{ 0, "", "", "" },
-		{ 19953, "INV_Jewelry_Necklace_19", "=q4=Renataki's Charm of Beasts", "=ds=#s14#" },
-		{ 19621, "INV_Jewelry_Necklace_26", "=q4=Maelstrom's Wrath", "=ds=#r5#" },
-		{ 19831, "INV_Shoulder_22", "=q4=Zandalar Predator's Mantle", "=q4=#x15#=ds=, #r4#" },
-		{ 19832, "INV_Belt_19", "=q4=Zandalar Predator's Belt", "=q4=#x11#=ds=, #r3#" },
-		{ 19833, "INV_Bracer_18", "=q4=Zandalar Predator's Bracers", "=q4=#x12#=ds=, #r2#" }
-	},
-	ZGHunterC = {{
-			{ 19953, "=ds=#s14#" },
-			{ 19621, "=ds=#r5#" },
-			{ 19831, "=q4=#x15#=ds=, #r4#" },
-			{ 19832, "=q4=#x11#=ds=, #r3#" },
-			{ 19833, "=q4=#x12#=ds=, #r2#" },
-		}
+		{},
+		{ name = BIS["Predator's Armor"], icon = "Ability_Hunter_RunningShot" },
+		{},
+		{ id = 19953 }, -- Renataki's Charm of Beasts
+		{ id = 19621 }, -- Maelstrom's Wrath
+		{ id = 19831 }, -- Zandalar Predator's Mantle
+		{ id = 19832 }, -- Zandalar Predator's Belt
+		{ id = 19833 }, -- Zandalar Predator's Bracers
 	},
 	ZGShaman = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_FireResistanceTotem_01", "=q15=#zgs7#","" },
-		{ 0, "", "", "" },
-		{ 19956, "INV_Jewelry_Necklace_19", "=q4=Wushoolay's Charm of Spirits", "=ds=#s14#" },
-		{ 19609, "INV_Jewelry_Necklace_26", "=q4=Unmarred Vision of Voodress", "=ds=#r5#" },
-		{ 19828, "INV_Chest_Fur", "=q4=Zandalar Augur's Hauberk", "=q4=#x18#=ds=, #r4#" },
-		{ 19829, "INV_Belt_19", "=q4=Zandalar Augur's Belt", "=q4=#x16#=ds=, #r3#" },
-		{ 19830, "INV_Bracer_15", "=q4=Zandalar Augur's Bracers", "=q4=#x17#=ds=, #r2#" }
+		{},
+		{ name = BIS["Augur's Regalia"], icon = "Spell_FireResistanceTotem_01" },
+		{},
+		{ id = 19956 }, -- Wushoolay's Charm of Spirits
+		{ id = 19609 }, -- Unmarred Vision of Voodress
+		{ id = 19828 }, -- Zandalar Augur's Hauberk
+		{ id = 19829 }, -- Zandalar Augur's Belt
+		{ id = 19830 }, -- Zandalar Augur's Bracers
 	},
-	ZGShamanC = {{
-			{ 19956, "=ds=#s14#" },
-			{ 19609, "=ds=#r5#" },
-			{ 19828, "=q4=#x18#=ds=, #r4#" },
-			{ 19829, "=q4=#x16#=ds=, #r3#" },
-			{ 19830, "=q4=#x17#=ds=, #r2#" },
-		}
-	},
+
 	ZGWarrior = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Shield_05", "=q17=#zgs9#","" },
-		{ 19951, "INV_Jewelry_Necklace_19", "=q4=Gri'lek's Charm of Might", "=ds=#s14#" },
-		{ 19577, "INV_Jewelry_Necklace_26", "=q4=Rage of Mugamba", "=ds=#r5#" },
-		{ 19822, "INV_Chest_Plate07", "=q4=Zandalar Vindicator's Breastplate", "=q4=#x10#=ds=, #r4#" },
-		{ 19823, "INV_Belt_32", "=q4=Zandalar Vindicator's Belt", "=q4=#x16#=ds=, #r3#" },
-		{ 19824, "INV_Bracer_14", "=q4=Zandalar Vindicator's Armguards", "=q4=#x17#=ds=, #r2#" }
+		{},
+		{ name = BIS["Vindicator's Battlegear"], icon = "INV_Shield_05" },
+		{ id = 19951 }, -- Gri'lek's Charm of Might
+		{ id = 19577 }, -- Rage of Mugamba
+		{ id = 19822 }, -- Zandalar Vindicator's Breastplate
+		{ id = 19823 }, -- Zandalar Vindicator's Belt
+		{ id = 19824 }, -- Zandalar Vindicator's Armguards
 	},
-	ZGWarriorC = {{
-			{ 19951, "=ds=#s14#" },
-			{ 19577, "=ds=#r5#" },
-			{ 19822, "=q4=#x10#=ds=, #r4#" },
-			{ 19823, "=q4=#x16#=ds=, #r3#" },
-			{ 19824, "=q4=#x17#=ds=, #r2#" },
-		}
-	},
+
 	ZGPaladin = {
-		{ 0,"Spell_Holy_SealOfMight", "=q16=#zgs4#","" },
-		{ 0, "", "", "" },
-		{ 19952, "INV_Jewelry_Necklace_19", "=q4=Gri'lek's Charm of Valor", "=ds=#s14#" },
-		{ 19588, "INV_Jewelry_Necklace_26", "=q4=Hero's Brand", "=ds=#r5#" },
-		{ 19825, "INV_Chest_Plate07", "=q4=Zandalar Freethinker's Breastplate", "=q4=#x18#=ds=, #r4#" },
-		{ 19826, "INV_Belt_32", "=q4=Zandalar Freethinker's Belt", "=q4=#x11#=ds=, #r3#" },
-		{ 19827, "INV_Bracer_14", "=q4=Zandalar Freethinker's Armguards", "=q4=#x12#=ds=, #r2#" }
+		{ name = BIS["Freethinker's Armor"], icon = "Spell_Holy_SealOfMight" },
+		{},
+		{ id = 19952 }, -- Gri'lek's Charm of Valor
+		{ id = 19588 }, -- Hero's Brand
+		{ id = 19825 }, -- Zandalar Freethinker's Breastplate
+		{ id = 19826 }, -- Zandalar Freethinker's Belt
+		{ id = 19827 }, -- Zandalar Freethinker's Armguards
 	},
-	ZGPaladinC = {{
-			{ 19952, "=ds=#s14#" },
-			{ 19588, "=ds=#r5#" },
-			{ 19825, "=q4=#x18#=ds=, #r4#" },
-			{ 19826, "=q4=#x11#=ds=, #r3#" },
-			{ 19827, "=q4=#x12#=ds=, #r2#" },
-		}
-	},
+
 	AQ20Mage = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Frost_IceStorm", "=q10=#aq20s3#","" },
-		{ 0, "", "", "" },
-		{ 21413, "INV_Sword_57", "=q4=Blade of Vaulted Secrets", "=q4=#x19#=ds=, #r5#" },
-		{ 21415, "INV_Misc_Cape_19", "=q4=Drape of Vaulted Secrets", "=q3=#x20#=ds=, #r4#" },
-		{ 21414, "INV_Jewelry_Ring_AhnQiraj_03", "=q4=Band of Vaulted Secrets", "=q3=#x21#=ds=, #r3#" }
+		{},
+		{ name = BIS["Trappings of Vaulted Secrets"], icon = "Spell_Frost_IceStorm" },
+		{},
+		{ id = 21413 }, -- Blade of Vaulted Secrets
+		{ id = 21415 }, -- Drape of Vaulted Secrets
+		{ id = 21414 }, -- Band of Vaulted Secrets
 	},
-	AQ20MageC = {{
-			{ 21413, "=q4=#x19#=ds=, #r5#" },
-			{ 21415, "=q3=#x20#=ds=, #r4#" },
-			{ 21414, "=q3=#x21#=ds=, #r3#" },
-		}
-	},
+
 	AQ20Warlock = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Shadow_CurseOfTounges", "=q11=#aq20s8#","" },
-		{ 0, "", "", "" },
-		{ 21416, "INV_Weapon_ShortBlade_27", "=q4=Kris of Unspoken Names", "=q4=#x19#=ds=, #r5#" },
-		{ 21418, "INV_Misc_Cape_20", "=q4=Shroud of Unspoken Names", "=q3=#x23#=ds=, #r4#" },
-		{ 21417, "INV_Jewelry_Ring_AhnQiraj_03", "=q4=Ring of Unspoken Names", "=q3=#x22#=ds=, #r3#" }
+		{},
+		{ name = BIS["Implements of Unspoken Names"], icon = "Spell_Shadow_CurseOfTounges" },
+		{},
+		{ id = 21416 }, -- Kris of Unspoken Names
+		{ id = 21418 }, -- Shroud of Unspoken Names
+		{ id = 21417 }, -- Ring of Unspoken Names
 	},
-	AQ20WarlockC = {{
-			{ 21416, "=q4=#x19#=ds=, #r5#" },
-			{ 21418, "=q3=#x23#=ds=, #r4#" },
-			{ 21417, "=q3=#x22#=ds=, #r3#" },
-		}
-	},
+
 	AQ20Priest = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Holy_PowerWordShield", "=q9=#aq20s5#","" },
-		{ 0, "", "", "" },
-		{ 21410, "INV_Mace22", "=q4=Gavel of Infinite Wisdom", "=q4=#x19#=ds=, #r5#" },
-		{ 21412, "INV_Misc_Cape_16", "=q4=Shroud of Infinite Wisdom", "=q3=#x20#=ds=, #r4#" },
-		{ 21411, "INV_Jewelry_Ring_AhnQiraj_03", "=q4=Ring of Infinite Wisdom", "=q3=#x22#=ds=, #r3#" }
+		{},
+		{ name = BIS["Finery of Infinite Wisdom"], icon = "Spell_Holy_PowerWordShield" },
+		{},
+		{ id = 21410 }, -- Gavel of Infinite Wisdom
+		{ id = 21412 }, -- Shroud of Infinite Wisdom
+		{ id = 21411 }, -- Ring of Infinite Wisdom
 	},
-	AQ20PriestC = {{
-			{ 21410, "=q4=#x19#=ds=, #r5#" },
-			{ 21412, "=q3=#x20#=ds=, #r4#" },
-			{ 21411, "=q3=#x22#=ds=, #r3#" },
-		}
-	},
+
 	AQ20Rogue = {
-		{ 0, "", "", "" },
-		{ 0,"Ability_BackStab", "=q12=#aq20s6#","" },
-		{ 0, "", "", "" },
-		{ 21404, "INV_Weapon_ShortBlade_27", "=q4=Dagger of Veiled Shadows", "=q4=#x24#=ds=, #r5#" },
-		{ 21406, "INV_Misc_Cape_19", "=q4=Cloak of Veiled Shadows", "=q3=#x20#=ds=, #r4#" },
-		{ 21405, "INV_Jewelry_Ring_AhnQiraj_03", "=q4=Band of Veiled Shadows", "=q3=#x22#=ds=, #r3#" }
+		{},
+		{ name = BIS["Emblems of Veiled Shadows"], icon = "Ability_BackStab" },
+		{},
+		{ id = 21404 }, -- Dagger of Veiled Shadows
+		{ id = 21406 }, -- Cloak of Veiled Shadows
+		{ id = 21405 }, -- Band of Veiled Shadows
 	},
-	AQ20RogueC = {{
-			{ 21404, "=q4=#x24#=ds=, #r5#" },
-			{ 21406, "=q3=#x20#=ds=, #r4#" },
-			{ 21405, "=q3=#x22#=ds=, #r3#" },
-		}
-	},
+
 	AQ20Druid = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Nature_Regeneration", "=q13=#aq20s1#","" },
-		{ 0, "", "", "" },
-		{ 21407, "INV_Mace22", "=q4=Mace of Unending Life", "=q4=#x19#=ds=, #r5#" },
-		{ 21409, "INV_Misc_Cape_15", "=q4=Cloak of Unending Life", "=q3=#x23#=ds=, #r4#" },
-		{ 21408, "INV_Jewelry_Ring_AhnQiraj_03", "=q4=Band of Unending Life", "=q3=#x21#=ds=, #r3#" }
+		{},
+		{ name = BIS["Symbols of Unending Life"], icon = "Spell_Nature_Regeneration" },
+		{},
+		{ id = 21407 }, -- Mace of Unending Life
+		{ id = 21409 }, -- Cloak of Unending Life
+		{ id = 21408 }, -- Band of Unending Life
 	},
-	AQ20DruidC = {{
-			{ 21407, "=q4=#x19#=ds=, #r5#" },
-			{ 21409, "=q3=#x23#=ds=, #r4#" },
-			{ 21408, "=q3=#x21#=ds=, #r3#" },
-		}
-	},
+
 	AQ20Hunter = {
-		{ 0, "", "", "" },
-		{ 0,"Ability_Hunter_RunningShot", "=q14=#aq20s2#","" },
-		{ 0, "", "", "" },
-		{ 21401, "INV_Axe_15", "=q4=Scythe of the Unseen Path", "=q4=#x24#=ds=, #r5#" },
-		{ 21403, "INV_Misc_Cape_15", "=q4=Cloak of the Unseen Path", "=q3=#x23#=ds=, #r4#" },
-		{ 21402, "INV_Jewelry_Ring_AhnQiraj_03", "=q4=Signet of the Unseen Path", "=q3=#x22#=ds=, #r3#" }
+		{},
+		{ name = BIS["Trappings of the Unseen Path"], icon = "Ability_Hunter_RunningShot" },
+		{},
+		{ id = 21401 }, -- Scythe of the Unseen Path
+		{ id = 21403 }, -- Cloak of the Unseen Path
+		{ id = 21402 }, -- Signet of the Unseen Path
 	},
-	AQ20HunterC = {{
-			{ 21401, "=q4=#x24#=ds=, #r5#" },
-			{ 21403, "=q3=#x23#=ds=, #r4#" },
-			{ 21402, "=q3=#x22#=ds=, #r3#" },
-		}
-	},
+
 	AQ20Paladin = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Holy_SealOfMight", "=q16=#aq20s4#","" },
-		{ 0, "", "", "" },
-		{ 21395, "INV_Sword_57", "=q4=Blade of Eternal Justice", "=q4=#x24#=ds=, #r5#" },
-		{ 21397, "INV_Misc_Cape_14", "=q4=Cape of Eternal Justice", "=q3=#x23#=ds=, #r4#" },
-		{ 21396, "INV_Jewelry_Ring_AhnQiraj_03", "=q4=Ring of Eternal Justice", "=q3=#x21#=ds=, #r3#" }
+		{},
+		{ name = BIS["Battlegear of Eternal Justice"], icon = "Spell_Holy_SealOfMight" },
+		{},
+		{ id = 21395 }, -- Blade of Eternal Justice
+		{ id = 21397 }, -- Cape of Eternal Justice
+		{ id = 21396 }, -- Ring of Eternal Justice
 	},
-	AQ20PaladinC = {{
-			{ 21395, "=q4=#x24#=ds=, #r5#" },
-			{ 21397, "=q3=#x23#=ds=, #r4#" },
-			{ 21396, "=q3=#x21#=ds=, #r3#" },
-		}
-	},
+
 	AQ20Shaman = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_FireResistanceTotem_01", "=q15=#aq20s7#","" },
-		{ 0, "", "", "" },
-		{ 21398, "INV_Mace22", "=q4=Hammer of the Gathering Storm", "=q4=#x24#=ds=, #r5#" },
-		{ 21400, "INV_Misc_Cape_16", "=q4=Cloak of the Gathering Storm", "=q3=#x23#=ds=, #r4#" },
-		{ 21399, "INV_Jewelry_Ring_AhnQiraj_03", "=q4=Ring of the Gathering Storm", "=q3=#x21#=ds=, #r3#" }
+		{},
+		{ name = BIS["Gift of the Gathering Storm"], icon = "Spell_FireResistanceTotem_01" },
+		{},
+		{ id = 21398 }, -- Hammer of the Gathering Storm
+		{ id = 21400 }, -- Cloak of the Gathering Storm
+		{ id = 21399 }, -- Ring of the Gathering Storm
 	},
-	AQ20ShamanC = {{
-			{ 21398, "=q4=#x24#=ds=, #r5#" },
-			{ 21400, "=q3=#x23#=ds=, #r4#" },
-			{ 21399, "=q3=#x21#=ds=, #r3#" },
-		}
-	},
+
 	AQ20Warrior = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Shield_05", "=q17=#aq20s9#","" },
-		{ 0, "", "", "" },
-		{ 21392, "INV_Axe_15", "=q4=Sickle of Unyielding Strength", "=q4=#x24#=ds=, #r5#" },
-		{ 21394, "INV_Misc_Cape_20", "=q4=Drape of Unyielding Strength", "=q3=#x20#=ds=, #r4#" },
-		{ 21393, "INV_Jewelry_Ring_AhnQiraj_03", "=q4=Signet of Unyielding Strength", "=q3=#x21#=ds=, #r3#" }
+		{},
+		{ name = BIS["Battlegear of Unyielding Strength"], icon = "INV_Shield_05" },
+		{},
+		{ id = 21392 }, -- Sickle of Unyielding Strength
+		{ id = 21394 }, -- Drape of Unyielding Strength
+		{ id = 21393 }, -- Signet of Unyielding Strength
 	},
-	AQ20WarriorC = {{
-			{ 21392, "=q4=#x24#=ds=, #r5#" },
-			{ 21394, "=q3=#x20#=ds=, #r4#" },
-			{ 21393, "=q3=#x21#=ds=, #r3#" },
-		}
-	},
+
 	AQ40Mage = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Frost_IceStorm", "=q10=#aq40s3#","" }, --Mage
-		{ 0, "", "", "" },
-		{ 21343, "INV_Chest_Cloth_11", "=q4=Enigma Robes", "=q4=#x28#=ds=, #r3#" },
-		{ 21347, "INV_Helmet_06", "=q4=Enigma Circlet", "=q4=#x26#=ds=, #r2#" },
-		{ 21346, "INV_Pants_Cloth_08", "=q4=Enigma Leggings", "=q4=#x27#=ds=, #r2#" },
-		{ 21345, "INV_Shoulder_03", "=q4=Enigma Shoulderpads", "=q4=#x25#=ds=, #r1#" },
-		{ 21344, "INV_Boots_Cloth_03", "=q4=Enigma Boots", "=q4=#x25#=ds=, #r1#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47094, "INV_Helmet_06", "=q4=Enigma Crown", "=ds=#s1#, #a1#" },
-		{ 47095, "INV_Shoulder_03", "=q4=Enigma Epaulets", "=ds=#s3#, #a1#" },
-		{ 47096, "INV_Chest_Cloth_11", "=q4=Enigma Vestments", "=ds=#s5#, #a1#" },
-		{ 47097, "INV_Pants_Cloth_08", "=q4=Enigma Trousers", "=ds=#s11#, #a1#" },
-		{ 47098, "INV_Boots_Cloth_03", "=q4=Enigma Slippers", "=ds=#s12#, #a1#" },
+		{},
+		{ name = BIS["Enigma Vestments"], icon = "Spell_Frost_IceStorm" }, --Mage
+		{},
+		{ id = 21343 }, -- Enigma Robes
+		{ id = 21347 }, -- Enigma Circlet
+		{ id = 21346 }, -- Enigma Leggings
+		{ id = 21345 }, -- Enigma Shoulderpads
+		{ id = 21344 }, -- Enigma Boots
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 47094 }, -- Enigma Crown
+		{ id = 47095 }, -- Enigma Epaulets
+		{ id = 47096 }, -- Enigma Vestments
+		{ id = 47097 }, -- Enigma Trousers
+		{ id = 47098 }, -- Enigma Slippers
 	},
-	AQ40MageC = {{
-			{ 21347, "=q4=#x26#=ds=, #r2#" },
-			{ 21345, "=q4=#x25#=ds=, #r1#" },
-			{ 21343, "=q4=#x28#=ds=, #r3#" },
-			{ 21346, "=q4=#x27#=ds=, #r2#" },
-			{ 21344, "=q4=#x25#=ds=, #r1#" },
-		},{
-			{ 47094, "=ds=#s1#, #a1#" },
-			{ 47095, "=ds=#s3#, #a1#" },
-			{ 47096, "=ds=#s5#, #a1#" },
-			{ 47097, "=ds=#s11#, #a1#" },
-			{ 47098, "=ds=#s12#, #a1#" },
-		}
-	},
+
 	AQ40Priest = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Holy_PowerWordShield", "=q9=#aq40s5#","" }, --Priest
-		{ 0, "", "", "" },
-		{ 21351, "INV_Chest_Cloth_10", "=q4=Vestments of the Oracle", "=q4=#x28#=ds=, #r3#" },
-		{ 21348, "INV_Helmet_06", "=q4=Tiara of the Oracle", "=q4=#x26#=ds=, #r2#" },
-		{ 21352, "INV_Pants_Cloth_07", "=q4=Trousers of the Oracle","=q4=#x27#=ds=, #r2#" },
-		{ 21350, "INV_Shoulder_03", "=q4=Mantle of the Oracle", "=q4=#x29#=ds=, #r1#" },
-		{ 21349, "INV_Boots_Cloth_07", "=q4=Footwraps of the Oracle", "=q4=#x29#=ds=, #r1#" },
-		{ 0, "", "", "" },
-		{ 47214, "INV_Helmet_06", "=q4=Coronet of the Oracle", "=ds=#s1#, #a1#" },
-		{ 47215, "INV_Shoulder_03", "=q4=Spaulders of the Oracle", "=ds=#s3#, #a1#" },
-		{ 47216, "INV_Chest_Cloth_10", "=q4=Vestments of the Oracle", "=ds=#s5#, #a1#" },
-		{ 47217, "INV_Pants_Cloth_07", "=q4=Trousers of the Oracle", "=ds=#s11#, #a1#" },
-		{ 47218, "INV_Boots_Cloth_07", "=q4=Treads of the Oracle", "=ds=#s12#, #a1#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 70732, "INV_Helmet_06", "=q4=Coronet of the Oracle", "=ds=#s1#, #a1#" },
-		{ 70733, "INV_Shoulder_03", "=q4=Shoulderpads of the Oracle", "=ds=#s3#, #a1#" },
-		{ 70734, "INV_Chest_Cloth_10", "=q4=Raiments of the Oracle", "=ds=#s5#, #a1#" },
-		{ 70735, "INV_Pants_Cloth_07", "=q4=Pants of the Oracle", "=ds=#s11#, #a1#" },
-		{ 70736, "INV_Boots_Cloth_07", "=q4=Sandals of the Oracle", "=ds=#s12#, #a1#" },
+		{},
+		{ name = BIS["Garments of the Oracle"], icon = "Spell_Holy_PowerWordShield" }, --Priest
+		{},
+		{ id = 21351 }, -- Vestments of the Oracle
+		{ id = 21348 }, -- Tiara of the Oracle
+		{ id = 21352 }, -- Trousers of the Oracle
+		{ id = 21350 }, -- Mantle of the Oracle
+		{ id = 21349 }, -- Footwraps of the Oracle
+		{},
+		{ id = 47214 }, -- Coronet of the Oracle
+		{ id = 47215 }, -- Spaulders of the Oracle
+		{ id = 47216 }, -- Vestments of the Oracle
+		{ id = 47217 }, -- Trousers of the Oracle
+		{ id = 47218 }, -- Treads of the Oracle
+		{},
+		{},
+		{},
+		{},
+		{ id = 70732 }, -- Coronet of the Oracle
+		{ id = 70733 }, -- Shoulderpads of the Oracle
+		{ id = 70734 }, -- Raiments of the Oracle
+		{ id = 70735 }, -- Pants of the Oracle
+		{ id = 70736 }, -- Sandals of the Oracle
 	},
-	AQ40PriestC = {{
-			{ 21348, "=q4=#x26#=ds=, #r2#" },
-			{ 21350, "=q4=#x29#=ds=, #r1#" },
-			{ 21351, "=q4=#x28#=ds=, #r3#" },
-			{ 21352, "=q4=#x27#=ds=, #r2#" },
-			{ 21349, "=q4=#x29#=ds=, #r1#" },
-		},{
-			{ 47214, "=ds=#s1#, #a1#" },
-			{ 47215, "=ds=#s3#, #a1#" },
-			{ 47216, "=ds=#s5#, #a1#" },
-			{ 47217, "=ds=#s11#, #a1#" },
-			{ 47218, "=ds=#s12#, #a1#" },
-		}
-	},
+
 	AQ40Warlock = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Shadow_CurseOfTounges", "=q11=#aq40s8#","" }, --Warlock
-		{ 0, "", "", "" },
-		{ 21334, "INV_Chest_Cloth_12", "=q4=Doomcaller's Robes", "=q4=#x28#=ds=, #r3#" },
-		{ 21337, "INV_Helmet_06", "=q4=Doomcaller's Circlet", "=q4=#x26#=ds=, #r2#" },
-		{ 21336, "INV_Pants_Cloth_02", "=q4=Doomcaller's Trousers", "=q4=#x31#=ds=, #r2#" },
-		{ 21335, "INV_Shoulder_03", "=q4=Doomcaller's Mantle", "=q4=#x25#=ds=, #r1#" },
-		{ 21338, "INV_Boots_Cloth_02", "=q4=Doomcaller's Footwraps", "=q4=#x25#=ds=, #r1#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47292, "INV_Helmet_06", "=q4=Doomcaller's Crown", "=ds=#s1#, #a1#" },
-		{ 47293, "INV_Shoulder_03", "=q4=Doomcaller's Spaulders", "=ds=#s3#, #a1#" },
-		{ 47294, "INV_Chest_Cloth_12", "=q4=Doomcaller's Raiments", "=ds=#s5#, #a1#" },
-		{ 47295, "INV_Pants_Cloth_02", "=q4=Doomcaller's Leggings", "=ds=#s11#, #a1#" },
-		{ 47296, "INV_Boots_Cloth_02", "=q4=Doomcaller's Slippers", "=ds=#s12#, #a1#" },
+		{},
+		{ name = BIS["Doomcaller's Attire"], icon = "Spell_Shadow_CurseOfTounges" }, --Warlock
+		{},
+		{ id = 21334 }, -- Doomcaller's Robes
+		{ id = 21337 }, -- Doomcaller's Circlet
+		{ id = 21336 }, -- Doomcaller's Trousers
+		{ id = 21335 }, -- Doomcaller's Mantle
+		{ id = 21338 }, -- Doomcaller's Footwraps
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 47292 }, -- Doomcaller's Crown
+		{ id = 47293 }, -- Doomcaller's Spaulders
+		{ id = 47294 }, -- Doomcaller's Raiments
+		{ id = 47295 }, -- Doomcaller's Leggings
+		{ id = 47296 }, -- Doomcaller's Slippers
 	},
-	AQ40WarlockC = {{
-			{ 21337, "=q4=#x26#=ds=, #r2#" },
-			{ 21335, "=q4=#x25#=ds=, #r1#" },
-			{ 21334, "=q4=#x28#=ds=, #r3#" },
-			{ 21336, "=q4=#x31#=ds=, #r2#" },
-			{ 21338, "=q4=#x25#=ds=, #r1#" },
-		},{
-			{ 47292, "=ds=#s1#, #a1#" },
-			{ 47293, "=ds=#s3#, #a1#" },
-			{ 47294, "=ds=#s5#, #a1#" },
-			{ 47295, "=ds=#s11#, #a1#" },
-			{ 47296, "=ds=#s12#, #a1#" },
-		}
-	},
+
 	AQ40Rogue = {
-		{ 0, "", "", "" },
-		{ 0,"Ability_BackStab", "=q12=#aq40s6#","" }, --Rogue
-		{ 0, "", "", "" },
-		{ 21364, "INV_Chest_Leather_08", "=q4=Deathdealer's Vest", "=q4=#x32#=ds=, #r3#" },
-		{ 21360, "INV_Helmet_04", "=q4=Deathdealer's Helm", "=q4=#x30#=ds=, #r2#" },
-		{ 21362, "INV_Pants_Leather_07", "=q4=Deathdealer's Leggings", "=q4=#x27#=ds=, #r2#" },
-		{ 21361, "INV_Shoulder_03", "=q4=Deathdealer's Spaulders", "=q4=#x29#=ds=, #r1#" },
-		{ 21359, "INV_Boots_08", "=q4=Deathdealer's Boots", "=q4=#x29#=ds=, #r1#" },
+		{},
+		{ name = BIS["Deathdealer's Embrace"], icon = "Ability_BackStab" }, --Rogue
+		{},
+		{ id = 21364 }, -- Deathdealer's Vest
+		{ id = 21360 }, -- Deathdealer's Helm
+		{ id = 21362 }, -- Deathdealer's Leggings
+		{ id = 21361 }, -- Deathdealer's Spaulders
+		{ id = 21359 }, -- Deathdealer's Boots
 	},
-	AQ40RogueC = {{
-			{ 21360, "=q4=#x30#=ds=, #r2#" },
-			{ 21361, "=q4=#x29#=ds=, #r1#" },
-			{ 21364, "=q4=#x32#=ds=, #r3#" },
-			{ 21362, "=q4=#x27#=ds=, #r2#" },
-			{ 21359, "=q4=#x29#=ds=, #r1#" },
-		}
-	},
+
 	AQ40Druid = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Nature_Regeneration", "=q13=#aq40s1#","" }, --Druid
-		{ 0, "", "", "" },
-		{ 21357, "INV_Chest_Leather_08", "=q4=Genesis Vest", "=q4=#x28#=ds=, #r3#" },
-		{ 21353, "INV_Helmet_06", "=q4=Genesis Helm", "=q4=#x30#=ds=, #r2#" },
-		{ 21356, "INV_Pants_Leather_01", "=q4=Genesis Trousers", "=q4=#x31#=ds=, #r2#" },
-		{ 21354, "INV_Shoulder_03", "=q4=Genesis Shoulderpads", "=q4=#x25#=ds=, #r1#" },
-		{ 21355, "INV_Boots_Cloth_07", "=q4=Genesis Slippers", "=q4=#x25#=ds=, #r1#" },
-		{ 0, "", "", "" },
-		{ 47362, "INV_Helmet_06", "=q4=Genesis Helm", "=ds=#s1#, #a2#" },
-		{ 47363, "INV_Shoulder_03", "=q4=Genesis Spaulders", "=ds=#s3#, #a2#" },
-		{ 47364, "INV_Chest_Leather_08", "=q4=Genesis Vestments", "=ds=#s5#, #a2#" },
-		{ 47365, "INV_Pants_Leather_01", "=q4=Genesis Leggings", "=ds=#s11#, #a2#" },
-		{ 47366, "INV_Boots_Cloth_07", "=q4=Genesis Boots", "=ds=#s12#, #a2#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47367, "INV_Helmet_06", "=q4=Genesis Helmet", "=ds=#s1#, #a2#" },
-		{ 47368, "INV_Shoulder_03", "=q4=Genesis Shoulderpads", "=ds=#s3#, #a2#" },
-		{ 47369, "INV_Chest_Leather_08", "=q4=Genesis Raiments", "=ds=#s5#, #a2#" },
-		{ 47370, "INV_Pants_Leather_01", "=q4=Genesis Pants", "=ds=#s11#, #a2#" },
-		{ 47371, "INV_Boots_Cloth_07", "=q4=Genesis Treads", "=ds=#s12#, #a2#" },
+		{},
+		{ name = BIS["Genesis Raiment"], icon = "Spell_Nature_Regeneration" }, --Druid
+		{},
+		{ id = 21357 }, -- Genesis Vest
+		{ id = 21353 }, -- Genesis Helm
+		{ id = 21356 }, -- Genesis Trousers
+		{ id = 21354 }, -- Genesis Shoulderpads
+		{ id = 21355 }, -- Genesis Slippers
+		{},
+		{ id = 47362 }, -- Genesis Helm
+		{ id = 47363 }, -- Genesis Spaulders
+		{ id = 47364 }, -- Genesis Vestments
+		{ id = 47365 }, -- Genesis Leggings
+		{ id = 47366 }, -- Genesis Boots
+		{},
+		{},
+		{},
+		{},
+		{ id = 47367 }, -- Genesis Helmet
+		{ id = 47368 }, -- Genesis Shoulderpads
+		{ id = 47369 }, -- Genesis Raiments
+		{ id = 47370 }, -- Genesis Pants
+		{ id = 47371 }, -- Genesis Treads
 	},
-	AQ40DruidC = {{
-			{ 21353, "=q4=#x30#=ds=, #r2#" },
-			{ 21354, "=q4=#x25#=ds=, #r1#" },
-			{ 21357, "=q4=#x28#=ds=, #r3#" },
-			{ 21356, "=q4=#x31#=ds=, #r2#" },
-			{ 21355, "=q4=#x25#=ds=, #r1#" },
-		},{
-			{ 47362, "=ds=#s1#, #a2#" },
-			{ 47363, "=ds=#s3#, #a2#" },
-			{ 47364, "=ds=#s5#, #a2#" },
-			{ 47365, "=ds=#s11#, #a2#" },
-			{ 47366, "=ds=#s12#, #a2#" },
-		},{
-			{ 47367, "=ds=#s1#, #a2#" },
-			{ 47368, "=ds=#s3#, #a2#" },
-			{ 47369, "=ds=#s5#, #a2#" },
-			{ 47370, "=ds=#s11#, #a2#" },
-			{ 47371, "=ds=#s12#, #a2#" },
-		}
-	},
+
 	AQ40Shaman = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_FireResistanceTotem_01", "=q15=#aq40s7#","" }, --Shaman
-		{ 0, "", "", "" },
-		{ 21374, "INV_Chest_Chain_13", "=q4=Stormcaller's Hauberk", "=q4=#x32#=ds=, #r3#" },
-		{ 21372, "INV_Helmet_73", "=q4=Stormcaller's Diadem", "=q4=#x30#=ds=, #r2#" },
-		{ 21375, "INV_Pants_Mail_10", "=q4=Stormcaller's Legplates", "=q4=#x31#=ds=, #r2#" },
-		{ 21376, "INV_Shoulder_03", "=q4=Stormcaller's Epaulets", "=q4=#x25#=ds=, #r1#" },
-		{ 21373, "INV_Boots_Chain_07", "=q4=Stormcaller's Greaves", "=q4=#x25#=ds=, #r1#" },
-		{ 0, "", "", "" },
-		{ 47152, "INV_Helmet_73", "=q4=Stormcaller's Crown", "=ds=#s1#, #a3#" },
-		{ 47153, "INV_Shoulder_03", "=q4=Stormcaller's Pauldrons", "=ds=#s3#, #a3#" },
-		{ 47154, "INV_Chest_Chain_13", "=q4=Stormcaller's Breastplate", "=ds=#s5#, #a3#" },
-		{ 47155, "INV_Pants_Mail_10", "=q4=Stormcaller's Leggings", "=ds=#s11#, #a3#" },
-		{ 47156, "INV_Boots_Chain_07", "=q4=Stormcaller's Sabatons", "=ds=#s12#, #a3#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47157, "INV_Helmet_73", "=q4=Stormcaller's Helmet", "=ds=#s1#, #a3#" },
-		{ 47158, "INV_Shoulder_03", "=q4=Stormcaller's Spaulders", "=ds=#s3#, #a3#" },
-		{ 47159, "INV_Chest_Chain_13", "=q4=Stormcaller's Chestpiece", "=ds=#s5#, #a3#" },
-		{ 47160, "INV_Pants_Mail_10", "=q4=Stormcaller's Pants", "=ds=#s11#, #a3#" },
-		{ 47161, "INV_Boots_Chain_07", "=q4=Stormcaller's Boots", "=ds=#s12#, #a3#" },
+		{},
+		{ name = BIS["Stormcaller's Garb"], icon = "Spell_FireResistanceTotem_01" }, --Shaman
+		{},
+		{ id = 21374 }, -- Stormcaller's Hauberk
+		{ id = 21372 }, -- Stormcaller's Diadem
+		{ id = 21375 }, -- Stormcaller's Legplates
+		{ id = 21376 }, -- Stormcaller's Epaulets
+		{ id = 21373 }, -- Stormcaller's Greaves
+		{},
+		{ id = 47152 }, -- Stormcaller's Crown
+		{ id = 47153 }, -- Stormcaller's Pauldrons
+		{ id = 47154 }, -- Stormcaller's Breastplate
+		{ id = 47155 }, -- Stormcaller's Leggings
+		{ id = 47156 }, -- Stormcaller's Sabatons
+		{},
+		{},
+		{},
+		{},
+		{ id = 47157 }, -- Stormcaller's Helmet
+		{ id = 47158 }, -- Stormcaller's Spaulders
+		{ id = 47159 }, -- Stormcaller's Chestpiece
+		{ id = 47160 }, -- Stormcaller's Pants
+		{ id = 47161 }, -- Stormcaller's Boots
 	},
-	AQ40ShamanC = {{
-			{ 21372, "=q4=#x30#=ds=, #r2#" },
-			{ 21376, "=q4=#x25#=ds=, #r1#" },
-			{ 21374, "=q4=#x32#=ds=, #r3#" },
-			{ 21375, "=q4=#x31#=ds=, #r2#" },
-			{ 21373, "=q4=#x25#=ds=, #r1#" },
-		},{
-			{ 47152, "=ds=#s1#, #a3#" },
-			{ 47153, "=ds=#s3#, #a3#" },
-			{ 47154, "=ds=#s5#, #a3#" },
-			{ 47155, "=ds=#s11#, #a3#" },
-			{ 47156, "=ds=#s12#, #a3#" },
-		},{
-			{ 47157, "=ds=#s1#, #a3#" },
-			{ 47158, "=ds=#s3#, #a3#" },
-			{ 47159, "=ds=#s5#, #a3#" },
-			{ 47160, "=ds=#s11#, #a3#" },
-			{ 47161, "=ds=#s12#, #a3#" },
-		}
-	},
+
+
 	AQ40Hunter = {
-		{ 0, "", "", "" },
-		{ 0,"Ability_Hunter_RunningShot", "=q14=#aq40s2#","" }, --Hunter
-		{ 0, "", "", "" },
-		{ 21370, "INV_Chest_Chain_04", "=q4=Striker's Hauberk", "=q4=#x32#=ds=, #r3#" },
-		{ 21366, "INV_Helmet_73", "=q4=Striker's Diadem", "=q4=#x30#=ds=, #r2#" },
-		{ 21368, "INV_Pants_Mail_11", "=q4=Striker's Leggings", "=q4=#x31#=ds=, #r2#" },
-		{ 21367, "INV_Shoulder_36", "=q4=Striker's Pauldrons", "=q4=#x29#=ds=, #r1#" },
-		{ 21365, "INV_Boots_Chain_08", "=q4=Striker's Footguards", "=q4=#x29#=ds=, #r1#" }
+		{},
+		{ name = BIS["Striker's Garb"], icon = "Ability_Hunter_RunningShot" }, --Hunter
+		{},
+		{ id = 21370 }, -- Striker's Hauberk
+		{ id = 21366 }, -- Striker's Diadem
+		{ id = 21368 }, -- Striker's Leggings
+		{ id = 21367 }, -- Striker's Pauldrons
+		{ id = 21365 }, -- Striker's Footguards
 	},
-	AQ40HunterC = {{
-			{ 21366, "=q4=#x30#=ds=, #r2#" },
-			{ 21367, "=q4=#x29#=ds=, #r1#" },
-			{ 21370, "=q4=#x32#=ds=, #r3#" },
-			{ 21368, "=q4=#x31#=ds=, #r2#" },
-			{ 21365, "=q4=#x29#=ds=, #r1#" },
-		}
-	},
+
 	AQ40Warrior = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Shield_05", "=q17=#aq40s9#","" }, --Warrior
-		{ 0, "", "", "" },
-		{ 21331, "INV_Chest_Plate12", "=q4=Conqueror's Breastplate", "=q4=#x32#=ds=, #r3#" },
-		{ 21329, "INV_Helmet_72", "=q4=Conqueror's Crown", "=q4=#x26#=ds=, #r2#" },
-		{ 21332, "INV_Pants_Plate_03", "=q4=Conqueror's Legguards", "=q4=#x27#=ds=, #r2#" },
-		{ 21330, "INV_Shoulder_35", "=q4=Conqueror's Spaulders", "=q4=#x29#=ds=, #r1#" },
-		{ 21333, "INV_Boots_Plate_05", "=q4=Conqueror's Greaves", "=q4=#x29#=ds=, #r1#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47256, "INV_Helmet_72", "=q4=Conqueror's Crown", "=ds=#s1#, #a4#" },
-		{ 47257, "INV_Shoulder_35", "=q4=Conqueror's Pauldrons", "=ds=#s3#, #a4#" },
-		{ 47258, "INV_Chest_Plate12", "=q4=Conqueror's Chestplate", "=ds=#s5#, #a4#" },
-		{ 47259, "INV_Pants_Plate_03", "=q4=Conqueror's Leggings", "=ds=#s11#, #a4#" },
-		{ 47260, "INV_Boots_Plate_05", "=q4=Conqueror's Sabatons", "=ds=#s12#, #a4#" },
+		{},
+		{ name = BIS["Conqueror's Battlegear"], icon = "INV_Shield_05" }, --Warrior
+		{},
+		{ id = 21331 }, -- Conqueror's Breastplate
+		{ id = 21329 }, -- Conqueror's Crown
+		{ id = 21332 }, -- Conqueror's Legguards
+		{ id = 21330 }, -- Conqueror's Spaulders
+		{ id = 21333 }, -- Conqueror's Greaves
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 47256 }, -- Conqueror's Crown
+		{ id = 47257 }, -- Conqueror's Pauldrons
+		{ id = 47258 }, -- Conqueror's Chestplate
+		{ id = 47259 }, -- Conqueror's Leggings
+		{ id = 47260 }, -- Conqueror's Sabatons
 	},
-	AQ40WarriorC = {{
-			{ 21329, "=q4=#x26#=ds=, #r2#" },
-			{ 21330, "=q4=#x29#=ds=, #r1#" },
-			{ 21331, "=q4=#x32#=ds=, #r3#" },
-			{ 21332, "=q4=#x27#=ds=, #r2#" },
-			{ 21333, "=q4=#x29#=ds=, #r1#" },
-		}
-	},
+
 	AQ40Paladin = {
-		{ 0, "", "", "" },
-		{ 0,"Spell_Holy_SealOfMight", "=q16=#aq40s4#","" }, --Paladin
-		{ 0, "", "", "" },
-		{ 21389, "INV_Chest_Plate03", "=q4=Avenger's Chestplate", "=q4=#x32#=ds=, #r3#" },
-		{ 21387, "INV_Helmet_72", "=q4=Avenger's Crown", "=q4=#x30#=ds=, #r2#" },
-		{ 21390, "INV_Pants_Plate_02", "=q4=Avenger's Leggings", "=q4=#x31#=ds=, #r2#" },
-		{ 21391, "INV_Shoulder_35", "=q4=Avenger's Pauldrons", "=q4=#x25#=ds=, #r1#" },
-		{ 21388, "INV_Boots_Chain_07", "=q4=Avenger's Sabatons", "=q4=#x25#=ds=, #r1#" },
-		{ 0, "", "", "" },
-		{ 47032, "INV_Helmet_72", "=q4=Avenger's Helmet", "=ds=#s1#, #a4#" },
-		{ 47033, "INV_Shoulder_35", "=q4=Avenger's Shoulderguards", "=ds=#s3#, #a4#" },
-		{ 47034, "INV_Chest_Plate03", "=q4=Avenger's Chestguard", "=ds=#s5#, #a4#" },
-		{ 47035, "INV_Pants_Plate_02", "=q4=Avenger's Legguards", "=ds=#s11#, #a4#" },
-		{ 47036, "INV_Boots_Chain_07", "=q4=Avenger's Greaves", "=ds=#s12#, #a4#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 47037, "INV_Helmet_72", "=q4=Avenger's Helm", "=ds=#s1#, #a4#" },
-		{ 47038, "INV_Shoulder_35", "=q4=Avenger's Spaulders", "=ds=#s3#, #a4#" },
-		{ 47039, "INV_Chest_Plate03", "=q4=Avenger's Breastplate", "=ds=#s5#, #a4#" },
-		{ 47040, "INV_Pants_Plate_02", "=q4=Avenger's Legplates", "=ds=#s11#, #a4#" },
-		{ 47041, "INV_Boots_Chain_07", "=q4=Avenger's Boots", "=ds=#s12#, #a4#" },
+		{},
+		{ name = BIS["Avenger's Battlegear"], icon = "Spell_Holy_SealOfMight" }, --Paladin
+		{},
+		{ id = 21389 }, -- Avenger's Chestplate
+		{ id = 21387 }, -- Avenger's Crown
+		{ id = 21390 }, -- Avenger's Leggings
+		{ id = 21391 }, -- Avenger's Pauldrons
+		{ id = 21388 }, -- Avenger's Sabatons
+		{},
+		{ id = 47032 }, -- Avenger's Helmet
+		{ id = 47033 }, -- Avenger's Shoulderguards
+		{ id = 47034 }, -- Avenger's Chestguard
+		{ id = 47035 }, -- Avenger's Legguards
+		{ id = 47036 }, -- Avenger's Greaves
+		{},
+		{},
+		{},
+		{},
+		{ id = 47037 }, -- Avenger's Helm
+		{ id = 47038 }, -- Avenger's Spaulders
+		{ id = 47039 }, -- Avenger's Breastplate
+		{ id = 47040 }, -- Avenger's Legplates
+		{ id = 47041 }, -- Avenger's Boots
 	},
-	AQ40PaladinC = {{
-			{ 21387, "=q4=#x30#=ds=, #r2#" },
-			{ 21391, "=q4=#x25#=ds=, #r1#" },
-			{ 21389, "=q4=#x32#=ds=, #r3#" },
-			{ 21390, "=q4=#x31#=ds=, #r2#" },
-			{ 21388, "=q4=#x25#=ds=, #r1#" },
-		},{
-			{ 47032, "=ds=#s1#, #a4#" },
-			{ 47033, "=ds=#s3#, #a4#" },
-			{ 47034, "=ds=#s5#, #a4#" },
-			{ 47035, "=ds=#s11#, #a4#" },
-			{ 47036, "=ds=#s12#, #a4#" },
-		},{
-			{ 47037, "=ds=#s1#, #a4#" },
-			{ 47038, "=ds=#s3#, #a4#" },
-			{ 47039, "=ds=#s5#, #a4#" },
-			{ 47040, "=ds=#s11#, #a4#" },
-			{ 47041, "=ds=#s12#, #a4#" },
-		}
-	},
+
 	Artifacts = {
-		{ 0, "", "", "" },
-		{ 12947, "INV_Gizmo_BronzeFramework_01", "=q19=Alex's Ring of Audacity", "=ds=#s13#" },
-		{ 18582, "Spell_Arcane_PortalStormwind", "=q19=The Twin Blades of Azzinoth", "=ds=#h1#, #w10#" },
-		{ 18583, "INV_Sword_07", "=q19=Warglaive of Azzinoth (Right)", "=ds=#h1#, #w10#" },
-		{ 18584, "INV_Sword_07", "=q19=Warglaive of Azzinoth (Left)", "=ds=#h1#, #w10#" }
+		{},
+		{ id = 12947 }, -- Alex's Ring of Audacity
+		{ id = 18582 }, -- The Twin Blades of Azzinoth
+		{ id = 18583 }, -- Warglaive of Azzinoth (Right)
+		{ id = 18584 }, -- Warglaive of Azzinoth (Left)
 	},
 	Legendaries = {
-		{ 0, "", "", "" },
-		{ 19019, "INV_Sword_39", "=q5=Thunderfury, Blessed Blade of the Windseeker", "=ds=#h1#, #w10#" },
-		{ 22736, "INV_Sword_61", "=q5=Andonisus, Reaper of Souls", "=ds=#h1#, #w10#" },
-		{ 17182, "INV_Hammer_Unique_Sulfuras", "=q5=Sulfuras, Hand of Ragnaros", "=ds=#h2#, #w6#" },
-		{ 21176, "INV_Misc_QirajiCrystal_05", "=q5=Black Qiraji Resonating Crystal", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 17204, "INV_Misc_Gem_Pearl_05", "=q5=Eye of Sulfuras", "=q1=#m31#", " 3.42%" },
-		{ 18564, "Spell_Ice_Lament", "=q5=Bindings of the Windseeker", "=ds=#m9# =q1=#m3#", " 3.74%" },
-		{ 18563, "Spell_Ice_Lament", "=q5=Bindings of the Windseeker", "=ds=#m10# =q1=#m3#", " 3.78%" },
-		{ 17782, "INV_Jewelry_Amulet_04", "=q5=Talisman of Binding Shard", "=ds=#s2#" },
-		{ 0, "", "", "" },
-		{ 61184, "Inv_weapon_shortblade_23", "=q5=The Scythe of Elune", "=ds=#m2#", "0.85%" },
-		{ 55505, "Inv_weapon_shortblade_23", "=q5=The Scythe of Elune", "=ds=#s14#" },
-		{ 0, "", "", "" },
-		{ "e57518", "inv_misc_gem_pearl_04", "=q5=Eternal Dreamstone Shard", "=q1=Enchanting"},
-		{ 0, "", "", "" },
-		{ 22631, "INV_Staff_Medivh", "=q5=Atiesh, Greatstaff of the Guardian", "=ds=#w9# =q9=#c5#"},
-		{ 22589, "INV_Staff_Medivh", "=q5=Atiesh, Greatstaff of the Guardian", "=ds=#w9# =q10=#c3#"},
-		{ 22630, "INV_Staff_Medivh", "=q5=Atiesh, Greatstaff of the Guardian", "=ds=#w9# =q11=#c8#"},
-		{ 22632, "INV_Staff_Medivh", "=q5=Atiesh, Greatstaff of the Guardian", "=ds=#w9# =q13=#c1#"},
-		{ 0, "", "", "" },
-		{ 22726, "INV_Qiraj_Jewelblessed", "=q5=Splinter of Atiesh", "=q1=#m3#", " 11.39%" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 23051, "INV_Spear_05", "=q5=Glaive of the Defender", "=ds=#h3#, #w10# =q17=#c9#" },
-		{ 13262, "INV_Sword_48", "=q5=Ashbringer", "=ds=#h2#, #w10#" }
+		{},
+		{ id = 19019 }, -- Thunderfury, Blessed Blade of the Windseeker
+		{ id = 22736 }, -- Andonisus, Reaper of Souls
+		{ id = 17182 }, -- Sulfuras, Hand of Ragnaros
+		{ id = 21176 }, -- Black Qiraji Resonating Crystal
+		{},
+		{ id = 17204 }, -- Eye of Sulfuras
+		{ id = 18564 }, -- Bindings of the Windseeker
+		{ id = 18563 }, -- Bindings of the Windseeker
+		{ id = 17782 }, -- Talisman of Binding Shard
+		{},
+		{ id = 61184 }, -- The Scythe of Elune
+		{ id = 55505 }, -- The Scythe of Elune
+		{},
+		{ id = 61733, container = {61732} }, --Formula: Eternal Dreamstone Shard, Eternal Dreamstone Shard 
+		{},
+		{ id = 22631 }, -- Atiesh, Greatstaff of the Guardian
+		{ id = 22589 }, -- Atiesh, Greatstaff of the Guardian
+		{ id = 22630 }, -- Atiesh, Greatstaff of the Guardian
+		{ id = 22632 }, -- Atiesh, Greatstaff of the Guardian
+		{},
+		{ id = 22726 }, -- Splinter of Atiesh
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 23051 }, -- Glaive of the Defender
+		{ id = 13262 }, -- Ashbringer
 	},
 	RareMounts = {
-		{ 0, "", "", "" },
-		{ 21176, "INV_Misc_QirajiCrystal_05", "=q5=Black Qiraji Resonating Crystal", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 13335, "Ability_Mount_Undeadhorse", "=q4=Deathcharger's Reins", "=ds=#e7#" },
-		{ 19872, "Ability_Mount_Raptor", "=q4=Armored Razzashi Raptor",	"=ds=#e7#" },
-		{ 19902, "Ability_Mount_JungleTiger", "=q4=Swift Zulian Tiger", "=ds=#e7#" },
-		{ 13086, "Ability_Mount_PinkTiger", "=q4=Reins of the Winterspring Frostsaber", "=ds=#e7#" },
-		{ 23720, "Ability_Hunter_Pet_Turtle", "=q1=Swift Riding Turtle", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 21218, "INV_Misc_QirajiCrystal_04", "=q3=Blue Qiraji Resonating Crystal",	"=ds=#e7#" },
-		{ 21323, "INV_Misc_QirajiCrystal_03", "=q3=Green Qiraji Resonating Crystal",  "=ds=#e7#" },
-		{ 21321, "INV_Misc_QirajiCrystal_02", "=q3=Red Qiraji Resonating Crystal",	"=ds=#e7#" },
-		{ 21324, "INV_Misc_QirajiCrystal_01", "=q3=Yellow Qiraji Resonating Crystal", "=ds=#e7#" },
+		{},
+		{ id = 21176 }, -- Black Qiraji Resonating Crystal
+		{},
+		{ id = 13335 }, -- Deathcharger's Reins
+		{ id = 19872 }, -- Armored Razzashi Raptor
+		{ id = 19902 }, -- Swift Zulian Tiger
+		{ id = 13086 }, -- Reins of the Winterspring Frostsaber
+		{ id = 23720 }, -- Swift Riding Turtle
+		{},
+		{ id = 21218 }, -- Blue Qiraji Resonating Crystal
+		{ id = 21323 }, -- Green Qiraji Resonating Crystal
+		{ id = 21321 }, -- Red Qiraji Resonating Crystal
+		{ id = 21324 }, -- Yellow Qiraji Resonating Crystal
 	},
 	OldMounts = {
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_02", "=q8=#m7#", "" },
-		{ 0, "", "", "" },
-		{ 12302, "Ability_Mount_Whitetiger", "=q4=Reins of the Frostsaber", "=ds=#e7#" },
-		{ 12303, "Ability_Mount_Whitetiger", "=q4=Reins of the Nightsaber", "=ds=#e7#" },
-		{ 13327, "Ability_Mount_Mechastrider", "=q4=Icy Blue Mechanostrider Mod A", "=ds=#e7#" },
-		{ 13326, "Ability_Mount_Mechastrider", "=q4=White Mechanostrider Mod A", "=ds=#e7#" },
-		{ 13328, "Ability_Mount_Mountainram", "=q4=Black Ram", "=ds=#e7#" },
-		{ 13329, "Ability_Mount_Mountainram", "=q4=Frost Ram", "=ds=#e7#" },
-		{ 12354, "Ability_Mount_Ridinghorse", "=q4=Palomino Bridle", "=ds=#e7#" },
-		{ 12353, "Ability_Mount_Ridinghorse", "=q4=White Stallion Bridle", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_01", "=q6=#m6#", "" },
-		{ 0, "", "", "" },
-		{ 13317, "Ability_Mount_Raptor", "=q4=Whistle of the Ivory Raptor", "=ds=#e7#" },
-		{ 8586, "Ability_Mount_Raptor", "=q4=Whistle of the Mottled Red Raptor", "=ds=#e7#" },
-		{ 12351, "Ability_Mount_Whitedirewolf", "=q4=Horn of the Arctic Wolf", "=ds=#e7#" },
-		{ 12330, "Ability_Mount_Blackdirewolf", "=q4=Horn of the Red Wolf", "=ds=#e7#" },
-		{ 15292, "Ability_Mount_Kodo_02", "=q4=Green Kodo", "=ds=#e7#" },
-		{ 15293, "Ability_Mount_Kodo_02", "=q4=Teal Kodo", "=ds=#e7#" },
+		{},
+		{ name = BIS["Alliance"], icon = "INV_BannerPVP_02" },
+
+		{},
+		{ id = 12302 }, -- Reins of the Frostsaber
+		{ id = 12303 }, -- Reins of the Nightsaber
+		{ id = 13327 }, -- Icy Blue Mechanostrider Mod A
+		{ id = 13326 }, -- White Mechanostrider Mod A
+		{ id = 13328 }, -- Black Ram
+		{ id = 13329 }, -- Frost Ram
+		{ id = 12354 }, -- Palomino Bridle
+		{ id = 12353 }, -- White Stallion Bridle
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BIS["Horde"], icon = "INV_BannerPVP_01" },
+
+		{},
+		{ id = 13317 }, -- Whistle of the Ivory Raptor
+		{ id = 8586 }, -- Whistle of the Mottled Red Raptor
+		{ id = 12351 }, -- Horn of the Arctic Wolf
+		{ id = 12330 }, -- Horn of the Red Wolf
+		{ id = 15292 }, -- Green Kodo
+		{ id = 15293 }, -- Teal Kodo
 	},
 	PvPMountsSets = {
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_02", "=q8=#m7#", "=q7=#rank11#" },
-		{ 0, "", "", "" },
-		{ 19030, "Ability_Mount_MountainRam", "=q4=Stormpike Battle Charger", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 18244, "Ability_Mount_Mountainram", "=q4=Black War Ram", "=ds=#e7#" },
-		{ 18243, "Ability_Mount_Mechastrider", "=q4=Black Battlestrider", "=ds=#e7#" },
-		{ 18241, "Ability_Mount_Nightmarehorse", "=q4=Black War Steed Bridle", "=ds=#e7#" },
-		{ 18242, "Ability_Mount_Blackpanther", "=q4=Reins of the Black War Tiger", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_01", "=q6=#m6#", "=q18=#rank11#" },
-		{ 0, "", "", "" },
-		{ 19029, "INV_Misc_Horn_01", "=q4=Horn of the Frostwolf Howler", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 18245, "Ability_Mount_Blackdirewolf", "=q4=Horn of the Black War Wolf", "=ds=#e7#" },
-		{ 18247, "Ability_Mount_Kodo_03", "=q4=Black War Kodo", "=ds=#e7#" },
-		{ 18246, "Ability_Mount_Raptor", "=q4=Whistle of the Black War Raptor", "=ds=#e7#" },
-		{ 18248, "Ability_Mount_Undeadhorse", "=q4=Red Skeletal Warhorse", "=ds=#e7#" },
+		{},
+		{ name = BIS["Alliance"], icon = "INV_BannerPVP_02" },
+
+		{},
+		{ id = 19030 }, -- Stormpike Battle Charger
+		{},
+		{ id = 18244 }, -- Black War Ram
+		{ id = 18243 }, -- Black Battlestrider
+		{ id = 18241 }, -- Black War Steed Bridle
+		{ id = 18242 }, -- Reins of the Black War Tiger
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BIS["Horde"], icon = "INV_BannerPVP_01" },
+
+		{},
+		{ id = 19029 }, -- Horn of the Frostwolf Howler
+		{},
+		{ id = 18245 }, -- Horn of the Black War Wolf
+		{ id = 18247 }, -- Black War Kodo
+		{ id = 18246 }, -- Whistle of the Black War Raptor
+		{ id = 18248 }, -- Red Skeletal Warhorse
 	},
 	UnobMounts = {
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_02", "=q8=#m7#", "" },
-		{ 0, "", "", "" },
-		{ 18768, "Ability_Mount_Whitetiger", "=q4=Reins of the Swift Dawnsaber", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 12327, "Ability_Mount_Jungletiger", "=q3=Reins of the Golden Sabercat", "=ds=#e7#" },
-		{ 12325, "Ability_Mount_Jungletiger", "=q3=Reins of the Primal Leopard", "=ds=#e7#" },
-		{ 12326, "Ability_Mount_Jungletiger", "=q3=Reins of the Tawny Sabercat", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "INV_Jewelry_Talisman_08", "=ds=#m33#", "" },
-		{ 0, "", "", "" },
-		{ 13318, "Ability_Mount_Raptor", "=q4=Extravagant Ivory Raptor", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 8628, "Ability_Mount_Blackpanther", "=q1=Reins of the Spotted Nightsaber", "=ds=#e7#" },
+		{},
+		{ name = BIS["Alliance"], icon = "INV_BannerPVP_02" },
+
+		{},
+		{ id = 18768 }, -- Reins of the Swift Dawnsaber
+		{},
+		{ id = 12327 }, -- Reins of the Golden Sabercat
+		{ id = 12325 }, -- Reins of the Primal Leopard
+		{ id = 12326 }, -- Reins of the Tawny Sabercat
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BIS["=ds=Misc"], icon = "INV_Jewelry_Talisman_08" },
+
+		{},
+		{ id = 13318 }, -- Extravagant Ivory Raptor
+		{},
+		{ id = 8628 }, -- Reins of the Spotted Nightsaber
 	},
 	Tabards = {
-		{ 15196, "INV_Misc_TabardPVP_01", "=q1=Private's Tabard", "=ds=#s7# =q8=#m7#" },
-		{ 15198, "INV_Misc_TabardPVP_03", "=q1=Knight's Colors", "=ds=#s7# =q8=#m7#" },
-		{ 19506, "INV_Shirt_GuildTabard_01", "=q1=Silverwing Battle Tabard", "=ds=#s7# =q8=#m7#" },
-		{ 20132, "INV_Shirt_GuildTabard_01", "=q1=Arathor Battle Tabard", "=ds=#s7# =q8=#m7#" },
-		{ 19032, "INV_Shirt_GuildTabard_01", "=q1=Stormpike Battle Tabard", "=ds=#s7# =q8=#m7#" },
-		{ 0, "", "", "" },
-		{ 5976, "INV_Shirt_GuildTabard_01", "=q1=Guild Tabard", "Vendor" },
-		{ 19160, "INV_Shirt_GuildTabard_01", "=q1=Contest Winner's Tabard", "Slow & Steady Challenge" },
-		{ 80187, "INV_Shirt_GuildTabard_01", "=q1=Contest Winner's Tabard", "Hardcore Challenge" },
-		{ 61369, "INV_Shirt_GuildTabard_01", "=q1=Ravenshire Tabard", "#m4#" },
-		{ 22999, "INV_Shirt_GuildTabard_01", "=q1=Tabard of the Agent Dawn", "=ds=#s7#" },
-		{ 23192, "INV_Misc_Cape_18", "=q2=Tabard of the Scarlet Crusade", "=ds=#s7#" },
-		{ 23705, "INV_Misc_TabardPVP_02", "=q4=Tabard of Flame", "=ds=#s7#" },
-		{ 61368, "INV_Shirt_GuildTabard_01", "=q2=Greymane Tabard", "Drop" },
-		{ 23709, "INV_Misc_TabardPVP_01", "=q4=Tabard of Frost", "=ds=#s7#" },
-		{ 15197, "INV_Misc_TabardPVP_02", "=q1=Scout's Tabard", "=ds=#s7# =q6=#m6#" },
-		{ 15199, "INV_Misc_TabardPVP_04", "=q1=Stone Guard's Herald", "=ds=#s7# =q6=#m6#" },
-		{ 19505, "INV_Shirt_GuildTabard_01", "=q1=Warsong Battle Tabard", "=ds=#s7# =q6=#m6#" },
-		{ 20131, "INV_Shirt_GuildTabard_01", "=q1=Battle Tabard of the Defilers", "=ds=#s7# =q6=#m6#" },
-		{ 19031, "INV_Shirt_GuildTabard_01", "=q1=Frostwolf Battle Tabard", "=ds=#s7# =q6=#m6#" }
+		{ id = 15196 }, -- Private's Tabard
+		{ id = 15198 }, -- Knight's Colors
+		{ id = 19506 }, -- Silverwing Battle Tabard
+		{ id = 20132 }, -- Arathor Battle Tabard
+		{ id = 19032 }, -- Stormpike Battle Tabard
+		{},
+		{ id = 5976 }, -- Guild Tabard
+		{ id = 19160 }, -- Contest Winner's Tabard
+		{ id = 80187 }, -- Contest Winner's Tabard
+		{ id = 61369 }, -- Ravenshire Tabard
+		{ id = 22999 }, -- Tabard of the Agent Dawn
+		{ id = 23192 }, -- Tabard of the Scarlet Crusade
+		{ id = 23705 }, -- Tabard of Flame
+		{ id = 61368 }, -- Greymane Tabard
+		{ id = 23709 }, -- Tabard of Frost
+		{ id = 15197 }, -- Scout's Tabard
+		{ id = 15199 }, -- Stone Guard's Herald
+		{ id = 19505 }, -- Warsong Battle Tabard
+		{ id = 20131 }, -- Battle Tabard of the Defilers
+		{ id = 19031 }, -- Frostwolf Battle Tabard
 	},
 	WorldBluesHead = {
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Cloth_21", "=ds=#a1#", "", "" },
-		{ 2721, "INV_Helmet_16", "=q3=Holy Shroud", "=ds=#s1#, #a1#", "" },
-		{ 13102, "INV_Jewelry_Ring_03", "=q3=Cassandra's Grace", "=ds=#s1#, #a1#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Chain_05", "=ds=#a3#", "", "" },
-		{ 13127, "INV_Helmet_24", "=q3=Frostreaver Crown", "=ds=#s1#, #a3#", "" },
-		{ 13128, "INV_Helmet_18", "=q3=High Bergg Helm", "=ds=#s1#, #a3#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Leather_09", "=ds=#a2#", "", "" },
-		{ 3020, "INV_Helmet_15", "=q3=Enduring Cap", "=ds=#s1#, #a2#", "" },
-		{ 9375, "INV_Helmet_18", "=q3=Expert Goldminer's Helmet", "=ds=#s1#, #a2#", "" },
-		{ 13112, "INV_Helmet_19", "=q3=Winged Helm", "=ds=#s1#, #a2#", "" },
-		{ 13113, "INV_Helmet_04", "=q3=Feathermoon Headdress", "=ds=#s1#, #a2#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Plate02", "=ds=#a4#", "", "" },
-		{ 13073, "INV_Helmet_25", "=q3=Mugthol's Helm", "=ds=#s1#, #a4#", "" },
-	};
+		{},
+		{ name = BIS["Cloth"], icon = "INV_Chest_Cloth_21" },
+		{ id = 2721 }, -- Holy Shroud
+		{ id = 13102 }, -- Cassandra's Grace
+		{},
+		{},
+		{},
+		{},
+		{ name = BS["Mail"], icon = "INV_Chest_Chain_05" },
+		{ id = 13127 }, -- Frostreaver Crown
+		{ id = 13128 }, -- High Bergg Helm
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BS["Leather"], icon = "INV_Chest_Leather_09" },
+		{ id = 3020 }, -- Enduring Cap
+		{ id = 9375 }, -- Expert Goldminer's Helmet
+		{ id = 13112 }, -- Winged Helm
+		{ id = 13113 }, -- Feathermoon Headdress
+		{},
+		{},
+		{ name = BS["Plate"], icon = "INV_Chest_Plate02" },
+		{ id = 13073 }, -- Mugthol's Helm
+	},
 	WorldBluesNeck = {
-		{ 0,"","","" },
-		{ 13087, "INV_Jewelry_Necklace_09", "=q3=River Pride Choker", "=ds=#s2#", "" },
-		{ 13084, "INV_Jewelry_Amulet_07", "=q3=Kaleidoscope Chain", "=ds=#s2#", "" },
-		{ 13088, "INV_Jewelry_Amulet_01", "=q3=Gazlowe's Charm", "=ds=#s2#", "" },
-		{ 1714, "INV_Jewelry_Necklace_10", "=q3=Necklace of Calisea", "=ds=#s2#", "" },
-		{ 13085, "INV_Jewelry_Necklace_11", "=q3=Horizon Choker", "=ds=#s2#", "" },
-		{ 13091, "INV_Jewelry_Talisman_08", "=q3=Medallion of Grand Marshal Morris", "=ds=#s2#", "" },
-		{ 13002, "INV_Jewelry_Amulet_03", "=q3=Lady Alizabeth's Pendant", "=ds=#s2#", "" },
-		{ 20695, "INV_Jewelry_Necklace_04", "=q3=Abyssal War Beads", "=ds=#s2#", "" },
-	};
+		{},
+		{ id = 13087 }, -- River Pride Choker
+		{ id = 13084 }, -- Kaleidoscope Chain
+		{ id = 13088 }, -- Gazlowe's Charm
+		{ id = 1714 }, -- Necklace of Calisea
+		{ id = 13085 }, -- Horizon Choker
+		{ id = 13091 }, -- Medallion of Grand Marshal Morris
+		{ id = 13002 }, -- Lady Alizabeth's Pendant
+		{ id = 20695 }, -- Abyssal War Beads
+	},
 	WorldBluesShoulder = {
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Cloth_21", "=ds=#a1#", "", "" },
-		{ 12998, "INV_Shoulder_13", "=q3=Magician's Mantle", "=ds=#s3#, #a1#", "" },
-		{ 13103, "INV_Shoulder_18", "=q3=Pads of the Venom Spider", "=ds=#s3#, #a1#", "" },
-		{ 13013, "INV_Shoulder_14", "=q3=Elder Wizard's Mantle", "=ds=#s3#, #a1#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Chain_05", "=ds=#a3#", "", "" },
-		{ 13131, "INV_Shoulder_18", "=q3=Sparkleshell Mantle", "=ds=#s3#, #a3#", "" },
-		{ 13132, "INV_Shoulder_11", "=q3=Skeletal Shoulders", "=ds=#s3#, #a3#", "" },
-		{ 13133, "INV_Shoulder_23", "=q3=Drakesfire Epaulets", "=ds=#s3#, #a3#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Leather_09", "=ds=#a2#", "", "" },
-		{ 2278, "INV_Shoulder_18", "=q3=Forest Tracker Epaulets", "=ds=#s3#, #a2#", "" },
-		{ 13115, "INV_Shoulder_19", "=q3=Sheepshear Mantle", "=ds=#s3#, #a2#", "" },
-		{ 13116, "INV_Shoulder_18", "=q3=Spaulders of the Unseen", "=ds=#s3#, #a2#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Plate02", "=ds=#a4#", "", "" },
-		{ 13066, "INV_Shoulder_24", "=q3=Wyrmslayer Spaulders", "=ds=#s3#, #a4#", "" },
-	};
+		{},
+		{ name = BS["Cloth"], icon = "INV_Chest_Cloth_21" },
+		{ id = 12998 }, -- Magician's Mantle
+		{ id = 13103 }, -- Pads of the Venom Spider
+		{ id = 13013 }, -- Elder Wizard's Mantle
+		{},
+		{},
+		{},
+		{ name = BS["Mail"], icon = "INV_Chest_Chain_05" },
+		{ id = 13131 }, -- Sparkleshell Mantle
+		{ id = 13132 }, -- Skeletal Shoulders
+		{ id = 13133 }, -- Drakesfire Epaulets
+		{},
+		{},
+		{},
+		{},
+		{ name = BS["Leather"], icon = "INV_Chest_Leather_09" },
+		{ id = 2278 }, -- Forest Tracker Epaulets
+		{ id = 13115 }, -- Sheepshear Mantle
+		{ id = 13116 }, -- Spaulders of the Unseen
+		{},
+		{},
+		{},
+		{ name = BS["Plate"], icon = "INV_Chest_Plate02" },
+		{ id = 13066 }, -- Wyrmslayer Spaulders
+	},
 	WorldBluesBack = {
-		{ 0,"","","" },
-		{ 12979, "INV_Misc_Cape_08", "=q3=Firebane Cloak", "=ds=#s4#", "" },
-		{ 2059, "INV_Misc_Cape_04", "=q3=Sentry Cloak", "=ds=#s4#", "" },
-		{ 13005, "INV_Misc_Cape_16", "=q3=Amy's Blanket", "=ds=#s4#", "" },
-		{ 13108, "INV_Misc_Pelt_04", "=q3=Tigerstrike Mantle", "=ds=#s4#", "" },
-		{ 5257, "INV_Misc_Cape_04", "=q3=Dark Hooded Cape", "=ds=#s4#", "" },
-		{ 13121, "INV_Misc_Cape_04", "=q3=Wing of the Whelpling", "=ds=#s4#", "" },
-		{ 13109, "INV_Misc_Cape_20", "=q3=Blackflame Cape", "=ds=#s4#", "" },
-		{ 13122, "INV_Misc_Cape_21", "=q3=Dark Phantom Cape", "=ds=#s4#", "" },
-		{ 13007, "INV_Misc_Cape_18", "=q3=Mageflame Cloak", "=ds=#s4#", "" },
-		{ 20697, "INV_Misc_Cape_19", "=q3=Crystalline Threaded Cape", "=ds=#s4#", "" },
-	};
+		{},
+		{ id = 12979 }, -- Firebane Cloak
+		{ id = 2059 }, -- Sentry Cloak
+		{ id = 13005 }, -- Amy's Blanket
+		{ id = 13108 }, -- Tigerstrike Mantle
+		{ id = 5257 }, -- Dark Hooded Cape
+		{ id = 13121 }, -- Wing of the Whelpling
+		{ id = 13109 }, -- Blackflame Cape
+		{ id = 13122 }, -- Dark Phantom Cape
+		{ id = 13007 }, -- Mageflame Cloak
+		{ id = 20697 }, -- Crystalline Threaded Cape
+	},
 	WorldBluesChest = {
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Cloth_21", "=ds=#a1#", "", "" },
-		{ 2800, "INV_Chest_Cloth_48", "=q3=Black Velvet Robes", "=ds=#s5#, #a1#", "" },
-		{ 1716, "INV_Chest_Cloth_17", "=q3=Robe of the Magi", "=ds=#s5#, #a1#", "" },
-		{ 9434, "INV_Chest_Leather_03", "=q3=Elemental Raiment", "=ds=#s5#, #a1#", "" },
-		{ 17050, "INV_Chest_Cloth_04", "=q3=Chan's Imperial Robes", "=ds=#s5#, #a1#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Chain_05", "=ds=#a3#", "", "" },
-		{ 1717, "INV_Chest_Chain", "=q3=Double Link Tunic", "=ds=#s5#, #a3#", "" },
-		{ 1715, "INV_Chest_Chain_09", "=q3=Polished Jazeraint Armor", "=ds=#s5#, #a3#", "" },
-		{ 13123, "INV_Chest_Chain_06", "=q3=Dreamwalker Armor", "=ds=#s5#, #a3#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Leather_09", "=ds=#a2#", "", "" },
-		{ 12988, "INV_Chest_Leather_10", "=q3=Starsight Tunic", "=ds=#s5#, #a2#", "" },
-		{ 13110, "INV_Chest_Leather_04", "=q3=Wolffear Harness", "=ds=#s5#, #a2#", "" },
-		{ 13009, "INV_Chest_Leather_06", "=q3=Cow King's Hide", "=ds=#s5#, #a2#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Plate02", "=ds=#a4#", "", "" },
-		{ 13067, "INV_Chest_Plate06", "=q3=Hydralick Armor", "=ds=#s5#, #a4#", "" },
-	};
+		{},
+		{ name = BS["Cloth"], icon = "INV_Chest_Cloth_21" },
+		{ id = 2800 }, -- Black Velvet Robes
+		{ id = 1716 }, -- Robe of the Magi
+		{ id = 9434 }, -- Elemental Raiment
+		{ id = 17050 }, -- Chan's Imperial Robes
+		{},
+		{},
+		{ name = BS["Mail"], icon = "INV_Chest_Chain_05" },
+		{ id = 1717 }, -- Double Link Tunic
+		{ id = 1715 }, -- Polished Jazeraint Armor
+		{ id = 13123 }, -- Dreamwalker Armor
+		{},
+		{},
+		{},
+		{},
+		{ name = BS["Leather"], icon = "INV_Chest_Leather_09" },
+		{ id = 12988 }, -- Starsight Tunic
+		{ id = 13110 }, -- Wolffear Harness
+		{ id = 13009 }, -- Cow King's Hide
+		{},
+		{},
+		{},
+		{ name = BS["Plate"], icon = "INV_Chest_Plate02" },
+		{ id = 13067 }, -- Hydralick Armor
+	},
 	WorldBluesWrist = {
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Cloth_21", "=ds=#a1#", "", "" },
-		{ 13106, "INV_Bracer_19", "=q3=Glowing Magical Bracelets", "=ds=#s8#, #a1#", "" },
-		{ 9433, "INV_Bracer_12", "=q3=Forgotten Wraps", "=ds=#s8#, #a1#", "" },
-		{ 13107, "INV_Bracer_13", "=q3=Magiskull Cuffs", "=ds=#s8#, #a1#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Chain_05", "=ds=#a3#", "", "" },
-		{ 13012, "INV_Bracer_02", "=q3=Yorgen Bracers", "=ds=#s8#, #a3#", "" },
-		{ 13199, "INV_Bracer_19", "=q3=Crushridge Bindings", "=ds=#s8#, #a3#", "" },
-		{ 13135, "INV_Bracer_17", "=q3=Lordly Armguards", "=ds=#s8#, #a3#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Leather_09", "=ds=#a2#", "", "" },
-		{ 12999, "INV_Bracer_09", "=q3=Drakewing Bands", "=ds=#s8#, #a2#", "" },
-		{ 13119, "INV_Bracer_09", "=q3=Enchanted Kodo Bracers", "=ds=#s8#, #a2#", "" },
-		{ 13120, "INV_Bracer_07", "=q3=Deepfury Bracers", "=ds=#s8#, #a2#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Plate02", "=ds=#a4#", "", "" },
-		{ 13076, "INV_Bracer_17", "=q3=Giantslayer Bracers", "=ds=#s8#, #a4#", "" },
-	};
+		{},
+		{ name = BS["Cloth"], icon = "INV_Chest_Cloth_21" },
+		{ id = 13106 }, -- Glowing Magical Bracelets
+		{ id = 9433 }, -- Forgotten Wraps
+		{ id = 13107 }, -- Magiskull Cuffs
+		{},
+		{},
+		{},
+		{ name = BS["Mail"], icon = "INV_Chest_Chain_05" },
+		{ id = 13012 }, -- Yorgen Bracers
+		{ id = 13199 }, -- Crushridge Bindings
+		{ id = 13135 }, -- Lordly Armguards
+		{},
+		{},
+		{},
+		{},
+		{ name = BS["Leather"], icon = "INV_Chest_Leather_09" },
+		{ id = 12999 }, -- Drakewing Bands
+		{ id = 13119 }, -- Enchanted Kodo Bracers
+		{ id = 13120 }, -- Deepfury Bracers
+		{},
+		{},
+		{},
+		{ name = BS["Plate"], icon = "INV_Chest_Plate02" },
+		{ id = 13076 }, -- Giantslayer Bracers
+	},
 	WorldBluesHands = {
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Cloth_21", "=ds=#a1#", "", "" },
-		{ 12977, "INV_Gauntlets_27", "=q3=Magefist Gloves", "=ds=#s9#, #a1#", "" },
-		{ 9395, "INV_Gauntlets_24", "=q3=Gloves of Old", "=ds=#s9#, #a1#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Chain_05", "=ds=#a3#", "", "" },
-		{ 12994, "INV_Gauntlets_11", "=q3=Thorbia's Gauntlets", "=ds=#s9#, #a3#", "" },
-		{ 9435, "INV_Gauntlets_11", "=q3=Reticulated Bone Gauntlets", "=ds=#s9#, #a3#", "" },
-		{ 13126, "INV_Gauntlets_10", "=q3=Battlecaller Gauntlets", "=ds=#s9#, #a3#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Leather_09", "=ds=#a2#", "", "" },
-		{ 720, "INV_Gauntlets_05", "=q3=Brawler Gloves", "=ds=#s9#, #a2#", "" },
-		{ 2564, "INV_Gauntlets_07", "=q3=Elven Spirit Claws", "=ds=#s9#, #a2#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Plate02", "=ds=#a4#", "", "" },
-		{ 13071, "INV_Gauntlets_10", "=q3=Plated Fist of Hakoo", "=ds=#s9#, #a4#", "" },
-		{ 13072, "INV_Gauntlets_03", "=q3=Stonegrip Gauntlets", "=ds=#s9#, #a4#", "" },
-	};
+		{},
+		{ name = BS["Cloth"], icon = "INV_Chest_Cloth_21" },
+		{ id = 12977 }, -- Magefist Gloves
+		{ id = 9395 }, -- Gloves of Old
+		{},
+		{},
+		{},
+		{},
+		{ name = BS["Mail"], icon = "INV_Chest_Chain_05" },
+		{ id = 12994 }, -- Thorbia's Gauntlets
+		{ id = 9435 }, -- Reticulated Bone Gauntlets
+		{ id = 13126 }, -- Battlecaller Gauntlets
+		{},
+		{},
+		{},
+		{},
+		{ name = BS["Leather"], icon = "INV_Chest_Leather_09" },
+		{ id = 720 }, -- Brawler Gloves
+		{ id = 2564 }, -- Elven Spirit Claws
+		{},
+		{},
+		{},
+		{},
+		{ name = BS["Plate"], icon = "INV_Chest_Plate02" },
+		{ id = 13071 }, -- Plated Fist of Hakoo
+		{ id = 13072 }, -- Stonegrip Gauntlets
+	},
 	WorldBluesWaist = {
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Cloth_21", "=ds=#a1#", "", "" },
-		{ 2911, "INV_Belt_04", "=q3=Keller's Girdle", "=ds=#s10#, #a1#", "" },
-		{ 13105, "INV_Belt_11", "=q3=Sutarn's Ring", "=ds=#s10#, #a1#", "" },
-		{ 13144, "INV_Belt_07", "=q3=Serenity Belt", "=ds=#s10#, #a1#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Chain_05", "=ds=#a3#", "", "" },
-		{ 12978, "INV_Belt_15", "=q3=Stormbringer Belt", "=ds=#s10#, #a3#", "" },
-		{ 9405, "INV_Belt_27", "=q3=Girdle of Golem Strength", "=ds=#s10#, #a3#", "" },
-		{ 13134, "INV_Belt_23", "=q3=Belt of the Gladiator", "=ds=#s10#, #a3#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Leather_09", "=ds=#a2#", "", "" },
-		{ 13011, "INV_Belt_22", "=q3=Silver-lined Belt", "=ds=#s10#, #a2#", "" },
-		{ 13117, "INV_Belt_15", "=q3=Ogron's Sash", "=ds=#s10#, #a2#", "" },
-		{ 13118, "INV_Belt_25", "=q3=Serpentine Sash", "=ds=#s10#, #a2#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Plate02", "=ds=#a4#", "", "" },
-		{ 13145, "INV_Belt_27", "=q3=Enormous Ogre Belt", "=ds=#s10#, #a4#", "" },
-		{ 13077, "INV_Belt_32", "=q3=Girdle of Uther", "=ds=#s10#, #a4#", "" },
-	};
+		{},
+		{ name = BS["Cloth"], icon = "INV_Chest_Cloth_21" },
+		{ id = 2911 }, -- Keller's Girdle
+		{ id = 13105 }, -- Sutarn's Ring
+		{ id = 13144 }, -- Serenity Belt
+		{},
+		{},
+		{},
+		{ name = BS["Mail"], icon = "Waist" },
+		{ id = 12978 }, -- Stormbringer Belt
+		{ id = 9405 }, -- Girdle of Golem Strength
+		{ id = 13134 }, -- Belt of the Gladiator
+		{},
+		{},
+		{},
+		{},
+		{ name = BS["Leather"], icon = "INV_Chest_Leather_09" },
+		{ id = 13011 }, -- Silver-lined Belt
+		{ id = 13117 }, -- Ogron's Sash
+		{ id = 13118 }, -- Serpentine Sash
+		{},
+		{},
+		{},
+		{ name = BS["Plate"], icon = "INV_Chest_Plate02" },
+		{ id = 13145 }, -- Enormous Ogre Belt
+		{ id = 13077 }, -- Girdle of Uther
+	},
 	WorldBluesLegs = {
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Cloth_21", "=ds=#a1#", "", "" },
-		{ 12987, "INV_Pants_06", "=q3=Darkweave Breeches", "=ds=#s11#, #a1#", "" },
-		{ 2277, "INV_Pants_01", "=q3=Necromancer Leggings", "=ds=#s11#, #a1#", "" },
-		{ 13008, "INV_Pants_06", "=q3=Dalewind Trousers", "=ds=#s11#, #a1#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Chain_05", "=ds=#a3#", "", "" },
-		{ 13010, "INV_Pants_03", "=q3=Dreamsinger Legguards", "=ds=#s11#, #a3#", "" },
-		{ 13129, "INV_Pants_03", "=q3=Firemane Leggings", "=ds=#s11#, #a3#", "" },
-		{ 13130, "INV_Pants_03", "=q3=Windrunner Legguards", "=ds=#s11#, #a3#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Leather_09", "=ds=#a2#", "", "" },
-		{ 13114, "INV_Pants_06", "=q3=Troll's Bane Leggings", "=ds=#s11#, #a2#", "" },
-		{ 1718, "INV_Pants_06", "=q3=Basilisk Hide Pants", "=ds=#s11#, #a2#", "" },
-		{ 9402, "INV_Pants_12", "=q3=Earthborn Kilt", "=ds=#s11#, #a2#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Plate02", "=ds=#a4#", "", "" },
-		{ 13074, "INV_Pants_04", "=q3=Golem Shard Leggings", "=ds=#s11#, #a4#", "" },
-		{ 13075, "INV_Pants_04", "=q3=Direwing Legguards", "=ds=#s11#, #a4#", "" },
-	};
+		{},
+		{ name = BS["Cloth"], icon = "INV_Chest_Cloth_21" },
+		{ id = 12987 }, -- Darkweave Breeches
+		{ id = 2277 }, -- Necromancer Leggings
+		{ id = 13008 }, -- Dalewind Trousers
+		{},
+		{},
+		{},
+		{ name = BS["Mail"], icon = "INV_Chest_Chain_05" },
+		{ id = 13010 }, -- Dreamsinger Legguards
+		{ id = 13129 }, -- Firemane Leggings
+		{ id = 13130 }, -- Windrunner Legguards
+		{},
+		{},
+		{},
+		{},
+		{ name = BS["Leather"], icon = "INV_Chest_Leather_09" },
+		{ id = 13114 }, -- Troll's Bane Leggings
+		{ id = 1718 }, -- Basilisk Hide Pants
+		{ id = 9402 }, -- Earthborn Kilt
+		{},
+		{},
+		{},
+		{ name = BS["Plate"], icon = "INV_Chest_Plate02" },
+		{ id = 13074 }, -- Golem Shard Leggings
+		{ id = 13075 }, -- Direwing Legguards
+	},
 	WorldBluesFeet = {
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Cloth_21", "=ds=#a1#", "", "" },
-		{ 13099, "INV_Boots_05", "=q3=Moccasins of the White Hare", "=ds=#s12#, #a1#", "" },
-		{ 13100, "INV_Boots_03", "=q3=Furen's Boots", "=ds=#s12#, #a1#", "" },
-		{ 13101, "INV_Boots_05", "=q3=Wolfrunner Shoes", "=ds=#s12#, #a1#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Chain_05", "=ds=#a3#", "", "" },
-		{ 12982, "INV_Boots_01", "=q3=Silver-linked Footguards", "=ds=#s12#, #a3#", "" },
-		{ 13124, "INV_Boots_01", "=q3=Ravasaur Scale Boots", "=ds=#s12#, #a3#", "" },
-		{ 1678, "INV_Boots_01", "=q3=Black Ogre Kickers", "=ds=#s12#, #a3#", "" },
-		{ 13125, "INV_Boots_01", "=q3=Elven Chain Boots", "=ds=#s12#, #a3#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Leather_09", "=ds=#a2#", "", "" },
-		{ 1121, "INV_Boots_Wolf", "=q3=Feet of the Lynx", "=ds=#s12#, #a2#", "" },
-		{ 2276, "INV_Boots_09", "=q3=Swampwalker Boots", "=ds=#s12#, #a2#", "" },
-		{ 13111, "INV_Boots_Fabric_01", "=q3=Sandals of the Insurgent", "=ds=#s12#, #a2#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Chest_Plate02", "=ds=#a4#", "", "" },
-		{ 13068, "INV_Boots_Plate_09", "=q3=Obsidian Greaves", "=ds=#s12#, #a4#", "" },
-		{ 13070, "INV_Boots_Plate_05", "=q3=Sapphiron's Scale Boots", "=ds=#s12#, #a4#", "" },
-	};
+		{},
+		{ name = BS["Cloth"], icon = "INV_Chest_Cloth_21" },
+		{ id = 13099 }, -- Moccasins of the White Hare
+		{ id = 13100 }, -- Furen's Boots
+		{ id = 13101 }, -- Wolfrunner Shoes
+		{},
+		{},
+		{},
+		{ name = BS["Mail"], icon = "INV_Chest_Chain_05" },
+		{ id = 12982 }, -- Silver-linked Footguards
+		{ id = 13124 }, -- Ravasaur Scale Boots
+		{ id = 1678 }, -- Black Ogre Kickers
+		{ id = 13125 }, -- Elven Chain Boots
+		{},
+		{},
+		{},
+		{ name = BS["Leather"], icon = "INV_Chest_Leather_09" },
+		{ id = 1121 }, -- Feet of the Lynx
+		{ id = 2276 }, -- Swampwalker Boots
+		{ id = 13111 }, -- Sandals of the Insurgent
+		{},
+		{},
+		{},
+		{ name = BS["Plate"], icon = "INV_Chest_Plate02" },
+		{ id = 13068 }, -- Obsidian Greaves
+		{ id = 13070 }, -- Sapphiron's Scale Boots
+	},
 	WorldBluesRing = {
-		{ 0,"","","" },
-		{ 6332, "INV_Jewelry_Ring_05", "=q3=Black Pearl Ring", "=ds=#s13#", "" },
-		{ 12985, "INV_Jewelry_Ring_28", "=q3=Ring of Defense", "=ds=#s13#", "" },
-		{ 12996, "INV_Jewelry_Ring_31", "=q3=Band of Purification", "=ds=#s13#", "" },
-		{ 13097, "INV_Jewelry_Ring_09", "=q3=Thunderbrow Ring", "=ds=#s13#", "" },
-		{ 13094, "INV_Jewelry_Ring_26", "=q3=The Queen's Jewel", "=ds=#s13#", "" },
-		{ 2951, "INV_Jewelry_Ring_12", "=q3=Ring of the Underwood", "=ds=#s13#", "" },
-		{ 13093, "INV_Jewelry_Ring_25", "=q3=Blush Ember Ring", "=ds=#s13#", "" },
-		{ 13095, "INV_Jewelry_Ring_04", "=q3=Assault Band", "=ds=#s13#", "" },
-		{ 5266, "INV_Jewelry_Ring_05", "=q3=Eye of Adaegus", "=ds=#s13#", "" },
-		{ 13096, "INV_Jewelry_Ring_17", "=q3=Band of the Hierophant", "=ds=#s13#", "" },
-		{ 13001, "INV_Jewelry_Ring_12", "=q3=Maiden's Circle", "=ds=#s13#", "" },
-		{ 20721, "INV_Jewelry_Ring_27", "=q3=Band of the Cultist", "=ds=#s13#", "" },
-	};
+		{},
+		{ id = 6332 }, -- Black Pearl Ring
+		{ id = 12985 }, -- Ring of Defense
+		{ id = 12996 }, -- Band of Purification
+		{ id = 13097 }, -- Thunderbrow Ring
+		{ id = 13094 }, -- The Queen's Jewel
+		{ id = 2951 }, -- Ring of the Underwood
+		{ id = 13093 }, -- Blush Ember Ring
+		{ id = 13095 }, -- Assault Band
+		{ id = 5266 }, -- Eye of Adaegus
+		{ id = 13096 }, -- Band of the Hierophant
+		{ id = 13001 }, -- Maiden's Circle
+		{ id = 20721 }, -- Band of the Cultist
+	},
 	WorldBluesTrinket = {
-		{ 0,"","","" },
-		{ 2802, "INV_Jewelry_Talisman_01", "=q3=Blazing Emblem", "=ds=#s14#", "" },
-		{ 1713, "Spell_Holy_PrayerOfHealing02", "=q3=Ankh of Life", "=ds=#s14#", "" },
-		{ 7734, "INV_Misc_Bag_01", "=q3=Six Demon Bag", "=ds=#s14#", "" },
-		{ 11302, "INV_Jewelry_Talisman_06", "=q3=Uther's Strength", "=ds=#s14#", "" },
-		{ 1973, "INV_Misc_Orb_02", "=q3=Orb of Deception", "=ds=#s14#", "" },
-	};
+		{},
+		{ id = 2802 }, -- Blazing Emblem
+		{ id = 1713 }, -- Ankh of Life
+		{ id = 7734 }, -- Six Demon Bag
+		{ id = 11302 }, -- Uther's Strength
+		{ id = 1973 }, -- Orb of Deception
+	},
 	WorldBluesWand = {
-		{ 0,"","","" },
-		{ 12984, "INV_Wand_02", "=q3=Skycaller", "=ds=#w12#", "" },
-		{ 13062, "INV_Staff_02", "=q3=Thunderwood", "=ds=#w12#", "" },
-		{ 13063, "INV_Staff_02", "=q3=Starfaller", "=ds=#w12#", "" },
-		{ 13064, "INV_Wand_09", "=q3=Jaina's Firestarter", "=ds=#w12#", "" },
-		{ 13065, "INV_Wand_09", "=q3=Wand of Allistarj", "=ds=#w12#", "" },
-		{ 13004, "INV_Wand_11", "=q3=Torch of Austen", "=ds=#w12#", "" },
-	};
+		{},
+		{ id = 12984 }, -- Skycaller
+		{ id = 13062 }, -- Thunderwood
+		{ id = 13063 }, -- Starfaller
+		{ id = 13064 }, -- Jaina's Firestarter
+		{ id = 13065 }, -- Wand of Allistarj
+		{ id = 13004 }, -- Torch of Austen
+	},
 	WorldBluesHeldInOffhand = {
-		{ 0,"","","" },
-		{ 5183, "INV_Misc_Orb_04", "=q3=Pulsating Hydra Heart", "=ds=#s15#", "" },
-		{ 2879, "INV_Wand_04", "=q3=Antipodean Rod", "=ds=#s15#", "" },
-		{ 13031, "INV_Misc_Orb_01", "=q3=Orb of Mistmantle", "=ds=#s15#", "" },
-		{ 2565, "INV_Spear_01", "=q3=Rod of Molten Fire", "=ds=#s15#", "" },
-		{ 13029, "INV_Misc_Orb_04", "=q3=Umbral Crystal", "=ds=#s15#", "" },
-		{ 13030, "INV_Misc_Bone_10", "=q3=Basilisk Bone", "=ds=#s15#", "" },
-		{ 4696, "INV_Drink_03", "=q3=Lapidis Tankard of Tidesippe", "=ds=#s15#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"Spell_Nature_Regeneration", "=q13=#c1#","" },
-		{ 23197, "INV_Relics_IdolOfRejuvenation", "=q3=Idol of the Moon", "=ds=#s16#, #e16# =q13=#c1#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "Spell_Holy_SealOfMight", "=q16=#c4#", "" },
-		{ 23203, "INV_Relics_LibramOfTruth", "=q3=Libram of Fervor", "=ds=#s16#, #e18# =q16=#c4#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "Spell_FireResistanceTotem_01", "=q15=#c7#", "" },
-		{ 23199, "INV_Relics_TotemOfRage", "=q3=Totem of the Storm", "=ds=#s16#, #e17# =q15=#c7#", "" },
-	};
+		{},
+		{ id = 5183 }, -- Pulsating Hydra Heart
+		{ id = 2879 }, -- Antipodean Rod
+		{ id = 13031 }, -- Orb of Mistmantle
+		{ id = 2565 }, -- Rod of Molten Fire
+		{ id = 13029 }, -- Umbral Crystal
+		{ id = 13030 }, -- Basilisk Bone
+		{ id = 4696 }, -- Lapidis Tankard of Tidesippe
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BC["Druid"], icon = "Spell_Nature_Regeneration" },
+
+		{ id = 23197 }, -- Idol of the Moon
+		{},
+		{},
+		{ name = BC["Paladin"], icon = "Spell_Holy_SealOfMight" },
+
+		{ id = 23203 }, -- Libram of Fervor
+		{},
+		{},
+		{ name = BC["Shaman"], icon = "Spell_FireResistanceTotem_01" },
+
+		{ id = 23199 }, -- Totem of the Storm
+	},
 	WorldBlues1HAxes = {
-		{ 0,"","","" },
-		{ 12990, "INV_Weapon_Halberd_08", "=q3=Razor's Edge", "=ds=#h1#, #w1#", "" },
-		{ 2878, "INV_Axe_14", "=q3=Bearded Boneaxe", "=ds=#h3#, #w1#", "" },
-		{ 934, "INV_Axe_14", "=q3=Stalvan's Reaper", "=ds=#h1#, #w1#", "" },
-		{ 9378, "INV_Pick_02", "=q3=Shovelphlange's Mining Axe", "=ds=#h1#, #w1#", "" },
-		{ 1602, "INV_Axe_06", "=q3=Sickle Axe", "=ds=#h1#, #w1#", "" },
-		{ 2815, "INV_Axe_23", "=q3=Curve-bladed Ripper", "=ds=#h3#, #w1#", "" },
-		{ 13014, "INV_Axe_21", "=q3=Axe of Rin'ji", "=ds=#h1#, #w1#", "" },
-		{ 13015, "INV_Axe_08", "=q3=Serathil", "=ds=#h1#, #w1#", "" },
-	};
+		{},
+		{ id = 12990 }, -- Razor's Edge
+		{ id = 2878 }, -- Bearded Boneaxe
+		{ id = 934 }, -- Stalvan's Reaper
+		{ id = 9378 }, -- Shovelphlange's Mining Axe
+		{ id = 1602 }, -- Sickle Axe
+		{ id = 2815 }, -- Curve-bladed Ripper
+		{ id = 13014 }, -- Axe of Rin'ji
+		{ id = 13015 }, -- Serathil
+	},
 	WorldBlues1HMaces = {
-		{ 0,"","","" },
-		{ 2256, "INV_Misc_Bone_ElfSkull_01", "=q3=Skeletal Club", "=ds=#h3#, #w6#", "" },
-		{ 2194, "INV_Hammer_06", "=q3=Diamond Hammer", "=ds=#h1#, #w6#", "" },
-		{ 13024, "INV_Hammer_04", "=q3=Beazel's Basher", "=ds=#h3#, #w6#", "" },
-		{ 13048, "INV_Hammer_04", "=q3=Looming Gavel", "=ds=#h3#, #w6#", "" },
-		{ 13025, "INV_Hammer_16", "=q3=Deadwood Sledge", "=ds=#h3#, #w6#", "" },
-		{ 936, "INV_Misc_Bone_ElfSkull_01", "=q3=Midnight Mace", "=ds=#h1#, #w6#", "" },
-		{ 13026, "INV_Hammer_04", "=q3=Heaven's Light", "=ds=#h3#, #w6#", "" },
-		{ 9359, "INV_Misc_Flute_01", "=q3=Wirt's Third Leg", "=ds=#h1#, #w6#", "" },
-		{ 4090, "INV_Drink_03", "=q3=Mug O' Hurt", "=ds=#h1#, #w6#", "" },
-		{ 17055, "INV_Hammer_17", "=q3=Changuk Smasher", "=ds=#h1#, #w6#", "" },
-		{ 13027, "INV_Hammer_20", "=q3=Bonesnapper", "=ds=#h3#, #w6#", "" },
-		{ 1721, "INV_Hammer_09", "=q3=Viking Warhammer", "=ds=#h3#, #w6#", "" },
-		{ 13028, "INV_Hammer_19", "=q3=Bludstone Hammer", "=ds=#h3#, #w6#", "" },
-		{ 13006, "INV_Hammer_17", "=q3=Mass of McGowan", "=ds=#h3#, #w6#", "" },
-	};
+		{},
+		{ id = 2256 }, -- Skeletal Club
+		{ id = 2194 }, -- Diamond Hammer
+		{ id = 13024 }, -- Beazel's Basher
+		{ id = 13048 }, -- Looming Gavel
+		{ id = 13025 }, -- Deadwood Sledge
+		{ id = 936 }, -- Midnight Mace
+		{ id = 13026 }, -- Heaven's Light
+		{ id = 9359 }, -- Wirt's Third Leg
+		{ id = 4090 }, -- Mug O' Hurt
+		{ id = 17055 }, -- Changuk Smasher
+		{ id = 13027 }, -- Bonesnapper
+		{ id = 1721 }, -- Viking Warhammer
+		{ id = 13028 }, -- Bludstone Hammer
+		{ id = 13006 }, -- Mass of McGowan
+	},
 	WorldBlues1HSwords = {
-		{ 0,"","","" },
-		{ 12976, "INV_Sword_26", "=q3=Ironpatch Blade", "=ds=#h1#, #w10#", "" },
-		{ 935, "INV_Sword_26", "=q3=Night Watch Shortsword", "=ds=#h1#, #w10#", "" },
-		{ 2011, "INV_Sword_24", "=q3=Twisted Sabre", "=ds=#h3#, #w10#", "" },
-		{ 1493, "INV_Sword_24", "=q3=Heavy Marauder Scimitar", "=ds=#h3#, #w10#", "" },
-		{ 13032, "INV_Sword_26", "=q3=Sword of Corruption", "=ds=#h1#, #w10#", "" },
-		{ 12974, "INV_Sword_13", "=q3=The Black Knight", "=ds=#h3#, #w10#", "" },
-		{ 13033, "INV_Sword_15", "=q3=Zealot Blade", "=ds=#h1#, #w10#", "" },
-		{ 8223, "INV_Sword_43", "=q3=Blade of the Basilisk", "=ds=#h1#, #w10#", "" },
-		{ 9718, "INV_Sword_10", "=q3=Reforged Blade of Heroes", "=ds=#h1#, #w10#", "" },
-		{ 1265, "INV_Sword_12", "=q3=Scorpion Sting", "=ds=#h1#, #w10#", "" },
-		{ 13034, "INV_Sword_30", "=q3=Speedsteel Rapier", "=ds=#h1#, #w10#", "" },
-		{ 754, "INV_Sword_14", "=q3=Shortsword of Vengeance", "=ds=#h1#, #w10#", "" },
-		{ 13035, "INV_Sword_33", "=q3=Serpent Slicer", "=ds=#h1#, #w10#", "" },
-		{ 17054, "INV_Sword_41", "=q3=Joonho's Mercy", "=ds=#h1#, #w10#", "" },
-		{ 0,"","","" },
-		{ 8190, "INV_Sword_10", "=q3=Hanzo Sword", "=ds=#h1#, #w10#", "" },
-		{ 13036, "INV_Sword_42", "=q3=Assassination Blade", "=ds=#h1#, #w10#", "" },
-		{ 6622, "INV_Sword_39", "=q3=Sword of Zeal", "=ds=#h3#, #w10#", "" },
-	};
+		{},
+		{ id = 12976 }, -- Ironpatch Blade
+		{ id = 935 }, -- Night Watch Shortsword
+		{ id = 2011 }, -- Twisted Sabre
+		{ id = 1493 }, -- Heavy Marauder Scimitar
+		{ id = 13032 }, -- Sword of Corruption
+		{ id = 12974 }, -- The Black Knight
+		{ id = 13033 }, -- Zealot Blade
+		{ id = 8223 }, -- Blade of the Basilisk
+		{ id = 9718 }, -- Reforged Blade of Heroes
+		{ id = 1265 }, -- Scorpion Sting
+		{ id = 13034 }, -- Speedsteel Rapier
+		{ id = 754 }, -- Shortsword of Vengeance
+		{ id = 13035 }, -- Serpent Slicer
+		{ id = 17054 }, -- Joonho's Mercy
+		{},
+		{ id = 8190 }, -- Hanzo Sword
+		{ id = 13036 }, -- Assassination Blade
+		{ id = 6622 }, -- Sword of Zeal
+	},
 	WorldBlues2HAxes = {
-		{ 0,"","","" },
-		{ 12975, "INV_Axe_03", "=q3=Prospector Axe", "=ds=#h2#, #w1#", "" },
-		{ 13016, "INV_Axe_10", "=q3=Killmaim", "=ds=#h2#, #w1#", "" },
-		{ 2299, "INV_Axe_02", "=q3=Burning War Axe", "=ds=#h2#, #w1#", "" },
-		{ 13017, "INV_Axe_24", "=q3=Hellslayer Battle Axe", "=ds=#h2#, #w1#", "" },
-		{ 13018, "INV_Axe_24", "=q3=Executioner's Cleaver", "=ds=#h2#, #w1#", "" },
-		{ 13003, "INV_Weapon_Halberd_02", "=q3=Lord Alexander's Battle Axe", "=ds=#h2#, #w1#", "" },
-	};
+		{},
+		{ id = 12975 }, -- Prospector Axe
+		{ id = 13016 }, -- Killmaim
+		{ id = 2299 }, -- Burning War Axe
+		{ id = 13017 }, -- Hellslayer Battle Axe
+		{ id = 13018 }, -- Executioner's Cleaver
+		{ id = 13003 }, -- Lord Alexander's Battle Axe
+	},
 	WorldBlues2HMaces = {
-		{ 0,"","","" },
-		{ 12983, "INV_Hammer_09", "=q3=Rakzur Club", "=ds=#h2#, #w6#", "" },
-		{ 3203, "INV_Mace_13", "=q3=Dense Triangle Mace", "=ds=#h2#, #w6#", "" },
-		{ 13045, "INV_Mace_13", "=q3=Viscous Hammer", "=ds=#h2#, #w6#", "" },
-		{ 6327, "INV_Mace_09", "=q3=The Pacifier", "=ds=#h2#, #w6#", "" },
-		{ 1722, "INV_Hammer_04", "=q3=Thornstone Sledgehammer", "=ds=#h2#, #w6#", "" },
-		{ 13046, "INV_Hammer_04", "=q3=Blanchard's Stout", "=ds=#h2#, #w6#", "" },
-		{ 13047, "INV_Mace_13", "=q3=Twig of the World Tree", "=ds=#h2#, #w6#", "" },
-		{ 20696, "INV_Hammer_10", "=q3=Crystal Spiked Maul", "=ds=#h2#, #w6#", "" },
-	};
+		{},
+		{ id = 12983 }, -- Rakzur Club
+		{ id = 3203 }, -- Dense Triangle Mace
+		{ id = 13045 }, -- Viscous Hammer
+		{ id = 6327 }, -- The Pacifier
+		{ id = 1722 }, -- Thornstone Sledgehammer
+		{ id = 13046 }, -- Blanchard's Stout
+		{ id = 13047 }, -- Twig of the World Tree
+		{ id = 20696 }, -- Crystal Spiked Maul
+	},
 	WorldBlues2HSwords = {
-		{ 0,"","","" },
-		{ 12992, "INV_Sword_21", "=q3=Searing Blade", "=ds=#h2#, #w10#", "" },
-		{ 13041, "INV_Sword_25", "=q3=Guardian Blade", "=ds=#h2#, #w10#", "" },
-		{ 13049, "INV_Sword_46", "=q3=Deanship Claymore", "=ds=#h2#, #w10#", "" },
-		{ 2877, "INV_Sword_23", "=q3=Combatant Claymore", "=ds=#h2#, #w10#", "" },
-		{ 9385, "INV_Sword_41", "=q3=Archaic Defender", "=ds=#h2#, #w10#", "" },
-		{ 13042, "INV_Sword_41", "=q3=Sword of the Magistrate", "=ds=#h2#, #w10#", "" },
-		{ 13051, "INV_Sword_35", "=q3=Witchfury", "=ds=#h2#, #w10#", "" },
-		{ 13043, "INV_Sword_07", "=q3=Blade of the Titans", "=ds=#h2#, #w10#", "" },
-		{ 13052, "INV_Sword_46", "=q3=Warmonger", "=ds=#h2#, #w10#", "" },
-		{ 13044, "INV_Sword_03", "=q3=Demonslayer", "=ds=#h2#, #w10#", "" },
-		{ 16039, "INV_Sword_41", "=q3=Ta'Kierthan Songblade", "=ds=#h2#, #w10#", "" },
-		{ 13053, "INV_Sword_01", "=q3=Doombringer", "=ds=#h2#, #w10#", "" },
-	};
+		{},
+		{ id = 12992 }, -- Searing Blade
+		{ id = 13041 }, -- Guardian Blade
+		{ id = 13049 }, -- Deanship Claymore
+		{ id = 2877 }, -- Combatant Claymore
+		{ id = 9385 }, -- Archaic Defender
+		{ id = 13042 }, -- Sword of the Magistrate
+		{ id = 13051 }, -- Witchfury
+		{ id = 13043 }, -- Blade of the Titans
+		{ id = 13052 }, -- Warmonger
+		{ id = 13044 }, -- Demonslayer
+		{ id = 16039 }, -- Ta'Kierthan Songblade
+		{ id = 13053 }, -- Doombringer
+	},
 	WorldBluesDaggers = {
-		{ 0,"","","" },
-		{ 2236, "INV_Weapon_ShortBlade_02", "=q3=Blackfang", "=ds=#h1#, #w4#", "" },
-		{ 4446, "INV_Weapon_ShortBlade_02", "=q3=Blackvenom Blade", "=ds=#h1#, #w4#", "" },
-		{ 4454, "INV_Weapon_ShortBlade_16", "=q3=Talon of Vultros", "=ds=#h1#, #w4#", "" },
-		{ 2912, "INV_Weapon_ShortBlade_16", "=q3=Claw of the Shadowmancer", "=ds=#h1#, #w4#", "" },
-		{ 6331, "INV_Weapon_ShortBlade_15", "=q3=Howling Blade", "=ds=#h1#, #w4#", "" },
-		{ 8006, "INV_Weapon_ShortBlade_25", "=q3=The Ziggler", "=ds=#h1#, #w4#", "" },
-		{ 4091, "INV_Weapon_ShortBlade_03", "=q3=Widowmaker", "=ds=#h1#, #w4#", "" },
-		{ 6660, "INV_Weapon_ShortBlade_07", "=q3=Julie's Dagger", "=ds=#h1#, #w4#", "" },
-		{ 24222, "INV_Weapon_ShortBlade_18", "=q3=The Shadowfoot Stabber", "=ds=#h1#, #w4#", "" },
-		{ 5267, "INV_Weapon_ShortBlade_03", "=q3=Scarlet Kris", "=ds=#h1#, #w4#", "" },
-		{ 20720, "INV_Weapon_ShortBlade_16", "=q3=Dark Whisper Blade", "=ds=#h3#, #w4#", "" },
-	};
+		{},
+		{ id = 2236 }, -- Blackfang
+		{ id = 4446 }, -- Blackvenom Blade
+		{ id = 4454 }, -- Talon of Vultros
+		{ id = 2912 }, -- Claw of the Shadowmancer
+		{ id = 6331 }, -- Howling Blade
+		{ id = 8006 }, -- The Ziggler
+		{ id = 4091 }, -- Widowmaker
+		{ id = 6660 }, -- Julie's Dagger
+		{ id = 24222 }, -- The Shadowfoot Stabber
+		{ id = 5267 }, -- Scarlet Kris
+		{ id = 20720 }, -- Dark Whisper Blade
+	},
 	WorldBluesFistWeapons = {
-		{ 0,"","","" },
-		{ 11603, "Ability_WhirlWind", "=q3=Vilerend Slicer", "=ds=#h3#, #w13#", "" },
-	};
+		{},
+		{ id = 11603 }, -- Vilerend Slicer
+	},
 	WorldBluesPolearms = {
-		{ 0,"","","" },
-		{ 12989, "INV_Spear_05", "=q3=Gargoyle's Bite", "=ds=#w7#", "" },
-		{ 13057, "INV_Spear_02", "=q3=Bloodpike", "=ds=#w7#", "" },
-		{ 1726, "INV_Spear_02", "=q3=Poison-tipped Bone Spear", "=ds=#w7#", "" },
-		{ 13054, "INV_Spear_02", "=q3=Grim Reaper", "=ds=#w7#", "" },
-		{ 13058, "INV_Spear_02", "=q3=Khoo's Point", "=ds=#w7#", "" },
-		{ 13055, "INV_Spear_06", "=q3=Bonechewer", "=ds=#w7#", "" },
-		{ 13059, "INV_Spear_07", "=q3=Stoneraven", "=ds=#w7#", "" },
-		{ 13056, "INV_Spear_07", "=q3=Frenzied Striker", "=ds=#w7#", "" },
-		{ 13060, "INV_Spear_08", "=q3=The Needler", "=ds=#w7#", "" },
-	};
+		{},
+		{ id = 12989 }, -- Gargoyle's Bite
+		{ id = 13057 }, -- Bloodpike
+		{ id = 1726 }, -- Poison-tipped Bone Spear
+		{ id = 13054 }, -- Grim Reaper
+		{ id = 13058 }, -- Khoo's Point
+		{ id = 13055 }, -- Bonechewer
+		{ id = 13059 }, -- Stoneraven
+		{ id = 13056 }, -- Frenzied Striker
+		{ id = 13060 }, -- The Needler
+	},
 	WorldBluesStaves = {
-		{ 0,"","","" },
-		{ 890, "INV_Staff_04", "=q3=Twisted Chanter's Staff", "=ds=#w9#", "" },
-		{ 791, "INV_Staff_02", "=q3=Gnarled Ash Staff", "=ds=#w9#", "" },
-		{ 937, "INV_Staff_13", "=q3=Black Duskwood Staff", "=ds=#w9#", "" },
-		{ 1720, "INV_Staff_25", "=q3=Tanglewood Staff", "=ds=#w9#", "" },
-		{ 1607, "Spell_Shadow_Haunting", "=q3=Soulkeeper", "=ds=#w9#", "" },
-		{ 13000, "INV_Staff_23", "=q3=Staff of Hale Magefire", "=ds=#w9#", "" },
-	};
+		{},
+		{ id = 890 }, -- Twisted Chanter's Staff
+		{ id = 791 }, -- Gnarled Ash Staff
+		{ id = 937 }, -- Black Duskwood Staff
+		{ id = 1720 }, -- Tanglewood Staff
+		{ id = 1607 }, -- Soulkeeper
+		{ id = 13000 }, -- Staff of Hale Magefire
+	},
 	WorldBluesBows = {
-		{ 0,"","","" },
-		{ 3021, "INV_Weapon_Bow_11", "=q3=Ranger Bow", "=ds=#w2#", "" },
-		{ 13019, "INV_Weapon_Bow_11", "=q3=Harpyclaw Short Bow", "=ds=#w2#", "" },
-		{ 13020, "INV_Weapon_Bow_11", "=q3=Skystriker Bow", "=ds=#w2#", "" },
-		{ 13021, "INV_Weapon_Bow_08", "=q3=Needle Threader", "=ds=#w2#", "" },
-		{ 13022, "INV_Weapon_Bow_11", "=q3=Gryphonwing Long Bow", "=ds=#w2#", "" },
-		{ 13023, "INV_Weapon_Bow_11", "=q3=Eaglehorn Long Bow", "=ds=#w2#", "" },
-	};
+		{},
+		{ id = 3021 }, -- Ranger Bow
+		{ id = 13019 }, -- Harpyclaw Short Bow
+		{ id = 13020 }, -- Skystriker Bow
+		{ id = 13021 }, -- Needle Threader
+		{ id = 13022 }, -- Gryphonwing Long Bow
+		{ id = 13023 }, -- Eaglehorn Long Bow
+	},
 	WorldBluesCrossbows = {
-		{ 0,"","","" },
-		{ 13037, "INV_Weapon_Crossbow_04", "=q3=Crystalpine Stinger", "=ds=#w3#", "" },
-		{ 13038, "INV_Weapon_Crossbow_04", "=q3=Swiftwind", "=ds=#w3#", "" },
-		{ 13039, "INV_Weapon_Crossbow_04", "=q3=Skull Splitting Crossbow", "=ds=#w3#", "" },
-		{ 13040, "INV_Weapon_Crossbow_04", "=q3=Heartseeking Crossbow", "=ds=#w3#", "" },
-	};
+		{},
+		{ id = 13037 }, -- Crystalpine Stinger
+		{ id = 13038 }, -- Swiftwind
+		{ id = 13039 }, -- Skull Splitting Crossbow
+		{ id = 13040 }, -- Heartseeking Crossbow
+	},
 	WorldBluesGuns = {
-		{ 0,"","","" },
-		{ 13136, "INV_Weapon_Rifle_08", "=q3=Lil Timmy's Peashooter", "=ds=#w5#", "" },
-		{ 2098, "INV_Weapon_Rifle_08", "=q3=Double-barreled Shotgun", "=ds=#w5#", "" },
-		{ 13137, "INV_Weapon_Rifle_08", "=q3=Ironweaver", "=ds=#w5#", "" },
-		{ 13138, "INV_Weapon_Rifle_08", "=q3=The Silencer", "=ds=#w5#", "" },
-		{ 13139, "INV_Weapon_Rifle_08", "=q3=Guttbuster", "=ds=#w5#", "" },
-		{ 13146, "INV_Weapon_Rifle_08", "=q3=Shell Launcher Shotgun", "=ds=#w5#", "" },
-		{ 20722, "INV_Weapon_Rifle_03", "=q3=Crystal Slugthrower", "=ds=#w5#", "" },
-	};
+		{},
+		{ id = 13136 }, -- Lil Timmy's Peashooter
+		{ id = 2098 }, -- Double-barreled Shotgun
+		{ id = 13137 }, -- Ironweaver
+		{ id = 13138 }, -- The Silencer
+		{ id = 13139 }, -- Guttbuster
+		{ id = 13146 }, -- Shell Launcher Shotgun
+		{ id = 20722 }, -- Crystal Slugthrower
+	},
 	WorldBluesShields = {
-		{ 0,"","","" },
-		{ 12997, "INV_Shield_02", "=q3=Redbeard Crest", "=ds=#w8#", "" },
-		{ 13079, "INV_Shield_10", "=q3=Shield of Thorsen", "=ds=#w8#", "" },
-		{ 13081, "INV_Shield_02", "=q3=Skullance Shield", "=ds=#w8#", "" },
-		{ 13082, "INV_Shield_15", "=q3=Mountainside Buckler", "=ds=#w8#", "" },
-		{ 1203, "INV_Shield_06", "=q3=Aegis of Stormwind", "=ds=#w8#", "" },
-		{ 13083, "INV_Shield_05", "=q3=Garrett Family Crest", "=ds=#w8#", "" },
-	};
-	WorldEpics1 = {
-		{ 0, "", "", "" },
-		{ 1981, "INV_Chest_Plate06", "=q4=Icemail Jerkin", "=ds=#s5#, #a3#", "" },
-		{ 867, "INV_Gauntlets_06", "=q4=Gloves of Holy Might", "=ds=#s9#, #a2#", "" },
-		{ 1980, "INV_Jewelry_Ring_15", "=q4=Underworld Band", "=ds=#s13#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 868, "INV_Mace_13", "=q4=Ardent Custodian", "=ds=#h3#, #w6#", "" },
-		{ 869, "INV_Sword_25", "=q4=Dazzling Longsword", "=ds=#h3#, #w10#", "" },
-		{ 870, "INV_Axe_02", "=q4=Fiery War Axe", "=ds=#h2#, #w1#", "" },
-		{ 1982, "INV_Sword_02", "=q4=Nightblade", "=ds=#h2#, #w10#", "" },
-		{ 2825, "INV_Weapon_Bow_09", "=q4=Bow of Searing Arrows", "=ds=#w2#", "" },
-		{ 1204, "INV_Shield_06", "=q4=The Green Tower", "=ds=#w8#", "" },
-		{ 873, "INV_Staff_13", "=q4=Staff of Jordan", "=ds=#w9#", "" },
+		{},
+		{ id = 12997 }, -- Redbeard Crest
+		{ id = 13079 }, -- Shield of Thorsen
+		{ id = 13081 }, -- Skullance Shield
+		{ id = 13082 }, -- Mountainside Buckler
+		{ id = 1203 }, -- Aegis of Stormwind
+		{ id = 13083 }, -- Garrett Family Crest
 	},
-	WorldEpics2 = {
-		{ 0, "", "", "" },
-		{ 14550, "inv_bracer_09", "=q4=Bladebane Armguards", "=ds=#s8#, #a2#", "" },
-		{ 3075, "INV_Helmet_44", "=q4=Eye of Flame", "=ds=#s1#, #a1#", "" },
-		{ 1315, "INV_Misc_Flower_01", "=q4=Lei of Lilies", "=ds=#s2#", "" },
-		{ 940, "INV_Chest_Cloth_26", "=q4=Robes of Insight", "=ds=#s5#, #a1#", "" },
-		{ 14551, "INV_Gauntlets_30", "=q4=Edgemaster's Handguards", "=ds=#s9#, #a3#", "" },
-		{ 17007, "INV_Gauntlets_15", "=q4=Stonerender Gauntlets", "=ds=#s9#, #a3#", "" },
-		{ 14549, "INV_Boots_Plate_05", "=q4=Boots of Avoidance", "=ds=#s12#, #a4#", "" },
-		{ 942, "INV_Jewelry_Ring_07", "=q4=Freezing Band", "=ds=#s13#", "" },
-		{ 1447, "INV_Belt_27", "=q4=Ring of Saviors", "=ds=#s13#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 810, "INV_Hammer_11", "=q4=Hammer of the Northern Wind", "=ds=#h3#, #w6#", "" },
-		{ 809, "INV_Sword_28", "=q4=Bloodrazor", "=ds=#h3#, #w10#", "" },
-		{ 871, "INV_Axe_17", "=q4=Flurry Axe", "=ds=#h1#, #w1#", "" },
-		{ 2164, "INV_Sword_13", "=q4=Gut Ripper", "=ds=#h1#, #w4#", "" },
-		{ 2163, "INV_Sword_12", "=q4=Shadowblade", "=ds=#h1#, #w4#", "" },
-		{ 2291, "INV_Axe_15", "=q4=Kang the Decapitator", "=ds=#h2#, #w1#", "" },
-		{ 2915, "INV_Hammer_02", "=q4=Taran Icebreaker", "=ds=#h2#, #w6#", "" },
-		{ 812, "INV_Staff_29", "=q4=Glowing Brightwood Staff", "=ds=#w9#", "" },
-		{ 943, "INV_Staff_29", "=q4=Warden Staff", "=ds=#w9#", "" },
-		{ 2824, "INV_Weapon_Bow_12", "=q4=Hurricane", "=ds=#w2#", "" },
-		{ 2100, "INV_Weapon_Rifle_06", "=q4=Precisely Calibrated Boomstick", "=ds=#w5#", "" },
-		{ 1169, "Spell_Shadow_GrimWard", "=q4=Blackskull Shield", "=ds=#w8#", "" },
-		{ 1979, "INV_Shield_02", "=q4=Wall of the Dead", "=ds=#w8#", "" },
+	WorldEpics = {
+		{},
+		{ id = 1981 }, -- Icemail Jerkin
+		{ id = 867 }, -- Gloves of Holy Might
+		{ id = 1980 }, -- Underworld Band
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 868 }, -- Ardent Custodian
+		{ id = 869 }, -- Dazzling Longsword
+		{ id = 870 }, -- Fiery War Axe
+		{ id = 1982 }, -- Nightblade
+		{ id = 2825 }, -- Bow of Searing Arrows
+		{ id = 1204 }, -- The Green Tower
+		{ id = 873 }, -- Staff of Jordan
+		{},
+		{ id = 14550 }, -- Bladebane Armguards
+		{ id = 3075 }, -- Eye of Flame
+		{ id = 1315 }, -- Lei of Lilies
+		{ id = 940 }, -- Robes of Insight
+		{ id = 14551 }, -- Edgemaster's Handguards
+		{ id = 17007 }, -- Stonerender Gauntlets
+		{ id = 14549 }, -- Boots of Avoidance
+		{ id = 942 }, -- Freezing Band
+		{ id = 1447 }, -- Ring of Saviors
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 810 }, -- Hammer of the Northern Wind
+		{ id = 809 }, -- Bloodrazor
+		{ id = 871 }, -- Flurry Axe
+		{ id = 2164 }, -- Gut Ripper
+		{ id = 2163 }, -- Shadowblade
+		{ id = 2291 }, -- Kang the Decapitator
+		{ id = 2915 }, -- Taran Icebreaker
+		{ id = 812 }, -- Glowing Brightwood Staff
+		{ id = 943 }, -- Warden Staff
+		{ id = 2824 }, -- Hurricane
+		{ id = 2100 }, -- Precisely Calibrated Boomstick
+		{ id = 1169 }, -- Blackskull Shield
+		{ id = 1979 }, -- Wall of the Dead
+		{ id = 60784 }, -- Breastplate of Beast Mastery
+		{ id = 2245 }, -- Helm of Narv
+		{ id = 1443 }, -- Jeweled Amulet of Cainwyn
+		{ id = 14558 }, -- Lady Maye's Pendant
+		{ id = 14552 }, -- Stockade Pauldrons
+		{ id = 3475 }, -- Cloak of Flames
+		{ id = 14553 }, -- Sash of Mercy
+		{ id = 14554 }, -- Cloudkeeper Legplates
+		{ id = 2246 }, -- Myrmidon's Signet
+		{ id = 833 }, -- Lifestone
+		{ id = 18665 }, -- The Eye of Shadow
+		{ id = 14557 }, -- The Lion Horn of Stormwind
+		{},
+		{},
+		{},
+		{ id = 2243 }, -- Hand of Edward the Odd
+		{ id = 20698 }, -- Elemental Attuned Blade
+		{ id = 1728 }, -- Teebu's Blazing Longsword
+		{ id = 811 }, -- Axe of the Deep Woods
+		{ id = 14555 }, -- Alcor's Sunrazor
+		{ id = 2244 }, -- Krol Blade
+		{ id = 1263 }, -- Brain Hacker
+		{ id = 2801 }, -- Blade of Hanna
+		{ id = 647 }, -- Destiny
+		{ id = 2099 }, -- Dwarven Hand Cannon
+		{ id = 1168 }, -- Skullflame Shield
+		{ id = 944 }, -- Elemental Mage Staff
 	},
-	WorldEpics3 = {
-		{ 60784, "", "=q4=Breastplate of Beast Mastery", "=ds=#s5#, #a3#", "" },
-		{ 2245, "INV_Helmet_05", "=q4=Helm of Narv", "=ds=#s1#, #a3#", "" },
-		{ 1443, "INV_Jewelry_Amulet_01", "=q4=Jeweled Amulet of Cainwyn", "=ds=#s2#", "" },
-		{ 14558, "INV_Jewelry_Necklace_08", "=q4=Lady Maye's Pendant", "=ds=#s2#", "" },
-		{ 14552, "INV_Shoulder_20", "=q4=Stockade Pauldrons", "=ds=#s3#, #a4#", "" },
-		{ 3475, "INV_Misc_Cape_08", "=q4=Cloak of Flames", "=ds=#s4#", "" },
-		{ 14553, "INV_Belt_09", "=q4=Sash of Mercy", "=ds=#s10#, #a2#", "" },
-		{ 14554, "INV_Pants_04", "=q4=Cloudkeeper Legplates", "=ds=#s11#, #a4#", "" },
-		{ 2246, "INV_Jewelry_Ring_05", "=q4=Myrmidon's Signet", "=ds=#s13#", "" },
-		{ 833, "INV_Ore_TrueSilver_01", "=q4=Lifestone", "=ds=#s14#", "" },
-		{ 18665, "Spell_Shadow_UnholyFrenzy", "=q4=The Eye of Shadow", "=ds=#s14#", "" },
-		{ 14557, "INV_Misc_Horn_03", "=q4=The Lion Horn of Stormwind", "=ds=#s14#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 2243, "INV_Mace_14", "=q4=Hand of Edward the Odd", "=ds=#h3#, #w6#", "" },
-		{ 20698, "INV_Sword_22", "=q4=Elemental Attuned Blade", "=ds=#h3#, #w10#", "" },
-		{ 1728, "INV_Sword_22", "=q4=Teebu's Blazing Longsword", "=ds=#h3#, #w10#", "" },
-		{ 811, "INV_Axe_07", "=q4=Axe of the Deep Woods", "=ds=#h1#, #w1#", "" },
-		{ 14555, "INV_Sword_34", "=q4=Alcor's Sunrazor", "=ds=#h1#, #w10#", "" },
-		{ 2244, "INV_Sword_18", "=q4=Krol Blade", "=ds=#h1#, #w10#", "" },
-		{ 1263, "INV_Weapon_Halberd_10", "=q4=Brain Hacker", "=ds=#h2#, #w1#", "" },
-		{ 2801, "INV_Sword_10", "=q4=Blade of Hanna", "=ds=#h2#, #w10#", "" },
-		{ 647, "INV_Sword_19", "=q4=Destiny", "=ds=#h2#, #w10#", "" },
-		{ 2099, "INV_Weapon_Rifle_09", "=q4=Dwarven Hand Cannon", "=ds=#w5#", "" },
-		{ 1168, "INV_Shield_01", "=q4=Skullflame Shield", "=ds=#w8#", "" },
-		{ 944, "INV_Staff_07", "=q4=Elemental Mage Staff", "=ds=#w9#", "" },
-	},
-	RarePets1 = {
-		{ 13584, "INV_DiabloStone", "=q3=Diablo Stone", "=ds=#e15# =q6=#j14#" },
-		{ 13583, "INV_Belt_05", "=q3=Panda Collar", "=ds=#e15# =q6=#j14#" },
-		{ 13582, "Spell_Shadow_SummonFelHunter", "=q3=Zergling Leash", "=ds=#e15# =q6=#j14#" },
-		{ 23713, "INV_Egg_02", "=q4=Hippogryph Hatchling", "=ds=#e15# =q6=TCG" },
-		{ 23712, "INV_Misc_Head_Tiger_01", "=q4=White Tiger Cub", "=ds=#e15# =q6=TCG" },
-		{ 22114, "INV_Egg_03", "=q3=Pink Murloc Egg", "=ds=#e15# =q6=BlizzCon 2006" },
-		{ 20371, "INV_Egg_03", "=q3=Blue Murloc Egg", "=ds=#e15# =q6=BlizzCon 2005" },
-		{ 0,"","","" },
-		{ 23007,"INV_Belt_25","=q1=Piglet's Collar","=ds=#e15# =q6=#ev4#" },
-		{ 23015,"INV_Box_PetCarrier_01","=q1=Rat Cage","=ds=#e15# =q6=#ev4#" },
-		{ 23002,"INV_Crate_03","=q1=Turtle Box","=ds=#e15# =q6=#ev4#" },
-		{ 21301, "INV_Holiday_Christmas_Present_03", "=q1=Green Helper Box", "=ds=#e15# =q6=#ev1#" },
-		{ 21308, "INV_Misc_Bell_01", "=q1=Jingling Bell", "=ds=#e15# =q6=#ev1#" },
-		{ 21305, "INV_Holiday_Christmas_Present_01", "=q1=Red Helper Box", "=ds=#e15# =q6=#ev1#" },
-		{ 21309, "INV_Misc_Bag_17", "=q1=Snowman Kit", "=ds=#e15# =q6=#ev1#" },
-		{ 22235, "INV_Ammo_Arrow_02", "=q1=Truesilver Shafted Arrow", "=ds=#e15# =q6=#ev2#" },
-		{ 23083, "INV_Potion_33", "=q1=Captured Flame", "=ds=#e15# =q6=#ev3#" },
-		{ 0, "", "", "" },
-		{ 19450,"INV_Egg_04","=q1=A Jubling's Tiny Home","=ds=#e15#" },
-		{ 8491,"INV_Box_PetCarrier_01","=q1=Cat Carrier (Black Tabby)","=ds=#e15#" },
-		{ 8489,"INV_Box_PetCarrier_01","=q1=Cat Carrier (White Kitten)","=ds=#e15#" },
-		{ 11110,"INV_Egg_02","=q1=Chicken Egg","=ds=#e15#" },
-		{ 10822,"INV_Misc_Head_Dragon_01","=q1=Dark Whelpling","=ds=#e15#" },
-		{ 20769,"Ability_Creature_Poison_05","=q1=Disgusting Oozeling","=ds=#e15#" },
-		{ 15996,"INV_Misc_MonsterHead_03","=q1=Lifelike Mechanical Toad","=ds=#e15#" },
-		{ 11826,"INV_Misc_Idol_02","=q1=Lil' Smoky","=ds=#e15#" },
-		{ 10398,"Spell_Magic_PolymorphChicken","=q1=Mechanical Chicken","=ds=#e15#" },
-		{ 8494,"Spell_Nature_ForceofNature","=q1=Parrot Cage (Hyacinth Macaw)","=ds=#e15#" },
-		{ 11825,"INV_Misc_Bomb_04","=q1=Pet Bombling","=ds=#e15#" },
-		{ 12529,"INV_Box_Birdcage_01","=q1=Smolderweb Carrier","=ds=#e15#" },
-	},
-	RarePets2 = {
-		{ 0, "", "", "" },
-		{ 11474,"INV_Egg_02","=q1=Sprite Darter Egg","=ds=#e15#" },
-		{ 8499,"INV_Misc_Head_Dragon_01","=q1=Tiny Crimson Whelpling","=ds=#e15#" },
-		{ 8498,"INV_Misc_Head_Dragon_01","=q1=Tiny Emerald Whelpling","=ds=#e15#" },
-		{ 21277,"Ability_Hunter_Pet_Gorilla","=q1=Tranquil Mechanical Yeti","=ds=#e15#" },
-		{ 12264,"INV_Box_PetCarrier_01","=q1=Worg Carrier","=ds=#e15#" },
-	},
+	RarePets = {
+		{ id = 13584 }, -- Diablo Stone
+		{ id = 13583 }, -- Panda Collar
+		{ id = 13582 }, -- Zergling Leash
+		{ id = 23713 }, -- Hippogryph Hatchling
+		{ id = 23712 }, -- White Tiger Cub
+		{ id = 22114 }, -- Pink Murloc Egg
+		{ id = 20371 }, -- Blue Murloc Egg
+		{},
+		{ id = 23007 }, -- Piglet's Collar
+		{ id = 23015 }, -- Rat Cage
+		{ id = 23002 }, -- Turtle Box
+		{ id = 21301 }, -- Green Helper Box
+		{ id = 21308 }, -- Jingling Bell
+		{ id = 21305 }, -- Red Helper Box
+		{ id = 21309 }, -- Snowman Kit
+		{ id = 22235 }, -- Truesilver Shafted Arrow
+		{ id = 23083 }, -- Captured Flame
+		{},
+		{ id = 19450 }, -- A Jubling's Tiny Home
+		{ id = 8491 }, -- Cat Carrier (Black Tabby)
+		{ id = 8489 }, -- Cat Carrier (White Kitten)
+		{ id = 11110 }, -- Chicken Egg
+		{ id = 10822 }, -- Dark Whelpling
+		{ id = 20769 }, -- Disgusting Oozeling
+		{ id = 15996 }, -- Lifelike Mechanical Toad
+		{ id = 11826 }, -- Lil' Smoky
+		{ id = 10398 }, -- Mechanical Chicken
+		{ id = 8494 }, -- Parrot Cage (Hyacinth Macaw)
+		{ id = 11825 }, -- Pet Bombling
+		{ id = 12529 }, -- Smolderweb Carrier
+		{},
+		{ id = 11474 }, -- Sprite Darter Egg
+		{ id = 8499 }, -- Tiny Crimson Whelpling
+		{ id = 8498 }, -- Tiny Emerald Whelpling
+		{ id = 21277 }, -- Tranquil Mechanical Yeti
+		{ id = 12264 }, -- Worg Carrier
+	}
 }
+
+for k, v in pairs(Sets) do
+	AtlasLoot_Data[k] = v
+end

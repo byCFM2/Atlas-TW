@@ -1,4 +1,4 @@
-local L = AtlasTW.Local
+--[[ local L = AtlasTW.Local
 local BC = AceLibrary("Babble-Class-2.2")
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BS = AceLibrary("Babble-Spell-2.2a")
@@ -684,13 +684,13 @@ function AtlasLoot_FixText(text)
 
     -- Replace tokens using the replacements table
     text = gsub(text, "#([%w_]+)#", function(key)
-        return replacements[key] or "#"..key.."#"
+        return replacements[key] or ("#"..key.."#")
     end)
 
     -- Replace color codes using the replacements table
     text = gsub(text, "=([%w_]+)=", function(key)
-        return replacements[key] or "="..key.."="
+        return replacements[key] or ("="..key.."=")
     end)
 
     return text
-end
+end ]]

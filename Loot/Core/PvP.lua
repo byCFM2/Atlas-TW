@@ -6,10 +6,10 @@ AtlasTW.Loot.PvpMenuData = {
     {},
     {},
     {},
-    { name = BZ["Alterac Valley"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_21", lootpage = "AlteracValley" },
-    { name = BZ["Arathi Basin"], icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ArathiBasin" },
-    { name = BZ["Warsong Gulch"], icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WarsongGulch" },
-    { name = BZ["Blood Ring"], icon = "Interface\\Icons\\inv_jewelry_ring_04", lootpage = "BloodRing" },
+    { name = BZ["Alterac Valley"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_21", lootpage = "StormpikeFrostwolf" },
+    { name = BZ["Arathi Basin"], icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ArathorDefilers" },
+    { name = BZ["Warsong Gulch"], icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "SentinelsOutriders" },
+    { name = BZ["Blood Ring"], icon = "Interface\\Icons\\inv_jewelry_ring_04", lootpage = "SteamwheedleBloodRing" },
     {},
     {},
 	{},
@@ -32,7 +32,7 @@ function AtlasLootPvPMenu()
     AtlasLoot_ShowMenu(AtlasTW.Loot.PvpMenuData, { maxItems = table.getn(AtlasTW.Loot.PvpMenuData) })
 end
 
-local brRepMenuData = {
+--[[ local brRepMenuData = {
     {},
     { name = L["Friendly Reputation Rewards"], icon = "Interface\\Icons\\inv_jewelry_ring_04", lootpage = "BRRepFriendly" },
     { name = L["Honored Reputation Rewards"], icon = "Interface\\Icons\\inv_jewelry_ring_04", lootpage = "BRRepHonored" },
@@ -44,8 +44,8 @@ local brRepMenuData = {
 function AtlasLootBRRepMenu()
 	AtlasLoot_PrepMenu("PvP", BZ["Blood Ring"])
     AtlasLoot_ShowMenu(brRepMenuData, { maxItems = table.getn(brRepMenuData) })
-end
-
+end ]]
+--[[ 
 local wsgRepMenuData = {
     {},
     { name = L["Friendly Reputation Rewards"], icon = "Interface\\Icons\\INV_Misc_Rune_07", isheader = true },
@@ -79,8 +79,8 @@ local wsgRepMenuData = {
 function AtlasLootWSGRepMenu()
 	AtlasLoot_PrepMenu("PvP", BZ["Warsong Gulch"])
     AtlasLoot_ShowMenu(wsgRepMenuData, { maxItems = table.getn(wsgRepMenuData) })
-end
-
+end ]]
+--[[ 
 local abRepMenuData = {
     {},
     { name = L["Friendly Reputation Rewards"], icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", isheader = true },
@@ -114,8 +114,8 @@ local abRepMenuData = {
 function AtlasLootABRepMenu()
 	AtlasLoot_PrepMenu("PvP", BZ["Arathi Basin"])
     AtlasLoot_ShowMenu(abRepMenuData, { maxItems = table.getn(abRepMenuData) })
-end
-
+end ]]
+--[[ 
 local avRepMenuData = {
     {},
     { name = L["Friendly Reputation Rewards"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_21", lootpage = "AVRepFriendly" },
@@ -130,7 +130,7 @@ function AtlasLootAVRepMenu()
 	AtlasLoot_PrepMenu("PvP", BZ["Alterac Valley"])
     AtlasLoot_ShowMenu(avRepMenuData, { maxItems = table.getn(avRepMenuData) })
 end
-
+ ]]
 local pvpSetMenuData = {
     {},
     {},

@@ -6,41 +6,11 @@ local L = AtlasTW.Local
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BS = AceLibrary("Babble-Spell-2.2a")
 
-AtlasLoot_Data = {
-	VanillaKeys = {
-		{ name = L["Key"] },
-		{ id = 16309}, -- Drakefire Amulet
-		{ id = 12344}, -- Seal of Ascension
-		{ id = 17191}, -- Scepter of Celebras
-		{ id = 7146}, -- The Scarlet Key
-		{ id = 12382}, -- Key to the City
-		{ id = 6893}, -- Workshop Key
-		{ id = 11000}, -- Shadowforge Key
-		{ id = 11140}, -- Prison Cell Key
-		{ id = 18249}, -- Crescent Key
-		{ id = 13704}, -- Skeleton Key
-		{ id = 11197}, -- Dark Keeper Key
-		{ id = 18266}, -- Gordok Inner Door Key
-		{ id = 18268}, -- Gordok Courtyard Key
-		{ id = 13873},
-		{ name = L["Misc"] }, --16
-		{ id = 19931, disc = L["Used to summon boss"] },
-		{ id = 9240, disc = L["Used to summon boss"] },
-		{ id = 18250, disc = L["Key"] },
-		{ id = 17333, disc = L["Used to summon boss"] },
-		{ id = 22754, disc = L["Used to summon boss"] },
-		{ id = 13523, disc = L["Used to summon boss"] },
-		{ id = 18746, disc = L["Used to summon boss"] },
-		{ id = 18663, disc = L["Used to summon boss"] },
-		{ id = 19974, disc = L["Used to summon boss"] },
-		{ id = 7733, disc = L["Used to summon boss"] },
-		{ id = 10818, disc = L["Used to summon boss"] },
-		{ name = L["Tier 0.5"] },
-		{ id = 22057, disc = L["Used to summon boss"] },
-		{ id = 21986, disc = L["Used to summon boss"] },-- 30
-		{ id = 61234},--key 31
-		{ id = 51356},--key 32
-	}, --TODO need other table for this
+AtlasLoot_Data = AtlasLoot_Data or {}
+
+local Factions = {}
+
+Factions = {
 	WintersaberTrainers = {
 		{ name = BF["Exalted"] },
 		{ id = 13086 }, -- Reins of the Winterspring Frostsaber
@@ -1311,3 +1281,7 @@ AtlasLoot_Data = {
 		{ id = 80643 }, --*15L
 	},
 }
+
+for k, v in pairs(Factions) do
+	AtlasLoot_Data[k] = v
+end
