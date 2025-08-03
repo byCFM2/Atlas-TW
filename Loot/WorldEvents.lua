@@ -99,14 +99,14 @@ local WorldEvents = {
 		{ id = 83555, dropRate = 40 }, -- Abyssal Slate
 	},
 	ElementalInvasion = {
-		{ name = L["Baron Charr"], info = BZ["Un'goro Crater"] },
+		{ name = L["Baron Charr"], info = BZ["Un'goro Crater"], icon="Spell_Fire_Elemental_Totem" },
 		{ id = 83550, dropRate = 100 }, -- Primordial Flame
 		{ id = 18671, dropRate = 21 }, -- Baron Charr's Sceptre
 		{ id = 80850, dropRate = 15 }, -- Circlet of the Living Volcano
 		{ id = 19268, dropRate = 10.14 }, -- Ace of Elementals
 		{ id = 18672, dropRate = 50 }, -- Elemental Ember
 		{ id = 80849, dropRate = 15 }, -- Living Ember Pendant
-		{ name = L["Princess Tempestria"], info = BZ["Winterspring"] },
+		{ name = L["Princess Tempestria"], info = BZ["Winterspring"], icon="Spell_Fire_Elemental_Totem" },
 		{ id = 83552, dropRate = 100 }, -- Unmelting Ice
 		{ id = 18678, dropRate = 30 }, -- Tempestria's Frozen Necklace
 		{ id = 80843, dropRate = 15 }, -- Tideturner Boots
@@ -114,14 +114,14 @@ local WorldEvents = {
 		{ id = 80844, dropRate = 15 }, -- Tempestria's Frozen Heart
 		{ id = 18679, dropRate = 50 }, -- Frigid Ring
 		{ id = 21548, dropRate = 20 }, -- Pattern: Stormshroud Gloves
-		{ name = L["Avalanchion"], info = BZ["Azshara"] },
+		{ name = L["Avalanchion"], info = BZ["Azshara"], icon="Spell_Fire_Elemental_Totem" },
 		{ id = 83551, dropRate = 100 }, -- Evershifting Stone
 		{ id = 18673, dropRate = 30 }, -- Avalanchion's Stony Hide
 		{ id = 80851, dropRate = 15 }, -- Earthclad Bracers
 		{ id = 19268, dropRate = 5.89 }, -- Ace of Elementals
 		{ id = 18674, dropRate = 50 }, -- Hardened Stone Band
 		{ id = 80852, dropRate = 15 }, -- Earthshard Necklace
-		{ name = L["The Windreaver"], info = BZ["Silithus"] },
+		{ name = L["The Windreaver"], info = BZ["Silithus"], icon="Spell_Fire_Elemental_Totem" },
 		{ id = 83553, dropRate = 100 }, -- Unyielding Gust
 		{ id = 18676, dropRate = 25 }, -- Sash of the Windreaver
 		{ id = 80853, dropRate = 15 }, -- Thunderstruck Talisman
@@ -164,7 +164,7 @@ local WorldEvents = {
 	Valentineday = {
 		{ id = 22206, dropRate = .43 }, -- Bouquet of Red Roses
 		{},
-		{ name = L["Gift of Adoration"] },
+		{ name = L["Gift of Adoration"], icon="INV_ValentinesBoxOfChocolates02" },
 		{ id = 22279 }, -- Lovely Black Dress
 		{ id = 22235 }, -- Truesilver Shafted Arrow
 		{ id = 22200 }, -- Silver Shafted Arrow
@@ -172,7 +172,7 @@ local WorldEvents = {
 		{ id = 22218 }, -- Handful of Rose Petals
 		{ id = 21813 }, -- Bag of Candies
 		{},
-		{ name = L["Box of Chocolates"] },
+		{ name = L["Box of Chocolates"], icon="INV_Box_02" },
 		{ id = 22237 }, -- Dark Desire
 		{ id = 22238 }, -- Very Berry Cream
 		{ id = 22236 }, -- Buttermilk Delight
@@ -184,7 +184,7 @@ local WorldEvents = {
 		{ id = 22281 }, -- Blue Dinner Suit
 		{ id = 22282 }, -- Purple Dinner Suit
 	},
-	Halloween1 = {
+	Halloween = {
 		{ id = 20400 }, -- Pumpkin Bag
 		{},
 		{ id = 18633 }, -- Styleen's Sour Suckerpop
@@ -206,8 +206,7 @@ local WorldEvents = {
 		{ id = 20413 }, -- Hallowed Wand - Random
 		{ id = 20411 }, -- Hallowed Wand - Skeleton
 		{ id = 20414 }, -- Hallowed Wand - Wisp
-	},
-	Halloween2 = {
+		{},
 		{ name = L["Treat Bag"], icon="INV_Misc_Bag_11" },
 		{ id = 20561 }, -- Flimsy Male Dwarf Mask
 		{ id = 20391 }, -- Flimsy Male Gnome Mask
@@ -217,11 +216,6 @@ local WorldEvents = {
 		{ id = 20572 }, -- Flimsy Male Tauren Mask
 		{ id = 20568 }, -- Flimsy Male Troll Mask
 		{ id = 20573 }, -- Flimsy Male Undead Mask
-		{},
-		{},
-		{},
-		{},
-		{},
 		{},
 		{ name = L["Treat Bag"], icon="INV_Misc_Bag_11" },
 		{ id = 20562 }, -- Flimsy Female Dwarf Mask
@@ -233,7 +227,7 @@ local WorldEvents = {
 		{ id = 20567 }, -- Flimsy Female Troll Mask
 		{ id = 20574 }, -- Flimsy Female Undead Mask
 	},
-	Winterviel1 = {
+	Winterviel = {
 		{ id = 21525 }, -- Green Winter Hat
 		{ id = 21524 }, -- Red Winter Hat
 		{},
@@ -263,8 +257,7 @@ local WorldEvents = {
 		{ name = L["Gently Shaken Gift"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 21235 }, -- Winter Veil Roast
 		{ id = 21241 }, -- Winter Veil Eggnog
-	},
-	Winterviel2 = {
+		{},
 		{ name = L["Smokywood Pastures"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 17201 }, -- Recipe: Egg Nog
 		{ id = 17200 }, -- Recipe: Gingerbread Cookie
@@ -282,38 +275,8 @@ local WorldEvents = {
 		{ id = 17303 }, -- Blue Ribboned Wrapping Paper
 		{ id = 17304 }, -- Green Ribboned Wrapping Paper
 		{ id = 17307 }, -- Purple Ribboned Wrapping Paper
-	},
-	WintervielSnowball = {
 		{},
 		{ id = 51249 }, -- Snowball
-		-- { 0,"","","" },
-		-- { 647, "INV_Sword_19", "=q4=Destiny", "=ds=#h2#, #w10#" },
-		-- { 811, "INV_Axe_07", "=q4=Axe of the Deep Woods", "=ds=#h3#, #w1#" },
-		-- { 833, "INV_Ore_TrueSilver_01", "=q4=Lifestone", "=ds=#s14#" },
-		-- { 944, "INV_Staff_07", "=q4=Elemental Mage Staff", "=ds=#h2#, #w9#" },
-		-- { 1168, "INV_Shield_01", "=q4=Skullflame Shield", "=ds=#w8#" },
-		-- { 1263, "INV_Weapon_Halberd_10", "=q4=Brain Hacker", "=ds=#h2#, #w1#" },
-		-- { 1443, "INV_Jewelry_Amulet_01", "=q4=Jeweled Amulet of Cainwyn", "=ds=#s2#" },
-		-- { 1728, "INV_Sword_22", "=q4=Teebu's Blazing Longsword", "=ds=#h3#, #w10#" },
-		-- { 2099, "INV_Weapon_Rifle_09", "=q4=Dwarven Hand Cannon", "=ds=#w5#" },
-		-- { 2243, "INV_Mace_14", "=q4=Hand of Edward the Odd", "=ds=#h1#, #w6#" },
-		-- { 2244, "INV_Sword_18", "=q4=Krol Blade", "=ds=#h3#, #w10#" },
-		-- { 2245, "INV_Helmet_05", "=q4=Helm of Narv", "=ds=#s1#, #a3#" },
-		-- { 2246, "INV_Jewelry_Ring_05", "=q4=Myrmidon's Signet", "=ds=#s13#" },
-		-- { 61089, "INV_Misc_Bag_10_Red", "=q3=The Great Sack of Winter Veil", "=ds=#e10#, #m4#" },
-		-- { 0,"","","" },
-		-- { 2801, "INV_Sword_10", "=q4=Blade of Hanna", "=ds=#h2#, #w10#" },
-		-- { 3475, "INV_Misc_Cape_08", "=q4=Cloak of Flames", "=ds=#s4#" },
-		-- { 14552, "INV_Shoulder_20", "=q4=Stockade Pauldrons", "=ds=#s3#, #a4#" },
-		-- { 14553, "INV_Belt_09", "=q4=Sash of Mercy", "=ds=#s10#, #a2#" },
-		-- { 14554, "INV_Pants_04", "=q4=Cloudkeeper Legplates", "=ds=#s11#, #a4#" },
-		-- { 14555, "INV_Sword_34", "=q4=Alcor's Sunrazor", "=ds=#h1#, #w4#" },
-		-- { 14557, "INV_Misc_Horn_03", "=q4=The Lion Horn of Stormwind", "=ds=#s14#" },
-		-- { 14558, "INV_Jewelry_Necklace_08", "=q4=Lady Maye's Pendant", "=ds=#s2#" },
-		-- { 20698, "INV_Sword_22", "=q4=Elemental Attuned Blade", "=ds=#h3#, #w10#" },
-		-- { 60782, "INV_Weapon_Crossbow_15", "=q4=Shieldbreaker Arbalest", "=ds=#w3#" },
-		-- { 60784, "INV_Chest_Leather_08", "=q4=Breastplate of Beast Mastery", "=ds=#s5#, #a3#" },
-		-- { 80793, "INV_Misc_Horn_02", "=q4=The Wolf Horn of Orgrimmar", "=ds=#s14#" },
 	},
 	Noblegarden = {
 		{ name = L["Brightly Colored Egg"], icon="INV_Egg_03" },
@@ -336,7 +299,7 @@ local WorldEvents = {
 		{ id = 19997 }, -- Harvest Nectar
 		{ id = 19696 }, -- Harvest Bread
 	},
-	ScourgeInvasionEvent1 = {
+	ScourgeInvasion = {
 		{ id = 23123 }, -- Blessed Wizard Oil
 		{ id = 23122 }, -- Consecrated Sharpening Stone
 		{ id = 22999 }, -- Tabard of the Argent Dawn
@@ -366,8 +329,7 @@ local WorldEvents = {
 		{ id = 23087 }, -- Breastplate of Undead Slaying
 		{ id = 23090 }, -- Bracers of Undead Slaying
 		{ id = 23078 }, -- Gauntlets of Undead Slaying
-	},
-	ScourgeInvasionEvent2 = {
+		{},
 		{ name = BB["Balzaphon"], info = BZ["Stratholme"] },
 		{ id = 23126, dropRate = 27.38 }, -- Waistband of Balzaphon
 		{ id = 23125, dropRate = 19.89 }, -- Chains of the Lich
@@ -392,12 +354,11 @@ local WorldEvents = {
 		{ id = 23173, dropRate = 76.87 }, -- Abomination Skin Leggings
 		{ id = 23171, dropRate = 22.94 }, -- The Axe of Severing
 		{},
-		{},
 		{ name = BB["Lady Falther'ess"], info = BZ["Razorfen Downs"] },
 		{ id = 23178, dropRate = 61.24 }, -- Mantle of Lady Falther'ess
 		{ id = 23177, dropRate = 38.17 }, -- Lady Falther'ess' Finger
 	},
-	LunarFestival1 = {
+	LunarFestival = {
 		{ id = 21100 }, -- Coin of Ancestry
 		{},
 		{ id = 21157 }, -- Festive Green Dress
@@ -427,8 +388,7 @@ local WorldEvents = {
 		{},
 		{ id = 21537 }, -- Festival Dumplings
 		{ id = 21713 }, -- Elune's Candle
-	},
-	LunarFestival2 = {
+		{},
 		{ id = 21738 }, -- Schematic: Firework Launcher
 		{},
 		{ id = 21722 }, -- Pattern: Festival Dress
