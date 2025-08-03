@@ -48,22 +48,16 @@ function AtlasLoot_PrepMenu(backPage, title, menu)
 end
 
 function AtlasLoot_ShowMenu(menuData, options)
-    -- Modern Data System Integration
     print("Show Menu")
-    if AtlasTW.ModernAdapter and menuData and menuData.useModern then
-        local legacyData = AtlasTW.ModernAdapter.GetLegacyData(menuData.category, menuData.boss)
-        if legacyData then
-            menuData = legacyData
-        end
-    end
 
     options = options or {}
     local maxItems = options.maxItems or 30
     local defaultIcon = options.defaultIcon or "Interface\\Icons\\INV_Misc_QuestionMark"
-    local itemData, menuItem, lib, nameText, extraText, libExtra
+    local itemData, menuItem, lib, nameText, extraText, libExtra, itemButton
     for i = 1, maxItems do
         itemData = menuData[i] or {}
         menuItem = _G["AtlasLootMenuItem_"..i]
+		itemButton = _G["AtlasLootItem_"..i]
         if itemData.name then
             lib = itemData.lib or nil
             if lib then
@@ -95,11 +89,12 @@ function AtlasLoot_ShowMenu(menuData, options)
         else
             menuItem:Hide()
         end
-    end
-    for i = 1, maxItems do
-        local button = _G["AtlasLootMenuItem_" .. i]
-        if button.lootpage then
-            button.dataSource = AtlasLoot_GetDataSource(button.lootpage)
+        -- Сохраняем таблицу для дальнейшего использования
+        if menuItem.lootpage then
+            menuItem.dataSource = AtlasLoot_GetDataSource(menuItem.lootpage)
         end
+        -- Скрываем кнопки предметов и контейнеров
+        itemButton:Hide()
+        AtlasLootItemsFrameContainer:Hide()
     end
 end
