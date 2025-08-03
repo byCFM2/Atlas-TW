@@ -361,7 +361,7 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 		end
     end
 
-	if dataSource and type(_G[dataSource]) == "function" then
+	if type(_G[dataSource]) == "function" then
 		print("AtlasLoot_Show2ItemsFrame: function")
 		_G[dataSource]()
 	elseif type(dataSource) == "table" then
@@ -457,65 +457,6 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 						else
 							quantityFrame:Hide()
 						end
-						-- Set the price (Dont need more, much better container+quantity (container={{itemID,Quantity}} ))
---[[ 						if item.curicon and item.curqt and type(item.curicon) == "table" and type(item.curqt) == "table" then
-							local activeCount = table.getn(item.curqt)
-
-							-- Показываем и позиционируем элементы
-							local activeIndex = 0
-							for f=1,5 do
-								local text = _G["AtlasLootItem_"..i.."_PriceText"..f]
-								local icon = _G["AtlasLootItem_"..i.."_PriceIcon"..f]
-								if item.curqt[f] then
-									activeIndex = activeIndex + 1
-									text:SetText(item.curqt[f])
-									icon:SetTexture("Interface\\Icons\\"..item.curicon[f])
-
-									-- Позиционирование: последний элемент справа, остальные левее
-									local offsetFromRight = (activeCount - activeIndex) * 14
-									local name = _G["AtlasLootItem_"..i.."_Name"]
-									icon:ClearAllPoints()
-									icon:SetPoint("TOPRIGHT", name, "BOTTOMRIGHT", 0 - offsetFromRight, -2)
-									text:ClearAllPoints()
-									text:SetPoint("TOPRIGHT", icon, "TOPRIGHT", 2, 2)
-
-									text:Show()
-									icon:Show()
-								else
-									text:Hide()
-									icon:Hide()
-								end
-							end
-						elseif item.curicon and item.curqt and type(item.curicon) == "string" and type(item.curqt) == "number" then
-							local text = _G["AtlasLootItem_"..i.."_PriceText1"]
-							local icon = _G["AtlasLootItem_"..i.."_PriceIcon1"]
-							local name = _G["AtlasLootItem_"..i.."_Name"]
-
-							text:SetText(item.curqt)
-							icon:SetTexture("Interface\\Icons\\"..item.curicon)
-
-							-- Позиционирование для одного элемента
-							icon:ClearAllPoints()
-							icon:SetPoint("TOPRIGHT", name, "BOTTOMRIGHT", 0, -2)
-							text:ClearAllPoints()
-							text:SetPoint("TOPRIGHT", icon, "TOPRIGHT", 2, 2)
-
-							text:Show()
-							icon:Show()
-
-							-- Скрываем остальные элементы
-							for f=2,5 do
-								_G["AtlasLootItem_"..i.."_PriceText"..f]:Hide()
-								_G["AtlasLootItem_"..i.."_PriceIcon"..f]:Hide()
-							end
-						else
-							for f=1,5 do
-								local text = _G["AtlasLootItem_"..i.."_PriceText"..f]
-								local icon = _G["AtlasLootItem_"..i.."_PriceIcon"..f]
-								text:Hide()
-								icon:Hide()
-							end
-						end ]]
 
 						-- Set the icon
 						iconFrame:SetTexture(itemTexture or "Interface\\Icons\\INV_Misc_QuestionMark")
@@ -544,13 +485,6 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 					if extraFrame then extraFrame:SetText("") extraFrame:Hide() end
 					if borderFrame then borderFrame:Hide() end
 					if quantityFrame then quantityFrame:Hide() end
-
---[[ 					for f=1,5 do
-						local text = _G["AtlasLootItem_"..i.."_PriceText"..f]
-						local icon = _G["AtlasLootItem_"..i.."_PriceIcon"..f]
-						text:Hide()
-						icon:Hide()
-					end ]]
 
 					itemButton.itemID = 0
 					itemButton.itemLink = nil
@@ -1057,15 +991,10 @@ local function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 	AtlasLootItemsFrameContainer:Hide() ]]
 end
 
-local function AtlasLoot_ShowBossLoot(lootTable, bossName)
-	print("Run: AtlasLoot_ShowBossLoot")
-	--AtlasLoot_ShowItemsFrame(bossName, lootTable, bossName)
-end
-
 function AtlasLootBoss_OnClick(buttonName)
     local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
     local id = this.idnum
-    local bossname = AtlasTW.ScrollList[id].name --StripFormatting(AtlasTW.ScrollList[id])
+    local bossname = AtlasTW.ScrollList[id].name
 
 	print("zoneID "..(zoneID or ""))
 	print("bossName "..(bossname or "").." id "..(id or ""))
@@ -1077,7 +1006,6 @@ function AtlasLootBoss_OnClick(buttonName)
 		local loot = GetLootByName(zoneID, bossname) or GetLootByID(zoneID, id)
 		print("loot "..(loot and "exist loot" or "not exist loot"))
         if loot then
-           -- AtlasLoot_ShowBossLoot(loot, bossname)
 		   if type(loot) == "string" then
 			   print("loot is a string: "..loot)
 		   end
@@ -1113,8 +1041,10 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	--DEFAULT_CHAT_FRAME:AddMessage("AtlasLoot_HewdropClick: tablename "..tablename)
 	if not tabletype or tabletype == "Table" then
 	--if tabletype == "Table" then
-		--Show the loot table
-		AtlasLoot_ShowBossLoot(tablename, text)
+		--Store the loot table and boss name
+		AtlasLootItemsFrame.storedBoss = {name = text, loot = tablename}
+		-- Update scrollbar
+		AtlasTW.Loot.ScrollBarLootUpdate()
 		--Save needed info for fuure re-display of the table
 		AtlasTWCharDB.LastBoss = tablename
 		AtlasTWCharDB.LastBossText = text
@@ -1126,8 +1056,11 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	else
 		--Enable the submenu button
 		AtlasLootItemsFrame_SubMenu:Enable()
-		--Show the first loot table associated with the submenu
-		AtlasLoot_ShowBossLoot(AtlasLoot_HewdropDown_SubTables[tablename][1][2], AtlasLoot_HewdropDown_SubTables[tablename][1][1])
+		--Store the loot table and boss name
+		AtlasLootItemsFrame.storedBoss = {name = AtlasLoot_HewdropDown_SubTables[tablename][1][1],
+			loot = AtlasLoot_HewdropDown_SubTables[tablename][1][2]}
+			-- Update scrollbar
+			AtlasTW.Loot.ScrollBarLootUpdate()
 		--Save needed info for fuure re-display of the table
 		AtlasTWCharDB.LastBoss = AtlasLoot_HewdropDown_SubTables[tablename][1][2]
 		AtlasTWCharDB.LastBossText = AtlasLoot_HewdropDown_SubTables[tablename][1][1]
@@ -1150,8 +1083,10 @@ end
 	Called when a button in AtlasLoot_HewdropSubMenu is clicked
 ]]
 function AtlasLoot_HewdropSubMenuClick(tablename, text)
-	--Show the select loot table
-	AtlasLoot_ShowBossLoot(tablename, text)
+	--Store the loot table and boss name
+	AtlasLootItemsFrame.storedBoss = {name = text, loot = tablename}
+	-- Update scrollbar
+	AtlasTW.Loot.ScrollBarLootUpdate()
 	--Save needed info for fuure re-display of the table
 	AtlasTWCharDB.LastBoss = tablename
 	AtlasTWCharDB.LastBossText = text
@@ -1388,10 +1323,6 @@ end
 	Requests the relevant loot page from a menu screen
 ]]
 function AtlasLootMenuItem_OnClick(button)
-    if button.useModern then
-        AtlasLoot_ShowMenu({useModern = true, category = button.category, boss = button.boss})
-        return
-    end
 	if this.container then
 		AtlasLoot_ShowContainerFrame()
 		return
@@ -1422,7 +1353,10 @@ function AtlasLootMenuItem_OnClick(button)
 		CloseDropDownMenus()
 		AtlasTWCharDB.LastBoss = this.lootpage
 		AtlasTWCharDB.LastBossText = pagename
-		AtlasLoot_ShowBossLoot(this.lootpage, pagename)
+		--Store the loot table and boss name
+		AtlasLootItemsFrame.storedBoss = {name = pagename, loot = this.lootpage}
+		-- Update scrollbar
+		AtlasTW.Loot.ScrollBarLootUpdate()
 		AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(pagename, 30))
 		AtlasLootItemsFrame_SelectedCategory:Show()
 	end

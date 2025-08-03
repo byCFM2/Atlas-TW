@@ -302,20 +302,20 @@ local WorldEvents = {
 		{ id = 6833 }, -- White Tuxedo Shirt
 		{ id = 6835 }, -- Black Tuxedo Pants
 		{},
-		{ id = 7807 }, -- Candy Bar
-		{ id = 7808 }, -- Chocolate Square
-		{ id = 7806 }, -- Lollipop
+		{ id = 7807, disc=L["Consumable"] }, -- Candy Bar
+		{ id = 7808, disc=L["Consumable"] }, -- Chocolate Square
+		{ id = 7806, disc=L["Consumable"] }, -- Lollipop
 	},
 	HarvestFestival = {
-		{ id = 19697 }, -- Bounty of the Harvest
-		{ id = 20009 }, -- For the Light!
-		{ id = 20010 }, -- The Horde's Hellscream
+		--{ id = 19697 }, -- Bounty of the Harvest
+		{ id = 20009, disc=L["Misc"] }, -- For the Light!
+		{ id = 20010, disc=L["Misc"] }, -- The Horde's Hellscream
 		{},
-		{ id = 19995 }, -- Harvest Boar
-		{ id = 19996 }, -- Harvest Fish
-		{ id = 19994 }, -- Harvest Fruit
-		{ id = 19997 }, -- Harvest Nectar
-		{ id = 19696 }, -- Harvest Bread
+		{ id = 19995, disc=L["Consumable"] }, -- Harvest Boar
+		{ id = 19996, disc=L["Consumable"] }, -- Harvest Fish
+		{ id = 19994, disc=L["Consumable"] }, -- Harvest Fruit
+		{ id = 19997, disc=L["Consumable"] }, -- Harvest Nectar
+		{ id = 19696, disc=L["Consumable"] }, -- Harvest Bread
 	},
 	ScourgeInvasionF = {
 		{ id = 23123 }, -- Blessed Wizard Oil

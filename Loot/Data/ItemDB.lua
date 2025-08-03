@@ -147,7 +147,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                 end
                 -- Ищем тип слота (Feet, Chest, etc.) и тип брони (Cloth, Leather, etc.)
                 if AtlasTW.ItemDB.SLOT_KEYWORDS[text]  then
-                    print(text.." text and text2 "..(text2 or ""))
+                --    print(text.." text and text2 "..(text2 or ""))
                     if text2 and AtlasTW.ItemDB.SLOT2_KEYWORDS[text2] then
                         table.insert(info, getColoredText(text.." "..text2, "slot"))
                     else
@@ -155,11 +155,11 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                     end
                 end
                 if AtlasTW.ItemDB.SLOT2_KEYWORDS[text] then
-                    print(text.." text and text2 "..(text2 or ""))
+                --   print(text.." text and text2 "..(text2 or ""))
                     if text == L["Finger"] then
                         table.insert(info, "|cff00ff00"..L["Ring"].."|r")
                     else
-                        print(text.." slot2")
+                --        print(text.." slot2")
                         table.insert(info, getColoredText(text, "slot2"))
                     end
                 -- Ищем строку с классами
