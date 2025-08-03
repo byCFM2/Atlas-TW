@@ -8,9 +8,7 @@ local BS = AceLibrary("Babble-Spell-2.2a")
 
 AtlasLoot_Data = AtlasLoot_Data or {}
 
-local Factions = {}
-
-Factions = {
+local Factions = {
 	WintersaberTrainers = {
 		{ name = BF["Exalted"] },
 		{ id = 13086 }, -- Reins of the Winterspring Frostsaber

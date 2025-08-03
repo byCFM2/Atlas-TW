@@ -21,10 +21,10 @@ AtlasTW.Loot.PvpMenuData = {
 	{},
 	{},
 	{},
-    { name = L["PvP Mounts"], icon = "Interface\\Icons\\Ability_Mount_RidingHorse", lootpage = "PvPMountsPvP" },
-    { name = L["PvP Accessories"], extra = "Rank 2-9", libExtra = L, icon = "Interface\\Icons\\INV_Jewelry_Talisman_09", lootpage = "PvP60Accessories" },
-    { name = L["PvP Armor Sets"], extra = "Rank 7-13", libExtra = L, icon = "Interface\\Icons\\INV_Helmet_05", lootpage = "PvPSet" },
-    { name = L["PvP Weapons"], extra = "Rank 14", libExtra = L, icon = "Interface\\Icons\\INV_Sword_11", lootpage = "PVPWeapons" },
+    { name = L["PvP Mounts"], Extra = L["Rank"].." 11", icon = "Interface\\Icons\\Ability_Mount_RidingHorse", lootpage = "PvPMountsPvP" },
+    { name = L["PvP Accessories"], Extra = L["Rank"].." 2-9", icon = "Interface\\Icons\\INV_Jewelry_Talisman_09", lootpage = "PvP60Accessories" },
+    { name = L["PvP Armor Sets"], Extra = L["Rank"].." 7-13", icon = "Interface\\Icons\\INV_Helmet_05", lootpage = "PvPSet" },
+    { name = L["PvP Weapons"], Extra = L["Rank"].." 14", icon = "Interface\\Icons\\INV_Sword_11", lootpage = "PVPWeapons" },
 }
 
 function AtlasLootPvPMenu()

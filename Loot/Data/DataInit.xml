@@ -58,26 +58,18 @@
     <Include file="Info\TransportRoutes.lua"/>
     <Include file="Info\DLEast.lua"/>
     <Include file="Info\DLWest.lua"/>
-    <!-- Добавить другие мировые источники:
-    <Script file="World\World_Events.lua"/>
-    -->
     <!-- Данные PvP -->
     <Include file="PvP\WarsongGulch.lua"/>
     <Include file="PvP\ArathiBasin.lua"/>
     <Include file="PvP\BGAlteracValleyNorth.lua"/>
     <Include file="PvP\BGAlteracValleySouth.lua"/>
     <Include file="PvP\Other.lua"/>
-    <!--
-    <Script file="PvP\Battlegrounds.lua"/>
-    <Script file="PvP\Honor_Rewards.lua"/>
-    -->
-    <!-- Данные репутации -->
-    <Include file="Tables\Crafting.lua"/>
+    <!-- Другие данные -->
     <Include file="Tables\Factions.lua"/>
     <Include file="Tables\Events.lua"/>
     <Include file="Tables\Sets.lua"/>
     <!-- Данные крафта -->
     <!-- Добавить по мере создания:
-    <Script file="Crafting\Professions.lua"/>
+    <Include file="Tables\Crafting.lua"/>
     -->
 </Ui>

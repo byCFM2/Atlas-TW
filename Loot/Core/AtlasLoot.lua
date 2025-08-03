@@ -444,9 +444,10 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 							nameFrame:SetTextColor(r, g, b)
 							nameFrame:SetText(itemName or L["Item not found in cache"])
 						end
+						local extratext = AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, item.disc) or item.extra
 
 						-- Set the description text
-						extraFrame:SetText(AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, item.disc) or "")
+						extraFrame:SetText(extratext or "")
 						extraFrame:Show()
 
 						-- Set the quantity

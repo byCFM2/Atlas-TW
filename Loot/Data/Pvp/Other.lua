@@ -4,441 +4,439 @@ AtlasTW = _G.AtlasTW
 --Instance required libraries
 local L = AtlasTW.Local
 local BF = AceLibrary("Babble-Faction-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
+local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasLoot_Data = AtlasLoot_Data or {}
 
-local pvpRewards = {}
-
-pvpRewards = {
+local pvpRewards = {
 	PVPWeapons = {
-		{ 0, "INV_BannerPVP_02", "=q8=#m7#", "=q7=#rank14#" },
-		{ 0, "", "", "" },
-		{ 18827, "INV_Axe_24", "=q4=Grand Marshal's Handaxe", "=ds=#h1#, #w1#" },
-		{ 18830, "INV_Axe_10", "=q4=Grand Marshal's Sunderer", "=ds=#h2#, #w1#" },
-		{ 18838, "INV_Weapon_ShortBlade_26", "=q4=Grand Marshal's Dirk", "=ds=#h1#, #w4#" },
-		{ 23451, "INV_Weapon_ShortBlade_26", "=q4=Grand Marshal's Mageblade", "=ds=#h1#, #w4#" },
-		{ 18843, "INV_Weapon_ShortBlade_07", "=q4=Grand Marshal's Right Hand Blade", "=ds=#h3#, #w13#" },
-		{ 18847, "Ability_Rogue_Rupture", "=q4=Grand Marshal's Left Hand Blade", "=ds=#h4#, #w13#" },
-		{ 18865, "INV_Mace_13", "=q4=Grand Marshal's Punisher", "=ds=#h1#, #w6#" },
-		{ 23454, "INV_Hammer_02", "=q4=Grand Marshal's Warhammer", "=ds=#h1#, #w6#" },
-		{ 23455, "INV_Hammer_23", "=q4=Grand Marshal's Demolisher", "=ds=#h2#, #w6#" },
-		{ 18867, "INV_Hammer_03", "=q4=Grand Marshal's Battle Hammer", "=ds=#h2#, #w6#" },
-		{ 12584, "INV_Sword_11", "=q4=Grand Marshal's Longsword", "=ds=#h1#, #w10#" },
-		{ 23456, "INV_Sword_05", "=q4=Grand Marshal's Swiftblade", "=ds=#h1#, #w10#" },
-		{ 18876, "INV_Sword_39", "=q4=Grand Marshal's Claymore", "=ds=#h2#, #w10#" },
-		{ 0, "INV_BannerPVP_01", "=q6=#m6#", "=q18=#rank14#" },
-		{ 0, "", "", "" },
-		{ 18828, "INV_Axe_02", "=q4=High Warlord's Cleaver", "=ds=#h1#, #w1#" },
-		{ 18831, "INV_Axe_21", "=q4=High Warlord's Battle Axe", "=ds=#h2#, #w1#" },
-		{ 18840, "INV_Weapon_ShortBlade_13", "=q4=High Warlord's Razor", "=ds=#h1#, #w4#" },
-		{ 23466, "INV_Weapon_ShortBlade_26", "=q4=High Warlord's Spellblade", "=ds=#h1#, #w4#" },
-		{ 18844, "INV_Misc_MonsterClaw_03", "=q4=High Warlord's Right Claw", "=ds=#h3#, #w13#" },
-		{ 18848, "INV_Misc_MonsterClaw_04", "=q4=High Warlord's Left Claw", "=ds=#h4#, #w13#" },
-		{ 18866, "INV_Hammer_20", "=q4=High Warlord's Bludgeon", "=ds=#h1#, #w6#" },
-		{ 23464, "INV_Hammer_02", "=q4=High Warlord's Battle Mace", "=ds=#h1#, #w6#" },
-		{ 23465, "INV_Mace_09", "=q4=High Warlord's Destroyer", "=ds=#h2#, #w6#" },
-		{ 18868, "INV_Hammer_10", "=q4=High Warlord's Pulverizer", "=ds=#h2#, #w6#" },
-		{ 16345, "INV_Sword_11", "=q4=High Warlord's Blade", "=ds=#h1#, #w10#" },
-		{ 23467, "INV_Sword_05", "=q4=High Warlord's Quickblade", "=ds=#h1#, #w10#" },
-		{ 18877, "INV_Sword_48", "=q4=High Warlord's Greatsword", "=ds=#h2#, #w10#" },
-
-		{ 0, "INV_BannerPVP_02", "=q8=#m7#", "=q7=#rank14#" },
-		{ 0, "", "", "" },
-		{ 18869, "INV_Spear_08", "=q4=Grand Marshal's Glaive", "=ds=#w7#" },
-		{ 18873, "INV_Staff_14", "=q4=Grand Marshal's Stave", "=ds=#w9#" },
-		{ 18833, "INV_Weapon_Bow_12", "=q4=Grand Marshal's Bullseye", "=ds=#w2#" },
-		{ 18836, "INV_Weapon_Crossbow_04", "=q4=Grand Marshal's Repeater", "=ds=#w3#" },
-		{ 18855, "INV_Weapon_Rifle_08", "=q4=Grand Marshal's Hand Cannon", "=ds=#w5#" },
-		{ 18825, "INV_Shield_05", "=q4=Grand Marshal's Aegis", "=ds=#w8#" },
-		{ 23452, "INV_Misc_Book_12", "=q4=Grand Marshal's Tome of Power", "=ds=#s15#" },
-		{ 23453, "INV_Misc_Book_13", "=q4=Grand Marshal's Tome of Restoration", "=ds=#s15#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_01", "=q6=#m6#", "=q18=#rank14#" },
-		{ 0, "", "", "" },
-		{ 18871, "INV_Spear_01", "=q4=High Warlord's Pig Sticker", "=ds=#w7#" },
-		{ 18874, "INV_Misc_Bone_ElfSkull_01", "=q4=High Warlord's War Staff", "=ds=#w9#" },
-		{ 18835, "INV_Weapon_Bow_08", "=q4=High Warlord's Recurve", "=ds=#w2#" },
-		{ 18837, "INV_Weapon_Crossbow_10", "=q4=High Warlord's Crossbow", "=ds=#w3#" },
-		{ 18860, "INV_Weapon_Rifle_06", "=q4=High Warlord's Street Sweeper", "=ds=#w5#" },
-		{ 18826, "INV_Shield_19", "=q4=High Warlord's Shield Wall", "=ds=#w8#" },
-		{ 23468, "INV_Misc_Book_15", "=q4=High Warlord's Tome of Destruction", "=ds=#s15#" },
-		{ 23469, "INV_Misc_Book_14", "=q4=High Warlord's Tome of Mending", "=ds=#s15#" },
+		{ name = BF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 14"},
+		{ id = 18827 }, -- Grand Marshal's Handaxe
+		{ id = 18830 }, -- Grand Marshal's Sunderer
+		{ id = 18838 }, -- Grand Marshal's Dirk
+		{ id = 23451 }, -- Grand Marshal's Mageblade
+		{ id = 18843 }, -- Grand Marshal's Right Hand Blade
+		{ id = 18847 }, -- Grand Marshal's Left Hand Blade
+		{ id = 18865 }, -- Grand Marshal's Punisher
+		{ id = 23454 }, -- Grand Marshal's Warhammer
+		{ id = 23455 }, -- Grand Marshal's Demolisher
+		{ id = 18867 }, -- Grand Marshal's Battle Hammer
+		{ id = 12584 }, -- Grand Marshal's Longsword
+		{ id = 23456 }, -- Grand Marshal's Swiftblade
+		{ id = 18876 }, -- Grand Marshal's Claymore
+		{ id = 18869 }, -- Grand Marshal's Glaive
+		{ name = BF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 14"},
+		{ id = 18828 }, -- High Warlord's Cleaver
+		{ id = 18831 }, -- High Warlord's Battle Axe
+		{ id = 18840 }, -- High Warlord's Razor
+		{ id = 23466 }, -- High Warlord's Spellblade
+		{ id = 18844 }, -- High Warlord's Right Claw
+		{ id = 18848 }, -- High Warlord's Left Claw
+		{ id = 18866 }, -- High Warlord's Bludgeon
+		{ id = 23464 }, -- High Warlord's Battle Mace
+		{ id = 23465 }, -- High Warlord's Destroyer
+		{ id = 18868 }, -- High Warlord's Pulverizer
+		{ id = 16345 }, -- High Warlord's Blade
+		{ id = 23467 }, -- High Warlord's Quickblade
+		{ id = 18877 }, -- High Warlord's Greatsword
+		{ id = 18871 }, -- High Warlord's Pig Sticker
+		{ id = 18873 }, -- Grand Marshal's Stave
+		{ id = 18833 }, -- Grand Marshal's Bullseye
+		{ id = 18836 }, -- Grand Marshal's Repeater
+		{ id = 18855 }, -- Grand Marshal's Hand Cannon
+		{ id = 18825 }, -- Grand Marshal's Aegis
+		{ id = 23452 }, -- Grand Marshal's Tome of Power
+		{ id = 23453 }, -- Grand Marshal's Tome of Restoration
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 18874 }, -- High Warlord's War Staff
+		{ id = 18835 }, -- High Warlord's Recurve
+		{ id = 18837 }, -- High Warlord's Crossbow
+		{ id = 18860 }, -- High Warlord's Street Sweeper
+		{ id = 18826 }, -- High Warlord's Shield Wall
+		{ id = 23468 }, -- High Warlord's Tome of Destruction
+		{ id = 23469 }, -- High Warlord's Tome of Mending
 	},
 	PvP60Accessories = {
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_02", "=q8=#m7#", "=q7=#rank2#" },
-		{ 0,"","","" },
-		{ 18862, "INV_Jewelry_TrinketPVP_01", "=q3=Insignia of the Alliance", "=ds=#s14# =q9=#c5#" },
-		{ 18859, "INV_Jewelry_TrinketPVP_01", "=q3=Insignia of the Alliance", "=ds=#s14# =q10=#c3#" },
-		{ 18858, "INV_Jewelry_TrinketPVP_01", "=q3=Insignia of the Alliance", "=ds=#s14# =q11=#c8#" },
-		{ 18857, "INV_Jewelry_TrinketPVP_01", "=q3=Insignia of the Alliance", "=ds=#s14# =q12=#c6#" },
-		{ 18863, "INV_Jewelry_TrinketPVP_01", "=q3=Insignia of the Alliance", "=ds=#s14# =q13=#c1#" },
-		{ 18856, "INV_Jewelry_TrinketPVP_01", "=q3=Insignia of the Alliance", "=ds=#s14# =q14=#c2#" },
-		{ 18864, "INV_Jewelry_TrinketPVP_01", "=q3=Insignia of the Alliance", "=ds=#s14# =q16=#c4#" },
-		{ 18854, "INV_Jewelry_TrinketPVP_01", "=q3=Insignia of the Alliance", "=ds=#s14# =q17=#c9#" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_BannerPVP_01", "=q6=#m6#", "=q18=#rank2#" },
-		{ 0,"","","" },
-		{ 18851, "INV_Jewelry_TrinketPVP_02", "=q3=Insignia of the Horde", "=ds=#s14# =q9=#c5#" },
-		{ 18850, "INV_Jewelry_TrinketPVP_02", "=q3=Insignia of the Horde", "=ds=#s14# =q10=#c3#" },
-		{ 18852, "INV_Jewelry_TrinketPVP_02", "=q3=Insignia of the Horde", "=ds=#s14# =q11=#c8#" },
-		{ 18849, "INV_Jewelry_TrinketPVP_02", "=q3=Insignia of the Horde", "=ds=#s14# =q12=#c6#" },
-		{ 18853, "INV_Jewelry_TrinketPVP_02", "=q3=Insignia of the Horde", "=ds=#s14# =q13=#c1#" },
-		{ 18846, "INV_Jewelry_TrinketPVP_02", "=q3=Insignia of the Horde", "=ds=#s14# =q14=#c2#" },
-		{ 18845, "INV_Jewelry_TrinketPVP_02", "=q3=Insignia of the Horde", "=ds=#s14# =q15=#c7#" },
-		{ 18834, "INV_Jewelry_TrinketPVP_02", "=q3=Insignia of the Horde", "=ds=#s14# =q17=#c9#" },
-
-		{ 18442, "INV_Misc_MonsterScales_09", "=q3=Master Sergeant's Insignia", "=ds=#s2# =q7=#rank4#" },
-		{ 18444, "INV_Misc_MonsterScales_09", "=q3=Master Sergeant's Insignia", "=ds=#s2# =q7=#rank4#" },
-		{ 18443, "INV_Misc_MonsterScales_09", "=q3=Master Sergeant's Insignia", "=ds=#s2# =q7=#rank4#" },
-		{ 0,"","","" },
-		{ 18440, "INV_Misc_Cape_21", "=q3=Sergeant's Cape", "=ds=#s4# =q7=#rank3#" },
-		{ 18441, "INV_Misc_Cape_21", "=q3=Sergeant's Cape", "=ds=#s4# =q7=#rank3#" },
-		{ 16342, "INV_Misc_Cape_21", "=q3=Sergeant's Cape", "=ds=#s4# =q7=#rank3#" },
-		{ 0,"","","" },
-		{ 15196, "INV_Misc_TabardPVP_01", "=q1=Private's Tabard", "=ds=#s7# =q7=#rank1#" },
-		{ 15198, "INV_Misc_TabardPVP_03", "=q1=Knight's Colors", "=ds=#s7# =q7=#rank6#" },
-		{ 0,"","","" },
-		{ 18606, "INV_BannerPVP_02", "=q1=Alliance Battle Standard", "=ds=#m8# =q7=#rank9#" },
-		{ 0,"","","" },
-		{ 18839, "INV_Potion_39", "=q1=Combat Healing Potion", "=ds=#e2#" },
-		{ 18841, "INV_Potion_81", "=q1=Combat Mana Potion", "=ds=#e2#" },
-		{ 18457, "INV_Bracer_07", "=q3=Sergeant Major's Silk Cuffs", "=ds=#s8#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8# =q7=#rank5#" },
-		{ 18456, "INV_Bracer_07", "=q3=Sergeant Major's Silk Cuffs", "=ds=#s8#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8# =q7=#rank5#" },
-		{ 0,"","","" },
-		{ 18455, "INV_Bracer_03", "=q3=Sergeant Major's Dragonhide Armsplints", "=ds=#s8#, #a2# =q13=#c1# =q7=#rank5#" },
-		{ 18454, "INV_Bracer_03", "=q3=Sergeant Major's Dragonhide Armsplints", "=ds=#s8#, #a2# =q13=#c1# =q7=#rank5#" },
-		{ 0,"","","" },
-		{ 18453, "INV_Bracer_07", "=q3=Sergeant Major's Leather Armsplints", "=ds=#s8#, #a2# =q12=#c6# =q7=#rank5#" },
-		{ 18452, "INV_Bracer_07", "=q3=Sergeant Major's Leather Armsplints", "=ds=#s8#, #a2# =q12=#c6# =q7=#rank5#" },
-		{ 0,"","","" },
-		{ 18449, "INV_Bracer_06", "=q3=Sergeant Major's Chain Armguards", "=ds=#s8#, #a3# =q14=#c2# =q7=#rank5#" },
-		{ 18448, "INV_Bracer_06", "=q3=Sergeant Major's Chain Armguards", "=ds=#s8#, #a3# =q14=#c2# =q7=#rank5#" },
-		{ 0,"","","" },
-		{ 18447, "INV_Bracer_18", "=q3=Sergeant Major's Plate Wristguards", "=ds=#s8#, #a4# =q17=#c9#=ds=,  =q16=#c4# =q7=#rank5#" },
-		{ 18445, "INV_Bracer_18", "=q3=Sergeant Major's Plate Wristguards", "=ds=#s8#, #a4# =q17=#c9#=ds=,  =q16=#c4# =q7=#rank5#" },
-
-		{ 15200, "INV_Misc_MonsterScales_15", "=q3=Senior Sergeant's Insignia", "=ds=#s2# =q18=#rank4#" },
-		{ 18428, "INV_Misc_MonsterScales_15", "=q3=Senior Sergeant's Insignia", "=ds=#s2# =q18=#rank4#" },
-		{ 16335, "INV_Misc_MonsterScales_15", "=q3=Senior Sergeant's Insignia", "=ds=#s2# =q18=#rank4#" },
-		{ 0,"","","" },
-		{ 18427, "INV_Misc_Cape_07", "=q3=Sergeant's Cloak", "=ds=#s4# =q18=#rank3#" },
-		{ 16341, "INV_Misc_Cape_07", "=q3=Sergeant's Cloak", "=ds=#s4# =q18=#rank3#" },
-		{ 18461, "INV_Misc_Cape_07", "=q3=Sergeant's Cloak", "=ds=#s4# =q18=#rank3#" },
-		{ 0,"","","" },
-		{ 15197, "INV_Misc_TabardPVP_02", "=q1=Scout's Tabard", "=ds=#s7# =q18=#rank1#" },
-		{ 15199, "INV_Misc_TabardPVP_04", "=q1=Stone Guard's Herald", "=ds=#s7# =q18=#rank6#" },
-		{ 0,"","","" },
-		{ 18607, "INV_BannerPVP_01", "=q1=Horde Battle Standard", "=ds=#m8# =q18=#rank9#" },
-		{ 0,"","","" },
-		{ 18839, "INV_Potion_39", "=q1=Combat Healing Potion", "=ds=#e2#" },
-		{ 18841, "INV_Potion_81", "=q1=Combat Mana Potion", "=ds=#e2#" },
-		{ 18437, "INV_Bracer_07", "=q3=First Sergeant's Silk Cuffs", "=ds=#s8#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8# =q18=#rank5#" },
-		{ 16486, "INV_Bracer_07", "=q3=First Sergeant's Silk Cuffs", "=ds=#s8#, #a1# =q9=#c5#=ds=, =q10=#c3#=ds=, =q11=#c8# =q18=#rank5#" },
-		{ 0,"","","" },
-		{ 18436, "INV_Bracer_03", "=q3=First Sergeant's Dragonhide Armguards", "=ds=#s8#, #a2# =q13=#c1# =q18=#rank5#" },
-		{ 18434, "INV_Bracer_03", "=q3=First Sergeant's Dragonhide Armguards", "=ds=#s8#, #a2# =q13=#c1# =q18=#rank5#" },
-		{ 0,"","","" },
-		{ 18435, "INV_Bracer_07", "=q3=First Sergeant's Leather Armguards", "=ds=#s8#, #a2# =q12=#c6# =q18=#rank5#" },
-		{ 16497, "INV_Bracer_07", "=q3=First Sergeant's Leather Armguards", "=ds=#s8#, #a2# =q12=#c6# =q18=#rank5#" },
-		{ 0,"","","" },
-		{ 18432, "INV_Bracer_16", "=q3=First Sergeant's Mail Wristguards", "=ds=#s8#, #a3# =q14=#c2#=ds=, =q15=#c7# =q18=#rank5#" },
-		{ 16532, "INV_Bracer_16", "=q3=First Sergeant's Mail Wristguards", "=ds=#s8#, #a3# =q14=#c2#=ds=, =q15=#c7# =q18=#rank5#" },
-		{ 0,"","","" },
-		{ 18430, "INV_Bracer_19", "=q3=First Sergeant's Plate Bracers", "=ds=#s8#, #a4# =q17=#c9# =q18=#rank5#" },
-		{ 18429, "INV_Bracer_19", "=q3=First Sergeant's Plate Bracers", "=ds=#s8#, #a4# =q17=#c9# =q18=#rank5#" }
+		{ name = BF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 1"}, --*1
+		{ id = 15196 }, -- Private's Tabard
+		{ id = 18839, disc=L["Consumable"] }, -- Combat Healing Potion
+		{ id = 18841, disc=L["Consumable"] }, -- Combat Mana Potion
+		{},
+		{ name = BF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 2"},
+		{ id = 18862 }, -- Insignia of the Alliance
+		{ id = 18859 }, -- Insignia of the Alliance
+		{ id = 18858 }, -- Insignia of the Alliance
+		{ id = 18857 }, -- Insignia of the Alliance
+		{ id = 18863 }, -- Insignia of the Alliance
+		{ id = 18856 }, -- Insignia of the Alliance
+		{ id = 18864 }, -- Insignia of the Alliance
+		{ id = 18854 }, -- Insignia of the Alliance
+		{},
+		{ name = BF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 1"}, --*1
+		{ id = 15197 }, -- Scout's Tabard
+		{ id = 18839, disc=L["Consumable"] }, -- Combat Healing Potion
+		{ id = 18841, disc=L["Consumable"] }, -- Combat Mana Potion
+		{},
+		{ name = BF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 2"},
+		{ id = 18851 }, -- Insignia of the Horde
+		{ id = 18850 }, -- Insignia of the Horde
+		{ id = 18852 }, -- Insignia of the Horde
+		{ id = 18849 }, -- Insignia of the Horde
+		{ id = 18853 }, -- Insignia of the Horde
+		{ id = 18846 }, -- Insignia of the Horde
+		{ id = 18845 }, -- Insignia of the Horde
+		{ id = 18834 }, -- Insignia of the Horde
+		{},
+		{ name = BF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 3"}, --*1
+		{ id = 18440 }, -- Sergeant's Cape 3
+		{ id = 18441 }, -- Sergeant's Cape 3
+		{ id = 16342 }, -- Sergeant's Cape 3
+		{},
+		{ name = BF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 4"},
+		{ id = 18442 }, -- Master Sergeant's Insignia 4
+		{ id = 18444 }, -- Master Sergeant's Insignia 4
+		{ id = 18443 }, -- Master Sergeant's Insignia 4
+		{},
+		{ name = BF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 5"},
+		{ id = 18457 }, -- Sergeant Major's Silk Cuffs 5
+		{ id = 18456 }, -- Sergeant Major's Silk Cuffs 5
+		{},
+		{ id = 18455 }, -- Sergeant Major's Dragonhide Armsplints 5 *15
+		--Horde
+		{ name = BF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 3"}, --*1
+		{ id = 18427 }, -- Sergeant's Cloak 3
+		{ id = 16341 }, -- Sergeant's Cloak 3
+		{ id = 18461 }, -- Sergeant's Cloak 3
+		{},
+		{ name = BF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 4"},
+		{ id = 15200 }, -- Senior Sergeant's Insignia 4
+		{ id = 18428 }, -- Senior Sergeant's Insignia 4
+		{ id = 16335 }, -- Senior Sergeant's Insignia 4
+		{},
+		{ name = BF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 5"},
+		{ id = 18437 }, -- First Sergeant's Silk Cuffs 5
+		{ id = 16486 }, -- First Sergeant's Silk Cuffs 5
+		{},
+		{ id = 18436 }, -- First Sergeant's Dragonhide Armguards 5 *15
+		{ id = 18454 }, -- Sergeant Major's Dragonhide Armsplints 5 *1 alliance
+		{},
+		{ id = 18453 }, -- Sergeant Major's Leather Armsplints 5
+		{ id = 18452 }, -- Sergeant Major's Leather Armsplints 5
+		{},
+		{ id = 18449 }, -- Sergeant Major's Chain Armguards 5
+		{ id = 18448 }, -- Sergeant Major's Chain Armguards 5
+		{},
+		{ id = 18447 }, -- Sergeant Major's Plate Wristguards 5
+		{ id = 18445 }, -- Sergeant Major's Plate Wristguards 5
+		{},
+		{ name = BF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 6"},
+		{ id = 15198 }, -- Knight's Colors 6
+		{ name = BF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 9"},
+		{ id = 18606, disc=L["Misc"] }, -- Alliance Battle Standard 9
+		{ id = 18434 }, -- First Sergeant's Dragonhide Armguards 5 *1 horde
+		{},
+		{ id = 18435 }, -- First Sergeant's Leather Armguards 5
+		{ id = 16497 }, -- First Sergeant's Leather Armguards 5
+		{},
+		{ id = 18432 }, -- First Sergeant's Mail Wristguards 5
+		{ id = 16532 }, -- First Sergeant's Mail Wristguards 5
+		{},
+		{ id = 18430 }, -- First Sergeant's Plate Bracers 5
+		{ id = 18429 }, -- First Sergeant's Plate Bracers 5
+		{},
+		{ name = BF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 6"},
+		{ id = 15199 }, -- Stone Guard's Herald 6
+		{ name = BF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 9"},
+		{ id = 18607, disc=L["Misc"] }, -- Horde Battle Standard 9
 	},
 	PVPHunter = {
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpea2#", "=q7=#pvps1#" },
-		{ 16465, "INV_Helmet_05", "=q4=Field Marshal's Chain Helm", "=ds=#s1#, #a3# =q7=#rank13#" },
-		{ 16468, "INV_Shoulder_10", "=q4=Field Marshal's Chain Spaulders", "=ds=#s3#, #a3# =q7=#rank13#" },
-		{ 16466, "INV_Chest_Chain_03", "=q4=Field Marshal's Chain Breastplate", "=ds=#s5#, #a3# =q7=#rank13#" },
-		{ 16463, "INV_Gauntlets_10", "=q4=Marshal's Chain Grips", "=ds=#s9#, #a3# =q7=#rank12#" },
-		{ 16467, "INV_Pants_Mail_17", "=q4=Marshal's Chain Legguards", "=ds=#s11#, #a3# =q7=#rank12#" },
-		{ 16462, "INV_Boots_Plate_07", "=q4=Marshal's Chain Boots", "=ds=#s12#, #a3# =q7=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpra2#", "=q7=#pvps2#" },
-		{ 23306, "INV_Helmet_21", "=q3=Lieutenant Commander's Chain Helm", "=ds=#s1#, #a3# =q7=#rank10#" },
-		{ 23307, "INV_Shoulder_16", "=q3=Lieutenant Commander's Chain Shoulders", "=ds=#s3#, #a3# =q7=#rank10#" },
-		{ 23292, "INV_Chest_Chain_04", "=q3=Knight-Captain's Chain Hauberk", "=ds=#s5#, #a3# =q7=#rank8#" },
-		{ 23279, "INV_Gauntlets_17", "=q3=Knight-Lieutenant's Chain Vices", "=ds=#s9#, #a3# =q7=#rank7#" },
-		{ 23293, "INV_Pants_03", "=q3=Knight-Captain's Chain Legguards", "=ds=#s11#, #a3# =q7=#rank8#" },
-		{ 23278, "INV_Boots_05", "=q3=Knight-Lieutenant's Chain Greaves", "=ds=#s12#, #a3# =q7=#rank7#" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvpeh2#", "=q5=#pvps1#" },
-		{ 16566, "INV_Helmet_09", "=q4=Warlord's Chain Helmet", "=ds=#s1#, #a3# =q18=#rank13#" },
-		{ 16568, "INV_Shoulder_29", "=q4=Warlord's Chain Shoulders", "=ds=#s3#, #a3# =q18=#rank13#" },
-		{ 16565, "INV_Chest_Chain_11", "=q4=Warlord's Chain Chestpiece", "=ds=#s5#, #a3# =q18=#rank13#" },
-		{ 16571, "INV_Gauntlets_11", "=q4=General's Chain Gloves", "=ds=#s9#, #a3# =q18=#rank12#" },
-		{ 16567, "INV_Pants_Mail_16", "=q4=General's Chain Legguards", "=ds=#s11#, #a3# =q18=#rank12#" },
-		{ 16569, "INV_Boots_Plate_06", "=q4=General's Chain Boots", "=ds=#s12#, #a3# =q18=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvprh2#", "=q5=#pvps2#" },
-		{ 23251, "INV_Helmet_03", "=q3=Champion's Chain Helm", "=ds=#s1#, #a3# =q18=#rank10#" },
-		{ 23252, "INV_Shoulder_01", "=q3=Champion's Chain Shoulders", "=ds=#s3#, #a3# =q18=#rank10#" },
-		{ 22874, "INV_Chest_Chain_04", "=q3=Legionnaire's Chain Hauberk", "=ds=#s5#, #a3# =q18=#rank8#" },
-		{ 22862, "INV_Gauntlets_17", "=q3=Blood Guard's Chain Vices", "=ds=#s9#, #a3# =q18=#rank7#" },
-		{ 22875, "INV_Pants_03", "=q3=Legionnaire's Chain Legguards", "=ds=#s11#, #a3# =q18=#rank8#" },
-		{ 22843, "INV_Boots_05", "=q3=Blood Guard's Chain Greaves", "=ds=#s12#, #a3# =q18=#rank7#" }
+		{ name=BIS["Field Marshal's Pursuit"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
+		{ id = 16465, disc=L["Rank"].." 13" }, -- Field Marshal's Chain Helm
+		{ id = 16468, disc=L["Rank"].." 13" }, -- Field Marshal's Chain Spaulders
+		{ id = 16466, disc=L["Rank"].." 13" }, -- Field Marshal's Chain Breastplate
+		{ id = 16463, disc=L["Rank"].." 12" }, -- Marshal's Chain Grips
+		{ id = 16467, disc=L["Rank"].." 12" }, -- Marshal's Chain Legguards
+		{ id = 16462, disc=L["Rank"].." 12" }, -- Marshal's Chain Boots
+		{},
+		{ name=BIS["Lieutenant Commander's Pursuance"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
+		{ id = 23306, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Chain Helm
+		{ id = 23307, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Chain Shoulders
+		{ id = 23292, disc=L["Rank"].." 8" }, -- Knight-Captain's Chain Hauberk
+		{ id = 23279, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Chain Vices
+		{ id = 23293, disc=L["Rank"].." 8" }, -- Knight-Captain's Chain Legguards
+		{ id = 23278, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Chain Greaves
+		{ name=BIS["Warlord's Pursuit"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
+		{ id = 16566, disc=L["Rank"].." 13" }, -- Warlord's Chain Helmet
+		{ id = 16568, disc=L["Rank"].." 13" }, -- Warlord's Chain Shoulders
+		{ id = 16565, disc=L["Rank"].." 13" }, -- Warlord's Chain Chestpiece
+		{ id = 16571, disc=L["Rank"].." 12" }, -- General's Chain Gloves
+		{ id = 16567, disc=L["Rank"].." 12" }, -- General's Chain Legguards
+		{ id = 16569, disc=L["Rank"].." 12" }, -- General's Chain Boots
+		{},
+		{ name=BIS["Champion's Pursuance"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
+		{ id = 23251, disc=L["Rank"].." 10" }, -- Champion's Chain Helm
+		{ id = 23252, disc=L["Rank"].." 10" }, -- Champion's Chain Shoulders
+		{ id = 22874, disc=L["Rank"].." 8" }, -- Legionnaire's Chain Hauberk
+		{ id = 22862, disc=L["Rank"].." 7" }, -- Blood Guard's Chain Vices
+		{ id = 22875, disc=L["Rank"].." 8" }, -- Legionnaire's Chain Legguards
+		{ id = 22843, disc=L["Rank"].." 7" }, -- Blood Guard's Chain Greaves
 	},
 	PVPMage = {
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpea3#", "=q7=#pvps1#" },
-		{ 16441, "INV_Helmet_24", "=q4=Field Marshal's Coronet", "=ds=#s1#, #a1# =q7=#rank13#" },
-		{ 16444, "INV_Shoulder_23", "=q4=Field Marshal's Silk Spaulders", "=ds=#s3#, #a1# =q7=#rank13#" },
-		{ 16443, "INV_Chest_Cloth_12", "=q4=Field Marshal's Silk Vestments", "=ds=#s5#, #a1# =q7=#rank13#" },
-		{ 16440, "INV_Gauntlets_14", "=q4=Marshal's Silk Gloves", "=ds=#s9#, #a1# =q7=#rank12#" },
-		{ 16442, "INV_Pants_08", "=q4=Marshal's Silk Leggings", "=ds=#s11#, #a1# =q7=#rank12#" },
-		{ 16437, "INV_Boots_Cloth_03", "=q4=Marshal's Silk Footwraps", "=ds=#s12#, #a1# =q7=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpra3#", "=q7=#pvps2#" },
-		{ 23318, "INV_Helmet_06", "=q3=Lieutenant Commander's Silk Cowl", "=ds=#s1#, #a1# =q7=#rank10#" },
-		{ 23319, "INV_Shoulder_02", "=q3=Lieutenant Commander's Silk Mantle", "=ds=#s3#, #a1# =q7=#rank10#" },
-		{ 23305, "INV_Chest_Cloth_28", "=q3=Knight-Captain's Silk Tunic", "=ds=#s9#, #a1# =q7=#rank8#" },
-		{ 23290, "INV_Gauntlets_06", "=q3=Knight-Lieutenant's Silk Handwraps", "=ds=#s9#, #a1# =q7=#rank7#" },
-		{ 23304, "INV_Pants_11", "=q3=Knight-Captain's Silk Legguards", "=ds=#s11#, #a1# =q7=#rank8#" },
-		{ 23291, "INV_Boots_05", "=q3=Knight-Lieutenant's Silk Walkers", "=ds=#s12#, #a1# =q7=#rank7#" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvpeh3#", "=q5=#pvps1#" },
-		{ 16533, "INV_Helmet_08", "=q4=Warlord's Silk Cowl", "=ds=#s1#, #a1# =q18=#rank13#" },
-		{ 16536, "INV_Shoulder_19", "=q4=Warlord's Silk Amice", "=ds=#s3#, #a1# =q18=#rank13#" },
-		{ 16535, "INV_Chest_Leather_01", "=q4=Warlord's Silk Raiment", "=ds=#s5#, #a1# =q18=#rank13#" },
-		{ 16540, "INV_Gauntlets_19", "=q4=General's Silk Handguards", "=ds=#s9#, #a1# =q18=#rank12#" },
-		{ 16534, "INV_Pants_07", "=q4=General's Silk Trousers", "=ds=#s11#, #a1# =q18=#rank12#" },
-		{ 16539, "INV_Boots_05", "=q4=General's Silk Boots", "=ds=#s12#, #a1# =q18=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvprh3#", "=q5=#pvps2#" },
-		{ 23263, "INV_Helmet_06", "=q3=Champion's Silk Cowl", "=ds=#s1#, #a1# =q18=#rank10#" },
-		{ 23264, "INV_Shoulder_02", "=q3=Champion's Silk Mantle", "=ds=#s3#, #a1# =q18=#rank10#" },
-		{ 22886, "INV_Chest_Cloth_28", "=q3=Legionnaire's Silk Tunic", "=ds=#s9#, #a1# =q18=#rank8#" },
-		{ 22870, "INV_Gauntlets_06", "=q3=Blood Guard's Silk Handwraps", "=ds=#s9#, #a1# =q18=#rank7#" },
-		{ 22883, "INV_Pants_11", "=q3=Legionnaire's Silk Legguards", "=ds=#s11#, #a1# =q18=#rank8#" },
-		{ 22860, "INV_Boots_05", "=q3=Blood Guard's Silk Walkers", "=ds=#s12#, #a1# =q18=#rank7#" }
+		{ name=BIS["Field Marshal's Regalia"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
+		{ id = 16441, disc=L["Rank"].." 13" }, -- Field Marshal's Coronet
+		{ id = 16444, disc=L["Rank"].." 13" }, -- Field Marshal's Silk Spaulders
+		{ id = 16443, disc=L["Rank"].." 13" }, -- Field Marshal's Silk Vestments
+		{ id = 16440, disc=L["Rank"].." 12" }, -- Marshal's Silk Gloves
+		{ id = 16442, disc=L["Rank"].." 12" }, -- Marshal's Silk Leggings
+		{ id = 16437, disc=L["Rank"].." 12" }, -- Marshal's Silk Footwraps
+		{},
+		{ name=BIS["Lieutenant Commander's Arcanum"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
+		{ id = 23318, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Silk Cowl
+		{ id = 23319, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Silk Mantle
+		{ id = 23305, disc=L["Rank"].." 8" }, -- Knight-Captain's Silk Tunic
+		{ id = 23290, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Silk Handwraps
+		{ id = 23304, disc=L["Rank"].." 8" }, -- Knight-Captain's Silk Legguards
+		{ id = 23291, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Silk Walkers
+		{ name=BIS["Warlord's Regalia"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
+		{ id = 16533, disc=L["Rank"].." 13" }, -- Warlord's Silk Cowl
+		{ id = 16536, disc=L["Rank"].." 13" }, -- Warlord's Silk Amice
+		{ id = 16535, disc=L["Rank"].." 13" }, -- Warlord's Silk Raiment
+		{ id = 16540, disc=L["Rank"].." 12" }, -- General's Silk Handguards
+		{ id = 16534, disc=L["Rank"].." 12" }, -- General's Silk Trousers
+		{ id = 16539, disc=L["Rank"].." 12" }, -- General's Silk Boots
+		{},
+		{ name=BIS["Champion's Arcanum"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
+		{ id = 23263, disc=L["Rank"].." 10" }, -- Champion's Silk Cowl
+		{ id = 23264, disc=L["Rank"].." 10" }, -- Champion's Silk Mantle
+		{ id = 22886, disc=L["Rank"].." 8" }, -- Legionnaire's Silk Tunic
+		{ id = 22870, disc=L["Rank"].." 7" }, -- Blood Guard's Silk Handwraps
+		{ id = 22883, disc=L["Rank"].." 8" }, -- Legionnaire's Silk Legguards
+		{ id = 22860, disc=L["Rank"].." 7" }, -- Blood Guard's Silk Walkers
 	},
 	PVPPriest = {
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpea5#", "=q7=#pvps1#" },
-		{ 17602, "INV_Helmet_24", "=q4=Field Marshal's Headdress", "=ds=#s1#, #a1# =q7=#rank13#" },
-		{ 17604, "INV_Shoulder_02", "=q4=Field Marshal's Satin Mantle", "=ds=#s3#, #a1# =q7=#rank13#" },
-		{ 17605, "INV_Chest_Cloth_02", "=q4=Field Marshal's Satin Vestments", "=ds=#s5#, #a1# =q7=#rank13#" },
-		{ 17608, "INV_Gauntlets_14", "=q4=Marshal's Satin Gloves", "=ds=#s9#, #a1# =q7=#rank12#" },
-		{ 17603, "INV_Pants_06", "=q4=Marshal's Satin Pants", "=ds=#s11#, #a1# =q7=#rank12#" },
-		{ 17607, "INV_Boots_07", "=q4=Marshal's Satin Sandals", "=ds=#s12#, #a1# =q7=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpra5#", "=q7=#pvps2#" },
-		{ 23316, "INV_Helmet_17", "=q3=Lieutenant Commander's Satin Hood", "=ds=#s1#, #a1# =q7=#rank10#" },
-		{ 23317, "INV_Shoulder_01", "=q3=Lieutenant Commander's Satin Mantle", "=ds=#s3#, #a1# =q7=#rank10#" },
-		{ 23303, "INV_Chest_Leather_01", "=q3=Knight-Captain's Satin Tunic", "=ds=#s5#, #a1# =q7=#rank8#" },
-		{ 23288, "INV_Gauntlets_17", "=q3=Knight-Lieutenant's Satin Handwraps", "=ds=#s9#, #a1# =q7=#rank7#" },
-		{ 23302, "INV_Pants_11", "=q3=Knight-Captain's Satin Legguards", "=ds=#s11#, #a1# =q7=#rank8#" },
-		{ 23289, "INV_Boots_05", "=q3=Knight-Lieutenant's Satin Walkers", "=ds=#s12#, #a1# =q7=#rank7#" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvpeh4#", "=q5=#pvps1#" },
-		{ 17623, "INV_Helmet_08", "=q4=Warlord's Satin Cowl", "=ds=#s1#, #a1# =q18=#rank13#" },
-		{ 17622, "INV_Shoulder_19", "=q4=Warlord's Satin Mantle", "=ds=#s3#, #a1# =q18=#rank13#" },
-		{ 17624, "INV_Chest_Leather_01", "=q4=Warlord's Satin Robes", "=ds=#s5#, #a1# =q18=#rank13#" },
-		{ 17620, "INV_Gauntlets_27", "=q4=General's Satin Gloves", "=ds=#s9#, #a1# =q18=#rank12#" },
-		{ 17625, "INV_Pants_07", "=q4=General's Satin Leggings", "=ds=#s11#, #a1# =q18=#rank12#" },
-		{ 17618, "INV_Boots_05", "=q4=General's Satin Boots", "=ds=#s12#, #a1# =q18=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvprh4#", "=q5=#pvps2#" },
-		{ 23261, "INV_Helmet_17", "=q3=Champion's Satin Hood", "=ds=#s1#, #a1# =q18=#rank10#" },
-		{ 23262, "INV_Shoulder_01", "=q3=Champion's Satin Mantle", "=ds=#s3#, #a1# =q18=#rank10#" },
-		{ 22885, "INV_Chest_Leather_01", "=q3=Legionnaire's Satin Tunic", "=ds=#s5#, #a1# =q18=#rank8#" },
-		{ 22869, "INV_Gauntlets_17", "=q3=Blood Guard's Satin Handwraps", "=ds=#s9#, #a1# =q18=#rank7#" },
-		{ 22882, "INV_Pants_11", "=q3=Legionnaire's Satin Legguards", "=ds=#s11#, #a1# =q18=#rank8#" },
-		{ 22859, "INV_Boots_05", "=q3=Blood Guard's Satin Walkers", "=ds=#s12#, #a1# =q18=#rank7#" }
+		{ name=BIS["Field Marshal's Raiment"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
+		{ id = 17602, disc=L["Rank"].." 13" }, -- Field Marshal's Headdress
+		{ id = 17604, disc=L["Rank"].." 13" }, -- Field Marshal's Satin Mantle
+		{ id = 17605, disc=L["Rank"].." 13" }, -- Field Marshal's Satin Vestments
+		{ id = 17608, disc=L["Rank"].." 12" }, -- Marshal's Satin Gloves
+		{ id = 17603, disc=L["Rank"].." 12" }, -- Marshal's Satin Pants
+		{ id = 17607, disc=L["Rank"].." 12" }, -- Marshal's Satin Sandals
+		{},
+		{ name=BIS["Lieutenant Commander's Investiture"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
+		{ id = 23316, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Satin Hood
+		{ id = 23317, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Satin Mantle
+		{ id = 23303, disc=L["Rank"].." 8" }, -- Knight-Captain's Satin Tunic
+		{ id = 23288, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Satin Handwraps
+		{ id = 23302, disc=L["Rank"].." 8" }, -- Knight-Captain's Satin Legguards
+		{ id = 23289, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Satin Walkers
+		{ name=BIS["Warlord's Raiment"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
+		{ id = 17623, disc=L["Rank"].." 13" }, -- Warlord's Satin Cowl
+		{ id = 17622, disc=L["Rank"].." 13" }, -- Warlord's Satin Mantle
+		{ id = 17624, disc=L["Rank"].." 13" }, -- Warlord's Satin Robes
+		{ id = 17620, disc=L["Rank"].." 12" }, -- General's Satin Gloves
+		{ id = 17625, disc=L["Rank"].." 12" }, -- General's Satin Leggings
+		{ id = 17618, disc=L["Rank"].." 12" }, -- General's Satin Boots
+		{},
+		{ name=BIS["Champion's Investiture"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
+		{ id = 23261, disc=L["Rank"].." 10" }, -- Champion's Satin Hood
+		{ id = 23262, disc=L["Rank"].." 10" }, -- Champion's Satin Mantle
+		{ id = 22885, disc=L["Rank"].." 8" }, -- Legionnaire's Satin Tunic
+		{ id = 22869, disc=L["Rank"].." 7" }, -- Blood Guard's Satin Handwraps
+		{ id = 22882, disc=L["Rank"].." 8" }, -- Legionnaire's Satin Legguards
+		{ id = 22859, disc=L["Rank"].." 7" }, -- Blood Guard's Satin Walkers
 	},
 	PVPWarlock = {
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpea7#", "=q7=#pvps1#" },
-		{ 17578, "INV_Helmet_24", "=q4=Field Marshal's Coronal", "=ds=#s1#, #a1# =q7=#rank13#" },
-		{ 17580, "INV_Shoulder_02", "=q4=Field Marshal's Dreadweave Shoulders", "=ds=#s3#, #a1# =q7=#rank13#" },
-		{ 17581, "INV_Chest_Cloth_09", "=q4=Field Marshal's Dreadweave Robe", "=ds=#s5#, #a1# =q7=#rank13#" },
-		{ 17584, "INV_Gauntlets_14", "=q4=Marshal's Dreadweave Gloves", "=ds=#s9#, #a1# =q7=#rank12#" },
-		{ 17579, "INV_Pants_Cloth_09", "=q4=Marshal's Dreadweave Leggings", "=ds=#s11#, #a1# =q7=#rank12#" },
-		{ 17583, "INV_Boots_07", "=q4=Marshal's Dreadweave Boots", "=ds=#s12#, #a1# =q7=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpra7#", "=q7=#pvps2#" },
-		{ 23310, "INV_Helmet_08", "=q3=Lieutenant Commander's Dreadweave Cowl", "=ds=#s1#, #a1# =q7=#rank10#" },
-		{ 23311, "INV_Shoulder_01", "=q3=Lieutenant Commander's Dreadweave Spaulders", "=ds=#s3#, #a1# =q7=#rank10#" },
-		{ 23297, "INV_Chest_Leather_01", "=q3=Knight-Captain's Dreadweave Tunic", "=ds=#s5#, #a1# =q7=#rank8#" },
-		{ 23282, "INV_Gauntlets_19", "=q3=Knight-Lieutenant's Dreadweave Handwraps", "=ds=#s9#, #a1# =q7=#rank7#" },
-		{ 23296, "INV_Pants_06", "=q3=Knight-Captain's Dreadweave Legguards", "=ds=#s11#, #a1# =q7=#rank8#" },
-		{ 23283, "INV_Boots_05", "=q3=Knight-Lieutenant's Dreadweave Walkers", "=ds=#s12#, #a1# =q7=#rank7#" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvpeh7#", "=q5=#pvps1#" },
-		{ 17591, "INV_Helmet_08", "=q4=Warlord's Dreadweave Hood", "=ds=#s1#, #a1# =q18=#rank13#" },
-		{ 17590, "INV_Shoulder_19", "=q4=Warlord's Dreadweave Mantle", "=ds=#s3#, #a1# =q18=#rank13#" },
-		{ 17592, "INV_Chest_Leather_01", "=q4=Warlord's Dreadweave Robe", "=ds=#s5#, #a1# =q18=#rank13#" },
-		{ 17588, "INV_Gauntlets_19", "=q4=General's Dreadweave Gloves", "=ds=#s9#, #a1# =q18=#rank12#" },
-		{ 17593, "INV_Pants_07", "=q4=General's Dreadweave Pants", "=ds=#s11#, #a1# =q18=#rank12#" },
-		{ 17586, "INV_Boots_05", "=q4=General's Dreadweave Boots", "=ds=#s12#, #a1# =q18=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvprh7#", "=q5=#pvps2#" },
-		{ 23255, "INV_Helmet_08", "=q3=Champion's Dreadweave Cowl", "=ds=#s1#, #a1# =q18=#rank10#" },
-		{ 23256, "INV_Shoulder_01", "=q3=Champion's Dreadweave Spaulders", "=ds=#s3#, #a1# =q18=#rank10#" },
-		{ 22884, "INV_Chest_Leather_01", "=q3=Legionnaire's Dreadweave Tunic", "=ds=#s5#, #a1# =q18=#rank8#" },
-		{ 22865, "INV_Gauntlets_19", "=q3=Blood Guard's Dreadweave Handwraps", "=ds=#s9#, #a1# =q18=#rank7#" },
-		{ 22881, "INV_Pants_06", "=q3=Legionnaire's Dreadweave Legguards", "=ds=#s11#, #a1# =q18=#rank8#" },
-		{ 22855, "INV_Boots_05", "=q3=Blood Guard's Dreadweave Walkers", "=ds=#s12#, #a1# =q18=#rank7#" }
+		{ name=BIS["Field Marshal's Threads"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
+		{ id = 17578, disc=L["Rank"].." 13" }, -- Field Marshal's Coronal
+		{ id = 17580, disc=L["Rank"].." 13" }, -- Field Marshal's Dreadweave Shoulders
+		{ id = 17581, disc=L["Rank"].." 13" }, -- Field Marshal's Dreadweave Robe
+		{ id = 17584, disc=L["Rank"].." 12" }, -- Marshal's Dreadweave Gloves
+		{ id = 17579, disc=L["Rank"].." 12" }, -- Marshal's Dreadweave Leggings
+		{ id = 17583, disc=L["Rank"].." 12" }, -- Marshal's Dreadweave Boots
+		{},
+		{ name=BIS["Lieutenant Commander's Dreadgear"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
+		{ id = 23310, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Dreadweave Cowl
+		{ id = 23311, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Dreadweave Spaulders
+		{ id = 23297, disc=L["Rank"].." 8" }, -- Knight-Captain's Dreadweave Tunic
+		{ id = 23282, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Dreadweave Handwraps
+		{ id = 23296, disc=L["Rank"].." 8" }, -- Knight-Captain's Dreadweave Legguards
+		{ id = 23283, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Dreadweave Walkers
+		{ name=BIS["Warlord's Threads"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
+		{ id = 17591, disc=L["Rank"].." 13" }, -- Warlord's Dreadweave Hood
+		{ id = 17590, disc=L["Rank"].." 13" }, -- Warlord's Dreadweave Mantle
+		{ id = 17592, disc=L["Rank"].." 13" }, -- Warlord's Dreadweave Robe
+		{ id = 17588, disc=L["Rank"].." 12" }, -- General's Dreadweave Gloves
+		{ id = 17593, disc=L["Rank"].." 12" }, -- General's Dreadweave Pants
+		{ id = 17586, disc=L["Rank"].." 12" }, -- General's Dreadweave Boots
+		{},
+		{ name=BIS["Champion's Dreadgear"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
+		{ id = 23255, disc=L["Rank"].." 10" }, -- Champion's Dreadweave Cowl
+		{ id = 23256, disc=L["Rank"].." 10" }, -- Champion's Dreadweave Spaulders
+		{ id = 22884, disc=L["Rank"].." 8" }, -- Legionnaire's Dreadweave Tunic
+		{ id = 22865, disc=L["Rank"].." 7" }, -- Blood Guard's Dreadweave Handwraps
+		{ id = 22881, disc=L["Rank"].." 8" }, -- Legionnaire's Dreadweave Legguards
+		{ id = 22855, disc=L["Rank"].." 7" }, -- Blood Guard's Dreadweave Walkers
 	},
 	PVPRogue = {
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpea6#", "=q7=#pvps1#" },
-		{ 16455, "INV_Helmet_41", "=q4=Field Marshal's Leather Mask", "=ds=#s1#, #a2# =q7=#rank13#" },
-		{ 16457, "INV_Shoulder_23", "=q4=Field Marshal's Leather Epaulets", "=ds=#s3#, #a2# =q7=#rank13#" },
-		{ 16453, "INV_Chest_Cloth_07", "=q4=Field Marshal's Leather Chestpiece", "=ds=#s5#, #a2# =q7=#rank13#" },
-		{ 16454, "INV_Gauntlets_21", "=q4=Marshal's Leather Handgrips", "=ds=#s9#, #a2# =q7=#rank12#" },
-		{ 16456, "INV_Pants_06", "=q4=Marshal's Leather Leggings", "=ds=#s11#, #a2# =q7=#rank12#" },
-		{ 16446, "INV_Boots_08", "=q4=Marshal's Leather Footguards", "=ds=#s12#, #a2# =q7=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpra6#", "=q7=#pvps2#" },
-		{ 23312, "INV_Helmet_09", "=q3=Lieutenant Commander's Leather Helm", "=ds=#s1#, #a2# =q7=#rank10#" },
-		{ 23313, "INV_Shoulder_14", "=q3=Lieutenant Commander's Leather Shoulders", "=ds=#s3#, #a2# =q7=#rank10#" },
-		{ 23298, "INV_Chest_Leather_05", "=q3=Knight-Captain's Leather Chestpiece", "=ds=#s5#, #a2# =q7=#rank8#" },
-		{ 23284, "INV_Gauntlets_15", "=q3=Knight-Lieutenant's Leather Grips", "=ds=#s9#, #a2# =q7=#rank7#" },
-		{ 23299, "INV_Pants_08", "=q3=Knight-Captain's Leather Legguards", "=ds=#s11#, #a2# =q7=#rank8#" },
-		{ 23285, "INV_Boots_05", "=q3=Knight-Lieutenant's Leather Walkers", "=ds=#s12#, #a2# =q7=#rank7#" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvpeh5#", "=q5=#pvps1#" },
-		{ 16561, "INV_Helmet_09", "=q4=Warlord's Leather Helm", "=ds=#s1#, #a2# =q18=#rank13#" },
-		{ 16562, "INV_Shoulder_07", "=q4=Warlord's Leather Spaulders", "=ds=#s3#, #a2# =q18=#rank13#" },
-		{ 16563, "INV_Chest_Chain_16", "=q4=Warlord's Leather Breastplate", "=ds=#s5#, #a2# =q18=#rank13#" },
-		{ 16560, "INV_Gauntlets_25", "=q4=General's Leather Mitts", "=ds=#s9#, #a2# =q18=#rank12#" },
-		{ 16564, "INV_Pants_06", "=q4=General's Leather Legguards", "=ds=#s11#, #a2# =q18=#rank12#" },
-		{ 16558, "INV_Boots_08", "=q4=General's Leather Treads", "=ds=#s12#, #a2# =q18=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvprh5#", "=q5=#pvps2#" },
-		{ 23257, "INV_Helmet_09", "=q3=Champion's Leather Helm", "=ds=#s1#, #a2# =q18=#rank10#" },
-		{ 23258, "INV_Shoulder_14", "=q3=Champion's Leather Shoulders", "=ds=#s3#, #a2# =q18=#rank10#" },
-		{ 22879, "INV_Chest_Leather_05", "=q3=Legionnaire's Leather Chestpiece", "=ds=#s5#, #a2# =q18=#rank8#" },
-		{ 22864, "INV_Gauntlets_15", "=q3=Blood Guard's Leather Grips", "=ds=#s9#, #a2# =q18=#rank7#" },
-		{ 22880, "INV_Pants_08", "=q3=Legionnaire's Leather Legguards", "=ds=#s11#, #a2# =q18=#rank8#" },
-		{ 22856, "INV_Boots_05", "=q3=Blood Guard's Leather Walkers", "=ds=#s12#, #a2# =q18=#rank7#" }
+		{ name=BIS["Field Marshal's Vestments"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
+		{ id = 16455, disc=L["Rank"].." 13" }, -- Field Marshal's Leather Mask
+		{ id = 16457, disc=L["Rank"].." 13" }, -- Field Marshal's Leather Epaulets
+		{ id = 16453, disc=L["Rank"].." 13" }, -- Field Marshal's Leather Chestpiece
+		{ id = 16454, disc=L["Rank"].." 12" }, -- Marshal's Leather Handgrips
+		{ id = 16456, disc=L["Rank"].." 12" }, -- Marshal's Leather Leggings
+		{ id = 16446, disc=L["Rank"].." 12" }, -- Marshal's Leather Footguards
+		{},
+		{ name=BIS["Lieutenant Commander's Guard"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
+		{ id = 23312, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Leather Helm
+		{ id = 23313, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Leather Shoulders
+		{ id = 23298, disc=L["Rank"].." 8" }, -- Knight-Captain's Leather Chestpiece
+		{ id = 23284, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Leather Grips
+		{ id = 23299, disc=L["Rank"].." 8" }, -- Knight-Captain's Leather Legguards
+		{ id = 23285, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Leather Walkers
+		{ name=BIS["Warlord's Vestments"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
+		{ id = 16561, disc=L["Rank"].." 13" }, -- Warlord's Leather Helm
+		{ id = 16562, disc=L["Rank"].." 13" }, -- Warlord's Leather Spaulders
+		{ id = 16563, disc=L["Rank"].." 13" }, -- Warlord's Leather Breastplate
+		{ id = 16560, disc=L["Rank"].." 12" }, -- General's Leather Mitts
+		{ id = 16564, disc=L["Rank"].." 12" }, -- General's Leather Legguards
+		{ id = 16558, disc=L["Rank"].." 12" }, -- General's Leather Treads
+		{},
+		{ name=BIS["Champion's Guard"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
+		{ id = 23257, disc=L["Rank"].." 10" }, -- Champion's Leather Helm
+		{ id = 23258, disc=L["Rank"].." 10" }, -- Champion's Leather Shoulders
+		{ id = 22879, disc=L["Rank"].." 8" }, -- Legionnaire's Leather Chestpiece
+		{ id = 22864, disc=L["Rank"].." 7" }, -- Blood Guard's Leather Grips
+		{ id = 22880, disc=L["Rank"].." 8" }, -- Legionnaire's Leather Legguards
+		{ id = 22856, disc=L["Rank"].." 7" }, -- Blood Guard's Leather Walkers
 	},
 	PVPDruid = {
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpea1#", "=q7=#pvps1#" },
-		{ 16451, "INV_Helmet_41", "=q4=Field Marshal's Dragonhide Helmet", "=ds=#s1#, #a2# =q7=#rank13#" },
-		{ 16449, "INV_Shoulder_23", "=q4=Field Marshal's Dragonhide Spaulders", "=ds=#s3#, #a2# =q7=#rank13#" },
-		{ 16452, "INV_Chest_Cloth_07", "=q4=Field Marshal's Dragonhide Breastplate", "=ds=#s5#, #a2# =q7=#rank13#" },
-		{ 16448, "INV_Gauntlets_21", "=q4=Marshal's Dragonhide Gauntlets", "=ds=#s9#, #a2# =q7=#rank12#" },
-		{ 16450, "INV_Pants_06", "=q4=Marshal's Dragonhide Legguards", "=ds=#s11#, #a2# =q7=#rank12#" },
-		{ 16459, "INV_Boots_08", "=q4=Marshal's Dragonhide Boots", "=ds=#s12#, #a2# =q7=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpra1#", "=q7=#pvps2#" },
-		{ 23308, "INV_Helmet_09", "=q3=Lieutenant Commander's Dragonhide Headguard", "=ds=#s1#, #a2# =q7=#rank10#" },
-		{ 23309, "INV_Shoulder_07", "=q3=Lieutenant Commander's Dragonhide Shoulders", "=ds=#s3#, #a2# =q7=#rank10#" },
-		{ 23294, "INV_Chest_Leather_07", "=q3=Knight-Captain's Dragonhide Chestpiece", "=ds=#s5#, #a2# =q7=#rank8#" },
-		{ 23280, "INV_Gauntlets_25", "=q3=Knight-Lieutenant's Dragonhide Grips", "=ds=#s9#, #a2# =q7=#rank7#" },
-		{ 23295, "INV_Pants_06", "=q3=Knight-Captain's Dragonhide Leggings", "=ds=#s11#, #a2# =q7=#rank8#" },
-		{ 23281, "INV_Boots_08", "=q3=Knight-Lieutenant's Dragonhide Treads", "=ds=#s12#, #a2# =q7=#rank7#" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvpeh1#", "=q5=#pvps1#" },
-		{ 16550, "INV_Helmet_09", "=q4=Warlord's Dragonhide Helmet", "=ds=#s1#, #a2# =q18=#rank13#" },
-		{ 16551, "INV_Shoulder_07", "=q4=Warlord's Dragonhide Epaulets", "=ds=#s3#, #a2# =q18=#rank13#" },
-		{ 16549, "INV_Chest_Chain_16", "=q4=Warlord's Dragonhide Hauberk", "=ds=#s5#, #a2# =q18=#rank13#" },
-		{ 16555, "INV_Gauntlets_25", "=q4=General's Dragonhide Gloves", "=ds=#s9#, #a2# =q18=#rank12#" },
-		{ 16552, "INV_Pants_06", "=q4=General's Dragonhide Leggings", "=ds=#s11#, #a2# =q18=#rank12#" },
-		{ 16554, "INV_Boots_08", "=q4=General's Dragonhide Boots", "=ds=#s12#, #a2# =q18=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvprh1#", "=q5=#pvps2#" },
-		{ 23253, "INV_Helmet_09", "=q3=Champion's Dragonhide Headguard", "=ds=#s1#, #a2# =q18=#rank10#" },
-		{ 23254, "INV_Shoulder_07", "=q3=Champion's Dragonhide Shoulders", "=ds=#s3#, #a2# =q18=#rank10#" },
-		{ 22877, "INV_Chest_Leather_07", "=q3=Legionnaire's Dragonhide Chestpiece", "=ds=#s5#, #a2# =q18=#rank8#" },
-		{ 22863, "INV_Gauntlets_25", "=q3=Blood Guard's Dragonhide Grips", "=ds=#s9#, #a2# =q18=#rank7#" },
-		{ 22878, "INV_Pants_06", "=q3=Legionnaire's Dragonhide Leggings", "=ds=#s11#, #a2# =q18=#rank8#" },
-		{ 22852, "INV_Boots_08", "=q3=Blood Guard's Dragonhide Treads", "=ds=#s12#, #a2# =q18=#rank7#" }
+		{ name=BIS["Field Marshal's Sanctuary"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
+		{ id = 16451, disc=L["Rank"].." 13" }, -- Field Marshal's Dragonhide Helmet
+		{ id = 16449, disc=L["Rank"].." 13" }, -- Field Marshal's Dragonhide Spaulders
+		{ id = 16452, disc=L["Rank"].." 13" }, -- Field Marshal's Dragonhide Breastplate
+		{ id = 16448, disc=L["Rank"].." 12" }, -- Marshal's Dragonhide Gauntlets
+		{ id = 16450, disc=L["Rank"].." 12" }, -- Marshal's Dragonhide Legguards
+		{ id = 16459, disc=L["Rank"].." 12" }, -- Marshal's Dragonhide Boots
+		{},
+		{ name=BIS["Lieutenant Commander's Refuge"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
+		{ id = 23308, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Dragonhide Headguard
+		{ id = 23309, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Dragonhide Shoulders
+		{ id = 23294, disc=L["Rank"].." 8" }, -- Knight-Captain's Dragonhide Chestpiece
+		{ id = 23280, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Dragonhide Grips
+		{ id = 23295, disc=L["Rank"].." 8" }, -- Knight-Captain's Dragonhide Leggings
+		{ id = 23281, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Dragonhide Treads
+		{ name=BIS["Warlord's Sanctuary"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
+		{ id = 16550, disc=L["Rank"].." 13" }, -- Warlord's Dragonhide Helmet
+		{ id = 16551, disc=L["Rank"].." 13" }, -- Warlord's Dragonhide Epaulets
+		{ id = 16549, disc=L["Rank"].." 13" }, -- Warlord's Dragonhide Hauberk
+		{ id = 16555, disc=L["Rank"].." 12" }, -- General's Dragonhide Gloves
+		{ id = 16552, disc=L["Rank"].." 12" }, -- General's Dragonhide Leggings
+		{ id = 16554, disc=L["Rank"].." 12" }, -- General's Dragonhide Boots
+		{},
+		{ name=BIS["Champion's Refuge"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
+		{ id = 23253, disc=L["Rank"].." 10" }, -- Champion's Dragonhide Headguard
+		{ id = 23254, disc=L["Rank"].." 10" }, -- Champion's Dragonhide Shoulders
+		{ id = 22877, disc=L["Rank"].." 8" }, -- Legionnaire's Dragonhide Chestpiece
+		{ id = 22863, disc=L["Rank"].." 7" }, -- Blood Guard's Dragonhide Grips
+		{ id = 22878, disc=L["Rank"].." 8" }, -- Legionnaire's Dragonhide Leggings
+		{ id = 22852, disc=L["Rank"].." 7" }, -- Blood Guard's Dragonhide Treads
 	},
 	PVPShaman = {
-		{ 0, "INV_BannerPVP_01", "=q6=#pvpeh6#", "=q5=#pvps1#" },
-		{ 16578, "INV_Helmet_09", "=q4=Warlord's Mail Helm", "=ds=#s1#, #a3# =q18=#rank13#" },
-		{ 16580, "INV_Shoulder_29", "=q4=Warlord's Mail Spaulders", "=ds=#s3#, #a3# =q18=#rank13#" },
-		{ 16577, "INV_Chest_Chain_11", "=q4=Warlord's Mail Armor", "=ds=#s5#, #a3# =q18=#rank13#" },
-		{ 16574, "INV_Gauntlets_11", "=q4=General's Mail Gauntlets", "=ds=#s9#, #a3# =q18=#rank12#" },
-		{ 16579, "INV_Pants_Mail_15", "=q4=General's Mail Leggings", "=ds=#s11#, #a3# =q18=#rank12#" },
-		{ 16573, "INV_Boots_Plate_06", "=q4=General's Mail Boots", "=ds=#s12#, #a3# =q18=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvprh6#", "=q5=#pvps2#" },
-		{ 23259, "INV_Helmet_09", "=q3=Champion's Mail Headguard", "=ds=#s1#, #a3# =q18=#rank10#" },
-		{ 23260, "INV_Shoulder_04", "=q3=Champion's Mail Pauldrons", "=ds=#s3#, #a3# =q18=#rank10#" },
-		{ 22876, "INV_Chest_Chain_16", "=q3=Legionnaire's Mail Hauberk", "=ds=#s5#, #a3# =q18=#rank8#" },
-		{ 22867, "INV_Gauntlets_11", "=q3=Blood Guard's Mail Vices", "=ds=#s9#, #a3# =q18=#rank7#" },
-		{ 22887, "INV_Pants_09", "=q3=Legionnaire's Mail Legguards", "=ds=#s11#, #a3# =q18=#rank8#" },
-		{ 22857,"INV_Boots_07","=q3=Blood Guard's Mail Greaves", "=ds=#s12#, #a3# =q18=#rank7#" }
+		{ name=BIS["Warlord's Earthshaker"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
+		{ id = 16578, disc=L["Rank"].." 13" }, -- Warlord's Mail Helm
+		{ id = 16580, disc=L["Rank"].." 13" }, -- Warlord's Mail Spaulders
+		{ id = 16577, disc=L["Rank"].." 13" }, -- Warlord's Mail Armor
+		{ id = 16574, disc=L["Rank"].." 12" }, -- General's Mail Gauntlets
+		{ id = 16579, disc=L["Rank"].." 12" }, -- General's Mail Leggings
+		{ id = 16573, disc=L["Rank"].." 12" }, -- General's Mail Boots
+		{},
+		{ name=BIS["Champion's Stormcaller"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
+		{ id = 23259, disc=L["Rank"].." 10" }, -- Champion's Mail Headguard
+		{ id = 23260, disc=L["Rank"].." 10" }, -- Champion's Mail Pauldrons
+		{ id = 22876, disc=L["Rank"].." 8" }, -- Legionnaire's Mail Hauberk
+		{ id = 22867, disc=L["Rank"].." 7" }, -- Blood Guard's Mail Vices
+		{ id = 22887, disc=L["Rank"].." 8" }, -- Legionnaire's Mail Legguards
+		{ id = 22857, disc=L["Rank"].." 7" }, -- Blood Guard's Mail Greaves
 	},
 	PVPWarrior = {
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpea8#", "=q7=#pvps1#" },
-		{ 16478, "INV_Helmet_05", "=q4=Field Marshal's Plate Helm", "=ds=#s1#, #a4# =q7=#rank13#" },
-		{ 16480, "INV_Shoulder_20", "=q4=Field Marshal's Plate Shoulderguards", "=ds=#s3#, #a4# =q7=#rank13#" },
-		{ 16477, "INV_Chest_Plate03", "=q4=Field Marshal's Plate Armor", "=ds=#s5#, #a4# =q7=#rank13#" },
-		{ 16484, "INV_Gauntlets_29", "=q4=Marshal's Plate Gauntlets", "=ds=#s9#, #a4# =q7=#rank12#" },
-		{ 16479, "INV_Pants_04", "=q4=Marshal's Plate Legguards", "=ds=#s11#, #a4# =q7=#rank12#" },
-		{ 16483, "INV_Boots_Plate_09", "=q4=Marshal's Plate Boots", "=ds=#s12#, #a4# =q7=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpra8#", "=q7=#pvps2#" },
-		{ 23314, "INV_Helmet_09", "=q3=Lieutenant Commander's Plate Helm", "=ds=#s1#, #a4# =q7=#rank10#" },
-		{ 23315, "INV_Shoulder_11", "=q3=Lieutenant Commander's Plate Shoulders", "=ds=#s3#, #a4# =q7=#rank10#" },
-		{ 23300, "INV_Chest_Plate16", "=q3=Knight-Captain's Plate Hauberk", "=ds=#s5#, #a4# =q7=#rank8#" },
-		{ 23286, "INV_Gauntlets_26", "=q3=Knight-Lieutenant's Plate Gauntlets", "=ds=#s9#, #a4# =q7=#rank7#" },
-		{ 23301, "INV_Pants_06", "=q3=Knight-Captain's Plate Leggings", "=ds=#s11#, #a4# =q7=#rank8#" },
-		{ 23287, "INV_Boots_Plate_09", "=q3=Knight-Lieutenant's Plate Greaves", "=ds=#s12#, #a4# =q7=#rank7#" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvpeh8#", "=q5=#pvps1#" },
-		{ 16542, "INV_Helmet_09", "=q4=Warlord's Plate Headpiece", "=ds=#s1#, #a4# =q18=#rank13#" },
-		{ 16544, "INV_Shoulder_11", "=q4=Warlord's Plate Shoulders", "=ds=#s3#, #a4# =q18=#rank13#" },
-		{ 16541, "INV_Chest_Plate16", "=q4=Warlord's Plate Armor", "=ds=#s5#, #a4# =q18=#rank13#" },
-		{ 16548, "INV_Gauntlets_10", "=q4=General's Plate Gauntlets", "=ds=#s9#, #a4# =q18=#rank12#" },
-		{ 16543, "INV_Pants_04", "=q4=General's Plate Leggings", "=ds=#s11#, #a4# =q18=#rank12#" },
-		{ 16545, "INV_Boots_Plate_04", "=q4=General's Plate Boots", "=ds=#s12#, #a4# =q18=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_01", "=q6=#pvprh8#", "=q5=#pvps2#" },
-		{ 23244, "INV_Helmet_09", "=q3=Champion's Plate Helm", "=ds=#s1#, #a4# =q18=#rank10#" },
-		{ 23243, "INV_Shoulder_11", "=q3=Champion's Plate Shoulders", "=ds=#s3#, #a4# =q18=#rank10#" },
-		{ 22872, "INV_Chest_Plate16", "=q3=Legionnaire's Plate Hauberk", "=ds=#s5#, #a4# =q18=#rank8#" },
-		{ 22868, "INV_Gauntlets_26", "=q3=Blood Guard's Plate Gauntlets", "=ds=#s9#, #a4# =q18=#rank7#" },
-		{ 22873, "INV_Pants_06", "=q3=Legionnaire's Plate Leggings", "=ds=#s11#, #a4# =q18=#rank8#" },
-		{ 22858, "INV_Boots_Plate_09", "=q3=Blood Guard's Plate Greaves", "=ds=#s12#, #a4# =q18=#rank7#" }
+		{ name=BIS["Field Marshal's Battlegear"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
+		{ id = 16478, disc=L["Rank"].." 13" }, -- Field Marshal's Plate Helm
+		{ id = 16480, disc=L["Rank"].." 13" }, -- Field Marshal's Plate Shoulderguards
+		{ id = 16477, disc=L["Rank"].." 13" }, -- Field Marshal's Plate Armor
+		{ id = 16484, disc=L["Rank"].." 12" }, -- Marshal's Plate Gauntlets
+		{ id = 16479, disc=L["Rank"].." 12" }, -- Marshal's Plate Legguards
+		{ id = 16483, disc=L["Rank"].." 12" }, -- Marshal's Plate Boots
+		{},
+		{ name=BIS["Lieutenant Commander's Battlearmor"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
+		{ id = 23314, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Plate Helm
+		{ id = 23315, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Plate Shoulders
+		{ id = 23300, disc=L["Rank"].." 8" }, -- Knight-Captain's Plate Hauberk
+		{ id = 23286, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Plate Gauntlets
+		{ id = 23301, disc=L["Rank"].." 8" }, -- Knight-Captain's Plate Leggings
+		{ id = 23287, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Plate Greaves
+		{ name=BIS["Warlord's Battlegear"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
+		{ id = 16542, disc=L["Rank"].." 13" }, -- Warlord's Plate Headpiece
+		{ id = 16544, disc=L["Rank"].." 13" }, -- Warlord's Plate Shoulders
+		{ id = 16541, disc=L["Rank"].." 13" }, -- Warlord's Plate Armor
+		{ id = 16548, disc=L["Rank"].." 12" }, -- General's Plate Gauntlets
+		{ id = 16543, disc=L["Rank"].." 12" }, -- General's Plate Leggings
+		{ id = 16545, disc=L["Rank"].." 12" }, -- General's Plate Boots
+		{},
+		{ name=BIS["Champion's Battlearmor"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
+		{ id = 23244, disc=L["Rank"].." 10" }, -- Champion's Plate Helm
+		{ id = 23243, disc=L["Rank"].." 10" }, -- Champion's Plate Shoulders
+		{ id = 22872, disc=L["Rank"].." 8" }, -- Legionnaire's Plate Hauberk
+		{ id = 22868, disc=L["Rank"].." 7" }, -- Blood Guard's Plate Gauntlets
+		{ id = 22873, disc=L["Rank"].." 8" }, -- Legionnaire's Plate Leggings
+		{ id = 22858, disc=L["Rank"].." 7" }, -- Blood Guard's Plate Greaves
 	},
 	PVPPaladin = {
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpea4#", "=q7=#pvps1#" },
-		{ 16474, "INV_Helmet_05", "=q4=Field Marshal's Lamellar Faceguard", "=ds=#s1#, #a4# =q7=#rank13#" },
-		{ 16476, "INV_Shoulder_20", "=q4=Field Marshal's Lamellar Pauldrons", "=ds=#s3#, #a4# =q7=#rank13#" },
-		{ 16473, "INV_Chest_Plate03", "=q4=Field Marshal's Lamellar Chestplate", "=ds=#s5#, #a4# =q7=#rank13#" },
-		{ 16471, "INV_Gauntlets_29", "=q4=Marshal's Lamellar Gloves", "=ds=#s9#, #a4# =q7=#rank12#" },
-		{ 16475, "INV_Pants_04", "=q4=Marshal's Lamellar Legplates", "=ds=#s11#, #a4# =q7=#rank12#" },
-		{ 16472, "INV_Boots_Plate_09", "=q4=Marshal's Lamellar Boots", "=ds=#s12#, #a4# =q7=#rank12#" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_02", "=q8=#pvpra4#", "=q7=#pvps2#" },
-		{ 23276, "INV_Helmet_05", "=q3=Lieutenant Commander's Lamellar Headguard", "=ds=#s1#, #a4# =q7=#rank10#" },
-		{ 23277, "INV_Shoulder_28", "=q3=Lieutenant Commander's Lamellar Shoulders", "=ds=#s3#, #a4# =q7=#rank10#" },
-		{ 23272, "INV_Chest_Plate03", "=q3=Knight-Captain's Lamellar Breastplate", "=ds=#s5#, #a4# =q7=#rank8#" },
-		{ 23274, "INV_Gauntlets_29", "=q3=Knight-Lieutenant's Lamellar Gauntlets", "=ds=#s9#, #a4# =q7=#rank7#" },
-		{ 23273, "INV_Pants_06", "=q3=Knight-Captain's Lamellar Leggings", "=ds=#s11#, #a4# =q7=#rank8#" },
-		{ 23275, "INV_Boots_Plate_03", "=q3=Knight-Lieutenant's Lamellar Sabatons", "=ds=#s12#, #a4# =q7=#rank7#" }
+		{ name=BIS["Field Marshal's Aegis"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
+		{ id = 16474, disc=L["Rank"].." 13" }, -- Field Marshal's Lamellar Faceguard
+		{ id = 16476, disc=L["Rank"].." 13" }, -- Field Marshal's Lamellar Pauldrons
+		{ id = 16473, disc=L["Rank"].." 13" }, -- Field Marshal's Lamellar Chestplate
+		{ id = 16471, disc=L["Rank"].." 12" }, -- Marshal's Lamellar Gloves
+		{ id = 16475, disc=L["Rank"].." 12" }, -- Marshal's Lamellar Legplates
+		{ id = 16472, disc=L["Rank"].." 12" }, -- Marshal's Lamellar Boots
+		{},
+		{ name=BIS["Lieutenant Commander's Redoubt"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
+		{ id = 23276, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Lamellar Headguard
+		{ id = 23277, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Lamellar Shoulders
+		{ id = 23272, disc=L["Rank"].." 8" }, -- Knight-Captain's Lamellar Breastplate
+		{ id = 23274, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Lamellar Gauntlets
+		{ id = 23273, disc=L["Rank"].." 8" }, -- Knight-Captain's Lamellar Leggings
+		{ id = 23275, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Lamellar Sabatons
 	},
 	PvPMountsPvP = {
-		{ 0, "INV_BannerPVP_02", "=q8=#m7#", "=q7=#rank11#" },
-		{ 0, "", "", "" },
-		{ 19030, "Ability_Mount_MountainRam", "=q4=Stormpike Battle Charger", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 18244, "Ability_Mount_Mountainram", "=q4=Black War Ram", "=ds=#e7#" },
-		{ 18243, "Ability_Mount_Mechastrider", "=q4=Black Battlestrider", "=ds=#e7#" },
-		{ 18241, "Ability_Mount_Nightmarehorse", "=q4=Black War Steed Bridle", "=ds=#e7#" },
-		{ 18242, "Ability_Mount_Blackpanther", "=q4=Reins of the Black War Tiger", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "INV_BannerPVP_01", "=q6=#m6#", "=q18=#rank11#" },
-		{ 0, "", "", "" },
-		{ 19029, "INV_Misc_Horn_01", "=q4=Horn of the Frostwolf Howler", "=ds=#e7#" },
-		{ 0, "", "", "" },
-		{ 18245, "Ability_Mount_Blackdirewolf", "=q4=Horn of the Black War Wolf", "=ds=#e7#" },
-		{ 18247, "Ability_Mount_Kodo_03", "=q4=Black War Kodo", "=ds=#e7#" },
-		{ 18246, "Ability_Mount_Raptor", "=q4=Whistle of the Black War Raptor", "=ds=#e7#" },
-		{ 18248, "Ability_Mount_Undeadhorse", "=q4=Red Skeletal Warhorse", "=ds=#e7#" }
+		{ name = BF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 11"},
+		{ id = 19030 }, -- Stormpike Battle Charger
+		{},
+		{ id = 18244 }, -- Black War Ram
+		{ id = 18243 }, -- Black Battlestrider
+		{ id = 18241 }, -- Black War Steed Bridle
+		{ id = 18242 }, -- Reins of the Black War Tiger
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = BF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 11"},
+		{ id = 19029 }, -- Horn of the Frostwolf Howler
+		{},
+		{ id = 18245 }, -- Horn of the Black War Wolf
+		{ id = 18247 }, -- Black War Kodo
+		{ id = 18246 }, -- Whistle of the Black War Raptor
+		{ id = 18248 }, -- Red Skeletal Warhorse
 	}
 }
 
