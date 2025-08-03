@@ -1,315 +1,291 @@
-AtlasLoot_Data = {
+local _G = getfenv()
+AtlasTW = _G.AtlasTW
+
+--Instance required libraries
+local L = AtlasTW.Local
+local BB = AceLibrary("Babble-Boss-2.2a")
+local BZ = AceLibrary("Babble-Zone-2.2a")
+local BIS = AceLibrary("Babble-ItemSet-2.2a")
+
+AtlasLoot_Data = AtlasLoot_Data or {}
+
+local WorldEvents = {
 	----------------------------------
 	---- Abyssal Bosses ----
 	----------------------------------
 
 	AbyssalTemplars = {
-		{ 0, "INV_Box_01", "=q6=#x80#", "=q1=#j10#" },
-		{ 20657, "INV_Weapon_ShortBlade_27", "=q3=Crystal Tipped Stiletto", "=ds=#h1#, #w4#", "2.31%" },
-		{ 20655, "INV_Gauntlets_32", "=q2=Abyssal Cloth Handwraps", "=ds=#s9#, #a1#, =q2=#e23#", "13.03%" },
-		{ 20656, "INV_Boots_Chain_09", "=q2=Abyssal Mail Sabatons", "=ds=#s12#, #a3# =q2=#e23#", "12.89%" },
-		{ 20513, "INV_Jewelry_Talisman_05", "=q2=Abyssal Crest", "=ds=#m3#", "100%" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#x81#", "=q1=#j11#" },
-		{ 20654, "INV_Staff_11", "=q3=Amethyst War Staff", "=ds=#w9#", "2.38%" },
-		{ 20653, "INV_Gauntlets_29", "=q2=Abyssal Plate Gauntlets", "=ds=#s9#, #a4# =q2=#e23#", "13.61%" },
-		{ 20652, "INV_Boots_Cloth_10", "=q2=Abyssal Cloth Slippers", "=ds=#s12#, #a1# =q2=#e23#", "12.94%" },
-		{ 20513, "INV_Jewelry_Talisman_05", "=q2=Abyssal Crest", "=ds=#m3#", "100%" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#x83#", "=q1=#j13#" },
-		{ 20660, "INV_Spear_06", "=q3=Stonecutting Glaive", "=ds=#w7#", "2.22%" },
-		{ 20659, "INV_Gauntlets_32", "=q2=Abyssal Mail Handguards", "=ds=#s9#, #a3# =q2=#e23#", "12.64%" },
-		{ 20658, "INV_Boots_07", "=q2=Abyssal Leather Boots", "=ds=#s12#, #a2# =q2=#e23#", "13.16%" },
-		{ 20513, "INV_Jewelry_Talisman_05", "=q2=Abyssal Crest", "=ds=#m3#", "100%" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#x82#", "=q1=#j12#" },
-		{ 20663, "INV_Weapon_Bow_10", "=q3=Deep Strike Bow", "=ds=#w2#", "2.55%" },
-		{ 20661, "INV_Gauntlets_05", "=q2=Abyssal Leather Gloves", "=ds=#s9#, #a2# =q2=#e23#", "13.16%" },
-		{ 20662, "INV_Boots_Plate_05", "=q2=Abyssal Plate Greaves", "=ds=#s12#, #a4# =q2=#e23#", "12.93%" },
-		{ 20513, "INV_Jewelry_Talisman_05", "=q2=Abyssal Crest", "=ds=#m3#", "100%" }
+		{ name = L["Crimson Templar"] },
+		{ id = 20657, dropRate=5 }, -- Crystal Tipped Stiletto
+		{ id = 20655, dropRate=13, disc=L["Random stats"] }, -- Abyssal Cloth Handwraps
+		{ id = 20656, dropRate=13, disc=L["Random stats"] }, -- Abyssal Mail Sabatons
+		{ id = 20513, dropRate=100 }, -- Abyssal Crest
+		{},
+		{ name = L["Azure Templar"] },
+		{ id = 20654, dropRate=5 }, -- Amethyst War Staff
+		{ id = 20653, dropRate=12, disc=L["Random stats"] }, -- Abyssal Plate Gauntlets
+		{ id = 20652, dropRate=12, disc=L["Random stats"] }, -- Abyssal Cloth Slippers
+		{ id = 20513, dropRate=100 }, -- Abyssal Crest
+		{},
+		{ name = L["Hoary Templar"] },
+		{ id = 20660, dropRate=5 }, -- Stonecutting Glaive
+		{ id = 20659, dropRate=13, disc=L["Random stats"] }, -- Abyssal Mail Handguards
+		{ id = 20658, dropRate=13, disc=L["Random stats"] }, -- Abyssal Leather Boots
+		{ id = 20513, dropRate=100 }, -- Abyssal Crest
+		{},
+		{ name = L["Earthen Templar"] },
+		{ id = 20663, dropRate=6 }, -- Deep Strike Bow
+		{ id = 20661, dropRate=13, disc=L["Random stats"] }, -- Abyssal Leather Gloves
+		{ id = 20662, dropRate=12, disc=L["Random stats"] }, -- Abyssal Plate Greaves
+		{ id = 20513, dropRate=100 }, -- Abyssal Crest
 	},
 	AbyssalDukes = {
-		{ 0, "INV_Box_01", "=q6=#x86#", "=q1=#j10#" },
-		{ 20665, "INV_Pants_Leather_05", "=q3=Abyssal Leather Leggings", "=ds=#s11#, #a2# =q2=#e23#", "22.50%" },
-		{ 20666, "INV_Hammer_14", "=q3=Hardened Steel Warhammer", "=ds=#h3#, #w6#", "30.47%" },
-		{ 20514, "INV_Jewelry_Ring_36", "=q3=Abyssal Signet", "=ds=#m3#", "100%" },
-		{ 20664, "INV_Belt_06", "=q2=Abyssal Cloth Sash", "=ds=#s10#, #a1# =q2=#e23#", "27.08%" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#x87#", "=q1=#j11#" },
-		{ 20668, "INV_Pants_Mail_16", "=q3=Abyssal Mail Legguards", "=ds=#s11#, #a3# =q2=#e23#", "22.40%" },
-		{ 20669, "INV_Sword_35", "=q3=Darkstone Claymore", "=ds=#h2#, #w10#", "29.62%" },
-		{ 20514, "INV_Jewelry_Ring_36", "=q3=Abyssal Signet", "=ds=#m3#", "100%" },
-		{ 20667, "INV_Belt_30", "=q2=Abyssal Leather Belt", "=ds=#s10#, #a2# =q2=#e23#", "29.04%" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#x84#", "=q1=#j13#" },
-		{ 20674, "INV_Pants_Cloth_04", "=q3=Abyssal Cloth Pants", "=ds=#s11#, #a1# =q2=#e23#", "21.83%" },
-		{ 20675, "INV_Axe_13", "=q3=Soulrender", "=ds=#h1#, #w1#", "29.73%" },
-		{ 20514, "INV_Jewelry_Ring_36", "=q3=Abyssal Signet", "=ds=#m3#", "100%" },
-		{ 20673, "INV_Belt_26", "=q2=Abyssal Plate Girdle", "=ds=#s10#, #a4# =q2=#e23#", "27.11%" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#x85#", "=q1=#j12#" },
-		{ 20671, "INV_Pants_Plate_12", "=q3=Abyssal Plate Legplates", "=ds=#s11#, #a4# =q2=#e23#", "22.63%" },
-		{ 20672, "INV_Wand_12", "=q3=Sparkling Crystal Wand", "=ds=#w12#", "28.90%" },
-		{ 20514, "INV_Jewelry_Ring_36", "=q3=Abyssal Signet", "=ds=#m3#", "100%" },
-		{ 20670, "INV_Belt_16", "=q2=Abyssal Mail Clutch", "=ds=#s10#, #a3# =q2=#e23#", "28.16%" }
+		{ name = L["The Duke of Cynders"] },
+		{ id = 20665, dropRate=30, disc=L["Random stats"] }, -- Abyssal Leather Leggings
+		{ id = 20666, dropRate=30 }, -- Hardened Steel Warhammer
+		{ id = 20514, dropRate=100 }, -- Abyssal Signet
+		{ id = 20664, dropRate=40, disc=L["Random stats"] }, -- Abyssal Cloth Sash
+		{ id = 21989, dropRate=100, container={{22192,3},{22193,3}} }, -- Cinder of Cynders
+		{},
+		{ name = L["The Duke of Fathoms"] },
+		{ id = 20668, dropRate=30, disc=L["Random stats"] }, -- Abyssal Mail Legguards
+		{ id = 20669, dropRate=30 }, -- Darkstone Claymore
+		{ id = 20514, dropRate=100 }, -- Abyssal Signet
+		{ id = 20667, dropRate=40, disc=L["Random stats"] }, -- Abyssal Leather Belt
+		{},
+		{ name = L["The Duke of Zephyrs"] },
+		{ id = 20674, dropRate=40, disc=L["Random stats"] }, -- Abyssal Cloth Pants
+		{ id = 20675, dropRate=30 }, -- Soulrender
+		{ id = 20514, dropRate=100 }, -- Abyssal Signet
+		{ id = 20673, dropRate=30, disc=L["Random stats"] }, -- Abyssal Plate Girdle
+		{},
+		{ name = L["The Duke of Shards"] },
+		{ id = 20671, dropRate=30, disc=L["Random stats"] }, -- Abyssal Plate Legplates
+		{ id = 20672, dropRate=30 }, -- Sparkling Crystal Wand
+		{ id = 20514, dropRate=100 }, -- Abyssal Signet
+		{ id = 20670, dropRate=40, disc=L["Random stats"] }, -- Abyssal Mail Clutch
 	},
 	AbyssalLords = {
-		{ 0, "INV_Box_01", "=q6=#x90#", "=q1=#j10#" },
-		{ 20682, "INV_Jewelry_Ring_23", "=q4=Elemental Focus Band", "=ds=#s13#", "50%" },
-		{ 83562, "inv_spear_01", "=q4=Skaldrenox's Rage", "=ds=#w7#, #h2#", "50%" },
-		{ 20681, "INV_Bracer_10", "=q3=Abyssal Leather Bracers", "=ds=#s8#, #a2# =q2=#e23#", "50%" },
-		{ 20680, "INV_Shoulder_16", "=q3=Abyssal Mail Pauldrons", "=ds=#s3#, #a3# =q2=#e23#", "50%" },
-		{ 20515, "INV_Staff_13", "=q4=Abyssal Scepter", "=ds=#m3#", "100%" },
-		{ 83554, "INV_Misc_Orb_05", "=q4=Abyssal Flame", "=ds=#m33#", "40%" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#x91#", "=q1=#j11#" },
-		{ 20685, "INV_Jewelry_Necklace_21", "=q4=Wavefront Necklace", "=ds=#s2#", "50%" },
-		{ 83563, "INV_Ore_Arcanite_02", "=q4=Pearl of the Tides", "=ds=#s14#", "50%" },
-		{ 20684, "INV_Bracer_07", "=q3=Abyssal Mail Armguards", "=ds=#s8#, #a3# =q2=#e23#", "50%" },
-		{ 20683, "INV_Shoulder_22", "=q3=Abyssal Plate Epaulets", "=ds=#s3#, #a4# =q2=#e23#", "50%" },
-		{ 20515, "INV_Staff_13", "=q4=Abyssal Scepter", "=ds=#m3#", "100%" },
-		{ 83557, "Spell_Frost_SummonWaterElemental", "=q4=Abyssal Wave", "=ds=#m33#", "40%" },
-		{ 0, "INV_Box_01", "=q6=#x88#", "=q1=#j13#" },
-		{ 20691, "INV_Misc_Cape_20", "=q4=Windshear Cape", "=ds=#s4#", "50%" },
-		{ 83564, "INV_Sword_39", "=q4=Tempest's Rage", "=ds=#h1# #w10#", "50%" },
-		{ 20690, "INV_Bracer_12", "=q3=Abyssal Cloth Wristbands", "=ds=#s8#, #a1# =q2=#e23#", "50%" },
-		{ 20689, "INV_Shoulder_08", "=q3=Abyssal Leather Shoulders", "=ds=#s3#, #a3# =q2=#e23#", "50%" },
-		{ 20515, "INV_Staff_13", "=q4=Abyssal Scepter", "=ds=#m3#", "100%" },
-		{ 83556, "Spell_Nature_Tranquility", "=q4=Abyssal Wind", "=ds=#m33#", "40%" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#x89#", "=q1=#j12#" },
-		{ 20688, "INV_Shield_15", "=q4=Earthen Guard", "=ds=#w8#", "50%" },
-		{ 83565, "inv_helmet_19", "=q4=Blackstone Crown", "=ds=#s1#, #a3#", "50%" },
-		{ 20686, "INV_Shoulder_25", "=q3=Abyssal Cloth Amice", "=ds=#s3#, #a1# =q2=#e23#", "50%" },
-		{ 20687, "INV_Bracer_19", "=q3=Abyssal Plate Vambraces", "=ds=#s8#, #a4# =q2=#e23#", "50%" },
-		{ 20515, "INV_Staff_13", "=q4=Abyssal Scepter", "=ds=#m3#", "100%" },
-		{ 83555, "INV_Misc_StoneTablet_01", "=q4=Abyssal Slate", "=ds=#m33#", "40%" },
+		{ name = L["Prince Skaldrenox"], info = L["Fire"] },
+		{ id = 20682, dropRate = 50 }, -- Elemental Focus Band
+		{ id = 83562, dropRate = 50 }, -- Skaldrenox's Rage
+		{ id = 20681, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Leather Bracers
+		{ id = 20680, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Mail Pauldrons
+		{ id = 20515, dropRate = 100 }, -- Abyssal Scepter
+		{ id = 83554, dropRate = 40 }, -- Abyssal Flame
+		{},
+		{ name = L["Lord Skwol"], info = L["Water"] },
+		{ id = 20685, dropRate = 50 }, -- Wavefront Necklace
+		{ id = 83563, dropRate = 50 }, -- Pearl of the Tides
+		{ id = 20684, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Mail Armguards
+		{ id = 20683, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Plate Epaulets
+		{ id = 20515, dropRate = 100 }, -- Abyssal Scepter
+		{ id = 83557, dropRate = 40 }, -- Abyssal Wave
+		{},
+		{ name = L["High Marshal Whirlaxis"], info = L["Air"] },
+		{ id = 20691, dropRate = 50 }, -- Windshear Cape
+		{ id = 83564, dropRate = 50 }, -- Tempest's Rage
+		{ id = 20690, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Cloth Wristbands
+		{ id = 20689, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Leather Shoulders
+		{ id = 20515, dropRate = 100 }, -- Abyssal Scepter
+		{ id = 83556, dropRate = 40 }, -- Abyssal Wind
+		{},
+		{ name = L["Baron Kazum"], info = L["Earth"] },
+		{ id = 20688, dropRate = 50 }, -- Earthen Guard
+		{ id = 83565, dropRate = 50 }, -- Blackstone Crown
+		{ id = 20686, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Cloth Amice
+		{ id = 20687, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Plate Vambraces
+		{ id = 20515, dropRate = 100 }, -- Abyssal Scepter
+		{ id = 83555, dropRate = 40 }, -- Abyssal Slate
 	},
 	ElementalInvasion = {
-		{ 0, "Spell_Fire_Elemental_Totem", "=q6=#x92#", "=q1=#j15#, Un'goro Crater" },
-		{ 83550, "Spell_Fire_Fire", "=q4=Primordial Flame", "=ds=#m33#", "100%" },
-		{ 18671, "INV_Mace_08", "=q3=Baron Charr's Sceptre", "=ds=#h3#, #w6#", "21%" },
-		{ 80850, "INV_Crown_01", "=q3=Circlet of the Living Volcano", "=ds=#s1#, #a1#", "15%" },
-		{ 19268, "INV_Misc_Ticket_Tarot_Elemental_01", "=q3=Ace of Elementals", "=ds=#e16#", "10.14%" },
-		{ 18672, "INV_Misc_Orb_05", "=q2=Elemental Ember", "=ds=#s15#", "50%" },
-		{ 80849, "INV_Jewelry_Necklace_02", "=q2=Living Ember Pendant", "=ds=#s2#", "15%" },
-		{ 0, "Spell_Fire_Elemental_Totem", "=q6=#x94#", "=q1=#j16#, Winterspring" },
-		{ 83552, "INV_Stone_01", "=q4=Unmelting Ice", "=ds=#m33#", "100%" },
-		{ 18678, "INV_Jewelry_Necklace_03", "=q3=Tempestria's Frozen Necklace", "=ds=#s2#", "30%" },
-		{ 80843, "INV_Boots_Cloth_03", "=q3=Tideturner Boots", "=ds=#s12#, #a1#", "15%" },
-		{ 19268, "INV_Misc_Ticket_Tarot_Elemental_01", "=q3=Ace of Elementals", "=ds=#e16#", "5.24%" },
-		{ 80844, "INV_Misc_Gem_Sapphire_01", "=q2=Tempestria's Frozen Heart", "=ds=#s15#", "15%" },
-		{ 18679, "INV_Jewelry_Ring_29", "=q2=Frigid Ring", "=ds=#s13#", "50%" },
-		{ 21548, "INV_Scroll_03", "=q3=Pattern: Stormshroud Gloves", "=ds=#p7# #m14#", "20%" },
-		{ 0, "Spell_Fire_Elemental_Totem", "=q6=#x93#", "=q1=#j17#, Azshara" },
-		{ 83551, "INV_Stone_14", "=q4=Evershifting Stone", "=ds=#m33#", "100%" },
-
-
-		{ 18673, "INV_Shield_03", "=q3=Avalanchion's Stony Hide", "=ds=#w8#", "30%" },
-		{ 80851, "INV_Bracer_06", "=q3=Earthclad Bracers", "=ds=#s8#, #a4#", "15%" },
-		{ 19268, "INV_Misc_Ticket_Tarot_Elemental_01", "=q3=Ace of Elementals", "=ds=#e16#", "5.89%" },
-		{ 18674, "INV_Jewelry_Ring_14", "=q2=Hardened Stone Band", "=ds=#s13#", "50%" },
-		{ 80852, "INV_Jewelry_Necklace_06", "=q2=Earthshard Necklace", "=ds=#s2#", "15%" },
-		{ 0, "Spell_Fire_Elemental_Totem", "=q6=#x95#", "=q1=#j18#, Silithus" },
-		{ 83553, "Spell_Nature_Cyclone", "=q4=Unyielding Gust", "=ds=#m33#", "100%" },
-		{ 18676, "INV_Belt_31", "=q3=Sash of the Windreaver", "=ds=#s10#, #a3#", "25%" },
-		{ 80853, "INV_Jewelry_Necklace_07", "=q3=Thunderstruck Talisman", "=ds=#s2#", "15%" },
-		{ 19268, "INV_Misc_Ticket_Tarot_Elemental_01", "=q3=Ace of Elementals", "=ds=#e16#", "5.89%" },
-		{ 18677, "INV_Misc_Cape_13", "=q2=Zephyr Cloak", "=ds=#s4#", "58%" },
-		{ 80854, "INV_Misc_Gem_Pearl_06", "=q2=Wind Kissed Crystal", "=ds=#s15#", "15%" },
-		{ 21548, "INV_Scroll_03", "=q3=Pattern: Stormshroud Gloves", "=ds=#p7# #m14#", "31%" },
+		{ name = L["Baron Charr"], info = BZ["Un'goro Crater"] },
+		{ id = 83550, dropRate = 100 }, -- Primordial Flame
+		{ id = 18671, dropRate = 21 }, -- Baron Charr's Sceptre
+		{ id = 80850, dropRate = 15 }, -- Circlet of the Living Volcano
+		{ id = 19268, dropRate = 10.14 }, -- Ace of Elementals
+		{ id = 18672, dropRate = 50 }, -- Elemental Ember
+		{ id = 80849, dropRate = 15 }, -- Living Ember Pendant
+		{ name = L["Princess Tempestria"], info = BZ["Winterspring"] },
+		{ id = 83552, dropRate = 100 }, -- Unmelting Ice
+		{ id = 18678, dropRate = 30 }, -- Tempestria's Frozen Necklace
+		{ id = 80843, dropRate = 15 }, -- Tideturner Boots
+		{ id = 19268, dropRate = 5.24 }, -- Ace of Elementals
+		{ id = 80844, dropRate = 15 }, -- Tempestria's Frozen Heart
+		{ id = 18679, dropRate = 50 }, -- Frigid Ring
+		{ id = 21548, dropRate = 20 }, -- Pattern: Stormshroud Gloves
+		{ name = L["Avalanchion"], info = BZ["Azshara"] },
+		{ id = 83551, dropRate = 100 }, -- Evershifting Stone
+		{ id = 18673, dropRate = 30 }, -- Avalanchion's Stony Hide
+		{ id = 80851, dropRate = 15 }, -- Earthclad Bracers
+		{ id = 19268, dropRate = 5.89 }, -- Ace of Elementals
+		{ id = 18674, dropRate = 50 }, -- Hardened Stone Band
+		{ id = 80852, dropRate = 15 }, -- Earthshard Necklace
+		{ name = L["The Windreaver"], info = BZ["Silithus"] },
+		{ id = 83553, dropRate = 100 }, -- Unyielding Gust
+		{ id = 18676, dropRate = 25 }, -- Sash of the Windreaver
+		{ id = 80853, dropRate = 15 }, -- Thunderstruck Talisman
+		{ id = 19268, dropRate = 5.89 }, -- Ace of Elementals
+		{ id = 18677, dropRate = 58 }, -- Zephyr Cloak
+		{ id = 80854, dropRate = 15 }, -- Wind Kissed Crystal
+		{ id = 21548, dropRate = 31 }, -- Pattern: Stormshroud Gloves
 	},
 	GurubashiArena = {
-		{ 0,"","","" },
-		{ 18709, "INV_Bracer_10", "=q3=Arena Wristguards", "=ds=#s8#, #a1#", "5.0%" },
-		{ 18710, "INV_Bracer_08", "=q3=Arena Bracers", "=ds=#s8#, #a2#", "6.4%" },
-		{ 18711, "INV_Bracer_03", "=q3=Arena Bands", "=ds=#s8#, #a3#", "6.0%" },
-		{ 18712, "INV_Bracer_19", "=q3=Arena Vambraces", "=ds=#s8#, #a4#", "6.8%" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 18706, "INV_Misc_ArmorKit_14", "=q2=Arena Master", "=ds=#m2#, =ds=#s14#", "100%" },
-		{ 19024, "INV_Misc_ArmorKit_04", "=q3=Arena Grand Master", "=q1=#m4# =ds=#s14#" },
+		{ id = 18709, dropRate = 5.0 }, -- Arena Wristguards
+		{ id = 18710, dropRate = 6.4 }, -- Arena Bracers
+		{ id = 18711, dropRate = 6.0 }, -- Arena Bands
+		{ id = 18712, dropRate = 6.8 }, -- Arena Vambraces
+		{},
+		{ id = 18706, dropRate = 100 }, -- Arena Master
+		{ id = 19024 }, -- Arena Grand Master
 	},
 	FishingExtravaganza = {
-		{ 0, "INV_Box_01", "=q6=#j7#", "=q1=#j6#" },
-		{ 19970, "INV_Fishingpole_01", "=q3=Arcanite Fishing Pole", "=ds=#w14#" },
-		{ 19979, "Trade_Fishing", "=q3=Hook of the Master Angler", "=ds=#s14#" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#j9#", "" },
-		{ 19805, "INV_Misc_Fish_08", "=q2=Keefer's Angelfish", "=q1=#j9#", "" },
-		{ 19803, "INV_Misc_Fish_10", "=q2=Brownell's Blue Striped Racer", "=q1=#j9#", "" },
-		{ 19806, "INV_Misc_Fish_09", "=q2=Dezian Queenfish", "=q1=#j9#", "" },
-		{ 19808, "INV_Misc_Fish_27", "=q2=Rockhide Strongfish", "=ds=#h1#, #w6# =q1=#j9#", "" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#j8#", "" },
-		{ 19972, "INV_Helmet_31", "=q2=Lucky Fishing Hat", "=ds=#s1#, #a1#" },
-		{ 19969, "INV_Boots_09", "=q2=Nat Pagle's Extreme Anglin' Boots", "=ds=#s12#, #a1#" },
-		{ 19971, "INV_Fabric_Mageweave_02", "=q2=High Test Eternium Fishing Line", "=ds=#m32#" },
+		{ name = L["First Prize"], container = L["Master Angler"] },
+		{ id = 19970 }, -- Arcanite Fishing Pole
+		{ id = 19979 }, -- Hook of the Master Angler
+		{},
+		{ name = L["Rare Fish"] },
+		{ id = 19805 }, -- Keefer's Angelfish
+		{ id = 19803 }, -- Brownell's Blue Striped Racer
+		{ id = 19806 }, -- Dezian Queenfish
+		{ id = 19808 }, -- Rockhide Strongfish
+		{},
+		{ name = L["Rare Fish Rewards"] },
+		{ id = 19972 }, -- Lucky Fishing Hat
+		{ id = 19969 }, -- Nat Pagle's Extreme Anglin' Boots
+		{ id = 19971 }, -- High Test Eternium Fishing Line
 	},
 	ChildrensWeek = {
-		{ 0,"","","" },
-		{ 23007, "INV_Belt_25", "=q1=Piglet's Collar", "=ds=#e15#" },
-		{ 23015, "INV_Box_PetCarrier_01", "=q1=Rat Cage", "=ds=#e15#" },
-		{ 23002, "INV_Crate_03", "=q1=Turtle Box", "=ds=#e15#" },
-		{ 23022, "INV_Misc_Bag_10_Black", "=q1=Curmudgeon's Payoff", "=ds=#m23#" },
+		{ id = 23007 }, -- Piglet's Collar
+		{ id = 23015 }, -- Rat Cage
+		{ id = 23002 }, -- Turtle Box
+		{ id = 23022 }, -- Curmudgeon's Payoff
 	},
 	Valentineday = {
-		{ 22206, "INV_RoseBouquet01", "=q2=Bouquet of Red Roses", "=ds=#s15#", "0.43%" },
-		{ 0,"","","" },
-		{ 0, "INV_ValentinesBoxOfChocolates02", "=q6=#cb6#", "" },
-		{ 22279, "INV_Chest_Cloth_50", "=q1=Lovely Black Dress", "=ds=#s5#" },
-		{ 22235, "INV_Ammo_Arrow_02", "=q1=Truesilver Shafted Arrow", "=ds=#e15#" },
-		{ 22200, "INV_Ammo_Arrow_02", "=q1=Silver Shafted Arrow", "=ds=#e15#" },
-		{ 22261, "INV_Crate_03", "=q1=Love Fool", "=ds=#m33#" },
-		{ 22218, "INV_Misc_Dust_04", "=q1=Handful of Rose Petals", "=ds=#m33#" },
-		{ 21813, "INV_ValentinesCandySack", "=q1=Bag of Candies", "=ds=#m33#" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_02", "=q6=#cb7#", "" },
-		{ 22237, "INV_ValentinesChocolate04", "=q1=Dark Desire", "=ds=#e2#" },
-		{ 22238, "INV_ValentinesChocolate02", "=q1=Very Berry Cream", "=ds=#e2#" },
-		{ 22236, "INV_ValentinesChocolate01", "=q1=Buttermilk Delight", "=ds=#e2#" },
-		{ 22239, "INV_ValentinesChocolate03", "=q1=Sweet Surprise ", "=ds=#e2#" },
-		{ 22276, "INV_Chest_Cloth_24", "=q1=Lovely Red Dress", "=q1=#m4# =ds=#s5#" },
-		{ 22278, "INV_Chest_Cloth_23", "=q1=Lovely Blue Dress", "=q1=#m4# =ds=#s5#" },
-		{ 22280, "INV_Chest_Cloth_17", "=q1=Lovely Purple Dress", "=q1=#m4# =ds=#s5#" },
-		{ 22277, "INV_Shirt_Red_01", "=q1=Red Dinner Suit", "=q1=#m4# =ds=#s5#" },
-		{ 22281, "INV_Shirt_Blue_01", "=q1=Blue Dinner Suit", "=q1=#m4# =ds=#s5#" },
-		{ 22282, "INV_Shirt_Purple_01", "=q1=Purple Dinner Suit", "=q1=#m4# =ds=#s5#" },
+		{ id = 22206, dropRate = .43 }, -- Bouquet of Red Roses
+		{},
+		{ name = L["Gift of Adoration"] },
+		{ id = 22279 }, -- Lovely Black Dress
+		{ id = 22235 }, -- Truesilver Shafted Arrow
+		{ id = 22200 }, -- Silver Shafted Arrow
+		{ id = 22261 }, -- Love Fool
+		{ id = 22218 }, -- Handful of Rose Petals
+		{ id = 21813 }, -- Bag of Candies
+		{},
+		{ name = L["Box of Chocolates"] },
+		{ id = 22237 }, -- Dark Desire
+		{ id = 22238 }, -- Very Berry Cream
+		{ id = 22236 }, -- Buttermilk Delight
+		{ id = 22239 }, -- Sweet Surprise
+		{ id = 22276 }, -- Lovely Red Dress
+		{ id = 22278 }, -- Lovely Blue Dress
+		{ id = 22280 }, -- Lovely Purple Dress
+		{ id = 22277 }, -- Red Dinner Suit
+		{ id = 22281 }, -- Blue Dinner Suit
+		{ id = 22282 }, -- Purple Dinner Suit
 	},
 	Halloween1 = {
-		{ 20400, "INV_Misc_Food_59", "=q2=Pumpkin Bag", "=ds=#m21# #m42#" },
-		{ 0,"","","" },
-		{ 18633, "INV_Misc_Food_26", "=q1=Styleen's Sour Suckerpop", "=ds=#e2#" },
-		{ 18632, "INV_Misc_Food_30", "=q1=Moonbrook Riot Taffy", "=ds=#e2#" },
-		{ 18635, "INV_Misc_Food_27", "=q1=Bellara's Nutterbar", "=ds=#e2#" },
-		{ 20516, "INV_Misc_Food_19", "=q1=Bobbing Apple", "=ds=#e2#" },
-		{ 20557, "INV_Misc_Food_59", "=q1=Hallow's End Pumpkin Treat", "=ds=#m33#" },
-		{ 0,"","","" },
-		{ 20389, "INV_Misc_Food_30", "=q1=Candy Corn", "=ds=#e2#" },
-		{ 20388, "INV_Misc_Food_26", "=q1=Lollipop", "=ds=#e2#" },
-		{ 20390, "INV_Misc_Food_27", "=q1=Candy Bar", "=ds=#e2#" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Misc_Bag_11", "=q6=#cb8#", "" },
-		{ 20410, "INV_Wand_12", "=q1=Hallowed Wand - Bat", "=ds=#m33#" },
-		{ 20409, "INV_Wand_12", "=q1=Hallowed Wand - Ghost", "=ds=#m33#" },
-		{ 20399, "INV_Wand_12", "=q1=Hallowed Wand - Leper Gnome", "=ds=#m33#" },
-		{ 20398, "INV_Wand_12", "=q1=Hallowed Wand - Ninja", "=ds=#m33#" },
-		{ 20397, "INV_Wand_12", "=q1=Hallowed Wand - Pirate", "=ds=#m33#" },
-		{ 20413, "INV_Wand_12", "=q1=Hallowed Wand - Random", "=ds=#m33#" },
-		{ 20411, "INV_Wand_12", "=q1=Hallowed Wand - Skeleton", "=ds=#m33#" },
-		{ 20414, "INV_Wand_12", "=q1=Hallowed Wand - Wisp", "=ds=#m33#" },
+		{ id = 20400 }, -- Pumpkin Bag
+		{},
+		{ id = 18633 }, -- Styleen's Sour Suckerpop
+		{ id = 18632 }, -- Moonbrook Riot Taffy
+		{ id = 18635 }, -- Bellara's Nutterbar
+		{ id = 20516 }, -- Bobbing Apple
+		{ id = 20557 }, -- Hallow's End Pumpkin Treat
+		{},
+		{ id = 20389 }, -- Candy Corn
+		{ id = 20388 }, -- Lollipop
+		{ id = 20390 }, -- Candy Bar
+		{},
+		{ name = L["Treat Bag"], icon="INV_Misc_Bag_11" },
+		{ id = 20410 }, -- Hallowed Wand - Bat
+		{ id = 20409 }, -- Hallowed Wand - Ghost
+		{ id = 20399 }, -- Hallowed Wand - Leper Gnome
+		{ id = 20398 }, -- Hallowed Wand - Ninja
+		{ id = 20397 }, -- Hallowed Wand - Pirate
+		{ id = 20413 }, -- Hallowed Wand - Random
+		{ id = 20411 }, -- Hallowed Wand - Skeleton
+		{ id = 20414 }, -- Hallowed Wand - Wisp
 	},
 	Halloween2 = {
-		{ 0, "INV_Misc_Bag_11", "=q6=#cb8#", "" },
-		{ 20561, "INV_Misc_Head_Dwarf_01", "=q1=Flimsy Male Dwarf Mask", "=ds=#s1#" },
-		{ 20391, "INV_Misc_Head_Gnome_01", "=q1=Flimsy Male Gnome Mask", "=ds=#s1#" },
-		{ 20566, "INV_Misc_Head_Scourge_01", "=q1=Flimsy Male Human Mask", "=ds=#s1#" },
-		{ 20564, "Ability_Ambush", "=q1=Flimsy Male Nightelf Mask", "=ds=#s1#" },
-		{ 20570, "Ability_Warrior_WarCry", "=q1=Flimsy Male Orc Mask", "=ds=#s1#" },
-		{ 20572, "INV_Misc_Head_Tauren_01", "=q1=Flimsy Male Tauren Mask", "=ds=#s1#" },
-		{ 20568, "INV_Misc_Head_Troll_01", "=q1=Flimsy Male Troll Mask", "=ds=#s1#" },
-		{ 20573, "INV_Misc_Head_Undead_01", "=q1=Flimsy Male Undead Mask", "=ds=#s1#" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Misc_Bag_11", "=q6=#cb8#", "" },
-		{ 20562, "INV_Misc_Head_Dwarf_02", "=q1=Flimsy Female Dwarf Mask", "=ds=#s1#" },
-		{ 20392, "INV_Misc_Head_Gnome_02", "=q1=Flimsy Female Gnome Mask", "=ds=#s1#" },
-		{ 20565, "INV_Misc_Head_Human_02", "=q1=Flimsy Female Human Mask", "=ds=#s1#" },
-		{ 20563, "INV_Misc_Head_Elf_02", "=q1=Flimsy Female Nightelf Mask", "=ds=#s1#" },
-		{ 20569, "INV_Misc_Head_Orc_02", "=q1=Flimsy Female Orc Mask", "=ds=#s1#" },
-		{ 20571, "INV_Misc_Head_Tauren_02", "=q1=Flimsy Female Tauren Mask", "=ds=#s1#" },
-		{ 20567, "INV_Misc_Head_Troll_02", "=q1=Flimsy Female Troll Mask", "=ds=#s1#" },
-		{ 20574, "INV_Misc_Head_Undead_02", "=q1=Flimsy Female Undead Mask", "=ds=#s1#" },
+		{ name = L["Treat Bag"], icon="INV_Misc_Bag_11" },
+		{ id = 20561 }, -- Flimsy Male Dwarf Mask
+		{ id = 20391 }, -- Flimsy Male Gnome Mask
+		{ id = 20566 }, -- Flimsy Male Human Mask
+		{ id = 20564 }, -- Flimsy Male Nightelf Mask
+		{ id = 20570 }, -- Flimsy Male Orc Mask
+		{ id = 20572 }, -- Flimsy Male Tauren Mask
+		{ id = 20568 }, -- Flimsy Male Troll Mask
+		{ id = 20573 }, -- Flimsy Male Undead Mask
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = L["Treat Bag"], icon="INV_Misc_Bag_11" },
+		{ id = 20562 }, -- Flimsy Female Dwarf Mask
+		{ id = 20392 }, -- Flimsy Female Gnome Mask
+		{ id = 20565 }, -- Flimsy Female Human Mask
+		{ id = 20563 }, -- Flimsy Female Nightelf Mask
+		{ id = 20569 }, -- Flimsy Female Orc Mask
+		{ id = 20571 }, -- Flimsy Female Tauren Mask
+		{ id = 20567 }, -- Flimsy Female Troll Mask
+		{ id = 20574 }, -- Flimsy Female Undead Mask
 	},
 	Winterviel1 = {
-		{ 21525, "INV_Helmet_68", "=q2=Green Winter Hat", "=ds=#s1#" },
-		{ 21524, "INV_Helmet_67", "=q2=Red Winter Hat", "=ds=#s1#" },
-		{ 0,"","","" },
-		{ 17712, "Spell_Frost_FrostWard", "=q1=Winter Veil Disguise Kit", "=q1=#m4# =ds=#m33#" },
-		{ 17202, "INV_Ammo_Snowball", "=q1=Snowball", "=ds=#m33#" },
-		{ 21212, "INV_Misc_Branch_01", "=q1=Fresh Holly", "=ds=#m33#" },
-		{ 21519, "INV_Misc_Herb_09", "=q1=Mistletoe", "=ds=#m33#" },
-		{ 0,"","","" },
-		{ 0, "INV_Holiday_Christmas_Present_01", "=q6=#m50#", "" }, 
-		{ 21301, "INV_Holiday_Christmas_Present_03", "=q1=Green Helper Box", "=ds=#e15#" },
-		{ 21308, "INV_Misc_Bell_01", "=q1=Jingling Bell", "=ds=#e15#" },
-		{ 21305, "INV_Holiday_Christmas_Present_01", "=q1=Red Helper Box", "=ds=#e15#" },
-		{ 21309, "INV_Misc_Bag_17", "=q1=Snowman Kit", "=ds=#e15#" },
-		{ 0, "INV_Holiday_Christmas_Present_01", "=q6=#m49#", "" },
-		{ 21328, "INV_Wand_02", "=q1=Wand of Holiday Cheer", "=ds=#m33#" },
-		{ 0, "INV_Holiday_Christmas_Present_01", "=q6=#m48#", "" }, 
-		{ 17706, "INV_Scroll_06", "=q2=Plans: Edge of Winter", "=ds=#p2# (190)" },
-		{ 17725, "INV_Misc_Note_01", "=q2=Formula: Enchant Weapon - Winter's Might", "=ds=#p4# (190)" },
-		{ 17720, "INV_Scroll_06", "=q2=Schematic: Snowmaster 9000", "=ds=#p5# (190)" },
-		{ 17722, "INV_Scroll_03", "=q2=Pattern: Gloves of the Greatfather", "=ds=#p7# (190)" },
-		{ 17709, "INV_Scroll_03", "=q1=Recipe: Elixir of Frost Power", "=ds=#p1# (190)" },
-		{ 17724, "INV_Scroll_03", "=q1=Pattern: Green Holiday Shirt", "=ds=#p8# (190)" },
-		{ 0,"","","" },
-		{ 21325, "Ability_Hunter_Pet_Gorilla", "=q2=Mechanical Greench", "=ds=#e15#" },
-		{ 21213, "INV_Misc_Branch_01", "=q2=Preserved Holly", "=ds=#m33#" },
-		{ 0,"","","" },
-		{ 0, "INV_Holiday_Christmas_Present_01", "=q6=#m46#", "" }, 
-		{ 21235, "INV_Misc_Food_50", "=q1=Winter Veil Roast", "=ds=#e2#" },
-		{ 21241, "INV_Drink_16", "=q1=Winter Veil Eggnog", "=ds=#e3#" },
+		{ id = 21525 }, -- Green Winter Hat
+		{ id = 21524 }, -- Red Winter Hat
+		{},
+		{ id = 17712 }, -- Winter Veil Disguise Kit
+		{ id = 17202 }, -- Snowball
+		{ id = 21212 }, -- Fresh Holly
+		{ id = 21519 }, -- Mistletoe
+		{},
+		{ name = L["Gaily Wrapped Present"], icon="INV_Holiday_Christmas_Present_01" },
+		{ id = 21301 }, -- Green Helper Box
+		{ id = 21308 }, -- Jingling Bell
+		{ id = 21305 }, -- Red Helper Box
+		{ id = 21309 }, -- Snowman Kit
+		{ name = L["Festive Gift"], icon="INV_Holiday_Christmas_Present_01" },
+		{ id = 21328 }, -- Wand of Holiday Cheer
+		{ name = L["Smokywood Pastures Special Gift"], icon="INV_Holiday_Christmas_Present_01" },
+		{ id = 17706 }, -- Plans: Edge of Winter
+		{ id = 17725 }, -- Formula: Enchant Weapon - Winter's Might
+		{ id = 17720 }, -- Schematic: Snowmaster 9000
+		{ id = 17722 }, -- Pattern: Gloves of the Greatfather
+		{ id = 17709 }, -- Recipe: Elixir of Frost Power
+		{ id = 17724 }, -- Pattern: Green Holiday Shirt
+		{},
+		{ id = 21325 }, -- Mechanical Greench
+		{ id = 21213 }, -- Preserved Holly
+		{},
+		{ name = L["Gently Shaken Gift"], icon="INV_Holiday_Christmas_Present_01" },
+		{ id = 21235 }, -- Winter Veil Roast
+		{ id = 21241 }, -- Winter Veil Eggnog
 	},
 	Winterviel2 = {
-		{ 0, "INV_Holiday_Christmas_Present_01", "=q6=#m51#", "" }, 
-		{ 17201, "INV_Scroll_03", "=q1=Recipe: Egg Nog", "=ds=#p3# (35)" },
-		{ 17200, "INV_Scroll_03", "=q1=Recipe: Gingerbread Cookie", "=ds=#p3# (1)" },
-		{ 17344, "INV_Misc_Food_61", "=q1=Candy Cane", "=ds=#e2#" },
-		{ 17406, "INV_Misc_Food_03", "=q1=Holiday Cheesewheel", "=ds=#e2#" },
-		{ 17407, "INV_Misc_Food_10", "=q1=Graccu's Homemade Meat Pie", "=ds=#e2#" },
-		{ 17408, "INV_Misc_Food_49", "=q1=Spicy Beefstick", "=ds=#e2#" },
-		{ 17404, "INV_Drink_15", "=q1=Blended Bean Brew", "=ds=#e3#" },
-		{ 17405, "INV_Drink_Milk_05", "=q1=Green Garden Tea", "=ds=#e3#" },
-		{ 17196, "INV_Drink_10", "=q1=Holiday Spirits", "=ds=#e3#" },
-		{ 17403, "INV_Drink_11", "=q1=Steamwheedle Fizzy Spirits", "=ds=#e3#" },
-		{ 17402, "INV_Drink_13", "=q1=Greatfather's Winter Ale", "=ds=#e3#" },
-		{ 17194, "INV_Misc_Bag_11", "=q1=Holiday Spices", "=ds=#e12#" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 17303, "INV_Holiday_Christmas_Wrapping_03", "=q1=Blue Ribboned Wrapping Paper", "=ds=#m33#" },
-		{ 17304, "INV_Holiday_Christmas_Wrapping_01", "=q1=Green Ribboned Wrapping Paper", "=ds=#m33#" },
-		{ 17307, "INV_Holiday_Christmas_Wrapping_02", "=q1=Purple Ribboned Wrapping Paper", "=ds=#m33#" },
+		{ name = L["Smokywood Pastures"], icon="INV_Holiday_Christmas_Present_01" },
+		{ id = 17201 }, -- Recipe: Egg Nog
+		{ id = 17200 }, -- Recipe: Gingerbread Cookie
+		{ id = 17344 }, -- Candy Cane
+		{ id = 17406 }, -- Holiday Cheesewheel
+		{ id = 17407 }, -- Graccu's Homemade Meat Pie
+		{ id = 17408 }, -- Spicy Beefstick
+		{ id = 17404 }, -- Blended Bean Brew
+		{ id = 17405 }, -- Green Garden Tea
+		{ id = 17196 }, -- Holiday Spirits
+		{ id = 17403 }, -- Steamwheedle Fizzy Spirits
+		{ id = 17402 }, -- Greatfather's Winter Ale
+		{ id = 17194 }, -- Holiday Spices
+		{},
+		{ id = 17303 }, -- Blue Ribboned Wrapping Paper
+		{ id = 17304 }, -- Green Ribboned Wrapping Paper
+		{ id = 17307 }, -- Purple Ribboned Wrapping Paper
 	},
 	WintervielSnowball = {
-		{ 0,"","","" },
-		{ 51249, "Ability_Mount_WhiteDireWolf", "=q3=Snowball", "=ds=#e7#" },
+		{},
+		{ id = 51249 }, -- Snowball
 		-- { 0,"","","" },
 		-- { 647, "INV_Sword_19", "=q4=Destiny", "=ds=#h2#, #w10#" },
 		-- { 811, "INV_Axe_07", "=q4=Axe of the Deep Woods", "=ds=#h3#, #w1#" },
@@ -340,161 +316,165 @@ AtlasLoot_Data = {
 		-- { 80793, "INV_Misc_Horn_02", "=q4=The Wolf Horn of Orgrimmar", "=ds=#s14#" },
 	},
 	Noblegarden = {
-		{ 0, "INV_Egg_03", "=q6=#cb9#", "" }, 
-		{ 19028, "INV_Chest_Cloth_04", "=q1=Elegant Dress", "=ds=#s5#" },
-		{ 6833, "INV_Shirt_08", "=q1=White Tuxedo Shirt", "=ds=#s6#" },
-		{ 6835, "INV_Pants_01", "=q1=Black Tuxedo Pants", "=ds=#s11#" },
-		{ 0,"","","" },
-		{ 7807, "INV_Misc_Food_27", "=q1=Candy Bar", "=ds=#e2#" },
-		{ 7808, "INV_Misc_Food_29", "=q1=Chocolate Square", "=ds=#e2#" },
-		{ 7806, "INV_Misc_Food_26", "=q1=Lollipop", "=ds=#e2#" },
+		{ name = L["Brightly Colored Egg"], icon="INV_Egg_03" },
+		{ id = 19028 }, -- Elegant Dress
+		{ id = 6833 }, -- White Tuxedo Shirt
+		{ id = 6835 }, -- Black Tuxedo Pants
+		{},
+		{ id = 7807 }, -- Candy Bar
+		{ id = 7808 }, -- Chocolate Square
+		{ id = 7806 }, -- Lollipop
 	},
 	HarvestFestival = {
-		{ 19697, "INV_Misc_Horn_03", "=q1=Bounty of the Harvest", "=q1=#m4# =ds=#m33#" },
-		{ 20009, "INV_Misc_Book_07", "=q1=For the Light!", "=q1=#m4# =ds=#m33# =q8=#m7#" },
-		{ 20010, "INV_Misc_Book_06", "=q1=The Horde's Hellscream", "=q1=#m4# =ds=#m33# =q6=#m6#" },
-		{ 0,"","","" },
-		{ 19995, "INV_Misc_Food_60", "=q1=Harvest Boar", "=ds=#e2#" },
-		{ 19996, "INV_Misc_Fish_19", "=q1=Harvest Fish", "=ds=#e2#" },
-		{ 19994, "INV_Misc_Food_41", "=q1=Harvest Fruit", "=ds=#e2#" },
-		{ 19997, "INV_Drink_04", "=q1=Harvest Nectar", "=ds=#e3#" },
-		{ 19696,"INV_Misc_Food_33","=q1=Harvest Bread","=ds=#e2#" },
+		{ id = 19697 }, -- Bounty of the Harvest
+		{ id = 20009 }, -- For the Light!
+		{ id = 20010 }, -- The Horde's Hellscream
+		{},
+		{ id = 19995 }, -- Harvest Boar
+		{ id = 19996 }, -- Harvest Fish
+		{ id = 19994 }, -- Harvest Fruit
+		{ id = 19997 }, -- Harvest Nectar
+		{ id = 19696 }, -- Harvest Bread
 	},
 	ScourgeInvasionEvent1 = {
-		{ 23123, "INV_Potion_26", "=q2=Blessed Wizard Oil", "=ds=#m32#" },
-		{ 23122, "INV_Stone_SharpeningStone_02", "=q2=Consecrated Sharpening Stone", "=ds=#m32#" },
-		{ 22999, "INV_Shirt_GuildTabard_01", "=q1=Tabard of the Argent Dawn", "=ds=#s7#" },
-		{ 22484, "INV_Stone_02", "=q1=Necrotic Rune", "=ds=#m33#" },
-		{ 0,"","","" },
-		{ 0, "INV_Jewelry_Talisman_13", "=q6=#oth_s11#", "=ec1=#a1#" },
-		{ 23085, "INV_Chest_Cloth_04", "=q3=Robe of Undead Cleansing", "=ds=#s5#, #a1#", "" },
-		{ 23091, "INV_Bracer_12", "=q3=Bracers of Undead Cleansing", "=ds=#s8#, #a1#", "" },
-		{ 23084, "INV_Gauntlets_16", "=q3=Gloves of Undead Cleansing", "=ds=#s9#, #a1#", "" },
-		{ 0,"","","" },
-		{ 0, "INV_Jewelry_Talisman_13", "=q6=#oth_s12#", "=ec1=#a2#" },
-		{ 23089, "INV_Chest_Leather_06", "=q3=Tunic of Undead Slaying", "=ds=#s5#, #a2#", "" },
-		{ 23093, "INV_Bracer_08", "=q3=Wristwraps of Undead Slaying", "=ds=#s8#, #a2#", "" },
-		{ 23081, "INV_Gauntlets_06", "=q3=Handwraps of Undead Slaying", "=ds=#s9#, #a2#", "" },
-		{ 0,"","","" },
-		{ 23194, "INV_Misc_Token_ArgentDawn", "=q1=Lesser Mark of the Dawn", "=ds=#m25#" }, 
-		{ 23195, "INV_Misc_Token_ArgentDawn2", "=q1=Mark of the Dawn", "=ds=#m25#" },
-		{ 23196, "INV_Misc_Token_ArgentDawn3", "=q1=Greater Mark of the Dawn", "=ds=#m25#" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Jewelry_Talisman_13", "=q6=#oth_s13#", "=ec1=#a3#" },
-		{ 23088, "INV_Chest_Chain_08", "=q3=Chestguard of Undead Slaying", "=ds=#s5#, #a3#", "" },
-		{ 23092, "INV_Bracer_16", "=q3=Wristguards of Undead Slaying", "=ds=#s8#, #a3#", "" },
-		{ 23082, "INV_Gauntlets_11", "=q3=Handguards of Undead Slaying", "=ds=#s9#, #a3#", "" },
-		{ 0,"","","" },
-		{ 0, "INV_Jewelry_Talisman_13", "=q6=#oth_s14#", "=ec1=#a4#" },
-		{ 23087, "INV_Chest_Plate10", "=q3=Breastplate of Undead Slaying", "=ds=#s5#, #a4#", "" },
-		{ 23090, "INV_Bracer_14", "=q3=Bracers of Undead Slaying", "=ds=#s8#, #a4#", "" },
-		{ 23078, "INV_Gauntlets_29", "=q3=Gauntlets of Undead Slaying", "=ds=#s9#, #a4#", "" }
+		{ id = 23123 }, -- Blessed Wizard Oil
+		{ id = 23122 }, -- Consecrated Sharpening Stone
+		{ id = 22999 }, -- Tabard of the Argent Dawn
+		{ id = 22484 }, -- Necrotic Rune
+		{},
+		{ name = BIS["Regalia of Undead Cleansing"], icon="INV_Jewelry_Talisman_13" },
+		{ id = 23085 }, -- Robe of Undead Cleansing
+		{ id = 23091 }, -- Bracers of Undead Cleansing
+		{ id = 23084 }, -- Gloves of Undead Cleansing
+		{},
+		{ name = BIS["Undead Slayer's Armor"], icon="INV_Jewelry_Talisman_13" },
+		{ id = 23089 }, -- Tunic of Undead Slaying
+		{ id = 23093 }, -- Wristwraps of Undead Slaying
+		{ id = 23081 }, -- Handwraps of Undead Slaying
+		{},
+		{ id = 23194 }, -- Lesser Mark of the Dawn
+		{ id = 23195 }, -- Mark of the Dawn
+		{ id = 23196 }, -- Greater Mark of the Dawn
+		{},
+		{},
+		{ name = BIS["Garb of the Undead Slayer"], icon="INV_Jewelry_Talisman_13" },
+		{ id = 23088 }, -- Chestguard of Undead Slaying
+		{ id = 23092 }, -- Wristguards of Undead Slaying
+		{ id = 23082 }, -- Handguards of Undead Slaying
+		{},
+		{ name = BIS["Battlegear of Undead Slaying"], icon="INV_Jewelry_Talisman_13" },
+		{ id = 23087 }, -- Breastplate of Undead Slaying
+		{ id = 23090 }, -- Bracers of Undead Slaying
+		{ id = 23078 }, -- Gauntlets of Undead Slaying
 	},
 	ScourgeInvasionEvent2 = {
-		{ 0, "INV_Box_01", "=q6=#db66#", "=q1=#zone1#" }, 
-		{ 23126, "INV_Belt_13", "=q3=Waistband of Balzaphon", "=ds=#s10#, #a1#", "27.38%" },  
-		{ 23125, "INV_Belt_18", "=q3=Chains of the Lich", "=ds=#s2#", "19.89%" },  
-		{ 23124, "INV_Staff_07", "=q3=Staff of Balzaphon", "=ds=#w9#", "24.74%" },   
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#db67#", "=q1=#zone2#" },
-		{ 23132, "INV_Sword_05", "=q3=Lord Blackwood's Blade", "=ds=#h1#, #w10#", "12.83%" },
-		{ 23156, "INV_Misc_Bone_10", "=q3=Blackwood's Thigh", "=ds=#s15#", "45.21%" },
-		{ 23139, "INV_Shield_02", "=q3=Lord Blackwood's Buckler", "=ds=#w8#", "38.75%" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#db68#", "=q1=#zone3#" }, 
-		{ 23127, "INV_Misc_Cape_02", "=q3=Cloak of Revanchion", "=ds=#s4#", "38.49%" },
-		{ 23129, "INV_Bracer_13", "=q3=Bracers of Mending", "=ds=#s8#, #a1#", "39.61%" },
-		{ 23128, "INV_Gauntlets_16", "=q3=The Shadow's Grasp", "=ds=#s9#, #a1#", "21.81%" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#db69#", "=q1=#zone4# - #j16#" },
-		{ 23169, "INV_Jewelry_Necklace_03", "=q3=Scorn's Icy Choker", "=ds=#s2#", "27.49%" },
-		{ 23170, "INV_Gauntlets_11", "=q3=The Frozen Clutch", "=ds=#s9#, #a3#", "56.15%" },
-		{ 23168, "INV_Weapon_ShortBlade_07", "=q3=Scorn's Focal Dagger", "=ds=#h1#, #w4#", "16.36%" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#db70#", "=q1=#zone5#" },
-		{ 23173, "INV_Pants_06", "=q3=Abomination Skin Leggings", "=ds=#s11#, #a1#", "76.87%" },
-		{ 23171,"INV_Axe_03","=q3=The Axe of Severing","=ds=#h2#, #w1#", "22.94%" },
-		{ 0,"","","" },
-		{ 0,"","","" },
-		{ 0, "INV_Box_01", "=q6=#db71#", "=q1=#zone6#" },
-		{ 23178, "INV_Misc_Cape_17", "=q3=Mantle of Lady Falther'ess", "=ds=#s4#", "61.24%" },
-		{ 23177, "INV_Wand_12", "=q3=Lady Falther'ess' Finger", "=ds=#w12#", "38.17%" }
+		{ name = BB["Balzaphon"], info = BZ["Stratholme"] },
+		{ id = 23126, dropRate = 27.38 }, -- Waistband of Balzaphon
+		{ id = 23125, dropRate = 19.89 }, -- Chains of the Lich
+		{ id = 23124, dropRate = 24.74 }, -- Staff of Balzaphon
+		{},
+		{ name = BB["Lord Blackwood"], info = BZ["Scholomance"] },
+		{ id = 23132, dropRate = 12.83 }, -- Lord Blackwood's Blade
+		{ id = 23156, dropRate = 45.21 }, -- Blackwood's Thigh
+		{ id = 23139, dropRate = 38.75 }, -- Lord Blackwood's Buckler
+		{},
+		{ name = BB["Revanchion"], info = BZ["Dire Maul (West)"] },
+		{ id = 23127, dropRate = 38.49 }, -- Cloak of Revanchion
+		{ id = 23129, dropRate = 39.61 }, -- Bracers of Mending
+		{ id = 23128, dropRate = 21.81 }, -- The Shadow's Grasp
+		{},
+		{ name = BB["Scorn"], info = BZ["Scarlet Monastery (Cathedral)"] },
+		{ id = 23169, dropRate = 27.49 }, -- Scorn's Icy Choker
+		{ id = 23170, dropRate = 56.15 }, -- The Frozen Clutch
+		{ id = 23168, dropRate = 16.36 }, -- Scorn's Focal Dagger
+		{},
+		{ name = BB["Sever"], info = BZ["Shadowfang Keep"] },
+		{ id = 23173, dropRate = 76.87 }, -- Abomination Skin Leggings
+		{ id = 23171, dropRate = 22.94 }, -- The Axe of Severing
+		{},
+		{},
+		{ name = BB["Lady Falther'ess"], info = BZ["Razorfen Downs"] },
+		{ id = 23178, dropRate = 61.24 }, -- Mantle of Lady Falther'ess
+		{ id = 23177, dropRate = 38.17 }, -- Lady Falther'ess' Finger
 	},
 	LunarFestival1 = {
-		{ 21100, "INV_Misc_ElvenCoins", "=q1=Coin of Ancestry", "=ds=#m14#" },
-		{ 0,"","","" },
-		{ 21157, "INV_Chest_Cloth_57", "=q1=Festive Green Dress", "=ds=#s5#" },
-		{ 21538, "INV_Chest_Cloth_58", "=q1=Festive Pink Dress", "=ds=#s5#" },
-		{ 21539, "INV_Chest_Cloth_59", "=q1=Festive Purple Dress", "=ds=#s5#" },
-		{ 21541, "INV_Chest_Cloth_53", "=q1=Festive Black Pant Suit", "=ds=#s5#" },
-		{ 21544, "INV_Chest_Cloth_52", "=q1=Festive Blue Pant Suit", "=ds=#s5#" },
-		{ 21543, "INV_Chest_Cloth_54", "=q1=Festive Teal Pant Suit", "=ds=#s5#" },
-		{ 0,"","","" },
-		{ 0, "INV_Misc_LuckyMoneyEnvelope", "=q6=#m47#", "" },
-		{ 21744, "INV_Misc_MissileLargeCluster_White", "=q1=Lucky Rocket Cluster", "=ds=#m35#" },
-		{ 21745, "INV_Misc_Gem_Pearl_04", "=q1=Elder's Moonstone", "=ds=#m33#" },
-		{ 0,"","","" },
-		{ 21540, "INV_Misc_Lantern_01", "=q2=Elune's Lantern", "=q1=#m4# =ds=#m33#" },
-		{ 21536,"INV_Misc_Gem_Pearl_04","=q1=Elune Stone","=ds=#m33#" },
-		{ 0, "INV_Box_02",  "=q6=#m45#", "=ds=#m35#" },
-		{ 21558, "INV_Misc_MissileSmall_Blue", "=q1=Small Blue Rocket", "=ds=#m35#" },
-		{ 21559, "INV_Misc_MissileSmall_Green", "=q1=Small Green Rocket", "=ds=#m35#" },
-		{ 21557, "INV_Misc_MissileSmall_Red", "=q1=Small Red Rocket", "=ds=#m35#" },
-		{ 21561, "INV_Misc_MissileSmall_White", "=q1=Small White Rocket", "=ds=#m35#" },
-		{ 21562, "INV_Misc_MissileSmall_Yellow", "=q1=Small Yellow Rocket", "=ds=#m35#" },
-		{ 21589, "INV_Misc_MissileLarge_Blue", "=q1=Large Blue Rocket", "=ds=#m35#" },
-		{ 21590, "INV_Misc_MissileLarge_Green", "=q1=Large Green Rocket", "=ds=#m35#" },
-		{ 21592, "INV_Misc_MissileLarge_Red", "=q1=Large Red Rocket", "=ds=#m35#" },
-		{ 21593, "INV_Misc_MissileLarge_White", "=q1=Large White Rocket", "=ds=#m35#" },
-		{ 21595, "INV_Misc_MissileLarge_Yellow", "=q1=Large Yellow Rocket", "=ds=#m35#" },
-		{ 0,"","","" },
-		{ 21537, "INV_Misc_Food_DimSum", "=q1=Festival Dumplings", "=ds=#m25#" },
-		{ 21713, "INV_Musket_02", "=q1=Elune's Candle", "=ds=#m33#" }
+		{ id = 21100 }, -- Coin of Ancestry
+		{},
+		{ id = 21157 }, -- Festive Green Dress
+		{ id = 21538 }, -- Festive Pink Dress
+		{ id = 21539 }, -- Festive Purple Dress
+		{ id = 21541 }, -- Festive Black Pant Suit
+		{ id = 21544 }, -- Festive Blue Pant Suit
+		{ id = 21543 }, -- Festive Teal Pant Suit
+		{},
+		{ name = L["Lucky Red Envelope"], icon="INV_Misc_LuckyMoneyEnvelope" },
+		{ id = 21744 }, -- Lucky Rocket Cluster
+		{ id = 21745 }, -- Elder's Moonstone
+		{},
+		{ id = 21540 }, -- Elune's Lantern
+		{ id = 21536 }, -- Elune Stone
+		{ name = L["Lunar Festival Fireworks Pack"], icon="INV_Box_02" },
+		{ id = 21558 }, -- Small Blue Rocket
+		{ id = 21559 }, -- Small Green Rocket
+		{ id = 21557 }, -- Small Red Rocket
+		{ id = 21561 }, -- Small White Rocket
+		{ id = 21562 }, -- Small Yellow Rocket
+		{ id = 21589 }, -- Large Blue Rocket
+		{ id = 21590 }, -- Large Green Rocket
+		{ id = 21592 }, -- Large Red Rocket
+		{ id = 21593 }, -- Large White Rocket
+		{ id = 21595 }, -- Large Yellow Rocket
+		{},
+		{ id = 21537 }, -- Festival Dumplings
+		{ id = 21713 }, -- Elune's Candle
 	},
 	LunarFestival2 = {
-		{ 21738, "INV_Scroll_06", "=q2=Schematic: Firework Launcher ", "=ds=#p5# (225)" },
-		{ 0,"","","" },
-		{ 21722, "INV_Scroll_06", "=q2=Pattern: Festival Dress", "=ds=#p8# #m41#" },
-		{ 21154,"INV_Chest_Cloth_56","=q1=Festival Dress","=ds=#s5#" },
-		{ 0,"","","" },
-		{ 0, "INV_Scroll_03", "=q6=#cb10#", "" },
-		{ 21724, "INV_Scroll_06", "=q2=Schematic: Small Blue Rocket", "=ds=#p5# #m28#" },
-		{ 21725, "INV_Scroll_06", "=q2=Schematic: Small Green Rocket", "=ds=#p5# #m28#" },
-		{ 21726, "INV_Scroll_06", "=q2=Schematic: Small Red Rocket", "=ds=#p5# #m28#" },
-		{ 0,"","","" },
-		{ 0, "INV_Scroll_04", "=q6=#cb11#", "" },
-		{ 21727, "INV_Scroll_06", "=q2=Schematic: Large Blue Rocket", "=ds=#p5# (175)" },
-		{ 21728, "INV_Scroll_06", "=q2=Schematic: Large Green Rocket", "=ds=#p5# (175)" },
-		{ 21729, "INV_Scroll_06", "=q2=Schematic: Large Red Rocket", "=ds=#p5# (175)" },
-		{ 0,"","","" },
-		{ 21737, "INV_Scroll_06", "=q2=Schematic: Cluster Launcher", "=ds=#p5# #m16#" },
-		{ 0,"","","" },
-		{ 21723, "INV_Scroll_06", "=q2=Pattern: Festive Red Pant Suit", "=ds=#p8# #m41#" },
-		{ 21542,"INV_Chest_Cloth_55","=q1=Festival Suit","=ds=#s5#" },
-		{ 0,"","","" },
-		{ 0, "INV_Scroll_05", "=q6=#cb12#", "" },
-		{ 21730, "INV_Scroll_06", "=q2=Schematic: Blue Rocket Cluster", "=ds=#p5# (225)" },
-		{ 21731, "INV_Scroll_06", "=q2=Schematic: Green Rocket Cluster", "=ds=#p5# (225)" },
-		{ 21732, "INV_Scroll_06", "=q2=Schematic: Red Rocket Cluster", "=ds=#p5# (225)" },
-		{ 0,"","","" },
-		{ 0, "INV_Scroll_06", "=q6=#cb13#", "" },
-		{ 21733, "INV_Scroll_06", "=q2=Schematic: Large Blue Rocket Cluster", "=ds=#p5# #m16#" },
-		{ 21734, "INV_Scroll_06", "=q2=Schematic: Large Green Rocket Cluster", "=ds=#p5# #m16#" },
-		{ 21735, "INV_Scroll_06", "=q2=Schematic: Large Red Rocket Cluster", "=ds=#p5# #m16#" }
+		{ id = 21738 }, -- Schematic: Firework Launcher
+		{},
+		{ id = 21722 }, -- Pattern: Festival Dress
+		{ id = 21154 }, -- Festival Dress
+		{},
+		{ name = L["Small Rocket Recipes"], icon="INV_Scroll_03" },
+		{ id = 21724 }, -- Schematic: Small Blue Rocket
+		{ id = 21725 }, -- Schematic: Small Green Rocket
+		{ id = 21726 }, -- Schematic: Small Red Rocket
+		{},
+		{ name = L["Large Rocket Recipes"], icon="INV_Scroll_04" },
+		{ id = 21727 }, -- Schematic: Large Blue Rocket
+		{ id = 21728 }, -- Schematic: Large Green Rocket
+		{ id = 21729 }, -- Schematic: Large Red Rocket
+		{},
+		{ id = 21737 }, -- Schematic: Cluster Launcher
+		{},
+		{ id = 21723 }, -- Pattern: Festive Red Pant Suit
+		{ id = 21542 }, -- Festival Suit
+		{},
+		{ name = L["Cluster Rocket Recipes"], icon="INV_Scroll_05" },
+		{ id = 21730 }, -- Schematic: Blue Rocket Cluster
+		{ id = 21731 }, -- Schematic: Green Rocket Cluster
+		{ id = 21732 }, -- Schematic: Red Rocket Cluster
+		{},
+		{ name = L["Large Cluster Rocket Recipes"], icon="INV_Scroll_06" },
+		{ id = 21733 }, -- Schematic: Large Blue Rocket Cluster
+		{ id = 21734 }, -- Schematic: Large Green Rocket Cluster
+		{ id = 21735 }, -- Schematic: Large Red Rocket Cluster
 	},
 	MidsummerFestival = {
-		{ 23379, "INV_Bracer_09", "=q2=Cinder Bracers", "=ds=#e15#" },
-		{ 0,"","","" },
-		{ 23323, "INV_Helmet_08", "=q1=Crown of the Fire Festival", "=ds=#s1#, #a1#" },
-		{ 23324, "INV_Shoulder_23", "=q1=Mantle of the Fire Festival", "=ds=#s3#, #a1#" },
-		{ 0,"","","" },
-		{ 23083, "INV_Potion_33", "=q1=Captured Flame", "=ds=#e15#" },
-		{ 23247, "INV_SummerFest_FireFlower", "=q1=Burning Blossom", "=ds=#m33#" },
-		{ 23246, "INV_SummerFest_FireDrink", "=q1=Fiery Festival Brew", "=ds=#m33#" },
-		{ 23435, "INV_Misc_Food_10", "=q1=Elderberry Pie", "=ds=#e2#" },
-		{ 23327, "INV_Misc_Food_11", "=q1=Fire-toasted Bun", "=ds=#e2#" },
-		{ 23326, "INV_Misc_Food_53", "=q1=Midsummer Sausage", "=ds=#e2#" },
-		{ 23211, "INV_SummerFest_Smorc", "=q1=Toasted Smorc", "=ds=#e2#" }
+		{ id = 23379 }, -- Cinder Bracers
+		{},
+		{ id = 23323 }, -- Crown of the Fire Festival
+		{ id = 23324 }, -- Mantle of the Fire Festival
+		{},
+		{ id = 23083 }, -- Captured Flame
+		{ id = 23247 }, -- Burning Blossom
+		{ id = 23246 }, -- Fiery Festival Brew
+		{ id = 23435 }, -- Elderberry Pie
+		{ id = 23327 }, -- Fire-toasted Bun
+		{ id = 23326 }, -- Midsummer Sausage
+		{ id = 23211 }, -- Toasted Smorc
 	}
 }
+
+for k, v in pairs(WorldEvents) do
+	AtlasLoot_Data[k] = v
+end
