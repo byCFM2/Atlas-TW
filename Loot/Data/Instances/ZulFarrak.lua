@@ -155,7 +155,7 @@ AtlasTW.InstanceData.ZulFarrak = {
             id = "ZFElderWildmane",
             name = L["Elder Wildmane"],
             postfix = L["Lunar Festival"],
-            -- loot = "LunarFestival", TODO
+            items = "LunarFestival",
         },
         {
             id = "ZFChiefUkorzSandscalp",

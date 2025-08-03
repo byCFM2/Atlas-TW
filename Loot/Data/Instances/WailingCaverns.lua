@@ -84,7 +84,6 @@ AtlasTW.InstanceData.WailingCaverns = {
     Entrances = {
         { letter = "A) "..L["Entrance"] }
     },
-
     Bosses = {
         {
             id = "WCDisciple",

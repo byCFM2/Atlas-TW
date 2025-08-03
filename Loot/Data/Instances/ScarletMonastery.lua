@@ -104,7 +104,7 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
                 {id=80799, dropRate=0.02},
             }
         },
-        { name = BIS["Chain of the Scarlet Crusade"], items = "SCARLET" },
+        { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
     }
 }
 
@@ -184,7 +184,7 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
                 {id=23192, dropRate=1.6},
             }
         },
-        { name = BIS["Chain of the Scarlet Crusade"], items = "SCARLET" },
+        { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
     }
 }
 
@@ -278,7 +278,7 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
                 {id=10329, dropRate=1.6},
             }
         },
-        { name = BIS["Chain of the Scarlet Crusade"], items = "SCARLET" },
+        { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
     }
 }
 
@@ -411,7 +411,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
                 {id=80794, dropRate=.02},
             }
         },
-        { name = BIS["Chain of the Scarlet Crusade"], items = "SCARLET" },
+        { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
     }
 }
 

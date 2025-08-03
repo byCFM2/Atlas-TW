@@ -128,7 +128,7 @@ AtlasTW.InstanceData.Stratholme = {
             prefix = "5)",
             name = L["Elder Farwhisper"],
             postfix = L["Lunar Festival"],
-            --loot = "LunarFestival", --TODO need support for string loot
+            items = "LunarFestival",
         },
         {
             id = "STRATTimmytheCruel",
@@ -577,6 +577,7 @@ AtlasTW.InstanceData.Stratholme = {
             }
         },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
+        { name = BIS["The Postmaster"], items = "Strat" },
         { name = L["Tier 0/0.5 Sets"], items = "T0Set" },
     },
 }

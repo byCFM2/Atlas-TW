@@ -27,6 +27,9 @@ local WorldEvents = {
 		{ id = 20652, dropRate=12, disc=L["Random stats"] }, -- Abyssal Cloth Slippers
 		{ id = 20513, dropRate=100 }, -- Abyssal Crest
 		{},
+		{},
+		{},
+		{},
 		{ name = L["Hoary Templar"] },
 		{ id = 20660, dropRate=5 }, -- Stonecutting Glaive
 		{ id = 20659, dropRate=13, disc=L["Random stats"] }, -- Abyssal Mail Handguards
@@ -52,6 +55,8 @@ local WorldEvents = {
 		{ id = 20669, dropRate=30 }, -- Darkstone Claymore
 		{ id = 20514, dropRate=100 }, -- Abyssal Signet
 		{ id = 20667, dropRate=40, disc=L["Random stats"] }, -- Abyssal Leather Belt
+		{},
+		{},
 		{},
 		{ name = L["The Duke of Zephyrs"] },
 		{ id = 20674, dropRate=40, disc=L["Random stats"] }, -- Abyssal Cloth Pants
@@ -81,7 +86,6 @@ local WorldEvents = {
 		{ id = 20683, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Plate Epaulets
 		{ id = 20515, dropRate = 100 }, -- Abyssal Scepter
 		{ id = 83557, dropRate = 40 }, -- Abyssal Wave
-		{},
 		{ name = L["High Marshal Whirlaxis"], info = L["Air"] },
 		{ id = 20691, dropRate = 50 }, -- Windshear Cape
 		{ id = 83564, dropRate = 50 }, -- Tempest's Rage
@@ -99,7 +103,7 @@ local WorldEvents = {
 		{ id = 83555, dropRate = 40 }, -- Abyssal Slate
 	},
 	ElementalInvasion = {
-		{ name = L["Baron Charr"], info = BZ["Un'goro Crater"], icon="Spell_Fire_Elemental_Totem" },
+		{ name = L["Baron Charr"], info = BZ["Un'Goro Crater"], icon="Spell_Fire_Elemental_Totem" },
 		{ id = 83550, dropRate = 100 }, -- Primordial Flame
 		{ id = 18671, dropRate = 21 }, -- Baron Charr's Sceptre
 		{ id = 80850, dropRate = 15 }, -- Circlet of the Living Volcano
@@ -140,7 +144,7 @@ local WorldEvents = {
 		{ id = 19024 }, -- Arena Grand Master
 	},
 	FishingExtravaganza = {
-		{ name = L["First Prize"], container = L["Master Angler"] },
+		{ name = L["First Prize"], info = L["Master Angler"] },
 		{ id = 19970 }, -- Arcanite Fishing Pole
 		{ id = 19979 }, -- Hook of the Master Angler
 		{},
@@ -172,6 +176,11 @@ local WorldEvents = {
 		{ id = 22218 }, -- Handful of Rose Petals
 		{ id = 21813 }, -- Bag of Candies
 		{},
+		{},
+		{},
+		{},
+		{},
+		{},
 		{ name = L["Box of Chocolates"], icon="INV_Box_02" },
 		{ id = 22237 }, -- Dark Desire
 		{ id = 22238 }, -- Very Berry Cream
@@ -198,6 +207,9 @@ local WorldEvents = {
 		{ id = 20390 }, -- Candy Bar
 		{},
 		{ name = L["Treat Bag"], icon="INV_Misc_Bag_11" },
+		{ id = 20561 }, -- Flimsy Male Dwarf Mask
+		{ id = 20391 }, -- Flimsy Male Gnome Mask
+		{ name = L["Treat Bag"], icon="INV_Misc_Bag_11" },
 		{ id = 20410 }, -- Hallowed Wand - Bat
 		{ id = 20409 }, -- Hallowed Wand - Ghost
 		{ id = 20399 }, -- Hallowed Wand - Leper Gnome
@@ -208,8 +220,10 @@ local WorldEvents = {
 		{ id = 20414 }, -- Hallowed Wand - Wisp
 		{},
 		{ name = L["Treat Bag"], icon="INV_Misc_Bag_11" },
-		{ id = 20561 }, -- Flimsy Male Dwarf Mask
-		{ id = 20391 }, -- Flimsy Male Gnome Mask
+		{ id = 20562 }, -- Flimsy Female Dwarf Mask
+		{ id = 20392 }, -- Flimsy Female Gnome Mask
+		{ id = 20565 }, -- Flimsy Female Human Mask
+		{ id = 20563 }, -- Flimsy Female Nightelf Mask
 		{ id = 20566 }, -- Flimsy Male Human Mask
 		{ id = 20564 }, -- Flimsy Male Nightelf Mask
 		{ id = 20570 }, -- Flimsy Male Orc Mask
@@ -217,11 +231,14 @@ local WorldEvents = {
 		{ id = 20568 }, -- Flimsy Male Troll Mask
 		{ id = 20573 }, -- Flimsy Male Undead Mask
 		{},
-		{ name = L["Treat Bag"], icon="INV_Misc_Bag_11" },
-		{ id = 20562 }, -- Flimsy Female Dwarf Mask
-		{ id = 20392 }, -- Flimsy Female Gnome Mask
-		{ id = 20565 }, -- Flimsy Female Human Mask
-		{ id = 20563 }, -- Flimsy Female Nightelf Mask
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
 		{ id = 20569 }, -- Flimsy Female Orc Mask
 		{ id = 20571 }, -- Flimsy Female Tauren Mask
 		{ id = 20567 }, -- Flimsy Female Troll Mask
@@ -241,8 +258,8 @@ local WorldEvents = {
 		{ id = 21308 }, -- Jingling Bell
 		{ id = 21305 }, -- Red Helper Box
 		{ id = 21309 }, -- Snowman Kit
-		{ name = L["Festive Gift"], icon="INV_Holiday_Christmas_Present_01" },
-		{ id = 21328 }, -- Wand of Holiday Cheer
+		{},
+		{ name = L["Smokywood Pastures"], icon="INV_Holiday_Christmas_Present_01" },
 		{ name = L["Smokywood Pastures Special Gift"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 17706 }, -- Plans: Edge of Winter
 		{ id = 17725 }, -- Formula: Enchant Weapon - Winter's Might
@@ -258,7 +275,6 @@ local WorldEvents = {
 		{ id = 21235 }, -- Winter Veil Roast
 		{ id = 21241 }, -- Winter Veil Eggnog
 		{},
-		{ name = L["Smokywood Pastures"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 17201 }, -- Recipe: Egg Nog
 		{ id = 17200 }, -- Recipe: Gingerbread Cookie
 		{ id = 17344 }, -- Candy Cane
@@ -271,12 +287,14 @@ local WorldEvents = {
 		{ id = 17403 }, -- Steamwheedle Fizzy Spirits
 		{ id = 17402 }, -- Greatfather's Winter Ale
 		{ id = 17194 }, -- Holiday Spices
-		{},
 		{ id = 17303 }, -- Blue Ribboned Wrapping Paper
 		{ id = 17304 }, -- Green Ribboned Wrapping Paper
 		{ id = 17307 }, -- Purple Ribboned Wrapping Paper
-		{},
+		{ name = L["Snowball"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 51249 }, -- Snowball
+		{},
+		{ name = L["Festive Gift"], icon="INV_Holiday_Christmas_Present_01" },
+		{ id = 21328 }, -- Wand of Holiday Cheer
 	},
 	Noblegarden = {
 		{ name = L["Brightly Colored Egg"], icon="INV_Egg_03" },
@@ -299,7 +317,7 @@ local WorldEvents = {
 		{ id = 19997 }, -- Harvest Nectar
 		{ id = 19696 }, -- Harvest Bread
 	},
-	ScourgeInvasion = {
+	ScourgeInvasionF = {
 		{ id = 23123 }, -- Blessed Wizard Oil
 		{ id = 23122 }, -- Consecrated Sharpening Stone
 		{ id = 22999 }, -- Tabard of the Argent Dawn

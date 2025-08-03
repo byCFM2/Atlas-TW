@@ -258,7 +258,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         {
             name = L["Elder Morndeep"],
             postfix = L["Lunar Festival"],
-            --loot = "LunarFestival",
+            items = "LunarFestival",
         },
         {
             name = L["High Justice Grimstone"],

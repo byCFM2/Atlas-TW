@@ -36,8 +36,8 @@ AtlasTW.InstanceData.MoltenCore = {
     },
     Reputation = {
         { name = BF["Hydraxian Waterlords"], loot = "HydroxianWaterLords" },
-        { name = "2", loot = "SteamwheedleBloodRing"},-- TODO FOR TEST
-      --  { name = "3", loot = "SilvermoonRemnant"},-- TODO FOR TEST
+        { name = "2", loot = "Halloween"},-- TODO FOR TEST
+        { name = "3", loot = "AbyssalTemplars"},-- TODO FOR TEST
     },
     Keys = {
         { name = L["Aqual Quintessence"], loot = "VanillaKeys", info = L["Boss"] },
@@ -51,6 +51,7 @@ AtlasTW.InstanceData.MoltenCore = {
             name = BB["Lucifron"],
             defaults = { dropRate = 4 },
             loot = {
+             --   {id=70613}, --TEST
                 {id=16800, dropRate=20, container={47085}},
                 {id=16829, dropRate=20, container={47337,47345}},
                 {id=16837, dropRate=20, container={47127,47135}},

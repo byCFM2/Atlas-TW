@@ -66,17 +66,16 @@
     <Include file="PvP\ArathiBasin.lua"/>
     <Include file="PvP\BGAlteracValleyNorth.lua"/>
     <Include file="PvP\BGAlteracValleySouth.lua"/>
+    <Include file="PvP\Other.lua"/>
     <!--
     <Script file="PvP\Battlegrounds.lua"/>
     <Script file="PvP\Honor_Rewards.lua"/>
     -->
     <!-- Данные репутации -->
-    <Include file="Reputation\Factions.lua"/>
-    <!-- Данные комплектов -->
-    <!-- Добавить по мере создания:
-    <Script file="Sets\Tier_Sets.lua"/>
-    <Script file="Sets\Dungeon_Sets.lua"/>
-    -->
+    <Include file="Tables\Crafting.lua"/>
+    <Include file="Tables\Factions.lua"/>
+    <Include file="Tables\Events.lua"/>
+    <Include file="Tables\Sets.lua"/>
     <!-- Данные крафта -->
     <!-- Добавить по мере создания:
     <Script file="Crafting\Professions.lua"/>

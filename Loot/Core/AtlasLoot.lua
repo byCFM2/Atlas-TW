@@ -335,7 +335,7 @@ function AtlasTW.Loot.ScrollBarUpdate()
 end
 
 -- Функция обновления скроллбара для AtlasLootItemsFrame
-function AtlasTW.Loot.ScrollBarLootUpdate()
+function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 	--Check if the scroll bar exists
     if not AtlasLootScrollBar then
 		AtlasLootItemsFrame:Hide()
@@ -365,13 +365,13 @@ function AtlasTW.Loot.ScrollBarLootUpdate()
 		print("AtlasLoot_Show2ItemsFrame: function")
 		_G[dataSource]()
 	elseif type(dataSource) == "table" then
-		print("AtlasLoot_Show2ItemsFrame: table")	--print(tostring(dataSource).." dataSourceTable")
+		print("AtlasLoot_Show2ItemsFrame: table")
 		local totalItems = getn(dataSource)
 		local num_scroll_steps = 0
 
 		if totalItems > AtlasTW.LOOT_NUM_LINES then
 			local numRows = math.ceil(totalItems/ 2)
-			num_scroll_steps = numRows - 7 -- TODO check for all pages
+			num_scroll_steps = numRows - 7 -- TODO need remake
 		end
 		-- Set scroll bar range
 		FauxScrollFrame_Update(AtlasLootScrollBar, num_scroll_steps + 1, 2, 1)

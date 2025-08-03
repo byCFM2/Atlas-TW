@@ -237,7 +237,7 @@ AtlasTW.InstanceData.Maraudon = {
             prefix = "12)",
             name = L["Elder Splitrock"],
             postfix = L["Lunar Festival"],
-           -- loot = "LunarFestival", TODO
+            items = "LunarFestival",
         },
         {
             id = "MARATrash",

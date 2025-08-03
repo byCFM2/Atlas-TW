@@ -190,7 +190,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         {
             prefix = "5)",
             name = L["Elder Starsong"].." ("..L["Lunar Festival"]..")",
-          --  loot = "LunarFestival"
+            items = "LunarFestival"
         },
         {
             id = "STDreamscythe",

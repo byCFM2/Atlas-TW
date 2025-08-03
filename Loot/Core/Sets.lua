@@ -104,14 +104,14 @@ end
 
 local function CreateClassSetMenu(class, color, icon)
     local menuData = {
-        { name = color..L["Tier 0/0.5 Sets"], icon = icon, lootpage = "T0"..class, container = data["T0"..class.."C"] },
-        { name = color..L["Tier 1 Sets"], icon = icon, lootpage = "T1"..class, container = data["T1"..class.."C"] },
-        { name = color..L["Zul'Gurub Sets"], icon = icon, lootpage = "ZG"..class, container = data["ZG"..class.."C"] },
-        { name = color..L["Ruins of Ahn'Qiraj Sets"], icon = icon, lootpage = "AQ20"..class, container = data["AQ20"..class.."C"] },
-        { name = color..L["Tier 2 Sets"], icon = icon, lootpage = "T2"..class, container = data["T2"..class.."C"] },
-        { name = color..L["Temple of Ahn'Qiraj Sets"], icon = icon, lootpage = "AQ40"..class, container = data["AQ40"..class.."C"] },
-        { name = color..L["Tier 3 Sets"], icon = icon, lootpage = "T3"..class, container = data["T3"..class.."C"] },
-        { name = color..L["Tower of Karazhan Sets"], icon = icon, lootpage = "T35"..class, container = data["T35"..class.."C"] },
+        { name = color..L["Tier 0/0.5 Sets"], icon = icon, lootpage = "T0"..class },
+        { name = color..L["Tier 1 Sets"], icon = icon, lootpage = "T1"..class },
+        { name = color..L["Zul'Gurub Sets"], icon = icon, lootpage = "ZG"..class },
+        { name = color..L["Ruins of Ahn'Qiraj Sets"], icon = icon, lootpage = "AQ20"..class },
+        { name = color..L["Tier 2 Sets"], icon = icon, lootpage = "T2"..class },
+        { name = color..L["Temple of Ahn'Qiraj Sets"], icon = icon, lootpage = "AQ40"..class },
+        { name = color..L["Tier 3 Sets"], icon = icon, lootpage = "T3"..class },
+        { name = color..L["Tower of Karazhan Sets"], icon = icon, lootpage = "T35"..class },
     }
     return menuData
 end
@@ -163,28 +163,24 @@ end
 
 local pre60SetsMenuData = {
     {},
-    { name = BIS["Defias Leather"], extra = "The Deadmines", icon = "Interface\\Icons\\INV_Pants_12", lootpage = "DEADMINES", container = data.DeadminesC },
-    { name = BIS["Embrace of the Viper"], extra = "Wailing Caverns", icon = "Interface\\Icons\\INV_Shirt_16", lootpage = "WAILING", container = data.WailingC },
-    { name = BIS["Chain of the Scarlet Crusade"], extra = "Scarlet Monastery", icon = "Interface\\Icons\\INV_Gauntlets_19", lootpage = "SCARLET", container = data.ScarletC },
-    { name = BIS["Greymane Armor"], extra = "Gilneas City", icon = "Interface\\Icons\\inv_helmet_02", lootpage = "GreymaneArmor", container = data.GilneasC },
-    { name = BIS["Incendosaur Skin Armor"], extra = "Hateforge Quarry", icon = "Interface\\Icons\\INV_Shoulder_23", lootpage = "IncendosaurSkinArmor", container = data.HateforgeC },
-    { name = BIS["The Gladiator"], extra = "Blackrock Depths", icon = "Interface\\Icons\\INV_Helmet_01", lootpage = "BLACKROCKD", container = data.BlackrockdC },
-    { name = BIS["Ironweave Battlesuit"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Boots_Cloth_05", lootpage = "IRONWEAVE", container = data.IronweaveC },
-    { name = BIS["The Postmaster"], extra = "Stratholme", icon = "Interface\\Icons\\INV_Boots_02", lootpage = "STRAT", container = data.StratC },
-    { name = BIS["Necropile Raiment"], extra = "Scholomance", icon = "Interface\\Icons\\INV_Shoulder_02", lootpage = "ScholoCloth", container = data.ScholoClothC },
-    { name = BIS["Cadaverous Garb"], extra = "Scholomance", icon = "Interface\\Icons\\INV_Belt_16", lootpage = "ScholoLeather", container = data.ScholoLeatherC },
-    { name = BIS["Bloodmail Regalia"], extra = "Scholomance", icon = "Interface\\Icons\\INV_Gauntlets_26", lootpage = "ScholoMail", container = data.ScholoMailC },
-    { name = BIS["Deathbone Guardian"], extra = "Scholomance", icon = "Interface\\Icons\\INV_Belt_12", lootpage = "ScholoPlate", container = data.ScholoPlateC },
-    { name = L["Scourge Invasion"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Jewelry_Talisman_13", lootpage = "ScourgeInvasion", container = data.ScourgeInvasionC },
+    { name = BIS["Defias Leather"], extra = "The Deadmines", icon = "Interface\\Icons\\INV_Pants_12", lootpage = "Deadmines" },
+    { name = BIS["Embrace of the Viper"], extra = "Wailing Caverns", icon = "Interface\\Icons\\INV_Shirt_16", lootpage = "Wailing" },
+    { name = BIS["Chain of the Scarlet Crusade"], extra = "Scarlet Monastery", icon = "Interface\\Icons\\INV_Gauntlets_19", lootpage = "Scarlet" },
+    { name = BIS["Greymane Armor"], extra = "Gilneas City", icon = "Interface\\Icons\\inv_helmet_02", lootpage = "GreymaneArmor" },
+    { name = BIS["Incendosaur Skin Armor"], extra = "Hateforge Quarry", icon = "Interface\\Icons\\INV_Shoulder_23", lootpage = "IncendosaurSkinArmor" },
+    { name = BIS["The Gladiator"], extra = "Blackrock Depths", icon = "Interface\\Icons\\INV_Helmet_01", lootpage = "TheGladiator" },
+    { name = BIS["Ironweave Battlesuit"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Boots_Cloth_05", lootpage = "Ironweave" },
+    { name = BIS["The Postmaster"], extra = "Stratholme", icon = "Interface\\Icons\\INV_Boots_02", lootpage = "Strat" },
+    { name = BIS["Necropile Raiment"], extra = "Scholomance", icon = "Interface\\Icons\\INV_Shoulder_02", lootpage = "Scholo" },
+    { name = L["Scourge Invasion"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Jewelry_Talisman_13", lootpage = "ScourgeInvasion" },
     {},
-    {},
-    { name = BIS["Spider's Kiss"], extra = "Lower Blackrock Spire", icon = "Interface\\Icons\\INV_Weapon_ShortBlade_16", lootpage = "SpiderKiss", container = data.SpiderKissC },
-    { name = BIS["Dal'Rend's Arms"], extra = "Upper Blackrock Spire", icon = "Interface\\Icons\\INV_Sword_43", lootpage = "DalRend", container = data.DalRendC },
-    { name = L["Zul'Gurub Rings"], extra = "Zul'Gurub", icon = "Interface\\Icons\\INV_Bijou_Orange", lootpage = "ZGRings", container = data.ZGRingsC },
-    { name = BIS["Primal Blessing"], extra = "Zul'Gurub", icon = "Interface\\Icons\\INV_Weapon_Hand_01", lootpage = "PrimalBlessing", container = data.PrimalBlessingC },
-    { name = BIS["The Twin Blades of Hakkari"], extra = "Zul'Gurub", icon = "Interface\\Icons\\INV_Sword_55", lootpage = "HakkariBlades", container = data.HakkariBladesC },
-    { name = BIS["Shard of the Gods"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_MonsterScales_15", lootpage = "ShardOfGods", container = data.ShardOfGodsC },
-    { name = BIS["Spirit of Eskhandar"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_MonsterClaw_04", lootpage = "SpiritofEskhandar", container = data.SpiritofEskhandarC },
+    { name = BIS["Spider's Kiss"], extra = "Lower Blackrock Spire", icon = "Interface\\Icons\\INV_Weapon_ShortBlade_16", lootpage = "SpiderKiss" },
+    { name = BIS["Dal'Rend's Arms"], extra = "Upper Blackrock Spire", icon = "Interface\\Icons\\INV_Sword_43", lootpage = "DalRend" },
+    { name = L["Zul'Gurub Rings"], extra = "Zul'Gurub", icon = "Interface\\Icons\\INV_Bijou_Orange", lootpage = "ZGRings" },
+    { name = BIS["Primal Blessing"], extra = "Zul'Gurub", icon = "Interface\\Icons\\INV_Weapon_Hand_01", lootpage = "PrimalBlessing" },
+    { name = BIS["The Twin Blades of Hakkari"], extra = "Zul'Gurub", icon = "Interface\\Icons\\INV_Sword_55", lootpage = "HakkariBlades" },
+    { name = BIS["Shard of the Gods"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_MonsterScales_15", lootpage = "ShardOfGods" },
+    { name = BIS["Spirit of Eskhandar"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_MonsterClaw_04", lootpage = "SpiritofEskhandar" },
 }
 
 function AtlasLootPRE60SetMenu()
@@ -237,9 +233,9 @@ end
 
 function AtlasLootZGSetMenu()
     local menuData = CreateDungeonSetMenu("ZG")
-    menuData[23] = { name = L["Zul'Gurub Rings"], icon = "Interface\\Icons\\INV_Jewelry_Ring_46", lootpage = "ZGRings", container = data.ZGRingsC }
-    menuData[24] = { name = L["Primal Blessing"], icon = "Interface\\Icons\\INV_Weapon_Hand_01", lootpage = "PrimalBlessing", container = data.PrimalBlessingC }
-    menuData[25] = { name = L["The Twin Blades of Hakkari"], icon = "Interface\\Icons\\INV_Sword_55", lootpage = "HakkariBlades", container = data.HakkariBladesC }
+    menuData[23] = { name = L["Zul'Gurub Rings"], icon = "Interface\\Icons\\INV_Jewelry_Ring_46", lootpage = "ZGRings" }
+    menuData[24] = { name = L["Primal Blessing"], icon = "Interface\\Icons\\INV_Weapon_Hand_01", lootpage = "PrimalBlessing" }
+    menuData[25] = { name = L["The Twin Blades of Hakkari"], icon = "Interface\\Icons\\INV_Sword_55", lootpage = "HakkariBlades" }
     CreateMenu(L["Zul'Gurub Sets"], menuData, "Collections", L["Collections"])
 end
 

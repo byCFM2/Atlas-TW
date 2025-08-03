@@ -43,7 +43,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             name=L["Elder Stonefort"],
             postfix = L["Lunar Festival"],
-            --loot = "LunarFestival",    TODO need support string in loot
+            items = "LunarFestival",
         },
         {
             id = "LBRSPike",
