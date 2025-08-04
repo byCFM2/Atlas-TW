@@ -2,7 +2,8 @@
 local _G = getfenv()
 local BZ = AceLibrary("Babble-Zone-2.2a")
 
-function AtlasLoot_GetDataSource(dataID)
+function AtlasLoot_GetDataSource(dataID, name)
+   -- print("AtlasLoot_GetDataSource"..dataID..name)
 	for k, v in pairs(AtlasLoot_Data) do
 		if v[dataID] then
 			return k
@@ -48,7 +49,7 @@ function AtlasLoot_PrepMenu(backPage, title, menu)
 end
 
 function AtlasLoot_ShowMenu(menuData, options)
-    print("Show Menu")
+    print("Show Menu:"..menuData[4].name)
 
     options = options or {}
     local maxItems = options.maxItems or 30
@@ -78,6 +79,7 @@ function AtlasLoot_ShowMenu(menuData, options)
             _G["AtlasLootMenuItem_"..i.."_Name"]:SetText(nameText)
             _G["AtlasLootMenuItem_"..i.."_Extra"]:SetText(extraText)
             _G["AtlasLootMenuItem_"..i.."_Icon"]:SetTexture(itemData.icon or defaultIcon)
+            menuItem.name = itemData.name_orig or itemData.name
             menuItem.lootpage = itemData.lootpage
             menuItem.container = itemData.container
             if itemData.container then
@@ -89,10 +91,10 @@ function AtlasLoot_ShowMenu(menuData, options)
         else
             menuItem:Hide()
         end
-        -- Сохраняем таблицу для дальнейшего использования
-        if menuItem.lootpage then
-            menuItem.dataSource = AtlasLoot_GetDataSource(menuItem.lootpage)
-        end
+--[[         -- Сохраняем таблицу для дальнейшего использования
+        if itemData.lootpage and itemData.name then
+            menuItem.lootpage = AtlasLoot_GetDataSource(itemData.lootpage,itemData.name)
+        end ]]
         -- Скрываем кнопки предметов и контейнеров
         itemButton:Hide()
         AtlasLootItemsFrameContainer:Hide()

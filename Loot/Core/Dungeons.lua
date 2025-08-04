@@ -15,17 +15,17 @@ local function getFormString(instanceType, mainString)
 end
 
 -- Function to generate menu data from AtlasMaps
-local function GenerateMenuDataFromAtlasMaps()
+local function GenerateMenuDataFromInstanceData()
     local menu1Data = {}
     local menu2Data = {}
 
-    -- Mapping from AtlasMaps keys to lootpage names
+--[[     -- Mapping from AtlasMaps keys to lootpage names
     local lootpageMapping = {
         ["RagefireChasm"] = "RFCTaragaman",
         ["WailingCaverns"] = "WCLordCobrahn",
         ["TheDeadmines"] = "DMRhahkZor",
         ["ShadowfangKeep"] = "SFKRethilgore",
-        ["BlackfathomDeeps"] = "BFDGhamoora",
+        ["BlackfathomDeeps"] = 0,
         ["TheStockade"] = "SWStTargorr",
         ["Gnomeregan"] = "GnGrubbis",
         ["RazorfenKraul"] = "RFKAggem",
@@ -65,10 +65,19 @@ local function GenerateMenuDataFromAtlasMaps()
         ["DireMaulEast"] = "DMEPusillin",
         ["CavernsOfTimeBlackMorass"] = "COTBMChronar",
         ["StormwindVault"] = "SWVAszoshGrimflame",
-    }
+    } ]]
     -- Skip these instances as they have special handling
     local skipInstances = {
-        ["RareMobs"] = true  -- Rare mobs should be in World menu
+        ["Azuregos"] = true,
+        ["Clackora"] = true,
+        ["Concavius"] = true,
+        ["CowKing"] = true,
+        ["FourDragons"] = true,
+        ["LordKazzak"] = true,
+        ["Nerubian"] = true,
+        ["Ostarius"] = true,
+        ["Reaver"] = true,
+        ["RareMobs"] = true,  -- Rare mobs should be in World menu
     }
 
     -- Iterate through AtlasMaps
@@ -83,7 +92,7 @@ local function GenerateMenuDataFromAtlasMaps()
                 local maxPlayers = instanceData.MaxPlayers
 
                 -- Get lootpage name
-                local lootpage = lootpageMapping[instanceKey] or instanceKey
+                local lootpage = instanceData.Bosses[1].name or instanceKey
 
                 -- Determine instance type and target menu
                 local instanceType
@@ -94,7 +103,7 @@ local function GenerateMenuDataFromAtlasMaps()
                     targetMenu = menu2Data
                 elseif counter > 29 then
                     if type(level) == "table" then
-                       instanceType = "[" .. level[1]..level[2] .. "]"
+                       instanceType = "[" .. level[1].."-"..level[2] .. "]"
                     else
                         instanceType = "[".. level.. "]"
                     end
@@ -102,7 +111,7 @@ local function GenerateMenuDataFromAtlasMaps()
                 else
                     counter = counter + 1
                     if type(level) == "table" then
-                       instanceType = "[" .. level[1]..level[2] .. "]"
+                       instanceType = "[" .. level[1].."-"..level[2] .. "]"
                     else
                         instanceType = "[".. level.. "]"
                     end
@@ -112,6 +121,7 @@ local function GenerateMenuDataFromAtlasMaps()
                 -- Create menu entry
                 local menuEntry = {
                     name = getFormString(instanceType, name),
+                    name_orig = name,
                     Extra = location,
                     lootpage = lootpage,
                     playerLimit = tonumber(maxPlayers) or 5
@@ -192,7 +202,7 @@ local function GenerateMenuDataFromAtlasMaps()
 end
 
 -- Generate menu data from AtlasMaps
-local generatedMenu1Data, generatedMenu2Data = GenerateMenuDataFromAtlasMaps()
+local generatedMenu1Data, generatedMenu2Data = GenerateMenuDataFromInstanceData()
 
 -- Data for Dungeons & Raids (Page 1) - Auto-generated from AtlasMaps
 AtlasTW.Loot.DungeonsMenu1Data = generatedMenu1Data
