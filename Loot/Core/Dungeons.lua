@@ -77,7 +77,7 @@ local function GenerateMenuDataFromInstanceData()
         ["Nerubian"] = true,
         ["Ostarius"] = true,
         ["Reaver"] = true,
-        ["RareMobs"] = true,  -- Rare mobs should be in World menu
+        ["RareMobs"] = true,  -- should be in World menu
     }
 
     -- Iterate through AtlasMaps

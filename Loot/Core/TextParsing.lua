@@ -1,4 +1,5 @@
---[[ local L = AtlasTW.Local
+--Delete later, coz dont need afer rework all DB
+local L = AtlasTW.Local
 local BC = AceLibrary("Babble-Class-2.2")
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BS = AceLibrary("Babble-Spell-2.2a")
@@ -693,4 +694,4 @@ function AtlasLoot_FixText(text)
     end)
 
     return text
-end ]]
+end

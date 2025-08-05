@@ -306,8 +306,8 @@ AtlasLoot_TableRegistry = {
             { ID = "Herbalism1", Title = BS["Herbalism"].." 1 - 250" },
             { ID = "Herbalism2", Title = BS["Herbalism"].." 260+" },
             { ID = "FirstAid1", Title = BS["First Aid"] },
-            { ID = "Poisons1", Title = BS["Poisons"] },
-            { ID = "CraftedWeapons1", Title = L["Crafted Epic Weapons"] },
+            { ID = "Poisons", Title = BS["Poisons"] },
+            { ID = "CraftedWeapons", Title = L["Crafted Epic Weapons"] },
         }
     },
     ["Alchemy"] = {
@@ -549,7 +549,7 @@ AtlasLoot_TableRegistry = {
             { ID = "BloodsoulEmbrace", Title = BIS["Bloodsoul Embrace"] },
             { ID = "HateforgeArmor", Title = BIS["Hateforge Armor"] },
             { ID = "TowerforgeBattlegear", Title = BIS["Towerforge Battlegear"] },
-            { ID = "SteelPlate", Title = BIS["Steel Plate"] },
+            { ID = "SteelPlate", Title = BIS["Steel Plate Armor"] },
             { ID = "ImperialPlate", Title = BIS["Imperial Plate"] },
             { ID = "RuneEtchedArmor", Title = BIS["Rune-Etched Armor"] },
             { ID = "TheDarksoul", Title = BIS["The Darksoul"] },

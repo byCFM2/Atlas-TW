@@ -25,12 +25,15 @@ local BabbleItemSet = AceLibrary("AceLocale-2.2"):new(MAJOR_VERSION)
 
 BabbleItemSet:RegisterTranslations("enUS", function()
 	return {
+		--1.18
+		["Dragonmaw Battlegarb"] = true,
+		--1.17
 		["Incendosaur Skin Armor"] = true,
 		["Greymane Armor"] = true,
 	-- Blacksmithing Crafted Sets
 		["Hateforge Armor"] = true,
 		["Towerforge Battlegear"] = true,
-		["Steel Plate"] = true,
+		["Steel Plate Armor"] = true,
 		["Rune-Etched Armor"] = true,
 		["Dreamsteel Armor"] = true,
 		["Bloodsoul Embrace"] = true,

@@ -1,340 +1,44 @@
-AtlasLoot_Data = {
-	CraftedWeapons1 = {
-		{ 0, "", "", "" },
-		{ 0, "Trade_BlackSmithing", "=q6=#p2#", "" },
-		{ 0, "", "", "" },
-		{ 22384, "INV_Hammer_08", "=q4=Persuader", "=ds=#h3#, #w6#" },
-		{ 22383, "INV_Sword_51", "=q4=Sageblade", "=ds=#h3#, #w10#" },
-		{ 19166, "INV_Weapon_ShortBlade_12", "=q4=Black Amnesty", "=ds=#h1#, #w4#" },
-		{ 19170, "INV_Hammer_19", "=q4=Ebon Hand", "=ds=#h1#, #w6#" },
-		{ 19168, "INV_Sword_39", "=q4=Blackguard", "=ds=#h1#, #w10#" },
-		{ 19169, "INV_Axe_12", "=q4=Nightfall", "=ds=#h2#, #w1#" },
-		{ 17193, "INV_Hammer_Unique_Sulfuras", "=q4=Sulfuron Hammer", "=ds=#h2#, #w6#" },
-		{ 19167, "INV_Spear_08", "=q4=Blackfury", "=ds=#w7#" },
-		{ 22198, "INV_Shield_22", "=q4=Jagged Obsidian Shield", "=ds=#w8#" },
-		{ 60010, "inv_hammer_19", "=q4=Towerforge Demolisher", "=ds=#h2#, #w6#" },
-		{ 61185, "INV_Mace_14", "=q4=Dawnstone Hammer", "=ds=#h2#, #w6#" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ 0, "Trade_Engineering", "=q6=#p5#", "" },
-		{ 0, "", "", "" },
-		{ 18282, "INV_Weapon_Rifle_05", "=q4=Core Marksman Rifle", "=ds=#w5#" },
-		{ 18168, "Spell_Arcane_PortalDarnassus", "=q4=Force Reactive Disk", "=ds=#w8#" },
-	},
-	SteelPlate = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftbp3#", "" },
-		{ 0, "", "", "" },
-		{ 83415, "INV_Helmet_25", "=q3=Steel Plate Barbute", "=ds=#s1#, #a4#" },
-		{ 83414, "INV_Shoulder_16", "=q2=Steel Plate Pauldrons", "=ds=#s3#, #a4#" },
-		{ 83413, "inv_chest_chain_10", "=q3=Steel Plate Armor", "=ds=#s5#, #a4#" },
-		{ 83411, "inv_gauntlets_31", "=q2=Steel Plate Gauntlets", "=ds=#s9#, #a4#" },
-		{ 83412, "inv_pants_04", "=q2=Steel Plate Legguards", "=ds=#s11#, #a4#" },
-		{ 83410, "inv_boots_plate_01", "=q2=Steel Plate Boots", "=ds=#s12#, #a4#" },
-	},
+local L = AtlasTW.Local
+local BC = AceLibrary("Babble-Class-2.2")
+local BZ = AceLibrary("Babble-Zone-2.2a")
+local BS = AceLibrary("Babble-Spell-2.2a")
+local BB = AceLibrary("Babble-Boss-2.2a")
+local BF = AceLibrary("Babble-Faction-2.2a")
+local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
-	ImperialPlate = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftbp1#", "" },
-		{ 0, "", "", "" },
-		{ 12427, "INV_Helmet_22", "=q2=Imperial Plate Helm", "=ds=#s1#, #a4#" },
-		{ 12428, "INV_Shoulder_02", "=q2=Imperial Plate Shoulders", "=ds=#s3#, #a4#" },
-		{ 12422, "INV_Chest_Plate10", "=q2=Imperial Plate Chest", "=ds=#s5#, #a4#" },
-		{ 12425, "INV_Bracer_19", "=q2=Imperial Plate Bracers", "=ds=#s8#, #a4#" },
-		{ 12424, "INV_Belt_01", "=q2=Imperial Plate Belt", "=ds=#s10#, #a4#" },
-		{ 12429, "INV_Pants_04", "=q2=Imperial Plate Leggings", "=ds=#s11#, #a4#" },
-		{ 12426, "INV_Boots_Plate_01", "=q2=Imperial Plate Boots", "=ds=#s12#, #a4#" },
-	},
+local craftingTable = {
+	Poisons = {
+		--{ 0, "Trade_BrewPoison", "=q6=#rp1#", "" }, rp1 = BS["Poisons"] in TextParsing.lua
+--[[ 		{ "s8681", "ability_poisons", "=q1=Instant Poison", "=ds=#lr#=q1= 20 =ds=#sr# =so1=1 =so2=125 =so3=150 =so4=175" },
+		{ "s3420", "ability_poisonsting", "=q1=Crippling Poison", "=ds=#lr#=q1= 20 =ds=#sr# =so1=1 =so2=125 =so3=150 =so4=175" },
+		{ "s5763", "spell_nature_nullifydisease", "=q1=Mind-numbing Poison", "=ds=#lr#=q1= 24 =ds=#sr# =so1=1 =so2=150 =so3=175 =so4=200" },
+		{ "s8687", "ability_poisons", "=q1=Instant Poison II", "=ds=#lr#=q1= 28 =ds=#sr# =so1=120 =so2=165 =so3=190 =so4=215" },
+		{ "s2835", "ability_rogue_dualweild", "=q1=Deadly Poison", "=ds=#lr#=q1= 30 =ds=#sr# =so1=130 =so2=175 =so3=200 =so4=225" },
+		{ "s13220", "ability_poisonsting", "=q1=Wound Poison", "=ds=#lr#=q1= 32 =ds=#sr# =so1=1 =so2=185 =so3=210 =so4=235" },
+		{ "s8691", "ability_poisons", "=q1=Instant Poison III", "=ds=#lr#=q1= 36 =ds=#sr# =so1=160 =so2=205 =so3=230 =so4=255" },
+		{ "s8694", "spell_nature_nullifydisease", "=q1=Mind-numbing Poison II", "=ds=#lr#=q1= 38 =ds=#sr# =so1=1 =so2=215 =so3=240 =so4=265" },
+		{ "s2837", "ability_rogue_dualweild", "=q1=Deadly Poison II", "=ds=#lr#=q1= 38 =ds=#sr# =so1=170 =so2=215 =so3=240 =so4=265" },
+		{ "s13228", "ability_poisonsting", "=q1=Wound Poison II", "=ds=#lr#=q1= 40 =ds=#sr# =so1=1 =so2=225 =so3=250 =so4=275" }, ]]
+		{ id=8681, skill={1,125,150,175}},
+		{ name = BS["Poisons"], icon = "Trade_BrewPoison" },
 
-	RuneEtchedArmor = {
+{ 0, "", "", "" },
+		{ 0, "Trade_BrewPoison", "=q6=#rp2#", "" },
+		{ "s6510", "inv_misc_ammo_gunpowder_01", "=q1=Blinding Powder", "=ds=#lr#=q1= 34 =ds=#sr# =so1=1 =so2=170 =so3=195 =so4=220" },
 		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftbp5#", "" },
 		{ 0, "", "", "" },
-		{ 60287, "INV_Gauntlets_09", "=q3=Rune-Etched Grips", "=ds=#s9#, #a4#" },
-		{ 60288, "inv_boots_plate_05", "=q3=Rune-Etched Greaves", "=ds=#s12#, #a4#" },
-		{ 60289, "inv_pants_04", "=q3=Rune-Etched Legplates", "=ds=#s11#, #a4#" },
-		{ 60290, "inv_chest_plate08", "=q3=Rune-Etched Breastplate", "=ds=#s5#, #a4#" },
-		{ 60291, "inv_helmet_06", "=q3=Rune-Etched Crown", "=ds=#s1#, #a4#" },
-		{ 60292, "INV_Shoulder_11", "=q3=Rune-Etched Mantle", "=ds=#s3#, #a4#" },
+		{ "s11341", "ability_poisons", "=q1=Instant Poison IV", "=ds=#lr#=q1= 44 =ds=#sr# =so1=200 =so2=245 =so3=270 =so4=295" },
+		{ "s11357", "ability_rogue_dualweild", "=q1=Deadly Poison III", "=ds=#lr#=q1= 46 =ds=#sr# =so1=210 =so2=255 =so3=280 =so4=305" },
+		{ "s13229", "ability_poisonsting", "=q1=Wound Poison III", "=ds=#lr#=q1= 48 =ds=#sr# =so1=1 =so2=265 =so3=290 =so4=315" },
+		{ "s3421", "inv_potion_19", "=q1=Crippling Poison II", "=ds=#lr#=q1= 50 =ds=#sr# =so1=230 =so2=275 =so3=300 =so4=325" },
+		{ "s11400", "spell_nature_nullifydisease", "=q1=Mind-numbing Poison III", "=ds=#lr#=q1= 52 =ds=#sr# =so1=1 =so2=285 =so3=310 =so4=335" },
+		{ "s11342", "ability_poisons", "=q1=Instant Poison V", "=ds=#lr#=q1= 52 =ds=#sr# =so1=240 =so2=285 =so3=340 =so4=335" },
+		{ "s11358", "ability_rogue_dualweild", "=q1=Deadly Poison IV", "=ds=#lr#=q1= 54 =ds=#sr# =so1=250 =so2=295 =so3=320 =so4=345" },
+		{ "s13230", "ability_poisonsting", "=q1=Wound Poison IV", "=ds=#lr#=q1= 56 =ds=#sr# =so1=280 =so2=305 =so3=330 =so4=355" },
+		{ "s25347", "ability_rogue_dualweild", "=q1=Deadly Poison V", "=ds=#lr#=q1= 60 =ds=#sr# =so1=280 =so2=300 =so3=325 =so4=350" },
+		{ "s11343", "ability_poisons", "=q1=Instant Poison VI", "=ds=#lr#=q1= 60 =ds=#sr# =so1=280 =so2=325 =so3=350 =so4=375" },
+		{ "s65032", "spell_nature_nullifypoison", "=q1=Agitating Poison I", "=ds=#lr#=q1= 60 =ds=#sr# =so1=280 =so2=325 =so3=350 =so4=375" },
 	},
-
-	TheDarksoul = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftbp2#", "" },
-		{ 0, "", "", "" },
-		{ 19695, "INV_Shoulder_01", "=q3=Darksoul Shoulders", "=ds=#s3#, #a4#" },
-		{ 19693, "INV_Chest_Plate08", "=q3=Darksoul Breastplate", "=ds=#s5#, #a4#" },
-		{ 19694, "INV_Pants_Plate_21", "=q3=Darksoul Leggings", "=ds=#s11#, #a4#" },
-	},
-
-	DreamsteelArmor = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftbp4#", "" },
-		{ 0, "", "", "" },
-		{ 61364, "inv_shoulder_13", "=q4=Dreamsteel Mantle", "=ds=#s3#, #a4#" },
-		{ 61365, "INV_Pants_03", "=q4=Dreamsteel Leggings", "=ds=#s11#, #a4#" },
-		{ 61366, "INV_Bracer_03", "=q4=Dreamsteel Bracers", "=ds=#s8#, #a4#" },
-		{ 61367, "INV_Boots_01", "=q4=Dreamsteel Boots", "=ds=#s12#, #a4#" },
-	},
-
-	BloodsoulEmbrace = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftbm1#", "" },
-		{ 0, "", "", "" },
-		{ 19691, "INV_Shoulder_15", "=q3=Bloodsoul Shoulders", "=ds=#s3#, #a3#" },
-		{ 19690, "INV_Chest_Chain_14", "=q3=Bloodsoul Breastplate", "=ds=#s5#, #a3#" },
-		{ 19692, "INV_Gauntlets_31", "=q3=Bloodsoul Gauntlets", "=ds=#s9#, #a3#" },
-	},
-
-	HateforgeArmor = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftbm3#", "" },
-		{ 0, "", "", "" },
-		{ 60573, "INV_Helmet_10", "=q3=Hateforge Helmet", "=ds=#s1#, #a3#" },
-		{ 60574, "INV_Chest_Chain_09", "=q3=Hateforge Cuirass", "=ds=#s5#, #a3#" },
-		{ 60575, "INV_Pants_03", "=q3=Hateforge Leggings", "=ds=#s11#, #a3#" },
-		{ 60576, "INV_Belt_04", "=q3=Hateforge Belt", "=ds=#s10#, #a3#" },
-		{ 60577, "INV_Gauntlets_04", "=q4=Hateforge Grips", "=ds=#s9#, #a3#" },
-		{ 60578, "INV_Boots_01", "=q3=Hateforge Boots", "=ds=#s12#, #a3#" },
-	},
-
-	TowerforgeBattlegear = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftbm2#", "" },
-		{ 0, "", "", "" },
-		{ 60007, "INV_Helmet_37", "=q4=Towerforge Crown", "=ds=#s1#, #a3#" },
-		{ 60008, "INV_Chest_Chain_09", "=q4=Towerforge Breastplate", "=ds=#s5#, #a3#" },
-		{ 60009, "INV_Shoulder_26", "=q4=Towerforge Pauldrons", "=ds=#s3#, #a3#" },
-		{ 60010, "inv_hammer_19", "=q4=Towerforge Demolisher", "=ds=#h2#, #w6#" },
-	},
-
-	AugerersAttire = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftt1#", "" },
-		{ 0, "", "", "" },
-		{ 83288, "INV_Boots_05", "=q2=Augerer's Boots", "=ds=#s12#, #a1#" },
-		{ 83289, "INV_Gauntlets_06", "=q2=Augerer's Gloves", "=ds=#s9#, #a1#" },
-		{ 83290, "INV_Shoulder_02", "=q2=Augerer's Mantle", "=ds=#s3#, #a1#" },
-		{ 83291, "INV_Pants_08", "=q2=Augerer's Trousers", "=ds=#s11#, #a1#" },
-		{ 83286, "INV_Helmet_11", "=q2=Augerer's Hat", "=ds=#s1#, #a1#" },
-		{ 83287, "inv_chest_cloth_22", "=q2=Augerer's Robe", "=ds=#s5#, #a1#" },
-	},
-
-	ShadoweaveSet = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftt2#", "" },
-		{ 0, "", "", "" },
-		{ 10002, "inv_pants_11", "=q2=Shadoweave Pants", "=ds=#s11#, #a1#" },
-		{ 10004, "inv_chest_cloth_38", "=q2=Shadoweave Robe", "=ds=#s5#, #a1#" },
-		{ 10023, "inv_gauntlets_09", "=q2=Shadoweave Gloves", "=ds=#s9#, #a1#" },
-		{ 10028, "inv_shoulder_25", "=q2=Shadoweave Shoulders", "=ds=#s3#, #a1#" },
-		{ 10031, "inv_boots_05", "=q2=Shadoweave Boots", "=ds=#s12#, #a1#" },
-		{ 10025, "inv_helmet_27", "=q2=Shadoweave Mask", "=ds=#s1#, #a1#" },
-	},
-
-	DivinersGarments = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftt3#", "" },
-		{ 0, "", "", "" },
-		{ 83283, "inv_boots_09", "=q2=Diviner's Boots", "=ds=#s12#, #a1#" },
-		{ 83284, "inv_gauntlets_23", "=q2=Diviner's Mitts", "=ds=#s9#, #a1#" },
-		{ 83285, "inv_shoulder_02", "=q2=Diviner's Epaulets", "=ds=#s3#, #a1#" },
-		{ 83280, "inv_pants_07", "=q2=Diviner's Pantaloons", "=ds=#s11#, #a1#" },
-		{ 83282, "inv_helmet_33", "=q2=Diviner's Cowl", "=ds=#s1#, #a1#" },
-		{ 83281, "inv_chest_cloth_22", "=q2=Diviner's Robes", "=ds=#s5#, #a1#" },
-	},
-
-	PillagersGarb = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftt4#", "" },
-		{ 0, "", "", "" },
-		{ 83296, "inv_boots_09", "=q2=Pillager's Shoes", "=ds=#s12#, #a1#" },
-		{ 83295, "inv_gauntlets_15", "=q2=Pillager's Grips", "=ds=#s9#, #a1#" },
-		{ 83297, "inv_pants_06", "=q2=Pillager's Pantaloons", "=ds=#s11#, #a1#" },
-		{ 83293, "inv_shoulder_02", "=q2=Pillager's Amice", "=ds=#s3#, #a1#" },
-		{ 83292, "inv_helmet_28", "=q2=Pillager's Hood", "=ds=#s1#, #a1#" },
-		{ 83294, "inv_chest_cloth_22", "=q2=Pillager's Robe", "=ds=#s5#, #a1#" },
-	},
-
-	MoonclothRegalia = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftt7#", "" },
-		{ 0, "", "", "" },
-		{ 14140, "inv_misc_bandana_01", "=q3=Mooncloth Circlet", "=ds=#s1#, #a1#" },
-		{ 14139, "inv_shoulder_02", "=q3=Mooncloth Shoulders", "=ds=#s3#, #a1#" },
-		{ 14138, "inv_chest_cloth_08", "=q3=Mooncloth Vest", "=ds=#s5#, #a1#" },
-		{ 18486, "inv_chest_cloth_04", "=q3=Mooncloth Robe", "=ds=#s5#, #a1#" },
-		{ 18409, "inv_gauntlets_17", "=q3=Mooncloth Gloves", "=ds=#s9#, #a1#" },
-		{ 14137, "inv_pants_13", "=q3=Mooncloth Leggings", "=ds=#s11#, #a1#" },
-		{ 15802, "inv_boots_05", "=q3=Mooncloth Boots", "=ds=#s12#, #a1#" },
-	},
-
-	BloodvineG = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftt5#", "" },
-		{ 0, "", "", "" },
-		{ 19682, "INV_Chest_Cloth_07", "=q3=Bloodvine Vest", "=ds=#s5#, #a1#" },
-		{ 19683, "INV_Pants_Cloth_14", "=q3=Bloodvine Leggings", "=ds=#s11#, #a1#" },
-		{ 19684, "INV_Boots_Cloth_02","=q3=Bloodvine Boots", "=ds=#s12#, #a1#" },
-	},
-
-	FlarecoreRegalia = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftt8#", "" },
-		{ 0, "", "", "" },
-		{ 16979, "inv_gauntlets_26", "=q4=Flarecore Gloves", "=ds=#s9#, #a1#" },
-		{ 19165, "inv_pants_06", "=q4=Flarecore Leggings", "=ds=#s11#, #a1#" },
-		{ 16980, "inv_shoulder_23", "=q4=Flarecore Mantle", "=ds=#s3#, #a1#" },
-		{ 19156, "inv_chest_cloth_18", "=q4=Flarecore Robe", "=ds=#s5#, #a1#" },
-		{ 18263, "inv_bracer_09", "=q4=Flarecore Wraps", "=ds=#s8#, #a1#" },
-		{ 65035, "inv_boots_05", "=q4=Flarecore Boots", "=ds=#s12#, #a1#" },
-	},
-
-	DreamthreadRegalia = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftt6#", "" },
-		{ 0, "", "", "" },
-		{ 61360, "INV_Shoulder_05", "=q4=Dreamthread Mantle", "=ds=#s3#, #a1#" },
-		{ 61361, "inv_pants_14", "=q4=Dreamthread Kilt", "=ds=#s11#, #a1#" },
-		{ 61362, "INV_Bracer_06","=q4=Dreamthread Bracers", "=ds=#s8#, #a1#" },
-		{ 61363, "inv_gauntlets_23","=q4=Dreamthread Gloves", "=ds=#s9#, #a1#" },
-	},
-
-	GriftersArmor = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwl7#", "" },
-		{ 0, "", "", "" },
-		{ 83405, "INV_Boots_05", "=q2=Grifter's Boots", "=ds=#s12#, #a2#" }, --200
-		{ 83404, "Inv_Gauntlets_15", "=q2=Grifter's Gauntlets", "=ds=#s9#, #a2#" }, --200
-		{ 83403, "INV_Belt_04", "=q2=Grifter's Belt", "=ds=#s10#, #a2#" }, --200
-		{ 83402, "INV_Pants_12", "=q2=Grifter's Leggings", "=ds=#s11#, #a2#" }, --205
-		{ 83401, "INV_Chest_Leather_08", "=q2=Grifter's Tunic", "=ds=#s5#, #a2#" }, --210
-		{ 83400, "INV_Helmet_33", "=q2=Grifter's Cover", "=ds=#s1#, #a2#" }, --210
-	},
-
-	PrimalistsTrappings = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwl8#", "" },
-		{ 0, "", "", "" },
-		{ 81065, "Inv_Boots_Plate_05", "=q2=Primalist's Boots", "=ds=#s12#, #a2#" }, --275
-		{ 81061, "Inv_Gauntlets_09", "=q2=Primalist's Gloves", "=ds=#s9#, #a2#" }, --275
-		{ 81063, "INV_Helmet_04", "=q2=Primalist's Headdress", "=ds=#s1#, #a2#" }, --275
-		{ 81064, "INV_Pants_04", "=q2=Primalist's Pants", "=ds=#s11#, #a2#" }, --280
-		{ 81062, "INV_Shoulder_09", "=q2=Primalist's Shoulders", "=ds=#s3#, #a2#" }, --280
-		{ 81066, "Inv_Chest_Plate08", "=q3=Primalist's Vest", "=ds=#s5#, #a2#" }, --285
-	},
-
-	VolcanicArmor = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwl1#", "=q1=#j3#" },
-		{ 0, "", "", "" },
-		{ 15055, "INV_Shoulder_13", "=q2=Volcanic Shoulders", "=ds=#s3#, #a2#" },
-		{ 15053, "INV_Chest_Leather_07", "=q2=Volcanic Breastplate", "=ds=#s5#, #a2#" },
-		{ 15054, "INV_Pants_06", "=q2=Volcanic Leggings", "=ds=#s11#, #a2#" },
-	},
-
-	IronfeatherArmor = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwl2#", "" },
-		{ 0, "", "", "" },
-		{ 15067, "INV_Shoulder_06", "=q3=Ironfeather Shoulders", "=ds=#s3#, #a2#" },
-		{ 15066, "INV_Chest_Leather_06", "=q3=Ironfeather Breastplate", "=ds=#s5#, #a2#" },
-	},
-
-	StormshroudArmor = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwl3#", "" },
-		{ 0, "", "", "" },
-		{ 15058, "INV_Shoulder_05", "=q3=Stormshroud Shoulders", "=ds=#s3#, #a2#" },
-		{ 15056, "INV_Chest_Leather_08", "=q3=Stormshroud Armor", "=ds=#s5#, #a2#" },
-		{ 21278, "INV_Gauntlets_05", "=q3=Stormshroud Gloves", "=ds=#s9#, #a2#" },
-		{ 15057, "INV_Pants_09", "=q3=Stormshroud Pants", "=ds=#s11#, #a2#" },
-	},
-
-	DevilsaurArmor = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwl4#", "" },
-		{ 0, "", "", "" },
-		{ 15063, "INV_Gauntlets_26", "=q3=Devilsaur Gauntlets", "=ds=#s9#, #a2#" },
-		{ 15062, "INV_Pants_Wolf", "=q3=Devilsaur Leggings", "=ds=#s11#, #a2#" },
-	},
-
-	BloodTigerH = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwl5#", "" },
-		{ 0, "", "", "" },
-		{ 19689, "INV_Shoulder_23", "=q3=Blood Tiger Shoulders", "=ds=#s3#, #a2#" },
-		{ 19688, "INV_Chest_Leather_07", "=q3=Blood Tiger Breastplate", "=ds=#s5#, #a2#" },
-	},
-
-	PrimalBatskin = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwl6#", "" },
-		{ 0, "", "", "" },
-		{ 19685, "INV_Chest_Leather_03", "=q3=Primal Batskin Jerkin", "=ds=#s5#, #a2#" },
-		{ 19687, "INV_Bracer_07", "=q3=Primal Batskin Bracers", "=ds=#s8#, #a2#" },
-		{ 19686, "INV_Gauntlets_31", "=q3=Primal Batskin Gloves", "=ds=#s9#, #a2#" },
-	},
-
-	DreamhideBattlegarb = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwl9#", "" },
-		{ 0, "", "", "" },
-		{ 61356, "inv_shoulder_18", "=q4=Dreamhide Mantle", "=ds=#s3#, #a2#" },
-		{ 61357, "inv_bracer_12", "=q4=Dreamhide Bracers", "=ds=#s8#, #a2#" },
-		{ 61358, "inv_pants_07", "=q4=Dreamhide Leggings", "=ds=#s11#, #a2#" },
-		{ 61359, "inv_belt_25", "=q4=Dreamhide Belt", "=ds=#s10#, #a2#" },
-	},
-
-	ConvergenceoftheElements = {
-		{ 0, "", "", "" },
-		{ 0,"INV_Box_01","=q6=#craftlw20#","" },
-		{ 0, "", "", "" },
-		{ 65024, "INV_Chest_Leather_08", "=q3=Earthguard Tunic", "=ds=#s5#, #a2#"},
-		{ 65025, "INV_Pants_06", "=q2=Flamewrath Leggings", "=ds=#s11#, #a2#" },
-		{ 65026, "INV_Helmet_13", "=q3=Depthstalker Helm", "=ds=#s1#, #a2#" },
-		{ 65027, "INV_Boots_05", "=q2=Windwalker Boots", "=ds=#s12#, #a2#" },
-	},
-
-	RedDragonM = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwm4#", "=q1=#j3#" },
-		{ 0, "", "", "" },
-		{ 65001, "inv_shoulder_23", "=q3=Red Dragonscale Shoulders", "=ds=#s3#, #a3#" },
-		{ 15047, "inv_chest_chain_06", "=q3=Red Dragonscale Breastplate", "=ds=#s5#, #a3#" },
-		{ 65000, "inv_pants_mail_09", "=q3=Red Dragonscale Leggings", "=ds=#s11#, #a3#" },
-		{ 65002, "inv_boots_chain_13", "=q3=Red Dragonscale Boots", "=ds=#s9#, #a3#" },
-	},
-
-	GreenDragonM = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwm1#", "=q1=#j5#" },
-		{ 0, "", "", "" },
-		{ 15045, "INV_Chest_Chain_06", "=q3=Green Dragonscale Breastplate", "=ds=#s5#, #a3#" },
-		{ 20296, "INV_Gauntlets_12", "=q3=Green Dragonscale Gauntlets", "=ds=#s9#, #a3#" },
-		{ 15046, "INV_Pants_05", "=q3=Green Dragonscale Leggings", "=ds=#s11#, #a3#" },
-	},
-
-	BlueDragonM = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwm2#", "=q1=#j4#" },
-		{ 0, "", "", "" },
-		{ 15049, "INV_Shoulder_18", "=q3=Blue Dragonscale Shoulders", "=ds=#s3#, #a3#" },
-		{ 15048, "INV_Chest_Chain_04", "=q3=Blue Dragonscale Breastplate", "=ds=#s5#, #a3#" },
-		{ 20295, "INV_Pants_Mail_15", "=q3=Blue Dragonscale Leggings", "=ds=#s11#, #a3#" },
-		{ 65015, "INV_Boots_Chain_06", "=q3=Blue Dragonscale Boots", "=ds=#s12#, #a3#" },
-	},
-
-	BlackDragonM = {
-		{ 0, "", "", "" },
-		{ 0, "INV_Box_01", "=q6=#craftlwm3#", "=q1=#j3#" },
-		{ 0, "", "", "" },
-		{ 15051, "INV_Shoulder_01", "=q3=Black Dragonscale Shoulders", "=ds=#s3#, #a3#" },
-		{ 15050, "INV_Chest_Plate06", "=q3=Black Dragonscale Breastplate", "=ds=#s5#, #a3#" },
-		{ 15052, "INV_Pants_03", "=q3=Black Dragonscale Leggings", "=ds=#s11#, #a3#" },
-		{ 16984, "INV_Boots_Plate_09","=q4=Black Dragonscale Boots", "=ds=#s12#, #a3#" },
-	},
-
 	AlchemyApprentice1 = {
 		{ "s2329", "inv_potion_56", "=q1=Elixir of Lion's Strength", "=ds=#sr# =so1=1 =so2=55 =so3=75 =so4=95" },
 		{ "s7183", "inv_potion_63", "=q1=Elixir of Minor Defense", "=ds=#sr# =so1=1 =so2=55 =so3=75 =so4=95" },
@@ -3652,36 +3356,6 @@ AtlasLoot_Data = {
 		{ 51717, "inv_mushroom_11", "=q1=Hardened Mushroom", "2-6", "" },
 	},
 
-	Poisons1 = {
-		{ 0, "Trade_BrewPoison", "=q6=#rp1#", "" },
-		{ "s8681", "ability_poisons", "=q1=Instant Poison", "=ds=#lr#=q1= 20 =ds=#sr# =so1=1 =so2=125 =so3=150 =so4=175" },
-		{ "s3420", "ability_poisonsting", "=q1=Crippling Poison", "=ds=#lr#=q1= 20 =ds=#sr# =so1=1 =so2=125 =so3=150 =so4=175" },
-		{ "s5763", "spell_nature_nullifydisease", "=q1=Mind-numbing Poison", "=ds=#lr#=q1= 24 =ds=#sr# =so1=1 =so2=150 =so3=175 =so4=200" },
-		{ "s8687", "ability_poisons", "=q1=Instant Poison II", "=ds=#lr#=q1= 28 =ds=#sr# =so1=120 =so2=165 =so3=190 =so4=215" },
-		{ "s2835", "ability_rogue_dualweild", "=q1=Deadly Poison", "=ds=#lr#=q1= 30 =ds=#sr# =so1=130 =so2=175 =so3=200 =so4=225" },
-		{ "s13220", "ability_poisonsting", "=q1=Wound Poison", "=ds=#lr#=q1= 32 =ds=#sr# =so1=1 =so2=185 =so3=210 =so4=235" },
-		{ "s8691", "ability_poisons", "=q1=Instant Poison III", "=ds=#lr#=q1= 36 =ds=#sr# =so1=160 =so2=205 =so3=230 =so4=255" },
-		{ "s8694", "spell_nature_nullifydisease", "=q1=Mind-numbing Poison II", "=ds=#lr#=q1= 38 =ds=#sr# =so1=1 =so2=215 =so3=240 =so4=265" },
-		{ "s2837", "ability_rogue_dualweild", "=q1=Deadly Poison II", "=ds=#lr#=q1= 38 =ds=#sr# =so1=170 =so2=215 =so3=240 =so4=265" },
-		{ "s13228", "ability_poisonsting", "=q1=Wound Poison II", "=ds=#lr#=q1= 40 =ds=#sr# =so1=1 =so2=225 =so3=250 =so4=275" },
-		{ 0, "", "", "" },
-		{ 0, "Trade_BrewPoison", "=q6=#rp2#", "" },
-		{ "s6510", "inv_misc_ammo_gunpowder_01", "=q1=Blinding Powder", "=ds=#lr#=q1= 34 =ds=#sr# =so1=1 =so2=170 =so3=195 =so4=220" },
-		{ 0, "", "", "" },
-		{ 0, "", "", "" },
-		{ "s11341", "ability_poisons", "=q1=Instant Poison IV", "=ds=#lr#=q1= 44 =ds=#sr# =so1=200 =so2=245 =so3=270 =so4=295" },
-		{ "s11357", "ability_rogue_dualweild", "=q1=Deadly Poison III", "=ds=#lr#=q1= 46 =ds=#sr# =so1=210 =so2=255 =so3=280 =so4=305" },
-		{ "s13229", "ability_poisonsting", "=q1=Wound Poison III", "=ds=#lr#=q1= 48 =ds=#sr# =so1=1 =so2=265 =so3=290 =so4=315" },
-		{ "s3421", "inv_potion_19", "=q1=Crippling Poison II", "=ds=#lr#=q1= 50 =ds=#sr# =so1=230 =so2=275 =so3=300 =so4=325" },
-		{ "s11400", "spell_nature_nullifydisease", "=q1=Mind-numbing Poison III", "=ds=#lr#=q1= 52 =ds=#sr# =so1=1 =so2=285 =so3=310 =so4=335" },
-		{ "s11342", "ability_poisons", "=q1=Instant Poison V", "=ds=#lr#=q1= 52 =ds=#sr# =so1=240 =so2=285 =so3=340 =so4=335" },
-		{ "s11358", "ability_rogue_dualweild", "=q1=Deadly Poison IV", "=ds=#lr#=q1= 54 =ds=#sr# =so1=250 =so2=295 =so3=320 =so4=345" },
-		{ "s13230", "ability_poisonsting", "=q1=Wound Poison IV", "=ds=#lr#=q1= 56 =ds=#sr# =so1=280 =so2=305 =so3=330 =so4=355" },
-		{ "s25347", "ability_rogue_dualweild", "=q1=Deadly Poison V", "=ds=#lr#=q1= 60 =ds=#sr# =so1=280 =so2=300 =so3=325 =so4=350" },
-		{ "s11343", "ability_poisons", "=q1=Instant Poison VI", "=ds=#lr#=q1= 60 =ds=#sr# =so1=280 =so2=325 =so3=350 =so4=375" },
-		{ "s65032", "spell_nature_nullifypoison", "=q1=Agitating Poison I", "=ds=#lr#=q1= 60 =ds=#sr# =so1=280 =so2=325 =so3=350 =so4=375" },
-	},
-
 	JewelcraftingApprentice1 = {
 		{ "s29728", "INV_Misc_Bandage_08", "=q1=Rough Gritted Paper", "=ds=#sr# =so1=1 =so2=21 =so3=25 =so4=30" },
 		{ "s29730", "BTNCopperring01", "=q1=Rough Copper Ring", "=ds=#sr# =so1=1 =so2=21 =so3=30 =so4=40" },
@@ -4176,3 +3850,7 @@ AtlasLoot_Data = {
 		{ "s41770", "INV_Stone_14", "=q1=Dense Gemstone Cluster", "=ds=#sr# =so1=235 =so2=240 =so3=240 =so4=240" },
 	},
 }
+
+for k, v in pairs(craftingTable) do
+	AtlasLoot_Data[k] = v
+end

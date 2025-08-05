@@ -342,10 +342,10 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 		return print("AtlasTW.Loot.ScrollBarLootUpdate: No AtlasLootScrollBar!")
 	end
 	--Load data for the current clicked boss line
-	local dataID, TableSource = AtlasLootItemsFrame.storedBoss.name, AtlasLootItemsFrame.storedBoss.loot
+	local dataID, TableSource = AtlasLootItemsFrame.storedBoss and AtlasLootItemsFrame.storedBoss.name,
+		AtlasLootItemsFrame.storedBoss and AtlasLootItemsFrame.storedBoss.loot
 	--Check if dataID and dataSource are valid
-	if not dataID or not TableSource then
-		AtlasLootItemsFrame:Hide()
+ 	if not dataID and not TableSource then
 		return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataID and dataSource!")
 	end
 	-- Скрываем QuickLooks
@@ -354,7 +354,7 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 
 	local dataSource=TableSource
     if type(TableSource) ~= "table" then
-		print("ScrollBarLootUpdate: dataID:"..dataID.."dataSource is not a table: "..dataSource)
+		print("ScrollBarLootUpdate: dataID:"..(dataID or "no dataID").."dataSource is not a table: "..(dataSource or " no dataSource"))
         dataSource = AtlasLoot_Data[dataSource] or AtlasLoot_MenuHandlers[dataSource]
 		if not dataSource then
 			for k, value in pairs(AtlasTW.InstanceData) do

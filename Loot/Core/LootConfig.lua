@@ -125,7 +125,8 @@ local function ProcessDungeonsCategory(menu1Data, menu2Data)
         end
 
         if dungeon.name and dungeon.lootpage then
-            categoryList[getn(categoryList) + 1] = { { dungeon.name, dungeon.lootpage } }
+            categoryList[getn(categoryList) + 1] = { { dungeon.name_orig or dungeon.name, dungeon.lootpage } }
+
         end
     end
 

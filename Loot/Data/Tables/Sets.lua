@@ -2323,7 +2323,313 @@ Sets = {
 		{ id = 8498 }, -- Tiny Emerald Whelpling
 		{ id = 21277 }, -- Tranquil Mechanical Yeti
 		{ id = 12264 }, -- Worg Carrier
-	}
+	},
+	CraftedWeapons = {
+		{},
+		{ name = BS["Blacksmithing"], icon = "Trade_BlackSmithing" },
+		{},
+		{ id = 22384 }, -- Persuader
+		{ id = 22383 }, -- Sageblade
+		{ id = 19166 }, -- Black Amnesty
+		{ id = 19170 }, -- Ebon Hand
+		{ id = 19168 }, -- Blackguard
+		{ id = 19169 }, -- Nightfall
+		{ id = 17193 }, -- Sulfuron Hammer
+		{ id = 19167 }, -- Blackfury
+		{ id = 22198 }, -- Jagged Obsidian Shield
+		{ id = 60010 }, -- Towerforge Demolisher
+		{ id = 61185 }, -- Dawnstone Hammer
+		{},
+		{},
+		{ name = BS["Engineering"], icon = "Trade_Engineering" },
+		{},
+		{ id = 18282 }, -- Core Marksman Rifle
+		{ id = 18168 }, -- Force Reactive Disk
+	},
+	SteelPlate = {
+		{},
+		{ name = BIS["Steel Plate Armor"] },
+		{},
+		{ id = 83415 }, -- Steel Plate Barbute
+		{ id = 83414 }, -- Steel Plate Pauldrons
+		{ id = 83413 }, -- Steel Plate Armor
+		{ id = 83411 }, -- Steel Plate Gauntlets
+		{ id = 83412 }, -- Steel Plate Legguards
+		{ id = 83410 }, -- Steel Plate Boots
+	},
+	ImperialPlate = {
+		{},
+		{ name = BIS["Imperial Plate"] },
+		{},
+		{ id = 12427 }, -- Imperial Plate Helm
+		{ id = 12428 }, -- Imperial Plate Shoulders
+		{ id = 12422 }, -- Imperial Plate Chest
+		{ id = 12425 }, -- Imperial Plate Bracers
+		{ id = 12424 }, -- Imperial Plate Belt
+		{ id = 12429 }, -- Imperial Plate Leggings
+		{ id = 12426 }, -- Imperial Plate Boots
+	},
+	RuneEtchedArmor = {
+		{},
+		{ name = BIS["Rune-Etched Armor"] },
+		{},
+		{ id = 60287 }, -- Rune-Etched Grips
+		{ id = 60288 }, -- Rune-Etched Greaves
+		{ id = 60289 }, -- Rune-Etched Legplates
+		{ id = 60290 }, -- Rune-Etched Breastplate
+		{ id = 60291 }, -- Rune-Etched Crown
+		{ id = 60292 }, -- Rune-Etched Mantle
+	},
+	TheDarksoul = {
+		{},
+		{ name = BIS["The Darksoul"] },
+		{},
+		{ id = 19695 }, -- Darksoul Shoulders
+		{ id = 19693 }, -- Darksoul Breastplate
+		{ id = 19694 }, -- Darksoul Leggings
+	},
+	DreamsteelArmor = {
+		{},
+		{ name = BIS["Dreamsteel Armor"] },
+		{},
+		{ id = 61364 }, -- Dreamsteel Mantle
+		{ id = 61365 }, -- Dreamsteel Leggings
+		{ id = 61366 }, -- Dreamsteel Bracers
+		{ id = 61367 }, -- Dreamsteel Boots
+	},
+	BloodsoulEmbrace = {
+		{},
+		{ name = BIS["Bloodsoul Embrace"] },
+		{},
+		{ id = 19691 }, -- Bloodsoul Shoulders
+		{ id = 19690 }, -- Bloodsoul Breastplate
+		{ id = 19692 }, -- Bloodsoul Gauntlets
+	},
+	HateforgeArmor = {
+		{},
+		{ name = BIS["Hateforge Armor"] },
+		{},
+		{ id = 60573 }, -- Hateforge Helmet
+		{ id = 60574 }, -- Hateforge Cuirass
+		{ id = 60575 }, -- Hateforge Leggings
+		{ id = 60576 }, -- Hateforge Belt
+		{ id = 60577 }, -- Hateforge Grips
+		{ id = 60578 }, -- Hateforge Boots
+	},
+	TowerforgeBattlegear = {
+		{},
+		{ name = BIS["Towerforge Battlegear"] },
+		{},
+		{ id = 60007 }, -- Towerforge Crown
+		{ id = 60008 }, -- Towerforge Breastplate
+		{ id = 60009 }, -- Towerforge Pauldrons
+		{ id = 60010 }, -- Towerforge Demolisher
+	},
+	AugerersAttire = {
+		{},
+		{ name = BIS["Augerer's Attire"] },
+		{},
+		{ id = 83288 }, -- Augerer's Boots
+		{ id = 83289 }, -- Augerer's Gloves
+		{ id = 83290 }, -- Augerer's Mantle
+		{ id = 83291 }, -- Augerer's Trousers
+		{ id = 83286 }, -- Augerer's Hat
+		{ id = 83287 }, -- Augerer's Robe
+	},
+	ShadoweaveSet = {
+		{},
+		{ name = BIS["Shadoweave"] },
+		{},
+		{ id = 10002 }, -- Shadoweave Pants
+		{ id = 10004 }, -- Shadoweave Robe
+		{ id = 10023 }, -- Shadoweave Gloves
+		{ id = 10028 }, -- Shadoweave Shoulders
+		{ id = 10031 }, -- Shadoweave Boots
+		{ id = 10025 }, -- Shadoweave Mask
+	},
+	DivinersGarments = {
+		{},
+		{ name = BIS["Diviner's Garments"] },
+		{},
+		{ id = 83283 }, -- Diviner's Boots
+		{ id = 83284 }, -- Diviner's Mitts
+		{ id = 83285 }, -- Diviner's Epaulets
+		{ id = 83280 }, -- Diviner's Pantaloons
+		{ id = 83282 }, -- Diviner's Cowl
+		{ id = 83281 }, -- Diviner's Robes
+	},
+	PillagersGarb = {
+		{},
+		{ name = BIS["Pillager's Garb"] },
+		{},
+		{ id = 83296 }, -- Pillager's Shoes
+		{ id = 83295 }, -- Pillager's Grips
+		{ id = 83297 }, -- Pillager's Pantaloons
+		{ id = 83293 }, -- Pillager's Amice
+		{ id = 83292 }, -- Pillager's Hood
+		{ id = 83294 }, -- Pillager's Robe
+	},
+	MoonclothRegalia = {
+		{},
+		{ name = BIS["Mooncloth Regalia"] },
+		{},
+		{ id = 14140 }, -- Mooncloth Circlet
+		{ id = 14139 }, -- Mooncloth Shoulders
+		{ id = 14138 }, -- Mooncloth Vest
+		{ id = 18486 }, -- Mooncloth Robe
+		{ id = 18409 }, -- Mooncloth Gloves
+		{ id = 14137 }, -- Mooncloth Leggings
+		{ id = 15802 }, -- Mooncloth Boots
+	},
+	BloodvineG = {
+		{},
+		{ name = BIS["Bloodvine Garb"] },
+		{},
+		{ id = 19682 }, -- Bloodvine Vest
+		{ id = 19683 }, -- Bloodvine Leggings
+		{ id = 19684 }, -- Bloodvine Boots
+	},
+	FlarecoreRegalia = {
+		{},
+		{ name = BIS["Flarecore Regalia"] },
+		{},
+		{ id = 16979 }, -- Flarecore Gloves
+		{ id = 19165 }, -- Flarecore Leggings
+		{ id = 16980 }, -- Flarecore Mantle
+		{ id = 19156 }, -- Flarecore Robe
+		{ id = 18263 }, -- Flarecore Wraps
+		{ id = 65035 }, -- Flarecore Boots
+	},
+	DreamthreadRegalia = {
+		{},
+		{ name = BIS["Dreamthread Regalia"] },
+		{},
+		{ id = 61360 }, -- Dreamthread Mantle
+		{ id = 61361 }, -- Dreamthread Kilt
+		{ id = 61362 }, -- Dreamthread Bracers
+		{ id = 61363 }, -- Dreamthread Gloves
+	},
+	GriftersArmor = {
+		{},
+		{ name = BIS["Grifter's Armor"] },
+		{},
+		{ id = 83405 }, -- Grifter's Boots
+		{ id = 83404 }, -- Grifter's Gauntlets
+		{ id = 83403 }, -- Grifter's Belt
+		{ id = 83402 }, -- Grifter's Leggings
+		{ id = 83401 }, -- Grifter's Tunic
+		{ id = 83400 }, -- Grifter's Cover
+	},
+	PrimalistsTrappings = {
+		{},
+		{ name = BIS["Primalist's Trappings"] },
+		{},
+		{ id = 81065 }, -- Primalist's Boots
+		{ id = 81061 }, -- Primalist's Gloves
+		{ id = 81063 }, -- Primalist's Headdress
+		{ id = 81064 }, -- Primalist's Pants
+		{ id = 81062 }, -- Primalist's Shoulders
+		{ id = 81066 }, -- Primalist's Vest
+	},
+	VolcanicArmor = {
+		{},
+		{ name = BIS["Volcanic Armor"] },
+		{},
+		{ id = 15055 }, -- Volcanic Shoulders
+		{ id = 15053 }, -- Volcanic Breastplate
+		{ id = 15054 }, -- Volcanic Leggings
+	},
+	IronfeatherArmor = {
+		{},
+		{ name = BIS["Ironfeather Armor"] },
+		{},
+		{ id = 15067 }, -- Ironfeather Shoulders
+		{ id = 15066 }, -- Ironfeather Breastplate
+	},
+	StormshroudArmor = {
+		{},
+		{ name = BIS["Stormshroud Armor"] },
+		{},
+		{ id = 15058 }, -- Stormshroud Shoulders
+		{ id = 15056 }, -- Stormshroud Armor
+		{ id = 21278 }, -- Stormshroud Gloves
+		{ id = 15057 }, -- Stormshroud Pants
+	},
+	DevilsaurArmor = {
+		{},
+		{ name = BIS["Devilsaur Armor"] },
+		{},
+		{ id = 15063 }, -- Devilsaur Gauntlets
+		{ id = 15062 }, -- Devilsaur Leggings
+	},
+	BloodTigerH = {
+		{},
+		{ name = BIS["Blood Tiger Harness"] },
+		{},
+		{ id = 19689 }, -- Blood Tiger Shoulders
+		{ id = 19688 }, -- Blood Tiger Breastplate
+	},
+	PrimalBatskin = {
+		{},
+		{ name = BIS["Primal Batskin"] },
+		{},
+		{ id = 19685 }, -- Primal Batskin Jerkin
+		{ id = 19687 }, -- Primal Batskin Bracers
+		{ id = 19686 }, -- Primal Batskin Gloves
+	},
+	DreamhideBattlegarb = {
+		{},
+		{ name = BIS["Dreamhide Battlegarb"] },
+		{},
+		{ id = 61356 }, -- Dreamhide Mantle
+		{ id = 61357 }, -- Dreamhide Bracers
+		{ id = 61358 }, -- Dreamhide Leggings
+		{ id = 61359 }, -- Dreamhide Belt
+	},
+	ConvergenceoftheElements = {
+		{},
+		{ name = BIS["Convergence of the Elements"] },
+		{},
+		{ id = 65024 }, -- Earthguard Tunic
+		{ id = 65025 }, -- Flamewrath Leggings
+		{ id = 65026 }, -- Depthstalker Helm
+		{ id = 65027 }, -- Windwalker Boots
+	},
+	RedDragonM = {
+		{},
+		{ name = BIS["Red Dragon Mail"] },
+		{},
+		{ id = 65001 }, -- Red Dragonscale Shoulders
+		{ id = 15047 }, -- Red Dragonscale Breastplate
+		{ id = 65000 }, -- Red Dragonscale Leggings
+		{ id = 65002 }, -- Red Dragonscale Boots
+	},
+	GreenDragonM = {
+		{},
+		{ name = BIS["Green Dragon Mail"] },
+		{},
+		{ id = 15045 }, -- Green Dragonscale Breastplate
+		{ id = 20296 }, -- Green Dragonscale Gauntlets
+		{ id = 15046 }, -- Green Dragonscale Leggings
+	},
+	BlueDragonM = {
+		{},
+		{ name = BIS["Blue Dragon Mail"] },
+		{},
+		{ id = 15049 }, -- Blue Dragonscale Shoulders
+		{ id = 15048 }, -- Blue Dragonscale Breastplate
+		{ id = 20295 }, -- Blue Dragonscale Leggings
+		{ id = 65015 }, -- Blue Dragonscale Boots
+	},
+	BlackDragonM = {
+		{},
+		{ name = BIS["Black Dragon Mail"] },
+		{},
+		{ id = 15051 }, -- Black Dragonscale Shoulders
+		{ id = 15050 }, -- Black Dragonscale Breastplate
+		{ id = 15052 }, -- Black Dragonscale Leggings
+		{ id = 16984 }, -- Black Dragonscale Boots
+	},
 }
 
 for k, v in pairs(Sets) do

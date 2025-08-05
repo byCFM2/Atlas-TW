@@ -90,7 +90,7 @@ local craftedSet2MenuData = {
     {},
     { name = RED..BS["Blacksmithing"], extra = "Plate", libExtra = BS, icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
     {},
-    { name = BIS["Steel Plate"], icon = "Interface\\Icons\\INV_Helmet_25", lootpage = "SteelPlate" },
+    { name = BIS["Steel Plate Armor"], icon = "Interface\\Icons\\INV_Helmet_25", lootpage = "SteelPlate" },
     { name = BIS["Imperial Plate"], icon = "Interface\\Icons\\INV_Belt_01", lootpage = "ImperialPlate" },
     { name = BIS["Rune-Etched Armor"], icon = "Interface\\Icons\\inv_helmet_06", lootpage = "RuneEtchedArmor" },
     { name = BIS["The Darksoul"], icon = "Interface\\Icons\\INV_Shoulder_01", lootpage = "TheDarksoul" },

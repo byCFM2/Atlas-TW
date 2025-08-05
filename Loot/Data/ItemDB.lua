@@ -233,6 +233,7 @@ function AtlasTW.ItemDB.CreateItem(data)
         dropRate = data.dropRate,
         container = data.container,
         quantity = data.quantity,
+        skill = data.skill,
     }
     -- Устанавливаем метатаблицу для доступа к методам
     setmetatable(item, {__index = ItemPrototype})
