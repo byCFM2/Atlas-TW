@@ -69,7 +69,5 @@
     <Include file="Tables\Events.lua"/>
     <Include file="Tables\Sets.lua"/>
     <!-- Данные крафта -->
-    <!-- Добавить по мере создания:
     <Include file="Tables\Crafting.lua"/>
-    -->
 </Ui>

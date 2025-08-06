@@ -19,10 +19,10 @@ local craftingTable = {
 		{ "s8694", "spell_nature_nullifydisease", "=q1=Mind-numbing Poison II", "=ds=#lr#=q1= 38 =ds=#sr# =so1=1 =so2=215 =so3=240 =so4=265" },
 		{ "s2837", "ability_rogue_dualweild", "=q1=Deadly Poison II", "=ds=#lr#=q1= 38 =ds=#sr# =so1=170 =so2=215 =so3=240 =so4=265" },
 		{ "s13228", "ability_poisonsting", "=q1=Wound Poison II", "=ds=#lr#=q1= 40 =ds=#sr# =so1=1 =so2=225 =so3=250 =so4=275" }, ]]
-		{ id=8681, skill={1,125,150,175}},
 		{ name = BS["Poisons"], icon = "Trade_BrewPoison" },
+		{ id=8681, skill={1,125,150,175}}, --FOR TEST
 
-{ 0, "", "", "" },
+--[[ 		{ 0, "", "", "" },
 		{ 0, "Trade_BrewPoison", "=q6=#rp2#", "" },
 		{ "s6510", "inv_misc_ammo_gunpowder_01", "=q1=Blinding Powder", "=ds=#lr#=q1= 34 =ds=#sr# =so1=1 =so2=170 =so3=195 =so4=220" },
 		{ 0, "", "", "" },
@@ -37,7 +37,7 @@ local craftingTable = {
 		{ "s13230", "ability_poisonsting", "=q1=Wound Poison IV", "=ds=#lr#=q1= 56 =ds=#sr# =so1=280 =so2=305 =so3=330 =so4=355" },
 		{ "s25347", "ability_rogue_dualweild", "=q1=Deadly Poison V", "=ds=#lr#=q1= 60 =ds=#sr# =so1=280 =so2=300 =so3=325 =so4=350" },
 		{ "s11343", "ability_poisons", "=q1=Instant Poison VI", "=ds=#lr#=q1= 60 =ds=#sr# =so1=280 =so2=325 =so3=350 =so4=375" },
-		{ "s65032", "spell_nature_nullifypoison", "=q1=Agitating Poison I", "=ds=#lr#=q1= 60 =ds=#sr# =so1=280 =so2=325 =so3=350 =so4=375" },
+		{ "s45611", "spell_nature_nullifypoison", "=q1=Agitating Poison I", "=ds=#lr#=q1= 60 =ds=#sr# =so1=280 =so2=325 =so3=350 =so4=375" }, ]]
 	},
 	AlchemyApprentice1 = {
 		{ "s2329", "inv_potion_56", "=q1=Elixir of Lion's Strength", "=ds=#sr# =so1=1 =so2=55 =so3=75 =so4=95" },

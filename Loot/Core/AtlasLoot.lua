@@ -49,6 +49,12 @@ StaticPopupDialogs["ATLASLOOT_SETUP"] = {
 AtlasLoot_Data["AtlasLootFallback"] = {
 	EmptyInstance = {}
 } ]]
+-- Функция для формирования текста с цветом для скилла
+local function formSkillStyle(skilltext)
+	if not skilltext then return "" end
+	return L["Skill:"].." "..ORANGE..skilltext[1]..", "..YELLOW..skilltext[2]..", "..
+		GREEN..skilltext[3]..", "..GREY..skilltext[4]
+end
 
 -- Функция для ограничения длины текста с учетом паттернов
 local function StripFormatting(text)
@@ -335,6 +341,7 @@ function AtlasTW.Loot.ScrollBarUpdate()
 end
 
 -- Функция обновления скроллбара для AtlasLootItemsFrame
+
 function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 	--Check if the scroll bar exists
     if not AtlasLootScrollBar then
@@ -359,10 +366,10 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 		if not dataSource then
 			for k, value in pairs(AtlasTW.InstanceData) do
 				if k == TableSource or value.Name == dataID then
-					print("AtlasTW.Loot.ScrollBarLootUpdate: value.Name == dataID")
+					--print("AtlasTW.Loot.ScrollBarLootUpdate: value.Name == dataID")
 					for _, val in ipairs(value.Bosses) do
 						if val.name == dataID or val.name == TableSource then
-							print("AtlasTW.Loot.ScrollBarLootUpdate: val.items "..val.items[1].id)
+						--	print("AtlasTW.Loot.ScrollBarLootUpdate: val.items "..val.items[1].id)
 							dataSource = val.items
 						end
 					end
@@ -433,24 +440,51 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 
 				-- Показываем кнопку если индекс в пределах таблицы
 				if itemIndex <= totalItems and dataSource[itemIndex] then
-					local item = dataSource[itemIndex]
+					local element = dataSource[itemIndex]
 					-- Проверяем, есть ли данные для отображения
-					if item and (item.id or item.name) then
+					if element and (element.id or element.name) then
 						-- Новая система - обновляем содержимое кнопки
 						local itemLink, itemQuality, itemTexture
-						local itemName = item.name
-						local itemID = item.id
+						local itemName = element.name
+						local elemID = element.id
+						local itemID, extratext
 
-						if itemID and itemID ~= 0 then
+						if elemID and elemID ~= 0 then
+							local link = GetSpellInfoAtlasLootDB["enchants"][elemID] or GetSpellInfoAtlasLootDB["craftspells"][elemID]
+							if element.skill then
+								-- Set original ID for itemButton (enchant or spell)
+								itemButton.elemID = elemID
+								-- Set type for itemButton (enchant or spell)
+								itemButton.typeID = GetSpellInfoAtlasLootDB["enchants"][elemID] and "enchant:" or "spell:"
+								-- Set itemID from spell (craftItem)
+								itemID = link and link["item"] or link and link["craftItem"]
+								--Cache all items follow for spell
+								if link and type(link["reagents"]) == "table" then
+									for j = 1, table.getn(link["reagents"]) do
+										AtlasLoot_CacheItem(link["reagents"][j])
+									end
+								elseif link and type(link["tools"]) == "table" then
+									for j = 1, table.getn(link["tools"]) do
+										AtlasLoot_CacheItem(link["tools"][j])
+									end
+								end
+								AtlasLoot_CacheItem(itemID)
+
+							else
+								-- Set itemID in elemID coz not spell = item
+								itemID = elemID
+							end
 							itemName, itemLink, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(itemID)
 							if itemName then
 								local r, g, b = GetItemQualityColor(itemQuality)
 								nameFrame:SetTextColor(r, g, b)
+							else
+								itemName = link and link["name"]
 							end
 							nameFrame:SetText(itemName or L["Item not found in cache"])
-						elseif item.name then
+						elseif element.name then
 							-- Handle the case where item is a separator
-							local table = AtlasTW.ItemDB.CreateSeparator(item.name, item.icon, item.quality)
+							local table = AtlasTW.ItemDB.CreateSeparator(element.name, element.icon, element.quality)
 							itemName = table.name
 							itemQuality = table.quality
 							itemTexture = table.texture
@@ -459,16 +493,29 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 							nameFrame:SetTextColor(r, g, b)
 							nameFrame:SetText(itemName or L["Item not found in cache"])
 						end
-						local extratext = AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, item.disc) or item.extra
+						-- Set the dressing room ID
+						itemButton.dressingroomID = itemID
+
+						-- Set description text
+						if element.skill then
+							extratext = formSkillStyle(element.skill)
+						else
+							extratext = AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, element.disc) or element.extra
+						end
+--[[  idk what is it
+						if GetMouseFocus() == itemButton then
+							itemButton:Hide()
+							itemButton:Show()
+						end ]]
 
 						-- Set the description text
 						extraFrame:SetText(extratext or "")
 						extraFrame:Show()
 
 						-- Set the quantity
-						if item.quantity then
-							quantityFrame:SetText(type(item.quantity) == "table"
-								and (item.quantity[1].."-"..item.quantity[2]) or item.quantity)
+						if element.quantity then
+							quantityFrame:SetText(type(element.quantity) == "table"
+								and (element.quantity[1].."-"..element.quantity[2]) or element.quantity)
 							quantityFrame:Show()
 						else
 							quantityFrame:Hide()
@@ -478,19 +525,20 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 						iconFrame:SetTexture(itemTexture or "Interface\\Icons\\INV_Misc_QuestionMark")
 
 						-- Save the item button data
-						itemButton.container = item.container
+						itemButton.container = element.container
 						borderFrame:Hide()
 						if itemButton.container then
 							borderFrame:Show()
 						end
 
 						-- Set the item drop rate
-						if item.GetDropRateText then
-							itemButton.droprate = item:GetDropRateText()
+						if element.GetDropRateText then
+							itemButton.droprate = element:GetDropRateText()
 						end
 
 						itemButton.itemID = itemID or 0
-						itemButton.itemLink = itemLink
+
+						--itemButton.itemLink = itemLink
 
 						shouldShow = true
 					end
@@ -1559,46 +1607,25 @@ function AtlasLootItem_OnEnter()
     if not this or not this.itemID or this.itemID == 0 then
         return
     end
-
-    local isItem, isEnchant, isSpell
-    if string.sub(this.itemID, 1, 1) == "s" then
-        isItem = false
-        isEnchant = false
-        isSpell = true
-    elseif string.sub(this.itemID, 1, 1) == "e" then
-        isItem = false
-        isEnchant = true
-        isSpell = false
-    else
-        isItem = true
-        isEnchant = false
-        isSpell = false
-    end
-
+	local dropRate = this.droprate
+	local elemID = this.elemID
+	local itemID = this.itemID
+	local type = this.typeID
     AtlasLootTooltip:SetOwner(this, "ANCHOR_RIGHT")
-
-    if isItem then
-        AtlasLootTooltip:SetHyperlink("item:"..this.itemID..":0:0:0")
-        if this.droprate then
-            AtlasLootTooltip:AddLine(L["Drop Rate:"] .. " " .. this.droprate, .1, .4, .2)
+    if type then
+        AtlasLootTooltip:SetHyperlink(type..elemID)
+        if AtlasTWOptions.LootItemIDs then
+            AtlasLootTooltip:AddLine(BLUE..L["SpellID:"].." "..elemID, nil, nil, nil, 1)
+        end
+	else
+        AtlasLootTooltip:SetHyperlink("item:"..itemID..":0:0:0")
+        if dropRate then
+            AtlasLootTooltip:AddLine(L["Drop Rate:"] .. " " .. dropRate, .2, .4, .3)
         end
         if AtlasTWOptions.LootItemIDs then
-            AtlasLootTooltip:AddLine(BLUE..L["ItemID:"].." "..this.itemID, nil, nil, nil, 1)
-        end
-    elseif isEnchant then
-        local enchantID = string.sub(this.itemID, 2)
-        AtlasLootTooltip:SetHyperlink("enchant:"..enchantID)
-        if AtlasTWOptions.LootItemIDs then
-            AtlasLootTooltip:AddLine(BLUE..L["SpellID:"].." "..enchantID, nil, nil, nil, 1)
-        end
-    elseif isSpell then
-        local spellID = string.sub(this.itemID, 2)
-        AtlasLootTooltip:SetHyperlink("spell:"..spellID)
-        if AtlasTWOptions.LootItemIDs then
-            AtlasLootTooltip:AddLine(BLUE..L["SpellID:"].." "..spellID, nil, nil, nil, 1)
+            AtlasLootTooltip:AddLine(BLUE..L["ItemID:"].." "..itemID, nil, nil, nil, 1)
         end
     end
-
     AtlasLootTooltip:Show()
 end
 

@@ -21483,6 +21483,20 @@ GetSpellInfoAtlasLootDB = {
 				[6] = {12644, 10},
 			},
 		},
+		[45611] = {
+			["name"] = "Poisons: Agitating Poison I",
+			["requires"] = "",
+			["tools"] = "",
+			["castTime"] = 3,
+			["text"] = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 20% chance of poisoning the enemy which instantly inflicts 67 to 86 Nature damage, and causes additional threat. 115 charges.",
+			["craftItem"] = 65032,
+			["craftQuantityMin"] = "",
+			["craftQuantityMax"] = "",
+			["reagents"] = {
+				[1] = {2931, 2},
+				[2] = {3372},
+			},
+		},
 		[45625] = {
 			["name"] = "Cooking: Le Fishe Au Chocolat",
 			["requires"] = L["Cooking Fire"],
@@ -23342,7 +23356,8 @@ GetSpellInfoAtlasLootDB = {
 			["reagents"] = {
 				[1] = {7075},
 			},
-		},    [57557] = {
+		},
+		[57557] = {
 			["name"] = "Transmute: Elemental Water",
 			["requires"] = "",
 			["tools"] = {9149},
@@ -23353,20 +23368,6 @@ GetSpellInfoAtlasLootDB = {
 			["craftQuantityMax"] = "",
 			["reagents"] = {
 				[1] = {7079},
-			},
-		},
-		[65032] = {
-			["name"] = "Poisons: Agitating Poison I",
-			["requires"] = "",
-			["tools"] = "",
-			["castTime"] = 3,
-			["text"] = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 20% chance of poisoning the enemy which instantly inflicts 67 to 86 Nature damage, and causes additional threat. 115 charges.",
-			["craftItem"] = 65032,
-			["craftQuantityMin"] = "",
-			["craftQuantityMax"] = "",
-			["reagents"] = {
-				[1] = {2931, 2},
-				[2] = {3372},
 			},
 		},
 		[69420] = {
