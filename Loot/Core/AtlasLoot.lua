@@ -341,34 +341,59 @@ function AtlasTW.Loot.ScrollBarUpdate()
 end
 
 
+-- Глобальный кэш проверенных наборов предметов
+if not ATLASTWLOOT_CHECKED_SETS then
+    ATLASTWLOOT_CHECKED_SETS = {}
+    ATLASTWLOOT_CHECKED_SETS_COUNT = 0
+end
+
+-- Периодическая очистка кэша для экономии памяти
+local function CleanupMemoCache()
+    if ATLASTWLOOT_CHECKED_SETS_COUNT > 100 then
+        ATLASTWLOOT_CHECKED_SETS = {}
+        ATLASTWLOOT_CHECKED_SETS_COUNT = 0
+    end
+end
+
+-- Функция для создания хэша набора предметов
+local function CreateItemSetHash(itemList)
+    table.sort(itemList)  -- Сортируем для стабильного хэша
+    return table.concat(itemList, ",")
+end
+
 -- Функция для кэширования всех предметов из таблицы лута
 local function CacheAllLootItems(dataSource, callback)
-
+    CleanupMemoCache()
     if not dataSource or type(dataSource) ~= "table" then
         if callback then callback() end
         return
     end
-
     local itemsToCache = {}
 
     -- Собираем все ID предметов для кэширования
     for i = 1, getn(dataSource) do
         local item = dataSource[i]
-		local typeTable = type(item) == "table"
-        if item then
-            local itemID = nil
-            -- Проверяем разные форматы данных
-            if typeTable and item.id then
-                itemID = item.id
-            elseif typeTable and item[1] then
-                itemID = item[1]
-            elseif tonumber(item) then
-                itemID = item
-            end
-            if itemID and tonumber(itemID) and itemID ~= 0 then
-                table.insert(itemsToCache, itemID)
-            end
-        end
+        local itemID = nil
+		if item then
+			if type(item) == "table" then
+				-- Проверяем разные форматы данных
+				if item.id then
+					itemID = item.id
+					--Check for spell or enchant
+					if item.skill then
+						itemID = GetSpellInfoAtlasLootDB.enchants[itemID] and GetSpellInfoAtlasLootDB.enchants[itemID].item or
+						GetSpellInfoAtlasLootDB.craftspells[itemID] and GetSpellInfoAtlasLootDB.craftspells[itemID].item
+					end
+				elseif item[1] then
+					itemID = item[1]
+				end
+			elseif type(item) == "number" then
+				itemID = item
+			end
+			if itemID and itemID ~= 0 then
+				table.insert(itemsToCache, itemID)
+			end
+		end
     end
 
     local totalToCache = getn(itemsToCache)
@@ -378,7 +403,31 @@ local function CacheAllLootItems(dataSource, callback)
         return
     end
 
-    -- Быстрая проверка: сначала проверяем все предметы синхронно
+    -- Проверка по мемоизации: если этот набор уже целиком кэширован, пропускаем проверки
+    local itemsCopy = {}
+    for i = 1, getn(itemsToCache) do itemsCopy[i] = itemsToCache[i] end
+    local setHash = CreateItemSetHash(itemsCopy)
+    if ATLASTWLOOT_CHECKED_SETS[setHash] then
+        -- print("Набор предметов уже проверен ранее, пропускаем кэширование")
+        if callback then callback() end
+        return
+    end
+
+    -- Супербыстрая предварительная проверка: тестируем первые 5 предметов
+    local quickCheckCount = math.min(5, totalToCache)
+    local quickCachedCount = 0
+
+    for i = 1, quickCheckCount do
+        local itemID = itemsToCache[i]
+        if GetItemInfo(itemID) then
+            quickCachedCount = quickCachedCount + 1
+        end
+    end
+
+    -- Если все проверенные предметы кэшированы, вероятно кэшированы и остальные
+    local probablyAllCached = (quickCachedCount == quickCheckCount)
+
+    -- Полная проверка: проверяем все предметы синхронно
     local uncachedItems = {}
     local alreadyCachedCount = 0
 
@@ -388,294 +437,310 @@ local function CacheAllLootItems(dataSource, callback)
             alreadyCachedCount = alreadyCachedCount + 1
         else
             table.insert(uncachedItems, itemID)
+            -- Если ожидали, что всё кэшировано, но нашли некэшированный предмет
+            if probablyAllCached then
+                probablyAllCached = false
+            end
         end
     end
 
     local uncachedCount = getn(uncachedItems)
-    --print("Уже кэшировано: " .. alreadyCachedCount .. ", нужно кэшировать: " .. uncachedCount)
 
-    -- Если все предметы уже кэшированы, сразу вызываем callback
+    -- Если все предметы уже кэшированы, мгновенно вызываем callback
     if uncachedCount == 0 then
-      --  print("Все предметы уже кэшированы, сразу открываем окно")
+      --  print("Все предметы уже кэшированы, мгновенно открываем окно")
+        if not ATLASTWLOOT_CHECKED_SETS[setHash] then
+            ATLASTWLOOT_CHECKED_SETS[setHash] = true
+            ATLASTWLOOT_CHECKED_SETS_COUNT = ATLASTWLOOT_CHECKED_SETS_COUNT + 1
+        end
         if callback then
             callback()
         end
         return
     end
 
-    -- Кэшируем только некэшированные предметы
-    local processedUncached = 0
+    -- Батчинг для больших наборов: 3 предмета за тик, 0.07s затем 0.09s, максимум 2 итерации
+        local batchSize = 3
+        local maxIterations = 2
+        local iteration = 1
 
-    local function checkCacheComplete()
-        processedUncached = processedUncached + 1
-        if processedUncached >= uncachedCount then
-          --  print("Кэширование завершено, открываем окно")
-            if callback then
-                callback()
-            end
+        local tooltipName = "AtlasLootHiddenTooltip_Batch"
+        local tooltip = _G[tooltipName]
+        if not tooltip then
+            tooltip = CreateFrame("GameTooltip", tooltipName, UIParent, "GameTooltipTemplate")
+            tooltip:SetOwner(UIParent, "ANCHOR_NONE")
+            _G[tooltipName] = tooltip
         end
-    end
 
-    -- Кэшируем некэшированные предметы
-    for i = 1, uncachedCount do
-        local itemID = uncachedItems[i]
+        local function runIteration()
+            local idx = 1
+            local total = getn(uncachedItems)
 
-        -- Простое кэширование через tooltip
-        GameTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
+            local function processBatch()
+                local processed = 0
+                while processed < batchSize and idx <= total do
+                    local itemID = uncachedItems[idx]
+                    tooltip:ClearLines()
+                    tooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
+                    idx = idx + 1
+                    processed = processed + 1
+                end
 
-        -- Проверяем результат через короткую задержку
-        StartTimer(.15, function()
-            checkCacheComplete()
-        end)
-    end
+                if idx <= total then
+                    local delay = (iteration == 1) and 0.07 or 0.09
+                    StartTimer(delay, function()
+                        processBatch()
+                    end)
+                else
+                    -- После последнего батча даём клиенту короткий тик, затем проверяем оставшиеся
+                    local delay = (iteration == 1) and 0.07 or 0.09
+                    StartTimer(delay, function()
+                        local remaining = {}
+                        for i = 1, total do
+                            local id = uncachedItems[i]
+                            if not GetItemInfo(id) then
+                                table.insert(remaining, id)
+                            end
+                        end
+                        uncachedItems = remaining
+
+                        if getn(uncachedItems) == 0 or iteration >= maxIterations then
+                            if not ATLASTWLOOT_CHECKED_SETS[setHash] then
+                                ATLASTWLOOT_CHECKED_SETS[setHash] = true
+                                ATLASTWLOOT_CHECKED_SETS_COUNT = ATLASTWLOOT_CHECKED_SETS_COUNT + 1
+                            end
+                            if callback then callback() end
+                        else
+                            iteration = iteration + 1
+                            local nextDelay = (iteration == 1) and 0.07 or 0.09
+                            StartTimer(nextDelay, function()
+                                runIteration()
+                            end)
+                        end
+                    end)
+                end
+            end
+
+            processBatch()
+        end
+
+        runIteration()
 end
 
 -- Функция обновления скроллбара для AtlasLootItemsFrame
 function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
-	--Check if the scroll bar exists
-    if not AtlasLootScrollBar then
-		AtlasLootItemsFrame:Hide()
-		return print("AtlasTW.Loot.ScrollBarLootUpdate: No AtlasLootScrollBar!")
-	end
 	--Load data for the current clicked boss line
-	local dataID, TableSource = AtlasLootItemsFrame.storedBoss and AtlasLootItemsFrame.storedBoss.name,
+	local dataID, dataSource = AtlasLootItemsFrame.storedBoss and AtlasLootItemsFrame.storedBoss.name,
 		AtlasLootItemsFrame.storedBoss and AtlasLootItemsFrame.storedBoss.loot
 	--Check if dataID and dataSource are valid
- 	if not dataID and not TableSource then
+ 	if not dataID and not dataSource then
 		return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataID and dataSource!")
 	end
+
+	if type(_G[dataSource]) == "function" then
+		print("AtlasLoot_Show2ItemsFrame: function")
+		_G[dataSource]()
+	elseif type(dataSource) == "table" then
+		print("AtlasLoot_Show2ItemsFrame: table")
+		local totalItems = getn(dataSource)
+		local num_scroll_steps = 0
+
+		if totalItems > AtlasTW.LOOT_NUM_LINES then
+			local numRows = math.ceil(totalItems/ 2)
+			num_scroll_steps = numRows - 7 -- TODO need remake
+		end
+		-- Set scroll bar range
+		FauxScrollFrame_Update(AtlasLootScrollBar, num_scroll_steps + 1, 2, 1)
+		AtlasLootScrollBar.scrollMax = num_scroll_steps
+
+		local offset = FauxScrollFrame_GetOffset(AtlasLootScrollBar)
+		-- Обновляем содержимое и видимость кнопок AtlasLootItem
+		for i = 1, AtlasTW.LOOT_NUM_LINES do
+			local itemButton = _G["AtlasLootItem_"..i]
+			local menuButton = _G["AtlasLootMenuItem_"..i]
+
+			if itemButton then
+				local iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
+				local nameFrame = _G["AtlasLootItem_"..i.."_Name"]
+				local extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
+				local borderFrame = _G["AtlasLootItem_"..i.."Border"]
+				local quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
+
+				-- Вычисляем правильный индекс для двух столбцов
+				local itemIndex = i + offset
+				if offset > 0 then
+					local col_size = 15
+
+					local i_zero = i - 1
+					local col_idx = math.floor(i_zero / col_size)
+					local offset_block = math.floor((offset - 1) / col_size)
+					local item_block = math.floor((itemIndex - 1) / col_size)
+
+					local expected_block = col_idx + offset_block
+					local adjustment = 0
+
+					if item_block == expected_block and offset_block > 0 then
+						adjustment = offset_block * col_size
+					elseif item_block == expected_block + 1 then
+						adjustment = (offset_block + 1) * col_size
+					end
+
+					if adjustment > 0 then
+						itemIndex = itemIndex + adjustment
+					end
+				end
+
+				local shouldShow = false
+
+				-- Показываем кнопку если индекс в пределах таблицы
+				if itemIndex <= totalItems and dataSource[itemIndex] then
+					local element = dataSource[itemIndex]
+					-- Проверяем, есть ли данные для отображения
+					if element and (element.id or element.name) then
+						-- Новая система - обновляем содержимое кнопки
+						local itemTexture, itemID, extratext, link = "", 0, "", ""
+						local itemName = element.name
+						local elemID = element.id
+						local itemQuality = 0
+						if elemID and elemID ~= 0 then
+							link = GetSpellInfoAtlasLootDB["enchants"][elemID] or GetSpellInfoAtlasLootDB["craftspells"][elemID]
+							if element.skill then --spell or item
+								-- Set original ID for itemButton (enchant or spell)
+								itemButton.elemID = elemID
+								-- Set type for itemButton (enchant or spell)
+								itemButton.typeID = GetSpellInfoAtlasLootDB.enchants[elemID] and "enchant" or "spell"
+								-- Set itemID from spell (craftItem)
+								itemID = link and link.item
+								CacheAllLootItems(link and link.reagents)
+								CacheAllLootItems(link and link.tools)
+								extratext = formSkillStyle(element.skill)
+							else
+								-- Set itemID in elemID coz not spell = item
+								itemButton.typeID = "item"
+								itemID = elemID
+							end
+							itemName, _, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(itemID or 0)
+							if itemName then
+								local r, g, b = GetItemQualityColor(itemQuality or 1)
+								nameFrame:SetTextColor(r, g, b)
+							else
+								itemName = link and link.name
+								nameFrame:SetTextColor(1, 1, 1)
+							end
+							nameFrame:SetText(itemName or L["Item not found in cache"])
+						elseif element.name then
+							-- Handle the case where item is a separator
+							local table = AtlasTW.ItemDB.CreateSeparator(element.name, element.icon, element.quality)
+							itemName = table.name
+							itemQuality = table.quality
+							itemTexture = table.texture
+
+							-- Clear itemButton data from item saves
+							itemButton.itemID = 0
+							itemButton.elemID = 0
+							itemButton.typeID = nil
+
+							local r, g, b = GetItemQualityColor(itemQuality)
+							nameFrame:SetTextColor(r, g, b)
+							nameFrame:SetText(itemName or L["Item not found in cache"])
+						end
+						-- Set the dressing room ID
+						itemButton.dressingroomID = itemID
+
+						-- Set description text
+						if not element.skill then -- if item
+							local parsedText = AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, element.disc)
+							if parsedText and parsedText ~= "" then
+								extratext = parsedText
+							else
+								extratext = element.extra or ""
+							end
+						else -- if spell
+							itemTexture = itemTexture or (link and link.icon)
+							itemTexture = itemTexture or "Interface\\Icons\\Spell_Holy_GreaterHeal"
+							local parsedText = AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID)
+							--print("parsing "..(itemID or "no itemID"))
+							parsedText = link and link.extra and (link.extra..", "..parsedText) or parsedText
+							extratext = parsedText~="" and extratext..", "..parsedText or extratext
+
+						end
+
+						-- Set the description text
+						extraFrame:SetText(extratext or "")
+						extraFrame:Show()
+
+						-- Set the quantity
+						if element.quantity then
+							quantityFrame:SetText(type(element.quantity) == "table"
+								and (element.quantity[1].."-"..element.quantity[2]) or element.quantity)
+							quantityFrame:Show()
+						else
+							quantityFrame:Hide()
+						end
+
+						-- Set the icon
+						iconFrame:SetTexture(itemTexture or "Interface\\Icons\\INV_Misc_QuestionMark")
+
+						-- Save the item button data
+						itemButton.container = element.container
+						borderFrame:Hide()
+						if itemButton.container then
+							borderFrame:Show()
+						end
+
+						-- Set the item drop rate
+						if element.GetDropRateText then
+							itemButton.droprate = element:GetDropRateText()
+						end
+
+						itemButton.itemID = itemID or 0
+
+						--itemButton.itemLink = itemLink
+
+						shouldShow = true
+					end
+				else
+					-- Очищаем содержимое кнопки если нет данных
+					if iconFrame then iconFrame:SetTexture("") end
+					if nameFrame then nameFrame:SetText("") end
+					if extraFrame then extraFrame:SetText("") extraFrame:Hide() end
+					if borderFrame then borderFrame:Hide() end
+					if quantityFrame then quantityFrame:Hide() end
+
+					itemButton.itemID = 0
+					itemButton.elemID = 0
+					itemButton.typeID = nil
+					itemButton.itemLink = nil
+					itemButton.container = nil
+					itemButton.droprate = nil
+				end
+
+				if shouldShow then
+					itemButton:Show()
+				else
+					itemButton:Hide()
+				end
+			end
+
+			-- Скрываем кнопки меню при отображении предметов
+			if menuButton then
+				menuButton:Hide()
+			end
+		end
+	end
+
 	-- Скрываем QuickLooks
     AtlasLoot_QuickLooks:Hide()
     AtlasLootQuickLooksButton:Hide()
 
-	local dataSource=TableSource
-    if type(TableSource) ~= "table" then
-	--	print("ScrollBarLootUpdate: dataID:"..(dataID or "no dataID").."dataSource is not a table: "..(dataSource or " no dataSource"))
-        dataSource = AtlasLoot_Data[dataSource] or AtlasLoot_MenuHandlers[dataSource]
-		if not dataSource then
-			for k, value in pairs(AtlasTW.InstanceData) do
-				if k == TableSource or value.Name == dataID then
-					--print("AtlasTW.Loot.ScrollBarLootUpdate: value.Name == dataID")
-					for _, val in ipairs(value.Bosses) do
-						if val.name == dataID or val.name == TableSource then
-						--	print("AtlasTW.Loot.ScrollBarLootUpdate: val.items "..val.items[1].id)
-							dataSource = val.items
-						end
-					end
-				end
-			end
-		end
+	-- Set the loot page name
+	AtlasLoot_LootPageName:SetText(dataID or "No Name")
 
-        if not dataSource then
-			AtlasLootItemsFrame:Hide()
-			return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataSource!")
-		end
-    end
+	--Hide the container frame
+	AtlasLootItemsFrameContainer:Hide()
 
-	CacheAllLootItems(dataSource, function()
-		if type(_G[dataSource]) == "function" then
-			print("AtlasLoot_Show2ItemsFrame: function")
-			_G[dataSource]()
-		elseif type(dataSource) == "table" then
-			print("AtlasLoot_Show2ItemsFrame: table")
-			local totalItems = getn(dataSource)
-			local num_scroll_steps = 0
-
-			if totalItems > AtlasTW.LOOT_NUM_LINES then
-				local numRows = math.ceil(totalItems/ 2)
-				num_scroll_steps = numRows - 7 -- TODO need remake
-			end
-			-- Set scroll bar range
-			FauxScrollFrame_Update(AtlasLootScrollBar, num_scroll_steps + 1, 2, 1)
-			AtlasLootScrollBar.scrollMax = num_scroll_steps
-
-			local offset = FauxScrollFrame_GetOffset(AtlasLootScrollBar)
-			-- Обновляем содержимое и видимость кнопок AtlasLootItem
-			for i = 1, AtlasTW.LOOT_NUM_LINES do
-				local itemButton = _G["AtlasLootItem_"..i]
-				local menuButton = _G["AtlasLootMenuItem_"..i]
-
-				if itemButton then
-					local iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
-					local nameFrame = _G["AtlasLootItem_"..i.."_Name"]
-					local extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
-					local borderFrame = _G["AtlasLootItem_"..i.."Border"]
-					local quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
-
-					-- Вычисляем правильный индекс для двух столбцов
-					local itemIndex = i + offset
-					if offset > 0 then
-						local col_size = 15
-
-						local i_zero = i - 1
-						local col_idx = math.floor(i_zero / col_size)
-						local offset_block = math.floor((offset - 1) / col_size)
-						local item_block = math.floor((itemIndex - 1) / col_size)
-
-						local expected_block = col_idx + offset_block
-						local adjustment = 0
-
-						if item_block == expected_block and offset_block > 0 then
-							adjustment = offset_block * col_size
-						elseif item_block == expected_block + 1 then
-							adjustment = (offset_block + 1) * col_size
-						end
-
-						if adjustment > 0 then
-							itemIndex = itemIndex + adjustment
-						end
-					end
-
-					local shouldShow = false
-
-					-- Показываем кнопку если индекс в пределах таблицы
-					if itemIndex <= totalItems and dataSource[itemIndex] then
-						local element = dataSource[itemIndex]
-						-- Проверяем, есть ли данные для отображения
-						if element and (element.id or element.name) then
-							-- Новая система - обновляем содержимое кнопки
-							local itemLink, itemQuality, itemTexture
-							local itemName = element.name
-							local elemID = element.id
-							local itemID, extratext
-						extratext = "" -- Сбрасываем extratext для каждого элемента
-
-						if elemID and elemID ~= 0 then
-								local link = GetSpellInfoAtlasLootDB["enchants"][elemID] or GetSpellInfoAtlasLootDB["craftspells"][elemID]
-								if element.skill then --spell or item
-									-- Set original ID for itemButton (enchant or spell)
-									itemButton.elemID = elemID
-									-- Set type for itemButton (enchant or spell)
-									itemButton.typeID = GetSpellInfoAtlasLootDB.enchants[elemID] and "enchant" or "spell"
-									-- Set itemID from spell (craftItem)
-									itemID = link and link["item"]
-	--[[ 								--Cache all items follow for spell
-									if link and type(link["reagents"]) == "table" then
-										for j = 1, table.getn(link["reagents"]) do
-											AtlasLoot_CacheItem(link["reagents"][j])
-										end
-									elseif link and type(link["tools"]) == "table" then
-										for j = 1, table.getn(link["tools"]) do
-											AtlasLoot_CacheItem(link["tools"][j])
-										end
-									end
-									AtlasLoot_CacheItem(itemID) ]]
-									extratext = formSkillStyle(element.skill)
-								else
-									-- Set itemID in elemID coz not spell = item
-									itemButton.typeID = "item"
-									itemID = elemID
-								end
-								itemName, itemLink, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(itemID or 0)
-								if itemName then
-									local r, g, b = GetItemQualityColor(itemQuality)
-									nameFrame:SetTextColor(r, g, b)
-								else
-									itemName = link and link["name"]
-								end
-								nameFrame:SetText(itemName or L["Item not found in cache"])
-							elseif element.name then
-								-- Handle the case where item is a separator
-								local table = AtlasTW.ItemDB.CreateSeparator(element.name, element.icon, element.quality)
-								itemName = table.name
-								itemQuality = table.quality
-								itemTexture = table.texture
-
-								local r, g, b = GetItemQualityColor(itemQuality)
-								nameFrame:SetTextColor(r, g, b)
-								nameFrame:SetText(itemName or L["Item not found in cache"])
-							end
-							-- Set the dressing room ID
-							itemButton.dressingroomID = itemID
-
-							-- Set description text
-							if not element.skill then -- if item
-								local parsedText = AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, element.disc)
-								if parsedText and parsedText ~= "" then
-									extratext = parsedText
-								else
-									extratext = element.extra or ""
-								end
-							end
-	--[[  idk what is it
-							if GetMouseFocus() == itemButton then
-								itemButton:Hide()
-								itemButton:Show()
-							end ]]
-
-							-- Set the description text
-							extraFrame:SetText(extratext or "")
-							extraFrame:Show()
-
-							-- Set the quantity
-							if element.quantity then
-								quantityFrame:SetText(type(element.quantity) == "table"
-									and (element.quantity[1].."-"..element.quantity[2]) or element.quantity)
-								quantityFrame:Show()
-							else
-								quantityFrame:Hide()
-							end
-
-							-- Set the icon
-							iconFrame:SetTexture(itemTexture or "Interface\\Icons\\INV_Misc_QuestionMark")
-
-							-- Save the item button data
-							itemButton.container = element.container
-							borderFrame:Hide()
-							if itemButton.container then
-								borderFrame:Show()
-							end
-
-							-- Set the item drop rate
-							if element.GetDropRateText then
-								itemButton.droprate = element:GetDropRateText()
-							end
-
-							itemButton.itemID = itemID or 0
-
-							--itemButton.itemLink = itemLink
-
-							shouldShow = true
-						end
-					else
-						-- Очищаем содержимое кнопки если нет данных
-						if iconFrame then iconFrame:SetTexture("") end
-						if nameFrame then nameFrame:SetText("") end
-						if extraFrame then extraFrame:SetText("") extraFrame:Hide() end
-						if borderFrame then borderFrame:Hide() end
-						if quantityFrame then quantityFrame:Hide() end
-
-						itemButton.itemID = 0
-						itemButton.elemID = 0
-						itemButton.typeID = nil
-						itemButton.itemLink = nil
-						itemButton.container = nil
-						itemButton.droprate = nil
-					end
-
-					if shouldShow then
-						itemButton:Show()
-					else
-						itemButton:Hide()
-					end
-				end
-
-				-- Скрываем кнопки меню при отображении предметов
-				if menuButton then
-					menuButton:Hide()
-				end
-			end
-		end
-
-		-- Set the loot page name
-		AtlasLoot_LootPageName:SetText(dataID or "No Name")
-
-		--Hide the container frame
-		AtlasLootItemsFrameContainer:Hide()
-
-		--Show the loot frame
-		AtlasLootItemsFrame:Show()
-	end)
+	--Show the loot frame
+	AtlasLootItemsFrame:Show()
 end
 
 local function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
@@ -1153,30 +1218,57 @@ print("Run: AtlasLoot_ShowItemsFrame "..(dataID or " no dataID").." _"..
 end
 
 function AtlasLootBoss_OnClick(buttonName)
+	-- Reset scroll position to top
+    FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
+	AtlasLootScrollBarScrollBar:SetValue(0)
     local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
     local id = this.idnum
     local bossname = AtlasTW.ScrollList[id].name
 
-	--print("zoneID "..(zoneID or ""))
-	--print("bossName "..(bossname or "").." id "..(id or ""))
     if AtlasLootItemsFrame.activeBoss == id then
         AtlasLootItemsFrame:Hide()
         AtlasLootItemsFrame.activeBoss = nil
     else
 		--Get the loot table for the element, either by name or by ID how reserv metod
 		local loot = GetLootByName(zoneID, bossname) or GetLootByID(zoneID, id)
-		--print("loot "..(loot and "exist loot" or "not exist loot"))
         if loot then
---[[ 		   if type(loot) == "string" then
-			   print("loot is a string: "..loot)
-		   end ]]
-		   --Store the loot table and boss name
-			AtlasLootItemsFrame.storedBoss = {name = bossname, loot = loot}
+			local dataSource = loot
+			if type(dataSource) ~= "table" then
+				print("AtlasLootBoss_OnClick: dataID:"..(bossname or "no bossname").."dataSource is not a table: "..(dataSource or " no dataSource"))
+				dataSource = AtlasLoot_Data[dataSource] or AtlasLoot_MenuHandlers[dataSource]
+		  		if not dataSource then
+					for k, value in pairs(AtlasTW.InstanceData) do
+						if k == loot or value.Name == bossname then
+							print("AtlasLootBoss_OnClick: value.Name == bossname")
+							for _, val in ipairs(value.Bosses) do
+								if val.name == bossname or val.name == loot then
+								--	print("AtlasTW.Loot.ScrollBarLootUpdate: val.items "..val.items[1].id)
+									dataSource = val.items
+								end
+							end
+						end
+					end
+				end
+				if not dataSource then
+					AtlasLootItemsFrame:Hide()
+					return print("AtlasLootBoss_OnClick: No loot!")
+				end
+			end
+			AtlasLootItemsFrame:Show()
+			local scrollStartTime = GetTime()
+			AtlasLoot_ShowScrollBarLoading()
 
+		   --Store the loot table and boss name
+			AtlasLootItemsFrame.storedBoss = {name = bossname, loot = dataSource}
             AtlasLootItemsFrame.activeBoss = id
 
-			-- Update scrollbar
-			AtlasTW.Loot.ScrollBarLootUpdate()
+			CacheAllLootItems(dataSource, function()
+				local elapsed = GetTime() - scrollStartTime
+				print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
+				AtlasLoot_HideScrollBarLoading()
+				-- Update scrollbar
+				AtlasTW.Loot.ScrollBarLootUpdate()
+			end)
         else
             AtlasLootItemsFrame:Hide()
             AtlasLootItemsFrame.activeBoss = nil
@@ -1488,6 +1580,13 @@ function AtlasLootMenuItem_OnClick(button)
 		AtlasLoot_ShowContainerFrame()
 		return
 	end
+	-- Reset scroll position to top
+    FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
+	AtlasLootScrollBarScrollBar:SetValue(0)
+	-- Get the table source and data ID
+	local TableSource = this.lootpage
+	local dataID = this.name
+	local dataSource = TableSource
 	local pagename
 	if this.isheader == nil or this.isheader == false then
 		pagename = _G[this:GetName().."_Name"]:GetText()
@@ -1498,13 +1597,13 @@ function AtlasLootMenuItem_OnClick(button)
 						for _, v4 in pairs(v3) do
 							if not (type(v4[1]) == "table") then
 								if v4[1] == pagename and (not v4[3] or v4[3] == "Table") then
-									AtlasLoot_HewdropClick(v4[2],this.name_orig or this.name,v4[3]) --TODO need change to  better
+									AtlasLoot_HewdropClick(v4[2],this.name_orig or dataID,v4[3]) --TODO need change to  better
 									--AtlasLoot_HewdropClick(v4[2],v4[1],v4[3])
 								end
 							else
 								for _,v5 in pairs(v4) do
 									if v5[1] == pagename then
-										AtlasLoot_HewdropClick(v5[2],this.name_orig or this.name,v5[3])
+										AtlasLoot_HewdropClick(v5[2],this.name_orig or dataID,v5[3])
 										--AtlasLoot_HewdropClick(v5[2],v5[1],v5[3])
 									end
 								end
@@ -1515,13 +1614,45 @@ function AtlasLootMenuItem_OnClick(button)
 			end
 		end
 		CloseDropDownMenus()
-		AtlasTWCharDB.LastBoss = this.lootpage
+		AtlasTWCharDB.LastBoss = TableSource
 		AtlasTWCharDB.LastBossText = pagename
+		print(dataID.." - dataID, "..TableSource.." - TableSource")
+		if type(TableSource) ~= "table" then
+		--	print("ScrollBarLootUpdate: dataID:"..(dataID or "no dataID").."dataSource is not a table: "..(dataSource or " no dataSource"))
+        	dataSource = AtlasLoot_Data[dataSource] or AtlasLoot_MenuHandlers[dataSource]
+			if not dataSource then
+				for k, value in pairs(AtlasTW.InstanceData) do
+					if k == TableSource or value.Name == dataID then
+						--print("AtlasTW.Loot.ScrollBarLootUpdate: value.Name == dataID")
+						for _, val in ipairs(value.Bosses) do
+							if val.name == dataID or val.name == TableSource then
+							--	print("AtlasTW.Loot.ScrollBarLootUpdate: val.items "..val.items[1].id)
+								dataSource = val.items
+							end
+						end
+					end
+				end
+			end
+			if not dataSource then
+				AtlasLootItemsFrame:Hide()
+				return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataSource!")
+			end
+		end
+		AtlasLootItemsFrame:Show()
+		local scrollStartTime = GetTime()
+		AtlasLoot_ShowScrollBarLoading()
+
  		--Store the loot table and boss name
-		--print(this.name.." - this.name, "..this.lootpage.." - this.lootpage")
-		AtlasLootItemsFrame.storedBoss = {name = this.name, loot = this.lootpage}
-		-- Update scrollbar
-		AtlasTW.Loot.ScrollBarLootUpdate()
+		AtlasLootItemsFrame.storedBoss = {name = dataID, loot = dataSource}
+
+		CacheAllLootItems(dataSource, function()
+			local elapsed = GetTime() - scrollStartTime
+			print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
+			AtlasLoot_HideScrollBarLoading()
+			-- Update scrollbar
+			AtlasTW.Loot.ScrollBarLootUpdate()
+		end)
+
 		AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(pagename, 30))
 		AtlasLootItemsFrame_SelectedCategory:Show()
 	end
@@ -1701,7 +1832,7 @@ local function BuildMaterialString(materials, isReagent)
 
     local materialStrings = {}
     for i = 1, table.getn(materials) do
-		print(materials[i])
+		--print(materials[i])
 
         local itemInfo = materials[i]
         local checkedItem
@@ -1940,7 +2071,7 @@ function AtlasLootItem_OnClick(arg1)
 			AtlasTW.Loot.ScrollBarLootUpdate()
 
 			--AtlasLoot_ShowItemsFrame(dataID, dataSource)
-		elseif arg1=="RightButton" and itemName then
+--[[ 		elseif arg1=="RightButton" and itemName then
 			AtlasLootItemsFrame:Hide()
 
 			-- Update scrollbar
@@ -1950,7 +2081,7 @@ function AtlasLootItem_OnClick(arg1)
 			if not AtlasTWOptions.LootItemSpam then
 				print(itemName..L[" is safe."])
 				--print(AtlasLootItemsFrame.activeBoss)
-			end
+			end ]]
 		elseif IsShiftKeyDown() and not itemName and this.itemID ~= 0 then
 			if AtlasTWOptions.LootSafeLinks then
 				if WIM_EditBoxInFocus then
@@ -2118,10 +2249,86 @@ end
 local containerItems = {}
 local lastSelectedButton
 
+-- Универсальная функция создания индикатора загрузки
+function AtlasLoot_CreateLoadingFrame(frameName, parentFrame, debugName)
+	local loadingFrame = getglobal(frameName)
+	if not loadingFrame then
+		loadingFrame = CreateFrame("Frame", frameName, parentFrame)
+		loadingFrame:SetAllPoints(parentFrame)
+		loadingFrame:SetFrameLevel(parentFrame:GetFrameLevel() + 1)
+		loadingFrame:SetBackdrop({
+			bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+			tile = true,
+			edgeSize = 16,
+			tileSize = 16,
+			insets = { left = 4, right = 4, top = 4, bottom = 4 }
+		})
+		loadingFrame:SetBackdropColor(0, 0, 0, 0.5)
+		loadingFrame:SetBackdropBorderColor(1, 0.82, 0, 0.8)
+
+		local text = loadingFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+		text:SetPoint("CENTER", loadingFrame, "CENTER")
+		text:SetTextColor(1, 1, 0)
+		text:SetText("|")
+		loadingFrame.text = text
+
+		loadingFrame.animTimer = 0
+		loadingFrame.spinnerIndex = 1
+		loadingFrame.spinnerChars = {"|", "/", "-", "\\"}
+		loadingFrame:SetScript("OnUpdate", function()
+			this.animTimer = this.animTimer + arg1
+			if this.animTimer >= 0.15 then
+				this.animTimer = 0
+				this.spinnerIndex = this.spinnerIndex + 1
+				if this.spinnerIndex > 4 then
+					this.spinnerIndex = 1
+				end
+				this.text:SetText(this.spinnerChars[this.spinnerIndex])
+			end
+		end)
+
+		setglobal(frameName, loadingFrame)
+	end
+	loadingFrame:Show()
+	if debugName then
+		print("AtlasLoot: show " .. debugName .. " spinner")
+	end
+end
+
+function AtlasLoot_HideLoadingFrame(frameName, debugName)
+	local loadingFrame = getglobal(frameName)
+	if loadingFrame then
+		loadingFrame:Hide()
+		if debugName then
+			print("AtlasLoot: hide " .. debugName .. " spinner")
+		end
+	end
+end
+
+-- Индикатор загрузки для окна прокрутки
+function AtlasLoot_ShowScrollBarLoading()
+	AtlasLoot_CreateLoadingFrame("AtlasLootScrollBarLoadingFrame", AtlasLootItemsFrame)
+end
+
+function AtlasLoot_HideScrollBarLoading()
+	AtlasLoot_HideLoadingFrame("AtlasLootScrollBarLoadingFrame")
+end
+
+-- Индикатор загрузки для контейнера
+function AtlasLoot_ShowContainerLoading()
+	AtlasLoot_CreateLoadingFrame("AtlasLootContainerLoadingFrame", AtlasLootItemsFrameContainer)
+end
+
+function AtlasLoot_HideContainerLoading()
+	AtlasLoot_HideLoadingFrame("AtlasLootContainerLoadingFrame")
+end
+
 function AtlasLoot_ShowContainerFrame()
 	if this ~= lastSelectedButton then
-		AtlasLootItemsFrameContainer:Show()
 		lastSelectedButton = this
+		-- Прячем старый контейнер до окончания кэширования для нового
+		AtlasLootItemsFrameContainer:Hide()
 	elseif AtlasLootItemsFrameContainer:IsVisible() then
 		AtlasLootItemsFrameContainer:Hide()
 		lastSelectedButton = nil
@@ -2130,14 +2337,42 @@ function AtlasLoot_ShowContainerFrame()
 	for i = 1, table.getn(containerItems) do
 		getglobal("AtlasLootContainerItem"..i):Hide()
 	end
-	CacheAllLootItems(this.container, function ()
-		local containerTable = this.container
-		if not containerTable then
-			return
-		end
-		if not AtlasLootItemsFrameContainer:IsVisible() and lastSelectedButton == this then
-			AtlasLootItemsFrameContainer:Show()
-		end
+
+	local containerTable = this.container
+	if not containerTable then
+		return
+	end
+
+	-- Показываем контейнер с заглушкой "Загрузка"
+	AtlasLootItemsFrameContainer:Show()
+	AtlasLootItemsFrameContainer:ClearAllPoints()
+	AtlasLootItemsFrameContainer:SetPoint("TOPLEFT", this , "BOTTOMLEFT", -2, 2)
+	AtlasLootItemsFrameContainer:SetWidth(150)
+	AtlasLootItemsFrameContainer:SetHeight(50)
+
+	AtlasLoot_ShowContainerLoading()
+
+    local containerStartTime = GetTime()
+	-- Кэшируем все предметы контейнера асинхронно, затем обновляем фрейм
+	CacheAllLootItems(containerTable, function()
+        local elapsed = GetTime() - containerStartTime
+        print("AtlasLoot: время загрузки контейнера: " .. string.format("%.2f", elapsed) .. " c")
+		AtlasLoot_UpdateContainerDisplay()
+	end)
+end
+
+-- Функция для обновления отображения контейнера после кэширования
+function AtlasLoot_UpdateContainerDisplay()
+	if not lastSelectedButton or not lastSelectedButton.container then
+		return
+	end
+
+	AtlasLoot_HideContainerLoading()
+
+	local containerTable = lastSelectedButton.container
+	if not AtlasLootItemsFrameContainer:IsVisible() and lastSelectedButton then
+		AtlasLootItemsFrameContainer:Show()
+	end
 		local row = 0
 		local col = 0
 		local buttonIndex = 1
@@ -2203,10 +2438,10 @@ function AtlasLoot_ShowContainerFrame()
 			row = row + 1
 		end
 
-		AtlasLootItemsFrameContainer:SetPoint("TOPLEFT", this , "BOTTOMLEFT", -2, 2)
+		AtlasLootItemsFrameContainer:ClearAllPoints()
+		AtlasLootItemsFrameContainer:SetPoint("TOPLEFT", lastSelectedButton , "BOTTOMLEFT", -2, 2)
 		AtlasLootItemsFrameContainer:SetWidth(16 + ((row==0 and col or maxCols) * 35))
 		AtlasLootItemsFrameContainer:SetHeight(16 + (row * 35))
-	end)
 end
 
 function AtlasLoot_AddContainerItemTooltip(frame ,itemID)
@@ -2225,13 +2460,18 @@ function AtlasLoot_AddContainerItemTooltip(frame ,itemID)
 		end
         AtlasLootTooltip:Show()
 		local icon = getglobal(this:GetName().."Icon")
-		if icon:GetTexture() == "Interface\\Icons\\INV_Misc_QuestionMark" then
-			local _,_,quality,_,_,_,_,_,tex = GetItemInfo(itemID)
-			if tex and quality then
-				local r, g, b  = GetItemQualityColor(quality)
+		-- Автоматическое обновление иконки при наведении, если предмет теперь кэширован
+		local _,_,quality,_,_,_,_,_,tex = GetItemInfo(itemID)
+		if tex and quality then
+			local r, g, b  = GetItemQualityColor(quality)
+			if icon:GetTexture() == "Interface\\Icons\\INV_Misc_QuestionMark" or
+			   icon:GetTexture() ~= tex then
 				icon:SetTexture(tex)
 				this:SetBackdropBorderColor(r, g, b)
 			end
+		elseif icon:GetTexture() == "Interface\\Icons\\INV_Misc_QuestionMark" then
+			-- Если предмет всё ещё не кэширован, пытаемся форсированно кэшировать
+			AtlasLoot_ForceCacheItem(itemID, 1)
 		end
     end)
     frame:SetScript("OnLeave", function()

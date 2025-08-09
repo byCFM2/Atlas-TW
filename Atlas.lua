@@ -48,6 +48,8 @@ local function setupPfUITooltip()
 	-- Create pfUI tooltip backdrop
 	pfUI.api.CreateBackdrop(AtlasTW.Quest.Tooltip)
 	pfUI.api.CreateBackdropShadow(AtlasTW.Quest.Tooltip)
+	pfUI.api.CreateBackdrop(AtlasLootTooltip2)
+	pfUI.api.CreateBackdropShadow(AtlasLootTooltip2)
 	-- Setup equipment comparison if available
 	if pfUI.eqcompare then
 		hookScript(AtlasTW.Quest.Tooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)

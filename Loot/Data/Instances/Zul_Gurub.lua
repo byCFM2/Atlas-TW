@@ -418,9 +418,6 @@ AtlasTW.InstanceData.ZulGurub = {
                 {id=19813},
             }
         },
-        { name = BIS["Primal Blessing"], items = "PrimalBlessing" },
-        { name = BIS["The Twin Blades of Hakkari"], items = "HakkariBlades" },
-        { name = L["Zul'Gurub Ring Sets"], items = "ZGRings" },
         { name = L["Zul'Gurub Sets"], items = "ZGSet" },
         { name = L["Zul'Gurub Enchants"], items = zGEnchants },
     }

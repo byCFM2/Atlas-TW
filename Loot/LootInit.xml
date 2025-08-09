@@ -24,7 +24,7 @@
 	<Include file="Core\WishList.lua"/>
 	<Include file="Core\Search.lua"/>
 	<Include file="Core\Dungeons.lua"/>
-	<Include file="Core\Tooltip.lua"/>
+	<!--<Include file="Core\Tooltip.lua"/> need to remake--> 
 	<Include file="Core\LootConfig.lua"/>
 	
 	<!-- Include UI -->

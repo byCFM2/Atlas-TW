@@ -103,82 +103,166 @@ local function getColoredText(text, typeText)
     return colorCode..text..COLOR_END
 end
 
--- Функция для парсинга подсказки предмета
-function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
-    if not itemID or itemID == 0 or not GetItemInfo(itemID) then return "" end
-    local tooltipName = "AtlasLootHiddenTooltip"
-    local tooltip = _G[tooltipName]
-    if not tooltip then
-        tooltip = CreateFrame("GameTooltip", tooltipName, UIParent, "GameTooltipTemplate")
-        tooltip:SetOwner(UIParent, "ANCHOR_NONE")
-        _G[tooltipName] = tooltip -- Кэшируем ссылку на фрейм в _G
+-- Кэш для результатов парсинга подсказок
+local ParsedTooltipCache = {}
+local ParsedTooltipCacheSize = 0
+local MAX_CACHE_SIZE = 200
+
+-- Статические reference для оптимизации
+local tooltipElementsCache = {}
+local sharedTooltip = nil
+
+-- Функция очистки кэша
+local function CleanupTooltipCache()
+    if ParsedTooltipCacheSize > MAX_CACHE_SIZE then
+        ParsedTooltipCache = {}
+        ParsedTooltipCacheSize = 0
     end
-    tooltip:ClearLines()
-    tooltip:SetHyperlink("item:"..tostring(itemID))
-    -- Проверяем, что тултип содержит данные (предмет кэширован)
-    local firstLine = _G[tooltipName .. "TextLeft1"]
-    if not firstLine or not firstLine:GetText() or firstLine:GetText() == "" then
-        -- Предмет не кэширован, возвращаем только extratext если есть
+end
+
+-- Функция для парсинга подсказки предмета (улучшенная версия)
+function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
+    if not itemID or itemID == 0 then
         return extratext or ""
     end
+
+    -- Проверяем, что предмет кэширован
+    if not GetItemInfo(itemID) then
+        return extratext or ""
+    end
+
+    -- Создаем ключ для кэша
+    local cacheKey = itemID .. "_" .. (extratext or "")
+
+    -- Проверяем кэш результатов
+    if ParsedTooltipCache[cacheKey] then
+        return ParsedTooltipCache[cacheKey]
+    end
+
+    CleanupTooltipCache()
+
+    local tooltipName = "AtlasLootHiddenTooltip"
+
+    -- Lazy-инициализация разделяемого тултипа
+    if not sharedTooltip then
+        sharedTooltip = CreateFrame("GameTooltip", tooltipName, UIParent, "GameTooltipTemplate")
+        if not sharedTooltip then
+            return extratext or ""
+        end
+        sharedTooltip:SetOwner(UIParent, "ANCHOR_NONE")
+    end
+
+    local tooltip = sharedTooltip
+
+    -- Быстрая очистка без защиты (оптимизация)
+    tooltip:Hide()
+    tooltip:ClearLines()
+
+    -- Быстрая установка гиперссылки
+    local success = pcall(function()
+        tooltip:SetOwner(UIParent, "ANCHOR_NONE")
+        tooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
+    end)
+
+    if not success then
+        return extratext or ""
+    end
+
+    -- Проверяем первую строку
+    local firstLine = _G[tooltipName .. "TextLeft1"]
+    if not firstLine or not firstLine:GetText() or firstLine:GetText() == "" then
+        return extratext or ""
+    end
+
     local info = {}
-    if extratext and extratext ~= "" then table.insert(info, extratext) end
-    local line, line2, text, text2
-    local tooltipTextLeftPrefix = tooltipName .. "TextLeft"
-    local tooltipTextRightPrefix = tooltipName .. "TextRight"
-    for i = 1, 12 do --TODO нужна доработка, есть проблемы с off hand и подсумками с разными слотами
-        line = _G[tooltipTextLeftPrefix .. i]
-        line2 = _G[tooltipTextRightPrefix .. i]
-        if line then
-            text = line:GetText()
-            text2 = line2:GetText()
-            if text then
-                -- Ищем строку с предметом для задания
-                if string.find(text, L["Quest Item"]) then
-                    table.insert(info, text)
-                -- Ищем строку с маунтом
-                elseif string.find(text, string.lower(" "..L["Mount"].." ")) then
-                    table.insert(info, L["Mount"])
-                    break
-                -- Ищем строку с глифом
-                elseif string.find(text, string.lower(L["Glyph"])) then
-                    table.insert(info, L["Glyph"])
-                -- Ищем строку с петом
-                elseif string.find(text, string.lower(" "..L["Companion"].." ")) then
-                    table.insert(info, L["Pet"])
-                -- Ищем строку с начинающим задание
-                elseif string.find(text, L["This Item Begins a Quest"]) then
-                    table.insert(info, text)
-                end
-                -- Ищем тип слота (Feet, Chest, etc.) и тип брони (Cloth, Leather, etc.)
-                if AtlasTW.ItemDB.SLOT_KEYWORDS[text]  then
-                --    print(text.." text and text2 "..(text2 or ""))
-                    if text2 and AtlasTW.ItemDB.SLOT2_KEYWORDS[text2] then
-                        table.insert(info, getColoredText(text.." "..text2, "slot"))
-                    else
-                        table.insert(info, getColoredText(text, "slot"))
+    if extratext and extratext ~= "" then
+        table.insert(info, extratext)
+    end
+
+    -- Кэшируем элементы UI только при первом доступе
+    if not tooltipElementsCache.initialized then
+        tooltipElementsCache.leftElements = {}
+        tooltipElementsCache.rightElements = {}
+        for i = 1, 12 do
+            tooltipElementsCache.leftElements[i] = _G[tooltipName .. "TextLeft" .. i]
+            tooltipElementsCache.rightElements[i] = _G[tooltipName .. "TextRight" .. i]
+        end
+        tooltipElementsCache.initialized = true
+    end
+
+    -- Оптимизированный парсинг
+    local parseSuccess = pcall(function()
+        local text, text2
+
+        for i = 1, 12 do
+            local line = tooltipElementsCache.leftElements[i]
+            local line2 = tooltipElementsCache.rightElements[i]
+
+            if line then
+                text = line:GetText()
+                if text then
+                    text2 = line2 and line2:GetText() or nil
+
+                    -- Быстрые проверки по ключевым словам (без лишних вызовов string.find)
+                    local lowerText = string.lower(text)
+
+                    -- Предмет для задания
+                    if string.find(text, L["Quest Item"]) then
+                        table.insert(info, text)
+                    -- Маунт
+                    elseif string.find(lowerText, string.lower(" "..L["Mount"].." ")) then
+                        table.insert(info, L["Mount"])
+                        break
+                    -- Глиф
+                    elseif string.find(lowerText, string.lower(L["Glyph"])) then
+                        table.insert(info, L["Glyph"])
+                    -- Пет
+                    elseif string.find(lowerText, string.lower(" "..L["Companion"].." ")) then
+                        table.insert(info, L["Pet"])
+                    -- Начинает задание
+                    elseif string.find(text, L["This Item Begins a Quest"]) then
+                        table.insert(info, text)
                     end
-                end
-                if AtlasTW.ItemDB.SLOT2_KEYWORDS[text] then
-                --   print(text.." text and text2 "..(text2 or ""))
-                    if text == L["Finger"] then
-                        table.insert(info, "|cff00ff00"..L["Ring"].."|r")
-                    else
-                --        print(text.." slot2")
-                        table.insert(info, getColoredText(text, "slot2"))
+
+                    -- Оптимизированная проверка слотов
+                    if AtlasTW.ItemDB.SLOT_KEYWORDS[text] then
+                        if text2 and AtlasTW.ItemDB.SLOT2_KEYWORDS[text2] then
+                            table.insert(info, getColoredText(text.." "..text2, "slot"))
+                        else
+                            table.insert(info, getColoredText(text, "slot"))
+                        end
+                    elseif AtlasTW.ItemDB.SLOT2_KEYWORDS[text] then
+                        if text == L["Finger"] then
+                            table.insert(info, "|cff00ff00"..L["Ring"].."|r")
+                        else
+                            table.insert(info, getColoredText(text, "slot2"))
+                        end
+                    -- Классы
+                    elseif string.find(text, L["Classes"]) then
+                        table.insert(info, getColoredText(text, "class"))
+                    -- Требования
+                    elseif string.find(text, L["Requires"]) then
+                        table.insert(info, getColoredText(text, "requires"))
                     end
-                -- Ищем строку с классами
-                elseif string.find(text, L["Classes"]) then
-                    table.insert(info, getColoredText(text, "class"))
-                -- Ищем строку с требованиями
-                elseif string.find(text, L["Requires"]) then
-                    table.insert(info, getColoredText(text, "requires"))
                 end
             end
         end
+    end)
+
+    -- Быстрая очистка
+    tooltip:Hide()
+    tooltip:ClearLines()
+
+    local result = extratext or ""
+    if parseSuccess and table.getn(info) > 0 then
+        result = table.concat(info, ", ")
     end
 
-    return table.concat(info, ", ")
+    -- Сохраняем в кэш
+    ParsedTooltipCache[cacheKey] = result
+    ParsedTooltipCacheSize = ParsedTooltipCacheSize + 1
+
+    return result
 end
 
 -- Функция для запуска таймера (исправленная версия)
