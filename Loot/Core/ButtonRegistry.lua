@@ -303,8 +303,7 @@ AtlasLoot_TableRegistry = {
     ["Crafting"] = {
         Name = BS["First Aid"],
         Entry = {
-            { ID = "Herbalism", Title = BS["Herbalism"].." 1 - 250" },
-            { ID = "Herbalism2", Title = BS["Herbalism"].." 260+" },
+            { ID = "Herbalism", Title = BS["Herbalism"] },
             { ID = "FirstAid", Title = BS["First Aid"] },
             { ID = "Poisons", Title = BS["Poisons"] },
             { ID = "CraftedWeapons", Title = L["Crafted Epic Weapons"] },
@@ -446,15 +445,10 @@ AtlasLoot_TableRegistry = {
         Entry = {
             { ID = "JewelcraftingApprentice", Title = BS["Jewelcrafting"]..": "..L["Apprentice"] },
             { ID = "JewelcraftingJourneyman", Title = BS["Jewelcrafting"]..": "..L["Journeyman"] },
-            { ID = "JewelcraftingJourneyman2", Title = BS["Jewelcrafting"]..": "..L["Journeyman"] },
             { ID = "JewelcraftingExpert", Title = BS["Jewelcrafting"]..": "..L["Expert"] },
-            { ID = "JewelcraftingExpert2", Title = BS["Jewelcrafting"]..": "..L["Expert"] },
-            { ID = "JewelcraftingExpert3", Title = BS["Jewelcrafting"]..": "..L["Expert"] },
             { ID = "JewelcraftingArtisan", Title = BS["Jewelcrafting"]..": "..L["Artisan"] },
-            { ID = "JewelcraftingArtisan2", Title = BS["Jewelcrafting"]..": "..L["Artisan"] },
             { ID = "JewelcraftingGemstones", Title = BS["Jewelcrafting"]..": "..L["Gemstones"] },
             { ID = "JewelcraftingRings", Title = BS["Jewelcrafting"]..": "..L["Rings"] },
-            { ID = "JewelcraftingRings2", Title = BS["Jewelcrafting"]..": "..L["Rings"] },
             { ID = "JewelcraftingAmulets", Title = BS["Jewelcrafting"]..": "..L["Amulets"] },
             { ID = "JewelcraftingHelm", Title = BS["Jewelcrafting"]..": "..L["Head"] },
             { ID = "JewelcraftingBracers", Title = BS["Jewelcrafting"]..": "..L["Bracers"] },

@@ -6927,42 +6927,6 @@ GetSpellInfoAtlasLootDB = {
 			reagents = {
 			},
 		},
-		[15007] = {
-			name = "Engineering: Jewelry Lens",
-			requires = L["Anvil"],
-			item = 41326,
-			reagents = {
-				{2841,2},
-				{4371,2},
-				{2319},
-				{4404},
-				{1705},
-			},
-		},
-		[15008] = {
-			name = "Engineering: Precision Jewelers Kit",
-			requires = L["Anvil"],
-			item = 41328,
-			reagents = {
-				{4389},
-				{4387},
-				{4382,3},
-				{4375,3},
-				{55155},
-			},
-		},
-		[15009] = {
-			name = "Engineering: Jewelry Scope",
-			requires = L["Anvil"],
-			item = 41327,
-			reagents = {
-				{4389},
-				{3864},
-				{10559,2},
-				{10561,4},
-				{7191},
-			},
-		},
 		[15255] = {
 			name = "Engineering: Mechanical Repair Kit",
 			requires = L["Anvil"],
@@ -12086,6 +12050,39 @@ GetSpellInfoAtlasLootDB = {
 				{1206, 3},
 			},
 		},
+		[41073] = {
+			requires = L["Anvil"],
+			item = 41326,
+			reagents = {
+				{2841,2},
+				{4371,2},
+				{2319},
+				{4404},
+				{1705},
+			},
+		},
+		[41077] = {
+			requires = L["Anvil"],
+			item = 41328,
+			reagents = {
+				{4389},
+				{4387},
+				{4382,3},
+				{4375,3},
+				{55155},
+			},
+		},
+		[41075] = {
+			requires = L["Anvil"],
+			item = 41327,
+			reagents = {
+				{4389},
+				{3864},
+				{10559,2},
+				{10561,4},
+				{7191},
+			},
+		},
 		[41081] = {
 			name = "Jewelcrafting: Rough Iron Ring",
 			tools = {55155},
@@ -14328,7 +14325,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45625] = {
-			name = "Cooking: Le Fishe Au Chocolat",
 			requires = L["Cooking Fire"],
 			item = 84040,
 			reagents = {
@@ -15073,46 +15069,6 @@ GetSpellInfoAtlasLootDB = {
 				{15407, 4},
 			},
 		},
-		[55518] = {
-			name = "Tailoring: Cosmic Headdress",
-			item = 55518,
-			reagents = {
-				{61673, 5},
-				{14342, 2},
-				{14048, 6},
-				{14227, 3},
-			},
-		},
-		[55519] = {
-			name = "Tailoring: Cosmic Mantle",
-			item = 55519,
-			reagents = {
-				{61673, 4},
-				{14342, 2},
-				{14048, 3},
-				{14227, 4},
-			},
-		},
-		[55520] = {
-			name = "Tailoring: Cosmic Vest",
-			item = 55520,
-			reagents = {
-				{61673, 7},
-				{14342, 3},
-				{14048, 8},
-				{14227, 2},
-			},
-		},
-		[55521] = {
-			name = "Tailoring: Cosmic Leggings",
-			item = 55521,
-			reagents = {
-				{61673, 7},
-				{14342, 3},
-				{14048, 6},
-				{14227, 2},
-			},
-		},
 		[55522] = {
 			name = "Leatherworking: Etheral Helmet",
 			item = 55522,
@@ -15245,17 +15201,6 @@ GetSpellInfoAtlasLootDB = {
 				{12655, 12},
 			},
 		},
-		[55534] = {
-			name = "Tailoring: Ley-Kissed Drape",
-			item = 55534,
-			reagents = {
-				{61673, 4},
-				{14342, 2},
-				{14048, 6},
-				{14227, 4},
-				{13926, 1},
-			},
-		},
 		[57008] = {
 			name = "Leatherworking: Breastplate of the Earth",
 			item = 65022,
@@ -15371,8 +15316,7 @@ GetSpellInfoAtlasLootDB = {
 				{3577, 2},
 			},
 		},
-		[57031] = {
-			name = "Cooking: Danonzo's Tel'Abim Surprise",
+		[57047] = {
 			requires = L["Cooking Fire"],
 			item = 60976,
 			reagents = {
@@ -15381,24 +15325,22 @@ GetSpellInfoAtlasLootDB = {
 				{10286},
 			},
 		},
-		[57032] = {
-			name = "Cooking: Danonzo's Tel'abim Medley",
-			requires = L["Cooking Fire"],
-			item = 60978,
-			reagents = {
-				{60955},
-				{3713},
-				{13464, 2},
-			},
-		},
-		[57033] = {
-			name = "Cooking: Danonzo's Tel'abim Delight",
+		[57049] = {
 			requires = L["Cooking Fire"],
 			item = 60977,
 			reagents = {
 				{60955},
 				{3713},
 				{13467},
+			},
+		},
+		[57051] = {
+			requires = L["Cooking Fire"],
+			item = 60978,
+			reagents = {
+				{60955},
+				{3713},
+				{13464, 2},
 			},
 		},
 		[57111] = {
@@ -15615,6 +15557,53 @@ GetSpellInfoAtlasLootDB = {
 			craftQuantityMin = 3,
 			reagents = {
 				{7079},
+			},
+		},
+		[57601] = {
+			item = 55518,
+			reagents = {
+				{61673, 5},
+				{14342, 2},
+				{14048, 6},
+				{14227, 3},
+			},
+		},
+		[57603] = {
+			item = 55519,
+			reagents = {
+				{61673, 4},
+				{14342, 2},
+				{14048, 3},
+				{14227, 4},
+			},
+		},
+		[57605] = {
+			item = 55520,
+			reagents = {
+				{61673, 7},
+				{14342, 3},
+				{14048, 8},
+				{14227, 2},
+			},
+		},
+		[57607] = {
+			item = 55521,
+			reagents = {
+				{61673, 7},
+				{14342, 3},
+				{14048, 6},
+				{14227, 2},
+			},
+		},
+		[57633] = {
+			name = "Tailoring: Ley-Kissed Drape",
+			item = 55534,
+			reagents = {
+				{61673, 4},
+				{14342, 2},
+				{14048, 6},
+				{14227, 4},
+				{13926, 1},
 			},
 		},
 		[69420] = {
