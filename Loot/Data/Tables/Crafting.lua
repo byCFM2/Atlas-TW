@@ -364,7 +364,7 @@ local craftingTable = {
 	EnchantingApprentice = {
 		{ name = L["Apprentice"], icon = "Trade_Engraving" },
 		{ id=7421, skill={1,5,7,10} }, --Runed Copper Rod
-		{ id=7418, skill={1,70,90,110} }, --Enchant Bracer - Minor Health
+		--{ id=7418, skill={1,70,90,110} }, --Enchant Bracer - Minor Health
 		{ id=7428, skill={1,80,100,120} }, --Enchant Bracer - Minor Deflect
 		{ id=14293, skill={10,75,95,115} }, --Lesser Magic Wand
 		{ id=7420, skill={15,70,90,110} }, --Enchant Chest - Minor Health
@@ -377,6 +377,7 @@ local craftingTable = {
 		{ id=7748, skill={60,105,125,145} }, --Enchant Chest - Lesser Health
 		{ id=7771, skill={70,110,130,150} }, --Enchant Cloak - Minor Protection
 		{ id=14807, skill={70,110,130,150} }, --Greater Magic Wand
+		{ name = L["Apprentice"], icon = "Trade_Engraving" },
 		{ id=45071, skill={75,115,135,155} }, --Enchant 2H Weapon - Minor Intellect
 	},
 
@@ -631,8 +632,8 @@ local craftingTable = {
 		{ id=7766, skill={60,105,125,145} }, --Enchant Bracer - Minor Spirit
 		{ id=7457, skill={50,100,120,140} }, --Enchant Bracer - Minor Stamina
 		{ id=7428, skill={1,80,100,120} }, --Enchant Bracer - Minor Deflect
-		{ name = L["Bracer"], icon = "Trade_Engraving" },
-		{ id=7418, skill={1,70,90,110} }, --Enchant Bracer - Minor Health
+		--{ name = L["Bracer"], icon = "Trade_Engraving" },
+		--{ id=7418, skill={1,70,90,110} }, --Enchant Bracer - Minor Health
 	},
 
 	EnchantingGlove = {
@@ -742,22 +743,27 @@ local craftingTable = {
 		{ id=13628, skill={150,175,195,215} }, --Runed Golden Rod
 		{ id=13702, skill={200,220,240,260} }, --Runed Truesilver Rod
 		{ id=20051, skill={290,310,330,350} }, --Runed Arcanite Rod
+		{},
 		{ id=14293, skill={10,75,95,115} }, --Lesser Magic Wand
 		{ id=14807, skill={70,110,130,150} }, --Greater Magic Wand
 		{ id=14809, skill={155,175,195,215} }, --Lesser Mystic Wand
 		{ id=14810, skill={175,195,215,235} }, --Greater Mystic Wand
+		{},
+		{ id=17181, skill={250,250,255,260} }, --Enchanted Leather
+		{ id=17180, skill={250,250,255,260} }, --Enchanted Thorium
+		{ id=41758, skill={275,275,280,300} }, --Enchanted Gemstone Oil
+		{ name = L["Misc"], icon = "Trade_Engraving" },
+		{ id=25130, skill={300,310,320,330} }, --Brilliant Mana Oil
+		{ id=25129, skill={300,310,320,330} }, --Brilliant Wizard Oil
+		{},
 		{ id=25124, skill={45,55,65,75} }, --Minor Wizard Oil
 		{ id=25125, skill={150,160,170,180} }, --Minor Mana Oil
 		{ id=25126, skill={200,210,220,230} }, --Lesser Wizard Oil
 		{ id=25127, skill={250,260,270,280} }, --Lesser Mana Oil
 		{ id=25128, skill={275,285,295,305} }, --Wizard Oil
-		{ name = L["Misc"], icon = "Trade_Engraving" },
-		{ id=25130, skill={300,310,320,330} }, --Brilliant Mana Oil
-		{ id=25129, skill={300,310,320,330} }, --Brilliant Wizard Oil
-		{ id=17181, skill={250,250,255,260} }, --Enchanted Leather
-		{ id=17180, skill={250,250,255,260} }, --Enchanted Thorium
-		{ id=41758, skill={275,275,280,300} }, --Enchanted Gemstone Oil
+		{},
 		{ id=15596, skill={265,285,305,325} }, --Smoking Heart of the Mountain
+		{},
 		{ id=57518, skill={300,300,300,300} }, --Eternal Dreamstone Shard
 	},
 
@@ -777,6 +783,7 @@ local craftingTable = {
 		{ id=46663, skill={30,60,62,65} }, --Copper Knuckles
 		{ id=9983, skill={30,70,90,110} }, --Copper Claymore
 		{ id=8880, skill={30,70,90,110} }, --Copper Dagger
+		{ name = L["Apprentice"], icon = "Trade_BlackSmithing" },
 		{ id=2661, skill={35,75,95,115} }, --Copper Chain Belt
 		{ id=3293, skill={35,75,95,115} }, --Copper Battle Axe
 		{ id=3321, skill={35,75,95,115} }, --Copper Chain Vest
@@ -794,7 +801,7 @@ local craftingTable = {
 	},
 
 	SmithingJourneyman = {
-		{ name = L["SmithingJourneyman1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Journeyman"], icon = "Trade_BlackSmithing" },
 		{ id=2667, skill={80,120,140,160} }, --Runed Copper Breastplate
 		{ id=57166, skill={90,90,97,105} }, --Bronze Belt Buckle
 		{ id=2664, skill={90,115,127,140} }, --Runed Copper Bracers
@@ -809,6 +816,7 @@ local craftingTable = {
 		{ id=2668, skill={105,145,160,175} }, --Rough Bronze Leggings
 		{ id=2740, skill={110,140,155,170} }, --Bronze Mace
 		{ id=3328, skill={110,140,155,170} }, --Rough Bronze Shoulders
+		{ name = L["Journeyman"], icon = "Trade_BlackSmithing" },
 		{ id=6517, skill={110,140,155,170} }, --Pearl-handled Dagger
 		{ id=2741, skill={115,145,160,175} }, --Bronze Axe
 		{ id=46665, skill={120,140,145,150} }, --Bronze Bruiser
@@ -822,13 +830,10 @@ local craftingTable = {
 		{ id=3330, skill={125,155,170,185} }, --Silvered Bronze Shoulders
 		{ id=9986, skill={130,160,175,190} }, --Bronze Greatsword
 		{ id=3296, skill={130,160,175,190} }, --Heavy Bronze Mace
+		{ name = L["Journeyman"], icon = "Trade_BlackSmithing" },
 		{ id=3331, skill={130,160,175,190} }, --Silvered Bronze Boots
 		{ id=2673, skill={130,160,175,190} }, --Silvered Bronze Breastplate
 		{ id=9987, skill={135,165,180,195} }, --Bronze Battle Axe
-	},
-
-	SmithingJourneyman2 = {
-		{ name = L["SmithingJourneyman2"], icon = "Trade_BlackSmithing" },
 		{ id=3333, skill={135,165,180,195} }, --Silvered Bronze Gauntlets
 		{ id=57169, skill={140,140,147,155} }, --Iron Belt Buckle
 		{ id=6518, skill={140,170,185,200} }, --Iridescent Hammer
@@ -858,6 +863,7 @@ local craftingTable = {
 		{ id=3502, skill={170,195,207,220} }, --Green Iron Helm
 		{ id=9814, skill={175,200,212,225} }, --Barbaric Iron Helm
 		{ id=3505, skill={175,200,212,225} }, --Golden Scale Shoulders
+		{ name = L["Expert"], icon = "Trade_BlackSmithing" },
 		{ id=3493, skill={175,200,212,225} }, --Jade Serpentblade
 		{ id=9818, skill={180,205,217,230} }, --Barbaric Iron Boots
 		{ id=15972, skill={180,205,217,230} }, --Glinting Steel Dagger
@@ -872,9 +878,9 @@ local craftingTable = {
 		{ id=21913, skill={190,215,227,240} }, --Edge of Winter
 		{ id=3503, skill={190,215,227,240} }, --Golden Scale Coif
 		{ id=15973, skill={190,215,227,240} }, --Searing Golden Blade
+		{ name = L["Expert"], icon = "Trade_BlackSmithing" },
 		{ id=3511, skill={195,220,232,245} }, --Golden Scale Cuirass
 		{ id=9920, skill={200,200,205,210} }, --Solid Grinding Stone
-		{ name = L["Expert"], icon = "Trade_BlackSmithing" },
 		{ id=9918, skill={200,200,205,210} }, --Solid Sharpening Stone
 		{ id=9921, skill={200,200,205,210} }, --Solid Weightstone
 		{ id=19668, skill={200,200,210,220} }, --Truesilver Skeleton Key
@@ -887,6 +893,7 @@ local craftingTable = {
 		{ id=11643, skill={205,225,235,245} }, --Golden Scale Gauntlets
 		{ id=9928, skill={205,225,235,245} }, --Heavy Mithril Gauntlet
 		{ id=9926, skill={205,225,235,245} }, --Heavy Mithril Shoulder
+		{ name = L["Expert"], icon = "Trade_BlackSmithing" },
 		{ id=9933, skill={210,230,240,250} }, --Heavy Mithril Pants
 		{ id=9931, skill={210,230,240,250} }, --Mithril Scale Pants
 		{ id=9993, skill={210,235,247,260} }, --Heavy Mithril Axe
@@ -901,6 +908,7 @@ local craftingTable = {
 		{ id=9945, skill={220,240,250,260} }, --Ornate Mithril Pants
 		{ id=9995, skill={220,245,257,270} }, --Blue Glittering Axe
 		{ id=46626, skill={220,220,220,220} }, --Steel Plate Boots
+		{ name = L["Expert"], icon = "Trade_BlackSmithing" },
 		{ id=46627, skill={220,220,220,220} }, --Steel Plate Gauntlets
 		{ id=9942, skill={220,240,250,260} }, --Mithril Scale Gloves
 		{ id=9952, skill={225,245,255,265} }, --Ornate Mithril Shoulders
@@ -908,16 +916,8 @@ local craftingTable = {
 		{ id=46629, skill={225,225,225,225} }, --Steel Plate Armor
 		{ id=46628, skill={225,225,225,225} }, --Steel Plate Legguards
 	},
-
-	SmithingExpert2 = {
-	},
-
-	SmithingExpert3 = {
-		{ name = L["SmithingExpert3"], icon = "Trade_BlackSmithing" },
-	},
-
 	SmithingArtisan = {
-		{ name = L["SmithingArtisan1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=46631, skill={230,230,230,230} }, --Steel Plate Barbute
 		{ id=46630, skill={230,230,230,230} }, --Steel Plate Pauldrons
 		{ id=9959, skill={230,250,260,270} }, --Heavy Mithril Breastplate
@@ -932,6 +932,7 @@ local craftingTable = {
 		{ id=10009, skill={245,270,282,295} }, --Runed Mithril Hammer
 		{ id=16639, skill={250,255,257,260} }, --Dense Grinding Stone
 		{ id=16641, skill={250,255,257,260} }, --Dense Sharpening Stone
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=16640, skill={250,255,257,260} }, --Dense Weightstone
 		{ id=16642, skill={250,270,280,290} }, --Thorium Armor
 		{ id=16643, skill={250,270,280,290} }, --Thorium Belt
@@ -946,11 +947,8 @@ local craftingTable = {
 		{ id=20201, skill={275,275,280,285} }, --Arcanite Rod
 		{ id=19669, skill={275,275,280,285} }, --Arcanite Skeleton Key
 		{ id=16651, skill={275,295,305,315} }, --Thorium Shield Spike
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=16969, skill={275,300,312,325} }, --Ornate Thorium Handaxe
-	},
-
-	SmithingArtisan2 = {
-		{ name = L["SmithingArtisan2"], icon = "Trade_BlackSmithing" },
 		{ id=47032, skill={275,300,312,325} }, --Hateforge Belt
 		{ id=47034, skill={275,300,310,320} }, --Hateforge Boots
 		{ id=57113, skill={275,300,310,320} }, --Thorium Spurs
@@ -964,6 +962,7 @@ local craftingTable = {
 		{ id=47029, skill={290,300,310,320} }, --Hateforge Helmet
 		{ id=47030, skill={290,300,310,320} }, --Hateforge Cuirass
 		{ id=47031, skill={290,300,310,320} }, --Hateforge Leggings
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=16656, skill={290,310,320,330} }, --Radiant Boots
 		{ id=16660, skill={290,310,320,330} }, --Dawnbringer Shoulders
 		{ id=23632, skill={290,310,320,330} }, --Girdle of the Dawn
@@ -978,14 +977,11 @@ local craftingTable = {
 		{ id=16725, skill={300,320,330,340} }, --Radiant Leggings
 		{ id=16731, skill={300,320,330,340} }, --Runic Breastplate
 		{ id=16665, skill={300,320,330,340} }, --Runic Plate Boots
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=16726, skill={300,320,330,340} }, --Runic Plate Helm
 		{ id=16732, skill={300,320,330,340} }, --Runic Plate Leggings
 		{ id=16664, skill={300,320,330,340} }, --Runic Plate Shoulders
 		{ id=16662, skill={300,320,330,340} }, --Thorium Leggings
-	},
-
-	SmithingArtisan3 = {
-		{ name = L["SmithingArtisan3"], icon = "Trade_BlackSmithing" },
 		{ id=24136, skill={300,320,330,340} }, --Bloodsoul Breastplate
 		{ id=24138, skill={300,320,330,340} }, --Bloodsoul Gauntlets
 		{ id=24137, skill={300,320,330,340} }, --Bloodsoul Shoulders
@@ -996,6 +992,7 @@ local craftingTable = {
 		{ id=24140, skill={300,320,330,340} }, --Darksoul Leggings
 		{ id=24141, skill={300,320,330,340} }, --Darksoul Shoulders
 		{ id=23633, skill={300,320,330,340} }, --Gloves of the Dawn
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=27585, skill={300,320,330,340} }, --Heavy Obsidian Belt
 		{ id=23629, skill={300,320,330,340} }, --Heavy Timbermaw Boots
 		{ id=28463, skill={300,320,330,340} }, --Ironvine Belt
@@ -1010,16 +1007,13 @@ local craftingTable = {
 		{ id=47025, skill={300,320,330,340} }, --Rune-Etched Mantle
 		{ id=47026, skill={300,320,330,340} }, --Rune-Etched Grips
 		{ id=27589, skill={300,320,330,340} }, --Black Grasp of the Destroyer
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=28244, skill={300,320,330,340} }, --Icebane Bracers
 		{ id=28242, skill={300,320,330,340} }, --Icebane Breastplate
 		{ id=28243, skill={300,320,330,340} }, --Icebane Gauntlets
 		{ id=27586, skill={300,320,330,340} }, --Jagged Obsidian Shield
 		{ id=27590, skill={300,320,330,340} }, --Obsidian Mail Tunic
 		{ id=27587, skill={300,320,330,340} }, --Thick Obsidian Breastplate
-	},
-
-	SmithingArtisan4 = {
-		{ name = L["SmithingArtisan4"], icon = "Trade_BlackSmithing" },
 		{ id=21161, skill={300,325,337,350} }, --Sulfuron Hammer
 		{ id=54009, skill={300,325,337,350} }, --Fiery Chain Breastplate
 		{ id=57196, skill={300,300,300,300} }, --Bloody Belt Buckle
@@ -1028,6 +1022,7 @@ local craftingTable = {
 		{ id=55528, skill={300,320,330,340} }, --Otherworldly Breastplate
 		{ id=55529, skill={300,320,330,340} }, --Otherworldly Leggings
 		{ id=55530, skill={300,320,330,340} }, --Reflective Helmet
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=55531, skill={300,320,330,340} }, --Reflective Pauldrons
 		{ id=55532, skill={300,320,330,340} }, --Reflective Breastplate
 		{ id=55533, skill={300,320,330,340} }, --Reflective Leggings
@@ -1039,7 +1034,7 @@ local craftingTable = {
 	},
 
 	Armorsmith = {
-		{ name = L["Armorsmith1"], icon = "Trade_BlackSmithing" },
+		{ name = BS["Armorsmith"], icon = "Trade_BlackSmithing" },
 		{ id=9954, skill={225,245,255,265} }, --Truesilver Gauntlets
 		{ id=9974, skill={245,265,275,285} }, --Truesilver Breastplate
 		{ id=16650, skill={270,290,300,310} }, --Wildthorn Mail
@@ -1054,6 +1049,7 @@ local craftingTable = {
 		{ id=16742, skill={300,320,330,340} }, --Enchanted Thorium Helm
 		{ id=16744, skill={300,320,330,340} }, --Enchanted Thorium Leggings
 		{ id=16728, skill={300,320,330,340} }, --Helm of the Great Chief
+		{ name = BS["Armorsmith"], icon = "Trade_BlackSmithing" },
 		{ id=16724, skill={300,320,330,340} }, --Whitesoul Helm
 		{ id=54005, skill={300,325,337,350} }, --Pauldrons of the Timbermaw
 		{ id=24399, skill={300,320,330,340} }, --Dark Iron Boots
@@ -1071,7 +1067,7 @@ local craftingTable = {
 	},
 
 	Weaponsmith = {
-		{ name = L["Weaponsmith1"], icon = "Trade_BlackSmithing" },
+		{ name = BS["Weaponsmith"], icon = "Trade_BlackSmithing" },
 		{ id=10003, skill={235,260,272,285} }, --The Shatterer
 		{ id=10007, skill={245,270,282,295} }, --Phantom Blade
 		{ id=10011, skill={250,275,287,300} }, --Blight
@@ -1088,7 +1084,7 @@ local craftingTable = {
 	},
 
 	Axesmith = {
-		{ name = L["Axesmith1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Master Axesmith"], icon = "Trade_BlackSmithing" },
 		{ id=16970, skill={275,300,312,325} }, --Dawn's Edge
 		{ id=16991, skill={300,320,330,340} }, --Annihilator
 		{ id=16994, skill={300,320,330,340} }, --Arcanite Reaper
@@ -1097,7 +1093,7 @@ local craftingTable = {
 	},
 
 	Hammersmith = {
-		{ name = L["Hammersmith1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Master Hammersmith"], icon = "Trade_BlackSmithing" },
 		{ id=16973, skill={280,305,317,330} }, --Enchanted Battlehammer
 		{ id=16983, skill={285,310,322,335} }, --Serenity
 		{ id=16988, skill={300,320,330,340} }, --Hammer of the Titans
@@ -1109,7 +1105,7 @@ local craftingTable = {
 	},
 
 	Swordsmith = {
-		{ name = L["Swordsmith1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Master Swordsmith"], icon = "Trade_BlackSmithing" },
 		{ id=16978, skill={280,305,317,330} }, --Blazing Rapier
 		{ id=16985, skill={290,315,327,340} }, --Corruption
 		{ id=16990, skill={300,320,330,340} }, --Arcanite Champion
@@ -1122,7 +1118,7 @@ local craftingTable = {
 	},
 
 	SmithingHelm = {
-		{ name = L["SmithingHelm1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Helm"], icon = "Trade_BlackSmithing" },
 		{ id=3502, skill={170,195,207,220} }, --Green Iron Helm
 		{ id=9814, skill={175,200,212,225} }, --Barbaric Iron Helm
 		{ id=3503, skill={190,215,227,240} }, --Golden Scale Coif
@@ -1137,6 +1133,7 @@ local craftingTable = {
 		{ id=16726, skill={300,320,330,340} }, --Runic Plate Helm
 		{ id=24913, skill={300,320,330,340} }, --Darkrune Helm
 		{ id=47024, skill={300,320,330,340} }, --Rune-Etched Crown
+		{ name = L["Helm"], icon = "Trade_BlackSmithing" },
 		{ id=16742, skill={300,320,330,340} }, --Enchanted Thorium Helm
 		{ id=16728, skill={300,320,330,340} }, --Helm of the Great Chief
 		{ id=16724, skill={300,320,330,340} }, --Whitesoul Helm
@@ -1148,7 +1145,7 @@ local craftingTable = {
 	},
 
 	SmithingShoulders = {
-		{ name = L["SmithingShoulders1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Shoulders"], icon = "Trade_BlackSmithing" },
 		{ id=3328, skill={110,140,155,170} }, --Rough Bronze Shoulders
 		{ id=3330, skill={125,155,170,185} }, --Silvered Bronze Shoulders
 		{ id=9811, skill={160,185,197,210} }, --Barbaric Iron Shoulders
@@ -1163,6 +1160,7 @@ local craftingTable = {
 		{ id=16660, skill={290,310,320,330} }, --Dawnbringer Shoulders
 		{ id=16664, skill={300,320,330,340} }, --Runic Plate Shoulders
 		{ id=24137, skill={300,320,330,340} }, --Bloodsoul Shoulders
+		{ name = L["Shoulders"], icon = "Trade_BlackSmithing" },
 		{ id=24141, skill={300,320,330,340} }, --Darksoul Shoulders
 		{ id=57026, skill={300,320,330,340} }, --Mantle of Centaur Authority
 		{ id=47025, skill={300,320,330,340} }, --Rune-Etched Mantle
@@ -1175,7 +1173,7 @@ local craftingTable = {
 	},
 
 	SmithingChest = {
-		{ name = L["SmithingChest1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Chest"], icon = "Trade_BlackSmithing" },
 		{ id=12260, skill={1,15,35,55} }, --Rough Copper Vest
 		{ id=3321, skill={35,75,95,115} }, --Copper Chain Vest
 		{ id=2667, skill={80,120,140,160} }, --Runed Copper Breastplate
@@ -1190,6 +1188,7 @@ local craftingTable = {
 		{ id=9972, skill={210,260,270,280} }, --Ornate Mithril Breastplate
 		{ id=46629, skill={225,225,225,225} }, --Steel Plate Armor
 		{ id=9959, skill={230,250,260,270} }, --Heavy Mithril Breastplate
+		{ name = L["Chest"], icon = "Trade_BlackSmithing" },
 		{ id=9974, skill={245,265,275,285} }, --Truesilver Breastplate
 		{ id=16642, skill={250,270,280,290} }, --Thorium Armor
 		{ id=15293, skill={270,290,300,310} }, --Dark Iron Mail
@@ -1204,12 +1203,9 @@ local craftingTable = {
 		{ id=24136, skill={300,320,330,340} }, --Bloodsoul Breastplate
 		{ id=24914, skill={300,320,330,340} }, --Darkrune Breastplate
 		{ id=24139, skill={300,320,330,340} }, --Darksoul Breastplate
+		{ name = L["Chest"], icon = "Trade_BlackSmithing" },
 		{ id=28461, skill={300,320,330,340} }, --Ironvine Breastplate
 		{ id=47023, skill={300,320,330,340} }, --Rune-Etched Breastplate
-	},
-
-	SmithingChest2 = {
-		{ name = L["SmithingChest2"], icon = "Trade_BlackSmithing" },
 		{ id=55528, skill={300,320,330,340} }, --Otherworldly Breastplate
 		{ id=55532, skill={300,320,330,340} }, --Reflective Breastplate
 		{ id=28242, skill={300,320,330,340} }, --Icebane Breastplate
@@ -1221,7 +1217,7 @@ local craftingTable = {
 	},
 
 	SmithingBracers = {
-		{ name = L["SmithingBracers1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Bracers"], icon = "Trade_BlackSmithing" },
 		{ id=2663, skill={1,20,40,60} }, --Copper Bracers
 		{ id=2664, skill={90,115,127,140} }, --Runed Copper Bracers
 		{ id=2671, skill={100,140,160,180} }, --Rough Bronze Bracers
@@ -1237,7 +1233,7 @@ local craftingTable = {
 	},
 
 	SmithingGloves = {
-		{ name = L["SmithingGloves1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Gloves"], icon = "Trade_BlackSmithing" },
 		{ id=3323, skill={40,80,100,120} }, --Runed Copper Gauntlets
 		{ id=3325, skill={60,100,120,140} }, --Gemmed Copper Gauntlets
 		{ id=3333, skill={135,165,180,195} }, --Silvered Bronze Gauntlets
@@ -1252,6 +1248,7 @@ local craftingTable = {
 		{ id=47033, skill={285,300,310,320} }, --Hateforge Grips
 		{ id=16654, skill={285,305,315,325} }, --Radiant Gloves
 		{ id=16655, skill={290,310,320,330} }, --Fiery Plate Gauntlets
+		{ name = L["Gloves"], icon = "Trade_BlackSmithing" },
 		{ id=16661, skill={295,315,325,335} }, --Storm Gauntlets
 		{ id=24138, skill={300,320,330,340} }, --Bloodsoul Gauntlets
 		{ id=24912, skill={300,320,330,340} }, --Darkrune Gauntlets
@@ -1265,7 +1262,7 @@ local craftingTable = {
 	},
 
 	SmithingBelt = {
-		{ name = L["SmithingBelt1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Belt"], icon = "Trade_BlackSmithing" },
 		{ id=2661, skill={35,75,95,115} }, --Copper Chain Belt
 		{ id=2666, skill={70,110,130,150} }, --Runed Copper Belt
 		{ id=16643, skill={250,270,280,290} }, --Thorium Belt
@@ -1282,7 +1279,7 @@ local craftingTable = {
 	},
 
 	SmithingPants = {
-		{ name = L["SmithingPants1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Pants"], icon = "Trade_BlackSmithing" },
 		{ id=2662, skill={1,50,70,90} }, --Copper Chain Pants
 		{ id=3324, skill={45,85,105,125} }, --Runed Copper Pants
 		{ id=2668, skill={105,145,160,175} }, --Rough Bronze Leggings
@@ -1297,6 +1294,7 @@ local craftingTable = {
 		{ id=47031, skill={290,300,310,320} }, --Hateforge Leggings
 		{ id=16730, skill={300,320,330,340} }, --Imperial Plate Leggings
 		{ id=16725, skill={300,320,330,340} }, --Radiant Leggings
+		{ name = L["Pants"], icon = "Trade_BlackSmithing" },
 		{ id=16732, skill={300,320,330,340} }, --Runic Plate Leggings
 		{ id=16662, skill={300,320,330,340} }, --Thorium Leggings
 		{ id=24140, skill={300,320,330,340} }, --Darksoul Leggings
@@ -1310,7 +1308,7 @@ local craftingTable = {
 	},
 
 	SmithingBoots = {
-		{ name = L["SmithingBoots1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Boots"], icon = "Trade_BlackSmithing" },
 		{ id=3319, skill={20,60,80,100} }, --Copper Chain Boots
 		{ id=7817, skill={95,125,140,155} }, --Rough Bronze Boots
 		{ id=3331, skill={130,160,175,190} }, --Silvered Bronze Boots
@@ -1325,6 +1323,7 @@ local craftingTable = {
 		{ id=16652, skill={280,300,310,320} }, --Thorium Boots
 		{ id=16656, skill={290,310,320,330} }, --Radiant Boots
 		{ id=16657, skill={295,315,325,335} }, --Imperial Plate Boots
+		{ name = L["Boots"], icon = "Trade_BlackSmithing" },
 		{ id=16665, skill={300,320,330,340} }, --Runic Plate Boots
 		{ id=23629, skill={300,320,330,340} }, --Heavy Timbermaw Boots
 		{ id=47021, skill={300,320,330,340} }, --Rune-Etched Greaves
@@ -1333,7 +1332,7 @@ local craftingTable = {
 	},
 
 	SmithingAxes = {
-		{ name = L["SmithingAxes1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Axes"], icon = "Trade_BlackSmithing" },
 		{ id=2738, skill={20,60,80,100} }, --Copper Axe
 		{ id=3294, skill={70,110,130,150} }, --Thick War Axe
 		{ id=2741, skill={115,145,160,175} }, --Bronze Axe
@@ -1348,6 +1347,7 @@ local craftingTable = {
 		{ id=9987, skill={135,165,180,195} }, --Bronze Battle Axe
 		{ id=3498, skill={185,210,222,235} }, --Massive Iron Axe
 		{ id=3500, skill={200,225,237,250} }, --Shadow Crescent Axe
+		{ name = L["Axes"], icon = "Trade_BlackSmithing" },
 		{ id=16971, skill={280,305,317,330} }, --Huge Thorium Battleaxe
 		{ id=16965, skill={270,290,300,310} }, --Bleakwood Hew
 		{ id=16994, skill={300,320,330,340} }, --Arcanite Reaper
@@ -1355,7 +1355,7 @@ local craftingTable = {
 	},
 
 	SmithingSwords = {
-		{ name = L["SmithingSwords1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Swords"], icon = "Trade_BlackSmithing" },
 		{ id=2739, skill={25,65,85,105} }, --Copper Shortsword
 		{ id=2742, skill={120,150,165,180} }, --Bronze Shortsword
 		{ id=3492, skill={160,185,197,210} }, --Hardened Iron Shortsword
@@ -1370,6 +1370,7 @@ local craftingTable = {
 		{ id=27832, skill={300,320,330,340} }, --Sageblade
 		{ id=46661, skill={300,320,330,340} }, --Dream's Herald
 		{ id=9983, skill={30,70,90,110} }, --Copper Claymore
+		{ name = L["Swords"], icon = "Trade_BlackSmithing" },
 		{ id=3292, skill={95,135,155,175} }, --Heavy Copper Broadsword
 		{ id=9986, skill={130,160,175,190} }, --Bronze Greatsword
 		{ id=3496, skill={180,205,217,230} }, --Moonsteel Broadsword
@@ -1381,7 +1382,7 @@ local craftingTable = {
 	},
 
 	SmithingMaces = {
-		{ name = L["SmithingMaces1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Maces"], icon = "Trade_BlackSmithing" },
 		{ id=2737, skill={15,55,75,95} }, --Copper Mace
 		{ id=2740, skill={110,140,155,170} }, --Bronze Mace
 		{ id=3296, skill={130,160,175,190} }, --Heavy Bronze Mace
@@ -1396,6 +1397,7 @@ local craftingTable = {
 		{ id=23650, skill={300,320,330,340} }, --Ebon Hand
 		{ id=27830, skill={300,320,330,340} }, --Persuader
 		{ id=7408, skill={65,105,125,145} }, --Heavy Copper Maul
+		{ name = L["Maces"], icon = "Trade_BlackSmithing" },
 		{ id=9985, skill={125,155,170,185} }, --Bronze Warhammer
 		{ id=3494, skill={155,180,192,205} }, --Solid Iron Maul
 		{ id=3495, skill={170,195,207,220} }, --Golden Iron Destroyer
@@ -1408,7 +1410,7 @@ local craftingTable = {
 	},
 
 	SmithingFist = {
-		{ name = L["SmithingFist1"], icon = "Trade_BlackSmithing" },
+		{ name = BS["Fist Weapons"], icon = "Trade_BlackSmithing" },
 		{ id=46663, skill={30,60,62,65} }, --Copper Knuckles
 		{ id=46664, skill={75,90,95,100} }, --Sharpened Claw
 		{ id=46665, skill={120,140,145,150} }, --Bronze Bruiser
@@ -1416,7 +1418,7 @@ local craftingTable = {
 	},
 
 	SmithingDaggers = {
-		{ name = L["SmithingDaggers1"], icon = "Trade_BlackSmithing" },
+		{ name = BS["Daggers"], icon = "Trade_BlackSmithing" },
 		{ id=8880, skill={30,70,90,110} }, --Copper Dagger
 		{ id=3491, skill={105,135,150,165} }, --Big Bronze Knife
 		{ id=6517, skill={110,140,155,170} }, --Pearl-handled Dagger
@@ -1430,7 +1432,7 @@ local craftingTable = {
 	},
 
 	SmithingBuckles = {
-		{ name = L["SmithingBuckles1"], icon = "Trade_BlackSmithing" },
+		{ name = L["Belt Buckles"], icon = "Trade_BlackSmithing" },
 		{ id=57163, skill={25,25,37,50} }, --Copper Belt Buckle
 		{ id=57166, skill={90,90,97,105} }, --Bronze Belt Buckle
 		{ id=57169, skill={140,140,147,155} }, --Iron Belt Buckle
@@ -1457,6 +1459,7 @@ local craftingTable = {
 		{ id=9964, skill={235,255,265,275} }, --Mithril Spurs
 		{ id=57113, skill={275,300,310,320} }, --Thorium Spurs
 		{ id=7221, skill={150,180,195,210} }, --Iron Shield Spike
+		{ name = L["Misc"], icon = "Trade_BlackSmithing" },
 		{ id=9939, skill={215,235,245,255} }, --Mithril Shield Spike
 		{ id=16651, skill={275,295,305,315} }, --Thorium Shield Spike
 		{ id=45063, skill={75,100,120,140} }, --Blast Shield
@@ -1471,6 +1474,7 @@ local craftingTable = {
 		{ id=19669, skill={275,275,280,285} }, --Arcanite Skeleton Key
 		{ id=3320, skill={25,45,65,85} }, --Rough Grinding Stone
 		{ id=3326, skill={75,75,87,100} }, --Coarse Grinding Stone
+		{ name = L["Misc"], icon = "Trade_BlackSmithing" },
 		{ id=3337, skill={125,125,137,150} }, --Heavy Grinding Stone
 		{ id=9920, skill={200,200,205,210} }, --Solid Grinding Stone
 		{ id=16639, skill={250,255,257,260} }, --Dense Grinding Stone
@@ -1481,7 +1485,7 @@ local craftingTable = {
 	},
 
 	LeatherApprentice = {
-		{ name = L["LeatherApprentice1"], icon = "Trade_Generic" },
+		{ name = L["Apprentice"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=2881, skill={1,20,30,40} }, --Light Leather
 		{ id=2152, skill={1,30,45,60} }, --Light Armor Kit
 		{ id=2149, skill={1,40,55,70} }, --Handstitched Leather Boots
@@ -1496,6 +1500,7 @@ local craftingTable = {
 		{ id=9064, skill={35,65,80,95} }, --Rugged Leather Pants
 		{ id=5244, skill={40,70,85,100} }, --Kodo Hide Bag
 		{ id=2160, skill={40,70,85,100} }, --Embossed Leather Vest
+		{ name = L["Apprentice"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=3756, skill={55,85,100,115} }, --Embossed Leather Gloves
 		{ id=2161, skill={55,85,100,115} }, --Embossed Leather Boots
 		{ id=2162, skill={60,90,105,120} }, --Embossed Leather Cloak
@@ -1507,7 +1512,7 @@ local craftingTable = {
 	},
 
 	LeatherJourneyman = {
-		{ name = L["LeatherJourneyman1"], icon = "Trade_Generic" },
+		{ name = L["Journeyman"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=3763, skill={80,110,125,140} }, --Fine Leather Belt
 		{ id=2159, skill={85,105,120,135} }, --Fine Leather Cloak
 		{ id=3761, skill={85,115,130,145} }, --Fine Leather Tunic
@@ -1522,6 +1527,7 @@ local craftingTable = {
 		{ id=2165, skill={100,115,122,130} }, --Medium Armor Kit
 		{ id=2167, skill={100,125,137,150} }, --Dark Leather Boots
 		{ id=9070, skill={100,125,137,150} }, --Black Whelp Cloak
+		{ name = L["Journeyman"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=24940, skill={100,125,137,150} }, --Black Whelp Tunic
 		{ id=2169, skill={100,125,137,150} }, --Dark Leather Tunic
 		{ id=3762, skill={100,125,137,150} }, --Hillman's Leather Vest
@@ -1536,12 +1542,9 @@ local craftingTable = {
 		{ id=9072, skill={120,145,157,170} }, --Red Whelp Gloves
 		{ id=3765, skill={120,155,167,180} }, --Dark Leather Gloves
 		{ id=3766, skill={125,150,162,175} }, --Dark Leather Belt
+		{ name = L["Journeyman"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=9145, skill={125,150,162,175} }, --Fletcher's Gloves
 		{ id=3768, skill={130,155,167,180} }, --Hillman's Shoulders
-	},
-
-	LeatherJourneyman2 = {
-		{ name = L["LeatherJourneyman2"], icon = "Trade_Generic" },
 		{ id=9147, skill={135,160,172,185} }, --Earthen Leather Shoulders
 		{ id=9146, skill={135,160,172,185} }, --Herbalist's Gloves
 		{ id=3770, skill={135,160,172,185} }, --Toughened Leather Gloves
@@ -1554,13 +1557,14 @@ local craftingTable = {
 		{ id=3818, skill={150,160,165,170} }, --Cured Heavy Hide
 		{ id=3760, skill={150,170,180,190} }, --Hillman's Cloak
 		{ id=3771, skill={150,170,180,190} }, --Barbaric Gloves
+		{ name = L["Journeyman"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=9194, skill={150,170,180,190} }, --Heavy Leather Ammo Pouch
 		{ id=9193, skill={150,170,180,190} }, --Heavy Quiver
 		{ id=3780, skill={150,170,180,190} }, --Heavy Armor Kit
 	},
 
 	LeatherExpert = {
-		{ name = L["LeatherExpert1"], icon = "Trade_Generic" },
+		{ name = L["Expert"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=3772, skill={155,175,185,195} }, --Green Leather Armor
 		{ id=23399, skill={155,175,185,195} }, --Barbaric Bracers
 		{ id=3774, skill={160,180,190,200} }, --Green Leather Belt
@@ -1575,6 +1579,7 @@ local craftingTable = {
 		{ id=9196, skill={175,195,205,215} }, --Dusky Leather Armor
 		{ id=9197, skill={175,195,205,215} }, --Green Whelp Armor
 		{ id=3773, skill={175,195,205,215} }, --Guardian Armor
+		{ name = L["Expert"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=9198, skill={180,200,210,220} }, --Frost Leather Cloak
 		{ id=3776, skill={180,200,210,220} }, --Green Leather Bracers
 		{ id=9201, skill={185,205,215,225} }, --Dusky Bracers
@@ -1589,12 +1594,9 @@ local craftingTable = {
 		{ id=3777, skill={195,215,225,235} }, --Guardian Leather Bracers
 		{ id=10482, skill={200,200,200,200} }, --Cured Thick Hide
 		{ id=20650, skill={200,200,202,205} }, --Thick Leather
+		{ name = L["Expert"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=22711, skill={200,210,220,230} }, --Shadowskin Gloves
 		{ id=10487, skill={200,220,230,240} }, --Thick Armor Kit
-	},
-
-	LeatherExpert2 = {
-		{ name = L["LeatherExpert2"], icon = "Trade_Generic" },
 		{ id=46620, skill={200,215,220,225} }, --Grifter's Boots
 		{ id=46621, skill={200,215,220,225} }, --Grifter's Gauntlets
 		{ id=46622, skill={200,215,220,225} }, --Grifter's Belt
@@ -1607,6 +1609,7 @@ local craftingTable = {
 		{ id=10499, skill={205,225,235,245} }, --Nightscape Tunic
 		{ id=10509, skill={205,225,235,245} }, --Turtle Scale Gloves
 		{ id=46625, skill={210,225,230,235} }, --Grifter's Cover
+		{ name = L["Expert"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=46624, skill={210,235,240,245} }, --Grifter's Tunic
 		{ id=10516, skill={210,230,240,250} }, --Nightscape Shoulders
 		{ id=10518, skill={210,230,240,250} }, --Turtle Scale Bracers
@@ -1624,7 +1627,7 @@ local craftingTable = {
 	},
 
 	LeatherArtisan = {
-		{ name = L["LeatherArtisan1"], icon = "Trade_Generic" },
+		{ name = L["Artisan"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=10548, skill={230,250,260,270} }, --Nightscape Pants
 		{ id=10550, skill={230,250,260,270} }, --Nightscape Cloak
 		{ id=10552, skill={230,250,260,270} }, --Turtle Scale Helm
@@ -1639,6 +1642,7 @@ local craftingTable = {
 		{ id=22331, skill={250,250,250,250} }, --Rugged Leather
 		{ id=19047, skill={250,250,255,260} }, --Cured Rugged Hide
 		{ id=19058, skill={250,255,265,275} }, --Rugged Armor Kit
+		{ name = L["Artisan"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=10647, skill={250,270,280,290} }, --Feathered Breastplate
 		{ id=10570, skill={250,270,280,290} }, --Tough Scorpid Helm
 		{ id=10574, skill={250,270,280,290} }, --Wild Leather Cloak
@@ -1647,18 +1651,15 @@ local craftingTable = {
 		{ id=19049, skill={260,280,290,300} }, --Wicked Leather Gauntlets
 		{ id=19051, skill={265,285,295,305} }, --Heavy Scorpid Vest
 		{ id=19052, skill={265,285,295,305} }, --Wicked Leather Bracers
-		{ id=57008, skill={265,1,1,1} }, --Breastplate of the Earth
+		{ id=57008, skill={265,320,330,340} }, --Breastplate of the Earth
 		{ id=19055, skill={270,290,300,310} }, --Runic Leather Gauntlets
 		{ id=47015, skill={270,285,290,295} }, --Primalist's Gloves
 		{ id=47017, skill={270,290,291,295} }, --Primalist's Headdress
 		{ id=47020, skill={275,290,291,295} }, --Primalist's Boots
 		{ id=22815, skill={275,285,290,295} }, --Gordok Ogre Suit
+		{ name = L["Artisan"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=19064, skill={275,295,305,315} }, --Heavy Scorpid Gauntlets
 		{ id=19065, skill={275,295,305,315} }, --Runic Leather Bracers
-	},
-
-	LeatherArtisan2 = {
-		{ name = L["LeatherArtisan2"], icon = "Trade_Generic" },
 		{ id=47018, skill={280,290,291,295} }, --Primalist's Pants
 		{ id=47016, skill={280,285,290,295} }, --Primalist's Shoulders
 		{ id=19070, skill={280,300,310,320} }, --Heavy Scorpid Belt
@@ -1671,6 +1672,7 @@ local craftingTable = {
 		{ id=23705, skill={290,310,320,330} }, --Dawn Treaders
 		{ id=23703, skill={290,310,320,330} }, --Might of the Timbermaw
 		{ id=19088, skill={295,315,325,335} }, --Heavy Scorpid Helm
+		{ name = L["Artisan"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=19100, skill={300,320,330,340} }, --Heavy Scorpid Shoulders
 		{ id=19102, skill={300,320,330,340} }, --Runic Leather Armor
 		{ id=19091, skill={300,320,330,340} }, --Runic Leather Pants
@@ -1685,14 +1687,11 @@ local craftingTable = {
 		{ id=22727, skill={300,320,330,340} }, --Core Armor Kit
 		{ id=22921, skill={300,320,330,340} }, --Girdle of Insight
 		{ id=23706, skill={300,320,330,340} }, --Golden Mantle of the Dawn
+		{ name = L["Artisan"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=22922, skill={300,320,330,340} }, --Mongoose Boots
 		{ id=19093, skill={300,320,330,340} }, --Onyxia Scale Cloak
 		{ id=24123, skill={300,320,330,340} }, --Primal Batskin Bracers
 		{ id=24122, skill={300,320,330,340} }, --Primal Batskin Gloves
-	},
-
-	LeatherArtisan3 = {
-		{ name = L["LeatherArtisan3"], icon = "Trade_Generic" },
 		{ id=24121, skill={300,320,330,340} }, --Primal Batskin Jerkin
 		{ id=24849, skill={300,320,330,340} }, --Sandstalker Bracers
 		{ id=24851, skill={300,320,330,340} }, --Sandstalker Breastplate
@@ -1703,6 +1702,7 @@ local craftingTable = {
 		{ id=24847, skill={300,320,330,340} }, --Spitfire Gauntlets
 		{ id=22923, skill={300,320,330,340} }, --Swift Flight Bracers
 		{ id=23704, skill={300,320,330,340} }, --Timbermaw Brawlers
+		{ name = L["Artisan"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=55522, skill={300,300,300,300} }, --Ethereal Helmet
 		{ id=55523, skill={300,300,300,300} }, --Ethereal Shoulder Pads
 		{ id=55524, skill={300,300,300,300} }, --Ethereal Tunic
@@ -1717,6 +1717,7 @@ local craftingTable = {
 		{ id=28219, skill={300,320,330,340} }, --Polar Tunic
 		{ id=45473, skill={300,320,330,340} }, --Dreamhide Mantle
 		{ id=45475, skill={300,320,330,340} }, --Dreamhide Bracers
+		{ name = L["Artisan"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=45477, skill={300,320,330,340} }, --Dreamhide Leggings
 		{ id=45479, skill={300,320,330,340} }, --Dreamhide Belt
 		{ id=45483, skill={300,320,330,340} }, --Inscribed Runic Bracers
@@ -1724,7 +1725,7 @@ local craftingTable = {
 	},
 
 	Dragonscale = {
-		{ name = L["Dragonscale1"], icon = "Trade_Generic" },
+		{ name = BS["Dragonscale Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=10619, skill={225,245,255,265} }, --Dragonscale Gauntlets
 		{ id=46695, skill={245,245,245,245} }, --Dragonscale Leggings
 		{ id=10650, skill={255,275,285,295} }, --Dragonscale Breastplate
@@ -1739,6 +1740,7 @@ local craftingTable = {
 		{ id=46653, skill={295,300,300,300} }, --Red Dragonscale Leggings
 		{ id=46654, skill={300,300,300,300} }, --Red Dragonscale Shoulders
 		{ id=19107, skill={300,320,330,340} }, --Black Dragonscale Leggings
+		{ name = BS["Dragonscale Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=24654, skill={300,320,330,340} }, --Blue Dragonscale Leggings
 		{ id=19094, skill={300,320,330,340} }, --Black Dragonscale Shoulders
 		{ id=19054, skill={300,320,330,340} }, --Red Dragonscale Breastplate
@@ -1751,7 +1753,7 @@ local craftingTable = {
 	},
 
 	Elemental = {
-		{ name = L["Elemental1"], icon = "Trade_Generic" },
+		{ name = BS["Elemental Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=10630, skill={230,250,260,270} }, --Gauntlets of the Sea
 		{ id=10632, skill={250,270,280,290} }, --Helm of Fire
 		{ id=57010, skill={255,255,255,255} }, --Boots of the Wind
@@ -1766,6 +1768,7 @@ local craftingTable = {
 		{ id=19095, skill={300,320,330,340} }, --Living Breastplate
 		{ id=26279, skill={300,320,330,340} }, --Stormshroud Gloves
 		{ id=23710, skill={300,320,330,340} }, --Molten Belt
+		{ name = BS["Elemental Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=20854, skill={300,320,330,340} }, --Molten Helm
 		{ id=22928, skill={300,320,330,340} }, --Shifting Cloak
 		{ id=57016, skill={300,300,300,300} }, --Depthstalker Helm
@@ -1776,7 +1779,7 @@ local craftingTable = {
 	},
 
 	Tribal = {
-		{ name = L["Tribal1"], icon = "Trade_Generic" },
+		{ name = BS["Tribal Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=10621, skill={225,245,255,265} }, --Wolfshead Helm
 		{ id=19053, skill={265,270,280,290} }, --Chimeric Gloves
 		{ id=19062, skill={270,290,300,310} }, --Ironfeather Shoulders
@@ -1791,6 +1794,7 @@ local craftingTable = {
 		{ id=19086, skill={290,310,320,330} }, --Ironfeather Breastplate
 		{ id=19087, skill={295,315,325,335} }, --Frostsaber Gloves
 		{ id=20853, skill={295,315,325,335} }, --Corehound Boots
+		{ name = BS["Tribal Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=19104, skill={300,320,330,340} }, --Frostsaber Tunic
 		{ id=19097, skill={300,320,330,340} }, --Devilsaur Leggings
 		{ id=23709, skill={300,320,330,340} }, --Corehound Belt
@@ -1800,7 +1804,7 @@ local craftingTable = {
 	},
 
 	LeatherHelm = {
-		{ name = L["LeatherHelm1"], icon = "Trade_Generic" },
+		{ name = L["Helm"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=10490, skill={200,220,230,240} }, --Comfortable Leather Hat
 		{ id=46625, skill={210,225,230,235} }, --Grifter's Cover
 		{ id=10531, skill={220,240,250,260} }, --Big Voodoo Mask
@@ -1815,12 +1819,13 @@ local craftingTable = {
 		{ id=19088, skill={295,315,325,335} }, --Heavy Scorpid Helm
 		{ id=28472, skill={300,320,330,340} }, --Bramblewood Helm
 		{ id=55522, skill={300,300,300,300} }, --Ethereal Helmet
+		{ name = L["Helm"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=20854, skill={300,320,330,340} }, --Molten Helm
 		{ id=57016, skill={300,300,300,300} }, --Depthstalker Helm
 	},
 
 	LeatherShoulders = {
-		{ name = L["LeatherShoulders1"], icon = "Trade_Generic" },
+		{ name = L["Shoulders"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=3768, skill={130,155,167,180} }, --Hillman's Shoulders
 		{ id=9147, skill={135,160,172,185} }, --Earthen Leather Shoulders
 		{ id=3769, skill={140,165,177,190} }, --Dark Leather Shoulders
@@ -1835,6 +1840,7 @@ local craftingTable = {
 		{ id=19090, skill={295,315,325,335} }, --Stormshroud Shoulders
 		{ id=19100, skill={300,320,330,340} }, --Heavy Scorpid Shoulders
 		{ id=19103, skill={300,320,330,340} }, --Runic Leather Shoulders
+		{ name = L["Shoulders"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=19101, skill={300,320,330,340} }, --Volcanic Shoulders
 		{ id=24125, skill={300,320,330,340} }, --Blood Tiger Shoulders
 		{ id=23706, skill={300,320,330,340} }, --Golden Mantle of the Dawn
@@ -1845,7 +1851,7 @@ local craftingTable = {
 	},
 
 	LeatherCloak = {
-		{ name = L["LeatherCloak1"], icon = "Trade_Generic" },
+		{ name = L["Cloak"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=9058, skill={1,40,55,70} }, --Handstitched Leather Cloak
 		{ id=2162, skill={60,90,105,120} }, --Embossed Leather Cloak
 		{ id=2159, skill={85,105,120,135} }, --Fine Leather Cloak
@@ -1860,12 +1866,13 @@ local craftingTable = {
 		{ id=10574, skill={250,270,280,290} }, --Wild Leather Cloak
 		{ id=19093, skill={300,320,330,340} }, --Onyxia Scale Cloak
 		{ id=22926, skill={300,320,330,340} }, --Chromatic Cloak
+		{ name = L["Cloak"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=22928, skill={300,320,330,340} }, --Shifting Cloak
 		{ id=22927, skill={300,320,330,340} }, --Hide of the Wild
 	},
 
 	LeatherChest = {
-		{ name = L["LeatherChest1"], icon = "Trade_Generic" },
+		{ name = L["Chest"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=7126, skill={1,40,55,70} }, --Handstitched Leather Vest
 		{ id=2160, skill={40,70,85,100} }, --Embossed Leather Vest
 		{ id=2163, skill={60,90,105,120} }, --White Leather Jerkin
@@ -1880,6 +1887,7 @@ local craftingTable = {
 		{ id=4096, skill={165,185,195,205} }, --Raptor Hide Harness
 		{ id=6704, skill={170,190,200,210} }, --Thick Murloc Armor
 		{ id=9196, skill={175,195,205,215} }, --Dusky Leather Armor
+		{ name = L["Chest"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=9197, skill={175,195,205,215} }, --Green Whelp Armor
 		{ id=3773, skill={175,195,205,215} }, --Guardian Armor
 		{ id=6661, skill={190,210,220,230} }, --Barbaric Harness
@@ -1893,13 +1901,10 @@ local craftingTable = {
 		{ id=10650, skill={255,275,285,295} }, --Dragonscale Breastplate
 		{ id=19050, skill={260,280,290,300} }, --Green Dragonscale Breastplate
 		{ id=19051, skill={265,285,295,305} }, --Heavy Scorpid Vest
-		{ id=57008, skill={265,1,1,1} }, --Breastplate of the Earth
+		{ id=57008, skill={265,320,330,340} }, --Breastplate of the Earth
+		{ name = L["Chest"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=22815, skill={275,285,290,295} }, --Gordok Ogre Suit
 		{ id=19068, skill={275,295,305,315} }, --Warbear Harness
-	},
-
-	LeatherChest2 = {
-		{ name = L["LeatherChest2"], icon = "Trade_Generic" },
 		{ id=47019, skill={285,290,291,295} }, --Primalist's Vest
 		{ id=19076, skill={285,305,315,325} }, --Volcanic Breastplate
 		{ id=19077, skill={285,305,315,325} }, --Blue Dragonscale Breastplate
@@ -1912,6 +1917,7 @@ local craftingTable = {
 		{ id=24124, skill={300,320,330,340} }, --Blood Tiger Breastplate
 		{ id=24121, skill={300,320,330,340} }, --Primal Batskin Jerkin
 		{ id=24851, skill={300,320,330,340} }, --Sandstalker Breastplate
+		{ name = L["Chest"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=57022, skill={300,320,330,340} }, --Centaur Battle Harness
 		{ id=24848, skill={300,320,330,340} }, --Spitfire Breastplate
 		{ id=19054, skill={300,320,330,340} }, --Red Dragonscale Breastplate
@@ -1926,7 +1932,7 @@ local craftingTable = {
 	},
 
 	LeatherBracers = {
-		{ name = L["LeatherBracers1"], icon = "Trade_Generic" },
+		{ name = L["Bracers"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=9059, skill={1,40,55,70} }, --Handstitched Leather Bracers
 		{ id=9065, skill={70,100,115,130} }, --Light Leather Bracers
 		{ id=23399, skill={155,175,185,195} }, --Barbaric Bracers
@@ -1941,6 +1947,7 @@ local craftingTable = {
 		{ id=19052, skill={265,285,295,305} }, --Wicked Leather Bracers
 		{ id=19065, skill={275,295,305,315} }, --Runic Leather Bracers
 		{ id=24123, skill={300,320,330,340} }, --Primal Batskin Bracers
+		{ name = L["Bracers"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=24849, skill={300,320,330,340} }, --Sandstalker Bracers
 		{ id=24846, skill={300,320,330,340} }, --Spitfire Bracers
 		{ id=22923, skill={300,320,330,340} }, --Swift Flight Bracers
@@ -1951,7 +1958,7 @@ local craftingTable = {
 	},
 
 	LeatherGloves = {
-		{ name = L["LeatherGloves1"], icon = "Trade_Generic" },
+		{ name = L["Gloves"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=3756, skill={55,85,100,115} }, --Embossed Leather Gloves
 		{ id=2164, skill={75,105,120,135} }, --Fine Leather Gloves
 		{ id=7954, skill={105,130,142,155} }, --Deviate Scale Gloves
@@ -1966,6 +1973,7 @@ local craftingTable = {
 		{ id=3764, skill={145,170,182,195} }, --Hillman's Leather Gloves
 		{ id=3771, skill={150,170,180,190} }, --Barbaric Gloves
 		{ id=7156, skill={190,210,220,230} }, --Guardian Gloves
+		{ name = L["Gloves"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=21943, skill={190,210,220,230} }, --Gloves of the Greatfather
 		{ id=22711, skill={200,210,220,230} }, --Shadowskin Gloves
 		{ id=46621, skill={200,215,220,225} }, --Grifter's Gauntlets
@@ -1980,12 +1988,9 @@ local craftingTable = {
 		{ id=19064, skill={275,295,305,315} }, --Heavy Scorpid Gauntlets
 		{ id=24655, skill={280,300,310,320} }, --Green Dragonscale Gauntlets
 		{ id=19084, skill={290,310,320,330} }, --Devilsaur Gauntlets
+		{ name = L["Gloves"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=19087, skill={295,315,325,335} }, --Frostsaber Gloves
 		{ id=24122, skill={300,320,330,340} }, --Primal Batskin Gloves
-	},
-
-	LeatherGloves2 = {
-		{ name = L["LeatherGloves2"], icon = "Trade_Generic" },
 		{ id=24850, skill={300,320,330,340} }, --Sandstalker Gauntlets
 		{ id=24847, skill={300,320,330,340} }, --Spitfire Gauntlets
 		{ id=23704, skill={300,320,330,340} }, --Timbermaw Brawlers
@@ -1997,7 +2002,7 @@ local craftingTable = {
 	},
 
 	LeatherBelt = {
-		{ name = L["LeatherBelt1"], icon = "Trade_Generic" },
+		{ name = L["Belt"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=3753, skill={25,55,70,85} }, --Handstitched Leather Belt
 		{ id=3763, skill={80,110,125,140} }, --Fine Leather Belt
 		{ id=6702, skill={90,120,135,150} }, --Murloc Scale Belt
@@ -2012,6 +2017,7 @@ local craftingTable = {
 		{ id=46622, skill={200,215,220,225} }, --Grifter's Belt
 		{ id=3779, skill={200,220,230,240} }, --Barbaric Belt
 		{ id=19070, skill={280,300,310,320} }, --Heavy Scorpid Belt
+		{ name = L["Belt"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=19072, skill={280,300,310,320} }, --Runic Leather Belt
 		{ id=23703, skill={290,310,320,330} }, --Might of the Timbermaw
 		{ id=19092, skill={300,320,330,340} }, --Wicked Leather Belt
@@ -2024,7 +2030,7 @@ local craftingTable = {
 	},
 
 	LeatherPants = {
-		{ name = L["LeatherPants1"], icon = "Trade_Generic" },
+		{ name = L["Pants"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=2153, skill={15,45,60,75} }, --Handstitched Leather Pants
 		{ id=9064, skill={35,65,80,95} }, --Rugged Leather Pants
 		{ id=3759, skill={75,105,120,135} }, --Embossed Leather Pants
@@ -2039,6 +2045,7 @@ local craftingTable = {
 		{ id=10556, skill={235,255,265,275} }, --Turtle Scale Leggings
 		{ id=10560, skill={240,260,270,280} }, --Big Voodoo Pants
 		{ id=10568, skill={245,265,275,285} }, --Tough Scorpid Leggings
+		{ name = L["Pants"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=46695, skill={245,245,245,245} }, --Dragonscale Leggings
 		{ id=10572, skill={250,270,280,290} }, --Wild Leather Leggings
 		{ id=19059, skill={270,290,300,310} }, --Volcanic Leggings
@@ -2053,12 +2060,9 @@ local craftingTable = {
 		{ id=19083, skill={290,310,320,330} }, --Wicked Leather Pants
 		{ id=46653, skill={295,300,300,300} }, --Red Dragonscale Leggings
 		{ id=19091, skill={300,320,330,340} }, --Runic Leather Pants
+		{ name = L["Pants"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=24654, skill={300,320,330,340} }, --Blue Dragonscale Leggings
 		{ id=19107, skill={300,320,330,340} }, --Black Dragonscale Leggings
-	},
-
-	LeatherPants2 = {
-		{ name = L["LeatherPants2"], icon = "Trade_Generic" },
 		{ id=19097, skill={300,320,330,340} }, --Devilsaur Leggings
 		{ id=55525, skill={300,300,300,300} }, --Ethereal Leggings
 		{ id=57014, skill={300,300,300,300} }, --Flamewrath Leggings
@@ -2069,7 +2073,7 @@ local craftingTable = {
 	},
 
 	LeatherBoots = {
-		{ name = L["LeatherBoots1"], icon = "Trade_Generic" },
+		{ name = L["Boots"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=2149, skill={1,40,55,70} }, --Handstitched Leather Boots
 		{ id=2161, skill={55,85,100,115} }, --Embossed Leather Boots
 		{ id=45069, skill={75,1,1,1} }, --Lynxstep Boots
@@ -2084,6 +2088,7 @@ local craftingTable = {
 		{ id=57010, skill={255,255,255,255} }, --Boots of the Wind
 		{ id=47020, skill={275,290,291,295} }, --Primalist's Boots
 		{ id=19063, skill={275,295,305,315} }, --Chimeric Boots
+		{ name = L["Boots"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=19066, skill={275,295,305,315} }, --Frostsaber Boots
 		{ id=23705, skill={290,310,320,330} }, --Dawn Treaders
 		{ id=54001, skill={290,315,325,335} }, --Blue Dragonscale Boots
@@ -2096,7 +2101,7 @@ local craftingTable = {
 	},
 
 	LeatherBags = {
-		{ name = L["LeatherBags1"], icon = "Trade_Generic" },
+		{ name = L["Bags"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=5244, skill={40,70,85,100} }, --Kodo Hide Bag
 		{ id=9060, skill={30,60,75,90} }, --Light Leather Quiver
 		{ id=9193, skill={150,170,180,190} }, --Heavy Quiver
@@ -2107,19 +2112,22 @@ local craftingTable = {
 	},
 
 	LeatherMisc = {
-		{ name = L["LeatherMisc1"], icon = "Trade_Generic" },
+		{ name = L["Misc"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=2881, skill={1,20,30,40} }, --Light Leather
 		{ id=20648, skill={100,100,105,110} }, --Medium Leather
 		{ id=20649, skill={150,150,155,160} }, --Heavy Leather
 		{ id=20650, skill={200,200,202,205} }, --Thick Leather
 		{ id=22331, skill={250,250,250,250} }, --Rugged Leather
+		{},
 		{ id=3816, skill={35,55,65,75} }, --Cured Light Hide
 		{ id=3817, skill={100,115,122,130} }, --Cured Medium Hide
 		{ id=3818, skill={150,160,165,170} }, --Cured Heavy Hide
 		{ id=10482, skill={200,200,200,200} }, --Cured Thick Hide
 		{ id=19047, skill={250,250,255,260} }, --Cured Rugged Hide
 		{ id=45455, skill={300,320,330,340} }, --Dreamhide
+		{},
 		{ id=23190, skill={150,150,155,160} }, --Heavy Leather Ball
+		{ name = L["Misc"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=2152, skill={1,30,45,60} }, --Light Armor Kit
 		{ id=2165, skill={100,115,122,130} }, --Medium Armor Kit
 		{ id=3780, skill={150,170,180,190} }, --Heavy Armor Kit
@@ -2130,6 +2138,7 @@ local craftingTable = {
 	},
 
 	TailoringApprentice = {
+		{ name = L["Apprentice"], icon = "Trade_Tailoring" },
 		{ id=2963, skill={1,25,37,50} }, --Bolt of Linen Cloth
 		{ id=3915, skill={1,35,47,60} }, --Brown Linen Shirt
 		{ id=2387, skill={1,35,47,60} }, --Linen Cloak
@@ -2144,6 +2153,7 @@ local craftingTable = {
 		{ id=3840, skill={35,60,77,95} }, --Heavy Linen Gloves
 		{ id=2394, skill={40,65,82,100} }, --Blue Linen Shirt
 		{ id=2392, skill={40,65,82,100} }, --Red Linen Shirt
+		{ name = L["Apprentice"], icon = "Trade_Tailoring" },
 		{ id=8465, skill={40,65,82,100} }, --Simple Dress
 		{ id=2389, skill={40,65,82,100} }, --Red Linen Robe
 		{ id=3755, skill={45,70,87,105} }, --Linen Bag
@@ -2158,12 +2168,13 @@ local craftingTable = {
 		{ id=7633, skill={70,95,112,130} }, --Blue Linen Robe
 		{ id=3842, skill={70,95,112,130} }, --Handstitched Linen Britches
 		{ id=2964, skill={75,90,97,105} }, --Bolt of Woolen Cloth
+		{ name = L["Apprentice"], icon = "Trade_Tailoring" },
 		{ id=12046, skill={75,100,117,135} }, --Simple Kilt
 		{ id=2402, skill={75,100,117,135} }, --Woolen Cape
-
 		{ id=45066, skill={75,150,167,185} }, --Gloves of Manathirst
 	},
 	TailoringJourneyman = {
+		{ name = L["Journeyman"], icon = "Trade_Tailoring" },
 		{ id=3757, skill={80,105,122,140} }, --Woolen Bag
 		{ id=3845, skill={80,105,122,140} }, --Soft-soled Linen Boots
 		{ id=2399, skill={85,110,127,145} }, --Green Woolen Vest
@@ -2178,6 +2189,7 @@ local craftingTable = {
 		{ id=2403, skill={105,130,147,165} }, --Gray Woolen Robe
 		{ id=3848, skill={110,135,152,170} }, --Double-stitched Woolen Shoulders
 		{ id=3866, skill={110,135,152,170} }, --Stylish Red Shirt
+		{ name = L["Journeyman"], icon = "Trade_Tailoring" },
 		{ id=8467, skill={110,135,152,170} }, --White Woolen Dress
 		{ id=3850, skill={110,135,152,170} }, --Heavy Woolen Pants
 		{ id=6688, skill={115,140,157,175} }, --Red Woolen Bag
@@ -2192,9 +2204,9 @@ local craftingTable = {
 		{ id=3855, skill={125,150,167,185} }, --Spidersilk Boots
 		{ id=3852, skill={130,150,165,180} }, --Gloves of Meditation
 		{ id=3869, skill={135,145,150,155} }, --Bright Yellow Shirt
+		{ name = L["Journeyman"], icon = "Trade_Tailoring" },
 		{ id=6690, skill={135,155,170,185} }, --Lesser Wizard's Robe
 		{ id=8758, skill={140,160,175,190} }, --Azure Silk Pants
-
 		{ id=3856, skill={140,160,175,190} }, --Spider Silk Slippers
 		{ id=8778, skill={140,160,175,190} }, --Boots of Darkness
 		{ id=8760, skill={145,155,160,165} }, --Azure Silk Hood
@@ -2206,6 +2218,7 @@ local craftingTable = {
 		{ id=8782, skill={150,170,185,200} }, --Truefaith Gloves
 	},
 	TailoringExpert = {
+		{ name = L["Expert"], icon = "Trade_Tailoring" },
 		{ id=3870, skill={155,165,170,175} }, --Dark Silk Shirt
 		{ id=8762, skill={160,170,175,180} }, --Silk Headband
 		{ id=8483, skill={160,170,175,180} }, --White Swashbuckler's Shirt
@@ -2220,6 +2233,7 @@ local craftingTable = {
 		{ id=8766, skill={175,195,210,225} }, --Azure Silk Belt
 		{ id=8786, skill={175,195,210,225} }, --Azure Silk Cloak
 		{ id=3860, skill={175,195,210,225} }, --Boots of the Enchanter
+		{ name = L["Expert"], icon = "Trade_Tailoring" },
 		{ id=8772, skill={175,195,210,225} }, --Crimson Silk Belt
 		{ id=8789, skill={180,200,215,230} }, --Crimson Silk Cloak
 		{ id=8774, skill={180,200,215,230} }, --Green Silken Shoulders
@@ -2234,9 +2248,9 @@ local craftingTable = {
 		{ id=8770, skill={190,210,225,240} }, --Robe of Power
 		{ id=8799, skill={195,215,225,235} }, --Crimson Silk Pantaloons
 		{ id=8797, skill={195,215,230,245} }, --Earthen Silk Belt
+		{ name = L["Expert"], icon = "Trade_Tailoring" },
 		{ id=3873, skill={200,210,215,220} }, --Black Swashbuckler's Shirt
 		{ id=3864, skill={200,220,235,250} }, --Star Belt
-
 		{ id=3862, skill={200,220,235,250} }, --Icy Cloak
 		{ id=69420, skill={200,200,200,200} }, --Augerer's Boots
 		{ id=69421, skill={200,200,200,200} }, --Augerer's Gloves
@@ -2249,6 +2263,7 @@ local craftingTable = {
 		{ id=69425, skill={210,210,210,210} }, --Augerer's Robe
 		{ id=12050, skill={210,225,240,255} }, --Black Mageweave Robe
 		{ id=8804, skill={210,225,240,255} }, --Crimson Silk Gloves
+		{ name = L["Expert"], icon = "Trade_Tailoring" },
 		{ id=12052, skill={210,225,240,255} }, --Shadoweave Pants
 		{ id=12061, skill={215,220,225,230} }, --Orange Mageweave Shirt
 		{ id=12059, skill={215,220,225,230} }, --White Bandit Mask
@@ -2263,12 +2278,14 @@ local craftingTable = {
 		{ id=12066, skill={225,240,255,270} }, --Red Mageweave Gloves
 		{ id=12071, skill={225,240,255,270} }, --Shadoweave Gloves
 		{ id=12067, skill={225,240,255,270} }, --Dreamweave Gloves
+		{ name = L["Expert"], icon = "Trade_Tailoring" },
 		{ id=12070, skill={225,240,255,270} }, --Dreamweave Vest
 		{ id=69426, skill={225,225,225,225} }, --Diviner's Boots
 		{ id=69427, skill={225,225,225,225} }, --Diviner's Mitts
 		{ id=69428, skill={230,230,230,230} }, --Diviner's Epaulets
 	},
 	TailoringArtisan = {
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=69429, skill={230,230,230,230} }, --Diviner's Pantaloons
 		{ id=69430, skill={230,230,230,230} }, --Diviner's Cowl
 		{ id=12075, skill={230,235,240,245} }, --Lavender Mageweave Shirt
@@ -2283,6 +2300,7 @@ local craftingTable = {
 		{ id=12076, skill={235,250,265,280} }, --Shadoweave Shoulders
 		{ id=12085, skill={240,245,250,255} }, --Tuxedo Shirt
 		{ id=12081, skill={240,255,270,285} }, --Admiral's Hat
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=12084, skill={240,255,270,285} }, --Red Mageweave Headband
 		{ id=12082, skill={240,255,270,285} }, --Shadoweave Boots
 		{ id=12089, skill={245,250,255,260} }, --Tuxedo Pants
@@ -2297,8 +2315,8 @@ local craftingTable = {
 		{ id=18560, skill={250,290,305,320} }, --Mooncloth
 		{ id=18404, skill={255,270,285,300} }, --Frostweave Robe
 		{ id=18403, skill={255,270,285,300} }, --Frostweave Tunic
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=18402, skill={255,270,285,300} }, --Runecloth Belt
-
 		{ id=69432, skill={260,260,260,260} }, --Pillager's Shoes
 		{ id=69433, skill={260,260,260,260} }, --Pillager's Grips
 		{ id=18405, skill={260,275,290,305} }, --Runecloth Bag
@@ -2312,6 +2330,7 @@ local craftingTable = {
 		{ id=18411, skill={265,280,295,310} }, --Frostweave Gloves
 		{ id=18410, skill={265,280,295,310} }, --Ghostweave Belt
 		{ id=18409, skill={265,280,295,310} }, --Runecloth Cloak
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=69437, skill={270,270,270,270} }, --Pillager's Robe
 		{ id=18415, skill={270,285,300,315} }, --Brightcloth Gloves
 		{ id=18414, skill={270,285,300,315} }, --Brightcloth Robe
@@ -2326,10 +2345,10 @@ local craftingTable = {
 		{ id=18416, skill={275,290,305,320} }, --Ghostweave Vest
 		{ id=18417, skill={275,290,305,320} }, --Runecloth Gloves
 		{ id=18421, skill={275,290,305,320} }, --Wizardweave Leggings
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=18422, skill={275,290,305,320} }, --Cloak of Fire
 		{ id=18434, skill={280,295,310,325} }, --Cindercloth Pants
 		{ id=18424, skill={280,295,310,325} }, --Frostweave Pants
-
 		{ id=18423, skill={280,295,310,325} }, --Runecloth Boots
 		{ id=26086, skill={280,300,315,330} }, --Felcloth Bag
 		{ id=18437, skill={285,300,315,330} }, --Felcloth Boots
@@ -2341,6 +2360,7 @@ local craftingTable = {
 		{ id=18441, skill={290,305,320,335} }, --Ghostweave Pants
 		{ id=23664, skill={290,305,320,335} }, --Argent Boots
 		{ id=18440, skill={290,305,320,335} }, --Mooncloth Leggings
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=23662, skill={290,305,320,335} }, --Wisdom of the Timbermaw
 		{ id=18444, skill={295,310,325,340} }, --Runecloth Headband
 		{ id=27660, skill={300,315,330,345} }, --Big Bag of Enchantment
@@ -2355,12 +2375,12 @@ local craftingTable = {
 		{ id=24093, skill={300,315,330,345} }, --Bloodvine Boots
 		{ id=24092, skill={300,315,330,345} }, --Bloodvine Leggings
 		{ id=24091, skill={300,315,330,345} }, --Bloodvine Vest
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=18455, skill={300,315,330,345} }, --Bottomless Bag
 		{ id=22870, skill={300,315,330,345} }, --Cloak of Warding
 		{ id=22867, skill={300,315,330,345} }, --Felcloth Gloves
 		{ id=28210, skill={300,315,330,345} }, --Gaea's Embrace
 		{ id=22868, skill={300,315,330,345} }, --Inferno Gloves
-
 		{ id=57024, skill={300,315,330,345} }, --Windbinder Gloves
 		{ id=57020, skill={300,315,330,345} }, --Dustguider Sash
 		{ id=23663, skill={300,315,330,345} }, --Mantle of the Timbermaw
@@ -2370,6 +2390,7 @@ local craftingTable = {
 		{ id=18448, skill={300,315,330,345} }, --Mooncloth Shoulders
 		{ id=18447, skill={300,315,330,345} }, --Mooncloth Vest
 		{ id=24902, skill={300,315,330,345} }, --Runed Stygian Belt
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=24903, skill={300,315,330,345} }, --Runed Stygian Boots
 		{ id=24901, skill={300,315,330,345} }, --Runed Stygian Leggings
 		{ id=28481, skill={300,315,330,345} }, --Sylvan Crown
@@ -2384,6 +2405,7 @@ local craftingTable = {
 		{ id=26087, skill={300,315,330,345} }, --Core Felcloth Bag
 		{ id=20849, skill={300,315,330,345} }, --Flarecore Gloves
 		{ id=23667, skill={300,315,330,345} }, --Flarecore Leggings
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=20848, skill={300,315,330,345} }, --Flarecore Mantle
 		{ id=23666, skill={300,315,330,345} }, --Flarecore Robe
 		{ id=22759, skill={300,315,330,345} }, --Flarecore Wraps
@@ -2392,21 +2414,22 @@ local craftingTable = {
 		{ id=28207, skill={300,315,330,345} }, --Glacial Vest
 		{ id=28209, skill={300,315,330,345} }, --Glacial Wrists
 		{ id=18454, skill={300,315,330,345} }, --Gloves of Spell Mastery
-
 		{ id=18457, skill={300,315,330,345} }, --Robe of the Archmage
 		{ id=18458, skill={300,315,330,345} }, --Robe of the Void
 		{ id=18456, skill={300,315,330,345} }, --Truefaith Vestments
-		{ id=46656, skill={300,300,300,300} }, --Robe of Sacrifice
-		{ id=54011, skill={300,300,300,300} }, --Flarecore Boots
-		{ id=45485, skill={300,300,300,300} }, --Gloves of Unwinding Mystery
-		{ id=45457, skill={300,300,300,300} }, --Dreamthread Mantle
-		{ id=45459, skill={300,300,300,300} }, --Dreamthread Kilt
-		{ id=45461, skill={300,300,300,300} }, --Dreamthread Bracers
-		{ id=45463, skill={300,300,300,300} }, --Dreamthread Gloves
-		{ id=45453, skill={300,300,300,300} }, --Dreamthread
+		{ id=46656, skill={300,300,315,330} }, --Robe of Sacrifice
+		{ id=54011, skill={300,315,330,345} }, --Flarecore Boots
+		{ id=45485, skill={300,315,330,345} }, --Gloves of Unwinding Mystery
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
+		{ id=45457, skill={300,315,330,345} }, --Dreamthread Mantle
+		{ id=45459, skill={300,315,330,345} }, --Dreamthread Kilt
+		{ id=45461, skill={300,315,330,345} }, --Dreamthread Bracers
+		{ id=45463, skill={300,315,330,345} }, --Dreamthread Gloves
+		{ id=45453, skill={300,310,315,320} }, --Dreamthread
 
 	},
 	TailoringHelm = {
+		{ name = L["Helm"], icon = "Trade_Tailoring" },
 		{ id=8760, skill={145,155,160,165} }, --Azure Silk Hood
 		{ id=3857, skill={165,185,200,215} }, --Enchanter's Cowl
 		{ id=3858, skill={170,190,205,220} }, --Shadow Hood

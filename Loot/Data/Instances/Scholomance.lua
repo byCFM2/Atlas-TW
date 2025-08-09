@@ -369,10 +369,7 @@ AtlasTW.InstanceData.Scholomance = {
                 {id=13920, dropRate=6},
             }
         },
-        { name = BIS["Necropile Raiment"], items = "ScholoCloth" },
-        { name = BIS["Cadaverous Garb"], items = "ScholoLeather" },
-        { name = BIS["Bloodmail Regalia"], items = "ScholoMail" },
-        { name = BIS["Deathbone Guardian"], items = "ScholoPlate" },
+        { name = BZ["Scholomance"].." "..L["Sets"], items = "Scholo" },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
         { name = L["Tier 0/0.5 Sets"], items = "T0Set" },
     },

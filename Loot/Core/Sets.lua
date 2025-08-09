@@ -1,5 +1,6 @@
 local L = AtlasTW.Local
 local BC = AceLibrary("Babble-Class-2.2")
+local BZ = AceLibrary("Babble-Zone-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 local data = AtlasLoot_Data
@@ -171,7 +172,7 @@ local pre60SetsMenuData = {
     { name = BIS["The Gladiator"], extra = "Blackrock Depths", icon = "Interface\\Icons\\INV_Helmet_01", lootpage = "TheGladiator" },
     { name = BIS["Ironweave Battlesuit"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Boots_Cloth_05", lootpage = "Ironweave" },
     { name = BIS["The Postmaster"], extra = "Stratholme", icon = "Interface\\Icons\\INV_Boots_02", lootpage = "Strat" },
-    { name = BIS["Necropile Raiment"], extra = "Scholomance", icon = "Interface\\Icons\\INV_Shoulder_02", lootpage = "Scholo" },
+    { name = BZ["Scholomance"].." "..L["Sets"], extra = "Schoolomance", icon = "Interface\\Icons\\INV_Shoulder_02", lootpage = "Scholo" },
     { name = L["Scourge Invasion"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Jewelry_Talisman_13", lootpage = "ScourgeInvasion" },
     {},
     { name = BIS["Spider's Kiss"], extra = "Lower Blackrock Spire", icon = "Interface\\Icons\\INV_Weapon_ShortBlade_16", lootpage = "SpiderKiss" },
