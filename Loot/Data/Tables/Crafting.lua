@@ -20,11 +20,7 @@ local craftingTable = {
 		{ "s2837", "ability_rogue_dualweild", "=q1=Deadly Poison II", "=ds=#lr#=q1= 38 =ds=#sr# =so1=170 =so2=215 =so3=240 =so4=265" },
 		{ "s13228", "ability_poisonsting", "=q1=Wound Poison II", "=ds=#lr#=q1= 40 =ds=#sr# =so1=1 =so2=225 =so3=250 =so4=275" }, ]]
 		{ name = BS["Poisons"], icon = "Trade_BrewPoison" },
-		{ id=8681, skill={1,125,150,175}}, --TEST SPELL
-		{ id=7420, skill={15,70,90,110}}, --TEST ENCHANT
-		{ id=100020, skill={15,70,90,110}}, --TEST spell
-		{ id = 2660, skill={1,2,3,4}},
-
+		{ id=8681, skill={1,125,150,175}}, --FOR TEST
 
 --[[ 		{ 0, "", "", "" },
 		{ 0, "Trade_BrewPoison", "=q6=#rp2#", "" },
