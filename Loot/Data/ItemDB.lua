@@ -105,7 +105,7 @@ end
 
 -- Функция для парсинга подсказки предмета
 function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
-    if not itemID or itemID == 0 then return end
+    if not itemID or itemID == 0 or not GetItemInfo(itemID) then return "" end
     local tooltipName = "AtlasLootHiddenTooltip"
     local tooltip = _G[tooltipName]
     if not tooltip then
@@ -115,7 +115,12 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     end
     tooltip:ClearLines()
     tooltip:SetHyperlink("item:"..tostring(itemID))
-    --AtlasLoot_CacheItem(itemID)
+    -- Проверяем, что тултип содержит данные (предмет кэширован)
+    local firstLine = _G[tooltipName .. "TextLeft1"]
+    if not firstLine or not firstLine:GetText() or firstLine:GetText() == "" then
+        -- Предмет не кэширован, возвращаем только extratext если есть
+        return extratext or ""
+    end
     local info = {}
     if extratext and extratext ~= "" then table.insert(info, extratext) end
     local line, line2, text, text2
@@ -176,6 +181,69 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     return table.concat(info, ", ")
 end
 
+-- Функция для запуска таймера (исправленная версия)
+function StartTimer(delaySeconds, callbackFunc)
+    -- Создаем уникальный фрейм для каждого таймера
+    local timerFrame = CreateFrame("Frame")
+    local startTime = GetTime()
+
+    local function OnTimerUpdate()
+        if GetTime() - startTime >= delaySeconds then
+            timerFrame:Hide()
+            timerFrame:SetScript("OnUpdate", nil)
+            if callbackFunc then
+                callbackFunc()
+            end
+        end
+    end
+
+    timerFrame:SetScript("OnUpdate", OnTimerUpdate)
+    timerFrame:Show()
+end
+
+function AtlasLoot_ForceCacheItemWithDelay(itemID, delayBetweenAttempts, maxAttempts)
+    if not itemID or itemID == 0 then
+        return false
+    end
+    maxAttempts = maxAttempts or 10
+    delayBetweenAttempts = delayBetweenAttempts or 0.1
+    local attempts = 0
+    local function tryCache()
+        if GetItemInfo(itemID) then
+            return true
+        end
+        GameTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
+        attempts = attempts + 1
+        if attempts < maxAttempts then
+            -- Запуск следующей попытки через задержку
+            StartTimer(delayBetweenAttempts, tryCache)
+        else
+            return false
+        end
+    end
+    tryCache()
+end
+function AtlasLoot_ForceCacheItem(itemID, maxAttempts)
+    if not itemID or itemID == 0 then
+        return false
+    end
+    maxAttempts = maxAttempts or 3
+    local attempts = 0
+    local function tryCache()
+        if GetItemInfo(itemID) then
+            return true
+        end
+        GameTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
+        attempts = attempts + 1
+        if attempts < maxAttempts then
+            -- Запуск следующей попытки
+            tryCache()
+        else
+            return false
+        end
+    end
+    tryCache()
+end
 -- Функция для кэша предмета по линку или ID
 function AtlasLoot_CacheItem(linkOrID)
     if not linkOrID or linkOrID == 0 then
