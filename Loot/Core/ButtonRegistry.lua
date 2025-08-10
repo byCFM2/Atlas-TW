@@ -158,14 +158,6 @@ AtlasLoot_TableRegistry = {
             { ID = "WorldBluesShields", Title = L["Shields"] },
         }
     },
---[[     ["WorldEpics"] = {
-        Name = L["World Epics"],
-        Entry = {
-            { ID = "WorldEpics", Title = L["World Epics"] .. " 30-39" },
-            { ID = "WorldEpics2", Title = L["World Epics"] .. " 40-49" },
-            { ID = "WorldEpics3", Title = L["World Epics"] .. " 50-60" },
-        }
-    }, ]]
     ["Factions"] = {
         Name = L["Factions"],
         Entry = {
@@ -473,7 +465,7 @@ AtlasLoot_TableRegistry = {
         Name = BS["Survival"],
         Entry = {
             { ID = "Survival", Title = BS["Survival"] },
-            { ID = "Survival2", Title = BS["Garderning"] },
+            { ID = "Survival2", Title = BS["Gardening"] },
         }
     },
     ["CraftSet"] = {

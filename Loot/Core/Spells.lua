@@ -2,14 +2,8 @@ local L = AtlasTW.Local
 
 GetSpellInfoAtlasLootDB = {
 	["enchants"] = {
-		[7420] = { --TODO clear all like this dont need more
-			name = "Enchant Chest - Minor Health",
-		},
- 		[7421] = {
---[[ 			name = "Runed Copper Rod",
-			icon = "Interface\\Icons\\INV_Staff_Goldfeathered_01", ]] --TODO clear name and icon like this dont need more, we need item only for link
-			item = 6218,
-		},
+		[7420] = { name = "Enchant Chest - Minor Health" },
+ 		[7421] = { item = 6218 },
 		[7426] = {
 			name = "Enchant Chest - Minor Absorption",
 		},
@@ -56,8 +50,6 @@ GetSpellInfoAtlasLootDB = {
 			name = "Enchant 2H Weapon - Lesser Intellect",
 		},
 		[7795] = {
-			name = "Runed Silver Rod",
-			icon = "Interface\\Icons\\INV_Staff_01",
 			item = 6339,
 		},
 		[7857] = {
@@ -130,8 +122,6 @@ GetSpellInfoAtlasLootDB = {
 			name = "Enchant Chest - Minor Stats",
 		},
 		[13628] = {
-			name = "Runed Golden Rod",
-			icon = "Interface\\Icons\\INV_Staff_10",
 			item = 11130,
 		},
 		[13631] = {
@@ -195,8 +185,6 @@ GetSpellInfoAtlasLootDB = {
 			name = "Enchant Chest - Lesser Stats",
 		},
 		[13702] = {
-			name = "Runed Truesilver Rod",
-			icon = "Interface\\Icons\\INV_Staff_11",
 			item = 11145,
 		},
 		[13746] = {
@@ -281,38 +269,24 @@ GetSpellInfoAtlasLootDB = {
 			name = "Enchant Gloves - Minor Haste",
 		},
 		[14293] = {
-			name = "Lesser Magic Wand",
-			icon = "Interface\\Icons\\INV_Staff_02",
 			item = 11287,
 		},
 		[14807] = {
-			name = "Greater Magic Wand",
-			icon = "Interface\\Icons\\INV_Staff_07",
 			item = 11288,
 		},
 		[14809] = {
-			name = "Lesser Mystic Wand",
-			icon = "Interface\\Icons\\INV_Staff_02",
 			item = 11289,
 		},
 		[14810] = {
-			name = "Greater Mystic Wand",
-			icon = "Interface\\Icons\\INV_Wand_07",
 			item = 11290,
 		},
 		[15596] = {
-			name = "Smoking Heart of the Mountain",
-			icon = "Interface\\Icons\\INV_Misc_Gem_Bloodstone_01",
 			item = 11811,
 		},
 		[17180] = {
-			name = "Enchanted Thorium",
-			icon = "Interface\\Icons\\INV_Ingot_Eternium",
 			item = 12655,
 		},
 		[17181] = {
-			name = "Enchanted Leather",
-			icon = "Interface\\Icons\\INV_Misc_Rune_05",
 			item = 12810,
 		},
 		[20008] = {
@@ -388,8 +362,6 @@ GetSpellInfoAtlasLootDB = {
 			name = "Enchant 2H Weapon - Major Intellect",
 		},
 		[20051] = {
-			name = "Runed Arcanite Rod",
-			icon = "Interface\\Icons\\INV_Wand_09",
 			item = 16207,
 		},
 		[21931] = {
@@ -453,53 +425,37 @@ GetSpellInfoAtlasLootDB = {
 			name = "Enchant Cloak - Dodge",
 		},
 		[25124] = {
-			name = "Minor Wizard Oil",
-			icon = "Interface\\Icons\\INV_Poison_MindNumbing",
 			item = 20744,
-			extra = "|cffffffff5 Charges",
+			extra = "|cffffffff5 "..L["Charges"],
 		},
 		[25125] = {
-			name = "Minor Mana Oil",
-			icon = "Interface\\Icons\\INV_Potion_98",
 			item = 20745,
-			extra = "|cffffffff5 Charges",
+			extra = "|cffffffff5 "..L["Charges"],
 		},
 		[25126] = {
-			name = "Lesser Wizard Oil",
-			icon = "Interface\\Icons\\INV_Potion_103",
 			item = 20746,
-			extra = "|cffffffff5 Charges",
+			extra = "|cffffffff5 "..L["Charges"],
 		},
 		[25127] = {
-			name = "Lesser Mana Oil",
-			icon = "Interface\\Icons\\INV_Potion_99",
 			item = 20747,
-			extra = "|cffffffff5 Charges",
+			extra = "|cffffffff5 "..L["Charges"],
 		},
 		[25128] = {
-			name = "Wizard Oil",
-			icon = "Interface\\Icons\\INV_Potion_104",
 			item = 20750,
-			extra = "|cffffffff5 Charges",
+			extra = "|cffffffff5 "..L["Charges"],
 		},
 		[25129] = {
-			name = "Brilliant Wizard Oil",
-			icon = "Interface\\Icons\\INV_Potion_105",
 			item = 20749,
-			extra = "|cffffffff5 Charges",
+			extra = "|cffffffff5 "..L["Charges"],
 		},
 		[25130] = {
-			name = "Brilliant Mana Oil",
-			icon = "Interface\\Icons\\INV_Potion_100",
 			item = 20748,
-			extra = "|cffffffff5 Charges",
+			extra = "|cffffffff5 "..L["Charges"],
 		},
 		[27837] = {
 			name = "Enchant 2H Weapon - Agility",
 		},
 		[41758] = {
-			name = "Enchanted Gemstone Oil",
-			icon = "Interface\\Icons\\INV_Potion_14",
 			item = 55248,
 		},
 		[45071] = {
@@ -542,8 +498,6 @@ GetSpellInfoAtlasLootDB = {
 			name = "Enchant Boots - Vampirism",
 		},
 		[57518] = {
-			name = "Eternal Dreamstone Shard",
-			icon = "Interface\\Icons\\inv_misc_gem_pearl_04",
 			item = 61732,
 		},
 	},
@@ -551,13 +505,13 @@ GetSpellInfoAtlasLootDB = {
 		[818] = {
 			name = "Basic Campfire",
 			tools = {4471},
+			icon = "Spell_Fire_Fire",
 			text = "Builds a campfire that increases the spirits of those nearby by 4 and allows cooking.",
 			reagents = {
 				{4470},
 			},
 		},
 		[2149] = {
-			name = "Leatherworking: Handstitched Leather Boots",
 			item = 2302,
 			reagents = {
 				{2318, 2},
@@ -565,14 +519,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2152] = {
-			name = "Leatherworking: Light Armor Kit",
 			item = 2304,
 			reagents = {
 				{2318},
 			},
 		},
 		[2153] = {
-			name = "Leatherworking: Handstitched Leather Pants",
 			item = 2303,
 			reagents = {
 				{2318, 4},
@@ -580,7 +532,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2158] = {
-			name = "Leatherworking: Fine Leather Boots",
 			item = 2307,
 			reagents = {
 				{2318, 7},
@@ -588,7 +539,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2159] = {
-			name = "Leatherworking: Fine Leather Cloak",
 			item = 2308,
 			reagents = {
 				{2318, 10},
@@ -596,7 +546,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2160] = {
-			name = "Leatherworking: Embossed Leather Vest",
 			item = 2300,
 			reagents = {
 				{2318, 8},
@@ -604,7 +553,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2161] = {
-			name = "Leatherworking: Embossed Leather Boots",
 			item = 2309,
 			reagents = {
 				{2318, 8},
@@ -612,7 +560,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2162] = {
-			name = "Leatherworking: Embossed Leather Cloak",
 			item = 2310,
 			reagents = {
 				{2318, 5},
@@ -620,7 +567,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2163] = {
-			name = "Leatherworking: White Leather Jerkin",
 			item = 2311,
 			reagents = {
 				{2318, 8},
@@ -629,7 +575,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2164] = {
-			name = "Leatherworking: Fine Leather Gloves",
 			item = 2312,
 			reagents = {
 				{4231},
@@ -638,7 +583,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2165] = {
-			name = "Leatherworking: Medium Armor Kit",
 			item = 2313,
 			reagents = {
 				{2319, 4},
@@ -646,7 +590,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2166] = {
-			name = "Leatherworking: Toughened Leather Armor",
 			item = 2314,
 			reagents = {
 				{2319, 10},
@@ -655,7 +598,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2167] = {
-			name = "Leatherworking: Dark Leather Boots",
 			item = 2315,
 			reagents = {
 				{2319, 4},
@@ -664,7 +606,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2168] = {
-			name = "Leatherworking: Dark Leather Cloak",
 			item = 2316,
 			reagents = {
 				{2319, 8},
@@ -673,7 +614,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2169] = {
-			name = "Leatherworking: Dark Leather Tunic",
 			item = 2317,
 			reagents = {
 				{2319, 6},
@@ -682,7 +622,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2329] = {
-			name = "Alchemy: Elixir of Lion's Strength",
 			item = 2454,
 			reagents = {
 				{2449},
@@ -691,7 +630,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2330] = {
-			name = "Alchemy: Minor Healing Potion",
 			item = 118,
 			reagents = {
 				{2447},
@@ -700,7 +638,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2331] = {
-			name = "Alchemy: Minor Mana Potion",
 			item = 2455,
 			reagents = {
 				{785},
@@ -709,7 +646,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2332] = {
-			name = "Alchemy: Minor Rejuvenation Potion",
 			item = 2456,
 			reagents = {
 				{785, 2},
@@ -718,7 +654,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2333] = {
-			name = "Alchemy: Elixir of Lesser Agility",
 			item = 3390,
 			reagents = {
 				{3355},
@@ -727,7 +662,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2334] = {
-			name = "Alchemy: Elixir of Minor Fortitude",
 			item = 2458,
 			reagents = {
 				{2449, 2},
@@ -736,7 +670,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2335] = {
-			name = "Alchemy: Swiftness Potion",
 			item = 2459,
 			reagents = {
 				{2452},
@@ -745,7 +678,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2337] = {
-			name = "Alchemy: Lesser Healing Potion",
 			item = 858,
 			reagents = {
 				{118},
@@ -753,7 +685,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2385] = {
-			name = "Tailoring: Brown Linen Vest",
 			item = 2568,
 			reagents = {
 				{2996},
@@ -761,7 +692,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2386] = {
-			name = "Tailoring: Linen Boots",
 			item = 2569,
 			reagents = {
 				{2996, 3},
@@ -770,7 +700,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2387] = {
-			name = "Tailoring: Linen Cloak",
 			item = 2570,
 			reagents = {
 				{2996},
@@ -778,7 +707,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2389] = {
-			name = "Tailoring: Red Linen Robe",
 			item = 2572,
 			reagents = {
 				{2996, 3},
@@ -787,7 +715,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2392] = {
-			name = "Tailoring: Red Linen Shirt",
 			item = 2575,
 			reagents = {
 				{2996, 2},
@@ -796,7 +723,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2393] = {
-			name = "Tailoring: White Linen Shirt",
 			item = 2576,
 			reagents = {
 				{2996},
@@ -805,7 +731,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2394] = {
-			name = "Tailoring: Blue Linen Shirt",
 			item = 2577,
 			reagents = {
 				{2996, 2},
@@ -814,7 +739,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2395] = {
-			name = "Tailoring: Barbaric Linen Vest",
 			item = 2578,
 			reagents = {
 				{2996, 4},
@@ -823,7 +747,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2396] = {
-			name = "Tailoring: Green Linen Shirt",
 			item = 2579,
 			reagents = {
 				{2996, 3},
@@ -832,7 +755,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2397] = {
-			name = "Tailoring: Reinforced Linen Cape",
 			item = 2580,
 			reagents = {
 				{2996, 2},
@@ -840,7 +762,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2399] = {
-			name = "Tailoring: Green Woolen Vest",
 			item = 2582,
 			reagents = {
 				{2997, 2},
@@ -849,7 +770,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2401] = {
-			name = "Tailoring: Woolen Boots",
 			item = 2583,
 			reagents = {
 				{2997, 4},
@@ -858,7 +778,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2402] = {
-			name = "Tailoring: Woolen Cape",
 			item = 2584,
 			reagents = {
 				{2997},
@@ -866,7 +785,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2403] = {
-			name = "Tailoring: Gray Woolen Robe",
 			item = 2585,
 			reagents = {
 				{2997, 4},
@@ -875,7 +793,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2406] = {
-			name = "Tailoring: Gray Woolen Shirt",
 			item = 2587,
 			reagents = {
 				{2997, 2},
@@ -884,7 +801,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2538] = {
-			name = "Cooking: Charred Wolf Meat",
 			requires = L["Cooking Fire"],
 			item = 2679,
 			reagents = {
@@ -892,7 +808,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2539] = {
-			name = "Cooking: Spiced Wolf Meat",
 			requires = L["Cooking Fire"],
 			item = 2680,
 			reagents = {
@@ -901,7 +816,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2540] = {
-			name = "Cooking: Roasted Boar Meat",
 			requires = L["Cooking Fire"],
 			item = 2681,
 			reagents = {
@@ -909,7 +823,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2541] = {
-			name = "Cooking: Coyote Steak",
 			requires = L["Cooking Fire"],
 			item = 2684,
 			reagents = {
@@ -917,7 +830,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2542] = {
-			name = "Cooking: Goretusk Liver Pie",
 			requires = L["Cooking Fire"],
 			item = 724,
 			reagents = {
@@ -926,7 +838,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2543] = {
-			name = "Cooking: Westfall Stew",
 			requires = L["Cooking Fire"],
 			item = 733,
 			reagents = {
@@ -936,7 +847,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2544] = {
-			name = "Cooking: Crab Cake",
 			requires = L["Cooking Fire"],
 			item = 2683,
 			reagents = {
@@ -945,7 +855,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2545] = {
-			name = "Cooking: Cooked Crab Claw",
 			requires = L["Cooking Fire"],
 			item = 2682,
 			reagents = {
@@ -954,7 +863,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2546] = {
-			name = "Cooking: Dry Pork Ribs",
 			requires = L["Cooking Fire"],
 			item = 2687,
 			reagents = {
@@ -963,7 +871,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2547] = {
-			name = "Cooking: Redridge Goulash",
 			requires = L["Cooking Fire"],
 			item = 1082,
 			reagents = {
@@ -972,7 +879,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2548] = {
-			name = "Cooking: Succulent Pork Ribs",
 			requires = L["Cooking Fire"],
 			item = 2685,
 			reagents = {
@@ -981,10 +887,9 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2549] = {
-			name = "Cooking: Seasoned Wolf Kabob",
 			requires = L["Cooking Fire"],
 			item = 1017,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{1015, 2},
 				{2665},
@@ -1013,21 +918,19 @@ GetSpellInfoAtlasLootDB = {
 			requires = L["Forge"],
 			text = "Allows the miner to smelt a tin bar and a copper bar together into two bronze bars. Smelting bronze requires a forge.",
 			item = 2841,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{2840},
 				{3576},
 			},
 		},
 		[2660] = {
-			--name = "Blacksmithing: Rough Sharpening Stone",
 			item = 2862,
 			reagents = {
 				{2835},
 			},
 		},
 		[2661] = {
-			name = "Blacksmithing: Copper Chain Belt",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2851,
@@ -1036,7 +939,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2662] = {
-			name = "Blacksmithing: Copper Chain Pants",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2852,
@@ -1045,7 +947,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2663] = {
-			name = "Blacksmithing: Copper Bracers",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2853,
@@ -1054,7 +955,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2664] = {
-			name = "Blacksmithing: Runed Copper Bracers",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2854,
@@ -1064,14 +964,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2665] = {
-			name = "Blacksmithing: Coarse Sharpening Stone",
 			item = 2863,
 			reagents = {
 				{2836},
 			},
 		},
 		[2666] = {
-			name = "Blacksmithing: Runed Copper Belt",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2857,
@@ -1080,7 +978,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2667] = {
-			name = "Blacksmithing: Runed Copper Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2864,
@@ -1091,7 +988,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2668] = {
-			name = "Blacksmithing: Rough Bronze Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2865,
@@ -1100,7 +996,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2670] = {
-			name = "Blacksmithing: Rough Bronze Cuirass",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2866,
@@ -1109,7 +1004,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2671] = {
-			name = "Blacksmithing: Rough Bronze Bracers",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2867,
@@ -1118,7 +1012,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2672] = {
-			name = "Blacksmithing: Patterned Bronze Bracers",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2868,
@@ -1128,7 +1021,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2673] = {
-			name = "Blacksmithing: Silvered Bronze Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2869,
@@ -1140,14 +1032,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2674] = {
-			name = "Blacksmithing: Heavy Sharpening Stone",
 			item = 2871,
 			reagents = {
 				{2838},
 			},
 		},
 		[2675] = {
-			name = "Blacksmithing: Shining Silver Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2870,
@@ -1160,7 +1050,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2737] = {
-			name = "Blacksmithing: Copper Mace",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2844,
@@ -1171,7 +1060,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2738] = {
-			name = "Blacksmithing: Copper Axe",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2845,
@@ -1182,7 +1070,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2739] = {
-			name = "Blacksmithing: Copper Shortsword",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2847,
@@ -1193,7 +1080,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2740] = {
-			name = "Blacksmithing: Bronze Mace",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2848,
@@ -1204,7 +1090,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2741] = {
-			name = "Blacksmithing: Bronze Axe",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2849,
@@ -1215,7 +1100,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2742] = {
-			name = "Blacksmithing: Bronze Shortsword",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 2850,
@@ -1226,7 +1110,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2795] = {
-			name = "Cooking: Beer Basted Boar Ribs",
 			requires = L["Cooking Fire"],
 			item = 2888,
 			reagents = {
@@ -1235,8 +1118,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2835] = {
-			name = "Poisons: Deadly Poison",
-			text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 30% chance of poisoning the enemy for 36 Nature damage over 12 sec. Stacks up to 5 times on a single target. 60 charges.",
 			item = 2892,
 			reagents = {
 				{5173},
@@ -1244,8 +1125,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2837] = {
-			name = "Poisons: Deadly Poison II",
-			text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 30% chance of poisoning the enemy for 52 Nature damage over 12 sec. Stacks up to 5 times on a single target. 75 charges.",
 			item = 2893,
 			reagents = {
 				{5173, 2},
@@ -1253,28 +1132,24 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[2881] = {
-			name = "Leatherworking: Light Leather",
 			item = 2318,
 			reagents = {
 				{2934, 3},
 			},
 		},
 		[2963] = {
-			name = "Tailoring: Bolt of Linen Cloth",
 			item = 2996,
 			reagents = {
 				{2589, 2},
 			},
 		},
 		[2964] = {
-			name = "Tailoring: Bolt of Woolen Cloth",
 			item = 2997,
 			reagents = {
 				{2592, 3},
 			},
 		},
 		[3115] = {
-			name = "Blacksmithing: Rough Weightstone",
 			item = 3239,
 			reagents = {
 				{2835},
@@ -1282,7 +1157,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3116] = {
-			name = "Blacksmithing: Coarse Weightstone",
 			item = 3240,
 			reagents = {
 				{2836},
@@ -1290,7 +1164,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3117] = {
-			name = "Blacksmithing: Heavy Weightstone",
 			item = 3241,
 			reagents = {
 				{2838},
@@ -1298,7 +1171,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3170] = {
-			name = "Alchemy: Weak Troll's Blood Potion",
 			item = 3382,
 			reagents = {
 				{2447},
@@ -1307,7 +1179,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3171] = {
-			name = "Alchemy: Elixir of Wisdom",
 			item = 3383,
 			reagents = {
 				{785},
@@ -1316,7 +1187,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3172] = {
-			name = "Alchemy: Minor Magic Resistance Potion",
 			item = 3384,
 			reagents = {
 				{785, 3},
@@ -1325,7 +1195,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3173] = {
-			name = "Alchemy: Lesser Mana Potion",
 			item = 3385,
 			reagents = {
 				{785},
@@ -1334,7 +1203,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3174] = {
-			name = "Alchemy: Elixir of Poison Resistance",
 			item = 3386,
 			reagents = {
 				{1288},
@@ -1343,7 +1211,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3175] = {
-			name = "Alchemy: Limited Invulnerability Potion",
 			item = 3387,
 			reagents = {
 				{8839, 2},
@@ -1352,7 +1219,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3176] = {
-			name = "Alchemy: Strong Troll's Blood Potion",
 			item = 3388,
 			reagents = {
 				{2453, 2},
@@ -1361,7 +1227,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3177] = {
-			name = "Alchemy: Elixir of Defense",
 			item = 3389,
 			reagents = {
 				{3355},
@@ -1370,7 +1235,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3188] = {
-			name = "Alchemy: Elixir of Ogre's Strength",
 			item = 3391,
 			reagents = {
 				{2449},
@@ -1379,8 +1243,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3230] = {
-			name = "Alchemy: Elixir of Minor Agility",
-			text = "With Swiftthistle for speed and crushed Silverleaf for enhancement, a potion to enchance one's natural agility is brewed.",
 			item = 2457,
 			reagents = {
 				{2452},
@@ -1389,35 +1251,30 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3275] = {
-			name = "First Aid: Linen Bandage",
 			item = 1251,
 			reagents = {
 				{2589},
 			},
 		},
 		[3276] = {
-			name = "First Aid: Heavy Linen Bandage",
 			item = 2581,
 			reagents = {
 				{2589, 2},
 			},
 		},
 		[3277] = {
-			name = "First Aid: Wool Bandage",
 			item = 3530,
 			reagents = {
 				{2592},
 			},
 		},
 		[3278] = {
-			name = "First Aid: Heavy Wool Bandage",
 			item = 3531,
 			reagents = {
 				{2592, 2},
 			},
 		},
 		[3292] = {
-			name = "Blacksmithing: Heavy Copper Broadsword",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3487,
@@ -1429,7 +1286,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3293] = {
-			name = "Blacksmithing: Copper Battle Axe",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3488,
@@ -1442,7 +1298,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3294] = {
-			name = "Blacksmithing: Thick War Axe",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3489,
@@ -1455,7 +1310,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3295] = {
-			name = "Blacksmithing: Deadly Bronze Poniard",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3490,
@@ -1469,7 +1323,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3296] = {
-			name = "Blacksmithing: Heavy Bronze Mace",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3491,
@@ -1483,7 +1336,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3297] = {
-			name = "Blacksmithing: Mighty Iron Hammer",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3492,
@@ -1524,7 +1376,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3319] = {
-			name = "Blacksmithing: Copper Chain Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3469,
@@ -1533,14 +1384,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3320] = {
-			name = "Blacksmithing: Rough Grinding Stone",
 			item = 3470,
 			reagents = {
 				{2835, 2},
 			},
 		},
 		[3321] = {
-			name = "Blacksmithing: Copper Chain Vest",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3471,
@@ -1551,7 +1400,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3323] = {
-			name = "Blacksmithing: Runed Copper Gauntlets",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3472,
@@ -1561,7 +1409,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3324] = {
-			name = "Blacksmithing: Runed Copper Pants",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3473,
@@ -1572,11 +1419,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3325] = {
-			--name = "Blacksmithing: Gemmed Copper Gauntlets",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3474,
-			extra = "|cff00ff00<Random enchantment>",
+			extra = "|cff00ff00"..L["<Random enchantment>"],
 			reagents = {
 				{2840, 8},
 				{818},
@@ -1584,14 +1430,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3326] = {
-			name = "Blacksmithing: Coarse Grinding Stone",
 			item = 3478,
 			reagents = {
 				{2836, 2},
 			},
 		},
 		[3328] = {
-			name = "Blacksmithing: Rough Bronze Shoulders",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3480,
@@ -1602,7 +1446,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3330] = {
-			name = "Blacksmithing: Silvered Bronze Shoulders",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3481,
@@ -1613,7 +1456,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3331] = {
-			name = "Blacksmithing: Silvered Bronze Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3482,
@@ -1624,7 +1466,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3333] = {
-			name = "Blacksmithing: Silvered Bronze Gauntlets",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3483,
@@ -1635,7 +1476,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3334] = {
-			name = "Blacksmithing: Green Iron Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3484,
@@ -1647,7 +1487,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3336] = {
-			name = "Blacksmithing: Green Iron Gauntlets",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3485,
@@ -1659,14 +1498,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3337] = {
-			name = "Blacksmithing: Heavy Grinding Stone",
 			item = 3486,
 			reagents = {
 				{2838, 3},
 			},
 		},
 		[3370] = {
-			name = "Cooking: Crocolisk Steak",
 			requires = L["Cooking Fire"],
 			item = 3662,
 			reagents = {
@@ -1675,10 +1512,9 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3371] = {
-			name = "Cooking: Blood Sausage",
 			requires = L["Cooking Fire"],
 			item = 3220,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{3173},
 				{3172},
@@ -1686,7 +1522,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3372] = {
-			name = "Cooking: Murloc Fin Soup",
 			requires = L["Cooking Fire"],
 			item = 3663,
 			reagents = {
@@ -1695,7 +1530,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3373] = {
-			name = "Cooking: Crocolisk Gumbo",
 			requires = L["Cooking Fire"],
 			item = 3664,
 			reagents = {
@@ -1704,7 +1538,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3376] = {
-			name = "Cooking: Curiously Tasty Omelet",
 			requires = L["Cooking Fire"],
 			item = 3665,
 			reagents = {
@@ -1713,7 +1546,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3377] = {
-			name = "Cooking: Gooey Spider Cake",
 			requires = L["Cooking Fire"],
 			item = 3666,
 			reagents = {
@@ -1722,7 +1554,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3397] = {
-			name = "Cooking: Big Bear Steak",
 			requires = L["Cooking Fire"],
 			item = 3726,
 			reagents = {
@@ -1731,7 +1562,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3398] = {
-			name = "Cooking: Hot Lion Chops",
 			requires = L["Cooking Fire"],
 			item = 3727,
 			reagents = {
@@ -1740,7 +1570,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3399] = {
-			name = "Cooking: Tasty Lion Steak",
 			requires = L["Cooking Fire"],
 			item = 3728,
 			reagents = {
@@ -1749,7 +1578,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3400] = {
-			name = "Cooking: Soothing Turtle Bisque",
 			requires = L["Cooking Fire"],
 			item = 3729,
 			reagents = {
@@ -1758,8 +1586,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3420] = {
-		--	name = "Poisons: Crippling Poison",
-		--	text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 30% chance of poisoning the enemy, slowing their movement speed by 50% for 12 sec.",
 			item = 3775,
 			reagents = {
 				{2930},
@@ -1767,8 +1593,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3421] = {
-		--	name = "Poisons: Crippling Poison II",
-			text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 30% chance of poisoning the enemy, slowing their movement speed by 70% for 12 sec.",
 			item = 3776,
 			reagents = {
 				{8923, 3},
@@ -1776,7 +1600,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3447] = {
-			name = "Alchemy: Healing Potion",
 			item = 929,
 			reagents = {
 				{2453},
@@ -1785,7 +1608,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3448] = {
-			name = "Alchemy: Lesser Invisibility Potion",
 			item = 3823,
 			reagents = {
 				{3818},
@@ -1794,7 +1616,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3449] = {
-			name = "Alchemy: Shadow Oil",
 			item = 3824,
 			reagents = {
 				{3818, 4},
@@ -1803,7 +1624,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3450] = {
-			name = "Alchemy: Elixir of Fortitude",
 			item = 3825,
 			reagents = {
 				{3355},
@@ -1812,7 +1632,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3451] = {
-			name = "Alchemy: Mighty Troll's Blood Potion",
 			item = 3826,
 			reagents = {
 				{3357},
@@ -1821,7 +1640,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3452] = {
-			name = "Alchemy: Mana Potion",
 			item = 3827,
 			reagents = {
 				{3820},
@@ -1830,7 +1648,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3453] = {
-			name = "Alchemy: Elixir of Detect Lesser Invisibility",
 			item = 3828,
 			reagents = {
 				{3358},
@@ -1839,7 +1656,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3454] = {
-			name = "Alchemy: Frost Oil",
 			item = 3829,
 			reagents = {
 				{3358, 4},
@@ -1848,7 +1664,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3491] = {
-			name = "Blacksmithing: Big Bronze Knife",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3848,
@@ -1861,7 +1676,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3492] = {
-			name = "Blacksmithing: Hardened Iron Shortsword",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3849,
@@ -1874,7 +1688,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3493] = {
-			name = "Blacksmithing: Jade Serpentblade",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3850,
@@ -1887,7 +1700,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3494] = {
-			name = "Blacksmithing: Solid Iron Maul",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3851,
@@ -1900,7 +1712,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3495] = {
-			name = "Blacksmithing: Golden Iron Destroyer",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3852,
@@ -1914,7 +1725,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3496] = {
-			name = "Blacksmithing: Moonsteel Broadsword",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3853,
@@ -1927,7 +1737,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3497] = {
-			name = "Blacksmithing: Frost Tiger Blade",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3854,
@@ -1941,7 +1750,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3498] = {
-			name = "Blacksmithing: Massive Iron Axe",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3855,
@@ -1954,7 +1762,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3500] = {
-			name = "Blacksmithing: Shadow Crescent Axe",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3856,
@@ -1968,7 +1775,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3501] = {
-			name = "Blacksmithing: Green Iron Bracers",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3835,
@@ -1978,7 +1784,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3502] = {
-			name = "Blacksmithing: Green Iron Helm",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3836,
@@ -1989,7 +1794,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3503] = {
-			name = "Blacksmithing: Golden Scale Coif",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3837,
@@ -2000,7 +1804,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3504] = {
-			name = "Blacksmithing: Green Iron Shoulders",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3840,
@@ -2011,7 +1814,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3505] = {
-			name = "Blacksmithing: Golden Scale Shoulders",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3841,
@@ -2022,7 +1824,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3506] = {
-			name = "Blacksmithing: Green Iron Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3842,
@@ -2033,7 +1834,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3507] = {
-			name = "Blacksmithing: Golden Scale Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3843,
@@ -2044,7 +1844,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3508] = {
-			name = "Blacksmithing: Green Iron Hauberk",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3844,
@@ -2057,7 +1856,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3511] = {
-			name = "Blacksmithing: Golden Scale Cuirass",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3845,
@@ -2069,7 +1867,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3513] = {
-			name = "Blacksmithing: Polished Steel Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3846,
@@ -2081,7 +1878,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3515] = {
-			name = "Blacksmithing: Golden Scale Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3847,
@@ -2103,7 +1899,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3753] = {
-			name = "Leatherworking: Handstitched Leather Belt",
 			item = 4237,
 			reagents = {
 				{2318, 6},
@@ -2111,7 +1906,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3755] = {
-			name = "Tailoring: Linen Bag",
 			item = 4238,
 			reagents = {
 				{2996, 3},
@@ -2119,7 +1913,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3756] = {
-			name = "Leatherworking: Embossed Leather Gloves",
 			item = 4239,
 			reagents = {
 				{2318, 3},
@@ -2127,7 +1920,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3757] = {
-			name = "Tailoring: Woolen Bag",
 			item = 4240,
 			reagents = {
 				{2997, 3},
@@ -2135,7 +1927,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3758] = {
-			name = "Tailoring: Green Woolen Bag",
 			item = 4241,
 			reagents = {
 				{2997, 4},
@@ -2144,7 +1935,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3759] = {
-			name = "Leatherworking: Embossed Leather Pants",
 			item = 4242,
 			reagents = {
 				{4231},
@@ -2153,7 +1943,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3760] = {
-			name = "Leatherworking: Hillman's Cloak",
 			item = 3719,
 			reagents = {
 				{4234, 5},
@@ -2161,7 +1950,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3761] = {
-			name = "Leatherworking: Fine Leather Tunic",
 			item = 4243,
 			reagents = {
 				{4231, 3},
@@ -2170,7 +1958,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3762] = {
-			name = "Leatherworking: Hillman's Leather Vest",
 			item = 4244,
 			reagents = {
 				{4243},
@@ -2179,7 +1966,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3763] = {
-			name = "Leatherworking: Fine Leather Belt",
 			item = 4246,
 			reagents = {
 				{2318, 6},
@@ -2187,7 +1973,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3764] = {
-			name = "Leatherworking: Hillman's Leather Gloves",
 			item = 4247,
 			reagents = {
 				{2319, 14},
@@ -2195,7 +1980,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3765] = {
-			name = "Leatherworking: Dark Leather Gloves",
 			item = 4248,
 			reagents = {
 				{2312},
@@ -2205,7 +1989,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3766] = {
-			name = "Leatherworking: Dark Leather Belt",
 			item = 4249,
 			reagents = {
 				{2312},
@@ -2215,7 +1998,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3767] = {
-			name = "Leatherworking: Hillman's Belt",
 			item = 4250,
 			reagents = {
 				{2319, 8},
@@ -2224,7 +2006,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3768] = {
-			name = "Leatherworking: Hillman's Shoulders",
 			item = 4251,
 			reagents = {
 				{4233},
@@ -2233,7 +2014,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3769] = {
-			name = "Leatherworking: Dark Leather Shoulders",
 			item = 4252,
 			reagents = {
 				{2319, 12},
@@ -2243,7 +2023,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3770] = {
-			name = "Leatherworking: Toughened Leather Gloves",
 			item = 4253,
 			reagents = {
 				{2319, 4},
@@ -2254,7 +2033,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3771] = {
-			name = "Leatherworking: Barbaric Gloves",
 			item = 4254,
 			reagents = {
 				{4234, 6},
@@ -2263,7 +2041,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3772] = {
-			name = "Leatherworking: Green Leather Armor",
 			item = 4255,
 			reagents = {
 				{4234, 9},
@@ -2272,7 +2049,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3773] = {
-			name = "Leatherworking: Guardian Armor",
 			item = 4256,
 			reagents = {
 				{4236, 2},
@@ -2282,7 +2058,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3774] = {
-			name = "Leatherworking: Green Leather Belt",
 			item = 4257,
 			reagents = {
 				{4236},
@@ -2293,7 +2068,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3775] = {
-			name = "Leatherworking: Guardian Belt",
 			item = 4258,
 			reagents = {
 				{4236, 2},
@@ -2303,7 +2077,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3776] = {
-			name = "Leatherworking: Green Leather Bracers",
 			item = 4259,
 			reagents = {
 				{4236, 2},
@@ -2313,7 +2086,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3777] = {
-			name = "Leatherworking: Guardian Leather Bracers",
 			item = 4260,
 			reagents = {
 				{4234, 6},
@@ -2322,7 +2094,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3778] = {
-			name = "Leatherworking: Gem-studded Leather Belt",
 			item = 4262,
 			reagents = {
 				{4236, 4},
@@ -2333,7 +2104,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3779] = {
-			name = "Leatherworking: Barbaric Belt",
 			item = 4264,
 			reagents = {
 				{4234, 6},
@@ -2345,7 +2115,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3780] = {
-			name = "Leatherworking: Heavy Armor Kit",
 			item = 4265,
 			reagents = {
 				{4234, 5},
@@ -2353,7 +2122,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3813] = {
-			name = "Tailoring: Small Silk Pack",
 			item = 4245,
 			reagents = {
 				{4305, 3},
@@ -2362,7 +2130,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3816] = {
-			name = "Leatherworking: Cured Light Hide",
 			item = 4231,
 			reagents = {
 				{783},
@@ -2370,7 +2137,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3817] = {
-			name = "Leatherworking: Cured Medium Hide",
 			item = 4233,
 			reagents = {
 				{4232},
@@ -2378,7 +2144,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3818] = {
-			name = "Leatherworking: Cured Heavy Hide",
 			item = 4236,
 			reagents = {
 				{4235},
@@ -2386,14 +2151,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3839] = {
-			name = "Tailoring: Bolt of Silk Cloth",
 			item = 4305,
 			reagents = {
 				{4306, 4},
 			},
 		},
 		[3840] = {
-			name = "Tailoring: Heavy Linen Gloves",
 			item = 4307,
 			reagents = {
 				{2996, 2},
@@ -2401,7 +2164,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3841] = {
-			name = "Tailoring: Green Linen Bracers",
 			item = 4308,
 			reagents = {
 				{2996, 3},
@@ -2410,7 +2172,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3842] = {
-			name = "Tailoring: Handstitched Linen Britches",
 			item = 4309,
 			reagents = {
 				{2996, 4},
@@ -2418,7 +2179,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3843] = {
-			name = "Tailoring: Heavy Woolen Gloves",
 			item = 4310,
 			reagents = {
 				{2997, 3},
@@ -2426,7 +2186,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3844] = {
-			name = "Tailoring: Heavy Woolen Cloak",
 			item = 4311,
 			reagents = {
 				{2997, 3},
@@ -2435,7 +2194,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3845] = {
-			name = "Tailoring: Soft-soled Linen Boots",
 			item = 4312,
 			reagents = {
 				{2996, 5},
@@ -2444,7 +2202,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3847] = {
-			name = "Tailoring: Red Woolen Boots",
 			item = 4313,
 			reagents = {
 				{2997, 3},
@@ -2454,7 +2211,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3848] = {
-			name = "Tailoring: Double-stitched Woolen Shoulders",
 			item = 4314,
 			reagents = {
 				{2997, 3},
@@ -2462,7 +2218,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3849] = {
-			name = "Tailoring: Reinforced Woolen Shoulders",
 			item = 4315,
 			reagents = {
 				{2997, 6},
@@ -2471,7 +2226,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3850] = {
-			name = "Tailoring: Heavy Woolen Pants",
 			item = 4316,
 			reagents = {
 				{2997, 5},
@@ -2479,7 +2233,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3851] = {
-			name = "Tailoring: Phoenix Pants",
 			item = 4317,
 			reagents = {
 				{2997, 6},
@@ -2488,7 +2241,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3852] = {
-			name = "Tailoring: Gloves of Meditation",
 			item = 4318,
 			reagents = {
 				{2997, 4},
@@ -2497,7 +2249,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3854] = {
-			name = "Tailoring: Azure Silk Gloves",
 			item = 4319,
 			reagents = {
 				{4305, 3},
@@ -2507,7 +2258,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3855] = {
-			name = "Tailoring: Spidersilk Boots",
 			item = 4320,
 			reagents = {
 				{4305, 2},
@@ -2517,7 +2267,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3856] = {
-			name = "Tailoring: Spider Silk Slippers",
 			item = 4321,
 			reagents = {
 				{4305, 3},
@@ -2526,7 +2275,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3857] = {
-			name = "Tailoring: Enchanter's Cowl",
 			item = 4322,
 			reagents = {
 				{4305, 3},
@@ -2535,7 +2283,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3858] = {
-			name = "Tailoring: Shadow Hood",
 			item = 4323,
 			reagents = {
 				{4305, 4},
@@ -2544,7 +2291,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3859] = {
-			name = "Tailoring: Azure Silk Vest",
 			item = 4324,
 			reagents = {
 				{4305, 5},
@@ -2552,7 +2298,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3860] = {
-			name = "Tailoring: Boots of the Enchanter",
 			item = 4325,
 			reagents = {
 				{4305, 4},
@@ -2561,7 +2306,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3861] = {
-			name = "Tailoring: Long Silken Cloak",
 			item = 4326,
 			reagents = {
 				{4305, 4},
@@ -2570,7 +2314,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3862] = {
-			name = "Tailoring: Icy Cloak",
 			item = 4327,
 			reagents = {
 				{4339, 3},
@@ -2580,7 +2323,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3863] = {
-			name = "Tailoring: Spider Belt",
 			item = 4328,
 			reagents = {
 				{4305, 4},
@@ -2589,7 +2331,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3864] = {
-			name = "Tailoring: Star Belt",
 			item = 4329,
 			reagents = {
 				{4339, 4},
@@ -2600,14 +2341,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3865] = {
-			name = "Tailoring: Bolt of Mageweave",
 			item = 4339,
 			reagents = {
 				{4338, 5},
 			},
 		},
 		[3866] = {
-			name = "Tailoring: Stylish Red Shirt",
 			item = 4330,
 			reagents = {
 				{2997, 3},
@@ -2616,8 +2355,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3868] = {
-			name = "Tailoring: Phoenix Gloves",
-			icon = "Interface\\Icons\\inv_gauntlets_19",
 			item = 4331,
 			reagents = {
 				{2997, 4},
@@ -2627,7 +2364,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3869] = {
-			name = "Tailoring: Bright Yellow Shirt",
 			item = 4332,
 			reagents = {
 				{4305},
@@ -2636,7 +2372,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3870] = {
-			name = "Tailoring: Dark Silk Shirt",
 			item = 4333,
 			reagents = {
 				{4305, 2},
@@ -2645,7 +2380,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3871] = {
-			name = "Tailoring: Formal White Shirt",
 			item = 4334,
 			reagents = {
 				{4305, 3},
@@ -2654,7 +2388,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3872] = {
-			name = "Tailoring: Rich Purple Silk Shirt",
 			item = 4335,
 			reagents = {
 				{4305, 4},
@@ -2663,7 +2396,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3873] = {
-			name = "Tailoring: Black Swashbuckler's Shirt",
 			item = 4336,
 			reagents = {
 				{4305, 5},
@@ -2672,7 +2404,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3914] = {
-			name = "Tailoring: Brown Linen Pants",
 			item = 4343,
 			reagents = {
 				{2996, 2},
@@ -2680,7 +2411,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3915] = {
-			name = "Tailoring: Brown Linen Shirt",
 			item = 4344,
 			reagents = {
 				{2996},
@@ -2688,32 +2418,28 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3918] = {
-			name = "Engineering: Rough Blasting Powder",
 			item = 4357,
 			reagents = {
 				{2835},
 			},
 		},
 		[3919] = {
-			name = "Engineering: Rough Dynamite",
 			item = 4358,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{4357, 2},
 				{2589},
 			},
 		},
 		[3920] = {
-			name = "Engineering: Crafted Light Shot",
 			item = 8067,
-			craftQuantityMin = 200,
+			quantity = 200,
 			reagents = {
 				{4357},
 				{2840},
 			},
 		},
 		[3922] = {
-			name = "Engineering: Handful of Copper Bolts",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 4359,
@@ -2722,11 +2448,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3923] = {
-			name = "Engineering: Rough Copper Bomb",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 4360,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{2840},
 				{4359},
@@ -2735,7 +2460,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3924] = {
-			name = "Engineering: Copper Tube",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 4361,
@@ -2745,7 +2469,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3925] = {
-			name = "Engineering: Rough Boomstick",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 4362,
@@ -2756,7 +2479,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3926] = {
-			name = "Engineering: Copper Modulator",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4363,
@@ -2767,7 +2489,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3928] = {
-			name = "Engineering: Mechanical Squirrel",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4401,
@@ -2779,33 +2500,28 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3929] = {
-			name = "Engineering: Coarse Blasting Powder",
 			item = 4364,
 			reagents = {
 				{2836},
 			},
 		},
 		[3930] = {
-			name = "Engineering: Crafted Heavy Shot",
 			item = 8068,
-			craftQuantityMin = 200,
+			quantity = 200,
 			reagents = {
 				{4364},
 				{2840},
 			},
 		},
 		[3931] = {
-			name = "Engineering: Coarse Dynamite",
 			item = 4365,
-			craftQuantityMin = 1,
-			craftQuantityMax = 3,
+			quantity = {1,3},
 			reagents = {
 				{4364, 3},
 				{2589},
 			},
 		},
 		[3932] = {
-			name = "Engineering: Target Dummy",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4366,
@@ -2817,7 +2533,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3933] = {
-			name = "Engineering: Small Seaforium Charge",
 			item = 4367,
 			reagents = {
 				{4364, 2},
@@ -2827,7 +2542,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3934] = {
-			name = "Engineering: Flying Tiger Goggles",
 			tools = {6219},
 			item = 4368,
 			reagents = {
@@ -2836,7 +2550,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3936] = {
-			name = "Engineering: Deadly Blunderbuss",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4369,
@@ -2848,12 +2561,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3937] = {
-			name = "Engineering: Large Copper Bomb",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 4370,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			quantity = {2,4},
 			reagents = {
 				{2840, 3},
 				{4364, 4},
@@ -2861,7 +2572,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3938] = {
-			name = "Engineering: Bronze Tube",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 4371,
@@ -2871,7 +2581,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3939] = {
-			name = "Engineering: Lovingly Crafted Boomstick",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4372,
@@ -2883,7 +2592,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3940] = {
-			name = "Engineering: Shadow Goggles",
 			item = 4373,
 			reagents = {
 				{2319, 4},
@@ -2891,12 +2599,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3941] = {
-			name = "Engineering: Small Bronze Bomb",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 4374,
-			craftQuantityMin = 1,
-			craftQuantityMax = 3,
+			quantity = {1,3},
 			reagents = {
 				{4364, 4},
 				{2841, 2},
@@ -2905,7 +2611,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3942] = {
-			name = "Engineering: Whirring Bronze Gizmo",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4375,
@@ -2915,44 +2620,38 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3944] = {
-			name = "Engineering: Flame Deflector",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4376,
-			extra = "|cffffffff5 Charges",
+			extra = "|cffffffff5 "..L["Charges"],
 			reagents = {
 				{4375},
 				{4402},
 			},
 		},
 		[3945] = {
-			name = "Engineering: Heavy Blasting Powder",
 			item = 4377,
 			reagents = {
 				{2838},
 			},
 		},
 		[3946] = {
-			name = "Engineering: Heavy Dynamite",
 			item = 4378,
-			craftQuantityMin = 1,
-			craftQuantityMax = 5,
+			quantity = {1,5},
 			reagents = {
 				{4377, 2},
 				{2592},
 			},
 		},
 		[3947] = {
-			name = "Engineering: Crafted Solid Shot",
 			item = 8069,
-			craftQuantityMin = 200,
+			quantity = 200,
 			reagents = {
 				{4377},
 				{2841},
 			},
 		},
 		[3949] = {
-			name = "Engineering: Silver-plated Shotgun",
 			requires = L["Anvil"],
 			item = 4379,
 			reagents = {
@@ -2963,12 +2662,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3950] = {
-			name = "Engineering: Big Bronze Bomb",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4380,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			quantity = {2,4},
 			reagents = {
 				{4377, 2},
 				{2841, 3},
@@ -2976,9 +2673,8 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3952] = {
-			name = "Engineering: Minor Recombobulator",
 			item = 4381,
-			extra = "|cffffffff10 Charges",
+			extra = "|cffffffff10 "..L["Charges"],
 			reagents = {
 				{4371},
 				{4375, 2},
@@ -2987,7 +2683,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3953] = {
-			name = "Engineering: Bronze Framework",
 			item = 4382,
 			reagents = {
 				{2841, 2},
@@ -2996,7 +2691,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3954] = {
-			name = "Engineering: Moonsight Rifle",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4383,
@@ -3008,7 +2702,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3955] = {
-			name = "Engineering: Explosive Sheep",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4384,
@@ -3020,7 +2713,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3956] = {
-			name = "Engineering: Green Tinted Goggles",
 			tools = {6219},
 			item = 4385,
 			reagents = {
@@ -3030,18 +2722,16 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3957] = {
-			name = "Engineering: Ice Deflector",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4386,
-			extra = "|cffffffff5 Charges",
+			extra = "|cffffffff5 "..L["Charges"],
 			reagents = {
 				{4375},
 				{3829},
 			},
 		},
 		[3958] = {
-			name = "Engineering: Iron Strut",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 4387,
@@ -3050,11 +2740,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3959] = {
-			name = "Engineering: Discombobulator Ray",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4388,
-			extra = "|cffffffff5 Charges",
+			extra = "|cffffffff5 "..L["Charges"],
 			reagents = {
 				{4375, 3},
 				{4306, 2},
@@ -3063,11 +2752,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3960] = {
-			name = "Engineering: Portable Bronze Mortar",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4403,
-			extra = "|cffffffff8 Charges",
+			extra = "|cffffffff8 "..L["Charges"],
 			reagents = {
 				{4371, 4},
 				{4387},
@@ -3076,7 +2764,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3961] = {
-			name = "Engineering: Gyrochronatom",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4389,
@@ -3086,12 +2773,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3962] = {
-			name = "Engineering: Iron Grenade",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 4390,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			quantity = {2,4},
 			reagents = {
 				{3575},
 				{4377},
@@ -3099,7 +2784,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3963] = {
-			name = "Engineering: Compact Harvest Reaper Kit",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4391,
@@ -3111,7 +2795,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3965] = {
-			name = "Engineering: Advanced Target Dummy",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4392,
@@ -3123,7 +2806,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3966] = {
-			name = "Engineering: Craftsman's Monocle",
 			tools = {6219, 10498},
 			item = 4393,
 			reagents = {
@@ -3132,11 +2814,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3967] = {
-			name = "Engineering: Big Iron Bomb",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4394,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{3575, 3},
 				{4377, 3},
@@ -3144,7 +2825,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3968] = {
-			name = "Engineering: Goblin Land Mine",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4395,
@@ -3155,7 +2835,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3969] = {
-			name = "Engineering: Mechanical Dragonling",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4396,
@@ -3168,7 +2847,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3971] = {
-			name = "Engineering: Gnomish Cloaking Device",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4397,
@@ -3181,7 +2859,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3972] = {
-			name = "Engineering: Large Seaforium Charge",
 			item = 4398,
 			reagents = {
 				{10505, 2},
@@ -3190,15 +2867,13 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3973] = {
-			name = "Engineering: Silver Contact",
 			item = 4404,
-			craftQuantityMin = 5,
+			quantity = 5,
 			reagents = {
 				{2842},
 			},
 		},
 		[3977] = {
-			name = "Engineering: Crude Scope",
 			tools = {6219},
 			item = 4405,
 			reagents = {
@@ -3208,7 +2883,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3978] = {
-			name = "Engineering: Standard Scope",
 			tools = {6219},
 			item = 4406,
 			reagents = {
@@ -3217,7 +2891,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[3979] = {
-			name = "Engineering: Accurate Scope",
 			tools = {6219, 10498},
 			item = 4407,
 			reagents = {
@@ -3227,7 +2900,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[4094] = {
-			name = "Cooking: Barbecued Buzzard Wing",
 			requires = L["Cooking Fire"],
 			item = 4457,
 			reagents = {
@@ -3236,7 +2908,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[4096] = {
-			name = "Leatherworking: Raptor Hide Harness",
 			item = 4455,
 			reagents = {
 				{4461, 6},
@@ -3245,7 +2916,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[4097] = {
-			name = "Leatherworking: Raptor Hide Belt",
 			item = 4456,
 			reagents = {
 				{4461, 4},
@@ -3254,7 +2924,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[4508] = {
-			name = "Alchemy: Discolored Healing Potion",
 			item = 4596,
 			reagents = {
 				{3164},
@@ -3263,7 +2932,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[4942] = {
-			name = "Alchemy: Lesser Stoneshield Potion",
 			item = 4623,
 			reagents = {
 				{3858},
@@ -3272,7 +2940,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[5244] = {
-			name = "Leatherworking: Kodo Hide Bag",
 			item = 5081,
 			reagents = {
 				{5082, 3},
@@ -3281,8 +2948,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[5763] = {
-		--	name = "Poisons: Mind-numbing Poison",
-		--	text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 20% chance of poisoning the enemy, increasing their casting time by 40% for 10 sec. 50 charges.",
 			item = 5237,
 			reagents = {
 				{2928},
@@ -3291,7 +2956,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6412] = {
-			name = "Cooking: Kaldorei Spider Kabob",
 			requires = L["Cooking Fire"],
 			item = 5472,
 			reagents = {
@@ -3299,7 +2963,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6413] = {
-			name = "Cooking: Scorpid Surprise",
 			requires = L["Cooking Fire"],
 			item = 5473,
 			reagents = {
@@ -3307,66 +2970,59 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6414] = {
-			name = "Cooking: Roasted Kodo Meat",
 			requires = L["Cooking Fire"],
 			item = 5474,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{5467},
 				{2678},
 			},
 		},
 		[6415] = {
-			name = "Cooking: Fillet of Frenzy",
 			requires = L["Cooking Fire"],
 			item = 5476,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{5468},
 				{2678},
 			},
 		},
 		[6416] = {
-			name = "Cooking: Strider Stew",
 			requires = L["Cooking Fire"],
 			item = 5477,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{5469},
 				{4536},
 			},
 		},
 		[6417] = {
-			name = "Cooking: Dig Rat Stew",
 			requires = L["Cooking Fire"],
 			item = 5478,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{5051},
 			},
 		},
 		[6418] = {
-			name = "Cooking: Crispy Lizard Tail",
 			requires = L["Cooking Fire"],
 			item = 5479,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{5470},
 				{2692},
 			},
 		},
 		[6419] = {
-			name = "Cooking: Lean Venison",
 			requires = L["Cooking Fire"],
 			item = 5480,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{5471},
 				{2678, 4},
 			},
 		},
 		[6458] = {
-			name = "Engineering: Ornate Spyglass",
 			item = 5507,
 			reagents = {
 				{4371, 2},
@@ -3376,7 +3032,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6499] = {
-			name = "Cooking: Boiled Clams",
 			requires = L["Cooking Fire"],
 			item = 5525,
 			reagents = {
@@ -3385,7 +3040,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6500] = {
-			name = "Cooking: Goblin Deviled Clams",
 			requires = L["Cooking Fire"],
 			item = 5527,
 			reagents = {
@@ -3394,7 +3048,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6501] = {
-			name = "Cooking: Clam Chowder",
 			requires = L["Cooking Fire"],
 			item = 5526,
 			reagents = {
@@ -3404,16 +3057,15 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6510] = {
-			name = "Poisons: Blinding Powder",
-			text = "Create the reagent for the Blind ability.", --NEED
+			name = "Blinding Powder",
+			text = "Create the reagent for the Blind ability.",
 			item = 5530,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{3818},
 			},
 		},
 		[6517] = {
-			name = "Blacksmithing: Pearl-handled Dagger",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 5540,
@@ -3425,7 +3077,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6518] = {
-			name = "Blacksmithing: Iridescent Hammer",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 5541,
@@ -3438,7 +3089,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6521] = {
-			name = "Tailoring: Pearl-clasped Cloak",
 			item = 5542,
 			reagents = {
 				{2997, 3},
@@ -3447,7 +3097,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6617] = {
-			name = "Alchemy: Rage Potion",
 			item = 5631,
 			reagents = {
 				{5635},
@@ -3456,7 +3105,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6618] = {
-			name = "Alchemy: Great Rage Potion",
 			item = 5633,
 			reagents = {
 				{5637},
@@ -3465,7 +3113,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6624] = {
-			name = "Alchemy: Free Action Potion",
 			item = 5634,
 			reagents = {
 				{6370, 2},
@@ -3474,7 +3121,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6661] = {
-			name = "Leatherworking: Barbaric Harness",
 			item = 5739,
 			reagents = {
 				{4234, 14},
@@ -3483,7 +3129,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6686] = {
-			name = "Tailoring: Red Linen Bag",
 			item = 5762,
 			reagents = {
 				{2996, 4},
@@ -3492,7 +3137,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6688] = {
-			name = "Tailoring: Red Woolen Bag",
 			item = 5763,
 			reagents = {
 				{2997, 4},
@@ -3501,7 +3145,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6690] = {
-			name = "Tailoring: Lesser Wizard's Robe",
 			item = 5766,
 			reagents = {
 				{4305, 2},
@@ -3510,7 +3153,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6692] = {
-			name = "Tailoring: Robes of Arcana",
 			item = 5770,
 			reagents = {
 				{4305, 4},
@@ -3519,7 +3161,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6693] = {
-			name = "Tailoring: Green Silk Pack",
 			item = 5764,
 			reagents = {
 				{4305, 4},
@@ -3529,7 +3170,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6695] = {
-			name = "Tailoring: Black Silk Pack",
 			item = 5765,
 			reagents = {
 				{4305, 5},
@@ -3538,7 +3178,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6702] = {
-			name = "Leatherworking: Murloc Scale Belt",
 			item = 5780,
 			reagents = {
 				{5784, 8},
@@ -3547,7 +3186,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6703] = {
-			name = "Leatherworking: Murloc Scale Breastplate",
 			item = 5781,
 			reagents = {
 				{5784, 12},
@@ -3557,7 +3195,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6704] = {
-			name = "Leatherworking: Thick Murloc Armor",
 			item = 5782,
 			reagents = {
 				{5785, 12},
@@ -3567,7 +3204,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[6705] = {
-			name = "Leatherworking: Murloc Scale Bracers",
 			item = 5783,
 			reagents = {
 				{5785, 16},
@@ -3577,7 +3213,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7126] = {
-			name = "Leatherworking: Handstitched Leather Vest",
 			item = 5957,
 			reagents = {
 				{2318, 3},
@@ -3585,7 +3220,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7133] = {
-			name = "Leatherworking: Fine Leather Pants",
 			item = 5958,
 			reagents = {
 				{2319, 8},
@@ -3594,7 +3228,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7135] = {
-			name = "Leatherworking: Dark Leather Pants",
 			item = 5961,
 			reagents = {
 				{2319, 12},
@@ -3603,7 +3236,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7147] = {
-			name = "Leatherworking: Guardian Pants",
 			item = 5962,
 			reagents = {
 				{4234, 12},
@@ -3612,7 +3244,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7149] = {
-			name = "Leatherworking: Barbaric Leggings",
 			item = 5963,
 			reagents = {
 				{4234, 10},
@@ -3621,7 +3252,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7151] = {
-			name = "Leatherworking: Barbaric Shoulders",
 			item = 5964,
 			reagents = {
 				{4234, 8},
@@ -3630,7 +3260,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7153] = {
-			name = "Leatherworking: Guardian Cloak",
 			item = 5965,
 			reagents = {
 				{4234, 14},
@@ -3639,7 +3268,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7156] = {
-			name = "Leatherworking: Guardian Gloves",
 			item = 5966,
 			reagents = {
 				{4234, 4},
@@ -3648,7 +3276,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7179] = {
-			name = "Alchemy: Elixir of Water Breathing",
 			item = 5996,
 			reagents = {
 				{3820},
@@ -3657,7 +3284,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7181] = {
-			name = "Alchemy: Greater Healing Potion",
 			item = 1710,
 			reagents = {
 				{3357},
@@ -3666,7 +3292,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7183] = {
-			name = "Alchemy: Elixir of Minor Defense",
 			item = 5997,
 			reagents = {
 				{765, 2},
@@ -3674,7 +3299,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7213] = {
-			name = "Cooking: Giant Clam Scorcho",
 			requires = L["Cooking Fire"],
 			item = 6038,
 			reagents = {
@@ -3683,7 +3307,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7221] = {
-			name = "Blacksmithing: Iron Shield Spike",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 6042,
@@ -3693,7 +3316,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7222] = {
-			name = "Blacksmithing: Iron Counterweight",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 6043,
@@ -3704,7 +3326,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7223] = {
-			name = "Blacksmithing: Golden Scale Bracers",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 6040,
@@ -3714,7 +3335,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7224] = {
-			name = "Blacksmithing: Steel Weapon Chain",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 6041,
@@ -3725,7 +3345,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7255] = {
-			name = "Alchemy: Holy Protection Potion",
 			item = 6051,
 			reagents = {
 				{2453},
@@ -3734,7 +3353,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7256] = {
-			name = "Alchemy: Shadow Protection Potion",
 			item = 6048,
 			reagents = {
 				{3369},
@@ -3743,7 +3361,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7257] = {
-			name = "Alchemy: Fire Protection Potion",
 			item = 6049,
 			reagents = {
 				{4402},
@@ -3752,7 +3369,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7258] = {
-			name = "Alchemy: Frost Protection Potion",
 			item = 6050,
 			reagents = {
 				{3819},
@@ -3761,7 +3377,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7259] = {
-			name = "Alchemy: Nature Protection Potion",
 			item = 6052,
 			reagents = {
 				{3357},
@@ -3770,7 +3385,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7408] = {
-			name = "Blacksmithing: Heavy Copper Maul",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 6214,
@@ -3781,7 +3395,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7430] = {
-			name = "Engineering: Arclight Spanner",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 6219,
@@ -3790,7 +3403,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7623] = {
-			name = "Tailoring: Brown Linen Robe",
 			item = 6238,
 			reagents = {
 				{2996, 3},
@@ -3798,7 +3410,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7624] = {
-			name = "Tailoring: White Linen Robe",
 			item = 6241,
 			reagents = {
 				{2996, 3},
@@ -3807,7 +3418,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7629] = {
-			name = "Tailoring: Red Linen Vest",
 			item = 6239,
 			reagents = {
 				{2996, 3},
@@ -3816,7 +3426,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7630] = {
-			name = "Tailoring: Blue Linen Vest",
 			item = 6240,
 			reagents = {
 				{2996, 3},
@@ -3825,7 +3434,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7633] = {
-			name = "Tailoring: Blue Linen Robe",
 			item = 6242,
 			reagents = {
 				{2996, 4},
@@ -3834,7 +3442,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7639] = {
-			name = "Tailoring: Blue Overalls",
 			item = 6263,
 			reagents = {
 				{2997, 4},
@@ -3843,7 +3450,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7643] = {
-			name = "Tailoring: Greater Adept's Robe",
 			item = 6264,
 			reagents = {
 				{2997, 5},
@@ -3852,7 +3458,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7751] = {
-			name = "Cooking: Brilliant Smallfish",
 			requires = L["Cooking Fire"],
 			item = 6290,
 			reagents = {
@@ -3860,7 +3465,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7752] = {
-			name = "Cooking: Slitherskin Mackerel",
 			requires = L["Cooking Fire"],
 			item = 787,
 			reagents = {
@@ -3868,7 +3472,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7753] = {
-			name = "Cooking: Longjaw Mud Snapper",
 			requires = L["Cooking Fire"],
 			item = 4592,
 			reagents = {
@@ -3876,7 +3479,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7754] = {
-			name = "Cooking: Loch Frenzy Delight",
 			requires = L["Cooking Fire"],
 			item = 6316,
 			reagents = {
@@ -3885,7 +3487,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7755] = {
-			name = "Cooking: Bristle Whisker Catfish",
 			requires = L["Cooking Fire"],
 			item = 4593,
 			reagents = {
@@ -3893,7 +3494,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7817] = {
-			name = "Blacksmithing: Rough Bronze Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 6350,
@@ -3903,7 +3503,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7818] = {
-			name = "Blacksmithing: Silver Rod",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 6338,
@@ -3913,7 +3512,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7827] = {
-			name = "Cooking: Rainbow Fin Albacore",
 			requires = L["Cooking Fire"],
 			item = 5095,
 			reagents = {
@@ -3921,7 +3519,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7828] = {
-			name = "Cooking: Rockscale Cod",
 			requires = L["Cooking Fire"],
 			item = 4594,
 			reagents = {
@@ -3929,7 +3526,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7836] = {
-			name = "Alchemy: Blackmouth Oil",
 			item = 6370,
 			reagents = {
 				{6358, 2},
@@ -3937,7 +3533,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7837] = {
-			name = "Alchemy: Fire Oil",
 			item = 6371,
 			reagents = {
 				{6359, 2},
@@ -3945,7 +3540,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7841] = {
-			name = "Alchemy: Swim Speed Potion",
 			item = 6372,
 			reagents = {
 				{2452},
@@ -3954,7 +3548,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7845] = {
-			name = "Alchemy: Elixir of Firepower",
 			item = 6373,
 			reagents = {
 				{6371, 2},
@@ -3963,7 +3556,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7892] = {
-			name = "Tailoring: Stylish Blue Shirt",
 			item = 6384,
 			reagents = {
 				{2997, 4},
@@ -3973,7 +3565,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7893] = {
-			name = "Tailoring: Stylish Green Shirt",
 			item = 6385,
 			reagents = {
 				{2997, 4},
@@ -3983,39 +3574,32 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7928] = {
-			name = "First Aid: Silk Bandage",
 			item = 6450,
 			reagents = {
 				{4306},
 			},
 		},
 		[7929] = {
-			name = "First Aid: Heavy Silk Bandage",
 			item = 6451,
 			reagents = {
 				{4306, 2},
 			},
 		},
 		[7934] = {
-			name = "First Aid: Anti-Venom",
-			text = "Creates 3 Vials of Anti-Venom.",
 			item = 6452,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{1475},
 			},
 		},
 		[7935] = {
-			name = "First Aid: Strong Anti-Venom",
-			text = "Creates 3 Vials of Strong Anti-Venom.",
 			item = 6453,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{1288},
 			},
 		},
 		[7953] = {
-			name = "Leatherworking: Deviate Scale Cloak",
 			item = 6466,
 			reagents = {
 				{6470, 8},
@@ -4024,7 +3608,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7954] = {
-			name = "Leatherworking: Deviate Scale Gloves",
 			item = 6467,
 			reagents = {
 				{6471, 2},
@@ -4033,7 +3616,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[7955] = {
-			name = "Leatherworking: Deviate Scale Belt",
 			item = 6468,
 			reagents = {
 				{6471, 10},
@@ -4042,7 +3624,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8238] = {
-			name = "Cooking: Savory Deviate Delight",
 			requires = L["Cooking Fire"],
 			item = 6657,
 			reagents = {
@@ -4051,7 +3632,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8240] = {
-			name = "Alchemy: Elixir of Giant Growth",
 			item = 6662,
 			reagents = {
 				{6522},
@@ -4060,7 +3640,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8243] = {
-			name = "Engineering: Flash Bomb",
 			item = 4852,
 			reagents = {
 				{4611},
@@ -4069,7 +3648,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8322] = {
-			name = "Leatherworking: Moonglow Vest",
 			item = 6709,
 			reagents = {
 				{2318, 6},
@@ -4079,7 +3657,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8334] = {
-			name = "Engineering: Practice Lock",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 6712,
@@ -4090,17 +3667,14 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8339] = {
-			name = "Engineering: Ez-Thro Dynamite",
 			item = 6714,
-			craftQuantityMin = 1,
-			craftQuantityMax = 3,
+			quantity = {1,3},
 			reagents = {
 				{4364, 4},
 				{2592},
 			},
 		},
 		[8367] = {
-			name = "Blacksmithing: Ironforge Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 6731,
@@ -4111,7 +3685,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8465] = {
-			name = "Tailoring: Simple Dress",
 			item = 6786,
 			reagents = {
 				{2996, 2},
@@ -4121,7 +3694,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8467] = {
-			name = "Tailoring: White Woolen Dress",
 			item = 6787,
 			reagents = {
 				{2997, 3},
@@ -4130,7 +3702,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8483] = {
-			name = "Tailoring: White Swashbuckler's Shirt",
 			item = 6795,
 			reagents = {
 				{4305, 3},
@@ -4139,7 +3710,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8489] = {
-			name = "Tailoring: Red Swashbuckler's Shirt",
 			item = 6796,
 			reagents = {
 				{4305, 3},
@@ -4148,7 +3718,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8604] = {
-			name = "Cooking: Herb Baked Egg",
 			requires = L["Cooking Fire"],
 			item = 6888,
 			reagents = {
@@ -4157,7 +3726,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8607] = {
-			name = "Cooking: Smoked Bear Meat",
 			requires = L["Cooking Fire"],
 			item = 6890,
 			reagents = {
@@ -4165,15 +3733,11 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8681] = {
-			--name = "Poisons: Instant Poison",
-			--text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 20% chance of poisoning the enemy which instantly inflicts 19 to 25 Nature damage. 40 charges.",
 			item = 6947,
 			reagents = {{2928},
 						{3371},},
 		},
 		[8687] = {
-			--name = "Poisons: Instant Poison II",
-			--text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 20% chance of poisoning the enemy which instantly inflicts 30 to 38 Nature damage. 55 charges.",
 			item = 6949,
 			reagents = {
 				{2928, 3},
@@ -4181,8 +3745,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8691] = {
-			--name = "Poisons: Instant Poison III",
-			--text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 20% chance of poisoning the enemy which instantly inflicts 44 to 56 Nature damage. 70 charges.",
 			item = 6950,
 			reagents = {
 				{8924},
@@ -4190,8 +3752,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8694] = {
-			--name = "Poisons: Mind-numbing Poison II",
-			--text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 20% chance of poisoning the enemy, increasing their casting time by 50% for 12 sec. 75 charges.",
 			item = 6951,
 			reagents = {
 				{2928, 4},
@@ -4200,7 +3760,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8758] = {
-			name = "Tailoring: Azure Silk Pants",
 			item = 7046,
 			reagents = {
 				{4305, 4},
@@ -4209,7 +3768,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8760] = {
-			name = "Tailoring: Azure Silk Hood",
 			item = 7048,
 			reagents = {
 				{4305, 3},
@@ -4218,7 +3776,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8762] = {
-			name = "Tailoring: Silk Headband",
 			item = 7050,
 			reagents = {
 				{4305, 3},
@@ -4226,7 +3783,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8764] = {
-			name = "Tailoring: Earthen Vest",
 			item = 7051,
 			reagents = {
 				{4305, 3},
@@ -4235,7 +3791,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8766] = {
-			name = "Tailoring: Azure Silk Belt",
 			item = 7052,
 			reagents = {
 				{4305, 4},
@@ -4246,17 +3801,15 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8768] = {
-			name = "Blacksmithing: Iron Buckle",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7071,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{3575},
 			},
 		},
 		[8770] = {
-			name = "Tailoring: Robe of Power",
 			item = 7054,
 			reagents = {
 				{4339, 2},
@@ -4268,7 +3821,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8772] = {
-			name = "Tailoring: Crimson Silk Belt",
 			item = 7055,
 			reagents = {
 				{4305, 4},
@@ -4278,7 +3830,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8774] = {
-			name = "Tailoring: Green Silken Shoulders",
 			item = 7057,
 			reagents = {
 				{4305, 5},
@@ -4286,7 +3837,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8776] = {
-			name = "Tailoring: Linen Belt",
 			item = 7026,
 			reagents = {
 				{2996},
@@ -4294,7 +3844,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8778] = {
-			name = "Tailoring: Boots of Darkness",
 			item = 7027,
 			reagents = {
 				{4305, 3},
@@ -4304,7 +3853,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8780] = {
-			name = "Tailoring: Hands of Darkness",
 			item = 7047,
 			reagents = {
 				{4305, 3},
@@ -4314,7 +3862,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8782] = {
-			name = "Tailoring: Truefaith Gloves",
 			item = 7049,
 			reagents = {
 				{4305, 3},
@@ -4324,7 +3871,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8784] = {
-			name = "Tailoring: Green Silk Armor",
 			item = 7065,
 			reagents = {
 				{4305, 5},
@@ -4333,7 +3879,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8786] = {
-			name = "Tailoring: Azure Silk Cloak",
 			item = 7053,
 			reagents = {
 				{4305, 3},
@@ -4342,7 +3887,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8789] = {
-			name = "Tailoring: Crimson Silk Cloak",
 			item = 7056,
 			reagents = {
 				{4305, 5},
@@ -4352,7 +3896,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8791] = {
-			name = "Tailoring: Crimson Silk Vest",
 			item = 7058,
 			reagents = {
 				{4305, 4},
@@ -4361,7 +3904,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8793] = {
-			name = "Tailoring: Crimson Silk Shoulders",
 			item = 7059,
 			reagents = {
 				{4305, 5},
@@ -4371,7 +3913,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8795] = {
-			name = "Tailoring: Azure Shoulders",
 			item = 7060,
 			reagents = {
 				{4305, 6},
@@ -4381,7 +3922,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8797] = {
-			name = "Tailoring: Earthen Silk Belt",
 			item = 7061,
 			reagents = {
 				{4305, 5},
@@ -4392,7 +3932,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8799] = {
-			name = "Tailoring: Crimson Silk Pantaloons",
 			item = 7062,
 			reagents = {
 				{4305, 4},
@@ -4401,7 +3940,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8802] = {
-			name = "Tailoring: Crimson Silk Robe",
 			item = 7063,
 			reagents = {
 				{4305, 8},
@@ -4412,7 +3950,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8804] = {
-			name = "Tailoring: Crimson Silk Gloves",
 			item = 7064,
 			reagents = {
 				{4305, 6},
@@ -4424,7 +3961,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8880] = {
-			name = "Blacksmithing: Copper Dagger",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7166,
@@ -4436,7 +3972,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[8895] = {
-			name = "Engineering: Goblin Rocket Boots",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 7189,
@@ -4449,7 +3984,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9058] = {
-			name = "Leatherworking: Handstitched Leather Cloak",
 			item = 7276,
 			reagents = {
 				{2318, 2},
@@ -4457,7 +3991,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9059] = {
-			name = "Leatherworking: Handstitched Leather Bracers",
 			item = 7277,
 			reagents = {
 				{2318, 2},
@@ -4465,7 +3998,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9060] = {
-			name = "Leatherworking: Light Leather Quiver",
 			item = 7278,
 			reagents = {
 				{2318, 4},
@@ -4473,7 +4005,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9062] = {
-			name = "Leatherworking: Small Leather Ammo Pouch",
 			item = 7279,
 			reagents = {
 				{2318, 3},
@@ -4481,7 +4012,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9064] = {
-			name = "Leatherworking: Rugged Leather Pants",
 			item = 7280,
 			reagents = {
 				{2318, 5},
@@ -4489,7 +4019,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9065] = {
-			name = "Leatherworking: Light Leather Bracers",
 			item = 7281,
 			reagents = {
 				{2318, 6},
@@ -4497,7 +4026,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9068] = {
-			name = "Leatherworking: Light Leather Pants",
 			item = 7282,
 			reagents = {
 				{2318, 10},
@@ -4506,7 +4034,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9070] = {
-			name = "Leatherworking: Black Whelp Cloak",
 			item = 7283,
 			reagents = {
 				{7286, 12},
@@ -4515,7 +4042,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9072] = {
-			name = "Leatherworking: Red Whelp Gloves",
 			item = 7284,
 			reagents = {
 				{7287, 6},
@@ -4524,7 +4050,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9074] = {
-			name = "Leatherworking: Nimble Leather Gloves",
 			item = 7285,
 			reagents = {
 				{2357},
@@ -4533,7 +4058,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9145] = {
-			name = "Leatherworking: Fletcher's Gloves",
 			item = 7348,
 			reagents = {
 				{2319, 8},
@@ -4542,7 +4066,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9146] = {
-			name = "Leatherworking: Herbalist's Gloves",
 			item = 7349,
 			reagents = {
 				{2319, 8},
@@ -4551,7 +4074,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9147] = {
-			name = "Leatherworking: Earthen Leather Shoulders",
 			item = 7352,
 			reagents = {
 				{2319, 6},
@@ -4560,7 +4082,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9148] = {
-			name = "Leatherworking: Pilferer's Gloves",
 			item = 7358,
 			reagents = {
 				{2319, 10},
@@ -4569,7 +4090,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9149] = {
-			name = "Leatherworking: Heavy Earthen Gloves",
 			item = 7359,
 			reagents = {
 				{2319, 12},
@@ -4579,7 +4099,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9193] = {
-			name = "Leatherworking: Heavy Quiver",
 			item = 7371,
 			reagents = {
 				{4234, 8},
@@ -4587,7 +4106,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9194] = {
-			name = "Leatherworking: Heavy Leather Ammo Pouch",
 			item = 7372,
 			reagents = {
 				{4234, 8},
@@ -4595,7 +4113,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9195] = {
-			name = "Leatherworking: Dusky Leather Leggings",
 			item = 7373,
 			reagents = {
 				{4234, 10},
@@ -4604,7 +4121,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9196] = {
-			name = "Leatherworking: Dusky Leather Armor",
 			item = 7374,
 			reagents = {
 				{4234, 10},
@@ -4613,7 +4129,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9197] = {
-			name = "Leatherworking: Green Whelp Armor",
 			item = 7375,
 			reagents = {
 				{7392, 4},
@@ -4622,7 +4137,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9198] = {
-			name = "Leatherworking: Frost Leather Cloak",
 			item = 7377,
 			reagents = {
 				{4236, 2},
@@ -4632,7 +4146,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9201] = {
-			name = "Leatherworking: Dusky Bracers",
 			item = 7378,
 			reagents = {
 				{4234, 16},
@@ -4641,7 +4154,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9202] = {
-			name = "Leatherworking: Green Whelp Bracers",
 			item = 7386,
 			reagents = {
 				{7392, 6},
@@ -4650,7 +4162,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9206] = {
-			name = "Leatherworking: Dusky Belt",
 			item = 7387,
 			reagents = {
 				{4234, 10},
@@ -4660,7 +4171,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9207] = {
-			name = "Leatherworking: Dusky Boots",
 			item = 7390,
 			reagents = {
 				{4234, 8},
@@ -4670,7 +4180,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9208] = {
-			name = "Leatherworking: Swift Boots",
 			item = 7391,
 			reagents = {
 				{4234, 10},
@@ -4680,7 +4189,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9269] = {
-			name = "Engineering: Gnomish Universal Remote",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 7506,
@@ -4693,9 +4201,8 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9271] = {
-			name = "Engineering: Aquadynamic Fish Attractor",
 			item = 6533,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{2841, 2},
 				{6530},
@@ -4703,7 +4210,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9273] = {
-			name = "Engineering: Goblin Jumper Cables",
 			item = 7148,
 			reagents = {
 				{3575, 6},
@@ -4715,7 +4221,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9513] = {
-			name = "Cooking: Thistle Tea",
 			requires = L["Cooking Fire"],
 			item = 7676,
 			reagents = {
@@ -4724,7 +4229,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9811] = {
-			name = "Blacksmithing: Barbaric Iron Shoulders",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7913,
@@ -4736,7 +4240,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9813] = {
-			name = "Blacksmithing: Barbaric Iron Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7914,
@@ -4746,7 +4249,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9814] = {
-			name = "Blacksmithing: Barbaric Iron Helm",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7915,
@@ -4757,7 +4259,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9818] = {
-			name = "Blacksmithing: Barbaric Iron Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7916,
@@ -4769,7 +4270,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9820] = {
-			name = "Blacksmithing: Barbaric Iron Gloves",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7917,
@@ -4780,7 +4280,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9916] = {
-			name = "Blacksmithing: Steel Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7963,
@@ -4790,21 +4289,18 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9918] = {
-			name = "Blacksmithing: Solid Sharpening Stone",
 			item = 7964,
 			reagents = {
 				{7912},
 			},
 		},
 		[9920] = {
-			name = "Blacksmithing: Solid Grinding Stone",
 			item = 7966,
 			reagents = {
 				{7912, 4},
 			},
 		},
 		[9921] = {
-			name = "Blacksmithing: Solid Weightstone",
 			item = 7964,
 			reagents = {
 				{7912},
@@ -4812,7 +4308,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9926] = {
-			name = "Blacksmithing: Heavy Mithril Shoulder",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7918,
@@ -4822,7 +4317,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9928] = {
-			name = "Blacksmithing: Heavy Mithril Gauntlet",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7919,
@@ -4832,7 +4326,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9931] = {
-			name = "Blacksmithing: Mithril Scale Pants",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7920,
@@ -4841,7 +4334,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9933] = {
-			name = "Blacksmithing: Heavy Mithril Pants",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7921,
@@ -4851,7 +4343,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9935] = {
-			name = "Blacksmithing: Steel Plate Helm",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7922,
@@ -4861,7 +4352,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9937] = {
-			name = "Blacksmithing: Mithril Scale Bracers",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7924,
@@ -4871,7 +4361,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9939] = {
-			name = "Blacksmithing: Mithril Shield Spike",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7967,
@@ -4882,7 +4371,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9942] = {
-			name = "Blacksmithing: Mithril Scale Gloves",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7925,
@@ -4893,7 +4381,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9945] = {
-			name = "Blacksmithing: Ornate Mithril Pants",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7926,
@@ -4905,7 +4392,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9950] = {
-			name = "Blacksmithing: Ornate Mithril Gloves",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7927,
@@ -4917,7 +4403,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9952] = {
-			name = "Blacksmithing: Ornate Mithril Shoulders",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7928,
@@ -4928,7 +4413,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9954] = {
-			name = "Blacksmithing: Truesilver Gauntlets",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7938,
@@ -4942,7 +4426,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9957] = {
-			name = "Blacksmithing: Orcish War Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7929,
@@ -4952,7 +4435,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9959] = {
-			name = "Blacksmithing: Heavy Mithril Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7930,
@@ -4961,7 +4443,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9961] = {
-			name = "Blacksmithing: Mithril Coif",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7931,
@@ -4971,7 +4452,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9964] = {
-			name = "Blacksmithing: Mithril Spurs",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7969,
@@ -4981,7 +4461,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9966] = {
-			name = "Blacksmithing: Mithril Scale Shoulders",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7932,
@@ -4992,7 +4471,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9968] = {
-			name = "Blacksmithing: Heavy Mithril Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7933,
@@ -5002,7 +4480,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9970] = {
-			name = "Blacksmithing: Heavy Mithril Helm",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7934,
@@ -5012,7 +4489,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9972] = {
-			name = "Blacksmithing: Ornate Mithril Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7935,
@@ -5024,7 +4500,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9974] = {
-			name = "Blacksmithing: Truesilver Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7939,
@@ -5037,7 +4512,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9979] = {
-			name = "Blacksmithing: Ornate Mithril Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7936,
@@ -5050,7 +4524,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9980] = {
-			name = "Blacksmithing: Ornate Mithril Helm",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7937,
@@ -5062,7 +4535,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9983] = {
-			name = "Blacksmithing: Copper Claymore",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7955,
@@ -5074,7 +4546,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9985] = {
-			name = "Blacksmithing: Bronze Warhammer",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7956,
@@ -5085,7 +4556,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9986] = {
-			name = "Blacksmithing: Bronze Greatsword",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7957,
@@ -5096,7 +4566,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9987] = {
-			name = "Blacksmithing: Bronze Battle Axe",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7958,
@@ -5107,7 +4576,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9993] = {
-			name = "Blacksmithing: Heavy Mithril Axe",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7941,
@@ -5119,7 +4587,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9995] = {
-			name = "Blacksmithing: Blue Glittering Axe",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7942,
@@ -5131,7 +4598,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[9997] = {
-			name = "Blacksmithing: Wicked Mithril Blade",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7943,
@@ -5143,7 +4609,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10001] = {
-			name = "Blacksmithing: Big Black Mace",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7945,
@@ -5156,7 +4621,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10003] = {
-			name = "Blacksmithing: The Shatterer",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7954,
@@ -5171,7 +4635,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10005] = {
-			name = "Blacksmithing: Dazzling Mithril Rapier",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7944,
@@ -5185,7 +4648,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10007] = {
-			name = "Blacksmithing: Phantom Blade",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7961,
@@ -5200,7 +4662,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10009] = {
-			name = "Blacksmithing: Runed Mithril Hammer",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7946,
@@ -5212,7 +4673,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10011] = {
-			name = "Blacksmithing: Blight",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7959,
@@ -5225,7 +4685,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10013] = {
-			name = "Blacksmithing: Ebon Shiv",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7947,
@@ -5238,7 +4697,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10015] = {
-			name = "Blacksmithing: Truesilver Champion",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 7960,
@@ -5270,7 +4728,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10482] = {
-			name = "Leatherworking: Cured Thick Hide",
 			item = 8172,
 			reagents = {
 				{8169},
@@ -5278,7 +4735,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10487] = {
-			name = "Leatherworking: Thick Armor Kit",
 			item = 8173,
 			reagents = {
 				{4304, 5},
@@ -5286,7 +4742,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10490] = {
-			name = "Leatherworking: Comfortable Leather Hat",
 			item = 8174,
 			reagents = {
 				{4234, 12},
@@ -5295,7 +4750,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10499] = {
-			name = "Leatherworking: Nightscape Tunic",
 			item = 8175,
 			reagents = {
 				{4304, 7},
@@ -5303,7 +4757,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10507] = {
-			name = "Leatherworking: Nightscape Headband",
 			item = 8176,
 			reagents = {
 				{4304, 5},
@@ -5311,7 +4764,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10509] = {
-			name = "Leatherworking: Turtle Scale Gloves",
 			item = 8187,
 			reagents = {
 				{4304, 6},
@@ -5320,7 +4772,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10511] = {
-			name = "Leatherworking: Turtle Scale Breastplate",
 			item = 8189,
 			reagents = {
 				{4304, 6},
@@ -5329,7 +4780,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10516] = {
-			name = "Leatherworking: Nightscape Shoulders",
 			item = 8192,
 			reagents = {
 				{4304, 8},
@@ -5338,7 +4788,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10518] = {
-			name = "Leatherworking: Turtle Scale Bracers",
 			item = 8198,
 			reagents = {
 				{4304, 8},
@@ -5347,7 +4796,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10520] = {
-			name = "Leatherworking: Big Voodoo Robe",
 			item = 8200,
 			reagents = {
 				{4304, 10},
@@ -5356,7 +4804,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10525] = {
-			name = "Leatherworking: Tough Scorpid Breastplate",
 			item = 8203,
 			reagents = {
 				{4304, 12},
@@ -5365,9 +4812,8 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10529] = {
-			name = "Leatherworking: Wild Leather Shoulders",
 			item = 8210,
-			extra = "|cff00ff00<Random enchantment>",
+			extra = "|cff00ff00"..L["<Random enchantment>"],
 			reagents = {
 				{4304, 10},
 				{8153},
@@ -5375,7 +4821,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10531] = {
-			name = "Leatherworking: Big Voodoo Mask",
 			item = 8201,
 			reagents = {
 				{4304, 8},
@@ -5384,7 +4829,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10533] = {
-			name = "Leatherworking: Tough Scorpid Bracers",
 			item = 8205,
 			reagents = {
 				{4304, 10},
@@ -5393,7 +4837,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10542] = {
-			name = "Leatherworking: Tough Scorpid Gloves",
 			item = 8204,
 			reagents = {
 				{4304, 6},
@@ -5402,9 +4845,8 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10544] = {
-			name = "Leatherworking: Wild Leather Vest",
 			item = 8211,
-			extra = "|cff00ff00<Random enchantment>",
+			extra = "|cff00ff00"..L["<Random enchantment>"],
 			reagents = {
 				{4304, 12},
 				{8153, 2},
@@ -5412,9 +4854,8 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10546] = {
-			name = "Leatherworking: Wild Leather Helmet",
 			item = 8214,
-			extra = "|cff00ff00<Random enchantment>",
+			extra = "|cff00ff00"..L["<Random enchantment>"],
 			reagents = {
 				{4304, 10},
 				{8153, 2},
@@ -5422,7 +4863,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10548] = {
-			name = "Leatherworking: Nightscape Pants",
 			item = 8193,
 			reagents = {
 				{4304, 14},
@@ -5430,7 +4870,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10550] = {
-			name = "Leatherworking: Nightscape Cloak",
 			item = 8195,
 			reagents = {
 				{4304, 12},
@@ -5438,7 +4877,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10552] = {
-			name = "Leatherworking: Turtle Scale Helm",
 			item = 8191,
 			reagents = {
 				{4304, 14},
@@ -5447,7 +4885,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10554] = {
-			name = "Leatherworking: Tough Scorpid Boots",
 			item = 8209,
 			reagents = {
 				{4304, 12},
@@ -5456,7 +4893,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10556] = {
-			name = "Leatherworking: Turtle Scale Leggings",
 			item = 8185,
 			reagents = {
 				{4304, 14},
@@ -5465,7 +4901,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10558] = {
-			name = "Leatherworking: Nightscape Boots",
 			item = 8197,
 			reagents = {
 				{4304, 16},
@@ -5473,7 +4908,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10560] = {
-			name = "Leatherworking: Big Voodoo Pants",
 			item = 8202,
 			reagents = {
 				{4304, 10},
@@ -5482,7 +4916,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10562] = {
-			name = "Leatherworking: Big Voodoo Cloak",
 			item = 8216,
 			reagents = {
 				{4304, 14},
@@ -5491,7 +4924,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10564] = {
-			name = "Leatherworking: Tough Scorpid Shoulders",
 			item = 8207,
 			reagents = {
 				{4304, 12},
@@ -5500,9 +4932,8 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10566] = {
-			name = "Leatherworking: Wild Leather Boots",
 			item = 8213,
-			extra = "|cff00ff00<Random enchantment>",
+			extra = "|cff00ff00"..L["<Random enchantment>"],
 			reagents = {
 				{4304, 14},
 				{8153, 4},
@@ -5510,7 +4941,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10568] = {
-			name = "Leatherworking: Tough Scorpid Leggings",
 			item = 8206,
 			reagents = {
 				{4304, 14},
@@ -5519,7 +4949,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10570] = {
-			name = "Leatherworking: Tough Scorpid Helm",
 			item = 8208,
 			reagents = {
 				{4304, 10},
@@ -5528,9 +4957,8 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10572] = {
-			name = "Leatherworking: Wild Leather Leggings",
 			item = 8212,
-			extra = "|cff00ff00<Random enchantment>",
+			extra = "|cff00ff00"..L["<Random enchantment>"],
 			reagents = {
 				{4304, 16},
 				{8153, 6},
@@ -5538,9 +4966,8 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10574] = {
-			name = "Leatherworking: Wild Leather Cloak",
 			item = 8215,
-			extra = "|cff00ff00<Random enchantment>",
+			extra = "|cff00ff00"..L["<Random enchantment>"],
 			reagents = {
 				{4304, 16},
 				{8153, 6},
@@ -5548,7 +4975,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10619] = {
-			name = "Leatherworking: Dragonscale Gauntlets",
 			item = 8347,
 			reagents = {
 				{4304, 24},
@@ -5558,7 +4984,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10621] = {
-			name = "Leatherworking: Wolfshead Helm",
 			item = 8345,
 			reagents = {
 				{4304, 18},
@@ -5569,7 +4994,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10630] = {
-			name = "Leatherworking: Gauntlets of the Sea",
 			item = 8346,
 			reagents = {
 				{4304, 20},
@@ -5580,7 +5004,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10632] = {
-			name = "Leatherworking: Helm of Fire",
 			item = 8348,
 			reagents = {
 				{4304, 40},
@@ -5591,7 +5014,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10647] = {
-			name = "Leatherworking: Feathered Breastplate",
 			item = 8349,
 			reagents = {
 				{4304, 40},
@@ -5602,7 +5024,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10650] = {
-			name = "Leatherworking: Dragonscale Breastplate",
 			item = 8367,
 			reagents = {
 				{4304, 40},
@@ -5612,22 +5033,18 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[10840] = {
-			name = "First Aid: Mageweave Bandage",
 			item = 8544,
 			reagents = {
 				{4338},
 			},
 		},
 		[10841] = {
-			name = "First Aid: Heavy Mageweave Bandage",
 			item = 8545,
 			reagents = {
 				{4338, 2},
 			},
 		},
 		[10844] = {
-			name = "Powerful Smelling Salts",
-			text = "Teaches you how to make Powerful Smelling Salts.",
 			item = 8546,
 			reagents = {
 				{8150, 4},
@@ -5636,8 +5053,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11341] = {
-		--	name = "Poisons: Instant Poison IV",
-		--	text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 20% chance of poisoning the enemy which instantly inflicts 67 to 85 Nature damage. 85 charges.",
 			item = 8926,
 			reagents = {
 				{8924, 2},
@@ -5645,8 +5060,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11342] = {
-		--	name = "Poisons: Instant Poison V",
-		--	text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 20% chance of poisoning the enemy which instantly inflicts 92 to 118 Nature damage. 100 charges.",
 			item = 8927,
 			reagents = {
 				{8924, 3},
@@ -5654,8 +5067,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11343] = {
-		--	name = "Poisons: Instant Poison VI",
-		--	text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 20% chance of poisoning the enemy which instantly inflicts 112 to 148 Nature damage. 115 charges.",
 			item = 8928,
 			reagents = {
 				{8924, 4},
@@ -5663,8 +5074,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11357] = {
-		--	name = "Poisons: Deadly Poison III",
-		--	text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 30% chance of poisoning the enemy for 80 Nature damage over 12 sec. Stacks up to 5 times on a single target. 90 charges.",
 			item = 8984,
 			reagents = {
 				{5173, 3},
@@ -5672,8 +5081,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11358] = {
-		--	name = "Poisons: Deadly Poison IV",
-		--	text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 30% chance of poisoning the enemy for 108 Nature damage over 12 sec. Stacks up to 5 times on a single target. 105 charges.",
 			item = 8985,
 			reagents = {
 				{5173, 5},
@@ -5681,8 +5088,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11400] = {
-		--	name = "Poisons: Mind-numbing Poison III",
-		--	text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 20% chance of poisoning the enemy, increasing their casting time by 60% for 14 sec. 100 charges.",
 			item = 9186,
 			reagents = {
 				{8924, 2},
@@ -5691,7 +5096,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11448] = {
-			name = "Alchemy: Greater Mana Potion",
 			item = 6149,
 			reagents = {
 				{3358},
@@ -5700,7 +5104,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11449] = {
-			name = "Alchemy: Elixir of Agility",
 			item = 8949,
 			reagents = {
 				{3820},
@@ -5709,7 +5112,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11450] = {
-			name = "Alchemy: Elixir of Greater Defense",
 			item = 8951,
 			reagents = {
 				{3355},
@@ -5718,7 +5120,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11451] = {
-			name = "Alchemy: Oil of Immolation",
 			item = 8956,
 			reagents = {
 				{4625},
@@ -5727,7 +5128,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11452] = {
-			name = "Alchemy: Restorative Potion",
 			item = 9030,
 			reagents = {
 				{7067},
@@ -5736,7 +5136,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11453] = {
-			name = "Alchemy: Magic Resistance Potion",
 			item = 9036,
 			reagents = {
 				{3358},
@@ -5745,7 +5144,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11454] = {
-			name = "Blacksmithing: Inlaid Mithril Cylinder",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 9060,
@@ -5756,7 +5154,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11456] = {
-			name = "Alchemy: Goblin Rocket Fuel",
 			item = 9061,
 			reagents = {
 				{4625},
@@ -5765,7 +5162,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11457] = {
-			name = "Alchemy: Superior Healing Potion",
 			item = 3928,
 			reagents = {
 				{8838},
@@ -5774,7 +5170,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11458] = {
-			name = "Alchemy: Wildvine Potion",
 			item = 9144,
 			reagents = {
 				{8153},
@@ -5783,7 +5178,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11459] = {
-			name = "Alchemy: Philosopher's Stone",
 			item = 9149,
 			reagents = {
 				{3575, 4},
@@ -5793,7 +5187,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11460] = {
-			name = "Alchemy: Elixir of Detect Undead",
 			item = 9154,
 			reagents = {
 				{8836},
@@ -5801,7 +5194,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11461] = {
-			name = "Alchemy: Arcane Elixir",
 			item = 9155,
 			reagents = {
 				{8839},
@@ -5810,7 +5202,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11464] = {
-			name = "Alchemy: Invisibility Potion",
 			item = 9172,
 			reagents = {
 				{8845},
@@ -5819,7 +5210,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11465] = {
-			name = "Alchemy: Elixir of Greater Intellect",
 			item = 9179,
 			reagents = {
 				{8839},
@@ -5828,7 +5218,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11466] = {
-			name = "Alchemy: Gift of Arthas",
 			item = 9088,
 			reagents = {
 				{8836},
@@ -5837,7 +5226,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11467] = {
-			name = "Alchemy: Elixir of Greater Agility",
 			item = 9187,
 			reagents = {
 				{8838},
@@ -5846,7 +5234,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11468] = {
-			name = "Alchemy: Elixir of Dream Vision",
 			item = 9197,
 			reagents = {
 				{8831, 3},
@@ -5854,7 +5241,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11472] = {
-			name = "Alchemy: Elixir of Giants",
 			item = 9206,
 			reagents = {
 				{8838},
@@ -5863,7 +5249,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11473] = {
-			name = "Alchemy: Ghost Dye",
 			item = 9210,
 			reagents = {
 				{8845, 2},
@@ -5872,7 +5257,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11476] = {
-			name = "Alchemy: Elixir of Shadow Power",
 			item = 9264,
 			reagents = {
 				{8845, 3},
@@ -5880,7 +5264,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11477] = {
-			name = "Alchemy: Elixir of Demonslaying",
 			item = 9224,
 			reagents = {
 				{8846},
@@ -5889,7 +5272,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11478] = {
-			name = "Alchemy: Elixir of Detect Demon",
 			item = 9233,
 			reagents = {
 				{8846, 2},
@@ -5897,7 +5279,7 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11479] = {
-			name = "Alchemy: Transmute: Iron to Gold",
+			name = "Transmute: Iron to Gold",
 			tools = {9149},
 			text = "Turns a bar of Iron into a bar of Gold.",
 			item = 3577,
@@ -5906,7 +5288,7 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11480] = {
-			name = "Alchemy: Transmute: Mithril to Truesilver",
+			name = "Transmute: Mithril to Truesilver",
 			tools = {9149},
 			text = "Turns a bar of Mithril into a bar of Truesilver.",
 			item = 6037,
@@ -5915,7 +5297,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[11643] = {
-			name = "Blacksmithing: Golden Scale Gauntlets",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 9366,
@@ -5927,7 +5308,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12044] = {
-			name = "Tailoring: Simple Linen Pants",
 			item = 10045,
 			reagents = {
 				{2996},
@@ -5935,7 +5315,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12045] = {
-			name = "Tailoring: Simple Linen Boots",
 			item = 10046,
 			reagents = {
 				{2996, 2},
@@ -5944,7 +5323,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12046] = {
-			name = "Tailoring: Simple Kilt",
 			item = 10047,
 			reagents = {
 				{2996, 4},
@@ -5952,7 +5330,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12047] = {
-			name = "Tailoring: Colorful Kilt",
 			item = 10048,
 			reagents = {
 				{2997, 5},
@@ -5961,7 +5338,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12048] = {
-			name = "Tailoring: Black Mageweave Vest",
 			item = 9998,
 			reagents = {
 				{4339, 2},
@@ -5969,7 +5345,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12049] = {
-			name = "Tailoring: Black Mageweave Leggings",
 			item = 9999,
 			reagents = {
 				{4339, 2},
@@ -5977,7 +5352,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12050] = {
-			name = "Tailoring: Black Mageweave Robe",
 			item = 10001,
 			reagents = {
 				{4339, 3},
@@ -5985,7 +5359,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12052] = {
-			name = "Tailoring: Shadoweave Pants",
 			item = 10002,
 			reagents = {
 				{4339, 3},
@@ -5994,7 +5367,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12053] = {
-			name = "Tailoring: Black Mageweave Gloves",
 			item = 10003,
 			reagents = {
 				{4339, 2},
@@ -6002,7 +5374,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12055] = {
-			name = "Tailoring: Shadoweave Robe",
 			item = 10004,
 			reagents = {
 				{4339, 3},
@@ -6011,7 +5382,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12056] = {
-			name = "Tailoring: Red Mageweave Vest",
 			item = 10007,
 			reagents = {
 				{4339, 3},
@@ -6020,7 +5390,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12059] = {
-			name = "Tailoring: White Bandit Mask",
 			item = 10008,
 			reagents = {
 				{4339},
@@ -6029,7 +5398,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12060] = {
-			name = "Tailoring: Red Mageweave Pants",
 			item = 10009,
 			reagents = {
 				{4339, 3},
@@ -6038,7 +5406,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12061] = {
-			name = "Tailoring: Orange Mageweave Shirt",
 			item = 10056,
 			reagents = {
 				{4339},
@@ -6047,7 +5414,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12064] = {
-			name = "Tailoring: Orange Martial Shirt",
 			item = 10052,
 			reagents = {
 				{4339, 2},
@@ -6056,7 +5422,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12065] = {
-			name = "Tailoring: Mageweave Bag",
 			item = 10050,
 			reagents = {
 				{4339, 4},
@@ -6064,7 +5429,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12066] = {
-			name = "Tailoring: Red Mageweave Gloves",
 			item = 10018,
 			reagents = {
 				{4339, 3},
@@ -6073,7 +5437,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12067] = {
-			name = "Tailoring: Dreamweave Gloves",
 			item = 10019,
 			reagents = {
 				{4339, 4},
@@ -6083,7 +5446,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12069] = {
-			name = "Tailoring: Cindercloth Robe",
 			item = 10042,
 			reagents = {
 				{4339, 5},
@@ -6092,7 +5454,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12070] = {
-			name = "Tailoring: Dreamweave Vest",
 			item = 10021,
 			reagents = {
 				{4339, 6},
@@ -6102,7 +5463,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12071] = {
-			name = "Tailoring: Shadoweave Gloves",
 			item = 10023,
 			reagents = {
 				{4339, 5},
@@ -6111,7 +5471,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12072] = {
-			name = "Tailoring: Black Mageweave Headband",
 			item = 10024,
 			reagents = {
 				{4339, 3},
@@ -6119,7 +5478,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12073] = {
-			name = "Tailoring: Black Mageweave Boots",
 			item = 10026,
 			reagents = {
 				{4339, 3},
@@ -6128,7 +5486,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12074] = {
-			name = "Tailoring: Black Mageweave Shoulders",
 			item = 10027,
 			reagents = {
 				{4339, 3},
@@ -6136,7 +5493,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12075] = {
-			name = "Tailoring: Lavender Mageweave Shirt",
 			item = 10054,
 			reagents = {
 				{4339, 2},
@@ -6145,7 +5501,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12076] = {
-			name = "Tailoring: Shadoweave Shoulders",
 			item = 10028,
 			reagents = {
 				{4339, 5},
@@ -6154,7 +5509,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12077] = {
-			name = "Tailoring: Simple Black Dress",
 			item = 10053,
 			reagents = {
 				{4339, 3},
@@ -6164,7 +5518,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12078] = {
-			name = "Tailoring: Red Mageweave Shoulders",
 			item = 10029,
 			reagents = {
 				{4339, 4},
@@ -6173,7 +5526,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12079] = {
-			name = "Tailoring: Red Mageweave Bag",
 			item = 10051,
 			reagents = {
 				{4339, 4},
@@ -6182,7 +5534,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12080] = {
-			name = "Tailoring: Pink Mageweave Shirt",
 			item = 10055,
 			reagents = {
 				{4339, 3},
@@ -6191,7 +5542,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12081] = {
-			name = "Tailoring: Admiral's Hat",
 			item = 10030,
 			reagents = {
 				{4339, 3},
@@ -6200,7 +5550,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12082] = {
-			name = "Tailoring: Shadoweave Boots",
 			item = 10031,
 			reagents = {
 				{4339, 6},
@@ -6210,7 +5559,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12084] = {
-			name = "Tailoring: Red Mageweave Headband",
 			item = 10033,
 			reagents = {
 				{4339, 4},
@@ -6219,7 +5567,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12085] = {
-			name = "Tailoring: Tuxedo Shirt",
 			item = 10034,
 			reagents = {
 				{4339, 4},
@@ -6228,7 +5575,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12086] = {
-			name = "Tailoring: Shadoweave Mask",
 			item = 10025,
 			reagents = {
 				{4339, 2},
@@ -6237,7 +5583,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12088] = {
-			name = "Tailoring: Cindercloth Boots",
 			item = 10044,
 			reagents = {
 				{4339, 5},
@@ -6247,7 +5592,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12089] = {
-			name = "Tailoring: Tuxedo Pants",
 			item = 10035,
 			reagents = {
 				{4339, 4},
@@ -6255,7 +5599,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12091] = {
-			name = "Tailoring: White Wedding Dress",
 			item = 10040,
 			reagents = {
 				{4339, 5},
@@ -6264,7 +5607,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12092] = {
-			name = "Tailoring: Dreamweave Circlet",
 			item = 10041,
 			reagents = {
 				{4339, 8},
@@ -6276,7 +5618,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12093] = {
-			name = "Tailoring: Tuxedo Jacket",
 			item = 10036,
 			reagents = {
 				{4339, 5},
@@ -6284,7 +5625,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12259] = {
-			name = "Blacksmithing: Silvered Bronze Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 10423,
@@ -6295,7 +5635,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12260] = {
-			name = "Blacksmithing: Rough Copper Vest",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 10421,
@@ -6304,33 +5643,29 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12584] = {
-			name = "Engineering: Gold Power Core",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10558,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{3577},
 			},
 		},
 		[12585] = {
-			name = "Engineering: Solid Blasting Powder",
 			item = 10505,
 			reagents = {
 				{7912, 2},
 			},
 		},
 		[12586] = {
-			name = "Engineering: Solid Dynamite",
 			item = 10507,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{10505},
 				{4306},
 			},
 		},
 		[12587] = {
-			name = "Engineering: Bright-Eye Goggles",
 			tools = {6219, 10498},
 			item = 10499,
 			reagents = {
@@ -6339,7 +5674,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12589] = {
-			name = "Engineering: Mithril Tube",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 10559,
@@ -6348,7 +5682,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12590] = {
-			name = "Engineering: Gyromatic Micro-Adjustor",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 10498,
@@ -6357,7 +5690,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12591] = {
-			name = "Engineering: Unstable Trigger",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10560,
@@ -6368,7 +5700,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12594] = {
-			name = "Engineering: Fire Goggles",
 			tools = {6219, 10498},
 			item = 10500,
 			reagents = {
@@ -6379,7 +5710,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12595] = {
-			name = "Engineering: Mithril Blunderbuss",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10508,
@@ -6392,18 +5722,16 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12596] = {
-			name = "Engineering: Hi-Impact Mithril Slugs",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 10512,
-			craftQuantityMin = 200,
+			quantity = 200,
 			reagents = {
 				{3860},
 				{10505},
 			},
 		},
 		[12597] = {
-			name = "Engineering: Deadly Scope",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10546,
@@ -6414,7 +5742,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12599] = {
-			name = "Engineering: Mithril Casing",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10561,
@@ -6423,11 +5750,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12603] = {
-			name = "Engineering: Mithril Frag Bomb",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10514,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{10561},
 				{10560},
@@ -6435,7 +5761,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12607] = {
-			name = "Engineering: Catseye Ultra Goggles",
 			tools = {6219, 10498},
 			item = 10501,
 			reagents = {
@@ -6445,7 +5770,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12609] = {
-			name = "Alchemy: Catseye Elixir",
 			item = 10592,
 			reagents = {
 				{3821},
@@ -6454,7 +5778,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12614] = {
-			name = "Engineering: Mithril Heavy-bore Rifle",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10510,
@@ -6467,7 +5790,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12615] = {
-			name = "Engineering: Spellpower Goggles Xtreme",
 			tools = {6219, 10498},
 			item = 10502,
 			reagents = {
@@ -6476,7 +5798,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12616] = {
-			name = "Engineering: Parachute Cloak",
 			tools = {6219, 10498},
 			item = 10518,
 			reagents = {
@@ -6487,7 +5808,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12617] = {
-			name = "Engineering: Deepdive Helmet",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10506,
@@ -6500,7 +5820,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12618] = {
-			name = "Engineering: Rose Colored Goggles",
 			tools = {6219, 10498},
 			item = 10503,
 			reagents = {
@@ -6509,11 +5828,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12619] = {
-			name = "Engineering: Hi-Explosive Bomb",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10562,
-			craftQuantityMin = 4,
+			quantity = 4,
 			reagents = {
 				{10561, 2},
 				{10560},
@@ -6521,7 +5839,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12620] = {
-			name = "Engineering: Sniper Scope",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10548,
@@ -6532,21 +5849,19 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12621] = {
-			name = "Engineering: Mithril Gyro-Shot",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 10513,
-			craftQuantityMin = 200,
+			quantity = 200,
 			reagents = {
 				{3860, 2},
 				{10505, 2},
 			},
 		},
 		[12622] = {
-			name = "Engineering: Green Lens",
 			tools = {6219, 10498},
 			item = 10504,
-			extra = "|cff00ff00<Random enchantment>",
+			extra = "|cff00ff00"..L["<Random enchantment>"],
 			reagents = {
 				{4304, 8},
 				{1529, 3},
@@ -6556,7 +5871,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12624] = {
-			name = "Engineering: Mithril Mechanical Dragonling",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10576,
@@ -6570,7 +5884,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12715] = {
-			name = "Engineering: Goblin Rocket Fuel Recipe",
 			item = 10644,
 			reagents = {
 				{10648},
@@ -6578,11 +5891,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12716] = {
-			name = "Engineering: Goblin Mortar",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10577,
-			extra = "|cffffffff6 Charges",
+			extra = "|cffffffff6 "..L["Charges"],
 			reagents = {
 				{10559, 2},
 				{3860, 4},
@@ -6592,7 +5904,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12717] = {
-			name = "Engineering: Goblin Mining Helmet",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10542,
@@ -6603,7 +5914,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12718] = {
-			name = "Engineering: Goblin Construction Helmet",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10543,
@@ -6614,11 +5924,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12754] = {
-			name = "Engineering: The Big One",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10586,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{10561},
 				{9061},
@@ -6627,7 +5936,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12755] = {
-			name = "Engineering: Goblin Bomb Dispenser",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10587,
@@ -6640,7 +5948,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12758] = {
-			name = "Engineering: Goblin Rocket Helmet",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10588,
@@ -6652,7 +5959,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12759] = {
-			name = "Engineering: Gnomish Death Ray",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10645,
@@ -6665,7 +5971,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12760] = {
-			name = "Engineering: Goblin Sapper Charge",
 			item = 10646,
 			reagents = {
 				{4338},
@@ -6674,7 +5979,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12895] = {
-			name = "Engineering: Inlaid Mithril Cylinder Plans",
 			item = 10713,
 			reagents = {
 				{10648},
@@ -6682,7 +5986,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12897] = {
-			name = "Engineering: Gnomish Goggles",
 			tools = {6219, 10498},
 			item = 10545,
 			reagents = {
@@ -6694,7 +5997,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12899] = {
-			name = "Engineering: Gnomish Shrink Ray",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10716,
@@ -6707,7 +6009,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12902] = {
-			name = "Engineering: Gnomish Net-o-Matic Projector",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10720,
@@ -6720,7 +6021,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12903] = {
-			name = "Engineering: Gnomish Harm Prevention Belt",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10721,
@@ -6733,7 +6033,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12905] = {
-			name = "Engineering: Gnomish Rocket Boots",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10724,
@@ -6746,7 +6045,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12906] = {
-			name = "Engineering: Gnomish Battle Chicken",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10725,
@@ -6760,7 +6058,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12907] = {
-			name = "Engineering: Gnomish Mind Control Cap",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10726,
@@ -6773,7 +6070,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[12908] = {
-			name = "Engineering: Goblin Dragon Gun",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10727,
@@ -6786,18 +6082,15 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[13028] = {
-			name = "Cooking: Goldthorn Tea",
 			requires = L["Cooking Fire"],
 			item = 10841,
-			craftQuantityMin = 4,
+			quantity = 4,
 			reagents = {
 				{3821},
 				{159},
 			},
 		},
 		[13220] = {
-			name = "Poisons: Wound Poison",
-			text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 30% chance of poisoning the enemy, reducing all healing effects used on them by 55 for 15 sec. Stacks up to 5 times on a single target. 60 charges.",
 			item = 10918,
 			reagents = {
 				{2930},
@@ -6806,8 +6099,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[13228] = {
-			name = "Poisons: Wound Poison II",
-			text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 30% chance of poisoning the enemy, reducing all healing effects used on them by 75 for 15 sec. Stacks up to 5 times on a single target. 75 charges.",
 			item = 10920,
 			reagents = {
 				{2930},
@@ -6816,8 +6107,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[13229] = {
-			name = "Poisons: Wound Poison III",
-			text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 30% chance of poisoning the enemy, reducing all healing effects used on them by 105 for 15 sec. Stacks up to 5 times on a single target. 90 charges.",
 			item = 10921,
 			reagents = {
 				{8923},
@@ -6826,8 +6115,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[13230] = {
-			name = "Poisons: Wound Poison IV",
-			text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 30% chance of poisoning the enemy, reducing all healing effects used on them by 135 for 15 sec. Stacks up to 5 times on a single target. 105 charges.",
 			item = 10922,
 			reagents = {
 				{8923, 2},
@@ -6836,12 +6123,11 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[13240] = {
-			name = "Engineering: The Mortar: Reloaded",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			text = "Reloads an empty Goblin mortar.",
 			item = 10577,
-			extra = "|cffffffff6 Charges",
+			extra = "|cffffffff6 "..L["Charges"],
 			reagents = {
 				{10577},
 				{3860},
@@ -6849,7 +6135,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[14379] = {
-			name = "Blacksmithing: Golden Rod",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 11128,
@@ -6859,7 +6144,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[14380] = {
-			name = "Blacksmithing: Truesilver Rod",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 11144,
@@ -6878,7 +6162,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[14930] = {
-			name = "Leatherworking: Quickdraw Quiver",
 			item = 8217,
 			reagents = {
 				{4304, 12},
@@ -6888,7 +6171,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[14932] = {
-			name = "Leatherworking: Thick Leather Ammo Pouch",
 			item = 8218,
 			reagents = {
 				{4304, 10},
@@ -6898,37 +6180,31 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15002] = {
-			name = "Engineering: Unstable Mining Dynamite",
 			item = 51268,
 			reagents = {
 			},
 		},
 		[15003] = {
-			name = "Alchemy: Volatile Concoction",
 			item = 51262,
 			reagents = {
 			},
 		},
 		[15004] = {
-			name = "Blacksmithing: Blast Shield",
 			item = 51264,
 			reagents = {
 			},
 		},
 		[15005] = {
-			name = "Tailoring: Gloves of Manathirst",
 			item = 51256,
 			reagents = {
 			},
 		},
 		[15006] = {
-			name = "Cooking: Maritime Gumbo",
 			item = 30818,
 			reagents = {
 			},
 		},
 		[15255] = {
-			name = "Engineering: Mechanical Repair Kit",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 11590,
@@ -6939,7 +6215,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15292] = {
-			name = "Blacksmithing: Dark Iron Pulverizer",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 11608,
@@ -6949,7 +6224,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15293] = {
-			name = "Blacksmithing: Dark Iron Mail",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 11606,
@@ -6959,7 +6233,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15294] = {
-			name = "Blacksmithing: Dark Iron Sunderer",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 11607,
@@ -6969,7 +6242,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15295] = {
-			name = "Blacksmithing: Dark Iron Shoulders",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 11605,
@@ -6979,7 +6251,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15296] = {
-			name = "Blacksmithing: Dark Iron Plate",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 11604,
@@ -6989,7 +6260,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15628] = {
-			name = "Engineering: Pet Bombling",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 11825,
@@ -7001,7 +6271,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15633] = {
-			name = "Engineering: Lil' Smoky",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 11826,
@@ -7014,7 +6283,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15833] = {
-			name = "Alchemy: Dreamless Sleep Potion",
 			item = 12190,
 			reagents = {
 				{8831, 3},
@@ -7022,7 +6290,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15853] = {
-			name = "Cooking: Lean Wolf Steak",
 			requires = L["Cooking Fire"],
 			item = 12209,
 			reagents = {
@@ -7031,7 +6298,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15855] = {
-			name = "Cooking: Roast Raptor",
 			requires = L["Cooking Fire"],
 			item = 12210,
 			reagents = {
@@ -7040,7 +6306,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15856] = {
-			name = "Cooking: Hot Wolf Ribs",
 			requires = L["Cooking Fire"],
 			item = 13851,
 			reagents = {
@@ -7049,10 +6314,9 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15861] = {
-			name = "Cooking: Jungle Stew",
 			requires = L["Cooking Fire"],
 			item = 12212,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{12202},
 				{159},
@@ -7060,7 +6324,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15863] = {
-			name = "Cooking: Carrion Surprise",
 			requires = L["Cooking Fire"],
 			item = 12213,
 			reagents = {
@@ -7069,7 +6332,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15865] = {
-			name = "Cooking: Mystery Stew",
 			requires = L["Cooking Fire"],
 			item = 12214,
 			reagents = {
@@ -7078,7 +6340,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15906] = {
-			name = "Cooking: Dragonbreath Chili",
 			requires = L["Cooking Fire"],
 			item = 12217,
 			reagents = {
@@ -7088,10 +6349,9 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15910] = {
-			name = "Cooking: Heavy Kodo Stew",
 			requires = L["Cooking Fire"],
 			item = 12215,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{12204, 2},
 				{3713},
@@ -7099,7 +6359,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15915] = {
-			name = "Cooking: Spiced Chili Crab",
 			requires = L["Cooking Fire"],
 			item = 12216,
 			reagents = {
@@ -7108,7 +6367,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15933] = {
-			name = "Cooking: Monster Omelet",
 			requires = L["Cooking Fire"],
 			item = 12218,
 			reagents = {
@@ -7117,7 +6375,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15935] = {
-			name = "Cooking: Crispy Bat Wing",
 			requires = L["Cooking Fire"],
 			item = 12224,
 			reagents = {
@@ -7126,7 +6383,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15972] = {
-			name = "Blacksmithing: Glinting Steel Dagger",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12259,
@@ -7139,7 +6395,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[15973] = {
-			name = "Blacksmithing: Searing Golden Blade",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12260,
@@ -7160,14 +6415,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16639] = {
-			name = "Blacksmithing: Dense Grinding Stone",
 			item = 12644,
 			reagents = {
 				{12365, 4},
 			},
 		},
 		[16640] = {
-			name = "Blacksmithing: Dense Weightstone",
 			item = 12643,
 			reagents = {
 				{12365},
@@ -7175,14 +6428,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16641] = {
-			name = "Blacksmithing: Dense Sharpening Stone",
 			item = 12404,
 			reagents = {
 				{12365},
 			},
 		},
 		[16642] = {
-			name = "Blacksmithing: Thorium Armor",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12405,
@@ -7193,7 +6444,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16643] = {
-			name = "Blacksmithing: Thorium Belt",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12406,
@@ -7203,7 +6453,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16644] = {
-			name = "Blacksmithing: Thorium Bracers",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12408,
@@ -7213,7 +6462,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16645] = {
-			name = "Blacksmithing: Radiant Belt",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12416,
@@ -7223,7 +6471,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16646] = {
-			name = "Blacksmithing: Imperial Plate Shoulders",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12428,
@@ -7234,7 +6481,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16647] = {
-			name = "Blacksmithing: Imperial Plate Belt",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12424,
@@ -7245,7 +6491,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16648] = {
-			name = "Blacksmithing: Radiant Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12415,
@@ -7256,7 +6501,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16649] = {
-			name = "Blacksmithing: Imperial Plate Bracers",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12425,
@@ -7266,7 +6510,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16650] = {
-			name = "Blacksmithing: Wildthorn Mail",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12624,
@@ -7279,7 +6522,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16651] = {
-			name = "Blacksmithing: Thorium Shield Spike",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12645,
@@ -7290,7 +6532,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16652] = {
-			name = "Blacksmithing: Thorium Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12409,
@@ -7301,7 +6542,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16653] = {
-			name = "Blacksmithing: Thorium Helm",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12410,
@@ -7312,7 +6552,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16654] = {
-			name = "Blacksmithing: Radiant Gloves",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12418,
@@ -7322,7 +6561,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16655] = {
-			name = "Blacksmithing: Fiery Plate Gauntlets",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12631,
@@ -7334,7 +6572,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16656] = {
-			name = "Blacksmithing: Radiant Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12419,
@@ -7344,7 +6581,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16657] = {
-			name = "Blacksmithing: Imperial Plate Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12426,
@@ -7355,7 +6591,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16658] = {
-			name = "Blacksmithing: Imperial Plate Helm",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12427,
@@ -7365,7 +6600,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16659] = {
-			name = "Blacksmithing: Radiant Circlet",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12417,
@@ -7375,7 +6609,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16660] = {
-			name = "Blacksmithing: Dawnbringer Shoulders",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12625,
@@ -7387,7 +6620,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16661] = {
-			name = "Blacksmithing: Storm Gauntlets",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12632,
@@ -7399,7 +6631,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16662] = {
-			name = "Blacksmithing: Thorium Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12414,
@@ -7409,7 +6640,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16663] = {
-			name = "Blacksmithing: Imperial Plate Chest",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12422,
@@ -7419,7 +6649,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16664] = {
-			name = "Blacksmithing: Runic Plate Shoulders",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12610,
@@ -7430,7 +6659,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16665] = {
-			name = "Blacksmithing: Runic Plate Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12611,
@@ -7441,7 +6669,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16667] = {
-			name = "Blacksmithing: Demon Forged Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12628,
@@ -7453,7 +6680,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16724] = {
-			name = "Blacksmithing: Whitesoul Helm",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12633,
@@ -7466,7 +6692,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16725] = {
-			name = "Blacksmithing: Radiant Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12420,
@@ -7476,7 +6701,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16726] = {
-			name = "Blacksmithing: Runic Plate Helm",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12612,
@@ -7488,7 +6712,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16728] = {
-			name = "Blacksmithing: Helm of the Great Chief",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12636,
@@ -7501,7 +6724,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16729] = {
-			name = "Blacksmithing: Lionheart Helm",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12640,
@@ -7514,7 +6736,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16730] = {
-			name = "Blacksmithing: Imperial Plate Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12429,
@@ -7524,7 +6745,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16731] = {
-			name = "Blacksmithing: Runic Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12613,
@@ -7535,7 +6755,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16732] = {
-			name = "Blacksmithing: Runic Plate Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12614,
@@ -7546,7 +6765,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16741] = {
-			name = "Blacksmithing: Stronghold Gauntlets",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12639,
@@ -7559,7 +6777,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16742] = {
-			name = "Blacksmithing: Enchanted Thorium Helm",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12620,
@@ -7572,7 +6789,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16744] = {
-			name = "Blacksmithing: Enchanted Thorium Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12619,
@@ -7585,7 +6801,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16745] = {
-			name = "Blacksmithing: Enchanted Thorium Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12618,
@@ -7599,7 +6814,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16746] = {
-			name = "Blacksmithing: Invulnerable Mail",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12641,
@@ -7611,7 +6825,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16965] = {
-			name = "Blacksmithing: Bleakwood Hew",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12769,
@@ -7625,7 +6838,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16969] = {
-			name = "Blacksmithing: Ornate Thorium Handaxe",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12773,
@@ -7637,7 +6849,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16970] = {
-			name = "Blacksmithing: Dawn's Edge",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12774,
@@ -7651,7 +6862,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16971] = {
-			name = "Blacksmithing: Huge Thorium Battleaxe",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12775,
@@ -7662,7 +6872,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16973] = {
-			name = "Blacksmithing: Enchanted Battlehammer",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12776,
@@ -7675,7 +6884,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16978] = {
-			name = "Blacksmithing: Blazing Rapier",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12777,
@@ -7688,7 +6896,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16983] = {
-			name = "Blacksmithing: Serenity",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12781,
@@ -7702,7 +6909,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16984] = {
-			name = "Blacksmithing: Volcanic Hammer",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12792,
@@ -7714,7 +6920,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16985] = {
-			name = "Blacksmithing: Corruption",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12782,
@@ -7729,7 +6934,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16986] = {
-			name = "Blacksmithing: Blood Talon",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12795,
@@ -7743,7 +6947,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16987] = {
-			name = "Blacksmithing: Darkspear",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12802,
@@ -7756,7 +6959,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16988] = {
-			name = "Blacksmithing: Hammer of the Titans",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12796,
@@ -7769,7 +6971,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16990] = {
-			name = "Blacksmithing: Arcanite Champion",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12790,
@@ -7783,7 +6984,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16991] = {
-			name = "Blacksmithing: Annihilator",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12798,
@@ -7797,7 +6997,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16992] = {
-			name = "Blacksmithing: Frostguard",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12797,
@@ -7811,7 +7010,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16993] = {
-			name = "Blacksmithing: Masterwork Stormhammer",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12794,
@@ -7824,7 +7022,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16994] = {
-			name = "Blacksmithing: Arcanite Reaper",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12784,
@@ -7835,7 +7032,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[16995] = {
-			name = "Blacksmithing: Heartseeker",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 12783,
@@ -7850,7 +7046,7 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17187] = {
-			name = "Alchemy: Transmute: Arcanite",
+			name = "Transmute: Arcanite",
 			tools = {9149},
 			text = "Turns a bar of Thorium and an Arcane Crystal into Arcanite.",
 			item = 12360,
@@ -7860,7 +7056,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17551] = {
-			name = "Alchemy: Stonescale Oil",
 			item = 13423,
 			reagents = {
 				{13422},
@@ -7868,7 +7063,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17552] = {
-			name = "Alchemy: Mighty Rage Potion",
 			item = 13442,
 			reagents = {
 				{8846, 3},
@@ -7876,7 +7070,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17553] = {
-			name = "Alchemy: Superior Mana Potion",
 			item = 13443,
 			reagents = {
 				{8838, 2},
@@ -7885,7 +7078,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17554] = {
-			name = "Alchemy: Elixir of Superior Defense",
 			item = 13445,
 			reagents = {
 				{13423, 2},
@@ -7894,7 +7086,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17555] = {
-			name = "Alchemy: Elixir of the Sages",
 			item = 13447,
 			reagents = {
 				{13463},
@@ -7903,7 +7094,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17556] = {
-			name = "Alchemy: Major Healing Potion",
 			item = 13446,
 			reagents = {
 				{13464, 2},
@@ -7912,7 +7102,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17557] = {
-			name = "Alchemy: Elixir of Brute Force",
 			item = 13453,
 			reagents = {
 				{8846, 2},
@@ -7921,7 +7110,7 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17559] = {
-			name = "Alchemy: Transmute: Air to Fire",
+			name = "Transmute: Air to Fire",
 			tools = {9149},
 			text = "Transmutes Air into Fire.",
 			item = 7078,
@@ -7930,7 +7119,7 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17560] = {
-			name = "Alchemy: Transmute: Fire to Earth",
+			name = "Transmute: Fire to Earth",
 			tools = {9149},
 			text = "Transmutes Fire into Earth.",
 			item = 7076,
@@ -7939,7 +7128,7 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17561] = {
-			name = "Alchemy: Transmute: Earth to Water",
+			name = "Transmute: Earth to Water",
 			tools = {9149},
 			text = "Transmutes Earth into Water.",
 			item = 7080,
@@ -7948,7 +7137,7 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17562] = {
-			name = "Alchemy: Transmute: Water to Air",
+			name = "Transmute: Water to Air",
 			tools = {9149},
 			text = "Transmutes Water into Air.",
 			item = 7082,
@@ -7957,7 +7146,7 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17563] = {
-			name = "Alchemy: Transmute: Undeath to Water",
+			name = "Transmute: Undeath to Water",
 			tools = {9149},
 			text = "Purifies Essence of Undeath turning it into Water.",
 			item = 7080,
@@ -7966,7 +7155,7 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17564] = {
-			name = "Alchemy: Transmute: Water to Undeath",
+			name = "Transmute: Water to Undeath",
 			tools = {9149},
 			text = "Taints Essence of Water turning it into Undeath.",
 			item = 12808,
@@ -7975,7 +7164,7 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17565] = {
-			name = "Alchemy: Transmute: Life to Earth",
+			name = "Transmute: Life to Earth",
 			tools = {9149},
 			text = "Transmutes Living Essence into Earth.",
 			item = 7076,
@@ -7984,7 +7173,7 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17566] = {
-			name = "Alchemy: Transmute: Earth to Life",
+			name = "Transmute: Earth to Life",
 			tools = {9149},
 			text = "Transmutes Earth to Living Essence.",
 			item = 12803,
@@ -7993,7 +7182,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17570] = {
-			name = "Alchemy: Greater Stoneshield Potion",
 			item = 13455,
 			reagents = {
 				{13423, 3},
@@ -8002,7 +7190,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17571] = {
-			name = "Alchemy: Elixir of the Mongoose",
 			item = 13452,
 			reagents = {
 				{13465, 2},
@@ -8011,7 +7198,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17572] = {
-			name = "Alchemy: Purification Potion",
 			item = 13462,
 			reagents = {
 				{13467, 2},
@@ -8020,7 +7206,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17573] = {
-			name = "Alchemy: Greater Arcane Elixir",
 			item = 13454,
 			reagents = {
 				{13463, 3},
@@ -8029,7 +7214,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17574] = {
-			name = "Alchemy: Greater Fire Protection Potion",
 			item = 13457,
 			reagents = {
 				{7068},
@@ -8038,7 +7222,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17575] = {
-			name = "Alchemy: Greater Frost Protection Potion",
 			item = 13456,
 			reagents = {
 				{7070},
@@ -8047,7 +7230,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17576] = {
-			name = "Alchemy: Greater Nature Protection Potion",
 			item = 13458,
 			reagents = {
 				{7067},
@@ -8056,7 +7238,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17577] = {
-			name = "Alchemy: Greater Arcane Protection Potion",
 			item = 13461,
 			reagents = {
 				{11176},
@@ -8065,7 +7246,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17578] = {
-			name = "Alchemy: Greater Shadow Protection Potion",
 			item = 13459,
 			reagents = {
 				{3824},
@@ -8074,7 +7254,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17579] = {
-			name = "Alchemy: Greater Holy Protection Potion",
 			item = 13460,
 			reagents = {
 				{7069},
@@ -8083,7 +7262,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17580] = {
-			name = "Alchemy: Major Mana Potion",
 			item = 13444,
 			reagents = {
 				{13463, 2},
@@ -8092,7 +7270,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17634] = {
-			name = "Alchemy: Flask of Petrification",
 			requires = L["Alchemy Lab"],
 			tools = {9149},
 			item = 13506,
@@ -8104,7 +7281,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17635] = {
-			name = "Alchemy: Flask of the Titans",
 			requires = L["Alchemy Lab"],
 			item = 13510,
 			reagents = {
@@ -8115,7 +7291,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17636] = {
-			name = "Alchemy: Flask of Distilled Wisdom",
 			requires = L["Alchemy Lab"],
 			item = 13511,
 			reagents = {
@@ -8126,7 +7301,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17637] = {
-			name = "Alchemy: Flask of Supreme Power",
 			requires = L["Alchemy Lab"],
 			item = 13512,
 			reagents = {
@@ -8137,7 +7311,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17638] = {
-			name = "Alchemy: Flask of Chromatic Resistance",
 			requires = L["Alchemy Lab"],
 			item = 13513,
 			reagents = {
@@ -8148,7 +7321,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[17640] = {
-			name = "Alchemy: Alchemist's Stone",
 			item = 13503,
 			reagents = {
 				{7078, 8},
@@ -8161,7 +7333,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18238] = {
-			name = "Cooking: Spotted Yellowtail",
 			requires = L["Cooking Fire"],
 			item = 6887,
 			reagents = {
@@ -8169,7 +7340,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18239] = {
-			name = "Cooking: Cooked Glossy Mightfish",
 			requires = L["Cooking Fire"],
 			item = 13927,
 			reagents = {
@@ -8178,7 +7348,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18240] = {
-			name = "Cooking: Grilled Squid",
 			requires = L["Cooking Fire"],
 			item = 13928,
 			reagents = {
@@ -8187,7 +7356,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18241] = {
-			name = "Cooking: Filet of Redgill",
 			requires = L["Cooking Fire"],
 			item = 13930,
 			reagents = {
@@ -8195,7 +7363,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18242] = {
-			name = "Cooking: Hot Smoked Bass",
 			requires = L["Cooking Fire"],
 			item = 13929,
 			reagents = {
@@ -8204,7 +7371,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18243] = {
-			name = "Cooking: Nightfin Soup",
 			requires = L["Cooking Fire"],
 			item = 13931,
 			reagents = {
@@ -8213,7 +7379,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18244] = {
-			name = "Cooking: Poached Sunscale Salmon",
 			requires = L["Cooking Fire"],
 			item = 13932,
 			reagents = {
@@ -8221,7 +7386,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18245] = {
-			name = "Cooking: Lobster Stew",
 			requires = L["Cooking Fire"],
 			item = 13933,
 			reagents = {
@@ -8230,7 +7394,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18246] = {
-			name = "Cooking: Mightfish Steak",
 			requires = L["Cooking Fire"],
 			item = 13934,
 			reagents = {
@@ -8240,7 +7403,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18247] = {
-			name = "Cooking: Baked Salmon",
 			requires = L["Cooking Fire"],
 			item = 13935,
 			reagents = {
@@ -8249,14 +7411,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18401] = {
-			name = "Tailoring: Bolt of Runecloth",
 			item = 14048,
 			reagents = {
 				{14047, 5},
 			},
 		},
 		[18402] = {
-			name = "Tailoring: Runecloth Belt",
 			item = 13856,
 			reagents = {
 				{14048, 3},
@@ -8264,7 +7424,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18403] = {
-			name = "Tailoring: Frostweave Tunic",
 			item = 13869,
 			reagents = {
 				{14048, 5},
@@ -8273,7 +7432,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18404] = {
-			name = "Tailoring: Frostweave Robe",
 			item = 13868,
 			reagents = {
 				{14048, 5},
@@ -8282,7 +7440,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18405] = {
-			name = "Tailoring: Runecloth Bag",
 			item = 14046,
 			reagents = {
 				{14048, 5},
@@ -8291,7 +7448,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18406] = {
-			name = "Tailoring: Runecloth Robe",
 			item = 13858,
 			reagents = {
 				{14048, 5},
@@ -8300,7 +7456,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18407] = {
-			name = "Tailoring: Runecloth Tunic",
 			item = 13857,
 			reagents = {
 				{14048, 5},
@@ -8309,7 +7464,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18408] = {
-			name = "Tailoring: Cindercloth Vest",
 			item = 14042,
 			reagents = {
 				{14048, 5},
@@ -8318,7 +7472,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18409] = {
-			name = "Tailoring: Runecloth Cloak",
 			item = 13860,
 			reagents = {
 				{14048, 4},
@@ -8327,7 +7480,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18410] = {
-			name = "Tailoring: Ghostweave Belt",
 			item = 14143,
 			reagents = {
 				{14048, 3},
@@ -8337,7 +7489,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18411] = {
-			name = "Tailoring: Frostweave Gloves",
 			item = 13870,
 			reagents = {
 				{14048, 3},
@@ -8346,7 +7497,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18412] = {
-			name = "Tailoring: Cindercloth Gloves",
 			item = 14043,
 			reagents = {
 				{14048, 4},
@@ -8355,7 +7505,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18413] = {
-			name = "Tailoring: Ghostweave Gloves",
 			item = 14142,
 			reagents = {
 				{14048, 4},
@@ -8365,7 +7514,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18414] = {
-			name = "Tailoring: Brightcloth Robe",
 			item = 14100,
 			reagents = {
 				{14048, 5},
@@ -8374,7 +7522,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18415] = {
-			name = "Tailoring: Brightcloth Gloves",
 			item = 14101,
 			reagents = {
 				{14048, 4},
@@ -8383,7 +7530,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18416] = {
-			name = "Tailoring: Ghostweave Vest",
 			item = 14141,
 			reagents = {
 				{14048, 6},
@@ -8393,7 +7539,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18417] = {
-			name = "Tailoring: Runecloth Gloves",
 			item = 13863,
 			reagents = {
 				{14048, 4},
@@ -8402,7 +7547,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18418] = {
-			name = "Tailoring: Cindercloth Cloak",
 			item = 14044,
 			reagents = {
 				{14048, 5},
@@ -8411,7 +7555,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18419] = {
-			name = "Tailoring: Felcloth Pants",
 			item = 14107,
 			reagents = {
 				{14048, 5},
@@ -8420,7 +7563,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18420] = {
-			name = "Tailoring: Brightcloth Cloak",
 			item = 14103,
 			reagents = {
 				{14048, 4},
@@ -8429,7 +7571,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18421] = {
-			name = "Tailoring: Wizardweave Leggings",
 			item = 14132,
 			reagents = {
 				{14048, 6},
@@ -8438,7 +7579,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18422] = {
-			name = "Tailoring: Cloak of Fire",
 			item = 14134,
 			reagents = {
 				{14048, 6},
@@ -8449,7 +7589,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18423] = {
-			name = "Tailoring: Runecloth Boots",
 			item = 13864,
 			reagents = {
 				{14048, 4},
@@ -8459,7 +7598,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18424] = {
-			name = "Tailoring: Frostweave Pants",
 			item = 13871,
 			reagents = {
 				{14048, 6},
@@ -8468,7 +7606,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18434] = {
-			name = "Tailoring: Cindercloth Pants",
 			item = 14045,
 			reagents = {
 				{14048, 6},
@@ -8477,7 +7614,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18436] = {
-			name = "Tailoring: Robe of Winter Night",
 			item = 14136,
 			reagents = {
 				{14048, 10},
@@ -8488,7 +7624,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18437] = {
-			name = "Tailoring: Felcloth Boots",
 			item = 14108,
 			reagents = {
 				{14048, 6},
@@ -8498,7 +7633,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18438] = {
-			name = "Tailoring: Runecloth Pants",
 			item = 13865,
 			reagents = {
 				{14048, 6},
@@ -8507,7 +7641,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18439] = {
-			name = "Tailoring: Brightcloth Pants",
 			item = 14104,
 			reagents = {
 				{14048, 6},
@@ -8517,7 +7650,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18440] = {
-			name = "Tailoring: Mooncloth Leggings",
 			item = 14137,
 			reagents = {
 				{14048, 6},
@@ -8526,7 +7658,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18441] = {
-			name = "Tailoring: Ghostweave Pants",
 			item = 14144,
 			reagents = {
 				{14048, 6},
@@ -8535,7 +7666,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18442] = {
-			name = "Tailoring: Felcloth Hood",
 			item = 14111,
 			reagents = {
 				{14048, 5},
@@ -8544,7 +7674,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18444] = {
-			name = "Tailoring: Runecloth Headband",
 			item = 13866,
 			reagents = {
 				{14048, 4},
@@ -8553,7 +7682,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 				[18445] = {
-			name = "Tailoring: Mooncloth Bag",
 			item = 14155,
 			reagents = {
 				{14048, 4},
@@ -8562,7 +7690,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 				[18446] = {
-			name = "Tailoring: Wizardweave Robe",
 			item = 14128,
 			reagents = {
 				{14048, 8},
@@ -8571,7 +7698,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18447] = {
-			name = "Tailoring: Mooncloth Vest",
 			item = 14138,
 			reagents = {
 				{14048, 6},
@@ -8580,7 +7706,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18448] = {
-			name = "Tailoring: Mooncloth Shoulders",
 			item = 14139,
 			reagents = {
 				{14048, 5},
@@ -8589,7 +7714,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 				[18449] = {
-			name = "Tailoring: Runecloth Shoulders",
 			item = 13867,
 			reagents = {
 				{14048, 7},
@@ -8599,7 +7723,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 				[18450] = {
-			name = "Tailoring: Wizardweave Turban",
 			item = 14130,
 			reagents = {
 				{14048, 6},
@@ -8609,7 +7732,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 				[18451] = {
-			name = "Tailoring: Felcloth Robe",
 			item = 14106,
 			reagents = {
 				{14048, 8},
@@ -8619,7 +7741,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18452] = {
-			name = "Tailoring: Mooncloth Circlet",
 			item = 14140,
 			reagents = {
 				{14048, 4},
@@ -8630,7 +7751,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18453] = {
-			name = "Tailoring: Felcloth Shoulders",
 			item = 14112,
 			reagents = {
 				{14048, 7},
@@ -8641,7 +7761,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 				[18454] = {
-			name = "Tailoring: Gloves of Spell Mastery",
 			item = 14146,
 			reagents = {
 				{14048, 10},
@@ -8654,7 +7773,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18455] = {
-			name = "Tailoring: Bottomless Bag",
 			item = 14156,
 			reagents = {
 				{14048, 8},
@@ -8665,7 +7783,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18456] = {
-			name = "Tailoring: Truefaith Vestments",
 			item = 14154,
 			reagents = {
 				{14048, 12},
@@ -8677,7 +7794,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18457] = {
-			name = "Tailoring: Robe of the Archmage",
 			item = 14152,
 			reagents = {
 				{14048, 12},
@@ -8689,7 +7805,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18458] = {
-			name = "Tailoring: Robe of the Void",
 			item = 14153,
 			reagents = {
 				{14048, 12},
@@ -8701,30 +7816,25 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[18560] = {
-			name = "Tailoring: Mooncloth",
 			requires = L["Moonwell"],
-			text = "The purification of tainted Felcloth into Mooncloth can only be done at a moonwell, and only ocassionally will the waters permit themselves to be used in such a way.",
 			item = 14342,
 			reagents = {
 				{14256, 2},
 			},
 		},
 		[18629] = {
-			name = "First Aid: Runecloth Bandage",
 			item = 14529,
 			reagents = {
 				{14047},
 			},
 		},
 		[18630] = {
-			name = "First Aid: Heavy Runecloth Bandage",
 			item = 14530,
 			reagents = {
 				{14047, 2},
 			},
 		},
 		[19047] = {
-			name = "Leatherworking: Cured Rugged Hide",
 			item = 15407,
 			reagents = {
 				{8171},
@@ -8732,7 +7842,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19048] = {
-			name = "Leatherworking: Heavy Scorpid Bracers",
 			item = 15077,
 			reagents = {
 				{8170, 4},
@@ -8741,7 +7850,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19049] = {
-			name = "Leatherworking: Wicked Leather Gauntlets",
 			item = 15083,
 			reagents = {
 				{8170, 8},
@@ -8750,7 +7858,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19050] = {
-			name = "Leatherworking: Green Dragonscale Breastplate",
 			item = 15045,
 			reagents = {
 				{8170, 20},
@@ -8759,7 +7866,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19051] = {
-			name = "Leatherworking: Heavy Scorpid Vest",
 			item = 15076,
 			reagents = {
 				{8170, 6},
@@ -8768,7 +7874,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19052] = {
-			name = "Leatherworking: Wicked Leather Bracers",
 			item = 15084,
 			reagents = {
 				{8170, 8},
@@ -8777,7 +7882,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19053] = {
-			name = "Leatherworking: Chimeric Gloves",
 			item = 15074,
 			reagents = {
 				{8170, 6},
@@ -8786,7 +7890,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19054] = {
-			name = "Leatherworking: Red Dragonscale Breastplate",
 			item = 15047,
 			reagents = {
 				{8170, 40},
@@ -8795,7 +7898,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19055] = {
-			name = "Leatherworking: Runic Leather Gauntlets",
 			item = 15091,
 			reagents = {
 				{8170, 10},
@@ -8804,14 +7906,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19058] = {
-			name = "Leatherworking: Rugged Armor Kit",
 			item = 15564,
 			reagents = {
 				{8170, 5},
 			},
 		},
 		[19059] = {
-			name = "Leatherworking: Volcanic Leggings",
 			item = 15054,
 			reagents = {
 				{8170, 6},
@@ -8821,7 +7921,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19060] = {
-			name = "Leatherworking: Green Dragonscale Leggings",
 			item = 15046,
 			reagents = {
 				{8170, 20},
@@ -8830,7 +7929,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19061] = {
-			name = "Leatherworking: Living Shoulders",
 			item = 15061,
 			reagents = {
 				{8170, 12},
@@ -8839,7 +7937,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19062] = {
-			name = "Leatherworking: Ironfeather Shoulders",
 			item = 15067,
 			reagents = {
 				{8170, 24},
@@ -8849,7 +7946,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19063] = {
-			name = "Leatherworking: Chimeric Boots",
 			item = 15073,
 			reagents = {
 				{8170, 4},
@@ -8858,7 +7954,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19064] = {
-			name = "Leatherworking: Heavy Scorpid Gauntlets",
 			item = 15078,
 			reagents = {
 				{8170, 6},
@@ -8867,7 +7962,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19065] = {
-			name = "Leatherworking: Runic Leather Bracers",
 			item = 15092,
 			reagents = {
 				{8170, 6},
@@ -8877,7 +7971,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19066] = {
-			name = "Leatherworking: Frostsaber Boots",
 			item = 15071,
 			reagents = {
 				{8170, 4},
@@ -8886,7 +7979,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19067] = {
-			name = "Leatherworking: Stormshroud Pants",
 			item = 15057,
 			reagents = {
 				{8170, 16},
@@ -8896,7 +7988,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19068] = {
-			name = "Leatherworking: Warbear Harness",
 			item = 15064,
 			reagents = {
 				{8170, 28},
@@ -8905,7 +7996,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19070] = {
-			name = "Leatherworking: Heavy Scorpid Belt",
 			item = 15082,
 			reagents = {
 				{8170, 6},
@@ -8914,7 +8004,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19071] = {
-			name = "Leatherworking: Wicked Leather Headband",
 			item = 15086,
 			reagents = {
 				{8170, 12},
@@ -8923,7 +8012,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19072] = {
-			name = "Leatherworking: Runic Leather Belt",
 			item = 15093,
 			reagents = {
 				{8170, 12},
@@ -8932,7 +8020,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19073] = {
-			name = "Leatherworking: Chimeric Leggings",
 			item = 15072,
 			reagents = {
 				{8170, 8},
@@ -8941,7 +8028,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19074] = {
-			name = "Leatherworking: Frostsaber Leggings",
 			item = 15069,
 			reagents = {
 				{8170, 6},
@@ -8950,7 +8036,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19075] = {
-			name = "Leatherworking: Heavy Scorpid Leggings",
 			item = 15079,
 			reagents = {
 				{8170, 8},
@@ -8959,7 +8044,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19076] = {
-			name = "Leatherworking: Volcanic Breastplate",
 			item = 15053,
 			reagents = {
 				{8170, 8},
@@ -8969,7 +8053,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19077] = {
-			name = "Leatherworking: Blue Dragonscale Breastplate",
 			item = 15048,
 			reagents = {
 				{8170, 28},
@@ -8979,7 +8062,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19078] = {
-			name = "Leatherworking: Living Leggings",
 			item = 15060,
 			reagents = {
 				{8170, 16},
@@ -8989,7 +8071,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19079] = {
-			name = "Leatherworking: Stormshroud Armor",
 			item = 15056,
 			reagents = {
 				{8170, 16},
@@ -9000,7 +8081,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19080] = {
-			name = "Leatherworking: Warbear Woolies",
 			item = 15065,
 			reagents = {
 				{8170, 24},
@@ -9009,7 +8089,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19081] = {
-			name = "Leatherworking: Chimeric Vest",
 			item = 15075,
 			reagents = {
 				{8170, 10},
@@ -9018,7 +8097,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19082] = {
-			name = "Leatherworking: Runic Leather Headband",
 			item = 15094,
 			reagents = {
 				{8170, 14},
@@ -9027,7 +8105,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19083] = {
-			name = "Leatherworking: Wicked Leather Pants",
 			item = 15087,
 			reagents = {
 				{8170, 16},
@@ -9037,7 +8114,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19084] = {
-			name = "Leatherworking: Devilsaur Gauntlets",
 			item = 15063,
 			reagents = {
 				{8170, 30},
@@ -9046,7 +8122,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19085] = {
-			name = "Leatherworking: Black Dragonscale Breastplate",
 			item = 15050,
 			reagents = {
 				{8170, 40},
@@ -9056,7 +8131,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19086] = {
-			name = "Leatherworking: Ironfeather Breastplate",
 			item = 15066,
 			reagents = {
 				{8170, 40},
@@ -9067,7 +8141,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19087] = {
-			name = "Leatherworking: Frostsaber Gloves",
 			item = 15070,
 			reagents = {
 				{8170, 6},
@@ -9076,7 +8149,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19088] = {
-			name = "Leatherworking: Heavy Scorpid Helm",
 			item = 15080,
 			reagents = {
 				{8170, 8},
@@ -9086,7 +8158,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19089] = {
-			name = "Leatherworking: Blue Dragonscale Shoulders",
 			item = 15049,
 			reagents = {
 				{8170, 28},
@@ -9097,7 +8168,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19090] = {
-			name = "Leatherworking: Stormshroud Shoulders",
 			item = 15058,
 			reagents = {
 				{8170, 12},
@@ -9108,7 +8178,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19091] = {
-			name = "Leatherworking: Runic Leather Pants",
 			item = 15095,
 			reagents = {
 				{8170, 18},
@@ -9118,7 +8187,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19092] = {
-			name = "Leatherworking: Wicked Leather Belt",
 			item = 15088,
 			reagents = {
 				{8170, 14},
@@ -9127,7 +8195,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19093] = {
-			name = "Leatherworking: Onyxia Scale Cloak",
 			item = 15138,
 			reagents = {
 				{15410},
@@ -9136,7 +8203,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19094] = {
-			name = "Leatherworking: Black Dragonscale Shoulders",
 			item = 15051,
 			reagents = {
 				{8170, 44},
@@ -9147,7 +8213,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19095] = {
-			name = "Leatherworking: Living Breastplate",
 			item = 15059,
 			reagents = {
 				{8170, 16},
@@ -9158,7 +8223,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19097] = {
-			name = "Leatherworking: Devilsaur Leggings",
 			item = 15062,
 			reagents = {
 				{8170, 30},
@@ -9168,7 +8232,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19098] = {
-			name = "Leatherworking: Wicked Leather Armor",
 			item = 15085,
 			reagents = {
 				{8170, 20},
@@ -9179,7 +8242,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19100] = {
-			name = "Leatherworking: Heavy Scorpid Shoulders",
 			item = 15081,
 			reagents = {
 				{8170, 14},
@@ -9189,7 +8251,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19101] = {
-			name = "Leatherworking: Volcanic Shoulders",
 			item = 15055,
 			reagents = {
 				{8170, 10},
@@ -9199,7 +8260,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19102] = {
-			name = "Leatherworking: Runic Leather Armor",
 			item = 15090,
 			reagents = {
 				{8170, 22},
@@ -9210,7 +8270,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19103] = {
-			name = "Leatherworking: Runic Leather Shoulders",
 			item = 15096,
 			reagents = {
 				{8170, 16},
@@ -9221,7 +8280,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19104] = {
-			name = "Leatherworking: Frostsaber Tunic",
 			item = 15068,
 			reagents = {
 				{8170, 12},
@@ -9231,7 +8289,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19107] = {
-			name = "Leatherworking: Black Dragonscale Leggings",
 			item = 15052,
 			reagents = {
 				{8170, 40},
@@ -9242,7 +8299,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19435] = {
-			name = "Tailoring: Mooncloth Boots",
 			item = 15802,
 			reagents = {
 				{14048, 6},
@@ -9252,7 +8308,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19567] = {
-			name = "Engineering: Salt Shaker",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 15846,
@@ -9264,62 +8319,56 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19666] = {
-			name = "Blacksmithing: Silver Skeleton Key",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 15869,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{2842},
 				{3470},
 			},
 		},
 		[19667] = {
-			name = "Blacksmithing: Golden Skeleton Key",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 15870,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{3577},
 				{3486},
 			},
 		},
 		[19668] = {
-			name = "Blacksmithing: Truesilver Skeleton Key",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 15871,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{6037},
 				{7966},
 			},
 		},
 		[19669] = {
-			name = "Blacksmithing: Arcanite Skeleton Key",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 15872,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{12360},
 				{12644},
 			},
 		},
 		[19788] = {
-			name = "Engineering: Dense Blasting Powder",
 			item = 15992,
 			reagents = {
 				{12365, 2},
 			},
 		},
 		[19790] = {
-			name = "Engineering: Thorium Grenade",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 15993,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{15994},
 				{12359, 3},
@@ -9328,7 +8377,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19791] = {
-			name = "Engineering: Thorium Widget",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 15994,
@@ -9338,7 +8386,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19792] = {
-			name = "Engineering: Thorium Rifle",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 15995,
@@ -9351,7 +8398,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19793] = {
-			name = "Engineering: Lifelike Mechanical Toad",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 15996,
@@ -9363,7 +8409,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19794] = {
-			name = "Engineering: Spellpower Goggles Xtreme Plus",
 			tools = {6219, 10498},
 			item = 15999,
 			reagents = {
@@ -9374,7 +8419,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19795] = {
-			name = "Engineering: Thorium Tube",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 16000,
@@ -9383,7 +8427,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19796] = {
-			name = "Engineering: Dark Iron Rifle",
 			requires = L["Black Anvil"],
 			tools = {5956, 6219},
 			item = 16004,
@@ -9397,11 +8440,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19799] = {
-			name = "Engineering: Dark Iron Bomb",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 16005,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{15994, 2},
 				{11371},
@@ -9410,18 +8452,16 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19800] = {
-			name = "Engineering: Thorium Shells",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 15997,
-			craftQuantityMin = 200,
+			quantity = 200,
 			reagents = {
 				{12359, 2},
 				{15992},
 			},
 		},
 		[19814] = {
-			name = "Engineering: Masterwork Target Dummy",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 16023,
@@ -9435,7 +8475,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19815] = {
-			name = "Engineering: Delicate Arcanite Converter",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 16006,
@@ -9445,7 +8484,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19819] = {
-			name = "Engineering: Voice Amplification Modulator",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 16009,
@@ -9457,7 +8495,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19825] = {
-			name = "Engineering: Master Engineer's Goggles",
 			tools = {6219, 10498},
 			item = 16008,
 			reagents = {
@@ -9467,7 +8504,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19830] = {
-			name = "Engineering: Arcanite Dragonling",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 16022,
@@ -9481,11 +8517,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19831] = {
-			name = "Engineering: Arcane Bomb",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 16040,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{16006},
 				{12359, 3},
@@ -9493,7 +8528,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[19833] = {
-			name = "Engineering: Flawless Arcanite Rifle",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 16007,
@@ -9507,7 +8541,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20201] = {
-			name = "Blacksmithing: Arcanite Rod",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 16206,
@@ -9517,10 +8550,9 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20626] = {
-			name = "Cooking: Undermine Clam Chowder",
 			requires = L["Cooking Fire"],
 			item = 16766,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{7974, 2},
 				{2692},
@@ -9528,28 +8560,24 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20648] = {
-			name = "Leatherworking: Medium Leather",
 			item = 2319,
 			reagents = {
 				{2318, 4},
 			},
 		},
 		[20649] = {
-			name = "Leatherworking: Heavy Leather",
 			item = 4234,
 			reagents = {
 				{2319, 5},
 			},
 		},
 		[20650] = {
-			name = "Leatherworking: Thick Leather",
 			item = 4304,
 			reagents = {
 				{4234, 6},
 			},
 		},
 				[20848] = {
-			name = "Tailoring: Flarecore Mantle",
 			item = 16980,
 			reagents = {
 				{14342, 6},
@@ -9560,7 +8588,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 				[20849] = {
-			name = "Tailoring: Flarecore Gloves",
 			item = 16979,
 			reagents = {
 				{14342, 4},
@@ -9571,7 +8598,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20853] = {
-			name = "Leatherworking: Corehound Boots",
 			item = 16982,
 			reagents = {
 				{17012, 20},
@@ -9581,7 +8607,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20854] = {
-			name = "Leatherworking: Molten Helm",
 			item = 16983,
 			reagents = {
 				{17012, 15},
@@ -9591,7 +8616,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20855] = {
-			name = "Leatherworking: Black Dragonscale Boots",
 			item = 16984,
 			reagents = {
 				{12810, 6},
@@ -9602,7 +8626,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20872] = {
-			name = "Blacksmithing: Fiery Chain Girdle",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 16989,
@@ -9613,7 +8636,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20873] = {
-			name = "Blacksmithing: Fiery Chain Shoulders",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 16988,
@@ -9624,7 +8646,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20874] = {
-			name = "Blacksmithing: Dark Iron Bracers",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 17014,
@@ -9635,7 +8656,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20876] = {
-			name = "Blacksmithing: Dark Iron Leggings",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 17013,
@@ -9646,7 +8666,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20890] = {
-			name = "Blacksmithing: Dark Iron Reaver",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 17015,
@@ -9658,7 +8677,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20897] = {
-			name = "Blacksmithing: Dark Iron Destroyer",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 17016,
@@ -9670,7 +8688,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[20916] = {
-			name = "Cooking: Mithril Headed Trout",
 			requires = L["Cooking Fire"],
 			item = 8364,
 			reagents = {
@@ -9678,7 +8695,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[21143] = {
-			name = "Cooking: Gingerbread Cookie",
 			requires = L["Cooking Fire"],
 			item = 17197,
 			reagents = {
@@ -9687,7 +8703,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[21144] = {
-			name = "Cooking: Egg Nog",
 			requires = L["Cooking Fire"],
 			item = 17198,
 			reagents = {
@@ -9698,7 +8713,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[21161] = {
-			name = "Blacksmithing: Sulfuron Hammer",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 17193,
@@ -9713,7 +8727,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[21175] = {
-			name = "Cooking: Spider Sausage",
 			requires = L["Cooking Fire"],
 			item = 17222,
 			reagents = {
@@ -9721,7 +8734,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[21913] = {
-			name = "Blacksmithing: Edge of Winter",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 17704,
@@ -9734,7 +8746,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[21923] = {
-			name = "Alchemy: Elixir of Frost Power",
 			item = 17708,
 			reagents = {
 				{3819, 2},
@@ -9743,7 +8754,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[21940] = {
-			name = "Engineering: Snowmaster 9000",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 17716,
@@ -9755,7 +8765,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[21943] = {
-			name = "Leatherworking: Gloves of the Greatfather",
 			item = 17721,
 			reagents = {
 				{4234, 8},
@@ -9764,7 +8773,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[21945] = {
-			name = "Tailoring: Green Holiday Shirt",
 			item = 17723,
 			reagents = {
 				{4305, 5},
@@ -9773,14 +8781,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22331] = {
-			name = "Leatherworking: Rugged Leather",
 			item = 8170,
 			reagents = {
 				{4304, 6},
 			},
 		},
 		[22480] = {
-			name = "Cooking: Tender Wolf Steak",
 			requires = L["Cooking Fire"],
 			item = 18045,
 			reagents = {
@@ -9789,7 +8795,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22704] = {
-			name = "Engineering: Field Repair Bot 74A",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 18232,
@@ -9802,7 +8807,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22711] = {
-			name = "Leatherworking: Shadowskin Gloves",
 			item = 18238,
 			reagents = {
 				{4304, 6},
@@ -9814,7 +8818,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22727] = {
-			name = "Leatherworking: Core Armor Kit",
 			item = 18251,
 			reagents = {
 				{17012, 3},
@@ -9822,7 +8825,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22732] = {
-			name = "Alchemy: Major Rejuvenation Potion",
 			item = 18253,
 			reagents = {
 				{10286},
@@ -9832,7 +8834,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22757] = {
-			name = "Blacksmithing: Elemental Sharpening Stone",
 			item = 18262,
 			reagents = {
 				{7067, 2},
@@ -9840,7 +8841,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 				[22759] = {
-			name = "Tailoring: Flarecore Wraps",
 			item = 18263,
 			reagents = {
 				{14342, 6},
@@ -9851,7 +8851,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22761] = {
-			name = "Cooking: Runn Tum Tuber Surprise",
 			requires = L["Cooking Fire"],
 			item = 18254,
 			reagents = {
@@ -9860,7 +8859,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22793] = {
-			name = "Engineering: Biznicks 247x128 Accurascope",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 18283,
@@ -9873,7 +8871,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22795] = {
-			name = "Engineering: Core Marksman Rifle",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 18282,
@@ -9886,7 +8883,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22797] = {
-			name = "Engineering: Force Reactive Disk",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 18168,
@@ -9899,7 +8895,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22808] = {
-			name = "Alchemy: Elixir of Greater Water Breathing",
 			item = 18294,
 			reagents = {
 				{7972},
@@ -9908,7 +8903,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22813] = {
-			name = "Tailoring: Gordok Ogre Suit",
 			item = 18258,
 			reagents = {
 				{14048, 2},
@@ -9918,7 +8912,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22815] = {
-			name = "Leatherworking: Gordok Ogre Suit",
 			item = 18258,
 			reagents = {
 				{8170, 4},
@@ -9928,7 +8921,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22866] = {
-			name = "Tailoring: Belt of the Archmage",
 			item = 18405,
 			reagents = {
 				{14048, 16},
@@ -9941,7 +8933,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22867] = {
-			name = "Tailoring: Felcloth Gloves",
 			item = 18407,
 			reagents = {
 				{14048, 12},
@@ -9952,7 +8943,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22868] = {
-			name = "Tailoring: Inferno Gloves",
 			item = 18408,
 			reagents = {
 				{14048, 12},
@@ -9962,7 +8952,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22869] = {
-			name = "Tailoring: Mooncloth Gloves",
 			item = 18409,
 			reagents = {
 				{14048, 12},
@@ -9972,7 +8961,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22870] = {
-			name = "Tailoring: Cloak of Warding",
 			item = 18413,
 			reagents = {
 				{14048, 12},
@@ -9982,7 +8970,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22902] = {
-			name = "Tailoring: Mooncloth Robe",
 			item = 18486,
 			reagents = {
 				{14048, 6},
@@ -9992,7 +8979,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22921] = {
-			name = "Leatherworking: Girdle of Insight",
 			item = 18504,
 			reagents = {
 				{8170, 12},
@@ -10002,7 +8988,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22922] = {
-			name = "Leatherworking: Mongoose Boots",
 			item = 18506,
 			reagents = {
 				{8170, 12},
@@ -10013,7 +8998,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22923] = {
-			name = "Leatherworking: Swift Flight Bracers",
 			item = 18508,
 			reagents = {
 				{8170, 12},
@@ -10024,7 +9008,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22926] = {
-			name = "Leatherworking: Chromatic Cloak",
 			item = 18509,
 			reagents = {
 				{8170, 30},
@@ -10036,7 +9019,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22927] = {
-			name = "Leatherworking: Hide of the Wild",
 			item = 18510,
 			reagents = {
 				{8170, 30},
@@ -10048,7 +9030,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[22928] = {
-			name = "Leatherworking: Shifting Cloak",
 			item = 18511,
 			reagents = {
 				{8170, 30},
@@ -10072,34 +9053,30 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23066] = {
-			name = "Engineering: Red Firework",
 			item = 9318,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{4377},
 				{4234},
 			},
 		},
 		[23067] = {
-			name = "Engineering: Blue Firework",
 			item = 9312,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{4377},
 				{4234},
 			},
 		},
 		[23068] = {
-			name = "Engineering: Green Firework",
 			item = 9313,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{4377},
 				{4234},
 			},
 		},
 		[23069] = {
-			name = "Engineering: EZ-Thro Dynamite II",
 			item = 18588,
 			reagents = {
 				{10505},
@@ -10107,16 +9084,14 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23070] = {
-			name = "Engineering: Dense Dynamite",
 			item = 18641,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{15992, 2},
 				{14047, 3},
 			},
 		},
 		[23071] = {
-			name = "Engineering: Truesilver Transformer",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 18631,
@@ -10127,7 +9102,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23077] = {
-			name = "Engineering: Gyrofreeze Ice Reflector",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 18634,
@@ -10141,7 +9115,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23078] = {
-			name = "Engineering: Goblin Jumper Cables XL",
 			item = 18587,
 			reagents = {
 				{15994, 2},
@@ -10152,9 +9125,8 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23079] = {
-			name = "Engineering: Major Recombobulator",
 			item = 18637,
-			extra = "|cffffffff10 Charges",
+			extra = "|cffffffff10 "..L["Charges"],
 			reagents = {
 				{16000, 2},
 				{18631},
@@ -10162,7 +9134,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23080] = {
-			name = "Engineering: Powerful Seaforium Charge",
 			item = 18594,
 			reagents = {
 				{15994, 2},
@@ -10172,7 +9143,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23081] = {
-			name = "Engineering: Hyper-Radiant Flame Reflector",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 18638,
@@ -10185,7 +9155,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23082] = {
-			name = "Engineering: Ultra-Flash Shadow Reflector",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 18639,
@@ -10199,7 +9168,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23096] = {
-			name = "Engineering: Alarm-O-Bot",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 18645,
@@ -10212,7 +9180,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23129] = {
-			name = "Engineering: World Enlarger",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 18660,
@@ -10225,7 +9192,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23190] = {
-			name = "Leatherworking: Heavy Leather Ball",
 			item = 18662,
 			reagents = {
 				{4234, 2},
@@ -10233,7 +9199,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23399] = {
-			name = "Leatherworking: Barbaric Bracers",
 			item = 18948,
 			reagents = {
 				{4234, 8},
@@ -10244,7 +9209,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23486] = {
-			name = "Engineering: Dimensional Ripper - Everlook",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 18984,
@@ -10257,7 +9221,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23489] = {
-			name = "Engineering: Ultrasafe Transporter - Gadgetzan",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 18986,
@@ -10271,9 +9234,8 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23507] = {
-			name = "Engineering: Snake Burst Firework",
 			item = 19026,
-			craftQuantityMin = 4,
+			quantity = 4,
 			reagents = {
 				{15992, 2},
 				{14047, 2},
@@ -10281,7 +9243,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23628] = {
-			name = "Blacksmithing: Heavy Timbermaw Belt",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 19043,
@@ -10292,7 +9253,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23629] = {
-			name = "Blacksmithing: Heavy Timbermaw Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 19048,
@@ -10303,7 +9263,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23632] = {
-			name = "Blacksmithing: Girdle of the Dawn",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 19051,
@@ -10314,7 +9273,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23633] = {
-			name = "Blacksmithing: Gloves of the Dawn",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 19057,
@@ -10325,7 +9283,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23636] = {
-			name = "Blacksmithing: Dark Iron Helm",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 19148,
@@ -10336,7 +9293,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23637] = {
-			name = "Blacksmithing: Dark Iron Gauntlets",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 19164,
@@ -10349,7 +9305,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23638] = {
-			name = "Blacksmithing: Black Amnesty",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 19166,
@@ -10362,7 +9317,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23639] = {
-			name = "Blacksmithing: Blackfury",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 19167,
@@ -10374,7 +9328,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23650] = {
-			name = "Blacksmithing: Ebon Hand",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 19170,
@@ -10387,7 +9340,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23652] = {
-			name = "Blacksmithing: Blackguard",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 19168,
@@ -10400,7 +9352,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23653] = {
-			name = "Blacksmithing: Nightfall",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 19169,
@@ -10413,7 +9364,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23662] = {
-			name = "Tailoring: Wisdom of the Timbermaw",
 			item = 19047,
 			reagents = {
 				{14048, 8},
@@ -10423,7 +9373,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23663] = {
-			name = "Tailoring: Mantle of the Timbermaw",
 			item = 19050,
 			reagents = {
 				{14342, 5},
@@ -10433,7 +9382,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23664] = {
-			name = "Tailoring: Argent Boots",
 			item = 19056,
 			reagents = {
 				{14048, 6},
@@ -10444,7 +9392,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23665] = {
-			name = "Tailoring: Argent Shoulders",
 			item = 19059,
 			reagents = {
 				{14342, 5},
@@ -10453,7 +9400,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 				[23666] = {
-			name = "Tailoring: Flarecore Robe",
 			item = 19156,
 			reagents = {
 				{14342, 10},
@@ -10464,7 +9410,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 				[23667] = {
-			name = "Tailoring: Flarecore Leggings",
 			item = 19165,
 			reagents = {
 				{14342, 8},
@@ -10475,7 +9420,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23703] = {
-			name = "Leatherworking: Might of the Timbermaw",
 			item = 19044,
 			reagents = {
 				{8170, 30},
@@ -10486,7 +9430,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23704] = {
-			name = "Leatherworking: Timbermaw Brawlers",
 			item = 19049,
 			reagents = {
 				{12810, 8},
@@ -10497,7 +9440,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23705] = {
-			name = "Leatherworking: Dawn Treaders",
 			item = 19052,
 			reagents = {
 				{8170, 30},
@@ -10508,7 +9450,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23706] = {
-			name = "Leatherworking: Golden Mantle of the Dawn",
 			item = 19058,
 			reagents = {
 				{12810, 8},
@@ -10519,7 +9460,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23707] = {
-			name = "Leatherworking: Lava Belt",
 			item = 19149,
 			reagents = {
 				{17011, 5},
@@ -10528,7 +9468,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23708] = {
-			name = "Leatherworking: Chromatic Gauntlets",
 			item = 19157,
 			reagents = {
 				{17010, 5},
@@ -10540,7 +9479,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23709] = {
-			name = "Leatherworking: Corehound Belt",
 			item = 19162,
 			reagents = {
 				{17010, 8},
@@ -10551,7 +9489,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23710] = {
-			name = "Leatherworking: Molten Belt",
 			item = 19163,
 			reagents = {
 				{17010, 2},
@@ -10562,15 +9499,12 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[23787] = {
-			name = "First Aid: Powerful Anti-Venom",
-			text = "Creates a Vial of Powerful Anti-Venom.",
 			item = 19440,
 			reagents = {
 				{19441},
 			},
 		},
 		[24091] = {
-			name = "Tailoring: Bloodvine Vest",
 			item = 19682,
 			reagents = {
 				{14342, 3},
@@ -10581,7 +9515,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24092] = {
-			name = "Tailoring: Bloodvine Leggings",
 			item = 19683,
 			reagents = {
 				{14342, 4},
@@ -10592,7 +9525,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24093] = {
-			name = "Tailoring: Bloodvine Boots",
 			item = 19684,
 			reagents = {
 				{14342, 3},
@@ -10603,7 +9535,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24121] = {
-			name = "Leatherworking: Primal Batskin Jerkin",
 			item = 19685,
 			reagents = {
 				{19767, 14},
@@ -10613,7 +9544,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24122] = {
-			name = "Leatherworking: Primal Batskin Gloves",
 			item = 19686,
 			reagents = {
 				{19767, 10},
@@ -10623,7 +9553,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24123] = {
-			name = "Leatherworking: Primal Batskin Bracers",
 			item = 19687,
 			reagents = {
 				{19767, 8},
@@ -10633,7 +9562,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24124] = {
-			name = "Leatherworking: Blood Tiger Breastplate",
 			item = 19688,
 			reagents = {
 				{19768, 35},
@@ -10643,7 +9571,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24125] = {
-			name = "Leatherworking: Blood Tiger Shoulders",
 			item = 19689,
 			reagents = {
 				{19768, 25},
@@ -10653,7 +9580,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24136] = {
-			name = "Blacksmithing: Bloodsoul Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 19690,
@@ -10665,7 +9591,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24137] = {
-			name = "Blacksmithing: Bloodsoul Shoulders",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 19691,
@@ -10677,7 +9602,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24138] = {
-			name = "Blacksmithing: Bloodsoul Gauntlets",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 19691,
@@ -10689,7 +9613,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24139] = {
-			name = "Blacksmithing: Darksoul Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 19693,
@@ -10700,7 +9623,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24140] = {
-			name = "Blacksmithing: Darksoul Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 19694,
@@ -10711,7 +9633,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24141] = {
-			name = "Blacksmithing: Darksoul Shoulders",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 19695,
@@ -10722,9 +9643,8 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24266] = {
-			name = "Alchemy: Gurubashi Mojo Madness",
 			item = 19931,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{12938},
 				{19943},
@@ -10733,7 +9653,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24356] = {
-			name = "Engineering: Bloodvine Goggles",
 			tools = {10498, 6219},
 			item = 19999,
 			reagents = {
@@ -10745,7 +9664,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24357] = {
-			name = "Engineering: Bloodvine Lens",
 			tools = {10498, 6219},
 			item = 19998,
 			reagents = {
@@ -10757,7 +9675,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24365] = {
-			name = "Alchemy: Mageblood Potion",
 			item = 20007,
 			reagents = {
 				{13463},
@@ -10766,7 +9683,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24366] = {
-			name = "Alchemy: Greater Dreamless Sleep Potion",
 			item = 20002,
 			reagents = {
 				{13463, 2},
@@ -10775,7 +9691,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24367] = {
-			name = "Alchemy: Living Action Potion",
 			item = 20008,
 			reagents = {
 				{13467, 2},
@@ -10785,7 +9700,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24368] = {
-			name = "Alchemy: Major Troll's Blood Potion",
 			item = 20004,
 			reagents = {
 				{8846},
@@ -10794,11 +9708,10 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24399] = {
-			name = "Blacksmithing: Dark Iron Boots",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 20039,
-			extra = "|cff00ff00<Random enchantment>",
+			extra = "|cff00ff00"..L["<Random enchantment>"],
 			reagents = {
 				{17011, 3},
 				{17010, 3},
@@ -10807,7 +9720,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24418] = {
-			name = "Cooking: Heavy Crocolisk Stew",
 			requires = L["Cooking Fire"],
 			item = 20074,
 			reagents = {
@@ -10816,7 +9728,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24654] = {
-			name = "Leatherworking: Blue Dragonscale Leggings",
 			item = 20295,
 			reagents = {
 				{8170, 28},
@@ -10826,7 +9737,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24655] = {
-			name = "Leatherworking: Green Dragonscale Gauntlets",
 			item = 20296,
 			reagents = {
 				{8170, 20},
@@ -10836,7 +9746,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24703] = {
-			name = "Leatherworking: Dreamscale Breastplate",
 			item = 20380,
 			reagents = {
 				{12810, 12},
@@ -10847,7 +9756,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24801] = {
-			name = "Cooking: Smoked Desert Dumplings",
 			requires = L["Cooking Fire"],
 			item = 20452,
 			reagents = {
@@ -10856,7 +9764,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24846] = {
-			name = "Leatherworking: Spitfire Bracers",
 			item = 20481,
 			reagents = {
 				{20500},
@@ -10865,7 +9772,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24847] = {
-			name = "Leatherworking: Spitfire Gauntlets",
 			item = 20480,
 			reagents = {
 				{20500, 2},
@@ -10875,7 +9781,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24848] = {
-			name = "Leatherworking: Spitfire Breastplate",
 			item = 20479,
 			reagents = {
 				{20500, 3},
@@ -10885,7 +9790,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24849] = {
-			name = "Leatherworking: Sandstalker Bracers",
 			item = 20476,
 			reagents = {
 				{20501},
@@ -10894,7 +9798,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24850] = {
-			name = "Leatherworking: Sandstalker Gauntlets",
 			item = 20477,
 			reagents = {
 				{20501, 2},
@@ -10904,7 +9807,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24851] = {
-			name = "Leatherworking: Sandstalker Breastplate",
 			item = 20478,
 			reagents = {
 				{20501, 3},
@@ -10914,7 +9816,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24901] = {
-			name = "Tailoring: Runed Stygian Leggings",
 			item = 20538,
 			reagents = {
 				{14048, 6},
@@ -10924,7 +9825,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24902] = {
-			name = "Tailoring: Runed Stygian Belt",
 			item = 20539,
 			reagents = {
 				{14048, 2},
@@ -10935,7 +9835,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24903] = {
-			name = "Tailoring: Runed Stygian Boots",
 			item = 20537,
 			reagents = {
 				{14048, 4},
@@ -10946,7 +9845,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24912] = {
-			name = "Blacksmithing: Darkrune Gauntlets",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 20549,
@@ -10958,7 +9856,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24913] = {
-			name = "Blacksmithing: Darkrune Helm",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 20551,
@@ -10970,7 +9867,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24914] = {
-			name = "Blacksmithing: Darkrune Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 20550,
@@ -10981,7 +9877,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[24940] = {
-			name = "Leatherworking: Black Whelp Tunic",
 			item = 20575,
 			reagents = {
 				{2319, 8},
@@ -10991,18 +9886,16 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[25146] = {
-			name = "Alchemy: Transmute: Elemental Fire",
+			name = "Transmute: Elemental Fire",
 			tools = {9149},
 			text = "Transmutes a Heart of Fire into three Elemental Fires.",
 			item = 7068,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{7077},
 			},
 		},
 		[25347] = {
-			name = "Poisons: Deadly Poison V",
-			text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 30% chance of poisoning the enemy for 136 Nature damage over 12 sec. Stacks up to 5 times on a single target. 120 charges.",
 			item = 20844,
 			reagents = {
 				{5173, 7},
@@ -11010,10 +9903,9 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[25659] = {
-			name = "Cooking: Dirge's Kickin' Chimaerok Chops",
 			requires = L["Cooking Fire"],
 			item = 21023,
-			craftQuantityMin = 5,
+			quantity = 5,
 			reagents = {
 				{2692},
 				{9061},
@@ -11022,7 +9914,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[25704] = {
-			name = "Cooking: Smoked Sagefish",
 			requires = L["Cooking Fire"],
 			item = 21072,
 			reagents = {
@@ -11031,7 +9922,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[25954] = {
-			name = "Cooking: Sagefish Delight",
 			requires = L["Cooking Fire"],
 			item = 21217,
 			reagents = {
@@ -11040,7 +9930,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[26011] = {
-			name = "Engineering: Tranquil Mechanical Yeti",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 21277,
@@ -11053,7 +9942,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[26085] = {
-			name = "Tailoring: Soul Pouch",
 			item = 21340,
 			reagents = {
 				{14048, 6},
@@ -11063,7 +9951,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[26086] = {
-			name = "Tailoring: Felcloth Bag",
 			item = 21341,
 			reagents = {
 				{14256, 12},
@@ -11073,7 +9960,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[26087] = {
-			name = "Tailoring: Core Felcloth Bag",
 			item = 21342,
 			reagents = {
 				{14256, 20},
@@ -11084,7 +9970,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[26277] = {
-			name = "Alchemy: Elixir of Greater Firepower",
 			item = 21546,
 			reagents = {
 				{6371, 3},
@@ -11093,7 +9978,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[26279] = {
-			name = "Leatherworking: Stormshroud Gloves",
 			item = 21278,
 			reagents = {
 				{12810, 6},
@@ -11104,7 +9988,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[26403] = {
-			name = "Tailoring: Festival Dress",
 			item = 21154,
 			reagents = {
 				{14048, 4},
@@ -11114,7 +9997,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[26407] = {
-			name = "Tailoring: Festive Red Pant Suit",
 			item = 21542,
 			reagents = {
 				{14048, 4},
@@ -11124,115 +10006,102 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[26416] = {
-			name = "Engineering: Small Blue Rocket",
 			item = 21558,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{4364},
 				{2319},
 			},
 		},
 		[26417] = {
-			name = "Engineering: Small Green Rocket",
 			item = 21559,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{4364},
 				{2319},
 			},
 		},
 		[26418] = {
-			name = "Engineering: Small Red Rocket",
 			item = 21557,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{4364},
 				{2319},
 			},
 		},
 		[26420] = {
-			name = "Engineering: Large Blue Rocket",
 			item = 21589,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{4377},
 				{4234},
 			},
 		},
 		[26421] = {
-			name = "Engineering: Large Green Rocket",
 			item = 21590,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{4377},
 				{4234},
 			},
 		},
 		[26422] = {
-			name = "Engineering: Large Red Rocket",
 			item = 21592,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{4377},
 				{4234},
 			},
 		},
 		[26423] = {
-			name = "Engineering: Blue Rocket Cluster",
 			item = 21571,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{10505},
 				{4304},
 			},
 		},
 		[26424] = {
-			name = "Engineering: Green Rocket Cluster",
 			item = 21574,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{10505},
 				{4304},
 			},
 		},
 		[26425] = {
-			name = "Engineering: Red Rocket Cluster",
 			item = 21576,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{10505},
 				{4304},
 			},
 		},
 		[26426] = {
-			name = "Engineering: Large Blue Rocket Cluster",
 			item = 21714,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{15992},
 				{8170},
 			},
 		},
 		[26427] = {
-			name = "Engineering: Large Green Rocket Cluster",
 			item = 21716,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{15992},
 				{8170},
 			},
 		},
 		[26428] = {
-			name = "Engineering: Large Red Rocket Cluster",
 			item = 21718,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{15992},
 				{8170},
 			},
 		},
 		[26442] = {
-			name = "Engineering: Firework Launcher",
 			item = 21569,
 			reagents = {
 				{9060},
@@ -11242,7 +10111,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[26443] = {
-			name = "Engineering: Firework Cluster Launcher",
 			item = 21570,
 			reagents = {
 				{9060, 4},
@@ -11252,7 +10120,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[27585] = {
-			name = "Blacksmithing: Heavy Obsidian Belt",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 22197,
@@ -11263,7 +10130,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[27586] = {
-			name = "Blacksmithing: Jagged Obsidian Shield",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 22198,
@@ -11275,7 +10141,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[27587] = {
-			name = "Blacksmithing: Thick Obsidian Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 22196,
@@ -11288,7 +10153,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[27588] = {
-			name = "Blacksmithing: Light Obsidian Belt",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 22195,
@@ -11298,7 +10162,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[27589] = {
-			name = "Blacksmithing: Black Grasp of the Destroyer",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 22194,
@@ -11310,7 +10173,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[27590] = {
-			name = "Blacksmithing: Obsidian Mail Tunic",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 22191,
@@ -11323,7 +10185,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[27658] = {
-			name = "Tailoring: Enchanted Mageweave Pouch",
 			item = 22246,
 			reagents = {
 				{4339, 4},
@@ -11332,7 +10193,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[27659] = {
-			name = "Tailoring: Enchanted Runecloth Bag",
 			item = 22248,
 			reagents = {
 				{14048, 5},
@@ -11340,8 +10200,7 @@ GetSpellInfoAtlasLootDB = {
 				{14341, 2},
 			},
 		},
-				[27660] = {
-			name = "Tailoring: Big Bag of Enchantment",
+		[27660] = {
 			item = 22249,
 			reagents = {
 				{14048, 6},
@@ -11351,7 +10210,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[27724] = {
-			name = "Tailoring: Cenarion Herb Bag",
 			item = 22251,
 			reagents = {
 				{14048, 5},
@@ -11360,8 +10218,7 @@ GetSpellInfoAtlasLootDB = {
 				{14341, 2},
 			},
 		},
-				[27725] = {
-			name = "Tailoring: Satchel of Cenarius",
+		[27725] = {
 			item = 22252,
 			reagents = {
 				{14048, 6},
@@ -11371,7 +10228,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[27829] = {
-			name = "Blacksmithing: Titanic Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 22385,
@@ -11383,7 +10239,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[27830] = {
-			name = "Blacksmithing: Persuader",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 22384,
@@ -11397,7 +10252,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[27832] = {
-			name = "Blacksmithing: Sageblade",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 22383,
@@ -11408,8 +10262,7 @@ GetSpellInfoAtlasLootDB = {
 				{12810, 4},
 			},
 		},
-				[28205] = {
-			name = "Tailoring: Glacial Gloves",
+		[28205] = {
 			item = 22654,
 			reagents = {
 				{22682, 5},
@@ -11418,8 +10271,7 @@ GetSpellInfoAtlasLootDB = {
 				{14227, 4},
 			},
 		},
-				[28207] = {
-			name = "Tailoring: Glacial Vest",
+		[28207] = {
 			item = 22652,
 			reagents = {
 				{22682, 7},
@@ -11428,8 +10280,7 @@ GetSpellInfoAtlasLootDB = {
 				{14227, 8},
 			},
 		},
-				[28208] = {
-			name = "Tailoring: Glacial Cloak",
+		[28208] = {
 			item = 22658,
 			reagents = {
 				{22682, 5},
@@ -11438,8 +10289,7 @@ GetSpellInfoAtlasLootDB = {
 				{14227, 4},
 			},
 		},
-				[28209] = {
-			name = "Tailoring: Glacial Wrists",
+		[28209] = {
 			item = 22655,
 			reagents = {
 				{22682, 4},
@@ -11449,7 +10299,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28210] = {
-			name = "Tailoring: Gaea's Embrace",
 			item = 22660,
 			reagents = {
 				{19726},
@@ -11459,7 +10308,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28219] = {
-			name = "Leatherworking: Polar Tunic",
 			item = 22661,
 			reagents = {
 				{22682, 7},
@@ -11470,7 +10318,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28220] = {
-			name = "Leatherworking: Polar Gloves",
 			item = 22662,
 			reagents = {
 				{22682, 5},
@@ -11481,7 +10328,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28221] = {
-			name = "Leatherworking: Polar Bracers",
 			item = 22663,
 			reagents = {
 				{22682, 4},
@@ -11492,7 +10338,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28222] = {
-			name = "Leatherworking: Icy Scale Breastplate",
 			item = 22664,
 			reagents = {
 				{22682, 7},
@@ -11503,7 +10348,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28223] = {
-			name = "Leatherworking: Icy Scale Gauntlets",
 			item = 22666,
 			reagents = {
 				{22682, 5},
@@ -11514,7 +10358,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28224] = {
-			name = "Leatherworking: Icy Scale Bracers",
 			item = 22665,
 			reagents = {
 				{22682, 4},
@@ -11525,7 +10368,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28242] = {
-			name = "Blacksmithing: Icebane Breastplate",
 			requires = L["Icebellow Anvil"],
 			tools = {5956},
 			item = 22669,
@@ -11537,7 +10379,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28243] = {
-			name = "Blacksmithing: Icebane Gauntlets",
 			requires = L["Icebellow Anvil"],
 			tools = {5956},
 			item = 22670,
@@ -11549,7 +10390,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28244] = {
-			name = "Blacksmithing: Icebane Bracers",
 			requires = L["Icebellow Anvil"],
 			tools = {5956},
 			item = 22671,
@@ -11561,7 +10401,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28461] = {
-			name = "Blacksmithing: Ironvine Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 22762,
@@ -11573,7 +10412,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28462] = {
-			name = "Blacksmithing: Ironvine Gloves",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 22763,
@@ -11584,7 +10422,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28463] = {
-			name = "Blacksmithing: Ironvine Belt",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 22764,
@@ -11594,7 +10431,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28472] = {
-			name = "Leatherworking: Bramblewood Helm",
 			item = 22759,
 			reagents = {
 				{12810, 12},
@@ -11604,7 +10440,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28473] = {
-			name = "Leatherworking: Bramblewood Boots",
 			item = 22760,
 			reagents = {
 				{12810, 6},
@@ -11614,7 +10449,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28474] = {
-			name = "Leatherworking: Bramblewood Belt",
 			item = 22761,
 			reagents = {
 				{12810, 4},
@@ -11622,8 +10456,7 @@ GetSpellInfoAtlasLootDB = {
 				{15407},
 			},
 		},
-				[28480] = {
-			name = "Tailoring: Sylvan Vest",
+		[28480] = {
 			item = 22756,
 			reagents = {
 				{14048, 4},
@@ -11633,7 +10466,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[28481] = {
-			name = "Tailoring: Sylvan Crown",
 			item = 22757,
 			reagents = {
 				{14048, 4},
@@ -11642,8 +10474,7 @@ GetSpellInfoAtlasLootDB = {
 				{14227, 2},
 			},
 		},
-				[28482] = {
-			name = "Tailoring: Sylvan Shoulders",
+		[28482] = {
 			item = 22758,
 			reagents = {
 				{14048, 2},
@@ -11652,7 +10483,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[29728] = {
-			name = "Jewelcrafting: Rough Gritted Paper",
 			item = 55150,
 			reagents = {
 				{2589},
@@ -11660,7 +10490,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[29730] = {
-			name = "Jewelcrafting: Rough Copper Ring",
 			tools = {55155},
 			item = 55156,
 			reagents = {
@@ -11668,7 +10497,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[29732] = {
-			name = "Jewelcrafting: Copper Bangle",
 			tools = {55155},
 			item = 55157,
 			reagents = {
@@ -11676,7 +10504,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41001] = {
-			name = "Jewelcrafting: Bright Copper Ring",
 			tools = {55155},
 			item = 55158,
 			reagents = {
@@ -11685,7 +10512,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41003] = {
-			name = "Jewelcrafting: Malachite Ring",
 			tools = {55155},
 			item = 81030,
 			reagents = {
@@ -11695,7 +10521,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41005] = {
-			name = "Jewelcrafting: Sturdy Copper Ring",
 			tools = {55155},
 			item = 55159,
 			reagents = {
@@ -11705,7 +10530,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41007] = {
-			name = "Jewelcrafting: Inlaid Copper Ring",
 			tools = {55155},
 			item = 55160,
 			reagents = {
@@ -11716,7 +10540,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41009] = {
-			name = "Jewelcrafting: Copper Staff",
 			tools = {55155},
 			item = 81092,
 			reagents = {
@@ -11725,7 +10548,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41011] = {
-			name = "Jewelcrafting: Encrusted Copper Bangle",
 			tools = {55155},
 			item = 55161,
 			reagents = {
@@ -11735,7 +10557,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41013] = {
-			name = "Jewelcrafting: Lesser Fortification Ring",
 			tools = {55155},
 			item = 55162,
 			reagents = {
@@ -11745,7 +10566,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41015] = {
-			name = "Jewelcrafting: Tigercrest Ring",
 			tools = {55155},
 			item = 55163,
 			reagents = {
@@ -11756,7 +10576,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41017] = {
-			name = "Jewelcrafting: Small Pearlstone Staff",
 			tools = {55155},
 			item = 55165,
 			reagents = {
@@ -11766,7 +10585,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41019] = {
-			name = "Jewelcrafting: Amber Ring",
 			tools = {55155},
 			item = 55166,
 			reagents = {
@@ -11776,7 +10594,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41021] = {
-			name = "Jewelcrafting: Azure Ring",
 			tools = {55155},
 			item = 55167,
 			reagents = {
@@ -11787,7 +10604,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41023] = {
-			name = "Jewelcrafting: Bright Copper Necklace",
 			tools = {55155},
 			item = 81031,
 			reagents = {
@@ -11797,7 +10613,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41025] = {
-			name = "Jewelcrafting: Softglow Ring",
 			tools = {55155},
 			item = 55168,
 			reagents = {
@@ -11808,7 +10623,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41027] = {
-			name = "Jewelcrafting: Topaz Studded Ring",
 			tools = {55155},
 			item = 55170,
 			reagents = {
@@ -11819,7 +10633,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41029] = {
-			name = "Jewelcrafting: Coarse Gritted Paper",
 			tools = {55155},
 			item = 55151,
 			reagents = {
@@ -11828,7 +10641,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41031] = {
-			name = "Jewelcrafting: Rough Gemstone Cluster",
 			tools = {55155},
 			text = "May contain: Amber Topaz, Malachite, Tigerseye, Shadowgem",
 			item = 81032,
@@ -11838,7 +10650,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41033] = {
-			name = "Jewelcrafting: Lavish Gemmed Necklace",
 			tools = {55155},
 			item = 55171,
 			reagents = {
@@ -11850,7 +10661,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41035] = {
-			name = "Jewelcrafting: Amberstone Pendant",
 			tools = {55155},
 			item = 55172,
 			reagents = {
@@ -11861,7 +10671,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41037] = {
-			name = "Jewelcrafting: Deepmist Choker",
 			tools = {55155},
 			item = 55173,
 			reagents = {
@@ -11873,7 +10682,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41039] = {
-			name = "Jewelcrafting: Rough Bronze Ring",
 			tools = {55155},
 			item = 55174,
 			reagents = {
@@ -11881,7 +10689,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41041] = {
-			name = "Jewelcrafting: Shimmering Bronze Ring",
 			tools = {55155},
 			item = 41308,
 			reagents = {
@@ -11892,7 +10699,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41043] = {
-			name = "Jewelcrafting: Amber Orb",
 			tools = {55155},
 			item = 41309,
 			reagents = {
@@ -11903,7 +10709,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41045] = {
-			name = "Jewelcrafting: Encrusted Bronze Staff",
 			tools = {55155},
 			item = 55175,
 			reagents = {
@@ -11915,7 +10720,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41047] = {
-			name = "Jewelcrafting: Earthrock Loop",
 			tools = {55155},
 			item = 55176,
 			reagents = {
@@ -11926,7 +10730,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41049] = {
-			name = "Jewelcrafting: Bronze Cuffed Bangles",
 			tools = {55155},
 			item = 41310,
 			reagents = {
@@ -11936,7 +10739,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41051] = {
-			name = "Jewelcrafting: Shadowgem Band",
 			tools = {55155},
 			item = 41311,
 			reagents = {
@@ -11946,7 +10748,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41053] = {
-			name = "Jewelcrafting: Bronze Scepter",
 			tools = {55155},
 			item = 41313,
 			reagents = {
@@ -11956,7 +10757,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41055] = {
-			name = "Jewelcrafting: Pendant of Midnight",
 			tools = {55155},
 			item = 41312,
 			reagents = {
@@ -11967,7 +10767,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41057] = {
-			name = "Jewelcrafting: Agatestone Crown",
 			tools = {55155},
 			item = 41314,
 			reagents = {
@@ -11978,7 +10777,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41059] = {
-			name = "Jewelcrafting: Moonlight Staff",
 			tools = {55155},
 			item = 41315,
 			reagents = {
@@ -11989,7 +10787,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41061] = {
-			name = "Jewelcrafting: Binding Signet",
 			tools = {55155},
 			item = 41316,
 			reagents = {
@@ -11999,7 +10796,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41063] = {
-			name = "Jewelcrafting: Enchanted Bracelets",
 			tools = {55155},
 			item = 41318,
 			reagents = {
@@ -12009,7 +10805,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41065] = {
-			name = "Jewelcrafting: Coarse Gemstone Cluster",
 			tools = {55155},
 			text = "May contain: Crystal Quartz, Moss Agate, Lesser Moonstone.",
 			item = 41320,
@@ -12019,7 +10814,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41067] = {
-			name = "Jewelcrafting: Rough Silver Ring",
 			tools = {55155},
 			item = 41319,
 			reagents = {
@@ -12027,7 +10821,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41069] = {
-			name = "Jewelcrafting: Silver Medallion",
 			tools = {55155, 41326},
 			item = 41325,
 			reagents = {
@@ -12038,7 +10831,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41071] = {
-			name = "Jewelcrafting: Ring of Purified Silver",
 			tools = {55155, 41326},
 			item = 41329,
 			reagents = {
@@ -12084,7 +10876,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41081] = {
-			name = "Jewelcrafting: Rough Iron Ring",
 			tools = {55155},
 			item = 41332,
 			reagents = {
@@ -12092,7 +10883,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41083] = {
-			name = "Jewelcrafting: Rough Gold Ring",
 			tools = {55155},
 			item = 41331,
 			reagents = {
@@ -12100,7 +10890,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41085] = {
-			name = "Jewelcrafting: Emberstone Studded Ring",
 			tools = {41328, 41326},
 			item = 41323,
 			reagents = {
@@ -12111,7 +10900,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41087] = {
-			name = "Jewelcrafting: Rough Thorium Ring",
 			tools = {41328, 41327},
 			item = 41321,
 			reagents = {
@@ -12119,7 +10907,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41089] = {
-			name = "Jewelcrafting: Mithril Blackstone Necklace",
 			tools = {41328, 41326},
 			item = 41324,
 			reagents = {
@@ -12130,7 +10917,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41091] = {
-			name = "Jewelcrafting: Dense Gritted Paper",
 			tools = {41328},
 			item = 55154,
 			reagents = {
@@ -12139,7 +10925,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41093] = {
-			name = "Jewelcrafting: Radiant Thorium Twilight",
 			tools = {41328, 41327},
 			item = 55256,
 			reagents = {
@@ -12150,7 +10935,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41095] = {
-			name = "Jewelcrafting: Glyph Codex",
 			tools = {41328, 41327},
 			item = 55269,
 			reagents = {
@@ -12160,7 +10944,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41097] = {
-			name = "Jewelcrafting: Spellweaver Rod",
 			tools = {41328, 41327},
 			item = 55271,
 			reagents = {
@@ -12172,7 +10955,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41099] = {
-			name = "Jewelcrafting: Quicksilver Whirl",
 			tools = {41328, 41327},
 			item = 55268,
 			reagents = {
@@ -12183,7 +10965,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41101] = {
-			name = "Jewelcrafting: Crystalweft Bracers",
 			tools = {41328, 41327},
 			item = 55273,
 			reagents = {
@@ -12194,7 +10975,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41103] = {
-			name = "Jewelcrafting: Ethereal Frostspark Crown",
 			tools = {41328, 41327},
 			item = 55267,
 			reagents = {
@@ -12205,7 +10985,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41105] = {
-			name = "Jewelcrafting: Pendant of Arcane Radiance",
 			tools = {41328, 41327},
 			item = 41330,
 			reagents = {
@@ -12215,7 +10994,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41201] = {
-			name = "Jewelcrafting: Heavy Gritted Paper",
 			tools = {55155},
 			item = 55152,
 			reagents = {
@@ -12224,7 +11002,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41203] = {
-			name = "Jewelcrafting: Heavy Gemstone Cluster",
 			tools = {55155},
 			text = "May contain: Jade, Citrine, Emberstone, Aquamarine.",
 			item = 41344,
@@ -12234,7 +11011,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41205] = {
-			name = "Jewelcrafting: Goldfire Crystal Bracelet",
 			tools = {55155},
 			item = 55144,
 			reagents = {
@@ -12245,7 +11021,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41207] = {
-			name = "Jewelcrafting: Quartz Halo",
 			tools = {55155, 41326},
 			item = 55142,
 			reagents = {
@@ -12256,7 +11031,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41209] = {
-			name = "Jewelcrafting: Staff of Blossomed Jade",
 			tools = {55155, 41326},
 			item = 55148,
 			reagents = {
@@ -12268,7 +11042,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41211] = {
-			name = "Jewelcrafting: Jade Harmony Circlet",
 			tools = {55155, 41326},
 			item = 55143,
 			reagents = {
@@ -12279,7 +11052,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41213] = {
-			name = "Jewelcrafting: Goldenshade Quartz Crown",
 			tools = {55155},
 			item = 55145,
 			reagents = {
@@ -12289,7 +11061,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41215] = {
-			name = "Jewelcrafting: The Golden Goblet",
 			tools = {55155},
 			item = 55146,
 			reagents = {
@@ -12300,7 +11071,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41217] = {
-			name = "Jewelcrafting: Powerful Citrine Pendant",
 			tools = {55155, 41326},
 			item = 55147,
 			reagents = {
@@ -12313,7 +11083,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41219] = {
-			name = "Jewelcrafting: Rough Mithril Ring",
 			tools = {55155},
 			item = 41322,
 			reagents = {
@@ -12321,7 +11090,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41221] = {
-			name = "Jewelcrafting: Ironsun Citrine Ring",
 			tools = {55155, 41326},
 			item = 55141,
 			reagents = {
@@ -12332,7 +11100,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41223] = {
-			name = "Jewelcrafting: Shimmering Gold Necklace",
 			tools = {55155, 41326},
 			item = 41340,
 			reagents = {
@@ -12342,7 +11109,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41225] = {
-			name = "Jewelcrafting: Ironbloom Ring",
 			tools = {55155, 41326},
 			item = 41342,
 			reagents = {
@@ -12354,7 +11120,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41227] = {
-			name = "Jewelcrafting: Ornate Mithril Scepter",
 			tools = {41328},
 			item = 41343,
 			reagents = {
@@ -12364,7 +11129,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41229] = {
-			name = "Jewelcrafting: Solid Gritted Paper",
 			tools = {41328},
 			item = 55153,
 			reagents = {
@@ -12373,7 +11137,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41231] = {
-			name = "Jewelcrafting: Minor Trollblood Ring",
 			tools = {55155},
 			item = 55164,
 			reagents = {
@@ -12383,7 +11146,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41233] = {
-			name = "Jewelcrafting: Rough Truesilver Ring",
 			tools = {41328},
 			item = 41341,
 			reagents = {
@@ -12392,7 +11154,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41235] = {
-			name = "Jewelcrafting: Aquamarine Pendant",
 			tools = {41328},
 			item = 55196,
 			reagents = {
@@ -12402,7 +11163,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41237] = {
-			name = "Jewelcrafting: Solid Gemstone Cluster",
 			tools = {41328},
 			text = "May contain: Pure Moonstone, Star Ruby, Emberstone",
 			item = 56020,
@@ -12412,7 +11172,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41239] = {
-			name = "Jewelcrafting: Greater Binding Signet",
 			tools = {41328, 41326},
 			item = 41346,
 			reagents = {
@@ -12424,7 +11183,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41241] = {
-			name = "Jewelcrafting: Royal Gemstone Staff",
 			tools = {41328, 41326},
 			item = 41345,
 			reagents = {
@@ -12436,7 +11194,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41243] = {
-			name = "Jewelcrafting: Emberstone Idol",
 			tools = {41328, 41326},
 			item = 41349,
 			reagents = {
@@ -12447,7 +11204,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41245] = {
-			name = "Jewelcrafting: Runed Truesilver Ring",
 			tools = {41328, 41326},
 			item = 41347,
 			reagents = {
@@ -12458,7 +11214,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41247] = {
-			name = "Jewelcrafting: Small Pearl Ring",
 			tools = {55155},
 			item = 55169,
 			reagents = {
@@ -12469,7 +11224,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41249] = {
-			name = "Jewelcrafting: Bulky Copper Ring",
 			tools = {55155},
 			item = 81093,
 			reagents = {
@@ -12479,7 +11233,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41251] = {
-			name = "Jewelcrafting: Blue Starfire",
 			tools = {41328, 41327},
 			item = 55258,
 			reagents = {
@@ -12490,7 +11243,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41253] = {
-			name = "Jewelcrafting: Emerald Monarch's Glow",
 			tools = {41328, 41327},
 			item = 55265,
 			reagents = {
@@ -12502,7 +11254,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41255] = {
-			name = "Jewelcrafting: Sapphire Luminescence",
 			tools = {41328, 41327},
 			item = 55259,
 			reagents = {
@@ -12515,7 +11266,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41257] = {
-			name = "Jewelcrafting: Arcanum Baton",
 			tools = {41328, 41327},
 			item = 55259,
 			reagents = {
@@ -12528,7 +11278,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41259] = {
-			name = "Jewelcrafting: Arcanum Baton",
 			tools = {41328, 41327},
 			item = 55272,
 			reagents = {
@@ -12540,7 +11289,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41261] = {
-			name = "Jewelcrafting: Sunburst Tiara",
 			tools = {41328, 41326},
 			item = 55266,
 			reagents = {
@@ -12552,7 +11300,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41263] = {
-			name = "Jewelcrafting: Ocean's Gaze",
 			tools = {55155, 41326},
 			item = 56023,
 			reagents = {
@@ -12563,7 +11310,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41265] = {
-			name = "Jewelcrafting: Starry Thorium Band",
 			tools = {41328, 41327},
 			item = 55260,
 			reagents = {
@@ -12574,7 +11320,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41267] = {
-			name = "Jewelcrafting: Ruby Ring of Ruin",
 			tools = {41328, 41327},
 			item = 56032,
 			reagents = {
@@ -12587,7 +11332,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41269] = {
-			name = "Jewelcrafting: Encrusted Gemstone Ring",
 			tools = {41328, 41327},
 			item = 56031,
 			reagents = {
@@ -12600,7 +11344,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41271] = {
-			name = "Jewelcrafting: Pure Gold Ring",
 			tools = {41328, 41326},
 			item = 56033,
 			reagents = {
@@ -12610,7 +11353,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41273] = {
-			name = "Jewelcrafting: Prism Amulet",
 			tools = {41328, 41326},
 			item = 55199,
 			reagents = {
@@ -12621,7 +11363,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41275] = {
-			name = "Jewelcrafting: Gemmed Citrine Pendant",
 			tools = {55155, 41326},
 			item = 55202,
 			reagents = {
@@ -12632,7 +11373,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41277] = {
-			name = "Jewelcrafting: Starforge Amulet",
 			tools = {55155, 41326},
 			item = 55197,
 			reagents = {
@@ -12643,7 +11383,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41279] = {
-			name = "Jewelcrafting: Voidheart Charm",
 			tools = {41328, 41327},
 			item = 55200,
 			reagents = {
@@ -12655,7 +11394,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41281] = {
-			name = "Jewelcrafting: Runebound Amulet",
 			tools = {41328, 41326},
 			item = 55204,
 			reagents = {
@@ -12667,7 +11405,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41283] = {
-			name = "Jewelcrafting: Astral Amulet",
 			tools = {55155, 41326},
 			item = 55195,
 			reagents = {
@@ -12678,7 +11415,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41285] = {
-			name = "Jewelcrafting: Shimmering Moonstone Tablet",
 			tools = {55155, 41326},
 			item = 56034,
 			reagents = {
@@ -12689,7 +11425,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41287] = {
-			name = "Jewelcrafting: Stormcloud Sigil",
 			tools = {41328, 41327},
 			item = 56035,
 			reagents = {
@@ -12700,7 +11435,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41303] = {
-			name = "Jewelcrafting: Massive Jewel Circlet",
 			tools = {41328, 41327},
 			item = 55264,
 			reagents = {
@@ -12711,7 +11445,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41305] = {
-			name = "Jewelcrafting: Golden Scepter of Authority",
 			tools = {41328, 41326},
 			item = 56036,
 			reagents = {
@@ -12722,7 +11455,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41307] = {
-			name = "Jewelcrafting: Gemkeeper's Folio",
 			tools = {41328, 41326},
 			item = 55243,
 			reagents = {
@@ -12734,7 +11466,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41309] = {
-			name = "Jewelcrafting: Stellar Ruby Ring",
 			tools = {41328, 41326},
 			item = 55261,
 			reagents = {
@@ -12745,7 +11476,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41311] = {
-			name = "Jewelcrafting: Stellar Gemguards",
 			tools = {41328, 41326},
 			item = 55178,
 			reagents = {
@@ -12756,7 +11486,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41313] = {
-			name = "Jewelcrafting: Garnet Guardian Staff",
 			tools = {41328, 41326},
 			item = 55241,
 			reagents = {
@@ -12768,7 +11497,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41315] = {
-			name = "Jewelcrafting: Moonlit Charm",
 			tools = {41328, 41326},
 			item = 55198,
 			reagents = {
@@ -12778,7 +11506,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41317] = {
-			name = "Jewelcrafting: Twilight Opal Cascade",
 			tools = {41328, 41326},
 			item = 55263,
 			reagents = {
@@ -12789,7 +11516,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41321] = {
-			name = "Jewelcrafting: Gleaming Chain",
 			tools = {55155},
 			item = 56037,
 			reagents = {
@@ -12799,7 +11525,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41323] = {
-			name = "Jewelcrafting: Talisman of Stone",
 			tools = {55155},
 			item = 56038,
 			reagents = {
@@ -12809,7 +11534,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41325] = {
-			name = "Jewelcrafting: Medallion of Flame",
 			tools = {55155},
 			item = 56039,
 			reagents = {
@@ -12819,7 +11543,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41327] = {
-			name = "Jewelcrafting: Gleaming Silver Necklace",
 			tools = {55155},
 			item = 56040,
 			reagents = {
@@ -12830,7 +11553,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41329] = {
-			name = "Jewelcrafting: Ring of The Turtle",
 			tools = {55155, 41326},
 			item = 56041,
 			reagents = {
@@ -12840,7 +11562,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41331] = {
-			name = "Jewelcrafting: Gem Encrusted Choker",
 			tools = {55155, 41326},
 			item = 56042,
 			reagents = {
@@ -12851,7 +11572,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41333] = {
-			name = "Jewelcrafting: Goldcrest Amulet",
 			tools = {55155, 41326},
 			item = 56043,
 			reagents = {
@@ -12861,7 +11581,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41334] = {
-			name = "Jewelcrafting: Shining Copper Cuffs",
 			tools = {55155},
 			item = 56044,
 			reagents = {
@@ -12871,7 +11590,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41337] = {
-			name = "Jewelcrafting: Dawnbright Cuffs",
 			tools = {55155},
 			item = 56045,
 			reagents = {
@@ -12881,7 +11599,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41339] = {
-			name = "Jewelcrafting: Circlet of Dampening",
 			tools = {55155},
 			item = 56046,
 			reagents = {
@@ -12892,7 +11609,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41348] = {
-			name = "Jewelcrafting: Crystalfire Armlets",
 			tools = {41328, 41326},
 			item = 55180,
 			reagents = {
@@ -12903,7 +11619,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41350] = {
-			name = "Jewelcrafting: Cinderfall Band",
 			tools = {41328, 41326},
 			item = 55228,
 			reagents = {
@@ -12915,7 +11630,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41352] = {
-			name = "Jewelcrafting: Opaline Illuminator",
 			tools = {41328, 41326},
 			item = 55242,
 			reagents = {
@@ -12927,7 +11641,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41356] = {
-			name = "Jewelcrafting: Gemstone Compendium",
 			tools = {55155},
 			item = 55244,
 			reagents = {
@@ -12939,7 +11652,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41541] = {
-			name = "Jewelcrafting: Dazzling Aquamarine Loop",
 			tools = {55155, 41326},
 			item = 56048,
 			reagents = {
@@ -12950,7 +11662,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41546] = {
-			name = "Jewelcrafting: Alluring Citrine Choker",
 			tools = {41328, 55155},
 			item = 56049,
 			reagents = {
@@ -12959,7 +11670,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41548] = {
-			name = "Jewelcrafting: Elaborate Golden Bracelets",
 			tools = {41326, 55155},
 			item = 56050,
 			reagents = {
@@ -12969,7 +11679,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41550] = {
-			name = "Jewelcrafting: Heart of the Sea",
 			tools = {41326, 55155},
 			item = 56051,
 			reagents = {
@@ -12980,7 +11689,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41552] = {
-			name = "Jewelcrafting: Staff of Gallitrea",
 			tools = {41326, 55155},
 			item = 56052,
 			reagents = {
@@ -12991,7 +11699,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41554] = {
-			name = "Jewelcrafting: Golden Jade Ring",
 			tools = {41328, 41326},
 			item = 56053,
 			reagents = {
@@ -13003,7 +11710,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41556] = {
-			name = "Jewelcrafting: Delicate Mithril Amulet",
 			tools = {55155, 41326},
 			item = 56054,
 			reagents = {
@@ -13013,7 +11719,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41558] = {
-			name = "Jewelcrafting: Draenethyst Baton",
 			tools = {41328, 41326},
 			item = 56055,
 			reagents = {
@@ -13023,7 +11728,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41560] = {
-			name = "Jewelcrafting: Ebon Ring",
 			tools = {55155},
 			item = 55316,
 			reagents = {
@@ -13033,7 +11737,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41562] = {
-			name = "Jewelcrafting: The King's Conviction",
 			tools = {55155},
 			item = 55317,
 			reagents = {
@@ -13043,7 +11746,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41564] = {
-			name = "Jewelcrafting: Shadowfall Jewel",
 			tools = {55155},
 			item = 55318,
 			reagents = {
@@ -13054,7 +11756,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41566] = {
-			name = "Jewelcrafting: Ocean's Wrath",
 			tools = {55155},
 			item = 55319,
 			reagents = {
@@ -13064,7 +11765,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41568] = {
-			name = "Jewelcrafting: Dazzling Moonstone Band",
 			tools = {55155, 41326},
 			item = 55320,
 			reagents = {
@@ -13074,7 +11774,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41570] = {
-			name = "Jewelcrafting: Harpy Talon Ring",
 			tools = {55155, 41326},
 			item = 55321,
 			reagents = {
@@ -13084,7 +11783,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41572] = {
-			name = "Jewelcrafting: Centaur Hoof Circlet",
 			tools = {55155, 41326},
 			item = 55322,
 			reagents = {
@@ -13095,7 +11793,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41574] = {
-			name = "Jewelcrafting: Ogre Bone Band",
 			tools = {55155, 41326},
 			item = 55323,
 			reagents = {
@@ -13107,7 +11804,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41577] = {
-			name = "Jewelcrafting: Malachite Ring",
 			tools = {55155},
 			item = 81030,
 			reagents = {
@@ -13116,7 +11812,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41579] = {
-			name = "Jewelcrafting: Marine's Demise",
 			tools = {55155, 41326},
 			item = 55325,
 			reagents = {
@@ -13127,7 +11822,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41581] = {
-			name = "Jewelcrafting: Serpent's Coil Staff",
 			tools = {55155},
 			item = 55326,
 			reagents = {
@@ -13137,7 +11831,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41583] = {
-			name = "Jewelcrafting: Farraki Ceremony Totem",
 			tools = {55155, 41326},
 			item = 55327,
 			reagents = {
@@ -13150,7 +11843,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41585] = {
-			name = "Jewelcrafting: Sphinx's Wisdom Staff",
 			tools = {55155, 41326},
 			item = 55328,
 			reagents = {
@@ -13160,7 +11852,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41587] = {
-			name = "Jewelcrafting: Gloomweed Bindings",
 			tools = {55155},
 			item = 55329,
 			reagents = {
@@ -13170,7 +11861,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41589] = {
-			name = "Jewelcrafting: Crystal Earring",
 			tools = {55155, 41326},
 			item = 56047,
 			reagents = {
@@ -13181,7 +11871,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41601] = {
-			name = "Jewelcrafting: Sharpened Citrine Gemstone",
 			tools = {41328, 41326},
 			item = 56002,
 			reagents = {
@@ -13191,7 +11880,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41603] = {
-			name = "Jewelcrafting: Radiant Ember Gemstone",
 			tools = {41328, 41326},
 			item = 56004,
 			reagents = {
@@ -13201,7 +11889,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41605] = {
-			name = "Jewelcrafting: Glowing Ruby Gemstone",
 			tools = {41328, 41326},
 			item = 56006,
 			reagents = {
@@ -13212,7 +11899,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41607] = {
-			name = "Jewelcrafting: Shimmering Aqua Gemstone",
 			tools = {41328, 41326},
 			item = 56003,
 			reagents = {
@@ -13223,7 +11909,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41609] = {
-			name = "Jewelcrafting: Azerothian Ruby Gemstone",
 			tools = {41328, 41326},
 			item = 56015,
 			reagents = {
@@ -13235,7 +11920,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41611] = {
-			name = "Jewelcrafting: Gloomy Diamond Gemstone",
 			tools = {41328, 41326},
 			item = 56012,
 			reagents = {
@@ -13245,7 +11929,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41613] = {
-			name = "Jewelcrafting: Flawless Black Gemstone",
 			tools = {41328, 41326},
 			item = 56013,
 			reagents = {
@@ -13256,7 +11939,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41615] = {
-			name = "Jewelcrafting: Arcane Emerald Gemstone",
 			tools = {41328, 41326},
 			item = 56016,
 			reagents = {
@@ -13268,7 +11950,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41617] = {
-			name = "Jewelcrafting: Tempered Azerothian Gemstone",
 			tools = {41328, 41326},
 			item = 56017,
 			reagents = {
@@ -13278,7 +11959,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41619] = {
-			name = "Jewelcrafting: Stunning Imperial Gemstone",
 			tools = {41328, 41326},
 			item = 56014,
 			reagents = {
@@ -13290,7 +11970,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41621] = {
-			name = "Jewelcrafting: Enchanted Emerald Gemstone",
 			tools = {41328, 41326},
 			item = 56018,
 			reagents = {
@@ -13301,7 +11980,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41623] = {
-			name = "Jewelcrafting: Pure Shining Moonstone",
 			tools = {41328, 41326},
 			item = 56058,
 			reagents = {
@@ -13311,7 +11989,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41625] = {
-			name = "Jewelcrafting: Beautiful Diamond Gemstone",
 			tools = {41328, 41326},
 			item = 56010,
 			reagents = {
@@ -13321,7 +11998,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41627] = {
-			name = "Jewelcrafting: Pristine Crystal Gemstone",
 			tools = {55155, 41326},
 			item = 56000,
 			reagents = {
@@ -13331,7 +12007,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41629] = {
-			name = "Jewelcrafting: Gleaming Jade Gemstone",
 			tools = {55155, 41326},
 			item = 56001,
 			reagents = {
@@ -13341,7 +12016,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41631] = {
-			name = "Jewelcrafting: Illuminated Gemstone",
 			tools = {41328, 41326},
 			item = 56005,
 			reagents = {
@@ -13352,7 +12026,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41633] = {
-			name = "Jewelcrafting: Burning Star Gemstone",
 			tools = {41328, 41326},
 			item = 56056,
 			reagents = {
@@ -13362,7 +12035,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41635] = {
-			name = "Jewelcrafting: Brilliant Opal Gemstone",
 			tools = {41328, 41326},
 			item = 56008,
 			reagents = {
@@ -13372,7 +12044,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41637] = {
-			name = "Jewelcrafting: Elegant Emerald Gemstone",
 			tools = {41328, 41326},
 			item = 56009,
 			reagents = {
@@ -13382,7 +12053,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41639] = {
-			name = "Jewelcrafting: Shining Sapphire Gemstone",
 			tools = {41328, 41326},
 			item = 56007,
 			reagents = {
@@ -13392,7 +12062,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41641] = {
-			name = "Jewelcrafting: Unstable Arcane Gemstone",
 			tools = {41328, 41326},
 			item = 56011,
 			reagents = {
@@ -13402,7 +12071,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41643] = {
-			name = "Jewelcrafting: Glittering Sapphire Gemstone",
 			tools = {41328, 41326},
 			item = 56057,
 			reagents = {
@@ -13413,7 +12081,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41696] = {
-			name = "Jewelcrafting: Shimmering Diamond Band",
 			tools = {41326, 41328},
 			item = 56059,
 			reagents = {
@@ -13426,7 +12093,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41698] = {
-			name = "Jewelcrafting: Crown of Molten Ascension",
 			tools = {41326, 41328 },
 			item = 56060,
 			reagents = {
@@ -13439,7 +12105,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41700] = {
-			name = "Jewelcrafting: Embergem Cuffs",
 			tools = {41326, 41328 },
 			item = 56061,
 			reagents = {
@@ -13452,7 +12117,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41702] = {
-			name = "Jewelcrafting: Blackwing Signet of Command",
 			tools = {41326, 41328 },
 			item = 56062,
 			reagents = {
@@ -13465,7 +12129,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41704] = {
-			name = "Jewelcrafting: Talisman of Hinderance",
 			tools = {41326, 41328 },
 			item = 56063,
 			reagents = {
@@ -13478,7 +12141,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41706] = {
-			name = "Jewelcrafting: Mastercrafted Diamond Crown",
 			tools = {41326, 41328 },
 			item = 56064,
 			reagents = {
@@ -13491,7 +12153,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41708] = {
-			name = "Jewelcrafting: Opalstone Circle",
 			tools = {41326, 41328 },
 			item = 56065,
 			reagents = {
@@ -13504,7 +12165,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41710] = {
-			name = "Jewelcrafting: Deep Sapphire Circlet",
 			tools = {41326, 41328 },
 			item = 56066,
 			reagents = {
@@ -13515,7 +12175,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41712] = {
-			name = "Jewelcrafting: Dark Iron Signet Ring",
 			tools = {41326, 41328 },
 			item = 56067,
 			reagents = {
@@ -13525,7 +12184,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41714] = {
-			name = "Jewelcrafting: Opal Guided Bangles",
 			tools = {41326, 41328 },
 			item = 56068,
 			reagents = {
@@ -13537,7 +12195,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41716] = {
-			name = "Jewelcrafting: Crown of Elegance",
 			tools = {41326, 41328 },
 			item = 56069,
 			reagents = {
@@ -13549,7 +12206,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41718] = {
-			name = "Jewelcrafting: Ornate Mithril Bracelets",
 			tools = {41326, 41328 },
 			item = 56070,
 			reagents = {
@@ -13561,7 +12217,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41720] = {
-			name = "Jewelcrafting: Regal Twilight Staff",
 			tools = {41326, 41328 },
 			item = 56071,
 			reagents = {
@@ -13574,7 +12229,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41722] = {
-			name = "Jewelcrafting: Pendant of Instability",
 			tools = {41326, 41328 },
 			item = 56072,
 			reagents = {
@@ -13586,7 +12240,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41724] = {
-			name = "Jewelcrafting: Ornament of Restraint",
 			tools = {41326, 41328 },
 			item = 56073,
 			reagents = {
@@ -13598,7 +12251,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41726] = {
-			name = "Jewelcrafting: Hydrathorn Bracers",
 			tools = {55155},
 			item = 55330,
 			reagents = {
@@ -13608,7 +12260,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41728] = {
-			name = "Jewelcrafting: Blackrock Ironclamps",
 			tools = {55155, 41326},
 			item = 55331,
 			reagents = {
@@ -13620,7 +12271,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41730] = {
-			name = "Jewelcrafting: Monastery Emberbrace",
 			tools = {55155, 41326},
 			item = 55332,
 			reagents = {
@@ -13630,7 +12280,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41732] = {
-			name = "Jewelcrafting: Shadowmoon Orb",
 			tools = {55155},
 			item = 55333,
 			reagents = {
@@ -13640,7 +12289,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41734] = {
-			name = "Jewelcrafting: Fangclaw Relic",
 			tools = {55155},
 			item = 55334,
 			reagents = {
@@ -13653,7 +12301,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41736] = {
-			name = "Jewelcrafting: Netherbane Rod",
 			tools = {55155, 41326},
 			item = 55335,
 			reagents = {
@@ -13663,7 +12310,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41738] = {
-			name = "Jewelcrafting: Marine Root",
 			tools = {55155, 41326},
 			item = 55336,
 			reagents = {
@@ -13673,7 +12319,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41740] = {
-			name = "Jewelcrafting: Mistwood Tiara",
 			tools = {55155},
 			item = 55337,
 			reagents = {
@@ -13683,7 +12328,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41742] = {
-			name = "Jewelcrafting: Venomspire Diadem",
 			tools = {55155, 41326},
 			item = 55338,
 			reagents = {
@@ -13695,7 +12339,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41744] = {
-			name = "Jewelcrafting: Bloodfire Circlet",
 			tools = {55155, 41326},
 			item = 55339,
 			reagents = {
@@ -13705,7 +12348,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41746] = {
-			name = "Jewelcrafting: Shadowforged Eye",
 			tools = {55155},
 			item = 55340,
 			reagents = {
@@ -13717,7 +12359,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41748] = {
-			name = "Jewelcrafting: Totem of Self Preservation",
 			tools = {55155},
 			item = 55341,
 			reagents = {
@@ -13729,7 +12370,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41750] = {
-			name = "Jewelcrafting: Facetted Moonstone Brooch",
 			tools = {55155},
 			item = 55210,
 			reagents = {
@@ -13739,7 +12379,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41752] = {
-			name = "Jewelcrafting: Obsidian Brooch",
 			tools = {55155},
 			item = 55211,
 			reagents = {
@@ -13749,7 +12388,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41754] = {
-			name = "Jewelcrafting: Smoldering Brooch",
 			tools = {55155},
 			item = 55212,
 			reagents = {
@@ -13759,7 +12397,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41756] = {
-			name = "Jewelcrafting: Vitriol Brooch",
 			tools = {55155},
 			item = 55213,
 			reagents = {
@@ -13769,7 +12406,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41760] = {
-			name = "Jewelcrafting: Graceful Agate Gemstone",
 			tools = {55155, 41326},
 			item = 56074,
 			reagents = {
@@ -13779,7 +12415,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41762] = {
-			name = "Jewelcrafting: Dreary Opal Gemstone",
 			tools = {41327, 41328 },
 			item = 56075,
 			reagents = {
@@ -13789,7 +12424,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41764] = {
-			name = "Jewelcrafting: Resurged Topaz Gemstone",
 			tools = {41327, 41328 },
 			item = 56077,
 			reagents = {
@@ -13799,7 +12433,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41768] = {
-			name = "Jewelcrafting: Resilient Arcane Gemstone",
 			tools = {41327, 41328 },
 			item = 56076,
 			reagents = {
@@ -13810,7 +12443,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41770] = {
-			name = "Jewelcrafting: Dense Gemstone Cluster",
 			tools = {41328},
 			text = "May contain: Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal.",
 			item = 56019,
@@ -13820,7 +12452,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41774] = {
-			name = "Jewelcrafting: Spellweaver Pendant",
 			tools = {41328, 41327},
 			item = 56090,
 			reagents = {
@@ -13831,7 +12462,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41776] = {
-			name = "Jewelcrafting: Ring of Midnight",
 			tools = {55155, 41326},
 			item = 56091,
 			reagents = {
@@ -13842,7 +12472,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41778] = {
-			name = "Jewelcrafting: Stormcloud Shackles",
 			tools = {41328, 41327},
 			item = 56092,
 			reagents = {
@@ -13853,7 +12482,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41780] = {
-			name = "Jewelcrafting: Stormcloud Signet",
 			tools = {41328, 41327},
 			item = 56093,
 			reagents = {
@@ -13866,7 +12494,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41782] = {
-			name = "Jewelcrafting: Golden Runed Ring",
 			tools = {41328, 41327},
 			item = 56094,
 			reagents = {
@@ -13879,7 +12506,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41784] = {
-			name = "Jewelcrafting: Mana Binding Signet",
 			tools = {41328, 41326},
 			item = 56095,
 			reagents = {
@@ -13892,7 +12518,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41786] = {
-			name = "Jewelcrafting: Ornate Mithril Crown",
 			tools = {41328, 41326},
 			item = 56089,
 			reagents = {
@@ -13903,7 +12528,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41788] = {
-			name = "Jewelcrafting: Blazefury Circlet",
 			tools = {41328, 41326},
 			item = 55359,
 			reagents = {
@@ -13916,7 +12540,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41790] = {
-			name = "Jewelcrafting: Ring of Unleashed Potential",
 			tools = {41328, 41326},
 			item = 55360,
 			reagents = {
@@ -13929,7 +12552,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41792] = {
-			name = "Jewelcrafting: Empowered Domination Rod",
 			tools = {41328, 41326},
 			item = 55361,
 			reagents = {
@@ -13942,7 +12564,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41794] = {
-			name = "Jewelcrafting: Orb of Clairvoyance",
 			tools = {41328, 41326},
 			item = 55362,
 			reagents = {
@@ -13954,7 +12575,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41796] = {
-			name = "Jewelcrafting: Grail of Forgotten Memories",
 			tools = {41328, 41326},
 			item = 55363,
 			reagents = {
@@ -13967,7 +12587,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41798] = {
-			name = "Jewelcrafting: Guardbreaker Charm",
 			tools = {41328, 41326},
 			item = 55364,
 			reagents = {
@@ -13979,7 +12598,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41800] = {
-			name = "Jewelcrafting: Rudeus' Focusing Cane",
 			tools = {41328, 41326},
 			item = 55365,
 			reagents = {
@@ -13993,7 +12611,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41802] = {
-			name = "Jewelcrafting: Spire of Channeled Power",
 			tools = {41328, 41326},
 			item = 55366,
 			reagents = {
@@ -14006,7 +12623,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41804] = {
-			name = "Jewelcrafting: Bindings of Luminance",
 			tools = {41328, 41326},
 			item = 55367,
 			reagents = {
@@ -14018,7 +12634,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41806] = {
-			name = "Jewelcrafting: Crown of the Illustrious Queen",
 			tools = {41328, 41326},
 			item = 55368,
 			reagents = {
@@ -14031,7 +12646,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41808] = {
-			name = "Jewelcrafting: Mastercrafted Diamond Bangles",
 			tools = {41328, 41326},
 			item = 56096,
 			reagents = {
@@ -14044,7 +12658,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[41821] = {
-			name = "Jewelcrafting: Gorgeous Mountain Gemstone",
 			tools = {41328, 41326},
 			item = 61818,
 			reagents = {
@@ -14055,7 +12668,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45054] = {
-			name = "Cooking: Maritime Gumbo",
 			requires = L["Cooking Fire"],
 			item = 30818,
 			reagents = {
@@ -14064,10 +12676,8 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45057] = {
-			name = "Engineering: Unstable Mining Dynamite",
 			item = 51268,
-			craftQuantityMin = 1,
-			craftQuantityMax = 3,
+			quantity = {1,3},
 			reagents = {
 				{4359, 4},
 				{2589, 2},
@@ -14075,7 +12685,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45063] = {
-			name = "Blacksmithing: Blast Shield",
 			item = 51264,
 			reagents = {
 				{2840, 12},
@@ -14084,7 +12693,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45066] = {
-			name = "Tailoring: Gloves of Manathirst",
 			item = 51256,
 			reagents = {
 				{2996, 3},
@@ -14093,7 +12701,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45069] = {
-			name = "Leatherworking: Lynxstep Boots",
 			item = 51284,
 			reagents = {
 			},
@@ -14110,7 +12717,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45453] = {
-			name = "Tailoring: Dreamthread",
 			item = 61230,
 			reagents = {
 				{61198},
@@ -14119,7 +12725,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45455] = {
-			name = "Leatherworking: Dreamhide",
 			item = 61229,
 			reagents = {
 				{61198},
@@ -14128,7 +12733,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45457] = {
-			name = "Tailoring: Dreamthread Mantle",
 			item = 61360,
 			reagents = {
 				{61230, 20},
@@ -14140,7 +12744,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45459] = {
-			name = "Tailoring: Dreamthread Kilt",
 			item = 61361,
 			reagents = {
 				{61230, 14},
@@ -14152,7 +12755,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45461] = {
-			name = "Tailoring: Dreamthread Bracers",
 			item = 61362,
 			reagents = {
 				{61230, 8},
@@ -14162,7 +12764,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45463] = {
-			name = "Tailoring: Dreamthread Gloves",
 			item = 61363,
 			reagents = {
 				{61230, 8},
@@ -14173,7 +12774,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45465] = {
-			name = "Blacksmithing: Dreamsteel Mantle",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 61364,
@@ -14187,7 +12787,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45467] = {
-			name = "Blacksmithing: Dreamsteel Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 61365,
@@ -14199,7 +12798,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45469] = {
-			name = "Blacksmithing: Dreamsteel Bracers",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 61366,
@@ -14211,7 +12809,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45471] = {
-			name = "Blacksmithing: Dreamsteel Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 61367,
@@ -14224,7 +12821,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45473] = {
-			name = "Leatherworking: Dreamhide Mantle",
 			item = 61356,
 			reagents = {
 				{61229, 22},
@@ -14234,7 +12830,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45475] = {
-			name = "Leatherworking: Dreamhide Bracers",
 			item = 61357,
 			reagents = {
 				{61229, 8},
@@ -14244,7 +12839,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45477] = {
-			name = "Leatherworking: Dreamhide Leggings",
 			item = 61358,
 			reagents = {
 				{61229, 12},
@@ -14255,7 +12849,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45479] = {
-			name = "Leatherworking: Dreamhide Belt",
 			item = 61359,
 			reagents = {
 				{61229, 8},
@@ -14266,7 +12859,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45481] = {
-			name = "Engineering: Intricate Gyroscope Goggles",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 61187,
@@ -14280,7 +12872,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45483] = {
-			name = "Leatherworking: Inscribed Runic Bracers",
 			item = 61188,
 			reagents = {
 				{12810, 12},
@@ -14291,7 +12882,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45485] = {
-			name = "Tailoring: Gloves of Unwinding Mystery",
 			item = 61186,
 			reagents = {
 				{14048, 14},
@@ -14302,7 +12892,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45487] = {
-			name = "Blacksmithing: Dawnstone Hammer",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 61185,
@@ -14316,8 +12905,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45611] = {
-			name = "Poisons: Agitating Poison I",
-			text = "Coats a weapon with poison that lasts for 30 minutes.\nEach strike has a 20% chance of poisoning the enemy which instantly inflicts 67 to 86 Nature damage, and causes additional threat. 115 charges.",
 			item = 65032,
 			reagents = {
 				{2931, 2},
@@ -14335,7 +12922,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45627] = {
-			name = "Cooking: Gilneas Hot Stew",
 			requires = L["Cooking Fire"],
 			item = 84041,
 			reagents = {
@@ -14345,7 +12931,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[45989] = {
-			name = "Alchemy: Elixir of Greater Nature Power",
 			item = 50237,
 			reagents = {
 				{10286, 3},
@@ -14355,7 +12940,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46064] = {
-			name = "Survival: Dim Torch",
 			requires = L["Cooking Fire"],
 			item = 6182,
 			reagents = {
@@ -14363,7 +12947,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46066] = {
-			name = "Survival: Murloc's Flippers",
 			item = 65028,
 			reagents = {
 				{5785, 16},
@@ -14374,17 +12957,14 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46068] = {
-			name = "Survival: Cleaning Cloth",
-			text = "Cleans a weapon, removing any temporary enhancement that has been applied to it.",
 			item = 60001,
-			craftQuantityMin = 2,
+			quantity = 2,
 			reagents = {
 				{4306, 2},
 				{9260},
 			},
 		},
 		[46072] = {
-			name = "Survival: Traveler's Tent",
 			item = 51283,
 			reagents = {
 				{4470, 5},
@@ -14393,7 +12973,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46073] = {
-			name = "Survival: Fishing Boat",
 			item = 51282,
 			reagents = {
 				{4470, 20},
@@ -14402,7 +12981,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46074] = {
-			name = "Survival: Simple Wooden Planter",
 			item = 51705,
 			reagents = {
 				{4470, 10},
@@ -14410,7 +12988,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46075] = {
-			name = "Survival: Iron Lantern",
 			item = 2714,
 			reagents = {
 				{3575, 2},
@@ -14419,7 +12996,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46077] = {
-			name = "Survival: Repaired Electro-Lantern",
 			item = 65030,
 			reagents = {
 				{1630, 5},
@@ -14431,7 +13007,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46085] = {
-			name = "Cooking: Gurubashi Gumbo",
 			requires = L["Cooking Fire"],
 			item = 53015,
 			reagents = {
@@ -14444,7 +13019,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46610] = {
-			name = "Engineering: Battery-Powered Crowd Pummeler",
 			tools = {5956, 10498},
 			item = 60099,
 			reagents = {
@@ -14458,7 +13032,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46620] = {
-			name = "Leatherworking: Grifter's Boots",
 			item = 83405,
 			reagents = {
 				{4304, 7},
@@ -14466,7 +13039,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46621] = {
-			name = "Leatherworking: Grifter's Gauntlets",
 			item = 83404,
 			reagents = {
 				{4304, 6},
@@ -14474,7 +13046,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46622] = {
-			name = "Leatherworking: Grifter's Belt",
 			item = 83403,
 			reagents = {
 				{4234, 10},
@@ -14483,7 +13054,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46623] = {
-			name = "Leatherworking: Grifter's Leggings",
 			item = 83402,
 			reagents = {
 				{4304, 10},
@@ -14493,7 +13063,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46624] = {
-			name = "Leatherworking: Grifter's Tunic",
 			item = 83401,
 			reagents = {
 				{4304, 12},
@@ -14503,7 +13072,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46625] = {
-			name = "Leatherworking: Grifter's Cover",
 			item = 83400,
 			reagents = {
 				{4304, 8},
@@ -14513,7 +13081,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46626] = {
-			name = "Blacksmithing: Steel Plate Boots",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 83410,
@@ -14523,7 +13090,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46627] = {
-			name = "Blacksmithing: Steel Plate Gauntlets",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 83411,
@@ -14533,7 +13099,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46628] = {
-			name = "Blacksmithing: Steel Plate Legguards",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 83412,
@@ -14544,7 +13109,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46629] = {
-			name = "Blacksmithing: Steel Plate Armor",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 83413,
@@ -14556,7 +13120,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46630] = {
-			name = "Blacksmithing: Steel Plate Pauldrons",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 83414,
@@ -14568,7 +13131,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46631] = {
-			name = "Blacksmithing: Steel Plate Barbute",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 83415,
@@ -14582,7 +13144,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46652] = {
-			name = "Blacksmithing: Untempered Runeblade",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60293,
@@ -14596,7 +13157,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46653] = {
-			name = "Leatherworking: Red Dragonscale Leggings",
 			item = 65000,
 			reagents = {
 				{8170, 35},
@@ -14607,7 +13167,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46654] = {
-			name = "Leatherworking: Red Dragonscale Shoulders",
 			item = 65001,
 			reagents = {
 				{8170, 30},
@@ -14618,7 +13177,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46655] = {
-			name = "Leatherworking: Red Dragonscale Boots",
 			item = 65002,
 			reagents = {
 				{8170, 30},
@@ -14629,7 +13187,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46656] = {
-			name = "Tailoring: Robe of Sacrifice",
 			item = 65003,
 			reagents = {
 				{14048, 12},
@@ -14642,7 +13199,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46657] = {
-			name = "Ornate Bloodstone Dagger",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 65004,
@@ -14658,7 +13214,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46659] = {
-			name = "Leatherworking: Stormscale Leggings",
 			item = 65006,
 			reagents = {
 				{8170, 30},
@@ -14670,7 +13225,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46661] = {
-			name = "Blacksmithing: Dream's Herald",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 65008,
@@ -14684,7 +13238,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46663] = {
-			name = "Blacksmithing: Copper Knuckles",
 			item = 65010,
 			reagents = {
 				{2840, 8},
@@ -14692,7 +13245,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46664] = {
-			name = "Blacksmithing: Sharpened Claw",
 			item = 65011,
 			reagents = {
 				{2840, 8},
@@ -14701,7 +13253,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46665] = {
-			name = "Blacksmithing: Bronze Bruiser",
 			item = 65012,
 			reagents = {
 				{2841, 6},
@@ -14712,7 +13263,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[46695] = {
-			name = "Leatherworking: Dragonscale Leggings",
 			item = 65019,
 			reagents = {
 				{4304, 30},
@@ -14722,7 +13272,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47015] = {
-			name = "Leatherworking: Primalist's Gloves",
 			item = 81061,
 			reagents = {
 				{8170, 6},
@@ -14731,7 +13280,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47016] = {
-			name = "Leatherworking: Primalist's Shoulders",
 			item = 81062,
 			reagents = {
 				{8170, 12},
@@ -14740,7 +13288,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47017] = {
-			name = "Leatherworking: Primalist's Headdress",
 			item = 81063,
 			reagents = {
 				{8170, 10},
@@ -14750,7 +13297,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47018] = {
-			name = "Leatherworking: Primalist's Pants",
 			item = 81064,
 			reagents = {
 				{8170, 12},
@@ -14759,7 +13305,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47019] = {
-			name = "Leatherworking: Primalist's Vest",
 			item = 81066,
 			reagents = {
 				{8170, 24},
@@ -14769,7 +13314,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47020] = {
-			name = "Leatherworking: Primalist's Boots",
 			item = 81065,
 			reagents = {
 				{8170, 8},
@@ -14778,7 +13322,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47021] = {
-			name = "Blacksmithing: Rune-Etched Greaves",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60288,
@@ -14791,7 +13334,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47022] = {
-			name = "Blacksmithing: Rune-Etched Legplates",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60289,
@@ -14804,7 +13346,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47023] = {
-			name = "Blacksmithing: Rune-Etched Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60290,
@@ -14818,7 +13359,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47024] = {
-			name = "Blacksmithing: Rune-Etched Crown",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60291,
@@ -14830,7 +13370,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47025] = {
-			name = "Blacksmithing: Rune-Etched Mantle",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60292,
@@ -14843,7 +13382,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47026] = {
-			name = "Blacksmithing: Rune-Etched Grips",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60287,
@@ -14855,7 +13393,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47027] = {
-			name = "Engineering: Portable Wormhole Generator - Stormwind",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 51312,
@@ -14867,7 +13404,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47028] = {
-			name = "Engineering: Portable Wormhole Generator - Orgrimmar",
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 51313,
@@ -14879,7 +13415,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47029] = {
-			name = "Blacksmithing: Hateforge Helmet",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60573,
@@ -14891,7 +13426,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47030] = {
-			name = "Blacksmithing: Hateforge Cuirass",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60574,
@@ -14905,7 +13439,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47031] = {
-			name = "Blacksmithing: Hateforge Leggings",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60575,
@@ -14918,7 +13451,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47032] = {
-			name = "Blacksmithing: Hateforge Belt",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60576,
@@ -14930,7 +13462,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47033] = {
-			name = "Blacksmithing: Hateforge Grips",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60577,
@@ -14943,7 +13474,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47034] = {
-			name = "Blacksmithing: Hateforge Boots",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60578,
@@ -14956,7 +13486,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[47035] = {
-			name = "Leatherworking: Verdant Dreamer's Breastplate",
 			item = 65021,
 			reagents = {
 				{8211},
@@ -14968,7 +13497,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[49551] = {
-			name = "Cooking: Empowering Herbal Salad",
 			requires = L["Cooking Fire"],
 			item = 83309,
 			reagents = {
@@ -14979,7 +13507,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[54001] = {
-			name = "Leatherworking: Blue Dragonscale Boots",
 			item = 65015,
 			reagents = {
 				{8170, 24},
@@ -14989,7 +13516,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[54003] = {
-			name = "Blacksmithing: Fury of the Timbermaw",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 61648,
@@ -15000,7 +13526,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[54005] = {
-			name = "Blacksmithing: Pauldrons of the Timbermaw",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 61649,
@@ -15012,7 +13537,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[54007] = {
-			name = "Leatherworking: Corehound Gloves",
 			item = 65038,
 			reagents = {
 				{17010, 9},
@@ -15024,7 +13548,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[54009] = {
-			name = "Blacksmithing: Fiery Chain Breastplate",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 65039,
@@ -15035,7 +13558,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[54011] = {
-			name = "Tailoring: Flarecore Boots",
 			item = 65035,
 			reagents = {
 				{14342, 6},
@@ -15046,7 +13568,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[54013] = {
-			name = "Leatherworking: Chromatic Leggings",
 			item = 65036,
 			reagents = {
 				{17012, 6},
@@ -15058,7 +13579,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[54015] = {
-			name = "Leatherworking: Chromatic Leggings",
 			item = 65037,
 			reagents = {
 				{17011, 6},
@@ -15069,140 +13589,7 @@ GetSpellInfoAtlasLootDB = {
 				{15407, 4},
 			},
 		},
-		[55522] = {
-			name = "Leatherworking: Etheral Helmet",
-			item = 55522,
-			reagents = {
-				{61673, 5},
-				{15407, 2},
-				{12810, 8},
-				{14227, 1},
-			},
-		},
-		[55523] = {
-			name = "Leatherworking: Etheral Shoulder Pads",
-			item = 55523,
-			reagents = {
-				{61673, 4},
-				{15407, 2},
-				{12810, 7},
-				{14227, 2},
-			},
-		},
-		[55524] = {
-			name = "Leatherworking: Etheral Tunic",
-			item = 55524,
-			reagents = {
-				{61673, 8},
-				{15407, 4},
-				{12810, 12},
-				{14227, 1},
-			},
-		},
-		[55525] = {
-			name = "Leatherworking: Etheral Leggings",
-			item = 55525,
-			reagents = {
-				{61673, 6},
-				{15407, 3},
-				{12810, 13},
-				{14227, 2},
-			},
-		},
-		[55526] = {
-			name = "Blacksmithing: Otherworldly Coif",
-			requires = L["Anvil"],
-			tools = {5956},
-			item = 55526,
-			reagents = {
-				{12359, 6},
-				{12655, 1},
-				{12360, 1},
-				{12607, 1},
-			},
-		},
-		[55527] = {
-			name = "Blacksmithing: Otherworldly Spaulders",
-			requires = L["Anvil"],
-			tools = {5956},
-			item = 55527,
-			reagents = {
-				{12359, 5},
-				{12655, 1},
-				{12360, 1},
-				{12607, 3},
-			},
-		},
-		[55528] = {
-			name = "Blacksmithing: Otherworldly Breastplate",
-			requires = L["Anvil"],
-			tools = {5956},
-			item = 55528,
-			reagents = {
-				{12359, 6},
-				{12655, 1},
-				{12360, 2},
-				{12607, 2},
-			},
-		},
-		[55529] = {
-			name = "Blacksmithing: Otherworldly Leggings",
-			requires = L["Anvil"],
-			tools = {5956},
-			item = 55529,
-			reagents = {
-				{12359, 7},
-				{12655, 1},
-				{12360, 2},
-				{12607, 2},
-			},
-		},
-		[55530] = {
-			name = "Blacksmithing: Reflective Helmet",
-			requires = L["Anvil"],
-			tools = {5956},
-			item = 55530,
-			reagents = {
-				{12359, 6},
-				{12360, 2},
-				{12655, 7},
-			},
-		},
-		[55531] = {
-			name = "Blacksmithing: Reflective Pauldrons",
-			requires = L["Anvil"],
-			tools = {5956},
-			item = 55531,
-			reagents = {
-				{12359, 7},
-				{12360, 2},
-				{12655, 9},
-			},
-		},
-		[55532] = {
-			name = "Blacksmithing: Reflective Breastplate",
-			requires = L["Anvil"],
-			tools = {5956},
-			item = 55532,
-			reagents = {
-				{12359, 5},
-				{12360, 2},
-				{12655, 10},
-			},
-		},
-		[55533] = {
-			name = "Blacksmithing: Reflective Leggings",
-			requires = L["Anvil"],
-			tools = {5956},
-			item = 55533,
-			reagents = {
-				{12359, 7},
-				{12360, 2},
-				{12655, 12},
-			},
-		},
 		[57008] = {
-			name = "Leatherworking: Breastplate of the Earth",
 			item = 65022,
 			reagents = {
 				{4304, 40},
@@ -15212,7 +13599,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57010] = {
-			name = "Leatherworking: Boots of the Wind",
 			item = 65023,
 			reagents = {
 				{4304, 20},
@@ -15222,7 +13608,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57012] = {
-			name = "Leatherworking: Earthguard Tunic",
 			item = 65024,
 			reagents = {
 				{8170, 20},
@@ -15235,7 +13620,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57014] = {
-			name = "Leatherworking: Flamewrath Leggings",
 			item = 65025,
 			reagents = {
 				{8170, 20},
@@ -15248,7 +13632,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57016] = {
-			name = "Leatherworking: Depthstalker Helm",
 			item = 65026,
 			reagents = {
 				{8170, 15},
@@ -15261,7 +13644,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57018] = {
-			name = "Leatherworking: Windwalker Boots",
 			item = 65027,
 			reagents = {
 				{8170, 10},
@@ -15274,7 +13656,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57020] = {
-			name = "Tailoring: Dustguider Sash",
 			item = 60909,
 			reagents = {
 				{14048, 10},
@@ -15284,7 +13665,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57022] = {
-			name = "Leatherworking: Centaur Battle Harness",
 			item = 60910,
 			reagents = {
 				{8170, 20},
@@ -15294,7 +13674,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57024] = {
-			name = "Tailoring: Windbinder Gloves",
 			item = 60907,
 			reagents = {
 				{14048, 10},
@@ -15304,7 +13683,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57026] = {
-			name = "Blacksmithing: Mantle of Centaur Authority",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 60908,
@@ -15344,7 +13722,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57111] = {
-			name = "Alchemy: Potion of Quickness",
 			item = 61181,
 			reagents = {
 				{8846},
@@ -15354,7 +13731,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57113] = {
-			name = "Blacksmithing: Thorium Spurs",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 61182,
@@ -15366,7 +13742,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57115] = {
-			name = "Leatherworking: Enchanted Armor Kit",
 			item = 61183,
 			reagents = {
 				{12810, 3},
@@ -15375,7 +13750,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57129] = {
-			name = "Alchemy: Lucidity Potion",
 			item = 61225,
 			reagents = {
 				{730},
@@ -15385,7 +13759,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57131] = {
-			name = "Alchemy: Dreamshard Elixir",
 			item = 61224,
 			reagents = {
 				{61198},
@@ -15394,7 +13767,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57163] = {
-			name = "Blacksmithing: Copper Belt Buckle",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 61779,
@@ -15405,7 +13777,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57166] = {
-			name = "Blacksmithing: Bronze Belt Buckle",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 61780,
@@ -15416,7 +13787,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57169] = {
-			name = "Blacksmithing: Iron Belt Buckle",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 61781,
@@ -15427,7 +13797,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57172] = {
-			name = "Blacksmithing: Mithril Belt Buckle",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 61782,
@@ -15439,7 +13808,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57175] = {
-			name = "Blacksmithing: Thorium Belt Buckle",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 61783,
@@ -15451,7 +13819,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57178] = {
-			name = "Blacksmithing: Arcanite Belt Buckle",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 61784,
@@ -15464,7 +13831,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57181] = {
-			name = "Blacksmithing: Dreamsteel Belt Buckle",
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 61785,
@@ -15476,7 +13842,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57187] = {
-			name = "Blacksmithing: Towerforge Crown",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 60007,
@@ -15489,7 +13854,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57189] = {
-			name = "Blacksmithing: Towerforge Breastplate",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 60008,
@@ -15502,7 +13866,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57191] = {
-			name = "Blacksmithing: Towerforge Pauldrons",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 60009,
@@ -15515,7 +13878,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57193] = {
-			name = "Blacksmithing: Towerforge Demolisher",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 60010,
@@ -15529,7 +13891,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[57196] = {
-			name = "Bloody Belt Buckle",
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 61810,
@@ -15544,7 +13905,7 @@ GetSpellInfoAtlasLootDB = {
 			tools = {9149},
 			text = "Transmutes a Core of Earth into three Elemental Earth.",
 			item = 7067,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{7075},
 			},
@@ -15554,7 +13915,7 @@ GetSpellInfoAtlasLootDB = {
 			tools = {9149},
 			text = "Transmutes a Globe of Water into three Elemental Water.",
 			item = 7070,
-			craftQuantityMin = 3,
+			quantity = 3,
 			reagents = {
 				{7079},
 			},
@@ -15595,8 +13956,127 @@ GetSpellInfoAtlasLootDB = {
 				{14227, 2},
 			},
 		},
+		[57609] = {
+			item = 55522,
+			reagents = {
+				{61673, 5},
+				{15407, 2},
+				{12810, 8},
+				{14227, 1},
+			},
+		},
+		[57611] = {
+			item = 55523,
+			reagents = {
+				{61673, 4},
+				{15407, 2},
+				{12810, 7},
+				{14227, 2},
+			},
+		},
+		[57613] = {
+			item = 55524,
+			reagents = {
+				{61673, 8},
+				{15407, 4},
+				{12810, 12},
+				{14227, 1},
+			},
+		},
+		[57615] = {
+			item = 55525,
+			reagents = {
+				{61673, 6},
+				{15407, 3},
+				{12810, 13},
+				{14227, 2},
+			},
+		},
+		[57617] = {
+			requires = L["Anvil"],
+			tools = {5956},
+			item = 55526,
+			reagents = {
+				{12359, 6},
+				{12655, 1},
+				{12360, 1},
+				{12607, 1},
+			},
+		},
+		[57619] = {
+			requires = L["Anvil"],
+			tools = {5956},
+			item = 55527,
+			reagents = {
+				{12359, 5},
+				{12655, 1},
+				{12360, 1},
+				{12607, 3},
+			},
+		},
+		[57621] = {
+			requires = L["Anvil"],
+			tools = {5956},
+			item = 55528,
+			reagents = {
+				{12359, 6},
+				{12655, 1},
+				{12360, 2},
+				{12607, 2},
+			},
+		},
+		[57623] = {
+			requires = L["Anvil"],
+			tools = {5956},
+			item = 55529,
+			reagents = {
+				{12359, 7},
+				{12655, 1},
+				{12360, 2},
+				{12607, 2},
+			},
+		},
+		[57625] = {
+			requires = L["Anvil"],
+			tools = {5956},
+			item = 55530,
+			reagents = {
+				{12359, 6},
+				{12360, 2},
+				{12655, 7},
+			},
+		},
+		[57627] = {
+			requires = L["Anvil"],
+			tools = {5956},
+			item = 55531,
+			reagents = {
+				{12359, 7},
+				{12360, 2},
+				{12655, 9},
+			},
+		},
+		[57629] = {
+			requires = L["Anvil"],
+			tools = {5956},
+			item = 55532,
+			reagents = {
+				{12359, 5},
+				{12360, 2},
+				{12655, 10},
+			},
+		},
+		[57631] = {
+			requires = L["Anvil"],
+			tools = {5956},
+			item = 55533,
+			reagents = {
+				{12359, 7},
+				{12360, 2},
+				{12655, 12},
+			},
+		},
 		[57633] = {
-			name = "Tailoring: Ley-Kissed Drape",
 			item = 55534,
 			reagents = {
 				{61673, 4},
@@ -15607,7 +14087,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69420] = {
-			name = "Tailoring: Augerer's Boots",
 			item = 83288,
 			reagents = {
 				{4339, 2},
@@ -15618,7 +14097,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69421] = {
-			name = "Tailoring: Augerer's Gloves",
 			item = 83289,
 			reagents = {
 				{4339, 3},
@@ -15629,7 +14107,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69422] = {
-			name = "Tailoring: Augerer's Mantle",
 			item = 83290,
 			reagents = {
 				{4339, 3},
@@ -15640,7 +14117,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69423] = {
-			name = "Tailoring: Augerer's Trousers",
 			item = 83291,
 			reagents = {
 				{4339, 4},
@@ -15651,7 +14127,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69424] = {
-			name = "Tailoring: Augerer's Hat",
 			item = 83286,
 			reagents = {
 				{4339, 3},
@@ -15662,7 +14137,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69425] = {
-			name = "Tailoring: Augerer's Robe",
 			item = 83287,
 			reagents = {
 				{4339, 6},
@@ -15674,7 +14148,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69426] = {
-			name = "Tailoring: Diviner's Boots",
 			item = 83283,
 			reagents = {
 				{4339, 3},
@@ -15684,7 +14157,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69427] = {
-			name = "Tailoring: Diviner's Mitts",
 			item = 83284,
 			reagents = {
 				{4339, 3},
@@ -15694,7 +14166,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69428] = {
-			name = "Tailoring: Diviner's Epaulets",
 			item = 83285,
 			reagents = {
 				{4339, 6},
@@ -15705,7 +14176,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69429] = {
-			name = "Tailoring: Diviner's Pantaloons",
 			item = 83280,
 			reagents = {
 				{4339, 4},
@@ -15715,7 +14185,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69430] = {
-			name = "Tailoring: Diviner's Cowl",
 			item = 83282,
 			reagents = {
 				{4339, 4},
@@ -15725,7 +14194,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69431] = {
-			name = "Tailoring: Diviner's Robes",
 			item = 83281,
 			reagents = {
 				{4339, 10},
@@ -15737,7 +14205,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69432] = {
-			name = "Tailoring: Pillager's Shoes",
 			item = 83296,
 			reagents = {
 				{14048, 2},
@@ -15747,7 +14214,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69433] = {
-			name = "Tailoring: Pillager's Grips",
 			item = 83295,
 			reagents = {
 				{14048, 2},
@@ -15756,7 +14222,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69434] = {
-			name = "Tailoring: Pillager's Amice",
 			item = 83293,
 			reagents = {
 				{14048, 4},
@@ -15766,7 +14231,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69435] = {
-			name = "Tailoring: Pillager's Pantaloons",
 			item = 83297,
 			reagents = {
 				{14048, 4},
@@ -15776,7 +14240,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69436] = {
-			name = "Tailoring: Pillager's Hood",
 			item = 83292,
 			reagents = {
 				{14048, 5},
@@ -15785,7 +14248,6 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[69437] = {
-			name = "Tailoring: Pillager's Robe",
 			item = 83294,
 			reagents = {
 				{14048, 8},
@@ -15797,285 +14259,145 @@ GetSpellInfoAtlasLootDB = {
 			},
 		},
 		[100000] = {
-			name = "Mining: Copper Vein",
+			name = "Mining: Copper Vein", --1+
 			tools = {2901},
-			text = "May contain: Malachite, Tigerseye, Shadowgem.",
 			item = 2770,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			quantity = {2,4},
 		},
 		[100001] = {
-			name = "Mining: Incendicite Mineral Vein",
+			name = "Mining: Incendicite Mineral Vein", --65+
 			tools = {2901},
 			item = 3340,
-			craftQuantityMin = 1,
-			craftQuantityMax = 2,
+			quantity = {1,2},
 		},
 		[100002] = {
-			name = "Mining: Tin Vein",
+			name = "Mining: Tin Vein", --65+
 			tools = {2901},
-			text = "May contain: Moss Agate, Shadowgem, Jade, Lesser Moonstone.",
 			item = 2771,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			quantity = {2,4},
 		},
 		[100003] = {
-			name = "Mining: Silver Vein",
+			name = "Mining: Silver Vein", --75+
 			tools = {2901},
-			text = "May contain: Moss Agate, Shadowgem, Lesser Moonstone.",
 			item = 2775,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			quantity = {2,4},
 		},
 		[100004] = {
-			name = "Mining: Ooze Covered Silver Vein",
+			name = "Mining: Ooze Covered Silver Vein", --75+
 			tools = {2901},
-			text = "May contain: Moss Agate, Shadowgem, Lesser Moonstone.",
 			item = 2775,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			quantity = {2,4},
 		},
 		[100005] = {
-			name = "Mining: Lesser Bloodstone Deposit",
+			name = "Mining: Lesser Bloodstone Deposit", --75+
 			tools = {2901},
 			item = 4278,
-			craftQuantityMin = 1,
-			craftQuantityMax = 3,
+			quantity = {1,3},
 		},
 		[100006] = {
-			name = "Mining: Iron Deposit",
+			name = "Mining: Iron Deposit", --125+
 			tools = {2901},
-			text = "May contain: Jade, Citrine, Lesser Moonstone, Aquamarine.",
 			item = 2772,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			quantity = {2,4},
 		},
 		[100007] = {
-			name = "Mining: Indurium Mineral Vein",
+			name = "Mining: Ooze Covered Iron Deposit", --125+
+			tools = {2901},
+			item = 2772,
+			quantity = {2,4},
+		},
+		[100008] = {
+			name = "Mining: Indurium Mineral Vein", --125+
 			tools = {2901},
 			item = 5833,
 		},
-		[100008] = {
-			name = "Mining: Gold Vein",
-			tools = {2901},
-			text = "May contain: Jade, Citrine, Lesser Moonstone.",
-			item = 2776,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
-		},
 		[100009] = {
-			name = "Mining: Ooze Covered Gold Vein",
+			name = "Mining: Gold Vein", --155+
 			tools = {2901},
-			text = "May contain: Jade, Citrine, Lesser Moonstone.",
 			item = 2776,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			quantity = {2,4},
 		},
 		[100010] = {
-			name = "Mining: Mithril Deposit",
+			name = "Mining: Ooze Covered Gold Vein", --155+
 			tools = {2901},
-			text = "May contain: Citrine, Aquamarine, Star Ruby, Black Vitriol.",
-			item = 3858,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			item = 2776,
+			quantity = {2,4},
 		},
 		[100011] = {
-			name = "Mining: Ooze Covered Mithril Deposit",
+			name = "Mining: Mithril Deposit", --175+
 			tools = {2901},
-			text = "May contain: Citrine, Aquamarine, Star Ruby, Black Vitriol.",
 			item = 3858,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			quantity = {2,4},
 		},
 		[100012] = {
-			name = "Mining: Truesilver Deposit",
+			name = "Mining: Ooze Covered Mithril Deposit", --175+
 			tools = {2901},
-			text = "May contain: Citrine, Aquamarine, Star Ruby.",
-			item = 7911,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			item = 3858,
+			quantity = {2,4},
 		},
 		[100013] = {
-			name = "Mining: Ooze Covered Truesilver Deposit",
+			name = "Mining: Truesilver Deposit", --230+
 			tools = {2901},
-			text = "May contain: Citrine, Aquamarine, Star Ruby.",
 			item = 7911,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			quantity = {2,4},
 		},
 		[100014] = {
-			name = "Mining: Dark Iron Deposit",
+			name = "Mining: Ooze Covered Truesilver Deposit", --230+
 			tools = {2901},
-			text = "May contain: Black Vitriol, Blood of the Mountain, Black Diamond, Arcane Crystal.",
-			item = 11370,
-			craftQuantityMin = 2,
-			craftQuantityMax = 4,
+			item = 7911,
+			quantity = {2,4},
 		},
 		[100015] = {
-			name = "Mining: Small Thorium Vein",
+			name = "Mining: Dark Iron Deposit", --230+
 			tools = {2901},
-			text = "May contain: Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Black Vitriol, Arcane Crystal.",
-			item = 10620,
-			craftQuantityMin = 2,
-			craftQuantityMax = 3,
+			item = 11370,
+			quantity = {2,4},
 		},
 		[100016] = {
-			name = "Mining: Ooze Covered Thorium Vein",
+			name = "Mining: Small Thorium Vein", --245+
 			tools = {2901},
-			text = "May contain: Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Black Vitriol, Arcane Crystal.",
 			item = 10620,
-			craftQuantityMin = 2,
-			craftQuantityMax = 3,
+			quantity = {2,3},
 		},
 		[100017] = {
-			name = "Mining: Rich Thorium Vein",
+			name = "Mining: Ooze Covered Thorium Vein", --245+
 			tools = {2901},
-			text = "May contain: Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal.",
 			item = 10620,
-			craftQuantityMin = 4,
-			craftQuantityMax = 5,
+			quantity = {2,3},
 		},
 		[100018] = {
-			name = "Mining: Ooze Covered Rich Thorium Vein",
+			name = "Mining: Rich Thorium Vein", --275+
 			tools = {2901},
-			text = "May contain: Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal.",
 			item = 10620,
-			craftQuantityMin = 4,
-			craftQuantityMax = 5,
+			quantity = {4,5},
 		},
 		[100019] = {
-			name = "Mining: Hakkari Thorium Vein",
+			name = "Mining: Ooze Covered Rich Thorium Vein", --275+
 			tools = {2901},
-			text = "May contain: Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal.",
 			item = 10620,
-			craftQuantityMin = 4,
-			craftQuantityMax = 5,
+			quantity = {4,5},
 		},
 		[100020] = {
-			name = "Mining: Hakkari Thorium Vein",
+			name = "Mining: Hakkari Thorium Vein", --275+
 			tools = {2901},
-			text = "May contain: Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal.",
-			item = 19774,
-			craftQuantityMin = 1,
-			craftQuantityMax = 2,
+			item = 10620,
+			quantity = {4,5},
 		},
 		[100021] = {
-			name = "Mining: Small Obsidian Chunk",
+			name = "Mining: Small Obsidian Chunk", --305+
 			tools = {2901},
-			text = "May contain: Essence of Earth, Huge Emerald, Azerothian Diamond, Arcane Crystal.",
 			item = 22202,
 		},
 		[100022] = {
-			name = "Mining: Small Obsidian Chunk",
+			name = "Mining: Large Obsidian Chunk", --305+
 			tools = {2901},
-			text = "May contain: Essence of Earth, Huge Emerald, Azerothian Diamond, Arcane Crystal.",
 			item = 22203,
-			craftQuantityMin = 0,
-			craftQuantityMax = 1,
+			quantity = {1,3},
 		},
 		[100023] = {
-			name = "Mining: Large Obsidian Chunk",
+			name = "Mining: Gemstone Deposit", --310+
 			tools = {2901},
-			text = "May contain: Essence of Earth, Huge Emerald, Azerothian Diamond, Arcane Crystal.",
-			item = 22202,
-			craftQuantityMin = 1,
-			craftQuantityMax = 3,
-		},
-		[100024] = {
-			name = "Mining: Large Obsidian Chunk",
-			tools = {2901},
-			text = "May contain: Essence of Earth, Huge Emerald, Azerothian Diamond, Arcane Crystal.",
-			item = 22203,
-			craftQuantityMin = 0,
-			craftQuantityMax = 1,
-		},
-		[100025] = {
-			name = "Mining: Gemstone Deposit",
-			tools = {2901},
-			text = "May contain: .",
-			item = 5,
-			craftQuantityMin = 0,
-			craftQuantityMax = 1,
-		},
-		[100030] = {
-			name = "Mining: Copper Vein",
-			tools = {2901},
-			text = "May contain: Malachite, Tigerseye, Shadowgem.",
-			item = 2835,
-			craftQuantityMin = 1,
-			craftQuantityMax = 2,
-		},
-		[100031] = {
-			name = "Mining: Tin Vein",
-			tools = {2901},
-			text = "May contain: Moss Agate, Shadowgem, Jade, Lesser Moonstone.",
-			item = 2836,
-			craftQuantityMin = 1,
-			craftQuantityMax = 2,
-		},
-		[100032] = {
-			name = "Mining: Iron Deposit",
-			tools = {2901},
-			text = "May contain: Jade, Citrine, Lesser Moonstone, Aquamarine.",
-			item = 2838,
-			craftQuantityMin = 1,
-			craftQuantityMax = 3,
-		},
-		[100033] = {
-			name = "Mining: Mithril Deposit",
-			tools = {2901},
-			text = "May contain: Citrine, Aquamarine, Star Ruby, Black Vitriol.",
-			item = 7912,
-			craftQuantityMin = 1,
-			craftQuantityMax = 4,
-		},
-		[100034] = {
-			name = "Mining: Ooze Covered Mithril Deposit",
-			tools = {2901},
-			text = "May contain: Citrine, Aquamarine, Star Ruby, Black Vitriol.",
-			item = 7912,
-			craftQuantityMin = 1,
-			craftQuantityMax = 4,
-		},
-		[100035] = {
-			name = "Mining: Small Thorium Vein",
-			tools = {2901},
-			text = "May contain: Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Black Vitriol, Arcane Crystal.",
-			item = 12365,
-			craftQuantityMin = 1,
-			craftQuantityMax = 3,
-		},
-		[100036] = {
-			name = "Mining: Ooze Covered Thorium Vein",
-			tools = {2901},
-			text = "May contain: Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Black Vitriol, Arcane Crystal.",
-			item = 12365,
-			craftQuantityMin = 1,
-			craftQuantityMax = 3,
-		},
-		[100037] = {
-			name = "Mining: Rich Thorium Vein",
-			tools = {2901},
-			text = "May contain: Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal.",
-			item = 12365,
-			craftQuantityMin = 1,
-			craftQuantityMax = 3,
-		},
-		[100038] = {
-			name = "Mining: Ooze Covered Rich Thorium Vein",
-			tools = {2901},
-			text = "May contain: Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal.",
-			item = 12365,
-			craftQuantityMin = 1,
-			craftQuantityMax = 3,
-		},
-		[100039] = {
-			name = "Mining: Hakkari Thorium Vein",
-			tools = {2901},
-			text = "May contain: Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal.",
-			item = 12365,
-			craftQuantityMin = 1,
-			craftQuantityMax = 3,
+			item = 55252,
 		},
 	},
 }

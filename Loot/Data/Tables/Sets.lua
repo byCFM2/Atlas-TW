@@ -1637,8 +1637,6 @@ Sets = {
 		{ id = 47041 }, -- Avenger's Boots
 	},
 	Artifacts = {
-		{},
-		{ id = 12947 }, -- Alex's Ring of Audacity
 		{ id = 18582 }, -- The Twin Blades of Azzinoth
 		{ id = 18583 }, -- Warglaive of Azzinoth (Right)
 		{ id = 18584 }, -- Warglaive of Azzinoth (Left)
@@ -1654,8 +1652,7 @@ Sets = {
 		{ id = 18563 }, -- Bindings of the Windseeker
 		{ id = 17782 }, -- Talisman of Binding Shard
 		{},
-		{ id = 61184 }, -- The Scythe of Elune
-		{ id = 55505 }, -- The Scythe of Elune
+		{ id = 61184, container={55505} }, -- The Scythe of Elune, The Scythe of Elune
 		{},
 		{ id = 61733, container = {61732} }, --Formula: Eternal Dreamstone Shard, Eternal Dreamstone Shard 
 		{},
@@ -1672,7 +1669,6 @@ Sets = {
 		{},
 		{},
 		{},
-		{ id = 23051 }, -- Glaive of the Defender
 		{ id = 13262 }, -- Ashbringer
 	},
 	RareMounts = {
@@ -1682,37 +1678,35 @@ Sets = {
 		{ id = 19872 }, -- Armored Razzashi Raptor
 		{ id = 19902 }, -- Swift Zulian Tiger
 		{ id = 13086 }, -- Reins of the Winterspring Frostsaber
-		{ id = 23720 }, -- Swift Riding Turtle
 		{},
 		{ id = 21218 }, -- Blue Qiraji Resonating Crystal
 		{ id = 21323 }, -- Green Qiraji Resonating Crystal
-		{ id = 21321 }, -- Red Qiraji Resonating Crystal
 		{ id = 21324 }, -- Yellow Qiraji Resonating Crystal
+		{ id = 21321 }, -- Red Qiraji Resonating Crystal
+		{},
+		{ id = 23720 }, -- Swift Riding Turtle
 	},
 	OldMounts = {
 		{ name = BF["Alliance"], icon = "INV_BannerPVP_02" },
-		{ id = 12302 }, -- Reins of the Frostsaber
-		{ id = 12303 }, -- Reins of the Nightsaber
+		{},
+		{ id = 12302 }, -- Ancient Frostsaber
+		{ id = 12303 }, -- Black Zulian Panter
 		{ id = 13327 }, -- Icy Blue Mechanostrider Mod A
 		{ id = 13326 }, -- White Mechanostrider Mod A
-		{ id = 13328 }, -- Black Ram
+		{ id = 13328 }, -- Ancient Black Ram
 		{ id = 13329 }, -- Frost Ram
-		{ id = 12354 }, -- Palomino Bridle
-		{ id = 12353 }, -- White Stallion Bridle
+		{ id = 12354 }, -- Palomino Stallion
+		{ id = 12353 }, -- White Stallion
 		{},
-		{},
-		{},
-		{},
-		{},
-		{},
+		{ id = 18768 }, -- Armored Dawnsaber
+		{ id = 12327 }, -- Golden Leopard
+		{ id = 12325 }, -- Spotted Leopard
+		{ id = 12326 }, -- Tawny Leopard
 		{ name = BF["Horde"], icon = "INV_BannerPVP_01" },
 		{},
-		{ id = 13317 }, -- Whistle of the Ivory Raptor
-		{ id = 8586 }, -- Whistle of the Mottled Red Raptor
-		{ id = 12351 }, -- Horn of the Arctic Wolf
-		{ id = 12330 }, -- Horn of the Red Wolf
-		{ id = 15292 }, -- Green Kodo
-		{ id = 15293 }, -- Teal Kodo
+		{ id = 12351 }, -- Ancient Arctic Wolf
+		{ id = 15292 }, -- Ancient Green Kodo
+		{ id = 15293 }, -- Ancient Teal Kodo
 	},
 	PvPMountsSets = {
 		{ name = BF["Alliance"], icon = "INV_BannerPVP_02" },
@@ -1737,27 +1731,6 @@ Sets = {
 		{ id = 18247 }, -- Black War Kodo
 		{ id = 18246 }, -- Whistle of the Black War Raptor
 		{ id = 18248 }, -- Red Skeletal Warhorse
-	},
-	UnobMounts = {
-		{ name = BF["Alliance"], icon = "INV_BannerPVP_02" },
-		{ id = 18768 }, -- Reins of the Swift Dawnsaber
-		{},
-		{ id = 12327 }, -- Reins of the Golden Sabercat
-		{ id = 12325 }, -- Reins of the Primal Leopard
-		{ id = 12326 }, -- Reins of the Tawny Sabercat
-		{},
-		{},
-		{},
-		{},
-		{},
-		{},
-		{},
-		{},
-		{},
-		{ name = L["Misc"], icon = "INV_Jewelry_Talisman_08" },
-		{ id = 13318 }, -- Extravagant Ivory Raptor
-		{},
-		{ id = 8628 }, -- Reins of the Spotted Nightsaber
 	},
 	Tabards = {
 		{ id = 15196 }, -- Private's Tabard

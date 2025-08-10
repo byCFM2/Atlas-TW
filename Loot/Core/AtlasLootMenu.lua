@@ -32,7 +32,7 @@ function AtlasLoot_PrepMenu(backPage, title, menu)
     end
     if menu then
         AtlasTWCharDB.LastBoss = menu or nil
-        AtlasTWCharDB.LastBossText = title or "nil"
+        AtlasTWCharDB.LastBossText = title or ""
     end
     if backPage then
         AtlasLootItemsFrame_BACK:Show()
@@ -44,12 +44,12 @@ function AtlasLoot_PrepMenu(backPage, title, menu)
     AtlasLootItemsFrame_NEXT:Hide()
     AtlasLootItemsFrame_PREV:Hide()
 
-    AtlasLoot_LootPageName:SetText("|cffFFFFFF" .. title)
+    AtlasLoot_LootPageName:SetText(title)
     AtlasLootItemsFrame:Show()
 end
 
 function AtlasLoot_ShowMenu(menuData, options)
-    print("Show Menu:"..menuData[4].name)
+    print("Show Menu:"..(menuData[4] and menuData[4].name or "no data for 4 element"))
 
     options = options or {}
     local maxItems = options.maxItems or 30

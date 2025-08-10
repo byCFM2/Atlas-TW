@@ -1056,7 +1056,7 @@ AtlasLoot_TableNames = {
 	["FirstAid1"] = { BS["First Aid"], "AtlasLootCrafting" },
 	--Survival
 	["Survival1"] = { BS["Survival"], "AtlasLootCrafting" },
-	["Survival2"] = { BS["Garderning"], "AtlasLootCrafting" },
+	["Survival2"] = { BS["Gardening"], "AtlasLootCrafting" },
 	--Poisons
 	["Poisons1"] = { BC["Rogue"]..": "..BS["Poisons"], "AtlasLootCrafting" },
 
@@ -2284,7 +2284,7 @@ AtlasLoot_TableNamesBoss = {
 		["FirstAid1"] = { BS["First Aid"], "AtlasLootCrafting" },
 		--Survival
 		["Survival1"] = { BS["Survival"], "AtlasLootCrafting" },
-		["Survival2"] = { BS["Garderning"], "AtlasLootCrafting" },
+		["Survival2"] = { BS["Gardening"], "AtlasLootCrafting" },
 		--Poisons
 		["Poisons1"] = { BC["Rogue"]..": "..BS["Poisons"], "AtlasLootCrafting" },
 	},

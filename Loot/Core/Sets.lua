@@ -19,7 +19,7 @@ end
 
 AtlasTW.Loot.SetsMenuData = {
     { name = L["Pre 60 Sets"], icon = "Interface\\Icons\\INV_Sword_43", lootpage = "Pre60Set" },
-    { name = L["Zul'Gurub Sets"], icon = "Interface\\Icons\\INV_Sword_55", lootpage = "ZgSet" },
+    { name = L["Zul'Gurub Sets"], icon = "Interface\\Icons\\INV_Sword_55", lootpage = "ZGSet" },
     { name = L["Ruins of Ahn'Qiraj Sets"], icon = "Interface\\Icons\\INV_Axe_15", lootpage = "Aq20Set" },
     { name = L["Temple of Ahn'Qiraj Sets"], icon = "Interface\\Icons\\INV_Sword_59", lootpage = "Aq40Set" },
     { name = L["Tower of Karazhan Sets"], icon = "Interface\\Icons\\INV_Staff_Medivh", lootpage = "K40Set" },
@@ -45,26 +45,12 @@ AtlasTW.Loot.SetsMenuData = {
     { name = L["Rare Pets"], icon = "Interface\\Icons\\Ability_Seal", lootpage = "RarePets" },
     { name = L["Rare Mounts"], icon = "Interface\\Icons\\INV_Misc_QirajiCrystal_05", lootpage = "RareMounts" },
     { name = L["Old Mounts"], icon = "Interface\\Icons\\Ability_Mount_RidingHorse", lootpage = "OldMounts" },
-    { name = L["Unobtainable Mounts"], icon = "Interface\\Icons\\Ability_Mount_Whitetiger", lootpage = "UnobMounts" },
     { name = L["Tabards"], icon = "Interface\\Icons\\INV_Shirt_GuildTabard_01", lootpage = "Tabards" },
 }
 
 function AtlasLootSetMenu()
     CreateMenu(L["Collections"], AtlasTW.Loot.SetsMenuData)
 end
-
---[[ local worldEpicsMenuData = {
-    {},
-    {},
-    {},
-    { name = L["Level 30-39"], icon = "Interface\\Icons\\INV_Jewelry_Ring_15", lootpage = "WorldEpics1" },
-    { name = L["Level 40-49"], icon = "Interface\\Icons\\INV_Staff_29", lootpage = "WorldEpics2" },
-    { name = L["Level 50-60"], icon = "Interface\\Icons\\INV_Sword_19", lootpage = "WorldEpics3" },
-}
-
-function AtlasLootWorldEpicsMenu()
-    CreateMenu(L["World Epics"], worldEpicsMenuData, "Collections", L["Collections"])
-end ]]
 
 local worldBluesMenuData = {
     {},
@@ -163,7 +149,6 @@ function AtlasLootWarriorSetMenu()
 end
 
 local pre60SetsMenuData = {
-    {},
     { name = BIS["Defias Leather"], extra = "The Deadmines", icon = "Interface\\Icons\\INV_Pants_12", lootpage = "Deadmines" },
     { name = BIS["Embrace of the Viper"], extra = "Wailing Caverns", icon = "Interface\\Icons\\INV_Shirt_16", lootpage = "Wailing" },
     { name = BIS["Chain of the Scarlet Crusade"], extra = "Scarlet Monastery", icon = "Interface\\Icons\\INV_Gauntlets_19", lootpage = "Scarlet" },
@@ -172,14 +157,11 @@ local pre60SetsMenuData = {
     { name = BIS["The Gladiator"], extra = "Blackrock Depths", icon = "Interface\\Icons\\INV_Helmet_01", lootpage = "TheGladiator" },
     { name = BIS["Ironweave Battlesuit"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Boots_Cloth_05", lootpage = "Ironweave" },
     { name = BIS["The Postmaster"], extra = "Stratholme", icon = "Interface\\Icons\\INV_Boots_02", lootpage = "Strat" },
-    { name = BZ["Scholomance"].." "..L["Sets"], extra = "Schoolomance", icon = "Interface\\Icons\\INV_Shoulder_02", lootpage = "Scholo" },
+    { name = BZ["Scholomance"].." "..L["Sets"], extra = "Scholomance", icon = "Interface\\Icons\\INV_Shoulder_02", lootpage = "Scholo" },
     { name = L["Scourge Invasion"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Jewelry_Talisman_13", lootpage = "ScourgeInvasion" },
     {},
     { name = BIS["Spider's Kiss"], extra = "Lower Blackrock Spire", icon = "Interface\\Icons\\INV_Weapon_ShortBlade_16", lootpage = "SpiderKiss" },
     { name = BIS["Dal'Rend's Arms"], extra = "Upper Blackrock Spire", icon = "Interface\\Icons\\INV_Sword_43", lootpage = "DalRend" },
-    { name = L["Zul'Gurub Rings"], extra = "Zul'Gurub", icon = "Interface\\Icons\\INV_Bijou_Orange", lootpage = "ZGRings" },
-    { name = BIS["Primal Blessing"], extra = "Zul'Gurub", icon = "Interface\\Icons\\INV_Weapon_Hand_01", lootpage = "PrimalBlessing" },
-    { name = BIS["The Twin Blades of Hakkari"], extra = "Zul'Gurub", icon = "Interface\\Icons\\INV_Sword_55", lootpage = "HakkariBlades" },
     { name = BIS["Shard of the Gods"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_MonsterScales_15", lootpage = "ShardOfGods" },
     { name = BIS["Spirit of Eskhandar"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_MonsterClaw_04", lootpage = "SpiritofEskhandar" },
 }
@@ -218,7 +200,7 @@ local function CreateDungeonSetMenu(dungeonName)
 		if classInfo.name then
         	local lootpage = dungeonName .. classInfo.name
         	local container = data[lootpage .. "C"]
-			if AtlasLoot_Data[lootpage] then
+			if data[lootpage] then
 				menuData[i] = {
 					name = classInfo.color .. BC[classInfo.name],
 					icon = classInfo.icon,

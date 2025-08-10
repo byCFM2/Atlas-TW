@@ -17,12 +17,12 @@ AtlasTW.Loot.CraftingMenuData = {
     { name = BS["Engineering"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "Engineering" },
     { name = BS["Herbalism"], icon = "Interface\\Icons\\Trade_Herbalism", lootpage = "Herbalism" },
     { name = BS["Leatherworking"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "Leatherworking" },
-    { name = BS["Mining"], icon = "Interface\\Icons\\Trade_Mining", lootpage = "Mining" },
+    { name = BS["Mining"]..", "..BS["Smelting"], icon = "Interface\\Icons\\Trade_Mining", lootpage = "Mining" },
     { name = BS["Tailoring"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "Tailoring" },
     { name = BS["Jewelcrafting"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "Jewelcrafting" },
     { name = BS["Cooking"], icon = "Interface\\Icons\\INV_Misc_Food_15", lootpage = "Cooking" },
     { name = BS["First Aid"], icon = "Interface\\Icons\\Spell_Holy_SealOfSacrifice", lootpage = "FirstAid" },
-    { name = BS["Survival"], icon = "Interface\\Icons\\Trade_Survival", lootpage = "Survival" },
+    { name = BS["Survival"]..", "..BS["Gardening"], icon = "Interface\\Icons\\Trade_Survival", lootpage = "Survival" },
     {},
     { name = BS["Poisons"], extraText = BC["Rogue"], icon = "Interface\\Icons\\Trade_BrewPoison", lootpage = "Poisons" },
     {},
@@ -104,48 +104,49 @@ end
 
 local alchemyMenuData = {
     {},
-    { name = BS["Alchemy"]..": "..L["Apprentice"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "AlchemyApprentice" },
-    { name = BS["Alchemy"]..": "..L["Journeyman"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "AlchemyJourneyman" },
-    { name = BS["Alchemy"]..": "..L["Expert"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "AlchemyExpert" },
-    { name = BS["Alchemy"]..": "..L["Artisan"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "AlchemyArtisan" },
+    { name = BS["Alchemy"]..": "..L["Apprentice"], lootpage = "AlchemyApprentice" },
+    { name = BS["Alchemy"]..": "..L["Journeyman"], lootpage = "AlchemyJourneyman" },
+    { name = BS["Alchemy"]..": "..L["Expert"], lootpage = "AlchemyExpert" },
+    { name = BS["Alchemy"]..": "..L["Artisan"], lootpage = "AlchemyArtisan" },
     {},
-    { name = BS["Alchemy"]..": "..L["Flasks"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "AlchemyFlasks" },
-    { name = BS["Alchemy"]..": "..L["Protection Potions"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "AlchemyProtectionPots" },
-    { name = BS["Alchemy"]..": "..L["Healing and Mana Potions"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "AlchemyHealingAndMana" },
-    { name = BS["Alchemy"]..": "..L["Transmutes"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "AlchemyTransmutes" },
-    { name = BS["Alchemy"]..": "..L["Defensive Potions and Elixirs"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "AlchemyDefensive" },
-    { name = BS["Alchemy"]..": "..L["Offensive Potions and Elixirs"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "AlchemyOffensive" },
-    { name = BS["Alchemy"]..": "..L["Other"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "AlchemyOther" },
+    { name = BS["Alchemy"]..": "..L["Flasks"], lootpage = "AlchemyFlasks" },
+    { name = BS["Alchemy"]..": "..L["Protection Potions"], lootpage = "AlchemyProtectionPots" },
+    { name = BS["Alchemy"]..": "..L["Healing and Mana Potions"], lootpage = "AlchemyHealingAndMana" },
+    { name = BS["Alchemy"]..": "..L["Transmutes"], lootpage = "AlchemyTransmutes" },
+    { name = BS["Alchemy"]..": "..L["Defensive Potions and Elixirs"], lootpage = "AlchemyDefensive" },
+    { name = BS["Alchemy"]..": "..L["Offensive Potions and Elixirs"], lootpage = "AlchemyOffensive" },
+    { name = BS["Alchemy"]..": "..L["Other"], lootpage = "AlchemyOther" },
 }
 
 function AtlasLoot_AlchemyMenu()
 	AtlasLoot_PrepMenu("Crafting", BS["Alchemy"])
-    AtlasLoot_ShowMenu(alchemyMenuData, { maxItems = table.getn(alchemyMenuData) })
+    AtlasLoot_ShowMenu(alchemyMenuData, { maxItems = table.getn(alchemyMenuData), defaultIcon = "Interface\\Icons\\Trade_Alchemy" })
+
 end
 
 local smithingMenuData = {
     {},
-    { name = BS["Blacksmithing"]..": "..L["Apprentice"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingApprentice" },
-    { name = BS["Blacksmithing"]..": "..L["Journeyman"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingJourneyman" },
-    { name = BS["Blacksmithing"]..": "..L["Expert"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingExpert" },
-    { name = BS["Blacksmithing"]..": "..L["Artisan"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingArtisan" },
+    { name = BS["Blacksmithing"]..": "..L["Apprentice"], lootpage = "SmithingApprentice" },
+    { name = BS["Blacksmithing"]..": "..L["Journeyman"], lootpage = "SmithingJourneyman" },
+    { name = BS["Blacksmithing"]..": "..L["Expert"], lootpage = "SmithingExpert" },
+    { name = BS["Blacksmithing"]..": "..L["Artisan"], lootpage = "SmithingArtisan" },
     {},
-    { name = BS["Blacksmithing"]..": "..L["Helm"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingHelm" },
-    { name = BS["Blacksmithing"]..": "..L["Shoulders"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingShoulders" },
-    { name = BS["Blacksmithing"]..": "..L["Chest"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingChest" },
-    { name = BS["Blacksmithing"]..": "..L["Bracers"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingBracers" },
-    { name = BS["Blacksmithing"]..": "..L["Gloves"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingGloves" },
-    { name = BS["Blacksmithing"]..":"..L["Belt"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingBelt" },
-    { name = BS["Blacksmithing"]..":"..L["Pants"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingPants" },
-    { name = BS["Blacksmithing"]..":"..L["Boots"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingBoots" },
-    { name = BS["Blacksmithing"]..":"..L["Belt Buckles"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingBuckles" },
+    { name = BS["Blacksmithing"]..": "..L["Helm"], lootpage = "SmithingHelm" },
+    { name = BS["Blacksmithing"]..": "..L["Shoulders"], lootpage = "SmithingShoulders" },
+    { name = BS["Blacksmithing"]..": "..L["Chest"], lootpage = "SmithingChest" },
+    { name = BS["Blacksmithing"]..": "..L["Bracers"], lootpage = "SmithingBracers" },
+    { name = BS["Blacksmithing"]..": "..L["Gloves"], lootpage = "SmithingGloves" },
+    { name = BS["Blacksmithing"]..":"..L["Belt"], lootpage = "SmithingBelt" },
+    { name = BS["Blacksmithing"]..":"..L["Pants"], lootpage = "SmithingPants" },
+    { name = BS["Blacksmithing"]..":"..L["Boots"], lootpage = "SmithingBoots" },
+    { name = BS["Blacksmithing"]..":"..L["Belt Buckles"], lootpage = "SmithingBuckles" },
     {},
-    { name = BS["Blacksmithing"]..": "..L["Axes"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingAxes" },
-    { name = BS["Blacksmithing"]..": "..L["Swords"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingSwords" },
-    { name = BS["Blacksmithing"]..": "..L["Maces"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingMaces" },
-    { name = BS["Blacksmithing"]..": "..L["Fist"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingFist" },
-    { name = BS["Blacksmithing"]..": "..L["Daggers"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingDaggers" },
-    { name = BS["Blacksmithing"]..":"..L["Misc"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "SmithingMisc" },
+    { name = BS["Blacksmithing"]..": "..L["Axes"], lootpage = "SmithingAxes" },
+    { name = BS["Blacksmithing"]..": "..L["Swords"], lootpage = "SmithingSwords" },
+    { name = BS["Blacksmithing"]..": "..L["Maces"], lootpage = "SmithingMaces" },
+    { name = BS["Blacksmithing"]..": "..L["Fist"], lootpage = "SmithingFist" },
+    { name = BS["Blacksmithing"]..": "..L["Daggers"], lootpage = "SmithingDaggers" },
+    { name = BS["Blacksmithing"]..":"..L["Misc"], lootpage = "SmithingMisc" },
     {},
     { name = BS["Blacksmithing"]..": "..BS["Armorsmith"], icon = "Interface\\Icons\\INV_Chest_Plate04", lootpage = "Armorsmith" },
     { name = BS["Blacksmithing"]..": "..BS["Weaponsmith"], icon = "Interface\\Icons\\INV_Sword_25", lootpage = "Weaponsmith" },
@@ -156,45 +157,47 @@ local smithingMenuData = {
 
 function AtlasLoot_SmithingMenu()
 	AtlasLoot_PrepMenu("Crafting", BS["Blacksmithing"])
-    AtlasLoot_ShowMenu(smithingMenuData, { maxItems = table.getn(smithingMenuData) })
+    AtlasLoot_ShowMenu(smithingMenuData, { maxItems = table.getn(smithingMenuData), defaultIcon = "Interface\\Icons\\Trade_BlackSmithing" })
+
 end
 
 local enchantingMenuData = {
     {},
-    { name = BS["Enchanting"]..": "..L["Apprentice"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "EnchantingApprentice" },
-    { name = BS["Enchanting"]..": "..L["Journeyman"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "EnchantingJourneyman" },
-    { name = BS["Enchanting"]..": "..L["Expert"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "EnchantingExpert" },
-    { name = BS["Enchanting"]..": "..L["Artisan"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "EnchantingArtisan" },
+    { name = BS["Enchanting"]..": "..L["Apprentice"], lootpage = "EnchantingApprentice" },
+    { name = BS["Enchanting"]..": "..L["Journeyman"], lootpage = "EnchantingJourneyman" },
+    { name = BS["Enchanting"]..": "..L["Expert"], lootpage = "EnchantingExpert" },
+    { name = BS["Enchanting"]..": "..L["Artisan"], lootpage = "EnchantingArtisan" },
     {},
-    { name = BS["Enchanting"]..": "..L["Cloak"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "EnchantingCloak" },
-    { name = BS["Enchanting"]..": "..L["Chest"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "EnchantingChest" },
-    { name = BS["Enchanting"]..": "..L["Bracers"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "EnchantingBracer" },
-    { name = BS["Enchanting"]..": "..L["Gloves"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "EnchantingGlove" },
-    { name = BS["Enchanting"]..": "..L["Boots"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "EnchantingBoots" },
-    { name = BS["Enchanting"]..": "..L["2H Weapon"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "Enchanting2HWeapon" },
-    { name = BS["Enchanting"]..": "..L["Weapon"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "EnchantingWeapon" },
-    { name = BS["Enchanting"]..": "..L["Shield"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "EnchantingShield" },
-    { name = BS["Enchanting"]..": "..L["Misc"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "EnchantingMisc" },
+    { name = BS["Enchanting"]..": "..L["Cloak"], lootpage = "EnchantingCloak" },
+    { name = BS["Enchanting"]..": "..L["Chest"], lootpage = "EnchantingChest" },
+    { name = BS["Enchanting"]..": "..L["Bracers"], lootpage = "EnchantingBracer" },
+    { name = BS["Enchanting"]..": "..L["Gloves"], lootpage = "EnchantingGlove" },
+    { name = BS["Enchanting"]..": "..L["Boots"], lootpage = "EnchantingBoots" },
+    { name = BS["Enchanting"]..": "..L["2H Weapon"], lootpage = "Enchanting2HWeapon" },
+    { name = BS["Enchanting"]..": "..L["Weapon"], lootpage = "EnchantingWeapon" },
+    { name = BS["Enchanting"]..": "..L["Shield"], lootpage = "EnchantingShield" },
+    { name = BS["Enchanting"]..": "..L["Misc"], lootpage = "EnchantingMisc" },
 }
 
 function AtlasLoot_EnchantingMenu()
 	AtlasLoot_PrepMenu("Crafting", BS["Enchanting"])
-    AtlasLoot_ShowMenu(enchantingMenuData, { maxItems = table.getn(enchantingMenuData) })
+    AtlasLoot_ShowMenu(enchantingMenuData, { maxItems = table.getn(enchantingMenuData), defaultIcon = "Interface\\Icons\\Trade_Engraving" })
+
 end
 
 local engineeringMenuData = {
     {},
-    { name = BS["Engineering"]..": "..L["Apprentice"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "EngineeringApprentice" },
-    { name = BS["Engineering"]..": "..L["Journeyman"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "EngineeringJourneyman" },
-    { name = BS["Engineering"]..": "..L["Expert"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "EngineeringExpert" },
-    { name = BS["Engineering"]..": "..L["Artisan"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "EngineeringArtisan" },
+    { name = BS["Engineering"]..": "..L["Apprentice"], lootpage = "EngineeringApprentice" },
+    { name = BS["Engineering"]..": "..L["Journeyman"], lootpage = "EngineeringJourneyman" },
+    { name = BS["Engineering"]..": "..L["Expert"], lootpage = "EngineeringExpert" },
+    { name = BS["Engineering"]..": "..L["Artisan"], lootpage = "EngineeringArtisan" },
     {},
-    { name = BS["Engineering"]..": "..L["Equipment"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "EngineeringEquipment" },
-    { name = BS["Engineering"]..": "..L["Trinkets"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "EngineeringTrinkets" },
-    { name = BS["Engineering"]..": "..L["Explosives"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "EngineeringExplosives" },
-    { name = BS["Engineering"]..": "..L["Weapons"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "EngineeringWeapons" },
-    { name = BS["Engineering"]..": "..L["Parts"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "EngineeringParts" },
-    { name = BS["Engineering"]..": "..L["Misc"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "EngineeringMisc" },
+    { name = BS["Engineering"]..": "..L["Equipment"], lootpage = "EngineeringEquipment" },
+    { name = BS["Engineering"]..": "..L["Trinkets"], lootpage = "EngineeringTrinkets" },
+    { name = BS["Engineering"]..": "..L["Explosives"], lootpage = "EngineeringExplosives" },
+    { name = BS["Engineering"]..": "..L["Weapons"], lootpage = "EngineeringWeapons" },
+    { name = BS["Engineering"]..": "..L["Parts"], lootpage = "EngineeringParts" },
+    { name = BS["Engineering"]..": "..L["Misc"], lootpage = "EngineeringMisc" },
     {},
     {},
     {},
@@ -205,28 +208,29 @@ local engineeringMenuData = {
 
 function AtlasLoot_EngineeringMenu()
 	AtlasLoot_PrepMenu("Crafting", BS["Engineering"])
-    AtlasLoot_ShowMenu(engineeringMenuData, { maxItems = table.getn(engineeringMenuData) })
+    AtlasLoot_ShowMenu(engineeringMenuData, { maxItems = table.getn(engineeringMenuData), defaultIcon = "Interface\\Icons\\Trade_Engineering" })
+
 end
 
 local leatherworkingMenuData = {
     {},
-    { name = BS["Leatherworking"]..": "..L["Apprentice"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherApprentice" },
-    { name = BS["Leatherworking"]..": "..L["Journeyman"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherJourneyman" },
-    { name = BS["Leatherworking"]..": "..L["Expert"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherExpert" },
-    { name = BS["Leatherworking"]..": "..L["Artisan"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherArtisan" },
+    { name = BS["Leatherworking"]..": "..L["Apprentice"], lootpage = "LeatherApprentice" },
+    { name = BS["Leatherworking"]..": "..L["Journeyman"], lootpage = "LeatherJourneyman" },
+    { name = BS["Leatherworking"]..": "..L["Expert"], lootpage = "LeatherExpert" },
+    { name = BS["Leatherworking"]..": "..L["Artisan"], lootpage = "LeatherArtisan" },
     {},
-    { name = BS["Leatherworking"]..": "..L["Helm"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherHelm" },
-    { name = BS["Leatherworking"]..": "..L["Shoulders"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherShoulders" },
-    { name = BS["Leatherworking"]..": "..L["Cloak"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherCloak" },
-    { name = BS["Leatherworking"]..": "..L["Chest"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherChest" },
-    { name = BS["Leatherworking"]..": "..L["Bracers"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherBracers" },
-    { name = BS["Leatherworking"]..": "..L["Gloves"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherGloves" },
-    { name = BS["Leatherworking"]..": "..L["Belt"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherBelt" },
-    { name = BS["Leatherworking"]..": "..L["Pants"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherPants" },
-    { name = BS["Leatherworking"]..": "..L["Boots"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherBoots" },
+    { name = BS["Leatherworking"]..": "..L["Helm"], lootpage = "LeatherHelm" },
+    { name = BS["Leatherworking"]..": "..L["Shoulders"], lootpage = "LeatherShoulders" },
+    { name = BS["Leatherworking"]..": "..L["Cloak"], lootpage = "LeatherCloak" },
+    { name = BS["Leatherworking"]..": "..L["Chest"], lootpage = "LeatherChest" },
+    { name = BS["Leatherworking"]..": "..L["Bracers"], lootpage = "LeatherBracers" },
+    { name = BS["Leatherworking"]..": "..L["Gloves"], lootpage = "LeatherGloves" },
+    { name = BS["Leatherworking"]..": "..L["Belt"], lootpage = "LeatherBelt" },
+    { name = BS["Leatherworking"]..": "..L["Pants"], lootpage = "LeatherPants" },
+    { name = BS["Leatherworking"]..": "..L["Boots"], lootpage = "LeatherBoots" },
     {},
-    { name = BS["Leatherworking"]..": "..L["Bags"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherBags" },
-    { name = BS["Leatherworking"]..": "..L["Misc"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "LeatherMisc" },
+    { name = BS["Leatherworking"]..": "..L["Bags"], lootpage = "LeatherBags" },
+    { name = BS["Leatherworking"]..": "..L["Misc"], lootpage = "LeatherMisc" },
     {},
     { name = BS["Dragonscale Leatherworking"], icon = "Interface\\Icons\\INV_Misc_MonsterScales_03", lootpage = "Dragonscale" },
     { name = BS["Tribal Leatherworking"], icon = "Interface\\Icons\\Spell_Nature_NullWard", lootpage = "Tribal" },
@@ -235,12 +239,13 @@ local leatherworkingMenuData = {
 
 function AtlasLoot_LeatherworkingMenu()
 	AtlasLoot_PrepMenu("Crafting", BS["Leatherworking"])
-    AtlasLoot_ShowMenu(leatherworkingMenuData, { maxItems = table.getn(leatherworkingMenuData) })
+    AtlasLoot_ShowMenu(leatherworkingMenuData, { maxItems = table.getn(leatherworkingMenuData), defaultIcon = "Interface\\Icons\\INV_Misc_ArmorKit_17" })
+
 end
 
 local miningMenuData = {
     {},
-    { name = BS["Mining"], icon = "Interface\\Icons\\Trade_Mining", lootpage = "Mining" },
+    { name = BS["Mining"], icon = "Interface\\Icons\\Trade_Mining", lootpage = "MiningTable" },
     { name = BS["Smelting"], icon = "Interface\\Icons\\Spell_Fire_FlameBlades", lootpage = "Smelting" },
 }
 
@@ -251,77 +256,69 @@ end
 
 local tailoringMenuData = {
     {},
-    { name = BS["Tailoring"]..": "..L["Apprentice"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringApprentice" },
-    { name = BS["Tailoring"]..": "..L["Journeyman"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringJourneyman" },
-    { name = BS["Tailoring"]..": "..L["Expert"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringExpert" },
-    { name = BS["Tailoring"]..": "..L["Artisan"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringArtisan" },
+    { name = BS["Tailoring"]..": "..L["Apprentice"], lootpage = "TailoringApprentice" },
+    { name = BS["Tailoring"]..": "..L["Journeyman"], lootpage = "TailoringJourneyman" },
+    { name = BS["Tailoring"]..": "..L["Expert"], lootpage = "TailoringExpert" },
+    { name = BS["Tailoring"]..": "..L["Artisan"], lootpage = "TailoringArtisan" },
     {},
-    { name = BS["Tailoring"]..": "..L["Helm"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringHelm" },
-    { name = BS["Tailoring"]..": "..L["Shoulders"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringShoulders" },
-    { name = BS["Tailoring"]..": "..L["Cloak"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringCloak" },
-    { name = BS["Tailoring"]..": "..L["Chest"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringChest" },
-    { name = BS["Tailoring"]..": "..L["Bracers"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringBracers" },
-    { name = BS["Tailoring"]..": "..L["Gloves"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringGloves" },
-    { name = BS["Tailoring"]..": "..L["Belt"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringBelt" },
-    { name = BS["Tailoring"]..": "..L["Pants"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringPants" },
-    { name = BS["Tailoring"]..": "..L["Boots"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringBoots" },
+    { name = BS["Tailoring"]..": "..L["Helm"], lootpage = "TailoringHelm" },
+    { name = BS["Tailoring"]..": "..L["Shoulders"], lootpage = "TailoringShoulders" },
+    { name = BS["Tailoring"]..": "..L["Cloak"], lootpage = "TailoringCloak" },
+    { name = BS["Tailoring"]..": "..L["Chest"], lootpage = "TailoringChest" },
+    { name = BS["Tailoring"]..": "..L["Bracers"], lootpage = "TailoringBracers" },
+    { name = BS["Tailoring"]..": "..L["Gloves"], lootpage = "TailoringGloves" },
+    { name = BS["Tailoring"]..": "..L["Belt"], lootpage = "TailoringBelt" },
+    { name = BS["Tailoring"]..": "..L["Pants"], lootpage = "TailoringPants" },
+    { name = BS["Tailoring"]..": "..L["Boots"], lootpage = "TailoringBoots" },
     {},
-    { name = BS["Tailoring"]..": "..L["Shirt"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringShirt" },
-    { name = BS["Tailoring"]..": "..L["Bags"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringBags" },
-    { name = BS["Tailoring"]..": "..L["Misc"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "TailoringMisc" },
+    { name = BS["Tailoring"]..": "..L["Shirt"], lootpage = "TailoringShirt" },
+    { name = BS["Tailoring"]..": "..L["Bags"], lootpage = "TailoringBags" },
+    { name = BS["Tailoring"]..": "..L["Misc"], lootpage = "TailoringMisc" },
 }
 
 function AtlasLoot_TailoringMenu()
 	AtlasLoot_PrepMenu("Crafting", BS["Tailoring"])
-    AtlasLoot_ShowMenu(tailoringMenuData, { maxItems = table.getn(tailoringMenuData) })
+    AtlasLoot_ShowMenu(tailoringMenuData, { maxItems = table.getn(tailoringMenuData), defaultIcon = "Interface\\Icons\\Trade_Tailoring" })
+
 end
 
 local jewelcraftMenuData = {
     {},
-    { name = BS["Jewelcrafting"]..":"..L["Apprentice"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingApprentice" },
-    { name = BS["Jewelcrafting"]..":"..L["Journeyman"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingJourneyman" },
-    { name = BS["Jewelcrafting"]..":"..L["Expert"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingExpert" },
-    { name = BS["Jewelcrafting"]..":"..L["Artisan"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingArtisan" },
+    { name = BS["Jewelcrafting"]..": "..L["Apprentice"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingApprentice" },
+    { name = BS["Jewelcrafting"]..": "..L["Journeyman"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingJourneyman" },
+    { name = BS["Jewelcrafting"]..": "..L["Expert"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingExpert" },
+    { name = BS["Jewelcrafting"]..": "..L["Artisan"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingArtisan" },
     {},
-    { name = BS["Jewelcrafting"]..":"..L["Gemstones"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_01", lootpage = "JewelcraftingGemstones" },
-    { name = BS["Jewelcrafting"]..":"..L["Rings"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_01", lootpage = "JewelcraftingRings" },
-    { name = BS["Jewelcrafting"]..":"..L["Amulets"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_01", lootpage = "JewelcraftingAmulets" },
-    { name = BS["Jewelcrafting"]..":"..L["Head"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_01", lootpage = "JewelcraftingHelm" },
-    { name = BS["Jewelcrafting"]..":"..L["Bracers"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_01", lootpage = "JewelcraftingBracers" },
-    { name = BS["Jewelcrafting"]..":"..L["Off-hand"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_01", lootpage = "JewelcraftingOffHands" },
-    { name = BS["Jewelcrafting"]..":"..L["Staff"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_01", lootpage = "JewelcraftingStaves" },
-    { name = BS["Jewelcrafting"]..":"..L["Trinkets"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_01", lootpage = "JewelcraftingTrinkets" },
-    { name = BS["Jewelcrafting"]..":"..L["Misc"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_01", lootpage = "JewelcraftingMisc" },
+    { name = BS["Jewelcrafting"]..": "..L["Gemstones"], lootpage = "JewelcraftingGemstones" },
+    { name = BS["Jewelcrafting"]..": "..L["Rings"], lootpage = "JewelcraftingRings" },
+    { name = BS["Jewelcrafting"]..": "..L["Amulets"], lootpage = "JewelcraftingAmulets" },
+    { name = BS["Jewelcrafting"]..": "..L["Head"], lootpage = "JewelcraftingHelm" },
+    { name = BS["Jewelcrafting"]..": "..L["Bracers"], lootpage = "JewelcraftingBracers" },
+    { name = BS["Jewelcrafting"]..": "..L["Off-hand"], lootpage = "JewelcraftingOffHands" },
+    { name = BS["Jewelcrafting"]..": "..L["Staff"], lootpage = "JewelcraftingStaves" },
+    { name = BS["Jewelcrafting"]..": "..L["Trinkets"], lootpage = "JewelcraftingTrinkets" },
+    { name = BS["Jewelcrafting"]..": "..L["Misc"], lootpage = "JewelcraftingMisc" },
     {},
-    { name = BS["Jewelcrafting"]..":"..BS["Gemology"], icon = "Interface\\Icons\\INV_Misc_Gem_Variety_01", lootpage = "JewelcraftingGemology" },
-    { name = BS["Jewelcrafting"]..":"..BS["Goldsmithing"], icon = "Interface\\Icons\\INV_Jewelry_Ring_03", lootpage = "JewelcraftingGoldsmithing" },
+    { name = BS["Jewelcrafting"]..": "..BS["Gemology"], icon = "Interface\\Icons\\INV_Misc_Gem_Variety_01", lootpage = "JewelcraftingGemology" },
+    { name = BS["Jewelcrafting"]..": "..BS["Goldsmithing"], icon = "Interface\\Icons\\INV_Jewelry_Ring_03", lootpage = "JewelcraftingGoldsmithing" },
 }
 
 function AtlasLoot_JewelcraftingMenu()
 	AtlasLoot_PrepMenu("Crafting", BS["Jewelcrafting"])
-    AtlasLoot_ShowMenu(jewelcraftMenuData, { maxItems = table.getn(jewelcraftMenuData) })
+    AtlasLoot_ShowMenu(jewelcraftMenuData, { maxItems = table.getn(jewelcraftMenuData), defaultIcon = "Interface\\Icons\\INV_Jewelry_Necklace_01" })
+
 end
 
 local cookingMenuData = {
     {},
-    { name = BS["Cooking"]..": "..L["Apprentice"], icon = "Interface\\Icons\\INV_Misc_Food_15", lootpage = "CookingApprentice" },
-    { name = BS["Cooking"]..": "..L["Journeyman"], icon = "Interface\\Icons\\INV_Misc_Food_15", lootpage = "CookingJourneyman" },
-    { name = BS["Cooking"]..": "..L["Expert"], icon = "Interface\\Icons\\INV_Misc_Food_15", lootpage = "CookingExpert" },
-    { name = BS["Cooking"]..": "..L["Artisan"], icon = "Interface\\Icons\\INV_Misc_Food_15", lootpage = "CookingArtisan" },
+    { name = BS["Cooking"]..": "..L["Apprentice"], lootpage = "CookingApprentice" },
+    { name = BS["Cooking"]..": "..L["Journeyman"], lootpage = "CookingJourneyman" },
+    { name = BS["Cooking"]..": "..L["Expert"], lootpage = "CookingExpert" },
+    { name = BS["Cooking"]..": "..L["Artisan"], lootpage = "CookingArtisan" },
 }
 
 function AtlasLoot_CookingMenu()
 	AtlasLoot_PrepMenu("Crafting", BS["Cooking"])
-    AtlasLoot_ShowMenu(cookingMenuData, { maxItems = table.getn(cookingMenuData) })
-end
+    AtlasLoot_ShowMenu(cookingMenuData, { maxItems = table.getn(cookingMenuData), defaultIcon = "Interface\\Icons\\INV_Misc_Food_15" })
 
-local survivalMenuData = {
-    {},
-    { name = BS["Survival"], icon = "Interface\\Icons\\Trade_Survival", lootpage = "Survival" },
-    { name = BS["Garderning"], icon = "Interface\\Icons\\trade_herbalism", lootpage = "Survival2" },
-}
-
-function AtlasLoot_SurvivalMenu()
-	AtlasLoot_PrepMenu("Crafting", BS["Survival"])
-    AtlasLoot_ShowMenu(survivalMenuData, { maxItems = table.getn(survivalMenuData) })
 end

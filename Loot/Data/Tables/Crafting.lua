@@ -372,7 +372,6 @@ local craftingTable = {
 		{ id=7748, skill={60,105,125,145} }, --Enchant Chest - Lesser Health
 		{ id=7771, skill={70,110,130,150} }, --Enchant Cloak - Minor Protection
 		{ id=14807, skill={70,110,130,150} }, --Greater Magic Wand
-		{ name = L["Apprentice"], icon = "Trade_Engraving" },
 		{ id=45071, skill={75,115,135,155} }, --Enchant 2H Weapon - Minor Intellect
 	},
 
@@ -1012,15 +1011,15 @@ local craftingTable = {
 		{ id=21161, skill={300,325,337,350} }, --Sulfuron Hammer
 		{ id=54009, skill={300,325,337,350} }, --Fiery Chain Breastplate
 		{ id=57196, skill={300,300,300,300} }, --Bloody Belt Buckle
-		{ id=55526, skill={300,320,330,340} }, --Otherworldly Coif
-		{ id=55527, skill={300,320,330,340} }, --Otherworldly Spaulders
-		{ id=55528, skill={300,320,330,340} }, --Otherworldly Breastplate
-		{ id=55529, skill={300,320,330,340} }, --Otherworldly Leggings
-		{ id=55530, skill={300,320,330,340} }, --Reflective Helmet
+		{ id=57617, skill={300,315,322,330} }, --Otherworldly Coif
+		{ id=57619, skill={300,315,322,330} }, --Otherworldly Spaulders
+		{ id=57621, skill={300,315,322,330} }, --Otherworldly Breastplate
+		{ id=57623, skill={300,315,322,330} }, --Otherworldly Leggings
+		{ id=57625, skill={300,315,322,330} }, --Reflective Helmet
 		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
-		{ id=55531, skill={300,320,330,340} }, --Reflective Pauldrons
-		{ id=55532, skill={300,320,330,340} }, --Reflective Breastplate
-		{ id=55533, skill={300,320,330,340} }, --Reflective Leggings
+		{ id=57627, skill={300,315,322,330} }, --Reflective Pauldrons
+		{ id=57629, skill={300,315,322,330} }, --Reflective Breastplate
+		{ id=57631, skill={300,315,322,330} }, --Reflective Leggings
 		{ id=57181, skill={300,300,305,310} }, --Dreamsteel Belt Buckle
 		{ id=45471, skill={300,325,337,350} }, --Dreamsteel Boots
 		{ id=45469, skill={300,325,337,350} }, --Dreamsteel Bracers
@@ -1056,9 +1055,9 @@ local craftingTable = {
 		{ id=16729, skill={300,320,330,340} }, --Lionheart Helm
 		{ id=16741, skill={300,320,330,340} }, --Stronghold Gauntlets
 		{ id=27829, skill={300,320,330,340} }, --Titanic Leggings
-		{ id=57189, skill={300,325,337,350} }, --Towerforge Breastplate
-		{ id=57187, skill={300,325,337,350} }, --Towerforge Crown
-		{ id=57191, skill={300,325,337,350} }, --Towerforge Pauldrons
+		{ id=57189, skill={300,310,315,320} }, --Towerforge Breastplate
+		{ id=57187, skill={300,310,315,320} }, --Towerforge Crown
+		{ id=57191, skill={300,310,315,320} }, --Towerforge Pauldrons
 	},
 
 	Weaponsmith = {
@@ -1075,7 +1074,7 @@ local craftingTable = {
 		{ id=16995, skill={300,320,330,340} }, --Heartseeker
 		{ id=23638, skill={300,320,330,340} }, --Black Amnesty
 		{ id=23639, skill={300,320,330,340} }, --Blackfury
-		{ id=46657, skill={300,320,330,340} }, --Ornate Bloodstone Dagger
+		{ id=46657, skill={300,300,315,330} }, --Ornate Bloodstone Dagger
 	},
 
 	Axesmith = {
@@ -1095,8 +1094,8 @@ local craftingTable = {
 		{ id=16993, skill={300,320,330,340} }, --Masterwork Stormhammer
 		{ id=23650, skill={300,320,330,340} }, --Ebon Hand
 		{ id=27830, skill={300,320,330,340} }, --Persuader
-		{ id=57193, skill={300,325,337,350} }, --Towerforge Demolisher
-		{ id=45487, skill={300,325,337,350} }, --Dawnstone Hammer
+		{ id=57193, skill={300,310,315,320} }, --Towerforge Demolisher
+		{ id=45487, skill={300,315,330,345} }, --Dawnstone Hammer
 	},
 
 	Swordsmith = {
@@ -1132,11 +1131,11 @@ local craftingTable = {
 		{ id=16742, skill={300,320,330,340} }, --Enchanted Thorium Helm
 		{ id=16728, skill={300,320,330,340} }, --Helm of the Great Chief
 		{ id=16724, skill={300,320,330,340} }, --Whitesoul Helm
-		{ id=55526, skill={300,320,330,340} }, --Otherworldly Coif
-		{ id=55530, skill={300,320,330,340} }, --Reflective Helmet
+		{ id=57617, skill={300,315,322,330} }, --Otherworldly Coif
+		{ id=57625, skill={300,315,322,330} }, --Reflective Helmet
 		{ id=23636, skill={300,320,330,340} }, --Dark Iron Helm
 		{ id=16729, skill={300,320,330,340} }, --Lionheart Helm
-		{ id=57187, skill={300,325,337,350} }, --Towerforge Crown
+		{ id=57187, skill={300,310,315,320} }, --Towerforge Crown
 	},
 
 	SmithingShoulders = {
@@ -1160,10 +1159,10 @@ local craftingTable = {
 		{ id=57026, skill={300,320,330,340} }, --Mantle of Centaur Authority
 		{ id=47025, skill={300,320,330,340} }, --Rune-Etched Mantle
 		{ id=54005, skill={300,325,337,350} }, --Pauldrons of the Timbermaw
-		{ id=55527, skill={300,320,330,340} }, --Otherworldly Spaulders
-		{ id=55531, skill={300,320,330,340} }, --Reflective Pauldrons
+		{ id=57619, skill={300,315,322,330} }, --Otherworldly Spaulders
+		{ id=57627, skill={300,315,322,330} }, --Reflective Pauldrons
 		{ id=20873, skill={300,320,330,340} }, --Fiery Chain Shoulders
-		{ id=57191, skill={300,325,337,350} }, --Towerforge Pauldrons
+		{ id=57191, skill={300,310,315,320} }, --Towerforge Pauldrons
 		{ id=45465, skill={300,325,337,350} }, --Dreamsteel Mantle
 	},
 
@@ -1201,14 +1200,14 @@ local craftingTable = {
 		{ name = L["Chest"], icon = "Trade_BlackSmithing" },
 		{ id=28461, skill={300,320,330,340} }, --Ironvine Breastplate
 		{ id=47023, skill={300,320,330,340} }, --Rune-Etched Breastplate
-		{ id=55528, skill={300,320,330,340} }, --Otherworldly Breastplate
-		{ id=55532, skill={300,320,330,340} }, --Reflective Breastplate
+		{ id=57621, skill={300,315,322,330} }, --Otherworldly Breastplate
+		{ id=57629, skill={300,315,322,330} }, --Reflective Breastplate
 		{ id=28242, skill={300,320,330,340} }, --Icebane Breastplate
 		{ id=27590, skill={300,320,330,340} }, --Obsidian Mail Tunic
 		{ id=27587, skill={300,320,330,340} }, --Thick Obsidian Breastplate
 		{ id=54009, skill={300,325,337,350} }, --Fiery Chain Breastplate
 		{ id=16746, skill={300,320,330,340} }, --Invulnerable Mail
-		{ id=57189, skill={300,325,337,350} }, --Towerforge Breastplate
+		{ id=57189, skill={300,310,315,320} }, --Towerforge Breastplate
 	},
 
 	SmithingBracers = {
@@ -1295,8 +1294,8 @@ local craftingTable = {
 		{ id=24140, skill={300,320,330,340} }, --Darksoul Leggings
 		{ id=47022, skill={300,320,330,340} }, --Rune-Etched Legplates
 		{ id=16744, skill={300,320,330,340} }, --Enchanted Thorium Leggings
-		{ id=55529, skill={300,320,330,340} }, --Otherworldly Leggings
-		{ id=55533, skill={300,320,330,340} }, --Reflective Leggings
+		{ id=57623, skill={300,315,322,330} }, --Otherworldly Leggings
+		{ id=57631, skill={300,315,322,330} }, --Reflective Leggings
 		{ id=45467, skill={300,325,337,350} }, --Dreamsteel Leggings
 		{ id=20876, skill={300,320,330,340} }, --Dark Iron Leggings
 		{ id=27829, skill={300,320,330,340} }, --Titanic Leggings
@@ -1698,10 +1697,10 @@ local craftingTable = {
 		{ id=22923, skill={300,320,330,340} }, --Swift Flight Bracers
 		{ id=23704, skill={300,320,330,340} }, --Timbermaw Brawlers
 		{ name = L["Artisan"], icon = "INV_Misc_ArmorKit_17" },
-		{ id=55522, skill={300,300,300,300} }, --Ethereal Helmet
-		{ id=55523, skill={300,300,300,300} }, --Ethereal Shoulder Pads
-		{ id=55524, skill={300,300,300,300} }, --Ethereal Tunic
-		{ id=55525, skill={300,300,300,300} }, --Ethereal Leggings
+		{ id=57609, skill={300,315,322,330} }, --Ethereal Helmet
+		{ id=57611, skill={300,315,322,330} }, --Ethereal Shoulder Pads
+		{ id=57613, skill={300,315,322,330} }, --Ethereal Tunic
+		{ id=57615, skill={300,315,322,330} }, --Ethereal Leggings
 		{ id=57115, skill={300,320,330,340} }, --Enchanted Armor Kit
 		{ id=28224, skill={300,320,330,340} }, --Icy Scale Bracers
 		{ id=28222, skill={300,320,330,340} }, --Icy Scale Breastplate
@@ -1731,9 +1730,9 @@ local craftingTable = {
 		{ id=19085, skill={290,310,320,330} }, --Black Dragonscale Breastplate
 		{ id=54001, skill={290,315,325,335} }, --Blue Dragonscale Boots
 		{ id=19089, skill={295,315,325,335} }, --Blue Dragonscale Shoulders
-		{ id=46655, skill={295,300,300,300} }, --Red Dragonscale Boots
-		{ id=46653, skill={295,300,300,300} }, --Red Dragonscale Leggings
-		{ id=46654, skill={300,300,300,300} }, --Red Dragonscale Shoulders
+		{ id=46655, skill={295,300,315,330} }, --Red Dragonscale Boots
+		{ id=46653, skill={295,315,322,330} }, --Red Dragonscale Leggings
+		{ id=46654, skill={300,315,322,330} }, --Red Dragonscale Shoulders
 		{ id=19107, skill={300,320,330,340} }, --Black Dragonscale Leggings
 		{ name = BS["Dragonscale Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=24654, skill={300,320,330,340} }, --Blue Dragonscale Leggings
@@ -1743,8 +1742,8 @@ local craftingTable = {
 		{ id=22926, skill={300,320,330,340} }, --Chromatic Cloak
 		{ id=23708, skill={300,320,330,340} }, --Chromatic Gauntlets
 		{ id=24703, skill={300,320,330,340} }, --Dreamscale Breastplate
-		{ id=46659, skill={300,300,300,300} }, --Stormscale Leggings
-		{ id=54013, skill={300,300,300,300} }, --Chromatic Leggings
+		{ id=46659, skill={300,315,322,330} }, --Stormscale Leggings
+		{ id=54013, skill={300,315,330,345} }, --Chromatic Leggings
 	},
 
 	Elemental = {
@@ -1766,11 +1765,11 @@ local craftingTable = {
 		{ name = BS["Elemental Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=20854, skill={300,320,330,340} }, --Molten Helm
 		{ id=22928, skill={300,320,330,340} }, --Shifting Cloak
-		{ id=57016, skill={300,300,300,300} }, --Depthstalker Helm
-		{ id=57012, skill={300,300,300,300} }, --Earthguard Tunic
-		{ id=57014, skill={300,300,300,300} }, --Flamewrath Leggings
-		{ id=57018, skill={300,300,300,300} }, --Windwalker Boots
-		{ id=54015, skill={300,300,300,300} }, --Molten Leggings
+		{ id=57016, skill={300,320,330,340} }, --Depthstalker Helm
+		{ id=57012, skill={300,320,330,340} }, --Earthguard Tunic
+		{ id=57014, skill={300,320,330,340} }, --Flamewrath Leggings
+		{ id=57018, skill={300,320,330,340} }, --Windwalker Boots
+		{ id=54015, skill={300,315,330,345} }, --Molten Leggings
 	},
 
 	Tribal = {
@@ -1794,8 +1793,8 @@ local craftingTable = {
 		{ id=19097, skill={300,320,330,340} }, --Devilsaur Leggings
 		{ id=23709, skill={300,320,330,340} }, --Corehound Belt
 		{ id=22927, skill={300,320,330,340} }, --Hide of the Wild
-		{ id=47035, skill={300,300,300,300} }, --Verdant Dreamer's Breastplate
-		{ id=54007, skill={300,300,300,300} }, --Corehound Gloves
+		{ id=47035, skill={300,300,320,340} }, --Verdant Dreamer's Breastplate
+		{ id=54007, skill={300,315,330,345} }, --Corehound Gloves
 	},
 
 	LeatherHelm = {
@@ -1813,10 +1812,10 @@ local craftingTable = {
 		{ id=19082, skill={290,310,320,330} }, --Runic Leather Headband
 		{ id=19088, skill={295,315,325,335} }, --Heavy Scorpid Helm
 		{ id=28472, skill={300,320,330,340} }, --Bramblewood Helm
-		{ id=55522, skill={300,300,300,300} }, --Ethereal Helmet
+		{ id=57609, skill={300,315,322,330} }, --Ethereal Helmet
 		{ name = L["Helm"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=20854, skill={300,320,330,340} }, --Molten Helm
-		{ id=57016, skill={300,300,300,300} }, --Depthstalker Helm
+		{ id=57016, skill={300,320,330,340} }, --Depthstalker Helm
 	},
 
 	LeatherShoulders = {
@@ -1839,9 +1838,9 @@ local craftingTable = {
 		{ id=19101, skill={300,320,330,340} }, --Volcanic Shoulders
 		{ id=24125, skill={300,320,330,340} }, --Blood Tiger Shoulders
 		{ id=23706, skill={300,320,330,340} }, --Golden Mantle of the Dawn
-		{ id=46654, skill={300,300,300,300} }, --Red Dragonscale Shoulders
+		{ id=46654, skill={300,315,322,330} }, --Red Dragonscale Shoulders
 		{ id=19094, skill={300,320,330,340} }, --Black Dragonscale Shoulders
-		{ id=55523, skill={300,300,300,300} }, --Ethereal Shoulder Pads
+		{ id=57611, skill={300,315,322,330} }, --Ethereal Shoulder Pads
 		{ id=45473, skill={300,320,330,340} }, --Dreamhide Mantle
 	},
 
@@ -1917,13 +1916,13 @@ local craftingTable = {
 		{ id=24848, skill={300,320,330,340} }, --Spitfire Breastplate
 		{ id=19054, skill={300,320,330,340} }, --Red Dragonscale Breastplate
 		{ id=19095, skill={300,320,330,340} }, --Living Breastplate
-		{ id=55524, skill={300,300,300,300} }, --Ethereal Tunic
+		{ id=57613, skill={300,315,322,330} }, --Ethereal Tunic
 		{ id=19104, skill={300,320,330,340} }, --Frostsaber Tunic
-		{ id=57012, skill={300,300,300,300} }, --Earthguard Tunic
+		{ id=57012, skill={300,320,330,340} }, --Earthguard Tunic
 		{ id=28222, skill={300,320,330,340} }, --Icy Scale Breastplate
 		{ id=28219, skill={300,320,330,340} }, --Polar Tunic
 		{ id=24703, skill={300,320,330,340} }, --Dreamscale Breastplate
-		{ id=47035, skill={300,300,300,300} }, --Verdant Dreamer's Breastplate
+		{ id=47035, skill={300,300,320,340} }, --Verdant Dreamer's Breastplate
 	},
 
 	LeatherBracers = {
@@ -1993,7 +1992,7 @@ local craftingTable = {
 		{ id=23708, skill={300,320,330,340} }, --Chromatic Gauntlets
 		{ id=28223, skill={300,320,330,340} }, --Icy Scale Gauntlets
 		{ id=28220, skill={300,320,330,340} }, --Polar Gloves
-		{ id=54007, skill={300,300,300,300} }, --Corehound Gloves
+		{ id=54007, skill={300,315,330,345} }, --Corehound Gloves
 	},
 
 	LeatherBelt = {
@@ -2053,17 +2052,17 @@ local craftingTable = {
 		{ id=19078, skill={285,305,315,325} }, --Living Leggings
 		{ id=19080, skill={285,305,315,325} }, --Warbear Woolies
 		{ id=19083, skill={290,310,320,330} }, --Wicked Leather Pants
-		{ id=46653, skill={295,300,300,300} }, --Red Dragonscale Leggings
+		{ id=46653, skill={295,315,322,330} }, --Red Dragonscale Leggings
 		{ id=19091, skill={300,320,330,340} }, --Runic Leather Pants
 		{ name = L["Pants"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=24654, skill={300,320,330,340} }, --Blue Dragonscale Leggings
 		{ id=19107, skill={300,320,330,340} }, --Black Dragonscale Leggings
 		{ id=19097, skill={300,320,330,340} }, --Devilsaur Leggings
-		{ id=55525, skill={300,300,300,300} }, --Ethereal Leggings
-		{ id=57014, skill={300,300,300,300} }, --Flamewrath Leggings
-		{ id=54015, skill={300,300,300,300} }, --Molten Leggings
-		{ id=46659, skill={300,300,300,300} }, --Stormscale Leggings
-		{ id=54013, skill={300,300,300,300} }, --Chromatic Leggings
+		{ id=57615, skill={300,315,322,330} }, --Ethereal Leggings
+		{ id=57014, skill={300,320,330,340} }, --Flamewrath Leggings
+		{ id=54015, skill={300,315,330,345} }, --Molten Leggings
+		{ id=46659, skill={300,315,322,330} }, --Stormscale Leggings
+		{ id=54013, skill={300,315,330,345} }, --Chromatic Leggings
 		{ id=45477, skill={300,320,330,340} }, --Dreamhide Leggings
 	},
 
@@ -2087,12 +2086,12 @@ local craftingTable = {
 		{ id=19066, skill={275,295,305,315} }, --Frostsaber Boots
 		{ id=23705, skill={290,310,320,330} }, --Dawn Treaders
 		{ id=54001, skill={290,315,325,335} }, --Blue Dragonscale Boots
-		{ id=46655, skill={295,300,300,300} }, --Red Dragonscale Boots
+		{ id=46655, skill={295,300,315,330} }, --Red Dragonscale Boots
 		{ id=20853, skill={295,315,325,335} }, --Corehound Boots
 		{ id=28473, skill={300,320,330,340} }, --Bramblewood Boots
 		{ id=22922, skill={300,320,330,340} }, --Mongoose Boots
 		{ id=20855, skill={300,320,330,340} }, --Black Dragonscale Boots
-		{ id=57018, skill={300,300,300,300} }, --Windwalker Boots
+		{ id=57018, skill={300,320,330,340} }, --Windwalker Boots
 	},
 
 	LeatherBags = {
@@ -2275,9 +2274,9 @@ local craftingTable = {
 		{ id=12067, skill={225,240,255,270} }, --Dreamweave Gloves
 		{ name = L["Expert"], icon = "Trade_Tailoring" },
 		{ id=12070, skill={225,240,255,270} }, --Dreamweave Vest
-		{ id=69426, skill={225,225,225,225} }, --Diviner's Boots
-		{ id=69427, skill={225,225,225,225} }, --Diviner's Mitts
-		{ id=69428, skill={230,230,230,230} }, --Diviner's Epaulets
+		{ id=69426, skill={225,235,240,245} }, --Diviner's Boots
+		{ id=69427, skill={225,235,240,245} }, --Diviner's Mitts
+		{ id=69428, skill={230,240,245,250} }, --Diviner's Epaulets
 	},
 	TailoringArtisan = {
 		{ name = L["Artisan"], icon = "Trade_Tailoring" },
@@ -2449,7 +2448,7 @@ local craftingTable = {
 		{ id=8795, skill={190,210,225,240} }, --Azure Shoulders
 		{ id=8793, skill={190,210,225,240} }, --Crimson Silk Shoulders
 		{ id=69422, skill={205,205,205,205} }, --Augerer's Mantle
-		{ id=69428, skill={230,230,230,230} }, --Diviner's Epaulets
+		{ id=69428, skill={230,240,245,250} }, --Diviner's Epaulets
 		{ id=12078, skill={235,250,265,280} }, --Red Mageweave Shoulders
 		{ id=12076, skill={235,250,265,280} }, --Shadoweave Shoulders
 		{ id=69434, skill={265,265,265,265} }, --Pillager's Amice
@@ -2567,7 +2566,7 @@ local craftingTable = {
 		{ id=12071, skill={225,240,255,270} }, --Shadoweave Gloves
 		{ id=12067, skill={225,240,255,270} }, --Dreamweave Gloves
 		{ name = L["Gloves"], icon = "Trade_Tailoring" },
-		{ id=69427, skill={225,225,225,225} }, --Diviner's Mitts
+		{ id=69427, skill={225,235,240,245} }, --Diviner's Mitts
 		{ id=69433, skill={260,260,260,260} }, --Pillager's Grips
 		{ id=18411, skill={265,280,295,310} }, --Frostweave Gloves
 		{ id=18415, skill={270,285,300,315} }, --Brightcloth Gloves
@@ -2649,7 +2648,7 @@ local craftingTable = {
 		{ id=8778, skill={140,160,175,190} }, --Boots of Darkness
 		{ id=3860, skill={175,195,210,225} }, --Boots of the Enchanter
 		{ id=69420, skill={200,200,200,200} }, --Augerer's Boots
-		{ id=69426, skill={225,225,225,225} }, --Diviner's Boots
+		{ id=69426, skill={225,235,240,245} }, --Diviner's Boots
 		{ id=12073, skill={230,245,260,275} }, --Black Mageweave Boots
 		{ id=12082, skill={240,255,270,285} }, --Shadoweave Boots
 		{ id=12088, skill={245,260,275,290} }, --Cindercloth Boots
@@ -3136,46 +3135,36 @@ local craftingTable = {
 		{ id=15628, skill={205,205,205,205} }, --Pet Bombling
 	},
 
-	Mining = {
+	MiningTable = {
 		{ name = BS["Mining"], icon = "Trade_Mining" },
-		{ id=100000, skill={1,25,50,100} }, --Copper Vein
-		{ id=100030, skill={1,25,50,100} }, --Rough Stone
+		{ id=100000, skill={1,25,50,100}, container = {{2835,{1,2}},{5075,{1,3}},774,818,1210,2798} }, --Copper Vein, Rough Stone, Blood Shard, Rethban Ore, Malachite, Tigerseye, Shadowgem
 		{ id=100001, skill={65,90,115,165} }, --Incendicite Mineral Vein
-		{ id=100002, skill={65,90,115,165} }, --Tin Vein
-		{ id=100031, skill={65,90,115,165} }, --Coarse Stone
-		{ id=100003, skill={75,100,125,175} }, --Silver Vein
-		{ id=100004, skill={75,100,125,175} }, --Ooze Covered Silver Vein
+		{ id=100002, skill={65,90,115,165}, container = {{2836,{1,2}},{5075,{1,3}},1206,1210,1529,1705,2798} }, --Tin Vein, Coarse Stone, Blood Shard, Moss Agate, Shadowgem, Jade, Lesser Moonstone, Rethban Ore
+		{ id=100003, skill={75,100,125,175}, container = {1206,1210,1705} }, --Silver Vein, Moss Agate, Shadowgem, Lesser Moonstone
+		{ id=100004, skill={75,100,125,175}, container = {1206,1210,1705} }, --Ooze Covered Silver Vein, Moss Agate, Shadowgem, Lesser Moonstone
 		{ id=100005, skill={75,100,125,175} }, --Lesser Bloodstone Deposit
-		{ id=100006, skill={125,150,175,225} }, --Iron Deposit
-		{ id=100032, skill={125,150,175,225} }, --Heavy Stone
-		{ id=100007, skill={150,175,200,250} }, --Indurium Mineral Vein
-		{ id=100008, skill={155,175,205,255} }, --Gold Vein
-		{ id=100009, skill={155,175,205,255} }, --Ooze Covered Gold Vein
-		{ id=100010, skill={175,200,225,275} }, --Mithril Deposit
+		{ id=100006, skill={125,150,175,225}, container = {{2838,{1,3}},1529,1705,3864,7909} }, --Iron Deposit, Heavy Stone, Jade, Lesser Moonstone, Citrine, Aquamarine
+		{ id=100007, skill={125,150,175,225}, container = {{2838,{1,3}},1529,1705,3864,7909} }, --Ooze Covered Iron Deposit, Heavy Stone, Jade, Lesser Moonstone, Citrine, Aquamarine
+		{ id=100008, skill={150,175,200,250} }, --Indurium Mineral Vein
+		{ id=100009, skill={155,175,205,255}, container = {11513,1529,3864,1705} }, --Gold Vein, Tainted Vitriol, Jade, Citrine, Lesser Moonstone
+		{ id=100010, skill={155,175,205,255}, container = {11513,1529,3864,1705} }, --Ooze Covered Gold Vein, Tainted Vitriol, Jade, Citrine, Lesser Moonstone
+		{},
+		{},
+		{},
 		{ name = BS["Mining"], icon = "Trade_Mining" },
-		{ id=100033, skill={175,200,225,275} }, --Solid Stone
-		{ id=100011, skill={175,200,225,275} }, --Ooze Covered Mithril Deposit
-		{ id=100034, skill={175,200,225,275} }, --Solid Stone
-		{ id=100014, skill={230,255,280,330} }, --Dark Iron Deposit
-		{ id=100012, skill={230,255,280,330} }, --Truesilver Deposit
-		{ id=100013, skill={230,255,280,330} }, --Ooze Covered Truesilver Deposit
-		{ id=100015, skill={245,270,295,345} }, --Small Thorium Vein
-		{ id=100035, skill={245,270,295,345} }, --Dense Stone
-		{ id=100016, skill={245,270,295,345} }, --Ooze Covered Thorium Vein
-		{ id=100036, skill={245,270,295,345} }, --Dense Stone
-		{ id=100017, skill={275,300,325,365} }, --Rich Thorium Vein
-		{ id=100037, skill={245,270,295,345} }, --Dense Stone
-		{ id=100018, skill={275,300,325,365} }, --Ooze Covered Rich Thorium Vein
-		{ id=100038, skill={245,270,295,345} }, --Dense Stone
-		{ name = BS["Mining"], icon = "Trade_Mining" },
-		{ id=100019, skill={275,300,325,350} }, --Hakkari Thorium Vein
-		{ id=100039, skill={245,270,295,345} }, --Dense Stone
-		{ id=100020, skill={275,300,325,350} }, --Souldarite
-		{ id=100021, skill={305,330,355,370} }, --Small Obsidian Chunk
-		{ id=100022, skill={305,330,355,370} }, --Small Obsidian Chunk
-		{ id=100023, skill={305,330,355,370} }, --Large Obsidian Chunk
-		{ id=100024, skill={305,330,355,370} }, --Large Obsidian Chunk
-		{ id=100025, skill={310,335,360,375} }, --Gemstone Deposit
+		{ id=100011, skill={175,200,225,275}, container = {{7912,{1,4}},11513,9262,3864,7909,7910} }, --Mithril Deposit, Solid Stone, Tainted Vitriol, Black Vitriol, Citrine, Aquamarine, Star Ruby
+		{ id=100012, skill={175,200,225,275}, container = {{7912,{1,4}},11513,9262,3864,7909,7910} }, --Ooze Covered Mithril Deposit, Solid Stone, Tainted Vitriol, Black Vitriol, Citrine, Aquamarine, Star Ruby
+		{ id=100013, skill={230,255,280,330}, container = {11513,7909,3864,7910} }, --Truesilver Deposit, Tainted Vitriol, Citrine, Aquamarine, Star Ruby
+		{ id=100014, skill={230,255,280,330}, container = {11513,7909,3864,7910} }, --Ooze Covered Truesilver Deposit, Tainted Vitriol, Citrine, Aquamarine, Star Ruby
+		{ id=100015, skill={230,255,280,330}, container = {9262,11382,11754,12363} }, --Dark Iron Deposit, Black Vitriol, Blood of the Mountain, Black Diamond, Arcane Crystal
+		{ id=100016, skill={245,270,295,345}, container = {{12365,{1,3}},11513,9262,7910,12361,12364,12799,12800,12363} }, --Small Thorium Vein, Dense Stone, Tainted Vitriol, Black VItrliol, Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal
+		{ id=100017, skill={245,270,295,345}, container = {{12365,{1,3}},11513,9262,7910,12361,12364,12799,12800,12363} }, --Ooze Covered Thorium Vein, Dense Stone, Tainted Vitriol, Black VItrliol, Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal
+		{ id=100018, skill={275,300,325,365}, container = {{12365,{1,3}},7910,12361,12364,12799,12800,12363} }, --Rich Thorium Vein, Dense Stone, Tainted Vitriol, Black VItrliol, Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal
+		{ id=100019, skill={275,300,325,365}, container = {{12365,{1,3}},7910,12361,12364,12799,12800,12363} }, --Ooze Covered Rich Thorium Vein, Dense Stone, Tainted Vitriol, Black VItrliol, Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal
+		{ id=100020, skill={275,300,325,350}, container = {{12365,{1,3}},19774,7910,12361,12364,12799,12800,12363} }, --Hakkari Thorium Vein, Dense Stone, Souldarite, Tainted Vitriol, Black VItrliol, Star Ruby, Blue Sapphire, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal
+		{ id=100021, skill={305,330,355,370}, container = {22203,7076,12363,12364,12800} }, --Small Obsidian Chunk, Large Obsidian Shard, Essence of Earth, Arcane Crystal, Huge Emerald, Azerothian Diamond
+		{ id=100022, skill={305,330,355,370}, container = {{22202,{2,3}},7076,12363,12364,12800} }, --Large Obsidian Chunk, Small Obsidian Shard, Large Obsidian Shard, Essence of Earth, Arcane Crystal, Huge Emerald, Azerothian Diamond
+		{ id=100023, skill={310,335,360,375}, container = {55250,1529,3864,7910,55251,12361,7909,12364,12799,12800,12363} }, --Gemstone Deposit, Imperial Topaz, Emberstone, Jade, Citrine, Star Ruby, Pure Moonstone, Blue Sapphire, Aquamarine, Huge Emerald, Large Opal, Azerothian Diamond, Arcane Crystal
 	},
 
 	Smelting = {
@@ -3195,9 +3184,50 @@ local craftingTable = {
 		{ id=45451, skill={300,350,362,375} }, --Smelt Dreamsteel
 	},
 
+	Herbalism = {
+		{ name = L["Apprentice"], icon = "Trade_Herbalism" },
+		{ id=2447, quantity = {1,4}, skill={1,25,50,100} }, --Peacebloom
+		{ id=765, quantity = {1,3}, skill={1,25,50,100}, container = {5056} }, --Silverleaf, Root Sample
+		{ id=2449, quantity = {1,3}, skill={15,40,65,115}, container = {5056} }, --Earthroot, Root Sample
+		{ id=785, quantity = {1,3}, skill={50,75,100,150}, container = {{2452,{1,3}}, 5056} }, --Mageroyal, Swiftthistle, Root Sample
+		{ id=2450, quantity = {1,3}, skill={70,95,120,170}, container = {{2452,{1,3}}, 5056} }, --Briarthorn, Swiftthistle, Root Sample
+		{},
+		{},
+		{ name = L["Expert"], icon = "Trade_Herbalism" },
+		{ id=3818, quantity = {1,3}, skill={160,190,210,260}, type="item" }, --Fadeleaf
+		{ id=3821, quantity = {1,3}, skill={170,195,220,270} }, --Goldthorn
+		{ id=3358, quantity = {1,3}, skill={185,210,235,285} }, --Khadgar's Whisker
+		{ id=3819, quantity = {1,3}, skill={195,225,245,295} }, --Wintersbite
+		{ id=4625, quantity = {1,3}, skill={205,235,255,305} }, --Firebloom
+		{ id=8831, quantity = {1,3}, skill={210,240,260,310}, container = {{8153,{1,3}},{19726,{1,3}}} }, --Purple Lotus, Wildvine, Bloodvine
+		{ name = L["Journeyman"], icon = "Trade_Herbalism" },
+		{ id=3820, quantity = {1,3}, skill={85,115,135,185} }, --Stranglekelp
+		{ id=2453, quantity = {1,3}, skill={100,130,150,200} }, --Bruiseweed
+		{ id=3355, quantity = {1,3}, skill={115,145,165,215} }, --Wild Steelbloom
+		{ id=3369, quantity = {1,3}, skill={120,150,170,220} }, --Grave Moss
+		{ id=3356, quantity = {1,3}, skill={125,155,175,225} }, --Kingsblood
+		{ id=3357, quantity = {1,3}, skill={150,175,200,250} }, --Liferoot
+		{},
+		{ name = L["Artisan"], icon = "Trade_Herbalism" },
+		{ id=8838, quantity = {1,3}, skill={230,255,280,330}, container = {{11514,{1,3}},{19726,{1,3}}} }, --Sungrass, Fel Creep, Bloodvine
+		{ id=8839, quantity = {1,3}, skill={235,260,285,335} }, --Blindweed
+		{ id=8845, quantity = {1,3}, skill={245,270,295,345} }, --Ghost Mushroom
+		{ id=8846, quantity = {1,3}, skill={250,275,300,350}, container = {{11514,{1,3}}} }, --Gromsblood, Fel Creep
+		{ id=13464, quantity = {1,3}, skill={260,280,310,360}, container = {{11514,{1,3}},{19726,{1,3}}}, type="item" }, --Golden Sansam, Fel Creep, Bloodvine
+		{ id=13463, quantity = {1,3}, skill={270,295,320,370}, container = {{11514,{1,3}},{19726,{1,3}},13468} }, --Dreamfoil, Fel Creep, Bloodvine, Black Lotus
+		--Expert
+		{ id=8836, quantity = {1,3}, skill={220,250,270,320}, container = {{11514,{1,3}},13466} }, --Arthas' Tears, Fel Creep, Plaguebloom
+		{},
+		{ name = L["Artisan"], icon = "Trade_Herbalism" },
+		{ id=13465, quantity = {1,3}, skill={280,305,330,380}, container = {{11514,{1,3}},{19726,{1,3}},13468} }, --Mountain Silversage, Fel Creep, Bloodvine, Black Lotus
+		{ id=13466, quantity = {1,3}, skill={285,310,335,385}, container = {{11514,{1,3}},13468} }, --Plaguebloom, Fel Creep, Black Lotus
+		{ id=13467, quantity = {1,3}, skill={290,315,340,390}, container = {13468} }, --Icecap, Black Lotus
+		{ id=13468, skill={300,345,375,400} }, --Black Lotus
+	},
+
 	CookingApprentice = {
 		{ name = L["Apprentice"], icon = "INV_Misc_Food_15" },
-		{ id=818, skill={1,1,1,1} }, --Basic Campfire
+		{ id=818, skill=0 }, --Basic Campfire skill=0 set coz same id for item
 		{ id=7751, skill={1,45,65,85} }, --Brilliant Smallfish
 		{ id=2538, skill={1,45,65,85} }, --Charred Wolf Meat
 		{ id=15935, skill={1,45,65,85} }, --Crispy Bat Wing
@@ -3327,12 +3357,26 @@ local craftingTable = {
 		{ name = L["Survival"], icon = "Trade_Survival" },
 		{ id=46064, skill={1,30,45,60} }, --Dim Torch
 		{ id=46075, skill={30,30,45,60} }, --Iron Lantern
-		{ id=46068, skill={50,1,1,1} }, --Cleaning Cloth
-		{ id=46072, skill={50,100,1,1} }, --Traveler's Tent
+		{ id=46072, skill={50,100,125,150} }, --Traveler's Tent
+		{ id=46068, skill={50,150,175,200} }, --Cleaning Cloth
+		{},
 		{ id=46074, skill={75,100,112,125} }, --Simple Woodern Planter
-		{ id=46073, skill={75,125,150,1} }, --Fishing Boat
-		{ id=46066, skill={75,150,1,1} }, --Murloc's Flippers
+		{ id=46073, skill={75,125,150,175} }, --Fishing Boat
+		{ id=46066, skill={75,150,162,175} }, --Murloc's Flippers
 		{ id=46077, skill={90,120,135,150} }, --Repaired Electro-Lantern
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ name = L["Gardening"], icon = "Trade_Survival" },
+		{ id=51706, quantity = {4,10}, container = {{51710,{3,6}},{51713,{3,6}}} }, --Country Pumpkin Seeds, Plump Country Pumpkin
+		{},
+		{ id=51707, quantity = {4,10}, container = {{51711,{3,6}},{51714,{3,6}}} }, --Mountain Berry Bush Seeds, Sweet Mountain Berry
+		{},
+		{ id=51708, quantity = {4,10}, container = {{51712,{3,6}},{51718,{3,6}}} }, --Striped Melon Seeds, Juicy Watermelon, Sweet Watermelon
+		{},
+		{ id=51716, quantity = 20, disc = L["Vendor"], container = {{51717,{2,5}},{51720,{2,5}}} }, --Magic Mushroom Spores, Hardened Mushroom, Power Mushroom
 	},
 
 	JewelcraftingApprentice = {

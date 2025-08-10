@@ -111,7 +111,7 @@ local replacements = {
     p16 = BS["Skinning"],
     p17 = L["LW"],
     p18 = BS["Survival"],
-    p19 = BS["Garderning"],
+    p19 = BS["Gardening"],
     p20 = BS["Jewelcrafting"],
     --Reputation
     r1 = BF["Neutral"],
