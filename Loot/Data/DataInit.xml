@@ -28,7 +28,6 @@
     <Include file="Instances\Uldaman.lua"/>
     <Include file="Instances\TheSunkenTemple.lua"/>
     <Include file="Instances\ScarletMonastery.lua"/>
-    <Include file="Instances\StormwroughtRuins.lua"/>
     <Include file="Instances\RazorfenDowns.lua"/>
     <Include file="Instances\ZulFarrak.lua"/>
     <Include file="Instances\RagefireChasm.lua"/>
@@ -39,6 +38,8 @@
     <Include file="Instances\BlackfathomDeeps.lua"/>
     <Include file="Instances\RazorfenKraul.lua"/>
     <Include file="Instances\ShadowfangKeep.lua"/>
+    <Include file="Instances\StormwroughtRuins.lua"/>
+    <Include file="Instances\DragonmawRetreat.lua"/>
     <!-- Данные мирового контента -->
     <Include file="World\Azuregos.lua"/>
     <Include file="World\FourDragons.lua"/>

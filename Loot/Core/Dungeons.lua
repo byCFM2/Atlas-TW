@@ -80,19 +80,25 @@ local function GenerateMenuDataFromInstanceData()
         ["RareMobs"] = true,  -- should be in World menu
     }
 
-    -- Iterate through AtlasMaps
+    -- Iterate through InstanceData
     local counter = 0
     for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
         if type(instanceData) == "table" and instanceData.Name and instanceData.Level and not skipInstances[instanceKey] then
-            -- Skip world bosses (MinLevel = "1") and battlegrounds
-            if instanceData.Level ~= 1 and not string.find(instanceKey, "^BG") then
+            if not string.find(instanceKey, "^BG") then
                 local name = instanceData.Name
                 local location = instanceData.Location or ""
                 local level = instanceData.Level
                 local maxPlayers = instanceData.MaxPlayers
-
+                local lootpage = ""
                 -- Get lootpage name
-                local lootpage = instanceData.Bosses[1].name or instanceKey
+                for _, boss in ipairs(instanceData.Bosses) do
+                    if boss.name then
+                        lootpage = boss.name
+                        break
+                    end
+                end
+
+                lootpage = lootpage or instanceKey
 
                 -- Determine instance type and target menu
                 local instanceType

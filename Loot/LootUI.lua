@@ -462,8 +462,8 @@ local function AtlasLoot_CreateItemsFrame()
     quickLooksButton:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
 
     quickLooksButton:SetScript("OnShow", function()
-        if (AtlasLootItemsFrame.storedBoss) and ((AtlasLootItemsFrame.storedBoss.name == "SearchResult")
-          or (AtlasLootItemsFrame.storedBoss.name == "WishList")) then
+        if (AtlasLootItemsFrame.StoredElement == "SearchResult")
+        or (AtlasLootItemsFrame.StoredElement == "WishList") then
             this:Disable()
         else
             this:Enable()

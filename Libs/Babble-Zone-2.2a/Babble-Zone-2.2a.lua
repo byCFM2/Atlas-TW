@@ -1,5 +1,5 @@
 local MAJOR_VERSION = "Babble-Zone-2.2a"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 17780 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 17781 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 
@@ -17,6 +17,8 @@ local BabbleZone = AceLibrary("AceLocale-2.2"):new(MAJOR_VERSION)
 
 BabbleZone:RegisterTranslations("enUS", function()
 	return {
+		["Grim Reaches"] = true,
+		["Dragonmaw Retreat"] = true,
 		["Balor"] = true,
 		["Stormwrought Ruins"] = true,
 		["Icepoint Rock"] = true,

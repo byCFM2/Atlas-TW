@@ -15,9 +15,6 @@ ATLASLOOT_OPTIONS_EQUIPCOMPARE_DISABLED = L["|cff9d9d9dUse EquipCompare|r"]
 AtlasLoot_Hewdrop = AceLibrary("Hewdrop-2.0")
 AtlasLoot_HewdropSubMenu = AceLibrary("Hewdrop-2.0")
 
---Variable to cap debug spam
-ATLASLOOT_DEBUGSHOWN = false
-
 -- Colours stored for code readability
 local RED = "|cffff0000"
 local WHITE = "|cffFFFFFF"
@@ -82,17 +79,6 @@ local function StripFormatting(text)
 	text = string.gsub(text, "%[.-%]", "")  -- Квадратные скобки []
 	text = string.gsub(text, "%{.-%}", "")  -- Фигурные скобки {}
 	text = string.gsub(text, "%<.-%>", "")  -- Угловые скобки <>
---[[ 	-- Удаляем номер босса
-	text = string.gsub(text, "%d+%) ", "")
-	-- Заменяем множественные пробелы на один
-	text = string.gsub(text, "%s+", " ")
-	-- Убираем пробелы в начале и конце строки
-	text = string.gsub(text, "^%s*(.-)%s*$", "%1")
-	-- Удаляем слова Reputation:
-	text = string.gsub(text, "Reputation: ", "")
-	-- Удаляем слова Key:
-	text = string.gsub(text, "Key: ", "") ]]
-
     return text
 end
 
@@ -116,7 +102,7 @@ end
 	Invoked by the VARIABLES_LOADED event. Now that we are sure all the assets
 	the addon needs are in place, we can properly set up the mod
 ]]
-function AtlasLoot_GetBossNavigation(data)
+function AtlasLoot_GetBossNavigation(data) --TODO remake
 	print("AtlasLoot_GetBossNavigation")
 	if type(data)=="string" then print(data) end
     if not data then return nil end
@@ -136,7 +122,7 @@ function AtlasLoot_GetBossNavigation(data)
                     end
                     nav.Prev_Page = instanceData.Entry[prevIndex].Title
                     nav.Prev_Title = instanceData.Entry[prevIndex].Name
-					
+
                     -- Next page (with loop)
                     local nextIndex = i + 1
                     if nextIndex > numEntries then
@@ -235,6 +221,61 @@ end
 -- Константы для AtlasLoot скроллинга
 --AtlasTW.LOOT_NUM_LINES = 30  -- Количество видимых элементов в AtlasLootItemsFrame (2 ряда по 15)
 --AtlasTW.LootCurrentItems = nil  -- Текущие элементы для отображения
+
+-- Глобальный индекс боссов для быстрого поиска
+AtlasTW.BossLootIndex = {}
+
+-- Функция построения индекса боссов (вызывается при инициализации)
+function AtlasTW.BuildBossLootIndex()
+	print("AtlasLoot: Построение индекса боссов...")
+	for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
+		if type(instanceData) == "table" and instanceData.Bosses then
+			for bossIndex, bossData in ipairs(instanceData.Bosses) do
+				if bossData.name and bossData.items then
+					local bossName = bossData.name
+					-- Создаем запись в индексе
+					if not AtlasTW.BossLootIndex[bossName] then
+						AtlasTW.BossLootIndex[bossName] = {}
+					end
+					table.insert(AtlasTW.BossLootIndex[bossName], {
+						instance = instanceKey,
+						instanceName = instanceData.Name,
+						bossIndex = bossIndex,
+						lootTable = bossData.items
+					})
+				end
+			end
+		end
+	end
+	local count = 0
+	for _ in pairs(AtlasTW.BossLootIndex) do
+		count = count + 1
+	end
+	print("AtlasLoot: Индекс боссов построен. Всего уникальных имен: " .. count)
+end
+
+-- Глобальная функция получения лута по имени босса
+function AtlasTW.GetLootByBossName(bossName)
+	-- Ленивое построение индекса
+	if not next(AtlasTW.BossLootIndex) then
+		AtlasTW.BuildBossLootIndex()
+	end
+	if AtlasTW.BossLootIndex[bossName] then
+		return AtlasTW.BossLootIndex[bossName].lootTable
+	end
+
+	-- Если bossName не указан или не найден
+	return print("Wrong bossname or instancename")
+end
+
+-- Функция получения всех вхождений босса (для случаев, когда босс есть в нескольких инстансах)
+function AtlasTW.GetAllBossInstances(bossName)
+	-- Ленивое построение индекса
+	if not next(AtlasTW.BossLootIndex) then
+		AtlasTW.BuildBossLootIndex()
+	end
+	return AtlasTW.BossLootIndex[bossName] or {}
+end
 
 -- Вспомогательная функция для получения loot зная ID
 local function GetLootByID(zoneID, id)
@@ -532,12 +573,12 @@ end
 
 -- Функция обновления скроллбара для AtlasLootItemsFrame
 function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
-	--Load data for the current clicked boss line
-	local dataID, dataSource = AtlasLootItemsFrame.storedBoss and AtlasLootItemsFrame.storedBoss.name,
-		AtlasLootItemsFrame.storedBoss and AtlasLootItemsFrame.storedBoss.loot
+	--Load data for the current clicked element line
+	local dataID = AtlasLootItemsFrame.StoredElement
+	local dataSource = AtlasTW.GetLootByBossName(dataID)
 	--Check if dataID and dataSource are valid
  	if not dataID and not dataSource then
-		return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataID and dataSource!")
+		return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataID and No dataSource!")
 	end
 	if type(_G[dataSource]) == "function" then
 		print("AtlasLoot_Show2ItemsFrame: function")
@@ -748,7 +789,7 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 				menuButton:Hide()
 			end
 		end
-	end	
+	end
 	if dataID == "SearchResult" or dataID == "WishList" then
 --[[ 		if wlPage < wlPageMax then
 			_G["AtlasLootItemsFrame_NEXT"]:Show()
@@ -1271,35 +1312,22 @@ function AtlasLootBoss_OnClick(buttonName)
 	-- Reset scroll position to top
     FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
 	AtlasLootScrollBarScrollBar:SetValue(0)
-    local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
+   -- local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
     local id = this.idnum
     local bossname = AtlasTW.ScrollList[id].name
+	local lootTable = AtlasTW.GetLootByBossName(bossname)
 
     if AtlasLootItemsFrame.activeBoss == id then
         AtlasLootItemsFrame:Hide()
         AtlasLootItemsFrame.activeBoss = nil
     else
 		--Get the loot table for the element, either by name or by ID how reserv metod
-		local loot = GetLootByName(zoneID, bossname) or GetLootByID(zoneID, id)
-        if loot then
-			local dataSource = loot
-			if type(dataSource) ~= "table" then
-				print("AtlasLootBoss_OnClick: dataID:"..(bossname or "no bossname").."dataSource is not a table: "..(dataSource or " no dataSource"))
-				dataSource = AtlasLoot_MenuHandlers[dataSource] or AtlasLoot_Data[dataSource]
-		  		if not dataSource then
-					for k, value in pairs(AtlasTW.InstanceData) do
-						if k == loot or value.Name == bossname then
-							print("AtlasLootBoss_OnClick: value.Name == bossname")
-							for _, val in ipairs(value.Bosses) do
-								if val.name == bossname or val.name == loot then
-								--	print("AtlasTW.Loot.ScrollBarLootUpdate: val.items "..val.items[1].id)
-									dataSource = val.items
-								end
-							end
-						end
-					end
-				end
-				if not dataSource then
+		--lootTable = GetLootByName(zoneID, bossname) or GetLootByID(zoneID, id)
+        if lootTable then
+			if type(lootTable) ~= "table" then
+				print("AtlasLootBoss_OnClick: dataID:"..(bossname or "no bossname").."lootTable is not a table: "..(lootTable or " no lootTable"))
+				lootTable = AtlasLoot_MenuHandlers[lootTable] or AtlasLoot_Data[lootTable]
+				if not lootTable then
 					AtlasLootItemsFrame:Hide()
 					return print("AtlasLootBoss_OnClick: No loot!")
 				end
@@ -1309,10 +1337,10 @@ function AtlasLootBoss_OnClick(buttonName)
 			AtlasLoot_ShowScrollBarLoading()
 
 		   --Store the loot table and boss name
-			AtlasLootItemsFrame.storedBoss = {name = bossname, loot = dataSource}
-            AtlasLootItemsFrame.activeBoss = id
+			AtlasLootItemsFrame.StoredElement = bossname
+         --   AtlasLootItemsFrame.activeBoss = id
 
-			CacheAllLootItems(dataSource, function()
+			CacheAllLootItems(lootTable, function()
 				local elapsed = GetTime() - scrollStartTime
 				print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
 				AtlasLoot_HideScrollBarLoading()
@@ -1321,12 +1349,12 @@ function AtlasLootBoss_OnClick(buttonName)
 			end)
         else
             AtlasLootItemsFrame:Hide()
-            AtlasLootItemsFrame.activeBoss = nil
+        --    AtlasLootItemsFrame.activeBoss = nil
         end
     end
 
     AtlasTW.Loot.ScrollBarUpdate()
-    AtlasLootItemsFrame.externalBoss = nil
+  --  AtlasLootItemsFrame.externalBoss = nil
 
     if AtlasTW.Quest.UI.InsideAtlasFrame then
         AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
@@ -1345,12 +1373,12 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	if not tabletype or tabletype == "Table" then
 	--if tabletype == "Table" then
 		--Store the loot table and boss name
-		AtlasLootItemsFrame.storedBoss = {name = text, loot = tablename}
+		AtlasLootItemsFrame.StoredElement = text
 		-- Update scrollbar
 		AtlasTW.Loot.ScrollBarLootUpdate()
 		--Save needed info for fuure re-display of the table
-		AtlasTWCharDB.LastBoss = tablename
-		AtlasTWCharDB.LastBossText = text
+		--AtlasTWCharDB.LastBoss = tablename
+		--AtlasTWCharDB.LastBossText = text
 		--Purge the text label for the submenu and disable the submenu
 		AtlasLootItemsFrame_SubMenu:Disable()
 		AtlasLootItemsFrame_SelectedTable:SetText("")
@@ -1360,13 +1388,12 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 		--Enable the submenu button
 		AtlasLootItemsFrame_SubMenu:Enable()
 		--Store the loot table and boss name
-		AtlasLootItemsFrame.storedBoss = {name = AtlasLoot_HewdropDown_SubTables[tablename][1][1],
-			loot = AtlasLoot_HewdropDown_SubTables[tablename][1][2]}
-			-- Update scrollbar
-			AtlasTW.Loot.ScrollBarLootUpdate()
+		AtlasLootItemsFrame.StoredElement = AtlasLoot_HewdropDown_SubTables[tablename][1][1]
+		-- Update scrollbar
+		AtlasTW.Loot.ScrollBarLootUpdate()
 		--Save needed info for fuure re-display of the table
-		AtlasTWCharDB.LastBoss = AtlasLoot_HewdropDown_SubTables[tablename][1][2]
-		AtlasTWCharDB.LastBossText = AtlasLoot_HewdropDown_SubTables[tablename][1][1]
+	--	AtlasTWCharDB.LastBoss = AtlasLoot_HewdropDown_SubTables[tablename][1][2]
+	--	AtlasTWCharDB.LastBossText = AtlasLoot_HewdropDown_SubTables[tablename][1][1]
 		--Load the correct submenu and associated with the button
 		AtlasLoot_HewdropSubMenu:Unregister(AtlasLootItemsFrame_SubMenu)
 		AtlasLoot_HewdropSubMenuRegister(AtlasLoot_HewdropDown_SubTables[tablename])
@@ -1387,12 +1414,12 @@ end
 ]]
 function AtlasLoot_HewdropSubMenuClick(tablename, text)
 	--Store the loot table and boss name
-	AtlasLootItemsFrame.storedBoss = {name = text, loot = tablename}
+	AtlasLootItemsFrame.StoredElement = text
 	-- Update scrollbar
 	AtlasTW.Loot.ScrollBarLootUpdate()
 	--Save needed info for fuure re-display of the table
-	AtlasTWCharDB.LastBoss = tablename
-	AtlasTWCharDB.LastBossText = text
+	--AtlasTWCharDB.LastBoss = tablename
+	--AtlasTWCharDB.LastBossText = text
 	--Show the table that has been selected
 	AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(text, 30))
 	AtlasLootItemsFrame_SelectedTable:Show()
@@ -1634,9 +1661,8 @@ function AtlasLootMenuItem_OnClick(button)
     FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
 	AtlasLootScrollBarScrollBar:SetValue(0)
 	-- Get the table source and data ID
+	local dataID = this.name_orig or this.name
 	local TableSource = this.lootpage
-	local dataID = this.name
-	local dataSource = TableSource
 	local pagename
 	if this.isheader == nil or this.isheader == false then
 		pagename = _G[this:GetName().."_Name"]:GetText()
@@ -1664,40 +1690,24 @@ function AtlasLootMenuItem_OnClick(button)
 			end
 		end
 		CloseDropDownMenus()
-		AtlasTWCharDB.LastBoss = TableSource
-		AtlasTWCharDB.LastBossText = pagename
+		--AtlasTWCharDB.LastBoss = TableSource
+		--AtlasTWCharDB.LastBossText = pagename
 		print(dataID.." - dataID, "..TableSource.." - TableSource")
-		if type(TableSource) ~= "table" then
-		--	print("ScrollBarLootUpdate: dataID:"..(dataID or "no dataID").."dataSource is not a table: "..(dataSource or " no dataSource"))
-        	dataSource = AtlasLoot_MenuHandlers[dataSource] or AtlasLoot_Data[dataSource] 
-			if not dataSource then
-				for k, value in pairs(AtlasTW.InstanceData) do
-					if k == TableSource or value.Name == dataID then
-						--print("AtlasTW.Loot.ScrollBarLootUpdate: value.Name == dataID")
-						for _, val in ipairs(value.Bosses) do
-							if val.name == dataID or val.name == TableSource then
-							--	print("AtlasTW.Loot.ScrollBarLootUpdate: val.items "..val.items[1].id)
-								dataSource = val.items
-							end
-						end
-					end
-				end
-			end
-			if not dataSource then
-				AtlasLootItemsFrame:Hide()
-				return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataSource!")
-			end
+		if type(TableSource) == "string" then
+			TableSource = AtlasLoot_MenuHandlers[TableSource] or AtlasLoot_Data[TableSource]
 		end
 		AtlasLootItemsFrame:Show()
 		local scrollStartTime = GetTime()
+		--Show loading frame
 		AtlasLoot_ShowScrollBarLoading()
 
  		--Store the loot table and boss name
-		AtlasLootItemsFrame.storedBoss = {name = dataID, loot = dataSource}
-
-		CacheAllLootItems(dataSource, function()
+		AtlasLootItemsFrame.StoredElement = dataID
+		--Get loot table and cache
+		CacheAllLootItems(TableSource or AtlasTW.GetLootByBossName(dataID), function()
 			local elapsed = GetTime() - scrollStartTime
 			print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
+			--Hide loading frame
 			AtlasLoot_HideScrollBarLoading()
 			-- Update scrollbar
 			AtlasTW.Loot.ScrollBarLootUpdate()
@@ -1712,18 +1722,19 @@ end
 	Called when <-, -> or 'Back' are pressed and calls up the appropriate loot page
 ]]
 function AtlasLoot_NavButton_OnClick()
-	-- If the back button is clicked, set the LastBoss to the new page
+	print("AtlasLoot_NavButton_OnClick")
+	--[[ -- If the back button is clicked, set the LastBoss to the new page
 	if this == AtlasLootItemsFrame_BACK then
 		AtlasLootItemsFrame.externalBoss = this.lootpage
 	end
-	if AtlasLootItemsFrame.storedBoss and AtlasLootItemsFrame.storedBoss.name and AtlasLootItemsFrame.storedBoss.loot then
-		if AtlasLootItemsFrame.storedBoss.name == "DUNGEONSMENU1" then
-			AtlasLootItemsFrame.storedBoss.name = "DUNGEONSMENU2"
+	if AtlasLootItemsFrame.StoredElement then
+		if AtlasLootItemsFrame.StoredElement == "DUNGEONSMENU1" then
+			AtlasLootItemsFrame.StoredElement = "DUNGEONSMENU2"
 			AtlasLoot_DungeonsMenu2()
 			AtlasLootItemsFrame_SubMenu:Disable()
 			return
-		elseif AtlasLootItemsFrame.storedBoss.name == "DUNGEONSMENU2" then
-			AtlasLootItemsFrame.storedBoss.name = "DUNGEONSMENU1"
+		elseif AtlasLootItemsFrame.StoredElement == "DUNGEONSMENU2" then
+			AtlasLootItemsFrame.StoredElement = "DUNGEONSMENU1"
 			AtlasLoot_DungeonsMenu1()
 			AtlasLootItemsFrame_SubMenu:Disable()
 			return
@@ -1736,22 +1747,22 @@ function AtlasLoot_NavButton_OnClick()
 			AtlasTWCharDB.LastBoss = this.lootpage
 			AtlasTWCharDB.LastBossText = this.title
 
-			AtlasLootItemsFrame.storedBoss.loot = this.lootpage
+			AtlasLootItemsFrame.StoredElement.loot = this.lootpage
 			-- Update scrollbar
 			AtlasTW.Loot.ScrollBarLootUpdate()
-			AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.storedBoss[2])
+			AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.StoredElement)
 			if AtlasLootItemsFrame_SelectedTable:GetText()~=nil then
 				AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(AtlasLoot_LootPageName:GetText(), 30))
 			else
 				AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasLoot_LootPageName:GetText(), 30))
 			end
 		end
-	elseif AtlasLootItemsFrame.storedBoss and AtlasLootItemsFrame.storedBoss.loot then
+	elseif AtlasLootItemsFrame.StoredElement then
 
 		AtlasLootItemsFrame.storedBoss.name = this.title
 		-- Update scrollbar
 		AtlasTW.Loot.ScrollBarLootUpdate()
-		AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.storedBoss[2])
+		AtlasLoot_ShowItemsFrame(this.lootpage, AtlasLootItemsFrame.StoredElement)
 	else
 		--Fallback for if the requested loot page is a menu and does not have a .refresh instance
 		AtlasLoot_ShowItemsFrame(this.lootpage, "dummy", this.title)
@@ -1764,7 +1775,7 @@ function AtlasLoot_NavButton_OnClick()
 		--	DEFAULT_CHAT_FRAME:AddMessage("AtlasLoot_NavButton_OnClick: "..this.lootpage)
 		AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasTWCharDB.LastBossText, 30))
 		AtlasLootItemsFrame_SelectedTable:SetText()
-	end
+	end ]]
 end
 
 --[[
@@ -1807,7 +1818,7 @@ function AtlasLoot_ShowQuickLooks(button)
 					"tooltipTitle", L["QuickLook"].." "..i,
 					"tooltipText", L["Assign this loot table to QuickLook"].." "..i,
 					"func", function()
-						AtlasTWCharDB["QuickLooks"][index] = {AtlasLootItemsFrame.storedBoss.name, AtlasLootItemsFrame.storedBoss.loot}
+						AtlasTWCharDB["QuickLooks"][index] = AtlasLootItemsFrame.StoredElement
 						AtlasLoot_RefreshQuickLookButtons()
 						Hewdrop:Close(1)
 					end
@@ -2086,14 +2097,15 @@ end
 -- Item OnClick
 -- Called when a loot item is clicked on
 --------------------------------------------------------------------------------
-function AtlasLootItem_OnClick(arg1)
+function AtlasLootItem_OnClick(arg1) --TODO remake
 	local isItem, isEnchant, isSpell
 	local id = this:GetID()
 	local color = strsub(_G["AtlasLootItem_"..id.."_Name"]:GetText() or "", 1, 10)
 	local name = strsub(_G["AtlasLootItem_"..id.."_Name"]:GetText() or "", 11)
 	local texture = AtlasLoot_Strsplit("\\", getglobal("AtlasLootItem_"..id.."_Icon"):GetTexture(), 0, true)
-	local dataID = AtlasLootItemsFrame.storedBoss.name
-	local dataSource = AtlasLootItemsFrame.storedBoss.loot
+	local dataID = AtlasLootItemsFrame.StoredElement
+	local dataSource = AtlasTW.GetLootByBossName(dataID)
+
 	if string.sub(this.itemID, 1, 1) == "s" then
 		isItem = false
 		isEnchant = false
@@ -2196,7 +2208,7 @@ function AtlasLootItem_OnClick(arg1)
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
 			local dataID, dataSource = AtlasLoot_Strsplit("|", this.sourcePage)
 			if dataID and dataSource and AtlasLoot_IsLootTableAvailable(dataID) then
-				AtlasLootItemsFrame.storedBoss = {name=dataID, loot=dataSource}
+				AtlasLootItemsFrame.StoredElement=dataID
 				-- Update scrollbar
 				AtlasTW.Loot.ScrollBarLootUpdate()
 				--AtlasLoot_ShowItemsFrame(dataID, dataSource)
@@ -2263,7 +2275,7 @@ function AtlasLootItem_OnClick(arg1)
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
 			local dataID, dataSource = AtlasLoot_Strsplit("|", this.sourcePage)
 			if dataID and dataSource and AtlasLoot_IsLootTableAvailable(dataID) then
-				AtlasLootItemsFrame.storedBoss = {name=dataID, loot=dataSource}
+				AtlasLootItemsFrame.StoredElement=dataID
 				-- Update scrollbar
 				AtlasTW.Loot.ScrollBarLootUpdate()
 				--AtlasLoot_ShowItemsFrame(dataID, dataSource)
@@ -2400,7 +2412,7 @@ function AtlasLoot_ShowContainerFrame()
 	AtlasLootItemsFrameContainer:Show()
 	AtlasLootItemsFrameContainer:ClearAllPoints()
 	AtlasLootItemsFrameContainer:SetPoint("TOPLEFT", this , "BOTTOMLEFT", -2, 2)
-	AtlasLootItemsFrameContainer:SetWidth(150)
+	AtlasLootItemsFrameContainer:SetWidth(50)
 	AtlasLootItemsFrameContainer:SetHeight(50)
 
 	AtlasLoot_ShowContainerLoading()
@@ -2419,9 +2431,7 @@ function AtlasLoot_UpdateContainerDisplay()
 	if not lastSelectedButton or not lastSelectedButton.container then
 		return
 	end
-
 	AtlasLoot_HideContainerLoading()
-
 	local containerTable = lastSelectedButton.container
 	if not AtlasLootItemsFrameContainer:IsVisible() and lastSelectedButton then
 		AtlasLootItemsFrameContainer:Show()
@@ -2534,8 +2544,36 @@ function AtlasLoot_AddContainerItemTooltip(frame ,itemID)
     end)
 end
 
-function AtlasLoot_ContainerItem_OnClick(arg1)
+function AtlasLoot_ContainerItem_OnClick(arg1) --TODO need CHECK
 	local itemID = this:GetID()
+	local name, link, quality, _, _, _, _, _, tex = GetItemInfo(itemID)
+	local _, _, _, color = GetItemQualityColor(quality)
+	tex = string.gsub(tex, "Interface\\Icons\\", "")
+	local extra = this.extraInfo
+	if IsShiftKeyDown() and arg1 == "LeftButton" then
+		if AtlasTWOptions.LootAllLinks then
+			if WIM_EditBoxInFocus then
+				WIM_EditBoxInFocus:Insert("\124"..string.sub(color, 2).."|Hitem:"..itemID.."\124h["..name.."]|h|r")
+			elseif ChatFrameEditBox:IsVisible() then
+				ChatFrameEditBox:Insert("\124"..string.sub(color, 2).."|Hitem:"..itemID.."\124h["..name.."]|h|r")
+			end
+		end
+	elseif(IsControlKeyDown() and name) then
+		DressUpItemLink(link)
+	elseif(IsAltKeyDown() and (itemID ~= 0)) then
+		local ElemName = AtlasLootItemsFrame.StoredElement
+		local ElemLoot = AtlasTW.GetLootByBossName(ElemName)
+
+		if ElemName == "WishList" then
+			AtlasLoot_DeleteFromWishList(this.itemID)
+		elseif ElemName == "SearchResult" then
+			AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(itemID))
+		else
+			AtlasLoot_AddToWishlist(itemID, tex, name, extra, ElemName.."|"..ElemLoot)
+		end
+	end
+end
+--[[ 	local itemID = this:GetID()
 	local name, link, quality, _, _, _, _, _, tex = GetItemInfo(itemID)
 	local _, _, _, color = GetItemQualityColor(quality)
 	tex = string.gsub(tex, "Interface\\Icons\\", "")
@@ -2559,28 +2597,29 @@ function AtlasLoot_ContainerItem_OnClick(arg1)
 		if lootpage then
 			AtlasLoot_AddToWishlist(itemID, tex, name, extra, lootpage.."|"..dataSource)
 		elseif AtlasLootItemsFrame.storedBoss then
-			local dataID = AtlasLootItemsFrame.storedBoss.name
-			local dataSource2 = AtlasLootItemsFrame.storedBoss.loot
-			if dataID == "WishList" then
+			local ElemName = AtlasLootItemsFrame.storedBoss.name
+			local ElemLoot = AtlasTW.GetLootByBossName(ElemName)
+
+			if ElemName == "WishList" then
 				AtlasLoot_DeleteFromWishList(this.itemID)
-			elseif dataID == "SearchResult" then
+			elseif ElemName == "SearchResult" then
 				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(itemID))
 			else
-				AtlasLoot_AddToWishlist(itemID, tex, name, extra, dataID.."|"..dataSource2)
+				AtlasLoot_AddToWishlist(itemID, tex, name, extra, ElemName.."|"..ElemLoot)
 			end
 		end
 	end
-end
+end ]]
 
 --[[
 	Querys all valid items on the current loot page.
 ]]
-function AtlasLoot_QueryLootPage() --TODO remove
+--[[ function AtlasLoot_QueryLootPage() --TODO remove
 	for i = 1, 30 do
 		local button = _G["AtlasLootItem_"..i]
 		AtlasLoot_ForceCacheItemWithDelay(button.itemID, 1)
 	end
-end
+end ]]
 
 local function idFromLink(itemlink)
 	if itemlink then
@@ -2590,8 +2629,8 @@ local function idFromLink(itemlink)
 	return nil
 end
 
-function AtlasLoot_CheckBagsForItems(id, qty)
-	if not id then DEFAULT_CHAT_FRAME:AddMessage("AtlasLoot_CheckBagsForItems: no ID specified!") return end
+function AtlasLoot_CheckBagsForItems(id, qty) --TODO need check
+	if not id then print("AtlasLoot_CheckBagsForItems: no ID specified!") return end
 	if not qty then qty = 1 end
 	local itemsfound = 0
 	if not GetItemInfo then return RED..L["Unknown"] end
@@ -2620,7 +2659,7 @@ function AtlasLoot_CheckBagsForItems(id, qty)
 	end
 end
 
-function AtlasLoot_SayItemReagents(id, color, name, safe)
+function AtlasLoot_SayItemReagents(id, color, name, safe) --TODO need remake
 	if not id then return end
 	local chatline = ""
 	local itemCount = 0
@@ -2650,11 +2689,11 @@ function AtlasLoot_SayItemReagents(id, color, name, safe)
 	end
 	if string.sub( id, 1, 1 ) == "s" then
 		local spellid = string.sub( id, 2 )
-		local craftitem = GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["craftItem"]
+		local craftitem = GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["item"]
 		if craftitem ~= nil and craftitem ~= "" then
 			local craftnumber = ""
-			local qtyMin = GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["craftQuantityMin"]
-			local qtyMax = GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["craftQuantityMax"]
+			local qtyMin = GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["quantity"]
+			local qtyMax = GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["quantity"]
 			if qtyMin and qtyMin ~= "" then
 				if qtyMax and qtyMax ~= "" then
 					craftnumber = craftnumber..qtyMin.. "-"..qtyMax.."x"
