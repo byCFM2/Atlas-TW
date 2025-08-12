@@ -371,7 +371,7 @@ AtlasTW.InstanceData.Scholomance = {
         },
         { name = BZ["Scholomance"].." "..L["Sets"], items = "Scholo" },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
-        { name = L["Tier 0/0.5 Sets"], items = "T0Set" },
+        { name = L["Tier 0/0.5 Sets"], items = "AtlasLootT0SetMenu" },
     },
 }
 

@@ -23,12 +23,13 @@ AtlasTW.Loot.PvpMenuData = {
 	{},
     { name = L["PvP Mounts"], Extra = L["Rank"].." 11", icon = "Interface\\Icons\\Ability_Mount_RidingHorse", lootpage = "PvPMountsPvP" },
     { name = L["PvP Accessories"], Extra = L["Rank"].." 2-9", icon = "Interface\\Icons\\INV_Jewelry_Talisman_09", lootpage = "PvP60Accessories" },
-    { name = L["PvP Armor Sets"], Extra = L["Rank"].." 7-13", icon = "Interface\\Icons\\INV_Helmet_05", lootpage = "PvPSet" },
+    { name = L["PvP Armor Sets"], Extra = L["Rank"].." 7-13", icon = "Interface\\Icons\\INV_Helmet_05", lootpage = "AtlasLootPVPSetMenu" },
     { name = L["PvP Weapons"], Extra = L["Rank"].." 14", icon = "Interface\\Icons\\INV_Sword_11", lootpage = "PVPWeapons" },
 }
 
 function AtlasLootPvPMenu()
-    AtlasLoot_PrepMenu(nil, L["PvP Rewards"], "PvP")
+    AtlasLoot_PrepMenu(nil, L["PvP Rewards"], "AtlasLootPvPMenu")
+
     AtlasLoot_ShowMenu(AtlasTW.Loot.PvpMenuData, { maxItems = table.getn(AtlasTW.Loot.PvpMenuData) })
 end
 

@@ -452,7 +452,7 @@ AtlasTW.InstanceData.Naxxramas = {
                 {id=22374, disc=L["Quest Item"], dropRate=27},
             }
         },
-        { name = L["Tier 3 Sets"], items = "T3Set" },
+        { name = L["Tier 3 Sets"], items = "AtlasLootT3SetMenu" },
     }
 }
 

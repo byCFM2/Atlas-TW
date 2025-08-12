@@ -418,7 +418,7 @@ AtlasTW.InstanceData.ZulGurub = {
                 {id=19813},
             }
         },
-        { name = L["Zul'Gurub Sets"], items = "ZGSet" },
+        { name = L["Zul'Gurub Sets"], items = "AtlasLootZGSetMenu" },
         { name = L["Zul'Gurub Enchants"], items = zGEnchants },
     }
 }

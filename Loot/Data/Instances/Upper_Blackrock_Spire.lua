@@ -287,7 +287,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
         { name = BIS["Dal'Rend's Arms"], items = "DalRend" },
-        { name = L["Tier 0/0.5 Sets"], items = "T0Set" },
+        { name = L["Tier 0/0.5 Sets"], items = "AtlasLootT0SetMenu" },
     }
 }
 

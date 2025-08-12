@@ -578,7 +578,7 @@ AtlasTW.InstanceData.Stratholme = {
         },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
         { name = BIS["The Postmaster"], items = "Strat" },
-        { name = L["Tier 0/0.5 Sets"], items = "T0Set" },
+        { name = L["Tier 0/0.5 Sets"], items = "AtlasLootT0SetMenu" },
     },
 }
 

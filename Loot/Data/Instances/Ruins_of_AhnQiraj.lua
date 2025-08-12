@@ -337,7 +337,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {id=21297},
             }
         },
-        { name = L["Ruins of Ahn'Qiraj Sets"], items = "Aq20Set" },
+        { name = L["Ruins of Ahn'Qiraj Sets"], items = "AtlasLootAQ20SetMenu" },
     }
 }
 

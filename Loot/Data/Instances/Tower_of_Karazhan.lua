@@ -285,7 +285,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 {id=55277},
             }
         },
-        { name = L["Tower of Karazhan Sets"], items = "K40Set" },
+        { name = L["Tower of Karazhan Sets"], items = "AtlasLootUKSetMenu" },
     }
 }
 

@@ -472,8 +472,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=18253,disc="500"},
             },
         },
-        { name = L["Tier 1 Sets"], items = "T1Set" },
-        { name = L["Tier 2 Sets"], items = "T2Set" },
+        { name = L["Tier 1 Sets"], items = "AtlasLootT1SetMenu" },
+        { name = L["Tier 2 Sets"], items = "AtlasLootT2SetMenu" },
     },
 }
 

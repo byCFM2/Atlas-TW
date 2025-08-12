@@ -46,6 +46,6 @@ local function getExtraText(itemData)
 end
 
 function AtlasLootRepMenu()
-	AtlasLoot_PrepMenu(nil, L["Factions"], "Factions")
+	AtlasLoot_PrepMenu(nil, L["Factions"], "AtlasLootRepMenu")
     AtlasLoot_ShowMenu(AtlasTW.Loot.FactionsData, { getExtraText = getExtraText, maxItems = table.getn(AtlasTW.Loot.FactionsData) })
 end

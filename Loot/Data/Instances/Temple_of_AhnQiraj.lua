@@ -418,7 +418,7 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 { id = 21520 }
             }
         },
-        { name = L["Temple of Ahn'Qiraj Sets"], items = "Aq40Set" },
+        { name = L["Temple of Ahn'Qiraj Sets"], items = "AtlasLootAQ40SetMenu" },
     }
 }
 

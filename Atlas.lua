@@ -284,7 +284,7 @@ function AtlasTW.Refresh()
 	end
 
 	--Reset which loot page is 'current'
-	AtlasLootItemsFrame.activeBoss = nil
+	AtlasLootItemsFrame.activeElement = nil
 
 	--Get boss name information
 	for key, value in pairs(data[zoneID] or {}) do
@@ -611,7 +611,7 @@ function AtlasTW.OnShow()
 	AtlasTW.Refresh()
 
 	--If a boss has been selected, show the loot frame
-	if AtlasLootItemsFrame.activeBoss then
+	if AtlasLootItemsFrame.activeElement then
 		AtlasLootItemsFrame:Show()
 	end
 end

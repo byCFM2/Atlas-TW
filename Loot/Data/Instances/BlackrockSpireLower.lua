@@ -419,7 +419,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
         { name = BIS["Spider's Kiss"], items = "SpiderKiss" },
-        { name = L["Tier 0/0.5 Sets"], items = "T0Set" },
+        { name = L["Tier 0/0.5 Sets"], items = "AtlasLootT0SetMenu" },
     }
 }
 

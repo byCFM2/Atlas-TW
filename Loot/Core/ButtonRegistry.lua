@@ -213,7 +213,7 @@ AtlasLoot_TableRegistry = {
             { ID = "PvP60Accessories",         Title = L["PvP Accessories"] },
             { ID = "PvP60Accessories2",         Title = L["PvP Accessories - Alliance"] },
             { ID = "PvP60Accessories3",         Title = L["PvP Accessories - Horde"]  },
-         --   { ID = "PvPSet",                    Title = L["PvP Armor Sets"] },
+         --   { ID = "AtlasLootAQ20SetMenu",                    Title = L["PvP Armor Sets"] },
             { ID = "PVPWeapons",               Title = L["Rank 14 Weapons"].." 1" },
             { ID = "PVPWeapons2",               Title = L["Rank 14 Weapons"].." 2" },
         },
@@ -279,7 +279,7 @@ AtlasLoot_TableRegistry = {
             { ID = "BRRepTokens",               Title = L["Token of Blood Rewards"] },
         },
     },
-    ["PvPSet"] = {
+    ["AtlasLootAQ20SetMenu"] = {
         Name = L["PvP Armor Sets"],
         Entry = {
             { ID = "PVPPriest",                 Title = BC["Priest"].." - "..L["PvP Sets"] },
@@ -491,7 +491,7 @@ AtlasLoot_TableRegistry = {
             { ID = "DreamhideBattlegarb", Title = BIS["Dreamhide Battlegarb"] },
         }
     },
-    ["CraftSet2"] = {
+    ["AtlasLootCraftedSet2Menu"] = {
         Name = L["Crafted Sets"].." II",
         Entry = {
             { ID = "RedDragonM", Title = BIS["Red Dragon Mail"] },
