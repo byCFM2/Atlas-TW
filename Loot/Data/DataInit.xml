@@ -62,8 +62,8 @@
     <!-- Данные PvP -->
     <Include file="PvP\WarsongGulch.lua"/>
     <Include file="PvP\ArathiBasin.lua"/>
-    <Include file="PvP\BGAlteracValleyNorth.lua"/>
-    <Include file="PvP\BGAlteracValleySouth.lua"/>
+    <Include file="PvP\AlteracValleyNorth.lua"/>
+    <Include file="PvP\AlteracValleySouth.lua"/>
     <Include file="PvP\Other.lua"/>
     <!-- Другие данные -->
     <Include file="Tables\Factions.lua"/>

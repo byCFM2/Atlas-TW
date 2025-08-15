@@ -14,12 +14,12 @@ local function getFormString(instanceType, mainString)
     end
 end
 
--- Function to generate menu data from AtlasMaps
+-- Function to generate menu data from AtlasTW.InstanceData
 local function GenerateMenuDataFromInstanceData()
     local menu1Data = {}
     local menu2Data = {}
 
---[[     -- Mapping from AtlasMaps keys to lootpage names
+--[[     -- Mapping from AtlasTW.InstanceData keys to lootpage names
     local lootpageMapping = {
         ["RagefireChasm"] = "RFCTaragaman",
         ["WailingCaverns"] = "WCLordCobrahn",
@@ -68,15 +68,6 @@ local function GenerateMenuDataFromInstanceData()
     } ]]
     -- Skip these instances as they have special handling
     local skipInstances = {
-        ["Azuregos"] = true,
-        ["Clackora"] = true,
-        ["Concavius"] = true,
-        ["CowKing"] = true,
-        ["FourDragons"] = true,
-        ["LordKazzak"] = true,
-        ["Nerubian"] = true,
-        ["Ostarius"] = true,
-        ["Reaver"] = true,
         ["RareMobs"] = true,  -- should be in World menu
     }
 
@@ -207,13 +198,13 @@ local function GenerateMenuDataFromInstanceData()
     return menu1Data, menu2Data
 end
 
--- Generate menu data from AtlasMaps
+-- Generate menu data from AtlasMAtlasTW.InstanceDataaps
 local generatedMenu1Data, generatedMenu2Data = GenerateMenuDataFromInstanceData()
 
--- Data for Dungeons & Raids (Page 1) - Auto-generated from AtlasMaps
+-- Data for Dungeons & Raids (Page 1) - Auto-generated from AtlasTW.InstanceData
 AtlasTW.Loot.DungeonsMenu1Data = generatedMenu1Data
 
--- Data for Dungeons & Raids (Page 2) - Auto-generated from AtlasMaps  
+-- Data for Dungeons & Raids (Page 2) - Auto-generated from AtlasTW.InstanceData  
 AtlasTW.Loot.DungeonsMenu2Data = generatedMenu2Data
 
  function AtlasLoot_DungeonsMenu1()

@@ -49,7 +49,7 @@ function AtlasLoot_PrepMenu(backPage, title, menu)
 end
 
 function AtlasLoot_ShowMenu(menuData, options)
-    print("Show Menu:"..(menuData[4] and menuData[4].name or "no data for 4 element"))
+    --print("Show Menu:"..(menuData[4] and menuData[4].name or "no data for 4 element"))
 
     options = options or {}
     local maxItems = options.maxItems or 30

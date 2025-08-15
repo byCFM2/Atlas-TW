@@ -9,6 +9,13 @@ local BS = AceLibrary("Babble-Spell-2.2a")
 AtlasLoot_Data = AtlasLoot_Data or {}
 
 local Factions = {
+	Shendralar = {
+		{ name = BF["Friendly"] },
+		{ id = 55044 }, -- formula
+		{ id = 55045 }, -- elixir
+		{ name = BF["Exalted"] },
+		{ id = 55055 }, -- pattern
+	},
 	WintersaberTrainers = {
 		{ name = BF["Exalted"] },
 		{ id = 13086 }, -- Reins of the Winterspring Frostsaber

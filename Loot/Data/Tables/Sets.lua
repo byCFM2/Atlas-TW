@@ -47,6 +47,14 @@ Sets = {
 		{ id = 61234},--key 31
 		{ id = 51356},--key 32
 	},
+	Stormreaver = {
+		{ name = BIS["Stormreaver Attire"] },
+		{ id = 58131 }, -- Stormreaver Belt
+		{ id = 58147 }, -- Stormreaver Mantle
+		{ id = 58176 }, -- Stormreaver Hood
+		{ id = 58177 }, -- Stormreaver Robe
+		
+	},
 	Deadmines = {
 		{ name = BIS["Defias Leather"] },
 		{ id = 81007 }, -- Blackened Defias Mask

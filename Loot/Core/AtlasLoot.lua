@@ -103,14 +103,14 @@ end
 	the addon needs are in place, we can properly set up the mod
 ]]
 function AtlasLoot_GetBossNavigation(data) --TODO remake
-	print("AtlasLoot_GetBossNavigation")
+	--print("AtlasLoot_GetBossNavigation")
 	if type(data)=="string" then print(data) end
     if not data then return nil end
     for instanceKey, instanceData in pairs(AtlasLoot_TableRegistry) do
         if instanceData.Entry then
             for i, bossData in ipairs(instanceData.Entry) do
                 if bossData.Title == data then
-					print("bossData.ID")
+					--print("bossData.ID")
                     local nav = {}
                     nav.Title = bossData.Title
                     local numEntries = table.getn(instanceData.Entry)
@@ -227,7 +227,7 @@ AtlasTW.BossLootIndex = {}
 
 -- Функция построения индекса боссов (вызывается при инициализации)
 function AtlasTW.BuildBossLootIndex()
-	print("AtlasLoot: Построение индекса боссов...")
+--	print("AtlasLoot: Построение индекса боссов...")
 	for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
 		if type(instanceData) == "table" and instanceData.Bosses then
 			for bossIndex, bossData in ipairs(instanceData.Bosses) do
@@ -251,7 +251,7 @@ function AtlasTW.BuildBossLootIndex()
 	for _ in pairs(AtlasTW.BossLootIndex) do
 		count = count + 1
 	end
-	print("AtlasLoot: Индекс боссов построен. Всего уникальных имен: " .. count)
+	--print("AtlasLoot: Индекс боссов построен. Всего уникальных имен: " .. count)
 end
 
 -- Глобальная функция получения лута по имени босса без построения индексов
@@ -280,7 +280,7 @@ function AtlasTW.GetLootByElemName(elemName, instanceName)
 				end
 			end
 		end
-		return print("Wrong elemname or instancename")
+		return --print("Wrong elemname or instancename")
 	end
 	-- Поиск по всем инстансам
 	for _, inst in pairs(AtlasTW.InstanceData) do
@@ -624,7 +624,7 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 		dataSource = AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]
 	end
 	if type(dataSource) == "table" then
-		print("AtlasLoot_Show2ItemsFrame: table")
+	--	print("AtlasLoot_Show2ItemsFrame: table")
 		local totalItems = getn(dataSource)
 		local num_scroll_steps = 0
 
@@ -830,11 +830,11 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 			end
 		end
 	elseif type(_G[dataSource]) == "function" then
-		print("AtlasLoot_Show2ItemsFrame: function")
+	--	print("AtlasLoot_Show2ItemsFrame: function")
 		_G[dataSource]()
 	else
 
-		print("Unknown dataSource type: "..type(dataSource)..(dataSource or " nil"))
+	--	print("Unknown dataSource type: "..type(dataSource)..(dataSource or " nil"))
 	end
 	if dataID == "SearchResult" or dataID == "WishList" then
 --[[ 		if wlPage < wlPageMax then
@@ -881,8 +881,8 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 end
 
 local function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
-print("Run: AtlasLoot_ShowItemsFrame "..(dataID or " no dataID").." _"..
-	(dataSource or " no dataSource").." _"..(boss or " no boss") )
+--print("Run: AtlasLoot_ShowItemsFrame "..(dataID or " no dataID").." _"..
+	--(dataSource or " no dataSource").." _"..(boss or " no boss") )
 --[[ 
     if not dataID or not dataSource then return end
 
@@ -1367,11 +1367,11 @@ function AtlasLootBoss_OnClick(buttonName)
         AtlasLootItemsFrame:Hide()
         AtlasLootItemsFrame.activeElement = nil
     else
-		print(elemName.. " elemName")
+	--	print(elemName.. " elemName")
 		--Get the loot table for the element, either by name or by ID how reserv metod
 		--lootTable = GetLootByName(zoneID, bossname) or GetLootByID(zoneID, id)
         if lootTable then
-			print(tostring(lootTable).." lootTable")
+	--		print(tostring(lootTable).." lootTable")
 			AtlasLootItemsFrame:Show()
 			local scrollStartTime = GetTime()
 			AtlasLoot_ShowScrollBarLoading()
@@ -1733,7 +1733,7 @@ function AtlasLootMenuItem_OnClick(button)
 		AtlasTWCharDB.LastBoss = TableSource
 		AtlasTWCharDB.LastBossText = pagename
 
-		print(dataID.." - dataID, "..TableSource.." - TableSource")
+	--	print(dataID.." - dataID, "..TableSource.." - TableSource")
 		AtlasLootItemsFrame:Show()
 		local scrollStartTime = GetTime()
 		AtlasLoot_ShowScrollBarLoading()
@@ -1761,7 +1761,7 @@ end
 	Called when <-, -> or 'Back' are pressed and calls up the appropriate loot page
 ]]
 function AtlasLoot_NavButton_OnClick()
-	print("AtlasLoot_NavButton_OnClick")
+	--print("AtlasLoot_NavButton_OnClick")
 	--[[ -- If the back button is clicked, set the LastBoss to the new page
 	if this == AtlasLootItemsFrame_BACK then
 		AtlasLootItemsFrame.externalBoss = this.lootpage

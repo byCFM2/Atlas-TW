@@ -3446,14 +3446,15 @@ local craftingTable = {
 		{ id=41776, skill={125,145,155,165} }, --Ring of Midnight
 		{ id=41059, skill={125,150,160,170} }, --Moonlight Staff
 		{ id=41568, skill={130,150,160,170} }, --Dazzling Moonstone Band
+		{ id=70113, skill={135,135,135,135} }, --
 		{ id=41760, skill={135,135,137,140} }, --Graceful Agate Gemstone
 		{ id=41069, skill={135,150,160,170} }, --Silver Medallion
 		{ id=41071, skill={135,155,165,175} }, --Ring of Purified Silver
 		{ id=41327, skill={135,155,165,175} }, --Gleaming Silver Necklace
 		{ id=41339, skill={135,155,165,175} }, --Circlet of Dampening
 		{ id=41748, skill={135,155,165,175} }, --Totem of Self Preservation
-		{ id=41583, skill={140,160,170,180} }, --Farraki Ceremony Totem
 		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41583, skill={140,160,170,180} }, --Farraki Ceremony Totem
 		{ id=41728, skill={140,160,170,180} }, --Blackrock Ironclamps
 		{ id=41570, skill={145,165,175,185} }, --Harpy Talon Ring
 		{ id=41742, skill={145,165,175,185} }, --Venomspire Diadem
@@ -3489,14 +3490,15 @@ local craftingTable = {
 		{ id=41213, skill={175,195,202,210} }, --Goldenshade Quartz Crown
 		{ id=41215, skill={175,195,202,210} }, --The Golden Goblet
 		{ id=41217, skill={175,195,202,210} }, --Powerful Citrine Pendant
+		{ id=77, 	skill={185,185,185,185} }, --
 		{ id=41556, skill={180,200,210,220} }, --Delicate Mithril Amulet
 		{ id=41221, skill={185,200,210,220} }, --Ironsun Citrine Ring
 		{ id=41750, skill={185,200,207,215} }, --Facetted Moonstone Brooch
 		{ id=41589, skill={185,205,215,225} }, --Crystal Earring
 		{ id=41263, skill={190,190,210,230} }, --Ocean's Gaze
 		{ id=41223, skill={190,205,215,225} }, --Shimmering Gold Necklace
-		{ id=41225, skill={190,205,215,225} }, --Ironbloom Ring
 		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41225, skill={190,205,215,225} }, --Ironbloom Ring
 		{ id=41541, skill={190,210,220,230} }, --Dazzling Aquamarine Loop
 		{ id=41579, skill={190,210,220,230} }, --Marine's Demise
 		{ id=41285, skill={195,195,217,240} }, --Shimmering Moonstone Tablet
@@ -3510,8 +3512,8 @@ local craftingTable = {
 		{ id=41738, skill={200,215,225,235} }, --Marine Root
 		{ id=41227, skill={200,220,230,240} }, --Ornate Mithril Scepter
 		{ id=41546, skill={200,220,230,240} }, --Alluring Citrine Choker
-		{ id=41548, skill={200,220,230,240} }, --Elaborate Golden Bracelets
 		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41548, skill={200,220,230,240} }, --Elaborate Golden Bracelets
 		{ id=41550, skill={200,220,230,240} }, --Heart of the Sea
 		{ id=41744, skill={200,220,230,240} }, --Bloodfire Circlet
 		{ id=41754, skill={200,220,230,240} }, --Smoldering Brooch
@@ -3525,8 +3527,8 @@ local craftingTable = {
 		{ id=41352, skill={210,235,245,255} }, --Opaline Illuminator
 		{ id=41307, skill={1,235,245,255} }, --Gemkeeper's Folio
 		{ id=41235, skill={215,215,225,235} }, --Aquamarine Pendant
-		{ id=41241, skill={215,235,245,255} }, --Royal Gemstone Staff
 		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41241, skill={215,235,245,255} }, --Royal Gemstone Staff
 		{ id=41277, skill={220,220,240,260} }, --Starforge Amulet
 		{ id=41243, skill={220,240,250,260} }, --Emberstone Idol
 		{ id=41245, skill={220,240,250,260} }, --Runed Truesilver Ring
@@ -3540,8 +3542,8 @@ local craftingTable = {
 		{ id=41770, skill={235,240,240,240} }, --Dense Gemstone Cluster
 		{ id=41087, skill={235,245,250,255} }, --Rough Thorium Ring
 		{ id=41720, skill={240,260,275,290} }, --Regal Twilight Staff
-		{ id=41724, skill={245,245,265,285} }, --Ornament of Restraint
 		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41724, skill={245,245,265,285} }, --Ornament of Restraint
 		{ id=41089, skill={245,265,275,285} }, --Mithril Blackstone Necklace
 		{ id=41261, skill={250,250,270,290} }, --Sunburst Tiara
 		{ id=41091, skill={250,260,265,270} }, --Dense Gritted Paper
@@ -3735,6 +3737,7 @@ local craftingTable = {
 		{ id=41325, skill={110,130,140,150} }, --Medallion of Flame
 		{ id=41055, skill={120,145,155,165} }, --Pendant of Midnight
 		{ id=41327, skill={135,155,165,175} }, --Gleaming Silver Necklace
+		{ id=70113, skill={135,135,135,135} }, --
 		{ id=41275, skill={160,160,180,200} }, --Gemmed Citrine Pendant
 		{ id=41331, skill={160,180,190,200} }, --Gem Encrusted Choker
 		{ id=41283, skill={1,175,192,210} }, --Astral Amulet

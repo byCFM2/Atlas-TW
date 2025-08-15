@@ -120,8 +120,9 @@ end
 --Comparator function for alphabetic sorting of maps
 --yey, one function for everything
 local function atlas_SortZonesAlpha(a, b)
-	local aa = atlas_SanitizeName(AtlasMaps[a].ZoneName)
-	local bb = atlas_SanitizeName(AtlasMaps[b].ZoneName)
+	local aa = atlas_SanitizeName(AtlasTW.InstanceData[a].Name)
+	local bb = atlas_SanitizeName(AtlasTW.InstanceData[b].Name)
+
 	return aa < bb
 end
 
@@ -254,7 +255,7 @@ local function atlasSwitchDD_OnLoad()
 	local info
 	for _,v in pairs(atlas_Ints_Ent_DropDown) do
 		info = {
-			text = AtlasMaps[v].ZoneName,
+			text = AtlasTW.InstanceData[v].Name,
 			func = atlasSwitchDD_OnClick
 		}
 		UIDropDownMenu_AddButton(info)
@@ -262,8 +263,8 @@ local function atlasSwitchDD_OnLoad()
 end
 
 local function atlasSwitchDD_Sort(a, b)
-	local aa = AtlasMaps[a].ZoneName
-	local bb = AtlasMaps[b].ZoneName
+	local aa = AtlasTW.InstanceData[a].Name
+	local bb = AtlasTW.InstanceData[b].Name
 	return aa < bb
 end
 
@@ -272,8 +273,8 @@ end
 --Also responsible for updating all the text when a map is changed
 function AtlasTW.Refresh()
 	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
-	DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Refresh: Загружаем инстанс " .. (zoneID or "nil"))
-	--local data = AtlasMaps
+	--print("AtlasTW.Refresh: Загружаем инстанс " .. (zoneID or "nil"))
+	--local data = AtlasMa_p_s
 	local data = AtlasTW.InstanceData
 	local base = {}
 
@@ -287,7 +288,7 @@ function AtlasTW.Refresh()
 	AtlasLootItemsFrame.activeElement = nil
 
 	--Get boss name information
-	for key, value in pairs(data[zoneID] or {}) do
+	for key, value in pairs(data[zoneID] or {}) do --TODO REMAKE
 		base[key] = value
 	end
 
@@ -480,7 +481,7 @@ local function atlasFrameDropDown_Initialize()
 	local info
 	for _,v in pairs(AtlasTW.DropDowns[AtlasTWOptions.AtlasType]) do
 		info = {
-			text = AtlasMaps[v].ZoneName,
+			text = AtlasTW.InstanceData[v].Name,
 			func = atlasFrameDropDown_OnClick
 		}
 		UIDropDownMenu_AddButton(info)
@@ -555,24 +556,24 @@ local function atlasAutoSelect()
 			end
 		elseif AtlasTW.InstToEntMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
 			for _,va in pairs(AtlasTW.InstToEntMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
-				if currentZone == AtlasMaps[va].ZoneName then
+				if currentZone == AtlasTW.InstanceData[va].Name then
 					debug("Instance/entrance pair found. Doing nothing.")
 					return
 				end
 			end
 		elseif AtlasTW.EntToInstMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
 			for _,va in pairs(AtlasTW.EntToInstMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
-				if currentZone == AtlasMaps[va].ZoneName then
+				if currentZone == AtlasTW.InstanceData[va].Name then
 					debug("Instance/entrance pair found. Doing nothing.")
 					return
 				end
 			end
 		end
-		debug("Searching through all maps for a ZoneName match.")
+		debug("Searching through all maps for a Name match.")
 		for ka,va in pairs(AtlasTW.DropDowns) do
 			for kb,vb in pairs(va) do
 				-- Compare the currentZone to the new substr of ZoneName
-				if currentZone == strsub(AtlasMaps[vb].ZoneName, strlen(AtlasMaps[vb].ZoneName) - strlen(currentZone) + 1) then
+				if currentZone == strsub(AtlasTW.InstanceData[vb].Name, strlen(AtlasTW.InstanceData[vb].Name) - strlen(currentZone) + 1) then
 					AtlasTWOptions.AtlasType = ka
 					AtlasTWOptions.AtlasZone = kb
 					AtlasTW.Refresh()

@@ -107,7 +107,7 @@ AtlasTW.InstanceData.DLWest = {
             id = "DLBlackMorass",
             prefix = "12)",
             name = BZ["Black Morass"],
-            postfix = L["Caverns of Time"],
+            postfix = BZ["Tanaris"],
             color = "|cff999999",
         },
         {

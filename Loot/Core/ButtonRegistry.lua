@@ -6,7 +6,7 @@ local BF = AceLibrary("Babble-Faction-2.2a")
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
--- AtlasLoot_TableRegistry больше не используется, данные берутся из AtlasMaps
+-- AtlasLoot_TableRegistry больше не используется, данные берутся из AtlasTW.InstanceData
 -- Оставлено для совместимости
 AtlasLoot_TableRegistry = {
     ["World"] = {

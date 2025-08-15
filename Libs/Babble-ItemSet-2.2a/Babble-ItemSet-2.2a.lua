@@ -26,6 +26,7 @@ local BabbleItemSet = AceLibrary("AceLocale-2.2"):new(MAJOR_VERSION)
 BabbleItemSet:RegisterTranslations("enUS", function()
 	return {
 		--1.18
+		["Stormreaver Attire"] = true,
 		["Dragonmaw Battlegarb"] = true,
 		--1.17
 		["Incendosaur Skin Armor"] = true,

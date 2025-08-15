@@ -174,5 +174,19 @@ AtlasTW.InstanceData.DLEast = {
             postfix = BZ["Stranglethorn Vale"],
             color = "|cff999999",
         },
+        {
+            id = "DLStormwroughtRuins",
+            prefix = "16)",
+            name = BZ["Stormwrought Ruins"],
+            postfix = BZ["Balor"],
+            color = "|cff999999",
+        },
+        {
+            id = "DLDragonmawRetreat",
+            prefix = "17)",
+            name = BZ["Dragonmaw Retreat"],
+            postfix = BZ["Grim Reaches"],
+            color = "|cff999999",
+        },
     },
 }

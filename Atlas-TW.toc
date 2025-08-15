@@ -8,7 +8,7 @@
 ## Notes-esES: Navegador de Mapas de Mazmorras
 ## Notes-ruRU: Обозреватель подземелий
 ## Version: 1.30
-## X-Date: June, 2025
+## X-Date: August, 2025
 ## Author: Otwo, Dan Gilbert, Daviesh, Otari98, pepopo, etc
 ## X-Category: MYADDONS_CATEGORY_MAP
 ## X-OptionsFrame: AtlasOptionsFrame

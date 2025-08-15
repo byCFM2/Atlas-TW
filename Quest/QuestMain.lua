@@ -442,8 +442,8 @@ function AtlasTW.Quest.LoadFinishedQuests()
     AtlasTW.Q = AtlasTW.Q or {}
 
     -- Iterate over all known instances from the new database
-    if AtlasMaps then
-        for instanceName, _ in pairs(AtlasMaps) do
+    if AtlasTW.InstanceData then
+        for instanceName, _ in pairs(AtlasTW.InstanceData) do
             for _, faction in ipairs({ "_Alliance", "_Horde" }) do
                 for questId = 1, AtlasTW.QMAXQUESTS do
                     local key = "Completed_" .. instanceName .. "_Quest_" .. questId .. faction

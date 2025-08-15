@@ -13,7 +13,7 @@ AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- Данные Черной Топи
 AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
-    Name = BZ["Caverns of Time: Black Morass"],
+    Name = BZ["Black Morass"],
     Location = BZ["Tanaris"],
     Level = {58,60},
     Acronym = "BM",

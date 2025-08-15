@@ -152,6 +152,7 @@ local pre60SetsMenuData = {
     { name = BIS["Defias Leather"], extra = "The Deadmines", icon = "Interface\\Icons\\INV_Pants_12", lootpage = "Deadmines" },
     { name = BIS["Embrace of the Viper"], extra = "Wailing Caverns", icon = "Interface\\Icons\\INV_Shirt_16", lootpage = "Wailing" },
     { name = BIS["Chain of the Scarlet Crusade"], extra = "Scarlet Monastery", icon = "Interface\\Icons\\INV_Gauntlets_19", lootpage = "Scarlet" },
+    { name = BIS["Stormreaver Attire"], extra = "Stormwrought Ruins", icon = "Interface\\Icons\\inv_helmet_02", lootpage = "Stormreaver" }, --TODO Icon
     { name = BIS["Greymane Armor"], extra = "Gilneas City", icon = "Interface\\Icons\\inv_helmet_02", lootpage = "GreymaneArmor" },
     { name = BIS["Incendosaur Skin Armor"], extra = "Hateforge Quarry", icon = "Interface\\Icons\\INV_Shoulder_23", lootpage = "IncendosaurSkinArmor" },
     { name = BIS["The Gladiator"], extra = "Blackrock Depths", icon = "Interface\\Icons\\INV_Helmet_01", lootpage = "TheGladiator" },

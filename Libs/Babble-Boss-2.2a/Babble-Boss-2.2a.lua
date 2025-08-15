@@ -28,6 +28,17 @@ local BabbleBoss = AceLibrary("AceLocale-2.2"):new(MAJOR_VERSION)
 
 BabbleBoss:RegisterTranslations("enUS", function()
 	return {
+		["Oronok Torn-Heart"] = true,
+		["Dagar The Glutton"] = true,
+		["Librarian Theodorus"] = true,
+		["Duke Balor the IV"] = true,
+		["Chieftain Stormsong"] = true,
+		["Subjugator Halthas Shadecrest"] = true,
+		["Mycellakos"] = true,
+		["Lady Drazare"] = true,
+		["Ighal'for"] = true,
+		["Mergothid"] = true,
+		["Deathlord Tidebane"] = true,
 		["Trigore the Lasher"] = true,
 		["Boahn"] = true,
 		["Mad Magglish"] = true,

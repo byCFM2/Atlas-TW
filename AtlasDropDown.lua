@@ -52,13 +52,13 @@ local function getMapType(mapKey, mapData)
         end
     end
 
-    -- Data convention in AtlasMaps: MinLevel "1" is used for World Bosses
-    if mapData.MinLevel == "1" then
+    -- Data convention in AtlasTW.InstanceData: MinLevel "1" is used for World Bosses
+    if type(mapData.Level) == "table" and mapData.Level[1] == 1 then
         return "World Boss"
     end
 
-    if mapData.Continent and mapData.LevelRange and mapData.PlayerLimit and mapData.ZoneName then
-        local size = tonumber(mapData.PlayerLimit)
+    if mapData.Continent and mapData.Level and mapData.MaxPlayers and mapData.Location then
+        local size = mapData.MaxPlayers
         if size and size > 5 then
             return "Raid"
         else
@@ -69,61 +69,50 @@ local function getMapType(mapKey, mapData)
     return nil
 end
 
--- Populate Dungeons from AtlasMaps
-if AtlasMaps then
-    for mapKey, mapData in pairs(AtlasMaps) do
-        local mapType = getMapType(mapKey, mapData)
+local function getContinent(mapData)
+    -- Check if this instance is in Kalimdor (DLWest)
+    if AtlasTW.InstanceData.DLWest and AtlasTW.InstanceData.DLWest.Bosses then
+        for _, entry in pairs(AtlasTW.InstanceData.DLWest.Bosses) do
+            if entry.name and mapData.Name == entry.name then
+                return BZ["Kalimdor"]
+            end
+        end
+    end
 
+    -- Default to Eastern Kingdoms for all other instances
+    return BZ["Eastern Kingdoms"]
+end
+
+-- Populate Dungeons from AtlasTW.InstanceData
+if AtlasTW.InstanceData then
+    for mapKey, mapData in pairs(AtlasTW.InstanceData) do
+        local mapType = getMapType(mapKey, mapData)
         if mapType then
             Dungeons[mapKey] = {
                 type = mapType,
-                continent = mapData.Continent,
-                level = mapData.LevelRange,
-                size = tonumber(mapData.PlayerLimit)
+                continent = getContinent(mapData),
+                level =  type(mapData.Level) == "table" and (mapData.Level[1].."-"..mapData.Level[2]) or mapData.Level,
+                size = mapData.MaxPlayers or 40,
             }
-        else
-            if AtlasTW and AtlasTW.DEBUGMODE then
-                DEFAULT_CHAT_FRAME:AddMessage(string.format("|cffffff00[Atlas] Unknown type for map: %s|r", mapKey))
-            end
         end
     end
 end
 
 -- Helper function to parse level range string like "10-20", "60+" or "60"
-local function ParseLevelRange(rangeStr)
-    if type(rangeStr) ~= "string" then return nil, nil end
-
-    -- e.g. 60+
-    local plusPos = string.find(rangeStr, "+")
-    if plusPos then
-        local min = tonumber(string.sub(rangeStr, 1, plusPos - 1))
-        if min then
-            return min, 60 -- Treat as 60 for calculation
-        end
+local function getLevel(rangelevel)
+    if type(rangelevel) == "table" then
+        return rangelevel[1], rangelevel[2]
+    elseif type(rangelevel) == "number" then
+        return rangelevel, rangelevel
+    else
+        return nil, nil
     end
-    -- e.g. 10-20
-    local sepPos = string.find(rangeStr, "-")
-    if sepPos then
-        local min = tonumber(string.sub(rangeStr, 1, sepPos - 1))
-        local max = tonumber(string.sub(rangeStr, sepPos + 1))
-        if min and max then
-            return min, max
-        end
-    end
-
-    -- e.g. 60
-    local singleLevel = tonumber(rangeStr)
-    if singleLevel then
-        return singleLevel, singleLevel
-    end
-
-    return nil, nil
 end
 
 -- Helper function to check if a dungeon's average level is within a category's range
 local function IsInRange(dungeonLevel, categoryMin, categoryMax)
     if not dungeonLevel then return false end
-    local min, max = ParseLevelRange(dungeonLevel)
+    local min, max = getLevel(dungeonLevel)
     if not min or not max then return false end
     local avgLevel = floor((min + max) / 2)
     return (avgLevel >= categoryMin and avgLevel <= categoryMax)
@@ -307,18 +296,18 @@ end
 if AtlasTW and AtlasTW.DEBUGMODE then
     local errors, warnings = AtlasDropDown:ValidateData()
     if table.getn(errors) > 0 then
-        DEFAULT_CHAT_FRAME:AddMessage(COLORS.RED .. "[Atlas] DropDown validation errors:|r")
+        print(COLORS.RED .. "[Atlas] DropDown validation errors:|r")
         for _, error in ipairs(errors) do
-            DEFAULT_CHAT_FRAME:AddMessage("  - " .. error)
+            print("  - " .. error)
         end
     end
     if table.getn(warnings) > 0 then
-        DEFAULT_CHAT_FRAME:AddMessage(COLORS.YELLOW .. "[Atlas] DropDown validation warnings:|r")
+        print(COLORS.YELLOW .. "[Atlas] DropDown validation warnings:|r")
         for _, warning in ipairs(warnings) do
-            DEFAULT_CHAT_FRAME:AddMessage("  - " .. warning)
+            print("  - " .. warning)
         end
     end
     if table.getn(errors) == 0 and table.getn(warnings) == 0 then
-        DEFAULT_CHAT_FRAME:AddMessage(COLORS.GREEN .. "[Atlas] DropDown data validation passed.|r")
+        print(COLORS.GREEN .. "[Atlas] DropDown data validation passed.|r")
     end
 end
