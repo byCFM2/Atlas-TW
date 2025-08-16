@@ -57,7 +57,8 @@ local function getMapType(mapKey, mapData)
         return "World Boss"
     end
 
-    if mapData.Continent and mapData.Level and mapData.MaxPlayers and mapData.Location then
+    -- Do not require Continent field; determine type by common fields
+    if mapData.Level and mapData.MaxPlayers and mapData.Location then
         local size = mapData.MaxPlayers
         if size and size > 5 then
             return "Raid"
@@ -78,25 +79,31 @@ local function getContinent(mapData)
             end
         end
     end
-
     -- Default to Eastern Kingdoms for all other instances
     return BZ["Eastern Kingdoms"]
 end
 
--- Populate Dungeons from AtlasTW.InstanceData
-if AtlasTW.InstanceData then
-    for mapKey, mapData in pairs(AtlasTW.InstanceData) do
-        local mapType = getMapType(mapKey, mapData)
-        if mapType then
-            Dungeons[mapKey] = {
-                type = mapType,
-                continent = getContinent(mapData),
-                level =  type(mapData.Level) == "table" and (mapData.Level[1].."-"..mapData.Level[2]) or mapData.Level,
-                size = mapData.MaxPlayers or 40,
-            }
+-- Populate Dungeons from AtlasTW.InstanceData (now as a function for lazy rebuild)
+local function BuildDungeons()
+    Dungeons = {}
+    if AtlasTW and AtlasTW.InstanceData then
+        for mapKey, mapData in pairs(AtlasTW.InstanceData) do
+            local mapType = getMapType(mapKey, mapData)
+            if mapType then
+                Dungeons[mapKey] = {
+                    type = mapType,
+                    continent = getContinent(mapData),
+                    -- level =  type(mapData.Level) == "table" and (mapData.Level[1].."-"..mapData.Level[2]) or mapData.Level,
+                    level = mapData.Level,
+                    size = mapData.MaxPlayers or 40,
+                }
+            end
         end
     end
 end
+
+-- Build once in case data is already available
+BuildDungeons()
 
 -- Helper function to parse level range string like "10-20", "60+" or "60"
 local function getLevel(rangelevel)
@@ -242,14 +249,26 @@ local function GenerateLayouts()
     return layouts, layoutOrder
 end
 
+-- Ensure layouts are generated (lazy init)
+function AtlasDropDown:EnsureLayouts()
+    if (not Dungeons) or (next(Dungeons) == nil and AtlasTW and AtlasTW.InstanceData) then
+        BuildDungeons()
+    end
+    if not self.Layouts or not self.LayoutOrder or (next(self.LayoutOrder) == nil) then
+        self.Layouts, self.LayoutOrder = GenerateLayouts()
+    end
+end
+
 AtlasDropDown.Layouts, AtlasDropDown.LayoutOrder = GenerateLayouts()
 
 -- API Functions
 function AtlasDropDown:GetLayoutOrder(sortType)
+    self:EnsureLayouts()
     return self.LayoutOrder[sortType] or {}
 end
 
 function AtlasDropDown:GetLayout(sortType)
+    self:EnsureLayouts()
     return self.Layouts[sortType] or {}
 end
 
@@ -261,9 +280,7 @@ function AtlasDropDown:ValidateData()
         for category, dungeons in pairs(layout) do
             if type(dungeons) ~= "table" then
                 table.insert(errors, string.format("Invalid dungeon list for %s -> %s", sortType, category))
-            -- A category being empty is not necessarily an error, but a warning might be useful for debugging
             elseif table.getn(dungeons) == 0 then
-                -- Exclude the placeholder category from warnings
                 if category ~= L["Showing all instances_2"] then
                     table.insert(warnings, string.format("Empty dungeon list for %s -> %s", sortType, category))
                 end
@@ -290,6 +307,13 @@ end
 
 function AtlasTW_DropDownGetLayout(sortType)
     return AtlasDropDown:GetLayout(sortType)
+end
+
+-- Expose manual rebuild for other modules if needed
+function AtlasTW_DropDownRebuild()
+    AtlasDropDown.Layouts, AtlasDropDown.LayoutOrder = nil, nil
+    BuildDungeons()
+    AtlasDropDown:EnsureLayouts()
 end
 
 -- Debug function to print validation results on load

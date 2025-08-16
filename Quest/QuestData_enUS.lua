@@ -1,5 +1,8 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
+local L = AtlasTW.Local
+local BZ = AceLibrary("Babble-Zone-2.2a")
+local BB = AceLibrary("Babble-Boss-2.2a")
 ---------------
 --- COLOURS ---
 ---------------
@@ -10790,4 +10793,119 @@ kQuestInstanceData["TowerofKarazhan"].Quests.Horde[6] = kQuestInstanceData["Towe
 kQuestInstanceData["TowerofKarazhan"].Quests.Horde[7] = kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[7]
 kQuestInstanceData["TowerofKarazhan"].Quests.Horde[8] = kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[8]
 kQuestInstanceData["TowerofKarazhan"].Quests.Horde[9] = kQuestInstanceData["TowerofKarazhan"].Quests.Alliance[9]
+--------------- Dragonmaw Retreat ---------------
+kQuestInstanceData.DragonmawRetreat = {
+    Story = "",
+    Caption = BZ["Dragonmaw Retreat"],
+    QAA = "4 Quest",
+    QAH = "0 Quest",
+    Quests = {
+        Alliance = {},
+        Horde = {}
+    }
+}
+kQuestInstanceData.DragonmawRetreat.Quests.Alliance[1] = {
+    Title = "1. The Redbrand Lie",
+    Level = "28",
+    Attain = "28", --TODO need check
+    Aim = "Bring the Redbrand Tablet to one of the historians at The Library in Ironforge.",
+    Location = "Redbrand Tablet (Dragonmaw Retreat "..yellow.."34,93"..white..")",
+    Note = "Tablet near [4].",
+    Prequest = "",
+    Folgequest = "",
+    Rewards = {
+        Text = blue.."No Rewards",
+    }
+}
+kQuestInstanceData.DragonmawRetreat.Quests.Alliance[2] = {
+    Title = "2. Pedestal of Unity",
+    Level = "28", --TODO need check
+    Attain = "28", --TODO need check
+    Aim = "Pedestal of Unity stands undroken, and free from serious damage.",
+    Location = "Pedestal of Unity (Dragonmaw Retreat "..yellow.."35,93"..white..")",
+    Note = "Pedestal near [4]. 'Fragment of Algoron' drop from [2], 'Fragment of Dathronag' drop from [a] 'Chest of Dathronag'.",
+    Prequest = "",
+    Folgequest = "",
+    Rewards = {
+        Text = blue.."Reward:",
+        {
+            Name = L["Lower Reserve Key"],
+            ID = "41876",
+            Color = white,
+            Description = "Key",
+        },
+    }
+}
+kQuestInstanceData.DragonmawRetreat.Quests.Alliance[3] = {
+    Title = "3. Letter from Korlag Doomsong",
+    Level = "35",
+    Attain = "30",
+    Aim = "Bring the letter to someone of high authority in Grim Reaches.",
+    Location = "Letter from Korlag Doomsong (Dragonmaw Retreat "..yellow.."41,47"..white..")",
+    Note = "Letter drops from [9]. Turn in to 'Magistrate Hurdam Toughhand' at 'Grim Reaches' "..yellow.."51,58",
+    Prequest = "",
+    Folgequest = "Destruction of the Dragonmaw",
+    Rewards = {
+        Text = blue.."Reward:",
+        {
+            Name = L["Letter from Korlag Doomsong"],
+            ID = "41982",
+            Color = white,
+            Description = "Quest Item",
+        },
+    }
+}
+kQuestInstanceData.DragonmawRetreat.Quests.Alliance[4] = {
+    Title = "4. Gowlfang's Defeat",
+    Level = "28",
+    Attain = "28", --TODO need check
+    Aim = "Avenge the Mosshide gnolls by slating their former leader Gowlfang in Dragonmaw Retreat. Return to Grimbit at their camp in The Green Belt in the Wetlands afterwards.",
+    Location = "Grimbit (Wetlands - The Green Belt "..yellow.."55,35"..white..")",
+    Note = "'Gowlfang's Head' drop from 'Gowlfang' [1]. "..yellow.."55,35",
+    Prequest = "",
+    Folgequest = "",
+    Rewards = {
+        Text = blue.."Reward:",
+        {
+            Name = "Mosshide Ring",
+            ID = "41830",
+            Color = white,
+            Description = "Ring",
+        },
+    }
+}
+kQuestInstanceData.DragonmawRetreat.Quests.Alliance[5] = {
+    Title = "5. Dragonmaw Brood",
+    Level = "34",
+    Attain = "34", --TODO need check
+    Aim = "Nydiszanz at the Dragonmaw Gates in the Wetlands wishes to release his brother Searistrasz from his capture by the Dragonmaw orcs in the Dragonmaw Retreat.",
+    Location = "Nydiszanz (Wetlands - Dragonmaw Gates "..yellow.."74,48"..white..")",
+    Note = "'Whelps' and 'Searistrasz' [8] "..yellow.."55,35",
+    Prequest = "",
+    Folgequest = "",
+    Rewards = {
+        Text = blue.."Reward:",
+        {
+            Name = "Runebound Dagger",
+            ID = "41831",
+            Color = blue,
+            Description = "Main Hand, Dagger",
+        },
+        {
+            Name = "Flameweave Sash",
+            ID = "41832",
+            Color = blue,
+            Description = "Waist, Cloth",
+        },
+        {
+            Name = "Cuffs of Burning Rage",
+            ID = "41833",
+            Color = blue,
+            Description = "Wrist, Mail",
+        },
+    }
+}
+kQuestInstanceData.DragonmawRetreat.Quests.Horde[1] = kQuestInstanceData.DragonmawRetreat.Quests.Alliance[2]
+
+
 AtlasTW.Quest.DataBase = kQuestInstanceData

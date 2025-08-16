@@ -62,8 +62,22 @@ AtlasTW.InstanceData.RazorfenDowns = {
             }
         },
         {
-            id = "RFDMordreshFireEye",
+            id = "RFDPlaguemaw",
             prefix = "3)",
+            name = BB["Plaguemaw the Rotting"],
+            defaults = { dropRate = 33 },
+            loot = {
+                {id=10766},
+                {id=10760},
+                {},
+                {id=80744},
+                {},
+                {id=51217, disc=L["Transmogrification"], dropRate=1},
+            }
+        },
+        {
+            id = "RFDMordreshFireEye",
+            prefix = "4)",
             name = BB["Mordresh Fire Eye"],
             defaults = { dropRate = 33 },
             loot = {
@@ -76,7 +90,7 @@ AtlasTW.InstanceData.RazorfenDowns = {
         },
         {
             id = "RFDGlutton",
-            prefix = "4)",
+            prefix = "5)",
             name = BB["Glutton"],
             defaults = { dropRate = 33 },
             loot = {
@@ -89,8 +103,19 @@ AtlasTW.InstanceData.RazorfenDowns = {
             }
         },
         {
+            id = "RFDRakameg",
+            prefix = "6)",
+            name = BB["Death Prophet Rakameg"],
+            defaults = { dropRate = 33 },
+            loot = {
+                {id=58172}, --Thornspine
+                {id=58173}, --Thorngorged Fleshgloves *Maybe*
+                {id=58174}, --Totem of the Rotten Roots
+            }
+        },
+        {
             id = "RFDRagglesnout",
-            prefix = "5)",
+            prefix = "7)",
             name = BB["Ragglesnout"],
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
@@ -102,7 +127,7 @@ AtlasTW.InstanceData.RazorfenDowns = {
         },
         {
             id = "RFDAmnennar",
-            prefix = "6)",
+            prefix = "8)",
             name = BB["Amnennar the Coldbringer"],
             defaults = { dropRate = 20 },
             loot = {
@@ -113,20 +138,6 @@ AtlasTW.InstanceData.RazorfenDowns = {
                 {id=10765},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
-            }
-        },
-        {
-            id = "RFDPlaguemaw",
-            prefix = "7)",
-            name = BB["Plaguemaw the Rotting"],
-            defaults = { dropRate = 33 },
-            loot = {
-                {id=10766},
-                {id=10760},
-                {},
-                {id=80744},
-                {},
-                {id=51217, disc=L["Transmogrification"], dropRate=1},
             }
         },
         {

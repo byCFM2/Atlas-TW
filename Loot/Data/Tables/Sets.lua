@@ -45,15 +45,33 @@ Sets = {
 		{ id = 22057, disc = L["Used to summon boss"] },
 		{ id = 21986, disc = L["Used to summon boss"] },-- 30
 		{ id = 61234},--key 31
-		{ id = 51356},--key 32
+		{ id = 51356},
+		{ id = 41876},--Lower Reserve Key
+		{ id = 41913},--Key to Stormwrought Castle
 	},
-	Stormreaver = {
+	Stormreaver = { --1.18
 		{ name = BIS["Stormreaver Attire"] },
 		{ id = 58131 }, -- Stormreaver Belt
+		{ id = 58134 }, -- Stormreaver Gloves
 		{ id = 58147 }, -- Stormreaver Mantle
 		{ id = 58176 }, -- Stormreaver Hood
 		{ id = 58177 }, -- Stormreaver Robe
-		
+		{ id = 58178 }, -- Stormreaver Boots
+	},
+	ArmsofThaurissan = { --1.18
+		{ name = BIS["Arms of Thaurissan"] },
+		{ id = 11684 }, -- Ironfoe
+		{ id = 58214 }, -- Modrag'zan, Heart of the Mountain
+	},
+	DragonmawBattlegarb = { --1.18
+		{ name = BIS["Dragonmaw Battlegarb"] },
+		{ id = 41724 }, -- Dragonmaw Shoulders
+		{ id = 58099 }, -- Dragonmaw Helmet
+		{ id = 58111 }, -- Dragonmaw Hauberk
+		{ id = 58112 }, -- Dragonmaw Gloves
+		{ id = 58113 }, -- Dragonmaw Bracers
+		{ id = 58114 }, -- Dragonmaw Leggings
+		{ id = 58115 }, -- Dragonmaw Greaves
 	},
 	Deadmines = {
 		{ name = BIS["Defias Leather"] },

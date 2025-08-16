@@ -104,7 +104,7 @@ end
 ]]
 function AtlasLoot_GetBossNavigation(data) --TODO remake
 	--print("AtlasLoot_GetBossNavigation")
-	if type(data)=="string" then print(data) end
+	--if type(data)=="string" then print(data) end
     if not data then return nil end
     for instanceKey, instanceData in pairs(AtlasLoot_TableRegistry) do
         if instanceData.Entry then
@@ -254,54 +254,115 @@ function AtlasTW.BuildBossLootIndex()
 	--print("AtlasLoot: Индекс боссов построен. Всего уникальных имен: " .. count)
 end
 
--- Глобальная функция получения лута по имени босса без построения индексов
-function AtlasTW.GetLootByElemName(elemName, instanceName)
+-- функция получения лута по имени босса без построения индексов
+local function GetLootByElemName(elemName, instanceName)
+	-- Вспомогательная функция для разрешения элементов лута
+	local function AL_ResolveItems(items)
+		if type(items) ~= "string" then
+			return items
+		else
+			return AtlasLoot_Data[items] or items
+		end
+	end
+	
+	-- Вспомогательная функция для поиска в конкретном инстансе
+	local function AL_FindInInstance(inst, name)
+		if type(inst) ~= "table" then return nil end
+		
+		-- Поиск в репутациях
+		if inst.Reputation then
+			for _, v in ipairs(inst.Reputation) do
+				if v.loot == name or v.name == name then
+					return AtlasLoot_Data[v.loot]
+				end
+			end
+		end
+		
+		-- Поиск в ключах
+		if inst.Keys then
+			for _, v in ipairs(inst.Keys) do
+				if v.loot == name or v.name == name then
+					return AtlasLoot_Data[v.loot]
+				end
+			end
+		end
+		
+		-- Поиск в боссах
+		if inst.Bosses then
+			for _, elemData in ipairs(inst.Bosses) do
+				if elemData.name == name or elemData.id == name then
+					return AL_ResolveItems(elemData.items)
+				end
+			end
+		end
+		
+		return nil
+	end
+	
+	-- Если указан конкретный инстанс
+	if instanceName and AtlasTW.InstanceData[instanceName] then
+		return AL_FindInInstance(AtlasTW.InstanceData[instanceName], elemName)
+	end
+	
+	-- Поиск по всем инстансам
+	for _, inst in pairs(AtlasTW.InstanceData) do
+		local result = AL_FindInInstance(inst, elemName)
+		if result then 
+			return result 
+		end
+	end
+	
+	return nil
+end
+
+--[[ -- Вспомогательная функция для получения loot зная ID
+local function GetLootByStringID(elemID, instanceName)
 	-- Если указан инстанс строкой-ключом
 	if instanceName and AtlasTW.InstanceData[instanceName] then
 		local inst = AtlasTW.InstanceData[instanceName]
-		if inst.Reputation then
+ 		if inst.Reputation then
 			for _, v in ipairs(inst.Reputation) do
-				if v.loot == elemName then
+				if v.loot == elemID then
 					return AtlasLoot_Data[v.loot]
 				end
 			end
 		end
 		if inst.Keys then
 			for _, v in ipairs(inst.Keys) do
-				if v.loot == elemName then
+				if v.loot == elemID then
 					return AtlasLoot_Data[v.loot]
 				end
 			end
 		end
 		if inst.Bosses then
 			for _, elemData in ipairs(inst.Bosses) do
-				if elemData.name == elemName then
+				if elemData.id == elemID then
 					return elemData.items
 				end
 			end
 		end
-		return --print("Wrong elemname or instancename")
+		return nil--print("Wrong elemname or instancename")
 	end
 	-- Поиск по всем инстансам
 	for _, inst in pairs(AtlasTW.InstanceData) do
 		if type(inst) == "table" then
 			if inst.Reputation then
 				for _, v in ipairs(inst.Reputation) do
-					if v.name == elemName then
+					if v.name == elemID then
 						return AtlasLoot_Data[v.loot]
 					end
 				end
 			end
 			if inst.Keys then
 				for _, v in ipairs(inst.Keys) do
-					if v.name == elemName then
+					if v.name == elemID then
 						return AtlasLoot_Data[v.loot]
 					end
 				end
 			end
 			if inst.Bosses then
 				for _, elemData in ipairs(inst.Bosses) do
-					if elemData.name == elemName then
+					if elemData.id == elemID then
 						-- Для сетов элемент строка, брать из AtlasLoot_Data
 						-- Для меню возвращаем строку с названием меню для запуска через _G
 						if type(elemData.items) ~="string" then
@@ -314,8 +375,8 @@ function AtlasTW.GetLootByElemName(elemName, instanceName)
 			end
 		end
 	end
-	return print("Wrong elemname or instancename Last try")
-end
+	return nil--print("Wrong elemname or instancename Last try")
+end ]]
 
 -- Вспомогательная функция для получения loot зная ID
 local function GetLootByID(zoneID, id)
@@ -450,7 +511,7 @@ local function CacheAllLootItems(dataSource, callback)
     CleanupMemoCache()
     if not dataSource or type(dataSource) ~= "table" then
         if callback then callback() end
-        return print("CacheAllLootItems: dataSource is not a table")
+        return --print("CacheAllLootItems: dataSource is not a table")
     end
     local itemsToCache = {}
 
@@ -615,7 +676,7 @@ end
 function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 	--Load data for the current clicked element line
 	local dataID = AtlasLootItemsFrame.StoredElement
-	local dataSource = AtlasTW.GetLootByElemName(dataID) or AtlasLootItemsFrame.StoredMenu
+	local dataSource = GetLootByElemName(dataID) or AtlasLootItemsFrame.StoredMenu
 	--Check if dataID and dataSource are valid
  	if not dataID and not dataSource then
 		return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataID and No dataSource!")
@@ -1358,10 +1419,12 @@ function AtlasLootBoss_OnClick(buttonName)
 	-- Reset scroll position to top
     FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
 	AtlasLootScrollBarScrollBar:SetValue(0)
-   -- local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
+   local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
     local id = this.idnum
-    local elemName = AtlasTW.ScrollList[id].name
-	local lootTable = AtlasTW.GetLootByElemName(elemName)
+    local elemName = AtlasTW.ScrollList[id].name ~= "Trash Mobs" and AtlasTW.ScrollList[id].name or AtlasTW.ScrollList[id].id
+	--print("elemName "..(elemName or " no elemname"))
+	local lootTable = GetLootByElemName(elemName,zoneID)
+	--print(tostring(lootTable).." lootTable")
 
     if AtlasLootItemsFrame.activeElement == id then
         AtlasLootItemsFrame:Hide()
@@ -1382,7 +1445,7 @@ function AtlasLootBoss_OnClick(buttonName)
 
 			CacheAllLootItems(lootTable, function()
 				local elapsed = GetTime() - scrollStartTime
-				print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
+				--print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
 				AtlasLoot_HideScrollBarLoading()
 				-- Update scrollbar
 				AtlasTW.Loot.ScrollBarLootUpdate()
@@ -1742,12 +1805,12 @@ function AtlasLootMenuItem_OnClick(button)
 		AtlasLootItemsFrame.StoredElement = pagename
 		AtlasLootItemsFrame.StoredMenu = TableSource
 		if type(TableSource) == "string" then
-			TableSource = AtlasLoot_Data[TableSource] or AtlasTW.GetLootByElemName(dataID)
+			TableSource = AtlasLoot_Data[TableSource] or GetLootByElemName(dataID)
 		end
 
 		CacheAllLootItems(TableSource, function()
 			local elapsed = GetTime() - scrollStartTime
-			print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
+			--print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
 			AtlasLoot_HideScrollBarLoading()
 			-- Update scrollbar
 			AtlasTW.Loot.ScrollBarLootUpdate()
@@ -2143,7 +2206,7 @@ function AtlasLootItem_OnClick(arg1) --TODO remake
 	local name = strsub(_G["AtlasLootItem_"..id.."_Name"]:GetText() or "", 11)
 	local texture = AtlasLoot_Strsplit("\\", getglobal("AtlasLootItem_"..id.."_Icon"):GetTexture(), 0, true)
 	local dataID = AtlasLootItemsFrame.StoredElement
-	local dataSource = AtlasTW.GetLootByElemName(dataID)
+	local dataSource = GetLootByElemName(dataID)
 
 	if string.sub(this.itemID, 1, 1) == "s" then
 		isItem = false
@@ -2460,7 +2523,7 @@ function AtlasLoot_ShowContainerFrame()
 	-- Кэшируем все предметы контейнера асинхронно, затем обновляем фрейм
 	CacheAllLootItems(containerTable, function()
         local elapsed = GetTime() - containerStartTime
-        print("AtlasLoot: время загрузки контейнера: " .. string.format("%.2f", elapsed) .. " c")
+       -- print("AtlasLoot: время загрузки контейнера: " .. string.format("%.2f", elapsed) .. " c")
 		AtlasLoot_UpdateContainerDisplay()
 	end)
 end
@@ -2601,7 +2664,7 @@ function AtlasLoot_ContainerItem_OnClick(arg1) --TODO need CHECK
 		DressUpItemLink(link)
 	elseif(IsAltKeyDown() and (itemID ~= 0)) then
 		local ElemName = AtlasLootItemsFrame.StoredElement
-		local ElemLoot = AtlasTW.GetLootByElemName(ElemName)
+		local ElemLoot = GetLootByElemName(ElemName)
 
 		if ElemName == "WishList" then
 			AtlasLoot_DeleteFromWishList(this.itemID)
@@ -2637,7 +2700,7 @@ end
 			AtlasLoot_AddToWishlist(itemID, tex, name, extra, lootpage.."|"..dataSource)
 		elseif AtlasLootItemsFrame.storedBoss then
 			local ElemName = AtlasLootItemsFrame.storedBoss.name
-			local ElemLoot = AtlasTW.GetLootByElemName(ElemName)
+			local ElemLoot = GetLootByElemName(ElemName)
 
 			if ElemName == "WishList" then
 				AtlasLoot_DeleteFromWishList(this.itemID)

@@ -103,6 +103,8 @@ AtlasTW.InstanceData.GilneasCity = {
                 {id=61317, dropRate=5},
                 {},
                 {id=61368, dropRate=3},
+                {},
+                {id=113, dropRate=1, container={151}}, --Plans: Truesilver Belt Buckle TODO dropRate
             }
         },
         {

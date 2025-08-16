@@ -13,7 +13,18 @@ local Factions = {
 		{ name = BF["Friendly"] },
 		{ id = 55044 }, -- formula
 		{ id = 55045 }, -- elixir
+		{ name = BF["Honored"] },
+		{ id = 58251 }, --Wristbands of Excellency
+		{ id = 58252 }, --Coalescing Sabatons
+		{ id = 58253 }, --Lector's Baton
+		{ name = BF["Revered"] },
+		{ id = 58254 }, --Miniature Astrolabium
+		{ id = 58255 }, --Crystal Pauldrons
+		{ id = 58256 }, -- Band of Eldretharr
 		{ name = BF["Exalted"] },
+		{ id = 58257 }, -- Noble's Letter Opener
+		{ id = 58258 }, --Royal Guard Chain Cloak
+		{ id = 58259 }, --Advisor's Trousers of the Eldreth
 		{ id = 55055 }, -- pattern
 	},
 	WintersaberTrainers = {
@@ -46,34 +57,40 @@ local Factions = {
 		{ id = 17025, container={16984} }, -- Pattern: Black Dragonscale Boots
 		{ id = 19206, container={19148} }, -- Pattern: Flarecore Mantle
 		{ id = 19448 }, -- Formula: Enchant Weapon - Mighty Spirit
+		{ id = 58216 }, --Hansel's Gavel
+		{ id = 58217 }, --Lookout's Illuminator
+		{ id = 58218 }, --Sootsoaked Sash
         {},
-		{ name = BF["Exalted"] },
-		{ id = 20040, container={20039} },
-		{ id = 62004, container={65039} },
-		{ id = 19210, container={19170} }, --*15
+		{ name = BF["Exalted"] }, --*15
         --revered
 		{ id = 19331, container={19157} }, --*1
 		{ id = 19207, container={19164} },
 		{ id = 19208, container={19166} },
 		{ id = 19209, container={19167} },
 		{ id = 70178, container={56067} },
+        { id = 104, container={82}},
 		{ id = 19449 }, -- Formula: Enchant Weapon - Mighty Intellect
         {},
-        {},
-        {},
-        {},
-        {},
+		{ id = 58219 }, --Magmascale Shackles
+		{ id = 58220 }, --Golem Stompers
+		{ id = 58221 }, --Flameseeker Necklace
         {},
         {},
         {},
         {}, --*15
         --exalted
-		{ id = 19211, container={19168} }, --*1
+		{ id = 20040, container={20039} }, --*1
+		{ id = 62004, container={65039} },
+		{ id = 19210, container={19170} },
+		{ id = 19211, container={19168} },
 		{ id = 19212, container={19169} },
 		{ id = 62005, container={65035} },
 		{ id = 62006, container={65036} },
 		{ id = 62007, container={65037} },
 		{ id = 62003, container={65038} },
+		{ id = 58222 }, --Ring of the Brotherhood
+		{ id = 58223 }, --Molten Tempered Gloves
+		{ id = 58224 }, --Cloak of Flowing Fire
 	},
 	DarkmoonFire = {
 		{ name = L["Decks"] },
@@ -305,20 +322,16 @@ local Factions = {
 		{ id = 22680 },
 		{ id = 22688 },
 		{ id = 22679, disc = L["Bag"] },
-		{},
 		{ id = 22523, disc = L["Needed to purchase rewards"] },
 		{ id = 22524, disc = L["Needed to purchase rewards"] },
-		{},
 		{ id = 22657 },
 		{ id = 22659 },
 		{ id = 22667 },
 		{ id = 22668 },
 		{ id = 22678 },
 		{ id = 22656 },
-		{},
 		{ name = BF["Friendly"], icon = "INV_Jewelry_Talisman_08"},
 		{ id = 13724, disc = L["Food"] },
-		{},
 		{},
 		{ name = BF["Honored"], icon = "INV_Jewelry_Talisman_08"},
 		{ id = 13482, container={7078} },
@@ -329,23 +342,29 @@ local Factions = {
 		{ id = 19446 },
 		{ id = 70216, container={55362} },
 		{},
+		{ id = 58225 }, --Blade of Purity
+		{ id = 58226 }, --Cowl of Resolve
+		{ id = 58227 }, --Band of Vitality
 		{ name = BF["Revered"], icon = "INV_Jewelry_Talisman_08"},
 		{ id = 18171 },
 		{ id = 18169 },
 		{ id = 18170 },
 		{ id = 18172 },
 		{ id = 18173 },
-		{},
 		{ id = 19217, container={19059} },
 		{ id = 19329, container={19058} },
 		{ id = 19205, container={19057} },
 		{ id = 19447 },
-		{},
 		{ id = 13810, disc = L["Food"] },
 		{ id = 13813, disc = L["Drink"] },
-		{},
+		{ id = 58228 }, --Leggings of the Redeemer
+		{ id = 58229 }, --Hierophant Gloves
+		{ id = 58230 }, --Plaguewalker Boots
 		{ name = BF["Exalted"], icon = "INV_Jewelry_Talisman_08"},
 		{ id = 18182 },
+		{ id = 58231 }, --Penchant of Humility
+		{ id = 58232 }, --Demonbane
+		{ id = 58233 }, --Bulwark of Holy Resolve
 	},
 	BroodOfNozdormu = {
 		{ name = L["Path of the Conqueror"], icon = "INV_Jewelry_Ring_40" },

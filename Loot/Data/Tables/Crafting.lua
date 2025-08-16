@@ -422,6 +422,7 @@ local craftingTable = {
 		{ id=13637, skill={160,180,200,220} }, --Enchant Boots - Lesser Agility
 		{ id=13640, skill={160,180,200,220} }, --Enchant Chest - Greater Health
 		{ id=13642, skill={165,185,205,225} }, --Enchant Bracer - Spirit
+		{ id=31, skill={170,170,170,170}, type="item" }, --Enchant Boots - Lesser Intellect TODO remake for spellid
 		{ id=13644, skill={170,190,210,230} }, --Enchant Boots - Lesser Stamina
 		{ id=13646, skill={170,190,210,230} }, --Enchant Bracer - Lesser Deflection
 		{ id=13648, skill={170,190,210,230} }, --Enchant Bracer - Stamina
@@ -429,9 +430,10 @@ local craftingTable = {
 		{ id=13653, skill={175,195,215,235} }, --Enchant Weapon - Lesser Beastslayer
 		{ id=13655, skill={175,195,215,235} }, --Enchant Weapon - Lesser Elemental Slayer
 		{ id=14810, skill={175,195,215,235} }, --Greater Mystic Wand
-		{ id=13661, skill={180,200,220,240} }, --Enchant Bracer - Strength
 		{ name = L["Expert"], icon = "Trade_Engraving" },
+		{ id=13661, skill={180,200,220,240} }, --Enchant Bracer - Strength
 		{ id=13659, skill={180,200,220,240} }, --Enchant Shield - Spirit
+		{ id=24, skill={185,185,185,185}, type="item" }, --Formula: Enchant Bracer - Agility
 		{ id=13663, skill={185,205,225,245} }, --Enchant Chest - Greater Mana
 		{ id=57146, skill={185,205,225,245} }, --Enchant Bracer - Vampirism
 		{ id=13687, skill={190,210,230,250} }, --Enchant Boots - Lesser Spirit
@@ -443,9 +445,9 @@ local craftingTable = {
 		{ id=13695, skill={200,220,240,260} }, --Enchant 2H Weapon - Impact
 		{ id=13700, skill={200,220,240,260} }, --Enchant Chest - Lesser Stats
 		{ id=13698, skill={200,220,240,260} }, --Enchant Gloves - Skinning
+		{ name = L["Expert"], icon = "Trade_Engraving" },
 		{ id=13746, skill={205,225,245,265} }, --Enchant Cloak - Greater Defense
 		{ id=13794, skill={205,225,245,265} }, --Enchant Cloak - Resistance
-		{ name = L["Expert"], icon = "Trade_Engraving" },
 		{ id=13822, skill={210,230,250,270} }, --Enchant Bracer - Intellect
 		{ id=13815, skill={210,230,250,270} }, --Enchant Gloves - Agility
 		{ id=13817, skill={210,230,250,270} }, --Enchant Shield - Stamina
@@ -613,6 +615,7 @@ local craftingTable = {
 		{ id=13822, skill={210,230,250,270} }, --Enchant Bracer - Intellect
 		{ name = L["Bracer"], icon = "Trade_Engraving" },
 		{ id=57146, skill={185,205,225,245} }, --Enchant Bracer - Vampirism
+		{ id=24, skill={185,185,185,185}, type="item" }, --Formula: Enchant Bracer - Agility
 		{ id=13661, skill={180,200,220,240} }, --Enchant Bracer - Strength
 		{ id=13648, skill={170,190,210,230} }, --Enchant Bracer - Stamina
 		{ id=13646, skill={170,190,210,230} }, --Enchant Bracer - Lesser Deflection
@@ -625,6 +628,7 @@ local craftingTable = {
 		{ id=7779, skill={80,115,135,155} }, --Enchant Bracer - Minor Agility
 		{ id=7766, skill={60,105,125,145} }, --Enchant Bracer - Minor Spirit
 		{ id=7457, skill={50,100,120,140} }, --Enchant Bracer - Minor Stamina
+		{ name = L["Bracer"], icon = "Trade_Engraving" },
 		{ id=7428, skill={1,80,100,120} }, --Enchant Bracer - Minor Deflect
 		--{ name = L["Bracer"], icon = "Trade_Engraving" },
 		--{ id=7418, skill={1,70,90,110} }, --Enchant Bracer - Minor Health
@@ -669,8 +673,10 @@ local craftingTable = {
 		{ id=13836, skill={215,235,255,275} }, --Enchant Boots - Stamina
 		{ id=13687, skill={190,210,230,250} }, --Enchant Boots - Lesser Spirit
 		{ id=13644, skill={170,190,210,230} }, --Enchant Boots - Lesser Stamina
+		{ id=31, skill={170,170,170,170}, type="item" }, --Enchant Boots - Lesser Intellect TODO remake for spellid
 		{ id=13637, skill={160,180,200,220} }, --Enchant Boots - Lesser Agility
 		{ id=7863, skill={125,150,170,190} }, --Enchant Boots - Minor Stamina
+		{ name = L["Boots"], icon = "Trade_Engraving" },
 		{ id=7867, skill={125,150,170,190} }, --Enchant Boots - Minor Agility
 	},
 
@@ -874,6 +880,7 @@ local craftingTable = {
 		{ id=15973, skill={190,215,227,240} }, --Searing Golden Blade
 		{ name = L["Expert"], icon = "Trade_BlackSmithing" },
 		{ id=3511, skill={195,220,232,245} }, --Golden Scale Cuirass
+		{ id=70, skill={200,200,200,200}, container={131}, type="item" }, --Steel Belt Buckle TODO remake for spellid
 		{ id=9920, skill={200,200,205,210} }, --Solid Grinding Stone
 		{ id=9918, skill={200,200,205,210} }, --Solid Sharpening Stone
 		{ id=9921, skill={200,200,205,210} }, --Solid Weightstone
@@ -886,8 +893,8 @@ local craftingTable = {
 		{ id=11454, skill={200,225,237,250} }, --Inlaid Mithril Cylinder
 		{ id=11643, skill={205,225,235,245} }, --Golden Scale Gauntlets
 		{ id=9928, skill={205,225,235,245} }, --Heavy Mithril Gauntlet
-		{ id=9926, skill={205,225,235,245} }, --Heavy Mithril Shoulder
 		{ name = L["Expert"], icon = "Trade_BlackSmithing" },
+		{ id=9926, skill={205,225,235,245} }, --Heavy Mithril Shoulder
 		{ id=9933, skill={210,230,240,250} }, --Heavy Mithril Pants
 		{ id=9931, skill={210,230,240,250} }, --Mithril Scale Pants
 		{ id=9993, skill={210,235,247,260} }, --Heavy Mithril Axe
@@ -901,10 +908,11 @@ local craftingTable = {
 		{ id=9950, skill={220,240,250,260} }, --Ornate Mithril Gloves
 		{ id=9945, skill={220,240,250,260} }, --Ornate Mithril Pants
 		{ id=9995, skill={220,245,257,270} }, --Blue Glittering Axe
-		{ id=46626, skill={220,220,220,220} }, --Steel Plate Boots
 		{ name = L["Expert"], icon = "Trade_BlackSmithing" },
+		{ id=46626, skill={220,220,220,220} }, --Steel Plate Boots
 		{ id=46627, skill={220,220,220,220} }, --Steel Plate Gauntlets
 		{ id=9942, skill={220,240,250,260} }, --Mithril Scale Gloves
+		{ id=113, skill={225,225,225,225}, container={151}, type="item" }, --Truesilver Belt Buckle TODO remake for spellid
 		{ id=9952, skill={225,245,255,265} }, --Ornate Mithril Shoulders
 		{ id=9997, skill={225,250,262,275} }, --Wicked Mithril Blade
 		{ id=46629, skill={225,225,225,225} }, --Steel Plate Armor
@@ -947,16 +955,18 @@ local craftingTable = {
 		{ id=47034, skill={275,300,310,320} }, --Hateforge Boots
 		{ id=57113, skill={275,300,310,320} }, --Thorium Spurs
 		{ id=57178, skill={275,275,282,290} }, --Arcanite Belt Buckle
+		{ id=104, skill={275,275,275,275}, container={82}, type="item" }, --Dark Iron Belt Buckle TODO remake for spellid
 		{ id=15295, skill={280,300,310,320} }, --Dark Iron Shoulders
 		{ id=16652, skill={280,300,310,320} }, --Thorium Boots
 		{ id=16653, skill={280,300,310,320} }, --Thorium Helm
 		{ id=16971, skill={280,305,317,330} }, --Huge Thorium Battleaxe
+		{ id=124, skill={285,285,285,285}, container={87}, type="item" }, --Enchanted Thorium Belt Buckle TODO remake for spellid
 		{ id=47033, skill={285,300,310,320} }, --Hateforge Grips
 		{ id=16654, skill={285,305,315,325} }, --Radiant Gloves
 		{ id=47029, skill={290,300,310,320} }, --Hateforge Helmet
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=47030, skill={290,300,310,320} }, --Hateforge Cuirass
 		{ id=47031, skill={290,300,310,320} }, --Hateforge Leggings
-		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=16656, skill={290,310,320,330} }, --Radiant Boots
 		{ id=16660, skill={290,310,320,330} }, --Dawnbringer Shoulders
 		{ id=23632, skill={290,310,320,330} }, --Girdle of the Dawn
@@ -969,9 +979,9 @@ local craftingTable = {
 		{ id=16663, skill={300,320,330,340} }, --Imperial Plate Chest
 		{ id=16730, skill={300,320,330,340} }, --Imperial Plate Leggings
 		{ id=16725, skill={300,320,330,340} }, --Radiant Leggings
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=16731, skill={300,320,330,340} }, --Runic Breastplate
 		{ id=16665, skill={300,320,330,340} }, --Runic Plate Boots
-		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=16726, skill={300,320,330,340} }, --Runic Plate Helm
 		{ id=16732, skill={300,320,330,340} }, --Runic Plate Leggings
 		{ id=16664, skill={300,320,330,340} }, --Runic Plate Shoulders
@@ -984,9 +994,9 @@ local craftingTable = {
 		{ id=24913, skill={300,320,330,340} }, --Darkrune Helm
 		{ id=24139, skill={300,320,330,340} }, --Darksoul Breastplate
 		{ id=24140, skill={300,320,330,340} }, --Darksoul Leggings
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=24141, skill={300,320,330,340} }, --Darksoul Shoulders
 		{ id=23633, skill={300,320,330,340} }, --Gloves of the Dawn
-		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=27585, skill={300,320,330,340} }, --Heavy Obsidian Belt
 		{ id=23629, skill={300,320,330,340} }, --Heavy Timbermaw Boots
 		{ id=28463, skill={300,320,330,340} }, --Ironvine Belt
@@ -999,9 +1009,9 @@ local craftingTable = {
 		{ id=47023, skill={300,320,330,340} }, --Rune-Etched Breastplate
 		{ id=47024, skill={300,320,330,340} }, --Rune-Etched Crown
 		{ id=47025, skill={300,320,330,340} }, --Rune-Etched Mantle
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=47026, skill={300,320,330,340} }, --Rune-Etched Grips
 		{ id=27589, skill={300,320,330,340} }, --Black Grasp of the Destroyer
-		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=28244, skill={300,320,330,340} }, --Icebane Bracers
 		{ id=28242, skill={300,320,330,340} }, --Icebane Breastplate
 		{ id=28243, skill={300,320,330,340} }, --Icebane Gauntlets
@@ -1014,9 +1024,9 @@ local craftingTable = {
 		{ id=57617, skill={300,315,322,330} }, --Otherworldly Coif
 		{ id=57619, skill={300,315,322,330} }, --Otherworldly Spaulders
 		{ id=57621, skill={300,315,322,330} }, --Otherworldly Breastplate
+		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=57623, skill={300,315,322,330} }, --Otherworldly Leggings
 		{ id=57625, skill={300,315,322,330} }, --Reflective Helmet
-		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id=57627, skill={300,315,322,330} }, --Reflective Pauldrons
 		{ id=57629, skill={300,315,322,330} }, --Reflective Breastplate
 		{ id=57631, skill={300,315,322,330} }, --Reflective Leggings
@@ -1025,6 +1035,7 @@ local craftingTable = {
 		{ id=45469, skill={300,325,337,350} }, --Dreamsteel Bracers
 		{ id=45467, skill={300,325,337,350} }, --Dreamsteel Leggings
 		{ id=45465, skill={300,325,337,350} }, --Dreamsteel Mantle
+		{ id=103, skill={300,300,300,300}, type="item" }, --Obsidian Belt Buckle TODO remake for spellid
 	},
 
 	Armorsmith = {
@@ -1431,10 +1442,15 @@ local craftingTable = {
 		{ id=57166, skill={90,90,97,105} }, --Bronze Belt Buckle
 		{ id=57169, skill={140,140,147,155} }, --Iron Belt Buckle
 		{ id=57172, skill={185,190,197,205} }, --Mithril Belt Buckle
+		{ id=70, skill={200,200,200,200}, container={131}, type="item" }, --Steel Belt Buckle TODO remake for spellid
+		{ id=113, skill={225,225,225,225}, container={151}, type="item" }, --Truesilver Belt Buckle TODO remake for spellid
 		{ id=57175, skill={240,240,247,255} }, --Thorium Belt Buckle
+		{ id=104, skill={275,275,275,275}, container={82}, type="item" }, --Dark Iron Belt Buckle TODO remake for spellid
 		{ id=57178, skill={275,275,282,290} }, --Arcanite Belt Buckle
+		{ id=124, skill={285,285,285,285}, container={87}, type="item" }, --Enchanted Thorium Belt Buckle TODO remake for spellid
 		{ id=57196, skill={300,300,300,300} }, --Bloody Belt Buckle
 		{ id=57181, skill={300,300,305,310} }, --Dreamsteel Belt Buckle
+		{ id=103, skill={300,300,300,300}, type="item" }, --Obsidian Belt Buckle TODO remake for spellid
 	},
 
 	SmithingMisc = {
@@ -1569,11 +1585,12 @@ local craftingTable = {
 		{ id=7149, skill={170,190,200,210} }, --Barbaric Leggings
 		{ id=3775, skill={170,190,200,210} }, --Guardian Belt
 		{ id=6704, skill={170,190,200,210} }, --Thick Murloc Armor
+		{ id=69, skill={175,175,175,175}, container={65}, type="item" }, --Dragonmaw Armor Kit --TODO remake for spell
 		{ id=7151, skill={175,195,205,215} }, --Barbaric Shoulders
 		{ id=9196, skill={175,195,205,215} }, --Dusky Leather Armor
 		{ id=9197, skill={175,195,205,215} }, --Green Whelp Armor
-		{ id=3773, skill={175,195,205,215} }, --Guardian Armor
 		{ name = L["Expert"], icon = "INV_Misc_ArmorKit_17" },
+		{ id=3773, skill={175,195,205,215} }, --Guardian Armor
 		{ id=9198, skill={180,200,210,220} }, --Frost Leather Cloak
 		{ id=3776, skill={180,200,210,220} }, --Green Leather Bracers
 		{ id=9201, skill={185,205,215,225} }, --Dusky Bracers
@@ -1587,7 +1604,6 @@ local craftingTable = {
 		{ id=9206, skill={195,215,225,235} }, --Dusky Belt
 		{ id=3777, skill={195,215,225,235} }, --Guardian Leather Bracers
 		{ id=10482, skill={200,200,200,200} }, --Cured Thick Hide
-		{ id=20650, skill={200,200,202,205} }, --Thick Leather
 		{ name = L["Expert"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=22711, skill={200,210,220,230} }, --Shadowskin Gloves
 		{ id=10487, skill={200,220,230,240} }, --Thick Armor Kit
@@ -1604,6 +1620,7 @@ local craftingTable = {
 		{ id=10509, skill={205,225,235,245} }, --Turtle Scale Gloves
 		{ id=46625, skill={210,225,230,235} }, --Grifter's Cover
 		{ name = L["Expert"], icon = "INV_Misc_ArmorKit_17" },
+		{ id=20650, skill={200,200,202,205} }, --Thick Leather
 		{ id=46624, skill={210,235,240,245} }, --Grifter's Tunic
 		{ id=10516, skill={210,230,240,250} }, --Nightscape Shoulders
 		{ id=10518, skill={210,230,240,250} }, --Turtle Scale Bracers
@@ -1617,6 +1634,7 @@ local craftingTable = {
 		{ id=14932, skill={225,245,255,265} }, --Thick Leather Ammo Pouch
 		{ id=10542, skill={225,245,255,265} }, --Tough Scorpid Gloves
 		{ id=10546, skill={225,245,255,265} }, --Wild Leather Helmet
+		{ name = L["Expert"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=10544, skill={225,245,255,265} }, --Wild Leather Vest
 	},
 
@@ -1770,6 +1788,7 @@ local craftingTable = {
 		{ id=57014, skill={300,320,330,340} }, --Flamewrath Leggings
 		{ id=57018, skill={300,320,330,340} }, --Windwalker Boots
 		{ id=54015, skill={300,315,330,345} }, --Molten Leggings
+		{ id=16, skill={300,300,300,300}, container={55043}, type="item" }, --Harness of the High Thane TODO remake for spellid
 	},
 
 	Tribal = {
@@ -1923,6 +1942,7 @@ local craftingTable = {
 		{ id=28219, skill={300,320,330,340} }, --Polar Tunic
 		{ id=24703, skill={300,320,330,340} }, --Dreamscale Breastplate
 		{ id=47035, skill={300,300,320,340} }, --Verdant Dreamer's Breastplate
+		{ id=16, skill={300,300,300,300}, container={55043}, type="item" }, --Harness of the High Thane TODO remake for spellid
 	},
 
 	LeatherBracers = {
@@ -2125,6 +2145,7 @@ local craftingTable = {
 		{ id=2152, skill={1,30,45,60} }, --Light Armor Kit
 		{ id=2165, skill={100,115,122,130} }, --Medium Armor Kit
 		{ id=3780, skill={150,170,180,190} }, --Heavy Armor Kit
+		{ id=69, skill={175,175,175,175}, container={65}, type="item" }, --Dragonmaw Armor Kit --TODO remake for spell
 		{ id=10487, skill={200,220,230,240} }, --Thick Armor Kit
 		{ id=19058, skill={250,255,265,275} }, --Rugged Armor Kit
 		{ id=22727, skill={300,320,330,340} }, --Core Armor Kit
@@ -2897,6 +2918,8 @@ local craftingTable = {
 		{ id=22795, skill={300,320,330,340} }, --Core Marksman Rifle
 		{ id=22797, skill={300,320,330,340} }, --Force Reactive Disk
 		{ id=45481, skill={300,320,330,340} }, --Intricate Gyroscope Goggles
+		{ id=58400, skill={300,300,300,300}, container={58304}, type="item" }, --Voltage-Neutralizing Nature Reflector --TODO remake for spell
+		{ id=58401, skill={300,300,300,300}, container={58305}, type="item" }, --Giga-Charged Arcane Reflector --TODO remake for spell
 	},
 
 	Gnomish = {
@@ -2991,6 +3014,8 @@ local craftingTable = {
 		{ id=12908, skill={240,260,270,280} }, --Goblin Dragon Gun
 		{ id=23486, skill={260,285,295,305} }, --Dimensional Ripper - Everlook
 		{ id=23078, skill={265,285,295,305} }, --Goblin Jumper Cables XL
+		{ id=58400, skill={300,300,300,300}, container={58304}, type="item" }, --Voltage-Neutralizing Nature Reflector --TODO remake for spell
+		{ id=58401, skill={300,300,300,300}, container={58305}, type="item" }, --Giga-Charged Arcane Reflector --TODO remake for spell
 	},
 
 	EngineeringExplosives = {

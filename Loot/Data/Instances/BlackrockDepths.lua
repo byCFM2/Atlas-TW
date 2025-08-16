@@ -768,6 +768,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
             }
         },
         { name = BIS["The Gladiator"], items = "TheGladiator" },
+        { name = BIS["Arms of Thaurissan"], items = "ArmsofThaurissan" },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
     },
 }

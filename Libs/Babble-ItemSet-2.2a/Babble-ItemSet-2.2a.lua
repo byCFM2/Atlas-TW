@@ -28,6 +28,7 @@ BabbleItemSet:RegisterTranslations("enUS", function()
 		--1.18
 		["Stormreaver Attire"] = true,
 		["Dragonmaw Battlegarb"] = true,
+		["Arms of Thaurissan"] = true,
 		--1.17
 		["Incendosaur Skin Armor"] = true,
 		["Greymane Armor"] = true,

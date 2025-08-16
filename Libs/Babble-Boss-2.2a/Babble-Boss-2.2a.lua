@@ -28,6 +28,19 @@ local BabbleBoss = AceLibrary("AceLocale-2.2"):new(MAJOR_VERSION)
 
 BabbleBoss:RegisterTranslations("enUS", function()
 	return {
+		--1.18
+		["Rotthorn"] = true,
+		["Death Prophet Rakameg"] = true,
+		["Gowlfang"] = true,
+		["Cavernweb Broodmother"] = true,
+		["Web Master Torkon"] = true,
+		["Halgan Redbrand"] = true,
+		["Slagfist Destroyer"] = true,
+		["Garlock Flamekeeper"] = true,
+		["Elder Hollowblood"] = true,
+		["Searistrasz"] = true,
+		["Zuluhed the Wracked"] = true,
+		["Bogpaw Truthsay"] = true,
 		["Oronok Torn-Heart"] = true,
 		["Dagar The Glutton"] = true,
 		["Librarian Theodorus"] = true,
@@ -35,10 +48,13 @@ BabbleBoss:RegisterTranslations("enUS", function()
 		["Chieftain Stormsong"] = true,
 		["Subjugator Halthas Shadecrest"] = true,
 		["Mycellakos"] = true,
+		["Eldermaw the Primordial"] = true,
 		["Lady Drazare"] = true,
 		["Ighal'for"] = true,
 		["Mergothid"] = true,
 		["Deathlord Tidebane"] = true,
+		["Remains of the Innocent"] = true,
+		--1.17.2
 		["Trigore the Lasher"] = true,
 		["Boahn"] = true,
 		["Mad Magglish"] = true,

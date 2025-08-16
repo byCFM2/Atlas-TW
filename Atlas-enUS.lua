@@ -165,6 +165,9 @@ AtlasTW.Local.Translations = {
 	["Ghost"] = true,
 	["Instances"] = true,
 	["Key"] = true,
+	["Lower Reserve Key"] = true,
+	["Letter from Korlag Doomsong"] = true,
+	["Key to Stormwrought Castle"] = true,
 	["Meeting Stone"] = true,
 	["Moonwell"] = true,
 	["Neutral"] = true,
@@ -310,6 +313,8 @@ AtlasTW.Local.Translations = {
 	--****************************
 	-- Eastern Kingdoms Instances
 	--****************************
+	--Dragonmaw Retreat
+	["Pedestal of Unity"] = true,
 
 	--Blackrock Depths
 	["Shadowforge Key"] = true,

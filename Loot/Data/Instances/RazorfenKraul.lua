@@ -76,22 +76,31 @@ AtlasTW.InstanceData.RazorfenKraul = {
             }
         },
         {
-            id = "RFKAgathelos",
+            id = "RFKRotthorn",
             prefix = "5)",
+            name = BB["Rotthorn"],
+            defaults = { dropRate = 25 },
+            loot = {
+                {id=50800}, --Bramblethorn Girdle
+            }
+        },
+        {
+            id = "RFKAgathelos",
+            prefix = "6)",
             name = BB["Agathelos the Raging"],
             defaults = { dropRate = 25 },
             loot = {
                 {id=6690},
                 {id=6691},
-                {id=80736},
                 {id=80735},
+                {id=80736}, --Rageboar Harness
                 {},
                 {id=69170, dropRate=.5},
             }
         },
         {
             id = "RFKBlindHunter",
-            prefix = "6)",
+            prefix = "7)",
             name = BB["Blind Hunter"],
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
@@ -103,13 +112,13 @@ AtlasTW.InstanceData.RazorfenKraul = {
         },
         {
             id = "RFKCharlgaRazorflank",
-            prefix = "7)",
+            prefix = "8)",
             name = BB["Charlga Razorflank"],
             defaults = { dropRate = 33 },
             loot = {
                 {id=6693},
                 {id=6694},
-                {id=6692},
+                {id=6692}, --Pronged Reaver
                 {},
                 {id=17008, dropRate=100, container={17042,17043,17039}}, --Small Scroll
                 {},
@@ -121,7 +130,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
         },
         {
             id = "RFKWillixtheImporter",
-            prefix = "8)",
+            prefix = "9)",
             name = L["Willix the Importer"],
             color = "|cff9d9d9d",
         },
@@ -132,7 +141,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
         },
         {
             id = "RFKEarthcallerHalmgar",
-            prefix = "9)",
+            prefix = "10)",
             name = BB["Earthcaller Halmgar"],
             postfix = L["Rare"],
             defaults = { dropRate = 50 },

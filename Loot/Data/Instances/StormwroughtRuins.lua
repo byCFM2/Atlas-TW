@@ -19,14 +19,18 @@ AtlasTW.InstanceData.StormwroughtRuins = {
     MaxPlayers = 5,
     DamageType = L["Physical"],
     Entrances = {
-        { letter = "A)"..L["Entrance"] }
+        { letter = "A)"..L["Entrance"].." "..L["Front"] },
+        { letter = "B)"..L["Entrance"].." "..L["Back"] },
+    },
+    Keys = {
+        { name = L["Key to Stormwrought Castle"], loot = "VanillaKeys", info = "6+" },
     },
     Bosses = {
         {
             id = "SROronok",
             prefix = "1)",
             name = BB["Oronok Torn-Heart"], --34
-            defaults = { dropRate = 25 }, 
+            defaults = { dropRate = 25 },
             loot = {
                 {id=58136}, --back
                 {id=58177}, --Stormreaver Robe
@@ -74,6 +78,10 @@ AtlasTW.InstanceData.StormwroughtRuins = {
             }
         },
         {
+            name = L["Key to Stormwrought Castle"],
+            color = "|cff9d9d9d",
+        },
+        {
             id = "SRDeathlord",
             prefix = "6)",
             name = BB["Deathlord Tidebane"], --38
@@ -81,6 +89,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
             loot = {
                 {id=58150}, --Deathedge Sabre
                 {id=58153}, --Shattered Soul Ring
+                {},
+                {id=950, dropRate=.01}, --Stormwrought Deathsteed 
             }
         },
         {
@@ -141,6 +151,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
             name = BB["Remains of the Innocent"], --38
             defaults = { dropRate = 25 },
             loot = {
+                {id=58195}, --Tiny Bracelet
                 {id=58198}, --Dissolved Hookblade
             }
         },

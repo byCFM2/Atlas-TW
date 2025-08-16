@@ -193,6 +193,8 @@ AtlasTW.InstanceData.Stratholme = {
                 {id=12726, container={12619}},
                 {},
                 {id=12824, container={12776}},
+                {},
+                {id=124, container={87}},
             }
         },
         {

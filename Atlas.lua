@@ -18,7 +18,7 @@ local Colors = {
     WHITE = "|cffffffff"
 }
 
-AtlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version")
+AtlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version").." Alpha"
 
 local function debug(info)
 	if AtlasTW.DEBUGMODE then
@@ -64,7 +64,7 @@ local function PerformSearch(data, search_text)
 
 	local function makeBossLineText(items, new, n, searchText, format_line)
 		for _, item in ipairs(items or {}) do
-			local name = item.name
+			local name, id = item.name, item.id
 			if name then
 				local line = format_line(item)
 				-- Если поисковый запрос пустой, показываем все элементы
@@ -72,6 +72,7 @@ local function PerformSearch(data, search_text)
 					new[n] = {
 						line = line,
 						name = name,
+						id = id,
 					}
 					n = n + 1
 				end
@@ -187,7 +188,7 @@ function AtlasTW.Search(text)
 	--populate the scroll frame entries list, the update func will do the rest
 	local i = 1
 	while ( data and data[i] and data[i].line ~= nil ) do
-		AtlasTW.ScrollList[i] = { line=data[i].line, name=data[i].name }
+		AtlasTW.ScrollList[i] = { line=data[i].line, name=data[i].name, id=data[i].id }
 		i = i + 1
 	end
 	AtlasTW.CurrentLine = i - 1
@@ -293,7 +294,7 @@ function AtlasTW.Refresh()
 	end
 
 	--Display the selected texture
-	AtlasMap:SetTexture(AtlasTW.MAPPATH..zoneID)
+	AtlasMap:SetTexture(zoneID and AtlasTW.MAPPATH..zoneID or "")
 
 	--Update the quest frame
 	AtlasTW.CurrentMap = zoneID
