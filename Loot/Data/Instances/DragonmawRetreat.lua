@@ -169,13 +169,13 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 41848 }, --Dragontrance Ring
                 { id = 58099 }, --Dragonmaw Helmet
                 {},
-                { id = 69, container={65}, dropRate=4.5 }, --Pattern: Dragonmaw Armor Kit
-                { id = 71, container={66}, dropRate=4.5 }, --Plans: Gold Belt Buckle
+                { id = 69, container={65}, dropRate = 4.5 }, --Pattern: Dragonmaw Armor Kit
+                { id = 71, container={66}, dropRate = 4.5 }, --Plans: Gold Belt Buckle
                 {},
-                { id = 41895, dropRate=1.5 }, --Shard of the Demon Soul
+                { id = 41895, dropRate = 1.5 }, --Shard of the Demon Soul
                 {},
-                { id = 41711, dropRate=100 }, --Letter from Korlag Doomsong
-                { id = 41981, container={41982}, dropRate=100 }, --Letter from Korlag Doomsong 'ally'
+                { id = 41711, dropRate = 100 }, --Letter from Korlag Doomsong
+                { id = 41981, container = {41982}, dropRate = 100 }, --Letter from Korlag Doomsong 'ally'
             }
         },
         {
@@ -183,7 +183,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
             name = L["Trash Mobs"],
             defaults = { dropRate = .1 },
             loot = {
-                -- TODO: Добавить предметы когда будут доступны данные
+                { id = 70119, container={56046} }, --Plans: Circlet of Dampening
             }
         },
         { name = BIS["Dragonmaw Battlegarb"], items = "DragonmawBattlegarb" },

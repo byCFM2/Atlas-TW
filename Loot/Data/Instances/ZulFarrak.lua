@@ -130,36 +130,8 @@ AtlasTW.InstanceData.ZulFarrak = {
             }
         },
         {
-            id = "ZFHydromancerVelratha",
-            prefix = "6)",
-            name = L["Hydromancer Velratha"],
-            loot = {
-                {id=9234, dropRate=100, container={9527, 9531}},
-                {id=10661, dropRate=100, container={10749,10750,10751}},
-            }
-        },
-        {
-            id = "ZFGahzrilla",
-            name = BB["Gahz'rilla"],
-            postfix = L["Summon"],
-            loot = {
-                {id=9469, dropRate=50},
-                {id=9467, dropRate=30},
-                {id=80747, dropRate=20},
-                {},
-                {id=8707, dropRate=100, container={11122}},
-                {id=51217, disc=L["Transmogrification"], dropRate=1},
-            }
-        },
-        {
-            id = "ZFElderWildmane",
-            name = L["Elder Wildmane"],
-            postfix = L["Lunar Festival"],
-            items = "LunarFestival",
-        },
-        {
             id = "ZFChiefUkorzSandscalp",
-            prefix = "7)",
+            prefix = "6)",
             name = BB["Chief Ukorz Sandscalp"],
             defaults = { dropRate = 20 },
             loot = {
@@ -179,12 +151,31 @@ AtlasTW.InstanceData.ZulFarrak = {
             color = "|cff9d9d9d",
         },
         {
-            id = "ZFZerillis",
-            prefix = "8)",
-            name = L["Zerillis"],
-            postfix = L["Rare"]..L[", "]..L["Wanders"],
+            id = "ZFElderWildmane",
+            name = L["Elder Wildmane"],
+            postfix = L["Lunar Festival"],
+            items = "LunarFestival",
+        },
+        {
+            id = "ZFHydromancerVelratha",
+            prefix = "7)",
+            name = L["Hydromancer Velratha"],
             loot = {
-                {id=12470, dropRate=19},
+                {id=9234, dropRate=100, container={9527, 9531}},
+                {id=10661, dropRate=100, container={10749,10750,10751}},
+            }
+        },
+        {
+            id = "ZFGahzrilla",
+            name = BB["Gahz'rilla"],
+            postfix = L["Summon"],
+            loot = {
+                {id=9469, dropRate=50},
+                {id=9467, dropRate=30},
+                {id=80747, dropRate=20},
+                {},
+                {id=8707, dropRate=100, container={11122}},
+                {id=51217, disc=L["Transmogrification"], dropRate=1},
             }
         },
         {
@@ -222,6 +213,15 @@ AtlasTW.InstanceData.ZulFarrak = {
                 {id=58093}, --Libram of the Farraki Zealot
                 {id=58094}, --Gilded Blade of Razjal
                 {id=58095}, --Talisman of the Sandborn
+            }
+        },
+        {
+            id = "ZFZerillis",
+            prefix = "10)",
+            name = L["Zerillis"],
+            postfix = L["Rare"]..L[", "]..L["Wanders"],
+            loot = {
+                {id=12470, dropRate=19},
             }
         },
         {

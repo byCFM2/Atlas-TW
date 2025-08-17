@@ -90,6 +90,7 @@ local craftingTable = {
 		{ id=3453, skill={195,215,235,255} }, --Elixir of Detect Lesser Invisibility
 		{ id=11450, skill={195,215,235,255} }, --Elixir of Greater Defense
 		{ name = L["Expert"], icon = "Trade_Alchemy" },
+		{ id = 83, skill={200,200,200,200}, container = {56113}, type="item" }, --Recipe: Elixir of Rapid Growth TODO remake for spellid
 		{ id=12609, skill={200,220,240,260} }, --Catseye Elixir
 		{ id=3454, skill={200,220,240,260} }, --Frost Oil
 		{ id=11459, skill={200,240,260,280} }, --Philosopher's Stone
@@ -103,6 +104,7 @@ local craftingTable = {
 		{ id=11457, skill={215,230,250,270} }, --Superior Healing Potion
 		{ id=11458, skill={225,240,260,280} }, --Wildvine Potion
 		{ id=11479, skill={225,240,260,280} }, --Transmute: Iron to Gold
+		{ name = L["Expert"], icon = "Trade_Alchemy" },
 		{ id=11480, skill={225,240,260,280} }, --Transmute: Mithril to Truesilver
 	},
 	AlchemyArtisan = {
@@ -318,6 +320,7 @@ local craftingTable = {
 		{},
 		{ id=17555, skill={265,280,300,320} }, --Elixir of the Sages
 		{ id=15003, skill={75,110,125,140} }, --Volatile Concoction
+		{ id = 83, skill={200,200,200,200}, container = {56113}, type="item" }, --Recipe: Elixir of Rapid Growth TODO remake for spellid
 		{ id=11477, skill={250,265,285,305} }, --Elixir of Demonslaying
 		{ id=57111, skill={300,315,322,330} }, --Potion of Quickness
 	},
@@ -865,6 +868,7 @@ local craftingTable = {
 		{ id=3505, skill={175,200,212,225} }, --Golden Scale Shoulders
 		{ name = L["Expert"], icon = "Trade_BlackSmithing" },
 		{ id=3493, skill={175,200,212,225} }, --Jade Serpentblade
+		{ id=71, skill={175,175,175,175}, container={66}, type="item" }, --Gold Belt Buckle TODO remake for spellid
 		{ id=9818, skill={180,205,217,230} }, --Barbaric Iron Boots
 		{ id=15972, skill={180,205,217,230} }, --Glinting Steel Dagger
 		{ id=3496, skill={180,205,217,230} }, --Moonsteel Broadsword
@@ -877,8 +881,8 @@ local craftingTable = {
 		{ id=7224, skill={190,215,227,240} }, --Steel Weapon Chain
 		{ id=21913, skill={190,215,227,240} }, --Edge of Winter
 		{ id=3503, skill={190,215,227,240} }, --Golden Scale Coif
-		{ id=15973, skill={190,215,227,240} }, --Searing Golden Blade
 		{ name = L["Expert"], icon = "Trade_BlackSmithing" },
+		{ id=15973, skill={190,215,227,240} }, --Searing Golden Blade
 		{ id=3511, skill={195,220,232,245} }, --Golden Scale Cuirass
 		{ id=70, skill={200,200,200,200}, container={131}, type="item" }, --Steel Belt Buckle TODO remake for spellid
 		{ id=9920, skill={200,200,205,210} }, --Solid Grinding Stone
@@ -892,8 +896,8 @@ local craftingTable = {
 		{ id=9916, skill={200,225,237,250} }, --Steel Breastplate
 		{ id=11454, skill={200,225,237,250} }, --Inlaid Mithril Cylinder
 		{ id=11643, skill={205,225,235,245} }, --Golden Scale Gauntlets
-		{ id=9928, skill={205,225,235,245} }, --Heavy Mithril Gauntlet
 		{ name = L["Expert"], icon = "Trade_BlackSmithing" },
+		{ id=9928, skill={205,225,235,245} }, --Heavy Mithril Gauntlet
 		{ id=9926, skill={205,225,235,245} }, --Heavy Mithril Shoulder
 		{ id=9933, skill={210,230,240,250} }, --Heavy Mithril Pants
 		{ id=9931, skill={210,230,240,250} }, --Mithril Scale Pants
@@ -907,8 +911,8 @@ local craftingTable = {
 		{ id=9939, skill={215,235,245,255} }, --Mithril Shield Spike
 		{ id=9950, skill={220,240,250,260} }, --Ornate Mithril Gloves
 		{ id=9945, skill={220,240,250,260} }, --Ornate Mithril Pants
-		{ id=9995, skill={220,245,257,270} }, --Blue Glittering Axe
 		{ name = L["Expert"], icon = "Trade_BlackSmithing" },
+		{ id=9995, skill={220,245,257,270} }, --Blue Glittering Axe
 		{ id=46626, skill={220,220,220,220} }, --Steel Plate Boots
 		{ id=46627, skill={220,220,220,220} }, --Steel Plate Gauntlets
 		{ id=9942, skill={220,240,250,260} }, --Mithril Scale Gloves
@@ -1441,6 +1445,7 @@ local craftingTable = {
 		{ id=57163, skill={25,25,37,50} }, --Copper Belt Buckle
 		{ id=57166, skill={90,90,97,105} }, --Bronze Belt Buckle
 		{ id=57169, skill={140,140,147,155} }, --Iron Belt Buckle
+		{ id=71, skill={175,175,175,175}, container={66}, type="item" }, --Gold Belt Buckle TODO remake for spellid
 		{ id=57172, skill={185,190,197,205} }, --Mithril Belt Buckle
 		{ id=70, skill={200,200,200,200}, container={131}, type="item" }, --Steel Belt Buckle TODO remake for spellid
 		{ id=113, skill={225,225,225,225}, container={151}, type="item" }, --Truesilver Belt Buckle TODO remake for spellid
@@ -2581,13 +2586,14 @@ local craftingTable = {
 		{ id=3854, skill={145,165,180,195} }, --Azure Silk Gloves
 		{ id=8780, skill={145,165,180,195} }, --Hands of Darkness
 		{ id=8782, skill={150,170,185,200} }, --Truefaith Gloves
+		{ id=75, skill={185,185,185,185}, container={58134}, type="item" }, --Pattern: Stormreaver Gloves
 		{ id=69421, skill={200,200,200,200} }, --Augerer's Gloves
 		{ id=8804, skill={210,225,240,255} }, --Crimson Silk Gloves
 		{ id=12053, skill={215,230,245,260} }, --Black Mageweave Gloves
 		{ id=12066, skill={225,240,255,270} }, --Red Mageweave Gloves
 		{ id=12071, skill={225,240,255,270} }, --Shadoweave Gloves
-		{ id=12067, skill={225,240,255,270} }, --Dreamweave Gloves
 		{ name = L["Gloves"], icon = "Trade_Tailoring" },
+		{ id=12067, skill={225,240,255,270} }, --Dreamweave Gloves
 		{ id=69427, skill={225,235,240,245} }, --Diviner's Mitts
 		{ id=69433, skill={260,260,260,260} }, --Pillager's Grips
 		{ id=18411, skill={265,280,295,310} }, --Frostweave Gloves
@@ -2601,8 +2607,8 @@ local craftingTable = {
 		{ id=22869, skill={300,315,330,345} }, --Mooncloth Gloves
 		{ id=20849, skill={300,315,330,345} }, --Flarecore Gloves
 		{ id=28205, skill={300,315,330,345} }, --Glacial Gloves
-		{ id=18454, skill={300,315,330,345} }, --Gloves of Spell Mastery
 		{ name = L["Gloves"], icon = "Trade_Tailoring" },
+		{ id=18454, skill={300,315,330,345} }, --Gloves of Spell Mastery
 		{ id=45485, skill={300,315,330,345} }, --Gloves of Unwinding Mystery
 		{ id=45463, skill={300,315,330,345} }, --Dreamthread Gloves
 	},
@@ -3516,7 +3522,8 @@ local craftingTable = {
 		{ id=41213, skill={175,195,202,210} }, --Goldenshade Quartz Crown
 		{ id=41215, skill={175,195,202,210} }, --The Golden Goblet
 		{ id=41217, skill={175,195,202,210} }, --Powerful Citrine Pendant
-		{ id=77, 	skill={185,185,185,185} }, --
+		{ id=76, 	skill={185,185,185,185}, container={156}, type="item" }, --Plans: Refined Dwarven Necklace remake for spellid
+		{ id=77, 	skill={185,185,185,185}, container={56112}, type="item" }, --Plans: Ancient Dwarven Gemstone remake for spellid
 		{ id=41556, skill={180,200,210,220} }, --Delicate Mithril Amulet
 		{ id=41221, skill={185,200,210,220} }, --Ironsun Citrine Ring
 		{ id=41750, skill={185,200,207,215} }, --Facetted Moonstone Brooch
@@ -3630,6 +3637,7 @@ local craftingTable = {
 
 	JewelcraftingGemology = {
 		{ name = BS["Gemology"], icon = "INV_Misc_Gem_Variety_01" },
+		{ id=77, 	skill={185,185,185,185}, container={56112}, type="item" }, --Plans: Ancient Dwarven Gemstone remake for spellid
 		{ id=41621, skill={250,255,257,260} }, --Enchanted Emerald Gemstone
 		{ id=41625, skill={270,275,277,280} }, --Beautiful Diamond Gemstone
 		{ id=41609, skill={275,280,282,285} }, --Azerothian Ruby Gemstone
@@ -3771,6 +3779,7 @@ local craftingTable = {
 		{ id=41217, skill={175,195,202,210} }, --Powerful Citrine Pendant
 		{ name = L["Amulets"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41556, skill={180,200,210,220} }, --Delicate Mithril Amulet
+		{ id=76, 	skill={185,185,185,185}, container={156}, type="item" }, --Plans: Refined Dwarven Necklace remake for spellid
 		{ id=41223, skill={190,205,215,225} }, --Shimmering Gold Necklace
 		{ id=41546, skill={200,220,230,240} }, --Alluring Citrine Choker
 		{ id=41235, skill={215,215,225,235} }, --Aquamarine Pendant
@@ -3783,8 +3792,8 @@ local craftingTable = {
 		{ id=41279, skill={280,280,300,320} }, --Voidheart Charm
 		{ id=41105, skill={280,300,305,310} }, --Pendant of Arcane Radiance
 		{ id=41287, skill={290,310,325,340} }, --Stormcloud Sigil
-		{ id=41722, skill={300,300,307,315} }, --Pendant of Instability
 		{ name = L["Amulets"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41722, skill={300,300,307,315} }, --Pendant of Instability
 		{ id=41704, skill={300,320,330,340} }, --Talisman of Hinderance
 	},
 

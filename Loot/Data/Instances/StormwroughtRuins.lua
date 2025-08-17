@@ -63,7 +63,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 {id=58140}, --Broken Goldrimmed Monocle
                 {id=58141}, --Boots of Silence
                 {},
-                {id=41940, dropRate=100, container={58279, 58280}}, --Compendium of Successful Trade quest
+                {id=41940, dropRate=100, disc=L["Quest Item"], container={58279, 58280}}, --Compendium of Successful Trade quest
             }
         },
         {
@@ -189,6 +189,11 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 {},
                 { id = 58199, dropRate = 1 }, --Spine of Dentarg
             }
+        },
+        {
+            prefix = "a)",
+            name = L["Severs"],
+            color = "|cff00FF00",
         },
         {
             id = "SRRemainsOfInnocent",
