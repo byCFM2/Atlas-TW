@@ -29,6 +29,10 @@ local BabbleBoss = AceLibrary("AceLocale-2.2"):new(MAJOR_VERSION)
 BabbleBoss:RegisterTranslations("enUS", function()
 	return {
 		--1.18
+		["Juthza the Cunning"] = true,
+		["Kath'zen the Brutal"] = true,
+		["Champion Razjal the Quick"] = true,
+		["Zel'jeb the Ancient"] = true,
 		["Rotthorn"] = true,
 		["Death Prophet Rakameg"] = true,
 		["Gowlfang"] = true,
@@ -42,7 +46,7 @@ BabbleBoss:RegisterTranslations("enUS", function()
 		["Zuluhed the Wracked"] = true,
 		["Bogpaw Truthsay"] = true,
 		["Oronok Torn-Heart"] = true,
-		["Dagar The Glutton"] = true,
+		["Dagar the Glutton"] = true,
 		["Librarian Theodorus"] = true,
 		["Duke Balor the IV"] = true,
 		["Chieftain Stormsong"] = true,

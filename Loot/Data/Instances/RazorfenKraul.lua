@@ -82,6 +82,11 @@ AtlasTW.InstanceData.RazorfenKraul = {
             defaults = { dropRate = 25 },
             loot = {
                 {id=50800}, --Bramblethorn Girdle
+                {id=58089}, --Thornlash Branch
+                {id=58090}, --Seed of Writhing Growth
+                {id=58091}, --Idol of the Thorned Grove
+                {},
+                {id=41853, dropRate=100}, --Tainted Brambleheart
             }
         },
         {

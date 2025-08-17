@@ -2253,6 +2253,7 @@ local craftingTable = {
 		{ id=8789, skill={180,200,215,230} }, --Crimson Silk Cloak
 		{ id=8774, skill={180,200,215,230} }, --Green Silken Shoulders
 		{ id=3863, skill={180,200,215,230} }, --Spider Belt
+		{ id=75, skill={185,185,185,185}, container={58134}, type="item" }, --Pattern: Stormreaver Gloves
 		{ id=3872, skill={185,195,200,205} }, --Rich Purple Silk Shirt
 		{ id=8791, skill={185,205,215,225} }, --Crimson Silk Vest
 		{ id=6695, skill={185,205,220,235} }, --Black Silk Pack
@@ -2262,8 +2263,8 @@ local craftingTable = {
 		{ id=8793, skill={190,210,225,240} }, --Crimson Silk Shoulders
 		{ id=8770, skill={190,210,225,240} }, --Robe of Power
 		{ id=8799, skill={195,215,225,235} }, --Crimson Silk Pantaloons
-		{ id=8797, skill={195,215,230,245} }, --Earthen Silk Belt
 		{ name = L["Expert"], icon = "Trade_Tailoring" },
+		{ id=8797, skill={195,215,230,245} }, --Earthen Silk Belt
 		{ id=3873, skill={200,210,215,220} }, --Black Swashbuckler's Shirt
 		{ id=3864, skill={200,220,235,250} }, --Star Belt
 		{ id=3862, skill={200,220,235,250} }, --Icy Cloak
@@ -2277,8 +2278,8 @@ local craftingTable = {
 		{ id=8802, skill={205,220,235,250} }, --Crimson Silk Robe
 		{ id=69425, skill={210,210,210,210} }, --Augerer's Robe
 		{ id=12050, skill={210,225,240,255} }, --Black Mageweave Robe
-		{ id=8804, skill={210,225,240,255} }, --Crimson Silk Gloves
 		{ name = L["Expert"], icon = "Trade_Tailoring" },
+		{ id=8804, skill={210,225,240,255} }, --Crimson Silk Gloves
 		{ id=12052, skill={210,225,240,255} }, --Shadoweave Pants
 		{ id=12061, skill={215,220,225,230} }, --Orange Mageweave Shirt
 		{ id=12059, skill={215,220,225,230} }, --White Bandit Mask
@@ -2292,8 +2293,8 @@ local craftingTable = {
 		{ id=27658, skill={225,240,255,270} }, --Enchanted Mageweave Pouch
 		{ id=12066, skill={225,240,255,270} }, --Red Mageweave Gloves
 		{ id=12071, skill={225,240,255,270} }, --Shadoweave Gloves
-		{ id=12067, skill={225,240,255,270} }, --Dreamweave Gloves
 		{ name = L["Expert"], icon = "Trade_Tailoring" },
+		{ id=12067, skill={225,240,255,270} }, --Dreamweave Gloves
 		{ id=12070, skill={225,240,255,270} }, --Dreamweave Vest
 		{ id=69426, skill={225,235,240,245} }, --Diviner's Boots
 		{ id=69427, skill={225,235,240,245} }, --Diviner's Mitts

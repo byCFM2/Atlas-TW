@@ -17,6 +17,7 @@ local BabbleZone = AceLibrary("AceLocale-2.2"):new(MAJOR_VERSION)
 
 BabbleZone:RegisterTranslations("enUS", function()
 	return {
+		["Farraki Arena"] = true,
 		["Grim Reaches"] = true,
 		["Dragonmaw Retreat"] = true,
 		["Balor"] = true,

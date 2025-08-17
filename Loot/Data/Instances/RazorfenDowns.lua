@@ -106,11 +106,13 @@ AtlasTW.InstanceData.RazorfenDowns = {
             id = "RFDRakameg",
             prefix = "6)",
             name = BB["Death Prophet Rakameg"],
-            defaults = { dropRate = 33 },
+            defaults = { dropRate = 25 },
             loot = {
                 {id=58172}, --Thornspine
-                {id=58173}, --Thorngorged Fleshgloves *Maybe*
+                {id=58173}, --Thorngorged Fleshgloves
                 {id=58174}, --Totem of the Rotten Roots
+                {id=58175}, --Blood-etched Fetish
+                
             }
         },
         {

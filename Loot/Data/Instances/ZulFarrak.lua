@@ -188,11 +188,41 @@ AtlasTW.InstanceData.ZulFarrak = {
             }
         },
         {
-            id = "ZFSandarrDunereaver",
+            id = "ZFZeljebTheAncient",
+            prefix = "8)",
+            name = BB["Zel'jeb the Ancient"],
+            defaults = { dropRate = 25 },
+            loot = {
+                { id=58116 }, --Bloodstained Fangblade
+                { id=58117 }, --Staff of the Bloodbound
+                { id=58118 }, --Sash of Ritual Scars
+                { id=58119 }, --Bracers of the Bloodbound
+
+            }
+        },
+        {
+            name = BZ["Farraki Arena"],
             prefix = "9)",
-            name = L["Sandarr Dunereaver"],
-            postfix = L["Rare"],
             color = "|cff9d9d9d",
+        },
+        {
+            name = BB["Juthza the Cunning"],
+            color = "|cff9d9d9d",
+        },
+        {
+            name = BB["Kath'zen the Brutal"],
+            color = "|cff9d9d9d",
+        },
+        {
+            id = "ZFRazjalTheQuick",
+            name = BB["Champion Razjal the Quick"],
+            defaults = { dropRate = 25 },
+            loot = {
+                {id=58092}, --Champion's Sandhelm
+                {id=58093}, --Libram of the Farraki Zealot
+                {id=58094}, --Gilded Blade of Razjal
+                {id=58095}, --Talisman of the Sandborn
+            }
         },
         {
             id = "ZFTrash",
