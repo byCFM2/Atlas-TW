@@ -29,6 +29,7 @@ local BabbleBoss = AceLibrary("AceLocale-2.2"):new(MAJOR_VERSION)
 BabbleBoss:RegisterTranslations("enUS", function()
 	return {
 		--1.18
+		["Velthelaxx the Defiler"] = true,
 		["Juthza the Cunning"] = true,
 		["Kath'zen the Brutal"] = true,
 		["Champion Razjal the Quick"] = true,

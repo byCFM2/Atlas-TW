@@ -42,13 +42,13 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         },
         {
             id = "BFDLorgalisManuscript",
-            prefix = "2)",
+            prefix = "a)",
             name = L["Lorgalis Manuscript"],
-            color = "|cff9d9d9d",
+            color = "|cff00FF00",
         },
         {
             id = "BFDLadySarevess",
-            prefix = "3)",
+            prefix = "2)",
             name = BB["Lady Sarevess"],
             defaults = { dropRate = 33 },
             loot = {
@@ -62,13 +62,13 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         },
         {
             id = "BFDArgentGuardThaelrid",
-            prefix = "4)",
+            prefix = "b)",
             name = L["Argent Guard Thaelrid"],
-            color = "|cff9d9d9d",
+            color = "|cff00FF00",
         },
         {
             id = "BFDGelihast",
-            prefix = "5)",
+            prefix = "3)",
             name = BB["Gelihast"],
             loot = {
                 {id=6906, dropRate=50},
@@ -86,14 +86,26 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         },
         {
             id = "BFDLorgusJett",
-            prefix = "6)",
+            prefix = "c)",
             name = BB["Lorgus Jett"],
             postfix = L["Varies"],
-            color = "|cff9d9d9d",
+            color = "|cff00FF00",
+        },
+        {
+            id = "BFDVelthelaxxtheDefiler",
+            prefix = "4)",
+            name = BB["Velthelaxx the Defiler"],
+            defaults = { dropRate = 25 },
+            loot = {
+                { id = 58120 }, --Cowl of Whispering Shadows
+                { id = 58121 }, --Totem of the Corrupted Current
+                { id = 58122 }, --Bracers of Sinister Rites
+                { id = 58123 }, --Felhoof Sabatons
+            }
         },
         {
             id = "BFDBaronAquanis",
-            prefix = "7)",
+            prefix = "5)",
             name = BB["Baron Aquanis"],
             loot = {
                 {id=16782, dropRate=100, container={16886,16887}},
@@ -108,7 +120,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         },
         {
             id = "BFDTwilightLordKelris",
-            prefix = "8)",
+            prefix = "6)",
             name = BB["Twilight Lord Kelris"],
             loot = {
                 {id=1155, dropRate=50},
@@ -120,7 +132,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         },
         {
             id = "BFDOldSerrakis",
-            prefix = "9)",
+            prefix = "7)",
             name = BB["Old Serra'kis"],
             defaults = { dropRate = 33 },
             loot = {
@@ -132,7 +144,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         },
         {
             id = "BFDAkumai",
-            prefix = "10)",
+            prefix = "8)",
             name = BB["Aku'mai"],
             defaults = { dropRate = 33 },
             loot = {

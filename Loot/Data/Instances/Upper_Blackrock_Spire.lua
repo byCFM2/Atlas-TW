@@ -238,6 +238,8 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {id=12602, dropRate=25},
                 {id=12592, dropRate=1},
                 {},
+                {id=47413, dropRate=10, container={47412}}, --Recipe: Concoction of the Arcane Giant
+                {id=47415, dropRate=10, container={47414}}, --Recipe: Concoction of the Dreamwater
                 {id=15730, dropRate=4,container={15047}},
                 {},
                 {id=13519, dropRate=3,container={13510}},

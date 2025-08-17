@@ -144,7 +144,8 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 {id=61014, dropRate=1},
                 {id=61043, dropRate=1.1},
                 {},
-                {id=41700,dropRate=100,container={41704}},
+                {id=47413, dropRate=10, container={47412}}, --Recipe: Concoction of the Arcane Giant
+                {id=47415, dropRate=10, container={47414}}, --Recipe: Concoction of the Dreamwater
                 {id=51044, disc=L["Quest Item"], dropRate=100,container={82950,82951,82952,82953}},
                 {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,
                     70234,70235,70236,70238}},

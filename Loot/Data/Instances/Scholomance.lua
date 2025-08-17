@@ -326,6 +326,8 @@ AtlasTW.InstanceData.Scholomance = {
                 {id=19276, disc=L["Darkmoon Faire Card"], dropRate=3,container={19290}},
                 {},
                 {id=13501, dropRate=10, container={13444}},
+                {id=47413, dropRate=10, container={47412}}, --Recipe: Concoction of the Arcane Giant
+                {id=47415, dropRate=10, container={47414}}, --Recipe: Concoction of the Dreamwater
                 {id=14514, dropRate=7, container={14513}},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=100},

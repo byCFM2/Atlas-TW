@@ -366,6 +366,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {},
                 {id=13143, dropRate=2},
                 {},
+                {id=47413, dropRate=10, container={47412}}, --Recipe: Concoction of the Arcane Giant
+                {id=47415, dropRate=10, container={47414}}, --Recipe: Concoction of the Dreamwater
                 {id=12337, disc=L["Quest Item"], dropRate=30,container={12344}},
                 {id=16786, dropRate=80, quantity=2,container={16309}},
                 {id=41700,dropRate=100,container={41704}},
