@@ -318,10 +318,12 @@ local WorldEvents = {
 		{ id = 19696, disc=L["Consumable"] }, -- Harvest Bread
 	},
 	ScourgeInvasionF = {
-		{ id = 23123 }, -- Blessed Wizard Oil
-		{ id = 23122 }, -- Consecrated Sharpening Stone
+		{ id = 23123, container = {12844}, disc = L["Need quest"] }, -- Blessed Wizard Oil
+		{ id = 23122, container = {12844}, disc = L["Need quest"] }, -- Consecrated Sharpening Stone
+
 		{ id = 22999 }, -- Tabard of the Argent Dawn
-		{ id = 22484 }, -- Necrotic Rune
+		{ id = 22484, disc = L["Quest Item"] }, -- Necrotic Rune
+
 		{},
 		{ name = BIS["Regalia of Undead Cleansing"], icon="INV_Jewelry_Talisman_13" },
 		{ id = 23085 }, -- Robe of Undead Cleansing

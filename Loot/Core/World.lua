@@ -16,7 +16,7 @@ AtlasTW.Loot.WorldBossesData = {
 	{},
     { name = BB["Moo"], extra = "Moomoo Grove", icon = "Interface\\Icons\\Spell_Nature_Polymorph_Cow", lootpage = "CowKing" },
     { name = BB["Cla'ckora"], extra = "Azshara", icon = "Interface\\Icons\\INV_Misc_Birdbeck_02", lootpage = "Clackora" },
-    { name = L["Rare Mobs"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Misc_Head_Undead_01", lootpage = L["Shade Mage"] },
+    { name = L["Rare Mobs"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Misc_Head_Undead_01", lootpage = "ShadeMage" },
 }
 
 function AtlasLoot_WorldMenu()

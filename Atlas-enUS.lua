@@ -186,6 +186,8 @@ AtlasTW.Local.Translations = {
 	["Varies"] = true,
 	["Wanders"] = true,
 	["Severs"] = true,
+	["Need quest"] = true,
+
 
 	--Instance names and acronyms
 	["Armory"] = true,
