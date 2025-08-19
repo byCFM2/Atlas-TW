@@ -264,11 +264,11 @@ local function GetLootByElemName(elemName, instanceName)
 			return AtlasLoot_Data[items] or items
 		end
 	end
-	
+
 	-- Вспомогательная функция для поиска в конкретном инстансе
 	local function AL_FindInInstance(inst, name)
 		if type(inst) ~= "table" then return nil end
-		
+
 		-- Поиск в репутациях
 		if inst.Reputation then
 			for _, v in ipairs(inst.Reputation) do
@@ -277,7 +277,7 @@ local function GetLootByElemName(elemName, instanceName)
 				end
 			end
 		end
-		
+
 		-- Поиск в ключах
 		if inst.Keys then
 			for _, v in ipairs(inst.Keys) do
@@ -286,7 +286,7 @@ local function GetLootByElemName(elemName, instanceName)
 				end
 			end
 		end
-		
+
 		-- Поиск в боссах
 		if inst.Bosses then
 			for _, elemData in ipairs(inst.Bosses) do
@@ -295,23 +295,23 @@ local function GetLootByElemName(elemName, instanceName)
 				end
 			end
 		end
-		
+
 		return nil
 	end
-	
+
 	-- Если указан конкретный инстанс
 	if instanceName and AtlasTW.InstanceData[instanceName] then
 		return AL_FindInInstance(AtlasTW.InstanceData[instanceName], elemName)
 	end
-	
+
 	-- Поиск по всем инстансам
 	for _, inst in pairs(AtlasTW.InstanceData) do
 		local result = AL_FindInInstance(inst, elemName)
-		if result then 
-			return result 
+		if result then
+			return result
 		end
 	end
-	
+
 	return nil
 end
 
@@ -2189,18 +2189,22 @@ function AtlasLootItem_OnLeave()
 end
 
 local function AtlasLoot_GetChatLink(id)
-	local a, b, c = GetItemInfo(tonumber(id))
-	local _, _, _, d = GetItemQualityColor(c)
-	local e = string.sub(d, 2)
-	return "\124"..e.."\124H"..b.."\124h["..a.."]\124h\124r"
+	local itemName, itemLink, itemQuality = GetItemInfo(tonumber(id))
+	if not itemName or not itemLink or not itemQuality then
+		-- Если предмет не закэширован, возвращаем простую ссылку
+		return "[Item:" .. tostring(id) .. "]"
+	end
+
+	local _, _, _, colorCode = GetItemQualityColor(itemQuality)
+	local colorHex = string.sub(colorCode, 2)
+	return "\124" .. colorHex .. "\124H" .. itemLink .. "\124h[" .. itemName .. "]\124h\124r"
 end
 
 --------------------------------------------------------------------------------
 -- Item OnClick
 -- Called when a loot item is clicked on
 --------------------------------------------------------------------------------
-function AtlasLootItem_OnClick(arg1) --TODO remake
-	local isItem, isEnchant, isSpell
+function AtlasLootItem_OnClick(arg1) --TODO check all features
 	local id = this:GetID()
 	local color = strsub(_G["AtlasLootItem_"..id.."_Name"]:GetText() or "", 1, 10)
 	local name = strsub(_G["AtlasLootItem_"..id.."_Name"]:GetText() or "", 11)
@@ -2208,20 +2212,7 @@ function AtlasLootItem_OnClick(arg1) --TODO remake
 	local dataID = AtlasLootItemsFrame.StoredElement
 	local dataSource = GetLootByElemName(dataID)
 
-	if string.sub(this.itemID, 1, 1) == "s" then
-		isItem = false
-		isEnchant = false
-		isSpell = true
-	elseif string.sub(this.itemID, 1, 1) == "e" then
-		isItem = false
-		isEnchant = true
-		isSpell = false
-	else
-		isItem = true
-		isEnchant = false
-		isSpell = false
-	end
-	if isItem then
+	if this.typeID == "item" then
 		local itemName, itemLink, qualityId = GetItemInfo(this.itemID)
 		_, _, _, color = GetItemQualityColor(qualityId or 0)
 		--If shift-clicked, link in the chat window
@@ -2294,16 +2285,16 @@ function AtlasLootItem_OnClick(arg1) --TODO remake
 		elseif this.container and arg1 == "LeftButton" then
 			AtlasLoot_ShowContainerFrame()
 		end
-	elseif isEnchant then
+	elseif this.typeID == "enchant" then
 		if IsShiftKeyDown() then
-			AtlasLoot_SayItemReagents(this.itemID)
-		elseif IsAltKeyDown() and this.itemID ~= 0 then
+			AtlasLoot_SayItemReagents(this.elemID)
+		elseif IsAltKeyDown() and this.elemID ~= 0 then
 			if dataID == "WishList" then
-				AtlasLoot_DeleteFromWishList(this.itemID)
+				AtlasLoot_DeleteFromWishList(this.elemID)
 			elseif dataID == "SearchResult" then
-				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.itemID))
+				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.elemID))
 			else
-				AtlasLoot_AddToWishlist(this.itemID, texture, this.itemIDName, this.itemIDExtra, dataID.."|"..dataSource)
+				AtlasLoot_AddToWishlist(this.elemID, texture, this.elemIDName, this.elemIDExtra, dataID.."|"..dataSource)
 			end
 		elseif IsControlKeyDown() then
 			DressUpItemLink("item:"..this.dressingroomID..":0:0:0")
@@ -2315,12 +2306,14 @@ function AtlasLootItem_OnClick(arg1) --TODO remake
 				AtlasTW.Loot.ScrollBarLootUpdate()
 				--AtlasLoot_ShowItemsFrame(dataID, dataSource)
 			end
+		elseif this.container and arg1 == "LeftButton" then
+			AtlasLoot_ShowContainerFrame()
 		end
-	elseif isSpell then
+	elseif this.typeID == "spell" then
 		if IsShiftKeyDown() then
-			if tonumber(string.sub(this.itemID, 2)) < 100000 then
+			if this.elemID < 100000 then
 				if WIM_EditBoxInFocus then
-					local craftitem = GetSpellInfoAtlasLootDB["craftspells"][tonumber(string.sub(this.itemID, 2))]["craftItem"]
+					local craftitem = GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]
 					if craftitem ~= nil and craftitem ~= "" then
 						local craftname = GetItemInfo(craftitem)
 						WIM_EditBoxInFocus:Insert("\124"..string.sub(color, 2).."|Hitem:"..craftitem.."\124h["..craftname.."]|h|r")
@@ -2328,29 +2321,28 @@ function AtlasLootItem_OnClick(arg1) --TODO remake
 						WIM_EditBoxInFocus:Insert(name)
 					end
 				elseif ChatFrameEditBox:IsVisible() then
-					local craftitem = GetSpellInfoAtlasLootDB["craftspells"][tonumber(string.sub(this.itemID, 2))]["craftItem"]
+					local craftitem = GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]
 					if craftitem ~= nil and craftitem ~= "" then
-						local craftname = GetItemInfo(craftitem)
-						--ChatFrameEditBox:Insert("\124"..string.sub(color, 2).."|Hitem:"..craftitem.."\124h["..craftname.."]|h|r")
-						ChatFrameEditBox:Insert("\124"..string.sub(color, 2).."|Hitem:"..craftitem..":0:0:0\124h["..craftname.."]|h|r") -- Fix for Gurky's discord chat bot
+						--local craftname = GetItemInfo(craftitem)
+						ChatFrameEditBox:Insert(AtlasLoot_GetChatLink(craftitem)) -- Fix for Gurky's discord chat bot
 					else
 						ChatFrameEditBox:Insert(name)
 					end
 				else
-					AtlasLoot_SayItemReagents(this.itemID)
+					AtlasLoot_SayItemReagents(this.elemID)
 				end
 			else
 				if WIM_EditBoxInFocus then
-					local craftitem = GetSpellInfoAtlasLootDB["craftspells"][tonumber(string.sub(this.itemID, 2))]["craftItem"]
+					local craftitem = GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]
 					if craftitem ~= nil and craftitem ~= "" then
-						WIM_EditBoxInFocus:Insert(AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["craftspells"][tonumber(string.sub(this.itemID, 2))]["craftItem"]))
+						WIM_EditBoxInFocus:Insert(AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]))
 					else
 						WIM_EditBoxInFocus:Insert(name)
 					end
 				elseif ChatFrameEditBox:IsVisible() then
-					local craftitem = GetSpellInfoAtlasLootDB["craftspells"][tonumber(string.sub(this.itemID, 2))]["craftItem"]
+					local craftitem = GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]
 					if craftitem ~= nil and craftitem ~= "" then
-						ChatFrameEditBox:Insert(AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["craftspells"][tonumber(string.sub(this.itemID, 2))]["craftItem"]))
+						ChatFrameEditBox:Insert(AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]))
 					else
 						ChatFrameEditBox:Insert(name)
 					end
@@ -2361,16 +2353,16 @@ function AtlasLootItem_OnClick(arg1) --TODO remake
 					elseif channel == "CHANNEL" then
 						chatnumber = ChatFrameEditBox.channelTarget
 					end
-					SendChatMessage(AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["craftspells"][tonumber(string.sub(this.itemID, 2))]["craftItem"]),channel,nil,chatnumber)
+					SendChatMessage(AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]),channel,nil,chatnumber)
 				end
 			end
-		elseif IsAltKeyDown() and this.itemID ~= 0 then
+		elseif IsAltKeyDown() and this.elemID ~= 0 then
 			if dataID == "WishList" then
-				AtlasLoot_DeleteFromWishList(this.itemID)
+				AtlasLoot_DeleteFromWishList(this.elemID)
 			elseif dataID == "SearchResult" then
-				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.itemID))
+				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.elemID))
 			else
-				AtlasLoot_AddToWishlist(this.itemID, texture, this.itemIDName, this.itemIDExtra, dataID.."|"..dataSource)
+				AtlasLoot_AddToWishlist(this.elemID, texture, this.elemIDName, this.elemIDExtra, dataID.."|"..dataSource)
 			end
 		elseif IsControlKeyDown() then
 			DressUpItemLink("item:"..this.dressingroomID..":0:0:0")
@@ -2382,6 +2374,8 @@ function AtlasLootItem_OnClick(arg1) --TODO remake
 				AtlasTW.Loot.ScrollBarLootUpdate()
 				--AtlasLoot_ShowItemsFrame(dataID, dataSource)
 			end
+		elseif this.container and arg1 == "LeftButton" then
+			AtlasLoot_ShowContainerFrame()
 		end
 	end
 end
@@ -2761,112 +2755,162 @@ function AtlasLoot_CheckBagsForItems(id, qty) --TODO need check
 	end
 end
 
-function AtlasLoot_SayItemReagents(id, color, name, safe) --TODO need remake
-	if not id then return end
+-- Функция для отправки информации о реагентах предмета в чат
+function AtlasLoot_SayItemReagents(id, color, name, safe)
+	if not id then
+		return
+	end
+
+	-- Инициализация переменных
 	local chatline = ""
 	local itemCount = 0
-
 	local tListActivity = {}
 	local tCount = 0
 
-	if (WIM_IconItems and WIM_Icon_SortByActivity) then
+	-- Получение активных WIM окон
+	if WIM_IconItems and WIM_Icon_SortByActivity then
 		for key in WIM_IconItems do
 			table.insert(tListActivity, key)
 			tCount = tCount + 1
 		end
-
 		table.sort(tListActivity, WIM_Icon_SortByActivity)
 	end
+
+	-- Определение канала и цели для отправки сообщения
 	local channel, chatnumber
 	if tListActivity[1] and WIM_Windows and WIM_Windows[tListActivity[1]].is_visible then
 		channel = "WHISPER"
 		chatnumber = tListActivity[1]
 	else
 		channel = ChatFrameEditBox.chatType
-		if channel=="WHISPER" then
+		if channel == "WHISPER" then
 			chatnumber = ChatFrameEditBox.tellTarget
 		elseif channel == "CHANNEL" then
 			chatnumber = ChatFrameEditBox.channelTarget
 		end
 	end
-	if string.sub( id, 1, 1 ) == "s" then
-		local spellid = string.sub( id, 2 )
-		local craftitem = GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["item"]
-		if craftitem ~= nil and craftitem ~= "" then
+	-- Обработка заклинаний крафта
+	if GetSpellInfoAtlasLootDB["craftspells"][id] then
+		local spellData = GetSpellInfoAtlasLootDB["craftspells"][id]
+		local craftitem = spellData["item"]
+
+		if craftitem and craftitem ~= "" then
+			-- Формирование строки количества предметов
 			local craftnumber = ""
-			local qtyMin = GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["quantity"]
-			local qtyMax = GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["quantity"]
-			if qtyMin and qtyMin ~= "" then
-				if qtyMax and qtyMax ~= "" then
-					craftnumber = craftnumber..qtyMin.. "-"..qtyMax.."x"
+			local quantity = spellData["quantity"]
+
+			if quantity then
+				local qtyMin, qtyMax
+
+				-- Проверяем тип quantity: число или массив
+				if type(quantity) == "table" then
+					qtyMin = quantity[1]
+					qtyMax = quantity[2]
 				else
-					craftnumber = craftnumber..qtyMin.."x"
+					qtyMin = quantity
+					qtyMax = quantity
 				end
-			end
-			SendChatMessage(L["To craft "]..craftnumber..AtlasLoot_GetChatLink(craftitem)..L[" the following reagents are needed:"],channel,nil,chatnumber)
-			for j = 1, table.getn(GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["reagents"]) do
-				local tempnumber = GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["reagents"][j][2]
-				if not tempnumber or tempnumber == nil or tempnumber == "" then
-					tempnumber = 1
+
+				if qtyMin and qtyMin ~= "" then
+					if qtyMax and qtyMax ~= "" and qtyMin ~= qtyMax then
+						craftnumber = qtyMin .. "-" .. qtyMax .. "x"
+					else
+						craftnumber = qtyMin .. "x"
+					end
 				end
-				chatline = chatline..tempnumber.."x"..AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["reagents"][j][1]).." "
-				itemCount = itemCount + 1
-				if itemCount == 4 then
-					SendChatMessage(chatline, channel, nil, chatnumber)
-					chatline = ""
-					itemCount = 0
-				end
-			end
-			if itemCount > 0 then
-				SendChatMessage(chatline, channel, nil, chatnumber)
-			end
-		else
-			SendChatMessage(L["To cast "]..GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["name"]..L[" the following items are needed:"],channel,nil,chatnumber)
-			for j = 1, table.getn(GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["reagents"]) do
-				local tempnumber = GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["reagents"][j][2]
-				if not tempnumber or tempnumber == nil or tempnumber == "" then
-					tempnumber = 1
-				end
-				chatline = chatline..tempnumber.."x"..AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["craftspells"][tonumber(spellid)]["reagents"][j][1]).." "
-				itemCount = itemCount + 1
-				if itemCount == 4 then
-					SendChatMessage(chatline, channel, nil, chatnumber)
-					chatline = ""
-					itemCount = 0
-				end
-			end
-			if itemCount > 0 then
-				SendChatMessage(chatline, channel, nil, chatnumber)
-			end
-		end
-	elseif string.sub( id,1 ,1 ) == "e" then
-		local spellid = string.sub( id, 2 )
-		local name = GetSpellInfoAtlasLootDB["enchants"][tonumber(spellid)]["name"]
-		if tListActivity[1] and WIM_Windows[tListActivity[1]].is_visible then
-			if not GetSpellInfoAtlasLootDB["enchants"][tonumber(spellid)]["item"] then
-				SendChatMessage("|cffFFd200|Henchant:"..spellid..":0:0:0|h["..name.."]|h|r", channel, nil, chatnumber)
-			else
-				SendChatMessage("To craft "..AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["enchants"][tonumber(spellid)]["item"])..L[" you need this: "].."|cffFFd200|Henchant:"..spellid..":0:0:0|h["..name.."]|h|r",channel,nil,chatnumber)
 			end
 
+			-- Отправка сообщения о крафте
+			local craftMessage = L["To craft "] .. craftnumber .. AtlasLoot_GetChatLink(craftitem) .. L[" the following reagents are needed:"]
+			SendChatMessage(craftMessage, channel, nil, chatnumber)
+
+			-- Отправка списка реагентов
+			local reagents = spellData["reagents"]
+			if reagents then
+				for j = 1, table.getn(reagents) do
+					local reagentCount = reagents[j][2] or 1
+					local reagentItem = reagents[j][1]
+
+					chatline = chatline .. reagentCount .. "x" .. AtlasLoot_GetChatLink(reagentItem) .. " "
+					itemCount = itemCount + 1
+
+					if itemCount == 4 then
+						SendChatMessage(chatline, channel, nil, chatnumber)
+						chatline = ""
+						itemCount = 0
+					end
+				end
+
+				if itemCount > 0 then
+					SendChatMessage(chatline, channel, nil, chatnumber)
+				end
+			end
+		else
+			-- Обработка заклинаний без предметов (только реагенты)
+			local spellName = spellData["name"]
+			local castMessage = L["To cast "] .. spellName .. L[" the following items are needed:"]
+			SendChatMessage(castMessage, channel, nil, chatnumber)
+
+			-- Сброс переменных для новой секции
+			chatline = ""
+			itemCount = 0
+
+			-- Отправка списка реагентов для заклинания
+			local reagents = spellData["reagents"]
+			if reagents then
+				for j = 1, table.getn(reagents) do
+					local reagentCount = reagents[j][2] or 1
+					local reagentItem = reagents[j][1]
+
+					chatline = chatline .. reagentCount .. "x" .. AtlasLoot_GetChatLink(reagentItem) .. " "
+					itemCount = itemCount + 1
+
+					if itemCount == 4 then
+						SendChatMessage(chatline, channel, nil, chatnumber)
+						chatline = ""
+						itemCount = 0
+					end
+				end
+
+				if itemCount > 0 then
+					SendChatMessage(chatline, channel, nil, chatnumber)
+				end
+			end
+		end
+	-- Обработка зачарований
+	elseif GetSpellInfoAtlasLootDB["enchants"][id] then
+		local enchantData = GetSpellInfoAtlasLootDB["enchants"][id]
+		local enchantItem = enchantData["item"]
+		local enchantName = enchantData["name"] or GetItemInfo(enchantItem)
+
+		-- Формирование ссылки на зачарование
+		local enchantLink = "|cffFFd200|Henchant:" .. id .. ":0:0:0|h[" .. enchantName .. "]|h|r"
+
+		-- Определение сообщения в зависимости от наличия предмета
+		local message
+		if enchantItem then
+			message = L["To craft "] .. AtlasLoot_GetChatLink(enchantItem) .. L[" you need this: "] .. enchantLink
+		else
+			message = enchantLink
+		end
+
+		-- Отправка сообщения в зависимости от активного окна
+		if tListActivity[1] and WIM_Windows and WIM_Windows[tListActivity[1]].is_visible then
+			SendChatMessage(message, channel, nil, chatnumber)
 		elseif ChatFrameEditBox:IsVisible() then
-			if not GetSpellInfoAtlasLootDB["enchants"][tonumber(spellid)]["item"] then
-				ChatFrameEditBox:Insert("|cffFFd200|Henchant:"..spellid..":0:0:0|h["..name.."]|h|r", channel, nil, chatnumber)
-			else
-				ChatFrameEditBox:Insert(L["To craft "]..AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["enchants"][tonumber(spellid)]["item"])..L[" you need this: "].."|cffFFd200|Henchant:"..spellid..":0:0:0|h["..name.."]|h|r",channel,nil,chatnumber)
-			end
+			ChatFrameEditBox:Insert(message)
 		else
-			if not GetSpellInfoAtlasLootDB["enchants"][tonumber(spellid)]["item"] then
-				SendChatMessage("|cffFFd200|Henchant:"..spellid..":0:0:0|h["..name.."]|h|r", channel, nil, chatnumber)
-			else
-				SendChatMessage(L["To craft "]..AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["enchants"][tonumber(spellid)]["item"])..L[" you need this: "].."|cffFFd200|Henchant:"..spellid..":0:0:0|h["..name.."]|h|r",channel,nil,chatnumber)
-			end
+			SendChatMessage(message, channel, nil, chatnumber)
 		end
+
+	-- Обработка обычных предметов
 	else
+		local itemMessage
 		if safe then
-			SendChatMessage("["..name.."]", channel, nil, chatnumber)
+			itemMessage = "[" .. name .. "]"
 		else
-			SendChatMessage("\124"..string.sub(color, 2).."\124Hitem:"..id..":0:0:0\124h["..name.."]\124h\124r", channel, nil, chatnumber)
+			itemMessage = "\124" .. string.sub(color, 2) .. "\124Hitem:" .. id .. ":0:0:0\124h[" .. name .. "]\124h\124r"
 		end
+		SendChatMessage(itemMessage, channel, nil, chatnumber)
 	end
 end

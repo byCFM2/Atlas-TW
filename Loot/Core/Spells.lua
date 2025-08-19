@@ -1,7 +1,7 @@
 local L = AtlasTW.Local
 
 GetSpellInfoAtlasLootDB = {
-	["enchants"] = {
+	enchants = {
 		[7420] = { name = "Enchant Chest - Minor Health" },
  		[7421] = { item = 6218 },
 		[7426] = {
@@ -501,7 +501,7 @@ GetSpellInfoAtlasLootDB = {
 			item = 61732,
 		},
 	},
-	["craftspells"] = {
+	craftspells = {
 		[818] = {
 			name = "Basic Campfire",
 			tools = {4471},
@@ -7284,7 +7284,7 @@ GetSpellInfoAtlasLootDB = {
 			requires = L["Alchemy Lab"],
 			item = 13510,
 			reagents = {
-				{8846, 30},
+				{13464, 30}, --Golden Sansam 1.18
 				{13423, 10},
 				{13468},
 				{8925},
@@ -7294,7 +7294,7 @@ GetSpellInfoAtlasLootDB = {
 			requires = L["Alchemy Lab"],
 			item = 13511,
 			reagents = {
-				{13463, 30},
+				{8838, 30}, --Sungrass 1.18
 				{13467, 10},
 				{13468},
 				{8925},
@@ -13502,8 +13502,8 @@ GetSpellInfoAtlasLootDB = {
 			reagents = {
 				{8838},
 				{22529},
-				{51714, 3},
-				{6370},
+				{51714, 2}, -- 3->2 1.18
+				--{6370}, 1.18
 			},
 		},
 		[54001] = {

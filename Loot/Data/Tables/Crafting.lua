@@ -1045,7 +1045,7 @@ local craftingTable = {
 		{ id=45469, skill={300,325,337,350} }, --Dreamsteel Bracers
 		{ id=45467, skill={300,325,337,350} }, --Dreamsteel Leggings
 		{ id=45465, skill={300,325,337,350} }, --Dreamsteel Mantle
-		{ id=103, skill={300,300,300,300}, type="item" }, --Obsidian Belt Buckle TODO remake for spellid
+		{ id=132, skill={300,300,300,300}, container = { 103 }, type="item" }, --Plans: Obsidian Belt Buckle TODO remake for spellid
 	},
 
 	Armorsmith = {
@@ -1461,7 +1461,7 @@ local craftingTable = {
 		{ id=124, skill={285,285,285,285}, container={87}, type="item" }, --Enchanted Thorium Belt Buckle TODO remake for spellid
 		{ id=57196, skill={300,300,300,300} }, --Bloody Belt Buckle
 		{ id=57181, skill={300,300,305,310} }, --Dreamsteel Belt Buckle
-		{ id=103, skill={300,300,300,300}, type="item" }, --Obsidian Belt Buckle TODO remake for spellid
+		{ id=132, skill={300,300,300,300}, container = { 103 }, type="item" }, --Plans: Obsidian Belt Buckle TODO remake for spellid
 	},
 
 	SmithingMisc = {
@@ -1593,14 +1593,15 @@ local craftingTable = {
 		{ id=9195, skill={165,185,195,205} }, --Dusky Leather Leggings
 		{ id=4097, skill={165,185,195,205} }, --Raptor Hide Belt
 		{ id=4096, skill={165,185,195,205} }, --Raptor Hide Harness
+        { id = 74, skill={170,170,170,170}, container={ 58112 }, type="item" }, --Pattern: Dragonmaw Gloves TODO remake for spellid
 		{ id=7149, skill={170,190,200,210} }, --Barbaric Leggings
 		{ id=3775, skill={170,190,200,210} }, --Guardian Belt
 		{ id=6704, skill={170,190,200,210} }, --Thick Murloc Armor
 		{ id=69, skill={175,175,175,175}, container={65}, type="item" }, --Dragonmaw Armor Kit --TODO remake for spell
 		{ id=7151, skill={175,195,205,215} }, --Barbaric Shoulders
 		{ id=9196, skill={175,195,205,215} }, --Dusky Leather Armor
-		{ id=9197, skill={175,195,205,215} }, --Green Whelp Armor
 		{ name = L["Expert"], icon = "INV_Misc_ArmorKit_17" },
+		{ id=9197, skill={175,195,205,215} }, --Green Whelp Armor
 		{ id=3773, skill={175,195,205,215} }, --Guardian Armor
 		{ id=9198, skill={180,200,210,220} }, --Frost Leather Cloak
 		{ id=3776, skill={180,200,210,220} }, --Green Leather Bracers
@@ -1614,8 +1615,8 @@ local craftingTable = {
 		{ id=6705, skill={190,210,220,230} }, --Murloc Scale Bracers
 		{ id=9206, skill={195,215,225,235} }, --Dusky Belt
 		{ id=3777, skill={195,215,225,235} }, --Guardian Leather Bracers
-		{ id=10482, skill={200,200,200,200} }, --Cured Thick Hide
 		{ name = L["Expert"], icon = "INV_Misc_ArmorKit_17" },
+		{ id=10482, skill={200,200,200,200} }, --Cured Thick Hide
 		{ id=22711, skill={200,210,220,230} }, --Shadowskin Gloves
 		{ id=10487, skill={200,220,230,240} }, --Thick Armor Kit
 		{ id=46620, skill={200,215,220,225} }, --Grifter's Boots
@@ -1629,8 +1630,8 @@ local craftingTable = {
 		{ id=10507, skill={205,225,235,245} }, --Nightscape Headband
 		{ id=10499, skill={205,225,235,245} }, --Nightscape Tunic
 		{ id=10509, skill={205,225,235,245} }, --Turtle Scale Gloves
-		{ id=46625, skill={210,225,230,235} }, --Grifter's Cover
 		{ name = L["Expert"], icon = "INV_Misc_ArmorKit_17" },
+		{ id=46625, skill={210,225,230,235} }, --Grifter's Cover
 		{ id=20650, skill={200,200,202,205} }, --Thick Leather
 		{ id=46624, skill={210,235,240,245} }, --Grifter's Tunic
 		{ id=10516, skill={210,230,240,250} }, --Nightscape Shoulders
@@ -1644,8 +1645,8 @@ local craftingTable = {
 		{ id=14930, skill={225,245,255,265} }, --Quickdraw Quiver
 		{ id=14932, skill={225,245,255,265} }, --Thick Leather Ammo Pouch
 		{ id=10542, skill={225,245,255,265} }, --Tough Scorpid Gloves
-		{ id=10546, skill={225,245,255,265} }, --Wild Leather Helmet
 		{ name = L["Expert"], icon = "INV_Misc_ArmorKit_17" },
+		{ id=10546, skill={225,245,255,265} }, --Wild Leather Helmet
 		{ id=10544, skill={225,245,255,265} }, --Wild Leather Vest
 	},
 
@@ -1997,8 +1998,9 @@ local craftingTable = {
 		{ id=9149, skill={145,170,182,195} }, --Heavy Earthen Gloves
 		{ id=3764, skill={145,170,182,195} }, --Hillman's Leather Gloves
 		{ id=3771, skill={150,170,180,190} }, --Barbaric Gloves
-		{ id=7156, skill={190,210,220,230} }, --Guardian Gloves
+        { id = 74, skill={170,170,170,170}, container={ 58112 }, type="item" }, --Pattern: Dragonmaw Gloves TODO remake for spellid
 		{ name = L["Gloves"], icon = "INV_Misc_ArmorKit_17" },
+		{ id=7156, skill={190,210,220,230} }, --Guardian Gloves
 		{ id=21943, skill={190,210,220,230} }, --Gloves of the Greatfather
 		{ id=22711, skill={200,210,220,230} }, --Shadowskin Gloves
 		{ id=46621, skill={200,215,220,225} }, --Grifter's Gauntlets
@@ -2012,8 +2014,8 @@ local craftingTable = {
 		{ id=47015, skill={270,285,290,295} }, --Primalist's Gloves
 		{ id=19064, skill={275,295,305,315} }, --Heavy Scorpid Gauntlets
 		{ id=24655, skill={280,300,310,320} }, --Green Dragonscale Gauntlets
-		{ id=19084, skill={290,310,320,330} }, --Devilsaur Gauntlets
 		{ name = L["Gloves"], icon = "INV_Misc_ArmorKit_17" },
+		{ id=19084, skill={290,310,320,330} }, --Devilsaur Gauntlets
 		{ id=19087, skill={295,315,325,335} }, --Frostsaber Gloves
 		{ id=24122, skill={300,320,330,340} }, --Primal Batskin Gloves
 		{ id=24850, skill={300,320,330,340} }, --Sandstalker Gauntlets
@@ -2264,7 +2266,7 @@ local craftingTable = {
 		{ id=8789, skill={180,200,215,230} }, --Crimson Silk Cloak
 		{ id=8774, skill={180,200,215,230} }, --Green Silken Shoulders
 		{ id=3863, skill={180,200,215,230} }, --Spider Belt
-		{ id=75, skill={185,185,185,185}, container={58134}, type="item" }, --Pattern: Stormreaver Gloves
+		{ id=75, skill={185,185,185,185}, container={58134}, type="item" }, --Pattern: Stormreaver Gloves TODO REmake for spellid
 		{ id=3872, skill={185,195,200,205} }, --Rich Purple Silk Shirt
 		{ id=8791, skill={185,205,215,225} }, --Crimson Silk Vest
 		{ id=6695, skill={185,205,220,235} }, --Black Silk Pack

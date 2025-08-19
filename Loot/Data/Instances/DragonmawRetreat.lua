@@ -184,6 +184,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
             defaults = { dropRate = .1 },
             loot = {
                 { id = 70119, container={56046} }, --Plans: Circlet of Dampening
+                { id = 74, dropRate = 6, container={ 58112 } }, --Pattern: Dragonmaw Gloves --Overlord Blackheart
             }
         },
         { name = BIS["Dragonmaw Battlegarb"], items = "DragonmawBattlegarb" },

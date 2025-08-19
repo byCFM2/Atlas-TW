@@ -345,7 +345,6 @@ function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
     if templateType == "AtlasLootItem_Template" then
         button = CreateFrame("Button", name, parent)
         AtlasLoot_ApplyParentTemplate(button)
-
         button:RegisterForClicks("LeftButtonDown", "RightButtonDown")
         button:SetScript("OnEnter", function() AtlasLootItem_OnEnter() end)
         button:SetScript("OnLeave", function() AtlasLootItem_OnLeave() end)

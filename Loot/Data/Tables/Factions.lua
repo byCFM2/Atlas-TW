@@ -1155,10 +1155,32 @@ local Factions = {
 		{ id = 60725 }, -- Ring of Flowing Leylines
 	},
 	WildhammerClan = {
+		{ name = BF["Friendly"], icon = "Ability_Hunter_EagleEye" },
+		{ id = 55033 }, -- Mystic's Feather Headdress
+		{ id = 55034 }, -- Grim Batol Mountaineer Pauldrons
+		{ id = 55035 }, -- Derelict Family Clan Totem
+		{},
+		{ name = BF["Honored"], icon = "Ability_Hunter_EagleEye" },
+		{ id = 55036 }, -- Lorekeeper Cuffs
+		{ id = 55037 }, -- Gryphon Tamer Longstaff
+		{},
+		{ name = BF["Revered"], icon = "Ability_Hunter_EagleEye" },
+		{ id = 55038 }, -- Fallen Heroes' Hymnal
+		{ id = 55039 }, -- Sharpshooter's Boots
+		{},
+		{},
+		{},
 		{ name = BF["Exalted"], icon = "Ability_Hunter_EagleEye" },
+		{ id = 55040 }, -- Skyfall Mantle
+		{ id = 55041 }, -- Wildhammer Stormcaller
+		{},
+		{ id = 16, container = { 55043 } }, -- Pattern: Harness of the High Thane
+		{},
 		{ id = 81185 }, -- Aerie Peak Gryphon
 		{ id = 81186 }, -- Armored Aerie Peak Gryphon
+		{},
 		{ id = 81243 }, -- Beaky
+		{},
 		{ id = 80312 }, -- Wildhammer Tabard
 	},
 	SilvermoonRemnant = {

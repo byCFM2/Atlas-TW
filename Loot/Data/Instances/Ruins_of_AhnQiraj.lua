@@ -249,6 +249,8 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {},
                 {id=20890, dropRate=50, container={21410,21413,21416,21407}},
                 {id=20886, dropRate=50, container={21392,21395,21401,21404,21398}},
+                {},
+		        { id=132, dropRate = 6, container = { 103 } }, --Plans: Obsidian Belt Buckle
             }
         },
         { prefix = "1') ", name = L["Safe Room"], color = "|cff00FF00" },
