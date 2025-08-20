@@ -511,7 +511,7 @@ local function CacheAllLootItems(dataSource, callback)
     CleanupMemoCache()
     if not dataSource or type(dataSource) ~= "table" then
         if callback then callback() end
-        return --print("CacheAllLootItems: dataSource is not a table")
+        return --print("CacheAllLooItems: dataSource is not a table"..(dataSource or "dataSource not string"))
     end
     local itemsToCache = {}
 
@@ -1445,7 +1445,7 @@ function AtlasLootBoss_OnClick(buttonName)
 
 			CacheAllLootItems(lootTable, function()
 				local elapsed = GetTime() - scrollStartTime
-				--print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
+				print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
 				AtlasLoot_HideScrollBarLoading()
 				-- Update scrollbar
 				AtlasTW.Loot.ScrollBarLootUpdate()
@@ -1796,7 +1796,7 @@ function AtlasLootMenuItem_OnClick(button)
 		AtlasTWCharDB.LastBoss = TableSource
 		AtlasTWCharDB.LastBossText = pagename
 
-	--	print(dataID.." - dataID, "..TableSource.." - TableSource")
+		print(dataID.." - dataID, "..TableSource.." - TableSource")
 		AtlasLootItemsFrame:Show()
 		local scrollStartTime = GetTime()
 		AtlasLoot_ShowScrollBarLoading()
@@ -1810,7 +1810,7 @@ function AtlasLootMenuItem_OnClick(button)
 
 		CacheAllLootItems(TableSource, function()
 			local elapsed = GetTime() - scrollStartTime
-			--print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
+			print("AtlasLootMenuItem_OnClick: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
 			AtlasLoot_HideScrollBarLoading()
 			-- Update scrollbar
 			AtlasTW.Loot.ScrollBarLootUpdate()
@@ -1958,10 +1958,10 @@ function AtlasLoot_ClearQuickLookButton(button)
 	if not button or button == nil then return end
 	AtlasTWCharDB["QuickLooks"][button] = nil
 	AtlasLoot_RefreshQuickLookButtons()
-	DEFAULT_CHAT_FRAME:AddMessage(BLUE.."AtlasLoot"..": "..WHITE..L["QuickLook"].." "..button.." "..L["has been reset!"])
+	print(BLUE.."AtlasLoot"..": "..WHITE..L["QuickLook"].." "..button.." "..L["has been reset!"])
 end
 
-function AtlasLoot_Strsplit(delim, str, maxNb, onlyLast)
+function AtlasLoot_Strsplit(delim, str, maxNb, onlyLast) --TODO check
 	-- Eliminate bad cases...
 	if string.find(str, delim) == nil then
 		return { str }
@@ -1998,17 +1998,15 @@ local function BuildMaterialString(materials, isReagent)
 
     local materialStrings = {}
     for i = 1, table.getn(materials) do
-		--print(materials[i])
-
         local itemInfo = materials[i]
         local checkedItem
         if isReagent then
             -- Реагент это таблица {itemID, количество}
-            AtlasLoot_ForceCacheItemWithDelay(itemInfo[1], 1)
+           -- AtlasLoot_ForceCacheItemWithDelay(itemInfo[1], 1)
             checkedItem = AtlasLoot_CheckBagsForItems(itemInfo[1], itemInfo[2] or 1)
         else
             -- Инструмент это просто itemID
-            AtlasLoot_ForceCacheItemWithDelay(itemInfo, 1)
+          --  AtlasLoot_ForceCacheItemWithDelay(itemInfo, 1)
             checkedItem = AtlasLoot_CheckBagsForItems(itemInfo)
         end
         table.insert(materialStrings, checkedItem)

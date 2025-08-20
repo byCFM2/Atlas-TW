@@ -3467,7 +3467,6 @@ local craftingTable = {
 		{ id=41564, skill={100,120,130,140} }, --Shadowfall Jewel
 		{ id=41581, skill={100,120,130,140} }, --Serpent's Coil Staff
 		{ id=41323, skill={100,125,135,145} }, --Talisman of Stone
-		{ id=70185, skill={105,105,105,105}, container={55330}, type="item" }, --Plans: Hydrathorn Bracers TODO remake for spellid
 		{ id=41049, skill={105,120,132,145} }, --Bronze Cuffed Bangles
 		{ id=41051, skill={105,125,135,145} }, --Shadowgem Band
 		{ id=41726, skill={105,125,135,145} }, --Hydrathorn Bracers
@@ -3478,8 +3477,8 @@ local craftingTable = {
 		{ id=41337, skill={115,135,142,150} }, --Dawnbright Cuffs
 		{ id=41734, skill={120,140,150,160} }, --Fangclaw Relic
 		{ id=41055, skill={120,145,155,165} }, --Pendant of Midnight
-		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41067, skill={125,135,145,155} }, --Rough Silver Ring
+		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41065, skill={125,140,142,145} }, --Coarse Gemstone Cluster
 		{ id=41057, skill={125,145,155,165} }, --Agatestone Crown
 		{ id=41061, skill={125,145,155,165} }, --Binding Signet
@@ -3493,8 +3492,8 @@ local craftingTable = {
 		{ id=41071, skill={135,155,165,175} }, --Ring of Purified Silver
 		{ id=41327, skill={135,155,165,175} }, --Gleaming Silver Necklace
 		{ id=41339, skill={135,155,165,175} }, --Circlet of Dampening
-		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41748, skill={135,155,165,175} }, --Totem of Self Preservation
+		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41583, skill={140,160,170,180} }, --Farraki Ceremony Totem
 		{ id=41728, skill={140,160,170,180} }, --Blackrock Ironclamps
 		{ id=41570, skill={145,165,175,185} }, --Harpy Talon Ring
@@ -3828,7 +3827,6 @@ local craftingTable = {
 		{ id=29732, skill={1,21,33,45} }, --Copper Bangle
 		{ id=41011, skill={50,70,75,80} }, --Encrusted Copper Bangle
 		{ id=41587, skill={80,160,170,180} }, --Gloomweed Bindings
-		{ id=70185, skill={105,105,105,105}, container={55330}, type="item" }, --Plans: Hydrathorn Bracers TODO remake for spellid
 		{ id=41049, skill={105,120,132,145} }, --Bronze Cuffed Bangles
 		{ id=41726, skill={105,125,135,145} }, --Hydrathorn Bracers
 		{ id=41337, skill={115,135,142,150} }, --Dawnbright Cuffs

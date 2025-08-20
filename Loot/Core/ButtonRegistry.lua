@@ -1026,7 +1026,7 @@ AtlasLoot_TableRegistry = {
         Entry = {
             { ID = "MCLucifron", Title = BB["Lucifron"] },
             { ID = "MCMagmadar", Title = BB["Magmadar"] },
-            { ID = "MCGehennas", Title = BB["Gehennas"] },
+            { ID = "MCIncindis", Title = BB["Incindis"] },
             { ID = "MCGarr", Title = BB["Garr"] },
             { ID = "MCGeddon", Title = BB["Shazzrah"] },
             { ID = "MCShazzrah", Title = BB["Baron Geddon"] },

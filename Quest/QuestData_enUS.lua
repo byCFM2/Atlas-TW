@@ -4518,9 +4518,10 @@ kQuestInstanceData["MoltenCore"].Quests.Alliance[2] = {
     Title = "2. Hands of the Enemy",
     Level = "60",
     Attain = "60",
-    Aim = "Bring the Hands of Lucifron, Sulfuron, Gehennas and Shazzrah to Duke Hydraxis in Azshara.",
+    Aim = "Bring the Hands of Lucifron, Sulfuron and Shazzrah to Duke Hydraxis in Azshara.",
     Location = "Duke Hydraxis (Azshara; "..yellow.."79,73"..white..")",
-    Note = "Lucifron is at "..yellow.."[1]"..white..", Sulfuron is at "..yellow.."[8]"..white..", Gehennas is at "..yellow.."[3]"..white.." and Shazzrah is at "..yellow.."[5]"..white..".",
+    Note = "Lucifron is at "..yellow.."[2]"..white..", Sulfuron is at "..yellow.."[8]"..white.." and Shazzrah is at "..yellow.."[6]"..white..".",
+
     Prequest = "Agent of Hydraxis",
     Folgequest = "A Hero's Reward",
     Rewards = {
@@ -9115,25 +9116,25 @@ kQuestInstanceData["TheCrescentGrove"].Quests.Alliance[3] = {
     Rewards = {
         Text = blue.."Reward: Pick One",
         {
-            Name = "Chain of Denatharion",
+            Name = "Sentinel Chain",
             ID = "60180",
             Color = green,
             Description = "Chest, Mail",
         },
         {
-            Name = "Cloak of Denatharion",
+            Name = "Groveweave Cloak",
             ID = "60181",
             Color = blue,
             Description = "Back",
         },
         {
-            Name = "Epaulets of Denatharion",
+            Name = "Epaulets of Forest Wisdom",
             ID = "60182",
             Color = blue,
             Description = "Shoulder, Cloth",
         },
         {
-            Name = "Mask of Denatharion",
+            Name = "Bushstalker Mask",
             ID = "60183",
             Color = blue,
             Description = "Head, Leather",
@@ -9167,25 +9168,25 @@ kQuestInstanceData["TheCrescentGrove"].Quests.Horde[3] = {
     Rewards = {
         Text = blue.."Reward: Pick One",
         {
-            Name = "Chain of Loruk",
+            Name = "Outrider Chain",
             ID = "60213",
             Color = blue,
             Description = "Chest, Mail",
         },
         {
-            Name = "Cloak of Loruk",
+            Name = "Strongwind Cloak",
             ID = "60214",
             Color = blue,
             Description = "Back",
         },
         {
-            Name = "Shoulders of Loruk",
+            Name = "Foreststrider Spaulders",
             ID = "60215",
             Color = blue,
             Description = "Shoulder, Leather",
         },
         {
-            Name = "Hat of Loruk",
+            Name = "Hat of Forest Medicine",
             ID = "60216",
             Color = blue,
             Description = "Head, Cloth",

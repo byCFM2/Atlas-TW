@@ -43,12 +43,47 @@ AtlasTW.InstanceData.MoltenCore = {
     },
     Bosses = {
         {
-            id = "Lucifron",
+            id = "Incindis",
             prefix = "1)",
+            name = BB["Incindis"], --52145
+            defaults = { dropRate = 5 },
+            loot = {
+                { id = 16812, dropRate = 25, container = { 47202 } }, --Gloves of Prophecy
+                { id = 16839, dropRate = 25, container = { 47124, 47132 } }, --Earthfury Gauntlets
+                { id = 16860, dropRate = 25, container = { 47004, 47012 } }, --Lawbringer Gauntlets
+                { id = 16826, dropRate = 25 }, --Nightslayer Gloves
+                { id = 16862, dropRate = 25, container = { 47247 } }, --Sabatons of Might
+                { id = 16849, dropRate = 25 }, --Giantstalker's Boots
+                {},
+                { id = 58205, dropRate = 20 }, --Primal Flameslinger
+                { id = 58206, dropRate = 20 }, --Idol of the Forgotten Wilds
+                { id = 58207, dropRate = 20 }, --Fist of the Flamewaker
+                { id = 58208, dropRate = 20 }, --Shroud of Flowing Magma
+                { id = 58209, dropRate = 20 }, --Sizzling Pyrestone Aureole
+                {},
+                { id = 17077 }, --Crimson Shocker
+                { id = 18861 }, --Flamewaker Legplates
+                { id = 18870 }, --Helm of the Lifegiver
+                { id = 18872 }, --Manastorm Leggings
+                { id = 18875 }, --Salamander Scale Pants
+                { id = 18878 }, --Sorcerous Dagger
+                { id = 18879 }, --Heavy Dark Iron Ring
+                { id = 19145 }, --Robe of Volatile Power
+                { id = 19146 }, --Wristguards of Stability
+                { id = 19147 }, --Ring of Spell Power
+                { id = 41988, dropRate = 100 }, --Molten Scale
+                {},
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                {},
+                unpack(mCShareloot),
+            }
+        },
+        {
+            id = "Lucifron",
+            prefix = "2)",
             name = BB["Lucifron"],
             defaults = { dropRate = 4 },
             loot = {
-             --   {id=70613}, --TEST
                 {id=16800, dropRate=20, container={47085}},
                 {id=16829, dropRate=20, container={47337,47345}},
                 {id=16837, dropRate=20, container={47127,47135}},
@@ -68,12 +103,12 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=19147},
                 {id=17077},
                 {id=18878},
-                unpack(mCShareloot),
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
             }
         },
         {
             id = "Magmadar",
-            prefix = "2)",
+            prefix = "3)",
             name = BB["Magmadar"],
             defaults = { dropRate = 5 },
             loot = {
@@ -102,35 +137,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=18824},
                 {id=18821},
                 {id=18820},
-                unpack(mCShareloot),
-            }
-        },
-        {
-            id = "Gehennas",
-            prefix = "3)",
-            name = BB["Gehennas"],
-            defaults = { dropRate = 5 },
-            loot = {
-                {id=16812, dropRate=25, container={47202}},
-                {id=16839, dropRate=25, container={47124,47132}},
-                {id=16860, dropRate=25, container={47004,47012}},
-                {id=16826, dropRate=25},
-                {},
-                {id=16862, dropRate=25, container={47247}},
-                {id=16849, dropRate=25},
-                {},
-                {id=18870},
-                {id=19145},
-                {id=19146},
-                {id=18872},
-                {id=18875},
-                {id=18861},
-                {},
-                {id=18879},
-                {id=19147},
-                {id=17077},
-                {id=18878},
-                unpack(mCShareloot),
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
             }
         },
         {
@@ -156,7 +163,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=19143},
                 {id=19136},
                 {id=18861},
-                {id=19144},
+                {id=19144, dropRate=11},
                 {id=18824},
                 {id=18821},
                 {id=18820},
@@ -166,7 +173,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=17105, dropRate=20},
                 {id=18832, dropRate=20},
                 {id=18822},
-                unpack(mCShareloot),
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
             }
         },
         {
@@ -194,7 +201,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {},
                 {id=17077},
                 {id=18878},
-                unpack(mCShareloot),
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
             }
         },
         {
@@ -224,7 +231,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {},
                 {id=19142},
                 {id=18822},
-                unpack(mCShareloot),
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
             }
         },
         {
@@ -259,7 +266,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=17103, dropRate=25},
                 {id=18822},
                 {id=18842, dropRate=25},
-                unpack(mCShareloot),
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
             }
         },
         {
@@ -296,6 +303,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=17077},
                 {id=18878},
                 {id=17074, dropRate=3,container={17223}},
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
             }
         },
         {
@@ -321,12 +329,91 @@ AtlasTW.InstanceData.MoltenCore = {
                 {},
                 {id=18703, dropRate=50, container={18714,18713,18715}},
                 {},
-                {id=18646, dropRate=50, container={18608,18609}}
+                {id=18646, dropRate=50, container={18608,18609}},
+            }
+        },
+        {
+            id = "Basalthar",
+            prefix = "10)",
+            name = BB["Basalthar"], --65020
+            loot = {
+                { id = 58210, dropRate = 17 }, --Grasps of Sundering Power
+                { id = 58212, dropRate = 17 }, --Treads of Scalding Rage
+                { id = 58215, dropRate = 17 }, --Ash-Forged Greaves
+                { id = 58237, dropRate = 17 }, --Emberwoven Binding Garments
+                { id = 58238, dropRate = 17 }, --Runed Wardstone
+                { id = 58242, dropRate = 17 }, --Sulfuron Aegis
+                {},
+                { id = 18820, dropRate = 11 }, --Talisman of Ephemeral Power
+                { id = 18821, dropRate = 11 }, --Quick Strike Ring
+                { id = 18822, dropRate = 11 }, --Obsidian Edged Blade
+                { id = 18823, dropRate = 11 }, --Aged Core Leather Gloves
+                { id = 18824, dropRate = 11 }, --Magma Tempered Boots
+                { id = 18829, dropRate = 11 }, --Deep Earth Spaulders
+                { id = 18861, dropRate = 11 }, --Flamewaker Legplates
+                { id = 19136, dropRate = 11 }, --Onslaught Girdle
+                { id = 19142, dropRate = 11 }, --Fire Runed Grimoire
+                { id = 19143, dropRate = 11 }, --Flameguard Gauntlets
+                { id = 19144, dropRate = 11 }, --Sabatons of the Flamewalker
+                {},
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+            }
+        },
+        {
+            id = "Smoldaris",
+            name = BB["Smoldaris"], --65021
+            defaults = { dropRate = 25 },
+            loot = {
+                { id = 58211 }, --Molten Emberstone
+                { id = 58213 }, --Smoldaris Fractured Eye
+                { id = 58239 }, --Overheated Skyrazors
+                { id = 58241 }, --Totem of Eruption
+                {},
+                { id = 58246, dropRate = 100 }, --Tablet of Molten Blast VI
+                {},
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                {},
+                unpack(mCShareloot),
+            }
+        },
+        {
+            id = "SorcererThaneThaurissan",
+            prefix = "11)",
+            name = BB["Sorcerer-Thane Thaurissan"], --57642
+            loot = {
+                { id = 58210, dropRate = 17 }, --Grasps of Sundering Power
+                { id = 58212, dropRate = 17 }, --Treads of Scalding Rage
+                { id = 58215, dropRate = 17 }, --Ash-Forged Greaves
+                { id = 58237, dropRate = 17 }, --Emberwoven Binding Garments
+                { id = 58238, dropRate = 17 }, --Runed Wardstone
+                { id = 58242, dropRate = 17 }, --Sulfuron Aegis
+                {},
+                { id = 18820, dropRate = 11 }, --Talisman of Ephemeral Power
+                { id = 18821, dropRate = 11 }, --Quick Strike Ring
+                { id = 18822, dropRate = 11 }, --Obsidian Edged Blade
+                { id = 18823, dropRate = 11 }, --Aged Core Leather Gloves
+                { id = 18824, dropRate = 11 }, --Magma Tempered Boots
+                { id = 18829, dropRate = 11 }, --Deep Earth Spaulders
+                { id = 18861, dropRate = 11 }, --Flamewaker Legplates
+                { id = 19136, dropRate = 11 }, --Onslaught Girdle
+                { id = 19142, dropRate = 11 }, --Fire Runed Grimoire
+                { id = 19143, dropRate = 11 }, --Flameguard Gauntlets
+                { id = 19144, dropRate = 11 }, --Sabatons of the Flamewalker
+                {},
+                { id = 58214, dropRate = 25 }, --Modrag'zan, Heart of the Mountain
+                { id = 58240, dropRate = 25 }, --Libram of Final Judgement
+                { id = 58243, dropRate = 25 }, --Leggings of the Deep Delve
+                { id = 58244, dropRate = 25 }, --Sigil of Ancient Accord
+                {},
+                { id = 41989, dropRate = 100 }, --Signet of Thaurissan
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                {},
+                unpack(mCShareloot),
             }
         },
         {
             id = "Ragnaros",
-            prefix = "10)",
+            prefix = "12)",
             name = BB["Ragnaros"],
             defaults = { dropRate = 20 },
             loot = {
@@ -361,6 +448,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=70171, dropRate=100, container={56060}},
                 {},
                 {id=92080,dropRate=1},
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
             }
         },
         {
@@ -398,6 +486,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=81263, dropRate=.2},
                 {id=81264, dropRate=.2},
                 {id=81265, dropRate=.2},
+                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
             },
         },
         { name = L["Tier 1 Sets"], items = "AtlasLootT1SetMenu" },
