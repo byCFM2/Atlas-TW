@@ -12,7 +12,7 @@ AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 AtlasTW.InstanceData.RareMobs = {
     Name = L["Rare Mobs"],
     Location = L["Various Locations"],
-    Level = {17, 60},
+    Level = {1, 60},
     Bosses = {
         {
             id = "ShadeMage",

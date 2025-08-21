@@ -28,110 +28,9 @@ AtlasTW.Loot.PvpMenuData = {
 }
 
 function AtlasLootPvPMenu()
-    AtlasLoot_PrepMenu(nil, L["PvP Rewards"], "AtlasLootPvPMenu")
-
-    AtlasLoot_ShowMenu(AtlasTW.Loot.PvpMenuData, { maxItems = table.getn(AtlasTW.Loot.PvpMenuData) })
+    AtlasLoot_ShowMenu(AtlasTW.Loot.PvpMenuData, { menuName = L["PvP Rewards"] })
 end
 
---[[ local brRepMenuData = {
-    {},
-    { name = L["Friendly Reputation Rewards"], icon = "Interface\\Icons\\inv_jewelry_ring_04", lootpage = "BRRepFriendly" },
-    { name = L["Honored Reputation Rewards"], icon = "Interface\\Icons\\inv_jewelry_ring_04", lootpage = "BRRepHonored" },
-    { name = L["Revered Reputation Rewards"], icon = "Interface\\Icons\\inv_jewelry_ring_04", lootpage = "BRRepRevered" },
-    { name = L["Exalted Reputation Rewards"], icon = "Interface\\Icons\\inv_jewelry_ring_04", lootpage = "BRRepExalted" },
-    { name = L["Token of Blood Rewards"], icon = "Interface\\Icons\\inv_jewelry_talisman_04", lootpage = "BRRepTokens" },
-}
-
-function AtlasLootBRRepMenu()
-	AtlasLoot_PrepMenu("PvP", BZ["Blood Ring"])
-    AtlasLoot_ShowMenu(brRepMenuData, { maxItems = table.getn(brRepMenuData) })
-end ]]
---[[ 
-local wsgRepMenuData = {
-    {},
-    { name = L["Friendly Reputation Rewards"], icon = "Interface\\Icons\\INV_Misc_Rune_07", isheader = true },
-    { name = "20-29", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepFriendly2029" },
-    { name = "30-39", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepFriendly3039" },
-    { name = "40-49", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepFriendly4049" },
-    {},
-    { name = L["Honored Reputation Rewards"], icon = "Interface\\Icons\\INV_Misc_Rune_07", isheader = true },
-    { name = "10-19", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepHonored1019" },
-    { name = "20-29", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepHonored2029" },
-    { name = "30-39", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepHonored3039" },
-    { name = "40-49", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepHonored4049" },
-    { name = "50-59", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepHonored5059" },
-    {},
-    {},
-    {},
-    {},
-    { name = L["Exalted Reputation Rewards"], icon = "Interface\\Icons\\INV_Misc_Rune_07", isheader = true },
-    { name = "40-49", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepExalted4049" },
-    { name = "50-59", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepExalted5059" },
-    { name = "60", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepExalted60" },
-    {},
-    { name = L["Revered Reputation Rewards"], icon = "Interface\\Icons\\INV_Misc_Rune_07", isheader = true },
-    { name = "10-19", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepRevered1019" },
-    { name = "20-29", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepRevered2029" },
-    { name = "30-39", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepRevered3039" },
-    { name = "40-49", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepRevered4049" },
-    { name = "50-59", icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "WSGRepRevered5059" },
-}
-
-function AtlasLootWSGRepMenu()
-	AtlasLoot_PrepMenu("PvP", BZ["Warsong Gulch"])
-    AtlasLoot_ShowMenu(wsgRepMenuData, { maxItems = table.getn(wsgRepMenuData) })
-end ]]
---[[ 
-local abRepMenuData = {
-    {},
-    { name = L["Friendly Reputation Rewards"], icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", isheader = true },
-    { name = "20-29", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepFriendly2029" },
-    { name = "30-39", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepFriendly3039" },
-    { name = "40-49", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepFriendly4049" },
-    { name = "50-59", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepFriendly5059" },
-    {},
-    { name = L["Honored Reputation Rewards"], icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", isheader = true },
-    { name = "20-29", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepHonored2029" },
-    { name = "30-39", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepHonored3039" },
-    { name = "40-49", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepHonored4049" },
-    { name = "50-59", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepHonored5059" },
-    {},
-    {},
-    {},
-    {},
-    { name = L["Exalted Reputation Rewards"], icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", isheader = true },
-    { name = "60", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepExalted" },
-    {},
-    {},
-    {},
-    {},
-    { name = L["Revered Reputation Rewards"], icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", isheader = true },
-    { name = "20-29", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepRevered2029" },
-    { name = "30-39", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepRevered3039" },
-    { name = "40-49", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepRevered4049" },
-    { name = "50-59", icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ABRepRevered5059" },
-}
-
-function AtlasLootABRepMenu()
-	AtlasLoot_PrepMenu("PvP", BZ["Arathi Basin"])
-    AtlasLoot_ShowMenu(abRepMenuData, { maxItems = table.getn(abRepMenuData) })
-end ]]
---[[ 
-local avRepMenuData = {
-    {},
-    { name = L["Friendly Reputation Rewards"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_21", lootpage = "AVRepFriendly" },
-    { name = L["Honored Reputation Rewards"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_21", lootpage = "AVRepHonored" },
-    { name = L["Revered Reputation Rewards"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_21", lootpage = "AVRepRevered" },
-    { name = L["Exalted Reputation Rewards"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_21", lootpage = "AVRepExalted" },
-    { name = L["Korrak the Bloodrager"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_21", lootpage = "AVKorrak" },
-    { name = L["Ivus & Lokholar"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_21", lootpage = "AVLokholarIvus" },
-}
-
-function AtlasLootAVRepMenu()
-	AtlasLoot_PrepMenu("PvP", BZ["Alterac Valley"])
-    AtlasLoot_ShowMenu(avRepMenuData, { maxItems = table.getn(avRepMenuData) })
-end
- ]]
 local pvpSetMenuData = {
     {},
     {},
@@ -157,6 +56,5 @@ local pvpSetMenuData = {
 }
 
 function AtlasLootPVPSetMenu()
-	AtlasLoot_PrepMenu("PvP", L["PvP Armor Sets"])
-    AtlasLoot_ShowMenu(pvpSetMenuData, { maxItems = table.getn(pvpSetMenuData) })
+    AtlasLoot_ShowMenu(pvpSetMenuData, { menuName = L["PvP Armor Sets"] })
 end

@@ -208,15 +208,9 @@ AtlasTW.Loot.DungeonsMenu1Data = generatedMenu1Data
 AtlasTW.Loot.DungeonsMenu2Data = generatedMenu2Data
 
  function AtlasLoot_DungeonsMenu1()
-    AtlasLoot_PrepMenu(nil, title, "AtlasLoot_DungeonsMenu1")
-    AtlasLootItemsFrame_PREV:Show()
-    AtlasLootItemsFrame_NEXT:Show()
-    AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu1Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalIronForge", maxItems = table.getn(AtlasTW.Loot.DungeonsMenu1Data) })
+    AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu1Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalIronForge", menuName = L["Dungeons & Raids"] })
 end
 
 function AtlasLoot_DungeonsMenu2()
-    AtlasLoot_PrepMenu(nil, title, "AtlasLoot_DungeonsMenu2")
-    AtlasLootItemsFrame_PREV:Show()
-    AtlasLootItemsFrame_NEXT:Show()
-    AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu2Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalOrgrimmar", maxItems = table.getn(AtlasTW.Loot.DungeonsMenu2Data) })
+    AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu2Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalOrgrimmar", menuName = L["Dungeons & Raids"] })
 end

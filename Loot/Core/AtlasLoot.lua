@@ -676,18 +676,22 @@ end
 function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 	--Load data for the current clicked element line
 	local dataID = AtlasLootItemsFrame.StoredElement
-	local dataSource = GetLootByElemName(dataID) or AtlasLootItemsFrame.StoredMenu
+	print((type(dataID) or "none").." typeDataID")
+	local dataSource = AtlasLootItemsFrame.StoredMenu or GetLootByElemName(dataID)
+	if type(dataID) == "string" and (AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]) then
+		dataSource = AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]
+	end
 	--Check if dataID and dataSource are valid
  	if not dataID and not dataSource then
 		return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataID and No dataSource!")
 	end
-	if AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource] then
-		dataSource = AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]
-	end
 	if type(dataSource) == "table" then
 	--	print("AtlasLoot_Show2ItemsFrame: table")
+		local BZ = AceLibrary("Babble-Zone-2.2a")
+    	local itemData, menuButton, extraText, defaultIcon, itemButton, iconFrame, nameFrame, extraFrame, borderFrame
 		local totalItems = getn(dataSource)
 		local num_scroll_steps = 0
+
 
 		if totalItems > AtlasTW.LOOT_NUM_LINES then
 			local numRows = math.ceil(totalItems/ 2)
@@ -700,14 +704,48 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 		local offset = FauxScrollFrame_GetOffset(AtlasLootScrollBar)
 		-- Обновляем содержимое и видимость кнопок AtlasLootItem
 		for i = 1, AtlasTW.LOOT_NUM_LINES do
-			local itemButton = _G["AtlasLootItem_"..i]
-			local menuButton = _G["AtlasLootMenuItem_"..i]
+			itemButton = _G["AtlasLootItem_"..i]
+			menuButton = _G["AtlasLootMenuItem_"..i]
 
-			if itemButton then
-				local iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
-				local nameFrame = _G["AtlasLootItem_"..i.."_Name"]
-				local extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
-				local borderFrame = _G["AtlasLootItem_"..i.."Border"]
+			if menuButton and type(dataID)=="table" then
+				nameFrame = _G["AtlasLootMenuItem_"..i.."_Name"]
+				iconFrame = _G["AtlasLootMenuItem_"..i.."_Icon"]
+				extraFrame = _G["AtlasLootMenuItem_"..i.."_Extra"]
+				borderFrame = _G["AtlasLootMenuItem_"..i.."Border"]
+				itemData = dataSource[i] or {}
+				defaultIcon = dataID.defaultIcon or "Interface\\Icons\\INV_Misc_QuestionMark"
+				if itemData.name then
+					if itemData.extra then
+						extraText = BZ[itemData.extra]
+					elseif itemData.Extra then
+						extraText = itemData.Extra
+					else
+						extraText = ""
+					end
+					nameFrame:SetText(itemData.name)
+					extraFrame:SetText(extraText)
+					extraFrame:Show()
+					iconFrame:SetTexture(itemData.icon or defaultIcon)
+					menuButton.name = itemData.name_orig or itemData.name
+					menuButton.lootpage = itemData.lootpage
+					menuButton.container = itemData.container
+					if itemData.container then
+						borderFrame:Show()
+					else
+						borderFrame:Hide()
+					end
+					menuButton:Show()
+				else
+					menuButton:Hide()
+				end
+				-- Скрываем кнопки предметов и контейнеров
+				itemButton:Hide()
+				AtlasLootItemsFrameContainer:Hide()
+			elseif itemButton then
+				iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
+				nameFrame = _G["AtlasLootItem_"..i.."_Name"]
+				extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
+				borderFrame = _G["AtlasLootItem_"..i.."Border"]
 				local quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
 
 				-- Вычисляем правильный индекс для двух столбцов
@@ -883,16 +921,17 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 				else
 					itemButton:Hide()
 				end
+				-- Скрываем кнопки меню при отображении предметов
+				if menuButton then
+					menuButton:Hide()
+				end
 			end
 
-			-- Скрываем кнопки меню при отображении предметов
-			if menuButton then
-				menuButton:Hide()
-			end
+
 		end
 	elseif type(_G[dataSource]) == "function" then
 	--	print("AtlasLoot_Show2ItemsFrame: function")
-		_G[dataSource]()
+		--_G[dataSource]()
 	else
 
 	--	print("Unknown dataSource type: "..type(dataSource)..(dataSource or " nil"))
@@ -932,7 +971,8 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
     AtlasLootQuickLooksButton:Hide()
 
 	-- Set the loot page name
-	AtlasLoot_LootPageName:SetText(dataID or "No Name")
+	AtlasLoot_LootPageName:SetText(dataID and type(dataID)=="string" and dataID or (dataID and dataID.menuName))
+
 
 	--Hide the container frame
 	AtlasLootItemsFrameContainer:Hide()
@@ -1441,6 +1481,7 @@ function AtlasLootBoss_OnClick(buttonName)
 
 		   --Store the loot table and boss name
 			AtlasLootItemsFrame.StoredElement = elemName
+			AtlasLootItemsFrame.StoredMenu = nil
             AtlasLootItemsFrame.activeElement = id
 
 			CacheAllLootItems(lootTable, function()

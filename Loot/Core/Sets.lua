@@ -6,12 +6,12 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 local data = AtlasLoot_Data
 
 local function CreateMenu(menuTitle, menuItems, prevMenu, prevMenuText)
-    AtlasLoot_PrepMenu(prevMenu, menuTitle)
     if prevMenu then
         AtlasTWCharDB.LastBoss = prevMenu
         AtlasTWCharDB.LastBossText = prevMenuText
     end
-    AtlasLoot_ShowMenu(menuItems)
+    AtlasLoot_ShowMenu(menuItems, { menuName = menuTitle })
+
 --[[     if menuItems.name then
         AtlasTW.Loot.BackTableRegistry[menuItems.name] = "Collections"
     end ]]
@@ -161,7 +161,7 @@ local pre60SetsMenuData = {
     { name = BIS["The Postmaster"], extra = "Stratholme", icon = "Interface\\Icons\\INV_Boots_02", lootpage = "Strat" },
     { name = BZ["Scholomance"].." "..L["Sets"], extra = "Scholomance", icon = "Interface\\Icons\\INV_Shoulder_02", lootpage = "Scholo" },
     { name = L["Scourge Invasion"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Jewelry_Talisman_13", lootpage = "ScourgeInvasion" },
-    { name = BIS["Arms of Thaurissan"], extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Weapon_ShortBlade_16", lootpage = "ArmsofThaurissan" }, --TODO ICON, MoltenCore and BRD
+    { name = BIS["Arms of Thaurissan"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Weapon_ShortBlade_16", lootpage = "ArmsofThaurissan" }, --TODO ICON, MoltenCore and BRD
     {},
     { name = BIS["Spider's Kiss"], extra = "Lower Blackrock Spire", icon = "Interface\\Icons\\INV_Weapon_ShortBlade_16", lootpage = "SpiderKiss" },
     { name = BIS["Dal'Rend's Arms"], extra = "Upper Blackrock Spire", icon = "Interface\\Icons\\INV_Sword_43", lootpage = "DalRend" },

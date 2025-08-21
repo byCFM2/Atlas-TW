@@ -1,6 +1,8 @@
 local L = AtlasTW.Local
 local BS = AceLibrary("Babble-Spell-2.2a")
 
+AtlasLoot_Data = AtlasLoot_Data or {}
+
 local craftingTable = {
 	Poisons = {
 		{ name = BS["Poisons"], icon = "Trade_BrewPoison" },

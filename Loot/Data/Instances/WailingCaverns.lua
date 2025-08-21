@@ -27,14 +27,9 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
             }
         },
         {
-            id = "WCTrigoretheLasher",
             prefix = "2)",
             name = BB["Trigore the Lasher"],
-            loot = {
-                {id=5425, dropRate=50},
-                {},
-                {id=5426, dropRate=50},
-            }
+            color = "|cffcc9933",
         },
         {
             id = "WCBoahn",

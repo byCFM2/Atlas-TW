@@ -3,11 +3,11 @@ local L = AtlasTW.Local
 AtlasTW.Loot.WorldEventsData = {
 	{},
     { name = L["Abyssal Council"], extra = "Silithus", icon = "Interface\\Icons\\Spell_Nature_TimeStop", lootpage = "AbyssalTemplars" },
-    { name = L["Elemental Invasion"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Ammo_FireTar", lootpage = "ElementalInvasion" },
+    { name = L["Elemental Invasion"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Ammo_FireTar", lootpage = "ElementalInvasion" },
     { name = L["Gurubashi Arena"], extra = "Stranglethorn Vale", icon = "Interface\\Icons\\INV_Box_02", lootpage = "GurubashiArena" },
-    { name = L["Harvest Festival"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Misc_Food_Wheat_01", lootpage = "HarvestFestival" },
-    { name = L["Lunar Festival"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Misc_ElvenCoins", lootpage = "LunarFestival" },
-    { name = L["Noblegarden"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Egg_03", lootpage = "Noblegarden" },
+    { name = L["Harvest Festival"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_Food_Wheat_01", lootpage = "HarvestFestival" },
+    { name = L["Lunar Festival"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_ElvenCoins", lootpage = "LunarFestival" },
+    { name = L["Noblegarden"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Egg_03", lootpage = "Noblegarden" },
     { name = L["Stranglethorn Fishing Extravaganza"], extra = "Stranglethorn Vale", icon = "Interface\\Icons\\INV_Fishingpole_01", lootpage = "FishingExtravaganza" },
 	{},
 	{},
@@ -17,15 +17,15 @@ AtlasTW.Loot.WorldEventsData = {
 	{},
 	{},
 	{},
-    { name = L["Children's Week"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\Ability_Hunter_BeastCall", lootpage = "ChildrensWeek" },
-    { name = L["Feast of Winter Veil"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Holiday_Christmas_Present_01", lootpage = "Winterviel" },
-    { name = L["Hallow's End"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Misc_Food_59", lootpage = "Halloween" },
-    { name = L["Love is in the Air"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_ValentinesBoxOfChocolates02", lootpage = "Valentineday" },
-    { name = L["Midsummer Fire Festival"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_SummerFest_Symbol_Medium", lootpage = "MidsummerFestival" },
-    { name = L["Scourge Invasion"], extra = "Various Locations", libExtra = L, icon = "Interface\\Icons\\INV_Jewelry_Talisman_13", lootpage = "ScourgeInvasionF" },
+    { name = L["Children's Week"], Extra = L["Various Locations"], icon = "Interface\\Icons\\Ability_Hunter_BeastCall", lootpage = "ChildrensWeek" },
+    { name = L["Feast of Winter Veil"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Holiday_Christmas_Present_01", lootpage = "Winterviel" },
+    { name = L["Hallow's End"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_Food_59", lootpage = "Halloween" },
+    { name = L["Love is in the Air"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_ValentinesBoxOfChocolates02", lootpage = "Valentineday" },
+    { name = L["Midsummer Fire Festival"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_SummerFest_Symbol_Medium", lootpage = "MidsummerFestival" },
+    { name = L["Scourge Invasion"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Jewelry_Talisman_13", lootpage = "ScourgeInvasionF" },
 }
 
 function AtlasLootWorldEventMenu()
-    AtlasLoot_PrepMenu(nil, L["World Events"], "WorldEvents")
-    AtlasLoot_ShowMenu(AtlasTW.Loot.WorldEventsData, { maxItems = table.getn(AtlasTW.Loot.WorldEventsData) })
+    AtlasLoot_ShowMenu(AtlasTW.Loot.WorldEventsData, { menuName = L["World Events"] })
+
 end
