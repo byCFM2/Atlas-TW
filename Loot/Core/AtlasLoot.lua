@@ -226,7 +226,7 @@ end
 AtlasTW.BossLootIndex = {}
 
 -- Функция построения индекса боссов (вызывается при инициализации)
-function AtlasTW.BuildBossLootIndex()
+--[[ function AtlasTW.BuildBossLootIndex()
 --	print("AtlasLoot: Построение индекса боссов...")
 	for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
 		if type(instanceData) == "table" and instanceData.Bosses then
@@ -252,7 +252,7 @@ function AtlasTW.BuildBossLootIndex()
 		count = count + 1
 	end
 	--print("AtlasLoot: Индекс боссов построен. Всего уникальных имен: " .. count)
-end
+end ]]
 
 -- функция получения лута по имени босса без построения индексов
 local function GetLootByElemName(elemName, instanceName)
@@ -676,17 +676,17 @@ end
 function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 	--Load data for the current clicked element line
 	local dataID = AtlasLootItemsFrame.StoredElement
-	print((type(dataID) or "none").." typeDataID")
-	local dataSource = AtlasLootItemsFrame.StoredMenu or GetLootByElemName(dataID)
+	--print((type(dataID) or "none").." typeDataID")
+	local dataSource = GetLootByElemName(dataID) or AtlasLootItemsFrame.StoredMenu
 	if type(dataID) == "string" and (AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]) then
 		dataSource = AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]
 	end
 	--Check if dataID and dataSource are valid
  	if not dataID and not dataSource then
-		return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataID and No dataSource!")
+		return --print("AtlasTW.Loot.ScrollBarLootUpdate: No dataID and No dataSource!")
 	end
 	if type(dataSource) == "table" then
-	--	print("AtlasLoot_Show2ItemsFrame: table")
+		--print("AtlasLoot_Show2ItemsFrame: table")
 		local BZ = AceLibrary("Babble-Zone-2.2a")
     	local itemData, menuButton, extraText, defaultIcon, itemButton, iconFrame, nameFrame, extraFrame, borderFrame
 		local totalItems = getn(dataSource)
@@ -930,11 +930,11 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 
 		end
 	elseif type(_G[dataSource]) == "function" then
-	--	print("AtlasLoot_Show2ItemsFrame: function")
-		--_G[dataSource]()
+		--print("AtlasLoot_Show2ItemsFrame: function")
+		_G[dataSource]()
 	else
 
-	--	print("Unknown dataSource type: "..type(dataSource)..(dataSource or " nil"))
+		--print("Unknown dataSource type: "..type(dataSource).." - "..(dataSource or "dataSource nil"))
 	end
 	if dataID == "SearchResult" or dataID == "WishList" then
 --[[ 		if wlPage < wlPageMax then
@@ -1486,7 +1486,7 @@ function AtlasLootBoss_OnClick(buttonName)
 
 			CacheAllLootItems(lootTable, function()
 				local elapsed = GetTime() - scrollStartTime
-				print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
+				--print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
 				AtlasLoot_HideScrollBarLoading()
 				-- Update scrollbar
 				AtlasTW.Loot.ScrollBarLootUpdate()
@@ -1834,10 +1834,10 @@ function AtlasLootMenuItem_OnClick(button)
 			end
 		end
 		CloseDropDownMenus()
-		AtlasTWCharDB.LastBoss = TableSource
-		AtlasTWCharDB.LastBossText = pagename
+	--	AtlasTWCharDB.LastBoss = TableSource
+	--	AtlasTWCharDB.LastBossText = pagename
 
-		print(dataID.." - dataID, "..TableSource.." - TableSource")
+		--print(dataID.." - dataID, "..TableSource.." - TableSource")
 		AtlasLootItemsFrame:Show()
 		local scrollStartTime = GetTime()
 		AtlasLoot_ShowScrollBarLoading()
@@ -1851,7 +1851,7 @@ function AtlasLootMenuItem_OnClick(button)
 
 		CacheAllLootItems(TableSource, function()
 			local elapsed = GetTime() - scrollStartTime
-			print("AtlasLootMenuItem_OnClick: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
+			--print("AtlasLootMenuItem_OnClick: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
 			AtlasLoot_HideScrollBarLoading()
 			-- Update scrollbar
 			AtlasTW.Loot.ScrollBarLootUpdate()
@@ -2125,7 +2125,7 @@ end
 local function HandleSpellTooltip(elemID, anchor)
     local link = GetSpellInfoAtlasLootDB.craftspells[elemID]
     if not link then
-        print("AtlasLoot Error: Missing spell data for ID: " .. tostring(elemID))
+       -- print("AtlasLoot Error: Missing spell data for ID: " .. tostring(elemID))
         return
     end
     ShowSpellTooltip(link, elemID, anchor)

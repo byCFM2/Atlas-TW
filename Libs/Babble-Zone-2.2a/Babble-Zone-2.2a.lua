@@ -17,11 +17,14 @@ local BabbleZone = AceLibrary("AceLocale-2.2"):new(MAJOR_VERSION)
 
 BabbleZone:RegisterTranslations("enUS", function()
 	return {
+		--1.18
 		["Farraki Arena"] = true,
 		["Grim Reaches"] = true,
 		["Dragonmaw Retreat"] = true,
 		["Balor"] = true,
 		["Stormwrought Ruins"] = true,
+		["Northwind"] = true,
+		--1.17
 		["Icepoint Rock"] = true,
 		["Thalassian Highlands"] = true,
 		["Lapidis Isle"] = true,

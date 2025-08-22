@@ -28,10 +28,12 @@ AtlasTW.Loot.PvpMenuData = {
 }
 
 function AtlasLootPvPMenu()
-    AtlasLoot_ShowMenu(AtlasTW.Loot.PvpMenuData, { menuName = L["PvP Rewards"] })
+    AtlasLootItemsFrame.StoredElement = { menuName = L["PvP Rewards"] }
+    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.PvpMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
-local pvpSetMenuData = {
+AtlasTW.Loot.PvpSetMenuData = {
     {},
     {},
     { name = "|cffffffff"..BC["Priest"], icon = "Interface\\Icons\\Spell_Holy_PowerWordShield", lootpage = "PVPPriest" },
@@ -56,5 +58,7 @@ local pvpSetMenuData = {
 }
 
 function AtlasLootPVPSetMenu()
-    AtlasLoot_ShowMenu(pvpSetMenuData, { menuName = L["PvP Armor Sets"] })
+    AtlasLootItemsFrame.StoredElement = { menuName = L["PvP Armor Sets"] }
+    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.PvpSetMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end

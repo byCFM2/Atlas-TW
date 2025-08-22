@@ -29,7 +29,9 @@ AtlasTW.Loot.CraftingMenuData = {
 }
 
 function AtlasLoot_CraftingMenu()
-    AtlasLoot_ShowMenu(AtlasTW.Loot.CraftingMenuData, { menuName = L["Crafting"] })
+    AtlasLootItemsFrame.StoredElement = { menuName = L["Crafting"] }
+    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.CraftingMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local craftedSetMenuData = {
@@ -63,7 +65,9 @@ local craftedSetMenuData = {
 }
 
 function AtlasLootCraftedSetMenu()
-    AtlasLoot_ShowMenu(craftedSetMenuData, { menuName = L["Crafted Sets"] })
+    AtlasLootItemsFrame.StoredElement = { menuName = L["Crafted Sets"] }
+    AtlasLootItemsFrame.StoredMenu = craftedSetMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local craftedSet2MenuData = {
@@ -92,7 +96,9 @@ local craftedSet2MenuData = {
 }
 
 function AtlasLootCraftedSet2Menu()
-    AtlasLoot_ShowMenu(craftedSet2MenuData, { menuName = L["Crafted Sets"].." 2" })
+    AtlasLootItemsFrame.StoredElement = { menuName = L["Crafted Sets"].." 2" }
+    AtlasLootItemsFrame.StoredMenu = craftedSet2MenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local alchemyMenuData = {
@@ -112,8 +118,9 @@ local alchemyMenuData = {
 }
 
 function AtlasLoot_AlchemyMenu()
-    AtlasLoot_ShowMenu(alchemyMenuData, { menuName = BS["Alchemy"], defaultIcon = "Interface\\Icons\\Trade_Alchemy" })
-
+    AtlasLootItemsFrame.StoredElement = { menuName = BS["Alchemy"], defaultIcon = "Interface\\Icons\\Trade_Alchemy" }
+    AtlasLootItemsFrame.StoredMenu = alchemyMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local smithingMenuData = {
@@ -148,8 +155,9 @@ local smithingMenuData = {
 }
 
 function AtlasLoot_SmithingMenu()
-    AtlasLoot_ShowMenu(smithingMenuData, { menuName = BS["Blacksmithing"], defaultIcon = "Interface\\Icons\\Trade_BlackSmithing" })
-
+    AtlasLootItemsFrame.StoredElement = { menuName = BS["Blacksmithing"], defaultIcon = "Interface\\Icons\\Trade_BlackSmithing" }
+    AtlasLootItemsFrame.StoredMenu = smithingMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local enchantingMenuData = {
@@ -171,8 +179,9 @@ local enchantingMenuData = {
 }
 
 function AtlasLoot_EnchantingMenu()
-    AtlasLoot_ShowMenu(enchantingMenuData, { menuName = BS["Enchanting"], defaultIcon = "Interface\\Icons\\Trade_Engraving" })
-
+    AtlasLootItemsFrame.StoredElement = { menuName = BS["Enchanting"], defaultIcon = "Interface\\Icons\\Trade_Engraving" }
+    AtlasLootItemsFrame.StoredMenu = enchantingMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local engineeringMenuData = {
@@ -197,8 +206,9 @@ local engineeringMenuData = {
 }
 
 function AtlasLoot_EngineeringMenu()
-    AtlasLoot_ShowMenu(engineeringMenuData, { menuName = BS["Engineering"], defaultIcon = "Interface\\Icons\\Trade_Engineering" })
-
+    AtlasLootItemsFrame.StoredElement = { menuName = BS["Engineering"], defaultIcon = "Interface\\Icons\\Trade_Engineering" }
+    AtlasLootItemsFrame.StoredMenu = engineeringMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local leatherworkingMenuData = {
@@ -227,8 +237,9 @@ local leatherworkingMenuData = {
 }
 
 function AtlasLoot_LeatherworkingMenu()
-    AtlasLoot_ShowMenu(leatherworkingMenuData, { menuName = BS["Leatherworking"], defaultIcon = "Interface\\Icons\\INV_Misc_ArmorKit_17" })
-
+    AtlasLootItemsFrame.StoredElement = { menuName = BS["Leatherworking"], defaultIcon = "Interface\\Icons\\INV_Misc_ArmorKit_17" }
+    AtlasLootItemsFrame.StoredMenu = leatherworkingMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local miningMenuData = {
@@ -238,7 +249,9 @@ local miningMenuData = {
 }
 
 function AtlasLoot_MiningMenu()
-    AtlasLoot_ShowMenu(miningMenuData, { menuName = BS["Mining"], defaultIcon = "Interface\\Icons\\Trade_Mining" })
+    AtlasLootItemsFrame.StoredElement = { menuName = BS["Mining"], defaultIcon = "Interface\\Icons\\Trade_Mining" }
+    AtlasLootItemsFrame.StoredMenu = miningMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local tailoringMenuData = {
@@ -264,8 +277,9 @@ local tailoringMenuData = {
 }
 
 function AtlasLoot_TailoringMenu()
-    AtlasLoot_ShowMenu(tailoringMenuData, { menuName = BS["Tailoring"], defaultIcon = "Interface\\Icons\\Trade_Tailoring" })
-
+    AtlasLootItemsFrame.StoredElement = { menuName = BS["Tailoring"], defaultIcon = "Interface\\Icons\\Trade_Tailoring" }
+    AtlasLootItemsFrame.StoredMenu = tailoringMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local jewelcraftMenuData = {
@@ -290,8 +304,9 @@ local jewelcraftMenuData = {
 }
 
 function AtlasLoot_JewelcraftingMenu()
-    AtlasLoot_ShowMenu(jewelcraftMenuData, { menuName = BS["Jewelcrafting"], defaultIcon = "Interface\\Icons\\INV_Jewelry_Necklace_01" })
-
+    AtlasLootItemsFrame.StoredElement = { menuName = BS["Jewelcrafting"], defaultIcon = "Interface\\Icons\\INV_Jewelry_Necklace_01" }
+    AtlasLootItemsFrame.StoredMenu = jewelcraftMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local cookingMenuData = {
@@ -303,6 +318,7 @@ local cookingMenuData = {
 }
 
 function AtlasLoot_CookingMenu()
-    AtlasLoot_ShowMenu(cookingMenuData, { menuName = BS["Cooking"], defaultIcon = "Interface\\Icons\\INV_Misc_Food_15" })
-
+    AtlasLootItemsFrame.StoredElement = { menuName = BS["Cooking"], defaultIcon = "Interface\\Icons\\INV_Misc_Food_15" }
+    AtlasLootItemsFrame.StoredMenu = cookingMenuData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end

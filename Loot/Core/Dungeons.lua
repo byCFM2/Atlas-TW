@@ -208,9 +208,13 @@ AtlasTW.Loot.DungeonsMenu1Data = generatedMenu1Data
 AtlasTW.Loot.DungeonsMenu2Data = generatedMenu2Data
 
  function AtlasLoot_DungeonsMenu1()
-    AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu1Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalIronForge", menuName = L["Dungeons & Raids"] })
+    AtlasLootItemsFrame.StoredElement = { menuName = L["Dungeons & Raids"], defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalIronForge" }
+    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.DungeonsMenu1Data
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 function AtlasLoot_DungeonsMenu2()
-    AtlasLoot_ShowMenu(AtlasTW.Loot.DungeonsMenu2Data, { defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalOrgrimmar", menuName = L["Dungeons & Raids"] })
+    AtlasLootItemsFrame.StoredElement = { menuName = L["Dungeons & Raids"], defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalOrgrimmar" }
+    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.DungeonsMenu2Data
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end

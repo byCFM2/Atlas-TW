@@ -13,7 +13,7 @@ AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 -- Данные Stormwrought Ruins
 AtlasTW.InstanceData.DragonmawRetreat = {
     Name = BZ["Dragonmaw Retreat"],
-    Location = BZ["Grim Reaches"],
+    Location = BZ["Wetlands"],
     Level = {27,33},
     Acronym = "DR",
     MaxPlayers = 5,

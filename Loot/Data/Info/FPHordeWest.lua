@@ -174,5 +174,12 @@ AtlasTW.InstanceData.FPHordeWest = {
             postfix = BZ["Tel'Abim"],
             color = "|cff999999",
         },
+        {
+            id = "FPSlickwickOilRig",
+            prefix = "23)",
+            name = L["Slickwick Oil Rig"],
+            postfix = BZ["Tanaris"],
+            color = "|cff999999",
+        },
     },
 }

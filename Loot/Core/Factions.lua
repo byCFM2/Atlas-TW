@@ -36,5 +36,7 @@ AtlasTW.Loot.FactionsData = {
 }
 
 function AtlasLootRepMenu()
-    AtlasLoot_ShowMenu(AtlasTW.Loot.FactionsData, { menuName = L["Factions"] })
+    AtlasLootItemsFrame.StoredElement = { menuName = L["Factions"] }
+    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.FactionsData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end

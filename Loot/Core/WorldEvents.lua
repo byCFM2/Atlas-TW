@@ -26,6 +26,7 @@ AtlasTW.Loot.WorldEventsData = {
 }
 
 function AtlasLootWorldEventMenu()
-    AtlasLoot_ShowMenu(AtlasTW.Loot.WorldEventsData, { menuName = L["World Events"] })
-
+    AtlasLootItemsFrame.StoredElement = { menuName = L["World Events"] }
+    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.WorldEventsData
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end

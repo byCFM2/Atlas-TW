@@ -196,6 +196,7 @@ AtlasTW.Local.Translations = {
 	["Library"] = true,
 	["Sunken Temple"] = true,
 
+
 	--Set names
 	["Set: "] = true,
 	["Tier 0/0.5 Sets"] = true,
@@ -767,6 +768,13 @@ AtlasTW.Local.Translations = {
 	["Sunnyglade Valley"] = true,
 	["Sparkwater Port"] = true,
 	["Maul'ogg Refuge"] = true,
+	--1.18
+	["Shatterblade Post"] = true,
+	["Dun Kithas"] = true,
+	["Slickwick Oil Rig"] = true,
+	["SI:7 Outpost"] = true,
+	["Ambershire"] = true,
+	["Stormbreaker Point"] = true,
 
 	--Atlasloot
 	["AtlasLoot"] = true,
