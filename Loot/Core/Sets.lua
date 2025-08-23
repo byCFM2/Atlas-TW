@@ -9,8 +9,7 @@ local function CreateMenu(menuTitle, menuItems, prevMenu, prevMenuText)
 --[[     if prevMenu then
         AtlasTWCharDB.LastBoss = prevMenu
         AtlasTWCharDB.LastBossText = prevMenuText
-    end
-    AtlasLoot_ShowMenu(menuItems, { menuName = menuTitle }) ]]
+    end]]
 
     AtlasLootItemsFrame.StoredElement = { menuName = menuTitle }
     AtlasLootItemsFrame.StoredMenu = menuItems

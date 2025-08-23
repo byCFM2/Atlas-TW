@@ -22,7 +22,7 @@ AtlasTW.InstanceData.Clackora = {
             id = "WBClackora",
             prefix = "1)",
             name = BB["Cla'ckora"],
-            default = { dropRate = 20 },
+            defaults = { dropRate = 20 },
             loot = {
                 {id=55501}, -- Sphere of the Endless Gulch (аксессуар)
                 {id=55494}, -- The Abyssal Pincer (кулак, оружие)

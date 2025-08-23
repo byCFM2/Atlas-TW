@@ -364,7 +364,6 @@ function AtlasTW.Refresh()
  	for i = 1, AtlasTW.CurrentLine do
 		if not _G["AtlasBossLine"..i] then
 			frame = AtlasLoot_CreateButtonFromTemplate("AtlasBossLine"..i, AtlasFrame, "AtlasLootNewBossLineTemplate")
-			frame:SetFrameStrata("MEDIUM")
 			if i ~= 1 then
 				frame:SetPoint("TOPLEFT", "AtlasBossLine"..(i-1), "BOTTOMLEFT")
 			else

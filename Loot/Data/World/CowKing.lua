@@ -22,7 +22,7 @@ AtlasTW.InstanceData.CowKing = {
             id = "WBCowKing",
             prefix = "1)",
             name = BB["Moo"],
-            default = { dropRate = 50 },
+            defaults = { dropRate = 50 },
             loot = {
                 {id=60486, dropRate=25}, -- Fishbringer (булава, двуручное)
                 {},

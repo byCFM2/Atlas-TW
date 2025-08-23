@@ -525,9 +525,14 @@ local function CacheAllLootItems(dataSource, callback)
 				if item.id then
 					itemID = item.id
 					--Check for spell or enchant
-					if item.skill then
-						itemID = GetSpellInfoAtlasLootDB.enchants[itemID] and GetSpellInfoAtlasLootDB.enchants[itemID].item or
-						GetSpellInfoAtlasLootDB.craftspells[itemID] and GetSpellInfoAtlasLootDB.craftspells[itemID].item
+					if item.skill and item.type~="item" then
+						print("item.skill: "..(itemID or "no itemID"))
+						if AtlasTW.SpellDB.enchants[itemID] then
+							itemID = AtlasTW.SpellDB.enchants[itemID].item
+						elseif AtlasTW.SpellDB.craftspells[itemID] then
+							itemID = AtlasTW.SpellDB.craftspells[itemID].item
+						end
+						print("item.skill: new "..(itemID or "no itemID"))
 					end
 				elseif item[1] then
 					itemID = item[1]
@@ -553,7 +558,6 @@ local function CacheAllLootItems(dataSource, callback)
     for i = 1, getn(itemsToCache) do itemsCopy[i] = itemsToCache[i] end
     local setHash = CreateItemSetHash(itemsCopy)
     if ATLASTWLOOT_CHECKED_SETS[setHash] then
-        -- print("Набор предметов уже проверен ранее, пропускаем кэширование")
         if callback then callback() end
         return
     end
@@ -593,7 +597,6 @@ local function CacheAllLootItems(dataSource, callback)
 
     -- Если все предметы уже кэшированы, мгновенно вызываем callback
     if uncachedCount == 0 then
-      --  print("Все предметы уже кэшированы, мгновенно открываем окно")
         if not ATLASTWLOOT_CHECKED_SETS[setHash] then
             ATLASTWLOOT_CHECKED_SETS[setHash] = true
             ATLASTWLOOT_CHECKED_SETS_COUNT = ATLASTWLOOT_CHECKED_SETS_COUNT + 1
@@ -621,7 +624,7 @@ local function CacheAllLootItems(dataSource, callback)
             local idx = 1
             local total = getn(uncachedItems)
 
-            local function processBatch()
+			local function processBatch()
                 local processed = 0
                 while processed < batchSize and idx <= total do
                     local itemID = uncachedItems[idx]
@@ -665,15 +668,13 @@ local function CacheAllLootItems(dataSource, callback)
                     end)
                 end
             end
-
             processBatch()
         end
-
         runIteration()
 end
 
 -- Функция обновления скроллбара для AtlasLootItemsFrame
-function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
+function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 	--Load data for the current clicked element line
 	local dataID = AtlasLootItemsFrame.StoredElement
 	--print((type(dataID) or "none").." typeDataID")
@@ -683,15 +684,14 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 	end
 	--Check if dataID and dataSource are valid
  	if not dataID and not dataSource then
-		return --print("AtlasTW.Loot.ScrollBarLootUpdate: No dataID and No dataSource!")
+		return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataID and No dataSource!")
 	end
 	if type(dataSource) == "table" then
-		--print("AtlasLoot_Show2ItemsFrame: table")
+		print("AtlasLoot_Show2ItemsFrame: table")
 		local BZ = AceLibrary("Babble-Zone-2.2a")
     	local itemData, menuButton, extraText, defaultIcon, itemButton, iconFrame, nameFrame, extraFrame, borderFrame
 		local totalItems = getn(dataSource)
 		local num_scroll_steps = 0
-
 
 		if totalItems > AtlasTW.LOOT_NUM_LINES then
 			local numRows = math.ceil(totalItems/ 2)
@@ -785,15 +785,15 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 						local elemID = element.id
 						local itemQuality = 0
 						if elemID and elemID ~= 0 then
-							link = GetSpellInfoAtlasLootDB.enchants[elemID] or GetSpellInfoAtlasLootDB.craftspells[elemID]
+							link = AtlasTW.SpellDB.enchants[elemID] or AtlasTW.SpellDB.craftspells[elemID]
 							--spell or item
 							if element.skill and not (element.type and element.type=="item") then
 								-- Set original ID for itemButton (enchant or spell)
 								itemButton.elemID = elemID
 								-- Set type for itemButton (enchant or spell)
-								if GetSpellInfoAtlasLootDB.enchants[elemID] then
+								if AtlasTW.SpellDB.enchants[elemID] then
 									itemButton.typeID = "enchant"
-								elseif GetSpellInfoAtlasLootDB.craftspells[elemID] then
+								elseif AtlasTW.SpellDB.craftspells[elemID] then
 									itemButton.typeID = "spell"
 								else
 									itemButton.typeID = "item"
@@ -890,9 +890,11 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 						end
 
 						-- Set the item drop rate
-						if element.GetDropRateText then
+						itemButton.droprate = element.dropRate and element.dropRate.."%"
+						--[[if element.GetDropRateText then
 							itemButton.droprate = element:GetDropRateText()
-						end
+						end ]]
+
 
 						itemButton.itemID = itemID or 0
 
@@ -930,10 +932,9 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 
 		end
 	elseif type(_G[dataSource]) == "function" then
-		--print("AtlasLoot_Show2ItemsFrame: function")
+		print("AtlasLoot_Show2ItemsFrame: function")
 		_G[dataSource]()
 	else
-
 		--print("Unknown dataSource type: "..type(dataSource).." - "..(dataSource or "dataSource nil"))
 	end
 	if dataID == "SearchResult" or dataID == "WishList" then
@@ -972,7 +973,6 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need support menu
 
 	-- Set the loot page name
 	AtlasLoot_LootPageName:SetText(dataID and type(dataID)=="string" and dataID or (dataID and dataID.menuName))
-
 
 	--Hide the container frame
 	AtlasLootItemsFrameContainer:Hide()
@@ -1117,7 +1117,7 @@ local function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 					quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
 					quantityFrame:SetText("")
 				elseif isEnchant then
-					--spellName = GetSpellInfoAtlasLootDB["enchants"][tonumber(string.sub(dataSource[dataID][i][1], 2))]["name"]
+					--spellName = AtlasTW.SpellDB["enchants"][tonumber(string.sub(dataSource[dataID][i][1], 2))]["name"]
 					spellName = AtlasLoot_FixText(dataSource[dataID][i][3])
 					spellIcon = dataSource[dataID][i][2]
 					text = AtlasLoot_FixText(string.sub(dataSource[dataID][i][3], 1, 4)..spellName)
@@ -1127,8 +1127,8 @@ local function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 					spellName = dataSource[dataID][i][3]
 					spellIcon = dataSource[dataID][i][2]
 					text = AtlasLoot_FixText(spellName)
-					local qtyMin = GetSpellInfoAtlasLootDB["craftspells"][tonumber(string.sub(dataSource[dataID][i][1], 2))]["craftQuantityMin"]
-					local qtyMax = GetSpellInfoAtlasLootDB["craftspells"][tonumber(string.sub(dataSource[dataID][i][1], 2))]["craftQuantityMax"]
+					local qtyMin = AtlasTW.SpellDB["craftspells"][tonumber(string.sub(dataSource[dataID][i][1], 2))]["craftQuantityMin"]
+					local qtyMax = AtlasTW.SpellDB["craftspells"][tonumber(string.sub(dataSource[dataID][i][1], 2))]["craftQuantityMax"]
 					if qtyMin and qtyMin ~= "" then
 						if qtyMax and qtyMax ~= "" then
 							quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
@@ -1324,36 +1324,36 @@ local function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
 					itemButton.dressingroomID = dataSource[dataID][i][1]
 				elseif isEnchant then
 					spellID = tonumber(string.sub(dataSource[dataID][i][1], 2))
-					if GetSpellInfoAtlasLootDB["enchants"][spellID] and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= nil and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= "" then
-						itemButton.dressingroomID = GetSpellInfoAtlasLootDB["enchants"][spellID]["item"]
+					if AtlasTW.SpellDB["enchants"][spellID] and AtlasTW.SpellDB["enchants"][spellID]["item"] and AtlasTW.SpellDB["enchants"][spellID]["item"] ~= nil and AtlasTW.SpellDB["enchants"][spellID]["item"] ~= "" then
+						itemButton.dressingroomID = AtlasTW.SpellDB["enchants"][spellID]["item"]
 					else
 						itemButton.dressingroomID = spellID
 					end
-					if GetSpellInfoAtlasLootDB["enchants"][spellID] and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= nil and GetSpellInfoAtlasLootDB["enchants"][spellID]["item"] ~= "" then
-						if not GetItemInfo(GetSpellInfoAtlasLootDB["enchants"][spellID]["item"]) then
-							GameTooltip:SetHyperlink("item:"..GetSpellInfoAtlasLootDB["enchants"][spellID]["item"]..":0:0:0")
+					if AtlasTW.SpellDB["enchants"][spellID] and AtlasTW.SpellDB["enchants"][spellID]["item"] ~= nil and AtlasTW.SpellDB["enchants"][spellID]["item"] ~= "" then
+						if not GetItemInfo(AtlasTW.SpellDB["enchants"][spellID]["item"]) then
+							GameTooltip:SetHyperlink("item:"..AtlasTW.SpellDBts"][spellID]["item"]..":0:0:0")
 						end
 					end
 				elseif isSpell then
 					spellID = tonumber(string.sub(dataSource[dataID][i][1], 2))
-					itemButton.dressingroomID = GetSpellInfoAtlasLootDB["craftspells"][spellID]["craftItem"]
-					if GetSpellInfoAtlasLootDB["craftspells"][spellID]["craftItem"] ~= "" then
-						if not GetItemInfo(GetSpellInfoAtlasLootDB["craftspells"][spellID]["craftItem"]) then
-							GameTooltip:SetHyperlink("item:"..GetSpellInfoAtlasLootDB["craftspells"][spellID]["craftItem"]..":0:0:0")
+					itemButton.dressingroomID = AtlasTW.SpellDB["craftspells"][spellID]["craftItem"]
+					if AtlasTW.SpellDB["craftspells"][spellID]["craftItem"] ~= "" then
+						if not GetItemInfo(AtlasTW.SpellDB["craftspells"][spellID]["craftItem"]) then
+							GameTooltip:SetHyperlink("item:"..AtlasTW.SpellDB["craftspells"][spellID]["craftItem"]..":0:0:0")
 						end
 					end
-					if GetSpellInfoAtlasLootDB["craftspells"][spellID]["reagents"] ~= "" then
-						for i = 1, table.getn(GetSpellInfoAtlasLootDB["craftspells"][spellID]["reagents"]) do
-							local reagent = GetSpellInfoAtlasLootDB["craftspells"][spellID]["reagents"][i]
+					if AtlasTW.SpellDB["craftspells"][spellID]["reagents"] ~= "" then
+						for i = 1, table.getn(AtlasTW.SpellDB["craftspells"][spellID]["reagents"]) do
+							local reagent = AtlasTW.SpellDB["craftspells"][spellID]["reagents"][i]
 							if not GetItemInfo(reagent[1]) then
 								GameTooltip:SetHyperlink("item:"..reagent[1]..":0:0:0")
 							end
 						end
 					end
-					if GetSpellInfoAtlasLootDB["craftspells"][spellID]["tools"] ~= "" then
-						for i = 1, table.getn(GetSpellInfoAtlasLootDB["craftspells"][spellID]["tools"]) do
-							if not GetItemInfo(GetSpellInfoAtlasLootDB["craftspells"][spellID]["tools"][i]) then
-								GameTooltip:SetHyperlink("item:"..GetSpellInfoAtlasLootDB["craftspells"][spellID]["tools"][i]..":0:0:0")
+					if AtlasTW.SpellDB["craftspells"][spellID]["tools"] ~= "" then
+						for i = 1, table.getn(AtlasTW.SpellDB["craftspells"][spellID]["tools"]) do
+							if not GetItemInfo(AtlasTW.SpellDB["craftspells"][spellID]["tools"][i]) then
+								GameTooltip:SetHyperlink("item:"..AtlasTW.SpellDB["craftspells"][spellID]["tools"][i]..":0:0:0")
 							end
 						end
 					end
@@ -1462,21 +1462,15 @@ function AtlasLootBoss_OnClick(buttonName)
    local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
     local id = this.idnum
     local elemName = AtlasTW.ScrollList[id].name ~= "Trash Mobs" and AtlasTW.ScrollList[id].name or AtlasTW.ScrollList[id].id
-	--print("elemName "..(elemName or " no elemname"))
 	local lootTable = GetLootByElemName(elemName,zoneID)
-	--print(tostring(lootTable).." lootTable")
 
     if AtlasLootItemsFrame.activeElement == id then
         AtlasLootItemsFrame:Hide()
         AtlasLootItemsFrame.activeElement = nil
     else
-	--	print(elemName.. " elemName")
 		--Get the loot table for the element, either by name or by ID how reserv metod
-		--lootTable = GetLootByName(zoneID, bossname) or GetLootByID(zoneID, id)
         if lootTable then
-	--		print(tostring(lootTable).." lootTable")
 			AtlasLootItemsFrame:Show()
-			local scrollStartTime = GetTime()
 			AtlasLoot_ShowScrollBarLoading()
 
 		   --Store the loot table and boss name
@@ -1485,8 +1479,6 @@ function AtlasLootBoss_OnClick(buttonName)
             AtlasLootItemsFrame.activeElement = id
 
 			CacheAllLootItems(lootTable, function()
-				local elapsed = GetTime() - scrollStartTime
-				--print("AtlasLoot: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
 				AtlasLoot_HideScrollBarLoading()
 				-- Update scrollbar
 				AtlasTW.Loot.ScrollBarLootUpdate()
@@ -1839,7 +1831,6 @@ function AtlasLootMenuItem_OnClick(button)
 
 		--print(dataID.." - dataID, "..TableSource.." - TableSource")
 		AtlasLootItemsFrame:Show()
-		local scrollStartTime = GetTime()
 		AtlasLoot_ShowScrollBarLoading()
 
 		--Store the loot table and boss name
@@ -1850,10 +1841,7 @@ function AtlasLootMenuItem_OnClick(button)
 		end
 
 		CacheAllLootItems(TableSource, function()
-			local elapsed = GetTime() - scrollStartTime
-			--print("AtlasLootMenuItem_OnClick: время загрузки страницы: " .. string.format("%.2f", elapsed) .. " c")
 			AtlasLoot_HideScrollBarLoading()
-			-- Update scrollbar
 			AtlasTW.Loot.ScrollBarLootUpdate()
 		end)
 		AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(pagename, 30))
@@ -2123,7 +2111,7 @@ end
 
 -- Обработчик для типа "spell"
 local function HandleSpellTooltip(elemID, anchor)
-    local link = GetSpellInfoAtlasLootDB.craftspells[elemID]
+    local link = AtlasTW.SpellDB.craftspells[elemID]
     if not link then
        -- print("AtlasLoot Error: Missing spell data for ID: " .. tostring(elemID))
         return
@@ -2156,7 +2144,7 @@ local function HandleEnchantTooltip(spellID, anchor)
     AtlasLootTooltip:Show()
 
     -- Показываем связанный предмет, если он есть
-    local enchantData = GetSpellInfoAtlasLootDB.enchants[spellID]
+    local enchantData = AtlasTW.SpellDB.enchants[spellID]
     if enchantData and enchantData.item then
         ShowCraftedItemTooltip(enchantData, AtlasLootTooltip, anchor)
     end
@@ -2352,7 +2340,7 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 		if IsShiftKeyDown() then
 			if this.elemID < 100000 then
 				if WIM_EditBoxInFocus then
-					local craftitem = GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]
+					local craftitem = AtlasTW.SpellDB["craftspells"][this.elemID]["item"]
 					if craftitem ~= nil and craftitem ~= "" then
 						local craftname = GetItemInfo(craftitem)
 						WIM_EditBoxInFocus:Insert("\124"..string.sub(color, 2).."|Hitem:"..craftitem.."\124h["..craftname.."]|h|r")
@@ -2360,7 +2348,7 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 						WIM_EditBoxInFocus:Insert(name)
 					end
 				elseif ChatFrameEditBox:IsVisible() then
-					local craftitem = GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]
+					local craftitem = AtlasTW.SpellDB["craftspells"][this.elemID]["item"]
 					if craftitem ~= nil and craftitem ~= "" then
 						--local craftname = GetItemInfo(craftitem)
 						ChatFrameEditBox:Insert(AtlasLoot_GetChatLink(craftitem)) -- Fix for Gurky's discord chat bot
@@ -2372,16 +2360,16 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 				end
 			else
 				if WIM_EditBoxInFocus then
-					local craftitem = GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]
+					local craftitem = AtlasTW.SpellDB["craftspells"][this.elemID]["item"]
 					if craftitem ~= nil and craftitem ~= "" then
-						WIM_EditBoxInFocus:Insert(AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]))
+						WIM_EditBoxInFocus:Insert(AtlasLoot_GetChatLink(AtlasTW.SpellDB["craftspells"][this.elemID]["item"]))
 					else
 						WIM_EditBoxInFocus:Insert(name)
 					end
 				elseif ChatFrameEditBox:IsVisible() then
-					local craftitem = GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]
+					local craftitem = AtlasTW.SpellDB["craftspells"][this.elemID]["item"]
 					if craftitem ~= nil and craftitem ~= "" then
-						ChatFrameEditBox:Insert(AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]))
+						ChatFrameEditBox:Insert(AtlasLoot_GetChatLink(AtlasTW.SpellDB["craftspells"][this.elemID]["item"]))
 					else
 						ChatFrameEditBox:Insert(name)
 					end
@@ -2392,7 +2380,7 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 					elseif channel == "CHANNEL" then
 						chatnumber = ChatFrameEditBox.channelTarget
 					end
-					SendChatMessage(AtlasLoot_GetChatLink(GetSpellInfoAtlasLootDB["craftspells"][this.elemID]["item"]),channel,nil,chatnumber)
+					SendChatMessage(AtlasLoot_GetChatLink(AtlasTW.SpellDB["craftspells"][this.elemID]["item"]),channel,nil,chatnumber)
 				end
 			end
 		elseif IsAltKeyDown() and this.elemID ~= 0 then
@@ -2552,11 +2540,8 @@ function AtlasLoot_ShowContainerFrame()
 
 	AtlasLoot_ShowContainerLoading()
 
-    local containerStartTime = GetTime()
 	-- Кэшируем все предметы контейнера асинхронно, затем обновляем фрейм
 	CacheAllLootItems(containerTable, function()
-        local elapsed = GetTime() - containerStartTime
-       -- print("AtlasLoot: время загрузки контейнера: " .. string.format("%.2f", elapsed) .. " c")
 		AtlasLoot_UpdateContainerDisplay()
 	end)
 end
@@ -2829,8 +2814,8 @@ function AtlasLoot_SayItemReagents(id, color, name, safe)
 		end
 	end
 	-- Обработка заклинаний крафта
-	if GetSpellInfoAtlasLootDB["craftspells"][id] then
-		local spellData = GetSpellInfoAtlasLootDB["craftspells"][id]
+	if AtlasTW.SpellDB["craftspells"][id] then
+		local spellData = AtlasTW.SpellDB["craftspells"][id]
 		local craftitem = spellData["item"]
 
 		if craftitem and craftitem ~= "" then
@@ -2917,8 +2902,8 @@ function AtlasLoot_SayItemReagents(id, color, name, safe)
 			end
 		end
 	-- Обработка зачарований
-	elseif GetSpellInfoAtlasLootDB["enchants"][id] then
-		local enchantData = GetSpellInfoAtlasLootDB["enchants"][id]
+	elseif AtlasTW.SpellDB.enchants[id] then
+		local enchantData = AtlasTW.SpellDB.enchants[id]
 		local enchantItem = enchantData["item"]
 		local enchantName = enchantData["name"] or GetItemInfo(enchantItem)
 

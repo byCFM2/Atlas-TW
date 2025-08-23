@@ -10385,7 +10385,6 @@ pfDB["units"]["enUS"] = {
   [21000] = "Ragnaros Submerged Visual",
   [21010] = "AQ War Cenarion Hold Wave Trigger",
 }
-
 pfDB["units"]["enUS-turtle"] = {
   [4] = "Snowy Gryphon",
   [5] = "Ebon Gryphon",

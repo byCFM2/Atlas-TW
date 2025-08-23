@@ -3786,8 +3786,8 @@ local craftingTable = {
 		{ id=41331, skill={160,180,190,200} }, --Gem Encrusted Choker
 		{ id=41283, skill={1,175,192,210} }, --Astral Amulet
 		{ id=41333, skill={170,180,190,200} }, --Goldcrest Amulet
-		{ id=41217, skill={175,195,202,210} }, --Powerful Citrine Pendant
 		{ name = L["Amulets"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41217, skill={175,195,202,210} }, --Powerful Citrine Pendant
 		{ id=41556, skill={180,200,210,220} }, --Delicate Mithril Amulet
 		{ id=76, 	skill={185,185,185,185}, container={156}, type="item" }, --Plans: Refined Dwarven Necklace remake for spellid
 		{ id=41223, skill={190,205,215,225} }, --Shimmering Gold Necklace
@@ -3801,8 +3801,8 @@ local craftingTable = {
 		{ id=41315, skill={1,275,285,295} }, --Moonlit Charm
 		{ id=41279, skill={280,280,300,320} }, --Voidheart Charm
 		{ id=41105, skill={280,300,305,310} }, --Pendant of Arcane Radiance
-		{ id=41287, skill={290,310,325,340} }, --Stormcloud Sigil
 		{ name = L["Amulets"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41287, skill={290,310,325,340} }, --Stormcloud Sigil
 		{ id=41722, skill={300,300,307,315} }, --Pendant of Instability
 		{ id=41704, skill={300,320,330,340} }, --Talisman of Hinderance
 	},

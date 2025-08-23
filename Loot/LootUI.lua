@@ -76,7 +76,6 @@ end
 local function AtlasLoot_ApplyNavigationButtonTemplate(button, buttonType)
     button:SetWidth(32)
     button:SetHeight(32)
-    button:SetFrameStrata("MEDIUM")
     if buttonType == "next" then
         button:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Up")
         button:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Down")

@@ -1,6 +1,6 @@
 local L = AtlasTW.Local
 
-GetSpellInfoAtlasLootDB = {
+AtlasTW.SpellDB = {
 	enchants = {
 		[7420] = { name = "Enchant Chest - Minor Health" },
  		[7421] = { item = 6218 },
