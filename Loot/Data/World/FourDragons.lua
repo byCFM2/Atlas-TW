@@ -89,6 +89,7 @@ AtlasTW.InstanceData.FourDragons = {
                 {id=20632}, -- Mindtear Band (кольцо)
                 {id=20577}, -- Nightmare Blade (меч, одноручное)
                 {id=65105}, -- Scale of the Wakener (аксессуар)
+                {},
                 unpack(ShareLoot)
             }
         },

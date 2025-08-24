@@ -22,12 +22,12 @@ Looks for an empty slot in the wishlist and slots the item in
 function AtlasLoot_AddToWishlist(itemID, itemTexture, itemName, extraText, sourcePage)
 	for _, v in ipairs(AtlasTWCharDB["WishList"]) do
 		if v[1] == itemID then
-			DEFAULT_CHAT_FRAME:AddMessage(BLUE.."AtlasLoot"..": "..AtlasLoot_FixText(itemName)..RED..L[" already in the WishList!"])
+			print(BLUE.."AtlasLoot"..": "..AtlasLoot_FixText(itemName)..RED..L[" already in the WishList!"])
 			return
 		end
 	end
 	table.insert(AtlasTWCharDB["WishList"], { itemID, itemTexture, itemName, extraText, sourcePage })
-	DEFAULT_CHAT_FRAME:AddMessage(BLUE.."AtlasLoot"..": "..AtlasLoot_FixText(itemName)..GREY..L[" added to the WishList."])
+	print(BLUE.."AtlasLoot"..": "..AtlasLoot_FixText(itemName)..GREY..L[" added to the WishList."])
 	AtlasLoot_WishList = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishList"])
 end
 
@@ -38,7 +38,7 @@ function AtlasLoot_DeleteFromWishList(itemID)
 	if itemID and itemID == 0 then return end
 	for i, v in ipairs(AtlasTWCharDB["WishList"]) do
 		if v[1] == itemID then
-			DEFAULT_CHAT_FRAME:AddMessage(RED.."AtlasLoot"..": "..AtlasLoot_FixText(v[3])..GREY..L[" deleted from the WishList."])
+			print(RED.."AtlasLoot"..": "..AtlasLoot_FixText(v[3])..GREY..L[" deleted from the WishList."])
 			table.remove(AtlasTWCharDB["WishList"], i)
 			break
 		end
@@ -149,7 +149,7 @@ end
 Iterating through dropdown data tables to search backward for zone name with specified dataID
 ]]
 function AtlasLoot_GetWishListSubheading(dataID)
-	if not AtlasLoot_HewdropDown or not AtlasLoot_HewdropDown_SubTables then return end
+--[[ 	if not AtlasLoot_HewdropDown then return end
 	local zoneID
 	for subKey, subTable in pairs(AtlasLoot_HewdropDown_SubTables) do
 		for _, t in ipairs(subTable) do
@@ -160,7 +160,7 @@ function AtlasLoot_GetWishListSubheading(dataID)
 		end
 		if zoneID then break end
 	end
-	return RecursiveSearchZoneName(AtlasLoot_HewdropDown, zoneID or dataID)
+	return RecursiveSearchZoneName(AtlasLoot_HewdropDown, zoneID or dataID) ]]
 end
 
 function AtlasLoot_GetWishListSubheadingBoss(dataID)

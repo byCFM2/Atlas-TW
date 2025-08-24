@@ -9,7 +9,7 @@ local BS = AceLibrary("Babble-Spell-2.2a")
 AtlasLoot_Data = AtlasLoot_Data or {}
 
 local Factions = {
-	Shendralar = {
+	Shendralar = { --1.18
 		{ name = BF["Friendly"] },
 		{ id = 55044 }, -- Formula: Enchant Boots - Major Intellect
 		{ id = 55045, container={55046} }, -- Recipe: Elixir of Greater Frost Power
@@ -18,19 +18,27 @@ local Factions = {
 		{ id = 58251 }, --Wristbands of Excellency
 		{ id = 58252 }, --Coalescing Sabatons
 		{ id = 58253 }, --Lector's Baton
+		{ id = 55047, container={55048} }, --Recipe: Elixir of Greater Arcane Power
+		{ id = 55049, container={55050} }, --Pattern: Essence Infused Leather Gloves
+        {},
+        {},
+        {},
+        {},
         {},
 		{ name = BF["Revered"] },
 		{ id = 58254 }, --Miniature Astrolabium
 		{ id = 58255 }, --Crystal Pauldrons
 		{ id = 58256 }, -- Band of Eldretharr
-        {},
+		{ id = 55051, container={55052} }, -- Pattern: Astronomer Raiments
+		{ id = 55053, container={55054} }, -- Pattern: Prismatic Scale Barbute
         {},
 		{ name = BF["Exalted"] },
 		{ id = 58257 }, -- Noble's Letter Opener
 		{ id = 58258 }, --Royal Guard Chain Cloak
 		{ id = 58259 }, --Advisor's Trousers of the Eldreth
 		{ id = 55055, container={55056} }, -- Pattern: Spellwoven Nobility Drape
-
+		{ id = 55057, container={55058} }, -- Plans: Rune-Inscribed Plate Leggings
+		{ id = 55059, container={55060} }, -- Plans: Grandstaff of the Shen'dralar Elder
 	},
 	WintersaberTrainers = {
 		{ name = BF["Exalted"] },

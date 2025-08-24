@@ -2,6 +2,8 @@ local L = AtlasTW.Local
 
 AtlasTW.SpellDB = {
 	enchants = {
+		[44] = { name = "Enchant Bracer - Agility" }, --1.18
+		[48] = { name = "Enchant Boots - Lesser Intellect" }, --1.18
 		[7420] = { name = "Enchant Chest - Minor Health" },
  		[7421] = { item = 6218 },
 		[7426] = {
@@ -470,6 +472,12 @@ AtlasTW.SpellDB = {
 		[46602] = {
 			name = "Enchant Gloves - Nature Power",
 		},
+		[46603] = {
+			name = "Enchant Gloves - Holy Power",
+		},
+		[56543] = {
+			name = "Enchant Boots - Major Intellect",
+		},
 		[57028] = {
 			name = "Enchant Bracer - Spell Power",
 		},
@@ -502,6 +510,153 @@ AtlasTW.SpellDB = {
 		},
 	},
 	craftspells = {
+		[37] = { --1.18
+			item = 55043,
+			reagents = {
+				{15407, 6},
+				{12810, 12},
+				{7081, 20},
+				{7082, 8},
+				{5117, 15},
+				{4480, 10},
+				{14341, 4},
+			},
+		},
+		[55] = { --1.18
+			item = 65,
+			reagents = {
+				{7287, 5},
+				{6371, 1},
+				{2321, 2},
+			},
+		},
+		[57] = { --1.18
+			item = 131,
+			requires = L["Anvil"],
+			tools = {5956},
+			reagents = {
+				{3859, 8},
+				{7071, 1},
+				{7966, 1},
+			},
+		},
+		[69] = { --1.18
+			item = 66,
+			requires = L["Anvil"],
+			tools = {5956},
+			reagents = {
+				{3577, 8},
+				{7071, 1},
+				{3486, 2},
+			},
+		},
+		[70] = { --1.18
+			item = 58112,
+			reagents = {
+				{4234, 14},
+				{7287, 4},
+				{4236, 2},
+				{5637, 2},
+				{4402, 2},
+				{55289, 2},
+			},
+		},
+		[74] = { --1.18
+			item = 67,
+			requires = L["Anvil"],
+			tools = {5956},
+			reagents = {
+				{12359, 4},
+				{7071, 1},
+				{8165, 14},
+				{7966, 1},
+			},
+		},
+		[83] = { --1.18
+			item = 58134,
+			reagents = {
+				{4305, 8},
+				{3824, 3},
+				{7068, 3},
+				{3864, 3},
+				{4342, 1},
+				{4291, 2},
+			},
+		},
+		[85] = { --1.18
+			item = 82,
+			requires = L["Anvil"],
+			tools = {5956},
+			reagents = {
+				{11371, 2},
+				{7071, 1},
+				{7078, 1},
+				{12644, 2},
+			},
+		},
+		[90] = { --1.18
+			item = 151,
+			requires = L["Anvil"],
+			tools = {5956},
+			reagents = {
+				{6037, 8},
+				{7071, 1},
+				{7966, 2},
+			},
+		},
+		[93] = { --1.18
+			item = 156,
+			requires = L["Anvil"],
+			tools = {5956},
+			reagents = {
+				{3860, 12},
+				{55249, 3},
+				{6371, 3},
+				{3466, 2},
+				{55152, 2},
+			},
+		},
+		[95] = { --1.18
+			item = 87,
+			requires = L["Anvil"],
+			tools = {5956},
+			reagents = {
+				{12655, 2},
+				{7071, 1},
+				{61673, 2},
+				{12644, 1},
+			},
+		},
+		[102] = { --1.18
+			item = 103,
+			requires = L["Anvil"],
+			tools = {5956},
+			reagents = {
+				{22203, 2},
+				{7071, 1},
+				{7076, 1},
+				{7082, 1},
+				{12644, 2},
+			},
+		},
+		[104] = { --1.18
+			item = 56112,
+			requires = L["Anvil"],
+			tools = {5956},
+			reagents = {
+				{3860, 1},
+				{55249, 1},
+				{55247, 1},
+			},
+		},
+		[115] = { --1.18
+			item = 56113,
+			reagents = {
+				{4625, 1},
+				{7068, 1},
+				{3372, 1},
+			},
+		},
 		[818] = {
 			name = "Basic Campfire",
 			tools = {4471},
@@ -10503,6 +10658,111 @@ AtlasTW.SpellDB = {
 				{2840, 4},
 			},
 		},
+		[36901] = { --1.18
+			item = 55046,
+			reagents = {
+				{13467, 3},
+				{8925, 1},
+			},
+		},
+		[36903] = { --1.18
+			item = 55048,
+			reagents = {
+				{8831, 3},
+				{8925, 1},
+			},
+		},
+		[36905] = { --1.18
+			item = 55060,
+			requires = L["Anvil"],
+			tools = {41328,41326},
+			reagents = {
+				{55252, 4},
+				{12360, 2},
+				{12655, 16},
+				{20725, 4},
+				{11291, 20},
+				{12800, 6},
+				{55248, 4},
+			},
+		},
+		[36907] = { --1.18
+			item = 55058,
+			requires = L["Anvil"],
+			tools = {5956},
+			reagents = {
+				{12360, 3},
+				{12655, 12},
+				{12799, 4},
+				{13926, 4},
+				{14341, 8},
+				{7080, 6},
+			},
+		},
+		[36909] = { --1.18
+			item = 55050,
+			reagents = {
+				{12810, 10},
+				{61673, 4},
+				{16203, 4},
+				{14341, 6},
+			},
+		},
+		[36911] = { --1.18
+			item = 55054,
+			reagents = {
+				{8165, 20},
+				{15414, 5},
+				{15415, 5},
+				{15412, 5},
+				{15416, 5},
+				{8170, 30},
+			},
+		},
+		[36913] = { --1.18
+			item = 55052,
+			reagents = {
+				{14048, 12},
+				{12361, 2},
+				{55048, 5},
+				{9210, 5},
+			},
+		},
+		[36915] = { --1.18
+			item = 55056,
+			reagents = {
+				{14342, 3},
+				{14048, 8},
+				{20725, 1},
+				{16204, 40},
+				{14341, 4},
+				{9210, 10},
+			},
+		},
+		[36929] = { --1.18
+			item = 47410,
+			reagents = {
+				{13452, 1},
+				{61224, 1},
+				{8153, 6},
+			},
+		},
+		[36932] = { --1.18
+			item = 47412,
+			reagents = {
+				{9206, 1},
+				{13454, 1},
+				{8831, 6},
+			},
+		},
+		[36935] = { --1.18
+			item = 47414,
+			reagents = {
+				{12820, 1},
+				{61423, 1},
+				{8838, 6},
+			},
+		},
 		[41001] = {
 			tools = {55155},
 			item = 55158,
@@ -13506,6 +13766,27 @@ AtlasTW.SpellDB = {
 				--{6370}, 1.18
 			},
 		},
+		[52747] = { --1.18
+			item = 58304,
+			reagents = {
+				{11371, 8},
+				{18631, 4},
+				{61673, 3},
+				{12364, 4},
+				{12800, 2},
+			},
+		},
+		[52749] = { --1.18
+			item = 58305,
+			reagents = {
+				{11371, 8},
+				{18631, 4},
+				{7910, 4},
+				{12803, 6},
+				{12363, 2},
+				{7076, 4},
+			},
+		},
 		[54001] = {
 			item = 65015,
 			reagents = {
@@ -13767,7 +14048,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[57163] = {
-			requires = L["Black Anvil"],
+			requires = L["Anvil"],
 			tools = {5956},
 			item = 61779,
 			reagents = {
@@ -13777,7 +14058,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[57166] = {
-			requires = L["Black Anvil"],
+			requires = L["Anvil"],
 			tools = {5956},
 			item = 61780,
 			reagents = {
@@ -13787,7 +14068,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[57169] = {
-			requires = L["Black Anvil"],
+			requires = L["Anvil"],
 			tools = {5956},
 			item = 61781,
 			reagents = {
@@ -13797,7 +14078,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[57172] = {
-			requires = L["Black Anvil"],
+			requires = L["Anvil"],
 			tools = {5956},
 			item = 61782,
 			reagents = {
@@ -13808,7 +14089,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[57175] = {
-			requires = L["Black Anvil"],
+			requires = L["Anvil"],
 			tools = {5956},
 			item = 61783,
 			reagents = {
@@ -13819,7 +14100,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[57178] = {
-			requires = L["Black Anvil"],
+			requires = L["Anvil"],
 			tools = {5956},
 			item = 61784,
 			reagents = {
@@ -13842,7 +14123,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[57187] = {
-			requires = L["Black Anvil"],
+			requires = L["Black Anvil"], --TODO CHEck
 			tools = {5956},
 			item = 60007,
 			reagents = {
@@ -13854,7 +14135,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[57189] = {
-			requires = L["Black Anvil"],
+			requires = L["Black Anvil"], --TODO CHEck
 			tools = {5956},
 			item = 60008,
 			reagents = {
@@ -13866,7 +14147,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[57191] = {
-			requires = L["Black Anvil"],
+			requires = L["Black Anvil"], --TODO CHEck
 			tools = {5956},
 			item = 60009,
 			reagents = {
@@ -13878,7 +14159,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[57193] = {
-			requires = L["Black Anvil"],
+			requires = L["Black Anvil"], --TODO CHEck
 			tools = {5956},
 			item = 60010,
 			reagents = {
@@ -13891,7 +14172,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[57196] = {
-			requires = L["Black Anvil"],
+			requires = L["Black Anvil"], --TODO CHEck
 			tools = {5956},
 			item = 61810,
 			reagents = {
@@ -14084,6 +14365,24 @@ AtlasTW.SpellDB = {
 				{14048, 6},
 				{14227, 4},
 				{13926, 1},
+			},
+		},
+		[58044] = { --1.18
+			item = 41674,
+			requires = L["Cooking Fire"],
+			reagents = {
+				{41675, 1},
+				{2677, 1},
+				{2692, 1},
+			},
+		},
+		[58046] = { --1.18
+			item = 41673,
+			requires = L["Cooking Fire"],
+			reagents = {
+				{4539, 1},
+				{41677, 1},
+				{1179, 1},
 			},
 		},
 		[69420] = {

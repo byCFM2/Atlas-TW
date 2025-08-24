@@ -87,13 +87,13 @@ function AtlasTW.OptionDefaultSettings()
         LootShowPanel = true
     }
 	AtlasTWCharDB.PartialMatching = true
-	AtlasTWCharDB.LastBoss = "AtlasLoot_DungeonsMenu1"
-	AtlasTWCharDB.LastBossText = L["Dungeons & Raids"]
+--[[ 	AtlasTWCharDB.LastBoss = "AtlasLoot_DungeonsMenu"
+	AtlasTWCharDB.LastBossText = L["Dungeons & Raids"] ]]
 	AtlasTWCharDB["QuickLooks"] = {}
 	AtlasTWCharDB["WishList"] = {}
 	AtlasLoot_RefreshQuickLookButtons()
 	AtlasTW.OptionsInit()
-	DEFAULT_CHAT_FRAME:AddMessage(blue.."Atlas-TW"..": "..red..L["Default settings applied!"])
+	print(blue.."Atlas-TW"..": "..red..L["Default settings applied!"])
 end
 
 function AtlasTW.OptionShowPanelOnClick()

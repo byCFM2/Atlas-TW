@@ -6,17 +6,9 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 local data = AtlasLoot_Data
 
 local function CreateMenu(menuTitle, menuItems, prevMenu, prevMenuText)
---[[     if prevMenu then
-        AtlasTWCharDB.LastBoss = prevMenu
-        AtlasTWCharDB.LastBossText = prevMenuText
-    end]]
-
     AtlasLootItemsFrame.StoredElement = { menuName = menuTitle }
     AtlasLootItemsFrame.StoredMenu = menuItems
     AtlasTW.Loot.ScrollBarLootUpdate()
---[[     if menuItems.name then
-        AtlasTW.Loot.BackTableRegistry[menuItems.name] = "Collections"
-    end ]]
 end
 
 AtlasTW.Loot.SetsMenuData = {
@@ -215,7 +207,6 @@ local function CreateDungeonSetMenu(dungeonName)
 			end
 		end
     end
-
     return menuData
 end
 

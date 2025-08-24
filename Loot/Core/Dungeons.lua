@@ -5,77 +5,22 @@ AtlasTW.Loot.BackTableRegistry = {}
 
 -- Get the formatted string for the instance and make back navigation button
 local function getFormString(instanceType, mainString)
-    if instanceType == "[RAID]" then
-        AtlasTW.Loot.BackTableRegistry[mainString] = "DUNGEONSMENU2"
-        return "|cffff0000"..instanceType.." |cffffd200"..mainString
-    else
-        AtlasTW.Loot.BackTableRegistry[mainString] = AtlasTW.Loot.BackTableRegistry[mainString] or "AtlasLoot_DungeonsMenu1"
-        return "|cffffffff"..instanceType.." |cffffd200"..mainString
-    end
+   -- AtlasTW.Loot.BackTableRegistry[mainString] = "DUNGEONSMENU"
+    return "|cffff0000"..instanceType.." |cffffd200"..mainString
 end
 
 -- Function to generate menu data from AtlasTW.InstanceData
 local function GenerateMenuDataFromInstanceData()
-    local menu1Data = {}
-    local menu2Data = {}
+    local menuData = {}
 
---[[     -- Mapping from AtlasTW.InstanceData keys to lootpage names
-    local lootpageMapping = {
-        ["RagefireChasm"] = "RFCTaragaman",
-        ["WailingCaverns"] = "WCLordCobrahn",
-        ["TheDeadmines"] = "DMRhahkZor",
-        ["ShadowfangKeep"] = "SFKRethilgore",
-        ["BlackfathomDeeps"] = 0,
-        ["TheStockade"] = "SWStTargorr",
-        ["Gnomeregan"] = "GnGrubbis",
-        ["RazorfenKraul"] = "RFKAggem",
-        ["RazorfenDowns"] = "RFDTutenkash",
-        ["Uldaman"] = "UldBaelog",
-        ["Maraudon"] = "MaraNoxxion",
-        ["ZulFarrak"] = "ZFAntusul",
-        ["TheSunkenTemple"] = "STBalconyMinibosses",
-        ["BlackrockDepths"] = "BRDLordRoccor",
-        ["Scholomance"] = "SCHOLOKirtonostheHerald",
-        ["Stratholme"] = "STRATSkull",
-        ["BlackrockSpireLower"] = "LBRSSpirestoneButcher",
-        ["BlackrockSpireUpper"] = "UBRSEmberseer",
-        ["ZulGurub"] = "ZGJeklik",
-        ["TheRuinsofAhnQiraj"] = "AQ20Kurinnaxx",
-        ["MoltenCore"] = "MCLucifron",
-        ["OnyxiasLair"] = "Onyxia",
-        ["BlackwingLair"] = "BWLRazorgore",
-        ["TheTempleofAhnQiraj"] = "AQ40Skeram",
-        ["Naxxramas"] = "NAXPatchwerk",
-        ["LowerKarazhan"] = "LKHRolfen",
-        ["TowerofKarazhan"] = "K40Gnarlmoon",
-        ["TheBlackMorass"] = "COTBMChronar",
-        ["TheStormwindVault"] = "SWVAszoshGrimflame",
-        ["EmeraldSanctum"] = "ESErennius",
-        ["KarazhanCrypt"] = "KCMarrowspike",
-        ["TheCrescentGrove"] = "TCGGrovetenderEngryss",
-        ["StormwroughtRuins"] = "RFCTaragaman", --TODO
-        ["GilneasCity"] = "GCMatthiasHoltz",
-        ["HateforgeQuarry"] = "HQHighForemanBargulBlackhammer",
-        ["ScarletMonasteryLibrary"] = "SMHoundmasterLoksey",
-        ["ScarletMonasteryArmory"] = "SMHerod",
-        ["ScarletMonasteryCathedral"] = "SMFairbanks",
-        ["ScarletMonasteryGraveyard"] = "SMVishas",
-        ["DireMaulWest"] = "DMWTendrisWarpwood",
-        ["DireMaulNorth"] = "DMNGuardMoldar",
-        ["DireMaulEast"] = "DMEPusillin",
-        ["CavernsOfTimeBlackMorass"] = "COTBMChronar",
-        ["StormwindVault"] = "SWVAszoshGrimflame",
-    } ]]
     -- Skip these instances as they have special handling
     local skipInstances = {
-        ["RareMobs"] = true,  -- should be in World menu
     }
 
     -- Iterate through InstanceData
-    local counter = 0
     for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
         if type(instanceData) == "table" and instanceData.Name and instanceData.Level and not skipInstances[instanceKey] then
-            if not string.find(instanceKey, "^BG") then
+            if not string.find(instanceKey, "^BG") and (type(instanceData.Level) == "table" and instanceData.Level[1] ~= 1 or type(instanceData.Level) == "number") then
                 local name = instanceData.Name
                 local location = instanceData.Location or ""
                 local level = instanceData.Level
@@ -83,7 +28,7 @@ local function GenerateMenuDataFromInstanceData()
                 local lootpage = ""
                 -- Get lootpage name
                 for _, boss in ipairs(instanceData.Bosses) do
-                    if boss.name then
+                    if boss.name and boss.items then
                         lootpage = boss.name
                         break
                     end
@@ -93,26 +38,15 @@ local function GenerateMenuDataFromInstanceData()
 
                 -- Determine instance type and target menu
                 local instanceType
-                local targetMenu
 
                 if maxPlayers == 40 or maxPlayers == 20 or maxPlayers == 10 then
                     instanceType = "[RAID]"
-                    targetMenu = menu2Data
-                elseif counter > 29 then
-                    if type(level) == "table" then
-                       instanceType = "[" .. level[1].."-"..level[2] .. "]"
-                    else
-                        instanceType = "[".. level.. "]"
-                    end
-                    targetMenu = menu2Data
                 else
-                    counter = counter + 1
                     if type(level) == "table" then
-                       instanceType = "[" .. level[1].."-"..level[2] .. "]"
+                        instanceType = "[" .. level[1].."-"..level[2] .. "]"
                     else
                         instanceType = "[".. level.. "]"
                     end
-                    targetMenu = menu1Data
                 end
 
                 -- Create menu entry
@@ -131,7 +65,7 @@ local function GenerateMenuDataFromInstanceData()
                     menuEntry.icon = "Interface\\Icons\\Spell_Arcane_PortalIronForge"
                 end
 
-                table.insert(targetMenu, menuEntry)
+                table.insert(menuData, menuEntry)
             end
         end
     end
@@ -170,51 +104,16 @@ local function GenerateMenuDataFromInstanceData()
         return false
     end
 
-    -- Sort second menu by player limit (raids first, then by level)
-    local function sortByPlayerLimit(a, b)
-        local aIsRaid = string.find(a.name, "%[RAID%]")
-        local bIsRaid = string.find(b.name, "%[RAID%]")
-        -- If both are raids, sort by player limit (40 > 20 > 10)
-        if aIsRaid and bIsRaid then
-            if a.playerLimit ~= b.playerLimit then
-                return a.playerLimit < b.playerLimit
-            end
-            -- If same player limit, sort by level
-            return sortByLevel(a, b)
-        end
+    table.sort(menuData, sortByLevel)
 
-        -- If both are not raids, sort by level
-        if not aIsRaid and not bIsRaid then
-            return sortByLevel(a, b)
-        end
-
-        -- Raids come first
-        return aIsRaid and not bIsRaid
-    end
-
-    table.sort(menu1Data, sortByLevel)
-    table.sort(menu2Data, sortByPlayerLimit)
-
-    return menu1Data, menu2Data
+    return menuData
 end
 
--- Generate menu data from AtlasMAtlasTW.InstanceDataaps
-local generatedMenu1Data, generatedMenu2Data = GenerateMenuDataFromInstanceData()
+-- Data for Dungeons & Raids - Auto-generated from AtlasTW.InstanceData
+AtlasTW.Loot.DungeonsMenuData = GenerateMenuDataFromInstanceData()
 
--- Data for Dungeons & Raids (Page 1) - Auto-generated from AtlasTW.InstanceData
-AtlasTW.Loot.DungeonsMenu1Data = generatedMenu1Data
-
--- Data for Dungeons & Raids (Page 2) - Auto-generated from AtlasTW.InstanceData  
-AtlasTW.Loot.DungeonsMenu2Data = generatedMenu2Data
-
- function AtlasLoot_DungeonsMenu1()
+ function AtlasLoot_DungeonsMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = L["Dungeons & Raids"], defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalIronForge" }
-    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.DungeonsMenu1Data
-    AtlasTW.Loot.ScrollBarLootUpdate()
-end
-
-function AtlasLoot_DungeonsMenu2()
-    AtlasLootItemsFrame.StoredElement = { menuName = L["Dungeons & Raids"], defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalOrgrimmar" }
-    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.DungeonsMenu2Data
+    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.DungeonsMenuData
     AtlasTW.Loot.ScrollBarLootUpdate()
 end

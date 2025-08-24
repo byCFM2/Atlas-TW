@@ -337,7 +337,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47323 }, -- Ravenstalker Choker
 	},
 	T35Shaman = {
-		{ name = BIS["Stormhowl Battlegear"], icon = "INV_Helmet_15" },
+		{ name = BIS["Stormhowl Battlegear"], icon = "Ability_Shaman_StormStrike" }, --enhancement
 		{ id = 47180 }, -- Stormhowl Crown
 		{ id = 47181 }, -- Stormhowl Pauldrons
 		{ id = 47182 }, -- Stormhowl Breastplate
@@ -345,14 +345,14 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47184 }, -- Stormhowl Sabatons
 		{ id = 47185 }, -- Choker of the Stormhowl
 		{},
-		{ name = BIS["Stormhowl Garb"], icon = "INV_Helmet_15" },
+		{ name = BIS["Stormhowl Garb"], icon = "Spell_Nature_Earthquake" }, --elemental
 		{ id = 47186 }, -- Stormhowl Helmet
 		{ id = 47187 }, -- Stormhowl Epaulets
 		{ id = 47188 }, -- Stormhowl Raiments
 		{ id = 47189 }, -- Stormhowl Legplates
 		{ id = 47190 }, -- Stormhowl Greaves
 		{ id = 47191 }, -- Pendant of the Stormhowl
-		{ name = BIS["The Stormhowl"], icon = "INV_Helmet_15" },
+		{ name = BIS["The Stormhowl"], icon = "Spell_Shaman_SpiritLink" }, --restoration
 		{ id = 47192 }, -- Stormhowl Headpiece
 		{ id = 47193 }, -- Stormhowl Spaulders
 		{ id = 47194 }, -- Stormhowl Tunic
@@ -361,7 +361,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47197 }, -- Amulet of the Stormhowl
 	},
 	T35Paladin = {
-		{ name = BIS["Lionheart Armor"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Lionheart Armor"], icon = "Spell_Holy_Power" }, --holy
 		{ id = 47060 }, -- Lionheart Headpiece
 		{ id = 47061 }, -- Lionheart Spaulders
 		{ id = 47062 }, -- Lionheart Breastplate
@@ -369,14 +369,14 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47064 }, -- Lionheart Boots
 		{ id = 47065 }, -- Lionheart Amulet
 		{},
-		{ name = BIS["Lionheart Battleplate"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Lionheart Battleplate"], icon = "Ability_Defend" }, --protection
 		{ id = 47066 }, -- Lionheart Helmet
 		{ id = 47067 }, -- Lionheart Shoulderguards
 		{ id = 47068 }, -- Lionheart Chestguard
 		{ id = 47069 }, -- Lionheart Legguards
 		{ id = 47070 }, -- Lionheart Greaves
 		{ id = 47071 }, -- Lionheart Pendant
-		{ name = BIS["Lionheart Battlegear"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Lionheart Battlegear"], icon = "Ability_Racial_Avatar" }, --retribution
 		{ id = 47072 }, -- Lionheart Crown
 		{ id = 47073 }, -- Lionheart Pauldrons
 		{ id = 47074 }, -- Lionheart Chestplate
@@ -537,7 +537,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 23067 }, -- Ring of the Cryptstalker
 	},
 	T3Shaman = {
-		{ name = BIS["The Earthshatterer"], icon = "INV_Helmet_15" },
+		{ name = BIS["The Earthshatterer"], icon = "Spell_Shaman_SpiritLink" },
 		{ id = 22466 }, -- Earthshatter Headpiece
 		{ id = 22467 }, -- Earthshatter Spaulders
 		{ id = 22464 }, -- Earthshatter Tunic
@@ -548,11 +548,11 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 22468 }, -- Earthshatter Boots
 		{ id = 23065 }, -- Ring of the Earthshatterer
 		{},
-		{ name = BIS["Earthshatterer's Battlegear"], icon = "INV_Helmet_15" },
+		{ name = BIS["Earthshatterer's Battlegear"], icon = "Ability_Shaman_StormStrike" },
 		{ id = 47162 }, -- Earthshatter Crown
 		{ id = 47163 }, -- Earthshatter Pauldrons
 		{ id = 47164 }, -- Earthshatter Breastplate *15
-		{ name = BIS["Earthshatterer's Garb"], icon = "INV_Helmet_15" },
+		{ name = BIS["Earthshatterer's Garb"], icon = "Spell_Nature_Earthquake" },
 		{ id = 47171 }, -- Earthshatter Helmet
 		{ id = 47172 }, -- Earthshatter Epaulets
 		{ id = 47173 }, -- Earthshatter Raiments
@@ -575,7 +575,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47170 }, -- Signet of the Earthshatterer
 	},
 	T3Paladin = {
-		{ name = BIS["Redemption Armor"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Redemption Armor"], icon = "Spell_Holy_Power" },
 		{ id = 22428 }, -- Redemption Helm
 		{ id = 22429 }, -- Redemption Spaulders
 		{ id = 22425 }, -- Redemption Tunic
@@ -586,11 +586,11 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 22430 }, -- Redemption Boots
 		{ id = 23066 }, -- Ring of Redemption
 		{},
-		{ name = BIS["Redemption Battleplate"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Redemption Battleplate"], icon = "Ability_Defend" },
 		{ id = 47042 }, -- Redemption Helmet
 		{ id = 47043 }, -- Redemption Shoulderguards
 		{ id = 47044 }, -- Redemption Chestguard
-		{ name = BIS["Redemption Battlegear"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Redemption Battlegear"], icon = "Ability_Racial_Avatar" },
 		{ id = 47051 }, -- Redemption Crown
 		{ id = 47052 }, -- Redemption Pauldrons
 		{ id = 47053 }, -- Redemption Chestplate
@@ -613,7 +613,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47050 }, -- Signet of Redemption
 	},
 	T3Warrior = {
-		{ name = BIS["Dreadnaught's Battlegear"], icon = "INV_Shield_05" },
+		{ name = BIS["Dreadnaught's Battlegear"], icon = "INV_Shield_05" }, --tank
 		{ id = 22418 }, -- Dreadnaught Helmet
 		{ id = 22419 }, -- Dreadnaught Pauldrons
 		{ id = 22416 }, -- Dreadnaught Breastplate
@@ -628,7 +628,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{},
 		{},
 		{},
-		{ name = BIS["Armor of the Dreadnaught's"], icon = "INV_Shield_05" },
+		{ name = BIS["Armor of the Dreadnaught's"], icon = "Ability_Gouge" }, --dps
 		{ id = 47261 }, -- Dreadnaught Crown
 		{ id = 47262 }, -- Dreadnaught Pauldrons
 		{ id = 47263 }, -- Dreadnaught Chestplate
@@ -765,7 +765,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47353 }, -- Stormrage Slippers
 	},
 	T2Shaman = {
-		{ name = BIS["Garb of the Ten Storms"], icon = "Spell_FireResistanceTotem_01" },
+		{ name = BIS["Garb of the Ten Storms"], icon = "Spell_Nature_Earthquake" },
 		{ id = 16947 }, -- Helmet of Ten Storms
 		{ id = 16945 }, -- Epaulets of Ten Storms
 		{ id = 16950 }, -- Breastplate of Ten Storms
@@ -775,12 +775,12 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 16946 }, -- Legplates of Ten Storms
 		{ id = 16949 }, -- Greaves of Ten Storms
 		{},
-		{ name = BIS["Battlegear of the Ten Storms"], icon = "Spell_FireResistanceTotem_01" },
+		{ name = BIS["Battlegear of the Ten Storms"], icon = "Ability_Shaman_StormStrike" },
 		{ id = 47136 }, -- Crown of Ten Storms
 		{ id = 47137 }, -- Pauldrons of Ten Storms
 		{ id = 47138 }, -- Breastplate of Ten Storms
 		{ id = 47139 }, -- Bracelets of Ten Storms
-		{ name = BIS["The Ten Storms"], icon = "Spell_FireResistanceTotem_01" },
+		{ name = BIS["The Ten Storms"], icon = "Spell_Shaman_SpiritLink" },
 		{ id = 47144 }, -- Helmet of Ten Storms
 		{ id = 47145 }, -- Spaulders of Ten Storms
 		{ id = 47146 }, -- Chestpiece of Ten Storms
@@ -827,7 +827,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{},
 		{},
 		{},
-		{ name = BIS["Armor of Wrath"], icon = "INV_Shield_05" },
+		{ name = BIS["Armor of Wrath"], icon = "Ability_Gouge" },
 		{ id = 47248 }, -- Crown of Wrath
 		{ id = 47249 }, -- Pauldrons of Wrath
 		{ id = 47250 }, -- Chestplate of Wrath
@@ -838,7 +838,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47255 }, -- Sabatons of Wrath
 	},
 	T2Paladin = {
-		{ name = BIS["Judgement Armor"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Judgement Armor"], icon = "Spell_Holy_Power" },
 		{ id = 16955 }, -- Judgement Crown
 		{ id = 16953 }, -- Judgement Spaulders
 		{ id = 16958 }, -- Judgement Breastplate
@@ -848,12 +848,12 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 16954 }, -- Judgement Legplates
 		{ id = 16957 }, -- Judgement Sabatons
 		{},
-		{ name = BIS["Judgement Battleplate"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Judgement Battleplate"], icon = "Ability_Defend" },
 		{ id = 47016 }, -- Judgement Helmet
 		{ id = 47017 }, -- Judgement Shoulderguards
 		{ id = 47018 }, -- Judgement Chestguard
 		{ id = 47019 }, -- Judgement Wristguards
-		{ name = BIS["Judgement Battlegear"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Judgement Battlegear"], icon = "Ability_Racial_Avatar" },
 		{ id = 47024 }, -- Judgement Crown
 		{ id = 47025 }, -- Judgement Pauldrons
 		{ id = 47026 }, -- Judgement Chestplate
@@ -999,7 +999,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47337 }, -- Cenarion Slippers
 	},
 	T1Shaman = {
-		{ name = BIS["The Earthfury"], icon = "Spell_FireResistanceTotem_01" },
+		{ name = BIS["The Earthfury"], icon = "Spell_Shaman_SpiritLink" },
 		{ id = 16842 }, -- Earthfury Helmet
 		{ id = 16844 }, -- Earthfury Epaulets
 		{ id = 16841 }, -- Earthfury Vestments
@@ -1009,12 +1009,12 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 16843 }, -- Earthfury Legguards
 		{ id = 16837 }, -- Earthfury Boots
 		{},
-		{ name = BIS["Earthfury Battlegear"], icon = "Spell_FireResistanceTotem_01" },
+		{ name = BIS["Earthfury Battlegear"], icon = "Ability_Shaman_StormStrike" },
 		{ id = 47120 }, -- Earthfury Crown
 		{ id = 47121 }, -- Earthfury Pauldrons
 		{ id = 47122 }, -- Earthfury Breastplate
 		{ id = 47123 }, -- Earthfury Bracelets
-		{ name = BIS["Earthfury Garb"], icon = "Spell_FireResistanceTotem_01" },
+		{ name = BIS["Earthfury Garb"], icon = "Spell_Nature_Earthquake" },
 		{ id = 47128 }, -- Earthfury Visor
 		{ id = 47129 }, -- Earthfury Epaulets
 		{ id = 47130 }, -- Earthfury Raiments
@@ -1061,7 +1061,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{},
 		{},
 		{},
-		{ name = BIS["Armor of Might"], icon = "INV_Shield_05" },
+		{ name = BIS["Armor of Might"], icon = "Ability_Gouge" },
 		{ id = 47240 }, -- Crown of Might
 		{ id = 47241 }, -- Pauldrons of Might
 		{ id = 47242 }, -- Chestplate of Might
@@ -1072,7 +1072,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47247 }, -- Sabatons of Might
 	},
 	T1Paladin = {
-		{ name = BIS["Lawbringer Armor"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Lawbringer Armor"], icon = "Spell_Holy_Power" },
 		{ id = 16854 }, -- Lawbringer Helm
 		{ id = 16856 }, -- Lawbringer Spaulders
 		{ id = 16853 }, -- Lawbringer Chestguard
@@ -1082,12 +1082,12 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 16855 }, -- Lawbringer Legplates
 		{ id = 16859 }, -- Lawbringer Boots
 		{},
-		{ name = BIS["Lawbringer Battleplate"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Lawbringer Battleplate"], icon = "Ability_Defend" },
 		{ id = 47000 }, -- Lawbringer Helmet
 		{ id = 47001 }, -- Lawbringer Shoulderguards
 		{ id = 47002 }, -- Lawbringer Chestguard
 		{ id = 47003 }, -- Lawbringer Wristguards
-		{ name = BIS["Lawbringer Battlegear"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Lawbringer Battlegear"], icon = "Ability_Racial_Avatar" },
 		{ id = 47008 }, -- Lawbringer Crown
 		{ id = 47009 }, -- Lawbringer Pauldrons
 		{ id = 47010 }, -- Lawbringer Chestplate
@@ -1450,13 +1450,13 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 21402 }, -- Signet of the Unseen Path
 	},
 	AQ20Paladin = {
-		{ name = BIS["Battlegear of Eternal Justice"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Battlegear of Eternal Justice"], icon = "Ability_Racial_Avatar" },
 		{ id = 21395 }, -- Blade of Eternal Justice
 		{ id = 21397 }, -- Cape of Eternal Justice
 		{ id = 21396 }, -- Ring of Eternal Justice
 	},
 	AQ20Shaman = {
-		{ name = BIS["Gift of the Gathering Storm"], icon = "Spell_FireResistanceTotem_01" },
+		{ name = BIS["Gift of the Gathering Storm"], icon = "Spell_Nature_Earthquake" },
 		{ id = 21398 }, -- Hammer of the Gathering Storm
 		{ id = 21400 }, -- Cloak of the Gathering Storm
 		{ id = 21399 }, -- Ring of the Gathering Storm
@@ -1550,14 +1550,14 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47371 }, -- Genesis Treads
 	},
 	AQ40Shaman = {
-		{ name = BIS["Stormcaller's Garb"], icon = "Spell_FireResistanceTotem_01" }, --Shaman
+		{ name = BIS["Stormcaller's Garb"], icon = "Spell_Nature_Earthquake" }, --elemental
 		{ id = 21374 }, -- Stormcaller's Hauberk
 		{ id = 21372 }, -- Stormcaller's Diadem
 		{ id = 21375 }, -- Stormcaller's Legplates
 		{ id = 21376 }, -- Stormcaller's Epaulets
 		{ id = 21373 }, -- Stormcaller's Greaves
 		{},
-		{ name = BIS["Stormcaller's Battlegear"], icon = "Spell_FireResistanceTotem_01" }, --Shaman
+		{ name = BIS["Stormcaller's Battlegear"], icon = "Spell_Nature_SpiritArmor" }, --tank
 		{ id = 47152 }, -- Stormcaller's Crown
 		{ id = 47153 }, -- Stormcaller's Pauldrons
 		{ id = 47154 }, -- Stormcaller's Breastplate
@@ -1565,7 +1565,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47156 }, -- Stormcaller's Sabatons
 		{},
 		{},
-		{ name = BIS["The Stormcaller"], icon = "Spell_FireResistanceTotem_01" }, --Shaman
+		{ name = BIS["The Stormcaller"], icon = "Spell_Shaman_SpiritLink" }, --restoration
 		{ id = 47157 }, -- Stormcaller's Helmet
 		{ id = 47158 }, -- Stormcaller's Spaulders
 		{ id = 47159 }, -- Stormcaller's Chestpiece
@@ -1597,14 +1597,14 @@ Sets = { --TODO source for variable set items, boss etc
 		]]
 	},
 	AQ40Paladin = {
-		{ name = BIS["Avenger's Battlegear"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Avenger's Battlegear"], icon = "Ability_Racial_Avatar" },
 		{ id = 21389 }, -- Avenger's Chestplate
 		{ id = 21387 }, -- Avenger's Crown
 		{ id = 21390 }, -- Avenger's Leggings
 		{ id = 21391 }, -- Avenger's Pauldrons
 		{ id = 21388 }, -- Avenger's Sabatons
 		{},
-		{ name = BIS["Avenger's Battleplate"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Avenger's Battleplate"], icon = "Ability_Defend" },
 		{ id = 47032 }, -- Avenger's Helmet
 		{ id = 47033 }, -- Avenger's Shoulderguards
 		{ id = 47034 }, -- Avenger's Chestguard
@@ -1612,7 +1612,7 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 47036 }, -- Avenger's Greaves
 		{},
 		{},
-		{ name = BIS["Avenger's Armor"], icon = "Spell_Holy_SealOfMight" },
+		{ name = BIS["Avenger's Armor"], icon = "Spell_Holy_Power" },
 		{ id = 47037 }, -- Avenger's Helm
 		{ id = 47038 }, -- Avenger's Spaulders
 		{ id = 47039 }, -- Avenger's Breastplate
@@ -2293,12 +2293,25 @@ Sets = { --TODO source for variable set items, boss etc
 		{ id = 22198 }, -- Jagged Obsidian Shield
 		{ id = 60010 }, -- Towerforge Demolisher
 		{ id = 61185 }, -- Dawnstone Hammer
-		{},
-		{},
-		{},
+		{ id = 17015 }, -- Dark Iron Reaver
+		{ id = 17016 }, -- Dark Iron Destroyer
+		{ id = 65004 }, -- Ornate Bloodstone Dagger
 		{ name = BS["Engineering"], icon = "Trade_Engineering" },
 		{ id = 18282 }, -- Core Marksman Rifle
 		{ id = 18168 }, -- Force Reactive Disk
+		{},
+		{ name = BS["Jewelcrafting"], icon = "INV_Jewelry_Necklace_01" },
+		{ id = 55361 }, -- Empowered Domination Rod
+		{ id = 55365 }, -- Rudeus' Focusing Cane
+		{ id = 55060 }, -- Grandstaff of the Shen'dralar Elder 1.18
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 65008 }, -- Dream's Herald
 	},
 	SteelPlate = {
 		{ name = BIS["Steel Plate Armor"] },
