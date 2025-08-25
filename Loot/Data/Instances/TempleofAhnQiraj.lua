@@ -333,7 +333,7 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
         { name = L["Merithra of the Dream"], color = "|cff00FF00" },
         {
             id = "AQ40Trash",
-            name = L["Trash Mobs"].." "..BZ["Temple of Ahn'Qiraj"],
+            name = L["Trash Mobs"].."-"..BZ["Temple of Ahn'Qiraj"],
             defaults = { dropRate = 2 },
             loot = {
                 {id=21838, dropRate=0.7},

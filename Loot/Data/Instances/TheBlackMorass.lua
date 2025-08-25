@@ -174,7 +174,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
         },
         {
             id = "COTTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].."-"..BZ["Black Morass"],
             defaults = { dropRate = .001 },
             loot = {
                 {id=61564},

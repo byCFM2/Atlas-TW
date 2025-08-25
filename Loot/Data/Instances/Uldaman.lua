@@ -190,8 +190,8 @@ AtlasTW.InstanceData.Uldaman = {
         },
         {
             id = "UldTrash",
-            name = L["Trash Mobs"],
-            defaults = { dropRate = 0.01 },
+            name = L["Trash Mobs"].."-"..BZ["Uldaman"],
+            defaults = { dropRate = .01 },
             loot = {
                 {id=9431},
                 {id=9429},

@@ -180,7 +180,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         },
         {
             id = "DRTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].."-"..BZ["Dragonmaw Retreat"],
             defaults = { dropRate = .1 },
             loot = {
                 { id = 70119, container={56046} }, --Plans: Circlet of Dampening

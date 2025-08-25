@@ -198,7 +198,7 @@ AtlasTW.InstanceData.DireMaulEast = {
         },
         {
             id = "DMETrash",
-            name = L["Trash Mobs"].." "..BZ["Dire Maul (East)"],
+            name = L["Trash Mobs"].."-"..BZ["Dire Maul (East)"],
             defaults = { dropRate = .5 },
             loot = {
                 {id=18289},
@@ -425,7 +425,7 @@ AtlasTW.InstanceData.DireMaulWest = {
         },
         {
             id = "DMWTrash",
-            name = L["Trash Mobs"].." "..BZ["Dire Maul (West)"],
+            name = L["Trash Mobs"].."-"..BZ["Dire Maul (West)"],
             defaults = { dropRate = 1.4 },
             loot = {
                 {id=18340, dropRate=1.4},
@@ -738,7 +738,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
         },
         {
             id = "DMNTrash",
-            name = L["Trash Mobs"].." "..BZ["Dire Maul (North)"],
+            name = L["Trash Mobs"].."-"..BZ["Dire Maul (North)"],
             loot = {
                 {id=18250,disc=L["Key"], dropRate=4},
                 {id=18640, disc=L["Misc"], dropRate=2},

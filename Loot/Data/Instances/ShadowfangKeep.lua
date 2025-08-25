@@ -195,7 +195,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         },
         {
             id = "SFKTrash",
-            name = L["Trash Mobs"].." "..BZ["Shadowfang Keep"],
+            name = L["Trash Mobs"].."-"..BZ["Shadowfang Keep"],
             defaults = { dropRate = .07 },
             loot = {
                 {id=2292},

@@ -72,19 +72,19 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
         },
         {
             id = "SMLTrash",
-            name = L["Trash Mobs"].." "..BZ["Scarlet Monastery"],
+            name = L["Trash Mobs"].."-"..BZ["Scarlet Monastery"],
             defaults = { dropRate = .01 },
             loot = {
                 {id=5819},
-                {id=80790, dropRate=0.1},
+                {id=80790, dropRate=.1},
                 {id=7755},
                 {id=7727},
                 {id=7728},
-                {id=80791, dropRate=0.02},
+                {id=80791, dropRate=.02},
                 {id=7759},
                 {id=7760},
                 {id=7754},
-                {id=10332, dropRate=0.1},
+                {id=10332, dropRate=.1},
                 {id=1992},
                 {id=2262},
                 {id=7787},
@@ -100,8 +100,8 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
                 {id=7730},
                 {id=7758},
                 {id=7757},
-                {id=80794, dropRate=0.02},
-                {id=80799, dropRate=0.02},
+                {id=80794, dropRate=.02},
+                {id=80799, dropRate=.02},
             }
         },
         { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
@@ -152,7 +152,7 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
         },
         {
             id = "SMATrash",
-            name = L["Trash Mobs"].." "..BZ["Scarlet Monastery (Armory)"],
+            name = L["Trash Mobs"].."-"..BZ["Scarlet Monastery (Armory)"],
             defaults = { dropRate = .01 },
             loot = {
                 {id=5819},
@@ -245,7 +245,7 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
         },
         {
             id = "SMCTrash",
-            name = L["Trash Mobs"].." "..BZ["Scarlet Monastery (Cathedral)"],
+            name = L["Trash Mobs"].."-"..BZ["Scarlet Monastery (Cathedral)"],
             defaults = { dropRate = .01 },
             loot = {
                 {id=5819},
@@ -390,7 +390,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
         },
         {
             id = "SMGTrash",
-            name = L["Trash Mobs"].." "..BZ["Scarlet Monastery (Graveyard)"],
+            name = L["Trash Mobs"].."-"..BZ["Scarlet Monastery (Graveyard)"],
             defaults = { dropRate = .01 },
             loot = {
                 {id=5819},

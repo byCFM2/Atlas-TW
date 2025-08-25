@@ -205,7 +205,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
         },
         {
             id = "LKHTrash",
-            name = L["Trash Mobs"].." "..BZ["Lower Karazhan Halls"],
+            name = L["Trash Mobs"].."-"..BZ["Lower Karazhan Halls"],
             defaults = { dropRate = .15 },
             loot = {
                 {id=51326, dropRate=.3, container={61666}},

@@ -241,7 +241,7 @@ AtlasTW.InstanceData.Maraudon = {
         },
         {
             id = "MARATrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].."-"..BZ["Maraudon"],
             defaults = { dropRate = .01 },
             loot = {
                 {id=80756},

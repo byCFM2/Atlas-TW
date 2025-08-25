@@ -160,7 +160,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
         },
         {
             id = "RFKTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].."-"..BZ["Razorfen Kraul"],
             defaults = { dropRate = .1 },
             loot = {
                 {id=80789},

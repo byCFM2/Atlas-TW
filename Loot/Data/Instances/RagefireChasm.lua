@@ -74,7 +74,7 @@ AtlasTW.InstanceData.RagefireChasm = {
         },
         {
             id = "RFCTrash",
-            name = L["Trash Mobs"].." "..BZ["Ragefire Chasm"],
+            name = L["Trash Mobs"].."-"..BZ["Ragefire Chasm"],
             loot = {
                 {id=12862, disc=L["Level One Luntic Challenge"], dropRate = 25},
             }

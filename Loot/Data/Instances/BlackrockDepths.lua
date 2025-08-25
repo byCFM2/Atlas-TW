@@ -453,7 +453,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
             color = "|cff9d9d9d",
         },
         {
-            name = L["Blacksmithing Plans"],
+            name = L["Blacksmithing Plans"].." ",
             color = "|cff9d9d9d",
         },
         {
@@ -600,7 +600,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
             }
         },
         {
-            name = L["Blacksmithing Plans"],
+            name = L["Blacksmithing Plans"].." ",
             color = "|cff9d9d9d",
         },
         {
@@ -733,8 +733,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             id = "BRDTrash",
-            name = L["Trash Mobs"].." "..BZ["Blackrock Depths"],
-            defaults = { dropRate = "0.01-0.5" },
+            name = L["Trash Mobs"].."-"..BZ["Blackrock Depths"],
+            defaults = { dropRate = .2 },
             loot = {
                 {id=12549},
                 {id=12552},
@@ -757,7 +757,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=11614, container={11606}},
                 {id=11615, container={11605}},
                 {id=16048, dropRate=1.8, container={16004}},
-                {id=16053, dropRate=0.7, container={16008}},
+                {id=16053, dropRate=.7, container={16008}},
                 {id=16049, dropRate=1, container={16005}},
                 {id=18654, dropRate=2, container={18645}},
                 {id=18661, dropRate=2, container={18660}},

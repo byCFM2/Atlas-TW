@@ -2,24 +2,24 @@
     <!-- Основные модули -->
     <Include file="ItemDB.lua"/>
     <!-- Данные подземелий -->
-    <Include file="Instances\Molten_Core.lua"/>
-    <Include file="Instances\Blackwing_Lair.lua"/>
-    <Include file="Instances\Emerald_Sanctum.lua"/>
-    <Include file="Instances\Onyxias_Lair.lua"/>
+    <Include file="Instances\MoltenCore.lua"/>
+    <Include file="Instances\BlackwingLair.lua"/>
+    <Include file="Instances\EmeraldSanctum.lua"/>
+    <Include file="Instances\OnyxiasLair.lua"/>
     <Include file="Instances\Naxxramas.lua"/>
-    <Include file="Instances\Ruins_of_AhnQiraj.lua"/>
-    <Include file="Instances\Temple_of_AhnQiraj.lua"/>
-    <Include file="Instances\Tower_of_Karazhan.lua"/>
-    <Include file="Instances\Zul_Gurub.lua"/>
-    <Include file="Instances\Upper_Blackrock_Spire.lua"/>
-    <Include file="Instances\Lower_Karazhan_Halls.lua"/>
+    <Include file="Instances\RuinsofAhnQiraj.lua"/>
+    <Include file="Instances\TempleofAhnQiraj.lua"/>
+    <Include file="Instances\TowerofKarazhan.lua"/>
+    <Include file="Instances\ZulGurub.lua"/>
+    <Include file="Instances\BlackrockSpireUpper.lua"/>
+    <Include file="Instances\LowerKarazhanHalls.lua"/>
     <Include file="Instances\Scholomance.lua"/>
     <Include file="Instances\Stratholme.lua"/>
-    <Include file="Instances\Stormwind_Vault.lua"/>
-    <Include file="Instances\Karazhan_Crypt.lua"/>
+    <Include file="Instances\StormwindVault.lua"/>
+    <Include file="Instances\KarazhanCrypt.lua"/>
     <Include file="Instances\BlackrockSpireLower.lua"/>
     <Include file="Instances\Maraudon.lua"/>
-    <Include file="Instances\The_Black_Morass.lua"/>
+    <Include file="Instances\TheBlackMorass.lua"/>
     <Include file="Instances\HateforgeQuarry.lua"/>
     <Include file="Instances\DireMaul.lua"/>
     <Include file="Instances\BlackrockDepths.lua"/>

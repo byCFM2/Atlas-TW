@@ -107,7 +107,7 @@ AtlasTW.InstanceData.TheCrescentGrove = {
         },
         {
             id = "TCGTrash",
-            name = L["Trash Mobs"].." "..BZ["The Crescent Grove"],
+            name = L["Trash Mobs"].."-"..BZ["The Crescent Grove"],
             defaults = { dropRate = .01 },
             loot = {
                 {id=83203},

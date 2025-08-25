@@ -389,7 +389,7 @@ AtlasTW.InstanceData.ZulGurub = {
 		},
         {
             id = "ZGTrash",
-            name = L["Trash Mobs"].." "..BZ["Zul'Gurub"],
+            name = L["Trash Mobs"].."-"..BZ["Zul'Gurub"],
             defaults = { dropRate = .03 },
             loot = {
                 {id=20263},

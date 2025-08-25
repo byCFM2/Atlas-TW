@@ -160,7 +160,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         },
         {
             id = "DMTrash",
-            name = L["Trash Mobs"].." "..BZ["The Deadmines"],
+            name = L["Trash Mobs"].."-"..BZ["The Deadmines"],
             loot = {
                 {id=8492, dropRate=4},
                 {},

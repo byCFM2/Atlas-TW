@@ -128,7 +128,7 @@ AtlasTW.InstanceData.HateforgeQuarry = {
         },
         {
             id = "HQTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].."-"..BZ["Hateforge Quarry"],
             defaults = { dropRate=.005 },
             loot = {
                 {id=84010, container={60576}},

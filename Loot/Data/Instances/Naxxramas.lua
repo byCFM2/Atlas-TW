@@ -429,7 +429,7 @@ AtlasTW.InstanceData.Naxxramas = {
         },
         {
             id = "NAXTrash",
-            name = L["Trash Mobs"].." "..BZ["Naxxramas"],
+            name = L["Trash Mobs"].."-"..BZ["Naxxramas"],
             defaults = { dropRate = 1 },
             loot = {
                 {id=23664},

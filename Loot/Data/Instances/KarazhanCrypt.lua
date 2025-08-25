@@ -181,7 +181,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
         },
         {
             id = "KCTrash",
-            name = L["Trash Mobs"].." "..BZ["Karazhan Crypt"],
+            name = L["Trash Mobs"].."-"..BZ["Karazhan Crypt"],
             defaults = { dropRate = .01 },
             loot = {
                 {id=60803},
