@@ -72,7 +72,7 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
         },
         {
             id = "SMLTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Scarlet Monastery"],
             defaults = { dropRate = .01 },
             loot = {
                 {id=5819},
@@ -152,7 +152,7 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
         },
         {
             id = "SMATrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Scarlet Monastery (Armory)"],
             defaults = { dropRate = .01 },
             loot = {
                 {id=5819},
@@ -245,7 +245,7 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
         },
         {
             id = "SMCTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Scarlet Monastery (Cathedral)"],
             defaults = { dropRate = .01 },
             loot = {
                 {id=5819},
@@ -390,7 +390,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
         },
         {
             id = "SMGTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Scarlet Monastery (Graveyard)"],
             defaults = { dropRate = .01 },
             loot = {
                 {id=5819},

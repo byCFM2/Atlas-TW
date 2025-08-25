@@ -71,8 +71,8 @@ AtlasTW.InstanceData.ZulGurub = {
         { name = BF["Zandalar Tribe"], loot = "ZandalarTribe" }
     },
 	Keys = {
-		{	name = L["Gurubashi Mojo Madness"],loot = "VanillaKeys",info = L["Edge of Madness"]	},
-		{	name = L["Mudskunk Lure"],loot = "VanillaKeys",info = BB["Gahz'ranka"]	},
+		{ name = L["Gurubashi Mojo Madness"],loot = "VanillaKeys",info = L["Edge of Madness"] },
+		{ name = L["Mudskunk Lure"],loot = "VanillaKeys",info = BB["Gahz'ranka"] },
 	},
     Bosses = {
         {
@@ -389,7 +389,7 @@ AtlasTW.InstanceData.ZulGurub = {
 		},
         {
             id = "ZGTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Zul'Gurub"],
             defaults = { dropRate = .03 },
             loot = {
                 {id=20263},

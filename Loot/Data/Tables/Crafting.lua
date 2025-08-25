@@ -849,8 +849,8 @@ local craftingTable = {
 		{ id=3330, skill={125,155,170,185} }, --Silvered Bronze Shoulders
 		{ id=9986, skill={130,160,175,190} }, --Bronze Greatsword
 		{ id=3296, skill={130,160,175,190} }, --Heavy Bronze Mace
-		{ name = L["Journeyman"], icon = "Trade_BlackSmithing" },
 		{ id=3331, skill={130,160,175,190} }, --Silvered Bronze Boots
+		{ name = L["Journeyman"], icon = "Trade_BlackSmithing" },
 		{ id=2673, skill={130,160,175,190} }, --Silvered Bronze Breastplate
 		{ id=9987, skill={135,165,180,195} }, --Bronze Battle Axe
 		{ id=3333, skill={135,165,180,195} }, --Silvered Bronze Gauntlets

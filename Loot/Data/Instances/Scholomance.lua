@@ -338,7 +338,7 @@ AtlasTW.InstanceData.Scholomance = {
         { prefix = "3')",name = L["Alchemy Lab"], color = "|cff00FF00"},
         {
             id = "SCHOLOTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Scholomance"],
             loot = {
                 {id=16685, disc=L["Mage"]..", T0", container={22062}, dropRate=1.5},
                 {id=16702, disc=L["Warlock"]..", T0", container={22070}, dropRate=1.5},

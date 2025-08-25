@@ -268,7 +268,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
         },
         {
             id = "K40Trash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Tower of Karazhan"],
             defaults = { dropRate = 0.25 },
             loot = {
                 {id=55278},

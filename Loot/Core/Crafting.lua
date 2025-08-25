@@ -22,8 +22,7 @@ AtlasTW.Loot.CraftingMenuData = {
     {},
     { name = BS["Poisons"], Extra = BC["Rogue"], icon = "Interface\\Icons\\Trade_BrewPoison", lootpage = "Poisons" },
     {},
-    { name = L["Crafted Sets"].." ("..BS["Cloth"]..", "..BS["Leather"]..")", icon = "Interface\\Icons\\INV_Box_01", lootpage = "AtlasLootCraftedSetMenu" },
-    { name = L["Crafted Sets"].." ("..BS["Mail"]..", "..BS["Plate"]..")", icon = "Interface\\Icons\\INV_Box_02", lootpage = "AtlasLootCraftedSet2Menu" },
+    { name = L["Crafted Sets"], icon = "Interface\\Icons\\INV_Box_01", lootpage = "AtlasLootCraftedSetMenu" },
     {},
     { name = L["Crafted Epic Weapons"], icon = "Interface\\Icons\\INV_Hammer_Unique_Sulfuras", lootpage = "CraftedWeapons" },
 }
@@ -31,12 +30,13 @@ AtlasTW.Loot.CraftingMenuData = {
 function AtlasLoot_CraftingMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = L["Crafting"] }
     AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.CraftingMenuData
+    -- Главное меню крафтинга не имеет родительской страницы
+    AtlasLootItemsFrame.StoredBackMenuName = nil
     AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local craftedSetMenuData = {
-    { name = RED..BS["Tailoring"], icon = "Interface\\Icons\\INV_Chest_Cloth_21", isheader = true },
-    {},
+    { name = RED..BS["Tailoring"], Extra = BS["Cloth"], icon = "Interface\\Icons\\INV_Chest_Cloth_21", isheader = true },
     { name = BIS["Augerer's Attire"], icon = "Interface\\Icons\\INV_Helmet_11", lootpage = "AugerersAttire" },
     { name = BIS["Shadoweave"], icon = "Interface\\Icons\\INV_Helmet_27", lootpage = "ShadoweaveSet" },
     { name = BIS["Diviner's Garments"], icon = "Interface\\Icons\\INV_Helmet_33", lootpage = "DivinersGarments" },
@@ -46,12 +46,12 @@ local craftedSetMenuData = {
     { name = BIS["Flarecore Regalia"], icon = "Interface\\Icons\\inv_chest_cloth_18", lootpage = "FlarecoreRegalia" },
     { name = BIS["Dreamthread Regalia"], icon = "Interface\\Icons\\INV_Gauntlets_23", lootpage = "DreamthreadRegalia" },
     {},
-    {},
-    {},
-    {},
-    {},
+    { name = RED..BS["Leatherworking"], Extra = BS["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_12", isheader = true },
+    { name = BIS["Red Dragon Mail"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\inv_chest_chain_06", lootpage = "RedDragonM" },
+    { name = BIS["Green Dragon Mail"], Extra = L["Nature Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_05", lootpage = "GreenDragonM" },
+    { name = BIS["Blue Dragon Mail"], Extra = L["Arcane Resistance Gear"], icon = "Interface\\Icons\\INV_Chest_Chain_04", lootpage = "BlueDragonM" },
+    { name = BIS["Black Dragon Mail"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_03", lootpage = "BlackDragonM" },
     { name = RED..BS["Leatherworking"], Extra = BS["Leather"], icon = "Interface\\Icons\\INV_Chest_Leather_04", isheader = true },
-    {},
     { name = BIS["Grifter's Armor"], icon = "Interface\\Icons\\INV_Helmet_33", lootpage = "GriftersArmor" },
     { name = BIS["Primalist's Trappings"], icon = "Interface\\Icons\\Inv_Chest_Plate06", lootpage = "PrimalistsTrappings" },
     { name = BIS["Volcanic Armor"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_06", lootpage = "VolcanicArmor" },
@@ -62,21 +62,10 @@ local craftedSetMenuData = {
     { name = BIS["Primal Batskin"], icon = "Interface\\Icons\\INV_Chest_Leather_03", lootpage = "PrimalBatskin" },
     { name = BIS["Convergence of the Elements"], icon = "Interface\\Icons\\INV_Helmet_13", lootpage = "ConvergenceoftheElements" },
     { name = BIS["Dreamhide Battlegarb"], icon = "Interface\\Icons\\inv_shoulder_18", lootpage = "DreamhideBattlegarb" },
-}
-
-function AtlasLootCraftedSetMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = L["Crafted Sets"] }
-    AtlasLootItemsFrame.StoredMenu = craftedSetMenuData
-    AtlasTW.Loot.ScrollBarLootUpdate()
-end
-
-local craftedSet2MenuData = {
-    { name = RED..BS["Leatherworking"], Extra = BS["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_12", isheader = true },
     {},
-    { name = BIS["Red Dragon Mail"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\inv_chest_chain_06", lootpage = "RedDragonM" },
-    { name = BIS["Green Dragon Mail"], Extra = L["Nature Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_05", lootpage = "GreenDragonM" },
-    { name = BIS["Blue Dragon Mail"], Extra = L["Arcane Resistance Gear"], icon = "Interface\\Icons\\INV_Chest_Chain_04", lootpage = "BlueDragonM" },
-    { name = BIS["Black Dragon Mail"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_03", lootpage = "BlackDragonM" },
+    { name = RED..BS["Blacksmithing"], Extra = BS["Plate"], icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
+    { name = BIS["Steel Plate Armor"], icon = "Interface\\Icons\\INV_Helmet_25", lootpage = "SteelPlate" },
+    { name = BIS["Imperial Plate"], icon = "Interface\\Icons\\INV_Belt_01", lootpage = "ImperialPlate" },
     {},
     { name = RED..BS["Blacksmithing"], Extra = BS["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
     { name = BIS["Bloodsoul Embrace"], icon = "Interface\\Icons\\INV_Shoulder_15", lootpage = "BloodsoulEmbrace" },
@@ -86,18 +75,22 @@ local craftedSet2MenuData = {
     {},
     {},
     {},
-    { name = RED..BS["Blacksmithing"], Extra = BS["Plate"], icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
     {},
-    { name = BIS["Steel Plate Armor"], icon = "Interface\\Icons\\INV_Helmet_25", lootpage = "SteelPlate" },
-    { name = BIS["Imperial Plate"], icon = "Interface\\Icons\\INV_Belt_01", lootpage = "ImperialPlate" },
+    {},
+    {},
+    {},
+    {},
+    {},
     { name = BIS["Rune-Etched Armor"], icon = "Interface\\Icons\\inv_helmet_06", lootpage = "RuneEtchedArmor" },
     { name = BIS["The Darksoul"], icon = "Interface\\Icons\\INV_Shoulder_01", lootpage = "TheDarksoul" },
     { name = BIS["Dreamsteel Armor"], icon = "Interface\\Icons\\INV_Bracer_03", lootpage = "DreamsteelArmor" },
 }
 
-function AtlasLootCraftedSet2Menu()
-    AtlasLootItemsFrame.StoredElement = { menuName = L["Crafted Sets"].." 2" }
-    AtlasLootItemsFrame.StoredMenu = craftedSet2MenuData
+function AtlasLootCraftedSetMenu()
+    AtlasLootItemsFrame.StoredElement = { menuName = L["Crafted Sets"] }
+    AtlasLootItemsFrame.StoredMenu = craftedSetMenuData
+    -- Родительская страница - главное меню крафтинга
+    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
     AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
@@ -120,6 +113,8 @@ local alchemyMenuData = {
 function AtlasLoot_AlchemyMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = BS["Alchemy"], defaultIcon = "Interface\\Icons\\Trade_Alchemy" }
     AtlasLootItemsFrame.StoredMenu = alchemyMenuData
+    -- Родительская страница - главное меню крафтинга
+    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
     AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
@@ -135,17 +130,17 @@ local smithingMenuData = {
     { name = BS["Blacksmithing"]..": "..L["Chest"], lootpage = "SmithingChest" },
     { name = BS["Blacksmithing"]..": "..L["Bracers"], lootpage = "SmithingBracers" },
     { name = BS["Blacksmithing"]..": "..L["Gloves"], lootpage = "SmithingGloves" },
-    { name = BS["Blacksmithing"]..":"..L["Belt"], lootpage = "SmithingBelt" },
-    { name = BS["Blacksmithing"]..":"..L["Pants"], lootpage = "SmithingPants" },
-    { name = BS["Blacksmithing"]..":"..L["Boots"], lootpage = "SmithingBoots" },
-    { name = BS["Blacksmithing"]..":"..L["Belt Buckles"], lootpage = "SmithingBuckles" },
+    { name = BS["Blacksmithing"]..": "..L["Belt"], lootpage = "SmithingBelt" },
+    { name = BS["Blacksmithing"]..": "..L["Pants"], lootpage = "SmithingPants" },
+    { name = BS["Blacksmithing"]..": "..L["Boots"], lootpage = "SmithingBoots" },
+    { name = BS["Blacksmithing"]..": "..L["Belt Buckles"], lootpage = "SmithingBuckles" },
     {},
     { name = BS["Blacksmithing"]..": "..L["Axes"], lootpage = "SmithingAxes" },
     { name = BS["Blacksmithing"]..": "..L["Swords"], lootpage = "SmithingSwords" },
     { name = BS["Blacksmithing"]..": "..L["Maces"], lootpage = "SmithingMaces" },
     { name = BS["Blacksmithing"]..": "..L["Fist"], lootpage = "SmithingFist" },
     { name = BS["Blacksmithing"]..": "..L["Daggers"], lootpage = "SmithingDaggers" },
-    { name = BS["Blacksmithing"]..":"..L["Misc"], lootpage = "SmithingMisc" },
+    { name = BS["Blacksmithing"]..": "..L["Misc"], lootpage = "SmithingMisc" },
     {},
     { name = BS["Blacksmithing"]..": "..BS["Armorsmith"], icon = "Interface\\Icons\\INV_Chest_Plate04", lootpage = "Armorsmith" },
     { name = BS["Blacksmithing"]..": "..BS["Weaponsmith"], icon = "Interface\\Icons\\INV_Sword_25", lootpage = "Weaponsmith" },
@@ -157,6 +152,8 @@ local smithingMenuData = {
 function AtlasLoot_SmithingMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = BS["Blacksmithing"], defaultIcon = "Interface\\Icons\\Trade_BlackSmithing" }
     AtlasLootItemsFrame.StoredMenu = smithingMenuData
+    -- Родительская страница - главное меню крафтинга
+    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
     AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
@@ -181,6 +178,8 @@ local enchantingMenuData = {
 function AtlasLoot_EnchantingMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = BS["Enchanting"], defaultIcon = "Interface\\Icons\\Trade_Engraving" }
     AtlasLootItemsFrame.StoredMenu = enchantingMenuData
+    -- Родительская страница - главное меню крафтинга
+    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
     AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
@@ -208,6 +207,8 @@ local engineeringMenuData = {
 function AtlasLoot_EngineeringMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = BS["Engineering"], defaultIcon = "Interface\\Icons\\Trade_Engineering" }
     AtlasLootItemsFrame.StoredMenu = engineeringMenuData
+    -- Родительская страница - главное меню крафтинга
+    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
     AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
@@ -239,6 +240,8 @@ local leatherworkingMenuData = {
 function AtlasLoot_LeatherworkingMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = BS["Leatherworking"], defaultIcon = "Interface\\Icons\\INV_Misc_ArmorKit_17" }
     AtlasLootItemsFrame.StoredMenu = leatherworkingMenuData
+    -- Родительская страница - главное меню крафтинга
+    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
     AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
@@ -251,6 +254,8 @@ local miningMenuData = {
 function AtlasLoot_MiningMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = BS["Mining"], defaultIcon = "Interface\\Icons\\Trade_Mining" }
     AtlasLootItemsFrame.StoredMenu = miningMenuData
+    -- Родительская страница - главное меню крафтинга
+    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
     AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
@@ -279,6 +284,8 @@ local tailoringMenuData = {
 function AtlasLoot_TailoringMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = BS["Tailoring"], defaultIcon = "Interface\\Icons\\Trade_Tailoring" }
     AtlasLootItemsFrame.StoredMenu = tailoringMenuData
+    -- Родительская страница - главное меню крафтинга
+    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
     AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
@@ -306,6 +313,8 @@ local jewelcraftMenuData = {
 function AtlasLoot_JewelcraftingMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = BS["Jewelcrafting"], defaultIcon = "Interface\\Icons\\INV_Jewelry_Necklace_01" }
     AtlasLootItemsFrame.StoredMenu = jewelcraftMenuData
+    -- Родительская страница - главное меню крафтинга
+    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
     AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
@@ -320,5 +329,7 @@ local cookingMenuData = {
 function AtlasLoot_CookingMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = BS["Cooking"], defaultIcon = "Interface\\Icons\\INV_Misc_Food_15" }
     AtlasLootItemsFrame.StoredMenu = cookingMenuData
+    -- Родительская страница - главное меню крафтинга
+    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
     AtlasTW.Loot.ScrollBarLootUpdate()
 end

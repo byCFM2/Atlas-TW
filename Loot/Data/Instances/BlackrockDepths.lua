@@ -733,7 +733,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             id = "BRDTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Blackrock Depths"],
             defaults = { dropRate = "0.01-0.5" },
             loot = {
                 {id=12549},

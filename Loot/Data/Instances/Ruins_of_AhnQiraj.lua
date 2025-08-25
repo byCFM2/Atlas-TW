@@ -256,7 +256,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
         { prefix = "1') ", name = L["Safe Room"], color = "|cff00FF00" },
         {
             id = "AQ20Trash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Ruins of Ahn'Qiraj"],
             defaults = { dropRate = 2 },
             loot = {
                 {id=21804, dropRate=0.2},

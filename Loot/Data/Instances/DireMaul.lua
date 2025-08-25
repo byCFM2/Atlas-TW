@@ -26,7 +26,7 @@ local ShareLoot = {
 
 -- Данные Dire Maul East
 AtlasTW.InstanceData.DireMaulEast = {
-    Name = BZ["Dire Maul"] .. " (" .. L["East"] .. ")",
+    Name = BZ["Dire Maul (East)"],
     Location = BZ["Feralas"],
     Level = {50,58},
     Acronym = "DME",
@@ -41,8 +41,7 @@ AtlasTW.InstanceData.DireMaulEast = {
     Bosses = {
         {
             prefix = "1)",
-            name = BB["Pusillin"],
-            postfix = L["Chase Begins"],
+            name = BB["Pusillin"].." <"..L["Chase Begins"]..">",
             color = "|cff9d9d9d",
         },
         {
@@ -199,7 +198,7 @@ AtlasTW.InstanceData.DireMaulEast = {
         },
         {
             id = "DMETrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Dire Maul (East)"],
             defaults = { dropRate = .5 },
             loot = {
                 {id=18289},
@@ -232,7 +231,7 @@ AtlasTW.InstanceData.DireMaulEast = {
 
 -- Данные Dire Maul West
 AtlasTW.InstanceData.DireMaulWest = {
-    Name = BZ["Dire Maul"] .. " (" .. L["West"] .. ")",
+    Name = BZ["Dire Maul (West)"],
     Location = BZ["Feralas"],
     Level = {50,60},
     Acronym = "DMW",
@@ -241,7 +240,7 @@ AtlasTW.InstanceData.DireMaulWest = {
     Entrances = {
         { letter = "A) " .. L["Main Entrance"] },
         { letter = "B) " .. L["Pylons"] },
-        { letter = "C) " .. BZ["Dire Maul"] .. " (" .. L["North"] .. ")" }
+        { letter = "C) " .. BZ["Dire Maul (North)"] }
     },
     Keys = {
         { name = L["Crescent Key"], loot = "VanillaKeys" },
@@ -426,7 +425,7 @@ AtlasTW.InstanceData.DireMaulWest = {
         },
         {
             id = "DMWTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Dire Maul (West)"],
             defaults = { dropRate = 1.4 },
             loot = {
                 {id=18340, dropRate=1.4},
@@ -484,7 +483,7 @@ AtlasTW.InstanceData.DireMaulWest = {
 
 -- Данные Dire Maul North
 AtlasTW.InstanceData.DireMaulNorth = {
-    Name = BZ["Dire Maul"] .. " (" .. L["North"] .. ")",
+    Name = BZ["Dire Maul (North)"],
     Location = BZ["Feralas"],
     Level = {57,60},
     Acronym = "DMN",
@@ -493,7 +492,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
     Entrances = {
         { letter = "A) " .. L["Main Entrance"] },
         { letter = "B) " .. L["Library"] },
-        { letter = "C) " .. BZ["Dire Maul"] .. " (" .. L["West"] .. ")" }
+        { letter = "C) " .. BZ["Dire Maul (West)"] }
     },
     Keys = {
         { name = L["Crescent Key"], loot = "VanillaKeys" },
@@ -739,7 +738,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
         },
         {
             id = "DMNTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Dire Maul (North)"],
             loot = {
                 {id=18250,disc=L["Key"], dropRate=4},
                 {id=18640, disc=L["Misc"], dropRate=2},

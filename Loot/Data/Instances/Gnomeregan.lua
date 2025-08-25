@@ -66,7 +66,7 @@ AtlasTW.InstanceData.GnomereganEnt = {
         },
         {
             id = "GNOutsideTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Gnomeregan"],
             loot = {
                 {id=9279, dropRate=15, container={9280}},
             }
@@ -251,7 +251,7 @@ AtlasTW.InstanceData.Gnomeregan = {
         },
         {
             id = "GNTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Gnomeregan"],
             defaults = { dropRate = .1 },
             loot = {
                 {id=9508},

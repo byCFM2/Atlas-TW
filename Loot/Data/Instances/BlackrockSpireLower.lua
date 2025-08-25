@@ -391,7 +391,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         },
         {
             id = "LBRSTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Lower Blackrock Spire"],
             defaults = { dropRate = 2 },
             loot = {
                 {id=14513, dropRate=10, container={14152}},

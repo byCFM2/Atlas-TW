@@ -546,7 +546,7 @@ AtlasTW.InstanceData.Stratholme = {
         },
         {
             id = "STRATTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Stratholme"],
             defaults = { dropRate = 2 },
             loot = {
                 {id=16697, disc=L["Priest"]..", T0", container={22079}},

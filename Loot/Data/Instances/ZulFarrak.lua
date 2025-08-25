@@ -226,7 +226,7 @@ AtlasTW.InstanceData.ZulFarrak = {
         },
         {
             id = "ZFTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Zul'Farrak"],
             defaults = { dropRate = .02 },
             loot = {
                 {id=9512},

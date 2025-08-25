@@ -3,7 +3,7 @@ AtlasLoot = AceLibrary("AceAddon-2.0"):new("AceDBa-2.0")
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 AtlasTW.Loot = AtlasTW.Loot or {}
-
+local BS = AceLibrary("Babble-Spell-2.2a")
 --Instance required libraries
 local L = AtlasTW.Local
 
@@ -104,19 +104,19 @@ end
 ]]
 function AtlasLoot_GetBossNavigation(data) --TODO remake
     if not data then return nil end
-    
-    print("AtlasLoot_GetBossNavigation: ищем навигацию для " .. tostring(data))
 
-    -- Ищем босса в AtlasTW.InstanceData
+   -- print("AtlasLoot_GetBossNavigation: ищем навигацию для " .. tostring(data))
+
+    -- Ищем босса в AtlasTW.InstanceData по имени вместо id
     for instanceKey, instanceData in pairs(AtlasTW.InstanceData or {}) do
         if instanceData.Bosses then
             for i, bossData in ipairs(instanceData.Bosses) do
-                if bossData.id == data then
-                    print("AtlasLoot_GetBossNavigation: найден босс " .. tostring(bossData.name or bossData.id) .. " в инстансе " .. tostring(instanceKey))
+                if bossData.name == data then
+                   -- print("AtlasLoot_GetBossNavigation: найден босс " .. tostring(bossData.name or bossData.id) .. " в инстансе " .. tostring(instanceKey))
                     local nav = {}
                     nav.Title = bossData.name or bossData.id
                     local numEntries = table.getn(instanceData.Bosses)
-                    print("AtlasLoot_GetBossNavigation: текущий индекс " .. tostring(i) .. ", всего боссов " .. tostring(numEntries))
+                   -- print("AtlasLoot_GetBossNavigation: текущий индекс " .. tostring(i) .. ", всего боссов " .. tostring(numEntries))
 
                     -- Функция для поиска предыдущего валидного элемента
                     local function findPrevValidEntry(startIndex)
@@ -126,8 +126,8 @@ function AtlasLoot_GetBossNavigation(data) --TODO remake
                                 checkIndex = numEntries + checkIndex
                             end
                             local checkBoss = instanceData.Bosses[checkIndex]
-                            if checkBoss and checkBoss.id and (checkBoss.items or checkBoss.loot or type(checkBoss.items) == "string") then
-                                print("AtlasLoot_GetBossNavigation: найден предыдущий валидный элемент на индексе " .. tostring(checkIndex) .. ": " .. tostring(checkBoss.id))
+                            if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot) and type(checkBoss.items) ~= "string" then
+                                --print("AtlasLoot_GetBossNavigation: найден предыдущий валидный элемент на индексе " .. tostring(checkIndex) .. ": " .. tostring(checkBoss.name))
                                 return checkIndex, checkBoss
                             end
                         end
@@ -142,8 +142,9 @@ function AtlasLoot_GetBossNavigation(data) --TODO remake
                                 checkIndex = checkIndex - numEntries
                             end
                             local checkBoss = instanceData.Bosses[checkIndex]
-                            if checkBoss and checkBoss.id and (checkBoss.items or checkBoss.loot or type(checkBoss.items) == "string") then
-                                print("AtlasLoot_GetBossNavigation: найден следующий валидный элемент на индексе " .. tostring(checkIndex) .. ": " .. tostring(checkBoss.id))
+                           -- if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot or type(checkBoss.items) == "string") then
+                            if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot) and type(checkBoss.items) ~= "string" then --for boss loot only without sets etc
+                                --print("AtlasLoot_GetBossNavigation: найден следующий валидный элемент на индексе " .. tostring(checkIndex) .. ": " .. tostring(checkBoss.name))
                                 return checkIndex, checkBoss
                             end
                         end
@@ -153,22 +154,23 @@ function AtlasLoot_GetBossNavigation(data) --TODO remake
                     -- Поиск предыдущего валидного элемента
                     local prevIndex, prevBoss = findPrevValidEntry(i)
                     if prevBoss then
-                        nav.Prev_Page = prevBoss.id
+                        nav.Prev_Page = prevBoss.name
                         nav.Prev_Title = prevBoss.name or prevBoss.id
                     end
 
                     -- Поиск следующего валидного элемента
                     local nextIndex, nextBoss = findNextValidEntry(i)
                     if nextBoss then
-                        nav.Next_Page = nextBoss.id
+                        nav.Next_Page = nextBoss.name
                         nav.Next_Title = nextBoss.name or nextBoss.id
                     end
 
-                    -- Back to instance menu
-                    nav.Back_Page = instanceKey
-                    nav.Back_Title = instanceData.Name
-                    
-                    print("AtlasLoot_GetBossNavigation: возвращаем nav - Next: " .. tostring(nav.Next_Page) .. ", Prev: " .. tostring(nav.Prev_Page) .. ", Back: " .. tostring(nav.Back_Page))
+                    -- Back to dungeons menu
+					--[[ 
+					nav.Back_Page = "DUNGEONSMENU"
+					nav.Back_Title = L["Dungeons & Raids"] ]]
+
+                   -- print("AtlasLoot_GetBossNavigation: возвращаем nav - Next: " .. tostring(nav.Next_Page) .. ", Prev: " .. tostring(nav.Prev_Page) .. ", Back: " .. tostring(nav.Back_Page))
                     return nav
                 end
             end
@@ -258,7 +260,7 @@ end
 --AtlasTW.LootCurrentItems = nil  -- Текущие элементы для отображения
 
 -- Глобальный индекс боссов для быстрого поиска
-AtlasTW.BossLootIndex = {}
+--AtlasTW.BossLootIndex = {}
 
 -- Функция построения индекса боссов (вызывается при инициализации)
 --[[ function AtlasTW.BuildBossLootIndex()
@@ -729,7 +731,7 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 	_G["AtlasLootItemsFrame_NEXT"]:Hide()
 	_G["AtlasLootItemsFrame_PREV"]:Hide()
 	if type(dataSource) == "table" then
-		print("AtlasLoot_Show2ItemsFrame: table")
+		--print("AtlasLoot_Show2ItemsFrame: table")
 		local BZ = AceLibrary("Babble-Zone-2.2a")
     	local quantityFrame, menuButton, extraText, defaultIcon, itemButton, iconFrame, nameFrame, extraFrame, borderFrame
 
@@ -1002,7 +1004,7 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 			end
 		end
 	elseif type(_G[dataSource]) == "function" then
-		print("AtlasLoot_Show2ItemsFrame: function - "..(dataSource or "-"))
+		--print("AtlasLoot_Show2ItemsFrame: function - "..(dataSource or "-"))
 		_G[dataSource]()
 	else
 		--print("Unknown dataSource type: "..type(dataSource).." - "..(dataSource or "dataSource nil"))
@@ -1018,9 +1020,9 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 		-- навигация обрабатывается через AtlasLoot_ShowItemsFrame для Search/WishList
 	else
 		local nav = AtlasLoot_GetBossNavigation(dataID)
-		print("ScrollBarLootUpdate: nav для " .. tostring(dataID) .. " = " .. tostring(nav and "найдена" or "не найдена"))
+		--print("ScrollBarLootUpdate: nav для " .. tostring(dataID) .. " = " .. tostring(nav and "найдена" or "не найдена"))
 		if nav then
-			print("ScrollBarLootUpdate: устанавливаем навигацию - Next: " .. tostring(nav.Next_Page) .. ", Prev: " .. tostring(nav.Prev_Page) .. ", Back: " .. tostring(nav.Back_Page))
+			--print("ScrollBarLootUpdate: устанавливаем навигацию - Next: " .. tostring(nav.Next_Page) .. ", Prev: " .. tostring(nav.Prev_Page) .. ", Back: " .. tostring(nav.Back_Page))
 			if nav.Next_Page then
 				_G["AtlasLootItemsFrame_NEXT"]:Show()
 				_G["AtlasLootItemsFrame_NEXT"].lootpage = nav.Next_Page
@@ -1533,7 +1535,7 @@ function AtlasLootBoss_OnClick(buttonName)
 	AtlasLootScrollBarScrollBar:SetValue(0)
    local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
     local id = this.idnum
-    local elemName = AtlasTW.ScrollList[id].name ~= "Trash Mobs" and AtlasTW.ScrollList[id].name or AtlasTW.ScrollList[id].id
+    local elemName = AtlasTW.ScrollList[id].name
 	local lootTable = GetLootByElemName(elemName,zoneID)
 
     if AtlasLootItemsFrame.activeElement == id then
@@ -1576,8 +1578,8 @@ end
 function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	--AtlasTWCharDB.LastMenu = { tablename, text, tabletype }
 	--If the button clicked was linked to a loot table (default behavior for simplified structure)
-	print("AtlasLoot_HewdropClick: tablename "..(tablename or "-"))
-	print("AtlasLoot_HewdropClick: text "..(text or "-"))
+	--print("AtlasLoot_HewdropClick: tablename "..(tablename or "-"))
+	--print("AtlasLoot_HewdropClick: text "..(text or "-"))
 	if tablename then
 		--Store the loot table and boss name
 		AtlasLootItemsFrame:Show()
@@ -1839,14 +1841,52 @@ function AtlasLoot_OpenMenu(menuName)
 		[L["Collections"]] = "AtlasLootSetMenu",
 		[L["Factions"]] = "AtlasLootRepMenu",
 		[L["Dungeons & Raids"]] = "AtlasLoot_DungeonsMenu",
+		[BS["Alchemy"]] = "AtlasLoot_AlchemyMenu",
+		[BS["Blacksmithing"]] = "AtlasLoot_SmithingMenu",
+		[BS["Enchanting"]] = "AtlasLoot_EnchantingMenu",
+		[BS["Engineering"]] = "AtlasLoot_EngineeringMenu",
+		[BS["Leatherworking"]] = "AtlasLoot_LeatherworkingMenu",
+		[BS["Mining"]] = "AtlasLoot_MiningMenu",
+		[BS["Tailoring"]] = "AtlasLoot_TailoringMenu",
+		[BS["Jewelcrafting"]] = "AtlasLoot_JewelcraftingMenu",
+		[BS["Cooking"]] = "AtlasLoot_CookingMenu",
+		[L["Crafted Sets"]] = "AtlasLootCraftedSetMenu",
+		[L["PvP Armor Sets"]] = "AtlasLootPVPSetMenu",
+		[L["Priest Sets"]] = "AtlasLootPriestSetMenu",
+		[L["Mage Sets"]] = "AtlasLootMageSetMenu",
+		[L["Warrior Sets"]] = "AtlasLootWarriorSetMenu",
+		[L["Rogue Sets"]] = "AtlasLootRogueSetMenu",
+		[L["Shaman Sets"]] = "AtlasLootShamanSetMenu",
+		[L["Paladin Sets"]] = "AtlasLootPaladinSetMenu",
+		[L["Druid Sets"]] = "AtlasLootDruidSetMenu",
+		[L["Hunter Sets"]] = "AtlasLootHunterSetMenu",
+		[L["Warlock Sets"]] = "AtlasLootWarlockSetMenu",
+		[L["Pre 60 Sets"]] = "AtlasLootPRE60SetMenu",
+		[L["Zul'Gurub Sets"]] = "AtlasLootZGSetMenu",
+		[L["Temple of Ahn'Qiraj Sets"]] = "AtlasLootAQ40SetMenu",
+		[L["Ruins of Ahn'Qiraj Sets"]] = "AtlasLootAQ20SetMenu",
+		[L["Tower of Karazhan Sets"]] = "AtlasLootUKSetMenu",
+		[L["Tier 0/0.5 Sets"]] = "AtlasLootT0SetMenu",
+		[L["Tier 1 Sets"]] = "AtlasLootT1SetMenu",
+		[L["Tier 2 Sets"]] = "AtlasLootT2SetMenu",
+		[L["Tier 3 Sets"]] = "AtlasLootT3SetMenu",
+		[L["World Blues"]] = "AtlasLootWorldBluesMenu",
 	}
 
 	local lootTable = menuMapping[menuName]
 	if lootTable then
+		--print("AtlasLoot_OpenMenu: найдено меню "..menuName.." -> "..lootTable)
 		AtlasLootItemsFrame.StoredElement = { menuName = menuName }
 		AtlasLootItemsFrame.StoredMenu = lootTable
 		AtlasLootItemsFrame.StoredBackMenuName = nil -- Очищаем при возврате в меню
-		AtlasTW.Loot.ScrollBarLootUpdate()
+		-- Вызываем функцию меню
+		if type(_G[lootTable]) == "function" then
+			_G[lootTable]()
+		else
+			AtlasTW.Loot.ScrollBarLootUpdate()
+		end
+	else
+		--print("AtlasLoot_OpenMenu: меню не найдено - "..menuName)
 	end
 	CloseDropDownMenus()
 end
@@ -1915,7 +1955,7 @@ function AtlasLootMenuItem_OnClick(button)
 	--	AtlasTWCharDB.LastBoss = TableSource
 	--	AtlasTWCharDB.LastBossText = pagename
 
-		print(dataID.." - dataID, "..TableSource.." - TableSource")
+		--print(dataID.." - dataID, "..TableSource.." - TableSource")
 		AtlasLootItemsFrame:Show()
 		AtlasLoot_ShowScrollBarLoading()
 
@@ -1940,48 +1980,92 @@ function AtlasLootMenuItem_OnClick(button)
 	end
 end
 
+-- Функция поиска индекса босса в ScrollList по ID или имени
+local function FindBossIndexInScrollList(bossIdOrName)
+	if not AtlasTW.ScrollList or not bossIdOrName then
+		return nil
+	end
+
+	for i = 1, table.getn(AtlasTW.ScrollList) do
+		local entry = AtlasTW.ScrollList[i]
+		if entry and (entry.id == bossIdOrName or entry.name == bossIdOrName) then
+			--print("FindBossIndexInScrollList: найден босс " .. tostring(bossIdOrName) .. " на индексе " .. tostring(i))
+			return i
+		end
+	end
+
+	--print("FindBossIndexInScrollList: босс " .. tostring(bossIdOrName) .. " не найден в ScrollList")
+	return nil
+end
+
 --[[
 	Called when <-, -> or 'Back' are pressed and calls up the appropriate loot page
 ]]
 function AtlasLoot_NavButton_OnClick()
-	print("AtlasLoot_NavButton_OnClick")
 	-- Сброс прокрутки при навигации
 	FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
 	AtlasLootScrollBarScrollBar:SetValue(0)
 
 	if not this or not this.lootpage then
+		--print("NavButton_OnClick: выход - нет this или lootpage")
 		return
 	end
 
-	-- Обработка кнопки "Назад" в родительское меню
-	if this == _G["AtlasLootItemsFrame_BACK"] and this.lootpage == "BackToMenu" and AtlasLootItemsFrame.StoredBackMenuName then
-		print("Возврат в меню: "..AtlasLootItemsFrame.StoredBackMenuName)
-		AtlasLoot_OpenMenu(AtlasLootItemsFrame.StoredBackMenuName)
-		AtlasLootItemsFrame.StoredBackMenuName = nil
+	-- Обработка кнопки "Назад" в родительское меню (без учета регистра + резерв из title)
+	if this == _G["AtlasLootItemsFrame_BACK"] then
+		local lpLower = string.lower(this.lootpage or "")
+		if lpLower == "backtomenu" then
+			local targetMenu = AtlasLootItemsFrame.StoredBackMenuName or this.title
+			--print("Возврат в меню: "..tostring(targetMenu))
+			if targetMenu then
+				AtlasLoot_OpenMenu(targetMenu)
+				AtlasLootItemsFrame.StoredBackMenuName = nil
+			else
+				_G["AtlasLootItemsFrame_BACK"]:Hide()
+			end
+			return
+		end
+	end
+
+	-- Обработка кнопки "Назад" в меню подземелий
+	if this == _G["AtlasLootItemsFrame_BACK"] and this.lootpage == "DUNGEONSMENU" then
+		--print("Возврат в меню подземелий")
+		AtlasLoot_OpenMenu(L["Dungeons & Raids"])
 		return
 	end
 
 	local lp = this.lootpage
 	-- Навигация по результатам поиска
 	if string.sub(lp, 1, 16) == "SearchResultPage" then
-		print("Навигация SearchResult -> "..lp)
+		--print("Навигация SearchResult -> "..lp)
 		AtlasLoot_ShowItemsFrame("SearchResult", lp, string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""))
 		return
 	end
 
 	-- Навигация по списку желаний
 	if string.sub(lp, 1, 12) == "WishListPage" then
-		print("Навигация WishList -> "..lp)
+		--print("Навигация WishList -> "..lp)
 		AtlasLoot_ShowItemsFrame("WishList", lp, L["WishList"])
 		return
 	end
 
 	-- По умолчанию: обрабатываем как страницу лута/босса
-	print("Навигация к странице лута: "..lp)
+	--print("Навигация к странице лута: "..lp)
 	AtlasLootItemsFrame:Show()
 	AtlasLoot_ShowScrollBarLoading()
 	AtlasLootItemsFrame.StoredElement = lp
 	AtlasLootItemsFrame.StoredMenu = nil
+
+	-- Найти индекс босса в ScrollList и обновить activeElement
+	local bossIndex = FindBossIndexInScrollList(lp)
+	if bossIndex then
+		AtlasLootItemsFrame.activeElement = bossIndex
+		--print("AtlasLoot_NavButton_OnClick: обновлен activeElement на " .. tostring(bossIndex))
+		-- Обновить отображение списка боссов
+		AtlasTW.Loot.ScrollBarUpdate()
+	else
+		AtlasLootItemsFrame.activeElement = nil
+	end
 
 	if type(lp) == "string" then
 		lp = AtlasLoot_Data[lp] or GetLootByElemName(lp)

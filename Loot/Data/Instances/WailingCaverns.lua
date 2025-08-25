@@ -256,7 +256,7 @@ AtlasTW.InstanceData.WailingCaverns = {
         },
         {
             id = "WCTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Wailing Caverns"],
             loot = {
                 {id=10413, dropRate=2},
                 {},

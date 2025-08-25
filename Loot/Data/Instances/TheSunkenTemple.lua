@@ -309,7 +309,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         },
         {
             id = "STTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["The Sunken Temple"],
             defaults = { dropRate = 0.02 },
             loot = {
                 {id=10630}, -- Soulcatcher Halo

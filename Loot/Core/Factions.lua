@@ -25,7 +25,7 @@ AtlasTW.Loot.FactionsData = {
 	{ name = BF["Timbermaw Hold"],        icon = "Interface\\Icons\\INV_Misc_Horn_01",                     lootpage = "TimbermawHold",	       Extra = BZ["Felwood"]   },
 	{ name = BF["Zandalar Tribe"],        icon = "Interface\\Icons\\INV_Misc_Coin_08",                     lootpage = "ZandalarTribe",	       Extra = BZ["Stranglethorn Vale"]   },
 	{ name = BF["Wardens of Time"],       icon = "Interface\\Icons\\INV_Misc_Head_Dragon_Bronze",          lootpage = "WardensofTime",	       Extra = L["Caverns of Time"]   },
-	{ name = BF["Shen'dralar"],            icon = "Interface\\Icons\\INV_Misc_Head_Dragon_Bronze",          lootpage = "Shendralar",	       Extra = BZ["Dire Maul"]   },
+	{ name = BF["Shen'dralar"],            icon = "Interface\\Icons\\INV_Misc_Book_10",          		   lootpage = "Shendralar",	       Extra = BZ["Dire Maul"]   },
 	{ name = BF["Frostwolf Clan"],        icon = "Interface\\Icons\\INV_Jewelry_FrostwolfTrinket_01",      lootpage = "StormpikeFrostwolf",        Extra = "|cffFF0000"..BF["Horde"] },
 	{ name = BF["Darkspear Trolls"],      icon = "Interface\\Icons\\Racial_Troll_Berserk",                 lootpage = "DarkspearTrolls",   Extra = "|cffFF0000"..BF["Horde"] },
 	{ name = BF["Revantusk Trolls"],      icon = "Interface\\Icons\\INV_Misc_Head_Troll_01",               lootpage = "RevantuskTrolls",         Extra = "|cffFF0000"..BF["Horde"] },

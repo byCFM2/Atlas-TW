@@ -138,7 +138,7 @@ AtlasTW.InstanceData.StormwindVault = {
         },
         {
             id = "TrashMobs",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Stormwind Vault"],
             defaults = { dropRate = .02 },
             loot = {
                 {id=61592},

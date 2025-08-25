@@ -126,7 +126,7 @@ AtlasTW.InstanceData.EmeraldSanctum = {
         },
         {
             id = "ESTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Emerald Sanctum"],
             defaults = { dropRate = 1 },
             loot = {
                 {id=84502, dropRate=5}, -- Verdant Dreamer's Boots

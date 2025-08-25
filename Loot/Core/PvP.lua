@@ -30,6 +30,7 @@ AtlasTW.Loot.PvpMenuData = {
 function AtlasLootPvPMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = L["PvP Rewards"] }
     AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.PvpMenuData
+    AtlasLootItemsFrame.StoredBackMenuName = nil
     AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
@@ -60,5 +61,6 @@ AtlasTW.Loot.PvpSetMenuData = {
 function AtlasLootPVPSetMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = L["PvP Armor Sets"] }
     AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.PvpSetMenuData
+    AtlasLootItemsFrame.StoredBackMenuName = L["PvP Rewards"]
     AtlasTW.Loot.ScrollBarLootUpdate()
 end

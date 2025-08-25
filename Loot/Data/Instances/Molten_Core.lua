@@ -453,7 +453,7 @@ AtlasTW.InstanceData.MoltenCore = {
         },
         {
             id = "MCTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Molten Core"],
             defaults = {dropRate=.3},
             loot = {
                 {id=16817, container={47203}},

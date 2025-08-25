@@ -160,7 +160,7 @@ AtlasTW.InstanceData.GilneasCity = {
         },
         {
             id = "GCTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Gilneas City"],
             defaults = { dropRate = .034 },
             loot = {
                 {id=61598},

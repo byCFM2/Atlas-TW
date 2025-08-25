@@ -22,5 +22,6 @@ AtlasTW.Loot.WorldBossesData = {
 function AtlasLoot_WorldMenu()
     AtlasLootItemsFrame.StoredElement = { menuName = L["World"] }
     AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.WorldBossesData
+    AtlasLootItemsFrame.StoredBackMenuName = nil
     AtlasTW.Loot.ScrollBarLootUpdate()
 end

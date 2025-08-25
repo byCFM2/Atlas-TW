@@ -101,7 +101,7 @@ AtlasTW.InstanceData.TheStockade = {
         },
         {
             id = "SWStTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["The Stockade"],
             loot = {
                 {id=80796, dropRate=.05},
                 {id=1076, dropRate=.6},

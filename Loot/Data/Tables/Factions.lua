@@ -10,11 +10,11 @@ AtlasLoot_Data = AtlasLoot_Data or {}
 
 local Factions = {
 	Shendralar = { --1.18
-		{ name = BF["Friendly"] },
+		{ name = BF["Friendly"], icon = "INV_Misc_Book_10" },
 		{ id = 55044 }, -- Formula: Enchant Boots - Major Intellect
 		{ id = 55045, container={55046} }, -- Recipe: Elixir of Greater Frost Power
         {},
-		{ name = BF["Honored"] },
+		{ name = BF["Honored"], icon = "INV_Misc_Book_10" },
 		{ id = 58251 }, --Wristbands of Excellency
 		{ id = 58252 }, --Coalescing Sabatons
 		{ id = 58253 }, --Lector's Baton
@@ -25,14 +25,14 @@ local Factions = {
         {},
         {},
         {},
-		{ name = BF["Revered"] },
+		{ name = BF["Revered"], icon = "INV_Misc_Book_10" },
 		{ id = 58254 }, --Miniature Astrolabium
 		{ id = 58255 }, --Crystal Pauldrons
 		{ id = 58256 }, -- Band of Eldretharr
 		{ id = 55051, container={55052} }, -- Pattern: Astronomer Raiments
 		{ id = 55053, container={55054} }, -- Pattern: Prismatic Scale Barbute
         {},
-		{ name = BF["Exalted"] },
+		{ name = BF["Exalted"], icon = "INV_Misc_Book_10" },
 		{ id = 58257 }, -- Noble's Letter Opener
 		{ id = 58258 }, --Royal Guard Chain Cloak
 		{ id = 58259 }, --Advisor's Trousers of the Eldreth
@@ -41,11 +41,11 @@ local Factions = {
 		{ id = 55059, container={55060} }, -- Plans: Grandstaff of the Shen'dralar Elder
 	},
 	WintersaberTrainers = {
-		{ name = BF["Exalted"] },
+		{ name = BF["Exalted"], icon = "Ability_Mount_PinkTiger" },
 		{ id = 13086 }, -- Reins of the Winterspring Frostsaber
 	},
 	ThoriumBrotherhood = {
-		{ name = BF["Friendly"] }, --*1
+		{ name = BF["Friendly"], icon = "INV_Ingot_Mithril" }, --*1
 		{ id = 17051, container={17014} }, -- Plans: Dark Iron Bracers
 		{ id = 17018, container={16979} }, -- Pattern: Flarecore Gloves
 		{ id = 17023, container={16983} }, -- Pattern: Molten Helm
@@ -53,14 +53,14 @@ local Factions = {
 		{ id = 20761 }, -- Recipe: Transmute Elemental Fire
 		{ id = 19444 }, -- Formula: Enchant Weapon - Strength
         {},
-		{ name = BF["Revered"] },
+		{ name = BF["Revered"], icon = "INV_Ingot_Mithril" },
 		{ id = 18592, container={17193} },
 		{ id = 17052, container={17013} },
 		{ id = 17053, container={16988} },
 		{ id = 19220, container={19165} },
 		{ id = 19333, container={19163} },
 		{ id = 19332, container={19162} }, --*15
-		{ name = BF["Honored"] }, --*1
+		{ name = BF["Honored"], icon = "INV_Ingot_Mithril" }, --*1
 		{ id = 17059, container={17015} }, -- Plans: Dark Iron Reaver
 		{ id = 17060, container={17016} }, -- Plans: Dark Iron Destroyer
 		{ id = 17049, container={16989} }, -- Plans: Fiery Chain Girdle
@@ -91,7 +91,7 @@ local Factions = {
         {},
         {},
         {}, --*15
-		{ name = BF["Exalted"] }, --*1
+		{ name = BF["Exalted"], icon = "INV_Ingot_Mithril" }, --*1
 		{ id = 20040, container={20039} },
 		{ id = 62004, container={65039} },
 		{ id = 19210, container={19170} },

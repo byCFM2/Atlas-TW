@@ -168,7 +168,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         },
         {
             id = "BFDTrash",
-            name = L["Trash Mobs"],
+            name = L["Trash Mobs"].." "..BZ["Blackfathom Deeps"],
             defaults = { dropRate = .1 },
             loot = {
                 {id=1486},
