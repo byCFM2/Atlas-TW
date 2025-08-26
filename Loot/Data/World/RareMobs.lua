@@ -15,7 +15,7 @@ AtlasTW.InstanceData.RareMobs = {
     Level = {1, 60},
     Bosses = {
         {
-            id = L["Rare Mobs"],
+            id = "ShadeMage",
             name = L["Shade Mage"],
             postfix = "0.4k (17L) " .. BZ["Tirisfal Glades"] .. " [15, 68]",
             defaults = { dropRate = 50 },

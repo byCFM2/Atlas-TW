@@ -13,7 +13,7 @@ local BLUE = "|cff0070dd"
 Displays the WishList
 ]]
 function AtlasLoot_ShowWishList()
-	AtlasLoot_ShowItemsFrame("WishList", "WishListPage"..currentPage, L["WishList"])
+	--AtlasLoot_ShowItemsFrame("WishList", "WishListPage"..currentPage, L["WishList"])
 end
 
 --[[
@@ -45,7 +45,7 @@ function AtlasLoot_DeleteFromWishList(itemID)
 	end
 	AtlasLoot_WishList = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishList"])
 	AtlasLootItemsFrame:Hide()
-	AtlasLoot_ShowItemsFrame("WishList", "WishListPage"..currentPage, L["WishList"])
+	--AtlasLoot_ShowItemsFrame("WishList", "WishListPage"..currentPage, L["WishList"])
 end
 
 --[[

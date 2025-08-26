@@ -107,72 +107,74 @@ function AtlasLoot_GetBossNavigation(data) --TODO remake
 
    -- print("AtlasLoot_GetBossNavigation: ищем навигацию для " .. tostring(data))
 
-    -- Ищем босса в AtlasTW.InstanceData по имени вместо id
-    for instanceKey, instanceData in pairs(AtlasTW.InstanceData or {}) do
-        if instanceData.Bosses then
-            for i, bossData in ipairs(instanceData.Bosses) do
-                if bossData.name == data then
-                   -- print("AtlasLoot_GetBossNavigation: найден босс " .. tostring(bossData.name or bossData.id) .. " в инстансе " .. tostring(instanceKey))
-                    local nav = {}
-                    nav.Title = bossData.name or bossData.id
-                    local numEntries = table.getn(instanceData.Bosses)
-                   -- print("AtlasLoot_GetBossNavigation: текущий индекс " .. tostring(i) .. ", всего боссов " .. tostring(numEntries))
-
-                    -- Функция для поиска предыдущего валидного элемента
-                    local function findPrevValidEntry(startIndex)
-                        for j = 1, numEntries do
-                            local checkIndex = startIndex - j
-                            if checkIndex < 1 then
-                                checkIndex = numEntries + checkIndex
-                            end
-                            local checkBoss = instanceData.Bosses[checkIndex]
-                            if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot) and type(checkBoss.items) ~= "string" then
-                                --print("AtlasLoot_GetBossNavigation: найден предыдущий валидный элемент на индексе " .. tostring(checkIndex) .. ": " .. tostring(checkBoss.name))
-                                return checkIndex, checkBoss
-                            end
+    -- Получаем текущий инстанс из настроек
+    local currentZoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
+    local currentInstanceData = AtlasTW.InstanceData[currentZoneID]
+    
+    -- Ищем босса только в текущем инстансе
+    if currentInstanceData and currentInstanceData.Bosses then
+        for i, bossData in ipairs(currentInstanceData.Bosses) do
+            if bossData.name == data then
+               -- print("AtlasLoot_GetBossNavigation: найден босс " .. tostring(bossData.name or bossData.id) .. " в инстансе " .. tostring(currentZoneID))
+                local nav = {}
+                nav.Title = bossData.name or bossData.id
+                local numEntries = table.getn(currentInstanceData.Bosses)
+               -- print("AtlasLoot_GetBossNavigation: текущий индекс " .. tostring(i) .. ", всего боссов " .. tostring(numEntries))
+				if numEntries <= 1 then return nav end
+                -- Функция для поиска предыдущего валидного элемента
+                local function findPrevValidEntry(startIndex)
+                    for j = 1, numEntries do
+                        local checkIndex = startIndex - j
+                        if checkIndex < 1 then
+                            checkIndex = numEntries + checkIndex
                         end
-                        return nil, nil
-                    end
-
-                    -- Функция для поиска следующего валидного элемента
-                    local function findNextValidEntry(startIndex)
-                        for j = 1, numEntries do
-                            local checkIndex = startIndex + j
-                            if checkIndex > numEntries then
-                                checkIndex = checkIndex - numEntries
-                            end
-                            local checkBoss = instanceData.Bosses[checkIndex]
-                           -- if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot or type(checkBoss.items) == "string") then
-                            if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot) and type(checkBoss.items) ~= "string" then --for boss loot only without sets etc
-                                --print("AtlasLoot_GetBossNavigation: найден следующий валидный элемент на индексе " .. tostring(checkIndex) .. ": " .. tostring(checkBoss.name))
-                                return checkIndex, checkBoss
-                            end
+                        local checkBoss = currentInstanceData.Bosses[checkIndex]
+                        if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot) and type(checkBoss.items) ~= "string" then
+                            --print("AtlasLoot_GetBossNavigation: найден предыдущий валидный элемент на индексе " .. tostring(checkIndex) .. ": " .. tostring(checkBoss.name))
+                            return checkBoss
                         end
-                        return nil, nil
                     end
-
-                    -- Поиск предыдущего валидного элемента
-                    local prevIndex, prevBoss = findPrevValidEntry(i)
-                    if prevBoss then
-                        nav.Prev_Page = prevBoss.name
-                        nav.Prev_Title = prevBoss.name or prevBoss.id
-                    end
-
-                    -- Поиск следующего валидного элемента
-                    local nextIndex, nextBoss = findNextValidEntry(i)
-                    if nextBoss then
-                        nav.Next_Page = nextBoss.name
-                        nav.Next_Title = nextBoss.name or nextBoss.id
-                    end
-
-                    -- Back to dungeons menu
-					--[[ 
-					nav.Back_Page = "DUNGEONSMENU"
-					nav.Back_Title = L["Dungeons & Raids"] ]]
-
-                   -- print("AtlasLoot_GetBossNavigation: возвращаем nav - Next: " .. tostring(nav.Next_Page) .. ", Prev: " .. tostring(nav.Prev_Page) .. ", Back: " .. tostring(nav.Back_Page))
-                    return nav
+                    return nil
                 end
+
+                -- Функция для поиска следующего валидного элемента
+                local function findNextValidEntry(startIndex)
+                    for j = 1, numEntries do
+                        local checkIndex = startIndex + j
+                        if checkIndex > numEntries then
+                            checkIndex = checkIndex - numEntries
+                        end
+                        local checkBoss = currentInstanceData.Bosses[checkIndex]
+                       -- if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot or type(checkBoss.items) == "string") then
+                        if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot) and type(checkBoss.items) ~= "string" then --for boss loot only without sets etc
+                            --print("AtlasLoot_GetBossNavigation: найден следующий валидный элемент на индексе " .. tostring(checkIndex) .. ": " .. tostring(checkBoss.name))
+                            return checkBoss
+                        end
+                    end
+                    return nil
+                end
+
+                -- Поиск предыдущего валидного элемента
+                local prevBoss = findPrevValidEntry(i)
+                if prevBoss then
+                    nav.Prev_Page = prevBoss.name
+                    nav.Prev_Title = prevBoss.name or prevBoss.id
+                end
+
+                -- Поиск следующего валидного элемента
+                local nextBoss = findNextValidEntry(i)
+                if nextBoss then
+                    nav.Next_Page = nextBoss.name
+                    nav.Next_Title = nextBoss.name or nextBoss.id
+                end
+
+                -- Back to dungeons menu
+				--[[ 
+				nav.Back_Page = "DUNGEONSMENU"
+				nav.Back_Title = L["Dungeons & Raids"] ]]
+
+               -- print("AtlasLoot_GetBossNavigation: возвращаем nav - Next: " .. tostring(nav.Next_Page) .. ", Prev: " .. tostring(nav.Prev_Page) .. ", Back: " .. tostring(nav.Back_Page))
+                return nav
             end
         end
     end
@@ -243,53 +245,7 @@ function AtlasLoot_OnEvent()
 		EQCompare:RegisterTooltip(AtlasLootTooltip)
 		EQCompare:RegisterTooltip(AtlasLootTooltip2)
 	end
-
-	--Position relevant UI objects for loot browser and set up menu
-	AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(AtlasTWCharDB.LastBossText, 30))
-	AtlasLootItemsFrame_SelectedTable:SetText("")
-	AtlasLootItemsFrame_SelectedCategory:Show()
-	AtlasLootItemsFrame_SelectedTable:Show()
-	AtlasLootItemsFrame_SubMenu:Disable()
 end
-
---[[
-	Required as the Atlas function cannot deal with the AtlasLoot button template or the added Atlasloot entries
-]]
--- Константы для AtlasLoot скроллинга
---AtlasTW.LOOT_NUM_LINES = 30  -- Количество видимых элементов в AtlasLootItemsFrame (2 ряда по 15)
---AtlasTW.LootCurrentItems = nil  -- Текущие элементы для отображения
-
--- Глобальный индекс боссов для быстрого поиска
---AtlasTW.BossLootIndex = {}
-
--- Функция построения индекса боссов (вызывается при инициализации)
---[[ function AtlasTW.BuildBossLootIndex()
---	print("AtlasLoot: Построение индекса боссов...")
-	for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
-		if type(instanceData) == "table" and instanceData.Bosses then
-			for bossIndex, bossData in ipairs(instanceData.Bosses) do
-				if bossData.name and bossData.items then
-					local bossName = bossData.name
-					-- Создаем запись в индексе
-					if not AtlasTW.BossLootIndex[bossName] then
-						AtlasTW.BossLootIndex[bossName] = {}
-					end
-					table.insert(AtlasTW.BossLootIndex[bossName], {
-						instance = instanceKey,
-						instanceName = instanceData.Name,
-						bossIndex = bossIndex,
-						lootTable = bossData.items
-					})
-				end
-			end
-		end
-	end
-	local count = 0
-	for _ in pairs(AtlasTW.BossLootIndex) do
-		count = count + 1
-	end
-	--print("AtlasLoot: Индекс боссов построен. Всего уникальных имен: " .. count)
-end ]]
 
 -- функция получения лута по имени босса без построения индексов
 local function GetLootByElemName(elemName, instanceName)
@@ -352,69 +308,6 @@ local function GetLootByElemName(elemName, instanceName)
 	return nil
 end
 
---[[ -- Вспомогательная функция для получения loot зная ID
-local function GetLootByStringID(elemID, instanceName)
-	-- Если указан инстанс строкой-ключом
-	if instanceName and AtlasTW.InstanceData[instanceName] then
-		local inst = AtlasTW.InstanceData[instanceName]
- 		if inst.Reputation then
-			for _, v in ipairs(inst.Reputation) do
-				if v.loot == elemID then
-					return AtlasLoot_Data[v.loot]
-				end
-			end
-		end
-		if inst.Keys then
-			for _, v in ipairs(inst.Keys) do
-				if v.loot == elemID then
-					return AtlasLoot_Data[v.loot]
-				end
-			end
-		end
-		if inst.Bosses then
-			for _, elemData in ipairs(inst.Bosses) do
-				if elemData.id == elemID then
-					return elemData.items
-				end
-			end
-		end
-		return nil--print("Wrong elemname or instancename")
-	end
-	-- Поиск по всем инстансам
-	for _, inst in pairs(AtlasTW.InstanceData) do
-		if type(inst) == "table" then
-			if inst.Reputation then
-				for _, v in ipairs(inst.Reputation) do
-					if v.name == elemID then
-						return AtlasLoot_Data[v.loot]
-					end
-				end
-			end
-			if inst.Keys then
-				for _, v in ipairs(inst.Keys) do
-					if v.name == elemID then
-						return AtlasLoot_Data[v.loot]
-					end
-				end
-			end
-			if inst.Bosses then
-				for _, elemData in ipairs(inst.Bosses) do
-					if elemData.id == elemID then
-						-- Для сетов элемент строка, брать из AtlasLoot_Data
-						-- Для меню возвращаем строку с названием меню для запуска через _G
-						if type(elemData.items) ~="string" then
-							return elemData.items
-						else
-							return AtlasLoot_Data[elemData.items] or elemData.items
-						end
-					end
-				end
-			end
-		end
-	end
-	return nil--print("Wrong elemname or instancename Last try")
-end ]]
-
 -- Вспомогательная функция для получения loot зная ID
 local function GetLootByID(zoneID, id)
     local instData = AtlasTW.InstanceData[zoneID]
@@ -438,34 +331,6 @@ local function GetLootByID(zoneID, id)
         return instData.Bosses[bossIndex].items
     end
     return nil
-end
-
-local function GetLootByName(zoneID, name)
-	--print("Get2LootByName: ".. (name or ""))
-	local instData = AtlasTW.InstanceData[zoneID]
-	if not instData then return end
-	if instData.Bosses then
-		for _, data in ipairs(instData.Bosses or {}) do
-			if data.name == name then
-				return data.items or data.id
-			end
-		end
-	end
-	if instData.Reputation then
-		for _, data in ipairs(instData.Reputation or {}) do
-			if data.name == name then
-				return data.loot
-			end
-		end
-	end
-	if instData.Keys then
-		for _, data in ipairs(instData.Keys or {}) do
-			if data.name == name then
-				return data.loot
-			end
-		end
-	end
-	return nil
 end
 
 function AtlasTW.Loot.ScrollBarUpdate()
@@ -718,10 +583,10 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 	if type(dataID) == "string" and (AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]) then
 		dataSource = AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]
 	end
---[[ 	if type(dataSource) == "string" then
+	if type(dataSource) == "string" then
 		dataID = dataSource
 		dataSource = GetLootByElemName(dataSource) or dataSource
-	end ]]
+	end
 	--Check if dataID and dataSource are valid
  	if not dataID and not dataSource then
 		return print("AtlasTW.Loot.ScrollBarLootUpdate: No dataID and No dataSource!")
@@ -948,14 +813,8 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 
 						-- Set the item drop rate
 						itemButton.droprate = element.dropRate and element.dropRate.."%"
-						--[[if element.GetDropRateText then
-							itemButton.droprate = element:GetDropRateText()
-						end ]]
-
 
 						itemButton.itemID = itemID or 0
-
-						--itemButton.itemLink = itemLink
 
 						shouldShow = true
 					end
@@ -1055,480 +914,6 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 	AtlasLootItemsFrame:Show()
 end
 
-local function AtlasLoot_ShowItemsFrame(dataID, dataSource, boss) --+
---print("Run: AtlasLoot_ShowItemsFrame "..(dataID or " no dataID").." _"..
-	--(dataSource or " no dataSource").." _"..(boss or " no boss") )
---[[ 
-    if not dataID or not dataSource then return end
-
-    local spellName, spellIcon, text, extra, isItem, isEnchant, isSpell
-    local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
-    if type(dataSource) ~= "table" then
-        dataSource = AtlasLoot_Data[dataSource] or nil
-        if not dataSource then return end
-    end
-
-	-- Hide the AtlasQuestFrame if it's open
-    if AtlasTW.Quest.UI.InsideAtlasFrame then
-        AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
-    end
-
-    AtlasLoot_QuickLooks:Hide()
-    AtlasLootQuickLooksButton:Hide()
-
-    for i = 1, 30 do
-        _G["AtlasLootMenuItem_"..i]:Hide()
-    end
-	--Store data about the state of the items frame to allow minor tweaks or a recall of the current loot page
-	AtlasLootItemsFrame.storedBoss = {dataID, dataSource, boss, AtlasFrame}
-	--Escape out of this function if creating a menu, this function only handles loot tables.
-	--Inserting escapes in this way allows consistant calling of data whether it is a loot table or a menu.
-	local handlerName = AtlasLoot_MenuHandlers[dataID]
-	if handlerName and type(_G[handlerName]) == "function" then
-		print("AtlasLoot_Show2ItemsFrame: function")
-		_G[handlerName]()
-	elseif type(dataSource) == "table" then
-		-- New modular system
-		print("AtlasLoot_Show2ItemsFrame: table")
-
-		AtlasLoot_QueryLootPage()
-		for i = 1, 30 do
-			local item = dataSource[i]
-			if item and (item.id or item.name) then
-				local itemButton,iconFrame,nameFrame,extraFrame,borderFrame = _G["AtlasLootItem_"..i],_G["AtlasLootItem_"..i.."_Icon"],_G["AtlasLootItem_"..i.."_Name"],_G["AtlasLootItem_"..i.."_Extra"],_G["AtlasLootItem_"..i.."Border"]
-				local itemLink, itemQuality, itemTexture
-				local itemName =  item.name
-				local itemID = item.id
-
-				if itemID and itemID ~= 0 then
-					itemName, itemLink, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(itemID)
-					if not itemName then
-						print("AtlasLoot_Show2ItemsFrame: item not found in cache "..itemID)
-					else
-						local r, g, b = GetItemQualityColor(itemQuality)
-						nameFrame:SetTextColor(r, g, b)
-					end
-					nameFrame:SetText(itemName or L["Item not found in cache"])
-				elseif item.name then
-
-					-- Handle the case where item is a separator
-					local table = AtlasTW.ItemDB.CreateSeparator(item.name, item.icon, item.quality)
-					itemName = table.name
-					itemQuality = table.quality
-					itemTexture = table.texture
-
-					local r, g, b = GetItemQualityColor(itemQuality)
-					nameFrame:SetTextColor(r, g, b)
-					nameFrame:SetText(itemName or L["Item not found in cache"])
-				end
-
-				-- Set the discription text
-				extraFrame:SetText(AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, item.disc) or "")
-				extraFrame:Show()
-
-				-- Set the icon
-				iconFrame:SetTexture(itemTexture or "Interface\\Icons\\INV_Misc_QuestionMark")
-
-				-- Save the item button data
-				-- Set the container
-				itemButton.container = item.container
-				borderFrame:Hide()
-				if itemButton.container then
-					-- Cache the items in the container
-					for f = 1, getn(itemButton.container) do
-						AtlasLoot_CacheItem(itemButton.container[f])
-					end
-					borderFrame:Show()
-				end
-
-				-- Set the item drop rate
-				itemButton.droprate = item:GetDropRateText()
-
-				itemButton.itemID = itemID or 0
-				itemButton.itemLink = itemLink
-
-				-- Set the item button visibility
-				itemButton:Show()
-
-			else
-				_G["AtlasLootItem_"..i]:Hide()
-			end
-		end
-
-		-- Set the loot page name
-		AtlasLoot_LootPageName:SetText(TruncateText(dataID, 40) or "No name")
-	else
-		print("AtlasLoot_Show2ItemsFrame: ELSE")
-		--Iterate through each item object and set its properties
-		for i = 1, 30 do
-			--Check for a valid object (that it exists, and that it has a name)
-			if dataSource and dataSource[dataID] and dataSource[dataID][i] and dataSource[dataID][i][3] ~= "" then
-				if string.sub(dataSource[dataID][i][1], 1, 1) == "s" then
-					isItem = false
-					isEnchant = false
-					isSpell = true
-				elseif string.sub(dataSource[dataID][i][1], 1, 1) == "e" then
-					isItem = false
-					isEnchant = true
-					isSpell = false
-				else
-					isItem = true
-					isEnchant = false
-					isSpell = false
-				end
-				local quantityFrame
-				if isItem then
-					local itemName, _, itemQuality = GetItemInfo(dataSource[dataID][i][1])
-					--If the client has the name of the item in cache, use that instead.
-					--This is poor man's localisation, English is replaced be whatever is needed
-					if GetItemInfo(dataSource[dataID][i][1]) then
-						local _, _, _, itemColor = GetItemQualityColor(itemQuality)
-						text = itemColor..itemName
-					else
-						text = dataSource[dataID][i][3]
-						text = AtlasLoot_FixText(text)
-					end
-					quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
-					quantityFrame:SetText("")
-				elseif isEnchant then
-					--spellName = AtlasTW.SpellDB["enchants"][tonumber(string.sub(dataSource[dataID][i][1], 2))]["name"]
-					spellName = AtlasLoot_FixText(dataSource[dataID][i][3])
-					spellIcon = dataSource[dataID][i][2]
-					text = AtlasLoot_FixText(string.sub(dataSource[dataID][i][3], 1, 4)..spellName)
-					quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
-					quantityFrame:SetText("")
-				elseif isSpell then
-					spellName = dataSource[dataID][i][3]
-					spellIcon = dataSource[dataID][i][2]
-					text = AtlasLoot_FixText(spellName)
-					local qtyMin = AtlasTW.SpellDB["craftspells"][tonumber(string.sub(dataSource[dataID][i][1], 2))]["craftQuantityMin"]
-					local qtyMax = AtlasTW.SpellDB["craftspells"][tonumber(string.sub(dataSource[dataID][i][1], 2))]["craftQuantityMax"]
-					if qtyMin and qtyMin ~= "" then
-						if qtyMax and qtyMax ~= "" then
-							quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
-							quantityFrame:SetText(qtyMin.. "-"..qtyMax)
-						else
-							quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
-							quantityFrame:SetText(qtyMin)
-						end
-					else
-						quantityFrame = _G["AtlasLootItem_"..i.."_Quantity"]
-						quantityFrame:SetText("")
-					end
-				end
-				--This is a valid QuickLook, so show the UI objects
-				if dataID ~= "SearchResult" and dataID ~= "WishList" then
-					AtlasLoot_QuickLooks:Show()
-					AtlasLootQuickLooksButton:Show()
-				end
-				--Insert the item description
-				extra = dataSource[dataID][i][4]
-				extra = AtlasLoot_FixText(extra)
-				--Use shortcuts for easier reference to parts of the item button
-				itemButton = _G["AtlasLootItem_"..i]
-				iconFrame = _G["AtlasLootItem_"..i.."_Icon"]
-				nameFrame = _G["AtlasLootItem_"..i.."_Name"]
-				extraFrame = _G["AtlasLootItem_"..i.."_Extra"]
-				local border = _G["AtlasLootItem_"..i.."Border"]
-				local pricetext1 = _G["AtlasLootItem_"..i.."_PriceText1"]
-				local pricetext2 = _G["AtlasLootItem_"..i.."_PriceText2"]
-				local pricetext3 = _G["AtlasLootItem_"..i.."_PriceText3"]
-				local pricetext4 = _G["AtlasLootItem_"..i.."_PriceText4"]
-				local pricetext5 = _G["AtlasLootItem_"..i.."_PriceText5"]
-				local priceicon1 = _G["AtlasLootItem_"..i.."_PriceIcon1"]
-				local priceicon2 = _G["AtlasLootItem_"..i.."_PriceIcon2"]
-				local priceicon3 = _G["AtlasLootItem_"..i.."_PriceIcon3"]
-				local priceicon4 = _G["AtlasLootItem_"..i.."_PriceIcon4"]
-				local priceicon5 = _G["AtlasLootItem_"..i.."_PriceIcon5"]
-				--If there is no data on the texture an item should have, show a big red question mark
-				if dataSource[dataID][i][2] == "?" then
-					iconFrame:SetTexture("Interface\\Icons\\INV_Misc_QuestionMark")
-				elseif dataSource[dataID][i][2] == "" then
-					local _, _, _, _, _, _, _, _, itemTexture1 = GetItemInfo(dataSource[dataID][i][1])
-					iconFrame:SetTexture(itemTexture1)
-				elseif not isItem and spellIcon then
-					if type(dataSource[dataID][i][2]) == "number" then
-						local _, _, _, _, _, _, _, _, itemTexture2 = GetItemInfo(dataSource[dataID][i][2])
-						iconFrame:SetTexture(itemTexture2)
-					elseif type(dataSource[dataID][i][2]) == "string" then
-						iconFrame:SetTexture("Interface\\Icons\\"..dataSource[dataID][i][2])
-					else
-						iconFrame:SetTexture(spellIcon)
-					end
-				else
-					--else show the texture
-					if strfind(dataSource[dataID][i][2], "^CLASS") then
-						local class = gsub(dataSource[dataID][i][2], "CLASS", "")
-						iconFrame:SetTexture("Interface\\AddOns\\AtlasLoot\\Images\\"..class)
-					else
-						iconFrame:SetTexture("Interface\\Icons\\"..dataSource[dataID][i][2])
-					end
-				end
-				if iconFrame:GetTexture() == nil then
-					iconFrame:SetTexture("Interface\\Icons\\INV_Misc_QuestionMark")
-				end
-				--Set the name and description of the item
-				nameFrame:SetText(text)
-				extraFrame:SetText(extra)
-				extraFrame:Show()
-				pricetext1:Hide()
-				pricetext2:Hide()
-				pricetext3:Hide()
-				pricetext4:Hide()
-				pricetext5:Hide()
-				priceicon1:Hide()
-				priceicon2:Hide()
-				priceicon3:Hide()
-				priceicon4:Hide()
-				priceicon5:Hide()
-				if dataSource[dataID][i][6] then
-					if dataSource[dataID][i][6]~="" then
-						pricetext1:SetText(dataSource[dataID][i][6])
-						priceicon1:SetTexture(AtlasLoot_FixText(dataSource[dataID][i][7]))
-						extraFrame:Show()
-						pricetext1:Show()
-						priceicon1:Show()
-					end
-				end
-				if dataSource[dataID][i][8] then
-					if dataSource[dataID][i][8]~="" then
-						pricetext2:SetText(dataSource[dataID][i][8])
-						priceicon2:SetTexture(AtlasLoot_FixText(dataSource[dataID][i][9]))
-						extraFrame:Show()
-						pricetext2:Show()
-						priceicon2:Show()
-					end
-				end
-				if dataSource[dataID][i][10] then
-					if dataSource[dataID][i][10]~="" then
-						pricetext3:SetText(dataSource[dataID][i][10])
-						priceicon3:SetTexture(AtlasLoot_FixText(dataSource[dataID][i][11]))
-						extraFrame:Show()
-						pricetext3:Show()
-						priceicon3:Show()
-					end
-				end
-				if dataSource[dataID][i][12] then
-					if dataSource[dataID][i][12]~="" then
-						pricetext4:SetText(dataSource[dataID][i][12])
-						priceicon4:SetTexture(AtlasLoot_FixText(dataSource[dataID][i][13]))
-						extraFrame:Show()
-						pricetext4:Show()
-						priceicon4:Show()
-					end
-				end
-				if dataSource[dataID][i][14] then
-					if dataSource[dataID][i][14]~="" then
-						pricetext5:SetText(dataSource[dataID][i][14])
-						priceicon5:SetTexture(AtlasLoot_FixText(dataSource[dataID][i][15]))
-						extraFrame:Show()
-						pricetext5:Show()
-						priceicon5:Show()
-					end
-				end
-				--Set prices for items, up to 5 different currencies can be used in combination
-				if (dataID == "SearchResult" or dataID == "WishList") and dataSource[dataID][i][5] then
-					local wishDataID, wishDataSource = AtlasLoot_Strsplit("|", dataSource[dataID][i][5])
-					if wishDataSource == "AtlasLootRepItems" then
-						if wishDataID and AtlasLoot_IsLootTableAvailable(wishDataID) then
-							for _, v in ipairs(AtlasLoot_Data[wishDataSource][wishDataID]) do
-								if dataSource[dataID][i][1] == v[1] then
-									if v[6] then
-										if v[6]~="" then
-											pricetext1:SetText(v[6])
-											priceicon1:SetTexture(AtlasLoot_FixText(v[7]))
-											extraFrame:Show()
-											pricetext1:Show()
-											priceicon1:Show()
-										end
-									end
-									if v[8] then
-										if v[8]~="" then
-											pricetext2:SetText(v[8])
-											priceicon2:SetTexture(AtlasLoot_FixText(v[9]))
-											extraFrame:Show()
-											pricetext2:Show()
-											priceicon2:Show()
-										end
-									end
-									if v[10] then
-										if v[10]~="" then
-											pricetext3:SetText(v[10])
-											priceicon3:SetTexture(AtlasLoot_FixText(v[11]))
-											extraFrame:Show()
-											pricetext3:Show()
-											priceicon3:Show()
-										end
-									end
-									if v[12] then
-										if v[12]~="" then
-											pricetext4:SetText(v[12])
-											priceicon4:SetTexture(AtlasLoot_FixText(v[13]))
-											extraFrame:Show()
-											pricetext4:Show()
-											priceicon4:Show()
-										end
-									end
-									if v[14] then
-										if v[14]~="" then
-											pricetext5:SetText(v[14])
-											priceicon5:SetTexture(AtlasLoot_FixText(v[15]))
-											extraFrame:Show()
-											pricetext5:Show()
-											priceicon5:Show()
-										end
-									end
-									break
-								end
-							end
-						end
-					end
-				end
-				--For convenience, we store information about the objects in the objects so that it can be easily accessed later
-				itemButton.itemID = dataSource[dataID][i][1]
-				itemButton.itemIDName = dataSource[dataID][i][3]
-				itemButton.itemIDExtra = dataSource[dataID][i][4]
-				itemButton.container = dataSource[dataID][i][16]
-				border:Hide()
-				if itemButton.container then
-					border:Show()
-				end
-				local spellID
-				if isItem then
-					itemButton.dressingroomID = dataSource[dataID][i][1]
-				elseif isEnchant then
-					spellID = tonumber(string.sub(dataSource[dataID][i][1], 2))
-					if AtlasTW.SpellDB["enchants"][spellID] and AtlasTW.SpellDB["enchants"][spellID]["item"] and AtlasTW.SpellDB["enchants"][spellID]["item"] ~= nil and AtlasTW.SpellDB["enchants"][spellID]["item"] ~= "" then
-						itemButton.dressingroomID = AtlasTW.SpellDB["enchants"][spellID]["item"]
-					else
-						itemButton.dressingroomID = spellID
-					end
-					if AtlasTW.SpellDB["enchants"][spellID] and AtlasTW.SpellDB["enchants"][spellID]["item"] ~= nil and AtlasTW.SpellDB["enchants"][spellID]["item"] ~= "" then
-						if not GetItemInfo(AtlasTW.SpellDB["enchants"][spellID]["item"]) then
-							GameTooltip:SetHyperlink("item:"..AtlasTW.SpellDBts"][spellID]["item"]..":0:0:0")
-						end
-					end
-				elseif isSpell then
-					spellID = tonumber(string.sub(dataSource[dataID][i][1], 2))
-					itemButton.dressingroomID = AtlasTW.SpellDB["craftspells"][spellID]["craftItem"]
-					if AtlasTW.SpellDB["craftspells"][spellID]["craftItem"] ~= "" then
-						if not GetItemInfo(AtlasTW.SpellDB["craftspells"][spellID]["craftItem"]) then
-							GameTooltip:SetHyperlink("item:"..AtlasTW.SpellDB["craftspells"][spellID]["craftItem"]..":0:0:0")
-						end
-					end
-					if AtlasTW.SpellDB["craftspells"][spellID]["reagents"] ~= "" then
-						for i = 1, table.getn(AtlasTW.SpellDB["craftspells"][spellID]["reagents"]) do
-							local reagent = AtlasTW.SpellDB["craftspells"][spellID]["reagents"][i]
-							if not GetItemInfo(reagent[1]) then
-								GameTooltip:SetHyperlink("item:"..reagent[1]..":0:0:0")
-							end
-						end
-					end
-					if AtlasTW.SpellDB["craftspells"][spellID]["tools"] ~= "" then
-						for i = 1, table.getn(AtlasTW.SpellDB["craftspells"][spellID]["tools"]) do
-							if not GetItemInfo(AtlasTW.SpellDB["craftspells"][spellID]["tools"][i]) then
-								GameTooltip:SetHyperlink("item:"..AtlasTW.SpellDB["craftspells"][spellID]["tools"][i]..":0:0:0")
-							end
-						end
-					end
-				end
-				itemButton.droprate = nil
-				if dataID == "SearchResult" or dataID == "WishList" then
-					itemButton.sourcePage = dataSource[dataID][i][5]
-				else
-					local droprate = dataSource[dataID][i][5]
-					if droprate and string.find(droprate, "%%") then itemButton.droprate = droprate end
-				end
-				itemButton:Show()
-				if MouseIsOver(itemButton) then
-					itemButton:Hide()
-					itemButton:Show()
-				end
-			else
-				_G["AtlasLootItem_"..i]:Hide()
-			end
-		end
-		--Hide navigation buttons by default, only show what we need
-		_G["AtlasLootItemsFrame_BACK"]:Hide()
-		_G["AtlasLootItemsFrame_NEXT"]:Hide()
-		_G["AtlasLootItemsFrame_PREV"]:Hide()
-		AtlasLoot_LootPageName:SetText(boss)
-		--Consult the button registry to determine what nav buttons are required
-		if dataID == "SearchResult" or dataID == "WishList" then
-			if wlPage < wlPageMax then
-				_G["AtlasLootItemsFrame_NEXT"]:Show()
-				_G["AtlasLootItemsFrame_NEXT"].lootpage = dataID.."Page"..(wlPage + 1)
-			end
-			if wlPage > 1 then
-				_G["AtlasLootItemsFrame_PREV"]:Show()
-				_G["AtlasLootItemsFrame_PREV"].lootpage = dataID.."Page"..(wlPage - 1)
-			end
-		else
-			local nav = AtlasLoot_GetBossNavigation(dataID)
-			if nav then
-				AtlasLoot_LootPageName:SetText(nav.Title)
-
-				if nav.Next_Page then
-					_G["AtlasLootItemsFrame_NEXT"]:Show()
-					_G["AtlasLootItemsFrame_NEXT"].lootpage = nav.Next_Page
-					_G["AtlasLootItemsFrame_NEXT"].title = nav.Next_Title
-				end
-				if nav.Prev_Page then
-					_G["AtlasLootItemsFrame_PREV"]:Show()
-					_G["AtlasLootItemsFrame_PREV"].lootpage = nav.Prev_Page
-					_G["AtlasLootItemsFrame_PREV"].title = nav.Prev_Title
-				end
-				 if nav.Back_Page then
-				 	_G["AtlasLootItemsFrame_BACK"]:Show()
-				 	_G["AtlasLootItemsFrame_BACK"].lootpage = nav.Back_Page
-				 	_G["AtlasLootItemsFrame_BACK"].title = nav.Back_Title
-				 end
-			end
-		end
-	end
-
-	AtlasLootItemsFrame_CloseButton:Show()
-	local subMenu = nil
-	local bossName = ""
-	for k in pairs(AtlasLoot_HewdropDown_SubTables) do
-		if subMenu then
-			break
-		end
-		for _, n in pairs(AtlasLoot_HewdropDown_SubTables[k]) do
-			if n[2] == dataID then
-				subMenu = AtlasLoot_HewdropDown_SubTables[k]
-				bossName = n[1]
-				break
-			end
-		end
-	end
-	if subMenu then
-		AtlasLoot_HewdropSubMenuRegister(subMenu)
-		AtlasLootItemsFrame_SubMenu:Enable()
-		AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(bossName, 30))
-		AtlasLootItemsFrame_SelectedTable:Show()
-	else
-		AtlasLootItemsFrame_SubMenu:Disable()
-		AtlasLootItemsFrame_SelectedTable:Hide()
-	end
-	--Anchor the item frame where it is supposed to be
-	AtlasLoot_QueryLootPage()
-
-	-- Set current items for scrollbar
-	AtlasTW.LootCurrentItems = dataSource
-
-	-- Reset scroll position to top
-	if AtlasLootScrollBar then
-	--	FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
-	end
-
-	-- Update scrollbar
-	AtlasTW.Loot.ScrollBarLootUpdate()
-
-	AtlasLootItemsFrame:Show()
-	AtlasLootItemsFrameContainer:Hide() ]]
-end
-
 function AtlasLootBoss_OnClick(buttonName)
 	-- Reset scroll position to top
     FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
@@ -1594,31 +979,6 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 			AtlasLoot_HideScrollBarLoading()
 			AtlasTW.Loot.ScrollBarLootUpdate()
 		end)
-		--Purge the text label for the submenu and disable the submenu
-		AtlasLootItemsFrame_SubMenu:Disable()
-		AtlasLootItemsFrame_SelectedTable:SetText("")
-		AtlasLootItemsFrame_SelectedTable:Show()
-	--If the button links to a sub menu definition
---[[ 	else
-		--Enable the submenu button
-		AtlasLootItemsFrame_SubMenu:Enable()
-		--Store the loot table and boss name
-		AtlasLootItemsFrame.StoredElement = AtlasLoot_HewdropDown_SubTables[tablename][1][1]
-		AtlasLootItemsFrame.StoredMenu = tablename
-		CacheAllLootItems(tablename, function()
-			AtlasLoot_HideScrollBarLoading()
-			-- Update scrollbar
-			AtlasTW.Loot.ScrollBarLootUpdate()
-		end)
-		--Save needed info for fuure re-display of the table
-	--	AtlasTWCharDB.LastBoss = AtlasLoot_HewdropDown_SubTables[tablename][1][2]
-	--	AtlasTWCharDB.LastBossText = AtlasLoot_HewdropDown_SubTables[tablename][1][1]
-		--Load the correct submenu and associated with the button
-		AtlasLoot_HewdropSubMenu:Unregister(AtlasLootItemsFrame_SubMenu)
-		AtlasLoot_HewdropSubMenuRegister(AtlasLoot_HewdropDown_SubTables[tablename])
-		--Show a text label of what has been selected
-		AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(AtlasLoot_HewdropDown_SubTables[tablename][1][1], 30))
-		AtlasLootItemsFrame_SelectedTable:Show() ]]
 	end
 	--Show the category that has been selected
 	AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(text, 30))
@@ -1641,38 +1001,8 @@ function AtlasLoot_HewdropSubMenuClick(tablename, text)
 		AtlasTW.Loot.ScrollBarLootUpdate()
 	end)
 	--Save needed info for fuure re-display of the table
-	--AtlasTWCharDB.LastBoss = tablename
-	--AtlasTWCharDB.LastBossText = text
 	--Show the table that has been selected
-	AtlasLootItemsFrame_SelectedTable:SetText(TruncateText(text, 30))
-	AtlasLootItemsFrame_SelectedTable:Show()
 	AtlasLoot_HewdropSubMenu:Close(1)
-end
-
---[[
-	loottable - Table defining the sub menu
-	Generates the sub menu needed by passing a table of loot tables and titles
-]]
-function AtlasLoot_HewdropSubMenuRegister(loottable)
-	AtlasLoot_HewdropSubMenu:Register(AtlasLootItemsFrame_SubMenu,
-		'point', function()
-			return "TOP", "BOTTOM"
-		end,
-		'children', function(level, _)
-			if level == 1 then
-				for _,v in pairs(loottable) do
-					AtlasLoot_HewdropSubMenu:AddLine(
-						'text', v[1],
-						'func', AtlasLoot_HewdropSubMenuClick,
-						'arg1', v[2],
-						'arg2', v[1],
-						'notCheckable', true
-					)
-				end
-			end
-		end,
-		'dontHook', true
-	)
 end
 
 --[[
@@ -1830,9 +1160,6 @@ function AtlasLoot_OpenMenu(menuName)
 	AtlasLoot_QuickLooks:Hide()
 	AtlasLootQuickLooksButton:Hide()
 	AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(menuName, 30))
-	AtlasLootItemsFrame_SubMenu:Disable()
-	AtlasLootItemsFrame_SelectedTable:SetText("")
-	AtlasLootItemsFrame_SelectedTable:Show()
 	local menuMapping = {
 		[L["Crafting"]] = "AtlasLoot_CraftingMenu",
 		[L["World"]] = "AtlasLoot_WorldMenu",
@@ -1883,6 +1210,7 @@ function AtlasLoot_OpenMenu(menuName)
 		if type(_G[lootTable]) == "function" then
 			_G[lootTable]()
 		else
+			print("AtlasLoot_OpenMenu: ScrollBarLootUpdate")
 			AtlasTW.Loot.ScrollBarLootUpdate()
 		end
 	else
@@ -1952,26 +1280,41 @@ function AtlasLootMenuItem_OnClick(button)
 			end
 		end
 		CloseDropDownMenus()
-	--	AtlasTWCharDB.LastBoss = TableSource
-	--	AtlasTWCharDB.LastBossText = pagename
 
-		--print(dataID.." - dataID, "..TableSource.." - TableSource")
 		AtlasLootItemsFrame:Show()
 		AtlasLoot_ShowScrollBarLoading()
-
-		--Store the loot table and boss name
+		if pagename == L["Rare Mobs"] then
+			pagename = L["Shade Mage"]
+		end
 		-- Запоминаем родительское меню для кнопки "Назад"
 		local prevStored = AtlasLootItemsFrame.StoredElement
 		if type(prevStored) == "table" and prevStored.menuName then
 			AtlasLootItemsFrame.StoredBackMenuName = prevStored.menuName
 		end
+		--Store the loot table and boss name
 		AtlasLootItemsFrame.StoredElement = pagename
 		AtlasLootItemsFrame.StoredMenu = TableSource
-		if type(TableSource) == "string" then
-			TableSource = AtlasLoot_Data[TableSource] or GetLootByElemName(TableSource)
+		--print(pagename.." - pagename, "..TableSource.." - TableSource")
+		local newTable = nil
+		if type(TableSource) == "table" then
+			newTable = TableSource
+		elseif type(TableSource) == "string" then
+			-- 1) Прямой ключ в AtlasLoot_Data
+			newTable = AtlasLoot_Data[TableSource]
+			-- 2) Попробуем получить по имени выбранного элемента в рамках инстанса
+			if not newTable and type(pagename) == "string" then
+				newTable = GetLootByElemName(pagename, TableSource)
+			end
+			-- 3) Попробуем глобально по имени
+			if not newTable and type(pagename) == "string" then
+				newTable = GetLootByElemName(pagename)
+			end
+			-- 4) Крайний случай: пробуем по самому TableSource
+			if not newTable then
+				newTable = GetLootByElemName(TableSource)
+			end
 		end
-
-		CacheAllLootItems(TableSource, function()
+		CacheAllLootItems(newTable, function()
 			AtlasLoot_HideScrollBarLoading()
 			AtlasTW.Loot.ScrollBarLootUpdate()
 		end)
@@ -2038,14 +1381,14 @@ function AtlasLoot_NavButton_OnClick()
 	-- Навигация по результатам поиска
 	if string.sub(lp, 1, 16) == "SearchResultPage" then
 		--print("Навигация SearchResult -> "..lp)
-		AtlasLoot_ShowItemsFrame("SearchResult", lp, string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""))
+		--AtlasLoot_ShowItemsFrame("SearchResult", lp, string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""))
 		return
 	end
 
 	-- Навигация по списку желаний
 	if string.sub(lp, 1, 12) == "WishListPage" then
 		--print("Навигация WishList -> "..lp)
-		AtlasLoot_ShowItemsFrame("WishList", lp, L["WishList"])
+		--AtlasLoot_ShowItemsFrame("WishList", lp, L["WishList"])
 		return
 	end
 
@@ -2467,7 +1810,7 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
 			local dataID, dataSource = AtlasLoot_Strsplit("|", this.sourcePage)
 			if dataID and dataSource and AtlasLoot_IsLootTableAvailable(dataID) then
-				AtlasLoot_ShowItemsFrame(dataID, dataSource, AtlasLoot_TableNames[dataID][1])
+				--AtlasLoot_ShowItemsFrame(dataID, dataSource, AtlasLoot_TableNames[dataID][1])
 			end
 		elseif this.container and arg1 == "LeftButton" then
 			AtlasLoot_ShowContainerFrame()

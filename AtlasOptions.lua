@@ -87,8 +87,6 @@ function AtlasTW.OptionDefaultSettings()
         LootShowPanel = true
     }
 	AtlasTWCharDB.PartialMatching = true
---[[ 	AtlasTWCharDB.LastBoss = "AtlasLoot_DungeonsMenu"
-	AtlasTWCharDB.LastBossText = L["Dungeons & Raids"] ]]
 	AtlasTWCharDB["QuickLooks"] = {}
 	AtlasTWCharDB["WishList"] = {}
 	AtlasLoot_RefreshQuickLookButtons()

@@ -6,7 +6,7 @@ local currentPage = 1
 local SearchResult = nil
 
 function AtlasLoot:ShowSearchResult()
-	AtlasLoot_ShowItemsFrame("SearchResult", "SearchResultPage"..currentPage, string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""))
+	--AtlasLoot_ShowItemsFrame("SearchResult", "SearchResultPage"..currentPage, string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""))
 end
 
 local function strtrim(s)
@@ -93,7 +93,7 @@ function AtlasLoot:Search(Text)
 	else
 		currentPage = 1
 		SearchResult = AtlasLoot_CategorizeWishList(AtlasTWCharDB["SearchResult"])
-		AtlasLoot_ShowItemsFrame("SearchResult", "SearchResultPage1", string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""))
+		--AtlasLoot_ShowItemsFrame("SearchResult", "SearchResultPage1", string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""))
 	end
 end
 

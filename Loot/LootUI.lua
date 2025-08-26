@@ -163,7 +163,7 @@ local function AtlasLoot_CreatePresetButtons(frame)
         presetButton[i]:SetScript("OnClick", function()
             if AtlasTWCharDB and AtlasTWCharDB["QuickLooks"] and AtlasTWCharDB["QuickLooks"][buttonIndex] and AtlasTWCharDB["QuickLooks"][buttonIndex][1] then
                 if AtlasLoot_IsLootTableAvailable(AtlasTWCharDB["QuickLooks"][buttonIndex][1]) then
-                    AtlasLoot_ShowItemsFrame(AtlasTWCharDB["QuickLooks"][buttonIndex][1], AtlasTWCharDB["QuickLooks"][buttonIndex][2], AtlasTWCharDB["QuickLooks"][buttonIndex][3])
+                   -- AtlasLoot_ShowItemsFrame(AtlasTWCharDB["QuickLooks"][buttonIndex][1], AtlasTWCharDB["QuickLooks"][buttonIndex][2], AtlasTWCharDB["QuickLooks"][buttonIndex][3])
                 end
             end
         end)
@@ -270,8 +270,6 @@ local function AtlasLoot_CreateSearchElements(frame)
     wishListButton:SetScript("OnClick", function()
         AtlasLoot_ShowWishList()
         CloseDropDownMenus()
-        AtlasLootItemsFrame_SubMenu:Disable()
-        AtlasLootItemsFrame_SelectedTable:Hide()
         AtlasLootQuickLooksButton:Hide()
         AtlasLoot_QuickLooks:Hide()
     end)
@@ -312,14 +310,8 @@ local function AtlasLoot_CreateFontStrings(frame)
     selectedCategory:SetPoint("TOP", "AtlasLootItemsFrame_Menu", "TOP", 0, 15)
     selectedCategory:SetText("Test")
 
-    -- Selected Table text
-    local selectedTable = frame:CreateFontString(frame:GetName().."_SelectedTable", "OVERLAY", "GameFontNormal")
-	selectedTable:SetPoint("TOP", "AtlasLootItemsFrame_SubMenu", "TOP", 0, 15)
-    selectedTable:SetText("Test")
-
     return {
-        selectedCategory = selectedCategory,
-        selectedTable = selectedTable
+        selectedCategory = selectedCategory
     }
 end
 
@@ -606,19 +598,6 @@ local function AtlasLoot_CreateItemsFrame()
             AtlasLoot_Hewdrop:Close()
         else
             AtlasLoot_Hewdrop:Open(this)
-        end
-    end)
-
-    -- SubMenu button
-    local subMenuButton = CreateFrame("Button", frame:GetName().."_SubMenu", frame, "OptionsButtonTemplate")
-    subMenuButton:SetWidth(120)
-    subMenuButton:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -40, 10)
-    subMenuButton:SetText(L["Select Sub-Table"])
-    subMenuButton:SetScript("OnClick", function()
-        if AtlasLoot_HewdropSubMenu:IsOpen() then
-            AtlasLoot_HewdropSubMenu:Close()
-        else
-            AtlasLoot_HewdropSubMenu:Open(this)
         end
     end)
 
