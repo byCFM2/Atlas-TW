@@ -103,9 +103,7 @@ end
 ]]
 function AtlasLoot_GetBossNavigation(data) --TODO remake
     if not data then return nil end
-
    -- print("AtlasLoot_GetBossNavigation: ищем навигацию для " .. tostring(data))
-
     -- Получаем текущий инстанс из настроек
     local currentZoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
     local currentInstanceData = AtlasTW.InstanceData[currentZoneID]
@@ -168,9 +166,9 @@ function AtlasLoot_GetBossNavigation(data) --TODO remake
                 end
 
                 -- Back to dungeons menu
-				--[[ 
+
 				nav.Back_Page = "DUNGEONSMENU"
-				nav.Back_Title = L["Dungeons & Raids"] ]]
+				nav.Back_Title = L["Dungeons & Raids"]
 
                -- print("AtlasLoot_GetBossNavigation: возвращаем nav - Next: " .. tostring(nav.Next_Page) .. ", Prev: " .. tostring(nav.Prev_Page) .. ", Back: " .. tostring(nav.Back_Page))
                 return nav
@@ -876,9 +874,7 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 	if dataID == "SearchResult" or dataID == "WishList" then
 		-- навигация обрабатывается через AtlasLoot_ShowItemsFrame для Search/WishList
 	else
-
 		local nav = nil
-		
 		-- Проверяем, является ли это редким мобом
 		local rareMobsData = AtlasTW.InstanceData.RareMobs
 		if rareMobsData and rareMobsData.Bosses then
@@ -910,12 +906,12 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 				end
 			end
 		end
-		
+
 		-- Если не редкий моб, используем обычную навигацию
 		if not nav then
 			nav = AtlasLoot_GetBossNavigation(dataID)
 		end
-		
+
 		-- Если навигация босса не найдена, пробуем навигацию по меню
 		if not nav and type(AtlasLoot_GetMenuNavigation) == "function" then
 			nav = AtlasLoot_GetMenuNavigation(dataID)
@@ -1573,7 +1569,7 @@ function AtlasLoot_NavButton_OnClick()
 			end
 		end
 	end
-	
+
 	-- По умолчанию: обрабатываем как страницу лута/босса
 	--print("Навигация к странице лута: "..lp)
 	AtlasLootItemsFrame:Show()
@@ -1615,7 +1611,7 @@ function AtlasLoot_NavButton_OnClick()
 			lootData = lp
 		end
 	end
-	
+
 	CacheAllLootItems(lootData, function()
 		AtlasLoot_HideScrollBarLoading()
 		AtlasTW.Loot.ScrollBarLootUpdate()
