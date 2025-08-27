@@ -115,6 +115,12 @@ function AtlasLoot_GetBossNavigation(data) --TODO remake
                -- print("AtlasLoot_GetBossNavigation: найден босс " .. tostring(bossData.name or bossData.id) .. " в инстансе " .. tostring(currentZoneID))
                 local nav = {}
                 nav.Title = bossData.name or bossData.id
+				if bossData.items and type(bossData.items) == "table" then
+					-- Back to dungeons menu
+					nav.Back_Page = "DUNGEONSMENU"
+					nav.Back_Title = L["Dungeons & Raids"]
+				end
+
                 local numEntries = table.getn(currentInstanceData.Bosses)
                -- print("AtlasLoot_GetBossNavigation: текущий индекс " .. tostring(i) .. ", всего боссов " .. tostring(numEntries))
 				if numEntries <= 1 then return nav end
@@ -164,11 +170,6 @@ function AtlasLoot_GetBossNavigation(data) --TODO remake
                     nav.Next_Page = nextBoss.name
                     nav.Next_Title = nextBoss.name or nextBoss.id
                 end
-
-                -- Back to dungeons menu
-
-				nav.Back_Page = "DUNGEONSMENU"
-				nav.Back_Title = L["Dungeons & Raids"]
 
                -- print("AtlasLoot_GetBossNavigation: возвращаем nav - Next: " .. tostring(nav.Next_Page) .. ", Prev: " .. tostring(nav.Prev_Page) .. ", Back: " .. tostring(nav.Back_Page))
                 return nav
