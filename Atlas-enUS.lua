@@ -793,7 +793,6 @@ AtlasTW.Local.Translations = {
 	[". Right click on any other item to refresh the loot page."] = true,
 	["Level 60"] = true,
 	["Misc"] = true,
-	["Test"] = true,
 	["Skill:"] = true,
 	["QuickLook"] = true,
 	["Add to QuickLooks"] = true,

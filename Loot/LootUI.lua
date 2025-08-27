@@ -308,7 +308,7 @@ local function AtlasLoot_CreateFontStrings(frame)
     -- Selected Category text
     local selectedCategory = frame:CreateFontString(frame:GetName().."_SelectedCategory", "OVERLAY", "GameFontNormal")
     selectedCategory:SetPoint("TOP", "AtlasLootItemsFrame_Menu", "TOP", 0, 15)
-    selectedCategory:SetText("Test")
+    selectedCategory:SetText("")
 
     return {
         selectedCategory = selectedCategory

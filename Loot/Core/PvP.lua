@@ -1,8 +1,10 @@
+AtlasTW = _G.AtlasTW
+AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
 local BC = AceLibrary("Babble-Class-2.2")
 local BZ = AceLibrary("Babble-Zone-2.2a")
 
-AtlasTW.Loot.PvpMenuData = {
+AtlasTW.MenuData.PVP = {
     {},
     {},
     {},
@@ -28,13 +30,10 @@ AtlasTW.Loot.PvpMenuData = {
 }
 
 function AtlasLootPvPMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = L["PvP Rewards"] }
-    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.PvpMenuData
-    AtlasLootItemsFrame.StoredBackMenuName = nil
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(L["PvP Rewards"], AtlasTW.MenuData.PVP)
 end
 
-AtlasTW.Loot.PvpSetMenuData = {
+AtlasTW.MenuData.PVPSets = {
     {},
     {},
     { name = "|cffffffff"..BC["Priest"], icon = "Interface\\Icons\\Spell_Holy_PowerWordShield", lootpage = "PVPPriest" },
@@ -59,8 +58,5 @@ AtlasTW.Loot.PvpSetMenuData = {
 }
 
 function AtlasLootPVPSetMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = L["PvP Armor Sets"] }
-    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.PvpSetMenuData
-    AtlasLootItemsFrame.StoredBackMenuName = L["PvP Rewards"]
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(L["PvP Armor Sets"], AtlasTW.MenuData.PVPSets, L["PvP Rewards"])
 end

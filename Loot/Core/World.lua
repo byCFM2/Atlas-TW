@@ -1,7 +1,9 @@
+AtlasTW = _G.AtlasTW
+AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
 local BB = AceLibrary("Babble-Boss-2.2a")
 
-AtlasTW.Loot.WorldBossesData = {
+AtlasTW.MenuData.WorldBosses = {
     { name = BB["Azuregos"], extra = "Azshara", icon = "Interface\\Icons\\INV_Misc_Head_Dragon_Blue", lootpage = "Azuregos" },
     { name = BB["Emeriss"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_Head_Dragon_Green", lootpage = "FourDragons" },
     { name = BB["Lethon"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_Head_Dragon_Green", lootpage = "FourDragons" },
@@ -20,8 +22,5 @@ AtlasTW.Loot.WorldBossesData = {
 }
 
 function AtlasLoot_WorldMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = L["World"] }
-    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.WorldBossesData
-    AtlasLootItemsFrame.StoredBackMenuName = nil
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(L["World"], AtlasTW.MenuData.WorldBosses)
 end

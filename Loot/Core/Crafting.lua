@@ -1,3 +1,5 @@
+AtlasTW = _G.AtlasTW
+AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
 local BC = AceLibrary("Babble-Class-2.2")
 local BS = AceLibrary("Babble-Spell-2.2a")
@@ -5,7 +7,7 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 local RED = "|cffff0000"
 
-AtlasTW.Loot.CraftingMenuData = {
+AtlasTW.MenuData.Crafting = {
     {},
     { name = BS["Alchemy"], icon = "Interface\\Icons\\Trade_Alchemy", lootpage = "AtlasLoot_AlchemyMenu" },
     { name = BS["Blacksmithing"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "AtlasLoot_SmithingMenu" },
@@ -28,14 +30,10 @@ AtlasTW.Loot.CraftingMenuData = {
 }
 
 function AtlasLoot_CraftingMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = L["Crafting"] }
-    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.CraftingMenuData
-    -- Главное меню крафтинга не имеет родительской страницы
-    AtlasLootItemsFrame.StoredBackMenuName = nil
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(L["Crafting"], AtlasTW.MenuData.Crafting)
 end
 
-local craftedSetMenuData = {
+AtlasTW.MenuData.CraftedSet = {
     { name = RED..BS["Tailoring"], Extra = BS["Cloth"], icon = "Interface\\Icons\\INV_Chest_Cloth_21", isheader = true },
     { name = BIS["Augerer's Attire"], icon = "Interface\\Icons\\INV_Helmet_11", lootpage = "AugerersAttire" },
     { name = BIS["Shadoweave"], icon = "Interface\\Icons\\INV_Helmet_27", lootpage = "ShadoweaveSet" },
@@ -87,14 +85,10 @@ local craftedSetMenuData = {
 }
 
 function AtlasLootCraftedSetMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = L["Crafted Sets"] }
-    AtlasLootItemsFrame.StoredMenu = craftedSetMenuData
-    -- Родительская страница - главное меню крафтинга
-    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(L["Crafted Sets"], AtlasTW.MenuData.CraftedSet, L["Crafting"])
 end
 
-local alchemyMenuData = {
+AtlasTW.MenuData.Alchemy = {
     {},
     { name = BS["Alchemy"]..": "..L["Apprentice"], lootpage = "AlchemyApprentice" },
     { name = BS["Alchemy"]..": "..L["Journeyman"], lootpage = "AlchemyJourneyman" },
@@ -111,14 +105,10 @@ local alchemyMenuData = {
 }
 
 function AtlasLoot_AlchemyMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = BS["Alchemy"], defaultIcon = "Interface\\Icons\\Trade_Alchemy" }
-    AtlasLootItemsFrame.StoredMenu = alchemyMenuData
-    -- Родительская страница - главное меню крафтинга
-    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(BS["Alchemy"], AtlasTW.MenuData.Alchemy, L["Crafting"], "Interface\\Icons\\Trade_Alchemy")
 end
 
-local smithingMenuData = {
+AtlasTW.MenuData.Smithing = {
     {},
     { name = BS["Blacksmithing"]..": "..L["Apprentice"], lootpage = "SmithingApprentice" },
     { name = BS["Blacksmithing"]..": "..L["Journeyman"], lootpage = "SmithingJourneyman" },
@@ -150,14 +140,10 @@ local smithingMenuData = {
 }
 
 function AtlasLoot_SmithingMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = BS["Blacksmithing"], defaultIcon = "Interface\\Icons\\Trade_BlackSmithing" }
-    AtlasLootItemsFrame.StoredMenu = smithingMenuData
-    -- Родительская страница - главное меню крафтинга
-    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(BS["Blacksmithing"],AtlasTW.MenuData.Smithing,L["Crafting"],"Interface\\Icons\\Trade_BlackSmithing")
 end
 
-local enchantingMenuData = {
+AtlasTW.MenuData.Enchanting = {
     {},
     { name = BS["Enchanting"]..": "..L["Apprentice"], lootpage = "EnchantingApprentice" },
     { name = BS["Enchanting"]..": "..L["Journeyman"], lootpage = "EnchantingJourneyman" },
@@ -176,14 +162,10 @@ local enchantingMenuData = {
 }
 
 function AtlasLoot_EnchantingMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = BS["Enchanting"], defaultIcon = "Interface\\Icons\\Trade_Engraving" }
-    AtlasLootItemsFrame.StoredMenu = enchantingMenuData
-    -- Родительская страница - главное меню крафтинга
-    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(BS["Enchanting"], AtlasTW.MenuData.Enchanting, L["Crafting"], "Interface\\Icons\\Trade_Engraving")
 end
 
-local engineeringMenuData = {
+AtlasTW.MenuData.Engineering = {
     {},
     { name = BS["Engineering"]..": "..L["Apprentice"], lootpage = "EngineeringApprentice" },
     { name = BS["Engineering"]..": "..L["Journeyman"], lootpage = "EngineeringJourneyman" },
@@ -205,14 +187,10 @@ local engineeringMenuData = {
 }
 
 function AtlasLoot_EngineeringMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = BS["Engineering"], defaultIcon = "Interface\\Icons\\Trade_Engineering" }
-    AtlasLootItemsFrame.StoredMenu = engineeringMenuData
-    -- Родительская страница - главное меню крафтинга
-    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(BS["Engineering"], AtlasTW.MenuData.Engineering, L["Crafting"], "Interface\\Icons\\Trade_Engineering")
 end
 
-local leatherworkingMenuData = {
+AtlasTW.MenuData.Leatherworking = {
     {},
     { name = BS["Leatherworking"]..": "..L["Apprentice"], lootpage = "LeatherApprentice" },
     { name = BS["Leatherworking"]..": "..L["Journeyman"], lootpage = "LeatherJourneyman" },
@@ -238,28 +216,20 @@ local leatherworkingMenuData = {
 }
 
 function AtlasLoot_LeatherworkingMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = BS["Leatherworking"], defaultIcon = "Interface\\Icons\\INV_Misc_ArmorKit_17" }
-    AtlasLootItemsFrame.StoredMenu = leatherworkingMenuData
-    -- Родительская страница - главное меню крафтинга
-    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(BS["Leatherworking"], AtlasTW.MenuData.Leatherworking, L["Crafting"], "Interface\\Icons\\INV_Misc_ArmorKit_17")
 end
 
-local miningMenuData = {
+AtlasTW.MenuData.Mining = {
     {},
     { name = BS["Mining"], icon = "Interface\\Icons\\Trade_Mining", lootpage = "MiningTable" },
     { name = BS["Smelting"], icon = "Interface\\Icons\\Spell_Fire_FlameBlades", lootpage = "Smelting" },
 }
 
 function AtlasLoot_MiningMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = BS["Mining"], defaultIcon = "Interface\\Icons\\Trade_Mining" }
-    AtlasLootItemsFrame.StoredMenu = miningMenuData
-    -- Родительская страница - главное меню крафтинга
-    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(BS["Mining"], AtlasTW.MenuData.Mining, L["Crafting"], "Interface\\Icons\\Trade_Mining")
 end
 
-local tailoringMenuData = {
+AtlasTW.MenuData.Tailoring = {
     {},
     { name = BS["Tailoring"]..": "..L["Apprentice"], lootpage = "TailoringApprentice" },
     { name = BS["Tailoring"]..": "..L["Journeyman"], lootpage = "TailoringJourneyman" },
@@ -282,14 +252,10 @@ local tailoringMenuData = {
 }
 
 function AtlasLoot_TailoringMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = BS["Tailoring"], defaultIcon = "Interface\\Icons\\Trade_Tailoring" }
-    AtlasLootItemsFrame.StoredMenu = tailoringMenuData
-    -- Родительская страница - главное меню крафтинга
-    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(BS["Tailoring"], AtlasTW.MenuData.Tailoring, L["Crafting"], "Interface\\Icons\\Trade_Tailoring")
 end
 
-local jewelcraftMenuData = {
+AtlasTW.MenuData.Jewelcrafting = {
     {},
     { name = BS["Jewelcrafting"]..": "..L["Apprentice"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingApprentice" },
     { name = BS["Jewelcrafting"]..": "..L["Journeyman"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingJourneyman" },
@@ -311,14 +277,10 @@ local jewelcraftMenuData = {
 }
 
 function AtlasLoot_JewelcraftingMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = BS["Jewelcrafting"], defaultIcon = "Interface\\Icons\\INV_Jewelry_Necklace_01" }
-    AtlasLootItemsFrame.StoredMenu = jewelcraftMenuData
-    -- Родительская страница - главное меню крафтинга
-    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(BS["Jewelcrafting"], AtlasTW.MenuData.Jewelcrafting, L["Crafting"], "Interface\\Icons\\INV_Jewelry_Necklace_01")
 end
 
-local cookingMenuData = {
+AtlasTW.MenuData.Cooking = {
     {},
     { name = BS["Cooking"]..": "..L["Apprentice"], lootpage = "CookingApprentice" },
     { name = BS["Cooking"]..": "..L["Journeyman"], lootpage = "CookingJourneyman" },
@@ -327,9 +289,5 @@ local cookingMenuData = {
 }
 
 function AtlasLoot_CookingMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = BS["Cooking"], defaultIcon = "Interface\\Icons\\INV_Misc_Food_15" }
-    AtlasLootItemsFrame.StoredMenu = cookingMenuData
-    -- Родительская страница - главное меню крафтинга
-    AtlasLootItemsFrame.StoredBackMenuName = L["Crafting"]
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(BS["Cooking"], AtlasTW.MenuData.Cooking, L["Crafting"], "Interface\\Icons\\INV_Misc_Food_15")
 end

@@ -5,7 +5,6 @@
 	<Include file="Core\Crafting.lua"/>
 	<Include file="Core\Factions.lua"/>
 	<Include file="Core\World.lua"/>
-	<Include file="Core\Spells.lua"/>
 	<Include file="Core\PvP.lua"/>
 	<Include file="Core\AtlasLoot.lua"/>
 	<Include file="Core\WishList.lua"/>

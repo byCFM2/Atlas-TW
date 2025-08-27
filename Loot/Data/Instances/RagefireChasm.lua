@@ -28,7 +28,7 @@ AtlasTW.InstanceData.RagefireChasm = {
                 {id=80701, dropRate=35},
                 {id=80702, dropRate=30},
                 {},
-                {id=17041, disc=L["Level One Luntic Challenge"], dropRate=100},
+                {id=17041, disc=L["Level One Lunatic Challenge"], dropRate=100},
             }
         },
         {
@@ -41,7 +41,7 @@ AtlasTW.InstanceData.RagefireChasm = {
                 {id=14148},
                 {id=14145},
                 {},
-                {id=64, disc=L["Level One Luntic Challenge"], dropRate=100},
+                {id=64, disc=L["Level One Lunatic Challenge"], dropRate=100},
             }
         },
         {
@@ -54,7 +54,7 @@ AtlasTW.InstanceData.RagefireChasm = {
                 {id=14147},
                 {id=14151},
                 {},
-                {id=80111, disc=L["Level One Luntic Challenge"], dropRate=100},
+                {id=80111, disc=L["Level One Lunatic Challenge"], dropRate=100},
             }
         },
         {
@@ -67,7 +67,7 @@ AtlasTW.InstanceData.RagefireChasm = {
                 {id=80704},
                 {id=80703},
                 {},
-                {id=5235, disc=L["Level One Luntic Challenge"], dropRate=100},
+                {id=5235, disc=L["Level One Lunatic Challenge"], dropRate=100},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=1},
             }
@@ -76,7 +76,7 @@ AtlasTW.InstanceData.RagefireChasm = {
             id = "RFCTrash",
             name = L["Trash Mobs"].."-"..BZ["Ragefire Chasm"],
             loot = {
-                {id=12862, disc=L["Level One Luntic Challenge"], dropRate = 25},
+                {id=12862, disc=L["Level One Lunatic Challenge"], dropRate = 25},
             }
         },
     },

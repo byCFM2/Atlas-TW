@@ -13,7 +13,6 @@ ATLASLOOT_OPTIONS_EQUIPCOMPARE_DISABLED = L["|cff9d9d9dUse EquipCompare|r"]
 
 --Make the Hewdrop menu in the standalone loot browser accessible here
 AtlasLoot_Hewdrop = AceLibrary("Hewdrop-2.0")
-AtlasLoot_HewdropSubMenu = AceLibrary("Hewdrop-2.0")
 
 -- Colours stored for code readability
 local RED = "|cffff0000"
@@ -110,7 +109,7 @@ function AtlasLoot_GetBossNavigation(data) --TODO remake
     -- Получаем текущий инстанс из настроек
     local currentZoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
     local currentInstanceData = AtlasTW.InstanceData[currentZoneID]
-    
+
     -- Ищем босса только в текущем инстансе
     if currentInstanceData and currentInstanceData.Bosses then
         for i, bossData in ipairs(currentInstanceData.Bosses) do
@@ -584,7 +583,6 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 		dataSource = AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]
 	end
 	if type(dataSource) == "string" then
-		dataID = dataSource
 		dataSource = GetLootByElemName(dataSource) or dataSource
 	end
 	--Check if dataID and dataSource are valid
@@ -878,8 +876,64 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 	if dataID == "SearchResult" or dataID == "WishList" then
 		-- навигация обрабатывается через AtlasLoot_ShowItemsFrame для Search/WishList
 	else
-		local nav = AtlasLoot_GetBossNavigation(dataID)
-		--print("ScrollBarLootUpdate: nav для " .. tostring(dataID) .. " = " .. tostring(nav and "найдена" or "не найдена"))
+
+		local nav = nil
+		
+		-- Проверяем, является ли это редким мобом
+		local rareMobsData = AtlasTW.InstanceData.RareMobs
+		if rareMobsData and rareMobsData.Bosses then
+			for i, bossData in ipairs(rareMobsData.Bosses) do
+				if bossData.name == dataID then
+					-- Создаем навигацию для редких мобов
+					nav = {}
+					nav.Title = bossData.name
+					local numEntries = table.getn(rareMobsData.Bosses)
+					if numEntries > 1 then
+						-- Предыдущий редкий моб
+						local prevIndex = i - 1
+						if prevIndex < 1 then prevIndex = numEntries end
+						local prevBoss = rareMobsData.Bosses[prevIndex]
+						if prevBoss then
+							nav.Prev_Page = prevBoss.name
+							nav.Prev_Title = prevBoss.name
+						end
+						-- Следующий редкий моб
+						local nextIndex = i + 1
+						if nextIndex > numEntries then nextIndex = 1 end
+						local nextBoss = rareMobsData.Bosses[nextIndex]
+						if nextBoss then
+							nav.Next_Page = nextBoss.name
+							nav.Next_Title = nextBoss.name
+						end
+					end
+					break
+				end
+			end
+		end
+		
+		-- Если не редкий моб, используем обычную навигацию
+		if not nav then
+			nav = AtlasLoot_GetBossNavigation(dataID)
+		end
+		
+		-- Если навигация босса не найдена, пробуем навигацию по меню
+		if not nav and type(AtlasLoot_GetMenuNavigation) == "function" then
+			nav = AtlasLoot_GetMenuNavigation(dataID)
+		end
+
+		-- Если навигация не найдена и у нас есть StoredBackMenuName, попробуем найти навигацию для него
+		if not nav and AtlasLootItemsFrame.StoredBackMenuName then
+			local backMenuKey = AtlasLootItemsFrame.StoredBackMenuName
+			--print("ScrollBarLootUpdate: пробуем найти навигацию для StoredBackMenuName: " .. tostring(backMenuKey))
+			nav = AtlasLoot_GetMenuNavigation(backMenuKey)
+			if nav then
+				--print("ScrollBarLootUpdate: найдена навигация через StoredBackMenuName")
+				-- Добавляем кнопку "Назад" в родительское меню
+				nav.Back_Page = "BackToMenu"
+				nav.Back_Title = backMenuKey
+			end
+		end
+
 		if nav then
 			--print("ScrollBarLootUpdate: устанавливаем навигацию - Next: " .. tostring(nav.Next_Page) .. ", Prev: " .. tostring(nav.Prev_Page) .. ", Back: " .. tostring(nav.Back_Page))
 			if nav.Next_Page then
@@ -912,6 +966,13 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 
 	--Show the loot frame
 	AtlasLootItemsFrame:Show()
+end
+
+function AtlasTW.Loot.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon)
+    AtlasLootItemsFrame.StoredElement = { menuName = menuTitle, defaultIcon = defIcon }
+    AtlasLootItemsFrame.StoredMenu = menuItems
+    AtlasLootItemsFrame.StoredBackMenuName = prevMenuText
+    AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 function AtlasLootBoss_OnClick(buttonName)
@@ -966,6 +1027,11 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	--print("AtlasLoot_HewdropClick: tablename "..(tablename or "-"))
 	--print("AtlasLoot_HewdropClick: text "..(text or "-"))
 	if tablename then
+		-- Сохраняем текущее меню для кнопки "Назад"
+		local prevStored = AtlasLootItemsFrame.StoredElement
+		if type(prevStored) == "table" and prevStored.menuName then
+			AtlasLootItemsFrame.StoredBackMenuName = prevStored.menuName
+		end
 		--Store the loot table and boss name
 		AtlasLootItemsFrame:Show()
 		AtlasLoot_ShowScrollBarLoading()
@@ -984,25 +1050,6 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	AtlasLootItemsFrame_SelectedCategory:SetText(TruncateText(text, 30))
 	AtlasLootItemsFrame_SelectedCategory:Show()
 	AtlasLoot_Hewdrop:Close(1)
-end
-
---[[
-	tablename - Name of the loot table in the database
-	text - Heading for the loot table
-	Called when a button in AtlasLoot_HewdropSubMenu is clicked
-]]
-function AtlasLoot_HewdropSubMenuClick(tablename, text)
-	--Store the loot table and boss name
-	AtlasLootItemsFrame.StoredElement = text
-	AtlasLootItemsFrame.StoredMenu = tablename
-	CacheAllLootItems(tablename, function()
-		AtlasLoot_HideScrollBarLoading()
-		-- Update scrollbar
-		AtlasTW.Loot.ScrollBarLootUpdate()
-	end)
-	--Save needed info for fuure re-display of the table
-	--Show the table that has been selected
-	AtlasLoot_HewdropSubMenu:Close(1)
 end
 
 --[[
@@ -1205,12 +1252,13 @@ function AtlasLoot_OpenMenu(menuName)
 		--print("AtlasLoot_OpenMenu: найдено меню "..menuName.." -> "..lootTable)
 		AtlasLootItemsFrame.StoredElement = { menuName = menuName }
 		AtlasLootItemsFrame.StoredMenu = lootTable
-		AtlasLootItemsFrame.StoredBackMenuName = nil -- Очищаем при возврате в меню
+		-- НЕ очищаем StoredBackMenuName при возврате в меню, чтобы сохранить навигацию
+		-- AtlasLootItemsFrame.StoredBackMenuName = nil -- Закомментировано для исправления навигации
 		-- Вызываем функцию меню
 		if type(_G[lootTable]) == "function" then
 			_G[lootTable]()
 		else
-			print("AtlasLoot_OpenMenu: ScrollBarLootUpdate")
+			--print("AtlasLoot_OpenMenu: ScrollBarLootUpdate")
 			AtlasTW.Loot.ScrollBarLootUpdate()
 		end
 	else
@@ -1341,6 +1389,128 @@ local function FindBossIndexInScrollList(bossIdOrName)
 	return nil
 end
 
+-- Навигация по меню
+function AtlasLoot_GetMenuNavigation(current)
+    -- Универсальная функция навигации для всех меню аддона
+    -- current может быть названием пункта меню или ключом таблицы лута
+ 	if type(current) == "table" and current.menuName then
+		current = current.menuName
+	end
+    -- Автоматически собираем все таблицы MenuData
+    local function getAllMenuData()
+        local menus = {}
+        if AtlasTW and AtlasTW.MenuData then
+            for _, value in pairs(AtlasTW.MenuData) do
+                if type(value) == "table" and table.getn(value) > 0 then
+                    table.insert(menus, value)
+                end
+            end
+        end
+        return menus
+    end
+
+    local candidates = getAllMenuData()
+
+    local function findInMenu(menu)
+        if not menu then return nil end
+        local size = table.getn(menu)
+        local idx = nil
+        -- Ищем элемент по названию (приоритет) или по lootpage (для совместимости)
+        for i = 1, size do
+            local e = menu[i]
+            if e and e.name then
+                -- Проверяем точное совпадение
+                if e.name == current then
+                    idx = i
+                    break
+                -- Проверяем совпадение без цветовых кодов
+                elseif string.find(e.name, "|c") then
+                    -- Убираем цветовые коды из названия
+                    local cleanName = string.gsub(e.name, "|c%x%x%x%x%x%x%x%x", "")
+                    cleanName = string.gsub(cleanName, "|r", "")
+                    if cleanName == current then
+                        idx = i
+                        break
+                    end
+                end
+            end
+        end
+
+        -- Если не нашли по названию, пробуем по lootpage для обратной совместимости
+        if not idx then
+            for i = 1, size do
+                local e = menu[i]
+                if e and e.lootpage and e.lootpage == current then
+                    idx = i
+                    --print("findInMenu: найден по lootpage на индексе "..tostring(i))
+                    break
+                end
+            end
+        end
+
+        if not idx then
+            return nil
+        end
+
+        local result = {}
+        -- Ищем предыдущий пункт среди валидных элементов
+        for j = idx - 1, 1, -1 do
+            local pe = menu[j]
+            if pe and pe.lootpage and not pe.isheader then
+                result.Prev_Page = pe.lootpage
+                result.Prev_Title = pe.name
+                break
+            end
+        end
+        -- Если не нашли, делаем обход с конца (wrap-around)
+        if not result.Prev_Page then
+            for j = size, 1, -1 do
+                if j ~= idx then
+                    local pe = menu[j]
+                    if pe and pe.lootpage and not pe.isheader then
+                        result.Prev_Page = pe.lootpage
+                        result.Prev_Title = pe.name
+                        break
+                    end
+                end
+            end
+        end
+
+        -- Ищем следующий пункт
+        for j = idx + 1, size do
+            local ne = menu[j]
+            if ne and ne.lootpage and not ne.isheader then
+                result.Next_Page = ne.lootpage
+                result.Next_Title = ne.name
+                break
+            end
+        end
+        -- Если не нашли, делаем обход с начала (wrap-around)
+        if not result.Next_Page then
+            for j = 1, size do
+                if j ~= idx then
+                    local ne = menu[j]
+                    if ne and ne.lootpage and not ne.isheader then
+                        result.Next_Page = ne.lootpage
+                        result.Next_Title = ne.name
+                        break
+                    end
+                end
+            end
+        end
+        return result
+    end
+    -- Сканируем все меню аддона
+	for k = 1, table.getn(candidates) do
+		local nav = findInMenu(candidates[k])
+		if nav and (nav.Next_Page or nav.Prev_Page) then
+
+			return nav
+		end
+	end
+
+    return nil
+end
 --[[
 	Called when <-, -> or 'Back' are pressed and calls up the appropriate loot page
 ]]
@@ -1392,13 +1562,30 @@ function AtlasLoot_NavButton_OnClick()
 		return
 	end
 
+	-- Проверяем, является ли это навигацией по редким мобам
+	local isRareMobNavigation = false
+	local rareMobsData = AtlasTW.InstanceData.RareMobs
+	if rareMobsData and rareMobsData.Bosses then
+		for _, bossData in ipairs(rareMobsData.Bosses) do
+			if bossData.name == lp then
+				isRareMobNavigation = true
+				break
+			end
+		end
+	end
+	
 	-- По умолчанию: обрабатываем как страницу лута/босса
 	--print("Навигация к странице лута: "..lp)
 	AtlasLootItemsFrame:Show()
 	AtlasLoot_ShowScrollBarLoading()
-	AtlasLootItemsFrame.StoredElement = lp
-	AtlasLootItemsFrame.StoredMenu = nil
-
+	AtlasLootItemsFrame.StoredElement = this.title or lp
+	-- Для редких мобов не меняем StoredMenu, для остальных - устанавливаем lp
+	if isRareMobNavigation then
+		AtlasLootItemsFrame.StoredBackMenuName = L["World"]
+	else
+		AtlasLootItemsFrame.StoredMenu = lp
+	end
+-------------------------------------
 	-- Найти индекс босса в ScrollList и обновить activeElement
 	local bossIndex = FindBossIndexInScrollList(lp)
 	if bossIndex then
@@ -1410,10 +1597,26 @@ function AtlasLoot_NavButton_OnClick()
 		AtlasLootItemsFrame.activeElement = nil
 	end
 
-	if type(lp) == "string" then
-		lp = AtlasLoot_Data[lp] or GetLootByElemName(lp)
+	-- Получаем данные лута
+	local lootData = nil
+	if isRareMobNavigation then
+		-- Для редких мобов ищем данные в RareMobs
+		for _, bossData in ipairs(rareMobsData.Bosses) do
+			if bossData.name == lp then
+				lootData = bossData.loot
+				break
+			end
+		end
+	else
+		-- Обычная логика для других боссов
+		if type(lp) == "string" then
+			lootData = AtlasLoot_Data[lp] or GetLootByElemName(lp)
+		else
+			lootData = lp
+		end
 	end
-	CacheAllLootItems(lp, function()
+	
+	CacheAllLootItems(lootData, function()
 		AtlasLoot_HideScrollBarLoading()
 		AtlasTW.Loot.ScrollBarLootUpdate()
 	end)
@@ -1844,8 +2047,7 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 				if WIM_EditBoxInFocus then
 					local craftitem = AtlasTW.SpellDB["craftspells"][this.elemID]["item"]
 					if craftitem ~= nil and craftitem ~= "" then
-						local craftname = GetItemInfo(craftitem)
-						WIM_EditBoxInFocus:Insert("\124"..string.sub(color, 2).."|Hitem:"..craftitem.."\124h["..craftname.."]|h|r")
+						WIM_EditBoxInFocus:Insert(AtlasLoot_GetChatLink(AtlasTW.SpellDB["craftspells"][this.elemID]["item"]))
 					else
 						WIM_EditBoxInFocus:Insert(name)
 					end

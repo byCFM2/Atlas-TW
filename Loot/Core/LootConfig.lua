@@ -1,4 +1,6 @@
 --Instance required libraries
+AtlasTW = _G.AtlasTW
+AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
 
 -- Кэш для локализованных строк (оптимизация)
@@ -92,48 +94,48 @@ end
 -- Оптимизированная функция для динамической генерации AtlasLoot_HewdropDown
 local function GenerateHewdropDown()
 
-    local lootData = AtlasTW.Loot
+    local MenuData = AtlasTW.MenuData
     local hewdropDown = {}
     local category
 
     -- 1. Dungeons & Raids (оптимизированная обработка)
-    category = ProcessDungeonsCategory(lootData.DungeonsMenuData)
+    category = ProcessDungeonsCategory(MenuData.Dungeons)
     if category then
         table.insert(hewdropDown, category)
     end
 
     -- 2. World (оптимизированная обработка)
-    category = ProcessCategoryData(lootData.WorldBossesData, LocalizedStrings.World, ProcessWorldCategory)
+    category = ProcessCategoryData(MenuData.WorldBosses, LocalizedStrings.World, ProcessWorldCategory)
     if category then
         table.insert(hewdropDown, category)
     end
 
     -- 3. PvP Rewards (оптимизированная обработка)
-    category = ProcessCategoryData(lootData.PvpMenuData, LocalizedStrings.PvPRewards)
+    category = ProcessCategoryData(MenuData.PVP, LocalizedStrings.PvPRewards)
     if category then
         table.insert(hewdropDown, category)
     end
 
     -- 4. Collections (оптимизированная обработка)
-    category = ProcessCategoryData(lootData.SetsMenuData, LocalizedStrings.Collections)
+    category = ProcessCategoryData(MenuData.Sets, LocalizedStrings.Collections)
     if category then
         table.insert(hewdropDown, category)
     end
 
     -- 5. Factions (оптимизированная обработка)
-    category = ProcessCategoryData(lootData.FactionsData, LocalizedStrings.Factions)
+    category = ProcessCategoryData(MenuData.Factions, LocalizedStrings.Factions)
     if category then
         table.insert(hewdropDown, category)
     end
 
     -- 6. World Events (оптимизированная обработка)
-    category = ProcessCategoryData(lootData.WorldEventsData, LocalizedStrings.WorldEvents)
+    category = ProcessCategoryData(MenuData.WorldEvents, LocalizedStrings.WorldEvents)
     if category then
         table.insert(hewdropDown, category)
     end
 
     -- 7. Crafting (оптимизированная обработка)
-    category = ProcessCategoryData(lootData.CraftingMenuData, LocalizedStrings.Crafting)
+    category = ProcessCategoryData(MenuData.Crafting, LocalizedStrings.Crafting)
     if category then
         table.insert(hewdropDown, category)
     end

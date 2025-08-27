@@ -138,7 +138,7 @@ local CategoryDefinitions = {
         { name = L["Instances for 40 Players"], filter = function(d) return d.size == 40 and (d.type == "Dungeon" or d.type == "Raid") end },
     },
     [SortType.LEVEL] = {
-        { name = L["Instances level 15-29"], filter = function(d) return IsInRange(d.level, 15, 29) and (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances level 15-29"], filter = function(d) return IsInRange(d.level, 1, 29) and (d.type == "Dungeon" or d.type == "Raid") end },
         { name = L["Instances level 30-39"], filter = function(d) return IsInRange(d.level, 30, 39) and (d.type == "Dungeon" or d.type == "Raid") end },
         { name = L["Instances level 40-49"], filter = function(d) return IsInRange(d.level, 40, 49) and (d.type == "Dungeon" or d.type == "Raid") end },
         { name = L["Instances level 50-59"], filter = function(d) return IsInRange(d.level, 50, 59) and (d.type == "Dungeon" or d.type == "Raid") end },

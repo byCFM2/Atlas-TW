@@ -1,6 +1,8 @@
+AtlasTW = _G.AtlasTW
+AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
 
-AtlasTW.Loot.WorldEventsData = {
+AtlasTW.MenuData.WorldEvents = {
 	{},
     { name = L["Abyssal Council"], extra = "Silithus", icon = "Interface\\Icons\\Spell_Nature_TimeStop", lootpage = "AbyssalTemplars" },
     { name = L["Elemental Invasion"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Ammo_FireTar", lootpage = "ElementalInvasion" },
@@ -26,7 +28,5 @@ AtlasTW.Loot.WorldEventsData = {
 }
 
 function AtlasLootWorldEventMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = L["World Events"] }
-    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.WorldEventsData
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(L["World Events"], AtlasTW.MenuData.WorldEvents)
 end

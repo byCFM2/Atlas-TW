@@ -64,8 +64,9 @@
     <Include file="PvP\ArathiBasin.lua"/>
     <Include file="PvP\AlteracValleyNorth.lua"/>
     <Include file="PvP\AlteracValleySouth.lua"/>
-    <Include file="PvP\Other.lua"/>
+    <Include file="PvP\PVPRewards.lua"/>
     <!-- Другие данные -->
+    <Include file="Tables\Spells.lua"/>
     <Include file="Tables\Factions.lua"/>
     <Include file="Tables\Events.lua"/>
     <Include file="Tables\Sets.lua"/>

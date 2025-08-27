@@ -1,8 +1,10 @@
+AtlasTW = _G.AtlasTW
+AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BZ = AceLibrary("Babble-Zone-2.2a")
 
-AtlasTW.Loot.FactionsData = {
+AtlasTW.MenuData.Factions = {
 	{ name = BF["Argent Dawn"],           icon = "Interface\\Icons\\INV_Jewelry_Talisman_08",         	   lootpage = "ArgentDawn",		   Extra = BZ["Western Plaguelands"]..", "..BZ["Eastern Plaguelands"]  },
 	{ name = BF["Brood of Nozdormu"],     icon = "Interface\\Icons\\INV_Jewelry_Ring_40",             	   lootpage = "BroodOfNozdormu",	   Extra = BZ["Tanaris"]   },
 	{ name = BF["Darkmoon Faire"],        icon = "Interface\\Icons\\INV_Misc_Ticket_Tarot_Maelstrom_01",   lootpage = "DarkmoonFire",          Extra = BZ["Mulgore"]..", "..BZ["Elwynn Forest"]    },
@@ -36,7 +38,5 @@ AtlasTW.Loot.FactionsData = {
 }
 
 function AtlasLootRepMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = L["Factions"] }
-    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.FactionsData
-    AtlasTW.Loot.ScrollBarLootUpdate()
+    AtlasTW.Loot.PrepMenu(L["Factions"], AtlasTW.MenuData.Factions)
 end

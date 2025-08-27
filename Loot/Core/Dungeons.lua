@@ -1,7 +1,6 @@
+AtlasTW = _G.AtlasTW
+AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
-local title = L["Dungeons & Raids"]
---table for create back navigation
-AtlasTW.Loot.BackTableRegistry = {}
 
 -- Get the formatted string for the instance and make back navigation button
 local function getFormString(instanceType, mainString)
@@ -110,10 +109,8 @@ local function GenerateMenuDataFromInstanceData()
 end
 
 -- Data for Dungeons & Raids - Auto-generated from AtlasTW.InstanceData
-AtlasTW.Loot.DungeonsMenuData = GenerateMenuDataFromInstanceData()
+AtlasTW.MenuData.Dungeons = GenerateMenuDataFromInstanceData()
 
  function AtlasLoot_DungeonsMenu()
-    AtlasLootItemsFrame.StoredElement = { menuName = L["Dungeons & Raids"], defaultIcon = "Interface\\Icons\\Spell_Arcane_PortalIronForge" }
-    AtlasLootItemsFrame.StoredMenu = AtlasTW.Loot.DungeonsMenuData
-    AtlasTW.Loot.ScrollBarLootUpdate()
+        AtlasTW.Loot.PrepMenu(L["Dungeons & Raids"], AtlasTW.MenuData.Dungeons)
 end
