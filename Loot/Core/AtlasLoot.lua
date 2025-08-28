@@ -124,33 +124,20 @@ function AtlasLoot_GetBossNavigation(data) --TODO remake
                 local numEntries = table.getn(currentInstanceData.Bosses)
                -- print("AtlasLoot_GetBossNavigation: текущий индекс " .. tostring(i) .. ", всего боссов " .. tostring(numEntries))
 				if numEntries <= 1 then return nav end
-                -- Функция для поиска предыдущего валидного элемента
-                local function findPrevValidEntry(startIndex)
+                -- функция для поиска валидного элемента
+                -- direction: -1 для предыдущего, 1 для следующего
+                local function findValidEntry(startIndex, direction)
                     for j = 1, numEntries do
-                        local checkIndex = startIndex - j
+                        local checkIndex = startIndex + (j * direction)
                         if checkIndex < 1 then
                             checkIndex = numEntries + checkIndex
-                        end
-                        local checkBoss = currentInstanceData.Bosses[checkIndex]
-                        if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot) and type(checkBoss.items) ~= "string" then
-                            --print("AtlasLoot_GetBossNavigation: найден предыдущий валидный элемент на индексе " .. tostring(checkIndex) .. ": " .. tostring(checkBoss.name))
-                            return checkBoss
-                        end
-                    end
-                    return nil
-                end
-
-                -- Функция для поиска следующего валидного элемента
-                local function findNextValidEntry(startIndex)
-                    for j = 1, numEntries do
-                        local checkIndex = startIndex + j
-                        if checkIndex > numEntries then
+                        elseif checkIndex > numEntries then
                             checkIndex = checkIndex - numEntries
                         end
                         local checkBoss = currentInstanceData.Bosses[checkIndex]
-                       -- if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot or type(checkBoss.items) == "string") then
-                        if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot) and type(checkBoss.items) ~= "string" then --for boss loot only without sets etc
-                            --print("AtlasLoot_GetBossNavigation: найден следующий валидный элемент на индексе " .. tostring(checkIndex) .. ": " .. tostring(checkBoss.name))
+                        if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot) and type(checkBoss.items) ~= "string" then
+                            local directionText = direction == -1 and "предыдущий" or "следующий"
+                            --print("AtlasLoot_GetBossNavigation: найден " .. directionText .. " валидный элемент на индексе " .. tostring(checkIndex) .. ": " .. tostring(checkBoss.name))
                             return checkBoss
                         end
                     end
@@ -158,19 +145,18 @@ function AtlasLoot_GetBossNavigation(data) --TODO remake
                 end
 
                 -- Поиск предыдущего валидного элемента
-                local prevBoss = findPrevValidEntry(i)
+                local prevBoss = findValidEntry(i, -1)
                 if prevBoss then
                     nav.Prev_Page = prevBoss.name
                     nav.Prev_Title = prevBoss.name or prevBoss.id
                 end
 
                 -- Поиск следующего валидного элемента
-                local nextBoss = findNextValidEntry(i)
+                local nextBoss = findValidEntry(i, 1)
                 if nextBoss then
                     nav.Next_Page = nextBoss.name
                     nav.Next_Title = nextBoss.name or nextBoss.id
                 end
-
                -- print("AtlasLoot_GetBossNavigation: возвращаем nav - Next: " .. tostring(nav.Next_Page) .. ", Prev: " .. tostring(nav.Prev_Page) .. ", Back: " .. tostring(nav.Back_Page))
                 return nav
             end
@@ -1301,6 +1287,55 @@ function AtlasLootMenuItem_OnClick(button)
 	local pagename
  	if this.isheader == nil or this.isheader == false then
 		pagename = _G[this:GetName().."_Name"]:GetText()
+		
+		-- Обработка элементов меню подземелий
+--[[ 		if this.playerLimit then
+			print("Обработка элемента меню подземелья: " .. tostring(pagename))
+			
+			-- Найти инстанс в InstanceData по оригинальному имени
+			local instanceKey = nil
+			if this.name_orig then
+				for key, instanceData in pairs(AtlasTW.InstanceData or {}) do
+					if instanceData.Name == this.name_orig then
+						instanceKey = key
+						break
+					end
+				end
+			end
+			
+			if instanceKey and AtlasTW.InstanceData[instanceKey] then
+				local instanceData = AtlasTW.InstanceData[instanceKey]
+				
+				-- Найти первого босса с лутом
+				for _, bossData in ipairs(instanceData.Bosses or {}) do
+					if bossData.name and (bossData.items or bossData.loot) and type(bossData.items) ~= "string" then
+						print("Найден первый босс с лутом: " .. tostring(bossData.name))
+						
+						-- Устанавливаем pagename как имя босса, а не инстанса
+						pagename = bossData.name
+						TableSource = instanceKey
+						
+						-- Сохраняем информацию о текущем инстансе для навигации
+						AtlasLootItemsFrame.StoredCurrentInstance = instanceKey
+						
+						-- Устанавливаем текущий инстанс в атласе для корректной навигации
+						for typeIndex, dropDownData in pairs(AtlasTW.DropDowns or {}) do
+							for zoneIndex, zoneKey in pairs(dropDownData) do
+								if zoneKey == instanceKey then
+									AtlasTWOptions.AtlasType = typeIndex
+									AtlasTWOptions.AtlasZone = zoneIndex
+									print("Установлен AtlasTWOptions.AtlasType = " .. tostring(typeIndex) .. ", AtlasTWOptions.AtlasZone = " .. tostring(zoneIndex))
+									break
+								end
+							end
+						end
+						
+						break
+					end
+				end
+			end
+		end ]]
+		
  		for _, v in ipairs(AtlasLoot_HewdropDown) do
 			if v[1] and not (type(v[1]) == "table") then
 				for _, v2 in pairs(v) do
@@ -1324,6 +1359,9 @@ function AtlasLootMenuItem_OnClick(button)
 				end
 			end
 		end
+		pagename = StripFormatting(pagename)
+		dataID = StripFormatting(dataID)
+		print(pagename.." "..dataID)
 		CloseDropDownMenus()
 
 		AtlasLootItemsFrame:Show()
@@ -1454,8 +1492,8 @@ function AtlasLoot_GetMenuNavigation(current)
         for j = idx - 1, 1, -1 do
             local pe = menu[j]
             if pe and pe.lootpage and not pe.isheader then
-                result.Prev_Page = pe.lootpage
-                result.Prev_Title = pe.name
+                result.Prev_Page = pe.lootpage ~= L["Rare Mobs"] and pe.lootpage or L["Shade Mage"]
+                result.Prev_Title = pe.name ~= L["Rare Mobs"] and pe.name or L["Shade Mage"]
                 break
             end
         end
@@ -1465,8 +1503,8 @@ function AtlasLoot_GetMenuNavigation(current)
                 if j ~= idx then
                     local pe = menu[j]
                     if pe and pe.lootpage and not pe.isheader then
-                        result.Prev_Page = pe.lootpage
-                        result.Prev_Title = pe.name
+                        result.Prev_Page = pe.lootpage ~= L["Rare Mobs"] and pe.lootpage or L["Shade Mage"]
+                        result.Prev_Title = pe.name ~= L["Rare Mobs"] and pe.name or L["Shade Mage"]
                         break
                     end
                 end
@@ -1477,8 +1515,8 @@ function AtlasLoot_GetMenuNavigation(current)
         for j = idx + 1, size do
             local ne = menu[j]
             if ne and ne.lootpage and not ne.isheader then
-                result.Next_Page = ne.lootpage
-                result.Next_Title = ne.name
+                result.Next_Page = ne.lootpage ~= L["Rare Mobs"] and ne.lootpage or L["Shade Mage"]
+                result.Next_Title = ne.name ~= L["Rare Mobs"] and ne.name or L["Shade Mage"]
                 break
             end
         end
@@ -1488,8 +1526,8 @@ function AtlasLoot_GetMenuNavigation(current)
                 if j ~= idx then
                     local ne = menu[j]
                     if ne and ne.lootpage and not ne.isheader then
-                        result.Next_Page = ne.lootpage
-                        result.Next_Title = ne.name
+                        result.Next_Page = ne.lootpage ~= L["Rare Mobs"] and ne.lootpage or L["Shade Mage"]
+                        result.Next_Title = ne.name ~= L["Rare Mobs"] and ne.name or L["Shade Mage"]
                         break
                     end
                 end
@@ -1600,7 +1638,7 @@ function AtlasLoot_NavButton_OnClick()
 		-- Для редких мобов ищем данные в RareMobs
 		for _, bossData in ipairs(rareMobsData.Bosses) do
 			if bossData.name == lp then
-				lootData = bossData.loot
+				lootData = bossData.items
 				break
 			end
 		end

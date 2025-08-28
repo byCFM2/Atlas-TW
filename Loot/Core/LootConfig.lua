@@ -85,7 +85,7 @@ local function ProcessDungeonsCategory(menuData)
     for i = 1, totalCount do
         local dung = menuData[i]
         if dung and dung.name and dung.lootpage then
-            table.insert(categoryList, { { dung.name_orig or dung.name, dung.lootpage } })
+            table.insert(categoryList, { { dung.name, dung.lootpage } }) --dung.name_orig or 
         end
     end
     return category
