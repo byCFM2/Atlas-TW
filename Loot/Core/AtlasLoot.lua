@@ -41,10 +41,7 @@ StaticPopupDialogs["ATLASLOOT_SETUP"] = {
 	whileDead = 1,
 	hideOnEscape = 1
 }
---[[ 
-AtlasLoot_Data["AtlasLootFallback"] = {
-	EmptyInstance = {}
-} ]]
+
 -- Функция для формирования текста с цветом для скилла
 local function formSkillStyle(skilltext)
 	if not skilltext or type(skilltext) ~= "table" then return "" end
@@ -168,6 +165,20 @@ end
 function AtlasLoot_OnEvent()
 	if not AtlasTWCharDB then AtlasTWCharDB = {} end
 	if not AtlasTWCharDB["WishList"] then AtlasTWCharDB["WishList"] = {} end
+	if not AtlasTWCharDB["WishListRaw"] then 
+		AtlasTWCharDB["WishListRaw"] = {}
+		-- Миграция существующих данных из старого формата
+		if table.getn(AtlasTWCharDB["WishList"]) > 0 then
+			for _, v in ipairs(AtlasTWCharDB["WishList"]) do
+				-- Проверяем, что это предмет (не заголовок)
+				if v[1] and v[1] > 0 and type(v[1]) == "number" then
+					table.insert(AtlasTWCharDB["WishListRaw"], v)
+				end
+			end
+			-- Пересоздаем категоризированный список
+			AtlasTWCharDB["WishList"] = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishListRaw"])
+		end
+	end
 	if not AtlasTWCharDB["QuickLooks"] then AtlasTWCharDB["QuickLooks"] = {} end
 	if not AtlasTWCharDB["SearchResult"] then AtlasTWCharDB["SearchResult"] = {} end
 
@@ -564,11 +575,20 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 	--Load data for the current clicked element line
 	local dataID = AtlasLootItemsFrame.StoredElement
 	local dataSource = GetLootByElemName(dataID) or AtlasLootItemsFrame.StoredMenu
-	if type(dataID) == "string" and (AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]) then
-		dataSource = AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]
-	end
-	if type(dataSource) == "string" then
-		dataSource = GetLootByElemName(dataSource) or dataSource
+	
+	-- Специальная обработка для списка желаний
+	if dataID == "WishList" then
+		if not AtlasTWCharDB["WishList"] then
+			AtlasTWCharDB["WishList"] = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishList"])
+		end
+		dataSource = AtlasTWCharDB["WishList"]
+	else
+		if type(dataID) == "string" and (AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]) then
+			dataSource = AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]
+		end
+		if type(dataSource) == "string" then
+			dataSource = GetLootByElemName(dataSource) or dataSource
+		end
 	end
 	--Check if dataID and dataSource are valid
  	if not dataID and not dataSource then
@@ -682,8 +702,66 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 					local shouldShow = false
 
 					local element = dataSource[itemIndex]
-					-- Проверяем, есть ли данные для отображения
-					if element and (element.id or element.name) then
+					-- Специальная обработка для списка желаний
+					if dataID == "WishList" and element and type(element) == "table" and element[1] then
+						-- Формат списка желаний: { itemID, itemTexture, itemName, extraText, sourcePage }
+						local wlItemID = element[1]
+						local wlItemTexture = element[2]
+						local wlItemName = element[3]
+						local wlExtraText = element[4]
+						local wlSourcePage = element[5]
+						
+						if wlItemID == 0 then
+							-- Это разделитель/заголовок
+							local separator = AtlasTW.ItemDB.CreateSeparator(wlItemName, wlItemTexture, 6)
+							nameFrame:SetText(separator.name or wlItemName)
+							local r, g, b = GetItemQualityColor(6)
+							nameFrame:SetTextColor(r, g, b)
+							iconFrame:SetTexture("Interface\\Icons\\"..wlItemTexture)
+							extraFrame:SetText(wlExtraText or "")
+							extraFrame:Show()
+							quantityFrame:Hide()
+							
+							-- Очищаем данные кнопки для разделителей
+							itemButton.itemID = 0
+							itemButton.elemID = 0
+							itemButton.typeID = nil
+							itemButton.sourcePage = nil
+							itemButton.container = nil
+							itemButton.droprate = nil
+							borderFrame:Hide()
+							shouldShow = true
+						else
+							-- Это обычный предмет
+							local itemName, _, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(wlItemID)
+							if itemName then
+								local r, g, b = GetItemQualityColor(itemQuality or 1)
+								nameFrame:SetTextColor(r, g, b)
+								nameFrame:SetText(itemName)
+								iconFrame:SetTexture(itemTexture)
+							else
+								-- Используем сохраненные данные если предмет не в кэше
+								nameFrame:SetText(wlItemName or L["Item not found in cache"])
+								nameFrame:SetTextColor(1, 1, 1)
+								iconFrame:SetTexture("Interface\\Icons\\"..wlItemTexture)
+							end
+							
+							extraFrame:SetText(wlExtraText or "")
+							extraFrame:Show()
+							quantityFrame:Hide()
+							
+							-- Устанавливаем данные кнопки
+							itemButton.itemID = wlItemID
+							itemButton.elemID = wlItemID
+							itemButton.typeID = "item"
+							itemButton.sourcePage = wlSourcePage
+							itemButton.container = nil
+							itemButton.droprate = nil
+							borderFrame:Hide()
+							shouldShow = true
+						end
+					-- Проверяем, есть ли данные для отображения (обычные элементы)
+					elseif element and (element.id or element.name) then
 						-- Новая система - обновляем содержимое кнопки
 						local itemTexture, itemID, extratext, link, quantity = "", 0, "", "", ""
 						local itemName = element.name
@@ -751,8 +829,6 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 							nameFrame:SetTextColor(r, g, b)
 							nameFrame:SetText(itemName or L["Item not found in cache"])
 						end
-						-- Set the dressing room ID
-						itemButton.dressingroomID = itemID
 
 						-- Set description text
 						if not element.skill or (element.type and element.type=="item") then -- if item
@@ -2043,7 +2119,7 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 			elseif dataID == "SearchResult" then
 				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.itemID))
 			else
-				AtlasLoot_AddToWishlist(this.itemID, texture, this.itemIDName, this.itemIDExtra, dataID.."|"..dataSource)
+				AtlasLoot_AddToWishlist(this.itemID)
 			end
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
 			local dataID, dataSource = AtlasLoot_Strsplit("|", this.sourcePage)
@@ -2062,10 +2138,10 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 			elseif dataID == "SearchResult" then
 				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.elemID))
 			else
-				AtlasLoot_AddToWishlist(this.elemID, texture, this.elemIDName, this.elemIDExtra, dataID.."|"..dataSource)
+				AtlasLoot_AddToWishlist(this.elemID)
 			end
 		elseif IsControlKeyDown() then
-			DressUpItemLink("item:"..this.dressingroomID..":0:0:0")
+			DressUpItemLink("item:"..this.itemID..":0:0:0")
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
 			local dataID, dataSource = AtlasLoot_Strsplit("|", this.sourcePage)
 			if dataID and dataSource and AtlasLoot_IsLootTableAvailable(dataID) then
@@ -2128,10 +2204,10 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 			elseif dataID == "SearchResult" then
 				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.elemID))
 			else
-				AtlasLoot_AddToWishlist(this.elemID, texture, this.elemIDName, this.elemIDExtra, dataID.."|"..dataSource)
+				AtlasLoot_AddToWishlist(this.elemID)
 			end
 		elseif IsControlKeyDown() then
-			DressUpItemLink("item:"..this.dressingroomID..":0:0:0")
+			DressUpItemLink("item:"..this.itemID..":0:0:0")
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
 			local dataID, dataSource = AtlasLoot_Strsplit("|", this.sourcePage)
 			if dataID and dataSource and AtlasLoot_IsLootTableAvailable(dataID) then
@@ -2428,7 +2504,7 @@ function AtlasLoot_ContainerItem_OnClick(arg1) --TODO need CHECK
 		elseif ElemName == "SearchResult" then
 			AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(itemID))
 		else
-			AtlasLoot_AddToWishlist(itemID, tex, name, extra, ElemName.."|"..ElemLoot)
+			AtlasLoot_AddToWishlist(itemID)
 		end
 	end
 end
@@ -2454,7 +2530,7 @@ end
 		DressUpItemLink(link)
 	elseif(IsAltKeyDown() and (itemID ~= 0)) then
 		if lootpage then
-			AtlasLoot_AddToWishlist(itemID, tex, name, extra, lootpage.."|"..dataSource)
+			AtlasLoot_AddToWishlist(itemID)
 		elseif AtlasLootItemsFrame.storedBoss then
 			local ElemName = AtlasLootItemsFrame.storedBoss.name
 			local ElemLoot = GetLootByElemName(ElemName)
@@ -2464,7 +2540,7 @@ end
 			elseif ElemName == "SearchResult" then
 				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(itemID))
 			else
-				AtlasLoot_AddToWishlist(itemID, tex, name, extra, ElemName.."|"..ElemLoot)
+				AtlasLoot_AddToWishlist(itemID)
 			end
 		end
 	end

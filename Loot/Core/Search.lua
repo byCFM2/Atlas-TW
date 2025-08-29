@@ -36,7 +36,7 @@ function AtlasLoot:Search(Text)
 						if found then
 							local _, _, quality = string.find(v[3], "=q(%d)=")
 							if quality then itemName = "=q"..quality.."="..itemName end
-							table.insert(AtlasTWCharDB["SearchResult"], { v[1], v[2], itemName, v[4], dataID.."|"..dataSource })
+							table.insert(AtlasTWCharDB["SearchResult"], { v[1], v[2], itemName, v[4], dataID.."|"..( dataSource or "") })
 						end
 					-- spell
 					elseif (v[1] ~= nil) and (v[1] ~= "") and (string.sub(v[1], 1, 1) == "s") then
@@ -56,7 +56,7 @@ function AtlasLoot:Search(Text)
 						end
 						if found then
 							spellName = string.sub(v[3], 1, 4)..spellName
-							table.insert(AtlasTWCharDB["SearchResult"], { v[1], v[2], spellName, v[4], dataID.."|"..dataSource })
+							table.insert(AtlasTWCharDB["SearchResult"], { v[1], v[2], spellName, v[4], dataID.."|"..( dataSource or "") })
 						end
 					-- enchant
 					elseif (v[1] ~= nil) and (v[1] ~= "") and (string.sub(v[1], 1, 1) == "e") then
@@ -76,7 +76,7 @@ function AtlasLoot:Search(Text)
 						end
 						if found then
 							spellName = string.sub(v[3], 1, 4)..spellName
-							table.insert(AtlasTWCharDB["SearchResult"], { v[1], v[2], spellName, v[4], dataID.."|"..dataSource })
+							table.insert(AtlasTWCharDB["SearchResult"], { v[1], v[2], spellName, v[4], dataID.."|"..( dataSource or "") })
 						end
 					end
 				end

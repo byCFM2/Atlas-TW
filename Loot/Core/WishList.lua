@@ -1,9 +1,6 @@
 --File containing functions related to the wish list.
 local L = AtlasTW.Local
 
-AtlasLoot_WishList = nil
-local currentPage = 1
-
 -- Colours stored for code readability
 local GREY = "|cff999999"
 local RED = "|cffff0000"
@@ -13,22 +10,63 @@ local BLUE = "|cff0070dd"
 Displays the WishList
 ]]
 function AtlasLoot_ShowWishList()
-	--AtlasLoot_ShowItemsFrame("WishList", "WishListPage"..currentPage, L["WishList"])
+	-- Сброс позиции прокрутки
+	FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
+	AtlasLootScrollBarScrollBar:SetValue(0)
+
+	-- Устанавливаем данные для отображения списка желаний
+	AtlasLootItemsFrame.StoredElement = "WishList"
+	AtlasLootItemsFrame.StoredMenu = nil
+	AtlasLootItemsFrame.activeElement = nil
+
+	-- Показываем фрейм
+	AtlasLootItemsFrame:Show()
+
+	-- Обновляем отображение
+	AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 --[[
 Looks for an empty slot in the wishlist and slots the item in
 ]]
-function AtlasLoot_AddToWishlist(itemID, itemTexture, itemName, extraText, sourcePage)
-	for _, v in ipairs(AtlasTWCharDB["WishList"]) do
+function AtlasLoot_AddToWishlist(itemID, bossName, instanceName)
+	-- Если передан только itemID, получаем остальную информацию автоматически
+	local name = GetItemInfo(itemID)
+	
+	-- Инициализируем исходный список, если его нет
+	if not AtlasTWCharDB.WishListRaw then
+		AtlasTWCharDB.WishListRaw = {}
+	end
+	
+	-- Проверяем, есть ли уже этот предмет в исходном списке желаний
+	for _, v in ipairs(AtlasTWCharDB.WishListRaw) do
 		if v[1] == itemID then
-			print(BLUE.."AtlasLoot"..": "..AtlasLoot_FixText(itemName)..RED..L[" already in the WishList!"])
+			print(BLUE.."AtlasLoot"..":"..name..RED..L[" already in the WishList!"])
 			return
 		end
 	end
-	table.insert(AtlasTWCharDB["WishList"], { itemID, itemTexture, itemName, extraText, sourcePage })
-	print(BLUE.."AtlasLoot"..": "..AtlasLoot_FixText(itemName)..GREY..L[" added to the WishList."])
-	AtlasLoot_WishList = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishList"])
+
+	-- Получаем информацию о текущем боссе и инстансе
+	local currentBoss = bossName
+	local currentInstance = instanceName
+	
+	-- Если информация не передана, пытаемся получить из текущего контекста
+	if not currentBoss or not currentInstance then
+		local currentZoneID = AtlasTW.DropDowns and AtlasTW.DropDowns[AtlasTWOptions.AtlasType] and AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
+		if currentZoneID and AtlasTW.InstanceData and AtlasTW.InstanceData[currentZoneID] then
+			currentInstance = currentInstance or AtlasTW.InstanceData[currentZoneID].Name
+			-- Если есть активный элемент, получаем имя босса
+			if AtlasLootItemsFrame.StoredElement and AtlasLootItemsFrame.StoredElement ~= "WishList" then
+				currentBoss = currentBoss or AtlasLootItemsFrame.StoredElement
+			end
+		end
+	end
+
+	-- Добавляем запись в исходный список желаний
+	table.insert(AtlasTWCharDB.WishListRaw, { itemID, currentBoss, currentInstance })
+	print(BLUE.."AtlasLoot"..":"..name..GREY..L[" added to the WishList."])
+	-- Пересоздаем категоризированный список
+	AtlasTWCharDB.WishList = AtlasLoot_CategorizeWishList(AtlasTWCharDB.WishListRaw)
 end
 
 --[[
@@ -36,41 +74,70 @@ Deletes the specified items from the wishlist
 ]]
 function AtlasLoot_DeleteFromWishList(itemID)
 	if itemID and itemID == 0 then return end
-	for i, v in ipairs(AtlasTWCharDB["WishList"]) do
-		if v[1] == itemID then
-			print(RED.."AtlasLoot"..": "..AtlasLoot_FixText(v[3])..GREY..L[" deleted from the WishList."])
-			table.remove(AtlasTWCharDB["WishList"], i)
-			break
+	
+	-- Получаем исходный некатегоризированный список
+	local rawWishList = AtlasTWCharDB.WishListRaw or {}
+	local newRawWishList = {}
+	local itemDeleted = false
+	local deletedItemName = ""
+	
+	-- Удаляем предмет из исходного списка
+	for i, v in ipairs(rawWishList) do
+		if v[1] and v[1] == itemID and not itemDeleted then
+			deletedItemName = GetItemInfo(itemID) or "Unknown Item"
+			itemDeleted = true
+			-- Пропускаем этот элемент
+		else
+			table.insert(newRawWishList, v)
 		end
 	end
-	AtlasLoot_WishList = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishList"])
-	AtlasLootItemsFrame:Hide()
-	--AtlasLoot_ShowItemsFrame("WishList", "WishListPage"..currentPage, L["WishList"])
+	
+	if itemDeleted then
+		print(RED.."AtlasLoot"..":"..deletedItemName..GREY..L[" deleted from the WishList."])
+		-- Обновляем исходный список
+		AtlasTWCharDB.WishListRaw = newRawWishList
+		-- Пересоздаем категоризированный список
+		AtlasTWCharDB.WishList = AtlasLoot_CategorizeWishList(newRawWishList)
+		
+		-- Если мы находимся в окне списка желаний, обновляем отображение
+		if AtlasLootItemsFrame.StoredElement == "WishList" and AtlasLootItemsFrame:IsVisible() then
+			AtlasTW.Loot.ScrollBarLootUpdate()
+		else
+			AtlasLootItemsFrame:Hide()
+		end
+	end
 end
 
 --[[
 Sorts the Wishlist
 ]]
 function AtlasLoot_WishListSort()
+	-- Инициализируем исходный список, если его нет
+	if not AtlasTWCharDB.WishListRaw then
+		AtlasTWCharDB.WishListRaw = {}
+	end
 
 	local j=0
 	local P=2
 	local temp={}
 	local check=false
+	local wishListSize = table.getn(AtlasTWCharDB.WishListRaw)
 
-	while(P<31) do
-		temp=AtlasTWCharDB["WishList"][P]
+	while(P<=wishListSize) do
+		temp=AtlasTWCharDB.WishListRaw[P]
 		j=P
-		check=AtlasLoot_WishListSortCheck(AtlasTWCharDB["WishList"][j-1], temp)
+		check=AtlasLoot_WishListSortCheck(AtlasTWCharDB.WishListRaw[j-1], temp)
 		while((j>1) and check) do
-			AtlasTWCharDB["WishList"][j] = AtlasTWCharDB["WishList"][j-1]
+			AtlasTWCharDB.WishListRaw[j] = AtlasTWCharDB.WishListRaw[j-1]
 			j=j-1
-			check=AtlasLoot_WishListSortCheck(AtlasTWCharDB["WishList"][j-1], temp)
+			check=AtlasLoot_WishListSortCheck(AtlasTWCharDB.WishListRaw[j-1], temp)
 		end
-		AtlasTWCharDB["WishList"][j]=temp
+		AtlasTWCharDB.WishListRaw[j]=temp
 		P=P+1
 	end
-
+	
+	-- Пересоздаем категоризированный список после сортировки
+	AtlasTWCharDB.WishList = AtlasLoot_CategorizeWishList(AtlasTWCharDB.WishListRaw)
 end
 
 --[[
@@ -87,9 +154,11 @@ function AtlasLoot_WishListSortCheck(temp1, temp2)
 		return false
 	elseif temp1[1] == 0 then
 		return true
-	else
-		local prefix1=string.lower(string.sub(temp1[3], 1, 10))
-		local prefix2=string.lower(string.sub(temp2[3], 1, 10))
+	elseif temp1[1] and temp2[1] then
+		local name1 = GetItemInfo(temp1[1]) or ""
+		local name2 = GetItemInfo(temp2[1]) or ""
+		local prefix1=string.lower(string.sub(name1, 1, 10))
+		local prefix2=string.lower(string.sub(name2, 1, 10))
 		if prefix1 ~= prefix2 then
 			if prefix1 == "|cffff0000" then
 				return false
@@ -121,7 +190,7 @@ function AtlasLoot_WishListSortCheck(temp1, temp2)
 				return false
 			end
 		else
-			if(temp1[3] > temp2[3]) then
+			if(name1 > name2) then
 				return true
 			else
 				return false
@@ -130,130 +199,113 @@ function AtlasLoot_WishListSortCheck(temp1, temp2)
 	end
 end
 
---[[
-A recursive function iterate AtlasLoot_HewdropDown table for the zone name
-]]
-local function RecursiveSearchZoneName(dataTable, zoneID)
-	if(dataTable[2] == zoneID) then
-		return dataTable[1]
+function AtlasLoot_GetWishListSubheadingBoss(bossName, instanceName)
+	-- Если передано имя босса, возвращаем его
+	if bossName and bossName ~= "" then
+		return bossName
 	end
-	for _, v in pairs(dataTable) do
-		if type(v) == "table" then
-			local result = RecursiveSearchZoneName(v, zoneID)
-			if result then return result end
-		end
+	
+	-- Если передано имя инстанса, возвращаем его
+	if instanceName and instanceName ~= "" then
+		return instanceName
 	end
+	
+	-- Возвращаем "Unknown" если ничего не найдено
+	return L["Unknown"] or "Unknown"
 end
 
---[[
-Iterating through dropdown data tables to search backward for zone name with specified dataID
-]]
-function AtlasLoot_GetWishListSubheading(dataID)
---[[ 	if not AtlasLoot_HewdropDown then return end
-	local zoneID
-	for subKey, subTable in pairs(AtlasLoot_HewdropDown_SubTables) do
-		for _, t in ipairs(subTable) do
-			if t[2] == dataID then
-				zoneID = subKey
-				break
-			end
-		end
-		if zoneID then break end
+function GetLootTableParent(bossName, instanceName)
+	-- Возвращаем имя инстанса как родительский элемент
+	if instanceName and instanceName ~= "" then
+		return instanceName
 	end
-	return RecursiveSearchZoneName(AtlasLoot_HewdropDown, zoneID or dataID) ]]
-end
-
-function AtlasLoot_GetWishListSubheadingBoss(dataID)
-	if not AtlasLoot_TableNamesBoss then
-		return
-	end
-	local zoneID
-	for _, v in pairs(AtlasLoot_TableNamesBoss) do
-		for j, k in pairs(v) do
-			if dataID == j then
-				zoneID = k[1]
-				break
+	
+	-- Если нет имени инстанса, пытаемся найти его по имени босса
+	if bossName and AtlasTW.InstanceData then
+		for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
+			if instanceData.Bosses then
+				for _, bossData in ipairs(instanceData.Bosses) do
+					if bossData.name == bossName then
+						return instanceData.Name or instanceKey
+					end
+				end
 			end
 		end
 	end
-	return zoneID
-end
-
-function GetLootTableParent(dataID)
-	local parentID
-	for i, v in pairs(AtlasLoot_TableNamesBoss) do
-		for j,_ in pairs(v) do
-			if dataID == j then
-				parentID = i
-				break
-			end
-		end
-	end
-	return parentID
+	
+	return L["Unknown"] or "Unknown"
 end
 
 --[[
 Group items with zone/event name etc, and format them by adding subheadings and empty lines
-This function returns a single table with all items, use AtlasLoot_GetWishListPage to split it
+This function returns a single table with all items
 wlTable: is AtlasTWCharDB["WishList"], parameterized for flexible
 ]]
-function AtlasLoot_CategorizeWishList(wlTable)
-	local subheadings, categories, result = {}, {}, {}
-	for _, v in pairs(wlTable) do
-		if v[5] and v[5] ~= "" then
-			local dataID = AtlasLoot_Strsplit("|", v[5])
-			-- Build subheading table
-			if not subheadings[dataID] then
-				subheadings[dataID] = AtlasLoot_GetWishListSubheadingBoss(dataID)
-				-- If search failed, replace ID like "Aldor2" to "Aldor1" and try again
-				if not subheadings[dataID] and string.find(dataID, "^%a+%d?$") then
-					subheadings[dataID] = AtlasLoot_GetWishListSubheading(string.sub(dataID, 1, string.len(dataID) - 1).."1")
-				end
-				-- If still cant find it, mark it with Unknown
-				if not subheadings[dataID] then subheadings[dataID] = L["Unknown"] end
-			end
-			-- Build category tables
-			if not categories[subheadings[dataID]] then categories[subheadings[dataID]] = {} end
-			table.insert(categories[subheadings[dataID]], v)
+function AtlasLoot_CategorizeWishList(wishListRaw)
+	local result = {}
+	
+	if not wishListRaw then return result end
+	
+	-- Создаем копию списка для сортировки
+	local sortedList = {}
+	for i = 1, table.getn(wishListRaw) do
+		table.insert(sortedList, wishListRaw[i])
+	end
+	
+	-- Сортируем по категориям: сначала по инстансу, потом по боссу, потом по предмету
+	table.sort(sortedList, function(a, b)
+		local aInstance = a[3] or ""
+		local bInstance = b[3] or ""
+		local aBoss = a[2] or ""
+		local bBoss = b[2] or ""
+		
+		if aInstance ~= bInstance then
+			return aInstance < bInstance
 		end
+		if aBoss ~= bBoss then
+			return aBoss < bBoss
+		end
+		-- Если категории одинаковые, сортируем по предмету
+		return AtlasLoot_WishListSortCheck(a, b)
+	end)
+	
+	-- Проходим по отсортированному списку и добавляем заголовки при смене категории
+	local lastCategory = nil
+	for i = 1, table.getn(sortedList) do
+		local v = sortedList[i]
+		local currentCategory
+		
+		if v[2] and v[3] and v[2] ~= "" and v[3] ~= "" then
+			-- Новый формат с информацией о боссе и инстансе
+			currentCategory = AtlasLoot_GetWishListSubheadingBoss(v[2], v[3])
+		else
+			-- Формат без дополнительной информации - только itemID
+			currentCategory = L["Wish List"] or "Wish List"
+		end
+		
+		-- Если категория изменилась, добавляем заголовок
+		if currentCategory ~= lastCategory then
+			-- Добавляем пустую строку между категориями (кроме первой)
+			if table.getn(result) > 0 then
+				table.insert(result, {})
+			end
+			
+			-- Определяем parent
+			local parent = "Wish List"
+			if v[3] and v[3] ~= "" then
+				-- Есть информация об инстансе
+				parent = GetLootTableParent(v[2], v[3]) or "Unknown"
+			end
+			
+			-- Добавляем заголовок категории
+			table.insert(result, { 0, "INV_Box_01", currentCategory, parent })
+			lastCategory = currentCategory
+		end
+		
+		-- Добавляем предмет
+		table.insert(result, v)
 	end
-	-- Sort and flatten categories
-	for k, v in pairs(categories) do
-		-- Add a empty line between categories when in a same column
-		if table.getn(result) > 1 and (table.getn(result) - math.floor(table.getn(result)/15)*15) > 0 then table.insert(result, { 0, "", "", "" }) end
-		-- If a subheading is on the last row of a column, push it to next column
-		if ((table.getn(result) + 1) - math.floor((table.getn(result) + 1)/15)*15) == 0 then table.insert(result, { 0, "", "", "" }) end
-		-- Subheading
-		local box = k or "Unknown"
-		local cat = categories[k][1][5] or "Unknown"
-		local parent = GetLootTableParent(AtlasLoot_Strsplit("|", cat)) or "Unknown"
-		table.insert(result, { 0, "INV_Box_01", "=q6="..box, "=q0="..parent })
-		-- Sort first then add items
-		table.sort(v, AtlasLoot_WishListSortCheck) -- not works?
-		for i = 1, table.getn(v) do table.insert(result, v[i]) end
-	end
+	
 	collectgarbage()
 	return result
-end
-
---[[
-Return partial data of WishList table
-page: the page number needed
-]]
-function AtlasLoot_GetWishListPage(page)
-	if not AtlasLoot_WishList then AtlasLoot_WishList = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishList"]) end
-	-- Calc for maximal pages
-	local pageMax = math.ceil(table.getn(AtlasLoot_WishList) / 30)
-	if page < 1 then page = 1 end
-	if page > pageMax then page = pageMax end
-	currentPage = page
-
-	-- Table copy
-	local result = {}
-	local start = (page - 1) * 30 + 1
-	for i = start, start + 29 do
-		if not AtlasLoot_WishList[i] then break end
-		table.insert(result, AtlasLoot_WishList[i])
-	end
-	return result, pageMax
 end
