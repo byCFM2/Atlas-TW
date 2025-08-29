@@ -1336,7 +1336,7 @@ function AtlasLootMenuItem_OnClick(button)
 			end
 		end ]]
 		
- 		for _, v in ipairs(AtlasLoot_HewdropDown) do
+--[[  		for _, v in ipairs(AtlasLoot_HewdropDown) do
 			if v[1] and not (type(v[1]) == "table") then
 				for _, v2 in pairs(v) do
 					for _, v3 in pairs(v2) do
@@ -1358,7 +1358,7 @@ function AtlasLootMenuItem_OnClick(button)
 					end
 				end
 			end
-		end
+		end ]]
 		pagename = StripFormatting(pagename)
 		dataID = StripFormatting(dataID)
 		print(pagename.." "..dataID)
