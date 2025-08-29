@@ -165,20 +165,6 @@ end
 function AtlasLoot_OnEvent()
 	if not AtlasTWCharDB then AtlasTWCharDB = {} end
 	if not AtlasTWCharDB["WishList"] then AtlasTWCharDB["WishList"] = {} end
-	if not AtlasTWCharDB["WishListRaw"] then 
-		AtlasTWCharDB["WishListRaw"] = {}
-		-- Миграция существующих данных из старого формата
-		if table.getn(AtlasTWCharDB["WishList"]) > 0 then
-			for _, v in ipairs(AtlasTWCharDB["WishList"]) do
-				-- Проверяем, что это предмет (не заголовок)
-				if v[1] and v[1] > 0 and type(v[1]) == "number" then
-					table.insert(AtlasTWCharDB["WishListRaw"], v)
-				end
-			end
-			-- Пересоздаем категоризированный список
-			AtlasTWCharDB["WishList"] = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishListRaw"])
-		end
-	end
 	if not AtlasTWCharDB["QuickLooks"] then AtlasTWCharDB["QuickLooks"] = {} end
 	if not AtlasTWCharDB["SearchResult"] then AtlasTWCharDB["SearchResult"] = {} end
 
@@ -704,21 +690,20 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 					local element = dataSource[itemIndex]
 					-- Специальная обработка для списка желаний
 					if dataID == "WishList" and element and type(element) == "table" and element[1] then
-						-- Формат списка желаний: { itemID, itemTexture, itemName, extraText, sourcePage }
+						-- Формат списка желаний: { itemID, bossName, instanceName, elementType }
 						local wlItemID = element[1]
-						local wlItemTexture = element[2]
-						local wlItemName = element[3]
-						local wlExtraText = element[4]
-						local wlSourcePage = element[5]
+						local wlBossName = element[2]
+						local wlInstanceName = element[3]
+						local wlElementType = element[4] or "item"
 						
 						if wlItemID == 0 then
 							-- Это разделитель/заголовок
-							local separator = AtlasTW.ItemDB.CreateSeparator(wlItemName, wlItemTexture, 6)
-							nameFrame:SetText(separator.name or wlItemName)
+							local separator = AtlasTW.ItemDB.CreateSeparator(wlBossName, "INV_Box_01", 6)
+							nameFrame:SetText(separator.name~="" and separator.name or wlBossName)
 							local r, g, b = GetItemQualityColor(6)
 							nameFrame:SetTextColor(r, g, b)
-							iconFrame:SetTexture("Interface\\Icons\\"..wlItemTexture)
-							extraFrame:SetText(wlExtraText or "")
+							iconFrame:SetTexture("Interface\\Icons\\INV_Box_01")
+							extraFrame:SetText(wlInstanceName or "")
 							extraFrame:Show()
 							quantityFrame:Hide()
 							
@@ -732,29 +717,48 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 							borderFrame:Hide()
 							shouldShow = true
 						else
-							-- Это обычный предмет
-							local itemName, _, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(wlItemID)
-							if itemName then
-								local r, g, b = GetItemQualityColor(itemQuality or 1)
-								nameFrame:SetTextColor(r, g, b)
-								nameFrame:SetText(itemName)
-								iconFrame:SetTexture(itemTexture)
+							-- Определяем имя и иконку в зависимости от типа элемента
+							local displayName, displayTexture, displayQuality
+							
+							if wlElementType == "spell" and AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[wlItemID] then
+								local spellData = AtlasTW.SpellDB.craftspells[wlItemID]
+								displayName = spellData.name
+								displayTexture = spellData.icon
+								displayQuality = 1 -- Белое качество для заклинаний
+							elseif wlElementType == "enchant" and AtlasTW.SpellDB and AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[wlItemID] then
+								local enchantData = AtlasTW.SpellDB.enchants[wlItemID]
+								displayName = enchantData.name
+								displayTexture = enchantData.icon
+								displayQuality = 2 -- Зеленое качество для зачарований
 							else
-								-- Используем сохраненные данные если предмет не в кэше
-								nameFrame:SetText(wlItemName or L["Item not found in cache"])
-								nameFrame:SetTextColor(1, 1, 1)
-								iconFrame:SetTexture("Interface\\Icons\\"..wlItemTexture)
+								-- Обычный предмет
+								local itemName, _, itemQuality, _, _, _, _, _, itemTexture = GetItemInfo(wlItemID)
+								displayName = itemName
+								displayTexture = itemTexture
+								displayQuality = itemQuality
 							end
 							
-							extraFrame:SetText(wlExtraText or "")
+							if displayName and displayTexture then
+								local r, g, b = GetItemQualityColor(displayQuality or 1)
+								nameFrame:SetTextColor(r, g, b)
+								nameFrame:SetText(displayName)
+								iconFrame:SetTexture(displayTexture)
+							else
+								-- Fallback если данные не найдены
+								nameFrame:SetText(L["Item not found in cache"] or "Unknown")
+								nameFrame:SetTextColor(1, 1, 1)
+								iconFrame:SetTexture("Interface\\Icons\\INV_Misc_QuestionMark")
+							end
+							
+							extraFrame:SetText(wlBossName or "")
 							extraFrame:Show()
 							quantityFrame:Hide()
 							
-							-- Устанавливаем данные кнопки
+							-- Устанавливаем данные кнопки с правильным типом
 							itemButton.itemID = wlItemID
 							itemButton.elemID = wlItemID
-							itemButton.typeID = "item"
-							itemButton.sourcePage = wlSourcePage
+							itemButton.typeID = wlElementType
+							itemButton.sourcePage = nil
 							itemButton.container = nil
 							itemButton.droprate = nil
 							borderFrame:Hide()
@@ -1437,7 +1441,7 @@ function AtlasLootMenuItem_OnClick(button)
 		end ]]
 		pagename = StripFormatting(pagename)
 		dataID = StripFormatting(dataID)
-		print(pagename.." "..dataID)
+		--print(pagename.." "..dataID)
 		CloseDropDownMenus()
 
 		AtlasLootItemsFrame:Show()

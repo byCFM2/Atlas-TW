@@ -29,42 +29,107 @@ end
 --[[
 Looks for an empty slot in the wishlist and slots the item in
 ]]
-function AtlasLoot_AddToWishlist(itemID, bossName, instanceName)
-	-- Если передан только itemID, получаем остальную информацию автоматически
-	local name = GetItemInfo(itemID)
+-- Функция поиска названия страницы в AtlasTW.MenuData по ключу
+local function FindPageNameInMenuData(dataKey)
+	if not AtlasTW.MenuData then
+		return dataKey
+	end
 	
+	-- Проходим по всем категориям в MenuData
+	for menuName, menuCategory in pairs(AtlasTW.MenuData) do
+		if type(menuCategory) == "table" then
+			for _, menuItem in pairs(menuCategory) do
+				if type(menuItem) == "table" and menuItem.name == dataKey then
+					return menuName
+				end
+			end
+		end
+	end
+	
+	return dataKey
+end
+
+-- Функция поиска инстанса по имени элемента
+local function FindInstanceByElemName(elemName)
+	if not elemName then
+		return nil
+	end
+ 	local pageName = FindPageNameInMenuData(elemName)
+	if pageName then
+		return pageName, elemName
+	end
+
+	print("FindInstanceByElemName: " .. elemName)
+	-- Поиск в AtlasTW.InstanceData (обычные инстансы)
+	if AtlasTW.InstanceData then
+		for _, instanceData in pairs(AtlasTW.InstanceData) do
+			if instanceData.Bosses then
+				for _, bossData in pairs(instanceData.Bosses) do
+					if bossData.name == elemName then
+						return instanceData.Name, elemName
+					end
+				end
+			end
+		end
+	end
+
+	return nil, elemName
+end
+
+function AtlasLoot_AddToWishlist(itemID, elemName, instanceName)
 	-- Инициализируем исходный список, если его нет
 	if not AtlasTWCharDB.WishListRaw then
 		AtlasTWCharDB.WishListRaw = {}
 	end
 	
-	-- Проверяем, есть ли уже этот предмет в исходном списке желаний
+	-- Определяем тип элемента и получаем соответствующую информацию
+	local elementType = "item"
+	local name = nil
+	local actualItemID = itemID
+	
+	-- Проверяем, является ли это заклинанием
+	if AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[itemID] then
+		elementType = "spell"
+		local spellData = AtlasTW.SpellDB.craftspells[itemID]
+		name = spellData.name
+		-- Для заклинаний используем ID заклинания, а не предмета
+		actualItemID = itemID
+	-- Проверяем, является ли это зачарованием
+	elseif AtlasTW.SpellDB and AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[itemID] then
+		elementType = "enchant"
+		local enchantData = AtlasTW.SpellDB.enchants[itemID]
+		name = enchantData.name
+		-- Для зачарований используем ID заклинания
+		actualItemID = itemID
+	else
+		-- Обычный предмет
+		name = GetItemInfo(itemID)
+	end
+	
+	-- Проверяем, есть ли уже этот элемент в исходном списке желаний
 	for _, v in ipairs(AtlasTWCharDB.WishListRaw) do
-		if v[1] == itemID then
-			print(BLUE.."AtlasLoot"..":"..name..RED..L[" already in the WishList!"])
+		if v[1] == actualItemID and (v[4] == elementType or (not v[4] and elementType == "item")) then
+			print(BLUE.."AtlasLoot"..":".. (name or "Unknown") ..RED..L[" already in the WishList!"])
 			return
 		end
 	end
 
-	-- Получаем информацию о текущем боссе и инстансе
-	local currentBoss = bossName
+	print("AtlasLoot_AddToWishlist: " .. actualItemID .. " " .. (elemName or " no") .. " " .. (instanceName or " no") .. " type: " .. elementType)
+	-- Получаем информацию о боссе и инстансе
+	local currentElement = elemName or AtlasLootItemsFrame.StoredElement
 	local currentInstance = instanceName
 	
-	-- Если информация не передана, пытаемся получить из текущего контекста
-	if not currentBoss or not currentInstance then
-		local currentZoneID = AtlasTW.DropDowns and AtlasTW.DropDowns[AtlasTWOptions.AtlasType] and AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
-		if currentZoneID and AtlasTW.InstanceData and AtlasTW.InstanceData[currentZoneID] then
-			currentInstance = currentInstance or AtlasTW.InstanceData[currentZoneID].Name
-			-- Если есть активный элемент, получаем имя босса
-			if AtlasLootItemsFrame.StoredElement and AtlasLootItemsFrame.StoredElement ~= "WishList" then
-				currentBoss = currentBoss or AtlasLootItemsFrame.StoredElement
-			end
-		end
+	-- Если у нас есть имя босса, всегда ищем правильный инстанс по базе данных
+	local foundInstance, foundName = FindInstanceByElemName(currentElement)
+	if foundInstance then
+		currentInstance = foundInstance
+		currentElement = foundName or currentElement
+		print("Найден инстанс по имени элемента: " .. tostring(currentElement) .. " -> " .. tostring(currentInstance))
 	end
 
-	-- Добавляем запись в исходный список желаний
-	table.insert(AtlasTWCharDB.WishListRaw, { itemID, currentBoss, currentInstance })
-	print(BLUE.."AtlasLoot"..":"..name..GREY..L[" added to the WishList."])
+	-- Добавляем запись в исходный список желаний с типом элемента
+	table.insert(AtlasTWCharDB.WishListRaw, { actualItemID, currentElement, currentInstance, elementType })
+	print(BLUE.."AtlasLoot"..":".. (name or "Unknown") ..GREY..L[" added to the WishList."])
 	-- Пересоздаем категоризированный список
 	AtlasTWCharDB.WishList = AtlasLoot_CategorizeWishList(AtlasTWCharDB.WishListRaw)
 end
@@ -84,7 +149,15 @@ function AtlasLoot_DeleteFromWishList(itemID)
 	-- Удаляем предмет из исходного списка
 	for i, v in ipairs(rawWishList) do
 		if v[1] and v[1] == itemID and not itemDeleted then
-			deletedItemName = GetItemInfo(itemID) or "Unknown Item"
+			-- Определяем имя элемента в зависимости от типа
+			local elementType = v[4] or "item"
+			if elementType == "spell" and AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[itemID] then
+				deletedItemName = AtlasTW.SpellDB.craftspells[itemID].name or "Unknown Spell"
+			elseif elementType == "enchant" and AtlasTW.SpellDB and AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[itemID] then
+				deletedItemName = AtlasTW.SpellDB.enchants[itemID].name or "Unknown Enchant"
+			else
+				deletedItemName = GetItemInfo(itemID) or "Unknown Item"
+			end
 			itemDeleted = true
 			-- Пропускаем этот элемент
 		else
@@ -155,8 +228,29 @@ function AtlasLoot_WishListSortCheck(temp1, temp2)
 	elseif temp1[1] == 0 then
 		return true
 	elseif temp1[1] and temp2[1] then
-		local name1 = GetItemInfo(temp1[1]) or ""
-		local name2 = GetItemInfo(temp2[1]) or ""
+		-- Получаем имена элементов в зависимости от типа
+		local name1 = ""
+		local name2 = ""
+		
+		local elementType1 = temp1[4] or "item"
+		local elementType2 = temp2[4] or "item"
+		
+		if elementType1 == "spell" and AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[temp1[1]] then
+			name1 = AtlasTW.SpellDB.craftspells[temp1[1]].name or ""
+		elseif elementType1 == "enchant" and AtlasTW.SpellDB and AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[temp1[1]] then
+			name1 = AtlasTW.SpellDB.enchants[temp1[1]].name or ""
+		else
+			name1 = GetItemInfo(temp1[1]) or ""
+		end
+		
+		if elementType2 == "spell" and AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[temp2[1]] then
+			name2 = AtlasTW.SpellDB.craftspells[temp2[1]].name or ""
+		elseif elementType2 == "enchant" and AtlasTW.SpellDB and AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[temp2[1]] then
+			name2 = AtlasTW.SpellDB.enchants[temp2[1]].name or ""
+		else
+			name2 = GetItemInfo(temp2[1]) or ""
+		end
+		
 		local prefix1=string.lower(string.sub(name1, 1, 10))
 		local prefix2=string.lower(string.sub(name2, 1, 10))
 		if prefix1 ~= prefix2 then
@@ -302,8 +396,10 @@ function AtlasLoot_CategorizeWishList(wishListRaw)
 			lastCategory = currentCategory
 		end
 		
-		-- Добавляем предмет
-		table.insert(result, v)
+		-- Добавляем предмет с учетом типа элемента
+		local elementType = v[4] or "item"
+		local displayItem = { v[1], v[2], v[3], elementType }
+		table.insert(result, displayItem)
 	end
 	
 	collectgarbage()
