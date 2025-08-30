@@ -3862,8 +3862,8 @@ local craftingTable = {
 		{ id=41548, skill={200,220,230,240} }, --Elaborate Golden Bracelets
 		{ id=41718, skill={200,225,237,250} }, --Ornate Mithril Bracelets
 		{ id=41714, skill={250,280,290,300} }, --Opal Guided Bangles
-		{ name = L["Bracers"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41348, skill={255,275,285,295} }, --Crystalfire Armlets
+		{ name = L["Bracers"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41311, skill={1,270,280,290} }, --Stellar Gemguards
 		{ id=41101, skill={280,285,297,310} }, --Crystalweft Bracers
 		{ id=41804, skill={300,320,330,340} }, --Bindings of Luminance

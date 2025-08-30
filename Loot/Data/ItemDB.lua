@@ -387,9 +387,6 @@ function AtlasTW.ItemDB.CreateItem(data)
         quantity = data.quantity,
         skill = data.skill,
     }
-    -- Устанавливаем метатаблицу для доступа к методам
-    --setmetatable(item, {__index = ItemPrototype})
-
     return item
 end
 
