@@ -45,8 +45,6 @@ local function FindInstanceByElemName(elemName)
 		end
 	end
 
-	print("FindInstanceByElemName: " .. elemName)
-
 	-- Поиск в AtlasTW.InstanceData (обычные инстансы)
 	if AtlasTW.InstanceData then
 		for _, instanceData in pairs(AtlasTW.InstanceData) do
@@ -101,7 +99,7 @@ function AtlasLoot_AddToWishlist(itemID)
 		end
 	end
 
-	print("AtlasLoot_AddToWishlist: " .. actualItemID .." type: " .. elementType)
+	--print("AtlasLoot_AddToWishlist: " .. actualItemID .." type: " .. elementType)
 	-- Получаем информацию о боссе и инстансе
 	local currentElement = AtlasLootItemsFrame.StoredElement
 	local currentInstance
@@ -111,7 +109,6 @@ function AtlasLoot_AddToWishlist(itemID)
 	if foundInstance then
 		currentInstance = foundInstance
 		currentElement = foundName or currentElement
-		print("Найден инстанс по имени элемента: " .. tostring(currentElement) .. " -> " .. tostring(currentInstance))
 	end
 
 	-- Добавляем запись в список желаний с типом элемента
