@@ -212,9 +212,9 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             id = "SRTrash",
             name = L["Trash Mobs"].."-"..BZ["Stormwrought Ruins"],
-            defaults = { dropRate = .1 },
+            defaults = { dropRate = .11 },
             loot = {
-                { id = 70113, container = { 56040 } }, --Plans: Gleaming Silver Necklace
+                { id = 70113, dropRate = .02, container = { 56040 } }, --Plans: Gleaming Silver Necklace
                 { id = 58178 }, --Stormreaver Boots
                 { id = 58131 }, --Stormreaver Belt
             }

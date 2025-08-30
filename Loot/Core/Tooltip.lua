@@ -453,7 +453,7 @@ end
 
 -- Hook main tooltips
 HookTooltip(GameTooltip)
-HookTooltip(ItemRefTooltip)
+--HookTooltip(ItemRefTooltip)
 --[[ 
 AtlasLootTip.HookAddonOrVariable("AtlasLootTooltip", function()
     HookTooltip(AtlasLootTooltip)

@@ -172,7 +172,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 69, container={65}, dropRate = 4.5 }, --Pattern: Dragonmaw Armor Kit
                 { id = 71, container={66}, dropRate = 4.5 }, --Plans: Gold Belt Buckle
                 {},
-                { id = 41895, dropRate = 1.5 }, --Shard of the Demon Soul
+                { id = 41895, dropRate = 1.5, container={58234,58235,58236} }, --Shard of the Demon Soul
                 {},
                 { id = 41711, dropRate = 100 }, --Letter from Korlag Doomsong
                 { id = 41981, container = {41982}, dropRate = 100 }, --Letter from Korlag Doomsong 'ally'
@@ -181,8 +181,21 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         {
             id = "DRTrash",
             name = L["Trash Mobs"].."-"..BZ["Dragonmaw Retreat"],
-            defaults = { dropRate = .1 },
+            defaults = { dropRate = .01 },
             loot = {
+                { id = 58102 }, --Dragonmaw Bulwark
+                { id = 58103 }, --Drakeflame Girdle
+                { id = 58104 }, --Magmascarred Cloak
+                { id = 58105 }, --Bindings of the Forebearer
+                { id = 58106 }, --Coal-Dusted Worker's Vest
+                { id = 58107 }, --Ancestor's Wisdom
+                { id = 58108 }, --Drakeskin Gloves
+                { id = 58109 }, --Kindling Signet
+                { id = 58110 }, --Lantern-Helm of the Deep
+                { id = 58111, dropRate = .11 }, --Dragonmaw Hauberk
+                { id = 58113, dropRate = .11 }, --Dragonmaw Bracers
+                { id = 58114, dropRate = .11 }, --Dragonmaw Leggings
+                { id = 58115, dropRate = .11 }, --Dragonmaw Greaves
                 { id = 70119, container={56046} }, --Plans: Circlet of Dampening
                 { id = 74, dropRate = 6, container={ 58112 } }, --Pattern: Dragonmaw Gloves --Overlord Blackheart
             }

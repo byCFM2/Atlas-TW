@@ -1636,8 +1636,7 @@ function AtlasLoot_NavButton_OnClick()
 	AtlasLootScrollBarScrollBar:SetValue(0)
 
 	if not this or not this.lootpage then
-		--print("NavButton_OnClick: выход - нет this или lootpage")
-		return
+		return print("NavButton_OnClick: выход - нет this или lootpage")
 	end
 
 	-- Обработка кнопки "Назад" в родительское меню (без учета регистра + резерв из title)
@@ -1658,25 +1657,11 @@ function AtlasLoot_NavButton_OnClick()
 
 	-- Обработка кнопки "Назад" в меню подземелий
 	if this == _G["AtlasLootItemsFrame_BACK"] and this.lootpage == "DUNGEONSMENU" then
-		--print("Возврат в меню подземелий")
 		AtlasLoot_OpenMenu(L["Dungeons & Raids"])
 		return
 	end
 
 	local lp = this.lootpage
-	-- Навигация по результатам поиска
-	if string.sub(lp, 1, 16) == "SearchResultPage" then
-		--print("Навигация SearchResult -> "..lp)
-		--AtlasLoot_ShowItemsFrame("SearchResult", lp, string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""))
-		return
-	end
-
-	-- Навигация по списку желаний
-	if string.sub(lp, 1, 12) == "WishListPage" then
-		--print("Навигация WishList -> "..lp)
-		--AtlasLoot_ShowItemsFrame("WishList", lp, L["WishList"])
-		return
-	end
 
 	-- Проверяем, является ли это навигацией по редким мобам
 	local isRareMobNavigation = false
@@ -1691,7 +1676,6 @@ function AtlasLoot_NavButton_OnClick()
 	end
 
 	-- По умолчанию: обрабатываем как страницу лута/босса
-	--print("Навигация к странице лута: "..lp)
 	AtlasLootItemsFrame:Show()
 	AtlasLoot_ShowScrollBarLoading()
 	AtlasLootItemsFrame.StoredElement = this.title or lp
@@ -1706,7 +1690,6 @@ function AtlasLoot_NavButton_OnClick()
 	local bossIndex = FindBossIndexInScrollList(lp)
 	if bossIndex then
 		AtlasLootItemsFrame.activeElement = bossIndex
-		--print("AtlasLoot_NavButton_OnClick: обновлен activeElement на " .. tostring(bossIndex))
 		-- Обновить отображение списка боссов
 		AtlasTW.Loot.ScrollBarUpdate()
 	else
@@ -2079,16 +2062,16 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 		_, _, _, color = GetItemQualityColor(qualityId or 0)
 		--If shift-clicked, link in the chat window
 		if AtlasFrame and AtlasFrame:IsVisible() and arg1=="RightButton" then
-			getglobal("AtlasLootItem_"..id.."_Unsafe"):Hide()
+--[[ 			getglobal("AtlasLootItem_"..id.."_Unsafe"):Hide() ]]
 		elseif(arg1=="RightButton" and not itemName and this.itemID ~= 0) then
-			AtlasLootTooltip:SetHyperlink("item:"..this.itemID..":0:0:0")
+--[[ 			AtlasLootTooltip:SetHyperlink("item:"..this.itemID..":0:0:0")
 			if not AtlasTWOptions.LootItemSpam then
 				print(L["Server queried for "]..color.."["..itemName.."]".."|r"..L[". Right click on any other item to refresh the loot page."])
 			end
 			AtlasLootItemsFrame:Hide()
 
 			-- Update scrollbar
-			AtlasTW.Loot.ScrollBarLootUpdate()
+			AtlasTW.Loot.ScrollBarLootUpdate() ]]
 		elseif IsShiftKeyDown() and not itemName and this.itemID ~= 0 then
 			if AtlasTWOptions.LootSafeLinks then
 				if WIM_EditBoxInFocus then
@@ -2113,8 +2096,6 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 			elseif ( ChatFrameEditBox:IsVisible() ) then
 				ChatFrameEditBox:Insert(color.."|Hitem:"..this.itemID..":0:0:0|h["..itemName.."]|h|r")
 			end
---[[ 		elseif IsShiftKeyDown() and itemName and this.itemID ~= 0 then
-			AtlasLoot_SayItemReagents(this.itemID, color, name)]]
 		--If control-clicked, use the dressing room
 		elseif IsControlKeyDown() and itemName then
 			DressUpItemLink(itemLink)
