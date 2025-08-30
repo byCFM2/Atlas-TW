@@ -565,9 +565,10 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 	-- Специальная обработка для списка желаний
 	if dataID == "WishList" then
 		if not AtlasTWCharDB["WishList"] then
-			AtlasTWCharDB["WishList"] = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishList"])
+			AtlasTWCharDB["WishList"] = {}
 		end
-		dataSource = AtlasTWCharDB["WishList"]
+		-- Создаем категоризированный список для отображения
+		dataSource = AtlasLoot_CategorizeWishList(AtlasTWCharDB["WishList"])
 	else
 		if type(dataID) == "string" and (AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]) then
 			dataSource = AtlasLoot_Data[dataID] or AtlasLoot_Data[dataSource]
