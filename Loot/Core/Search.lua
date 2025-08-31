@@ -6,95 +6,195 @@ local currentPage = 1
 local SearchResult = nil
 
 function AtlasLoot:ShowSearchResult()
-	--AtlasLoot_ShowItemsFrame("SearchResult", "SearchResultPage"..currentPage, string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""))
+	-- Сброс позиции прокрутки
+	FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
+	AtlasLootScrollBarScrollBar:SetValue(0)
+	-- Устанавливаем данные для отображения результатов поиска
+	AtlasLootItemsFrame.StoredElement = "SearchResult"
+	AtlasLootItemsFrame.StoredMenu = nil
+	AtlasLootItemsFrame.activeElement = nil
+	-- Обновляем отображение
+	AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
 local function strtrim(s)
 	return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
 end
 function AtlasLoot:Search(Text)
-	if not Text then return end
-	Text = strtrim(Text)
-	if Text == "" then return end
-	local text = string.lower(Text)
-	local search = function(dataSource)
-		if dataSource == "AtlasLootFallback" then return end
-		local partial = AtlasTWCharDB.PartialMatching
-		for dataID, data in pairs(AtlasLoot_Data[dataSource]) do
-			for _, v in ipairs(data) do
-				if type(v[1]) ~= "table" then
-					-- item
-					if type(v[1]) == "number" and v[1] > 0 then
-						local itemName = GetItemInfo(v[1])
-						if not itemName then itemName = gsub(v[3], "=q%d=", "") end
-						local found
-						if partial then
-							found = string.find(string.lower(itemName), text)
-						else
-							found = string.lower(itemName) == text
-						end
-						if found then
-							local _, _, quality = string.find(v[3], "=q(%d)=")
-							if quality then itemName = "=q"..quality.."="..itemName end
-							table.insert(AtlasTWCharDB["SearchResult"], { v[1], v[2], itemName, v[4], dataID.."|"..( dataSource or "") })
-						end
-					-- spell
-					elseif (v[1] ~= nil) and (v[1] ~= "") and (string.sub(v[1], 1, 1) == "s") then
-						local spellName
-						if not spellName then
-							if (string.sub(v[3], 1, 2) == "=d") then
-								spellName = gsub(v[3], "=ds=", "")
-							else
-								spellName = gsub(v[3], "=q%d=", "")
-							end
-						end
-						local found
-						if partial then
-							found = string.find(string.lower(spellName), text)
-						else
-							found = string.lower(spellName) == text
-						end
-						if found then
-							spellName = string.sub(v[3], 1, 4)..spellName
-							table.insert(AtlasTWCharDB["SearchResult"], { v[1], v[2], spellName, v[4], dataID.."|"..( dataSource or "") })
-						end
-					-- enchant
-					elseif (v[1] ~= nil) and (v[1] ~= "") and (string.sub(v[1], 1, 1) == "e") then
-						local spellName
-						if not spellName then
-							if (string.sub(v[3], 1, 2) == "=d") then
-								spellName = gsub(v[3], "=ds=", "")
-							else
-								spellName = gsub(v[3], "=q%d=", "")
-							end
-						end
-						local found
-						if partial then
-							found = string.find(string.lower(spellName), text)
-						else
-							found = string.lower(spellName) == text
-						end
-						if found then
-							spellName = string.sub(v[3], 1, 4)..spellName
-							table.insert(AtlasTWCharDB["SearchResult"], { v[1], v[2], spellName, v[4], dataID.."|"..( dataSource or "") })
-						end
-					end
-				end
-			end
-		end
-	end
+    if not Text then return end
+    Text = strtrim(Text)
+    if Text == "" then return end
+    local text = string.lower(Text)
 
-	AtlasTWCharDB["SearchResult"] = {}
-	AtlasTWCharDB.LastSearchedText = Text
-	for dataSource in pairs(AtlasLoot_Data) do search(dataSource) end
+    AtlasTWCharDB.SearchResult = {}
+    AtlasTWCharDB.LastSearchedText = Text
 
-	if getn(AtlasTWCharDB["SearchResult"]) == 0 then
-		DEFAULT_CHAT_FRAME:AddMessage(RED.."AtlasLoot"..": "..WHITE..L["No match found for"].." \""..Text.."\".")
-	else
-		currentPage = 1
-		SearchResult = AtlasLoot_CategorizeWishList(AtlasTWCharDB["SearchResult"])
-		--AtlasLoot_ShowItemsFrame("SearchResult", "SearchResultPage1", string.format((L["Search Result: %s"]), AtlasTWCharDB.LastSearchedText or ""))
-	end
+    local partial = AtlasTWCharDB.PartialMatching
+
+    local function isMatch(name)
+        if not name then return false end
+        local ln = string.lower(name)
+        if partial then
+            return string.find(ln, text, 1, true)
+        else
+            return ln == text
+        end
+    end
+
+    -- Поиск первого вхождения id (item/spell/enchant) в базе инстансов, чтобы получить boss и instanceKey
+    local function findFirstLocationForId(targetId)
+        if not targetId or not AtlasTW or not AtlasTW.InstanceData then return nil, nil end
+        local function scanItems(items)
+            if not items then return false end
+            if type(items) == "string" then return false end
+            if type(items) ~= "table" then return false end
+            for _, it in ipairs(items) do
+                if type(it) == "number" then
+                    if it == targetId then return true end
+                elseif type(it) == "table" then
+                    if it.id and it.id == targetId then return true end
+                    if it.container then
+                        local f = scanItems(it.container)
+                        if f then return true end
+                    end
+                end
+            end
+            return false
+        end
+        for instKey, inst in pairs(AtlasTW.InstanceData) do
+            if inst.Bosses then
+                for _, boss in ipairs(inst.Bosses) do
+                    local bossName = boss.name or boss.Name or "?"
+                    local items = boss.items or boss.loot
+                    if scanItems(items) then
+                        return bossName, instKey
+                    end
+                end
+            end
+            if inst.Reputation then
+                for _, src in pairs(inst.Reputation) do
+                    local items = src.items or src.loot
+                    local label = (src.name or "Reputation")
+                    if scanItems(items) then
+                        return label, instKey
+                    end
+                end
+            end
+            if inst.Keys then
+                for _, src in pairs(inst.Keys) do
+                    local items = src.items or src.loot
+                    local label = (src.name or "Keys")
+                    if scanItems(items) then
+                        return label, instKey
+                    end
+                end
+            end
+        end
+        return nil, nil
+    end
+
+    local function addItemResult(itemID, bossName, instanceName, instanceKey)
+        if not itemID or itemID == 0 then return end
+        local itemName = GetItemInfo(itemID)
+        if itemName and isMatch(itemName) then
+            local entry = { itemID, bossName, itemName, "item" }
+            if instanceKey and instanceKey ~= "" then
+                table.insert(entry, (bossName or "").."|"..instanceKey)
+            end
+            table.insert(AtlasTWCharDB.SearchResult, entry)
+        end
+    end
+
+    local function searchItemsList(items, bossName, instanceName, instanceKey)
+        if not items then return end
+        if type(items) == "string" then
+            -- Старые ссылочные форматы таблиц пропускаем
+            return
+        end
+        if type(items) ~= "table" then return end
+        for _, it in ipairs(items) do
+            if type(it) == "number" then
+                addItemResult(it, bossName, instanceName, instanceKey)
+            elseif type(it) == "table" then
+                if it.id then
+                    addItemResult(it.id, bossName, instanceName, instanceKey)
+                end
+                if it.container then
+                    searchItemsList(it.container, bossName, instanceName, instanceKey)
+                end
+            end
+        end
+    end
+
+    -- Поиск предметов в инстансах/боссах новой структуры
+    if AtlasTW.InstanceData then
+        for instKey, inst in pairs(AtlasTW.InstanceData) do
+            local instanceName = inst.Name or instKey
+            if inst.Bosses then
+                for _, boss in ipairs(inst.Bosses) do
+                    local bossName = boss.name or boss.Name or "?"
+                    local items = boss.items or boss.loot
+                    searchItemsList(items, bossName, instanceName, instKey)
+                end
+            end
+            -- Дополнительно проверим вспомогательные источники, если заданы
+            if inst.Reputation then
+                for _, src in pairs(inst.Reputation) do
+                    local items = src.items or src.loot
+                    local label = (src.name or "Reputation")
+                    searchItemsList(items, label, instanceName, instKey)
+                end
+            end
+            if inst.Keys then
+                for _, src in pairs(inst.Keys) do
+                    local items = src.items or src.loot
+                    local label = (src.name or "Keys")
+                    searchItemsList(items, label, instanceName, instKey)
+                end
+            end
+        end
+    end
+
+    -- Поиск зачарований по названию в новой базе заклинаний
+    if AtlasTW.SpellDB and AtlasTW.SpellDB.enchants then
+        for spellID, data in pairs(AtlasTW.SpellDB.enchants) do
+            local nm = data and data.name
+            if isMatch(nm) then
+                local bossName, instKey = findFirstLocationForId(spellID)
+                if bossName and instKey then
+                    table.insert(AtlasTWCharDB["SearchResult"], { spellID, bossName, nm, "enchant", bossName.."|"..instKey })
+                else
+                    table.insert(AtlasTWCharDB["SearchResult"], { spellID, "", nm, "enchant" })
+                end
+            end
+        end
+    end
+
+    -- Поиск крафтовых заклинаний: по имени заклинания, если есть, иначе по названию создаваемого предмета
+    if AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells then
+        for spellID, data in pairs(AtlasTW.SpellDB.craftspells) do
+            local nm = data and data.name
+            if not nm and data and data.item then
+                nm = GetItemInfo(data.item)
+            end
+            if isMatch(nm) then
+                local bossName, instKey = findFirstLocationForId(spellID)
+                if bossName and instKey then
+                    table.insert(AtlasTWCharDB["SearchResult"], { spellID, bossName, (nm or Text), "spell", bossName.."|"..instKey })
+                else
+                    table.insert(AtlasTWCharDB["SearchResult"], { spellID, "", (nm or Text), "spell" })
+                end
+            end
+        end
+    end
+
+    if table.getn(AtlasTWCharDB["SearchResult"]) == 0 then
+        print(RED.."AtlasLoot"..": "..WHITE..L["No match found for"].." \""..Text.."\".")
+    else
+        currentPage = 1
+        SearchResult = AtlasLoot_CategorizeWishList(AtlasTWCharDB["SearchResult"])
+        AtlasLoot:ShowSearchResult()
+    end
 end
 
 function AtlasLoot:ShowSearchOptions(button)

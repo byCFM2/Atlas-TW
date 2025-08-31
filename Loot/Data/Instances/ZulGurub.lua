@@ -91,6 +91,8 @@ AtlasTW.InstanceData.ZulGurub = {
                 {},
                 {id=19915},
                 {id=19918},
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(zGSharedLoot),
             }
         },
@@ -110,6 +112,8 @@ AtlasTW.InstanceData.ZulGurub = {
                 {},
                 {id=19900},
                 {id=19903},
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(zGSharedLoot),
             }
         },
@@ -134,6 +138,8 @@ AtlasTW.InstanceData.ZulGurub = {
                 {},
                 {id=81003, dropRate=10},
                 {id=19927},
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(zGSharedLoot),
             }
         },
@@ -271,6 +277,8 @@ AtlasTW.InstanceData.ZulGurub = {
                 {id=19902, dropRate=2},
                 {id=19901},
                 {id=19896},
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(zGSharedLoot),
             }
         },
@@ -300,6 +308,8 @@ AtlasTW.InstanceData.ZulGurub = {
                 {id=19922},
                 {id=19909},
                 {id=19910},
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(zGSharedLoot),
             }
         },
@@ -357,6 +367,8 @@ AtlasTW.InstanceData.ZulGurub = {
                 {id=19852},
                 {id=19859},
                 {id=19854},
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 {id=19802, dropRate=100,container={19950, 19949, 19948}},
             }
         },

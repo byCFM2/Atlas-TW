@@ -83,7 +83,10 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 {id=61278},
                 {id=61816},
                 {},
+                {id=58275, dropRate = 100},
                 {},
+                {id=37011, dropRate = 20},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(lKarazhanShare),
             }
         },
@@ -108,6 +111,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 {id=61450},
                 {},
                 {id=41392, dropRate=100},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(lKarazhanShare),
             }
         },
@@ -136,7 +140,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 {id=61263},
                 {id=61451},
                 {},
-                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(lKarazhanShare),
             }
         },
@@ -161,6 +165,8 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 {id=61294},
                 {id=61255},
                 {id=61286},
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(lKarazhanShare),
             }
         },
@@ -200,6 +206,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 {id=61453, dropRate=10},
                 {},
                 {id=61231, dropRate=100},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(lKarazhanShare),
             }
         },

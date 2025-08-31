@@ -45,6 +45,7 @@ BabbleBoss:RegisterTranslations("enUS", function()
 		["Web Master Torkon"] = true,
 		["Halgan Redbrand"] = true,
 		["Slagfist Destroyer"] = true,
+		["Overlord Blackheart"] = true,
 		["Garlock Flamekeeper"] = true,
 		["Elder Hollowblood"] = true,
 		["Searistrasz"] = true,

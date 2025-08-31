@@ -79,8 +79,20 @@ AtlasTW.InstanceData.DragonmawRetreat = {
             }
         },
         {
-            id = "DRHalganRedbrand", --31
+            id = "DRGarlockFlamekeeper", --31
             prefix = "4)",
+            name = BB["Garlock Flamekeeper"],
+            defaults = { dropRate = 25 },
+            loot = {
+                { id = 41578 }, --Flamekeeper's Robe
+                { id = 41579 }, --Sash of Flamebinding
+                { id = 41580 }, --Udor's Pendant
+                { id = 41581 }, --The Bane of Althazz
+            }
+        },
+        {
+            id = "DRHalganRedbrand", --31
+            prefix = "5)",
             name = BB["Halgan Redbrand"],
             defaults = { dropRate = 25 },
             loot = {
@@ -99,7 +111,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         },
         {
             id = "DRSlagfistDestroyer", --30
-            prefix = "5)",
+            prefix = "6)",
             name = BB["Slagfist Destroyer"],
             defaults = { dropRate = 25 },
             loot = {
@@ -110,20 +122,24 @@ AtlasTW.InstanceData.DragonmawRetreat = {
             }
         },
         {
-            id = "DRGarlockFlamekeeper", --31
-            prefix = "6)",
-            name = BB["Garlock Flamekeeper"],
+            id = "DROverlordBlackheart", --30
+            prefix = "7)",
+            name = BB["Overlord Blackheart"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 41578 }, --Flamekeeper's Robe
-                { id = 41579 }, --Sash of Flamebinding
-                { id = 41580 }, --Udor's Pendant
-                { id = 41581 }, --The Bane of Althazz
+                { id = 41726 }, --Slaver's Gauntlets
+                { id = 41725 }, --Dragonmaw Battle Bow
+                { id = 41724 }, --Dragonmaw Shoulders
+                { id = 41727 }, --Blackheart Armor
+                {},
+                { id = 74, dropRate = 6, container={ 58112 } }, --Pattern: Dragonmaw Gloves
+                {},
+                { id = 41841, dropRate = 100 }, --Blackheart's Head
             }
         },
         {
             id = "DRElderHollowblood", --32
-            prefix = "7)",
+            prefix = "8)",
             name = BB["Elder Hollowblood"],
             defaults = { dropRate = 25 },
             loot = {
@@ -146,7 +162,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         },
         {
             id = "DRSearistrasz", --32
-            prefix = "8)",
+            prefix = "9)",
             name = BB["Searistrasz"],
             defaults = { dropRate = 25 },
             loot = {
@@ -159,7 +175,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         },
         {
             id = "DRZuluhedtheWracked", --32
-            prefix = "9)",
+            prefix = "10)",
             name = BB["Zuluhed the Wracked"],
             defaults = { dropRate = 20 },
             loot = {
@@ -197,8 +213,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 58114, dropRate = .11 }, --Dragonmaw Leggings
                 { id = 58115, dropRate = .11 }, --Dragonmaw Greaves
                 { id = 70119, container={56046} }, --Plans: Circlet of Dampening
-                { id = 74, dropRate = 6, container={ 58112 } }, --Pattern: Dragonmaw Gloves --Overlord Blackheart
-            }
+            },
         },
         { name = BIS["Dragonmaw Battlegarb"], items = "DragonmawBattlegarb" },
     },

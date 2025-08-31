@@ -73,7 +73,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 19147 }, --Ring of Spell Power
                 { id = 41988, dropRate = 100 }, --Molten Scale
                 {},
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
                 {},
                 unpack(mCShareloot),
             }
@@ -103,7 +103,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=19147},
                 {id=17077},
                 {id=18878},
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
             }
         },
         {
@@ -137,7 +137,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=18824},
                 {id=18821},
                 {id=18820},
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
             }
         },
         {
@@ -173,7 +173,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=17105, dropRate=20},
                 {id=18832, dropRate=20},
                 {id=18822},
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
             }
         },
         {
@@ -201,7 +201,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {},
                 {id=17077},
                 {id=18878},
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
             }
         },
         {
@@ -231,7 +231,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {},
                 {id=19142},
                 {id=18822},
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
             }
         },
         {
@@ -266,7 +266,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=17103, dropRate=25},
                 {id=18822},
                 {id=18842, dropRate=25},
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
             }
         },
         {
@@ -303,7 +303,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=17077},
                 {id=18878},
                 {id=17074, dropRate=3,container={17223}},
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
             }
         },
         {
@@ -330,6 +330,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=18703, dropRate=50, container={18714,18713,18715}},
                 {},
                 {id=18646, dropRate=50, container={18608,18609}},
+                {},
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
             }
         },
         {
@@ -356,7 +358,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 19143, dropRate = 11 }, --Flameguard Gauntlets
                 { id = 19144, dropRate = 11 }, --Sabatons of the Flamewalker
                 {},
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
             }
         },
         {
@@ -371,7 +373,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {},
                 { id = 58246, dropRate = 100 }, --Tablet of Molten Blast VI
                 {},
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
                 {},
                 unpack(mCShareloot),
             }
@@ -406,7 +408,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 58244, dropRate = 25 }, --Sigil of Ancient Accord
                 {},
                 { id = 41989, dropRate = 100 }, --Signet of Thaurissan
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
                 {},
                 unpack(mCShareloot),
             }
@@ -448,7 +450,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=70171, dropRate=100, container={56060}},
                 {},
                 {id=92080,dropRate=1},
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
             }
         },
         {
@@ -486,7 +488,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {id=81263, dropRate=.2},
                 {id=81264, dropRate=.2},
                 {id=81265, dropRate=.2},
-                { id = 20951, dropRate = 1 }, --Narain's Scrying Goggles
+                { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
             },
         },
         { name = L["Tier 1 Sets"], items = "AtlasLootT1SetMenu" },

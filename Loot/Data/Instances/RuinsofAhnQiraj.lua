@@ -57,6 +57,8 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {},
                 {id=20885, dropRate=25, container={21394,21406,21412,21415}},
                 {id=20889, dropRate=25, container={21397,21403,21400,21418,21409}},
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
             }
         },
         {
@@ -97,6 +99,8 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {},
                 {id=20885, dropRate=25, container={21394,21406,21412,21415}},
                 {id=20889, dropRate=25, container={21397,21403,21400,21418,21409}},
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
             }
         },
         {
@@ -158,6 +162,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {id=20886, container={21392,21395,21401,21404,21398}},
                 {},
                 {id=83005, disc=L["Quest Item"], dropRate=100, container={83002}},
+                { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
             }
         },
         {
@@ -190,6 +195,8 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {},
                 {id=20890, dropRate=17, container={21410,21413,21416,21407}},
                 {id=20886, dropRate=17, container={21392,21395,21401,21404,21398}},
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
             }
         },
         {
@@ -222,6 +229,8 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {},
                 {id=20890, dropRate=17, container={21410,21413,21416,21407}},
                 {id=20886, dropRate=17, container={21392,21395,21401,21404,21398}},
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
             }
         },
         {
@@ -251,6 +260,8 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {id=20886, dropRate=50, container={21392,21395,21401,21404,21398}},
                 {},
 		        { id=132, dropRate = 6, container = { 103 } }, --Plans: Obsidian Belt Buckle
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
             }
         },
         { prefix = "1') ", name = L["Safe Room"], color = "|cff00FF00" },

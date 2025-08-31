@@ -217,6 +217,27 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 70113, dropRate = .02, container = { 56040 } }, --Plans: Gleaming Silver Necklace
                 { id = 58178 }, --Stormreaver Boots
                 { id = 58131 }, --Stormreaver Belt
+        		{ id = 1992, dropRate = .02 }, --Swampchill Fetish
+        		{ id = 2262, dropRate = .02 }, --Mark of Kern
+                { id = 5756, dropRate = .02 }, --Sliverblade
+                { id = 5819, dropRate = .02 }, --Sunblaze Coif
+                { id = 7727, dropRate = .02 }, --Watchman Pauldrons
+                { id = 7728, dropRate = .04 }, --Beguiler Robes
+                { id = 7729, dropRate = .02 }, --Chesterfall Musket
+                { id = 7730, dropRate = .02 }, --Cobalt Crusher
+                { id = 7736, dropRate = .02 }, --Fight Club
+                { id = 7752, dropRate = .02 }, --Dreamslayer
+                { id = 7753, dropRate = .02 }, --Bloodspiller
+                { id = 7754, dropRate = .01 }, --Harbinger Boots
+                { id = 7755, dropRate = .02 }, --Flintrock Shoulders
+                { id = 7757, dropRate = .02 }, --Windweaver Staff
+                { id = 7759, dropRate = .02 }, --Archon Chestpiece
+                { id = 7760, dropRate = .02 }, --Warchief Kilt
+                { id = 7761, dropRate = .02 }, --Steelclaw Reaver
+                { id = 7786, dropRate = .02 }, --Headsplitter
+                { id = 7787, dropRate = .02 }, --Resplendent Guardian
+                { id = 8225, dropRate = .02 }, --Tainted Pierce
+                { id = 8226, dropRate = .02 }, --The Butcher
             }
         },
         { name = BIS["Stormreaver Attire"], items = "Stormreaver" },
