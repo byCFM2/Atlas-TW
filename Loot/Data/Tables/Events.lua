@@ -383,65 +383,27 @@ local WorldEvents = {
 		{ id = 21537, disc = L["Consumable"], container = { 21640, { 21100, 1 } } }, -- Festival Dumplings
 		{ id = 21737, container = { 21570, 21640, { 21100, 5 } } }, -- Schematic: Cluster Launcher
 		{ id = 21741, disc = L["Container"], container = { 21730, 21731, 21732, 21640, { 21100, 5 } } }, -- Cluster Rocket Recipes
-		{ id = 21713, container = { 21640, { 21100, 5 } } }, -- Elune's Candle
+		{ id = 21713, disc = L["Misc"], container = { 21640, { 21100, 5 } } }, -- Elune's Candle
 		{ id = 21157, container = { 21640, 21538, 21539, { 21100, 5 } } }, -- Lunar Dresses
 		{ id = 21541, container = { 21640, 21544, 21543, { 21100, 5 } } }, -- Lunar Pant Suits
 		{ id = 21722, container = { 21640, 21723, { 21100, 5 } } }, -- Recipes
 		{ id = 21738, container = { 21640, { 21100, 5 } } }, -- Launcher
-		{ id = 21743, container = { 21733, 21734, 21735, 21640, { 21100, 5 } } }, -- Large Cluster Rockets
-		{ id = 21742, container = { 21727, 21728, 21729, 21640, { 21100, 5 } } }, -- Large Rockets
-		{ id = 21740, container = { 21724, 21725, 21726, 21640, { 21100, 5 } } }, -- Small Rockets
+		{ id = 21743, disc = L["Container"], container = { 21733, 21734, 21735, 21640, { 21100, 5 } } }, -- Large Cluster Rockets
+		{ id = 21742, disc = L["Container"], container = { 21727, 21728, 21729, 21640, { 21100, 5 } } }, -- Large Rockets
+		{ id = 21740, disc = L["Container"], container = { 21724, 21725, 21726, 21640, { 21100, 5 } } }, -- Small Rockets
 		{},
-		{ name = L["Lucky Red Envelope"], icon="INV_Misc_LuckyMoneyEnvelope" },
-		{ id = 21744 }, -- Lucky Rocket Cluster
-		{ id = 21745 }, -- Elder's Moonstone
+		{ id = 21640, disc = L["Container"], container = { 21592, 21593, 21595, 21590, 21589, 21562, 21561, 21557, 21559, 21558 } }, -- Lunar Festival Fireworks Pack
 		{},
-		{ id = 21540 }, -- Elune's Lantern
+		{ id = 21746, disc = L["Container"], container = { 21744, 21745 } }, -- Lucky Red Envelope
+		{},
+		{ id = 41701, disc = L["Container"], container = { 41707, 21540, 93088, 93090, 93091, 41702, 41703, 50067, 17963,
+			17964, 17965, 17969, 69132, 69131, 69130, 69129, 69128, 69127, {21589,{1,2}}, {21590,{1,2}}, {21592,{1,2}},
+			{21593,{1,2}}, {21595,{1,2}}, {21557,{2,3}}, {21558,{2,3}}, {21559,{2,3}}, {21561,{2,3}}, {21562,{2,3}} } }, -- Elune's Gift
+		{},
+		{ id = 41704, disc = L["Container"], container = { 21540, 93088, 93090, 93091, 41702, 41703, 50067, 69132, 69131,
+			69130, 69129, 69128, 69127, {21589,{1,2}}, {21590,{1,2}}, {21592,{1,2}}, {21593,{1,2}}, {21595,{1,2}} } }, -- Lunar Festival Gift Box
+		{},
 		{ id = 21536 }, -- Elune Stone
-		{ name = L["Lunar Festival Fireworks Pack"], icon="INV_Box_02" },
-		{ id = 21558 }, -- Small Blue Rocket
-		{ id = 21559 }, -- Small Green Rocket
-		{ id = 21557 }, -- Small Red Rocket
-		{ id = 21561 }, -- Small White Rocket
-		{ id = 21562 }, -- Small Yellow Rocket
-		{ id = 21589 }, -- Large Blue Rocket
-		{ id = 21590 }, -- Large Green Rocket
-		{ id = 21592 }, -- Large Red Rocket
-		{ id = 21593 }, -- Large White Rocket
-		{ id = 21595 }, -- Large Yellow Rocket
-		{},
-		{ id = 21537 }, -- Festival Dumplings
-		{ id = 21713 }, -- Elune's Candle
-		{},
-		{ id = 21738 }, -- Schematic: Firework Launcher
-		{},
-		{ id = 21722 }, -- Pattern: Festival Dress
-		{ id = 21154 }, -- Festival Dress
-		{},
-		{ name = L["Small Rocket Recipes"], icon="INV_Scroll_03" },
-		{ id = 21724 }, -- Schematic: Small Blue Rocket
-		{ id = 21725 }, -- Schematic: Small Green Rocket
-		{ id = 21726 }, -- Schematic: Small Red Rocket
-		{},
-		{ name = L["Large Rocket Recipes"], icon="INV_Scroll_04" },
-		{ id = 21727 }, -- Schematic: Large Blue Rocket
-		{ id = 21728 }, -- Schematic: Large Green Rocket
-		{ id = 21729 }, -- Schematic: Large Red Rocket
-		{},
-		{ id = 21737 }, -- Schematic: Cluster Launcher
-		{},
-		{ id = 21723 }, -- Pattern: Festive Red Pant Suit
-		{ id = 21542 }, -- Festival Suit
-		{},
-		{ name = L["Cluster Rocket Recipes"], icon="INV_Scroll_05" },
-		{ id = 21730 }, -- Schematic: Blue Rocket Cluster
-		{ id = 21731 }, -- Schematic: Green Rocket Cluster
-		{ id = 21732 }, -- Schematic: Red Rocket Cluster
-		{},
-		{ name = L["Large Cluster Rocket Recipes"], icon="INV_Scroll_06" },
-		{ id = 21733 }, -- Schematic: Large Blue Rocket Cluster
-		{ id = 21734 }, -- Schematic: Large Green Rocket Cluster
-		{ id = 21735 }, -- Schematic: Large Red Rocket Cluster
 	},
 	MidsummerFestival = {
 		{ id = 23379 }, -- Cinder Bracers

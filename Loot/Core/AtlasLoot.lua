@@ -1392,6 +1392,7 @@ function AtlasLootMenuItem_OnClick(button)
                             if dropDownData[zoneIndex] == instKey then
                                 AtlasTWOptions.AtlasType = typeIndex
                                 AtlasTWOptions.AtlasZone = zoneIndex
+                                AtlasTW.Refresh()
                                 return true
                             end
                         end
@@ -1403,6 +1404,22 @@ function AtlasLootMenuItem_OnClick(button)
             if not matched then
                 if AtlasTW and AtlasTW.PopulateDropdowns then AtlasTW.PopulateDropdowns() end
                 matched = FindAndSetAtlasIndicesByInstance(effectiveInstanceKey)
+            end
+            -- После смены инстанса пытаемся выделить первого босса в правом списке
+            if matched and effectiveFirstBoss then
+                AtlasLootItemsFrame.activeElement = nil
+                if AtlasTW and AtlasTW.ScrollList and AtlasTW.CurrentLine then
+                    for i = 1, AtlasTW.CurrentLine do
+                        local e = AtlasTW.ScrollList[i]
+                        if e then
+                            if e.id == effectiveFirstBoss or (type(effectiveFirstBoss) == "string" and (e.name == effectiveFirstBoss or e.line == effectiveFirstBoss)) then
+                                AtlasLootItemsFrame.activeElement = i
+                                break
+                            end
+                        end
+                    end
+                end
+                AtlasTW.Loot.ScrollBarUpdate()
             end
         end
 
@@ -2115,6 +2132,7 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 									if dropDownData[zoneIndex] == instKey then
 										AtlasTWOptions.AtlasType = typeIndex
 										AtlasTWOptions.AtlasZone = zoneIndex
+										AtlasTW.Refresh()
 										return true
 									end
 								end
@@ -2173,6 +2191,7 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 							if zoneKey == instanceKey then
 								AtlasTWOptions.AtlasType = typeIndex
 								AtlasTWOptions.AtlasZone = zoneIndex
+								AtlasTW.Refresh()
 								break
 							end
 						end
@@ -2262,6 +2281,7 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 							if zoneKey == instanceKey then
 								AtlasTWOptions.AtlasType = typeIndex
 								AtlasTWOptions.AtlasZone = zoneIndex
+								AtlasTW.Refresh()
 								break
 							end
 						end
