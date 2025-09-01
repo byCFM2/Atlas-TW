@@ -42,6 +42,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {id=12905},
                 {id=12926},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=23320, disc=L["Book"], dropRate=8},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -60,6 +61,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {id=12589},
                 {id=12606},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=18657, dropRate=6, container={18638}},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -91,6 +93,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {id=12604},
                 {},
                 {id=12930},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {},
                 {id=12605},
             }
@@ -113,6 +116,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {},
                 {id=18779,dropRate=15},
                 {id=12727,container={12618}},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {},
                 { name=L["Small Rocket Recipes"] },
                 {id=12806,dropRate=100},
@@ -142,6 +146,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {},
                 {id=16733, disc=L["Warrior"]..", ".."T0"},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -159,6 +164,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {},
                 {id=13522, dropRate=3,container={13513}},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=12871,disc=L["Quest Item"], dropRate=4},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -191,6 +197,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {id=24101,disc=L["Book"], dropRate=13},
                 {id=19227,disc=L["Darkmoon Faire Card"], dropRate=5, container={19288}},
                 {id=12731,disc=L["Misc"], dropRate=2},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
@@ -253,6 +260,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {id=16726, disc=L["Paladin"]..", ".."T0"},
                 {id=16730, disc=L["Warrior"]..", ".."T0"},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], quantity=3, dropRate=100},
             }
         },

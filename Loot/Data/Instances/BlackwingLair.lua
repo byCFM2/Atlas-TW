@@ -336,7 +336,7 @@ AtlasTW.InstanceData.BlackwingLair = {
                 {},
                 {id=18562, disc=L["Trade Goods"], dropRate=8},
                 {id=19183, quantity={1,2}, disc=L["Consumable"], dropRate=47},
-                {id=70173, dropRate=2},
+                {id=70173, dropRate=2, container = { 56062 }}, -- Plans: Blackwing Signet of Command
             }
         }
     }

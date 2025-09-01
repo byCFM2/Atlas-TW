@@ -82,6 +82,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {},
                 {id=12534, disc=L["Used to summon boss"], dropRate=100},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=12336, disc=L["Quest Item"], dropRate=25,container={12344}},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=21982,dropRate=50,container={22149,22150}},
@@ -130,6 +131,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {},
                 {id=13352, dropRate=100,container={12821}},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -161,6 +163,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=41454, disc=L["Quest Item"], dropRate=100},
                 {id=60714, disc=L["Quest Item"], dropRate=100},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -230,6 +233,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {},
                 {id=80758, dropRate=40},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
@@ -267,6 +271,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {id=12725, container={12620}, dropRate=0},
                 {},
                 {id=12712, disc=L["Quest Item"],dropRate=100,container={15867}},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=21982,dropRate=50,container={22149,22150}},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -291,6 +296,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {id=56101, disc=L["Quest Item"], dropRate=30},
                 {id=22138, disc=L["Quest Item"], dropRate=80},
                 {id=41478, disc=L["Quest Item"], dropRate=100},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
@@ -306,6 +312,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {id=13211},
                 {id=13210},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -326,6 +333,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {id=83573, disc=L["Book"], dropRate=15},
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
@@ -370,6 +378,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {id=47415, dropRate=10, container={47414}}, --Recipe: Concoction of the Dreamwater
                 {id=12337, disc=L["Quest Item"], dropRate=30,container={12344}},
                 {id=16786, dropRate=80, quantity=2,container={16309}},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=41700,dropRate=100,container={41704}},
                 {id=61459, dropRate=100,container={61465}},
                 {},

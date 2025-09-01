@@ -4,7 +4,7 @@ local L = AtlasTW.Local
 
 AtlasTW.MenuData.WorldEvents = {
 	{},
-    { name = L["Abyssal Council"], extra = "Silithus", icon = "Interface\\Icons\\Spell_Nature_TimeStop", lootpage = "AbyssalTemplars" },
+    { name = L["Abyssal Council"], extra = "Silithus", icon = "Interface\\Icons\\Spell_Nature_TimeStop", lootpage = "AbyssalCouncil" },
     { name = L["Elemental Invasion"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Ammo_FireTar", lootpage = "ElementalInvasion" },
     { name = L["Gurubashi Arena"], extra = "Stranglethorn Vale", icon = "Interface\\Icons\\INV_Box_02", lootpage = "GurubashiArena" },
     { name = L["Harvest Festival"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_Food_Wheat_01", lootpage = "HarvestFestival" },

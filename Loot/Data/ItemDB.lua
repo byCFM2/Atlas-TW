@@ -13,7 +13,7 @@ AtlasTW.ItemDB.SLOT_KEYWORDS = {
     [L["Off Hand"]] = 0, [L["Waist"]] = 0, [L["Two-Hand"]] = 0, [L["Ranged"]] = 0,
 }
 AtlasTW.ItemDB.SLOT2_KEYWORDS = {
-    [L["Cloth"]] = 0,  [L["Leather"]] = 0, [L["Mail"]] = 0,[L["Plate"]] = 0,[L["Bullet"]] = 0,
+    [L["Cloth"]] = 0,  [L["Leather"]] = 0, [L["Mail"]] = 0,[L["Plate"]] = 0,[L["Bullet"]] = 0,[L["Shirt"]] = 0,
     [L["Mace"]] = 0, [L["Axe"]] = 0, [L["Dagger"]] = 0, [L["Sword"]] = 0, [L["Totem"]] = 0,
     [L["Held In Off-hand"]] = 0, [L["Shield"]] = 0, [L["Finger"]] = 0, [L["Neck"]] = 0, [L["16 Slot Ammo Pouch"]] = 0,
     [L["Trinket"]] = 0, [L["Back"]] = 0, [L["Bow"]] = 0, [L["Crossbow"]] = 0,[L["Arrow"]] = 0,
@@ -32,15 +32,6 @@ AtlasTW.ItemDB.ClassItems = {
     [L["Warlock"]] = {L["Dagger"],L["Staff"],L["Sword"],L["Wand"]},
     [L["Warrior"]] = {L["Leather"],L["Mail"],L["Plate"],L["Dagger"],L["Off Hand"],L["Sword"],L["Mace"],L["Axe"],L["Fist Weapon"],L["Bow"],L["Crossbow"],L["Gun"],L["Thrown"],L["Polearm"],
         L["Staff"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"]},
-}
-
--- Прототип предмета
-local ItemPrototype = {
-    -- Получить шанс выпадения как строку
-    GetDropRateText = function(this)
-        if not this.dropRate or this.dropRate == 0 then return nil end
-        return this.dropRate .. "%"
-    end,
 }
 
 local function getColoredText(text, typeText)

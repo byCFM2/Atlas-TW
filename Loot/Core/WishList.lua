@@ -262,13 +262,26 @@ function AtlasLoot_CategorizeWishList(wishList)
 		-- Поддержка обоих форматов: словарь (WishList) и массив (SearchResult)
 		local elem = (v.element ~= nil) and v.element or v[2]
 		local inst = (v.instance ~= nil) and v.instance or v[3]
+		local src = (v.sourcePage ~= nil) and v.sourcePage or v[5]
 
 		if elem and inst and elem ~= "" and inst ~= "" then
 			-- Новый формат с информацией о боссе и инстансе
 			currentCategory = AtlasLoot_GetWishListSubheadingBoss(elem, inst)
+		elseif src and src ~= "" then
+			-- Попытка извлечь boss|instance из sourcePage
+			local b, ik = AtlasLoot_Strsplit("|", src)
+			if ik and ik ~= "" then
+				currentCategory = AtlasLoot_GetWishListSubheadingBoss(b, ik)
+				-- Обновим elem/inst, чтобы ниже корректно вычислить extratext
+				if not elem or elem == "" then elem = b end
+				if not inst or inst == "" then inst = ik end
+			else
+				-- src может быть ключом страницы лута (например, крафт)
+				currentCategory = b or src
+			end
 		else
-			-- Формат без дополнительной информации - только itemID
-			currentCategory = L["Wish List"] or "Wish List"
+			-- Для SearchResult без явных elem/inst используем нейтральный заголовок
+			currentCategory = L["Search Result"] or "Search Result"
 		end
 
 		-- Если категория изменилась, добавляем заголовок
@@ -279,10 +292,17 @@ function AtlasLoot_CategorizeWishList(wishList)
 			end
 
 			-- Определяем extratext (подзаголовок)
-			local extratext = "Wish List"
+			local extratext = ""
 			if inst and inst ~= "" then
 				-- Есть информация об инстансе - используем его как extratext
-				extratext = GetLootTableParent(elem, inst) or "Unknown"
+				extratext = GetLootTableParent(elem, inst) or ""
+			elseif src and src ~= "" then
+				local b, ik = AtlasLoot_Strsplit("|", src)
+				if ik and ik ~= "" then
+					extratext = GetLootTableParent(b, ik) or ""
+				else
+					extratext = ""
+				end
 			end
 
 			-- Добавляем заголовок категории: имя босса/страницы как заголовок, инстанс как extratext

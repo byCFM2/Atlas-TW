@@ -5,9 +5,7 @@ local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -40,6 +38,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {id=83445},
                 {id=83440, dropRate=10},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
@@ -58,6 +57,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {},
                 {id=83446, dropRate=10},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
@@ -77,6 +77,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {},
                 {id=83461},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
@@ -94,6 +95,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {id=60790},
                 {id=60791},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
@@ -114,6 +116,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {},
                 {id=80010, dropRate=5},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
@@ -131,6 +134,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {id=50192},
                 {id=50193},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
@@ -157,6 +161,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {},
                 {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,
                     70234,70235,70236,70238}},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], quantity=2, dropRate=100},
             }
         },
@@ -207,7 +212,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {},
                 {id=60808},
                 {},
-                {id=41416, dropRate=100},
+                {id=41416, dropRate=100, container={92045}}, --Crumpled Paper
             },
         }
     }

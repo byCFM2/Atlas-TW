@@ -107,6 +107,7 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 {id=13523, disc=L["Used to summon boss"], dropRate=100},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -143,6 +144,7 @@ AtlasTW.InstanceData.Scholomance = {
                 {id=18782, dropRate=40},
                 {id=12726, container={12619}, dropRate=0},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=13873, disc=L["Key"], dropRate=100},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -171,6 +173,7 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 {id=14576},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -182,6 +185,7 @@ AtlasTW.InstanceData.Scholomance = {
                 {id=18691},
                 {id=14577},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -208,6 +212,7 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 {id=13521,dropRate=3,container={13512}},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -233,6 +238,7 @@ AtlasTW.InstanceData.Scholomance = {
             name = BB["Instructor Malicia"],
             loot = {
                 {id=16710, disc=L["Rogue"]..", T0", container={22004}, dropRate = 4},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
                 {},
                 unpack(scholoShareLoot),
@@ -245,6 +251,7 @@ AtlasTW.InstanceData.Scholomance = {
             loot = {
                 {id=16684, disc=L["Mage"]..", T0", container={22066}, dropRate=14},
                 {id=14617, disc=L["Shirt"], dropRate=2},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
                 unpack(scholoShareLoot),
             }
@@ -255,6 +262,7 @@ AtlasTW.InstanceData.Scholomance = {
             name = BB["Lorekeeper Polkelt"],
             loot = {
                 {id=16705, disc=L["Warlock"]..", T0", container={22077}, dropRate=17},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
                 {},
                 unpack(scholoShareLoot),
@@ -266,6 +274,7 @@ AtlasTW.InstanceData.Scholomance = {
             name = BB["The Ravenian"],
             loot = {
                 {id=16716, disc=L["Druid"]..", T0", container={22106}, dropRate=17},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
                 {},
                 unpack(scholoShareLoot),
@@ -278,6 +287,7 @@ AtlasTW.InstanceData.Scholomance = {
             defaults = { dropRate = 4 },
             loot = {
                 {id=16722, disc=L["Paladin"]..", T0", container={22088}, dropRate=5},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
                 {},
                 unpack(scholoShareLoot),
@@ -290,6 +300,7 @@ AtlasTW.InstanceData.Scholomance = {
             name = BB["Lady Illucia Barov"],
             defaults = { dropRate = 4 },
             loot = {
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
                 {},
                 {},
@@ -323,6 +334,7 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 {id=13937, dropRate=1},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=19276, disc=L["Darkmoon Faire Card"], dropRate=3,container={19290}},
                 {},
                 {id=13501, dropRate=10, container={13444}},

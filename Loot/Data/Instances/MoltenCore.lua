@@ -71,7 +71,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 19145 }, --Robe of Volatile Power
                 { id = 19146 }, --Wristguards of Stability
                 { id = 19147 }, --Ring of Spell Power
-                { id = 41988, dropRate = 100 }, --Molten Scale
+                { id = 41988, dropRate = 100, container = { 41990 } }, --Molten Scale
                 {},
                 { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
                 {},
@@ -407,7 +407,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 58243, dropRate = 25 }, --Leggings of the Deep Delve
                 { id = 58244, dropRate = 25 }, --Sigil of Ancient Accord
                 {},
-                { id = 41989, dropRate = 100 }, --Signet of Thaurissan
+                { id = 41989, dropRate = 100, container = { 41990 } }, --Signet of Thaurissan
                 { id = 20951, dropRate = 1, container = { 18253 } }, --Narain's Scrying Goggles
                 {},
                 unpack(mCShareloot),

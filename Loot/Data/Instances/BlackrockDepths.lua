@@ -398,6 +398,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {},
                 {id=11446, dropRate=25,container={12061,12062,12065}},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -423,6 +424,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=61791, dropRate=.25,container={61784}},
                 {id=11468, quantity={3,10}, dropRate=80,container={11883}},
                 {id=11464, dropRate=100,container={12061,12062,12065}},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -445,6 +447,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=11268, dropRate=100,container={12108,12109,12110,12111}},
                 {id=60671, dropRate=100,container={60672}},
                 {id=81281, dropRate=100,container={81250,81251,81252,81253}},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -581,6 +584,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=11446, dropRate=25,container={12061,12062,12065}},
                 {id=11129, quantity={3,5},dropRate=80,container={12038}},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
             }
         },
@@ -622,6 +626,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=11922},
                 {id=11925},
                 {id=11927},
+                {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
             }
         },
         {
@@ -673,7 +679,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {id=12033, disc=L["Container"], dropRate=2, container={12364,1206,12800,5500,7971,
                     55249,12799,3864,1705,12361,55250,7909,55251,7910,1529}},
                 {id=61463, dropRate=100,container={61465}},
-                {id=11468, quantity={4,9}, dropRate=80,container={11883}},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
+                {id = 11468, quantity = { 4,9 }, dropRate = 80,container = { 11883 }},
                 {id=56104, disc=BS["Gemology"], dropRate=30, container={56109}},
                 {id=11446, dropRate=25,container={12061,12062,12065}},
                 {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,

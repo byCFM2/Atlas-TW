@@ -4,7 +4,6 @@ local L = AtlasTW.Local
 
 -- Get the formatted string for the instance and make back navigation button
 local function getFormString(instanceType, mainString)
-   -- AtlasTW.Loot.BackTableRegistry[mainString] = "DUNGEONSMENU"
     return "|cffff0000"..instanceType.." |cffffd200"..mainString
 end
 
@@ -24,16 +23,19 @@ local function GenerateMenuDataFromInstanceData()
                 local location = instanceData.Location or ""
                 local level = instanceData.Level
                 local maxPlayers = instanceData.MaxPlayers
-                local lootpage = ""
-                -- Get lootpage name
-                for _, boss in ipairs(instanceData.Bosses) do
-                    if boss.name and boss.items then
-                        lootpage = boss.name
-                        break
+                -- Determine first boss name (if exists)
+                local firstBoss = nil
+                if instanceData.Bosses then
+                    for _, boss in ipairs(instanceData.Bosses) do
+                        if boss and boss.name and (boss.items or boss.loot) then
+                            firstBoss = boss.name
+                            break
+                        end
                     end
                 end
 
-                lootpage = lootpage or instanceKey
+                -- Use instance key as lootpage (TableSource) to restrict search within this instance
+                local lootpage = instanceKey
 
                 -- Determine instance type and target menu
                 local instanceType
@@ -54,6 +56,8 @@ local function GenerateMenuDataFromInstanceData()
                     name_orig = name,
                     Extra = location,
                     lootpage = lootpage,
+                    instanceKey = instanceKey,
+                    firstBoss = firstBoss,
                     playerLimit = tonumber(maxPlayers) or 5
                 }
 

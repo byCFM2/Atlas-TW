@@ -2,9 +2,6 @@ local L = AtlasTW.Local
 local RED = "|cffff0000"
 local WHITE = "|cffFFFFFF"
 
-local currentPage = 1
-local SearchResult = nil
-
 function AtlasLoot:ShowSearchResult()
 	-- Сброс позиции прокрутки
 	FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
@@ -97,7 +94,8 @@ function AtlasLoot:Search(Text)
         if not itemID or itemID == 0 then return end
         local itemName = GetItemInfo(itemID)
         if itemName and isMatch(itemName) then
-            local entry = { itemID, bossName, itemName, "item" }
+            -- В SearchResult храним: [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage (optional)
+            local entry = { itemID, bossName, instanceKey, "item" }
             if instanceKey and instanceKey ~= "" then
                 table.insert(entry, (bossName or "").."|"..instanceKey)
             end
@@ -162,12 +160,30 @@ function AtlasLoot:Search(Text)
             if isMatch(nm) then
                 local bossName, instKey = findFirstLocationForId(spellID)
                 if bossName and instKey then
-                    table.insert(AtlasTWCharDB["SearchResult"], { spellID, bossName, nm, "enchant", bossName.."|"..instKey })
+                    table.insert(AtlasTWCharDB.SearchResult, { spellID, bossName, instKey, "enchant", bossName.."|"..instKey })
                 else
-                    table.insert(AtlasTWCharDB["SearchResult"], { spellID, "", nm, "enchant" })
+                    -- Без инстанса: оставляем instanceKey пустым и sourcePage пустым (будет найден крафтовый ключ при обработке spell ниже если применимо)
+                    table.insert(AtlasTWCharDB.SearchResult, { spellID, "", "", "enchant" })
                 end
             end
         end
+    end
+
+    -- Локатор страницы крафта: ищем первую таблицу лута, где встречается spellID
+    local function findFirstCraftLootPageForSpell(spellID)
+        if not AtlasLoot_Data then return nil end
+        for key, tbl in pairs(AtlasLoot_Data) do
+            if type(tbl) == "table" then
+                -- Используем table.getn, т.к. # не поддерживается в 1.12
+                for i = 1, table.getn(tbl) do
+                    local el = tbl[i]
+                    if type(el) == "table" and el.id and el.id == spellID then
+                        return key
+                    end
+                end
+            end
+        end
+        return nil
     end
 
     -- Поиск крафтовых заклинаний: по имени заклинания, если есть, иначе по названию создаваемого предмета
@@ -180,19 +196,24 @@ function AtlasLoot:Search(Text)
             if isMatch(nm) then
                 local bossName, instKey = findFirstLocationForId(spellID)
                 if bossName and instKey then
-                    table.insert(AtlasTWCharDB["SearchResult"], { spellID, bossName, (nm or Text), "spell", bossName.."|"..instKey })
+                    table.insert(AtlasTWCharDB.SearchResult, { spellID, bossName, instKey, "spell", bossName.."|"..instKey })
                 else
-                    table.insert(AtlasTWCharDB["SearchResult"], { spellID, "", (nm or Text), "spell" })
+                    -- Попробуем привязать к странице крафта, если она найдена
+                    local lootPage = findFirstCraftLootPageForSpell(spellID)
+                    if lootPage then
+                        table.insert(AtlasTWCharDB.SearchResult, { spellID, "", "", "spell", lootPage })
+                    else
+                        table.insert(AtlasTWCharDB.SearchResult, { spellID, "", "", "spell" })
+                    end
                 end
             end
         end
     end
 
-    if table.getn(AtlasTWCharDB["SearchResult"]) == 0 then
+    if table.getn(AtlasTWCharDB.SearchResult) == 0 then
         print(RED.."AtlasLoot"..": "..WHITE..L["No match found for"].." \""..Text.."\".")
     else
-        currentPage = 1
-        SearchResult = AtlasLoot_CategorizeWishList(AtlasTWCharDB["SearchResult"])
+        -- Отображаем всю выдачу, скролл занимается фреймом лута
         AtlasLoot:ShowSearchResult()
     end
 end
@@ -226,26 +247,7 @@ function AtlasLoot:ShowSearchOptions(button)
 end
 
 function AtlasLoot:GetOriginalDataFromSearchResult(itemID)
-	for i, v in ipairs(AtlasTWCharDB["SearchResult"]) do
+	for i, v in ipairs(AtlasTWCharDB.SearchResult) do
 		if v[1] == itemID then return unpack(v) end
 	end
-end
-
--- Copied and modified from AtlasLoot_GetWishListPage
-function AtlasLoot:GetSearchResultPage(page)
-	if not SearchResult then SearchResult = AtlasLoot_CategorizeWishList(AtlasTWCharDB["SearchResult"]) end
-	-- Calc for maximal pages
-	local pageMax = math.ceil(getn(SearchResult) / 30)
-	if page < 1 then page = 1 end
-	if page > pageMax then page = pageMax end
-	currentPage = page
-
-	-- Table copy
-	local result = {}
-	local start = (page - 1) * 30 + 1
-	for i = start, start + 29 do
-		if not SearchResult[i] then break end
-		table.insert(result, SearchResult[i])
-	end
-	return result, pageMax
 end

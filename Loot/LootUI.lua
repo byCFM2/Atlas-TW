@@ -140,8 +140,11 @@ local function AtlasLoot_CreatePresetButtons(frame)
             if this:IsEnabled() then
                 GameTooltip:ClearLines()
                 GameTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 5)
-                if AtlasTWCharDB and AtlasTWCharDB["QuickLooks"] and AtlasTWCharDB["QuickLooks"][buttonIndex] and AtlasTWCharDB["QuickLooks"][buttonIndex][3] then
-                    GameTooltip:AddLine(AtlasTWCharDB["QuickLooks"][buttonIndex][3])
+                local entry = AtlasTWCharDB and AtlasTWCharDB["QuickLooks"] and AtlasTWCharDB["QuickLooks"][buttonIndex] or nil
+                if type(entry) == "table" and entry[3] then
+                    GameTooltip:AddLine(entry[3])
+                elseif type(entry) == "string" then
+                    GameTooltip:AddLine(entry)
                 end
                 GameTooltip:AddLine(L["|cff9d9d9dALT+Click to clear|r"])
                 GameTooltip:Show()
@@ -161,21 +164,39 @@ local function AtlasLoot_CreatePresetButtons(frame)
         end)
 
         presetButton[i]:SetScript("OnClick", function()
-            if AtlasTWCharDB and AtlasTWCharDB["QuickLooks"] and AtlasTWCharDB["QuickLooks"][buttonIndex] and AtlasTWCharDB["QuickLooks"][buttonIndex][1] then
-                if AtlasLoot_IsLootTableAvailable(AtlasTWCharDB["QuickLooks"][buttonIndex][1]) then
-                   -- AtlasLoot_ShowItemsFrame(AtlasTWCharDB["QuickLooks"][buttonIndex][1], AtlasTWCharDB["QuickLooks"][buttonIndex][2], AtlasTWCharDB["QuickLooks"][buttonIndex][3])
-                end
+            if not AtlasTWCharDB or not AtlasTWCharDB["QuickLooks"] then return end
+            local entry = AtlasTWCharDB["QuickLooks"][buttonIndex]
+            if not entry then return end
+            local dataID, storedMenu
+            if type(entry) == "table" then
+                dataID = entry[1]
+                storedMenu = entry[2]
+            else
+                dataID = entry
+                storedMenu = nil
             end
+            if not dataID then return end
+            AtlasLootItemsFrame.StoredElement = dataID
+            AtlasLootItemsFrame.StoredMenu = storedMenu
+            AtlasTW.Loot.ScrollBarLootUpdate()
         end)
 
         presetButton[i]:SetScript("OnShow", function()
             this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
-            if (not AtlasTWCharDB) or (not AtlasTWCharDB["QuickLooks"]) or (not AtlasTWCharDB["QuickLooks"][buttonIndex]) or (not AtlasTWCharDB["QuickLooks"][buttonIndex][1]) or
-                (AtlasTWCharDB["QuickLooks"][buttonIndex][1] == nil) then
-                this:Disable()
-            else
-                this:Enable()
+            local enable = false
+            if AtlasTWCharDB and AtlasTWCharDB["QuickLooks"] then
+                local entry = AtlasTWCharDB["QuickLooks"][buttonIndex]
+                if type(entry) == "table" then
+                    if entry[1] ~= nil then
+                        enable = true
+                    end
+                elseif type(entry) == "string" then
+                    if entry ~= "" then
+                        enable = true
+                    end
+                end
             end
+            if enable then this:Enable() else this:Disable() end
         end)
     end
 
@@ -427,7 +448,7 @@ local function AtlasLoot_CreateItemsFrame()
     quickLooks:SetWidth(200)
     quickLooks:SetHeight(25)
     quickLooks:SetJustifyH("RIGHT")
-    quickLooks:SetPoint("BOTTOM", frame, "BOTTOM", -124, 8)
+    quickLooks:SetPoint("BOTTOM", frame, "BOTTOM", -130, 8)
 
     -- Close button
     local closeButton = CreateFrame("Button", frame:GetName().."_CloseButton", frame, "UIPanelCloseButton")

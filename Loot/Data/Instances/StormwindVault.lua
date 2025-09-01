@@ -35,6 +35,7 @@ AtlasTW.InstanceData.StormwindVault = {
                 {id=60431},--weap
                 {id=60418},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=51217, disc=L["Transmogrification"], dropRate=5}
             }
@@ -53,6 +54,7 @@ AtlasTW.InstanceData.StormwindVault = {
                 {id=60416},--weap
                 {id=60417},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=51217, disc=L["Transmogrification"], dropRate=5}
             }
@@ -70,6 +72,7 @@ AtlasTW.InstanceData.StormwindVault = {
                 {},
                 {id=60410},--weap
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=51217, disc=L["Transmogrification"], dropRate=5}
             }
@@ -89,6 +92,7 @@ AtlasTW.InstanceData.StormwindVault = {
                 {id=60427},--weap
                 {id=60422, dropRate=1},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=41463, dropRate=100},
                 {id=51217, disc=L["Transmogrification"], dropRate=5}
@@ -108,6 +112,7 @@ AtlasTW.InstanceData.StormwindVault = {
                 {},
                 {id=60413},--weap
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {id=51217, disc=L["Transmogrification"], dropRate=5}
             }
@@ -130,6 +135,7 @@ AtlasTW.InstanceData.StormwindVault = {
                 {},
                 {id=83570, dropRate=15},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=51217, disc=L["Transmogrification"], dropRate=80},
                 {id=41700,dropRate=100,container={41704}},
                 {id=41406, dropRate=100,container={55133,55134,55135}}

@@ -44,6 +44,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 {id=13396},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
             }
         },
@@ -102,6 +103,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {id=13383},
                 {id=13379},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
             }
         },
@@ -119,6 +121,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 {id=13408},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -145,6 +148,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 {id=61791, dropRate=.25, container={61784}},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -171,6 +175,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 {id=61791, dropRate=.25, container={61784}},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -189,19 +194,20 @@ AtlasTW.InstanceData.Stratholme = {
             name = L["Crimson Hammersmith"],
             postfix = L["Summon"],
             loot = {
-                {id=18781, dropRate=40},
+                {id=18781, dropRate=40, container={18770}},
                 {id=12726, container={12619}},
                 {},
+                {id=13351, dropRate=100, container={12824}},
                 {id=12824, container={12776}},
                 {},
-                {id=124, container={87}},
+                {id=124, dropRate=6, container={87}},
             }
         },
         {
             id = "STRATBSPlansSerenity",
             name = L["Blacksmithing Plans"],
             loot = {
-                {id=12827, dropRate=.02, container={12781}},
+                {id=12827, dropRate=32, container={12781}},
             }
         },
         {
@@ -228,6 +234,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {id=12839, dropRate=6, container={12783}},
                 {id=61791, dropRate=.25, container={61784}},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -251,6 +258,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {id=22897, disc=L["Book"], dropRate=14},
                 {id=61791, dropRate=.25, container={61784}},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -298,6 +306,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {id=47415, dropRate=10, container={47414}}, --Recipe: Concoction of the Dreamwater
                 {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,
                     70234,70235,70236,70238}},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=41700,dropRate=100,container={41704}},
                 {id=51217, disc=L["Transmogrification"], dropRate=100},
             }
@@ -335,6 +344,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 {id=12382, disc=L["Key"], dropRate=100},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -357,6 +367,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 {id=13399},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
             }
         },
@@ -381,6 +392,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 {id=61791, dropRate=.25, container={61784}},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -391,9 +403,10 @@ AtlasTW.InstanceData.Stratholme = {
             name = L["Black Guard Swordsmith"],
             postfix = L["Summon"],
             loot = {
-                {id=18783, dropRate=40},
+                {id=18783, dropRate=40, container={18771}},
                 {id=12725, container={12620}},
                 {},
+                {id=13350, dropRate=100, container={12825}},
                 {id=12825, container={12777}},
             }
         },
@@ -425,6 +438,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {id=13508},
                 {},
                 {id=61791, dropRate=.25, container={61784}},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -453,6 +467,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {id=12833, dropRate=6, container={12796}},
                 {id=61791, dropRate=.25, container={61784}},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -476,6 +491,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 {id=61791, dropRate=.25, container={61784}},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -518,6 +534,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {id=47415, dropRate=10, container={47414}}, --Recipe: Concoction of the Dreamwater
                 {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,
                     70234,70235,70236,70238}},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=41700,dropRate=100,container={41704}},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=100},
@@ -535,13 +552,13 @@ AtlasTW.InstanceData.Stratholme = {
             name = L["Third Postbox Opened"].. ": " .. BB["Postmaster Malown"],
             defaults = { dropRate = 17 },
             loot = {
-                {id=13390, dropRate=17},
-                {id=13388, dropRate=17},
-                {id=13389, dropRate=17},
-                {id=13391, dropRate=17},
-                {id=13392, dropRate=17},
+                {id=13390},
+                {id=13388},
+                {id=13389},
+                {id=13391},
+                {id=13392},
                 {},
-                {id=13393, dropRate=17},
+                {id=13393},
             },
         },
         {
@@ -572,6 +589,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {id=18744, dropRate=.02},
                 {id=18745, dropRate=.02},
                 {id=18736, dropRate=.02},
+                {id=12827, dropRate=.1, container={12781}},
                 {id=16249},
                 {id=16248, dropRate=.88},
                 {id=14495, container={14144}},

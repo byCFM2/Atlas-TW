@@ -11,9 +11,9 @@ AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- Общий лут для капитанов и майоров
 local captainLoot = {
-    {id=21809, dropRate=8},
-    {id=21810, dropRate=8},
-    {id=21806, dropRate=5},
+    {id = 21809, dropRate = 8},
+    {id = 21810, dropRate = 8},
+    {id = 21806, dropRate = 5},
 }
 
 -- Данные Руин Ан'Киража
@@ -135,7 +135,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
             id = "Moam",
             prefix = "3)",
             name = BB["Moam"],
-            postfix = L["Optional"], --TODO show postfix
+            postfix = L["Optional"],
             defaults = { dropRate = 25 },
             loot = {
                 {id=21472},

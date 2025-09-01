@@ -37,8 +37,9 @@ AtlasTW.InstanceData.HateforgeQuarry = {
                 {},
                 {id=60775, disc=L["Book"], dropRate=15},
                 {},
-                {id=41460, disc=L["Quest Item"], dropRate=100},
-                {id=61462, disc=L["Quest Item"], dropRate=100,container={61465}},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
+                {id=41460, dropRate=100},
+                {id=61462, dropRate=100,container={61465}},
                 {id=70226, disc=L["Quest Item"],dropRate=1},
                 {},
                 {id=51217, disc=L["Transmogrification"], dropRate=5},
@@ -121,6 +122,7 @@ AtlasTW.InstanceData.HateforgeQuarry = {
                 {},
                 {id=60551, dropRate=1.2},
                 {},
+                {id = 41985, dropRate = 100, container = { 41986 }}, --Crest of Valor
                 {id=70226, disc=L["Quest Item"],dropRate=3,container={70227,70228,70229,70230,70231,70232,70233,
                     70234,70235,70236,70238}},
                 {id=51217, disc=L["Transmogrification"], dropRate=100},
