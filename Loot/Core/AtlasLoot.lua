@@ -697,8 +697,16 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 					local sourcePageVal = nil
 					if (dataID == "WishList" or dataID == "SearchResult") and element and type(element) == "table" then
 						sourcePageVal = element[5]
-						if not sourcePageVal and element[2] and element[3] then
-							sourcePageVal = element[2].."|"..element[3]
+						-- В 1.12 встречаются записи, где [5] или [2]/[3] могут быть таблицами; защищаем конкатенацию
+						if type(sourcePageVal) ~= "string" then
+							sourcePageVal = nil
+						end
+						if not sourcePageVal then
+							local e2, e3 = element[2], element[3]
+							if (type(e2) == "string" or type(e2) == "number") and (type(e3) == "string" or type(e3) == "number") then
+								sourcePageVal = tostring(e2).."|"..tostring(e3)
+							elseif type(e2) == "table" or type(e3) == "table" then
+							end
 						end
 					end
 					if (dataID == "WishList" or dataID == "SearchResult") and element and type(element) == "table" and element[1] and element[1] ~= 0 then

@@ -56,7 +56,7 @@ local function GenerateMenuDataFromInstanceData()
                     name_orig = name,
                     Extra = location,
                     lootpage = lootpage,
-                    instanceKey = instanceKey,
+                    instanceKey = instanceKey, -- TODO то же самое что и lootpage, нужно убрать лишнее
                     firstBoss = firstBoss,
                     playerLimit = tonumber(maxPlayers) or 5
                 }

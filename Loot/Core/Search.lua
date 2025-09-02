@@ -153,6 +153,22 @@ function AtlasLoot:Search(Text)
         end
     end
 
+    -- Локатор страницы крафта/профессий: ищем первую таблицу лута, где встречается spellID (локальный для использования в enchants)
+    local function findCraftLootPageLocal(spellID)
+        if not AtlasLoot_Data then return nil end
+        for key, tbl in pairs(AtlasLoot_Data) do
+            if type(tbl) == "table" then
+                for i = 1, table.getn(tbl) do
+                    local el = tbl[i]
+                    if type(el) == "table" and el.id and el.id == spellID then
+                        return key
+                    end
+                end
+            end
+        end
+        return nil
+    end
+
     -- Поиск зачарований по названию в новой базе заклинаний
     if AtlasTW.SpellDB and AtlasTW.SpellDB.enchants then
         for spellID, data in pairs(AtlasTW.SpellDB.enchants) do
@@ -162,8 +178,14 @@ function AtlasLoot:Search(Text)
                 if bossName and instKey then
                     table.insert(AtlasTWCharDB.SearchResult, { spellID, bossName, instKey, "enchant", bossName.."|"..instKey })
                 else
-                    -- Без инстанса: оставляем instanceKey пустым и sourcePage пустым (будет найден крафтовый ключ при обработке spell ниже если применимо)
-                    table.insert(AtlasTWCharDB.SearchResult, { spellID, "", "", "enchant" })
+                    -- Попробуем привязать к странице крафта/профессии, если она найдена
+                    local lootPage = findCraftLootPageLocal(spellID)
+                    if lootPage then
+                        table.insert(AtlasTWCharDB.SearchResult, { spellID, "", "", "enchant", lootPage })
+                    else
+                        -- Без инстанса и крафт-страницы: остаётся пусто
+                        table.insert(AtlasTWCharDB.SearchResult, { spellID, "", "", "enchant" })
+                    end
                 end
             end
         end
