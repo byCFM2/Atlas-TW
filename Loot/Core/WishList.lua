@@ -370,6 +370,27 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 		record.sourcePage = currentElement.."|"..currentInstanceKey
 	end
 
+	-- Проверка на повторное добавление (по паре type+id)
+	local isDuplicate = false
+	for i = 1, table.getn(AtlasTWCharDB.WishList) do
+		local w = AtlasTWCharDB.WishList[i]
+		if w and w.id == actualItemID then
+			local wtype = w.type or "item"
+			if wtype == elementType then
+				isDuplicate = true
+				break
+			end
+		end
+	end
+	if isDuplicate then
+		if name and name ~= "" then
+			print(name..L[" already in the WishList!"])
+		else
+			print(tostring(actualItemID)..L[" already in the WishList!"])
+		end
+		return
+	end
+
  	-- Сохраняем в список желаний
 	table.insert(AtlasTWCharDB.WishList, record)
 
