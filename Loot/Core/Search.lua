@@ -39,6 +39,18 @@ function AtlasLoot:Search(Text)
         end
     end
 
+    -- Локальный кэш уже добавленных результатов (уникализация по типу и id)
+    local seen = {}
+    local function addUnique(entry)
+        local ty = entry[4] or "item"
+        local id = entry[1]
+        local key = ty .. ":" .. tostring(id)
+        if not seen[key] then
+            table.insert(AtlasTWCharDB.SearchResult, entry)
+            seen[key] = true
+        end
+    end
+
     -- Поиск первого вхождения id (item/spell/enchant) в базе инстансов, чтобы получить boss и instanceKey
     local function findFirstLocationForId(targetId)
         if not targetId or not AtlasTW or not AtlasTW.InstanceData then return nil, nil end
@@ -100,7 +112,7 @@ function AtlasLoot:Search(Text)
             if instanceKey and instanceKey ~= "" then
                 table.insert(entry, (bossName or "").."|"..instanceKey)
             end
-            table.insert(AtlasTWCharDB.SearchResult, entry)
+            addUnique(entry)
         end
     end
 
@@ -154,6 +166,48 @@ function AtlasLoot:Search(Text)
         end
     end
 
+    -- Дополнительный поиск предметов на страницах крафта/профессий и прочих лут-страницах (AtlasLoot_Data)
+    local function searchItemsInLootTables()
+        if not AtlasLoot_Data then return end
+        local function considerItem(itemID, pageKey)
+            if not itemID or itemID == 0 then return end
+            local itemName = GetItemInfo(itemID)
+            if itemName and isMatch(itemName) then
+                -- [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage (ключ страницы)
+                addUnique({ itemID, "", "", "item", pageKey })
+            end
+        end
+        for key, tbl in pairs(AtlasLoot_Data) do
+            if type(tbl) == "table" then
+                for i = 1, table.getn(tbl) do
+                    local el = tbl[i]
+                    if type(el) == "table" then
+                        if el.id then
+                            considerItem(el.id, key)
+                        end
+                        if el.container and type(el.container) == "table" then
+                            for j = 1, table.getn(el.container) do
+                                local c = el.container[j]
+                                if type(c) == "number" then
+                                    considerItem(c, key)
+                                elseif type(c) == "table" then
+                                    if c[1] then
+                                        considerItem(c[1], key)
+                                    elseif c.id then
+                                        considerItem(c.id, key)
+                                    end
+                                end
+                            end
+                        end
+                    elseif type(el) == "number" then
+                        considerItem(el, key)
+                    end
+                end
+            end
+        end
+    end
+    searchItemsInLootTables()
+
     -- Локатор страницы крафта/профессий: ищем первую таблицу лута, где встречается spellID (локальный для использования в enchants)
     local function findCraftLootPageLocal(spellID)
         if not AtlasLoot_Data then return nil end
@@ -174,18 +228,22 @@ function AtlasLoot:Search(Text)
     if AtlasTW.SpellDB and AtlasTW.SpellDB.enchants then
         for spellID, data in pairs(AtlasTW.SpellDB.enchants) do
             local nm = data and data.name
+            -- Fallback: если в базе нет названия зачарования, пробуем получить имя по itemID
+            if (not nm or nm == "") and data and data.item then
+                nm = GetItemInfo(data.item)
+            end
             if isMatch(nm) then
                 local bossName, instKey = findFirstLocationForId(spellID)
                 if bossName and instKey then
-                    table.insert(AtlasTWCharDB.SearchResult, { spellID, bossName, instKey, "enchant", bossName.."|"..instKey })
+                    addUnique({ spellID, bossName, instKey, "enchant", bossName.."|"..instKey })
                 else
                     -- Попробуем привязать к странице крафта/профессии, если она найдена
                     local lootPage = findCraftLootPageLocal(spellID)
                     if lootPage then
-                        table.insert(AtlasTWCharDB.SearchResult, { spellID, "", "", "enchant", lootPage })
+                        addUnique({ spellID, "", "", "enchant", lootPage })
                     else
                         -- Без инстанса и крафт-страницы: остаётся пусто
-                        table.insert(AtlasTWCharDB.SearchResult, { spellID, "", "", "enchant" })
+                        addUnique({ spellID, "", "", "enchant" })
                     end
                 end
             end
@@ -219,14 +277,14 @@ function AtlasLoot:Search(Text)
             if isMatch(nm) then
                 local bossName, instKey = findFirstLocationForId(spellID)
                 if bossName and instKey then
-                    table.insert(AtlasTWCharDB.SearchResult, { spellID, bossName, instKey, "spell", bossName.."|"..instKey })
+                    addUnique({ spellID, bossName, instKey, "spell", bossName.."|"..instKey })
                 else
                     -- Попробуем привязать к странице крафта, если она найдена
                     local lootPage = findFirstCraftLootPageForSpell(spellID)
                     if lootPage then
-                        table.insert(AtlasTWCharDB.SearchResult, { spellID, "", "", "spell", lootPage })
+                        addUnique({ spellID, "", "", "spell", lootPage })
                     else
-                        table.insert(AtlasTWCharDB.SearchResult, { spellID, "", "", "spell" })
+                        addUnique({ spellID, "", "", "spell" })
                     end
                 end
             end

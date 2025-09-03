@@ -18,7 +18,7 @@ local Colors = {
     WHITE = "|cffffffff"
 }
 
-AtlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version").." Alpha"
+AtlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version")
 
 local function debug(info)
 	if AtlasTW.DEBUGMODE then

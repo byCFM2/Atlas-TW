@@ -835,8 +835,11 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 							itemTexture = itemTexture or "Interface\\Icons\\Spell_Holy_GreaterHeal"
 							local parsedText = AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID)
 							parsedText = link and link.extra and (link.extra..", "..parsedText) or parsedText
-							extratext = extratext~="" and parsedText~="" and extratext..", "..parsedText or extratext
-							extratext = parsedText~="" and parsedText or extratext
+							if extratext~="" and parsedText~="" then
+								extratext = extratext..", "..parsedText
+							elseif parsedText~="" then
+								extratext = parsedText
+							end
 						end
 
 						-- Set the description text
@@ -2245,14 +2248,27 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 				else
 					AtlasLootItemsFrame.activeElement = nil
 				end
-				-- Обновляем лутовую панель
-				AtlasTW.Loot.ScrollBarLootUpdate()
+				-- Кэшируем всю страницу перед обновлением
+				AtlasLootItemsFrame:Show()
+				AtlasLoot_ShowScrollBarLoading()
+				local lootTable = GetLootByElemName(bossName, instanceKey)
+				CacheAllLootItems(lootTable, function()
+					AtlasLoot_HideScrollBarLoading()
+					AtlasTW.Loot.ScrollBarLootUpdate()
+				end)
 			elseif AtlasLoot_IsLootTableAvailable(this.sourcePage) then
 				-- sourcePage содержит только ключ таблицы (например, страницу крафта)
 				AtlasLootItemsFrame.StoredElement = this.sourcePage
 				AtlasLootItemsFrame.StoredMenu = nil
 				AtlasLootItemsFrame.activeElement = nil
-				AtlasTW.Loot.ScrollBarLootUpdate()
+				-- Кэшируем всю страницу перед обновлением
+				AtlasLootItemsFrame:Show()
+				AtlasLoot_ShowScrollBarLoading()
+				local lootTable = AtlasLoot_Data[this.sourcePage] or GetLootByElemName(this.sourcePage)
+				CacheAllLootItems(lootTable, function()
+					AtlasLoot_HideScrollBarLoading()
+					AtlasTW.Loot.ScrollBarLootUpdate()
+				end)
 			end
 		elseif this.container and arg1 == "LeftButton" then
 			AtlasLoot_ShowContainerFrame()
@@ -2294,12 +2310,25 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 				else
 					AtlasLootItemsFrame.activeElement = nil
 				end
-				AtlasTW.Loot.ScrollBarLootUpdate()
+				-- Кэшируем всю страницу перед обновлением
+				AtlasLootItemsFrame:Show()
+				AtlasLoot_ShowScrollBarLoading()
+				local lootTable = GetLootByElemName(bossName, instanceKey)
+				CacheAllLootItems(lootTable, function()
+					AtlasLoot_HideScrollBarLoading()
+					AtlasTW.Loot.ScrollBarLootUpdate()
+				end)
 			elseif AtlasLoot_IsLootTableAvailable(this.sourcePage) then
 				AtlasLootItemsFrame.StoredElement = this.sourcePage
 				AtlasLootItemsFrame.StoredMenu = nil
 				AtlasLootItemsFrame.activeElement = nil
-				AtlasTW.Loot.ScrollBarLootUpdate()
+				AtlasLootItemsFrame:Show()
+				AtlasLoot_ShowScrollBarLoading()
+				local lootTable = AtlasLoot_Data[this.sourcePage] or GetLootByElemName(this.sourcePage)
+				CacheAllLootItems(lootTable, function()
+					AtlasLoot_HideScrollBarLoading()
+					AtlasTW.Loot.ScrollBarLootUpdate()
+				end)
 			end
 		elseif this.container and arg1 == "LeftButton" then
 			AtlasLoot_ShowContainerFrame()
@@ -2384,12 +2413,25 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 				else
 					AtlasLootItemsFrame.activeElement = nil
 				end
-				AtlasTW.Loot.ScrollBarLootUpdate()
+				-- Кэшируем всю страницу перед обновлением
+				AtlasLootItemsFrame:Show()
+				AtlasLoot_ShowScrollBarLoading()
+				local lootTable = GetLootByElemName(bossName, instanceKey)
+				CacheAllLootItems(lootTable, function()
+					AtlasLoot_HideScrollBarLoading()
+					AtlasTW.Loot.ScrollBarLootUpdate()
+				end)
 			elseif AtlasLoot_IsLootTableAvailable(this.sourcePage) then
 				AtlasLootItemsFrame.StoredElement = this.sourcePage
 				AtlasLootItemsFrame.StoredMenu = nil
 				AtlasLootItemsFrame.activeElement = nil
-				AtlasTW.Loot.ScrollBarLootUpdate()
+				AtlasLootItemsFrame:Show()
+				AtlasLoot_ShowScrollBarLoading()
+				local lootTable = AtlasLoot_Data[this.sourcePage] or GetLootByElemName(this.sourcePage)
+				CacheAllLootItems(lootTable, function() 
+					AtlasLoot_HideScrollBarLoading()
+					AtlasTW.Loot.ScrollBarLootUpdate()
+				end)
 			end
 		elseif this.container and arg1 == "LeftButton" then
 			AtlasLoot_ShowContainerFrame()
