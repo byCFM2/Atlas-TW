@@ -161,6 +161,12 @@ function AtlasLoot_OnEvent()
 	if not AtlasTWCharDB["QuickLooks"] then AtlasTWCharDB["QuickLooks"] = {} end
 	if not AtlasTWCharDB["SearchResult"] then AtlasTWCharDB["SearchResult"] = {} end
 
+	-- Инвалидация кэша категорий после инициализации
+	if AtlasLoot_InvalidateCategorizedList then
+		AtlasLoot_InvalidateCategorizedList("WishList")
+		AtlasLoot_InvalidateCategorizedList("SearchResult")
+	end
+
 	--Add the loot browser to the special frames tables to enable closing wih the ESC key
 	tinsert(UISpecialFrames, "AtlasLootOptionsFrame")
 	--Disable checkboxes of missing addons

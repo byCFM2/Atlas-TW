@@ -24,6 +24,7 @@ function AtlasLoot:Search(Text)
     local text = string.lower(Text)
 
     AtlasTWCharDB.SearchResult = {}
+    AtlasLoot_InvalidateCategorizedList("SearchResult")
     AtlasTWCharDB.LastSearchedText = Text
 
     local partial = AtlasTWCharDB.PartialMatching
@@ -232,6 +233,7 @@ function AtlasLoot:Search(Text)
         end
     end
 
+    AtlasLoot_InvalidateCategorizedList("SearchResult")
     if table.getn(AtlasTWCharDB.SearchResult) == 0 then
         print(RED.."AtlasLoot"..": "..WHITE..L["No match found for"].." \""..Text.."\".")
     else

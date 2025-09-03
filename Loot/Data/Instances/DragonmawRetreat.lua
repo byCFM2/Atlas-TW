@@ -75,7 +75,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 41569 }, --Tattered Orcish Shawl
                 { id = 41570 }, --Idol of Nethalakk
                 {},
-                { id = 41874, disc=L["Quest Item"] }, --Fragment of Algoron
+                { id = 41874, disc = L["Quest Item"] }, --Fragment of Algoron
             }
         },
         {
@@ -101,8 +101,8 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 58046 }, --Shield of Galoraz
                 { id = 58047 }, --Grasp of Ancestors
                 {},
-                { id = 76, dropRate=6, container={156} }, --Plans: Refined Dwarven Necklace
-                { id = 77, dropRate=6, container={56112} }, --Plans: Ancient Dwarven Gemstone
+                { id = 76, dropRate = 6, container = { 156 } }, --Plans: Refined Dwarven Necklace
+                { id = 77, dropRate = 6, container = { 56112 } }, --Plans: Ancient Dwarven Gemstone
             }
         },
         {
@@ -132,7 +132,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 41724 }, --Dragonmaw Shoulders
                 { id = 41727 }, --Blackheart Armor
                 {},
-                { id = 74, dropRate = 6, container={ 58112 } }, --Pattern: Dragonmaw Gloves
+                { id = 74, dropRate = 6, container = { 58112 } }, --Pattern: Dragonmaw Gloves
                 {},
                 { id = 41841, dropRate = 100 }, --Blackheart's Head
             }
@@ -148,7 +148,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 41722 }, --Rockspeaker Bracers
                 { id = 41723 }, --Cudgel of Binding
                 {},
-                { id = 31, dropRate=6 }, --Formula: Enchant Boots - Lesser Intellect
+                { id = 31, dropRate = 6 }, --Formula: Enchant Boots - Lesser Intellect
             }
         },
         {
@@ -157,7 +157,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
             name = L["Chest of Dathronag"],
             color = "|cff00FF00",
             loot = {
-                { id = 41875, disc=L["Quest Item"], dropRate=100 }, --Fragment of Dathronag
+                { id = 41875, disc = L["Quest Item"], dropRate = 100 }, --Fragment of Dathronag
             }
         },
         {
@@ -190,8 +190,8 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 {},
                 { id = 41895, dropRate = 1.5, container={58234,58235,58236} }, --Shard of the Demon Soul
                 {},
-                { id = 41711, dropRate = 100 }, --Letter from Korlag Doomsong
-                { id = 41981, container = {41982}, dropRate = 100 }, --Letter from Korlag Doomsong 'ally'
+                { id = 41711, container = {41713, 41714, 41715}, dropRate = 100 }, --Letter from Korlag Doomsong
+                { id = 41981, container = {41982, 41713, 41714, 41715}, dropRate = 100 }, --Letter from Korlag Doomsong 'ally'
             }
         },
         {

@@ -21,6 +21,9 @@ function AtlasLoot_InvalidateCategorizedList(key)
 	end
 end
 
+-- Предварительное объявление, чтобы использовать функцию до её определения
+local _GetInstanceKeyByName
+
 --[[
 Displays the WishList
 ]]
@@ -121,7 +124,7 @@ end
 
 -- Миграция на хранение instance как ключ инстанса и корректный sourcePage
 -- Вспомогательная функция: получить ключ инстанса по имени или вернуть ключ как есть
-local function _GetInstanceKeyByName(instName)
+_GetInstanceKeyByName = function(instName)
 	if not instName or instName == "" then return nil end
 	if AtlasTW and AtlasTW.InstanceData then
 		if AtlasTW.InstanceData[instName] then return instName end
@@ -210,19 +213,19 @@ local function GetProfessionByLootPageKey(pageKey)
 
 	-- Сопоставление ключей таблиц меню к локализованным названиям профессий
 	local ProfByTableKey = {
-		Alchemy = BS and BS["Alchemy"] or "Alchemy",
-		Smithing = BS and BS["Blacksmithing"] or "Blacksmithing",
-		Enchanting = BS and BS["Enchanting"] or "Enchanting",
-		Engineering = BS and BS["Engineering"] or "Engineering",
-		Leatherworking = BS and BS["Leatherworking"] or "Leatherworking",
-		Mining = BS and BS["Mining"] or "Mining",
-		Tailoring = BS and BS["Tailoring"] or "Tailoring",
-		Jewelcrafting = BS and BS["Jewelcrafting"] or "Jewelcrafting",
-		Cooking = BS and BS["Cooking"] or "Cooking",
-		FirstAid = BS and BS["First Aid"] or "First Aid",
-		Poisons = BS and BS["Poisons"] or "Poisons",
-		Herbalism = BS and BS["Herbalism"] or "Herbalism",
-		Survival = BS and BS["Survival"] or "Survival",
+		Alchemy = BS["Alchemy"] or "Alchemy",
+		Smithing = BS["Blacksmithing"] or "Blacksmithing",
+		Enchanting = BS["Enchanting"] or "Enchanting",
+		Engineering = BS["Engineering"] or "Engineering",
+		Leatherworking = BS["Leatherworking"] or "Leatherworking",
+		Mining = BS["Mining"] or "Mining",
+		Tailoring = BS["Tailoring"] or "Tailoring",
+		Jewelcrafting = BS["Jewelcrafting"] or "Jewelcrafting",
+		Cooking = BS["Cooking"] or "Cooking",
+		FirstAid = BS["First Aid"] or "First Aid",
+		Poisons = BS["Poisons"] or "Poisons",
+		Herbalism = BS["Herbalism"] or "Herbalism",
+		Survival = BS["Survival"] or "Survival",
 	}
 
 	-- Локальный помощник: безопасный проход по разреженным массивам
@@ -279,7 +282,6 @@ local function GetProfessionByLootPageKey(pageKey)
 	end
 
 	-- 3) Фоллбек на префиксы (как было раньше), если не нашли в MenuData
-	-- Используем string.sub, т.к. string.match не поддерживается в WoW 1.12
 	if string.sub(pageKey, 1, 11) == "Engineering" then return BS and BS["Engineering"] or "Engineering" end
 	if string.sub(pageKey, 1, 10) == "Enchanting" then return BS and BS["Enchanting"] or "Enchanting" end
 	if string.sub(pageKey, 1, 9) == "Tailoring" then return BS and BS["Tailoring"] or "Tailoring" end
@@ -369,14 +371,25 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 	end
 
  	-- Сохраняем в список желаний
- 	table.insert(AtlasTWCharDB.WishList, record)
+	table.insert(AtlasTWCharDB.WishList, record)
 
- 	-- Раньше здесь происходило переключение на страницу WishList.
- 	-- Больше не переключаемся автоматически. Обновляем только если сейчас открыта страница WishList
- 	if AtlasLootItemsFrame and AtlasLootItemsFrame.storedBoss and AtlasLootItemsFrame.storedBoss.name == "WishList" then
- 		AtlasLoot_ShowWishList()
- 	end
- end
+	-- Сообщение в чат о добавлении
+	if name and name ~= "" then
+		print(name..L[" added to the WishList."])
+	else
+		print(tostring(actualItemID)..L[" added to the WishList."])
+	end
+
+	-- Инвалидация кэша категорий для списка желаний
+	if AtlasLoot_InvalidateCategorizedList then
+		AtlasLoot_InvalidateCategorizedList("WishList")
+	end
+
+	-- Обновляем только если сейчас открыта страница WishList
+	if AtlasLootItemsFrame and AtlasLootItemsFrame.storedBoss and AtlasLootItemsFrame.storedBoss.name == "WishList" then
+		AtlasLoot_ShowWishList()
+	end
+end
 
 --[[
 Group items with zone/event name etc, and format them by adding subheadings and empty lines
@@ -387,6 +400,22 @@ function AtlasLoot_CategorizeWishList(wishList)
 	local result = {}
 
 	if not wishList then return result end
+	-- Используем кэш для WishList/SearchResult
+	local cacheKey = nil
+	if AtlasTWCharDB then
+		if wishList == AtlasTWCharDB.WishList then
+			cacheKey = "WishList"
+		elseif wishList == AtlasTWCharDB.SearchResult then
+			cacheKey = "SearchResult"
+		end
+	end
+	if cacheKey and AtlasTW and AtlasTW._CatCache and AtlasTW._CatRev then
+		local currRev = AtlasTW._CatRev[cacheKey] or 0
+		local c = AtlasTW._CatCache[cacheKey]
+		if c and c.rev == currRev and c.data then
+			return c.data
+		end
+	end
 
 	-- Проходим по списку без сортировки и добавляем заголовки при смене категории
 	local lastCategoryKey = nil
@@ -524,6 +553,12 @@ function AtlasLoot_CategorizeWishList(wishList)
 	end
 
 	--collectgarbage()
+	-- Сохраняем результат в кэш
+	if cacheKey then
+		if not AtlasTW._CatCache then AtlasTW._CatCache = {} end
+		if not AtlasTW._CatRev then AtlasTW._CatRev = {} end
+		AtlasTW._CatCache[cacheKey] = { data = result, rev = AtlasTW._CatRev[cacheKey] or 0 }
+	end
 	return result
 end
 
@@ -551,6 +586,8 @@ function AtlasLoot_DeleteFromWishList(elemID)
 	if not AtlasTWCharDB or not AtlasTWCharDB.WishList then return end
 
 	local removed = false
+	local removedName = nil
+	local removedType = nil
 	local newList = {}
 	for i = 1, table.getn(AtlasTWCharDB.WishList) do
 		local v = AtlasTWCharDB.WishList[i]
@@ -560,15 +597,32 @@ function AtlasLoot_DeleteFromWishList(elemID)
 				table.insert(newList, v)
 			else
 				removed = true
+				removedType = v.type or v[4] or "item"
+				-- Получим имя до удаления
+				if removedType == "spell" then
+					if AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[vId] then
+						removedName = AtlasTW.SpellDB.craftspells[vId].name
+					end
+				elseif removedType == "enchant" then
+					if AtlasTW.SpellDB and AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[vId] then
+						removedName = AtlasTW.SpellDB.enchants[vId].name
+					end
+				else
+					removedName = GetItemInfo(vId)
+				end
 			end
 		end
 	end
 	AtlasTWCharDB.WishList = newList
 
 	if removed then
-		print("Удалено из списка желаний: "..elemID)
+		if removedName and removedName ~= "" then
+			print(removedName..L[" deleted from the WishList."])
+		else
+			print(tostring(elemID)..L[" deleted from the WishList."])
+		end
 	else
-		print("Элемент не найден в списке желаний: "..elemID)
+		print(tostring(elemID)..L[" not found in the WishList."])
 	end
 
 	-- Обновляем отображение
