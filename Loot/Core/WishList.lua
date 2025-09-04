@@ -335,6 +335,25 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 	local currentElement = elemFromSearch
 	local currentInstanceKey = instKeyFromSearch
 
+	-- Нормализация: если element пришёл как таблица (например, { menuName = ... })
+	if type(currentElement) == "table" then
+		if currentElement.menuName then
+			currentElement = currentElement.menuName
+		elseif currentElement.name then
+			currentElement = currentElement.name
+		else
+			currentElement = tostring(currentElement)
+		end
+	end
+
+	-- Фоллбек UI: если контекст не передан, а сейчас открыта страница лута босса — используем её
+	if (not currentElement or currentElement == "") and (not currentInstanceKey or currentInstanceKey == "") then
+		if AtlasLootItemsFrame and AtlasLootItemsFrame.StoredElement and AtlasLootItemsFrame.StoredMenu then
+			currentElement = AtlasLootItemsFrame.StoredElement
+			currentInstanceKey = AtlasLootItemsFrame.StoredMenu
+		end
+	end
+
 	-- Если из поиска ничего не пришло, попробуем определить локацию и источник только для предметов
 	if (not currentElement and not currentInstanceKey) and elementType == "item" then
 		local foundElem, foundInst = FindLocationById(actualItemID)
@@ -348,13 +367,13 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 		end
 	end
 
- 	-- Формируем запись для WishList
- 	local record = {
- 		id = actualItemID,
- 		element = currentElement,
- 		instance = currentInstanceKey,
- 		type = elementType,
- 	}
+  	-- Формируем запись для WishList
+  	local record = {
+  		id = actualItemID,
+  		element = currentElement,
+  		instance = currentInstanceKey,
+  		type = elementType,
+  	}
 
 	-- Формируем sourcePage: в приоритете значение, пришедшее из поиска (например, крафтовая страница)
 	if type(srcFromSearch) == "string" and srcFromSearch ~= "" then
@@ -370,6 +389,13 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 		record.sourcePage = currentElement.."|"..currentInstanceKey
 	end
 
+	-- Отладочный вывод для диагностики неверных заголовков
+--[[ 	print("WishList Add: id="..tostring(actualItemID)
+		.." type="..tostring(elementType)
+		.." elem="..tostring(record.element)
+		.." inst="..tostring(record.instance)
+		.." src="..tostring(record.sourcePage))
+ ]]
 	-- Проверка на повторное добавление (по паре type+id)
 	local isDuplicate = false
 	for i = 1, table.getn(AtlasTWCharDB.WishList) do
@@ -391,7 +417,7 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 		return
 	end
 
- 	-- Сохраняем в список желаний
+  	-- Сохраняем в список желаний
 	table.insert(AtlasTWCharDB.WishList, record)
 
 	-- Сообщение в чат о добавлении
@@ -469,8 +495,11 @@ function AtlasLoot_CategorizeWishList(wishList)
 		elseif src and src ~= "" then
 			-- Попробуем извлечь boss|instance из sourcePage
 			local b, ik = AtlasLoot_Strsplit("|", src)
-			-- В AtlasLoot_Strsplit при отсутствии разделителя возвращается таблица {src}; нормализуем к строке
-			if type(b) == "table" then b = b[1] end
+			-- Нормализация: AtlasLoot_Strsplit возвращает таблицу частей
+			if type(b) == "table" then
+				if not ik then ik = b[2] end
+				b = b[1]
+			end
 			if type(ik) == "table" then ik = ik[1] end
 			if (type(ik) == "string" or type(ik) == "number") and ik ~= "" then
 				currentCategory = AtlasLoot_GetWishListSubheadingBoss(b, ik)
@@ -514,7 +543,7 @@ function AtlasLoot_CategorizeWishList(wishList)
 				end
 			end
 			-- Если не удалось вычислить — используем нейтральный заголовок
-			currentCategory = predefinedHeaderName or (L["Search Result"] or "Search Result")
+			currentCategory = predefinedHeaderName or L["Search Result"]
 		end
 
 		-- Предварительно вычислим extratext для формирования ключа категории
@@ -523,6 +552,12 @@ function AtlasLoot_CategorizeWishList(wishList)
 			extratext = GetLootTableParent(elem, inst) or ""
 		elseif src and src ~= "" then
 			local b, ik = AtlasLoot_Strsplit("|", src)
+			-- Нормализация: AtlasLoot_Strsplit возвращает таблицу частей
+			if type(b) == "table" then
+				if not ik then ik = b[2] end
+				b = b[1]
+			end
+			if type(ik) == "table" then ik = ik[1] end
 			if (type(ik) == "string" or type(ik) == "number") and ik ~= "" then
 				extratext = GetLootTableParent(b, ik) or ""
 			else

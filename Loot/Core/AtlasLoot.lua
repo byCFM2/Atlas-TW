@@ -1020,7 +1020,7 @@ function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 	-- Set the loot page name
 	if dataID == "SearchResult" then
 		local text = AtlasTWCharDB and AtlasTWCharDB.LastSearchedText or ""
-		AtlasLoot_LootPageName:SetText(string.format((L["Search Result: %s"] or "Search Result: %s"), text))
+		AtlasLoot_LootPageName:SetText(string.format(L["Search Result: %s"], text))
 	elseif dataID == "WishList" then
 		AtlasLoot_LootPageName:SetText(L["Wish List"] or "Wish List")
 	else
@@ -1058,7 +1058,7 @@ function AtlasLootBoss_OnClick(buttonName)
         if lootTable then
 		   --Store the loot table, boss name and navigation pages
 			AtlasLootItemsFrame.StoredElement = elemName
-			AtlasLootItemsFrame.StoredMenu = nil
+			AtlasLootItemsFrame.StoredMenu = zoneID
             AtlasLootItemsFrame.activeElement = id
 			AtlasLootItemsFrame:Show()
 			AtlasLoot_ShowScrollBarLoading()
@@ -1067,7 +1067,6 @@ function AtlasLootBoss_OnClick(buttonName)
 				-- Update scrollbar
 				AtlasTW.Loot.ScrollBarLootUpdate()
 			end)
-
         else
             AtlasLootItemsFrame:Hide()
             AtlasLootItemsFrame.activeElement = nil
@@ -2205,11 +2204,35 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 			elseif dataID == "SearchResult" then
 				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.itemID))
 			else
-				AtlasLoot_AddToWishlist(this.itemID)
+				-- Передаем контекст босса и инстанса для корректной категоризации в WishList
+				local srcPage = nil
+				if dataID and instanceKeyClick then
+					srcPage = dataID.."|"..instanceKeyClick
+				end
+				AtlasLoot_AddToWishlist(this.itemID, dataID, instanceKeyClick, "item", srcPage)
 			end
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
 			local bossName, instanceKey = AtlasLoot_Strsplit("|", this.sourcePage)
-			if bossName and instanceKey and AtlasLoot_IsLootTableAvailable(bossName) then
+			-- Нормализация результата Strsplit (на старой Lua иногда возвращаются таблицы)
+			if type(bossName) == "table" then bossName = bossName[1] end
+			if type(instanceKey) == "table" then instanceKey = instanceKey[1] end
+			-- if not instanceKey or instanceKey == "" then
+			-- 	print("AtlasLootItem_OnClick: Пустой instanceKey в sourcePage: "..tostring(this.sourcePage))
+			-- end
+			local hasLoot = bossName and instanceKey and GetLootByElemName and GetLootByElemName(bossName, instanceKey)
+			-- Фоллбек: если instanceKey оказался отображаемым именем, а не ключом — конвертируем в ключ
+			if not hasLoot and instanceKey and AtlasTW and AtlasTW.InstanceData and not AtlasTW.InstanceData[instanceKey] then
+				for k, v in pairs(AtlasTW.InstanceData) do
+					if v and v.Name == instanceKey then
+						instanceKey = k
+						break
+					end
+				end
+				if bossName and instanceKey then
+					hasLoot = GetLootByElemName and GetLootByElemName(bossName, instanceKey)
+				end
+			end
+			if hasLoot then
 				-- Устанавливаем целевой босс и инстанс
 				AtlasLootItemsFrame.StoredElement = bossName
 				AtlasLootItemsFrame.StoredMenu = instanceKey
@@ -2282,13 +2305,36 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 			elseif dataID == "SearchResult" then
 				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.elemID))
 			else
-				AtlasLoot_AddToWishlist(this.elemID)
+				-- Передаем контекст босса и инстанса для корректной категоризации в WishList
+				local srcPage = nil
+				if dataID and instanceKeyClick then
+					srcPage = dataID.."|"..instanceKeyClick
+				end
+				AtlasLoot_AddToWishlist(this.elemID, dataID, instanceKeyClick, "enchant", srcPage)
 			end
 		elseif IsControlKeyDown() then
 			DressUpItemLink("item:"..this.itemID..":0:0:0")
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
 			local bossName, instanceKey = AtlasLoot_Strsplit("|", this.sourcePage)
-			if bossName and instanceKey and AtlasLoot_IsLootTableAvailable(bossName) then
+			-- Нормализация результата Strsplit
+			if type(bossName) == "table" then bossName = bossName[1] end
+			if type(instanceKey) == "table" then instanceKey = instanceKey[1] end
+			-- if not instanceKey or instanceKey == "" then
+			-- 	print("AtlasLootEnchant_OnClick: Пустой instanceKey в sourcePage: "..tostring(this.sourcePage))
+			-- end
+			local hasLoot = bossName and instanceKey and GetLootByElemName and GetLootByElemName(bossName, instanceKey)
+			if not hasLoot and instanceKey and AtlasTW and AtlasTW.InstanceData and not AtlasTW.InstanceData[instanceKey] then
+				for k, v in pairs(AtlasTW.InstanceData) do
+					if v and v.Name == instanceKey then
+						instanceKey = k
+						break
+					end
+				end
+				if bossName and instanceKey then
+					hasLoot = GetLootByElemName and GetLootByElemName(bossName, instanceKey)
+				end
+			end
+			if hasLoot then
 				AtlasLootItemsFrame.StoredElement = bossName
 				AtlasLootItemsFrame.StoredMenu = instanceKey
 				if AtlasTW and AtlasTW.DropDowns and AtlasTWOptions then
@@ -2385,13 +2431,36 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 			elseif dataID == "SearchResult" then
 				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.elemID))
 			else
-				AtlasLoot_AddToWishlist(this.elemID)
+				-- Передаем контекст босса и инстанса для корректной категоризации в WishList
+				local srcPage = nil
+				if dataID and instanceKeyClick then
+					srcPage = dataID.."|"..instanceKeyClick
+				end
+				AtlasLoot_AddToWishlist(this.elemID, dataID, instanceKeyClick, "spell", srcPage)
 			end
 		elseif IsControlKeyDown() then
 			DressUpItemLink("item:"..this.itemID..":0:0:0")
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
 			local bossName, instanceKey = AtlasLoot_Strsplit("|", this.sourcePage)
-			if bossName and instanceKey and AtlasLoot_IsLootTableAvailable(bossName) then
+			-- Нормализация результата Strsplit
+			if type(bossName) == "table" then bossName = bossName[1] end
+			if type(instanceKey) == "table" then instanceKey = instanceKey[1] end
+			-- if not instanceKey or instanceKey == "" then
+			-- 	print("AtlasLootSpell_OnClick: Пустой instanceKey в sourcePage: "..tostring(this.sourcePage))
+			-- end
+			local hasLoot = bossName and instanceKey and GetLootByElemName and GetLootByElemName(bossName, instanceKey)
+			if not hasLoot and instanceKey and AtlasTW and AtlasTW.InstanceData and not AtlasTW.InstanceData[instanceKey] then
+				for k, v in pairs(AtlasTW.InstanceData) do
+					if v and v.Name == instanceKey then
+						instanceKey = k
+						break
+					end
+				end
+				if bossName and instanceKey then
+					hasLoot = GetLootByElemName and GetLootByElemName(bossName, instanceKey)
+				end
+			end
+			if hasLoot then
 				AtlasLootItemsFrame.StoredElement = bossName
 				AtlasLootItemsFrame.StoredMenu = instanceKey
 				if AtlasTW and AtlasTW.DropDowns and AtlasTWOptions then
@@ -2715,13 +2784,18 @@ function AtlasLoot_ContainerItem_OnClick(arg1) --TODO need CHECK
 	elseif(IsAltKeyDown() and (itemID ~= 0)) then
 		local ElemName = AtlasLootItemsFrame.StoredElement
 		local ElemLoot = GetLootByElemName(ElemName)
+		local instKey = AtlasLootItemsFrame and AtlasLootItemsFrame.StoredMenu or nil
 
 		if ElemName == "WishList" then
 			AtlasLoot_DeleteFromWishList(this.itemID)
 		elseif ElemName == "SearchResult" then
 			AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(itemID))
 		else
-			AtlasLoot_AddToWishlist(itemID)
+			local srcPage = nil
+			if ElemName and instKey then
+				srcPage = ElemName.."|"..instKey
+			end
+			AtlasLoot_AddToWishlist(itemID, ElemName, instKey, "item", srcPage)
 		end
 	end
 end

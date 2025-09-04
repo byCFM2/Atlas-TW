@@ -821,6 +821,7 @@ AtlasTW.Local.Translations = {
 	["Loot"] = true,
 	["WishList"] = true,
 	["Search Result: %s"] = true,
+	["Search Result"] = true,
 	["Last Result"] = true,
 	["Search options"] = true,
 	["Partial matching"] = true,
