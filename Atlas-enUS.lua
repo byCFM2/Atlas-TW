@@ -166,6 +166,9 @@ AtlasTW.Local.Translations = {
 	["Instances"] = true,
 	["Key"] = true,
 	["Key to Stormwrought Castle"] = true,
+	["The Scepter of Medivh"] = true,
+	["Upper Karazhan Tower Key"] = true,
+	["Open Portal"] = true,
 	["Meeting Stone"] = true,
 	["Moonwell"] = true,
 	["Neutral"] = true,
@@ -185,7 +188,6 @@ AtlasTW.Local.Translations = {
 	["Wanders"] = true,
 	["Severs"] = true,
 	["Need quest"] = true,
-
 
 	--Instance names and acronyms
 	["Armory"] = true,

@@ -23,6 +23,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
     DamageType = L["Shadow"], L["Fire"], L["Arcane"],
     Keys = {
         { name = L["Upper Karazhan Tower Key"], loot = "VanillaKeys", info = L["Quests"] },
+        { name = L["The Scepter of Medivh"], loot = "VanillaKeys", info = "6+" },
 },
     Entrances = {
         { letter = "A".." "..L["Entrance"] },

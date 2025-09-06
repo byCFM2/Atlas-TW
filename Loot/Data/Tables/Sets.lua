@@ -12,27 +12,27 @@ AtlasLoot_Data = AtlasLoot_Data or {}
 
 local Sets = {}
 
-Sets = { --TODO source for variable set items, boss etc
+Sets = {
 	VanillaKeys = {
 		{ name = L["Key"] },
-		{ id = 16309}, -- Drakefire Amulet
-		{ id = 12344}, -- Seal of Ascension
-		{ id = 17191}, -- Scepter of Celebras
-		{ id = 7146}, -- The Scarlet Key
-		{ id = 12382}, -- Key to the City
-		{ id = 6893}, -- Workshop Key
-		{ id = 11000}, -- Shadowforge Key
-		{ id = 11140}, -- Prison Cell Key
-		{ id = 18249}, -- Crescent Key
-		{ id = 13704}, -- Skeleton Key
-		{ id = 11197}, -- Dark Keeper Key
-		{ id = 18266}, -- Gordok Inner Door Key
-		{ id = 18268}, -- Gordok Courtyard Key
-		{ id = 13873},
+		{ id = 16309, disc = L["Key"] }, -- Drakefire Amulet
+		{ id = 12344, disc = L["Key"] }, -- Seal of Ascension
+		{ id = 17191, disc = L["Open Portal"] }, -- Scepter of Celebras
+		{ id = 7146 }, -- The Scarlet Key
+		{ id = 12382 }, -- Key to the City
+		{ id = 6893 }, -- Workshop Key
+		{ id = 11000 }, -- Shadowforge Key
+		{ id = 11140 }, -- Prison Cell Key
+		{ id = 18249 }, -- Crescent Key
+		{ id = 13704 }, -- Skeleton Key
+		{ id = 11197 }, -- Dark Keeper Key
+		{ id = 18266 }, -- Gordok Inner Door Key
+		{ id = 18268 }, -- Gordok Courtyard Key
+		{ id = 13873 },
 		{ name = L["Misc"] }, --16
 		{ id = 19931, disc = L["Used to summon boss"] },
 		{ id = 9240, disc = L["Used to summon boss"] },
-		{ id = 18250, disc = L["Key"] },
+		{ id = 18250 },
 		{ id = 17333, disc = L["Used to summon boss"] },
 		{ id = 22754, disc = L["Used to summon boss"] },
 		{ id = 13523, disc = L["Used to summon boss"] },
@@ -44,10 +44,11 @@ Sets = { --TODO source for variable set items, boss etc
 		{ name = L["Tier 0.5"] },
 		{ id = 22057, disc = L["Used to summon boss"] },
 		{ id = 21986, disc = L["Used to summon boss"] },-- 30
-		{ id = 61234},--key 31
-		{ id = 51356},
-		{ id = 41876},--Lower Reserve Key
-		{ id = 41913},--Key to Stormwrought Castle
+		{ id = 61234}, --Upper Karazhan Tower Key
+		{ id = 51356}, --Karazhan Crypt Key
+		{ id = 41415, disc = L["Open Portal"]}, --The Scepter of Medivh
+		{ id = 41876}, --Lower Reserve Key
+		{ id = 41913}, --Key to Stormwrought Castle
 	},
 	Stormreaver = { --1.18
 		{ name = BIS["Stormreaver Attire"] },

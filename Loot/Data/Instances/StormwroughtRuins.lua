@@ -37,7 +37,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58137 }, -- Netherbranch
                 { id = 58177 }, -- Stormreaver Robe
                 {},
-                { id = 41797, dropRate = 100 }, -- The Pendant of Uth'okk
+                { id = 41797, dropRate = 100, container = { 41798 } }, -- The Pendant of Uth'okk
 }
 },
         {
@@ -77,8 +77,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58144 }, -- Vander Legguards
                 { id = 58145 }, -- Light's Sermon
                 {},
-                { id = 41857, dropRate = 100 }, -- Balor Sigil Ring
-                { id = 41937, dropRate = 100, disc = L["Quest Item"] }, -- Balor Sigil Ring
+                { id = 41857, container = { 58073 }, dropRate = 100 }, -- Balor Sigil Ring
                 { id = 41921, container = { 58261, 58262 }, dropRate = 100 }, -- Crown of Balor
 }
 },
@@ -140,7 +139,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58181 }, -- Fungal Threads
                 { id = 58182 }, -- Rusted Anchor
                 {},
-                { id = 41926, dropRate = 100 }, -- Heart of Mycellakos
+                { id = 41926, dropRate = 100, container = { 58268, 58269, 58270 } }, -- Heart of Mycellakos
 }
 },
         {
@@ -173,7 +172,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
             prefix = "11)",
             name = BB["Ighal'for"],--38
             loot = {
-                { id = 41939, dropRate = 100 }, -- Broken Bloodstone Pendant
+                { id = 41939, dropRate = 100, container = { 58277, 58278 } }, -- Broken Bloodstone Pendant
 },
 },
         {
@@ -212,32 +211,33 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             id = "SRTrash",
             name = L["Trash Mobs"].."-"..BZ["Stormwrought Ruins"],
-            defaults = { dropRate = .11 },
+            defaults = { dropRate = .02 },
             loot = {
-                { id = 70113, dropRate = .02, container = { 56040 } }, -- Plans: Gleaming Silver Necklace
-                { id = 58178 }, -- Stormreaver Boots
-                { id = 58131 }, -- Stormreaver Belt
-        		{ id = 1992, dropRate = .02 }, -- Swampchill Fetish
-        		{ id = 2262, dropRate = .02 }, -- Mark of Kern
-                { id = 5756, dropRate = .02 }, -- Sliverblade
-                { id = 5819, dropRate = .02 }, -- Sunblaze Coif
-                { id = 7727, dropRate = .02 }, -- Watchman Pauldrons
+                { id = 70113, container = { 56040 } }, -- Plans: Gleaming Silver Necklace
+                { id = 58178, dropRate = .11 }, -- Stormreaver Boots
+                { id = 58131, dropRate = .11 }, -- Stormreaver Belt
+        		{ id = 1992 }, -- Swampchill Fetish
+        		{ id = 2262 }, -- Mark of Kern
+                { id = 5756 }, -- Sliverblade
+                { id = 5819 }, -- Sunblaze Coif
+                { id = 7727 }, -- Watchman Pauldrons
                 { id = 7728, dropRate = .04 }, -- Beguiler Robes
-                { id = 7729, dropRate = .02 }, -- Chesterfall Musket
-                { id = 7730, dropRate = .02 }, -- Cobalt Crusher
-                { id = 7736, dropRate = .02 }, -- Fight Club
-                { id = 7752, dropRate = .02 }, -- Dreamslayer
-                { id = 7753, dropRate = .02 }, -- Bloodspiller
+                { id = 7729 }, -- Chesterfall Musket
+                { id = 7730 }, -- Cobalt Crusher
+                { id = 7736 }, -- Fight Club
+                { id = 7752 }, -- Dreamslayer
+                { id = 7753 }, -- Bloodspiller
                 { id = 7754, dropRate = .01 }, -- Harbinger Boots
-                { id = 7755, dropRate = .02 }, -- Flintrock Shoulders
-                { id = 7757, dropRate = .02 }, -- Windweaver Staff
-                { id = 7759, dropRate = .02 }, -- Archon Chestpiece
-                { id = 7760, dropRate = .02 }, -- Warchief Kilt
-                { id = 7761, dropRate = .02 }, -- Steelclaw Reaver
-                { id = 7786, dropRate = .02 }, -- Headsplitter
-                { id = 7787, dropRate = .02 }, -- Resplendent Guardian
-                { id = 8225, dropRate = .02 }, -- Tainted Pierce
-                { id = 8226, dropRate = .02 }, -- The Butcher
+                { id = 7755 }, -- Flintrock Shoulders
+                { id = 7757 }, -- Windweaver Staff
+                { id = 7759 }, -- Archon Chestpiece
+                { id = 7760 }, -- Warchief Kilt
+                { id = 7761 }, -- Steelclaw Reaver
+                { id = 7786 }, -- Headsplitter
+                { id = 7787 }, -- Resplendent Guardian
+                { id = 8225 }, -- Tainted Pierce
+                { id = 8226 }, -- The Butcher
+                { id = 41941, dropRate = 70, disc = L["Quest Item"] }, -- Balorian Treasure
 }
 },
         { name = BIS["Stormreaver Attire"], items = "Stormreaver" },

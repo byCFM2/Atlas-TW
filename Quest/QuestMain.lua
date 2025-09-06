@@ -49,29 +49,6 @@ function AtlasTW.Quest.HideAtlasLootFrame()
 	end
 end
 
--- Function to get quest data from the new format
------------------------------------------------------------------------------
-local function kQGetQuestData(instance, questId, faction, field)
-    -- Default to current instance and quest if not provided
-    instance = instance or AtlasTW.QCurrentInstance
-    questId = questId or AtlasTW.QCurrentQuest
-    faction = faction or (AtlasTW.isHorde and "Horde" or "Alliance")
-
-    -- Ensure AtlasTW.Quest.DataBase is available
-    if not AtlasTW.Quest.DataBase or not AtlasTW.Quest.DataBase[instance] or
-       not AtlasTW.Quest.DataBase[instance] or
-       not AtlasTW.Quest.DataBase[instance][faction] or
-       (questId and not AtlasTW.Quest.DataBase[instance][faction][questId]) then
-        return nil
-    end
-
-    if (field or "Title") then
-        return AtlasTW.Quest.DataBase[instance][faction][questId][field]
-    end
-    -- Field wasn't found
-    return nil
-end
-
 -----------------------------------------------------------------------------
 -- Helper function to check if a quest exists
 -- Returns true if quest exists, false otherwise
@@ -108,7 +85,7 @@ local function kQCompareQuestLogtoQuest(questId)
     local faction = AtlasTW.isHorde and "Horde" or "Alliance"
     local questData = instanceData[faction] and instanceData[faction][targetQuest]
 
-    if not questData or not questData.Title then
+    if questData and not questData.Title then
         return false
     end
 
@@ -456,6 +433,8 @@ function AtlasTW.Quest.SetQuestButtons()
     if questCount then
         if questCount == 1 then
             questCount = "1 Quest"
+        elseif questCount == 0 then
+            questCount = nil
         else
             questCount = questCount .. " Quests"
         end
@@ -469,15 +448,15 @@ function AtlasTW.Quest.SetQuestButtons()
              -- Define keys for current faction (for both formats)
             local finishedKey = "Completed_"..instance.."_Quest_"..b.."_"..faction
             -- Get quest data
-            questName = kQGetQuestData(instance, b, faction, "Title")
-            local followQuest = kQGetQuestData(instance, b, faction, "Folgequest")
-            local preQuest = kQGetQuestData(instance, b, faction, "Prequest")
-            local questLevel = tonumber(kQGetQuestData(instance, b, faction, "Level"))
+            questName = AtlasTW.Quest.DataBase[instance][faction][b].Title
+            local followQuest = AtlasTW.Quest.DataBase[instance][faction][b].Folgequest
+            local preQuest = AtlasTW.Quest.DataBase[instance][faction][b].Prequest
+            local questLevel = tonumber(AtlasTW.Quest.DataBase[instance][faction][b].Level)
             -- Set quest line arrows
             local arrowTexture
-            if preQuest ~= "No" then
+            if preQuest and preQuest ~= "No" then
                 arrowTexture = "Interface\\Glues\\Login\\UI-BackArrow"
-            elseif followQuest ~= "No" then
+            elseif followQuest and followQuest ~= "No" then
                 arrowTexture = "Interface\\GossipFrame\\PetitionGossipIcon"
             end
             -- Check for completed quests
@@ -520,7 +499,7 @@ function AtlasTW.Quest.SetQuestButtons()
             end
 			-- Activate button and set text
             AtlasTW.Quest.UI_Main.QuestButtons[b].Button:Enable()
-            AtlasTW.Quest.UI_Main.QuestButtons[b].Text:SetText(kQQuestColor..questName)
+            AtlasTW.Quest.UI_Main.QuestButtons[b].Text:SetText(kQQuestColor..b..") "..questName)
 	    else
 			-- Deactivate button if quest doesn't exist
             AtlasTW.Quest.UI_Main.QuestButtons[b].Button:Disable()

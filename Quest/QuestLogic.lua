@@ -108,7 +108,7 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
                       AtlasTW.Quest.DataBase[instance][faction] and
                       AtlasTW.Quest.DataBase[instance][faction][AtlasTW.QCurrentQuest]
 
-    if not questData or not questData.Rewards then
+    if questData and not questData.Rewards then
         return
     end
 
@@ -119,8 +119,7 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
     end
 
     -- Extract item data
-    local itemId = rewardItem.ID
-    local itemColor = rewardItem.Color or white
+    local itemId = rewardItem.id
 
     -- Handle right click - show tooltip
     if mouseButton == "RightButton" then
@@ -129,7 +128,7 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
         AtlasTW.Quest.Tooltip:Show()
         if not AtlasTWOptions.QuestQuerySpam then
             print(string.format("%s[%s%s%s]%s",
-                L["AtlasQuest is querying the server for: "], itemColor, rewardItem.Name, white, L[" Please click right until you see the Item frame."]))
+                L["AtlasQuest is querying the server for: "], white, L["Item not found in cache"], white, L[" Please click right until you see the Item frame."]))
         end
         return
     end
@@ -140,16 +139,21 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
             local _, _, _, hex = GetItemQualityColor(itemQuality)
             local itemLink = string.format("%s|Hitem:%d:0:0:0|h[%s]|h|r",
                 hex, itemId, itemName)
-            ChatFrameEditBox:Insert(itemLink)
+            if WIM_EditBoxInFocus then
+                WIM_EditBoxInFocus:Insert(itemLink)
+            else
+                ChatFrameEditBox:Insert(itemLink)
+            end
         else
             print("Item unsafe! Right click to get the item ID")
-            ChatFrameEditBox:Insert(string.format("[%s]", rewardItem.Name))
+            ChatFrameEditBox:Insert(string.format("[%s]", L["Item not found in cache"]))
         end
         return
     end
     -- Handle control click - dress up item
     if IsControlKeyDown() and GetItemInfo(itemId) then
         DressUpItemLink(itemId)
+        return
     end
 end
 
@@ -172,8 +176,8 @@ local function atlasTWQuestInsertQuestLink()
 
     if questData and questData.Title then
         local questName = questData.Title
-        local levelPattern = "^%d+%. "
-        questName = string.gsub(questName, levelPattern, "")
+--        local levelPattern = "^%d+%) "
+--        questName = string.gsub(questName, levelPattern, "")
         if pfQuestCompat then
             pfQuestCompat.InsertQuestLink(0,questName)
         else

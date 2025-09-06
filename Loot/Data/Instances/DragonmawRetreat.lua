@@ -23,7 +23,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         { letter = "B)"..L["Exit"] }
 },
     Keys = {
-        { name = L["Lower Reserve Key"], loot = "VanillaKeys", info = "8+" },
+        { name = L["Lower Reserve Key"], loot = "VanillaKeys", info = "9+" },
 },
     Bosses = {
         {
@@ -134,7 +134,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 {},
                 { id = 74, dropRate = 6, container = { 58112 } }, -- Pattern: Dragonmaw Gloves
                 {},
-                { id = 41841, dropRate = 100 }, -- Blackheart's Head
+                { id = 41841, dropRate = 100, container = { 41842, 41843, 41844 } }, -- Blackheart's Head
 }
 },
         {
@@ -213,6 +213,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 58114, dropRate = .11 }, -- Dragonmaw Leggings
                 { id = 58115, dropRate = .11 }, -- Dragonmaw Greaves
                 { id = 70119, container = { 56046 } }, -- Plans: Circlet of Dampening
+                { id = 41825, container = { 41826, 41827, 41828 }, dropRate = 50 }, -- Stone Golem Runestone from Crumbling Stone Golem
 },
 },
         { name = BIS["Dragonmaw Battlegarb"], items = "DragonmawBattlegarb" },
