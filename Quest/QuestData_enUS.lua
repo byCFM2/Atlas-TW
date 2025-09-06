@@ -1,8 +1,6 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
-local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
 ---------------
 --- COLOURS ---
 ---------------
@@ -21,7 +19,7 @@ local purple = "|cffa335ee"
 
 local kQuestInstanceData = {}
 
---------------- INST1 - The Deadmines ---------------
+--------------- The Deadmines ---------------
 kQuestInstanceData.TheDeadmines = {
     Story = "Once the greatest gold production center in the human lands, the Dead Mines were abandoned when the Horde razed Stormwind city during the First War. Now the Defias Brotherhood has taken up residence and turned the dark tunnels into their private sanctum. It is rumored that the thieves have conscripted the clever goblins to help them build something terrible at the bottom of the mines - but what that may be is still uncertain. Rumor has it that the way into the Deadmines lies through the quiet, unassuming village of Moonbrook.",
     Caption = "The Deadmines",
@@ -5849,7 +5847,7 @@ kQuestInstanceData.StormwindVault.Horde[1] = kQuestInstanceData.StormwindVault.A
 kQuestInstanceData.StormwindVault.Horde[2] = kQuestInstanceData.StormwindVault.Alliance[2]
 kQuestInstanceData.StormwindVault.Horde[3] = kQuestInstanceData.StormwindVault.Alliance[3]
 
---------------- INST58 - Ostarius ---------------
+--------------- Ostarius ---------------
 kQuestInstanceData.Ostarius = {
     Story = "",
     Caption = "Ostarius",
@@ -5875,7 +5873,7 @@ kQuestInstanceData.Ostarius.Horde[1] = {
     Prequest = "1.The Lone Wolf -> 2.Scarms of the Past --> 7.Uldum Awaits",
 }
 
---------------- INST61 - Gilneas City ---------------
+--------------- Gilneas City ---------------
 kQuestInstanceData.GilneasCity = {
     Story = "Gilneas City is an instance dungeon located in Gilneas. Located at the heart of this once-isolated land, Gilneas City was once a bastion of hope for its people. Established after breaking free from the rule of the Arathorian lords, it stood as a symbol of resilience and prosperity. However, it is now a mere shell of its former beauty, with a dark presence casting a gripping shadow over Gilneas and serving as a reminder of its once glorious past. Distant howls echo through the city, haunting reminders of its new occupants. Yet, there is a possibility that not everyone is gone and that their accursed king may still live.",
     Caption = "Gilneas City",
@@ -6112,9 +6110,9 @@ kQuestInstanceData.GilneasCity.Horde[9] = {
     Folgequest = "Pricolich Lycan",
 }
 
---------------- INST62 - Lower Karazhan Halls ---------------
+--------------- Lower Karazhan Halls ---------------
 kQuestInstanceData.LowerKarazhan = {
-    Story = "",
+    Story = "Lower Karazhan Halls is an instance raid located in Deadwind Pass. Karazhan, once the towering stronghold of the former Guardian of Tirisfal, now hums with magical energy as it perches atop a powerful leyline. Its long-forgotten corridors, covered in dust, have become a haven for various creatures, though it appears that not all of its inhabitants have willingly departed. In the depths of the lower halls, Medivh's loyal castellan, Moroes, remains a vigilant guardian. If you manage to impress him, he may grant you access to the upper floors.",
     Caption = "Lower Karazhan Halls",
     Alliance = {},
     Horde = {}
@@ -6392,9 +6390,9 @@ kQuestInstanceData.EmeraldSanctum.Horde[1] = kQuestInstanceData.EmeraldSanctum.A
 kQuestInstanceData.EmeraldSanctum.Horde[2] = kQuestInstanceData.EmeraldSanctum.Alliance[2]
 kQuestInstanceData.EmeraldSanctum.Horde[3] = kQuestInstanceData.EmeraldSanctum.Alliance[3]
 
---------------- INST64 - Tower of Karazhan ---------------
+--------------- Tower of Karazhan ---------------
 kQuestInstanceData.TowerofKarazhan = {
-    Story = "",
+    Story = "Tower of Karazhan is an instance raid located in Deadwind Pass. Karazhan, once the towering stronghold of the former Guardian of Tirisfal, now hums with magical energy as it perches atop a powerful leyline. Its long-forgotten corridors, covered in dust, have become a haven for various creatures, though it appears that not all of its inhabitants have willingly departed.",
     Caption = "Tower of Karazhan",
     Alliance = {},
     Horde = {}
@@ -6508,7 +6506,7 @@ kQuestInstanceData.TowerofKarazhan.Horde[8] = kQuestInstanceData.TowerofKarazhan
 kQuestInstanceData.TowerofKarazhan.Horde[9] = kQuestInstanceData.TowerofKarazhan.Alliance[9]
 --------------- Dragonmaw Retreat ---------------
 kQuestInstanceData.DragonmawRetreat = {
-    Story = "",
+    Story = "Dragonmaw Retreat is an instance dungeon that is located in the Wetlands. Fragments of an older yet unknown dwarven civilization, these caverns were used as part of the mining networks of Grim Batol. Since its second abandonment, the Dragonmaw have carved this forgotten network into a base of operations. Now in possession of a shard of the Demon Soul, they'll stop at nothing to take back the Wetlands and the Grim Reaches with the help of their army of entranced red dragons.",
     Caption = BZ["Dragonmaw Retreat"],
     Alliance = {},
     Horde = {}
@@ -6566,7 +6564,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[5] = {
     Location = "Nydiszanz (Wetlands - Dragonmaw Gates "..yellow.."74,48"..white..")",
     Note = "'Whelps' and 'Searistrasz' [8] "..yellow.."55,35",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = blue.."Reward: Pick One",
         { id = 41831 }, --Runebound Dagger
         { id = 41832 }, --Flameweave Sash
         { id = 41833 }, --Cuffs of Burning Rage

@@ -257,18 +257,6 @@ local function kQuestGetItemInf(count)
 end
 
 -----------------------------------------------------------------------------
--- get reward info
------------------------------------------------------------------------------
-local function getRewardItemData(questData, itemIndex, field)
-    if questData and questData.Rewards and
-        questData.Rewards[itemIndex] and
-        questData.Rewards[itemIndex][field] then
-        return questData.Rewards[itemIndex][field]
-    end
-    return nil --print("AtlasTW: Failed with getRewardItemData.")
-end
-
------------------------------------------------------------------------------
 -- set the Quest text
 -- executed when you push a button
 -----------------------------------------------------------------------------
