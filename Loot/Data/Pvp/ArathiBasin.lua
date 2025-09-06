@@ -1,5 +1,5 @@
--- ArathiBasin.lua - Данные предметов из Низины Арати
--- Модульная структура данных для Atlas-TW
+-- ArathiBasin.lua - Item data for Arathi Basin
+-- Modular data structure for Atlas-TW
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
@@ -9,7 +9,7 @@ local BF = AceLibrary("Babble-Faction-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
--- Данные Низины Арати
+-- Arathi Basin data
 AtlasTW.InstanceData.BGArathiBasin = {
     Name = BZ["Arathi Basin"],
     Location = BZ["Arathi Highlands"],

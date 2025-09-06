@@ -1,7 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
-    <!-- Основные модули -->
+    <!-- Core modules -->
     <Include file="ItemDB.lua"/>
-    <!-- Данные подземелий -->
+    <!-- Instance data -->
     <Include file="Instances\MoltenCore.lua"/>
     <Include file="Instances\BlackwingLair.lua"/>
     <Include file="Instances\EmeraldSanctum.lua"/>
@@ -40,7 +40,7 @@
     <Include file="Instances\ShadowfangKeep.lua"/>
     <Include file="Instances\StormwroughtRuins.lua"/>
     <Include file="Instances\DragonmawRetreat.lua"/>
-    <!-- Данные мирового контента -->
+    <!-- World content data -->
     <Include file="World\Azuregos.lua"/>
     <Include file="World\FourDragons.lua"/>
     <Include file="World\LordKazzak.lua"/>
@@ -51,7 +51,7 @@
     <Include file="World\Ostarius.lua"/>
     <Include file="World\Clackora.lua"/>
     <Include file="World\RareMobs.lua"/>
-    <!-- Данные с доп информацией -->
+    <!-- Supplementary information -->
     <Include file="Info\FPAllianceEast.lua"/>
     <Include file="Info\FPAllianceWest.lua"/>
     <Include file="Info\FPHordeEast.lua"/>
@@ -59,17 +59,17 @@
     <Include file="Info\TransportRoutes.lua"/>
     <Include file="Info\DLEast.lua"/>
     <Include file="Info\DLWest.lua"/>
-    <!-- Данные PvP -->
+    <!-- PvP data -->
     <Include file="PvP\WarsongGulch.lua"/>
     <Include file="PvP\ArathiBasin.lua"/>
     <Include file="PvP\AlteracValleyNorth.lua"/>
     <Include file="PvP\AlteracValleySouth.lua"/>
     <Include file="PvP\PVPRewards.lua"/>
-    <!-- Другие данные -->
+    <!-- Other data -->
     <Include file="Tables\Spells.lua"/>
     <Include file="Tables\Factions.lua"/>
     <Include file="Tables\Events.lua"/>
     <Include file="Tables\Sets.lua"/>
-    <!-- Данные крафта -->
+    <!-- Crafting data -->
     <Include file="Tables\Crafting.lua"/>
 </Ui>

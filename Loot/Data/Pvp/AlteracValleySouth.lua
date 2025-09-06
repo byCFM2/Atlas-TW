@@ -1,5 +1,5 @@
--- BGAlteracValleySouth.lua - Данные предметов из Альтеракской долины (Южная часть)
--- Модульная структура данных для Atlas-TW
+-- BGAlteracValleySouth.lua - Item data for Alterac Valley (South)
+-- Modular data structure for Atlas-TW
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
@@ -7,14 +7,9 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 
--- Подключаем общий модуль данных репутации
-if not AtlasTW.AlteracValleyReputationData then
-    LoadAddOn("AlteracValleyReputationData")
-end
-
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
--- Данные Альтеракской долины (Юг)
+-- Alterac Valley (South) data
 AtlasTW.InstanceData.BGAlteracValleySouth = {
     Name = BZ["Alterac Valley"] .. " (" .. L["South"] .. ")",
     Location = BZ["Hillsbrad Foothills"],
@@ -235,7 +230,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
     }
 }
 
--- Инициализация предметов для всех наград репутации
+-- Initialize items for all reputation rewards
 for _, rewardData in ipairs(AtlasTW.InstanceData.BGAlteracValleySouth.Bosses) do
     rewardData.items = rewardData.items or AtlasTW.CreateItemsFromLootTable(rewardData)
 end

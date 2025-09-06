@@ -1,5 +1,5 @@
--- ItemDB.lua - Центральная база данных предметов
--- Современная модульная структура для Atlas-TW
+-- ItemDB.lua - Central item database
+-- Modern modular structure for Atlas-TW
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
@@ -94,16 +94,16 @@ local function getColoredText(text, typeText)
     return colorCode..text..COLOR_END
 end
 
--- Кэш для результатов парсинга подсказок
+-- Cache for parsed tooltip results
 local ParsedTooltipCache = {}
 local ParsedTooltipCacheSize = 0
 local MAX_CACHE_SIZE = 200
 
--- Статические reference для оптимизации
+-- Static references for optimization
 local tooltipElementsCache = {}
 local sharedTooltip = nil
 
--- Функция очистки кэша
+-- Cache cleanup function
 local function CleanupTooltipCache()
     if ParsedTooltipCacheSize > MAX_CACHE_SIZE then
         ParsedTooltipCache = {}
@@ -111,21 +111,21 @@ local function CleanupTooltipCache()
     end
 end
 
--- Функция для парсинга подсказки предмета (улучшенная версия)
+-- Function to parse item tooltip (improved version)
 function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     if not itemID or itemID == 0 then
         return extratext or ""
     end
 
-    -- Проверяем, что предмет кэширован
+    -- Ensure the item is cached
     if not GetItemInfo(itemID) then
         return extratext or ""
     end
 
-    -- Создаем ключ для кэша
+    -- Create a cache key
     local cacheKey = itemID .. "_" .. (extratext or "")
 
-    -- Проверяем кэш результатов
+    -- Check cache results
     if ParsedTooltipCache[cacheKey] then
         return ParsedTooltipCache[cacheKey]
     end
@@ -134,7 +134,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
 
     local tooltipName = "AtlasLootHiddenTooltip"
 
-    -- Lazy-инициализация разделяемого тултипа
+    -- Lazy-initialize the shared tooltip
     if not sharedTooltip then
         sharedTooltip = CreateFrame("GameTooltip", tooltipName, UIParent, "GameTooltipTemplate")
         if not sharedTooltip then
@@ -145,11 +145,11 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
 
     local tooltip = sharedTooltip
 
-    -- Быстрая очистка без защиты (оптимизация)
+    -- Fast clear without protection (optimization)
     tooltip:Hide()
     tooltip:ClearLines()
 
-    -- Быстрая установка гиперссылки
+    -- Fast hyperlink setup
     local success = pcall(function()
         tooltip:SetOwner(UIParent, "ANCHOR_NONE")
         tooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
@@ -159,7 +159,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
         return extratext or ""
     end
 
-    -- Проверяем первую строку
+    -- Check the first line
     local firstLine = _G[tooltipName .. "TextLeft1"]
     if not firstLine or not firstLine:GetText() or firstLine:GetText() == "" then
         return extratext or ""
@@ -170,7 +170,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
         table.insert(info, extratext)
     end
 
-    -- Кэшируем элементы UI только при первом доступе
+    -- Cache UI elements on first access only
     if not tooltipElementsCache.initialized then
         tooltipElementsCache.leftElements = {}
         tooltipElementsCache.rightElements = {}
@@ -181,7 +181,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
         tooltipElementsCache.initialized = true
     end
 
-    -- Оптимизированный парсинг
+    -- Optimized parsing
     local parseSuccess = pcall(function()
         local text, text2
 
@@ -194,28 +194,28 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                 if text then
                     text2 = line2 and line2:GetText() or nil
 
-                    -- Быстрые проверки по ключевым словам (без лишних вызовов string.find)
+                    -- Fast keyword checks (avoid extra string.find calls)
                     local lowerText = string.lower(text)
 
-                    -- Предмет для задания
+                    -- Quest item
                     if string.find(text, L["Quest Item"]) then
                         table.insert(info, text)
-                    -- Маунт
+                    -- Mount
                     elseif string.find(lowerText, string.lower(" "..L["Mount"].." ")) then
                         table.insert(info, L["Mount"])
                         break
-                    -- Глиф
+                    -- Glyph
                     elseif string.find(lowerText, string.lower(L["Glyph"])) then
                         table.insert(info, L["Glyph"])
-                    -- Пет
+                    -- Pet (companion)
                     elseif string.find(lowerText, string.lower(" "..L["Companion"].." ")) then
                         table.insert(info, L["Pet"])
-                    -- Начинает задание
+                    -- Starts a quest
                     elseif string.find(text, L["This Item Begins a Quest"]) then
                         table.insert(info, text)
                     end
 
-                    -- Оптимизированная проверка слотов
+                    -- Optimized slot check
                     if AtlasTW.ItemDB.SLOT_KEYWORDS[text] then
                         if text2 and AtlasTW.ItemDB.SLOT2_KEYWORDS[text2] then
                             table.insert(info, getColoredText(text.." "..text2, "slot"))
@@ -228,10 +228,10 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                         else
                             table.insert(info, getColoredText(text, "slot2"))
                         end
-                    -- Классы
+                    -- Classes
                     elseif string.find(text, L["Classes"]) then
                         table.insert(info, getColoredText(text, "class"))
-                    -- Требования
+                    -- Requirements
                     elseif string.find(text, L["Requires"]) then
                         table.insert(info, getColoredText(text, "requires"))
                     end
@@ -240,7 +240,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
         end
     end)
 
-    -- Быстрая очистка
+    -- Fast clear
     tooltip:Hide()
     tooltip:ClearLines()
 
@@ -249,16 +249,16 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
         result = table.concat(info, ", ")
     end
 
-    -- Сохраняем в кэш
+    -- Save to cache
     ParsedTooltipCache[cacheKey] = result
     ParsedTooltipCacheSize = ParsedTooltipCacheSize + 1
 
     return result
 end
 
--- Функция для запуска таймера (исправленная версия)
+-- Timer start function (fixed version)
 function StartTimer(delaySeconds, callbackFunc)
-    -- Создаем уникальный фрейм для каждого таймера
+    -- Create a unique frame for each timer
     local timerFrame = CreateFrame("Frame")
     local startTime = GetTime()
 
@@ -290,7 +290,7 @@ function AtlasLoot_ForceCacheItemWithDelay(itemID, delayBetweenAttempts, maxAtte
         GameTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
         attempts = attempts + 1
         if attempts < maxAttempts then
-            -- Запуск следующей попытки через задержку
+            -- Schedule next attempt after a delay
             StartTimer(delayBetweenAttempts, tryCache)
         else
             return false
@@ -311,7 +311,7 @@ function AtlasLoot_ForceCacheItem(itemID, maxAttempts)
         GameTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
         attempts = attempts + 1
         if attempts < maxAttempts then
-            -- Запуск следующей попытки
+            -- Start next attempt
             tryCache()
         else
             return false
@@ -319,7 +319,7 @@ function AtlasLoot_ForceCacheItem(itemID, maxAttempts)
     end
     tryCache()
 end
--- Функция для кэша предмета по линку или ID
+-- Function to cache an item by link or ID
 function AtlasLoot_CacheItem(linkOrID)
     if not linkOrID or linkOrID == 0 then
         return false
@@ -347,13 +347,13 @@ function AtlasLoot_CacheItem(linkOrID)
     GameTooltip:SetHyperlink(linkOrID)
 end
 
--- Вспомогательная функция для создания предметов из таблицы loot
+-- Helper to create items from a loot table
 function AtlasTW.CreateItemsFromLootTable(bossData)
     if not bossData.loot then return end
     local items = {}
     local defaults = bossData.defaults or {}
     for _, itemData in ipairs(bossData.loot) do
-        -- Применяем значения по умолчанию
+        -- Apply default values
         for key, value in pairs(defaults) do
             if itemData[key] == nil then
                 itemData[key] = value
@@ -364,11 +364,11 @@ function AtlasTW.CreateItemsFromLootTable(bossData)
     return items
 end
 
--- Функция создания нового предмета
+-- Function to create a new item
 function AtlasTW.ItemDB.CreateItem(data)
-    -- Проверяем обязательные поля
+    -- Validate required fields
     if not data.id and not data.name then return nil end
-    -- Устанавливаем значения по умолчанию
+    -- Set default values
     local item = {
         id = data.id,
         name = data.name,
@@ -381,7 +381,7 @@ function AtlasTW.ItemDB.CreateItem(data)
     return item
 end
 
--- Функция создания разделителя/заголовка
+-- Function to create a separator/header
 function AtlasTW.ItemDB.CreateSeparator(text, icon, quality)
     return {
         name = text or "",

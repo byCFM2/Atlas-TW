@@ -3,22 +3,22 @@
 ---------------
 local red = "|cffff0000"
 local blue = "|cff0070dd"
--- Локальные ссылки на глобальные функции для повышения производительности
+-- Local references to global functions for performance
 local _G = getfenv()
 local AtlasTW = _G.AtlasTW
 local L = AtlasTW.Local
 local uIDropDownMenu_SetSelectedID = UIDropDownMenu_SetSelectedID
 
--- Локальные переменные для часто используемых элементов UI
+-- Local variables for frequently used UI elements
 local atlasOptionsFrame, atlasFrame  = AtlasOptionsFrame, AtlasFrame
 
--- Утилитарная функция для округления
+-- Utility function for rounding
 local function round(num, idp)
     local mult = 10 ^ (idp or 0)
     return math.floor(num * mult + 0.5) / mult
 end
 
--- Локальные функции для dropdown меню
+-- Local functions for the dropdown menu
 local function atlasOptionsFrameDropDownCats_OnClick()
     local thisID = this:GetID()
     uIDropDownMenu_SetSelectedID(AtlasOptionsFrameDropDownCats, thisID)
@@ -26,7 +26,7 @@ local function atlasOptionsFrameDropDownCats_OnClick()
     AtlasTWOptions.AtlasZone = 1
     AtlasTWOptions.AtlasType = 1
 
-    -- Обновление интерфейса
+    -- Update the interface
     AtlasTW.PopulateDropdowns()
     AtlasTW.Refresh()
     AtlasTW.FrameDropDownTypeOnShow()
@@ -50,7 +50,7 @@ local function atlasOptionsFrameDropDownCats_Initialize()
     end
 end
 
--- Установка значений по умолчанию
+-- Default settings
 function AtlasTW.OptionDefaultSettings()
     AtlasTWOptions = {
         AtlasButtonPosition = 305,
@@ -106,7 +106,7 @@ function AtlasTW.OptionShowPanelOnClick()
 	AtlasTW.OptionsInit()
 end
 
--- Основные функции переключения опций
+-- Primary option toggle functions
 function AtlasTW.OptionsOnClick()
     if atlasOptionsFrame:IsVisible() then
         atlasOptionsFrame:Hide()
@@ -146,10 +146,10 @@ function AtlasTW.OptionsClampedOnClick()
     AtlasTW.Refresh()
 end
 
--- Инициализация настроек
+-- Initialize options
 function AtlasTW.OptionsInit()
     if not AtlasTWOptions then
-        DEFAULT_CHAT_FRAME:AddMessage(AtlasTW.Name..": Failed to initialize local references.")
+        print(AtlasTW.Name..": Failed to initialize local references.")
         return
     end
     if AtlasTWOptions.QuestWithAtlas then
@@ -157,13 +157,13 @@ function AtlasTW.OptionsInit()
     else
         AtlasTW.Quest.UI_Main.Frame:Hide()
     end
-	--Consult the saved variable table to see whether to show the bottom panel
+	-- Consult the saved variable table to see whether to show the bottom panel
 	if AtlasTWOptions.LootShowPanel then
 		AtlasLootPanel:Show()
 	else
 		AtlasLootPanel:Hide()
 	end
-    -- Установка значений при загрузке
+    -- Set values on load
     AtlasTWOptionToggleButton:SetChecked(AtlasTWOptions.AtlasButtonShown)
     AtlasTWOptionAutoSelect:SetChecked(AtlasTWOptions.AtlasAutoSelect)
     AtlasTWOptionRightClick:SetChecked(AtlasTWOptions.AtlasRightClick)
@@ -203,12 +203,12 @@ function AtlasTW.OptionsInit()
     AtlasTWOptionShowPanel:SetChecked(AtlasTWOptions.LootShowPanel)
 end
 
--- Сброс позиции
+-- Reset position
 function AtlasTW.OptionResetPosition()
     atlasFrame:ClearAllPoints()
     atlasFrame:SetPoint("TOP", 0, -104)
 
-    -- Сброс настроек к значениям по умолчанию
+    -- Reset settings to default values
     AtlasTWOptions.AtlasButtonPosition = 305
     AtlasTWOptions.AtlasButtonRadius = 76
     AtlasTWOptions.AtlasAlpha = 1.0
@@ -217,7 +217,7 @@ function AtlasTW.OptionResetPosition()
     AtlasTW.OptionsInit()
 end
 
--- Обновление слайдера
+-- Update slider
 function AtlasOptions_UpdateSlider(text)
     local sliderName = this:GetName()
     local textElement = _G[sliderName .. "Text"]
@@ -226,7 +226,7 @@ function AtlasOptions_UpdateSlider(text)
     end
 end
 
--- Показ dropdown категорий
+-- Show categories dropdown
 function AtlasTW.OptionFrameDropDownCatsOnShow()
     local dropDownCats = AtlasOptionsFrameDropDownCats
 

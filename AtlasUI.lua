@@ -66,7 +66,7 @@ do
         AtlasTW.ToggleLock()
     end)
 
-    -- Создаем глобальные текстуры
+    -- Create the main textures
     local lockNorm = lockButton:CreateTexture("AtlasLockNorm", "BORDER")
     lockButton:SetNormalTexture(lockNorm)
     lockNorm:SetAllPoints(lockButton)

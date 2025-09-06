@@ -143,9 +143,9 @@ end
 AtlasTW.MenuData.Pre60Sets = {
     { name = BIS["Defias Leather"], extra = "The Deadmines", icon = "Interface\\Icons\\INV_Pants_12", lootpage = "Deadmines" },
     { name = BIS["Embrace of the Viper"], extra = "Wailing Caverns", icon = "Interface\\Icons\\INV_Shirt_16", lootpage = "Wailing" },
-    { name = BIS["Dragonmaw Battlegarb"], extra = "Dragonmaw Retreat", icon = "Interface\\Icons\\inv_helmet_02", lootpage = "DragonmawBattlegarb" }, --TODO Icon
+    { name = BIS["Dragonmaw Battlegarb"], extra = "Dragonmaw Retreat", icon = "Interface\\Icons\\INV_misc_bone_taurenskull_01", lootpage = "DragonmawBattlegarb" },
     { name = BIS["Chain of the Scarlet Crusade"], extra = "Scarlet Monastery", icon = "Interface\\Icons\\INV_Gauntlets_19", lootpage = "Scarlet" },
-    { name = BIS["Stormreaver Attire"], extra = "Stormwrought Ruins", icon = "Interface\\Icons\\inv_helmet_02", lootpage = "Stormreaver" }, --TODO Icon
+    { name = BIS["Stormreaver Attire"], extra = "Stormwrought Ruins", icon = "Interface\\Icons\\INV_Gauntlets_09", lootpage = "Stormreaver" },
     { name = BIS["Greymane Armor"], extra = "Gilneas City", icon = "Interface\\Icons\\inv_helmet_02", lootpage = "GreymaneArmor" },
     { name = BIS["Incendosaur Skin Armor"], extra = "Hateforge Quarry", icon = "Interface\\Icons\\INV_Shoulder_23", lootpage = "IncendosaurSkinArmor" },
     { name = BIS["The Gladiator"], extra = "Blackrock Depths", icon = "Interface\\Icons\\INV_Helmet_01", lootpage = "TheGladiator" },
@@ -153,7 +153,7 @@ AtlasTW.MenuData.Pre60Sets = {
     { name = BIS["The Postmaster"], extra = "Stratholme", icon = "Interface\\Icons\\INV_Boots_02", lootpage = "Strat" },
     { name = BZ["Scholomance"].." "..L["Sets"], extra = "Scholomance", icon = "Interface\\Icons\\INV_Shoulder_02", lootpage = "Scholo" },
     { name = L["Scourge Invasion"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Jewelry_Talisman_13", lootpage = "ScourgeInvasion" },
-    { name = BIS["Arms of Thaurissan"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Weapon_ShortBlade_16", lootpage = "ArmsofThaurissan" }, --TODO ICON, MoltenCore and BRD
+    { name = BIS["Arms of Thaurissan"], Extra = L["Various Locations"], icon = "Interface\\Icons\\spell_fire_flametounge", lootpage = "ArmsofThaurissan" }, --MoltenCore and BRD
     {},
     { name = BIS["Spider's Kiss"], extra = "Lower Blackrock Spire", icon = "Interface\\Icons\\INV_Weapon_ShortBlade_16", lootpage = "SpiderKiss" },
     { name = BIS["Dal'Rend's Arms"], extra = "Upper Blackrock Spire", icon = "Interface\\Icons\\INV_Sword_43", lootpage = "DalRend" },

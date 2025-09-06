@@ -2,14 +2,11 @@
 local L = AtlasTW.Local
 local BS = AceLibrary("Babble-Spell-2.2a")
 
--- Colours stored for code readability
-local GREY = "|cff999999"
-local RED = "|cffff0000"
-local BLUE = "|cff0070dd"
--- Кэш категоризации результатов WishList/SearchResult
+-- Cache for categorizing WishList/SearchResult results
 if not AtlasTW then AtlasTW = {} end
 if not AtlasTW._CatCache then AtlasTW._CatCache = {} end
 if not AtlasTW._CatRev then AtlasTW._CatRev = {} end
+
 function AtlasLoot_InvalidateCategorizedList(key)
 	if not key then return end
 	if not AtlasTW then return end
@@ -21,14 +18,14 @@ function AtlasLoot_InvalidateCategorizedList(key)
 	end
 end
 
--- Предварительное объявление, чтобы использовать функцию до её определения
+-- Forward declaration to use function before its definition
 local _GetInstanceKeyByName
 
 --[[
 Displays the WishList
 ]]
 function AtlasLoot_ShowWishList()
-	-- Инициализируем список желаний, если его нет
+	-- Initialize wish list if it doesn't exist
 	if not AtlasTWCharDB.WishList then
 		AtlasTWCharDB.WishList = {}
 	end
@@ -36,14 +33,14 @@ function AtlasLoot_ShowWishList()
 	for i = 1, table.getn(AtlasTWCharDB.WishList) do
 		local v = AtlasTWCharDB.WishList[i]
 		if v then
-			-- Нормализуем поле instance: если записано имя, заменим на ключ
+			-- Normalize instance field: if name is recorded, replace with key
 			if v.instance and v.instance ~= "" then
 				if not (AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[v.instance]) then
 					local k = _GetInstanceKeyByName(v.instance)
 					if k then v.instance = k end
 				end
 			end
-			-- Нормализуем sourcePage: вторая часть должна быть ключом
+			-- Normalize sourcePage: second part should be a key
 			if v.sourcePage and v.sourcePage ~= "" then
 				local bossName, instPart = AtlasLoot_Strsplit("|", v.sourcePage)
 				if instPart and instPart ~= "" then
@@ -61,23 +58,23 @@ function AtlasLoot_ShowWishList()
 		end
 	end
 
-	-- Сброс позиции прокрутки
+	-- Reset scroll position
 	FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
 	AtlasLootScrollBarScrollBar:SetValue(0)
 
-	-- Устанавливаем данные для отображения списка желаний
+	-- Set data for displaying wish list
 	AtlasLootItemsFrame.StoredElement = "WishList"
 	AtlasLootItemsFrame.StoredMenu = nil
 	AtlasLootItemsFrame.activeElement = nil
 
-	-- Инвалидация кэша после возможной нормализации данных
+	-- Invalidate cache after possible data normalization
 	AtlasLoot_InvalidateCategorizedList("WishList")
 
-	-- Обновляем отображение
+	-- Update display
 	AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
--- Вспомогательная функция: поиск первого местоположения ID (числового) в базе инстансов
+-- Helper function: find first location of ID (numeric) in instance database
 local function FindLocationById(targetId)
 	if not targetId or not AtlasTW or not AtlasTW.InstanceData then return nil, nil end
 	local function scanItems(items)
@@ -122,8 +119,8 @@ local function FindLocationById(targetId)
 	return nil, nil
 end
 
--- Миграция на хранение instance как ключ инстанса и корректный sourcePage
--- Вспомогательная функция: получить ключ инстанса по имени или вернуть ключ как есть
+-- Migration to storing instance as instance key and correct sourcePage
+-- Helper function: get instance key by name or return key as is
 _GetInstanceKeyByName = function(instName)
 	if not instName or instName == "" then return nil end
 	if AtlasTW and AtlasTW.InstanceData then
@@ -137,13 +134,13 @@ _GetInstanceKeyByName = function(instName)
 	return nil
 end
 
--- Функция поиска инстанса по имени элемента; возвращает instKey и нормализованное имя элемента
+-- Function to find instance by element name; returns instKey and normalized element name
 local function FindInstanceByElemName(elemName)
 	if not elemName or not AtlasTW or not AtlasTW.InstanceData then
 		return nil, elemName
 	end
 	for instKey, instanceData in pairs(AtlasTW.InstanceData) do
-		-- Поиск в репутациях
+		-- Search in reputations
 		if instanceData.Reputation then
 			for _, v in ipairs(instanceData.Reputation) do
 				if v.name == elemName or v.loot == elemName then
@@ -151,7 +148,7 @@ local function FindInstanceByElemName(elemName)
 				end
 			end
 		end
-		-- Поиск в ключах
+		-- Search in keys
 		if instanceData.Keys then
 			for _, v in ipairs(instanceData.Keys) do
 				if v.name == elemName or v.loot == elemName then
@@ -159,7 +156,7 @@ local function FindInstanceByElemName(elemName)
 				end
 			end
 		end
-		-- Поиск в боссах
+		-- Search in bosses
 		if instanceData.Bosses then
 			for _, bossData in ipairs(instanceData.Bosses) do
 				if bossData.name == elemName or bossData.id == elemName then
@@ -171,7 +168,7 @@ local function FindInstanceByElemName(elemName)
 	return nil, elemName
 end
 
--- Возвращает локализованное/читаемое имя для страницы лута (lootpage) по её ключу
+-- Returns localized/readable name for loot page by its key
 local function AtlasLoot_GetLootPageDisplayName(pageKey)
 	if not pageKey or pageKey == "" then return nil end
 	if AtlasLoot_IsLootTableAvailable and AtlasLoot_Data and AtlasLoot_Data[pageKey] then
@@ -188,7 +185,7 @@ local function AtlasLoot_GetLootPageDisplayName(pageKey)
 	return pageKey
 end
 
--- Новый помощник: найти первую крафтовую страницу по ID заклинания
+-- New helper: find first craft loot page by spell ID
 local function FindFirstCraftLootPageForSpell(spellID)
 	if not AtlasLoot_Data or not spellID then return nil end
 	for key, tbl in pairs(AtlasLoot_Data) do
@@ -204,14 +201,14 @@ local function FindFirstCraftLootPageForSpell(spellID)
 	return nil
 end
 
--- Возвращает локализованное название профессии по ключу страницы лута (крафт-странице)
+-- Returns localized profession name by loot page key (craft page)
 local function GetProfessionByLootPageKey(pageKey)
 	if not pageKey or type(pageKey) ~= "string" then return nil end
 	if not AtlasTW or not AtlasTW.MenuData then return nil end
 
 	local MenuData = AtlasTW.MenuData
 
-	-- Сопоставление ключей таблиц меню к локализованным названиям профессий
+	-- Mapping menu table keys to localized profession names
 	local ProfByTableKey = {
 		Alchemy = BS["Alchemy"] or "Alchemy",
 		Smithing = BS["Blacksmithing"] or "Blacksmithing",
@@ -228,7 +225,7 @@ local function GetProfessionByLootPageKey(pageKey)
 		Survival = BS["Survival"] or "Survival",
 	}
 
-	-- Локальный помощник: безопасный проход по разреженным массивам
+	-- Local helper: safe traversal of sparse arrays
 	local function GetMaxNumericIndex(tbl)
 		local maxIndex = 0
 		for k, v in pairs(tbl) do
@@ -239,7 +236,7 @@ local function GetProfessionByLootPageKey(pageKey)
 		return maxIndex
 	end
 
-	-- Локальный помощник: попытка найти профессию по таблице меню
+	-- Local helper: attempt to find profession by menu table
 	local function TryResolveByTable(tableKey)
 		local t = MenuData[tableKey]
 		if not t or type(t) ~= "table" then return nil end
@@ -247,27 +244,27 @@ local function GetProfessionByLootPageKey(pageKey)
 		for i = 1, maxIndex do
 			local e = t[i]
 			if e and e.lootpage == pageKey then
-				-- Если в названии есть префикс до двоеточия — используем его (напр. "Alchemy: Apprentice")
+				-- If there's a prefix before colon in the name - use it (e.g. "Alchemy: Apprentice")
 				if e.name and type(e.name) == "string" then
 					local pos = string.find(e.name, ":")
 					if pos and pos > 1 then
 						return string.sub(e.name, 1, pos - 1)
 					end
 				end
-				-- Иначе возвращаем локализованное имя по ключу таблицы меню
+				-- Otherwise return localized name by menu table key
 				return ProfByTableKey[tableKey]
 			end
 		end
 		return nil
 	end
 
-	-- 1) Прямое совпадение в основных таблицах профессий
+	-- 1) Direct match in main profession tables
 	for tableKey, _ in pairs(ProfByTableKey) do
 		local r = TryResolveByTable(tableKey)
 		if r and r ~= "" then return r end
 	end
 
-	-- 2) Совпадение в верхнем уровне Crafting (на случай, если передали ключ меню профессии типа "AtlasLoot_AlchemyMenu")
+	-- 2) Match in top-level Crafting (in case profession menu key like "AtlasLoot_AlchemyMenu" was passed)
 	if MenuData.Crafting and type(MenuData.Crafting) == "table" then
 		local maxIndex = GetMaxNumericIndex(MenuData.Crafting)
 		for i = 1, maxIndex do
@@ -281,7 +278,7 @@ local function GetProfessionByLootPageKey(pageKey)
 		end
 	end
 
-	-- 3) Фоллбек на префиксы (как было раньше), если не нашли в MenuData
+	-- 3) Fallback to prefixes (as before) if not found in MenuData
 	if string.sub(pageKey, 1, 11) == "Engineering" then return BS and BS["Engineering"] or "Engineering" end
 	if string.sub(pageKey, 1, 10) == "Enchanting" then return BS and BS["Enchanting"] or "Enchanting" end
 	if string.sub(pageKey, 1, 9) == "Tailoring" then return BS and BS["Tailoring"] or "Tailoring" end
@@ -296,16 +293,16 @@ local function GetProfessionByLootPageKey(pageKey)
 end
 
 function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, typeFromSearch, srcFromSearch)
- 	-- Инициализируем список желаний, если его нет
+ 	-- Initialize wish list if it doesn't exist
  	if not AtlasTWCharDB.WishList then
  		AtlasTWCharDB.WishList = {}
  	end
-	-- Определяем тип элемента и получаем соответствующую информацию
+	-- Determine element type and get corresponding information
 	local elementType = typeFromSearch or "item"
 	local name = nil
 	local actualItemID = itemID
 
-	-- Если тип не пришел из поиска, определяем по базам
+	-- If type didn't come from search, determine by databases
 	if not typeFromSearch then
 		if AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[itemID] then
 			elementType = "spell"
@@ -322,7 +319,7 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 			actualItemID = itemID
 		end
 	else
-		-- Тип пришёл из поиска: подставим имя для отладки/поиска по имени при необходимости
+		-- Type came from search: substitute name for debugging/name search if needed
 		if elementType == "spell" and AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[itemID] then
 			name = AtlasTW.SpellDB.craftspells[itemID].name
 		elseif elementType == "enchant" and AtlasTW.SpellDB and AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[itemID] then
@@ -331,11 +328,11 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 			name = GetItemInfo(itemID)
 		end
 	end
-	-- Берем данные из результата поиска, если они были переданы
+	-- Take data from search result if it was passed
 	local currentElement = elemFromSearch
 	local currentInstanceKey = instKeyFromSearch
 
-	-- Нормализация: если element пришёл как таблица (например, { menuName = ... })
+	-- Normalization: if element came as table (e.g., { menuName = ... })
 	if type(currentElement) == "table" then
 		if currentElement.menuName then
 			currentElement = currentElement.menuName
@@ -346,7 +343,7 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 		end
 	end
 
-	-- Фоллбек UI: если контекст не передан, а сейчас открыта страница лута босса — используем её
+	-- UI fallback: if context not passed but boss loot page is currently open - use it
 	if (not currentElement or currentElement == "") and (not currentInstanceKey or currentInstanceKey == "") then
 		if AtlasLootItemsFrame and AtlasLootItemsFrame.StoredElement and AtlasLootItemsFrame.StoredMenu then
 			currentElement = AtlasLootItemsFrame.StoredElement
@@ -354,12 +351,12 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 		end
 	end
 
-	-- Если из поиска ничего не пришло, попробуем определить локацию и источник только для предметов
+	-- If nothing came from search, try to determine location and source only for items
 	if (not currentElement and not currentInstanceKey) and elementType == "item" then
 		local foundElem, foundInst = FindLocationById(actualItemID)
 		currentElement = foundElem
 		currentInstanceKey = foundInst
-		-- Если не нашли по ID, попробуем по имени
+		-- If not found by ID, try by name
 		if not currentElement then
 			local instKeyByName, normalizedElem = FindInstanceByElemName(name)
 			currentElement = normalizedElem
@@ -367,7 +364,7 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 		end
 	end
 
-  	-- Формируем запись для WishList
+  	-- Form record for WishList
   	local record = {
   		id = actualItemID,
   		element = currentElement,
@@ -375,28 +372,20 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
   		type = elementType,
   	}
 
-	-- Формируем sourcePage: в приоритете значение, пришедшее из поиска (например, крафтовая страница)
+	-- Form sourcePage: prioritize value from search (e.g., craft page)
 	if type(srcFromSearch) == "string" and srcFromSearch ~= "" then
 		record.sourcePage = srcFromSearch
 	elseif currentElement and currentInstanceKey then
 		record.sourcePage = currentElement.."|"..currentInstanceKey
-	elseif currentInstanceKey then
-		record.sourcePage = currentInstanceKey
+	-- Don't set sourcePage if only instance key is known: such key cannot be opened directly
 	end
 
-	-- Если sourcePage ещё не установлен и есть валидные elem/inst
+	-- If sourcePage is not set yet and there are valid elem/inst
 	if not record.sourcePage and currentElement and currentInstanceKey then
 		record.sourcePage = currentElement.."|"..currentInstanceKey
 	end
 
-	-- Отладочный вывод для диагностики неверных заголовков
---[[ 	print("WishList Add: id="..tostring(actualItemID)
-		.." type="..tostring(elementType)
-		.." elem="..tostring(record.element)
-		.." inst="..tostring(record.instance)
-		.." src="..tostring(record.sourcePage))
- ]]
-	-- Проверка на повторное добавление (по паре type+id)
+	-- Check for duplicate addition (by type+id pair)
 	local isDuplicate = false
 	for i = 1, table.getn(AtlasTWCharDB.WishList) do
 		local w = AtlasTWCharDB.WishList[i]
@@ -417,22 +406,22 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 		return
 	end
 
-  	-- Сохраняем в список желаний
+  	-- Save to wish list
 	table.insert(AtlasTWCharDB.WishList, record)
 
-	-- Сообщение в чат о добавлении
+	-- Chat message about addition
 	if name and name ~= "" then
 		print(name..L[" added to the WishList."])
 	else
 		print(tostring(actualItemID)..L[" added to the WishList."])
 	end
 
-	-- Инвалидация кэша категорий для списка желаний
+	-- Invalidate category cache for wish list
 	if AtlasLoot_InvalidateCategorizedList then
 		AtlasLoot_InvalidateCategorizedList("WishList")
 	end
 
-	-- Обновляем только если сейчас открыта страница WishList
+	-- Update only if WishList page is currently open
 	if AtlasLootItemsFrame and AtlasLootItemsFrame.storedBoss and AtlasLootItemsFrame.storedBoss.name == "WishList" then
 		AtlasLoot_ShowWishList()
 	end
@@ -447,7 +436,7 @@ function AtlasLoot_CategorizeWishList(wishList)
 	local result = {}
 
 	if not wishList then return result end
-	-- Используем кэш для WishList/SearchResult
+	-- Use cache for WishList/SearchResult
 	local cacheKey = nil
 	if AtlasTWCharDB then
 		if wishList == AtlasTWCharDB.WishList then
@@ -464,22 +453,22 @@ function AtlasLoot_CategorizeWishList(wishList)
 		end
 	end
 
-	-- Проходим по списку без сортировки и добавляем заголовки при смене категории
+	-- Go through list without sorting and add headers when category changes
 	local lastCategoryKey = nil
 	for i = 1, table.getn(wishList) do
 		local v = wishList[i]
 		local currentCategory
 
-		-- Поддержка обоих форматов: словарь (WishList) и массив (SearchResult)
+		-- Support both formats: dictionary (WishList) and array (SearchResult)
 		local elem = (v.element ~= nil) and v.element or v[2]
 		local inst = (v.instance ~= nil) and v.instance or v[3]
 		local src = (v.sourcePage ~= nil) and v.sourcePage or v[5]
 
-		-- Тип и ID элемента для дополнительных определений (спеллы/энчанты)
+		-- Element type and ID for additional definitions (spells/enchants)
 		local elementType = (v.type ~= nil) and v.type or v[4] or "item"
 		local elemId = (v.id ~= nil) and v.id or v[1]
 
-		-- Нормализация типов: принимаем только строки/числа; остальные типы (таблицы, функции, bool) отбрасываем
+		-- Type normalization: accept only strings/numbers; discard other types (tables, functions, bool)
 		if not (type(elem) == "string" or type(elem) == "number") then elem = nil end
 		if not (type(inst) == "string" or type(inst) == "number") then inst = nil end
 		if type(src) ~= "string" then src = nil end
@@ -493,9 +482,9 @@ function AtlasLoot_CategorizeWishList(wishList)
 		if elemOK and instOK then
 			currentCategory = AtlasLoot_GetWishListSubheadingBoss(elem, inst)
 		elseif src and src ~= "" then
-			-- Попробуем извлечь boss|instance из sourcePage
+			-- Try to extract boss|instance from sourcePage
 			local b, ik = AtlasLoot_Strsplit("|", src)
-			-- Нормализация: AtlasLoot_Strsplit возвращает таблицу частей
+			-- Normalization: AtlasLoot_Strsplit returns table of parts
 			if type(b) == "table" then
 				if not ik then ik = b[2] end
 				b = b[1]
@@ -508,9 +497,9 @@ function AtlasLoot_CategorizeWishList(wishList)
 				elemOK = (elem ~= nil and elem ~= "")
 				instOK = (inst ~= nil and inst ~= "")
 			else
-				-- src может быть ключом страницы лута (например, крафт) — локализуем имя по данным страницы
+				-- src can be loot page key (e.g., craft) - localize name by page data
 				local displayName = AtlasLoot_GetLootPageDisplayName(src)
-				-- Для крафтовых страниц заголовком делаем короткое имя категории без префикса профессии
+				-- For craft pages, make header the short category name without profession prefix
 				local headerName = displayName
 				local profName = GetProfessionByLootPageKey(src)
 				if displayName and profName then
@@ -521,11 +510,11 @@ function AtlasLoot_CategorizeWishList(wishList)
 				end
 				currentCategory = (headerName and headerName ~= "") and headerName or (displayName and displayName ~= "" and displayName or src)
 				if not elemOK then elem = currentCategory end
-				-- Предзаполним подзаголовок профессией
+				-- Pre-fill subtitle with profession
 				predefinedExtraText = GetProfessionByLootPageKey(src) or nil
 			end
 		else
-			-- Попробуем вычислить заголовок/подзаголовок для спеллов/энчантов по крафт-странице
+			-- Try to calculate header/subtitle for spells/enchants by craft page
 			if (elementType == "spell" or elementType == "enchant") and elemId and elemId ~= 0 then
 				local lootPage = FindFirstCraftLootPageForSpell(elemId)
 				if lootPage then
@@ -542,17 +531,17 @@ function AtlasLoot_CategorizeWishList(wishList)
 					predefinedExtraText = profName or nil
 				end
 			end
-			-- Если не удалось вычислить — используем нейтральный заголовок
+			-- If couldn't calculate - use neutral header
 			currentCategory = predefinedHeaderName or L["Search Result"]
 		end
 
-		-- Предварительно вычислим extratext для формирования ключа категории
+		-- Pre-calculate extratext for forming category key
 		local extratext = ""
 		if instOK then
 			extratext = GetLootTableParent(elem, inst) or ""
 		elseif src and src ~= "" then
 			local b, ik = AtlasLoot_Strsplit("|", src)
-			-- Нормализация: AtlasLoot_Strsplit возвращает таблицу частей
+			-- Normalization: AtlasLoot_Strsplit returns table of parts
 			if type(b) == "table" then
 				if not ik then ik = b[2] end
 				b = b[1]
@@ -561,11 +550,11 @@ function AtlasLoot_CategorizeWishList(wishList)
 			if (type(ik) == "string" or type(ik) == "number") and ik ~= "" then
 				extratext = GetLootTableParent(b, ik) or ""
 			else
-				-- Если это крафтовая страница, подзаголовок — название профессии
+				-- If this is craft page, subtitle is profession name
 				extratext = GetProfessionByLootPageKey(src) or ""
 			end
 		end
-		-- Фоллбек: если подзаголовок пуст и это спелл/энчант, попробуем определить профессию
+		-- Fallback: if subtitle is empty and this is spell/enchant, try to determine profession
 		if (not extratext or extratext == "") and (elementType == "spell" or elementType == "enchant") then
 			if predefinedExtraText and predefinedExtraText ~= "" then
 				extratext = predefinedExtraText
@@ -581,26 +570,36 @@ function AtlasLoot_CategorizeWishList(wishList)
 
 		local currentCategoryKey = tostring(currentCategory or "") .. "||" .. tostring(extratext or "")
 
-		-- Если категория изменилась, добавляем заголовок
+		-- If category changed, add header
 		if currentCategoryKey ~= lastCategoryKey then
-			-- Добавляем пустую строку между категориями (кроме первой)
+			-- Add empty line between categories (except first)
 			if table.getn(result) > 0 then
 				table.insert(result, {})
 			end
 
-			-- Добавляем заголовок категории: имя босса/страницы как заголовок, инстанс/профессия как extratext
+			-- Add category header: boss/page name as header, instance/profession as extratext
 			table.insert(result, { 0, currentCategory, extratext })
 			lastCategoryKey = currentCategoryKey
 		end
 
-		-- Добавляем предмет с учетом типа элемента
+		-- Add item considering element type
 		local displayItem = { (v.id ~= nil) and v.id or v[1], elem, inst, elementType }
-		-- Пробрасываем 5-й элемент (sourcePage), только если это строка
+		-- Pass through 5th element (sourcePage) only if it's a string
 		local src2 = nil
 		if type(v.sourcePage) == "string" then
 			src2 = v.sourcePage
 		elseif type(v[5]) == "string" then
 			src2 = v[5]
+		end
+		-- Fallback: for spells/enchants, if sourcePage is missing, determine craft page
+		if not src2 and (elementType == "spell" or elementType == "enchant") then
+			local eid = (v.id ~= nil) and v.id or v[1]
+			if eid and eid ~= 0 then
+				local lp = FindFirstCraftLootPageForSpell(eid)
+				if lp then
+					src2 = lp
+				end
+			end
 		end
 		if src2 then
 			table.insert(displayItem, src2)
@@ -609,7 +608,7 @@ function AtlasLoot_CategorizeWishList(wishList)
 	end
 
 	--collectgarbage()
-	-- Сохраняем результат в кэш
+	-- Save result to cache
 	if cacheKey then
 		if not AtlasTW._CatCache then AtlasTW._CatCache = {} end
 		if not AtlasTW._CatRev then AtlasTW._CatRev = {} end
@@ -619,12 +618,12 @@ function AtlasLoot_CategorizeWishList(wishList)
 end
 
 function AtlasLoot_GetWishListSubheadingBoss(bossName, instanceName)
-	-- Возвращаем имя босса или страницы как заголовок
+	-- Return boss or page name as header
 	if bossName and bossName ~= "" then
 		return bossName
 	end
 
-	-- Если нет имени босса, возвращаем имя инстанса
+	-- If no boss name, return instance name
 	if instanceName and instanceName ~= "" then
 		if AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[instanceName] and AtlasTW.InstanceData[instanceName].Name then
 			return AtlasTW.InstanceData[instanceName].Name
@@ -632,12 +631,12 @@ function AtlasLoot_GetWishListSubheadingBoss(bossName, instanceName)
 		return instanceName
 	end
 
-	-- Возвращаем "Unknown" если ничего не найдено
+	-- Return "Unknown" if nothing found
 	return L["Unknown"] or "Unknown"
 end
 
 function AtlasLoot_DeleteFromWishList(elemID)
-	-- Удаляет элемент по его ID из списка желаний (поддержка обоих форматов записи)
+	-- Removes element by its ID from wish list (supports both record formats)
 	if not elemID then return end
 	if not AtlasTWCharDB or not AtlasTWCharDB.WishList then return end
 
@@ -654,7 +653,7 @@ function AtlasLoot_DeleteFromWishList(elemID)
 			else
 				removed = true
 				removedType = v.type or v[4] or "item"
-				-- Получим имя до удаления
+				-- Get name before deletion
 				if removedType == "spell" then
 					if AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[vId] then
 						removedName = AtlasTW.SpellDB.craftspells[vId].name
@@ -681,13 +680,13 @@ function AtlasLoot_DeleteFromWishList(elemID)
 		print(tostring(elemID)..L[" not found in the WishList."])
 	end
 
-	-- Обновляем отображение
+	-- Update display
 	AtlasLoot_InvalidateCategorizedList("WishList")
 	AtlasLoot_ShowWishList()
 end
 
 function GetLootTableParent(bossName, instanceName)
-	-- Возвращаем имя инстанса как extratext (подзаголовок)
+	-- Return instance name as extratext (subtitle)
 	if instanceName and instanceName ~= "" then
 		if AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[instanceName] and AtlasTW.InstanceData[instanceName].Name then
 			return AtlasTW.InstanceData[instanceName].Name
@@ -695,7 +694,7 @@ function GetLootTableParent(bossName, instanceName)
 		return instanceName
 	end
 
-	-- Если нет имени инстанса, пытаемся найти его по имени босса
+	-- If no instance name, try to find it by boss name
 	if bossName and AtlasTW.InstanceData then
 		for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
 			if instanceData.Bosses then

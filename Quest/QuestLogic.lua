@@ -12,12 +12,12 @@ local blue = "|cff0070dd"
 
 function AtlasTW.Quest.OnItemEnter(itemIndex)
     if not itemIndex then
-        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnItemEnter failed itemIndex!")
+        return print("AtlasTW.Quest.OnItemEnter failed itemIndex!")
     end
     local frame = this
     -- Get the frame that triggered this event
     if not frame then
-        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnItemEnter failed frame and name!")
+        return print("AtlasTW.Quest.OnItemEnter failed frame and name!")
     end
     -- Get current quest data
     local instance = AtlasTW.QCurrentInstance
@@ -26,9 +26,8 @@ function AtlasTW.Quest.OnItemEnter(itemIndex)
     -- Get quest data from new database structure
     local questData = AtlasTW.Quest.DataBase and
                       AtlasTW.Quest.DataBase[instance] and
-                      AtlasTW.Quest.DataBase[instance].Quests and
-                      AtlasTW.Quest.DataBase[instance].Quests[faction] and
-                      AtlasTW.Quest.DataBase[instance].Quests[faction][AtlasTW.QCurrentQuest]
+                      AtlasTW.Quest.DataBase[instance][faction] and
+                      AtlasTW.Quest.DataBase[instance][faction][AtlasTW.QCurrentQuest]
 
     if not questData or not questData.Rewards then
         return
@@ -41,10 +40,8 @@ function AtlasTW.Quest.OnItemEnter(itemIndex)
     end
 
     -- Extract item data
-    local itemId = rewardItem.ID
-    local itemName = rewardItem.Name
-    local itemColor = rewardItem.Color or white
-    local itemDescription = rewardItem.Description
+    local itemId = rewardItem.id
+    local itemDescription = rewardItem.desc
 
     -- Set up tooltip
     AtlasTW.Quest.Tooltip:SetOwner(frame, "ANCHOR_RIGHT")
@@ -57,8 +54,7 @@ function AtlasTW.Quest.OnItemEnter(itemIndex)
     else
         -- Fallback to manual tooltip creation
         -- Set item name with color
-        local displayName = itemColor .. (itemName or L["Item not found in cache"])
-        AtlasTW.Quest.Tooltip:AddLine(displayName, 1, 1, 1)
+        AtlasTW.Quest.Tooltip:AddLine(L["Item not found in cache"], 1, 1, 1)
 
         -- Add description if available
         if itemDescription and itemDescription ~= "" then
@@ -96,11 +92,11 @@ end
 
 function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
     if not itemIndex then
-        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnItemClick failed itemIndex!")
+        return print("AtlasTW.Quest.OnItemClick failed itemIndex!")
     end
     local frame = this
     if not frame then
-        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnItemClick failed frame or name!")
+        return print("AtlasTW.Quest.OnItemClick failed frame or name!")
     end
     -- Get current quest data
     local instance = AtlasTW.QCurrentInstance
@@ -109,9 +105,8 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
     -- Get quest data from new database structure
     local questData = AtlasTW.Quest.DataBase and
                       AtlasTW.Quest.DataBase[instance] and
-                      AtlasTW.Quest.DataBase[instance].Quests and
-                      AtlasTW.Quest.DataBase[instance].Quests[faction] and
-                      AtlasTW.Quest.DataBase[instance].Quests[faction][AtlasTW.QCurrentQuest]
+                      AtlasTW.Quest.DataBase[instance][faction] and
+                      AtlasTW.Quest.DataBase[instance][faction][AtlasTW.QCurrentQuest]
 
     if not questData or not questData.Rewards then
         return
@@ -133,7 +128,7 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
         AtlasTW.Quest.Tooltip:SetHyperlink(string.format("item:%d:0:0:0", itemId))
         AtlasTW.Quest.Tooltip:Show()
         if not AtlasTWOptions.QuestQuerySpam then
-            DEFAULT_CHAT_FRAME:AddMessage(string.format("%s[%s%s%s]%s",
+            print(string.format("%s[%s%s%s]%s",
                 L["AtlasQuest is querying the server for: "], itemColor, rewardItem.Name, white, L[" Please click right until you see the Item frame."]))
         end
         return
@@ -147,7 +142,7 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
                 hex, itemId, itemName)
             ChatFrameEditBox:Insert(itemLink)
         else
-            DEFAULT_CHAT_FRAME:AddMessage("Item unsafe! Right click to get the item ID")
+            print("Item unsafe! Right click to get the item ID")
             ChatFrameEditBox:Insert(string.format("[%s]", rewardItem.Name))
         end
         return
@@ -172,9 +167,8 @@ local function atlasTWQuestInsertQuestLink()
 
     local questData = AtlasTW.Quest.DataBase and
                       AtlasTW.Quest.DataBase[instance] and
-                      AtlasTW.Quest.DataBase[instance].Quests and
-                      AtlasTW.Quest.DataBase[instance].Quests[faction] and
-                      AtlasTW.Quest.DataBase[instance].Quests[faction][questID]
+                      AtlasTW.Quest.DataBase[instance][faction] and
+                      AtlasTW.Quest.DataBase[instance][faction][questID]
 
     if questData and questData.Title then
         local questName = questData.Title
@@ -189,10 +183,10 @@ local function atlasTWQuestInsertQuestLink()
 end
 
 function AtlasTW.Quest.OnQuestClick(questIndex)
-    if not questIndex then return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnQuestClick without questIndex.") end
+    if not questIndex then return print("AtlasTW.Quest.OnQuestClick without questIndex.") end
     AtlasTW.QCurrentQuest = questIndex
     if not AtlasTW.Quest.UI or not AtlasTW.Quest.UI.InsideAtlasFrame then
-        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnQuestClick: Quest UI not fully loaded.")
+        return print("AtlasTW.Quest.OnQuestClick: Quest UI not fully loaded.")
     end
     if ChatFrameEditBox:IsVisible() and IsShiftKeyDown() then
         atlasTWQuestInsertQuestLink()
@@ -257,7 +251,7 @@ function AtlasTW.Quest.NextPage()
     -- Handle quest text pages
     if AtlasTW.Quest.NextPageCount == "Quest" then
         local faction = AtlasTW.isHorde and "Horde" or "Alliance"
-        local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Quests[faction][AtlasTW.QCurrentQuest]
+        local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance][faction][AtlasTW.QCurrentQuest]
 
         -- Check for Page
         if questData and questData.Page then
@@ -307,7 +301,7 @@ function AtlasTW.Quest.PreviousPage()
     -- Handle quest text pages
     if AtlasTW.Quest.NextPageCount == "Quest" then
         local faction = AtlasTW.isHorde and "Horde" or "Alliance"
-        local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Quests[faction][AtlasTW.QCurrentQuest]
+        local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance][faction][AtlasTW.QCurrentQuest]
         -- Go back to main quest text if we're returning to page 1
         if AtlasTW.QCurrentPage == 1 then
             AtlasTW.Quest.SetQuestText()
@@ -330,7 +324,7 @@ end
 -- Logic for the main Quest UI Frame
 function AtlasTW.Quest.OnQuestFrameShow()
     if not AtlasTW.Quest.UI_Main then
-        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnQuestFrameShow: Quest UI not fully loaded.")
+        return print("AtlasTW.Quest.OnQuestFrameShow: Quest UI not fully loaded.")
     end
     AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(AtlasTW.isHorde)
     AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(not AtlasTW.isHorde)
@@ -353,7 +347,7 @@ end
 
 function AtlasTW.Quest.OnAllianceClick()
     if not AtlasTW.Quest.UI_Main then
-        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnAllianceClick: Quest UI not fully loaded.")
+        return print("AtlasTW.Quest.OnAllianceClick: Quest UI not fully loaded.")
     end
 	AtlasTW.isHorde = false
     AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(true)
@@ -364,7 +358,7 @@ end
 
 function AtlasTW.Quest.OnHordeClick()
     if not AtlasTW.Quest.UI_Main then
-        return DEFAULT_CHAT_FRAME:AddMessage("AtlasTW.Quest.OnHordeClick: Quest UI not fully loaded.")
+        return print("AtlasTW.Quest.OnHordeClick: Quest UI not fully loaded.")
     end
 	AtlasTW.isHorde = true
     AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(false)
@@ -402,7 +396,7 @@ function AtlasTW.Quest.OnEvent()
     if type(AtlasTWCharDB) == "table" then
         AtlasTW.Quest.LoadFinishedQuests()
     else
-        DEFAULT_CHAT_FRAME:AddMessage("|cff00ff00Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
+        print("|cff00ff00Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
     end
     -- Register Tooltip with EquipCompare if enabled.
     if AtlasTWOptions.QuestCompareTooltip then

@@ -4,7 +4,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 
 -- Minimap button logic
--- Установка позиции кнопки
+-- Sets the minimap button position
 local function atlasTWButtonSetPosition(v)
 	if v < 0 then
 		v = v + 360
@@ -13,7 +13,7 @@ local function atlasTWButtonSetPosition(v)
 	AtlasTW.MinimapButtonUpdatePosition()
 end
 
--- Инициализация кнопки
+-- Initializes the minimap button
 function AtlasTW.MinimapButtonInit()
 	if AtlasTWOptions.AtlasButtonShown then
 		AtlasButtonFrame:Show()
@@ -23,7 +23,7 @@ function AtlasTW.MinimapButtonInit()
 	AtlasTW.MinimapButtonUpdatePosition()
 end
 
--- Переключение видимости кнопки
+-- Toggles minimap button visibility
 function AtlasTW.MinimapButtonOnClick()
 	if AtlasButtonFrame:IsVisible() then
 		AtlasButtonFrame:Hide()
@@ -35,7 +35,7 @@ function AtlasTW.MinimapButtonOnClick()
 	AtlasTW.OptionsInit()
 end
 
--- Обновление позиции кнопки
+-- Updates the minimap button position
 function AtlasTW.MinimapButtonUpdatePosition()
 	local radius = AtlasTWOptions.AtlasButtonRadius
 	local position = AtlasTWOptions.AtlasButtonPosition
@@ -49,7 +49,7 @@ function AtlasTW.MinimapButtonUpdatePosition()
 	AtlasTW.OptionsInit()
 end
 
--- Обработка перетаскивания кнопки
+-- Handles minimap button dragging
 function AtlasTW.MinimapButtonBeingDragged()
 	local xpos, ypos = GetCursorPosition()
 	local xmin, ymin = Minimap:GetLeft(), Minimap:GetBottom()
@@ -59,7 +59,7 @@ function AtlasTW.MinimapButtonBeingDragged()
 	atlasTWButtonSetPosition(math.deg(math.atan2(ypos, xpos)))
 end
 
--- Обработчик наведения мыши
+-- Minimap button OnEnter handler
 function AtlasTW.MinimapButtonOnEnter()
 	GameTooltip:SetOwner(this, "ANCHOR_LEFT")
 	GameTooltip:SetText(AtlasTW.Name)

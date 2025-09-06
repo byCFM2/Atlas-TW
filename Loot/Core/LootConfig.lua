@@ -3,7 +3,7 @@ AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
 
--- Кэш для локализованных строк (оптимизация)
+-- Cache for localized strings (optimization)
 local LocalizedStrings = {
     DungeonsRaids = L["Dungeons & Raids"],
     World = L["World"],
@@ -14,7 +14,7 @@ local LocalizedStrings = {
     Crafting = L["Crafting"],
     RareMobs = L["Rare Mobs"]
 }
--- Вспомогательная функция для подсчета максимального числового индекса (поддержка разреженных массивов)
+-- Helper function to count maximum numeric index (sparse array support)
 local function GetMaxNumericIndex(tbl)
     local maxIndex = 0
     for k, v in pairs(tbl) do
@@ -25,7 +25,7 @@ local function GetMaxNumericIndex(tbl)
     return maxIndex
 end
 
--- Вспомогательная функция для обработки данных категории (оптимизация)
+-- Helper function for processing category data (optimization)
 local function ProcessCategoryData(data, categoryName, specialHandler)
     if not data then return nil end
 
@@ -36,7 +36,7 @@ local function ProcessCategoryData(data, categoryName, specialHandler)
     if specialHandler then
         return specialHandler(data, category, categoryList)
     else
-        -- Стандартная обработка с поддержкой разреженных массивов
+        -- Standard processing with sparse array support
         local maxIndex = GetMaxNumericIndex(data)
         for i = 1, maxIndex do
             local item = data[i]
@@ -49,7 +49,7 @@ local function ProcessCategoryData(data, categoryName, specialHandler)
     return category
 end
 
--- Специальный обработчик для World категории (оптимизация)
+-- Special handler for World category (optimization)
 local function ProcessWorldCategory(data, category, categoryList)
     local rareMobsEntry = nil
     local maxIndex = GetMaxNumericIndex(data)
@@ -72,7 +72,7 @@ local function ProcessWorldCategory(data, category, categoryList)
     return category
 end
 
--- Специальный обработчик для Dungeons категории (оптимизация)
+-- Special handler for Dungeons category (optimization)
 local function ProcessDungeonsCategory(menuData)
     if not menuData then return nil end
 
@@ -80,7 +80,7 @@ local function ProcessDungeonsCategory(menuData)
     category[LocalizedStrings.DungeonsRaids] = {}
     local categoryList = category[LocalizedStrings.DungeonsRaids]
 
-    -- Объединяем обработку двух массивов в один цикл с поддержкой разреженных массивов
+    -- Combine processing of two arrays into one loop with sparse array support
     local totalCount = GetMaxNumericIndex(menuData)
     for i = 1, totalCount do
         local dung = menuData[i]
@@ -91,50 +91,50 @@ local function ProcessDungeonsCategory(menuData)
     return category
 end
 
--- Оптимизированная функция для динамической генерации AtlasLoot_HewdropDown
+-- Optimized function for dynamic generation of AtlasLoot_HewdropDown
 local function GenerateHewdropDown()
 
     local MenuData = AtlasTW.MenuData
     local hewdropDown = {}
     local category
 
-    -- 1. Dungeons & Raids (оптимизированная обработка)
+    -- 1. Dungeons & Raids (optimized processing)
     category = ProcessDungeonsCategory(MenuData.Dungeons)
     if category then
         table.insert(hewdropDown, category)
     end
 
-    -- 2. World (оптимизированная обработка)
+    -- 2. World (optimized processing)
     category = ProcessCategoryData(MenuData.WorldBosses, LocalizedStrings.World, ProcessWorldCategory)
     if category then
         table.insert(hewdropDown, category)
     end
 
-    -- 3. PvP Rewards (оптимизированная обработка)
+    -- 3. PvP Rewards (optimized processing)
     category = ProcessCategoryData(MenuData.PVP, LocalizedStrings.PvPRewards)
     if category then
         table.insert(hewdropDown, category)
     end
 
-    -- 4. Collections (оптимизированная обработка)
+    -- 4. Collections (optimized processing)
     category = ProcessCategoryData(MenuData.Sets, LocalizedStrings.Collections)
     if category then
         table.insert(hewdropDown, category)
     end
 
-    -- 5. Factions (оптимизированная обработка)
+    -- 5. Factions (optimized processing)
     category = ProcessCategoryData(MenuData.Factions, LocalizedStrings.Factions)
     if category then
         table.insert(hewdropDown, category)
     end
 
-    -- 6. World Events (оптимизированная обработка)
+    -- 6. World Events (optimized processing)
     category = ProcessCategoryData(MenuData.WorldEvents, LocalizedStrings.WorldEvents)
     if category then
         table.insert(hewdropDown, category)
     end
 
-    -- 7. Crafting (оптимизированная обработка)
+    -- 7. Crafting (optimized processing)
     category = ProcessCategoryData(MenuData.Crafting, LocalizedStrings.Crafting)
     if category then
         table.insert(hewdropDown, category)
@@ -144,7 +144,7 @@ local function GenerateHewdropDown()
 end
 
 
--- Генерируем данные при загрузке (с ленивой инициализацией)
+-- Generate data on load (with lazy initialization)
 do
     if not AtlasLoot_HewdropDown then
         AtlasLoot_HewdropDown = GenerateHewdropDown()

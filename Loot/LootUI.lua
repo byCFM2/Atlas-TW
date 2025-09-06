@@ -2,7 +2,7 @@ local _G = getfenv()
 
 local L = AtlasTW.Local
 
--- Функция для копирования свойств родительского шаблона
+-- Function to copy properties from the parent template
 local function AtlasLoot_ApplyParentTemplate(frame)
     frame:SetWidth(236)
     frame:SetHeight(28)
@@ -50,18 +50,10 @@ local function AtlasLoot_ApplyParentTemplate(frame)
         priceText:SetHeight(5)
         priceText:SetText("")
         priceText:Hide()
-        -- Позиционирование будет установлено динамически при показе элементов
+        -- Position will be set dynamically when elements are shown
         priceIcon:SetPoint("TOPRIGHT", name, "BOTTOMRIGHT", 20, -2)
         priceText:SetPoint("TOPRIGHT", priceIcon, "TOPRIGHT", 2, 2)
     end
-
-    -- Unsafe texture (background layer)
-    local unsafe = frame:CreateTexture(frame:GetName().."_Unsafe", "BACKGROUND")
-    unsafe:SetWidth(27)
-    unsafe:SetHeight(27)
-    unsafe:SetPoint("TOPLEFT", frame, "TOPLEFT")
-    unsafe:SetVertexColor(1, 0, 0, 1)
-    unsafe:Hide()
 
     -- Border texture
     local border = frame:CreateTexture(frame:GetName().."Border", "BACKGROUND")
@@ -72,7 +64,7 @@ local function AtlasLoot_ApplyParentTemplate(frame)
     border:Hide()
 end
 
--- Функция для применения свойств навигационных кнопок
+-- Function to apply navigation button properties
 local function AtlasLoot_ApplyNavigationButtonTemplate(button, buttonType)
     button:SetWidth(32)
     button:SetHeight(32)
@@ -88,7 +80,7 @@ local function AtlasLoot_ApplyNavigationButtonTemplate(button, buttonType)
     button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
 end
 
--- Функция для применения свойств AtlasLootContainerItemTemplate
+-- Function to apply AtlasLootContainerItemTemplate properties
 function AtlasLoot_ApplyContainerItemTemplate(button)
     button:SetWidth(40)
     button:SetHeight(40)
@@ -134,7 +126,7 @@ local function AtlasLoot_CreatePresetButtons(frame)
             presetButton[i]:SetPoint("LEFT", presetButton[i-1], "RIGHT", 0, 0)
         end
 
-        -- Создаем локальную переменную для захвата правильного индекса
+        -- Use a local variable to capture the correct index
         local buttonIndex = i
         presetButton[i]:SetScript("OnEnter", function()
             if this:IsEnabled() then
@@ -350,7 +342,7 @@ local function AtlasLoot_CreateTooltips()
     }
 end
 
--- Функция для создания кнопок на основе шаблонов
+-- Function to create buttons based on templates
 function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
     local button
 
@@ -377,7 +369,7 @@ function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
         button:SetHeight(15)
         button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
 
-        -- Добавляем элементы как в оригинальном шаблоне
+        -- Add elements as in the original template
         local text = button:CreateFontString(button:GetName().."_Text", "ARTWORK", "GameFontNormal")
         text:SetWidth(320)
         text:SetHeight(15)
@@ -406,7 +398,7 @@ function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
     return button
 end
 
--- Create фрейм with all item buttons
+-- Create frame with all item buttons
 local function AtlasLoot_CreateItemsFrame()
     local frame = CreateFrame("Frame", "AtlasLootItemsFrame", AtlasFrame)
     frame:SetWidth(510)
@@ -420,7 +412,7 @@ local function AtlasLoot_CreateItemsFrame()
     end)
     frame:Hide()
 
-    -- Создаем скроллбар
+    -- Create scrollbar
     local scrollBar = CreateFrame("ScrollFrame", "AtlasLootScrollBar", frame, "FauxScrollFrameTemplate")
     scrollBar:SetPoint("TOPLEFT", frame, "TOPLEFT", -8, 0)
     scrollBar:SetWidth(500)

@@ -5,7 +5,7 @@ local L = AtlasTW.Local
 local atlas_Ints_Ent_DropDown = {}
 --local atlasData = {}
 local frame
-local loadingStartTime -- Время загрузки
+local loadingStartTime -- Load time
 
 -- Color constants organized in a table
 local Colors = {
@@ -22,7 +22,7 @@ AtlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version")
 
 local function debug(info)
 	if AtlasTW.DEBUGMODE then
-		DEFAULT_CHAT_FRAME:AddMessage("["..AtlasTW.Name.."] "..info)
+		print("["..AtlasTW.Name.."] "..info)
 	end
 end
 
@@ -141,7 +141,7 @@ end
 --Initializes everything relating to saved variables and data in other lua files
 --This should be called ONLY when we're sure our variables are in memory
 local function Atlas_Init()
-	-- Инициализируем UI фреймы
+	-- Initialize UI frames
 	AtlasLoot_InitializeUI()
 
 	--clear saved vars for a new ver (or a new install!)
@@ -149,16 +149,16 @@ local function Atlas_Init()
 		AtlasTW.OptionDefaultSettings()
 	end
 
-	--populate the dropdown lists...yeeeah this is so much nicer!
-	-- Добавить валидацию dropdown данных
-    if AtlasTW.DEBUGMODE then
-        local dropdownErrors = AtlasTW_DropDownValidateData()
-        if table.getn(dropdownErrors) > 0 then
-            for _, error in pairs(dropdownErrors) do
-                debug("DropDown validation error: " .. error)
-            end
-        end
-    end
+	--populate the dropdown lists...yeeahah this is so much nicer!
+	-- Add validation for dropdown data
+	if AtlasTW.DEBUGMODE then
+	    local dropdownErrors = AtlasTW_DropDownValidateData()
+	    if table.getn(dropdownErrors) > 0 then
+	        for _, error in pairs(dropdownErrors) do
+	            debug("DropDown validation error: " .. error)
+	        end
+	    end
+	end
 
 	AtlasTW.PopulateDropdowns()
 
@@ -207,7 +207,7 @@ function AtlasTW.OnEvent()
 		end
 	elseif event == "PLAYER_ENTERING_WORLD" and loadingStartTime then
 		local loadingTime = (GetTime() - loadingStartTime) * 1000
-		DEFAULT_CHAT_FRAME:AddMessage(string.format("Load time: %.2f ", loadingTime))
+		print(string.format("Load time: %.2f ", loadingTime))
 		loadingStartTime = nil
 	end
 end
@@ -274,8 +274,6 @@ end
 --Also responsible for updating all the text when a map is changed
 function AtlasTW.Refresh()
 	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
-	--print("AtlasTW.Refresh: Загружаем инстанс " .. (zoneID or "nil"))
-	--local data = AtlasMa_p_s
 	local data = AtlasTW.InstanceData
 	local base = {}
 
@@ -369,7 +367,7 @@ function AtlasTW.Refresh()
 			else
 				frame:SetPoint("TOPLEFT", "AtlasTWScrollBar", "TOPLEFT", 16, -3)
 			end
-			-- Ограничиваем кнопки границами скролла (24 линии * 15 пикселей = 360 пикселей)
+			-- Limit buttons to the scrollbar's visible area (24 lines * 15 pixels = 360 pixels)
 			if i > 24 then
 				frame:EnableMouse(false)
 				frame:Hide()
@@ -377,7 +375,7 @@ function AtlasTW.Refresh()
 		else
 			_G["AtlasBossLine"..i.."_Loot"]:Hide()
 			_G["AtlasBossLine"..i.."_Selected"]:Hide()
-			-- Также ограничиваем существующие кнопки
+			-- Also limit existing buttons accordingly
 			if i > 24 then
 				_G["AtlasBossLine"..i]:EnableMouse(false)
 				_G["AtlasBossLine"..i]:Hide()
@@ -388,7 +386,7 @@ function AtlasTW.Refresh()
 	--Hide the loot frame now that a pristine Atlas instance is created
 	AtlasLootItemsFrame:Hide()
 
-	-- Обновляем скроллбар после создания элементов
+	-- Update the scrollbar after creating elements
 	AtlasTW.Loot.ScrollBarUpdate()
 
 	--see if we should display the entrance/instance button or not, and decide what it should say

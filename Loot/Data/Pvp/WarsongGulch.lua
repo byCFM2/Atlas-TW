@@ -1,6 +1,4 @@
--- WarsongGulch.lua - Данные предметов из Ущелья Песни Войны
--- Модульная структура данных для Atlas-TW
-
+-- WarsongGulch.lua - Item data for Warsong Gulch
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
@@ -9,7 +7,7 @@ local BF = AceLibrary("Babble-Faction-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
--- Данные Ущелья Песни Войны
+-- Warsong Gulch data
 AtlasTW.InstanceData.BGWarsongGulch = {
     Name = BZ["Warsong Gulch"],
     Location = BZ["Ashenvale"] .. "/" .. BZ["The Barrens"],

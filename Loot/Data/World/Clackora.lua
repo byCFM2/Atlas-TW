@@ -1,6 +1,4 @@
--- World_Bosses.lua - Данные предметов с мировых боссов
--- Модульная структура данных для Atlas-TW
-
+-- World_Bosses.lua - Item data for world bosses
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
@@ -9,11 +7,11 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
--- Данные мировых боссов
+-- World bosses data
 AtlasTW.InstanceData.Clackora = {
     Name = BB["Cla'ckora"],
     Location = BZ["Azshara"],
-    Level = {1, 60},
+    Level = { 1, 60 },
     Acronym = "Clackora",
     MaxPlayers = 40,
     DamageType = L["Frost"],
@@ -24,27 +22,27 @@ AtlasTW.InstanceData.Clackora = {
             name = BB["Cla'ckora"],
             defaults = { dropRate = 20 },
             loot = {
-                {id=55501}, -- Sphere of the Endless Gulch (аксессуар)
-                {id=55494}, -- The Abyssal Pincer (кулак, оружие)
-                {id=55495}, -- Zandalar Predator's Glaive (копье, двуручное)
-                {id=55498}, -- Clamshell of the Depths (щит)
-                {id=55504}, -- Anchor of the Wavecutter (молот, двуручное)
+                { id = 55501 }, -- Sphere of the Endless Gulch
+                { id = 55494 }, -- The Abyssal Pincer
+                { id = 55495 }, -- Zandalar Predator's Glaive
+                { id = 55498 }, -- Clamshell of the Depths
+                { id = 55504 }, -- Anchor of the Wavecutter
                 {},
-                {id=55502}, -- Iceplated Leggings (ноги, кожа)
-                {id=55499}, -- Primal Murloc Scale Belt (пояс, кольчуга)
-                {id=55500}, -- Barnacle Vambraces (запястья, пластины)
-                {id=55496}, -- Polychromatic Pearl Necklace (шея)
-                {id=55503}, -- Loop of Unceasing Frost (кольцо)
-                {id=55497}, -- Idol of Ebb and Flow (реликвия друида)
+                { id = 55502 }, -- Iceplated Leggings
+                { id = 55499 }, -- Primal Murloc Scale Belt
+                { id = 55500 }, -- Barnacle Vambraces
+                { id = 55496 }, -- Polychromatic Pearl Necklace
+                { id = 55503 }, -- Loop of Unceasing Frost
+                { id = 55497 }, -- Idol of Ebb and Flow
                 {},
-                {id=92020, dropRate=5}, -- Spawn of Cla'ckora (питомец)
-            }
-        }
-    }
+                { id = 92020, dropRate = 5 }, -- Spawn of Cla'ckora
+}
+}
+}
 }
 
--- Инициализация предметов для всех боссов
+-- Initialize items for all bosses
 for _, bossData in ipairs(AtlasTW.InstanceData.Clackora.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil -- Очищаем временные данные
+    bossData.loot = nil 
 end

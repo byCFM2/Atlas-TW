@@ -3,14 +3,14 @@ local RED = "|cffff0000"
 local WHITE = "|cffFFFFFF"
 
 function AtlasLoot:ShowSearchResult()
-	-- Сброс позиции прокрутки
+	-- Reset scroll position
 	FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
 	AtlasLootScrollBarScrollBar:SetValue(0)
-	-- Устанавливаем данные для отображения результатов поиска
+	-- Set data for displaying search results
 	AtlasLootItemsFrame.StoredElement = "SearchResult"
 	AtlasLootItemsFrame.StoredMenu = nil
 	AtlasLootItemsFrame.activeElement = nil
-	-- Обновляем отображение
+	-- Update display
 	AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
@@ -39,7 +39,7 @@ function AtlasLoot:Search(Text)
         end
     end
 
-    -- Локальный кэш уже добавленных результатов (уникализация по типу и id)
+    -- Local cache of already added results (uniqueness by type and id)
     local seen = {}
     local function addUnique(entry)
         local ty = entry[4] or "item"
@@ -51,7 +51,7 @@ function AtlasLoot:Search(Text)
         end
     end
 
-    -- Поиск первого вхождения id (item/spell/enchant) в базе инстансов, чтобы получить boss и instanceKey
+    -- Search for first occurrence of id (item/spell/enchant) in instance database to get boss and instanceKey
     local function findFirstLocationForId(targetId)
         if not targetId or not AtlasTW or not AtlasTW.InstanceData then return nil, nil end
         local function scanItems(items)
@@ -107,7 +107,7 @@ function AtlasLoot:Search(Text)
         if not itemID or itemID == 0 then return end
         local itemName = GetItemInfo(itemID)
         if itemName and isMatch(itemName) then
-            -- В SearchResult храним: [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage (optional)
+            -- In SearchResult we store: [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage (optional)
             local entry = { itemID, bossName, instanceKey, "item" }
             if instanceKey and instanceKey ~= "" then
                 table.insert(entry, (bossName or "").."|"..instanceKey)
@@ -119,7 +119,7 @@ function AtlasLoot:Search(Text)
     local function searchItemsList(items, bossName, instanceName, instanceKey)
         if not items then return end
         if type(items) == "string" then
-            -- Старые ссылочные форматы таблиц пропускаем
+            -- Skip old reference table formats
             return
         end
         if type(items) ~= "table" then return end
@@ -137,7 +137,7 @@ function AtlasLoot:Search(Text)
         end
     end
 
-    -- Поиск предметов в инстансах/боссах новой структуры
+    -- Search for items in instances/bosses of new structure
     if AtlasTW.InstanceData then
         for instKey, inst in pairs(AtlasTW.InstanceData) do
             local instanceName = inst.Name or instKey
@@ -148,7 +148,7 @@ function AtlasLoot:Search(Text)
                     searchItemsList(items, bossName, instanceName, instKey)
                 end
             end
-            -- Дополнительно проверим вспомогательные источники, если заданы
+            -- Additionally check auxiliary sources if specified
             if inst.Reputation then
                 for _, src in pairs(inst.Reputation) do
                     local items = src.items or src.loot
@@ -166,14 +166,14 @@ function AtlasLoot:Search(Text)
         end
     end
 
-    -- Дополнительный поиск предметов на страницах крафта/профессий и прочих лут-страницах (AtlasLoot_Data)
+    -- Additional search for items on craft/profession pages and other loot pages (AtlasLoot_Data)
     local function searchItemsInLootTables()
         if not AtlasLoot_Data then return end
         local function considerItem(itemID, pageKey)
             if not itemID or itemID == 0 then return end
             local itemName = GetItemInfo(itemID)
             if itemName and isMatch(itemName) then
-                -- [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage (ключ страницы)
+                -- [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage (page key)
                 addUnique({ itemID, "", "", "item", pageKey })
             end
         end
@@ -208,7 +208,7 @@ function AtlasLoot:Search(Text)
     end
     searchItemsInLootTables()
 
-    -- Локатор страницы крафта/профессий: ищем первую таблицу лута, где встречается spellID (локальный для использования в enchants)
+    -- Craft/profession page locator: find first loot table where spellID occurs (local for use in enchants)
     local function findCraftLootPageLocal(spellID)
         if not AtlasLoot_Data then return nil end
         for key, tbl in pairs(AtlasLoot_Data) do
@@ -224,11 +224,11 @@ function AtlasLoot:Search(Text)
         return nil
     end
 
-    -- Поиск зачарований по названию в новой базе заклинаний
+    -- Search for enchantments by name in new spell database
     if AtlasTW.SpellDB and AtlasTW.SpellDB.enchants then
         for spellID, data in pairs(AtlasTW.SpellDB.enchants) do
             local nm = data and data.name
-            -- Fallback: если в базе нет названия зачарования, пробуем получить имя по itemID
+            -- Fallback: if enchantment name not in database, try to get name by itemID
             if (not nm or nm == "") and data and data.item then
                 nm = GetItemInfo(data.item)
             end
@@ -237,12 +237,12 @@ function AtlasLoot:Search(Text)
                 if bossName and instKey then
                     addUnique({ spellID, bossName, instKey, "enchant", bossName.."|"..instKey })
                 else
-                    -- Попробуем привязать к странице крафта/профессии, если она найдена
+                    -- Try to bind to craft/profession page if found
                     local lootPage = findCraftLootPageLocal(spellID)
                     if lootPage then
                         addUnique({ spellID, "", "", "enchant", lootPage })
                     else
-                        -- Без инстанса и крафт-страницы: остаётся пусто
+                        -- Without instance and craft page: remains empty
                         addUnique({ spellID, "", "", "enchant" })
                     end
                 end
@@ -250,12 +250,12 @@ function AtlasLoot:Search(Text)
         end
     end
 
-    -- Локатор страницы крафта: ищем первую таблицу лута, где встречается spellID
+    -- Craft page locator: find first loot table where spellID occurs
     local function findFirstCraftLootPageForSpell(spellID)
         if not AtlasLoot_Data then return nil end
         for key, tbl in pairs(AtlasLoot_Data) do
             if type(tbl) == "table" then
-                -- Используем table.getn, т.к. # не поддерживается в 1.12
+                -- Use table.getn since # is not supported in 1.12
                 for i = 1, table.getn(tbl) do
                     local el = tbl[i]
                     if type(el) == "table" and el.id and el.id == spellID then
@@ -267,7 +267,7 @@ function AtlasLoot:Search(Text)
         return nil
     end
 
-    -- Поиск крафтовых заклинаний: по имени заклинания, если есть, иначе по названию создаваемого предмета
+    -- Search for craft spells: by spell name if available, otherwise by created item name
     if AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells then
         for spellID, data in pairs(AtlasTW.SpellDB.craftspells) do
             local nm = data and data.name
@@ -279,7 +279,7 @@ function AtlasLoot:Search(Text)
                 if bossName and instKey then
                     addUnique({ spellID, bossName, instKey, "spell", bossName.."|"..instKey })
                 else
-                    -- Попробуем привязать к странице крафта, если она найдена
+                    -- Try to bind to craft page if found
                     local lootPage = findFirstCraftLootPageForSpell(spellID)
                     if lootPage then
                         addUnique({ spellID, "", "", "spell", lootPage })
@@ -295,7 +295,7 @@ function AtlasLoot:Search(Text)
     if table.getn(AtlasTWCharDB.SearchResult) == 0 then
         print(RED.."AtlasLoot"..": "..WHITE..L["No match found for"].." \""..Text.."\".")
     else
-        -- Отображаем всю выдачу, скролл занимается фреймом лута
+        -- Display all results, scroll is handled by loot frame
         AtlasLoot:ShowSearchResult()
     end
 end
