@@ -17,8 +17,8 @@
 ---
 
 local L = AtlasTW.Local
-local RED = "|cffff0000"
-local WHITE = "|cffFFFFFF"
+local RED = AtlasLoot_Colors.RED
+local WHITE = AtlasLoot_Colors.WHITE
 
 ---
 --- Shows search results in the loot frame
