@@ -1,4 +1,17 @@
--- Простая система локализации на метатаблицах
+---
+--- Atlas-TW English Localization File
+--- Simple localization system based on metatables
+--- Provides automatic fallback to key names when translations are missing
+---
+--- Features:
+--- - Automatic fallback to key names for missing translations
+--- - Metatable-based translation system
+--- - Complete English localization strings for Atlas-TW addon
+--- - Zone names, instance data, and UI text translations
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 AtlasTW.Local = {
     Translations = {},
     __index = function(t, key)
@@ -15,7 +28,10 @@ setmetatable(AtlasTW.Local, AtlasTW.Local)
 
 AtlasSortIgnore = {"the (.+)"}
 
---Bindings
+---
+--- Key binding definitions for Atlas-TW addon
+--- @since 1.0.0
+---
 BINDING_HEADER_ATLASTW_TITLE = "Atlas-TW Bindings"
 BINDING_NAME_ATLASTW_TOGGLE = "Toggle Atlas-TW"
 BINDING_NAME_ATLASTW_OPTIONS = "Toggle Options"
@@ -32,7 +48,11 @@ AtlasZoneSubstitutions = {
 	["The Temple of Atal'Hakkar"] = "Sunken Temple"
 }
 
--- Заполняем переводы
+---
+--- Translation table containing all localized strings
+--- Uses English as the base language with fallback support
+--- @since 1.0.0
+---
 AtlasTW.Local.Translations = {
 
 	--************************************************

@@ -1,4 +1,21 @@
--- WarsongGulch.lua - Item data for Warsong Gulch
+---
+--- WarsongGulch.lua - Warsong Gulch battleground PvP data
+---
+--- This module contains comprehensive PvP data for the Warsong Gulch
+--- battleground. It includes capture the flag objectives, faction bases,
+--- strategic locations, and battleground-specific rewards.
+---
+--- Features:
+--- • Capture the flag mechanics
+--- • Faction base locations
+--- • Strategic point data
+--- • Battleground objectives
+--- • PvP rewards and marks
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local

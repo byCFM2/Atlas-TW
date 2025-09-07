@@ -1,5 +1,20 @@
--- World_Bosses.lua - Item data for world bosses
--- Modular data structure for Atlas-TW
+---
+--- CowKing.lua - Cow King special boss loot data
+---
+--- This module contains loot data for the Cow King, a special easter egg
+--- boss encounter. It includes unique drops, humorous items, and
+--- special rewards from this hidden encounter.
+---
+--- Features:
+--- • Complete Cow King loot table
+--- • Easter egg items
+--- • Humorous equipment
+--- • Special encounter rewards
+--- • Hidden boss mechanics
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

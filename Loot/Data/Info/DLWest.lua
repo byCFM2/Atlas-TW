@@ -1,5 +1,20 @@
--- DLWest Info Data
--- Compatible with Atlas Loot TW
+---
+--- DLWest.lua - Kalimdor dungeon location data
+---
+--- This module contains comprehensive dungeon location information for
+--- the Kalimdor continent. It provides detailed location data,
+--- coordinates, and access information for all dungeons in the western regions.
+---
+--- Features:
+--- • Complete Kalimdor dungeon locations
+--- • Detailed coordinate information
+--- • Access requirements and prerequisites
+--- • Zone-specific dungeon data
+--- • Navigation assistance
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

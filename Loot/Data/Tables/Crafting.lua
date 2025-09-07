@@ -1,3 +1,25 @@
+---
+--- Crafting.lua - Crafting profession data tables
+---
+--- This module contains comprehensive crafting data for all professions in
+--- World of Warcraft. It includes recipes, materials, skill requirements,
+--- and profession-specific items for all crafting disciplines.
+---
+--- Features:
+--- • Complete profession recipe tables
+--- • Skill level requirements
+--- • Material and reagent lists
+--- • Trainer and vendor information
+--- • Specialty crafting items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
+local _G = getfenv()
+AtlasTW = _G.AtlasTW
+
+--Instance required libraries
 local L = AtlasTW.Local
 local BS = AceLibrary("Babble-Spell-2.2a")
 

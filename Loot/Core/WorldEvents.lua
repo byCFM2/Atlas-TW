@@ -1,3 +1,21 @@
+---
+--- WorldEvents.lua - World events and seasonal content system
+---
+--- This module handles world events, seasonal activities, and special occasion
+--- loot tables for Atlas-TW. It provides access to holiday-specific items,
+--- limited-time events, and recurring world activities with their rewards.
+---
+--- Features:
+--- • Seasonal event loot catalogs
+--- • Holiday-specific item tracking
+--- • Limited-time availability indicators
+--- • Cross-event reward organization
+--- • Event schedule integration
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
@@ -27,6 +45,12 @@ AtlasTW.MenuData.WorldEvents = {
     { name = L["Scourge Invasion"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Jewelry_Talisman_13", lootpage = "ScourgeInvasionF" },
 }
 
+---
+-- Display the World Events menu in AtlasLoot
+-- @function AtlasLootWorldEventMenu
+-- @usage AtlasLootWorldEventMenu()
+-- @version 1.0
+---
 function AtlasLootWorldEventMenu()
     AtlasTW.Loot.PrepMenu(L["World Events"], AtlasTW.MenuData.WorldEvents)
 end

@@ -1,5 +1,20 @@
-
-
+---
+--- Stratholme.lua - Stratholme dungeon instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Stratholme
+--- 5-player dungeon instance. It includes both Living and Undead sides with
+--- all boss encounters, rare drops, and dungeon set items.
+---
+--- Features:
+--- • Complete boss encounter loot tables
+--- • Dungeon set items (Tier 0.5)
+--- • Rare and epic weapon drops
+--- • Side-specific loot organization
+--- • Key and attunement items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

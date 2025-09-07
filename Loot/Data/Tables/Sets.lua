@@ -1,3 +1,21 @@
+---
+--- Sets.lua - Item set and equipment collection data tables
+---
+--- This module contains comprehensive data for all item sets and equipment
+--- collections in World of Warcraft. It includes tier sets, dungeon sets,
+--- PvP sets, and other themed equipment collections.
+---
+--- Features:
+--- • Complete tier set definitions
+--- • Dungeon and raid set items
+--- • PvP and honor sets
+--- • Set bonuses and effects
+--- • Class-specific set organization
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 

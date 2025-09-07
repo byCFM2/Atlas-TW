@@ -1,5 +1,20 @@
--- FPHordeWest Info Data
--- Compatible with Atlas Loot TW
+---
+--- FPHordeWest.lua - Horde flight paths in Kalimdor
+---
+--- This module contains comprehensive flight path information for Horde
+--- players in the Kalimdor continent. It provides detailed data about
+--- flight masters, routes, costs, and connectivity between flight points.
+---
+--- Features:
+--- • Complete Horde flight path network
+--- • Flight master locations and coordinates
+--- • Route costs and travel times
+--- • Connectivity mapping
+--- • Faction-specific access requirements
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

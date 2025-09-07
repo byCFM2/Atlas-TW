@@ -1,5 +1,20 @@
-
-
+---
+--- Naxxramas.lua - Naxxramas raid instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Naxxramas
+--- 40-player raid instance. It includes all wing encounters, tier set items,
+--- legendary drops, and unique weapons with their respective drop rates.
+---
+--- Features:
+--- • Complete wing-based boss encounters
+--- • Tier 3 set items and tokens
+--- • Legendary and epic weapon drops
+--- • Unique trinkets and accessories
+--- • Attunement and key requirements
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

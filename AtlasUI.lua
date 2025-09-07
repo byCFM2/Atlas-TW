@@ -1,3 +1,21 @@
+---
+--- AtlasUI.lua - Atlas main UI frame and interface components
+--- 
+--- This file contains the main UI frame creation and management for Atlas-TW.
+--- It handles the primary Atlas window, frame positioning, event registration,
+--- and provides the foundation for all Atlas UI components and interactions.
+--- 
+--- Features:
+--- - Main Atlas frame creation and configuration
+--- - Frame positioning and movement handling
+--- - Event registration and handling
+--- - UI component initialization
+--- - Frame visibility and state management
+--- 
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 

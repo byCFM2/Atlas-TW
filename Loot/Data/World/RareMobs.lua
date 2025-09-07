@@ -1,5 +1,20 @@
--- RareMobs.lua - Item data for rare mobs
--- Modular data structure for Atlas-TW
+---
+--- RareMobs.lua - Rare elite mob loot data
+---
+--- This module contains comprehensive loot data for rare elite mobs
+--- scattered throughout the world. It includes unique drops, rare equipment,
+--- and special items from named rare spawns across all zones.
+---
+--- Features:
+--- • Complete rare mob loot tables
+--- • Zone-specific rare spawns
+--- • Unique and rare drops
+--- • Named elite rewards
+--- • Spawn location information
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

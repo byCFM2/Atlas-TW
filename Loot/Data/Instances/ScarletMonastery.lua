@@ -1,5 +1,20 @@
-
-
+---
+--- ScarletMonastery.lua - Scarlet Monastery dungeon instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Scarlet Monastery
+--- 5-player dungeon instance. It includes all four wings (Graveyard, Library, Armory, Cathedral)
+--- with their respective boss encounters, rare drops, and dungeon-specific items.
+---
+--- Features:
+--- • Complete four-wing boss encounters
+--- • Rare and uncommon item drops
+--- • Dungeon entrance and layout data
+--- • Level-appropriate loot organization
+--- • Quest reward items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

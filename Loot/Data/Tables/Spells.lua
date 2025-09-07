@@ -1,3 +1,21 @@
+---
+--- Spells.lua - Spell and enchantment data tables
+---
+--- This module contains comprehensive spell data for Atlas-TW including
+--- enchantments, buffs, abilities, and magical effects. It provides
+--- spell information for item tooltips and effect descriptions.
+---
+--- Features:
+--- • Complete enchantment database
+--- • Spell effect definitions
+--- • Buff and debuff information
+--- • Magical item effects
+--- • Spell ID mappings
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local L = AtlasTW.Local
 
 AtlasTW.SpellDB = {
@@ -10740,27 +10758,30 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[36929] = { --1.18
-			item = 47410,
+			item = 47410, --Concoction of the Emerald Mongoose
 			reagents = {
 				{13452, 1},
 				{61224, 1},
-				{8153, 6},
+				-- {8153, 6}, --Wildvine 03.09.25 deleted
+				{18256, 1}, --Imbued Vial 03.09.25
 			},
 		},
 		[36932] = { --1.18
-			item = 47412,
+			item = 47412, --Concoction of the Arcane Giant
 			reagents = {
 				{9206, 1},
 				{13454, 1},
-				{8831, 6},
+				--{8831, 6}, --Purple Lotus 03.09.25 deleted
+				{18256, 1}, --Imbued Vial 03.09.25
 			},
 		},
 		[36935] = { --1.18
-			item = 47414,
+			item = 47414, --Concoction of the Dreamwater
 			reagents = {
-				{12820, 1},
-				{61423, 1},
-				{8838, 6},
+				{12820, 1}, --Winterfall Firewater
+				{61423, 1}, --Dreamtonic
+				--{8838, 6}, --Sungrass 03.09.25 deleted
+				{18256, 1}, --Imbued Vial 03.09.25
 			},
 		},
 		[41001] = {

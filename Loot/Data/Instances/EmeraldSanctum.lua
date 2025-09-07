@@ -1,5 +1,20 @@
-
-
+---
+--- EmeraldSanctum.lua - Emerald Sanctum instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Emerald Sanctum
+--- instance. It includes all boss encounters, rare drops,
+--- and instance-specific items with their respective drop rates.
+---
+--- Features:
+--- • Complete boss encounter loot tables
+--- • Rare and epic item drops
+--- • Instance entrance and layout data
+--- • Level-appropriate loot organization
+--- • Quest reward items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
@@ -82,6 +97,7 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 { id = 61196, disc = L["Bag"], dropRate = 15 }, -- Bag of Vast Consciousness
                 {},
                 { id = 61733, dropRate = 1 }, -- Formula: Eternal Dreamstone Shard
+                { id = 30018, dropRate = .1 }, --Emerald Drake TODO chance drop
                 { id = 61217, dropRate = 4 }, -- Formula: Enchant Chest - Mighty Mana
                 { id = 70000, dropRate = 4 }, -- Formula: Enchant Gloves - Nature Power
                 {},

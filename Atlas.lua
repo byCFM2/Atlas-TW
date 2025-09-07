@@ -1,9 +1,28 @@
+---
+--- Atlas.lua - Main Atlas-TW addon core functionality
+---
+--- This is the primary module of Atlas-TW that handles the main Atlas frame,
+--- map display, dropdown management, search functionality, and core UI logic.
+--- It coordinates between different subsystems and manages the overall addon state.
+---
+--- Features:
+--- • Interactive dungeon and raid map display
+--- • Dynamic dropdown menus for instance selection
+--- • Advanced search functionality with filtering
+--- • Auto-selection based on player location
+--- • Frame locking and positioning management
+--- • Integration with loot and quest systems
+--- • pfUI compatibility and tooltip enhancements
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 AtlasTW.UI = AtlasTW.UI or {}
 local L = AtlasTW.Local
 local atlas_Ints_Ent_DropDown = {}
---local atlasData = {}
 local frame
 local loadingStartTime -- Load time
 
@@ -20,13 +39,29 @@ local Colors = {
 
 AtlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version")
 
+---
+--- Outputs debug information to chat if debug mode is enabled
+--- @param info string The debug message to display
+--- @return nil
+--- @usage debug("Player entered instance")
+--- @since 1.0.0
+---
 local function debug(info)
 	if AtlasTW.DEBUGMODE then
 		print("["..AtlasTW.Name.."] "..info)
 	end
 end
 
--- Events: HookScript (function)
+---
+--- Hooks a script handler while preserving the original handler
+--- Chains both the original and new handlers together
+--- @param frame1 frame The frame to hook the script on
+--- @param scriptType string The script type to hook (e.g., "OnShow", "OnHide")
+--- @param handler function The new handler function to add
+--- @return nil
+--- @usage hookScript(AtlasTW.Quest.Tooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
+--- @since 1.0.0
+---
 local function hookScript(frame1, scriptType, handler)
     -- Store original script handler
     local originalScript = frame1:GetScript(scriptType)
@@ -41,6 +76,13 @@ local function hookScript(frame1, scriptType, handler)
     end)
 end
 
+---
+--- Sets up pfUI tooltip integration for Atlas quest tooltips
+--- Creates backdrops and equipment comparison functionality
+--- @return nil
+--- @usage setupPfUITooltip() -- Called during initialization
+--- @since 1.0.0
+---
 local function setupPfUITooltip()
 	if not (AtlasTWOptions.QuestCompareTooltip and IsAddOnLoaded("pfUI") and not AtlasTW.Quest.Tooltip.backdrop) then
 		return
@@ -60,6 +102,15 @@ local function setupPfUITooltip()
 	end
 end
 
+---
+--- Performs search filtering on Atlas data and returns formatted results
+--- Searches through reputation, keys, and bosses data with text matching
+--- @param data table The Atlas data containing Reputation, Keys, and Bosses arrays
+--- @param search_text string The search text to filter entries by (case-insensitive)
+--- @return table Array of search results with line, name, and id fields
+--- @usage local results = PerformSearch(AtlasSearchEditBox.Data, "blackrock")
+--- @since 1.0.0
+---
 local function PerformSearch(data, search_text)
 
 	local function makeBossLineText(items, new, n, searchText, format_line)
@@ -97,9 +148,14 @@ local function PerformSearch(data, search_text)
 	return new
 end
 
---Removal of articles in map names (for proper alphabetic sorting)
---For example: "The Deadmines" will become "Deadmines"
---Thus it will be sorted under D and not under T
+---
+--- Removes articles from map names for proper alphabetic sorting
+--- For example: "The Deadmines" becomes "Deadmines" to sort under D instead of T
+--- @param text string The map name to sanitize
+--- @return string The sanitized map name without articles
+--- @usage local sanitized = atlas_SanitizeName("The Deadmines")
+--- @since 1.0.0
+---
 local function atlas_SanitizeName(text)
 	text = string.lower(text)
 	if AtlasSortIgnore then
@@ -118,8 +174,15 @@ local function atlas_SanitizeName(text)
 	return text
 end
 
---Comparator function for alphabetic sorting of maps
---yey, one function for everything
+---
+--- Comparator function for alphabetic sorting of Atlas maps
+--- Sorts zone names alphabetically after sanitizing them
+--- @param a string First zone identifier to compare
+--- @param b string Second zone identifier to compare
+--- @return boolean True if first zone should come before second zone
+--- @usage table.sort(AtlasTW.DropDowns[n], atlas_SortZonesAlpha)
+--- @since 1.0.0
+---
 local function atlas_SortZonesAlpha(a, b)
 	local aa = atlas_SanitizeName(AtlasTW.InstanceData[a].Name)
 	local bb = atlas_SanitizeName(AtlasTW.InstanceData[b].Name)
@@ -127,7 +190,13 @@ local function atlas_SortZonesAlpha(a, b)
 	return aa < bb
 end
 
---Updates the appearance of the lock button based on the status of AtlasLocked
+---
+--- Updates the appearance of the lock button based on the Atlas lock status
+--- Changes button textures to reflect current locked/unlocked state
+--- @return nil
+--- @usage atlas_UpdateLock()
+--- @since 1.0.0
+---
 local function atlas_UpdateLock()
 	if(AtlasTWOptions.AtlasLocked) then
 		AtlasLockNorm:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\LockButton-Locked-Up")
@@ -138,8 +207,14 @@ local function atlas_UpdateLock()
 	end
 end
 
---Initializes everything relating to saved variables and data in other lua files
---This should be called ONLY when we're sure our variables are in memory
+---
+--- Initializes Atlas addon components and saved variables
+--- Sets up UI frames, validates options, populates dropdowns and applies settings
+--- Should be called ONLY when saved variables are loaded into memory
+--- @return nil
+--- @usage Atlas_Init() -- Called automatically on ADDON_LOADED
+--- @since 1.0.0
+---
 local function Atlas_Init()
 	-- Initialize UI frames
 	AtlasLoot_InitializeUI()
@@ -149,16 +224,7 @@ local function Atlas_Init()
 		AtlasTW.OptionDefaultSettings()
 	end
 
-	--populate the dropdown lists...yeeahah this is so much nicer!
-	-- Add validation for dropdown data
-	if AtlasTW.DEBUGMODE then
-	    local dropdownErrors = AtlasTW_DropDownValidateData()
-	    if table.getn(dropdownErrors) > 0 then
-	        for _, error in pairs(dropdownErrors) do
-	            debug("DropDown validation error: " .. error)
-	        end
-	    end
-	end
+	--populate the dropdown lists
 
 	AtlasTW.PopulateDropdowns()
 
@@ -176,8 +242,14 @@ local function Atlas_Init()
 	AtlasTW.OptionsInit()
 end
 
--- Performs a search through Atlas data based on input text
--- @param text The search text to filter Atlas entries by
+---
+--- Performs a search through Atlas data based on input text
+--- Filters Atlas entries and updates the scroll list with matching results
+--- @param text string|nil The search text to filter Atlas entries by
+--- @return nil Updates AtlasTW.ScrollList and AtlasTW.CurrentLine globals
+--- @usage AtlasTW.Search("blackrock") -- Search for Blackrock instances
+--- @since 1.0.0
+---
 function AtlasTW.Search(text)
 	if not text then text = "" end
 	local search_text = string.lower(text)
@@ -194,7 +266,13 @@ function AtlasTW.Search(text)
 	AtlasTW.CurrentLine = i - 1
 end
 
---Main Atlas event handler
+---
+--- Main Atlas event handler for ADDON_LOADED and other WoW events
+--- Initializes the addon when loaded and detects player faction
+--- @return nil
+--- @usage Automatically called by WoW event system
+--- @since 1.0.0
+---
 function AtlasTW.OnEvent()
 	if arg1 == AtlasTW.Name then
 		Atlas_Init()
@@ -207,11 +285,18 @@ function AtlasTW.OnEvent()
 		end
 	elseif event == "PLAYER_ENTERING_WORLD" and loadingStartTime then
 		local loadingTime = (GetTime() - loadingStartTime) * 1000
-		print(string.format("Load time: %.2f ", loadingTime))
+		--print(string.format("Load time: %.2f ", loadingTime))
 		loadingStartTime = nil
 	end
 end
 
+---
+--- Populates dropdown menus with Atlas instance data based on current sort order
+--- Organizes instances into categories and applies alphabetic sorting where appropriate
+--- @return nil Updates AtlasTW.DropDowns global table
+--- @usage AtlasTW.PopulateDropdowns() -- Called during initialization
+--- @since 1.0.0
+---
 function AtlasTW.PopulateDropdowns()
     local sortType = AtlasTW_DropDownSortOrder[AtlasTWOptions.AtlasSortBy]
     local subcatOrder = AtlasTW_DropDownGetLayoutOrder(sortType)
@@ -228,12 +313,25 @@ function AtlasTW.PopulateDropdowns()
     end
 end
 
---Simple function to toggle the Atlas frame's lock status and update it's appearance
+---
+--- Toggles the Atlas frame's lock status and updates button appearance
+--- Prevents or allows frame dragging based on current lock state
+--- @return nil
+--- @usage AtlasTW.ToggleLock() -- Called by lock button click
+--- @since 1.0.0
+---
 function AtlasTW.ToggleLock()
 	AtlasTWOptions.AtlasLocked = not AtlasTWOptions.AtlasLocked
 	atlas_UpdateLock()
 end
 
+---
+--- Sets the selected index for the Atlas switch dropdown
+--- @param index number The index to set as selected
+--- @return nil
+--- @usage atlasSwitchDD_Set(2)
+--- @since 1.0.0
+---
 local function atlasSwitchDD_Set(index)
 	for k,v in pairs(AtlasTW.DropDowns) do
 		for k2,v2 in pairs(v) do
@@ -248,10 +346,24 @@ local function atlasSwitchDD_Set(index)
 	AtlasTW.Refresh()
 end
 
+---
+--- Handles click events on the Atlas switch dropdown
+--- Updates the selected option and refreshes the display
+--- @return nil
+--- @usage Called automatically by UI dropdown system
+--- @since 1.0.0
+---
 local function atlasSwitchDD_OnClick()
 	atlasSwitchDD_Set(this:GetID())
 end
 
+---
+--- Initializes the Atlas switch dropdown on load
+--- Sets up the dropdown options and default selection
+--- @return nil
+--- @usage Called automatically during UI initialization
+--- @since 1.0.0
+---
 local function atlasSwitchDD_OnLoad()
 	local info
 	for _,v in pairs(atlas_Ints_Ent_DropDown) do
@@ -263,6 +375,15 @@ local function atlasSwitchDD_OnLoad()
 	end
 end
 
+---
+--- Sorting function for Atlas switch dropdown items
+--- Compares two dropdown items for alphabetical ordering
+--- @param a table First dropdown item to compare
+--- @param b table Second dropdown item to compare
+--- @return boolean True if a should come before b in sort order
+--- @usage Used internally by table.sort for dropdown ordering
+--- @since 1.0.0
+---
 local function atlasSwitchDD_Sort(a, b)
 	local aa = AtlasTW.InstanceData[a].Name
 	local bb = AtlasTW.InstanceData[b].Name
@@ -270,8 +391,14 @@ local function atlasSwitchDD_Sort(a, b)
 end
 
 --Refreshes the Atlas frame, usually because a new map needs to be displayed
---The zoneID variable represents the internal name used for each map
---Also responsible for updating all the text when a map is changed
+---
+--- Refreshes the Atlas display with current map selection
+--- Updates map texture, boss information, quest frame and info panel
+--- The zoneID variable represents the internal name used for each map
+--- @return nil
+--- @usage AtlasTW.Refresh() -- Called after changing maps or options
+--- @since 1.0.0
+---
 function AtlasTW.Refresh()
 	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
 	local data = AtlasTW.InstanceData
@@ -426,9 +553,13 @@ function AtlasTW.Refresh()
 	end
 end
 
---when the switch button is clicked
---we can basically assume that there's a match
---find it, set it, then update menus and the maps
+---
+--- Handles switch button clicks to toggle between entrance and instance maps
+--- Automatically switches if only one match exists, otherwise shows dropdown menu
+--- @return nil
+--- @usage AtlasTW.SwitchButtonOnClick() -- Called by switch button OnClick
+--- @since 1.0.0
+---
 function AtlasTW.SwitchButtonOnClick()
 	if getn(atlas_Ints_Ent_DropDown) == 1 then
 		--one link, so we can just go there right away
@@ -439,8 +570,13 @@ function AtlasTW.SwitchButtonOnClick()
 	end
 end
 
---Called whenever an item in the map type dropdown menu is clicked
---Sets the main dropdown menu contents to reflect the category of map selected
+---
+--- Handles map type dropdown menu item clicks
+--- Updates the main dropdown menu contents to reflect the selected map category
+--- @return nil
+--- @usage Called automatically by dropdown menu system
+--- @since 1.0.0
+---
 local function atlasFrameDropDownType_OnClick()
 	local thisID = this:GetID()
 	UIDropDownMenu_SetSelectedID(AtlasFrameDropDownType, thisID)
@@ -450,7 +586,13 @@ local function atlasFrameDropDownType_OnClick()
 	AtlasTW.Refresh()
 end
 
---Function used to initialize the map type dropdown menu
+---
+--- Initializes the map type dropdown menu with category options
+--- Populates dropdown with sorted category names based on current sort settings
+--- @return nil
+--- @usage UIDropDownMenu_Initialize(AtlasFrameDropDownType, atlasFrameDropDownType_Initialize)
+--- @since 1.0.0
+---
 local function atlasFrameDropDownType_Initialize()
 	local info
     local sortType = AtlasTW_DropDownSortOrder[AtlasTWOptions.AtlasSortBy]
@@ -464,8 +606,13 @@ local function atlasFrameDropDownType_Initialize()
     end
 end
 
---Called whenever an item in the main dropdown menu is clicked
---Sets the newly selected map as current and refreshes the frame
+---
+--- Handles click events on main dropdown menu items
+--- Sets the newly selected map as current and refreshes the Atlas frame
+--- @return nil
+--- @usage Called automatically by UI dropdown system
+--- @since 1.0.0
+---
 local function atlasFrameDropDown_OnClick()
 	local i = this:GetID()
 	UIDropDownMenu_SetSelectedID(AtlasFrameDropDown, i)
@@ -473,8 +620,13 @@ local function atlasFrameDropDown_OnClick()
 	AtlasTW.Refresh()
 end
 
---Function used to initialize the main dropdown menu
---Looks at the status of AtlasType to determine how to populate the list
+---
+--- Initializes the main dropdown menu with instance/map options
+--- Populates dropdown based on current AtlasType selection
+--- @return nil
+--- @usage UIDropDownMenu_Initialize(AtlasFrameDropDown, atlasFrameDropDown_Initialize)
+--- @since 1.0.0
+---
 local function atlasFrameDropDown_Initialize()
 	local info
 	for _,v in pairs(AtlasTW.DropDowns[AtlasTWOptions.AtlasType]) do
@@ -486,8 +638,13 @@ local function atlasFrameDropDown_Initialize()
 	end
 end
 
---Modifies the value of GetRealZoneText to account for some naming conventions
---Always use this function instead of GetRealZoneText within Atlas
+---
+--- Gets the current zone text with Atlas naming convention fixes applied
+--- Always use this function instead of GetRealZoneText within Atlas
+--- @return string The corrected zone name or original if no substitution exists
+--- @usage local zone = atlas_GetFixedZoneText()
+--- @since 1.0.0
+---
 local function atlas_GetFixedZoneText()
 	local currentZone = GetRealZoneText()
 	if AtlasZoneSubstitutions[currentZone] then
@@ -496,8 +653,13 @@ local function atlas_GetFixedZoneText()
 	return currentZone
 end
 
---Checks the player's current location against all Atlas maps
---If a match is found display that map right away
+---
+--- Automatically selects the appropriate Atlas map based on player's current location
+--- Checks zone and subzone data to find the best matching map and displays it
+--- @return nil Updates AtlasTWOptions.AtlasType and AtlasTWOptions.AtlasZone if match found
+--- @usage atlasAutoSelect() -- Called when auto-select is enabled
+--- @since 1.0.0
+---
 local function atlasAutoSelect()
 	local currentZone = atlas_GetFixedZoneText()
 	local currentSubZone = GetSubZoneText()
@@ -584,21 +746,39 @@ local function atlasAutoSelect()
 	debug("Nothing changed because no match was found.")
 end
 
---Called whenever the map type dropdown menu is shown
+---
+--- Initializes and displays the map type dropdown menu
+--- Sets up category dropdown with current selection and proper width
+--- @return nil
+--- @usage Called automatically when dropdown is shown
+--- @since 1.0.0
+---
 function AtlasTW.FrameDropDownTypeOnShow()
 	UIDropDownMenu_Initialize(AtlasFrameDropDownType, atlasFrameDropDownType_Initialize)
 	UIDropDownMenu_SetSelectedID(AtlasFrameDropDownType, AtlasTWOptions.AtlasType)
 	UIDropDownMenu_SetWidth(190, AtlasFrameDropDownType)
 end
 
---Called whenever the main dropdown menu is shown
+---
+--- Initializes and displays the main instance dropdown menu
+--- Sets up instance dropdown with current selection and proper width
+--- @return nil
+--- @usage Called automatically when dropdown is shown
+--- @since 1.0.0
+---
 function AtlasTW.FrameDropDownOnShow()
 	UIDropDownMenu_Initialize(AtlasFrameDropDown, atlasFrameDropDown_Initialize)
 	UIDropDownMenu_SetSelectedID(AtlasFrameDropDown, AtlasTWOptions.AtlasZone)
 	UIDropDownMenu_SetWidth(190, AtlasFrameDropDown)
 end
 
---Called whenever the Atlas frame is displayed
+---
+--- Handles Atlas frame show event and initializes display components
+--- Sets up tooltips, auto-selection, dropdowns and shows loot frame if needed
+--- @return nil
+--- @usage Called automatically when Atlas frame is shown
+--- @since 1.0.0
+---
 function AtlasTW.OnShow()
 	setupPfUITooltip()
 	if(AtlasTWOptions.AtlasAutoSelect) then

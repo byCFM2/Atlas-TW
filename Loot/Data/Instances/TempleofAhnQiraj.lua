@@ -1,5 +1,20 @@
-
-
+---
+--- TempleofAhnQiraj.lua - Temple of Ahn'Qiraj raid instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Temple of Ahn'Qiraj
+--- 40-player raid instance. It includes all boss encounters, tier set items,
+--- legendary drops, and unique Qiraji weapons with their respective drop rates.
+---
+--- Features:
+--- • Complete boss encounter loot tables
+--- • Tier 2.5 set items and tokens
+--- • Legendary weapon drops
+--- • Unique Qiraji items and mounts
+--- • Scarab Lord quest items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

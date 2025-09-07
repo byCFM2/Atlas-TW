@@ -1,5 +1,20 @@
--- NerubianOverseer.lua - Item data for the world boss Nerubian Overseer
--- Modular data structure for Atlas-TW
+---
+--- NerubianOverseer.lua - Nerubian Overseer world boss loot data
+---
+--- This module contains comprehensive loot data for the Nerubian Overseer,
+--- a special world boss encounter. It includes unique drops, nerubian-themed
+--- equipment, and boss-specific rewards from this elite encounter.
+---
+--- Features:
+--- • Complete Nerubian Overseer loot table
+--- • Nerubian-themed equipment
+--- • Rare and epic drops
+--- • Unique world boss rewards
+--- • Encounter mechanics data
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

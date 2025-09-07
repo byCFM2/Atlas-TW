@@ -1,5 +1,20 @@
--- World_Bosses.lua - Item data for world bosses
--- Modular data structure for Atlas-TW
+---
+--- Azuregos.lua - Azuregos world boss loot data
+---
+--- This module contains comprehensive loot data for Azuregos, the blue
+--- dragon world boss located in Azshara. It includes rare drops,
+--- epic equipment, and unique dragon-themed items.
+---
+--- Features:
+--- • Complete Azuregos loot table
+--- • Rare and epic drops
+--- • Dragon-themed equipment
+--- • Unique world boss rewards
+--- • Respawn timer information
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

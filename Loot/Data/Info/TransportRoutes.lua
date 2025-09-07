@@ -1,5 +1,20 @@
--- TransportRoutes Info Data
--- Compatible with Atlas Loot TW
+---
+--- TransportRoutes.lua - Transportation route data
+---
+--- This module contains comprehensive transportation route information for
+--- Azeroth. It provides detailed data about boats, zeppelins, portals,
+--- and other transportation methods connecting different zones and continents.
+---
+--- Features:
+--- • Complete transportation network mapping
+--- • Boat and zeppelin schedules
+--- • Portal locations and requirements
+--- • Cross-continent travel routes
+--- • Transportation costs and timings
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

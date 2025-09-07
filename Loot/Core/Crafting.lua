@@ -1,3 +1,22 @@
+---
+--- Crafting.lua - Crafting professions menu and data management
+---
+--- This module provides comprehensive crafting profession support for Atlas-TW,
+--- organizing all tradeskill-related loot tables and profession menus.
+--- It handles the display and navigation of crafting recipes, materials,
+--- and profession-specific items across all available tradeskills.
+---
+--- Features:
+--- • Complete profession menu structure
+--- • Tradeskill categorization and organization
+--- • Recipe and material data management
+--- • Integration with Babble localization libraries
+--- • Support for all classic WoW professions
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
@@ -29,12 +48,18 @@ AtlasTW.MenuData.Crafting = {
     { name = L["Crafted Epic Weapons"], icon = "Interface\\Icons\\INV_Hammer_Unique_Sulfuras", lootpage = "CraftedWeapons" },
 }
 
+---
+--- Displays the crafting professions menu in AtlasLoot
+--- Shows all available crafting professions and their loot tables
+--- @return nil
+--- @usage AtlasLoot_CraftingMenu() -- Show crafting menu
+--- @since 1.0.0
 function AtlasLoot_CraftingMenu()
     AtlasTW.Loot.PrepMenu(L["Crafting"], AtlasTW.MenuData.Crafting)
 end
 
 AtlasTW.MenuData.CraftedSet = {
-    { name = RED..BS["Tailoring"], Extra = BS["Cloth"], icon = "Interface\\Icons\\INV_Chest_Cloth_21", isheader = true },
+    { name = RED..BS["Tailoring"].." - "..BS["Cloth"], icon = "Interface\\Icons\\INV_Chest_Cloth_21", isheader = true }, -- use cloth in name coz resolve navigation problem same name with parrent Tailoring page
     { name = BIS["Augerer's Attire"], icon = "Interface\\Icons\\INV_Helmet_11", lootpage = "AugerersAttire" },
     { name = BIS["Shadoweave"], icon = "Interface\\Icons\\INV_Helmet_27", lootpage = "ShadoweaveSet" },
     { name = BIS["Diviner's Garments"], icon = "Interface\\Icons\\INV_Helmet_33", lootpage = "DivinersGarments" },
@@ -44,12 +69,12 @@ AtlasTW.MenuData.CraftedSet = {
     { name = BIS["Flarecore Regalia"], icon = "Interface\\Icons\\inv_chest_cloth_18", lootpage = "FlarecoreRegalia" },
     { name = BIS["Dreamthread Regalia"], icon = "Interface\\Icons\\INV_Gauntlets_23", lootpage = "DreamthreadRegalia" },
     {},
-    { name = RED..BS["Leatherworking"], Extra = BS["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_12", isheader = true },
+    { name = RED..BS["Leatherworking"].." - "..BS["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_12", isheader = true },
     { name = BIS["Red Dragon Mail"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\inv_chest_chain_06", lootpage = "RedDragonM" },
     { name = BIS["Green Dragon Mail"], Extra = L["Nature Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_05", lootpage = "GreenDragonM" },
     { name = BIS["Blue Dragon Mail"], Extra = L["Arcane Resistance Gear"], icon = "Interface\\Icons\\INV_Chest_Chain_04", lootpage = "BlueDragonM" },
     { name = BIS["Black Dragon Mail"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_03", lootpage = "BlackDragonM" },
-    { name = RED..BS["Leatherworking"], Extra = BS["Leather"], icon = "Interface\\Icons\\INV_Chest_Leather_04", isheader = true },
+    { name = RED..BS["Leatherworking"].." - "..BS["Leather"], icon = "Interface\\Icons\\INV_Chest_Leather_04", isheader = true },
     { name = BIS["Grifter's Armor"], icon = "Interface\\Icons\\INV_Helmet_33", lootpage = "GriftersArmor" },
     { name = BIS["Primalist's Trappings"], icon = "Interface\\Icons\\Inv_Chest_Plate06", lootpage = "PrimalistsTrappings" },
     { name = BIS["Volcanic Armor"], Extra = L["Fire Resistance Gear"], icon = "Interface\\Icons\\INV_Pants_06", lootpage = "VolcanicArmor" },
@@ -61,11 +86,11 @@ AtlasTW.MenuData.CraftedSet = {
     { name = BIS["Convergence of the Elements"], icon = "Interface\\Icons\\INV_Helmet_13", lootpage = "ConvergenceoftheElements" },
     { name = BIS["Dreamhide Battlegarb"], icon = "Interface\\Icons\\inv_shoulder_18", lootpage = "DreamhideBattlegarb" },
     {},
-    { name = RED..BS["Blacksmithing"], Extra = BS["Plate"], icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
+    { name = RED..BS["Blacksmithing"].." - "..BS["Plate"], icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
     { name = BIS["Steel Plate Armor"], icon = "Interface\\Icons\\INV_Helmet_25", lootpage = "SteelPlate" },
     { name = BIS["Imperial Plate"], icon = "Interface\\Icons\\INV_Belt_01", lootpage = "ImperialPlate" },
     {},
-    { name = RED..BS["Blacksmithing"], Extra = BS["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
+    { name = RED..BS["Blacksmithing"].." - "..BS["Mail"], icon = "Interface\\Icons\\INV_Chest_Chain_04", isheader = true },
     { name = BIS["Bloodsoul Embrace"], icon = "Interface\\Icons\\INV_Shoulder_15", lootpage = "BloodsoulEmbrace" },
     { name = BIS["Hateforge Armor"], icon = "Interface\\Icons\\INV_Helmet_10", lootpage = "HateforgeArmor" },
     { name = BIS["Towerforge Battlegear"], icon = "Interface\\Icons\\INV_Helmet_37", lootpage = "TowerforgeBattlegear" },
@@ -84,6 +109,11 @@ AtlasTW.MenuData.CraftedSet = {
     { name = BIS["Dreamsteel Armor"], icon = "Interface\\Icons\\INV_Bracer_03", lootpage = "DreamsteelArmor" },
 }
 
+---
+--- Opens the Crafted Sets menu in AtlasLoot
+--- @return nil
+--- @usage AtlasLootCraftedSetMenu()
+--- @since 1.0.0
 function AtlasLootCraftedSetMenu()
     AtlasTW.Loot.PrepMenu(L["Crafted Sets"], AtlasTW.MenuData.CraftedSet, L["Crafting"])
 end
@@ -104,6 +134,12 @@ AtlasTW.MenuData.Alchemy = {
     { name = BS["Alchemy"]..": "..L["Other"], lootpage = "AlchemyOther" },
 }
 
+---
+--- Opens the Alchemy crafting menu in AtlasLoot
+--- @return nil
+--- @usage AtlasLoot_AlchemyMenu()
+--- @since 1.0.0
+---
 function AtlasLoot_AlchemyMenu()
     AtlasTW.Loot.PrepMenu(BS["Alchemy"], AtlasTW.MenuData.Alchemy, L["Crafting"], "Interface\\Icons\\Trade_Alchemy")
 end
@@ -139,6 +175,12 @@ AtlasTW.MenuData.Smithing = {
     { name = BS["Blacksmithing"]..": "..L["Master Swordsmith"], icon = "Interface\\Icons\\INV_Sword_41", lootpage = "Swordsmith" },
 }
 
+---
+--- Opens the Blacksmithing crafting menu in AtlasLoot
+--- @return nil
+--- @usage AtlasLoot_SmithingMenu()
+--- @since 1.0.0
+---
 function AtlasLoot_SmithingMenu()
     AtlasTW.Loot.PrepMenu(BS["Blacksmithing"],AtlasTW.MenuData.Smithing,L["Crafting"],"Interface\\Icons\\Trade_BlackSmithing")
 end
@@ -161,6 +203,11 @@ AtlasTW.MenuData.Enchanting = {
     { name = BS["Enchanting"]..": "..L["Misc"], lootpage = "EnchantingMisc" },
 }
 
+---
+--- Opens the Enchanting crafting menu in AtlasLoot
+--- @return nil
+--- @usage AtlasLoot_EnchantingMenu()
+--- @since 1.0.0
 function AtlasLoot_EnchantingMenu()
     AtlasTW.Loot.PrepMenu(BS["Enchanting"], AtlasTW.MenuData.Enchanting, L["Crafting"], "Interface\\Icons\\Trade_Engraving")
 end
@@ -186,6 +233,11 @@ AtlasTW.MenuData.Engineering = {
     { name = L["Goblin Engineering"], icon = "Interface\\Icons\\Spell_Fire_Selfdestruct", lootpage = "Goblin" },
 }
 
+---
+--- Opens the Engineering crafting menu in AtlasLoot
+--- @return nil
+--- @usage AtlasLoot_EngineeringMenu()
+--- @since 1.0.0
 function AtlasLoot_EngineeringMenu()
     AtlasTW.Loot.PrepMenu(BS["Engineering"], AtlasTW.MenuData.Engineering, L["Crafting"], "Interface\\Icons\\Trade_Engineering")
 end
@@ -215,6 +267,11 @@ AtlasTW.MenuData.Leatherworking = {
     { name = BS["Elemental Leatherworking"], icon = "Interface\\Icons\\Spell_Fire_Volcano", lootpage = "Elemental" },
 }
 
+---
+--- Opens the Leatherworking crafting menu in AtlasLoot
+--- @return nil
+--- @usage AtlasLoot_LeatherworkingMenu()
+--- @since 1.0.0
 function AtlasLoot_LeatherworkingMenu()
     AtlasTW.Loot.PrepMenu(BS["Leatherworking"], AtlasTW.MenuData.Leatherworking, L["Crafting"], "Interface\\Icons\\INV_Misc_ArmorKit_17")
 end
@@ -225,6 +282,11 @@ AtlasTW.MenuData.Mining = {
     { name = BS["Smelting"], icon = "Interface\\Icons\\Spell_Fire_FlameBlades", lootpage = "Smelting" },
 }
 
+---
+--- Opens the Mining profession menu in AtlasLoot
+--- @return nil
+--- @usage AtlasLoot_MiningMenu()
+--- @since 1.0.0
 function AtlasLoot_MiningMenu()
     AtlasTW.Loot.PrepMenu(BS["Mining"], AtlasTW.MenuData.Mining, L["Crafting"], "Interface\\Icons\\Trade_Mining")
 end
@@ -251,6 +313,11 @@ AtlasTW.MenuData.Tailoring = {
     { name = BS["Tailoring"]..": "..L["Misc"], lootpage = "TailoringMisc" },
 }
 
+---
+--- Opens the Tailoring crafting menu in AtlasLoot
+--- @return nil
+--- @usage AtlasLoot_TailoringMenu()
+--- @since 1.0.0
 function AtlasLoot_TailoringMenu()
     AtlasTW.Loot.PrepMenu(BS["Tailoring"], AtlasTW.MenuData.Tailoring, L["Crafting"], "Interface\\Icons\\Trade_Tailoring")
 end
@@ -276,6 +343,11 @@ AtlasTW.MenuData.Jewelcrafting = {
     { name = BS["Jewelcrafting"]..": "..BS["Goldsmithing"], icon = "Interface\\Icons\\INV_Jewelry_Ring_03", lootpage = "JewelcraftingGoldsmithing" },
 }
 
+---
+--- Opens the Jewelcrafting crafting menu in AtlasLoot
+--- @return nil
+--- @usage AtlasLoot_JewelcraftingMenu()
+--- @since 1.0.0
 function AtlasLoot_JewelcraftingMenu()
     AtlasTW.Loot.PrepMenu(BS["Jewelcrafting"], AtlasTW.MenuData.Jewelcrafting, L["Crafting"], "Interface\\Icons\\INV_Jewelry_Necklace_01")
 end
@@ -288,6 +360,11 @@ AtlasTW.MenuData.Cooking = {
     { name = BS["Cooking"]..": "..L["Artisan"], lootpage = "CookingArtisan" },
 }
 
+---
+--- Opens the Cooking crafting menu in AtlasLoot
+--- @return nil
+--- @usage AtlasLoot_CookingMenu()
+--- @since 1.0.0
 function AtlasLoot_CookingMenu()
     AtlasTW.Loot.PrepMenu(BS["Cooking"], AtlasTW.MenuData.Cooking, L["Crafting"], "Interface\\Icons\\INV_Misc_Food_15")
 end

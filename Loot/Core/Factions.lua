@@ -1,3 +1,21 @@
+---
+--- Factions.lua - Faction reputation rewards system
+---
+--- This module handles faction-related loot tables and reputation rewards for Atlas-TW.
+--- It provides access to items available from various factions including neutral factions,
+--- Alliance-specific factions, and Horde-specific factions with their reputation requirements.
+---
+--- Features:
+--- • Comprehensive faction reward catalogs
+--- • Reputation requirement tracking
+--- • Faction-specific item organization
+--- • Cross-faction availability indicators
+--- • Integration with Babble localization
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
@@ -37,6 +55,14 @@ AtlasTW.MenuData.Factions = {
 	{ name = BF["Thunder Bluff"],         icon = "Interface\\Icons\\INV_Misc_Foot_Centaur",                lootpage = "ThunderBluff",      Extra = "|cffFF0000"..BF["Horde"] },
 }
 
+---
+--- Displays the faction reputation rewards menu
+--- Shows all available factions with their reputation rewards, organized by neutral,
+--- Alliance-specific, and Horde-specific factions with location information
+--- @return nil
+--- @usage AtlasLootRepMenu()
+--- @since 1.0.0
+---
 function AtlasLootRepMenu()
     AtlasTW.Loot.PrepMenu(L["Factions"], AtlasTW.MenuData.Factions)
 end

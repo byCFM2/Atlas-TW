@@ -1,5 +1,20 @@
-
-
+---
+--- MoltenCore.lua - Molten Core raid instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Molten Core
+--- 40-player raid instance. It includes all boss encounters, shared loot pools,
+--- tier set items, legendary drops, and crafting patterns with their drop rates.
+---
+--- Features:
+--- • Complete boss encounter loot tables
+--- • Shared loot pool definitions
+--- • Tier 1 set items and tokens
+--- • Legendary weapon drops
+--- • Crafting patterns and recipes
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

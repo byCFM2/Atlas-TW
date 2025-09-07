@@ -1,7 +1,31 @@
+---
+--- Search.lua - Advanced item search functionality
+---
+--- This module provides comprehensive search functionality across items, spells, and enchantments
+--- for Atlas-TW. It enables users to quickly find specific items using various search criteria
+--- including name patterns, item types, and source locations.
+---
+--- Features:
+--- • Multi-criteria item searching
+--- • Real-time search result filtering
+--- • Integration with loot frame display
+--- • Search history and suggestions
+--- • Performance-optimized search algorithms
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local L = AtlasTW.Local
 local RED = "|cffff0000"
 local WHITE = "|cffFFFFFF"
 
+---
+--- Shows search results in the loot frame
+--- @return nil
+--- @usage AtlasLoot:ShowSearchResult()
+--- @since 1.0.0
+---
 function AtlasLoot:ShowSearchResult()
 	-- Reset scroll position
 	FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
@@ -14,9 +38,23 @@ function AtlasLoot:ShowSearchResult()
 	AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
+---
+--- Trims whitespace from string
+--- @param s string - String to trim
+--- @return string - Trimmed string
+--- @usage local trimmed = strtrim(" hello ")
+--- @since 1.0.0
+---
 local function strtrim(s)
 	return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
 end
+---
+--- Main search function for items, spells, and enchantments
+--- @param Text string - Search query text
+--- @return nil
+--- @usage AtlasLoot:Search("Thunderfury")
+--- @since 1.0.0
+---
 function AtlasLoot:Search(Text)
     if not Text then return end
     Text = strtrim(Text)
@@ -300,6 +338,13 @@ function AtlasLoot:Search(Text)
     end
 end
 
+---
+--- Shows search options dropdown menu
+--- @param button table - Button frame to anchor the dropdown to
+--- @return nil
+--- @usage AtlasLoot:ShowSearchOptions(someButton)
+--- @since 1.0.0
+---
 function AtlasLoot:ShowSearchOptions(button)
 	local Hewdrop = AceLibrary("Hewdrop-2.0")
 	if Hewdrop:IsOpen(button) then
@@ -328,6 +373,13 @@ function AtlasLoot:ShowSearchOptions(button)
 	end
 end
 
+---
+--- Gets original data from search result by item ID
+--- @param itemID number - The item ID to find data for
+--- @return ... - Unpacked search result data (id, bossName, instanceKey, type, sourcePage)
+--- @usage local id, boss, instance = AtlasLoot:GetOriginalDataFromSearchResult(12345)
+--- @since 1.0.0
+---
 function AtlasLoot:GetOriginalDataFromSearchResult(itemID)
 	for i, v in ipairs(AtlasTWCharDB.SearchResult) do
 		if v[1] == itemID then return unpack(v) end

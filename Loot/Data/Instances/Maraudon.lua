@@ -1,5 +1,20 @@
--- Maraudon Loot Data
--- Compatible with Atlas Loot TW
+---
+--- Maraudon.lua - Maraudon dungeon instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Maraudon
+--- 5-player dungeon instance. It includes all boss encounters, rare drops,
+--- and dungeon-specific items with their respective drop rates.
+---
+--- Features:
+--- • Complete boss encounter loot tables
+--- • Rare and epic item drops
+--- • Dungeon entrance and layout data
+--- • Level-appropriate loot organization
+--- • Quest reward items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")

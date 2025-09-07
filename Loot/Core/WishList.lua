@@ -1,4 +1,21 @@
---File containing functions related to the wish list.
+---
+--- WishList.lua - Wish list management system
+---
+--- This module provides comprehensive wish list functionality for Atlas-TW.
+--- It allows players to create, manage, and organize their desired items with
+--- categorization, search capabilities, and persistent storage across sessions.
+---
+--- Features:
+--- • Personal item wish list management
+--- • Categorized item organization
+--- • Search and filter capabilities
+--- • Cache optimization for performance
+--- • Cross-session persistence
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local L = AtlasTW.Local
 local BS = AceLibrary("Babble-Spell-2.2a")
 
@@ -7,6 +24,13 @@ if not AtlasTW then AtlasTW = {} end
 if not AtlasTW._CatCache then AtlasTW._CatCache = {} end
 if not AtlasTW._CatRev then AtlasTW._CatRev = {} end
 
+---
+--- Invalidates the categorized list cache for a specific key
+--- @param key string - The cache key to invalidate
+--- @return nil
+--- @usage AtlasLoot_InvalidateCategorizedList("wishlist")
+--- @since 1.0.0
+---
 function AtlasLoot_InvalidateCategorizedList(key)
 	if not key then return end
 	if not AtlasTW then return end
@@ -21,9 +45,12 @@ end
 -- Forward declaration to use function before its definition
 local _GetInstanceKeyByName
 
---[[
-Displays the WishList
-]]
+---
+--- Displays the WishList interface and normalizes wish list data
+--- @return nil
+--- @usage AtlasLoot_ShowWishList()
+--- @since 1.0.0
+---
 function AtlasLoot_ShowWishList()
 	-- Initialize wish list if it doesn't exist
 	if not AtlasTWCharDB.WishList then
@@ -74,7 +101,13 @@ function AtlasLoot_ShowWishList()
 	AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
--- Helper function: find first location of ID (numeric) in instance database
+---
+--- Helper function: find first location of ID (numeric) in instance database
+--- @param targetId number - The target ID to search for
+--- @return string|nil, string|nil - The element name and instance key if found
+--- @usage local elem, inst = FindLocationById(12345)
+--- @since 1.0.0
+---
 local function FindLocationById(targetId)
 	if not targetId or not AtlasTW or not AtlasTW.InstanceData then return nil, nil end
 	local function scanItems(items)
@@ -119,8 +152,13 @@ local function FindLocationById(targetId)
 	return nil, nil
 end
 
--- Migration to storing instance as instance key and correct sourcePage
--- Helper function: get instance key by name or return key as is
+---
+--- Helper function to get instance key by name or return key as is
+--- @param instName string - The instance name to look up
+--- @return string|nil - The instance key or nil if not found
+--- @usage local key = _GetInstanceKeyByName("Molten Core")
+--- @since 1.0.0
+---
 _GetInstanceKeyByName = function(instName)
 	if not instName or instName == "" then return nil end
 	if AtlasTW and AtlasTW.InstanceData then
@@ -134,7 +172,13 @@ _GetInstanceKeyByName = function(instName)
 	return nil
 end
 
--- Function to find instance by element name; returns instKey and normalized element name
+---
+--- Finds instance by element name and returns instance key and normalized element name
+--- @param elemName string - The element name to search for
+--- @return string|nil, string - The instance key and normalized element name
+--- @usage local instKey, elemName = FindInstanceByElemName("Thunderfury")
+--- @since 1.0.0
+---
 local function FindInstanceByElemName(elemName)
 	if not elemName or not AtlasTW or not AtlasTW.InstanceData then
 		return nil, elemName
@@ -168,7 +212,13 @@ local function FindInstanceByElemName(elemName)
 	return nil, elemName
 end
 
--- Returns localized/readable name for loot page by its key
+---
+--- Returns localized/readable name for loot page by its key
+--- @param pageKey string - The loot page key to get display name for
+--- @return string|nil - The display name if found, nil otherwise
+--- @usage local name = AtlasLoot_GetLootPageDisplayName("BWL_Nefarian")
+--- @since 1.0.0
+---
 local function AtlasLoot_GetLootPageDisplayName(pageKey)
 	if not pageKey or pageKey == "" then return nil end
 	if AtlasLoot_IsLootTableAvailable and AtlasLoot_Data and AtlasLoot_Data[pageKey] then
@@ -185,7 +235,13 @@ local function AtlasLoot_GetLootPageDisplayName(pageKey)
 	return pageKey
 end
 
--- New helper: find first craft loot page by spell ID
+---
+--- New helper: find first craft loot page by spell ID
+--- @param spellID number - The spell ID to search for
+--- @return string|nil - The loot page key if found, nil otherwise
+--- @usage local pageKey = FindFirstCraftLootPageForSpell(12345)
+--- @since 1.0.0
+---
 local function FindFirstCraftLootPageForSpell(spellID)
 	if not AtlasLoot_Data or not spellID then return nil end
 	for key, tbl in pairs(AtlasLoot_Data) do
@@ -201,7 +257,13 @@ local function FindFirstCraftLootPageForSpell(spellID)
 	return nil
 end
 
--- Returns localized profession name by loot page key (craft page)
+---
+--- Returns localized profession name by loot page key (craft page)
+--- @param pageKey string - The loot page key to get profession for
+--- @return string|nil - The localized profession name if found
+--- @usage local profession = GetProfessionByLootPageKey("Alchemy1")
+--- @since 1.0.0
+---
 local function GetProfessionByLootPageKey(pageKey)
 	if not pageKey or type(pageKey) ~= "string" then return nil end
 	if not AtlasTW or not AtlasTW.MenuData then return nil end
@@ -292,6 +354,17 @@ local function GetProfessionByLootPageKey(pageKey)
 	return nil
 end
 
+---
+--- Adds an item to the player's wish list with context information
+--- @param itemID number - The item/spell/enchant ID to add
+--- @param elemFromSearch string|table - Element name from search results
+--- @param instKeyFromSearch string - Instance key from search results
+--- @param typeFromSearch string - Type of element (item/spell/enchant)
+--- @param srcFromSearch string - Source information from search
+--- @return nil
+--- @usage AtlasLoot_AddToWishlist(12345, "Thunderfury", "MC", "item", "Bindings")
+--- @since 1.0.0
+---
 function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, typeFromSearch, srcFromSearch)
  	-- Initialize wish list if it doesn't exist
  	if not AtlasTWCharDB.WishList then
@@ -427,11 +500,14 @@ function AtlasLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, type
 	end
 end
 
---[[
-Group items with zone/event name etc, and format them by adding subheadings and empty lines
-This function returns a single table with all items
-wishList: is AtlasTWCharDB["WishList"], parameterized for flexible
-]]
+---
+--- Group items with zone/event name etc, and format them by adding subheadings and empty lines
+--- This function returns a single table with all items
+--- @param wishList table - The wish list to categorize (e.g., AtlasTWCharDB.WishList)
+--- @return table - Categorized list with headers and items
+--- @usage local categorized = AtlasLoot_CategorizeWishList(AtlasTWCharDB.WishList)
+--- @since 1.0.0
+---
 function AtlasLoot_CategorizeWishList(wishList)
 	local result = {}
 
@@ -617,6 +693,14 @@ function AtlasLoot_CategorizeWishList(wishList)
 	return result
 end
 
+---
+--- Gets the subheading for wish list boss entries
+--- @param bossName string - The boss name
+--- @param instanceName string - The instance name
+--- @return string - The formatted subheading
+--- @usage local heading = AtlasLoot_GetWishListSubheadingBoss("Nefarian", "BWL")
+--- @since 1.0.0
+---
 function AtlasLoot_GetWishListSubheadingBoss(bossName, instanceName)
 	-- Return boss or page name as header
 	if bossName and bossName ~= "" then
@@ -635,6 +719,13 @@ function AtlasLoot_GetWishListSubheadingBoss(bossName, instanceName)
 	return L["Unknown"] or "Unknown"
 end
 
+---
+--- Removes an element from the wish list by its ID
+--- @param elemID number - The ID of the element to remove
+--- @return nil
+--- @usage AtlasLoot_DeleteFromWishList(12345)
+--- @since 1.0.0
+---
 function AtlasLoot_DeleteFromWishList(elemID)
 	-- Removes element by its ID from wish list (supports both record formats)
 	if not elemID then return end
@@ -685,6 +776,14 @@ function AtlasLoot_DeleteFromWishList(elemID)
 	AtlasLoot_ShowWishList()
 end
 
+---
+--- Gets the parent instance name for a loot table
+--- @param bossName string - The boss name
+--- @param instanceName string - The instance name
+--- @return string - The parent instance display name
+--- @usage local parent = GetLootTableParent("Nefarian", "BWL")
+--- @since 1.0.0
+---
 function GetLootTableParent(bossName, instanceName)
 	-- Return instance name as extratext (subtitle)
 	if instanceName and instanceName ~= "" then

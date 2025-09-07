@@ -1,3 +1,20 @@
+---
+--- ZulGurub.lua - Zul'Gurub raid instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Zul'Gurub
+--- 20-player raid instance. It includes all boss encounters, shared loot pools,
+--- class-specific items, and rare drops with their respective drop rates.
+---
+--- Features:
+--- • Complete boss encounter loot tables
+--- • Shared loot pool definitions
+--- • Class token and tier set items
+--- • Rare mount and pet drops
+--- • Reputation reward items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

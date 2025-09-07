@@ -1,4 +1,22 @@
---Instance required libraries
+---
+--- LootConfig.lua - Loot system configuration and menu structure
+---
+--- This module defines the main menu structure and configuration for the Atlas-TW
+--- loot system. It organizes all loot categories, manages menu hierarchies,
+--- and provides utility functions for menu navigation and data organization.
+---
+--- Features:
+--- • Main loot menu structure definition
+--- • Category organization and hierarchy
+--- • Menu navigation utilities
+--- • Localized string caching for performance
+--- • Integration with all loot subsystems
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
+-- Instance required libraries
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
@@ -14,7 +32,11 @@ local LocalizedStrings = {
     Crafting = L["Crafting"],
     RareMobs = L["Rare Mobs"]
 }
--- Helper function to count maximum numeric index (sparse array support)
+--- Counts the maximum numeric index in a sparse array
+--- @param tbl table The table to analyze for maximum numeric index
+--- @return number The highest numeric key found in the table
+--- @usage local max = GetMaxNumericIndex({[1] = "a", [5] = "b"}) -- returns 5
+--- @since 1.0.0
 local function GetMaxNumericIndex(tbl)
     local maxIndex = 0
     for k, v in pairs(tbl) do
@@ -25,7 +47,13 @@ local function GetMaxNumericIndex(tbl)
     return maxIndex
 end
 
--- Helper function for processing category data (optimization)
+--- Processes category data for loot configuration
+--- @param data table The raw category data to process
+--- @param categoryName string The name of the category being processed
+--- @param specialHandler function|nil Optional special handler function
+--- @return table|nil Processed category data structure
+--- @usage local category = ProcessCategoryData(dungeonData, "Dungeons", nil)
+--- @since 1.0.0
 local function ProcessCategoryData(data, categoryName, specialHandler)
     if not data then return nil end
 
@@ -49,7 +77,14 @@ local function ProcessCategoryData(data, categoryName, specialHandler)
     return category
 end
 
--- Special handler for World category (optimization)
+--- Special handler to process World category (ensures Rare Mobs entry is placed last)
+--- @param data table Raw world bosses data
+--- @param category table Output category table reference
+--- @param categoryList table Output list reference inside category
+--- @return table category The processed category table
+--- @usage local cat = ProcessWorldCategory(MenuData.WorldBosses, {}, {})
+--- @since 1.0.0
+---
 local function ProcessWorldCategory(data, category, categoryList)
     local rareMobsEntry = nil
     local maxIndex = GetMaxNumericIndex(data)
@@ -72,7 +107,12 @@ local function ProcessWorldCategory(data, category, categoryList)
     return category
 end
 
--- Special handler for Dungeons category (optimization)
+--- Special handler to process Dungeons & Raids category
+--- @param menuData table Raw dungeon menu data
+--- @return table|nil category The processed category or nil when input is invalid
+--- @usage local cat = ProcessDungeonsCategory(MenuData.Dungeons)
+--- @since 1.0.0
+---
 local function ProcessDungeonsCategory(menuData)
     if not menuData then return nil end
 
@@ -91,7 +131,11 @@ local function ProcessDungeonsCategory(menuData)
     return category
 end
 
--- Optimized function for dynamic generation of AtlasLoot_HewdropDown
+--- Generates the dropdown menu structure for AtlasLoot
+--- Creates optimized menu categories for dungeons, world, PvP, collections, etc.
+--- @return table Complete dropdown menu structure for AtlasLoot
+--- @usage local menu = GenerateHewdropDown()
+--- @since 1.0.0
 local function GenerateHewdropDown()
 
     local MenuData = AtlasTW.MenuData

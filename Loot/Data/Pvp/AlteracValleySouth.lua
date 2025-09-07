@@ -1,5 +1,20 @@
--- BGAlteracValleySouth.lua - Item data for Alterac Valley (South)
--- Modular data structure for Atlas-TW
+---
+--- AlteracValleySouth.lua - Alterac Valley South faction PvP data
+---
+--- This module contains comprehensive PvP data for the southern faction
+--- (Horde) in Alterac Valley battleground. It includes faction-specific
+--- NPCs, objectives, rewards, and strategic locations.
+---
+--- Features:
+--- • Horde faction objectives
+--- • Southern base locations
+--- • Faction-specific NPCs
+--- • Strategic point data
+--- • Battleground rewards
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

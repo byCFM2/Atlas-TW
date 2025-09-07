@@ -1,7 +1,21 @@
--- Atlas-TW Tooltip Enhancement Module (Simplified Version)
--- Original by Otari98, Enhanced by KasVital
--- Compatible with World of Warcraft 1.12
--- Simplified: adds source at the end of tooltip
+---
+--- Tooltip.lua - Tooltip enhancement system for Atlas-TW
+---
+--- This module provides enhanced tooltip functionality with item source information
+--- for Atlas-TW. It extends the default WoW tooltips to show additional details about
+--- where items can be obtained, their drop rates, and related quest information.
+---
+--- Features:
+--- • Enhanced item source information
+--- • Drop rate and location display
+--- • Quest reward integration
+--- • Performance-optimized tooltip rendering
+--- • Configurable tooltip options
+---
+--- @author Original by Otari98
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 -- ============================================================================
 -- CONSTANTS AND CONFIGURATION
@@ -63,6 +77,14 @@ local SourceCache = {}
 -- ============================================================================
 
 local original_SetTooltipMoney = SetTooltipMoney
+---
+--- Overrides the default SetTooltipMoney function to capture money values
+--- @param frame table - The tooltip frame to set money on
+--- @param money number - The money amount to display
+--- @return nil
+--- @usage Called automatically by WoW tooltip system
+--- @since 1.0.0
+---
 function SetTooltipMoney(frame, money)
     if ModuleState.insideHook then
         ModuleState.tooltipMoney = money or 0
@@ -75,7 +97,13 @@ end
 -- UTILITY FUNCTIONS
 -- ============================================================================
 
--- Extract item ID from link
+---
+--- Extracts item ID from an item link string
+--- @param link string - The item link to parse
+--- @return number|nil - The extracted item ID or nil if not found
+--- @usage local itemID = ExtractItemID(itemLink)
+--- @since 1.0.0
+---
 local function ExtractItemID(link)
     if not link then return nil end
     local _, _, id = strfind(link, "item:(%d+)")
@@ -86,7 +114,14 @@ end
 -- ITEM SEARCH FUNCTIONS
 -- ============================================================================
 
--- Universal item search function
+---
+--- Searches for an item ID within a data table structure
+--- @param data table - The data table to search in
+--- @param itemID number - The item ID to search for
+--- @return boolean - True if item is found, false otherwise
+--- @usage local found = FindItemInData(lootTable, 12345)
+--- @since 1.0.0
+---
 local function FindItemInData(data, itemID)
     if type(data) ~= "table" or not itemID then
         return false
@@ -95,11 +130,11 @@ local function FindItemInData(data, itemID)
     for _, item in pairs(data) do
         if item then
             -- Direct ID match (number or table with ID)
-            if item == itemID or 
+            if item == itemID or
                (type(item) == "table" and (item[1] == itemID or item.id == itemID)) then
                 return true
             end
-            
+
             -- Container search
             if type(item) == "table" and item.container then
                 if FindItemInData(item.container, itemID) then
@@ -108,11 +143,18 @@ local function FindItemInData(data, itemID)
             end
         end
     end
-    
+
     return false
 end
 
--- Get display name for source
+---
+--- Gets display name for a source object
+--- @param source table - The source object to get name from
+--- @param fallback string - Fallback name if no name found
+--- @return string - The display name for the source
+--- @usage local name = GetSourceDisplayName(sourceObj, "Unknown")
+--- @since 1.0.0
+---
 local function GetSourceDisplayName(source, fallback)
     if source.name then
         return source.name
@@ -125,7 +167,16 @@ local function GetSourceDisplayName(source, fallback)
     end
 end
 
--- Universal source search function
+---
+--- Universal source search function for finding items in source lists
+--- @param list table - The list of sources to search in
+--- @param label string - Default label for sources without names
+--- @param instanceName string - Name of the instance
+--- @param itemID number - The item ID to search for
+--- @return string|nil - Formatted source string or nil if not found
+--- @usage local source = SearchInSourceList(repList, "Reputation", "Molten Core", 12345)
+--- @since 1.0.0
+---
 local function SearchInSourceList(list, label, instanceName, itemID)
     if type(list) ~= "table" then
         return nil
@@ -159,7 +210,15 @@ end
 -- ITEM SOURCE LOOKUP
 -- ============================================================================
 
--- Find item source in specific instance
+---
+--- Finds item source within a specific instance
+--- @param instanceKey string - The instance key identifier
+--- @param instance table - The instance data table
+--- @param itemID number - The item ID to search for
+--- @return string|nil - Formatted source string or nil if not found
+--- @usage local source = FindItemSourceInInstance("MC", instanceData, 12345)
+--- @since 1.0.0
+---
 local function FindItemSourceInInstance(instanceKey, instance, itemID)
     if type(instance) ~= "table" then
         return nil
@@ -199,7 +258,13 @@ local function FindItemSourceInInstance(instanceKey, instance, itemID)
     return nil
 end
 
--- Find item source in AtlasLoot_Data
+---
+--- Finds item source in AtlasLoot_Data tables
+--- @param itemID number - The item ID to search for
+--- @return string|nil - Formatted source string or nil if not found
+--- @usage local source = FindItemSourceInAtlasLootData(12345)
+--- @since 1.0.0
+---
 local function FindItemSourceInAtlasLootData(itemID)
     if not AtlasLoot_Data then
         return nil
@@ -242,7 +307,13 @@ local function FindItemSourceInAtlasLootData(itemID)
     return nil
 end
 
--- Main item source finder with caching
+---
+--- Main item source finder with caching support
+--- @param itemID number - The item ID to find source for
+--- @return string|nil - Formatted source string or nil if not found
+--- @usage local source = FindItemSource(12345)
+--- @since 1.0.0
+---
 local function FindItemSource(itemID)
     if not itemID then
         return nil
@@ -277,7 +348,13 @@ local function FindItemSource(itemID)
     return nil
 end
 
--- Get item ID by name with caching
+---
+--- Gets item ID by name with caching support
+--- @param name string - The item name to search for
+--- @return number|nil - The item ID or nil if not found
+--- @usage local itemID = GetItemIDByName("Thunderfury")
+--- @since 1.0.0
+---
 local function GetItemIDByName(name)
     if not name then return nil end
 
@@ -307,6 +384,13 @@ end
 -- ============================================================================
 
 -- Simplified tooltip extension function
+---
+--- Extends tooltip with additional information (source and money)
+--- @param tooltip table - The tooltip frame to extend
+--- @return nil
+--- @usage ExtendTooltip(GameTooltip)
+--- @since 1.0.0
+---
 local function ExtendTooltip(tooltip)
     -- Add source information if enabled
     if AtlasTWOptions and AtlasTWOptions.LootShowSource then
@@ -342,7 +426,15 @@ end
 -- TOOLTIP HOOKING SYSTEM
 -- ============================================================================
 
--- Create tooltip method wrapper
+---
+--- Creates a wrapper for tooltip methods to add custom functionality
+--- @param tooltip table - The tooltip frame to wrap
+--- @param methodName string - The method name to wrap
+--- @param linkExtractor function - Function to extract item links
+--- @return nil
+--- @usage CreateTooltipWrapper(GameTooltip, "SetHyperlink", ExtractItemID)
+--- @since 1.0.0
+---
 local function CreateTooltipWrapper(tooltip, methodName, linkExtractor)
     local originalMethod = tooltip[methodName]
 
@@ -385,7 +477,13 @@ local TooltipHooks = {
     {"SetTradeTargetItem", function(index) return ExtractItemID(GetTradeTargetItemLink(index)) end}
 }
 
--- Hook all tooltip methods
+---
+--- Hooks all tooltip methods to add custom functionality
+--- @param tooltip table - The tooltip frame to hook
+--- @return nil
+--- @usage HookTooltip(GameTooltip)
+--- @since 1.0.0
+---
 local function HookTooltip(tooltip)
     -- Store original OnHide handler
     local originalOnHide = tooltip:GetScript("OnHide")
@@ -408,7 +506,15 @@ end
 -- ITEM REFERENCE TOOLTIP HANDLING
 -- ============================================================================
 
--- Hook SetItemRef for item links in chat
+---
+--- Hooks SetItemRef to handle item links in chat
+--- @param link string - The item link
+--- @param text string - The link text
+--- @param button string - The mouse button used
+--- @return nil
+--- @usage Called automatically by WoW when clicking item links
+--- @since 1.0.0
+---
 local original_SetItemRef = SetItemRef
 function SetItemRef(link, text, button)
     local startIndex, _, id = strfind(link or "", "item:(%d+)")
@@ -431,7 +537,14 @@ end)
 -- ADDON INTEGRATION SYSTEM
 -- ============================================================================
 
--- Dynamic addon/variable hooking system
+---
+--- Dynamic addon/variable hooking system
+--- @param addonName string - Name of the addon to wait for
+--- @param hookFunction function - Function to call when addon is loaded
+--- @return nil
+--- @usage AtlasLootTip.HookAddonOrVariable("SomeAddon", function() end)
+--- @since 1.0.0
+---
 AtlasLootTip.HookAddonOrVariable = function(addonName, hookFunction)
     local lurkerFrame = CreateFrame("Frame")
     lurkerFrame.hookFunc = hookFunction

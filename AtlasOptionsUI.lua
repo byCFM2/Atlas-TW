@@ -1,3 +1,21 @@
+---
+--- AtlasOptionsUI.lua - Atlas options UI frame and components
+--- 
+--- This file contains the options UI frame creation and management for Atlas-TW.
+--- It handles the options window interface, UI controls, frame positioning,
+--- and provides the visual components for Atlas configuration settings.
+--- 
+--- Features:
+--- - Options frame creation and styling
+--- - UI control initialization
+--- - Frame positioning and movement
+--- - Visual component management
+--- - Options interface layout
+--- 
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = AtlasTW or {}
 local L = AtlasTW.Local

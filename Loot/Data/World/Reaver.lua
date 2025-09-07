@@ -1,5 +1,20 @@
--- Reaver.lua - Item data for the world boss Dark Reaver of Karazhan
--- Modular data structure for Atlas-TW
+---
+--- Reaver.lua - Dark Reaver of Karazhan world boss loot data
+---
+--- This module contains comprehensive loot data for the Dark Reaver of Karazhan,
+--- a special world boss encounter. It includes unique drops, dark-themed
+--- equipment, and boss-specific rewards from this elite encounter.
+---
+--- Features:
+--- • Complete Dark Reaver loot table
+--- • Dark-themed equipment
+--- • Rare and epic drops
+--- • Unique world boss rewards
+--- • Karazhan-related items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

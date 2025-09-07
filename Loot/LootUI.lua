@@ -1,8 +1,30 @@
-local _G = getfenv()
+---
+--- LootUI.lua - Atlas loot UI frame and component management
+--- 
+--- This file contains the loot UI frame creation and management for Atlas-TW.
+--- It handles loot window interface, item display components, frame templates,
+--- and provides the visual foundation for the Atlas loot browser system.
+--- 
+--- Features:
+--- - Loot frame creation and styling
+--- - Item display templates
+--- - UI component initialization
+--- - Frame positioning and layout
+--- - Loot interface management
+--- 
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local L = AtlasTW.Local
 
+---
 -- Function to copy properties from the parent template
+-- @function AtlasLoot_ApplyParentTemplate
+-- @param frame Frame - The frame to apply template to
+-- @usage AtlasLoot_ApplyParentTemplate(myFrame)
+-- @version 1.0
+---
 local function AtlasLoot_ApplyParentTemplate(frame)
     frame:SetWidth(236)
     frame:SetHeight(28)
@@ -64,7 +86,14 @@ local function AtlasLoot_ApplyParentTemplate(frame)
     border:Hide()
 end
 
+---
 -- Function to apply navigation button properties
+-- @function AtlasLoot_ApplyNavigationButtonTemplate
+-- @param button Button - The button to apply template to
+-- @param buttonType string - Type of navigation button ("prev" or "next")
+-- @usage AtlasLoot_ApplyNavigationButtonTemplate(myButton, "prev")
+-- @version 1.0
+---
 local function AtlasLoot_ApplyNavigationButtonTemplate(button, buttonType)
     button:SetWidth(32)
     button:SetHeight(32)
@@ -80,7 +109,13 @@ local function AtlasLoot_ApplyNavigationButtonTemplate(button, buttonType)
     button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
 end
 
+---
 -- Function to apply AtlasLootContainerItemTemplate properties
+-- @function AtlasLoot_ApplyContainerItemTemplate
+-- @param button Button - The button to apply container item template to
+-- @usage AtlasLoot_ApplyContainerItemTemplate(myButton)
+-- @version 1.0
+---
 function AtlasLoot_ApplyContainerItemTemplate(button)
     button:SetWidth(40)
     button:SetHeight(40)
@@ -114,7 +149,14 @@ function AtlasLoot_ApplyContainerItemTemplate(button)
     end)
 end
 
+---
 -- Create Preset buttons (QuickLook buttons)
+-- @function AtlasLoot_CreatePresetButtons
+-- @param frame Frame - The parent frame to attach preset buttons to
+-- @return table - Table containing all created preset buttons
+-- @usage local presetButtons = AtlasLoot_CreatePresetButtons(parentFrame)
+-- @version 1.0
+---
 local function AtlasLoot_CreatePresetButtons(frame)
     local presetButton = {}
     for i = 1, 6 do
@@ -195,7 +237,14 @@ local function AtlasLoot_CreatePresetButtons(frame)
     return presetButton
 end
 
+---
 -- Create Search Box and related buttons
+-- @function AtlasLoot_CreateSearchElements
+-- @param frame Frame - The parent frame to attach search elements to
+-- @return table - Table containing all created search elements
+-- @usage local searchElements = AtlasLoot_CreateSearchElements(parentFrame)
+-- @version 1.0
+---
 local function AtlasLoot_CreateSearchElements(frame)
     -- Search Box
     local searchBox = CreateFrame("EditBox", "AtlasLootSearchBox", frame, "InputBoxTemplate")
@@ -316,7 +365,14 @@ local function AtlasLoot_CreateSearchElements(frame)
     }
 end
 
+---
 -- Create FontStrings for the frame
+-- @function AtlasLoot_CreateFontStrings
+-- @param frame Frame - The parent frame to attach font strings to
+-- @return table - Table containing all created font strings
+-- @usage local fontStrings = AtlasLoot_CreateFontStrings(parentFrame)
+-- @version 1.0
+---
 local function AtlasLoot_CreateFontStrings(frame)
     -- Selected Category text
     local selectedCategory = frame:CreateFontString(frame:GetName().."_SelectedCategory", "OVERLAY", "GameFontNormal")
@@ -328,7 +384,13 @@ local function AtlasLoot_CreateFontStrings(frame)
     }
 end
 
--- Create tooltips
+---
+-- Create tooltips for AtlasLoot
+-- @function AtlasLoot_CreateTooltips
+-- @return table - Table containing created tooltip frames
+-- @usage local tooltips = AtlasLoot_CreateTooltips()
+-- @version 1.0
+---
 local function AtlasLoot_CreateTooltips()
     local tooltip1 = CreateFrame("GameTooltip", "AtlasLootTooltip", UIParent, "GameTooltipTemplate")
     tooltip1:Hide()
@@ -342,7 +404,16 @@ local function AtlasLoot_CreateTooltips()
     }
 end
 
+---
 -- Function to create buttons based on templates
+-- @function AtlasLoot_CreateButtonFromTemplate
+-- @param name string - The name for the button
+-- @param parent Frame - The parent frame for the button
+-- @param templateType string - The template type to apply
+-- @return Button - The created button with applied template
+-- @usage local button = AtlasLoot_CreateButtonFromTemplate("MyButton", parentFrame, "AtlasLootItem_Template")
+-- @version 1.0
+---
 function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
     local button
 
@@ -398,7 +469,13 @@ function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
     return button
 end
 
+---
 -- Create frame with all item buttons
+-- @function AtlasLoot_CreateItemsFrame
+-- @return Frame - The created items frame with all UI elements
+-- @usage local itemsFrame = AtlasLoot_CreateItemsFrame()
+-- @version 1.0
+---
 local function AtlasLoot_CreateItemsFrame()
     local frame = CreateFrame("Frame", "AtlasLootItemsFrame", AtlasFrame)
     frame:SetWidth(510)
@@ -620,7 +697,13 @@ local function AtlasLoot_CreateItemsFrame()
     return frame
 end
 
--- AtlasLootPanel
+---
+-- Create the main AtlasLoot panel with navigation buttons
+-- @function AtlasLoot_CreatePanel
+-- @return Frame - The created panel frame with all navigation elements
+-- @usage local panel = AtlasLoot_CreatePanel()
+-- @version 1.0
+---
 local function AtlasLoot_CreatePanel()
     local frame = CreateFrame("Frame", "AtlasLootPanel", AtlasFrame)
     frame:SetWidth(689)
@@ -795,7 +878,12 @@ local function AtlasLoot_CreatePanel()
     return frame
 end
 
--- Updated initialization function
+---
+-- Initialize the AtlasLoot UI components
+-- @function AtlasLoot_InitializeUI
+-- @usage AtlasLoot_InitializeUI()
+-- @version 1.0
+---
 function AtlasLoot_InitializeUI()
     AtlasLoot_CreateTooltips()
     AtlasLoot_CreateItemsFrame()

@@ -1,5 +1,20 @@
-
-
+---
+--- DragonmawRetreat.lua - Dragonmaw Retreat instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Dragonmaw Retreat
+--- instance. It includes all boss encounters, rare drops,
+--- and instance-specific items with their respective drop rates.
+---
+--- Features:
+--- • Complete boss encounter loot tables
+--- • Rare and epic item drops
+--- • Instance entrance and layout data
+--- • Level-appropriate loot organization
+--- • Quest reward items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
@@ -208,10 +223,10 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 58108 }, -- Drakeskin Gloves
                 { id = 58109 }, -- Kindling Signet
                 { id = 58110 }, -- Lantern-Helm of the Deep
-                { id = 58111, dropRate = .11 }, -- Dragonmaw Hauberk
-                { id = 58113, dropRate = .11 }, -- Dragonmaw Bracers
-                { id = 58114, dropRate = .11 }, -- Dragonmaw Leggings
-                { id = 58115, dropRate = .11 }, -- Dragonmaw Greaves
+                { id = 58111, dropRate = 1.35 }, -- Dragonmaw Hauberk
+                { id = 58113, dropRate = 1.35 }, -- Dragonmaw Bracers
+                { id = 58114, dropRate = 1.35 }, -- Dragonmaw Leggings
+                { id = 58115, dropRate = 1.35 }, -- Dragonmaw Greaves
                 { id = 70119, container = { 56046 } }, -- Plans: Circlet of Dampening
                 { id = 41825, container = { 41826, 41827, 41828 }, dropRate = 50 }, -- Stone Golem Runestone from Crumbling Stone Golem
 },

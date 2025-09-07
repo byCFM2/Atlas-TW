@@ -1,13 +1,44 @@
+---
+--- Dungeons.lua - Dungeon and raid loot system
+---
+--- This module handles dungeon and raid loot tables and menu systems for Atlas-TW.
+--- It dynamically generates menu data from AtlasTW.InstanceData, organizing instances
+--- by level ranges and player limits with automatic sorting and categorization.
+---
+--- Features:
+--- • Dynamic instance menu generation
+--- • Level-based instance categorization
+--- • Player limit organization (5-man, 10-man, 40-man)
+--- • Automatic sorting and filtering
+--- • Color-coded instance type display
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
 
--- Get the formatted string for the instance and make back navigation button
+---
+--- Get the formatted string for the instance with color coding
+--- @param instanceType string - The instance type (e.g., "[RAID]", "[15-25]")
+--- @param mainString string - The main instance name
+--- @return string - Formatted string with color codes
+--- @usage local formatted = getFormString("[RAID]", "Molten Core")
+--- @since 1.0.0
+---
 local function getFormString(instanceType, mainString)
     return "|cffff0000"..instanceType.." |cffffd200"..mainString
 end
 
--- Function to generate menu data from AtlasTW.InstanceData
+---
+--- Generate menu data from AtlasTW.InstanceData
+--- Dynamically creates dungeon and raid menu entries with proper sorting and categorization
+--- @return table - Generated menu data sorted by level ranges
+--- @usage local menuData = GenerateMenuDataFromInstanceData()
+--- @since 1.0.0
+---
 local function GenerateMenuDataFromInstanceData()
     local menuData = {}
 
@@ -114,6 +145,13 @@ end
 -- Data for Dungeons & Raids - Auto-generated from AtlasTW.InstanceData
 AtlasTW.MenuData.Dungeons = GenerateMenuDataFromInstanceData()
 
- function AtlasLoot_DungeonsMenu()
-        AtlasTW.Loot.PrepMenu(L["Dungeons & Raids"], AtlasTW.MenuData.Dungeons)
+---
+--- Displays the dungeons and raids menu
+--- Shows all available dungeons and raids organized by level ranges and player limits
+--- @return nil
+--- @usage AtlasLoot_DungeonsMenu()
+--- @since 1.0.0
+---
+function AtlasLoot_DungeonsMenu()
+    AtlasTW.Loot.PrepMenu(L["Dungeons & Raids"], AtlasTW.MenuData.Dungeons)
 end

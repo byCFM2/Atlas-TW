@@ -1,5 +1,21 @@
--- ItemDB.lua - Central item database
--- Modern modular structure for Atlas-TW
+---
+--- ItemDB.lua - Central item database and tooltip parsing system
+---
+--- This module provides comprehensive item database functionality for Atlas-TW,
+--- including item information parsing, tooltip analysis, class-based item filtering,
+--- and caching mechanisms for optimal performance.
+---
+--- Features:
+--- • Item tooltip parsing and information extraction
+--- • Class-based equipment compatibility checking
+--- • Color-coded item display based on player restrictions
+--- • Intelligent caching system for parsed tooltip data
+--- • Item creation utilities for loot tables
+--- • Equipment slot and type classification
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
@@ -34,6 +50,15 @@ AtlasTW.ItemDB.ClassItems = {
         L["Staff"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"]},
 }
 
+---
+-- Get colored text based on player class and level restrictions
+-- @function getColoredText
+-- @param text string - The text to color
+-- @param typeText string - The type of text ("slot", "slot2", "class", "requires")
+-- @return string - Colored text with appropriate color codes
+-- @usage local coloredText = getColoredText("Plate", "slot")
+-- @version 1.0
+---
 local function getColoredText(text, typeText)
     -- Color constants
     local COLOR_GREEN = "|cff00ff00"
@@ -103,7 +128,12 @@ local MAX_CACHE_SIZE = 200
 local tooltipElementsCache = {}
 local sharedTooltip = nil
 
--- Cache cleanup function
+---
+-- Clean up tooltip cache when it exceeds maximum size
+-- @function CleanupTooltipCache
+-- @usage CleanupTooltipCache()
+-- @version 1.0
+---
 local function CleanupTooltipCache()
     if ParsedTooltipCacheSize > MAX_CACHE_SIZE then
         ParsedTooltipCache = {}
@@ -111,7 +141,15 @@ local function CleanupTooltipCache()
     end
 end
 
--- Function to parse item tooltip (improved version)
+---
+-- Parse item tooltip to extract item information
+-- @function AtlasTW.ItemDB.ParseTooltipForItemInfo
+-- @param itemID number - The item ID to parse
+-- @param extratext string - Additional text to include
+-- @return string - Parsed item information with color coding
+-- @usage local info = AtlasTW.ItemDB.ParseTooltipForItemInfo(12345, "Epic Item")
+-- @version 1.0
+---
 function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     if not itemID or itemID == 0 then
         return extratext or ""
@@ -256,7 +294,14 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     return result
 end
 
--- Timer start function (fixed version)
+---
+-- Start a timer with specified delay and callback function
+-- @function StartTimer
+-- @param delaySeconds number - Delay in seconds before executing callback
+-- @param callbackFunc function - Function to execute after delay
+-- @usage StartTimer(2.0, function() print("Timer finished") end)
+-- @version 1.0
+---
 function StartTimer(delaySeconds, callbackFunc)
     -- Create a unique frame for each timer
     local timerFrame = CreateFrame("Frame")
@@ -276,6 +321,16 @@ function StartTimer(delaySeconds, callbackFunc)
     timerFrame:Show()
 end
 
+---
+-- Force cache an item with delay between attempts
+-- @function AtlasLoot_ForceCacheItemWithDelay
+-- @param itemID number - The item ID to cache
+-- @param delayBetweenAttempts number - Delay between cache attempts (default: 0.1)
+-- @param maxAttempts number - Maximum number of attempts (default: 10)
+-- @return boolean - Success status of caching operation
+-- @usage AtlasLoot_ForceCacheItemWithDelay(12345, 0.2, 5)
+-- @version 1.0
+---
 function AtlasLoot_ForceCacheItemWithDelay(itemID, delayBetweenAttempts, maxAttempts)
     if not itemID or itemID == 0 then
         return false
@@ -298,6 +353,15 @@ function AtlasLoot_ForceCacheItemWithDelay(itemID, delayBetweenAttempts, maxAtte
     end
     tryCache()
 end
+---
+-- Force cache an item with multiple attempts
+-- @function AtlasLoot_ForceCacheItem
+-- @param itemID number - The item ID to cache
+-- @param maxAttempts number - Maximum number of attempts (default: 3)
+-- @return boolean - Success status of caching operation
+-- @usage AtlasLoot_ForceCacheItem(12345, 5)
+-- @version 1.0
+---
 function AtlasLoot_ForceCacheItem(itemID, maxAttempts)
     if not itemID or itemID == 0 then
         return false
@@ -319,7 +383,14 @@ function AtlasLoot_ForceCacheItem(itemID, maxAttempts)
     end
     tryCache()
 end
--- Function to cache an item by link or ID
+---
+-- Cache an item by link or ID
+-- @function AtlasLoot_CacheItem
+-- @param linkOrID number|string - Item ID or item link to cache
+-- @return boolean - Success status of caching operation
+-- @usage AtlasLoot_CacheItem(12345) or AtlasLoot_CacheItem("item:12345:0:0:0")
+-- @version 1.0
+---
 function AtlasLoot_CacheItem(linkOrID)
     if not linkOrID or linkOrID == 0 then
         return false
@@ -347,7 +418,14 @@ function AtlasLoot_CacheItem(linkOrID)
     GameTooltip:SetHyperlink(linkOrID)
 end
 
--- Helper to create items from a loot table
+---
+-- Create items from a loot table with default values applied
+-- @function AtlasTW.CreateItemsFromLootTable
+-- @param bossData table - Boss data containing loot table and defaults
+-- @return table - Array of created items
+-- @usage local items = AtlasTW.CreateItemsFromLootTable(bossData)
+-- @version 1.0
+---
 function AtlasTW.CreateItemsFromLootTable(bossData)
     if not bossData.loot then return end
     local items = {}
@@ -364,7 +442,14 @@ function AtlasTW.CreateItemsFromLootTable(bossData)
     return items
 end
 
--- Function to create a new item
+---
+-- Create a new item from data
+-- @function AtlasTW.ItemDB.CreateItem
+-- @param data table - Item data containing id, name, and other properties
+-- @return table|nil - Created item object or nil if invalid data
+-- @usage local item = AtlasTW.ItemDB.CreateItem({id = 12345, name = "Epic Sword"})
+-- @version 1.0
+---
 function AtlasTW.ItemDB.CreateItem(data)
     -- Validate required fields
     if not data.id and not data.name then return nil end
@@ -381,7 +466,16 @@ function AtlasTW.ItemDB.CreateItem(data)
     return item
 end
 
--- Function to create a separator/header
+---
+-- Create a separator or header item for loot tables
+-- @function AtlasTW.ItemDB.CreateSeparator
+-- @param text string - Text for the separator (default: "")
+-- @param icon string - Icon name for the separator (default: "INV_Box_01")
+-- @param quality number - Quality level for the separator (default: 5)
+-- @return table - Separator item object
+-- @usage local separator = AtlasTW.ItemDB.CreateSeparator("Boss Loot", "INV_Crown_01", 4)
+-- @version 1.0
+---
 function AtlasTW.ItemDB.CreateSeparator(text, icon, quality)
     return {
         name = text or "",

@@ -1,3 +1,21 @@
+---
+--- AtlasConfig.lua - Atlas configuration constants and data mappings
+--- 
+--- This file contains the core configuration constants and data mappings for Atlas-TW.
+--- It defines system constants, entrance-to-instance mappings, quest limits,
+--- and provides the foundational configuration data for Atlas functionality.
+--- 
+--- Features:
+--- - System constants and limits
+--- - Entrance to instance mappings
+--- - Instance to entrance mappings
+--- - Quest system configuration
+--- - Map path definitions
+--- 
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 AtlasTW = {
     --constants
     --quest
@@ -128,7 +146,9 @@ AtlasTW = {
         ["Silverpine Forest"] =			"ShadowfangKeep",
         ["Eastern Plaguelands"] =		"Stratholme",
         ["Stormwind City"] =			"TheStockade",
-        ["Stranglethorn Vale"] =		"ZulGurub"
+        ["Stranglethorn Vale"] =		"ZulGurub",
+        ["Balor"] =                     "StormwroughtRuins", -- TurtleWOW
+        ["Wetlands"] =                  "DragonmawRetreat" -- TurtleWOW
     },
 
 
@@ -153,6 +173,10 @@ AtlasTW = {
 }
 AtlasTW.Loot = AtlasTW.Loot or {}
 
+--- Prints text message to the default chat frame
+--- @param text string - the message to display in chat
+--- @usage print("Debug message")
+--- @since 1.0.0
 function print(text)
     DEFAULT_CHAT_FRAME:AddMessage(text)
 end

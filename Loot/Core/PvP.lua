@@ -1,3 +1,21 @@
+---
+--- PvP.lua - PvP rewards and battleground loot system
+---
+--- This module handles PvP-related loot tables and menu systems for Atlas-TW.
+--- It provides access to battleground rewards, PvP armor sets, weapons, and accessories
+--- organized by rank requirements and battleground locations.
+---
+--- Features:
+--- • Battleground-specific reward catalogs
+--- • PvP rank requirement tracking
+--- • Honor system integration
+--- • Cross-battleground item organization
+--- • Faction-specific PvP rewards
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
@@ -29,6 +47,13 @@ AtlasTW.MenuData.PVP = {
     { name = L["PvP Weapons"], Extra = L["Rank"].." 14", icon = "Interface\\Icons\\INV_Sword_11", lootpage = "PVPWeapons" },
 }
 
+---
+--- Displays the main PvP rewards menu
+--- Shows battleground locations, PvP mounts, accessories, armor sets, and weapons
+--- @return nil
+--- @usage AtlasLootPvPMenu()
+--- @since 1.0.0
+---
 function AtlasLootPvPMenu()
     AtlasTW.Loot.PrepMenu(L["PvP Rewards"], AtlasTW.MenuData.PVP)
 end
@@ -57,6 +82,13 @@ AtlasTW.MenuData.PVPSets = {
     { name = "|cffc69b6d"..BC["Warrior"], icon = "Interface\\Icons\\INV_Shield_05", lootpage = "PVPWarrior" },
 }
 
+---
+--- Displays the PvP armor sets menu organized by class
+--- Shows rank 7-13 PvP armor sets for all classes with color-coded class names
+--- @return nil
+--- @usage AtlasLootPVPSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootPVPSetMenu()
     AtlasTW.Loot.PrepMenu(L["PvP Armor Sets"], AtlasTW.MenuData.PVPSets, L["PvP Rewards"])
 end

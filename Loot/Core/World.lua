@@ -1,3 +1,21 @@
+---
+--- World.lua - World boss loot system
+---
+--- This module handles world boss loot tables and menu systems for Atlas-TW.
+--- It provides access to outdoor raid bosses, world dragons, and other rare
+--- spawns with their unique loot tables and spawn information.
+---
+--- Features:
+--- • World boss loot catalogs
+--- • Spawn location information
+--- • Rare drop tracking
+--- • Cross-zone boss organization
+--- • Integration with Babble localization
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
@@ -21,6 +39,12 @@ AtlasTW.MenuData.WorldBosses = {
     { name = L["Rare Mobs"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_Head_Undead_01", lootpage = "RareMobs" },
 }
 
+---
+-- Display the World Bosses menu in AtlasLoot
+-- @function AtlasLoot_WorldMenu
+-- @usage AtlasLoot_WorldMenu()
+-- @version 1.0
+---
 function AtlasLoot_WorldMenu()
     AtlasTW.Loot.PrepMenu(L["World"], AtlasTW.MenuData.WorldBosses)
 end

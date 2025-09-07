@@ -1,3 +1,21 @@
+---
+--- Sets.lua - Item sets and collections management
+---
+--- This module provides comprehensive set browsing functionality for all WoW item sets
+--- in Atlas-TW. It organizes and displays various equipment sets including dungeon sets,
+--- raid sets, PvP sets, and crafted sets with detailed information and requirements.
+---
+--- Features:
+--- • Complete item set catalogs
+--- • Set bonus information display
+--- • Level and source requirement tracking
+--- • Cross-set comparison tools
+--- • Integration with Babble localization
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
 AtlasTW.Loot = AtlasTW.Loot or {}
@@ -39,6 +57,12 @@ AtlasTW.MenuData.Sets = {
     { name = L["Tabards"], icon = "Interface\\Icons\\INV_Shirt_GuildTabard_01", lootpage = "Tabards" },
 }
 
+---
+--- Main sets menu function
+--- @return nil
+--- @usage AtlasLootSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootSetMenu()
     AtlasTW.Loot.PrepMenu(L["Collections"], AtlasTW.MenuData.Sets)
 end
@@ -76,10 +100,25 @@ AtlasTW.MenuData.WorldBlues = {
     { name = L["Shields"], icon = "Interface\\Icons\\INV_Shield_04", lootpage = "WorldBluesShields" },
 }
 
+---
+--- World blues menu function
+--- @return nil
+--- @usage AtlasLootWorldBluesMenu()
+--- @since 1.0.0
+---
 function AtlasLootWorldBluesMenu()
     AtlasTW.Loot.PrepMenu(L["World Blues"], AtlasTW.MenuData.WorldBlues, L["Collections"])
 end
 
+---
+--- Creates class-specific set menu data
+--- @param class string - The class name (e.g., "Priest", "Mage")
+--- @param color string - Color code for the class
+--- @param icon string - Icon path for the class
+--- @return table - Menu data table for the class
+--- @usage local priestMenu = createClassSetMenu("Priest", "|cffffffff", "Interface\\Icons\\Spell_Holy_PowerWordShield")
+--- @since 1.0.0
+---
 local function createClassSetMenu(class, color, icon)
     local menuData = {
         { name = color..L["Tier 0/0.5 Sets"], icon = icon, lootpage = "T0"..class },
@@ -104,38 +143,92 @@ AtlasTW.MenuData.Shaman = createClassSetMenu("Shaman", "|cff2773ff", "Interface\
 AtlasTW.MenuData.Paladin = createClassSetMenu("Paladin", "|cfff48cba", "Interface\\Icons\\Spell_Holy_SealOfMight")
 AtlasTW.MenuData.Warrior = createClassSetMenu("Warrior", "|cffc69b6d", "Interface\\Icons\\INV_Shield_05")
 
+---
+--- Priest sets menu function
+--- @return nil
+--- @usage AtlasLootPriestSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootPriestSetMenu()
     AtlasTW.Loot.PrepMenu(L["Priest Sets"], AtlasTW.MenuData.Priest, L["Collections"])
 end
 
+---
+--- Mage sets menu function
+--- @return nil
+--- @usage AtlasLootMageSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootMageSetMenu()
     AtlasTW.Loot.PrepMenu(L["Mage Sets"], AtlasTW.MenuData.Mage, L["Collections"])
 end
 
+---
+--- Warlock sets menu function
+--- @return nil
+--- @usage AtlasLootWarlockSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootWarlockSetMenu()
     AtlasTW.Loot.PrepMenu(L["Warlock Sets"], AtlasTW.MenuData.Warlock, L["Collections"])
 end
 
+---
+--- Rogue sets menu function
+--- @return nil
+--- @usage AtlasLootRogueSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootRogueSetMenu()
     AtlasTW.Loot.PrepMenu(L["Rogue Sets"], AtlasTW.MenuData.Rogue, L["Collections"])
 end
 
+---
+--- Druid sets menu function
+--- @return nil
+--- @usage AtlasLootDruidSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootDruidSetMenu()
     AtlasTW.Loot.PrepMenu(L["Druid Sets"], AtlasTW.MenuData.Druid, L["Collections"])
 end
 
+---
+--- Hunter sets menu function
+--- @return nil
+--- @usage AtlasLootHunterSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootHunterSetMenu()
     AtlasTW.Loot.PrepMenu(L["Hunter Sets"], AtlasTW.MenuData.Hunter, L["Collections"])
 end
 
+---
+--- Shaman sets menu function
+--- @return nil
+--- @usage AtlasLootShamanSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootShamanSetMenu()
     AtlasTW.Loot.PrepMenu(L["Shaman Sets"], AtlasTW.MenuData.Shaman, L["Collections"])
 end
 
+---
+--- Paladin sets menu function
+--- @return nil
+--- @usage AtlasLootPaladinSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootPaladinSetMenu()
     AtlasTW.Loot.PrepMenu(L["Paladin Sets"], AtlasTW.MenuData.Paladin, L["Collections"])
 end
 
+---
+--- Warrior sets menu function
+--- @return nil
+--- @usage AtlasLootWarriorSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootWarriorSetMenu()
     AtlasTW.Loot.PrepMenu(L["Warrior Sets"], AtlasTW.MenuData.Warrior, L["Collections"])
 end
@@ -161,10 +254,23 @@ AtlasTW.MenuData.Pre60Sets = {
     { name = BIS["Spirit of Eskhandar"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_MonsterClaw_04", lootpage = "SpiritofEskhandar" },
 }
 
+---
+--- Pre-60 sets menu function
+--- @return nil
+--- @usage AtlasLootPRE60SetMenu()
+--- @since 1.0.0
+---
 function AtlasLootPRE60SetMenu()
     AtlasTW.Loot.PrepMenu(L["Pre 60 Sets"], AtlasTW.MenuData.Pre60Sets, L["Collections"])
 end
 
+---
+--- Creates dungeon-specific set menu data for all classes
+--- @param dungeonName string - The dungeon prefix (e.g., "ZG", "AQ40", "T1")
+--- @return table - Menu data table with class-specific entries
+--- @usage local zgMenu = CreateDungeonSetMenu("ZG")
+--- @since 1.0.0
+---
 local function CreateDungeonSetMenu(dungeonName)
     local menuData = {}
     local classData = {
@@ -219,34 +325,82 @@ AtlasTW.MenuData.T2Set = CreateDungeonSetMenu("T2")
 AtlasTW.MenuData.T3Set = CreateDungeonSetMenu("T3")
 AtlasTW.MenuData.T35Set = CreateDungeonSetMenu("T35")
 
+---
+--- Zul'Gurub sets menu function
+--- @return nil
+--- @usage AtlasLootZGSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootZGSetMenu()
     AtlasTW.Loot.PrepMenu(L["Zul'Gurub Sets"], AtlasTW.MenuData.ZGSet, L["Collections"])
 end
 
+---
+--- Temple of Ahn'Qiraj sets menu function
+--- @return nil
+--- @usage AtlasLootAQ40SetMenu()
+--- @since 1.0.0
+---
 function AtlasLootAQ40SetMenu()
     AtlasTW.Loot.PrepMenu(L["Temple of Ahn'Qiraj Sets"], AtlasTW.MenuData.AQ40Set, L["Collections"])
 end
 
+---
+--- Ruins of Ahn'Qiraj sets menu function
+--- @return nil
+--- @usage AtlasLootAQ20SetMenu()
+--- @since 1.0.0
+---
 function AtlasLootAQ20SetMenu()
     AtlasTW.Loot.PrepMenu(L["Ruins of Ahn'Qiraj Sets"], AtlasTW.MenuData.AQ20Set, L["Collections"])
 end
 
+---
+--- Tier 0/0.5 sets menu function
+--- @return nil
+--- @usage AtlasLootT0SetMenu()
+--- @since 1.0.0
+---
 function AtlasLootT0SetMenu()
     AtlasTW.Loot.PrepMenu(L["Tier 0/0.5 Sets"], AtlasTW.MenuData.T0Set, L["Collections"])
 end
 
+---
+--- Tier 1 sets menu function
+--- @return nil
+--- @usage AtlasLootT1SetMenu()
+--- @since 1.0.0
+---
 function AtlasLootT1SetMenu()
     AtlasTW.Loot.PrepMenu(L["Tier 1 Sets"], AtlasTW.MenuData.T1Set, L["Collections"])
 end
 
+---
+--- Tier 2 sets menu function
+--- @return nil
+--- @usage AtlasLootT2SetMenu()
+--- @since 1.0.0
+---
 function AtlasLootT2SetMenu()
     AtlasTW.Loot.PrepMenu(L["Tier 2 Sets"], AtlasTW.MenuData.T2Set, L["Collections"])
 end
 
+---
+--- Tier 3 sets menu function
+--- @return nil
+--- @usage AtlasLootT3SetMenu()
+--- @since 1.0.0
+---
 function AtlasLootT3SetMenu()
     AtlasTW.Loot.PrepMenu(L["Tier 3 Sets"], AtlasTW.MenuData.T3Set, L["Collections"])
 end
 
+---
+--- Tower of Karazhan sets menu function
+--- @return nil
+--- @usage AtlasLootUKSetMenu()
+--- @since 1.0.0
+---
 function AtlasLootUKSetMenu()
     AtlasTW.Loot.PrepMenu(L["Tower of Karazhan Sets"], AtlasTW.MenuData.T35Set, L["Collections"])
 end

@@ -1,5 +1,20 @@
--- LordKazzak.lua - Item data for the world boss Lord Kazzak
--- Modular data structure for Atlas-TW
+---
+--- LordKazzak.lua - Lord Kazzak world boss loot data
+---
+--- This module contains comprehensive loot data for Lord Kazzak, the demon
+--- world boss located in the Blasted Lands. It includes rare drops,
+--- epic equipment, and unique demonic items.
+---
+--- Features:
+--- • Complete Lord Kazzak loot table
+--- • Rare and epic drops
+--- • Demonic-themed equipment
+--- • Unique world boss rewards
+--- • Respawn timer information
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

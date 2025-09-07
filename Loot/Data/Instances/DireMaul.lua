@@ -1,5 +1,20 @@
-
-
+---
+--- DireMaul.lua - Dire Maul dungeon instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Dire Maul
+--- 5-player dungeon instance. It includes all three wings (East, West, North)
+--- with their respective boss encounters, rare drops, and tribute runs.
+---
+--- Features:
+--- • Complete three-wing boss encounters
+--- • Tribute run loot tables
+--- • Rare and epic weapon drops
+--- • Wing-specific item organization
+--- • Key and quest item drops
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

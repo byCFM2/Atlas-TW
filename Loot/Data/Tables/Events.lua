@@ -1,3 +1,21 @@
+---
+--- Events.lua - World event and seasonal data tables
+---
+--- This module contains comprehensive data for all world events and seasonal
+--- activities in World of Warcraft. It includes holiday events, special bosses,
+--- unique rewards, and time-limited content.
+---
+--- Features:
+--- • Complete seasonal event data
+--- • Holiday boss encounters
+--- • Event-specific loot tables
+--- • Time-limited rewards
+--- • Achievement and quest items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 

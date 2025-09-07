@@ -1,4 +1,21 @@
--- AtlasTW Quest UI Frame Creation
+---
+--- QuestUI.lua - Atlas quest UI frame and component creation
+--- 
+--- This file contains the quest UI frame creation and management for Atlas-TW.
+--- It handles quest window interface, quest display components, frame layout,
+--- and provides the visual foundation for the Atlas quest browser system.
+--- 
+--- Features:
+--- - Quest frame creation and styling
+--- - Quest display components
+--- - UI element initialization
+--- - Frame positioning and layout
+--- - Quest interface management
+--- 
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 local L = AtlasTW.Local
@@ -28,7 +45,20 @@ frame:Hide()
 -- UI Elements Table
 local UI_Main = { Frame = frame }
 
--- Helper to create elements
+---
+--- Helper function to create UI elements with common properties
+--- @param type string The frame type to create (e.g., "Button", "Frame")
+--- @param name string The name for the frame (can be empty string)
+--- @param parent table The parent frame object
+--- @param template string The template to use for the frame (optional)
+--- @param width number The width of the element in pixels
+--- @param height number The height of the element in pixels
+--- @param point table The positioning point as {anchor, x, y} or {anchor, relativeTo, relativeAnchor, x, y}
+--- @param text string Optional text to set on the element
+--- @return table The created UI element
+--- @usage local button = CreateElement("Button", "", parent, "UIPanelButtonTemplate", 100, 30, {"CENTER", 0, 0}, "Click Me")
+--- @since 1.0.0
+---
 local function CreateElement(type, name, parent, template, width, height, point, text)
     local element = CreateFrame(type, name, parent, template)
     element:SetWidth(width)
@@ -38,7 +68,20 @@ local function CreateElement(type, name, parent, template, width, height, point,
     return element
 end
 
--- Helper to create FontStrings
+---
+--- Helper function to create FontString objects with common properties
+--- @param name string The name for the FontString (can be empty string)
+--- @param parent table The parent frame object
+--- @param font string The font template to use (e.g., "GameFontNormal")
+--- @param point table The positioning point as {anchor, x, y} or {anchor, relativeTo, relativeAnchor, x, y}
+--- @param width number The width of the text area in pixels
+--- @param height number The height of the text area in pixels
+--- @param justifyH string Horizontal justification ("LEFT", "CENTER", "RIGHT"), defaults to "CENTER"
+--- @param justifyV string Vertical justification ("TOP", "MIDDLE", "BOTTOM"), defaults to "MIDDLE"
+--- @return table The created FontString object
+--- @usage local label = CreateText("", parent, "GameFontNormal", {"TOP", 0, -10}, 200, 20, "LEFT", "TOP")
+--- @since 1.0.0
+---
 local function CreateText(name, parent, font, point, width, height, justifyH, justifyV)
     local text = parent:CreateFontString(name, "ARTWORK", font)
     text:SetWidth(width)
@@ -49,7 +92,12 @@ local function CreateText(name, parent, font, point, width, height, justifyH, ju
     return text
 end
 
--- Set Frame Level on Show
+---
+--- Sets the frame level relative to parent when frame is shown
+--- Ensures this frame appears above its parent frame in the UI stack
+--- @usage frame:SetScript("OnShow", setFrameLevelOnShow)
+--- @since 1.0.0
+---
 local function setFrameLevelOnShow()
     this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
 end

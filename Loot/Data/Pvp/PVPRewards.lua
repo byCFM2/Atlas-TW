@@ -1,3 +1,21 @@
+---
+--- PVPRewards.lua - Player vs Player reward data tables
+---
+--- This module contains comprehensive PvP reward data for all battlegrounds
+--- and honor systems in World of Warcraft. It includes honor rewards,
+--- PvP sets, battleground marks, and ranking system items.
+---
+--- Features:
+--- • Complete PvP reward tables
+--- • Honor system items
+--- • Battleground mark rewards
+--- • Ranking system equipment
+--- • PvP set collections
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 

@@ -1,5 +1,20 @@
--- FPAllianceEast Info Data
--- Compatible with Atlas Loot TW
+---
+--- FPAllianceEast.lua - Alliance flight paths in Eastern Kingdoms
+---
+--- This module contains comprehensive flight path information for Alliance
+--- players in the Eastern Kingdoms continent. It provides detailed data about
+--- flight masters, routes, costs, and connectivity between flight points.
+---
+--- Features:
+--- • Complete Alliance flight path network
+--- • Flight master locations and coordinates
+--- • Route costs and travel times
+--- • Connectivity mapping
+--- • Faction-specific access requirements
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

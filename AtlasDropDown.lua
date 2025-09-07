@@ -1,4 +1,20 @@
--- Refactored AtlasDropDown.lua
+---
+--- AtlasDropDown.lua - Atlas dropdown menu system and navigation
+--- 
+--- This file contains the dropdown menu system for Atlas-TW navigation.
+--- It handles category selection, zone filtering, sorting options,
+--- and provides the interface for browsing Atlas content by various criteria.
+--- 
+--- Features:
+--- - Dropdown menu creation and management
+--- - Category and zone filtering
+--- - Sort order configuration
+--- - Navigation system integration
+--- - Content organization and display
+--- 
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 -- Namespace protection
 --local _G = getfenv()
@@ -37,6 +53,12 @@ AtlasDropDown.SortOrder = {
 local Dungeons = {}
 
 -- Helper to determine map type from its key and data
+--- Determines the map type based on map key and data
+--- @param mapKey string The key identifier for the map
+--- @param mapData table The map data containing level, players, location info
+--- @return string|nil The determined map type or nil if unknown
+--- @usage local mapType = getMapType("RFC", mapData)
+--- @since 1.0.0
 local function getMapType(mapKey, mapData)
     local patterns = {
         { key = "TransportRoutes", type = "Transport Route", exact = true },
@@ -70,6 +92,12 @@ local function getMapType(mapKey, mapData)
     return nil
 end
 
+--- Gets the continent for a given map data
+--- Determines if instance is in Kalimdor or defaults to Eastern Kingdoms
+--- @param mapData table The map data to check
+--- @return string The continent name (localized)
+--- @usage local continent = getContinent(mapData)
+--- @since 1.0.0
 local function getContinent(mapData)
     -- Check if this instance is in Kalimdor (DLWest)
     if AtlasTW.InstanceData.DLWest and AtlasTW.InstanceData.DLWest.Bosses then
@@ -84,6 +112,11 @@ local function getContinent(mapData)
 end
 
 -- Populate Dungeons from AtlasTW.InstanceData (now as a function for lazy rebuild)
+--- Builds the dungeons table from AtlasTW.InstanceData
+--- Populates the global Dungeons table with processed instance data
+--- @return nil
+--- @usage BuildDungeons()
+--- @since 1.0.0
 local function BuildDungeons()
     Dungeons = {}
     if AtlasTW and AtlasTW.InstanceData then
@@ -93,7 +126,6 @@ local function BuildDungeons()
                 Dungeons[mapKey] = {
                     type = mapType,
                     continent = getContinent(mapData),
-                    -- level =  type(mapData.Level) == "table" and (mapData.Level[1].."-"..mapData.Level[2]) or mapData.Level,
                     level = mapData.Level,
                     size = mapData.MaxPlayers or 40,
                 }
@@ -106,6 +138,11 @@ end
 BuildDungeons()
 
 -- Helper function to parse level range string like "10-20", "60+" or "60"
+--- Parses level range data into min and max values
+--- @param rangelevel table|number|string The level range data
+--- @return number|nil, number|nil The minimum and maximum levels
+--- @usage local min, max = getLevel({10, 20})
+--- @since 1.0.0
 local function getLevel(rangelevel)
     if type(rangelevel) == "table" then
         return rangelevel[1], rangelevel[2]
@@ -117,6 +154,13 @@ local function getLevel(rangelevel)
 end
 
 -- Helper function to check if a dungeon's average level is within a category's range
+--- Checks if a dungeon's average level falls within specified range
+--- @param dungeonLevel table|number The dungeon's level data
+--- @param categoryMin number The minimum level for the category
+--- @param categoryMax number The maximum level for the category
+--- @return boolean True if dungeon level is in range
+--- @usage local inRange = IsInRange(dungeonLevel, 30, 39)
+--- @since 1.0.0
 local function IsInRange(dungeonLevel, categoryMin, categoryMax)
     if not dungeonLevel then return false end
     local min, max = getLevel(dungeonLevel)
@@ -167,6 +211,12 @@ for sortType, definitions in pairs(CategoryDefinitions) do
 end
 
 -- Helper function to create colored category names
+--- Creates a colored category name using WoW color codes
+--- @param name string The category name to color
+--- @param color string|nil The color code (defaults to GREEN)
+--- @return string The colored category name
+--- @usage local coloredName = CreateColoredCategory("Dungeons", COLORS.GREEN)
+--- @since 1.0.0
 local function CreateColoredCategory(name, color)
     return (color or COLORS.GREEN) .. name
 end
@@ -190,6 +240,15 @@ for _, def in ipairs(SpecialCategoryDefinitions) do
 end
 
 -- Helper function to process a list of categories and populate the layout
+--- Processes category list and populates layout with filtered dungeons
+--- @param layout table The layout table to populate
+--- @param order table The order table to populate
+--- @param categoryList table List of category names to process
+--- @param categoryFilters table Filter functions for each category
+--- @param dungeons table The dungeons data to filter
+--- @return nil
+--- @usage ProcessCategoryList(layout, order, categories, filters, dungeons)
+--- @since 1.0.0
 local function ProcessCategoryList(layout, order, categoryList, categoryFilters, dungeons)
     for _, catName in ipairs(categoryList) do
         table.insert(order, catName)
@@ -207,6 +266,11 @@ local function ProcessCategoryList(layout, order, categoryList, categoryFilters,
 end
 
 -- Generate Layouts for the dropdown menu
+--- Generates complete layout structure for dropdown menus
+--- Creates layouts and layout orders for all sort types
+--- @return table, table The layouts table and layoutOrder table
+--- @usage local layouts, order = GenerateLayouts()
+--- @since 1.0.0
 local function GenerateLayouts()
     local layouts = {}
     local layoutOrder = {}
@@ -250,6 +314,11 @@ local function GenerateLayouts()
 end
 
 -- Ensure layouts are generated (lazy init)
+--- Ensures layouts are properly initialized and generated
+--- Rebuilds dungeons and layouts if needed (lazy initialization)
+--- @return nil
+--- @usage AtlasDropDown:EnsureLayouts()
+--- @since 1.0.0
 function AtlasDropDown:EnsureLayouts()
     if (not Dungeons) or (next(Dungeons) == nil and AtlasTW and AtlasTW.InstanceData) then
         BuildDungeons()
@@ -296,42 +365,38 @@ Atlas_DropDownLayouts_Order = AtlasDropDown.LayoutOrder
 Atlas_DropDownLayouts = AtlasDropDown.Layouts
 AtlasTW_DropDownSortOrder = AtlasDropDown.SortOrder
 
--- Export functions
+--- Validates dropdown data integrity
+--- @return boolean - true if data is valid, false otherwise
+--- @usage local isValid = AtlasTW_DropDownValidateData()
+--- @since 1.0.0
 function AtlasTW_DropDownValidateData()
     return AtlasDropDown:ValidateData()
 end
 
+--- Gets the layout order for dropdown items based on sort type
+--- @param sortType string - the type of sorting to apply
+--- @return table - ordered list of layout items
+--- @usage local order = AtlasTW_DropDownGetLayoutOrder("alphabetical")
+--- @since 1.0.0
 function AtlasTW_DropDownGetLayoutOrder(sortType)
     return AtlasDropDown:GetLayoutOrder(sortType)
 end
 
+--- Gets the layout configuration for dropdown based on sort type
+--- @param sortType string - the type of sorting to apply
+--- @return table - layout configuration data
+--- @usage local layout = AtlasTW_DropDownGetLayout("level")
+--- @since 1.0.0
 function AtlasTW_DropDownGetLayout(sortType)
     return AtlasDropDown:GetLayout(sortType)
 end
 
--- Expose manual rebuild for other modules if needed
+--- Manually rebuilds dropdown layouts and data structures
+--- Clears existing layouts and rebuilds from scratch
+--- @usage AtlasTW_DropDownRebuild() -- call after data changes
+--- @since 1.0.0
 function AtlasTW_DropDownRebuild()
     AtlasDropDown.Layouts, AtlasDropDown.LayoutOrder = nil, nil
     BuildDungeons()
     AtlasDropDown:EnsureLayouts()
-end
-
--- Debug function to print validation results on load
-if AtlasTW and AtlasTW.DEBUGMODE then
-    local errors, warnings = AtlasDropDown:ValidateData()
-    if table.getn(errors) > 0 then
-        print(COLORS.RED .. "[Atlas] DropDown validation errors:|r")
-        for _, error in ipairs(errors) do
-            print("  - " .. error)
-        end
-    end
-    if table.getn(warnings) > 0 then
-        print(COLORS.YELLOW .. "[Atlas] DropDown validation warnings:|r")
-        for _, warning in ipairs(warnings) do
-            print("  - " .. warning)
-        end
-    end
-    if table.getn(errors) == 0 and table.getn(warnings) == 0 then
-        print(COLORS.GREEN .. "[Atlas] DropDown data validation passed.|r")
-    end
 end

@@ -1,5 +1,20 @@
-
-
+---
+--- Scholomance.lua - Scholomance dungeon instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Scholomance
+--- 5-player dungeon instance. It includes all boss encounters, rare drops,
+--- dungeon set items, and unique necromantic equipment.
+---
+--- Features:
+--- • Complete boss encounter loot tables
+--- • Dungeon set items (Tier 0.5)
+--- • Rare and epic weapon drops
+--- • Unique necromantic items
+--- • Key and quest item drops
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

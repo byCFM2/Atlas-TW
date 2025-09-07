@@ -1,3 +1,21 @@
+---
+--- Factions.lua - Faction reputation and reward data tables
+---
+--- This module contains comprehensive faction data for all reputation systems
+--- in World of Warcraft. It includes reputation rewards, vendor items,
+--- faction-specific equipment, and reputation requirements.
+---
+--- Features:
+--- • Complete faction reputation tables
+--- • Reputation reward items
+--- • Faction vendor inventories
+--- • Reputation level requirements
+--- • Faction-specific quest rewards
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 

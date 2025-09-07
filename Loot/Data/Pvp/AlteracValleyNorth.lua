@@ -1,4 +1,21 @@
--- BGAlteracValleyNorth.lua - Item data for Alterac Valley (North)
+---
+--- AlteracValleyNorth.lua - Alterac Valley North faction PvP data
+---
+--- This module contains comprehensive PvP data for the northern faction
+--- (Alliance) in Alterac Valley battleground. It includes faction-specific
+--- NPCs, objectives, rewards, and strategic locations.
+---
+--- Features:
+--- • Alliance faction objectives
+--- • Northern base locations
+--- • Faction-specific NPCs
+--- • Strategic point data
+--- • Battleground rewards
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local

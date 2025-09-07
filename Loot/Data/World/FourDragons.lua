@@ -1,5 +1,20 @@
--- FourDragons.lua - Item data for the Emerald Dragons
--- Modular data structure for Atlas-TW
+---
+--- FourDragons.lua - Emerald Dragons world boss loot data
+---
+--- This module contains comprehensive loot data for the four Emerald Dragons
+--- world bosses: Lethon, Emeriss, Taerar, and Ysondre. It includes shared
+--- loot tables, unique drops, and dragon-specific equipment.
+---
+--- Features:
+--- • Complete four dragon loot tables
+--- • Shared and unique drops
+--- • Emerald dragon equipment
+--- • Nature-themed items
+--- • Respawn timer information
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

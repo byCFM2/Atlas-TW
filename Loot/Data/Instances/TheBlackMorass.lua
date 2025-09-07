@@ -1,5 +1,20 @@
-
-
+---
+--- TheBlackMorass.lua - The Black Morass instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for The Black Morass
+--- instance. It includes all boss encounters, rare drops,
+--- and instance-specific items with their respective drop rates.
+---
+--- Features:
+--- • Complete boss encounter loot tables
+--- • Rare and epic item drops
+--- • Instance entrance and layout data
+--- • Level-appropriate loot organization
+--- • Quest reward items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

@@ -1,5 +1,20 @@
-
-
+---
+--- StormwroughtRuins.lua - Stormwrought Ruins instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Stormwrought Ruins
+--- instance. It includes all boss encounters, rare drops,
+--- and instance-specific items with their respective drop rates.
+---
+--- Features:
+--- • Complete boss encounter loot tables
+--- • Rare and epic item drops
+--- • Instance entrance and layout data
+--- • Level-appropriate loot organization
+--- • Quest reward items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
@@ -214,8 +229,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
             defaults = { dropRate = .02 },
             loot = {
                 { id = 70113, container = { 56040 } }, -- Plans: Gleaming Silver Necklace
-                { id = 58178, dropRate = .11 }, -- Stormreaver Boots
-                { id = 58131, dropRate = .11 }, -- Stormreaver Belt
+                { id = 58178, dropRate = 1.35 }, -- Stormreaver Boots
+                { id = 58131, dropRate = 1.35 }, -- Stormreaver Belt
         		{ id = 1992 }, -- Swampchill Fetish
         		{ id = 2262 }, -- Mark of Kern
                 { id = 5756 }, -- Sliverblade

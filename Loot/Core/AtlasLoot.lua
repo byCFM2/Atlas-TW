@@ -1,3 +1,21 @@
+---
+--- AtlasLoot.lua - Core loot system and item display functionality
+--- 
+--- This file contains the main loot system functionality for Atlas-TW.
+--- It handles item display, tooltip management, loot data processing,
+--- and provides the core infrastructure for the loot browser interface.
+--- 
+--- Features:
+--- - Item display and tooltip management
+--- - Loot data processing and caching
+--- - Boss navigation and menu systems
+--- - Integration with various tooltip addons
+--- - Wish list and quick look functionality
+--- 
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 AtlasLoot = AceLibrary("AceAddon-2.0"):new("AceDBa-2.0")
 
 local _G = getfenv()
@@ -42,14 +60,28 @@ StaticPopupDialogs["ATLASLOOT_SETUP"] = {
 	hideOnEscape = 1
 }
 
--- Function for formatting skill text with color
+---
+--- Formats skill text with appropriate color coding
+--- Applies color codes to skill level requirements for display
+--- @param skilltext table Table containing skill level values [1-4]
+--- @return string Formatted skill text with color codes
+--- @usage local formatted = formSkillStyle({"100", "150", "200", "250"})
+--- @since 1.0.0
+---
 local function formSkillStyle(skilltext)
 	if not skilltext or type(skilltext) ~= "table" then return "" end
 	return L["Skill:"].." "..ORANGE..skilltext[1]..", "..YELLOW..skilltext[2]..", "..
 		GREEN..skilltext[3]..", "..GREY..skilltext[4]
 end
 
--- Function to limit text length with pattern handling
+---
+--- Removes all WoW formatting codes from text
+--- Strips color codes, links, icons, and other formatting elements
+--- @param text string Text to strip formatting from
+--- @return string Clean text without formatting codes
+--- @usage local clean = StripFormatting("|cffff0000Red Text|r")
+--- @since 1.0.0
+---
 local function StripFormatting(text)
 	-- Check if text is empty
  	if not text then return "" end
@@ -78,6 +110,15 @@ local function StripFormatting(text)
     return text
 end
 
+---
+--- Truncates text to specified length with ellipsis
+--- Strips formatting before measuring length and adds "..." if needed
+--- @param text string Text to truncate
+--- @param maxLength number Maximum allowed length
+--- @return string Truncated text with ellipsis if needed
+--- @usage local short = TruncateText("Very long text", 10)
+--- @since 1.0.0
+---
 local function TruncateText(text, maxLength)
     local stripped_text = StripFormatting(text)
     local current_len = string.len(stripped_text)
@@ -94,10 +135,14 @@ local function TruncateText(text, maxLength)
     end
 end
 
---[[
-	Invoked by the VARIABLES_LOADED event. Now that we are sure all the assets
-	the addon needs are in place, we can properly set up the mod
-]]
+---
+--- Gets navigation data for boss/element browsing
+--- Creates navigation structure with previous/next boss links within current instance
+--- @param data string Name or ID of the boss/element to get navigation for
+--- @return table|nil Navigation table with Title, Back_Page, Prev_Page, Next_Page properties
+--- @usage local nav = AtlasLoot_GetBossNavigation("Ragnaros")
+--- @since 1.0.0
+---
 function AtlasLoot_GetBossNavigation(data)
     if not data then return nil end
     -- Get current instance from settings
@@ -155,6 +200,14 @@ function AtlasLoot_GetBossNavigation(data)
     return nil
 end
 
+---
+--- Handles VARIABLES_LOADED event and initializes addon
+--- Sets up character database, wish lists, and UI special frames
+--- Disables unavailable addon integration options
+--- @return void
+--- @usage Called automatically on VARIABLES_LOADED event
+--- @since 1.0.0
+---
 function AtlasLoot_OnEvent()
 	if not AtlasTWCharDB then AtlasTWCharDB = {} end
 	if not AtlasTWCharDB["WishList"] then AtlasTWCharDB["WishList"] = {} end
@@ -227,7 +280,15 @@ function AtlasLoot_OnEvent()
 	end
 end
 
--- Function to get loot by boss/element name without building indexes
+---
+--- Gets loot data by boss/element name without building indexes
+--- Searches through instance data to find matching boss or element
+--- @param elemName string Name of the boss or element to find
+--- @param instanceName string|nil Optional specific instance to search in
+--- @return table|nil Loot data table or nil if not found
+--- @usage local loot = GetLootByElemName("Ragnaros", "Molten Core")
+--- @since 1.0.0
+---
 local function GetLootByElemName(elemName, instanceName)
 	-- Helper to resolve loot items
 	local function AL_ResolveItems(items)
@@ -288,7 +349,15 @@ local function GetLootByElemName(elemName, instanceName)
 	return nil
 end
 
--- Helper to get loot by ID (within zone)
+---
+--- Gets loot data by numeric ID within a specific zone
+--- Searches through reputation, keys, and bosses in order
+--- @param zoneID string Zone identifier to search within
+--- @param id number Numeric ID of the element
+--- @return table|string|nil Loot data or nil if not found
+--- @usage local loot = GetLootByID("MC", 3)
+--- @since 1.0.0
+---
 local function GetLootByID(zoneID, id)
     local instData = AtlasTW.InstanceData[zoneID]
     if not instData then return end
@@ -313,6 +382,14 @@ local function GetLootByID(zoneID, id)
     return nil
 end
 
+---
+--- Updates the scroll bar display for Atlas boss list
+--- Manages visibility and state of boss line elements based on scroll position
+--- Handles loot indicators and selection highlighting
+--- @return void
+--- @usage AtlasTW.Loot.ScrollBarUpdate()
+--- @since 1.0.0
+---
 function AtlasTW.Loot.ScrollBarUpdate()
 	local lineplusoffset
 	local highlightTexture
@@ -382,13 +459,28 @@ local function CleanupMemoCache()
     end
 end
 
--- Function to create hash of item set
+---
+--- Creates a hash string from an item list for caching purposes
+--- Sorts the item list and concatenates IDs for stable hash generation
+--- @param itemList table List of item IDs to hash
+--- @return string Hash string representing the item set
+--- @usage local hash = CreateItemSetHash({1234, 5678, 9012})
+--- @since 1.0.0
+---
 local function CreateItemSetHash(itemList)
     table.sort(itemList)  -- Sort for stable hash
     return table.concat(itemList, ",")
 end
 
--- Function to cache all items from loot table
+---
+--- Caches all items from a loot table for tooltip performance
+--- Processes item data and triggers client-side item caching
+--- @param dataSource table Loot data table containing items to cache
+--- @param callback function|nil Optional callback to execute when caching completes
+--- @return void
+--- @usage CacheAllLootItems(lootData, function() print("Caching complete") end)
+--- @since 1.0.0
+---
 local function CacheAllLootItems(dataSource, callback)
     CleanupMemoCache()
     if not dataSource or type(dataSource) ~= "table" then
@@ -555,7 +647,13 @@ local function CacheAllLootItems(dataSource, callback)
         runIteration()
 end
 
--- Scrollbar update function for AtlasLootItemsFrame
+---
+--- Updates the scrollbar and content for the loot items frame
+--- Loads and displays loot data for the currently selected element
+--- @return nil
+--- @usage AtlasTW.Loot.ScrollBarLootUpdate() -- Called when loot data changes
+--- @since 1.0.0
+---
 function AtlasTW.Loot.ScrollBarLootUpdate() --TODO need improve
 	--Load data for the current clicked element line
 	local dataID = AtlasLootItemsFrame.StoredElement
@@ -1041,6 +1139,14 @@ function AtlasTW.Loot.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon)
     AtlasTW.Loot.ScrollBarLootUpdate()
 end
 
+---
+--- Handles click events on boss/element buttons in the Atlas frame
+--- Shows or hides the loot frame and loads appropriate loot data
+--- @param buttonName string Name of the clicked button (unused parameter)
+--- @return nil
+--- @usage AtlasLootBoss_OnClick() -- Called by button click events
+--- @since 1.0.0
+---
 function AtlasLootBoss_OnClick(buttonName)
 	-- Reset scroll position to top
     FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
@@ -1080,12 +1186,16 @@ function AtlasLootBoss_OnClick(buttonName)
         AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
     end
 end
---[[
-	tablename - Name of the loot table in the database
-	text - Heading for the loot table
-	tabletype - Whether the tablename indexes an actual table or needs to generate a submenu
-	Called when a button in AtlasLoot_Hewdrop is clicked
-]]
+---
+--- Handles clicks on AtlasLoot Hewdrop menu items
+--- Processes menu selection and displays corresponding loot table
+--- @param tablename string|table Name of the loot table to display
+--- @param text string Heading text for the loot table
+--- @param tabletype string Whether tablename indexes actual table or submenu
+--- @return void
+--- @usage AtlasLoot_HewdropClick("MC_Ragnaros", "Ragnaros", "Boss")
+--- @since 1.0.0
+---
 function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	-- Reset scroll to top, as in clicks on dungeon page items
 	FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
@@ -1204,9 +1314,13 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	AtlasLoot_Hewdrop:Close(1)
 end
 
---[[
-	Constructs the main category menu from a tiered table
-]]
+---
+--- Constructs and registers the main category menu
+--- Creates tiered dropdown menu structure for loot browsing
+--- @return void
+--- @usage AtlasLoot_HewdropRegister()
+--- @since 1.0.0
+---
 function AtlasLoot_HewdropRegister()
 	AtlasLoot_Hewdrop:Register(AtlasLootItemsFrame_Menu,
 		'point', function()
@@ -1355,6 +1469,14 @@ function AtlasLoot_HewdropRegister()
 	)
 end
 
+---
+--- Opens a specific loot menu category
+--- Maps menu names to their corresponding functions and executes them
+--- @param menuName string Name of the menu to open
+--- @return nil
+--- @usage AtlasLoot_OpenMenu("Crafting") -- Opens crafting menu
+--- @since 1.0.0
+---
 function AtlasLoot_OpenMenu(menuName)
 	AtlasLoot_QuickLooks:Hide()
 	AtlasLootQuickLooksButton:Hide()
@@ -1416,9 +1538,13 @@ function AtlasLoot_OpenMenu(menuName)
 	end
 	CloseDropDownMenus()
 end
---[[
-	Called when the close button on the item frame is clicked
-]]
+---
+--- Handles close button click on the loot items frame
+--- Resets active element selection and updates boss button display states
+--- @return void
+--- @usage AtlasLootItemsFrame_OnCloseButton() -- Called by close button click
+--- @since 1.0.0
+---
 function AtlasLootItemsFrame_OnCloseButton()
 	--Set no loot table as currently selected
 	AtlasLootItemsFrame.activeElement = nil
@@ -1437,9 +1563,14 @@ function AtlasLootItemsFrame_OnCloseButton()
 	AtlasLootItemsFrame:Hide()
 end
 
---[[
-	Requests the relevant loot page from a menu screen
-]]
+---
+--- Handles menu item click events in the loot browser
+--- Processes container display or loads loot data based on menu selection
+--- @param button string Button identifier for the clicked menu item
+--- @return void
+--- @usage AtlasLootMenuItem_OnClick("button1") -- Called by menu item clicks
+--- @since 1.0.0
+---
 function AtlasLootMenuItem_OnClick(button)
 	if this.container then
 		AtlasLoot_ShowContainerFrame()
@@ -1578,7 +1709,14 @@ local function FindBossIndexInScrollList(bossIdOrName)
 	return nil
 end
 
--- Menu navigation
+---
+--- Gets navigation data for menu browsing
+--- Creates navigation structure for moving between different menu sections
+--- @param current string|table Current menu item name or loot table key
+--- @return table|nil Navigation table with menu links or nil if not found
+--- @usage local nav = AtlasLoot_GetMenuNavigation("DungeonsMenu")
+--- @since 1.0.0
+---
 function AtlasLoot_GetMenuNavigation(current)
     -- Universal navigation function for all addon menus
     -- current can be menu item name or loot table key
@@ -1697,9 +1835,13 @@ function AtlasLoot_GetMenuNavigation(current)
 
     return nil
 end
---[[
-	Called when <-, -> or 'Back' are pressed and calls up the appropriate loot page
-]]
+---
+--- Handles navigation button clicks (Previous, Next, Back)
+--- Processes navigation between loot pages and menu sections
+--- @return void
+--- @usage AtlasLoot_NavButton_OnClick() -- Called by navigation button clicks
+--- @since 1.0.0
+---
 function AtlasLoot_NavButton_OnClick()
 	-- Reset scroll on navigation
 	FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
@@ -1797,10 +1939,14 @@ function AtlasLoot_NavButton_OnClick()
 	end
 end
 
---[[
-	Checks if a loot table is in memory and attempts to load the correct LoD module if it isn't
-	dataID: Loot table dataID
-]]
+---
+--- Checks if a loot table is available in memory
+--- Searches for loot table by dataID or element name
+--- @param dataID string Loot table identifier to check
+--- @return boolean True if loot table is available, false otherwise
+--- @usage local available = AtlasLoot_IsLootTableAvailable("MC_Ragnaros")
+--- @since 1.0.0
+---
 function AtlasLoot_IsLootTableAvailable(dataID)
 	if not dataID then return false end
 	-- Direct loot table
@@ -1821,10 +1967,14 @@ function AtlasLoot_IsLootTableAvailable(dataID)
 	return false
 end
 
---[[
-	button: Identity of the button pressed to trigger the function
-	Shows the GUI for setting Quicklooks
-]]
+---
+--- Shows the GUI for setting QuickLook assignments
+--- Creates dropdown menu for assigning current loot table to QuickLook slots
+--- @param button table Button frame that triggered the function
+--- @return void
+--- @usage AtlasLoot_ShowQuickLooks(buttonFrame)
+--- @since 1.0.0
+---
 function AtlasLoot_ShowQuickLooks(button)
 	local Hewdrop = AceLibrary("Hewdrop-2.0")
 	if Hewdrop:IsOpen(button) then
@@ -1870,9 +2020,13 @@ function AtlasLoot_ShowQuickLooks(button)
 	end
 end
 
---[[
-	Enables/disables the quicklook buttons depending on what is assigned
-]]
+---
+--- Refreshes QuickLook button states based on assignments
+--- Enables or disables buttons depending on stored QuickLook data
+--- @return void
+--- @usage AtlasLoot_RefreshQuickLookButtons()
+--- @since 1.0.0
+---
 function AtlasLoot_RefreshQuickLookButtons()
 	local i=1
 	while i<7 do
@@ -1893,9 +2047,14 @@ function AtlasLoot_RefreshQuickLookButtons()
 	end
 end
 
---[[
-	Clears a quicklook button.
-]]
+---
+--- Clears a specific QuickLook button assignment
+--- Removes stored data and refreshes button states
+--- @param button number QuickLook button number to clear (1-6)
+--- @return void
+--- @usage AtlasLoot_ClearQuickLookButton(3)
+--- @since 1.0.0
+---
 function AtlasLoot_ClearQuickLookButton(button)
 	if not button or button == nil then return end
 	AtlasTWCharDB["QuickLooks"][button] = nil
@@ -1903,6 +2062,17 @@ function AtlasLoot_ClearQuickLookButton(button)
 	print(BLUE.."AtlasLoot"..": "..WHITE..L["QuickLook"].." "..button.." "..L["has been reset!"])
 end
 
+---
+--- Splits a string by delimiter with optional limits
+--- Custom string splitting function with control over result count
+--- @param delim string Delimiter to split by
+--- @param str string String to split
+--- @param maxNb number|nil Maximum number of splits (0 for unlimited)
+--- @param onlyLast boolean|nil If true, return only the last part
+--- @return string|table Split results as table or last part if onlyLast
+--- @usage local parts = AtlasLoot_Strsplit("|", "a|b|c", 2)
+--- @since 1.0.0
+---
 function AtlasLoot_Strsplit(delim, str, maxNb, onlyLast)
 	-- Eliminate bad cases...
 	if string.find(str, delim) == nil then
@@ -2083,10 +2253,13 @@ local TOOLTIP_HANDLERS = {
     item = HandleItemTooltip,
 }
 
---------------------------------------------------------------------------------
--- Called when a loot item is moused over
---------------------------------------------------------------------------------
-
+---
+--- Handles mouse enter events on loot item buttons
+--- Shows appropriate tooltip based on item type (item, spell, enchant)
+--- @return void
+--- @usage AtlasLootItem_OnEnter() -- Called automatically on mouse enter
+--- @since 1.0.0
+---
 function AtlasLootItem_OnEnter()
     if not this or not this.typeID or this.typeID==0 or this.typeID=="" then return end
     local itemType = this.typeID
@@ -2101,10 +2274,13 @@ function AtlasLootItem_OnEnter()
     end
 end
 
---------------------------------------------------------------------------------
--- Item OnLeave
--- Called when the mouse cursor leaves a loot item
---------------------------------------------------------------------------------
+---
+--- Handles mouse leave events on loot item buttons
+--- Hides all active tooltips when mouse cursor leaves the item
+--- @return void
+--- @usage AtlasLootItem_OnLeave() -- Called automatically on mouse leave
+--- @since 1.0.0
+---
 function AtlasLootItem_OnLeave()
 	--Hide the necessary tooltips
 	if AtlasTWOptions.LootlinkTT then
@@ -2140,11 +2316,15 @@ local function AtlasLoot_GetChatLink(id)
 	return "\124" .. colorHex .. "\124H" .. itemLink .. "\124h[" .. itemName .. "]\124h\124r"
 end
 
---------------------------------------------------------------------------------
--- Item OnClick
--- Called when a loot item is clicked on
---------------------------------------------------------------------------------
-function AtlasLootItem_OnClick(arg1) --TODO check all features
+---
+--- Handles click events on loot item buttons
+--- Processes item links, wish list operations, and chat output based on click type
+--- @param arg1 string Click type ("LeftButton", "RightButton", etc.)
+--- @return void
+--- @usage AtlasLootItem_OnClick("LeftButton") -- Called by item button clicks
+--- @since 1.0.0
+---
+function AtlasLootItem_OnClick(arg1)
 	local id = this:GetID()
 	local color = strsub(_G["AtlasLootItem_"..id.."_Name"]:GetText() or "", 1, 10)
 	local name = strsub(_G["AtlasLootItem_"..id.."_Name"]:GetText() or "", 11)
@@ -2496,6 +2676,14 @@ function AtlasLootItem_OnClick(arg1) --TODO check all features
 	end
 end
 
+---
+--- Extracts item ID from an item link string
+--- Parses WoW item link format to retrieve numeric item ID
+--- @param link string Item link in WoW format
+--- @return number|nil Item ID or nil if parsing fails
+--- @usage local id = AtlasLoot_IDFromLink("|Hitem:12345:0:0:0|h[Item Name]|h")
+--- @since 1.0.0
+---
 function AtlasLoot_IDFromLink(link)
 	if not link then
         return nil
@@ -2526,7 +2714,16 @@ end
 local containerItems = {}
 local lastSelectedButton
 
--- Universal function for creating loading indicator
+---
+--- Creates a universal loading indicator frame
+--- Generates animated spinner with backdrop for loading states
+--- @param frameName string Name for the loading frame
+--- @param parentFrame table Parent frame to attach loading indicator to
+--- @param debugName string|nil Optional debug name for console output
+--- @return void
+--- @usage AtlasLoot_CreateLoadingFrame("MyLoadingFrame", parentFrame, "MyLoader")
+--- @since 1.0.0
+---
 function AtlasLoot_CreateLoadingFrame(frameName, parentFrame, debugName)
 	local loadingFrame = getglobal(frameName)
 	if not loadingFrame then
@@ -2573,6 +2770,15 @@ function AtlasLoot_CreateLoadingFrame(frameName, parentFrame, debugName)
 	end
 end
 
+---
+--- Hides a loading indicator frame
+--- Stops animation and hides the specified loading frame
+--- @param frameName string Name of the loading frame to hide
+--- @param debugName string|nil Optional debug name for console output
+--- @return void
+--- @usage AtlasLoot_HideLoadingFrame("MyLoadingFrame", "MyLoader")
+--- @since 1.0.0
+---
 function AtlasLoot_HideLoadingFrame(frameName, debugName)
 	local loadingFrame = getglobal(frameName)
 	if loadingFrame then
@@ -2583,24 +2789,57 @@ function AtlasLoot_HideLoadingFrame(frameName, debugName)
 	end
 end
 
--- Loading indicator for scroll window
+---
+--- Shows loading indicator for the scroll bar area
+--- Displays spinner overlay on the main items frame
+--- @return void
+--- @usage AtlasLoot_ShowScrollBarLoading()
+--- @since 1.0.0
+---
 function AtlasLoot_ShowScrollBarLoading()
 	AtlasLoot_CreateLoadingFrame("AtlasLootScrollBarLoadingFrame", AtlasLootItemsFrame)
 end
 
+---
+--- Hides loading indicator for the scroll bar area
+--- Removes spinner overlay from the main items frame
+--- @return void
+--- @usage AtlasLoot_HideScrollBarLoading()
+--- @since 1.0.0
+---
 function AtlasLoot_HideScrollBarLoading()
 	AtlasLoot_HideLoadingFrame("AtlasLootScrollBarLoadingFrame")
 end
 
--- Loading indicator for container
+---
+--- Shows loading indicator for the container frame
+--- Displays spinner overlay on the container items frame
+--- @return void
+--- @usage AtlasLoot_ShowContainerLoading()
+--- @since 1.0.0
+---
 function AtlasLoot_ShowContainerLoading()
 	AtlasLoot_CreateLoadingFrame("AtlasLootContainerLoadingFrame", AtlasLootItemsFrameContainer)
 end
 
+---
+--- Hides loading indicator for the container frame
+--- Removes spinner overlay from the container items frame
+--- @return void
+--- @usage AtlasLoot_HideContainerLoading()
+--- @since 1.0.0
+---
 function AtlasLoot_HideContainerLoading()
 	AtlasLoot_HideLoadingFrame("AtlasLootContainerLoadingFrame")
 end
 
+---
+--- Shows or toggles the container frame display
+--- Manages container visibility and caching for item containers
+--- @return void
+--- @usage AtlasLoot_ShowContainerFrame()
+--- @since 1.0.0
+---
 function AtlasLoot_ShowContainerFrame()
 	if this ~= lastSelectedButton then
 		lastSelectedButton = this
@@ -2635,7 +2874,13 @@ function AtlasLoot_ShowContainerFrame()
 	end)
 end
 
--- Function to update container display after caching
+---
+--- Updates container display after item caching is complete
+--- Calculates optimal layout and displays all container items
+--- @return void
+--- @usage AtlasLoot_UpdateContainerDisplay() -- Called after caching completes
+--- @since 1.0.0
+---
 function AtlasLoot_UpdateContainerDisplay()
 	if not lastSelectedButton or not lastSelectedButton.container then
 		return
@@ -2717,6 +2962,15 @@ function AtlasLoot_UpdateContainerDisplay()
 		AtlasLootItemsFrameContainer:SetHeight(16 + (row * 35))
 end
 
+---
+--- Adds tooltip functionality to container item frames
+--- Sets up OnEnter and OnLeave scripts for item tooltip display
+--- @param frame table UI frame to add tooltip to
+--- @param itemID number Item ID for tooltip content
+--- @return void
+--- @usage AtlasLoot_AddContainerItemTooltip(button, 12345)
+--- @since 1.0.0
+---
 function AtlasLoot_AddContainerItemTooltip(frame ,itemID)
 	frame:SetScript("OnEnter", function()
         AtlasLootTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 4), -(this:GetHeight() / 4))
@@ -2753,6 +3007,14 @@ function AtlasLoot_AddContainerItemTooltip(frame ,itemID)
     end)
 end
 
+---
+--- Handles click events on container item buttons
+--- Processes item links and chat output for container items
+--- @param arg1 string Click type ("LeftButton", "RightButton", etc.)
+--- @return void
+--- @usage AtlasLoot_ContainerItem_OnClick("LeftButton") -- Called by container item clicks
+--- @since 1.0.0
+---
 function AtlasLoot_ContainerItem_OnClick(arg1)
 	local itemID = this:GetID()
 	local name, link, quality, _, _, _, _, _, tex = GetItemInfo(itemID)
@@ -2798,6 +3060,15 @@ local function idFromLink(itemlink)
 	return nil
 end
 
+---
+--- Checks player bags for specific items and quantities
+--- Returns colored item name based on availability in bags
+--- @param id number|string Item ID to search for
+--- @param qty number Quantity required (default: 1)
+--- @return string Colored item name (WHITE if found, RED if missing)
+--- @usage local result = AtlasLoot_CheckBagsForItems(12345, 5)
+--- @since 1.0.0
+---
 function AtlasLoot_CheckBagsForItems(id, qty)
 	if not id then print("AtlasLoot_CheckBagsForItems: no ID specified!") return end
 	if not qty then qty = 1 end
@@ -2828,7 +3099,17 @@ function AtlasLoot_CheckBagsForItems(id, qty)
 	end
 end
 
--- Function to send item reagent information to chat
+---
+--- Sends item reagent information to chat
+--- Outputs crafting reagents for specified item to chat channel
+--- @param id number Item ID to get reagents for
+--- @param color string Color code for the item name
+--- @param name string Item name to display
+--- @param safe boolean Whether to use safe chat output
+--- @return nil
+--- @usage AtlasLoot_SayItemReagents(12345, "|cff0070dd", "Item Name", true)
+--- @since 1.0.0
+---
 function AtlasLoot_SayItemReagents(id, color, name, safe)
 	if not id then
 		return

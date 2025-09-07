@@ -1,4 +1,21 @@
--- World_Bosses.lua - Item data for world bosses
+---
+--- Clackora.lua - Clackora world boss loot data
+---
+--- This module contains comprehensive loot data for Clackora, a special
+--- world boss encounter. It includes unique drops, rare equipment,
+--- and boss-specific rewards from this elite encounter.
+---
+--- Features:
+--- • Complete Clackora loot table
+--- • Rare and epic drops
+--- • Boss-specific equipment
+--- • Unique world boss rewards
+--- • Encounter mechanics data
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local

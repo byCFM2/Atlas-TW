@@ -1,3 +1,21 @@
+---
+--- QuestMain.lua - Atlas quest system main functionality
+--- 
+--- This file contains the main quest system functionality for Atlas-TW.
+--- It handles quest display, quest data processing, quest UI management,
+--- and provides the core infrastructure for the Atlas quest browser.
+--- 
+--- Features:
+--- - Quest display and management
+--- - Quest data processing
+--- - Quest UI state handling
+--- - Quest navigation system
+--- - Quest filtering and search
+--- 
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 local L = AtlasTW.Local
@@ -20,6 +38,13 @@ local kQQuestColor
 -----------------------------------------------------------------------------
 -- Buttons
 -----------------------------------------------------------------------------
+---
+--- Clears all quest-related UI elements and resets quest state
+--- Hides quest frames and resets current quest selection
+--- @return nil
+--- @usage Called when switching maps or clearing quest display
+--- @since 1.0.0
+---
 function AtlasTW.Quest.ClearAll()
 	AtlasTW.Quest.UI.PageCount:SetText()
 	AtlasTW.Quest.UI.NextPageButtonRight:Hide()
@@ -43,6 +68,13 @@ end
 -----------------------------------------------------------------------------
 -- Hide the AtlasLoot Frame if available
 -----------------------------------------------------------------------------
+---
+--- Hides the AtlasLoot frame if it's currently visible
+--- Ensures quest UI doesn't conflict with loot display
+--- @return nil
+--- @usage Called before showing quest details
+--- @since 1.0.0
+---
 function AtlasTW.Quest.HideAtlasLootFrame()
 	if AtlasLootItemsFrame then
 		AtlasLootItemsFrame:Hide() -- hide atlasloot
@@ -53,6 +85,15 @@ end
 -- Helper function to check if a quest exists
 -- Returns true if quest exists, false otherwise
 -----------------------------------------------------------------------------
+---
+--- Checks if a quest exists in the database for given parameters
+--- @param instance string - Instance name (defaults to current)
+--- @param questId number - Quest ID to check
+--- @param faction string - Faction name (defaults to current player faction)
+--- @return boolean - True if quest exists, false otherwise
+--- @usage Used internally to validate quest existence
+--- @since 1.0.0
+---
 local function kQQuestExists(instance, questId, faction)
     -- Default to current instance and faction if not provided
     instance = instance or AtlasTW.QCurrentInstance
@@ -65,8 +106,13 @@ local function kQQuestExists(instance, questId, faction)
            AtlasTW.Quest.DataBase[instance][faction][questId] ~= nil
 end
 
--- Check if a quest exists in the player's quest log and set appropriate color
--- Returns true if quest is found in quest log, false otherwise
+---
+--- Compares quest with player's quest log and sets appropriate color
+--- @param questId number - Quest ID to compare (defaults to current quest)
+--- @return boolean - True if quest is found in quest log, false otherwise
+--- @usage Used to highlight completed or active quests
+--- @since 1.0.0
+---
 local function kQCompareQuestLogtoQuest(questId)
     -- Early return if quest log checking is disabled
     if not AtlasTWOptions.QuestCheckQuestlog then
@@ -133,20 +179,26 @@ local function kQCompareQuestLogtoQuest(questId)
     return false
 end
 
------------------------------------------------------------------------------
--- set the checkbox for the finished quest check
--- swaped out to get the code clear
------------------------------------------------------------------------------
+---
+--- Sets the checkbox state for finished quest tracking
+--- Updates UI checkbox based on quest completion status
+--- @return nil
+--- @usage Called when updating quest completion display
+--- @since 1.0.0
+---
 local function kQuestFinishedSetChecked()
 	local questKey = "Completed_"..AtlasTW.QCurrentInstance.."_Quest_"..AtlasTW.QCurrentQuest
 	questKey = questKey..(AtlasTW.isHorde and "_Horde" or "_Alliance")
 	AtlasTW.Quest.UI.FinishedQuestCheckbox:SetChecked(AtlasTW.Q[questKey] == 1)
 end
 
------------------------------------------------------------------------------
--- Allow pages
--- In the new format, we need to implement proper handling of multi-page quests
------------------------------------------------------------------------------
+---
+--- Handles multi-page quest display and navigation
+--- Sets up page navigation for quests with multiple pages
+--- @return nil
+--- @usage Called when displaying quests with extended content
+--- @since 1.0.0
+---
 local function kQuestExtendedPages()
     -- Determine current faction
     local faction = AtlasTW.isHorde and "Horde" or "Alliance"
@@ -177,12 +229,13 @@ local function kQuestExtendedPages()
     end
 end
 
------------------------------------------------------------------------------
--- Retrieves and formats item information for quest rewards
--- @param count - Index of the item in the quest rewards list
--- @param what - Type of information to return ("name" or "extra")
--- @return Formatted item name or description text
------------------------------------------------------------------------------
+---
+--- Retrieves and formats item information for quest rewards
+--- @param count number - Index of the item in the quest rewards list
+--- @return string - Formatted item name or description text
+--- @usage Called when displaying quest reward items
+--- @since 1.0.0
+---
 local function kQuestGetItemInf(count)
     -- Local AtlasTW
     local instance = AtlasTW.QCurrentInstance
@@ -237,6 +290,13 @@ end
 -- set the Quest text
 -- executed when you push a button
 -----------------------------------------------------------------------------
+---
+--- Sets up quest text display in the quest details frame
+--- Handles multi-page quest descriptions and story text
+--- @return nil
+--- @usage Called when displaying quest information
+--- @since 1.0.0
+---
 function AtlasTW.Quest.SetQuestText()
     -- Local AtlasTW for item information
     local itemId, itemName, itemColor, itemTexture, itemDiscription
@@ -330,9 +390,13 @@ function AtlasTW.Quest.SetQuestText()
     kQuestExtendedPages()
 end
 
------------------------------------------------------------------------------
--- Set Story Text
------------------------------------------------------------------------------
+---
+--- Sets up story text display in the quest frame
+--- Displays lore and background information for the current instance
+--- @return nil
+--- @usage Called when story button is clicked
+--- @since 1.0.0
+---
 function AtlasTW.Quest.SetStoryText()
     -- Clear display
     AtlasTW.Quest.ClearAll()
@@ -381,6 +445,13 @@ end
 -----------------------------------------------------------------------------
 -- Loads the saved AtlasTW
 -----------------------------------------------------------------------------
+---
+--- Loads and displays finished quests for the current map
+--- Filters quests based on faction and completion status
+--- @return nil
+--- @usage Called when loading quest data for a map
+--- @since 1.0.0
+---
 function AtlasTW.Quest.LoadFinishedQuests()
     AtlasTWCharDB = AtlasTWCharDB or {}
     AtlasTW.Q = AtlasTW.Q or {}
@@ -403,6 +474,13 @@ end
 --******************************************
 -- Events: OnUpdate
 --******************************************
+---
+--- Updates the quest display with current quest data
+--- Refreshes quest buttons and handles page navigation
+--- @return nil
+--- @usage Called when quest data changes or page is switched
+--- @since 1.0.0
+---
 function AtlasTW.Quest.Update()
 	local previousInstance = AtlasTW.QCurrentInstance
 	-- Update instance information
@@ -416,6 +494,13 @@ function AtlasTW.Quest.Update()
 	end
 end
 
+---
+--- Sets up quest buttons with current quest data
+--- Configures button text, colors, and click handlers
+--- @return nil
+--- @usage Called when refreshing quest display
+--- @since 1.0.0
+---
 function AtlasTW.Quest.SetQuestButtons()
 	local instance = AtlasTW.QCurrentInstance
 	local faction = AtlasTW.isHorde and "Horde" or "Alliance"

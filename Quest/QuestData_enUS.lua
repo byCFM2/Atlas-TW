@@ -1,3 +1,21 @@
+---
+--- QuestData_enUS.lua - Atlas quest data definitions for English localization
+--- 
+--- This file contains all quest data definitions for Atlas-TW in English.
+--- It includes quest information, rewards, locations, and requirements
+--- for all instances and zones supported by Atlas-TW.
+--- 
+--- Features:
+--- - Complete quest database for all instances
+--- - Quest reward definitions
+--- - Quest location and NPC information
+--- - Quest inheritance system
+--- - Localized quest data for English
+--- 
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 local BZ = AceLibrary("Babble-Zone-2.2a")
@@ -14,12 +32,19 @@ local orange = "|cffFF8000"
 local purple = "|cffa335ee"
 
 ----------------------------------------------
-------------- Quest Instance Data ------------ TODO remake
+------------- Quest Instance Data ------------
 ----------------------------------------------
 
 local kQuestInstanceData = {}
 
--- Create inheritance helper function
+---
+--- Creates an inherited quest object using metatable inheritance
+--- @param baseQuest table The base quest object to inherit from
+--- @param overrides table The quest-specific overrides to apply
+--- @return table The new quest object with inheritance
+--- @usage local newQuest = createInheritedQuest(baseQuest, { Title = "New Title" })
+--- @since 1.0.0
+---
 local function createInheritedQuest(baseQuest, overrides)
     local metatable = { __index = baseQuest }
     setmetatable(overrides, metatable)

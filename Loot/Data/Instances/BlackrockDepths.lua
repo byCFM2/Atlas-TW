@@ -1,4 +1,20 @@
--- BlackfathomDeeps Loot Data
+---
+--- BlackrockDepths.lua - Blackrock Depths dungeon instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for the Blackrock Depths
+--- 5-player dungeon instance. It includes all boss encounters, rare drops,
+--- and dungeon-specific items with their respective drop rates.
+---
+--- Features:
+--- • Complete boss encounter loot tables
+--- • Rare and epic item drops
+--- • Dungeon entrance and layout data
+--- • Level-appropriate loot organization
+--- • Quest reward items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}

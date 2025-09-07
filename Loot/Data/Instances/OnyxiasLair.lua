@@ -1,5 +1,20 @@
-
-
+---
+--- OnyxiasLair.lua - Onyxia's Lair raid instance loot data
+---
+--- This module contains comprehensive loot tables and boss data for Onyxia's Lair
+--- 40-player raid instance. It includes the single boss encounter with
+--- tier set items, rare drops, and the legendary Onyxia Scale Cloak.
+---
+--- Features:
+--- • Complete Onyxia boss encounter
+--- • Tier set head pieces
+--- • Rare and epic weapon drops
+--- • Legendary cloak materials
+--- • Attunement quest items
+---
+--- @since 1.0.0
+--- @compatible World of Warcraft 1.12
+---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
@@ -68,7 +83,7 @@ AtlasTW.InstanceData.OnyxiasLair = {
                 { id = 17964, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12800 } }, -- Gray Sack of Gems
                 { id = 17965, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12363 } }, -- Yellow Sack of Gems
                 { id = 17969, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12799, 6332 } }, -- Red Sack of Gems
-                --{id=30000, dropRate=.1}, --Black Tournament Charger
+                { id = 30017, dropRate = .1 }, --Onyxian Drake TODO chance drop
 }
 }
 }
