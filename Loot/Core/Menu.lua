@@ -79,8 +79,6 @@ function AtlasLoot_OpenMenu(menuName)
 	CloseDropDownMenus()
 end
 
-local L = AtlasTW.Local
-
 ---
 --- Handles clicks on AtlasLoot Hewdrop menu items
 --- Opens the appropriate loot table or submenu based on selection type
