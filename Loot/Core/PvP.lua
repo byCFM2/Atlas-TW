@@ -55,7 +55,7 @@ AtlasTW.MenuData.PVP = {
 --- @since 1.0.0
 ---
 function AtlasLootPvPMenu()
-    AtlasTW.Loot.PrepMenu(L["PvP Rewards"], AtlasTW.MenuData.PVP)
+    AtlasTW.LootBrowserUI.PrepMenu(L["PvP Rewards"], AtlasTW.MenuData.PVP)
 end
 
 AtlasTW.MenuData.PVPSets = {
@@ -90,5 +90,5 @@ AtlasTW.MenuData.PVPSets = {
 --- @since 1.0.0
 ---
 function AtlasLootPVPSetMenu()
-    AtlasTW.Loot.PrepMenu(L["PvP Armor Sets"], AtlasTW.MenuData.PVPSets, L["PvP Rewards"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["PvP Armor Sets"], AtlasTW.MenuData.PVPSets, L["PvP Rewards"])
 end

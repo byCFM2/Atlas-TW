@@ -4,16 +4,8 @@
 --- This file contains the main loot system functionality for Atlas-TW.
 --- It handles item display, tooltip management, loot data processing,
 --- and provides the core infrastructure for the loot browser interface.
---- 
---- Features:
---- - Item display and tooltip management
---- - Loot data processing and caching
---- - Boss navigation and menu systems
---- - Integration with various tooltip addons
---- - Wish list and quick look functionality
---- 
+--- --- 
 --- @since 1.0.0
---- @compatible World of Warcraft 1.12
 ---
 
 AtlasLoot = AceLibrary("AceAddon-2.0"):new("AceDBa-2.0")
@@ -21,7 +13,6 @@ AtlasLoot = AceLibrary("AceAddon-2.0"):new("AceDBa-2.0")
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 AtlasTW.Loot = AtlasTW.Loot or {}
-local BS = AceLibrary("Babble-Spell-2.2a")
 --Instance required libraries
 local L = AtlasTW.Local
 
@@ -33,10 +24,6 @@ ATLASLOOT_OPTIONS_EQUIPCOMPARE_DISABLED = L["|cff9d9d9dUse EquipCompare|r"]
 local RED = AtlasLoot_Colors.RED
 local WHITE = AtlasLoot_Colors.WHITE
 local BLUE = AtlasLoot_Colors.BLUE
-local GREEN = AtlasLoot_Colors.GREEN
-local GREY = AtlasLoot_Colors.GREY
-local ORANGE = AtlasLoot_Colors.ORANGE
-local YELLOW = AtlasLoot_Colors.YELLOW
 
 AtlasLoot:RegisterDB("AtlasLootDB")
 
@@ -52,37 +39,72 @@ StaticPopupDialogs["ATLASLOOT_SETUP"] = {
 	hideOnEscape = 1
 }
 
+
 ---
---- Formats skill text with appropriate color coding
---- Applies color codes to skill level requirements for display
---- @param skilltext table Table containing skill level values [1-4]
---- @return string Formatted skill text with color codes
---- @usage local formatted = formSkillStyle({"100", "150", "200", "250"})
+--- Gets navigation data for boss/element browsing
+--- Creates navigation structure with previous/next boss links within current instance
+--- @param data string Name or ID of the boss/element to get navigation for
+--- @return table|nil Navigation table with Title, Back_Page, Prev_Page, Next_Page properties
+--- @usage local nav = AtlasLoot_GetBossNavigation("Ragnaros")
 --- @since 1.0.0
 ---
-local function formSkillStyle(skilltext)
-	if not skilltext or type(skilltext) ~= "table" then return "" end
-	return L["Skill:"].." "..ORANGE..skilltext[1]..", "..YELLOW..skilltext[2]..", "..
-		GREEN..skilltext[3]..", "..GREY..skilltext[4]
+function AtlasLoot_GetBossNavigation(data)
+    if not data then return nil end
+    -- Get current instance from settings
+    local currentZoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
+    local currentInstanceData = AtlasTW.InstanceData[currentZoneID]
+
+    -- Search for boss only in current instance
+    if currentInstanceData and currentInstanceData.Bosses then
+        for i, bossData in ipairs(currentInstanceData.Bosses) do
+            if bossData.name == data then
+                local nav = {}
+                nav.Title = bossData.name or bossData.id
+				if bossData.items and type(bossData.items) == "table" then
+					-- Back to dungeons menu
+					nav.Back_Page = "DUNGEONSMENU"
+					nav.Back_Title = L["Dungeons & Raids"]
+				end
+
+                local numEntries = table.getn(currentInstanceData.Bosses)
+				if numEntries <= 1 then return nav end
+                -- function to find valid element
+                local function findValidEntry(startIndex, direction)
+                    for j = 1, numEntries do
+                        local checkIndex = startIndex + (j * direction)
+                        if checkIndex < 1 then
+                            checkIndex = numEntries + checkIndex
+                        elseif checkIndex > numEntries then
+                            checkIndex = checkIndex - numEntries
+                        end
+                        local checkBoss = currentInstanceData.Bosses[checkIndex]
+                        if checkBoss and checkBoss.name and (checkBoss.items or checkBoss.loot) and type(checkBoss.items) ~= "string" then
+                            return checkBoss
+                        end
+                    end
+                    return nil
+                end
+
+                -- Search for previous valid element
+                local prevBoss = findValidEntry(i, -1)
+                if prevBoss then
+                    nav.Prev_Page = prevBoss.name
+                    nav.Prev_Title = prevBoss.name or prevBoss.id
+                end
+
+                -- Search for next valid element
+                local nextBoss = findValidEntry(i, 1)
+                if nextBoss then
+                    nav.Next_Page = nextBoss.name
+                    nav.Next_Title = nextBoss.name or nextBoss.id
+                end
+                return nav
+            end
+        end
+    end
+    return nil
 end
 
--- Function to find boss index in ScrollList by ID or name
-local function FindBossIndexInScrollList(bossIdOrName)
-	if not AtlasTW.ScrollList or not bossIdOrName then
-		return nil
-	end
-
-	for i = 1, table.getn(AtlasTW.ScrollList) do
-		local entry = AtlasTW.ScrollList[i]
-		if entry and (entry.id == bossIdOrName or entry.name == bossIdOrName) then
-			--print("FindBossIndexInScrollList: found boss " .. tostring(bossIdOrName) .. " at index " .. tostring(i))
-			return i
-		end
-	end
-
-	--print("FindBossIndexInScrollList: boss " .. tostring(bossIdOrName) .. " not found in ScrollList")
-	return nil
-end
 
 ---
 --- Gets navigation data for menu browsing
@@ -243,7 +265,6 @@ end
 --- Shows the GUI for setting QuickLook assignments
 --- Creates dropdown menu for assigning current loot table to QuickLook slots
 --- @param button table Button frame that triggered the function
---- @return void
 --- @usage AtlasLoot_ShowQuickLooks(buttonFrame)
 --- @since 1.0.0
 ---
@@ -374,171 +395,6 @@ function AtlasLoot_Strsplit(delim, str, maxNb, onlyLast)
 	end
 end
 
--- Helper function to create materials string (tools/reagents)
-local function BuildMaterialString(materials, isReagent)
-    if not materials or type(materials) ~= "table" then
-        return ""
-    end
-
-    local materialStrings = {}
-    for i = 1, table.getn(materials) do
-        local itemInfo = materials[i]
-        local checkedItem
-        if isReagent then
-            -- Reagent is a table {itemID, quantity}
-           -- AtlasLoot_ForceCacheItemWithDelay(itemInfo[1], 1)
-            checkedItem = AtlasLoot_CheckBagsForItems(itemInfo[1], itemInfo[2] or 1)
-        else
-            -- Tool is just itemID
-          --  AtlasLoot_ForceCacheItemWithDelay(itemInfo, 1)
-            checkedItem = AtlasLoot_CheckBagsForItems(itemInfo)
-        end
-        table.insert(materialStrings, checkedItem)
-    end
-
-    -- table.concat is much faster than loop concatenation for Lua 5.0
-    return table.concat(materialStrings, WHITE .. ", ")
-end
-
--- Helper function to determine correct spell ID (with profession hacks)
-local function GetDisplaySpellID(elemID)
-    if elemID >= 100000 then
-        if elemID <= 100007 then return 2575 end -- Mining Apprentice 75
-        if elemID <= 100010 then return 2576 end -- Mining Journeyman 125
-        if elemID <= 100017 then return 3564 end -- Mining Expert 225
-        if elemID <= 100035 then return 10248 end -- Mining Artisan 275
-    end
-    return elemID
-end
-
--- Main function for displaying spell tooltip
-local function ShowSpellTooltip(link, elemID, anchor)
-    AtlasLootTooltip:SetOwner(anchor, "ANCHOR_NONE")
-    AtlasLootTooltip:SetPoint("BOTTOMLEFT", anchor, "TOPRIGHT", -(anchor:GetWidth() / 2), 24)
-    AtlasLootTooltip:ClearLines()
-
-    -- Data-driven structure for tooltip lines
-    local tooltipLines = {
-        { text = link.name },
-        { text = link.requires, prefix = WHITE .. L["Requires"]..": " },
-        { text = BuildMaterialString(link.tools), prefix = WHITE .. L["Tools: "], wrap = true },
-        { text = BuildMaterialString(link.reagents, true), prefix = WHITE .. L["Reagents: "], wrap = true },
-        { text = link.text, wrap = true },
-    }
-
-    -- Dynamic addition of lines to tooltip
-    for i = 1, table.getn(tooltipLines) do
-        local lineInfo = tooltipLines[i]
-        if lineInfo.text and lineInfo.text ~= "" then
-            AtlasLootTooltip:AddLine((lineInfo.prefix or "") .. lineInfo.text, nil, nil, nil, lineInfo.wrap)
-        end
-    end
-
-    -- Add spell ID if option is enabled
-    if AtlasTWOptions.LootItemIDs then
-        local spellID = GetDisplaySpellID(elemID)
-        AtlasLootTooltip:AddLine(BLUE .. L["SpellID:"] .. " " .. spellID, nil, nil, nil, true)
-    end
-
-    AtlasLootTooltip:Show()
-end
-
--- Main function for displaying crafted item tooltip
-local function ShowCraftedItemTooltip(link, anchorTooltip, anchorFrame)
-	local itemID = link.item
-    if not itemID then return end
-    AtlasLootTooltip2:SetOwner(anchorFrame, "ANCHOR_NONE")
-    AtlasLootTooltip2:SetPoint("TOPLEFT", anchorTooltip, "BOTTOMLEFT", 0, 0)
-    AtlasLootTooltip2:ClearLines()
-    AtlasLootTooltip2:SetHyperlink("item:" .. itemID.. ":0:0:0")
-    if link.extra then
-        AtlasLootTooltip2:AddLine(link.extra, nil, nil, nil, true)
-    end
-    if AtlasTWOptions.LootItemIDs then
-        AtlasLootTooltip2:AddLine(BLUE .. L["ItemID:"] .. " " .. itemID, nil, nil, nil, true)
-    end
-    AtlasLootTooltip2:Show()
-end
-
---[[
-  Унифицированная модульная система для обработки тултипов
-]]
-
--- Handler for "spell" type
-local function HandleSpellTooltip(elemID, anchor)
-    local link = AtlasTW.SpellDB.craftspells[elemID]
-    if not link then
-       -- print("AtlasLoot Error: Missing spell data for ID: " .. tostring(elemID))
-        return
-    end
-    ShowSpellTooltip(link, elemID, anchor)
-    ShowCraftedItemTooltip(link, AtlasLootTooltip, anchor)
-end
-
-local messageShown = false
--- Handler for "enchant" type
-local function HandleEnchantTooltip(spellID, anchor)
-    if not spellID then return end
-    local enchantLink = "enchant:" .. spellID
-
-     -- For old SuperWoW versions
-    if SetAutoloot and (SUPERWOW_VERSION and (tonumber(SUPERWOW_VERSION)) < 1.2) then
-        enchantLink = "spell:" .. spellID
-        if not messageShown then
-            print(BLUE .. L["AtlasLoot"] .. ": " .. WHITE .. "Old version of SuperWoW detected...")
-            messageShown = true
-        end
-    end
-
-    AtlasLootTooltip:SetOwner(anchor, "ANCHOR_RIGHT")
-    AtlasLootTooltip:SetHyperlink(enchantLink)
-
-    if AtlasTWOptions.LootItemIDs then
-        AtlasLootTooltip:AddLine(BLUE .. L["SpellID:"] .. " " .. spellID, nil, nil, nil, 1)
-    end
-    AtlasLootTooltip:Show()
-
-    -- Show linked item if it exists
-    local enchantData = AtlasTW.SpellDB.enchants[spellID]
-    if enchantData and enchantData.item then
-        ShowCraftedItemTooltip(enchantData, AtlasLootTooltip, anchor)
-    end
-end
-
--- Handler for "item" type
-local function HandleItemTooltip(itemID, dropRate, anchor)
-    AtlasLootTooltip:SetOwner(anchor, "ANCHOR_RIGHT")
-    AtlasLootTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
-    if dropRate then
-        AtlasLootTooltip:AddLine(L["Drop Rate:"] .. " " .. dropRate, 0.2, 0.4, 0.3)
-    end
-    if AtlasTWOptions.LootItemIDs then
-        AtlasLootTooltip:AddLine(BLUE .. L["ItemID:"] .. " " .. itemID, nil, nil, nil, 1)
-    end
-    AtlasLootTooltip:Show()
-end
-
--- Handler map
-local TOOLTIP_HANDLERS = {
-    spell = HandleSpellTooltip,
-    enchant = HandleEnchantTooltip,
-    item = HandleItemTooltip,
-}
-
-
-local function AtlasLoot_GetChatLink(id)
-	local itemName, itemLink, itemQuality = GetItemInfo(tonumber(id))
-	if not itemName or not itemLink or not itemQuality then
-		-- If item is not cached, return simple link
-		return "[Item:" .. tostring(id) .. "]"
-	end
-
-	local _, _, _, colorCode = GetItemQualityColor(itemQuality)
-	local colorHex = string.sub(colorCode, 2)
-	return "\124" .. colorHex .. "\124H" .. itemLink .. "\124h[" .. itemName .. "]\124h\124r"
-end
-
-
 ---
 --- Creates a universal loading indicator frame
 --- Generates animated spinner with backdrop for loading states
@@ -655,7 +511,7 @@ function AtlasLoot_CheckBagsForItems(id, qty)
 	for i=0,NUM_BAG_FRAMES do
 		for j=1,GetContainerNumSlots(i) do
 			local itemLink = GetContainerItemLink(i, j)
-			if itemLink and AtlasLoot_IdFromLink(itemLink) == tonumber(id) then
+			if itemLink and AtlasTW.LootUtils.IdFromLink(itemLink) == tonumber(id) then
 				local _, stackCount = GetContainerItemInfo(i, j)
 				itemsfound = itemsfound + stackCount
 				if itemsfound >= qty then
@@ -734,7 +590,7 @@ function AtlasLoot_SayItemReagents(id, color, name, safe)
 			end
 
 			-- Send craft message
-			local craftMessage = L["To craft "] .. craftnumber .. AtlasLoot_GetChatLink(craftitem) .. L[" the following reagents are needed:"]
+			local craftMessage = L["To craft "] .. craftnumber .. AtlasTW.LootUtils.GetChatLink(craftitem) .. L[" the following reagents are needed:"]
 			SendChatMessage(craftMessage, channel, nil, chatnumber)
 
 			-- Send reagent list
@@ -744,7 +600,7 @@ function AtlasLoot_SayItemReagents(id, color, name, safe)
 					local reagentCount = reagents[j][2] or 1
 					local reagentItem = reagents[j][1]
 
-					chatline = chatline .. reagentCount .. "x" .. AtlasLoot_GetChatLink(reagentItem) .. " "
+					chatline = chatline .. reagentCount .. "x" .. AtlasTW.LootUtils.GetChatLink(reagentItem) .. " "
 					itemCount = itemCount + 1
 
 					if itemCount == 4 then
@@ -775,7 +631,7 @@ function AtlasLoot_SayItemReagents(id, color, name, safe)
 					local reagentCount = reagents[j][2] or 1
 					local reagentItem = reagents[j][1]
 
-					chatline = chatline .. reagentCount .. "x" .. AtlasLoot_GetChatLink(reagentItem) .. " "
+					chatline = chatline .. reagentCount .. "x" .. AtlasTW.LootUtils.GetChatLink(reagentItem) .. " "
 					itemCount = itemCount + 1
 
 					if itemCount == 4 then
@@ -802,7 +658,7 @@ function AtlasLoot_SayItemReagents(id, color, name, safe)
 		-- Determine message based on item availability
 		local message
 		if enchantItem then
-			message = L["To craft "] .. AtlasLoot_GetChatLink(enchantItem) .. L[" you need this: "] .. enchantLink
+			message = L["To craft "] .. AtlasTW.LootUtils.GetChatLink(enchantItem) .. L[" you need this: "] .. enchantLink
 		else
 			message = enchantLink
 		end

@@ -7,7 +7,27 @@
 -- 3) Extract item ID from WoW item link
 -- @since 1.0.0
 -- @compatible World of Warcraft 1.12
+
+local _G = getfenv()
+AtlasTW = _G.AtlasTW
+AtlasTW.LootUtils = AtlasTW.LootUtils or {}
+
 ---
+-- @module AtlasLoot.Utils
+-- @version 1.0.0
+-- @description Common string and link utilities for Atlas-TW Loot
+---
+function AtlasTW.LootUtils.GetChatLink(id)
+	local itemName, itemLink, itemQuality = GetItemInfo(tonumber(id))
+	if not itemName or not itemLink or not itemQuality then
+		-- If item is not cached, return simple link
+		return "[Item:" .. tostring(id) .. "]"
+	end
+
+	local _, _, _, colorCode = GetItemQualityColor(itemQuality)
+	local colorHex = string.sub(colorCode, 2)
+	return "\124" .. colorHex .. "\124H" .. itemLink .. "\124h[" .. itemName .. "]\124h\124r"
+end
 
 ---
 --- Removes all WoW formatting codes from text
@@ -17,7 +37,7 @@
 --- @usage local clean = AtlasLoot_StripFormatting("|cffff0000Red Text|r")
 --- @since 1.0.0
 ---
-function AtlasLoot_StripFormatting(text)
+function AtlasTW.LootUtils.StripFormatting(text)
     if not text then return "" end
     -- Remove color codes |cffRRGGBB and closing |r
     text = string.gsub(text, "|c%x%x%x%x%x%x%x%x", "")
@@ -47,11 +67,11 @@ end
 --- @param text string Text to truncate
 --- @param maxLength number Maximum allowed length
 --- @return string Truncated text with ellipsis if needed
---- @usage local short = AtlasLoot_Truncate("Very long text", 10)
+--- @usage local short = AtlasTW.LootUtils.TruncateText("Very long text", 10)
 --- @since 1.0.0
 ---
-function AtlasLoot_Truncate(text, maxLength)
-    local stripped_text = AtlasLoot_StripFormatting(text)
+function AtlasTW.LootUtils.TruncateText(text, maxLength)
+    local stripped_text = AtlasTW.LootUtils.StripFormatting(text)
     local current_len = string.len(stripped_text)
     if current_len > maxLength then
         if maxLength <= 3 then
@@ -69,10 +89,10 @@ end
 --- Supports links like |cff..|Hitem:12345:...|h[Name]|h|r
 --- @param itemlink string WoW item hyperlink
 --- @return number|nil Numeric item ID or nil if not found
---- @usage local id = AtlasLoot_IdFromLink(itemLink)
+--- @usage local id = AtlasTW.LootUtils.IdFromLink(itemLink)
 --- @since 1.0.0
 ---
-function AtlasLoot_IdFromLink(itemlink)
+function AtlasTW.LootUtils.IdFromLink(itemlink)
     if itemlink then
         local _, _, id = string.find(itemlink, "|Hitem:([^:]+)%:")
         return tonumber(id)

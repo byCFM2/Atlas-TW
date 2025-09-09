@@ -123,7 +123,7 @@ do
     searchBox:SetScript("OnEnterPressed", function()
         AtlasTW.Search(this:GetText())
         this:ClearFocus()
-        AtlasTW.Loot.ScrollBarUpdate()
+        AtlasTW.LootBrowserUI.ScrollBarUpdate()
     end)
 
     -- Switch dropdown
@@ -146,7 +146,7 @@ do
     searchButton:SetScript("OnClick", function()
         AtlasTW.Search(AtlasSearchEditBox:GetText())
         AtlasSearchEditBox:ClearFocus()
-        AtlasTW.Loot.ScrollBarUpdate()
+        AtlasTW.LootBrowserUI.ScrollBarUpdate()
     end)
 
     -- Clear button
@@ -158,7 +158,7 @@ do
         AtlasSearchEditBox:SetText("")
         AtlasTW.Search(AtlasSearchEditBox:GetText())
         AtlasSearchEditBox:ClearFocus()
-        AtlasTW.Loot.ScrollBarUpdate()
+        AtlasTW.LootBrowserUI.ScrollBarUpdate()
     end)
 
     -- Options button
@@ -191,10 +191,10 @@ do
     scrollBar:SetHeight(367)
     scrollBar:SetPoint("TOPLEFT", 530, -186)
     scrollBar:SetScript("OnVerticalScroll", function()
-        FauxScrollFrame_OnVerticalScroll(15, AtlasTW.Loot.ScrollBarUpdate)
+        FauxScrollFrame_OnVerticalScroll(15, AtlasTW.LootBrowserUI.ScrollBarUpdate)
     end)
     scrollBar:SetScript("OnShow", function()
-        AtlasTW.Loot.ScrollBarUpdate()
+        AtlasTW.LootBrowserUI.ScrollBarUpdate()
     end)
 
     -- Search container

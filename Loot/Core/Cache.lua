@@ -6,10 +6,13 @@
 --- • Memoization to avoid duplicate cache operations
 --- • Fallback mechanisms for environments without timers
 --- • Global cache management and cleanup
---- @author Atlas-TW Team
 --- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
+
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+AtlasTW.LootCache = AtlasTW.LootCache or {}
 
 -- Global cache of checked item sets
 if not ATLASTWLOOT_CHECKED_SETS then
@@ -50,37 +53,39 @@ end
 -- @return void
 -- @since 1.0.0
 ---
-function AtlasLoot_ForceCacheItem(itemID, attempts)
-    if not itemID then return end
-    if not attempts then attempts = 1 end
-
-    local tooltipName = "AtlasLootHiddenTooltip_Force"
-    local tooltip = _G[tooltipName]
-    if not tooltip then
-        tooltip = CreateFrame("GameTooltip", tooltipName, UIParent, "GameTooltipTemplate")
-        tooltip:SetOwner(UIParent, "ANCHOR_NONE")
-        _G[tooltipName] = tooltip
+function AtlasTW.LootCache.ForceCacheItem(itemID, maxAttempts)
+    if not itemID or itemID == 0 then
+        return false
     end
-
-    local i = 1
-    while i <= attempts do
-        tooltip:ClearLines()
-        tooltip:SetHyperlink("item:" .. tostring(itemID) .. ":0:0:0")
-        i = i + 1
+    maxAttempts = maxAttempts or 3
+    local attempts = 0
+    local function tryCache()
+        if GetItemInfo(itemID) then
+            return true
+        end
+        GameTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
+        attempts = attempts + 1
+        if attempts < maxAttempts then
+            -- Start next attempt
+            tryCache()
+        else
+            return false
+        end
     end
+    tryCache()
 end
 
 ---
--- Public wrapper that proxies to the internal CacheAllLootItems defined in AtlasLoot.lua during migration.
--- This keeps existing modules working while CacheAllLootItems remains local in AtlasLoot.lua.
+-- Public wrapper that proxies to the internal CacheAllItems defined in AtlasLoot.lua during migration.
+-- This keeps existing modules working while CacheAllItems remains local in AtlasLoot.lua.
 -- @param dataSource table Loot data to cache
 -- @param callback function Optional callback to invoke after caching completes
 -- @return void
--- @usage AtlasLoot_CacheAllItems(lootData, function() print("Caching complete") end)
--- @note Prefer this wrapper over direct CacheAllLootItems to get fallback and diagnostics in non-Core callers.
+-- @usage AtlasTW.LootCache.CacheAllItems(lootData, function() print("Caching complete") end)
+-- @note Prefer this wrapper over direct CacheAllItems to get fallback and diagnostics in non-Core callers.
 -- @since 1.0.0
 ---
-function AtlasLoot_CacheAllItems(dataSource, callback)
+function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
     -- Unify caching logic here to decouple external callers from internal implementation
     CleanupMemoCache()
     if not dataSource or type(dataSource) ~= "table" then
@@ -167,7 +172,7 @@ function AtlasLoot_CacheAllItems(dataSource, callback)
             ATLASTWLOOT_DEBUG_FALLBACK_CACHE_REPORTED = true
         end
         for i = 1, table.getn(uncachedItems) do
-            AtlasLoot_ForceCacheItem(uncachedItems[i], 1)
+            AtlasTW.LootCache.ForceCacheItem(uncachedItems[i], 1)
         end
         if callback then callback() end
         return

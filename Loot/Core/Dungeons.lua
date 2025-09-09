@@ -153,5 +153,5 @@ AtlasTW.MenuData.Dungeons = GenerateMenuDataFromInstanceData()
 --- @since 1.0.0
 ---
 function AtlasLoot_DungeonsMenu()
-    AtlasTW.Loot.PrepMenu(L["Dungeons & Raids"], AtlasTW.MenuData.Dungeons)
+    AtlasTW.LootBrowserUI.PrepMenu(L["Dungeons & Raids"], AtlasTW.MenuData.Dungeons)
 end

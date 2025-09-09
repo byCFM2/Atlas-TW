@@ -98,7 +98,7 @@ function AtlasLoot_ShowWishList()
 	AtlasLoot_InvalidateCategorizedList("WishList")
 
 	-- Update display
-	AtlasTW.Loot.ScrollBarLootUpdate()
+	AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 end
 
 ---

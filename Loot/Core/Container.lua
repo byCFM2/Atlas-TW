@@ -11,6 +11,7 @@
 ---
 
 -- Local state used by container UI
+local L = AtlasTW.Local
 local containerItems = {}
 local lastSelectedButton
 
@@ -72,7 +73,7 @@ function AtlasLoot_ShowContainerFrame()
 	AtlasLoot_ShowContainerLoading()
 
 	-- Cache all container items asynchronously, then update frame
-	AtlasLoot_CacheAllItems(containerTable, function()
+	AtlasTW.LootCache.CacheAllItems(containerTable, function()
 		AtlasLoot_UpdateContainerDisplay()
 	end)
 end
@@ -201,7 +202,7 @@ function AtlasLoot_AddContainerItemTooltip(frame ,itemID)
 			end
 		elseif icon:GetTexture() == "Interface\\Icons\\INV_Misc_QuestionMark" then
 			-- If item is still not cached, try to force cache
-			AtlasLoot_ForceCacheItem(itemID)
+			AtlasTW.LootCache.ForceCacheItem(itemID)
 		end
     end)
     frame:SetScript("OnLeave", function()
@@ -230,6 +231,14 @@ function AtlasLoot_ContainerItem_OnClick(arg1)
 			elseif ChatFrameEditBox:IsVisible() then
 				ChatFrameEditBox:Insert("\124"..string.sub(color, 2).."|Hitem:"..itemID.."\124h["..name.."]|h|r")
 			end
+		elseif AtlasTWOptions.LootSafeLinks then
+				if WIM_EditBoxInFocus then
+					WIM_EditBoxInFocus:Insert("["..name.."]")
+				elseif ChatFrameEditBox:IsVisible() then
+					ChatFrameEditBox:Insert("["..name.."]")
+				else
+					AtlasLoot_SayItemReagents(this.itemID, nil, name, true)
+				end
 		end
 	elseif(IsControlKeyDown() and name) then
 		DressUpItemLink(link)

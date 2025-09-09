@@ -1,9 +1,13 @@
 ---
 --- Initialization and event handling for AtlasLoot
 --- Sets up SavedVariables, options, UISpecialFrames and integrations on VARIABLES_LOADED
---- @author Atlas-TW Team
 --- @since 1.0.0
 ---
+
+-- Local references for performance and compatibility
+local _G = getfenv()
+local L = AtlasTW.Local
+local tinsert = table.insert
 
 ---
 --- Handles VARIABLES_LOADED event and initializes addon
@@ -12,9 +16,44 @@
 --- @return nil
 --- @usage Called automatically on VARIABLES_LOADED event via AtlasLootInitFrame
 --- @since 1.0.0
---- @author Atlas-TW Team
 ---
 function AtlasLoot_OnEvent()
+	-- Initialize character database structure
+	AtlasLoot_InitializeCharacterDatabase()
+
+	-- Initialize UI special frames and panel windows
+	AtlasLoot_InitializeUIFrames()
+
+	-- Initialize addon integrations
+	AtlasTW.Integrations.Initialize()
+
+	-- Set up options frame and validate options
+	AtlasTW.OptionsInit()
+	AtlasTW.Integrations.ValidateOptions()
+
+	-- Apply visual options (background opacity)
+	AtlasLoot_ApplyVisualOptions()
+
+	-- Set up the menu in the loot browser
+	AtlasLoot_HewdropRegister()
+
+	-- Apply addon integrations based on current options
+	AtlasTW.Integrations.ApplyEquipCompareIntegration()
+
+	-- Legacy Atlas load-on-demand support
+	if AtlasButton_LoadAtlas then
+		AtlasButton_LoadAtlas()
+	end
+end
+
+---
+--- Initializes character database structure
+--- Sets up SavedVariables tables and invalidates category caches
+--- @return nil
+--- @usage AtlasLoot_InitializeCharacterDatabase() -- Called during initialization
+--- @since 1.0.0
+---
+function AtlasLoot_InitializeCharacterDatabase()
 	if not AtlasTWCharDB then AtlasTWCharDB = {} end
 	if not AtlasTWCharDB["WishList"] then AtlasTWCharDB["WishList"] = {} end
 	if not AtlasTWCharDB["QuickLooks"] then AtlasTWCharDB["QuickLooks"] = {} end
@@ -25,64 +64,36 @@ function AtlasLoot_OnEvent()
 		AtlasLoot_InvalidateCategorizedList("WishList")
 		AtlasLoot_InvalidateCategorizedList("SearchResult")
 	end
+end
 
-	--Add the loot browser to the special frames tables to enable closing wih the ESC key
+---
+--- Initializes UI special frames and panel windows
+--- Adds frames to UISpecialFrames and sets up UIPanelWindows
+--- @return nil
+--- @usage AtlasLoot_InitializeUIFrames() -- Called during initialization
+--- @since 1.0.0
+---
+function AtlasLoot_InitializeUIFrames()
+	-- Add the loot browser to the special frames tables to enable closing with the ESC key
 	tinsert(UISpecialFrames, "AtlasLootOptionsFrame")
-	--Disable checkboxes of missing addons
-	if not LootLink_SetTooltip then
-		AtlasTWOptionLootlinkTT:Disable()
-		AtlasTWOptionLootlinkTTText:SetText(L["|cff9d9d9dLootlink Tooltips|r"])
-	end
-	if not ItemSync and not ISync then
-		AtlasTWOptionItemSyncTT:Disable()
-		AtlasTWOptionItemSyncTTText:SetText(L["|cff9d9d9dItemSync Tooltips|r"])
-	end
-	if not IsAddOnLoaded("EQCompare") and not IsAddOnLoaded("EquipCompare") then
-		AtlasTWOptionEquipCompare:Disable()
-		AtlasTWOptionEquipCompareText:SetText(L["|cff9d9d9dUse EquipCompare|r"])
-	end
-
-	--Set up options frame
-	AtlasTW.OptionsInit()
-
+	
+	-- Set up panel window configuration
 	UIPanelWindows['AtlasLootOptionsFrame'] = {area = 'center', pushable = 0}
+end
 
-	--Legacy code for those using the ultimately failed attempt at making Atlas load on demand
-	if AtlasButton_LoadAtlas then
-		AtlasButton_LoadAtlas()
-	end
-
-	--Disable options that don't have the supporting mods
-	if not LootLink_SetTooltip and AtlasTWOptions.LootlinkTT == true then
-		AtlasTWOptions.LootlinkTT = false
-		AtlasTWOptions.LootDefaultTT = true
-	end
-	if not ItemSync and not ISync and AtlasTWOptions.LootItemSyncTT == true then
-		AtlasTWOptions.LootItemSyncTT = false
-		AtlasTWOptions.LootDefaultTT = true
-	end
-	if not IsAddOnLoaded("EQCompare") and not IsAddOnLoaded("EquipCompare") and AtlasTWOptions.EquipCompare == true then
-		AtlasTWOptions.LootEquipCompare = false
-	end
-	--If using an opaque items frame, change the alpha value of the backing texture
-
+---
+--- Applies visual options based on current settings
+--- Handles background opacity and other visual customizations
+--- @return nil
+--- @usage AtlasLoot_ApplyVisualOptions() -- Called during initialization
+--- @since 1.0.0
+---
+function AtlasLoot_ApplyVisualOptions()
+	-- If using an opaque items frame, change the alpha value of the backing texture
 	if AtlasTWOptions.LootOpaque then
 		AtlasLootItemsFrame_Back:SetTexture(0, 0, 0, 1)
 	else
 		AtlasLootItemsFrame_Back:SetTexture(0, 0, 0, 0.65)
-	end
-
-	--Set up the menu in the loot browser
-	AtlasLoot_HewdropRegister()
-	--Enable or disable AtlasLootFu based on seleced options
-	--If EquipCompare is available, use it
-	if (IsAddOnLoaded("EquipCompare") or IsAddOnLoaded("EQCompare")) and AtlasTWOptions.EquipCompare == true then
-		EquipCompare_RegisterTooltip(AtlasLootTooltip)
-		EquipCompare_RegisterTooltip(AtlasLootTooltip2)
-	end
-	if(IsAddOnLoaded("EQCompare") and (AtlasTWOptions.LootEquipCompare == true)) then
-		EQCompare:RegisterTooltip(AtlasLootTooltip)
-		EQCompare:RegisterTooltip(AtlasLootTooltip2)
 	end
 end
 

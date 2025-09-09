@@ -52,5 +52,5 @@ AtlasTW.MenuData.WorldEvents = {
 -- @version 1.0
 ---
 function AtlasLootWorldEventMenu()
-    AtlasTW.Loot.PrepMenu(L["World Events"], AtlasTW.MenuData.WorldEvents)
+    AtlasTW.LootBrowserUI.PrepMenu(L["World Events"], AtlasTW.MenuData.WorldEvents)
 end

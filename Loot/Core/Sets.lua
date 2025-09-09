@@ -64,7 +64,7 @@ AtlasTW.MenuData.Sets = {
 --- @since 1.0.0
 ---
 function AtlasLootSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Collections"], AtlasTW.MenuData.Sets)
+    AtlasTW.LootBrowserUI.PrepMenu(L["Collections"], AtlasTW.MenuData.Sets)
 end
 
 AtlasTW.MenuData.WorldBlues = {
@@ -107,7 +107,7 @@ AtlasTW.MenuData.WorldBlues = {
 --- @since 1.0.0
 ---
 function AtlasLootWorldBluesMenu()
-    AtlasTW.Loot.PrepMenu(L["World Blues"], AtlasTW.MenuData.WorldBlues, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["World Blues"], AtlasTW.MenuData.WorldBlues, L["Collections"])
 end
 
 ---
@@ -150,7 +150,7 @@ AtlasTW.MenuData.Warrior = createClassSetMenu("Warrior", "|cffc69b6d", "Interfac
 --- @since 1.0.0
 ---
 function AtlasLootPriestSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Priest Sets"], AtlasTW.MenuData.Priest, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Priest Sets"], AtlasTW.MenuData.Priest, L["Collections"])
 end
 
 ---
@@ -160,7 +160,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootMageSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Mage Sets"], AtlasTW.MenuData.Mage, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Mage Sets"], AtlasTW.MenuData.Mage, L["Collections"])
 end
 
 ---
@@ -170,7 +170,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootWarlockSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Warlock Sets"], AtlasTW.MenuData.Warlock, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Warlock Sets"], AtlasTW.MenuData.Warlock, L["Collections"])
 end
 
 ---
@@ -180,7 +180,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootRogueSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Rogue Sets"], AtlasTW.MenuData.Rogue, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Rogue Sets"], AtlasTW.MenuData.Rogue, L["Collections"])
 end
 
 ---
@@ -190,7 +190,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootDruidSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Druid Sets"], AtlasTW.MenuData.Druid, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Druid Sets"], AtlasTW.MenuData.Druid, L["Collections"])
 end
 
 ---
@@ -200,7 +200,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootHunterSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Hunter Sets"], AtlasTW.MenuData.Hunter, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Hunter Sets"], AtlasTW.MenuData.Hunter, L["Collections"])
 end
 
 ---
@@ -210,7 +210,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootShamanSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Shaman Sets"], AtlasTW.MenuData.Shaman, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Shaman Sets"], AtlasTW.MenuData.Shaman, L["Collections"])
 end
 
 ---
@@ -220,7 +220,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootPaladinSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Paladin Sets"], AtlasTW.MenuData.Paladin, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Paladin Sets"], AtlasTW.MenuData.Paladin, L["Collections"])
 end
 
 ---
@@ -230,7 +230,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootWarriorSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Warrior Sets"], AtlasTW.MenuData.Warrior, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Warrior Sets"], AtlasTW.MenuData.Warrior, L["Collections"])
 end
 
 AtlasTW.MenuData.Pre60Sets = {
@@ -261,7 +261,7 @@ AtlasTW.MenuData.Pre60Sets = {
 --- @since 1.0.0
 ---
 function AtlasLootPRE60SetMenu()
-    AtlasTW.Loot.PrepMenu(L["Pre 60 Sets"], AtlasTW.MenuData.Pre60Sets, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Pre 60 Sets"], AtlasTW.MenuData.Pre60Sets, L["Collections"])
 end
 
 ---
@@ -332,7 +332,7 @@ AtlasTW.MenuData.T35Set = CreateDungeonSetMenu("T35")
 --- @since 1.0.0
 ---
 function AtlasLootZGSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Zul'Gurub Sets"], AtlasTW.MenuData.ZGSet, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Zul'Gurub Sets"], AtlasTW.MenuData.ZGSet, L["Collections"])
 end
 
 ---
@@ -342,7 +342,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootAQ40SetMenu()
-    AtlasTW.Loot.PrepMenu(L["Temple of Ahn'Qiraj Sets"], AtlasTW.MenuData.AQ40Set, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Temple of Ahn'Qiraj Sets"], AtlasTW.MenuData.AQ40Set, L["Collections"])
 end
 
 ---
@@ -352,7 +352,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootAQ20SetMenu()
-    AtlasTW.Loot.PrepMenu(L["Ruins of Ahn'Qiraj Sets"], AtlasTW.MenuData.AQ20Set, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Ruins of Ahn'Qiraj Sets"], AtlasTW.MenuData.AQ20Set, L["Collections"])
 end
 
 ---
@@ -362,7 +362,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootT0SetMenu()
-    AtlasTW.Loot.PrepMenu(L["Tier 0/0.5 Sets"], AtlasTW.MenuData.T0Set, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Tier 0/0.5 Sets"], AtlasTW.MenuData.T0Set, L["Collections"])
 end
 
 ---
@@ -372,7 +372,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootT1SetMenu()
-    AtlasTW.Loot.PrepMenu(L["Tier 1 Sets"], AtlasTW.MenuData.T1Set, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Tier 1 Sets"], AtlasTW.MenuData.T1Set, L["Collections"])
 end
 
 ---
@@ -382,7 +382,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootT2SetMenu()
-    AtlasTW.Loot.PrepMenu(L["Tier 2 Sets"], AtlasTW.MenuData.T2Set, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Tier 2 Sets"], AtlasTW.MenuData.T2Set, L["Collections"])
 end
 
 ---
@@ -392,7 +392,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootT3SetMenu()
-    AtlasTW.Loot.PrepMenu(L["Tier 3 Sets"], AtlasTW.MenuData.T3Set, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Tier 3 Sets"], AtlasTW.MenuData.T3Set, L["Collections"])
 end
 
 ---
@@ -402,5 +402,5 @@ end
 --- @since 1.0.0
 ---
 function AtlasLootUKSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Tower of Karazhan Sets"], AtlasTW.MenuData.T35Set, L["Collections"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Tower of Karazhan Sets"], AtlasTW.MenuData.T35Set, L["Collections"])
 end

@@ -5,7 +5,6 @@
 --- • WoW color code constants for item quality and UI elements
 --- • Shared string constants and formatting values
 --- • Centralized configuration values
---- @author Atlas-TW Team
 --- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---

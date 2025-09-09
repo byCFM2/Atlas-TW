@@ -55,7 +55,7 @@ AtlasTW.MenuData.Crafting = {
 --- @usage AtlasLoot_CraftingMenu() -- Show crafting menu
 --- @since 1.0.0
 function AtlasLoot_CraftingMenu()
-    AtlasTW.Loot.PrepMenu(L["Crafting"], AtlasTW.MenuData.Crafting)
+    AtlasTW.LootBrowserUI.PrepMenu(L["Crafting"], AtlasTW.MenuData.Crafting)
 end
 
 AtlasTW.MenuData.CraftedSet = {
@@ -115,7 +115,7 @@ AtlasTW.MenuData.CraftedSet = {
 --- @usage AtlasLootCraftedSetMenu()
 --- @since 1.0.0
 function AtlasLootCraftedSetMenu()
-    AtlasTW.Loot.PrepMenu(L["Crafted Sets"], AtlasTW.MenuData.CraftedSet, L["Crafting"])
+    AtlasTW.LootBrowserUI.PrepMenu(L["Crafted Sets"], AtlasTW.MenuData.CraftedSet, L["Crafting"])
 end
 
 AtlasTW.MenuData.Alchemy = {
@@ -141,7 +141,7 @@ AtlasTW.MenuData.Alchemy = {
 --- @since 1.0.0
 ---
 function AtlasLoot_AlchemyMenu()
-    AtlasTW.Loot.PrepMenu(BS["Alchemy"], AtlasTW.MenuData.Alchemy, L["Crafting"], "Interface\\Icons\\Trade_Alchemy")
+    AtlasTW.LootBrowserUI.PrepMenu(BS["Alchemy"], AtlasTW.MenuData.Alchemy, L["Crafting"], "Interface\\Icons\\Trade_Alchemy")
 end
 
 AtlasTW.MenuData.Smithing = {
@@ -182,7 +182,7 @@ AtlasTW.MenuData.Smithing = {
 --- @since 1.0.0
 ---
 function AtlasLoot_SmithingMenu()
-    AtlasTW.Loot.PrepMenu(BS["Blacksmithing"],AtlasTW.MenuData.Smithing,L["Crafting"],"Interface\\Icons\\Trade_BlackSmithing")
+    AtlasTW.LootBrowserUI.PrepMenu(BS["Blacksmithing"],AtlasTW.MenuData.Smithing,L["Crafting"],"Interface\\Icons\\Trade_BlackSmithing")
 end
 
 AtlasTW.MenuData.Enchanting = {
@@ -209,7 +209,7 @@ AtlasTW.MenuData.Enchanting = {
 --- @usage AtlasLoot_EnchantingMenu()
 --- @since 1.0.0
 function AtlasLoot_EnchantingMenu()
-    AtlasTW.Loot.PrepMenu(BS["Enchanting"], AtlasTW.MenuData.Enchanting, L["Crafting"], "Interface\\Icons\\Trade_Engraving")
+    AtlasTW.LootBrowserUI.PrepMenu(BS["Enchanting"], AtlasTW.MenuData.Enchanting, L["Crafting"], "Interface\\Icons\\Trade_Engraving")
 end
 
 AtlasTW.MenuData.Engineering = {
@@ -239,7 +239,7 @@ AtlasTW.MenuData.Engineering = {
 --- @usage AtlasLoot_EngineeringMenu()
 --- @since 1.0.0
 function AtlasLoot_EngineeringMenu()
-    AtlasTW.Loot.PrepMenu(BS["Engineering"], AtlasTW.MenuData.Engineering, L["Crafting"], "Interface\\Icons\\Trade_Engineering")
+    AtlasTW.LootBrowserUI.PrepMenu(BS["Engineering"], AtlasTW.MenuData.Engineering, L["Crafting"], "Interface\\Icons\\Trade_Engineering")
 end
 
 AtlasTW.MenuData.Leatherworking = {
@@ -273,7 +273,7 @@ AtlasTW.MenuData.Leatherworking = {
 --- @usage AtlasLoot_LeatherworkingMenu()
 --- @since 1.0.0
 function AtlasLoot_LeatherworkingMenu()
-    AtlasTW.Loot.PrepMenu(BS["Leatherworking"], AtlasTW.MenuData.Leatherworking, L["Crafting"], "Interface\\Icons\\INV_Misc_ArmorKit_17")
+    AtlasTW.LootBrowserUI.PrepMenu(BS["Leatherworking"], AtlasTW.MenuData.Leatherworking, L["Crafting"], "Interface\\Icons\\INV_Misc_ArmorKit_17")
 end
 
 AtlasTW.MenuData.Mining = {
@@ -288,7 +288,7 @@ AtlasTW.MenuData.Mining = {
 --- @usage AtlasLoot_MiningMenu()
 --- @since 1.0.0
 function AtlasLoot_MiningMenu()
-    AtlasTW.Loot.PrepMenu(BS["Mining"], AtlasTW.MenuData.Mining, L["Crafting"], "Interface\\Icons\\Trade_Mining")
+    AtlasTW.LootBrowserUI.PrepMenu(BS["Mining"], AtlasTW.MenuData.Mining, L["Crafting"], "Interface\\Icons\\Trade_Mining")
 end
 
 AtlasTW.MenuData.Tailoring = {
@@ -319,7 +319,7 @@ AtlasTW.MenuData.Tailoring = {
 --- @usage AtlasLoot_TailoringMenu()
 --- @since 1.0.0
 function AtlasLoot_TailoringMenu()
-    AtlasTW.Loot.PrepMenu(BS["Tailoring"], AtlasTW.MenuData.Tailoring, L["Crafting"], "Interface\\Icons\\Trade_Tailoring")
+    AtlasTW.LootBrowserUI.PrepMenu(BS["Tailoring"], AtlasTW.MenuData.Tailoring, L["Crafting"], "Interface\\Icons\\Trade_Tailoring")
 end
 
 AtlasTW.MenuData.Jewelcrafting = {
@@ -349,7 +349,7 @@ AtlasTW.MenuData.Jewelcrafting = {
 --- @usage AtlasLoot_JewelcraftingMenu()
 --- @since 1.0.0
 function AtlasLoot_JewelcraftingMenu()
-    AtlasTW.Loot.PrepMenu(BS["Jewelcrafting"], AtlasTW.MenuData.Jewelcrafting, L["Crafting"], "Interface\\Icons\\INV_Jewelry_Necklace_01")
+    AtlasTW.LootBrowserUI.PrepMenu(BS["Jewelcrafting"], AtlasTW.MenuData.Jewelcrafting, L["Crafting"], "Interface\\Icons\\INV_Jewelry_Necklace_01")
 end
 
 AtlasTW.MenuData.Cooking = {
@@ -366,5 +366,5 @@ AtlasTW.MenuData.Cooking = {
 --- @usage AtlasLoot_CookingMenu()
 --- @since 1.0.0
 function AtlasLoot_CookingMenu()
-    AtlasTW.Loot.PrepMenu(BS["Cooking"], AtlasTW.MenuData.Cooking, L["Crafting"], "Interface\\Icons\\INV_Misc_Food_15")
+    AtlasTW.LootBrowserUI.PrepMenu(BS["Cooking"], AtlasTW.MenuData.Cooking, L["Crafting"], "Interface\\Icons\\INV_Misc_Food_15")
 end

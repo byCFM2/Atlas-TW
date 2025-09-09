@@ -23,14 +23,27 @@ AtlasTW.DataResolver = AtlasTW.DataResolver or {}
 local L = AtlasTW.Local
 
 ---
+--- Helper function to resolve loot items
+--- @param items string|table The items to resolve - string key for AtlasLoot_Data lookup or table data
+--- @return table|string|nil Returns resolved items from AtlasLoot_Data if string key found, original table if table passed, or nil if string key not found
+--- @usage local resolved = AL_ResolveItems("MC_Ragnaros") -- resolves from AtlasLoot_Data
+--- @since 1.0.0
+local function AL_ResolveItems(items)
+    if type(items) ~= "string" then
+        return items
+    else
+        return AtlasLoot_Data[items] or items
+    end
+end
+
+---
 --- Helper function to find boss/element in a specific instance
---- Searches through reputation, keys, and bosses data
---- @param instData table Instance data to search in
---- @param elemName string Name of element to find
---- @return table|nil Found element data or nil
+--- Searches sequentially through reputation, keys, and bosses data sections
+--- @param instData table Instance data with optional fields: Reputation, Keys, Bosses (each containing arrays of objects with 'name' field)
+--- @param elemName string Name of element to find (exact match)
+--- @return table|string|nil Found element's loot/items data (resolved if string reference), or nil if not found
 --- @usage local result = AL_FindInInstance(instanceData, "Ragnaros")
 --- @since 1.0.0
----
 local function AL_FindInInstance(instData, elemName)
     if not instData or not elemName then return nil end
 
@@ -56,7 +69,7 @@ local function AL_FindInInstance(instData, elemName)
     if instData.Bosses then
         for _, bossData in ipairs(instData.Bosses) do
             if bossData.name == elemName then
-                return bossData.loot or bossData.items
+                return AL_ResolveItems(bossData.items or bossData.loot)
             end
         end
     end
@@ -70,7 +83,7 @@ end
 --- @param elemName string Name of the boss or element to find
 --- @param instanceName string|nil Optional specific instance to search in
 --- @return table|nil Loot data table or nil if not found
---- @usage local loot = AtlasTW.DataResolver.AtlasTW.DataResolver.GetLootByElemName("Ragnaros", "Molten Core")
+--- @usage local loot = AtlasTW.DataResolver.GetLootByElemName("Ragnaros", "Molten Core")
 --- @since 1.0.0
 ---
 function AtlasTW.DataResolver.GetLootByElemName(elemName, instanceName)
@@ -98,7 +111,7 @@ end
 --- @param zoneID string Zone identifier to search within
 --- @param id number Numeric ID of the element
 --- @return table|string|nil Loot data or nil if not found
---- @usage local loot = AtlasTW.DataResolver.AtlasTW.DataResolver.GetLootByID("MC", 3)
+--- @usage local loot = AtlasTW.DataResolver.GetLootByID("MC", 3)
 --- @since 1.0.0
 ---
 function AtlasTW.DataResolver.GetLootByID(zoneID, id)

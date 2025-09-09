@@ -46,5 +46,5 @@ AtlasTW.MenuData.WorldBosses = {
 -- @version 1.0
 ---
 function AtlasLoot_WorldMenu()
-    AtlasTW.Loot.PrepMenu(L["World"], AtlasTW.MenuData.WorldBosses)
+    AtlasTW.LootBrowserUI.PrepMenu(L["World"], AtlasTW.MenuData.WorldBosses)
 end

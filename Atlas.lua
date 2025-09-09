@@ -514,7 +514,7 @@ function AtlasTW.Refresh()
 	AtlasLootItemsFrame:Hide()
 
 	-- Update the scrollbar after creating elements
-	AtlasTW.Loot.ScrollBarUpdate()
+	AtlasTW.LootBrowserUI.ScrollBarUpdate()
 
 	--see if we should display the entrance/instance button or not, and decide what it should say
 	local matchFound = {}

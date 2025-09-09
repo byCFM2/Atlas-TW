@@ -35,7 +35,7 @@ function AtlasLoot:ShowSearchResult()
 	AtlasLootItemsFrame.StoredMenu = nil
 	AtlasLootItemsFrame.activeElement = nil
 	-- Update display
-	AtlasTW.Loot.ScrollBarLootUpdate()
+	AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 end
 
 ---

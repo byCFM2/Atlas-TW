@@ -64,5 +64,5 @@ AtlasTW.MenuData.Factions = {
 --- @since 1.0.0
 ---
 function AtlasLootRepMenu()
-    AtlasTW.Loot.PrepMenu(L["Factions"], AtlasTW.MenuData.Factions)
+    AtlasTW.LootBrowserUI.PrepMenu(L["Factions"], AtlasTW.MenuData.Factions)
 end
