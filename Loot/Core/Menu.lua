@@ -174,7 +174,7 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 
 	-- Display and loading
 	AtlasLootItemsFrame:Show()
-	AtlasLoot_ShowScrollBarLoading()
+	AtlasTW.LootBrowserUI.ShowScrollBarLoading()
 
 	AtlasLootItemsFrame.StoredElement = pagename
 	AtlasLootItemsFrame.StoredMenu = TableSource
@@ -196,7 +196,7 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	end
 
 	AtlasTW.LootCache.CacheAllItems(newTable, function()
-		AtlasLoot_HideScrollBarLoading()
+		AtlasTW.LootBrowserUI.HideScrollBarLoading()
 		AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 	end)
 

@@ -15,17 +15,176 @@
 --- • Container item interaction support
 ---
 --- @since 1.0.0
---- @compatible World of Warcraft 1.12
 ---
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-AtlasTW.Interactions = {}
+AtlasTW.Interactions = AtlasTW.Interactions or {}
 
 -- Local references for performance
 local L = AtlasTW.Local
 local WHITE = AtlasLoot_Colors.WHITE
 local BLUE = AtlasLoot_Colors.BLUE
+
+---
+--- Determines default chat channel and target, considering WIM activity and ChatFrame state
+--- @return string, string|nil, table channel, target, wimActivityList
+--- @since 1.0.0
+---
+function AtlasTW.Interactions.ChatGetDefaultChannelTarget()
+    local tListActivity = {}
+    if WIM_IconItems and WIM_Icon_SortByActivity then
+        for key in WIM_IconItems do
+            table.insert(tListActivity, key)
+        end
+        table.sort(tListActivity, WIM_Icon_SortByActivity)
+    end
+
+    local channel, chatnumber
+    if tListActivity[1] and WIM_Windows and WIM_Windows[tListActivity[1]].is_visible then
+        channel = "WHISPER"
+        chatnumber = tListActivity[1]
+    else
+        channel = ChatFrameEditBox.chatType
+        if channel == "WHISPER" then
+            chatnumber = ChatFrameEditBox.tellTarget
+        elseif channel == "CHANNEL" then
+            chatnumber = ChatFrameEditBox.channelTarget
+        end
+    end
+    return channel, chatnumber, tListActivity
+end
+
+---
+--- Sends a message to chat using resolved channel/target
+--- @param message string
+--- @param channel string|nil
+--- @param chatnumber string|number|nil
+--- @return void
+--- @since 1.0.0
+---
+function AtlasTW.Interactions.ChatSend(message, channel, chatnumber)
+    if not message or message == "" then return end
+    if not channel then channel = ChatFrameEditBox.chatType end
+    if channel == "WHISPER" and not chatnumber then
+        chatnumber = ChatFrameEditBox.tellTarget
+    elseif channel == "CHANNEL" and not chatnumber then
+        chatnumber = ChatFrameEditBox.channelTarget
+    end
+    SendChatMessage(message, channel, nil, chatnumber)
+end
+
+---
+--- Outputs crafting/enchant reagents for specified id to chat
+--- Mirrors legacy behavior but centralized under AtlasTW.Interactions.Chat
+--- @param id number
+--- @param color string
+--- @param name string
+--- @param safe boolean
+--- @return void
+--- @since 1.0.0
+---
+function AtlasTW.Interactions.ChatSayItemReagents(id, color, name, safe)
+    if not id then return end
+
+    local channel, chatnumber, tListActivity = AtlasTW.Interactions.ChatGetDefaultChannelTarget()
+
+    -- Handle craft spells
+    if AtlasTW.SpellDB.craftspells[id] then
+        local spellData = AtlasTW.SpellDB.craftspells[id]
+        local craftitem = spellData.item
+
+        if craftitem and craftitem ~= "" then
+            local craftnumber = ""
+            local quantity = spellData.quantity
+            if quantity then
+                craftnumber = type(quantity) == "table" and (quantity[1] .. "-" .. quantity[2] .. "x") or (quantity .. "x")
+            end
+
+            local craftMessage = L["To craft "] .. craftnumber .. AtlasTW.LootUtils.GetChatLink(craftitem) .. L[" the following reagents are needed:"]
+            AtlasTW.Interactions.ChatSend(craftMessage, channel, chatnumber)
+
+            local chatline, itemCount = "", 0
+            local reagents = spellData.reagents
+            if reagents then
+                for j = 1, table.getn(reagents) do
+                    local reagentCount = reagents[j][2] or 1
+                    local reagentItem = reagents[j][1]
+
+                    chatline = chatline .. reagentCount .. "x" .. AtlasTW.LootUtils.GetChatLink(reagentItem) .. " "
+                    itemCount = itemCount + 1
+
+                    if itemCount == 4 then
+                        AtlasTW.Interactions.ChatSend(chatline, channel, chatnumber)
+                        chatline = ""
+                        itemCount = 0
+                    end
+                end
+                if itemCount > 0 then
+                    AtlasTW.Interactions.ChatSend(chatline, channel, chatnumber)
+                end
+            end
+        else
+            -- Handle spells without items (reagents only)
+            local spellName = spellData.name
+            local castMessage = L["To cast "] .. spellName .. L[" the following items are needed:"]
+            AtlasTW.Interactions.ChatSend(castMessage, channel, chatnumber)
+
+            local chatline, itemCount = "", 0
+            local reagents = spellData.reagents
+            if reagents then
+                for j = 1, table.getn(reagents) do
+                    local reagentCount = reagents[j][2] or 1
+                    local reagentItem = reagents[j][1]
+
+                    chatline = chatline .. reagentCount .. "x" .. AtlasTW.LootUtils.GetChatLink(reagentItem) .. " "
+                    itemCount = itemCount + 1
+
+                    if itemCount == 4 then
+                        AtlasTW.Interactions.ChatSend(chatline, channel, chatnumber)
+                        chatline = ""
+                        itemCount = 0
+                    end
+                end
+                if itemCount > 0 then
+                    AtlasTW.Interactions.ChatSend(chatline, channel, chatnumber)
+                end
+            end
+        end
+
+    -- Handle enchantments
+    elseif AtlasTW.SpellDB.enchants[id] then
+        local enchantData = AtlasTW.SpellDB.enchants[id]
+        local enchantItem = enchantData["item"]
+        local enchantName = enchantData["name"] or GetItemInfo(enchantItem)
+        local enchantLink = "|cffFFd200|Henchant:" .. id .. ":0:0:0|h[" .. (enchantName or "Enchant") .. "]|h|r"
+
+        local message
+        if enchantItem then
+            message = L["To craft "] .. AtlasTW.LootUtils.GetChatLink(enchantItem) .. L[" you need this: "] .. enchantLink
+        else
+            message = enchantLink
+        end
+
+        if tListActivity[1] and WIM_Windows and WIM_Windows[tListActivity[1]].is_visible then
+            AtlasTW.Interactions.ChatSend(message, channel, chatnumber)
+        elseif ChatFrameEditBox:IsVisible() then
+            ChatFrameEditBox:Insert(message)
+        else
+            AtlasTW.Interactions.ChatSend(message, channel, chatnumber)
+        end
+
+    -- Handle regular items
+    else
+        local itemMessage
+        if safe then
+            itemMessage = "[" .. (name or "Item") .. "]"
+        else
+            itemMessage = "\124" .. string.sub(color or "|cffffffff", 2) .. "\124Hitem:" .. id .. ":0:0:0\124h[" .. (name or tostring(id)) .. "]\124h\124r"
+        end
+        AtlasTW.Interactions.ChatSend(itemMessage, channel, chatnumber)
+    end
+end
 
 -- Helper function to create materials string (tools/reagents)
 local function BuildMaterialString(materials, isReagent)
@@ -40,11 +199,11 @@ local function BuildMaterialString(materials, isReagent)
         if isReagent then
             -- Reagent is a table {itemID, quantity}
            -- AtlasTW.LootCache.ForceCacheItemWithDelay(itemInfo[1], 1)
-            checkedItem = AtlasLoot_CheckBagsForItems(itemInfo[1], itemInfo[2] or 1)
+            checkedItem = AtlasTW.LootUtils.CheckBagsForItems(itemInfo[1], itemInfo[2] or 1)
         else
             -- Tool is just itemID
           --  AtlasTW.LootCache.ForceCacheItemWithDelay(itemInfo, 1)
-            checkedItem = AtlasLoot_CheckBagsForItems(itemInfo)
+            checkedItem = AtlasTW.LootUtils.CheckBagsForItems(itemInfo)
         end
         table.insert(materialStrings, checkedItem)
     end
@@ -219,10 +378,10 @@ end
 --- Handles mouse enter events on loot item buttons
 --- Shows appropriate tooltip based on item type (item, spell, enchant)
 --- @return nil
---- @usage AtlasLootItem_OnEnter() -- Called automatically on mouse enter
+--- @usage AtlasTW.Interactions.Item_OnEnter() -- Called automatically on mouse enter
 --- @since 1.0.0
 ---
-function AtlasLootItem_OnEnter()
+function AtlasTW.Interactions.Item_OnEnter()
     if not this or not this.typeID or this.typeID == 0 or this.typeID == "" then
         return
     end
@@ -244,10 +403,10 @@ end
 --- Handles mouse leave events on loot item buttons
 --- Hides all active tooltips when mouse cursor leaves the item
 --- @return nil
---- @usage AtlasLootItem_OnLeave() -- Called automatically on mouse leave
+--- @usage AtlasTW.Interactions.Item_OnLeave() -- Called automatically on mouse leave
 --- @since 1.0.0
 ---
-function AtlasLootItem_OnLeave()
+function AtlasTW.Interactions.Item_OnLeave()
     -- Hide the necessary tooltips
     if AtlasTWOptions.LootlinkTT then
         AtlasLootTooltip:Hide()
@@ -276,14 +435,14 @@ end
 --- Processes item links, wish list operations, and chat output based on click type
 --- @param arg1 string Click type ("LeftButton", "RightButton", etc.)
 --- @return nil
---- @usage AtlasLootItem_OnClick("LeftButton") -- Called by item button clicks
+--- @usage AtlasTW.Interactions.Item_OnClick("LeftButton") -- Called by item button clicks
 --- @since 1.0.0
 ---
-function AtlasLootItem_OnClick(arg1)
+function AtlasTW.Interactions.Item_OnClick(arg1)
     local id = this:GetID()
     local color = string.sub(_G["AtlasLootItem_"..id.."_Name"]:GetText() or "", 1, 10)
     local name = string.sub(_G["AtlasLootItem_"..id.."_Name"]:GetText() or "", 11)
-    local texture = AtlasLoot_Strsplit("\\", getglobal("AtlasLootItem_"..id.."_Icon"):GetTexture(), 0, true)
+    local texture = AtlasTW.LootUtils.Strsplit("\\", getglobal("AtlasLootItem_"..id.."_Icon"):GetTexture(), 0, true)
     local dataID = AtlasLootItemsFrame.StoredElement
     local instanceKeyClick = AtlasLootItemsFrame and AtlasLootItemsFrame.StoredMenu or nil
     local dataSource = AtlasTW.DataResolver.GetLootByElemName(dataID, instanceKeyClick)
@@ -299,7 +458,7 @@ function AtlasLootItem_OnClick(arg1)
 				elseif ChatFrameEditBox:IsVisible() then
 					ChatFrameEditBox:Insert("["..itemName.."]")
 				else
-					AtlasLoot_SayItemReagents(this.itemID, nil, itemName, true)
+					AtlasTW.Interactions.ChatSayItemReagents(this.itemID, nil, itemName, true)
 				end
 			elseif AtlasTWOptions.LootAllLinks then
 				if WIM_EditBoxInFocus then
@@ -307,7 +466,7 @@ function AtlasLootItem_OnClick(arg1)
 				elseif ChatFrameEditBox:IsVisible() then
 					ChatFrameEditBox:Insert("\124"..string.sub(color, 2).."|Hitem:"..this.itemID.."\124h["..name.."]|h|r")
 				else
-					AtlasLoot_SayItemReagents(this.itemID, color, name)
+					AtlasTW.Interactions.ChatSayItemReagents(this.itemID, color, name)
 				end
 			end
 		elseif (itemName and IsShiftKeyDown()) and this.itemID ~= 0 then
@@ -323,20 +482,20 @@ function AtlasLootItem_OnClick(arg1)
 			if dataID == "WishList" then
 				AtlasLoot_DeleteFromWishList(this.itemID)
 			elseif dataID == "SearchResult" then
-				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.itemID))
+				AtlasLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(this.itemID))
 			else
 			-- Pass boss and instance context for correct categorization in WishList
 			local srcPage = nil
 			if dataID and instanceKeyClick then
 				srcPage = dataID.."|"..instanceKeyClick
-			elseif dataID and AtlasLoot_IsLootTableAvailable and AtlasLoot_IsLootTableAvailable(dataID) then
+			elseif dataID and AtlasTW.DataResolver.IsLootTableAvailable and AtlasTW.DataResolver.IsLootTableAvailable(dataID) then
 				-- Craft/set/other loot table page without instanceKey
 				srcPage = dataID
 			end
 				AtlasLoot_AddToWishlist(this.itemID, dataID, instanceKeyClick, "item", srcPage)
 		end
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
-			local bossName, instanceKey = AtlasLoot_Strsplit("|", this.sourcePage)
+			local bossName, instanceKey = AtlasTW.LootUtils.Strsplit("|", this.sourcePage)
 			-- Normalize Strsplit result (old Lua sometimes returns tables)
 			if type(bossName) == "table" then bossName = bossName[1] end
 			if type(instanceKey) == "table" then instanceKey = instanceKey[1] end
@@ -394,23 +553,23 @@ function AtlasLootItem_OnClick(arg1)
 				end
 				-- Cache entire page before updating
 				AtlasLootItemsFrame:Show()
-				AtlasLoot_ShowScrollBarLoading()
+				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
 				local lootTable = AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
 				AtlasTW.LootCache.CacheAllItems(lootTable, function()
-					AtlasLoot_HideScrollBarLoading()
+					AtlasTW.LootBrowserUI.HideScrollBarLoading()
 					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 				end)
-			elseif dataID ~= "SearchResult" and dataID ~= "WishList" and AtlasLoot_IsLootTableAvailable(this.sourcePage) then
+			elseif dataID ~= "SearchResult" and dataID ~= "WishList" and AtlasTW.DataResolver.IsLootTableAvailable(this.sourcePage) then
 				-- sourcePage contains only table key (e.g., craft page)
 				AtlasLootItemsFrame.StoredElement = this.sourcePage
 				AtlasLootItemsFrame.StoredMenu = nil
 				AtlasLootItemsFrame.activeElement = nil
 				-- Cache entire page before updating
 				AtlasLootItemsFrame:Show()
-				AtlasLoot_ShowScrollBarLoading()
+				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
 				local lootTable = AtlasLoot_Data[this.sourcePage] or AtlasTW.DataResolver.GetLootByElemName(this.sourcePage)
 				AtlasTW.LootCache.CacheAllItems(lootTable, function()
-					AtlasLoot_HideScrollBarLoading()
+					AtlasTW.LootBrowserUI.HideScrollBarLoading()
 					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 				end)
 			end
@@ -419,18 +578,18 @@ function AtlasLootItem_OnClick(arg1)
 		end
 	elseif this.typeID == "enchant" then
 		if IsShiftKeyDown() then
-			AtlasLoot_SayItemReagents(this.elemID)
+			AtlasTW.Interactions.ChatSayItemReagents(this.elemID)
 		elseif IsAltKeyDown() and this.elemID ~= 0 then
 			if dataID == "WishList" then
 				AtlasLoot_DeleteFromWishList(this.elemID)
 			elseif dataID == "SearchResult" then
-				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.elemID))
+				AtlasLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(this.elemID))
 			else
 				-- Pass boss and instance context for correct categorization in WishList
 				local srcPage = nil
 				if dataID and instanceKeyClick then
 					srcPage = dataID.."|"..instanceKeyClick
-				elseif dataID and AtlasLoot_IsLootTableAvailable and AtlasLoot_IsLootTableAvailable(dataID) then
+				elseif dataID and AtlasTW.DataResolver.IsLootTableAvailable and AtlasTW.DataResolver.IsLootTableAvailable(dataID) then
 					-- Craft/set/other loot table page without instanceKey
 					srcPage = dataID
 				end
@@ -439,7 +598,7 @@ function AtlasLootItem_OnClick(arg1)
 		elseif IsControlKeyDown() then
 			DressUpItemLink("item:"..this.itemID..":0:0:0")
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
-			local bossName, instanceKey = AtlasLoot_Strsplit("|", this.sourcePage)
+			local bossName, instanceKey = AtlasTW.LootUtils.Strsplit("|", this.sourcePage)
 			-- Normalize Strsplit result
 			if type(bossName) == "table" then bossName = bossName[1] end
 			if type(instanceKey) == "table" then instanceKey = instanceKey[1] end
@@ -479,21 +638,21 @@ function AtlasLootItem_OnClick(arg1)
 				end
 				-- Cache entire page before updating
 				AtlasLootItemsFrame:Show()
-				AtlasLoot_ShowScrollBarLoading()
+				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
 				local lootTable = AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
 				AtlasTW.LootCache.CacheAllItems(lootTable, function()
-					AtlasLoot_HideScrollBarLoading()
+					AtlasTW.LootBrowserUI.HideScrollBarLoading()
 					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 				end)
-			elseif AtlasLoot_IsLootTableAvailable(this.sourcePage) then
+			elseif AtlasTW.DataResolver.IsLootTableAvailable(this.sourcePage) then
 				AtlasLootItemsFrame.StoredElement = this.sourcePage
 				AtlasLootItemsFrame.StoredMenu = nil
 				AtlasLootItemsFrame.activeElement = nil
 				AtlasLootItemsFrame:Show()
-				AtlasLoot_ShowScrollBarLoading()
+				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
 				local lootTable = AtlasLoot_Data[this.sourcePage] or AtlasTW.DataResolver.GetLootByElemName(this.sourcePage)
 				AtlasTW.LootCache.CacheAllItems(lootTable, function()
-					AtlasLoot_HideScrollBarLoading()
+					AtlasTW.LootBrowserUI.HideScrollBarLoading()
 					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 				end)
 			end
@@ -518,7 +677,7 @@ function AtlasLootItem_OnClick(arg1)
 						ChatFrameEditBox:Insert(name)
 					end
 				else
-					AtlasLoot_SayItemReagents(this.elemID)
+					AtlasTW.Interactions.ChatSayItemReagents(this.elemID)
 				end
 			else
 				if WIM_EditBoxInFocus then
@@ -542,20 +701,20 @@ function AtlasLootItem_OnClick(arg1)
 					elseif channel == "CHANNEL" then
 						chatnumber = ChatFrameEditBox.channelTarget
 					end
-					SendChatMessage(AtlasTW.LootUtils.GetChatLink(AtlasTW.SpellDB["craftspells"][this.elemID]["item"]),channel,nil,chatnumber)
+					AtlasTW.Interactions.ChatSend(AtlasTW.LootUtils.GetChatLink(AtlasTW.SpellDB["craftspells"][this.elemID]["item"]),channel,nil,chatnumber)
 				end
 			end
 		elseif IsAltKeyDown() and this.elemID ~= 0 then
 			if dataID == "WishList" then
 				AtlasLoot_DeleteFromWishList(this.elemID)
 			elseif dataID == "SearchResult" then
-				AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(this.elemID))
+				AtlasLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(this.elemID))
 			else
 				-- Pass boss and instance context for correct categorization in WishList
 				local srcPage = nil
 				if dataID and instanceKeyClick then
 					srcPage = dataID.."|"..instanceKeyClick
-				elseif dataID and AtlasLoot_IsLootTableAvailable and AtlasLoot_IsLootTableAvailable(dataID) then
+				elseif dataID and AtlasTW.DataResolver.IsLootTableAvailable and AtlasTW.DataResolver.IsLootTableAvailable(dataID) then
 					-- Craft/set/other loot table page without instanceKey
 					srcPage = dataID
 				end
@@ -564,7 +723,7 @@ function AtlasLootItem_OnClick(arg1)
 		elseif IsControlKeyDown() then
 			DressUpItemLink("item:"..this.itemID..":0:0:0")
 		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
-			local bossName, instanceKey = AtlasLoot_Strsplit("|", this.sourcePage)
+			local bossName, instanceKey = AtlasTW.LootUtils.Strsplit("|", this.sourcePage)
 			-- Normalize Strsplit result: if table of parts returned, extract [1] and [2]
 			if type(bossName) == "table" then
 				if not instanceKey then instanceKey = bossName[2] end
@@ -607,21 +766,21 @@ function AtlasLootItem_OnClick(arg1)
 				end
 				-- Cache entire page before updating
 				AtlasLootItemsFrame:Show()
-				AtlasLoot_ShowScrollBarLoading()
+				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
 				local lootTable = AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
 				AtlasTW.LootCache.CacheAllItems(lootTable, function()
-					AtlasLoot_HideScrollBarLoading()
+					AtlasTW.LootBrowserUI.HideScrollBarLoading()
 					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 				end)
-			elseif AtlasLoot_IsLootTableAvailable(this.sourcePage) then
+			elseif AtlasTW.DataResolver.IsLootTableAvailable(this.sourcePage) then
 				AtlasLootItemsFrame.StoredElement = this.sourcePage
 				AtlasLootItemsFrame.StoredMenu = nil
 				AtlasLootItemsFrame.activeElement = nil
 				AtlasLootItemsFrame:Show()
-				AtlasLoot_ShowScrollBarLoading()
+				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
 				local lootTable = AtlasLoot_Data[this.sourcePage] or AtlasTW.DataResolver.GetLootByElemName(this.sourcePage)
 				AtlasTW.LootCache.CacheAllItems(lootTable, function() 
-					AtlasLoot_HideScrollBarLoading()
+					AtlasTW.LootBrowserUI.HideScrollBarLoading()
 					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 				end)
 			end
@@ -636,10 +795,10 @@ end
 --- Shows or hides the loot frame and loads appropriate loot data
 --- @param buttonName string Name of the clicked button (unused parameter)
 --- @return nil
---- @usage AtlasLootBoss_OnClick() -- Called by button click events
+--- @usage AtlasTW.Interactions.ElementList_OnClick() -- Called by button click events
 --- @since 1.0.0
 ---
-function AtlasLootBoss_OnClick(buttonName)
+function AtlasTW.Interactions.ElementList_OnClick(buttonName)
     -- Reset scroll position to top
     FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
     AtlasLootScrollBarScrollBar:SetValue(0)
@@ -662,9 +821,9 @@ function AtlasLootBoss_OnClick(buttonName)
 
             -- Update the loot display
             AtlasLootItemsFrame:Show()
-			AtlasLoot_ShowScrollBarLoading()
+			AtlasTW.LootBrowserUI.ShowScrollBarLoading()
 			AtlasTW.LootCache.CacheAllItems(lootTable, function()
-				AtlasLoot_HideScrollBarLoading()
+				AtlasTW.LootBrowserUI.HideScrollBarLoading()
 				-- Update scrollbar
 				AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 			end)
@@ -684,10 +843,10 @@ end
 --- Processes container display or loads loot data based on menu selection
 --- @param button string Button identifier for the clicked menu item
 --- @return nil
---- @usage AtlasLootMenuItem_OnClick("button1") -- Called by menu item clicks
+--- @usage AtlasTW.Interactions.MenuItem_OnClick("button1") -- Called by menu item clicks
 --- @since 1.0.0
 ---
-function AtlasLootMenuItem_OnClick(button)
+function AtlasTW.Interactions.MenuItem_OnClick(button)
 	if this.container then
 		AtlasLoot_ShowContainerFrame()
 		return
@@ -767,7 +926,7 @@ function AtlasLootMenuItem_OnClick(button)
 		CloseDropDownMenus()
 
 		AtlasLootItemsFrame:Show()
-		AtlasLoot_ShowScrollBarLoading()
+		AtlasTW.LootBrowserUI.ShowScrollBarLoading()
 		if pagename == L["Rare Mobs"] then
 			pagename = L["Shade Mage"]
 		end
@@ -799,7 +958,7 @@ function AtlasLootMenuItem_OnClick(button)
 			end
 		end
 		AtlasTW.LootCache.CacheAllItems(newTable, function()
-			AtlasLoot_HideScrollBarLoading()
+			AtlasTW.LootBrowserUI.HideScrollBarLoading()
 			AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 		end)
 		AtlasLootItemsFrame_SelectedCategory:SetText(AtlasTW.LootUtils.TruncateText(pagename, 30))
@@ -811,16 +970,16 @@ end
 --- Handles navigation button clicks (Previous, Next, Back)
 --- Processes navigation between loot pages and menu sections
 --- @return nil
---- @usage AtlasLoot_NavButton_OnClick() -- Called by navigation button clicks
+--- @usage AtlasTW.Interactions.NavButton_OnClick() -- Called by navigation button clicks
 --- @since 1.0.0
 ---
-function AtlasLoot_NavButton_OnClick()
+function AtlasTW.Interactions.NavButton_OnClick()
     -- Reset scroll on navigation
 	FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
 	AtlasLootScrollBarScrollBar:SetValue(0)
 
 	if not this or not this.lootpage then
-		return print("NavButton_OnClick: выход - нет this или lootpage")
+		return print("NavButton_OnClick: out - no this or lootpage")
 	end
 
 	-- Handle "Back" button to parent menu (case insensitive + fallback from title)
@@ -861,7 +1020,7 @@ function AtlasLoot_NavButton_OnClick()
 
 	-- Default: handle as loot/boss page
 	AtlasLootItemsFrame:Show()
-	AtlasLoot_ShowScrollBarLoading()
+	AtlasTW.LootBrowserUI.ShowScrollBarLoading()
 	AtlasLootItemsFrame.StoredElement = this.title or lp
 	-- For rare mobs don't change StoredMenu, for others - set lp
 	if isRareMobNavigation then
@@ -900,7 +1059,7 @@ function AtlasLoot_NavButton_OnClick()
 	end
 
 	AtlasTW.LootCache.CacheAllItems(lootData, function()
-		AtlasLoot_HideScrollBarLoading()
+		AtlasTW.LootBrowserUI.HideScrollBarLoading()
 		AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 	end)
 	-- Update title text
@@ -915,10 +1074,10 @@ end
 --- Handles close button click on the loot items frame
 --- Resets active element selection and updates boss button display states
 --- @return nil
---- @usage AtlasTW.LootBrowserUI.OnCloseButton() -- Called by close button click
+--- @usage AtlasTW.Interactions.OnCloseButton() -- Called by close button click
 --- @since 1.0.0
 ---
-function AtlasTW.LootBrowserUI.OnCloseButton()
+function AtlasTW.Interactions.OnCloseButton()
     -- Set no loot table as currently selected
     AtlasLootItemsFrame.activeElement = nil
 
@@ -943,10 +1102,10 @@ end
 --- Processes item links and chat output for container items
 --- @param arg1 string Click type ("LeftButton", "RightButton", etc.)
 --- @return nil
---- @usage AtlasLoot_ContainerItem_OnClick("LeftButton") -- Called by container item clicks
+--- @usage AtlasTW.Interactions.ContainerItem_OnClick("LeftButton") -- Called by container item clicks
 --- @since 1.0.1
 ---
-function AtlasLoot_ContainerItem_OnClick(arg1)
+function AtlasTW.Interactions.ContainerItem_OnClick(arg1)
     local itemID = this:GetID()
     local name, link, quality, _, _, _, _, _, tex = GetItemInfo(itemID)
     local _, _, _, color = GetItemQualityColor(quality)
@@ -969,12 +1128,12 @@ function AtlasLoot_ContainerItem_OnClick(arg1)
         if ElemName == "WishList" then
             AtlasLoot_DeleteFromWishList(this.itemID)
         elseif ElemName == "SearchResult" then
-            AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(itemID))
+            AtlasLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemID))
         else
             local srcPage = nil
             if ElemName and instKey then
                 srcPage = ElemName.."|"..instKey
-            elseif ElemName and AtlasLoot_IsLootTableAvailable and AtlasLoot_IsLootTableAvailable(ElemName) then
+            elseif ElemName and AtlasTW.DataResolver.IsLootTableAvailable and AtlasTW.DataResolver.IsLootTableAvailable(ElemName) then
                 -- Craft/set/other loot table page without instanceKey
                 srcPage = ElemName
             end

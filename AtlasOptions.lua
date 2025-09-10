@@ -125,7 +125,7 @@ function AtlasTW.OptionDefaultSettings()
 	AtlasTWCharDB.PartialMatching = true
 	AtlasTWCharDB["QuickLooks"] = {}
 	AtlasTWCharDB["WishList"] = {}
-	AtlasLoot_RefreshQuickLookButtons()
+	AtlasTW.QuickLook.RefreshButtons()
 	AtlasTW.OptionsInit()
 	print(blue.."Atlas-TW"..": "..red..L["Default settings applied!"])
 end
@@ -616,3 +616,15 @@ function AtlasTW.OptionItemSpamOnClick()
 	AtlasTWOptions.LootItemSpam = not AtlasTWOptions.LootItemSpam
 	AtlasTW.OptionsInit()
 end
+
+-- Popup Box for first time users
+StaticPopupDialogs["ATLASLOOT_SETUP"] = {
+	text = "Welcome to Atlas-TW Edition. Please take a moment to set your preferences.",
+	button1 = L["Setup"],
+	OnAccept = function()
+		AtlasTW.OptionsOnClick()
+	end,
+	timeout = 0,
+	whileDead = 1,
+	hideOnEscape = 1
+}

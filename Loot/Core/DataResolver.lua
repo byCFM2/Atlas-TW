@@ -51,7 +51,7 @@ local function AL_FindInInstance(instData, elemName)
     if instData.Reputation then
         for _, repData in ipairs(instData.Reputation) do
             if repData.name == elemName then
-                return repData.loot or repData.items
+                return AL_ResolveItems(repData.loot or repData.items)
             end
         end
     end
@@ -60,7 +60,7 @@ local function AL_FindInInstance(instData, elemName)
     if instData.Keys then
         for _, keyData in ipairs(instData.Keys) do
             if keyData.name == elemName then
-                return keyData.loot or keyData.items
+                return AL_ResolveItems(keyData.loot or keyData.items)
             end
         end
     end
@@ -187,7 +187,6 @@ end
 ---
 function AtlasTW.DataResolver.GetBossNavigation(data)
     if not data then return nil end
-
     -- Get current instance from settings
     local currentZoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
     local currentInstanceData = AtlasTW.InstanceData[currentZoneID]
@@ -198,15 +197,14 @@ function AtlasTW.DataResolver.GetBossNavigation(data)
             if bossData.name == data then
                 local nav = {}
                 nav.Title = bossData.name or bossData.id
-
-                if bossData.items and type(bossData.items) == "table" then
-                    -- Back to dungeons menu
-                    nav.Back_Page = "DUNGEONSMENU"
-                    nav.Back_Title = L["Dungeons & Raids"]
-                end
+				if bossData.items and type(bossData.items) == "table" then
+					-- Back to dungeons menu
+					nav.Back_Page = "DUNGEONSMENU"
+					nav.Back_Title = L["Dungeons & Raids"]
+				end
 
                 local numEntries = table.getn(currentInstanceData.Bosses)
-                if numEntries <= 1 then return nav end
+				if numEntries <= 1 then return nav end
 
                 -- Search for previous valid element
                 local prevBoss = findValidEntry(i, -1)
@@ -221,11 +219,165 @@ function AtlasTW.DataResolver.GetBossNavigation(data)
                     nav.Next_Page = nextBoss.name
                     nav.Next_Title = nextBoss.name or nextBoss.id
                 end
-
                 return nav
             end
         end
     end
+    return nil
+end
+
+---
+--- Gets navigation data for menu browsing
+--- Creates navigation structure for moving between different menu sections
+--- @param current string|table Current menu item name or loot table key
+--- @return table|nil Navigation table with menu links or nil if not found
+--- @usage local nav = AtlasTW.DataResolver.GetMenuNavigation("DungeonsMenu")
+--- @since 1.0.0
+---
+function AtlasTW.DataResolver.GetMenuNavigation(current)
+    -- Support passing a menu element table
+    if type(current) == "table" and current.menuName then
+        current = current.menuName
+    end
+
+    local function getAllMenuData()
+        local menus = {}
+        if AtlasTW and AtlasTW.MenuData then
+            for _, value in pairs(AtlasTW.MenuData) do
+                if type(value) == "table" and table.getn(value) > 0 then
+                    table.insert(menus, value)
+                end
+            end
+        end
+        return menus
+    end
+
+    local candidates = getAllMenuData()
+
+    local function findInMenu(menu)
+        if not menu then return nil end
+        local size = table.getn(menu)
+        local idx = nil
+
+        -- Search element by name (priority) or by lootpage (for compatibility)
+        for i = 1, size do
+            local e = menu[i]
+            if e and e.name then
+                -- Exact match first
+                if e.name == current then
+                    idx = i
+                    break
+                elseif string.find(e.name, "|c") then
+                    -- Remove color codes and compare
+                    local cleanName = string.gsub(e.name, "|c%x%x%x%x%x%x%x%x", "")
+                    cleanName = string.gsub(cleanName, "|r", "")
+                    if cleanName == current then
+                        idx = i
+                        break
+                    end
+                end
+            end
+        end
+
+        -- If not found by name, try by lootpage for backward compatibility
+        if not idx then
+            for i = 1, size do
+                local e = menu[i]
+                if e and e.lootpage and e.lootpage == current then
+                    idx = i
+                    break
+                end
+            end
+        end
+
+        if not idx then
+            return nil
+        end
+
+        local result = {}
+        -- Search for previous item among valid elements
+        for j = idx - 1, 1, -1 do
+            local pe = menu[j]
+            if pe and pe.lootpage and not pe.isheader then
+                result.Prev_Page = pe.lootpage ~= L["Rare Mobs"] and pe.lootpage or L["Shade Mage"]
+                result.Prev_Title = pe.name ~= L["Rare Mobs"] and pe.name or L["Shade Mage"]
+                break
+            end
+        end
+        -- If not found, wrap around from the end
+        if not result.Prev_Page then
+            for j = size, 1, -1 do
+                if j ~= idx then
+                    local pe = menu[j]
+                    if pe and pe.lootpage and not pe.isheader then
+                        result.Prev_Page = pe.lootpage ~= L["Rare Mobs"] and pe.lootpage or L["Shade Mage"]
+                        result.Prev_Title = pe.name ~= L["Rare Mobs"] and pe.name or L["Shade Mage"]
+                        break
+                    end
+                end
+            end
+        end
+
+        -- Search for next item
+        for j = idx + 1, size do
+            local ne = menu[j]
+            if ne and ne.lootpage and not ne.isheader then
+                result.Next_Page = ne.lootpage ~= L["Rare Mobs"] and ne.lootpage or L["Shade Mage"]
+                result.Next_Title = ne.name ~= L["Rare Mobs"] and ne.name or L["Shade Mage"]
+                break
+            end
+        end
+        -- If not found, wrap around from the beginning
+        if not result.Next_Page then
+            for j = 1, size do
+                if j ~= idx then
+                    local ne = menu[j]
+                    if ne and ne.lootpage and not ne.isheader then
+                        result.Next_Page = ne.lootpage ~= L["Rare Mobs"] and ne.lootpage or L["Shade Mage"]
+                        result.Next_Title = ne.name ~= L["Rare Mobs"] and ne.name or L["Shade Mage"]
+                        break
+                    end
+                end
+            end
+        end
+        return result
+    end
+
+    -- Scan all addon menus
+    for k = 1, table.getn(candidates) do
+        local nav = findInMenu(candidates[k])
+        if nav and (nav.Next_Page or nav.Prev_Page) then
+            return nav
+        end
+    end
 
     return nil
+end
+
+---
+--- Checks if a loot table is available in memory or can be resolved
+--- Searches by direct table key and by element name within current or any instance
+--- @param dataID string Loot table identifier or element name
+--- @return boolean True if loot table exists, false otherwise
+--- @usage local available = AtlasTW.DataResolver.IsLootTableAvailable("MC_Ragnaros")
+--- @since 1.0.0
+---
+function AtlasTW.DataResolver.IsLootTableAvailable(dataID)
+    if not dataID then return false end
+    -- Direct loot table
+    if AtlasLoot_Data and AtlasLoot_Data[dataID] then
+        return true
+    end
+    -- Search by element name within current instance or globally
+    local instanceKey = AtlasLootItemsFrame and AtlasLootItemsFrame.StoredMenu
+    local loot = AtlasTW.DataResolver.GetLootByElemName and AtlasTW.DataResolver.GetLootByElemName(dataID, instanceKey) or nil
+    if loot and type(loot) == "table" then
+        return true
+    end
+    -- Try without considering instance
+    loot = AtlasTW.DataResolver.GetLootByElemName and AtlasTW.DataResolver.GetLootByElemName(dataID) or nil
+    if loot and type(loot) == "table" then
+        return true
+    end
+    return false
 end

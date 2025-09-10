@@ -24,6 +24,14 @@ AtlasTW.Integrations = {}
 -- Local references for performance
 local L = AtlasTW.Local
 
+--
+-- Compatibility constants for legacy option labels
+-- centralized here alongside EquipCompare integration logic
+-- @since 1.0.1
+--
+ATLASLOOT_OPTIONS_EQUIPCOMPARE = L["Use EquipCompare"]
+ATLASLOOT_OPTIONS_EQUIPCOMPARE_DISABLED = L["|cff9d9d9dUse EquipCompare|r"]
+
 ---
 --- Checks if EquipCompare or EQCompare addon is available
 --- @return boolean True if either addon is loaded

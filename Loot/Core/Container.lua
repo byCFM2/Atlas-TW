@@ -23,7 +23,7 @@ local lastSelectedButton
 --- @since 1.0.0
 ---
 function AtlasLoot_ShowContainerLoading()
-	AtlasLoot_CreateLoadingFrame("AtlasLootContainerLoadingFrame", AtlasLootItemsFrameContainer)
+	AtlasTW.LootBrowserUI.CreateLoadingFrame("AtlasLootContainerLoadingFrame", AtlasLootItemsFrameContainer)
 end
 
 ---
@@ -34,7 +34,7 @@ end
 --- @since 1.0.0
 ---
 function AtlasLoot_HideContainerLoading()
-	AtlasLoot_HideLoadingFrame("AtlasLootContainerLoadingFrame")
+	AtlasTW.LootBrowserUI.HideLoadingFrame("AtlasLootContainerLoadingFrame")
 end
 
 ---
@@ -237,7 +237,7 @@ function AtlasLoot_ContainerItem_OnClick(arg1)
 				elseif ChatFrameEditBox:IsVisible() then
 					ChatFrameEditBox:Insert("["..name.."]")
 				else
-					AtlasLoot_SayItemReagents(this.itemID, nil, name, true)
+					AtlasTW.Interactions.ChatSayItemReagents(this.itemID, nil, name, true)
 				end
 		end
 	elseif(IsControlKeyDown() and name) then
@@ -249,12 +249,12 @@ function AtlasLoot_ContainerItem_OnClick(arg1)
 		if ElemName == "WishList" then
 			AtlasLoot_DeleteFromWishList(this.itemID)
 		elseif ElemName == "SearchResult" then
-			AtlasLoot_AddToWishlist(AtlasLoot:GetOriginalDataFromSearchResult(itemID))
+			AtlasLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemID))
 		else
 			local srcPage = nil
 			if ElemName and instKey then
 				srcPage = ElemName.."|"..instKey
-			elseif ElemName and AtlasLoot_IsLootTableAvailable and AtlasLoot_IsLootTableAvailable(ElemName) then
+			elseif ElemName and AtlasTW.DataResolver.IsLootTableAvailable and AtlasTW.DataResolver.IsLootTableAvailable(ElemName) then
 				-- Craft/set/other loot table page without instanceKey
 				srcPage = ElemName
 			end

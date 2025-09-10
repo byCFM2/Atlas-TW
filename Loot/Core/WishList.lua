@@ -69,7 +69,7 @@ function AtlasLoot_ShowWishList()
 			end
 			-- Normalize sourcePage: second part should be a key
 			if v.sourcePage and v.sourcePage ~= "" then
-				local bossName, instPart = AtlasLoot_Strsplit("|", v.sourcePage)
+				local bossName, instPart = AtlasTW.LootUtils.Strsplit("|", v.sourcePage)
 				if instPart and instPart ~= "" then
 					if not (AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[instPart]) then
 						local k = _GetInstanceKeyByName(instPart)
@@ -221,7 +221,7 @@ end
 ---
 local function AtlasLoot_GetLootPageDisplayName(pageKey)
 	if not pageKey or pageKey == "" then return nil end
-	if AtlasLoot_IsLootTableAvailable and AtlasLoot_Data and AtlasLoot_Data[pageKey] then
+	if AtlasTW.DataResolver.IsLootTableAvailable(pageKey) and AtlasLoot_Data and AtlasLoot_Data[pageKey] then
 		local page = AtlasLoot_Data[pageKey]
 		if type(page) == "table" then
 			for i = 1, table.getn(page) do
@@ -559,8 +559,8 @@ function AtlasLoot_CategorizeWishList(wishList)
 			currentCategory = AtlasLoot_GetWishListSubheadingBoss(elem, inst)
 		elseif src and src ~= "" then
 			-- Try to extract boss|instance from sourcePage
-			local b, ik = AtlasLoot_Strsplit("|", src)
-			-- Normalization: AtlasLoot_Strsplit returns table of parts
+			local b, ik = AtlasTW.LootUtils.Strsplit("|", src)
+			-- Normalization: AtlasTW.LootUtils.Strsplit returns table of parts
 			if type(b) == "table" then
 				if not ik then ik = b[2] end
 				b = b[1]
@@ -616,8 +616,8 @@ function AtlasLoot_CategorizeWishList(wishList)
 		if instOK then
 			extratext = GetLootTableParent(elem, inst) or ""
 		elseif src and src ~= "" then
-			local b, ik = AtlasLoot_Strsplit("|", src)
-			-- Normalization: AtlasLoot_Strsplit returns table of parts
+			local b, ik = AtlasTW.LootUtils.Strsplit("|", src)
+			-- Normalization: AtlasTW.LootUtils.Strsplit returns table of parts
 			if type(b) == "table" then
 				if not ik then ik = b[2] end
 				b = b[1]

@@ -16,6 +16,9 @@
 --- @compatible World of Warcraft 1.12
 ---
 
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+AtlasTW.SearchLib = AtlasTW.SearchLib or {}
 local L = AtlasTW.Local
 local RED = AtlasLoot_Colors.RED
 local WHITE = AtlasLoot_Colors.WHITE
@@ -23,10 +26,10 @@ local WHITE = AtlasLoot_Colors.WHITE
 ---
 --- Shows search results in the loot frame
 --- @return nil
---- @usage AtlasLoot:ShowSearchResult()
+--- @usage AtlasLoot.Search.ShowResult()
 --- @since 1.0.0
 ---
-function AtlasLoot:ShowSearchResult()
+function AtlasTW.SearchLib.ShowResult()
 	-- Reset scroll position
 	FauxScrollFrame_SetOffset(AtlasLootScrollBar, 0)
 	AtlasLootScrollBarScrollBar:SetValue(0)
@@ -52,10 +55,10 @@ end
 --- Main search function for items, spells, and enchantments
 --- @param Text string - Search query text
 --- @return nil
---- @usage AtlasLoot:Search("Thunderfury")
+--- @usage AtlasTW.SearchLib.Search("Thunderfury")
 --- @since 1.0.0
 ---
-function AtlasLoot:Search(Text)
+function AtlasTW.SearchLib.Search(Text)
     if not Text then return end
     Text = strtrim(Text)
     if Text == "" then return end
@@ -334,7 +337,7 @@ function AtlasLoot:Search(Text)
         print(RED.."AtlasLoot"..": "..WHITE..L["No match found for"].." \""..Text.."\".")
     else
         -- Display all results, scroll is handled by loot frame
-        AtlasLoot:ShowSearchResult()
+        AtlasTW.SearchLib.ShowResult()
     end
 end
 
@@ -342,10 +345,10 @@ end
 --- Shows search options dropdown menu
 --- @param button table - Button frame to anchor the dropdown to
 --- @return nil
---- @usage AtlasLoot:ShowSearchOptions(someButton)
+--- @usage AtlasTW.SearchLib.ShowOptions(someButton)
 --- @since 1.0.0
 ---
-function AtlasLoot:ShowSearchOptions(button)
+function AtlasTW.SearchLib.ShowOptions(button)
 	local Hewdrop = AceLibrary("Hewdrop-2.0")
 	if Hewdrop:IsOpen(button) then
 		Hewdrop:Close(1)
@@ -377,10 +380,10 @@ end
 --- Gets original data from search result by item ID
 --- @param itemID number - The item ID to find data for
 --- @return ... - Unpacked search result data (id, bossName, instanceKey, type, sourcePage)
---- @usage local id, boss, instance = AtlasLoot:GetOriginalDataFromSearchResult(12345)
+--- @usage local id, boss, instance = AtlasTW.SearchLib.GetOriginalDataFromSearchResult(12345)
 --- @since 1.0.0
 ---
-function AtlasLoot:GetOriginalDataFromSearchResult(itemID)
+function AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemID)
 	for i, v in ipairs(AtlasTWCharDB.SearchResult) do
 		if v[1] == itemID then return unpack(v) end
 	end

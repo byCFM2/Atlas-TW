@@ -17,7 +17,7 @@
 	<Include file="Core\Integrations.lua"/>
 	
 	<!-- Main functionality modules -->
-	<Include file="Core\AtlasLoot.lua"/>
+	<Include file="Core\QuickLook.lua"/>
 	<Include file="Core\LootBrowserUI.lua"/>
 	<Include file="Core\Interactions.lua"/>
 	<Include file="Core\WishList.lua"/>

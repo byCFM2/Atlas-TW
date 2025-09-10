@@ -524,18 +524,18 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 
 		-- If not a rare mob, use regular navigation
 		if not nav then
-			nav = AtlasLoot_GetBossNavigation(dataID)
+			nav = AtlasTW.DataResolver.GetBossNavigation(dataID)
 		end
 
 		-- If boss navigation not found, try menu navigation
-		if not nav and type(AtlasLoot_GetMenuNavigation) == "function" then
-			nav = AtlasLoot_GetMenuNavigation(dataID)
+		if not nav then
+			nav = AtlasTW.DataResolver.GetMenuNavigation(dataID)
 		end
 
 		-- If navigation not found and we have StoredBackMenuName, try to find navigation for it
 		if not nav and AtlasLootItemsFrame.StoredBackMenuName then
 			local backMenuKey = AtlasLootItemsFrame.StoredBackMenuName
-			nav = AtlasLoot_GetMenuNavigation(backMenuKey)
+			nav = AtlasTW.DataResolver.GetMenuNavigation(backMenuKey)
 			if nav then
 				-- Add "Back" button to parent menu
 				nav.Back_Page = "BackToMenu"
@@ -977,13 +977,10 @@ function AtlasTW.LootBrowserUI.UpdateTextButton(button, textData)
     end
 end
 
---[[ 
--- Backward compatibility - expose functions globally
-AtlasTW.LootBrowserUI.ScrollBarUpdate = AtlasTW.LootBrowserUI.ScrollBarUpdate
-AtlasTW.LootBrowserUI.ScrollBarLootUpdate = AtlasTW.LootBrowserUI.ScrollBarLootUpdate
-AtlasTW.LootBrowserUI.OnCloseButton = AtlasTW.LootBrowserUI.OnCloseButton ]]
-
--- New: clear a specific menu line content and hide button
+-- Сlear a specific menu line content and hide button
+-- @function ClearMenuLine
+-- @brief Clears a specific menu line in the loot browser UI.
+-- @param lineIndex The index of the menu line to clear.
 function AtlasTW.LootBrowserUI.ClearMenuLine(lineIndex)
     if not lineIndex then return end
     local button = _G["AtlasLootMenuItem_"..lineIndex]
@@ -1021,7 +1018,9 @@ function AtlasTW.LootBrowserUI.PrepMenu(menuTitle, menuItems, prevMenuText, defI
     AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 end
 
--- New: show item buttons, hide menu buttons
+-- Show item buttons, hide menu buttons
+-- @function ShowItemButtons
+-- @brief Shows the item buttons in the loot browser UI.
 function AtlasTW.LootBrowserUI.ShowItemButtons()
     for i = 1, AtlasTW.NUM_LOOT_LINES or 30 do
         local itemBtn = _G["AtlasLootItem_"..i]
@@ -1030,7 +1029,10 @@ function AtlasTW.LootBrowserUI.ShowItemButtons()
         if menuBtn then menuBtn:Hide() end
     end
 end
--- New: show menu buttons, hide item buttons
+
+-- Show menu buttons, hide item buttons
+-- @function ShowMenuButtons
+-- @brief Shows the menu buttons in the loot browser UI.
 function AtlasTW.LootBrowserUI.ShowMenuButtons()
     for i = 1, AtlasTW.NUM_LOOT_LINES or 30 do
         local itemBtn = _G["AtlasLootItem_"..i]
@@ -1039,7 +1041,16 @@ function AtlasTW.LootBrowserUI.ShowMenuButtons()
         if menuBtn then menuBtn:Show() end
     end
 end
--- New: set a specific menu line using menu button template
+
+-- Set a specific menu line using menu button template
+-- @function SetMenuLine
+-- @brief Sets a specific menu line in the loot browser UI using the menu button template.
+-- @param lineIndex The index of the menu line to set.
+-- @param itemData The data for the menu line.
+-- @return nil
+-- @usage AtlasTW.LootBrowserUI.SetMenuLine(1, { name = "Dungeons", container = "Dungeons" })
+-- @since 1.0.0
+--
 function AtlasTW.LootBrowserUI.SetMenuLine(lineIndex, itemData)
     if not lineIndex or not itemData then return end
     local button = _G["AtlasLootMenuItem_"..lineIndex]
@@ -1055,4 +1066,97 @@ function AtlasTW.LootBrowserUI.SetMenuLine(lineIndex, itemData)
 
     -- Reuse text button updater to apply visuals
     AtlasTW.LootBrowserUI.UpdateTextButton(button, itemData)
+end
+
+---
+--- Creates a loading overlay frame with spinning indicator
+--- @param frameName string Frame global name
+--- @param parentFrame table Parent frame
+--- @param debugName string|nil Optional name for debug prints
+--- @return void
+--- @usage AtlasTW.LootBrowserUI.CreateLoadingFrame("AtlasLootScrollBarLoadingFrame", AtlasLootItemsFrame)
+--- @since 1.0.0
+---
+function AtlasTW.LootBrowserUI.CreateLoadingFrame(frameName, parentFrame, debugName)
+    local loadingFrame = getglobal(frameName)
+    if not loadingFrame then
+        loadingFrame = CreateFrame("Frame", frameName, parentFrame)
+        loadingFrame:SetAllPoints(parentFrame)
+        loadingFrame:SetFrameLevel(parentFrame:GetFrameLevel() + 1)
+        loadingFrame:SetBackdrop({
+            bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+            edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+            tile = true,
+            edgeSize = 16,
+            tileSize = 16,
+            insets = { left = 4, right = 4, top = 4, bottom = 4 }
+        })
+        loadingFrame:SetBackdropColor(0, 0, 0, 0.5)
+        loadingFrame:SetBackdropBorderColor(1, 0.82, 0, 0.8)
+
+        local text = loadingFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+        text:SetPoint("CENTER", loadingFrame, "CENTER")
+        text:SetTextColor(1, 1, 0)
+        text:SetText("|")
+        loadingFrame.text = text
+
+        loadingFrame.animTimer = 0
+        loadingFrame.spinnerIndex = 1
+        loadingFrame.spinnerChars = {"|", "/", "-", "\\"}
+        loadingFrame:SetScript("OnUpdate", function()
+            this.animTimer = this.animTimer + arg1
+            if this.animTimer >= 0.15 then
+                this.animTimer = 0
+                this.spinnerIndex = this.spinnerIndex + 1
+                if this.spinnerIndex > 4 then
+                    this.spinnerIndex = 1
+                end
+                this.text:SetText(this.spinnerChars[this.spinnerIndex])
+            end
+        end)
+
+        setglobal(frameName, loadingFrame)
+    end
+    loadingFrame:Show()
+    if debugName then
+        print("AtlasLoot: show " .. debugName .. " spinner")
+    end
+end
+
+---
+--- Hides a loading overlay frame
+--- @param frameName string Frame global name
+--- @param debugName string|nil Optional name for debug prints
+--- @return void
+--- @usage AtlasTW.LootBrowserUI.HideLoadingFrame("AtlasLootScrollBarLoadingFrame")
+--- @since 1.0.0
+---
+function AtlasTW.LootBrowserUI.HideLoadingFrame(frameName, debugName)
+    local loadingFrame = getglobal(frameName)
+    if loadingFrame then
+        loadingFrame:Hide()
+        if debugName then
+            print("AtlasLoot: hide " .. debugName .. " spinner")
+        end
+    end
+end
+
+---
+--- Convenience wrapper to show scroll bar loading overlay
+--- @return void
+--- @usage AtlasTW.LootBrowserUI.ShowScrollBarLoading()
+--- @since 1.0.0
+---
+function AtlasTW.LootBrowserUI.ShowScrollBarLoading()
+    AtlasTW.LootBrowserUI.CreateLoadingFrame("AtlasLootScrollBarLoadingFrame", AtlasLootItemsFrame)
+end
+
+---
+--- Convenience wrapper to hide scroll bar loading overlay
+--- @return void
+--- @usage AtlasTW.LootBrowserUI.HideScrollBarLoading()
+--- @since 1.0.0
+---
+function AtlasTW.LootBrowserUI.HideScrollBarLoading()
+    AtlasTW.LootBrowserUI.HideLoadingFrame("AtlasLootScrollBarLoadingFrame")
 end

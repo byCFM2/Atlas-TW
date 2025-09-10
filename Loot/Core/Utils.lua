@@ -11,9 +11,10 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 AtlasTW.LootUtils = AtlasTW.LootUtils or {}
+local L = AtlasTW.Local
 
 ---
--- @module AtlasLoot.Utils
+-- @module AtlasTW.LootUtils
 -- @version 1.0.0
 -- @description Common string and link utilities for Atlas-TW Loot
 ---
@@ -98,4 +99,86 @@ function AtlasTW.LootUtils.IdFromLink(itemlink)
         return tonumber(id)
     end
     return nil
+end
+
+---
+--- Splits a string by delimiter with optional limits
+--- Custom string splitting with control over result count
+--- WoW 1.12 compatible using string.gfind
+--- @param delim string Delimiter to split by
+--- @param str string String to split
+--- @param maxNb number|nil Maximum number of splits (0 for unlimited)
+--- @param onlyLast boolean|nil If true, return only the last part
+--- @return any Returns last part if onlyLast, otherwise returns first two parts for convenience
+--- @usage local a,b = AtlasTW.LootUtils.Strsplit("|", "a|b|c")
+--- @since 1.0.0
+---
+function AtlasTW.LootUtils.Strsplit(delim, str, maxNb, onlyLast)
+	if not str or not delim then return { str } end
+	if string.find(str, delim) == nil then
+		return { str }
+	end
+	if maxNb == nil or maxNb < 1 then
+		maxNb = 0
+	end
+	local result = {}
+	local pat = "(.-)" .. delim .. "()"
+	local nb = 0
+	local lastPos
+	for part, pos in string.gfind(str, pat) do
+		nb = nb + 1
+		result[nb] = part
+		lastPos = pos
+		if nb == maxNb then break end
+	end
+	if nb ~= maxNb then
+		result[nb+1] = string.sub(str, lastPos)
+	end
+	if onlyLast then
+		return result[nb+1]
+	else
+		return result[1], result[2]
+	end
+end
+
+---
+--- Checks player bags for specific items and quantities
+--- Returns colored item name based on availability in bags
+--- @param id number|string Item ID to search for
+--- @param qty number Quantity required (default: 1)
+--- @return string Colored item name (WHITE if found, RED if missing)
+--- @usage local result = AtlasTW.LootUtils.CheckBagsForItems(12345, 5)
+--- @since 1.0.0
+---
+function AtlasTW.LootUtils.CheckBagsForItems(id, qty)
+    if not id then return end
+    if not qty then qty = 1 end
+    local itemsfound = 0
+    if not GetItemInfo then return (AtlasLoot_Colors.RED or "") .. (L and L["Unknown"] or "Unknown") end
+
+    local itemName = GetItemInfo(id)
+    if not itemName then itemName = "Uncached" end
+
+    for i = 0, NUM_BAG_FRAMES do
+        for j = 1, GetContainerNumSlots(i) do
+            local itemLink = GetContainerItemLink(i, j)
+            if itemLink and AtlasTW.LootUtils.IdFromLink(itemLink) == tonumber(id) then
+                local _, stackCount = GetContainerItemInfo(i, j)
+                itemsfound = itemsfound + (stackCount or 0)
+                if itemsfound >= qty then
+                    if qty == 1 then
+                        return (AtlasLoot_Colors.WHITE or "") .. itemName
+                    else
+                        return (AtlasLoot_Colors.WHITE or "") .. itemName .. " (" .. qty .. ")"
+                    end
+                end
+            end
+        end
+    end
+
+    if qty == 1 then
+        return (AtlasLoot_Colors.RED or "") .. itemName
+    else
+        return (AtlasLoot_Colors.RED or "") .. itemName .. " (" .. qty .. ")"
+    end
 end

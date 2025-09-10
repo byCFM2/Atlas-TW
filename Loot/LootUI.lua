@@ -145,7 +145,7 @@ function AtlasLoot_ApplyContainerItemTemplate(button)
 
     -- Set click script
     button:SetScript("OnClick", function()
-        AtlasLoot_ContainerItem_OnClick(arg1)
+        AtlasTW.Interactions.ContainerItem_OnClick(arg1)
     end)
 end
 
@@ -193,7 +193,7 @@ local function AtlasLoot_CreatePresetButtons(frame)
 
         presetButton[i]:SetScript("OnMouseUp", function()
             if IsAltKeyDown() then
-                AtlasLoot_ClearQuickLookButton(buttonIndex)
+                AtlasTW.QuickLook.ClearButton(buttonIndex)
             end
         end)
 
@@ -256,7 +256,7 @@ local function AtlasLoot_CreateSearchElements(frame)
     searchBox:SetMaxLetters(100)
 
     searchBox:SetScript("OnEnterPressed", function()
-        AtlasLoot:Search(this:GetText())
+        AtlasTW.SearchLib.Search(this:GetText())
         this:ClearFocus()
     end)
 
@@ -271,7 +271,7 @@ local function AtlasLoot_CreateSearchElements(frame)
     end)
 
     searchButton:SetScript("OnClick", function()
-        AtlasLoot:Search(AtlasLootSearchBox:GetText())
+        AtlasTW.SearchLib.Search(AtlasLootSearchBox:GetText())
         AtlasLootSearchBox:ClearFocus()
         CloseDropDownMenus()
     end)
@@ -292,7 +292,7 @@ local function AtlasLoot_CreateSearchElements(frame)
     end)
 
     searchOptionsButton:SetScript("OnClick", function()
-        AtlasLoot:ShowSearchOptions(this)
+        AtlasTW.SearchLib.ShowOptions(this)
     end)
 
     -- Clear Button
@@ -321,7 +321,7 @@ local function AtlasLoot_CreateSearchElements(frame)
     end)
 
     lastResultButton:SetScript("OnClick", function()
-        AtlasLoot:ShowSearchResult()
+        AtlasTW.SearchLib.ShowResult()
         CloseDropDownMenus()
     end)
 
@@ -421,9 +421,9 @@ function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
         button = CreateFrame("Button", name, parent)
         AtlasLoot_ApplyParentTemplate(button)
         button:RegisterForClicks("LeftButtonDown", "RightButtonDown")
-        button:SetScript("OnEnter", function() AtlasLootItem_OnEnter() end)
-        button:SetScript("OnLeave", function() AtlasLootItem_OnLeave() end)
-        button:SetScript("OnClick", function() AtlasLootItem_OnClick(arg1); CloseDropDownMenus() end)
+        button:SetScript("OnEnter", function() AtlasTW.Interactions.Item_OnEnter() end)
+        button:SetScript("OnLeave", function() AtlasTW.Interactions.Item_OnLeave() end)
+        button:SetScript("OnClick", function() AtlasTW.Interactions.Item_OnClick(arg1); CloseDropDownMenus() end)
         button:SetScript("OnShow", function() this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1) end)
 
     elseif templateType == "AtlasLootMenuItem_Template" then
@@ -431,7 +431,7 @@ function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
         AtlasLoot_ApplyParentTemplate(button)
 
         button:RegisterForClicks("LeftButtonDown", "RightButtonDown")
-        button:SetScript("OnClick", function() AtlasLootMenuItem_OnClick(this) end)
+        button:SetScript("OnClick", function() AtlasTW.Interactions.MenuItem_OnClick(this) end)
         button:SetScript("OnShow", function() this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1) end)
 
     elseif templateType == "AtlasLootNewBossLineTemplate" then
@@ -462,7 +462,7 @@ function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
         selectedIcon:Hide()
 
         button:SetScript("OnLeave", function() GameTooltip:Hide() end)
-        button:SetScript("OnClick", function() AtlasLootBoss_OnClick(this:GetName()) end)
+        button:SetScript("OnClick", function() AtlasTW.Interactions.ElementList_OnClick(this:GetName()) end)
         button:SetScript("OnShow", function() this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1) end)
     end
 
@@ -523,7 +523,7 @@ local function AtlasLoot_CreateItemsFrame()
     local closeButton = CreateFrame("Button", frame:GetName().."_CloseButton", frame, "UIPanelCloseButton")
     closeButton:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -10, -5)
     closeButton:SetScript("OnClick", function()
-        AtlasTW.LootBrowserUI.OnCloseButton()
+        AtlasTW.Interactions.OnCloseButton()
     end)
     closeButton:SetScript("OnShow", function()
         this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1)
@@ -552,7 +552,7 @@ local function AtlasLoot_CreateItemsFrame()
     end)
 
     quickLooksButton:SetScript("OnClick", function()
-        AtlasLoot_ShowQuickLooks(this)
+        AtlasTW.QuickLook.ShowMenu(this)
     end)
     quickLooksButton:SetScript("OnEnter", function()
         GameTooltip:SetOwner(this, "ANCHOR_LEFT")
@@ -640,7 +640,7 @@ local function AtlasLoot_CreateItemsFrame()
         GameTooltip:Hide()
     end)
     backButton:SetScript("OnClick", function()
-        AtlasLoot_NavButton_OnClick()
+       AtlasTW.Interactions.NavButton_OnClick()
         CloseDropDownMenus()
     end)
 
@@ -657,7 +657,7 @@ local function AtlasLoot_CreateItemsFrame()
         GameTooltip:Hide()
     end)
     prevButton:SetScript("OnClick", function()
-        AtlasLoot_NavButton_OnClick()
+        AtlasTW.Interactions.NavButton_OnClick()
         CloseDropDownMenus()
     end)
 
@@ -674,7 +674,7 @@ local function AtlasLoot_CreateItemsFrame()
         GameTooltip:Hide()
     end)
     nextButton:SetScript("OnClick", function()
-        AtlasLoot_NavButton_OnClick()
+        AtlasTW.Interactions.NavButton_OnClick()
         CloseDropDownMenus()
     end)
 
