@@ -1,0 +1,57 @@
+<Bindings>
+	<Binding name="ATLASTW_TOGGLE" header="ATLASTW_TITLE">
+		AtlasTW = AtlasTW or {}
+		AtlasTW.ToggleAtlas()
+	</Binding>
+	<Binding name="ATLASTW_OPTIONS">
+		AtlasTW = AtlasTW or {}
+		AtlasTW.OptionsOnClick()
+	</Binding>
+	<Binding name="ATLASLOOT_QL1" header="ATLASLOOT_TITLE">
+		if AtlasTWCharDB["QuickLooks"][1] then
+			if AtlasFrame and AtlasFrame:IsVisible() then
+				AtlasLootPanel_Preset1:Click()
+			end
+		end
+	</Binding>
+	<Binding name="ATLASLOOT_QL2">
+		if AtlasTWCharDB["QuickLooks"][2] then
+			if AtlasFrame and AtlasFrame:IsVisible() then
+				AtlasLootPanel_Preset2:Click()
+			end
+		end
+	</Binding>
+	<Binding name="ATLASLOOT_QL3">
+		if AtlasTWCharDB["QuickLooks"][3] then
+			if AtlasFrame and AtlasFrame:IsVisible() then
+				AtlasLootPanel_Preset3:Click()
+			end
+		end
+	</Binding>
+	<Binding name="ATLASLOOT_QL4">
+		if AtlasTWCharDB["QuickLooks"][4] then
+			if AtlasFrame and AtlasFrame:IsVisible() then
+				AtlasLootPanel_Preset4:Click()
+			end
+		end
+	</Binding>
+	<Binding name="ATLASLOOT_QL5">
+		if AtlasTWCharDB["QuickLooks"][5] then
+			if AtlasFrame and AtlasFrame:IsVisible() then
+				AtlasLootPanel_Preset5:Click()
+			end
+		end
+	</Binding>
+	<Binding name="ATLASLOOT_QL6">
+		if AtlasTWCharDB["QuickLooks"][6] then
+			if AtlasFrame and AtlasFrame:IsVisible() then
+				AtlasLootPanel_Preset6:Click()
+			end
+		end
+	</Binding>
+	<Binding name="ATLASLOOT_WISHLIST">
+		if AtlasFrame and AtlasFrame:IsVisible() then
+			AtlasLootPanel_WishList:Click()
+		end
+	</Binding>
+</Bindings>

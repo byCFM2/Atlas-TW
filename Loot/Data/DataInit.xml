@@ -1,0 +1,83 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+    <!-- Core modules -->
+    <Include file="ItemDB.lua"/>
+    <!-- Instance data -->
+    <Include file="Instances\MoltenCore.lua"/>
+    <Include file="Instances\BlackwingLair.lua"/>
+    <Include file="Instances\EmeraldSanctum.lua"/>
+    <Include file="Instances\OnyxiasLair.lua"/>
+    <Include file="Instances\Naxxramas.lua"/>
+    <Include file="Instances\RuinsofAhnQiraj.lua"/>
+    <Include file="Instances\TempleofAhnQiraj.lua"/>
+    <Include file="Instances\TowerofKarazhan.lua"/>
+    <Include file="Instances\ZulGurub.lua"/>
+    <Include file="Instances\BlackrockSpireUpper.lua"/>
+    <Include file="Instances\LowerKarazhanHalls.lua"/>
+    <Include file="Instances\Scholomance.lua"/>
+    <Include file="Instances\Stratholme.lua"/>
+    <Include file="Instances\StormwindVault.lua"/>
+    <Include file="Instances\KarazhanCrypt.lua"/>
+    <Include file="Instances\BlackrockSpireLower.lua"/>
+    <Include file="Instances\Maraudon.lua"/>
+    <Include file="Instances\TheBlackMorass.lua"/>
+    <Include file="Instances\HateforgeQuarry.lua"/>
+    <Include file="Instances\DireMaul.lua"/>
+    <Include file="Instances\BlackrockDepths.lua"/>
+    <Include file="Instances\GilneasCity.lua"/>
+    <Include file="Instances\TheCrescentGrove.lua"/>
+    <Include file="Instances\Uldaman.lua"/>
+    <Include file="Instances\TheSunkenTemple.lua"/>
+    <Include file="Instances\ScarletMonastery.lua"/>
+    <Include file="Instances\RazorfenDowns.lua"/>
+    <Include file="Instances\ZulFarrak.lua"/>
+    <Include file="Instances\RagefireChasm.lua"/>
+    <Include file="Instances\TheDeadmines.lua"/>
+    <Include file="Instances\TheStockade.lua"/>
+    <Include file="Instances\Gnomeregan.lua"/>
+    <Include file="Instances\WailingCaverns.lua"/>
+    <Include file="Instances\BlackfathomDeeps.lua"/>
+    <Include file="Instances\RazorfenKraul.lua"/>
+    <Include file="Instances\ShadowfangKeep.lua"/>
+    <Include file="Instances\StormwroughtRuins.lua"/>
+    <Include file="Instances\DragonmawRetreat.lua"/>
+    <!-- World content data -->
+    <Include file="World\Azuregos.lua"/>
+    <Include file="World\FourDragons.lua"/>
+    <Include file="World\LordKazzak.lua"/>
+    <Include file="World\NerubianOverseer.lua"/>
+    <Include file="World\CowKing.lua"/>
+    <Include file="World\Reaver.lua"/>
+    <Include file="World\Concavius.lua"/>
+    <Include file="World\Ostarius.lua"/>
+    <Include file="World\Clackora.lua"/>
+    <Include file="World\RareMobs.lua"/>
+    <!-- Supplementary information -->
+    <Include file="Info\FPAllianceEast.lua"/>
+    <Include file="Info\FPAllianceWest.lua"/>
+    <Include file="Info\FPHordeEast.lua"/>
+    <Include file="Info\FPHordeWest.lua"/>
+    <Include file="Info\TransportRoutes.lua"/>
+    <Include file="Info\DLEast.lua"/>
+    <Include file="Info\DLWest.lua"/>
+    <!-- PvP data -->
+    <Include file="PvP\WarsongGulch.lua"/>
+    <Include file="PvP\ArathiBasin.lua"/>
+    <Include file="PvP\AlteracValleyNorth.lua"/>
+    <Include file="PvP\AlteracValleySouth.lua"/>
+    <Include file="PvP\PVPRewards.lua"/>
+    <!-- Menu data -->
+	<Include file="Menu\Sets.lua"/>
+	<Include file="Menu\WorldEvents.lua"/>
+	<Include file="Menu\Crafting.lua"/>
+	<Include file="Menu\Factions.lua"/>
+	<Include file="Menu\World.lua"/>
+	<Include file="Menu\PvP.lua"/>
+	<Include file="Menu\Dungeons.lua"/>
+    <!-- Tables data -->
+    <Include file="Tables\Spells.lua"/>
+    <Include file="Tables\Factions.lua"/>
+    <Include file="Tables\Events.lua"/>
+    <Include file="Tables\Sets.lua"/>
+    <!-- Crafting data -->
+    <Include file="Tables\Crafting.lua"/>
+</Ui>
