@@ -62,10 +62,10 @@ AtlasOptions.lua (обработчики опций)
 - ClearAll()/HideAtlasLootFrame(): служебные; очистка/синхронизация с лут‑панелью.
 - SetQuestText()/SetStoryText()/LoadFinishedQuests()/Update()/SetQuestButtons(): обновление текста/кнопок/состояния UI.
 
-5) Публичные функции лут‑модуля (AtlasTW.Loot.* и ключевые AtlasLoot_*)
-- AtlasTW.Loot.ScrollBarUpdate(): обновление состояния скроллбара меню.
-- AtlasTW.Loot.ScrollBarLootUpdate(): обновить список предметов в контейнере (нижняя панель) при смене страницы/фильтра.
-- AtlasTW.Loot.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon): подготовить меню (заголовок, элементы, иконка «назад»).
+5) Публичные функции лут‑модуля (AtlasTW.LootBrowserUI.* и ключевые AtlasLoot_*)
+- AtlasTW.LootBrowserUI.ScrollBarUpdate(): обновление состояния скроллбара меню.
+- AtlasTW.LootBrowserUI.ScrollBarLootUpdate(): обновить список предметов в контейнере (нижняя панель) при смене страницы/фильтра.
+- AtlasTW.LootBrowserUI.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon): подготовить меню (заголовок, элементы, иконка «назад»).
 - AtlasLoot_InitializeUI(): инициализация UI нижней панели лута (создание фреймов, кнопок, скролла).
 - В пространстве имен AtlasLoot_* расположены обработчики кликов, переключателей страниц, меню разделов (Dungeons, World, PvP, Factions, Crafting и пр.) и тултипы (Item_OnEnter/OnLeave/OnClick). Их можно вызывать напрямую для сборки/переключения меню при необходимости.
 
@@ -84,7 +84,7 @@ AtlasOptions.lua (обработчики опций)
 - Показать панель квестов и выбрать квест:
   AtlasTW.Quest.ToggleQuestFrame(); AtlasTW.Quest.OnQuestClick(1)
 - Обновить список лута текущей страницы:
-  AtlasTW.Loot.ScrollBarLootUpdate()
+  AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 
 8) Лучшие практики
 - Делаем все функции и переменные локальными по умолчанию; глобальные — только публичный API.
@@ -112,6 +112,7 @@ AtlasOptions.lua (обработчики опций)
   - AtlasAutoSelect (bool): автоподбор инстанса по текущей зоне.
   - AtlasRightClick (bool): особое поведение ПКМ в окне.
   - AtlasAcronyms (bool): показывать аббревиатуры карт.
+  - AtlasCursorCoords (bool): показывать оверлей координат курсора на стандартной Карте мира.
   - AtlasType (number): выбранная категория в левом дропдауне.
   - AtlasZone (number): выбранная карта/инстанс в правом дропдауне.
   - LootShowPanel (bool): показывать нижнюю панель лута.
@@ -147,6 +148,7 @@ AtlasOptions.lua (обработчики опций)
 - Поле поиска: AtlasSearchEditBox.
 - Переключатели/кнопки: AtlasSwitchButton, кнопки опций/квестов.
 - Миникарта: AtlasButtonFrame (контейнер), AtlasMinimapButton (кнопка), логика — MinimapButton*.
+- Карта мира: оверлей координат курсора — виден только при открытой WorldMapFrame; учитывает AtlasTWOptions.AtlasCursorCoords.
 - Панель лута: AtlasLootItemsFrame (контейнер), AtlasLootScrollBar (скролл), AtlasLootItemsFrameContainer (динамическая сетка кнопок предметов).
 - Панель опций: AtlasOptionsFrame (+ AtlasOptionsFrameDropDownCats).
 - Панель квестов: Quest.UI_Main.Frame (боковая), Quest.UI.InsideAtlasFrame (встроенная в Atlas).
@@ -167,7 +169,7 @@ AtlasOptions.lua (обработчики опций)
   2) Модуль поиска формирует AtlasTWCharDB.SearchResult и LastSearchedText.
   3) Панель лута читает SearchResult и показывает результаты; ScrollBarLootUpdate обновляет контейнер.
 - Навигация по лут‑меню:
-  1) AtlasTW.Loot.PrepMenu подготавливает меню/заголовок/«Назад».
+  1) AtlasTW.LootBrowserUI.PrepMenu подготавливает меню/заголовок/«Назад».
   2) Клики по элементам/страницам обновляют StoredElement/StoredMenu/activeElement.
   3) ScrollBarLootUpdate и кнопки навигации (NEXT/PREV/BACK) меняют видимую страницу.
 - Квесты:
@@ -221,6 +223,7 @@ Options (AtlasOptions.lua)
 - AtlasTW.OptionOpaqueOnClick()
 - AtlasTW.OptionItemIDOnClick()
 - AtlasTW.OptionItemSpamOnClick()
+- AtlasTW.OptionsCursorCoordsOnClick()
 - AtlasTW.OptionResetPosition()
 - AtlasTW.OptionFrameDropDownCatsOnShow()
 
@@ -248,10 +251,10 @@ Quests (QuestMain.lua, QuestLogic.lua)
 - AtlasTW.Quest.ToggleQuestFrame()
 - AtlasTW.Quest.OnEvent()
 
-Loot (Loot/Core/AtlasLoot.lua, Loot/LootUI.lua)
-- AtlasTW.Loot.ScrollBarUpdate()
-- AtlasTW.Loot.ScrollBarLootUpdate()
-- AtlasTW.Loot.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon)
+Loot (Loot/Core/Init.lua, Loot/LootUI.lua)
+- AtlasTW.LootBrowserUI.ScrollBarUpdate()
+- AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+- AtlasTW.LootBrowserUI.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon)
 - AtlasLoot_InitializeUI() и связанные AtlasLoot_* (создание UI, навигация, обработчики кликов/тултипов)
 
 ItemDB (Loot/Data/ItemDB.lua)

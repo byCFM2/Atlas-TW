@@ -7,11 +7,186 @@
 --Make the Hewdrop menu in the standalone loot browser accessible here
 AtlasLoot_Hewdrop = AceLibrary("Hewdrop-2.0")
 
+-- Instance required libraries
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
---Instance required libraries
 local L = AtlasTW.Local
+AtlasTW.MenuData = AtlasTW.MenuData or {}
 local BS = AceLibrary("Babble-Spell-2.2a")
+
+-- Cache for localized strings (optimization)
+local LocalizedStrings = {
+    DungeonsRaids = L["Dungeons & Raids"],
+    World = L["World"],
+    PvPRewards = L["PvP Rewards"],
+    Collections = L["Collections"],
+    Factions = L["Factions"],
+    WorldEvents = L["World Events"],
+    Crafting = L["Crafting"],
+    RareMobs = L["Rare Mobs"]
+}
+
+--- Counts the maximum numeric index in a sparse array
+--- @param tbl table The table to analyze for maximum numeric index
+--- @return number The highest numeric key found in the table
+--- @usage local max = GetMaxNumericIndex({[1] = "a", [5] = "b"}) -- returns 5
+--- @since 1.0.0
+local function GetMaxNumericIndex(tbl)
+    local maxIndex = 0
+    for k, v in pairs(tbl) do
+        if type(k) == "number" and k > maxIndex and v then
+            maxIndex = k
+        end
+    end
+    return maxIndex
+end
+
+--- Processes category data for loot configuration
+--- @param data table The raw category data to process
+--- @param categoryName string The name of the category being processed
+--- @param specialHandler function|nil Optional special handler function
+--- @return table|nil Processed category data structure
+--- @usage local category = ProcessCategoryData(dungeonData, "Dungeons", nil)
+--- @since 1.0.0
+local function ProcessCategoryData(data, categoryName, specialHandler)
+    if not data then return nil end
+
+    local category = {}
+    category[categoryName] = {}
+    local categoryList = category[categoryName]
+
+    if specialHandler then
+        return specialHandler(data, category, categoryList)
+    else
+        -- Standard processing with sparse array support
+        local maxIndex = GetMaxNumericIndex(data)
+        for i = 1, maxIndex do
+            local item = data[i]
+            if item and item.name and item.lootpage then
+                table.insert(categoryList, { { item.name, item.lootpage } })
+            end
+        end
+    end
+
+    return category
+end
+
+--- Special handler to process World category (ensures Rare Mobs entry is placed last)
+--- @param data table Raw world bosses data
+--- @param category table Output category table reference
+--- @param categoryList table Output list reference inside category
+--- @return table category The processed category table
+--- @usage local cat = ProcessWorldCategory(MenuData.WorldBosses, {}, {})
+--- @since 1.0.0
+---
+local function ProcessWorldCategory(data, category, categoryList)
+    local rareMobsEntry = nil
+    local maxIndex = GetMaxNumericIndex(data)
+
+    for i = 1, maxIndex do
+        local boss = data[i]
+        if boss and boss.name and boss.lootpage then
+            if boss.name == LocalizedStrings.RareMobs then
+                rareMobsEntry = { { boss.name, boss.lootpage } }
+            else
+                table.insert(categoryList, { { boss.name, boss.lootpage } })
+            end
+        end
+    end
+
+    if rareMobsEntry then
+        table.insert(categoryList, rareMobsEntry)
+    end
+
+    return category
+end
+
+--- Special handler to process Dungeons & Raids category
+--- @param menuData table Raw dungeon menu data
+--- @return table|nil category The processed category or nil when input is invalid
+--- @usage local cat = ProcessDungeonsCategory(MenuData.Dungeons)
+--- @since 1.0.0
+---
+local function ProcessDungeonsCategory(menuData)
+    if not menuData then return nil end
+
+    local category = {}
+    category[LocalizedStrings.DungeonsRaids] = {}
+    local categoryList = category[LocalizedStrings.DungeonsRaids]
+
+    -- Combine processing of two arrays into one loop with sparse array support
+    local totalCount = GetMaxNumericIndex(menuData)
+    for i = 1, totalCount do
+        local dung = menuData[i]
+        if dung and dung.name and dung.lootpage then
+            table.insert(categoryList, { { dung.name, dung.lootpage } }) --dung.name_orig or 
+        end
+    end
+    return category
+end
+
+--- Generates the dropdown menu structure for AtlasLoot
+--- Creates optimized menu categories for dungeons, world, PvP, collections, etc.
+--- @return table Complete dropdown menu structure for AtlasLoot
+--- @usage local menu = GenerateHewdropDown()
+--- @since 1.0.0
+local function GenerateHewdropDown()
+
+    local MenuData = AtlasTW.MenuData
+    local hewdropDown = {}
+    local category
+
+    -- 1. Dungeons & Raids (optimized processing)
+    category = ProcessDungeonsCategory(MenuData.Dungeons)
+    if category then
+        table.insert(hewdropDown, category)
+    end
+
+    -- 2. World (optimized processing)
+    category = ProcessCategoryData(MenuData.WorldBosses, LocalizedStrings.World, ProcessWorldCategory)
+    if category then
+        table.insert(hewdropDown, category)
+    end
+
+    -- 3. PvP Rewards (optimized processing)
+    category = ProcessCategoryData(MenuData.PVP, LocalizedStrings.PvPRewards)
+    if category then
+        table.insert(hewdropDown, category)
+    end
+
+    -- 4. Collections (optimized processing)
+    category = ProcessCategoryData(MenuData.Sets, LocalizedStrings.Collections)
+    if category then
+        table.insert(hewdropDown, category)
+    end
+
+    -- 5. Factions (optimized processing)
+    category = ProcessCategoryData(MenuData.Factions, LocalizedStrings.Factions)
+    if category then
+        table.insert(hewdropDown, category)
+    end
+
+    -- 6. World Events (optimized processing)
+    category = ProcessCategoryData(MenuData.WorldEvents, LocalizedStrings.WorldEvents)
+    if category then
+        table.insert(hewdropDown, category)
+    end
+
+    -- 7. Crafting (optimized processing)
+    category = ProcessCategoryData(MenuData.Crafting, LocalizedStrings.Crafting)
+    if category then
+        table.insert(hewdropDown, category)
+    end
+
+    return hewdropDown
+end
+
+-- Generate data on load (with lazy initialization)
+do
+    if not AtlasLoot_HewdropDown then
+        AtlasLoot_HewdropDown = GenerateHewdropDown()
+    end
+end
 
 ---
 --- Opens a specific loot menu category
@@ -26,13 +201,13 @@ function AtlasLoot_OpenMenu(menuName)
 	AtlasLootQuickLooksButton:Hide()
 	AtlasLootItemsFrame_SelectedCategory:SetText(AtlasTW.LootUtils.TruncateText(menuName, 30))
 	local menuMapping = {
-		[L["Crafting"]] = "AtlasLoot_CraftingMenu",
-		[L["World"]] = "AtlasLoot_WorldMenu",
-		[L["PvP Rewards"]] = "AtlasLootPvPMenu",
-		[L["World Events"]] = "AtlasLootWorldEventMenu",
-		[L["Collections"]] = "AtlasLootSetMenu",
-		[L["Factions"]] = "AtlasLootRepMenu",
-		[L["Dungeons & Raids"]] = "AtlasLoot_DungeonsMenu",
+		[LocalizedStrings.Crafting] = "AtlasLoot_CraftingMenu",
+		[LocalizedStrings.World] = "AtlasLoot_WorldMenu",
+		[LocalizedStrings.PvPRewards] = "AtlasLootPvPMenu",
+		[LocalizedStrings.WorldEvents] = "AtlasLootWorldEventMenu",
+		[LocalizedStrings.Collections] = "AtlasLootSetMenu",
+		[LocalizedStrings.Factions] = "AtlasLootRepMenu",
+		[LocalizedStrings.DungeonsRaids] = "AtlasLoot_DungeonsMenu",
 		[BS["Alchemy"]] = "AtlasLoot_AlchemyMenu",
 		[BS["Blacksmithing"]] = "AtlasLoot_SmithingMenu",
 		[BS["Enchanting"]] = "AtlasLoot_EnchantingMenu",
@@ -134,7 +309,9 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 						if dropDownData[zoneIndex] == instKey then
 							AtlasTWOptions.AtlasType = typeIndex
 							AtlasTWOptions.AtlasZone = zoneIndex
-							if AtlasTW.Refresh then AtlasTW.Refresh() end
+							AtlasTW.Refresh()
+							AtlasTW.FrameDropDownTypeOnShow()
+							AtlasTW.FrameDropDownOnShow()
 							return true
 						end
 					end

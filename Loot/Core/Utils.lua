@@ -12,6 +12,8 @@ local _G = getfenv()
 AtlasTW = _G.AtlasTW
 AtlasTW.LootUtils = AtlasTW.LootUtils or {}
 local L = AtlasTW.Local
+local RED = AtlasTW.Colors.RED
+local WHITE = AtlasTW.Colors.WHITE
 
 ---
 -- @module AtlasTW.LootUtils
@@ -154,7 +156,7 @@ function AtlasTW.LootUtils.CheckBagsForItems(id, qty)
     if not id then return end
     if not qty then qty = 1 end
     local itemsfound = 0
-    if not GetItemInfo then return (AtlasLoot_Colors.RED or "") .. (L and L["Unknown"] or "Unknown") end
+    if not GetItemInfo then return (RED or "") .. (L and L["Unknown"] or "Unknown") end
 
     local itemName = GetItemInfo(id)
     if not itemName then itemName = "Uncached" end
@@ -167,9 +169,9 @@ function AtlasTW.LootUtils.CheckBagsForItems(id, qty)
                 itemsfound = itemsfound + (stackCount or 0)
                 if itemsfound >= qty then
                     if qty == 1 then
-                        return (AtlasLoot_Colors.WHITE or "") .. itemName
+                        return (WHITE or "") .. itemName
                     else
-                        return (AtlasLoot_Colors.WHITE or "") .. itemName .. " (" .. qty .. ")"
+                        return (WHITE or "") .. itemName .. " (" .. qty .. ")"
                     end
                 end
             end
@@ -177,8 +179,8 @@ function AtlasTW.LootUtils.CheckBagsForItems(id, qty)
     end
 
     if qty == 1 then
-        return (AtlasLoot_Colors.RED or "") .. itemName
+        return (RED or "") .. itemName
     else
-        return (AtlasLoot_Colors.RED or "") .. itemName .. " (" .. qty .. ")"
+        return (RED or "") .. itemName .. " (" .. qty .. ")"
     end
 end

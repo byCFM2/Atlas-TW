@@ -23,8 +23,8 @@ AtlasTW.Interactions = AtlasTW.Interactions or {}
 
 -- Local references for performance
 local L = AtlasTW.Local
-local WHITE = AtlasLoot_Colors.WHITE
-local BLUE = AtlasLoot_Colors.BLUE
+local WHITE = AtlasTW.Colors.WHITE
+local BLUE = AtlasTW.Colors.BLUE
 
 ---
 --- Determines default chat channel and target, considering WIM activity and ChatFrame state
@@ -529,6 +529,8 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 										AtlasTWOptions.AtlasType = typeIndex
 										AtlasTWOptions.AtlasZone = zoneIndex
 										AtlasTW.Refresh()
+										AtlasTW.FrameDropDownTypeOnShow()
+										AtlasTW.FrameDropDownOnShow()
 										return true
 									end
 								end
@@ -624,6 +626,8 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 								AtlasTWOptions.AtlasType = typeIndex
 								AtlasTWOptions.AtlasZone = zoneIndex
 								AtlasTW.Refresh()
+								AtlasTW.FrameDropDownTypeOnShow()
+								AtlasTW.FrameDropDownOnShow()
 								break
 							end
 						end
@@ -752,6 +756,8 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 								AtlasTWOptions.AtlasType = typeIndex
 								AtlasTWOptions.AtlasZone = zoneIndex
 								AtlasTW.Refresh()
+								AtlasTW.FrameDropDownTypeOnShow()
+								AtlasTW.FrameDropDownOnShow()
 								break
 							end
 						end
@@ -891,6 +897,8 @@ function AtlasTW.Interactions.MenuItem_OnClick(button)
                                 AtlasTWOptions.AtlasType = typeIndex
                                 AtlasTWOptions.AtlasZone = zoneIndex
                                 AtlasTW.Refresh()
+								AtlasTW.FrameDropDownTypeOnShow()
+								AtlasTW.FrameDropDownOnShow()
                                 return true
                             end
                         end

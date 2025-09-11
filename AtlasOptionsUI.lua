@@ -74,7 +74,8 @@ do
         { name = "AtlasTWOptionAutoSelect", text = L["Auto-Select Instance Map"], script = function() AtlasTW.OptionsAutoSelectOnClick() end },
         { name = "AtlasTWOptionRightClick", text = L["Right-Click for World Map"], script = function() AtlasTW.OptionsWorldMapOnClick() end },
         { name = "AtlasTWOptionAcronyms", text = L["Show Acronyms"], script = function() AtlasTW.OptionsAcronymsOnClick() end },
-        { name = "AtlasTWOptionClamped", text = L["Clamp window to screen"], script = function() AtlasTW.OptionsClampedOnClick() end }
+        { name = "AtlasTWOptionClamped", text = L["Clamp window to screen"], script = function() AtlasTW.OptionsClampedOnClick() end },
+        { name = "AtlasTWOptionCursorCoords", text = L["Show Cursor Coordinates on Map"], script = function() AtlasTW.OptionsCursorCoordsOnClick() end }
     }
 
     -- Optimized function to create atlas checkboxes

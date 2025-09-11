@@ -20,8 +20,8 @@ local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 AtlasTW.SearchLib = AtlasTW.SearchLib or {}
 local L = AtlasTW.Local
-local RED = AtlasLoot_Colors.RED
-local WHITE = AtlasLoot_Colors.WHITE
+local RED = AtlasTW.Colors.RED
+local WHITE = AtlasTW.Colors.WHITE
 
 ---
 --- Shows search results in the loot frame

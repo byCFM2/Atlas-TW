@@ -103,6 +103,7 @@ function AtlasTW.OptionDefaultSettings()
         AtlasAlpha = 1.0,
         AtlasAcronyms = true,
         AtlasClamped = true,
+        AtlasCursorCoords = true,
         QuestCurrentSide = "Left",
         QuestWithAtlas = true,
         QuestColourCheck = true,
@@ -222,6 +223,29 @@ function AtlasTW.OptionsClampedOnClick()
 end
 
 ---
+--- Toggles showing cursor coordinates on the Atlas map
+--- Updates AtlasTWOptions.AtlasCursorCoords and shows/hides the overlay
+--- @return nil
+--- @usage AtlasTW.OptionsCursorCoordsOnClick() -- Called by checkbox click
+--- @since 1.1.0
+---
+function AtlasTW.OptionsCursorCoordsOnClick()
+    AtlasTWOptions.AtlasCursorCoords = not AtlasTWOptions.AtlasCursorCoords
+    if AtlasMapOverlay then
+        if AtlasTWOptions.AtlasCursorCoords then
+            AtlasMapOverlay:Show()
+            print("Atlas-TW: Cursor coordinates on map enabled")
+        else
+            AtlasMapOverlay:Hide()
+            print("Atlas-TW: Cursor coordinates on map disabled")
+        end
+    end
+    if AtlasTWOptionCursorCoords then
+        AtlasTWOptionCursorCoords:SetChecked(AtlasTWOptions.AtlasCursorCoords)
+    end
+end
+
+---
 --- Initializes all Atlas-TW option settings and UI elements
 --- Sets checkbox states, slider values, and frame visibility based on saved options
 --- @return nil
@@ -250,6 +274,7 @@ function AtlasTW.OptionsInit()
     AtlasTWOptionRightClick:SetChecked(AtlasTWOptions.AtlasRightClick)
     AtlasTWOptionAcronyms:SetChecked(AtlasTWOptions.AtlasAcronyms)
     AtlasTWOptionClamped:SetChecked(AtlasTWOptions.AtlasClamped)
+    AtlasTWOptionCursorCoords:SetChecked(AtlasTWOptions.AtlasCursorCoords)
     AtlasTWOptionSliderButtonPos:SetValue(AtlasTWOptions.AtlasButtonPosition)
     AtlasTWOptionSliderButtonRad:SetValue(AtlasTWOptions.AtlasButtonRadius)
     AtlasTWOptionSliderAlpha:SetValue(AtlasTWOptions.AtlasAlpha)

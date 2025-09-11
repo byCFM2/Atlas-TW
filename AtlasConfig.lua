@@ -26,7 +26,17 @@ AtlasTW = {
     LOOT_NUM_LINES = 30,
     DEBUGMODE = false,
     MAPPATH = "Interface\\AddOns\\Atlas-TW\\Images\\Maps\\",
-
+    Colors = {
+        RED     = "|cffff0000",  -- Poor quality, errors
+        WHITE   = "|cffFFFFFF",  -- Common quality, normal text
+        BLUE    = "|cff0070dd",  -- Rare quality, info text
+        DEFAULT = "|cffFFd200",  -- Default highlight color
+        GREEN   = "|cff00FF00",  -- Uncommon quality, success
+        GREY    = "|cff9d9d9d",  -- Disabled text, vendor trash
+        ORANGE  = "|cffFFA500",  -- Legendary quality, warnings
+        PURPLE  = "|cff9370DB",  -- Epic quality, special items
+        YELLOW  = "|cffFFD700"   -- Quest items, important text
+    },
     --entrance maps to instance maps
     EntToInstMatches = {
         ["BlackfathomDeepsEnt"] =		{"BlackfathomDeeps"},
@@ -171,7 +181,6 @@ AtlasTW = {
     QCurrentButton = 0,
     QCurrentInstance = nil,
 }
-AtlasTW.Loot = AtlasTW.Loot or {}
 
 --- Prints text message to the default chat frame
 --- @param text string - the message to display in chat

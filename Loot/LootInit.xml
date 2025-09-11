@@ -1,16 +1,9 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
 	<!-- Core foundation modules (load first) -->
-	<Include file="Core\Constants.lua"/>
 	<Include file="Core\Utils.lua"/>
 	<Include file="Core\Cache.lua"/>
 	
 	<!-- Data modules -->
-	<Include file="Core\Sets.lua"/>
-	<Include file="Core\WorldEvents.lua"/>
-	<Include file="Core\Crafting.lua"/>
-	<Include file="Core\Factions.lua"/>
-	<Include file="Core\World.lua"/>
-	<Include file="Core\PvP.lua"/>
 	
 	<!-- Core processing modules -->
 	<Include file="Core\DataResolver.lua"/>
@@ -22,10 +15,8 @@
 	<Include file="Core\Interactions.lua"/>
 	<Include file="Core\WishList.lua"/>
 	<Include file="Core\Search.lua"/>
-	<Include file="Core\Dungeons.lua"/>
 	<Include file="Core\Tooltip.lua"/>
 	<Include file="Core\Container.lua"/>
-	<Include file="Core\LootConfig.lua"/>
 	
 	<!-- Initialization and menu (load last) -->
 	<Include file="Core\Init.lua"/>

@@ -62,10 +62,10 @@ AtlasOptions.lua (options handlers)
 - ClearAll()/HideAtlasLootFrame(): service helpers; cleanup/sync with loot panel.
 - SetQuestText()/SetStoryText()/LoadFinishedQuests()/Update()/SetQuestButtons(): update quest UI text/buttons/state.
 
-5) Loot module public functions (AtlasTW.Loot.* and key AtlasLoot_*)
-- AtlasTW.Loot.ScrollBarUpdate(): update loot menu scrollbar state.
-- AtlasTW.Loot.ScrollBarLootUpdate(): refresh loot items container after page/filter changes.
-- AtlasTW.Loot.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon): prepare a menu (title, items, back icon).
+5) Loot module public functions (AtlasTW.LootBrowserUI.* and key AtlasLoot_*)
+- AtlasTW.LootBrowserUI.ScrollBarUpdate(): update loot menu scrollbar state.
+- AtlasTW.LootBrowserUI.ScrollBarLootUpdate(): refresh loot items container after page/filter changes.
+- AtlasTW.LootBrowserUI.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon): prepare a menu (title, items, back icon).
 - AtlasLoot_InitializeUI(): initialize bottom loot UI (create frames, buttons, scrollbar).
 - The AtlasLoot_* namespace contains click handlers, page switches, section menus (Dungeons, World, PvP, Factions, Crafting, etc.), and item tooltip handlers (Item_OnEnter/OnLeave/OnClick). You may call these directly to build/switch menus if needed.
 
@@ -84,7 +84,7 @@ AtlasOptions.lua (options handlers)
 - Show quest panel and pick a quest:
   AtlasTW.Quest.ToggleQuestFrame(); AtlasTW.Quest.OnQuestClick(1)
 - Refresh current loot page items:
-  AtlasTW.Loot.ScrollBarLootUpdate()
+  AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 
 8) Best practices
 - Prefer local functions/variables; expose only intended public API.
@@ -112,6 +112,7 @@ AtlasOptions.lua (options handlers)
   - AtlasAutoSelect (bool): auto-select instance by current zone.
   - AtlasRightClick (bool): special RMB behavior inside the window.
   - AtlasAcronyms (bool): show map acronyms.
+  - AtlasCursorCoords (bool): show cursor coordinates overlay on the default World Map.
   - AtlasType (number): selected category in the left dropdown.
   - AtlasZone (number): selected map/instance in the right dropdown.
   - LootShowPanel (bool): show the bottom loot panel.
@@ -147,6 +148,7 @@ AtlasOptions.lua (options handlers)
 - Search field: AtlasSearchEditBox.
 - Switches/buttons: AtlasSwitchButton plus options/quest buttons.
 - Minimap: AtlasButtonFrame (container), AtlasMinimapButton (button), behavior — MinimapButton*.
+- World Map: cursor coordinates overlay — visible only when WorldMapFrame is shown; respects AtlasTWOptions.AtlasCursorCoords.
 - Loot panel: AtlasLootItemsFrame (container), AtlasLootScrollBar (scrollbar), AtlasLootItemsFrameContainer (dynamic grid for item buttons).
 - Options panel: AtlasOptionsFrame (+ AtlasOptionsFrameDropDownCats).
 - Quest panels: Quest.UI_Main.Frame (sidebar), Quest.UI.InsideAtlasFrame (embedded inside Atlas).
@@ -167,7 +169,7 @@ AtlasOptions.lua (options handlers)
   2) The search module fills AtlasTWCharDB.SearchResult and LastSearchedText.
   3) The loot panel reads SearchResult and displays results; ScrollBarLootUpdate refreshes the container.
 - Loot menu navigation:
-  1) AtlasTW.Loot.PrepMenu prepares menu/title/"Back".
+  1) AtlasTW.LootBrowserUI.PrepMenu prepares menu/title/"Back".
   2) Clicks on entries/pages update StoredElement/StoredMenu/activeElement.
   3) ScrollBarLootUpdate and navigation buttons (NEXT/PREV/BACK) change the visible page.
 - Quests:
@@ -221,6 +223,7 @@ Options (AtlasOptions.lua)
 - AtlasTW.OptionOpaqueOnClick()
 - AtlasTW.OptionItemIDOnClick()
 - AtlasTW.OptionItemSpamOnClick()
+- AtlasTW.OptionsCursorCoordsOnClick()
 - AtlasTW.OptionResetPosition()
 - AtlasTW.OptionFrameDropDownCatsOnShow()
 
@@ -248,10 +251,10 @@ Quests (QuestMain.lua, QuestLogic.lua)
 - AtlasTW.Quest.ToggleQuestFrame()
 - AtlasTW.Quest.OnEvent()
 
-Loot (Loot/Core/AtlasLoot.lua, Loot/LootUI.lua)
-- AtlasTW.Loot.ScrollBarUpdate()
-- AtlasTW.Loot.ScrollBarLootUpdate()
-- AtlasTW.Loot.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon)
+Loot (Loot/Core/Init.lua, Loot/LootUI.lua)
+- AtlasTW.LootBrowserUI.ScrollBarUpdate()
+- AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+- AtlasTW.LootBrowserUI.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon)
 - AtlasLoot_InitializeUI() and related AtlasLoot_* (UI creation, navigation, click/tooltip handlers)
 
 ItemDB (Loot/Data/ItemDB.lua)

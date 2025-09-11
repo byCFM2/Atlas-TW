@@ -158,6 +158,7 @@ AtlasTW.Local.Translations = {
 	["Right-Click for World Map"] = true,
 	["Show Acronyms"] = true,
 	["Clamp window to screen"] = true,
+	["Show Cursor Coordinates on Map"] = true,
 	["Quests"] = true,
 	["Quest"] = true,
 	["East"] = true,

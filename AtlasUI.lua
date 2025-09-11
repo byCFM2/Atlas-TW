@@ -403,3 +403,91 @@ do
     highlight:SetBlendMode("ADD")
     button:SetHighlightTexture(highlight)
 end
+
+-- World Map cursor coordinates overlay (shows cursor coords on default World Map)
+-- Creates an overlay on the WorldMap that displays the cursor coordinates
+-- Respects AtlasTWOptions.AtlasCursorCoords setting
+-- @since 1.1.0
+do
+    -- Create the overlay if Blizzard world map frames are available
+    local function CreateAtlasWorldMapOverlay()
+        if AtlasWorldMapCursorOverlay then return true end
+        if not WorldMapFrame or not WorldMapDetailFrame then return false end
+
+        local worldMapOverlay = CreateFrame("Frame", "AtlasWorldMapCursorOverlay", WorldMapFrame)
+        worldMapOverlay:SetFrameStrata("TOOLTIP")
+        worldMapOverlay:ClearAllPoints()
+        worldMapOverlay:SetPoint("TOPLEFT", WorldMapDetailFrame, "TOPLEFT", 0, 0)
+        worldMapOverlay:SetPoint("BOTTOMRIGHT", WorldMapDetailFrame, "BOTTOMRIGHT", 0, 0)
+        worldMapOverlay:Show()
+
+        local wmCoordText = worldMapOverlay:CreateFontString("AtlasWorldMapCursorOverlayText", "OVERLAY", "GameFontNormal")
+        wmCoordText:SetText("")
+        wmCoordText:SetTextColor(1, 1, 1)
+        wmCoordText:SetShadowColor(0, 0, 0)
+        wmCoordText:SetShadowOffset(1, -1)
+        wmCoordText:Hide()
+        -- Anchor text at the bottom-left of the World Map (fixed position)
+        wmCoordText:ClearAllPoints()
+        wmCoordText:SetPoint("BOTTOMLEFT", worldMapOverlay, "BOTTOMLEFT", 10, 8)
+        local function wm_round1(x)
+            return math.floor(x * 10 + 0.5) / 10
+        end
+
+        -- Helper: approximate effective scale for frames in WoW 1.12 (multiply parent scales)
+        local function wm_getEffectiveScale(f)
+            local s = 1
+            while f do
+                local fs = f:GetScale()
+                if fs then s = s * fs end
+                f = f:GetParent()
+            end
+            return s
+        end
+
+        worldMapOverlay:SetScript("OnUpdate", function()
+            -- Respect option and visibility
+            if not AtlasTWOptions or not AtlasTWOptions.AtlasCursorCoords or not WorldMapFrame:IsVisible() then
+                wmCoordText:Hide()
+                return
+            end
+            local cursorX, cursorY = GetCursorPosition()
+            -- Use effective scale of the detail frame to be correct when the map is reduced
+            local wmScale = wm_getEffectiveScale(WorldMapDetailFrame) or 1
+            cursorX = cursorX / wmScale
+            cursorY = cursorY / wmScale
+            local mapLeft, mapBottom = WorldMapDetailFrame:GetLeft(), WorldMapDetailFrame:GetBottom()
+            local mapWidth, mapHeight = WorldMapDetailFrame:GetWidth(), WorldMapDetailFrame:GetHeight()
+            if not mapLeft or not mapBottom or not mapWidth or not mapHeight then
+                wmCoordText:Hide()
+                return
+            end
+            local relX = cursorX - mapLeft
+            local relY = cursorY - mapBottom
+            if relX < 0 or relY < 0 or relX > mapWidth or relY > mapHeight then
+                wmCoordText:Hide()
+                return
+            end
+            if not wmCoordText:IsShown() then wmCoordText:Show() end
+            local fracX = relX / mapWidth
+            local fracY = 1 - (relY / mapHeight)
+            local xPercent = wm_round1(fracX * 100)
+            local yPercent = wm_round1(fracY * 100)
+            wmCoordText:SetText(xPercent .. ", " .. yPercent)
+        end)
+        return true
+    end
+
+    -- Try to create immediately
+    CreateAtlasWorldMapOverlay()
+    -- Also try on relevant events until it succeeds
+    local init = CreateFrame("Frame", "AtlasWorldMapCursorOverlayInit", UIParent)
+    init:RegisterEvent("WORLD_MAP_UPDATE")
+    init:RegisterEvent("PLAYER_ENTERING_WORLD")
+    init:SetScript("OnEvent", function()
+        if CreateAtlasWorldMapOverlay() then
+            init:UnregisterEvent("WORLD_MAP_UPDATE")
+            init:UnregisterEvent("PLAYER_ENTERING_WORLD")
+        end
+    end)
+end

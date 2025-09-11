@@ -341,37 +341,10 @@ function AtlasDropDown:GetLayout(sortType)
     return self.Layouts[sortType] or {}
 end
 
-function AtlasDropDown:ValidateData()
-    local errors = {}
-    local warnings = {}
-
-    for sortType, layout in pairs(self.Layouts) do
-        for category, dungeons in pairs(layout) do
-            if type(dungeons) ~= "table" then
-                table.insert(errors, string.format("Invalid dungeon list for %s -> %s", sortType, category))
-            elseif table.getn(dungeons) == 0 then
-                if category ~= L["Showing all instances_2"] then
-                    table.insert(warnings, string.format("Empty dungeon list for %s -> %s", sortType, category))
-                end
-            end
-        end
-    end
-
-    return errors, warnings
-end
-
 -- Export to global namespace for compatibility with other addon files
 Atlas_DropDownLayouts_Order = AtlasDropDown.LayoutOrder
 Atlas_DropDownLayouts = AtlasDropDown.Layouts
 AtlasTW_DropDownSortOrder = AtlasDropDown.SortOrder
-
---- Validates dropdown data integrity
---- @return boolean - true if data is valid, false otherwise
---- @usage local isValid = AtlasTW_DropDownValidateData()
---- @since 1.0.0
-function AtlasTW_DropDownValidateData()
-    return AtlasDropDown:ValidateData()
-end
 
 --- Gets the layout order for dropdown items based on sort type
 --- @param sortType string - the type of sorting to apply

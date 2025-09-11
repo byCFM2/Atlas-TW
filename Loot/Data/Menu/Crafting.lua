@@ -24,7 +24,7 @@ local BC = AceLibrary("Babble-Class-2.2")
 local BS = AceLibrary("Babble-Spell-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
-local RED = AtlasLoot_Colors.RED
+local RED = AtlasTW.Colors.RED
 
 AtlasTW.MenuData.Crafting = {
     {},

@@ -9,7 +9,8 @@ AtlasTW.QuickLook = {}
 
 -- Local references for performance
 local L = AtlasTW.Local
-
+local BLUE = AtlasTW.Colors.BLUE
+local WHITE = AtlasTW.Colors.WHITE
 ---
 --- Clears a specific QuickLook button assignment
 --- Removes stored data and refreshes button states
@@ -22,7 +23,7 @@ function AtlasTW.QuickLook.ClearButton(button)
 	if not button or button == nil then return end
 	AtlasTWCharDB["QuickLooks"][button] = nil
 	AtlasTW.QuickLook.RefreshButtons()
-	print(AtlasLoot_Colors.BLUE.."AtlasLoot"..": "..AtlasLoot_Colors.WHITE..L["QuickLook"].." "..button.." "..L["has been reset!"])
+	print(BLUE.."AtlasLoot"..": "..WHITE..L["QuickLook"].." "..button.." "..L["has been reset!"])
 end
 
 ---

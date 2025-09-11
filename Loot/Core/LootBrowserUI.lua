@@ -22,10 +22,10 @@ AtlasTW.LootBrowserUI = AtlasTW.LootBrowserUI or {}
 
 -- Instance required libraries
 local L = AtlasTW.Local
-local GREEN = AtlasLoot_Colors.GREEN
-local GREY = AtlasLoot_Colors.GREY
-local ORANGE = AtlasLoot_Colors.ORANGE
-local YELLOW = AtlasLoot_Colors.YELLOW
+local GREEN = AtlasTW.Colors.GREEN
+local GREY = AtlasTW.Colors.GREY
+local ORANGE = AtlasTW.Colors.ORANGE
+local YELLOW = AtlasTW.Colors.YELLOW
 
 ---
 --- Updates the scroll bar display for Atlas boss list

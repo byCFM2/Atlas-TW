@@ -14,7 +14,7 @@
 local L = AtlasTW.Local
 local containerItems = {}
 local lastSelectedButton
-
+local DEFAULT = AtlasTW.Colors.DEFAULT
 ---
 --- Shows loading indicator for the container frame
 --- Displays spinner overlay on the container items frame
@@ -185,7 +185,7 @@ function AtlasLoot_AddContainerItemTooltip(frame ,itemID)
 			if numLines and numLines > 0 then
 				local lastLine = getglobal("AtlasLootTooltipTextLeft"..numLines)
 				if lastLine:GetText() then
-					lastLine:SetText(lastLine:GetText().."\n\n"..AtlasLoot_Colors.DEFAULT..L["ItemID:"].." "..itemID)
+					lastLine:SetText(lastLine:GetText().."\n\n"..DEFAULT..L["ItemID:"].." "..itemID)
 				end
 			end
 		end

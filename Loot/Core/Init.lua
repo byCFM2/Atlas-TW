@@ -76,7 +76,7 @@ end
 function AtlasLoot_InitializeUIFrames()
 	-- Add the loot browser to the special frames tables to enable closing with the ESC key
 	tinsert(UISpecialFrames, "AtlasLootOptionsFrame")
-	
+
 	-- Set up panel window configuration
 	UIPanelWindows['AtlasLootOptionsFrame'] = {area = 'center', pushable = 0}
 end
