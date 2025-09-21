@@ -3168,6 +3168,19 @@ kQuestInstanceData.RazorfenKraul.Horde[5] = {
     Prequest = "Speak with Thun'grim",
     Folgequest = "(See Note)",
 }
+kQuestInstanceData.RazorfenKraul.Horde[6] = {
+    Title = "Tainted Brambleheart",
+    Level = 30,
+    Attain = 20,
+    Aim = "Destroy the living embodiment of natural corruption within the depths of Razorfen Kraul, and bring the Tainted Brambleheart to Kym Wildmane in Thunderbluff.",
+    Location = "Kym Wildmane (Thunder Bluff - The Elder Rise "..yellow.."77,29"..white..")",
+    Note = "Tainted Brambleheart is dropped by Rotthorn, located at "..yellow.."[10].",
+    Rewards = {
+        Text = blue.."Reward: Pick One",
+        { id = 41854 }, --Wildbranch Leggings, Cloth
+        { id = 41855 }, --Fenweave Gloves, Mail
+    }
+}
 
 --------------- SM: Library ---------------
 kQuestInstanceData.ScarletMonasteryLibrary = {
