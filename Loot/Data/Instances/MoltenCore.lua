@@ -48,14 +48,14 @@ AtlasTW.InstanceData.MoltenCore = {
     DamageType = L["Fire"],
     Entrances = {
         { letter = "A) " .. L["Entrance"] }
-},
+    },
     Reputation = {
         { name = BF["Hydraxian Waterlords"], loot = "HydroxianWaterLords" },
-},
+    },
     Keys = {
         { name = L["Aqual Quintessence"], loot = "VanillaKeys", info = L["Boss"] },
         { name = L["Eternal Quintessence"], loot = "VanillaKeys", info = L["Boss"] }
-},
+    },
     Bosses = {
         {
             id = "Incindis",
@@ -91,8 +91,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
                 {},
                 unpack(mCShareloot),
-}
-},
+            }
+        },
         {
             id = "Lucifron",
             prefix = "2)",
@@ -119,15 +119,15 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 17077 }, -- Crimson Shocker
                 { id = 18878 }, -- Sorcerous Dagger
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
-}
-},
+            }
+        },
         {
             id = "Magmadar",
             prefix = "3)",
             name = BB["Magmadar"],
             defaults = { dropRate = 5 },
             loot = {
-                { id = 16814, dropRate = 20, container = { 47204 } }, -- Pants of Prophecy
+                { id = 16814, dropRate = 20, container = { 47204 } }, -- Trousers of Prophecy
                 { id = 16796, dropRate = 20, container = { 47084 } }, -- Arcanist Leggings
                 { id = 16810, dropRate = 20, container = { 47282 } }, -- Felheart Pants
                 { id = 16835, dropRate = 17, container = { 47336, 47344 } }, -- Cenarion Leggings
@@ -153,8 +153,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 18821 }, -- Quick Strike Ring
                 { id = 18820 }, -- Talisman of Ephemeral Power
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
-}
-},
+            }
+        },
         {
             id = "Garr",
             prefix = "4)",
@@ -189,8 +189,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 18832, dropRate = 20 }, -- Brutality Blade
                 { id = 18822 }, -- Obsidian Edged Blade
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
-}
-},
+            }
+        },
         {
             id = "Shazzrah",
             prefix = "5)",
@@ -217,8 +217,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 17077 }, -- Crimson Shocker
                 { id = 18878 }, -- Sorcerous Dagger
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
-}
-},
+            }
+        },
         {
             id = "BaronGeddon",
             prefix = "6)",
@@ -247,8 +247,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 19142 }, -- Fire Runed Grimoire
                 { id = 18822 }, -- Obsidian Edged Blade
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
-}
-},
+            }
+        },
         {
             id = "Golemagg",
             prefix = "7)",
@@ -282,8 +282,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 18822 }, -- Obsidian Edged Blade
                 { id = 18842, dropRate = 25 }, -- Staff of Dominance
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
-}
-},
+            }
+        },
         {
             id = "Sulfuron",
             prefix = "8)",
@@ -319,8 +319,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 18878 }, -- Sorcerous Dagger
                 { id = 17074, dropRate = 3, container = { 17223 } }, -- Shadowstrike
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
-}
-},
+            }
+        },
         {
             id = "Majordomo",
             prefix = "9)",
@@ -347,8 +347,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 18646, dropRate = 50, container = { 18608, 18609 } }, -- The Eye of Divinity
                 {},
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
-}
-},
+            }
+        },
         {
             id = "Basalthar",
             prefix = "10)",
@@ -374,8 +374,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 19144, dropRate = 11 }, -- Sabatons of the Flamewalker
                 {},
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
-}
-},
+            }
+        },
         {
             id = "Smoldaris",
             name = BB["Smoldaris"],--65021
@@ -391,8 +391,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
                 {},
                 unpack(mCShareloot),
-}
-},
+            }
+        },
         {
             id = "SorcererThaneThaurissan",
             prefix = "11)",
@@ -426,8 +426,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
                 {},
                 unpack(mCShareloot),
-}
-},
+            }
+        },
         {
             id = "Ragnaros",
             prefix = "12)",
@@ -466,8 +466,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 {},
                 { id = 92080, dropRate = 1 }, -- Molten Corehound
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
-}
-},
+            }
+        },
         {
             id = "MCTrash",
             name = L["Trash Mobs"].."-"..BZ["Molten Core"],
@@ -504,11 +504,11 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 81264, dropRate = .2 }, -- Shoulderpads of True Flight
                 { id = 81265, dropRate = .2 }, -- Ashskin Belt
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
-},
-},
+            }
+        },
         { name = L["Tier 1 Sets"], items = "AtlasLootT1SetMenu" },
         { name = L["Tier 2 Sets"], items = "AtlasLootT2SetMenu" },
-},
+    },
 }
 
 -- Initialize items for all bosses

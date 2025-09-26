@@ -184,7 +184,6 @@ AtlasTW.InstanceData.WailingCaverns = {
                 { id = 80711 }, -- Bracers of Wild Growth
                 {},
                 { id = 6472 }, -- Stinging Viper
-                { id = 80798, dropRate = .5 }, -- Charged Servo Arm
                 {},
                 { id = 9740, dropRate = 100, container = { 6504, 6505 } }, -- Gem of Pythas
                 { id = 80864, dropRate = 100, container = { 80860, 80861 } }, -- Everchanging Essence

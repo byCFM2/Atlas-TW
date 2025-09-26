@@ -490,8 +490,8 @@ Sets = {
 		{ id = 47223 }, -- Handguards of Faith
 		{ id = 47224 }, -- Sash of Faith
 		{ id = 47225 }, -- Pants of Faith
-		{ id = 47226 }, -- Sandals of Faith
-		{ id = 47227 }, -- Ring of Faith
+		{ id = 47226 }, -- Slippers of Faith
+		{ id = 47227 }, -- Signet of Faith
 	},
 	T3Rogue = {
 		{ name = BIS["Bonescythe Armor"], icon = "Ability_BackStab" },
@@ -649,14 +649,14 @@ Sets = {
 		{},
 		{ name = BIS["Armor of the Dreadnaught's"], icon = "Ability_Gouge" }, --dps
 		{ id = 47261 }, -- Dreadnaught Crown
-		{ id = 47262 }, -- Dreadnaught Pauldrons
+		{ id = 47262 }, -- Dreadnaught Spaulders
 		{ id = 47263 }, -- Dreadnaught Chestplate
 		{ id = 47264 }, -- Dreadnaught Bindings
 		{ id = 47265 }, -- Dreadnaught Gloves
 		{ id = 47266 }, -- Dreadnaught Girdle
 		{ id = 47267 }, -- Dreadnaught Leggings
-		{ id = 47268 }, -- Dreadnaught Sabatons
-		{ id = 47269 }, -- Ring of the Dreadnaught
+		{ id = 47268 }, -- Dreadnaught Boots
+		{ id = 47269 }, -- Signet of the Dreadnaught
 	},
 	T2Mage = {
 		{ name = BIS["Netherwind Regalia"], icon = "Spell_Frost_IceStorm" },
@@ -705,7 +705,7 @@ Sets = {
 		{ id = 47207 }, -- Shoulderpads of Transcendence
 		{ id = 47208 }, -- Raiments of Transcendence
 		{ id = 47209 }, -- Bracers of Transcendence
-		{ id = 47210 }, -- Handguards of Transcendence
+		{ id = 47210 }, -- Gloves of Transcendence
 		{ id = 47211 }, -- Sash of Transcendence
 		{ id = 47212 }, -- Pants of Transcendence
 		{ id = 47213 }, -- Sandals of Transcendence
@@ -734,7 +734,7 @@ Sets = {
 		{ id = 47288 }, -- Nemesis Handwraps
 		{ id = 47289 }, -- Nemesis Sash
 		{ id = 47290 }, -- Nemesis Leggings
-		{ id = 47291 }, -- Nemesis Slippers
+		{ id = 47291 }, -- Nemesis Boots
 	},
 	T2Rogue = {
 		{ name = BIS["Bloodfang Armor"], icon = "Ability_BackStab" },
@@ -848,13 +848,13 @@ Sets = {
 		{},
 		{ name = BIS["Armor of Wrath"], icon = "Ability_Gouge" },
 		{ id = 47248 }, -- Crown of Wrath
-		{ id = 47249 }, -- Pauldrons of Wrath
+		{ id = 47249 }, -- Spaulders of Wrath
 		{ id = 47250 }, -- Chestplate of Wrath
 		{ id = 47251 }, -- Bindings of Wrath
 		{ id = 47252 }, -- Gloves of Wrath
 		{ id = 47253 }, -- Girdle of Wrath
 		{ id = 47254 }, -- Leggings of Wrath
-		{ id = 47255 }, -- Sabatons of Wrath
+		{ id = 47255 }, -- Boots of Wrath
 	},
 	T2Paladin = {
 		{ name = BIS["Judgement Armor"], icon = "Spell_Holy_Power" },
@@ -941,7 +941,7 @@ Sets = {
 		{ id = 47201 }, -- Bracers of Prophecy
 		{ id = 47202 }, -- Handguards of Prophecy
 		{ id = 47203 }, -- Sash of Prophecy
-		{ id = 47204 }, -- Pants of Prophecy
+		{ id = 47204 }, -- Trousers of Prophecy
 		{ id = 47205 }, -- Sandals of Prophecy
 	},
 	T1Warlock = {
@@ -1082,13 +1082,13 @@ Sets = {
 		{},
 		{ name = BIS["Armor of Might"], icon = "Ability_Gouge" },
 		{ id = 47240 }, -- Crown of Might
-		{ id = 47241 }, -- Pauldrons of Might
+		{ id = 47241 }, -- Spaulders of Might
 		{ id = 47242 }, -- Chestplate of Might
-		{ id = 47243 }, -- Bracers of Might
-		{ id = 47244 }, -- Gauntlets of Might
+		{ id = 47243 }, -- Bindings of Might
+		{ id = 47244 }, -- Gloves of Might
 		{ id = 47245 }, -- Girdle of Might
 		{ id = 47246 }, -- Leggings of Might
-		{ id = 47247 }, -- Sabatons of Might
+		{ id = 47247 }, -- Boots of Might
 	},
 	T1Paladin = {
 		{ name = BIS["Lawbringer Armor"], icon = "Spell_Holy_Power" },
@@ -1503,10 +1503,10 @@ Sets = {
 	},
 	AQ40Priest = {
 		{ name = BIS["Regalia of the Oracle"], icon = "Spell_Holy_PowerWordShield" },
-		{ id = 21348 }, -- Tiara of the Oracle
+		{ id = 21348 }, -- Coronet of the Oracle
 		{ id = 21350 }, -- Mantle of the Oracle
-		{ id = 21351 }, -- Vestments of the Oracle
-		{ id = 21352 }, -- Trousers of the Oracle
+		{ id = 21351 }, -- Raiments of the Oracle
+		{ id = 21352 }, -- Pants of the Oracle
 		{ id = 21349 }, -- Footwraps of the Oracle
 		{},
 		{ name = BIS["Vestments of the Oracle"], icon = "Spell_Holy_HolyNova" },

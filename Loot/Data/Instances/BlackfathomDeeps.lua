@@ -53,14 +53,14 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
                 { id = 6908, dropRate = 50 }, -- Ghamoo-ra's Bind
                 {},
                 { id = 80718, dropRate = 35 }, -- Ghamoo-ra's Guard
-}
-},
+            }
+        },
         {
             id = "BFDLorgalisManuscript",
             prefix = "a)",
             name = L["Lorgalis Manuscript"],
             color = "|cff00FF00",
-},
+        },
         {
             id = "BFDLadySarevess",
             prefix = "2)",
@@ -73,14 +73,14 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
                 { id = 11121 }, -- Darkwater Talwar
                 {},
                 { id = 5952, dropRate = 80, container = { 7003, 7004 } }, -- Corrupted Brain Stem
-}
-},
+            }
+        },
         {
             id = "BFDArgentGuardThaelrid",
             prefix = "b)",
             name = L["Argent Guard Thaelrid"],
             color = "|cff00FF00",
-},
+        },
         {
             id = "BFDGelihast",
             prefix = "3)",
@@ -92,20 +92,20 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
                 { id = 80720, dropRate = 35 }, -- Deep Striders
                 {},
                 { id = 1470, dropRate = 15 }, -- Murloc Skin Bag
-}
-},
+            }
+        },
         {
             id = "BFDShrineofGelihast",
             name = L["Shrine of Gelihast"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BFDLorgusJett",
             prefix = "c)",
             name = BB["Lorgus Jett"],
             postfix = L["Varies"],
             color = "|cff00FF00",
-},
+        },
         {
             id = "BFDVelthelaxxtheDefiler",
             prefix = "4)",
@@ -116,23 +116,23 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
                 { id = 58121 }, -- Totem of the Corrupted Current
                 { id = 58122 }, -- Bracers of Sinister Rites
                 { id = 58123 }, -- Felhoof Sabatons
-}
-},
+            }
+        },
         {
             id = "BFDBaronAquanis",
             prefix = "5)",
             name = BB["Baron Aquanis"],
             loot = {
                 { id = 16782, dropRate = 100, container = { 16886, 16887 } }, -- Strange Water Globe
-}
-},
+            }
+        },
         {
             id = "BFDFathomStone",
             name = L["Fathom Stone"],
             loot = {
                 { id = 16762, dropRate = 100 }, -- Fathom Core
-}
-},
+            }
+        },
         {
             id = "BFDTwilightLordKelris",
             prefix = "6)",
@@ -143,8 +143,8 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
                 { id = 80719, dropRate = 15 }, -- Pendant of the Deeps
                 {},
                 { id = 5881, dropRate = 100, container = { 7001, 7002 } }, -- Head of Kelris
-}
-},
+            }
+        },
         {
             id = "BFDOldSerrakis",
             prefix = "7)",
@@ -155,8 +155,8 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
                 { id = 6902 }, -- Bands of Serra'kis
                 {},
                 { id = 6904 }, -- Bite of Serra'kis
-}
-},
+            }
+        },
         {
             id = "BFDAkumai",
             prefix = "8)",
@@ -169,18 +169,18 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
                 { id = 6909 }, -- Strike of the Hydra
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BFDMorridune",
             name = L["Morridune"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BFDAltaroftheDeeps",
             name = L["Altar of the Deeps"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BFDTrash",
             name = L["Trash Mobs"].."-"..BZ["Blackfathom Deeps"],
@@ -194,9 +194,9 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
                 { id = 1481 }, -- Grimclaw
                 { id = 2567 }, -- Evocator's Blade
                 { id = 3413 }, -- Doomspike
-}
-},
-},
+            }
+        },
+    },
 }
 
 -- Initialize items for all bosses

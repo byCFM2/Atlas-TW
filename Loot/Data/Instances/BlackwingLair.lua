@@ -139,7 +139,7 @@ AtlasTW.InstanceData.BlackwingLair = {
             name = BB["Firemaw"],
             defaults = { dropRate = 7 },
             loot = {
-                { id = 16920, container = { 47210 } }, -- Handguards of Transcendence
+                { id = 16920, container = { 47210 } }, -- Gloves of Transcendence
                 { id = 16913, container = { 47090 } }, -- Netherwind Gloves
                 { id = 16928, container = { 47288 } }, -- Nemesis Gloves
                 { id = 16907 }, -- Bloodfang Gloves
@@ -178,7 +178,7 @@ AtlasTW.InstanceData.BlackwingLair = {
             name = BB["Ebonroc"],
             defaults = { dropRate = 7 },
             loot = {
-                { id = 16920, container = { 47210 } }, -- Handguards of Transcendence
+                { id = 16920, container = { 47210 } }, -- Gloves of Transcendence
                 { id = 16913, container = { 47090 } }, -- Netherwind Gloves
                 { id = 16928, container = { 47288 } }, -- Nemesis Gloves
                 { id = 16907 }, -- Bloodfang Gloves
@@ -216,7 +216,7 @@ AtlasTW.InstanceData.BlackwingLair = {
             name = BB["Flamegor"],
             defaults = { dropRate = 7 },
             loot = {
-                { id = 16920, container = { 47210 } }, -- Handguards of Transcendence
+                { id = 16920, container = { 47210 } }, -- Gloves of Transcendence
                 { id = 16913, container = { 47090 } }, -- Netherwind Gloves
                 { id = 16928, container = { 47288 } }, -- Nemesis Gloves
                 { id = 16907 }, -- Bloodfang Gloves

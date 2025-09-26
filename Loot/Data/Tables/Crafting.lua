@@ -2322,15 +2322,15 @@ local craftingTable = {
 		{ id=3873, skill={200,210,215,220} }, --Black Swashbuckler's Shirt
 		{ id=3864, skill={200,220,235,250} }, --Star Belt
 		{ id=3862, skill={200,220,235,250} }, --Icy Cloak
-		{ id=69420, skill={200,200,200,200} }, --Augerer's Boots
-		{ id=69421, skill={200,200,200,200} }, --Augerer's Gloves
-		{ id=69422, skill={205,205,205,205} }, --Augerer's Mantle
-		{ id=69423, skill={205,205,205,205} }, --Augerer's Trousers
-		{ id=69424, skill={205,205,205,205} }, --Augerer's Hat
+		{ id=46643, skill={200,200,200,200} }, --Augerer's Gloves
+		{ id=46644, skill={200,200,200,200} }, --Augerer's Boots
+		{ id=46639, skill={205,205,205,205} }, --Augerer's Hat
+		{ id=46641, skill={205,205,205,205} }, --Augerer's Trousers
+		{ id=46642, skill={205,205,205,205} }, --Augerer's Mantle
 		{ id=12049, skill={205,220,235,250} }, --Black Mageweave Leggings
 		{ id=12048, skill={205,220,235,250} }, --Black Mageweave Vest
 		{ id=8802, skill={205,220,235,250} }, --Crimson Silk Robe
-		{ id=69425, skill={210,210,210,210} }, --Augerer's Robe
+		{ id=46640, skill={210,210,210,210} }, --Augerer's Robe
 		{ id=12050, skill={210,225,240,255} }, --Black Mageweave Robe
 		{ name = L["Expert"], icon = "Trade_Tailoring" },
 		{ id=8804, skill={210,225,240,255} }, --Crimson Silk Gloves
@@ -2342,35 +2342,40 @@ local craftingTable = {
 		{ id=12056, skill={215,230,245,260} }, --Red Mageweave Vest
 		{ id=12055, skill={215,230,245,260} }, --Shadoweave Robe
 		{ id=12064, skill={220,225,230,235} }, --Orange Martial Shirt
+		{ id=12062, skill={220,235,250,265} }, --Stormcloth Pants
+		{ id=12063, skill={220,235,250,265} }, --Stormcloth Gloves
 		{ id=12065, skill={225,240,255,270} }, --Mageweave Bag
 		{ id=12069, skill={225,240,255,270} }, --Cindercloth Robe
 		{ id=27658, skill={225,240,255,270} }, --Enchanted Mageweave Pouch
+		{ name = L["Expert"], icon = "Trade_Tailoring" },
 		{ id=12066, skill={225,240,255,270} }, --Red Mageweave Gloves
 		{ id=12071, skill={225,240,255,270} }, --Shadoweave Gloves
-		{ name = L["Expert"], icon = "Trade_Tailoring" },
 		{ id=12067, skill={225,240,255,270} }, --Dreamweave Gloves
 		{ id=12070, skill={225,240,255,270} }, --Dreamweave Vest
-		{ id=69426, skill={225,235,240,245} }, --Diviner's Boots
-		{ id=69427, skill={225,235,240,245} }, --Diviner's Mitts
-		{ id=69428, skill={230,240,245,250} }, --Diviner's Epaulets
+		{ id=46636, skill={225,235,240,245} }, --Diviner's Boots
+		{ id=46637, skill={225,235,240,245} }, --Diviner's Mitts
+		{ id=12068, skill={225,240,255,270} }, --Stormcloth Vest
 	},
 	TailoringArtisan = {
 		{ name = L["Artisan"], icon = "Trade_Tailoring" },
-		{ id=69429, skill={230,230,230,230} }, --Diviner's Pantaloons
-		{ id=69430, skill={230,230,230,230} }, --Diviner's Cowl
+		{ id=46638, skill={230,240,245,250} }, --Diviner's Epaulets
+		{ id=46633, skill={230,230,230,230} }, --Diviner's Pantaloons
+		{ id=46635, skill={230,230,230,230} }, --Diviner's Cowl
 		{ id=12075, skill={230,235,240,245} }, --Lavender Mageweave Shirt
 		{ id=12073, skill={230,245,260,275} }, --Black Mageweave Boots
 		{ id=12072, skill={230,245,260,275} }, --Black Mageweave Headband
 		{ id=12074, skill={230,245,260,275} }, --Black Mageweave Shoulders
-		{ id=69431, skill={235,235,235,235} }, --Diviner's Robes
+		{ id=46634, skill={235,235,235,235} }, --Diviner's Robes
 		{ id=12080, skill={235,240,245,250} }, --Pink Mageweave Shirt
 		{ id=12077, skill={235,240,245,250} }, --Simple Black Dress
 		{ id=12079, skill={235,250,265,280} }, --Red Mageweave Bag
 		{ id=12078, skill={235,250,265,280} }, --Red Mageweave Shoulders
 		{ id=12076, skill={235,250,265,280} }, --Shadoweave Shoulders
+		{ id=12083, skill={240,255,270,285} }, --Stormcloth Headband
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
+		{ id=12087, skill={245,260,275,290} }, --Stormcloth Shoulders
 		{ id=12085, skill={240,245,250,255} }, --Tuxedo Shirt
 		{ id=12081, skill={240,255,270,285} }, --Admiral's Hat
-		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=12084, skill={240,255,270,285} }, --Red Mageweave Headband
 		{ id=12082, skill={240,255,270,285} }, --Shadoweave Boots
 		{ id=12089, skill={245,250,255,260} }, --Tuxedo Pants
@@ -2381,27 +2386,28 @@ local craftingTable = {
 		{ id=26403, skill={250,265,280,295} }, --Festival Dress
 		{ id=26407, skill={250,265,280,295} }, --Festive Red Pant Suit
 		{ id=12093, skill={250,265,280,295} }, --Tuxedo Jacket
+		{ id=12090, skill={250,265,280,295} }, --Stormcloth Boots
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=12092, skill={250,265,280,295} }, --Dreamweave Circlet
 		{ id=18560, skill={250,290,305,320} }, --Mooncloth
 		{ id=18404, skill={255,270,285,300} }, --Frostweave Robe
 		{ id=18403, skill={255,270,285,300} }, --Frostweave Tunic
-		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=18402, skill={255,270,285,300} }, --Runecloth Belt
-		{ id=69432, skill={260,260,260,260} }, --Pillager's Shoes
-		{ id=69433, skill={260,260,260,260} }, --Pillager's Grips
+		{ id=46649, skill={260,260,260,260} }, --Pillager's Shoes
+		{ id=46648, skill={260,260,260,260} }, --Pillager's Grips
 		{ id=18405, skill={260,275,290,305} }, --Runecloth Bag
 		{ id=18408, skill={260,275,290,305} }, --Cindercloth Vest
 		{ id=18406, skill={260,275,290,305} }, --Runecloth Robe
 		{ id=18407, skill={260,275,290,305} }, --Runecloth Tunic
 		{ id=26085, skill={260,275,290,305} }, --Soul Pouch
-		{ id=69434, skill={265,265,265,265} }, --Pillager's Amice
-		{ id=69435, skill={265,265,265,265} }, --Pillager's Pantaloons
-		{ id=69436, skill={265,265,265,265} }, --Pillager's Hood
+		{ id=46646, skill={265,265,265,265} }, --Pillager's Amice
+		{ id=46650, skill={265,265,265,265} }, --Pillager's Pantaloons
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
+		{ id=46645, skill={265,265,265,265} }, --Pillager's Hood
 		{ id=18411, skill={265,280,295,310} }, --Frostweave Gloves
 		{ id=18410, skill={265,280,295,310} }, --Ghostweave Belt
 		{ id=18409, skill={265,280,295,310} }, --Runecloth Cloak
-		{ name = L["Artisan"], icon = "Trade_Tailoring" },
-		{ id=69437, skill={270,270,270,270} }, --Pillager's Robe
+		{ id=46647, skill={270,270,270,270} }, --Pillager's Robe
 		{ id=18415, skill={270,285,300,315} }, --Brightcloth Gloves
 		{ id=18414, skill={270,285,300,315} }, --Brightcloth Robe
 		{ id=18412, skill={270,285,300,315} }, --Cindercloth Gloves
@@ -2411,11 +2417,11 @@ local craftingTable = {
 		{ id=27724, skill={275,290,305,320} }, --Cenarion Herb Bag
 		{ id=18418, skill={275,290,305,320} }, --Cindercloth Cloak
 		{ id=27659, skill={275,290,305,320} }, --Enchanted Runecloth Bag
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=18419, skill={275,290,305,320} }, --Felcloth Pants
 		{ id=18416, skill={275,290,305,320} }, --Ghostweave Vest
 		{ id=18417, skill={275,290,305,320} }, --Runecloth Gloves
 		{ id=18421, skill={275,290,305,320} }, --Wizardweave Leggings
-		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=18422, skill={275,290,305,320} }, --Cloak of Fire
 		{ id=18434, skill={280,295,310,325} }, --Cindercloth Pants
 		{ id=18424, skill={280,295,310,325} }, --Frostweave Pants
@@ -2426,11 +2432,11 @@ local craftingTable = {
 		{ id=18436, skill={285,300,315,330} }, --Robe of Winter Night
 		{ id=19435, skill={290,295,310,325} }, --Mooncloth Boots
 		{ id=18439, skill={290,305,320,335} }, --Brightcloth Pants
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=18442, skill={290,305,320,335} }, --Felcloth Hood
 		{ id=18441, skill={290,305,320,335} }, --Ghostweave Pants
 		{ id=23664, skill={290,305,320,335} }, --Argent Boots
 		{ id=18440, skill={290,305,320,335} }, --Mooncloth Leggings
-		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=23662, skill={290,305,320,335} }, --Wisdom of the Timbermaw
 		{ id=18444, skill={295,310,325,340} }, --Runecloth Headband
 		{ id=27660, skill={300,315,330,345} }, --Big Bag of Enchantment
@@ -2441,11 +2447,11 @@ local craftingTable = {
 		{ id=27725, skill={300,315,330,345} }, --Satchel of Cenarius
 		{ id=18446, skill={300,315,330,345} }, --Wizardweave Robe
 		{ id=18450, skill={300,315,330,345} }, --Wizardweave Turban
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=23665, skill={300,315,330,345} }, --Argent Shoulders
 		{ id=24093, skill={300,315,330,345} }, --Bloodvine Boots
 		{ id=24092, skill={300,315,330,345} }, --Bloodvine Leggings
 		{ id=24091, skill={300,315,330,345} }, --Bloodvine Vest
-		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=18455, skill={300,315,330,345} }, --Bottomless Bag
 		{ id=22870, skill={300,315,330,345} }, --Cloak of Warding
 		{ id=22867, skill={300,315,330,345} }, --Felcloth Gloves
@@ -2456,11 +2462,11 @@ local craftingTable = {
 		{ id=23663, skill={300,315,330,345} }, --Mantle of the Timbermaw
 		{ id=18452, skill={300,315,330,345} }, --Mooncloth Circlet
 		{ id=22869, skill={300,315,330,345} }, --Mooncloth Gloves
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=22902, skill={300,315,330,345} }, --Mooncloth Robe
 		{ id=18448, skill={300,315,330,345} }, --Mooncloth Shoulders
 		{ id=18447, skill={300,315,330,345} }, --Mooncloth Vest
 		{ id=24902, skill={300,315,330,345} }, --Runed Stygian Belt
-		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=24903, skill={300,315,330,345} }, --Runed Stygian Boots
 		{ id=24901, skill={300,315,330,345} }, --Runed Stygian Leggings
 		{ id=28481, skill={300,315,330,345} }, --Sylvan Crown
@@ -2471,11 +2477,11 @@ local craftingTable = {
 		{ id=57605, skill={300,315,322,330} }, --Cosmic Vest
 		{ id=57607, skill={300,315,322,330} }, --Cosmic Leggings
 		{ id=57633, skill={300,315,322,330} }, --Ley-Kissed Drape
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=22866, skill={300,315,330,345} }, --Belt of the Archmage
 		{ id=26087, skill={300,315,330,345} }, --Core Felcloth Bag
 		{ id=20849, skill={300,315,330,345} }, --Flarecore Gloves
 		{ id=23667, skill={300,315,330,345} }, --Flarecore Leggings
-		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=20848, skill={300,315,330,345} }, --Flarecore Mantle
 		{ id=23666, skill={300,315,330,345} }, --Flarecore Robe
 		{ id=22759, skill={300,315,330,345} }, --Flarecore Wraps
@@ -2486,11 +2492,11 @@ local craftingTable = {
 		{ id=18454, skill={300,315,330,345} }, --Gloves of Spell Mastery
 		{ id=18457, skill={300,315,330,345} }, --Robe of the Archmage
 		{ id=18458, skill={300,315,330,345} }, --Robe of the Void
+		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=18456, skill={300,315,330,345} }, --Truefaith Vestments
 		{ id=46656, skill={300,300,315,330} }, --Robe of Sacrifice
 		{ id=54011, skill={300,315,330,345} }, --Flarecore Boots
 		{ id=45485, skill={300,315,330,345} }, --Gloves of Unwinding Mystery
-		{ name = L["Artisan"], icon = "Trade_Tailoring" },
 		{ id=45457, skill={300,315,330,345} }, --Dreamthread Mantle
 		{ id=45459, skill={300,315,330,345} }, --Dreamthread Kilt
 		{ id=45461, skill={300,315,330,345} }, --Dreamthread Bracers
@@ -2505,15 +2511,18 @@ local craftingTable = {
 		{ id=8760, skill={145,155,160,165} }, --Azure Silk Hood
 		{ id=3857, skill={165,185,200,215} }, --Enchanter's Cowl
 		{ id=3858, skill={170,190,205,220} }, --Shadow Hood
+		{ id=46639, skill={205,205,205,205} }, --Augerer's Hat
 		{ id=12059, skill={215,220,225,230} }, --White Bandit Mask
-		{ id=69430, skill={230,230,230,230} }, --Diviner's Cowl
+		{ id=46635, skill={230,230,230,230} }, --Diviner's Cowl
 		{ id=12072, skill={230,245,260,275} }, --Black Mageweave Headband
 		{ id=12081, skill={240,255,270,285} }, --Admiral's Hat
+		{ id=12083, skill={240,255,270,285} }, --Stormcloth Headband 1.18
 		{ id=12086, skill={245,260,275,290} }, --Shadoweave Mask
 		{ id=12092, skill={250,265,280,295} }, --Dreamweave Circlet
-		{ id=69436, skill={265,265,265,265} }, --Pillager's Hood
+		{ id=46645, skill={265,265,265,265} }, --Pillager's Hood
 		{ id=18442, skill={290,305,320,335} }, --Felcloth Hood
 		{ id=18452, skill={300,315,330,345} }, --Mooncloth Circlet
+		{ name = L["Helm"], icon = "Trade_Tailoring" },
 		{ id=28481, skill={300,315,330,345} }, --Sylvan Crown
 		{ id=57601, skill={300,315,322,330} }, --Cosmic Headdress
 	},
@@ -2525,16 +2534,17 @@ local craftingTable = {
 		{ id=8774, skill={180,200,215,230} }, --Green Silken Shoulders
 		{ id=8795, skill={190,210,225,240} }, --Azure Shoulders
 		{ id=8793, skill={190,210,225,240} }, --Crimson Silk Shoulders
-		{ id=69422, skill={205,205,205,205} }, --Augerer's Mantle
-		{ id=69428, skill={230,240,245,250} }, --Diviner's Epaulets
+		{ id=46642, skill={205,205,205,205} }, --Augerer's Mantle
+		{ id=46638, skill={230,240,245,250} }, --Diviner's Epaulets
 		{ id=12078, skill={235,250,265,280} }, --Red Mageweave Shoulders
 		{ id=12076, skill={235,250,265,280} }, --Shadoweave Shoulders
-		{ id=69434, skill={265,265,265,265} }, --Pillager's Amice
+		{ id=12087, skill={245,260,275,290} }, --Stormcloth Shoulders 1.18
+		{ id=46646, skill={265,265,265,265} }, --Pillager's Amice
 		{ id=18453, skill={300,315,330,345} }, --Felcloth Shoulders
 		{ id=18449, skill={300,315,330,345} }, --Runecloth Shoulders
 		{ id=23665, skill={300,315,330,345} }, --Argent Shoulders
-		{ id=23663, skill={300,315,330,345} }, --Mantle of the Timbermaw
 		{ name = L["Shoulders"], icon = "Trade_Tailoring" },
+		{ id=23663, skill={300,315,330,345} }, --Mantle of the Timbermaw
 		{ id=18448, skill={300,315,330,345} }, --Mooncloth Shoulders
 		{ id=28482, skill={300,315,330,345} }, --Sylvan Shoulders
 		{ id=57603, skill={300,315,322,330} }, --Cosmic Mantle
@@ -2583,23 +2593,24 @@ local craftingTable = {
 		{ id=8770, skill={190,210,225,240} }, --Robe of Power
 		{ id=12048, skill={205,220,235,250} }, --Black Mageweave Vest
 		{ id=8802, skill={205,220,235,250} }, --Crimson Silk Robe
-		{ id=69425, skill={210,210,210,210} }, --Augerer's Robe
+		{ id=46640, skill={210,210,210,210} }, --Augerer's Robe
 		{ id=12050, skill={210,225,240,255} }, --Black Mageweave Robe
 		{ id=12055, skill={215,230,245,260} }, --Shadoweave Robe
 		{ id=12069, skill={225,240,255,270} }, --Cindercloth Robe
+		{ id=12068, skill={225,240,255,270} }, --Stormcloth Vest 1.18
 		{ id=12070, skill={225,240,255,270} }, --Dreamweave Vest
-		{ id=69431, skill={235,235,235,235} }, --Diviner's Robes
+		{ id=46634, skill={235,235,235,235} }, --Diviner's Robes
 		{ id=12077, skill={235,240,245,250} }, --Simple Black Dress
 		{ id=12091, skill={250,255,260,265} }, --White Wedding Dress
 		{ id=26403, skill={250,265,280,295} }, --Festival Dress
 		{ id=26407, skill={250,265,280,295} }, --Festive Red Pant Suit
-		{ id=18404, skill={255,270,285,300} }, --Frostweave Robe
 		{ name = L["Chest"], icon = "Trade_Tailoring" },
+		{ id=18404, skill={255,270,285,300} }, --Frostweave Robe
 		{ id=18403, skill={255,270,285,300} }, --Frostweave Tunic
 		{ id=18408, skill={260,275,290,305} }, --Cindercloth Vest
 		{ id=18406, skill={260,275,290,305} }, --Runecloth Robe
 		{ id=18407, skill={260,275,290,305} }, --Runecloth Tunic
-		{ id=69437, skill={270,270,270,270} }, --Pillager's Robe
+		{ id=46647, skill={270,270,270,270} }, --Pillager's Robe
 		{ id=18414, skill={270,285,300,315} }, --Brightcloth Robe
 		{ id=22813, skill={275,285,290,295} }, --Gordok Ogre Suit
 		{ id=18436, skill={285,300,315,330} }, --Robe of Winter Night
@@ -2608,8 +2619,8 @@ local craftingTable = {
 		{ id=24091, skill={300,315,330,345} }, --Bloodvine Vest
 		{ id=22902, skill={300,315,330,345} }, --Mooncloth Robe
 		{ id=18447, skill={300,315,330,345} }, --Mooncloth Vest
-		{ id=28480, skill={300,315,330,345} }, --Sylvan Vest
 		{ name = L["Chest"], icon = "Trade_Tailoring" },
+		{ id=28480, skill={300,315,330,345} }, --Sylvan Vest
 		{ id=57605, skill={300,315,322,330} }, --Cosmic Vest
 		{ id=23666, skill={300,315,330,345} }, --Flarecore Robe
 		{ id=28207, skill={300,315,330,345} }, --Glacial Vest
@@ -2639,15 +2650,16 @@ local craftingTable = {
 		{ id=8780, skill={145,165,180,195} }, --Hands of Darkness
 		{ id=8782, skill={150,170,185,200} }, --Truefaith Gloves
 		{ id=83, skill={185,185,185,185} }, --Stormreaver Gloves 1.18
-		{ id=69421, skill={200,200,200,200} }, --Augerer's Gloves
+		{ id=46643, skill={200,200,200,200} }, --Augerer's Gloves
 		{ id=8804, skill={210,225,240,255} }, --Crimson Silk Gloves
 		{ id=12053, skill={215,230,245,260} }, --Black Mageweave Gloves
+		{ id=12063, skill={220,235,250,265} }, --Stormcloth Gloves 1.18
 		{ id=12066, skill={225,240,255,270} }, --Red Mageweave Gloves
-		{ id=12071, skill={225,240,255,270} }, --Shadoweave Gloves
 		{ name = L["Gloves"], icon = "Trade_Tailoring" },
+		{ id=12071, skill={225,240,255,270} }, --Shadoweave Gloves
 		{ id=12067, skill={225,240,255,270} }, --Dreamweave Gloves
-		{ id=69427, skill={225,235,240,245} }, --Diviner's Mitts
-		{ id=69433, skill={260,260,260,260} }, --Pillager's Grips
+		{ id=46637, skill={225,235,240,245} }, --Diviner's Mitts
+		{ id=46648, skill={260,260,260,260} }, --Pillager's Grips
 		{ id=18411, skill={265,280,295,310} }, --Frostweave Gloves
 		{ id=18415, skill={270,285,300,315} }, --Brightcloth Gloves
 		{ id=18412, skill={270,285,300,315} }, --Cindercloth Gloves
@@ -2658,8 +2670,8 @@ local craftingTable = {
 		{ id=57024, skill={300,315,330,345} }, --Windbinder Gloves
 		{ id=22869, skill={300,315,330,345} }, --Mooncloth Gloves
 		{ id=20849, skill={300,315,330,345} }, --Flarecore Gloves
-		{ id=28205, skill={300,315,330,345} }, --Glacial Gloves
 		{ name = L["Gloves"], icon = "Trade_Tailoring" },
+		{ id=28205, skill={300,315,330,345} }, --Glacial Gloves
 		{ id=18454, skill={300,315,330,345} }, --Gloves of Spell Mastery
 		{ id=45485, skill={300,315,330,345} }, --Gloves of Unwinding Mystery
 		{ id=45463, skill={300,315,330,345} }, --Dreamthread Gloves
@@ -2692,14 +2704,15 @@ local craftingTable = {
 		{ id=3851, skill={125,150,167,185} }, --Phoenix Pants
 		{ id=8758, skill={140,160,175,190} }, --Azure Silk Pants
 		{ id=8799, skill={195,215,225,235} }, --Crimson Silk Pantaloons
-		{ id=69423, skill={205,205,205,205} }, --Augerer's Trousers
+		{ id=46641, skill={205,205,205,205} }, --Augerer's Trousers
 		{ id=12049, skill={205,220,235,250} }, --Black Mageweave Leggings
 		{ id=12052, skill={210,225,240,255} }, --Shadoweave Pants
 		{ id=12060, skill={215,230,245,260} }, --Red Mageweave Pants
-		{ id=69429, skill={230,230,230,230} }, --Diviner's Pantaloons
+		{ id=12062, skill={220,235,250,265} }, --Stormcloth Pants 1.18
 		{ name = L["Pants"], icon = "Trade_Tailoring" },
+		{ id=46633, skill={230,230,230,230} }, --Diviner's Pantaloons
 		{ id=12089, skill={245,250,255,260} }, --Tuxedo Pants
-		{ id=69435, skill={265,265,265,265} }, --Pillager's Pantaloons
+		{ id=46650, skill={265,265,265,265} }, --Pillager's Pantaloons
 		{ id=18419, skill={275,290,305,320} }, --Felcloth Pants
 		{ id=18421, skill={275,290,305,320} }, --Wizardweave Leggings
 		{ id=18434, skill={280,295,310,325} }, --Cindercloth Pants
@@ -2711,8 +2724,8 @@ local craftingTable = {
 		{ id=24092, skill={300,315,330,345} }, --Bloodvine Leggings
 		{ id=24901, skill={300,315,330,345} }, --Runed Stygian Leggings
 		{ id=57607, skill={300,315,322,330} }, --Cosmic Leggings
-		{ id=23667, skill={300,315,330,345} }, --Flarecore Leggings
 		{ name = L["Pants"], icon = "Trade_Tailoring" },
+		{ id=23667, skill={300,315,330,345} }, --Flarecore Leggings
 		{ id=45459, skill={300,315,330,345} }, --Dreamthread Kilt
 	},
 
@@ -2727,13 +2740,14 @@ local craftingTable = {
 		{ id=3856, skill={140,160,175,190} }, --Spider Silk Slippers
 		{ id=8778, skill={140,160,175,190} }, --Boots of Darkness
 		{ id=3860, skill={175,195,210,225} }, --Boots of the Enchanter
-		{ id=69420, skill={200,200,200,200} }, --Augerer's Boots
-		{ id=69426, skill={225,235,240,245} }, --Diviner's Boots
+		{ id=46644, skill={200,200,200,200} }, --Augerer's Boots
+		{ id=46636, skill={225,235,240,245} }, --Diviner's Boots
 		{ id=12073, skill={230,245,260,275} }, --Black Mageweave Boots
 		{ id=12082, skill={240,255,270,285} }, --Shadoweave Boots
 		{ id=12088, skill={245,260,275,290} }, --Cindercloth Boots
 		{ name = L["Boots"], icon = "Trade_Tailoring" },
-		{ id=69432, skill={260,260,260,260} }, --Pillager's Shoes
+		{ id=12090, skill={250,265,280,295} }, --Stormcloth Boots 1.18
+		{ id=46649, skill={260,260,260,260} }, --Pillager's Shoes
 		{ id=18423, skill={280,295,310,325} }, --Runecloth Boots
 		{ id=18437, skill={285,300,315,330} }, --Felcloth Boots
 		{ id=19435, skill={290,295,310,325} }, --Mooncloth Boots
@@ -3495,6 +3509,7 @@ local craftingTable = {
 
 	JewelcraftingJourneyman = {
 		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41335, skill={80,100,110,120} }, --Shining Copper Cuffs 1.18
 		{ id=41033, skill={80,100,110,120} }, --Lavish Gemmed Necklace
 		{ id=41321, skill={80,100,110,120} }, --Gleaming Chain
 		{ id=41035, skill={80,105,115,125} }, --Amberstone Pendant
@@ -3508,8 +3523,8 @@ local craftingTable = {
 		{ id=41041, skill={90,105,112,120} }, --Shimmering Bronze Ring
 		{ id=41043, skill={95,110,120,130} }, --Amber Orb
 		{ id=41045, skill={100,120,130,140} }, --Encrusted Bronze Staff
-		{ id=41047, skill={100,120,130,140} }, --Earthrock Loop
 		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41047, skill={100,120,130,140} }, --Earthrock Loop
 		{ id=41564, skill={100,120,130,140} }, --Shadowfall Jewel
 		{ id=41581, skill={100,120,130,140} }, --Serpent's Coil Staff
 		{ id=41323, skill={100,125,135,145} }, --Talisman of Stone
@@ -3523,8 +3538,8 @@ local craftingTable = {
 		{ id=41337, skill={115,135,142,150} }, --Dawnbright Cuffs
 		{ id=41734, skill={120,140,150,160} }, --Fangclaw Relic
 		{ id=41055, skill={120,145,155,165} }, --Pendant of Midnight
-		{ id=41067, skill={125,135,145,155} }, --Rough Silver Ring
 		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41067, skill={125,135,145,155} }, --Rough Silver Ring
 		{ id=41065, skill={125,140,142,145} }, --Coarse Gemstone Cluster
 		{ id=41057, skill={125,145,155,165} }, --Agatestone Crown
 		{ id=41061, skill={125,145,155,165} }, --Binding Signet
@@ -3538,8 +3553,8 @@ local craftingTable = {
 		{ id=41071, skill={135,155,165,175} }, --Ring of Purified Silver
 		{ id=41327, skill={135,155,165,175} }, --Gleaming Silver Necklace
 		{ id=41339, skill={135,155,165,175} }, --Circlet of Dampening
-		{ id=41748, skill={135,155,165,175} }, --Totem of Self Preservation
 		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41748, skill={135,155,165,175} }, --Totem of Self Preservation
 		{ id=41583, skill={140,160,170,180} }, --Farraki Ceremony Totem
 		{ id=41728, skill={140,160,170,180} }, --Blackrock Ironclamps
 		{ id=41570, skill={145,165,175,185} }, --Harpy Talon Ring
@@ -3576,6 +3591,7 @@ local craftingTable = {
 		{ id=41213, skill={175,195,202,210} }, --Goldenshade Quartz Crown
 		{ id=41215, skill={175,195,202,210} }, --The Golden Goblet
 		{ id=41217, skill={175,195,202,210} }, --Powerful Citrine Pendant
+		{ id=41591, skill={180,200,210,220} }, -- Spectre Shade Ring 1.18
 		{ id=93, skill={185,185,185,185} }, -- Refined Dwarven Necklace 1.18
 		{ id=104, skill={185,185,185,185} }, -- Ancient Dwarven Gemstone 1.18
 		{ id=41556, skill={180,200,210,220} }, --Delicate Mithril Amulet
@@ -3609,11 +3625,12 @@ local craftingTable = {
 		{ id=41239, skill={210,230,240,250} }, --Greater Binding Signet
 		{ id=41786, skill={210,230,240,250} }, --Ornate Mithril Crown
 		{ id=41554, skill={210,235,245,255} }, --Golden Jade Ring
+		{ id=41354, skill={210,280,290,300} }, --Skyfire Jewel 1.18
 		{ id=41352, skill={210,235,245,255} }, --Opaline Illuminator
 		{ id=41307, skill={1,235,245,255} }, --Gemkeeper's Folio
 		{ id=41235, skill={215,215,225,235} }, --Aquamarine Pendant
-		{ id=41241, skill={215,235,245,255} }, --Royal Gemstone Staff
 		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41241, skill={215,235,245,255} }, --Royal Gemstone Staff
 		{ id=41277, skill={220,220,240,260} }, --Starforge Amulet
 		{ id=41243, skill={220,240,250,260} }, --Emberstone Idol
 		{ id=41245, skill={220,240,250,260} }, --Runed Truesilver Ring
@@ -3627,8 +3644,8 @@ local craftingTable = {
 		{ id=41770, skill={235,240,240,240} }, --Dense Gemstone Cluster
 		{ id=41087, skill={235,245,250,255} }, --Rough Thorium Ring
 		{ id=41720, skill={240,260,275,290} }, --Regal Twilight Staff
-		{ id=41724, skill={245,245,265,285} }, --Ornament of Restraint
 		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41724, skill={245,245,265,285} }, --Ornament of Restraint
 		{ id=41089, skill={245,265,275,285} }, --Mithril Blackstone Necklace
 		{ id=41261, skill={250,250,270,290} }, --Sunburst Tiara
 		{ id=41091, skill={250,260,265,270} }, --Dense Gritted Paper
@@ -3767,10 +3784,11 @@ local craftingTable = {
 		{ id=41019, skill={60,80,87,95} }, --Amber Ring
 		{ id=41021, skill={60,80,87,95} }, --Azure Ring
 		{ id=41025, skill={65,85,92,100} }, --Softglow Ring
+		{ id=41247, skill={65,85,92,100} }, --Small Pearl Ring
 		{ id=41027, skill={70,90,95,100} }, --Topaz Studded Ring
 		{ id=41560, skill={75,95,105,115} }, --Ebon Ring
-		{ id=41562, skill={85,105,115,125} }, --The King's Conviction
 		{ name = L["Rings"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41562, skill={85,105,115,125} }, --The King's Conviction
 		{ id=41041, skill={90,105,112,120} }, --Shimmering Bronze Ring
 		{ id=41047, skill={100,120,130,140} }, --Earthrock Loop
 		{ id=41564, skill={100,120,130,140} }, --Shadowfall Jewel
@@ -3783,24 +3801,26 @@ local craftingTable = {
 		{ id=41572, skill={160,180,190,200} }, --Centaur Hoof Circlet
 		{ id=41211, skill={170,190,197,205} }, --Jade Harmony Circlet
 		{ id=41574, skill={170,200,210,220} }, --Ogre Bone Band
+		{ id=41591, skill={180,200,210,220} }, -- Spectre Shade Ring 1.18
+		{ name = L["Rings"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41221, skill={185,200,210,220} }, --Ironsun Citrine Ring
 		{ id=41589, skill={185,205,215,225} }, --Crystal Earring
-		{ name = L["Rings"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41263, skill={190,190,210,230} }, --Ocean's Gaze
 		{ id=41225, skill={190,205,215,225} }, --Ironbloom Ring
 		{ id=41541, skill={190,210,220,230} }, --Dazzling Aquamarine Loop
 		{ id=41579, skill={190,210,220,230} }, --Marine's Demise
 		{ id=41744, skill={200,220,230,240} }, --Bloodfire Circlet
 		{ id=41554, skill={210,235,245,255} }, --Golden Jade Ring
+		{ id=41354, skill={210,280,290,300} }, --Skyfire Jewel 1.18
 		{ id=41085, skill={225,240,247,255} }, --Emberstone Studded Ring
 		{ id=41784, skill={230,260,275,290} }, --Mana Binding Signet
 		{ id=41093, skill={255,270,277,285} }, --Radiant Thorium Twilight
 		{ id=41265, skill={260,260,275,290} }, --Starry Thorium Band
 		{ id=41350, skill={260,280,290,300} }, --Cinderfall Band
+		{ name = L["Rings"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41251, skill={265,265,285,305} }, --Blue Starfire
 		{ id=41708, skill={290,320,330,340} }, --Opalstone Circle
 		{ id=41253, skill={300,320,330,340} }, --Emerald Monarch's Glow
-		{ name = L["Rings"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41303, skill={1,315,322,330} }, --Massive Jewel Circlet
 		{ id=41317, skill={1,320,330,340} }, --Twilight Opal Cascade
 		{ id=41782, skill={285,310,320,330} }, --Golden Runed Ring
@@ -3812,6 +3832,7 @@ local craftingTable = {
 		{ id=41702, skill={300,320,330,340} }, --Blackwing Signet of Command
 		{ id=41788, skill={300,320,330,340} }, --Blazefury Circlet
 		{ id=41267, skill={300,330,350,370} }, --Ruby Ring of Ruin
+		{ name = L["Rings"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41269, skill={300,330,350,370} }, --Encrusted Gemstone Ring
 	},
 
@@ -3873,6 +3894,7 @@ local craftingTable = {
 		{ name = L["Bracers"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=29732, skill={1,21,33,45} }, --Copper Bangle
 		{ id=41011, skill={50,70,75,80} }, --Encrusted Copper Bangle
+		{ id=41335, skill={80,100,110,120} }, --Shining Copper Cuffs 1.18
 		{ id=41587, skill={80,160,170,180} }, --Gloomweed Bindings
 		{ id=41049, skill={105,120,132,145} }, --Bronze Cuffed Bangles
 		{ id=41726, skill={105,125,135,145} }, --Hydrathorn Bracers
@@ -3884,8 +3906,8 @@ local craftingTable = {
 		{ id=41548, skill={200,220,230,240} }, --Elaborate Golden Bracelets
 		{ id=41718, skill={200,225,237,250} }, --Ornate Mithril Bracelets
 		{ id=41714, skill={250,280,290,300} }, --Opal Guided Bangles
-		{ id=41348, skill={255,275,285,295} }, --Crystalfire Armlets
 		{ name = L["Bracers"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41348, skill={255,275,285,295} }, --Crystalfire Armlets
 		{ id=41311, skill={1,270,280,290} }, --Stellar Gemguards
 		{ id=41101, skill={280,285,297,310} }, --Crystalweft Bracers
 		{ id=41804, skill={300,320,330,340} }, --Bindings of Luminance
