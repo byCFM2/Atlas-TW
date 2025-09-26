@@ -65,6 +65,14 @@
     <Include file="PvP\AlteracValleyNorth.lua"/>
     <Include file="PvP\AlteracValleySouth.lua"/>
     <Include file="PvP\PVPRewards.lua"/>
+
+    <!-- Tables data (load before menus) -->
+    <Include file="Tables\Spells.lua"/>
+    <Include file="Tables\Factions.lua"/>
+    <Include file="Tables\Events.lua"/>
+    <Include file="Tables\Sets.lua"/>
+    <Include file="Tables\Crafting.lua"/>
+
     <!-- Menu data -->
 	<Include file="Menu\Sets.lua"/>
 	<Include file="Menu\WorldEvents.lua"/>
@@ -73,11 +81,4 @@
 	<Include file="Menu\World.lua"/>
 	<Include file="Menu\PvP.lua"/>
 	<Include file="Menu\Dungeons.lua"/>
-    <!-- Tables data -->
-    <Include file="Tables\Spells.lua"/>
-    <Include file="Tables\Factions.lua"/>
-    <Include file="Tables\Events.lua"/>
-    <Include file="Tables\Sets.lua"/>
-    <!-- Crafting data -->
-    <Include file="Tables\Crafting.lua"/>
 </Ui>
