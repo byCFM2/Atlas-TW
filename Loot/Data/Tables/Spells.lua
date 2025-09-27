@@ -528,7 +528,7 @@ AtlasTW.SpellDB = {
 		},
 	},
 	craftspells = {
-		[37] = { --1.18
+		[37] = { --1.18 Leatherworking: Harness of the High Thane
 			item = 55043,
 			reagents = {
 				{15407, 6},
@@ -540,7 +540,7 @@ AtlasTW.SpellDB = {
 				{14341, 4},
 			},
 		},
-		[55] = { --1.18
+		[55] = { --1.18 Leatherworking: Dragonmaw Armor Kit
 			item = 65,
 			reagents = {
 				{7287, 5},
@@ -568,7 +568,7 @@ AtlasTW.SpellDB = {
 				{3486, 2},
 			},
 		},
-		[70] = { --1.18
+		[70] = { --1.18 Leatherworking: Dragonmaw Gloves
 			item = 58112,
 			reagents = {
 				{4234, 14},
@@ -3847,6 +3847,15 @@ AtlasTW.SpellDB = {
 				{2592},
 			},
 		},
+		[8366] = { --1.18 Blacksmithing: Ironforge Chain
+			requires = L["Anvil"],
+			item = 6730,
+			reagents = {
+				{2840, 12},
+				{774, 2},
+				{3470, 2},
+			},
+		},
 		[8367] = {
 			requires = L["Anvil"],
 			tools = {5956},
@@ -3855,6 +3864,14 @@ AtlasTW.SpellDB = {
 				{2840, 16},
 				{818, 2},
 				{3470, 3},
+			},
+		},
+		[8368] = { --Blacksmithing: Ironforge Gauntlets 1.18
+			item = 6733,
+			reagents = {
+				{2841, 8},
+				{1210, 3},
+				{3478, 4},
 			},
 		},
 		[8465] = {
@@ -6145,6 +6162,15 @@ AtlasTW.SpellDB = {
 				{7068, 4},
 			},
 		},
+		[12722] = { --1.18 Engineering: Goblin Radio
+			item = 10585,
+			reagents = {
+				{10561},
+				{3860, 2},
+				{4389},
+				{10560},
+			},
+		},
 		[12754] = {
 			requires = L["Anvil"],
 			tools = {5956, 6219},
@@ -7046,6 +7072,15 @@ AtlasTW.SpellDB = {
 				{12800, 6},
 			},
 		},
+		[16960] = { --1.18 Blacksmithing: Thorium Greatsword
+			requires = L["Anvil"], --TODO check
+			item = 12764,
+			reagents = {
+				{12359, 16},
+				{12644, 2},
+				{8170, 4},
+			},
+		},
 		[16965] = {
 			requires = L["Anvil"],
 			tools = {5956},
@@ -7057,6 +7092,17 @@ AtlasTW.SpellDB = {
 				{12799, 6},
 				{12644, 2},
 				{8170, 8},
+			},
+		},
+		[16967] = { --1.18 Blacksmithing: Inlaid Thorium Hammer
+			requires = L["Anvil"], --TODO check
+			item = 12772,
+			reagents = {
+				{12359, 30},
+				{3577, 4},
+				{6037, 2},
+				{12361, 2},
+				{8170, 4},
 			},
 		},
 		[16969] = {
@@ -7115,6 +7161,16 @@ AtlasTW.SpellDB = {
 				{7077, 4},
 				{12800, 2},
 				{12644, 2},
+			},
+		},
+		[16980] = { --1.18 Blacksmithing: Rune Edge
+			requires = L["Anvil"], --TODO check
+			item = 12779,
+			reagents = {
+				{12359, 30},
+				{12799, 2},
+				{12644, 2},
+				{8170, 4},
 			},
 		},
 		[16983] = {
@@ -7542,7 +7598,7 @@ AtlasTW.SpellDB = {
 				{8925},
 			},
 		},
-		[17640] = {
+		[17632] = {
 			item = 13503,
 			reagents = {
 				{7078, 8},
@@ -10753,7 +10809,7 @@ AtlasTW.SpellDB = {
 				{55248, 4},
 			},
 		},
-		[36907] = { --1.18
+		[36907] = { --1.18 Rune-Inscribed Plate Leggings
 			item = 55058,
 			requires = L["Anvil"],
 			tools = {5956},
@@ -10766,7 +10822,7 @@ AtlasTW.SpellDB = {
 				{7080, 6},
 			},
 		},
-		[36909] = { --1.18
+		[36909] = { --1.18 Essence Infused Leather Gloves
 			item = 55050,
 			reagents = {
 				{12810, 10},
@@ -13042,6 +13098,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[45063] = {
+			requires = L["Anvil"], --TODO check
 			item = 51264,
 			reagents = {
 				{2840, 12},
@@ -13391,6 +13448,23 @@ AtlasTW.SpellDB = {
 				{159},
 			},
 		},
+		[46600] = { --1.18 Blacksmithing: Lordaeron Breastplate
+			requires = L["Anvil"],
+			item = 46600,
+			reagents = {
+				{2840, 16},
+				{818, 2},
+				{3470, 3},
+			},
+		},
+		[46608] = { --1.18 Engineering: Hypertech Battery Pack
+			item = 60098,
+			reagents = {
+				{10558},
+				{10561},
+				{4404},
+			},
+		},
 		[46610] = {
 			tools = {5956, 10498},
 			item = 60099,
@@ -13688,6 +13762,15 @@ AtlasTW.SpellDB = {
 				{4625},
 			},
 		},
+		[46651] = { --1.18 Blacksmithing: Bloodstone Warblade
+			item = 60294,
+			reagents = {
+				{3860, 14},
+				{4278, 10},
+				{7966, 4},
+				{3864, 2},
+			},
+		},
 		[46652] = {
 			requires = L["Anvil"],
 			tools = {5956},
@@ -13769,6 +13852,15 @@ AtlasTW.SpellDB = {
 				{7082, 12},
 			},
 		},
+		[46660] = { --Blacksmithing: Imperial Plate Gauntlets 1.18
+			requires = L["Anvil"],
+			item = 65007,
+			reagents = {
+				{12359, 24},
+				{7910},
+				{8170, 4},
+			},
+		},
 		[46661] = {
 			requires = L["Anvil"],
 			tools = {5956},
@@ -13780,6 +13872,17 @@ AtlasTW.SpellDB = {
 				{12803, 10},
 				{12364, 10},
 				{12644, 4},
+			},
+		},
+		[46662] = { --1.18 Leatherworking: Shadowskin Boots
+			item = 65009,
+			reagents = {
+				{4304, 8},
+				{7428, 8},
+				{7971, 2},
+				{4236, 4},
+				{1210, 6},
+				{8343, 2},
 			},
 		},
 		[46663] = {
@@ -13805,6 +13908,28 @@ AtlasTW.SpellDB = {
 				{3466, 2},
 				{3478, 4},
 				{3391, 2},
+			},
+		},
+		[46666] = { --1.18 Blacksmithing: Frostbound Slasher
+			requires = L["Anvil"], --TODO check
+			item = 65013,
+			reagents = {
+				{3859, 10},
+				{3486, 4},
+				{3466, 4},
+				{3829, 2},
+				{7070, 4},
+			},
+		},
+		[46667] = { --1.18 Blacksmithing: Pauldron of Deflection
+			requires = L["Anvil"], --TODO check
+			item = 65014,
+			reagents = {
+				{11371, 10},
+				{12360, 10},
+				{12809, 8},
+				{22203, 4},
+				{7076, 6},
 			},
 		},
 		[46695] = {
@@ -14057,7 +14182,7 @@ AtlasTW.SpellDB = {
 				{4470, 2},
 			},
 		},
-		[49551] = {
+		[49551] = { --Cooking: Empowering Herbal Salad 1.18
 			requires = L["Cooking Fire"],
 			item = 83309,
 			reagents = {
@@ -14104,7 +14229,7 @@ AtlasTW.SpellDB = {
 				{7076, 4},
 			},
 		},
-		[54001] = {
+		[54001] = { --Blue Dragonscale Boots
 			item = 65015,
 			reagents = {
 				{8170, 24},
@@ -14684,7 +14809,7 @@ AtlasTW.SpellDB = {
 				{13926},
 			},
 		},
-		[58044] = { --1.18
+		[58044] = { --Cooking: Ambersap Glazed Boar Ribs 1.18
 			item = 41674,
 			requires = L["Cooking Fire"],
 			reagents = {

@@ -131,7 +131,7 @@ AtlasTW.MenuData.Alchemy = {
     { name = BS["Alchemy"]..": "..L["Transmutes"], lootpage = "AlchemyTransmutes" },
     { name = BS["Alchemy"]..": "..L["Defensive Potions and Elixirs"], lootpage = "AlchemyDefensive" },
     { name = BS["Alchemy"]..": "..L["Offensive Potions and Elixirs"], lootpage = "AlchemyOffensive" },
-    { name = BS["Alchemy"]..": "..L["Other"], lootpage = "AlchemyOther" },
+    { name = BS["Alchemy"]..": "..L["Miscellaneous"], lootpage = "AlchemyMisc" },
 }
 
 ---
