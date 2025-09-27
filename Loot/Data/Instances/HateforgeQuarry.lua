@@ -25,7 +25,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.HateforgeQuarry = {
     Name = BZ["Hateforge Quarry"],
     Location = BZ["Burning Steppes"],
@@ -35,7 +34,7 @@ AtlasTW.InstanceData.HateforgeQuarry = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) " .. L["Entrance"] }
-},
+    },
     Bosses = {
         {
             id = "HQHighForemanBargulBlackhammer",
@@ -58,8 +57,8 @@ AtlasTW.InstanceData.HateforgeQuarry = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "HQEngineerFiggles",
             prefix = "2)",
@@ -78,13 +77,13 @@ AtlasTW.InstanceData.HateforgeQuarry = {
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             prefix = "a)",
             name = L["Hateforge Chemistry Documents"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "HQCorrosis",
             prefix = "3)",
@@ -98,8 +97,8 @@ AtlasTW.InstanceData.HateforgeQuarry = {
                 {},
                 { id = 41003, dropRate = 100, container = { 40080 } }, -- Essence of Corrosis
                 { id = 80674 }, -- Corrosive Core
-}
-},
+            }
+        },
         {
             id = "HQHatereaverAnnihilator",
             prefix = "4)",
@@ -116,8 +115,8 @@ AtlasTW.InstanceData.HateforgeQuarry = {
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "HQHargeshDoomcaller",
             prefix = "5)",
@@ -139,10 +138,10 @@ AtlasTW.InstanceData.HateforgeQuarry = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
-                    70234, 70235, 70236, 70238 } },
+                        70234, 70235, 70236, 70238 } },
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "HQTrash",
             name = L["Trash Mobs"].."-"..BZ["Hateforge Quarry"],
@@ -159,10 +158,10 @@ AtlasTW.InstanceData.HateforgeQuarry = {
                 { id = 60582 }, -- Incendosaur Skin Gloves
                 { id = 60572, disc = L["Outside"], dropRate = .1 }, -- Incendosaur Skin Pauldrons
                 { id = 60612, dropRate = .0025 }, -- Mixologist Goggles
-}
-},
+            }
+        },
         { name = BIS["Incendosaur Skin Armor"], items = "IncendosaurSkinArmor" },
-}
+    }
 }
 
 -- Initialize items for all bosses

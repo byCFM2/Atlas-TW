@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.TheCrescentGrove = {
     Name = BZ["The Crescent Grove"],
     Location = BZ["Ashenvale"],
@@ -34,13 +33,13 @@ AtlasTW.InstanceData.TheCrescentGrove = {
     DamageType = L["Nature"],
     Entrances = {
         { letter = "A" }
-},
+    },
     Bosses = {
         {
             prefix = "a)",
             name = L["Kalanar's Strongbox"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "TCGGrovetenderEngryss",
             prefix = "1)",
@@ -57,8 +56,8 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 { id = 60176, dropRate = 100 }, -- Groveweald Badge
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "TCGKeeperRanathos",
             prefix = "2)",
@@ -73,8 +72,8 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 { id = 83229, dropRate = 5 }, -- Circlet of Cenarius
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "TCGHighPriestessAlathea",
             prefix = "3)",
@@ -88,8 +87,8 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 { id = 83210, dropRate = 10 }, -- Crescent Sigil
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "TCGFenektistheDeceiver",
             prefix = "4)",
@@ -102,8 +101,8 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 { id = 83215 }, -- Blackflame Wand
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "TCGMasterRaxxieth",
             prefix = "5)",
@@ -118,8 +117,8 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 { id = 83219 }, -- Slayer's Edge
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "TCGTrash",
             name = L["Trash Mobs"].."-"..BZ["The Crescent Grove"],
@@ -133,13 +132,12 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 { id = 83202, dropRate = .5 }, -- Grizzlehide Belt
                 { id = 83200 }, -- Verdant Cane
                 { id = 83205, dropRate = .5 }, -- Thornwood Claw
+            }
+        },
+    },
 }
-},
-},
-}
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.TheCrescentGrove.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

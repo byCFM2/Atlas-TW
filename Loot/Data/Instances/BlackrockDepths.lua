@@ -27,7 +27,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.BlackrockDepths = {
     Name = BZ["Blackrock Depths"],
     Location = BZ["Blackrock Mountain"],
@@ -38,10 +37,10 @@ AtlasTW.InstanceData.BlackrockDepths = {
         { name = L["Shadowforge Key"], loot = "VanillaKeys" },
         { name = L["Prison Cell Key"], loot = "VanillaKeys" },
         { name = L["Banner of Provocation"], loot = "VanillaKeys", info = L["Tier 0.5 Summon"] },
-},
+    },
     Entrances = {
         { letter = "A) " .. L["Entrance"] }
-},
+    },
     Bosses = {
         {
             id = "BRDLordRoccor",
@@ -62,23 +61,23 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 11129, quantity = { 2, 3 }, dropRate = 80, container = { 12038 } }, -- Essence of the Elements
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             prefix = "2)",
             name = L["Kharan Mighthammer"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "3)",
             name = L["Commander Gor'shak"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "3)",
             name = L["Marshal Windsor"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BRDHighInterrogatorGerstahn",
             prefix = "5)",
@@ -95,13 +94,13 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             prefix = "6)",
             name = L["Ring of Law"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BRDAnubshiah",
             name = L["Anub'shiah"],
@@ -116,8 +115,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BRDEviscerator",
             name = L["Eviscerator"],
@@ -131,8 +130,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BRDGorosh",
             name = L["Gorosh the Dervish"],
@@ -145,8 +144,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BRDGrizzle",
             name = L["Grizzle"],
@@ -162,8 +161,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BRDHedrum",
             name = L["Hedrum the Creeper"],
@@ -177,8 +176,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BRDOkthor",
             name = L["Ok'thor the Breaker"],
@@ -192,8 +191,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BRDTheldren",
             name = L["Theldren"],
@@ -206,53 +205,53 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {},
                 { id = 22047, dropRate = 17, container = { 22057 } }, -- Top Piece of Lord Valthalak's Amulet
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             name = L["Lefty"],
             postfix = BC["Rogue"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Malgen Longspear"],
             postfix = BC["Hunter"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Gnashjaw"],
             postfix = L["Pet"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Korv"],
             postfix = BC["Shaman"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Rezznik"],
             postfix = L["Engineer"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Rotfang"],
             postfix = BC["Rogue"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Snokh Blackspine"],
             postfix = BC["Mage"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Va'jashni"],
             postfix = BC["Priest"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Volida"],
             postfix = BC["Mage"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BRDHoundmaster",
             name = L["Houndmaster Grebmar"],
@@ -268,25 +267,25 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             name = L["Elder Morndeep"],
             postfix = L["Lunar Festival"],
             items = "LunarFestival",
-},
+        },
         {
             name = L["High Justice Grimstone"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BRDForgewright",
             prefix = "7)",
             name = L["Monument of Franclorn Forgewright"],
             loot = {
                 { id = 11000, disc = L["Key"] }, -- Shadowforge Key
-}
-},
+            }
+        },
         {
             id = "BRDPyromancerLoregrain",
             name = L["Pyromancer Loregrain"],
@@ -302,8 +301,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
-}
-},
+            }
+        },
         {
             id = "BRDTheVault",
             prefix = "8)",
@@ -324,8 +323,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11752, disc = L["Quest Item"], dropRate = 100, container = { 11644 } }, -- Black Blood of the Tormented
                 { id = 11751, disc = L["Quest Item"], dropRate = 100, container = { 11622 } }, -- Burning Essence
                 { id = 11753, disc = L["Quest Item"], dropRate = 100, container = { 11643 } }, -- Eye of Kajal
-}
-},
+            }
+        },
         {
             id = "BRDWarderStilgiss",
             name = L["Warder Stilgiss"],
@@ -338,8 +337,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11784 }, -- Arbiter's Blade
                 {},
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
-}
-},
+            }
+        },
         {
             id = "BRDVerek",
             name = L["Verek"],
@@ -350,12 +349,12 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 22242 }, -- Verek's Leash
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-}
-},
+            }
+        },
         {
             name = BB["Watchman Doomgrip"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BRDFineousDarkvire",
             prefix = "9)",
@@ -377,8 +376,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 10999, dropRate = 100, container = { 11000 } }, -- Ironfel
                 { id = 41379, dropRate = 100, container = { 70223 } }, -- Dark Iron Prospecting Lens
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BRDLordIncendius",
             prefix = "10)",
@@ -398,8 +397,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11126, dropRate = 100, container = { 12113, 12112, 12114, 12115 } }, -- Tablet of Kurniya
                 { id = 21987, dropRate = 100, container = { 22057 } }, -- Incendicite of Incendius
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BRDBaelGar",
             prefix = "11)",
@@ -415,13 +414,13 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             prefix = "12)",
             name = L["Shadowforge Lock"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BRDGeneralAngerforge",
             prefix = "13)",
@@ -441,8 +440,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11464, dropRate = 100, container = { 12061, 12062, 12065 } }, -- Marshal Windsor's Lost Information
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BRDGolemLordArgelmach",
             prefix = "14)",
@@ -464,22 +463,22 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 81281, dropRate = 100, container = { 81250, 81251, 81252, 81253 } }, -- Perfect Golem Core
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             name = L["Field Repair Bot 74A"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Blacksmithing Plans"].." ",
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BRDGuzzler",
             prefix = "15)",
             name = L["The Grim Guzzler"],
             color = "|cff9d9d9d"
-},
+        },
         {
             id = "BRDHurley",
             name = BB["Hurley Blackbreath"],
@@ -498,8 +497,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11468, dropRate = 80, container = { 11883 } }, -- Dark Iron Fanny Pack
                 { id = 11312, dropRate = 100, container = { 12000, 11964 } }, -- Lost Thunderbrew Recipe
                 { id = 41477, dropRate = 100, container = { 41465 } }, -- Upper Half of the Thunderbrew Golden Lager Plans
-},
-},
+            },
+        },
         {
             id = "BRDLokhtos",
             name = L["Lokhtos Darkbargainer"],
@@ -524,12 +523,12 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 62007, container = { 65037 } }, -- Pattern: Molten Leggings
                 { id = 62003, container = { 65038 } }, -- Pattern: Corehound Gloves
                 { id = 62006, container = { 65036 } }, -- Pattern: Chromatic Leggings
-},
-},
+            },
+        },
         {
             name = L["Mistress Nagmara"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BRDPhalanx",
             name = BB["Phalanx"],
@@ -544,8 +543,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
-}
-},
+            }
+        },
         {
             id = "BRDPlugger",
             name = BB["Plugger Spazzring"],
@@ -562,12 +561,12 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11325, quantity = { 0, 10 }, disc = L["Vendor"] }, -- Dark Iron Ale Mug
                 {},
                 { id = 11602, dropRate = 100, disc = L["Pickpocketed"] }, -- Grim Guzzler Key
-},
-},
+            },
+        },
         {
             name = L["Private Rocknot"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BRDRibbly",
             name = BB["Ribbly Screwspigot"],
@@ -581,8 +580,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11742, disc = L["Bag"] }, -- Wayfarer's Knapsack
                 {},
                 { id = 11313, container = { 11865, 11963, 12049 } }, -- Ribbly's Head
-}
-},
+            }
+        },
         {
             id = "BRDFlamelash",
             prefix = "16)",
@@ -601,8 +600,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11129, quantity = { 3, 5 }, dropRate = 80, container = { 12038 } }, -- Essence of the Elements
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BRDPanzor",
             prefix = "17)",
@@ -616,16 +615,16 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {},
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 11129, quantity = { 3, 5 }, dropRate = 80, container = { 12038 } }, -- Essence of the Elements
-}
-},
+            }
+        },
         {
             name = L["Blacksmithing Plans"].." ",
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Chest of The Seven"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BRDTomb",
             prefix = "18)",
@@ -643,16 +642,16 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11927 }, -- Legplates of the Eternal Guardian
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-}
-},
+            }
+        },
         {
             id = "BRDLyceum",
             prefix = "19)",
             name = L["The Lyceum"],
             loot = {
                 { id = 11885, disc = L["Misc"], dropRate = 94 }, -- Shadowforge Torch
-}
-},
+            }
+        },
         {
             id = "BRDMagmus",
             prefix = "20)",
@@ -669,8 +668,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BRDEmperorDagranThaurissan",
             prefix = "21)",
@@ -692,18 +691,18 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11932 }, -- Guiding Stave of Wisdom
                 {},
                 { id = 12033, disc = L["Container"], dropRate = 2, container = { 12364, 1206, 12800, 5500, 7971, -- Thaurissan Family Jewels
-                    55249, 12799, 3864, 1705, 12361, 55250, 7909, 55251, 7910, 1529 } },
+                        55249, 12799, 3864, 1705, 12361, 55250, 7909, 55251, 7910, 1529 } },
                 { id = 61463, dropRate = 100, container = { 61465 } }, -- Hammer of the Depths
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 11468, quantity = { 4, 9 }, dropRate = 80, container = { 11883 } }, -- Dark Iron Fanny Pack
                 { id = 56104, disc = BS["Gemology"], dropRate = 30, container = { 56109 } }, -- Bottom Half of Advanced Gemology I
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
-                    70234, 70235, 70236, 70238 } },
+                        70234, 70235, 70236, 70238 } },
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BRDPrincess",
             name = L["Princess Moira Bronzebeard"],
@@ -718,22 +717,22 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 11468, dropRate = 80, container = { 11883 } }, -- Dark Iron Fanny Pack
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             prefix = "22)",
             name = L["The Black Forge"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "23)",
             name = BZ["Molten Core"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Core Fragment"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BRDPyron",
             prefix = "24)",
@@ -742,8 +741,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 14486, dropRate = 18, container = { 14134 } }, -- Pattern: Cloak of Fire
                 {},
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
-}
-},
+            }
+        },
         {
             id = "BRDBSPlans",
             prefix = "25)",
@@ -751,8 +750,8 @@ AtlasTW.InstanceData.BlackrockDepths = {
             loot = {
                 { id = 11614, dropRate = 39, container = { 11606 } }, -- Plans: Dark Iron Mail
                 { id = 11615, dropRate = 18, container = { 11605 } }, -- Plans: Dark Iron Shoulders
-}
-},
+            }
+        },
         {
             id = "BRDTrash",
             name = L["Trash Mobs"].."-"..BZ["Blackrock Depths"],
@@ -787,12 +786,12 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 18232 }, -- Field Repair Bot 74A
                 {},
                 { id = 11446, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
-}
-},
+            }
+        },
         { name = BIS["The Gladiator"], items = "TheGladiator" },
         { name = BIS["Arms of Thaurissan"], items = "ArmsofThaurissan" },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
-},
+    },
 }
 
 -- Initialize items for all bosses

@@ -24,13 +24,11 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 local captainLoot = {
     { id = 21809, dropRate = 8 }, -- Fury of the Forgotten Swarm
     { id = 21810, dropRate = 8 }, -- Treads of the Wandering Nomad
     { id = 21806, dropRate = 5 }, -- Gavel of Qiraji Authority
 }
-
 
 AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
     Name = BZ["Ruins of Ahn'Qiraj"],
@@ -41,10 +39,10 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
     DamageType = L["Nature"],
     Entrances = {
         { letter = "A".." " .. L["Entrance"] }
-},
+    },
     Reputation = {
-         { name = BF["Cenarion Circle"], loot = "CenarionCircle" },
-},
+        { name = BF["Cenarion Circle"], loot = "CenarionCircle" },
+    },
     Bosses = {
         {
             id = "Kurinnaxx",
@@ -74,20 +72,20 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 { id = 20889, dropRate = 25, container = { 21397, 21403, 21400, 21418, 21409 } }, -- Qiraji Regal Drape
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
-}
-},
+            }
+        },
         {
             name = L["Lieutenant General Andorov"],
             loot = {
                 { id = 22221, container = { 22191 } }, -- Plans: Obsidian Mail Tunic
                 { id = 22219, container = { 22198 } }, -- Plans: Jagged Obsidian Shield
-},
+            },
 
-},
+        },
         {
             name = L["Four Kaldorei Elites"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "GeneralRajaxx",
             prefix = "2)",
@@ -116,36 +114,36 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 { id = 20889, dropRate = 25, container = { 21397, 21403, 21400, 21418, 21409 } }, -- Qiraji Regal Drape
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
-}
-},
+            }
+        },
         {
             name = L["Captain Qeez"],
             loot = captainLoot
-},
+        },
         {
             name = L["Captain Tuubid"],
             loot = captainLoot
-},
+        },
         {
             name = L["Captain Drenn"],
             loot = captainLoot
-},
+        },
         {
             name = L["Captain Xurrem"],
             loot = captainLoot
-},
+        },
         {
             name = L["Major Yeggeth"],
             loot = captainLoot
-},
+        },
         {
             name = L["Major Pakkon"],
             loot = captainLoot
-},
+        },
         {
             name = L["Colonel Zerran"],
             loot = captainLoot
-},
+        },
         {
             id = "Moam",
             prefix = "3)",
@@ -178,8 +176,8 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {},
                 { id = 83005, disc = L["Quest Item"], dropRate = 100, container = { 83002 } }, -- Perfect Obsidian Shard
                 { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
-}
-},
+            }
+        },
         {
             id = "BurutheGorger",
             prefix = "4)",
@@ -212,8 +210,8 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 { id = 20886, dropRate = 17, container = { 21392, 21395, 21401, 21404, 21398 } }, -- Qiraji Spiked Hilt
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
-}
-},
+            }
+        },
         {
             id = "AyamisstheHunter",
             prefix = "5)",
@@ -246,8 +244,8 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 { id = 20886, dropRate = 17, container = { 21392, 21395, 21401, 21404, 21398 } }, -- Qiraji Spiked Hilt
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
-}
-},
+            }
+        },
         {
             id = "OssiriantheUnscarred",
             prefix = "6)",
@@ -274,11 +272,11 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 { id = 20890, dropRate = 50, container = { 21410, 21413, 21416, 21407 } }, -- Qiraji Ornate Hilt
                 { id = 20886, dropRate = 50, container = { 21392, 21395, 21401, 21404, 21398 } }, -- Qiraji Spiked Hilt
                 {},
-		        { id = 132, dropRate = 6, container = { 103 } }, -- Plans: Obsidian Belt Buckle
+                { id = 132, dropRate = 6, container = { 103 } }, -- Plans: Obsidian Belt Buckle
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
-}
-},
+            }
+        },
         { prefix = "1') ", name = L["Safe Room"], color = "|cff00FF00" },
         {
             id = "AQ20Trash",
@@ -315,8 +313,8 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 {},
                 { id = 22203, disc = L["Reagent"], dropRate = 1 }, -- Large Obsidian Shard
                 { id = 22202, disc = L["Reagent"], dropRate = 1 }, -- Small Obsidian Shard
-}
-},
+            }
+        },
         {
             id = "AQEnchants",
             name = L["AQ Enchants"],
@@ -329,8 +327,8 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 { id = 20736 }, -- Formula: Enchant Cloak - Dodge
                 { id = 20730 }, -- Formula: Enchant Gloves - Healing Power
                 { id = 20727 }, -- Formula: Enchant Gloves - Shadow Power
-}
-},
+            }
+        },
         {
             id = "AQ20ClassBooks",
             name = L["Class Books"],
@@ -363,14 +361,13 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 { id = 21298 }, -- Manual of Battle Shout VII
                 { id = 21299 }, -- Manual of Revenge VI
                 { id = 21297 }, -- Manual of Heroic Strike IX
-}
-},
+            }
+        },
         { name = L["Ruins of Ahn'Qiraj Sets"], items = "AtlasLootAQ20SetMenu" },
+    }
 }
-}
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.TheRuinsofAhnQiraj.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

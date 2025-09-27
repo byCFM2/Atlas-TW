@@ -31,7 +31,7 @@ AtlasTW.InstanceData.RazorfenDowns = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) ".. L["Entrance"] }
-},
+    },
 
     Bosses = {
         {
@@ -45,8 +45,8 @@ AtlasTW.InstanceData.RazorfenDowns = {
                 { id = 10777 }, -- Arachnid Gloves
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "RFDHenryStern",
             prefix = "2)",
@@ -54,18 +54,18 @@ AtlasTW.InstanceData.RazorfenDowns = {
             loot = {
                 { id = 3826, disc = L["Consumable"] }, -- Mighty Troll's Blood Potion
                 { id = 10841, disc = L["Consumable"] }, -- Goldthorn Tea
-}
-},
+            }
+        },
         {
             id = "RFDBelnistrasz",
             name = L["Belnistrasz"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "RFDSahrhee",
             name = L["Sah'rhee"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "RFDLadyF",
             name = BB["Lady Falther'ess"],
@@ -74,8 +74,8 @@ AtlasTW.InstanceData.RazorfenDowns = {
             loot = {
                 { id = 23178 }, -- Mantle of Lady Falther'ess
                 { id = 23177 }, -- Lady Falther'ess' Finger
-}
-},
+            }
+        },
         {
             id = "RFDPlaguemaw",
             prefix = "3)",
@@ -88,8 +88,8 @@ AtlasTW.InstanceData.RazorfenDowns = {
                 { id = 80744 }, -- Plaguemaw's Staff of Rotting
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "RFDMordreshFireEye",
             prefix = "4)",
@@ -101,8 +101,8 @@ AtlasTW.InstanceData.RazorfenDowns = {
                 { id = 10770 }, -- Mordresh's Lifeless Skull
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "RFDGlutton",
             prefix = "5)",
@@ -115,8 +115,8 @@ AtlasTW.InstanceData.RazorfenDowns = {
                 { id = 80745 }, -- Abomination Crossbow
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "RFDRakameg",
             prefix = "6)",
@@ -127,9 +127,9 @@ AtlasTW.InstanceData.RazorfenDowns = {
                 { id = 58173 }, -- Thorngorged Fleshgloves
                 { id = 58174 }, -- Totem of the Rotten Roots
                 { id = 58175 }, -- Blood-etched Fetish
-                
-}
-},
+
+            }
+        },
         {
             id = "RFDRagglesnout",
             prefix = "7)",
@@ -140,8 +140,8 @@ AtlasTW.InstanceData.RazorfenDowns = {
                 { id = 10768 }, -- Boar Champion's Belt
                 { id = 10767 }, -- Savage Boar's Guard
                 { id = 10758 }, -- X'caliboar
-}
-},
+            }
+        },
         {
             id = "RFDAmnennar",
             prefix = "8)",
@@ -155,8 +155,8 @@ AtlasTW.InstanceData.RazorfenDowns = {
                 { id = 10765 }, -- Bonefingers
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "RFDTrash",
             name = L["Trash Mobs"].."-"..BZ["Razorfen Downs"],
@@ -173,9 +173,9 @@ AtlasTW.InstanceData.RazorfenDowns = {
                 { id = 10571 }, -- Ebony Boneclub
                 { id = 10570 }, -- Manslayer
                 { id = 10573 }, -- Boneslasher
-}
-},
-},
+            }
+        },
+    },
 }
 
 -- Initialize items for all bosses

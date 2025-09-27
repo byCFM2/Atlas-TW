@@ -26,7 +26,6 @@ local BC = AceLibrary("Babble-Class-2.2")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.BlackrockSpireUpper = {
     Name = BZ["Upper Blackrock Spire"],
     Location = BZ["Blackrock Mountain"],
@@ -38,11 +37,11 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         { letter = "A) ".. L["Entrance"] },
         { letter = "B)", info = BZ["Lower Blackrock Spire"] },
         { letter = "C-E)", info = L["Connections"] }
-},
+    },
     Keys = {
         { name = "Seal of Ascension", loot = "VanillaKeys" },
         { name = "Brazier of Invocation", loot = "VanillaKeys", info = L["Tier 0.5 Summon"] }
-},
+    },
     Bosses = {
         {
             id = "UBRSEmberseer",
@@ -61,8 +60,8 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 23320, disc = L["Book"], dropRate = 8 }, -- Tablet of Flame Shock VI
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "UBRSSolakar",
             prefix = "2)",
@@ -80,24 +79,24 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 18657, dropRate = 6, container = { 18638 } }, -- Schematic: Hyper-Radiant Flame Reflector
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "UBRSFlame",
             name = L["Father Flame"],
             loot = {
                 { id = 13371, dropRate = .08 }, -- Father Flame
-}
-},
+            }
+        },
         {
             prefix = "3)",
             name = L["Darkstone Tablet"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Doomrigger's Coffer"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "UBRSRunewatcher",
             prefix = "4)",
@@ -111,8 +110,8 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 {},
                 { id = 12605 }, -- Serpentine Skuller
-}
-},
+            }
+        },
         {
             id = "UBRSAnvilcrack",
             prefix = "5)",
@@ -136,8 +135,8 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { name = L["Small Rocket Recipes"] },
                 { id = 12806, dropRate = 100 }, -- Unforged Rune Covered Breastplate
                 { id = 12696, container = { 12628 } }, -- Plans: Demon Forged Breastplate
-}
-},
+            }
+        },
         {
             id = "UBRSRend",
             prefix = "6)",
@@ -163,8 +162,8 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "UBRSGyth",
             name = BB["Gyth"],
@@ -183,13 +182,13 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 12871, disc = L["Quest Item"], dropRate = 4 }, -- Chromatic Carapace
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             prefix = "7)",
             name = L["Awbee"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "UBRSBeast",
             prefix = "8)",
@@ -215,8 +214,8 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "UBRSValthalak",
             name = BB["Lord Valthalak"],
@@ -236,12 +235,12 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 22335 }, -- Lord Valthalak's Staff of Command
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             name = L["Finkle Einhorn"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "UBRSDrakkisath",
             prefix = "9)",
@@ -277,18 +276,18 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], quantity = 3, dropRate = 100 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             name = L["Drakkisath's Brand"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "10)",
             name = BZ["Blackwing Lair"],
             postfix = "BWL",
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "UBRSTrash",
             name = L["Trash Mobs"].."-"..BZ["Upper Blackrock Spire"],
@@ -308,16 +307,16 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 24102, disc = L["Book"], dropRate = 10 }, -- Manual of Eviscerate IX
                 {},
                 { id = 16247, dropRate = 3 }, -- Formula: Enchant 2H Weapon - Superior Impact
-}
-},
+            }
+        },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
         { name = BIS["Dal'Rend's Arms"], items = "DalRend" },
         { name = L["Tier 0/0.5 Sets"], items = "AtlasLootT0SetMenu" },
-}
+    }
 }
 
- -- Initialize items for all bosses
- for _, bossData in ipairs(AtlasTW.InstanceData.BlackrockSpireUpper.Bosses) do
-     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-     bossData.loot = nil -- Clear temporary data
- end
+-- Initialize items for all bosses
+for _, bossData in ipairs(AtlasTW.InstanceData.BlackrockSpireUpper.Bosses) do
+    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
+    bossData.loot = nil -- Clear temporary data
+end

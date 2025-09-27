@@ -12,7 +12,7 @@
 --- • Level-appropriate loot organization
 --- • Quest reward items
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -22,10 +22,8 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
-
 
 AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
     Name = BZ["Black Morass"],
@@ -37,10 +35,10 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
     Entrances = {
         { letter = "A) " .. L["Entrance"] },
         { letter = "B) " .. L["Connection"] }
-},
+    },
     Reputation = {
         { name = BF["Wardens of Time"], loot = "WardensofTime" }
-},
+    },
     Bosses = {
         {
             id = "COTBMChronar",
@@ -61,8 +59,8 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 { id = 50203, quantity = { 10, 15 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
                 { id = 41458, dropRate = 100 }, -- Time-Worn Spear
                 { id = 60496, dropRate = 100 }, -- Head of Chronar
-}
-},
+            }
+        },
         {
             id = "COTBMEpidamu",
             prefix = "2)",
@@ -80,8 +78,8 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 { id = 61698 }, -- Totem of the Calming River
                 {},
                 { id = 50203, quantity = { 15, 20 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
-}
-},
+            }
+        },
         {
             id = "COTBMDriftingAvatar",
             prefix = "3)",
@@ -101,8 +99,8 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 50203, quantity = { 15, 20 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
-}
-},
+            }
+        },
         {
             id = "COTBMTimeLordEpochronos",
             prefix = "4)",
@@ -123,8 +121,8 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 50203, quantity = { 15, 20 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
-}
-},
+            }
+        },
         {
             id = "COTBMMossheart",
             prefix = "5)",
@@ -141,8 +139,8 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 50203, quantity = { 20, 25 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
-}
-},
+            }
+        },
         {
             id = "COTBMAntnormi",
             prefix = "6)",
@@ -167,12 +165,12 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
                 { id = 51044, disc = L["Quest Item"], dropRate = 100, container = { 82950, 82951, 82952, 82953 } }, -- Antnormi's Head
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
-                    70234, 70235, 70236, 70238 } },
+                        70234, 70235, 70236, 70238 } },
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 50203, quantity = { 10, 15 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
                 { id = 51217, quantity = 2, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "COTBMRotmaw",
             prefix = "7)",
@@ -190,8 +188,8 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 50203, quantity = { 10, 15 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
-}
-},
+            }
+        },
         {
             id = "COTTrash",
             name = L["Trash Mobs"].."-"..BZ["Black Morass"],
@@ -211,9 +209,9 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 { id = 61673, disc = L["Reagent"], dropRate = 4 }, -- Arcane Essence
                 {},
                 { id = 50203, quantity = { 1, 3 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
-}
-},
-},
+            }
+        },
+    },
 }
 
 -- Initialize items for all bosses

@@ -31,7 +31,7 @@ AtlasTW.InstanceData.TheStockade = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) "..L["Entrance"] }
-},
+    },
 
     Bosses = {
         {
@@ -45,8 +45,8 @@ AtlasTW.InstanceData.TheStockade = {
                 { id = 80722 }, -- Dreadskull Pauldrons
                 {},
                 { id = 3630, dropRate = 100, container = { 3400, 1317 } }, -- Head of Targorr
-}
-},
+            }
+        },
         {
             id = "SWStKamDeepfury",
             prefix = "2)",
@@ -57,8 +57,8 @@ AtlasTW.InstanceData.TheStockade = {
                 { id = 80723, dropRate = 90 }, -- Nail on a Plank
                 {},
                 { id = 3640, dropRate = 100, container = { 3562, 1264 } }, -- Head of Deepfury
-}
-},
+            }
+        },
         {
             id = "SWStHamhock",
             prefix = "3)",
@@ -67,8 +67,8 @@ AtlasTW.InstanceData.TheStockade = {
             loot = {
                 { id = 80724 }, -- Cell Heater
                 { id = 80725 }, -- Hamhock's Nose Ring
-}
-},
+            }
+        },
         {
             id = "SWStBazil",
             prefix = "4)",
@@ -84,8 +84,8 @@ AtlasTW.InstanceData.TheStockade = {
                 { id = 2926, dropRate = 100, container = { 2933 } }, -- Head of Bazil Thredd
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "SWStDextren",
             prefix = "5)",
@@ -99,8 +99,8 @@ AtlasTW.InstanceData.TheStockade = {
                 {},
                 { id = 2909, dropRate = 40 }, -- Red Wool Bandana
                 { id = 3628, dropRate = 100, container = { 2033, 2906 } }, -- Hand of Dextren Ward
-}
-},
+            }
+        },
         {
             id = "SWStBruegalIronknuckle",
             prefix = "6)",
@@ -112,8 +112,8 @@ AtlasTW.InstanceData.TheStockade = {
                 { id = 2942 }, -- Iron Knuckles
                 {},
                 { id = 2909, dropRate = 80 }, -- Red Wool Bandana
-}
-},
+            }
+        },
         {
             id = "SWStTrash",
             name = L["Trash Mobs"].."-"..BZ["The Stockade"],
@@ -122,13 +122,12 @@ AtlasTW.InstanceData.TheStockade = {
                 { id = 1076, dropRate = .6 }, -- Defias Renegade Ring
                 {},
                 { id = 2909, dropRate = 80 }, -- Red Wool Bandana
+            }
+        },
+    },
 }
-},
-},
-}
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.TheStockade.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

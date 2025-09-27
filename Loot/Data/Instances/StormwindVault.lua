@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.StormwindVault = {
     Name = BZ["Stormwind Vault"],
     Location = BZ["Stormwind City"],
@@ -34,7 +33,7 @@ AtlasTW.InstanceData.StormwindVault = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A", info = L["Entrance"] }
-},
+    },
     Bosses = {
         {
             id = "AszoshGrimflame",
@@ -53,8 +52,8 @@ AtlasTW.InstanceData.StormwindVault = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "ThamGrarr",
             prefix = "2)",
@@ -72,8 +71,8 @@ AtlasTW.InstanceData.StormwindVault = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "BlackBride",
             prefix = "3)",
@@ -90,8 +89,8 @@ AtlasTW.InstanceData.StormwindVault = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
-}
-},
+            }
+        },
         { name = L["Tome of Arcane Intricacies and Magical Phenomenon IX"], color = "|cff9d9d9d" },
         {
             id = "Damian",
@@ -111,8 +110,8 @@ AtlasTW.InstanceData.StormwindVault = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 41463, dropRate = 100 }, -- Pouch of Surgical Daggers
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "VolkanCruelblade",
             prefix = "5)",
@@ -130,8 +129,8 @@ AtlasTW.InstanceData.StormwindVault = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "VaultArmoryEquipment",
             prefix = "6)",
@@ -155,8 +154,8 @@ AtlasTW.InstanceData.StormwindVault = {
                 { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
                 { id = 41406, dropRate = 100, container = { 55133, 55134, 55135 } } -- Core of Arc'Tiras
 
-}
-},
+            }
+        },
         {
             id = "TrashMobs",
             name = L["Trash Mobs"].."-"..BZ["Stormwind Vault"],
@@ -171,9 +170,9 @@ AtlasTW.InstanceData.StormwindVault = {
                 {},
                 { id = 61594 }, -- Magus Blade
                 { id = 61595 } -- Sharpened Iron Bar
-}
-}
-}
+            }
+        }
+    }
 }
 
 -- Initialize items for all bosses

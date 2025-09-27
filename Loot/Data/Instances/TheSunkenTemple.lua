@@ -29,34 +29,34 @@ AtlasTW.InstanceData.TheSunkenTempleEnt = {
     Entrances = {
         { letter = "A)", info = L["Entrance"] },
         { letter = "B)", info = L["Sunken Temple"] },
-},
+    },
     Bosses = {
         {
             name = L["Meeting Stone"],
             color = "|cff0070dd"
-},
+        },
         {
             name = L["Jade"].." ("..L["Rare"]..")",
             color = "|cff0070dd"
-},
+        },
         {
             prefix = "1)",
             name = BB["Kazkaz the Unholy"],
             postfix = L["Upper"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "2)",
             name = BB["Zekkis"],
             postfix = L["Lower"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "3)",
             name = BB["Veyzhak the Cannibal"],
             color = "|cff9d9d9d",
-},
-}
+        },
+    }
 }
 
 AtlasTW.InstanceData.TheSunkenTemple = {
@@ -70,10 +70,10 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         { letter = "A)", info = L["Entrance"] },
         { letter = "B)", info = L["Connection"] },
         { letter = "C)", info = L["Balcony Minibosses"].." ("..L["Upper"]..")" },
-},
+    },
     Keys = {
         { name = L["Yeh'kinya's Scroll"], loot = "VanillaKeys", info = BB["Avatar of Hakkar"] },
-},
+    },
     Bosses = {
         {
             id = "STBalconyMinibosses",
@@ -91,42 +91,42 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 { id = 10786 }, -- Atal'ai Boots
                 {},
                 { id = 20606, dropRate = 100, container = { 20369, 20503, 20556, 20536, 20534, 20530, -- Amber Voodoo Feather
-                    20521, 20130, 20517, 20504, 20505, 20512, 20620 } },-- Amber Voodoo Feather
+                        20521, 20130, 20517, 20504, 20505, 20512, 20620 } },-- Amber Voodoo Feather
                 { id = 20607, dropRate = 100, container = { 20369, 20503, 20556, 20536, 20534, 20530, -- Blue Voodoo Feather
-                    20521, 20130, 20517, 20504, 20505, 20512, 20620 } },-- Blue Voodoo Feather
+                        20521, 20130, 20517, 20504, 20505, 20512, 20620 } },-- Blue Voodoo Feather
                 { id = 20608, dropRate = 100, container = { 20369, 20503, 20556, 20536, 20534, 20530, -- Green Voodoo Feather
-                    20521, 20130, 20517, 20504, 20505, 20512, 20620 } },-- Green Voodoo Feather
-}
-},
+                        20521, 20130, 20517, 20504, 20505, 20512, 20620 } },-- Green Voodoo Feather
+            }
+        },
         {
             name = BB["Gasher"],
             color = "|cff0070dd",
-},
+        },
         {
             name = BB["Loro"],
             color = "|cff0070dd",
-},
+        },
         {
             name = BB["Hukku"],
             color = "|cff0070dd",
-},
+        },
         {
             name = BB["Zolo"],
             color = "|cff0070dd",
-},
+        },
         {
             name = BB["Mijan"],
             color = "|cff0070dd",
-},
+        },
         {
             name = BB["Zul'Lor"],
             color = "|cff0070dd",
-},
+        },
         {
             prefix = "1)",
             name = L["Altar of Hakkar"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "STAtalalarion",
             name = BB["Atal'alarion"],
@@ -138,8 +138,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 1.2 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STSpawnOfHakkar",
             prefix = "2)",
@@ -152,8 +152,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 1.2 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STAvatarofHakkar",
             prefix = "3)",
@@ -172,8 +172,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 { id = 10663, dropRate = 100, container = { 10749, 10750, 10751 } }, -- Essence of Hakkar
                 { id = 70226, disc = L["Quest Item"], dropRate = 1.2 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STJammalan",
             prefix = "4)",
@@ -187,8 +187,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1.2 }, -- Ancient Warfare Text
                 { id = 61791, dropRate = 0.25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STOgom",
             name = BB["Ogom the Wretched"],
@@ -200,13 +200,13 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 1.2 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             prefix = "5)",
             name = L["Elder Starsong"].." ("..L["Lunar Festival"]..")",
             items = "LunarFestival"
-},
+        },
         {
             id = "STDreamscythe",
             prefix = "6)",
@@ -224,8 +224,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 1.2 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STWeaver",
             name = BB["Weaver"],
@@ -243,8 +243,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 { id = 61557, dropRate = 100, container = { 50545 } }, -- Slumberer's Shard
                 { id = 70226, disc = L["Quest Item"], dropRate = 1.2 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STMorphaz",
             prefix = "7)",
@@ -266,8 +266,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 { id = 20085, dropRate = 100, container = { 20035, 20037, 20036 } }, -- Arcane Shard
                 { id = 70226, disc = L["Quest Item"], dropRate = 1.2 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STHazzas",
             name = BB["Hazzas"],
@@ -285,8 +285,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 { id = 60535, dropRate = 100, container = { 60536 } }, -- Heart of Hazzas
                 { id = 70226, disc = L["Quest Item"], dropRate = 1.2 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STEranikus",
             prefix = "8)",
@@ -303,26 +303,26 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 { id = 10828 }, -- Dire Nail
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, -- Ancient Warfare Text
-                    70232, 70233, 70234, 70235, 70236 } },-- Ancient Warfare Text
+                        70232, 70233, 70234, 70235, 70236 } },-- Ancient Warfare Text
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 {},
                 { id = 10454, dropRate = 100, container = { 10455 } }, -- Essence of Eranikus
-}
-},
+            }
+        },
         {
             name = L["Essence Font"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Malfurion Stormrage"].." ("..L["Summon"]..")",
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Statue Activation Order"],
             color = "|cff00ff00",
             prefix = "1'-6')"
-},
+        },
         {
             id = "STTrash",
             name = L["Trash Mobs"].."-"..BZ["The Sunken Temple"],
@@ -345,20 +345,17 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {},
                 { id = 16216, dropRate = 1.48 }, -- Formula: Enchant Cloak - Greater Resistance
                 { id = 15733, dropRate = 4, container = { 15046 } }, -- Pattern: Green Dragonscale Leggings
+            }
+        }
+    }
 }
-}
-}
-}
-
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.TheSunkenTemple.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.TheSunkenTempleEnt.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

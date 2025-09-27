@@ -43,7 +43,6 @@ local lKarazhanShare = {
     { id = 61191, dropRate = 0.9, container = { 61187 } }, -- Schematic: Intricate Gyroscope Goggles
 }
 
-
 AtlasTW.InstanceData.LowerKarazhan = {
     Name = BZ["Lower Karazhan Halls"],
     Location = BZ["Deadwind Pass"],
@@ -54,7 +53,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
     Entrances = {
         { letter = "A) " .. L["Entrance"] },
         { letter = "B) " .. L["Connection"] }
-},
+    },
     Bosses = {
         {
             id = "LKHRolfen",
@@ -66,18 +65,18 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 { id = 61806, container = { 60009 } }, -- Plans: Towerforge Pauldrons
                 { id = 61807, container = { 60008 } }, -- Plans: Towerforge Breastplate
                 { id = 61808, container = { 60007 } }, -- Plans: Towerforge Crown
-}
-},
+            }
+        },
         {
             prefix = "a)",
             name = L["Engraved Golden Bracelet"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "b)",
             name = L["Comfortable Pillow"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "LKHBroodQueenAraxxna",
             prefix = "2)",
@@ -103,8 +102,8 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 { id = 37011, dropRate = 20 }, -- Araxxna's Hatchling
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(lKarazhanShare),
-}
-},
+            }
+        },
         {
             id = "LKHGrizikil",
             prefix = "3)",
@@ -128,13 +127,13 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 { id = 41392, dropRate = 100 }, -- Comically Large Candle
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(lKarazhanShare),
-}
-},
+            }
+        },
         {
             prefix = "c)",
             name = L["Councilman Kyleson"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "LKHClawlordHowlfang",
             prefix = "4)",
@@ -157,8 +156,8 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(lKarazhanShare),
-}
-},
+            }
+        },
         {
             id = "LKHLordBlackwaldII",
             prefix = "5)",
@@ -183,23 +182,23 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(lKarazhanShare),
-}
-},
+            }
+        },
         {
             prefix = "d)",
             name = L["Lord Ebonlocke"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "e)",
             name = L["Obsidian Rod"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "f)",
             name = L["Duke Rothlen"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "LKHMoroes",
             prefix = "6)",
@@ -223,8 +222,8 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 { id = 61231, dropRate = 100 }, -- Key to the Upper Chambers
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(lKarazhanShare),
-}
-},
+            }
+        },
         {
             id = "LKHTrash",
             name = L["Trash Mobs"].."-"..BZ["Lower Karazhan Halls"],
@@ -249,8 +248,8 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 { id = 61177, dropRate = .03, container = { 61181 } }, -- Recipe: Potion of Quickness
                 { id = 61178, dropRate = .03, container = { 61182 } }, -- Plans: Thorium Spurs
                 { id = 61180, dropRate = .03 }, -- Formula: Enchant Cloak - Greater Arcane Resistance
-}
-},
+            }
+        },
         {
             id = "LKHEnchants",
             name = L["Lower Karazhan Halls Enchants"],
@@ -260,12 +259,12 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 { id = 92006, disc = L["Head"]..", "..L["Legs"]..L["Enchant"] }, -- Invocation of Greater Protection
                 { id = 92007, disc = L["Head"]..", "..L["Legs"]..L["Enchant"] }, -- Invocation of Expansive Mind
                 { id = 92008, disc = L["Head"]..", "..L["Legs"]..L["Enchant"] }, -- Invocation of Greater Arcane Fortitude
-}
-}
-}
+            }
+        }
+    }
 }
 
 for _, bossData in ipairs(AtlasTW.InstanceData.LowerKarazhan.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

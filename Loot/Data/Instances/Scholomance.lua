@@ -26,7 +26,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 local scholoShareLoot = {
     { id = 18681, dropRate = 4 }, -- Burial Shawl
     { id = 14633, dropRate = 4 }, -- Necropile Mantle
@@ -57,7 +56,6 @@ local scholoShareLoot = {
     { id = 18683, dropRate = 4 }, -- Hammer of the Vesper
 }
 
-
 AtlasTW.InstanceData.Scholomance = {
     Name = BZ["Scholomance"],
     Location = BZ["Western Plaguelands"],
@@ -67,13 +65,13 @@ AtlasTW.InstanceData.Scholomance = {
     DamageType = L["Shadow"],
     Entrances = {
         { letter = "A) " .. L["Entrance"] }
-},
+    },
     Reputation = {
         { name = BF["Argent Dawn"], loot = "ArgentDawn" }
-},
+    },
     Keys = {
         { name = L["Skeleton Key"], loot = "VanillaKeys", info = L["Key"] }
-},
+    },
     Bosses = {
         {
             id = "BloodStewardofKirtonos",
@@ -81,8 +79,8 @@ AtlasTW.InstanceData.Scholomance = {
             name = L["Blood Steward of Kirtonos"],
             loot = {
                 { id = 13523, disc = L["Used to summon boss"], dropRate = 100 }, -- Blood of Innocents
-}
-},
+            }
+        },
         { name = L["The Deed to Southshore"], color = "|cff9d9d9d" },
         {
             id = "KirtonostheHerald",
@@ -102,8 +100,8 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 13958 }, -- Wyrmthalak's Shackles
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "JandiceBarov",
             prefix = "3)",
@@ -124,8 +122,8 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         { name = L["Journal of Jandice Barov"], color = "|cff9d9d9d" },
         { prefix = "4)", name = L["The Deed to Tarren Mill"], color = "|cff9d9d9d" },
         {
@@ -138,8 +136,8 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 { id = 23132 }, -- Lord Blackwood's Blade
                 { id = 23139 }, -- Lord Blackwood's Buckler
-}
-},
+            }
+        },
         {
             id = "Rattlegore",
             prefix = "5)",
@@ -163,8 +161,8 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 13873, disc = L["Key"], dropRate = 100 }, -- Viewing Room Key
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "DeathKnight",
             name = BB["Death Knight Darkreaver"],
@@ -176,8 +174,8 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 18761 }, -- Oblivion's Touch
                 { id = 18758 }, -- Specter's Blade
                 { id = 18759 }, -- Malicious Axe
-}
-},
+            }
+        },
         {
             id = "MardukBlackpool",
             prefix = "6)",
@@ -190,8 +188,8 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "Vectus",
             name = BB["Vectus"],
@@ -202,8 +200,8 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "RasFrostwhisper",
             prefix = "7)",
@@ -229,8 +227,8 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         { name = L["The Deed to Brill"], color = "|cff9d9d9d" },
         {
             id = "Kormok",
@@ -245,8 +243,8 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 22332 }, -- Blade of Necromancy
                 {},
                 { id = 22333 }, -- Hammer of Divine Might
-}
-},
+            }
+        },
         {
             id = "InstructorMalicia",
             prefix = "8)",
@@ -257,8 +255,8 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 {},
                 unpack(scholoShareLoot),
-}
-},
+            }
+        },
         {
             id = "DoctorTheolenKrastinov",
             prefix = "9)",
@@ -269,8 +267,8 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 unpack(scholoShareLoot),
-}
-},
+            }
+        },
         {
             id = "LorekeeperPolkelt",
             prefix = "10)",
@@ -281,8 +279,8 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 {},
                 unpack(scholoShareLoot),
-}
-},
+            }
+        },
         {
             id = "TheRavenian",
             prefix = "11)",
@@ -293,8 +291,8 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 {},
                 unpack(scholoShareLoot),
-}
-},
+            }
+        },
         {
             id = "LordAlexeiBarov",
             prefix = "12)",
@@ -306,8 +304,8 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 {},
                 unpack(scholoShareLoot),
-}
-},
+            }
+        },
         { name = L["The Deed to Caer Darrow"], color = "|cff9d9d9d" },
         {
             id = "LadyIlluciaBarov",
@@ -320,8 +318,8 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 {},
                 unpack(scholoShareLoot),
-}
-},
+            }
+        },
         {
             id = "DarkmasterGandling",
             prefix = "14)",
@@ -358,8 +356,8 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 14514, dropRate = 7, container = { 14513 } }, -- Pattern: Robe of the Void
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
-}
-},
+            }
+        },
         { prefix = "1')", name = L["Torch Lever"], color = "|cff00FF00" },
         { prefix = "2')", name = L["Old Treasure Chest"], color = "|cff00FF00" },
         { prefix = "3')", name = L["Alchemy Lab"], color = "|cff00FF00" },
@@ -396,12 +394,12 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 15776, dropRate = 4, container = { 15090 } }, -- Pattern: Runic Leather Armor
                 {},
                 { id = 13920, dropRate = 6 }, -- Healthy Dragon Scale
-}
-},
+            }
+        },
         { name = BZ["Scholomance"].." "..L["Sets"], items = "Scholo" },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
         { name = L["Tier 0/0.5 Sets"], items = "AtlasLootT0SetMenu" },
-},
+    },
 }
 
 -- Initialize items for all bosses

@@ -25,7 +25,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.DragonmawRetreat = {
     Name = BZ["Dragonmaw Retreat"],
     Location = BZ["Wetlands"],
@@ -36,10 +35,10 @@ AtlasTW.InstanceData.DragonmawRetreat = {
     Entrances = {
         { letter = "A)"..L["Entrance"] },
         { letter = "B)"..L["Exit"] }
-},
+    },
     Keys = {
         { name = L["Lower Reserve Key"], loot = "VanillaKeys", info = "9+" },
-},
+    },
     Bosses = {
         {
             id = "DRGowlfang",
@@ -54,12 +53,12 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 41575 }, -- Gnoll Hide Cuffs
                 {},
                 { id = 41829, container = { 41830 } }, -- Head of Gowlfang
-}
-},
+            }
+        },
         {
             name = BB["Bogpaw Truthsay"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "DRCavernwebBroodmother",
             prefix = "2)",
@@ -75,8 +74,8 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 {},
                 { id = 37009, dropRate = 10 }, -- Cavernweb Hatchling
                 { id = 41834, dropRate = 100 }, -- Broodmother's Sac
-}
-},
+            }
+        },
         {
             id = "DRWebMasterTorkon",--29
             prefix = "3)",
@@ -91,8 +90,8 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 41570 }, -- Idol of Nethalakk
                 {},
                 { id = 41874, disc = L["Quest Item"] }, -- Fragment of Algoron
-}
-},
+            }
+        },
         {
             id = "DRGarlockFlamekeeper",--31
             prefix = "4)",
@@ -103,8 +102,8 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 41579 }, -- Sash of Flamebinding
                 { id = 41580 }, -- Udor's Pendant
                 { id = 41581 }, -- The Bane of Althazz
-}
-},
+            }
+        },
         {
             id = "DRHalganRedbrand",--31
             prefix = "5)",
@@ -118,12 +117,12 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 {},
                 { id = 76, dropRate = 6, container = { 156 } }, -- Plans: Refined Dwarven Necklace
                 { id = 77, dropRate = 6, container = { 56112 } }, -- Plans: Ancient Dwarven Gemstone
-}
-},
+            }
+        },
         {
             name = L["Pedestal of Unity"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "DRSlagfistDestroyer",--30
             prefix = "6)",
@@ -134,8 +133,8 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 41559 }, -- Rock Carver
                 { id = 41560 }, -- Shalestone Amulet
                 { id = 41719 }, -- Stonelink Leggings
-}
-},
+            }
+        },
         {
             id = "DROverlordBlackheart",--30
             prefix = "7)",
@@ -150,8 +149,8 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 74, dropRate = 6, container = { 58112 } }, -- Pattern: Dragonmaw Gloves
                 {},
                 { id = 41841, dropRate = 100, container = { 41842, 41843, 41844 } }, -- Blackheart's Head
-}
-},
+            }
+        },
         {
             id = "DRElderHollowblood",--32
             prefix = "8)",
@@ -164,8 +163,8 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 41723 }, -- Cudgel of Binding
                 {},
                 { id = 31, dropRate = 6 }, -- Formula: Enchant Boots - Lesser Intellect
-}
-},
+            }
+        },
         {
             id = "DRChestofDathronag",--object
             prefix = "a)",
@@ -173,8 +172,8 @@ AtlasTW.InstanceData.DragonmawRetreat = {
             color = "|cff00FF00",
             loot = {
                 { id = 41875, disc = L["Quest Item"], dropRate = 100 }, -- Fragment of Dathronag
-}
-},
+            }
+        },
         {
             id = "DRSearistrasz",--32
             prefix = "9)",
@@ -186,8 +185,8 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 41563 }, -- Flamelash Boots
                 { id = 41564 }, -- Emberclaw
                 { id = 41565 }, -- Cloak of Draconic Madness
-}
-},
+            }
+        },
         {
             id = "DRZuluhedtheWracked",--32
             prefix = "10)",
@@ -207,8 +206,8 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 {},
                 { id = 41711, container = { 41713, 41714, 41715 }, dropRate = 100 }, -- Letter from Korlag Doomsong
                 { id = 41981, container = { 41982, 41713, 41714, 41715 }, dropRate = 100 }, -- Letter from Korlag Doomsong
-}
-},
+            }
+        },
         {
             id = "DRTrash",
             name = L["Trash Mobs"].."-"..BZ["Dragonmaw Retreat"],
@@ -229,10 +228,10 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 58115, dropRate = 1.35 }, -- Dragonmaw Greaves
                 { id = 70119, container = { 56046 } }, -- Plans: Circlet of Dampening
                 { id = 41825, container = { 41826, 41827, 41828 }, dropRate = 50 }, -- Stone Golem Runestone from Crumbling Stone Golem
-},
-},
+            },
+        },
         { name = BIS["Dragonmaw Battlegarb"], items = "DragonmawBattlegarb" },
-},
+    },
 }
 
 -- Initialize items for all bosses

@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.KarazhanCrypt = {
     Name = BZ["Karazhan Crypt"],
     Location = BZ["Deadwind Pass"],
@@ -34,10 +33,10 @@ AtlasTW.InstanceData.KarazhanCrypt = {
     DamageType = L["Shadow"],
     Entrances = {
         { letter = "A) " .. L["Entrance"] }
-},
+    },
     Keys = {
         { name = L["Karazhan Crypt Key"], loot = "VanillaKeys" },
-},
+    },
     Bosses = {
         {
             id = "KCMarrowspike",
@@ -56,8 +55,8 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "KCHivaxxis",
             prefix = "2)",
@@ -75,8 +74,8 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "KCCorpsemuncher",
             prefix = "3)",
@@ -95,8 +94,8 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "KCGuardCaptainGort",
             prefix = "4)",
@@ -113,8 +112,8 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "KCArchlichEnkhraz",
             prefix = "5)",
@@ -134,8 +133,8 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "KCCommanderAndreon",
             prefix = "6)",
@@ -152,8 +151,8 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "KCAlarus",
             prefix = "7)",
@@ -175,11 +174,11 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 { id = 83571, disc = L["Book"], dropRate = 15 }, -- Codex: Shadow Mend
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
-                    70234, 70235, 70236, 70238 } },
+                        70234, 70235, 70236, 70238 } },
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], quantity = 2, dropRate = 100 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "KCTreasure",
             prefix = "8)",
@@ -197,8 +196,8 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {},
                 { id = 60800, dropRate = 14 }, -- Femur Club
                 { id = 60801, dropRate = 14 }, -- Tome of Dark Powers
-}
-},
+            }
+        },
         {
             id = "KCTrash",
             name = L["Trash Mobs"].."-"..BZ["Karazhan Crypt"],
@@ -228,9 +227,9 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 { id = 60808 }, -- Bone Fracture
                 {},
                 { id = 41416, dropRate = 100, container = { 92045 } }, -- Crumpled Paper
-},
-}
-}
+            },
+        }
+    }
 }
 -- Initialize items for all bosses
 for _, bossData in ipairs(AtlasTW.InstanceData.KarazhanCrypt.Bosses) do

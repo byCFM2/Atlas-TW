@@ -12,7 +12,7 @@
 --- • Level-appropriate loot organization
 --- • Quest reward items
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -30,7 +30,7 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
     Entrances = {
         { letter = "A)", info = L["Entrance"] },
         { letter = "B)", info = BZ["Wailing Caverns"] }
-},
+    },
     Bosses = {
         {
             id = "WCMadMagglish",
@@ -39,13 +39,13 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
             postfix = L["Varies"],
             loot = {
                 { id = 5334, dropRate = 100 }, -- 99-Year-Old Port
-}
-},
+            }
+        },
         {
             prefix = "2)",
             name = BB["Trigore the Lasher"],
             color = "|cffcc9933",
-},
+        },
         {
             id = "WCBoahn",
             prefix = "3)",
@@ -54,20 +54,20 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
                 { id = 5422, dropRate = 70 }, -- Brambleweed Leggings
                 {},
                 { id = 5423, dropRate = 30 }, -- Boahn's Fang
-}
-},
+            }
+        },
         {
             name = L["Above the Entrance:"],
             color = "|cffcc9933",
-},
+        },
         {
             name = BB["Ebru"],
             color = "|cff999999",
-},
+        },
         {
             name = L["Nalpak"],
             color = "|cff999999",
-},
+        },
         {
             id = "WCKalldanFelmoon",
             name = L["Kalldan Felmoon"],
@@ -75,13 +75,13 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
                 { id = 6474, disc = L["Vendor"], container = { 6466 } }, -- Pattern: Deviate Scale Cloak
                 { id = 6475, disc = L["Vendor"], container = { 6467 } }, -- Pattern: Deviate Scale Gloves
                 { id = 6476, disc = L["Vendor"], container = { 6468 } }, -- Pattern: Deviate Scale Belt
-}
-},
+            }
+        },
         {
             name = L["Waldor"],
             color = "|cff999999",
-},
-}
+        },
+    }
 }
 
 AtlasTW.InstanceData.WailingCaverns = {
@@ -93,14 +93,14 @@ AtlasTW.InstanceData.WailingCaverns = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) "..L["Entrance"] }
-},
+    },
     Bosses = {
         {
             id = "WCDisciple",
             prefix = "1)",
             name = L["Disciple of Naralex"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "WCLordCobrahn",
             prefix = "2)",
@@ -113,8 +113,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 { id = 6465 }, -- Robe of the Moccasin
                 {},
                 { id = 9738, dropRate = 100, container = { 6504, 6505 } }, -- Gem of Cobrahn
-}
-},
+            }
+        },
         {
             id = "WCLadyAnacondra",
             prefix = "3)",
@@ -131,8 +131,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 { id = 23800, dropRate = .2 }, -- Violet Feral Raptor
                 {},
                 { id = 9739, dropRate = 100, container = { 6504, 6505 } }, -- Gem of Anacondra
-}
-},
+            }
+        },
         {
             id = "WCKresh",
             prefix = "4)",
@@ -145,8 +145,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 { id = 80710 }, -- Turtle Scale Shoulderguards
                 {},
                 { id = 6443, dropRate = 80, container = { 6480, 918 } }, -- Deviate Hide
-}
-},
+            }
+        },
         {
             id = "WCDeviateFaerieDragon",
             prefix = "5)",
@@ -158,8 +158,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 { id = 6632 }, -- Feyscale Cloak
                 {},
                 { id = 6443, dropRate = 80, container = { 6480, 918 } }, -- Deviate Hide
-}
-},
+            }
+        },
         {
             id = "WCZandara",
             prefix = "6)",
@@ -172,8 +172,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 { id = 55370 }, -- Totem of Static Charge
                 {},
                 { id = 41410, dropRate = 100, container = { 70224 } }, -- Zandara's Head
-}
-},
+            }
+        },
         {
             id = "WCLordPythas",
             prefix = "7)",
@@ -187,8 +187,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {},
                 { id = 9740, dropRate = 100, container = { 6504, 6505 } }, -- Gem of Pythas
                 { id = 80864, dropRate = 100, container = { 80860, 80861 } }, -- Everchanging Essence
-}
-},
+            }
+        },
         {
             id = "WCSkum",
             prefix = "8)",
@@ -201,8 +201,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 { id = 80712 }, -- Charged Leggings
                 {},
                 { id = 6443, dropRate = 80, container = { 6480, 918 } }, -- Deviate Hide
-}
-},
+            }
+        },
         {
             id = "WCVangros",
             prefix = "9)",
@@ -213,8 +213,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {},
                 { id = 55372 }, -- Band of the Claw
                 { id = 55373 }, -- Idol of the Apex Predator
-}
-},
+            }
+        },
         {
             id = "WCLordSerpentis",
             prefix = "10)",
@@ -229,8 +229,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {},
                 { id = 9741, dropRate = 100, container = { 6504, 6505 } }, -- Gem of Serpentis
                 { id = 80863, container = { 80860, 80861 } }, -- Crystal of the Serpent
-}
-},
+            }
+        },
         {
             id = "WCVerdan",
             prefix = "11)",
@@ -244,8 +244,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 { id = 6631 }, -- Living Root
                 {},
                 { id = 6443, dropRate = 80, container = { 6480, 918 } }, -- Deviate Hide
-}
-},
+            }
+        },
         {
             id = "WCMutanus",
             prefix = "12)",
@@ -261,13 +261,13 @@ AtlasTW.InstanceData.WailingCaverns = {
                 { id = 6443, dropRate = 80, container = { 6480, 918 } }, -- Deviate Hide
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "WCNaralex",
             name = L["Naralex"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "WCTrash",
             name = L["Trash Mobs"].."-"..BZ["Wailing Caverns"],
@@ -278,10 +278,10 @@ AtlasTW.InstanceData.WailingCaverns = {
                 { id = 80807, dropRate = .02 }, -- Serpent's Bite
                 {},
                 { id = 80862, dropRate = 30, container = { 80860, 80861 } }, -- Moontouched Wood
-}
-},
+            }
+        },
         { name = BIS["Embrace of the Viper"], items = "Wailing" },
-},
+    },
 }
 
 -- Initialize items for all bosses

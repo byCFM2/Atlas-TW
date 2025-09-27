@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.OnyxiasLair = {
     Name = BZ["Onyxia's Lair"],
     Location = BZ["Dustwallow Marsh"],
@@ -35,18 +34,18 @@ AtlasTW.InstanceData.OnyxiasLair = {
     DamageType = L["Fire"],
     Entrances = {
         { letter = "A) " .. L["Entrance"] }
-},
+    },
     Bosses = {
         {
             prefix = "1)",
             name = L["Onyxian Warders"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "2)",
             name = L["Whelp Eggs"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "Onyxia",
             prefix = "3)",
@@ -84,13 +83,12 @@ AtlasTW.InstanceData.OnyxiasLair = {
                 { id = 17965, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12363 } }, -- Yellow Sack of Gems
                 { id = 17969, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12799, 6332 } }, -- Red Sack of Gems
                 { id = 30017, dropRate = .1 }, --Onyxian Drake TODO chance drop
+            }
+        }
+    }
 }
-}
-}
-}
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.OnyxiasLair.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

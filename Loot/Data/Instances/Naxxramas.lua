@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.Naxxramas = {
     Name = BZ["Naxxramas"],
     Location = BZ["Eastern Plaguelands"],
@@ -35,22 +34,22 @@ AtlasTW.InstanceData.Naxxramas = {
     DamageType = L["All"],
     Entrances = {
         { letter = "A"..") " .. L["Entrance"] }
-},
+    },
     Reputation = {
-           { name = BF["Argent Dawn"], loot = "ArgentDawn" }
-},
+        { name = BF["Argent Dawn"], loot = "ArgentDawn" }
+    },
     Bosses = {
         {
             name = L["Archmage Tarsis Kir-Moldir"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Mr. Bigglesworth"] .. " (" .. L["Wanders"] .. ")",
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Abomination Wing"],
-},
+        },
         {
             id = "Patchwerk",
             prefix = "1)",
@@ -70,8 +69,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 { id = 22820 }, -- Wand of Fates
                 { id = 22818 }, -- The Plague Bearer
                 { id = 22815 }, -- Severance
-}
-},
+            }
+        },
         {
             id = "Grobbulus",
             prefix = "2)",
@@ -91,8 +90,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 { id = 22810 }, -- Toxin Injector
                 { id = 22803 }, -- Midnight Haze
                 { id = 22988 }, -- The End of Dreams
-}
-},
+            }
+        },
         {
             id = "Gluth",
             prefix = "3)",
@@ -126,8 +125,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 { id = 22355, dropRate = 8, container = { 22423, 47264, 22483 } }, -- Desecrated Bracers
                 { id = 22356, dropRate = 8, container = { 22422, 47266, 22482 } }, -- Desecrated Waistguard
                 { id = 22358, dropRate = 8, container = { 22420, 47268, 22480 } }, -- Desecrated Sabatons
-}
-},
+            }
+        },
         {
             id = "Thaddius",
             prefix = "4)",
@@ -148,12 +147,12 @@ AtlasTW.InstanceData.Naxxramas = {
                 {},
                 { id = 22808 }, -- The Castigator
                 { id = 22801 }, -- Spire of Twilight
-}
-},
+            }
+        },
         {
             name = L["Spider Wing"],
             color = "|cffFFA500",
-},
+        },
         {
             id = "AnubRekhan",
             prefix = "1)",
@@ -175,8 +174,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 { id = 22939 }, -- Band of Unanswered Prayers
                 {},
                 { id = 22937 }, -- Gem of Nerubis
-}
-},
+            }
+        },
         {
             id = "GrandWidowFaerlina",
             prefix = "2)",
@@ -197,8 +196,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 {},
                 { id = 22942 }, -- The Widow's Embrace
                 { id = 22806 }, -- Widow's Remorse
-}
-},
+            }
+        },
         {
             id = "Maexxna",
             prefix = "3)",
@@ -219,12 +218,12 @@ AtlasTW.InstanceData.Naxxramas = {
                 {},
                 { id = 22807 }, -- Wraith Blade
                 { id = 22804 }, -- Maexxna's Fang
-}
-},
+            }
+        },
         {
             name = L["Plague Wing"],
             color = "|cff9370DB",
-},
+        },
         {
             id = "NoththePlaguebringer",
             prefix = "1)",
@@ -247,8 +246,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 { id = 23005 }, -- Totem of Flowing Water
                 {},
                 { id = 22816 }, -- Hatchet of Sundered Bone
-}
-},
+            }
+        },
         {
             id = "HeigantheUnclean",
             prefix = "2)",
@@ -268,8 +267,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 { id = 23019 }, -- Icebane Helmet
                 { id = 23036 }, -- Necklace of Necropsy
                 { id = 23068 }, -- Legplates of Carnage
-}
-},
+            }
+        },
         {
             id = "Loatheb",
             prefix = "3)",
@@ -290,12 +289,12 @@ AtlasTW.InstanceData.Naxxramas = {
                 {},
                 { id = 23039 }, -- The Eye of Nerub
                 { id = 22800 }, -- Brimstone Staff
-}
-},
+            }
+        },
         {
             name = L["Deathknight Wing"],
             color = "|cffff0000",
-},
+        },
         {
             id = "InstructorRazuvious",
             prefix = "1)",
@@ -317,8 +316,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 {},
                 { id = 23009 }, -- Wand of the Whispering Dead
                 { id = 23014 }, -- Iblis, Blade of the Fallen Seraph
-}
-},
+            }
+        },
         {
             id = "GothiktheHarvester",
             prefix = "2)",
@@ -338,8 +337,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 { id = 23023 }, -- Sadist's Collar
                 { id = 23021 }, -- The Soul Harvester's Bindings
                 { id = 23073 }, -- Boots of Displacement
-}
-},
+            }
+        },
         {
             id = "TheFourHorsemen",
             prefix = "3)",
@@ -361,8 +360,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 { id = 22811 }, -- Soulstring
                 { id = 22809 }, -- Maul of the Redeemed Crusader
                 { id = 22691 }, -- Corrupted Ashbringer
-}
-},
+            }
+        },
         { name = BB["Thane Korth'azz"], color = "|cff9d9d9d" },
         { name = BB["Lady Blaumeux"], color = "|cff9d9d9d" },
         { name = BB["Highlord Mograine"], color = "|cff9d9d9d" },
@@ -374,13 +373,13 @@ AtlasTW.InstanceData.Naxxramas = {
             color = "|cffff0000",
             loot = {
                 { id = 22719, dropRate = 100 }, -- Omarion's Handbook
-}
-},
+            }
+        },
         {
             prefix = "2')",
             name = L["Icebellow Anvil"],
             color = "|cffff0000",
-},
+        },
         { name = L["Frostwyrm Lair"], color = "|cffFFD700" },
         {
             id = "Sapphiron",
@@ -408,8 +407,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 { id = 23548, dropRate = 50 }, -- Might of the Scourge
                 { id = 23545, dropRate = 50 }, -- Power of the Scourge
                 { id = 23547, dropRate = 50 }, -- Resilience of the Scourge
-}
-},
+            }
+        },
         {
             id = "KelThuzard",
             prefix = "2)",
@@ -440,8 +439,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 {},
                 { id = 22733, dropRate = 100, container = { 22631, 22589, 22630, 22632 } }, -- Staff Head of Atiesh
                 { id = 36666, dropRate = 1 }, -- Plagued Riding Spider
-}
-},
+            }
+        },
         {
             id = "NAXTrash",
             name = L["Trash Mobs"].."-"..BZ["Naxxramas"],
@@ -465,10 +464,10 @@ AtlasTW.InstanceData.Naxxramas = {
                 { id = 22376, disc = L["Quest Item"], dropRate = 35 }, -- Wartorn Cloth Scrap
                 { id = 22373, disc = L["Quest Item"], dropRate = 26 }, -- Wartorn Leather Scrap
                 { id = 22374, disc = L["Quest Item"], dropRate = 27 }, -- Wartorn Chain Scrap
-}
-},
+            }
+        },
         { name = L["Tier 3 Sets"], items = "AtlasLootT3SetMenu" },
-}
+    }
 }
 
 -- Initialize items for all bosses

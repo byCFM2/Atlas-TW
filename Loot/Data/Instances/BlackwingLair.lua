@@ -12,7 +12,7 @@
 --- • Unique trinkets and accessories
 --- • Attunement requirement tracking
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -23,7 +23,6 @@ local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
-
 
 AtlasTW.InstanceData.BlackwingLair = {
     Name = BZ["Blackwing Lair"],
@@ -37,7 +36,7 @@ AtlasTW.InstanceData.BlackwingLair = {
         { letter = "A) ".. L["Entrance"] },
         { letter = "B) ".. L["Connection"] },
         { letter = "C) ".. L["Connection"] }
-},
+    },
     Bosses = {
         {
             id = "Razorgore",
@@ -65,8 +64,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 {},
                 { id = 19335, dropRate = 10 }, -- Spineshatter
                 { id = 19334, dropRate = 10 }, -- The Untamed Blade
-}
-},
+            }
+        },
         {
             id = "Vaelastrasz",
             prefix = "2)",
@@ -93,8 +92,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 {},
                 { id = 19348, dropRate = 10 }, -- Red Dragonscale Protector
                 { id = 19346, dropRate = 10 }, -- Dragonfang Blade
-}
-},
+            }
+        },
         {
             id = "Lashlayer",
             prefix = "3)",
@@ -131,8 +130,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 {},
                 {},
                 { id = 20383, dropRate = 100 }, -- Head of the Broodlord Lashlayer
-}
-},
+            }
+        },
         {
             id = "Firemaw",
             prefix = "4)",
@@ -169,8 +168,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 {},
                 { id = 19397 }, -- Ring of Blackrock
                 { id = 19395 }, -- Rejuvenating Gem
-}
-},
+            }
+        },
         { prefix = "5)", name = L["Master Elemental Shaper Krixix"], color = "|cff9d9d9d", },
         {
             id = "Ebonroc",
@@ -208,8 +207,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 19397 }, -- Ring of Blackrock
                 { id = 19406, dropRate = 17 }, -- Drake Fang Talisman
                 { id = 19395 }, -- Rejuvenating Gem
-}
-},
+            }
+        },
         {
             id = "Flamegor",
             prefix = "7)",
@@ -246,8 +245,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 19397 }, -- Ring of Blackrock
                 { id = 19395 }, -- Rejuvenating Gem
                 { id = 19431, dropRate = 17 }, -- Styleen's Impeding Scarab
-}
-},
+            }
+        },
         {
             id = "Chromaggus",
             prefix = "8)",
@@ -284,8 +283,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 19349, dropRate = 10 }, -- Elementium Reinforced Bulwark
                 { id = 19347, dropRate = 10 }, -- Claw of Chromaggus
                 { id = 19352, dropRate = 10 }, -- Chromatically Tempered Sword
-}
-},
+            }
+        },
         {
             id = "Nefarian",
             prefix = "9)",
@@ -328,8 +327,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 17964, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12800 } }, -- Gray Sack of Gems
                 { id = 17965, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12363 } }, -- Yellow Sack of Gems
                 { id = 17969, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12799, 6332 } }, -- Red Sack of Gems
-}
-},
+            }
+        },
         { prefix = "1)", name = L["Alchemy Lab"], color = "|cff00FF00" },
         { prefix = "2)", name = L["Draconic for Dummies"], color = "|cff00FF00" },
         {
@@ -352,9 +351,9 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 18562, disc = L["Trade Goods"], dropRate = 8 }, -- Elementium Ore
                 { id = 19183, quantity = { 1, 2 }, disc = L["Consumable"], dropRate = 47 }, -- Hourglass Sand
                 { id = 70173, dropRate = 2, container = { 56062 } }, -- Plans: Blackwing Signet of Command
-}
-}
-}
+            }
+        }
+    }
 }
 
 AtlasTW.InstanceData.BlackrockMountainEnt = {
@@ -365,24 +364,24 @@ AtlasTW.InstanceData.BlackrockMountainEnt = {
         { letter = "B) " .. BZ["Burning Steppes"] },
         { letter = "C) " .. BZ["Blackrock Depths"] .. " (BRD)" },
         { letter = "D) " .. BZ["Lower Blackrock Spire"] .. " (LBRS)" }
-},
+    },
     Bosses = {
         {
             name = BZ["Molten Core"] .. " (MC) (" .. L["through "] .. "BRD)",
             color = "|cff6666ff"
-},
+        },
         {
             name = BZ["Upper Blackrock Spire"] .. " (UBRS)",
             color = "|cff6666ff"
-},
+        },
         {
             name = BZ["Blackwing Lair"] .. " (BWL) (" .. L["through "] .. "UBRS)",
             color = "|cff6666ff"
-},
+        },
         {
             name = L["Bodley"] .. " (" .. L["Ghost"] .. ")",
             color = "|cff6666ff"
-},
+        },
         {
             id = "BRDPyron",
             prefix = "1)",
@@ -390,35 +389,35 @@ AtlasTW.InstanceData.BlackrockMountainEnt = {
             postfix = L["Wanders"],
             loot = {
                 { id = 14486, dropRate = 18, container = { 14134 } }, -- Pattern: Cloak of Fire
-}
-},
+            }
+        },
         {
             prefix = "2)",
             name = BB["Lothos Riftwaker"],
             postfix = "MC " .. L["Teleport"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "3)",
             name = BB["Franclorn Forgewright"],
             postfix = L["Ghost"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "4)",
             name = L["Meeting Stone"] .. " (BRD)",
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "5)",
             name = L["Orb of Command"] .. " (BWL " .. L["Teleport"] .. ")",
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "6)",
             name = L["Meeting Stone"] .. " (LBRS, UBRS)",
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BRMScarshieldQuartermaster",
             prefix = "7)",
@@ -429,8 +428,8 @@ AtlasTW.InstanceData.BlackrockMountainEnt = {
                 { id = 13248, dropRate = 3 }, -- Burstshot Harquebus
                 {},
                 { id = 18987, dropRate = 100 }, -- Blackhand's Command
-}
-},
+            }
+        },
         {
             id = "BRMBehemoth",
             prefix = "8)",
@@ -440,18 +439,17 @@ AtlasTW.InstanceData.BlackrockMountainEnt = {
                 { id = 11603, dropRate = 99 }, -- Vilerend Slicer
                 {},
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
+            }
+        }
+    }
 }
-}
-}
-}
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.BlackwingLair.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end
 
 for _, bossData in ipairs(AtlasTW.InstanceData.BlackrockMountainEnt.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

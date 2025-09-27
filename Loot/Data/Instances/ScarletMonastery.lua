@@ -25,7 +25,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.ScarletMonasteryLibrary = {
     Name = BZ["Scarlet Monastery (Library)"],
     Location = BZ["Tirisfal Glades"],
@@ -35,7 +34,7 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) " .. L["Main Entrance"] }
-},
+    },
     Bosses = {
         {
             id = "SMHoundmasterLoksey",
@@ -48,8 +47,8 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
                 { id = 3456 }, -- Dog Whistle
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "SMDoan",
             prefix = "2)",
@@ -62,8 +61,8 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
                 { id = 7711 }, -- Robe of Doan
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "SMDoansBox",
             prefix = "1)",
@@ -71,8 +70,8 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
             color = "|cff66cc33",
             loot = {
                 { id = 7146, disc = L["Key"] }, -- The Scarlet Key
-}
-},
+            }
+        },
         {
             id = "SMBrotherWystan",
             prefix = "3)",
@@ -83,8 +82,8 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
                 { id = 55472 }, -- Swiftstrike Kilt
                 { id = 55471 }, -- Wystan's Steel Fist
                 { id = 55470 }, -- Libram of Radiance
-}
-},
+            }
+        },
         {
             id = "SMLTrash",
             name = L["Trash Mobs"].."-"..BZ["Scarlet Monastery"],
@@ -117,12 +116,11 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
                 { id = 7757 }, -- Windweaver Staff
                 { id = 80794, dropRate = .02 }, -- Ironfist
                 { id = 80799, dropRate = .02 }, -- Wand of Divine Justice
-}
-},
+            }
+        },
         { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
+    }
 }
-}
-
 
 AtlasTW.InstanceData.ScarletMonasteryArmory = {
     Name = BZ["Scarlet Monastery (Armory)"],
@@ -133,10 +131,10 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) " .. L["Main Entrance"] }
-},
+    },
     Keys = {
         { name = L["The Scarlet Key"], loot = "VanillaKeys" }
-},
+    },
     Bosses = {
         {
             id = "SMHerod",
@@ -150,8 +148,8 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
                 { id = 7717 }, -- Ravager
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "SMQuartermasterDaghelm",
             name = BB["Armory Quartermaster Daghelm"],
@@ -163,8 +161,8 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
                 { id = 55474 }, -- Balanced Razor Shivs
                 {},
                 { id = 41411, container = { 7964, 7965 }, dropRate = 100 }, -- Journal of Basil Frye
-}
-},
+            }
+        },
         {
             id = "SMATrash",
             name = L["Trash Mobs"].."-"..BZ["Scarlet Monastery (Armory)"],
@@ -197,12 +195,11 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
                 { id = 10329, dropRate = 1.6 }, -- Scarlet Belt
                 {},
                 { id = 23192, dropRate = 1.6 }, -- Tabard of the Scarlet Crusade
-}
-},
+            }
+        },
         { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
+    }
 }
-}
-
 
 AtlasTW.InstanceData.ScarletMonasteryCathedral = {
     Name = BZ["Scarlet Monastery (Cathedral)"],
@@ -213,10 +210,10 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) " .. L["Main Entrance"] }
-},
+    },
     Keys = {
         { name = L["The Scarlet Key"], loot = "VanillaKeys" }
-},
+    },
     Bosses = {
         {
             id = "SMFairbanks",
@@ -227,8 +224,8 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
                 { id = 19507 }, -- Inquisitor's Shawl
                 { id = 19508 }, -- Branded Leather Bracers
                 { id = 19509 }, -- Dusty Mail Boots
-}
-},
+            }
+        },
         {
             id = "SMMograine",
             prefix = "2)",
@@ -243,8 +240,8 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
                 { id = 51804, dropRate = 8 }, -- Libram of the Resolute
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "SMWhitemane",
             prefix = "3)",
@@ -256,8 +253,8 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
                 { id = 7721 }, -- Hand of Righteousness
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "SMCTrash",
             name = L["Trash Mobs"].."-"..BZ["Scarlet Monastery (Cathedral)"],
@@ -291,12 +288,11 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
                 { id = 10328, dropRate = .3 }, -- Scarlet Chestpiece
                 { id = 10331, dropRate = 1.7 }, -- Scarlet Gauntlets
                 { id = 10329, dropRate = 1.6 }, -- Scarlet Belt
-}
-},
+            }
+        },
         { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
+    }
 }
-}
-
 
 AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
     Name = BZ["Scarlet Monastery (Graveyard)"],
@@ -307,7 +303,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) " .. L["Main Entrance"] }
-},
+    },
     Bosses = {
         {
             id = "SMVishas",
@@ -322,12 +318,12 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
                 { id = 80742, dropRate = 35 }, -- Searing Cowl
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             name = L["Vorrel Sengutz"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "SMScorn",
             prefix = "2)",
@@ -338,8 +334,8 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
                 { id = 23169 }, -- Scorn's Icy Choker
                 { id = 23170 }, -- The Frozen Clutch
                 { id = 23168 }, -- Scorn's Focal Dagger
-}
-},
+            }
+        },
         {
             id = "SMBloodmageThalnos",
             prefix = "3)",
@@ -352,8 +348,8 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
                 { id = 80743, dropRate = 35 }, -- Darkcaster Gloves
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "SMIronspine",
             prefix = "1')",
@@ -365,8 +361,8 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
                 { id = 7688 }, -- Ironspine's Ribcage
                 { id = 7687 }, -- Ironspine's Fist
                 { id = 7686 }, -- Ironspine's Eye
-}
-},
+            }
+        },
         {
             id = "SMAzshir",
             name = BB["Azshir the Sleepless"],
@@ -377,8 +373,8 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
                 { id = 7709 }, -- Blighted Leggings
                 { id = 7708 }, -- Necrotic Wand
                 { id = 7731 }, -- Ghostshard Talisman
-}
-},
+            }
+        },
         {
             id = "SMFallenChampion",
             name = BB["Fallen Champion"],
@@ -389,8 +385,8 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
                 { id = 7691 }, -- Embalmed Shroud
                 { id = 7690 }, -- Ebon Vise
                 { id = 7689 }, -- Morbid Dawn
-}
-},
+            }
+        },
         {
             id = "SMDukeDreadmoore",
             prefix = "4)",
@@ -401,8 +397,8 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
                 { id = 55386 }, -- Harbinger Girdle
                 { id = 55387 }, -- Introduction to the Dark Arts
                 { id = 55389 }, -- Ghoulskin Treads
-}
-},
+            }
+        },
         {
             id = "SMGTrash",
             name = L["Trash Mobs"].."-"..BZ["Scarlet Monastery (Graveyard)"],
@@ -424,12 +420,11 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
                 { id = 7753 }, -- Bloodspiller
                 { id = 7730 }, -- Cobalt Crusher
                 { id = 80794, dropRate = .02 }, -- Ironfist
-}
-},
+            }
+        },
         { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
+    }
 }
-}
-
 
 AtlasTW.InstanceData.ScarletMonasteryEnt = {
     Name = BZ["Scarlet Monastery"] .. " (" .. L["Entrance"] .. ")",
@@ -441,27 +436,26 @@ AtlasTW.InstanceData.ScarletMonasteryEnt = {
         { letter = "C) " .. L["Cathedral"] },
         { letter = "D) " .. L["Armory"] },
         { letter = "E) " .. L["Library"] }
-},
+    },
     Bosses = {}
 }
 
-
 for _, bossData in ipairs(AtlasTW.InstanceData.ScarletMonasteryLibrary.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end
 
 for _, bossData in ipairs(AtlasTW.InstanceData.ScarletMonasteryArmory.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end
 
 for _, bossData in ipairs(AtlasTW.InstanceData.ScarletMonasteryCathedral.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end
 
 for _, bossData in ipairs(AtlasTW.InstanceData.ScarletMonasteryGraveyard.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

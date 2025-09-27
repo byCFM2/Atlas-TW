@@ -30,44 +30,44 @@ AtlasTW.InstanceData.GnomereganEnt = {
         { letter = "A", info = L["Entrance"] },
         { letter = "B", info = BZ["Gnomeregan"] .. " (" .. L["Front"] .. ")" },
         { letter = "C", info = BZ["Gnomeregan"] .. " (" .. L["Back"] .. ")" },
-},
+    },
     Bosses = {
         {
             name = L["Meeting Stone"],
             color = "|cff6666ff",
-},
+        },
         {
             id = "GNElevator",
             prefix = "1)",
             name = L["Elevator"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "GNTranspolyporter",
             prefix = "2)",
             name = L["Transpolyporter"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "GNSprok",
             name = L["Sprok"],
             color = "|cff9d9d9d"
-},
+        },
         {
             id = "GNPunchographA",
             prefix = "3)",
             name = L["Matrix Punchograph 3005-A"],
             loot = {
                 { id = 9280 }, -- Yellow Punch Card
-}
-},
+            }
+        },
         {
             id = "GNNamdoBizzfizzle",
             name = BB["Namdo Bizzfizzle"],
             loot = {
                 { id = 14639, container = { 4381 } }, -- Schematic: Minor Recombobulator
-}
-},
+            }
+        },
         {
             id = "GNTechbot",
             prefix = "4)",
@@ -77,16 +77,16 @@ AtlasTW.InstanceData.GnomereganEnt = {
                 {},
                 { id = 9277, dropRate = 100 }, -- Techbot's Memory Core
                 { id = 9309, dropRate = 100, container = { 9608, 9609 } }, -- Robo-mechanical Guts
-}
-},
+            }
+        },
         {
             id = "GNOutsideTrash",
             name = L["Trash Mobs"].."-"..BZ["Gnomeregan"],
             loot = {
                 { id = 9279, dropRate = 15, container = { 9280 } }, -- White Punch Card
-}
-},
-}
+            }
+        },
+    }
 }
 
 AtlasTW.InstanceData.Gnomeregan = {
@@ -99,10 +99,10 @@ AtlasTW.InstanceData.Gnomeregan = {
     Entrances = {
         { letter = "A", info = L["Front"] },
         { letter = "B", info = L["Back"] }
-},
+    },
     Keys = {
         { name = L["Workshop Key"], loot = "VanillaKeys", info = L["Back"] }
-},
+    },
 
     Bosses = {
         {
@@ -110,7 +110,7 @@ AtlasTW.InstanceData.Gnomeregan = {
             prefix = "1)",
             name = L["Blastmaster Emi Shortfuse"],
             color = "|cff9d9d9d"
-},
+        },
         {
             id = "GNGrubbis",
             name = BB["Grubbis"],
@@ -123,52 +123,52 @@ AtlasTW.InstanceData.Gnomeregan = {
                 { id = 80739 }, -- Rockbiter
                 {},
                 { id = 9308, disc = L["Quest Item"], dropRate = 15, container = { 9363 } }, -- Grime-Encrusted Object
-}
-},
+            }
+        },
         {
             id = "GNChomper",
             name = L["Chomper"],
             color = "|cff9d9d9d"
-},
+        },
         {
             id = "GNCleanRoom",
             prefix = "2)",
             name = L["Clean Room"],
             color = "|cff9d9d9d"
-},
+        },
         {
             id = "GNTinkSprocketwhistle",
             name = L["Tink Sprocketwhistle"],
             color = "|cff9d9d9d"
-},
+        },
         {
             id = "GNSparklematic",
             name = L["The Sparklematic 5200"],
             color = "|cff9d9d9d"
-},
+        },
         {
             id = "GNMailBox",
             name = L["Mail Box"],
             color = "|cff9d9d9d"
-},
+        },
         {
             id = "GNKernobee",
             prefix = "3)",
             name = L["Kernobee"],
             color = "|cff9d9d9d"
-},
+        },
         {
             id = "GNAlarmabomb",
             name = L["Alarm-a-bomb 2600"],
             color = "|cff9d9d9d"
-},
+        },
         {
             id = "GNPunchographB",
             name = L["Matrix Punchograph 3005-B"],
             loot = {
                 { id = 9282 }, -- Blue Punch Card
-}
-},
+            }
+        },
         {
             id = "GNViscousFallout",
             prefix = "4)",
@@ -178,8 +178,8 @@ AtlasTW.InstanceData.Gnomeregan = {
                 { id = 9454 }, -- Acidic Walkers
                 { id = 9453 }, -- Toxic Revenger
                 { id = 9452 }, -- Hydrocane
-}
-},
+            }
+        },
         {
             id = "GNElectrocutioner6000",
             prefix = "5)",
@@ -191,15 +191,15 @@ AtlasTW.InstanceData.Gnomeregan = {
                 { id = 9448 }, -- Spidertank Oilrag
                 {},
                 { id = 6893, disc = L["Key"] }, -- Workshop Key
-}
-},
+            }
+        },
         {
             id = "GNPunchographC",
             name = L["Matrix Punchograph 3005-C"],
             loot = {
                 { id = 9281 }, -- Red Punch Card
-}
-},
+            }
+        },
         {
             id = "GNCrowdPummeler960",
             prefix = "6)",
@@ -215,15 +215,15 @@ AtlasTW.InstanceData.Gnomeregan = {
                 { id = 9327, dropRate = 1 }, -- Security DELTA Data Access Card
                 { id = 9309, quantity = { 8, 10 }, dropRate = 5, container = { 9608, 9609 } }, -- Robo-mechanical Guts
                 { id = 81275, dropRate = .8, container = { 81253, 81252, 81251, 81250 } }, -- Intact Pounder Mainframe
-}
-},
+            }
+        },
         {
             id = "GNPunchographD",
             name = L["Matrix Punchograph 3005-D"],
             loot = {
                 { id = 9316 }, -- Prismatic Punch Card
-}
-},
+            }
+        },
         {
             id = "GNDIAmbassador",
             prefix = "7)",
@@ -235,8 +235,8 @@ AtlasTW.InstanceData.Gnomeregan = {
                 { id = 9457 }, -- Royal Diplomatic Scepter
                 {},
                 { id = 9308, disc = L["Quest Item"], dropRate = 15, container = { 9363 } }, -- Grime-Encrusted Object
-}
-},
+            }
+        },
         {
             id = "GNMekgineerThermaplugg",
             prefix = "8)",
@@ -262,8 +262,8 @@ AtlasTW.InstanceData.Gnomeregan = {
                 { id = 81318, dropRate = 100, container = { 81319, 81320 } }, -- Megaflux Capacitor
                 { id = 9309, quantity = { 8, 10 }, dropRate = 5, container = { 9608, 9609 } }, -- Robo-mechanical Guts
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "GNTrash",
             name = L["Trash Mobs"].." "..BZ["Gnomeregan"],
@@ -281,19 +281,18 @@ AtlasTW.InstanceData.Gnomeregan = {
                 { id = 80798 }, -- Charged Servo Arm
                 {},
                 { id = 9308, disc = L["Quest Item"], dropRate = 15, container = { 9363 } }, -- Grime-Encrusted Object
+            }
+        },
+    },
 }
-},
-},
-}
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.Gnomeregan.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end
 
 
 for _, bossData in ipairs(AtlasTW.InstanceData.GnomereganEnt.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

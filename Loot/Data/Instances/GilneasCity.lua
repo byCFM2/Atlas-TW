@@ -25,7 +25,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.GilneasCity = {
     Name = BZ["Gilneas City"],
     Location = BZ["Gilneas"],
@@ -35,7 +34,7 @@ AtlasTW.InstanceData.GilneasCity = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A)"..L["Entrance"] }
-},
+    },
     Bosses = {
         {
             id = "GCMatthiasHoltz",
@@ -48,8 +47,8 @@ AtlasTW.InstanceData.GilneasCity = {
                 { id = 61306 }, -- Worgen Hunter Grips
                 {},
                 { id = 61307, dropRate = 2 }, -- Worgen Hunter Musket
-}
-},
+            }
+        },
         {
             id = "GCPackmasterRagetooth",
             prefix = "2)",
@@ -61,18 +60,18 @@ AtlasTW.InstanceData.GilneasCity = {
                 { id = 61302 }, -- Wolfheart Necklace
                 {},
                 { id = 61303, dropRate = 2 }, -- Orb of Aka'thar
-}
-},
+            }
+        },
         {
             prefix = "a)",
             name = L["Dawnstone Plans"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "b)",
             name = L["Manuscript of Hydromancy II"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "GCJudgeSutherland",
             prefix = "3)",
@@ -85,8 +84,8 @@ AtlasTW.InstanceData.GilneasCity = {
                 { id = 61308 }, -- Gavel of Gilnean Justice
                 {},
                 { id = 61312, dropRate = 2 }, -- The Black Pendant
-}
-},
+            }
+        },
         {
             id = "GCDustivanBlackcowl",
             prefix = "4)",
@@ -102,8 +101,8 @@ AtlasTW.InstanceData.GilneasCity = {
                 {},
                 { id = 61626, dropRate = 100, container = { 61627, 61628, 61629, 61630 } }, -- Ebonmere Deed
                 { id = 41357, dropRate = 100, container = { 70134 } }, -- Tarnished Citrine Choker
-}
-},
+            }
+        },
         {
             id = "GCMarshalMagnusGreystone",
             prefix = "5)",
@@ -120,8 +119,8 @@ AtlasTW.InstanceData.GilneasCity = {
                 { id = 61368, dropRate = 5 }, -- Greymane Tabard
                 {},
                 { id = 113, dropRate = 5, container = { 151 } }, -- Plans: Truesilver Belt Buckle
-}
-},
+            }
+        },
         {
             id = "GCHorsemasterLevvin",
             prefix = "6)",
@@ -134,8 +133,8 @@ AtlasTW.InstanceData.GilneasCity = {
                 { id = 61737 }, -- Stablemaster's Nightlight
                 {},
                 { id = 83157, dropRate = 0.18 }, -- Greymane Charger
-}
-},
+            }
+        },
         {
             id = "GCHarlowFamilyChest",
             prefix = "7)",
@@ -148,8 +147,8 @@ AtlasTW.InstanceData.GilneasCity = {
                 { id = 61318 }, -- Fleshslasher
                 {},
                 { id = 61322, dropRate = 5 }, -- Resurging Necklace
-}
-},
+            }
+        },
         {
             id = "GCGennGreymane",
             prefix = "8)",
@@ -171,8 +170,8 @@ AtlasTW.InstanceData.GilneasCity = {
                 {},
                 { id = 61352, dropRate = 100, container = { 61353, 61354, 61355 } }, -- Genn Greymane's Head
                 { id = 61496, dropRate = 100, container = { 61497, 61498, 61499, 61369 } }, -- The Greymane Crown
-}
-},
+            }
+        },
         {
             id = "GCTrash",
             name = L["Trash Mobs"].."-"..BZ["Gilneas City"],
@@ -190,14 +189,13 @@ AtlasTW.InstanceData.GilneasCity = {
                 { id = 61596 }, -- Defender's Glaive
                 {},
                 { id = 41421, dropRate = 10, container = { 55505 } }, -- Darkpelt Blood
-}
-},
+            }
+        },
         { name = BIS["Greymane Armor"], items = "GreymaneArmor" },
-},
+    },
 }
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.GilneasCity.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

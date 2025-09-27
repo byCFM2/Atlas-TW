@@ -26,7 +26,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.Stratholme = {
     Name = BZ["Stratholme"],
     Location = BZ["Eastern Plaguelands"],
@@ -37,15 +36,15 @@ AtlasTW.InstanceData.Stratholme = {
     Entrances = {
         { letter = "A) " .. L["Front"] },
         { letter = "B) " .. L["Side"] }
-},
+    },
     Reputation = {
         { name = BF["Argent Dawn"], loot = "ArgentDawn" }
-},
+    },
     Keys = {
         { name = L["The Scarlet Key"], loot = "VanillaKeys", info = L["Living Side"] },
         { name = L["Key to the City"], loot = "VanillaKeys", info = L["Undead Side"] },
         { name = L["Brazier of Invocation"], loot = "VanillaKeys", info = L["Tier 0.5 Summon"] },
-},
+    },
     Bosses = {
         {
             id = "STRATSkull",
@@ -61,8 +60,8 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-}
-},
+            }
+        },
         {
             id = "STRATStratholmeCourier",
             name = L["Stratholme Courier"],
@@ -74,15 +73,15 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 13305 }, -- Elders' Square Postbox Key
                 { id = 13306 }, -- King's Square Postbox Key
                 { id = 13307 }, -- Fras Siabi's Postbox Key
-}
-},
+            }
+        },
         {
             id = "STRATFrasSiabi",
             name = L["Fras Siabi"],
             loot = {
                 { id = 13171, dropRate = 100 }, -- Smokey's Lighter
-}
-},
+            }
+        },
         {
             id = "STRATAtiesh",
             prefix = "2)",
@@ -90,8 +89,8 @@ AtlasTW.InstanceData.Stratholme = {
             postfix = L["Summon"],
             loot = {
                 { id = 22736, dropRate = 100 }, -- Andonisus, Reaper of Souls
-}
-},
+            }
+        },
         {
             id = "STRATBalzaphon",
             name = BB["Balzaphon"],
@@ -102,8 +101,8 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 23126 }, -- Waistband of Balzaphon
                 {},
                 { id = 23124 }, -- Staff of Balzaphon
-}
-},
+            }
+        },
         {
             id = "STRATHearthsingerForresten",
             prefix = "3)",
@@ -120,8 +119,8 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-}
-},
+            }
+        },
         {
             id = "STRATTheUnforgiven",
             prefix = "4)",
@@ -140,14 +139,14 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             prefix = "5)",
             name = L["Elder Farwhisper"],
             postfix = L["Lunar Festival"],
             items = "LunarFestival",
-},
+        },
         {
             id = "STRATTimmytheCruel",
             prefix = "6)",
@@ -167,8 +166,8 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STRATMalor",
             prefix = "7)",
@@ -194,15 +193,15 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STRATMalorsStrongbox",
             name = L["Malor's Strongbox"],
             loot = {
                 { id = 12845, disc = L["Quest Item"], dropRate = 100 }, -- Medallion of Faith
-}
-},
+            }
+        },
         {
             id = "STRATCrimsonHammersmith",
             prefix = "8)",
@@ -216,15 +215,15 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 12824, container = { 12776 } }, -- Plans: Enchanted Battlehammer
                 {},
                 { id = 124, dropRate = 6, container = { 87 } }, -- Plans: Enchanted Thorium Belt Buckle
-}
-},
+            }
+        },
         {
             id = "STRATBSPlansSerenity",
             name = L["Blacksmithing Plans"],
             loot = {
                 { id = 12827, dropRate = 32, container = { 12781 } }, -- Plans: Serenity
-}
-},
+            }
+        },
         {
             id = "STRATCannonMasterWilley",
             prefix = "9)",
@@ -253,8 +252,8 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STRATArchivistGalford",
             prefix = "10)",
@@ -277,14 +276,14 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STRATDathrohan",
             prefix = "11)",
             name = L["Grand Crusader Dathrohan"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "STRATBalnazzar",
             name = BB["Balnazzar"],
@@ -320,12 +319,12 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
-                    70234, 70235, 70236, 70238 } },
+                        70234, 70235, 70236, 70238 } },
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STRATSothosJarien",
             name = BB["Sothos"].." & "..BB["Jarien"],
@@ -339,8 +338,8 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 22334 }, -- Band of Mending
                 {},
                 { id = 22329 }, -- Scepter of Interminable Focus
-}
-},
+            }
+        },
         {
             id = "STRATMagistrateBarthilas",
             prefix = "12)",
@@ -363,13 +362,13 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             prefix = "13)",
             name = L["Aurius"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "STRATStonespine",
             prefix = "14)",
@@ -384,8 +383,8 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-}
-},
+            }
+        },
         {
             id = "STRATBaronessAnastari",
             prefix = "15)",
@@ -411,8 +410,8 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STRATBlackGuardSwordsmith",
             name = L["Black Guard Swordsmith"],
@@ -423,15 +422,15 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 { id = 13350, dropRate = 100, container = { 12825 } }, -- Insignia of the Black Guard
                 { id = 12825, container = { 12777 } }, -- Plans: Blazing Rapier
-}
-},
+            }
+        },
         {
             id = "STRATBSPlansCorruption",
             name = L["Blacksmithing Plans"],
             loot = {
                 { id = 12830, dropRate = .02, container = { 12782 } }, -- Plans: Corruption
-}
-},
+            }
+        },
         {
             id = "STRATNerubenkan",
             prefix = "16)",
@@ -457,8 +456,8 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STRATMalekithePallid",
             prefix = "17)",
@@ -486,8 +485,8 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STRATRamsteintheGorger",
             prefix = "18)",
@@ -510,8 +509,8 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "STRATBaronRivendare",
             prefix = "19)",
@@ -548,13 +547,13 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
-                    70234, 70235, 70236, 70238 } },
+                        70234, 70235, 70236, 70238 } },
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
-}
-},
+            }
+        },
         { name = L["Ysida Harmon"], color = "|cff9d9d9d" },
         { prefix = "1')", name = L["Crusaders' Square Postbox"], color = "|cff00FF00" },
         { prefix = "2')", name = L["Market Row Postbox"], color = "|cff00FF00" },
@@ -574,8 +573,8 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 13392 }, -- The Postmaster's Seal
                 {},
                 { id = 13393 }, -- Malown's Slam
-},
-},
+            },
+        },
         {
             id = "STRATTrash",
             name = L["Trash Mobs"].."-"..BZ["Stratholme"],
@@ -613,16 +612,15 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 18658, container = { 18639 }, dropRate = 4 }, -- Schematic: Ultra-Flash Shadow Reflector
                 { id = 16052, container = { 16009 }, dropRate = 5 }, -- Schematic: Voice Amplification Modulator
                 { id = 56026, container = { 55259 }, dropRate = .08 }, -- Plans: Sapphire Luminescence
-}
-},
+            }
+        },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
         { name = BIS["The Postmaster"], items = "Strat" },
         { name = L["Tier 0/0.5 Sets"], items = "AtlasLootT0SetMenu" },
-},
+    },
 }
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.Stratholme.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

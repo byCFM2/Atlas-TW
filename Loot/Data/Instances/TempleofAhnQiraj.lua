@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 local imperialRegalia = {
     { id = 21237, disc = L["Quest Item"], dropRate = 4, container = { 21268, 21273, 21275 } }, -- Imperial Qiraji Regalia
 }
@@ -37,9 +36,8 @@ local QirajiBindingsOfCommand = {
 }
 local QirajiBindingsOfDominance = {
     { id = 20932, disc = L["Quest Item"], dropRate = 100, container = { 21391, 47038, 47033, 21388, 47036, 47041, 21345, 47095, 21344, 47098, 21335, -- Qiraji Bindings of Dominance
-        47293, 21338, 47296, 21376, 47153, 47158, 21373, 47156, 47161, 21354, 47363, 47368, 21355, 47366, 47371 } },
+            47293, 21338, 47296, 21376, 47153, 47158, 21373, 47156, 47161, 21354, 47363, 47368, 21355, 47366, 47371 } },
 }
-
 
 AtlasTW.InstanceData.TheTempleofAhnQiraj = {
     Name = BZ["Temple of Ahn'Qiraj"],
@@ -50,10 +48,10 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
     DamageType = L["Nature"],
     Entrances = {
         { letter = "A"..". "..L["Entrance"] }
-},
+    },
     Reputation = {
         { name = BF["Brood of Nozdormu"], loot = "BroodOfNozdormu" },
-},
+    },
 
     Bosses = {
         {
@@ -82,8 +80,8 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 { id = 21229, disc = L["Quest Item"], dropRate = 100 }, -- Qiraji Lord's Insignia
                 {},
                 { id = 22222, container = { 22196 } }, -- Plans: Thick Obsidian Breastplate
-}
-},
+            }
+        },
         {
             id = "TheBugFamily",
             prefix = "2)",
@@ -116,20 +114,20 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 { id = 21683, disc = BB["Princess Yauj"] }, -- Mantle of the Redeemed Prophecy
                 { id = 21682, disc = BB["Princess Yauj"] }, -- Bile-Covered Gauntlets
                 { id = 21687, disc = BB["Princess Yauj"] }, -- Ukko's Ring of Darkness
-}
-},
+            }
+        },
         {
             name = BB["Vem"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = BB["Lord Kri"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = BB["Princess Yauj"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "BattleguardSartura",
             prefix = "3)",
@@ -154,8 +152,8 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 unpack(imperialRegalia),
                 unpack(imperialArmaments),
                 { id = 21229, disc = L["Quest Item"], dropRate = 100 }, -- Qiraji Lord's Insignia
-}
-},
+            }
+        },
         {
             id = "FankrisstheUnyielding",
             prefix = "4)",
@@ -180,8 +178,8 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 unpack(imperialRegalia),
                 unpack(imperialArmaments),
                 { id = 21229, disc = L["Quest Item"], dropRate = 100 }, -- Qiraji Lord's Insignia
-}
-},
+            }
+        },
         {
             id = "Viscidus",
             prefix = "5)",
@@ -204,8 +202,8 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 unpack(imperialRegalia),
                 unpack(imperialArmaments),
                 { id = 21229, disc = L["Quest Item"], dropRate = 100 }, -- Qiraji Lord's Insignia
-}
-},
+            }
+        },
         {
             id = "PrincessHuhuran",
             prefix = "6)",
@@ -227,8 +225,8 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 unpack(imperialArmaments),
                 {},
                 { id = 21229, disc = L["Quest Item"], dropRate = 100 }, -- Qiraji Lord's Insignia
-}
-},
+            }
+        },
         {
             id = "TheTwinEmperors",
             prefix = "7)",
@@ -237,7 +235,7 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
             loot = {
                 { name = BB["Emperor Vek'lor"] },
                 { id = 20930, dropRate = 100, container = { 21387, 47032, 47037, 21366, 21360, -- Vek'lor's Diadem
-                    21372, 47152, 47157, 21353, 47362, 47367 } },
+                        21372, 47152, 47157, 21353, 47362, 47367 } },
                 {},
                 { id = 21602, dropRate = 17 }, -- Qiraji Execution Bracers
                 { id = 21599, dropRate = 17 }, -- Vek'lor's Gloves of Devastation
@@ -266,16 +264,16 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 unpack(imperialRegalia),
                 {},
                 { id = 21229, disc = L["Quest Item"], dropRate = 100 }, -- Qiraji Lord's Insignia
-}
-},
+            }
+        },
         {
             name = "Emperor Vek'lor",
             color = "|cff9d9d9d",
-},
+        },
         {
             name = "Emperor Vek'nilash",
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "Ouro",
             prefix = "8)",
@@ -304,8 +302,8 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 {},
                 { id = 20927, dropRate = 100, container = { 21332, 21362, 21352, 47217, 21346, 47097 } }, -- Ouro's Intact Hide
                 { id = 20931, dropRate = 100, container = { 21390, 47035, 47040, 21368, 21375, 47155, 47160, 21336, 47295, 21356, 47365, 47370 } }, -- Skin of the Great Sandworm
-}
-},
+            }
+        },
         {
             id = "CThun",
             prefix = "9)",
@@ -338,8 +336,8 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 { id = 20933, dropRate = 100, container = { 21351, 47216, 21343, 47096, 21334, 47294, 21357, 47364, 47369 } }, -- Husk of the Old God
                 {},
                 { id = 22734, dropRate = 100, container = { 22631, 22589, 22630, 22632 } }, -- Base of Atiesh
-}
-},
+            }
+        },
         { prefix = "1') ", name = "Andorgos", color = "|cff00FF00" },
         { name = L["Vethsera"], color = "|cff00FF00" },
         { name = L["Kandrostrasz"], color = "|cff00FF00" },
@@ -390,8 +388,8 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 { id = 20865, disc = L["Currency"] }, -- Ivory Scarab
                 { id = 20860, disc = L["Currency"] }, -- Silver Scarab
                 { id = 20858, disc = L["Currency"] }, -- Stone Scarab
-}
-},
+            }
+        },
         {
             id = "AQEnchants",
             name = L["AQ Enchants"],
@@ -404,8 +402,8 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 { id = 20736 }, -- Formula: Enchant Cloak - Dodge
                 { id = 20730 }, -- Formula: Enchant Gloves - Healing Power
                 { id = 20727 }, -- Formula: Enchant Gloves - Shadow Power
-}
-},
+            }
+        },
         {
             id = "AQOpening",
             name = L["AQ Opening Quest Chain"],
@@ -431,10 +429,10 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 { id = 21521 }, -- Runesword of the Red
                 { id = 21522 }, -- Shadowsong's Sorrow
                 { id = 21520 } -- Ravencrest's Legacy
-}
-},
+            }
+        },
         { name = L["Temple of Ahn'Qiraj Sets"], items = "AtlasLootAQ40SetMenu" },
-}
+    }
 }
 
 -- Initialize items for all bosses

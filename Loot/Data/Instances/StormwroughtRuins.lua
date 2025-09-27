@@ -25,7 +25,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.StormwroughtRuins = {
     Name = BZ["Stormwrought Ruins"],
     Location = BZ["Balor"],
@@ -36,10 +35,10 @@ AtlasTW.InstanceData.StormwroughtRuins = {
     Entrances = {
         { letter = "A)"..L["Entrance"].." "..L["Front"] },
         { letter = "B)"..L["Entrance"].." "..L["Back"] },
-},
+    },
     Keys = {
         { name = L["Key to Stormwrought Castle"], loot = "VanillaKeys", info = "6+" },
-},
+    },
     Bosses = {
         {
             id = "SROronok",
@@ -53,8 +52,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58177 }, -- Stormreaver Robe
                 {},
                 { id = 41797, dropRate = 100, container = { 41798 } }, -- The Pendant of Uth'okk
-}
-},
+            }
+        },
         {
             id = "SRDagar",
             prefix = "2)",
@@ -65,8 +64,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58132 }, -- Gluttonous Buckle
                 { id = 58133 }, -- Handmaiden's Bracelet
                 { id = 58176 }, -- Stormreaver Hood
-}
-},
+            }
+        },
         {
             id = "SRLibrarian",
             prefix = "3)",
@@ -79,8 +78,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58141 }, -- Boots of Silence
                 {},
                 { id = 41940, dropRate = 100, disc = L["Quest Item"], container = { 58279, 58280 } }, -- Compendium of Successful Trade
-}
-},
+            }
+        },
         {
             id = "SRDukeBalor",
             prefix = "4)",
@@ -94,8 +93,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 {},
                 { id = 41857, container = { 58073 }, dropRate = 100 }, -- Balor Sigil Ring
                 { id = 41921, container = { 58261, 58262 }, dropRate = 100 }, -- Crown of Balor
-}
-},
+            }
+        },
         {
             id = "SRStormsong",
             prefix = "5)",
@@ -108,8 +107,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58149 }, -- Band of Subservience
                 {},
                 { id = 75, dropRate = 6, container = { 58134 } }, -- Pattern: Stormreaver Gloves
-}
-},
+            }
+        },
         {
             id = "SRDeathlord",
             prefix = "6)",
@@ -127,8 +126,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58276, dropRate = 1 }, -- Hull of Forlorn Souls
                 {},
                 { id = 950, dropRate = .2 }, -- Stormwrought Deathsteed
-}
-},
+            }
+        },
         {
             id = "SRSubjugatorShadecrest",
             prefix = "7)",
@@ -141,8 +140,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58186 }, -- Crown of Oppression
                 {},
                 { id = 83, dropRate = 6, container = { 56113 } }, -- Recipe: Elixir of Rapid Growth
-}
-},
+            }
+        },
         {
             id = "SRMycellakos",
             prefix = "8)",
@@ -155,8 +154,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58182 }, -- Rusted Anchor
                 {},
                 { id = 41926, dropRate = 100, container = { 58268, 58269, 58270 } }, -- Heart of Mycellakos
-}
-},
+            }
+        },
         {
             id = "SREldermaw",
             prefix = "9)",
@@ -167,8 +166,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58188 }, -- Jaw of the Ancient
                 { id = 58189 }, -- Pants of Forgotten Ages
                 { id = 58190 }, -- Razorskin Cape
-}
-},
+            }
+        },
         {
             id = "SRLadyDrazare",
             prefix = "10)",
@@ -181,15 +180,15 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58194 }, -- Nethershard Sickle
                 {},
                 { id = 41942, dropRate = 100, disc = L["Quest Item"] }, -- Arthur's Soul Fragment
-}
-},
+            }
+        },
         {
             prefix = "11)",
             name = BB["Ighal'for"],--38
             loot = {
                 { id = 41939, dropRate = 100, container = { 58277, 58278 } }, -- Broken Bloodstone Pendant
-},
-},
+            },
+        },
         {
             id = "SRMergothid",
             name = BB["Mergothid"],--40
@@ -202,13 +201,13 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58204 }, -- Treads of Forgotten Empathy
                 {},
                 { id = 58199, dropRate = 1 }, -- Spine of Dentarg
-}
-},
+            }
+        },
         {
             prefix = "a)",
             name = L["Severs"],
             color = "|cff00FF00",
-},
+        },
         {
             id = "SRRemainsOfInnocent",
             prefix = "12)",
@@ -221,8 +220,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 58198 }, -- Dissolved Hookblade
                 {},
                 { id = 41938, dropRate = 100 }, -- Etched Toy Sword
-}
-},
+            }
+        },
         {
             id = "SRTrash",
             name = L["Trash Mobs"].."-"..BZ["Stormwrought Ruins"],
@@ -231,8 +230,8 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 70113, container = { 56040 } }, -- Plans: Gleaming Silver Necklace
                 { id = 58178, dropRate = 1.35 }, -- Stormreaver Boots
                 { id = 58131, dropRate = 1.35 }, -- Stormreaver Belt
-        		{ id = 1992 }, -- Swampchill Fetish
-        		{ id = 2262 }, -- Mark of Kern
+                { id = 1992 }, -- Swampchill Fetish
+                { id = 2262 }, -- Mark of Kern
                 { id = 5756 }, -- Sliverblade
                 { id = 5819 }, -- Sunblaze Coif
                 { id = 7727 }, -- Watchman Pauldrons
@@ -253,14 +252,13 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 8225 }, -- Tainted Pierce
                 { id = 8226 }, -- The Butcher
                 { id = 41941, dropRate = 70, disc = L["Quest Item"] }, -- Balorian Treasure
-}
-},
+            }
+        },
         { name = BIS["Stormreaver Attire"], items = "Stormreaver" },
-},
+    },
 }
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.StormwroughtRuins.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

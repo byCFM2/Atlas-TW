@@ -12,7 +12,7 @@
 --- • Rare mount and pet drops
 --- • Reputation reward items
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -23,9 +23,8 @@ local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BC = AceLibrary("Babble-Class-2.2")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
-AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
+AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 local zGSharedLoot = {
     { id = 22713, dropRate = 10 }, -- Zulian Scepter of Rites
@@ -52,24 +51,25 @@ local zGSharedLoot = {
 }
 
 local zGEnchants = {
-	{ id = 19789, disc = L["Head"]..", "..L["Legs"] }, -- Prophetic Aura
-	{ id = 19787, disc = L["Head"]..", "..L["Legs"] }, -- Presence of Sight
-	{ id = 19788, disc = L["Head"]..", "..L["Legs"] }, -- Hoodoo Hex
-	{ id = 19784, disc = L["Head"]..", "..L["Legs"] }, -- Death's Embrace
-	{ id = 19790, disc = L["Head"]..", "..L["Legs"] }, -- Animist's Caress
-	{ id = 19785, disc = L["Head"]..", "..L["Legs"] }, -- Falcon's Call
-	{ id = 19786, disc = L["Head"]..", "..L["Legs"] }, -- Vodouisant's Vigilant Embrace
-	{ id = 19783, disc = L["Head"]..", "..L["Legs"] }, -- Syncretist's Sigil
-	{ id = 19782, disc = L["Head"]..", "..L["Legs"] }, -- Presence of Might
-	{ id = 22635, disc = L["Head"]..", "..L["Legs"] }, -- Savage Guard
-	{},
-	{ id = 20077, disc = L["Shoulder"] }, -- Zandalar Signet of Might
-	{ id = 20076, disc = L["Shoulder"] }, -- Zandalar Signet of Mojo
-	{ id = 20078, disc = L["Shoulder"] }, -- Zandalar Signet of Serenity
-	{ id = 65033, disc = L["Shoulder"] }, -- Zandalar Signet of Tenacity
+    { id = 19789, disc = L["Head"]..", "..L["Legs"] }, -- Prophetic Aura
+    { id = 19787, disc = L["Head"]..", "..L["Legs"] }, -- Presence of Sight
+    { id = 19788, disc = L["Head"]..", "..L["Legs"] }, -- Hoodoo Hex
+    { id = 19784, disc = L["Head"]..", "..L["Legs"] }, -- Death's Embrace
+    { id = 19790, disc = L["Head"]..", "..L["Legs"] }, -- Animist's Caress
+    { id = 19785, disc = L["Head"]..", "..L["Legs"] }, -- Falcon's Call
+    { id = 19786, disc = L["Head"]..", "..L["Legs"] }, -- Vodouisant's Vigilant Embrace
+    { id = 19783, disc = L["Head"]..", "..L["Legs"] }, -- Syncretist's Sigil
+    { id = 19782, disc = L["Head"]..", "..L["Legs"] }, -- Presence of Might
+    { id = 22635, disc = L["Head"]..", "..L["Legs"] }, -- Savage Guard
+    {},
+    { id = 20077, disc = L["Shoulder"] }, -- Zandalar Signet of Might
+    { id = 20076, disc = L["Shoulder"] }, -- Zandalar Signet of Mojo
+    { id = 20078, disc = L["Shoulder"] }, -- Zandalar Signet of Serenity
+    { id = 65033, disc = L["Shoulder"] }, -- Zandalar Signet of Tenacity
 }
+
 local zGidol = {
-	{ id = 22637, dropRate = 100, container = { 19789, 19787, 19788, 19784, 19790, 19785, 19786, 19783, 19782 } }, -- Primal Hakkari Idol
+    { id = 22637, dropRate = 100, container = { 19789, 19787, 19788, 19784, 19790, 19785, 19786, 19783, 19782 } }, -- Primal Hakkari Idol
 }
 
 AtlasTW.InstanceData.ZulGurub = {
@@ -81,20 +81,20 @@ AtlasTW.InstanceData.ZulGurub = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) ".. L["Entrance"] }
-},
+    },
     Reputation = {
         { name = BF["Zandalar Tribe"], loot = "ZandalarTribe" }
-},
-	Keys = {
-		{ name = L["Gurubashi Mojo Madness"], loot = "VanillaKeys", info = L["Edge of Madness"] },
-		{ name = L["Mudskunk Lure"], loot = "VanillaKeys", info = BB["Gahz'ranka"] },
-	 },
+    },
+    Keys = {
+        { name = L["Gurubashi Mojo Madness"], loot = "VanillaKeys", info = L["Edge of Madness"] },
+        { name = L["Mudskunk Lure"], loot = "VanillaKeys", info = BB["Gahz'ranka"] },
+    },
     Bosses = {
         {
             id = "HighPriestessJeklik",
             prefix = "1)",
             name = BB["High Priestess Jeklik"],
-			postfix = L["Bat"],
+            postfix = L["Bat"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 19923 }, -- Jeklik's Opaline Talisman
@@ -109,13 +109,13 @@ AtlasTW.InstanceData.ZulGurub = {
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(zGSharedLoot),
-}
-},
+            }
+        },
         {
             id = "HighPriestVenoxis",
             prefix = "2)",
             name = BB["High Priest Venoxis"],
-			postfix = L["Snake"],
+            postfix = L["Snake"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 19904 }, -- Runed Bloodstained Hauberk
@@ -130,18 +130,18 @@ AtlasTW.InstanceData.ZulGurub = {
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(zGSharedLoot),
-}
-},
-		{
-			prefix = "3)",
-			name = L["Zanza the Restless"],
-			loot = zGEnchants,
-		 },
+            }
+        },
+        {
+            prefix = "3)",
+            name = L["Zanza the Restless"],
+            loot = zGEnchants,
+        },
         {
             id = "HighPriestessMarli",
             prefix = "4)",
             name = BB["High Priestess Mar'li"],
-			postfix = L["Spider"],
+            postfix = L["Spider"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 20032 }, -- Flowing Ritual Robes
@@ -156,13 +156,13 @@ AtlasTW.InstanceData.ZulGurub = {
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(zGSharedLoot),
-}
-},
+            }
+        },
         {
             id = "BloodlordMandokir",
             prefix = "5)",
             name = BB["Bloodlord Mandokir"],
-			postfix = L["Raptor"],
+            postfix = L["Raptor"],
             defaults = { dropRate = 8 },
             loot = {
                 { id = 19878 }, -- Bloodsoaked Pauldrons
@@ -180,7 +180,7 @@ AtlasTW.InstanceData.ZulGurub = {
                 { id = 19866 }, -- Warblade of the Hakkari
                 { id = 19874 }, -- Halberd of Smiting
                 {},
-				unpack(zGidol),
+                unpack(zGidol),
                 {},
                 {},
                 { id = 19872, dropRate = 2 }, -- Armored Razzashi Raptor
@@ -194,68 +194,68 @@ AtlasTW.InstanceData.ZulGurub = {
                 { id = 19718, dropRate = 11, container = { 19843, 19848, 19840 } }, -- Primal Hakkari Stanchion
                 { id = 19719, dropRate = 11, container = { 19829, 19835, 19823 } }, -- Primal Hakkari Girdle
                 { id = 19720, dropRate = 11, container = { 19842, 19849, 19839 } }, -- Primal Hakkari Sash
-}
-},
-		{
-			name = L["Ohgan"],
-			color = "|cff9d9d9d",
-		 },
-		{
-			prefix = "6)",
-			name = L["Edge of Madness"],
-			postfix = L["Optional"],
-			color = "|cff9d9d9d",
-		 },
+            }
+        },
+        {
+            name = L["Ohgan"],
+            color = "|cff9d9d9d",
+        },
+        {
+            prefix = "6)",
+            name = L["Edge of Madness"],
+            postfix = L["Optional"],
+            color = "|cff9d9d9d",
+        },
         {
             id = "Grilek",
             name = BB["Gri'lek"],
-			postfix = L["Random"],
+            postfix = L["Random"],
             defaults = { dropRate = 43 },
             loot = {
                 { id = 19961 }, -- Gri'lek's Grinder
                 { id = 19962 }, -- Gri'lek's Carver
                 {},
                 { id = 19939, disc = L["Quest Item"], dropRate = 100, container = { 19959, 19957, 19958, 19954, 19955, 19953, 19956, 19951, 19952 } }, -- Gri'lek's Blood
-}
-},
+            }
+        },
         {
             id = "Hazzarah",
             name = BB["Hazza'rah"],
-			postfix = L["Random"],
+            postfix = L["Random"],
             loot = {
                 { id = 19967, dropRate = 45 }, -- Thoughtblighter
                 { id = 19968, dropRate = 40 }, -- Fiery Retributer
                 {},
                 { id = 19942, disc = L["Quest Item"], dropRate = 100, container = { 19959, 19957, 19958, 19954, 19955, 19953, 19956, 19951, 19952 } }, -- Hazza'rah's Dream Thread
-}
-},
+            }
+        },
         {
             id = "Renataki",
             name = BB["Renataki"],
-			postfix = L["Random"],
+            postfix = L["Random"],
             loot = {
                 { id = 19964, dropRate = 40 }, -- Renataki's Soul Conduit
                 { id = 19963, dropRate = 45 }, -- Pitchfork of Madness
                 {},
                 { id = 19940, disc = L["Quest Item"], dropRate = 100, container = { 19959, 19957, 19958, 19954, 19955, 19953, 19956, 19951, 19952 } }, -- Renataki's Tooth
-}
-},
+            }
+        },
         {
             id = "Wushoolay",
             name = BB["Wushoolay"],
-			postfix = L["Random"],
+            postfix = L["Random"],
             loot = {
                 { id = 19993, dropRate = 45 }, -- Hoodoo Hunting Bow
                 { id = 19965, dropRate = 40 }, -- Wushoolay's Poker
                 {},
                 { id = 19941, disc = L["Quest Item"], dropRate = 100, container = { 19959, 19957, 19958, 19954, 19955, 19953, 19956, 19951, 19952 } }, -- Wushoolay's Mane
-}
-},
+            }
+        },
         {
             id = "Gahzranka",
             prefix = "7)",
             name = BB["Gahz'ranka"],
-			postfix = L["Optional"],
+            postfix = L["Optional"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 19945 }, -- Foror's Eyepatch
@@ -274,13 +274,13 @@ AtlasTW.InstanceData.ZulGurub = {
                 { id = 17964, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12800 } }, -- Gray Sack of Gems
                 { id = 17965, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12363 } }, -- Yellow Sack of Gems
                 { id = 17969, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12799, 6332 } }, -- Red Sack of Gems
-}
-},
+            }
+        },
         {
             id = "HighPriestThekal",
             prefix = "8)",
             name = BB["High Priest Thekal"],
-			postfix = L["Tiger"],
+            postfix = L["Tiger"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 19897 }, -- Betrayer's Boots
@@ -295,23 +295,23 @@ AtlasTW.InstanceData.ZulGurub = {
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(zGSharedLoot),
-}
-},
-		{
-			name = L["Zealot Zath"],
-			postfix = BC["Rogue"],
-			color = "|cff9d9d9d",
-		 },
-		{
-			name = L["Zealot Lor'Khan"],
-			postfix = BC["Shaman"],
-			color = "|cff9d9d9d",
-		 },
+            }
+        },
+        {
+            name = L["Zealot Zath"],
+            postfix = BC["Rogue"],
+            color = "|cff9d9d9d",
+        },
+        {
+            name = L["Zealot Lor'Khan"],
+            postfix = BC["Shaman"],
+            color = "|cff9d9d9d",
+        },
         {
             id = "HighPriestessArlokk",
             prefix = "9)",
             name = BB["High Priestess Arlokk"],
-			postfix = L["Panther"],
+            postfix = L["Panther"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 19913 }, -- Bloodsoaked Greaves
@@ -326,13 +326,13 @@ AtlasTW.InstanceData.ZulGurub = {
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(zGSharedLoot),
-}
-},
+            }
+        },
         {
             id = "JindotheHexxer",
             prefix = "10)",
             name = BB["Jin'do the Hexxer"],
-			postfix = L["Optional"],
+            postfix = L["Optional"],
             defaults = { dropRate = 8 },
             loot = {
                 { id = 19885 }, -- Jin'do's Evil Eye
@@ -349,7 +349,7 @@ AtlasTW.InstanceData.ZulGurub = {
                 { id = 19890 }, -- Jin'do's Hexxer
                 { id = 19884 }, -- Jin'do's Judgement
                 {},
-				unpack(zGidol),
+                unpack(zGidol),
                 { id = 19721, dropRate = 11, container = { 19826, 19832, 19845 } }, -- Primal Hakkari Shawl
                 { id = 19724, dropRate = 11, container = { 19841, 19834, 19831 } }, -- Primal Hakkari Aegis
                 { id = 19723, dropRate = 11, container = { 20033, 20034, 19822 } }, -- Primal Hakkari Kossack
@@ -359,8 +359,8 @@ AtlasTW.InstanceData.ZulGurub = {
                 { id = 19718, dropRate = 11, container = { 19843, 19848, 19840 } }, -- Primal Hakkari Stanchion
                 { id = 19719, dropRate = 11, container = { 19829, 19835, 19823 } }, -- Primal Hakkari Girdle
                 { id = 19720, dropRate = 11, container = { 19842, 19849, 19839 } }, -- Primal Hakkari Sash
-}
-},
+            }
+        },
         {
             id = "Hakkar",
             prefix = "11)",
@@ -385,35 +385,35 @@ AtlasTW.InstanceData.ZulGurub = {
                 {},
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 { id = 19802, dropRate = 100, container = { 19950, 19949, 19948 } }, -- Heart of Hakkar
-}
-},
-		{
-			prefix = "1')",
-			name = L["Muddy Churning Waters"],
-			color = "|cff00ff00",
-			loot = {
-				{ id = 19975, disc = L["Used to summon boss"] }, -- Zulian Mudskunk
-			 },
-		 },
-		{
-			prefix = "2')",
-			name = L["Jinxed Hoodoo Pile"],
-			color = "|cff00ff00",
-			defaults = { dropRate = 11 },
-			loot = {
-				{ id = 19727, disc = L["Unique"], dropRate = 26 }, -- Blood Scythe
-				{},
-				{ id = 19813, disc = L["Doll"] }, -- Punctured Voodoo Doll
-				{ id = 19814, disc = L["Doll"] }, -- Punctured Voodoo Doll
-				{ id = 19815, disc = L["Doll"] }, -- Punctured Voodoo Doll
-				{ id = 19816, disc = L["Doll"] }, -- Punctured Voodoo Doll
-				{ id = 19817, disc = L["Doll"] }, -- Punctured Voodoo Doll
-				{ id = 19818, disc = L["Doll"] }, -- Punctured Voodoo Doll
-				{ id = 19819, disc = L["Doll"] }, -- Punctured Voodoo Doll
-				{ id = 19820, disc = L["Doll"] }, -- Punctured Voodoo Doll
-				{ id = 19821, disc = L["Doll"] }, -- Punctured Voodoo Doll
-			 },
-		 },
+            }
+        },
+        {
+            prefix = "1')",
+            name = L["Muddy Churning Waters"],
+            color = "|cff00ff00",
+            loot = {
+                { id = 19975, disc = L["Used to summon boss"] }, -- Zulian Mudskunk
+            },
+        },
+        {
+            prefix = "2')",
+            name = L["Jinxed Hoodoo Pile"],
+            color = "|cff00ff00",
+            defaults = { dropRate = 11 },
+            loot = {
+                { id = 19727, disc = L["Unique"], dropRate = 26 }, -- Blood Scythe
+                {},
+                { id = 19813, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19814, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19815, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19816, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19817, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19818, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19819, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19820, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19821, disc = L["Doll"] }, -- Punctured Voodoo Doll
+            },
+        },
         {
             id = "ZGTrash",
             name = L["Trash Mobs"].."-"..BZ["Zul'Gurub"],
@@ -443,15 +443,14 @@ AtlasTW.InstanceData.ZulGurub = {
                 { id = 19817 }, -- Punctured Voodoo Doll
                 { id = 19815 }, -- Punctured Voodoo Doll
                 { id = 19813 }, -- Punctured Voodoo Doll
-}
-},
+            }
+        },
         { name = L["Zul'Gurub Sets"], items = "AtlasLootZGSetMenu" },
         { name = L["Zul'Gurub Enchants"], items = zGEnchants },
-}
+    }
 }
 
- 
- for _, bossData in ipairs(AtlasTW.InstanceData.ZulGurub.Bosses) do
-     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-     bossData.loot = nil 
- end
+for _, bossData in ipairs(AtlasTW.InstanceData.ZulGurub.Bosses) do
+    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
+    bossData.loot = nil
+end

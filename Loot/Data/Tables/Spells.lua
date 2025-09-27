@@ -12,7 +12,7 @@
 --- • Magical item effects
 --- • Spell ID mappings
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 

@@ -13,7 +13,7 @@
 --- • Integration with Babble localization libraries
 --- • Support for all classic WoW professions
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -138,7 +138,7 @@ AtlasTW.MenuData.Alchemy = {
 --- Opens the Alchemy crafting menu in AtlasLoot
 --- @return nil
 --- @usage AtlasLoot_AlchemyMenu()
---- @since 1.0.0
+--- @since 1.0.1
 ---
 function AtlasLoot_AlchemyMenu()
     AtlasTW.LootBrowserUI.PrepMenu(BS["Alchemy"], AtlasTW.MenuData.Alchemy, L["Crafting"], "Interface\\Icons\\Trade_Alchemy")

@@ -26,7 +26,6 @@ local BC = AceLibrary("Babble-Class-2.2")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.BlackrockSpireLower = {
     Name = BZ["Lower Blackrock Spire"],
     Location = BZ["Blackrock Mountain"],
@@ -38,36 +37,36 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         { letter = "A) ".. L["Entrance"] },
         { letter = "B)", info = BZ["Upper Blackrock Spire"] },
         { letter = "C-F)", info = L["Connections"] }
-},
+    },
     Keys = {
         { name = "Brazier of Invocation", loot = "VanillaKeys", info = L["Tier 0.5 Summon"] }
-},
+    },
     Bosses = {
         {
             prefix = "1)",
             name = L["Vaelan"],
             postfix = L["Upper"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "2)",
             name = L["Warosh"],
             postfix = L["Wanders"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Elder Stonefort"],
             postfix = L["Lunar Festival"],
             items = "LunarFestival",
-},
+        },
         {
             id = "LBRSPike",
             prefix = "3)",
             name = L["Roughshod Pike"],
             loot = {
                 { id = 12533, disc = L["Used to summon boss"], dropRate = 100 }, -- Roughshod Pike
-}
-},
+            }
+        },
         {
             id = "LBRSSpirestoneButcher",
             prefix = "4)",
@@ -78,8 +77,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 12608 }, -- Butcher's Apron
                 {},
                 { id = 13286 }, -- Rivenspike
-}
-},
+            }
+        },
         {
             id = "LBRSOmokk",
             prefix = "5)",
@@ -102,8 +101,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 21982, dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "LBRSSpirestoneBattleLord",
             prefix = "6)",
@@ -115,8 +114,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 13285, dropRate = 60 }, -- The Blackrock Slicer
                 {},
                 { id = 21982, dropRate = 14, container = { 22149, 22150 } }, -- Ogre Warbeads
-}
-},
+            }
+        },
         {
             id = "LBRSSpirestoneLordMagus",
             name = L["Spirestone Lord Magus"],
@@ -127,8 +126,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 13283 }, -- Magus Ring
                 { id = 13261 }, -- Globe of D'sak
                 { id = 21982, dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
-}
-},
+            }
+        },
         {
             id = "LBRSVosh",
             prefix = "7)",
@@ -148,17 +147,17 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             name = L["Fifth Mosh'aru Tablet"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "8)",
             name = L["Bijou"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "LBRSVoone",
             prefix = "9)",
@@ -180,8 +179,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 60714, disc = L["Quest Item"], dropRate = 100 }, -- War Master Voone's Tusks
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "LBRSGrayhoof",
             name = BB["Mor Grayhoof"],
@@ -194,30 +193,30 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 22398 }, -- Idol of Rejuvenation
                 {},
                 { id = 22322 }, -- The Jaw Breaker
-}
-},
+            }
+        },
         {
             name = L["Sixth Mosh'aru Tablet"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "10)",
             name = L["Bijou's Belongings"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "11)",
             name = L["Human Remains"],
             postfix = L["Lower"],
             loot = {
                 { id = 12812, disc = L["Quest Item"], dropRate = 100 }, -- Unfired Plate Gauntlets
-}
-},
+            }
+        },
         {
             name = L["Unfired Plate Gauntlets"],
             postfix = L["Lower"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "LBRSGrimaxe",
             prefix = "12)",
@@ -231,8 +230,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 12621 }, -- Demonfork
                 {},
                 { id = 12838, dropRate = 7, container = { 12784 } }, -- Plans: Arcanite Reaper
-}
-},
+            }
+        },
         {
             id = "LBRSSmolderweb",
             prefix = "13)",
@@ -251,8 +250,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "LBRSCrystalFang",
             prefix = "14)",
@@ -264,13 +263,13 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 13184 }, -- Fallbrush Handgrips
                 {},
                 { id = 13218 }, -- Fang of the Crystal Spider
-}
-},
+            }
+        },
         {
             prefix = "15)",
             name = L["Urok's Tribute Pile"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "LBRSDoomhowl",
             name = BB["Urok Doomhowl"],
@@ -290,8 +289,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 21982, dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "LBRSZigris",
             prefix = "16)",
@@ -314,8 +313,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "LBRSHalycon",
             prefix = "17)",
@@ -331,8 +330,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "LBRSSlavener",
             name = BB["Gizrul the Slavener"],
@@ -351,8 +350,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "LBRSBashguud",
             prefix = "18)",
@@ -366,8 +365,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 13204 }, -- Bashguuder
                 {},
                 { id = 22138, dropRate = 80 }, -- Blackrock Bracer
-}
-},
+            }
+        },
         {
             id = "LBRSWyrmthalak",
             prefix = "19)",
@@ -398,8 +397,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 61459, dropRate = 100, container = { 61465 } }, -- Eye of Wyrmthalak
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100, quantity = 2 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "LBRSFelguard",
             prefix = "1')",
@@ -411,8 +410,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 13181 }, -- Demonskin Gloves
                 {},
                 { id = 13182 }, -- Phase Blade
-}
-},
+            }
+        },
         {
             id = "LBRSTrash",
             name = L["Trash Mobs"].."-"..BZ["Lower Blackrock Spire"],
@@ -441,12 +440,12 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {},
                 { id = 12219, disc = L["Quest Item"], dropRate = 8, container = { 12344 } }, -- Unadorned Seal of Ascension
                 { id = 12586, disc = L["Consumable"], dropRate = 80 }, -- Immature Venom Sac
-}
-},
+            }
+        },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
         { name = BIS["Spider's Kiss"], items = "SpiderKiss" },
         { name = L["Tier 0/0.5 Sets"], items = "AtlasLootT0SetMenu" },
-}
+    }
 }
 
 -- Initialize items for all bosses

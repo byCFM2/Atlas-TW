@@ -12,7 +12,7 @@
 --- • Trainer and vendor information
 --- • Specialty crafting items
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 

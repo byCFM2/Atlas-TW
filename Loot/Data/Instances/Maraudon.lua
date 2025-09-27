@@ -32,42 +32,42 @@ AtlasTW.InstanceData.MaraudonEnt = {
         { letter = "B", info = BZ["Maraudon"] .. " (" .. L["Purple"] .. ")" },
         { letter = "C", info = BZ["Maraudon"] .. " (" .. L["Orange"] .. ")" },
         { letter = "D", info = BZ["Maraudon"] .. " (" .. L["Portal"] .. ")" },
-},
+    },
     Bosses = {
         {
             id = "MARANamelessProphet",
             name = L["The Nameless Prophet"],
             loot = {
                 { id = 17757, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Amulet of Spirits
-}
-},
+            }
+        },
         {
             id = "MARAKhanKolk",
             prefix = "1)",
             name = BB["Kolk"],
             loot = {
                 { id = 17761, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Gem of the First Khan
-}
-},
+            }
+        },
         {
             id = "MARAKhanGelk",
             prefix = "2)",
             name = BB["Gelk"],
             loot = {
                 { id = 17762, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Gem of the Second Khan
-}
-},
+            }
+        },
         {
             id = "MARAKhanMagra",
             prefix = "3)",
             name = BB["Magra"],
             loot = {
                 { id = 17763, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Gem of the Third Khan
-}
-},
+            }
+        },
         { prefix = "4)", name = BB["Cavindra"], color = "|cff9d9d9d" },
         { prefix = "5)", name = BB["Cursed Centaur"], postfix = L["Rare"]..", "..L["Varies"], color = "|cff9d9d9d" },
-}
+    }
 }
 
 AtlasTW.InstanceData.Maraudon = {
@@ -81,10 +81,10 @@ AtlasTW.InstanceData.Maraudon = {
         { letter = "A", info = L["Orange"] },
         { letter = "B", info = L["Purple"] },
         { letter = "C", info = L["Portal"] }
-},
+    },
     Keys = {
         { name = L["Scepter of Celebras"], loot = "VanillaKeys", info = L["Portal"] }
-},
+    },
 
     Bosses = {
         {
@@ -93,8 +93,8 @@ AtlasTW.InstanceData.Maraudon = {
             name = L["Veng"],
             loot = {
                 { id = 17765, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Gem of the Fifth Khan
-}
-},
+            }
+        },
         {
             id = "MARANoxxion",
             prefix = "2)",
@@ -106,8 +106,8 @@ AtlasTW.InstanceData.Maraudon = {
                 {},
                 { id = 17745 }, -- Noxious Shooter
                 { id = 17702, dropRate = 100, container = { 17191 } }, -- Celebrian Rod
-}
-},
+            }
+        },
         {
             id = "MARARazorlash",
             prefix = "3)",
@@ -122,16 +122,16 @@ AtlasTW.InstanceData.Maraudon = {
                 { id = 60780, dropRate = 3, container = { 65022 } }, -- Pattern: Breastplate of the Earth
                 {},
                 { id = 51802, dropRate = 8 }, -- Idol of Evergrowth
-}
-},
+            }
+        },
         {
             id = "MARAKhanMaraudos",
             prefix = "4)",
             name = L["Maraudos"],
             loot = {
                 { id = 17764, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Gem of the Fourth Khan
-}
-},
+            }
+        },
         {
             id = "MARALordVyletongue",
             prefix = "5)",
@@ -147,8 +147,8 @@ AtlasTW.InstanceData.Maraudon = {
                 { id = 61748, dropRate = 100, container = { 61517 } }, -- Harness of Chimaeran
                 { id = 17703, dropRate = 100, container = { 17191 } }, -- Celebrian Diamond
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "MARAMeshloktheHarvester",
             prefix = "6)",
@@ -160,8 +160,8 @@ AtlasTW.InstanceData.Maraudon = {
                 { id = 17742 }, -- Fungus Shroud Armor
                 {},
                 { id = 60780, dropRate = 10, container = { 65022 } }, -- Pattern: Breastplate of the Earth
-}
-},
+            }
+        },
         {
             id = "MARACelebrastheCursed",
             prefix = "7)",
@@ -177,8 +177,8 @@ AtlasTW.InstanceData.Maraudon = {
                 { id = 17684, dropRate = 80, container = { 17775, 17776, 17777, 17779 } }, -- Theradric Crystal Carving
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "MARALandslide",
             prefix = "8)",
@@ -193,8 +193,8 @@ AtlasTW.InstanceData.Maraudon = {
                 { id = 17684, dropRate = 80, container = { 17775, 17776, 17777, 17779 } }, -- Theradric Crystal Carving
                 { id = 41002, dropRate = 100, container = { 40080 } }, -- Heart of Landslide
                 { id = 41356, disc = BS["Gemology"], dropRate = 100 }, -- Marbled Stone Slab
-}
-},
+            }
+        },
         {
             id = "MARATinkererGizlock",
             prefix = "9)",
@@ -209,8 +209,8 @@ AtlasTW.InstanceData.Maraudon = {
                 { id = 51809, dropRate = 8, container = { 60098 } }, -- Schematic: Hypertech Essentials
                 {},
                 { id = 17684, dropRate = 80, container = { 17775, 17776, 17777, 17779 } }, -- Theradric Crystal Carving
-}
-},
+            }
+        },
         {
             id = "MARARotgrip",
             prefix = "10)",
@@ -222,9 +222,9 @@ AtlasTW.InstanceData.Maraudon = {
                 { id = 17730 }, -- Gatorbite Axe
                 {},
                 { id = 17684, dropRate = 80, container = { 17775, 17776, 17777, 17779 } }, -- Theradric Crystal Carving
-}
-},
-         {
+            }
+        },
+        {
             id = "MARAPrincessTheradras",
             prefix = "11)",
             name = BB["Princess Theradras"],
@@ -245,15 +245,15 @@ AtlasTW.InstanceData.Maraudon = {
                 { id = 61458, dropRate = 100 }, -- 52nd Package
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "MARAElderSplitrock",
             prefix = "12)",
             name = L["Elder Splitrock"],
             postfix = L["Lunar Festival"],
             items = "LunarFestival",
-},
+        },
         {
             id = "MARATrash",
             name = L["Trash Mobs"].."-"..BZ["Maraudon"],
@@ -273,9 +273,9 @@ AtlasTW.InstanceData.Maraudon = {
                 { id = 80748 }, -- Corrupter's Focus
                 {},
                 { id = 60780, dropRate = .5, container = { 65022 } }, -- Pattern: Breastplate of the Earth
-}
-},
-},
+            }
+        },
+    },
 }
 
 -- Initialize items for all bosses

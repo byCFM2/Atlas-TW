@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.EmeraldSanctum = {
     Name = BZ["Emerald Sanctum"],
     Location = BZ["Hyjal"],
@@ -33,9 +32,9 @@ AtlasTW.InstanceData.EmeraldSanctum = {
     Attunement = true,
     MaxPlayers = 40,
     DamageType = L["Nature"],
---[[     Entrances = {
+    --[[Entrances = {
         { letter = "A"..")", info = L["Entrance"] },
-}, ]]
+    }, ]]
     Bosses = {
         {
             id = "Erennius",
@@ -61,8 +60,8 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 { id = 61198, quantity = { 5, 12 }, disc = L["Reagent"], dropRate = 100 }, -- Small Dream Shard
                 { id = 61197, disc = L["Reagent"] }, -- Fading Dream Fragment
                 { id = 20381, disc = L["Reagent"] }, -- Dreamscale
-}
-},
+            }
+        },
         {
             id = "Solnius",
             prefix = "2)",
@@ -114,8 +113,8 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 { id = 17964, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12800 } }, -- Gray Sack of Gems
                 { id = 17965, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12363 } }, -- Yellow Sack of Gems
                 { id = 17969, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12799, 6332 } }, -- Red Sack of Gems
-}
-},
+            }
+        },
         {
             id = "HardMode",
             prefix = "3)",
@@ -138,8 +137,8 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 {},
                 {},
                 { id = 61197, disc = L["Reagent"], dropRate = 48 }, -- Fading Dream Fragment
-}
-},
+            }
+        },
         {
             id = "ESTrash",
             name = L["Trash Mobs"].."-"..BZ["Emerald Sanctum"],
@@ -163,13 +162,12 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 { id = 61198, disc = L["Reagent"], dropRate = 20 }, -- Small Dream Shard
                 { id = 20381, disc = L["Reagent"], dropRate = 5 }, -- Dreamscale
                 { id = 61197, disc = L["Reagent"], dropRate = .35 }, -- Fading Dream Fragment
+            }
+        }
+    }
 }
-}
-}
-}
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.EmeraldSanctum.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

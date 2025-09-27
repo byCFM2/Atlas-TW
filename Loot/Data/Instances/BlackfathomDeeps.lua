@@ -29,7 +29,7 @@ AtlasTW.InstanceData.BlackfathomDeepsEnt = {
     Entrances = {
         { letter = "A)", info = L["Entrance"] },
         { letter = "B)", info = BZ["Blackfathom Deeps"] }
-},
+    },
     Bosses = {}
 }
 
@@ -42,7 +42,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) "..L["Entrance"] }
-},
+    },
     Bosses = {
         {
             id = "BFDGhamoora",
