@@ -33,7 +33,7 @@ AtlasTW.InstanceData.TheDeadmines = {
     Entrances = {
         { letter = "A) "..L["Entrance"] },
         { letter = "B) "..L["Exit"] }
-},
+    },
 
     Bosses = {
         {
@@ -47,8 +47,8 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 55375, dropRate = 25 }, -- Corrosive Vial
                 {},
                 { id = 41429, dropRate = 100, container = { 70239, 70240 } }, -- Voss' Sizzling Brew
-}
-},
+            }
+        },
         {
             id = "DMRhahkZor",
             prefix = "2)",
@@ -60,8 +60,8 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 80706, dropRate = 50 }, -- Ogremight Gauntlets
                 {},
                 { id = 9496, disc = L["Level One Luntic Challenge"], dropRate = 100 }, -- Defias Mage Drape
-}
-},
+            }
+        },
         {
             id = "DMMinerJohnson",
             prefix = "3)",
@@ -71,8 +71,8 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 5444, dropRate = 65 }, -- Miner's Cape
                 {},
                 { id = 5443, dropRate = 35 }, -- Gold-plated Buckler
-}
-},
+            }
+        },
         {
             id = "DMSneed",
             prefix = "4)",
@@ -86,8 +86,8 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 81315, dropRate = 100, container = { 81316, 81317 } }, -- Prototype Shredder X0-1 Schematic
                 {},
                 { id = 50256, disc = L["Level One Luntic Challenge"], dropRate = 100 }, -- Fractured Sword
-}
-},
+            }
+        },
         {
             id = "DMSneedsShredder",
             name = L["Sneed's Shredder"],
@@ -96,8 +96,8 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 2169, dropRate = 90 }, -- Buzzer Blade
                 {},
                 { id = 7365, dropRate = 100, container = { 7606, 7607 } }, -- Gnoam Sprecklesprocket
-}
-},
+            }
+        },
         {
             id = "DMGilnid",
             prefix = "5)",
@@ -105,8 +105,8 @@ AtlasTW.InstanceData.TheDeadmines = {
             loot = {
                 { id = 1156, dropRate = 45 }, -- Lavishly Jeweled Ring
                 { id = 5199, dropRate = 55 }, -- Smelting Pants
-}
-},
+            }
+        },
         {
             id = "DMHarvester",
             prefix = "6)",
@@ -116,8 +116,8 @@ AtlasTW.InstanceData.TheDeadmines = {
                 {},
                 { id = 55379, dropRate = 25 }, -- Slag Slugger
                 { id = 55378, dropRate = 25 }, -- Inventor's Mitts
-}
-},
+            }
+        },
         {
             id = "DMMrSmite",
             prefix = "7)",
@@ -127,8 +127,8 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 5192, dropRate = 30 }, -- Thief's Blade
                 { id = 5196, dropRate = 30 }, -- Smite's Reaver
                 { id = 81007, dropRate = 20 }, -- Blackened Defias Mask
-}
-},
+            }
+        },
         {
             id = "DMCookie",
             prefix = "8)",
@@ -143,8 +143,8 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 60526, dropRate = 100, container = { 70070 } }, -- Grayson's Pendant
                 {},
                 { id = 9338, disc = L["Level One Luntic Challenge"], dropRate = 100 }, -- Murloc Eye on a String
-}
-},
+            }
+        },
         {
             id = "DMCaptainGreenskin",
             prefix = "9)",
@@ -153,8 +153,8 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 5201, dropRate = 40 }, -- Emberstone Staff
                 { id = 10403, dropRate = 30 }, -- Blackened Defias Belt
                 { id = 5200, dropRate = 30 }, -- Impaling Harpoon
-}
-},
+            }
+        },
         {
             id = "DMVanCleef",
             prefix = "10)",
@@ -171,8 +171,8 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
                 {},
                 { id = 29980, disc = L["Level One Luntic Challenge"], dropRate = 100 }, -- Broken Stonemason's Guild Signet
-}
-},
+            }
+        },
         {
             id = "DMTrash",
             name = L["Trash Mobs"].."-"..BZ["The Deadmines"],
@@ -186,10 +186,10 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 10401, dropRate = 4 }, -- Blackened Defias Gloves
                 { id = 10400, dropRate = 1.75 }, -- Blackened Defias Leggings
                 { id = 10402, dropRate = 1.2 }, -- Blackened Defias Boots
-}
-},
+            }
+        },
         { name = BIS["Defias Leather"], items = "Deadmines" },
-},
+    },
 }
 
 AtlasTW.InstanceData.TheDeadminesEnt = {
@@ -199,7 +199,7 @@ AtlasTW.InstanceData.TheDeadminesEnt = {
     Entrances = {
         { letter = "A)", info = L["Entrance"] },
         { letter = "B)", info = BZ["The Deadmines"] }
-},
+    },
     Bosses = {
         {
             id = "DMMarisaduPaige",
@@ -209,8 +209,8 @@ AtlasTW.InstanceData.TheDeadminesEnt = {
             loot = {
                 { id = 3019, dropRate = 25 }, -- Noble's Robe
                 { id = 4660, dropRate = 75 }, -- Walking Boots
-}
-},
+            }
+        },
         {
             id = "DMBrainwashedNoble",
             prefix = "2)",
@@ -219,25 +219,25 @@ AtlasTW.InstanceData.TheDeadminesEnt = {
             loot = {
                 { id = 5967, dropRate = 64 }, -- Girdle of Nobility
                 { id = 3902, dropRate = 26 }, -- Staff of Nobles
-}
-},
+            }
+        },
         {
             id = "DMForemanThistlenettle",
             prefix = "3)",
             name = BB["Foreman Thistlenettle"],
             loot = {
                 { id = 1875, dropRate = 100, container = { 1893 } }, -- Thistlenettle's Badge
-}
-},
-}
+            }
+        },
+    }
 }
 
 for _, bossData in ipairs(AtlasTW.InstanceData.TheDeadmines.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end
 
 for _, bossData in ipairs(AtlasTW.InstanceData.TheDeadminesEnt.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-    bossData.loot = nil 
+    bossData.loot = nil
 end

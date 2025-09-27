@@ -31,7 +31,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) "..L["Entrance"] }
-},
+    },
 
     Bosses = {
         {
@@ -44,21 +44,21 @@ AtlasTW.InstanceData.ShadowfangKeep = {
                 {},
                 { id = 80713 }, -- Padded Keeper Tunic
                 { id = 80714 }, -- Binding Chain
-}
-},
+            }
+        },
         {
             name = L["Sorcerer Ashcrombe"],
             color = "|cff9d9d9d",
-},
+        },
         {
             name = L["Deathstalker Adamant"],
             color = "|cff9d9d9d",
-},
+        },
         {
             prefix = "2)",
             name = L["Deathstalker Vincent"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "SFKFelSteed",
             prefix = "3)",
@@ -67,15 +67,15 @@ AtlasTW.InstanceData.ShadowfangKeep = {
                 { id = 6341, dropRate = 8 }, -- Eerie Stable Lantern
                 {},
                 { id = 932, dropRate = 29 }, -- Fel Steed Saddlebags
-}
-},
+            }
+        },
         {
             id = "SFKJordansHammer",
             name = L["Jordan's Hammer"],
             loot = {
                 { id = 6895, dropRate = 100, container = { 6953 } }, -- Jordan's Smithing Hammer
-}
-},
+            }
+        },
         {
             id = "SFKRazorclawtheButcher",
             prefix = "4)",
@@ -86,8 +86,8 @@ AtlasTW.InstanceData.ShadowfangKeep = {
                 { id = 6633 }, -- Butcher's Slicer
                 {},
                 { id = 1292 }, -- Butcher's Cleaver
-}
-},
+            }
+        },
         {
             id = "SFKSilverlaine",
             prefix = "5)",
@@ -98,8 +98,8 @@ AtlasTW.InstanceData.ShadowfangKeep = {
                 { id = 6323 }, -- Baron's Scepter
                 {},
                 { id = 80715, dropRate = 35 }, -- Gloves of the Lifted Cup
-}
-},
+            }
+        },
         {
             id = "SFKSpringvale",
             prefix = "6)",
@@ -110,8 +110,8 @@ AtlasTW.InstanceData.ShadowfangKeep = {
                 { id = 3191 }, -- Arced War Axe
                 {},
                 { id = 80717, dropRate = 35 }, -- Commander's Greaves
-}
-},
+            }
+        },
         {
             id = "SFKSever",
             prefix = "7)",
@@ -121,8 +121,8 @@ AtlasTW.InstanceData.ShadowfangKeep = {
             loot = {
                 { id = 23173 }, -- Abomination Skin Leggings
                 { id = 23171 }, -- The Axe of Severing
-}
-},
+            }
+        },
         {
             id = "SFKOdotheBlindwatcher",
             prefix = "8)",
@@ -132,8 +132,8 @@ AtlasTW.InstanceData.ShadowfangKeep = {
                 { id = 6319 }, -- Girdle of the Blindwatcher
                 {},
                 { id = 6318 }, -- Odo's Ley Staff
-}
-},
+            }
+        },
         {
             id = "SFKDeathswornCaptain",
             prefix = "9)",
@@ -143,8 +143,8 @@ AtlasTW.InstanceData.ShadowfangKeep = {
             loot = {
                 { id = 6642 }, -- Phantom Armor
                 { id = 6641 }, -- Haunting Blade
-}
-},
+            }
+        },
         {
             id = "SFKFenrustheDevourer",
             prefix = "10)",
@@ -153,22 +153,22 @@ AtlasTW.InstanceData.ShadowfangKeep = {
             loot = {
                 { id = 6340 }, -- Fenrus' Hide
                 { id = 3230 }, -- Black Wolf Bracers
-}
-},
+            }
+        },
         {
             id = "SFKArugalsVoidwalker",
             name = BB["Arugal's Voidwalker"],
             loot = {
                 { id = 5943, dropRate = 3 }, -- Rift Bracers
-}
-},
+            }
+        },
         {
             id = "SFKBookofUr",
             name = L["The Book of Ur"],
             loot = {
                 { id = 6283, dropRate = 100, container = { 6335, 4534 } }, -- The Book of Ur
-}
-},
+            }
+        },
         {
             id = "SFKWolfMasterNandos",
             prefix = "11)",
@@ -179,8 +179,8 @@ AtlasTW.InstanceData.ShadowfangKeep = {
                 { id = 6314 }, -- Wolfmaster Cape
                 {},
                 { id = 80716, dropRate = 35 }, -- Claw of the Worgen
-}
-},
+            }
+        },
         {
             id = "SFKArchmageArugal",
             prefix = "12)",
@@ -194,8 +194,8 @@ AtlasTW.InstanceData.ShadowfangKeep = {
                 {},
                 { id = 5442, dropRate = 100, container = { 6414 } }, -- Head of Arugal
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "SFKPrelate",
             prefix = "13)",
@@ -206,8 +206,8 @@ AtlasTW.InstanceData.ShadowfangKeep = {
                 { id = 55384 }, -- Hilt of Radiance
                 { id = 55383 }, -- Prelate's Sigil
                 { id = 55382 }, -- Mitre of the First Light
-}
-},
+            }
+        },
         {
             id = "SFKTrash",
             name = L["Trash Mobs"].."-"..BZ["Shadowfang Keep"],
@@ -226,9 +226,9 @@ AtlasTW.InstanceData.ShadowfangKeep = {
                 { id = 1484 }, -- Witching Stave
                 {},
                 { id = 41420, dropRate = 10, container = { 55505 } }, -- Shadowfang Blood
-}
-},
-},
+            }
+        },
+    },
 }
 
 -- Initialize items for all bosses

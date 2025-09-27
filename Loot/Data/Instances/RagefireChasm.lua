@@ -31,7 +31,7 @@ AtlasTW.InstanceData.RagefireChasm = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) "..L["Entrance"] }
-},
+    },
 
     Bosses = {
         {
@@ -44,8 +44,8 @@ AtlasTW.InstanceData.RagefireChasm = {
                 { id = 80702, dropRate = 30 }, -- Stitched Cloth Vest
                 {},
                 { id = 17041, disc = L["Level One Lunatic Challenge"], dropRate = 100 }, -- The Blazing Pan
-}
-},
+            }
+        },
         {
             id = "RFCTaragaman",
             prefix = "2)",
@@ -57,8 +57,8 @@ AtlasTW.InstanceData.RagefireChasm = {
                 { id = 14145 }, -- Cursed Felblade
                 {},
                 { id = 64, disc = L["Level One Lunatic Challenge"], dropRate = 100 }, -- Fiery Cloak
-}
-},
+            }
+        },
         {
             id = "RFCJergosh",
             prefix = "3)",
@@ -70,8 +70,8 @@ AtlasTW.InstanceData.RagefireChasm = {
                 { id = 14151 }, -- Chanting Blade
                 {},
                 { id = 80111, disc = L["Level One Lunatic Challenge"], dropRate = 100 }, -- Ash-Covered Tunic
-}
-},
+            }
+        },
         {
             id = "RFCBazzalan",
             prefix = "4)",
@@ -85,16 +85,16 @@ AtlasTW.InstanceData.RagefireChasm = {
                 { id = 5235, disc = L["Level One Lunatic Challenge"], dropRate = 100 }, -- Cultist's Firestick
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "RFCTrash",
             name = L["Trash Mobs"].."-"..BZ["Ragefire Chasm"],
             loot = {
                 { id = 12862, disc = L["Level One Lunatic Challenge"], dropRate = 25 }, -- Burning Blade Grimoire
-}
-},
-},
+            }
+        },
+    },
 }
 
 -- Initialize items for all bosses

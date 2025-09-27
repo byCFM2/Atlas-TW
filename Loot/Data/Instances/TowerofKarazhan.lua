@@ -25,7 +25,7 @@ AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 local ephemeralPendant = {
     { id = 55482, dropRate = 7, disc = L["Neck"], container = { 47275, 47233, 47239, 47311, 47317, 47323, 47395, 47401, 47407, 47065, 47071, 47077, -- Ephemeral Pendant
-    47329, 47185, 47191, 47197, 47113, 47119 } },
+            47329, 47185, 47191, 47197, 47113, 47119 } },
 }
 
 AtlasTW.InstanceData.TowerofKarazhan = {
@@ -39,11 +39,11 @@ AtlasTW.InstanceData.TowerofKarazhan = {
     Keys = {
         { name = L["Upper Karazhan Tower Key"], loot = "VanillaKeys", info = L["Quests"] },
         { name = L["The Scepter of Medivh"], loot = "VanillaKeys", info = "6+" },
-},
+    },
     Entrances = {
         { letter = "A".." "..L["Entrance"] },
         { letter = "B".." "..L["Connection"] }
-},
+    },
     Bosses = {
         {
             id = "KeeperGnarlmoon",
@@ -63,8 +63,8 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 { id = 55082 }, -- Idol of Laceration
                 {},
                 { id = 41485, dropRate = 3.25, disc = L["Reagent"] }, -- Pristine Ley Crystal
-}
-},
+            }
+        },
         {
             id = "LeyWatcherIncantagos",
             prefix = "2)",
@@ -90,8 +90,8 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 {},
                 { id = 41485, dropRate = 3.25, disc = L["Reagent"] }, -- Pristine Ley Crystal
                 { id = 41373, disc = L["Quest Item"], dropRate = 100 }, -- Draconic Focus
-}
-},
+            }
+        },
         {
             id = "Anomalus",
             prefix = "3)",
@@ -111,8 +111,8 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 {},
                 { id = 41485, dropRate = 3.25, disc = L["Reagent"] }, -- Pristine Ley Crystal
                 { id = 41412, dropRate = 100 }, -- Cosmic Residue
-}
-},
+            }
+        },
         {
             id = "EchoofMedivh",
             prefix = "4)",
@@ -132,8 +132,8 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 {},
                 { id = 41485, dropRate = 3.25, disc = L["Reagent"] }, -- Pristine Ley Crystal
                 { id = 41414, dropRate = 100 }, -- Anima of the Guardian
-}
-},
+            }
+        },
         {
             id = "King",
             prefix = "5)",
@@ -160,8 +160,8 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 {},
                 { id = 41485, dropRate = 100, disc = L["Reagent"] }, -- Pristine Ley Crystal
                 unpack(ephemeralPendant),
-}
-},
+            }
+        },
         {
             id = "SanvTasdal",
             prefix = "6)",
@@ -188,8 +188,8 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 {},
                 { id = 41485, dropRate = 100, disc = L["Reagent"] }, -- Pristine Ley Crystal
                 unpack(ephemeralPendant),
-}
-},
+            }
+        },
         {
             id = "RupturanTheBroken",
             prefix = "7)",
@@ -216,8 +216,8 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 {},
                 { id = 41485, dropRate = 100, disc = L["Reagent"] }, -- Pristine Ley Crystal
                 unpack(ephemeralPendant),
-}
-},
+            }
+        },
         {
             id = "Kruul",
             prefix = "8)",
@@ -244,8 +244,8 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 {},
                 { id = 41485, dropRate = 100, disc = L["Reagent"] }, -- Pristine Ley Crystal
                 unpack(ephemeralPendant),
-}
-},
+            }
+        },
         {
             id = "Mephistroth",
             prefix = "9)",
@@ -280,8 +280,8 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 { id = 41447, dropRate = 100 }, -- Soul of the Dreadlord
                 {},
                 { id = 92082, dropRate = 5 }, -- Felforged Dreadhound
-}
-},
+            }
+        },
         {
             id = "K40Trash",
             name = L["Trash Mobs"].."-"..BZ["Tower of Karazhan"],
@@ -299,10 +299,10 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 { id = 55275 }, -- Slivers of Nullification
                 {},
                 { id = 55277 }, -- The End of All Ambitions
-}
-},
+            }
+        },
         { name = L["Tower of Karazhan Sets"], items = "AtlasLootUKSetMenu" },
-}
+    }
 }
 
 -- Initialize items for all bosses

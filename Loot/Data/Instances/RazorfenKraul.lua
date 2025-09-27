@@ -31,13 +31,13 @@ AtlasTW.InstanceData.RazorfenKraul = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) "..L["Entrance"] }
-},
+    },
     Bosses = {
         {
             prefix = "1)",
             name = BB["Roogug"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "RFKAggem",
             prefix = "2)",
@@ -52,8 +52,8 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 { id = 80789, dropRate = .1 }, -- Sharpsight Eyepatch
                 {},
                 { id = 5825, dropRate = 10, container = { 6751, 6752 } }, -- Treshala's Pendant
-}
-},
+            }
+        },
         {
             id = "RFKDeathSpeakerJargba",
             prefix = "3)",
@@ -65,8 +65,8 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 { id = 2816 }, -- Death Speaker Scepter
                 {},
                 { id = 5825, dropRate = 10, container = { 6751, 6752 } }, -- Treshala's Pendant
-}
-},
+            }
+        },
         {
             id = "RFKOverlordRamtusk",
             prefix = "4)",
@@ -78,8 +78,8 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 { id = 80734 }, -- Quilguard Legguards
                 {},
                 { id = 5825, dropRate = 10, container = { 6751, 6752 } }, -- Treshala's Pendant
-}
-},
+            }
+        },
         {
             id = "RFKRazorfenSpearhide",
             name = L["Razorfen Spearhide"],
@@ -88,8 +88,8 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 { id = 6679, dropRate = 80 }, -- Armor Piercer
                 {},
                 { id = 5825, dropRate = 10, container = { 6751, 6752 } }, -- Treshala's Pendant
-}
-},
+            }
+        },
         {
             id = "RFKRotthorn",
             prefix = "5)",
@@ -102,8 +102,8 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 { id = 58091 }, -- Idol of the Thorned Grove
                 {},
                 { id = 41853, dropRate = 100 }, -- Tainted Brambleheart
-}
-},
+            }
+        },
         {
             id = "RFKAgathelos",
             prefix = "6)",
@@ -116,8 +116,8 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 { id = 80736 }, -- Rageboar Harness
                 {},
                 { id = 69170, dropRate = .5 }, -- Ivory Boar
-}
-},
+            }
+        },
         {
             id = "RFKBlindHunter",
             prefix = "7)",
@@ -128,8 +128,8 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 { id = 6695 }, -- Stygian Bone Amulet
                 { id = 6697 }, -- Batwing Mantle
                 { id = 6696 }, -- Nightstalker Bow
-}
-},
+            }
+        },
         {
             id = "RFKCharlgaRazorflank",
             prefix = "8)",
@@ -146,19 +146,19 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 { id = 5792, dropRate = 100, container = { 4197, 6725, 6742 } }, -- Razorflank's Medallion
                 { id = 5793, dropRate = 100, container = { 4197, 6725, 6742 } }, -- Razorflank's Heart
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
-}
-},
+            }
+        },
         {
             id = "RFKWillixtheImporter",
             prefix = "9)",
             name = L["Willix the Importer"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "RFKHeralathFallowbrook",
             name = L["Heralath Fallowbrook"],
             color = "|cff9d9d9d",
-},
+        },
         {
             id = "RFKEarthcallerHalmgar",
             prefix = "10)",
@@ -171,8 +171,8 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 { id = 6688 }, -- Whisperwind Headdress
                 {},
                 { id = 5825, dropRate = 10, container = { 6751, 6752 } }, -- Treshala's Pendant
-}
-},
+            }
+        },
         {
             id = "RFKTrash",
             name = L["Trash Mobs"].."-"..BZ["Razorfen Kraul"],
@@ -191,9 +191,9 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 { id = 2549 }, -- Staff of the Shade
                 {},
                 { id = 5825, dropRate = 10, container = { 6751, 6752 } }, -- Treshala's Pendant
-}
-},
-},
+            }
+        },
+    },
 }
 
 -- Initialize items for all bosses

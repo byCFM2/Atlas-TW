@@ -342,7 +342,7 @@ function AtlasLoot_HewdropClick(tablename, text, tabletype)
 		end
 	end
 	-- Special handling for Rare Mobs
-	if pagename == L["Rare Mobs"] then
+	if pagename == LocalizedStrings.RareMobs then
 		pagename = L["Shade Mage"]
 	end
 

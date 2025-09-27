@@ -9,7 +9,7 @@
 --- - Complete English localization strings for Atlas-TW addon
 --- - Zone names, instance data, and UI text translations
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 AtlasTW.Local = {
@@ -1223,7 +1223,7 @@ AtlasTW.Local.Translations = {
 	["Transmogrification"] = true,
 	["Defensive Potions and Elixirs"] = true,
 	["Offensive Potions and Elixirs"] = true,
-	["Other"] = true,
+	["Miscellaneous"] = true,
 	["Helm"] = true,
 	["Shoulders"] = true,
 	["Bracers"] = true,
