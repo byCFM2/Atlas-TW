@@ -50,9 +50,14 @@ local craftingTable = {
 		{ id=25347, skill={270,315,340,365}}, --Deadly Poison V
 		{},
 		{ id=13220, skill={140,185,210,235}}, --Wound Poison
-		{ id=13228, skill={180,225,250,275}}, --Wound Poison II
-		{ id=13229, skill={220,265,290,315}}, --Wound Poison III
-		{ id=13230, skill={260,305,330,355}}, --Wound Poison IV
+--[[ 		{ id=13228, skill={180,225,250,275}}, --Wound Poison II deleted 1.18
+		{ id=13229, skill={220,265,290,315}}, --Wound Poison III deleted 1.18
+		{ id=13230, skill={260,305,330,355}}, --Wound Poison IV deleted 1.18 ]]
+		{ id=51924, skill={1,280,305,330}}, --Corrosive Poison 1.18
+		{ id=52576, skill={1,300,325,350}}, --Corrosive Poison II 1.18
+		{},
+		{ id=45878, skill={1,285,310,335}}, --Dissolvent Poison 1.18
+		{ id=45882, skill={1,325,350,375}}, --Dissolvent Poison II 1.18
 		{},
 		{ id=45611, skill={290,290,300,310}}, --Agitating Poison I
 		{ name = L["Reagent"], icon = "Trade_BrewPoison" },
@@ -3456,16 +3461,16 @@ local craftingTable = {
 	Survival = {
 		{ name = L["Survival"], icon = "Trade_Survival" },
 		{ id=46064, skill={1,30,45,60} }, --Dim Torch
-		{ id=46075, skill={30,30,45,60} }, --Iron Lantern
+		{ id=47101, skill={10,30,45,60} }, --Survivalist's Skinning Knife
+		{ id=47103, skill={10,40,55,70} }, --Driftwood Fishing Pole
 		{ id=46072, skill={50,100,125,150} }, --Traveler's Tent
-		{ id=46068, skill={50,150,175,200} }, --Cleaning Cloth
-		{},
 		{ id=46074, skill={75,100,112,125} }, --Simple Woodern Planter
 		{ id=46073, skill={75,125,150,175} }, --Fishing Boat
-		{ id=46066, skill={75,150,162,175} }, --Murloc's Flippers
-		{ id=46077, skill={90,120,135,150} }, --Repaired Electro-Lantern
 		{},
-		{},
+		{ id=46075, skill={90,90,90,90} }, --Iron Lantern
+		{ id=46068, skill={100,150,175,200} }, --Cleaning Cloth
+		{ id=46066, skill={120,150,162,175} }, --Murloc's Flippers
+		{ id=46077, skill={120,120,135,150} }, --Repaired Electro-Lantern
 		{},
 		{},
 		{},

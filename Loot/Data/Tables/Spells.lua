@@ -14041,6 +14041,22 @@ AtlasTW.SpellDB = {
 				{14227, 4},
 			},
 		},
+		[47101] = { --1.18 Survival: Survivalist's Skinning Knife
+			item = 7009,
+			reagents = {
+				[1] = {2835, 2},
+				[2] = {2320},
+				[3] = {2318},
+			},
+		},
+		[47103] = { --1.18 Survival: Driftwood Fishing Pole
+			item = 7010,
+			reagents = {
+				{2320, 2},
+				{7011},
+				{4470, 2},
+			},
+		},
 		[49551] = {
 			requires = L["Cooking Fire"],
 			item = 83309,
