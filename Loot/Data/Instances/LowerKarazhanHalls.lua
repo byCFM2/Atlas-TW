@@ -12,7 +12,7 @@
 --- • Level-appropriate loot organization
 --- • Quest reward items
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -42,7 +42,6 @@ local lKarazhanShare = {
     { id = 61192, dropRate = 1.3, container = { 61188 } }, -- Pattern: Inscribed Runic Bracers
     { id = 61191, dropRate = 0.9, container = { 61187 } }, -- Schematic: Intricate Gyroscope Goggles
 }
-
 
 AtlasTW.InstanceData.LowerKarazhan = {
     Name = BZ["Lower Karazhan Halls"],
@@ -243,7 +242,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 { id = 92002, dropRate = .32, disc = L["Book"]..", "..BF["Alliance"] }, -- Tome of Portals: Theramore
                 { id = 92004, dropRate = .32, disc = L["Book"]..", "..BF["Horde"] }, -- Tome of Portals: Stonard
                 {},
-                { id = 37006 }, -- Skitterweb Hatchling
+                { id = 37006, dropRate = 4 }, -- Skitterweb Hatchling
                 {},
                 { id = 8547, dropRate = .03, container = { 8546 } }, -- Formula: Powerful Smelling Salts
                 { id = 61177, dropRate = .03, container = { 61181 } }, -- Recipe: Potion of Quickness

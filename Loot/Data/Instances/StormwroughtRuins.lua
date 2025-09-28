@@ -25,7 +25,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.StormwroughtRuins = {
     Name = BZ["Stormwrought Ruins"],
     Location = BZ["Balor"],
@@ -258,7 +257,6 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         { name = BIS["Stormreaver Attire"], items = "Stormreaver" },
     },
 }
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.StormwroughtRuins.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)

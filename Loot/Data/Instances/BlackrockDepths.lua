@@ -27,7 +27,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.BlackrockDepths = {
     Name = BZ["Blackrock Depths"],
     Location = BZ["Blackrock Mountain"],

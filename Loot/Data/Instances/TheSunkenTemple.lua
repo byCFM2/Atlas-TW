@@ -350,13 +350,10 @@ AtlasTW.InstanceData.TheSunkenTemple = {
     }
 }
 
-
-
 for _, bossData in ipairs(AtlasTW.InstanceData.TheSunkenTemple.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
     bossData.loot = nil
 end
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.TheSunkenTempleEnt.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)

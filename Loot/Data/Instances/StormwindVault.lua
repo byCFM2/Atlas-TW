@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.StormwindVault = {
     Name = BZ["Stormwind Vault"],
     Location = BZ["Stormwind City"],

@@ -382,7 +382,7 @@ AtlasTW.InstanceData.MoltenCore = {
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58211 }, -- Molten Emberstone
-                { id = 58213 }, -- SmoldarisРІР‚в„ў Fractured Eye
+                { id = 58213 }, -- Smoldaris’ Fractured Eye
                 { id = 58239 }, -- Overheated Skyrazors
                 { id = 58241 }, -- Totem of Eruption
                 {},

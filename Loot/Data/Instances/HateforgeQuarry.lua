@@ -25,7 +25,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.HateforgeQuarry = {
     Name = BZ["Hateforge Quarry"],
     Location = BZ["Burning Steppes"],

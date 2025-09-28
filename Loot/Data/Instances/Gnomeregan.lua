@@ -286,7 +286,6 @@ AtlasTW.InstanceData.Gnomeregan = {
     },
 }
 
-
 for _, bossData in ipairs(AtlasTW.InstanceData.Gnomeregan.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
     bossData.loot = nil

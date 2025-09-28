@@ -127,7 +127,6 @@ AtlasTW.InstanceData.TheStockade = {
     },
 }
 
-
 for _, bossData in ipairs(AtlasTW.InstanceData.TheStockade.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
     bossData.loot = nil

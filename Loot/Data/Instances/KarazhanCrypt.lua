@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.KarazhanCrypt = {
     Name = BZ["Karazhan Crypt"],
     Location = BZ["Deadwind Pass"],

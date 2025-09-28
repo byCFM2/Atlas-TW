@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.TheCrescentGrove = {
     Name = BZ["The Crescent Grove"],
     Location = BZ["Ashenvale"],
@@ -137,7 +136,6 @@ AtlasTW.InstanceData.TheCrescentGrove = {
         },
     },
 }
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.TheCrescentGrove.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)

@@ -26,7 +26,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 local scholoShareLoot = {
     { id = 18681, dropRate = 4 }, -- Burial Shawl
     { id = 14633, dropRate = 4 }, -- Necropile Mantle
@@ -56,7 +55,6 @@ local scholoShareLoot = {
     { id = 18680, dropRate = 4 }, -- Ancient Bone Bow
     { id = 18683, dropRate = 4 }, -- Hammer of the Vesper
 }
-
 
 AtlasTW.InstanceData.Scholomance = {
     Name = BZ["Scholomance"],

@@ -12,7 +12,7 @@
 --- • Rare mount and pet drops
 --- • Reputation reward items
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -23,9 +23,8 @@ local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BC = AceLibrary("Babble-Class-2.2")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
-AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
+AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 local zGSharedLoot = {
     { id = 22713, dropRate = 10 }, -- Zulian Scepter of Rites
@@ -68,6 +67,7 @@ local zGEnchants = {
     { id = 20078, disc = L["Shoulder"] }, -- Zandalar Signet of Serenity
     { id = 65033, disc = L["Shoulder"] }, -- Zandalar Signet of Tenacity
 }
+
 local zGidol = {
     { id = 22637, dropRate = 100, container = { 19789, 19787, 19788, 19784, 19790, 19785, 19786, 19783, 19782 } }, -- Primal Hakkari Idol
 }
@@ -332,126 +332,127 @@ AtlasTW.InstanceData.ZulGurub = {
             id = "JindotheHexxer",
             prefix = "10)",
             name = BB["Jin'do the Hexxer"],
-                postfix = L["Optional"],
-                defaults = { dropRate = 8 },
-                loot = {
-                    { id = 19885 }, -- Jin'do's Evil Eye
-                    { id = 19886 }, -- The Hexxer's Cover
-                    { id = 19875 }, -- Bloodstained Coif
-                    { id = 19888 }, -- Overlord's Embrace
-                    { id = 19929 }, -- Bloodtinged Gloves
-                    { id = 19894 }, -- Bloodsoaked Gauntlets
-                    { id = 19889 }, -- Blooddrenched Leggings
-                    { id = 19887 }, -- Bloodstained Legplates
-                    { id = 19892 }, -- Animist's Boots
-                    {},
-                    { id = 19891 }, -- Jin'do's Bag of Whammies
-                    { id = 19890 }, -- Jin'do's Hexxer
-                    { id = 19884 }, -- Jin'do's Judgement
-                    {},
-                    unpack(zGidol),
-                    { id = 19721, dropRate = 11, container = { 19826, 19832, 19845 } }, -- Primal Hakkari Shawl
-                    { id = 19724, dropRate = 11, container = { 19841, 19834, 19831 } }, -- Primal Hakkari Aegis
-                    { id = 19723, dropRate = 11, container = { 20033, 20034, 19822 } }, -- Primal Hakkari Kossack
-                    { id = 19722, dropRate = 11, container = { 19828, 19825, 19838 } }, -- Primal Hakkari Tabard
-                    { id = 19717, dropRate = 11, container = { 19830, 19836, 19824 } }, -- Primal Hakkari Armsplint
-                    { id = 19716, dropRate = 11, container = { 19827, 19846, 19833 } }, -- Primal Hakkari Bindings
-                    { id = 19718, dropRate = 11, container = { 19843, 19848, 19840 } }, -- Primal Hakkari Stanchion
-                    { id = 19719, dropRate = 11, container = { 19829, 19835, 19823 } }, -- Primal Hakkari Girdle
-                    { id = 19720, dropRate = 11, container = { 19842, 19849, 19839 } }, -- Primal Hakkari Sash
-                }
+            postfix = L["Optional"],
+            defaults = { dropRate = 8 },
+            loot = {
+                { id = 19885 }, -- Jin'do's Evil Eye
+                { id = 19886 }, -- The Hexxer's Cover
+                { id = 19875 }, -- Bloodstained Coif
+                { id = 19888 }, -- Overlord's Embrace
+                { id = 19929 }, -- Bloodtinged Gloves
+                { id = 19894 }, -- Bloodsoaked Gauntlets
+                { id = 19889 }, -- Blooddrenched Leggings
+                { id = 19887 }, -- Bloodstained Legplates
+                { id = 19892 }, -- Animist's Boots
+                {},
+                { id = 19891 }, -- Jin'do's Bag of Whammies
+                { id = 19890 }, -- Jin'do's Hexxer
+                { id = 19884 }, -- Jin'do's Judgement
+                {},
+                unpack(zGidol),
+                { id = 19721, dropRate = 11, container = { 19826, 19832, 19845 } }, -- Primal Hakkari Shawl
+                { id = 19724, dropRate = 11, container = { 19841, 19834, 19831 } }, -- Primal Hakkari Aegis
+                { id = 19723, dropRate = 11, container = { 20033, 20034, 19822 } }, -- Primal Hakkari Kossack
+                { id = 19722, dropRate = 11, container = { 19828, 19825, 19838 } }, -- Primal Hakkari Tabard
+                { id = 19717, dropRate = 11, container = { 19830, 19836, 19824 } }, -- Primal Hakkari Armsplint
+                { id = 19716, dropRate = 11, container = { 19827, 19846, 19833 } }, -- Primal Hakkari Bindings
+                { id = 19718, dropRate = 11, container = { 19843, 19848, 19840 } }, -- Primal Hakkari Stanchion
+                { id = 19719, dropRate = 11, container = { 19829, 19835, 19823 } }, -- Primal Hakkari Girdle
+                { id = 19720, dropRate = 11, container = { 19842, 19849, 19839 } }, -- Primal Hakkari Sash
+            }
+        },
+        {
+            id = "Hakkar",
+            prefix = "11)",
+            name = BB["Hakkar"],
+            defaults = { dropRate = 14 },
+            loot = {
+                { id = 19876 }, -- Soul Corrupter's Necklace
+                { id = 19856 }, -- The Eye of Hakkar
+                { id = 19857 }, -- Cloak of Consumption
+                { id = 20257 }, -- Seafury Gauntlets
+                { id = 20264 }, -- Peacekeeper Gauntlets
+                { id = 19855 }, -- Bloodsoaked Legplates
+                {},
+                { id = 19861 }, -- Touch of Chaos
+                { id = 19853 }, -- Gurubashi Dwarf Destroyer
+                { id = 19862 }, -- Aegis of the Blood God
+                { id = 19864 }, -- Bloodcaller
+                { id = 19865 }, -- Warblade of the Hakkari
+                { id = 19852 }, -- Ancient Hakkari Manslayer
+                { id = 19859 }, -- Fang of the Faceless
+                { id = 19854 }, -- Zin'rokh, Destroyer of Worlds
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
+                { id = 19802, dropRate = 100, container = { 19950, 19949, 19948 } }, -- Heart of Hakkar
+            }
+        },
+        {
+            prefix = "1')",
+            name = L["Muddy Churning Waters"],
+            color = "|cff00ff00",
+            loot = {
+                { id = 19975, disc = L["Used to summon boss"] }, -- Zulian Mudskunk
             },
-            {
-                id = "Hakkar",
-                prefix = "11)",
-                name = BB["Hakkar"],
-                defaults = { dropRate = 14 },
-                loot = {
-                    { id = 19876 }, -- Soul Corrupter's Necklace
-                    { id = 19856 }, -- The Eye of Hakkar
-                    { id = 19857 }, -- Cloak of Consumption
-                    { id = 20257 }, -- Seafury Gauntlets
-                    { id = 20264 }, -- Peacekeeper Gauntlets
-                    { id = 19855 }, -- Bloodsoaked Legplates
-                    {},
-                    { id = 19861 }, -- Touch of Chaos
-                    { id = 19853 }, -- Gurubashi Dwarf Destroyer
-                    { id = 19862 }, -- Aegis of the Blood God
-                    { id = 19864 }, -- Bloodcaller
-                    { id = 19865 }, -- Warblade of the Hakkari
-                    { id = 19852 }, -- Ancient Hakkari Manslayer
-                    { id = 19859 }, -- Fang of the Faceless
-                    { id = 19854 }, -- Zin'rokh, Destroyer of Worlds
-                    {},
-                    { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
-                    { id = 19802, dropRate = 100, container = { 19950, 19949, 19948 } }, -- Heart of Hakkar
-                }
+        },
+        {
+            prefix = "2')",
+            name = L["Jinxed Hoodoo Pile"],
+            color = "|cff00ff00",
+            defaults = { dropRate = 11 },
+            loot = {
+                { id = 19727, disc = L["Unique"], dropRate = 26 }, -- Blood Scythe
+                {},
+                { id = 19813, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19814, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19815, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19816, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19817, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19818, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19819, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19820, disc = L["Doll"] }, -- Punctured Voodoo Doll
+                { id = 19821, disc = L["Doll"] }, -- Punctured Voodoo Doll
             },
-            {
-                prefix = "1')",
-                name = L["Muddy Churning Waters"],
-                color = "|cff00ff00",
-                loot = {
-                    { id = 19975, disc = L["Used to summon boss"] }, -- Zulian Mudskunk
-                },
-            },
-            {
-                prefix = "2')",
-                name = L["Jinxed Hoodoo Pile"],
-                color = "|cff00ff00",
-                defaults = { dropRate = 11 },
-                loot = {
-                    { id = 19727, disc = L["Unique"], dropRate = 26 }, -- Blood Scythe
-                    {},
-                    { id = 19813, disc = L["Doll"] }, -- Punctured Voodoo Doll
-                    { id = 19814, disc = L["Doll"] }, -- Punctured Voodoo Doll
-                    { id = 19815, disc = L["Doll"] }, -- Punctured Voodoo Doll
-                    { id = 19816, disc = L["Doll"] }, -- Punctured Voodoo Doll
-                    { id = 19817, disc = L["Doll"] }, -- Punctured Voodoo Doll
-                    { id = 19818, disc = L["Doll"] }, -- Punctured Voodoo Doll
-                    { id = 19819, disc = L["Doll"] }, -- Punctured Voodoo Doll
-                    { id = 19820, disc = L["Doll"] }, -- Punctured Voodoo Doll
-                    { id = 19821, disc = L["Doll"] }, -- Punctured Voodoo Doll
-                },
-            },
-            {
-                id = "ZGTrash",
-                name = L["Trash Mobs"].."-"..BZ["Zul'Gurub"],
-                defaults = { dropRate = .03 },
-                loot = {
-                    { id = 20263 }, -- Gurubashi Helm
-                    { id = 20259 }, -- Shadow Panther Hide Gloves
-                    { id = 20261 }, -- Shadow Panther Hide Belt
-                    {},
-                    { id = 19921 }, -- Zulian Hacker
-                    { id = 19908 }, -- Sceptre of Smiting
-                    { id = 20258 }, -- Zulian Ceremonial Staff
-                    {},
-                    { id = 19727, disc = L["Unique"] }, -- Blood Scythe
-                    {},
-                    { id = 19726, disc = L["Trade Goods"], dropRate = 1 }, -- Bloodvine
-                    { id = 19774, disc = L["Trade Goods"], dropRate = 0.05 }, -- Souldarite
-                    {},
-                    { id = 19767, disc = L["Trade Goods"], dropRate = 10 }, -- Primal Bat Leather
-                    { id = 19768, disc = L["Trade Goods"], dropRate = 20 }, -- Primal Tiger Leather
-                    { id = 19820 }, -- Punctured Voodoo Doll
-                    { id = 19818 }, -- Punctured Voodoo Doll
-                    { id = 19819 }, -- Punctured Voodoo Doll
-                    { id = 19814 }, -- Punctured Voodoo Doll
-                    { id = 19821 }, -- Punctured Voodoo Doll
-                    { id = 19816 }, -- Punctured Voodoo Doll
-                    { id = 19817 }, -- Punctured Voodoo Doll
-                    { id = 19815 }, -- Punctured Voodoo Doll
-                    { id = 19813 }, -- Punctured Voodoo Doll
-                }
-            },
-            { name = L["Zul'Gurub Sets"], items = "AtlasLootZGSetMenu" },
-            { name = L["Zul'Gurub Enchants"], items = zGEnchants },
-        }
+        },
+        {
+            id = "ZGTrash",
+            name = L["Trash Mobs"].."-"..BZ["Zul'Gurub"],
+            defaults = { dropRate = .03 },
+            loot = {
+                { id = 20263 }, -- Gurubashi Helm
+                { id = 20259 }, -- Shadow Panther Hide Gloves
+                { id = 20261 }, -- Shadow Panther Hide Belt
+                {},
+                { id = 19921 }, -- Zulian Hacker
+                { id = 19908 }, -- Sceptre of Smiting
+                { id = 20258 }, -- Zulian Ceremonial Staff
+                {},
+                { id = 19727, disc = L["Unique"] }, -- Blood Scythe
+                {},
+                { id = 19726, disc = L["Trade Goods"], dropRate = 1 }, -- Bloodvine
+                { id = 19774, disc = L["Trade Goods"], dropRate = 0.05 }, -- Souldarite
+                {},
+                { id = 19767, disc = L["Trade Goods"], dropRate = 10 }, -- Primal Bat Leather
+                { id = 19768, disc = L["Trade Goods"], dropRate = 20 }, -- Primal Tiger Leather
+                { id = 19820 }, -- Punctured Voodoo Doll
+                { id = 19818 }, -- Punctured Voodoo Doll
+                { id = 19819 }, -- Punctured Voodoo Doll
+                { id = 19814 }, -- Punctured Voodoo Doll
+                { id = 19821 }, -- Punctured Voodoo Doll
+                { id = 19816 }, -- Punctured Voodoo Doll
+                { id = 19817 }, -- Punctured Voodoo Doll
+                { id = 19815 }, -- Punctured Voodoo Doll
+                { id = 19813 }, -- Punctured Voodoo Doll
+                {},
+                { id = 37010, dropRate = 6 }, -- Razzashi Hatchling
+            }
+        },
+        { name = L["Zul'Gurub Sets"], items = "AtlasLootZGSetMenu" },
+        { name = L["Zul'Gurub Enchants"], items = zGEnchants },
     }
+}
 
-
-    for _, bossData in ipairs(AtlasTW.InstanceData.ZulGurub.Bosses) do
-        bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
-        bossData.loot = nil
-    end
+for _, bossData in ipairs(AtlasTW.InstanceData.ZulGurub.Bosses) do
+    bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
+    bossData.loot = nil
+end

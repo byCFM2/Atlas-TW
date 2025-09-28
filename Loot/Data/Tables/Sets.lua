@@ -12,7 +12,7 @@
 --- • Set bonuses and effects
 --- • Class-specific set organization
 ---
---- @since 1.0.1
+--- @since 1.0.2
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -2293,11 +2293,41 @@ Sets = {
 		{ id = 8494 }, -- Parrot Cage (Hyacinth Macaw)
 		{ id = 11825 }, -- Pet Bombling
 		{ id = 12529 }, -- Smolderweb Carrier *15
+		{ id = 37000 }, -- Webwood Hatchling
+		{ id = 37001 }, -- Wildthorn Hatchling
+		{ id = 37002 }, -- Lava Hatchling
+		{ id = 37003 }, -- Tarantula Hatchling
+		{ id = 37004 }, -- Timberweb Hatchling
+		{ id = 37005 }, -- Mistbark Hatchling
+		{ id = 37006 }, -- Skitterweb Hatchling
+		{ id = 37007 }, -- Black Widow Hatchling
+		{ id = 37008 }, -- Night Web Hatchling
+		{ id = 37009 }, -- Cavernweb Hatchling
+		{ id = 37010 }, -- Razzashi Hatchling
+		{ id = 37011 }, -- Araxxna's Hatchling
+		{ id = 37012 }, -- Maexxna's Hatchling
+		{ id = 37013 }, -- Darkmist Hatchling
 		{ id = 11474 }, -- Sprite Darter Egg
 		{ id = 8499 }, -- Tiny Crimson Whelpling
 		{ id = 8498 }, -- Tiny Emerald Whelpling
 		{ id = 21277 }, -- Tranquil Mechanical Yeti
 		{ id = 12264 }, -- Worg Carrier
+		{ id = 67000 }, -- Lovely Pink Fox
+		{ id = 18963 }, -- Albino Snapjaw
+		{ id = 18964 }, -- Loggerhead Snapjaw
+		{ id = 18965 }, -- Hawksbill Snapjaw
+		{ id = 18966 }, -- Leatherback Snapjaw
+		{ id = 18967 }, -- Olive Snapjaw
+		{ id = 69001 }, -- Tiny Warp Stalker
+		{ id = 54000 }, -- Azure Frog
+		{ id = 54001 }, -- Dream Frog
+		{ id = 54002 }, -- Bullfrog
+		{ id = 54003 }, -- Infinite Frog
+		{ id = 54004 }, -- Poison Frog
+		{ id = 54005 }, -- Snow Frog
+		{ id = 54006 }, -- Pink Frog
+		{ id = 54007 }, -- Golden Frog
+		{ id = 54008 }, -- Pond Frog
 	},
 	CraftedWeapons = {
 		{ name = BS["Blacksmithing"], icon = "Trade_BlackSmithing" },

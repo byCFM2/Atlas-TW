@@ -39,7 +39,6 @@ local ShareLoot = {
     { id = 18401, container = { 18348 }, dropRate = ".2-10" }, -- Foror's Compendium of Dragon Slaying
 }
 
-
 AtlasTW.InstanceData.DireMaulEast = {
     Name = BZ["Dire Maul (East)"],
     Location = BZ["Feralas"],
@@ -244,7 +243,6 @@ AtlasTW.InstanceData.DireMaulEast = {
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
     }
 }
-
 
 AtlasTW.InstanceData.DireMaulWest = {
     Name = BZ["Dire Maul (West)"],
@@ -501,7 +499,6 @@ AtlasTW.InstanceData.DireMaulWest = {
         },
     }
 }
-
 
 AtlasTW.InstanceData.DireMaulNorth = {
     Name = BZ["Dire Maul (North)"],
@@ -819,7 +816,6 @@ AtlasTW.InstanceData.DireMaulNorth = {
     }
 }
 
-
 AtlasTW.InstanceData.DireMaulEnt = {
     Name = BZ["Dire Maul"] .. " (" .. L["Entrance"] .. ")",
     Location = BZ["Feralas"],
@@ -869,7 +865,6 @@ AtlasTW.InstanceData.DireMaulEnt = {
         },
     }
 }
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.DireMaulEast.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)

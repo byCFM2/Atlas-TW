@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 local imperialRegalia = {
     { id = 21237, disc = L["Quest Item"], dropRate = 4, container = { 21268, 21273, 21275 } }, -- Imperial Qiraji Regalia
 }
@@ -39,7 +38,6 @@ local QirajiBindingsOfDominance = {
     { id = 20932, disc = L["Quest Item"], dropRate = 100, container = { 21391, 47038, 47033, 21388, 47036, 47041, 21345, 47095, 21344, 47098, 21335, -- Qiraji Bindings of Dominance
             47293, 21338, 47296, 21376, 47153, 47158, 21373, 47156, 47161, 21354, 47363, 47368, 21355, 47366, 47371 } },
 }
-
 
 AtlasTW.InstanceData.TheTempleofAhnQiraj = {
     Name = BZ["Temple of Ahn'Qiraj"],

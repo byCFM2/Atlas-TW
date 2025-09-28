@@ -25,7 +25,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.ScarletMonasteryLibrary = {
     Name = BZ["Scarlet Monastery (Library)"],
     Location = BZ["Tirisfal Glades"],
@@ -123,7 +122,6 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
     }
 }
 
-
 AtlasTW.InstanceData.ScarletMonasteryArmory = {
     Name = BZ["Scarlet Monastery (Armory)"],
     Location = BZ["Tirisfal Glades"],
@@ -202,7 +200,6 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
         { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
     }
 }
-
 
 AtlasTW.InstanceData.ScarletMonasteryCathedral = {
     Name = BZ["Scarlet Monastery (Cathedral)"],
@@ -296,7 +293,6 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
         { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
     }
 }
-
 
 AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
     Name = BZ["Scarlet Monastery (Graveyard)"],
@@ -430,7 +426,6 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
     }
 }
 
-
 AtlasTW.InstanceData.ScarletMonasteryEnt = {
     Name = BZ["Scarlet Monastery"] .. " (" .. L["Entrance"] .. ")",
     Location = BZ["Tirisfal Glades"],
@@ -444,7 +439,6 @@ AtlasTW.InstanceData.ScarletMonasteryEnt = {
     },
     Bosses = {}
 }
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.ScarletMonasteryLibrary.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)

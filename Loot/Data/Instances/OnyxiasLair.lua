@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.OnyxiasLair = {
     Name = BZ["Onyxia's Lair"],
     Location = BZ["Dustwallow Marsh"],
@@ -88,7 +87,6 @@ AtlasTW.InstanceData.OnyxiasLair = {
         }
     }
 }
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.OnyxiasLair.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)

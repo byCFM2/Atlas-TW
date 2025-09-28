@@ -24,13 +24,11 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 local captainLoot = {
     { id = 21809, dropRate = 8 }, -- Fury of the Forgotten Swarm
     { id = 21810, dropRate = 8 }, -- Treads of the Wandering Nomad
     { id = 21806, dropRate = 5 }, -- Gavel of Qiraji Authority
 }
-
 
 AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
     Name = BZ["Ruins of Ahn'Qiraj"],
@@ -368,7 +366,6 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
         { name = L["Ruins of Ahn'Qiraj Sets"], items = "AtlasLootAQ20SetMenu" },
     }
 }
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.TheRuinsofAhnQiraj.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)

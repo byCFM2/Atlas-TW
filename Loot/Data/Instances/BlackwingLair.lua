@@ -24,7 +24,6 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.BlackwingLair = {
     Name = BZ["Blackwing Lair"],
     Location = BZ["Blackrock Spire"],
@@ -444,7 +443,6 @@ AtlasTW.InstanceData.BlackrockMountainEnt = {
         }
     }
 }
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.BlackwingLair.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)

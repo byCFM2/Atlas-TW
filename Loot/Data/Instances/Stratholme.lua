@@ -26,7 +26,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.Stratholme = {
     Name = BZ["Stratholme"],
     Location = BZ["Eastern Plaguelands"],
@@ -620,7 +619,6 @@ AtlasTW.InstanceData.Stratholme = {
         { name = L["Tier 0/0.5 Sets"], items = "AtlasLootT0SetMenu" },
     },
 }
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.Stratholme.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)

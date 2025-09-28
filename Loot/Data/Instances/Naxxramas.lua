@@ -12,7 +12,7 @@
 --- • Unique trinkets and accessories
 --- • Attunement and key requirements
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -23,7 +23,6 @@ local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
-
 
 AtlasTW.InstanceData.Naxxramas = {
     Name = BZ["Naxxramas"],
@@ -219,6 +218,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 {},
                 { id = 22807 }, -- Wraith Blade
                 { id = 22804 }, -- Maexxna's Fang
+                {},
+                { id = 37012, dropRate = 30 }, -- Maexxna's Hatchling
             }
         },
         {

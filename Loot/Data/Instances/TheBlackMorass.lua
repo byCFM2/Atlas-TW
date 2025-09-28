@@ -12,7 +12,7 @@
 --- • Level-appropriate loot organization
 --- • Quest reward items
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -22,10 +22,8 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
-
 
 AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
     Name = BZ["Black Morass"],

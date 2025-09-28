@@ -25,7 +25,6 @@ local BIS = AceLibrary("Babble-ItemSet-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.GilneasCity = {
     Name = BZ["Gilneas City"],
     Location = BZ["Gilneas"],
@@ -195,7 +194,6 @@ AtlasTW.InstanceData.GilneasCity = {
         { name = BIS["Greymane Armor"], items = "GreymaneArmor" },
     },
 }
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.GilneasCity.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)

@@ -26,7 +26,6 @@ local BC = AceLibrary("Babble-Class-2.2")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
-
 AtlasTW.InstanceData.BlackrockSpireUpper = {
     Name = BZ["Upper Blackrock Spire"],
     Location = BZ["Blackrock Mountain"],
