@@ -12,7 +12,7 @@
 --- • Level-appropriate loot organization
 --- • Quest reward items
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -178,7 +178,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 { id = 55115 }, -- Riftcarver's Implement
                 { id = 55116 }, -- Raka'shishi, Spear of the Adrift Hunt
                 {},
-                {},
+                { id = 69001, dropRate = 100 }, -- Tiny Warp Stalker
                 {},
                 {},
                 {},

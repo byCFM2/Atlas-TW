@@ -12,7 +12,7 @@
 --- • Level-appropriate loot organization
 --- • Quest reward items
 ---
---- @since 1.0.0
+--- @since 1.0.2
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -155,7 +155,7 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 { id = 84509 }, -- Emerald Rod
                 { id = 84503 }, -- Nature's Gift
                 {},
-                {},
+                { id = 54001, dropRate = .08 }, -- Dream Frog
                 {},
                 {},
                 {},

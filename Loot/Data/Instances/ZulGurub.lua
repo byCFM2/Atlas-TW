@@ -443,6 +443,8 @@ AtlasTW.InstanceData.ZulGurub = {
                 { id = 19817 }, -- Punctured Voodoo Doll
                 { id = 19815 }, -- Punctured Voodoo Doll
                 { id = 19813 }, -- Punctured Voodoo Doll
+                {},
+                { id = 37010, dropRate = 6 }, -- Razzashi Hatchling
             }
         },
         { name = L["Zul'Gurub Sets"], items = "AtlasLootZGSetMenu" },
