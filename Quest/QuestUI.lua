@@ -162,6 +162,7 @@ end
 
 -- Register Events
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+frame:SetBackdropBorderColor(0.80, 0.60, 0.25, 1)
 frame:SetScript("OnEvent", function () AtlasTW.Quest.OnEvent() end)
 frame:SetScript("OnShow", function () AtlasTW.Quest.OnQuestFrameShow() end)
 

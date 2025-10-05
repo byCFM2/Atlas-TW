@@ -82,7 +82,6 @@ local function AtlasLoot_ApplyParentTemplate(frame)
     border:SetWidth(31)
     border:SetHeight(31)
     border:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\Container-Border")
-    border:SetVertexColor(0.80, 0.60, 0.25)
     border:SetPoint("TOPLEFT", frame, -2, 2)
     border:Hide()
 end
@@ -722,6 +721,7 @@ local function AtlasLoot_CreatePanel()
         edgeSize = 32,
         insets = { left = 11, right = 12, top = 12, bottom = 11 }
     })
+    frame:SetBackdropBorderColor(0.80, 0.60, 0.25, 1)
 
     -- Top row buttons
     local world = CreateFrame("Button", frame:GetName().."_Instances", frame, "OptionsButtonTemplate")
