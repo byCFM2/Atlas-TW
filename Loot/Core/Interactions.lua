@@ -850,7 +850,7 @@ end
 --- @param button string Button identifier for the clicked menu item
 --- @return nil
 --- @usage AtlasTW.Interactions.MenuItem_OnClick("button1") -- Called by menu item clicks
---- @since 1.0.0
+--- @since 1.0.1
 ---
 function AtlasTW.Interactions.MenuItem_OnClick(button)
 	if this.container then
@@ -935,9 +935,7 @@ function AtlasTW.Interactions.MenuItem_OnClick(button)
 
 		AtlasLootItemsFrame:Show()
 		AtlasTW.LootBrowserUI.ShowScrollBarLoading()
-		if pagename == L["Rare Mobs"] then
-			pagename = L["Shade Mage"]
-		end
+		pagename = pagename == L["Rare Mobs"] and L["Shade Mage"] or pagename
 		-- Remember parent menu for "Back" button
 		local prevStored = AtlasLootItemsFrame.StoredElement
 		if type(prevStored) == "table" and prevStored.menuName then
@@ -979,7 +977,7 @@ end
 --- Processes navigation between loot pages and menu sections
 --- @return nil
 --- @usage AtlasTW.Interactions.NavButton_OnClick() -- Called by navigation button clicks
---- @since 1.0.0
+--- @since 1.0.1
 ---
 function AtlasTW.Interactions.NavButton_OnClick()
     -- Reset scroll on navigation
@@ -1059,10 +1057,19 @@ function AtlasTW.Interactions.NavButton_OnClick()
 		end
 	else
 		-- Normal logic for other bosses
-		if type(lp) == "string" then
-			lootData = AtlasLoot_Data[lp] or AtlasTW.DataResolver.GetLootByElemName(lp)
-		else
+		if type(lp) == "table" then
 			lootData = lp
+		elseif type(lp) == "string" then
+			lootData = AtlasLoot_Data[lp]
+			if not lootData and type(this.title) == "string" then
+				lootData = AtlasTW.DataResolver.GetLootByElemName(this.title, lp)
+			end
+			if not lootData and type(this.title) == "string" then
+				lootData = AtlasTW.DataResolver.GetLootByElemName(this.title)
+			end
+			if not lootData then
+				lootData = AtlasTW.DataResolver.GetLootByElemName(lp)
+			end
 		end
 	end
 

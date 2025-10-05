@@ -12,7 +12,7 @@
 --- • Level-appropriate loot organization
 --- • Quest reward items
 ---
---- @since 1.0.1
+--- @since 1.0.2
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -131,6 +131,9 @@ AtlasTW.InstanceData.WailingCaverns = {
                 { id = 23800, dropRate = .2 }, -- Violet Feral Raptor
                 {},
                 { id = 9739, dropRate = 100, container = { 6504, 6505 } }, -- Gem of Anacondra
+                {},
+                { id = 2189, disc = L["Level One Lunatic Challenge"], dropRate = 50 }, -- Serpent Scale Mantle --TODO drop rate
+                { id = 2190, disc = L["Level One Lunatic Challenge"], dropRate = 50 }, -- Snakeswarm Robe --TODO drop rate
             }
         },
         {
