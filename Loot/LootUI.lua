@@ -23,7 +23,7 @@ local L = AtlasTW.Local
 -- @function AtlasLoot_ApplyParentTemplate
 -- @param frame Frame - The frame to apply template to
 -- @usage AtlasLoot_ApplyParentTemplate(myFrame)
--- @version 1.0
+-- @version 1.0.1
 ---
 local function AtlasLoot_ApplyParentTemplate(frame)
     frame:SetWidth(236)

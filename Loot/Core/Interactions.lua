@@ -850,7 +850,7 @@ end
 --- @param button string Button identifier for the clicked menu item
 --- @return nil
 --- @usage AtlasTW.Interactions.MenuItem_OnClick("button1") -- Called by menu item clicks
---- @since 1.0.0
+--- @since 1.0.1
 ---
 function AtlasTW.Interactions.MenuItem_OnClick(button)
 	if this.container then
@@ -977,7 +977,7 @@ end
 --- Processes navigation between loot pages and menu sections
 --- @return nil
 --- @usage AtlasTW.Interactions.NavButton_OnClick() -- Called by navigation button clicks
---- @since 1.0.0
+--- @since 1.0.1
 ---
 function AtlasTW.Interactions.NavButton_OnClick()
     -- Reset scroll on navigation
