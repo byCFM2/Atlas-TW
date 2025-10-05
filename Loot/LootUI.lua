@@ -32,9 +32,9 @@ local function AtlasLoot_ApplyParentTemplate(frame)
 
     -- Icon texture
     local icon = frame:CreateTexture(frame:GetName().."_Icon", "ARTWORK")
-    icon:SetWidth(25)
-    icon:SetHeight(25)
-    icon:SetPoint("TOPLEFT", frame, "TOPLEFT", 1, -1)
+    icon:SetWidth(23)
+    icon:SetHeight(23)
+    icon:SetPoint("TOPLEFT", frame, 2, -2)
 
     -- Quantity text
     local quantity = frame:CreateFontString(frame:GetName().."_Quantity", "ARTWORK", "GameFontNormal")
@@ -42,7 +42,7 @@ local function AtlasLoot_ApplyParentTemplate(frame)
     quantity:SetHeight(0)
     quantity:SetFont("Fonts\\ARIALN.TTF", 12, "OUTLINE")
     quantity:SetJustifyH("RIGHT")
-    quantity:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 0, 1)
+    quantity:SetPoint("BOTTOMRIGHT", icon, 0, 1)
 
     -- Name text
     local name = frame:CreateFontString(frame:GetName().."_Name", "ARTWORK", "GameFontNormal")
@@ -74,15 +74,16 @@ local function AtlasLoot_ApplyParentTemplate(frame)
         priceText:Hide()
         -- Position will be set dynamically when elements are shown
         priceIcon:SetPoint("TOPRIGHT", name, "BOTTOMRIGHT", 20, -2)
-        priceText:SetPoint("TOPRIGHT", priceIcon, "TOPRIGHT", 2, 2)
+        priceText:SetPoint("TOPRIGHT", priceIcon, 2, 2)
     end
 
-    -- Border texture
+    -- Border texture for item with container 
     local border = frame:CreateTexture(frame:GetName().."Border", "BACKGROUND")
-    border:SetWidth(29)
-    border:SetHeight(29)
-    border:SetTexture("Interface\\Buttons\\UI-Quickslot-Depress")
-    border:SetPoint("TOPLEFT", frame, "TOPLEFT", -1, 1)
+    border:SetWidth(31)
+    border:SetHeight(31)
+    border:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\Container-Border")
+    border:SetVertexColor(0.80, 0.60, 0.25)
+    border:SetPoint("TOPLEFT", frame, -2, 2)
     border:Hide()
 end
 

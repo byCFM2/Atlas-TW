@@ -42,7 +42,7 @@ AtlasTW.MenuData.Factions = {
 	{ name = BF["Cenarion Circle"],       icon = "Interface\\Icons\\Spell_Nature_HealingTouch",            lootpage = "CenarionCircle",	       Extra = BZ["Silithus"]   },
 	{ name = BF["Gelkis Clan Centaur"],   icon = "Interface\\Icons\\INV_Misc_Head_Centaur_01",             lootpage = "GelkisClanCentaur",	   Extra = BZ["Desolace"]   },
 	{ name = BF["Magram Clan Centaur"],   icon = "Interface\\Icons\\INV_Misc_Head_Centaur_01",             lootpage = "MagramClanCentaur",	   Extra = BZ["Desolace"]   },
-	{ name = BF["Timbermaw Hold"],        icon = "Interface\\Icons\\INV_Misc_Horn_01",                     lootpage = "TimbermawHold",	       Extra = BZ["Felwood"]   },
+	{ name = BF["Timbermaw Hold"],        icon = "Interface\\Icons\\INV_Misc_Horn_01",                     lootpage = "TimbermawHoldRep",	       Extra = BZ["Felwood"]   },
 	{ name = BF["Zandalar Tribe"],        icon = "Interface\\Icons\\INV_Misc_Coin_08",                     lootpage = "ZandalarTribe",	       Extra = BZ["Stranglethorn Vale"]   },
 	{ name = BF["Wardens of Time"],       icon = "Interface\\Icons\\INV_Misc_Head_Dragon_Bronze",          lootpage = "WardensofTime",	       Extra = L["Caverns of Time"]   },
 	{ name = BF["Shen'dralar"],            icon = "Interface\\Icons\\INV_Misc_Book_10",          		   lootpage = "Shendralar",	       Extra = BZ["Dire Maul"]   },

@@ -132,7 +132,8 @@ AtlasTW.InstanceData.WailingCaverns = {
                 {},
                 { id = 9739, dropRate = 100, container = { 6504, 6505 } }, -- Gem of Anacondra
                 {},
-             --   { id = 17041, disc = L["Level One Lunatic Challenge"], dropRate = 100 }, -- The Blazing Pan
+                { id = 2189, disc = L["Level One Lunatic Challenge"], dropRate = 50 }, -- Serpent Scale Mantle --TODO drop rate
+                { id = 2190, disc = L["Level One Lunatic Challenge"], dropRate = 50 }, -- Snakeswarm Robe --TODO drop rate
             }
         },
         {

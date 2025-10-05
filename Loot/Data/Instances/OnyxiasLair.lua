@@ -92,7 +92,7 @@ AtlasTW.InstanceData.OnyxiasLair = {
             postfix = L["Optional"],
             defaults = { dropRate = 20 },
             loot = {
-
+                --TODO Broodcommander Axelus loot
             }
         }
     }

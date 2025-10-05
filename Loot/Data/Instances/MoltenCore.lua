@@ -463,7 +463,6 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 19017, dropRate = 20, container = { 19019 } }, -- Essence of the Firelord
                 {},
                 { id = 70171, dropRate = 100, container = { 56060 } }, -- Plans: Crown of Molten Ascension
-                {},
                 { id = 92080, dropRate = 1 }, -- Molten Corehound
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }

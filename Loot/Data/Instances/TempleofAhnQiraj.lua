@@ -336,6 +336,8 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 { id = 20933, dropRate = 100, container = { 21351, 47216, 21343, 47096, 21334, 47294, 21357, 47364, 47369 } }, -- Husk of the Old God
                 {},
                 { id = 22734, dropRate = 100, container = { 22631, 22589, 22630, 22632 } }, -- Base of Atiesh
+                {},
+                { id = 36550, dropRate = 1 }, -- Spotted Qiraji Battle Tank
             }
         },
         { prefix = "1') ", name = "Andorgos", color = "|cff00FF00" },

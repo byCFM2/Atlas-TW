@@ -336,7 +336,7 @@ AtlasTW.InstanceData.BlackwingLair = {
             postfix = L["Optional"],
             defaults = { dropRate = 20 },
             loot = {
-
+                --TODO Ezzel Darkbrewer loot
             }
         },
         { prefix = "1)", name = L["Alchemy Lab"], color = "|cff00FF00" },

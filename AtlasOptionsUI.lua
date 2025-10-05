@@ -42,7 +42,7 @@ do
         insets = { left = 11, right = 12, top = 12, bottom = 11 }
     })
     optionsFrame:SetBackdropColor(0, 0, 0, 1)
-    optionsFrame:SetBackdropBorderColor(0, 0, 0, 1)
+    optionsFrame:SetBackdropBorderColor(0.80, 0.60, 0.25, 1)
 
     -- Frame scripts
     optionsFrame:SetScript("OnDragStart", function()

@@ -218,7 +218,7 @@ local Factions = {
 		{ id = 83492 },
 		{ id = 83491 },
 	},
-	TimbermawHold = {
+	TimbermawHoldRep = {
 		{ name = BF["Friendly"], icon="INV_Misc_Horn_01" },
 		{ id = 20254, container={15065} },
 		{ id = 15742, container={15064} },
