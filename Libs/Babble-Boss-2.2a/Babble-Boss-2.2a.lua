@@ -1,16 +1,5 @@
---[[
-Name: Babble-Boss-2.2a
-Revision: $Rev: 20010 $
-Author(s): ckknight (ckknight@gmail.com)
-Website: http://ckknight.wowinterface.com/
-Documentation: http://wiki.wowace.com/index.php/Babble-Boss-2.2a
-SVN: http://svn.wowace.com/root/trunk/Babble-2.2/Babble-Boss-2.2a
-Description: A library to provide localizations for bosses.
-Dependencies: AceLibrary, AceLocale-2.2
-]]
-
 local MAJOR_VERSION = "Babble-Boss-2.2a"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 20011 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 20012 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 
@@ -28,6 +17,9 @@ local BabbleBoss = AceLibrary("AceLocale-2.2"):new(MAJOR_VERSION)
 
 BabbleBoss:RegisterTranslations("enUS", function()
 	return {
+		--1.18.1
+		["Broodcommander Axelus"] = true,
+		["Ezzel Darkbrewer"] = true,
 		--1.18
 		["Incindis"] = true,
 		["Sorcerer-Thane Thaurissan"] = true,

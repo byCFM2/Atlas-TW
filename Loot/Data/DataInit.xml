@@ -40,6 +40,8 @@
     <Include file="Instances\ShadowfangKeep.lua"/>
     <Include file="Instances\StormwroughtRuins.lua"/>
     <Include file="Instances\DragonmawRetreat.lua"/>
+    <Include file="Instances\WindhornCanyon.lua"/>
+    <Include file="Instances\TimbermawHold.lua"/>
     <!-- World content data -->
     <Include file="World\Azuregos.lua"/>
     <Include file="World\FourDragons.lua"/>

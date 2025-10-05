@@ -12,7 +12,7 @@
 --- - Quest inheritance system
 --- - Localized quest data for English
 --- 
---- @since 1.0.1
+--- @since 1.0.2
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -6787,5 +6787,18 @@ kQuestInstanceData.StormwroughtRuins.Horde[9] = {
         { id = 58278 }, --Ring of Judgement
     }
 }
-
+--------------- Windhorn Canyon ---------------
+kQuestInstanceData.WindhornCanyon = {
+    Story = "This ancient canyon has been home to many tauren tribes who have in years past fought for the dominance of its flowing waters and shelter from the dangers of Kalimdor. The cultures and traditions of many have lived within Windhorn Canyon, which can be seen from the ancient shelters carved into the mountainside, to the relics coveted by the Tauren. As of recently the Windhorn Tauren were expelled and driven away by the Grimtotem who have conquered it, and claimed it for their own.",
+    Caption = BZ["Windhorn Canyon"],
+    Alliance = {},
+    Horde = {}
+}
+--------------- Timbermaw Hold ---------------
+kQuestInstanceData.TimbermawHold = {
+    Story = "As ancient as Kalimdor itself, this enigmatic labyrinthine network of tunnels and caves beneath Mount Hyjal has been the home of the Furbolgs since well before the Sundering. Its halls are sacred among the tribes, a place of worship to their progenitors, the twin gods Ursoc and Ursol. Nowadays however, only wafts of putrid vapors escape the rotten caverns and whispers of venerating a foul god echo throughout Timbermaw Hold…",
+    Caption = BZ["Timbermaw Hold"],
+    Alliance = {},
+    Horde = {}
+}
 AtlasTW.Quest.DataBase = kQuestInstanceData
