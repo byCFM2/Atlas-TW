@@ -12,7 +12,6 @@
 --- • Unique world boss rewards
 --- • Encounter mechanics data
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 

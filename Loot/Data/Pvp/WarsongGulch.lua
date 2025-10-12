@@ -12,7 +12,6 @@
 --- • Battleground objectives
 --- • PvP rewards and marks
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 

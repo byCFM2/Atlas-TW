@@ -11,8 +11,7 @@
 --- - Event registration and handling
 --- - UI component initialization
 --- - Frame visibility and state management
---- 
---- @since 1.0.0
+---
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -412,7 +411,6 @@ end
 -- World Map cursor coordinates overlay (shows cursor coords on default World Map)
 -- Creates an overlay on the WorldMap that displays the cursor coordinates
 -- Respects AtlasTWOptions.AtlasCursorCoords setting
--- @since 1.1.0
 do
     -- Create the overlay if Blizzard world map frames are available
     local function CreateAtlasWorldMapOverlay()

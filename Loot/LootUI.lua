@@ -11,8 +11,7 @@
 --- - UI component initialization
 --- - Frame positioning and layout
 --- - Loot interface management
---- 
---- @since 1.0.0
+---
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -23,7 +22,6 @@ local L = AtlasTW.Local
 -- @function AtlasLoot_ApplyParentTemplate
 -- @param frame Frame - The frame to apply template to
 -- @usage AtlasLoot_ApplyParentTemplate(myFrame)
--- @version 1.0.1
 ---
 local function AtlasLoot_ApplyParentTemplate(frame)
     frame:SetWidth(236)
@@ -92,7 +90,6 @@ end
 -- @param button Button - The button to apply template to
 -- @param buttonType string - Type of navigation button ("prev" or "next")
 -- @usage AtlasLoot_ApplyNavigationButtonTemplate(myButton, "prev")
--- @version 1.0
 ---
 local function AtlasLoot_ApplyNavigationButtonTemplate(button, buttonType)
     button:SetWidth(32)
@@ -114,7 +111,6 @@ end
 -- @function AtlasLoot_ApplyContainerItemTemplate
 -- @param button Button - The button to apply container item template to
 -- @usage AtlasLoot_ApplyContainerItemTemplate(myButton)
--- @version 1.0
 ---
 function AtlasLoot_ApplyContainerItemTemplate(button)
     button:SetWidth(40)
@@ -155,7 +151,6 @@ end
 -- @param frame Frame - The parent frame to attach preset buttons to
 -- @return table - Table containing all created preset buttons
 -- @usage local presetButtons = AtlasLoot_CreatePresetButtons(parentFrame)
--- @version 1.0
 ---
 local function AtlasLoot_CreatePresetButtons(frame)
     local presetButton = {}
@@ -243,7 +238,6 @@ end
 -- @param frame Frame - The parent frame to attach search elements to
 -- @return table - Table containing all created search elements
 -- @usage local searchElements = AtlasLoot_CreateSearchElements(parentFrame)
--- @version 1.0
 ---
 local function AtlasLoot_CreateSearchElements(frame)
     -- Search Box
@@ -371,7 +365,6 @@ end
 -- @param frame Frame - The parent frame to attach font strings to
 -- @return table - Table containing all created font strings
 -- @usage local fontStrings = AtlasLoot_CreateFontStrings(parentFrame)
--- @version 1.0
 ---
 local function AtlasLoot_CreateFontStrings(frame)
     -- Selected Category text
@@ -389,7 +382,6 @@ end
 -- @function AtlasLoot_CreateTooltips
 -- @return table - Table containing created tooltip frames
 -- @usage local tooltips = AtlasLoot_CreateTooltips()
--- @version 1.0
 ---
 local function AtlasLoot_CreateTooltips()
     local tooltip1 = CreateFrame("GameTooltip", "AtlasLootTooltip", UIParent, "GameTooltipTemplate")
@@ -412,7 +404,6 @@ end
 -- @param templateType string - The template type to apply
 -- @return Button - The created button with applied template
 -- @usage local button = AtlasLoot_CreateButtonFromTemplate("MyButton", parentFrame, "AtlasLootItem_Template")
--- @version 1.0
 ---
 function AtlasLoot_CreateButtonFromTemplate(name, parent, templateType)
     local button
@@ -474,7 +465,6 @@ end
 -- @function AtlasLoot_CreateItemsFrame
 -- @return Frame - The created items frame with all UI elements
 -- @usage local itemsFrame = AtlasLoot_CreateItemsFrame()
--- @version 1.0
 ---
 local function AtlasLoot_CreateItemsFrame()
     local frame = CreateFrame("Frame", "AtlasLootItemsFrame", AtlasFrame)
@@ -702,7 +692,6 @@ end
 -- @function AtlasLoot_CreatePanel
 -- @return Frame - The created panel frame with all navigation elements
 -- @usage local panel = AtlasLoot_CreatePanel()
--- @version 1.0
 ---
 local function AtlasLoot_CreatePanel()
     local frame = CreateFrame("Frame", "AtlasLootPanel", AtlasFrame)
@@ -883,7 +872,6 @@ end
 -- Initialize the AtlasLoot UI components
 -- @function AtlasLoot_InitializeUI
 -- @usage AtlasLoot_InitializeUI()
--- @version 1.0
 ---
 function AtlasLoot_InitializeUI()
     AtlasLoot_CreateTooltips()

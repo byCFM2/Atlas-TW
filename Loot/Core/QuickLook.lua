@@ -2,7 +2,7 @@
 --- @brief Manages the Quick Look functionality for AtlasLoot.
 --- This file provides functions to save, clear, and refresh quick access slots for frequently viewed loot tables.
 --- It integrates with the Hewdrop-2.0 library for UI interactions and stores user-defined quick look data in AtlasTWCharDB.
---- @since 1.0.0
+
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 AtlasTW.QuickLook = {}
@@ -17,7 +17,6 @@ local WHITE = AtlasTW.Colors.WHITE
 --- @param button number QuickLook button number to clear (1-6)
 --- @return nil
 --- @usage AtlasTW.QuickLook.ClearButton(3)
---- @since 1.0.0
 ---
 function AtlasTW.QuickLook.ClearButton(button)
 	if not button or button == nil then return end
@@ -31,7 +30,6 @@ end
 --- @param button table Button frame that triggered the menu
 --- @return void
 --- @usage AtlasTW.QuickLook.ShowMenu(button)
---- @since 1.0.0
 ---
 function AtlasTW.QuickLook.ShowMenu(button)
 	local Hewdrop = AceLibrary("Hewdrop-2.0")
@@ -82,7 +80,6 @@ end
 --- Refreshes QuickLook buttons availability based on saved assignments
 --- @return void
 --- @usage AtlasTW.QuickLook.RefreshButtons()
---- @since 1.0.0
 ---
 function AtlasTW.QuickLook.RefreshButtons()
 	local i=1

@@ -13,7 +13,6 @@
 --- • Configurable tooltip options
 ---
 --- @author Original by Otari98
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -83,7 +82,6 @@ local original_SetTooltipMoney = SetTooltipMoney
 --- @param money number - The money amount to display
 --- @return nil
 --- @usage Called automatically by WoW tooltip system
---- @since 1.0.0
 ---
 function SetTooltipMoney(frame, money)
     if ModuleState.insideHook then
@@ -102,7 +100,6 @@ end
 --- @param link string - The item link to parse
 --- @return number|nil - The extracted item ID or nil if not found
 --- @usage local itemID = ExtractItemID(itemLink)
---- @since 1.0.0
 ---
 local function ExtractItemID(link)
     if not link then return nil end
@@ -120,7 +117,6 @@ end
 --- @param itemID number - The item ID to search for
 --- @return boolean - True if item is found, false otherwise
 --- @usage local found = FindItemInData(lootTable, 12345)
---- @since 1.0.0
 ---
 local function FindItemInData(data, itemID)
     if type(data) ~= "table" or not itemID then
@@ -153,7 +149,6 @@ end
 --- @param fallback string - Fallback name if no name found
 --- @return string - The display name for the source
 --- @usage local name = GetSourceDisplayName(sourceObj, "Unknown")
---- @since 1.0.0
 ---
 local function GetSourceDisplayName(source, fallback)
     if source.name then
@@ -175,7 +170,6 @@ end
 --- @param itemID number - The item ID to search for
 --- @return string|nil - Formatted source string or nil if not found
 --- @usage local source = SearchInSourceList(repList, "Reputation", "Molten Core", 12345)
---- @since 1.0.0
 ---
 local function SearchInSourceList(list, label, instanceName, itemID)
     if type(list) ~= "table" then
@@ -217,7 +211,6 @@ end
 --- @param itemID number - The item ID to search for
 --- @return string|nil - Formatted source string or nil if not found
 --- @usage local source = FindItemSourceInInstance("MC", instanceData, 12345)
---- @since 1.0.0
 ---
 local function FindItemSourceInInstance(instanceKey, instance, itemID)
     if type(instance) ~= "table" then
@@ -263,7 +256,6 @@ end
 --- @param itemID number - The item ID to search for
 --- @return string|nil - Formatted source string or nil if not found
 --- @usage local source = FindItemSourceInAtlasLootData(12345)
---- @since 1.0.0
 ---
 local function FindItemSourceInAtlasLootData(itemID)
     if not AtlasLoot_Data then
@@ -312,7 +304,6 @@ end
 --- @param itemID number - The item ID to find source for
 --- @return string|nil - Formatted source string or nil if not found
 --- @usage local source = FindItemSource(12345)
---- @since 1.0.0
 ---
 local function FindItemSource(itemID)
     if not itemID then
@@ -353,7 +344,6 @@ end
 --- @param name string - The item name to search for
 --- @return number|nil - The item ID or nil if not found
 --- @usage local itemID = GetItemIDByName("Thunderfury")
---- @since 1.0.0
 ---
 local function GetItemIDByName(name)
     if not name then return nil end
@@ -389,7 +379,6 @@ end
 --- @param tooltip table - The tooltip frame to extend
 --- @return nil
 --- @usage ExtendTooltip(GameTooltip)
---- @since 1.0.0
 ---
 local function ExtendTooltip(tooltip)
     -- Add source information if enabled
@@ -433,7 +422,6 @@ end
 --- @param linkExtractor function - Function to extract item links
 --- @return nil
 --- @usage CreateTooltipWrapper(GameTooltip, "SetHyperlink", ExtractItemID)
---- @since 1.0.0
 ---
 local function CreateTooltipWrapper(tooltip, methodName, linkExtractor)
     local originalMethod = tooltip[methodName]
@@ -482,7 +470,6 @@ local TooltipHooks = {
 --- @param tooltip table - The tooltip frame to hook
 --- @return nil
 --- @usage HookTooltip(GameTooltip)
---- @since 1.0.0
 ---
 local function HookTooltip(tooltip)
     -- Store original OnHide handler
@@ -513,7 +500,6 @@ end
 --- @param button string - The mouse button used
 --- @return nil
 --- @usage Called automatically by WoW when clicking item links
---- @since 1.0.0
 ---
 local original_SetItemRef = SetItemRef
 function SetItemRef(link, text, button)
@@ -543,7 +529,6 @@ end)
 --- @param hookFunction function - Function to call when addon is loaded
 --- @return nil
 --- @usage AtlasLootTip.HookAddonOrVariable("SomeAddon", function() end)
---- @since 1.0.0
 ---
 AtlasLootTip.HookAddonOrVariable = function(addonName, hookFunction)
     local lurkerFrame = CreateFrame("Frame")

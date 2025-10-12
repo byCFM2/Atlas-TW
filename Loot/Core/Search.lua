@@ -12,7 +12,6 @@
 --- • Search history and suggestions
 --- • Performance-optimized search algorithms
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -27,7 +26,6 @@ local WHITE = AtlasTW.Colors.WHITE
 --- Shows search results in the loot frame
 --- @return nil
 --- @usage AtlasLoot.Search.ShowResult()
---- @since 1.0.0
 ---
 function AtlasTW.SearchLib.ShowResult()
 	-- Reset scroll position
@@ -46,7 +44,6 @@ end
 --- @param s string - String to trim
 --- @return string - Trimmed string
 --- @usage local trimmed = strtrim(" hello ")
---- @since 1.0.0
 ---
 local function strtrim(s)
 	return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
@@ -56,7 +53,6 @@ end
 --- @param Text string - Search query text
 --- @return nil
 --- @usage AtlasTW.SearchLib.Search("Thunderfury")
---- @since 1.0.0
 ---
 function AtlasTW.SearchLib.Search(Text)
     if not Text then return end
@@ -346,7 +342,6 @@ end
 --- @param button table - Button frame to anchor the dropdown to
 --- @return nil
 --- @usage AtlasTW.SearchLib.ShowOptions(someButton)
---- @since 1.0.0
 ---
 function AtlasTW.SearchLib.ShowOptions(button)
 	local Hewdrop = AceLibrary("Hewdrop-2.0")
@@ -381,7 +376,6 @@ end
 --- @param itemID number - The item ID to find data for
 --- @return ... - Unpacked search result data (id, bossName, instanceKey, type, sourcePage)
 --- @usage local id, boss, instance = AtlasTW.SearchLib.GetOriginalDataFromSearchResult(12345)
---- @since 1.0.0
 ---
 function AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemID)
 	for i, v in ipairs(AtlasTWCharDB.SearchResult) do

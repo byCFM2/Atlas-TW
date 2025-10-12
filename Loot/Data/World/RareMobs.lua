@@ -12,7 +12,6 @@
 --- • Named elite rewards
 --- • Spawn location information
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 

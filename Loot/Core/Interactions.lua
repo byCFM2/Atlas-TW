@@ -14,7 +14,6 @@
 --- • Chat link generation and wish list operations
 --- • Container item interaction support
 ---
---- @since 1.0.0
 ---
 
 local _G = getfenv()
@@ -29,7 +28,6 @@ local BLUE = AtlasTW.Colors.BLUE
 ---
 --- Determines default chat channel and target, considering WIM activity and ChatFrame state
 --- @return string, string|nil, table channel, target, wimActivityList
---- @since 1.0.0
 ---
 function AtlasTW.Interactions.ChatGetDefaultChannelTarget()
     local tListActivity = {}
@@ -61,7 +59,6 @@ end
 --- @param channel string|nil
 --- @param chatnumber string|number|nil
 --- @return void
---- @since 1.0.0
 ---
 function AtlasTW.Interactions.ChatSend(message, channel, chatnumber)
     if not message or message == "" then return end
@@ -82,7 +79,6 @@ end
 --- @param name string
 --- @param safe boolean
 --- @return void
---- @since 1.0.0
 ---
 function AtlasTW.Interactions.ChatSayItemReagents(id, color, name, safe)
     if not id then return end
@@ -360,7 +356,6 @@ end
 --- @param id number Item ID to create link for
 --- @return string Formatted chat link
 --- @usage local link = AtlasTW.Interactions.GetChatLink(12345)
---- @since 1.0.0
 ---
 function AtlasTW.Interactions.GetChatLink(id)
     local itemName, itemLink, itemQuality = GetItemInfo(tonumber(id))
@@ -379,7 +374,6 @@ end
 --- Shows appropriate tooltip based on item type (item, spell, enchant)
 --- @return nil
 --- @usage AtlasTW.Interactions.Item_OnEnter() -- Called automatically on mouse enter
---- @since 1.0.0
 ---
 function AtlasTW.Interactions.Item_OnEnter()
     if not this or not this.typeID or this.typeID == 0 or this.typeID == "" then
@@ -404,7 +398,6 @@ end
 --- Hides all active tooltips when mouse cursor leaves the item
 --- @return nil
 --- @usage AtlasTW.Interactions.Item_OnLeave() -- Called automatically on mouse leave
---- @since 1.0.0
 ---
 function AtlasTW.Interactions.Item_OnLeave()
     -- Hide the necessary tooltips
@@ -436,7 +429,6 @@ end
 --- @param arg1 string Click type ("LeftButton", "RightButton", etc.)
 --- @return nil
 --- @usage AtlasTW.Interactions.Item_OnClick("LeftButton") -- Called by item button clicks
---- @since 1.0.0
 ---
 function AtlasTW.Interactions.Item_OnClick(arg1)
     local id = this:GetID()
@@ -802,7 +794,6 @@ end
 --- @param buttonName string Name of the clicked button (unused parameter)
 --- @return nil
 --- @usage AtlasTW.Interactions.ElementList_OnClick() -- Called by button click events
---- @since 1.0.0
 ---
 function AtlasTW.Interactions.ElementList_OnClick(buttonName)
     -- Reset scroll position to top
@@ -850,7 +841,6 @@ end
 --- @param button string Button identifier for the clicked menu item
 --- @return nil
 --- @usage AtlasTW.Interactions.MenuItem_OnClick("button1") -- Called by menu item clicks
---- @since 1.0.1
 ---
 function AtlasTW.Interactions.MenuItem_OnClick(button)
 	if this.container then
@@ -977,7 +967,6 @@ end
 --- Processes navigation between loot pages and menu sections
 --- @return nil
 --- @usage AtlasTW.Interactions.NavButton_OnClick() -- Called by navigation button clicks
---- @since 1.0.1
 ---
 function AtlasTW.Interactions.NavButton_OnClick()
     -- Reset scroll on navigation
@@ -1090,7 +1079,6 @@ end
 --- Resets active element selection and updates boss button display states
 --- @return nil
 --- @usage AtlasTW.Interactions.OnCloseButton() -- Called by close button click
---- @since 1.0.0
 ---
 function AtlasTW.Interactions.OnCloseButton()
     -- Set no loot table as currently selected
@@ -1118,7 +1106,6 @@ end
 --- @param arg1 string Click type ("LeftButton", "RightButton", etc.)
 --- @return nil
 --- @usage AtlasTW.Interactions.ContainerItem_OnClick("LeftButton") -- Called by container item clicks
---- @since 1.0.1
 ---
 function AtlasTW.Interactions.ContainerItem_OnClick(arg1)
     local itemID = this:GetID()

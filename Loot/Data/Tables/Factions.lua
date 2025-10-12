@@ -12,7 +12,6 @@
 --- • Reputation level requirements
 --- • Faction-specific quest rewards
 ---
---- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 

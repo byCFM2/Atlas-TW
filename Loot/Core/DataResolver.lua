@@ -11,7 +11,6 @@
 --- - Instance data searching and filtering
 --- - Support for cross-instance data lookup
 --- 
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -27,7 +26,6 @@ local L = AtlasTW.Local
 --- @param items string|table The items to resolve - string key for AtlasLoot_Data lookup or table data
 --- @return table|string|nil Returns resolved items from AtlasLoot_Data if string key found, original table if table passed, or nil if string key not found
 --- @usage local resolved = AL_ResolveItems("MC_Ragnaros") -- resolves from AtlasLoot_Data
---- @since 1.0.0
 local function AL_ResolveItems(items)
     if type(items) ~= "string" then
         return items
@@ -43,7 +41,6 @@ end
 --- @param elemName string Name of element to find (exact match)
 --- @return table|string|nil Found element's loot/items data (resolved if string reference), or nil if not found
 --- @usage local result = AL_FindInInstance(instanceData, "Ragnaros")
---- @since 1.0.0
 local function AL_FindInInstance(instData, elemName)
     if not instData or not elemName then return nil end
 
@@ -84,7 +81,6 @@ end
 --- @param instanceName string|nil Optional specific instance to search in
 --- @return table|nil Loot data table or nil if not found
 --- @usage local loot = AtlasTW.DataResolver.GetLootByElemName("Ragnaros", "Molten Core")
---- @since 1.0.0
 ---
 function AtlasTW.DataResolver.GetLootByElemName(elemName, instanceName)
     if not elemName then return nil end
@@ -112,7 +108,6 @@ end
 --- @param id number Numeric ID of the element
 --- @return table|string|nil Loot data or nil if not found
 --- @usage local loot = AtlasTW.DataResolver.GetLootByID("MC", 3)
---- @since 1.0.0
 ---
 function AtlasTW.DataResolver.GetLootByID(zoneID, id)
     local instData = AtlasTW.InstanceData[zoneID]
@@ -153,7 +148,6 @@ end
 --- @param direction number Search direction (-1 for previous, 1 for next)
 --- @return table|nil Valid boss entry or nil
 --- @usage local boss = findValidEntry(3, 1)
---- @since 1.0.0
 ---
 local function findValidEntry(currentIndex, direction)
     local currentZoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
@@ -183,7 +177,6 @@ end
 --- @param data string Name or ID of the boss/element to get navigation for
 --- @return table|nil Navigation table with Title, Back_Page, Prev_Page, Next_Page properties
 --- @usage local nav = AtlasTW.DataResolver.GetBossNavigation("Ragnaros")
---- @since 1.0.0
 ---
 function AtlasTW.DataResolver.GetBossNavigation(data)
     if not data then return nil end
@@ -232,7 +225,6 @@ end
 --- @param current string|table Current menu item name or loot table key
 --- @return table|nil Navigation table with menu links or nil if not found
 --- @usage local nav = AtlasTW.DataResolver.GetMenuNavigation("DungeonsMenu")
---- @since 1.0.0
 ---
 function AtlasTW.DataResolver.GetMenuNavigation(current)
     -- Support passing a menu element table
@@ -360,7 +352,6 @@ end
 --- @param dataID string Loot table identifier or element name
 --- @return boolean True if loot table exists, false otherwise
 --- @usage local available = AtlasTW.DataResolver.IsLootTableAvailable("MC_Ragnaros")
---- @since 1.0.0
 ---
 function AtlasTW.DataResolver.IsLootTableAvailable(dataID)
     if not dataID then return false end

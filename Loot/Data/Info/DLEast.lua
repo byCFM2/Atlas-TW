@@ -12,7 +12,6 @@
 --- • Zone-specific dungeon data
 --- • Navigation assistance
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -52,6 +51,30 @@ AtlasTW.InstanceData.DLEast = {
             id = "DLScarletMonastery",
             prefix = "1)",
             name = BZ["Scarlet Monastery"],
+            postfix = BZ["Tirisfal Glades"],
+            color = "|cff999999",
+        },
+        {
+            id = "DLScarletMonasteryGraveyard",
+            name = BZ["Scarlet Monastery (Graveyard)"],
+            postfix = BZ["Tirisfal Glades"],
+            color = "|cff999999",
+        },
+        {
+            id = "DLScarletMonasteryLibrary",
+            name = BZ["Scarlet Monastery (Library)"],
+            postfix = BZ["Tirisfal Glades"],
+            color = "|cff999999",
+        },
+        {
+            id = "DLScarletMonasteryArmory",
+            name = BZ["Scarlet Monastery (Armory)"],
+            postfix = BZ["Tirisfal Glades"],
+            color = "|cff999999",
+        },
+        {
+            id = "DLScarletMonasteryCathedral",
+            name = BZ["Scarlet Monastery (Cathedral)"],
             postfix = BZ["Tirisfal Glades"],
             color = "|cff999999",
         },

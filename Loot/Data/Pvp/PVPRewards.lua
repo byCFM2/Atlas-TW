@@ -12,7 +12,6 @@
 --- • Ranking system equipment
 --- • PvP set collections
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 

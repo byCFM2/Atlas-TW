@@ -6,7 +6,6 @@
 -- 2) Dynamic grid layout based on number of items
 -- 3) Tooltip and hover-based icon/quality refresh for cached items
 -- 4) Click handling: chat link insert, dressing room preview, wishlist integration
--- @since 1.0.0
 -- @compatible World of Warcraft 1.12
 ---
 
@@ -20,7 +19,6 @@ local DEFAULT = AtlasTW.Colors.DEFAULT
 --- Displays spinner overlay on the container items frame
 --- @return void
 --- @usage AtlasLoot_ShowContainerLoading()
---- @since 1.0.0
 ---
 function AtlasLoot_ShowContainerLoading()
 	AtlasTW.LootBrowserUI.CreateLoadingFrame("AtlasLootContainerLoadingFrame", AtlasLootItemsFrameContainer)
@@ -31,7 +29,6 @@ end
 --- Removes spinner overlay from the container items frame
 --- @return void
 --- @usage AtlasLoot_HideContainerLoading()
---- @since 1.0.0
 ---
 function AtlasLoot_HideContainerLoading()
 	AtlasTW.LootBrowserUI.HideLoadingFrame("AtlasLootContainerLoadingFrame")
@@ -42,7 +39,6 @@ end
 --- Manages container visibility and caching for item containers
 --- @return void
 --- @usage AtlasLoot_ShowContainerFrame()
---- @since 1.0.0
 ---
 function AtlasLoot_ShowContainerFrame()
 	if this ~= lastSelectedButton then
@@ -83,7 +79,6 @@ end
 --- Calculates optimal layout and displays all container items
 --- @return void
 --- @usage AtlasLoot_UpdateContainerDisplay() -- Called after caching completes
---- @since 1.0.0
 ---
 function AtlasLoot_UpdateContainerDisplay()
 	if not lastSelectedButton or not lastSelectedButton.container then
@@ -173,7 +168,6 @@ end
 --- @param itemID number Item ID for tooltip content
 --- @return void
 --- @usage AtlasLoot_AddContainerItemTooltip(button, 12345)
---- @since 1.0.0
 ---
 function AtlasLoot_AddContainerItemTooltip(frame ,itemID)
 	frame:SetScript("OnEnter", function()
@@ -217,7 +211,6 @@ end
 --- @param arg1 string Click type ("LeftButton", "RightButton", etc.)
 --- @return void
 --- @usage AtlasLoot_ContainerItem_OnClick("LeftButton") -- Called by container item clicks
---- @since 1.0.1
 ---
 function AtlasLoot_ContainerItem_OnClick(arg1)
 	local itemID = this:GetID()

@@ -6,7 +6,6 @@
 --- • Memoization to avoid duplicate cache operations
 --- • Fallback mechanisms for environments without timers
 --- • Global cache management and cleanup
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -25,7 +24,6 @@ end
 --- Sorts item list to ensure reproducible hash generation
 --- @param itemList table List of numeric item IDs
 --- @return string Hash string for the item set
---- @since 1.0.1
 ---
 local function CreateItemSetHash(itemList)
     table.sort(itemList) -- Stable order for reproducible hash
@@ -36,7 +34,6 @@ end
 --- Periodic memo cache cleanup to avoid unbounded growth
 --- Resets cache when it exceeds maximum size threshold
 --- @return nil
---- @since 1.0.1
 ---
 local function CleanupMemoCache()
     if ATLASTWLOOT_CHECKED_SETS_COUNT > 100 then
@@ -51,7 +48,6 @@ end
 -- @param itemID number Item ID to cache
 -- @param attempts number Optional attempts count for repeated tries (default 1)
 -- @return void
--- @since 1.0.0
 ---
 function AtlasTW.LootCache.ForceCacheItem(itemID, maxAttempts)
     if not itemID or itemID == 0 then
@@ -83,7 +79,6 @@ end
 -- @return void
 -- @usage AtlasTW.LootCache.CacheAllItems(lootData, function() print("Caching complete") end)
 -- @note Prefer this wrapper over direct CacheAllItems to get fallback and diagnostics in non-Core callers.
--- @since 1.0.0
 ---
 function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
     -- Unify caching logic here to decouple external callers from internal implementation

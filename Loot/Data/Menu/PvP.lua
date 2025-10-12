@@ -12,7 +12,6 @@
 --- • Cross-battleground item organization
 --- • Faction-specific PvP rewards
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -52,7 +51,6 @@ AtlasTW.MenuData.PVP = {
 --- Shows battleground locations, PvP mounts, accessories, armor sets, and weapons
 --- @return nil
 --- @usage AtlasLootPvPMenu()
---- @since 1.0.0
 ---
 function AtlasLootPvPMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["PvP Rewards"], AtlasTW.MenuData.PVP)
@@ -87,7 +85,6 @@ AtlasTW.MenuData.PVPSets = {
 --- Shows rank 7-13 PvP armor sets for all classes with color-coded class names
 --- @return nil
 --- @usage AtlasLootPVPSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootPVPSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["PvP Armor Sets"], AtlasTW.MenuData.PVPSets, L["PvP Rewards"])

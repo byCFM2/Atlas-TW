@@ -1,7 +1,6 @@
 ---
 --- Hewdrop menu construction and handlers for AtlasLoot
 --- Provides dropdown registration and click handlers for loot browser navigation
---- @since 1.0.0
 ---
 
 --Make the Hewdrop menu in the standalone loot browser accessible here
@@ -30,7 +29,7 @@ local LocalizedStrings = {
 --- @param tbl table The table to analyze for maximum numeric index
 --- @return number The highest numeric key found in the table
 --- @usage local max = GetMaxNumericIndex({[1] = "a", [5] = "b"}) -- returns 5
---- @since 1.0.0
+
 local function GetMaxNumericIndex(tbl)
     local maxIndex = 0
     for k, v in pairs(tbl) do
@@ -47,7 +46,7 @@ end
 --- @param specialHandler function|nil Optional special handler function
 --- @return table|nil Processed category data structure
 --- @usage local category = ProcessCategoryData(dungeonData, "Dungeons", nil)
---- @since 1.0.0
+
 local function ProcessCategoryData(data, categoryName, specialHandler)
     if not data then return nil end
 
@@ -77,7 +76,6 @@ end
 --- @param categoryList table Output list reference inside category
 --- @return table category The processed category table
 --- @usage local cat = ProcessWorldCategory(MenuData.WorldBosses, {}, {})
---- @since 1.0.0
 ---
 local function ProcessWorldCategory(data, category, categoryList)
     local rareMobsEntry = nil
@@ -105,7 +103,6 @@ end
 --- @param menuData table Raw dungeon menu data
 --- @return table|nil category The processed category or nil when input is invalid
 --- @usage local cat = ProcessDungeonsCategory(MenuData.Dungeons)
---- @since 1.0.0
 ---
 local function ProcessDungeonsCategory(menuData)
     if not menuData then return nil end
@@ -129,7 +126,7 @@ end
 --- Creates optimized menu categories for dungeons, world, PvP, collections, etc.
 --- @return table Complete dropdown menu structure for AtlasLoot
 --- @usage local menu = GenerateHewdropDown()
---- @since 1.0.0
+
 local function GenerateHewdropDown()
 
     local MenuData = AtlasTW.MenuData
@@ -194,7 +191,6 @@ end
 --- @param menuName string Name of the menu to open
 --- @return nil
 --- @usage AtlasLoot_OpenMenu("Crafting") -- Opens crafting menu
---- @since 1.0.0
 ---
 function AtlasLoot_OpenMenu(menuName)
 	AtlasLoot_QuickLooks:Hide()
@@ -262,7 +258,6 @@ end
 --- @param tabletype string Type of the item ("Boss", "Submenu", "Table")
 --- @return nil
 --- @usage AtlasLoot_HewdropClick("MC_Ragnaros", "Ragnaros", "Boss")
---- @since 1.0.0
 ---
 function AtlasLoot_HewdropClick(tablename, text, tabletype)
 	-- Reset scroll to top, as in clicks on dungeon page items
@@ -387,7 +382,6 @@ end
 --- Creates tiered dropdown menu structure for loot browsing with Hewdrop-2.0
 --- @return nil
 --- @usage AtlasLoot_HewdropRegister()
---- @since 1.0.0
 ---
 function AtlasLoot_HewdropRegister()
 	AtlasLoot_Hewdrop:Register(AtlasLootItemsFrame_Menu,

@@ -12,7 +12,6 @@
 --- • Unique necromantic items
 --- • Key and quest item drops
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 

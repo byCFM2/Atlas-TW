@@ -12,7 +12,6 @@
 --- • Side-specific loot organization
 --- • Key and attunement items
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 

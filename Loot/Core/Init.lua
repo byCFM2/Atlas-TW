@@ -1,7 +1,6 @@
 ---
 --- Initialization and event handling for AtlasLoot
 --- Sets up SavedVariables, options, UISpecialFrames and integrations on VARIABLES_LOADED
---- @since 1.0.0
 ---
 
 -- Local references for performance and compatibility
@@ -15,7 +14,6 @@ local tinsert = table.insert
 --- Disables unavailable addon integration options with fallback handling
 --- @return nil
 --- @usage Called automatically on VARIABLES_LOADED event via AtlasLootInitFrame
---- @since 1.0.0
 ---
 function AtlasLoot_OnEvent()
 	-- Initialize character database structure
@@ -51,7 +49,6 @@ end
 --- Sets up SavedVariables tables and invalidates category caches
 --- @return nil
 --- @usage AtlasLoot_InitializeCharacterDatabase() -- Called during initialization
---- @since 1.0.0
 ---
 function AtlasLoot_InitializeCharacterDatabase()
 	if not AtlasTWCharDB then AtlasTWCharDB = {} end
@@ -71,7 +68,6 @@ end
 --- Adds frames to UISpecialFrames and sets up UIPanelWindows
 --- @return nil
 --- @usage AtlasLoot_InitializeUIFrames() -- Called during initialization
---- @since 1.0.0
 ---
 function AtlasLoot_InitializeUIFrames()
 	-- Add the loot browser to the special frames tables to enable closing with the ESC key
@@ -86,7 +82,6 @@ end
 --- Handles background opacity and other visual customizations
 --- @return nil
 --- @usage AtlasLoot_ApplyVisualOptions() -- Called during initialization
---- @since 1.0.0
 ---
 function AtlasLoot_ApplyVisualOptions()
 	-- If using an opaque items frame, change the alpha value of the backing texture

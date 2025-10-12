@@ -12,7 +12,6 @@
 --- • Unique trinkets and accessories
 --- • Attunement and key requirements
 ---
---- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 

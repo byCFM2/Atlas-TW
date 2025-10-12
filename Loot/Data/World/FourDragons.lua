@@ -12,7 +12,6 @@
 --- • Nature-themed items
 --- • Respawn timer information
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -40,7 +39,7 @@ local ShareLoot = {
     { id = 17963, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12364 } }, -- Green Sack of Gems
     { id = 17964, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12800 } }, -- Gray Sack of Gems
     { id = 17965, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12363 } }, -- Yellow Sack of Gems
-    { id = 17969, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12799, 6332 } }, -- Red Sack of Gems
+    { id = 17969, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12799 } }, -- Red Sack of Gems
     -- Rare items (shared for all dragons)
     {},
     { id = 20580, dropRate = 8.93 }, -- Hammer of Bestial Fury

@@ -13,7 +13,6 @@
 --- • Option state management
 --- • Fallback handling for missing addons
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -27,7 +26,6 @@ local L = AtlasTW.Local
 --
 -- Compatibility constants for legacy option labels
 -- centralized here alongside EquipCompare integration logic
--- @since 1.0.1
 --
 ATLASLOOT_OPTIONS_EQUIPCOMPARE = L["Use EquipCompare"]
 ATLASLOOT_OPTIONS_EQUIPCOMPARE_DISABLED = L["|cff9d9d9dUse EquipCompare|r"]
@@ -36,7 +34,6 @@ ATLASLOOT_OPTIONS_EQUIPCOMPARE_DISABLED = L["|cff9d9d9dUse EquipCompare|r"]
 --- Checks if EquipCompare or EQCompare addon is available
 --- @return boolean True if either addon is loaded
 --- @usage local hasEquipCompare = AtlasTW.Integrations.HasEquipCompare()
---- @since 1.0.0
 ---
 function AtlasTW.Integrations.HasEquipCompare()
     return IsAddOnLoaded("EquipCompare") or IsAddOnLoaded("EQCompare")
@@ -46,7 +43,6 @@ end
 --- Checks if LootLink addon is available
 --- @return boolean True if LootLink is loaded and functional
 --- @usage local hasLootLink = AtlasTW.Integrations.HasLootLink()
---- @since 1.0.0
 ---
 function AtlasTW.Integrations.HasLootLink()
     return LootLink_SetTooltip ~= nil
@@ -56,7 +52,6 @@ end
 --- Checks if ItemSync addon is available
 --- @return boolean True if ItemSync or ISync is loaded
 --- @usage local hasItemSync = AtlasTW.Integrations.HasItemSync()
---- @since 1.0.0
 ---
 function AtlasTW.Integrations.HasItemSync()
     return ItemSync ~= nil or ISync ~= nil
@@ -68,7 +63,6 @@ end
 --- @param tooltip2 table Second tooltip frame to register
 --- @return nil
 --- @usage AtlasTW.Integrations.RegisterEquipCompareTooltips(AtlasLootTooltip, AtlasLootTooltip2)
---- @since 1.0.0
 ---
 function AtlasTW.Integrations.RegisterEquipCompareTooltips(tooltip1, tooltip2)
     if IsAddOnLoaded("EquipCompare") and EquipCompare_RegisterTooltip then
@@ -92,7 +86,6 @@ end
 --- @param tooltip2 table Second tooltip frame to unregister
 --- @return nil
 --- @usage AtlasTW.Integrations.UnregisterEquipCompareTooltips(AtlasLootTooltip, AtlasLootTooltip2)
---- @since 1.0.0
 ---
 function AtlasTW.Integrations.UnregisterEquipCompareTooltips(tooltip1, tooltip2)
     if IsAddOnLoaded("EquipCompare") and EquipCompare_UnregisterTooltip then
@@ -115,7 +108,6 @@ end
 --- Disables unavailable addon options and provides fallback handling
 --- @return nil
 --- @usage AtlasTW.Integrations.Initialize() -- Called during addon initialization
---- @since 1.0.0
 ---
 function AtlasTW.Integrations.Initialize()
     -- Disable LootLink option if addon is not available
@@ -154,7 +146,6 @@ end
 --- Ensures options are disabled if supporting addons are not available
 --- @return nil
 --- @usage AtlasTW.Integrations.ValidateOptions() -- Called during option validation
---- @since 1.0.0
 ---
 function AtlasTW.Integrations.ValidateOptions()
     -- Disable LootLink option and fallback to default if addon is missing
@@ -180,7 +171,6 @@ end
 --- Registers or unregisters tooltips based on option state and addon availability
 --- @return nil
 --- @usage AtlasTW.Integrations.ApplyEquipCompareIntegration() -- Called when options change
---- @since 1.0.0
 ---
 function AtlasTW.Integrations.ApplyEquipCompareIntegration()
     if AtlasTW.Integrations.HasEquipCompare() and AtlasTWOptions.EquipCompare == true then
@@ -201,7 +191,6 @@ end
 --- Registers or unregisters tooltips based on the new option state
 --- @return nil
 --- @usage AtlasTW.Integrations.ToggleEquipCompare() -- Called by option UI
---- @since 1.0.0
 ---
 function AtlasTW.Integrations.ToggleEquipCompare()
     AtlasTWOptions.LootEquipCompare = not AtlasTWOptions.LootEquipCompare

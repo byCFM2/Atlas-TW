@@ -9,7 +9,6 @@
 --- - Complete English localization strings for Atlas-TW addon
 --- - Zone names, instance data, and UI text translations
 ---
---- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 AtlasTW.Local = {
@@ -30,7 +29,6 @@ AtlasSortIgnore = {"the (.+)"}
 
 ---
 --- Key binding definitions for Atlas-TW addon
---- @since 1.0.0
 ---
 BINDING_HEADER_ATLASTW_TITLE = "Atlas-TW Bindings"
 BINDING_NAME_ATLASTW_TOGGLE = "Toggle Atlas-TW"
@@ -51,7 +49,6 @@ AtlasZoneSubstitutions = {
 ---
 --- Translation table containing all localized strings
 --- Uses English as the base language with fallback support
---- @since 1.0.0
 ---
 AtlasTW.Local.Translations = {
 

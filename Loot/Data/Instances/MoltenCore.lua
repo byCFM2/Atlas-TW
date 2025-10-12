@@ -12,7 +12,6 @@
 --- • Legendary weapon drops
 --- • Crafting patterns and recipes
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 

@@ -10,8 +10,7 @@
 --- - UI state management and updates
 --- - Button interaction handling
 --- - Position calculation and storage
---- 
---- @since 1.0.0
+---
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -26,7 +25,6 @@ local L = AtlasTW.Local
 --- @param v number Position angle in degrees
 --- @return nil
 --- @usage atlasTWButtonSetPosition(45) -- Set button to 45 degrees
---- @since 1.0.0
 ---
 local function atlasTWButtonSetPosition(v)
 	if v < 0 then
@@ -41,7 +39,6 @@ end
 --- Shows or hides the button based on settings and updates position
 --- @return nil
 --- @usage AtlasTW.MinimapButtonInit() -- Called during addon initialization
---- @since 1.0.0
 ---
 function AtlasTW.MinimapButtonInit()
 	if AtlasTWOptions.AtlasButtonShown then
@@ -57,7 +54,6 @@ end
 --- Shows or hides the minimap button and saves the setting
 --- @return nil
 --- @usage AtlasTW.MinimapButtonOnClick() -- Called by button click
---- @since 1.0.0
 ---
 function AtlasTW.MinimapButtonOnClick()
 	if AtlasButtonFrame:IsVisible() then
@@ -75,7 +71,6 @@ end
 --- Calculates and sets the button position based on radius and angle
 --- @return nil
 --- @usage AtlasTW.MinimapButtonUpdatePosition() -- Called when position changes
---- @since 1.0.0
 ---
 function AtlasTW.MinimapButtonUpdatePosition()
 	local radius = AtlasTWOptions.AtlasButtonRadius
@@ -96,7 +91,6 @@ end
 --- Updates button position while being dragged around the minimap
 --- @return nil
 --- @usage AtlasTW.MinimapButtonBeingDragged() -- Called during drag events
---- @since 1.0.0
 ---
 function AtlasTW.MinimapButtonBeingDragged()
 	local xpos, ypos = GetCursorPosition()
@@ -113,7 +107,6 @@ end
 --- Shows tooltip with Atlas information when hovering over button
 --- @return nil
 --- @usage AtlasTW.MinimapButtonOnEnter() -- Called on mouse enter
---- @since 1.0.0
 ---
 function AtlasTW.MinimapButtonOnEnter()
 	GameTooltip:SetOwner(this, "ANCHOR_LEFT")
@@ -130,7 +123,6 @@ end
 --- Sets the frame alpha based on current option settings
 --- @return nil
 --- @usage AtlasTW.OptionsUpdateAlpha() -- Called when alpha setting changes
---- @since 1.0.0
 ---
 function AtlasTW.OptionsUpdateAlpha()
 	AtlasFrame:SetAlpha(AtlasTWOptions.AtlasAlpha)
@@ -142,7 +134,6 @@ end
 --- Sets the frame scale based on current option settings
 --- @return nil
 --- @usage AtlasTW.OptionsUpdateScale() -- Called when scale setting changes
---- @since 1.0.0
 ---
 function AtlasTW.OptionsUpdateScale()
 	AtlasFrame:SetScale(AtlasTWOptions.AtlasScale)
@@ -154,7 +145,6 @@ end
 --- Shows or hides the main Atlas frame
 --- @return nil
 --- @usage AtlasTW.ToggleAtlas() -- Called by slash command or button
---- @since 1.0.0
 ---
 function AtlasTW.ToggleAtlas()
 	if AtlasFrame:IsVisible() then
@@ -172,7 +162,6 @@ end
 --- @param msg string Command arguments from slash command
 --- @return nil
 --- @usage AtlasTW.SlashCommand("toggle") -- Process slash command
---- @since 1.0.0
 ---
 function AtlasTW.SlashCommand(msg)
 	if msg == "options" or msg == "opt" then
@@ -188,7 +177,6 @@ end
 --- Initiates frame dragging if not locked
 --- @return nil
 --- @usage AtlasTW.StartMoving() -- Called on drag start
---- @since 1.0.0
 ---
 function AtlasTW.StartMoving()
 	if not AtlasTWOptions.AtlasLocked then
@@ -203,7 +191,6 @@ end
 --- Processes mouse clicks on the Atlas frame
 --- @return nil
 --- @usage AtlasTW.OnClick() -- Called on frame click
---- @since 1.0.0
 ---
 function AtlasTW.OnClick()
 	if arg1 == "RightButton" then

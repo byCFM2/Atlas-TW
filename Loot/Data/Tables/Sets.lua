@@ -12,7 +12,6 @@
 --- • Set bonuses and effects
 --- • Class-specific set organization
 ---
---- @since 1.0.2
 --- @compatible World of Warcraft 1.12
 ---
 

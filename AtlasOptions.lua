@@ -11,11 +11,9 @@
 --- - User preference handling
 --- - Configuration validation
 --- - Default settings management
---- 
---- @since 1.0.0
+---
 --- @compatible World of Warcraft 1.12
 ---
-
 ---------------
 --- COLOURS ---
 ---------------
@@ -35,7 +33,6 @@ local atlasOptionsFrame, atlasFrame  = AtlasOptionsFrame, AtlasFrame
 --- @param idp number|nil Number of decimal places (default: 0)
 --- @return number The rounded number
 --- @usage local rounded = round(3.14159, 2) -- returns 3.14
---- @since 1.0.0
 local function round(num, idp)
     local mult = 10 ^ (idp or 0)
     return math.floor(num * mult + 0.5) / mult
@@ -45,7 +42,6 @@ end
 --- Updates sort settings and refreshes the Atlas interface
 --- @return nil
 --- @usage Called automatically by UI dropdown system
---- @since 1.0.0
 local function atlasOptionsFrameDropDownCats_OnClick()
     local thisID = this:GetID()
     uIDropDownMenu_SetSelectedID(AtlasOptionsFrameDropDownCats, thisID)
@@ -64,7 +60,6 @@ end
 --- Populates dropdown with available sorting categories
 --- @return nil
 --- @usage UIDropDownMenu_Initialize(dropdown, atlasOptionsFrameDropDownCats_Initialize)
---- @since 1.0.0
 local function atlasOptionsFrameDropDownCats_Initialize()
     local info
     local dropDownOrder = AtlasTW_DropDownSortOrder
@@ -86,7 +81,6 @@ end
 --- Initializes all addon settings to their default values
 --- @return nil
 --- @usage AtlasTW.OptionDefaultSettings() -- Reset to defaults
---- @since 1.0.0
 function AtlasTW.OptionDefaultSettings()
     AtlasTWOptions = {
         AtlasButtonPosition = 305,
@@ -135,7 +129,6 @@ end
 --- Updates AtlasTWOptions.LootShowPanel and shows/hides AtlasLootPanel
 --- @return nil
 --- @usage AtlasTW.OptionShowPanelOnClick()
---- @since 1.0.0
 ---
 function AtlasTW.OptionShowPanelOnClick()
     local showPanelStatus = AtlasTWOptions.LootShowPanel
@@ -154,7 +147,6 @@ end
 --- Shows or hides the options panel and refreshes tooltip settings
 --- @return nil
 --- @usage AtlasTW.OptionsOnClick() -- Called by options button click
---- @since 1.0.0
 ---
 function AtlasTW.OptionsOnClick()
     if atlasOptionsFrame:IsVisible() then
@@ -177,7 +169,6 @@ end
 --- Enables or disables automatic map selection based on player location
 --- @return nil
 --- @usage AtlasTW.OptionsAutoSelectOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionsAutoSelectOnClick()
     AtlasTWOptions.AtlasAutoSelect = not AtlasTWOptions.AtlasAutoSelect
@@ -189,7 +180,6 @@ end
 --- Enables or disables Atlas opening on world map right-click
 --- @return nil
 --- @usage AtlasTW.OptionsWorldMapOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionsWorldMapOnClick()
     AtlasTWOptions.AtlasRightClick = not AtlasTWOptions.AtlasRightClick
@@ -201,7 +191,6 @@ end
 --- Shows or hides abbreviated instance names and refreshes display
 --- @return nil
 --- @usage AtlasTW.OptionsAcronymsOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionsAcronymsOnClick()
     AtlasTWOptions.AtlasAcronyms = not AtlasTWOptions.AtlasAcronyms
@@ -213,7 +202,6 @@ end
 --- Updates AtlasTWOptions.AtlasClamped and refreshes the UI
 --- @return nil
 --- @usage AtlasTW.OptionsClampedOnClick()
---- @since 1.0.0
 ---
 function AtlasTW.OptionsClampedOnClick()
     AtlasTWOptions.AtlasClamped = not AtlasTWOptions.AtlasClamped
@@ -227,7 +215,6 @@ end
 --- Updates AtlasTWOptions.AtlasCursorCoords and shows/hides the overlay
 --- @return nil
 --- @usage AtlasTW.OptionsCursorCoordsOnClick() -- Called by checkbox click
---- @since 1.1.0
 ---
 function AtlasTW.OptionsCursorCoordsOnClick()
     AtlasTWOptions.AtlasCursorCoords = not AtlasTWOptions.AtlasCursorCoords
@@ -250,7 +237,6 @@ end
 --- Sets checkbox states, slider values, and frame visibility based on saved options
 --- @return nil
 --- @usage AtlasTW.OptionsInit() -- Called after option changes
---- @since 1.0.0
 ---
 function AtlasTW.OptionsInit()
     if not AtlasTWOptions then
@@ -314,7 +300,6 @@ end
 --- Clears frame anchors and restores default button position, radius, alpha, and scale
 --- @return nil
 --- @usage AtlasTW.OptionResetPosition() -- Called by reset button
---- @since 1.0.0
 ---
 function AtlasTW.OptionResetPosition()
     atlasFrame:ClearAllPoints()
@@ -335,7 +320,6 @@ end
 --- @param text string The base text label for the slider
 --- @return nil
 --- @usage AtlasOptions_UpdateSlider("Scale") -- Called by slider OnValueChanged
---- @since 1.0.0
 ---
 function AtlasOptions_UpdateSlider(text)
     local sliderName = this:GetName()
@@ -350,7 +334,6 @@ end
 --- Sets up the dropdown with available sort categories and selects current option
 --- @return nil
 --- @usage AtlasTW.OptionFrameDropDownCatsOnShow() -- Called by dropdown OnShow event
---- @since 1.0.0
 ---
 function AtlasTW.OptionFrameDropDownCatsOnShow()
     local dropDownCats = AtlasOptionsFrameDropDownCats
@@ -367,7 +350,6 @@ end
 --- Shows or hides quest panel when Atlas is opened and updates UI state
 --- @return nil
 --- @usage AtlasTW.OptionAutoshowOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionAutoshowOnClick()
 	AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
@@ -380,7 +362,6 @@ end
 --- Moves the quest UI frame to the right side of Atlas and updates settings
 --- @return nil
 --- @usage AtlasTW.OptionRightSideOnClick() -- Called by radio button click
---- @since 1.0.0
 ---
 function AtlasTW.OptionRightSideOnClick()
     AtlasTW.Quest.UI_Main.Frame:ClearAllPoints()
@@ -396,7 +377,6 @@ end
 --- Moves the quest UI frame to the left side of Atlas and updates settings
 --- @return nil
 --- @usage AtlasTW.OptionLeftSideOnClick() -- Called by radio button click
---- @since 1.0.0
 ---
 function AtlasTW.OptionLeftSideOnClick()
     if AtlasTWOptions.QuestCurrentSide == "Right" then
@@ -414,7 +394,6 @@ end
 --- Enables or disables color-coded quest display and updates quest buttons
 --- @return nil
 --- @usage AtlasTW.OptionColorOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionColorOnClick()
 	AtlasTWOptions.QuestColourCheck = not AtlasTWOptions.QuestColourCheck
@@ -428,7 +407,6 @@ end
 --- Enables or disables checking against player's questlog and updates quest buttons
 --- @return nil
 --- @usage AtlasTW.OptionQuestlogOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionQuestlogOnClick()
 	AtlasTWOptions.QuestCheckQuestlog = not AtlasTWOptions.QuestCheckQuestlog
@@ -442,7 +420,6 @@ end
 --- Enables or disables automatic querying of quest information
 --- @return nil
 --- @usage AtlasTW.OptionAutoQueryOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionAutoQueryOnClick()
 	AtlasTWOptions.QuestAutoQuery = not AtlasTWOptions.QuestAutoQuery
@@ -455,7 +432,6 @@ end
 --- Enables or disables filtering of repeated quest query messages
 --- @return nil
 --- @usage AtlasTW.OptionQuerySpamOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionQuerySpamOnClick()
 	AtlasTWOptions.QuestQuerySpam = not AtlasTWOptions.QuestQuerySpam
@@ -468,7 +444,6 @@ end
 --- Enables or disables quest item comparison in tooltips and registers/unregisters tooltip handlers
 --- @return nil
 --- @usage AtlasTW.OptionCompareTooltipOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionCompareTooltipOnClick()
 	AtlasTWOptions.QuestCompareTooltip = not AtlasTWOptions.QuestCompareTooltip
@@ -485,7 +460,6 @@ end
 --- Enables safe linking mode and disables all links mode when activated
 --- @return nil
 --- @usage AtlasTW.OptionSafeLinksOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionSafeLinksOnClick()
 	AtlasTWOptions.LootSafeLinks = not AtlasTWOptions.LootSafeLinks
@@ -502,7 +476,6 @@ end
 --- Enables all links mode and disables safe links mode when activated
 --- @return nil
 --- @usage AtlasTW.OptionAllLinksOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionAllLinksOnClick()
 	AtlasTWOptions.LootAllLinks = not AtlasTWOptions.LootAllLinks
@@ -519,7 +492,6 @@ end
 --- Enables default tooltips and disables other tooltip modes
 --- @return nil
 --- @usage AtlasTW.OptionDefaultTTOnClick() -- Called by radio button click
---- @since 1.0.0
 ---
 function AtlasTW.OptionDefaultTTOnClick()
 	AtlasTWOptions.LootDefaultTT = true
@@ -533,7 +505,6 @@ end
 --- Enables Lootlink tooltips and disables other tooltip modes
 --- @return nil
 --- @usage AtlasTW.OptionLootlinkTTOnClick() -- Called by radio button click
---- @since 1.0.0
 ---
 function AtlasTW.OptionLootlinkTTOnClick()
 	AtlasTWOptions.LootDefaultTT = false
@@ -547,7 +518,6 @@ end
 --- Enables ItemSync tooltips and disables other tooltip modes
 --- @return nil
 --- @usage AtlasTW.OptionItemSyncTTOnClick() -- Called by radio button click
---- @since 1.0.0
 ---
 function AtlasTW.OptionItemSyncTTOnClick()
 	AtlasTWOptions.LootDefaultTT = false
@@ -561,7 +531,6 @@ end
 --- Shows or hides the source information for loot items
 --- @return nil
 --- @usage AtlasTW.OptionShowSourceOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionShowSourceOnClick()
 	AtlasTWOptions.LootShowSource = not AtlasTWOptions.LootShowSource
@@ -573,7 +542,6 @@ end
 --- Registers or unregisters Atlas tooltips with EquipCompare/EQCompare addons
 --- @return nil
 --- @usage AtlasTW.OptionEquipCompareOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionEquipCompareOnClick()
 	AtlasTWOptions.LootEquipCompare = not AtlasTWOptions.LootEquipCompare
@@ -606,7 +574,6 @@ end
 --- Changes the background transparency of the loot items frame
 --- @return nil
 --- @usage AtlasTW.OptionOpaqueOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionOpaqueOnClick()
 	AtlasTWOptions.LootOpaque=AtlasTWOptionOpaque:GetChecked()
@@ -623,7 +590,6 @@ end
 --- Shows or hides item IDs in loot tooltips and displays
 --- @return nil
 --- @usage AtlasTW.OptionItemIDOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionItemIDOnClick()
 	AtlasTWOptions.LootItemIDs = not AtlasTWOptions.LootItemIDs
@@ -635,7 +601,6 @@ end
 --- Enables or disables filtering of repeated item messages
 --- @return nil
 --- @usage AtlasTW.OptionItemSpamOnClick() -- Called by checkbox click
---- @since 1.0.0
 ---
 function AtlasTW.OptionItemSpamOnClick()
 	AtlasTWOptions.LootItemSpam = not AtlasTWOptions.LootItemSpam

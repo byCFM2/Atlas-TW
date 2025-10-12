@@ -12,7 +12,6 @@
 --- • Special encounter rewards
 --- • Hidden boss mechanics
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 

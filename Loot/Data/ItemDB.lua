@@ -13,7 +13,6 @@
 --- • Item creation utilities for loot tables
 --- • Equipment slot and type classification
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -57,7 +56,6 @@ AtlasTW.ItemDB.ClassItems = {
 -- @param typeText string - The type of text ("slot", "slot2", "class", "requires")
 -- @return string - Colored text with appropriate color codes
 -- @usage local coloredText = getColoredText("Plate", "slot")
--- @version 1.0
 ---
 local function getColoredText(text, typeText)
     -- Color constants
@@ -132,7 +130,6 @@ local sharedTooltip = nil
 -- Clean up tooltip cache when it exceeds maximum size
 -- @function CleanupTooltipCache
 -- @usage CleanupTooltipCache()
--- @version 1.0
 ---
 local function CleanupTooltipCache()
     if ParsedTooltipCacheSize > MAX_CACHE_SIZE then
@@ -148,7 +145,6 @@ end
 -- @param extratext string - Additional text to include
 -- @return string - Parsed item information with color coding
 -- @usage local info = AtlasTW.ItemDB.ParseTooltipForItemInfo(12345, "Epic Item")
--- @version 1.0
 ---
 function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     if not itemID or itemID == 0 then
@@ -300,7 +296,6 @@ end
 -- @param delaySeconds number - Delay in seconds before executing callback
 -- @param callbackFunc function - Function to execute after delay
 -- @usage StartTimer(2.0, function() print("Timer finished") end)
--- @version 1.0
 ---
 function StartTimer(delaySeconds, callbackFunc)
     -- Create a unique frame for each timer
@@ -329,7 +324,6 @@ end
 -- @param maxAttempts number - Maximum number of attempts (default: 10)
 -- @return boolean - Success status of caching operation
 -- @usage AtlasLoot_ForceCacheItemWithDelay(12345, 0.2, 5)
--- @version 1.0
 ---
 function AtlasLoot_ForceCacheItemWithDelay(itemID, delayBetweenAttempts, maxAttempts)
     if not itemID or itemID == 0 then
@@ -360,7 +354,6 @@ end
 -- @param bossData table - Boss data containing loot table and defaults
 -- @return table - Array of created items
 -- @usage local items = AtlasTW.CreateItemsFromLootTable(bossData)
--- @version 1.0
 ---
 function AtlasTW.CreateItemsFromLootTable(bossData)
     if not bossData.loot then return end
@@ -384,7 +377,6 @@ end
 -- @param data table - Item data containing id, name, and other properties
 -- @return table|nil - Created item object or nil if invalid data
 -- @usage local item = AtlasTW.ItemDB.CreateItem({id = 12345, name = "Epic Sword"})
--- @version 1.0
 ---
 function AtlasTW.ItemDB.CreateItem(data)
     -- Validate required fields
@@ -410,7 +402,6 @@ end
 -- @param quality number - Quality level for the separator (default: 5)
 -- @return table - Separator item object
 -- @usage local separator = AtlasTW.ItemDB.CreateSeparator("Boss Loot", "INV_Crown_01", 4)
--- @version 1.0
 ---
 function AtlasTW.ItemDB.CreateSeparator(text, icon, quality)
     return {

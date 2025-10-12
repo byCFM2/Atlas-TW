@@ -11,8 +11,7 @@
 --- - Sort order configuration
 --- - Navigation system integration
 --- - Content organization and display
---- 
---- @since 1.0.0
+---
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -58,7 +57,7 @@ local Dungeons = {}
 --- @param mapData table The map data containing level, players, location info
 --- @return string|nil The determined map type or nil if unknown
 --- @usage local mapType = getMapType("RFC", mapData)
---- @since 1.0.0
+
 local function getMapType(mapKey, mapData)
     local patterns = {
         { key = "TransportRoutes", type = "Transport Route", exact = true },
@@ -97,7 +96,7 @@ end
 --- @param mapData table The map data to check
 --- @return string The continent name (localized)
 --- @usage local continent = getContinent(mapData)
---- @since 1.0.0
+
 local function getContinent(mapData)
     -- Check if this instance is in Kalimdor (DLWest)
     if AtlasTW.InstanceData.DLWest and AtlasTW.InstanceData.DLWest.Bosses then
@@ -116,7 +115,7 @@ end
 --- Populates the global Dungeons table with processed instance data
 --- @return nil
 --- @usage BuildDungeons()
---- @since 1.0.0
+
 local function BuildDungeons()
     Dungeons = {}
     if AtlasTW and AtlasTW.InstanceData then
@@ -142,7 +141,7 @@ BuildDungeons()
 --- @param rangelevel table|number|string The level range data
 --- @return number|nil, number|nil The minimum and maximum levels
 --- @usage local min, max = getLevel({10, 20})
---- @since 1.0.0
+
 local function getLevel(rangelevel)
     if type(rangelevel) == "table" then
         return rangelevel[1], rangelevel[2]
@@ -160,7 +159,7 @@ end
 --- @param categoryMax number The maximum level for the category
 --- @return boolean True if dungeon level is in range
 --- @usage local inRange = IsInRange(dungeonLevel, 30, 39)
---- @since 1.0.0
+
 local function IsInRange(dungeonLevel, categoryMin, categoryMax)
     if not dungeonLevel then return false end
     local min, max = getLevel(dungeonLevel)
@@ -216,7 +215,7 @@ end
 --- @param color string|nil The color code (defaults to GREEN)
 --- @return string The colored category name
 --- @usage local coloredName = CreateColoredCategory("Dungeons", COLORS.GREEN)
---- @since 1.0.0
+
 local function CreateColoredCategory(name, color)
     return (color or COLORS.GREEN) .. name
 end
@@ -248,7 +247,7 @@ end
 --- @param dungeons table The dungeons data to filter
 --- @return nil
 --- @usage ProcessCategoryList(layout, order, categories, filters, dungeons)
---- @since 1.0.0
+
 local function ProcessCategoryList(layout, order, categoryList, categoryFilters, dungeons)
     for _, catName in ipairs(categoryList) do
         table.insert(order, catName)
@@ -270,7 +269,7 @@ end
 --- Creates layouts and layout orders for all sort types
 --- @return table, table The layouts table and layoutOrder table
 --- @usage local layouts, order = GenerateLayouts()
---- @since 1.0.0
+
 local function GenerateLayouts()
     local layouts = {}
     local layoutOrder = {}
@@ -318,7 +317,7 @@ end
 --- Rebuilds dungeons and layouts if needed (lazy initialization)
 --- @return nil
 --- @usage AtlasDropDown:EnsureLayouts()
---- @since 1.0.0
+
 function AtlasDropDown:EnsureLayouts()
     if (not Dungeons) or (next(Dungeons) == nil and AtlasTW and AtlasTW.InstanceData) then
         BuildDungeons()
@@ -350,7 +349,7 @@ AtlasTW_DropDownSortOrder = AtlasDropDown.SortOrder
 --- @param sortType string - the type of sorting to apply
 --- @return table - ordered list of layout items
 --- @usage local order = AtlasTW_DropDownGetLayoutOrder("alphabetical")
---- @since 1.0.0
+
 function AtlasTW_DropDownGetLayoutOrder(sortType)
     return AtlasDropDown:GetLayoutOrder(sortType)
 end
@@ -359,7 +358,7 @@ end
 --- @param sortType string - the type of sorting to apply
 --- @return table - layout configuration data
 --- @usage local layout = AtlasTW_DropDownGetLayout("level")
---- @since 1.0.0
+
 function AtlasTW_DropDownGetLayout(sortType)
     return AtlasDropDown:GetLayout(sortType)
 end
@@ -367,7 +366,7 @@ end
 --- Manually rebuilds dropdown layouts and data structures
 --- Clears existing layouts and rebuilds from scratch
 --- @usage AtlasTW_DropDownRebuild() -- call after data changes
---- @since 1.0.0
+
 function AtlasTW_DropDownRebuild()
     AtlasDropDown.Layouts, AtlasDropDown.LayoutOrder = nil, nil
     BuildDungeons()

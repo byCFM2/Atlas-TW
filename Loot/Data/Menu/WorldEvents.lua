@@ -12,7 +12,6 @@
 --- • Cross-event reward organization
 --- • Event schedule integration
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -49,7 +48,6 @@ AtlasTW.MenuData.WorldEvents = {
 -- Display the World Events menu in AtlasLoot
 -- @function AtlasLootWorldEventMenu
 -- @usage AtlasLootWorldEventMenu()
--- @version 1.0
 ---
 function AtlasLootWorldEventMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["World Events"], AtlasTW.MenuData.WorldEvents)

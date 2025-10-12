@@ -11,8 +11,7 @@
 --- - Tooltip registration system
 --- - Enhanced quest item information display
 --- - Addon compatibility handling
---- 
---- @since 1.0.0
+---
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -26,7 +25,6 @@ QuestTooltip:Hide()
 --- Registers the quest tooltip with compatible addon comparison systems
 --- Integrates with EquipCompare and EQCompare addons if they are loaded
 --- @usage QuestTooltip:Register()
---- @since 1.0.0
 ---
 function QuestTooltip:Register()
     if IsAddOnLoaded("EquipCompare") and EquipCompare_RegisterTooltip then
@@ -42,7 +40,6 @@ end
 --- Unregisters the quest tooltip from addon comparison systems
 --- Removes integration with EquipCompare and EQCompare addons if they are loaded
 --- @usage QuestTooltip:Unregister()
---- @since 1.0.0
 ---
 function QuestTooltip:Unregister()
     if IsAddOnLoaded("EquipCompare") and EquipCompare_UnregisterTooltip then

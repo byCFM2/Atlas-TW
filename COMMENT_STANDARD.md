@@ -39,7 +39,6 @@ end
 --- Toggles the visibility of the Atlas frame
 --- @return boolean True if frame is now visible, false otherwise
 --- @usage AtlasTW.Toggle()
---- @since 1.0.0
 ---
 function AtlasTW.Toggle()
     if AtlasFrame:IsVisible() then
@@ -60,7 +59,6 @@ end
 --- @param caseSensitive boolean|nil Whether search should be case sensitive (default: false)
 --- @return table Array of search results containing matched entries
 --- @usage local results = AtlasTW.Search("blackrock", false)
---- @since 1.0.0
 ---
 function AtlasTW.Search(text, caseSensitive)
     -- Function implementation
@@ -74,7 +72,6 @@ end
 --- Initializes the addon when loaded and handles faction detection
 --- @return nil
 --- @usage Automatically called by WoW event system
---- @since 1.0.0
 ---
 function AtlasTW.OnEvent()
     -- Function implementation
@@ -88,7 +85,6 @@ end
 --- Updates the selected zone and refreshes the display
 --- @return nil
 --- @usage Called automatically by UI dropdown system
---- @since 1.0.0
 ---
 local function atlasFrameDropDown_OnClick()
     -- Function implementation
@@ -102,7 +98,6 @@ end
 --- @param skilltext table Array containing skill level thresholds [orange, yellow, green, grey]
 --- @return string Formatted skill text with color codes
 --- @usage local formatted = formSkillStyle({100, 150, 200, 250})
---- @since 1.0.0
 ---
 local function formSkillStyle(skilltext)
     -- Function implementation
@@ -133,7 +128,6 @@ function AtlasTW.Search(text)
 --- @param text string The search text to filter Atlas entries by
 --- @return table Array of search results containing matched entries
 --- @usage local results = AtlasTW.Search("blackrock")
---- @since 1.0.0
 ---
 function AtlasTW.Search(text)
 ```

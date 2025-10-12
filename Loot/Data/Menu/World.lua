@@ -12,7 +12,6 @@
 --- • Cross-zone boss organization
 --- • Integration with Babble localization
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -43,7 +42,6 @@ AtlasTW.MenuData.WorldBosses = {
 -- Display the World Bosses menu in AtlasLoot
 -- @function AtlasLoot_WorldMenu
 -- @usage AtlasLoot_WorldMenu()
--- @version 1.0
 ---
 function AtlasLoot_WorldMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["World"], AtlasTW.MenuData.WorldBosses)

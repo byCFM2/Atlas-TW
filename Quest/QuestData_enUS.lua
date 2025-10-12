@@ -11,8 +11,7 @@
 --- - Quest location and NPC information
 --- - Quest inheritance system
 --- - Localized quest data for English
---- 
---- @since 1.0.2
+---
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -43,7 +42,6 @@ local kQuestInstanceData = {}
 --- @param overrides table The quest-specific overrides to apply
 --- @return table The new quest object with inheritance
 --- @usage local newQuest = createInheritedQuest(baseQuest, { Title = "New Title" })
---- @since 1.0.0
 ---
 local function createInheritedQuest(baseQuest, overrides)
     local metatable = { __index = baseQuest }

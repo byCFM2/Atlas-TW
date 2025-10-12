@@ -5,7 +5,6 @@
 -- 1) Strip WoW formatting codes from text
 -- 2) Truncate text safely with ellipsis
 -- 3) Extract item ID from WoW item link
--- @since 1.0.0
 -- @compatible World of Warcraft 1.12
 
 local _G = getfenv()
@@ -17,7 +16,6 @@ local WHITE = AtlasTW.Colors.WHITE
 
 ---
 -- @module AtlasTW.LootUtils
--- @version 1.0.0
 -- @description Common string and link utilities for Atlas-TW Loot
 ---
 function AtlasTW.LootUtils.GetChatLink(id)
@@ -38,7 +36,6 @@ end
 --- @param text string Text to strip formatting from
 --- @return string Clean text without formatting codes
 --- @usage local clean = AtlasLoot_StripFormatting("|cffff0000Red Text|r")
---- @since 1.0.0
 ---
 function AtlasTW.LootUtils.StripFormatting(text)
     if not text then return "" end
@@ -71,7 +68,6 @@ end
 --- @param maxLength number Maximum allowed length
 --- @return string Truncated text with ellipsis if needed
 --- @usage local short = AtlasTW.LootUtils.TruncateText("Very long text", 10)
---- @since 1.0.0
 ---
 function AtlasTW.LootUtils.TruncateText(text, maxLength)
     local stripped_text = AtlasTW.LootUtils.StripFormatting(text)
@@ -93,7 +89,6 @@ end
 --- @param itemlink string WoW item hyperlink
 --- @return number|nil Numeric item ID or nil if not found
 --- @usage local id = AtlasTW.LootUtils.IdFromLink(itemLink)
---- @since 1.0.0
 ---
 function AtlasTW.LootUtils.IdFromLink(itemlink)
     if itemlink then
@@ -113,7 +108,6 @@ end
 --- @param onlyLast boolean|nil If true, return only the last part
 --- @return any Returns last part if onlyLast, otherwise returns first two parts for convenience
 --- @usage local a,b = AtlasTW.LootUtils.Strsplit("|", "a|b|c")
---- @since 1.0.0
 ---
 function AtlasTW.LootUtils.Strsplit(delim, str, maxNb, onlyLast)
 	if not str or not delim then return { str } end
@@ -150,7 +144,6 @@ end
 --- @param qty number Quantity required (default: 1)
 --- @return string Colored item name (WHITE if found, RED if missing)
 --- @usage local result = AtlasTW.LootUtils.CheckBagsForItems(12345, 5)
---- @since 1.0.0
 ---
 function AtlasTW.LootUtils.CheckBagsForItems(id, qty)
     if not id then return end

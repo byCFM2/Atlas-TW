@@ -13,7 +13,6 @@
 --- • Integration with Babble localization libraries
 --- • Support for all classic WoW professions
 ---
---- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -53,7 +52,7 @@ AtlasTW.MenuData.Crafting = {
 --- Shows all available crafting professions and their loot tables
 --- @return nil
 --- @usage AtlasLoot_CraftingMenu() -- Show crafting menu
---- @since 1.0.0
+
 function AtlasLoot_CraftingMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Crafting"], AtlasTW.MenuData.Crafting)
 end
@@ -113,7 +112,7 @@ AtlasTW.MenuData.CraftedSet = {
 --- Opens the Crafted Sets menu in AtlasLoot
 --- @return nil
 --- @usage AtlasLootCraftedSetMenu()
---- @since 1.0.0
+
 function AtlasLootCraftedSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Crafted Sets"], AtlasTW.MenuData.CraftedSet, L["Crafting"])
 end
@@ -138,7 +137,6 @@ AtlasTW.MenuData.Alchemy = {
 --- Opens the Alchemy crafting menu in AtlasLoot
 --- @return nil
 --- @usage AtlasLoot_AlchemyMenu()
---- @since 1.0.1
 ---
 function AtlasLoot_AlchemyMenu()
     AtlasTW.LootBrowserUI.PrepMenu(BS["Alchemy"], AtlasTW.MenuData.Alchemy, L["Crafting"], "Interface\\Icons\\Trade_Alchemy")
@@ -179,7 +177,6 @@ AtlasTW.MenuData.Smithing = {
 --- Opens the Blacksmithing crafting menu in AtlasLoot
 --- @return nil
 --- @usage AtlasLoot_SmithingMenu()
---- @since 1.0.0
 ---
 function AtlasLoot_SmithingMenu()
     AtlasTW.LootBrowserUI.PrepMenu(BS["Blacksmithing"],AtlasTW.MenuData.Smithing,L["Crafting"],"Interface\\Icons\\Trade_BlackSmithing")
@@ -207,7 +204,7 @@ AtlasTW.MenuData.Enchanting = {
 --- Opens the Enchanting crafting menu in AtlasLoot
 --- @return nil
 --- @usage AtlasLoot_EnchantingMenu()
---- @since 1.0.0
+
 function AtlasLoot_EnchantingMenu()
     AtlasTW.LootBrowserUI.PrepMenu(BS["Enchanting"], AtlasTW.MenuData.Enchanting, L["Crafting"], "Interface\\Icons\\Trade_Engraving")
 end
@@ -237,7 +234,7 @@ AtlasTW.MenuData.Engineering = {
 --- Opens the Engineering crafting menu in AtlasLoot
 --- @return nil
 --- @usage AtlasLoot_EngineeringMenu()
---- @since 1.0.0
+
 function AtlasLoot_EngineeringMenu()
     AtlasTW.LootBrowserUI.PrepMenu(BS["Engineering"], AtlasTW.MenuData.Engineering, L["Crafting"], "Interface\\Icons\\Trade_Engineering")
 end
@@ -271,7 +268,7 @@ AtlasTW.MenuData.Leatherworking = {
 --- Opens the Leatherworking crafting menu in AtlasLoot
 --- @return nil
 --- @usage AtlasLoot_LeatherworkingMenu()
---- @since 1.0.0
+
 function AtlasLoot_LeatherworkingMenu()
     AtlasTW.LootBrowserUI.PrepMenu(BS["Leatherworking"], AtlasTW.MenuData.Leatherworking, L["Crafting"], "Interface\\Icons\\INV_Misc_ArmorKit_17")
 end
@@ -286,7 +283,7 @@ AtlasTW.MenuData.Mining = {
 --- Opens the Mining profession menu in AtlasLoot
 --- @return nil
 --- @usage AtlasLoot_MiningMenu()
---- @since 1.0.0
+
 function AtlasLoot_MiningMenu()
     AtlasTW.LootBrowserUI.PrepMenu(BS["Mining"], AtlasTW.MenuData.Mining, L["Crafting"], "Interface\\Icons\\Trade_Mining")
 end
@@ -317,7 +314,7 @@ AtlasTW.MenuData.Tailoring = {
 --- Opens the Tailoring crafting menu in AtlasLoot
 --- @return nil
 --- @usage AtlasLoot_TailoringMenu()
---- @since 1.0.0
+
 function AtlasLoot_TailoringMenu()
     AtlasTW.LootBrowserUI.PrepMenu(BS["Tailoring"], AtlasTW.MenuData.Tailoring, L["Crafting"], "Interface\\Icons\\Trade_Tailoring")
 end
@@ -347,7 +344,7 @@ AtlasTW.MenuData.Jewelcrafting = {
 --- Opens the Jewelcrafting crafting menu in AtlasLoot
 --- @return nil
 --- @usage AtlasLoot_JewelcraftingMenu()
---- @since 1.0.0
+
 function AtlasLoot_JewelcraftingMenu()
     AtlasTW.LootBrowserUI.PrepMenu(BS["Jewelcrafting"], AtlasTW.MenuData.Jewelcrafting, L["Crafting"], "Interface\\Icons\\INV_Jewelry_Necklace_01")
 end
@@ -364,7 +361,7 @@ AtlasTW.MenuData.Cooking = {
 --- Opens the Cooking crafting menu in AtlasLoot
 --- @return nil
 --- @usage AtlasLoot_CookingMenu()
---- @since 1.0.0
+
 function AtlasLoot_CookingMenu()
     AtlasTW.LootBrowserUI.PrepMenu(BS["Cooking"], AtlasTW.MenuData.Cooking, L["Crafting"], "Interface\\Icons\\INV_Misc_Food_15")
 end

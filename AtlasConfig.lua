@@ -11,8 +11,7 @@
 --- - Instance to entrance mappings
 --- - Quest system configuration
 --- - Map path definitions
---- 
---- @since 1.0.0
+---
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -185,7 +184,7 @@ AtlasTW = {
 --- Prints text message to the default chat frame
 --- @param text string - the message to display in chat
 --- @usage print("Debug message")
---- @since 1.0.0
+
 function print(text)
     DEFAULT_CHAT_FRAME:AddMessage(text)
 end

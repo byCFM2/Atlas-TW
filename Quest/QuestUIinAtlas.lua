@@ -11,8 +11,7 @@
 --- - Embedded quest display management
 --- - Quest frame configuration
 --- - Atlas-quest UI coordination
---- 
---- @since 1.0.0
+---
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -60,7 +59,6 @@ local UI = {InsideAtlasFrame = frameMain}
 --- @param text string Optional text to set on the element
 --- @return table The created UI element
 --- @usage local button = CreateElement("Button", "", parent, "UIPanelButtonTemplate", 100, 30, {"CENTER", 0, 0}, "Click Me")
---- @since 1.0.0
 ---
 local function CreateElement(type, name, parent, template, width, height, point, text)
     local element = CreateFrame(type, name, parent, template)
@@ -83,7 +81,6 @@ end
 --- @param justifyV string Vertical justification ("TOP", "MIDDLE", "BOTTOM"), defaults to "MIDDLE"
 --- @return table The created FontString object
 --- @usage local label = CreateText("", parent, "GameFontNormal", {"TOP", 0, -10}, 200, 20, "LEFT", "TOP")
---- @since 1.0.0
 ---
 local function CreateText(name, parent, font, point, width, height, justifyH, justifyV)
     local text = parent:CreateFontString(name, "ARTWORK", font)

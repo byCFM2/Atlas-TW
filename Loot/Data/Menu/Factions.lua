@@ -12,7 +12,6 @@
 --- • Cross-faction availability indicators
 --- • Integration with Babble localization
 ---
---- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -61,7 +60,6 @@ AtlasTW.MenuData.Factions = {
 --- Alliance-specific, and Horde-specific factions with location information
 --- @return nil
 --- @usage AtlasLootRepMenu()
---- @since 1.0.0
 ---
 function AtlasLootRepMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Factions"], AtlasTW.MenuData.Factions)

@@ -12,7 +12,6 @@
 --- • Cross-set comparison tools
 --- • Integration with Babble localization
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -61,7 +60,6 @@ AtlasTW.MenuData.Sets = {
 --- Main sets menu function
 --- @return nil
 --- @usage AtlasLootSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Collections"], AtlasTW.MenuData.Sets)
@@ -104,7 +102,6 @@ AtlasTW.MenuData.WorldBlues = {
 --- World blues menu function
 --- @return nil
 --- @usage AtlasLootWorldBluesMenu()
---- @since 1.0.0
 ---
 function AtlasLootWorldBluesMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["World Blues"], AtlasTW.MenuData.WorldBlues, L["Collections"])
@@ -117,7 +114,6 @@ end
 --- @param icon string - Icon path for the class
 --- @return table - Menu data table for the class
 --- @usage local priestMenu = createClassSetMenu("Priest", "|cffffffff", "Interface\\Icons\\Spell_Holy_PowerWordShield")
---- @since 1.0.0
 ---
 local function createClassSetMenu(class, color, icon)
     local menuData = {
@@ -147,7 +143,6 @@ AtlasTW.MenuData.Warrior = createClassSetMenu("Warrior", "|cffc69b6d", "Interfac
 --- Priest sets menu function
 --- @return nil
 --- @usage AtlasLootPriestSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootPriestSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Priest Sets"], AtlasTW.MenuData.Priest, L["Collections"])
@@ -157,7 +152,6 @@ end
 --- Mage sets menu function
 --- @return nil
 --- @usage AtlasLootMageSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootMageSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Mage Sets"], AtlasTW.MenuData.Mage, L["Collections"])
@@ -167,7 +161,6 @@ end
 --- Warlock sets menu function
 --- @return nil
 --- @usage AtlasLootWarlockSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootWarlockSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Warlock Sets"], AtlasTW.MenuData.Warlock, L["Collections"])
@@ -177,7 +170,6 @@ end
 --- Rogue sets menu function
 --- @return nil
 --- @usage AtlasLootRogueSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootRogueSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Rogue Sets"], AtlasTW.MenuData.Rogue, L["Collections"])
@@ -187,7 +179,6 @@ end
 --- Druid sets menu function
 --- @return nil
 --- @usage AtlasLootDruidSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootDruidSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Druid Sets"], AtlasTW.MenuData.Druid, L["Collections"])
@@ -197,7 +188,6 @@ end
 --- Hunter sets menu function
 --- @return nil
 --- @usage AtlasLootHunterSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootHunterSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Hunter Sets"], AtlasTW.MenuData.Hunter, L["Collections"])
@@ -207,7 +197,6 @@ end
 --- Shaman sets menu function
 --- @return nil
 --- @usage AtlasLootShamanSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootShamanSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Shaman Sets"], AtlasTW.MenuData.Shaman, L["Collections"])
@@ -217,7 +206,6 @@ end
 --- Paladin sets menu function
 --- @return nil
 --- @usage AtlasLootPaladinSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootPaladinSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Paladin Sets"], AtlasTW.MenuData.Paladin, L["Collections"])
@@ -227,7 +215,6 @@ end
 --- Warrior sets menu function
 --- @return nil
 --- @usage AtlasLootWarriorSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootWarriorSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Warrior Sets"], AtlasTW.MenuData.Warrior, L["Collections"])
@@ -258,7 +245,6 @@ AtlasTW.MenuData.Pre60Sets = {
 --- Pre-60 sets menu function
 --- @return nil
 --- @usage AtlasLootPRE60SetMenu()
---- @since 1.0.0
 ---
 function AtlasLootPRE60SetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Pre 60 Sets"], AtlasTW.MenuData.Pre60Sets, L["Collections"])
@@ -269,7 +255,6 @@ end
 --- @param dungeonName string - The dungeon prefix (e.g., "ZG", "AQ40", "T1")
 --- @return table - Menu data table with class-specific entries
 --- @usage local zgMenu = CreateDungeonSetMenu("ZG")
---- @since 1.0.0
 ---
 local function CreateDungeonSetMenu(dungeonName)
     local menuData = {}
@@ -329,7 +314,6 @@ AtlasTW.MenuData.T35Set = CreateDungeonSetMenu("T35")
 --- Zul'Gurub sets menu function
 --- @return nil
 --- @usage AtlasLootZGSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootZGSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Zul'Gurub Sets"], AtlasTW.MenuData.ZGSet, L["Collections"])
@@ -339,7 +323,6 @@ end
 --- Temple of Ahn'Qiraj sets menu function
 --- @return nil
 --- @usage AtlasLootAQ40SetMenu()
---- @since 1.0.0
 ---
 function AtlasLootAQ40SetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Temple of Ahn'Qiraj Sets"], AtlasTW.MenuData.AQ40Set, L["Collections"])
@@ -349,7 +332,6 @@ end
 --- Ruins of Ahn'Qiraj sets menu function
 --- @return nil
 --- @usage AtlasLootAQ20SetMenu()
---- @since 1.0.0
 ---
 function AtlasLootAQ20SetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Ruins of Ahn'Qiraj Sets"], AtlasTW.MenuData.AQ20Set, L["Collections"])
@@ -359,7 +341,6 @@ end
 --- Tier 0/0.5 sets menu function
 --- @return nil
 --- @usage AtlasLootT0SetMenu()
---- @since 1.0.0
 ---
 function AtlasLootT0SetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Tier 0/0.5 Sets"], AtlasTW.MenuData.T0Set, L["Collections"])
@@ -369,7 +350,6 @@ end
 --- Tier 1 sets menu function
 --- @return nil
 --- @usage AtlasLootT1SetMenu()
---- @since 1.0.0
 ---
 function AtlasLootT1SetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Tier 1 Sets"], AtlasTW.MenuData.T1Set, L["Collections"])
@@ -379,7 +359,6 @@ end
 --- Tier 2 sets menu function
 --- @return nil
 --- @usage AtlasLootT2SetMenu()
---- @since 1.0.0
 ---
 function AtlasLootT2SetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Tier 2 Sets"], AtlasTW.MenuData.T2Set, L["Collections"])
@@ -389,7 +368,6 @@ end
 --- Tier 3 sets menu function
 --- @return nil
 --- @usage AtlasLootT3SetMenu()
---- @since 1.0.0
 ---
 function AtlasLootT3SetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Tier 3 Sets"], AtlasTW.MenuData.T3Set, L["Collections"])
@@ -399,7 +377,6 @@ end
 --- Tower of Karazhan sets menu function
 --- @return nil
 --- @usage AtlasLootUKSetMenu()
---- @since 1.0.0
 ---
 function AtlasLootUKSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Tower of Karazhan Sets"], AtlasTW.MenuData.T35Set, L["Collections"])

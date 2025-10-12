@@ -12,7 +12,6 @@
 --- • Cross-continent travel routes
 --- • Transportation costs and timings
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 

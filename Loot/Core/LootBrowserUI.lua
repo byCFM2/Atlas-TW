@@ -12,7 +12,6 @@
 --- - Boss line element creation and updates
 --- - Frame visibility and interaction handling
 --- 
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -33,7 +32,6 @@ local YELLOW = AtlasTW.Colors.YELLOW
 --- Handles loot indicators and selection highlighting
 --- @return void
 --- @usage AtlasTW.LootBrowserUI.ScrollBarUpdate()
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.ScrollBarUpdate()
     local lineplusoffset
@@ -100,7 +98,6 @@ end
 --- @param skilltext table Table containing skill level values [1-4]
 --- @return string Formatted skill text with color codes
 --- @usage local formatted = formSkillStyle({"100", "150", "200", "250"})
---- @since 1.0.0
 ---
 local function formSkillStyle(skilltext)
 	if not skilltext or type(skilltext) ~= "table" then return "" end
@@ -113,7 +110,6 @@ end
 --- Loads and displays loot data for the currently selected element
 --- @return nil
 --- @usage AtlasTW.LootBrowserUI.ScrollBarLootUpdate() -- Called when loot data changes
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
     	--Load data for the current clicked element line
@@ -629,7 +625,6 @@ end
 --- @param wishlistData table Wish list data to display
 --- @return nil
 --- @usage AtlasTW.LootBrowserUI.DisplayWishList(wishlistData)
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.DisplayWishList(wishlistData)
     -- Implementation for wish list display
@@ -666,7 +661,6 @@ end
 --- @param searchResults table Search results data to display
 --- @return nil
 --- @usage AtlasTW.LootBrowserUI.DisplaySearchResults(searchResults)
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.DisplaySearchResults(searchResults)
     -- Implementation for search results display
@@ -702,7 +696,6 @@ end
 --- @param menuData table Menu data to display
 --- @return nil
 --- @usage AtlasTW.LootBrowserUI.DisplayMenuData(menuData)
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.DisplayMenuData(menuData)
     -- Implementation for menu data display
@@ -744,7 +737,6 @@ end
 --- @param lootData table Loot data to display
 --- @return nil
 --- @usage AtlasTW.LootBrowserUI.DisplayLootData(lootData)
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.DisplayLootData(lootData)
     -- Implementation for regular loot data display
@@ -777,7 +769,6 @@ end
 --- @param itemData table Item data to display
 --- @return nil
 --- @usage AtlasTW.LootBrowserUI.SetLootLine(1, itemData)
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.SetLootLine(lineIndex, itemData)
     if not lineIndex or not itemData then
@@ -831,7 +822,6 @@ end
 --- @param lineIndex number Line index to clear (1-based)
 --- @return nil
 --- @usage AtlasTW.LootBrowserUI.ClearLootLine(1)
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.ClearLootLine(lineIndex)
     if not lineIndex then
@@ -860,7 +850,6 @@ end
 --- Clears all loot display lines
 --- @return nil
 --- @usage AtlasTW.LootBrowserUI.ClearLootDisplay()
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.ClearLootDisplay()
     for i = 1, AtlasTW.NUM_LOOT_LINES or 30 do
@@ -878,7 +867,6 @@ end
 --- @param itemData table Item data containing itemID and other properties
 --- @return nil
 --- @usage AtlasTW.LootBrowserUI.UpdateItemButton(button, itemData)
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.UpdateItemButton(button, itemData)
     if not button or not itemData then
@@ -940,7 +928,6 @@ end
 --- @param textData table Text data containing text and formatting
 --- @return nil
 --- @usage AtlasTW.LootBrowserUI.UpdateTextButton(button, textData)
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.UpdateTextButton(button, textData)
     if not button or not textData then
@@ -1009,7 +996,6 @@ end
 --- @param defIcon string|nil Default icon for the menu
 --- @return nil
 --- @usage AtlasTW.LootBrowserUI.PrepMenu("Dungeons", menuData)
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon)
     AtlasLootItemsFrame.StoredElement = { menuName = menuTitle, defaultIcon = defIcon }
@@ -1049,7 +1035,6 @@ end
 -- @param itemData The data for the menu line.
 -- @return nil
 -- @usage AtlasTW.LootBrowserUI.SetMenuLine(1, { name = "Dungeons", container = "Dungeons" })
--- @since 1.0.0
 --
 function AtlasTW.LootBrowserUI.SetMenuLine(lineIndex, itemData)
     if not lineIndex or not itemData then return end
@@ -1075,7 +1060,6 @@ end
 --- @param debugName string|nil Optional name for debug prints
 --- @return void
 --- @usage AtlasTW.LootBrowserUI.CreateLoadingFrame("AtlasLootScrollBarLoadingFrame", AtlasLootItemsFrame)
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.CreateLoadingFrame(frameName, parentFrame, debugName)
     local loadingFrame = getglobal(frameName)
@@ -1129,7 +1113,6 @@ end
 --- @param debugName string|nil Optional name for debug prints
 --- @return void
 --- @usage AtlasTW.LootBrowserUI.HideLoadingFrame("AtlasLootScrollBarLoadingFrame")
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.HideLoadingFrame(frameName, debugName)
     local loadingFrame = getglobal(frameName)
@@ -1145,7 +1128,6 @@ end
 --- Convenience wrapper to show scroll bar loading overlay
 --- @return void
 --- @usage AtlasTW.LootBrowserUI.ShowScrollBarLoading()
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.ShowScrollBarLoading()
     AtlasTW.LootBrowserUI.CreateLoadingFrame("AtlasLootScrollBarLoadingFrame", AtlasLootItemsFrame)
@@ -1155,7 +1137,6 @@ end
 --- Convenience wrapper to hide scroll bar loading overlay
 --- @return void
 --- @usage AtlasTW.LootBrowserUI.HideScrollBarLoading()
---- @since 1.0.0
 ---
 function AtlasTW.LootBrowserUI.HideScrollBarLoading()
     AtlasTW.LootBrowserUI.HideLoadingFrame("AtlasLootScrollBarLoadingFrame")

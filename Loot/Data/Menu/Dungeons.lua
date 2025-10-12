@@ -12,7 +12,6 @@
 --- • Automatic sorting and filtering
 --- • Color-coded instance type display
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -26,7 +25,6 @@ local L = AtlasTW.Local
 --- @param mainString string - The main instance name
 --- @return string - Formatted string with color codes
 --- @usage local formatted = getFormString("[RAID]", "Molten Core")
---- @since 1.0.0
 ---
 local function getFormString(instanceType, mainString)
     return "|cffff0000"..instanceType.." |cffffd200"..mainString
@@ -37,7 +35,6 @@ end
 --- Dynamically creates dungeon and raid menu entries with proper sorting and categorization
 --- @return table - Generated menu data sorted by level ranges
 --- @usage local menuData = GenerateMenuDataFromInstanceData()
---- @since 1.0.0
 ---
 local function GenerateMenuDataFromInstanceData()
     local menuData = {}
@@ -150,7 +147,6 @@ AtlasTW.MenuData.Dungeons = GenerateMenuDataFromInstanceData()
 --- Shows all available dungeons and raids organized by level ranges and player limits
 --- @return nil
 --- @usage AtlasLoot_DungeonsMenu()
---- @since 1.0.0
 ---
 function AtlasLoot_DungeonsMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["Dungeons & Raids"], AtlasTW.MenuData.Dungeons)

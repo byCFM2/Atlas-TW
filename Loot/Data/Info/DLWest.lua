@@ -12,7 +12,6 @@
 --- • Zone-specific dungeon data
 --- • Navigation assistance
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -87,6 +86,24 @@ AtlasTW.InstanceData.DLWest = {
             id = "DLDireMaul",
             prefix = "7)",
             name = BZ["Dire Maul"],
+            postfix = BZ["Feralas"],
+            color = "|cff999999",
+        },
+        {
+            id = "DLDireMaulWest",
+            name = BZ["Dire Maul (West)"],
+            postfix = BZ["Feralas"],
+            color = "|cff999999",
+        },
+        {
+            id = "DLDireMaulNorth",
+            name = BZ["Dire Maul (North)"],
+            postfix = BZ["Feralas"],
+            color = "|cff999999",
+        },
+        {
+            id = "DLDireMaulEast",
+            name = BZ["Dire Maul (East)"],
             postfix = BZ["Feralas"],
             color = "|cff999999",
         },

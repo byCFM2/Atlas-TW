@@ -11,8 +11,7 @@
 --- - Frame positioning and movement
 --- - Visual component management
 --- - Options interface layout
---- 
---- @since 1.0.0
+---
 --- @compatible World of Warcraft 1.12
 ---
 

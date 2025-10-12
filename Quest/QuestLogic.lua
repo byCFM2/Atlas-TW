@@ -11,8 +11,7 @@
 --- - Quest reward display logic
 --- - Mouse interaction handling
 --- - Quest data processing
---- 
---- @since 1.0.0
+---
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -33,7 +32,6 @@ local blue = "|cff0070dd"
 --- @param itemIndex number Index of the reward item (1-6)
 --- @return nil
 --- @usage Called automatically on mouse enter event
---- @since 1.0.0
 ---
 function AtlasTW.Quest.OnItemEnter(itemIndex)
     if not itemIndex then
@@ -102,7 +100,6 @@ end
 --- Hides the tooltip when the mouse leaves a quest reward item
 --- @return nil
 --- @usage Called automatically on mouse leave event
---- @since 1.0.0
 ---
 function AtlasTW.Quest.OnItemLeave()
     -- Hide all tooltips when mouse leaves item
@@ -129,7 +126,6 @@ end
 --- @param itemIndex number Index of the clicked reward item (1-6)
 --- @return nil
 --- @usage Called automatically on item click event
---- @since 1.0.0
 ---
 function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
     if not itemIndex then
@@ -203,7 +199,6 @@ end
 --- Hides the quest information display and resets current button state
 --- @return nil
 --- @usage Called when closing quest details
---- @since 1.0.0
 ---
 function AtlasTW.Quest.CloseDetails()
     AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
@@ -216,7 +211,6 @@ end
 --- Creates a clickable quest link for sharing with other players
 --- @return nil
 --- @usage Called internally when Shift+clicking quest buttons
---- @since 1.0.0
 ---
 local function atlasTWQuestInsertQuestLink()
     local questID = AtlasTW.QCurrentQuest
@@ -246,7 +240,6 @@ end
 --- @param questIndex number Index of the clicked quest button
 --- @return nil
 --- @usage Called automatically when quest button is clicked
---- @since 1.0.0
 ---
 function AtlasTW.Quest.OnQuestClick(questIndex)
     if not questIndex then return print("AtlasTW.Quest.OnQuestClick without questIndex.") end
@@ -276,7 +269,6 @@ end
 --- Updates quest completion state and saves it to character database
 --- @return nil
 --- @usage Called when finished quest checkbox is clicked
---- @since 1.0.0
 ---
 function AtlasTW.Quest.ToggleFinishedFilter()
     -- Build the quest key based on faction
@@ -296,7 +288,6 @@ end
 --- Handles both story pages and multi-page quest descriptions
 --- @return nil
 --- @usage Called when next page button is clicked
---- @since 1.0.0
 ---
 function AtlasTW.Quest.NextPage()
     local SideAfterThis = AtlasTW.QCurrentPage + 2
@@ -360,14 +351,12 @@ end
 --- Handles both story pages and multi-page quest descriptions
 --- @return nil
 --- @usage Called when previous page button is clicked
---- @since 1.0.0
 ---
 ---
 --- Goes back to the previous page of quest or story content
 --- Handles both story pages and multi-page quest descriptions
 --- @return nil
 --- @usage Called when previous page button is clicked
---- @since 1.0.0
 ---
 function AtlasTW.Quest.PreviousPage()
     AtlasTW.QCurrentPage = AtlasTW.QCurrentPage - 1
@@ -420,14 +409,12 @@ end
 --- Initializes faction checkboxes and refreshes quest buttons
 --- @return nil
 --- @usage Called automatically when quest frame is shown
---- @since 1.0.0
 ---
 ---
 --- Handles the quest frame show event
 --- Initializes faction checkboxes and refreshes quest buttons
 --- @return nil
 --- @usage Called automatically when quest frame is shown
---- @since 1.0.0
 ---
 function AtlasTW.Quest.OnQuestFrameShow()
     if not AtlasTW.Quest.UI_Main then
@@ -443,14 +430,12 @@ end
 --- Toggles story text display in the quest details frame
 --- @return nil
 --- @usage Called when story button is clicked
---- @since 1.0.0
 ---
 ---
 --- Handles click events on the story button
 --- Toggles story text display in the quest details frame
 --- @return nil
 --- @usage Called when story button is clicked
---- @since 1.0.0
 ---
 function AtlasTW.Quest.OnStoryClick()
 	AtlasTW.Quest.HideAtlasLootFrame()
@@ -471,14 +456,12 @@ end
 --- Switches to Alliance faction and refreshes quest display
 --- @return nil
 --- @usage Called when Alliance checkbox is clicked
---- @since 1.0.0
 ---
 ---
 --- Handles click events on the Alliance faction button
 --- Switches to Alliance faction and refreshes quest display
 --- @return nil
 --- @usage Called when Alliance checkbox is clicked
---- @since 1.0.0
 ---
 function AtlasTW.Quest.OnAllianceClick()
     if not AtlasTW.Quest.UI_Main then
@@ -496,14 +479,12 @@ end
 --- Switches to Horde faction and refreshes quest display
 --- @return nil
 --- @usage Called when Horde checkbox is clicked
---- @since 1.0.0
 ---
 ---
 --- Handles click events on the Horde faction button
 --- Switches to Horde faction and refreshes quest display
 --- @return nil
 --- @usage Called when Horde checkbox is clicked
---- @since 1.0.0
 ---
 function AtlasTW.Quest.OnHordeClick()
     if not AtlasTW.Quest.UI_Main then
@@ -521,14 +502,12 @@ end
 --- Toggles quest display option and hides all quest UI elements
 --- @return nil
 --- @usage Called when quest frame close button is clicked
---- @since 1.0.0
 ---
 ---
 --- Closes the quest frame and updates options
 --- Toggles quest display option and hides all quest UI elements
 --- @return nil
 --- @usage Called when quest frame close button is clicked
---- @since 1.0.0
 ---
 function AtlasTW.Quest.CloseQuestFrame()
     AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
@@ -543,14 +522,12 @@ end
 --- Shows or hides the quest UI based on current state
 --- @return nil
 --- @usage Called when quest frame toggle button is clicked
---- @since 1.0.0
 ---
 ---
 --- Toggles the visibility of the main quest frame
 --- Shows or hides the quest UI based on current state
 --- @return nil
 --- @usage Called when quest frame toggle button is clicked
---- @since 1.0.0
 ---
 function AtlasTW.Quest.ToggleQuestFrame()
     AtlasTWOptions.QuestWithAtlas = not AtlasTWOptions.QuestWithAtlas
@@ -569,14 +546,12 @@ end
 --- Loads finished quests and configures tooltip settings
 --- @return nil
 --- @usage Called automatically when the player starts the game
---- @since 1.0.0
 ---
 ---
 --- Handles quest-related game events and initialization
 --- Loads finished quests and configures tooltip settings
 --- @return nil
 --- @usage Called automatically when the player starts the game
---- @since 1.0.0
 ---
 function AtlasTW.Quest.OnEvent()
     if type(AtlasTWCharDB) == "table" then

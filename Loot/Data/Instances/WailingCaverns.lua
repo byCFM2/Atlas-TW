@@ -12,7 +12,6 @@
 --- • Level-appropriate loot organization
 --- • Quest reward items
 ---
---- @since 1.0.2
 --- @compatible World of Warcraft 1.12
 ---
 

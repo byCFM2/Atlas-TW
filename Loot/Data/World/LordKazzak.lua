@@ -12,7 +12,6 @@
 --- • Unique world boss rewards
 --- • Respawn timer information
 ---
---- @since 1.0.0
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -57,7 +56,7 @@ AtlasTW.InstanceData.LordKazzak = {
                 { id = 17962, disc = L["Container"], dropRate = 8, container = { 13926, 7971, 3864, 55251, 55250, 7910, 7909, 1529, 12361 } }, -- Blue Sack of Gems
                 { id = 17963, disc = L["Container"], dropRate = 12, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12364 } }, -- Green Sack of Gems
                 { id = 17964, disc = L["Container"], dropRate = 16, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12800 } }, -- Gray Sack of Gems
-                { id = 17969, disc = L["Container"], dropRate = 13, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12799, 6332 } }, -- Red Sack of Gems
+                { id = 17969, disc = L["Container"], dropRate = 13, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12799 } }, -- Red Sack of Gems
                 {},
                 { id = 18665, dropRate = 100, container = { 18608, 18609 } }, -- The Eye of Shadow
                 {},
