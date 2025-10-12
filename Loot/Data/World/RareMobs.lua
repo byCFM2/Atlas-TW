@@ -71,7 +71,7 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "FriarMontero",
             name = L["Friar Montero"],
-            postfix = "?k (35L) " .. BZ["Northwind"] .. " [61, 26]",
+            postfix = "3.5k (35L) " .. BZ["Northwind"] .. " [61, 26]",
             defaults = { dropRate = 50 },
             loot = {
                 { id = 58010 }, -- Psalm of Righteous Fire
@@ -92,7 +92,7 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Emastrasz",
             name = L["Emastrasz"],
-            postfix = "?k (38L) " .. BZ["Grim Reaches"] .. " [57, 78]",
+            postfix = "2k (38L) " .. BZ["Grim Reaches"] .. " [57, 78]",
             defaults = { dropRate = 50 },
             loot = {
                 { id = 58159 }, -- Hood of Lifebinding
@@ -125,7 +125,7 @@ AtlasTW.InstanceData.RareMobs = {
         {
             id = "Gnaws",
             name = L["Gnaws"],
-            postfix = "?k (41L) " .. BZ["Balor"] .. " [56, 11]",
+            postfix = "6.4k (41L) " .. BZ["Balor"] .. " [56, 11]",
             defaults = { dropRate = 33 },
             loot = {
                 { id = 23100, dropRate = 25 }, -- Idol of Fluidity
