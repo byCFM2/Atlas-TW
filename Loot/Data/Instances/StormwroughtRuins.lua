@@ -12,7 +12,7 @@
 --- • Level-appropriate loot organization
 --- • Quest reward items
 ---
---- @since 1.0.0
+--- @since 1.0.1
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -230,6 +230,14 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 70113, container = { 56040 } }, -- Plans: Gleaming Silver Necklace
                 { id = 58178, dropRate = 1.35 }, -- Stormreaver Boots
                 { id = 58131, dropRate = 1.35 }, -- Stormreaver Belt
+                { id = 58294, dropRate = .0125 }, -- Sporeblight Talons
+                { id = 58295, dropRate = .0125 }, -- Fel-Touched Crown
+                { id = 58296, dropRate = .0125 }, -- Boots of the Slime Path
+                { id = 58297, dropRate = .0125 }, -- Mindburrow Girdle
+                { id = 58298, dropRate = .0125 }, -- Eye of the Forgotten Depths
+                { id = 58299, dropRate = .0125 }, -- Invoker's Hollow Mantle
+                { id = 58300, dropRate = .0125 }, -- Whispershard Ring
+                { id = 58301, dropRate = .0125 }, -- Shadowbind Sigil
                 { id = 1992 }, -- Swampchill Fetish
                 { id = 2262 }, -- Mark of Kern
                 { id = 5756 }, -- Sliverblade
