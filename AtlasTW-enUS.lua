@@ -88,7 +88,7 @@ AtlasTW.Local.Translations = {
 
 	--Other
 
-	["Show the Quest Panel with Atlas"] = true,
+	["Show the Quest Panel with AtlasTW"] = true,
 	["Show Quest Panel on the Left"] = true,
 	["Show Quest Panel on the Right"] = true,
 	["Color Quests by Level"] = true,

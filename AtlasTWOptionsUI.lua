@@ -184,7 +184,7 @@ do
 
     -- Quest Checkboxes Data
     local questCheckboxes = {
-        { name = "AtlasTWOptionAutoshow", text = L["Show the Quest Panel with Atlas"], script = function() AtlasTW.OptionAutoshowOnClick() end },
+        { name = "AtlasTWOptionAutoshow", text = L["Show the Quest Panel with AtlasTW"], script = function() AtlasTW.OptionAutoshowOnClick() end },
         { name = "AtlasTWOptionLeftSide", text = L["Show Quest Panel on the Left"], script = function() AtlasTW.OptionLeftSideOnClick() end },
         { name = "AtlasTWOptionRightSide", text = L["Show Quest Panel on the Right"], script = function() AtlasTW.OptionRightSideOnClick() end },
         { name = "AtlasTWOptionColor", text = L["Color Quests by Level"], script = function() AtlasTW.OptionColorOnClick() end },
