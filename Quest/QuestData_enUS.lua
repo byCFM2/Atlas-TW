@@ -6462,7 +6462,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[1] = {
         ..yellow.."[a]",
     Rewards = {
         Text = blue.."Reward:",
-        { id = 41876, desc = "Key" }, --Lower Reserve Key Key
+        { id = 41876, desc = "Key" }, --Lower Reserve Key
     }
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[2] = {
@@ -6483,7 +6483,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[3] = {
     Attain = 22,
     Aim = "Acquire the runestone of a Crumbling Stone Golem inside Dragomaw Retreat and bring it to Kixxle on the mainroad in the Wetlands.",
     Location = "Kixxle (Wetlands - The Green Belt "..yellow.."50,38"..white..")",
-    Note = "'Stone Golem Runestone' drops from 'Crumbling Stone Golem' near"..yellow.."[6]",
+    Note = "'Stone Golem Runestone' drops from 'Crumbling Stone Golem' near "..yellow.."[6]",
     Rewards = {
         Text = blue.."Reward:",
         { id = 41826 }, --Mosshide Cinch
@@ -6642,7 +6642,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[3] = {
     Attain = 28,
     Aim = "Rikki Fizmask wants you to pillage the Stormwrought Ruins on Balor and return to her at the Gullwing Wreckage.",
     Location = "Rikki Fizmask (Balor "..yellow.."29, 11"..white..")",
-    Note = "'Balorian Treasure' drops from 'Translucent Guests and Tethered Nobles' "..yellow.."[]", --TODO where?
+    Note = "'Balorian Treasure' drops from 'Translucent Guests and Tethered Nobles' near "..yellow.."[4]",
     Rewards = {
         Text = blue.."Reward:",
         { id = 58281 }, --Trusty Goblin Shiv
@@ -6675,7 +6675,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[6] = {
     Attain = 29,
     Aim = "Thin out the chain of command within Stormwrought Ruins and return to Nippsy Spickerspan in the SI:7 Outpost on Balor.",
     Location = "Nippsy Spickerspan (Balor - SI:7 Outpost "..yellow.."70, 78"..white..")",
-    Note = "'Oronok Torn-Heart' "..yellow.."[1]"..white.."\n'Chieftain Stormsong' "..yellow.."[5]"..white.."\n'Stormreaver Battlemasters' near "..yellow.."[]", --TODO where?
+    Note = "'Oronok Torn-Heart' "..yellow.."[1]"..white.."\n'Chieftain Stormsong' "..yellow.."[5]"..white.."\n'Stormreaver Battlemasters' near "..yellow.."[5]",
     Prequest = "Assessing The Situation ->> Noppsy Spickerspan ->> Harrowing News -> Into The Hornet's Nest",
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[7] = {
@@ -6700,7 +6700,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[8] = {
     Attain = 34,
     Aim = "Find a Stormwrought Crystal for Grukson Slatebeard at Slatebeard's Forge.",
     Location = "Grukson Slatebeard (Grim Reaches - The Grim Hollow "..yellow.."56, 70"..white..")",
-    Note = "'Stormwrought Crystal' contains near "..yellow.."[]", --TODO where?
+    Note = "'Stormwrought Crystal' contains near "..yellow.."[9]",
     Rewards = {
         Text = blue.."Reward:",
         { id = 41980 }, --Slatebeard Amulet
