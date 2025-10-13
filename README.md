@@ -44,7 +44,7 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
 - Optional: cursor coordinates overlay on the default World Map (toggle in options)
 
 5) Window and UI Elements
-- Main frame: AtlasFrame
+- Main frame: AtlasTWFrame
 - Drop-downs:
   - Map Type (category)
   - Instance selection
@@ -64,7 +64,7 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
 - Clamp window to screen — keep the window within the screen
 - Transparency — Atlas window transparency
 - Scale — Atlas window scale
-- Show Loot Panel with Atlas — show the bottom loot panel
+- Show Loot Panel with AtlasTW — show the bottom loot panel
 - Quests — embed the quests panel into the Atlas window
 - Tooltip modes (LootDefaultTT / LootlinkTT / LootItemSyncTT) — choose tooltip integration
 - Show cursor coordinates on World Map — toggle AtlasTWOptions.AtlasCursorCoords

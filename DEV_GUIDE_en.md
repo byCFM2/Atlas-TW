@@ -59,15 +59,15 @@ AtlasOptions.lua (options handlers)
 - OnAllianceClick()/OnHordeClick(): switch quest faction.
 - CloseQuestFrame()/ToggleQuestFrame(): hide/toggle quest panel.
 - OnEvent(): quest module event processing (init, tooltip registration).
-- ClearAll()/HideAtlasLootFrame(): service helpers; cleanup/sync with loot panel.
+- ClearAll()/HideAtlasTWLootFrame(): service helpers; cleanup/sync with loot panel.
 - SetQuestText()/SetStoryText()/LoadFinishedQuests()/Update()/SetQuestButtons(): update quest UI text/buttons/state.
 
-5) Loot module public functions (AtlasTW.LootBrowserUI.* and key AtlasLoot_*)
+5) Loot module public functions (AtlasTW.LootBrowserUI.* and key AtlasTWLoot_*)
 - AtlasTW.LootBrowserUI.ScrollBarUpdate(): update loot menu scrollbar state.
 - AtlasTW.LootBrowserUI.ScrollBarLootUpdate(): refresh loot items container after page/filter changes.
 - AtlasTW.LootBrowserUI.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon): prepare a menu (title, items, back icon).
-- AtlasLoot_InitializeUI(): initialize bottom loot UI (create frames, buttons, scrollbar).
-- The AtlasLoot_* namespace contains click handlers, page switches, section menus (Dungeons, World, PvP, Factions, Crafting, etc.), and item tooltip handlers (Item_OnEnter/OnLeave/OnClick). You may call these directly to build/switch menus if needed.
+- AtlasTWLoot_InitializeUI(): initialize bottom loot UI (create frames, buttons, scrollbar).
+- The AtlasTWLoot_* namespace contains click handlers, page switches, section menus (Dungeons, World, PvP, Factions, Crafting, etc.), and item tooltip handlers (Item_OnEnter/OnLeave/OnClick). You may call these directly to build/switch menus if needed.
 
 6) ItemDB (items processing)
 - AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext): parse item tooltip to extract meta (quality, source).
@@ -76,7 +76,7 @@ AtlasOptions.lua (options handlers)
 
 7) How to call (WoW 1.12 examples)
 - Toggle window:
-  if AtlasFrame and AtlasFrame:IsShown() then AtlasTW.ToggleAtlas() else AtlasTW.ToggleAtlas() end
+  if AtlasTWFrame and AtlasTWFrame:IsShown() then AtlasTW.ToggleAtlas() else AtlasTW.ToggleAtlas() end
 - Force refresh after changing options:
   AtlasTW.Refresh(); print("Atlas: refreshed")
 - Apply live scale/alpha on slider move:
@@ -143,29 +143,29 @@ AtlasOptions.lua (options handlers)
   - Per-entity: quest/progress keys (see Quest.* persistence).
 
 12) Main frames and UI elements
-- Main window: AtlasFrame — parent for the majority of Atlas UI.
-- Dropdowns: AtlasFrameDropDownType (category), AtlasFrameDropDown (map/instance).
-- Search field: AtlasSearchEditBox.
-- Switches/buttons: AtlasSwitchButton plus options/quest buttons.
-- Minimap: AtlasButtonFrame (container), AtlasMinimapButton (button), behavior — MinimapButton*.
+- Main window: AtlasTWFrame — parent for the majority of Atlas UI.
+- Dropdowns: AtlasTWFrameDropDownType (category), AtlasTWFrameDropDown (map/instance).
+- Search field: AtlasTWSearchEditBox.
+- Switches/buttons: AtlasTWSwitchButton plus options/quest buttons.
+- Minimap: AtlasTWButtonFrame (container), AtlasTWMinimapButton (button), behavior — MinimapButton*.
 - World Map: cursor coordinates overlay — visible only when WorldMapFrame is shown; respects AtlasTWOptions.AtlasCursorCoords.
-- Loot panel: AtlasLootItemsFrame (container), AtlasLootScrollBar (scrollbar), AtlasLootItemsFrameContainer (dynamic grid for item buttons).
-- Options panel: AtlasOptionsFrame (+ AtlasOptionsFrameDropDownCats).
+- Loot panel: AtlasTWLootItemsFrame (container), AtlasTWLootScrollBar (scrollbar), AtlasTWLootItemsFrameContainer (dynamic grid for item buttons).
+- Options panel: AtlasTWOptionsFrame (+ AtlasTWOptionsFrameDropDownCats).
 - Quest panels: Quest.UI_Main.Frame (sidebar), Quest.UI.InsideAtlasFrame (embedded inside Atlas).
 
 13) Events and lifecycle
 - ADDON_LOADED: early initialization of frames/resources.
 - VARIABLES_LOADED: read/normalize SavedVariables (some frames subscribe here).
 - PLAYER_ENTERING_WORLD: final initialization, place minimap button, auto-show panels.
-- Note: OnShow/OnHide/OnEvent handlers on AtlasFrame and subpanels keep loot/quests in sync.
+- Note: OnShow/OnHide/OnEvent handlers on AtlasTWFrame and subpanels keep loot/quests in sync.
 
 14) Slash commands and keybinds
 - /atlas — AtlasTW.SlashCommand: no args — toggle window; options/opt — open options window.
-- Keybinds: Bindings.xml defines Atlas navigation actions that depend on AtlasFrame visibility.
+- Keybinds: Bindings.xml defines Atlas navigation actions that depend on AtlasTWFrame visibility.
 
 15) Data flows (typical scenarios)
 - Search:
-  1) User types into AtlasSearchEditBox → AtlasTW.Search(text).
+  1) User types into AtlasTWSearchEditBox → AtlasTW.Search(text).
   2) The search module fills AtlasTWCharDB.SearchResult and LastSearchedText.
   3) The loot panel reads SearchResult and displays results; ScrollBarLootUpdate refreshes the container.
 - Loot menu navigation:
@@ -229,7 +229,7 @@ Options (AtlasOptions.lua)
 
 Quests (QuestMain.lua, QuestLogic.lua)
 - AtlasTW.Quest.ClearAll()
-- AtlasTW.Quest.HideAtlasLootFrame()
+- AtlasTW.Quest.HideAtlasTWLootFrame()
 - AtlasTW.Quest.SetQuestText()
 - AtlasTW.Quest.SetStoryText()
 - AtlasTW.Quest.LoadFinishedQuests()
@@ -255,7 +255,7 @@ Loot (Loot/Core/Init.lua, Loot/LootUI.lua)
 - AtlasTW.LootBrowserUI.ScrollBarUpdate()
 - AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 - AtlasTW.LootBrowserUI.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon)
-- AtlasLoot_InitializeUI() and related AtlasLoot_* (UI creation, navigation, click/tooltip handlers)
+- AtlasTWLoot_InitializeUI() and related AtlasTWLoot_* (UI creation, navigation, click/tooltip handlers)
 
 ItemDB (Loot/Data/ItemDB.lua)
 - AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
@@ -269,7 +269,7 @@ ItemDB (Loot/Data/ItemDB.lua)
 - pfUI: respected by the QuestCompareTooltip logic.
 
 18) Positioning/scale/transparency
-- Scale and alpha are applied to AtlasFrame via OptionsUpdateScale/OptionsUpdateAlpha.
+- Scale and alpha are applied to AtlasTWFrame via OptionsUpdateScale/OptionsUpdateAlpha.
 - Window position resets via OptionResetPosition(); dragging works when unlocked (AtlasLocked=false).
 - Minimap button placement uses AtlasButtonPosition/AtlasButtonRadius; color/hover managed in MinimapButton*.
 

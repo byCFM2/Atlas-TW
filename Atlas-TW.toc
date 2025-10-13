@@ -7,11 +7,11 @@
 ## Notes-zhCN: 副本地图浏览器
 ## Notes-esES: Navegador de Mapas de Mazmorras
 ## Notes-ruRU: Обозреватель подземелий
-## Version: 1.33
+## Version: 1.34
 ## X-Date: October, 2025
 ## Author: CFM, Dan Gilbert, Daviesh, Otari98, pepopo, etc
 ## X-Category: MYADDONS_CATEGORY_MAP
-## X-OptionsFrame: AtlasOptionsFrame
+## X-OptionsFrame: AtlasTWOptionsFrame
 ## SavedVariables: AtlasTWOptions
 ## SavedVariablesPerCharacter: AtlasTWCharDB
 ## OptionalDeps: Titan, myAddOns, EarthFeatureFrame, Alphamap, AtlasLoader, LootLink, ItemSync, EquipCompare, EQCompare
@@ -28,6 +28,6 @@ Libs\Babble-Zone-2.2a\Babble-Zone-2.2a.lua
 Libs\Babble-Boss-2.2a\Babble-Boss-2.2a.lua
 Libs\Babble-Spell-2.2a\Babble-Spell-2.2a.lua
 
-AtlasInit.xml
-Loot\LootInit.xml
-Quest\QuestInit.xml
+AtlasTWInit.xml
+TWLoot\LootInit.xml
+TWQuest\QuestInit.xml

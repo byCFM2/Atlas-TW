@@ -44,7 +44,7 @@
 - Дополнительно: оверлей с координатами курсора на стандартной Карте мира (включается в настройках)
 
 5) Окно и элементы интерфейса
-- Главное окно: AtlasFrame
+- Главное окно: AtlasTWFrame
 - Выпадающие списки:
   - Тип карт (категория)
   - Список инстансов
@@ -64,7 +64,7 @@
 - Clamp window to screen — удерживать окно в пределах экрана
 - Transparency — прозрачность окна Atlas
 - Scale — масштаб окна Atlas
-- Show Loot Panel with Atlas — показывать нижнюю панель лута
+- Show Loot Panel with AtlasTW — показывать нижнюю панель лута
 - Quests — встраивать панель квестов в окно Atlas
 - Tooltip‑режимы (LootDefaultTT / LootlinkTT / LootItemSyncTT) — режимы подсказок предметов
 - Показ координат курсора на Карте мира — опция AtlasTWOptions.AtlasCursorCoords

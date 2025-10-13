@@ -59,15 +59,15 @@ AtlasOptions.lua (обработчики опций)
 - OnAllianceClick()/OnHordeClick(): переключение фракции для квестов.
 - CloseQuestFrame()/ToggleQuestFrame(): скрыть/переключить панель квестов.
 - OnEvent(): обработка событий модуля (инициализация, регистрация тултипов).
-- ClearAll()/HideAtlasLootFrame(): служебные; очистка/синхронизация с лут‑панелью.
+- ClearAll()/HideAtlasTWLootFrame(): служебные; очистка/синхронизация с лут‑панелью.
 - SetQuestText()/SetStoryText()/LoadFinishedQuests()/Update()/SetQuestButtons(): обновление текста/кнопок/состояния UI.
 
-5) Публичные функции лут‑модуля (AtlasTW.LootBrowserUI.* и ключевые AtlasLoot_*)
+5) Публичные функции лут‑модуля (AtlasTW.LootBrowserUI.* и ключевые AtlasTWLoot_*)
 - AtlasTW.LootBrowserUI.ScrollBarUpdate(): обновление состояния скроллбара меню.
 - AtlasTW.LootBrowserUI.ScrollBarLootUpdate(): обновить список предметов в контейнере (нижняя панель) при смене страницы/фильтра.
 - AtlasTW.LootBrowserUI.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon): подготовить меню (заголовок, элементы, иконка «назад»).
-- AtlasLoot_InitializeUI(): инициализация UI нижней панели лута (создание фреймов, кнопок, скролла).
-- В пространстве имен AtlasLoot_* расположены обработчики кликов, переключателей страниц, меню разделов (Dungeons, World, PvP, Factions, Crafting и пр.) и тултипы (Item_OnEnter/OnLeave/OnClick). Их можно вызывать напрямую для сборки/переключения меню при необходимости.
+- AtlasTWLoot_InitializeUI(): инициализация UI нижней панели лута (создание фреймов, кнопок, скролла).
+- В пространстве имен AtlasTWLoot_* расположены обработчики кликов, переключателей страниц, меню разделов (Dungeons, World, PvP, Factions, Crafting и пр.) и тултипы (Item_OnEnter/OnLeave/OnClick). Их можно вызывать напрямую для сборки/переключения меню при необходимости.
 
 6) ItemDB (работа с предметами)
 - AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext): разбор тултипа предмета для извлечения доп.информации (качество, источник).
@@ -76,7 +76,7 @@ AtlasOptions.lua (обработчики опций)
 
 7) Как вызывать (примеры для 1.12)
 - Toggle окна:
-  if AtlasFrame and AtlasFrame:IsShown() then AtlasTW.ToggleAtlas() else AtlasTW.ToggleAtlas() end
+  if AtlasTWFrame and AtlasTWFrame:IsShown() then AtlasTW.ToggleAtlas() else AtlasTW.ToggleAtlas() end
 - Принудительный рефреш после смены опций:
   AtlasTW.Refresh(); print("Atlas: обновлено")
 - Применить скейл/альфу при движении слайдера:
@@ -143,29 +143,29 @@ AtlasOptions.lua (обработчики опций)
   - Пер-сущность: ключи квестов/прогресса (см. Quest.* сохранения).
 
 12) Основные фреймы и элементы UI
-- Главное окно: AtlasFrame — базовый родитель большинства элементов Atlas.
-- Дропдауны: AtlasFrameDropDownType (категория), AtlasFrameDropDown (карта/инстанс).
-- Поле поиска: AtlasSearchEditBox.
-- Переключатели/кнопки: AtlasSwitchButton, кнопки опций/квестов.
-- Миникарта: AtlasButtonFrame (контейнер), AtlasMinimapButton (кнопка), логика — MinimapButton*.
+- Главное окно: AtlasTWFrame — базовый родитель большинства элементов Atlas.
+- Дропдауны: AtlasTWFrameDropDownType (категория), AtlasTWFrameDropDown (карта/инстанс).
+- Поле поиска: AtlasTWSearchEditBox.
+- Переключатели/кнопки: AtlasTWSwitchButton, кнопки опций/квестов.
+- Миникарта: AtlasTWButtonFrame (контейнер), AtlasTWMinimapButton (кнопка), логика — MinimapButton*.
 - Карта мира: оверлей координат курсора — виден только при открытой WorldMapFrame; учитывает AtlasTWOptions.AtlasCursorCoords.
-- Панель лута: AtlasLootItemsFrame (контейнер), AtlasLootScrollBar (скролл), AtlasLootItemsFrameContainer (динамическая сетка кнопок предметов).
-- Панель опций: AtlasOptionsFrame (+ AtlasOptionsFrameDropDownCats).
+- Панель лута: AtlasTWLootItemsFrame (контейнер), AtlasTWLootScrollBar (скролл), AtlasTWLootItemsFrameContainer (динамическая сетка кнопок предметов).
+- Панель опций: AtlasTWOptionsFrame (+ AtlasTWOptionsFrameDropDownCats).
 - Панель квестов: Quest.UI_Main.Frame (боковая), Quest.UI.InsideAtlasFrame (встроенная в Atlas).
 
 13) События и жизненный цикл
 - ADDON_LOADED: ранняя инициализация фреймов/ресурсов.
 - VARIABLES_LOADED: чтение/нормализация SavedVariables (некоторые фреймы подписаны).
 - PLAYER_ENTERING_WORLD: финальная инициализация, расстановка мини-кнопки и автопоказ панелей.
-- Примечание: обработчики OnShow/OnHide/OnEvent у AtlasFrame и подпанелей синхронизируют состояние лута/квестов.
+- Примечание: обработчики OnShow/OnHide/OnEvent у AtlasTWFrame и подпанелей синхронизируют состояние лута/квестов.
 
 14) Слэш-команды и бинды
 - /atlas — AtlasTW.SlashCommand: без аргументов — показать/скрыть окно; options/opt — открыть окно опций.
-- Клавиши: Bindings.xml содержит действия для навигации Atlas, завязанные на видимость AtlasFrame.
+- Клавиши: Bindings.xml содержит действия для навигации Atlas, завязанные на видимость AtlasTWFrame.
 
 15) Потоки данных (типичные сценарии)
 - Поиск:
-  1) Пользователь вводит текст в AtlasSearchEditBox → AtlasTW.Search(text).
+  1) Пользователь вводит текст в AtlasTWSearchEditBox → AtlasTW.Search(text).
   2) Модуль поиска формирует AtlasTWCharDB.SearchResult и LastSearchedText.
   3) Панель лута читает SearchResult и показывает результаты; ScrollBarLootUpdate обновляет контейнер.
 - Навигация по лут‑меню:
@@ -229,7 +229,7 @@ Options (AtlasOptions.lua)
 
 Quests (QuestMain.lua, QuestLogic.lua)
 - AtlasTW.Quest.ClearAll()
-- AtlasTW.Quest.HideAtlasLootFrame()
+- AtlasTW.Quest.HideAtlasTWLootFrame()
 - AtlasTW.Quest.SetQuestText()
 - AtlasTW.Quest.SetStoryText()
 - AtlasTW.Quest.LoadFinishedQuests()
@@ -255,7 +255,7 @@ Loot (Loot/Core/Init.lua, Loot/LootUI.lua)
 - AtlasTW.LootBrowserUI.ScrollBarUpdate()
 - AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 - AtlasTW.LootBrowserUI.PrepMenu(menuTitle, menuItems, prevMenuText, defIcon)
-- AtlasLoot_InitializeUI() и связанные AtlasLoot_* (создание UI, навигация, обработчики кликов/тултипов)
+- AtlasTWLoot_InitializeUI() и связанные AtlasTWLoot_* (создание UI, навигация, обработчики кликов/тултипов)
 
 ItemDB (Loot/Data/ItemDB.lua)
 - AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
@@ -269,7 +269,7 @@ ItemDB (Loot/Data/ItemDB.lua)
 - pfUI: учитывается в логике QuestCompareTooltip.
 
 18) Позиционирование/масштаб/прозрачность
-- Масштаб и альфа применяются к AtlasFrame через OptionsUpdateScale/OptionsUpdateAlpha.
+- Масштаб и альфа применяются к AtlasTWFrame через OptionsUpdateScale/OptionsUpdateAlpha.
 - Позиция окна сбрасывается OptionResetPosition(); перетаскивание работает при снятой блокировке (AtlasLocked=false).
 - Кнопка у миникарты позиционируется по AtlasButtonPosition/AtlasButtonRadius; покраска/hover управляются в MinimapButton*.
 
