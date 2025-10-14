@@ -139,7 +139,7 @@ AtlasTW.InstanceData.ZulFarrak = {
             id = "ZFSandfury",
             name = L["Sandfury Executioner"],
             loot = {
-                { id = 80747, dropRate = 20 }, -- Electrified Gloves
+                { id = 8444, dropRate = 20 }, -- Executioner's Key
             }
         },
         {
@@ -162,6 +162,13 @@ AtlasTW.InstanceData.ZulFarrak = {
             id = "ZFRuuzlu",
             name = L["Ruuzlu"],
             color = "|cff9d9d9d",
+        },
+        {
+            id = "ZFFlameOfFarrak",
+            name = L["Flame of Farrak"],
+            loot = {
+                { id = 41685, dropRate = 100 }, -- Flame of Farrak (for 8 boss vulnerable) --1.18
+            }
         },
         {
             id = "ZFElderWildmane",
@@ -192,10 +199,11 @@ AtlasTW.InstanceData.ZulFarrak = {
             }
         },
         {
-            id = "ZFZeljebTheAncient",
+            id = "ZFZeljebTheAncient", --1.18
             prefix = "8)",
             name = BB["Zel'jeb the Ancient"],
             defaults = { dropRate = 25 },
+            postfix = L["Flame of Farrak"],
             loot = {
                 { id = 58116 }, -- Bloodstained Fangblade
                 { id = 58117 }, -- Staff of the Bloodbound
@@ -205,20 +213,20 @@ AtlasTW.InstanceData.ZulFarrak = {
             }
         },
         {
-            name = BZ["Farraki Arena"],
+            name = BZ["Farraki Arena"], --1.18
             prefix = "9)",
             color = "|cff9d9d9d",
         },
         {
-            name = BB["Juthza the Cunning"],
+            name = BB["Juthza the Cunning"], --1.18
             color = "|cff9d9d9d",
         },
         {
-            name = BB["Kath'zen the Brutal"],
+            name = BB["Kath'zen the Brutal"], --1.18
             color = "|cff9d9d9d",
         },
         {
-            id = "ZFRazjalTheQuick",
+            id = "ZFRazjalTheQuick", --1.18
             name = BB["Champion Razjal the Quick"],
             defaults = { dropRate = 25 },
             loot = {

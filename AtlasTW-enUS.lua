@@ -788,6 +788,7 @@ AtlasTW.Local.Translations = {
 	["Maul'ogg Refuge"] = true,
 	["Gnomeregan Reclamation Facility"] = true,
 	--1.18
+	["Flame of Farrak"] = true,
 	["Steepcliff Port"] = true,
 	["Shatterblade Post"] = true,
 	["Dun Kithas"] = true,
