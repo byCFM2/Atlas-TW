@@ -786,7 +786,9 @@ AtlasTW.Local.Translations = {
 	["Sunnyglade Valley"] = true,
 	["Sparkwater Port"] = true,
 	["Maul'ogg Refuge"] = true,
+	["Gnomeregan Reclamation Facility"] = true,
 	--1.18
+	["Steepcliff Port"] = true,
 	["Shatterblade Post"] = true,
 	["Dun Kithas"] = true,
 	["Slickwick Oil Rig"] = true,

@@ -31,119 +31,119 @@ AtlasTW.InstanceData.TransportRoutes = {
             prefix = "1)",
             name = L["Rut'Theran Village"],
             postfix = BZ["Teldrassil"]..", "..L["Alliance"],
-            color = "|cff999999",
+            color = "|cff4169E1", --Королевский синий
         },
         {
             id = "TRAuberdine",
             prefix = "2)",
             name = BZ["Auberdine"],
             postfix = BZ["Darkshore"]..", "..L["Alliance"],
-            color = "|cff999999",
+            color = "|cff4169E1", --Королевский синий
         },
         {
             id = "TROrgrimmar",
             prefix = "3)",
             name = BZ["Orgrimmar"],
             postfix = BZ["The Barrens"]..", "..L["Horde"],
-            color = "|cff999999",
+            color = "|cffff0000", --Красный
         },
         {
             id = "TRSparkwaterPort",
             prefix = "4)",
             name = L["Sparkwater Port"],
             postfix = BZ["The Barrens"]..", "..L["Horde"],
-            color = "|cff999999",
+            color = "|cffff0000", --Красный
         },
         {
             id = "TRRatchet",
             prefix = "5)",
             name = BZ["Ratchet"],
             postfix = BZ["The Barrens"]..", "..L["Neutral"],
-            color = "|cff999999",
+            color = "|cffffff00", --Желтый
         },
         {
             id = "TRThunderBluff",
             prefix = "6)",
             name = BZ["Thunder Bluff"],
             postfix = BZ["Mulgore"]..", "..L["Horde"],
-            color = "|cff999999",
+            color = "|cffff0000", --Красный
         },
         {
             id = "TRFeathermoonStronghold",
             prefix = "7)",
             name = L["Feathermoon Stronghold"],
             postfix = BZ["Feralas"]..", "..L["Alliance"],
-            color = "|cff999999",
+            color = "|cff4169E1", --Королевский синий
         },
         {
             id = "TRTheramoreIsle",
             prefix = "8)",
             name = BZ["Theramore Isle"],
             postfix = BZ["Dustwallow Marsh"]..", "..L["Alliance"],
-            color = "|cff999999",
+            color = "|cff4169E1", --Королевский синий
         },
         {
             id = "TRAlahThalas",
             prefix = "9)",
             name = L["Alah'Thalas"],
             postfix = BZ["Thalassian Highlands"]..", "..L["Alliance"],
-            color = "|cff999999",
+            color = "|cff4169E1", --Королевский синий
         },
         {
             id = "TRUndercity",
             prefix = "10)",
             name = BZ["Undercity"],
             postfix = BZ["Tirisfal Glades"]..", "..L["Horde"],
-            color = "|cff999999",
+            color = "|cffff0000", --Красный
         },
         {
             id = "TRRevantuskVillage",
             prefix = "11)",
             name = L["Revantusk Village"],
             postfix = BZ["The Hinterlands"]..", "..L["Horde"],
-            color = "|cff999999",
+            color = "|cffff0000", --Красный
         },
         {
             id = "TRMenethilHarbor",
             prefix = "12)",
             name = BZ["Menethil Harbor"],
             postfix = BZ["Wetlands"]..", "..L["Alliance"],
-            color = "|cff999999",
+            color = "|cff4169E1", --Королевский синий
         },
         {
             id = "TRIronforge",
             prefix = "13)",
             name = BZ["Ironforge"],
             postfix = BZ["Dun Morogh"]..", "..L["Alliance"],
-            color = "|cff999999",
+            color = "|cff4169E1", --Королевский синий
         },
         {
             id = "TRKargath",
             prefix = "14)",
             name = L["Kargath"],
             postfix = BZ["Badlands"]..", "..L["Horde"],
-            color = "|cff999999",
+            color = "|cffff0000", --Красный
         },
         {
             id = "TRStormwindCity",
             prefix = "15)",
             name = BZ["Stormwind City"],
             postfix = BZ["Elwynn Forest"]..", "..L["Alliance"],
-            color = "|cff999999",
+            color = "|cff4169E1", --Королевский синий
         },
         {
             id = "TRGromgolBaseCamp",
             prefix = "16)",
             name = BZ["Grom'gol Base Camp"],
             postfix = BZ["Stranglethorn Vale"]..", "..L["Horde"],
-            color = "|cff999999",
+            color = "|cffff0000", --Красный
         },
         {
             id = "TRBootyBay",
             prefix = "17)",
             name = BZ["Booty Bay"],
             postfix = BZ["Stranglethorn Vale"]..", "..L["Neutral"],
-            color = "|cff999999",
+            color = "|cffffff00", --Желтый
         },
     },
 }

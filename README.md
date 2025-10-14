@@ -23,15 +23,15 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
   - Left-click — open Atlas‑TW
   - Middle-click — open Atlas‑TW options
   - Right-click + drag — move the button
-- The Atlas window can be dragged when unlocked (lock button on the frame)
-- Right-click on the Atlas window (if enabled) — close Atlas and open the World Map
+- The AtlasTW window can be dragged when unlocked (lock button on the frame)
+- Right-click on the AtlasTW window (if enabled) — close AtlasTW and open the World Map
 
 4) Key Features
 - Instance maps with drop-downs:
   - Top-left: category (map type) selection
   - Next to it: instance list
 - Auto-select map based on the current zone (Auto‑Select option)
-- Adjustable Scale and Transparency for the Atlas window
+- Adjustable Scale and Transparency for the AtlasTW window
 - Clamp window to the screen
 - Loot panel (bottom panel):
   - Sections: Dungeons & Raids, Collections, Factions, PvP Rewards, Crafting, World Events, Rare Mobs
@@ -70,8 +70,8 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
 - Show cursor coordinates on World Map — toggle AtlasTWOptions.AtlasCursorCoords
 
 7) Commands
-- /atlas — toggle Atlas‑TW window
-- /atlas options (or /atlas opt) — open options
+- /atlastw — toggle Atlas‑TW window
+- /atlastw options (or /atlastw opt) — open options
 
 8) First Run
 - On the first run, a setup prompt may be shown once
@@ -80,7 +80,7 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
 9) FAQ
 - The window is invisible
   - Check Scale/Transparency in options
-  - Type /atlas
+  - Type /atlastw
 - Minimap button is missing
   - Enable “Show Button on Minimap” in options
 - Right‑click opens the World Map
@@ -95,7 +95,7 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
 - Hide the loot panel temporarily to save space inside the Atlas window
 
 11) Localization
-- Strings are stored in locale files (e.g., Atlas‑enUS.lua). To translate, add or update the corresponding locale file
+- Strings are stored in locale files (e.g., AtlasTW-enUS.lua, QuestData_enUS.lua). To translate, add or update the corresponding locale file
 
 Feedback
 - Report bugs and requests: which maps/quests/rewards are incorrect, your client language, and client version

@@ -31,9 +31,9 @@ AtlasTW.InstanceData.EmeraldSanctum = {
     Attunement = true,
     MaxPlayers = 40,
     DamageType = L["Nature"],
-    --[[Entrances = {
+    Entrances = {
         { letter = "A"..")", info = L["Entrance"] },
-    }, ]]
+    },
     Bosses = {
         {
             id = "Erennius",
@@ -116,7 +116,7 @@ AtlasTW.InstanceData.EmeraldSanctum = {
         },
         {
             id = "HardMode",
-            prefix = "3)",
+            prefix = "   ",
             name = L["Favor of Erennius (ES Hard Mode)"],
             defaults = { dropRate = 17 },
             loot = {
