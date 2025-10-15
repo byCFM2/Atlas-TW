@@ -281,4 +281,56 @@ ItemDB (Loot/Data/ItemDB.lua)
 - Add a QuickLook for current category (rough sketch):
   -- check AtlasTWCharDB.QuickLooks; save {dataID, storedMenu, titleText}; call ScrollBarUpdate.
 
-Reminder for 1.12: SetWidth/SetHeight instead of SetSize, SetScript according to local/global functions, avoid #/string.match/gmatch; debug via print().
+## Version Broadcast & Update Marker
+
+- Module files: `AtlasTWVersion.lua` (version logic), `AtlasTW.lua` (frame and refresh hook), `AtlasTWUI.lua` (UI elements).
+- Abbrev: `VC.abbrev = "ATW"`.
+- Channel: `VC.channelName = "LFT"`.
+- Message format: `ATW:<number>:v` where `<number> = major*1000 + minor` (e.g., `1.35` → `1035`).
+- Parser: `([^:]+):([^:]+):([^:]+)`; own messages ignored (`sender ~= UnitName("player")`).
+
+### Join / Publish Scheduling
+
+- On `PLAYER_ENTERING_WORLD`, the module schedules a join via `VC.joinAt = GetTime() + 5` and resets publish timing.
+- `VC.OnUpdate(self, elapsed)` ticks each second (`VC.updateTick = 1.0`) to:
+  - Attempt joining `LFT` at/after `VC.joinAt`.
+  - Publish local version periodically via `VC.publishVersion()` when the delay elapses.
+
+### UI Marker Logic
+
+- UI element: `AtlasTWUpdateMarker` defined in `AtlasTWUI.lua` (red `Update!` next to the version text).
+- Visibility controller: `AtlasTW.UpdateMarkerRefresh()` in `AtlasTW.lua`:
+  - Shows marker if `VC.updateAvailable` is true or if a known remote version is strictly greater than local (`VC.remoteVersion > VC.localVersion`).
+  - Hides marker otherwise.
+- The refresh is invoked:
+  - From `AtlasTW.OnShow()` whenever the main frame is shown.
+  - From `AtlasTWVersion.lua` after processing incoming versions when the function is available.
+
+### Flags & Helpers
+
+- `VC.remoteVersionSeen` is set when a valid remote version is parsed.
+- `VC.updateAvailable` is set when a remote version exceeds local.
+- `VC.getLocalVersionString()` reads the addon's `.toc` version string.
+- `VC.getVersionNumber()` converts version to `major*1000 + minor`.
+
+### Test Macros
+
+- Simulate an incoming channel message:
+  - `/run event="CHAT_MSG_CHANNEL"; arg1="ATW:1036:v"; arg2="OtherPlayer"; arg4="6. LFT"; AtlasTWVersionFrame:GetScript("OnEvent")()`
+- Print local version:
+  - `/run local VC=AtlasTW.VersionCheck; DEFAULT_CHAT_FRAME:AddMessage("Version: "..(VC.getLocalVersionString() or "?"))`
+- Force publish:
+  - `/run local VC=AtlasTW.VersionCheck; VC.resetPublishDelay(); VC.publishVersion()`
+
+### Slash Commands
+
+- `/atlastw` — toggle Atlas‑TW window; `options`/`opt` opens options.
+- `/atlastw ver` — print local Atlas‑TW version to chat.
+- `/atlastw ver check` — immediately publish your version to `LFT` and print confirmation.
+
+Implementation:
+- Registration in `AtlasTWUI.lua`:
+  - `SLASH_ATLASTW1 = "/atlastw"`
+  - `SlashCmdList["ATLASTW"] = AtlasTW.SlashCommand`
+- Handler in `AtlasTWUILogic.lua`:
+  - `AtlasTW.SlashCommand(msg)` routes `options|opt|ver|ver check`; default action toggles the main window.

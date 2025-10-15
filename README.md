@@ -72,6 +72,8 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
 7) Commands
 - /atlastw — toggle Atlas‑TW window
 - /atlastw options (or /atlastw opt) — open options
+- /atlastw ver — print your local Atlas‑TW version to chat
+- /atlastw ver check — immediately publish your version to LFT and print confirmation
 
 8) First Run
 - On the first run, a setup prompt may be shown once

@@ -7,7 +7,7 @@
 ## Notes-zhCN: 副本地图浏览器
 ## Notes-esES: Navegador de Mapas de Mazmorras
 ## Notes-ruRU: Обозреватель подземелий
-## Version: 1.34
+## Version: 1.35
 ## X-Date: October, 2025
 ## Author: CFM, Otari98, Dan Gilbert, Daviesh, pepopo, etc
 ## X-Category: MYADDONS_CATEGORY_MAP

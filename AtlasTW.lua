@@ -752,17 +752,17 @@ end
 --- @usage Called automatically when Atlas frame is shown
 ---
 function AtlasTW.OnShow()
-	setupPfUITooltip()
-	if(AtlasTWOptions.AtlasAutoSelect) then
-		atlasAutoSelect()
-	end
+    setupPfUITooltip()
+    if(AtlasTWOptions.AtlasAutoSelect) then
+        atlasAutoSelect()
+    end
 
-	AtlasTW.FrameDropDownTypeOnShow()
-	AtlasTW.FrameDropDownOnShow()
-	AtlasTW.Refresh()
+    AtlasTW.FrameDropDownTypeOnShow()
+    AtlasTW.FrameDropDownOnShow()
+    AtlasTW.Refresh()
 
-	--If a boss has been selected, show the loot frame
-	if AtlasTWLootItemsFrame.activeElement then
-		AtlasTWLootItemsFrame:Show()
-	end
+    --If a boss has been selected, show the loot frame
+    if AtlasTWLootItemsFrame.activeElement then
+        AtlasTWLootItemsFrame:Show()
+    end
 end

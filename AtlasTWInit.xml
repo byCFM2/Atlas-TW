@@ -9,4 +9,5 @@
 	<Include file="AtlasTWUI.lua"/>
 	<Include file="AtlasTWOptionsUI.lua"/>
 	<Include file="AtlasTWOptions.lua"/>
+	<Include file="AtlasTWVersion.lua"/>
 </Ui>

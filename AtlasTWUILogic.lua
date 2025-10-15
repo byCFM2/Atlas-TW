@@ -154,6 +154,16 @@ function AtlasTW.ToggleAtlas()
 	end
 end
 
+---
+--- Shows the update marker on the main frame based on version state
+--- @return nil
+---
+function AtlasTW.UpdateMarkerRefresh()
+    local marker = _G["AtlasTWUpdateMarker"]
+    if not marker then return end
+	AtlasTWUpdateMarker:Show()
+end
+
 --Parses slash commands
 --If an unrecognized command is given, toggle Atlas
 ---
@@ -163,9 +173,16 @@ end
 --- @return nil
 --- @usage AtlasTW.SlashCommand("toggle") -- Process slash command
 ---
+---
 function AtlasTW.SlashCommand(msg)
+  	msg = string.lower(msg or '')
 	if msg == "options" or msg == "opt" then
 		AtlasTW.OptionsOnClick()
+	elseif msg == 'ver check' then
+		AtlasTW.VersionCheck.publishVersion()
+		print(format(L["Version check sent to %s"], AtlasTW.VersionCheck.channelName))
+	elseif msg == 'ver' then
+    	print(format(L["Version: %s"], AtlasTW.VersionCheck.getLocalVersionString()))
 	else
 		AtlasTW.ToggleAtlas()
 	end

@@ -281,4 +281,56 @@ ItemDB (Loot/Data/ItemDB.lua)
 - Добавить быстрый просмотр (QuickLooks) текущей категории (примерно):
   -- проверьте AtlasTWCharDB.QuickLooks; сохраните {dataID, storedMenu, titleText}; вызовите ScrollBarUpdate.
 
-Напоминание по 1.12: SetWidth/SetHeight вместо SetSize, SetScript в соответствии с локальными/глобальными функциями, не используйте #, string.match/gmatch; отладка через print().
+## Рассылка версии и индикатор обновления
+
+- Модули: `AtlasTWVersion.lua` (логика версий), `AtlasTW.lua` (фрейм и хук обновления), `AtlasTWUI.lua` (UI-элементы).
+- Префикс: `VC.abbrev = "ATW"`.
+- Канал: `VC.channelName = "LFT"`.
+- Формат сообщения: `ATW:<number>:v`, где `<number> = major*1000 + minor` (например, `1.35` → `1035`).
+- Парсер: `([^:]+):([^:]+):([^:]+)`; собственные сообщения игнорируются (`sender ~= UnitName("player")`).
+
+### Планирование присоединения/публикации
+
+- На событие `PLAYER_ENTERING_WORLD` модуль планирует присоединение через `VC.joinAt = GetTime() + 5` и сбрасывает тайминги публикации.
+- `VC.OnUpdate(self, elapsed)` тикает раз в секунду (`VC.updateTick = 1.0`) и:
+  - Пытается присоединиться к `LFT` в момент/после `VC.joinAt`.
+  - Периодически публикует локальную версию через `VC.publishVersion()` по истечении задержки.
+
+### Логика UI-индикатора
+
+- UI-элемент: `AtlasTWUpdateMarker` определён в `AtlasTWUI.lua` (красный `Update!` рядом с текстом версии).
+- Контроллер видимости: `AtlasTW.UpdateMarkerRefresh()` в `AtlasTW.lua`:
+  - Показывает индикатор, если `VC.updateAvailable` истинно или если известная удалённая версия строго больше локальной (`VC.remoteVersion > VC.localVersion`).
+  - Скрывает индикатор иначе.
+- Обновление вызывается:
+  - Из `AtlasTW.OnShow()` при каждом показе основного фрейма.
+  - Из `AtlasTWVersion.lua` после обработки входящих версий, если функция доступна.
+
+### Флаги и помощники
+
+- `VC.remoteVersionSeen` устанавливается при разборе корректной удалённой версии.
+- `VC.updateAvailable` устанавливается, когда удалённая версия превышает локальную.
+- `VC.getLocalVersionString()` читает строку версии из файла `.toc` аддона.
+- `VC.getVersionNumber()` конвертирует версию в `major*1000 + minor`.
+
+### Тестовые макросы
+
+- Сымитировать входящее сообщение канала:
+  - `/run event="CHAT_MSG_CHANNEL"; arg1="ATW:1035:v"; arg2="OtherPlayer"; arg4="3. LFT"; AtlasTWVersionFrame:GetScript("OnEvent")()`
+- Напечатать локальную версию:
+  - `/run local VC=AtlasTW.VersionCheck; DEFAULT_CHAT_FRAME:AddMessage("Version: "..(VC.getLocalVersionString() or "?"))`
+- Принудительно опубликовать версию:
+  - `/run local VC=AtlasTW.VersionCheck; VC.resetPublishDelay(); VC.publishVersion()`
+
+### Слэш-команды
+
+- `/atlastw` — переключить окно Atlas‑TW; `options`/`opt` открывает настройки.
+- `/atlastw ver` — вывести локальную версию Atlas‑TW в чат.
+- `/atlastw ver check` — немедленно опубликовать вашу версию в канале `LFT` и вывести подтверждение.
+
+Реализация:
+- Регистрация в `AtlasTWUI.lua`:
+  - `SLASH_ATLASTW1 = "/atlastw"`
+  - `SlashCmdList["ATLASTW"] = AtlasTW.SlashCommand`
+- Обработчик в `AtlasTWUILogic.lua`:
+  - `AtlasTW.SlashCommand(msg)` распознаёт `options|opt|ver|ver check`; действие по умолчанию — переключить главное окно.

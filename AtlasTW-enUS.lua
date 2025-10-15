@@ -809,6 +809,12 @@ AtlasTW.Local.Translations = {
 	["Various Locations"] = true,
 	["NoticeText"] = "|cff9D2C2CIf you find anything missing, please report it at:|r",
 	["NoticeLink"]= "|cff9D2C2Chttps://github.com/byCFM2/Atlas-TW/issues/|r",
+	["Link"]= "|cff9D2C2Chttps://github.com/byCFM2/Atlas-TW/|r",
+	-- Version check / update messages
+	["|cffff2020Update available|r"] = true,
+	["Version: %s"] = true,
+	["Version check sent to %s"] = true,
+	["NewVersionAvailableFmt"] = "Atlas-TW: |cffff0000New version available!|r |cff00ff00Download here:|r %s",
 	[" is safe."] = true,
 	["Server queried for "] = true,
 	[". Right click on any other item to refresh the loot page."] = true,

@@ -690,7 +690,7 @@ kQuestInstanceData.Uldaman.Alliance[16] = {
     Prequest = "The Exorcism",
     Folgequest = "Mana Surges",
 }
-kQuestInstanceData.Uldaman.Alliance[17] = {
+kQuestInstanceData.Uldaman.Alliance[17] = { --1.18 TODO check NPC and quest available
     Title = "Stealing a Core",
     Level = 45,
     Attain = 45,
