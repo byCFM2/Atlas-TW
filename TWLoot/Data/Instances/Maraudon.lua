@@ -152,6 +152,7 @@ AtlasTW.InstanceData.Maraudon = {
             id = "MARAMeshloktheHarvester",
             prefix = "6)",
             name = BB["Meshlok the Harvester"],
+            postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 17767 }, -- Bloomsprout Headpiece

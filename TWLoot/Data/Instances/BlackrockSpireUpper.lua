@@ -57,6 +57,8 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 23320, disc = L["Book"], dropRate = 8 }, -- Tablet of Flame Shock VI
+                { id = 17322, dropRate = 100, container = { 18398, 18399 } }, -- Eye of the Emberseer
+                { id = 21988, dropRate = 100, container = { 22057 } }, -- Ember of the Emberseer
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
@@ -107,6 +109,8 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {},
                 { id = 12930 }, -- Briarwood Reed
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 22138, dropRate = 80, container = { 22057 } }, -- Blackrock Bracer
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 12605 }, -- Serpentine Skuller
             }
@@ -130,6 +134,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 18779, dropRate = 15 }, -- Bottom Half of Advanced Armorsmithing: Volume I
                 { id = 12727, container = { 12618 } }, -- Plans: Enchanted Thorium Breastplate
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { name = L["Small Rocket Recipes"] },
                 { id = 12806, dropRate = 100 }, -- Unforged Rune Covered Breastplate
@@ -159,7 +164,11 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {},
                 { id = 16733, disc = L["Warrior"]..", ".."T0" }, -- Spaulders of Valor
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 12630, dropRate = 100, container = { 13966, 13965, 13968 } }, -- Head of Rend Blackhand
+                { id = 22138, dropRate = 80, container = { 22057 } }, -- Blackrock Bracer
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
@@ -179,6 +188,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 12871, disc = L["Quest Item"], dropRate = 4 }, -- Chromatic Carapace
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
@@ -210,7 +220,8 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 24101, disc = L["Book"], dropRate = 13 }, -- Book of Ferocious Bite VI
                 { id = 19227, disc = L["Darkmoon Faire Card"], dropRate = 5, container = { 19288 } }, -- Ace of Beasts
                 { id = 12731, disc = L["Misc"], dropRate = 2 }, -- Pristine Hide of the Beast
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
@@ -261,8 +272,8 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
                 { id = 15730, dropRate = 4, container = { 15047 } }, -- Pattern: Red Dragonscale Breastplate
-                {},
                 { id = 13519, dropRate = 3, container = { 13510 } }, -- Recipe: Flask of the Titans
+                {},
                 { id = 16690, disc = L["Priest"]..", ".."T0" }, -- Devout Robe
                 { id = 16688, disc = L["Mage"]..", ".."T0" }, -- Magister's Robes
                 { id = 16700, disc = L["Warlock"]..", ".."T0" }, -- Dreadmist Robe
@@ -273,7 +284,11 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 16726, disc = L["Paladin"]..", ".."T0" }, -- Lightforge Breastplate
                 { id = 16730, disc = L["Warrior"]..", ".."T0" }, -- Breastplate of Valor
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 3 }, -- Ancient Warfare Text
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 16663, dropRate = 100, container = { 16309 } }, -- Blood of the Black Dragon Champion
+                { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
+                { id = 61464, dropRate = 100, container = { 61465 } }, -- Dragonblood Heart
                 { id = 51217, disc = L["Transmogrification"], quantity = 3, dropRate = 100 }, -- Fashion Coin
             }
         },

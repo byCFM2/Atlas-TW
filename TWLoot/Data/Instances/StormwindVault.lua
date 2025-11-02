@@ -48,7 +48,7 @@ AtlasTW.InstanceData.StormwindVault = {
                 { id = 60431 }, -- Almanac of Savagery
                 { id = 60418 }, -- Sealbreaker Staff
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
             }
@@ -67,7 +67,7 @@ AtlasTW.InstanceData.StormwindVault = {
                 { id = 60416 }, -- Skull of Grarr
                 { id = 60417 }, -- Skull of Tham
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
             }
@@ -85,7 +85,7 @@ AtlasTW.InstanceData.StormwindVault = {
                 {},
                 { id = 60410 }, -- Willbreaker
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
             }
@@ -105,9 +105,9 @@ AtlasTW.InstanceData.StormwindVault = {
                 { id = 60427 }, -- Skullrattler
                 { id = 60422, dropRate = 1 }, -- The Ripper
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 41463, dropRate = 100 }, -- Pouch of Surgical Daggers
+                { id = 41463, dropRate = 100, container = { 70236 } }, -- Pouch of Surgical Daggers
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
             }
         },
@@ -125,7 +125,7 @@ AtlasTW.InstanceData.StormwindVault = {
                 {},
                 { id = 60413 }, -- The Cruel Blade
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
             }
@@ -148,11 +148,10 @@ AtlasTW.InstanceData.StormwindVault = {
                 {},
                 { id = 83570, dropRate = 15 }, -- Technique: Die by the Sword
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 80 }, -- Fashion Coin
+                { id = 41406, dropRate = 100, container = { 55133, 55134, 55135 } }, -- Core of Arc'Tiras
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
-                { id = 41406, dropRate = 100, container = { 55133, 55134, 55135 } } -- Core of Arc'Tiras
-
+                { id = 51217, disc = L["Transmogrification"], dropRate = 80 }, -- Fashion Coin
             }
         },
         {

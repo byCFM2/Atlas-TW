@@ -184,8 +184,9 @@ AtlasTW.InstanceData.DireMaulEast = {
                 { id = 83574, disc = L["Book"] }, -- Book of Wrath IX
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
                         70234, 70235, 70236, 70238 } },
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
+                { id = 61702, dropRate = 100, container = { 61199, 61703 } }, -- Head of Alzzin the Wildshaper
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
                 {},
                 unpack(ShareLoot),
@@ -310,7 +311,7 @@ AtlasTW.InstanceData.DireMaulWest = {
                 { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 41457, dropRate = 100 }, -- Bow of Oaks
+                { id = 41457, dropRate = 100, container = { 70234 } }, -- Bow of Oaks
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 {},
                 unpack(ShareLoot),
@@ -383,7 +384,7 @@ AtlasTW.InstanceData.DireMaulWest = {
                 { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
                 { id = 61232, dropRate = 100, container = { 61234 } }, -- Arcanized Gems
                 { id = 60332, dropRate = 100, container = { 60333, 60334 } }, -- Pure Ley Essence
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
@@ -417,10 +418,7 @@ AtlasTW.InstanceData.DireMaulWest = {
                 { id = 18392 }, -- Distracting Dagger
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 3 }, -- Ancient Warfare Text
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
-                { id = 61232, dropRate = 100, container = { 61234 } }, -- Arcanized Gems
-                { id = 60332, dropRate = 100, container = { 60333, 60334 } }, -- Pure Ley Essence
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 61461, dropRate = 100, container = { 61465 } }, -- Arcane Focus
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
             }
@@ -546,7 +544,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
                 { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 21982, dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
+                { id = 21982, quantity = { 2, 3 }, dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
@@ -703,7 +701,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
                 { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
                 { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 21982, dropRate = 50, quantity = { 2, 3 }, container = { 22149, 22150 } }, -- Ogre Warbeads
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
                 {},
@@ -724,7 +722,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
                 { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
                 { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
                 { id = 21982, dropRate = 50, quantity = { 2, 3 }, container = { 22149, 22150 } }, -- Ogre Warbeads
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 {},
                 unpack(ShareLoot)

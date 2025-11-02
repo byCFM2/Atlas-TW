@@ -119,7 +119,9 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 { id = 13523, disc = L["Used to summon boss"], dropRate = 100 }, -- Blood of Innocents
                 {},
+                { id = 13725, dropRate = 100, container = { 15805, 15806, 13544 } }, -- Krastinov's Bag of Horrors
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
@@ -157,6 +159,7 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 12726, container = { 12619 }, dropRate = 0 }, -- Plans: Enchanted Thorium Leggings
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 13873, disc = L["Key"], dropRate = 100 }, -- Viewing Room Key
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
@@ -173,6 +176,9 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 18761 }, -- Oblivion's Touch
                 { id = 18758 }, -- Specter's Blade
                 { id = 18759 }, -- Malicious Axe
+                {},
+                { id = 18749, dropRate = 100 }, -- Charger's Lost Soul
+                { id = 18880, dropRate = 100, container = { 20134, 18807 } }, -- Darkreaver's Head
             }
         },
         {
@@ -185,7 +191,9 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 { id = 14576 }, -- Ebon Hilt of Marduk
                 {},
+                { id = 41459, dropRate = 100, container = { 70228 } }, -- Mournblade
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
@@ -198,6 +206,7 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 14577 }, -- Skullsmoke Pants
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
@@ -224,7 +233,9 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 { id = 13521, dropRate = 3, container = { 13512 } }, -- Recipe: Flask of Supreme Power
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 13626, dropRate = 100, container = { 13982, 13986, 13984, 14002 } }, -- Human Head of Ras Frostwhisper
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
@@ -242,6 +253,10 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 22332 }, -- Blade of Necromancy
                 {},
                 { id = 22333 }, -- Hammer of Divine Might
+                {},
+                { id = 21984, dropRate = 100, container = { 22048, 22057 } }, -- Left Piece of Lord Valthalak's Amulet
+                { id = 22046, dropRate = 100, container = { 22048, 22057 } }, -- Right Piece of Lord Valthalak's Amulet
+                { id = 22335 }, -- Specter's Blade
             }
         },
         {
@@ -251,6 +266,8 @@ AtlasTW.InstanceData.Scholomance = {
             loot = {
                 { id = 16710, disc = L["Rogue"]..", T0", container = { 22004 }, dropRate = 4 }, -- Shadowcraft Bracers
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41386, disc = L["Quest Item"], dropRate = 100, container = { 70211 } }, -- Rune of Ferh
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 {},
                 unpack(scholoShareLoot),
@@ -264,6 +281,7 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 16684, disc = L["Mage"]..", T0", container = { 22066 }, dropRate = 14 }, -- Magister's Gloves
                 { id = 14617, disc = L["Shirt"], dropRate = 2 }, -- Sawbones Shirt
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 unpack(scholoShareLoot),
             }
@@ -275,6 +293,7 @@ AtlasTW.InstanceData.Scholomance = {
             loot = {
                 { id = 16705, disc = L["Warlock"]..", T0", container = { 22077 }, dropRate = 17 }, -- Dreadmist Wraps
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 {},
                 unpack(scholoShareLoot),
@@ -287,6 +306,7 @@ AtlasTW.InstanceData.Scholomance = {
             loot = {
                 { id = 16716, disc = L["Druid"]..", T0", container = { 22106 }, dropRate = 17 }, -- Wildheart Belt
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 {},
                 unpack(scholoShareLoot),
@@ -300,6 +320,7 @@ AtlasTW.InstanceData.Scholomance = {
             loot = {
                 { id = 16722, disc = L["Paladin"]..", T0", container = { 22088 }, dropRate = 5 }, -- Lightforge Bracers
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 {},
                 unpack(scholoShareLoot),
@@ -313,6 +334,7 @@ AtlasTW.InstanceData.Scholomance = {
             defaults = { dropRate = 4 },
             loot = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 {},
                 {},
@@ -346,14 +368,16 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 { id = 13937, dropRate = 1 }, -- Headmaster's Charge
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 19276, disc = L["Darkmoon Faire Card"], dropRate = 3, container = { 19290 } }, -- Ace of Portals
-                {},
                 { id = 13501, dropRate = 10, container = { 13444 } }, -- Recipe: Major Mana Potion
                 { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
                 { id = 14514, dropRate = 7, container = { 14513 } }, -- Pattern: Robe of the Void
                 {},
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
+                { id = 61460, dropRate = 100, container = { 61465 } }, -- Necromantic Potion
+                { id = 70226, disc = L["Quest Item"], dropRate = 3 }, -- Ancient Warfare Text
+                { id = 19276, disc = L["Darkmoon Faire Card"], dropRate = 3, container = { 19290 } }, -- Ace of Portals
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
             }
         },

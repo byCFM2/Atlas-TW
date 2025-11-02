@@ -59,7 +59,7 @@ function AtlasTW.Quest.ClearAll()
         AtlasTW.Quest.UI.QuestItems[b].Icon:SetTexture()
         AtlasTW.Quest.UI.QuestItems[b].Name:SetText()
         AtlasTW.Quest.UI.QuestItems[b].Extra:SetText()
-        AtlasTW.Quest.UI.QuestItems[b].Frame:Disable()
+        AtlasTW.Quest.UI.QuestItems[b].Frame:Hide()
 	end
 end
 
@@ -93,7 +93,7 @@ end
 local function kQQuestExists(instance, questId, faction)
     -- Default to current instance and faction if not provided
     instance = instance or AtlasTW.QCurrentInstance
-    faction = faction or (AtlasTW.isHorde and "Horde" or "Alliance")
+    faction = faction or AtlasTW.Faction
 
     -- Check if quest exists in the new format
     return AtlasTW.Quest.DataBase and
@@ -123,7 +123,7 @@ local function kQCompareQuestLogtoQuest(questId)
         return false
     end
 
-    local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+    local faction = AtlasTW.Faction
     local questData = instanceData[faction] and instanceData[faction][targetQuest]
 
     if questData and not questData.Title then
@@ -194,7 +194,7 @@ end
 ---
 local function kQuestExtendedPages()
     -- Determine current faction
-    local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+    local faction = AtlasTW.Faction
     local questId = AtlasTW.QCurrentQuest
     local instance = AtlasTW.QCurrentInstance
 
@@ -225,13 +225,13 @@ end
 ---
 --- Retrieves and formats item information for quest rewards
 --- @param count number - Index of the item in the quest rewards list
---- @return string - Formatted item name or description text
+--- @return string, string, string - Formatted item name, texture, description text
 --- @usage Called when displaying quest reward items
 ---
 local function kQuestGetItemInf(count)
     -- Local AtlasTW
     local instance = AtlasTW.QCurrentInstance
-    local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+    local faction = AtlasTW.Faction
 
     -- Validate input parameters
     if not count or count < 1 then
@@ -278,6 +278,36 @@ local function kQuestGetItemInf(count)
     end
 end
 
+---
+--- Populates the quest reward items frame with icons, names and tooltips
+--- Retrieves reward data for the current quest and updates up to 6 item slots
+--- @return nil
+--- @usage Called from AtlasTW.Quest.SetQuestText when rewards are present
+---
+local function setQuestItemsFrame()
+    local instanceData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance]
+    if not instanceData then return end
+    local faction = AtlasTW.Faction
+    local questData = instanceData[faction] and instanceData[faction][AtlasTW.QCurrentQuest]
+    -- Local AtlasTW for item information
+    local itemName, itemTexture, itemDiscription
+        -- Process each potential quest reward item (up to 6)
+    for itemIndex = 1, AtlasTW.QMAXQUESTITEMS do
+        if questData.Rewards[itemIndex] then
+            --Get item information
+            itemName, itemTexture, itemDiscription = kQuestGetItemInf(itemIndex)
+            -- Set item texture
+            AtlasTW.Quest.UI.QuestItems[itemIndex].Icon:SetTexture(itemTexture)
+            -- Set item name and description
+            AtlasTW.Quest.UI.QuestItems[itemIndex].Name:SetText(itemName)
+            AtlasTW.Quest.UI.QuestItems[itemIndex].Extra:SetText(itemDiscription)
+            AtlasTW.Quest.UI.QuestItems[itemIndex].Frame:Show()
+        else
+            -- hide item slot if no data
+            AtlasTW.Quest.UI.QuestItems[itemIndex].Frame:Hide()
+        end
+    end
+end
 -----------------------------------------------------------------------------
 -- set the Quest text
 -- executed when you push a button
@@ -289,8 +319,6 @@ end
 --- @usage Called when displaying quest information
 ---
 function AtlasTW.Quest.SetQuestText()
-    -- Local AtlasTW for item information
-    local itemId, itemName, itemColor, itemTexture, itemDiscription
     -- Clear all previous quest information
     AtlasTW.Quest.ClearAll()
     -- Show the finished quest checkbox
@@ -299,11 +327,9 @@ function AtlasTW.Quest.SetQuestText()
 
     -- Get quest data from new structure
     local instanceData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance]
-    if not instanceData then
-        return
-    end
+    if not instanceData then return end
 
-    local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+    local faction = AtlasTW.Faction
     local questData = instanceData[faction] and instanceData[faction][AtlasTW.QCurrentQuest]
 
     if questData then
@@ -329,46 +355,19 @@ function AtlasTW.Quest.SetQuestText()
         -- Set reward text from structure if available
         local rewards = questData.Rewards and questData.Rewards.Text
         if rewards then
-            -- Process each potential quest reward item (up to 6)
-            for itemIndex = 1, AtlasTW.QMAXQUESTITEMS do
-                if questData.Rewards[itemIndex] then
-                    itemId = questData.Rewards[itemIndex].id or ""
-                    -- Handle auto-query functionality if enabled
-                    if AtlasTWOptions.QuestAutoQuery then
-                        -- Query server for item data if not in cache
-                        if not GetItemInfo(itemId) then
-                            GameTooltip:SetHyperlink("item:"..itemId..":0:0:0")
-                            if not AtlasTWOptions.QuestQuerySpam then
-                                print(L["AtlasTWQuest is querying the server for: "]..
-                                "["..white..L["Item not found in cache"]..white.."]"..L[" Try moving the cursor over the item in a second."])
-                            end
-                        end
-                    end
-                    --Get item information
-                    itemName, itemTexture, itemDiscription = kQuestGetItemInf(itemIndex)
-                    -- Set item texture
-                    AtlasTW.Quest.UI.QuestItems[itemIndex].Icon:SetTexture(itemTexture)
-                    -- Set item name and description
-                    AtlasTW.Quest.UI.QuestItems[itemIndex].Name:SetText(itemName)
-                    AtlasTW.Quest.UI.QuestItems[itemIndex].Extra:SetText(itemDiscription)
-                    -- Enable the item button
-                    AtlasTW.Quest.UI.QuestItems[itemIndex].Frame:Enable()
-                else
-                    -- Clear and disable item slot if no data
-                    AtlasTW.Quest.UI.QuestItems[itemIndex].Icon:SetTexture()
-                    AtlasTW.Quest.UI.QuestItems[itemIndex].Name:SetText()
-                    AtlasTW.Quest.UI.QuestItems[itemIndex].Extra:SetText()
-                    AtlasTW.Quest.UI.QuestItems[itemIndex].Frame:Disable()
-                end
+            -- Cache entire page before updating
+            if AtlasTWOptions.QuestAutoQuery then
+                AtlasTW.LootCache.CacheAllItems(questData.Rewards, function()
+                    setQuestItemsFrame()
+                end)
+            else
+                setQuestItemsFrame()
             end
         else
             rewards = blue..L["No Rewards"]
-            -- Disable items frame if no rewards are available
+            -- hide items frame if no rewards are available
             for itemIndex = 1, AtlasTW.QMAXQUESTITEMS do
-                AtlasTW.Quest.UI.QuestItems[itemIndex].Icon:SetTexture()
-                AtlasTW.Quest.UI.QuestItems[itemIndex].Name:SetText()
-                AtlasTW.Quest.UI.QuestItems[itemIndex].Extra:SetText()
-                AtlasTW.Quest.UI.QuestItems[itemIndex].Frame:Disable()
+                AtlasTW.Quest.UI.QuestItems[itemIndex].Frame:Hide()
             end
         end
         AtlasTW.Quest.UI.Rewards:SetText(rewards)
@@ -490,7 +489,7 @@ end
 ---
 function AtlasTW.Quest.SetQuestButtons()
 	local instance = AtlasTW.QCurrentInstance
-	local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+	local faction = AtlasTW.Faction
 	local questName
 	local playerLevel = UnitLevel("player")
 	-- Hide inner frame if instance changed
@@ -504,14 +503,14 @@ function AtlasTW.Quest.SetQuestButtons()
         and getn(AtlasTW.Quest.DataBase[instance][faction])
     if questCount then
         if questCount == 1 then
-            questCount = "1 Quest"
+            questCount = "1 " .. L["Quest"]
         elseif questCount == 0 then
             questCount = nil
         else
-            questCount = questCount .. " Quests"
+            questCount = questCount .. " " .. L["Quests"]
         end
     end
-	AtlasTW.Quest.UI_Main.QuestCounter:SetText(questCount or "No Quests")
+	AtlasTW.Quest.UI_Main.QuestCounter:SetText(questCount or L["No Quests"])
 	-- Process quests
 	for b = 1, AtlasTW.QMAXQUESTS do
 		-- Define keys for current faction
@@ -526,9 +525,9 @@ function AtlasTW.Quest.SetQuestButtons()
             local questLevel = tonumber(AtlasTW.Quest.DataBase[instance][faction][b].Level)
             -- Set quest line arrows
             local arrowTexture
-            if preQuest and preQuest ~= "No" then
+            if preQuest and preQuest ~= L["No"] then
                 arrowTexture = "Interface\\Glues\\Login\\UI-BackArrow"
-            elseif followQuest and followQuest ~= "No" then
+            elseif followQuest and followQuest ~= L["No"] then
                 arrowTexture = "Interface\\GossipFrame\\PetitionGossipIcon"
             end
             -- Check for completed quests
@@ -583,4 +582,4 @@ function AtlasTW.Quest.SetQuestButtons()
 end
 
 -- Show version message
-print(red.."A"..yellow.."t"..green.."l"..orange.."a"..blue.."s"..white.."-|cff800080TW |cff00FFFFv.|cffFFC0CB"..AtlasTW.Version.." |cffA52A2Aloaded.")
+print(red.."A"..yellow.."t"..green.."l"..orange.."a"..blue.."s"..white.."-|cff800080TW |cff00FFFFv.|cffFFC0CB"..AtlasTW.Version..L[" |cffA52A2Aloaded."])

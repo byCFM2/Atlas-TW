@@ -10,7 +10,7 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
 - Saved variables:
   - Account-wide: AtlasTWOptions
   - Per-character: AtlasTWCharDB
-- Optional dependencies (detected if installed): Titan, myAddOns, EarthFeatureFrame, Alphamap, AtlasLoader, LootLink, ItemSync, EquipCompare, EQCompare
+- Optional dependencies (detected if installed): LootLink, ItemSync, EquipCompare, EQCompare, pfQuest, pfUI
 
 2) Installation
 - Copy the Atlas‑TW folder to Interface\AddOns
@@ -89,7 +89,7 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
   - Disable “Right‑Click for World Map”
 - No quests for the instance
   - Check your faction (Alliance/Horde)
-  - Some instances may have no quests or your character level is out of range
+  - Some instances may have no quests
 
 10) Tips
 - Auto‑select is handy when farming: the correct map opens automatically when you enter an instance

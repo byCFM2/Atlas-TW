@@ -44,7 +44,7 @@ function AtlasTW.Quest.OnItemEnter(itemIndex)
     end
     -- Get current quest data
     local instance = AtlasTW.QCurrentInstance
-    local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+    local faction = AtlasTW.Faction
 
     -- Get quest data from new database structure
     local questData = AtlasTW.Quest.DataBase and
@@ -137,7 +137,7 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
     end
     -- Get current quest data
     local instance = AtlasTW.QCurrentInstance
-    local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+    local faction = AtlasTW.Faction
 
     -- Get quest data from new database structure
     local questData = AtlasTW.Quest.DataBase and
@@ -215,7 +215,7 @@ end
 local function atlasTWQuestInsertQuestLink()
     local questID = AtlasTW.QCurrentQuest
     local instance = AtlasTW.QCurrentInstance
-    local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+    local faction = AtlasTW.Faction
 
     local questData = AtlasTW.Quest.DataBase and
                       AtlasTW.Quest.DataBase[instance] and
@@ -321,7 +321,7 @@ function AtlasTW.Quest.NextPage()
 
     -- Handle quest text pages
     if AtlasTW.Quest.NextPageCount == "Quest" then
-        local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+        local faction = AtlasTW.Faction
         local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance][faction][AtlasTW.QCurrentQuest]
 
         -- Check for Page
@@ -383,7 +383,7 @@ function AtlasTW.Quest.PreviousPage()
     end
     -- Handle quest text pages
     if AtlasTW.Quest.NextPageCount == "Quest" then
-        local faction = AtlasTW.isHorde and "Horde" or "Alliance"
+        local faction = AtlasTW.Faction
         local questData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance][faction][AtlasTW.QCurrentQuest]
         -- Go back to main quest text if we're returning to page 1
         if AtlasTW.QCurrentPage == 1 then

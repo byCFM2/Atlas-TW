@@ -10,7 +10,7 @@
 - Сохранения:
   - Глобальные: AtlasTWOptions
   - Перс‑специфичные: AtlasTWCharDB
-- Необязательные зависимости (опционально): Titan, myAddOns, EarthFeatureFrame, Alphamap, AtlasLoader, LootLink, ItemSync, EquipCompare, EQCompare
+- Необязательные зависимости (опционально): LootLink, ItemSync, EquipCompare, EQCompare, pfQuest, pfUI
 
 2) Установка
 - Скопируйте папку Atlas‑TW в Interface\AddOns
@@ -89,7 +89,7 @@
   - Отключите опцию «Right‑Click for World Map»
 - Нет квестов для инстанса
   - Проверьте фракцию (Alliance/Horde)
-  - Некоторые инстансы не имеют квестов или они вне диапазона уровня персонажа
+  - Некоторые инстансы не имеют квестов
 
 10) Советы по использованию
 - Автовыбор карты удобно включать при фарме: карта нужного инстанса открывается сама при входе

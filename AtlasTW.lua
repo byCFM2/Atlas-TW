@@ -267,6 +267,7 @@ function AtlasTW.OnEvent()
 		Atlas_Init()
 	elseif not arg1 then
 		AtlasTW.isHorde = UnitFactionGroup("player") == "Horde"
+		AtlasTW.Faction = AtlasTW.isHorde and "Horde" or "Alliance"
 	end
 	if event == "ADDON_LOADED" then
 		if not loadingStartTime then

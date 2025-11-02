@@ -98,7 +98,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 12336, disc = L["Quest Item"], dropRate = 25, container = { 12344 } }, -- Gemstone of Spirestone
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 21982, dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
+                { id = 21982, quantity = { 2,3 } , dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
@@ -285,7 +285,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {},
                 { id = 12712, disc = L["Quest Item"], dropRate = 100, container = { 15867 } }, -- Warosh's Mojo
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 21982, dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
+                { id = 21982, quantity = { 2,3 } , dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
@@ -303,12 +303,12 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {},
                 { id = 80759 }, -- Cloak of the Protector
                 {},
-                { id = 13446, quantity = 5 }, -- Major Healing Potion
-                { id = 13444, quantity = 5 }, -- Major Mana Potion
+                { id = 13446, quantity = 5, dropRate = 100  }, -- Major Healing Potion
+                { id = 13444, quantity = 5, dropRate = 100  }, -- Major Mana Potion
                 {},
                 { id = 56101, disc = L["Quest Item"], dropRate = 30 }, -- Bottom Half of Advanced Goldsmithing I
-                { id = 22138, disc = L["Quest Item"], dropRate = 80 }, -- Blackrock Bracer
-                { id = 41478, disc = L["Quest Item"], dropRate = 100 }, -- Lower Half of the Thunderbrew Golden Lager Plans
+                { id = 22138, dropRate = 80 }, -- Blackrock Bracer
+                { id = 41478, dropRate = 100, container = { 41465 } }, -- Lower Half of the Thunderbrew Golden Lager Plans
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
@@ -363,7 +363,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 13198 }, -- Hurd Smasher
                 { id = 13204 }, -- Bashguuder
                 {},
-                { id = 22138, dropRate = 80 }, -- Blackrock Bracer
+                { id = 22138, dropRate = 80, container = { 22057 } }, -- Blackrock Bracer
             }
         },
         {
@@ -391,7 +391,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
                 { id = 12337, disc = L["Quest Item"], dropRate = 30, container = { 12344 } }, -- Gemstone of Bloodaxe
                 { id = 16786, dropRate = 80, quantity = 2, container = { 16309 } }, -- Black Dragonspawn Eye
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
                 { id = 61459, dropRate = 100, container = { 61465 } }, -- Eye of Wyrmthalak
                 {},

@@ -304,7 +304,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, -- Ancient Warfare Text
                         70232, 70233, 70234, 70235, 70236 } },-- Ancient Warfare Text
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 {},
                 { id = 10454, dropRate = 100, container = { 10455 } }, -- Essence of Eranikus
             }

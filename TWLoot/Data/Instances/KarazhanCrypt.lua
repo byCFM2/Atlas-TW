@@ -51,7 +51,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 { id = 83445 }, -- Marrowclaw Knuckles
                 { id = 83440, dropRate = 10 }, -- Boneshatter Maul
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
@@ -70,7 +70,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {},
                 { id = 83446, dropRate = 10 }, -- Venom's Touch
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
@@ -90,7 +90,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {},
                 { id = 83461 }, -- Cryptkeeper's Pike
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
@@ -108,7 +108,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 { id = 60790 }, -- Memento of the Lost
                 { id = 60791 }, -- Skullcrushing Gauntlets
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
@@ -129,7 +129,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {},
                 { id = 80010, dropRate = 5 }, -- Midnight
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
@@ -147,7 +147,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 { id = 50192 }, -- Band of Arcane Dampening
                 { id = 50193 }, -- Gravewalker Pauldrons
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
@@ -174,7 +174,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
                         70234, 70235, 70236, 70238 } },
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], quantity = 2, dropRate = 100 }, -- Fashion Coin
             }
         },

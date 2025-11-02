@@ -53,11 +53,11 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 { id = 61019 }, -- Wand of the Eclipse
                 { id = 61016 }, -- Time-Lost Claymore
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 50203, quantity = { 10, 15 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
-                { id = 41458, dropRate = 100 }, -- Time-Worn Spear
-                { id = 60496, dropRate = 100 }, -- Head of Chronar
+                { id = 41458, dropRate = 100, container = { 70231 } }, -- Time-Worn Spear
+                { id = 60496, dropRate = 100, container = { 60497, 60498, 60499 } }, -- Head of Chronar
             }
         },
         {
@@ -95,7 +95,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 {},
                 { id = 61020, dropRate = 2 }, -- Lodestone
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 50203, quantity = { 15, 20 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
             }
@@ -117,7 +117,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 {},
                 { id = 61049, dropRate = 0.95 }, -- Chronobreaker
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 50203, quantity = { 15, 20 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
             }
@@ -135,7 +135,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 { id = 61061 }, -- Regenerating Robe
                 { id = 61062 }, -- Corroded Plate Belt
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 50203, quantity = { 20, 25 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
             }
@@ -165,7 +165,8 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 { id = 51044, disc = L["Quest Item"], dropRate = 100, container = { 82950, 82951, 82952, 82953 } }, -- Antnormi's Head
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
                         70234, 70235, 70236, 70238 } },
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 50203, quantity = { 10, 15 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
                 { id = 51217, quantity = 2, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
             }
@@ -186,6 +187,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
                 { id = 61701 }, -- Wraps of the Transmogrified
                 {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 50203, quantity = { 10, 15 }, disc = L["Quest Item"], dropRate = 100 }, -- Corrupted Sand
             }
         },

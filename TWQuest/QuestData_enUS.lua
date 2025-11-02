@@ -1412,7 +1412,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[2] = {
     Attain = 18,
     Aim = "Gershala Nightwhisper in Auberdine wants 8 Corrupt Brain stems.",
     Location = "Gershala Nightwhisper (Darkshore - Auberdine; "..yellow.."38,43"..white..")",
-    Note = "The prequest is optional. You get it from Argos Nightwhisper at (Stormwind - The Park; "..yellow.."21,55"..white.."). \n\nAll the Nagas before and in Blackfathom Deeps drop the brains.",
+    Note = "You get it from Argos Nightwhisper at (Stormwind - The Park; "..yellow.."21,55"..white.."). \n\nAll the Nagas before and in Blackfathom Deeps drop the brains.",
     Prequest = "The Corruption Abroad",
     Rewards = {
         Text = blue.."Reward: Pick One",
@@ -3982,40 +3982,9 @@ kQuestInstanceData.Stratholme.Horde[19] = {
         { id = 81250 }, --Reinforced Black Pounder Mount
     }
 }
-kQuestInstanceData.Stratholme.Horde[20] = {
-    Title = "To Wake The Ashbringer",
-    Level = 60,
-    Attain = 60,
-    Aim = "Recover Tabard of the Ashbringer(kill Grand Crusader Dathrohan) and Cape of Alexandros from Stratholme.",
-    Location = "Tirion Fordring (Western Plaguelands - Light's Hope Chapel "..yellow.."67.3,24.2"..white..").",
-    Note = "Tabard of the Ashbringer drops from Grand Crusader Dathrohan "..yellow.."[11]"..white..", Cape of Alexandros drops from Baron Rivendare"..yellow.."[19]"..white.."\nQuestline starts in Naxxramas after killing 4 Horsemans with quest 'Orb of Pure Light'",
-    Prequest = "Orb of Pure Light -> Seek Help Elsewhere",
-    Folgequest = "Spirit of the Ashbringer",
-    Rewards = {
-        Text = blue.."Reward:",
-        { id = 82002 }, --Tabard of the Ashbringer Tabard
-    }
-}
-kQuestInstanceData.Stratholme.Horde[21] = {
-    Title = "Rothlen Family Brooch",
-    Level = 60,
-    Attain = 55,
-    Aim = "Recover the Rothlen Family Brooch from Stratholme for Duke Rothlen in Karazhan.",
-    Location = "Duke Rothlen (Karazhan; "..yellow.."[Karazhan - c]"..white..")",
-    Note = "Rothlen Family Brooch next to boss The Unforgiven "..yellow.."[4]"..white.." in the chest.\nQuest chain starts with epic item random drop 'Scribbled Cooking Notes' "..yellow.."[Karazhan]"..white..".",
-    Prequest = "Scribbled Cooking Notes "..yellow.."[Karazhan]"..white.." -> Lost and Found "..yellow.."[Karazhan]"..white.."", -- 40998, 40999",
-    Folgequest = "The Secret Recipe ("..yellow.."[Karazhan]"..white..")",
-}
-kQuestInstanceData.Stratholme.Horde[22] = {
-    Title = "The Key to Karazhan VII",
-    Level = 60,
-    Attain = 58,
-    Aim = "Find four Echoes of Medivh. They might be found in places of great significance for the mage. Then return to Vandol with the key.",
-    Location = "Dolvan Bracewind (Dustwallow Marsh - Westhaven Hollow; "..yellow.."[71.1,73.2]"..white..")",
-    Note = "Second Feather of Medivh on the ground in the place where Elder Farwhisper (Lunar Festival) "..yellow.."[5]"..white.." is.\nFirst Feather of Medivh "..yellow.."[Undercity]"..white.." behind the entrance throne.\nThird Feather of Medivh "..yellow.."[Alterac Mountain]"..white.." on the end of first(western) cliff "..yellow.."[30.8,87.4]"..white..".\nFourth Feather of Medivh "..yellow.."[Hyjal]"..white.." on the end of the cliff "..yellow.."[31.8,70.5]"..white..".",
-    Prequest = "The Key to Karazhan VI",
-    Folgequest = "The Key to Karazhan VIII ("..yellow.."Dire Maul West"..white..")",
-}
+kQuestInstanceData.Stratholme.Horde[20] = kQuestInstanceData.Stratholme.Alliance[19]
+kQuestInstanceData.Stratholme.Horde[21] = kQuestInstanceData.Stratholme.Alliance[21]
+kQuestInstanceData.Stratholme.Horde[22] = kQuestInstanceData.Stratholme.Alliance[22]
 
 --------------- Ruins of Ahn'Qiraj ---------------
 kQuestInstanceData.TheRuinsofAhnQiraj = {
@@ -6207,7 +6176,6 @@ kQuestInstanceData.LowerKarazhan.Alliance[14] = {
     Location = "Doorman Montigue"..blue.." "..white.."at the beginning of the dungeon in front of the stairs.",
     Note = "Bring the Charge of Karazhan to The Cook near"..yellow.."[e]"..white.." in Lower Karazhan Halls.",
     Prequest = "Charge of Karazhan",
-    Folgequest = "",
     Rewards = {
         Text = blue.."Reward:",
         { id = 61666 }, --Recipe: Le Fishe Au Chocolat Pattern

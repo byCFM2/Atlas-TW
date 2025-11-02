@@ -140,7 +140,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 17069, dropRate = 20 }, -- Striker's Mark
                 { id = 18203, dropRate = 20 }, -- Eskhandar's Right Claw
                 { id = 17073, dropRate = 20 }, -- Earthshaker
-                { id = 18822 }, -- Obsidian Edged Blade
+                { id = 18822, dropRate = 5 }, -- Obsidian Edged Blade
                 { id = 17065, dropRate = 17 }, -- Medallion of Steadfast Might
                 { id = 18829 }, -- Deep Earth Spaulders
                 { id = 18823 }, -- Aged Core Leather Gloves
@@ -186,7 +186,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 17071, dropRate = 20 }, -- Gutgore Ripper
                 { id = 17105, dropRate = 20 }, -- Aurastone Hammer
                 { id = 18832, dropRate = 20 }, -- Brutality Blade
-                { id = 18822 }, -- Obsidian Edged Blade
+                { id = 18822, dropRate = 5 }, -- Obsidian Edged Blade
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }
         },
@@ -244,7 +244,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 18820 }, -- Talisman of Ephemeral Power
                 {},
                 { id = 19142 }, -- Fire Runed Grimoire
-                { id = 18822 }, -- Obsidian Edged Blade
+                { id = 18822, dropRate = 8 }, -- Obsidian Edged Blade
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }
         },
@@ -278,7 +278,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 19142 }, -- Fire Runed Grimoire
                 { id = 17072, dropRate = 25 }, -- Blastershot Launcher
                 { id = 17103, dropRate = 25 }, -- Azuresong Mageblade
-                { id = 18822 }, -- Obsidian Edged Blade
+                { id = 18822, dropRate = 2 }, -- Obsidian Edged Blade
                 { id = 18842, dropRate = 25 }, -- Staff of Dominance
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }
@@ -352,6 +352,7 @@ AtlasTW.InstanceData.MoltenCore = {
             id = "Basalthar",
             prefix = "10)",
             name = BB["Basalthar"],--65020
+            defaults = { dropRate = 11 },
             loot = {
                 { id = 58210, dropRate = 17 }, -- Grasps of Sundering Power
                 { id = 58212, dropRate = 17 }, -- Treads of Scalding Rage
@@ -360,17 +361,17 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 58238, dropRate = 17 }, -- Runed Wardstone
                 { id = 58242, dropRate = 17 }, -- Sulfuron Aegis
                 {},
-                { id = 18820, dropRate = 11 }, -- Talisman of Ephemeral Power
-                { id = 18821, dropRate = 11 }, -- Quick Strike Ring
-                { id = 18822, dropRate = 11 }, -- Obsidian Edged Blade
-                { id = 18823, dropRate = 11 }, -- Aged Core Leather Gloves
-                { id = 18824, dropRate = 11 }, -- Magma Tempered Boots
-                { id = 18829, dropRate = 11 }, -- Deep Earth Spaulders
-                { id = 18861, dropRate = 11 }, -- Flamewaker Legplates
-                { id = 19136, dropRate = 11 }, -- Mana Igniting Cord
-                { id = 19142, dropRate = 11 }, -- Fire Runed Grimoire
-                { id = 19143, dropRate = 11 }, -- Flameguard Gauntlets
-                { id = 19144, dropRate = 11 }, -- Sabatons of the Flamewalker
+                { id = 18820 }, -- Talisman of Ephemeral Power
+                { id = 18821 }, -- Quick Strike Ring
+                { id = 18822 }, -- Obsidian Edged Blade
+                { id = 18823 }, -- Aged Core Leather Gloves
+                { id = 18824 }, -- Magma Tempered Boots
+                { id = 18829 }, -- Deep Earth Spaulders
+                { id = 18861 }, -- Flamewaker Legplates
+                { id = 19136 }, -- Mana Igniting Cord
+                { id = 19142 }, -- Fire Runed Grimoire
+                { id = 19143 }, -- Flameguard Gauntlets
+                { id = 19144 }, -- Sabatons of the Flamewalker
                 {},
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }
@@ -396,6 +397,7 @@ AtlasTW.InstanceData.MoltenCore = {
             id = "SorcererThaneThaurissan",
             prefix = "11)",
             name = BB["Sorcerer-Thane Thaurissan"],--57642
+            defaults = { dropRate = 11 },
             loot = {
                 { id = 58210, dropRate = 17 }, -- Grasps of Sundering Power
                 { id = 58212, dropRate = 17 }, -- Treads of Scalding Rage
@@ -404,17 +406,17 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 58238, dropRate = 17 }, -- Runed Wardstone
                 { id = 58242, dropRate = 17 }, -- Sulfuron Aegis
                 {},
-                { id = 18820, dropRate = 11 }, -- Talisman of Ephemeral Power
-                { id = 18821, dropRate = 11 }, -- Quick Strike Ring
-                { id = 18822, dropRate = 11 }, -- Obsidian Edged Blade
-                { id = 18823, dropRate = 11 }, -- Aged Core Leather Gloves
-                { id = 18824, dropRate = 11 }, -- Magma Tempered Boots
-                { id = 18829, dropRate = 11 }, -- Deep Earth Spaulders
-                { id = 18861, dropRate = 11 }, -- Flamewaker Legplates
-                { id = 19136, dropRate = 11 }, -- Mana Igniting Cord
-                { id = 19142, dropRate = 11 }, -- Fire Runed Grimoire
-                { id = 19143, dropRate = 11 }, -- Flameguard Gauntlets
-                { id = 19144, dropRate = 11 }, -- Sabatons of the Flamewalker
+                { id = 18820 }, -- Talisman of Ephemeral Power
+                { id = 18821 }, -- Quick Strike Ring
+                { id = 18822 }, -- Obsidian Edged Blade
+                { id = 18823 }, -- Aged Core Leather Gloves
+                { id = 18824 }, -- Magma Tempered Boots
+                { id = 18829 }, -- Deep Earth Spaulders
+                { id = 18861 }, -- Flamewaker Legplates
+                { id = 19136 }, -- Mana Igniting Cord
+                { id = 19142 }, -- Fire Runed Grimoire
+                { id = 19143 }, -- Flameguard Gauntlets
+                { id = 19144 }, -- Sabatons of the Flamewalker
                 {},
                 { id = 58214, dropRate = 25 }, -- Modrag'zan, Heart of the Mountain
                 { id = 58240, dropRate = 25 }, -- Libram of Final Judgement

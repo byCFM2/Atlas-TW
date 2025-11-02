@@ -117,6 +117,7 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 13379 }, -- Piccolo of the Flaming Fire
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 13174, quantity = { 1, 3 }, dropRate = 80, container = { 13209, 19812 } }, -- Plagued Flesh Sample
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
             }
         },
@@ -135,6 +136,7 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 13408 }, -- Soul Breaker
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 13174, dropRate = 80, container = { 13209, 19812 } }, -- Plagued Flesh Sample
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
@@ -162,6 +164,7 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 13174, quantity = { 2, 4 }, dropRate = 80, container = { 13209, 19812 } }, -- Plagued Flesh Sample
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
@@ -247,7 +250,7 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 12839, dropRate = 6, container = { 12783 } }, -- Plans: Heartseeker
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
@@ -319,7 +322,7 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
                         70234, 70235, 70236, 70238 } },
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
             }
@@ -359,6 +362,7 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 13174, quantity = { 2, 4 }, dropRate = 80, container = { 13209, 19812 } }, -- Plagued Flesh Sample
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
@@ -406,6 +410,7 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 13174, quantity = { 1, 3 }, dropRate = 80, container = { 13209, 19812 } }, -- Plagued Flesh Sample
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
@@ -452,7 +457,9 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 13174, quantity = { 2, 4 }, dropRate = 80, container = { 13209, 19812 } }, -- Plagued Flesh Sample
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
@@ -504,7 +511,9 @@ AtlasTW.InstanceData.Stratholme = {
                 {},
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 15880, dropRate = 100, container = { 18022, 17001 } }, -- Head of Ramstein the Gorger
+                { id = 13174, quantity = { 1, 4 }, dropRate = 80, container = { 13209, 19812 } }, -- Plagued Flesh Sample
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
@@ -547,7 +556,9 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
                         70234, 70235, 70236, 70238 } },
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 13251, dropRate = 100, container = { 13246, 13243, 13249 } }, -- Head of Baron Rivendare
+                { id = 13174, quantity = { 4, 6 }, dropRate = 80, container = { 13209, 19812 } }, -- Plagued Flesh Sample
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin

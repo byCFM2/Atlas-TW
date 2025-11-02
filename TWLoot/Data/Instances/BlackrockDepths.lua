@@ -692,7 +692,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 12033, disc = L["Container"], dropRate = 2, container = { 12364, 1206, 12800, 5500, 7971, -- Thaurissan Family Jewels
                         55249, 12799, 3864, 1705, 12361, 55250, 7909, 55251, 7910, 1529 } },
                 { id = 61463, dropRate = 100, container = { 61465 } }, -- Hammer of the Depths
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 11468, quantity = { 4, 9 }, dropRate = 80, container = { 11883 } }, -- Dark Iron Fanny Pack
                 { id = 56104, disc = BS["Gemology"], dropRate = 30, container = { 56109 } }, -- Bottom Half of Advanced Gemology I
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
