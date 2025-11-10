@@ -129,7 +129,6 @@ AtlasOptions.lua (options handlers)
   - QuestCheckQuestlog (bool): cross-check the WoW quest log.
   - QuestAutoQuery (bool): auto-request quest data from the server.
   - QuestQuerySpam (bool): suppress excessive queries.
-  - QuestCompareTooltip (bool): compare items in tooltips (respects pfUI/EquipCompare).
   - AtlasSortBy (number): categories sorting in options.
   - AtlasVersion (string): technical version field.
 
@@ -212,7 +211,6 @@ Options (AtlasOptions.lua)
 - AtlasTW.OptionQuestlogOnClick()
 - AtlasTW.OptionAutoQueryOnClick()
 - AtlasTW.OptionQuerySpamOnClick()
-- AtlasTW.OptionCompareTooltipOnClick()
 - AtlasTW.OptionSafeLinksOnClick()
 - AtlasTW.OptionAllLinksOnClick()
 - AtlasTW.OptionDefaultTTOnClick()
@@ -266,7 +264,6 @@ ItemDB (Loot/Data/ItemDB.lua)
 17) Integration with other addons
 - EquipCompare/EQCompare: if present — enable comparison in item tooltips when AtlasTWOptions.LootEquipCompare is set.
 - LootLink/ItemSync: if absent — force-enable LootDefaultTT and clear the related flags.
-- pfUI: respected by the QuestCompareTooltip logic.
 
 18) Positioning/scale/transparency
 - Scale and alpha are applied to AtlasTWFrame via OptionsUpdateScale/OptionsUpdateAlpha.

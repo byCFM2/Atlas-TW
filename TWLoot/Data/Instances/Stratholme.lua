@@ -201,7 +201,7 @@ AtlasTW.InstanceData.Stratholme = {
             id = "STRATMalorsStrongbox",
             name = L["Malor's Strongbox"],
             loot = {
-                { id = 12845, disc = L["Quest Item"], dropRate = 100 }, -- Medallion of Faith
+                { id = 12845, disc = L["Quest Item"], dropRate = 100, container = { 17044, 17045 } }, -- Medallion of Faith
             }
         },
         {

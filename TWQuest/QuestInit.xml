@@ -2,7 +2,6 @@
 	<!-- Include files -->
 	<Include file="QuestData_enUS.lua"/>
 	<Include file="QuestUIinAtlas.lua"/>
-	<Include file="QuestTooltip.lua"/>
 	<Include file="QuestUI.lua"/>
 	<Include file="QuestLogic.lua"/>
 	<Include file="QuestMain.lua"/>

@@ -129,7 +129,6 @@ AtlasOptions.lua (обработчики опций)
   - QuestCheckQuestlog (bool): сверка с журналом квестов.
   - QuestAutoQuery (bool): авто-запрос данных квестов у сервера.
   - QuestQuerySpam (bool): подавление спама запросов.
-  - QuestCompareTooltip (bool): сравнение предметов в тултипах (с учётом pfUI/EquipCompare).
   - AtlasSortBy (number): сортировка категорий в опциях.
   - AtlasVersion (string): служебное поле версии.
 
@@ -212,7 +211,6 @@ Options (AtlasOptions.lua)
 - AtlasTW.OptionQuestlogOnClick()
 - AtlasTW.OptionAutoQueryOnClick()
 - AtlasTW.OptionQuerySpamOnClick()
-- AtlasTW.OptionCompareTooltipOnClick()
 - AtlasTW.OptionSafeLinksOnClick()
 - AtlasTW.OptionAllLinksOnClick()
 - AtlasTW.OptionDefaultTTOnClick()
@@ -266,7 +264,6 @@ ItemDB (Loot/Data/ItemDB.lua)
 17) Интеграция с другими аддонами
 - EquipCompare/EQCompare: если найден — включается сравнение в тултипах при AtlasTWOptions.LootEquipCompare.
 - LootLink/ItemSync: если отсутствуют — принудительно активируется LootDefaultTT и снимаются соответствующие флаги.
-- pfUI: учитывается в логике QuestCompareTooltip.
 
 18) Позиционирование/масштаб/прозрачность
 - Масштаб и альфа применяются к AtlasTWFrame через OptionsUpdateScale/OptionsUpdateAlpha.

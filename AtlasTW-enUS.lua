@@ -95,7 +95,6 @@ AtlasTW.Local.Translations = {
 	["Color Quests from the Questlog"] = true,
 	["Auto-Query Unknown Items"] = true,
 	["Suppress Server Query Spam"] = true,
-	["Compare Rewards and Gear (/rl)"] = true,
 	["Dungeons"] = true,
 	["Raids"] = true,
 	["Entrances"] = true,

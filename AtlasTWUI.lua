@@ -23,7 +23,7 @@ local L = AtlasTW.Local
 do
     -- Create the main Atlas frame
     local atlasFrame = CreateFrame("Frame", "AtlasTWFrame", UIParent)
-    atlasFrame:SetFrameStrata("MEDIUM")
+    atlasFrame:SetFrameStrata("HIGH")
     atlasFrame:SetWidth(921)
     atlasFrame:SetHeight(601)
     atlasFrame:SetPoint("TOPLEFT", 0, -104)
@@ -424,7 +424,7 @@ do
         if not WorldMapFrame or not WorldMapDetailFrame then return false end
 
         local worldMapOverlay = CreateFrame("Frame", "AtlasTWWorldMapCursorOverlay", WorldMapFrame)
-        worldMapOverlay:SetFrameStrata("TOOLTIP")
+        worldMapOverlay:SetFrameStrata("FULLSCREEN")
         worldMapOverlay:ClearAllPoints()
         worldMapOverlay:SetPoint("TOPLEFT", WorldMapDetailFrame, "TOPLEFT", 0, 0)
         worldMapOverlay:SetPoint("BOTTOMRIGHT", WorldMapDetailFrame, "BOTTOMRIGHT", 0, 0)

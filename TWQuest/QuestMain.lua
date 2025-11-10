@@ -22,6 +22,7 @@ local L = AtlasTW.Local
 -- Colours
 -----------------------------------------------------------------------------
 local red = "|cffff0000"
+local redHorde = "|cffff6666"
 local white = "|cffFFFFFF"
 local grey = "|cff808080"
 local orange = "|cffff8000"
@@ -55,6 +56,7 @@ function AtlasTW.Quest.ClearAll()
 	AtlasTW.Quest.UI.Story:SetText()
 	AtlasTW.Quest.UI.FinishedQuestText:SetText()
     AtlasTW.Quest.UI.FinishedQuestCheckbox:Hide()
+    AtlasTW.Quest.HideQuestButtonHighlights()
 	for b = 1, AtlasTW.QMAXQUESTITEMS do
         AtlasTW.Quest.UI.QuestItems[b].Icon:SetTexture()
         AtlasTW.Quest.UI.QuestItems[b].Name:SetText()
@@ -321,9 +323,10 @@ end
 function AtlasTW.Quest.SetQuestText()
     -- Clear all previous quest information
     AtlasTW.Quest.ClearAll()
+    local color = AtlasTW.isHorde and redHorde or blue
     -- Show the finished quest checkbox
     AtlasTW.Quest.UI.FinishedQuestCheckbox:Show()
-    AtlasTW.Quest.UI.FinishedQuestText:SetText(blue .. L["Quest finished:"])
+    AtlasTW.Quest.UI.FinishedQuestText:SetText(color .. L["Quest finished:"])
 
     -- Get quest data from new structure
     local instanceData = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance]
@@ -333,28 +336,26 @@ function AtlasTW.Quest.SetQuestText()
     local questData = instanceData[faction] and instanceData[faction][AtlasTW.QCurrentQuest]
 
     if questData then
-        -- Check if quest is in the player's quest log
-        kQCompareQuestLogtoQuest(AtlasTW.QCurrentQuest)
-
         -- Set quest name with appropriate color
         AtlasTW.Quest.UI.QuestName:SetText(kQQuestColor..questData.Title)
 
         -- Set quest level information
-        AtlasTW.Quest.UI.QuestLevel:SetText(blue..L["Level: "]..white..questData.Level)
-        AtlasTW.Quest.UI.QuestAttainLevel:SetText(blue..L["Attain: "]..white..questData.Attain)
+        AtlasTW.Quest.UI.QuestLevel:SetText(color..L["Level: "]..white..questData.Level)
+        AtlasTW.Quest.UI.QuestAttainLevel:SetText(color..L["Attain: "]..white..questData.Attain)
 
         -- Set quest details
         AtlasTW.Quest.UI.Prerequisite:SetText(
-            blue..L["Prequest: "]..white..(questData.Prequest or L["No"]).."\n \n"..
-            blue..L["Quest follows: "]..white..(questData.Folgequest or L["No"]).."\n \n"..
-            blue..L["Starts at: \n"]..white..(questData.Location or "").."\n \n"..
-            blue..L["Objective: \n"]..white..(questData.Aim or "").."\n \n"..
-            blue..L["Note: \n"]..white..(questData.Note or "")
+            color..L["Prequest: "]..white..(questData.Prequest or L["No"]).."\n \n"..
+            color..L["Quest follows: "]..white..(questData.Folgequest or L["No"]).."\n \n"..
+            color..L["Starts at: \n"]..white..(questData.Location or "").."\n \n"..
+            color..L["Objective: \n"]..white..(questData.Aim or "").."\n \n"..
+            color..L["Note: \n"]..white..(questData.Note or "")
         )
 
         -- Set reward text from structure if available
         local rewards = questData.Rewards and questData.Rewards.Text
         if rewards then
+            rewards = color..rewards
             -- Cache entire page before updating
             if AtlasTWOptions.QuestAutoQuery then
                 AtlasTW.LootCache.CacheAllItems(questData.Rewards, function()
@@ -364,7 +365,7 @@ function AtlasTW.Quest.SetQuestText()
                 setQuestItemsFrame()
             end
         else
-            rewards = blue..L["No Rewards"]
+            rewards = color..L["No Rewards"]
             -- hide items frame if no rewards are available
             for itemIndex = 1, AtlasTW.QMAXQUESTITEMS do
                 AtlasTW.Quest.UI.QuestItems[itemIndex].Frame:Hide()
@@ -530,18 +531,6 @@ function AtlasTW.Quest.SetQuestButtons()
             elseif followQuest and followQuest ~= L["No"] then
                 arrowTexture = "Interface\\GossipFrame\\PetitionGossipIcon"
             end
-            -- Check for completed quests
-            if AtlasTW.Q[finishedKey] == 1 then
-                arrowTexture = "Interface\\GossipFrame\\BinderGossipIcon"
-            end
-            -- Apply arrow texture
-            local arrow = AtlasTW.Quest.UI_Main.QuestButtons[b].Arrow
-            if arrowTexture then
-                arrow:SetTexture(arrowTexture)
-                arrow:Show()
-            else
-                arrow:Hide()
-            end
 			-- Determine quest color based on level
             if questLevel then
                 local levelDiff = questLevel - playerLevel
@@ -563,10 +552,23 @@ function AtlasTW.Quest.SetQuestButtons()
                 end
                 if questLevel == 100 or kQCompareQuestLogtoQuest(b) then
                     kQQuestColor = blue
+                    arrowTexture = "Interface\\QuestFrame\\UI-QuestLog-BookIcon"
                 end
                 if AtlasTW.Q[finishedKey] == 1 then
                     kQQuestColor = white
                 end
+            end
+            -- Check for completed quests
+            if AtlasTW.Q[finishedKey] == 1 then
+                arrowTexture = "Interface\\Buttons\\UI-CheckBox-Check"
+            end
+            -- Apply arrow texture
+            local arrow = AtlasTW.Quest.UI_Main.QuestButtons[b].Arrow
+            if arrowTexture then
+                arrow:SetTexture(arrowTexture)
+                arrow:Show()
+            else
+                arrow:Hide()
             end
 			-- Activate button and set text
             AtlasTW.Quest.UI_Main.QuestButtons[b].Button:Enable()

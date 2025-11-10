@@ -667,6 +667,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
                 { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
                 { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
                 { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
+                {},
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
@@ -689,21 +690,21 @@ AtlasTW.InstanceData.DireMaulNorth = {
                 { id = 18523 }, -- Brightly Glowing Stone
                 { id = 18520 }, -- Barbarous Blade
                 {},
-                { id = 19258, dropRate = 7, container = { 19287 } }, -- Ace of Warlords
-                { id = 18780, dropRate = 9, container = { 18769 } }, -- Top Half of Advanced Armorsmithing: Volume I
-                { id = 12727, container = { 12618 }, dropRate = 0 }, -- Plans: Enchanted Thorium Breastplate
+                { id = 19258, disc = L["Misc"], dropRate = 7, container = { 19287 } }, -- Ace of Warlords
+                { id = 18780, disc = L["Misc"], dropRate = 9, container = { 18769, 12727, 12618 } }, -- Top Half of Advanced Armorsmithing: Volume I
                 {},
                 { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
                 { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
                 { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
-                { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
-                        70234, 70235, 70236, 70238 } },
                 { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
-                { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
+                {},
+                { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
+                        70234, 70235, 70236, 70238 } },
                 { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 21982, dropRate = 50, quantity = { 2, 3 }, container = { 22149, 22150 } }, -- Ogre Warbeads
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
+                { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
                 {},
                 unpack(ShareLoot)
             }

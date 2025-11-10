@@ -51,54 +51,6 @@ local function debug(info)
 end
 
 ---
---- Hooks a script handler while preserving the original handler
---- Chains both the original and new handlers together
---- @param frame1 frame The frame to hook the script on
---- @param scriptType string The script type to hook (e.g., "OnShow", "OnHide")
---- @param handler function The new handler function to add
---- @return nil
---- @usage hookScript(AtlasTW.Quest.Tooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
----
-local function hookScript(frame1, scriptType, handler)
-    -- Store original script handler
-    local originalScript = frame1:GetScript(scriptType)
-    -- Set new script that chains both handlers
-    frame1:SetScript(scriptType, function()
-        -- Call original handler if it exists
-        if originalScript then
-            originalScript()
-        end
-        -- Call our new handler
-        handler()
-    end)
-end
-
----
---- Sets up pfUI tooltip integration for Atlas quest tooltips
---- Creates backdrops and equipment comparison functionality
---- @return nil
---- @usage setupPfUITooltip() -- Called during initialization
----
-local function setupPfUITooltip()
-	if not (AtlasTWOptions.QuestCompareTooltip and IsAddOnLoaded("pfUI") and not AtlasTW.Quest.Tooltip.backdrop) then
-		return
-	end
-	-- Create pfUI tooltip backdrop
-	pfUI.api.CreateBackdrop(AtlasTW.Quest.Tooltip)
-	pfUI.api.CreateBackdropShadow(AtlasTW.Quest.Tooltip)
-	pfUI.api.CreateBackdrop(AtlasTWLootTooltip2)
-	pfUI.api.CreateBackdropShadow(AtlasTWLootTooltip2)
-	-- Setup equipment comparison if available
-	if pfUI.eqcompare then
-		hookScript(AtlasTW.Quest.Tooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
-		hookScript(AtlasTW.Quest.Tooltip, "OnHide", function()
-			ShoppingTooltip1:Hide()
-			ShoppingTooltip2:Hide()
-		end)
-	end
-end
-
----
 --- Performs search filtering on Atlas data and returns formatted results
 --- Searches through reputation, keys, and bosses data with text matching
 --- @param data table The Atlas data containing Reputation, Keys, and Bosses arrays
@@ -753,7 +705,6 @@ end
 --- @usage Called automatically when Atlas frame is shown
 ---
 function AtlasTW.OnShow()
-    setupPfUITooltip()
     if(AtlasTWOptions.AtlasAutoSelect) then
         atlasAutoSelect()
     end

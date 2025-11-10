@@ -24,11 +24,8 @@ local BZ = AceLibrary("Babble-Zone-2.2a")
 local red = "|cffff0000"
 local white = "|cffFFFFFF"
 local green = "|cff1eff00"
-local grey = "|cff9d9d9d"
 local blue = "|cff0070dd"
 local yellow = "|cffFFd200"
-local orange = "|cffFF8000"
-local purple = "|cffa335ee"
 
 ----------------------------------------------
 ------------- Quest Instance Data ------------
@@ -65,7 +62,7 @@ kQuestInstanceData.TheDeadmines.Alliance[1] = {
     Note = "You can get the Red Silk Bandanas from miners in the Deadmines or the in the town where the instance is located. The quest becomes available after you complete the The Defias Brotherhood questline up to the part where you have to kill Edwin VanCleef.",
     Prequest = "The Defias Brotherhood",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 2074 }, --Solid Shortblade One-Hand, Sword
         { id = 2089 }, --Scrimshaw Dagger One-Hand, Dagger
         { id = 6094 }, --Piercing Axe Two-Hand, Axe
@@ -79,7 +76,7 @@ kQuestInstanceData.TheDeadmines.Alliance[2] = {
     Location = "Wilder Thistlenettle (Stormwind - Dwarven District; "..yellow.."65, 21"..white..")",
     Note = "The cards drop off undead mobs outside the instance in the area near "..yellow.."[3]"..white.." on the Entrance map.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 2037 }, --Tunneler's Boots Feet, Mail
         { id = 2036 }, --Dusty Mining Gloves Hands, Leather
     }
@@ -92,7 +89,7 @@ kQuestInstanceData.TheDeadmines.Alliance[3] = {
     Location = "Wilder Thistlenettle (Stormwind - Dwarven District; "..yellow.."65,21"..white..")",
     Note = "Foreman Thistlenettle is found outside the instance in the undead area at "..yellow.."[3]"..white.." on the Entrance map.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 1893 }, --Miner's Revenge Two-Hand, Axe
     }
 }
@@ -105,7 +102,7 @@ kQuestInstanceData.TheDeadmines.Alliance[4] = {
     Note = "The prequest can be obtained from Gnoarn (Dun Morogh - Gnomeregan Reclamation Facility; "..yellow.."24.5,30.4"..white..").\nSneed's Shredder drops the Sprecklesprocket "..yellow.."[3]"..white..".",
     Prequest = "Speak with Shoni",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 7606 }, --Polar Gauntlets Hands, Mail
         { id = 7607 }, --Sable Wand Wand
     }
@@ -119,7 +116,7 @@ kQuestInstanceData.TheDeadmines.Alliance[5] = {
     Note = "You start this Questline at Gryan Stoutmantle (Westfall - Sentinel Hill; "..yellow.."56,47"..white..").\nEdwin VanCleef is the last boss of The Deadmines. You can find him at the top of his ship "..yellow.."[6]"..white..".",
     Prequest = "The Defias Brotherhood",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6087 }, --Chausses of Westfall Legs, Mail
         { id = 2041 }, --Tunic of Westfall Chest, Leather
         { id = 2042 }, --Staff of Westfall Staff
@@ -135,7 +132,7 @@ kQuestInstanceData.TheDeadmines.Alliance[6] = {
     Prequest = "The Tome of Valor -> The Test of Righteousness",
     Folgequest = "The Test of Righteousness",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 6953 }, --Verigan's Fist Two-Hand, Mace
     },
     Page = {2, "Only Paladins can get this quest!\n\n1. You get the  Whitestone Oak Lumber from Goblin Woodcarvers in "..yellow.."[Deadmines]"..white.." near "..yellow.."[3]"..white..".\n\n2. To get the Bailor's Refined Ore Shipment you must talk to Bailor Stonehand (Loch Modan - Thelsamar; "..yellow.."35,44"..white.."). He gives you the 'Bailor's Ore Shipment' quest. You find the Jordan's Ore Shipment behind a tree at "..yellow.."71,21"..white.."\n\n3. You get Jordan's Smithing Hammer in "..yellow.."[Shadowfang Keep]"..white.." at "..yellow.."[3]"..white..".\n\n4. To get a Kor Gem you have to go to Thundris Windweaver (Darkshore - Auberdine; "..yellow.."37,40"..white..") and do the 'Seeking the Kor Gem' quest. For this quest, you must kill Blackfathom oracles or priestesses before "..yellow.."[Blackfathom Deeps]"..white..". They drop a corrupted Kor Gem. Thundris Windweaver will clean it for you.", };
@@ -159,7 +156,7 @@ kQuestInstanceData.TheDeadmines.Alliance[8] = {
     Note = "You start this Questline on the northwest island in Westfall; Red book on the ground "..yellow.."26.1,16.5"..white..").\n",
     Prequest = "Food for Sailing Thoughts?",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 70070 }, --Grayson's Hat Head, Cloth
     }
 }
@@ -173,7 +170,7 @@ kQuestInstanceData.TheDeadmines.Alliance[9] = {
     Prequest = "The Harvest Golem Mystery VIII",
     Folgequest = "The Harvest Golem Mystery X",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60684 }, --Tinkering Belt Waist, Leather
         { id = 60685 }, --Safety Wraps Wrist, Cloth
         { id = 60686 }, --Harvest Golem Arm Two-Hand, Mace
@@ -188,7 +185,7 @@ kQuestInstanceData.TheDeadmines.Alliance[10] = {
     Note = "You start this Questline at the same NPC. Drop from Jared Voss is at "..yellow.."[1]"..white..".",
     Prequest = "Drones In Westfall -> Venture Delivery",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 70239 }, --Operative Cloak Back
         { id = 70240 }, --Cuffs of Integrity Wrist, Cloth
     }
@@ -201,7 +198,7 @@ kQuestInstanceData.TheDeadmines.Horde[1] = {
     Location = "Wrix Ozzlenut (Durotar - Sparkwater Port; "..yellow.."58.3,25.7"..white..")",
     Note = "Sneed drops the Prototype Shredder X0-1 Schematic "..yellow.."[3]"..white..".",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 81316 }, --Foe Chopper Two-Hand, Axe
         { id = 81317 }, --Shining Electro-lantern Held In Off-hand
     }
@@ -215,7 +212,7 @@ kQuestInstanceData.TheDeadmines.Horde[2] = {
     Note = "You start this Quest line on the northwest island in Westfall; Red book on the ground "..yellow.."26.1,16.5"..white..").\n",
     Prequest = "Food for Sailing Thoughts?",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 70070 }, --Grayson's Hat Head, Cloth
     }
 }
@@ -229,7 +226,7 @@ kQuestInstanceData.TheDeadmines.Horde[3] = {
     Prequest = "Horde Defender's Axe",
     Folgequest = "Horde Defender's Axe",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 40065 }, --Horde Defender's Axe Two-Hand, Axe
     }
 }
@@ -249,7 +246,7 @@ kQuestInstanceData.WailingCaverns.Alliance[1] = {
     Location = "Nalpak (Barrens - Wailing Caverns; "..yellow.."47,36"..white..")",
     Note = "All deviate mobs inside of and right before the entrance to the instance can drop hides.\nNalpak can be found in a hidden cave above the actual cave entrance. Easiest way to him seems to be to run up the hill outside and behind the entrance and drop down the slight ledge above the cave entrance.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6480 }, --Slick Deviate Leggings Legs, Leather
         { id = 918 }, --Deviate Hide Pack Bag
     }
@@ -279,7 +276,7 @@ kQuestInstanceData.WailingCaverns.Alliance[4] = {
     Location = "Ebru (Barrens - Wailing Caverns; "..yellow.."47,36"..white..")",
     Note = "Ebru is in a hidden cave above the cave entrance. Easiest way to him seems to be to run up the hill outside and behind the entrance and drop down the slight ledge above the cave entrance.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6476 }, --Pattern: Deviate Scale Belt Pattern
         { id = 8071 }, --Sizzle Stick Wand
         { id = 6481 }, --Dagmire Gauntlets Hands, Mail
@@ -294,7 +291,7 @@ kQuestInstanceData.WailingCaverns.Alliance[5] = {
     Note = "Mutanus the Devourer will only appear if you kill the four leader druids of the fang and escort the tauren druid at the entrance.\nWhen you have the Shard, you must bring it to the Bank at Ratchet, and then back to the top of the hill over Wailing Caverns to Falla Sagewind.",
     Folgequest = "In Nightmares",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 10657 }, --Talbar Mantle Shoulder, Cloth
         { id = 10658 }, --Quagmire Galoshes Feet, Mail
     }
@@ -307,7 +304,7 @@ kQuestInstanceData.WailingCaverns.Alliance[6] = {
     Location = "Alanndarian Nightsong (Auberdine - Darkshore; "..yellow.."37.7,40.7"..white..")",
     Note = "You get the Serpentbloom inside the cave in front of the instance and inside the instance. Players with Herbalism can see the plants on their minimap.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 51850 }, --Greenweave Sash Waist, Cloth
         { id = 51851 }, --Verdant Boots Feet, Mail
     }
@@ -320,7 +317,7 @@ kQuestInstanceData.WailingCaverns.Alliance[7] = {
     Location = "Alanndarian Nightsong (Auberdine - Darkshore; "..yellow.."37.7,40.7"..white..")",
     Note = "Mutanus the Devourer will only appear if you kill the four leader druids of the fang and escort the tauren druid at the entrance.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 51848 }, --Ancient Elven Robes Chest, Cloth
         { id = 51849 }, --Thunderhorn Two-Hand, Sword
     }
@@ -333,7 +330,7 @@ kQuestInstanceData.WailingCaverns.Alliance[8] = {
     Location = "Thundris Windweaver (Auberdine - Darkshore; "..yellow.."37.4,40.1"..white..")",
     Note = "Elementals - Unnatural Overgrowth drop Overgrowth Samples.",
     Rewards = {
-        Text = blue.."Reward: 1 (x3) or 2 (x3)",
+        Text = "Reward: 1 (x3) or 2 (x3)",
         { id = 3827 }, --Mana Potion Potion
         { id = 1710 }, --Greater Healing Potion Potion
     }
@@ -349,7 +346,7 @@ kQuestInstanceData.WailingCaverns.Horde[3] = {
     Note = "Apothecary Zamah is in a cave under the Spirit Rise.  You get the prequest from Apothecary Helbrim (Barrens - Crossroads; "..yellow.."51,30"..white..").\nYou get the Serpentbloom inside the cave in front of the instance and inside the instance. Players with Herbalism can see the plants on their minimap.",
     Prequest = "Fungal Spores -> Apothecary Zamah",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 10919 }, --Apothecary Gloves Hands, Cloth
     }
 }
@@ -370,7 +367,7 @@ kQuestInstanceData.WailingCaverns.Horde[5] = {
     Location = "Ebru (Barrens - Wailing Caverns; "..yellow.."47,36"..white..")",
     Note = "Ebru is in a hidden cave above the cave entrance. Easiest way to him seems to be to run up the hill outside and behind the entrance and drop down the slight ledge above the cave entrance.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6476 }, --Pattern: Deviate Scale Belt Pattern
         { id = 8071 }, --Sizzle Stick Wand
         { id = 6481 }, --Dagmire Gauntlets Hands, Mail
@@ -385,7 +382,7 @@ kQuestInstanceData.WailingCaverns.Horde[6] = {
     Note = "The Questline starts at Hamuul Runetotem (Thunderbluff - Elder Rise; "..yellow.."78,28"..white..")\nThe 4 druids drop the gems "..yellow.."[2]"..white..", "..yellow.."[3]"..white..", "..yellow.."[5]"..white..", "..yellow.."[7]"..white..".",
     Prequest = "The Barrens Oases -> Nara Wildmane",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6505 }, --Crescent Staff Staff
         { id = 6504 }, --Wingblade Main Hand, Sword
     }
@@ -399,7 +396,7 @@ kQuestInstanceData.WailingCaverns.Horde[7] = {
     Note = "Mutanus the Devourer will only appear if you kill the four leader druids of the fang and escort the tauren druid at the entrance.\nWhen you have the Shard, you must bring it to the Bank at Ratchet, and then back to the top of the hill over Wailing Caverns to Falla Sagewind.",
     Folgequest = "In Nightmares",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 10657 }, --Talbar Mantle Shoulder, Cloth
         { id = 10658 }, --Quagmire Galoshes Feet, Mail
     }
@@ -413,7 +410,7 @@ kQuestInstanceData.WailingCaverns.Horde[8] = {
     Note = red.."Mage ONLY."..white.." The Questline starts at Ureda <Mage Trainer> (Orgrimar) with quest 'Mastering the Arcane'.\nMoontouched Wood you get from "..yellow.."trash"..white..", a Crystal of the Serpent from Lord Serpentis <Fanglord>"..yellow.."[7]"..white..", and an Everchanging Essence from Lord Pythas <Fanglord> "..yellow.."[5]"..white..".",
     Prequest = "Mastering the Arcane",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 80860 }, --Staff of the Arcane Path Staff
         { id = 80861 }, --Spellweaving Dagger One-Hand, Dagger
     }
@@ -426,7 +423,7 @@ kQuestInstanceData.WailingCaverns.Horde[9] = {
     Location = "Nalpak (Barrens - Wailing Caverns; "..yellow.."47,36"..white..")",
     Note = "You need to kill Zandara Windhoof [6] and take her head.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 70224 }, --Kolkar Drape Back
     }
 }
@@ -453,7 +450,7 @@ kQuestInstanceData.RagefireChasm.Horde[2] = {
     Location = "Varimathras (Undercity - Royal Quarter; "..yellow.."56,92"..white..")",
     Note = "Searing Blade Cultists and Warlocks drop the books",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 15449 }, --Ghastly Trousers Legs, Cloth
         { id = 15450 }, --Dredgemire Leggings Legs, Leather
         { id = 15451 }, --Gargoyle Leggings Legs, Mail
@@ -468,7 +465,7 @@ kQuestInstanceData.RagefireChasm.Horde[3] = {
     Note = "You find Maur Grimtotem at "..yellow.."[1]"..white..". After getting the satchel you must bring it back to Rahauro in Thunder Bluff",
     Folgequest = "Returning the Lost Satchel",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 15452 }, --Featherbead Bracers Wrist, Cloth
         { id = 15453 }, --Savannah Bracers Wrist, Leather
     }
@@ -483,7 +480,7 @@ kQuestInstanceData.RagefireChasm.Horde[4] = {
     Prequest = "Hidden Enemies",
     Folgequest = "Hidden Enemies",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 15443 }, --Kris of Orgrimmar One-Hand, Dagger
         { id = 15445 }, --Hammer of Orgrimmar Main Hand, Mace
         { id = 15424 }, --Axe of Orgrimmar Two-Hand, Axe
@@ -535,7 +532,7 @@ kQuestInstanceData.Uldaman.Alliance[3] = {
     Note = "The tablet is at "..yellow.."[8]"..white..".",
     Prequest = "Amulet of Secrets -> An Ambassador of Evil",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 6723 }, --Medal of Courage Neck
     }
 }
@@ -547,7 +544,7 @@ kQuestInstanceData.Uldaman.Alliance[4] = {
     Location = "Rigglefuzz (Badlands; "..yellow.."42,52"..white..")",
     Note = "The stones can be found on any Shadowforge enemies before and in the instance.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 9522 }, --Energized Stone Circle Shield
         { id = 10358 }, --Duracin Bracers Wrist, Mail
         { id = 10359 }, --Everlast Boots Feet, Cloth
@@ -562,7 +559,7 @@ kQuestInstanceData.Uldaman.Alliance[5] = {
     Note = "The Prequest starts at Prospector Stormpike (Ironforge - Hall of Explorers; "..yellow.."74,12"..white..").\nThe Urns are scattered throughout the caves before the instance.",
     Prequest = "Ironband Wants You! -> Murdaloc",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 4980 }, --Prospector Gloves Hands, Leather
     }
 }
@@ -575,7 +572,7 @@ kQuestInstanceData.Uldaman.Alliance[6] = {
     Note = "The tablet is north of the caves, at the east end of a tunnel, before the instance. On the Entrance map, it's at "..yellow.."[3]"..white..".",
     Folgequest = "To Ironforge for Yagyin's Digest",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 4746 }, --Doomsayer's Robe Chest, Cloth
     }
 }
@@ -597,7 +594,7 @@ kQuestInstanceData.Uldaman.Alliance[8] = {
     Note = "The Hidden Chamber is at "..yellow.."[4]"..white..". To open the Hidden Chamber you need The Shaft of Tsol from Revelosh "..yellow.."[3]"..white.." and the Gni'kiv Medallion from Baelog's Chest "..yellow.."[1]"..white..". Combine these two items to form Staff of Prehistoria. The Staff is used in the Map Room between "..yellow.."[3] and [4]"..white.." to summon Ironaya. After killing her, run inside the room she came from to get quest credit.",
     Prequest = "The Lost Dwarves",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 9626 }, --Dwarven Charge Two-Hand, Axe
         { id = 9627 }, --Explorer's League Lodestar Held In Off-hand
     }
@@ -640,7 +637,7 @@ kQuestInstanceData.Uldaman.Alliance[12] = {
     Note = "The Shattered Necklace Power Source drops Archaedas "..yellow.."[10]"..white..".",
     Prequest = "Find the Gems",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 7673 }, --Talvash's Enhancing Necklace Neck
     }
 }
@@ -653,7 +650,7 @@ kQuestInstanceData.Uldaman.Alliance[13] = {
     Note = "The caps are scattered throughout the instance. Herbalists can see them on their minimap if Track Herbs is on and they have the quest.",
     Prequest = "Badlands Reagent Run",
     Rewards = {
-        Text = blue.."Reward:(x5)",
+        Text = "Reward:(x5)",
         { id = 9030 }, --Restorative Potion Potion
     }
 }
@@ -674,7 +671,7 @@ kQuestInstanceData.Uldaman.Alliance[15] = {
     Note = "After you receive the quest, speak to the stone watcher to the left of the discs.  Then use the platinum discs again to recieve miniature discs, which you'll have to take to High Explorer Magellas in Ironforge - Hall of Explorers ("..yellow.."69,18"..white.."). The followup starts another NPC who is nearby.",
     Folgequest = "Portents of Uldum",
     Rewards = {
-        Text = blue.."Reward: 1 and 2 (x5) 3 (x5)",
+        Text = "Reward: 1 and 2 (x5) 3 (x5)",
         { id = 9587 }, --Thawpelt Sack Bag
         { id = 3928 }, --Superior Healing Potion Potion
         { id = 6149 }, --Greater Mana Potion Potion
@@ -700,7 +697,7 @@ kQuestInstanceData.Uldaman.Alliance[17] = { --1.18 TODO check NPC and quest avai
     Prequest = "An Ancient Acquisition",
     Folgequest = "The Activation",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 60518 }, --Broken Core Pendant Neck
     }
 }
@@ -712,7 +709,7 @@ kQuestInstanceData.Uldaman.Horde[1] = {
     Location = "Rigglefuzz (Badlands; "..yellow.."42,52"..white..")",
     Note = "The stones can be found on any Shadowforge enemies before and in the instance.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 9522 }, --Energized Stone Circle Shield
         { id = 10358 }, --Duracin Bracers Wrist, Mail
         { id = 10359 }, --Everlast Boots Feet, Cloth
@@ -727,7 +724,7 @@ kQuestInstanceData.Uldaman.Horde[2] = {
     Note = "The tablet is north of the caves, at the east end of a tunnel, before the instance. On the Entrance map, it's at "..yellow.."[3]"..white..".",
     Folgequest = "To Ironforge for Yagyin's Digest",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 4746 }, --Doomsayer's Robe Chest, Cloth
     }
 }
@@ -770,7 +767,7 @@ kQuestInstanceData.Uldaman.Horde[6] = {
     Prequest = "Translating the Journal",
     Folgequest = "Deliver the Gems",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 7888 }, --Jarkal's Enhancing Necklace Neck
     }
 }
@@ -784,7 +781,7 @@ kQuestInstanceData.Uldaman.Horde[7] = {
     Prequest = "Badlands Reagent Run",
     Folgequest = "Badlands Reagent Run II",
     Rewards = {
-        Text = blue.."Reward:(x5)",
+        Text = "Reward:(x5)",
         { id = 9030 }, --Restorative Potion Potion
     }
 }
@@ -805,7 +802,7 @@ kQuestInstanceData.Uldaman.Horde[9] = {
     Note = "After you receive the quest, speak to the stone watcher to the left of the discs.  Then use the platinum discs again to recieve miniature discs, which you'll have to take to Sage Truthseeker in Thunder Bluff ("..yellow.."34,46"..white.."). The followup starts another NPC who is nearby.",
     Folgequest = "Portents of Uldum",
     Rewards = {
-        Text = blue.."Reward: 1 or 2 (x5) or 3 (x5)",
+        Text = "Reward: 1 or 2 (x5) or 3 (x5)",
         { id = 9587 }, --Thawpelt Sack Bag
         { id = 3928 }, --Superior Healing Potion Potion
         { id = 6149 }, --Greater Mana Potion Potion
@@ -831,7 +828,7 @@ kQuestInstanceData.Uldaman.Horde[11] = {
     Prequest = "A Profitable Acquisition",
     Folgequest = "The Profitable Activation",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 60518 }, --Broken Core Pendant Neck
     }
 }
@@ -852,7 +849,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[1] = {
     Note = "Franclorn is in the middle of the blackrock, above his grave. You have to be dead to see him! Talk 2 times with him to start the quest.\nFineous Darkvire is at "..yellow.."[9]"..white..". You find the Shrine next to the arena "..yellow.."[7]"..white..".",
     Prequest = "Dark Iron Legacy",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 11000 }, --Shadowforge Key Key
     }
 }
@@ -865,7 +862,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[2] = {
     Note = "You get the prequest from Yorba Screwspigot (Tanaris - Steamwheedle Port; "..yellow.."67,23"..white..").\nRibbly is at "..yellow.."[15]"..white..".",
     Prequest = "Yuka Screwspigot",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 11865 }, --Rancor Boots Feet, Cloth
         { id = 11963 }, --Penance Spaulders Shoulder, Leather
         { id = 12049 }, --Splintsteel Armor Chest, Mail
@@ -879,7 +876,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[3] = {
     Location = "Mistress Nagmara (Blackrock Depths; "..yellow.."[15]"..white..")",
     Note = "You get the Giant Silver Veins from Giants in Azshara. Gromsblood can be most easily acquired from either an herbalist or at the Auction House. Lastly, the vial can be filled at the Go-Lakka crater (Un'Goro Crater; "..yellow.."31,50"..white..").\nAfter completing the quest, you can use the backdoor instead of killing Phalanx.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 11962 }, --Manacle Cuffs Wrist, Cloth
         { id = 11866 }, --Nagmara's Whipping Belt Waist, Leather
     }
@@ -893,7 +890,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[4] = {
     Note = "You get the prequest from Enohar Thunderbrew (Blasted Lands - Nethergarde Keep; "..yellow.."61,18"..white..").\nYou get the recipe from one of the guards who appear if you destroy the ale "..yellow.."[15]"..white..".",
     Prequest = "Ragnar Thunderbrew",
     Rewards = {
-        Text = blue.."Reward: 1 (x10) and 2 or 3",
+        Text = "Reward: 1 (x10) and 2 or 3",
         { id = 12003 }, --Dark Dwarven Lager Potion
         { id = 11964 }, --Swiftstrike Cudgel Main Hand, Mace
         { id = 12000 }, --Limb Cleaver Two-Hand, Axe
@@ -908,7 +905,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[5] = {
     Note = "You get the prequest from Jalinda Sprig, too. You find Lord Incendius at "..yellow.."[10]"..white..".",
     Prequest = "Overmaster Pyron",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 12113 }, --Sunborne Cape Back
         { id = 12114 }, --Nightfall Gloves Hands, Leather
         { id = 12112 }, --Crypt Demon Bracers Wrist, Mail
@@ -931,7 +928,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[7] = {
     Location = "Oralius (Burning Steppes - Morgan's Vigil; "..yellow.."84,68"..white..")",
     Note = "All dwarves can drop the packs.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 11883 }, --A Dingy Fanny Pack Container
     }
 }
@@ -945,7 +942,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[8] = {
     Prequest = "Dragonkin Menace -> The True Masters",
     Folgequest = "Abandoned Hope",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 12018 }, --Conservator Helm Head, Mail
         { id = 12021 }, --Shieldplate Sabatons Feet, Plate
         { id = 12041 }, --Windshear Leggings Legs, Leather
@@ -981,7 +978,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[11] = {
     Prequest = "A Shred of Hope",
     Folgequest = "Stormwind Rendezvous",
     Rewards = {
-        Text = blue.."Reward: 1 and 2 or 3",
+        Text = "Reward: 1 and 2 or 3",
         { id = 12065 }, --Ward of the Elements Trinket
         { id = 12061 }, --Blade of Reckoning One-Hand, Sword
         { id = 12062 }, --Skilled Fighting Blade One-Hand, Dagger
@@ -996,7 +993,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[12] = {
     Note = "The questline starts at Kalaran Windblade (Searing Gorge; "..yellow.."39,38"..white..").\nBael'Gar is at "..yellow.."[11]"..white..".",
     Prequest = "The Flawless Flame -> A Taste of Flame",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 12066 }, --Shaleskin Cape Back
         { id = 12082 }, --Wyrmhide Spaulders Shoulder, Leather
         { id = 12083 }, --Valconian Sash Waist, Cloth
@@ -1022,7 +1019,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[14] = {
     Prequest = "The Bearer of Bad News",
     Folgequest = "The Princess's Surprise",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 12548 }, --Magni's Will Ring
         { id = 12543 }, --Songstone of Ironforge Ring
     }
@@ -1063,7 +1060,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[18] = {
     Prequest = "Operation Screwfuse 1000 -> Operation FIX Screwfuse 1000",
     Folgequest = "Operation Help Jabbey 2 - > Operation Return to Screwfuse -> Operation Final Repairs - >Secrets of the Dark Iron Desecrator -> The Dark Iron Desecrator",
     Rewards = {
-        Text = blue.."Reward: 1 or 2 and 3",
+        Text = "Reward: 1 or 2 and 3",
         { id = 60996 }, --Bixxle's Necklace of Control Neck
         { id = 60997 }, --Bixxle's Necklace of Mastery Neck
     }
@@ -1077,7 +1074,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[19] = {
     Note = "This quest requires to collect 4 items.\n1) Magma Condensor (Blackrock Depths in Magma Condensor Crate) \n2) Intricate Arcanite Barrel (Blackrock Spire in Intricate Arcanite Barrels container)\n3) Molten Fragment (Molten Core from Molten Destroyer).\n4) Dark Iron Rifle (crafted by Engineers).\nTo finish the construction, I will also need Fiery Core(x3) found in Molten Core, and Enchanted Thorium Bars(x10).",
     Prequest = "Operation Help Jabbey -> Secrets of the Dark Iron Desecrator",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 61068 }, --Dark Iron Desecrator Gun
     }
 }
@@ -1090,7 +1087,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[20] = {
     Note = "This questline starts at Radgan Deepblaze next to Orvak Sternrock with quest 'Gaining Orvak's Trust'",
     Prequest = "Gaining Orvak's Trust -> Hearing Orvak's Story -> The Sternrock Stash",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 60668 }, --Badge of Shadowforge Trinket
     }
 }
@@ -1115,7 +1112,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[22] = {
     Note = red.."(Engineers only)"..white.."This quest requires to collect 3 items. \n1) Thorium Tuned Servo (Scarlet Monastery from Scarlet Myrmidon)\n2) Perfect Golem Core (Blackrock Depths from Golem Lord Argelmach)\n3) Adamantite Rod (Stratholme from Crimson Hammersmith)\n'Crowd Pummeler 9-60' in Gnomeregan drops 'Intact Pounder Mainframe' that starts the PreQuest 'A Pounding Brain'.",
     Prequest = "A Pounding Brain "..red.."(Engineers only)", --80398
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 81253 }, --Reinforced Red Pounder Mount
         { id = 81252 }, --Reinforced Green Pounder Mount
         { id = 81251 }, --Reinforced Blue Pounder Mount
@@ -1142,7 +1139,7 @@ kQuestInstanceData.BlackrockDepths.Horde[4] = {
     Note = "You get the prequest from Apothecary Zinge in Undercity - The Apothecarium ("..yellow.."50,68"..white..").\nYou get the recipe from one of the guards who appear if you destroy the ale "..yellow.."[15]"..white..".",
     Prequest = "Vivian Lagrave",
     Rewards = {
-        Text = blue.."Reward: 1 (x5) and 2 (x5) and 3 or 4",
+        Text = "Reward: 1 (x5) and 2 (x5) and 3 or 4",
         { id = 3928 }, --Superior Healing Potion Potion
         { id = 6149 }, --Greater Mana Potion Potion
         { id = 11964 }, --Swiftstrike Cudgel Main Hand, Mace
@@ -1185,7 +1182,7 @@ kQuestInstanceData.BlackrockDepths.Horde[8] = {
     Note = "You find General Angerforge at "..yellow.."[13]"..white..". He calls help below 30%!\nQuestline starts at Lexlort(Badlands - Kargath, on the tower) with quest 'Grark Lorkrub'.",
     Prequest = "Grark Lorkrub -> Precarious Predicament",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 12059 }, --Conqueror's Medallion Neck
     }
 }
@@ -1198,7 +1195,7 @@ kQuestInstanceData.BlackrockDepths.Horde[9] = {
     Note = "You get the prequest from Hierophant Theodora Mulvadania (Badlands - Kargath; "..yellow.."3,47"..white..").\nYou find Argelmach at "..yellow.."[14]"..white..".",
     Prequest = "The Rise of the Machines",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 12109 }, --Azure Moon Amice Back
         { id = 12110 }, --Raincaster Drape Back
         { id = 12108 }, --Basaltscale Armor Chest, Mail
@@ -1214,7 +1211,7 @@ kQuestInstanceData.BlackrockDepths.Horde[10] = {
     Note = "The questline starts at Kalaran Windblade (Searing Gorge; "..yellow.."39,38"..white..").\nBael'Gar is at "..yellow.."[11]"..white..".",
     Prequest = "The Flawless Flame -> A Taste of Flame",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 12066 }, --Shaleskin Cape Back
         { id = 12082 }, --Wyrmhide Spaulders Shoulder, Leather
         { id = 12083 }, --Valconian Sash Waist, Cloth
@@ -1229,7 +1226,7 @@ kQuestInstanceData.BlackrockDepths.Horde[11] = {
     Note = "You get the prequest from Thunderheart, too.\nYou find Lord Incendius at "..yellow.."[10]"..white..".",
     Prequest = "Disharmony of Flame",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 12113 }, --Sunborne Cape Back
         { id = 12114 }, --Nightfall Gloves Hands, Leather
         { id = 12112 }, --Crypt Demon Bracers Wrist, Mail
@@ -1245,7 +1242,7 @@ kQuestInstanceData.BlackrockDepths.Horde[12] = {
     Note = "You get the prequest from Thunderheart (Badlands - Kargath; "..yellow.."3,48"..white..").\n Every elemental can drop the Essence",
     Prequest = "Disharmony of Flame",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 12038 }, --Lagrave's Seal Ring
     }
 }
@@ -1269,7 +1266,7 @@ kQuestInstanceData.BlackrockDepths.Horde[14] = {
     Prequest = "Commander Gor'shak -> What Is Going On? (x2) -> The Eastern Kingdom",
     Folgequest = "The Princess Saved?",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 12544 }, --Thrall's Resolve Ring
         { id = 12545 }, --Eye of Orgrimmar Ring
     }
@@ -1304,7 +1301,7 @@ kQuestInstanceData.BlackwingLair.Alliance[1] = {
     Prequest = "The Charge of the Dragonflights",
     Folgequest = "The Might of Kalimdor (Must complete green & blue quest chains as well)",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 21530 }, --Onyx Embedded Leggings Legs, Mail
         { id = 21529 }, --Amulet of Shadow Shielding Neck
     }
@@ -1318,7 +1315,7 @@ kQuestInstanceData.BlackwingLair.Alliance[2] = {
     Note = "Highlord Bolvar Fordragon is at (Stormwind City - Stormwind Keep; "..yellow.."78,20"..white.."). The follow up sends you to Field Marshal Afrasiabi (Stormwind - Valley of Heroes; "..yellow.."67,72"..white..") for the reward.",
     Folgequest = "The Lord of Blackrock",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 19383 }, --Master Dragonslayer's Medallion Neck
         { id = 19366 }, --Master Dragonslayer's Orb Held In Off-hand
         { id = 19384 }, --Master Dragonslayer's Ring Ring
@@ -1344,7 +1341,7 @@ kQuestInstanceData.BlackwingLair.Alliance[4] = {
     Prequest = "Decoy!",
     Folgequest = "The Good News and The Bad News (Must complete Stewvul, Ex-B.F.F. and Never Ask Me About My Business quest chains)",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 21517 }, --Gnomish Turban of Psychic Might Head, Cloth
     }
 }
@@ -1358,7 +1355,7 @@ kQuestInstanceData.BlackwingLair.Alliance[5] = {
     Prequest = "The Key to Karazhan VIII (DMW)",
     Folgequest = "The Key to Karazhan X",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 61234 }, --Upper Karazhan Tower Key Key
     }
 }
@@ -1402,7 +1399,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[1] = {
     Location = "Gerrig Bonegrip (Ironforge - The Forlorn Cavern; "..yellow.."50,5"..white..")",
     Note = "You find the Manuscript at "..yellow.."[2]"..white.." in the water.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 6743 }, --Sustaining Ring Ring
     }
 }
@@ -1415,7 +1412,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[2] = {
     Note = "You get it from Argos Nightwhisper at (Stormwind - The Park; "..yellow.."21,55"..white.."). \n\nAll the Nagas before and in Blackfathom Deeps drop the brains.",
     Prequest = "The Corruption Abroad",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 7003 }, --Beetle Clasps Wrist, Mail
         { id = 7004 }, --Prelacy Cape Back
     }
@@ -1438,7 +1435,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[4] = {
     Note = "Twilight Lord Kelris is at "..yellow.."[8]"..white..". You find Dawnwatcher Selgorm in Darnassus - Craftsmen's Terrace ("..yellow.."55,24"..white.."). \n\nATTENTION! If you turn on the flames beside Lord Kelris, enemies appear and attack you.",
     Prequest = "In Search of Thaelrid",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 7001 }, --Gravestone Scepter Wand
         { id = 7002 }, --Arctic Buckler Shield
     }
@@ -1451,7 +1448,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[5] = {
     Location = "Argent Guard Manados (Darnassus - Craftsmen's Terrace; "..yellow.."55,23"..white..")",
     Note = "Every Twilight mob can drop the pendants.",
     Rewards = {
-        Text = blue.."Rewards:",
+        Text = "Rewards:",
         { id = 6998 }, --Nimbus Boots Feet, Cloth
         { id = 7000 }, --Heartwood Girdle Waist, Leather
     }
@@ -1464,7 +1461,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[6] = {
     Location = "Doan Karhan (Barrens; "..yellow.."49,57"..white..")",
     Note = red.."Warlock only"..white..": You get the 3 Soran'ruk Fragments from Twilight Accolytes in "..yellow.."[Blackfathom Deeps]"..white..". You get the Large Soran'ruk Fragment in "..yellow.."[Shadowfang Keep]"..white.." from Shadowfang Darksouls.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6898 }, --Orb of Soran'ruk Held In Off-hand
         { id = 15109 }, --Staff of Soran'ruk Staff
     }
@@ -1487,7 +1484,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[2] = {
     Location = "Damp Note (drop - see note)",
     Note = "You get the Damp Note from Blackfathom Tide Priestess (5% drop rate). Then take it to Je'neu Sancrea (Ashenvale - Zoram'gar Outpost; "..yellow.."11,33"..white.."). Lorgus Jett is at "..yellow.."[6]"..white..".",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 17694 }, --Band of the Fist Ring
         { id = 17695 }, --Chestnut Mantle Shoulder, Cloth
     }
@@ -1517,7 +1514,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[5] = {
     Location = "Doan Karhan (Barrens; "..yellow.."49,57"..white..")",
     Note = red.."Warlock only"..white..": You get the 3 Soran'ruk Fragments from Twilight Accolytes in "..yellow.."[Blackfathom Deeps]"..white..". You get the Large Soran'ruk Fragment in "..yellow.."[Shadowfang Keep]"..white.." from Shadowfang Darksouls.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6898 }, --Orb of Soran'ruk Held In Off-hand
         { id = 15109 }, --Staff of Soran'ruk Staff
     }
@@ -1530,7 +1527,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[6] = {
     Location = "Strange Water Globe (Blackfathom Deeps; "..yellow.."[7]"..white..")",
     Note = "Using Fathom Stone "..yellow.."[7]"..white.." for the quest #3 summons Baron Aquanis. He drops Strange Water Globe that starts the quest.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 16886 }, --Outlaw Sabre One-Hand, Sword
         { id = 16887 }, --Witch's Finger Held In Off-hand
     }
@@ -1553,7 +1550,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[1] = {
     Prequest = "The Lost Tablets of Mosh'aru",
     Folgequest = "Confront Yeh'kinya",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 20218 }, --Faded Hakkari Cloak Back
         { id = 20219 }, --Tattered Hakkari Cape Back
     }
@@ -1566,7 +1563,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[2] = {
     Location = "Kibler (Burning Steppes - Flame Crest; "..yellow.."65,22"..white..")",
     Note = "You find the Worg Cup at "..yellow.."[17]"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 12264 }, --Worg Carrier Pet
     }
 }
@@ -1578,7 +1575,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[3] = {
     Location = "Kibler (Burning Steppes - Flame Crest; "..yellow.."65,22"..white..")",
     Note = "You find the spider eggs near "..yellow.."[13]"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 12529 }, --Smolderweb Carrier Pet
     }
 }
@@ -1590,7 +1587,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[4] = {
     Location = "Ragged John (Burning Steppes - Flame Crest; "..yellow.."65,23"..white..")",
     Note = "Mother Smolderweb is at "..yellow.."[13]"..white..". The poison effect snares nearby players as well. If it is removed or dispelled, you fail the quest.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 15873 }, --Ragged John's Neverending Cup Trinket
     }
 }
@@ -1602,7 +1599,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[5] = {
     Location = "Helendis Riverhorn (Burning Steppes - Morgan's Vigil; "..yellow.."5,47"..white..")",
     Note = "You find Halycon at "..yellow.."[17]"..white..".",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 15824 }, --Astoria Robes Chest, Cloth
         { id = 15825 }, --Traphook Jerkin Chest, Leather
         { id = 15827 }, --Jadescale Breastplate Chest, Mail
@@ -1616,7 +1613,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[6] = {
     Location = "Warosh (Blackrock Spire; "..yellow.."[2]"..white..")",
     Note = "To get Warosh's Mojo you have to evoke and kill Urok Doomhowl "..yellow.."[15]"..white..". For his Evocation you need a Spear and Highlord Omokk's Head "..yellow.."[5]"..white..". The Spear is at "..yellow.."[3]"..white..". During the Evocation a few waves of ogres appear before Urok Doomhowl attacks you. You can use the Spear during the fight to damage the ogres.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 15867 }, --Prismcharm Trinket
     }
 }
@@ -1638,7 +1635,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[8] = {
     Note = "You find War Master Voone at "..yellow.."[9]"..white..", Highlord Omokk at "..yellow.."[5]"..white.." and Overlord Wyrmthalak at "..yellow.."[19]"..white..".",
     Prequest = "Message to Maxwell",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 13958 }, --Wyrmthalak's Shackles Wrist, Cloth
         { id = 13959 }, --Omokk's Girth Restrainer Waist, Plate
         { id = 13961 }, --Halycon's Muzzle Shoulder, Leather
@@ -1692,7 +1689,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[13] = {
     Location = "Kilram (Winterspring - Everlook; "..yellow.."61,37"..white..")",
     Note = "Blacksmith quest. Shadow Hunter Vosh'gajin is at "..yellow.."[7]"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 12821 }, --Plans: Dawn's Edge Pattern
     }
 }
@@ -1705,7 +1702,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[14] = {
     Note = "Blacksmith quest. Be sure to pick up the Unfired Plate Gauntlets near the Human Remains at "..yellow.."[11]"..white..". Turns in to Malyfous Darkhammer (Winterspring - Everlook; "..yellow.."61,39"..white.."). Rewards listed are for the followup.",
     Folgequest = "Fiery Plate Gauntlets",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 12699 }, --Plans: Fiery Plate Gauntlets Pattern
         { id = 12631 }, --Fiery Plate Gauntlets Hands, Plate
     }
@@ -1719,7 +1716,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[15] = {
     Note = "This quest requires to collect 4 items.\n1) Magma Condensor (Blackrock Depths in Magma Condensor Crate) \n2) Intricate Arcanite Barrel (Blackrock Spire in Intricate Arcanite Barrels container)\n3) Molten Fragment (Molten Core from Molten Destroyer).\n4) Dark Iron Rifle (crafted by Engineers).\nFiery Core(x3) found in Molten Core, and Enchanted Thorium Bars(x10).",
     Prequest = "Secrets of the Dark Iron Desecrator",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 61068 }, --Dark Iron Desecrator Gun
     }
 }
@@ -1755,7 +1752,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[8] = {
     Prequest = "Operative Bijou",
     Folgequest = "Bijou's Reconnaissance Report",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 15858 }, --Freewind Gloves Hands, Cloth
         { id = 15859 }, --Seapost Girdle Waist, Mail
     }
@@ -1770,7 +1767,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[10] = {
     Note = "Onyxia Prequest.\nYou find Highlord Omokk at "..yellow.."[5]"..white..", War Master Voone at "..yellow.."[9]"..white.." and Overlord Wyrmthalak at "..yellow.."[19]"..white..". The Blackrock Documents could appear next to one of these 3 bosses.",
     Folgequest = "Eitrigg's Wisdom -> For the Horde! ("..yellow.."Upper Blackrock Spire"..white..")",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 13958 }, --Wyrmthalak's Shackles Wrist, Cloth
         { id = 13959 }, --Omokk's Girth Restrainer Waist, Plate
         { id = 13961 }, --Halycon's Muzzle Shoulder, Leather
@@ -1789,7 +1786,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[16] = {
     Note = "Kill War Master Voone "..yellow.."[9]"..white.." in Lower Blackrock Spire and bring his tusks back to Taskmaster Ok'gog at Karfang Hold in Burning Steppes.",
     Prequest = "The Firegut Task",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 60715 }, --Taskmaster Whip Trinket
     }
 }
@@ -1802,7 +1799,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[17] = {
     Note = "Gizrul the Slavener appears after you kill boss Halycon "..yellow.."[17]"..white..".",
     Prequest = "Raider's Revenge -> Raider's New Mount",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60717 }, --Worg Rider Sash Waist, Leather
         { id = 60718 }, --Sootwalker Sandals Feet, Cloth
         { id = 60719 }, --Axe of Fargosh Main Hand, Axe
@@ -1816,7 +1813,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[18] = {
     Note = "Slay Quartermaster Zigris "..yellow.."[16]"..white.." deep in the Blackrock Spire for Karfang at Karfang Hold in Burning Steppes.",
     Prequest = "Protecting Fresh Blood -> Report to Molk -> Destroy All Traces... -> Take No Chances",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 60739 }, --Tarnished Lancelot Ring Ring
     }
 }
@@ -1875,7 +1872,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[5] = {
     Note = "You find General Drakkisath at "..yellow.."[9]"..white..".",
     Prequest = "General Drakkisath's Command ("..yellow.."Lower Blackrock Spire"..white..")",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 13966 }, --Mark of Tyranny Trinket
         { id = 13968 }, --Eye of the Beast Trinket
         { id = 13965 }, --Blackhand's Breadth Trinket
@@ -1891,7 +1888,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[6] = {
     Prequest = "Mayara Brightwing",
     Folgequest = "Delivery to Ridgewell",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 15861 }, --Swiftfoot Treads Feet, Leather
         { id = 15860 }, --Blinkstrike Armguards Wrist, Plate
     }
@@ -1905,7 +1902,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[7] = {
     Note = "Last part of the Onyxia quest chain for the Alliance. You find General Drakkisath at "..yellow.."[9]"..white..".",
     Prequest = "The Dragon's Eye",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 16309 }, --Drakefire Amulet Neck
     }
 }
@@ -1937,7 +1934,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[10] = {
     Prequest = "Final Preparations",
     Folgequest = "Return to Bodley",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 22057 }, --Brazier of Invocation Item
         { id = 22344 }, --Brazier of Invocation: User's Manual Item
     }
@@ -1951,7 +1948,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[11] = {
     Note = "Blacksmith quest. Goraluk Anvilcrack is at "..yellow.."[5]"..white..".",
     Prequest = "Lorax's Tale",
     Rewards = {
-        Text = blue.."Reward: 1 and 2 (x5) and 3",
+        Text = "Reward: 1 and 2 (x5) and 3",
         { id = 12696 }, --Plans: Demon Forged Breastplate Pattern
         { id = 9224 }, --Elixir of Demonslaying Potion
         { id = 12849 }, --Demon Kissed Sack Container
@@ -1967,7 +1964,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[12] = {
     Prequest = "The Binding of Xanthar",
     Folgequest = "The Upper Binding II -> The Upper Binding III "..yellow.."[Dire Maul West]"..white.." -> The Upper Binding IV",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 61696 }, --The Upper Binding of Xanthar Quest Item
     }
 }
@@ -1983,7 +1980,7 @@ kQuestInstanceData.BlackrockSpireUpper.Horde[5] = {
     Note = "You get the prequest from Apothecary Zinge in Undercity - The Apothecarium ("..yellow.."50,68"..white..").\n\nThe Darkstone Tablet is at "..yellow.."[3]"..white.." in a chest.",
     Prequest = "Vivian Lagrave and the Darkstone Tablet",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 15861 }, --Swiftfoot Treads Feet, Leather
         { id = 15860 }, --Blinkstrike Armguards Wrist, Plate
     }
@@ -1998,7 +1995,7 @@ kQuestInstanceData.BlackrockSpireUpper.Horde[6] = {
     Prequest = "Warlord's Command -> Eitrigg's Wisdom",
     Folgequest = "What the Wind Carries",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 13966 }, --Mark of Tyranny Trinket
         { id = 13968 }, --Eye of the Beast Trinket
         { id = 13965 }, --Blackhand's Breadth Trinket
@@ -2023,7 +2020,7 @@ kQuestInstanceData.BlackrockSpireUpper.Horde[8] = {
     Note = "Last part of the Onyxia prequest. You find General Drakkisath at "..yellow.."[9]"..white..".",
     Prequest = "Emberstrife -> Ascension...",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 16309 }, --Drakefire Amulet Neck
     }
 }
@@ -2055,7 +2052,7 @@ kQuestInstanceData.BlackrockSpireUpper.Horde[11] = {
     Prequest = "Final Preparations",
     Folgequest = "Return to Bodley",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 22057 }, --Brazier of Invocation Item
         { id = 22344 }, --Brazier of Invocation: User's Manual Item
     }
@@ -2069,7 +2066,7 @@ kQuestInstanceData.BlackrockSpireUpper.Horde[12] = {
     Note = "Blacksmith quest. Goraluk Anvilcrack is at "..yellow.."[5]"..white..".",
     Prequest = "Lorax's Tale",
     Rewards = {
-        Text = blue.."Reward: 1 or 2 (x5) or 3",
+        Text = "Reward: 1 or 2 (x5) or 3",
         { id = 12696 }, --Plans: Demon Forged Breastplate Pattern
         { id = 9224 }, --Elixir of Demonslaying Potion
         { id = 12849 }, --Demon Kissed Sack Container
@@ -2085,7 +2082,7 @@ kQuestInstanceData.BlackrockSpireUpper.Horde[13] = {
     Prequest = "The Binding of Xanthar",
     Folgequest = "The Upper Binding II -> The Upper Binding III "..yellow.."[Dire Maul West]"..white.." -> The Upper Binding IV",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 61696 }, --The Upper Binding of Xanthar Quest Item
     }
 }
@@ -2105,7 +2102,7 @@ kQuestInstanceData.DireMaulEast.Alliance[1] = {
     Location = "Azj'Tordin (Feralas - Lariss Pavillion; "..yellow.."76,37"..white..")",
     Note = "Pusillin is in Dire Maul "..yellow.."East"..white.." at "..yellow.."[1]"..white..". He runs when you talk to him, but stops and fights at "..yellow.."[2]"..white..". He'll drop the Crescent Key which is used for Dire Maul North and West.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 18411 }, --Spry Boots Feet, Leather
         { id = 18410 }, --Sprinter's Sword Two-Hand, Sword
     }
@@ -2119,7 +2116,7 @@ kQuestInstanceData.DireMaulEast.Alliance[2] = {
     Note = "Lethtendris is in Dire Maul "..yellow.."East"..white.." at "..yellow.."[3]"..white..". The prequest comes from Courier Hammerfall in Ironforge. He roams the entire city.",
     Prequest = "Feathermoon Stronghold",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18491 }, --Lorespinner Main Hand, Dagger
     }
 }
@@ -2132,7 +2129,7 @@ kQuestInstanceData.DireMaulEast.Alliance[3] = {
     Note = "You find Alliz the Wildshaper in the "..yellow.."East"..white.." part of Dire Maul at "..yellow.."[5]"..white..". The relict is in Silithius at "..yellow.."62,54"..white..". The prequest comes from Rabine Saturna as well.",
     Prequest = "A Reliquary of Purity",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 18535 }, --Milli's Shield Shield
         { id = 18536 }, --Milli's Lexicon Held In Off-hand
     }
@@ -2174,7 +2171,7 @@ kQuestInstanceData.DireMaulEast.Alliance[7] = {
     Note = red.."Mage Only"..white..": Hydrospawn Essence drop from [3] Hydrospawn. Reward: you can use Conjured Crystal Water.",
     Folgequest = "A Special Kind of Summons",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 83002 }, --Tome of Refreshment Ritual Pattern
     }
 }
@@ -2186,7 +2183,7 @@ kQuestInstanceData.DireMaulEast.Alliance[8] = {
     Location = "Arch Druid Dreamwind (Hyjal - Nordanaar; "..yellow.."84.8,29.3"..white.." top floor of the big tree)",
     Note = "You find Alliz the Wildshaper at "..yellow.."[5]"..white..".",
     Rewards = {
-        Text = blue.."Rewards:",
+        Text = "Rewards:",
         { id = 61199 }, --Bright Dream Shard Reagent
         { id = 61703 }, --Talisman of the Dreamshaper Neck
     }
@@ -2200,7 +2197,7 @@ kQuestInstanceData.DireMaulEast.Alliance[9] = {
     Note = red.."Druid Only"..white..": Blue Leaves drop from Treants.\nPrequest start [of Ancients and Treants] - (Tower of Karazhan "..yellow.."near [0]"..white..")", --2020112",
     Prequest = "A Study of Magical Trees",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 51070 }, --Glyph of the Arcane Treant Glyph
     }
 }
@@ -2242,7 +2239,7 @@ kQuestInstanceData.DireMaulNorth.Alliance[2] = {
     Location = "Knot Thimblejack (Dire Maul; "..yellow.."North, [4]"..white..")",
     Note = "Repeatable quest. You get the Ogre Tannin near "..yellow.."[4] (above)"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18258 }, --Gordok Ogre Suit Disguise
     }
 }
@@ -2262,7 +2259,7 @@ kQuestInstanceData.DireMaulNorth.Alliance[4] = {
     Location = "Captain Kromcrush (Dire Maul; "..yellow.."North, [5]"..white..")",
     Note = "Prince is in Dire Maul "..yellow.."West"..white.." at "..yellow.."[7]"..white..". The Gauntlet is near him in a chest. You can only get this quest after a Tribute run and have the 'King of the Gordok' buff.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 18369 }, --Gordok's Handwraps Hands, Cloth
         { id = 18368 }, --Gordok's Gloves Hands, Leather
         { id = 18367 }, --Gordok's Gauntlets Hands, Mail
@@ -2306,7 +2303,7 @@ kQuestInstanceData.DireMaulWest.Alliance[3] = {
     Note = "You can find the Treasure under the stairs "..yellow.."[7]"..white..".",
     Prequest = "The Madness Within",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 18424 }, --Sedge Boots Feet, Leather
         { id = 18421 }, --Backwood Helm Head, Mail
         { id = 18420 }, --Bonecrusher Two-Hand, Mace
@@ -2329,7 +2326,7 @@ kQuestInstanceData.DireMaulWest.Alliance[5] = {
     Location = "The Emerald Dream (randomly drops off bosses in all Dire Maul wings)",
     Note = red.."Druid only"..white..": You turn the book in to Lorekeeper Javon at the "..yellow.."1' Library"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18470 }, --Royal Seal of Eldre'Thalas Trinket
     }
 }
@@ -2341,7 +2338,7 @@ kQuestInstanceData.DireMaulWest.Alliance[6] = {
     Location = "The Greatest Race of Hunters (randomly drops off bosses in all Dire Maul wings)",
     Note = red.."Hunter only"..white..": You turn the book in to Lorekeeper Mykos at the "..yellow.."1' Library"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18473 }, --Royal Seal of Eldre'Thalas Trinket
     }
 }
@@ -2353,7 +2350,7 @@ kQuestInstanceData.DireMaulWest.Alliance[7] = {
     Location = "The Arcanist's Cookbook (randomly drops off bosses in all Dire Maul wings)",
     Note = red.."Mage only"..white..": You turn the book in to Lorekeeper Kildrath at the "..yellow.."1' Library"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18468 }, --Royal Seal of Eldre'Thalas Trinket
     }
 }
@@ -2365,7 +2362,7 @@ kQuestInstanceData.DireMaulWest.Alliance[8] = {
     Location = "The Light and How To Swing It (randomly drops off bosses in all Dire Maul wings)",
     Note = red.."Paladin only"..white..": You turn the book in to Lorekeeper Mykos at the "..yellow.."1' Library"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18472 }, --Royal Seal of Eldre'Thalas Trinket
     }
 }
@@ -2377,7 +2374,7 @@ kQuestInstanceData.DireMaulWest.Alliance[9] = {
     Location = "Holy Bologna: What the Light Won't Tell You (randomly drops off bosses in all Dire Maul wings)",
     Note = red.."Priest only"..white..": You turn the book in to Lorekeeper Javon at the "..yellow.."1' Library"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18469 }, --Royal Seal of Eldre'Thalas Trinket
     }
 }
@@ -2389,7 +2386,7 @@ kQuestInstanceData.DireMaulWest.Alliance[10] = {
     Location = "Garona: A Study on Stealth and Treachery (randomly drops off bosses in all Dire Maul wings)",
     Note = red.."Rogue only"..white..": You turn the book in to Lorekeeper Kildrath at the "..yellow.."1' Library"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18465 }, --Royal Seal of Eldre'Thalas Trinket
     }
 }
@@ -2401,7 +2398,7 @@ kQuestInstanceData.DireMaulWest.Alliance[11] = {
     Location = "Frost Shock and You (randomly drops off bosses in all Dire Maul wings)",
     Note = red.."Shaman only"..white..": You turn the book in to Lorekeeper Javon at the "..yellow.."1' Library"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18471 }, --Royal Seal of Eldre'Thalas Trinket
     }
 }
@@ -2413,7 +2410,7 @@ kQuestInstanceData.DireMaulWest.Alliance[12] = {
     Location = "Harnessing Shadows (randomly drops off bosses in all Dire Maul wings)",
     Note = red.."Warlock only"..white..": You turn the book in to Lorekeeper Mykos at the "..yellow.."1' Library"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18467 }, --Royal Seal of Eldre'Thalas Trinket
     }
 }
@@ -2425,7 +2422,7 @@ kQuestInstanceData.DireMaulWest.Alliance[13] = {
     Location = "Codex of Defense (randomly drops off bosses in all Dire Maul wings)",
     Note = red.."Warrior only"..white..": You turn the book in to Lorekeeper Kildrath at the "..yellow.."1' Library"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18466 }, --Royal Seal of Eldre'Thalas Trinket
     }
 }
@@ -2437,7 +2434,7 @@ kQuestInstanceData.DireMaulWest.Alliance[14] = {
     Location = "Lorekeeper Lydros (Dire Maul - West or North; "..yellow.."[1] Library"..white..")",
     Note = "It's not a prequest, but Elven Legends must be completed before this quest can be started.\nThe Libram is a random drop in Dire Maul and is tradeable, so it may be found on the Auction House. Skin of Shadow is Soulbound and can drop off some bosses, Risen Constructs and Risen Bonewarder in "..yellow.."Scholomance"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18330 }, --Arcanum of Focus Enchant
     }
 }
@@ -2449,7 +2446,7 @@ kQuestInstanceData.DireMaulWest.Alliance[15] = {
     Location = "Lorekeeper Lydros (Dire Maul - West or North; "..yellow.."[1] Library"..white..")",
     Note = "It's not a prequest, but Elven Legends must be completed before this quest can be started.\nThe Libram is a random drop in Dire Maul and is tradeable, so it may be found on the Auction House. Frayed Abomination Stitching is Soulbound and can drop off Ramstein the Gorger, Venom Belchers, Bile Spewer and Patchwork Horror in "..yellow.."Stratholme"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18331 }, --Arcanum of Protection Enchant
     }
 }
@@ -2461,7 +2458,7 @@ kQuestInstanceData.DireMaulWest.Alliance[16] = {
     Location = "Lorekeeper Lydros (Dire Maul - West or North; "..yellow.."[1] Library"..white..")",
     Note = "It's not a prequest, but Elven Legends must be completed before this quest can be started.\nThe Libram is a random drop in Dire Maul and is tradeable, so it may be found on the Auction House. Blood of Heroes is Soulbound and can be found on the ground in random places in the Western and Eastern Plaguelands.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18329 }, --Arcanum of Rapidity Enchant
     }
 }
@@ -2483,7 +2480,7 @@ kQuestInstanceData.DireMaulWest.Alliance[18] = {
     Note = "Immol'thar "..yellow.."[6]"..white.." drops Pure Ley Essence.\nQuestline starts with quest 'The Keepers Charge' at Keeper Iselus "..yellow.."89,8,33.8"..white.." Azshara, north-east coast corner.",
     Prequest = "Restoring the Ley Lines",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60333 }, --Azshara Keeper's Staff Staff
         { id = 60334 }, --Ring of Eldara Ring
     }
@@ -2498,7 +2495,7 @@ kQuestInstanceData.DireMaulWest.Alliance[19] = {
     Prequest = "The Binding of Xanthar -> The Upper Binding I "..yellow.."[Upper Blackrock Spire]"..white.." -> The Upper Binding II", --41015, 41011, 41012",
     Folgequest = "The Upper Binding IV",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 61696 }, --The Upper Binding of Xanthar Quest Item
     }
 }
@@ -2522,7 +2519,7 @@ kQuestInstanceData.DireMaulWest.Alliance[21] = {
     Prequest = "Into the Dream I -> Into the Dream II",
     Folgequest = "Into the Dream IV - VI",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 50545 }, --Gemstone of Ysera Neck
     }
 }
@@ -2553,7 +2550,7 @@ kQuestInstanceData.Maraudon.Alliance[1] = {
     Location = "Archmage Tervosh (Dustwallow Marsh - Theramore Isle; "..yellow.."66,49"..white..")",
     Note = "You get the Shadowshard Fragments from 'Shadowshard Rumbler' or 'Shadowshard Smasher' outside the instance on the Purple side.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 17772 }, --Zealous Shadowshard Pendant Neck
         { id = 17773 }, --Prodigious Shadowshard Pendant Neck
     }
@@ -2566,7 +2563,7 @@ kQuestInstanceData.Maraudon.Alliance[2] = {
     Location = "Talendria (Desolace - Nijel's Point; "..yellow.."68,8"..white..")",
     Note = "You can fill the Vial at any pool outside the instance on the Orange side. The plants are in the orange and purple areas inside the instance.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 17768 }, --Woodseed Hoop Ring
         { id = 17778 }, --Sagebrush Girdle Waist, Leather
         { id = 17770 }, --Branchclaw Gauntlets Hands, Plate
@@ -2580,7 +2577,7 @@ kQuestInstanceData.Maraudon.Alliance[3] = {
     Location = "Willow (Desolace; "..yellow.."62,39"..white..")",
     Note = "Most mobs in Maraudon drop the Carvings.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 17775 }, --Acumen Robes Chest, Cloth
         { id = 17776 }, --Sprightring Helm Head, Leather
         { id = 17777 }, --Relentless Chain Chest, Mail
@@ -2595,7 +2592,7 @@ kQuestInstanceData.Maraudon.Alliance[4] = {
     Location = "Centaur Pariah (Desolace; "..yellow.."45,86"..white..")",
     Note = "The 5 Kahns (desc for The Pariah's Instructions)",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 17774 }, --Mark of the Chosen Trinket
     },
     page = {2, "You find the Centaur Pariah in the south of desolace. He walks between "..yellow.."44,85"..white.." and "..yellow.."50,87"..white..".\nFirst, you have to kill the The Nameless Prophet ("..yellow.."[A] on Entrance Map"..white.."). You find him before you enter the instance, before the point where you can choose whether you take the purple or the orange entrance. After killing him you must kill the 5 Kahns. You find the first if you choose the way in the middle ("..yellow.."[1] on Entrance Map"..white.."). The second is in the purple part of Maraudon but before you enter the instance ("..yellow.."[2] on Entrance Map"..white.."). The third is in the orange part before you enter the instance ("..yellow.."[3] on Entrance Map"..white.."). The fourth is near "..yellow.."[4]"..white.." and the fifth is near  "..yellow.."[1]"..white..".", },
@@ -2618,7 +2615,7 @@ kQuestInstanceData.Maraudon.Alliance[6] = {
     Note = "Celebras creates the Scepter. Speak with him after he is finished.",
     Prequest = "Legends of Maraudon",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 17191 }, --Scepter of Celebras Item
     }
 }
@@ -2631,7 +2628,7 @@ kQuestInstanceData.Maraudon.Alliance[7] = {
     Note = "You find Princess Theradras at "..yellow.."[11]"..white..".",
     Folgequest = "Seed of Life",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 17705 }, --Thrash Blade One-Hand, Sword
         { id = 17743 }, --Resurgence Rod Staff
         { id = 17753 }, --Verdant Keeper's Aim Bow
@@ -2655,7 +2652,7 @@ kQuestInstanceData.Maraudon.Alliance[9] = {
     Note = "Purple Maraudon satir boss Lord Vyletongue "..yellow.."[5]"..white.." drops Harness of Chimaeran.",
     Prequest = "Cleansing the Roost -> Feeding the Younglings",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 61517 }, --Chimaera's Eye Trinket
     }
 }
@@ -2669,7 +2666,7 @@ kQuestInstanceData.Maraudon.Alliance[10] = {
     Prequest = "Proving A Point -> I've Read It In A Book Once",
     Folgequest = "Thunderforge Mastery",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 40080 }, --Thunderforge Lance Polearm
     }
 }
@@ -2772,7 +2769,7 @@ kQuestInstanceData.MoltenCore.Alliance[4] = {
     Location = "Lokhtos Darkbargainer (Blackrock Depths; "..yellow.."[15]"..white..")",
     Note = "You need a Sulfuron Ingot to get the contract from Lokhtos. They drop from Golemagg the Incinerator in Molten Core at "..yellow.."[7]"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18592 }, --Plans: Sulfuron Hammer Pattern
     }
 }
@@ -2795,7 +2792,7 @@ kQuestInstanceData.MoltenCore.Alliance[6] = {
     Prequest = "Decoy!",
     Folgequest = "The Good News and The Bad News (Must complete Stewvul, Ex-B.F.F. and Never Ask Me About My Business quest chains)",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 21517 }, --Gnomish Turban of Psychic Might Head, Cloth
     }
 }
@@ -2809,7 +2806,7 @@ kQuestInstanceData.MoltenCore.Alliance[7] = {
     Prequest = "Stewvul, Ex-B.F.F.",
     Folgequest = "The Good News and The Bad News (Must complete Draconic for Dummies and Never Ask Me About My Business quest chains)",
     Rewards = {
-        Text = blue.."Reward:(x3)",
+        Text = "Reward:(x3)",
         { id = 18253 }, --Major Rejuvenation Potion Potion
     }
 }
@@ -2832,7 +2829,7 @@ kQuestInstanceData.Naxxramas.Alliance[1] = {
     Location = "Kel'Thuzad (Naxxramas; "..yellow.."green 2"..white..")",
     Note = "Father Inigo Montoy (Eastern Plaguelands - Light's Hope Chapel; "..yellow.."81,58"..white..")",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 23206 }, --Mark of the Champion Trinket
         { id = 23207 }, --Mark of the Champion Trinket
     }
@@ -2845,7 +2842,7 @@ kQuestInstanceData.Naxxramas.Alliance[2] = {
     Location = "Craftsman Wilhelm (Eastern Plaguelands - Light's Hope Chapel; "..yellow.."81,60"..white..")",
     Note = "Frozen Runes come from Unholy Axes in Naxxramas.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 22700 }, --Glacial Leggings Legs, Cloth
         { id = 22699 }, --Icebane Leggings Legs, Plate
         { id = 22702 }, --Icy Scale Leggings Legs, Mail
@@ -2879,7 +2876,7 @@ kQuestInstanceData.Naxxramas.Alliance[5] = {
     Note = "Frozen Runes come from Unholy Axes in Naxxramas.",
     Prequest = "The Fate of Ramaladni",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 22707 }, --Ramaladni's Icy Grasp Ring
     }
 }
@@ -2903,7 +2900,7 @@ kQuestInstanceData.OnyxiasLair.Alliance[1] = {
     Note = "Drop the Sword in front of Onyxia when she's at 10% to 15% health. She'll have to breathe on and heat it. When Onyxia dies, pick the sword back up, click her corpse and use the sword. Then you're ready to turn in the quest.",
     Prequest = "Foror's Compendium ("..yellow.."Dire Maul West"..white..") -> The Forging of Quel'Serrar", -- 7507 -> 7508",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18348 }, --Quel'Serrar Main Hand, Sword
     }
 }
@@ -2917,7 +2914,7 @@ kQuestInstanceData.OnyxiasLair.Alliance[2] = {
     Prequest = "Decoy!",
     Folgequest = "The Good News and The Bad News (Must complete Stewvul, Ex-B.F.F. and Never Ask Me About My Business quest chains)",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 21517 }, --Gnomish Turban of Psychic Might Head, Cloth
     }
 }
@@ -2971,7 +2968,7 @@ kQuestInstanceData.RazorfenDowns.Alliance[2] = {
     Note = "The prequest is just you agreeing to help him. Several mobs spawn and attack Belnistrasz as he attempts to shut down the idol. After completing the quest, you can turn the quest in at the brazier in front of the idol.",
     Prequest = "Scourge of the Downs",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 10710 }, --Dragonclaw Ring Ring
     }
 }
@@ -2983,7 +2980,7 @@ kQuestInstanceData.RazorfenDowns.Alliance[3] = {
     Location = "Archbishop Bendictus (Stormwind - Cathedral of Light; "..yellow.."39,27"..white..")",
     Note = "Amnennar the Coldbringer is the last boss in Razorfen Downs. You can find him at "..yellow.."[6]"..white..".",
     Rewards = {
-        Text = blue.."Rewards:",
+        Text = "Rewards:",
         { id = 10823 }, --Vanquisher's Sword One-Hand, Sword
         { id = 10824 }, --Amberglow Talisman Neck
     }
@@ -2998,7 +2995,7 @@ kQuestInstanceData.RazorfenDowns.Horde[2] = {
     Note = "The preceding quest can be obtained from the last Boss in Razorfen Kraul. You find Malcin outside (The Barrens; "..yellow.."48,92"..white..").",
     Prequest = "An Unholy Alliance",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 17039 }, --Skullbreaker Main Hand, Mace
         { id = 17042 }, --Nail Spitter Gun
         { id = 17043 }, --Zealot's Robe Chest, Cloth
@@ -3013,7 +3010,7 @@ kQuestInstanceData.RazorfenDowns.Horde[3] = {
     Note = "The prequest is just you agreeing to help him. Several mobs spawn and attack Belnistrasz as he attempts to shut down the idol. After completing the quest, you can turn the quest in at the brazier in front of the idol.",
     Prequest = "Scourge of the Downs",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 10710 }, --Dragonclaw Ring Ring
     }
 }
@@ -3025,7 +3022,7 @@ kQuestInstanceData.RazorfenDowns.Horde[4] = {
     Location = "Andrew Brownell (Undercity - The Magic Quarter; "..yellow.."72,32"..white..")",
     Note = "Amnennar the Coldbringer is the last Boss at Razorfen Downs. You can find him at "..yellow.."[6]"..white..".",
     Rewards = {
-        Text = blue.."Rewards:",
+        Text = "Rewards:",
         { id = 10823 }, --Vanquisher's Sword One-Hand, Sword
         { id = 10824 }, --Amberglow Talisman Neck
     }
@@ -3040,7 +3037,7 @@ kQuestInstanceData.RazorfenDowns.Horde[5] = {
     Prequest = "Through Greater Magic -> The Ravenwood Scepter",
     Folgequest = "The Greymane Stone "..yellow.."[Gilneas City]"..white.."-> Gift of the Dark Bishop", -- 40996, 40997",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 61660 }, --Garalon's Might Two-Hand, Sword
         { id = 61661 }, --Varimathras' Cunning Staff
         { id = 61662 }, --Stillward Amulet Neck
@@ -3062,7 +3059,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[1] = {
     Location = "Mebok Mizzyrix (The Barrens - Ratchet; "..yellow.."62,37"..white..")",
     Note = "The Crate, the Stick and the Manual can all be found near Mebok Mizzyrix.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 6755 }, --A Small Container of Gems Container
     }
 }
@@ -3074,7 +3071,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[2] = {
     Location = "Heraltha Fallowbrook (Razorfen Kraul; "..yellow.."[8]"..white..")",
     Note = "The pendant is a random drop. You musst bring back the pendant to Treshala Fallowbrook in Darnassus - Tradesmen Terrace ("..yellow.."69,67"..white..").",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6751 }, --Mourning Shawl Back
         { id = 6752 }, --Lancer Boots Feet, Leather
     }
@@ -3087,7 +3084,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[3] = {
     Location = "Willix the Importer (Razorfen Kraul; "..yellow.."[8]"..white..")",
     Note = "Willix the Importer must be escorted to the entrance of the instance. The quest is turned in to him when completed.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6748 }, --Monkey Ring Ring
         { id = 6750 }, --Snake Hoop Ring
         { id = 6749 }, --Tiger Band Ring
@@ -3102,7 +3099,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[4] = {
     Note = "Charlga Razorflank "..yellow.."[7]"..white.." drops the Medallion required for this quest.",
     Prequest = "Lonebrow's Journal",
     Rewards = {
-        Text = blue.."Reward: 1 and 2 or 3",
+        Text = "Reward: 1 and 2 or 3",
         { id = 4197 }, --Berylline Pads Shoulder, Cloth
         { id = 6742 }, --Stonefist Girdle Waist, Mail
         { id = 6725 }, --Marbled Buckler Shield
@@ -3127,7 +3124,7 @@ kQuestInstanceData.RazorfenKraul.Horde[2] = {
     Location = "Willix the Importer (Razorfen Kraul; "..yellow.."[8]"..white..")",
     Note = "Willix the Importer must be escorted to the entrance of the instance. The quest is turned in to him when completed.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6748 }, --Monkey Ring Ring
         { id = 6750 }, --Snake Hoop Ring
         { id = 6749 }, --Tiger Band Ring
@@ -3150,7 +3147,7 @@ kQuestInstanceData.RazorfenKraul.Horde[4] = {
     Location = "Auld Stonespire (Thunderbluff; "..yellow.."36,59"..white..")",
     Note = "You can find Charlga Razorflank at "..yellow.."[7]"..white..".",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 4197 }, --Berylline Pads Shoulder, Cloth
         { id = 6742 }, --Stonefist Girdle Waist, Mail
         { id = 6725 }, --Marbled Buckler Shield
@@ -3174,7 +3171,7 @@ kQuestInstanceData.RazorfenKraul.Horde[6] = {
     Location = "Kym Wildmane (Thunder Bluff - The Elder Rise "..yellow.."77,29"..white..")",
     Note = "Tainted Brambleheart is dropped by Rotthorn, located at "..yellow.."[5]|r.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 41854 }, --Wildbranch Leggings, Cloth
         { id = 41855 }, --Fenweave Gloves, Mail
     }
@@ -3196,7 +3193,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Alliance[1] = {
     Note = "This quest line starts at Brother Crowley with quest 'Brother Anton' in Stormwind - Cathedral of Light ("..yellow.."42,24"..white..").\nYou can find High Inquisitor Whitemane and Scarlet Commander Mograine at "..yellow.."SM: Cathedral [2]"..white..", Herod at "..yellow.."SM: Armory [1]"..white.." and Houndmaster Loksey at "..yellow.."SM: Library [1]"..white..".",
     Prequest = "Brother Anton -> Down the Scarlet Path",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 6829 }, --Sword of Serenity One-Hand, Sword
         { id = 6830 }, --Bonebiter Two-Hand, Axe
         { id = 6831 }, --Black Menace One-Hand, Dagger
@@ -3211,7 +3208,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Alliance[2] = {
     Location = "Librarian Mae Paledust (Ironforge - Hall of Explorers; "..yellow.."74,12"..white..")",
     Note = "The book is on the floor on the left side of one of the corridors leading to Arcanist Doan ("..yellow.."[2]"..white..").",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 7746 }, --Explorers' League Commendation Neck
     }
 }
@@ -3242,7 +3239,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Horde[2] = {
     Location = "Varimathras (Undercity - Royal Quarter; "..yellow.."56,92"..white..")",
     Note = "You can find High Inquisitor Whitemane and Scarlet Commander Mograine at "..yellow.."SM: Cathedral [2]"..white..", Herod at "..yellow.."SM: Armory [1]"..white.." and Houndmaster Loksey at "..yellow.."SM: Library [1]"..white..".",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6802 }, --Sword of Omen One-Hand, Sword
         { id = 6803 }, --Prophetic Cane Held In Off-hand
         { id = 10711 }, --Dragon's Blood Necklace Neck
@@ -3256,7 +3253,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Horde[3] = {
     Location = "Sage Truthseeker (Thunderbluff; "..yellow.."34,47"..white..")",
     Note = "You can find the book in the Library section of the Scarlet Monastery.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 7747 }, --Vile Protector Shield
         { id = 17508 }, --Forcestone Buckler Shield
         { id = 7749 }, --Omega Orb Held In Off-hand
@@ -3301,7 +3298,7 @@ kQuestInstanceData.ScarletMonasteryArmory.Horde[3] = {
     Location = "Basil Frye (Undercity "..yellow.."60, 29"..white..")",
     Note = "Drop from Armory Quartermaster Daghelm [2].",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 7964 }, --Solid Sharpening Stone Enchant
         { id = 7965 }, --Solid Weightstone Enchant
     }
@@ -3324,7 +3321,7 @@ kQuestInstanceData.ScarletMonasteryCathedral.Alliance[2] = {
     Note = "Aged Wooden Chest contain the item. You can find Orb of Kaladus inside the second chamber, left from "..yellow.."[2]"..white..".",
     Prequest = "Tales of the Past -> The Forgotten Tome -> Returning to Janathos",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60316 }, --Truthkeeper Mantle Shoulder, Plate
         { id = 60317 }, --Lightgraced Mallet Main Hand, Mace
         { id = 60318 }, --Sorrowguard Clutch Waist, Leather
@@ -3339,7 +3336,7 @@ kQuestInstanceData.ScarletMonasteryCathedral.Alliance[3] = {
     Note = "Allies Against Undeath start at same NPC.",
     Prequest = "Allies Against Undeath",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 61478 }, --Ring of Holy Sacrement Ring
     }
 }
@@ -3362,7 +3359,7 @@ kQuestInstanceData.ScarletMonasteryGraveyard.Horde[2] = {
     Location = "Vorrel Sengutz (Scarlet Monastery - Graveyard; "..yellow.."[1]"..white..")",
     Note = "You can find Vorrel Sengutz at the beginning of the Graveyard section of the Scarlet Monastery. Nancy Vishas, who drops the ring needed for this quest, can be found in a house in the Alterac Mountains ("..yellow.."31,32"..white..").",
     Rewards = {
-        Text = blue.."Reward: 1 and 2 or 3",
+        Text = "Reward: 1 and 2 or 3",
         { id = 7751 }, --Vorrel's Boots Feet, Leather
         { id = 7750 }, --Mantle of Woe Shoulder, Cloth
         { id = 4643 }, --Grimsteel Cape Back
@@ -3377,7 +3374,7 @@ kQuestInstanceData.ScarletMonasteryGraveyard.Horde[3] = {
     Note = "You can finish this quest outside.\nQuestline starts at Innkeeper Norman <Innkeeper> in Undercity with quest 'Scarlet with Rage'.",
     Prequest = "Scarlet with Rage",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 51832 }, --Nathrezim Wedge Main Hand, Axe
         { id = 51833 }, --Femur Staff Staff
         { id = 51834 }, --Scarlet Pillar Two-Hand, Mace
@@ -3438,7 +3435,7 @@ kQuestInstanceData.Scholomance.Alliance[5] = {
     Prequest = "Krastinov's Bag of Horrors",
     Folgequest = "The Human, Ras Frostwhisper",
     Rewards = {
-        Text = blue.."Reward: 1 and 2 or 3",
+        Text = "Reward: 1 and 2 or 3",
         { id = 13544 }, --Spectral Essence Trinket
         { id = 15805 }, --Penelope's Rose Held In Off-hand
         { id = 15806 }, --Mirah's Song One-Hand, Sword
@@ -3453,7 +3450,7 @@ kQuestInstanceData.Scholomance.Alliance[6] = {
     Note = "You can find Ras Frostwhisper at "..yellow.."[7]"..white..".",
     Prequest = "The Human, Ras Frostwhisper - > Soulbound Keepsake",
     Rewards = {
-        Text = blue.."Reward: 1 and 2 or 3 or 4",
+        Text = "Reward: 1 and 2 or 3 or 4",
         { id = 14002 }, --Darrowshire Strongguard Shield
         { id = 13982 }, --Warblade of Caer Darrow Two-Hand, Sword
         { id = 13986 }, --Crown of Caer Darrow Head, Cloth
@@ -3478,7 +3475,7 @@ kQuestInstanceData.Scholomance.Alliance[8] = {
     Note = "Broodling Essence begins at Tinkee Steamboil (Burning Steppes - Flame Crest; "..yellow.."65,23"..white.."). The Viewing Room is at "..yellow.."[6]"..white..".",
     Prequest = "Broodling Essence - > Betina Bigglezink",
     Rewards = {
-        Text = blue.."Rewards:",
+        Text = "Rewards:",
         { id = 15853 }, --Windreaper One-Hand, Axe
         { id = 15854 }, --Dancing Sliver Staff
     }
@@ -3523,7 +3520,7 @@ kQuestInstanceData.Scholomance.Alliance[12] = {
     Prequest = "A New Rune-Frontier -> The Secrets of Darkforging -> The Secrets of Darkforging",
     Folgequest = "A Meeting With The Dreadlord",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 81060 }, --Tempered Runeblade Two-Hand, Sword
     }
 }
@@ -3557,7 +3554,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[1] = {
     Prequest = "The Tome of Valor -> The Test of Righteousness",
     Folgequest = "The Test of Righteousness",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 6953 }, --Verigan's Fist Two-Hand, Mace
     },
     Page = kQuestInstanceData.TheDeadmines.Alliance[6].Page
@@ -3570,7 +3567,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[2] = {
     Location = "Doan Karhan (Barrens; "..yellow.."49,57"..white..")",
     Note = red.."WARLOCK only"..white..": You get the 3 Soran'ruk Fragments from Twilight Accolytes in "..yellow.."[Blackfathom Deeps]"..white..". You get the Large Soran'ruk Fragment in "..yellow.."[Shadowfang Keep]"..white.." from Shadowfang Darksouls.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6898 }, --Orb of Soran'ruk Held In Off-hand
         { id = 15109 }, --Staff of Soran'ruk Staff
     }
@@ -3582,7 +3579,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[3] = {
     Location = "High Sorcerer Andromath (Stormwind - The Mage Quarter, Mage Tower)",
     Note = "High Sorcerer Andromath has tasked you with the death of Archmage Arugal "..yellow.."[12]"..white..". Return to him when you're done.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 51805 }, --Signet of Arugal Ring
     }
 }
@@ -3612,7 +3609,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[1] = {
     Location = "High Executor Hadrec (Silverpine Forest - The Sepulcher; "..yellow.."43,40"..white..")",
     Note = "You find Deathstalker Adamant at "..yellow.."[1]"..white..". Deathstalker Vincent is on the right side when you go into the courtyard at "..yellow.."[2]"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 3324 }, --Ghostly Mantle Shoulder, Cloth
     }
 }
@@ -3624,7 +3621,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[2] = {
     Location = "Keeper Bel'dugur (Undercity - The Apothecarium; "..yellow.."53,54"..white..")",
     Note = "You find the book at "..yellow.."[8]"..white.." on the left side when you enter the room.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6335 }, --Grizzled Boots Feet, Leather
         { id = 4534 }, --Steel-clasped Bracers Wrist, Mail
     }
@@ -3637,7 +3634,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[3] = {
     Location = "Dalar Dawnweaver (Silverpine Forest - The Sepulcher; "..yellow.."44,39"..white..")",
     Note = "You find Archmage Arugal at "..yellow.."[12]"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 6414 }, --Seal of Sylvanas Ring
     }
 }
@@ -3649,7 +3646,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[4] = {
     Location = "Doan Karhan (Barrens; "..yellow.."49,57"..white..")",
     Note = red.."WARLOCK only"..white..": You get the 3 Soran'ruk Fragments from Twilight Accolytes in "..yellow.."[Blackfathom Deeps]"..white..". You get the Large Soran'ruk Fragment in "..yellow.."[Shadowfang Keep]"..white.." from Shadowfang Darksouls.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 6898 }, --Orb of Soran'ruk Held In Off-hand
     }
 }
@@ -3663,7 +3660,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[5] = {
     Prequest = "Darlthos Heritage -> A Different Type of Lock -> Ways of Magic",
     Folgequest = "Darlthos Legacy",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60392 }, --Sword of Laneron Two-Hand, Sword
         { id = 60393 }, --Shield of Mathela Shield
     }
@@ -3677,7 +3674,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[6] = {
     Note = "You need to kill Prelate Ironmane [13].\nQuest chain start at Deathguard Podrig (Silverpine Forrest - The Sepulcher; "..yellow.."43, 42"..white..")",
     Prequest = "To Guard the Undead -> To Aid Brightcopf",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 70225 }, --Necklace of Redemption Neck
     }
 }
@@ -3717,7 +3714,7 @@ kQuestInstanceData.Stratholme.Alliance[2] = {
     Note = "The Scourge Data is in one of the 3 Towers, you find near "..yellow.."[15]"..white..", "..yellow.."[16]"..white.." and "..yellow.."[17]"..white..".",
     Prequest = "The Flesh Does Not Lie",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 13209 }, --Seal of the Dawn Trinket
         { id = 19812 }, --Rune of the Dawn Trinket
     }
@@ -3730,7 +3727,7 @@ kQuestInstanceData.Stratholme.Alliance[3] = {
     Location = "Leonid Barthalomew the Revered (Eastern Plaguelands - Light's Hope Chapel; "..yellow.."80,58"..white..")",
     Note = "You can find the Holy Water in chests everywhere in Stratholme. But if you open a chest bugs can appear and attack you.",
     Rewards = {
-        Text = blue.."Reward: 1 (x5) and 2 (x5) and 3 or 4",
+        Text = "Reward: 1 (x5) and 2 (x5) and 3 or 4",
         { id = 3928 }, --Superior Healing Potion Potion
         { id = 6149 }, --Greater Mana Potion Potion
         { id = 13216 }, --Crown of the Penitent Head, Cloth
@@ -3745,7 +3742,7 @@ kQuestInstanceData.Stratholme.Alliance[4] = {
     Location = "Smokey LaRue (Eastern Plaguelands - Light's Hope Chapel; "..yellow.."80,58"..white..")",
     Note = "You find the smoke shop near "..yellow.."[1]"..white..". Fras Siabi spawns when you open box.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 13171 }, --Smokey's Lighter Trinket
     }
 }
@@ -3758,7 +3755,7 @@ kQuestInstanceData.Stratholme.Alliance[5] = {
     Note = "You get the prequest from Caretaker Alen (Eastern Plaguelands - Light's Hope Chapel; "..yellow.."79,63"..white.."). The spectral citizens walk through whole Stratholme.",
     Prequest = "The Restless Souls",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 13315 }, --Testament of Hope Held In Off-hand
     }
 }
@@ -3790,7 +3787,7 @@ kQuestInstanceData.Stratholme.Alliance[8] = {
     Location = "Aurius (Stratholme; "..yellow.."[13]"..white..")",
     Note = "To start the quest you have to give Aurius [The Medallion of Faith]. You get the Medallion from a chest (Malor's Strongbox "..yellow.."[7]"..white..") in the first chamber of the bastion (before the ways split). After giving Aurius the Medallion he supports your group in the fight against the Baron "..yellow.."[19]"..white..". After killing the Baron you have to talk to Aurius again to get the Rewards.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 17044 }, --Will of the Martyr Neck
         { id = 17045 }, --Blood of the Martyr Ring
     }
@@ -3823,7 +3820,7 @@ kQuestInstanceData.Stratholme.Alliance[11] = {
     Note = "You can find the Baron at "..yellow.."[19]"..white..".",
     Prequest = "The Truth Comes Crashing Down",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 13243 }, --Argent Defender Shield
         { id = 13249 }, --Argent Crusader Staff
         { id = 13246 }, --Argent Avenger One-Hand, Sword
@@ -3868,7 +3865,7 @@ kQuestInstanceData.Stratholme.Alliance[15] = {
     Note = "Atiesh is summoned at "..yellow.."[2]"..white..".",
     Prequest = "Frame of Atiesh -> Atiesh, the Befouled Greatstaff",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 22589 }, --Atiesh, Greatstaff of the Guardian Staff
         { id = 22630 }, --Atiesh, Greatstaff of the Guardian Staff
         { id = 22631 }, --Atiesh, Greatstaff of the Guardian Staff
@@ -3883,7 +3880,7 @@ kQuestInstanceData.Stratholme.Alliance[16] = {
     Location = "Seril Scourgebane (Winterspring - Everlook; "..yellow.."61,37"..white..")",
     Note = red.."Blacksmith only"..white..": The Black Guard Swordsmith is summoned near "..yellow.."[15]"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 12825 }, --Plans: Blazing Rapier Pattern
     }
 }
@@ -3895,7 +3892,7 @@ kQuestInstanceData.Stratholme.Alliance[17] = {
     Location = "Lilith the Lithe (Winterspring - Everlook; "..yellow.."61,37"..white..")",
     Note = red.."Blacksmith only"..white..": The Crimson Hammersmith is summoned at "..yellow.."[8]"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 12824 }, --Plans: Enchanted Battlehammer Pattern
     }
 }
@@ -3908,7 +3905,7 @@ kQuestInstanceData.Stratholme.Alliance[18] = {
     Note = red.."(Engineers only)"..white.."This quest requires to collect 3 items. \n1) Thorium Tuned Servo (Scarlet Monastery from Scarlet Myrmidon)\n2) Perfect Golem Core (Blackrock Depths from Golem Lord Argelmach)\n3) Adamantite Rod (Stratholme from Crimson Hammersmith "..yellow.."[8]"..white..")\n'Crowd Pummeler 9-60' in Gnomeregan drops 'Intact Pounder Mainframe' that starts the PreQuest 'A Pounding Brain'.",
     Prequest = "A Pounding Brain",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 81253 }, --Reinforced Red Pounder Mount
         { id = 81252 }, --Reinforced Green Pounder Mount
         { id = 81251 }, --Reinforced Blue Pounder Mount
@@ -3925,7 +3922,7 @@ kQuestInstanceData.Stratholme.Alliance[19] = {
     Prequest = "Orb of Pure Light -> Seek Help Elsewhere",
     Folgequest = "Spirit of the Ashbringer",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 82002 }, --Tabard of the Ashbringer Tabard
     }
 }
@@ -3961,7 +3958,7 @@ kQuestInstanceData.Stratholme.Horde[18] = {
     Note = "You get the prequest from Nathanos Blightcaller, too. You can find Ramstein at "..yellow.."[18]"..white..".",
     Prequest = "The Ranger Lord's Behest -> Duskwing, Oh How I Hate Thee...",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 18022 }, --Royal Seal of Alexis Ring
         { id = 17001 }, --Elemental Circle Ring
     }
@@ -3975,7 +3972,7 @@ kQuestInstanceData.Stratholme.Horde[19] = {
     Note = red.."(Engineers only)"..white.."This quest requires to collect 3 items. \n1) Thorium Tuned Servo (Scarlet Monastery from Scarlet Myrmidon)\n2) Perfect Golem Core (Blackrock Depths from Golem Lord Argelmach)\n3) Adamantite Rod (Stratholme from Crimson Hammersmith "..yellow.."[8]"..white..")\n'Crowd Pummeler 9-60' in Gnomeregan drops 'Intact Pounder Mainframe' that starts the PreQuest 'A Pounding Brain'.",
     Prequest = "A Pounding Brain",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 81253 }, --Reinforced Red Pounder Mount
         { id = 81252 }, --Reinforced Green Pounder Mount
         { id = 81251 }, --Reinforced Blue Pounder Mount
@@ -4001,7 +3998,7 @@ kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[1] = {
     Location = "Head of Ossirian the Unscarred (drops from Ossirian the Unscarred; "..yellow.."[6]"..white..")",
     Note = "Commander Mar'alith (Silithus - Cenarion Hold; "..yellow.."49,34"..white..")",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 21504 }, --Charm of the Shifting Sands Neck
         { id = 21507 }, --Amulet of the Shifting Sands Neck
         { id = 21505 }, --Choker of the Shifting Sands Neck
@@ -4016,7 +4013,7 @@ kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[2] = {
     Location = "Dirk Thunderwood (Silithus - Cenarion Hold; "..yellow.."52,39"..white..")",
     Note = "Venoxis's Venom Sac drops from High priest Venoxis in "..yellow.."Zul'Gurub"..white..". Kurinnaxx's Venom Sac drops in the "..yellow.."Ruins of Ahn'Qiraj"..white.." at "..yellow.."[1]"..white..".",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 22378 }, --Ravenholdt Slicer One-Hand, Sword
         { id = 22379 }, --Shivsprocket's Shiv Main Hand, Dagger
         { id = 22377 }, --The Thunderwood Poker One-Hand, Dagger
@@ -4034,7 +4031,7 @@ kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[3] = {
     Note = red.."Mage only"..white..": pre-quest from Lorekeeper Lydros (Dire Maul - West or North; "..yellow.."[1] Library"..white.."). Perfect Obsidian Shard drop from "..yellow.."[3]"..white..".",
     Prequest = "Arcane Refreshment -> A Special Kind of Summons",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 83002 }, --Tome of Refreshment Ritual Pattern
     }
 }
@@ -4057,7 +4054,7 @@ kQuestInstanceData.TheStockade.Alliance[1] = {
     Location = "Guard Berton (Redridge Mountains - Lakeshire; "..yellow.."26,46"..white..")",
     Note = "You can find Targorr at "..yellow.."[1]"..white..".",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 3400 }, --Lucine Longsword Main Hand, Sword
         { id = 1317 }, --Hardened Root Staff Staff
     }
@@ -4070,7 +4067,7 @@ kQuestInstanceData.TheStockade.Alliance[2] = {
     Location = "Millstipe (Duskwood - Darkshire; "..yellow.."72,47"..white..")",
     Note = "You can find Dextren at "..yellow.."[5]"..white..".",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 2033 }, --Ambassador's Boots Feet, Leather
         { id = 2906 }, --Darkshire Mail Leggings Legs, Mail
     }
@@ -4099,7 +4096,7 @@ kQuestInstanceData.TheStockade.Alliance[5] = {
     Note = "The preceding quest can be obtained from Motley too. You can find Kam Deepfury at "..yellow.."[2]"..white..".",
     Prequest = "The Dark Iron War",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 3562 }, --Belt of Vindication Waist, Leather
         { id = 1264 }, --Headbasher Two-Hand, Mace
     }
@@ -4124,7 +4121,7 @@ kQuestInstanceData.TheStockade.Alliance[7] = {
     Prequest = "Robb's Report",
     Folgequest = "Investigating Corinth",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 81416 }, --Valiant Medallion Neck
         { id = 81417 }, --Ambient Talisman Neck
         { id = 81418 }, --Magnificent Necklace Neck
@@ -4147,7 +4144,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[1] = {
     Note = "The prequest line comes from the same NPC and has quite a few steps.\n\nYou can find the Tablets everywhere in the Temple, both outside and inside the instance.",
     Prequest = "In Search of The Temple -> Rhapsody's Tale",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 1490 }, --Guardian Talisman Trinket
     }
 }
@@ -4179,7 +4176,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[4] = {
     Note = "You find the statues at "..yellow.."[1]"..white..". See map for order to activate them.",
     Prequest = "Into the Depths",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 10773 }, --Hakkari Urn Container
     }
 }
@@ -4192,7 +4189,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[5] = {
     Note = "The Questline starts with 'Screecher Spirits' at the same NPC (See "..yellow.."[Zul'Farrak]"..white..").\nYou have to use the Egg at "..yellow.."[3]"..white.." to start the Event. Once it starts enemies spawn and attack you. Some of them drop the blood of Hakkar. With this blood you can put out the torch around the circle. After this the Avatar of Hakkar spawns. You kill him and loot the 'Essence of Hakkar' which you use to fill the egg.",
     Prequest = "Screecher Spirits -> The Ancient Egg",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 10749 }, --Avenguard Helm Head, Plate
         { id = 10750 }, --Lifeforce Dirk One-Hand, Dagger
         { id = 10751 }, --Gemburst Circlet Head, Cloth
@@ -4206,7 +4203,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[6] = {
     Location = "The Atal'ai Exile (The Hinterlands; "..yellow.."33,75"..white..")",
     Note = "You find Jammal'an at "..yellow.."[4]"..white..".",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 11123 }, --Rainstrider Leggings Legs, Cloth
         { id = 11124 }, --Helm of Exile Head, Mail
     }
@@ -4220,7 +4217,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[7] = {
     Note = "You find the Essence Font next to where Shade of Eranikus is at "..yellow.."[6]"..white..".\n"..red.."Don't"..white.."  sell or throw away reward trinket Chained Essence of Eranikus. You will need it for next quest at Itharius (Swamp and Sorrows - Itharius's Cave "..yellow.."[13.6,71.7]"..white..", after talking with him you will get an item that starts the quest.",
     Folgequest = "The Essence of Eranikus",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 10455 }, --Chained Essence of Eranikus Trinket
     }
 }
@@ -4233,7 +4230,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[8] = {
     Note = red.."Warlock only"..white..": Feather drops from each of the named trolls on the ledges overlooking the big room with the hole in the center.",
     Prequest = "An Imp's Request -> The Wrong Stuff",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 20536 }, --Soul Harvester Staff
         { id = 20534 }, --Abyss Shard Trinket
         { id = 20530 }, --Robes of Servitude Chest, Cloth
@@ -4248,7 +4245,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[9] = {
     Note = red.."Warrior only"..white..": Feather drops from each of the named trolls on the ledges overlooking the big room with the hole in the center.\nHorde questline starts in Orgrimar at warrior trainer Sorek "..yellow.."80.4,32.3"..white..".",
     Prequest = "A Troubled Spirit -> War on the Shadowsworn",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 20521 }, --Fury Visor Head, Plate
         { id = 20130 }, --Diamond Flask Trinket
         { id = 20517 }, --Razorsteel Shoulders Shoulder, Plate
@@ -4263,7 +4260,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[10] = {
     Note = red.."Druid only"..white..": The Putrid Vine drops from Atal'alarion who is summoned at "..yellow.."[1]"..white.." by activating the statues in the order listed on the map.",
     Prequest = "Torwa Pathfinder -> Toxic Test",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 22274 }, --Grizzled Pelt Chest, Leather
         { id = 22272 }, --Forest's Embrace Chest, Leather
         { id = 22458 }, --Moonshadow Stave Staff
@@ -4278,7 +4275,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[11] = {
     Note = red.."Hunter only"..white..": Morphaz is at "..yellow.."[5]"..white..".",
     Prequest = "The Hunter's Charm -> Wavethrashing",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 20083 }, --Hunting Spear Polearm
         { id = 19991 }, --Devilsaur Eye Trinket
         { id = 19992 }, --Devilsaur Tooth Trinket
@@ -4293,7 +4290,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[12] = {
     Note = red.."Mage only"..white..": Morphaz is at "..yellow.."[5]"..white..".",
     Prequest = "Magic Dust -> The Siren's Coral",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 20035 }, --Glacial Spike One-Hand, Dagger
         { id = 20037 }, --Arcane Crystal Pendant Neck
         { id = 20036 }, --Fire Ruby Trinket
@@ -4308,7 +4305,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[13] = {
     Note = red.."Priest only"..white..": Morphaz is at "..yellow.."[5]"..white..". Greta Mosshoof is at Felwood - Emerald Sanctuary ("..yellow.."51,82"..white..").",
     Prequest = "Cenarion Aid -> The Ichor of Undeath",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 19990 }, --Blessed Prayer Beads Trinket
         { id = 20082 }, --Woestave Wand
         { id = 20006 }, --Circle of Hope Ring
@@ -4323,7 +4320,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[14] = {
     Note = red.."Rogue only"..white..": The Azure Key drops from Morphaz at "..yellow.."[5]"..white..". Lord Jorach Ravenholdt is at Alterac Mountains - Ravenholdt ("..yellow.."86,79"..white..").",
     Prequest = "A Simple Request -> Encoded Fragments",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 19984 }, --Ebon Mask Head, Leather
         { id = 20255 }, --Whisperwalk Boots Feet, Leather
         { id = 19982 }, --Duskbat Drape Back
@@ -4349,7 +4346,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[16] = {
     Prequest = "By Any Means Necessary I -> By Any Means Necessary II -> By Any Means Necessary III",
     Folgequest = "By Any Means Necessary V",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 60536 }, --Darkwind Glaive One-Hand, Sword
     }
 }
@@ -4362,7 +4359,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[17] = {
     Note = red.."Paladin only"..white..": Feather drops from each of the named trolls on the ledges overlooking the big room with the hole in the center.",
     Prequest = "Inert Scourgestones",
     Rewards = {
-        Text = blue.."Reward: 1 and 2 or 3 or 4",
+        Text = "Reward: 1 and 2 or 3 or 4",
         { id = 20620 }, --Holy Mightstone Enchant
         { id = 20504 }, --Lightforged Blade Two-Hand, Sword
         { id = 20512 }, --Sanctified Orb Trinket
@@ -4379,7 +4376,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[18] = {
     Prequest = "Into the Dream I -> Into the Dream II",
     Folgequest = "Into the Dream IV",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 50545 }, --Gemstone of Ysera Neck
     }
 }
@@ -4393,7 +4390,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[19] = {
     Prequest = "The Sanv Charm ->> Finding Akh Z'ador -> Rift Fatigue: Body",
     Folgequest = "Novice In A Barren Land",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 41385 }, --Pure Draenethyst Gemstone Quest Item
     }
 }
@@ -4428,7 +4425,7 @@ kQuestInstanceData.TheSunkenTemple.Horde[17] = {
     Note = red.."Shaman only"..white..": Feather drops from each of the named trolls on the ledges overlooking the big room with the hole in the center.",
     Prequest = "Spirit Totem",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 20369 }, --Azurite Fists Hands, Mail
         { id = 20503 }, --Enamored Water Spirit Trinket
         { id = 20556 }, --Wildstaff Staff
@@ -4444,7 +4441,7 @@ kQuestInstanceData.TheSunkenTemple.Horde[18] = {
     Prequest = "The Maul'ogg Crisis VI",
     Folgequest = "The Maul'ogg Crisis VIII",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60346 }, --The Ogre Mantle Shoulder, Leather
         { id = 60347 }, --Staff of the Ogre Seer Staff
         { id = 60348 }, --Favor of Cruk'Zogg Neck
@@ -4460,7 +4457,7 @@ kQuestInstanceData.TheSunkenTemple.Horde[19] = {
     Prequest = "Into the Dream I -> Into the Dream II",
     Folgequest = "Into the Dream IV",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 50545 }, --Gemstone of Ysera Neck
     }
 }
@@ -4474,7 +4471,7 @@ kQuestInstanceData.TheSunkenTemple.Horde[20] = {
     Prequest = "The Sanv Charm ->> Finding Akh Z'ador -> Rift Fatigue: Body",
     Folgequest = "Novice In A Barren Land",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 41385 }, --Pure Draenethyst Gemstone Quest Item
     }
 }
@@ -4495,7 +4492,7 @@ kQuestInstanceData.TheTempleofAhnQiraj.Alliance[1] = {
     Note = "Caelestrasz (Temple of Ahn'Qiraj; "..yellow.."2'"..white..")\nRewards listed are for the followup.",
     Folgequest = "The Savior of Kalimdor",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 21712 }, --Amulet of the Fallen God Neck
         { id = 21710 }, --Cloak of the Fallen God Back
         { id = 21709 }, --Ring of the Fallen God Ring
@@ -4555,7 +4552,7 @@ kQuestInstanceData.ZulFarrak.Alliance[4] = {
     Note = "Hydromancer Velratha drops the Tiara of the Deep at "..yellow.."[6]"..white..".",
     Prequest = "Tabetha's Task",
     Rewards = {
-        Text = blue.."Rewards:",
+        Text = "Rewards:",
         { id = 9527 }, --Spellshifter Rod Staff
         { id = 9531 }, --Gemshale Pauldrons Shoulder, Plate
     }
@@ -4578,7 +4575,7 @@ kQuestInstanceData.ZulFarrak.Alliance[6] = {
     Location = "Chief Engineer Bilgewhizzle (Tanaris - Gadgetzan; "..yellow.."52,28"..white..")",
     Note = "You get the Rod from Sergeant Bly. You can find him at "..yellow.."[4]"..white.." after the Temple event.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 9533 }, --Masons Fraternity Ring Ring
         { id = 9534 }, --Engineer's Guild Headpiece Head, Leather
     }
@@ -4592,7 +4589,7 @@ kQuestInstanceData.ZulFarrak.Alliance[7] = {
     Note = "You get the prequest from Klockmort Spannerspan (Dun Morogh - Gnomeregan Reclamation Facility; "..yellow.."23.6,28"..white.."). It is not necessary to have the prequest to get the Gahz'rilla quest.\nYou summon Gahz'rilla at "..yellow.."[6]"..white.." with the Mallet of Zul'Farrak.\nThe Sacred Mallet comes from Qiaga the Keeper (The Hinterlands - The Altar of Zul; "..yellow.."49,70"..white..") and must be completed at the Altar in Jinta'Alor at "..yellow.."59,77"..white.." before it can be used in Zul'Farrak.",
     Prequest = "The Brassbolts Brothers",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 11122 }, --Carrot on a Stick Trinket
     }
 }
@@ -4604,7 +4601,7 @@ kQuestInstanceData.ZulFarrak.Alliance[8] = {
     Location = "Hansu Go'sha (Tanaris; "..yellow.."42,73"..white..")",
     Note = "In the room with Witch Doctor Zum'Rah "..yellow.."[3]"..white.." Ancient Burial Container (little green wooden box).",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 60759 }, --Southmoon Pendant Neck
     }
 }
@@ -4630,7 +4627,7 @@ kQuestInstanceData.ZulFarrak.Horde[9] = {
     Note = "The Questline starts with quest 'Sandfury Redemption I' at Seer Maz'ek in Sandmoon Village(Tanaris) "..yellow.."59.1,17.1"..white..".",
     Prequest = "Plight of the Sandfury",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60764 }, --The Dune Blade Main Hand, Sword
         { id = 60765 }, --Sandmoon Greaves Legs, Mail
     }
@@ -4658,7 +4655,7 @@ kQuestInstanceData.ZulGurub.Alliance[1] = {
     Location = "Exzhal (Stranglethorn Vale - Yojamba Isle; "..yellow.."15,15"..white..")",
     Note = "Make sure you loot all the priests.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 20213 }, --Belt of Shrunken Heads Waist, Plate
         { id = 20215 }, --Belt of Shriveled Heads Waist, Mail
         { id = 20216 }, --Belt of Preserved Heads Waist, Leather
@@ -4673,7 +4670,7 @@ kQuestInstanceData.ZulGurub.Alliance[2] = {
     Location = "Heart of Hakkar (drops from Hakkar; "..yellow.."[11]"..white..")",
     Note = "Molthor (Stranglethorn Vale - Yojamba Isle; "..yellow.."15,15"..white..")",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 19948 }, --Zandalarian Hero Badge Trinket
         { id = 19950 }, --Zandalarian Hero Charm Trinket
         { id = 19949 }, --Zandalarian Hero Medallion Trinket
@@ -4695,7 +4692,7 @@ kQuestInstanceData.ZulGurub.Alliance[4] = {
     Location = "Dirk Thunderwood (Silithus - Cenarion Hold; "..yellow.."52,39"..white..")",
     Note = "Venoxis's Venom Sac drops from High priest Venoxis in "..yellow.."Zul'Gurub"..white.." at "..yellow.."[2]"..white..". Kurinnaxx's Venom Sac drops in the "..yellow.."Ruins of Ahn'Qiraj"..white.." at "..yellow.."[1]"..white..".",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 22378 }, --Ravenholdt Slicer One-Hand, Sword
         { id = 22379 }, --Shivsprocket's Shiv Main Hand, Dagger
         { id = 22377 }, --The Thunderwood Poker One-Hand, Dagger
@@ -4751,7 +4748,7 @@ kQuestInstanceData.Gnomeregan.Alliance[4] = {
     Location = "Shoni the Silent (Stormwind - Dwarven District; "..yellow.."55,12"..white..")",
     Note = "All Robots can drop the Robo-mechanical Guts.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 9608 }, --Shoni's Disarming Tool Off Hand, Axe
         { id = 9609 }, --Shilly Mitts Hands, Cloth
     }
@@ -4774,7 +4771,7 @@ kQuestInstanceData.Gnomeregan.Alliance[6] = {
     Note = "You get the prequest from Gaxim Rustfizzle (Stonetalon Mountains; "..yellow.."59,67"..white.."). The prequest is only a pointer quest and is not required to get this quest.\nThe white card is a random drop. You find the first terminal next to the back entrance before you enter the instance at "..yellow.."[3] on Entrance Map"..white..". The 3005-B is at "..yellow.."[3]"..white..", the 3005-C at "..yellow.."[5]"..white.." and the 3005-D is at "..yellow.."[6]"..white..".",
     Prequest = "Castpipe's Task",
     Rewards = {
-        Text = blue.."Rewards:",
+        Text = "Rewards:",
         { id = 9605 }, --Repairman's Cape Back
         { id = 9604 }, --Mechanic's Pipehammer Two-Hand, Mace
     }
@@ -4787,7 +4784,7 @@ kQuestInstanceData.Gnomeregan.Alliance[7] = {
     Location = "Kernobee (Gnomeregan; "..yellow.."[3]"..white..")",
     Note = "Escort quest! You find Scooty in Stranglethorn Vale - Booty Bay ("..yellow.."27,77"..white..").",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 9535 }, --Fire-welded Bracers Wrist, Mail
         { id = 9536 }, --Fairywing Mantle Shoulder, Cloth
     }
@@ -4800,7 +4797,7 @@ kQuestInstanceData.Gnomeregan.Alliance[8] = {
     Location = "High Tinker Mekkatorque (Dun Morogh - Gnomeregan Reclamation Facility; "..yellow.."24.2,29.7"..white..")",
     Note = "You find Thermaplugg at "..yellow.."[8]"..white..". He is the last boss in Gnomeregan.\nDuring the fight you have to disable the columns through pushing the button on the side.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 9623 }, --Civinad Robes Chest, Cloth
         { id = 9624 }, --Triprunner Dungarees Legs, Leather
         { id = 9625 }, --Dual Reinforced Leggings Legs, Mail
@@ -4825,7 +4822,7 @@ kQuestInstanceData.Gnomeregan.Alliance[10] = {
     Prequest = "Grime-Encrusted Ring",
     Folgequest = "Gnome Improvement",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 9362 }, --Brilliant Gold Ring Ring
     }
 }
@@ -4846,7 +4843,7 @@ kQuestInstanceData.Gnomeregan.Alliance[12] = {
     Location = "Weezan Littlegear (Dun Morogh - Gnomeregan Reclamation Facility "..yellow.."[25.2,31.6]"..white..")",
     Note = "Schematic: High Energy Regulator is on the table at "..yellow.."[3]"..white.." southeastern corner lower south chamber "..yellow.."[a]"..white..".",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 61393 }, --Low Energy Regulator Trinket
     }
 }
@@ -4858,7 +4855,7 @@ kQuestInstanceData.Gnomeregan.Alliance[13] = {
     Location = "Master Technician Wirespanner (Dun Morogh - Gnomeregan Reclamation Facility "..yellow.."[26.8,31.1]"..white..")",
     Note = "Alpha Channel Valve is at "..yellow.."[6]"..white..", use elevetaor to go down. south side of the central mechanism.\nReserve Pump Channel Lever is at "..yellow.."[b]"..white.." on the floor.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 61383 }, --Intricate Gnomish Blunderbuss Gun
         { id = 61384 }, --Ionized Metal Grips Hands, Mail
         { id = 61385 }, --Magnetic Band Ring
@@ -4881,7 +4878,7 @@ kQuestInstanceData.Gnomeregan.Horde[2] = {
     Location = "Kernobee (Gnomeregan; "..yellow.."[3]"..white..")",
     Note = "Escort quest! You find Scooty in Stranglethorn Vale - Booty Bay ("..yellow.."27,77"..white..").",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 9535 }, --Fire-welded Bracers Wrist, Mail
         { id = 9536 }, --Fairywing Mantle Shoulder, Cloth
     }
@@ -4894,7 +4891,7 @@ kQuestInstanceData.Gnomeregan.Horde[3] = {
     Location = "Nogg (Orgrimmar - Valley of Honor; "..yellow.."75,25"..white..")",
     Note = "You find Thermaplugg at "..yellow.."[8]"..white..". He is the last boss in Gnomeregan.\nDuring the fight you have to disable the columns through pushing the button on the side.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 9623 }, --Civinad Robes Chest, Cloth
         { id = 9624 }, --Triprunner Dungarees Legs, Leather
         { id = 9625 }, --Dual Reinforced Leggings Legs, Mail
@@ -4919,7 +4916,7 @@ kQuestInstanceData.Gnomeregan.Horde[5] = {
     Prequest = "Grime-Encrusted Ring",
     Folgequest = "Nogg's Ring Redo",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 9362 }, --Brilliant Gold Ring Ring
     }
 }
@@ -4941,7 +4938,7 @@ kQuestInstanceData.Gnomeregan.Horde[7] = {
     Note = "Prequest 'A New Power Source' starts at Technician Spuzzle(Durotar - Sparkwater Port "..yellow.."57.4,25.8"..white..") at level 7 .\nMegaflux Capacitor drops from Mekgineer Thermaplugg. You find Mekgineer Thermaplugg at "..yellow.."[8]"..white..". He is the last boss in Gnomeregan.\nDuring the fight you have to disable the columns through pushing the button on the side.",
     Prequest = "A New Power Source",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 81319 }, --Razorblade Buckler Shield
         { id = 81320 }, --Crackling Zapper Wand
     }
@@ -4978,7 +4975,7 @@ kQuestInstanceData.FourDragons.Alliance[1] = {
     Note = "Quest turns in to Keeper Remulos at (Moonglade - Shrine of Remulos; "..yellow.."36,41"..white.."). Reward listed is for the followup.",
     Folgequest = "Waking Legends",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 20600 }, --Malfurion's Signet Ring Ring
     }
 }
@@ -5000,7 +4997,7 @@ kQuestInstanceData.Azuregos.Alliance[1] = {
     Note = red.."Hunter only"..white..": Kill Azuregos to get the Mature Blue Dragon Sinew. He walks around the middle of the southern peninsula in Azshara near "..yellow.."[1]"..white..".",
     Prequest = "The Ancient Leaf ("..yellow.."Molten Core"..white..")", -- 7632",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 18714 }, --Ancient Sinew Wrapped Lamina Quiver
     }
 }
@@ -5051,7 +5048,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[2] = {
     Prequest = "The Sovereign Imperative",
     Folgequest = "Rise and Be Recognized -> The Eye of Command",
     Rewards = {
-        Text = blue.."Rewards:",
+        Text = "Rewards:",
         { id = 17691 }, --Stormpike Insignia Rank 1 Trinket
         { id = 19484 }, --The Frostwolf Artichoke Book
     }
@@ -5065,7 +5062,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[3] = {
     Note = "Drek'thar is at (Alterac Valley - South; "..yellow.."[B]"..white.."). He does not actually need to be killed to complete the quest. The battleground just has to be won by your side in any manner.\nAfter turning this quest in, talk to the NPC again for the reward.",
     Folgequest = "Hero of the Stormpike",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 19107 }, --Bloodseeker Crossbow
         { id = 19106 }, --Ice Barbed Spear Polearm
         { id = 19108 }, --Wand of Biting Cold Wand
@@ -5204,7 +5201,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[2] = {
     Prequest = "In Defense of Frostwolf",
     Folgequest = "Rise and Be Recognized -> The Eye of Command",
     Rewards = {
-        Text = blue.."Rewards:",
+        Text = "Rewards:",
         { id = 17690 }, --Frostwolf Insignia Rank 1 Trinket
         { id = 19483 }, --Peeling the Onion Book
     }
@@ -5364,7 +5361,7 @@ kQuestInstanceData.BGArathiBasin.Alliance[3] = {
     Location = "Field Marshal Oslight (Arathi Highlands - Refuge Pointe; "..yellow.."46,45"..white..")",
     Note = "You need to be Exalted with the League of Arathor to get this quest.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 20132 }, --Arathor Battle Tabard Tabard
     }
 }
@@ -5392,7 +5389,7 @@ kQuestInstanceData.BGArathiBasin.Horde[3] = {
     Location = "Deathmaster Dwire (Arathi Highlands - Hammerfall; "..yellow.."74,35"..white..")",
     Note = "You need to be Exalted with The Defilers to get this quest.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 20131 }, --Battle Tabard of the Defilers Tabard
     }
 }
@@ -5428,7 +5425,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[2] = {
     Location = "Grol the Exile (Ashenvale "..yellow.."56,59"..white..")",
     Note = "Drop from furbolgs near first boss.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 60179 }, --Grol's Band Ring
     }
 }
@@ -5440,7 +5437,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[3] = {
     Location = "Denatharion <Druid Trainer> (Teldrassil - Darnassus "..yellow.."24,48"..white..")",
     Note = "You need to kill the last boss.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60180 }, --Sentinel Chain Chest, Mail
         { id = 60181 }, --Groveweave Cloak Back
         { id = 60182 }, --Epaulets of Forest Wisdom Shoulder, Cloth
@@ -5466,7 +5463,7 @@ kQuestInstanceData.TheCrescentGrove.Horde[3] = {
     Note = "The Questline starts at Loruk Foreststrider too. You need to kill the last boss.",
     Prequest = "Mysteries of the Grove -> Feran's Report",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60213 }, --Outrider Chain Chest, Mail
         { id = 60214 }, --Strongwind Cloak Back
         { id = 60215 }, --Foreststrider Spaulders Shoulder, Leather
@@ -5490,7 +5487,7 @@ kQuestInstanceData.KarazhanCrypt.Alliance[1] = {
     Note = "Karazhan Crypt Key from (The Mystery of Karazhan VI) quest. You can find Alarus at [5].",
     Prequest = "The Mystery of Karazhan I >> The Mystery of Karazhan VI",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60463 }, --Arcane Charged Pendant Neck
         { id = 60464 }, --Orb of Kaladoon Trinket
         { id = 60465 }, --Arcane Strengthened Band Ring
@@ -5505,7 +5502,7 @@ kQuestInstanceData.KarazhanCrypt.Alliance[2] = {
     Note = "Drop from [Ravenous Strigoi].\nThe quest line starts [Recipes of Kezan] get in "..yellow.."[Tower of Karazhan]"..white..".",
     Prequest = "A Chef's Majesty",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 92045 }, --Recipe: Empowering Herbal Salad Pattern
     }
 }
@@ -5518,7 +5515,7 @@ kQuestInstanceData.KarazhanCrypt.Horde[1] = {
     Note = "Karazhan Crypt Key from (The Depths of Karazhan VI) quest.You can find Alarus at [5].",
     Prequest = "The Depths of Karazhan I >> The Depths of Karazhan VI",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60459 }, --Charged Arcane Ring Ring
         { id = 60460 }, --Tusk of Gardon Neck
         { id = 60461 }, --Blackfire Orb Trinket
@@ -5542,7 +5539,7 @@ kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[1] = {
     Note = "Quest line start from Lizzarik <Weapon Dealer> (The Barrens - patrol from Crossroads to Ratchet "..yellow.."57,37"..white.."). Drop from [4].",
     Prequest = "A Glittering Opportunity > A Bloody Good Deed > A Letter From a Friend >> A Journey Into The Caverns",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 82950 }, --X-51 Arcane Ocular Implants Head, Cloth
         { id = 82951 }, --X-52 Stealth Ocular Implants Head, Leather
         { id = 82952 }, --X-53 Ranger Ocular Implants Head, Mail
@@ -5557,7 +5554,7 @@ kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[2] = {
     Location = "Tyvadrius (Tanaris - Caverns of Time "..yellow.."59,60"..white..")",
     Note = "You need to kill the first boss.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60497 }, --Pendant of Tyvadrius Neck
         { id = 60498 }, --Halberd of the Bronze Defender Polearm
         { id = 60499 }, --Ring of Tyvadrius Ring
@@ -5607,7 +5604,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[2] = {
     Note = "Questline starts at Radgan Deepblaze with quest 'Gaining Orvak's Trust' (Burning Steppes - Blackrock Pass; "..yellow.."76.1,67.6"..white..").",
     Prequest = "Gaining Orvak's Trust -> Hearing Orvak's Story -> The Sternrock Stash -> Miners Union Mutiny",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 60673 }, --Cuffs of Justice Wrist, Plate
     }
 }
@@ -5620,7 +5617,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[3] = {
     Note = "Questline starts at Radgan Deepblaze with quest 'Gaining Orvak's Trust' (Burning Steppes - Blackrock Pass; "..yellow.."76.1,67.6"..white..").\nKill Bargul Blackhammer and take Senate's Orders on the table next to the boss.",
     Prequest = "Gaining Orvak's Trust -> Hearing Orvak's Story -> The Sternrock Stash",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60665 }, --Deepblaze Signet Ring
         { id = 60666 }, --Sternrock Trudgers Feet, Leather
         { id = 60667 }, --Firepike's Lucky Trousers Legs, Cloth
@@ -5635,7 +5632,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[4] = {
     Note = red.."(Jewelcrafting ONLY)"..white.." Find 'Glimmering Shard' and get the quest.\nYou will get the reward finishing last quest in the questline.",
     Folgequest = "Thunderforge Mastery",
     Rewards = {
-        Text = blue.."Reward: All",
+        Text = "Reward: All",
         { id = 61818 }, --Gorgeous Mountain Gemstone Enchant
         { id = 70209 }, --Plans: Gorgeous Mountain Gemstone Pattern
     }
@@ -5648,7 +5645,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[5] = {
     Location = "Varlag Duskbeard (Burning Steppes - Morgan's Vigil; "..yellow.."85.1,67.6"..white..").",
     Note = "Hateforge Chemist mobs drop Dark Iron Vial for quest, Hateforge Chemistry Documents is in the box"..yellow.."[a]"..white..".",
     Rewards = {
-        Text = blue.."Rewards:",
+        Text = "Rewards:",
         { id = 2686 }, --Thunder Ale Drinkable
         { id = 60699 }, --Varlag's Clutches Hands, Leather
     }
@@ -5662,7 +5659,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[6] = {
     Note = "Kill the last boss Har'gesh Doomcaller "..yellow.."[5]"..white..".\nQuestline starts with quest 'Investigating Hateforge' at the same questgiver.",
     Prequest = "Investigating Hateforge -> The Hateforge Report -> The King's Response",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60694 }, --Crown of Grobi Head, Mail
         { id = 60695 }, --Sigil of Heritage Ring
         { id = 60696 }, --Rubyheart Mallet One-Hand, Mace
@@ -5678,7 +5675,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[7] = {
     Prequest = "Proving A Point -> I've Read It In A Book Once",
     Folgequest = "Thunderforge Mastery",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 40080 }, --Thunderforge Lance Polearm
     }
 }
@@ -5693,7 +5690,7 @@ kQuestInstanceData.HateforgeQuarry.Horde[5] = {
     Note = "Kill Engineer Figgles "..yellow.."[2]"..white.." in Hateforge Quarry  for Worg Mistress Katalla.",
     Prequest = "Peculiar Won't Even Cut It",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60771 }, --Pyrehand Gloves Hands, Cloth
         { id = 60772 }, --Fur of Navakesh Back
         { id = 60773 }, --Blackrock Authority One-Hand, Mace
@@ -5709,7 +5706,7 @@ kQuestInstanceData.HateforgeQuarry.Horde[6] = {
     Note = "Kill the last boss Har'gesh Doomcaller "..yellow.."[5]"..white..".\nQuestline starts at Councilor Vargek (Burning Steppes - Karfang Hold; "..yellow.."90.0,22.7"..white.." northeast corner of Burning Steppes) with quest 'Of New and Old'.",
     Prequest = "Of New and Old -> Of New and Old II -> Of New and Old III",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60734 }, --Blade of the Warleader Main Hand, Sword
         { id = 60735 }, --Obsidian Gem Choker Neck
         { id = 60736 }, --Battlemaster Helm Head, Plate
@@ -5739,7 +5736,7 @@ kQuestInstanceData.StormwindVault.Alliance[2] = {
     Location = "Pepin Ainsworth (Stormwind "..yellow.."54,47"..white..")",
     Note = "You need to kill the last boss.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 60624 }, --Goldplated Royal Crossbow Crossbow
         { id = 60625 }, --Golden Gauntlets of Stormwind Hands, Plate
         { id = 60626 }, --Regal Goldthreaded Sash Waist, Cloth
@@ -5755,7 +5752,7 @@ kQuestInstanceData.StormwindVault.Alliance[3] = {
     Prequest = "Asleep Under Snow",
     Folgequest = "Awoke at Sun Rise",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 55133 }, --Claw of the Mageweaver Off Hand, Fist Weapon
         { id = 55134 }, --Rod of Permafrost Wand
         { id = 55135 }, --Shard of Leyflow Trinket
@@ -5769,7 +5766,7 @@ kQuestInstanceData.StormwindVault.Alliance[4] = {
     Location = "Mazen Mac'Nadir (Stormwind "..yellow.."42,64"..white..")",
     Note = "Near "..yellow.."[3]"..white.." boss.",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 60622 }, --Ring of the Academy Ring
     }
 }
@@ -5818,7 +5815,7 @@ kQuestInstanceData.GilneasCity.Alliance[1] = {
     Location = "Angered Phantom (Gilneas -Glaymore Stead "..yellow.."52.9,27.9"..white..")",
     Note = "You can find Angered Phantom inside building on the mountain. Entering Gilneas gates follow the mountain on your left(east), passing a field with windmills you will find a path to the sea, almost at the edge turn north follow the path(barely noticable).",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 61620 }, --Glaymore Family Breastplate Chest, Mail
         { id = 61621 }, --Ceremonial Gilnean Pike Polearm
         { id = 61622 }, --Glaymore Shawl Back
@@ -5832,7 +5829,7 @@ kQuestInstanceData.GilneasCity.Alliance[2] = {
     Location = "Therum Deepforge <Expert Blacksmith> (Stormwind - Dwarven District"..yellow.."63.3,37"..white..", can be walking around there)",
     Note = "the Dawnstone Plans in the building "..yellow.."[a]"..white.." on the box.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 61348 }, --Inlaid Plate Boots Feet, Plate
         { id = 61349 }, --Dwarven Battle Bludgeon Main Hand, Mace
     }
@@ -5845,7 +5842,7 @@ kQuestInstanceData.GilneasCity.Alliance[3] = {
     Location = "Baron Caliban Silverlaine (Gilneas - Ravenshire (main building) "..yellow.."58.4,67.8"..white..")",
     Note = "the Deed to Ravenshire on the table behind Regent-Lady Celia Harlow and Regent-Lord Mortimer Harlow, next to the Harlow Family Chest"..yellow.."[7]"..white..".",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 61601 }, --Ebonmere Axe One-Hand, Axe
         { id = 61602 }, --Gilneas Brigade Helmet Head, Plate
         { id = 61603 }, --Robes of Ravenshire Chest, Cloth
@@ -5869,7 +5866,7 @@ kQuestInstanceData.GilneasCity.Alliance[5] = {
     Note = "Bring 1 Large Glowing Shard you will need 1 for prequest. enchanters have them or auction house can help. it should be cheap.",
     Prequest = "Font of Arcana -> Magical Presence -> Draconic Presence?",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 61486 }, --Violet Sash Waist, Cloth
         { id = 61487 }, --Gauntlets of Insight Hands, Mail
     }
@@ -5883,7 +5880,7 @@ kQuestInstanceData.GilneasCity.Alliance[6] = {
     Note = "Quest line starts with quest 'Wolf Amongst Sheep' at Baron Caliban Silverlaine (Gilneas - Ravenshire (main building) "..yellow.."58.4,67.8"..white..")\nThe Greymane Crown drops from Genn Greymane "..yellow.."[8]"..white..", last boss on the top of the tower.",
     Prequest = "Wolf Amongst Sheep -> One Chain at a Time -> On Legend's Trail -> Back to Ravenshire -> Dim Light in the Darkness -> Vilest of Men -> A Crossroads Deal -> Assaulting Freyshear Keep ",
     Rewards = {
-        Text = blue.."Reward: 1 or 2 or 3 and 4",
+        Text = "Reward: 1 or 2 or 3 and 4",
         { id = 61497 }, --Ravenwood Belt Waist, Mail
         { id = 61498 }, --Signet of Gilneas Ring
         { id = 61499 }, --Ravenshire Gloves Hands, Leather
@@ -5899,7 +5896,7 @@ kQuestInstanceData.GilneasCity.Alliance[7] = {
     Note = red.."(Mage ONLY)"..white.." Mage Theramore teleport quest.\nthe Manuscript on Hydromancy II in the building "..yellow.."[b]"..white..", go right, on the dresser (south side).",
     Prequest = "Mannoroc Demonic Sigil",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 92001 }, --Tome of Teleportation: Theramore Spell
     }
 }
@@ -5912,7 +5909,7 @@ kQuestInstanceData.GilneasCity.Alliance[8] = {
     Note = red.."(Jewelcrafter: Goldsmith ONLY)"..white.." Prequest from Mayva Togview (Ironforge - Hall of Explorers; "..yellow.."60,24"..white.."). \nDustivan Blackcowl "..yellow.."[4]"..white.." drops the Tarnished Citrine Choker",
     Prequest = "Mastering Goldsmithing",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 70134 }, --Plans: Alluring Citrine Choker Pattern
     }
 }
@@ -5946,7 +5943,7 @@ kQuestInstanceData.GilneasCity.Horde[2] = {
     Note = "Prequest 'Ebonmere Bat Infestation' and 'Ebonmere Worgen Infestation'.\nDustivan Blackcowl "..yellow.."[4]"..white.." drops the Ebonmere Deed",
     Prequest = "Ebonmere Bat Infestation -> Ebonmere Worgen Infestation",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 61627 }, --Ebonmere Reaver One-Hand, Axe
         { id = 61628 }, --Clutch of Joshua Waist, Cloth
         { id = 61629 }, --Farmer's Musket Gun
@@ -5971,7 +5968,7 @@ kQuestInstanceData.GilneasCity.Horde[4] = {
     Prequest = "Dead Until Dark -> All We Need is Blood -> Last of the Living Dead -> We Take It From The Living",
     Folgequest = "Blood for Blood",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 61422 }, --Pure Bloodvial Pendant Neck
     }
 }
@@ -5984,7 +5981,7 @@ kQuestInstanceData.GilneasCity.Horde[5] = {
     Note = "2 Questlines need to be finished to start this quest 'Report to Luke Agamand' and 'Report to Livia Strongarm' at Blackthorn.\n",
     Prequest = "'Report to Luke Agamand'-> Heist in Dryrock Mine ->> Report to Livia Strongarm -> Rendezvous with the Infiltrator ->> Quality Time with Blackthorn",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 61353 }, --Blackthorn Gauntlets Hands, Leather
         { id = 61354 }, --Banshee's Tear Ring
         { id = 61355 }, --Dark Footpad Belt Waist, Mail
@@ -6000,7 +5997,7 @@ kQuestInstanceData.GilneasCity.Horde[6] = {
     Prequest = "Through Greater Magic -> The Ravenwood Scepter -> The Powers Beyond "..yellow.."[Razorfen Downs]"..white..".", -- 40993, 40994, 40995",
     Folgequest = "Gift of the Dark Bishop",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 61660 }, --Garalon's Might Two-Hand, Sword
         { id = 61661 }, --Varimathras' Cunning Staff
         { id = 61662 }, --Stillward Amulet Neck
@@ -6015,7 +6012,7 @@ kQuestInstanceData.GilneasCity.Horde[7] = {
     Note = red.."(Jewelcrafter: Goldsmith only)"..white.." Prequest from Gulmire Fartower (Undercity - The Rogue Quarter "..yellow.."77,76"..white.."). \n'Gilnean Jewelry: A Compendium' (where?) contain item.",
     Prequest = "Mastering Goldsmithing",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 70134 }, --Plans: Alluring Citrine Choker Pattern
     }
 }
@@ -6177,7 +6174,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[14] = {
     Note = "Bring the Charge of Karazhan to The Cook near"..yellow.."[e]"..white.." in Lower Karazhan Halls.",
     Prequest = "Charge of Karazhan",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 61666 }, --Recipe: Le Fishe Au Chocolat Pattern
         { id = 84040 }, --Le Fishe Au Chocolat Pattern
     }
@@ -6200,7 +6197,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[16] = {
     Note = "15x Arcane Essence - random trash loot;\n20x Illusion Dust - Enchanters or Auction House;\n10x Greater Eternal Essence - Enchanters or Auction House;\nAfter finishing this quest you will be able to get a quest for head/leg enchants. For each of them you will need:\n 1x Overcharged Ley Energy - random rare item loot from trash/boss in Karazhan;\n6x Arcane Essence - random trash loot.",
     Folgequest = "Invocation of Shattering, Invocation of Greater Protection, Invocation of Expansive Mind, Invocation of Greater Arcane Fortitude",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 92005 }, --Invocation of Shattering Enchant
         { id = 92006 }, --Invocation of Greater Protection Enchant
         { id = 92007 }, --Invocation of Expansive Mind Enchant
@@ -6216,7 +6213,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[17] = {
     Note = red.."Mage only"..white..": Grizikil "..yellow.."[3]"..white.." drops 'Comically Large Candle'.\nThe quest line starts from Big Whiskers in "..yellow.."[Tower of Karazhan]"..white..".",
     Prequest = "I Am No Rat",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 92025 }, --Tome of Polymorph: Rodent Spell
     }
 }
@@ -6268,7 +6265,7 @@ kQuestInstanceData.EmeraldSanctum.Alliance[1] = {
     Note = red.."Druid only"..white..": Arch Druid Dreamwind is at (Hyjal - Nordanaar; "..yellow.."85,30"..white.."). Only one person in the raid can loot this item and the quest can only be done one time.\n\nRewards listed are for the followup.",
     Folgequest = "Purified Dream Essence",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 61445 }, --Purified Emerald Essence Pattern
     }
 }
@@ -6280,7 +6277,7 @@ kQuestInstanceData.EmeraldSanctum.Alliance[2] = {
     Location = "Head of Solnius [2]",
     Note = "Ralathius is at (Hyjal - Nordanaar; "..yellow.."85,30"..white.."). Only one person in the raid can loot this item and the quest can only be done one time.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 61195 }, --Ring of Nordrassil Ring
         { id = 61194 }, --The Heart of Dreams Neck
         { id = 61193 }, --Verdant Eye Necklace Trinket
@@ -6294,7 +6291,7 @@ kQuestInstanceData.EmeraldSanctum.Alliance[3] = {
     Location = "Claw of Erennius [1]",
     Note = "Ralathius is at (Hyjal - Nordanaar; "..yellow.."85,30"..white.."). Only one person in the raid can loot this item and the quest can only be done one time.",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 61650 }, --Jadestone Skewer Polearm
         { id = 61651 }, --Jadestone Mallet Main Hand, Mace
         { id = 61740 }, --Claw of Senthos Main Hand, Fist Weapon
@@ -6321,7 +6318,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[1] = {
     Prequest = "Wine for Kyleson, The Binding of Xanthar",
     Folgequest = "Tirisfal's Vestige",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 41413 }, --Scepter Rod of Medivh Quest Item
     }
 }
@@ -6335,7 +6332,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[2] = {
     Prequest = "Clutch of Thanlar -> Restoration",
     Folgequest = "The Sanv Charm -> A Favor Asked -> The Otherwordly Scepter of Medivh -> A Pathway Opened",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 41415, desc = "Open Portal" }, --The Scepter of Medivh Quest Item
     }
 }
@@ -6405,7 +6402,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[9] = {
     Prequest = "Scythe of the Goddess -->> Pricolich Lycan",
     Folgequest = "The Power of the Goddess",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 55505 }, --The Scythe of Elune Trinket
     }
 }
@@ -6429,7 +6426,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[1] = {
     Note = "Pedestal near "..yellow.."[5]"..white.."\n'Fragment of Algoron' drops from "..yellow.."[3]"..white.."\n'Fragment of Dathronag' contains in 'Chest of Dathronag' "
         ..yellow.."[a]",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 41876, desc = "Key" }, --Lower Reserve Key
     }
 }
@@ -6441,7 +6438,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[2] = {
     Location = "Grimbit (Wetlands - The Green Belt "..yellow.."55,35"..white..")",
     Note = "'Gowlfang's Head' drops from 'Gowlfang' "..yellow.."[1]",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 41830 }, --Mosshide Ring
     }
 }
@@ -6453,7 +6450,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[3] = {
     Location = "Kixxle (Wetlands - The Green Belt "..yellow.."50,38"..white..")",
     Note = "'Stone Golem Runestone' drops from 'Crumbling Stone Golem' near "..yellow.."[6]",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 41826 }, --Mosshide Cinch
         { id = 41827 }, --Fenwater Gloves
         { id = 41828 }, --Mosschain Bracers
@@ -6467,7 +6464,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[4] = {
     Location = "Nydiszanz (Wetlands - Dragonmaw Gates "..yellow.."74,48"..white..")",
     Note = "'Whelps' and 'Searistrasz' "..yellow.."[8]",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 41831 }, --Runebound Dagger
         { id = 41832 }, --Flameweave Sash
         { id = 41833 }, --Cuffs of Burning Rage
@@ -6481,7 +6478,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[5] = {
     Location = "Shard of the Demon Soul (Dragonmaw Retreat - "..yellow.."[10]"..white..")",
     Note = "Drops from 'Zuluhed The Wracked' "..yellow.."[10]",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 58234 }, --Pendant of Ember Blood
         { id = 58235 }, --"Pendant of Ember Blessing
         { id = 58236 }, --Pendant of Ember Hatred
@@ -6497,7 +6494,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[6] = {
         .."\nYou will get the reward finishing the next quest. Need to kill 'Commander Korlag Doomsong' Grim Reaches - Zarm'Geth Stronghold "..yellow.."56, 11",
     Folgequest = "Destruction of the Dragonmaw",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 41713 }, -- Doomsong Cuffs
         { id = 41714 }, -- Sash of Zarm'geth
         { id = 41715 }, -- Legging's of Geth'kar
@@ -6520,7 +6517,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[8] = {
     Note = "'Blackheart's Head' drops from 'Overlord Blackheart' "..yellow.."[7]",
     Prequest = "Defeat Nek'rosh",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 41842 }, --Menethil Greaves
         { id = 41843 }, --Stoutheart Shawl
         { id = 41844 }, --Torwyll's Cuffs
@@ -6535,7 +6532,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[9] = {
     Note = "You will get the reward finishing the next quest.\nTablet near "..yellow.."[5]",
     Folgequest = "The Redbrand Lie",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 41838 }, --Gravelweave Pantaloons
         { id = 41839 }, --Defender of Dorgal
         { id = 41840 }, --Gemlaced Sash
@@ -6567,7 +6564,7 @@ kQuestInstanceData.DragonmawRetreat.Horde[8] = {
     Location = "Shara Blazen (Hillsbrad Foothills - Tarren Mill "..yellow.."64, 21"..white..")",
     Note = "'Eternal Flame' contains near "..yellow.."[4]",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 41836 }, --Ancient Flame Pendant
     }
 }
@@ -6587,7 +6584,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[1] = {
     Location = "Olmir Halfhorn (Balor "..yellow.."30, 51"..white..")",
     Note = "'Crown of Balor' drops from 'Duke Balor the IV' "..yellow.."[4]",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 58261 }, --Drinking Halfhorn
         { id = 58262 }, --Enchanted Glass Kopis
     }
@@ -6600,7 +6597,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[2] = {
     Location = "Lord Olivert Grahan (Balor "..yellow.."36, 66"..white..")",
     Note = "'Balor Sigil Ring' drops from 'Duke Balor the IV' "..yellow.."[4]",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 58073 }, --Grahan Family Seal
     }
 }
@@ -6612,7 +6609,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[3] = {
     Location = "Rikki Fizmask (Balor "..yellow.."29, 11"..white..")",
     Note = "'Balorian Treasure' drops from 'Translucent Guests and Tethered Nobles' near "..yellow.."[4]",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 58281 }, --Trusty Goblin Shiv
     }
 }
@@ -6632,7 +6629,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[5] = {
     Location = "Noppsy Spickerspan (Balor - SI:7 Outpost "..yellow.."70, 77"..white..")",
     Note = "'Compendium of Successful Trade' drops from 'Librarian Theodorus' "..yellow.."[3]",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 58279 }, --Antiquated Slasher
         { id = 58280 }, --Chainmail of Many Pockets
     }
@@ -6655,7 +6652,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[7] = {
     Note = "'Ighal'for and Mergothid' "..yellow.."[11]",
     Prequest = "Assessing The Situation ->> Noppsy Spickerspan ->> Harrowing News -> Into The Hornet's Nest",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 58080 }, --Rufus' Trusty Tankard
         { id = 58081 }, --Kinrial's Scalpel
         { id = 58082 }, --Noppsy's Compendium
@@ -6670,7 +6667,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[8] = {
     Location = "Grukson Slatebeard (Grim Reaches - The Grim Hollow "..yellow.."56, 70"..white..")",
     Note = "'Stormwrought Crystal' contains near "..yellow.."[9]",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 41980 }, --Slatebeard Amulet
     }
 }
@@ -6703,7 +6700,7 @@ kQuestInstanceData.StormwroughtRuins.Horde[6] = {
     Prequest = "Living Fungus",
     Folgequest = "The Matron Will Know",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 58268 }, --Left
         { id = 58269 }, --Right
         { id = 58270 }, --Totem of An'she
@@ -6719,7 +6716,7 @@ kQuestInstanceData.StormwroughtRuins.Horde[7] = {
     Prequest = "Entranced Magic -> Natural Remedies - > Dark Essence",
     Folgequest = "The Ritual of Uth'okk",
     Rewards = {
-        Text = blue.."Reward:",
+        Text = "Reward:",
         { id = 41798 }, --The Pendant of Uth'okk
     }
 }
@@ -6733,7 +6730,7 @@ kQuestInstanceData.StormwroughtRuins.Horde[8] = {
     Prequest = "Deep in the Mines -> Mere Thoughts - > Colony of Ants",
     Folgequest = "Storm's End",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 58272 }, --Kor'kron Crown
         { id = 58273 }, --Voodoo Jerkin
         { id = 58274 }, --Totemic Headdress
@@ -6748,7 +6745,7 @@ kQuestInstanceData.StormwroughtRuins.Horde[9] = {
     Note = "Prequest start at 'Magus Wordeen Voidglare' (Hillsbrad Foothills - Tarren Mill "..yellow.."62, 21"..white..")",
     Prequest = "Prison Break In",
     Rewards = {
-        Text = blue.."Reward: Pick One",
+        Text = "Reward: Pick One",
         { id = 58277 }, --Lady Winter's Touch",
         { id = 58278 }, --Ring of Judgement
     }

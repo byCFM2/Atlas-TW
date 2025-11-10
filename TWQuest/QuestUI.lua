@@ -146,9 +146,9 @@ for i = 1, AtlasTW.QMAXQUESTS do
     button:SetScript("OnShow", setFrameLevelOnShow)
 
     local arrow = frame:CreateTexture("", "OVERLAY")
-    arrow:SetWidth(13)
+    arrow:SetWidth(15)
     arrow:SetHeight(15)
-    arrow:SetPoint("TOPLEFT", button, "TOPLEFT", 1, -2.5)
+    arrow:SetPoint("TOPLEFT", button, 1, -2.5)
     arrow:SetTexture("Interface\\Glues\\Login\\UI-BackArrow")
 
     local text = CreateText("", button, "GameFontNormalSmall", { "TOPLEFT", 15, 0 }, 150, 20, "LEFT")

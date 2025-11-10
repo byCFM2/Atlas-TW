@@ -557,7 +557,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 13483, disc = L["Vendor"], container = { 7076 } }, -- Recipe: Transmute Fire to Earth
                 { id = 15759, disc = L["Vendor"], container = { 15050 } }, -- Pattern: Black Dragonscale Breastplate
                 {},
-                { id = 11325, quantity = { 0, 10 }, disc = L["Vendor"] }, -- Dark Iron Ale Mug
+                { id = 11325, quantity = 10, disc = L["Vendor"] }, -- Dark Iron Ale Mug
                 {},
                 { id = 11602, dropRate = 100, disc = L["Pickpocketed"] }, -- Grim Guzzler Key
             },

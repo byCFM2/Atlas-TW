@@ -22,7 +22,6 @@ AtlasTW = _G.AtlasTW
 -----------------------------------------------------------------------------
 -- Colours
 -----------------------------------------------------------------------------
-local red = "|cffff0000"
 local white = "|cffFFFFFF"
 local blue = "|cff0070dd"
 
@@ -64,35 +63,11 @@ function AtlasTW.Quest.OnItemEnter(itemIndex)
 
     -- Extract item data
     local itemId = rewardItem.id
-    local itemDescription = rewardItem.desc
 
     -- Set up tooltip
-    AtlasTW.Quest.Tooltip:SetOwner(frame, "ANCHOR_RIGHT")
-    AtlasTW.Quest.Tooltip:ClearLines()
-
-    -- Try to get item info from game cache first
-    if itemId and GetItemInfo(itemId) then
-        -- Use game's tooltip if item is in cache
-        AtlasTW.Quest.Tooltip:SetHyperlink("item:" .. itemId)
-    else
-        -- Fallback to manual tooltip creation
-        -- Set item name with color
-        AtlasTW.Quest.Tooltip:AddLine(L["Item not found in cache"], 1, 1, 1)
-
-        -- Add description if available
-        if itemDescription and itemDescription ~= "" then
-            AtlasTW.Quest.Tooltip:AddLine(itemDescription, 0.8, 0.8, 0.8, 1)
-        end
-
-        -- Add error message if we have ID but can't load item
-        if itemId then
-            AtlasTW.Quest.Tooltip:AddLine(red .. L["This item is not safe!"], 1, 0, 0)
-            AtlasTW.Quest.Tooltip:AddLine(L["You can right-click to attempt to query the server."])
-        end
-    end
-
-    -- Show the tooltip
-    AtlasTW.Quest.Tooltip:Show()
+    GameTooltip:SetOwner(frame, "ANCHOR_RIGHT", -(frame:GetWidth() / 2), 24)
+    GameTooltip:SetHyperlink("item:"..itemId..":0:0:0")
+    GameTooltip:Show()
 end
 
 ---
@@ -102,21 +77,7 @@ end
 --- @usage Called automatically on mouse leave event
 ---
 function AtlasTW.Quest.OnItemLeave()
-    -- Hide all tooltips when mouse leaves item
-    local tooltips = {GameTooltip, AtlasTW.Quest.Tooltip}
-    local shoppingTooltips = {ShoppingTooltip1, ShoppingTooltip2}
-    -- Hide main tooltips if visible
-    for _, tooltip in ipairs(tooltips) do
-        if tooltip:IsVisible() then
-            tooltip:Hide()
-            -- Also hide shopping tooltips
-            for _, shoppingTip in ipairs(shoppingTooltips) do
-                if shoppingTip:IsVisible() then
-                    shoppingTip:Hide()
-                end
-            end
-        end
-    end
+    GameTooltip:Hide()
 end
 
 ---
@@ -158,17 +119,6 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
     -- Extract item data
     local itemId = rewardItem.id
 
-    -- Handle right click - show tooltip
-    if mouseButton == "RightButton" then
-        AtlasTW.Quest.Tooltip:SetOwner(frame, "ANCHOR_RIGHT", -(frame:GetWidth() / 2), 24)
-        AtlasTW.Quest.Tooltip:SetHyperlink(string.format("item:%d:0:0:0", itemId))
-        AtlasTW.Quest.Tooltip:Show()
-        if not AtlasTWOptions.QuestQuerySpam then
-            print(string.format("%s[%s%s%s]%s",
-                L["AtlasTWQuest is querying the server for: "], white, L["Item not found in cache"], white, L[" Please click right until you see the Item frame."]))
-        end
-        return
-    end
     -- Handle shift click - insert item link
     if IsShiftKeyDown() then
         local itemName, _, itemQuality = GetItemInfo(itemId)
@@ -203,6 +153,7 @@ end
 function AtlasTW.Quest.CloseDetails()
     AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
     AtlasTW.QCurrentButton = 0
+    AtlasTW.Quest.ClearAll()
 end
 
 
@@ -234,6 +185,22 @@ local function atlasTWQuestInsertQuestLink()
     end
 end
 
+
+---
+--- Hides the highlight textures and unlocks the highlight for all quest buttons.
+---
+--- @return nil
+--- @usage Called internally by other quest logic functions to reset button states.
+---
+function AtlasTW.Quest.HideQuestButtonHighlights()
+    for i = 1, AtlasTW.QMAXQUESTS do
+        local b = AtlasTW.Quest.UI_Main.QuestButtons[i].Button
+        local h = b:GetHighlightTexture()
+        --h:Hide()
+        b:UnlockHighlight()
+    end
+end
+
 ---
 --- Handles click events on quest buttons
 --- Toggles quest details display or inserts quest link to chat if Shift is held
@@ -252,7 +219,9 @@ function AtlasTW.Quest.OnQuestClick(questIndex)
     else
         AtlasTW.Quest.HideAtlasTWLootFrame()
         AtlasTW.Quest.UI.Story:SetText("")
-
+        local button = AtlasTW.Quest.UI_Main.QuestButtons[questIndex].Button
+        local highlightTexture = button:GetHighlightTexture()
+		AtlasTW.Quest.HideQuestButtonHighlights()
         if AtlasTW.Quest.UI.InsideAtlasFrame:IsVisible() and AtlasTW.QCurrentButton == AtlasTW.QCurrentQuest then
             AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
             AtlasTW.QCurrentButton = nil
@@ -260,6 +229,8 @@ function AtlasTW.Quest.OnQuestClick(questIndex)
             AtlasTW.Quest.UI.InsideAtlasFrame:Show()
             AtlasTW.QCurrentButton = AtlasTW.QCurrentQuest
             AtlasTW.Quest.SetQuestText()
+			highlightTexture:Show()
+			button:LockHighlight()
         end
     end
 end
@@ -468,8 +439,10 @@ function AtlasTW.Quest.OnAllianceClick()
         return print("AtlasTW.Quest.OnAllianceClick: Quest UI not fully loaded.")
     end
 	AtlasTW.isHorde = false
+    AtlasTW.Faction = "Alliance"
     AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(true)
     AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(false)
+    AtlasTW.Quest.CloseDetails()
     AtlasTW.OptionsInit()
     AtlasTW.Quest.SetQuestButtons()
 end
@@ -491,8 +464,10 @@ function AtlasTW.Quest.OnHordeClick()
         return print("AtlasTW.Quest.OnHordeClick: Quest UI not fully loaded.")
     end
 	AtlasTW.isHorde = true
+    AtlasTW.Faction = "Horde"
     AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(false)
     AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(true)
+    AtlasTW.Quest.CloseDetails()
     AtlasTW.OptionsInit()
     AtlasTW.Quest.SetQuestButtons()
 end
@@ -514,6 +489,7 @@ function AtlasTW.Quest.CloseQuestFrame()
     AtlasTW.Quest.UI_Main.Frame:Hide()
     AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
     AtlasTWOptionAutoshow:SetChecked(AtlasTWOptions.QuestWithAtlas)
+    AtlasTW.Quest.CloseDetails()
     AtlasTW.OptionsInit()
 end
 
@@ -538,15 +514,10 @@ function AtlasTW.Quest.ToggleQuestFrame()
         AtlasTW.Quest.UI_Main.Frame:Show()
     end
     AtlasTWOptionAutoshow:SetChecked(AtlasTWOptions.QuestWithAtlas)
+    AtlasTW.Quest.ClearAll()
     AtlasTW.OptionsInit()
 end
 
----
---- Handles quest-related game events and initialization
---- Loads finished quests and configures tooltip settings
---- @return nil
---- @usage Called automatically when the player starts the game
----
 ---
 --- Handles quest-related game events and initialization
 --- Loads finished quests and configures tooltip settings
@@ -558,11 +529,5 @@ function AtlasTW.Quest.OnEvent()
         AtlasTW.Quest.LoadFinishedQuests()
     else
         print("|cff00ff00Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
-    end
-    -- Register Tooltip with EquipCompare if enabled.
-    if AtlasTWOptions.QuestCompareTooltip then
-        AtlasTW.Quest.Tooltip:Register()
-    else
-        AtlasTW.Quest.Tooltip:Unregister()
     end
 end

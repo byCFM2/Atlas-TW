@@ -22,7 +22,7 @@ local L = AtlasTW.Local
 do
     -- Create the main options frame
     local optionsFrame = CreateFrame("Frame", "AtlasTWOptionsFrame", UIParent)
-    optionsFrame:SetFrameStrata("HIGH")
+    optionsFrame:SetFrameStrata("DIALOG")
     optionsFrame:SetHeight(550)
     optionsFrame:SetWidth(550)
     optionsFrame:SetPoint("CENTER", 0, 0)
@@ -191,7 +191,6 @@ do
         { name = "AtlasTWOptionQuestlog", text = L["Color Quests from the Questlog"], script = function() AtlasTW.OptionQuestlogOnClick() end },
         { name = "AtlasTWOptionAutoQuery", text = L["Auto-Query Unknown Items"], script = function() AtlasTW.OptionAutoQueryOnClick() end },
         { name = "AtlasTWOptionQuerySpam", text = L["Suppress Server Query Spam"], script = function() AtlasTW.OptionQuerySpamOnClick() end },
-        { name = "AtlasTWOptionCompareTooltip", text = L["Compare Rewards and Gear (/rl)"], script = function() AtlasTW.OptionCompareTooltipOnClick() end }
     }
 
     -- Optimized function to create quest checkboxes

@@ -104,7 +104,6 @@ function AtlasTW.OptionDefaultSettings()
         QuestCheckQuestlog = true,
         QuestAutoQuery = true,
         QuestQuerySpam = true,
-        QuestCompareTooltip = true,
         LootSafeLinks = true,
         LootAllLinks = false,
         LootDefaultTT = true,
@@ -279,7 +278,6 @@ function AtlasTW.OptionsInit()
 	AtlasTWOptionQuestlog:SetChecked(AtlasTWOptions.QuestCheckQuestlog)
 	AtlasTWOptionAutoQuery:SetChecked(AtlasTWOptions.QuestAutoQuery)
 	AtlasTWOptionQuerySpam:SetChecked(AtlasTWOptions.QuestQuerySpam)
-	AtlasTWOptionCompareTooltip:SetChecked(AtlasTWOptions.QuestCompareTooltip)
 
 	-- Loot Options
 	AtlasTWOptionSafeLinks:SetChecked(AtlasTWOptions.LootSafeLinks)
@@ -439,22 +437,6 @@ function AtlasTW.OptionQuerySpamOnClick()
 	AtlasTW.OptionsInit()
 end
 
----
---- Toggles quest tooltip comparison feature
---- Enables or disables quest item comparison in tooltips and registers/unregisters tooltip handlers
---- @return nil
---- @usage AtlasTW.OptionCompareTooltipOnClick() -- Called by checkbox click
----
-function AtlasTW.OptionCompareTooltipOnClick()
-	AtlasTWOptions.QuestCompareTooltip = not AtlasTWOptions.QuestCompareTooltip
-	AtlasTWOptionCompareTooltip:SetChecked(AtlasTWOptions.QuestCompareTooltip)
-	if AtlasTWOptions.QuestCompareTooltip then
-		AtlasTW.Quest.Tooltip:Register()
-	else
-		AtlasTW.Quest.Tooltip:Unregister()
-	end
-	AtlasTW.OptionsInit()
-end
 ---
 --- Toggles safe links feature for loot items
 --- Enables safe linking mode and disables all links mode when activated

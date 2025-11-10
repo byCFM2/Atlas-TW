@@ -131,14 +131,10 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 12837, container = { 12794 } }, -- Plans: Masterwork Stormhammer
                 { id = 12728, container = { 12641 } }, -- Plans: Invulnerable Mail
                 {},
-                { id = 18779, dropRate = 15 }, -- Bottom Half of Advanced Armorsmithing: Volume I
-                { id = 12727, container = { 12618 } }, -- Plans: Enchanted Thorium Breastplate
+                { id = 18779, disc = L["Misc"], dropRate = 15, container = { 18769, 12727, 12618 } }, -- Bottom Half of Advanced Armorsmithing: Volume I
+                { id = 12806, disc = L["Quest Item"], dropRate = 100, container = { 12696, 12628, { 9224, 5 }, 12849, 10377, 10383 } }, -- Unforged Rune Covered Breastplate
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                {},
-                { name = L["Small Rocket Recipes"] },
-                { id = 12806, dropRate = 100 }, -- Unforged Rune Covered Breastplate
-                { id = 12696, container = { 12628 } }, -- Plans: Demon Forged Breastplate
             }
         },
         {

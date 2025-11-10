@@ -32,7 +32,7 @@ AtlasTW.InstanceData.WindhornCanyon = {
     MaxPlayers = 5,
     DamageType = L["Physical"],
     Entrances = {
-        { letter = "A)"..L["Entrance"].." "..L["Front"] },
+        { letter = "A)"..L["Entrance"] },
     --    { letter = "B)"..L["Entrance"].." "..L["Back"] },
     },
     Keys = {

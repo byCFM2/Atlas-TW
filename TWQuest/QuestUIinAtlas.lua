@@ -100,12 +100,12 @@ for i, pos in ipairs(QUEST_ITEM_POSITIONS) do
     frame:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
 
     local icon = frame:CreateTexture("", "ARTWORK")
-    icon:SetWidth(24)
-    icon:SetHeight(24)
+    icon:SetWidth(30)
+    icon:SetHeight(30)
     icon:SetPoint("TOPLEFT", 0, 0)
 
     local name = CreateText("", frame, "GameFontNormal", { "TOPLEFT", icon, "TOPRIGHT", 3, 0 }, 205, 12, "LEFT")
-    local extra = CreateText("", frame, "GameFontNormalSmall", { "TOPLEFT", name, "BOTTOMLEFT" }, 205, 10, "LEFT")
+    local extra = CreateText("", frame, "GameFontNormalSmall", { "TOPLEFT", name, "BOTTOMLEFT", 0, -7 }, 205, 10, "LEFT")
     frame:RegisterForClicks("LeftButtonDown", "RightButtonDown")
     frame:SetScript("OnEnter", function()
         AtlasTW.Quest.OnItemEnter(index)

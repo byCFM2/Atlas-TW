@@ -721,7 +721,6 @@ function AtlasTW.LootBrowserUI.DisplayMenuData(menuData)
     FauxScrollFrame_Update(AtlasTWLootScrollBar, numItems, AtlasTW.NUM_LOOT_LINES, 16)
     local offset = FauxScrollFrame_GetOffset(AtlasTWLootScrollBar)
 
-    local lineIndex = 1
     for i = 1, AtlasTW.NUM_LOOT_LINES do
         local itemIndex = i + offset
         if itemIndex <= numItems then

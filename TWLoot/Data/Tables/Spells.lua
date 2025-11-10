@@ -9071,16 +9071,14 @@ AtlasTW.SpellDB = {
 				{3713},
 			},
 		},
-		[22704] = {
+		[22704] = { -- Field Repair Bot 74A
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 18232,
 			reagents = {
-				{12359, 12},
-				{8170, 4},
-				{7191},
-				{7067, 2},
-				{7068},
+				{ 12359, 12 }, -- Thorium Bar
+				{ 7191, 2 }, -- Fused Wiring
+				{ 10558 }, -- Gold Power Core
 			},
 		},
 		[22711] = {
