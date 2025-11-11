@@ -21,14 +21,14 @@ local L = AtlasTW.Local
 -----------------------------------------------------------------------------
 -- Colours
 -----------------------------------------------------------------------------
-local red = "|cffff0000"
-local redHorde = "|cffff6666"
-local white = "|cffFFFFFF"
-local grey = "|cff808080"
-local orange = "|cffff8000"
-local blue = "|cff0070dd"
-local green = "|cff00FF00"
-local yellow = "|cffffd200"
+local red = AtlasTW.Colors.RED
+local redHorde = AtlasTW.Colors.RED_HORDE
+local white = AtlasTW.Colors.WHITE
+local grey = AtlasTW.Colors.GREY2
+local orange = AtlasTW.Colors.ORANGE2
+local blue = AtlasTW.Colors.BLUE
+local green = AtlasTW.Colors.GREEN2
+local yellow = AtlasTW.Colors.YELLOW2
 -----------------------------------------------------------------------------
 -- AtlasTW
 -----------------------------------------------------------------------------
@@ -259,7 +259,7 @@ local function kQuestGetItemInf(count)
     -- Extract item data from the new structure
     local itemId = rewardItem.id
     local itemDescription = AtlasTW.ItemDB.ParseTooltipForItemInfo(itemId, rewardItem.desc)
-    local itemName = white .. L["Item not found in cache"]
+    local itemName = grey .. L["Item not found in cache"]
 
     -- Try to get item info from the game
     if itemId and GetItemInfo(itemId) then

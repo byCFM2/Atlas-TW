@@ -21,6 +21,8 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
+local Colors = AtlasTW.Colors
+
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 local captainLoot = {
@@ -83,7 +85,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
         },
         {
             name = L["Four Kaldorei Elites"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "GeneralRajaxx",
@@ -276,7 +278,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
             }
         },
-        { prefix = "1') ", name = L["Safe Room"], color = "|cff00FF00" },
+        { prefix = "1') ", name = L["Safe Room"], color = Colors.GREEN },
         {
             id = "AQ20Trash",
             name = L["Trash Mobs"].."-"..BZ["Ruins of Ahn'Qiraj"],

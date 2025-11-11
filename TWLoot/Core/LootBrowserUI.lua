@@ -105,6 +105,45 @@ local function formSkillStyle(skilltext)
 		GREEN..skilltext[3]..", "..GREY..skilltext[4]
 end
 
+-- Implement triple blink using OnUpdate (arg1 is elapsed time).
+-- Note: OnUpdate does not run while a frame is hidden in WoW 1.12,
+-- so we toggle alpha instead of Hide/Show to keep the handler active.
+local function AtlasTWLoot_BlinkScrollHint()
+    local f = AtlasTWLootScrollHint
+    if f._blinkActive then return end
+    f._blinkActive = true
+    f:Show()
+    f:SetAlpha(1)
+    f._blinkRemaining = 2 -- set to 2 for triple blink
+    f._blinkPhase = "on"
+    f._blinkElapsed = 0
+    f:SetScript("OnUpdate", function()
+        this._blinkElapsed = (this._blinkElapsed or 0) + arg1
+        if this._blinkElapsed >= .7 then
+            if this._blinkPhase == "on" then
+                this:SetAlpha(0)
+                this._blinkPhase = "off"
+                this._blinkElapsed = 0
+            else
+                if (this._blinkRemaining or 0) > 1 then
+                    this._blinkRemaining = this._blinkRemaining - 1
+                    this._blinkPhase = "on"
+                    this._blinkElapsed = 0
+                	this:SetAlpha(1)
+                else
+                    -- Final state: visible, stop OnUpdate to avoid CPU overhead
+                    this._blinkElapsed = nil
+                    this._blinkPhase = nil
+                    this._blinkRemaining = nil
+                    this._blinkActive = nil
+                    this:SetScript("OnUpdate", nil)
+                	this:SetAlpha(0)
+                end
+            end
+        end
+    end)
+end
+
 ---
 --- Updates the scrollbar and content for the loot items frame
 --- Loads and displays loot data for the currently selected element
@@ -165,6 +204,9 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 		if totalItems > AtlasTW.LOOT_NUM_LINES then
 			local numRows = math.ceil(totalItems/ 2)
 			num_scroll_steps = numRows - 7 -- TODO need remake
+			AtlasTWLoot_BlinkScrollHint()
+		else
+			AtlasTWLootScrollHint:SetAlpha(0)
 		end
 		-- Set scroll bar range
 		FauxScrollFrame_Update(AtlasTWLootScrollBar, num_scroll_steps + 1, 2, 1)
@@ -358,7 +400,7 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 								nameFrame:SetTextColor(1, 1, 1)
 							end
 							-- set name frame text for itemButton
-							nameFrame:SetText(itemName or L["Item not found in cache"])
+							nameFrame:SetText(itemName or (GREY..L["Item not found in cache"].."|r"))
 						elseif element.name then
 							-- Handle the case where item is a separator
 							local separator = AtlasTW.ItemDB.CreateSeparator(element.name, element.icon, element.quality)
@@ -373,7 +415,7 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 
 							local r, g, b = GetItemQualityColor(itemQuality)
 							nameFrame:SetTextColor(r, g, b)
-							nameFrame:SetText(itemName or L["Item not found in cache"])
+							nameFrame:SetText(itemName or (GREY..L["Item not found in cache"].."|r"))
 						end
 
 						-- Set description text
@@ -577,7 +619,7 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 		local text = AtlasTWCharDB and AtlasTWCharDB.LastSearchedText or ""
 		AtlasTWLoot_LootPageName:SetText(string.format(L["Search Result: %s"], text))
 	elseif dataID == "WishList" then
-		AtlasTWLoot_LootPageName:SetText(L["Wish List"] or "Wish List")
+		AtlasTWLoot_LootPageName:SetText(L["Wish List"])
 	else
 		AtlasTWLoot_LootPageName:SetText(dataID and type(dataID)=="string" and dataID or (dataID and dataID.menuName))
 	end

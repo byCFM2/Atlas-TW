@@ -20,6 +20,8 @@ AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
 local BC = AceLibrary("Babble-Class-2.2")
 local BZ = AceLibrary("Babble-Zone-2.2a")
+local Colors = AtlasTW.Colors
+
 
 AtlasTW.MenuData.PVP = {
     {},
@@ -59,11 +61,11 @@ end
 AtlasTW.MenuData.PVPSets = {
     {},
     {},
-    { name = "|cffffffff"..BC["Priest"], icon = "Interface\\Icons\\Spell_Holy_PowerWordShield", lootpage = "PVPPriest" },
-    { name = "|cff68ccef"..BC["Mage"], icon = "Interface\\Icons\\Spell_Frost_IceStorm", lootpage = "PVPMage" },
-    { name = "|cff9382c9"..BC["Warlock"], icon = "Interface\\Icons\\Spell_Shadow_CurseOfTounges", lootpage = "PVPWarlock" },
-    { name = "|cfffff468"..BC["Rogue"], icon = "Interface\\Icons\\Ability_BackStab", lootpage = "PVPRogue" },
-    { name = "|cffff7c0a"..BC["Druid"], icon = "Interface\\Icons\\Spell_Nature_Regeneration", lootpage = "PVPDruid" },
+    { name = Colors.Priest..BC["Priest"], icon = "Interface\\Icons\\Spell_Holy_PowerWordShield", lootpage = "PVPPriest" },
+    { name = Colors.Mage..BC["Mage"], icon = "Interface\\Icons\\Spell_Frost_IceStorm", lootpage = "PVPMage" },
+    { name = Colors.Warlock..BC["Warlock"], icon = "Interface\\Icons\\Spell_Shadow_CurseOfTounges", lootpage = "PVPWarlock" },
+    { name = Colors.Rogue..BC["Rogue"], icon = "Interface\\Icons\\Ability_BackStab", lootpage = "PVPRogue" },
+    { name = Colors.Druid..BC["Druid"], icon = "Interface\\Icons\\Spell_Nature_Regeneration", lootpage = "PVPDruid" },
     {},
     {},
     {},
@@ -74,10 +76,10 @@ AtlasTW.MenuData.PVPSets = {
     {},
     {},
     {},
-    { name = "|cffaad372"..BC["Hunter"], icon = "Interface\\Icons\\Ability_Hunter_RunningShot", lootpage = "PVPHunter" },
-    { name = "|cff2773ff"..BC["Shaman"], icon = "Interface\\Icons\\Spell_FireResistanceTotem_01", lootpage = "PVPShaman" },
-    { name = "|cfff48cba"..BC["Paladin"], icon = "Interface\\Icons\\Spell_Holy_SealOfMight", lootpage = "PVPPaladin" },
-    { name = "|cffc69b6d"..BC["Warrior"], icon = "Interface\\Icons\\INV_Shield_05", lootpage = "PVPWarrior" },
+    { name = Colors.Hunter..BC["Hunter"], icon = "Interface\\Icons\\Ability_Hunter_RunningShot", lootpage = "PVPHunter" },
+    { name = Colors.Shaman..BC["Shaman"], icon = "Interface\\Icons\\Spell_FireResistanceTotem_01", lootpage = "PVPShaman" },
+    { name = Colors.Paladin..BC["Paladin"], icon = "Interface\\Icons\\Spell_Holy_SealOfMight", lootpage = "PVPPaladin" },
+    { name = Colors.Warrior..BC["Warrior"], icon = "Interface\\Icons\\INV_Shield_05", lootpage = "PVPWarrior" },
 }
 
 ---

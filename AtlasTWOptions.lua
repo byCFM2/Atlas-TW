@@ -14,16 +14,18 @@
 ---
 --- @compatible World of Warcraft 1.12
 ---
----------------
---- COLOURS ---
----------------
-local red = "|cffff0000"
-local blue = "|cff0070dd"
+
 -- Local references to global functions for performance
 local _G = getfenv()
 local AtlasTW = _G.AtlasTW
 local L = AtlasTW.Local
 local uIDropDownMenu_SetSelectedID = UIDropDownMenu_SetSelectedID
+
+---------------
+--- COLOURS ---
+---------------
+local red = AtlasTW.Colors.RED
+local blue = AtlasTW.Colors.BLUE
 
 -- Local variables for frequently used UI elements
 local atlasOptionsFrame, atlasFrame  = AtlasTWOptionsFrame, AtlasTWFrame

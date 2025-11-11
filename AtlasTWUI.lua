@@ -17,6 +17,7 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
+local Colors = AtlasTW.Colors
 
 local L = AtlasTW.Local
 
@@ -306,7 +307,7 @@ do
     rightTexture:SetPoint("TOPLEFT", 512, 0)
 
     local titleText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-    titleText:SetText("|cFFD8D800"..AtlasTW.Name)
+    titleText:SetText(Colors.YELLOW..AtlasTW.Name)
     titleText:SetPoint("TOPLEFT", 200, -17)
 
     local versionText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
@@ -316,13 +317,13 @@ do
 
     -- Update marker (shown when a newer version is available)
     local updateMarker = atlasFrame:CreateFontString("AtlasTWUpdateMarker", "ARTWORK", "GameFontNormalSmall")
-    updateMarker:SetText(L["|cffff2020Update available|r"])
+    updateMarker:SetText(Colors.RED2..L["Update available"])
     updateMarker:SetPoint("LEFT", titleText, "RIGHT", 8, 0)
     updateMarker:Hide()
 
     -- Notice text
     local noticeText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-    noticeText:SetText(L["NoticeText"])
+    noticeText:SetText(Colors.RED..L["NoticeText"])
     noticeText:SetPoint("TOP", -20, -17)
 
     -- Notice link
@@ -332,10 +333,10 @@ do
     noticeBox:SetPoint("TOP", 240, -15)
     noticeBox:SetMaxLetters(48)
     noticeBox:SetAutoFocus(false)
-    noticeBox:SetText(L["NoticeLink"])
+    noticeBox:SetText(Colors.RED..L["NoticeLink"])
     noticeBox:SetScript("OnTextChanged", function()
-        if noticeBox:GetText() ~= L["NoticeLink"] then
-            noticeBox:SetText(L["NoticeLink"])
+        if noticeBox:GetText() ~= Colors.RED..L["NoticeLink"] then
+            noticeBox:SetText(Colors.RED..L["NoticeLink"])
         end
     end)
 

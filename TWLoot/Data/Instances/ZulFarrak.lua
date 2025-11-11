@@ -18,6 +18,7 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local GREY = AtlasTW.Colors.GREY
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -76,7 +77,7 @@ AtlasTW.InstanceData.ZulFarrak = {
         {
             id = "ZFZulFarrakDeadHero",
             name = L["Zul'Farrak Dead Hero"],
-            color = "|cff9d9d9d",
+            color = GREY,
         },
         {
             id = "ZFNekrumGutchewer",
@@ -118,22 +119,22 @@ AtlasTW.InstanceData.ZulFarrak = {
         {
             id = "ZFWeegliBastfuse",
             name = L["Weegli Blastfuse"],
-            color = "|cff9d9d9d",
+            color = GREY,
         },
         {
             id = "ZFMurtaGrimgut",
             name = L["Murta Grimgut"],
-            color = "|cff9d9d9d",
+            color = GREY,
         },
         {
             id = "ZFRaven",
             name = L["Raven"],
-            color = "|cff9d9d9d",
+            color = GREY,
         },
         {
             id = "ZFOroEyegouge",
             name = L["Oro Eyegouge"],
-            color = "|cff9d9d9d",
+            color = GREY,
         },
         {
             id = "ZFSandfury",
@@ -161,7 +162,7 @@ AtlasTW.InstanceData.ZulFarrak = {
         {
             id = "ZFRuuzlu",
             name = L["Ruuzlu"],
-            color = "|cff9d9d9d",
+            color = GREY,
         },
         {
             id = "ZFFlameOfFarrak",
@@ -215,15 +216,15 @@ AtlasTW.InstanceData.ZulFarrak = {
         {
             name = BZ["Farraki Arena"], --1.18
             prefix = "9)",
-            color = "|cff9d9d9d",
+            color = GREY,
         },
         {
             name = BB["Juthza the Cunning"], --1.18
-            color = "|cff9d9d9d",
+            color = GREY,
         },
         {
             name = BB["Kath'zen the Brutal"], --1.18
-            color = "|cff9d9d9d",
+            color = GREY,
         },
         {
             id = "ZFRazjalTheQuick", --1.18

@@ -18,6 +18,7 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -80,13 +81,13 @@ AtlasTW.InstanceData.Uldaman = {
         {
             id = "UldConspicuousUrn",
             name = L["Conspicuous Urn"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "UldRemainsofaPaladin",
             prefix = "2)",
             name = L["Remains of a Paladin"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "UldRevelosh",
@@ -119,13 +120,13 @@ AtlasTW.InstanceData.Uldaman = {
             id = "UldObsidianSentinel",
             prefix = "5)",
             name = L["Obsidian Sentinel"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "UldAnnora",
             prefix = "6)",
             name = L["Annora"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "UldAncientStoneKeeper",
@@ -195,12 +196,12 @@ AtlasTW.InstanceData.Uldaman = {
             id = "UldTheDiscsofNorgannon",
             prefix = "11)",
             name = L["The Discs of Norgannon"]..": "..L["Lower"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "UldAncientTreasure",
             name = L["Ancient Treasure"]..": "..L["Lower"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "UldTrash",
@@ -254,7 +255,7 @@ AtlasTW.InstanceData.UldamanEnt = {
             id = "UldHammertoeGrez",
             prefix = "1)",
             name = L["Hammertoe Grez"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "UldMagreganDeepshadow",
@@ -294,7 +295,7 @@ AtlasTW.InstanceData.UldamanEnt = {
             prefix = "1')",
             name = L["Digmaster Shovelphlange"],
             postfix = L["Rare"] .. ", " .. L["Varies"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
             loot = {
                 { id = 9375, dropRate = 10 }, -- Expert Goldminer's Helmet
                 { id = 9378, dropRate = 15 }, -- Shovelphlange's Mining Axe

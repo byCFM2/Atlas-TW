@@ -21,11 +21,11 @@ local BZ = AceLibrary("Babble-Zone-2.2a")
 ---------------
 --- COLOURS ---
 ---------------
-local red = "|cffff0000"
-local white = "|cffFFFFFF"
-local green = "|cff1eff00"
-local blue = "|cff0070dd"
-local yellow = "|cffFFd200"
+local red = AtlasTW.Colors.RED
+local white = AtlasTW.Colors.WHITE
+local green = AtlasTW.Colors.GREEN2
+local blue = AtlasTW.Colors.BLUE
+local yellow = AtlasTW.Colors.YELLOW2
 
 ----------------------------------------------
 ------------- Quest Instance Data ------------

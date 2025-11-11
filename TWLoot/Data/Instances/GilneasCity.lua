@@ -21,6 +21,7 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -64,12 +65,12 @@ AtlasTW.InstanceData.GilneasCity = {
         {
             prefix = "a)",
             name = L["Dawnstone Plans"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             prefix = "b)",
             name = L["Manuscript of Hydromancy II"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "GCJudgeSutherland",

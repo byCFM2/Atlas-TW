@@ -16,6 +16,7 @@
 ---
 
 local L = AtlasTW.Local
+local Colors = AtlasTW.Colors
 
 ---
 -- Function to copy properties from the parent template
@@ -175,7 +176,7 @@ local function AtlasTWLoot_CreatePresetButtons(frame)
                 elseif type(entry) == "string" then
                     GameTooltip:AddLine(entry)
                 end
-                GameTooltip:AddLine(L["|cff9d9d9dALT+Click to clear|r"])
+                GameTooltip:AddLine(Colors.GREY2..L["ALT+Click to clear"])
                 GameTooltip:Show()
             end
         end)
@@ -339,7 +340,7 @@ local function AtlasTWLoot_CreateSearchElements(frame)
         if this:IsEnabled() then
             GameTooltip:ClearLines()
             GameTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 5)
-            GameTooltip:AddLine("|cffFFFFFF"..L["WishList"].."|r")
+            GameTooltip:AddLine(Colors.WHITE..L["WishList"].."|r")
             GameTooltip:AddLine(L["ALT+Click on item to add or remove it from WishList"])
             GameTooltip:Show()
         end
@@ -490,6 +491,17 @@ local function AtlasTWLoot_CreateItemsFrame()
     scrollBar:SetScript("OnShow", function()
         AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
     end)
+
+    local scrollHint = CreateFrame("Frame", "AtlasTWLootScrollHint", frame)
+    scrollHint:SetWidth(24)
+    scrollHint:SetHeight(58)
+    scrollHint:SetPoint("LEFT", frame)
+    scrollHint:SetFrameLevel(frame:GetFrameLevel() + 1)
+    scrollHint:Hide()
+    local scrollHintTexture = scrollHint:CreateTexture("AtlasTWLootScrollHintTexture", "ARTWORK")
+    scrollHintTexture:SetAllPoints(scrollHint)
+    scrollHintTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasTWScrolldown")
+
     -- Background texture
     local backTexture = frame:CreateTexture(frame:GetName().."_Back", "BACKGROUND")
     backTexture:SetAllPoints(frame)

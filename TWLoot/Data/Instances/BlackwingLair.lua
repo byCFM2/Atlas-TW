@@ -20,6 +20,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -169,7 +170,7 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 19395 }, -- Rejuvenating Gem
             }
         },
-        { prefix = "5)", name = L["Master Elemental Shaper Krixix"], color = "|cff9d9d9d", },
+        { prefix = "5)", name = L["Master Elemental Shaper Krixix"], color = Colors.GRAY, },
         {
             id = "Ebonroc",
             prefix = "6)",
@@ -338,8 +339,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 --TODO Ezzel Darkbrewer loot
             }
         },
-        { prefix = "1)", name = L["Alchemy Lab"], color = "|cff00FF00" },
-        { prefix = "2)", name = L["Draconic for Dummies"], color = "|cff00FF00" },
+        { prefix = "1)", name = L["Alchemy Lab"], color = Colors.GREEN },
+        { prefix = "2)", name = L["Draconic for Dummies"], color = Colors.GREEN },
         {
             id = "BWLTrash",
             name = L["Trash Mobs"].."-"..BZ["Blackwing Lair"],
@@ -361,7 +362,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 19183, quantity = { 1, 2 }, disc = L["Consumable"], dropRate = 47 }, -- Hourglass Sand
                 { id = 70173, dropRate = 2, container = { 56062 } }, -- Plans: Blackwing Signet of Command
             }
-        }
+        },
+        { name = L["Tier 2 Sets"], items = "AtlasTWLootT2SetMenu" },
     }
 }
 
@@ -377,19 +379,19 @@ AtlasTW.InstanceData.BlackrockMountainEnt = {
     Bosses = {
         {
             name = BZ["Molten Core"] .. " (MC) (" .. L["through "] .. "BRD)",
-            color = "|cff6666ff"
+            color = Colors.BLUE
         },
         {
             name = BZ["Upper Blackrock Spire"] .. " (UBRS)",
-            color = "|cff6666ff"
+            color = Colors.BLUE
         },
         {
             name = BZ["Blackwing Lair"] .. " (BWL) (" .. L["through "] .. "UBRS)",
-            color = "|cff6666ff"
+            color = Colors.BLUE
         },
         {
             name = L["Bodley"] .. " (" .. L["Ghost"] .. ")",
-            color = "|cff6666ff"
+            color = Colors.BLUE
         },
         {
             id = "BRDPyron",
@@ -404,28 +406,28 @@ AtlasTW.InstanceData.BlackrockMountainEnt = {
             prefix = "2)",
             name = BB["Lothos Riftwaker"],
             postfix = "MC " .. L["Teleport"],
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             prefix = "3)",
             name = BB["Franclorn Forgewright"],
             postfix = L["Ghost"],
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             prefix = "4)",
             name = L["Meeting Stone"] .. " (BRD)",
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             prefix = "5)",
             name = L["Orb of Command"] .. " (BWL " .. L["Teleport"] .. ")",
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             prefix = "6)",
             name = L["Meeting Stone"] .. " (LBRS, UBRS)",
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             id = "BRMScarshieldQuartermaster",

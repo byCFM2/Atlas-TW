@@ -18,6 +18,7 @@
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
 local L = AtlasTW.Local
+local Colors = AtlasTW.Colors
 
 ---
 --- Get the formatted string for the instance with color coding
@@ -27,7 +28,7 @@ local L = AtlasTW.Local
 --- @usage local formatted = getFormString("[RAID]", "Molten Core")
 ---
 local function getFormString(instanceType, mainString)
-    return "|cffff0000"..instanceType.." |cffffd200"..mainString
+    return Colors.RED2..instanceType.." "..Colors.YELLOW..mainString
 end
 
 ---

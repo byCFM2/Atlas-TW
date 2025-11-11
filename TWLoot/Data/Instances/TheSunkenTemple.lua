@@ -18,6 +18,7 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -32,28 +33,28 @@ AtlasTW.InstanceData.TheSunkenTempleEnt = {
     Bosses = {
         {
             name = L["Meeting Stone"],
-            color = "|cff0070dd"
+            color = Colors.BLUE
         },
         {
             name = L["Jade"].." ("..L["Rare"]..")",
-            color = "|cff0070dd"
+            color = Colors.BLUE
         },
         {
             prefix = "1)",
             name = BB["Kazkaz the Unholy"],
             postfix = L["Upper"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             prefix = "2)",
             name = BB["Zekkis"],
             postfix = L["Lower"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             prefix = "3)",
             name = BB["Veyzhak the Cannibal"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
     }
 }
@@ -78,7 +79,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             id = "STBalconyMinibosses",
             name = L["Mini Bosses"],
             postfix = BZ["The Temple of Atal'Hakkar"],
-            color = "|cffff8000",
+            color = Colors.RED,
             defaults = { dropRate = 7 },
             loot = {
                 { id = 10783 }, -- Atal'ai Spaulders
@@ -99,32 +100,32 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         },
         {
             name = BB["Gasher"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = BB["Loro"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = BB["Hukku"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = BB["Zolo"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = BB["Mijan"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = BB["Zul'Lor"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             prefix = "1)",
             name = L["Altar of Hakkar"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "STAtalalarion",
@@ -311,15 +312,15 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         },
         {
             name = L["Essence Font"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             name = L["Malfurion Stormrage"].." ("..L["Summon"]..")",
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             name = L["Statue Activation Order"],
-            color = "|cff00ff00",
+            color = Colors.GREEN,
             prefix = "1'-6')"
         },
         {

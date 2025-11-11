@@ -20,6 +20,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -40,53 +41,52 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
     Bosses = {
         {
             name = L["Drek'Thar"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = L["Duros"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = L["Drakan"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = L["West Frostwolf Warmaster"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = L["East Frostwolf Warmaster"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = L["Tower Point Warmaster"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = L["Iceblood Warmaster"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = L["Stonehearth Warmaster"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = L["Icewing Warmaster"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = L["Dun Baldar North Warmaster"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             name = L["Dun Baldar South Warmaster"],
-            color = "|cff0070dd",
+            color = Colors.BLUE,
         },
         {
             id = "AVLokholarIvus",
             prefix = "1)",
             name = L["Lokholar the Ice Lord"] .. " (" .. L["Summon"] .. ")",
-            color = "|cff9d9d9d",
             items = {
                 {id = 19105}, --Frost Runed Headdress
                 {id = 19113}, --Yeti Hide Bracers
@@ -101,145 +101,137 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         {
             prefix = "2)",
             name = L["Iceblood Garrison"],
-            color = "|cfffe8a0e",
+            color = Colors.ORANGE,
         },
         {
             name = L["Captain Galvangar"],
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             prefix = "3)",
             name = L["Iceblood Tower"],
-            color = "|cfffe8a0e",
+            color = Colors.ORANGE,
         },
         {
             prefix = "4)",
             name = L["Iceblood Graveyard"],
-            color = "|cffff0000",
+            color = Colors.RED,
         },
         {
             name = L["Wing Commander Ichman"] .. " (" .. BF["Alliance"] .. ")",
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             prefix = "5)",
             name = L["Tower Point"],
-            color = "|cfffe8a0e",
+            color = Colors.ORANGE,
         },
         {
             name = L["Wing Commander Slidore"] .. " (" .. BF["Alliance"] .. ")",
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             prefix = "6)",
             name = L["Coldtooth Mine"],
-            color = "|cff9d9d9d",
         },
         {
             name = L["Taskmaster Snivvle"] .. " (" .. L["Neutral"] .. ")",
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             name = L["Masha Swiftcut"] .. " (" .. BF["Horde"] .. ")",
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             name = L["Aggi Rumblestomp"] .. " (" .. BF["Alliance"] .. ")",
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             prefix = "7)",
             name = L["Frostwolf Graveyard"],
-            color = "|cffff0000",
+            color = Colors.RED,
         },
         {
             prefix = "8)",
             name = L["Wing Commander Vipore"] .. " (" .. BF["Alliance"] .. ")",
-            color = "|cff9d9d9d",
         },
         {
             name = L["Jotek"],
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             name = L["Smith Regzar"],
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             name = L["Primalist Thurloga"],
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             name = L["Sergeant Yazra Bloodsnarl"],
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             prefix = "9)",
             name = L["Frostwolf Stable Master"],
-            color = "|cff9d9d9d",
         },
         {
             name = L["Frostwolf Wolf Rider Commander"],
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             prefix = "10)",
             name = L["Frostwolf Quartermaster"],
-            color = "|cff9d9d9d",
         },
         {
             prefix = "11)",
             name = L["West Frostwolf Tower"],
-            color = "|cfffe8a0e",
+            color = Colors.ORANGE,
         },
         {
             prefix = "12)",
             name = L["East Frostwolf Tower"],
-            color = "|cfffe8a0e",
+            color = Colors.ORANGE,
         },
         {
             prefix = "13)",
             name = L["Wing Commander Guse"] .. " (" .. L["Rescued"] .. ")",
-            color = "|cff9d9d9d",
         },
         {
             name = L["Wing Commander Jeztor"] .. " (" .. L["Rescued"] .. ")",
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             name = L["Wing Commander Mulverick"] .. " (" .. L["Rescued"] .. ")",
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             prefix = "14)",
             name = L["Frostwolf Relief Hut"],
-            color = "|cffff0000",
+            color = Colors.RED,
         },
         {
             prefix = "15)",
             name = L["Wildpaw Cavern"],
-            color = "|cff9d9d9d",
         },
         {
             name = L["Frostwolf Banner"],
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             prefix = "16)",
             name = L["Steamsaw"] .. " (" .. BF["Alliance"] .. ")",
-            color = "|cff9d9d9d",
         },
         {
             name = L["Red"] .. ": " .. L["Graveyards, Capturable Areas"],
-            color = "|cffff0000",
+            color = Colors.RED,
         },
         {
             name = L["Orange"] .. ": " .. L["Bunkers, Towers, Destroyable Areas"],
-            color = "|cfffe8a0e",
+            color = Colors.ORANGE,
         },
         {
             name = L["White"] .. ": " .. L["Assault NPCs, Quest Areas"],
-            color = "|cff9d9d9d",
         },
     }
 }

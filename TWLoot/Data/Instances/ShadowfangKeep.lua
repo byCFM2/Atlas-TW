@@ -18,6 +18,7 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -47,16 +48,16 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         },
         {
             name = L["Sorcerer Ashcrombe"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             name = L["Deathstalker Adamant"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             prefix = "2)",
             name = L["Deathstalker Vincent"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "SFKFelSteed",

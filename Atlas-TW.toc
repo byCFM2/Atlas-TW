@@ -6,7 +6,7 @@
 ## Notes-ptBR: navegador de mapas de masmorras; mostra o saque possível dos chefes e as missões da masmorra.
 ## Notes-zhCN: 副本地图浏览器; 显示首领可能掉落的战利品以及该副本的任务。
 ## Notes-ruRU: обозреватель карт подземелий; показывает возможную добычу с боссов и задания в подземелье.
-## Version: 1.37
+## Version: 1.38
 ## Author: CFM, Otari98, Dan Gilbert, Daviesh, pepopo, etc
 ## SavedVariables: AtlasTWOptions
 ## SavedVariablesPerCharacter: AtlasTWCharDB

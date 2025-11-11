@@ -18,12 +18,8 @@
 local _G = getfenv()
 local L = AtlasTW.Local
 AtlasTW = _G.AtlasTW
+local Colors = AtlasTW.Colors
 
------------------------------------------------------------------------------
--- Colours
------------------------------------------------------------------------------
-local white = "|cffFFFFFF"
-local blue = "|cff0070dd"
 
 ---
 --- Handles mouse enter event for quest reward items
@@ -133,7 +129,7 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
             end
         else
             print("Item unsafe! Right click to get the item ID")
-            ChatFrameEditBox:Insert(string.format("[%s]", L["Item not found in cache"]))
+            ChatFrameEditBox:Insert(string.format("%s [%s]", Colors.GREY2, L["Item not found in cache"]))
         end
         return
     end
@@ -274,12 +270,12 @@ function AtlasTW.Quest.NextPage()
 
         if type(story) == "table" then
             -- Display current page content
-            AtlasTW.Quest.UI.Story:SetText(white..story["Page"..AtlasTW.QCurrentPage])
+            AtlasTW.Quest.UI.Story:SetText(Colors.WHITE..story["Page"..AtlasTW.QCurrentPage])
             AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..story["MaxPages"])
 
             -- Handle page-specific captions if available
             local pageCaption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption[AtlasTW.QCurrentPage]
-            AtlasTW.Quest.UI.QuestName:SetText(blue..(pageCaption or caption))
+            AtlasTW.Quest.UI.QuestName:SetText(Colors.BLUE..(pageCaption or caption))
 
             -- Hide next button if we're on the last page
             if not story["Page"..SideAfterThis] then
@@ -301,7 +297,7 @@ function AtlasTW.Quest.NextPage()
             local pageCount = questData.Page[1] or 1
 
             if pageContent then
-                AtlasTW.Quest.UI.Story:SetText(white..pageContent)
+                AtlasTW.Quest.UI.Story:SetText(Colors.WHITE..pageContent)
                 AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..pageCount)
 
                 -- Hide next button if we're on the last page
@@ -339,12 +335,12 @@ function AtlasTW.Quest.PreviousPage()
 
         if type(story) == "table" then
             -- Display current page content
-            AtlasTW.Quest.UI.Story:SetText(white..story["Page"..AtlasTW.QCurrentPage])
+            AtlasTW.Quest.UI.Story:SetText(Colors.WHITE..story["Page"..AtlasTW.QCurrentPage])
             AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..story["MaxPages"])
 
             -- Handle page-specific captions if available
             local pageCaption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption[AtlasTW.QCurrentPage]
-            AtlasTW.Quest.UI.QuestName:SetText(blue..(pageCaption or caption))
+            AtlasTW.Quest.UI.QuestName:SetText(Colors.BLUE..(pageCaption or caption))
 
             -- Hide back button if we're on the first page
             if AtlasTW.QCurrentPage == 1 then
@@ -365,7 +361,7 @@ function AtlasTW.Quest.PreviousPage()
                 local pageContent = questData.Page[AtlasTW.QCurrentPage]
                 local pageCount = questData.Page[1] or 1
                 if pageContent then
-                    AtlasTW.Quest.UI.Story:SetText(white..pageContent)
+                    AtlasTW.Quest.UI.Story:SetText(Colors.WHITE..pageContent)
                     AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..pageCount)
                 end
             end
@@ -528,6 +524,6 @@ function AtlasTW.Quest.OnEvent()
     if type(AtlasTWCharDB) == "table" then
         AtlasTW.Quest.LoadFinishedQuests()
     else
-        print("|cff00ff00Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
+        print(Colors.GREEN.."Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
     end
 end

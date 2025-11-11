@@ -18,6 +18,7 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -58,12 +59,12 @@ AtlasTW.InstanceData.RazorfenDowns = {
         {
             id = "RFDBelnistrasz",
             name = L["Belnistrasz"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "RFDSahrhee",
             name = L["Sah'rhee"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "RFDLadyF",

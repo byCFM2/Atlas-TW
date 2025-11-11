@@ -210,7 +210,7 @@ local WorldEvents = {
 		{ id = 22282 }, -- Purple Dinner Suit
 	},
 	Halloween = {
-		{ id = 20400, disc = L["Bag"] }, -- Pumpkin Bag
+		{ id = 20400 }, -- Pumpkin Bag
 		{},
 		{ id = 18633, disc = L["Consumable"] }, -- Styleen's Sour Suckerpop
 		{ id = 18632, disc = L["Consumable"] }, -- Moonbrook Riot Taffy

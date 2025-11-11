@@ -20,6 +20,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -38,12 +39,12 @@ AtlasTW.InstanceData.OnyxiasLair = {
         {
             prefix = "1)",
             name = L["Onyxian Warders"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             prefix = "2)",
             name = L["Whelp Eggs"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "Onyxia",
@@ -73,7 +74,7 @@ AtlasTW.InstanceData.OnyxiasLair = {
                 { id = 17064, dropRate = 8 }, -- Shard of the Scale
                 { id = 17068, dropRate = 8 }, -- Deathbringer
                 { id = 17075, dropRate = 8 }, -- Vis'kag the Bloodletter
-                { id = 17966, disc = L["Bag"], dropRate = 100 }, -- Onyxia Hide Backpack
+                { id = 17966, dropRate = 100 }, -- Onyxia Hide Backpack
                 { id = 15410, disc = L["Reagent"], dropRate = 100, container = { 17967, 15138, 15141 } }, -- Scale of Onyxia
                 { id = 21108, disc = L["Quest Item"], dropRate = 100, container = { 21111 } }, -- Draconic for Dummies
                 { id = 17962, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 3864, 55251, 55250, 7910, 7909, 1529, 12361 } }, -- Blue Sack of Gems

@@ -19,16 +19,10 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 AtlasTW.Integrations = {}
+local GREY = AtlasTW.Colors.GREY2
 
 -- Local references for performance
 local L = AtlasTW.Local
-
---
--- Compatibility constants for legacy option labels
--- centralized here alongside EquipCompare integration logic
---
-AtlasTWLoot_OPTIONS_EQUIPCOMPARE = L["Use EquipCompare"]
-AtlasTWLoot_OPTIONS_EQUIPCOMPARE_DISABLED = L["|cff9d9d9dUse EquipCompare|r"]
 
 ---
 --- Checks if EquipCompare or EQCompare addon is available
@@ -116,7 +110,7 @@ function AtlasTW.Integrations.Initialize()
             AtlasTWOptionLootlinkTT:Disable()
         end
         if AtlasTWOptionLootlinkTTText then
-            AtlasTWOptionLootlinkTTText:SetText(L["|cff9d9d9dLootlink Tooltips|r"])
+            AtlasTWOptionLootlinkTTText:SetText(GREY..L["Lootlink Tooltips|r"])
         end
     end
 
@@ -126,7 +120,7 @@ function AtlasTW.Integrations.Initialize()
             AtlasTWOptionItemSyncTT:Disable()
         end
         if AtlasTWOptionItemSyncTTText then
-            AtlasTWOptionItemSyncTTText:SetText(L["|cff9d9d9dItemSync Tooltips|r"])
+            AtlasTWOptionItemSyncTTText:SetText(GREY..L["ItemSync Tooltips|r"])
         end
     end
 
@@ -136,7 +130,7 @@ function AtlasTW.Integrations.Initialize()
             AtlasTWOptionEquipCompare:Disable()
         end
         if AtlasTWOptionEquipCompareText then
-            AtlasTWOptionEquipCompareText:SetText(L["|cff9d9d9dUse EquipCompare|r"])
+            AtlasTWOptionEquipCompareText:SetText(GREY..L["Use EquipCompare|r"])
         end
     end
 end

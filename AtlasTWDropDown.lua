@@ -22,13 +22,7 @@ local BZ = AceLibrary("Babble-Zone-2.2a")
 local AtlasTWDropDown = {}
 
 -- Constants
-local COLORS = {
-    GREEN = "|cff66cc33",
-    WHITE = "|cffffffff",
-    GRAY = "|cff999999",
-    YELLOW = "|cffffff00",
-    RED = "|cffff0000"
-}
+local COLORS = AtlasTW.Colors
 
 -- Sort types enum
 local SortType = {

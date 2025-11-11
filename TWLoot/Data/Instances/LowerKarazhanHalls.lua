@@ -21,6 +21,7 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -69,12 +70,12 @@ AtlasTW.InstanceData.LowerKarazhan = {
         {
             prefix = "a)",
             name = L["Engraved Golden Bracelet"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             prefix = "b)",
             name = L["Comfortable Pillow"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "LKHBroodQueenAraxxna",
@@ -131,7 +132,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
         {
             prefix = "c)",
             name = L["Councilman Kyleson"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "LKHClawlordHowlfang",
@@ -186,17 +187,17 @@ AtlasTW.InstanceData.LowerKarazhan = {
         {
             prefix = "d)",
             name = L["Lord Ebonlocke"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             prefix = "e)",
             name = L["Obsidian Rod"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             prefix = "f)",
             name = L["Duke Rothlen"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "LKHMoroes",

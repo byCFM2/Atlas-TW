@@ -20,6 +20,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -37,7 +38,7 @@ AtlasTW.InstanceData.TheCrescentGrove = {
         {
             prefix = "a)",
             name = L["Kalanar's Strongbox"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "TCGGrovetenderEngryss",

@@ -20,6 +20,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -90,7 +91,7 @@ AtlasTW.InstanceData.StormwindVault = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
             }
         },
-        { name = L["Tome of Arcane Intricacies and Magical Phenomenon IX"], color = "|cff9d9d9d" },
+        { name = L["Tome of Arcane Intricacies and Magical Phenomenon IX"], color = Colors.GREY },
         {
             id = "Damian",
             prefix = "4)",

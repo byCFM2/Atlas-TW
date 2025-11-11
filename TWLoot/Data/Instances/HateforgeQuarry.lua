@@ -21,6 +21,7 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -81,7 +82,7 @@ AtlasTW.InstanceData.HateforgeQuarry = {
         {
             prefix = "a)",
             name = L["Hateforge Chemistry Documents"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "HQCorrosis",

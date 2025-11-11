@@ -18,6 +18,7 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -33,24 +34,24 @@ AtlasTW.InstanceData.GnomereganEnt = {
     Bosses = {
         {
             name = L["Meeting Stone"],
-            color = "|cff6666ff",
+            color = Colors.BLUE,
         },
         {
             id = "GNElevator",
             prefix = "1)",
             name = L["Elevator"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "GNTranspolyporter",
             prefix = "2)",
             name = L["Transpolyporter"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "GNSprok",
             name = L["Sprok"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "GNPunchographA",
@@ -108,7 +109,7 @@ AtlasTW.InstanceData.Gnomeregan = {
             id = "GNBlastmasterEmi",
             prefix = "1)",
             name = L["Blastmaster Emi Shortfuse"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "GNGrubbis",
@@ -127,39 +128,39 @@ AtlasTW.InstanceData.Gnomeregan = {
         {
             id = "GNChomper",
             name = L["Chomper"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "GNCleanRoom",
             prefix = "2)",
             name = L["Clean Room"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "GNTinkSprocketwhistle",
             name = L["Tink Sprocketwhistle"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "GNSparklematic",
             name = L["The Sparklematic 5200"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "GNMailBox",
             name = L["Mail Box"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "GNKernobee",
             prefix = "3)",
             name = L["Kernobee"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "GNAlarmabomb",
             name = L["Alarm-a-bomb 2600"],
-            color = "|cff9d9d9d"
+            color = Colors.GREY
         },
         {
             id = "GNPunchographB",

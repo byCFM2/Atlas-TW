@@ -10,6 +10,7 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
+local Colors = AtlasTW.Colors
 
 AtlasTW.VersionCheck = AtlasTW.VersionCheck or {}
 local VC = AtlasTW.VersionCheck
@@ -109,7 +110,7 @@ local function checkRemoteVersion(remoteVersion)
     VC.nextPublishAt = nil -- Stop publishing
     AtlasTWVersionFrame:UnregisterEvent("CHAT_MSG_CHANNEL") -- Stop listening for version messages
     AtlasTWVersionFrame:SetScript('OnUpdate', nil) -- Stop periodic broadcasts
-    print(format(L["NewVersionAvailableFmt"], L["Link"]))
+    print(format(L["NewVersionAvailableFmt"], Colors.RED..L["Link"]))
     AtlasTW.UpdateMarkerRefresh()
   end
 end

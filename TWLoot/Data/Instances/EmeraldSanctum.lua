@@ -92,7 +92,7 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 { id = 61444, dropRate = 20, container = { 61445 } }, -- Smoldering Dream Essence
                 {},
                 { id = 51361, dropRate = 14 }, -- Glyph of the Dreamkin
-                { id = 61196, disc = L["Bag"], dropRate = 15 }, -- Bag of Vast Consciousness
+                { id = 61196, dropRate = 15 }, -- Bag of Vast Consciousness
                 {},
                 { id = 61733, dropRate = 1 }, -- Formula: Eternal Dreamstone Shard
                 { id = 30018, dropRate = 1.5 }, --Emerald Drake

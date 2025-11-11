@@ -21,6 +21,7 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -205,7 +206,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             prefix = "a)",
             name = L["Severs"],
-            color = "|cff00FF00",
+            color = Colors.GREEN,
         },
         {
             id = "SRRemainsOfInnocent",

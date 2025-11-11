@@ -24,6 +24,7 @@ AtlasTW.Interactions = AtlasTW.Interactions or {}
 local L = AtlasTW.Local
 local WHITE = AtlasTW.Colors.WHITE
 local BLUE = AtlasTW.Colors.BLUE
+local YELLOW = AtlasTW.Colors.YELLOW2
 
 ---
 --- Determines default chat channel and target, considering WIM activity and ChatFrame state
@@ -153,7 +154,7 @@ function AtlasTW.Interactions.ChatSayItemReagents(id, color, name, safe)
         local enchantData = AtlasTW.SpellDB.enchants[id]
         local enchantItem = enchantData["item"]
         local enchantName = enchantData["name"] or GetItemInfo(enchantItem)
-        local enchantLink = "|cffFFd200|Henchant:" .. id .. ":0:0:0|h[" .. (enchantName or "Enchant") .. "]|h|r"
+        local enchantLink = YELLOW .. "|Henchant:" .. id .. ":0:0:0|h[" .. (enchantName or "Enchant") .. "]|h|r"
 
         local message
         if enchantItem then
@@ -176,7 +177,7 @@ function AtlasTW.Interactions.ChatSayItemReagents(id, color, name, safe)
         if safe then
             itemMessage = "[" .. (name or "Item") .. "]"
         else
-            itemMessage = "\124" .. string.sub(color or "|cffffffff", 2) .. "\124Hitem:" .. id .. ":0:0:0\124h[" .. (name or tostring(id)) .. "]\124h\124r"
+            itemMessage = "\124" .. string.sub(color or WHITE, 2) .. "\124Hitem:" .. id .. ":0:0:0\124h[" .. (name or tostring(id)) .. "]\124h\124r"
         end
         AtlasTW.Interactions.ChatSend(itemMessage, channel, chatnumber)
     end
@@ -317,10 +318,10 @@ local function HandleItemTooltip(itemID, dropRate, anchor)
     AtlasTWLootTooltip:SetOwner(anchor, "ANCHOR_RIGHT")
     AtlasTWLootTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
     if dropRate then
-        AtlasTWLootTooltip:AddLine(L["Drop Rate:"] .. " " .. dropRate, 0.2, 0.4, 0.3)
+        AtlasTWLootTooltip:AddLine(L["Drop Rate:"] .. " " .. dropRate, 0, .5, .7)
     end
     if AtlasTWOptions.LootItemIDs then
-        AtlasTWLootTooltip:AddLine(BLUE .. L["ItemID:"] .. " " .. itemID, nil, nil, nil, 1)
+        AtlasTWLootTooltip:AddLine(L["ItemID:"] .. " " .. itemID, 0, .5, .7)
     end
     AtlasTWLootTooltip:Show()
 end
@@ -432,49 +433,41 @@ end
 ---
 function AtlasTW.Interactions.Item_OnClick(arg1)
     local id = this:GetID()
-    local color = string.sub(_G["AtlasTWLootItem_"..id.."_Name"]:GetText() or "", 1, 10)
-    local name = string.sub(_G["AtlasTWLootItem_"..id.."_Name"]:GetText() or "", 11)
-    local texture = AtlasTW.LootUtils.Strsplit("\\", getglobal("AtlasTWLootItem_"..id.."_Icon"):GetTexture(), 0, true)
+	local fullname = _G["AtlasTWLootItem_"..id.."_Name"]:GetText() or ""
+    local color = string.sub(fullname, 1, 10)
+    local name = string.sub(fullname, 11)
+  --  local texture = AtlasTW.LootUtils.Strsplit("\\", getglobal("AtlasTWLootItem_"..id.."_Icon"):GetTexture(), 0, true)
     local dataID = AtlasTWLootItemsFrame.StoredElement
     local instanceKeyClick = AtlasTWLootItemsFrame and AtlasTWLootItemsFrame.StoredMenu or nil
-    local dataSource = AtlasTW.DataResolver.GetLootByElemName(dataID, instanceKeyClick)
+  --  local dataSource = AtlasTW.DataResolver.GetLootByElemName(dataID, instanceKeyClick)
 
 	if this.typeID == "item" then
-		local itemName, itemLink, qualityId = GetItemInfo(this.itemID)
+		local itemid = this.itemID
+		local itemName, itemLink, qualityId = GetItemInfo(itemid)
 		_, _, _, color = GetItemQualityColor(qualityId or 0)
 		--If shift-clicked, link in the chat window
-		if IsShiftKeyDown() and not itemName and this.itemID ~= 0 then
-			if AtlasTWOptions.LootSafeLinks then
-				if WIM_EditBoxInFocus then
-					WIM_EditBoxInFocus:Insert("["..itemName.."]")
-				elseif ChatFrameEditBox:IsVisible() then
-					ChatFrameEditBox:Insert("["..itemName.."]")
-				else
-					AtlasTW.Interactions.ChatSayItemReagents(this.itemID, nil, itemName, true)
-				end
-			elseif AtlasTWOptions.LootAllLinks then
-				if WIM_EditBoxInFocus then
-					WIM_EditBoxInFocus:Insert("\124"..string.sub(color, 2).."|Hitem:"..this.itemID.."\124h["..name.."]|h|r")
-				elseif ChatFrameEditBox:IsVisible() then
-					ChatFrameEditBox:Insert("\124"..string.sub(color, 2).."|Hitem:"..this.itemID.."\124h["..name.."]|h|r")
-				else
-					AtlasTW.Interactions.ChatSayItemReagents(this.itemID, color, name)
-				end
-			end
-		elseif (itemName and IsShiftKeyDown()) and this.itemID ~= 0 then
+		if IsShiftKeyDown() and not itemName and itemid ~= 0 then
 			if WIM_EditBoxInFocus then
-				WIM_EditBoxInFocus:Insert(color.."|Hitem:"..this.itemID..":0:0:0|h["..itemName.."]|h|r")
+				WIM_EditBoxInFocus:Insert("[ItemID"..itemid.."]")
+			elseif ChatFrameEditBox:IsVisible() then
+				ChatFrameEditBox:Insert("[ItemID:"..itemid.."]")
+			else
+				AtlasTW.Interactions.ChatSayItemReagents(itemid, nil, itemName, true)
+			end
+		elseif (itemName and IsShiftKeyDown()) and itemid ~= 0 then
+			if WIM_EditBoxInFocus then
+				WIM_EditBoxInFocus:Insert(color.."|Hitem:"..itemid..":0:0:0|h["..itemName.."]|h|r")
 			elseif ( ChatFrameEditBox:IsVisible() ) then
-				ChatFrameEditBox:Insert(color.."|Hitem:"..this.itemID..":0:0:0|h["..itemName.."]|h|r")
+				ChatFrameEditBox:Insert(color.."|Hitem:"..itemid..":0:0:0|h["..itemName.."]|h|r")
 			end
 		--If control-clicked, use the dressing room
 		elseif IsControlKeyDown() and itemName then
 			DressUpItemLink(itemLink)
-		elseif IsAltKeyDown() and this.itemID ~= 0 then
+		elseif IsAltKeyDown() and itemid ~= 0 then
 			if dataID == "WishList" then
-				AtlasTWLoot_DeleteFromWishList(this.itemID)
+				AtlasTWLoot_DeleteFromWishList(itemid)
 			elseif dataID == "SearchResult" then
-				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(this.itemID))
+				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemid))
 			else
 			-- Pass boss and instance context for correct categorization in WishList
 			local srcPage = nil

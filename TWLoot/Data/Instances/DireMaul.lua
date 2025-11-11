@@ -21,6 +21,7 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -55,7 +56,7 @@ AtlasTW.InstanceData.DireMaulEast = {
         {
             prefix = "1)",
             name = BB["Pusillin"].." <"..L["Chase Begins"]..">",
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "DMEPusillin",
@@ -157,7 +158,7 @@ AtlasTW.InstanceData.DireMaulEast = {
         {
             prefix = "4)",
             name = L["Old Ironbark"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "DMEAlzzin",
@@ -237,7 +238,7 @@ AtlasTW.InstanceData.DireMaulEast = {
             prefix = "1')",
             name = L["A Dusty Tome"],
             postfix = L["Varies"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
             loot = ShareLoot,
         },
         { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
@@ -264,7 +265,7 @@ AtlasTW.InstanceData.DireMaulWest = {
         {
             prefix = "1)",
             name = L["Shen'dralar Ancient"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "DMWTendrisWarpwood",
@@ -290,7 +291,7 @@ AtlasTW.InstanceData.DireMaulWest = {
         },
         {
             name = L["Ancient Equine Spirit"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "DMWIllyannaRavenoak",
@@ -319,7 +320,7 @@ AtlasTW.InstanceData.DireMaulWest = {
         },
         {
             name = L["Ferra"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "DMWMagisterKalendris",
@@ -425,7 +426,7 @@ AtlasTW.InstanceData.DireMaulWest = {
         },
         {
             name = L["The Prince's Chest"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "DMWRevanchion",
@@ -453,39 +454,39 @@ AtlasTW.InstanceData.DireMaulWest = {
         {
             prefix = "1')",
             name = L["Library"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             name = L["Falrin Treeshaper"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             name = L["Lorekeeper Lydros"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             name = L["Lorekeeper Javon"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             name = L["Lorekeeper Kildrath"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             name = L["Lorekeeper Mykos"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             id = "DMWShendralarProvisioner",
             name = L["Shen'dralar Provisioner"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
             loot = {
                 { id = 18487, disc = L["Vendor"], container = { 18486 } }, -- Pattern: Mooncloth Robe
             }
         },
         {
             name = L["Skeletal Remains of Kariel Winthalus"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             id = "DMTome",
@@ -770,39 +771,39 @@ AtlasTW.InstanceData.DireMaulNorth = {
         {
             prefix = "1')",
             name = L["Library"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             name = L["Falrin Treeshaper"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             name = L["Lorekeeper Lydros"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             name = L["Lorekeeper Javon"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             name = L["Lorekeeper Kildrath"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             name = L["Lorekeeper Mykos"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             id = "DMWShendralarProvisioner",
             name = L["Shen'dralar Provisioner"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
             loot = {
                 { id = 18487, disc = L["Vendor"], container = { 18486 } }, -- Pattern: Mooncloth Robe
             }
         },
         {
             name = L["Skeletal Remains of Kariel Winthalus"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
         },
         {
             id = "DMTome",
@@ -828,38 +829,38 @@ AtlasTW.InstanceData.DireMaulEnt = {
         {
             prefix = "1)",
             name = L["Dire Pool"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             prefix = "2)",
             name = L["Dire Maul Arena"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             name = L["Mushgog"],
             postfix = L["Rare"] .. ", " .. L["Random"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             name = L["Skarr the Unbreakable"],
             postfix = L["Rare"] .. ", " .. L["Random"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             name = L["The Razza"],
             postfix = L["Rare"] .. ", " .. L["Random"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             name = L["Elder Mistwalker"],
             postfix = L["Lunar Festival"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
             Items = "LunarFestival",
         },
         {
             prefix = "3)",
             name = L["Griniblix the Spectator"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
     }
 }

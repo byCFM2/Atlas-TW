@@ -18,7 +18,7 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
-
+local Colors = AtlasTW.Colors
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.BlackfathomDeepsEnt = {
@@ -58,7 +58,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
             id = "BFDLorgalisManuscript",
             prefix = "a)",
             name = L["Lorgalis Manuscript"],
-            color = "|cff00FF00",
+            color = Colors.GREEN,
         },
         {
             id = "BFDLadySarevess",
@@ -78,7 +78,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
             id = "BFDArgentGuardThaelrid",
             prefix = "b)",
             name = L["Argent Guard Thaelrid"],
-            color = "|cff00FF00",
+            color = Colors.GREEN,
         },
         {
             id = "BFDGelihast",
@@ -96,14 +96,14 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         {
             id = "BFDShrineofGelihast",
             name = L["Shrine of Gelihast"],
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             id = "BFDLorgusJett",
             prefix = "c)",
             name = BB["Lorgus Jett"],
             postfix = L["Varies"],
-            color = "|cff00FF00",
+            color = Colors.GREEN,
         },
         {
             id = "BFDVelthelaxxtheDefiler",
@@ -173,12 +173,12 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         {
             id = "BFDMorridune",
             name = L["Morridune"],
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             id = "BFDAltaroftheDeeps",
             name = L["Altar of the Deeps"],
-            color = "|cff9d9d9d",
+            color = Colors.GRAY,
         },
         {
             id = "BFDTrash",

@@ -22,6 +22,7 @@ local BZ = AceLibrary("Babble-Zone-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -80,7 +81,7 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 13523, disc = L["Used to summon boss"], dropRate = 100 }, -- Blood of Innocents
             }
         },
-        { name = L["The Deed to Southshore"], color = "|cff9d9d9d" },
+        { name = L["The Deed to Southshore"], color = Colors.GREY },
         {
             id = "KirtonostheHerald",
             prefix = "2)",
@@ -125,8 +126,8 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
-        { name = L["Journal of Jandice Barov"], color = "|cff9d9d9d" },
-        { prefix = "4)", name = L["The Deed to Tarren Mill"], color = "|cff9d9d9d" },
+        { name = L["Journal of Jandice Barov"], color = Colors.GREY },
+        { prefix = "4)", name = L["The Deed to Tarren Mill"], color = Colors.GREY },
         {
             id = "LordBlackwood",
             name = BB["Lord Blackwood"],
@@ -239,7 +240,7 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
-        { name = L["The Deed to Brill"], color = "|cff9d9d9d" },
+        { name = L["The Deed to Brill"], color = Colors.GREY },
         {
             id = "Kormok",
             name = BB["Kormok"],
@@ -326,7 +327,7 @@ AtlasTW.InstanceData.Scholomance = {
                 unpack(scholoShareLoot),
             }
         },
-        { name = L["The Deed to Caer Darrow"], color = "|cff9d9d9d" },
+        { name = L["The Deed to Caer Darrow"], color = Colors.GREY },
         {
             id = "LadyIlluciaBarov",
             prefix = "13)",
@@ -381,9 +382,9 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
             }
         },
-        { prefix = "1')", name = L["Torch Lever"], color = "|cff00FF00" },
-        { prefix = "2')", name = L["Old Treasure Chest"], color = "|cff00FF00" },
-        { prefix = "3')", name = L["Alchemy Lab"], color = "|cff00FF00" },
+        { prefix = "1')", name = L["Torch Lever"], color = Colors.GREEN },
+        { prefix = "2')", name = L["Old Treasure Chest"], color = Colors.GREEN },
+        { prefix = "3')", name = L["Alchemy Lab"], color = Colors.GREEN },
         {
             id = "SCHOLOTrash",
             name = L["Trash Mobs"].."-"..BZ["Scholomance"],

@@ -24,17 +24,7 @@ local L = AtlasTW.Local
 local atlasTW_Ints_Ent_DropDown = {}
 local frame
 local loadingStartTime -- Load time
-
--- Color constants organized in a table
-local Colors = {
-    BLUE = "|cff6666ff",
-    GREY = "|cff999999",
-    GREEN = "|cff66cc33",
-    RED = "|cffcc6666",
-    ORANGE = "|cffcc9933",
-    PURPLE = "|cff9900ff",
-    WHITE = "|cffffffff"
-}
+local Colors = AtlasTW.Colors
 
 AtlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version")
 

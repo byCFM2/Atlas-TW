@@ -22,6 +22,7 @@ local L = AtlasTW.Local
 local BC = AceLibrary("Babble-Class-2.2")
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local Colors = AtlasTW.Colors
 
 local data = AtlasTWLoot_Data
 
@@ -32,15 +33,15 @@ AtlasTW.MenuData.Sets = {
     { name = L["Temple of Ahn'Qiraj Sets"], icon = "Interface\\Icons\\INV_Sword_59", lootpage = "AtlasTWLootAQ40SetMenu" },
     { name = L["Tower of Karazhan Sets"], icon = "Interface\\Icons\\INV_Staff_Medivh", lootpage = "AtlasTWLootUKSetMenu" },
     {},
-    { name = "|cffffffff"..L["Priest Sets"], icon = "Interface\\Icons\\Spell_Holy_PowerWordShield", lootpage = "AtlasTWLootPriestSetMenu" },
-    { name = "|cff68ccef"..L["Mage Sets"], icon = "Interface\\Icons\\Spell_Frost_IceStorm", lootpage = "AtlasTWLootMageSetMenu" },
-    { name = "|cff9382c9"..L["Warlock Sets"], icon = "Interface\\Icons\\Spell_Shadow_CurseOfTounges", lootpage = "AtlasTWLootWarlockSetMenu" },
-    { name = "|cfffff468"..L["Rogue Sets"], icon = "Interface\\Icons\\Ability_BackStab", lootpage = "AtlasTWLootRogueSetMenu" },
-    { name = "|cffff7c0a"..L["Druid Sets"], icon = "Interface\\Icons\\Spell_Nature_Regeneration", lootpage = "AtlasTWLootDruidSetMenu" },
-    { name = "|cffaad372"..L["Hunter Sets"], icon = "Interface\\Icons\\Ability_Hunter_RunningShot", lootpage = "AtlasTWLootHunterSetMenu" },
-    { name = "|cff2773ff"..L["Shaman Sets"], icon = "Interface\\Icons\\Spell_FireResistanceTotem_01", lootpage = "AtlasTWLootShamanSetMenu" },
-    { name = "|cfff48cba"..L["Paladin Sets"], icon = "Interface\\Icons\\Spell_Holy_SealOfMight", lootpage = "AtlasTWLootPaladinSetMenu" },
-    { name = "|cffc69b6d"..L["Warrior Sets"], icon = "Interface\\Icons\\INV_Shield_05", lootpage = "AtlasTWLootWarriorSetMenu" },
+    { name = Colors.Priest..L["Priest Sets"], icon = "Interface\\Icons\\Spell_Holy_PowerWordShield", lootpage = "AtlasTWLootPriestSetMenu" },
+    { name = Colors.Mage..L["Mage Sets"], icon = "Interface\\Icons\\Spell_Frost_IceStorm", lootpage = "AtlasTWLootMageSetMenu" },
+    { name = Colors.Warlock..L["Warlock Sets"], icon = "Interface\\Icons\\Spell_Shadow_CurseOfTounges", lootpage = "AtlasTWLootWarlockSetMenu" },
+    { name = Colors.Rogue..L["Rogue Sets"], icon = "Interface\\Icons\\Ability_BackStab", lootpage = "AtlasTWLootRogueSetMenu" },
+    { name = Colors.Druid..L["Druid Sets"], icon = "Interface\\Icons\\Spell_Nature_Regeneration", lootpage = "AtlasTWLootDruidSetMenu" },
+    { name = Colors.Hunter..L["Hunter Sets"], icon = "Interface\\Icons\\Ability_Hunter_RunningShot", lootpage = "AtlasTWLootHunterSetMenu" },
+    { name = Colors.Shaman..L["Shaman Sets"], icon = "Interface\\Icons\\Spell_FireResistanceTotem_01", lootpage = "AtlasTWLootShamanSetMenu" },
+    { name = Colors.Paladin..L["Paladin Sets"], icon = "Interface\\Icons\\Spell_Holy_SealOfMight", lootpage = "AtlasTWLootPaladinSetMenu" },
+    { name = Colors.Warrior..L["Warrior Sets"], icon = "Interface\\Icons\\INV_Shield_05", lootpage = "AtlasTWLootWarriorSetMenu" },
     { name = L["Tier 0/0.5 Sets"], icon = "Interface\\Icons\\INV_Chest_Chain_03", lootpage = "AtlasTWLootT0SetMenu" },
     { name = L["Tier 1 Sets"], icon = "Interface\\Icons\\INV_Pants_Mail_03", lootpage = "AtlasTWLootT1SetMenu" },
     { name = L["Tier 2 Sets"], icon = "Interface\\Icons\\INV_Shoulder_32", lootpage = "AtlasTWLootT2SetMenu" },
@@ -113,7 +114,7 @@ end
 --- @param color string - Color code for the class
 --- @param icon string - Icon path for the class
 --- @return table - Menu data table for the class
---- @usage local priestMenu = createClassSetMenu("Priest", "|cffffffff", "Interface\\Icons\\Spell_Holy_PowerWordShield")
+--- @usage local priestMenu = createClassSetMenu("Priest", Colors.Priest, "Interface\\Icons\\Spell_Holy_PowerWordShield")
 ---
 local function createClassSetMenu(class, color, icon)
     local menuData = {
@@ -129,15 +130,15 @@ local function createClassSetMenu(class, color, icon)
     return menuData
 end
 
-AtlasTW.MenuData.Priest = createClassSetMenu("Priest", "|cffffffff", "Interface\\Icons\\Spell_Holy_PowerWordShield")
-AtlasTW.MenuData.Mage = createClassSetMenu("Mage", "|cff68ccef", "Interface\\Icons\\Spell_Frost_IceStorm")
-AtlasTW.MenuData.Warlock = createClassSetMenu("Warlock", "|cff9382c9", "Interface\\Icons\\Spell_Shadow_CurseOfTounges")
-AtlasTW.MenuData.Rogue = createClassSetMenu("Rogue", "|cfffff468", "Interface\\Icons\\Ability_BackStab")
-AtlasTW.MenuData.Druid = createClassSetMenu("Druid", "|cffff7c0a", "Interface\\Icons\\Spell_Nature_Regeneration")
-AtlasTW.MenuData.Hunter = createClassSetMenu("Hunter", "|cffaad372", "Interface\\Icons\\Ability_Hunter_RunningShot")
-AtlasTW.MenuData.Shaman = createClassSetMenu("Shaman", "|cff2773ff", "Interface\\Icons\\Spell_FireResistanceTotem_01")
-AtlasTW.MenuData.Paladin = createClassSetMenu("Paladin", "|cfff48cba", "Interface\\Icons\\Spell_Holy_SealOfMight")
-AtlasTW.MenuData.Warrior = createClassSetMenu("Warrior", "|cffc69b6d", "Interface\\Icons\\INV_Shield_05")
+AtlasTW.MenuData.Priest = createClassSetMenu("Priest", Colors.Priest, "Interface\\Icons\\Spell_Holy_PowerWordShield")
+AtlasTW.MenuData.Mage = createClassSetMenu("Mage", Colors.Mage, "Interface\\Icons\\Spell_Frost_IceStorm")
+AtlasTW.MenuData.Warlock = createClassSetMenu("Warlock", Colors.Warlock, "Interface\\Icons\\Spell_Shadow_CurseOfTounges")
+AtlasTW.MenuData.Rogue = createClassSetMenu("Rogue", Colors.Rogue, "Interface\\Icons\\Ability_BackStab")
+AtlasTW.MenuData.Druid = createClassSetMenu("Druid", Colors.Druid, "Interface\\Icons\\Spell_Nature_Regeneration")
+AtlasTW.MenuData.Hunter = createClassSetMenu("Hunter", Colors.Hunter, "Interface\\Icons\\Ability_Hunter_RunningShot")
+AtlasTW.MenuData.Shaman = createClassSetMenu("Shaman", Colors.Shaman, "Interface\\Icons\\Spell_FireResistanceTotem_01")
+AtlasTW.MenuData.Paladin = createClassSetMenu("Paladin", Colors.Paladin, "Interface\\Icons\\Spell_Holy_SealOfMight")
+AtlasTW.MenuData.Warrior = createClassSetMenu("Warrior", Colors.Warrior, "Interface\\Icons\\INV_Shield_05")
 
 ---
 --- Priest sets menu function
@@ -261,11 +262,11 @@ local function CreateDungeonSetMenu(dungeonName)
     local classData = {
 		{},
 		{},
-        { name = "Priest", color = "|cffffffff", icon = "Interface\\Icons\\Spell_Holy_PowerWordShield" },
-        { name = "Mage", color = "|cff68ccef", icon = "Interface\\Icons\\Spell_Frost_IceStorm" },
-        { name = "Warlock", color = "|cff9382c9", icon = "Interface\\Icons\\Spell_Shadow_CurseOfTounges" },
-        { name = "Rogue", color = "|cfffff468", icon = "Interface\\Icons\\Ability_BackStab" },
-        { name = "Druid", color = "|cffff7c0a", icon = "Interface\\Icons\\Spell_Nature_Regeneration" },
+        { name = "Priest", color = Colors.Priest, icon = "Interface\\Icons\\Spell_Holy_PowerWordShield" },
+        { name = "Mage", color = Colors.Mage, icon = "Interface\\Icons\\Spell_Frost_IceStorm" },
+        { name = "Warlock", color = Colors.Warlock, icon = "Interface\\Icons\\Spell_Shadow_CurseOfTounges" },
+        { name = "Rogue", color = Colors.Rogue, icon = "Interface\\Icons\\Ability_BackStab" },
+        { name = "Druid", color = Colors.Druid, icon = "Interface\\Icons\\Spell_Nature_Regeneration" },
 		{},
 		{},
 		{},
@@ -276,10 +277,10 @@ local function CreateDungeonSetMenu(dungeonName)
 		{},
 		{},
 		{},
-        { name = "Hunter", color = "|cffaad372", icon = "Interface\\Icons\\Ability_Hunter_RunningShot" },
-        { name = "Shaman", color = "|cff2773ff", icon = "Interface\\Icons\\Spell_FireResistanceTotem_01" },
-        { name = "Paladin", color = "|cfff48cba", icon = "Interface\\Icons\\Spell_Holy_SealOfMight" },
-        { name = "Warrior", color = "|cffc69b6d", icon = "Interface\\Icons\\INV_Shield_05" },
+        { name = "Hunter", color = Colors.Hunter, icon = "Interface\\Icons\\Ability_Hunter_RunningShot" },
+        { name = "Shaman", color = Colors.Shaman, icon = "Interface\\Icons\\Spell_FireResistanceTotem_01" },
+        { name = "Paladin", color = Colors.Paladin, icon = "Interface\\Icons\\Spell_Holy_SealOfMight" },
+        { name = "Warrior", color = Colors.Warrior, icon = "Interface\\Icons\\INV_Shield_05" },
     }
 
     for i, classInfo in ipairs(classData) do

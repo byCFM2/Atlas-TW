@@ -133,12 +133,12 @@ local Factions = {
 		{ name = L["Prizes"] },
 		{ id = 19491, container={{19182,1200}} },
 		{ id = 19426, container={{19182,1200}} },
-		{ id = 19291, disc=L["Bag"], container={{19182,50}} }, -- Darkmoon Storage Box
+		{ id = 19291, container={{19182,50}} }, -- Darkmoon Storage Box
 		{ id = 19293, container={{19182,50}} }, -- Last Year's Mutton
-		{ id = 19296, container={{19182,40}} },-- Greater Darkmoon Prize
-		{ id = 19297, container={{19182,12}} }, -- Lesser Darkmoon Prize
+		{ id = 19296, disc = L["Container"], container={{19182,40}} },-- Greater Darkmoon Prize
+		{ id = 19297, disc = L["Container"], container={{19182,12}} }, -- Lesser Darkmoon Prize
 		{ id = 19292, container={{19182,10}} }, -- Last Month's Mutton
-		{ id = 19298, container={{19182,5}} }, -- Minor Darkmoon Prize
+		{ id = 19298, disc = L["Container"], container={{19182,5}} }, -- Minor Darkmoon Prize
 		{ id = 19295, container={{19182,5}} }, -- Darkmoon Flower
 	},
     GelkisClanCentaur = {
@@ -284,8 +284,8 @@ local Factions = {
 		{ id=61009 },
 		{ id=61006 },
 		{},
-		{ id=51043, disc = L["Bag"] },
-		{ id=51252, disc = L["Mount"] },
+		{ id=51043 },
+		{ id=51252 },
 		{ id=80300 },
 	},
 	CenarionCircle = {
@@ -360,7 +360,7 @@ local Factions = {
 		{ id = 22681, container = {{22523, 7}, {22524, 7}} },
 		{ id = 22680, container = {{22523, 7}, {22524, 7}} },
 		{ id = 22688, container = {{22523, 7}, {22524, 7}} },
-		{ id = 22679, disc = L["Bag"], container = {{22523, 7}, {22524, 7}} },
+		{ id = 22679, container = {{22523, 7}, {22524, 7}} },
 		{ id = 22657, container = {{22523, 45}, {22524, 45}} }, --*15
 		{ name = BF["Friendly"], icon = "INV_Jewelry_Talisman_08"},
 		{ id = 13724, disc = L["Food"] },

@@ -15,7 +15,10 @@
 --- @compatible World of Warcraft 1.12
 ---
 
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
+local Colors = AtlasTW.Colors
 
 AtlasTW.SpellDB = {
 	enchants = {
@@ -445,31 +448,31 @@ AtlasTW.SpellDB = {
 		},
 		[25124] = {
 			item = 20744,
-			extra = "|cffffffff5 "..L["Charges"],
+			extra = Colors.WHITE.."5 "..L["Charges"],
 		},
 		[25125] = {
 			item = 20745,
-			extra = "|cffffffff5 "..L["Charges"],
+			extra = Colors.WHITE.."5 "..L["Charges"],
 		},
 		[25126] = {
 			item = 20746,
-			extra = "|cffffffff5 "..L["Charges"],
+			extra = Colors.WHITE.."5 "..L["Charges"],
 		},
 		[25127] = {
 			item = 20747,
-			extra = "|cffffffff5 "..L["Charges"],
+			extra = Colors.WHITE.."5 "..L["Charges"],
 		},
 		[25128] = {
 			item = 20750,
-			extra = "|cffffffff5 "..L["Charges"],
+			extra = Colors.WHITE.."5 "..L["Charges"],
 		},
 		[25129] = {
 			item = 20749,
-			extra = "|cffffffff5 "..L["Charges"],
+			extra = Colors.WHITE.."5 "..L["Charges"],
 		},
 		[25130] = {
 			item = 20748,
-			extra = "|cffffffff5 "..L["Charges"],
+			extra = Colors.WHITE.."5 "..L["Charges"],
 		},
 		[27837] = {
 			name = "Enchant 2H Weapon - Agility",
@@ -1594,7 +1597,7 @@ AtlasTW.SpellDB = {
 			requires = L["Anvil"],
 			tools = {5956},
 			item = 3474,
-			extra = "|cff00ff00"..L["<Random enchantment>"],
+			extra = Colors.GREEN..L["<Random enchantment>"],
 			reagents = {
 				{2840, 8},
 				{818},
@@ -2795,7 +2798,7 @@ AtlasTW.SpellDB = {
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4376,
-			extra = "|cffffffff5 "..L["Charges"],
+			extra = Colors.WHITE.."5 "..L["Charges"],
 			reagents = {
 				{4375},
 				{4402},
@@ -2846,7 +2849,7 @@ AtlasTW.SpellDB = {
 		},
 		[3952] = {
 			item = 4381,
-			extra = "|cffffffff10 "..L["Charges"],
+			extra = Colors.WHITE.."10 "..L["Charges"],
 			reagents = {
 				{4371},
 				{4375, 2},
@@ -2897,7 +2900,7 @@ AtlasTW.SpellDB = {
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4386,
-			extra = "|cffffffff5 "..L["Charges"],
+			extra = Colors.WHITE.."5 "..L["Charges"],
 			reagents = {
 				{4375},
 				{3829},
@@ -2915,7 +2918,7 @@ AtlasTW.SpellDB = {
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4388,
-			extra = "|cffffffff5 "..L["Charges"],
+			extra = Colors.WHITE.."5 "..L["Charges"],
 			reagents = {
 				{4375, 3},
 				{4306, 2},
@@ -2927,7 +2930,7 @@ AtlasTW.SpellDB = {
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 4403,
-			extra = "|cffffffff8 "..L["Charges"],
+			extra = Colors.WHITE.."8 "..L["Charges"],
 			reagents = {
 				{4371, 4},
 				{4387},
@@ -5002,7 +5005,7 @@ AtlasTW.SpellDB = {
 		},
 		[10529] = {
 			item = 8210,
-			extra = "|cff00ff00"..L["<Random enchantment>"],
+			extra = Colors.GREEN..L["<Random enchantment>"],
 			reagents = {
 				{4304, 10},
 				{8153},
@@ -5035,7 +5038,7 @@ AtlasTW.SpellDB = {
 		},
 		[10544] = {
 			item = 8211,
-			extra = "|cff00ff00"..L["<Random enchantment>"],
+			extra = Colors.GREEN..L["<Random enchantment>"],
 			reagents = {
 				{4304, 12},
 				{8153, 2},
@@ -5044,7 +5047,7 @@ AtlasTW.SpellDB = {
 		},
 		[10546] = {
 			item = 8214,
-			extra = "|cff00ff00"..L["<Random enchantment>"],
+			extra = Colors.GREEN..L["<Random enchantment>"],
 			reagents = {
 				{4304, 10},
 				{8153, 2},
@@ -5122,7 +5125,7 @@ AtlasTW.SpellDB = {
 		},
 		[10566] = {
 			item = 8213,
-			extra = "|cff00ff00"..L["<Random enchantment>"],
+			extra = Colors.GREEN..L["<Random enchantment>"],
 			reagents = {
 				{4304, 14},
 				{8153, 4},
@@ -5147,7 +5150,7 @@ AtlasTW.SpellDB = {
 		},
 		[10572] = {
 			item = 8212,
-			extra = "|cff00ff00"..L["<Random enchantment>"],
+			extra = Colors.GREEN..L["<Random enchantment>"],
 			reagents = {
 				{4304, 16},
 				{8153, 6},
@@ -5156,7 +5159,7 @@ AtlasTW.SpellDB = {
 		},
 		[10574] = {
 			item = 8215,
-			extra = "|cff00ff00"..L["<Random enchantment>"],
+			extra = Colors.GREEN..L["<Random enchantment>"],
 			reagents = {
 				{4304, 16},
 				{8153, 6},
@@ -6099,7 +6102,7 @@ AtlasTW.SpellDB = {
 		[12622] = {
 			tools = {6219, 10498},
 			item = 10504,
-			extra = "|cff00ff00"..L["<Random enchantment>"],
+			extra = Colors.GREEN..L["<Random enchantment>"],
 			reagents = {
 				{4304, 8},
 				{1529, 3},
@@ -6132,7 +6135,7 @@ AtlasTW.SpellDB = {
 			requires = L["Anvil"],
 			tools = {5956, 6219},
 			item = 10577,
-			extra = "|cffffffff6 "..L["Charges"],
+			extra = Colors.WHITE.."6 "..L["Charges"],
 			reagents = {
 				{10559, 2},
 				{3860, 4},
@@ -6374,7 +6377,7 @@ AtlasTW.SpellDB = {
 			tools = {5956, 6219},
 			text = "Reloads an empty Goblin mortar.",
 			item = 10577,
-			extra = "|cffffffff6 "..L["Charges"],
+			extra = Colors.WHITE.."6 "..L["Charges"],
 			reagents = {
 				{10577},
 				{3860},
@@ -9401,7 +9404,7 @@ AtlasTW.SpellDB = {
 		},
 		[23079] = {
 			item = 18637,
-			extra = "|cffffffff10 "..L["Charges"],
+			extra = Colors.WHITE.."10 "..L["Charges"],
 			reagents = {
 				{16000, 2},
 				{18631},
@@ -9986,7 +9989,7 @@ AtlasTW.SpellDB = {
 			requires = L["Black Anvil"],
 			tools = {5956},
 			item = 20039,
-			extra = "|cff00ff00"..L["<Random enchantment>"],
+			extra = Colors.GREEN..L["<Random enchantment>"],
 			reagents = {
 				{17011, 3},
 				{17010, 3},

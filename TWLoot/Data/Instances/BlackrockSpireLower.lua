@@ -23,6 +23,8 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BC = AceLibrary("Babble-Class-2.2")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local GRAY = AtlasTW.Colors.GRAY
+local GREEN = AtlasTW.Colors.GREEN
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.BlackrockSpireLower = {
@@ -45,13 +47,13 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             prefix = "1)",
             name = L["Vaelan"],
             postfix = L["Upper"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             prefix = "2)",
             name = L["Warosh"],
             postfix = L["Wanders"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             name = L["Elder Stonefort"],
@@ -150,12 +152,12 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         },
         {
             name = L["Fifth Mosh'aru Tablet"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             prefix = "8)",
             name = L["Bijou"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "LBRSVoone",
@@ -196,12 +198,12 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         },
         {
             name = L["Sixth Mosh'aru Tablet"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             prefix = "10)",
             name = L["Bijou's Belongings"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             prefix = "11)",
@@ -214,7 +216,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             name = L["Unfired Plate Gauntlets"],
             postfix = L["Lower"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "LBRSGrimaxe",
@@ -267,7 +269,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             prefix = "15)",
             name = L["Urok's Tribute Pile"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "LBRSDoomhowl",
@@ -403,7 +405,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             prefix = "1')",
             name = L["Burning Felguard"],
             postfix = L["Rare"]..", "..L["Summon"],
-            color = "|cff00FF00",
+            color = GREEN,
             defaults = { dropRate = 50 },
             loot = {
                 { id = 13181 }, -- Demonskin Gloves

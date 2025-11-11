@@ -21,6 +21,7 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -66,7 +67,7 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
             id = "SMDoansBox",
             prefix = "1)",
             name = L["Doan's Strongbox"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
             loot = {
                 { id = 7146, disc = L["Key"] }, -- The Scarlet Key
             }
@@ -321,7 +322,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
         },
         {
             name = L["Vorrel Sengutz"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "SMScorn",
@@ -354,7 +355,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
             prefix = "1')",
             name = L["Ironspine"],
             postfix = L["Rare"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
             defaults = { dropRate = 33 },
             loot = {
                 { id = 7688 }, -- Ironspine's Ribcage
@@ -366,7 +367,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
             id = "SMAzshir",
             name = BB["Azshir the Sleepless"],
             postfix = L["Rare"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
             defaults = { dropRate = 33 },
             loot = {
                 { id = 7709 }, -- Blighted Leggings
@@ -378,7 +379,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
             id = "SMFallenChampion",
             name = BB["Fallen Champion"],
             postfix = L["Rare"],
-            color = "|cff66cc33",
+            color = Colors.GREEN,
             defaults = { dropRate = 33 },
             loot = {
                 { id = 7691 }, -- Embalmed Shroud

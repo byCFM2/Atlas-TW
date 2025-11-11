@@ -19,6 +19,7 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -43,7 +44,7 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
         {
             prefix = "2)",
             name = BB["Trigore the Lasher"],
-            color = "|cffcc9933",
+            color = Colors.GREY2,
         },
         {
             id = "WCBoahn",
@@ -57,15 +58,15 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
         },
         {
             name = L["Above the Entrance:"],
-            color = "|cffcc9933",
+            color = Colors.GREY2,
         },
         {
             name = BB["Ebru"],
-            color = "|cff999999",
+            color = Colors.GREY2,
         },
         {
             name = L["Nalpak"],
-            color = "|cff999999",
+            color = Colors.GREY2,
         },
         {
             id = "WCKalldanFelmoon",
@@ -78,7 +79,7 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
         },
         {
             name = L["Waldor"],
-            color = "|cff999999",
+            color = Colors.GREY2,
         },
     }
 }
@@ -98,7 +99,7 @@ AtlasTW.InstanceData.WailingCaverns = {
             id = "WCDisciple",
             prefix = "1)",
             name = L["Disciple of Naralex"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "WCLordCobrahn",
@@ -268,7 +269,7 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCNaralex",
             name = L["Naralex"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "WCTrash",

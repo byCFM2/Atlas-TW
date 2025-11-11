@@ -18,6 +18,7 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -35,7 +36,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
         {
             prefix = "1)",
             name = BB["Roogug"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "RFKAggem",
@@ -151,12 +152,12 @@ AtlasTW.InstanceData.RazorfenKraul = {
             id = "RFKWillixtheImporter",
             prefix = "9)",
             name = L["Willix the Importer"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "RFKHeralathFallowbrook",
             name = L["Heralath Fallowbrook"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "RFKEarthcallerHalmgar",

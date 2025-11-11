@@ -22,6 +22,7 @@ local BZ = AceLibrary("Babble-Zone-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -284,7 +285,7 @@ AtlasTW.InstanceData.Stratholme = {
             id = "STRATDathrohan",
             prefix = "11)",
             name = L["Grand Crusader Dathrohan"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "STRATBalnazzar",
@@ -370,7 +371,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             prefix = "13)",
             name = L["Aurius"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "STRATStonespine",
@@ -564,13 +565,13 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
             }
         },
-        { name = L["Ysida Harmon"], color = "|cff9d9d9d" },
-        { prefix = "1')", name = L["Crusaders' Square Postbox"], color = "|cff00FF00" },
-        { prefix = "2')", name = L["Market Row Postbox"], color = "|cff00FF00" },
-        { prefix = "3')", name = L["Festival Lane Postbox"], color = "|cff00FF00" },
-        { prefix = "4')", name = L["Elders' Square Postbox"], color = "|cff00FF00" },
-        { prefix = "5')", name = L["King's Square Postbox"], color = "|cff00FF00" },
-        { prefix = "6')", name = L["Fras Siabi's Postbox"], color = "|cff00FF00" },
+        { name = L["Ysida Harmon"], color = Colors.GREY },
+        { prefix = "1')", name = L["Crusaders' Square Postbox"], color = Colors.GREEN },
+        { prefix = "2')", name = L["Market Row Postbox"], color = Colors.GREEN },
+        { prefix = "3')", name = L["Festival Lane Postbox"], color = Colors.GREEN },
+        { prefix = "4')", name = L["Elders' Square Postbox"], color = Colors.GREEN },
+        { prefix = "5')", name = L["King's Square Postbox"], color = Colors.GREEN },
+        { prefix = "6')", name = L["Fras Siabi's Postbox"], color = Colors.GREEN },
         {
             id = "STRATPostmaster",
             name = L["Third Postbox Opened"].. ": " .. BB["Postmaster Malown"],

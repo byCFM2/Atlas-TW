@@ -19,6 +19,7 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BS = AceLibrary("Babble-Spell-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -64,8 +65,8 @@ AtlasTW.InstanceData.MaraudonEnt = {
                 { id = 17763, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Gem of the Third Khan
             }
         },
-        { prefix = "4)", name = BB["Cavindra"], color = "|cff9d9d9d" },
-        { prefix = "5)", name = BB["Cursed Centaur"], postfix = L["Rare"]..", "..L["Varies"], color = "|cff9d9d9d" },
+        { prefix = "4)", name = BB["Cavindra"], color = Colors.GREY },
+        { prefix = "5)", name = BB["Cursed Centaur"], postfix = L["Rare"]..", "..L["Varies"], color = Colors.GREY },
     }
 }
 

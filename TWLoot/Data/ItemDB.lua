@@ -19,17 +19,19 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
+local Colors = AtlasTW.Colors
+
 AtlasTW.ItemDB = {}
 
 AtlasTW.ItemDB.SLOT_KEYWORDS = {
-    [L["Head"]] = 0, [L["Shoulder"]] = 0, [L["Tabard"]] = 0,[L["Projectile"]] = 0,
+    [L["Head"]] = 0, [L["Shoulder"]] = 0, [L["Projectile"]] = 0,
     [L["Chest"]] = 0,[L["Wrist"]] = 0, [L["Hands"]] = 0, [L["Relic"]] = 0,
     [L["Legs"]] = 0, [L["Feet"]] = 0, [L["Main Hand"]] = 0, [L["One-Hand"]] = 0,
     [L["Off Hand"]] = 0, [L["Waist"]] = 0, [L["Two-Hand"]] = 0, [L["Ranged"]] = 0,
 }
 AtlasTW.ItemDB.SLOT2_KEYWORDS = {
     [L["Cloth"]] = 0,  [L["Leather"]] = 0, [L["Mail"]] = 0,[L["Plate"]] = 0,[L["Bullet"]] = 0,[L["Shirt"]] = 0,
-    [L["Mace"]] = 0, [L["Axe"]] = 0, [L["Dagger"]] = 0, [L["Sword"]] = 0, [L["Totem"]] = 0,
+    [L["Mace"]] = 0, [L["Axe"]] = 0, [L["Dagger"]] = 0, [L["Sword"]] = 0, [L["Totem"]] = 0, [L["Tabard"]] = 0,
     [L["Held In Off-hand"]] = 0, [L["Shield"]] = 0, [L["Finger"]] = 0, [L["Neck"]] = 0, [L["16 Slot Ammo Pouch"]] = 0,
     [L["Trinket"]] = 0, [L["Back"]] = 0, [L["Bow"]] = 0, [L["Crossbow"]] = 0,[L["Arrow"]] = 0,
     [L["Gun"]] = 0, [L["Polearm"]] = 0, [L["Libram"]] = 0, [L["Staff"]] = 0, [L["Idol"]] = 0,
@@ -59,8 +61,8 @@ AtlasTW.ItemDB.ClassItems = {
 ---
 local function getColoredText(text, typeText)
     -- Color constants
-    local COLOR_GREEN = "|cff00ff00"
-    local COLOR_RED = "|cffff0000"
+    local COLOR_GREEN = Colors.GREEN
+    local COLOR_RED = Colors.RED
     local COLOR_END = "|r"
     local playerClass = UnitClass("player")
     local playerLevel = UnitLevel("player")
@@ -235,7 +237,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                     if string.find(text, L["Quest Item"]) then
                         table.insert(info, text)
                     -- Mount
-                    elseif string.find(lowerText, string.lower(" "..L["Mount"].." ")) then
+                    elseif string.find(lowerText, string.lower(" "..L["a mount"].." ")) then
                         table.insert(info, L["Mount"])
                         break
                     -- Glyph
@@ -244,6 +246,9 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                     -- Pet (companion)
                     elseif string.find(lowerText, string.lower(" "..L["Companion"].." ")) then
                         table.insert(info, L["Pet"])
+                    -- bag
+                    elseif string.find(lowerText, string.lower(L["Slot Bag"])) then
+                        table.insert(info, L["Bag"])
                     -- Starts a quest
                     elseif string.find(text, L["This Item Begins a Quest"]) then
                         table.insert(info, text)
@@ -258,7 +263,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                         end
                     elseif AtlasTW.ItemDB.SLOT2_KEYWORDS[text] then
                         if text == L["Finger"] then
-                            table.insert(info, "|cff00ff00"..L["Ring"].."|r")
+                            table.insert(info, Colors.GREEN..L["Ring"].."|r")
                         else
                             table.insert(info, getColoredText(text, "slot2"))
                         end

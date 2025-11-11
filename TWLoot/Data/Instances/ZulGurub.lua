@@ -22,6 +22,7 @@ local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BC = AceLibrary("Babble-Class-2.2")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -197,13 +198,13 @@ AtlasTW.InstanceData.ZulGurub = {
         },
         {
             name = L["Ohgan"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY
         },
         {
             prefix = "6)",
             name = L["Edge of Madness"],
             postfix = L["Optional"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY
         },
         {
             id = "Grilek",
@@ -299,12 +300,12 @@ AtlasTW.InstanceData.ZulGurub = {
         {
             name = L["Zealot Zath"],
             postfix = BC["Rogue"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY
         },
         {
             name = L["Zealot Lor'Khan"],
             postfix = BC["Shaman"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY
         },
         {
             id = "HighPriestessArlokk",
@@ -316,7 +317,7 @@ AtlasTW.InstanceData.ZulGurub = {
                 { id = 19913 }, -- Bloodsoaked Greaves
                 { id = 19912 }, -- Overlord's Onyx Band
                 {},
-                { id = 19914, disc = L["Bag"], dropRate = 12 }, -- Panther Hide Sack
+                { id = 19914, dropRate = 12 }, -- Panther Hide Sack
                 { id = 19881, dropRate = 100 }, -- Channeler's Head
                 {},
                 { id = 19922 }, -- Arlokk's Hoodoo Stick
@@ -381,7 +382,6 @@ AtlasTW.InstanceData.ZulGurub = {
                 { id = 19852 }, -- Ancient Hakkari Manslayer
                 { id = 19859 }, -- Fang of the Faceless
                 { id = 19854 }, -- Zin'rokh, Destroyer of Worlds
-                {},
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 { id = 19802, dropRate = 100, container = { 19950, 19949, 19948 } }, -- Heart of Hakkar
             }
@@ -389,7 +389,7 @@ AtlasTW.InstanceData.ZulGurub = {
         {
             prefix = "1')",
             name = L["Muddy Churning Waters"],
-            color = "|cff00ff00",
+            color = Colors.GREEN,
             loot = {
                 { id = 19975, disc = L["Used to summon boss"] }, -- Zulian Mudskunk
             },
@@ -397,7 +397,7 @@ AtlasTW.InstanceData.ZulGurub = {
         {
             prefix = "2')",
             name = L["Jinxed Hoodoo Pile"],
-            color = "|cff00ff00",
+            color = Colors.GREEN,
             defaults = { dropRate = 11 },
             loot = {
                 { id = 19727, disc = L["Unique"], dropRate = 26 }, -- Blood Scythe

@@ -21,7 +21,7 @@
 -- ============================================================================
 
 local ADDON_NAME = "AtlasTWLootTip"
-local GREY_COLOR = "|cff999999"
+local GREY = AtlasTW.Colors.GREY
 local MAX_ITEM_SEARCH_RANGE = 99999
 local FASHION_COIN_ID = 51217
 
@@ -392,7 +392,7 @@ local function ExtendTooltip(tooltip)
 
                 local source = FindItemSource(itemID)
                 if source then
-                    ModuleState.lastSourceStr = GREY_COLOR .. source .. "|r"
+                    ModuleState.lastSourceStr = GREY .. source .. "|r"
                 end
             end
 

@@ -21,6 +21,8 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
+local Colors = AtlasTW.Colors
+
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 local imperialRegalia = {
@@ -117,15 +119,15 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
         },
         {
             name = BB["Vem"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             name = BB["Lord Kri"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             name = BB["Princess Yauj"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "BattleguardSartura",
@@ -267,11 +269,11 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
         },
         {
             name = "Emperor Vek'lor",
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             name = "Emperor Vek'nilash",
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "Ouro",
@@ -339,12 +341,12 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 { id = 36550, dropRate = 1 }, -- Spotted Qiraji Battle Tank
             }
         },
-        { prefix = "1') ", name = "Andorgos", color = "|cff00FF00" },
-        { name = L["Vethsera"], color = "|cff00FF00" },
-        { name = L["Kandrostrasz"], color = "|cff00FF00" },
-        { prefix = "2') ", name = "Arygos", color = "|cff00FF00" },
-        { name = L["Caelestrasz"], color = "|cff00FF00" },
-        { name = L["Merithra of the Dream"], color = "|cff00FF00" },
+        { prefix = "1') ", name = "Andorgos", color = Colors.GREEN },
+        { name = L["Vethsera"], color = Colors.GREEN },
+        { name = L["Kandrostrasz"], color = Colors.GREEN },
+        { prefix = "2') ", name = "Arygos", color = Colors.GREEN },
+        { name = L["Caelestrasz"], color = Colors.GREEN },
+        { name = L["Merithra of the Dream"], color = Colors.GREEN },
         {
             id = "AQ40Trash",
             name = L["Trash Mobs"].."-"..BZ["Temple of Ahn'Qiraj"],

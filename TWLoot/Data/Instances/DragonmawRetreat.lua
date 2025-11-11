@@ -21,6 +21,7 @@ local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -56,7 +57,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         },
         {
             name = BB["Bogpaw Truthsay"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "DRCavernwebBroodmother",
@@ -120,7 +121,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         },
         {
             name = L["Pedestal of Unity"],
-            color = "|cff9d9d9d",
+            color = Colors.GREY,
         },
         {
             id = "DRSlagfistDestroyer",--30
@@ -168,7 +169,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
             id = "DRChestofDathronag",--object
             prefix = "a)",
             name = L["Chest of Dathronag"],
-            color = "|cff00FF00",
+            color = Colors.GREEN,
             loot = {
                 { id = 41875, disc = L["Quest Item"], dropRate = 100 }, -- Fragment of Dathronag
             }

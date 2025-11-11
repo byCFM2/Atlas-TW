@@ -23,6 +23,7 @@ local BC = AceLibrary("Babble-Class-2.2")
 local BS = AceLibrary("Babble-Spell-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local GRAY = AtlasTW.Colors.GRAY
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -65,17 +66,17 @@ AtlasTW.InstanceData.BlackrockDepths = {
         {
             prefix = "2)",
             name = L["Kharan Mighthammer"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             prefix = "3)",
             name = L["Commander Gor'shak"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             prefix = "3)",
             name = L["Marshal Windsor"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "BRDHighInterrogatorGerstahn",
@@ -98,7 +99,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         {
             prefix = "6)",
             name = L["Ring of Law"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "BRDAnubshiah",
@@ -209,47 +210,47 @@ AtlasTW.InstanceData.BlackrockDepths = {
         {
             name = L["Lefty"],
             postfix = BC["Rogue"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             name = L["Malgen Longspear"],
             postfix = BC["Hunter"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             name = L["Gnashjaw"],
             postfix = L["Pet"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             name = L["Korv"],
             postfix = BC["Shaman"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             name = L["Rezznik"],
             postfix = L["Engineer"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             name = L["Rotfang"],
             postfix = BC["Rogue"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             name = L["Snokh Blackspine"],
             postfix = BC["Mage"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             name = L["Va'jashni"],
             postfix = BC["Priest"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             name = L["Volida"],
             postfix = BC["Mage"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "BRDHoundmaster",
@@ -275,7 +276,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             name = L["High Justice Grimstone"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "BRDForgewright",
@@ -352,7 +353,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             name = BB["Watchman Doomgrip"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "BRDFineousDarkvire",
@@ -418,7 +419,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         {
             prefix = "12)",
             name = L["Shadowforge Lock"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "BRDGeneralAngerforge",
@@ -466,17 +467,17 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             name = L["Field Repair Bot 74A"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             name = L["Blacksmithing Plans"].." ",
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "BRDGuzzler",
             prefix = "15)",
             name = L["The Grim Guzzler"],
-            color = "|cff9d9d9d"
+            color = GRAY
         },
         {
             id = "BRDHurley",
@@ -526,7 +527,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             name = L["Mistress Nagmara"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "BRDPhalanx",
@@ -564,7 +565,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             name = L["Private Rocknot"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "BRDRibbly",
@@ -576,7 +577,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {},
                 { id = 11612, container = { 11604 } }, -- Plans: Dark Iron Plate
                 {},
-                { id = 11742, disc = L["Bag"] }, -- Wayfarer's Knapsack
+                { id = 11742 }, -- Wayfarer's Knapsack
                 {},
                 { id = 11313, container = { 11865, 11963, 12049 } }, -- Ribbly's Head
             }
@@ -618,11 +619,11 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             name = L["Blacksmithing Plans"].." ",
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             name = L["Chest of The Seven"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "BRDTomb",
@@ -721,16 +722,16 @@ AtlasTW.InstanceData.BlackrockDepths = {
         {
             prefix = "22)",
             name = L["The Black Forge"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             prefix = "23)",
             name = BZ["Molten Core"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             name = L["Core Fragment"],
-            color = "|cff9d9d9d",
+            color = GRAY,
         },
         {
             id = "BRDPyron",
