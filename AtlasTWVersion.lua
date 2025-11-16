@@ -129,11 +129,10 @@ verFrame:SetScript('OnEvent', function()
     VC.joinAt = GetTime() + 5
     VC.resetPublishDelay()
   elseif event == 'CHAT_MSG_CHANNEL' and arg2 ~= UnitName('player') then
-    -- Extract channel name from arg4 like "3. LFT"
-    local _, _, source = string.find(arg4 or '', '(%d+)%.')
-    local _, channelName = GetChannelName(source)
-    if isOurChannel(channelName) then
-      local _, _, addonName, remoteVersionStr, msg = string.find(arg1 or '', '([^:]+):([^:]+):([^:]+)')
+    -- Extract "channel base name" from arg4 like "3. LFT" without calling GetChannelName
+    local channelName = string.gsub(arg4 or '', '^%d+%.%s*', '')
+    if channelName and isOurChannel(channelName) then
+      local _, _, addonName, remoteVersionStr,_ = string.find(arg1 or '', '([^:]+):([^:]+):([^:]+)')
       if addonName == VC.abbrev then
         checkRemoteVersion(tonumber(remoteVersionStr))
       end

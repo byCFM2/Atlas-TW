@@ -105,7 +105,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         },
         {
             name = L["Captain Galvangar"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "3)",
@@ -119,7 +119,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         },
         {
             name = L["Wing Commander Ichman"] .. " (" .. BF["Alliance"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "5)",
@@ -128,7 +128,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         },
         {
             name = L["Wing Commander Slidore"] .. " (" .. BF["Alliance"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "6)",
@@ -136,15 +136,15 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         },
         {
             name = L["Taskmaster Snivvle"] .. " (" .. L["Neutral"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Masha Swiftcut"] .. " (" .. BF["Horde"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Aggi Rumblestomp"] .. " (" .. BF["Alliance"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "7)",
@@ -157,19 +157,19 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         },
         {
             name = L["Jotek"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Smith Regzar"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Primalist Thurloga"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Sergeant Yazra Bloodsnarl"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "9)",
@@ -177,7 +177,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         },
         {
             name = L["Frostwolf Wolf Rider Commander"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "10)",
@@ -199,11 +199,11 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         },
         {
             name = L["Wing Commander Jeztor"] .. " (" .. L["Rescued"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Wing Commander Mulverick"] .. " (" .. L["Rescued"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "14)",
@@ -216,7 +216,7 @@ AtlasTW.InstanceData.BGAlteracValleySouth = {
         },
         {
             name = L["Frostwolf Banner"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "16)",

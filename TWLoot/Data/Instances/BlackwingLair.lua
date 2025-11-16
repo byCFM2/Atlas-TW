@@ -170,7 +170,7 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 19395 }, -- Rejuvenating Gem
             }
         },
-        { prefix = "5)", name = L["Master Elemental Shaper Krixix"], color = Colors.GRAY, },
+        { prefix = "5)", name = L["Master Elemental Shaper Krixix"], color = Colors.GREY, },
         {
             id = "Ebonroc",
             prefix = "6)",
@@ -400,34 +400,36 @@ AtlasTW.InstanceData.BlackrockMountainEnt = {
             postfix = L["Wanders"],
             loot = {
                 { id = 14486, dropRate = 18, container = { 14134 } }, -- Pattern: Cloak of Fire
+                {},
+                { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
             }
         },
         {
             prefix = "2)",
             name = BB["Lothos Riftwaker"],
             postfix = "MC " .. L["Teleport"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "3)",
             name = BB["Franclorn Forgewright"],
             postfix = L["Ghost"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "4)",
             name = L["Meeting Stone"] .. " (BRD)",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "5)",
             name = L["Orb of Command"] .. " (BWL " .. L["Teleport"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "6)",
             name = L["Meeting Stone"] .. " (LBRS, UBRS)",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             id = "BRMScarshieldQuartermaster",

@@ -687,11 +687,11 @@ kQuestInstanceData.Uldaman.Alliance[16] = {
     Prequest = "The Exorcism",
     Folgequest = "Mana Surges",
 }
-kQuestInstanceData.Uldaman.Alliance[17] = { --1.18 TODO check NPC and quest available
+kQuestInstanceData.Uldaman.Alliance[17] = { --1.18
     Title = "Stealing a Core",
     Level = 45,
     Attain = 45,
-    Aim = "Acquire an Intact Power Core  from Uldaman's Ancient Treasure "..yellow.."[11]"..white..".",
+    Aim = "Acquire an Intact Power Core from Uldaman's Ancient Treasure "..yellow.."[11]"..white..".",
     Location = "Torble Sparksprocket (The Barrens; "..yellow.."48.6,83"..white.." gnome with purple goggles under the tent, next to the dwarf)",
     Note = "Intact Power Core "..yellow.."[11]"..white..", in the room with platinum disc behind the last boss in the chest behind the right pillar.\nQuestline starts in Southern Barrens -> Bael Modan -> a little north from the path to Bael'dun Keep under the tent. First quest can be attain at lvl 18, last at lvl 53",
     Prequest = "An Ancient Acquisition",
@@ -1100,6 +1100,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[21] = {
     Note = "This questline starts at Radgan Deepblaze next to Orvak Sternrock with quest 'Gaining Orvak's Trust'",
     Prequest = "Gaining Orvak's Trust -> Hearing Orvak's Story -> The Sternrock Stash -> Discovering Golem Secrets -> To Purchase Secret Information",
     Rewards = {
+        Text = "Reward:",
         { id = 60672 }, --Energized Golem Core Trinket
     }
 }
@@ -2927,6 +2928,7 @@ kQuestInstanceData.OnyxiasLair.Alliance[3] = {
     Note = "Highlord Bolvar Fordragon is at (Stormwind City - Stormwind Keep; "..yellow.."78,20"..white.."). Only one person in the raid can loot this item and the quest can only be done one time.\nRewards listed are for the followup.",
     Folgequest = "Celebrating Good Times",
     Rewards = {
+        Text = "Reward: Pick One",
         { id = 18406 }, --Onyxia Blood Talisman Trinket
         { id = 18403 }, --Dragonslayer's Signet Ring
         { id = 18404 }, --Onyxia Tooth Pendant Neck

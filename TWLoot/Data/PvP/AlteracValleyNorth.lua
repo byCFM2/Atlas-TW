@@ -85,15 +85,15 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Morloch"] .. " (" .. L["Neutral"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Umi Thorson"] .. " (" .. BF["Alliance"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Keetar"] .. " (" .. BF["Horde"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "2)",
@@ -106,7 +106,7 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Wing Commander Mulverick"] .. " (" .. BF["Horde"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "4)",
@@ -114,15 +114,15 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Dirk Swindle"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Athramanis"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Lana Thunderbrew"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "5)",
@@ -135,15 +135,15 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Stormpike Ram Rider Commander"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Svalbrad Farmountain"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Kurdrum Barleybeard"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "7)",
@@ -151,11 +151,11 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Jonivera Farmountain"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Brogus Thunderbrew"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "8)",
@@ -163,11 +163,11 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Wing Commander Slidore"] .. " (" .. L["Rescued"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Wing Commander Vipore"] .. " (" .. L["Rescued"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "9)",
@@ -176,11 +176,11 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Corporal Noreg Stormpike"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Gaelden Hammersmith"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "10)",
@@ -193,7 +193,7 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Stormpike Banner"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "12)",
@@ -201,7 +201,7 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Wing Commander Jeztor"] .. " (" .. BF["Horde"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "13)",
@@ -210,7 +210,7 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Wing Commander Guse"] .. " (" .. BF["Horde"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "14)",
@@ -228,7 +228,7 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Captain Balinda Stonehearth"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "17)",
@@ -237,11 +237,11 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Ichman's Beacon"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Mulverick's Beacon"] .. " (" .. BF["Horde"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             id = "AVKorrak",
@@ -282,11 +282,11 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Vipore's Beacon"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Jeztor's Beacon"] .. " (" .. BF["Horde"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "21)",
@@ -294,11 +294,11 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             name = L["Slidore's Beacon"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             name = L["Guse's Beacon"] .. " (" .. BF["Horde"] .. ")",
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             prefix = "22)",

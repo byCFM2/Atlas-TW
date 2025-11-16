@@ -31,8 +31,8 @@ local function AtlasTWLoot_ApplyParentTemplate(frame)
 
     -- Icon texture
     local icon = frame:CreateTexture(frame:GetName().."_Icon", "ARTWORK")
-    icon:SetWidth(23)
-    icon:SetHeight(23)
+    icon:SetWidth(26)
+    icon:SetHeight(26)
     icon:SetPoint("TOPLEFT", frame, 2, -2)
 
     -- Quantity text
@@ -78,8 +78,8 @@ local function AtlasTWLoot_ApplyParentTemplate(frame)
 
     -- Border texture for item with container 
     local border = frame:CreateTexture(frame:GetName().."Border", "BACKGROUND")
-    border:SetWidth(31)
-    border:SetHeight(31)
+    border:SetWidth(33)
+    border:SetHeight(33)
     border:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasTWContainer-Border")
     border:SetPoint("TOPLEFT", frame, -2, 2)
     border:Hide()
@@ -385,9 +385,10 @@ end
 -- @usage local tooltips = AtlasTWLoot_CreateTooltips()
 ---
 local function AtlasTWLoot_CreateTooltips()
+--[[     AtlasTWLootTooltip = GameTooltip
+    AtlasTWLootTooltip2 = ItemRefTooltip ]]
     local tooltip1 = CreateFrame("GameTooltip", "AtlasTWLootTooltip", UIParent, "GameTooltipTemplate")
     tooltip1:Hide()
-
     local tooltip2 = CreateFrame("GameTooltip", "AtlasTWLootTooltip2", UIParent, "GameTooltipTemplate")
     tooltip2:Hide()
 
@@ -478,6 +479,18 @@ local function AtlasTWLoot_CreateItemsFrame()
     frame:SetScript("OnEvent", function()
         AtlasTWLoot_OnEvent()
     end)
+    frame:RegisterForDrag("LeftButton")
+    frame:SetScript("OnDragStart", function()
+        AtlasTW.StartMoving()
+    end)
+    frame:SetScript("OnDragStop", function()
+        AtlasTWFrame:StopMovingOrSizing()
+        AtlasTWFrame.isMoving = false
+    end)
+    frame:SetScript("OnMouseUp", function()
+        AtlasTWFrame:StopMovingOrSizing()
+        AtlasTWFrame.isMoving = false
+    end)
     frame:Hide()
 
     -- Create scrollbar
@@ -485,8 +498,20 @@ local function AtlasTWLoot_CreateItemsFrame()
     scrollBar:SetPoint("TOPLEFT", frame, -14, -1)
     scrollBar:SetWidth(500)
     scrollBar:SetHeight(509)
+    scrollBar:EnableMouseWheel(true)
+    scrollBar:SetScript("OnMouseWheel", function()
+        local offset = FauxScrollFrame_GetOffset(AtlasTWLootScrollBar) or 0
+        local step = 2
+        local newOffset = offset - (arg1 * step)
+        if newOffset < 0 then newOffset = 0 end
+        local maxOffset = AtlasTWLootScrollBar.scrollMax or 0
+        if newOffset > maxOffset then newOffset = maxOffset end
+        FauxScrollFrame_SetOffset(AtlasTWLootScrollBar, newOffset)
+        AtlasTWLootScrollBarScrollBar:SetValue(newOffset * 15)
+        AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+    end)
     scrollBar:SetScript("OnVerticalScroll", function()
-        FauxScrollFrame_OnVerticalScroll(1, AtlasTW.LootBrowserUI.ScrollBarLootUpdate)
+        FauxScrollFrame_OnVerticalScroll(15, AtlasTW.LootBrowserUI.ScrollBarLootUpdate)
     end)
     scrollBar:SetScript("OnShow", function()
         AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
@@ -594,6 +619,7 @@ local function AtlasTWLoot_CreateItemsFrame()
         local itemButton = AtlasTWLoot_CreateButtonFromTemplate("AtlasTWLootItem_"..i, frame, "AtlasTWLootItem_Template")
         itemButton:SetID(i)
         itemButtons[i] = itemButton
+        itemButton:SetAlpha(.85)
         if i == 1 then
             itemButton:SetPoint("TOPLEFT", frame, "TOPLEFT", 25, -35)
         elseif i == 16 then
@@ -609,6 +635,7 @@ local function AtlasTWLoot_CreateItemsFrame()
     for i = 1, 30 do
         local menuButton = AtlasTWLoot_CreateButtonFromTemplate("AtlasTWLootMenuItem_"..i, frame, "AtlasTWLootMenuItem_Template")
         menuButton:SetID(i)
+        menuButton:SetAlpha(.9)
         if i == 1 then
             menuButton:SetPoint("TOPLEFT", frame, "TOPLEFT", 25, -35)
         elseif i == 16 then
@@ -712,6 +739,18 @@ local function AtlasTWLoot_CreatePanel()
 	frame:SetPoint("TOP", "AtlasTWFrame", "BOTTOM", 0, 9)
     frame:Hide()
     frame:EnableMouse(true)
+    frame:RegisterForDrag("LeftButton")
+    frame:SetScript("OnDragStart", function()
+        AtlasTW.StartMoving()
+    end)
+    frame:SetScript("OnDragStop", function()
+        AtlasTWFrame:StopMovingOrSizing()
+        AtlasTWFrame.isMoving = false
+    end)
+    frame:SetScript("OnMouseUp", function()
+        AtlasTWFrame:StopMovingOrSizing()
+        AtlasTWFrame.isMoving = false
+    end)
 
     -- Backdrop
     frame:SetBackdrop({
@@ -881,6 +920,54 @@ local function AtlasTWLoot_CreatePanel()
 end
 
 ---
+--- Hooks a script handler while preserving the original handler
+--- Chains both the original and new handlers together
+--- @param frame1 frame The frame to hook the script on
+--- @param scriptType string The script type to hook (e.g., "OnShow", "OnHide")
+--- @param handler function The new handler function to add
+--- @return nil
+--- @usage hookScript(AtlasTW.Quest.Tooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
+---
+local function hookScript(frame1, scriptType, handler)
+    -- Store original script handler
+    local originalScript = frame1:GetScript(scriptType)
+    -- Set new script that chains both handlers
+    frame1:SetScript(scriptType, function()
+        -- Call original handler if it exists
+        if originalScript then
+            originalScript()
+        end
+        -- Call our new handler
+        handler()
+    end)
+end
+
+---
+--- Sets up pfUI tooltip integration for Atlas quest tooltips
+--- Creates backdrops and equipment comparison functionality
+--- @return nil
+--- @usage setupPfUITooltip() -- Called during initialization
+---
+local function setupPfUITooltip()
+	if not IsAddOnLoaded("pfUI") then
+		return
+	end
+	-- Create pfUI tooltip backdrop
+	pfUI.api.CreateBackdrop(AtlasTWLootTooltip)
+	pfUI.api.CreateBackdropShadow(AtlasTWLootTooltip)
+	pfUI.api.CreateBackdrop(AtlasTWLootTooltip2)
+	pfUI.api.CreateBackdropShadow(AtlasTWLootTooltip2)
+	-- Setup equipment comparison if available
+ 	if pfUI.eqcompare then
+		hookScript(AtlasTWLootTooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
+		hookScript(AtlasTWLootTooltip, "OnHide", function()
+			ShoppingTooltip1:Hide()
+			ShoppingTooltip2:Hide()
+		end)
+	end
+end
+
+---
 -- Initialize the AtlasTWLoot UI components
 -- @function AtlasTWLoot_InitializeUI
 -- @usage AtlasTWLoot_InitializeUI()
@@ -889,4 +976,5 @@ function AtlasTWLoot_InitializeUI()
     AtlasTWLoot_CreateTooltips()
     AtlasTWLoot_CreateItemsFrame()
     AtlasTWLoot_CreatePanel()
+    setupPfUITooltip()
 end

@@ -75,7 +75,7 @@ local function getMapType(mapKey, mapData)
     -- Do not require Continent field; determine type by common fields
     if mapData.Level and mapData.MaxPlayers and mapData.Location then
         local size = mapData.MaxPlayers
-        if size and size > 5 then
+        if size and size > 5 and mapData.Name ~= BZ["Stratholme"] and mapData.Name ~= BZ["Scholomance"] and mapData.Name ~= BZ["Lower Blackrock Spire"] then -- dont want strat scholo and lbrs in raid type
             return "Raid"
         else
             return "Dungeon"

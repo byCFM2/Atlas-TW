@@ -199,18 +199,17 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 		end
 
 		local totalItems = GetMaxNumericIndex(dataSource)
-		local num_scroll_steps = 0
 
 		if totalItems > AtlasTW.LOOT_NUM_LINES then
-			local numRows = math.ceil(totalItems/ 2)
-			num_scroll_steps = numRows - 7 -- TODO need remake
 			AtlasTWLoot_BlinkScrollHint()
 		else
 			AtlasTWLootScrollHint:SetAlpha(0)
 		end
 		-- Set scroll bar range
-		FauxScrollFrame_Update(AtlasTWLootScrollBar, num_scroll_steps + 1, 2, 1)
-		AtlasTWLootScrollBar.scrollMax = num_scroll_steps
+		local scrollLines =  math.floor(totalItems / 30) * 15 + math.min(math.mod(totalItems, 30), 15)
+
+		AtlasTWLootScrollBar.scrollMax = math.max(0, scrollLines - 15)
+		FauxScrollFrame_Update(AtlasTWLootScrollBar, scrollLines, 15, 15)
 
 		local offset = FauxScrollFrame_GetOffset(AtlasTWLootScrollBar)
 		-- Update content and visibility of AtlasTWLootItem buttons
@@ -684,11 +683,17 @@ function AtlasTW.LootBrowserUI.DisplayWishList(wishlistData)
 
     -- Update scrollbar for wish list
     local numItems = table.getn(wishlistData)
-    FauxScrollFrame_Update(AtlasTWLootScrollBar, numItems, AtlasTW.NUM_LOOT_LINES, 16)
+
+	-- Set scroll bar range
+	local scrollLines =  math.floor(numItems / 30) * 15 + math.min(math.mod(numItems, 30), 15)
+
+	AtlasTWLootScrollBar.scrollMax = math.max(0, scrollLines - 15)
+	FauxScrollFrame_Update(AtlasTWLootScrollBar, scrollLines, 15, 15)
+
     local offset = FauxScrollFrame_GetOffset(AtlasTWLootScrollBar)
 
     -- Display wish list items with offset
-    for i = 1, AtlasTW.NUM_LOOT_LINES do
+    for i = 1, AtlasTW.LOOT_NUM_LINES do
         local itemIndex = i + offset
         if itemIndex <= numItems then
             AtlasTW.LootBrowserUI.SetLootLine(i, wishlistData[itemIndex])
@@ -719,11 +724,16 @@ function AtlasTW.LootBrowserUI.DisplaySearchResults(searchResults)
 
     -- Update scrollbar for search results
     local numItems = table.getn(searchResults)
-    FauxScrollFrame_Update(AtlasTWLootScrollBar, numItems, AtlasTW.NUM_LOOT_LINES, 16)
+
+	-- Set scroll bar range
+	local scrollLines =  math.floor(numItems / 30) * 15 + math.min(math.mod(numItems, 30), 15)
+
+	AtlasTWLootScrollBar.scrollMax = math.max(0, scrollLines - 15)
+	FauxScrollFrame_Update(AtlasTWLootScrollBar, scrollLines, 15, 15)
     local offset = FauxScrollFrame_GetOffset(AtlasTWLootScrollBar)
 
     -- Display search results with offset
-    for i = 1, AtlasTW.NUM_LOOT_LINES do
+    for i = 1, AtlasTW.LOOT_NUM_LINES do
         local itemIndex = i + offset
         if itemIndex <= numItems then
             AtlasTW.LootBrowserUI.SetLootLine(i, searchResults[itemIndex])
@@ -760,10 +770,15 @@ function AtlasTW.LootBrowserUI.DisplayMenuData(menuData)
 
     -- Update scrollbar for menu entries
     local numItems = count
-    FauxScrollFrame_Update(AtlasTWLootScrollBar, numItems, AtlasTW.NUM_LOOT_LINES, 16)
+
+	-- Set scroll bar range
+	local scrollLines =  math.floor(numItems / 30) * 15 + math.min(math.mod(numItems, 30), 15)
+
+	AtlasTWLootScrollBar.scrollMax = math.max(0, scrollLines - 15)
+	FauxScrollFrame_Update(AtlasTWLootScrollBar, scrollLines, 15, 15)
     local offset = FauxScrollFrame_GetOffset(AtlasTWLootScrollBar)
 
-    for i = 1, AtlasTW.NUM_LOOT_LINES do
+    for i = 1, AtlasTW.LOOT_NUM_LINES do
         local itemIndex = i + offset
         if itemIndex <= numItems then
             AtlasTW.LootBrowserUI.SetMenuLine(i, entries[itemIndex])
@@ -789,12 +804,17 @@ function AtlasTW.LootBrowserUI.DisplayLootData(lootData)
 
     -- Update scrollbar for loot items
     local numItems = table.getn(lootData)
-    FauxScrollFrame_Update(AtlasTWLootScrollBar, numItems, AtlasTW.NUM_LOOT_LINES, 16)
+
+	-- Set scroll bar range
+	local scrollLines =  math.floor(numItems / 30) * 15 + math.min(math.mod(numItems, 30), 15)
+
+	AtlasTWLootScrollBar.scrollMax = math.max(0, scrollLines - 15)
+	FauxScrollFrame_Update(AtlasTWLootScrollBar, scrollLines, 15, 15)
 
     local offset = FauxScrollFrame_GetOffset(AtlasTWLootScrollBar)
 
     -- Display loot items
-    for i = 1, AtlasTW.NUM_LOOT_LINES do
+    for i = 1, AtlasTW.LOOT_NUM_LINES do
         local itemIndex = i + offset
         if itemIndex <= numItems then
             AtlasTW.LootBrowserUI.SetLootLine(i, lootData[itemIndex])
@@ -893,7 +913,7 @@ end
 --- @usage AtlasTW.LootBrowserUI.ClearLootDisplay()
 ---
 function AtlasTW.LootBrowserUI.ClearLootDisplay()
-    for i = 1, AtlasTW.NUM_LOOT_LINES or 30 do
+    for i = 1, AtlasTW.LOOT_NUM_LINES or 30 do
         -- Clear both item and menu buttons
         AtlasTW.LootBrowserUI.ClearLootLine(i)
         if AtlasTW.LootBrowserUI.ClearMenuLine then
@@ -1049,7 +1069,7 @@ end
 -- @function ShowItemButtons
 -- @brief Shows the item buttons in the loot browser UI.
 function AtlasTW.LootBrowserUI.ShowItemButtons()
-    for i = 1, AtlasTW.NUM_LOOT_LINES or 30 do
+    for i = 1, AtlasTW.LOOT_NUM_LINES or 30 do
         local itemBtn = _G["AtlasTWLootItem_"..i]
         local menuBtn = _G["AtlasTWLootMenuItem_"..i]
         if itemBtn then itemBtn:Show() end
@@ -1061,7 +1081,7 @@ end
 -- @function ShowMenuButtons
 -- @brief Shows the menu buttons in the loot browser UI.
 function AtlasTW.LootBrowserUI.ShowMenuButtons()
-    for i = 1, AtlasTW.NUM_LOOT_LINES or 30 do
+    for i = 1, AtlasTW.LOOT_NUM_LINES or 30 do
         local itemBtn = _G["AtlasTWLootItem_"..i]
         local menuBtn = _G["AtlasTWLootMenuItem_"..i]
         if itemBtn then itemBtn:Hide() end

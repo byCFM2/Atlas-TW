@@ -94,8 +94,9 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 { id = 51361, dropRate = 14 }, -- Glyph of the Dreamkin
                 { id = 61196, dropRate = 15 }, -- Bag of Vast Consciousness
                 {},
-                { id = 61733, dropRate = 1 }, -- Formula: Eternal Dreamstone Shard
                 { id = 30018, dropRate = 1.5 }, --Emerald Drake
+                {},
+                { id = 61733, dropRate = 1 }, -- Formula: Eternal Dreamstone Shard
                 { id = 61217, dropRate = 4 }, -- Formula: Enchant Chest - Mighty Mana
                 { id = 70000, dropRate = 4 }, -- Formula: Enchant Gloves - Nature Power
                 {},

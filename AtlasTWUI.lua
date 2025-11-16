@@ -171,7 +171,7 @@ do
     end)
     -- Hide Quests button
     local questsToggleButton = CreateFrame("Button", nil, atlasFrame, "OptionsButtonTemplate")
-    questsToggleButton:SetPoint("LEFT", optionsButton, "LEFT", -95, 0)
+    questsToggleButton:SetPoint("LEFT", optionsButton, -95, 0)
     questsToggleButton:SetText(L["Quests"])
     questsToggleButton:SetScript("OnClick", function()
         AtlasTW.Quest.ToggleQuestFrame()
@@ -180,7 +180,7 @@ do
     -- Hide Loot Panel button
     local ShowPanelButton = CreateFrame("Button", nil, atlasFrame, "OptionsButtonTemplate")
     ShowPanelButton:SetText(L["Loot Panel"])
-    ShowPanelButton:SetPoint("LEFT", questsToggleButton, "LEFT", -95, 0)
+    ShowPanelButton:SetPoint("LEFT", questsToggleButton, -95, 0)
     ShowPanelButton:SetScript("OnClick", function()
         AtlasTW.OptionShowPanelOnClick()
     end)
@@ -206,68 +206,69 @@ do
     local zoneText = atlasFrame:CreateFontString("AtlasTWZoneText", "OVERLAY", "GameFontHighlightLarge")
     zoneText:SetWidth(350)
     zoneText:SetHeight(20)
+    zoneText:SetAlpha(.8)
     zoneText:SetPoint("TOPLEFT", 546, -95)
     zoneText:SetJustifyH("LEFT")
 
     local locationText = atlasFrame:CreateFontString("AtlasTWLocationText", "OVERLAY", "GameFontNormal")
     locationText:SetWidth(200)
     locationText:SetHeight(15)
-    locationText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -18)
+    locationText:SetPoint("TOPLEFT", zoneText, 0, -18)
     locationText:SetJustifyH("LEFT")
 
     local levelRangeText = atlasFrame:CreateFontString("AtlasTWLevelRangeText", "OVERLAY", "GameFontNormal")
     levelRangeText:SetWidth(200)
     levelRangeText:SetHeight(15)
-    levelRangeText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -30)
+    levelRangeText:SetPoint("TOPLEFT", zoneText, 0, -30)
     levelRangeText:SetJustifyH("LEFT")
 
     local playerLimitText = atlasFrame:CreateFontString("AtlasTWPlayerLimitText", "OVERLAY", "GameFontNormal")
     playerLimitText:SetWidth(200)
     playerLimitText:SetHeight(15)
-    playerLimitText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -42)
+    playerLimitText:SetPoint("TOPLEFT", zoneText, 0, -42)
     playerLimitText:SetJustifyH("LEFT")
 
     local attunText = atlasFrame:CreateFontString("AtlasTWAttunText", "OVERLAY", "GameFontNormal")
     attunText:SetWidth(130)
     attunText:SetHeight(15)
-    attunText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -54)
+    attunText:SetPoint("TOPLEFT", zoneText, 0, -54)
     attunText:SetJustifyH("LEFT")
 
     local damageTypeText = atlasFrame:CreateFontString("AtlasTWDamageTypeText", "OVERLAY", "GameFontNormal")
     damageTypeText:SetWidth(300)
     damageTypeText:SetHeight(15)
-    damageTypeText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 0, -67)
+    damageTypeText:SetPoint("TOPLEFT", zoneText, 0, -67)
     damageTypeText:SetJustifyH("LEFT")
 
     local entranceText = atlasFrame:CreateFontString("AtlasTWTextentr", "OVERLAY", "GameFontNormal")
     entranceText:SetWidth(70)
     entranceText:SetHeight(15)
-    entranceText:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 295, 0)
+    entranceText:SetPoint("TOPLEFT", zoneText, 295, 0)
     entranceText:SetJustifyH("LEFT")
     local entrance1Text = atlasFrame:CreateFontString("AtlasTWTextentr1", "OVERLAY", "GameFontNormal")
     entrance1Text:SetWidth(168)
     entrance1Text:SetHeight(15)
-    entrance1Text:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 190, -21)
+    entrance1Text:SetPoint("TOPLEFT", zoneText, 190, -21)
     entrance1Text:SetJustifyH("LEFT")
     local entrance2Text = atlasFrame:CreateFontString("AtlasTWTextentr2", "OVERLAY", "GameFontNormal")
     entrance2Text:SetWidth(168)
     entrance2Text:SetHeight(15)
-    entrance2Text:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 190, -32)
+    entrance2Text:SetPoint("TOPLEFT", zoneText, 190, -32)
     entrance2Text:SetJustifyH("LEFT")
     local entrance3Text = atlasFrame:CreateFontString("AtlasTWTextentr3", "OVERLAY", "GameFontNormal")
     entrance3Text:SetWidth(168)
     entrance3Text:SetHeight(15)
-    entrance3Text:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 190, -44)
+    entrance3Text:SetPoint("TOPLEFT", zoneText, 190, -44)
     entrance3Text:SetJustifyH("LEFT")
     local entrance4Text = atlasFrame:CreateFontString("AtlasTWTextentr4", "OVERLAY", "GameFontNormal")
     entrance4Text:SetWidth(168)
     entrance4Text:SetHeight(15)
-    entrance4Text:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 190, -56)
+    entrance4Text:SetPoint("TOPLEFT", zoneText, 190, -56)
     entrance4Text:SetJustifyH("LEFT")
     local entrance5Text = atlasFrame:CreateFontString("AtlasTWTextentr5", "OVERLAY", "GameFontNormal")
     entrance5Text:SetWidth(168)
     entrance5Text:SetHeight(15)
-    entrance5Text:SetPoint("TOPLEFT", zoneText, "TOPLEFT", 190, -68)
+    entrance5Text:SetPoint("TOPLEFT", zoneText, 190, -68)
     entrance5Text:SetJustifyH("LEFT")
 
     -- Textures
@@ -415,33 +416,22 @@ do
     button:SetHighlightTexture(highlight)
 end
 
--- World Map cursor coordinates overlay (shows cursor coords on default World Map)
--- Creates an overlay on the WorldMap that displays the cursor coordinates
+-- World Map cursor coordinates (shows cursor coords on default World Map)
 -- Respects AtlasTWOptions.AtlasCursorCoords setting
 do
-    -- Create the overlay if Blizzard world map frames are available
-    local function CreateAtlasWorldMapOverlay()
-        if AtlasTWWorldMapCursorOverlay then return true end
+    -- Create the coordinates if Blizzard world map frames are available
+    local function CreateAtlasWorldMapCoords()
+        if AtlasTWWorldMapCursorText then return true end
         if not WorldMapFrame or not WorldMapDetailFrame then return false end
 
-        local worldMapOverlay = CreateFrame("Frame", "AtlasTWWorldMapCursorOverlay", WorldMapFrame)
-        worldMapOverlay:SetFrameStrata("FULLSCREEN")
-        worldMapOverlay:ClearAllPoints()
-        worldMapOverlay:SetPoint("TOPLEFT", WorldMapDetailFrame, "TOPLEFT", 0, 0)
-        worldMapOverlay:SetPoint("BOTTOMRIGHT", WorldMapDetailFrame, "BOTTOMRIGHT", 0, 0)
-        worldMapOverlay:Show()
-
-        local wmCoordText = worldMapOverlay:CreateFontString("AtlasTWWorldMapCursorOverlayText", "OVERLAY", "GameFontNormal")
-        wmCoordText:SetText("")
+        local wmCoordText = WorldMapDetailFrame:CreateFontString("AtlasTWWorldMapCursorText", "OVERLAY", "GameFontNormal")
         wmCoordText:SetTextColor(1, 1, 1)
-        wmCoordText:SetShadowColor(0, 0, 0)
-        wmCoordText:SetShadowOffset(1, -1)
         wmCoordText:Hide()
         -- Anchor text at the bottom-left of the World Map (fixed position)
-        wmCoordText:ClearAllPoints()
-        wmCoordText:SetPoint("BOTTOMLEFT", worldMapOverlay, "BOTTOMLEFT", 10, 8)
+        wmCoordText:SetPoint("BOTTOMLEFT", WorldMapDetailFrame, 10, 8)
+
         local function wm_round1(x)
-            return math.floor(x * 10 + 0.5) / 10
+            return math.floor(x * 10 + .5) / 10
         end
 
         -- Helper: approximate effective scale for frames in WoW 1.12 (multiply parent scales)
@@ -455,7 +445,7 @@ do
             return s
         end
 
-        worldMapOverlay:SetScript("OnUpdate", function()
+        WorldMapDetailFrame:SetScript("OnUpdate", function()
             -- Respect option and visibility
             if not AtlasTWOptions or not AtlasTWOptions.AtlasCursorCoords or not WorldMapFrame:IsVisible() then
                 wmCoordText:Hide()
@@ -489,15 +479,5 @@ do
     end
 
     -- Try to create immediately
-    CreateAtlasWorldMapOverlay()
-    -- Also try on relevant events until it succeeds
-    local init = CreateFrame("Frame", "AtlasTWWorldMapCursorOverlayInit", UIParent)
-    init:RegisterEvent("WORLD_MAP_UPDATE")
-    init:RegisterEvent("PLAYER_ENTERING_WORLD")
-    init:SetScript("OnEvent", function()
-        if CreateAtlasWorldMapOverlay() then
-            init:UnregisterEvent("WORLD_MAP_UPDATE")
-            init:UnregisterEvent("PLAYER_ENTERING_WORLD")
-        end
-    end)
+    CreateAtlasWorldMapCoords()
 end

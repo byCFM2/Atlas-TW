@@ -72,17 +72,21 @@ AtlasTW.InstanceData.OnyxiasLair = {
                 {},
                 { id = 18813, dropRate = 25 }, -- Ring of Binding
                 { id = 17064, dropRate = 8 }, -- Shard of the Scale
+                {},
                 { id = 17068, dropRate = 8 }, -- Deathbringer
                 { id = 17075, dropRate = 8 }, -- Vis'kag the Bloodletter
+                {},
                 { id = 17966, dropRate = 100 }, -- Onyxia Hide Backpack
                 { id = 15410, disc = L["Reagent"], dropRate = 100, container = { 17967, 15138, 15141 } }, -- Scale of Onyxia
+                {},
+                { id = 30017, dropRate = 1.5 }, --Onyxian Drake
+                {},
                 { id = 21108, disc = L["Quest Item"], dropRate = 100, container = { 21111 } }, -- Draconic for Dummies
                 { id = 17962, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 3864, 55251, 55250, 7910, 7909, 1529, 12361 } }, -- Blue Sack of Gems
                 { id = 17963, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12364 } }, -- Green Sack of Gems
                 { id = 17964, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12800 } }, -- Gray Sack of Gems
                 { id = 17965, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12363 } }, -- Yellow Sack of Gems
                 { id = 17969, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12799 } }, -- Red Sack of Gems
-                { id = 30017, dropRate = 1.5 }, --Onyxian Drake
             }
         },
         {

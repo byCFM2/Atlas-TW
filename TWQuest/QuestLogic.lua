@@ -191,7 +191,7 @@ end
 function AtlasTW.Quest.HideQuestButtonHighlights()
     for i = 1, AtlasTW.QMAXQUESTS do
         local b = AtlasTW.Quest.UI_Main.QuestButtons[i].Button
-        local h = b:GetHighlightTexture()
+        --local h = b:GetHighlightTexture()
         --h:Hide()
         b:UnlockHighlight()
     end

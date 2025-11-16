@@ -44,7 +44,11 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
         {
             prefix = "2)",
             name = BB["Trigore the Lasher"],
-            color = Colors.GREY2,
+            defaults = { dropRate = 50 },
+            loot = {
+                { id = 5425}, -- Runescale Girdle
+                { id = 5426}, -- Serpent's Kiss
+            }
         },
         {
             id = "WCBoahn",

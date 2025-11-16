@@ -20,6 +20,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local BS = AceLibrary("Babble-Spell-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
 local Colors = AtlasTW.Colors
 
@@ -58,6 +59,13 @@ AtlasTW.InstanceData.HateforgeQuarry = {
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
+        },
+        {
+            id = "HQGemology",
+            name = L["Gemology Plans"],
+            loot = {
+                { id = 56106, disc = BS["Gemology"], dropRate = 100, container = { 56109, 70166, 56014 } }, -- Top Half of Advanced Gemology II
+            },
         },
         {
             id = "HQEngineerFiggles",

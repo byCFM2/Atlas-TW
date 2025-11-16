@@ -23,7 +23,7 @@ local BC = AceLibrary("Babble-Class-2.2")
 local BS = AceLibrary("Babble-Spell-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
-local GRAY = AtlasTW.Colors.GRAY
+local GREY = AtlasTW.Colors.GREY
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -32,7 +32,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
     Location = BZ["Blackrock Mountain"],
     Level = { 42, 60 },
     Acronym = "BRD",
-    MaxPlayers = 10,
+    MaxPlayers = 5,
     Keys = {
         { name = L["Shadowforge Key"], loot = "VanillaKeys" },
         { name = L["Prison Cell Key"], loot = "VanillaKeys" },
@@ -66,17 +66,17 @@ AtlasTW.InstanceData.BlackrockDepths = {
         {
             prefix = "2)",
             name = L["Kharan Mighthammer"],
-            color = GRAY,
+            color = GREY,
         },
         {
             prefix = "3)",
             name = L["Commander Gor'shak"],
-            color = GRAY,
+            color = GREY,
         },
         {
             prefix = "3)",
             name = L["Marshal Windsor"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "BRDHighInterrogatorGerstahn",
@@ -99,7 +99,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         {
             prefix = "6)",
             name = L["Ring of Law"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "BRDAnubshiah",
@@ -210,47 +210,47 @@ AtlasTW.InstanceData.BlackrockDepths = {
         {
             name = L["Lefty"],
             postfix = BC["Rogue"],
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Malgen Longspear"],
             postfix = BC["Hunter"],
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Gnashjaw"],
             postfix = L["Pet"],
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Korv"],
             postfix = BC["Shaman"],
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Rezznik"],
             postfix = L["Engineer"],
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Rotfang"],
             postfix = BC["Rogue"],
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Snokh Blackspine"],
             postfix = BC["Mage"],
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Va'jashni"],
             postfix = BC["Priest"],
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Volida"],
             postfix = BC["Mage"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "BRDHoundmaster",
@@ -276,7 +276,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             name = L["High Justice Grimstone"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "BRDForgewright",
@@ -353,7 +353,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             name = BB["Watchman Doomgrip"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "BRDFineousDarkvire",
@@ -368,13 +368,13 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 {},
                 { id = 11840, dropRate = 5 }, -- Master Builder's Shirt
                 {},
-                { id = 56098, disc = L["Quest Item"], dropRate = 9, container = { 70175 } }, -- Bottom Half of Advanced Jewelcrafting XI: Hard as Diamonds
+                { id = 56098, disc = L["Quest Item"], dropRate = 9, container = { 56099, 70175, 56064, 70223, 56096 } }, -- Bottom Half of Advanced Jewelcrafting XI: Hard as Diamonds
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 { id = 61791, dropRate = .25, container = { 61784 } }, -- Plans: Arcanite Belt Buckle
                 { id = 11468, quantity = { 3, 5 }, dropRate = 80, container = { 11883 } }, -- Dark Iron Fanny Pack
                 { id = 10999, dropRate = 100, container = { 11000 } }, -- Ironfel
-                { id = 41379, dropRate = 100, container = { 70223 } }, -- Dark Iron Prospecting Lens
+                { id = 41379, dropRate = 100, container = { 70223, 56096 } }, -- Dark Iron Prospecting Lens
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
@@ -419,7 +419,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         {
             prefix = "12)",
             name = L["Shadowforge Lock"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "BRDGeneralAngerforge",
@@ -467,17 +467,17 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             name = L["Field Repair Bot 74A"],
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Blacksmithing Plans"].." ",
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "BRDGuzzler",
             prefix = "15)",
             name = L["The Grim Guzzler"],
-            color = GRAY
+            color = GREY
         },
         {
             id = "BRDHurley",
@@ -527,7 +527,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             name = L["Mistress Nagmara"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "BRDPhalanx",
@@ -565,7 +565,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             name = L["Private Rocknot"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "BRDRibbly",
@@ -619,11 +619,11 @@ AtlasTW.InstanceData.BlackrockDepths = {
         },
         {
             name = L["Blacksmithing Plans"].." ",
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Chest of The Seven"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "BRDTomb",
@@ -695,7 +695,7 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 61463, dropRate = 100, container = { 61465 } }, -- Hammer of the Depths
                 { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 11468, quantity = { 4, 9 }, dropRate = 80, container = { 11883 } }, -- Dark Iron Fanny Pack
-                { id = 56104, disc = BS["Gemology"], dropRate = 30, container = { 56109 } }, -- Bottom Half of Advanced Gemology I
+                { id = 56104, disc = BS["Gemology"], dropRate = 30, container = { 56109, 70160, 56015 } }, -- Bottom Half of Advanced Gemology I
                 { id = 11446, dropRate = 25, container = { 12061, 12062, 12065 } }, -- A Crumpled Up Note
                 { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
                         70234, 70235, 70236, 70238 } },
@@ -722,16 +722,16 @@ AtlasTW.InstanceData.BlackrockDepths = {
         {
             prefix = "22)",
             name = L["The Black Forge"],
-            color = GRAY,
+            color = GREY,
         },
         {
             prefix = "23)",
             name = BZ["Molten Core"],
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Core Fragment"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "BRDPyron",
@@ -772,11 +772,13 @@ AtlasTW.InstanceData.BlackrockDepths = {
                 { id = 12532 }, -- Spire of the Stoneshaper
                 {},
                 {},
+                { id = 56098, disc = L["Quest Item"], dropRate = .8, container = { 56099, 70175, 56064, 70223, 56096 } }, -- Bottom Half of Advanced Jewelcrafting XI: Hard as Diamonds
                 { id = 15781, dropRate = 4, container = { 15052 } }, -- Pattern: Black Dragonscale Leggings
                 { id = 15770, dropRate = 4, container = { 15051 } }, -- Pattern: Black Dragonscale Shoulders
                 { id = 11611, dropRate = 9, container = { 11607 } }, -- Plans: Dark Iron Sunderer
                 { id = 11614, container = { 11606 } }, -- Plans: Dark Iron Mail
                 { id = 11615, container = { 11605 } }, -- Plans: Dark Iron Shoulders
+                { id = 56102, disc = BS["Goldsmithing"], dropRate = .03, container = { 56111, 70177, 56066 } }, -- Top Half of Advanced Goldsmithing II
                 { id = 16048, dropRate = 1.8, container = { 16004 } }, -- Schematic: Dark Iron Rifle
                 { id = 16053, dropRate = .7, container = { 16008 } }, -- Schematic: Master Engineer's Goggles
                 { id = 16049, dropRate = 1, container = { 16005 } }, -- Schematic: Dark Iron Bomb

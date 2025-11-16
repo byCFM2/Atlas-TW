@@ -241,10 +241,10 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
                         table.insert(info, L["Mount"])
                         break
                     -- Glyph
-                    elseif string.find(lowerText, string.lower(L["Glyph"])) then
+                    elseif string.find(lowerText, string.lower(L["new Glyph"])) then
                         table.insert(info, L["Glyph"])
                     -- Pet (companion)
-                    elseif string.find(lowerText, string.lower(" "..L["Companion"].." ")) then
+                    elseif string.find(lowerText, string.lower(" "..L["a companion"].." ")) then
                         table.insert(info, L["Pet"])
                     -- bag
                     elseif string.find(lowerText, string.lower(L["Slot Bag"])) then

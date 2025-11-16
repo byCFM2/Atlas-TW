@@ -96,7 +96,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         {
             id = "BFDShrineofGelihast",
             name = L["Shrine of Gelihast"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             id = "BFDLorgusJett",
@@ -173,12 +173,12 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         {
             id = "BFDMorridune",
             name = L["Morridune"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             id = "BFDAltaroftheDeeps",
             name = L["Altar of the Deeps"],
-            color = Colors.GRAY,
+            color = Colors.GREY,
         },
         {
             id = "BFDTrash",

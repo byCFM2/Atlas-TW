@@ -18,6 +18,7 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local BS = AceLibrary("Babble-Spell-2.2a")
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
@@ -204,7 +205,8 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         },
         {
             prefix = "5)",
-            name = L["Elder Starsong"].." ("..L["Lunar Festival"]..")",
+            name = L["Elder Starsong"],
+            postfix = L["Lunar Festival"],
             items = "LunarFestival"
         },
         {
@@ -343,6 +345,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {},
                 { id = 10780 }, -- Mark of Hakkar
                 {},
+                { id = 56102, disc = BS["Goldsmithing"], dropRate = .03, container = { 56111, 70177, 56066 } }, -- Top Half of Advanced Goldsmithing II
                 { id = 16216, dropRate = 1.48 }, -- Formula: Enchant Cloak - Greater Resistance
                 { id = 15733, dropRate = 4, container = { 15046 } }, -- Pattern: Green Dragonscale Leggings
             }

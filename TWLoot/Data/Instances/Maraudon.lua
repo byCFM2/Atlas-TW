@@ -38,7 +38,7 @@ AtlasTW.InstanceData.MaraudonEnt = {
             id = "MARANamelessProphet",
             name = L["The Nameless Prophet"],
             loot = {
-                { id = 17757, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Amulet of Spirits
+                { id = 17757, dropRate = 100, container = { 17774 } }, -- Amulet of Spirits
             }
         },
         {

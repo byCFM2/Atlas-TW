@@ -36,13 +36,13 @@ AtlasTW.InstanceData.Clackora = {
             id = "WBClackora",
             prefix = "1)",
             name = BB["Cla'ckora"],
-            defaults = { dropRate = 20 },
+            defaults = { dropRate = 17 },
             loot = {
-                { id = 55501 }, -- Sphere of the Endless Gulch
-                { id = 55494 }, -- The Abyssal Pincer
-                { id = 55495 }, -- Zandalar Predator's Glaive
-                { id = 55498 }, -- Clamshell of the Depths
-                { id = 55504 }, -- Anchor of the Wavecutter
+                { id = 55501, dropRate = 20 }, -- Sphere of the Endless Gulch
+                { id = 55494, dropRate = 20 }, -- The Abyssal Pincer
+                { id = 55495, dropRate = 20 }, -- Zandalar Predator's Glaive
+                { id = 55498, dropRate = 20 }, -- Clamshell of the Depths
+                { id = 55504, dropRate = 20 }, -- Anchor of the Wavecutter
                 {},
                 { id = 55502 }, -- Iceplated Leggings
                 { id = 55499 }, -- Primal Murloc Scale Belt

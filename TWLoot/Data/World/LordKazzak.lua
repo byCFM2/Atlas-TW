@@ -19,6 +19,7 @@ local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
+local BS = AceLibrary("Babble-Spell-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
@@ -60,6 +61,8 @@ AtlasTW.InstanceData.LordKazzak = {
                 {},
                 { id = 18665, dropRate = 100, container = { 18608, 18609 } }, -- The Eye of Shadow
                 {},
+                { id = 70164, BS["Gemology"], dropRate = 2, container = { 56017 } }, -- Plans: Tempered Azerothian Gemstone
+                { id = 70169, BS["Gemology"], dropRate = 2, container = { 56010 } }, -- Plans: Beautiful Diamond Gemstone
                 { id = 14479, dropRate = 4, container = { 14101 } }, -- Pattern: Brightcloth Gloves
                 { id = 83545, dropRate = 40, container = { 65003 } }, -- Pattern: Robe of Sacrifice
 }

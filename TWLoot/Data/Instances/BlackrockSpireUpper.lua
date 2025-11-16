@@ -23,7 +23,7 @@ local BB = AceLibrary("Babble-Boss-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
 local BC = AceLibrary("Babble-Class-2.2")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
-local GRAY = AtlasTW.Colors.GRAY
+local GREY = AtlasTW.Colors.GREY
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -94,11 +94,11 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         {
             prefix = "3)",
             name = L["Darkstone Tablet"],
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Doomrigger's Coffer"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "UBRSRunewatcher",
@@ -194,7 +194,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         {
             prefix = "7)",
             name = L["Awbee"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "UBRSBeast",
@@ -247,7 +247,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         },
         {
             name = L["Finkle Einhorn"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "UBRSDrakkisath",
@@ -292,13 +292,13 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         },
         {
             name = L["Drakkisath's Brand"],
-            color = GRAY,
+            color = GREY,
         },
         {
             prefix = "10)",
             name = BZ["Blackwing Lair"],
             postfix = "BWL",
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "UBRSTrash",

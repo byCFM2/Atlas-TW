@@ -854,8 +854,7 @@ AtlasTW.InstanceData.DireMaulEnt = {
         {
             name = L["Elder Mistwalker"],
             postfix = L["Lunar Festival"],
-            color = Colors.GREY,
-            Items = "LunarFestival",
+            items = "LunarFestival",
         },
         {
             prefix = "3)",

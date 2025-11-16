@@ -43,6 +43,18 @@ frameMain:SetWidth(FRAME_WIDTH)
 frameMain:SetPoint(unpack(FRAME_POINT))
 frameMain:EnableMouse(true)
 frameMain:Show()
+frameMain:RegisterForDrag("LeftButton")
+frameMain:SetScript("OnDragStart", function()
+    AtlasTW.StartMoving()
+end)
+frameMain:SetScript("OnDragStop", function()
+    AtlasTWFrame:StopMovingOrSizing()
+    AtlasTWFrame.isMoving = false
+end)
+frameMain:SetScript("OnMouseUp", function()
+    AtlasTWFrame:StopMovingOrSizing()
+    AtlasTWFrame.isMoving = false
+end)
 
 -- Table to hold our UI elements for easy access
 local UI = {InsideAtlasFrame = frameMain}

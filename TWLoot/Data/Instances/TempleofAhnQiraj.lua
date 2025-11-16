@@ -247,8 +247,8 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 { id = 20735, dropRate = 7 }, -- Formula: Enchant Cloak - Subtlety
                 {},
                 { id = 21229, disc = L["Quest Item"], dropRate = 100 }, -- Qiraji Lord's Insignia
-                unpack(imperialArmaments),
                 {},
+                unpack(imperialArmaments),
                 {},
                 { name = BB["Emperor Vek'nilash"] },
                 { id = 20926, dropRate = 100, container = { 21329, 21348, 47214, 21347, 47094, 21337, 47292 } }, -- Vek'nilash's Circlet
@@ -262,9 +262,9 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 { id = 21679, dropRate = 7 }, -- Kalimdor's Revenge
                 { id = 20726, dropRate = 7 }, -- Formula: Enchant Gloves - Threat
                 {},
-                unpack(imperialRegalia),
-                {},
                 { id = 21229, disc = L["Quest Item"], dropRate = 100 }, -- Qiraji Lord's Insignia
+                {},
+                unpack(imperialRegalia),
             }
         },
         {

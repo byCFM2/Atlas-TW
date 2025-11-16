@@ -467,6 +467,8 @@ AtlasTW.InstanceData.Naxxramas = {
                 { id = 22376, disc = L["Quest Item"], dropRate = 35 }, -- Wartorn Cloth Scrap
                 { id = 22373, disc = L["Quest Item"], dropRate = 26 }, -- Wartorn Leather Scrap
                 { id = 22374, disc = L["Quest Item"], dropRate = 27 }, -- Wartorn Chain Scrap
+                {},
+                { id = 23055, disc = L["Trade Goods"], dropRate = 5, container = { 22682 } }, -- Word of Thawing
             }
         },
         { name = L["Tier 3 Sets"], items = "AtlasTWLootT3SetMenu" },

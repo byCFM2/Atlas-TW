@@ -58,7 +58,7 @@ AtlasTW.InstanceData.GnomereganEnt = {
             prefix = "3)",
             name = L["Matrix Punchograph 3005-A"],
             loot = {
-                { id = 9280 }, -- Yellow Punch Card
+                { id = 9280, container = { 9282 } }, -- Yellow Punch Card
             }
         },
         {

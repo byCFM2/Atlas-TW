@@ -202,6 +202,7 @@ local WorldEvents = {
 		{ id = 22238, disc = L["Consumable"] }, -- Very Berry Cream
 		{ id = 22236, disc = L["Consumable"] }, -- Buttermilk Delight
 		{ id = 22239, disc = L["Consumable"] }, -- Sweet Surprise
+		{},
 		{ id = 22276 }, -- Lovely Red Dress
 		{ id = 22278 }, -- Lovely Blue Dress
 		{ id = 22280 }, -- Lovely Purple Dress
@@ -410,7 +411,6 @@ local WorldEvents = {
 		{ id = 21740, disc = L["Container"], container = { 21724, 21725, 21726, 21640, { 21100, 5 } } }, -- Small Rockets
 		{},
 		{ id = 21640, disc = L["Container"], container = { 21592, 21593, 21595, 21590, 21589, 21562, 21561, 21557, 21559, 21558 } }, -- Lunar Festival Fireworks Pack
-		{},
 		{ id = 21746, disc = L["Container"], container = { 21744, 21745 } }, -- Lucky Red Envelope
 		{},
 		{ id = 41701, disc = L["Container"], container = { 41707, 21540, 93088, 93090, 93091, 41702, 41703, 50067, 17963,

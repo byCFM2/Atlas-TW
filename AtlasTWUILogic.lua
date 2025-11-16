@@ -111,8 +111,7 @@ end
 function AtlasTW.MinimapButtonOnEnter()
 	GameTooltip:SetOwner(this, "ANCHOR_LEFT")
 	GameTooltip:SetText(AtlasTW.Name)
-	GameTooltipTextLeft1:SetTextColor(1, 1, 1)
-	GameTooltip:AddLine(L["Left-click to open Atlas-TW.\nMiddle-click for Atlas-TW options.\nRight-click and drag to move this button."])
+	GameTooltip:AddLine(L["Left-click to open Atlas-TW.\nMiddle-click for Atlas-TW options.\nRight-click and drag to move this button."],1,1,1,true)
 	GameTooltip:Show()
 end
 

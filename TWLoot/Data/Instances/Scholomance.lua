@@ -20,6 +20,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
+local BS = AceLibrary("Babble-Spell-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
 local Colors = AtlasTW.Colors
@@ -61,7 +62,7 @@ AtlasTW.InstanceData.Scholomance = {
     Location = BZ["Western Plaguelands"],
     Level = { 45, 60 },
     Acronym = "Scholo",
-    MaxPlayers = 5,
+    MaxPlayers = 10,
     DamageType = L["Shadow"],
     Entrances = {
         { letter = "A) " .. L["Entrance"] }
@@ -156,8 +157,7 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 14528 }, -- Rattlecage Buckler
                 { id = 14531 }, -- Frightskull Shaft
                 {},
-                { id = 18782, dropRate = 40 }, -- Top Half of Advanced Armorsmithing: Volume II
-                { id = 12726, container = { 12619 }, dropRate = 0 }, -- Plans: Enchanted Thorium Leggings
+                { id = 18782, dropRate = 40, container = { 18770, 12726, 12619 } }, -- Top Half of Advanced Armorsmithing: Volume II
                 {},
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
@@ -373,6 +373,7 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
                 { id = 14514, dropRate = 7, container = { 14513 } }, -- Pattern: Robe of the Void
+                { id = 56107, BS["Gemology"], dropRate = 30, container = { 56108, 70166, 56014 } }, -- Bottom Half of Advanced Gemology II
                 {},
                 { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
@@ -385,6 +386,13 @@ AtlasTW.InstanceData.Scholomance = {
         { prefix = "1')", name = L["Torch Lever"], color = Colors.GREEN },
         { prefix = "2')", name = L["Old Treasure Chest"], color = Colors.GREEN },
         { prefix = "3')", name = L["Alchemy Lab"], color = Colors.GREEN },
+        {
+            id = "SCHOLOGoldsmithing",
+            name = L["Goldsmithing Plans"], --TODO CHECK PLACE
+            loot = {
+                { id = 56100, disc = BS["Goldsmithing"], dropRate = 100, container = { 56110, 70211, 56094 } }, -- Bottom Half of Advanced Goldsmithing I
+            },
+        },
         {
             id = "SCHOLOTrash",
             name = L["Trash Mobs"].."-"..BZ["Scholomance"],
@@ -414,6 +422,8 @@ AtlasTW.InstanceData.Scholomance = {
                 {},
                 { id = 16254, dropRate = 1 }, -- Formula: Enchant Weapon - Lifestealing
                 { id = 16255, dropRate = 2 }, -- Formula: Enchant 2H Weapon - Major Spirit
+                { id = 70163, dropRate = 1.5, container = { 56016 } }, -- Plans: Arcane Emerald Gemstone
+                { id = 56102, disc = BS["Goldsmithing"], dropRate = .03, container = { 56111, 70177, 56066 } }, -- Top Half of Advanced Goldsmithing II
                 { id = 15773, dropRate = 7, container = { 15085 } }, -- Pattern: Wicked Leather Armor
                 { id = 15776, dropRate = 4, container = { 15090 } }, -- Pattern: Runic Leather Armor
                 {},

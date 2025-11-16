@@ -18,6 +18,7 @@
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
+local BS = AceLibrary("Babble-Spell-2.2a")
 local GREY = AtlasTW.Colors.GREY
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
@@ -264,6 +265,8 @@ AtlasTW.InstanceData.ZulFarrak = {
                 { id = 9482 }, -- Witch Doctor's Cane
                 {},
                 { id = 9243, dropRate = 2 }, -- Shriveled Heart
+                {},
+                { id = 70167, BS["Gemology"], dropRate = .04, container = { 56018 } }, -- Plans: Enchanted Emerald Gemstone
             }
         },
     },

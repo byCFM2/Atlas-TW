@@ -85,8 +85,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 19145 }, -- Robe of Volatile Power
                 { id = 19146 }, -- Wristguards of Stability
                 { id = 19147 }, -- Ring of Spell Power
-                { id = 41988, dropRate = 100, container = { 41990 } }, -- Molten Scale
                 {},
+                { id = 41988, dropRate = 100, container = { 41990 } }, -- Molten Scale
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
                 {},
                 unpack(mCShareloot),
@@ -105,9 +105,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 16863, dropRate = 30, container = { 47244 } }, -- Gauntlets of Might
                 { id = 16805, dropRate = 30, container = { 47280 } }, -- Felheart Gloves
                 {},
-                { id = 16665, disc = L["Book"], dropRate = 100 }, -- Tome of Tranquilizing Shot
-                { id = 18870 }, -- Helm of the Lifegiver
                 { id = 17109, dropRate = 20 }, -- Choker of Enlightenment
+                { id = 18870 }, -- Helm of the Lifegiver
                 { id = 19145 }, -- Robe of Volatile Power
                 { id = 19146 }, -- Wristguards of Stability
                 { id = 18872 }, -- Manastorm Leggings
@@ -117,6 +116,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 19147 }, -- Ring of Spell Power
                 { id = 17077 }, -- Crimson Shocker
                 { id = 18878 }, -- Sorcerous Dagger
+                {},
+                { id = 16665, disc = L["Book"], dropRate = 100 }, -- Tome of Tranquilizing Shot
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }
         },
@@ -151,6 +152,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 18824 }, -- Magma Tempered Boots
                 { id = 18821 }, -- Quick Strike Ring
                 { id = 18820 }, -- Talisman of Ephemeral Power
+                {},
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }
         },
@@ -187,12 +189,45 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 17105, dropRate = 20 }, -- Aurastone Hammer
                 { id = 18832, dropRate = 20 }, -- Brutality Blade
                 { id = 18822, dropRate = 5 }, -- Obsidian Edged Blade
+                {},
+                { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
+            }
+        },
+        {
+            id = "BaronGeddon",
+            prefix = "5)",
+            name = BB["Baron Geddon"],
+            defaults = { dropRate = 4 },
+            loot = {
+                { id = 16797, dropRate = 33, container = { 47079 } }, -- Arcanist Mantle
+                { id = 16807, dropRate = 33, container = { 47277 } }, -- Felheart Shoulder Pads
+                { id = 16836, dropRate = 30, container = { 47331, 47339 } }, -- Cenarion Spaulders
+                { id = 16844, dropRate = 30, container = { 47121, 47358 } }, -- Earthfury Spaulders
+                { id = 16856, dropRate = 60, container = { 47001, 47009 } }, -- Lawbringer Spaulders
+                {},
+                { id = 18829 }, -- Deep Earth Spaulders
+                { id = 19143 }, -- Flameguard Gauntlets
+                { id = 19136 }, -- Mana Igniting Cord
+                { id = 18861 }, -- Flamewaker Legplates
+                { id = 19144 }, -- Sabatons of the Flamewalker
+                { id = 18824 }, -- Magma Tempered Boots
+                { id = 18823, dropRate = 1 }, -- Aged Core Leather Gloves
+                {},
+                { id = 18821 }, -- Quick Strike Ring
+                { id = 17110 }, -- Seal of the Archmagus
+                { id = 18820 }, -- Talisman of Ephemeral Power
+                {},
+                { id = 19142 }, -- Fire Runed Grimoire
+                { id = 18822, dropRate = 8 }, -- Obsidian Edged Blade
+                {},
+                { id = 18563, dropRate = 6, disc = L["Quest Item"]..", "..L["Left Half"], container = { 19019 } }, -- Bindings of the Windseeker
+                {},
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }
         },
         {
             id = "Shazzrah",
-            prefix = "5)",
+            prefix = "6)",
             name = BB["Shazzrah"],
             defaults = { dropRate = 3 },
             loot = {
@@ -215,36 +250,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {},
                 { id = 17077 }, -- Crimson Shocker
                 { id = 18878 }, -- Sorcerous Dagger
-                { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
-            }
-        },
-        {
-            id = "BaronGeddon",
-            prefix = "6)",
-            name = BB["Baron Geddon"],
-            defaults = { dropRate = 4 },
-            loot = {
-                { id = 16797, dropRate = 33, container = { 47079 } }, -- Arcanist Mantle
-                { id = 16807, dropRate = 33, container = { 47277 } }, -- Felheart Shoulder Pads
-                { id = 16836, dropRate = 30, container = { 47331, 47339 } }, -- Cenarion Spaulders
-                { id = 16844, dropRate = 30, container = { 47121, 47358 } }, -- Earthfury Spaulders
-                { id = 16856, dropRate = 60, container = { 47001, 47009 } }, -- Lawbringer Spaulders
                 {},
-                { id = 18563, dropRate = 6, disc = L["Quest Item"]..", "..L["Left Half"], container = { 19019 } }, -- Bindings of the Windseeker
-                { id = 18829 }, -- Deep Earth Spaulders
-                { id = 18823, dropRate = 1 }, -- Aged Core Leather Gloves
-                { id = 19143 }, -- Flameguard Gauntlets
-                { id = 19136 }, -- Mana Igniting Cord
-                { id = 18861 }, -- Flamewaker Legplates
-                { id = 19144 }, -- Sabatons of the Flamewalker
-                { id = 18824 }, -- Magma Tempered Boots
-                {},
-                { id = 18821 }, -- Quick Strike Ring
-                { id = 17110 }, -- Seal of the Archmagus
-                { id = 18820 }, -- Talisman of Ephemeral Power
-                {},
-                { id = 19142 }, -- Fire Runed Grimoire
-                { id = 18822, dropRate = 8 }, -- Obsidian Edged Blade
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }
         },
@@ -264,7 +270,6 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 16853, dropRate = 20, container = { 47002, 47010 } }, -- Lawbringer Breastplate
                 { id = 16865, dropRate = 20, container = { 47242 } }, -- Breastplate of Might
                 {},
-                { id = 17203, dropRate = 80, disc = L["Reagent"], container = { 17182 } }, -- Sulfuron Ingot
                 { id = 18829 }, -- Deep Earth Spaulders
                 { id = 18823 }, -- Aged Core Leather Gloves
                 { id = 19143 }, -- Flameguard Gauntlets
@@ -280,6 +285,9 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 17103, dropRate = 25 }, -- Azuresong Mageblade
                 { id = 18822, dropRate = 2 }, -- Obsidian Edged Blade
                 { id = 18842, dropRate = 25 }, -- Staff of Dominance
+                {},
+                { id = 17203, dropRate = 80, disc = L["Reagent"], container = { 17182 } }, -- Sulfuron Ingot
+                {},
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }
         },
@@ -317,6 +325,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 17077 }, -- Crimson Shocker
                 { id = 18878 }, -- Sorcerous Dagger
                 { id = 17074, dropRate = 3, container = { 17223 } }, -- Shadowstrike
+                {},
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }
         },
@@ -424,6 +433,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 58244, dropRate = 25 }, -- Sigil of Ancient Accord
                 {},
                 { id = 41989, dropRate = 100, container = { 41990 } }, -- Signet of Thaurissan
+                {},
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
                 {},
                 unpack(mCShareloot),
@@ -465,6 +475,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 {},
                 { id = 70171, dropRate = 100, container = { 56060 } }, -- Plans: Crown of Molten Ascension
                 { id = 92080, dropRate = 1 }, -- Molten Corehound
+                {},
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }
         },
@@ -482,12 +493,12 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 16838, container = { 47125, 47133 } }, -- Earthfury Belt
                 { id = 16858, container = { 47005, 47013 } }, -- Lawbringer Belt
                 { id = 16864, container = { 47245 } }, -- Belt of Might
-                {},
                 { id = 17011, disc = L["Reagent"], dropRate = 15 }, -- Lava Core
                 { id = 17010, disc = L["Reagent"], dropRate = 35 }, -- Fiery Core
                 { id = 11382, disc = L["Reagent"]..", "..L["Molten Destroyer"], dropRate = 7 }, -- Blood of the Mountain
                 { id = 17012, disc = L["Reagent"], dropRate = 100 }, -- Core Leather
                 { id = 70101, dropRate = .56, container = { 56032 } }, -- Plans: Ruby Ring of Ruin
+                { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
                 { id = 16819, container = { 47201 } }, -- Vambraces of Prophecy
                 { id = 16799, container = { 47081 } }, -- Arcanist Bindings
                 { id = 16804, container = { 47279 } }, -- Felheart Bracers
@@ -503,7 +514,6 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 81263, dropRate = .2 }, -- Lost Dark Iron Chain
                 { id = 81264, dropRate = .2 }, -- Shoulderpads of True Flight
                 { id = 81265, dropRate = .2 }, -- Ashskin Belt
-                { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
             }
         },
         { name = L["Tier 1 Sets"], items = "AtlasTWLootT1SetMenu" },

@@ -20,6 +20,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BF = AceLibrary("Babble-Faction-2.2a")
+local BS = AceLibrary("Babble-Spell-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
 local Colors = AtlasTW.Colors
@@ -211,11 +212,9 @@ AtlasTW.InstanceData.Stratholme = {
             name = L["Crimson Hammersmith"],
             postfix = L["Summon"],
             loot = {
-                { id = 18781, dropRate = 40, container = { 18770 } }, -- Bottom Half of Advanced Armorsmithing: Volume II
-                { id = 12726, container = { 12619 } }, -- Plans: Enchanted Thorium Leggings
+                { id = 18781, dropRate = 40, container = { 18770, 12726, 12619 } }, -- Bottom Half of Advanced Armorsmithing: Volume II
                 {},
-                { id = 13351, dropRate = 100, container = { 12824 } }, -- Crimson Hammersmith's Apron
-                { id = 12824, container = { 12776 } }, -- Plans: Enchanted Battlehammer
+                { id = 13351, dropRate = 100, container = { 12824, 12776 } }, -- Crimson Hammersmith's Apron
                 {},
                 { id = 124, dropRate = 6, container = { 87 } }, -- Plans: Enchanted Thorium Belt Buckle
             }
@@ -422,11 +421,9 @@ AtlasTW.InstanceData.Stratholme = {
             name = L["Black Guard Swordsmith"],
             postfix = L["Summon"],
             loot = {
-                { id = 18783, dropRate = 40, container = { 18771 } }, -- Bottom Half of Advanced Armorsmithing: Volume III
-                { id = 12725, container = { 12620 } }, -- Plans: Enchanted Thorium Helm
+                { id = 18783, disc = L["Quest Item"], dropRate = 40, container = { 18771, 12725, 12620 } }, -- Bottom Half of Advanced Armorsmithing: Volume III
                 {},
-                { id = 13350, dropRate = 100, container = { 12825 } }, -- Insignia of the Black Guard
-                { id = 12825, container = { 12777 } }, -- Plans: Blazing Rapier
+                { id = 13350, dropRate = 100, container = { 12825, 12777 } }, -- Insignia of the Black Guard
             }
         },
         {
@@ -587,6 +584,13 @@ AtlasTW.InstanceData.Stratholme = {
             },
         },
         {
+            id = "STRATGoldsmithing",
+            name = L["Goldsmithing Plans"], --TODO CHECK PLACE
+            loot = {
+                { id = 56103, disc = BS["Goldsmithing"], dropRate = 100, container = { 56111, 70177, 56066 } }, -- Bottom Half of Advanced Goldsmithing II
+            },
+        },
+        {
             id = "STRATTrash",
             name = L["Trash Mobs"].."-"..BZ["Stratholme"],
             defaults = { dropRate = 2 },
@@ -606,7 +610,10 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 12843 }, -- Corruptor's Scourgestone
                 { id = 12841 }, -- Invader's Scourgestone
                 { id = 12840 }, -- Minion's Scourgestone
+                { id = 56102, disc = BS["Goldsmithing"], dropRate = .03, container = { 56111, 70177, 56066 } }, -- Top Half of Advanced Goldsmithing II
                 { id = 70163, dropRate = 3, container = { 56016 } }, -- Plans: Arcane Emerald Gemstone
+                { id = 70164, BS["Gemology"], dropRate = .14, container = { 56017 } }, -- Plans: Tempered Azerothian Gemstone
+                { id = 70169, BS["Gemology"], dropRate = .14, container = { 56010 } }, -- Plans: Beautiful Diamond Gemstone
                 { id = 18742, dropRate = .02 }, -- Stratholme Militia Shoulderguard
                 { id = 18743, dropRate = .1 }, -- Gracious Cape
                 { id = 17061, dropRate = .02 }, -- Juno's Shadow

@@ -13,7 +13,7 @@
 local L = AtlasTW.Local
 local containerItems = {}
 local lastSelectedButton
-local DEFAULT = AtlasTW.Colors.DEFAULT
+local BLUE = AtlasTW.Colors.BLUE2
 ---
 --- Shows loading indicator for the container frame
 --- Displays spinner overlay on the container items frame
@@ -178,9 +178,10 @@ function AtlasTWLoot_AddContainerItemTooltip(frame ,itemID)
 		if AtlasTWOptions.LootItemIDs then
 			if numLines and numLines > 0 then
 				local lastLine = getglobal("AtlasTWLootTooltipTextLeft"..numLines)
-				if lastLine:GetText() then
-					lastLine:SetText(lastLine:GetText().."\n\n"..DEFAULT..L["ItemID:"].." "..itemID)
+				if lastLine and lastLine:GetText() then
+					lastLine:SetText(lastLine:GetText().."\n\n"..BLUE..L["ItemID:"].." "..itemID)
 				end
+				--AtlasTWLootTooltip:AddLine(BLUE..L["ItemID:"].." "..itemID,1,1,1,true)
 			end
 		end
         AtlasTWLootTooltip:Show()

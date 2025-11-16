@@ -153,7 +153,7 @@ local function Atlas_Init()
 	AtlasTWLoot_InitializeUI()
 
 	--clear saved vars for a new ver (or a new install!)
-	if AtlasTWOptions == nil or AtlasTWOptions["AtlasVersion"] ~= AtlasTW.Version or AtlasTWCharDB.FirstTime then
+	if AtlasTWOptions == nil or AtlasTWCharDB.FirstTime then -- or AtlasTWOptions["AtlasVersion"] ~= AtlasTW.Version
 		AtlasTW.OptionDefaultSettings()
 	end
 
@@ -419,6 +419,7 @@ function AtlasTW.Refresh()
 			else
 				frame:SetPoint("TOPLEFT", "AtlasTWScrollBar", "TOPLEFT", 16, -3)
 			end
+    		frame:SetAlpha(.8)
 			-- Limit buttons to the scrollbar's visible area (24 lines * 15 pixels = 360 pixels)
 			if i > 24 then
 				frame:EnableMouse(false)

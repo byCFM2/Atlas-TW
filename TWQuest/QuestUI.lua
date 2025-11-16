@@ -29,7 +29,7 @@ local frame = CreateFrame("Frame", "", AtlasTWFrame)
 frame:SetWidth(FRAME_WIDTH)
 frame:SetHeight(FRAME_HEIGHT)
 frame:SetPoint(unpack(FRAME_POINT))
-frame:SetMovable(false)
+--frame:SetMovable(false)
 frame:EnableMouse(true)
 frame:SetBackdrop({
     bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
@@ -39,6 +39,18 @@ frame:SetBackdrop({
     edgeSize = 32,
     insets = { left = 5, right = 5, top = 5, bottom = 5 }
 })
+frame:RegisterForDrag("LeftButton")
+frame:SetScript("OnDragStart", function()
+    AtlasTW.StartMoving()
+end)
+frame:SetScript("OnDragStop", function()
+    AtlasTWFrame:StopMovingOrSizing()
+    AtlasTWFrame.isMoving = false
+end)
+frame:SetScript("OnMouseUp", function()
+    AtlasTWFrame:StopMovingOrSizing()
+    AtlasTWFrame.isMoving = false
+end)
 frame:Hide()
 
 -- UI Elements Table

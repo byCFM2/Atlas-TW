@@ -20,11 +20,11 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Local
 local BZ = AceLibrary("Babble-Zone-2.2a")
 local BB = AceLibrary("Babble-Boss-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
-local BC = AceLibrary("Babble-Class-2.2")
+local BS = AceLibrary("Babble-Spell-2.2a")
 local BIS = AceLibrary("Babble-ItemSet-2.2a")
-local GRAY = AtlasTW.Colors.GRAY
+local GREY = AtlasTW.Colors.GREY
 local GREEN = AtlasTW.Colors.GREEN
+
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.BlackrockSpireLower = {
@@ -47,13 +47,13 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             prefix = "1)",
             name = L["Vaelan"],
             postfix = L["Upper"],
-            color = GRAY,
+            color = GREY,
         },
         {
             prefix = "2)",
             name = L["Warosh"],
             postfix = L["Wanders"],
-            color = GRAY,
+            color = GREY,
         },
         {
             name = L["Elder Stonefort"],
@@ -152,12 +152,12 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         },
         {
             name = L["Fifth Mosh'aru Tablet"],
-            color = GRAY,
+            color = GREY,
         },
         {
             prefix = "8)",
             name = L["Bijou"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "LBRSVoone",
@@ -183,7 +183,14 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             }
         },
         {
-            id = "LBRSGrayhoof",
+            id = "LBRSGemology",
+            name = L["Gemology Plans"],
+            loot = {
+                { id = 56105, disc = BS["Gemology"], dropRate = 100, container = { 56109, 70160, 56015 } }, -- Top Half of Advanced Gemology I
+            },
+        },
+        {
+            id = "LBRSGREYhoof",
             name = BB["Mor Grayhoof"],
             postfix = L["Summon"],
             defaults = { dropRate = 20 },
@@ -198,12 +205,12 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         },
         {
             name = L["Sixth Mosh'aru Tablet"],
-            color = GRAY,
+            color = GREY,
         },
         {
             prefix = "10)",
             name = L["Bijou's Belongings"],
-            color = GRAY,
+            color = GREY,
         },
         {
             prefix = "11)",
@@ -216,7 +223,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             name = L["Unfired Plate Gauntlets"],
             postfix = L["Lower"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "LBRSGrimaxe",
@@ -269,7 +276,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             prefix = "15)",
             name = L["Urok's Tribute Pile"],
-            color = GRAY,
+            color = GREY,
         },
         {
             id = "LBRSDoomhowl",
@@ -282,8 +289,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 13259 }, -- Ribsteel Footguards
                 { id = 13178 }, -- Rosewine Circle
                 {},
-                { id = 18784, dropRate = 16 }, -- Top Half of Advanced Armorsmithing: Volume III
-                { id = 12725, container = { 12620 }, dropRate = 0 }, -- Plans: Enchanted Thorium Helm
+                { id = 18784, dropRate = 16, container = { 18771, 12725, 12620 } }, -- Top Half of Advanced Armorsmithing: Volume III
                 {},
                 { id = 12712, disc = L["Quest Item"], dropRate = 100, container = { 15867 } }, -- Warosh's Mojo
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
@@ -308,7 +314,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 13446, quantity = 5, dropRate = 100  }, -- Major Healing Potion
                 { id = 13444, quantity = 5, dropRate = 100  }, -- Major Mana Potion
                 {},
-                { id = 56101, disc = L["Quest Item"], dropRate = 30 }, -- Bottom Half of Advanced Goldsmithing I
+                { id = 56101, disc = BS["Goldsmithing"], dropRate = 30, container = { 56110, 70211, 56094 } }, -- Bottom Half of Advanced Goldsmithing I
                 { id = 22138, dropRate = 80 }, -- Blackrock Bracer
                 { id = 41478, dropRate = 100, container = { 41465 } }, -- Lower Half of the Thunderbrew Golden Lager Plans
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
@@ -391,6 +397,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {},
                 { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
+                { id = 56097, disc = L["Quest Item"], dropRate = .5, container = { 56099, 70175, 56064, 70223, 56096 } }, -- Top Half of Advanced Jewelcrafting XI: Hard as Diamonds
                 { id = 12337, disc = L["Quest Item"], dropRate = 30, container = { 12344 } }, -- Gemstone of Bloodaxe
                 { id = 16786, dropRate = 80, quantity = 2, container = { 16309 } }, -- Black Dragonspawn Eye
                 { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
@@ -433,6 +440,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 {},
                 { id = 9214, disc = L["Book"], dropRate = 5 }, -- Grimoire of Inferno
                 {},
+                { id = 70163, dropRate = 3, container = { 56016 } }, -- Plans: Arcane Emerald Gemstone
+                { id = 56097, disc = L["Quest Item"], dropRate = .5, container = { 56099, 70175, 56064, 70223, 56096 } }, -- Top Half of Advanced Jewelcrafting XI: Hard as Diamonds
                 { id = 15749, dropRate = 5, container = { 15053 } }, -- Pattern: Volcanic Breastplate
                 { id = 15775, dropRate = 23, container = { 15055 } }, -- Pattern: Volcanic Shoulders
                 { id = 13494, container = { 13457 } }, -- Recipe: Greater Fire Protection Potion
