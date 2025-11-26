@@ -17,9 +17,11 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -49,7 +51,7 @@ local ShareLoot = {
 }
 -- Emerald dragons data
 AtlasTW.InstanceData.FourDragons = {
-    Name = L["Emerald Dragons"],
+    Name = LMD["Emerald Dragons"],
     Location = L["Various Locations"],
     Level = { 1, 60 },
     Acronym = "ED",
@@ -59,8 +61,8 @@ AtlasTW.InstanceData.FourDragons = {
         {
             id = "WBLethon",
             prefix = "1)",
-            name = BB["Lethon"],
-            postfix = BZ["Duskwood"],
+            name = LB["Lethon"],
+            postfix = LZ["Duskwood"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 20628 }, -- Deviate Growth Cap
@@ -76,8 +78,8 @@ AtlasTW.InstanceData.FourDragons = {
         {
             id = "WBEmeriss",
             prefix = "2)",
-            name = BB["Emeriss"],
-            postfix = BZ["The Hinterlands"],
+            name = LB["Emeriss"],
+            postfix = LZ["The Hinterlands"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 20623 }, -- Circlet of Restless Dreams
@@ -93,8 +95,8 @@ AtlasTW.InstanceData.FourDragons = {
         {
             id = "WBTaerar",
             prefix = "3)",
-            name = BB["Taerar"],
-            postfix = BZ["Feralas"],
+            name = LB["Taerar"],
+            postfix = LZ["Feralas"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 20633 }, -- Unnatural Leather Spaulders
@@ -110,8 +112,8 @@ AtlasTW.InstanceData.FourDragons = {
         {
             id = "WBYsondre",
             prefix = "4)",
-            name = BB["Ysondre"],
-            postfix = BZ["Ashenvale"],
+            name = LB["Ysondre"],
+            postfix = LZ["Ashenvale"],
             defaults = { dropRate = 13 },
             loot = {
                 { id = 20637 }, -- Acid Inscribed Pauldrons
@@ -126,7 +128,7 @@ AtlasTW.InstanceData.FourDragons = {
 },
         {
             id = "WBEDTrash",
-            name = L["Trash Mobs"] .. " (" .. L["Emerald Dragons"] .. ")",
+            name = L["Trash Mobs"] .. " (" .. LMD["Emerald Dragons"] .. ")",
             loot = {
                 { id = 21146, dropRate = 5 }, -- Fragment of the Nightmare's Corruption
                 { id = 21147, dropRate = 5 }, -- Fragment of the Nightmare's Corruption

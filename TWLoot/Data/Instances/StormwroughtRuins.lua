@@ -17,33 +17,36 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.StormwroughtRuins = {
-    Name = BZ["Stormwrought Ruins"],
-    Location = BZ["Balor"],
+    Name = LZ["Stormwrought Ruins"],
+    Location = LZ["Balor"],
     Level = { 35, 42 },
     Acronym = "SR",
     MaxPlayers = 5,
     DamageType = L["Physical"],
     Entrances = {
-        { letter = "A)"..L["Entrance"].." "..L["Front"] },
-        { letter = "B)"..L["Entrance"].." "..L["Back"] },
+        { letter = "A)"..L["Entrance"].." "..LMD["Front"] },
+        { letter = "B)"..L["Entrance"].." "..LMD["Back"] },
     },
     Keys = {
-        { name = L["Key to Stormwrought Castle"], loot = "VanillaKeys", info = "6+" },
+        { name = LMD["Key to Stormwrought Castle"], loot = "VanillaKeys", info = "6+" },
     },
     Bosses = {
         {
             id = "SROronok",
             prefix = "1)",
-            name = BB["Oronok Torn-Heart"],--34
+            name = LB["Oronok Torn-Heart"],--34
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58135 }, -- Dagger of Whispered Madness
@@ -57,7 +60,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             id = "SRDagar",
             prefix = "2)",
-            name = BB["Dagar the Glutton"],--34
+            name = LB["Dagar the Glutton"],--34
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58130 }, -- Maneater Cleaver
@@ -69,7 +72,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             id = "SRLibrarian",
             prefix = "3)",
-            name = BB["Librarian Theodorus"],--35
+            name = LB["Librarian Theodorus"],--35
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58138 }, -- Librarian's Encyclopedia
@@ -83,7 +86,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             id = "SRDukeBalor",
             prefix = "4)",
-            name = BB["Duke Balor the IV"],--36
+            name = LB["Duke Balor the IV"],--36
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58142 }, -- Robes of the Dukedom
@@ -98,7 +101,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             id = "SRStormsong",
             prefix = "5)",
-            name = BB["Chieftain Stormsong"],--36
+            name = LB["Chieftain Stormsong"],--36
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58146 }, -- Totem of Tides
@@ -112,7 +115,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             id = "SRDeathlord",
             prefix = "6)",
-            name = BB["Deathlord Tidebane"],--38
+            name = LB["Deathlord Tidebane"],--38
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58150 }, -- Deathedge Sabre
@@ -131,7 +134,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             id = "SRSubjugatorShadecrest",
             prefix = "7)",
-            name = BB["Subjugator Halthas Shadecrest"],--37
+            name = LB["Subjugator Halthas Shadecrest"],--37
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58183 }, -- Rod of Subjugation
@@ -145,7 +148,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             id = "SRMycellakos",
             prefix = "8)",
-            name = BB["Mycellakos"],--36
+            name = LB["Mycellakos"],--36
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58179 }, -- Idol of Propagation
@@ -159,7 +162,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             id = "SREldermaw",
             prefix = "9)",
-            name = BB["Eldermaw the Primordial"],--37
+            name = LB["Eldermaw the Primordial"],--37
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58187 }, -- Primordial Pauldrons
@@ -171,7 +174,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             id = "SRLadyDrazare",
             prefix = "10)",
-            name = BB["Lady Drazare"],--38
+            name = LB["Lady Drazare"],--38
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58191 }, -- Whip of Shared Secrets
@@ -184,14 +187,14 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         },
         {
             prefix = "11)",
-            name = BB["Ighal'for"],--38
+            name = LB["Ighal'for"],--38
             loot = {
                 { id = 41939, dropRate = 100, container = { 58277, 58278 } }, -- Broken Bloodstone Pendant
             },
         },
         {
             id = "SRMergothid",
-            name = BB["Mergothid"],--40
+            name = LB["Mergothid"],--40
             defaults = { dropRate = 20 },
             loot = {
                 { id = 58200 }, -- Eyes of the Beholder
@@ -211,7 +214,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         {
             id = "SRRemainsOfInnocent",
             prefix = "12)",
-            name = BB["Remains of the Innocent"],--38
+            name = LB["Remains of the Innocent"],--38
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58195 }, -- Tiny Bracelet
@@ -224,7 +227,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
         },
         {
             id = "SRTrash",
-            name = L["Trash Mobs"].."-"..BZ["Stormwrought Ruins"],
+            name = L["Trash Mobs"].."-"..LZ["Stormwrought Ruins"],
             defaults = { dropRate = .02 },
             loot = {
                 { id = 70113, container = { 56040 } }, -- Plans: Gleaming Silver Necklace
@@ -262,7 +265,7 @@ AtlasTW.InstanceData.StormwroughtRuins = {
                 { id = 41941, dropRate = 70, disc = L["Quest Item"] }, -- Balorian Treasure
             }
         },
-        { name = BIS["Stormreaver Attire"], items = "Stormreaver" },
+        { name = LIS["Stormreaver Attire"], items = "Stormreaver" },
     },
 }
 

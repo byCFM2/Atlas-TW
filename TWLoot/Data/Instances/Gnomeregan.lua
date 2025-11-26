@@ -15,21 +15,26 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.GnomereganEnt = {
-    Name = BZ["Gnomeregan"].." ("..L["Entrance"]..")" ,
-    Location = BZ["Dun Morogh"],
+    Name = LZ["Gnomeregan"].." ("..L["Entrance"]..")" ,
+    Location = LZ["Dun Morogh"],
     Acronym = "Gnome",
     Entrances = {
         { letter = "A", info = L["Entrance"] },
-        { letter = "B", info = BZ["Gnomeregan"] .. " (" .. L["Front"] .. ")" },
-        { letter = "C", info = BZ["Gnomeregan"] .. " (" .. L["Back"] .. ")" },
+        { letter = "B", info = LZ["Gnomeregan"] .. " (" .. LMD["Front"] .. ")" },
+        { letter = "C", info = LZ["Gnomeregan"] .. " (" .. LMD["Back"] .. ")" },
     },
     Bosses = {
         {
@@ -45,25 +50,25 @@ AtlasTW.InstanceData.GnomereganEnt = {
         {
             id = "GNTranspolyporter",
             prefix = "2)",
-            name = L["Transpolyporter"],
+            name = LMD["Transpolyporter"],
             color = Colors.GREY,
         },
         {
             id = "GNSprok",
-            name = L["Sprok"],
+            name = LB["Sprok"],
             color = Colors.GREY
         },
         {
             id = "GNPunchographA",
             prefix = "3)",
-            name = L["Matrix Punchograph 3005-A"],
+            name = LMD["Matrix Punchograph 3005-A"],
             loot = {
                 { id = 9280, container = { 9282 } }, -- Yellow Punch Card
             }
         },
         {
             id = "GNNamdoBizzfizzle",
-            name = BB["Namdo Bizzfizzle"],
+            name = LB["Namdo Bizzfizzle"],
             loot = {
                 { id = 14639, container = { 4381 } }, -- Schematic: Minor Recombobulator
             }
@@ -71,7 +76,7 @@ AtlasTW.InstanceData.GnomereganEnt = {
         {
             id = "GNTechbot",
             prefix = "4)",
-            name = BB["Techbot"],
+            name = LB["Techbot"],
             loot = {
                 { id = 9444, dropRate = 69 }, -- Techbot CPU Shell
                 {},
@@ -81,7 +86,7 @@ AtlasTW.InstanceData.GnomereganEnt = {
         },
         {
             id = "GNOutsideTrash",
-            name = L["Trash Mobs"].."-"..BZ["Gnomeregan"],
+            name = L["Trash Mobs"].."-"..LZ["Gnomeregan"],
             loot = {
                 { id = 9279, dropRate = 15, container = { 9280 } }, -- White Punch Card
             }
@@ -90,30 +95,30 @@ AtlasTW.InstanceData.GnomereganEnt = {
 }
 
 AtlasTW.InstanceData.Gnomeregan = {
-    Name = BZ["Gnomeregan"],
-    Location = BZ["Dun Morogh"],
+    Name = LZ["Gnomeregan"],
+    Location = LZ["Dun Morogh"],
     Level = { 19, 38 },
     Acronym = "Gnome",
     MaxPlayers = 5,
     DamageType = L["Nature"],
     Entrances = {
-        { letter = "A", info = L["Front"] },
-        { letter = "B", info = L["Back"] }
+        { letter = "A", info = LMD["Front"] },
+        { letter = "B", info = LMD["Back"] }
     },
     Keys = {
-        { name = L["Workshop Key"], loot = "VanillaKeys", info = L["Back"] }
+        { name = LMD["Workshop Key"], loot = "VanillaKeys", info = LMD["Back"] }
     },
 
     Bosses = {
         {
             id = "GNBlastmasterEmi",
             prefix = "1)",
-            name = L["Blastmaster Emi Shortfuse"],
+            name = LMD["Blastmaster Emi Shortfuse"],
             color = Colors.GREY
         },
         {
             id = "GNGrubbis",
-            name = BB["Grubbis"],
+            name = LB["Grubbis"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 9445 }, -- Grubbis Paws
@@ -127,44 +132,44 @@ AtlasTW.InstanceData.Gnomeregan = {
         },
         {
             id = "GNChomper",
-            name = L["Chomper"],
+            name = LB["Chomper"],
             color = Colors.GREY
         },
         {
             id = "GNCleanRoom",
             prefix = "2)",
-            name = L["Clean Room"],
+            name = LMD["Clean Room"],
             color = Colors.GREY
         },
         {
             id = "GNTinkSprocketwhistle",
-            name = L["Tink Sprocketwhistle"],
+            name = LMD["Tink Sprocketwhistle"],
             color = Colors.GREY
         },
         {
             id = "GNSparklematic",
-            name = L["The Sparklematic 5200"],
+            name = LMD["The Sparklematic 5200"],
             color = Colors.GREY
         },
         {
             id = "GNMailBox",
-            name = L["Mail Box"],
+            name = LMD["Mail Box"],
             color = Colors.GREY
         },
         {
             id = "GNKernobee",
             prefix = "3)",
-            name = L["Kernobee"],
+            name = LMD["Kernobee"],
             color = Colors.GREY
         },
         {
             id = "GNAlarmabomb",
-            name = L["Alarm-a-bomb 2600"],
+            name = LMD["Alarm-a-bomb 2600"],
             color = Colors.GREY
         },
         {
             id = "GNPunchographB",
-            name = L["Matrix Punchograph 3005-B"],
+            name = LMD["Matrix Punchograph 3005-B"],
             loot = {
                 { id = 9282 }, -- Blue Punch Card
             }
@@ -172,7 +177,7 @@ AtlasTW.InstanceData.Gnomeregan = {
         {
             id = "GNViscousFallout",
             prefix = "4)",
-            name = BB["Viscous Fallout"],
+            name = LB["Viscous Fallout"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 9454 }, -- Acidic Walkers
@@ -183,7 +188,7 @@ AtlasTW.InstanceData.Gnomeregan = {
         {
             id = "GNElectrocutioner6000",
             prefix = "5)",
-            name = BB["Electrocutioner 6000"],
+            name = LB["Electrocutioner 6000"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 9447 }, -- Electrocutioner Lagnut
@@ -195,7 +200,7 @@ AtlasTW.InstanceData.Gnomeregan = {
         },
         {
             id = "GNPunchographC",
-            name = L["Matrix Punchograph 3005-C"],
+            name = LMD["Matrix Punchograph 3005-C"],
             loot = {
                 { id = 9281 }, -- Red Punch Card
             }
@@ -203,7 +208,7 @@ AtlasTW.InstanceData.Gnomeregan = {
         {
             id = "GNCrowdPummeler960",
             prefix = "6)",
-            name = BB["Crowd Pummeler 9-60"],
+            name = LB["Crowd Pummeler 9-60"],
             postfix = L["Upper"],
             defaults = { dropRate = 33 },
             loot = {
@@ -219,7 +224,7 @@ AtlasTW.InstanceData.Gnomeregan = {
         },
         {
             id = "GNPunchographD",
-            name = L["Matrix Punchograph 3005-D"],
+            name = LMD["Matrix Punchograph 3005-D"],
             loot = {
                 { id = 9316 }, -- Prismatic Punch Card
             }
@@ -227,7 +232,7 @@ AtlasTW.InstanceData.Gnomeregan = {
         {
             id = "GNDIAmbassador",
             prefix = "7)",
-            name = BB["Dark Iron Ambassador"],
+            name = LB["Dark Iron Ambassador"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 9455 }, -- Emissary Cuffs
@@ -240,7 +245,7 @@ AtlasTW.InstanceData.Gnomeregan = {
         {
             id = "GNMekgineerThermaplugg",
             prefix = "8)",
-            name = BB["Mekgineer Thermaplugg"],
+            name = LB["Mekgineer Thermaplugg"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 9492 }, -- Electromagnetic Gigaflux Reactivator
@@ -266,7 +271,7 @@ AtlasTW.InstanceData.Gnomeregan = {
         },
         {
             id = "GNTrash",
-            name = L["Trash Mobs"].." "..BZ["Gnomeregan"],
+            name = L["Trash Mobs"].." "..LZ["Gnomeregan"],
             defaults = { dropRate = .1 },
             loot = {
                 { id = 9508 }, -- Mechbuilder's Overalls
@@ -290,7 +295,6 @@ for _, bossData in ipairs(AtlasTW.InstanceData.Gnomeregan.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)
     bossData.loot = nil
 end
-
 
 for _, bossData in ipairs(AtlasTW.InstanceData.GnomereganEnt.Bosses) do
     bossData.items = bossData.items or AtlasTW.CreateItemsFromLootTable(bossData)

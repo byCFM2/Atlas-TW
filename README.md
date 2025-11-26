@@ -54,7 +54,7 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
   - Quests — show/hide quests panel
   - Loot Panel — show/hide bottom loot panel
 - Loot panel: section buttons and items area with scrolling
-- Quests panel: quest counter, quest entries, faction buttons, “Story” button
+- Quests panel: quest counter, quest entries, faction buttons, "Story" button
 
 6) Options (highlights)
 - Show Button on Minimap — show the minimap button
@@ -84,9 +84,9 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
   - Check Scale/Transparency in options
   - Type /atlastw
 - Minimap button is missing
-  - Enable “Show Button on Minimap” in options
+  - Enable "Show Button on Minimap" in options
 - Right‑click opens the World Map
-  - Disable “Right‑Click for World Map”
+  - Disable "Right‑Click for World Map"
 - No quests for the instance
   - Check your faction (Alliance/Horde)
   - Some instances may have no quests
@@ -97,7 +97,17 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
 - Hide the loot panel temporarily to save space inside the Atlas window
 
 11) Localization
-- Strings are stored in locale files (e.g., AtlasTW-enUS.lua, QuestData_enUS.lua). To translate, add or update the corresponding locale file
+- Atlas-TW uses a modular localization system based on namespaces
+- Structure:
+  - `Locales/LocalizationFramework.lua` — Core localization system
+  - `Locales/[locale]/` — Language-specific files (enUS, deDE, esES, ptBR, zhCN)
+  - Each locale has 9 modules: Core, Zones, Bosses, Classes, Factions, Spells, ItemSets, MapData, QuestData
+- Automatic fallback to English for missing translations
+- To add/update translations: edit the corresponding file in `Locales/[locale]/`
+
+12) Technical Details
+- No external Babble libraries required (replaced by modular system)
+- All localization data is loaded via `Locales/locales.xml`
 
 Feedback
 - Report bugs and requests: which maps/quests/rewards are incorrect, your client language, and client version

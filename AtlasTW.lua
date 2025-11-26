@@ -20,7 +20,9 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 AtlasTW.UI = AtlasTW.UI or {}
-local L = AtlasTW.Local
+
+local L = AtlasTW.Localization.UI
+
 local atlasTW_Ints_Ent_DropDown = {}
 local frame
 local loadingStartTime -- Load time
@@ -566,11 +568,12 @@ end
 --- @usage local zone = atlas_GetFixedZoneText()
 ---
 local function atlas_GetFixedZoneText()
-	local currentZone = GetRealZoneText()
-	if AtlasTWZoneSubstitutions[currentZone] then
-		return AtlasTWZoneSubstitutions[currentZone]
-	end
-	return currentZone
+    local currentZone = GetRealZoneText()
+    local subs = AtlasTWZoneSubstitutions
+    if subs and subs[currentZone] then
+        return subs[currentZone]
+    end
+    return currentZone
 end
 
 ---

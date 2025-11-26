@@ -17,136 +17,138 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
+
+local LM = AtlasTW.Localization.MapData
+local LZ = AtlasTW.Localization.Zones
+local LF = AtlasTW.Localization.Factions
+
 local Green = AtlasTW.Colors.GREEN
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.FPAllianceWest = {
-    Name = BF["Alliance"] .. " (" .. BZ["Kalimdor"] .. ")",
-    Location = BZ["Kalimdor"],
+    Name = LF["Alliance"] .. " (" .. LZ["Kalimdor"] .. ")",
+    Location = LZ["Kalimdor"],
     Bosses = {
         {
             id = "FPRutTheranVillage",
             prefix = "1)",
-            name = L["Rut'Theran Village"],
-            postfix = BZ["Teldrassil"],
+            name = LM["Rut'Theran Village"],
+            postfix = LZ["Teldrassil"],
         },
         {
             id = "FPNighthaven",
             prefix = "2)",
-            name = L["Nighthaven"],
-            postfix = BZ["Moonglade"]..", "..L["Druid-only"],
+            name = LM["Nighthaven"],
+            postfix = LZ["Moonglade"]..", "..LM["Druid-only"],
             color = Green,
         },
         {
             id = "FPNighthavenPath",
-            name = L["South of the path along Lake Elune'ara"],
-            postfix = BZ["Moonglade"],
+            name = LM["South of the path along Lake Elune'ara"],
+            postfix = LZ["Moonglade"],
         },
         {
             id = "FPEverlook",
             prefix = "3)",
-            name = L["Everlook"],
-            postfix = BZ["Winterspring"],
+            name = LZ["Everlook"],
+            postfix = LZ["Winterspring"],
         },
         {
             id = "FPAuberdine",
             prefix = "4)",
-            name = L["Auberdine"],
-            postfix = BZ["Darkshore"],
+            name = LZ["Auberdine"],
+            postfix = LZ["Darkshore"],
         },
         {
             id = "FPTalonbranchGlade",
             prefix = "5)",
-            name = L["Talonbranch Glade"],
-            postfix = BZ["Felwood"],
+            name = LM["Talonbranch Glade"],
+            postfix = LZ["Felwood"],
         },
         {
             id = "FPNordanaar",
             prefix = "6)",
-            name = L["Nordanaar"],
-            postfix = BZ["Hyjal"],
+            name = LM["Nordanaar"],
+            postfix = LZ["Hyjal"],
         },
         {
             id = "FPStonetalon",
             prefix = "7)",
-            name = L["Stonetalon Peak"],
-            postfix = BZ["Stonetalon Mountains"],
+            name = LM["Stonetalon Peak"],
+            postfix = LZ["Stonetalon Mountains"],
         },
         {
             id = "FPAstranaar",
             prefix = "8)",
-            name = L["Astranaar"],
-            postfix = BZ["Ashenvale"],
+            name = LM["Astranaar"],
+            postfix = LZ["Ashenvale"],
         },
         {
             id = "FPTalrendisPoint",
             prefix = "9)",
-            name = L["Talrendis Point"],
-            postfix = BZ["Azshara"],
+            name = LM["Talrendis Point"],
+            postfix = LZ["Azshara"],
         },
         {
             id = "FPBaelHardul",
             prefix = "10)",
-            name = L["Bael Hardul"],
-            postfix = BZ["Stonetalon Mountains"],
+            name = LM["Bael Hardul"],
+            postfix = LZ["Stonetalon Mountains"],
         },
         {
             id = "FPNijelsPoint",
             prefix = "11)",
-            name = L["Nijel's Point"],
-            postfix = BZ["Desolace"],
+            name = LM["Nijel's Point"],
+            postfix = LZ["Desolace"],
         },
         {
             id = "FPRatchet",
             prefix = "12)",
-            name = L["Ratchet"],
-            postfix = BZ["The Barrens"],
+            name = LZ["Ratchet"],
+            postfix = LZ["The Barrens"],
         },
         {
             id = "FPTheramoreIsle",
             prefix = "13)",
-            name = L["Theramore Isle"],
-            postfix = BZ["Dustwallow Marsh"],
+            name = LZ["Theramore Isle"],
+            postfix = LZ["Dustwallow Marsh"],
         },
         {
             id = "FPThalanaar",
             prefix = "14)",
-            name = L["Thalanaar"],
-            postfix = BZ["Feralas"],
+            name = LM["Thalanaar"],
+            postfix = LZ["Feralas"],
         },
         {
             id = "FPFeathermoonStronghold",
             prefix = "15)",
-            name = L["Feathermoon Stronghold"],
-            postfix = BZ["Feralas"],
+            name = LM["Feathermoon Stronghold"],
+            postfix = LZ["Feralas"],
         },
         {
             id = "FPCenarionHold",
             prefix = "16)",
-            name = L["Cenarion Hold"],
-            postfix = BZ["Silithus"],
+            name = LM["Cenarion Hold"],
+            postfix = LZ["Silithus"],
         },
         {
             id = "FPMarshalsRefuge",
             prefix = "17)",
-            name = L["Marshal's Refuge"],
-            postfix = BZ["Un'Goro Crater"],
+            name = LM["Marshal's Refuge"],
+            postfix = LZ["Un'Goro Crater"],
         },
         {
             id = "FPGadgetzan",
             prefix = "18)",
-            name = BZ["Gadgetzan"],
-            postfix = BZ["Tanaris"],
+            name = LZ["Gadgetzan"],
+            postfix = LZ["Tanaris"],
         },
         {
             id = "FPTelCoBasecamp",
             prefix = "19)",
-            name = L["Tel Co. Basecamp"],
-            postfix = BZ["Tel'Abim"],
+            name = LM["Tel Co. Basecamp"],
+            postfix = LZ["Tel'Abim"],
         },
     },
 }

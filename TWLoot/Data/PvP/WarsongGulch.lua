@@ -17,25 +17,26 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
+
+local LZ = AtlasTW.Localization.Zones
+local LF = AtlasTW.Localization.Factions
+local LMD = AtlasTW.Localization.MapData
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- Warsong Gulch data
 AtlasTW.InstanceData.BGWarsongGulch = {
-    Name = BZ["Warsong Gulch"],
-    Location = BZ["Ashenvale"] .. "/" .. BZ["The Barrens"],
+    Name = LZ["Warsong Gulch"],
+    Location = LZ["Ashenvale"] .. "/" .. LZ["The Barrens"],
     Level = {1, 60},
     Acronym = "WSG",
     MaxPlayers = 10,
     Reputation = {
-            { name = BF["Silverwing Sentinels"].." \\ "..BF["Warsong Outriders"], loot = "SentinelsOutriders" },
+            { name = LF["Silverwing Sentinels"].." \\ "..LF["Warsong Outriders"], loot = "SentinelsOutriders" },
     },
     Entrances = {
-        { letter = "A)", info = L["Silverwing Hold"] .. " (A)" },
-        { letter = "B)", info = L["Warsong Lumber Mill"] .. " (H)" }
+        { letter = "A)", info = LMD["Silverwing Hold"] .. " (A)" },
+        { letter = "B)", info = LMD["Warsong Lumber Mill"] .. " (H)" }
     },
     Bosses = {}
 }

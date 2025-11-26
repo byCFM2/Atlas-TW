@@ -15,16 +15,21 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.RazorfenKraul = {
-    Name = BZ["Razorfen Kraul"],
-    Location = BZ["The Barrens"],
+    Name = LZ["Razorfen Kraul"],
+    Location = LZ["The Barrens"],
     Level = { 19, 38 },
     Acronym = "RFK",
     MaxPlayers = 5,
@@ -35,13 +40,13 @@ AtlasTW.InstanceData.RazorfenKraul = {
     Bosses = {
         {
             prefix = "1)",
-            name = BB["Roogug"],
+            name = LB["Roogug"],
             color = Colors.GREY,
         },
         {
             id = "RFKAggem",
             prefix = "2)",
-            name = BB["Aggem Thorncurse"],
+            name = LB["Aggem Thorncurse"],
             defaults = { dropRate = 35 },
             loot = {
                 { id = 6681, dropRate = 100 }, -- Thornspike
@@ -57,7 +62,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
         {
             id = "RFKDeathSpeakerJargba",
             prefix = "3)",
-            name = BB["Death Speaker Jargba"],
+            name = LB["Death Speaker Jargba"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 6685 }, -- Death Speaker Mantle
@@ -70,7 +75,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
         {
             id = "RFKOverlordRamtusk",
             prefix = "4)",
-            name = BB["Overlord Ramtusk"],
+            name = LB["Overlord Ramtusk"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 6687 }, -- Corpsemaker
@@ -82,7 +87,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
         },
         {
             id = "RFKRazorfenSpearhide",
-            name = L["Razorfen Spearhide"],
+            name = LMD["Razorfen Spearhide"],
             postfix = L["Rare"],
             loot = {
                 { id = 6679, dropRate = 80 }, -- Armor Piercer
@@ -93,7 +98,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
         {
             id = "RFKRotthorn",
             prefix = "5)",
-            name = BB["Rotthorn"],
+            name = LB["Rotthorn"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 50800 }, -- Bramblethorn Girdle
@@ -107,7 +112,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
         {
             id = "RFKAgathelos",
             prefix = "6)",
-            name = BB["Agathelos the Raging"],
+            name = LB["Agathelos the Raging"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 6690 }, -- Ferine Leggings
@@ -121,7 +126,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
         {
             id = "RFKBlindHunter",
             prefix = "7)",
-            name = BB["Blind Hunter"],
+            name = LB["Blind Hunter"],
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
@@ -133,7 +138,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
         {
             id = "RFKCharlgaRazorflank",
             prefix = "8)",
-            name = BB["Charlga Razorflank"],
+            name = LB["Charlga Razorflank"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 6693 }, -- Agamaggan's Clutch
@@ -151,18 +156,18 @@ AtlasTW.InstanceData.RazorfenKraul = {
         {
             id = "RFKWillixtheImporter",
             prefix = "9)",
-            name = L["Willix the Importer"],
+            name = LMD["Willix the Importer"],
             color = Colors.GREY,
         },
         {
             id = "RFKHeralathFallowbrook",
-            name = L["Heralath Fallowbrook"],
+            name = LMD["Heralath Fallowbrook"],
             color = Colors.GREY,
         },
         {
             id = "RFKEarthcallerHalmgar",
             prefix = "10)",
-            name = BB["Earthcaller Halmgar"],
+            name = LB["Earthcaller Halmgar"],
             postfix = L["Rare"],
             defaults = { dropRate = 50 },
             loot = {
@@ -175,7 +180,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
         },
         {
             id = "RFKTrash",
-            name = L["Trash Mobs"].."-"..BZ["Razorfen Kraul"],
+            name = L["Trash Mobs"].."-"..LZ["Razorfen Kraul"],
             defaults = { dropRate = .1 },
             loot = {
                 { id = 80789 }, -- Sharpsight Eyepatch

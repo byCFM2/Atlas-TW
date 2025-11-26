@@ -17,16 +17,17 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- World bosses data
 AtlasTW.InstanceData.Clackora = {
-    Name = BB["Cla'ckora"],
-    Location = BZ["Azshara"],
+    Name = LB["Cla'ckora"],
+    Location = LZ["Azshara"],
     Level = { 1, 60 },
     Acronym = "Clackora",
     MaxPlayers = 40,
@@ -35,7 +36,7 @@ AtlasTW.InstanceData.Clackora = {
         {
             id = "WBClackora",
             prefix = "1)",
-            name = BB["Cla'ckora"],
+            name = LB["Cla'ckora"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 55501, dropRate = 20 }, -- Sphere of the Endless Gulch

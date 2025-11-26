@@ -5,7 +5,7 @@
 
 -- Local references for performance and compatibility
 local _G = getfenv()
-local L = AtlasTW.Local
+
 local tinsert = table.insert
 
 ---

@@ -17,127 +17,129 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
+
+local LZ = AtlasTW.Localization.Zones
+local LMD = AtlasTW.Localization.MapData
+
 local BLUE = AtlasTW.Colors.BLUE2
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.DLWest = {
-    Name = L["Dungeon Locations"] .. " (" .. BZ["Kalimdor"] .. ")",
-    Location = BZ["Kalimdor"],
+    Name = LMD["Dungeon Locations"] .. " (" .. LZ["Kalimdor"] .. ")",
+    Location = LZ["Kalimdor"],
     Bosses = {
         {
             id = "DLWarsongGulch",
             prefix = "A)",
-            name = BZ["Warsong Gulch"],
-            postfix = BZ["The Barrens"] .. " / " .. BZ["Ashenvale"],
+            name = LZ["Warsong Gulch"],
+            postfix = LZ["The Barrens"] .. " / " .. LZ["Ashenvale"],
             color = BLUE,
         },
         {
             id = "DLSunnygladeValley",
             prefix = "B)",
-            name = L["Sunnyglade Valley"],
-            postfix = L["Caverns of Time"],
+            name = LMD["Sunnyglade Valley"],
+            postfix = LZ["The Black Morass"],
             color = BLUE,
         },
         {
             id = "DLEmeraldSanctum",
             prefix = "1)",
-            name = BZ["Emerald Sanctum"],
-            postfix = BZ["Hyjal"],
+            name = LZ["Emerald Sanctum"],
+            postfix = LZ["Hyjal"],
         },
         {
             id = "DLBlackfathomDeeps",
             prefix = "2)",
-            name = BZ["Blackfathom Deeps"],
-            postfix = BZ["Ashenvale"],
+            name = LZ["Blackfathom Deeps"],
+            postfix = LZ["Ashenvale"],
         },
         {
             id = "DLTheCrescentGrove",
             prefix = "3)",
-            name = BZ["The Crescent Grove"],
-            postfix = BZ["Ashenvale"],
+            name = LZ["The Crescent Grove"],
+            postfix = LZ["Ashenvale"],
         },
         {
             id = "DLRagefireChasm",
             prefix = "4)",
-            name = BZ["Ragefire Chasm"],
-            postfix = BZ["Orgrimmar"],
+            name = LZ["Ragefire Chasm"],
+            postfix = LZ["Orgrimmar"],
         },
         {
             id = "DLWailingCaverns",
             prefix = "5)",
-            name = BZ["Wailing Caverns"],
-            postfix = BZ["The Barrens"],
+            name = LZ["Wailing Caverns"],
+            postfix = LZ["The Barrens"],
         },
         {
             id = "DLMaraudon",
             prefix = "6)",
-            name = BZ["Maraudon"],
-            postfix = BZ["Desolace"],
+            name = LZ["Maraudon"],
+            postfix = LZ["Desolace"],
         },
         {
             id = "DLDireMaul",
             prefix = "7)",
-            name = BZ["Dire Maul"],
-            postfix = BZ["Feralas"],
+            name = LZ["Dire Maul"],
+            postfix = LZ["Feralas"],
         },
         {
             id = "DLDireMaulWest",
-            name = BZ["Dire Maul (West)"],
-            postfix = BZ["Feralas"],
+            name = LZ["Dire Maul (West)"],
+            postfix = LZ["Feralas"],
         },
         {
             id = "DLDireMaulNorth",
-            name = BZ["Dire Maul (North)"],
-            postfix = BZ["Feralas"],
+            name = LZ["Dire Maul (North)"],
+            postfix = LZ["Feralas"],
         },
         {
             id = "DLDireMaulEast",
-            name = BZ["Dire Maul (East)"],
-            postfix = BZ["Feralas"],
+            name = LZ["Dire Maul (East)"],
+            postfix = LZ["Feralas"],
         },
         {
             id = "DLRazorfenKraul",
             prefix = "8)",
-            name = BZ["Razorfen Kraul"],
-            postfix = BZ["The Barrens"],
+            name = LZ["Razorfen Kraul"],
+            postfix = LZ["The Barrens"],
         },
         {
             id = "DLRazorfenDowns",
             prefix = "9)",
-            name = BZ["Razorfen Downs"],
-            postfix = BZ["The Barrens"],
+            name = LZ["Razorfen Downs"],
+            postfix = LZ["The Barrens"],
         },
         {
             id = "DLOnyxiasLair",
             prefix = "10)",
-            name = BZ["Onyxia's Lair"],
-            postfix = BZ["Dustwallow Marsh"],
+            name = LZ["Onyxia's Lair"],
+            postfix = LZ["Dustwallow Marsh"],
         },
         {
             id = "DLZulFarrak",
             prefix = "11)",
-            name = BZ["Zul'Farrak"],
-            postfix = BZ["Tanaris"],
+            name = LZ["Zul'Farrak"],
+            postfix = LZ["Tanaris"],
         },
         {
             id = "DLBlackMorass",
             prefix = "12)",
-            name = BZ["Black Morass"],
-            postfix = BZ["Tanaris"],
+            name = LZ["The Black Morass"],
+            postfix = LZ["Tanaris"],
         },
         {
             id = "DLRuinsOfAhnQiraj",
             prefix = "13)",
-            name = BZ["Ruins of Ahn'Qiraj"],
-            postfix = BZ["Silithus"],
+            name = LZ["Ruins of Ahn'Qiraj"],
+            postfix = LZ["Silithus"],
         },
         {
             id = "DLTempleOfAhnQiraj",
-            name = BZ["Temple of Ahn'Qiraj"],
-            postfix = BZ["Silithus"],
+            name = LZ["Temple of Ahn'Qiraj"],
+            postfix = LZ["Silithus"],
         },
     },
 }

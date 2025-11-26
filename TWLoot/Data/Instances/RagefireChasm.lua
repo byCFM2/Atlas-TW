@@ -15,15 +15,18 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.RagefireChasm = {
-    Name = BZ["Ragefire Chasm"],
-    Location = BZ["Orgrimmar"],
+    Name = LZ["Ragefire Chasm"],
+    Location = LZ["Orgrimmar"],
     Level = { 8, 18 },
     Acronym = "RFC",
     MaxPlayers = 5,
@@ -36,7 +39,7 @@ AtlasTW.InstanceData.RagefireChasm = {
         {
             id = "RFCOggleflint",
             prefix = "1)",
-            name = BB["Oggleflint"],
+            name = LB["Oggleflint"],
             loot = {
                 { id = 80700, dropRate = 35 }, -- Tribal Trogg Club
                 { id = 80701, dropRate = 35 }, -- Dusty Leather Pants
@@ -48,7 +51,7 @@ AtlasTW.InstanceData.RagefireChasm = {
         {
             id = "RFCTaragaman",
             prefix = "2)",
-            name = BB["Taragaman the Hungerer"],
+            name = LB["Taragaman the Hungerer"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 14149 }, -- Subterranean Cape
@@ -61,7 +64,7 @@ AtlasTW.InstanceData.RagefireChasm = {
         {
             id = "RFCJergosh",
             prefix = "3)",
-            name = BB["Jergosh the Invoker"],
+            name = LB["Jergosh the Invoker"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 14150 }, -- Robe of Evocation
@@ -74,7 +77,7 @@ AtlasTW.InstanceData.RagefireChasm = {
         {
             id = "RFCBazzalan",
             prefix = "4)",
-            name = BB["Bazzalan"],
+            name = LB["Bazzalan"],
             defaults = { dropRate = 30 },
             loot = {
                 { id = 80705 }, -- Satyr Poker
@@ -88,7 +91,7 @@ AtlasTW.InstanceData.RagefireChasm = {
         },
         {
             id = "RFCTrash",
-            name = L["Trash Mobs"].."-"..BZ["Ragefire Chasm"],
+            name = L["Trash Mobs"].."-"..LZ["Ragefire Chasm"],
             loot = {
                 { id = 12862, disc = L["Level One Lunatic Challenge"], dropRate = 25 }, -- Burning Blade Grimoire
             }

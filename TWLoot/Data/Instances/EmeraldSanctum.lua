@@ -17,15 +17,17 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.EmeraldSanctum = {
-    Name = BZ["Emerald Sanctum"],
-    Location = BZ["Hyjal"],
+    Name = LZ["Emerald Sanctum"],
+    Location = LZ["Hyjal"],
     Level = 60,
     Acronym = "ES",
     Attunement = true,
@@ -38,7 +40,7 @@ AtlasTW.InstanceData.EmeraldSanctum = {
         {
             id = "Erennius",
             prefix = "1)",
-            name = BB["Erennius"],
+            name = LB["Erennius"],
             defaults = { dropRate = 48 },
             loot = {
                 { id = 61652, dropRate = 100, container = { 61650, 61651, 61740 } }, -- Claw of Erennius
@@ -64,7 +66,7 @@ AtlasTW.InstanceData.EmeraldSanctum = {
         {
             id = "Solnius",
             prefix = "2)",
-            name = BB["Solnius the Awakener"],
+            name = LB["Solnius"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 61206 }, -- Robe of the Dreamways
@@ -118,7 +120,7 @@ AtlasTW.InstanceData.EmeraldSanctum = {
         {
             id = "HardMode",
             prefix = "   ",
-            name = L["Favor of Erennius (ES Hard Mode)"],
+            name = LMD["Favor of Erennius (ES Hard Mode)"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 61524 }, -- Naturecaller's Tunic
@@ -141,7 +143,7 @@ AtlasTW.InstanceData.EmeraldSanctum = {
         },
         {
             id = "ESTrash",
-            name = L["Trash Mobs"].."-"..BZ["Emerald Sanctum"],
+            name = L["Trash Mobs"].."-"..LZ["Emerald Sanctum"],
             defaults = { dropRate = 1 },
             loot = {
                 { id = 84502, dropRate = 5 }, -- Verdant Dreamer's Boots

@@ -17,27 +17,29 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.TimbermawHold = {
-    Name = BZ["Timbermaw Hold"],
-    Location = BZ["Azshara"],
+    Name = LZ["Timbermaw Hold"],
+    Location = LZ["Azshara"],
     Level = 60,
     Acronym = "TH",
     MaxPlayers = 20,
     DamageType = L["Physical"],
     Entrances = {
-        { letter = "A)"..L["Entrance"].." "..L["Front"] },
-    --    { letter = "B)"..L["Entrance"].." "..L["Back"] },
+        { letter = "A)"..L["Entrance"].." "..LMD["Front"] },
+    --    { letter = "B)"..L["Entrance"].." "..LMD["Back"] },
     },
     Keys = {
-       -- { name = L["Key to Stormwrought Castle"], loot = "VanillaKeys", info = "6+" },
+       -- { name = LMD["Key to Stormwrought Castle"], loot = "VanillaKeys", info = "6+" },
     },
     Bosses = {--[[ 
         {
@@ -61,7 +63,7 @@ AtlasTW.InstanceData.TimbermawHold = {
         },
         {
             id = "WHCTrash",
-            name = L["Trash Mobs"].."-"..BZ["Windhorn Canyon"],
+            name = L["Trash Mobs"].."-"..LZ["Windhorn Canyon"],
             defaults = { dropRate = .1 },
             loot = {
                 { id = 70113, container = { 56040 } }, -- Plans: Gleaming Silver Necklace
@@ -91,7 +93,7 @@ AtlasTW.InstanceData.TimbermawHold = {
                 { id = 41941, dropRate = 70, disc = L["Quest Item"] }, -- Balorian Treasure
             }
         },
-        { name = BIS["Stormreaver Attire"], items = "Stormreaver" },]]
+        { name = LIS["Stormreaver Attire"], items = "Stormreaver" },]]
     },
 }
 

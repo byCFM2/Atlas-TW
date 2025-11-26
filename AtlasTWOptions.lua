@@ -18,7 +18,9 @@
 -- Local references to global functions for performance
 local _G = getfenv()
 local AtlasTW = _G.AtlasTW
-local L = AtlasTW.Local
+
+local L = AtlasTW.Localization.UI
+
 local uIDropDownMenu_SetSelectedID = UIDropDownMenu_SetSelectedID
 
 ---------------
@@ -593,7 +595,7 @@ end
 
 -- Popup Box for first time users
 StaticPopupDialogs["AtlasTWLoot_SETUP"] = {
-	text = "Welcome to Atlas-TW Edition. Please take a moment to set your preferences.",
+	text = L["Welcome to Atlas-TW Edition. Please take a moment to set your preferences."],
 	button1 = L["Setup"],
 	OnAccept = function()
 		AtlasTW.OptionsOnClick()

@@ -17,10 +17,12 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LF = AtlasTW.Localization.Factions
+local LMD = AtlasTW.Localization.MapData
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 local mCShareloot = {
@@ -38,8 +40,8 @@ local mCShareloot = {
 }
 
 AtlasTW.InstanceData.MoltenCore = {
-    Name = BZ["Molten Core"],
-    Location = BZ["Blackrock Depths"],
+    Name = LZ["Molten Core"],
+    Location = LZ["Blackrock Depths"],
     Level = 60,
     Acronym = "MC",
     Attunement = true,
@@ -49,17 +51,17 @@ AtlasTW.InstanceData.MoltenCore = {
         { letter = "A) " .. L["Entrance"] }
     },
     Reputation = {
-        { name = BF["Hydraxian Waterlords"], loot = "HydroxianWaterLords" },
+        { name = LF["Hydraxian Waterlords"], loot = "HydroxianWaterLords" },
     },
     Keys = {
-        { name = L["Aqual Quintessence"], loot = "VanillaKeys", info = L["Boss"] },
-        { name = L["Eternal Quintessence"], loot = "VanillaKeys", info = L["Boss"] }
+        { name = LMD["Aqual Quintessence"], loot = "VanillaKeys", info = L["Boss"] },
+        { name = LMD["Eternal Quintessence"], loot = "VanillaKeys", info = L["Boss"] }
     },
     Bosses = {
         {
             id = "Incindis",
             prefix = "1)",
-            name = BB["Incindis"],--52145
+            name = LB["Incindis"],--52145
             defaults = { dropRate = 5 },
             loot = {
                 { id = 16812, dropRate = 25, container = { 47202 } }, -- Gloves of Prophecy
@@ -95,7 +97,7 @@ AtlasTW.InstanceData.MoltenCore = {
         {
             id = "Lucifron",
             prefix = "2)",
-            name = BB["Lucifron"],
+            name = LB["Lucifron"],
             defaults = { dropRate = 4 },
             loot = {
                 { id = 16800, dropRate = 20, container = { 47085 } }, -- Arcanist Boots
@@ -124,7 +126,7 @@ AtlasTW.InstanceData.MoltenCore = {
         {
             id = "Magmadar",
             prefix = "3)",
-            name = BB["Magmadar"],
+            name = LB["Magmadar"],
             defaults = { dropRate = 5 },
             loot = {
                 { id = 16814, dropRate = 20, container = { 47204 } }, -- Trousers of Prophecy
@@ -159,7 +161,7 @@ AtlasTW.InstanceData.MoltenCore = {
         {
             id = "Garr",
             prefix = "4)",
-            name = BB["Garr"],
+            name = LB["Garr"],
             defaults = { dropRate = 5 },
             loot = {
                 { id = 16813, dropRate = 20, container = { 47198 } }, -- Circlet of Prophecy
@@ -196,7 +198,7 @@ AtlasTW.InstanceData.MoltenCore = {
         {
             id = "BaronGeddon",
             prefix = "5)",
-            name = BB["Baron Geddon"],
+            name = LB["Baron Geddon"],
             defaults = { dropRate = 4 },
             loot = {
                 { id = 16797, dropRate = 33, container = { 47079 } }, -- Arcanist Mantle
@@ -228,7 +230,7 @@ AtlasTW.InstanceData.MoltenCore = {
         {
             id = "Shazzrah",
             prefix = "6)",
-            name = BB["Shazzrah"],
+            name = LB["Shazzrah"],
             defaults = { dropRate = 3 },
             loot = {
                 { id = 16811, dropRate = 25, container = { 47205 } }, -- Boots of Prophecy
@@ -257,7 +259,7 @@ AtlasTW.InstanceData.MoltenCore = {
         {
             id = "Golemagg",
             prefix = "7)",
-            name = BB["Golemagg the Incinerator"],
+            name = LB["Golemagg the Incinerator"],
             defaults = { dropRate = 2 },
             loot = {
                 { id = 16815, dropRate = 25, container = { 47200 } }, -- Robes of Prophecy
@@ -294,7 +296,7 @@ AtlasTW.InstanceData.MoltenCore = {
         {
             id = "Sulfuron",
             prefix = "8)",
-            name = BB["Sulfuron Harbinger"],
+            name = LB["Sulfuron Harbinger"],
             defaults = { dropRate = 4 },
             loot = {
                 { id = 16816, dropRate = 33, container = { 47199 } }, -- Mantle of Prophecy
@@ -332,7 +334,7 @@ AtlasTW.InstanceData.MoltenCore = {
         {
             id = "Majordomo",
             prefix = "9)",
-            name = BB["Majordomo Executus"],
+            name = LB["Majordomo Executus"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 19139 }, -- Fireguard Shoulders
@@ -360,7 +362,7 @@ AtlasTW.InstanceData.MoltenCore = {
         {
             id = "Basalthar",
             prefix = "10)",
-            name = BB["Basalthar"],--65020
+            name = LB["Basalthar"],--65020
             defaults = { dropRate = 11 },
             loot = {
                 { id = 58210, dropRate = 17 }, -- Grasps of Sundering Power
@@ -387,7 +389,7 @@ AtlasTW.InstanceData.MoltenCore = {
         },
         {
             id = "Smoldaris",
-            name = BB["Smoldaris"],--65021
+            name = LB["Smoldaris"],--65021
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58211 }, -- Molten Emberstone
@@ -405,7 +407,7 @@ AtlasTW.InstanceData.MoltenCore = {
         {
             id = "SorcererThaneThaurissan",
             prefix = "11)",
-            name = BB["Sorcerer-Thane Thaurissan"],--57642
+            name = LB["Sorcerer-Thane Thaurissan"],--57642
             defaults = { dropRate = 11 },
             loot = {
                 { id = 58210, dropRate = 17 }, -- Grasps of Sundering Power
@@ -442,7 +444,7 @@ AtlasTW.InstanceData.MoltenCore = {
         {
             id = "Ragnaros",
             prefix = "12)",
-            name = BB["Ragnaros"],
+            name = LB["Ragnaros"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 16922, dropRate = 13, container = { 47212 } }, -- Leggings of Transcendence
@@ -481,7 +483,7 @@ AtlasTW.InstanceData.MoltenCore = {
         },
         {
             id = "MCTrash",
-            name = L["Trash Mobs"].."-"..BZ["Molten Core"],
+            name = L["Trash Mobs"].."-"..LZ["Molten Core"],
             defaults = { dropRate = .3 },
             loot = {
                 { id = 16817, container = { 47203 } }, -- Girdle of Prophecy
@@ -495,7 +497,7 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 16864, container = { 47245 } }, -- Belt of Might
                 { id = 17011, disc = L["Reagent"], dropRate = 15 }, -- Lava Core
                 { id = 17010, disc = L["Reagent"], dropRate = 35 }, -- Fiery Core
-                { id = 11382, disc = L["Reagent"]..", "..L["Molten Destroyer"], dropRate = 7 }, -- Blood of the Mountain
+                { id = 11382, disc = L["Reagent"]..", "..LMD["Molten Destroyer"], dropRate = 7 }, -- Blood of the Mountain
                 { id = 17012, disc = L["Reagent"], dropRate = 100 }, -- Core Leather
                 { id = 70101, dropRate = .56, container = { 56032 } }, -- Plans: Ruby Ring of Ruin
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles

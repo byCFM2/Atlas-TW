@@ -15,7 +15,7 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
+local L = AtlasTW.Localization.UI
 local Colors = AtlasTW.Colors
 
 ---

@@ -18,7 +18,12 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
+local L = AtlasTW.Localization.UI
+local LMD = AtlasTW.Localization.MapData
+
+local LS = AtlasTW.Localization.Spells
+local LC = AtlasTW.Localization.Classes
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.ItemDB = {}
@@ -30,24 +35,24 @@ AtlasTW.ItemDB.SLOT_KEYWORDS = {
     [L["Off Hand"]] = 0, [L["Waist"]] = 0, [L["Two-Hand"]] = 0, [L["Ranged"]] = 0,
 }
 AtlasTW.ItemDB.SLOT2_KEYWORDS = {
-    [L["Cloth"]] = 0,  [L["Leather"]] = 0, [L["Mail"]] = 0,[L["Plate"]] = 0,[L["Bullet"]] = 0,[L["Shirt"]] = 0,
+    [LS["Cloth"]] = 0,  [LS["Leather"]] = 0, [LS["Mail"]] = 0,[LS["Plate"]] = 0,[L["Bullet"]] = 0,[L["Shirt"]] = 0,
     [L["Mace"]] = 0, [L["Axe"]] = 0, [L["Dagger"]] = 0, [L["Sword"]] = 0, [L["Totem"]] = 0, [L["Tabard"]] = 0,
     [L["Held In Off-hand"]] = 0, [L["Shield"]] = 0, [L["Finger"]] = 0, [L["Neck"]] = 0, [L["16 Slot Ammo Pouch"]] = 0,
-    [L["Trinket"]] = 0, [L["Back"]] = 0, [L["Bow"]] = 0, [L["Crossbow"]] = 0,[L["Arrow"]] = 0,
+    [L["Trinket"]] = 0, [L["BackEquip"]] = 0, [L["Bow"]] = 0, [L["Crossbow"]] = 0,[L["Arrow"]] = 0,
     [L["Gun"]] = 0, [L["Polearm"]] = 0, [L["Libram"]] = 0, [L["Staff"]] = 0, [L["Idol"]] = 0,
     [L["Thrown"]] = 0, [L["Wand"]] = 0, [L["Fist Weapon"]] = 0,[L["Fishing Pole"]] = 0, [L["16 Slot Quiver"]] = 0,
 }
 AtlasTW.ItemDB.ClassItems = {
-    [L["Druid"]] = {L["Leather"],L["Dagger"],L["Mace"],L["Fist Weapon"],L["Polearm"],L["Staff"],L["Two-Hand"].." "..L["Mace"],L["Idol"]},
-    [L["Hunter"]] = {L["Leather"],L["Mail"],L["Axe"],L["Dagger"],L["Sword"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"],
+    [LC["Druid"]] = {LS["Leather"],L["Dagger"],L["Mace"],L["Fist Weapon"],L["Polearm"],L["Staff"],L["Two-Hand"].." "..L["Mace"],L["Idol"]},
+    [LC["Hunter"]] = {LS["Leather"],LS["Mail"],L["Axe"],L["Dagger"],L["Sword"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"],
         L["Polearm"],L["Staff"],L["Fist Weapon"],L["Bow"],L["Crossbow"],L["Gun"],L["Off Hand"],L["Thrown"]},
-    [L["Mage"]] = {L["Dagger"],L["Staff"],L["Sword"],L["Wand"]},
-    [L["Paladin"]] = {L["Leather"],L["Mail"],L["Plate"],L["Sword"],L["Mace"],L["Axe"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"],L["Polearm"],L["Libram"]},
-    [L["Priest"]] = {L["Dagger"],L["Staff"],L["Mace"],L["Wand"]},
-    [L["Rogue"]] = {L["Leather"],L["Dagger"],L["Sword"],L["Mace"],L["Off Hand"],L["Fist Weapon"],L["Bow"],L["Crossbow"],L["Gun"],L["Thrown"]},
-    [L["Shaman"]] = {L["Leather"],L["Mail"],L["Dagger"],L["Mace"],L["Axe"],L["Fist Weapon"],L["Staff"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"],L["Totem"]},
-    [L["Warlock"]] = {L["Dagger"],L["Staff"],L["Sword"],L["Wand"]},
-    [L["Warrior"]] = {L["Leather"],L["Mail"],L["Plate"],L["Dagger"],L["Off Hand"],L["Sword"],L["Mace"],L["Axe"],L["Fist Weapon"],L["Bow"],L["Crossbow"],L["Gun"],L["Thrown"],L["Polearm"],
+    [LC["Mage"]] = {L["Dagger"],L["Staff"],L["Sword"],L["Wand"]},
+    [LC["Paladin"]] = {LS["Leather"],LS["Mail"],LS["Plate"],L["Sword"],L["Mace"],L["Axe"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"],L["Polearm"],L["Libram"]},
+    [LC["Priest"]] = {L["Dagger"],L["Staff"],L["Mace"],L["Wand"]},
+    [LC["Rogue"]] = {LS["Leather"],L["Dagger"],L["Sword"],L["Mace"],L["Off Hand"],L["Fist Weapon"],L["Bow"],L["Crossbow"],L["Gun"],L["Thrown"]},
+    [LC["Shaman"]] = {LS["Leather"],LS["Mail"],L["Dagger"],L["Mace"],L["Axe"],L["Fist Weapon"],L["Staff"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"],L["Totem"]},
+    [LC["Warlock"]] = {L["Dagger"],L["Staff"],L["Sword"],L["Wand"]},
+    [LC["Warrior"]] = {LS["Leather"],LS["Mail"],LS["Plate"],L["Dagger"],L["Off Hand"],L["Sword"],L["Mace"],L["Axe"],L["Fist Weapon"],L["Bow"],L["Crossbow"],L["Gun"],L["Thrown"],L["Polearm"],
         L["Staff"],L["Two-Hand"].." "..L["Mace"],L["Two-Hand"].." "..L["Axe"],L["Two-Hand"].." "..L["Sword"]},
 }
 
@@ -72,7 +77,7 @@ local function getColoredText(text, typeText)
 
     -- Handle different text types
     if typeText == "slot" then
-        local canWear = string.find(text, L["Cloth"]) or string.find(text, L["Fishing Pole"])
+        local canWear = string.find(text, LS["Cloth"]) or string.find(text, L["Fishing Pole"])
             or string.find(text, L["Tabard"]) or string.find(text, L["Bullet"]) or string.find(text, L["Arrow"])
             or string.find(text, L["Ammo Pouch"]) or string.find(text, L["Quiver"])
         if not canWear then

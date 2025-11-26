@@ -17,9 +17,12 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
+
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 local ephemeralPendant = {
@@ -28,16 +31,16 @@ local ephemeralPendant = {
 }
 
 AtlasTW.InstanceData.TowerofKarazhan = {
-    Name = BZ["Tower of Karazhan"],
-    Location = BZ["Deadwind Pass"],
+    Name = LZ["Tower of Karazhan"],
+    Location = LZ["Deadwind Pass"],
     Level = 60,
     Acronym = "KARA40",
     Attunement = true,
     MaxPlayers = 40,
     DamageType = L["Shadow"], L["Fire"], L["Arcane"],
     Keys = {
-        { name = L["Upper Karazhan Tower Key"], loot = "VanillaKeys", info = L["Quests"] },
-        { name = L["The Scepter of Medivh"], loot = "VanillaKeys", info = "6+" },
+        { name = LMD["Upper Karazhan Tower Key"], loot = "VanillaKeys", info = L["Quests"] },
+        { name = LMD["The Scepter of Medivh"], loot = "VanillaKeys", info = "6+" },
     },
     Entrances = {
         { letter = "A".." "..L["Entrance"] },
@@ -47,7 +50,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
         {
             id = "KeeperGnarlmoon",
             prefix = "1)",
-            name = BB["Keeper Gnarlmoon"],
+            name = LB["Keeper Gnarlmoon"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 55078 }, -- Ley-attuned Choker
@@ -67,7 +70,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
         {
             id = "LeyWatcherIncantagos",
             prefix = "2)",
-            name = BB["Ley-Watcher Incantagos"],
+            name = LB["Ley-Watcher Incantagos"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 55086 }, -- Magehunter Belt
@@ -94,7 +97,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
         {
             id = "Anomalus",
             prefix = "3)",
-            name = BB["Anomalus"],
+            name = LB["Anomalus"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 55097 }, -- Choker of Chromatic Power
@@ -115,7 +118,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
         {
             id = "EchoofMedivh",
             prefix = "4)",
-            name = BB["Echo of Medivh"],
+            name = LB["Echo of Medivh"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 55112 }, -- Pendant of Forgiven Mistakes
@@ -136,7 +139,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
         {
             id = "King",
             prefix = "5)",
-            name = BB["King"] .. " (Chess fight)",
+            name = LB["King"] .. LMD[" (Chess fight)"],
             defaults = { dropRate = 12.5 },
             loot = {
                 { id = 55088 }, -- Dragonclaw Gauntlets
@@ -164,7 +167,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
         {
             id = "SanvTasdal",
             prefix = "6)",
-            name = BB["Sanv Tas'dal"],
+            name = LB["Sanv Tas'dal"],
             defaults = { dropRate = 14.3 },
             loot = {
                 { id = 55113 }, -- Dreadslayer Horns
@@ -192,7 +195,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
         {
             id = "RupturanTheBroken",
             prefix = "7)",
-            name = BB["Rupturan the Broken"],
+            name = LB["Rupturan the Broken"],
             defaults = { dropRate = 14.3 },
             loot = {
                 { id = 55122 }, -- Earthquake Leggings
@@ -220,7 +223,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
         {
             id = "Kruul",
             prefix = "8)",
-            name = BB["Kruul"],
+            name = LB["Kruul"],
             defaults = { dropRate = 11.1 },
             loot = {
                 { id = 55132 }, -- Pendant of Purified Demon's Blood
@@ -248,7 +251,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
         {
             id = "Mephistroth",
             prefix = "9)",
-            name = BB["Mephistroth"],
+            name = LB["Mephistroth"],
             defaults = { dropRate = 19 },
             loot = {
                 { id = 55351 }, -- Turalyon's Hope
@@ -283,7 +286,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
         },
         {
             id = "K40Trash",
-            name = L["Trash Mobs"].."-"..BZ["Tower of Karazhan"],
+            name = L["Trash Mobs"].."-"..LZ["Tower of Karazhan"],
             defaults = { dropRate = .25 },
             loot = {
                 { id = 55278 }, -- Ques' Gauntlets of Precision
@@ -300,7 +303,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 { id = 55277 }, -- The End of All Ambitions
             }
         },
-        { name = L["Tower of Karazhan Sets"], items = "AtlasTWLootUKSetMenu" },
+        { name = LMD["Tower of Karazhan Sets"], items = "AtlasTWLootUKSetMenu" },
     }
 }
 

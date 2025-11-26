@@ -15,16 +15,21 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.Uldaman = {
-    Name = BZ["Uldaman"],
-    Location = BZ["Badlands"],
+    Name = LZ["Uldaman"],
+    Location = LZ["Badlands"],
     Level = { 30, 51 },
     Acronym = "Uld",
     MaxPlayers = 5,
@@ -34,13 +39,13 @@ AtlasTW.InstanceData.Uldaman = {
         { letter = "B", info = L["Back Door"] },
     },
     Keys = {
-        { name = L["Staff of Prehistoria"], loot = "VanillaKeys", info = BB["Ironaya"] }
+        { name = LMD["Staff of Prehistoria"], loot = "VanillaKeys", info = LB["Ironaya"] }
     },
     Bosses = {
         {
             id = "UldBaelog",
             prefix = "1)",
-            name = BB["Baelog"],
+            name = LB["Baelog"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 9401 }, -- Nordic Longshank
@@ -51,7 +56,7 @@ AtlasTW.InstanceData.Uldaman = {
         },
         {
             id = "UldEric",
-            name = BB["Eric \"The Swift\""],
+            name = LB["Eric \"The Swift\""],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 9394 }, -- Horned Viking Helmet
@@ -62,7 +67,7 @@ AtlasTW.InstanceData.Uldaman = {
         },
         {
             id = "UldOlaf",
-            name = BB["Olaf"],
+            name = LB["Olaf"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 9404 }, -- Olaf's All Purpose Shield
@@ -73,26 +78,26 @@ AtlasTW.InstanceData.Uldaman = {
         },
         {
             id = "UldBaelogsChest",
-            name = L["Baelog's Chest"],
+            name = LMD["Baelog's Chest"],
             loot = {
                 { id = 7740, disc = L["Misc"], dropRate = 100, container = { 7733 } }, -- Gni'kiv Medallion
             }
         },
         {
             id = "UldConspicuousUrn",
-            name = L["Conspicuous Urn"],
+            name = LMD["Conspicuous Urn"],
             color = Colors.GREY
         },
         {
             id = "UldRemainsofaPaladin",
             prefix = "2)",
-            name = L["Remains of a Paladin"],
+            name = LMD["Remains of a Paladin"],
             color = Colors.GREY
         },
         {
             id = "UldRevelosh",
             prefix = "3)",
-            name = BB["Revelosh"],
+            name = LB["Revelosh"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 9389 }, -- Revelosh's Spaulders
@@ -106,7 +111,7 @@ AtlasTW.InstanceData.Uldaman = {
         {
             id = "UldIronaya",
             prefix = "4)",
-            name = BB["Ironaya"],
+            name = LB["Ironaya"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 9409 }, -- Ironaya's Bracers
@@ -119,19 +124,19 @@ AtlasTW.InstanceData.Uldaman = {
         {
             id = "UldObsidianSentinel",
             prefix = "5)",
-            name = L["Obsidian Sentinel"],
+            name = LB["Obsidian Sentinel"],
             color = Colors.GREY
         },
         {
             id = "UldAnnora",
             prefix = "6)",
-            name = L["Annora"],
+            name = LMD["Annora"],
             color = Colors.GREY
         },
         {
             id = "UldAncientStoneKeeper",
             prefix = "7)",
-            name = BB["Ancient Stone Keeper"],
+            name = LB["Ancient Stone Keeper"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 9410 }, -- Cragfists
@@ -143,7 +148,7 @@ AtlasTW.InstanceData.Uldaman = {
         {
             id = "UldGalgannFirehammer",
             prefix = "8)",
-            name = BB["Galgann Firehammer"],
+            name = LB["Galgann Firehammer"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 11310 }, -- Flameseer Mantle
@@ -154,14 +159,14 @@ AtlasTW.InstanceData.Uldaman = {
         },
         {
             id = "UldTabletofWill",
-            name = L["Tablet of Will"],
+            name = LMD["Tablet of Will"],
             loot = {
                 { id = 5824, dropRate = 100, container = { 6723 } }, -- Tablet of Will
             }
         },
         {
             id = "UldShadowforgeCache",
-            name = L["Shadowforge Cache"],
+            name = LMD["Shadowforge Cache"],
             loot = {
                 { id = 7669, dropRate = 100, container = { 7888 } }, -- Shattered Necklace Ruby
             }
@@ -169,7 +174,7 @@ AtlasTW.InstanceData.Uldaman = {
         {
             id = "UldGrimlok",
             prefix = "9)",
-            name = BB["Grimlok"],
+            name = LB["Grimlok"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 9415 }, -- Grimlok's Tribal Vestments
@@ -182,7 +187,7 @@ AtlasTW.InstanceData.Uldaman = {
         {
             id = "UldArchaedas",
             prefix = "10)",
-            name = BB["Archaedas"]..": "..L["Lower"],
+            name = LB["Archaedas"]..": "..L["Lower"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 11118 }, -- Archaedic Stone
@@ -195,17 +200,17 @@ AtlasTW.InstanceData.Uldaman = {
         {
             id = "UldTheDiscsofNorgannon",
             prefix = "11)",
-            name = L["The Discs of Norgannon"]..": "..L["Lower"],
+            name = LMD["The Discs of Norgannon"]..": "..L["Lower"],
             color = Colors.GREY
         },
         {
             id = "UldAncientTreasure",
-            name = L["Ancient Treasure"]..": "..L["Lower"],
+            name = LMD["Ancient Treasure"]..": "..L["Lower"],
             color = Colors.GREY
         },
         {
             id = "UldTrash",
-            name = L["Trash Mobs"].."-"..BZ["Uldaman"],
+            name = L["Trash Mobs"].."-"..LZ["Uldaman"],
             defaults = { dropRate = .01 },
             loot = {
                 { id = 9431 }, -- Papal Fez
@@ -241,26 +246,26 @@ AtlasTW.InstanceData.Uldaman = {
 }
 
 AtlasTW.InstanceData.UldamanEnt = {
-    Name = BZ["Uldaman"]..": "..L["Entrance"],
-    Location = BZ["Badlands"],
+    Name = LZ["Uldaman"]..": "..L["Entrance"],
+    Location = LZ["Badlands"],
     Acronym = "Uld",
     Continent = 2,
     Entrances = {
         { letter = "A", info = L["Entrance"] },
-        { letter = "B", info = BZ["Uldaman"] },
+        { letter = "B", info = LZ["Uldaman"] },
     },
 
     Bosses = {
         {
             id = "UldHammertoeGrez",
             prefix = "1)",
-            name = L["Hammertoe Grez"],
+            name = LB["Hammertoe Grez"],
             color = Colors.GREY
         },
         {
             id = "UldMagreganDeepshadow",
             prefix = "2)",
-            name = L["Magregan Deepshadow"],
+            name = LB["Magregan Deepshadow"],
             postfix = L["Wanders"],
             loot = {
                 { id = 4635, dropRate = 100, container = { 4987, 6723 } }, -- Hammertoe's Amulet
@@ -269,7 +274,7 @@ AtlasTW.InstanceData.UldamanEnt = {
         {
             id = "UldTabletofRyuneh",
             prefix = "3)",
-            name = L["Tablet of Ryun'Eh"],
+            name = LMD["Tablet of Ryun'Eh"],
             loot = {
                 { id = 4631, dropRate = 100, container = { 4746 } }, -- Tablet of Ryun'eh
             }
@@ -277,7 +282,7 @@ AtlasTW.InstanceData.UldamanEnt = {
         {
             id = "UldKromStoutarmChest",
             prefix = "4)",
-            name = L["Krom Stoutarm's Chest"],
+            name = LMD["Krom Stoutarm's Chest"],
             loot = {
                 { id = 8027, dropRate = 100 }, -- Krom Stoutarm's Treasure
             }
@@ -285,7 +290,7 @@ AtlasTW.InstanceData.UldamanEnt = {
         {
             id = "UldGarrettFamilyChest",
             prefix = "5)",
-            name = L["Garrett Family Chest"],
+            name = LMD["Garrett Family Chest"],
             loot = {
                 { id = 8026, dropRate = 100 }, -- Garrett Family Treasure
             }
@@ -293,7 +298,7 @@ AtlasTW.InstanceData.UldamanEnt = {
         {
             id = "UldShovelphlange",
             prefix = "1')",
-            name = L["Digmaster Shovelphlange"],
+            name = LMD["Digmaster Shovelphlange"],
             postfix = L["Rare"] .. ", " .. L["Varies"],
             color = Colors.GREEN,
             loot = {

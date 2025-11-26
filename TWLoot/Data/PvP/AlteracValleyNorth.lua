@@ -17,235 +17,238 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LF = AtlasTW.Localization.Factions
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- Alterac Valley (North) data
 AtlasTW.InstanceData.BGAlteracValleyNorth = {
-    Name = BZ["Alterac Valley"] .. " (" .. L["North"] .. ")",
-    Location = BZ["Alterac Mountains"],
+    Name = LZ["Alterac Valley"] .. " (" .. L["North"] .. ")",
+    Location = LZ["Alterac Mountains"],
     Level = {51, 60},
     Acronym = "AV",
     MaxPlayers = 40,
     Reputation = {
-            { name = BF["Stormpike Guard"], loot = "StormpikeFrostwolf" },
+            { name = LF["Stormpike Guard"], loot = "StormpikeFrostwolf" },
     },
     Entrances = {
-        { letter = "A)", info = L["Entrance"] .. " (" .. BF["Alliance"] .. ")" },
-        { letter = "B)", info = L["Dun Baldar"] }
+        { letter = "A)", info = L["Entrance"] .. " (" .. LF["Alliance"] .. ")" },
+        { letter = "B)", info = LMD["Dun Baldar"] }
     },
     Bosses = {
         {
-            name = L["Vanndar Stormpike"],
+            name = LMD["Vanndar Stormpike"],
             color = Colors.BLUE,
         },
         {
-            name = L["Dun Baldar North Marshal"],
+            name = LMD["Dun Baldar North Marshal"],
             color = Colors.BLUE,
         },
         {
-            name = L["Dun Baldar South Marshal"],
+            name = LMD["Dun Baldar South Marshal"],
             color = Colors.BLUE,
         },
         {
-            name = L["Icewing Marshal"],
+            name = LMD["Icewing Marshal"],
             color = Colors.BLUE,
         },
         {
-            name = L["Stonehearth Marshal"],
+            name = LMD["Stonehearth Marshal"],
             color = Colors.BLUE,
         },
         {
-            name = L["Iceblood Marshal"],
+            name = LMD["Iceblood Marshal"],
             color = Colors.BLUE,
         },
         {
-            name = L["Tower Point Marshal"],
+            name = LMD["Tower Point Marshal"],
             color = Colors.BLUE,
         },
         {
-            name = L["East Frostwolf Marshal"],
+            name = LMD["East Frostwolf Marshal"],
             color = Colors.BLUE,
         },
         {
-            name = L["West Frostwolf Marshal"],
+            name = LMD["West Frostwolf Marshal"],
             color = Colors.BLUE,
         },
         {
-            name = L["Prospector Stonehewer"],
+            name = LMD["Prospector Stonehewer"],
             color = Colors.BLUE,
         },
         {
             prefix = "1)",
-            name = L["Irondeep Mine"],
+            name = LMD["Irondeep Mine"],
         },
         {
-            name = L["Morloch"] .. " (" .. L["Neutral"] .. ")",
+            name = LMD["Morloch"] .. " (" .. LF["Neutral"] .. ")",
             color = Colors.GREY,
         },
         {
-            name = L["Umi Thorson"] .. " (" .. BF["Alliance"] .. ")",
+            name = LMD["Umi Thorson"] .. " (" .. LF["Alliance"] .. ")",
             color = Colors.GREY,
         },
         {
-            name = L["Keetar"] .. " (" .. BF["Horde"] .. ")",
+            name = LMD["Keetar"] .. " (" .. LF["Horde"] .. ")",
             color = Colors.GREY,
         },
         {
             prefix = "2)",
-            name = L["Arch Druid Renferal"],
+            name = LMD["Arch Druid Renferal"],
         },
         {
             prefix = "3)",
-            name = L["Dun Baldar North Bunker"],
+            name = LMD["Dun Baldar North Bunker"],
             color = Colors.ORANGE,
         },
         {
-            name = L["Wing Commander Mulverick"] .. " (" .. BF["Horde"] .. ")",
+            name = LMD["Wing Commander Mulverick"] .. " (" .. LF["Horde"] .. ")",
             color = Colors.GREY,
         },
         {
             prefix = "4)",
-            name = L["Murgot Deepforge"],
+            name = LMD["Murgot Deepforge"],
         },
         {
-            name = L["Dirk Swindle"],
+            name = LMD["Dirk Swindle"],
             color = Colors.GREY,
         },
         {
-            name = L["Athramanis"],
+            name = LMD["Athramanis"],
             color = Colors.GREY,
         },
         {
-            name = L["Lana Thunderbrew"],
+            name = LMD["Lana Thunderbrew"],
             color = Colors.GREY,
         },
         {
             prefix = "5)",
-            name = L["Stormpike Aid Station"],
+            name = LMD["Stormpike Aid Station"],
             color = Colors.RED,
         },
         {
             prefix = "6)",
-            name = L["Stormpike Stable Master"],
+            name = LMD["Stormpike Stable Master"],
         },
         {
-            name = L["Stormpike Ram Rider Commander"],
+            name = LMD["Stormpike Ram Rider Commander"],
             color = Colors.GREY,
         },
         {
-            name = L["Svalbrad Farmountain"],
+            name = LMD["Svalbrad Farmountain"],
             color = Colors.GREY,
         },
         {
-            name = L["Kurdrum Barleybeard"],
+            name = LMD["Kurdrum Barleybeard"],
             color = Colors.GREY,
         },
         {
             prefix = "7)",
-            name = L["Stormpike Quartermaster"],
+            name = LMD["Stormpike Quartermaster"],
         },
         {
-            name = L["Jonivera Farmountain"],
+            name = LMD["Jonivera Farmountain"],
             color = Colors.GREY,
         },
         {
-            name = L["Brogus Thunderbrew"],
+            name = LMD["Brogus Thunderbrew"],
             color = Colors.GREY,
         },
         {
             prefix = "8)",
-            name = L["Wing Commander Ichman"] .. " (" .. L["Rescued"] .. ")",
+            name = LMD["Wing Commander Ichman"] .. " (" .. L["Rescued"] .. ")",
         },
         {
-            name = L["Wing Commander Slidore"] .. " (" .. L["Rescued"] .. ")",
+            name = LMD["Wing Commander Slidore"] .. " (" .. L["Rescued"] .. ")",
             color = Colors.GREY,
         },
         {
-            name = L["Wing Commander Vipore"] .. " (" .. L["Rescued"] .. ")",
+            name = LMD["Wing Commander Vipore"] .. " (" .. L["Rescued"] .. ")",
             color = Colors.GREY,
         },
         {
             prefix = "9)",
-            name = L["Dun Baldar South Bunker"],
+            name = LMD["Dun Baldar South Bunker"],
             color = Colors.ORANGE,
         },
         {
-            name = L["Corporal Noreg Stormpike"],
+            name = LMD["Corporal Noreg Stormpike"],
             color = Colors.GREY,
         },
         {
-            name = L["Gaelden Hammersmith"],
+            name = LMD["Gaelden Hammersmith"],
             color = Colors.GREY,
         },
         {
             prefix = "10)",
-            name = L["Stormpike Graveyard"],
+            name = LMD["Stormpike Graveyard"],
             color = Colors.RED,
         },
         {
             prefix = "11)",
-            name = L["Icewing Cavern"],
+            name = LMD["Icewing Cavern"],
         },
         {
-            name = L["Stormpike Banner"],
+            name = LMD["Stormpike Banner"],
             color = Colors.GREY,
         },
         {
             prefix = "12)",
-            name = L["Stormpike Lumber Yard"],
+            name = LMD["Stormpike Lumber Yard"],
         },
         {
-            name = L["Wing Commander Jeztor"] .. " (" .. BF["Horde"] .. ")",
+            name = LMD["Wing Commander Jeztor"] .. " (" .. LF["Horde"] .. ")",
             color = Colors.GREY,
         },
         {
             prefix = "13)",
-            name = L["Icewing Bunker"],
+            name = LMD["Icewing Bunker"],
             color = Colors.ORANGE,
         },
         {
-            name = L["Wing Commander Guse"] .. " (" .. BF["Horde"] .. ")",
+            name = LMD["Wing Commander Guse"] .. " (" .. LF["Horde"] .. ")",
             color = Colors.GREY,
         },
         {
             prefix = "14)",
-            name = L["Stonehearth Graveyard"],
+            name = LMD["Stonehearth Graveyard"],
             color = Colors.RED,
         },
         {
             prefix = "15)",
-            name = L["Stormpike Ram Rider Commander"],
+            name = LMD["Stormpike Ram Rider Commander"],
         },
         {
             prefix = "16)",
-            name = L["Stonehearth Outpost"],
+            name = LMD["Stonehearth Outpost"],
             color = Colors.ORANGE,
         },
         {
-            name = L["Captain Balinda Stonehearth"],
+            name = LMD["Captain Balinda Stonehearth"],
             color = Colors.GREY,
         },
         {
             prefix = "17)",
-            name = L["Snowfall Graveyard"],
+            name = LMD["Snowfall Graveyard"],
             color = Colors.RED,
         },
         {
-            name = L["Ichman's Beacon"],
+            name = LMD["Ichman's Beacon"],
             color = Colors.GREY,
         },
         {
-            name = L["Mulverick's Beacon"] .. " (" .. BF["Horde"] .. ")",
+            name = LMD["Mulverick's Beacon"] .. " (" .. LF["Horde"] .. ")",
             color = Colors.GREY,
         },
         {
             id = "AVKorrak",
-            name = L["Korrak the Bloodrager"],
+            name = LMD["Korrak the Bloodrager"],
             items = {
                 {id = 13080}, --Widow's Clutch
                 {id = 12970}, --General's Ceremonial Plate
@@ -258,13 +261,13 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             prefix = "18)",
-            name = L["Stonehearth Bunker"],
+            name = LMD["Stonehearth Bunker"],
             color = Colors.ORANGE,
         },
         {
             id = "AVLokholarIvus",
             prefix = "19)",
-            name = L["Ivus the Forest Lord"] .. " (" .. L["Summon"] .. ")",
+            name = LMD["Ivus the Forest Lord"] .. " (" .. L["Summon"] .. ")",
             items = {
                 {id = 19105}, --Frost Runed Headdress
                 {id = 19113}, --Yeti Hide Bracers
@@ -278,43 +281,43 @@ AtlasTW.InstanceData.BGAlteracValleyNorth = {
         },
         {
             prefix = "20)",
-            name = L["Western Crater"],
+            name = LMD["Western Crater"],
         },
         {
-            name = L["Vipore's Beacon"],
+            name = LMD["Vipore's Beacon"],
             color = Colors.GREY,
         },
         {
-            name = L["Jeztor's Beacon"] .. " (" .. BF["Horde"] .. ")",
+            name = LMD["Jeztor's Beacon"] .. " (" .. LF["Horde"] .. ")",
             color = Colors.GREY,
         },
         {
             prefix = "21)",
-            name = L["Eastern Crater"],
+            name = LMD["Eastern Crater"],
         },
         {
-            name = L["Slidore's Beacon"],
+            name = LMD["Slidore's Beacon"],
             color = Colors.GREY,
         },
         {
-            name = L["Guse's Beacon"] .. " (" .. BF["Horde"] .. ")",
+            name = LMD["Guse's Beacon"] .. " (" .. LF["Horde"] .. ")",
             color = Colors.GREY,
         },
         {
             prefix = "22)",
-            name = L["Steamsaw"] .. " (" .. BF["Horde"] .. ")",
+            name = LMD["Steamsaw"] .. " (" .. LF["Horde"] .. ")",
         },
 
         {
-            name = L["Red"] .. ": " .. L["Graveyards, Capturable Areas"],
+            name = L["Red"] .. ": " .. LMD["Graveyards, Capturable Areas"],
             color = Colors.RED,
         },
         {
-            name = L["Orange"] .. ": " .. L["Bunkers, Towers, Destroyable Areas"],
+            name = L["Orange"] .. ": " .. LMD["Bunkers, Towers, Destroyable Areas"],
             color = Colors.ORANGE,
         },
         {
-            name = L["White"] .. ": " .. L["Assault NPCs, Quest Areas"],
+            name = L["White"] .. ": " .. LMD["Assault NPCs, Quest Areas"],
         },
     }
 }

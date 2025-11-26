@@ -15,16 +15,21 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.RazorfenDowns = {
-    Name = BZ["Razorfen Downs"],
-    Location = BZ["The Barrens"],
+    Name = LZ["Razorfen Downs"],
+    Location = LZ["The Barrens"],
     Level = { 25, 46 },
     Acronym = "RFD",
     MaxPlayers = 5,
@@ -37,7 +42,7 @@ AtlasTW.InstanceData.RazorfenDowns = {
         {
             id = "RFDTutenkash",
             prefix = "1)",
-            name = BB["Tuten'kash"],
+            name = LB["Tuten'kash"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 10776 }, -- Silky Spider Cape
@@ -50,7 +55,7 @@ AtlasTW.InstanceData.RazorfenDowns = {
         {
             id = "RFDHenryStern",
             prefix = "2)",
-            name = L["Henry Stern"],
+            name = LMD["Henry Stern"],
             loot = {
                 { id = 3826, disc = L["Consumable"] }, -- Mighty Troll's Blood Potion
                 { id = 10841, disc = L["Consumable"] }, -- Goldthorn Tea
@@ -58,17 +63,17 @@ AtlasTW.InstanceData.RazorfenDowns = {
         },
         {
             id = "RFDBelnistrasz",
-            name = L["Belnistrasz"],
+            name = LMD["Belnistrasz"],
             color = Colors.GREY,
         },
         {
             id = "RFDSahrhee",
-            name = L["Sah'rhee"],
+            name = LMD["Sah'rhee"],
             color = Colors.GREY,
         },
         {
             id = "RFDLadyF",
-            name = BB["Lady Falther'ess"],
+            name = LB["Lady Falther'ess"],
             postfix = L["Scourge Invasion"],
             defaults = { dropRate = 50 },
             loot = {
@@ -79,7 +84,7 @@ AtlasTW.InstanceData.RazorfenDowns = {
         {
             id = "RFDPlaguemaw",
             prefix = "3)",
-            name = BB["Plaguemaw the Rotting"],
+            name = LB["Plaguemaw the Rotting"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 10766 }, -- Plaguerot Sprig
@@ -93,7 +98,7 @@ AtlasTW.InstanceData.RazorfenDowns = {
         {
             id = "RFDMordreshFireEye",
             prefix = "4)",
-            name = BB["Mordresh Fire Eye"],
+            name = LB["Mordresh Fire Eye"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 10769 }, -- Glowing Eye of Mordresh
@@ -106,7 +111,7 @@ AtlasTW.InstanceData.RazorfenDowns = {
         {
             id = "RFDGlutton",
             prefix = "5)",
-            name = BB["Glutton"],
+            name = LB["Glutton"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 10774 }, -- Fleshhide Shoulders
@@ -120,7 +125,7 @@ AtlasTW.InstanceData.RazorfenDowns = {
         {
             id = "RFDRakameg",
             prefix = "6)",
-            name = BB["Death Prophet Rakameg"],
+            name = LB["Death Prophet Rakameg"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58172 }, -- Thornspine
@@ -133,7 +138,7 @@ AtlasTW.InstanceData.RazorfenDowns = {
         {
             id = "RFDRagglesnout",
             prefix = "7)",
-            name = BB["Ragglesnout"],
+            name = LB["Ragglesnout"],
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
@@ -145,7 +150,7 @@ AtlasTW.InstanceData.RazorfenDowns = {
         {
             id = "RFDAmnennar",
             prefix = "8)",
-            name = BB["Amnennar the Coldbringer"],
+            name = LB["Amnennar the Coldbringer"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 10763 }, -- Icemetal Barbute
@@ -159,7 +164,7 @@ AtlasTW.InstanceData.RazorfenDowns = {
         },
         {
             id = "RFDTrash",
-            name = L["Trash Mobs"].."-"..BZ["Razorfen Downs"],
+            name = L["Trash Mobs"].."-"..LZ["Razorfen Downs"],
             defaults = { dropRate = .01 },
             loot = {
                 { id = 10574 }, -- Corpseshroud

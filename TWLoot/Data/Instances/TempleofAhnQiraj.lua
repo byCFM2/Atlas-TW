@@ -17,10 +17,13 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LF = AtlasTW.Localization.Factions
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
@@ -41,8 +44,8 @@ local QirajiBindingsOfDominance = {
 }
 
 AtlasTW.InstanceData.TheTempleofAhnQiraj = {
-    Name = BZ["Temple of Ahn'Qiraj"],
-    Location = BZ["Silithus"],
+    Name = LZ["Temple of Ahn'Qiraj"],
+    Location = LZ["Silithus"],
     Level = 60,
     Acronym = "AQ40",
     MaxPlayers = 40,
@@ -51,14 +54,14 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
         { letter = "A"..". "..L["Entrance"] }
     },
     Reputation = {
-        { name = BF["Brood of Nozdormu"], loot = "BroodOfNozdormu" },
+        { name = LF["Brood of Nozdormu"], loot = "BroodOfNozdormu" },
     },
 
     Bosses = {
         {
             id = "TheProhetSkeram",
             prefix = "1)",
-            name = BB["The Prophet Skeram"],
+            name = LB["The Prophet Skeram"],
             defaults = { dropRate = 15 },
             loot = {
                 { id = 21699, dropRate = 18 }, -- Barrage Shoulders
@@ -86,7 +89,7 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
         {
             id = "TheBugFamily",
             prefix = "2)",
-            name = BB["The Bug Family"],
+            name = LB["The Bug Family"],
             postfix = L["Optional"],
             defaults = { dropRate = 25 },
             loot = {
@@ -101,38 +104,38 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 unpack(imperialArmaments),
                 { id = 21229, disc = L["Quest Item"], dropRate = 100 }, -- Qiraji Lord's Insignia
                 {},
-                { id = 21680, disc = BB["Lord Kri"] }, -- Vest of Swift Execution
-                { id = 21681, disc = BB["Lord Kri"] }, -- Ring of the Devoured
-                { id = 21685, disc = BB["Lord Kri"] }, -- Petrified Scarab
-                { id = 21603, disc = BB["Lord Kri"] }, -- Wand of Qiraji Nobility
-                { id = 21690, disc = BB["Vem"] }, -- Angelista's Charm
-                { id = 21689, disc = BB["Vem"] }, -- Gloves of Ebru
-                { id = 21691, disc = BB["Vem"] }, -- Ooze-ridden Gauntlets
-                { id = 21688, disc = BB["Vem"] }, -- Boots of the Fallen Hero
+                { id = 21680, disc = LB["Lord Kri"] }, -- Vest of Swift Execution
+                { id = 21681, disc = LB["Lord Kri"] }, -- Ring of the Devoured
+                { id = 21685, disc = LB["Lord Kri"] }, -- Petrified Scarab
+                { id = 21603, disc = LB["Lord Kri"] }, -- Wand of Qiraji Nobility
+                { id = 21690, disc = LB["Vem"] }, -- Angelista's Charm
+                { id = 21689, disc = LB["Vem"] }, -- Gloves of Ebru
+                { id = 21691, disc = LB["Vem"] }, -- Ooze-ridden Gauntlets
+                { id = 21688, disc = LB["Vem"] }, -- Boots of the Fallen Hero
                 {},
-                { id = 21686, disc = BB["Princess Yauj"] }, -- Mantle of Phrenic Power
-                { id = 21684, disc = BB["Princess Yauj"] }, -- Mantle of the Fallen Prophet
-                { id = 21683, disc = BB["Princess Yauj"] }, -- Mantle of the Redeemed Prophecy
-                { id = 21682, disc = BB["Princess Yauj"] }, -- Bile-Covered Gauntlets
-                { id = 21687, disc = BB["Princess Yauj"] }, -- Ukko's Ring of Darkness
+                { id = 21686, disc = LB["Princess Yauj"] }, -- Mantle of Phrenic Power
+                { id = 21684, disc = LB["Princess Yauj"] }, -- Mantle of the Fallen Prophet
+                { id = 21683, disc = LB["Princess Yauj"] }, -- Mantle of the Redeemed Prophecy
+                { id = 21682, disc = LB["Princess Yauj"] }, -- Bile-Covered Gauntlets
+                { id = 21687, disc = LB["Princess Yauj"] }, -- Ukko's Ring of Darkness
             }
         },
         {
-            name = BB["Vem"],
+            name = LB["Vem"],
             color = Colors.GREY,
         },
         {
-            name = BB["Lord Kri"],
+            name = LB["Lord Kri"],
             color = Colors.GREY,
         },
         {
-            name = BB["Princess Yauj"],
+            name = LB["Princess Yauj"],
             color = Colors.GREY,
         },
         {
             id = "BattleguardSartura",
             prefix = "3)",
-            name = BB["Battleguard Sartura"],
+            name = LB["Battleguard Sartura"],
             defaults = { dropRate = 15 },
             loot = {
                 { id = 21669 }, -- Creeping Vine Helm
@@ -158,7 +161,7 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
         {
             id = "FankrisstheUnyielding",
             prefix = "4)",
-            name = BB["Fankriss the Unyielding"],
+            name = LB["Fankriss the Unyielding"],
             defaults = { dropRate = 15 },
             loot = {
                 { id = 21665, dropRate = 18 }, -- Mantle of Wicked Revenge
@@ -184,7 +187,7 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
         {
             id = "Viscidus",
             prefix = "5)",
-            name = BB["Viscidus"],
+            name = LB["Viscidus"],
             postfix = L["Optional"],
             defaults = { dropRate = 14 },
             loot = {
@@ -208,7 +211,7 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
         {
             id = "PrincessHuhuran",
             prefix = "6)",
-            name = BB["Princess Huhuran"],
+            name = LB["Princess Huhuran"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 21621 }, -- Cloak of the Golden Hive
@@ -231,10 +234,10 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
         {
             id = "TheTwinEmperors",
             prefix = "7)",
-            name = BB["The Twin Emperors"],
+            name = LB["The Twin Emperors"],
             defaults = { dropRate = 14 },
             loot = {
-                { name = BB["Emperor Vek'lor"] },
+                { name = LB["Emperor Vek'lor"] },
                 { id = 20930, dropRate = 100, container = { 21387, 47032, 47037, 21366, 21360, -- Vek'lor's Diadem
                         21372, 47152, 47157, 21353, 47362, 47367 } },
                 {},
@@ -250,7 +253,7 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 {},
                 unpack(imperialArmaments),
                 {},
-                { name = BB["Emperor Vek'nilash"] },
+                { name = LB["Emperor Vek'nilash"] },
                 { id = 20926, dropRate = 100, container = { 21329, 21348, 47214, 21347, 47094, 21337, 47292 } }, -- Vek'nilash's Circlet
                 {},
                 { id = 21608 }, -- Amulet of Vek'nilash
@@ -268,17 +271,17 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
             }
         },
         {
-            name = "Emperor Vek'lor",
+            name = LB["Emperor Vek'lor"],
             color = Colors.GREY,
         },
         {
-            name = "Emperor Vek'nilash",
+            name = LB["Emperor Vek'nilash"],
             color = Colors.GREY,
         },
         {
             id = "Ouro",
             prefix = "8)",
-            name = BB["Ouro"],
+            name = LB["Ouro"],
             postfix = L["Optional"],
             defaults = { dropRate = 17 },
             loot = {
@@ -308,7 +311,7 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
         {
             id = "CThun",
             prefix = "9)",
-            name = BB["C'Thun"],
+            name = LB["C'Thun"],
             defaults = { dropRate = 18 },
             loot = {
                 { id = 22732, dropRate = 21 }, -- Mark of C'Thun
@@ -341,15 +344,15 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
                 { id = 36550, dropRate = 1 }, -- Spotted Qiraji Battle Tank
             }
         },
-        { prefix = "1') ", name = "Andorgos", color = Colors.GREEN },
-        { name = L["Vethsera"], color = Colors.GREEN },
-        { name = L["Kandrostrasz"], color = Colors.GREEN },
-        { prefix = "2') ", name = "Arygos", color = Colors.GREEN },
-        { name = L["Caelestrasz"], color = Colors.GREEN },
-        { name = L["Merithra of the Dream"], color = Colors.GREEN },
+        { prefix = "1') ", name = LMD["Andorgos"], color = Colors.GREEN },
+        { name = LMD["Vethsera"], color = Colors.GREEN },
+        { name = LMD["Kandrostrasz"], color = Colors.GREEN },
+        { prefix = "2') ", name = LMD["Arygos"], color = Colors.GREEN },
+        { name = LMD["Caelestrasz"], color = Colors.GREEN },
+        { name = LMD["Merithra of the Dream"], color = Colors.GREEN },
         {
             id = "AQ40Trash",
-            name = L["Trash Mobs"].."-"..BZ["Temple of Ahn'Qiraj"],
+            name = L["Trash Mobs"].."-"..LZ["Temple of Ahn'Qiraj"],
             defaults = { dropRate = 2 },
             loot = {
                 { id = 21838, dropRate = 0.7 }, -- Garb of Royal Ascension
@@ -395,7 +398,7 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
         },
         {
             id = "AQEnchants",
-            name = L["AQ Enchants"],
+            name = LMD["AQ Enchants"],
             defaults = { dropRate = 1 },
             loot = {
                 { id = 20728 }, -- Formula: Enchant Gloves - Frost Power
@@ -409,7 +412,7 @@ AtlasTW.InstanceData.TheTempleofAhnQiraj = {
         },
         {
             id = "AQOpening",
-            name = L["AQ Opening Quest Chain"],
+            name = LMD["AQ Opening Quest Chain"],
             loot = {
                 { id = 21138 }, -- Red Scepter Shard
                 { id = 21529 }, -- Amulet of Shadow Shielding

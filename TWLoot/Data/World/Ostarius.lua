@@ -17,16 +17,17 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- World bosses data
 AtlasTW.InstanceData.Ostarius = {
-    Name = BB["Ostarius"],
-    Location = BZ["Tanaris"],
+    Name = LB["Ostarius"],
+    Location = LZ["Tanaris"],
     Level = { 1, 60 },
     Acronym = "Ostarius",
     MaxPlayers = 40,
@@ -35,7 +36,7 @@ AtlasTW.InstanceData.Ostarius = {
         {
             id = "WBOstarius",
             prefix = "1)",
-            name = BB["Ostarius"],
+            name = LB["Ostarius"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 83530 }, -- Turban of Veiled Mists

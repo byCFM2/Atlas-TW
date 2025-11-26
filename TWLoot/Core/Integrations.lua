@@ -22,7 +22,7 @@ AtlasTW.Integrations = {}
 local GREY = AtlasTW.Colors.GREY2
 
 -- Local references for performance
-local L = AtlasTW.Local
+local L = AtlasTW.Localization.UI
 
 ---
 --- Checks if EquipCompare or EQCompare addon is available
@@ -110,7 +110,7 @@ function AtlasTW.Integrations.Initialize()
             AtlasTWOptionLootlinkTT:Disable()
         end
         if AtlasTWOptionLootlinkTTText then
-            AtlasTWOptionLootlinkTTText:SetText(GREY..L["Lootlink Tooltips|r"])
+            AtlasTWOptionLootlinkTTText:SetText(GREY..L["Lootlink Tooltips"])
         end
     end
 
@@ -120,7 +120,7 @@ function AtlasTW.Integrations.Initialize()
             AtlasTWOptionItemSyncTT:Disable()
         end
         if AtlasTWOptionItemSyncTTText then
-            AtlasTWOptionItemSyncTTText:SetText(GREY..L["ItemSync Tooltips|r"])
+            AtlasTWOptionItemSyncTTText:SetText(GREY..L["ItemSync Tooltips"])
         end
     end
 
@@ -130,7 +130,7 @@ function AtlasTW.Integrations.Initialize()
             AtlasTWOptionEquipCompare:Disable()
         end
         if AtlasTWOptionEquipCompareText then
-            AtlasTWOptionEquipCompareText:SetText(GREY..L["Use EquipCompare|r"])
+            AtlasTWOptionEquipCompareText:SetText(GREY..L["Use EquipCompare"])
         end
     end
 end

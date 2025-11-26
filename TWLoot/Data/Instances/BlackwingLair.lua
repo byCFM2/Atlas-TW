@@ -17,16 +17,19 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.BlackwingLair = {
-    Name = BZ["Blackwing Lair"],
-    Location = BZ["Blackrock Spire"],
+    Name = LZ["Blackwing Lair"],
+    Location = LZ["Blackrock Spire"],
     Level = 60,
     Acronym = "BWL",
     Attunement = true,
@@ -41,7 +44,7 @@ AtlasTW.InstanceData.BlackwingLair = {
         {
             id = "Razorgore",
             prefix = "1)",
-            name = BB["Razorgore the Untamed"],
+            name = LB["Razorgore the Untamed"],
             defaults = { dropRate = 11 },
             loot = {
                 { id = 16926, container = { 47209 } }, -- Bindings of Transcendence
@@ -69,7 +72,7 @@ AtlasTW.InstanceData.BlackwingLair = {
         {
             id = "Vaelastrasz",
             prefix = "2)",
-            name = BB["Vaelastrasz the Corrupt"],
+            name = LB["Vaelastrasz the Corrupt"],
             defaults = { dropRate = 11 },
             loot = {
                 { id = 16925, container = { 47211 } }, -- Belt of Transcendence
@@ -97,7 +100,7 @@ AtlasTW.InstanceData.BlackwingLair = {
         {
             id = "Lashlayer",
             prefix = "3)",
-            name = BB["Broodlord Lashlayer"],
+            name = LB["Broodlord Lashlayer"],
             defaults = { dropRate = 11 },
             loot = {
                 { id = 16919, container = { 47213 } }, -- Boots of Transcendence
@@ -135,7 +138,7 @@ AtlasTW.InstanceData.BlackwingLair = {
         {
             id = "Firemaw",
             prefix = "4)",
-            name = BB["Firemaw"],
+            name = LB["Firemaw"],
             defaults = { dropRate = 7 },
             loot = {
                 { id = 16920, container = { 47210 } }, -- Gloves of Transcendence
@@ -170,11 +173,11 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 19395 }, -- Rejuvenating Gem
             }
         },
-        { prefix = "5)", name = L["Master Elemental Shaper Krixix"], color = Colors.GREY, },
+        { prefix = "5)", name = LMD["Master Elemental Shaper Krixix"], color = Colors.GREY, },
         {
             id = "Ebonroc",
             prefix = "6)",
-            name = BB["Ebonroc"],
+            name = LB["Ebonroc"],
             defaults = { dropRate = 7 },
             loot = {
                 { id = 16920, container = { 47210 } }, -- Gloves of Transcendence
@@ -212,7 +215,7 @@ AtlasTW.InstanceData.BlackwingLair = {
         {
             id = "Flamegor",
             prefix = "7)",
-            name = BB["Flamegor"],
+            name = LB["Flamegor"],
             defaults = { dropRate = 7 },
             loot = {
                 { id = 16920, container = { 47210 } }, -- Gloves of Transcendence
@@ -250,7 +253,7 @@ AtlasTW.InstanceData.BlackwingLair = {
         {
             id = "Chromaggus",
             prefix = "8)",
-            name = BB["Chromaggus"],
+            name = LB["Chromaggus"],
             defaults = { dropRate = 11 },
             loot = {
                 { id = 16924, container = { 47207 } }, -- Pauldrons of Transcendence
@@ -288,7 +291,7 @@ AtlasTW.InstanceData.BlackwingLair = {
         {
             id = "Nefarian",
             prefix = "9)",
-            name = BB["Nefarian"],
+            name = LB["Nefarian"],
             defaults = { dropRate = 11 },
             loot = {
                 { id = 16923, container = { 47208 } }, -- Robes of Transcendence
@@ -332,18 +335,18 @@ AtlasTW.InstanceData.BlackwingLair = {
         {
             id = "EzzelDarkbrewer",
             prefix = "10)",
-            name = BB["Ezzel Darkbrewer"],
+            name = LB["Ezzel Darkbrewer"],
             postfix = L["Optional"],
             defaults = { dropRate = 20 },
             loot = {
                 --TODO Ezzel Darkbrewer loot
             }
         },
-        { prefix = "1)", name = L["Alchemy Lab"], color = Colors.GREEN },
-        { prefix = "2)", name = L["Draconic for Dummies"], color = Colors.GREEN },
+        { prefix = "1)", name = LMD["Alchemy Lab"], color = Colors.GREEN },
+        { prefix = "2)", name = LMD["Draconic for Dummies"], color = Colors.GREEN },
         {
             id = "BWLTrash",
-            name = L["Trash Mobs"].."-"..BZ["Blackwing Lair"],
+            name = L["Trash Mobs"].."-"..LZ["Blackwing Lair"],
             defaults = { dropRate = 4 },
             loot = {
                 { id = 19436 }, -- Cloak of Draconic Might
@@ -368,35 +371,35 @@ AtlasTW.InstanceData.BlackwingLair = {
 }
 
 AtlasTW.InstanceData.BlackrockMountainEnt = {
-    Name = BZ["Blackrock Mountain"] .. " (" .. L["Entrance"] .. ")",
-    Location = BZ["Blackrock Mountain"],
+    Name = LZ["Blackrock Mountain"] .. " (" .. L["Entrance"] .. ")",
+    Location = LZ["Blackrock Mountain"],
     Entrances = {
-        { letter = "A) " .. BZ["Searing Gorge"] },
-        { letter = "B) " .. BZ["Burning Steppes"] },
-        { letter = "C) " .. BZ["Blackrock Depths"] .. " (BRD)" },
-        { letter = "D) " .. BZ["Lower Blackrock Spire"] .. " (LBRS)" }
+        { letter = "A) " .. LZ["Searing Gorge"] },
+        { letter = "B) " .. LZ["Burning Steppes"] },
+        { letter = "C) " .. LZ["Blackrock Depths"] .. " (BRD)" },
+        { letter = "D) " .. LZ["Lower Blackrock Spire"] .. " (LBRS)" }
     },
     Bosses = {
         {
-            name = BZ["Molten Core"] .. " (MC) (" .. L["through "] .. "BRD)",
+            name = LZ["Molten Core"] .. " (MC) (" .. L["through "] .. "BRD)",
             color = Colors.BLUE
         },
         {
-            name = BZ["Upper Blackrock Spire"] .. " (UBRS)",
+            name = LZ["Upper Blackrock Spire"] .. " (UBRS)",
             color = Colors.BLUE
         },
         {
-            name = BZ["Blackwing Lair"] .. " (BWL) (" .. L["through "] .. "UBRS)",
+            name = LZ["Blackwing Lair"] .. " (BWL) (" .. L["through "] .. "UBRS)",
             color = Colors.BLUE
         },
         {
-            name = L["Bodley"] .. " (" .. L["Ghost"] .. ")",
+            name = LMD["Bodley"] .. " (" .. L["Ghost"] .. ")",
             color = Colors.BLUE
         },
         {
             id = "BRDPyron",
             prefix = "1)",
-            name = BB["Overmaster Pyron"],
+            name = LB["Overmaster Pyron"],
             postfix = L["Wanders"],
             loot = {
                 { id = 14486, dropRate = 18, container = { 14134 } }, -- Pattern: Cloak of Fire
@@ -406,13 +409,13 @@ AtlasTW.InstanceData.BlackrockMountainEnt = {
         },
         {
             prefix = "2)",
-            name = BB["Lothos Riftwaker"],
+            name = LB["Lothos Riftwaker"],
             postfix = "MC " .. L["Teleport"],
             color = Colors.GREY,
         },
         {
             prefix = "3)",
-            name = BB["Franclorn Forgewright"],
+            name = LB["Franclorn Forgewright"],
             postfix = L["Ghost"],
             color = Colors.GREY,
         },
@@ -423,7 +426,7 @@ AtlasTW.InstanceData.BlackrockMountainEnt = {
         },
         {
             prefix = "5)",
-            name = L["Orb of Command"] .. " (BWL " .. L["Teleport"] .. ")",
+            name = LMD["Orb of Command"] .. " (BWL " .. L["Teleport"] .. ")",
             color = Colors.GREY,
         },
         {
@@ -434,7 +437,7 @@ AtlasTW.InstanceData.BlackrockMountainEnt = {
         {
             id = "BRMScarshieldQuartermaster",
             prefix = "7)",
-            name = BB["Scarshield Quartermaster"],
+            name = LB["Scarshield Quartermaster"],
             postfix = L["Rare"],
             loot = {
                 { id = 13254, dropRate = 3 }, -- Astral Guard
@@ -446,7 +449,7 @@ AtlasTW.InstanceData.BlackrockMountainEnt = {
         {
             id = "BRMBehemoth",
             prefix = "8)",
-            name = BB["The Behemoth"],
+            name = LB["The Behemoth"],
             postfix = L["Rare"],
             loot = {
                 { id = 11603, dropRate = 99 }, -- Vilerend Slicer

@@ -15,16 +15,20 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.TheDeadmines = {
-    Name = BZ["The Deadmines"],
-    Location = BZ["Westfall"],
+    Name = LZ["The Deadmines"],
+    Location = LZ["Westfall"],
     Level = { 10, 24 },
     Acronym = "VC",
     MaxPlayers = 5,
@@ -38,7 +42,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         {
             id = "DMJaredVoss",
             prefix = "1)",
-            name = BB["Jared Voss"],
+            name = LB["Jared Voss"],
             loot = {
                 { id = 55377, dropRate = 50 }, -- Chemist's Shawl
                 {},
@@ -51,7 +55,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         {
             id = "DMRhahkZor",
             prefix = "2)",
-            name = BB["Rhahk'Zor"],
+            name = LB["Rhahk'Zor"],
             loot = {
                 { id = 872, dropRate = 5 }, -- Rockslicer
                 { id = 5187, dropRate = 95 }, -- Rhahk'Zor's Hammer
@@ -64,7 +68,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         {
             id = "DMMinerJohnson",
             prefix = "3)",
-            name = BB["Miner Johnson"],
+            name = LB["Miner Johnson"],
             postfix = L["Rare"],
             loot = {
                 { id = 5444, dropRate = 65 }, -- Miner's Cape
@@ -75,7 +79,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         {
             id = "DMSneed",
             prefix = "4)",
-            name = BB["Sneed"],
+            name = LB["Sneed"],
             loot = {
                 { id = 5194, dropRate = 35 }, -- Taskmaster Axe
                 { id = 5195, dropRate = 65 }, -- Gold-flecked Gloves
@@ -89,7 +93,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         },
         {
             id = "DMSneedsShredder",
-            name = L["Sneed's Shredder"],
+            name = LMD["Sneed's Shredder"],
             loot = {
                 { id = 1937, dropRate = 10 }, -- Buzz Saw
                 { id = 2169, dropRate = 90 }, -- Buzzer Blade
@@ -100,7 +104,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         {
             id = "DMGilnid",
             prefix = "5)",
-            name = BB["Gilnid"],
+            name = LB["Gilnid"],
             loot = {
                 { id = 1156, dropRate = 45 }, -- Lavishly Jeweled Ring
                 { id = 5199, dropRate = 55 }, -- Smelting Pants
@@ -109,7 +113,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         {
             id = "DMHarvester",
             prefix = "6)",
-            name = BB["Masterpiece Harvester"],
+            name = LB["Masterpiece Harvester"],
             loot = {
                 { id = 55380, dropRate = 50 }, -- Craftsman's Pants
                 {},
@@ -120,7 +124,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         {
             id = "DMMrSmite",
             prefix = "7)",
-            name = BB["Mr. Smite"],
+            name = LB["Mr. Smite"],
             loot = {
                 { id = 7230, dropRate = 20 }, -- Smite's Mighty Hammer
                 { id = 5192, dropRate = 30 }, -- Thief's Blade
@@ -131,7 +135,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         {
             id = "DMCookie",
             prefix = "8)",
-            name = BB["Cookie"],
+            name = LB["Cookie"],
             loot = {
                 { id = 5198, dropRate = 35 }, -- Cookie's Stirring Rod
                 { id = 5197, dropRate = 65 }, -- Cookie's Tenderizer
@@ -147,7 +151,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         {
             id = "DMCaptainGreenskin",
             prefix = "9)",
-            name = BB["Captain Greenskin"],
+            name = LB["Captain Greenskin"],
             loot = {
                 { id = 5201, dropRate = 40 }, -- Emberstone Staff
                 { id = 10403, dropRate = 30 }, -- Blackened Defias Belt
@@ -157,7 +161,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         {
             id = "DMVanCleef",
             prefix = "10)",
-            name = BB["Edwin VanCleef"],
+            name = LB["Edwin VanCleef"],
             loot = {
                 { id = 5193, dropRate = 30 }, -- Cape of the Brotherhood
                 { id = 5202, dropRate = 30 }, -- Corsair's Overshirt
@@ -174,7 +178,7 @@ AtlasTW.InstanceData.TheDeadmines = {
         },
         {
             id = "DMTrash",
-            name = L["Trash Mobs"].."-"..BZ["The Deadmines"],
+            name = L["Trash Mobs"].."-"..LZ["The Deadmines"],
             loot = {
                 { id = 8492, dropRate = 4 }, -- Green Wing Macaw
                 {},
@@ -187,23 +191,23 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 10402, dropRate = 1.2 }, -- Blackened Defias Boots
             }
         },
-        { name = BIS["Defias Leather"], items = "Deadmines" },
+        { name = LIS["Defias Leather"], items = "Deadmines" },
     },
 }
 
 AtlasTW.InstanceData.TheDeadminesEnt = {
-    Name = BZ["The Deadmines"] .. " (" .. L["Entrance"] .. ")",
-    Location = BZ["Westfall"],
+    Name = LZ["The Deadmines"] .. " (" .. L["Entrance"] .. ")",
+    Location = LZ["Westfall"],
     Acronym = "DM",
     Entrances = {
         { letter = "A)", info = L["Entrance"] },
-        { letter = "B)", info = BZ["The Deadmines"] }
+        { letter = "B)", info = LZ["The Deadmines"] }
     },
     Bosses = {
         {
             id = "DMMarisaduPaige",
             prefix = "1)",
-            name = BB["Marisa du'Paige"],
+            name = LB["Marisa du'Paige"],
             postfix = L["Rare"]..", "..L["Varies"],
             loot = {
                 { id = 3019, dropRate = 25 }, -- Noble's Robe
@@ -213,7 +217,7 @@ AtlasTW.InstanceData.TheDeadminesEnt = {
         {
             id = "DMBrainwashedNoble",
             prefix = "2)",
-            name = BB["Brainwashed Noble"],
+            name = LB["Brainwashed Noble"],
             postfix = L["Rare"],
             loot = {
                 { id = 5967, dropRate = 64 }, -- Girdle of Nobility
@@ -223,7 +227,7 @@ AtlasTW.InstanceData.TheDeadminesEnt = {
         {
             id = "DMForemanThistlenettle",
             prefix = "3)",
-            name = BB["Foreman Thistlenettle"],
+            name = LB["Foreman Thistlenettle"],
             loot = {
                 { id = 1875, dropRate = 100, container = { 1893 } }, -- Thistlenettle's Badge
             }

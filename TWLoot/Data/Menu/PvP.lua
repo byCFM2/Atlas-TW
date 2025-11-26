@@ -17,20 +17,21 @@
 
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
-local L = AtlasTW.Local
-local BC = AceLibrary("Babble-Class-2.2")
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local Colors = AtlasTW.Colors
 
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LC = AtlasTW.Localization.Classes
+
+local Colors = AtlasTW.Colors
 
 AtlasTW.MenuData.PVP = {
     {},
     {},
     {},
-    { name = BZ["Alterac Valley"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_21", lootpage = "StormpikeFrostwolf" },
-    { name = BZ["Arathi Basin"], icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ArathorDefilers" },
-    { name = BZ["Warsong Gulch"], icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "SentinelsOutriders" },
-    { name = BZ["Blood Ring"], icon = "Interface\\Icons\\inv_jewelry_ring_04", lootpage = "SteamwheedleBloodRing" },
+    { name = LZ["Alterac Valley"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_21", lootpage = "StormpikeFrostwolf" },
+    { name = LZ["Arathi Basin"], icon = "Interface\\Icons\\INV_Jewelry_Amulet_07", lootpage = "ArathorDefilers" },
+    { name = LZ["Warsong Gulch"], icon = "Interface\\Icons\\INV_Misc_Rune_07", lootpage = "SentinelsOutriders" },
+    { name = LZ["Blood Ring"], icon = "Interface\\Icons\\inv_jewelry_ring_04", lootpage = "SteamwheedleBloodRing" },
     {},
     {},
 	{},
@@ -61,11 +62,11 @@ end
 AtlasTW.MenuData.PVPSets = {
     {},
     {},
-    { name = Colors.Priest..BC["Priest"], icon = "Interface\\Icons\\Spell_Holy_PowerWordShield", lootpage = "PVPPriest" },
-    { name = Colors.Mage..BC["Mage"], icon = "Interface\\Icons\\Spell_Frost_IceStorm", lootpage = "PVPMage" },
-    { name = Colors.Warlock..BC["Warlock"], icon = "Interface\\Icons\\Spell_Shadow_CurseOfTounges", lootpage = "PVPWarlock" },
-    { name = Colors.Rogue..BC["Rogue"], icon = "Interface\\Icons\\Ability_BackStab", lootpage = "PVPRogue" },
-    { name = Colors.Druid..BC["Druid"], icon = "Interface\\Icons\\Spell_Nature_Regeneration", lootpage = "PVPDruid" },
+    { name = Colors.Priest..LC["Priest"], icon = "Interface\\Icons\\Spell_Holy_PowerWordShield", lootpage = "PVPPriest" },
+    { name = Colors.Mage..LC["Mage"], icon = "Interface\\Icons\\Spell_Frost_IceStorm", lootpage = "PVPMage" },
+    { name = Colors.Warlock..LC["Warlock"], icon = "Interface\\Icons\\Spell_Shadow_CurseOfTounges", lootpage = "PVPWarlock" },
+    { name = Colors.Rogue..LC["Rogue"], icon = "Interface\\Icons\\Ability_BackStab", lootpage = "PVPRogue" },
+    { name = Colors.Druid..LC["Druid"], icon = "Interface\\Icons\\Spell_Nature_Regeneration", lootpage = "PVPDruid" },
     {},
     {},
     {},
@@ -76,10 +77,10 @@ AtlasTW.MenuData.PVPSets = {
     {},
     {},
     {},
-    { name = Colors.Hunter..BC["Hunter"], icon = "Interface\\Icons\\Ability_Hunter_RunningShot", lootpage = "PVPHunter" },
-    { name = Colors.Shaman..BC["Shaman"], icon = "Interface\\Icons\\Spell_FireResistanceTotem_01", lootpage = "PVPShaman" },
-    { name = Colors.Paladin..BC["Paladin"], icon = "Interface\\Icons\\Spell_Holy_SealOfMight", lootpage = "PVPPaladin" },
-    { name = Colors.Warrior..BC["Warrior"], icon = "Interface\\Icons\\INV_Shield_05", lootpage = "PVPWarrior" },
+    { name = Colors.Hunter..LC["Hunter"], icon = "Interface\\Icons\\Ability_Hunter_RunningShot", lootpage = "PVPHunter" },
+    { name = Colors.Shaman..LC["Shaman"], icon = "Interface\\Icons\\Spell_FireResistanceTotem_01", lootpage = "PVPShaman" },
+    { name = Colors.Paladin..LC["Paladin"], icon = "Interface\\Icons\\Spell_Holy_SealOfMight", lootpage = "PVPPaladin" },
+    { name = Colors.Warrior..LC["Warrior"], icon = "Interface\\Icons\\INV_Shield_05", lootpage = "PVPWarrior" },
 }
 
 ---

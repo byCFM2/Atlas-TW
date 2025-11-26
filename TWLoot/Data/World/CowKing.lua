@@ -17,16 +17,17 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- World bosses data
 AtlasTW.InstanceData.CowKing = {
-    Name = BB["Moo"],
-    Location = BZ["Moomoo Grove"],
+    Name = LB["Moo"],
+    Location = LZ["Moomoo Grove"],
     Level = { 1, 60 },
     Acronym = "CowKing",
     MaxPlayers = 20,
@@ -35,7 +36,7 @@ AtlasTW.InstanceData.CowKing = {
         {
             id = "WBCowKing",
             prefix = "1)",
-            name = BB["Moo"],
+            name = LB["Moo"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 60486, dropRate = 25 }, -- Fishbringer

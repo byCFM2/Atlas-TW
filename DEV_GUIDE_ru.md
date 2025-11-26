@@ -331,3 +331,44 @@ ItemDB (Loot/Data/ItemDB.lua)
   - `SlashCmdList["ATLASTW"] = AtlasTW.SlashCommand`
 - Обработчик в `AtlasTWUILogic.lua`:
   - `AtlasTW.SlashCommand(msg)` распознаёт `options|opt|ver|ver check`; действие по умолчанию — переключить главное окно.
+
+20) Система локализации
+
+Аддон использует собственную систему локализации, основанную на пространствах имен (Namespaces).
+Основной файл: `LocalizationFramework.lua`.
+
+Структура файлов локализации:
+`Locales/<Locale>/<File>.lua`
+Пример: `Locales/ruRU/Core.lua`, `Locales/enUS/MapData.lua`.
+
+Регистрация переводов:
+Используйте `AtlasTW.Localization:RegisterNamespace(namespaceName, locale, data)`.
+Пример:
+```lua
+AtlasTW.Localization:RegisterNamespace("UI", "ruRU", {
+    ["Options"] = "Настройки",
+    -- ...
+})
+```
+
+Доступ к переводам:
+Используйте `AtlasTW.Localization:GetNamespace(namespaceName)`.
+Пример:
+```lua
+local L = AtlasTW.Localization:GetNamespace("UI")
+print(L["Options"])
+```
+
+Доступные пространства имен:
+- `UI`: Основные строки интерфейса (Core.lua).
+- `MapData`: Названия карт и зон (MapData.lua).
+- `Bosses`: Имена боссов (Bosses.lua).
+- `Classes`: Названия классов (Classes.lua).
+- `Factions`: Названия фракций (Factions.lua).
+- `ItemSets`: Названия комплектов предметов (ItemSets.lua).
+- `Spells`: Названия заклинаний и профессий (Spells.lua).
+- `Zones`: Названия зон для выпадающих списков (Zones.lua).
+
+Важно:
+- Всегда используйте `enUS` как базовую локаль. Если перевод отсутствует в текущей локали, система автоматически вернет строку из `enUS`.
+- Для новых строк сначала добавьте их в `Locales/enUS/Core.lua` (или соответствующий файл), а затем в другие локали.

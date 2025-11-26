@@ -18,20 +18,20 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 
---Instance required libraries
-local L = AtlasTW.Local
-local BF = AceLibrary("Babble-Faction-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
+local L = AtlasTW.Localization.UI
+local LF = AtlasTW.Localization.Factions
+local LMD = AtlasTW.Localization.MapData
+local LS = AtlasTW.Localization.Spells
 
 AtlasTWLoot_Data = AtlasTWLoot_Data or {}
 
 local Factions = {
 	Shendralar = { --1.18
-		{ name = BF["Friendly"], icon = "INV_Misc_Book_10" },
+		{ name = LF["Friendly"], icon = "INV_Misc_Book_10" },
 		{ id = 55044 }, -- Formula: Enchant Boots - Major Intellect
 		{ id = 55045, container={55046} }, -- Recipe: Elixir of Greater Frost Power
         {},
-		{ name = BF["Honored"], icon = "INV_Misc_Book_10" },
+		{ name = LF["Honored"], icon = "INV_Misc_Book_10" },
 		{ id = 58251 }, --Wristbands of Excellency
 		{ id = 58252 }, --Coalescing Sabatons
 		{ id = 58253 }, --Lector's Baton
@@ -42,14 +42,14 @@ local Factions = {
         {},
         {},
         {},
-		{ name = BF["Revered"], icon = "INV_Misc_Book_10" },
+		{ name = LF["Revered"], icon = "INV_Misc_Book_10" },
 		{ id = 58254 }, --Miniature Astrolabium
 		{ id = 58255 }, --Crystal Pauldrons
 		{ id = 58256 }, -- Band of Eldretharr
 		{ id = 55051, container={55052} }, -- Pattern: Astronomer Raiments
 		{ id = 55053, container={55054} }, -- Pattern: Prismatic Scale Barbute
         {},
-		{ name = BF["Exalted"], icon = "INV_Misc_Book_10" },
+		{ name = LF["Exalted"], icon = "INV_Misc_Book_10" },
 		{ id = 58257 }, -- Noble's Letter Opener
 		{ id = 58258 }, --Royal Guard Chain Cloak
 		{ id = 58259 }, --Advisor's Trousers of the Eldreth
@@ -58,11 +58,11 @@ local Factions = {
 		{ id = 55059, container={55060} }, -- Plans: Grandstaff of the Shen'dralar Elder
 	},
 	WintersaberTrainers = {
-		{ name = BF["Exalted"], icon = "Ability_Mount_PinkTiger" },
+		{ name = LF["Exalted"], icon = "Ability_Mount_PinkTiger" },
 		{ id = 13086 }, -- Reins of the Winterspring Frostsaber
 	},
 	ThoriumBrotherhood = {
-		{ name = BF["Friendly"], icon = "INV_Ingot_Mithril" }, --*1
+		{ name = LF["Friendly"], icon = "INV_Ingot_Mithril" }, --*1
 		{ id = 17051, container={17014} }, -- Plans: Dark Iron Bracers
 		{ id = 17018, container={16979} }, -- Pattern: Flarecore Gloves
 		{ id = 17023, container={16983} }, -- Pattern: Molten Helm
@@ -70,14 +70,14 @@ local Factions = {
 		{ id = 20761 }, -- Recipe: Transmute Elemental Fire
 		{ id = 19444 }, -- Formula: Enchant Weapon - Strength
         {},
-		{ name = BF["Revered"], icon = "INV_Ingot_Mithril" },
+		{ name = LF["Revered"], icon = "INV_Ingot_Mithril" },
 		{ id = 18592, container={17193} },
 		{ id = 17052, container={17013} },
 		{ id = 17053, container={16988} },
 		{ id = 19220, container={19165} },
 		{ id = 19333, container={19163} },
 		{ id = 19332, container={19162} }, --*15
-		{ name = BF["Honored"], icon = "INV_Ingot_Mithril" }, --*1
+		{ name = LF["Honored"], icon = "INV_Ingot_Mithril" }, --*1
 		{ id = 17059, container={17015} }, -- Plans: Dark Iron Reaver
 		{ id = 17060, container={17016} }, -- Plans: Dark Iron Destroyer
 		{ id = 17049, container={16989} }, -- Plans: Fiery Chain Girdle
@@ -108,7 +108,7 @@ local Factions = {
         {},
         {},
         {}, --*15
-		{ name = BF["Exalted"], icon = "INV_Ingot_Mithril" }, --*1
+		{ name = LF["Exalted"], icon = "INV_Ingot_Mithril" }, --*1
 		{ id = 20040, container={20039} },
 		{ id = 62004, container={65039} },
 		{ id = 19210, container={19170} },
@@ -142,14 +142,14 @@ local Factions = {
 		{ id = 19295, container={{19182,5}} }, -- Darkmoon Flower
 	},
     GelkisClanCentaur = {
-		{ name = BF["Neutral"], icon="INV_Misc_Head_Centaur_01" },
+		{ name = LF["Neutral"], icon="INV_Misc_Head_Centaur_01" },
 		{ id = 5748 },
 		{},
-		{ name = BF["Friendly"], icon="INV_Misc_Head_Centaur_01" },
+		{ name = LF["Friendly"], icon="INV_Misc_Head_Centaur_01" },
 		{ id = 6773 },
 		{ id = 6774 },
 		{},
-		{ name = BF["Honored"], icon="INV_Misc_Head_Centaur_01" },
+		{ name = LF["Honored"], icon="INV_Misc_Head_Centaur_01" },
 		{ id = 60899 },
 		{ id = 60900 },
 		{ id = 60901 },
@@ -157,26 +157,26 @@ local Factions = {
 		{ id = 60860 },
 		{ id = 60859 },
 		{},
-		{ name = BF["Revered"], icon="INV_Misc_Head_Centaur_01" },
+		{ name = LF["Revered"], icon="INV_Misc_Head_Centaur_01" },
 		{ id = 60902 },
 		{ id = 60903 },
 		{ id = 60904 },
 		{},
-		{ name = BF["Exalted"], icon="INV_Misc_Head_Centaur_01" },
+		{ name = LF["Exalted"], icon="INV_Misc_Head_Centaur_01" },
 		{ id = 60905 },
 		{ id = 60964, container={60908} },
 		{ id = 60965, container={60907} },
 		{ id = 60966 },
 	},
 	MagramClanCentaur = {
-		{ name = BF["Neutral"], icon="INV_Misc_Head_Centaur_01" },
+		{ name = LF["Neutral"], icon="INV_Misc_Head_Centaur_01" },
 		{ id = 5748 },
 		{},
-		{ name = BF["Friendly"], icon="INV_Misc_Head_Centaur_01" },
+		{ name = LF["Friendly"], icon="INV_Misc_Head_Centaur_01" },
 		{ id = 6789 },
 		{ id = 6788 },
 		{},
-		{ name = BF["Honored"], icon="INV_Misc_Head_Centaur_01" },
+		{ name = LF["Honored"], icon="INV_Misc_Head_Centaur_01" },
 		{ id = 60879 },
 		{ id = 60880 },
 		{ id = 60881 },
@@ -184,48 +184,48 @@ local Factions = {
 		{ id = 60854 },
 		{ id = 60855 },
 		{},
-		{ name = BF["Revered"], icon="INV_Misc_Head_Centaur_01" },
+		{ name = LF["Revered"], icon="INV_Misc_Head_Centaur_01" },
 		{ id = 60884 },
 		{ id = 60883 },
 		{ id = 60882 },
 		{},
-		{ name = BF["Exalted"], icon="INV_Misc_Head_Centaur_01" },
+		{ name = LF["Exalted"], icon="INV_Misc_Head_Centaur_01" },
 		{ id = 60885 },
 		{ id = 60968, container={60910} },
 		{ id = 60967, container={60909} },
 		{ id = 60969 },
 	},
 	BloodsailBuccaneers = {
-		{ name = BF["Neutral"], icon="INV_Helmet_66" },
+		{ name = LF["Neutral"], icon="INV_Helmet_66" },
 		{ id = 22742 },
 		{ id = 22743 },
 		{ id = 22745 },
 		{ id = 22744 },
 		{},
-		{ name = BF["Friendly"], icon="INV_Helmet_66" },
+		{ name = LF["Friendly"], icon="INV_Helmet_66" },
 		{ id = 12185 },
 		{},
-		{ name = BF["Revered"], icon="INV_Helmet_66" },
+		{ name = LF["Revered"], icon="INV_Helmet_66" },
 		{ id = 83494 },
 		{},
 		{},
 		{},
 		{},
-		{ name = BF["Exalted"], icon="INV_Helmet_66" },
+		{ name = LF["Exalted"], icon="INV_Helmet_66" },
 		{ id = 83493 },
 		{ id = 83490 },
 		{ id = 83492 },
 		{ id = 83491 },
 	},
 	TimbermawHoldRep = {
-		{ name = BF["Friendly"], icon="INV_Misc_Horn_01" },
+		{ name = LF["Friendly"], icon="INV_Misc_Horn_01" },
 		{ id = 20254, container={15065} },
 		{ id = 15742, container={15064} },
 		{ id = 22392 },
 		{ id = 13484 },
 		{ id = 91796 },
 		{},
-		{ name = BF["Honored"], icon="INV_Misc_Horn_01" },
+		{ name = LF["Honored"], icon="INV_Misc_Horn_01" },
 		{ id = 19202, container={19043} },
 		{ id = 62001, container={61648} },
 		{ id = 19326, container={19044} },
@@ -233,40 +233,40 @@ local Factions = {
 		{ id = 16768 },
 		{ id = 16769 },
 		{ id = 19445 },
-		{ name = BF["Revered"], icon="INV_Misc_Horn_01" },
+		{ name = LF["Revered"], icon="INV_Misc_Horn_01" },
 		{ id = 19218, container={19050} },
 		{ id = 19327, container={19049} },
 		{ id = 19204, container={19048} },
 		{ id = 62002, container={61649} },
 		{},
 		{},
-		{ name = BF["Exalted"], icon="INV_Misc_Horn_01" },
+		{ name = LF["Exalted"], icon="INV_Misc_Horn_01" },
 		{ id = 21326 },
 	},
 	HydroxianWaterLords = {
-		{ name = BF["Honored"], icon = "Spell_Frost_SummonWaterElemental_2"},
+		{ name = LF["Honored"], icon = "Spell_Frost_SummonWaterElemental_2"},
 		{ id = 18399, disc = L["Quest Reward"] },
 		{ id = 18398, disc = L["Quest Reward"] },
 		{ id = 17333, disc = L["Misc"] },
 		{ id = 91797 },
 		{},
-		{ name = BF["Revered"], icon = "Spell_Frost_SummonWaterElemental_2"},
+		{ name = LF["Revered"], icon = "Spell_Frost_SummonWaterElemental_2"},
 		{ id = 22754, disc = L["Misc"] },
 		{},
-		{ name = BF["Exalted"], icon = "Spell_Frost_SummonWaterElemental_2"},
+		{ name = LF["Exalted"], icon = "Spell_Frost_SummonWaterElemental_2"},
 		{ id = 81254, disc = L["Pet"]  },
 	},
 	WardensofTime = {
-		{ name = BF["Friendly"], icon = "INV_Misc_Head_Dragon_Bronze"},
+		{ name = LF["Friendly"], icon = "INV_Misc_Head_Dragon_Bronze"},
 		{ id=61000 },
 		{},
-		{ name = BF["Honored"], icon = "INV_Misc_Head_Dragon_Bronze"},
+		{ name = LF["Honored"], icon = "INV_Misc_Head_Dragon_Bronze"},
 		{ id=61005 },
 		{ id=84604 },
 		{ id=61003 },
 		{ id=61004 },
 		{},
-		{ name = BF["Revered"], icon = "INV_Misc_Head_Dragon_Bronze"},
+		{ name = LF["Revered"], icon = "INV_Misc_Head_Dragon_Bronze"},
 		{ id=84601 },
 		{ id=61002 },
 		{ id=61013 },
@@ -275,7 +275,7 @@ local Factions = {
 		{ id=84603 },
 		{ id=50070 },
 		{},
-		{ name = BF["Exalted"], icon = "INV_Misc_Head_Dragon_Bronze"},
+		{ name = LF["Exalted"], icon = "INV_Misc_Head_Dragon_Bronze"},
 		{ id=61007 },
 		{ id=61012 },
 		{ id=61010 },
@@ -289,7 +289,7 @@ local Factions = {
 		{ id=80300 },
 	},
 	CenarionCircle = {
-        { name = BF["Friendly"] }, --*1
+        { name = LF["Friendly"] }, --*1
 		{ id = 22772, container={22758} },
 		{ id = 22769, container={22761} },
 		{ id = 20506, container={20481} },
@@ -303,8 +303,8 @@ local Factions = {
 		{ id = 21178, container={{20802,7},{20800,3},{20801,5}} },
 		{ id = 21179, container={{20802,7},{20800,3},{20801,5}} },
 		{},
-        { name = BF["Revered"] }, --*15
-        { name = BF["Honored"] }, --*1
+        { name = LF["Revered"] }, --*15
+        { name = LF["Honored"] }, --*1
 		{ id = 22773, container={22757} },
 		{ id = 22770, container={22760} },
 		{ id = 20507, container={20480} },
@@ -318,7 +318,7 @@ local Factions = {
 		{ id = 21182, container={{20802,7},{20800,4},{20801,4}} },
 		{ id = 21183, container={{20802,7},{20800,4},{20801,4}} },
 		{},
-        { name = BF["Exalted"] }, --*15
+        { name = LF["Exalted"] }, --*15
 		{ id = 22683, container={22660} }, --*1
 		{ id = 22774, container={22756} },
 		{ id = 22771, container={22759} },
@@ -347,7 +347,7 @@ local Factions = {
 		{ id = 21190, container={{20802,15},{20800,20},{20801,20},{21508,1}} },
 	},
 	ArgentDawn = {
-		{ name = BF["Neutral"], icon = "INV_Jewelry_Talisman_08"},
+		{ name = LF["Neutral"], icon = "INV_Jewelry_Talisman_08"},
 		{ id = 12844, container = {{12840, 20}, {12841, 10}, {12843, 1}}, disc = L["Quest Item"] },
 		{ id = 22636, container = { {12844, 10}}, disc = L["Need quest"] },
 		{ id = 22638, container = { {12844, 10}}, disc = L["Need quest"] },
@@ -362,10 +362,10 @@ local Factions = {
 		{ id = 22688, container = {{22523, 7}, {22524, 7}} },
 		{ id = 22679, container = {{22523, 7}, {22524, 7}} },
 		{ id = 22657, container = {{22523, 45}, {22524, 45}} }, --*15
-		{ name = BF["Friendly"], icon = "INV_Jewelry_Talisman_08"},
-		{ id = 13724, disc = L["Food"] },
+		{ name = LF["Friendly"], icon = "INV_Jewelry_Talisman_08"},
+		{ id = 13724, disc = LS["Food"] },
 		{},
-		{ name = BF["Honored"], icon = "INV_Jewelry_Talisman_08"},
+		{ name = LF["Honored"], icon = "INV_Jewelry_Talisman_08"},
 		{ id = 13482, container={7078} },
 		{ id = 19216, container={19056} },
 		{ id = 19328, container={19052} },
@@ -384,7 +384,7 @@ local Factions = {
 		{ id = 22678, container = {{22523, 45}, {22524, 45}} },
 		{ id = 22656, container = {{22523, 45}, {22524, 45}} },
         {},
-		{ name = BF["Exalted"], icon = "INV_Jewelry_Talisman_08"},
+		{ name = LF["Exalted"], icon = "INV_Jewelry_Talisman_08"},
 		{ id = 18182 },
         {},
 		{ id = 58231 }, --Penchant of Humility
@@ -393,7 +393,7 @@ local Factions = {
         {},
         {},
         {},
-		{ name = BF["Revered"], icon = "INV_Jewelry_Talisman_08"},
+		{ name = LF["Revered"], icon = "INV_Jewelry_Talisman_08"},
 		{ id = 18171, disc = L["Need quest"] },
 		{ id = 18169, disc = L["Need quest"] },
 		{ id = 18170, disc = L["Need quest"] },
@@ -404,37 +404,37 @@ local Factions = {
 		{ id = 19205, container={19057} }, --*9
 		--revered
 		{ id = 19447 },
-		{ id = 13810, disc = L["Food"] },
-		{ id = 13813, disc = L["Drink"] },
+		{ id = 13810, disc = LS["Food"] },
+		{ id = 13813, disc = LS["Drink"] },
 		{ id = 58228 }, --Leggings of the Redeemer
 		{ id = 58229 }, --Hierophant Gloves
 		{ id = 58230 }, --Plaguewalker Boots
 	},
 	BroodOfNozdormu = {
-		{ name = L["Path of the Conqueror"], icon = "INV_Jewelry_Ring_40" },
-		{ id = 21201, disc = BF["Neutral"] },
-		{ id = 21202, disc = BF["Friendly"] },
-		{ id = 21203, disc = BF["Honored"] },
-		{ id = 21204, disc = BF["Revered"] },
-		{ id = 21205, disc = BF["Exalted"] },
+		{ name = LMD["Path of the Conqueror"], icon = "INV_Jewelry_Ring_40" },
+		{ id = 21201, disc = LF["Neutral"] },
+		{ id = 21202, disc = LF["Friendly"] },
+		{ id = 21203, disc = LF["Honored"] },
+		{ id = 21204, disc = LF["Revered"] },
+		{ id = 21205, disc = LF["Exalted"] },
 		{},
-		{ name = L["Path of the Invoker"], icon = "INV_Jewelry_Ring_40" },
-		{ id = 21206, disc = BF["Neutral"] },
-		{ id = 21207, disc = BF["Friendly"] },
-		{ id = 21208, disc = BF["Honored"] },
-		{ id = 21209, disc = BF["Revered"] },
-		{ id = 21210, disc = BF["Exalted"] },
+		{ name = LMD["Path of the Invoker"], icon = "INV_Jewelry_Ring_40" },
+		{ id = 21206, disc = LF["Neutral"] },
+		{ id = 21207, disc = LF["Friendly"] },
+		{ id = 21208, disc = LF["Honored"] },
+		{ id = 21209, disc = LF["Revered"] },
+		{ id = 21210, disc = LF["Exalted"] },
 		{},
 		{},
-		{ name = L["Path of the Protector"], icon = "INV_Jewelry_Ring_40" },
-		{ id = 21196, disc = BF["Neutral"] },
-		{ id = 21197, disc = BF["Friendly"] },
-		{ id = 21198, disc = BF["Honored"] },
-		{ id = 21199, disc = BF["Revered"] },
-		{ id = 21200, disc = BF["Exalted"] },
+		{ name = LMD["Path of the Protector"], icon = "INV_Jewelry_Ring_40" },
+		{ id = 21196, disc = LF["Neutral"] },
+		{ id = 21197, disc = LF["Friendly"] },
+		{ id = 21198, disc = LF["Honored"] },
+		{ id = 21199, disc = LF["Revered"] },
+		{ id = 21200, disc = LF["Exalted"] },
 	},
 	ZandalarTribe = {
-		{ name = BF["Friendly"], icon = "INV_Misc_Coin_08"},
+		{ name = LF["Friendly"], icon = "INV_Misc_Coin_08"},
 		{ id=19766, container={19684} },
 		{ id=19771, container={19687} },
 		{ id=20001, container={19998} },
@@ -443,13 +443,13 @@ local Factions = {
 		{ id=20012, container={20002} },
 		{ id=20757, container={20748} },
 		{},
-		{ name = BF["Honored"], icon = "INV_Misc_Coin_08"},
+		{ name = LF["Honored"], icon = "INV_Misc_Coin_08"},
 		{ id=19765, container={19683} },
 		{ id=20000, container={19999} },
 		{ id=19770, container={19686} },
 		{ id=19773, container={19689} },
 		{ id=19777, container={19691} },--*15
-		{ name = BF["Revered"], icon = "INV_Misc_Coin_08"},--*1
+		{ name = LF["Revered"], icon = "INV_Misc_Coin_08"},--*1
 		{ id=20080, disc = L["Potion"], container={{19858,1}} },
 		{ id=20079, disc = L["Potion"], container={{19858,1}} },
 		{ id=20081, disc = L["Potion"], container={{19858,1}} },
@@ -460,14 +460,14 @@ local Factions = {
 		{ id=19779, container={19693} },
 		{ id=20011, container={20007} },
 		{},
-		{ name = BF["Exalted"], icon = "INV_Misc_Coin_08"},
+		{ name = LF["Exalted"], icon = "INV_Misc_Coin_08"},
 		{ id=20077, disc = L["Enchant"]..","..L["Shoulder"], container={{19858,15}} },
 		{ id=20076, disc = L["Enchant"]..","..L["Shoulder"], container={{19858,15}} },
 		{ id=20078, disc = L["Enchant"]..","..L["Shoulder"], container={{19858,15}} },--*15
 		{ id=19780, container={19694} },
 		{ id=20014, container={20004} },
 		{ id=20756, container={20749} },
-		{ id=20031, disc = L["Food"], container={{19858,1}}, quantity=10 },
+		{ id=20031, disc = LS["Food"], container={{19858,1}}, quantity=10 },
 		{},
 		{},
 		{},
@@ -483,12 +483,12 @@ local Factions = {
 		{ id=20013, container={20008} },
 	},
 	SteamwheedleBloodRing = {
-		{ name = BF["Friendly"], icon = "inv_jewelry_ring_04" },
+		{ name = LF["Friendly"], icon = "inv_jewelry_ring_04" },
 		{ id = 60366 }, -- Gore Ring of the Gladiator
 		{ id = 60368 }, -- Loop of Field Medicine
 		{ id = 60367 }, -- Auspicious Ring of the Seer
 		{},
-		{ name = BF["Honored"], icon = "inv_jewelry_ring_04" },
+		{ name = LF["Honored"], icon = "inv_jewelry_ring_04" },
 		{ id = 83421 }, -- Bloody Gladiator's Handwraps
 		{ id = 83420 }, -- Bloody Gladiator's Sash
 		{ id = 83430 }, -- Bloody Gladiator's Gloves
@@ -498,7 +498,7 @@ local Factions = {
 		{ id = 60359 }, -- Bloody Gladiator's Gauntlets
 		{ id = 60358 }, -- Bloody Gladiator's Girdle
 		{},
-		{ name = BF["Revered"], icon = "inv_jewelry_ring_04" },
+		{ name = LF["Revered"], icon = "inv_jewelry_ring_04" },
 		{ id = 83425 }, -- Bloody Gladiator's Wraps
 		{ id = 83423 }, -- Bloody Gladiator's Britches
 		{ id = 83424 }, -- Bloody Gladiator's Footwraps
@@ -513,7 +513,7 @@ local Factions = {
 		{ id = 60361 }, -- Bloody Gladiator's Greaves
 		{},
 		{},
-		{ name = BF["Exalted"], icon = "inv_jewelry_ring_04" },--*1
+		{ name = LF["Exalted"], icon = "inv_jewelry_ring_04" },--*1
 		{ id = 83428 }, -- Bloody Gladiator's Circlet
 		{ id = 83427 }, -- Bloody Gladiator's Amice
 		{ id = 83426 }, -- Bloody Gladiator's Vestments
@@ -548,7 +548,7 @@ local Factions = {
 	},
     ArathorDefilers = {
         -- Alliance 20-29
-        { name = BF["The League of Arathor"]..", "..BF["Friendly"], icon = "INV_BannerPVP_02" }, --*1
+        { name = LF["The League of Arathor"]..", "..LF["Friendly"], icon = "INV_BannerPVP_02" }, --*1
         {id = 21119}, --Talisman of Arathor
         {id = 20226, disc=L["Consumable"]}, --Highlander's Field Ration
         {id = 20244, disc=L["Consumable"]}, --Highlander's Silk Bandage
@@ -567,7 +567,7 @@ local Factions = {
         -- Alliance 50-59
         {id = 20071}, --Talisman of Arathor *15
         -- Horde 20-29
-        { name = BF["The Defilers"]..", "..BF["Friendly"], icon = "INV_BannerPVP_01" }, --*1
+        { name = LF["The Defilers"]..", "..LF["Friendly"], icon = "INV_BannerPVP_01" }, --*1
         {id = 21120}, --Defiler's Talisman
         {id = 20223, disc=L["Consumable"]}, --Defiler's Field Ration
         {id = 20235, disc=L["Consumable"]}, --Defiler's Silk Bandage
@@ -587,7 +587,7 @@ local Factions = {
         {id = 20072}, --Defiler's Talisman *15
         {},
         -- Alliance 20-29
-        { name = BF["Honored"], icon = "INV_BannerPVP_02" },
+        { name = LF["Honored"], icon = "INV_BannerPVP_02" },
         {id = 20099}, --Highlander's Cloth Girdle
         {id = 20117}, --Highlander's Leather Girdle
         {id = 20105}, --Highlander's Lizardhide Girdle
@@ -605,7 +605,7 @@ local Factions = {
         {id = 20115}, --Highlander's Leather Girdle *15
         {},
         -- Horde 20-29
-        { name = BF["Honored"], icon = "INV_BannerPVP_01" },
+        { name = LF["Honored"], icon = "INV_BannerPVP_01" },
         {id = 20164}, --Defiler's Cloth Girdle
         {id = 20191}, --Defiler's Leather Girdle
         {id = 20172}, --Defiler's Lizardhide Girdle
@@ -656,7 +656,7 @@ local Factions = {
         {id = 20204}, --Defiler's Plate Girdle *14
         {},
         -- Alliance 20-29
-        { name = BF["Revered"], icon = "INV_BannerPVP_02" },
+        { name = LF["Revered"], icon = "INV_BannerPVP_02" },
         {id = 20096}, --Highlander's Cloth Boots
         {id = 20114}, --Highlander's Leather Boots
         {id = 20102}, --Highlander's Lizardhide Boots
@@ -674,7 +674,7 @@ local Factions = {
         {id = 20112}, --Highlander's Leather Boots
         {id = 20100}, --Highlander's Lizardhide Boots *15
         -- Horde 20-29
-        { name = BF["Revered"], icon = "INV_BannerPVP_01" },
+        { name = LF["Revered"], icon = "INV_BannerPVP_01" },
         {id = 20162}, --Defiler's Cloth Boots
         {id = 20188}, --Defiler's Leather Boots
         {id = 20169}, --Defiler's Lizardhide Boots
@@ -707,7 +707,7 @@ local Factions = {
         {id = 20049}, --Highlander's Lamellar Greaves
         {id = 20048}, --Highlander's Plate Greaves *13
         {},
-        { name = BF["Exalted"], icon = "INV_BannerPVP_02" },
+        { name = LF["Exalted"], icon = "INV_BannerPVP_02" },
         -- Horde 40-49
         {id = 20155}, --Defiler's Chain Greaves *1
         {id = 20202}, --Defiler's Mail Greaves
@@ -724,7 +724,7 @@ local Factions = {
         {id = 20199}, --Defiler's Mail Greaves
         {id = 20208}, --Defiler's Plate Greaves *13
         {},
-        { name = BF["Exalted"], icon = "INV_BannerPVP_01" },
+        { name = LF["Exalted"], icon = "INV_BannerPVP_01" },
         -- Alliance
         {id = 20061}, --Highlander's Epaulets
         {id = 20060}, --Highlander's Lizardhide Shoulders
@@ -756,7 +756,7 @@ local Factions = {
         {id = 20131}, --Battle Tabard of the Defilers *13
     },
     SentinelsOutriders = {
-        { name = BF["Friendly"] }, --*1
+        { name = LF["Friendly"] }, --*1
         {id = 21568}, --Rune of Duty
         {id = 21567}, --Rune of Duty
         {},
@@ -770,9 +770,9 @@ local Factions = {
         {id = 17348, disc=L["Consumable"]}, --Major Healing Draught *12
         {},
         -- Alliance Honored
-        { name = BF["Silverwing Sentinels"], icon = "INV_BannerPVP_02" },
+        { name = LF["Silverwing Sentinels"], icon = "INV_BannerPVP_02" },
         {id = 20444}, -- Sentinel's Medallion *15
-        { name = BF["Friendly"] }, --*1
+        { name = LF["Friendly"] }, --*1
         {id = 21566}, --Rune of Perfection
         {id = 21565}, --Rune of Perfection
         {},
@@ -786,7 +786,7 @@ local Factions = {
         {id = 17351, disc=L["Consumable"]}, --Major Mana Draught
         {},
         -- Horde Honored
-        { name = BF["Warsong Outriders"], icon = "INV_BannerPVP_01" },
+        { name = LF["Warsong Outriders"], icon = "INV_BannerPVP_01" },
         {id = 20442}, -- Scout's Medallion *15
         -- Alliance Honored
         {id = 20428}, -- Caretaker's Cape *1
@@ -831,7 +831,7 @@ local Factions = {
         {id = 19514}, -- Protector's Band *8
         {},
         -- Alliance Revered
-        { name = BF["Revered"], icon = "INV_BannerPVP_02" },
+        { name = LF["Revered"], icon = "INV_BannerPVP_02" },
         {id = 20438}, --Outrunner's Bow
         {id = 20443}, --Sentinel's Blade
         {id = 20440}, --Protector's Sword
@@ -848,7 +848,7 @@ local Factions = {
         {id = 19510}, -- Legionnaire's Band *8
         {},
         -- Horde Revered
-        { name = BF["Revered"], icon = "INV_BannerPVP_01" },
+        { name = LF["Revered"], icon = "INV_BannerPVP_01" },
         {id = 20437}, --Outrider's Bow
         {id = 20441}, --Scout's Blade
         {id = 20430}, --Legionnaire's Sword
@@ -895,7 +895,7 @@ local Factions = {
         {id = 19570}, --Lorekeeper's Staff *4
         {},
         -- Alliance Exalted
-        { name = BF["Exalted"], icon = "INV_BannerPVP_02" },
+        { name = LF["Exalted"], icon = "INV_BannerPVP_02" },
         {id = 22752}, --Sentinel's Silk Leggings
         {id = 22749}, --Sentinel's Leather Pants
         {id = 22750}, --Sentinel's Lizardhide Pants
@@ -912,7 +912,7 @@ local Factions = {
         {id = 19566}, --Advisor's Gnarled Staff
         {},
         -- Horde Exalted
-        { name = BF["Exalted"], icon = "INV_BannerPVP_01" },
+        { name = LF["Exalted"], icon = "INV_BannerPVP_01" },
         {id = 22747}, --Outrider's Silk Leggings
         {id = 22740}, --Outrider's Leather Pants
         {id = 22741}, --Outrider's Lizardhide Pants
@@ -944,44 +944,44 @@ local Factions = {
     },
     StormpikeFrostwolf = {
 		-- Alliance Neutral
-		{ name = BF["Stormpike Guard"]..", "..BF["Neutral"], icon = "INV_BannerPVP_02" }, --*1
+		{ name = LF["Stormpike Guard"]..", "..LF["Neutral"], icon = "INV_BannerPVP_02" }, --*1
 		{ id = 17691 }, -- Stormpike Insignia Rank 1
 		-- Alliance friendly
 		{},
-		{ name = L["Shared"]..", "..BF["Friendly"] },
+		{ name = L["Shared"]..", "..LF["Friendly"] },
 		{id = 19318, disc=L["Consumable"]}, -- Bottled Alterac Spring Water
 		{id = 17349, disc=L["Consumable"]}, -- Superior Healing Draught
 		{},
-		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" },
+		{ name = LF["Stormpike Guard"], icon = "INV_BannerPVP_02" },
 		{id = 19032}, -- Stormpike Battle Tabard
 		{ id = 17900 }, -- Stormpike Insignia Rank 2 *10
 		-- Alliance honored
 		{},
-		{ name = L["Shared"]..", "..BF["Honored"] },
+		{ name = L["Shared"]..", "..LF["Honored"] },
 		{id = 19316}, -- Ice Threaded Arrow
 		{id = 17348, disc=L["Consumable"]}, -- Major Healing Draught
 		{id = 19301}, -- Alterac Manna Biscuit --*15
 		-- Horde Neutral
-		{ name = BF["Frostwolf Clan"]..", "..BF["Neutral"], icon = "INV_BannerPVP_01" }, --*1
+		{ name = LF["Frostwolf Clan"]..", "..LF["Neutral"], icon = "INV_BannerPVP_01" }, --*1
 		{ id = 17690 }, -- Frostwolf Insignia Rank 1
 		-- Horde friendly
 		{},
-		{ name = L["Shared"]..", "..BF["Friendly"] },
+		{ name = L["Shared"]..", "..LF["Friendly"] },
 		{id = 19307}, -- Alterac Heavy Runecloth Bandage
 		{id = 17352, disc=L["Consumable"]}, -- Superior Mana Draught
 		{},
-		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },
+		{ name = LF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },
 		{id = 19031}, -- Frostwolf Battle Tabard
 		{ id = 17905 }, -- Frostwolf Insignia Rank 2
 		-- Horde honored
 		{},
-		{ name = L["Shared"]..", "..BF["Honored"] },
+		{ name = L["Shared"]..", "..LF["Honored"] },
 		{id = 19317}, -- Ice Threaded Bullet
 		{id = 17351, disc=L["Consumable"]}, -- Major Mana Draught
 		{}, --*15
 		--Alliance honored
 		{}, --*1
-		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" },
+		{ name = LF["Stormpike Guard"], icon = "INV_BannerPVP_02" },
 		{id = 19098}, -- Stormpike Sage's Pendant
 		{id = 19097}, -- Stormpike Soldier's Pendant
 		{id = 19086}, -- Stormpike Sage's Cloak
@@ -993,12 +993,12 @@ local Factions = {
 		{ id = 17901 }, -- Stormpike Insignia Rank 3
 		-- Alliance revered
 		{},
-		{ name = L["Shared"]..", "..BF["Revered"] },
+		{ name = L["Shared"]..", "..LF["Revered"] },
 		{id = 19320}, -- Gnoll Skin Bandolier
 		{}, --*15
         {}, --*1
 		-- Horde honored
-		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },
+		{ name = LF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },
 		{id = 19096}, -- Frostwolf Advisor's Pendant
 		{id = 19095}, -- Frostwolf Legionnaire's Pendant
 		{id = 19085}, -- Frostwolf Advisor's Cloak
@@ -1010,10 +1010,10 @@ local Factions = {
 		{ id = 17906 }, -- Frostwolf Insignia Rank 3
 		-- Horde revered
 		{},
-		{ name = L["Shared"]..", "..BF["Revered"] },
+		{ name = L["Shared"]..", "..LF["Revered"] },
 		{id = 19319}, -- Harpy Hide Quiver
 		{}, -- *15
-		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" }, -- *1
+		{ name = LF["Stormpike Guard"], icon = "INV_BannerPVP_02" }, -- *1
 		{id = 19045}, -- Stormpike Battle Standard
 		{id = 19100}, -- Electrified Dagger
 		{id = 19104}, -- Stormstrike Hammer
@@ -1021,7 +1021,7 @@ local Factions = {
 		{ id = 17902 }, -- Stormpike Insignia Rank 4
 		-- Alliance exalted
 		{},
-		{ name = L["Shared"]..", "..BF["Exalted"] },
+		{ name = L["Shared"]..", "..LF["Exalted"] },
 		{id = 19312}, -- Lei of the Lifegiver
 		{id = 19315}, -- Therazane's Touch
 		{id = 19308}, -- Tome of Arcane Domination
@@ -1029,7 +1029,7 @@ local Factions = {
 		{id = 19309}, -- Tome of Shadow Force
 		{},
 		{}, --*15
-		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" }, -- *1
+		{ name = LF["Frostwolf Clan"], icon = "INV_BannerPVP_01" }, -- *1
 		{id = 19046}, -- Frostwolf Battle Standard
 		{id = 19099}, -- Glacial Blade
 		{id = 19103}, -- Frostbite
@@ -1037,7 +1037,7 @@ local Factions = {
 		{ id = 17907 }, -- Frostwolf Insignia Rank 4
 		-- Horde exalted
 		{},
-		{ name = L["Shared"]..", "..BF["Exalted"] },
+		{ name = L["Shared"]..", "..LF["Exalted"] },
 		{id = 19310}, -- Tome of the Ice Lord
 		{id = 19325}, -- Don Julio's Band
 		{id = 21563}, -- Don Rodrigo's Band
@@ -1045,7 +1045,7 @@ local Factions = {
 		{id = 19324}, -- The Lobotomizer
 		{id = 19323}, -- The Unstoppable Force
 		{}, -- *15
-		{ name = BF["Stormpike Guard"], icon = "INV_BannerPVP_02" }, --*1
+		{ name = LF["Stormpike Guard"], icon = "INV_BannerPVP_02" }, --*1
 		{id = 19030}, -- Stormpike Battle Charger
 		{ id = 17903 }, -- Stormpike Insignia Rank 5
 		{ id = 17904 }, -- Stormpike Insignia Rank 6 *4
@@ -1061,25 +1061,25 @@ local Factions = {
 		{},
 		{},
         -- Horde exalted
-		{ name = BF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },--*1
+		{ name = LF["Frostwolf Clan"], icon = "INV_BannerPVP_01" },--*1
 		{ id = 19029 }, -- Horn of the Frostwolf Howler
 		{ id = 17908 }, -- Frostwolf Insignia Rank 5
 		{ id = 17909 }, -- Frostwolf Insignia Rank 6
 	},
 	Ironforge = {
-		{ name = BF["Honored"], icon = "Ability_Racial_Avatar" },
+		{ name = LF["Honored"], icon = "Ability_Racial_Avatar" },
 		{ id = 81214 }, -- Girdle of Anvilmar
 		{ id = 81211 }, -- Boots of Anvilmar
 		{ id = 81212 }, -- Tunic of Anvilmar
 		{ id = 81215 }, -- Armguards of Anvilmar
 		{ id = 81213 }, -- Pants of Anvilmar
 		{},
-		{ name = BF["Exalted"], icon = "Ability_Racial_Avatar" },
+		{ name = LF["Exalted"], icon = "Ability_Racial_Avatar" },
 		{ id = 80303 }, -- Ironforge Tabard
 		{ id = 81233 }, -- Armored Ironforge Ram
 	},
 	Darnassus = {
-		{ name = BF["Honored"], icon = "Ability_Racial_ShadowMeld" },
+		{ name = LF["Honored"], icon = "Ability_Racial_ShadowMeld" },
 		{ id = 60746 }, -- Sentinel's Breastplate
 		{ id = 60747 }, -- Sentinel's Boots
 		{ id = 60748 }, -- Sentinel's Crown
@@ -1087,19 +1087,19 @@ local Factions = {
 		{ id = 60750 }, -- Sentinel's Gauntlets
 		{ id = 60751 }, -- Sentinel's Pauldrons
 		{},
-		{ name = BF["Revered"], icon = "Ability_Racial_ShadowMeld" },
+		{ name = LF["Revered"], icon = "Ability_Racial_ShadowMeld" },
 		{ id = 60752 }, -- Sentinel's Glaive
 		{},
-		{ name = BF["Exalted"], icon = "Ability_Racial_ShadowMeld" },
+		{ name = LF["Exalted"], icon = "Ability_Racial_ShadowMeld" },
 		{ id = 80305 }, -- Darnassus Tabard
 	},
 	Stormwind = {
-		{ name = BF["Exalted"], icon = "INV_BannerPVP_02" },
+		{ name = LF["Exalted"], icon = "INV_BannerPVP_02" },
 		{ id = 81225 }, -- Armored Stormwind Warhorse
 		{ id = 80320 }, -- Stormwind Tabard
 	},
 	GnomereganExiles = {
-		{ name = BF["Exalted"], icon = "INV_Gizmo_02" },
+		{ name = LF["Exalted"], icon = "INV_Gizmo_02" },
 		{ id = 81192 }, -- Black Scrapforged Mechaspider
 		{ id = 81193 }, -- Blue Scrapforged Mechaspider
 		{ id = 81194 }, -- Green Scrapforged Mechaspider
@@ -1108,33 +1108,33 @@ local Factions = {
 		{ id = 80306 }, -- Gnomeregan Tabard
 	},
 	DarkspearTrolls = {
-		{ name = BF["Honored"], icon = "Racial_Troll_Berserk" },
+		{ name = LF["Honored"], icon = "Racial_Troll_Berserk" },
 		{ id = 83064 }, -- Hexed Voodoo Pads
 		{},
-		{ name = BF["Revered"], icon = "Racial_Troll_Berserk" },
+		{ name = LF["Revered"], icon = "Racial_Troll_Berserk" },
 		{ id = 80806 }, -- Healing Ward
 		{ id = 80785 }, -- Bottle of Good Mojo
 		{ id = 80797 }, -- Pendant of Troll Regeneration
 		{},
-		{ name = BF["Exalted"], icon = "Racial_Troll_Berserk" },
+		{ name = LF["Exalted"], icon = "Racial_Troll_Berserk" },
 		{ id = 81183 }, -- Sunscale Hatchling
 		{ id = 80304 }, -- Darkspear Tribe Tabard
 		{ id = 81182 }, -- Armored Darkspear Raptor
 	},
 	DurotarLaborUnion = {
-		{ name = BF["Friendly"], icon = "INV_Misc_Coin_01" },
+		{ name = LF["Friendly"], icon = "INV_Misc_Coin_01" },
 		{ id = 50068 }, -- Green Water Snake
 		{},
-		{ name = BF["Revered"], icon = "INV_Misc_Coin_01" },
+		{ name = LF["Revered"], icon = "INV_Misc_Coin_01" },
 		{ id = 81196, container = {10585} }, -- Schematic: Goblin Radio
 		{},
-		{ name = BF["Exalted"], icon = "INV_Misc_Coin_01" },
+		{ name = LF["Exalted"], icon = "INV_Misc_Coin_01" },
 		{ id = 81190 }, -- Red Shredder X-0524A
 		{ id = 81191 }, -- Green Shredder X-0524B
 		{ id = 81089 }, -- Durotar Labor Union Tabard
 	},
 	Undercity = {
-		{ name = BF["Exalted"], icon = "Spell_Shadow_RaiseDead" },
+		{ name = LF["Exalted"], icon = "Spell_Shadow_RaiseDead" },
 		{ id = 81244 }, -- Armored Ebon Deathcharger
 		{ id = 81245 }, -- Armored Crimson Deathcharger
 		{ id = 81246 }, -- Armored Emerald Deathcharger
@@ -1143,16 +1143,16 @@ local Factions = {
 		{ id = 80309 }, -- Undercity Tabard
 	},
 	Orgrimmar = {
-		{ name = BF["Honored"], icon = "INV_BannerPVP_01" },
+		{ name = LF["Honored"], icon = "INV_BannerPVP_01" },
 		{ id = 81216 }, -- Fur-Lined Orcish Helm
 		{ id = 81217 }, -- Protective Orcish Helm
 		{},
-		{ name = BF["Exalted"], icon = "INV_BannerPVP_01" },
+		{ name = LF["Exalted"], icon = "INV_BannerPVP_01" },
 		{ id = 81241 }, -- Armored Orgrimmar Wolf
 		{ id = 80307 }, -- Orgrimmar Tabard
 	},
 	ThunderBluff = {
-		{ name = BF["Revered"], icon = "INV_Misc_Foot_Centaur" },
+		{ name = LF["Revered"], icon = "INV_Misc_Foot_Centaur" },
 		{ id = 81199 }, -- Ancestral War Totem
 		{ id = 81218 }, -- Chieftain's Ceremonial Harness
 		{ id = 81219 }, -- Chieftain's Ceremonial Anklewraps
@@ -1160,7 +1160,7 @@ local Factions = {
 		{ id = 81221 }, -- Chieftain's Ceremonial Belt
 		{ id = 81222 }, -- Chieftain's Ceremonial Handwraps
 		{},
-		{ name = BF["Exalted"], icon = "INV_Misc_Foot_Centaur" },
+		{ name = LF["Exalted"], icon = "INV_Misc_Foot_Centaur" },
 		{ id = 81167 }, -- Chieftain's Ceremonial Mantle
 		{ id = 81223 }, -- Chieftain's Ceremonial Headdress
 		{ id = 81198 }, -- Armored Thunder Bluff Kodo
@@ -1168,34 +1168,34 @@ local Factions = {
 		{ id = 80308 }, -- Thunder Bluff Tabard
 	},
 	Dalaran = {
-		{ name = BF["Revered"], icon = "Spell_Holy_MagicalSentry" },
+		{ name = LF["Revered"], icon = "Spell_Holy_MagicalSentry" },
 		{ id = 60728 }, -- Boots of the Hermit Magi
 		{ id = 60730 }, -- Girdle of the Warden
 		{ id = 60727 }, -- Pauldrons of Sealed Magics
 		{ id = 60726 }, -- Spellguard's Shield
 		{ id = 60729 }, -- Skulker's Gloves
 		{},
-		{ name = BF["Exalted"], icon = "Spell_Holy_MagicalSentry" },
+		{ name = LF["Exalted"], icon = "Spell_Holy_MagicalSentry" },
 		{ id = 60724 }, -- Dalarani Conjurer's Hat
 		{ id = 60725 }, -- Ring of Flowing Leylines
 	},
 	WildhammerClan = {
-		{ name = BF["Friendly"], icon = "Ability_Hunter_EagleEye" },
+		{ name = LF["Friendly"], icon = "Ability_Hunter_EagleEye" },
 		{ id = 55033 }, -- Mystic's Feather Headdress
 		{ id = 55034 }, -- Grim Batol Mountaineer Pauldrons
 		{ id = 55035 }, -- Derelict Family Clan Totem
 		{},
-		{ name = BF["Honored"], icon = "Ability_Hunter_EagleEye" },
+		{ name = LF["Honored"], icon = "Ability_Hunter_EagleEye" },
 		{ id = 55036 }, -- Lorekeeper Cuffs
 		{ id = 55037 }, -- Gryphon Tamer Longstaff
 		{},
-		{ name = BF["Revered"], icon = "Ability_Hunter_EagleEye" },
+		{ name = LF["Revered"], icon = "Ability_Hunter_EagleEye" },
 		{ id = 55038 }, -- Fallen Heroes' Hymnal
 		{ id = 55039 }, -- Sharpshooter's Boots
 		{},
 		{},
 		{},
-		{ name = BF["Exalted"], icon = "Ability_Hunter_EagleEye" },
+		{ name = LF["Exalted"], icon = "Ability_Hunter_EagleEye" },
 		{ id = 55040 }, -- Skyfall Mantle
 		{ id = 55041 }, -- Wildhammer Stormcaller
 		{},
@@ -1209,14 +1209,14 @@ local Factions = {
 		{ id = 80312 }, -- Wildhammer Tabard
 	},
 	SilvermoonRemnant = {
-		{ name = BS["Cloth"] }, --*1l
+		{ name = LS["Cloth"] }, --*1l
 		{ id = 80512 }, -- Quel'dorei Magister's Robe
 		{ id = 80513 }, -- Quel'dorei Magister's Boots
 		{ id = 80514 }, -- Quel'dorei Magister's Belt
 		{ id = 80515 }, -- Quel'dorei Magister's Gloves
 		{ id = 80516 }, -- Quel'dorei Magister's Leggings
         {},
-		{ name = BS["Leather"] },
+		{ name = LS["Leather"] },
 		{ id = 80517 }, -- Quel'dorei Assassin's Tunic
 		{ id = 80518 }, -- Quel'dorei Assassin's Boots
 		{ id = 80519 }, -- Quel'dorei Assassin's Belt
@@ -1224,14 +1224,14 @@ local Factions = {
 		{ id = 80521 }, -- Quel'dorei Assassin's Leggings
         {},
 		{ name = L["Cloak"] }, --*15l
-		{ name = BS["Mail"] }, --*1r
+		{ name = LS["Mail"] }, --*1r
 		{ id = 80522 }, -- Quel'dorei Ranger's Hauberk
 		{ id = 80523 }, -- Quel'dorei Ranger's Boots
 		{ id = 80524 }, -- Quel'dorei Ranger's Belt
 		{ id = 80525 }, -- Quel'dorei Ranger's Gauntlets
 		{ id = 80526 }, -- Quel'dorei Ranger's Legguards
         {},
-		{ name = BS["Plate"] },
+		{ name = LS["Plate"] },
 		{ id = 80507 }, -- Quel'dorei Guardian's Chestplate
 		{ id = 80508 }, -- Quel'dorei Guardian's Boots
 		{ id = 80509 }, -- Quel'dorei Guardian's Girdle
@@ -1290,14 +1290,14 @@ local Factions = {
 		{ id = 80545 }, -- Quel'dorei Cleric's Wand
 	},
 	RevantuskTrolls = {
-		{ name =  BS["Cloth"] }, --*1L
+		{ name =  LS["Cloth"] }, --*1L
 		{ id = 80612 }, -- Revantusk Mystic's Robe
 		{ id = 80613 }, -- Revantusk Mystic's Boots
 		{ id = 80614 }, -- Revantusk Mystic's Belt
 		{ id = 80615 }, -- Revantusk Mystic's Gloves
 		{ id = 80616 }, -- Revantusk Mystic's Leggings
         {},
-		{ name = BS["Leather"] },
+		{ name = LS["Leather"] },
 		{ id = 80617 }, -- Revantusk Stalker's Tunic
 		{ id = 80618 }, -- Revantusk Stalker's Boots
 		{ id = 80619 }, -- Revantusk Stalker's Belt
@@ -1305,14 +1305,14 @@ local Factions = {
 		{ id = 80621 }, -- Revantusk Stalker's Leggings
         {},
 		{ name = L["Cloak"] }, --*15L
-		{ name = BS["Mail"] }, --*1R
+		{ name = LS["Mail"] }, --*1R
 		{ id = 80622 }, -- Revantusk Shadow Hunter's Hauberk
 		{ id = 80623 }, -- Revantusk Shadow Hunter's Boots
 		{ id = 80624 }, -- Revantusk Shadow Hunter's Belt
 		{ id = 80625 }, -- Revantusk Shadow Hunter's Gauntlets
 		{ id = 80626 }, -- Revantusk Shadow Hunter's Legguards
         {},
-		{ name = BS["Plate"] },
+		{ name = LS["Plate"] },
 		{ id = 80607 }, -- Revantusk Watcher's Chestplate
 		{ id = 80608 }, -- Revantusk Watcher's Boots
 		{ id = 80609 }, -- Revantusk Watcher's Girdle

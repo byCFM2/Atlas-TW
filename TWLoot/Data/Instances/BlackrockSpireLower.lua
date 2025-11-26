@@ -17,53 +17,56 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LS = AtlasTW.Localization.Spells
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
+
 local GREY = AtlasTW.Colors.GREY
 local GREEN = AtlasTW.Colors.GREEN
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.BlackrockSpireLower = {
-    Name = BZ["Lower Blackrock Spire"],
-    Location = BZ["Blackrock Mountain"],
+    Name = LZ["Lower Blackrock Spire"],
+    Location = LZ["Blackrock Mountain"],
     Level = { 55, 60 },
     Acronym = "LBRS",
     MaxPlayers = 10,
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A) ".. L["Entrance"] },
-        { letter = "B)", info = BZ["Upper Blackrock Spire"] },
+        { letter = "B)", info = LZ["Upper Blackrock Spire"] },
         { letter = "C-F)", info = L["Connections"] }
     },
     Keys = {
-        { name = "Brazier of Invocation", loot = "VanillaKeys", info = L["Tier 0.5 Summon"] }
+        { name = LMD["Brazier of Invocation"], loot = "VanillaKeys", info = LMD["Tier 0.5 Summon"] }
     },
     Bosses = {
         {
             prefix = "1)",
-            name = L["Vaelan"],
+            name = LMD["Vaelan"],
             postfix = L["Upper"],
             color = GREY,
         },
         {
             prefix = "2)",
-            name = L["Warosh"],
+            name = LMD["Warosh"],
             postfix = L["Wanders"],
             color = GREY,
         },
         {
-            name = L["Elder Stonefort"],
+            name = LMD["Elder Stonefort"],
             postfix = L["Lunar Festival"],
             items = "LunarFestival",
         },
         {
             id = "LBRSPike",
             prefix = "3)",
-            name = L["Roughshod Pike"],
+            name = LMD["Roughshod Pike"],
             loot = {
                 { id = 12533, disc = L["Used to summon boss"], dropRate = 100 }, -- Roughshod Pike
             }
@@ -71,7 +74,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             id = "LBRSSpirestoneButcher",
             prefix = "4)",
-            name = L["Spirestone Butcher"],
+            name = LMD["Spirestone Butcher"],
             postfix = L["Rare"],
             defaults = { dropRate = 50 },
             loot = {
@@ -83,7 +86,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             id = "LBRSOmokk",
             prefix = "5)",
-            name = BB["Highlord Omokk"],
+            name = LB["Highlord Omokk"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 16670, disc = L["Shaman"]..", T0", container = { 22096 } }, -- Boots of Elements
@@ -107,7 +110,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             id = "LBRSSpirestoneBattleLord",
             prefix = "6)",
-            name = L["Spirestone Battle Lord"],
+            name = LMD["Spirestone Battle Lord"],
             postfix = L["Rare"],
             loot = {
                 { id = 13284, dropRate = 40 }, -- Swiftdart Battleboots
@@ -119,7 +122,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         },
         {
             id = "LBRSSpirestoneLordMagus",
-            name = L["Spirestone Lord Magus"],
+            name = LMD["Spirestone Lord Magus"],
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
@@ -132,7 +135,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             id = "LBRSVosh",
             prefix = "7)",
-            name = BB["Shadow Hunter Vosh'gajin"],
+            name = LB["Shadow Hunter Vosh'gajin"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 16712, disc = L["Rogue"]..", T0", container = { 22002 } }, -- Shadowcraft Gloves
@@ -151,18 +154,18 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             }
         },
         {
-            name = L["Fifth Mosh'aru Tablet"],
+            name = LMD["Fifth Mosh'aru Tablet"],
             color = GREY,
         },
         {
             prefix = "8)",
-            name = L["Bijou"],
+            name = LMD["Bijou"],
             color = GREY,
         },
         {
             id = "LBRSVoone",
             prefix = "9)",
-            name = BB["War Master Voone"],
+            name = LB["War Master Voone"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 16676, disc = L["Hunter"]..", T0", container = { 22015 } }, -- Beaststalker's Gloves
@@ -186,12 +189,12 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             id = "LBRSGemology",
             name = L["Gemology Plans"],
             loot = {
-                { id = 56105, disc = BS["Gemology"], dropRate = 100, container = { 56109, 70160, 56015 } }, -- Top Half of Advanced Gemology I
+                { id = 56105, disc = LS["Gemology"], dropRate = 100, container = { 56109, 70160, 56015 } }, -- Top Half of Advanced Gemology I
             },
         },
         {
             id = "LBRSGREYhoof",
-            name = BB["Mor Grayhoof"],
+            name = LB["Mor Grayhoof"],
             postfix = L["Summon"],
             defaults = { dropRate = 20 },
             loot = {
@@ -204,31 +207,31 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             }
         },
         {
-            name = L["Sixth Mosh'aru Tablet"],
+            name = LMD["Sixth Mosh'aru Tablet"],
             color = GREY,
         },
         {
             prefix = "10)",
-            name = L["Bijou's Belongings"],
+            name = LMD["Bijou's Belongings"],
             color = GREY,
         },
         {
             prefix = "11)",
-            name = L["Human Remains"],
+            name = LMD["Human Remains"],
             postfix = L["Lower"],
             loot = {
                 { id = 12812, disc = L["Quest Item"], dropRate = 100 }, -- Unfired Plate Gauntlets
             }
         },
         {
-            name = L["Unfired Plate Gauntlets"],
+            name = LMD["Unfired Plate Gauntlets"],
             postfix = L["Lower"],
             color = GREY,
         },
         {
             id = "LBRSGrimaxe",
             prefix = "12)",
-            name = BB["Bannok Grimaxe"],
+            name = LB["Bannok Grimaxe"],
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
@@ -243,7 +246,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             id = "LBRSSmolderweb",
             prefix = "13)",
-            name = BB["Mother Smolderweb"],
+            name = LB["Mother Smolderweb"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 16715, disc = L["Druid"]..", T0", container = { 22107 } }, -- Wildheart Boots
@@ -263,7 +266,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             id = "LBRSCrystalFang",
             prefix = "14)",
-            name = BB["Crystal Fang"],
+            name = LB["Crystal Fang"],
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
@@ -275,12 +278,12 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         },
         {
             prefix = "15)",
-            name = L["Urok's Tribute Pile"],
+            name = LMD["Urok's Tribute Pile"],
             color = GREY,
         },
         {
             id = "LBRSDoomhowl",
-            name = BB["Urok Doomhowl"],
+            name = LB["Urok Doomhowl"],
             postfix = L["Summon"],
             defaults = { dropRate = 25 },
             loot = {
@@ -301,7 +304,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             id = "LBRSZigris",
             prefix = "16)",
-            name = BB["Quartermaster Zigris"],
+            name = LB["Quartermaster Zigris"],
             defaults = { dropRate = 10 },
             loot = {
                 { id = 13253 }, -- Hands of Power
@@ -314,7 +317,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 13446, quantity = 5, dropRate = 100  }, -- Major Healing Potion
                 { id = 13444, quantity = 5, dropRate = 100  }, -- Major Mana Potion
                 {},
-                { id = 56101, disc = BS["Goldsmithing"], dropRate = 30, container = { 56110, 70211, 56094 } }, -- Bottom Half of Advanced Goldsmithing I
+                { id = 56101, disc = LS["Goldsmithing"], dropRate = 30, container = { 56110, 70211, 56094 } }, -- Bottom Half of Advanced Goldsmithing I
                 { id = 22138, dropRate = 80 }, -- Blackrock Bracer
                 { id = 41478, dropRate = 100, container = { 41465 } }, -- Lower Half of the Thunderbrew Golden Lager Plans
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
@@ -325,7 +328,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             id = "LBRSHalycon",
             prefix = "17)",
-            name = BB["Halycon"],
+            name = LB["Halycon"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 13212 }, -- Halycon's Spiked Collar
@@ -341,7 +344,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         },
         {
             id = "LBRSSlavener",
-            name = BB["Gizrul the Slavener"],
+            name = LB["Gizrul the Slavener"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 16718, disc = L["Druid"]..", T0", container = { 22112 } }, -- Wildheart Spaulders
@@ -362,7 +365,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             id = "LBRSBashguud",
             prefix = "18)",
-            name = BB["Ghok Bashguud"],
+            name = LB["Ghok Bashguud"],
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
@@ -377,7 +380,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             id = "LBRSWyrmthalak",
             prefix = "19)",
-            name = BB["Overlord Wyrmthalak"],
+            name = LB["Overlord Wyrmthalak"],
             defaults = { dropRate = 13 },
             loot = {
                 { id = 16679, disc = L["Hunter"]..", T0", container = { 22016 } }, -- Beaststalker's Mantle
@@ -410,7 +413,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         {
             id = "LBRSFelguard",
             prefix = "1')",
-            name = L["Burning Felguard"],
+            name = LMD["Burning Felguard"],
             postfix = L["Rare"]..", "..L["Summon"],
             color = GREEN,
             defaults = { dropRate = 50 },
@@ -422,7 +425,7 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         },
         {
             id = "LBRSTrash",
-            name = L["Trash Mobs"].."-"..BZ["Lower Blackrock Spire"],
+            name = L["Trash Mobs"].."-"..LZ["Lower Blackrock Spire"],
             defaults = { dropRate = 2 },
             loot = {
                 { id = 14513, dropRate = 10, container = { 14152 } }, -- Pattern: Robe of the Archmage
@@ -452,8 +455,8 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
                 { id = 12586, disc = L["Consumable"], dropRate = 80 }, -- Immature Venom Sac
             }
         },
-        { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
-        { name = BIS["Spider's Kiss"], items = "SpiderKiss" },
+        { name = LIS["Ironweave Battlesuit"], items = "Ironweave" },
+        { name = LIS["Spider's Kiss"], items = "SpiderKiss" },
         { name = L["Tier 0/0.5 Sets"], items = "AtlasTWLootT0SetMenu" },
     }
 }

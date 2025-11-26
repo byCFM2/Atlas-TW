@@ -17,15 +17,17 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.KarazhanCrypt = {
-    Name = BZ["Karazhan Crypt"],
-    Location = BZ["Deadwind Pass"],
+    Name = LZ["Karazhan Crypt"],
+    Location = LZ["Deadwind Pass"],
     Level = { 58, 60 },
     Acronym = "KC",
     MaxPlayers = 5,
@@ -34,13 +36,13 @@ AtlasTW.InstanceData.KarazhanCrypt = {
         { letter = "A) " .. L["Entrance"] }
     },
     Keys = {
-        { name = L["Karazhan Crypt Key"], loot = "VanillaKeys" },
+        { name = LMD["Karazhan Crypt Key"], loot = "VanillaKeys" },
     },
     Bosses = {
         {
             id = "KCMarrowspike",
             prefix = "1)",
-            name = BB["Marrowspike"],
+            name = LB["Marrowspike"],
             defaults = { dropRate = 18 },
             loot = {
                 { id = 83441 }, -- Splintercage Breastplate
@@ -59,7 +61,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
         {
             id = "KCHivaxxis",
             prefix = "2)",
-            name = BB["Hivaxxis"],
+            name = LB["Hivaxxis"],
             defaults = { dropRate = 18 },
             loot = {
                 { id = 83447 }, -- Clutch of Hivaxxis
@@ -78,7 +80,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
         {
             id = "KCCorpsemuncher",
             prefix = "3)",
-            name = BB["Corpsemuncher"],
+            name = LB["Corpsemuncher"],
             defaults = { dropRate = 15 },
             loot = {
                 { id = 70057 }, -- Crown of Eternal Sacrifice
@@ -98,7 +100,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
         {
             id = "KCGuardCaptainGort",
             prefix = "4)",
-            name = BB["Guard Captain Gort"],
+            name = LB["Guard Captain Gort"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 60792 }, -- Pauldrons of Elusiveness
@@ -116,7 +118,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
         {
             id = "KCArchlichEnkhraz",
             prefix = "5)",
-            name = BB["Archlich Enkhraz"],
+            name = LB["Archlich Enkhraz"],
             defaults = { dropRate = 18 },
             loot = {
                 { id = 83454 }, -- Deathrune Leggings
@@ -137,7 +139,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
         {
             id = "KCCommanderAndreon",
             prefix = "6)",
-            name = BB["Commander Andreon"],
+            name = LB["Commander Andreon"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 50188 }, -- Deathforge Belt
@@ -155,7 +157,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
         {
             id = "KCAlarus",
             prefix = "7)",
-            name = BB["Alarus"],
+            name = LB["Alarus"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 83465 }, -- Shroud of Haunted Torment
@@ -181,7 +183,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
         {
             id = "KCTreasure",
             prefix = "8)",
-            name = L["Half-Buried Treasure Chest"],
+            name = LMD["Half-Buried Treasure Chest"],
             loot = {
                 { id = 5823, disc = L["Consumable"], dropRate = 100 }, -- Poisonous Mushroom
                 { id = 11938, disc = L["Container"], dropRate = 100 }, -- Sack of Gems
@@ -199,7 +201,7 @@ AtlasTW.InstanceData.KarazhanCrypt = {
         },
         {
             id = "KCTrash",
-            name = L["Trash Mobs"].."-"..BZ["Karazhan Crypt"],
+            name = L["Trash Mobs"].."-"..LZ["Karazhan Crypt"],
             defaults = { dropRate = .01 },
             loot = {
                 { id = 60803 }, -- Claw of Darkness

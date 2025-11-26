@@ -17,10 +17,13 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LF = AtlasTW.Localization.Factions
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
@@ -32,8 +35,8 @@ local captainLoot = {
 }
 
 AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
-    Name = BZ["Ruins of Ahn'Qiraj"],
-    Location = BZ["Silithus"],
+    Name = LZ["Ruins of Ahn'Qiraj"],
+    Location = LZ["Silithus"],
     Level = 60,
     Acronym = "AQ20",
     MaxPlayers = 20,
@@ -42,13 +45,13 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
         { letter = "A".." " .. L["Entrance"] }
     },
     Reputation = {
-        { name = BF["Cenarion Circle"], loot = "CenarionCircle" },
+        { name = LF["Cenarion Circle"], loot = "CenarionCircle" },
     },
     Bosses = {
         {
             id = "Kurinnaxx",
             prefix = "1)",
-            name = BB["Kurinnaxx"],
+            name = LB["Kurinnaxx"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 21499 }, -- Vestments of the Shifting Sands
@@ -76,7 +79,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
             }
         },
         {
-            name = L["Lieutenant General Andorov"],
+            name = LB["Lieutenant General Andorov"],
             loot = {
                 { id = 22221, container = { 22191 } }, -- Plans: Obsidian Mail Tunic
                 { id = 22219, container = { 22198 } }, -- Plans: Jagged Obsidian Shield
@@ -84,13 +87,13 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
 
         },
         {
-            name = L["Four Kaldorei Elites"],
+            name = LMD["Four Kaldorei Elites"],
             color = Colors.GREY,
         },
         {
             id = "GeneralRajaxx",
             prefix = "2)",
-            name = BB["General Rajaxx"],
+            name = LB["General Rajaxx"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 21493 }, -- Boots of the Vanguard
@@ -118,37 +121,37 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
             }
         },
         {
-            name = L["Captain Qeez"],
+            name = LMD["Captain Qeez"],
             loot = captainLoot
         },
         {
-            name = L["Captain Tuubid"],
+            name = LMD["Captain Tuubid"],
             loot = captainLoot
         },
         {
-            name = L["Captain Drenn"],
+            name = LMD["Captain Drenn"],
             loot = captainLoot
         },
         {
-            name = L["Captain Xurrem"],
+            name = LMD["Captain Xurrem"],
             loot = captainLoot
         },
         {
-            name = L["Major Yeggeth"],
+            name = LMD["Major Yeggeth"],
             loot = captainLoot
         },
         {
-            name = L["Major Pakkon"],
+            name = LMD["Major Pakkon"],
             loot = captainLoot
         },
         {
-            name = L["Colonel Zerran"],
+            name = LMD["Colonel Zerran"],
             loot = captainLoot
         },
         {
             id = "Moam",
             prefix = "3)",
-            name = BB["Moam"],
+            name = LB["Moam"],
             postfix = L["Optional"],
             defaults = { dropRate = 25 },
             loot = {
@@ -182,7 +185,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
         {
             id = "BurutheGorger",
             prefix = "4)",
-            name = BB["Buru the Gorger"],
+            name = LB["Buru the Gorger"],
             postfix = L["Optional"],
             defaults = { dropRate = 14 },
             loot = {
@@ -216,7 +219,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
         {
             id = "AyamisstheHunter",
             prefix = "5)",
-            name = BB["Ayamiss the Hunter"],
+            name = LB["Ayamiss the Hunter"],
             postfix = L["Optional"],
             defaults = { dropRate = 13 },
             loot = {
@@ -250,7 +253,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
         {
             id = "OssiriantheUnscarred",
             prefix = "6)",
-            name = BB["Ossirian the Unscarred"],
+            name = LB["Ossirian the Unscarred"],
             defaults = { dropRate = 15 },
             loot = {
                 { id = 21460 }, -- Helm of Domination
@@ -278,10 +281,10 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
             }
         },
-        { prefix = "1') ", name = L["Safe Room"], color = Colors.GREEN },
+        { prefix = "1') ", name = LMD["Safe Room"], color = Colors.GREEN },
         {
             id = "AQ20Trash",
-            name = L["Trash Mobs"].."-"..BZ["Ruins of Ahn'Qiraj"],
+            name = L["Trash Mobs"].."-"..LZ["Ruins of Ahn'Qiraj"],
             defaults = { dropRate = 2 },
             loot = {
                 { id = 21804, dropRate = 0.2 }, -- Coif of Elemental Fury
@@ -318,7 +321,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
         },
         {
             id = "AQEnchants",
-            name = L["AQ Enchants"],
+            name = LMD["AQ Enchants"],
             defaults = { dropRate = 1 },
             loot = {
                 { id = 20728 }, -- Formula: Enchant Gloves - Frost Power
@@ -332,7 +335,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
         },
         {
             id = "AQ20ClassBooks",
-            name = L["Class Books"],
+            name = LMD["Class Books"],
             defaults = { dropRate = 4 },
             loot = {
                 { id = 21284 }, -- Codex of Greater Heal V

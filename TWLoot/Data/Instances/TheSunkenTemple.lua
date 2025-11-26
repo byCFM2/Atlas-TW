@@ -15,21 +15,26 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LS = AtlasTW.Localization.Spells
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.TheSunkenTempleEnt = {
-    Name = L["Sunken Temple"].." ("..L["Entrance"]..")",
-    Location = BZ["Swamp of Sorrows"],
+    Name = LMD["Sunken Temple"].." ("..L["Entrance"]..")",
+    Location = LZ["Swamp of Sorrows"],
     Acronym = "ST",
     Entrances = {
         { letter = "A)", info = L["Entrance"] },
-        { letter = "B)", info = L["Sunken Temple"] },
+        { letter = "B)", info = LMD["Sunken Temple"] },
     },
     Bosses = {
         {
@@ -37,32 +42,32 @@ AtlasTW.InstanceData.TheSunkenTempleEnt = {
             color = Colors.BLUE
         },
         {
-            name = L["Jade"].." ("..L["Rare"]..")",
+            name = LMD["Jade"].." ("..L["Rare"]..")",
             color = Colors.BLUE
         },
         {
             prefix = "1)",
-            name = BB["Kazkaz the Unholy"],
+            name = LB["Kazkaz the Unholy"],
             postfix = L["Upper"],
             color = Colors.GREY,
         },
         {
             prefix = "2)",
-            name = BB["Zekkis"],
+            name = LB["Zekkis"],
             postfix = L["Lower"],
             color = Colors.GREY,
         },
         {
             prefix = "3)",
-            name = BB["Veyzhak the Cannibal"],
+            name = LB["Veyzhak the Cannibal"],
             color = Colors.GREY,
         },
     }
 }
 
 AtlasTW.InstanceData.TheSunkenTemple = {
-    Name = L["Sunken Temple"],
-    Location = BZ["Swamp of Sorrows"],
+    Name = LMD["Sunken Temple"],
+    Location = LZ["Swamp of Sorrows"],
     Level = { 35, 54 },
     Acronym = "ST",
     MaxPlayers = 5,
@@ -70,16 +75,16 @@ AtlasTW.InstanceData.TheSunkenTemple = {
     Entrances = {
         { letter = "A)", info = L["Entrance"] },
         { letter = "B)", info = L["Connection"] },
-        { letter = "C)", info = L["Balcony Minibosses"].." ("..L["Upper"]..")" },
+        { letter = "C)", info = LMD["Balcony Minibosses"].." ("..L["Upper"]..")" },
     },
     Keys = {
-        { name = L["Yeh'kinya's Scroll"], loot = "VanillaKeys", info = BB["Avatar of Hakkar"] },
+        { name = LMD["Yeh'kinya's Scroll"], loot = "VanillaKeys", info = LB["Avatar of Hakkar"] },
     },
     Bosses = {
         {
             id = "STBalconyMinibosses",
-            name = L["Mini Bosses"],
-            postfix = BZ["The Temple of Atal'Hakkar"],
+            name = LMD["Mini Bosses"],
+            postfix = LZ["The Temple of Atal'Hakkar"],
             color = Colors.RED,
             defaults = { dropRate = 7 },
             loot = {
@@ -100,37 +105,37 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             }
         },
         {
-            name = BB["Gasher"],
+            name = LB["Gasher"],
             color = Colors.BLUE,
         },
         {
-            name = BB["Loro"],
+            name = LB["Loro"],
             color = Colors.BLUE,
         },
         {
-            name = BB["Hukku"],
+            name = LB["Hukku"],
             color = Colors.BLUE,
         },
         {
-            name = BB["Zolo"],
+            name = LB["Zolo"],
             color = Colors.BLUE,
         },
         {
-            name = BB["Mijan"],
+            name = LB["Mijan"],
             color = Colors.BLUE,
         },
         {
-            name = BB["Zul'Lor"],
+            name = LB["Zul'Lor"],
             color = Colors.BLUE,
         },
         {
             prefix = "1)",
-            name = L["Altar of Hakkar"],
+            name = LMD["Altar of Hakkar"],
             color = Colors.GREY,
         },
         {
             id = "STAtalalarion",
-            name = BB["Atal'alarion"],
+            name = LB["Atal'alarion"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 10800 }, -- Darkwater Bracers
@@ -144,7 +149,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         {
             id = "STSpawnOfHakkar",
             prefix = "2)",
-            name = L["Spawn of Hakkar"].." ("..L["Wanders"]..")",
+            name = LMD["Spawn of Hakkar"].." ("..L["Wanders"]..")",
             defaults = { dropRate = 47 },
             loot = {
                 { id = 10801 }, -- Slitherscale Boots
@@ -158,7 +163,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         {
             id = "STAvatarofHakkar",
             prefix = "3)",
-            name = BB["Avatar of Hakkar"],
+            name = LB["Avatar of Hakkar"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 12462, dropRate = 2 }, -- Embrace of the Wind Serpent
@@ -178,7 +183,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         {
             id = "STJammalan",
             prefix = "4)",
-            name = BB["Jammal'an the Prophet"],
+            name = LB["Jammal'an the Prophet"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 10806 }, -- Vestments of the Atal'ai Prophet
@@ -192,7 +197,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         },
         {
             id = "STOgom",
-            name = BB["Ogom the Wretched"],
+            name = LB["Ogom the Wretched"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 10805 }, -- Eater of the Dead
@@ -205,14 +210,14 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         },
         {
             prefix = "5)",
-            name = L["Elder Starsong"],
+            name = LMD["Elder Starsong"],
             postfix = L["Lunar Festival"],
             items = "LunarFestival"
         },
         {
             id = "STDreamscythe",
             prefix = "6)",
-            name = BB["Dreamscythe"],
+            name = LB["Dreamscythe"],
             defaults = { dropRate = 5 },
             loot = {
                 { id = 12465 }, -- Nightfall Drape
@@ -230,7 +235,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         },
         {
             id = "STWeaver",
-            name = BB["Weaver"],
+            name = LB["Weaver"],
             defaults = { dropRate = 5 },
             loot = {
                 { id = 12465 }, -- Nightfall Drape
@@ -250,7 +255,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         {
             id = "STMorphaz",
             prefix = "7)",
-            name = BB["Morphaz"],
+            name = LB["Morphaz"],
             defaults = { dropRate = 5 },
             loot = {
                 { id = 12465 }, -- Nightfall Drape
@@ -272,7 +277,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         },
         {
             id = "STHazzas",
-            name = BB["Hazzas"],
+            name = LB["Hazzas"],
             defaults = { dropRate = 5 },
             loot = {
                 { id = 12465 }, -- Nightfall Drape
@@ -292,7 +297,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
         {
             id = "STEranikus",
             prefix = "8)",
-            name = BB["Shade of Eranikus"],
+            name = LB["Shade of Eranikus"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 10847, dropRate = 0.5 }, -- Dragon's Call
@@ -313,21 +318,21 @@ AtlasTW.InstanceData.TheSunkenTemple = {
             }
         },
         {
-            name = L["Essence Font"],
+            name = LMD["Essence Font"],
             color = Colors.GREY,
         },
         {
-            name = L["Malfurion Stormrage"].." ("..L["Summon"]..")",
+            name = LMD["Malfurion Stormrage"].." ("..L["Summon"]..")",
             color = Colors.GREY,
         },
         {
-            name = L["Statue Activation Order"],
+            name = LMD["Statue Activation Order"],
             color = Colors.GREEN,
             prefix = "1'-6')"
         },
         {
             id = "STTrash",
-            name = L["Trash Mobs"].."-"..BZ["The Sunken Temple"],
+            name = L["Trash Mobs"].."-"..LZ["The Sunken Temple"],
             defaults = { dropRate = .02 },
             loot = {
                 { id = 10630 }, -- Soulcatcher Halo
@@ -345,7 +350,7 @@ AtlasTW.InstanceData.TheSunkenTemple = {
                 {},
                 { id = 10780 }, -- Mark of Hakkar
                 {},
-                { id = 56102, disc = BS["Goldsmithing"], dropRate = .03, container = { 56111, 70177, 56066 } }, -- Top Half of Advanced Goldsmithing II
+                { id = 56102, disc = LS["Goldsmithing"], dropRate = .03, container = { 56111, 70177, 56066 } }, -- Top Half of Advanced Goldsmithing II
                 { id = 16216, dropRate = 1.48 }, -- Formula: Enchant Cloak - Greater Resistance
                 { id = 15733, dropRate = 4, container = { 15046 } }, -- Pattern: Green Dragonscale Leggings
             }

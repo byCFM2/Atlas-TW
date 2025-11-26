@@ -17,16 +17,17 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- World boss Dark Reaver of Karazhan data
 AtlasTW.InstanceData.Reaver = {
-    Name = BB["Dark Reaver of Karazhan"],
-    Location = BZ["Deadwind Pass"],
+    Name = LB["Dark Reaver of Karazhan"],
+    Location = LZ["Deadwind Pass"],
     Level = { 1, 60 },
     Acronym = "Reaver",
     MaxPlayers = 40,
@@ -35,7 +36,7 @@ AtlasTW.InstanceData.Reaver = {
         {
             id = "WBReaver",
             prefix = "1)",
-            name = BB["Dark Reaver of Karazhan"],
+            name = LB["Dark Reaver of Karazhan"],
             defaults = { dropRate = 4 },
             loot = {
                 { id = 51778 }, -- Lost Crusader's Artifact

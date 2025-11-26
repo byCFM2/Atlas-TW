@@ -15,8 +15,8 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BS = AceLibrary("Babble-Spell-2.2a")
+local L = AtlasTW.Localization.UI
+local LS = AtlasTW.Localization.Spells
 
 -- Cache for categorizing WishList/SearchResult results
 if not AtlasTW then AtlasTW = {} end
@@ -263,19 +263,19 @@ local function GetProfessionByLootPageKey(pageKey)
 
 	-- Mapping menu table keys to localized profession names
 	local ProfByTableKey = {
-		Alchemy = BS["Alchemy"] or "Alchemy",
-		Smithing = BS["Blacksmithing"] or "Blacksmithing",
-		Enchanting = BS["Enchanting"] or "Enchanting",
-		Engineering = BS["Engineering"] or "Engineering",
-		Leatherworking = BS["Leatherworking"] or "Leatherworking",
-		Mining = BS["Mining"] or "Mining",
-		Tailoring = BS["Tailoring"] or "Tailoring",
-		Jewelcrafting = BS["Jewelcrafting"] or "Jewelcrafting",
-		Cooking = BS["Cooking"] or "Cooking",
-		FirstAid = BS["First Aid"] or "First Aid",
-		Poisons = BS["Poisons"] or "Poisons",
-		Herbalism = BS["Herbalism"] or "Herbalism",
-		Survival = BS["Survival"] or "Survival",
+		Alchemy = LS["Alchemy"] or "Alchemy",
+		Smithing = LS["Blacksmithing"] or "Blacksmithing",
+		Enchanting = LS["Enchanting"] or "Enchanting",
+		Engineering = LS["Engineering"] or "Engineering",
+		Leatherworking = LS["Leatherworking"] or "Leatherworking",
+		Mining = LS["Mining"] or "Mining",
+		Tailoring = LS["Tailoring"] or "Tailoring",
+		Jewelcrafting = LS["Jewelcrafting"] or "Jewelcrafting",
+		Cooking = LS["Cooking"] or "Cooking",
+		FirstAid = LS["First Aid"] or "First Aid",
+		Poisons = LS["Poisons"] or "Poisons",
+		Herbalism = LS["Herbalism"] or "Herbalism",
+		Survival = LS["Survival"] or "Survival",
 	}
 
 	-- Local helper: safe traversal of sparse arrays
@@ -332,15 +332,15 @@ local function GetProfessionByLootPageKey(pageKey)
 	end
 
 	-- 3) Fallback to prefixes (as before) if not found in MenuData
-	if string.sub(pageKey, 1, 11) == "Engineering" then return BS and BS["Engineering"] or "Engineering" end
-	if string.sub(pageKey, 1, 10) == "Enchanting" then return BS and BS["Enchanting"] or "Enchanting" end
-	if string.sub(pageKey, 1, 9) == "Tailoring" then return BS and BS["Tailoring"] or "Tailoring" end
-	if string.sub(pageKey, 1, 8) == "Smithing" then return BS and BS["Blacksmithing"] or "Blacksmithing" end
-	if string.sub(pageKey, 1, 8) == "Alchemy" then return BS and BS["Alchemy"] or "Alchemy" end
-	if string.sub(pageKey, 1, 7) == "Leather" then return BS and BS["Leatherworking"] or "Leatherworking" end
-	if string.sub(pageKey, 1, 7) == "Cooking" then return BS and BS["Cooking"] or "Cooking" end
-	if string.sub(pageKey, 1, 7) == "Mining" then return BS and BS["Mining"] or "Mining" end
-	if string.sub(pageKey, 1, 13) == "Jewelcrafting" then return BS and BS["Jewelcrafting"] or "Jewelcrafting" end
+	if string.sub(pageKey, 1, 11) == "Engineering" then return LS and LS["Engineering"] or "Engineering" end
+	if string.sub(pageKey, 1, 10) == "Enchanting" then return LS and LS["Enchanting"] or "Enchanting" end
+	if string.sub(pageKey, 1, 9) == "Tailoring" then return LS and LS["Tailoring"] or "Tailoring" end
+	if string.sub(pageKey, 1, 8) == "Smithing" then return LS and LS["Blacksmithing"] or "Blacksmithing" end
+	if string.sub(pageKey, 1, 8) == "Alchemy" then return LS and LS["Alchemy"] or "Alchemy" end
+	if string.sub(pageKey, 1, 7) == "Leather" then return LS and LS["Leatherworking"] or "Leatherworking" end
+	if string.sub(pageKey, 1, 7) == "Cooking" then return LS and LS["Cooking"] or "Cooking" end
+	if string.sub(pageKey, 1, 7) == "Mining" then return LS and LS["Mining"] or "Mining" end
+	if string.sub(pageKey, 1, 13) == "Jewelcrafting" then return LS and LS["Jewelcrafting"] or "Jewelcrafting" end
 
 	return nil
 end
@@ -624,7 +624,7 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 			if predefinedExtraText and predefinedExtraText ~= "" then
 				extratext = predefinedExtraText
 			elseif elementType == "enchant" then
-				extratext = BS and BS["Enchanting"] or "Enchanting"
+				extratext = LS and LS["Enchanting"] or "Enchanting"
 			else
 				local lootPage = FindFirstCraftLootPageForSpell(elemId)
 				if lootPage then

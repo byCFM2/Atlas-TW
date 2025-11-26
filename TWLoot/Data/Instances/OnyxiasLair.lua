@@ -17,16 +17,19 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.OnyxiasLair = {
-    Name = BZ["Onyxia's Lair"],
-    Location = BZ["Dustwallow Marsh"],
+    Name = LZ["Onyxia's Lair"],
+    Location = LZ["Dustwallow Marsh"],
     Level = 60,
     Acronym = "Ony",
     Attunement = true,
@@ -38,18 +41,18 @@ AtlasTW.InstanceData.OnyxiasLair = {
     Bosses = {
         {
             prefix = "1)",
-            name = L["Onyxian Warders"],
+            name = LMD["Onyxian Warders"],
             color = Colors.GREY,
         },
         {
             prefix = "2)",
-            name = L["Whelp Eggs"],
+            name = LMD["Whelp Eggs"],
             color = Colors.GREY,
         },
         {
             id = "Onyxia",
             prefix = "3)",
-            name = BB["Onyxia"],
+            name = LB["Onyxia"],
             defaults = { dropRate = 13 },
             loot = {
                 { id = 16921, container = { 47206 } }, -- Halo of Transcendence
@@ -92,7 +95,7 @@ AtlasTW.InstanceData.OnyxiasLair = {
         {
             id = "BroodcommanderAxelus",
             prefix = "4)",
-            name = BB["Broodcommander Axelus"],
+            name = LB["Broodcommander Axelus"],
             postfix = L["Optional"],
             defaults = { dropRate = 20 },
             loot = {

@@ -17,117 +17,118 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
+
+local LZ = AtlasTW.Localization.Zones
+local LF = AtlasTW.Localization.Factions
+local LMD = AtlasTW.Localization.MapData
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.FPHordeEast = {
-    Name = BF["Horde"] .. " (" .. BZ["Eastern Kingdoms"] .. ")",
-    Location = BZ["Eastern Kingdoms"],
+    Name = LF["Horde"] .. " (" .. LZ["Eastern Kingdoms"] .. ")",
+    Location = LZ["Eastern Kingdoms"],
     Bosses = {
         {
             id = "FPLightsHopeChapel",
             prefix = "1)",
-            name = L["Light's Hope Chapel"],
-            postfix = BZ["Eastern Plaguelands"],
+            name = LMD["Light's Hope Chapel"],
+            postfix = LZ["Eastern Plaguelands"],
         },
         {
             id = "FPUndercity",
             prefix = "2)",
-            name = BZ["Undercity"],
-            postfix = BZ["Tirisfal Glades"],
+            name = LZ["Undercity"],
+            postfix = LZ["Tirisfal Glades"],
         },
         {
             id = "FPSteepcliffPort",
             prefix = "3)",
-            name = L["Steepcliff Port"],
-            postfix = BZ["Tirisfal Glades"],
+            name = LMD["Steepcliff Port"],
+            postfix = LZ["Tirisfal Glades"],
         },
         {
             id = "FPTheSepulcher",
             prefix = "4)",
-            name = L["The Sepulcher"],
-            postfix = BZ["Silverpine Forest"],
+            name = LMD["The Sepulcher"],
+            postfix = LZ["Silverpine Forest"],
         },
         {
             id = "FPTarrenMill",
             prefix = "5)",
-            name = L["Tarren Mill"],
-            postfix = BZ["Hillsbrad Foothills"],
+            name = LMD["Tarren Mill"],
+            postfix = LZ["Hillsbrad Foothills"],
         },
         {
             id = "FPRevantuskVillage",
             prefix = "6)",
-            name = L["Revantusk Village"],
-            postfix = BZ["The Hinterlands"],
+            name = LMD["Revantusk Village"],
+            postfix = LZ["The Hinterlands"],
         },
         {
             id = "FPHammerfall",
             prefix = "7)",
-            name = L["Hammerfall"],
-            postfix = BZ["Arathi Highlands"],
+            name = LMD["Hammerfall"],
+            postfix = LZ["Arathi Highlands"],
         },
         {
             id = "FPStillwardChurch",
             prefix = "8)",
-            name = L["Stillward Church"],
-            postfix = BZ["Gilneas"],
+            name = LMD["Stillward Church"],
+            postfix = LZ["Gilneas"],
         },
         {
             id = "FPShatterbladePost",
             prefix = "9)",
-            name = L["Shatterblade Post"],
-            postfix = BZ["Grim Reaches"],
+            name = LMD["Shatterblade Post"],
+            postfix = LZ["Grim Reaches"],
         },
         {
             id = "FPKargath",
             prefix = "10)",
-            name = L["Kargath"],
-            postfix = BZ["Badlands"],
+            name = LMD["Kargath"],
+            postfix = LZ["Badlands"],
         },
         {
             id = "FPThoriumPoint",
             prefix = "11)",
-            name = L["Thorium Point"],
-            postfix = BZ["Searing Gorge"],
+            name = LMD["Thorium Point"],
+            postfix = LZ["Searing Gorge"],
         },
         {
             id = "FPFlameCrest",
             prefix = "12)",
-            name = L["Flame Crest"],
-            postfix = BZ["Burning Steppes"],
+            name = LMD["Flame Crest"],
+            postfix = LZ["Burning Steppes"],
         },
         {
             id = "FPStormbreakerPoint",
             prefix = "13)",
-            name = L["Stormbreaker Point"],
-            postfix = BZ["Balor"],
+            name = LMD["Stormbreaker Point"],
+            postfix = LZ["Balor"],
         },
         {
             id = "FPStonard",
             prefix = "14)",
-            name = L["Stonard"],
-            postfix = BZ["Swamp of Sorrows"],
+            name = LMD["Stonard"],
+            postfix = LZ["Swamp of Sorrows"],
         },
         {
             id = "FPGromgolBaseCamp",
             prefix = "15)",
-            name = BZ["Grom'gol Base Camp"],
-            postfix = BZ["Stranglethorn Vale"],
+            name = LZ["Grom'gol Base Camp"],
+            postfix = LZ["Stranglethorn Vale"],
         },
         {
             id = "FPBootyBay",
             prefix = "16)",
-            name = L["Booty Bay"],
-            postfix = BZ["Stranglethorn Vale"],
+            name = LZ["Booty Bay"],
+            postfix = LZ["Stranglethorn Vale"],
         },
         {
             id = "FPMauloggRefuge",
             prefix = "17)",
-            name = L["Maul'ogg Refuge"],
-            postfix = BZ["Gillijim's Isle"],
+            name = LMD["Maul'ogg Refuge"],
+            postfix = LZ["Gillijim's Isle"],
         },
     },
 }

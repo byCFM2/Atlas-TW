@@ -17,16 +17,19 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.TheCrescentGrove = {
-    Name = BZ["The Crescent Grove"],
-    Location = BZ["Ashenvale"],
+    Name = LZ["The Crescent Grove"],
+    Location = LZ["Ashenvale"],
     Level = { 32, 38 },
     Acronym = "CG",
     MaxPlayers = 5,
@@ -37,13 +40,13 @@ AtlasTW.InstanceData.TheCrescentGrove = {
     Bosses = {
         {
             prefix = "a)",
-            name = L["Kalanar's Strongbox"],
+            name = LMD["Kalanar's Strongbox"],
             color = Colors.GREY,
         },
         {
             id = "TCGGrovetenderEngryss",
             prefix = "1)",
-            name = BB["Grovetender Engryss"],
+            name = LB["Grovetender Engryss"],
             defaults = { dropRate = 24 },
             loot = {
                 { id = 83220 }, -- Groveweald Tribal Necklace
@@ -61,7 +64,7 @@ AtlasTW.InstanceData.TheCrescentGrove = {
         {
             id = "TCGKeeperRanathos",
             prefix = "2)",
-            name = BB["Keeper Ranathos"],
+            name = LB["Keeper Ranathos"],
             defaults = { dropRate = 24 },
             loot = {
                 { id = 83225 }, -- Bow of the Grove
@@ -77,7 +80,7 @@ AtlasTW.InstanceData.TheCrescentGrove = {
         {
             id = "TCGHighPriestessAlathea",
             prefix = "3)",
-            name = BB["High Priestess A'lathea"],
+            name = LB["High Priestess A'lathea"],
             defaults = { dropRate = 30 },
             loot = {
                 { id = 83208 }, -- Circlet of the Crescent Moon
@@ -92,7 +95,7 @@ AtlasTW.InstanceData.TheCrescentGrove = {
         {
             id = "TCGFenektistheDeceiver",
             prefix = "4)",
-            name = BB["Fenektis the Deceiver"],
+            name = LB["Fenektis the Deceiver"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 83212 }, -- Felflame Shard
@@ -106,7 +109,7 @@ AtlasTW.InstanceData.TheCrescentGrove = {
         {
             id = "TCGMasterRaxxieth",
             prefix = "5)",
-            name = BB["Master Raxxieth"],
+            name = LB["Master Raxxieth"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 60258, dropRate = 0.5 }, -- Crown of Corruption
@@ -121,7 +124,7 @@ AtlasTW.InstanceData.TheCrescentGrove = {
         },
         {
             id = "TCGTrash",
-            name = L["Trash Mobs"].."-"..BZ["The Crescent Grove"],
+            name = L["Trash Mobs"].."-"..LZ["The Crescent Grove"],
             defaults = { dropRate = .01 },
             loot = {
                 { id = 83203 }, -- Lifeflow Necklace

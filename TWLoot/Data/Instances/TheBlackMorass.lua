@@ -17,16 +17,17 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LF = AtlasTW.Localization.Factions
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
-    Name = BZ["Black Morass"],
-    Location = BZ["Tanaris"],
+    Name = LZ["The Black Morass"],
+    Location = LZ["Tanaris"],
     Level = { 58, 60 },
     Acronym = "BM",
     MaxPlayers = 5,
@@ -36,13 +37,13 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
         { letter = "B) " .. L["Connection"] }
     },
     Reputation = {
-        { name = BF["Wardens of Time"], loot = "WardensofTime" }
+        { name = LF["Wardens of Time"], loot = "WardensofTime" }
     },
     Bosses = {
         {
             id = "COTBMChronar",
             prefix = "1)",
-            name = BB["Chronar"],
+            name = LB["Chronar"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 61018 }, -- Cloak of Elemental Warding
@@ -63,7 +64,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
         {
             id = "COTBMEpidamu",
             prefix = "2)",
-            name = BB["Epidamu"],
+            name = LB["Epidamu"],
             defaults = { dropRate = 13 },
             loot = {
                 {},
@@ -82,7 +83,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
         {
             id = "COTBMDriftingAvatar",
             prefix = "3)",
-            name = BB["Drifting Avatar of Sand"],
+            name = LB["Drifting Avatar of Sand"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 61015 }, -- Hollowbone Choker
@@ -103,7 +104,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
         {
             id = "COTBMTimeLordEpochronos",
             prefix = "4)",
-            name = BB["Time-Lord Epochronos"],
+            name = LB["Time-Lord Epochronos"],
             defaults = { dropRate = 12 },
             loot = {
                 { id = 50428 }, -- Ancient Clutch
@@ -125,7 +126,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
         {
             id = "COTBMMossheart",
             prefix = "5)",
-            name = BB["Mossheart"],
+            name = LB["Mossheart"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 61050 }, -- Gauntlets of the Bogbeast
@@ -143,7 +144,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
         {
             id = "COTBMAntnormi",
             prefix = "6)",
-            name = BB["Antnormi"],
+            name = LB["Antnormi"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 50427, dropRate = 50 }, -- Time-blackened Chestpiece
@@ -174,7 +175,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
         {
             id = "COTBMRotmaw",
             prefix = "7)",
-            name = BB["Rotmaw"],
+            name = LB["Rotmaw"],
             defaults = { dropRate = 13 },
             loot = {
                 { id = 61023 }, -- Breastplate of the Wild Hunt
@@ -193,7 +194,7 @@ AtlasTW.InstanceData.CavernsOfTimeBlackMorass = {
         },
         {
             id = "COTTrash",
-            name = L["Trash Mobs"].."-"..BZ["Black Morass"],
+            name = L["Trash Mobs"].."-"..LZ["The Black Morass"],
             defaults = { dropRate = .001 },
             loot = {
                 { id = 61564 }, -- Chromie's Broken Pocket Watch

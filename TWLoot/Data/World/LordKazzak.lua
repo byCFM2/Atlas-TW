@@ -17,17 +17,18 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LS = AtlasTW.Localization.Spells
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- World boss Lord Kazzak data
 AtlasTW.InstanceData.LordKazzak = {
-    Name = BB["Lord Kazzak"],
-    Location = BZ["Blasted Lands"],
+    Name = LB["Lord Kazzak"],
+    Location = LZ["Blasted Lands"],
     Level = { 1, 60 },
     Acronym = "LK",
     MaxPlayers = 40,
@@ -36,7 +37,7 @@ AtlasTW.InstanceData.LordKazzak = {
         {
             id = "WBLordKazzak",
             prefix = "1)",
-            name = BB["Lord Kazzak"],
+            name = LB["Lord Kazzak"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 18546 }, -- Infernal Headcage
@@ -61,8 +62,8 @@ AtlasTW.InstanceData.LordKazzak = {
                 {},
                 { id = 18665, dropRate = 100, container = { 18608, 18609 } }, -- The Eye of Shadow
                 {},
-                { id = 70164, BS["Gemology"], dropRate = 2, container = { 56017 } }, -- Plans: Tempered Azerothian Gemstone
-                { id = 70169, BS["Gemology"], dropRate = 2, container = { 56010 } }, -- Plans: Beautiful Diamond Gemstone
+                { id = 70164, LS["Gemology"], dropRate = 2, container = { 56017 } }, -- Plans: Tempered Azerothian Gemstone
+                { id = 70169, LS["Gemology"], dropRate = 2, container = { 56010 } }, -- Plans: Beautiful Diamond Gemstone
                 { id = 14479, dropRate = 4, container = { 14101 } }, -- Pattern: Brightcloth Gloves
                 { id = 83545, dropRate = 40, container = { 65003 } }, -- Pattern: Robe of Sacrifice
 }

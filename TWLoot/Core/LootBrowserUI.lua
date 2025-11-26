@@ -20,7 +20,8 @@ AtlasTW = _G.AtlasTW
 AtlasTW.LootBrowserUI = AtlasTW.LootBrowserUI or {}
 
 -- Instance required libraries
-local L = AtlasTW.Local
+local L = AtlasTW.Localization.UI
+
 local GREEN = AtlasTW.Colors.GREEN
 local GREY = AtlasTW.Colors.GREY
 local ORANGE = AtlasTW.Colors.ORANGE
@@ -184,7 +185,7 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 	_G["AtlasTWLootItemsFrame_NEXT"]:Hide()
 	_G["AtlasTWLootItemsFrame_PREV"]:Hide()
 	if type(dataSource) == "table" then
-		local BZ = AceLibrary("Babble-Zone-2.2a")
+		local LZ = AtlasTW.Localization.Zones
     	local quantityFrame, menuButton, extraText, defaultIcon, itemButton, iconFrame, nameFrame, extraFrame, borderFrame
 
 		-- Helper function to count maximum numeric index (sparse array support)
@@ -251,7 +252,7 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 					defaultIcon = dataID.defaultIcon or "Interface\\Icons\\INV_Misc_QuestionMark"
 					if element.name then
 						if element.extra then
-							extraText = BZ[element.extra]
+							extraText = LZ[element.extra]
 						elseif element.Extra then
 							extraText = element.Extra
 						else

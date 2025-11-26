@@ -17,16 +17,19 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.StormwindVault = {
-    Name = BZ["Stormwind Vault"],
-    Location = BZ["Stormwind City"],
+    Name = LZ["Stormwind Vault"],
+    Location = LZ["Stormwind City"],
     Level = { 58, 60 },
     Acronym = "SV",
     MaxPlayers = 5,
@@ -38,7 +41,7 @@ AtlasTW.InstanceData.StormwindVault = {
         {
             id = "AszoshGrimflame",
             prefix = "1)",
-            name = BB["Aszosh Grimflame"],
+            name = LB["Aszosh Grimflame"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 60504 }, -- Dreadskin Gloves
@@ -57,7 +60,7 @@ AtlasTW.InstanceData.StormwindVault = {
         {
             id = "ThamGrarr",
             prefix = "2)",
-            name = BB["Tham'Grarr"],
+            name = LB["Tham'Grarr"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 60502, disc = L["Random stats"] }, -- Unstable Belt
@@ -76,7 +79,7 @@ AtlasTW.InstanceData.StormwindVault = {
         {
             id = "BlackBride",
             prefix = "3)",
-            name = BB["Black Bride"],
+            name = LB["Black Bride"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 60408 }, -- Crown of Lost Memories
@@ -91,11 +94,11 @@ AtlasTW.InstanceData.StormwindVault = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
             }
         },
-        { name = L["Tome of Arcane Intricacies and Magical Phenomenon IX"], color = Colors.GREY },
+        { name = LMD["Tome of Arcane Intricacies and Magical Phenomenon IX"], color = Colors.GREY },
         {
             id = "Damian",
             prefix = "4)",
-            name = BB["Damian"],
+            name = LB["Damian"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 60421 }, -- Damien's Sorrow
@@ -115,7 +118,7 @@ AtlasTW.InstanceData.StormwindVault = {
         {
             id = "VolkanCruelblade",
             prefix = "5)",
-            name = BB["Volkan Cruelblade"],
+            name = LB["Volkan Cruelblade"],
             postfix = L["Optional"],
             defaults = { dropRate = 20 },
             loot = {
@@ -134,7 +137,7 @@ AtlasTW.InstanceData.StormwindVault = {
         {
             id = "VaultArmoryEquipment",
             prefix = "6)",
-            name = L["Arc'tiras / Vault Armory Equipment"],
+            name = LMD["Arc'tiras / Vault Armory Equipment"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 40003 }, -- Vault's Defender
@@ -157,7 +160,7 @@ AtlasTW.InstanceData.StormwindVault = {
         },
         {
             id = "TrashMobs",
-            name = L["Trash Mobs"].."-"..BZ["Stormwind Vault"],
+            name = L["Trash Mobs"].."-"..LZ["Stormwind Vault"],
             defaults = { dropRate = .02 },
             loot = {
                 { id = 61592 }, -- Arcanic Bracers

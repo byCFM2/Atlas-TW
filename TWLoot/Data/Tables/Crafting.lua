@@ -18,15 +18,14 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 
---Instance required libraries
-local L = AtlasTW.Local
-local BS = AceLibrary("Babble-Spell-2.2a")
+local L = AtlasTW.Localization.UI
+local LS = AtlasTW.Localization.Spells
 
 AtlasTWLoot_Data = AtlasTWLoot_Data or {}
 
 local craftingTable = {
 	Poisons = {
-		{ name = BS["Poisons"], icon = "Trade_BrewPoison" },
+		{ name = LS["Poisons"], icon = "Trade_BrewPoison" },
 		{ id=8681, skill={1,125,150,175}}, --Instant Poison
 		{ id=8687, skill={120,165,190,215}}, --Instant Poison II
 		{ id=8691, skill={160,205,230,255}}, --Instant Poison III
@@ -41,7 +40,7 @@ local craftingTable = {
 		{ id=45882, skill={1,325,350,375}}, --Dissolvent Poison II 1.18
 		{},
 		{ id=13220, skill={140,185,210,235}}, --Wound Poison
-		{ name = BS["Poisons"], icon = "Trade_BrewPoison" },
+		{ name = LS["Poisons"], icon = "Trade_BrewPoison" },
 		{ id=2835, skill={130,175,200,225}}, --Deadly Poison
 		{ id=2837, skill={170,215,240,265}}, --Deadly Poison II
 		{ id=11357, skill={210,255,280,305}}, --Deadly Poison III
@@ -131,9 +130,9 @@ local craftingTable = {
 		{ id=4942, skill={215,230,250,270} }, --Lesser Stoneshield Potion
 		{ id=11457, skill={215,230,250,270} }, --Superior Healing Potion
 		{ id=11458, skill={225,240,260,280} }, --Wildvine Potion
-		{ id=11479, skill={225,240,260,280} }, --Transmute: Iron to Gold
+		{ id=11479, skill={225,240,260,280}, container = {3575} }, --Transmute: Iron to Gold
 		{ name = L["Expert"], icon = "Trade_Alchemy" },
-		{ id=11480, skill={225,240,260,280} }, --Transmute: Mithril to Truesilver
+		{ id=11480, skill={225,240,260,280}, container = {3860} }, --Transmute: Mithril to Truesilver
 	},
 	AlchemyArtisan = {
 		{ name = L["Artisan"], icon = "Trade_Alchemy" },
@@ -158,16 +157,16 @@ local craftingTable = {
 		{ id=17553, skill={260,275,295,315} }, --Superior Mana Potion
 		{ id=17554, skill={265,280,300,320} }, --Elixir of Superior Defense
 		{ id=17555, skill={265,280,300,320} }, --Elixir of the Sages
-		{ id=17187, skill={275,275,282,290} }, --Transmute: Arcanite
-		{ id=17559, skill={275,275,282,290} }, --Transmute: Air to Fire
-		{ id=17566, skill={275,275,282,290} }, --Transmute: Earth to Life
-		{ id=17561, skill={275,275,282,290} }, --Transmute: Earth to Water
-		{ id=17560, skill={275,275,282,290} }, --Transmute: Fire to Earth
-		{ id=17565, skill={275,275,282,290} }, --Transmute: Life to Earth
-		{ id=17563, skill={275,275,282,290} }, --Transmute: Undeath to Water
-		{ id=17562, skill={275,275,282,290} }, --Transmute: Water to Air
+		{ id=17187, skill={275,275,282,290}, container = {12359, 12363} }, --Transmute: Arcanite
+		{ id=17559, skill={275,275,282,290}, container = {7082} }, --Transmute: Air to Fire
+		{ id=17566, skill={275,275,282,290}, container = {7076} }, --Transmute: Earth to Life
+		{ id=17561, skill={275,275,282,290}, container = {7076} }, --Transmute: Earth to Water
+		{ id=17560, skill={275,275,282,290}, container = {7078} }, --Transmute: Fire to Earth
+		{ id=17565, skill={275,275,282,290}, container = {12803} }, --Transmute: Life to Earth
+		{ id=17563, skill={275,275,282,290}, container = {12808} }, --Transmute: Undeath to Water
+		{ id=17562, skill={275,275,282,290}, container = {7080} }, --Transmute: Water to Air
 		{ name = L["Artisan"], icon = "Trade_Alchemy" },
-		{ id=17564, skill={275,275,282,290} }, --Transmute: Water to Undeath
+		{ id=17564, skill={275,275,282,290}, container = {7080} }, --Transmute: Water to Undeath
 		{ id=17557, skill={275,290,310,330} }, --Elixir of Brute Force
 		{ id=24366, skill={275,290,310,330} }, --Greater Dreamless Sleep Potion
 		{ id=24365, skill={275,290,310,330} }, --Mageblood Potion
@@ -186,9 +185,9 @@ local craftingTable = {
 		{ id=17579, skill={290,305,325,345} }, --Greater Holy Protection Potion
 		{ id=24368, skill={290,305,325,345} }, --Major Troll's Blood Potion
 		{ id=17580, skill={295,310,330,350} }, --Major Mana Potion
-		{ id=25146, skill={300,301,305,310} }, --Transmute: Elemental Fire
-		{ id=57555, skill={300,315,322,330} }, --Transmute: Elemental Earth
-		{ id=57557, skill={300,315,322,330} }, --Transmute: Elemental Water
+		{ id=25146, skill={300,301,305,310}, container = {7077} }, --Transmute: Elemental Fire
+		{ id=57555, skill={300,315,322,330}, container = {7075} }, --Transmute: Elemental Earth
+		{ id=57557, skill={300,315,322,330}, container = {7079} }, --Transmute: Elemental Water
 		{ id=22732, skill={300,310,320,330} }, --Major Rejuvenation Potion
 		{ id=17638, skill={300,315,322,330} }, --Flask of Chromatic Resistance
 		{ id=17636, skill={300,315,322,330} }, --Flask of Distilled Wisdom
@@ -271,20 +270,20 @@ local craftingTable = {
 
 	AlchemyTransmutes = {
 		{ name = L["Transmutes"], icon = "Trade_Alchemy" },
-		{ id=11479, skill={225,240,260,280} }, --Transmute: Iron to Gold
-		{ id=11480, skill={225,240,260,280} }, --Transmute: Mithril to Truesilver
-		{ id=17559, skill={275,275,282,290} }, --Transmute: Air to Fire
-		{ id=17566, skill={275,275,282,290} }, --Transmute: Earth to Life
-		{ id=17561, skill={275,275,282,290} }, --Transmute: Earth to Water
-		{ id=17560, skill={275,275,282,290} }, --Transmute: Fire to Earth
-		{ id=17565, skill={275,275,282,290} }, --Transmute: Life to Earth
-		{ id=17563, skill={275,275,282,290} }, --Transmute: Undeath to Water
-		{ id=17562, skill={275,275,282,290} }, --Transmute: Water to Air
-		{ id=17564, skill={275,275,282,290} }, --Transmute: Water to Undeath
-		{ id=17187, skill={275,275,282,290} }, --Transmute: Arcanite
-		{ id=25146, skill={300,301,305,310} }, --Transmute: Elemental Fire
-		{ id=57555, skill={300,315,322,330} }, --Transmute: Elemental Earth
-		{ id=57557, skill={300,315,322,330} }, --Transmute: Elemental Water
+		{ id=11479, skill={225,240,260,280}, container = {3575} }, --Transmute: Iron to Gold
+		{ id=11480, skill={225,240,260,280}, container = {3860} }, --Transmute: Mithril to Truesilver
+		{ id=17559, skill={275,275,282,290}, container = {7082} }, --Transmute: Air to Fire
+		{ id=17566, skill={275,275,282,290}, container = {7076} }, --Transmute: Earth to Life
+		{ id=17561, skill={275,275,282,290}, container = {7076} }, --Transmute: Earth to Water
+		{ id=17560, skill={275,275,282,290}, container = {7078} }, --Transmute: Fire to Earth
+		{ id=17565, skill={275,275,282,290}, container = {12803} }, --Transmute: Life to Earth
+		{ id=17563, skill={275,275,282,290}, container = {12808} }, --Transmute: Undeath to Water
+		{ id=17562, skill={275,275,282,290}, container = {7080} }, --Transmute: Water to Air
+		{ id=17564, skill={275,275,282,290}, container = {7080} }, --Transmute: Water to Undeath
+		{ id=17187, skill={275,275,282,290}, container = {12359, 12363} }, --Transmute: Arcanite
+		{ id=25146, skill={300,301,305,310}, container = {7077} }, --Transmute: Elemental Fire
+		{ id=57555, skill={300,315,322,330}, container = {7075} }, --Transmute: Elemental Earth
+		{ id=57557, skill={300,315,322,330}, container = {7079} }, --Transmute: Elemental Water
 	},
 
 	AlchemyDefensive = {
@@ -1098,7 +1097,7 @@ local craftingTable = {
 	},
 
 	Armorsmith = {
-		{ name = BS["Armorsmith"], icon = "Trade_BlackSmithing" },
+		{ name = LS["Armorsmith"], icon = "Trade_BlackSmithing" },
 		{ id=9954, skill={225,245,255,265} }, --Truesilver Gauntlets
 		{ id=9974, skill={245,265,275,285} }, --Truesilver Breastplate
 		{ id=16650, skill={270,290,300,310} }, --Wildthorn Mail
@@ -1113,7 +1112,7 @@ local craftingTable = {
 		{ id=16742, skill={300,320,330,340} }, --Enchanted Thorium Helm
 		{ id=16744, skill={300,320,330,340} }, --Enchanted Thorium Leggings
 		{ id=16728, skill={300,320,330,340} }, --Helm of the Great Chief
-		{ name = BS["Armorsmith"], icon = "Trade_BlackSmithing" },
+		{ name = LS["Armorsmith"], icon = "Trade_BlackSmithing" },
 		{ id=16724, skill={300,320,330,340} }, --Whitesoul Helm
 		{ id=54005, skill={300,325,337,350} }, --Pauldrons of the Timbermaw
 		{ id=24399, skill={300,320,330,340} }, --Dark Iron Boots
@@ -1128,13 +1127,13 @@ local craftingTable = {
 		{ id=57189, skill={300,310,315,320} }, --Towerforge Breastplate
 		{ id=57187, skill={300,310,315,320} }, --Towerforge Crown
 		{ id=57191, skill={300,310,315,320} }, --Towerforge Pauldrons
-		{ name = BS["Armorsmith"], icon = "Trade_BlackSmithing" },
+		{ name = LS["Armorsmith"], icon = "Trade_BlackSmithing" },
 		{ id=46667, skill={300,315,322,330} }, --Pauldron of Deflection 1.18
 		{ id=36907, skill={300,300,300,300} }, --Rune-Inscribed Plate Leggings 1.18
 	},
 
 	Weaponsmith = {
-		{ name = BS["Weaponsmith"], icon = "Trade_BlackSmithing" },
+		{ name = LS["Weaponsmith"], icon = "Trade_BlackSmithing" },
 		{ id=10003, skill={235,260,272,285} }, --The Shatterer
 		{ id=10007, skill={245,270,282,295} }, --Phantom Blade
 		{ id=10011, skill={250,275,287,300} }, --Blight
@@ -1488,7 +1487,7 @@ local craftingTable = {
 	},
 
 	SmithingFist = {
-		{ name = BS["Fist Weapons"], icon = "Trade_BlackSmithing" },
+		{ name = LS["Fist Weapons"], icon = "Trade_BlackSmithing" },
 		{ id=46663, skill={30,60,62,65} }, --Copper Knuckles
 		{ id=46664, skill={75,90,95,100} }, --Sharpened Claw
 		{ id=46665, skill={120,140,145,150} }, --Bronze Bruiser
@@ -1497,7 +1496,7 @@ local craftingTable = {
 	},
 
 	SmithingDaggers = {
-		{ name = BS["Daggers"], icon = "Trade_BlackSmithing" },
+		{ name = LS["Daggers"], icon = "Trade_BlackSmithing" },
 		{ id=8880, skill={30,70,90,110} }, --Copper Dagger
 		{ id=3491, skill={105,135,150,165} }, --Big Bronze Knife
 		{ id=6517, skill={110,140,155,170} }, --Pearl-handled Dagger
@@ -1816,7 +1815,7 @@ local craftingTable = {
 	},
 
 	Dragonscale = {
-		{ name = BS["Dragonscale Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
+		{ name = LS["Dragonscale Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=10619, skill={225,245,255,265} }, --Dragonscale Gauntlets
 		{ id=46695, skill={245,245,245,245} }, --Dragonscale Leggings
 		{ id=10650, skill={255,275,285,295} }, --Dragonscale Breastplate
@@ -1831,7 +1830,7 @@ local craftingTable = {
 		{ id=46653, skill={295,315,322,330} }, --Red Dragonscale Leggings
 		{ id=46654, skill={300,315,322,330} }, --Red Dragonscale Shoulders
 		{ id=19107, skill={300,320,330,340} }, --Black Dragonscale Leggings
-		{ name = BS["Dragonscale Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
+		{ name = LS["Dragonscale Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=24654, skill={300,320,330,340} }, --Blue Dragonscale Leggings
 		{ id=19094, skill={300,320,330,340} }, --Black Dragonscale Shoulders
 		{ id=19054, skill={300,320,330,340} }, --Red Dragonscale Breastplate
@@ -1845,7 +1844,7 @@ local craftingTable = {
 	},
 
 	Elemental = {
-		{ name = BS["Elemental Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
+		{ name = LS["Elemental Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=10630, skill={230,250,260,270} }, --Gauntlets of the Sea
 		{ id=10632, skill={250,270,280,290} }, --Helm of Fire
 		{ id=57010, skill={255,255,255,255} }, --Boots of the Wind
@@ -1860,7 +1859,7 @@ local craftingTable = {
 		{ id=19095, skill={300,320,330,340} }, --Living Breastplate
 		{ id=26279, skill={300,320,330,340} }, --Stormshroud Gloves
 		{ id=23710, skill={300,320,330,340} }, --Molten Belt
-		{ name = BS["Elemental Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
+		{ name = LS["Elemental Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=20854, skill={300,320,330,340} }, --Molten Helm
 		{ id=22928, skill={300,320,330,340} }, --Shifting Cloak
 		{ id=57016, skill={300,320,330,340} }, --Depthstalker Helm
@@ -1873,7 +1872,7 @@ local craftingTable = {
 	},
 
 	Tribal = {
-		{ name = BS["Tribal Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
+		{ name = LS["Tribal Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=10621, skill={225,245,255,265} }, --Wolfshead Helm
 		{ id=19053, skill={265,270,280,290} }, --Chimeric Gloves
 		{ id=19062, skill={270,290,300,310} }, --Ironfeather Shoulders
@@ -1888,7 +1887,7 @@ local craftingTable = {
 		{ id=19086, skill={290,310,320,330} }, --Ironfeather Breastplate
 		{ id=19087, skill={295,315,325,335} }, --Frostsaber Gloves
 		{ id=20853, skill={295,315,325,335} }, --Corehound Boots
-		{ name = BS["Tribal Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
+		{ name = LS["Tribal Leatherworking"], icon = "INV_Misc_ArmorKit_17" },
 		{ id=19104, skill={300,320,330,340} }, --Frostsaber Tunic
 		{ id=19097, skill={300,320,330,340} }, --Devilsaur Leggings
 		{ id=23709, skill={300,320,330,340} }, --Corehound Belt
@@ -3269,7 +3268,7 @@ local craftingTable = {
 	},
 
 	MiningTable = {
-		{ name = BS["Mining"], icon = "Trade_Mining" },
+		{ name = LS["Mining"], icon = "Trade_Mining" },
 		{ id=100000, skill={1,25,50,100}, container = {{2835,{1,2}},{5075,{1,3}},774,818,1210,2798} }, --Copper Vein, Rough Stone, Blood Shard, Rethban Ore, Malachite, Tigerseye, Shadowgem
 		{ id=100001, skill={65,90,115,165} }, --Incendicite Mineral Vein
 		{ id=100002, skill={65,90,115,165}, container = {{2836,{1,2}},{5075,{1,3}},1206,1210,1529,1705,2798} }, --Tin Vein, Coarse Stone, Blood Shard, Moss Agate, Shadowgem, Jade, Lesser Moonstone, Rethban Ore
@@ -3284,7 +3283,7 @@ local craftingTable = {
 		{},
 		{},
 		{},
-		{ name = BS["Mining"], icon = "Trade_Mining" },
+		{ name = LS["Mining"], icon = "Trade_Mining" },
 		{ id=100011, skill={175,200,225,275}, container = {{7912,{1,4}},11513,9262,3864,7909,7910} }, --Mithril Deposit, Solid Stone, Tainted Vitriol, Black Vitriol, Citrine, Aquamarine, Star Ruby
 		{ id=100012, skill={175,200,225,275}, container = {{7912,{1,4}},11513,9262,3864,7909,7910} }, --Ooze Covered Mithril Deposit, Solid Stone, Tainted Vitriol, Black Vitriol, Citrine, Aquamarine, Star Ruby
 		{ id=100013, skill={230,255,280,330}, container = {11513,7909,3864,7910} }, --Truesilver Deposit, Tainted Vitriol, Citrine, Aquamarine, Star Ruby
@@ -3301,20 +3300,20 @@ local craftingTable = {
 	},
 
 	Smelting = {
-		{ name = BS["Smelting"], icon = "Spell_Fire_FlameBlades" },
-		{ id=2657, skill={1,25,45,70} }, --Smelt Copper
-		{ id=3304, skill={65,65,70,75} }, --Smelt Tin
-		{ id=2659, skill={65,65,90,115} }, --Smelt Bronze
-		{ id=2658, skill={75,100,112,125} }, --Smelt Silver
-		{ id=3307, skill={125,125,130,140} }, --Smelt Iron
-		{ id=3308, skill={155,170,177,185} }, --Smelt Gold
-		{ id=3569, skill={165,165,165,165} }, --Smelt Steel
-		{ id=10097, skill={175,175,175,175} }, --Smelt Mithril
-		{ id=14891, skill={230,230,230,230} }, --Smelt Dark Iron
-		{ id=10098, skill={230,230,230,230} }, --Smelt Truesilver
-		{ id=16153, skill={250,250,250,250} }, --Smelt Thorium
-		{ id=22967, skill={300,350,362,375} }, --Smelt Elementium
-		{ id=45451, skill={300,350,362,375} }, --Smelt Dreamsteel
+		{ name = LS["Smelting"], icon = "Spell_Fire_FlameBlades" },
+		{ id=2657, skill={1,25,47,70}, container = {2770} }, --Smelt Copper
+		{ id=3304, skill={50,50,62,75}, container = {2771} }, --Smelt Tin
+		{ id=2659, skill={65,65,90,115}, container = {2840, 3576} }, --Smelt Bronze
+		{ id=2658, skill={75,100,112,125}, container = {2775} }, --Smelt Silver
+		{ id=3307, skill={125,130,135,140}, container = {2772} }, --Smelt Iron
+		{ id=3308, skill={155,170,177,185}, container = {2776} }, --Smelt Gold
+		{ id=3569, skill={165,165,165,165}, container = {3575, 3857} }, --Smelt Steel
+		{ id=10097, skill={175,175,175,175}, container = {3858} }, --Smelt Mithril
+		{ id=14891, skill={230,230,230,230}, container = {{11370, 8}} }, --Smelt Dark Iron
+		{ id=10098, skill={230,230,230,230}, container = {7911} }, --Smelt Truesilver
+		{ id=16153, skill={250,250,250,250}, container = {10620} }, --Smelt Thorium
+		{ id=22967, skill={300,310,315,320}, container = {18562, {12360, 10}, 17010, {18567, 3}} }, --Smelt Elementium
+		{ id=45451, skill={300,310,315,320}, container = {61198, 3859, 20381} }, --Smelt Dreamsteel
 	},
 
 	Herbalism = {
@@ -3471,7 +3470,7 @@ local craftingTable = {
 	},
 
 	FirstAid = {
-		{ name = BS["First Aid"], icon = "Spell_Holy_SealOfSacrifice" },
+		{ name = LS["First Aid"], icon = "Spell_Holy_SealOfSacrifice" },
 		{ id=3275, skill={1,30,45,60} }, --Linen Bandage
 		{ id=3276, skill={40,50,75,100} }, --Heavy Linen Bandage
 		{ id=7934, skill={80,80,115,150} }, --Anti-Venom
@@ -3523,7 +3522,7 @@ local craftingTable = {
 		{ id=41003, skill={20,40,47,55} }, --Malachite Ring
 		{ id=41249, skill={25,25,45,65} }, --Bulky Copper Ring
 		{ id=41005, skill={25,45,52,60} }, --Sturdy Copper Ring
-		{ id=41031, skill={35,45,50,55} }, --Rough Gemstone Cluster
+		{ id=41031, skill={35,45,50,55}, container = { 774, 818, 1210, 81094 } }, --Rough Gemstone Cluster
 		{ id=41007, skill={35,55,62,70} }, --Inlaid Copper Ring
 		{ id=41009, skill={45,60,67,75} }, --Copper Staff
 		{ id=41011, skill={50,70,75,80} }, --Encrusted Copper Bangle
@@ -3575,7 +3574,7 @@ local craftingTable = {
 		{ id=41055, skill={120,145,155,165} }, --Pendant of Midnight
 		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41067, skill={125,135,145,155} }, --Rough Silver Ring
-		{ id=41065, skill={125,140,142,145} }, --Coarse Gemstone Cluster
+		{ id=41065, skill={125,140,142,145}, container = { 1206, 1705, 55249 } }, --Coarse Gemstone Cluster
 		{ id=41057, skill={125,145,155,165} }, --Agatestone Crown
 		{ id=41061, skill={125,145,155,165} }, --Binding Signet
 		{ id=41063, skill={125,145,155,165} }, --Enchanted Bracelets
@@ -3595,7 +3594,7 @@ local craftingTable = {
 		{ id=41570, skill={145,165,175,185} }, --Harpy Talon Ring
 		{ id=41742, skill={145,165,175,185} }, --Venomspire Diadem
 		{ id=41201, skill={150,150,155,160} }, --Heavy Gritted Paper
-		{ id=41203, skill={150,150,152,155} }, --Heavy Gemstone Cluster
+		{ id=41203, skill={150,150,152,155}, container = { 1529, 3864, 7909, 55250 } }, --Heavy Gemstone Cluster
 		{ id=41627, skill={150,155,157,160} }, --Pristine Crystal Gemstone
 		{ id=41607, skill={150,155,157,160} }, --Shimmering Aqua Gemstone
 		{ id=41081, skill={150,165,170,175} }, --Rough Iron Ring
@@ -3642,7 +3641,7 @@ local craftingTable = {
 		{ id=41285, skill={195,195,217,240} }, --Shimmering Moonstone Tablet
 		{ id=41229, skill={200,200,205,210} }, --Solid Gritted Paper
 		{ id=41233, skill={200,200,205,210} }, --Rough Truesilver Ring
-		{ id=41237, skill={200,200,205,210} }, --Solid Gemstone Cluster
+		{ id=41237, skill={200,200,205,210}, container = { 7910, 55250, 55251 } }, --Solid Gemstone Cluster
 		{ id=41603, skill={200,205,207,210} }, --Radiant Ember Gemstone
 		{ id=41631, skill={200,205,205,205} }, --Illuminated Gemstone
 		{ id=41738, skill={200,215,225,235} }, --Marine Root
@@ -3676,7 +3675,7 @@ local craftingTable = {
 		{ id=41784, skill={230,260,275,290} }, --Mana Binding Signet
 		{ id=41305, skill={1,260,270,280} }, --Golden Scepter of Authority
 		{ id=41635, skill={235,235,237,240} }, --Brilliant Opal Gemstone
-		{ id=41770, skill={235,240,240,240} }, --Dense Gemstone Cluster
+		{ id=41770, skill={235,240,240,240}, container = { 12361, 12364, 12799, 12800, 12363 } }, --Dense Gemstone Cluster
 		{ id=41087, skill={235,245,250,255} }, --Rough Thorium Ring
 		{ id=41720, skill={240,260,275,290} }, --Regal Twilight Staff
 		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
@@ -3741,7 +3740,7 @@ local craftingTable = {
 	},
 
 	JewelcraftingGemology = {
-		{ name = BS["Gemology"], icon = "INV_Misc_Gem_Variety_01" },
+		{ name = LS["Gemology"], icon = "INV_Misc_Gem_Variety_01" },
 		{ id=104, skill={185,185,185,185} }, -- Ancient Dwarven Gemstone 1.18
 		{ id=41605, skill={200,205,207,210} }, --Glowing Ruby Gemstone
 		{ id=41601, skill={200,205,207,210} }, --Sharpened Citrine Gemstone
@@ -3756,7 +3755,7 @@ local craftingTable = {
 	},
 
 	JewelcraftingGoldsmithing = {
-		{ name = BS["Goldsmithing"], icon = "INV_Jewelry_Ring_03" },
+		{ name = LS["Goldsmithing"], icon = "INV_Jewelry_Ring_03" },
 		{ id=41782, skill={285,310,320,330} }, --Golden Runed Ring
 		{ id=41780, skill={290,310,320,330} }, --Stormcloud Signet
 		{ id=41710, skill={290,320,330,340} }, --Deep Sapphire Circlet
@@ -3771,7 +3770,7 @@ local craftingTable = {
 		{ id=41269, skill={300,330,350,370} }, --Encrusted Gemstone Ring
 		{ id=41792, skill={300,330,340,350} }, --Empowered Domination Rod
 		{ id=41796, skill={300,330,340,350} }, --Grail of Forgotten Memories
-		{ name = BS["Goldsmithing"], icon = "INV_Jewelry_Necklace_01" },
+		{ name = LS["Goldsmithing"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41800, skill={300,330,340,350} }, --Rudeus' Focusing Cane
 	},
 
@@ -3952,7 +3951,7 @@ local craftingTable = {
 	},
 
 	JewelcraftingOffHands = {
-		{ name = L["Off-hand"], icon = "INV_Jewelry_Necklace_01" },
+		{ name = L["Off Hand"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41732, skill={85,105,115,125} }, --Shadowmoon Orb
 		{ id=41043, skill={95,110,120,130} }, --Amber Orb
 		{ id=41053, skill={110,130,140,150} }, --Bronze Scepter
@@ -3967,7 +3966,7 @@ local craftingTable = {
 		{ id=41305, skill={1,260,270,280} }, --Golden Scepter of Authority
 		{ id=41095, skill={260,280,287,295} }, --Glyph Codex
 		{ id=41356, skill={275,275,297,320} }, --Gemstone Compendium
-		{ name = L["Off-hand"], icon = "INV_Jewelry_Necklace_01" },
+		{ name = L["Off Hand"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41794, skill={285,320,330,340} }, --Orb of Clairvoyance
 		{ id=41792, skill={300,330,340,350} }, --Empowered Domination Rod
 	},
@@ -4030,11 +4029,11 @@ local craftingTable = {
 		{ id=41229, skill={200,200,205,210} }, --Solid Gritted Paper
 		{ id=41091, skill={250,260,265,270} }, --Dense Gritted Paper
 		{ name = L["Misc"], icon = "INV_Jewelry_Necklace_01" },
-		{ id=41031, skill={35,45,50,55} }, --Rough Gemstone Cluster
-		{ id=41065, skill={125,140,142,145} }, --Coarse Gemstone Cluster
-		{ id=41203, skill={150,150,152,155} }, --Heavy Gemstone Cluster
-		{ id=41237, skill={200,200,205,210} }, --Solid Gemstone Cluster
-		{ id=41770, skill={235,240,240,240} }, --Dense Gemstone Cluster
+		{ id=41031, skill={35,45,50,55}, container = { 774, 818, 1210, 81094 } }, --Rough Gemstone Cluster
+		{ id=41065, skill={125,140,142,145}, container = { 1206, 1705, 55249 } }, --Coarse Gemstone Cluster
+		{ id=41203, skill={150,150,152,155}, container = { 1529, 3864, 7909, 55250 } }, --Heavy Gemstone Cluster
+		{ id=41237, skill={200,200,205,210}, container = { 7910, 55250, 55251 } }, --Solid Gemstone Cluster
+		{ id=41770, skill={235,240,240,240}, container = { 12361, 12364, 12799, 12800, 12363 } }, --Dense Gemstone Cluster
 	},
 }
 

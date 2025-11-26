@@ -17,40 +17,43 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LF = AtlasTW.Localization.Factions
+local LS = AtlasTW.Localization.Spells
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.Stratholme = {
-    Name = BZ["Stratholme"],
-    Location = BZ["Eastern Plaguelands"],
+    Name = LZ["Stratholme"],
+    Location = LZ["Eastern Plaguelands"],
     Level = { 45, 60 },
     Acronym = "Strat",
     MaxPlayers = 10,
     DamageType = L["Physical"],
     Entrances = {
-        { letter = "A) " .. L["Front"] },
+        { letter = "A) " .. LMD["Front"] },
         { letter = "B) " .. L["Side"] }
     },
     Reputation = {
-        { name = BF["Argent Dawn"], loot = "ArgentDawn" }
+        { name = LF["Argent Dawn"], loot = "ArgentDawn" }
     },
     Keys = {
-        { name = L["The Scarlet Key"], loot = "VanillaKeys", info = L["Living Side"] },
-        { name = L["Key to the City"], loot = "VanillaKeys", info = L["Undead Side"] },
-        { name = L["Brazier of Invocation"], loot = "VanillaKeys", info = L["Tier 0.5 Summon"] },
+        { name = LMD["The Scarlet Key"], loot = "VanillaKeys", info = LMD["Living Side"] },
+        { name = LMD["Key to the City"], loot = "VanillaKeys", info = LMD["Undead Side"] },
+        { name = LMD["Brazier of Invocation"], loot = "VanillaKeys", info = LMD["Tier 0.5 Summon"] },
     },
     Bosses = {
         {
             id = "STRATSkull",
             prefix = "1)",
-            name = BB["Skul"],
+            name = LB["Skul"],
             postfix = L["Rare"]..", "..L["Varies"],
             defaults = { dropRate = 33 },
             loot = {
@@ -65,7 +68,7 @@ AtlasTW.InstanceData.Stratholme = {
         },
         {
             id = "STRATStratholmeCourier",
-            name = L["Stratholme Courier"],
+            name = LB["Stratholme Courier"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 13302 }, -- Market Row Postbox Key
@@ -78,7 +81,7 @@ AtlasTW.InstanceData.Stratholme = {
         },
         {
             id = "STRATFrasSiabi",
-            name = L["Fras Siabi"],
+            name = LMD["Fras Siabi"],
             loot = {
                 { id = 13171, dropRate = 100 }, -- Smokey's Lighter
             }
@@ -86,7 +89,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATAtiesh",
             prefix = "2)",
-            name = BB["Rethilgore"],
+            name = LB["Rethilgore"],
             postfix = L["Summon"],
             loot = {
                 { id = 22736, dropRate = 100 }, -- Andonisus, Reaper of Souls
@@ -94,7 +97,7 @@ AtlasTW.InstanceData.Stratholme = {
         },
         {
             id = "STRATBalzaphon",
-            name = BB["Balzaphon"],
+            name = LB["Balzaphon"],
             postfix = L["Scourge Invasion"],
             defaults = { dropRate = 33 },
             loot = {
@@ -107,7 +110,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATHearthsingerForresten",
             prefix = "3)",
-            name = BB["Hearthsinger Forresten"],
+            name = LB["Hearthsinger Forresten"],
             postfix = L["Rare"]..", "..L["Varies"],
             defaults = { dropRate = 20 },
             loot = {
@@ -126,7 +129,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATTheUnforgiven",
             prefix = "4)",
-            name = BB["The Unforgiven"],
+            name = LB["The Unforgiven"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 16717, disc = L["Druid"]..", T0", container = { 22110 } }, -- Wildheart Gloves
@@ -146,14 +149,14 @@ AtlasTW.InstanceData.Stratholme = {
         },
         {
             prefix = "5)",
-            name = L["Elder Farwhisper"],
+            name = LMD["Elder Farwhisper"],
             postfix = L["Lunar Festival"],
             items = "LunarFestival",
         },
         {
             id = "STRATTimmytheCruel",
             prefix = "6)",
-            name = BB["Timmy the Cruel"],
+            name = LB["Timmy the Cruel"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 16724, disc = L["Paladin"]..", T0", container = { 22090 } }, -- Lightforge Gauntlets
@@ -175,7 +178,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATMalor",
             prefix = "7)",
-            name = BB["Malor the Zealous"],
+            name = LB["Malor the Zealous"],
             defaults = { dropRate = 11 },
             loot = {
                 { id = 81016 }, -- Bleeding Heart Talisman
@@ -201,7 +204,7 @@ AtlasTW.InstanceData.Stratholme = {
         },
         {
             id = "STRATMalorsStrongbox",
-            name = L["Malor's Strongbox"],
+            name = LMD["Malor's Strongbox"],
             loot = {
                 { id = 12845, disc = L["Quest Item"], dropRate = 100, container = { 17044, 17045 } }, -- Medallion of Faith
             }
@@ -209,7 +212,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATCrimsonHammersmith",
             prefix = "8)",
-            name = L["Crimson Hammersmith"],
+            name = LMD["Crimson Hammersmith"],
             postfix = L["Summon"],
             loot = {
                 { id = 18781, dropRate = 40, container = { 18770, 12726, 12619 } }, -- Bottom Half of Advanced Armorsmithing: Volume II
@@ -221,7 +224,7 @@ AtlasTW.InstanceData.Stratholme = {
         },
         {
             id = "STRATBSPlansSerenity",
-            name = L["Blacksmithing Plans"],
+            name = LMD["Blacksmithing Plans"],
             loot = {
                 { id = 12827, dropRate = 32, container = { 12781 } }, -- Plans: Serenity
             }
@@ -229,7 +232,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATCannonMasterWilley",
             prefix = "9)",
-            name = BB["Cannon Master Willey"],
+            name = LB["Cannon Master Willey"],
             defaults = { dropRate = 10 },
             loot = {
                 { id = 16708, disc = L["Rogue"]..", T0", container = { 22008 } }, -- Shadowcraft Spaulders
@@ -259,7 +262,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATArchivistGalford",
             prefix = "10)",
-            name = BB["Archivist Galford"],
+            name = LB["Archivist Galford"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 16692, disc = L["Priest"]..", T0", container = { 22081 } }, -- Devout Gloves
@@ -283,12 +286,12 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATDathrohan",
             prefix = "11)",
-            name = L["Grand Crusader Dathrohan"],
+            name = LMD["Grand Crusader Dathrohan"],
             color = Colors.GREY,
         },
         {
             id = "STRATBalnazzar",
-            name = BB["Balnazzar"],
+            name = LB["Balnazzar"],
             defaults = { dropRate = 10 },
             loot = {
                 { id = 16725, disc = L["Paladin"]..", T0", container = { 22087 } }, -- Lightforge Boots
@@ -329,7 +332,7 @@ AtlasTW.InstanceData.Stratholme = {
         },
         {
             id = "STRATSothosJarien",
-            name = BB["Sothos"].." & "..BB["Jarien"],
+            name = LB["Sothos"].." & "..LB["Jarien"],
             postfix = L["Summon"],
             defaults = { dropRate = 20 },
             loot = {
@@ -345,7 +348,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATMagistrateBarthilas",
             prefix = "12)",
-            name = BB["Magistrate Barthilas"],
+            name = LB["Magistrate Barthilas"],
             postfix = L["Varies"],
             defaults = { dropRate = 17 },
             loot = {
@@ -369,13 +372,13 @@ AtlasTW.InstanceData.Stratholme = {
         },
         {
             prefix = "13)",
-            name = L["Aurius"],
+            name = LMD["Aurius"],
             color = Colors.GREY,
         },
         {
             id = "STRATStonespine",
             prefix = "14)",
-            name = BB["Stonespine"],
+            name = LB["Stonespine"],
             postfix = L["Rare"] ..", ".. L["Wanders"],
             defaults = { dropRate = 33 },
             loot = {
@@ -391,7 +394,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATBaronessAnastari",
             prefix = "15)",
-            name = BB["Baroness Anastari"],
+            name = LB["Baroness Anastari"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 16704, disc = L["Warlock"]..", T0", container = { 22076 } }, -- Dreadmist Sandals
@@ -418,7 +421,7 @@ AtlasTW.InstanceData.Stratholme = {
         },
         {
             id = "STRATBlackGuardSwordsmith",
-            name = L["Black Guard Swordsmith"],
+            name = LMD["Black Guard Swordsmith"],
             postfix = L["Summon"],
             loot = {
                 { id = 18783, disc = L["Quest Item"], dropRate = 40, container = { 18771, 12725, 12620 } }, -- Bottom Half of Advanced Armorsmithing: Volume III
@@ -428,7 +431,7 @@ AtlasTW.InstanceData.Stratholme = {
         },
         {
             id = "STRATBSPlansCorruption",
-            name = L["Blacksmithing Plans"],
+            name = LMD["Blacksmithing Plans"],
             loot = {
                 { id = 12830, dropRate = .02, container = { 12782 } }, -- Plans: Corruption
             }
@@ -436,7 +439,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATNerubenkan",
             prefix = "16)",
-            name = BB["Nerub'enkan"],
+            name = LB["Nerub'enkan"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 16675, disc = L["Hunter"]..", T0", container = { 22061 } }, -- Beaststalker's Boots
@@ -465,7 +468,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATMalekithePallid",
             prefix = "17)",
-            name = BB["Maleki the Pallid"],
+            name = LB["Maleki the Pallid"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 16691, disc = L["Priest"]..", T0", container = { 22084 } }, -- Devout Sandals
@@ -494,7 +497,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATRamsteintheGorger",
             prefix = "18)",
-            name = BB["Ramstein the Gorger"],
+            name = LB["Ramstein the Gorger"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 16737, disc = L["Warrior"]..", T0", container = { 21998 } }, -- Gauntlets of Valor
@@ -520,7 +523,7 @@ AtlasTW.InstanceData.Stratholme = {
         {
             id = "STRATBaronRivendare",
             prefix = "19)",
-            name = BB["Baron Rivendare"],
+            name = LB["Baron Rivendare"],
             defaults = { dropRate = 11 },
             loot = {
                 { id = 13335, dropRate = 0.02 }, -- Rivendare's Deathcharger
@@ -562,16 +565,16 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
             }
         },
-        { name = L["Ysida Harmon"], color = Colors.GREY },
-        { prefix = "1')", name = L["Crusaders' Square Postbox"], color = Colors.GREEN },
-        { prefix = "2')", name = L["Market Row Postbox"], color = Colors.GREEN },
-        { prefix = "3')", name = L["Festival Lane Postbox"], color = Colors.GREEN },
-        { prefix = "4')", name = L["Elders' Square Postbox"], color = Colors.GREEN },
-        { prefix = "5')", name = L["King's Square Postbox"], color = Colors.GREEN },
-        { prefix = "6')", name = L["Fras Siabi's Postbox"], color = Colors.GREEN },
+        { name = LMD["Ysida Harmon"], color = Colors.GREY },
+        { prefix = "1')", name = LMD["Crusaders' Square Postbox"], color = Colors.GREEN },
+        { prefix = "2')", name = LMD["Market Row Postbox"], color = Colors.GREEN },
+        { prefix = "3')", name = LMD["Festival Lane Postbox"], color = Colors.GREEN },
+        { prefix = "4')", name = LMD["Elders' Square Postbox"], color = Colors.GREEN },
+        { prefix = "5')", name = LMD["King's Square Postbox"], color = Colors.GREEN },
+        { prefix = "6')", name = LMD["Fras Siabi's Postbox"], color = Colors.GREEN },
         {
             id = "STRATPostmaster",
-            name = L["Third Postbox Opened"].. ": " .. BB["Postmaster Malown"],
+            name = LMD["Third Postbox Opened"].. ": " .. LB["Postmaster Malown"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 13390 }, -- The Postmaster's Band
@@ -587,12 +590,12 @@ AtlasTW.InstanceData.Stratholme = {
             id = "STRATGoldsmithing",
             name = L["Goldsmithing Plans"], --TODO CHECK PLACE
             loot = {
-                { id = 56103, disc = BS["Goldsmithing"], dropRate = 100, container = { 56111, 70177, 56066 } }, -- Bottom Half of Advanced Goldsmithing II
+                { id = 56103, disc = LS["Goldsmithing"], dropRate = 100, container = { 56111, 70177, 56066 } }, -- Bottom Half of Advanced Goldsmithing II
             },
         },
         {
             id = "STRATTrash",
-            name = L["Trash Mobs"].."-"..BZ["Stratholme"],
+            name = L["Trash Mobs"].."-"..LZ["Stratholme"],
             defaults = { dropRate = 2 },
             loot = {
                 { id = 16697, disc = L["Priest"]..", T0", container = { 22079 } }, -- Devout Bracers
@@ -610,10 +613,10 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 12843 }, -- Corruptor's Scourgestone
                 { id = 12841 }, -- Invader's Scourgestone
                 { id = 12840 }, -- Minion's Scourgestone
-                { id = 56102, disc = BS["Goldsmithing"], dropRate = .03, container = { 56111, 70177, 56066 } }, -- Top Half of Advanced Goldsmithing II
+                { id = 56102, disc = LS["Goldsmithing"], dropRate = .03, container = { 56111, 70177, 56066 } }, -- Top Half of Advanced Goldsmithing II
                 { id = 70163, dropRate = 3, container = { 56016 } }, -- Plans: Arcane Emerald Gemstone
-                { id = 70164, BS["Gemology"], dropRate = .14, container = { 56017 } }, -- Plans: Tempered Azerothian Gemstone
-                { id = 70169, BS["Gemology"], dropRate = .14, container = { 56010 } }, -- Plans: Beautiful Diamond Gemstone
+                { id = 70164, LS["Gemology"], dropRate = .14, container = { 56017 } }, -- Plans: Tempered Azerothian Gemstone
+                { id = 70169, LS["Gemology"], dropRate = .14, container = { 56010 } }, -- Plans: Beautiful Diamond Gemstone
                 { id = 18742, dropRate = .02 }, -- Stratholme Militia Shoulderguard
                 { id = 18743, dropRate = .1 }, -- Gracious Cape
                 { id = 17061, dropRate = .02 }, -- Juno's Shadow
@@ -632,8 +635,8 @@ AtlasTW.InstanceData.Stratholme = {
                 { id = 56026, container = { 55259 }, dropRate = .08 }, -- Plans: Sapphire Luminescence
             }
         },
-        { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
-        { name = BIS["The Postmaster"], items = "Strat" },
+        { name = LIS["Ironweave Battlesuit"], items = "Ironweave" },
+        { name = LIS["The Postmaster"], items = "Strat" },
         { name = L["Tier 0/0.5 Sets"], items = "AtlasTWLootT0SetMenu" },
     },
 }

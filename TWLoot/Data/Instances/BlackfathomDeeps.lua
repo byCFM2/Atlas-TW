@@ -15,26 +15,32 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
+
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.BlackfathomDeepsEnt = {
-    Name = BZ["Blackfathom Deeps"] .. " (" .. L["Entrance"] .. ")",
+    Name = LZ["Blackfathom Deeps"] .. " (" .. L["Entrance"] .. ")",
     Acronym = "BFD",
-    Location = BZ["Ashenvale"],
+    Location = LZ["Ashenvale"],
     Entrances = {
         { letter = "A)", info = L["Entrance"] },
-        { letter = "B)", info = BZ["Blackfathom Deeps"] }
+        { letter = "B)", info = LZ["Blackfathom Deeps"] }
     },
     Bosses = {}
 }
 
 AtlasTW.InstanceData.BlackfathomDeeps = {
-    Name = BZ["Blackfathom Deeps"],
-    Location = BZ["Ashenvale"],
+    Name = LZ["Blackfathom Deeps"],
+    Location = LZ["Ashenvale"],
     Level = { 19, 32 },
     Acronym = "BFD",
     MaxPlayers = 5,
@@ -46,7 +52,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         {
             id = "BFDGhamoora",
             prefix = "1)",
-            name = BB["Ghamoo-ra"],
+            name = LB["Ghamoo-ra"],
             loot = {
                 { id = 6907, dropRate = 50 }, -- Tortoise Armor
                 { id = 6908, dropRate = 50 }, -- Ghamoo-ra's Bind
@@ -57,13 +63,13 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         {
             id = "BFDLorgalisManuscript",
             prefix = "a)",
-            name = L["Lorgalis Manuscript"],
+            name = LMD["Lorgalis Manuscript"],
             color = Colors.GREEN,
         },
         {
             id = "BFDLadySarevess",
             prefix = "2)",
-            name = BB["Lady Sarevess"],
+            name = LB["Lady Sarevess"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 888 }, -- Naga Battle Gloves
@@ -77,13 +83,13 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         {
             id = "BFDArgentGuardThaelrid",
             prefix = "b)",
-            name = L["Argent Guard Thaelrid"],
+            name = LMD["Argent Guard Thaelrid"],
             color = Colors.GREEN,
         },
         {
             id = "BFDGelihast",
             prefix = "3)",
-            name = BB["Gelihast"],
+            name = LB["Gelihast"],
             loot = {
                 { id = 6906, dropRate = 50 }, -- Algae Fists
                 { id = 6905, dropRate = 50 }, -- Reef Axe
@@ -95,20 +101,20 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         },
         {
             id = "BFDShrineofGelihast",
-            name = L["Shrine of Gelihast"],
+            name = LMD["Shrine of Gelihast"],
             color = Colors.GREY,
         },
         {
             id = "BFDLorgusJett",
             prefix = "c)",
-            name = BB["Lorgus Jett"],
+            name = LB["Lorgus Jett"],
             postfix = L["Varies"],
             color = Colors.GREEN,
         },
         {
             id = "BFDVelthelaxxtheDefiler",
             prefix = "4)",
-            name = BB["Velthelaxx the Defiler"],
+            name = LB["Velthelaxx the Defiler"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58120 }, -- Cowl of Whispering Shadows
@@ -120,14 +126,14 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         {
             id = "BFDBaronAquanis",
             prefix = "5)",
-            name = BB["Baron Aquanis"],
+            name = LB["Baron Aquanis"],
             loot = {
                 { id = 16782, dropRate = 100, container = { 16886, 16887 } }, -- Strange Water Globe
             }
         },
         {
             id = "BFDFathomStone",
-            name = L["Fathom Stone"],
+            name = LMD["Fathom Stone"],
             loot = {
                 { id = 16762, dropRate = 100 }, -- Fathom Core
             }
@@ -135,7 +141,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         {
             id = "BFDTwilightLordKelris",
             prefix = "6)",
-            name = BB["Twilight Lord Kelris"],
+            name = LB["Twilight Lord Kelris"],
             loot = {
                 { id = 1155, dropRate = 50 }, -- Rod of the Sleepwalker
                 { id = 6903, dropRate = 35 }, -- Gaze Dreamer Pants
@@ -147,7 +153,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         {
             id = "BFDOldSerrakis",
             prefix = "7)",
-            name = BB["Old Serra'kis"],
+            name = LB["Old Serra'kis"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 6901 }, -- Glowing Thresher Cape
@@ -159,7 +165,7 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         {
             id = "BFDAkumai",
             prefix = "8)",
-            name = BB["Aku'mai"],
+            name = LB["Aku'mai"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 6911 }, -- Moss Cinch
@@ -172,17 +178,17 @@ AtlasTW.InstanceData.BlackfathomDeeps = {
         },
         {
             id = "BFDMorridune",
-            name = L["Morridune"],
+            name = LMD["Morridune"],
             color = Colors.GREY,
         },
         {
             id = "BFDAltaroftheDeeps",
-            name = L["Altar of the Deeps"],
+            name = LMD["Altar of the Deeps"],
             color = Colors.GREY,
         },
         {
             id = "BFDTrash",
-            name = L["Trash Mobs"].."-"..BZ["Blackfathom Deeps"],
+            name = L["Trash Mobs"].."-"..LZ["Blackfathom Deeps"],
             defaults = { dropRate = .1 },
             loot = {
                 { id = 1486 }, -- Tree Bark Jacket

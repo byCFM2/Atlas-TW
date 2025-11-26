@@ -8,7 +8,8 @@ AtlasTW = _G.AtlasTW or {}
 AtlasTW.QuickLook = {}
 
 -- Local references for performance
-local L = AtlasTW.Local
+local L = AtlasTW.Localization.UI
+
 local BLUE = AtlasTW.Colors.BLUE
 local WHITE = AtlasTW.Colors.WHITE
 ---

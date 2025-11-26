@@ -17,37 +17,38 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
-local BC = AceLibrary("Babble-Class-2.2")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
+
 local GREY = AtlasTW.Colors.GREY
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.BlackrockSpireUpper = {
-    Name = BZ["Upper Blackrock Spire"],
-    Location = BZ["Blackrock Mountain"],
+    Name = LZ["Upper Blackrock Spire"],
+    Location = LZ["Blackrock Mountain"],
     Level = { 55, 60 },
     Acronym = "UBRS",
     MaxPlayers = 10,
     DamageType = L["Fire"], L["Physical"],
     Entrances = {
         { letter = "A) ".. L["Entrance"] },
-        { letter = "B)", info = BZ["Lower Blackrock Spire"] },
+        { letter = "B)", info = LZ["Lower Blackrock Spire"] },
         { letter = "C-E)", info = L["Connections"] }
     },
     Keys = {
-        { name = "Seal of Ascension", loot = "VanillaKeys" },
-        { name = "Brazier of Invocation", loot = "VanillaKeys", info = L["Tier 0.5 Summon"] }
+        { name = LMD["Seal of Ascension"], loot = "VanillaKeys" },
+        { name = LMD["Brazier of Invocation"], loot = "VanillaKeys", info = LMD["Tier 0.5 Summon"] }
     },
     Bosses = {
         {
             id = "UBRSEmberseer",
             prefix = "1)",
-            name = BB["Pyroguard Emberseer"],
+            name = LB["Pyroguard Emberseer"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 16672, disc = L["Shaman"]..", ".."T0" }, -- Gauntlets of Elements
@@ -68,7 +69,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         {
             id = "UBRSSolakar",
             prefix = "2)",
-            name = BB["Solakar Flamewreath"],
+            name = LB["Solakar Flamewreath"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 16695, disc = L["Priest"]..", ".."T0" }, -- Devout Mantle
@@ -86,24 +87,24 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         },
         {
             id = "UBRSFlame",
-            name = L["Father Flame"],
+            name = LMD["Father Flame"],
             loot = {
                 { id = 13371, dropRate = .08 }, -- Father Flame
             }
         },
         {
             prefix = "3)",
-            name = L["Darkstone Tablet"],
+            name = LMD["Darkstone Tablet"],
             color = GREY,
         },
         {
-            name = L["Doomrigger's Coffer"],
+            name = LMD["Doomrigger's Coffer"],
             color = GREY,
         },
         {
             id = "UBRSRunewatcher",
             prefix = "4)",
-            name = BB["Jed Runewatcher"],
+            name = LB["Jed Runewatcher"],
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
@@ -120,7 +121,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         {
             id = "UBRSAnvilcrack",
             prefix = "5)",
-            name = BB["Goraluk Anvilcrack"],
+            name = LB["Goraluk Anvilcrack"],
             postfix = L["Rare"],
             defaults = { dropRate = 14 },
             loot = {
@@ -142,7 +143,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         {
             id = "UBRSRend",
             prefix = "6)",
-            name = BB["Warchief Rend Blackhand"],
+            name = LB["Warchief Rend Blackhand"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 12587, dropRate = 23 }, -- Eye of Rend
@@ -172,7 +173,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         },
         {
             id = "UBRSGyth",
-            name = BB["Gyth"],
+            name = LB["Gyth"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 16669, disc = L["Shaman"]..", ".."T0" }, -- Pauldrons of Elements
@@ -193,13 +194,13 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         },
         {
             prefix = "7)",
-            name = L["Awbee"],
+            name = LMD["Awbee"],
             color = GREY,
         },
         {
             id = "UBRSBeast",
             prefix = "8)",
-            name = BB["The Beast"],
+            name = LB["The Beast"],
             defaults = { dropRate = 10 },
             loot = {
                 { id = 16729, disc = L["Paladin"]..", ".."T0", dropRate = 10 }, -- Lightforge Spaulders
@@ -226,7 +227,7 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
         },
         {
             id = "UBRSValthalak",
-            name = BB["Lord Valthalak"],
+            name = LB["Lord Valthalak"],
             postfix = L["Summon"],
             defaults = { dropRate = 25 },
             loot = {
@@ -246,13 +247,13 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
             }
         },
         {
-            name = L["Finkle Einhorn"],
+            name = LMD["Finkle Einhorn"],
             color = GREY,
         },
         {
             id = "UBRSDrakkisath",
             prefix = "9)",
-            name = BB["General Drakkisath"],
+            name = LB["General Drakkisath"],
             defaults = { dropRate = 11 },
             loot = {
                 { id = 22267, dropRate = 25 }, -- Spellweaver's Turban
@@ -291,18 +292,18 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
             }
         },
         {
-            name = L["Drakkisath's Brand"],
+            name = LMD["Drakkisath's Brand"],
             color = GREY,
         },
         {
             prefix = "10)",
-            name = BZ["Blackwing Lair"],
+            name = LZ["Blackwing Lair"],
             postfix = "BWL",
             color = GREY,
         },
         {
             id = "UBRSTrash",
-            name = L["Trash Mobs"].."-"..BZ["Upper Blackrock Spire"],
+            name = L["Trash Mobs"].."-"..LZ["Upper Blackrock Spire"],
             defaults = { dropRate = 2 },
             loot = {
                 { id = 13260, dropRate = .05 }, -- Wind Dancer Boots
@@ -321,8 +322,8 @@ AtlasTW.InstanceData.BlackrockSpireUpper = {
                 { id = 16247, dropRate = 3 }, -- Formula: Enchant 2H Weapon - Superior Impact
             }
         },
-        { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
-        { name = BIS["Dal'Rend's Arms"], items = "DalRend" },
+        { name = LIS["Ironweave Battlesuit"], items = "Ironweave" },
+        { name = LIS["Dal'Rend's Arms"], items = "DalRend" },
         { name = L["Tier 0/0.5 Sets"], items = "AtlasTWLootT0SetMenu" },
     }
 }

@@ -1,0 +1,57 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+
+	<!-- Core Localization System -->
+	<Include file="LocalizationFramework.lua"/>
+
+	<!-- Core UI Strings -->
+	<Include file="enUS\Core.lua"/>
+	<!-- GameData Modules -->
+	<Include file="enUS\Zones.lua"/>
+	<Include file="enUS\Bosses.lua"/>
+	<Include file="enUS\Classes.lua"/>
+	<Include file="enUS\Factions.lua"/>
+	<Include file="enUS\Spells.lua"/>
+	<Include file="enUS\ItemSets.lua"/>
+	<Include file="enUS\MapData.lua"/>
+	<Include file="enUS\QuestData.lua"/>
+
+	<Include file="deDE\Core.lua"/>
+	<Include file="deDE\MapData.lua"/>
+	<Include file="deDE\Zones.lua"/>
+	<Include file="deDE\Bosses.lua"/>
+	<Include file="deDE\Classes.lua"/>
+	<Include file="deDE\Factions.lua"/>
+	<Include file="deDE\Spells.lua"/>
+	<Include file="deDE\ItemSets.lua"/>
+	<Include file="deDE\QuestData.lua"/>
+
+	<Include file="esES\Core.lua"/>
+	<Include file="esES\MapData.lua"/>
+	<Include file="esES\Zones.lua"/>
+	<Include file="esES\Bosses.lua"/>
+	<Include file="esES\Classes.lua"/>
+	<Include file="esES\Factions.lua"/>
+	<Include file="esES\Spells.lua"/>
+	<Include file="esES\ItemSets.lua"/>
+	<Include file="esES\QuestData.lua"/>
+
+	<Include file="ptBR\Core.lua"/>
+	<Include file="ptBR\MapData.lua"/>
+	<Include file="ptBR\Zones.lua"/>
+	<Include file="ptBR\Bosses.lua"/>
+	<Include file="ptBR\Classes.lua"/>
+	<Include file="ptBR\Factions.lua"/>
+	<Include file="ptBR\Spells.lua"/>
+	<Include file="ptBR\ItemSets.lua"/>
+	<Include file="ptBR\QuestData.lua"/>
+
+	<Include file="zhCN\Core.lua"/>
+	<Include file="zhCN\MapData.lua"/>
+	<Include file="zhCN\Zones.lua"/>
+	<Include file="zhCN\Bosses.lua"/>
+	<Include file="zhCN\Classes.lua"/>
+	<Include file="zhCN\Factions.lua"/>
+	<Include file="zhCN\Spells.lua"/>
+	<Include file="zhCN\ItemSets.lua"/>
+	<Include file="zhCN\QuestData.lua"/>
+</Ui>

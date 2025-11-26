@@ -18,11 +18,12 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 
---Instance required libraries
-local L = AtlasTW.Local
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local L = AtlasTW.Localization.UI
+local LM = AtlasTW.Localization.MapData
+local LS = AtlasTW.Localization.Spells
+local LB = AtlasTW.Localization.Bosses
+local LZ = AtlasTW.Localization.Zones
+local LIS = AtlasTW.Localization.ItemSets
 
 AtlasTWLoot_Data = AtlasTWLoot_Data or {}
 
@@ -32,47 +33,47 @@ local WorldEvents = {
 	----------------------------------
 
 	AbyssalCouncil = {
-		{ name = L["Crimson Templar"] },
+		{ name = LM["Crimson Templar"] },
 		{ id = 20657, dropRate=5 }, -- Crystal Tipped Stiletto
 		{ id = 20655, dropRate=13, disc=L["Random stats"] }, -- Abyssal Cloth Handwraps
 		{ id = 20656, dropRate=13, disc=L["Random stats"] }, -- Abyssal Mail Sabatons
 		{ id = 20513, dropRate=100, disc = L["Quest Item"], container = { 20603 } }, -- Abyssal Crest
 		{},
-		{ name = L["Azure Templar"] },
+		{ name = LM["Azure Templar"] },
 		{ id = 20654, dropRate=5 }, -- Amethyst War Staff
 		{ id = 20653, dropRate=12, disc=L["Random stats"] }, -- Abyssal Plate Gauntlets
 		{ id = 20652, dropRate=12, disc=L["Random stats"] }, -- Abyssal Cloth Slippers
 		{ id = 20513, dropRate=100, disc = L["Quest Item"], container = { 20603 } }, -- Abyssal Crest
 		{},
-		{ name = L["The Duke of Cynders"] },
+		{ name = LM["The Duke of Cynders"] },
 		{ id = 20665, dropRate=30, disc=L["Random stats"] }, -- Abyssal Leather Leggings
 		{ id = 20666, dropRate=30 }, -- Hardened Steel Warhammer
-		{ name = L["Hoary Templar"] },
+		{ name = LM["Hoary Templar"] },
 		{ id = 20660, dropRate=5 }, -- Stonecutting Glaive
 		{ id = 20659, dropRate=13, disc=L["Random stats"] }, -- Abyssal Mail Handguards
 		{ id = 20658, dropRate=13, disc=L["Random stats"] }, -- Abyssal Leather Boots
 		{ id = 20513, dropRate=100, disc = L["Quest Item"], container = { 20603 } }, -- Abyssal Crest
 		{},
-		{ name = L["Earthen Templar"] },
+		{ name = LM["Earthen Templar"] },
 		{ id = 20663, dropRate=6 }, -- Deep Strike Bow
 		{ id = 20661, dropRate=13, disc=L["Random stats"] }, -- Abyssal Leather Gloves
 		{ id = 20662, dropRate=12, disc=L["Random stats"] }, -- Abyssal Plate Greaves
 		{ id = 20513, dropRate=100, disc = L["Quest Item"], container = { 20603 } }, -- Abyssal Crest
 		{},
-		{ name = L["The Duke of Zephyrs"] },
+		{ name = LM["The Duke of Zephyrs"] },
 		{ id = 20674, dropRate=40, disc=L["Random stats"] }, -- Abyssal Cloth Pants
 		{ id = 20675, dropRate=30 }, -- Soulrender
 		{ id = 20514, dropRate=100, disc = L["Quest Item"], container = { 20601, 20451 } }, -- Abyssal Signet
 		{ id = 20664, dropRate=40, disc=L["Random stats"] }, -- Abyssal Cloth Sash
 		{ id = 21989, dropRate=100, container={{22192,3},{22193,3}} }, -- Cinder of Cynders
 		{},
-		{ name = L["The Duke of Fathoms"] },
+		{ name = LM["The Duke of Fathoms"] },
 		{ id = 20668, dropRate=30, disc=L["Random stats"] }, -- Abyssal Mail Legguards
 		{ id = 20669, dropRate=30 }, -- Darkstone Claymore
 		{ id = 20514, dropRate=100, disc = L["Quest Item"], container = { 20601, 20451 } }, -- Abyssal Signet
 		{ id = 20667, dropRate=40, disc=L["Random stats"] }, -- Abyssal Leather Belt
 		{},
-		{ name = L["Prince Skaldrenox"], info = L["Fire"] },
+		{ name = LM["Prince Skaldrenox"], info = L["Fire"] },
 		{ id = 20682, dropRate = 50 }, -- Elemental Focus Band
 		{ id = 83562, dropRate = 50 }, -- Skaldrenox's Rage
 		{ id = 20681, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Leather Bracers
@@ -81,13 +82,13 @@ local WorldEvents = {
 		{ id = 20673, dropRate=30, disc=L["Random stats"] }, -- Abyssal Plate Girdle
 		{},
 		{},
-		{ name = L["The Duke of Shards"] },
+		{ name = LM["The Duke of Shards"] },
 		{ id = 20671, dropRate=30, disc=L["Random stats"] }, -- Abyssal Plate Legplates
 		{ id = 20672, dropRate=30 }, -- Sparkling Crystal Wand
 		{ id = 20514, dropRate=100, disc = L["Quest Item"], container = { 20601, 20451 } }, -- Abyssal Signet
 		{ id = 20670, dropRate=40, disc=L["Random stats"] }, -- Abyssal Mail Clutch
 		{},
-		{ name = L["High Marshal Whirlaxis"], info = L["Air"] },
+		{ name = LM["High Marshal Whirlaxis"], info = L["Air"] },
 		{ id = 20691, dropRate = 50 }, -- Windshear Cape
 		{ id = 83564, dropRate = 50 }, -- Tempest's Rage
 		{ id = 20690, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Cloth Wristbands
@@ -95,7 +96,7 @@ local WorldEvents = {
 		{ id = 20515, dropRate = 100, disc = L["Quest Item"], container = { 20602, 22725 } }, -- Abyssal Scepter
 		{ id = 83554, dropRate = 40, disc = L["Reagent"], container = { 83558, 65025 } }, -- Abyssal Flame
 		{},
-		{ name = L["Lord Skwol"], info = L["Water"] },
+		{ name = LM["Lord Skwol"], info = LS["Water"] },
 		{ id = 20685, dropRate = 50 }, -- Wavefront Necklace
 		{ id = 83563, dropRate = 50 }, -- Pearl of the Tides
 		{ id = 20684, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Mail Armguards
@@ -110,7 +111,7 @@ local WorldEvents = {
 		{ id = 20515, dropRate = 100, disc = L["Quest Item"], container = { 20602, 22725 } }, -- Abyssal Scepter
 		{ id = 83556, dropRate = 40, disc = L["Reagent"], container = { 83560, 65027 } }, -- Abyssal Wind
 		{},
-		{ name = L["Baron Kazum"], info = L["Earth"] },
+		{ name = LM["Baron Kazum"], info = L["Earth"] },
 		{ id = 20688, dropRate = 50 }, -- Earthen Guard
 		{ id = 83565, dropRate = 50 }, -- Blackstone Crown
 		{ id = 20686, dropRate = 50, disc = L["Random stats"] }, -- Abyssal Cloth Amice
@@ -119,14 +120,14 @@ local WorldEvents = {
 		{ id = 83555, dropRate = 40, disc = L["Reagent"], container = { 83559, 65024 } }, -- Abyssal Slate
 	},
 	ElementalInvasion = {
-		{ name = L["Baron Charr"], info = BZ["Un'Goro Crater"], icon="Spell_Fire_Elemental_Totem" },
+		{ name = LB["Baron Charr"], info = LZ["Un'Goro Crater"], icon="Spell_Fire_Elemental_Totem" },
 		{ id = 83550, dropRate = 100 }, -- Primordial Flame
 		{ id = 18671, dropRate = 21 }, -- Baron Charr's Sceptre
 		{ id = 80850, dropRate = 15 }, -- Circlet of the Living Volcano
 		{ id = 19268, dropRate = 10, disc = L["Reagent"], container={19267, 19289} }, -- Ace of Elementals
 		{ id = 18672, dropRate = 50 }, -- Elemental Ember
 		{ id = 80849, dropRate = 15 }, -- Living Ember Pendant
-		{ name = L["Princess Tempestria"], info = BZ["Winterspring"], icon="Spell_Fire_Elemental_Totem" },
+		{ name = LB["Princess Tempestria"], info = LZ["Winterspring"], icon="Spell_Fire_Elemental_Totem" },
 		{ id = 83552, dropRate = 100 }, -- Unmelting Ice
 		{ id = 18678, dropRate = 30 }, -- Tempestria's Frozen Necklace
 		{ id = 80843, dropRate = 15 }, -- Tideturner Boots
@@ -134,14 +135,14 @@ local WorldEvents = {
 		{ id = 80844, dropRate = 15 }, -- Tempestria's Frozen Heart
 		{ id = 18679, dropRate = 50 }, -- Frigid Ring
 		{ id = 21548, dropRate = 31, container = { 21278 } }, -- Pattern: Stormshroud Gloves
-		{ name = L["Avalanchion"], info = BZ["Azshara"], icon="Spell_Fire_Elemental_Totem" },
+		{ name = LB["Avalanchion"], info = LZ["Azshara"], icon="Spell_Fire_Elemental_Totem" },
 		{ id = 83551, dropRate = 100 }, -- Evershifting Stone
 		{ id = 18673, dropRate = 30 }, -- Avalanchion's Stony Hide
 		{ id = 80851, dropRate = 15 }, -- Earthclad Bracers
 		{ id = 19268, dropRate = 6, disc = L["Reagent"], container={19267, 19289} }, -- Ace of Elementals
 		{ id = 18674, dropRate = 50 }, -- Hardened Stone Band
 		{ id = 80852, dropRate = 15 }, -- Earthshard Necklace
-		{ name = L["The Windreaver"], info = BZ["Silithus"], icon="Spell_Fire_Elemental_Totem" },
+		{ name = LB["The Windreaver"], info = LZ["Silithus"], icon="Spell_Fire_Elemental_Totem" },
 		{ id = 83553, dropRate = 100 }, -- Unyielding Gust
 		{ id = 18676, dropRate = 25 }, -- Sash of the Windreaver
 		{ id = 80853, dropRate = 15 }, -- Thunderstruck Talisman
@@ -184,7 +185,7 @@ local WorldEvents = {
 	Valentineday = {
 		{ id = 22206, dropRate = .43 }, -- Bouquet of Red Roses
 		{},
-		{ name = L["Gift of Adoration"], icon="INV_ValentinesBoxOfChocolates02" },
+		{ name = LM["Gift of Adoration"], icon="INV_ValentinesBoxOfChocolates02" },
 		{ id = 22279 }, -- Lovely Black Dress
 		{ id = 22235 }, -- Truesilver Shafted Arrow
 		{ id = 22200, disc = L["Misc"] }, -- Silver Shafted Arrow
@@ -197,7 +198,7 @@ local WorldEvents = {
 		{},
 		{},
 		{},
-		{ name = L["Box of Chocolates"], icon="INV_ValentinesBoxOfChocolates02" },
+		{ name = LM["Box of Chocolates"], icon="INV_ValentinesBoxOfChocolates02" },
 		{ id = 22237, disc = L["Consumable"] }, -- Dark Desire
 		{ id = 22238, disc = L["Consumable"] }, -- Very Berry Cream
 		{ id = 22236, disc = L["Consumable"] }, -- Buttermilk Delight
@@ -223,10 +224,10 @@ local WorldEvents = {
 		{ id = 20388, disc = L["Consumable"] }, -- Lollipop
 		{ id = 20390, disc = L["Consumable"] }, -- Candy Bar
 		{},
-		{ name = L["Treat Bag"], icon="INV_Misc_Bag_11" },
+		{ name = LM["Treat Bag"], icon="INV_Misc_Bag_11" },
 		{ id = 20561 }, -- Flimsy Male Dwarf Mask
 		{ id = 20391 }, -- Flimsy Male Gnome Mask
-		{ name = L["Treat Bag"], icon="INV_Misc_Bag_11" },
+		{ name = LM["Treat Bag"], icon="INV_Misc_Bag_11" },
 		{ id = 20410, disc = L["Misc"] }, -- Hallowed Wand - Bat
 		{ id = 20409, disc = L["Misc"] }, -- Hallowed Wand - Ghost
 		{ id = 20399, disc = L["Misc"] }, -- Hallowed Wand - Leper Gnome
@@ -236,7 +237,7 @@ local WorldEvents = {
 		{ id = 20411, disc = L["Misc"] }, -- Hallowed Wand - Skeleton
 		{ id = 20414, disc = L["Misc"] }, -- Hallowed Wand - Wisp
 		{},
-		{ name = L["Treat Bag"], icon="INV_Misc_Bag_11" },
+		{ name = LM["Treat Bag"], icon="INV_Misc_Bag_11" },
 		{ id = 20562 }, -- Flimsy Female Dwarf Mask
 		{ id = 20392 }, -- Flimsy Female Gnome Mask
 		{ id = 20565 }, -- Flimsy Female Human Mask
@@ -270,7 +271,7 @@ local WorldEvents = {
 		{ id = 21212, disc = L["Misc"] }, -- Fresh Holly
 		{ id = 21519, disc = L["Misc"] }, -- Mistletoe
 		{},
-		{ name = L["Gaily Wrapped Present"], icon="INV_Holiday_Christmas_Present_01" },
+		{ name = LM["Gaily Wrapped Present"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 21301 }, -- Green Helper Box
 		{ id = 21308 }, -- Jingling Bell
 		{ id = 21305 }, -- Red Helper Box
@@ -288,7 +289,7 @@ local WorldEvents = {
 		{ id = 21325 }, -- Mechanical Greench
 		{ id = 21213, disc = L["Misc"] }, -- Preserved Holly
 		{},
-		{ name = L["Gently Shaken Gift"], icon="INV_Holiday_Christmas_Present_01" },
+		{ name = LM["Gently Shaken Gift"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 21235, disc = L["Consumable"] }, -- Winter Veil Roast
 		{ id = 21241, disc = L["Consumable"] }, -- Winter Veil Eggnog
 		{},
@@ -307,14 +308,14 @@ local WorldEvents = {
 		{ id = 17303, disc = L["Misc"] }, -- Blue Ribboned Wrapping Paper
 		{ id = 17304, disc = L["Misc"] }, -- Green Ribboned Wrapping Paper
 		{ id = 17307, disc = L["Misc"] }, -- Purple Ribboned Wrapping Paper
-		{ name = L["Snowball"], icon="INV_Holiday_Christmas_Present_01" },
+		{ name = LM["Snowball"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 51249 }, -- Snowball
 		{},
-		{ name = L["Festive Gift"], icon="INV_Holiday_Christmas_Present_01" },
+		{ name = LM["Festive Gift"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 21328, disc = L["Misc"] }, -- Wand of Holiday Cheer
 	},
 	Noblegarden = {
-		{ name = L["Brightly Colored Egg"], icon="INV_Egg_03" },
+		{ name = LM["Brightly Colored Egg"], icon="INV_Egg_03" },
 		{ id = 19028 }, -- Elegant Dress
 		{ id = 6833 }, -- White Tuxedo Shirt
 		{ id = 6835 }, -- Black Tuxedo Pants
@@ -342,12 +343,12 @@ local WorldEvents = {
 		{ id = 22484, disc = L["Quest Item"] }, -- Necrotic Rune
 
 		{},
-		{ name = BIS["Regalia of Undead Cleansing"], icon="INV_Jewelry_Talisman_13" },
+		{ name = LIS["Regalia of Undead Cleansing"], icon="INV_Jewelry_Talisman_13" },
 		{ id = 23085 }, -- Robe of Undead Cleansing
 		{ id = 23091 }, -- Bracers of Undead Cleansing
 		{ id = 23084 }, -- Gloves of Undead Cleansing
 		{},
-		{ name = BIS["Undead Slayer's Armor"], icon="INV_Jewelry_Talisman_13" },
+		{ name = LIS["Undead Slayer's Armor"], icon="INV_Jewelry_Talisman_13" },
 		{ id = 23089 }, -- Tunic of Undead Slaying
 		{ id = 23093 }, -- Wristwraps of Undead Slaying
 		{ id = 23081 }, -- Handwraps of Undead Slaying
@@ -357,41 +358,41 @@ local WorldEvents = {
 		{ id = 23196, disc = L["Consumable"] }, -- Greater Mark of the Dawn
 		{},
 		{},
-		{ name = BIS["Garb of the Undead Slayer"], icon="INV_Jewelry_Talisman_13" },
+		{ name = LIS["Garb of the Undead Slayer"], icon="INV_Jewelry_Talisman_13" },
 		{ id = 23088 }, -- Chestguard of Undead Slaying
 		{ id = 23092 }, -- Wristguards of Undead Slaying
 		{ id = 23082 }, -- Handguards of Undead Slaying
 		{},
-		{ name = BIS["Battlegear of Undead Slaying"], icon="INV_Jewelry_Talisman_13" },
+		{ name = LIS["Battlegear of Undead Slaying"], icon="INV_Jewelry_Talisman_13" },
 		{ id = 23087 }, -- Breastplate of Undead Slaying
 		{ id = 23090 }, -- Bracers of Undead Slaying
 		{ id = 23078 }, -- Gauntlets of Undead Slaying
 		{},
-		{ name = BB["Balzaphon"], info = BZ["Stratholme"] },
+		{ name = LB["Balzaphon"], info = LZ["Stratholme"] },
 		{ id = 23126, dropRate = 27.38 }, -- Waistband of Balzaphon
 		{ id = 23125, dropRate = 19.89 }, -- Chains of the Lich
 		{ id = 23124, dropRate = 24.74 }, -- Staff of Balzaphon
 		{},
-		{ name = BB["Lord Blackwood"], info = BZ["Scholomance"] },
+		{ name = LB["Lord Blackwood"], info = LZ["Scholomance"] },
 		{ id = 23132, dropRate = 12.83 }, -- Lord Blackwood's Blade
 		{ id = 23156, dropRate = 45.21 }, -- Blackwood's Thigh
 		{ id = 23139, dropRate = 38.75 }, -- Lord Blackwood's Buckler
 		{},
-		{ name = BB["Revanchion"], info = BZ["Dire Maul (West)"] },
+		{ name = LB["Revanchion"], info = LZ["Dire Maul (West)"] },
 		{ id = 23127, dropRate = 38.49 }, -- Cloak of Revanchion
 		{ id = 23129, dropRate = 39.61 }, -- Bracers of Mending
 		{ id = 23128, dropRate = 21.81 }, -- The Shadow's Grasp
 		{},
-		{ name = BB["Scorn"], info = BZ["Scarlet Monastery (Cathedral)"] },
+		{ name = LB["Scorn"], info = LZ["Scarlet Monastery (Cathedral)"] },
 		{ id = 23169, dropRate = 27.49 }, -- Scorn's Icy Choker
 		{ id = 23170, dropRate = 56.15 }, -- The Frozen Clutch
 		{ id = 23168, dropRate = 16.36 }, -- Scorn's Focal Dagger
 		{},
-		{ name = BB["Sever"], info = BZ["Shadowfang Keep"] },
+		{ name = LB["Sever"], info = LZ["Shadowfang Keep"] },
 		{ id = 23173, dropRate = 76.87 }, -- Abomination Skin Leggings
 		{ id = 23171, dropRate = 22.94 }, -- The Axe of Severing
 		{},
-		{ name = BB["Lady Falther'ess"], info = BZ["Razorfen Downs"] },
+		{ name = LB["Lady Falther'ess"], info = LZ["Razorfen Downs"] },
 		{ id = 23178, dropRate = 61.24 }, -- Mantle of Lady Falther'ess
 		{ id = 23177, dropRate = 38.17 }, -- Lady Falther'ess' Finger
 	},

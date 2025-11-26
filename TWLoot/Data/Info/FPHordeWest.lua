@@ -17,160 +17,163 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LF = AtlasTW.Localization.Factions
+local LMD = AtlasTW.Localization.MapData
+
 local Green = AtlasTW.Colors.GREEN
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.FPHordeWest = {
-    Name = BF["Horde"] .. " (" .. BZ["Kalimdor"] .. ")",
-    Location = BZ["Kalimdor"],
+    Name = LF["Horde"] .. " (" .. LZ["Kalimdor"] .. ")",
+    Location = LZ["Kalimdor"],
     Bosses = {
         {
             id = "FPNighthaven",
             prefix = "1)",
-            name = L["Nighthaven"],
-            postfix = BZ["Moonglade"]..", "..L["Druid-only"],
+            name = LMD["Nighthaven"],
+            postfix = LZ["Moonglade"]..", "..LMD["Druid-only"],
             color = Green,
         },
         {
             id = "FPNighthavenPath",
-            name = L["West of the path to Timbermaw Hold"],
-            postfix = BZ["Moonglade"],
+            name = LMD["West of the path to Timbermaw Hold"],
+            postfix = LZ["Moonglade"],
         },
         {
             id = "FPEverlook",
             prefix = "2)",
-            name = L["Everlook"],
-            postfix = BZ["Winterspring"],
+            name = LZ["Everlook"],
+            postfix = LZ["Winterspring"],
         },
         {
             id = "FPNordanaar",
             prefix = "3)",
-            name = L["Nordanaar"],
-            postfix = BZ["Hyjal"],
+            name = LMD["Nordanaar"],
+            postfix = LZ["Hyjal"],
         },
         {
             id = "FPBloodvenomPost",
             prefix = "4)",
-            name = L["Bloodvenom Post"],
-            postfix = BZ["Felwood"],
+            name = LMD["Bloodvenom Post"],
+            postfix = LZ["Felwood"],
         },
         {
             id = "FPValormok",
             prefix = "5)",
-            name = L["Valormok"],
-            postfix = BZ["Azshara"],
+            name = LMD["Valormok"],
+            postfix = LZ["Azshara"],
         },
         {
             id = "FPOrgrimmar",
             prefix = "6)",
-            name = BZ["Orgrimmar"],
-            postfix = BZ["Durotar"],
+            name = LZ["Orgrimmar"],
+            postfix = LZ["Durotar"],
         },
         {
             id = "FPSplintertreePost",
             prefix = "7)",
-            name = L["Splintertree Post"],
-            postfix = BZ["Ashenvale"],
+            name = LMD["Splintertree Post"],
+            postfix = LZ["Ashenvale"],
         },
         {
             id = "FPZoramgarOutpost",
             prefix = "8)",
-            name = L["Zoram'gar Outpost"],
-            postfix = BZ["Ashenvale"],
+            name = LMD["Zoram'gar Outpost"],
+            postfix = LZ["Ashenvale"],
         },
         {
             id = "FPSunRockRetreat",
             prefix = "9)",
-            name = L["Sun Rock Retreat"],
-            postfix = BZ["Stonetalon Mountains"],
+            name = LMD["Sun Rock Retreat"],
+            postfix = LZ["Stonetalon Mountains"],
         },
         {
             id = "FPCrossroads",
             prefix = "10)",
-            name = L["Crossroads"],
-            postfix = BZ["The Barrens"],
+            name = LMD["Crossroads"],
+            postfix = LZ["The Barrens"],
         },
         {
             id = "FPRatchet",
             prefix = "11)",
-            name = L["Ratchet"],
-            postfix = BZ["The Barrens"],
+            name = LZ["Ratchet"],
+            postfix = LZ["The Barrens"],
         },
         {
             id = "FPThunderBluff",
             prefix = "12)",
-            name = BZ["Thunder Bluff"],
-            postfix = BZ["Mulgore"],
+            name = LZ["Thunder Bluff"],
+            postfix = LZ["Mulgore"],
         },
         {
             id = "FPShadowpreyVillage",
             prefix = "13)",
-            name = L["Shadowprey Village"],
-            postfix = BZ["Desolace"],
+            name = LMD["Shadowprey Village"],
+            postfix = LZ["Desolace"],
         },
         {
             id = "FPCampTaurajo",
             prefix = "14)",
-            name = L["Camp Taurajo"],
-            postfix = BZ["The Barrens"],
+            name = LMD["Camp Taurajo"],
+            postfix = LZ["The Barrens"],
         },
         {
             id = "FPBrackenwallVillage",
             prefix = "15)",
-            name = L["Brackenwall Village"],
-            postfix = BZ["Dustwallow Marsh"],
+            name = LMD["Brackenwall Village"],
+            postfix = LZ["Dustwallow Marsh"],
         },
         {
             id = "FPMudsprocket",
             prefix = "16)",
-            name = L["Mudsprocket"],
-            postfix = BZ["Dustwallow Marsh"],
+            name = LMD["Mudsprocket"],
+            postfix = LZ["Dustwallow Marsh"],
         },
         {
             id = "FPFreewindPost",
             prefix = "17)",
-            name = L["Freewind Post"],
-            postfix = BZ["Thousand Needles"],
+            name = LMD["Freewind Post"],
+            postfix = LZ["Thousand Needles"],
         },
         {
             id = "FPCampMojache",
             prefix = "18)",
-            name = L["Camp Mojache"],
-            postfix = BZ["Feralas"],
+            name = LMD["Camp Mojache"],
+            postfix = LZ["Feralas"],
         },
         {
             id = "FPGadgetzan",
             prefix = "19)",
-            name = BZ["Gadgetzan"],
-            postfix = BZ["Tanaris"],
+            name = LZ["Gadgetzan"],
+            postfix = LZ["Tanaris"],
         },
         {
             id = "FPTelCoBasecamp",
             prefix = "20)",
-            name = L["Tel Co. Basecamp"],
-            postfix = BZ["Tel'Abim"],
+            name = LMD["Tel Co. Basecamp"],
+            postfix = LZ["Tel'Abim"],
         },
         {
             id = "FPMarshalsRefuge",
             prefix = "21)",
-            name = L["Marshal's Refuge"],
-            postfix = BZ["Un'Goro Crater"],
+            name = LMD["Marshal's Refuge"],
+            postfix = LZ["Un'Goro Crater"],
         },
         {
             id = "FPCenarionHold",
             prefix = "22)",
-            name = L["Cenarion Hold"],
-            postfix = BZ["Silithus"],
+            name = LMD["Cenarion Hold"],
+            postfix = LZ["Silithus"],
         },
         {
             id = "FPSlickwickOilRig",
             prefix = "23)",
-            name = L["Slickwick Oil Rig"],
-            postfix = BZ["Tanaris"],
+            name = LMD["Slickwick Oil Rig"],
+            postfix = LZ["Tanaris"],
         },
     },
 }

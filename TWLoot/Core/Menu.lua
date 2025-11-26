@@ -9,9 +9,12 @@ AtlasTWLoot_Hewdrop = AceLibrary("Hewdrop-2.0")
 -- Instance required libraries
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
-local L = AtlasTW.Local
+
+local L = AtlasTW.Localization.UI
+local LM = AtlasTW.Localization.MapData
+local LS = AtlasTW.Localization.Spells
+
 AtlasTW.MenuData = AtlasTW.MenuData or {}
-local BS = AceLibrary("Babble-Spell-2.2a")
 
 -- Cache for localized strings (optimization)
 local LocalizedStrings = {
@@ -204,15 +207,15 @@ function AtlasTWLoot_OpenMenu(menuName)
 		[LocalizedStrings.Collections] = "AtlasTWLootSetMenu",
 		[LocalizedStrings.Factions] = "AtlasTWLootRepMenu",
 		[LocalizedStrings.DungeonsRaids] = "AtlasTWLoot_DungeonsMenu",
-		[BS["Alchemy"]] = "AtlasTWLoot_AlchemyMenu",
-		[BS["Blacksmithing"]] = "AtlasTWLoot_SmithingMenu",
-		[BS["Enchanting"]] = "AtlasTWLoot_EnchantingMenu",
-		[BS["Engineering"]] = "AtlasTWLoot_EngineeringMenu",
-		[BS["Leatherworking"]] = "AtlasTWLoot_LeatherworkingMenu",
-		[BS["Mining"]] = "AtlasTWLoot_MiningMenu",
-		[BS["Tailoring"]] = "AtlasTWLoot_TailoringMenu",
-		[BS["Jewelcrafting"]] = "AtlasTWLoot_JewelcraftingMenu",
-		[BS["Cooking"]] = "AtlasTWLoot_CookingMenu",
+		[LS["Alchemy"]] = "AtlasTWLoot_AlchemyMenu",
+		[LS["Blacksmithing"]] = "AtlasTWLoot_SmithingMenu",
+		[LS["Enchanting"]] = "AtlasTWLoot_EnchantingMenu",
+		[LS["Engineering"]] = "AtlasTWLoot_EngineeringMenu",
+		[LS["Leatherworking"]] = "AtlasTWLoot_LeatherworkingMenu",
+		[LS["Mining"]] = "AtlasTWLoot_MiningMenu",
+		[LS["Tailoring"]] = "AtlasTWLoot_TailoringMenu",
+		[LS["Jewelcrafting"]] = "AtlasTWLoot_JewelcraftingMenu",
+		[LS["Cooking"]] = "AtlasTWLoot_CookingMenu",
 		[L["Crafted Sets"]] = "AtlasTWLootCraftedSetMenu",
 		[L["PvP Armor Sets"]] = "AtlasTWLootPVPSetMenu",
 		[L["Priest Sets"]] = "AtlasTWLootPriestSetMenu",
@@ -338,7 +341,7 @@ function AtlasTWLoot_HewdropClick(tablename, text, tabletype)
 	end
 	-- Special handling for Rare Mobs
 	if pagename == LocalizedStrings.RareMobs then
-		pagename = L["Shade Mage"]
+		pagename = LM["Shade Mage"]
 	end
 
 	-- Remove color codes from text if available

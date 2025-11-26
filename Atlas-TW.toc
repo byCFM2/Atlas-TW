@@ -5,8 +5,7 @@
 ## Notes-esES: navegador de mapas de mazmorras; muestra el botín posible de los jefes y las misiones de la mazmorra.
 ## Notes-ptBR: navegador de mapas de masmorras; mostra o saque possível dos chefes e as missões da masmorra.
 ## Notes-zhCN: 副本地图浏览器; 显示首领可能掉落的战利品以及该副本的任务。
-## Notes-ruRU: обозреватель карт подземелий; показывает возможную добычу с боссов и задания в подземелье.
-## Version: 1.39
+## Version: 1.40
 ## Author: CFM, Otari98, Dan Gilbert, Daviesh, pepopo, etc
 ## SavedVariables: AtlasTWOptions
 ## SavedVariablesPerCharacter: AtlasTWCharDB
@@ -14,15 +13,7 @@
 
 Libs\AceLibrary\AceLibrary.lua
 Libs\AceOO-2.0\AceOO-2.0.lua
-Libs\AceLocale-2.2\AceLocale-2.2.lua
 Libs\Hewdrop-2.0\Hewdrop-2.0.lua
-
-Libs\Babble-Class-2.2\Babble-Class-2.2.lua
-Libs\Babble-Faction-2.2a\Babble-Faction-2.2a.lua
-Libs\Babble-ItemSet-2.2a\Babble-ItemSet-2.2a.lua
-Libs\Babble-Zone-2.2a\Babble-Zone-2.2a.lua
-Libs\Babble-Boss-2.2a\Babble-Boss-2.2a.lua
-Libs\Babble-Spell-2.2a\Babble-Spell-2.2a.lua
 
 AtlasTWInit.xml
 TWLoot\LootInit.xml

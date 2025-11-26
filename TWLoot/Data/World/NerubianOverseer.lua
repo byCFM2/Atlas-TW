@@ -17,16 +17,17 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- World boss Nerubian Overseer data
 AtlasTW.InstanceData.Nerubian = {
-    Name = BB["Nerubian Overseer"],
-    Location = BZ["Eastern Plaguelands"],
+    Name = LB["Nerubian Overseer"],
+    Location = LZ["Eastern Plaguelands"],
     Level = { 1, 60 },
     Acronym = "Spooder",
     MaxPlayers = 40,
@@ -35,7 +36,7 @@ AtlasTW.InstanceData.Nerubian = {
         {
             id = "WBNerubian",
             prefix = "1)",
-            name = BB["Nerubian Overseer"],
+            name = LB["Nerubian Overseer"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 51738 }, -- Tunnel Fiend Carapace

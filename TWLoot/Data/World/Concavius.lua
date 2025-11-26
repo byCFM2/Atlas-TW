@@ -17,16 +17,17 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- World bosses data
 AtlasTW.InstanceData.Concavius = {
-    Name = BB["Concavius"],
-    Location = BZ["Desolace"],
+    Name = LB["Concavius"],
+    Location = LZ["Desolace"],
     Level = { 1, 60 },
     Acronym = "Concavius",
     MaxPlayers = 40,
@@ -35,7 +36,7 @@ AtlasTW.InstanceData.Concavius = {
         {
             id = "WBConcavius",
             prefix = "1)",
-            name = BB["Concavius"],
+            name = LB["Concavius"],
             defaults = { dropRate = 17 },
             loot = {
                 { id = 83233 }, -- Charm of Dark Domination

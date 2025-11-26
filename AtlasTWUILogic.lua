@@ -16,7 +16,8 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
+
+local L = AtlasTW.Localization.UI
 
 -- Minimap button logic
 ---

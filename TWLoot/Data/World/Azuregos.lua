@@ -17,16 +17,17 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- World bosses data
 AtlasTW.InstanceData.Azuregos = {
-    Name = BB["Azuregos"],
-    Location = BZ["Azshara"],
+    Name = LB["Azuregos"],
+    Location = LZ["Azshara"],
     Level = { 1, 60 },
     Acronym = "AZ",
     MaxPlayers = 40,
@@ -35,7 +36,7 @@ AtlasTW.InstanceData.Azuregos = {
         {
             id = "WBAzuregos",
             prefix = "1)",
-            name = BB["Azuregos"],
+            name = LB["Azuregos"],
             defaults = { dropRate = 10 },
             loot = {
                 { id = 19132 }, -- Crystal Adorned Crown
@@ -56,7 +57,7 @@ AtlasTW.InstanceData.Azuregos = {
 },
         {
             id = "WBSpiritA",
-            name = L["Spirit of Azuregos"],
+            name = LB["Spirit of Azuregos"],
             loot = {
                  { id = 20949, container = { 21526, 21527 } }, -- Magical Ledger
 }

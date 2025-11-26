@@ -16,7 +16,9 @@
 ---
 
 local _G = getfenv()
-local L = AtlasTW.Local
+
+local LU = AtlasTW.Localization.UI
+
 AtlasTW = _G.AtlasTW
 local Colors = AtlasTW.Colors
 
@@ -129,7 +131,7 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
             end
         else
             print("Item unsafe! Right click to get the item ID")
-            ChatFrameEditBox:Insert(string.format("%s [%s]", Colors.GREY2, L["Item not found in cache"]))
+            ChatFrameEditBox:Insert(string.format("%s [%s]", Colors.GREY2, LU["Item not found in cache"]))
         end
         return
     end

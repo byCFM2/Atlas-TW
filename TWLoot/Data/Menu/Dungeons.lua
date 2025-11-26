@@ -17,7 +17,9 @@
 
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
-local L = AtlasTW.Local
+
+local L = AtlasTW.Localization.UI
+
 local Colors = AtlasTW.Colors
 
 ---
@@ -70,7 +72,7 @@ local function GenerateMenuDataFromInstanceData()
                 local instanceType
 
                 if maxPlayers == 40 or maxPlayers == 20 or maxPlayers == 10 then
-                    instanceType = "[RAID]"
+                    instanceType = "["..L["RAID"].."]"
                 else
                     if type(level) == "table" then
                         instanceType = "[" .. level[1].."-"..level[2] .. "]"
@@ -90,7 +92,7 @@ local function GenerateMenuDataFromInstanceData()
                 }
 
                 -- Add icon for raids and level 60 instances
-                if instanceType == "[RAID]" then
+                if instanceType == "["..L["RAID"].."]" then
                     menuEntry.icon = "Interface\\Icons\\Spell_Arcane_PortalOrgrimmar"
                 else
                     menuEntry.icon = "Interface\\Icons\\Spell_Arcane_PortalIronForge"
@@ -114,10 +116,10 @@ local function GenerateMenuDataFromInstanceData()
             local bLevelStr = string.sub(b.name, bStart + 1, bEnd - 1)
 
             -- Handle RAID case
-            if aLevelStr == "RAID" then
+            if aLevelStr == L["RAID"] then
                 return false
             end
-            if bLevelStr == "RAID" then
+            if bLevelStr == L["RAID"] then
                 return true
             end
 

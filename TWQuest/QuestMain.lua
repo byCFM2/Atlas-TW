@@ -17,7 +17,8 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
-local L = AtlasTW.Local
+
+local L = AtlasTW.Localization.UI
 -----------------------------------------------------------------------------
 -- Colours
 -----------------------------------------------------------------------------
@@ -61,6 +62,7 @@ function AtlasTW.Quest.ClearAll()
         AtlasTW.Quest.UI.QuestItems[b].Icon:SetTexture()
         AtlasTW.Quest.UI.QuestItems[b].Name:SetText()
         AtlasTW.Quest.UI.QuestItems[b].Extra:SetText()
+        AtlasTW.Quest.UI.QuestItems[b].Quantity:SetText()
         AtlasTW.Quest.UI.QuestItems[b].Frame:Hide()
 	end
 end
@@ -227,7 +229,7 @@ end
 ---
 --- Retrieves and formats item information for quest rewards
 --- @param count number - Index of the item in the quest rewards list
---- @return string, string, string - Formatted item name, texture, description text
+--- @return string, string, string, string - Formatted item name, texture, description text, quantity
 --- @usage Called when displaying quest reward items
 ---
 local function kQuestGetItemInf(count)
@@ -260,6 +262,7 @@ local function kQuestGetItemInf(count)
     local itemId = rewardItem.id
     local itemDescription = AtlasTW.ItemDB.ParseTooltipForItemInfo(itemId, rewardItem.desc)
     local itemName = grey .. L["Item not found in cache"]
+    local itemQuantity = rewardItem.quantity or ""
 
     -- Try to get item info from the game
     if itemId and GetItemInfo(itemId) then
@@ -269,14 +272,14 @@ local function kQuestGetItemInf(count)
         local itemtext = hex .. gameItemName
 
         -- Return requested information type
-        return itemtext, itemTexture, itemDescription
+        return itemtext, itemTexture, itemDescription, itemQuantity
     else
         -- Item not in cache, use fallback text from database
         if itemId then
             -- Add error message only if we have an ID but can't load the item
             itemDescription = itemDescription .. " " .. red .. L["This item is not safe!"]
         end
-        return itemName, "Interface\\Icons\\INV_Misc_QuestionMark", itemDescription
+        return itemName, "Interface\\Icons\\INV_Misc_QuestionMark", itemDescription, itemQuantity
     end
 end
 
@@ -292,17 +295,18 @@ local function setQuestItemsFrame()
     local faction = AtlasTW.Faction
     local questData = instanceData[faction] and instanceData[faction][AtlasTW.QCurrentQuest]
     -- Local AtlasTW for item information
-    local itemName, itemTexture, itemDiscription
+    local itemName, itemTexture, itemDiscription, itemQuantity
         -- Process each potential quest reward item (up to 6)
     for itemIndex = 1, AtlasTW.QMAXQUESTITEMS do
         if questData.Rewards[itemIndex] then
             --Get item information
-            itemName, itemTexture, itemDiscription = kQuestGetItemInf(itemIndex)
+            itemName, itemTexture, itemDiscription, itemQuantity = kQuestGetItemInf(itemIndex)
             -- Set item texture
             AtlasTW.Quest.UI.QuestItems[itemIndex].Icon:SetTexture(itemTexture)
             -- Set item name and description
             AtlasTW.Quest.UI.QuestItems[itemIndex].Name:SetText(itemName)
             AtlasTW.Quest.UI.QuestItems[itemIndex].Extra:SetText(itemDiscription)
+            AtlasTW.Quest.UI.QuestItems[itemIndex].Quantity:SetText(itemQuantity)
             AtlasTW.Quest.UI.QuestItems[itemIndex].Frame:Show()
         else
             -- hide item slot if no data
@@ -584,4 +588,4 @@ function AtlasTW.Quest.SetQuestButtons()
 end
 
 -- Show version message
-print(red.."A"..yellow.."t"..green.."l"..orange.."a"..blue.."s"..white.."-|cff800080TW |cff00FFFFv.|cffFFC0CB"..AtlasTW.Version..L[" |cffA52A2Aloaded."])
+DEFAULT_CHAT_FRAME:AddMessage(red.."A"..yellow.."t"..green.."l"..orange.."a"..blue.."s"..white.."-|cff800080TW |cff00FFFFv.|cffFFC0CB"..AtlasTW.Version..L[" |cffA52A2Aloaded."])

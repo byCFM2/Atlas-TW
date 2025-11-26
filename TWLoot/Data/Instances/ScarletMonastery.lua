@@ -17,17 +17,20 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.ScarletMonasteryLibrary = {
-    Name = BZ["Scarlet Monastery (Library)"],
-    Location = BZ["Tirisfal Glades"],
+    Name = LZ["Scarlet Monastery (Library)"],
+    Location = LZ["Tirisfal Glades"],
     Level = { 21, 39 },
     Acronym = "SM Lib",
     MaxPlayers = 5,
@@ -39,7 +42,7 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
         {
             id = "SMHoundmasterLoksey",
             prefix = "1)",
-            name = BB["Houndmaster Loksey"],
+            name = LB["Houndmaster Loksey"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 7710 }, -- Loksey's Training Stick
@@ -52,7 +55,7 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
         {
             id = "SMDoan",
             prefix = "2)",
-            name = BB["Arcanist Doan"],
+            name = LB["Arcanist Doan"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 7714 }, -- Hypnotic Blade
@@ -66,7 +69,7 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
         {
             id = "SMDoansBox",
             prefix = "1)",
-            name = L["Doan's Strongbox"],
+            name = LMD["Doan's Strongbox"],
             color = Colors.GREEN,
             loot = {
                 { id = 7146, disc = L["Key"] }, -- The Scarlet Key
@@ -75,7 +78,7 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
         {
             id = "SMBrotherWystan",
             prefix = "3)",
-            name = BB["Brother Wystan"],
+            name = LB["Brother Wystan"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 55473 }, -- Pendant of Scarlet Rage
@@ -86,7 +89,7 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
         },
         {
             id = "SMLTrash",
-            name = L["Trash Mobs"].."-"..BZ["Scarlet Monastery"],
+            name = L["Trash Mobs"].."-"..LZ["Scarlet Monastery"],
             defaults = { dropRate = .01 },
             loot = {
                 { id = 5819 }, -- Sunblaze Coif
@@ -118,13 +121,13 @@ AtlasTW.InstanceData.ScarletMonasteryLibrary = {
                 { id = 80799, dropRate = .02 }, -- Wand of Divine Justice
             }
         },
-        { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
+        { name = LIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
     }
 }
 
 AtlasTW.InstanceData.ScarletMonasteryArmory = {
-    Name = BZ["Scarlet Monastery (Armory)"],
-    Location = BZ["Tirisfal Glades"],
+    Name = LZ["Scarlet Monastery (Armory)"],
+    Location = LZ["Tirisfal Glades"],
     Level = { 25, 40 },
     Acronym = "SM Arm",
     MaxPlayers = 5,
@@ -133,13 +136,13 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
         { letter = "A) " .. L["Main Entrance"] }
     },
     Keys = {
-        { name = L["The Scarlet Key"], loot = "VanillaKeys" }
+        { name = LMD["The Scarlet Key"], loot = "VanillaKeys" }
     },
     Bosses = {
         {
             id = "SMHerod",
             prefix = "1)",
-            name = BB["Herod"],
+            name = LB["Herod"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 7719 }, -- Raging Berserker's Helm
@@ -152,7 +155,7 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
         },
         {
             id = "SMQuartermasterDaghelm",
-            name = BB["Armory Quartermaster Daghelm"],
+            name = LB["Armory Quartermaster Daghelm"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 55477 }, -- Loop of Focused Magic
@@ -165,7 +168,7 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
         },
         {
             id = "SMATrash",
-            name = L["Trash Mobs"].."-"..BZ["Scarlet Monastery (Armory)"],
+            name = L["Trash Mobs"].."-"..LZ["Scarlet Monastery (Armory)"],
             defaults = { dropRate = .01 },
             loot = {
                 { id = 5819 }, -- Sunblaze Coif
@@ -197,13 +200,13 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
                 { id = 23192, dropRate = 1.6 }, -- Tabard of the Scarlet Crusade
             }
         },
-        { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
+        { name = LIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
     }
 }
 
 AtlasTW.InstanceData.ScarletMonasteryCathedral = {
-    Name = BZ["Scarlet Monastery (Cathedral)"],
-    Location = BZ["Tirisfal Glades"],
+    Name = LZ["Scarlet Monastery (Cathedral)"],
+    Location = LZ["Tirisfal Glades"],
     Level = { 25, 45 },
     Acronym = "SMCath",
     MaxPlayers = 5,
@@ -212,13 +215,13 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
         { letter = "A) " .. L["Main Entrance"] }
     },
     Keys = {
-        { name = L["The Scarlet Key"], loot = "VanillaKeys" }
+        { name = LMD["The Scarlet Key"], loot = "VanillaKeys" }
     },
     Bosses = {
         {
             id = "SMFairbanks",
             prefix = "1)",
-            name = BB["High Inquisitor Fairbanks"],
+            name = LB["High Inquisitor Fairbanks"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 19507 }, -- Inquisitor's Shawl
@@ -229,7 +232,7 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
         {
             id = "SMMograine",
             prefix = "2)",
-            name = BB["Scarlet Commander Mograine"],
+            name = LB["Scarlet Commander Mograine"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 7724 }, -- Gauntlets of Divinity
@@ -245,7 +248,7 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
         {
             id = "SMWhitemane",
             prefix = "3)",
-            name = BB["High Inquisitor Whitemane"],
+            name = LB["High Inquisitor Whitemane"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 7720 }, -- Whitemane's Chapeau
@@ -257,7 +260,7 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
         },
         {
             id = "SMCTrash",
-            name = L["Trash Mobs"].."-"..BZ["Scarlet Monastery (Cathedral)"],
+            name = L["Trash Mobs"].."-"..LZ["Scarlet Monastery (Cathedral)"],
             defaults = { dropRate = .01 },
             loot = {
                 { id = 5819 }, -- Sunblaze Coif
@@ -290,13 +293,13 @@ AtlasTW.InstanceData.ScarletMonasteryCathedral = {
                 { id = 10329, dropRate = 1.6 }, -- Scarlet Belt
             }
         },
-        { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
+        { name = LIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
     }
 }
 
 AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
-    Name = BZ["Scarlet Monastery (Graveyard)"],
-    Location = BZ["Tirisfal Glades"],
+    Name = LZ["Scarlet Monastery (Graveyard)"],
+    Location = LZ["Tirisfal Glades"],
     Level = { 25, 36 },
     Acronym = "SMGY",
     MaxPlayers = 5,
@@ -308,7 +311,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
         {
             id = "SMVishas",
             prefix = "1)",
-            name = BB["Interrogator Vishas"],
+            name = LB["Interrogator Vishas"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 7682 }, -- Torturing Poker
@@ -321,13 +324,13 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
             }
         },
         {
-            name = L["Vorrel Sengutz"],
+            name = LMD["Vorrel Sengutz"],
             color = Colors.GREY,
         },
         {
             id = "SMScorn",
             prefix = "2)",
-            name = BB["Scorn"],
+            name = LB["Scorn"],
             postfix = L["Scourge Invasion"],
             defaults = { dropRate = 33 },
             loot = {
@@ -339,7 +342,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
         {
             id = "SMBloodmageThalnos",
             prefix = "3)",
-            name = BB["Bloodmage Thalnos"],
+            name = LB["Bloodmage Thalnos"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 7685 }, -- Orb of the Forgotten Seer
@@ -353,7 +356,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
         {
             id = "SMIronspine",
             prefix = "1')",
-            name = L["Ironspine"],
+            name = LB["Ironspine"],
             postfix = L["Rare"],
             color = Colors.GREEN,
             defaults = { dropRate = 33 },
@@ -365,7 +368,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
         },
         {
             id = "SMAzshir",
-            name = BB["Azshir the Sleepless"],
+            name = LB["Azshir the Sleepless"],
             postfix = L["Rare"],
             color = Colors.GREEN,
             defaults = { dropRate = 33 },
@@ -377,7 +380,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
         },
         {
             id = "SMFallenChampion",
-            name = BB["Fallen Champion"],
+            name = LB["Fallen Champion"],
             postfix = L["Rare"],
             color = Colors.GREEN,
             defaults = { dropRate = 33 },
@@ -390,7 +393,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
         {
             id = "SMDukeDreadmoore",
             prefix = "4)",
-            name = BB["Duke Dreadmoore"],
+            name = LB["Duke Dreadmoore"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 55388 }, -- Slain Sentry's Ring
@@ -401,7 +404,7 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
         },
         {
             id = "SMGTrash",
-            name = L["Trash Mobs"].."-"..BZ["Scarlet Monastery (Graveyard)"],
+            name = L["Trash Mobs"].."-"..LZ["Scarlet Monastery (Graveyard)"],
             defaults = { dropRate = .01 },
             loot = {
                 { id = 5819 }, -- Sunblaze Coif
@@ -422,20 +425,20 @@ AtlasTW.InstanceData.ScarletMonasteryGraveyard = {
                 { id = 80794, dropRate = .02 }, -- Ironfist
             }
         },
-        { name = BIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
+        { name = LIS["Chain of the Scarlet Crusade"], items = "Scarlet" },
     }
 }
 
 AtlasTW.InstanceData.ScarletMonasteryEnt = {
-    Name = BZ["Scarlet Monastery"] .. " (" .. L["Entrance"] .. ")",
-    Location = BZ["Tirisfal Glades"],
+    Name = LZ["Scarlet Monastery"] .. " (" .. L["Entrance"] .. ")",
+    Location = LZ["Tirisfal Glades"],
     Acronym = "SM",
     Entrances = {
         { letter = "A) " .. L["Main Entrance"] },
-        { letter = "B) " .. L["Graveyard"] },
-        { letter = "C) " .. L["Cathedral"] },
-        { letter = "D) " .. L["Armory"] },
-        { letter = "E) " .. L["Library"] }
+        { letter = "B) " .. LMD["Graveyard"] },
+        { letter = "C) " .. LMD["Cathedral"] },
+        { letter = "D) " .. LMD["Armory"] },
+        { letter = "E) " .. LMD["Library"] }
     },
     Bosses = {}
 }

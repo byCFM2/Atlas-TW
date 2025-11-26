@@ -21,7 +21,8 @@ AtlasTW = _G.AtlasTW or {}
 AtlasTW.Interactions = AtlasTW.Interactions or {}
 
 -- Local references for performance
-local L = AtlasTW.Local
+local L = AtlasTW.Localization.UI
+
 local WHITE = AtlasTW.Colors.WHITE
 local BLUE = AtlasTW.Colors.BLUE
 local YELLOW = AtlasTW.Colors.YELLOW2
@@ -293,7 +294,7 @@ local function HandleEnchantTooltip(spellID, anchor)
     if SetAutoloot and (SUPERWOW_VERSION and (tonumber(SUPERWOW_VERSION)) < 1.2) then
         enchantLink = "spell:" .. spellID
         if not messageShown then
-            print(BLUE .. L["AtlasTWLoot"] .. ": " .. WHITE .. "Old version of SuperWoW detected...")
+            print(BLUE .. "AtlasTWLoot" .. ": " .. WHITE .. "Old version of SuperWoW detected...")
             messageShown = true
         end
     end
@@ -918,7 +919,7 @@ function AtlasTW.Interactions.MenuItem_OnClick(button)
 
 		AtlasTWLootItemsFrame:Show()
 		AtlasTW.LootBrowserUI.ShowScrollBarLoading()
-		pagename = pagename == L["Rare Mobs"] and L["Shade Mage"] or pagename
+		pagename = pagename == L["Rare Mobs"] and LM["Shade Mage"] or pagename
 		-- Remember parent menu for "Back" button
 		local prevStored = AtlasTWLootItemsFrame.StoredElement
 		if type(prevStored) == "table" and prevStored.menuName then

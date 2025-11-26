@@ -17,10 +17,13 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
@@ -40,8 +43,8 @@ local ShareLoot = {
 }
 
 AtlasTW.InstanceData.DireMaulEast = {
-    Name = BZ["Dire Maul (East)"],
-    Location = BZ["Feralas"],
+    Name = LZ["Dire Maul (East)"],
+    Location = LZ["Feralas"],
     Level = { 50, 58 },
     Acronym = "DME",
     MaxPlayers = 5,
@@ -55,13 +58,13 @@ AtlasTW.InstanceData.DireMaulEast = {
     Bosses = {
         {
             prefix = "1)",
-            name = BB["Pusillin"].." <"..L["Chase Begins"]..">",
+            name = LB["Pusillin"].." <"..L["Chase Begins"]..">",
             color = Colors.GREY,
         },
         {
             id = "DMEPusillin",
             prefix = "2)",
-            name = BB["Pusillin"],
+            name = LB["Pusillin"],
             postfix = L["Chase Ends"],
             defaults = { dropRate = 100 },
             loot = {
@@ -80,7 +83,7 @@ AtlasTW.InstanceData.DireMaulEast = {
         {
             id = "DMEZevrimThornhoof",
             prefix = "3)",
-            name = BB["Zevrim Thornhoof"],
+            name = LB["Zevrim Thornhoof"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 18319 }, -- Fervent Helm
@@ -101,7 +104,7 @@ AtlasTW.InstanceData.DireMaulEast = {
         },
         {
             id = "DMEHydro",
-            name = BB["Hydrospawn"],
+            name = LB["Hydrospawn"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 18317 }, -- Tempest Talisman
@@ -124,7 +127,7 @@ AtlasTW.InstanceData.DireMaulEast = {
         },
         {
             id = "DMELethtendris",
-            name = BB["Lethtendris"],
+            name = LB["Lethtendris"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 18325 }, -- Felhide Cap
@@ -145,7 +148,7 @@ AtlasTW.InstanceData.DireMaulEast = {
         },
         {
             id = "DMEPimgib",
-            name = BB["Pimgib"],
+            name = LB["Pimgib"],
             loot = {
                 { id = 18354, dropRate = 14 }, -- Pimgib's Collar
                 {},
@@ -157,13 +160,13 @@ AtlasTW.InstanceData.DireMaulEast = {
         },
         {
             prefix = "4)",
-            name = L["Old Ironbark"],
+            name = LMD["Old Ironbark"],
             color = Colors.GREY,
         },
         {
             id = "DMEAlzzin",
             prefix = "5)",
-            name = BB["Alzzin the Wildshaper"],
+            name = LB["Alzzin the Wildshaper"],
             defaults = { dropRate = 10 },
             loot = {
                 { id = 18328 }, -- Shadewood Cloak
@@ -195,7 +198,7 @@ AtlasTW.InstanceData.DireMaulEast = {
         },
         {
             id = "DMEIsalien",
-            name = BB["Isalien"],
+            name = LB["Isalien"],
             postfix = L["Summon"],
             defaults = { dropRate = 17 },
             loot = {
@@ -214,7 +217,7 @@ AtlasTW.InstanceData.DireMaulEast = {
         },
         {
             id = "DMETrash",
-            name = L["Trash Mobs"].."-"..BZ["Dire Maul (East)"],
+            name = L["Trash Mobs"].."-"..LZ["Dire Maul (East)"],
             defaults = { dropRate = .5 },
             loot = {
                 { id = 18289 }, -- Barbed Thorn Necklace
@@ -228,7 +231,7 @@ AtlasTW.InstanceData.DireMaulEast = {
         },
         {
             id = "DMEShard",
-            name = L["Felvine Shard"],
+            name = LMD["Felvine Shard"],
             loot = {
                 { id = 18501, disc = L["Quest Item"] }, -- Felvine Shard
             }
@@ -236,41 +239,41 @@ AtlasTW.InstanceData.DireMaulEast = {
         {
             id = "DMTome",
             prefix = "1')",
-            name = L["A Dusty Tome"],
+            name = LMD["A Dusty Tome"],
             postfix = L["Varies"],
             color = Colors.GREEN,
             loot = ShareLoot,
         },
-        { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
+        { name = LIS["Ironweave Battlesuit"], items = "Ironweave" },
     }
 }
 
 AtlasTW.InstanceData.DireMaulWest = {
-    Name = BZ["Dire Maul (West)"],
-    Location = BZ["Feralas"],
+    Name = LZ["Dire Maul (West)"],
+    Location = LZ["Feralas"],
     Level = { 50, 60 },
     Acronym = "DMW",
     MaxPlayers = 5,
     DamageType = L["Nature"] .. ", " .. L["Arcane"],
     Entrances = {
         { letter = "A) " .. L["Main Entrance"] },
-        { letter = "B) " .. L["Pylons"] },
-        { letter = "C) " .. BZ["Dire Maul (North)"] }
+        { letter = "B) " .. LMD["Pylons"] },
+        { letter = "C) " .. LZ["Dire Maul (North)"] }
     },
     Keys = {
-        { name = L["Crescent Key"], loot = "VanillaKeys" },
-        { name = L["J'eevee's Jar"], loot = "VanillaKeys", info = BB["Lord Hel'nurath"] }
+        { name = LMD["Crescent Key"], loot = "VanillaKeys" },
+        { name = LMD["J'eevee's Jar"], loot = "VanillaKeys", info = LB["Lord Hel'nurath"] }
     },
     Bosses = {
         {
             prefix = "1)",
-            name = L["Shen'dralar Ancient"],
+            name = LMD["Shen'dralar Ancient"],
             color = Colors.GREY,
         },
         {
             id = "DMWTendrisWarpwood",
             prefix = "2)",
-            name = BB["Tendris Warpwood"],
+            name = LB["Tendris Warpwood"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 18393 }, -- Warpwood Binding
@@ -290,13 +293,13 @@ AtlasTW.InstanceData.DireMaulWest = {
             }
         },
         {
-            name = L["Ancient Equine Spirit"],
+            name = LMD["Ancient Equine Spirit"],
             color = Colors.GREY,
         },
         {
             id = "DMWIllyannaRavenoak",
             prefix = "3)",
-            name = BB["Illyanna Ravenoak"],
+            name = LB["Illyanna Ravenoak"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 18383 }, -- Force Imbued Gauntlets
@@ -319,13 +322,13 @@ AtlasTW.InstanceData.DireMaulWest = {
             }
         },
         {
-            name = L["Ferra"],
+            name = LMD["Ferra"],
             color = Colors.GREY,
         },
         {
             id = "DMWMagisterKalendris",
             prefix = "4)",
-            name = BB["Magister Kalendris"],
+            name = LB["Magister Kalendris"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 18374 }, -- Flamescarred Shoulders
@@ -350,7 +353,7 @@ AtlasTW.InstanceData.DireMaulWest = {
         {
             id = "DMWTsuzee",
             prefix = "5)",
-            name = BB["Tsu'zee"],
+            name = LB["Tsu'zee"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 18387 }, -- Brightspark Gloves
@@ -362,7 +365,7 @@ AtlasTW.InstanceData.DireMaulWest = {
         {
             id = "DMWImmolthar",
             prefix = "6)",
-            name = BB["Immol'thar"],
+            name = LB["Immol'thar"],
             defaults = { dropRate = 10 },
             loot = {
                 { id = 18381 }, -- Evil Eye Pendant
@@ -391,7 +394,7 @@ AtlasTW.InstanceData.DireMaulWest = {
         },
         {
             id = "DMWHelnurath",
-            name = BB["Lord Hel'nurath"],
+            name = LB["Lord Hel'nurath"],
             postfix = L["Rare"] .. ", " .. L["Summon"],
             defaults = { dropRate = 25 },
             loot = {
@@ -404,7 +407,7 @@ AtlasTW.InstanceData.DireMaulWest = {
         {
             id = "DMWPrinceTortheldrin",
             prefix = "7)",
-            name = BB["Prince Tortheldrin"],
+            name = LB["Prince Tortheldrin"],
             defaults = { dropRate = 10 },
             loot = {
                 { id = 18382 }, -- Fluctuating Cloak
@@ -425,13 +428,13 @@ AtlasTW.InstanceData.DireMaulWest = {
             }
         },
         {
-            name = L["The Prince's Chest"],
+            name = LMD["The Prince's Chest"],
             color = Colors.GREY,
         },
         {
             id = "DMWRevanchion",
             prefix = "8)",
-            name = BB["Revanchion"],
+            name = LB["Revanchion"],
             postfix = L["Scourge Invasion"],
             defaults = { dropRate = 33 },
             loot = {
@@ -442,7 +445,7 @@ AtlasTW.InstanceData.DireMaulWest = {
         },
         {
             id = "DMWTrash",
-            name = L["Trash Mobs"].."-"..BZ["Dire Maul (West)"],
+            name = L["Trash Mobs"].."-"..LZ["Dire Maul (West)"],
             defaults = { dropRate = 1.4 },
             loot = {
                 { id = 18340, dropRate = 1.4 }, -- Eidolon Talisman
@@ -453,45 +456,45 @@ AtlasTW.InstanceData.DireMaulWest = {
         },
         {
             prefix = "1')",
-            name = L["Library"],
+            name = LMD["Library"],
             color = Colors.GREEN,
         },
         {
-            name = L["Falrin Treeshaper"],
+            name = LMD["Falrin Treeshaper"],
             color = Colors.GREEN,
         },
         {
-            name = L["Lorekeeper Lydros"],
+            name = LMD["Lorekeeper Lydros"],
             color = Colors.GREEN,
         },
         {
-            name = L["Lorekeeper Javon"],
+            name = LMD["Lorekeeper Javon"],
             color = Colors.GREEN,
         },
         {
-            name = L["Lorekeeper Kildrath"],
+            name = LMD["Lorekeeper Kildrath"],
             color = Colors.GREEN,
         },
         {
-            name = L["Lorekeeper Mykos"],
+            name = LMD["Lorekeeper Mykos"],
             color = Colors.GREEN,
         },
         {
             id = "DMWShendralarProvisioner",
-            name = L["Shen'dralar Provisioner"],
+            name = LMD["Shen'dralar Provisioner"],
             color = Colors.GREEN,
             loot = {
                 { id = 18487, disc = L["Vendor"], container = { 18486 } }, -- Pattern: Mooncloth Robe
             }
         },
         {
-            name = L["Skeletal Remains of Kariel Winthalus"],
+            name = LMD["Skeletal Remains of Kariel Winthalus"],
             color = Colors.GREEN,
         },
         {
             id = "DMTome",
             prefix = "2')",
-            name = L["A Dusty Tome"],
+            name = LMD["A Dusty Tome"],
             postfix = L["Varies"],
             loot = ShareLoot,
         },
@@ -499,27 +502,27 @@ AtlasTW.InstanceData.DireMaulWest = {
 }
 
 AtlasTW.InstanceData.DireMaulNorth = {
-    Name = BZ["Dire Maul (North)"],
-    Location = BZ["Feralas"],
+    Name = LZ["Dire Maul (North)"],
+    Location = LZ["Feralas"],
     Level = { 57, 60 },
     Acronym = "DMN",
     MaxPlayers = 5,
     DamageType = L["Physical"] .. ", " .. L["Nature"],
     Entrances = {
         { letter = "A) " .. L["Main Entrance"] },
-        { letter = "B) " .. L["Library"] },
-        { letter = "C) " .. BZ["Dire Maul (West)"] }
+        { letter = "B) " .. LMD["Library"] },
+        { letter = "C) " .. LZ["Dire Maul (West)"] }
     },
     Keys = {
-        { name = L["Crescent Key"], loot = "VanillaKeys" },
-        { name = L["Gordok Courtyard Key"], loot = "VanillaKeys" },
-        { name = L["Gordok Inner Door Key"], loot = "VanillaKeys" }
+        { name = LMD["Crescent Key"], loot = "VanillaKeys" },
+        { name = LMD["Gordok Courtyard Key"], loot = "VanillaKeys" },
+        { name = LMD["Gordok Inner Door Key"], loot = "VanillaKeys" }
     },
     Bosses = {
         {
             id = "DMNGuardMoldar",
             prefix = "1)",
-            name = BB["Guard Mol'dar"],
+            name = LB["Guard Mol'dar"],
             defaults = { dropRate = 8 },
             loot = {
                 { id = 18494 }, -- Denwatcher's Shoulders
@@ -552,7 +555,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
         {
             id = "DMNStomperKreeg",
             prefix = "2)",
-            name = BB["Stomper Kreeg"],
+            name = LB["Stomper Kreeg"],
             loot = {
                 { id = 18425, dropRate = 40 }, -- Kreeg's Mug
                 { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
@@ -572,7 +575,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
         {
             id = "DMNGuardFengus",
             prefix = "3)",
-            name = BB["Guard Fengus"],
+            name = LB["Guard Fengus"],
             defaults = { dropRate = 13 },
             loot = {
                 { id = 18450 }, -- Robe of Combustion
@@ -600,7 +603,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
         {
             id = "DMNThimblejack",
             prefix = "4)",
-            name = L["Knot Thimblejack"],
+            name = LMD["Knot Thimblejack"],
             postfix = L["Cache"],
             loot = {
                 { id = 18414, dropRate = 2, container = { 18405 } }, -- Pattern: Belt of the Archmage
@@ -621,7 +624,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
         },
         {
             id = "DMNGuardSlipkik",
-            name = BB["Guard Slip'kik"],
+            name = LB["Guard Slip'kik"],
             defaults = { dropRate = 8 },
             loot = {
                 { id = 18494 }, -- Denwatcher's Shoulders
@@ -655,7 +658,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
         {
             id = "DMNCaptainKromcrush",
             prefix = "5)",
-            name = BB["Captain Kromcrush"],
+            name = LB["Captain Kromcrush"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 18503 }, -- Kromcrush's Chestplate
@@ -679,7 +682,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
         {
             id = "DMNKingGordok",
             prefix = "6)",
-            name = BB["King Gordok"],
+            name = LB["King Gordok"],
             defaults = { dropRate = 13 },
             loot = {
                 { id = 18526 }, -- Crown of the Ogre King
@@ -712,7 +715,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
         },
         {
             id = "DMNChoRush",
-            name = BB["Cho'Rush the Observer"],
+            name = LB["Cho'Rush the Observer"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 18490 }, -- Insightful Hood
@@ -732,7 +735,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
         },
         {
             id = "DMNTributeRun",
-            name = L["Tribute Run"],
+            name = LMD["Tribute Run"],
             defaults = { dropRate = 11 },
             loot = {
                 { id = 18538, dropRate = 1 }, -- Treant's Bane
@@ -762,7 +765,7 @@ AtlasTW.InstanceData.DireMaulNorth = {
         },
         {
             id = "DMNTrash",
-            name = L["Trash Mobs"].."-"..BZ["Dire Maul (North)"],
+            name = L["Trash Mobs"].."-"..LZ["Dire Maul (North)"],
             loot = {
                 { id = 18250, disc = L["Key"], dropRate = 4 }, -- Gordok Shackle Key
                 { id = 18640, disc = L["Misc"], dropRate = 2 }, -- Happy Fun Rock
@@ -770,45 +773,45 @@ AtlasTW.InstanceData.DireMaulNorth = {
         },
         {
             prefix = "1')",
-            name = L["Library"],
+            name = LMD["Library"],
             color = Colors.GREEN,
         },
         {
-            name = L["Falrin Treeshaper"],
+            name = LMD["Falrin Treeshaper"],
             color = Colors.GREEN,
         },
         {
-            name = L["Lorekeeper Lydros"],
+            name = LMD["Lorekeeper Lydros"],
             color = Colors.GREEN,
         },
         {
-            name = L["Lorekeeper Javon"],
+            name = LMD["Lorekeeper Javon"],
             color = Colors.GREEN,
         },
         {
-            name = L["Lorekeeper Kildrath"],
+            name = LMD["Lorekeeper Kildrath"],
             color = Colors.GREEN,
         },
         {
-            name = L["Lorekeeper Mykos"],
+            name = LMD["Lorekeeper Mykos"],
             color = Colors.GREEN,
         },
         {
             id = "DMWShendralarProvisioner",
-            name = L["Shen'dralar Provisioner"],
+            name = LMD["Shen'dralar Provisioner"],
             color = Colors.GREEN,
             loot = {
                 { id = 18487, disc = L["Vendor"], container = { 18486 } }, -- Pattern: Mooncloth Robe
             }
         },
         {
-            name = L["Skeletal Remains of Kariel Winthalus"],
+            name = LMD["Skeletal Remains of Kariel Winthalus"],
             color = Colors.GREEN,
         },
         {
             id = "DMTome",
             prefix = "2')",
-            name = L["A Dusty Tome"],
+            name = LMD["A Dusty Tome"],
             postfix = L["Varies"],
             loot = ShareLoot,
         },
@@ -816,49 +819,49 @@ AtlasTW.InstanceData.DireMaulNorth = {
 }
 
 AtlasTW.InstanceData.DireMaulEnt = {
-    Name = BZ["Dire Maul"] .. " (" .. L["Entrance"] .. ")",
-    Location = BZ["Feralas"],
+    Name = LZ["Dire Maul"] .. " (" .. L["Entrance"] .. ")",
+    Location = LZ["Feralas"],
     Acronym = "DM",
     Entrances = {
         { letter = "A) " .. L["Main Entrance"] },
-        { letter = "B) " .. BZ["Dire Maul"] .. " (" .. L["East"] .. ")" },
-        { letter = "C) " .. BZ["Dire Maul"] .. " (" .. L["North"] .. ")" },
-        { letter = "D) " .. BZ["Dire Maul"] .. " (" .. L["West"] .. ")" }
+        { letter = "B) " .. LZ["Dire Maul"] .. " (" .. L["East"] .. ")" },
+        { letter = "C) " .. LZ["Dire Maul"] .. " (" .. L["North"] .. ")" },
+        { letter = "D) " .. LZ["Dire Maul"] .. " (" .. L["West"] .. ")" }
     },
     Bosses = {
         {
             prefix = "1)",
-            name = L["Dire Pool"],
+            name = LMD["Dire Pool"],
             color = Colors.GREY,
         },
         {
             prefix = "2)",
-            name = L["Dire Maul Arena"],
+            name = LMD["Dire Maul Arena"],
             color = Colors.GREY,
         },
         {
-            name = L["Mushgog"],
+            name = LMD["Mushgog"],
             postfix = L["Rare"] .. ", " .. L["Random"],
             color = Colors.GREY,
         },
         {
-            name = L["Skarr the Unbreakable"],
+            name = LMD["Skarr the Unbreakable"],
             postfix = L["Rare"] .. ", " .. L["Random"],
             color = Colors.GREY,
         },
         {
-            name = L["The Razza"],
+            name = LMD["The Razza"],
             postfix = L["Rare"] .. ", " .. L["Random"],
             color = Colors.GREY,
         },
         {
-            name = L["Elder Mistwalker"],
+            name = LMD["Elder Mistwalker"],
             postfix = L["Lunar Festival"],
             items = "LunarFestival",
         },
         {
             prefix = "3)",
-            name = L["Griniblix the Spectator"],
+            name = LMD["Griniblix the Spectator"],
             color = Colors.GREY,
         },
     }

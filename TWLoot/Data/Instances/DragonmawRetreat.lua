@@ -17,17 +17,20 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.DragonmawRetreat = {
-    Name = BZ["Dragonmaw Retreat"],
-    Location = BZ["Wetlands"],
+    Name = LZ["Dragonmaw Retreat"],
+    Location = LZ["Wetlands"],
     Level = { 27, 33 },
     Acronym = "DR",
     MaxPlayers = 5,
@@ -37,13 +40,13 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         { letter = "B)"..L["Exit"] }
     },
     Keys = {
-        { name = L["Lower Reserve Key"], loot = "VanillaKeys", info = "9+" },
+        { name = LMD["Lower Reserve Key"], loot = "VanillaKeys", info = "9+" },
     },
     Bosses = {
         {
             id = "DRGowlfang",
             prefix = "1)",
-            name = BB["Gowlfang"],
+            name = LB["Gowlfang"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 41571 }, -- Snickerclaw
@@ -56,13 +59,13 @@ AtlasTW.InstanceData.DragonmawRetreat = {
             }
         },
         {
-            name = BB["Bogpaw Truthsay"],
+            name = LB["Bogpaw Truthsay"],
             color = Colors.GREY,
         },
         {
             id = "DRCavernwebBroodmother",
             prefix = "2)",
-            name = BB["Cavernweb Broodmother"],--62066
+            name = LB["Cavernweb Broodmother"],--62066
             postfix = L["Lower"],
             defaults = { dropRate = 20 },
             loot = {
@@ -79,7 +82,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         {
             id = "DRWebMasterTorkon",--29
             prefix = "3)",
-            name = BB["Web Master Torkon"],
+            name = LB["Web Master Torkon"],
             postfix = L["Lower"],
             defaults = { dropRate = 20 },
             loot = {
@@ -93,9 +96,9 @@ AtlasTW.InstanceData.DragonmawRetreat = {
             }
         },
         {
-            id = "DRGarlockFlamekeeper",--31
+            id = "DRGarlokFlamekeeper",--31
             prefix = "4)",
-            name = BB["Garlock Flamekeeper"],
+            name = LB["Garlok Flamekeeper"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 41578 }, -- Flamekeeper's Robe
@@ -107,7 +110,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         {
             id = "DRHalganRedbrand",--31
             prefix = "5)",
-            name = BB["Halgan Redbrand"],
+            name = LB["Halgan Redbrand"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58044 }, -- Ceremonial Dwarven Staff
@@ -120,13 +123,13 @@ AtlasTW.InstanceData.DragonmawRetreat = {
             }
         },
         {
-            name = L["Pedestal of Unity"],
+            name = LMD["Pedestal of Unity"],
             color = Colors.GREY,
         },
         {
             id = "DRSlagfistDestroyer",--30
             prefix = "6)",
-            name = BB["Slagfist Destroyer"],
+            name = LB["Slagfist Destroyer"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 41558 }, -- The Slagbinder
@@ -138,7 +141,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         {
             id = "DROverlordBlackheart",--30
             prefix = "7)",
-            name = BB["Overlord Blackheart"],
+            name = LB["Overlord Blackheart"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 41726 }, -- Slaver's Gauntlets
@@ -154,7 +157,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         {
             id = "DRElderHollowblood",--32
             prefix = "8)",
-            name = BB["Elder Hollowblood"],
+            name = LB["Elder Hollowblood"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 41720 }, -- Earthweaver Kilt
@@ -168,7 +171,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         {
             id = "DRChestofDathronag",--object
             prefix = "a)",
-            name = L["Chest of Dathronag"],
+            name = LMD["Chest of Dathronag"],
             color = Colors.GREEN,
             loot = {
                 { id = 41875, disc = L["Quest Item"], dropRate = 100 }, -- Fragment of Dathronag
@@ -177,7 +180,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         {
             id = "DRSearistrasz",--32
             prefix = "9)",
-            name = BB["Searistrasz"],
+            name = LB["Searistrasz"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 41561 }, -- Flame of Eternal Searing
@@ -188,9 +191,9 @@ AtlasTW.InstanceData.DragonmawRetreat = {
             }
         },
         {
-            id = "DRZuluhedtheWracked",--32
+            id = "DRZuluhedtheWhacked",--32
             prefix = "10)",
-            name = BB["Zuluhed the Wracked"],
+            name = LB["Zuluhed the Whacked"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 41845 }, -- Algo'rath the Unbinder
@@ -210,7 +213,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
         },
         {
             id = "DRTrash",
-            name = L["Trash Mobs"].."-"..BZ["Dragonmaw Retreat"],
+            name = L["Trash Mobs"].."-"..LZ["Dragonmaw Retreat"],
             defaults = { dropRate = .01 },
             loot = {
                 { id = 58102 }, -- Dragonmaw Bulwark
@@ -230,7 +233,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 41825, container = { 41826, 41827, 41828 }, dropRate = 50 }, -- Stone Golem Runestone from Crumbling Stone Golem
             },
         },
-        { name = BIS["Dragonmaw Battlegarb"], items = "DragonmawBattlegarb" },
+        { name = LIS["Dragonmaw Battlegarb"], items = "DragonmawBattlegarb" },
     },
 }
 

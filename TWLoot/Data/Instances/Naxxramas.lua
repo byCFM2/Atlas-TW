@@ -17,17 +17,20 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LF = AtlasTW.Localization.Factions
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.Naxxramas = {
-    Name = BZ["Naxxramas"],
-    Location = BZ["Eastern Plaguelands"],
+    Name = LZ["Naxxramas"],
+    Location = LZ["Eastern Plaguelands"],
     Level = 60,
     Acronym = "Naxx",
     Attunement = true,
@@ -37,24 +40,24 @@ AtlasTW.InstanceData.Naxxramas = {
         { letter = "A"..") " .. L["Entrance"] }
     },
     Reputation = {
-        { name = BF["Argent Dawn"], loot = "ArgentDawn" }
+        { name = LF["Argent Dawn"], loot = "ArgentDawn" }
     },
     Bosses = {
         {
-            name = L["Archmage Tarsis Kir-Moldir"],
+            name = LMD["Archmage Tarsis Kir-Moldir"],
             color = Colors.GREY,
         },
         {
-            name = L["Mr. Bigglesworth"] .. " (" .. L["Wanders"] .. ")",
+            name = LMD["Mr. Bigglesworth"] .. " (" .. L["Wanders"] .. ")",
             color = Colors.GREY,
         },
         {
-            name = L["Abomination Wing"],
+            name = LMD["Abomination Wing"],
         },
         {
             id = "Patchwerk",
             prefix = "1)",
-            name = BB["Patchwerk"],
+            name = LB["Patchwerk"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 22726, dropRate = 20, container = { 22631, 22589, 22630, 22632 } }, -- Splinter of Atiesh
@@ -75,7 +78,7 @@ AtlasTW.InstanceData.Naxxramas = {
         {
             id = "Grobbulus",
             prefix = "2)",
-            name = BB["Grobbulus"],
+            name = LB["Grobbulus"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 22726, dropRate = 20, container = { 22631, 22589, 22630, 22632 } }, -- Splinter of Atiesh
@@ -96,7 +99,7 @@ AtlasTW.InstanceData.Naxxramas = {
         {
             id = "Gluth",
             prefix = "3)",
-            name = BB["Gluth"],
+            name = LB["Gluth"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 22726, dropRate = 30, container = { 22631, 22589, 22630, 22632 } }, -- Splinter of Atiesh
@@ -131,7 +134,7 @@ AtlasTW.InstanceData.Naxxramas = {
         {
             id = "Thaddius",
             prefix = "4)",
-            name = BB["Thaddius"],
+            name = LB["Thaddius"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 22726, dropRate = 30, container = { 22631, 22589, 22630, 22632 } }, -- Splinter of Atiesh
@@ -151,13 +154,13 @@ AtlasTW.InstanceData.Naxxramas = {
             }
         },
         {
-            name = L["Spider Wing"],
+            name = LMD["Spider Wing"],
             color = Colors.ORANGE,
         },
         {
             id = "AnubRekhan",
             prefix = "1)",
-            name = BB["Anub'Rekhan"],
+            name = LB["Anub'Rekhan"],
             color = Colors.ORANGE,
             defaults = { dropRate = 20 },
             loot = {
@@ -180,7 +183,7 @@ AtlasTW.InstanceData.Naxxramas = {
         {
             id = "GrandWidowFaerlina",
             prefix = "2)",
-            name = BB["Grand Widow Faerlina"],
+            name = LB["Grand Widow Faerlina"],
             color = Colors.ORANGE,
             defaults = { dropRate = 20 },
             loot = {
@@ -202,7 +205,7 @@ AtlasTW.InstanceData.Naxxramas = {
         {
             id = "Maexxna",
             prefix = "3)",
-            name = BB["Maexxna"],
+            name = LB["Maexxna"],
             color = Colors.ORANGE,
             defaults = { dropRate = 20 },
             loot = {
@@ -224,13 +227,13 @@ AtlasTW.InstanceData.Naxxramas = {
             }
         },
         {
-            name = L["Plague Wing"],
+            name = LMD["Plague Wing"],
             color = Colors.PURPLE,
         },
         {
             id = "NoththePlaguebringer",
             prefix = "1)",
-            name = BB["Noth the Plaguebringer"],
+            name = LB["Noth the Plaguebringer"],
             color = Colors.PURPLE,
             defaults = { dropRate = 14 },
             loot = {
@@ -254,7 +257,7 @@ AtlasTW.InstanceData.Naxxramas = {
         {
             id = "HeigantheUnclean",
             prefix = "2)",
-            name = BB["Heigan the Unclean"],
+            name = LB["Heigan the Unclean"],
             color = Colors.PURPLE,
             defaults = { dropRate = 20 },
             loot = {
@@ -275,7 +278,7 @@ AtlasTW.InstanceData.Naxxramas = {
         {
             id = "Loatheb",
             prefix = "3)",
-            name = BB["Loatheb"],
+            name = LB["Loatheb"],
             color = Colors.PURPLE,
             defaults = { dropRate = 20 },
             loot = {
@@ -295,13 +298,13 @@ AtlasTW.InstanceData.Naxxramas = {
             }
         },
         {
-            name = L["Deathknight Wing"],
+            name = LMD["Deathknight Wing"],
             color = Colors.RED,
         },
         {
             id = "InstructorRazuvious",
             prefix = "1)",
-            name = BB["Instructor Razuvious"],
+            name = LB["Instructor Razuvious"],
             color = Colors.RED,
             defaults = { dropRate = 17 },
             loot = {
@@ -324,7 +327,7 @@ AtlasTW.InstanceData.Naxxramas = {
         {
             id = "GothiktheHarvester",
             prefix = "2)",
-            name = BB["Gothik the Harvester"],
+            name = LB["Gothik the Harvester"],
             color = Colors.RED,
             defaults = { dropRate = 20 },
             loot = {
@@ -345,7 +348,7 @@ AtlasTW.InstanceData.Naxxramas = {
         {
             id = "TheFourHorsemen",
             prefix = "3)",
-            name = BB["The Four Horsemen"],
+            name = LB["The Four Horsemen"],
             color = Colors.RED,
             defaults = { dropRate = 17 },
             loot = {
@@ -365,14 +368,14 @@ AtlasTW.InstanceData.Naxxramas = {
                 { id = 22691 }, -- Corrupted Ashbringer
             }
         },
-        { name = BB["Thane Korth'azz"], color = Colors.GREY },
-        { name = BB["Lady Blaumeux"], color = Colors.GREY },
-        { name = BB["Highlord Mograine"], color = Colors.GREY },
-        { name = BB["Sir Zeliek"], color = Colors.GREY },
+        { name = LB["Thane Korth'azz"], color = Colors.GREY },
+        { name = LB["Lady Blaumeux"], color = Colors.GREY },
+        { name = LB["Highlord Mograine"], color = Colors.GREY },
+        { name = LB["Sir Zeliek"], color = Colors.GREY },
         {
             id = "Omarion",
             prefix = "1')",
-            name = BB["Master Craftsman Omarion"],
+            name = LB["Master Craftsman Omarion"],
             color = Colors.RED,
             loot = {
                 { id = 22719, dropRate = 100 }, -- Omarion's Handbook
@@ -380,14 +383,14 @@ AtlasTW.InstanceData.Naxxramas = {
         },
         {
             prefix = "2')",
-            name = L["Icebellow Anvil"],
+            name = LMD["Icebellow Anvil"],
             color = Colors.RED,
         },
-        { name = L["Frostwyrm Lair"], color = Colors.YELLOW },
+        { name = LMD["Frostwyrm Lair"], color = Colors.YELLOW },
         {
             id = "Sapphiron",
             prefix = "1)",
-            name = BB["Sapphiron"],
+            name = LB["Sapphiron"],
             color = Colors.YELLOW,
             defaults = { dropRate = 10 },
             loot = {
@@ -415,7 +418,7 @@ AtlasTW.InstanceData.Naxxramas = {
         {
             id = "KelThuzard",
             prefix = "2)",
-            name = BB["Kel'Thuzad"],
+            name = LB["Kel'Thuzad"],
             color = Colors.YELLOW,
             defaults = { dropRate = 9 },
             loot = {
@@ -446,7 +449,7 @@ AtlasTW.InstanceData.Naxxramas = {
         },
         {
             id = "NAXTrash",
-            name = L["Trash Mobs"].."-"..BZ["Naxxramas"],
+            name = L["Trash Mobs"].."-"..LZ["Naxxramas"],
             defaults = { dropRate = 1 },
             loot = {
                 { id = 23664 }, -- Pauldrons of Elemental Fury

@@ -1,10 +1,10 @@
 ---
 --- AtlasTWDropDown.lua - Atlas dropdown menu system and navigation
---- 
+---
 --- This file contains the dropdown menu system for Atlas-TW navigation.
 --- It handles category selection, zone filtering, sorting options,
 --- and provides the interface for browsing Atlas content by various criteria.
---- 
+---
 --- Features:
 --- - Dropdown menu creation and management
 --- - Category and zone filtering
@@ -16,9 +16,13 @@
 ---
 
 -- Namespace protection
---local _G = getfenv()
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LM = AtlasTW.Localization.MapData
+local LZ = AtlasTW.Localization.Zones
+
 local AtlasTWDropDown = {}
 
 -- Constants
@@ -55,10 +59,10 @@ local Dungeons = {}
 local function getMapType(mapKey, mapData)
     local patterns = {
         { key = "TransportRoutes", type = "Transport Route", exact = true },
-        { pattern = "Ent$", type = "Entrance" },
-        { pattern = "^DL", type = "Dungeon Location" },
-        { pattern = "^FP", type = "Flight Path" },
-        { pattern = "^BG", type = "Battleground" },
+        { pattern = "Ent$",        type = "Entrance" },
+        { pattern = "^DL",         type = "Dungeon Location" },
+        { pattern = "^FP",         type = "Flight Path" },
+        { pattern = "^BG",         type = "Battleground" },
     }
 
     for _, p in ipairs(patterns) do
@@ -75,7 +79,7 @@ local function getMapType(mapKey, mapData)
     -- Do not require Continent field; determine type by common fields
     if mapData.Level and mapData.MaxPlayers and mapData.Location then
         local size = mapData.MaxPlayers
-        if size and size > 5 and mapData.Name ~= BZ["Stratholme"] and mapData.Name ~= BZ["Scholomance"] and mapData.Name ~= BZ["Lower Blackrock Spire"] then -- dont want strat scholo and lbrs in raid type
+        if size and size > 5 and mapData.Name ~= LZ["Stratholme"] and mapData.Name ~= LZ["Scholomance"] and mapData.Name ~= LZ["Lower Blackrock Spire"] then -- dont want strat scholo and lbrs in raid type
             return "Raid"
         else
             return "Dungeon"
@@ -96,12 +100,12 @@ local function getContinent(mapData)
     if AtlasTW.InstanceData.DLWest and AtlasTW.InstanceData.DLWest.Bosses then
         for _, entry in pairs(AtlasTW.InstanceData.DLWest.Bosses) do
             if entry.name and mapData.Name == entry.name then
-                return BZ["Kalimdor"]
+                return LZ["Kalimdor"]
             end
         end
     end
     -- Default to Eastern Kingdoms for all other instances
-    return BZ["Eastern Kingdoms"]
+    return LZ["Eastern Kingdoms"]
 end
 
 -- Populate Dungeons from AtlasTW.InstanceData (now as a function for lazy rebuild)
@@ -165,25 +169,36 @@ end
 -- Category definitions
 local CategoryDefinitions = {
     [SortType.CONTINENT] = {
-        { name = L["Eastern Kingdoms Instances"], filter = function(d) return d.continent == BZ["Eastern Kingdoms"] and (d.type == "Dungeon" or d.type == "Raid") end },
-        { name = L["Kalimdor Instances"], filter = function(d) return d.continent == BZ["Kalimdor"] and (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Eastern Kingdoms Instances"], filter = function(d) return d.continent == LZ["Eastern Kingdoms"] and
+            (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Kalimdor Instances"],         filter = function(d) return d.continent == LZ["Kalimdor"] and
+            (d.type == "Dungeon" or d.type == "Raid") end },
     },
     [SortType.PARTYSIZE] = {
-        { name = L["Instances for 5 Players"], filter = function(d) return d.size == 5 and (d.type == "Dungeon" or d.type == "Raid") end },
-        { name = L["Instances for 10 Players"], filter = function(d) return d.size == 10 and (d.type == "Dungeon" or d.type == "Raid") end },
-        { name = L["Instances for 20 Players"], filter = function(d) return d.size == 20 and (d.type == "Dungeon" or d.type == "Raid") end },
-        { name = L["Instances for 40 Players"], filter = function(d) return d.size == 40 and (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances for 5 Players"],  filter = function(d) return d.size == 5 and
+            (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances for 10 Players"], filter = function(d) return d.size == 10 and
+            (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances for 20 Players"], filter = function(d) return d.size == 20 and
+            (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances for 40 Players"], filter = function(d) return d.size == 40 and
+            (d.type == "Dungeon" or d.type == "Raid") end },
     },
     [SortType.LEVEL] = {
-        { name = L["Instances level 15-29"], filter = function(d) return IsInRange(d.level, 1, 29) and (d.type == "Dungeon" or d.type == "Raid") end },
-        { name = L["Instances level 30-39"], filter = function(d) return IsInRange(d.level, 30, 39) and (d.type == "Dungeon" or d.type == "Raid") end },
-        { name = L["Instances level 40-49"], filter = function(d) return IsInRange(d.level, 40, 49) and (d.type == "Dungeon" or d.type == "Raid") end },
-        { name = L["Instances level 50-59"], filter = function(d) return IsInRange(d.level, 50, 59) and (d.type == "Dungeon" or d.type == "Raid") end },
-        { name = L["Instances 60 level"], filter = function(d) return IsInRange(d.level, 60, 60) and (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances level 15-29"], filter = function(d) return IsInRange(d.level, 1, 29) and
+            (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances level 30-39"], filter = function(d) return IsInRange(d.level, 30, 39) and
+            (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances level 40-49"], filter = function(d) return IsInRange(d.level, 40, 49) and
+            (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances level 50-59"], filter = function(d) return IsInRange(d.level, 50, 59) and
+            (d.type == "Dungeon" or d.type == "Raid") end },
+        { name = L["Instances 60 level"],    filter = function(d) return IsInRange(d.level, 60, 60) and
+            (d.type == "Dungeon" or d.type == "Raid") end },
     },
     [SortType.TYPE] = {
         { name = L["Dungeons"], filter = function(d) return d.type == "Dungeon" end },
-        { name = L["Raids"], filter = function(d) return d.type == "Raid" end },
+        { name = L["Raids"],    filter = function(d) return d.type == "Raid" end },
     },
     [SortType.ALL] = {
         { name = L["Showing all instances_1"], filter = function(d) return d.type == "Dungeon" or d.type == "Raid" end },
@@ -215,12 +230,12 @@ local function CreateColoredCategory(name, color)
 end
 
 local SpecialCategoryDefinitions = {
-    { name = L["World"], filter = function(d) return d.type == "World Boss" end },
-    { name = L["Entrances"], filter = function(d) return d.type == "Entrance" end, colored = true },
-    { name = L["Battlegrounds"], filter = function(d) return d.type == "Battleground" end, colored = true },
-    { name = L["Dungeon Locations"], filter = function(d) return d.type == "Dungeon Location" end, colored = true },
-    { name = L["Flight Path Maps"], filter = function(d) return d.type == "Flight Path" end, colored = true },
-    { name = L["Transport Routes"], filter = function(d) return d.type == "Transport Route" end, colored = true }
+    { name = L["World"],             filter = function(d) return d.type == "World Boss" end },
+    { name = L["Entrances"],         filter = function(d) return d.type == "Entrance" end,         colored = true },
+    { name = L["Battlegrounds"],    filter = function(d) return d.type == "Battleground" end,     colored = true },
+    { name = LM["Dungeon Locations"], filter = function(d) return d.type == "Dungeon Location" end, colored = true },
+    { name = LM["Flight Path Maps"],  filter = function(d) return d.type == "Flight Path" end,      colored = true },
+    { name = L["Transport Routes"],  filter = function(d) return d.type == "Transport Route" end,  colored = true }
 }
 
 local SpecialCategories = {}
@@ -274,7 +289,8 @@ local function GenerateLayouts()
 
         -- Add regular categories (Dungeons/Raids sorted by different criteria)
         if CategoryOrder[sortName] then
-            ProcessCategoryList(layouts[sortName], layoutOrder[sortName], CategoryOrder[sortName], Categories[sortName], Dungeons)
+            ProcessCategoryList(layouts[sortName], layoutOrder[sortName], CategoryOrder[sortName], Categories[sortName],
+                Dungeons)
         end
 
         -- Add special categories (Entrances, BGs, etc.) to all sort types

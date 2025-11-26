@@ -19,7 +19,8 @@ AtlasTW = _G.AtlasTW
 AtlasTW.DataResolver = AtlasTW.DataResolver or {}
 
 -- Instance required libraries
-local L = AtlasTW.Local
+local LU = AtlasTW.Localization.UI
+local LM = AtlasTW.Localization.MapData
 
 ---
 --- Helper function to resolve loot items
@@ -193,7 +194,7 @@ function AtlasTW.DataResolver.GetBossNavigation(data)
 				if bossData.items and type(bossData.items) == "table" then
 					-- Back to dungeons menu
 					nav.Back_Page = "DUNGEONSMENU"
-					nav.Back_Title = L["Dungeons & Raids"]
+					nav.Back_Title = LU["Dungeons & Raids"]
 				end
 
                 local numEntries = table.getn(currentInstanceData.Bosses)
@@ -291,8 +292,8 @@ function AtlasTW.DataResolver.GetMenuNavigation(current)
         for j = idx - 1, 1, -1 do
             local pe = menu[j]
             if pe and pe.lootpage and not pe.isheader then
-                result.Prev_Page = pe.lootpage ~= L["Rare Mobs"] and pe.lootpage or L["Shade Mage"]
-                result.Prev_Title = pe.name ~= L["Rare Mobs"] and pe.name or L["Shade Mage"]
+                result.Prev_Page = pe.lootpage ~= LU["Rare Mobs"] and pe.lootpage or LM["Shade Mage"]
+                result.Prev_Title = pe.name ~= LU["Rare Mobs"] and pe.name or LM["Shade Mage"]
                 break
             end
         end
@@ -302,8 +303,8 @@ function AtlasTW.DataResolver.GetMenuNavigation(current)
                 if j ~= idx then
                     local pe = menu[j]
                     if pe and pe.lootpage and not pe.isheader then
-                        result.Prev_Page = pe.lootpage ~= L["Rare Mobs"] and pe.lootpage or L["Shade Mage"]
-                        result.Prev_Title = pe.name ~= L["Rare Mobs"] and pe.name or L["Shade Mage"]
+                        result.Prev_Page = pe.lootpage ~= LU["Rare Mobs"] and pe.lootpage or LM["Shade Mage"]
+                        result.Prev_Title = pe.name ~= LU["Rare Mobs"] and pe.name or LM["Shade Mage"]
                         break
                     end
                 end
@@ -314,8 +315,8 @@ function AtlasTW.DataResolver.GetMenuNavigation(current)
         for j = idx + 1, size do
             local ne = menu[j]
             if ne and ne.lootpage and not ne.isheader then
-                result.Next_Page = ne.lootpage ~= L["Rare Mobs"] and ne.lootpage or L["Shade Mage"]
-                result.Next_Title = ne.name ~= L["Rare Mobs"] and ne.name or L["Shade Mage"]
+                result.Next_Page = ne.lootpage ~= LU["Rare Mobs"] and ne.lootpage or LM["Shade Mage"]
+                result.Next_Title = ne.name ~= LU["Rare Mobs"] and ne.name or LM["Shade Mage"]
                 break
             end
         end
@@ -325,8 +326,8 @@ function AtlasTW.DataResolver.GetMenuNavigation(current)
                 if j ~= idx then
                     local ne = menu[j]
                     if ne and ne.lootpage and not ne.isheader then
-                        result.Next_Page = ne.lootpage ~= L["Rare Mobs"] and ne.lootpage or L["Shade Mage"]
-                        result.Next_Title = ne.name ~= L["Rare Mobs"] and ne.name or L["Shade Mage"]
+                        result.Next_Page = ne.lootpage ~= LU["Rare Mobs"] and ne.lootpage or LM["Shade Mage"]
+                        result.Next_Title = ne.name ~= LU["Rare Mobs"] and ne.name or LM["Shade Mage"]
                         break
                     end
                 end

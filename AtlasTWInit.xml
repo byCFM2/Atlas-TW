@@ -1,7 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
 	<!-- Include files -->
 	<Include file="AtlasTWConfig.lua"/>
-	<Include file="AtlasTW-enUS.lua"/>
+	<Include file="Locales\locales.xml"/>
 	<Include file="TWLoot\Data\DataInit.xml"/>
 	<Include file="AtlasTWDropDown.lua"/>
 	<Include file="AtlasTWUILogic.lua"/>

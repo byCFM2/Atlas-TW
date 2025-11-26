@@ -17,17 +17,20 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.GilneasCity = {
-    Name = BZ["Gilneas City"],
-    Location = BZ["Gilneas"],
+    Name = LZ["Gilneas City"],
+    Location = LZ["Gilneas"],
     Level = { 43, 49 },
     Acronym = "GC",
     MaxPlayers = 5,
@@ -39,7 +42,7 @@ AtlasTW.InstanceData.GilneasCity = {
         {
             id = "GCMatthiasHoltz",
             prefix = "1)",
-            name = BB["Matthias Holtz"],
+            name = LB["Matthias Holtz"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 61305 }, -- Darkwatch Pants
@@ -52,7 +55,7 @@ AtlasTW.InstanceData.GilneasCity = {
         {
             id = "GCPackmasterRagetooth",
             prefix = "2)",
-            name = BB["Packmaster Ragetooth"],
+            name = LB["Packmaster Ragetooth"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 61301 }, -- Shaderun Boots
@@ -64,18 +67,18 @@ AtlasTW.InstanceData.GilneasCity = {
         },
         {
             prefix = "a)",
-            name = L["Dawnstone Plans"],
+            name = LMD["Dawnstone Plans"],
             color = Colors.GREY,
         },
         {
             prefix = "b)",
-            name = L["Manuscript of Hydromancy II"],
+            name = LMD["Manuscript of Hydromancy II"],
             color = Colors.GREY,
         },
         {
             id = "GCJudgeSutherland",
             prefix = "3)",
-            name = BB["Judge Sutherland"],
+            name = LB["Judge Sutherland"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 61309 }, -- Mantle of Law
@@ -89,7 +92,7 @@ AtlasTW.InstanceData.GilneasCity = {
         {
             id = "GCDustivanBlackcowl",
             prefix = "4)",
-            name = BB["Dustivan Blackcowl"],
+            name = LB["Dustivan Blackcowl"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 61331 }, -- Blackcowl Sash
@@ -106,7 +109,7 @@ AtlasTW.InstanceData.GilneasCity = {
         {
             id = "GCMarshalMagnusGreystone",
             prefix = "5)",
-            name = BB["Marshal Magnus Greystone"],
+            name = LB["Marshal Magnus Greystone"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 61313 }, -- Greymane Helmet
@@ -124,7 +127,7 @@ AtlasTW.InstanceData.GilneasCity = {
         {
             id = "GCHorsemasterLevvin",
             prefix = "6)",
-            name = BB["Horsemaster Levvin"],
+            name = LB["Horsemaster Levvin"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 61734 }, -- Horsemaster Belt
@@ -138,7 +141,7 @@ AtlasTW.InstanceData.GilneasCity = {
         {
             id = "GCHarlowFamilyChest",
             prefix = "7)",
-            name = L["Harlow Family Chest"],
+            name = LMD["Harlow Family Chest"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 61319 }, -- Regal Robes of the Regent
@@ -152,7 +155,7 @@ AtlasTW.InstanceData.GilneasCity = {
         {
             id = "GCGennGreymane",
             prefix = "8)",
-            name = BB["Genn Greymane"],
+            name = LB["Genn Greymane"],
             defaults = { dropRate = 15 },
             loot = {
                 { id = 61323 }, -- Swiftcaster's Chapeau
@@ -174,7 +177,7 @@ AtlasTW.InstanceData.GilneasCity = {
         },
         {
             id = "GCTrash",
-            name = L["Trash Mobs"].."-"..BZ["Gilneas City"],
+            name = L["Trash Mobs"].."-"..LZ["Gilneas City"],
             defaults = { dropRate = .034 },
             loot = {
                 { id = 61598 }, -- Wraps of the Pauper
@@ -191,7 +194,7 @@ AtlasTW.InstanceData.GilneasCity = {
                 { id = 41421, dropRate = 10, container = { 55505 } }, -- Darkpelt Blood
             }
         },
-        { name = BIS["Greymane Armor"], items = "GreymaneArmor" },
+        { name = LIS["Greymane Armor"], items = "GreymaneArmor" },
     },
 }
 

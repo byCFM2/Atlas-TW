@@ -15,15 +15,18 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.TheStockade = {
-    Name = BZ["The Stockade"],
-    Location = BZ["Stormwind City"],
+    Name = LZ["The Stockade"],
+    Location = LZ["Stormwind City"],
     Level = { 15, 31 },
     Acronym = "Stocks",
     MaxPlayers = 5,
@@ -36,7 +39,7 @@ AtlasTW.InstanceData.TheStockade = {
         {
             id = "SWStTargorr",
             prefix = "1)",
-            name = BB["Targorr the Dread"],
+            name = LB["Targorr the Dread"],
             postfix = L["Varies"],
             defaults = { dropRate = 50 },
             loot = {
@@ -49,7 +52,7 @@ AtlasTW.InstanceData.TheStockade = {
         {
             id = "SWStKamDeepfury",
             prefix = "2)",
-            name = BB["Kam Deepfury"],
+            name = LB["Kam Deepfury"],
             loot = {
                 { id = 2280, dropRate = 1 }, -- Kam's Walking Stick
                 {},
@@ -61,7 +64,7 @@ AtlasTW.InstanceData.TheStockade = {
         {
             id = "SWStHamhock",
             prefix = "3)",
-            name = BB["Hamhock"],
+            name = LB["Hamhock"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 80724 }, -- Cell Heater
@@ -71,7 +74,7 @@ AtlasTW.InstanceData.TheStockade = {
         {
             id = "SWStBazil",
             prefix = "4)",
-            name = BB["Bazil Thredd"],
+            name = LB["Bazil Thredd"],
             loot = {
                 { id = 80729, dropRate = 35 }, -- Standard Issue Tunic
                 { id = 80730, dropRate = 35 }, -- Convict Moccasins
@@ -88,7 +91,7 @@ AtlasTW.InstanceData.TheStockade = {
         {
             id = "SWStDextren",
             prefix = "5)",
-            name = BB["Dextren Ward"],
+            name = LB["Dextren Ward"],
             loot = {
                 { id = 80726, dropRate = 35 }, -- Gravedigger Boots
                 { id = 80727, dropRate = 35 }, -- Broken Bottle
@@ -103,7 +106,7 @@ AtlasTW.InstanceData.TheStockade = {
         {
             id = "SWStBruegalIronknuckle",
             prefix = "6)",
-            name = BB["Bruegal Ironknuckle"],
+            name = LB["Bruegal Ironknuckle"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 3228 }, -- Jimmied Handcuffs
@@ -115,7 +118,7 @@ AtlasTW.InstanceData.TheStockade = {
         },
         {
             id = "SWStTrash",
-            name = L["Trash Mobs"].."-"..BZ["The Stockade"],
+            name = L["Trash Mobs"].."-"..LZ["The Stockade"],
             loot = {
                 { id = 80796, dropRate = .05 }, -- Tattered Cloak of the Insurgency
                 { id = 1076, dropRate = .6 }, -- Defias Renegade Ring

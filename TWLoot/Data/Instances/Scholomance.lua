@@ -17,12 +17,15 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LF = AtlasTW.Localization.Factions
+local LS = AtlasTW.Localization.Spells
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
@@ -58,8 +61,8 @@ local scholoShareLoot = {
 }
 
 AtlasTW.InstanceData.Scholomance = {
-    Name = BZ["Scholomance"],
-    Location = BZ["Western Plaguelands"],
+    Name = LZ["Scholomance"],
+    Location = LZ["Western Plaguelands"],
     Level = { 45, 60 },
     Acronym = "Scholo",
     MaxPlayers = 10,
@@ -68,25 +71,25 @@ AtlasTW.InstanceData.Scholomance = {
         { letter = "A) " .. L["Entrance"] }
     },
     Reputation = {
-        { name = BF["Argent Dawn"], loot = "ArgentDawn" }
+        { name = LF["Argent Dawn"], loot = "ArgentDawn" }
     },
     Keys = {
-        { name = L["Skeleton Key"], loot = "VanillaKeys", info = L["Key"] }
+        { name = LMD["Skeleton Key"], loot = "VanillaKeys", info = L["Key"] }
     },
     Bosses = {
         {
             id = "BloodStewardofKirtonos",
             prefix = "1)",
-            name = L["Blood Steward of Kirtonos"],
+            name = LMD["Blood Steward of Kirtonos"],
             loot = {
                 { id = 13523, disc = L["Used to summon boss"], dropRate = 100 }, -- Blood of Innocents
             }
         },
-        { name = L["The Deed to Southshore"], color = Colors.GREY },
+        { name = LMD["The Deed to Southshore"], color = Colors.GREY },
         {
             id = "KirtonostheHerald",
             prefix = "2)",
-            name = BB["Kirtonos the Herald"],
+            name = LB["Kirtonos the Herald"],
             postfix = L["Summon"],
             defaults = { dropRate = 11 },
             loot = {
@@ -106,7 +109,7 @@ AtlasTW.InstanceData.Scholomance = {
         {
             id = "JandiceBarov",
             prefix = "3)",
-            name = BB["Jandice Barov"],
+            name = LB["Jandice Barov"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 16701, disc = L["Warlock"]..", T0", container = { 22073 } }, -- Dreadmist Mantle
@@ -127,11 +130,11 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
-        { name = L["Journal of Jandice Barov"], color = Colors.GREY },
-        { prefix = "4)", name = L["The Deed to Tarren Mill"], color = Colors.GREY },
+        { name = LMD["Journal of Jandice Barov"], color = Colors.GREY },
+        { prefix = "4)", name = LMD["The Deed to Tarren Mill"], color = Colors.GREY },
         {
             id = "LordBlackwood",
-            name = BB["Lord Blackwood"],
+            name = LB["Lord Blackwood"],
             postfix = L["Scourge Invasion"],
             defaults = { dropRate = 33 },
             loot = {
@@ -144,7 +147,7 @@ AtlasTW.InstanceData.Scholomance = {
         {
             id = "Rattlegore",
             prefix = "5)",
-            name = BB["Rattlegore"],
+            name = LB["Rattlegore"],
             postfix = L["Lower"],
             defaults = { dropRate = 14 },
             loot = {
@@ -168,7 +171,7 @@ AtlasTW.InstanceData.Scholomance = {
         },
         {
             id = "DeathKnight",
-            name = BB["Death Knight Darkreaver"],
+            name = LB["Death Knight Darkreaver"],
             postfix = L["Summon"],
             defaults = { dropRate = 25 },
             loot = {
@@ -185,7 +188,7 @@ AtlasTW.InstanceData.Scholomance = {
         {
             id = "MardukBlackpool",
             prefix = "6)",
-            name = BB["Marduk Blackpool"],
+            name = LB["Marduk Blackpool"],
             defaults = { dropRate = 7 },
             loot = {
                 { id = 18692 }, -- Death Knight Sabatons
@@ -200,7 +203,7 @@ AtlasTW.InstanceData.Scholomance = {
         },
         {
             id = "Vectus",
-            name = BB["Vectus"],
+            name = LB["Vectus"],
             defaults = { dropRate = 4 },
             loot = {
                 { id = 18691 }, -- Dark Advisor's Pendant
@@ -214,7 +217,7 @@ AtlasTW.InstanceData.Scholomance = {
         {
             id = "RasFrostwhisper",
             prefix = "7)",
-            name = BB["Ras Frostwhisper"],
+            name = LB["Ras Frostwhisper"],
             defaults = { dropRate = 8 },
             loot = {
                 { id = 16689, disc = L["Mage"]..", T0", container = { 22068 } }, -- Magister's Mantle
@@ -240,10 +243,10 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
-        { name = L["The Deed to Brill"], color = Colors.GREY },
+        { name = LMD["The Deed to Brill"], color = Colors.GREY },
         {
             id = "Kormok",
-            name = BB["Kormok"],
+            name = LB["Kormok"],
             postfix = L["Summon"],
             defaults = { dropRate = 20 },
             loot = {
@@ -263,7 +266,7 @@ AtlasTW.InstanceData.Scholomance = {
         {
             id = "InstructorMalicia",
             prefix = "8)",
-            name = BB["Instructor Malicia"],
+            name = LB["Instructor Malicia"],
             loot = {
                 { id = 16710, disc = L["Rogue"]..", T0", container = { 22004 }, dropRate = 4 }, -- Shadowcraft Bracers
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
@@ -277,7 +280,7 @@ AtlasTW.InstanceData.Scholomance = {
         {
             id = "DoctorTheolenKrastinov",
             prefix = "9)",
-            name = BB["Doctor Theolen Krastinov"],
+            name = LB["Doctor Theolen Krastinov"],
             loot = {
                 { id = 16684, disc = L["Mage"]..", T0", container = { 22066 }, dropRate = 14 }, -- Magister's Gloves
                 { id = 14617, disc = L["Shirt"], dropRate = 2 }, -- Sawbones Shirt
@@ -290,7 +293,7 @@ AtlasTW.InstanceData.Scholomance = {
         {
             id = "LorekeeperPolkelt",
             prefix = "10)",
-            name = BB["Lorekeeper Polkelt"],
+            name = LB["Lorekeeper Polkelt"],
             loot = {
                 { id = 16705, disc = L["Warlock"]..", T0", container = { 22077 }, dropRate = 17 }, -- Dreadmist Wraps
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
@@ -303,7 +306,7 @@ AtlasTW.InstanceData.Scholomance = {
         {
             id = "TheRavenian",
             prefix = "11)",
-            name = BB["The Ravenian"],
+            name = LB["The Ravenian"],
             loot = {
                 { id = 16716, disc = L["Druid"]..", T0", container = { 22106 }, dropRate = 17 }, -- Wildheart Belt
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
@@ -316,7 +319,7 @@ AtlasTW.InstanceData.Scholomance = {
         {
             id = "LordAlexeiBarov",
             prefix = "12)",
-            name = BB["Lord Alexei Barov"],
+            name = LB["Lord Alexei Barov"],
             defaults = { dropRate = 4 },
             loot = {
                 { id = 16722, disc = L["Paladin"]..", T0", container = { 22088 }, dropRate = 5 }, -- Lightforge Bracers
@@ -327,11 +330,11 @@ AtlasTW.InstanceData.Scholomance = {
                 unpack(scholoShareLoot),
             }
         },
-        { name = L["The Deed to Caer Darrow"], color = Colors.GREY },
+        { name = LMD["The Deed to Caer Darrow"], color = Colors.GREY },
         {
             id = "LadyIlluciaBarov",
             prefix = "13)",
-            name = BB["Lady Illucia Barov"],
+            name = LB["Lady Illucia Barov"],
             defaults = { dropRate = 4 },
             loot = {
                 { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
@@ -345,7 +348,7 @@ AtlasTW.InstanceData.Scholomance = {
         {
             id = "DarkmasterGandling",
             prefix = "14)",
-            name = BB["Darkmaster Gandling"],
+            name = LB["Darkmaster Gandling"],
             defaults = { dropRate = 11 },
             loot = {
                 { id = 16693, disc = L["Priest"]..", T0", container = { 22080 } }, -- Devout Crown
@@ -373,7 +376,7 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
                 { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
                 { id = 14514, dropRate = 7, container = { 14513 } }, -- Pattern: Robe of the Void
-                { id = 56107, BS["Gemology"], dropRate = 30, container = { 56108, 70166, 56014 } }, -- Bottom Half of Advanced Gemology II
+                { id = 56107, LS["Gemology"], dropRate = 30, container = { 56108, 70166, 56014 } }, -- Bottom Half of Advanced Gemology II
                 {},
                 { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
@@ -383,19 +386,19 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
             }
         },
-        { prefix = "1')", name = L["Torch Lever"], color = Colors.GREEN },
-        { prefix = "2')", name = L["Old Treasure Chest"], color = Colors.GREEN },
-        { prefix = "3')", name = L["Alchemy Lab"], color = Colors.GREEN },
+        { prefix = "1')", name = LMD["Torch Lever"], color = Colors.GREEN },
+        { prefix = "2')", name = LMD["Old Treasure Chest"], color = Colors.GREEN },
+        { prefix = "3')", name = LMD["Alchemy Lab"], color = Colors.GREEN },
         {
             id = "SCHOLOGoldsmithing",
             name = L["Goldsmithing Plans"], --TODO CHECK PLACE
             loot = {
-                { id = 56100, disc = BS["Goldsmithing"], dropRate = 100, container = { 56110, 70211, 56094 } }, -- Bottom Half of Advanced Goldsmithing I
+                { id = 56100, disc = LS["Goldsmithing"], dropRate = 100, container = { 56110, 70211, 56094 } }, -- Bottom Half of Advanced Goldsmithing I
             },
         },
         {
             id = "SCHOLOTrash",
-            name = L["Trash Mobs"].."-"..BZ["Scholomance"],
+            name = L["Trash Mobs"].."-"..LZ["Scholomance"],
             loot = {
                 { id = 16685, disc = L["Mage"]..", T0", container = { 22062 }, dropRate = 1.5 }, -- Magister's Belt
                 { id = 16702, disc = L["Warlock"]..", T0", container = { 22070 }, dropRate = 1.5 }, -- Dreadmist Belt
@@ -423,15 +426,15 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 16254, dropRate = 1 }, -- Formula: Enchant Weapon - Lifestealing
                 { id = 16255, dropRate = 2 }, -- Formula: Enchant 2H Weapon - Major Spirit
                 { id = 70163, dropRate = 1.5, container = { 56016 } }, -- Plans: Arcane Emerald Gemstone
-                { id = 56102, disc = BS["Goldsmithing"], dropRate = .03, container = { 56111, 70177, 56066 } }, -- Top Half of Advanced Goldsmithing II
+                { id = 56102, disc = LS["Goldsmithing"], dropRate = .03, container = { 56111, 70177, 56066 } }, -- Top Half of Advanced Goldsmithing II
                 { id = 15773, dropRate = 7, container = { 15085 } }, -- Pattern: Wicked Leather Armor
                 { id = 15776, dropRate = 4, container = { 15090 } }, -- Pattern: Runic Leather Armor
                 {},
                 { id = 13920, dropRate = 6 }, -- Healthy Dragon Scale
             }
         },
-        { name = BZ["Scholomance"].." "..L["Sets"], items = "Scholo" },
-        { name = BIS["Ironweave Battlesuit"], items = "Ironweave" },
+        { name = LZ["Scholomance"].." "..L["Sets"], items = "Scholo" },
+        { name = LIS["Ironweave Battlesuit"], items = "Ironweave" },
         { name = L["Tier 0/0.5 Sets"], items = "AtlasTWLootT0SetMenu" },
     },
 }

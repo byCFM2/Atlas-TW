@@ -17,8 +17,10 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LMD = AtlasTW.Localization.MapData
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -30,8 +32,8 @@ AtlasTW.InstanceData.RareMobs = {
     Bosses = {
         {
             id = "ShadeMage",
-            name = L["Shade Mage"],
-            postfix = "0.4k (17L) " .. BZ["Tirisfal Glades"] .. " [15, 68]",
+            name = LMD["Shade Mage"],
+            postfix = "0.4k (17L) " .. LZ["Tirisfal Glades"] .. " [15, 68]",
             defaults = { dropRate = 50 },
             loot = {
                 { id = 61500 }, -- Shadestaff
@@ -40,8 +42,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "GraypawAlpha",
-            name = L["Graypaw Alpha"],
-            postfix = "0.7k (18L) " .. BZ["Tirisfal Glades"] .. " [27, 58]",
+            name = LMD["Graypaw Alpha"],
+            postfix = "0.7k (18L) " .. LZ["Tirisfal Glades"] .. " [27, 58]",
             defaults = { dropRate = 50 },
             loot = {
                 { id = 60492 }, -- Graypaw Leggings
@@ -50,8 +52,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "EarthcallerRezengal",
-            name = L["Earthcaller Rezengal"],
-            postfix = "0.4k (18L) " .. BZ["Stonetalon Mountains"] .. " [74, 79]",
+            name = LMD["Earthcaller Rezengal"],
+            postfix = "0.4k (18L) " .. LZ["Stonetalon Mountains"] .. " [74, 79]",
             defaults = { dropRate = 50 },
             loot = {
                 { id = 61502 }, -- Earthcaller Staff
@@ -60,8 +62,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Blazespark",
-            name = L["Blazespark"],
-            postfix = "0.8k (24L) " .. BZ["Stonetalon Mountains"] .. " [21, 29]",
+            name = LMD["Blazespark"],
+            postfix = "0.8k (24L) " .. LZ["Stonetalon Mountains"] .. " [21, 29]",
             defaults = { dropRate = 50 },
             loot = {
                 { id = 61504 }, -- Wildfire Girdle
@@ -70,8 +72,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "FriarMontero",
-            name = L["Friar Montero"],
-            postfix = "3.5k (35L) " .. BZ["Northwind"] .. " [61, 26]",
+            name = LMD["Friar Montero"],
+            postfix = "3.5k (35L) " .. LZ["Northwind"] .. " [61, 26]",
             defaults = { dropRate = 50 },
             loot = {
                 { id = 58010 }, -- Psalm of Righteous Fire
@@ -80,8 +82,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "WitchDoctorTanzo",
-            name = L["Witch Doctor Tan'zo"],
-            postfix = "2k (35L) " .. BZ["Arathi Highlands"] .. " [44, 13]",
+            name = LMD["Witch Doctor Tan'zo"],
+            postfix = "2k (35L) " .. LZ["Arathi Highlands"] .. " [44, 13]",
             defaults = { dropRate = 40 },
             loot = {
                 { id = 61507 }, -- Pendant of Wilderness
@@ -91,8 +93,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Emastrasz",
-            name = L["Emastrasz"],
-            postfix = "2k (38L) " .. BZ["Grim Reaches"] .. " [57, 78]",
+            name = LMD["Emastrasz"],
+            postfix = "2k (38L) " .. LZ["Grim Reaches"] .. " [57, 78]",
             defaults = { dropRate = 50 },
             loot = {
                 { id = 58159 }, -- Hood of Lifebinding
@@ -101,8 +103,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Dawnhowl",
-            name = L["Dawnhowl"],
-            postfix = "2k (40L) " .. BZ["Gilneas"] .. " [43, 23]",
+            name = LMD["Dawnhowl"],
+            postfix = "2k (40L) " .. LZ["Gilneas"] .. " [43, 23]",
             defaults = { dropRate = 33 },
             loot = {
                 { id = 61580 }, -- Wolf's Skull
@@ -112,8 +114,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "WidowoftheWoods",
-            name = L["Widow of the Woods"],
-            postfix = "6k (40L) " .. BZ["Gilneas"] .. " [30, 50]",
+            name = LMD["Widow of the Woods"],
+            postfix = "6k (40L) " .. LZ["Gilneas"] .. " [30, 50]",
             defaults = { dropRate = 40 },
             loot = {
                 { id = 61575 }, -- Forgotten Veil
@@ -124,8 +126,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Gnaws",
-            name = L["Gnaws"],
-            postfix = "6.4k (41L) " .. BZ["Balor"] .. " [56, 11]",
+            name = LMD["Gnaws"],
+            postfix = "6.4k (41L) " .. LZ["Balor"] .. " [56, 11]",
             defaults = { dropRate = 33 },
             loot = {
                 { id = 23100, dropRate = 25 }, -- Idol of Fluidity
@@ -136,8 +138,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "MaltimorsPrototype",
-            name = L["Maltimor's Prototype"],
-            postfix = "6k (43L) " .. BZ["Gilneas"] .. " [48, 57]",
+            name = LMD["Maltimor's Prototype"],
+            postfix = "6k (43L) " .. LZ["Gilneas"] .. " [48, 57]",
             defaults = { dropRate = 40 },
             loot = {
                 { id = 61573 }, -- Scrapmetal Helm
@@ -148,8 +150,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Bonecruncher",
-            name = L["Bonecruncher"],
-            postfix = "2k (44L) " .. BZ["Gilneas"] .. " [54, 56]",
+            name = LMD["Bonecruncher"],
+            postfix = "2k (44L) " .. LZ["Gilneas"] .. " [54, 56]",
             defaults = { dropRate = 40 },
             loot = {
                 { id = 61583 }, -- Light Ogre Belt
@@ -159,8 +161,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Duskskitterer",
-            name = L["Duskskitterer"],
-            postfix = "2k (44L) " .. BZ["Gilneas"] .. " [46, 78]",
+            name = LMD["Duskskitterer"],
+            postfix = "2k (44L) " .. LZ["Gilneas"] .. " [46, 78]",
             defaults = { dropRate = 33 },
             loot = {
                 { id = 61610 }, -- Old Farmer's Pitchfork
@@ -170,8 +172,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "BaronPerenolde",
-            name = L["Baron Perenolde"],
-            postfix = "3k (45L) " .. BZ["Gilneas"] .. " [67, 80]",
+            name = LMD["Baron Perenolde"],
+            postfix = "3k (45L) " .. LZ["Gilneas"] .. " [67, 80]",
             defaults = { dropRate = 33 },
             loot = {
                 { id = 61577 }, -- Lieutenant's Sword
@@ -180,8 +182,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "KinTozo",
-            name = L["Kin'Tozo"],
-            postfix = "20k (45L) " .. BZ["Stranglethorn Vale"] .. " [27, 55]",
+            name = LMD["Kin'Tozo"],
+            postfix = "20k (45L) " .. LZ["Stranglethorn Vale"] .. " [27, 55]",
             defaults = { dropRate = 25 },
             loot = {
                 { id = 60438 }, -- Vambraces of Kin'Tozo
@@ -194,8 +196,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "M0L1Y",
-            name = L["M-0L1Y"],
-            postfix = "3k (47L) " .. BZ["Icepoint Rock"] .. " [54, 40]",
+            name = LMD["M-0L1Y"],
+            postfix = "3k (47L) " .. LZ["Icepoint Rock"] .. " [54, 40]",
             defaults = { dropRate = 30 },
             loot = {
                 { id = 41297 }, -- Corrosive Sabatons
@@ -206,8 +208,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Grugthok",
-            name = L["Grug'thok the Seer"],
-            postfix = "15k (47L) " .. BZ["Feralas"] .. " [58, 71]",
+            name = LMD["Grug'thok the Seer"],
+            postfix = "15k (47L) " .. LZ["Feralas"] .. " [58, 71]",
             defaults = { dropRate = 25 },
             loot = {
                 { id = 81380 }, -- Gordunni War Harness
@@ -219,8 +221,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Ashbeard",
-            name = L["Explorer Ashbeard"],
-            postfix = "16k (49L) " .. BZ["Searing Gorge"] .. " [71, 18]",
+            name = LMD["Explorer Ashbeard"],
+            postfix = "16k (49L) " .. LZ["Searing Gorge"] .. " [71, 18]",
             defaults = { dropRate = 25 },
             loot = {
                 { id = 83275, dropRate = 0.5 }, -- Ashbeard's Lucky Telescope
@@ -232,8 +234,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Jalakar",
-            name = L["Jal'akar"],
-            postfix = "18k (50L) " .. BZ["The Hinterlands"] .. " [53, 34]",
+            name = LMD["Jal'akar"],
+            postfix = "18k (50L) " .. LZ["The Hinterlands"] .. " [53, 34]",
             defaults = { dropRate = 25 },
             loot = {
                 { id = 51023 }, -- Vilebranch Grips
@@ -245,8 +247,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Ripjaw",
-            name = L["Ripjaw"],
-            postfix = "9k (51L) " .. BZ["Lapidis Isle"] .. " [55, 21]",
+            name = LMD["Ripjaw"],
+            postfix = "9k (51L) " .. LZ["Lapidis Isle"] .. " [55, 21]",
             defaults = { dropRate = 40 },
             loot = {
                 { id = 61535 }, -- Outlaw's Pirate Hat
@@ -257,8 +259,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Rukthok",
-            name = L["Ruk'thok the Pyromancer"],
-            postfix = "3k (51L) " .. BZ["Lapidis Isle"] .. " [43, 29]",
+            name = LMD["Ruk'thok the Pyromancer"],
+            postfix = "3k (51L) " .. LZ["Lapidis Isle"] .. " [43, 29]",
             defaults = { dropRate = 33 },
             loot = {
                 { id = 61613 }, -- Burnt Explorer's Tunic
@@ -268,8 +270,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Embereye",
-            name = L["Embereye"],
-            postfix = "4k (51L) " .. BZ["Gillijim's Isle"] .. " [67, 69]",
+            name = LMD["Embereye"],
+            postfix = "4k (51L) " .. LZ["Gillijim's Isle"] .. " [67, 69]",
             defaults = { dropRate = 33 },
             loot = {
                 { id = 61538 }, -- Moonsteel Zweihander
@@ -279,8 +281,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Xalvic",
-            name = L["Xalvic Blackclaw"],
-            postfix = "19k (53L) " .. BZ["Felwood"] .. " [53, 29]",
+            name = LMD["Xalvic Blackclaw"],
+            postfix = "19k (53L) " .. LZ["Felwood"] .. " [53, 29]",
             defaults = { dropRate = 25 },
             loot = {
                 { id = 81370 }, -- Footpads of the Corruptor
@@ -292,8 +294,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "FirstbornofArugal",
-            name = L["Firstborn of Arugal"],
-            postfix = "10k (55L) " .. BZ["Gilneas"] .. " [40, 37]",
+            name = LMD["Firstborn of Arugal"],
+            postfix = "10k (55L) " .. LZ["Gilneas"] .. " [40, 37]",
             defaults = { dropRate = 40 },
             loot = {
                 { id = 61586 }, -- Explorer's Shoulders
@@ -304,8 +306,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "MargontheMighty",
-            name = L["Margon the Mighty"],
-            postfix = "25k (55L) " .. BZ["Lapidis Isle"] .. " [30, 41]",
+            name = LMD["Margon the Mighty"],
+            postfix = "25k (55L) " .. LZ["Lapidis Isle"] .. " [30, 41]",
             defaults = { dropRate = 33 },
             loot = {
                 { id = 61531 }, -- Glowing Black Pearl
@@ -317,8 +319,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "WanderingKnight",
-            name = L["The Wandering Knight"],
-            postfix = "22k (55L) " .. BZ["Western Plaguelands"] .. " [64, 74]",
+            name = LMD["The Wandering Knight"],
+            postfix = "22k (55L) " .. LZ["Western Plaguelands"] .. " [64, 74]",
             defaults = { dropRate = 25 },
             loot = {
                 { id = 83257 }, -- Caer Darrow Reserve Rifle
@@ -329,8 +331,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Letashaz",
-            name = L["Letashaz"],
-            postfix = "25k (55L) " .. BZ["Gillijim's Isle"] .. " [29, 89]",
+            name = LMD["Letashaz"],
+            postfix = "25k (55L) " .. LZ["Gillijim's Isle"] .. " [29, 89]",
             defaults = { dropRate = 33 },
             loot = {
                 { id = 61542 }, -- Dwarven Pickaxe
@@ -342,8 +344,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Aquitus",
-            name = L["Aquitus"],
-            postfix = "7k (56L) " .. BZ["Gillijim's Isle"] .. " [27, 70]",
+            name = LMD["Aquitus"],
+            postfix = "7k (56L) " .. LZ["Gillijim's Isle"] .. " [27, 70]",
             defaults = { dropRate = 40 },
             loot = {
                 { id = 61529 }, -- Pirate's Scimitar
@@ -354,8 +356,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Stoneshell",
-            name = L["Stoneshell"],
-            postfix = "4k (56L) " .. BZ["Tel'Abim"] .. " [40, 47]",
+            name = LMD["Stoneshell"],
+            postfix = "4k (56L) " .. LZ["Tel'Abim"] .. " [40, 47]",
             defaults = { dropRate = 40 },
             loot = {
                 { id = 61509 }, -- Stoneshell Shield
@@ -365,8 +367,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Tarangos",
-            name = L["Tarangos"],
-            postfix = "23k (56L) " .. BZ["Azshara"] .. " [42, 80]",
+            name = LMD["Tarangos"],
+            postfix = "23k (56L) " .. LZ["Azshara"] .. " [42, 80]",
             defaults = { dropRate = 25 },
             loot = {
                 { id = 81360 }, -- Claw of Taranassz
@@ -377,8 +379,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Zareth",
-            name = L["Zareth Terrorblade"],
-            postfix = "23k (57L) " .. BZ["Blasted Lands"] .. " [55, 59]",
+            name = LMD["Zareth Terrorblade"],
+            postfix = "23k (57L) " .. LZ["Blasted Lands"] .. " [55, 59]",
             defaults = { dropRate = 25 },
             loot = {
                 { id = 83265 }, -- Demon Hunter's Blindfold
@@ -390,8 +392,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "HighvaleSilverback",
-            name = L["Highvale Silverback"],
-            postfix = "4k (58L) " .. BZ["Tel'Abim"] .. " [57, 48]",
+            name = LMD["Highvale Silverback"],
+            postfix = "4k (58L) " .. LZ["Tel'Abim"] .. " [57, 48]",
             defaults = { dropRate = 40 },
             loot = {
                 { id = 61518 }, -- Apefist Pummelers
@@ -401,8 +403,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Mallon",
-            name = L["Mallon The Moontouched"],
-            postfix = "27k (58L) " .. BZ["Winterspring"] .. " [57, 61]",
+            name = LMD["Mallon The Moontouched"],
+            postfix = "27k (58L) " .. LZ["Winterspring"] .. " [57, 61]",
             defaults = { dropRate = 25 },
             loot = {
                 { id = 81375 }, -- Staff of the Lost Druid
@@ -414,8 +416,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "ProfessorLysander",
-            name = L["Professor Lysander"],
-            postfix = "9k (59L) " .. BZ["Western Plaguelands"] .. " [12, 50]",
+            name = LMD["Professor Lysander"],
+            postfix = "9k (59L) " .. LZ["Western Plaguelands"] .. " [12, 50]",
             defaults = { dropRate = 25 },
             loot = {
                 { id = 41060 }, -- Refined Plague Strain
@@ -426,8 +428,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Kargron",
-            name = L["Blademaster Kargron"],
-            postfix = "28k (59L) " .. BZ["Burning Steppes"] .. " [45, 32]",
+            name = LMD["Blademaster Kargron"],
+            postfix = "28k (59L) " .. LZ["Burning Steppes"] .. " [45, 32]",
             defaults = { dropRate = 25 },
             loot = {
                 { id = 81365 }, -- Kargron's Leggings
@@ -438,8 +440,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "Azurebeak",
-            name = L["Azurebeak"],
-            postfix = "20k (60L) " .. BZ["Hyjal"] .. " [23, 37]",
+            name = LMD["Azurebeak"],
+            postfix = "20k (60L) " .. LZ["Hyjal"] .. " [23, 37]",
             defaults = { dropRate = 40 },
             loot = {
                 { id = 61550 }, -- Sanctified Helm
@@ -450,16 +452,16 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "BarkskinFisher",
-            name = L["Barkskin Fisher"],
-            postfix = "5k (60L) " .. BZ["Hyjal"] .. " [66, 53]",
+            name = LMD["Barkskin Fisher"],
+            postfix = "5k (60L) " .. LZ["Hyjal"] .. " [66, 53]",
             loot = {
                 { id = 84507, dropRate = 100 }, -- Barkskin Fisher
 }
 },
         {
             id = "AdmiralBareanWestwind",
-            name = L["Admiral Barean Westwind"],
-            postfix = "141k (60L) " .. BZ["Eastern Plaguelands"] .. " [66, 42]",
+            name = LMD["Admiral Barean Westwind"],
+            postfix = "141k (60L) " .. LZ["Eastern Plaguelands"] .. " [66, 42]",
             defaults = { dropRate = 17 },
             loot = {
                 { id = 60383 }, -- Fleetmaster's Cane
@@ -474,8 +476,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "ShadeflayerGoliath",
-            name = L["Shadeflayer Goliath"],
-            postfix = "17k (61L) " .. BZ["Hyjal"] .. " [10, 44]",
+            name = LMD["Shadeflayer Goliath"],
+            postfix = "17k (61L) " .. LZ["Hyjal"] .. " [10, 44]",
             defaults = { dropRate = 30 },
             loot = {
                 { id = 61546 }, -- Leggings of the Fallen Knight
@@ -487,8 +489,8 @@ AtlasTW.InstanceData.RareMobs = {
 },
         {
             id = "CrusaderLarsarius",
-            name = L["Crusader Larsarius"],
-            postfix = "28k (61L) " .. BZ["Eastern Plaguelands"] .. " [47, 60]",
+            name = LMD["Crusader Larsarius"],
+            postfix = "28k (61L) " .. LZ["Eastern Plaguelands"] .. " [47, 60]",
             defaults = { dropRate = 25 },
             loot = {
                 { id = 60437, dropRate = .2 }, -- Righteous Crusader's Helmet

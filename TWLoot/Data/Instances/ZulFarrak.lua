@@ -15,17 +15,22 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LS = AtlasTW.Localization.Spells
+local LMD = AtlasTW.Localization.MapData
+
 local GREY = AtlasTW.Colors.GREY
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.ZulFarrak = {
-    Name = BZ["Zul'Farrak"],
-    Location = BZ["Tanaris"],
+    Name = LZ["Zul'Farrak"],
+    Location = LZ["Tanaris"],
     Level = { 30, 54 },
     Acronym = "ZF",
     MaxPlayers = 5,
@@ -34,14 +39,14 @@ AtlasTW.InstanceData.ZulFarrak = {
         { letter = "A) "..L["Entrance"] }
     },
     Keys = {
-        { name = L["Mallet of Zul'Farrak"], loot = "VanillaKeys", info = BB["Gahz'rilla"] }
+        { name = LMD["Mallet of Zul'Farrak"], loot = "VanillaKeys", info = LB["Gahz'rilla"] }
     },
 
     Bosses = {
         {
             id = "ZFAntusul",
             prefix = "1)",
-            name = BB["Antu'sul"],
+            name = LB["Antu'sul"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 9640 }, -- Vice Grips
@@ -56,7 +61,7 @@ AtlasTW.InstanceData.ZulFarrak = {
         {
             id = "ZFThekatheMartyr",
             prefix = "2)",
-            name = L["Theka the Martyr"],
+            name = LMD["Theka the Martyr"],
             loot = {
                 { id = 10660, dropRate = 100, container = { 10749, 10750, 10751 } }, -- First Mosh'aru Tablet
             }
@@ -64,7 +69,7 @@ AtlasTW.InstanceData.ZulFarrak = {
         {
             id = "ZFWitchDoctorZumrah",
             prefix = "3)",
-            name = BB["Witch Doctor Zum'rah"],
+            name = LB["Witch Doctor Zum'rah"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 18083 }, -- Jumanza Grips
@@ -77,20 +82,20 @@ AtlasTW.InstanceData.ZulFarrak = {
         },
         {
             id = "ZFZulFarrakDeadHero",
-            name = L["Zul'Farrak Dead Hero"],
+            name = LMD["Zul'Farrak Dead Hero"],
             color = GREY,
         },
         {
             id = "ZFNekrumGutchewer",
             prefix = "4)",
-            name = L["Nekrum Gutchewer"],
+            name = LMD["Nekrum Gutchewer"],
             loot = {
                 { id = 9471, dropRate = 100, container = { 9651, 9652 } }, -- Nekrum's Medallion
             }
         },
         {
             id = "ZFSezzziz",
-            name = BB["Shadowpriest Sezz'ziz"],
+            name = LB["Shadowpriest Sezz'ziz"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 9470 }, -- Bad Mojo Mask
@@ -103,7 +108,7 @@ AtlasTW.InstanceData.ZulFarrak = {
         },
         {
             id = "ZFDustwraith",
-            name = L["Dustwraith"],
+            name = LMD["Dustwraith"],
             postfix = L["Rare"],
             loot = {
                 { id = 12471, dropRate = 19 }, -- Desertwalker Cane
@@ -112,34 +117,34 @@ AtlasTW.InstanceData.ZulFarrak = {
         {
             id = "ZFSergeantBly",
             prefix = "5)",
-            name = L["Sergeant Bly"],
+            name = LMD["Sergeant Bly"],
             loot = {
                 { id = 8548, dropRate = 100, container = { 9533, 9534 } }, -- Divino-matic Rod
             }
         },
         {
             id = "ZFWeegliBastfuse",
-            name = L["Weegli Blastfuse"],
+            name = LMD["Weegli Blastfuse"],
             color = GREY,
         },
         {
             id = "ZFMurtaGrimgut",
-            name = L["Murta Grimgut"],
+            name = LMD["Murta Grimgut"],
             color = GREY,
         },
         {
             id = "ZFRaven",
-            name = L["Raven"],
+            name = LMD["Raven"],
             color = GREY,
         },
         {
             id = "ZFOroEyegouge",
-            name = L["Oro Eyegouge"],
+            name = LMD["Oro Eyegouge"],
             color = GREY,
         },
         {
             id = "ZFSandfury",
-            name = L["Sandfury Executioner"],
+            name = LMD["Sandfury Executioner"],
             loot = {
                 { id = 8444, dropRate = 20 }, -- Executioner's Key
             }
@@ -147,7 +152,7 @@ AtlasTW.InstanceData.ZulFarrak = {
         {
             id = "ZFChiefUkorzSandscalp",
             prefix = "6)",
-            name = BB["Chief Ukorz Sandscalp"],
+            name = LB["Chief Ukorz Sandscalp"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 9479 }, -- Embrace of the Lycan
@@ -162,26 +167,26 @@ AtlasTW.InstanceData.ZulFarrak = {
         },
         {
             id = "ZFRuuzlu",
-            name = L["Ruuzlu"],
+            name = LB["Ruuzlu"],
             color = GREY,
         },
         {
             id = "ZFFlameOfFarrak",
-            name = L["Flame of Farrak"],
+            name = LMD["Flame of Farrak"],
             loot = {
                 { id = 41685, dropRate = 100 }, -- Flame of Farrak (for 8 boss vulnerable) --1.18
             }
         },
         {
             id = "ZFElderWildmane",
-            name = L["Elder Wildmane"],
+            name = LMD["Elder Wildmane"],
             postfix = L["Lunar Festival"],
             items = "LunarFestival",
         },
         {
             id = "ZFHydromancerVelratha",
             prefix = "7)",
-            name = L["Hydromancer Velratha"],
+            name = LMD["Hydromancer Velratha"],
             loot = {
                 { id = 9234, dropRate = 100, container = { 9527, 9531 } }, -- Tiara of the Deep
                 { id = 10661, dropRate = 100, container = { 10749, 10750, 10751 } }, -- Second Mosh'aru Tablet
@@ -189,7 +194,7 @@ AtlasTW.InstanceData.ZulFarrak = {
         },
         {
             id = "ZFGahzrilla",
-            name = BB["Gahz'rilla"],
+            name = LB["Gahz'rilla"],
             postfix = L["Summon"],
             loot = {
                 { id = 9469, dropRate = 50 }, -- Gahz'rilla Scale Armor
@@ -203,9 +208,9 @@ AtlasTW.InstanceData.ZulFarrak = {
         {
             id = "ZFZeljebTheAncient", --1.18
             prefix = "8)",
-            name = BB["Zel'jeb the Ancient"],
+            name = LB["Zel'jeb the Ancient"],
             defaults = { dropRate = 25 },
-            postfix = L["Flame of Farrak"],
+            postfix = LMD["Flame of Farrak"],
             loot = {
                 { id = 58116 }, -- Bloodstained Fangblade
                 { id = 58117 }, -- Staff of the Bloodbound
@@ -215,21 +220,21 @@ AtlasTW.InstanceData.ZulFarrak = {
             }
         },
         {
-            name = BZ["Farraki Arena"], --1.18
+            name = LZ["Farraki Arena"], --1.18
             prefix = "9)",
             color = GREY,
         },
         {
-            name = BB["Juthza the Cunning"], --1.18
+            name = LB["Juthza the Cunning"], --1.18
             color = GREY,
         },
         {
-            name = BB["Kath'zen the Brutal"], --1.18
+            name = LB["Kath'zen the Brutal"], --1.18
             color = GREY,
         },
         {
             id = "ZFRazjalTheQuick", --1.18
-            name = BB["Champion Razjal the Quick"],
+            name = LB["Champion Razjal the Quick"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 58092 }, -- Champion's Sandhelm
@@ -241,7 +246,7 @@ AtlasTW.InstanceData.ZulFarrak = {
         {
             id = "ZFZerillis",
             prefix = "10)",
-            name = L["Zerillis"],
+            name = LMD["Zerillis"],
             postfix = L["Rare"]..L[", "]..L["Wanders"],
             loot = {
                 { id = 12470, dropRate = 19 }, -- Sandstalker Ankleguards
@@ -249,7 +254,7 @@ AtlasTW.InstanceData.ZulFarrak = {
         },
         {
             id = "ZFTrash",
-            name = L["Trash Mobs"].."-"..BZ["Zul'Farrak"],
+            name = L["Trash Mobs"].."-"..LZ["Zul'Farrak"],
             defaults = { dropRate = .02 },
             loot = {
                 { id = 9512 }, -- Blackmetal Cape
@@ -266,7 +271,7 @@ AtlasTW.InstanceData.ZulFarrak = {
                 {},
                 { id = 9243, dropRate = 2 }, -- Shriveled Heart
                 {},
-                { id = 70167, BS["Gemology"], dropRate = .04, container = { 56018 } }, -- Plans: Enchanted Emerald Gemstone
+                { id = 70167, LS["Gemology"], dropRate = .04, container = { 56018 } }, -- Plans: Enchanted Emerald Gemstone
             }
         },
     },

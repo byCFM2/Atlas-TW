@@ -15,16 +15,21 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.ShadowfangKeep = {
-    Name = BZ["Shadowfang Keep"],
-    Location = BZ["Silverpine Forest"],
+    Name = LZ["Shadowfang Keep"],
+    Location = LZ["Silverpine Forest"],
     Level = { 14, 30 },
     Acronym = "SFK",
     MaxPlayers = 5,
@@ -37,7 +42,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         {
             id = "SFKRethilgore",
             prefix = "1)",
-            name = BB["Rethilgore"],
+            name = LB["Rethilgore"],
             defaults = { dropRate = 35 },
             loot = {
                 { id = 5254, dropRate = 100 }, -- Rugged Spaulders
@@ -47,22 +52,22 @@ AtlasTW.InstanceData.ShadowfangKeep = {
             }
         },
         {
-            name = L["Sorcerer Ashcrombe"],
+            name = LMD["Sorcerer Ashcrombe"],
             color = Colors.GREY,
         },
         {
-            name = L["Deathstalker Adamant"],
+            name = LMD["Deathstalker Adamant"],
             color = Colors.GREY,
         },
         {
             prefix = "2)",
-            name = L["Deathstalker Vincent"],
+            name = LMD["Deathstalker Vincent"],
             color = Colors.GREY,
         },
         {
             id = "SFKFelSteed",
             prefix = "3)",
-            name = L["Fel Steed"],
+            name = LMD["Fel Steed"],
             loot = {
                 { id = 6341, dropRate = 8 }, -- Eerie Stable Lantern
                 {},
@@ -71,7 +76,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         },
         {
             id = "SFKJordansHammer",
-            name = L["Jordan's Hammer"],
+            name = LMD["Jordan's Hammer"],
             loot = {
                 { id = 6895, dropRate = 100, container = { 6953 } }, -- Jordan's Smithing Hammer
             }
@@ -79,7 +84,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         {
             id = "SFKRazorclawtheButcher",
             prefix = "4)",
-            name = BB["Razorclaw the Butcher"],
+            name = LB["Razorclaw the Butcher"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 6226 }, -- Bloody Apron
@@ -91,7 +96,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         {
             id = "SFKSilverlaine",
             prefix = "5)",
-            name = BB["Baron Silverlaine"],
+            name = LB["Baron Silverlaine"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 6321 }, -- Silverlaine's Family Seal
@@ -103,7 +108,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         {
             id = "SFKSpringvale",
             prefix = "6)",
-            name = BB["Commander Springvale"],
+            name = LB["Commander Springvale"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 6320 }, -- Commander's Crest
@@ -115,7 +120,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         {
             id = "SFKSever",
             prefix = "7)",
-            name = BB["Sever"],
+            name = LB["Sever"],
             postfix = L["Scourge Invasion"],
             defaults = { dropRate = 50 },
             loot = {
@@ -126,7 +131,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         {
             id = "SFKOdotheBlindwatcher",
             prefix = "8)",
-            name = BB["Odo the Blindwatcher"],
+            name = LB["Odo the Blindwatcher"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 6319 }, -- Girdle of the Blindwatcher
@@ -137,7 +142,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         {
             id = "SFKDeathswornCaptain",
             prefix = "9)",
-            name = BB["Deathsworn Captain"],
+            name = LB["Deathsworn Captain"],
             postfix = L["Rare"],
             defaults = { dropRate = 50 },
             loot = {
@@ -148,7 +153,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         {
             id = "SFKFenrustheDevourer",
             prefix = "10)",
-            name = BB["Fenrus the Devourer"],
+            name = LB["Fenrus the Devourer"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 6340 }, -- Fenrus' Hide
@@ -157,14 +162,14 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         },
         {
             id = "SFKArugalsVoidwalker",
-            name = BB["Arugal's Voidwalker"],
+            name = LB["Arugal's Voidwalker"],
             loot = {
                 { id = 5943, dropRate = 3 }, -- Rift Bracers
             }
         },
         {
             id = "SFKBookofUr",
-            name = L["The Book of Ur"],
+            name = LMD["The Book of Ur"],
             loot = {
                 { id = 6283, dropRate = 100, container = { 6335, 4534 } }, -- The Book of Ur
             }
@@ -172,7 +177,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         {
             id = "SFKWolfMasterNandos",
             prefix = "11)",
-            name = BB["Wolf Master Nandos"],
+            name = LB["Wolf Master Nandos"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 3748 }, -- Feline Mantle
@@ -184,7 +189,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         {
             id = "SFKArchmageArugal",
             prefix = "12)",
-            name = BB["Archmage Arugal"],
+            name = LB["Archmage Arugal"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 6324 }, -- Robes of Arugal
@@ -199,7 +204,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         {
             id = "SFKPrelate",
             prefix = "13)",
-            name = BB["Prelate Ironmane"],
+            name = LB["Prelate Ironmane"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 55385 }, -- Signet of Faded Sermons
@@ -210,7 +215,7 @@ AtlasTW.InstanceData.ShadowfangKeep = {
         },
         {
             id = "SFKTrash",
-            name = L["Trash Mobs"].."-"..BZ["Shadowfang Keep"],
+            name = L["Trash Mobs"].."-"..LZ["Shadowfang Keep"],
             defaults = { dropRate = .07 },
             loot = {
                 { id = 2292 }, -- Necrology Robes

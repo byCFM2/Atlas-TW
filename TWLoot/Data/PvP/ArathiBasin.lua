@@ -17,25 +17,26 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
+
+local LZ = AtlasTW.Localization.Zones
+local LF = AtlasTW.Localization.Factions
+local LMD = AtlasTW.Localization.MapData
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- Arathi Basin data
 AtlasTW.InstanceData.BGArathiBasin = {
-    Name = BZ["Arathi Basin"],
-    Location = BZ["Arathi Highlands"],
+    Name = LZ["Arathi Basin"],
+    Location = LZ["Arathi Highlands"],
     Level = {20, 60},
     Acronym = "AB",
     MaxPlayers = 15,
     Reputation = {
-            { name = BF["The League of Arathor"].." \\ "..BF["The Defilers"], loot = "ArathorDefilers" },
+            { name = LF["The League of Arathor"].." \\ "..LF["The Defilers"], loot = "ArathorDefilers" },
     },
     Entrances = {
-        { letter = "A)", info = L["Trollbane Hall"] .. " (A)" },
-        { letter = "B)", info = L["Defiler's Den"] .. " (H)" }
+        { letter = "A)", info = LMD["Trollbane Hall"] .. " (A)" },
+        { letter = "B)", info = LMD["Defiler's Den"] .. " (H)" }
     },
     Bosses = {}
 }

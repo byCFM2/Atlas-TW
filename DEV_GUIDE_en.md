@@ -1,18 +1,3 @@
-# Atlas‑TW — Developer Guide (EN)
-
-Purpose: a concise reference of the addon’s public functions and how to call them in WoW 1.12 environment.
-
-1) Environment and WoW 1.12 constraints
-- Use this instead of self in UI handlers.
-- For frame sizes use SetWidth/SetHeight, not SetSize.
-- SetScript: local function — SetScript("Event", "LocalFuncName"); global/anonymous — SetScript("Event", function() ... end).
-- Do not use length operator #, string.match/gmatch — they are not available in 1.12.
-- For debugging use print("...") only.
-
-2) Module architecture
-- Core/UI: Atlas.lua, AtlasUI.lua, AtlasUILogic.lua — main window, dropdowns, minimap button, scale/transparency sliders, /atlas slash command.
-- Options: AtlasOptions.lua — options frame and all checkbox/slider handlers.
-- Loot: Loot/Core/*, Loot/LootUI.lua — bottom panel, menus, scrolling, item handlers.
 - Quests: Quest/* — quest sidebar and the inner details panel inside Atlas.
 - Data: Loot/Data/*, Quest/Data/*.
 
@@ -331,3 +316,44 @@ Implementation:
   - `SlashCmdList["ATLASTW"] = AtlasTW.SlashCommand`
 - Handler in `AtlasTWUILogic.lua`:
   - `AtlasTW.SlashCommand(msg)` routes `options|opt|ver|ver check`; default action toggles the main window.
+
+20) Localization System
+
+The addon uses a custom localization system based on Namespaces.
+Core file: `LocalizationFramework.lua`.
+
+Localization file structure:
+`Locales/<Locale>/<File>.lua`
+Example: `Locales/ruRU/Core.lua`, `Locales/enUS/MapData.lua`.
+
+Registering translations:
+Use `AtlasTW.Localization:RegisterNamespace(namespaceName, locale, data)`.
+Example:
+```lua
+AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
+    ["Options"] = "Options",
+    -- ...
+})
+```
+
+Accessing translations:
+Use `AtlasTW.Localization:GetNamespace(namespaceName)`.
+Example:
+```lua
+local L = AtlasTW.Localization:GetNamespace("UI")
+print(L["Options"])
+```
+
+Available Namespaces:
+- `UI`: Core interface strings (Core.lua).
+- `MapData`: Map and zone names (MapData.lua).
+- `Bosses`: Boss names (Bosses.lua).
+- `Classes`: Class names (Classes.lua).
+- `Factions`: Faction names (Factions.lua).
+- `ItemSets`: Item set names (ItemSets.lua).
+- `Spells`: Spell and profession names (Spells.lua).
+- `Zones`: Zone names for dropdowns (Zones.lua).
+
+Important:
+- Always use `enUS` as the base locale. If a translation is missing in the current locale, the system will automatically fallback to `enUS`.
+- For new strings, first add them to `Locales/enUS/Core.lua` (or the relevant file), and then to other locales.

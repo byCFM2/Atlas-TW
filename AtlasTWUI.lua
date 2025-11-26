@@ -19,7 +19,7 @@ local _G = getfenv()
 AtlasTW = _G.AtlasTW
 local Colors = AtlasTW.Colors
 
-local L = AtlasTW.Local
+local L = AtlasTW.Localization.UI
 
 do
     -- Create the main Atlas frame
@@ -319,7 +319,7 @@ do
     -- Update marker (shown when a newer version is available)
     local updateMarker = atlasFrame:CreateFontString("AtlasTWUpdateMarker", "ARTWORK", "GameFontNormalSmall")
     updateMarker:SetText(Colors.RED2..L["Update available"])
-    updateMarker:SetPoint("LEFT", titleText, "RIGHT", 8, 0)
+    updateMarker:SetPoint("RIGHT", titleText, "LEFT", -10, 0)
     updateMarker:Hide()
 
     -- Notice text

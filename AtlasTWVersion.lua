@@ -9,7 +9,9 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
+
+local L = AtlasTW.Localization.UI
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.VersionCheck = AtlasTW.VersionCheck or {}

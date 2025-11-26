@@ -17,7 +17,8 @@
 
 local _G = getfenv()
 AtlasTW = AtlasTW or {}
-local L = AtlasTW.Local
+
+local L = AtlasTW.Localization.UI
 
 do
     -- Create the main options frame
@@ -65,7 +66,7 @@ do
     -- AtlasOptionsText
     local atlasOptionText = optionsFrame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
     atlasOptionText:SetPoint("BOTTOM", title, "BOTTOM", -160, -25)
-    atlasOptionText:SetText(L["AtlasTW"])
+    atlasOptionText:SetText("AtlasTW")
 
     -- Atlas Options Checkboxes Data
     local atlasCheckboxes = {
@@ -144,6 +145,7 @@ do
     -- Reset position button
     local resetPosition = CreateFrame("Button", nil, optionsFrame, "OptionsButtonTemplate")
     resetPosition:SetPoint("BOTTOMLEFT", 20, 15)
+    resetPosition:SetWidth(120)
     resetPosition:SetText(L["Reset Position"])
     resetPosition:SetScript("OnClick", function()
         AtlasTW.OptionResetPosition()
@@ -151,7 +153,8 @@ do
 
     -- Default settings button
     local defaultSettingsButton = CreateFrame("Button", nil, resetPosition, "OptionsButtonTemplate")
-    defaultSettingsButton:SetPoint("RIGHT", 100, 0)
+    defaultSettingsButton:SetPoint("RIGHT", 150, 0)
+    defaultSettingsButton:SetWidth(140)
     defaultSettingsButton:SetText(L["Reset Settings"])
     defaultSettingsButton:SetScript("OnClick", function()
         AtlasTW.OptionDefaultSettings()

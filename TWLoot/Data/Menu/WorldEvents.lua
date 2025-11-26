@@ -17,17 +17,19 @@
 
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
-local L = AtlasTW.Local
+
+local L = AtlasTW.Localization.UI
+local LMD = AtlasTW.Localization.MapData
 
 AtlasTW.MenuData.WorldEvents = {
 	{},
-    { name = L["Abyssal Council"], extra = "Silithus", icon = "Interface\\Icons\\Spell_Nature_TimeStop", lootpage = "AbyssalCouncil" },
+    { name = LMD["Abyssal Council"], extra = "Silithus", icon = "Interface\\Icons\\Spell_Nature_TimeStop", lootpage = "AbyssalCouncil" },
     { name = L["Elemental Invasion"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Ammo_FireTar", lootpage = "ElementalInvasion" },
-    { name = L["Gurubashi Arena"], extra = "Stranglethorn Vale", icon = "Interface\\Icons\\INV_Box_02", lootpage = "GurubashiArena" },
+    { name = LMD["Gurubashi Arena"], extra = "Stranglethorn Vale", icon = "Interface\\Icons\\INV_Box_02", lootpage = "GurubashiArena" },
     { name = L["Harvest Festival"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_Food_Wheat_01", lootpage = "HarvestFestival" },
     { name = L["Lunar Festival"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_ElvenCoins", lootpage = "LunarFestival" },
     { name = L["Noblegarden"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Egg_03", lootpage = "Noblegarden" },
-    { name = L["Stranglethorn Fishing Extravaganza"], extra = "Stranglethorn Vale", icon = "Interface\\Icons\\INV_Fishingpole_01", lootpage = "FishingExtravaganza" },
+    { name = LMD["Stranglethorn Fishing Extravaganza"], extra = "Stranglethorn Vale", icon = "Interface\\Icons\\INV_Fishingpole_01", lootpage = "FishingExtravaganza" },
 	{},
 	{},
 	{},

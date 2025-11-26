@@ -10,7 +10,8 @@
 ---
 
 -- Local state used by container UI
-local L = AtlasTW.Local
+local L = AtlasTW.Localization.UI
+
 local containerItems = {}
 local lastSelectedButton
 local BLUE = AtlasTW.Colors.BLUE2

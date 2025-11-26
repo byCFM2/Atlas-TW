@@ -17,7 +17,8 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
-local L = AtlasTW.Local
+
+local L = AtlasTW.Localization.UI
 
 -- Constants
 local FRAME_WIDTH = 220

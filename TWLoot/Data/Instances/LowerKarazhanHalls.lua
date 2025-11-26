@@ -17,10 +17,13 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LF = AtlasTW.Localization.Factions
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
@@ -44,8 +47,8 @@ local lKarazhanShare = {
 }
 
 AtlasTW.InstanceData.LowerKarazhan = {
-    Name = BZ["Lower Karazhan Halls"],
-    Location = BZ["Deadwind Pass"],
+    Name = LZ["Lower Karazhan Halls"],
+    Location = LZ["Deadwind Pass"],
     Level = { 58, 60 },
     Acronym = "LKH",
     MaxPlayers = 10,
@@ -58,7 +61,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
         {
             id = "LKHRolfen",
             prefix = "1)",
-            name = BB["Master Blacksmith Rolfen"],
+            name = LB["Master Blacksmith Rolfen"],
             defaults = { dropRate = 1.44 },
             loot = {
                 { id = 61805, container = { 60010 } }, -- Plans: Towerforge Demolisher
@@ -69,18 +72,18 @@ AtlasTW.InstanceData.LowerKarazhan = {
         },
         {
             prefix = "a)",
-            name = L["Engraved Golden Bracelet"],
+            name = LMD["Engraved Golden Bracelet"],
             color = Colors.GREY,
         },
         {
             prefix = "b)",
-            name = L["Comfortable Pillow"],
+            name = LMD["Comfortable Pillow"],
             color = Colors.GREY,
         },
         {
             id = "LKHBroodQueenAraxxna",
             prefix = "2)",
-            name = BB["Brood Queen Araxxna"],
+            name = LB["Brood Queen Araxxna"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 61297, dropRate = 20 }, -- Marshtreader Slippers
@@ -107,7 +110,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
         {
             id = "LKHGrizikil",
             prefix = "3)",
-            name = BB["Grizikil"],
+            name = LB["Grizikil"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 61291, dropRate = 20 }, -- Darkflame Helm
@@ -131,13 +134,13 @@ AtlasTW.InstanceData.LowerKarazhan = {
         },
         {
             prefix = "c)",
-            name = L["Councilman Kyleson"],
+            name = LMD["Councilman Kyleson"],
             color = Colors.GREY,
         },
         {
             id = "LKHClawlordHowlfang",
             prefix = "4)",
-            name = BB["Clawlord Howlfang"],
+            name = LB["Clawlord Howlfang"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 61281, dropRate = 20 }, -- Shadeweave Boots
@@ -161,7 +164,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
         {
             id = "LKHLordBlackwaldII",
             prefix = "5)",
-            name = BB["Lord Blackwald II"],
+            name = LB["Lord Blackwald II"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 61266, dropRate = 20 }, -- Rune Infused Gauntlets
@@ -186,23 +189,23 @@ AtlasTW.InstanceData.LowerKarazhan = {
         },
         {
             prefix = "d)",
-            name = L["Lord Ebonlocke"],
+            name = LMD["Lord Ebonlocke"],
             color = Colors.GREY,
         },
         {
             prefix = "e)",
-            name = L["Obsidian Rod"],
+            name = LMD["Obsidian Rod"],
             color = Colors.GREY,
         },
         {
             prefix = "f)",
-            name = L["Duke Rothlen"],
+            name = LMD["Duke Rothlen"],
             color = Colors.GREY,
         },
         {
             id = "LKHMoroes",
             prefix = "6)",
-            name = BB["Moroes"],
+            name = LB["Moroes"],
             defaults = { dropRate = 10 },
             loot = {
                 { id = 61284, dropRate = 10 }, -- Vest of Encroaching Darkness
@@ -226,7 +229,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
         },
         {
             id = "LKHTrash",
-            name = L["Trash Mobs"].."-"..BZ["Lower Karazhan Halls"],
+            name = L["Trash Mobs"].."-"..LZ["Lower Karazhan Halls"],
             defaults = { dropRate = .15 },
             loot = {
                 { id = 51326, dropRate = .3, container = { 61666 } }, -- Scribbled Cooking Notes
@@ -239,8 +242,8 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 { id = 61295 }, -- Dawnstone Bludgeon
                 { id = 61452 }, -- Skycleaver
                 {},
-                { id = 92002, dropRate = .32, disc = L["Book"]..", "..BF["Alliance"] }, -- Tome of Portals: Theramore
-                { id = 92004, dropRate = .32, disc = L["Book"]..", "..BF["Horde"] }, -- Tome of Portals: Stonard
+                { id = 92002, dropRate = .32, disc = L["Book"]..", "..LF["Alliance"] }, -- Tome of Portals: Theramore
+                { id = 92004, dropRate = .32, disc = L["Book"]..", "..LF["Horde"] }, -- Tome of Portals: Stonard
                 {},
                 { id = 37006, dropRate = 4 }, -- Skitterweb Hatchling
                 {},
@@ -252,7 +255,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
         },
         {
             id = "LKHEnchants",
-            name = L["Lower Karazhan Halls Enchants"],
+            name = LMD["Lower Karazhan Halls Enchants"],
             defaults = { dropRate = 0 },
             loot = {
                 { id = 92005, disc = L["Head"]..", "..L["Legs"]..L["Enchant"] }, -- Invocation of Shattering

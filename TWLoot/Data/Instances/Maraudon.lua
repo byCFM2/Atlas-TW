@@ -15,28 +15,33 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LS = AtlasTW.Localization.Spells
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.MaraudonEnt = {
-    Name = BZ["Maraudon"].." ("..L["Entrance"]..")",
-    Location = BZ["Desolace"],
+    Name = LZ["Maraudon"].." ("..L["Entrance"]..")",
+    Location = LZ["Desolace"],
     Acronym = "Mara",
     Entrances = {
         { letter = "A", info = L["Entrance"] },
-        { letter = "B", info = BZ["Maraudon"] .. " (" .. L["Purple"] .. ")" },
-        { letter = "C", info = BZ["Maraudon"] .. " (" .. L["Orange"] .. ")" },
-        { letter = "D", info = BZ["Maraudon"] .. " (" .. L["Portal"] .. ")" },
+        { letter = "B", info = LZ["Maraudon"] .. " (" .. L["Purple"] .. ")" },
+        { letter = "C", info = LZ["Maraudon"] .. " (" .. L["Orange"] .. ")" },
+        { letter = "D", info = LZ["Maraudon"] .. " (" .. L["Portal"] .. ")" },
     },
     Bosses = {
         {
             id = "MARANamelessProphet",
-            name = L["The Nameless Prophet"],
+            name = LMD["The Nameless Prophet"],
             loot = {
                 { id = 17757, dropRate = 100, container = { 17774 } }, -- Amulet of Spirits
             }
@@ -44,7 +49,7 @@ AtlasTW.InstanceData.MaraudonEnt = {
         {
             id = "MARAKhanKolk",
             prefix = "1)",
-            name = BB["Kolk"],
+            name = LB["Kolk"],
             loot = {
                 { id = 17761, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Gem of the First Khan
             }
@@ -52,7 +57,7 @@ AtlasTW.InstanceData.MaraudonEnt = {
         {
             id = "MARAKhanGelk",
             prefix = "2)",
-            name = BB["Gelk"],
+            name = LB["Gelk"],
             loot = {
                 { id = 17762, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Gem of the Second Khan
             }
@@ -60,19 +65,19 @@ AtlasTW.InstanceData.MaraudonEnt = {
         {
             id = "MARAKhanMagra",
             prefix = "3)",
-            name = BB["Magra"],
+            name = LB["Magra"],
             loot = {
                 { id = 17763, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Gem of the Third Khan
             }
         },
-        { prefix = "4)", name = BB["Cavindra"], color = Colors.GREY },
-        { prefix = "5)", name = BB["Cursed Centaur"], postfix = L["Rare"]..", "..L["Varies"], color = Colors.GREY },
+        { prefix = "4)", name = LB["Cavindra"], color = Colors.GREY },
+        { prefix = "5)", name = LB["Cursed Centaur"], postfix = L["Rare"]..", "..L["Varies"], color = Colors.GREY },
     }
 }
 
 AtlasTW.InstanceData.Maraudon = {
-    Name = BZ["Maraudon"],
-    Location = BZ["Desolace"],
+    Name = LZ["Maraudon"],
+    Location = LZ["Desolace"],
     Level = { 35, 55 },
     Acronym = "Mara",
     MaxPlayers = 5,
@@ -83,14 +88,14 @@ AtlasTW.InstanceData.Maraudon = {
         { letter = "C", info = L["Portal"] }
     },
     Keys = {
-        { name = L["Scepter of Celebras"], loot = "VanillaKeys", info = L["Portal"] }
+        { name = LMD["Scepter of Celebras"], loot = "VanillaKeys", info = L["Portal"] }
     },
 
     Bosses = {
         {
             id = "MARAKhanVeng",
             prefix = "1)",
-            name = L["Veng"],
+            name = LMD["Veng"],
             loot = {
                 { id = 17765, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Gem of the Fifth Khan
             }
@@ -98,7 +103,7 @@ AtlasTW.InstanceData.Maraudon = {
         {
             id = "MARANoxxion",
             prefix = "2)",
-            name = BB["Noxxion"],
+            name = LB["Noxxion"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 17746 }, -- Noxxion's Shackles
@@ -111,7 +116,7 @@ AtlasTW.InstanceData.Maraudon = {
         {
             id = "MARARazorlash",
             prefix = "3)",
-            name = BB["Razorlash"],
+            name = LB["Razorlash"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 17749 }, -- Phytoskin Spaulders
@@ -127,7 +132,7 @@ AtlasTW.InstanceData.Maraudon = {
         {
             id = "MARAKhanMaraudos",
             prefix = "4)",
-            name = L["Maraudos"],
+            name = LMD["Maraudos"],
             loot = {
                 { id = 17764, disc = L["Quest Item"], dropRate = 100, container = { 17774 } }, -- Gem of the Fourth Khan
             }
@@ -135,7 +140,7 @@ AtlasTW.InstanceData.Maraudon = {
         {
             id = "MARALordVyletongue",
             prefix = "5)",
-            name = BB["Lord Vyletongue"],
+            name = LB["Lord Vyletongue"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 17755 }, -- Satyrmane Sash
@@ -152,7 +157,7 @@ AtlasTW.InstanceData.Maraudon = {
         {
             id = "MARAMeshloktheHarvester",
             prefix = "6)",
-            name = BB["Meshlok the Harvester"],
+            name = LB["Meshlok the Harvester"],
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
@@ -166,7 +171,7 @@ AtlasTW.InstanceData.Maraudon = {
         {
             id = "MARACelebrastheCursed",
             prefix = "7)",
-            name = BB["Celebras the Cursed"],
+            name = LB["Celebras the Cursed"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 17740 }, -- Soothsayer's Headdress
@@ -183,7 +188,7 @@ AtlasTW.InstanceData.Maraudon = {
         {
             id = "MARALandslide",
             prefix = "8)",
-            name = BB["Landslide"],
+            name = LB["Landslide"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 17734 }, -- Helm of the Mountain
@@ -193,13 +198,13 @@ AtlasTW.InstanceData.Maraudon = {
                 {},
                 { id = 17684, dropRate = 80, container = { 17775, 17776, 17777, 17779 } }, -- Theradric Crystal Carving
                 { id = 41002, dropRate = 100, container = { 40080 } }, -- Heart of Landslide
-                { id = 41356, disc = BS["Gemology"], dropRate = 100 }, -- Marbled Stone Slab
+                { id = 41356, disc = LS["Gemology"], dropRate = 100 }, -- Marbled Stone Slab
             }
         },
         {
             id = "MARATinkererGizlock",
             prefix = "9)",
-            name = BB["Tinkerer Gizlock"],
+            name = LB["Tinkerer Gizlock"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 17718 }, -- Gizlock's Hypertech Buckler
@@ -215,7 +220,7 @@ AtlasTW.InstanceData.Maraudon = {
         {
             id = "MARARotgrip",
             prefix = "10)",
-            name = BB["Rotgrip"],
+            name = LB["Rotgrip"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 17732 }, -- Rotgrip Mantle
@@ -228,7 +233,7 @@ AtlasTW.InstanceData.Maraudon = {
         {
             id = "MARAPrincessTheradras",
             prefix = "11)",
-            name = BB["Princess Theradras"],
+            name = LB["Princess Theradras"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 17780, dropRate = 1 }, -- Blade of Eternal Darkness
@@ -251,13 +256,13 @@ AtlasTW.InstanceData.Maraudon = {
         {
             id = "MARAElderSplitrock",
             prefix = "12)",
-            name = L["Elder Splitrock"],
+            name = LMD["Elder Splitrock"],
             postfix = L["Lunar Festival"],
             items = "LunarFestival",
         },
         {
             id = "MARATrash",
-            name = L["Trash Mobs"].."-"..BZ["Maraudon"],
+            name = L["Trash Mobs"].."-"..LZ["Maraudon"],
             defaults = { dropRate = .01 },
             loot = {
                 { id = 80756 }, -- Vinebound Headband

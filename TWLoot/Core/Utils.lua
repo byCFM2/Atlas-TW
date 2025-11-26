@@ -10,7 +10,7 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
 AtlasTW.LootUtils = AtlasTW.LootUtils or {}
-local L = AtlasTW.Local
+local L = AtlasTW.Localization.UI
 local RED = AtlasTW.Colors.RED
 local WHITE = AtlasTW.Colors.WHITE
 

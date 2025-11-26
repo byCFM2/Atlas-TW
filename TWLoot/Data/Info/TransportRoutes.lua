@@ -17,133 +17,137 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LF = AtlasTW.Localization.Factions
+local LM = AtlasTW.Localization.MapData
+
 local colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.TransportRoutes = {
     Name = L["Transport Routes"],
-    Location = L["Azeroth"],
+    Location = LM["Azeroth"],
     Bosses = {
         {
             id = "TRRutTheranVillage",
             prefix = "1)",
-            name = L["Rut'Theran Village"],
-            postfix = BZ["Teldrassil"]..", "..L["Alliance"],
+            name = LM["Rut'Theran Village"],
+            postfix = LZ["Teldrassil"]..", "..LF["Alliance"],
             color = colors.BLUE,
         },
         {
             id = "TRAuberdine",
             prefix = "2)",
-            name = BZ["Auberdine"],
-            postfix = BZ["Darkshore"]..", "..L["Alliance"],
+            name = LZ["Auberdine"],
+            postfix = LZ["Darkshore"]..", "..LF["Alliance"],
             color = colors.BLUE,
         },
         {
             id = "TROrgrimmar",
             prefix = "3)",
-            name = BZ["Orgrimmar"],
-            postfix = BZ["The Barrens"]..", "..L["Horde"],
+            name = LZ["Orgrimmar"],
+            postfix = LZ["The Barrens"]..", "..LF["Horde"],
             color = colors.RED,
         },
         {
             id = "TRSparkwaterPort",
             prefix = "4)",
-            name = L["Sparkwater Port"],
-            postfix = BZ["The Barrens"]..", "..L["Horde"],
+            name = LM["Sparkwater Port"],
+            postfix = LZ["The Barrens"]..", "..LF["Neutral"],
             color = colors.RED,
         },
         {
             id = "TRRatchet",
             prefix = "5)",
-            name = BZ["Ratchet"],
-            postfix = BZ["The Barrens"]..", "..L["Neutral"],
+            name = LZ["Ratchet"],
+            postfix = LZ["The Barrens"]..", "..LF["Neutral"],
             color = colors.YELLOW2,
         },
         {
             id = "TRThunderBluff",
             prefix = "6)",
-            name = BZ["Thunder Bluff"],
-            postfix = BZ["Mulgore"]..", "..L["Horde"],
+            name = LZ["Thunder Bluff"],
+            postfix = LZ["Mulgore"]..", "..LF["Horde"],
             color = colors.RED,
         },
         {
             id = "TRFeathermoonStronghold",
             prefix = "7)",
-            name = L["Feathermoon Stronghold"],
-            postfix = BZ["Feralas"]..", "..L["Alliance"],
+            name = LM["Feathermoon Stronghold"],
+            postfix = LZ["Feralas"]..", "..LF["Alliance"],
             color = colors.BLUE,
         },
         {
             id = "TRTheramoreIsle",
             prefix = "8)",
-            name = BZ["Theramore Isle"],
-            postfix = BZ["Dustwallow Marsh"]..", "..L["Alliance"],
+            name = LZ["Theramore Isle"],
+            postfix = LZ["Dustwallow Marsh"]..", "..LF["Alliance"],
             color = colors.BLUE,
         },
         {
             id = "TRAlahThalas",
             prefix = "9)",
-            name = L["Alah'Thalas"],
-            postfix = BZ["Thalassian Highlands"]..", "..L["Alliance"],
+            name = LM["Alah'Thalas"],
+            postfix = LZ["Thalassian Highlands"]..", "..LF["Alliance"],
             color = colors.BLUE,
         },
         {
             id = "TRUndercity",
             prefix = "10)",
-            name = BZ["Undercity"],
-            postfix = BZ["Tirisfal Glades"]..", "..L["Horde"],
+            name = LZ["Undercity"],
+            postfix = LZ["Tirisfal Glades"]..", "..LF["Horde"],
             color = colors.RED,
         },
         {
             id = "TRRevantuskVillage",
             prefix = "11)",
-            name = L["Revantusk Village"],
-            postfix = BZ["The Hinterlands"]..", "..L["Horde"],
+            name = LM["Revantusk Village"],
+            postfix = LZ["The Hinterlands"]..", "..LF["Horde"],
             color = colors.RED,
         },
         {
             id = "TRMenethilHarbor",
             prefix = "12)",
-            name = BZ["Menethil Harbor"],
-            postfix = BZ["Wetlands"]..", "..L["Alliance"],
+            name = LZ["Menethil Harbor"],
+            postfix = LZ["Wetlands"]..", "..LF["Alliance"],
             color = colors.BLUE,
         },
         {
             id = "TRIronforge",
             prefix = "13)",
-            name = BZ["Ironforge"],
-            postfix = BZ["Dun Morogh"]..", "..L["Alliance"],
+            name = LZ["Ironforge"],
+            postfix = LZ["Dun Morogh"]..", "..LF["Alliance"],
             color = colors.BLUE,
         },
         {
             id = "TRKargath",
             prefix = "14)",
-            name = L["Kargath"],
-            postfix = BZ["Badlands"]..", "..L["Horde"],
+            name = LM["Kargath"],
+            postfix = LZ["Badlands"]..", "..LF["Horde"],
             color = colors.RED,
         },
         {
             id = "TRStormwindCity",
             prefix = "15)",
-            name = BZ["Stormwind City"],
-            postfix = BZ["Elwynn Forest"]..", "..L["Alliance"],
+            name = LZ["Stormwind City"],
+            postfix = LZ["Elwynn Forest"]..", "..LF["Alliance"],
             color = colors.BLUE,
         },
         {
             id = "TRGromgolBaseCamp",
             prefix = "16)",
-            name = BZ["Grom'gol Base Camp"],
-            postfix = BZ["Stranglethorn Vale"]..", "..L["Horde"],
+            name = LZ["Grom'gol Base Camp"],
+            postfix = LZ["Stranglethorn Vale"]..", "..LF["Horde"],
             color = colors.RED,
         },
         {
             id = "TRBootyBay",
             prefix = "17)",
-            name = BZ["Booty Bay"],
-            postfix = BZ["Stranglethorn Vale"]..", "..L["Neutral"],
+            name = LZ["Booty Bay"],
+            postfix = LZ["Stranglethorn Vale"]..", "..LF["Neutral"],
             color = colors.YELLOW2,
         },
     },

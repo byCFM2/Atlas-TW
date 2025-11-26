@@ -15,27 +15,32 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+local _G = getfenv()
+AtlasTW = _G.AtlasTW or {}
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.WailingCavernsEnt = {
-    Name = BZ["Wailing Caverns"] .. " (" .. L["Entrance"] .. ")",
+    Name = LZ["Wailing Caverns"] .. " (" .. L["Entrance"] .. ")",
     Acronym = "WC",
-    Location = BZ["The Barrens"],
+    Location = LZ["The Barrens"],
     Entrances = {
         { letter = "A)", info = L["Entrance"] },
-        { letter = "B)", info = BZ["Wailing Caverns"] }
+        { letter = "B)", info = LZ["Wailing Caverns"] }
     },
     Bosses = {
         {
             id = "WCMadMagglish",
             prefix = "1)",
-            name = BB["Mad Magglish"],
+            name = LB["Mad Magglish"],
             postfix = L["Varies"],
             loot = {
                 { id = 5334, dropRate = 100 }, -- 99-Year-Old Port
@@ -43,7 +48,7 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
         },
         {
             prefix = "2)",
-            name = BB["Trigore the Lasher"],
+            name = LB["Trigore the Lasher"],
             defaults = { dropRate = 50 },
             loot = {
                 { id = 5425}, -- Runescale Girdle
@@ -53,7 +58,7 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
         {
             id = "WCBoahn",
             prefix = "3)",
-            name = BB["Boahn"],
+            name = LB["Boahn"],
             loot = {
                 { id = 5422, dropRate = 70 }, -- Brambleweed Leggings
                 {},
@@ -61,20 +66,20 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
             }
         },
         {
-            name = L["Above the Entrance:"],
+            name = LMD["Above the Entrance:"],
             color = Colors.GREY2,
         },
         {
-            name = BB["Ebru"],
+            name = LB["Ebru"],
             color = Colors.GREY2,
         },
         {
-            name = L["Nalpak"],
+            name = LMD["Nalpak"],
             color = Colors.GREY2,
         },
         {
             id = "WCKalldanFelmoon",
-            name = L["Kalldan Felmoon"],
+            name = LMD["Kalldan Felmoon"],
             loot = {
                 { id = 6474, disc = L["Vendor"], container = { 6466 } }, -- Pattern: Deviate Scale Cloak
                 { id = 6475, disc = L["Vendor"], container = { 6467 } }, -- Pattern: Deviate Scale Gloves
@@ -82,15 +87,15 @@ AtlasTW.InstanceData.WailingCavernsEnt = {
             }
         },
         {
-            name = L["Waldor"],
+            name = LMD["Waldor"],
             color = Colors.GREY2,
         },
     }
 }
 
 AtlasTW.InstanceData.WailingCaverns = {
-    Name = BZ["Wailing Caverns"],
-    Location = BZ["The Barrens"],
+    Name = LZ["Wailing Caverns"],
+    Location = LZ["The Barrens"],
     Level = { 10, 24 },
     Acronym = "WC",
     MaxPlayers = 5,
@@ -102,13 +107,13 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCDisciple",
             prefix = "1)",
-            name = L["Disciple of Naralex"],
+            name = LB["Disciple of Naralex"],
             color = Colors.GREY,
         },
         {
             id = "WCLordCobrahn",
             prefix = "2)",
-            name = BB["Lord Cobrahn"],
+            name = LB["Lord Cobrahn"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 6460 }, -- Cobrahn's Grasp
@@ -122,7 +127,7 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCLadyAnacondra",
             prefix = "3)",
-            name = BB["Lady Anacondra"],
+            name = LB["Lady Anacondra"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 10412 }, -- Belt of the Fang
@@ -143,7 +148,7 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCKresh",
             prefix = "4)",
-            name = BB["Kresh"],
+            name = LB["Kresh"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 13245 }, -- Kresh's Back
@@ -157,7 +162,7 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCDeviateFaerieDragon",
             prefix = "5)",
-            name = BB["Deviate Faerie Dragon"],
+            name = LB["Deviate Faerie Dragon"],
             postfix = L["Rare"],
             defaults = { dropRate = 50 },
             loot = {
@@ -170,7 +175,7 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCZandara",
             prefix = "6)",
-            name = BB["Zandara Windhoof"],
+            name = LB["Zandara Windhoof"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 55371, dropRate = 50 }, -- Windborne Sash
@@ -184,7 +189,7 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCLordPythas",
             prefix = "7)",
-            name = BB["Lord Pythas"],
+            name = LB["Lord Pythas"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 6473 }, -- Armor of the Fang
@@ -199,7 +204,7 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCSkum",
             prefix = "8)",
-            name = BB["Skum"],
+            name = LB["Skum"],
             defaults = { dropRate = 33 },
             loot = {
                 { id = 6448 }, -- Tail Spike
@@ -213,7 +218,7 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCVangros",
             prefix = "9)",
-            name = BB["Vangros"],
+            name = LB["Vangros"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 55374, dropRate = 50 }, -- Enraging Waistwraps
@@ -225,7 +230,7 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCLordSerpentis",
             prefix = "10)",
-            name = BB["Lord Serpentis"],
+            name = LB["Lord Serpentis"],
             postfix = L["Upper"],
             defaults = { dropRate = 25 },
             loot = {
@@ -241,7 +246,7 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCVerdan",
             prefix = "11)",
-            name = BB["Verdan the Everliving"],
+            name = LB["Verdan the Everliving"],
             postfix = L["Upper"],
             defaults = { dropRate = 33 },
             loot = {
@@ -256,7 +261,7 @@ AtlasTW.InstanceData.WailingCaverns = {
         {
             id = "WCMutanus",
             prefix = "12)",
-            name = BB["Mutanus the Devourer"],
+            name = LB["Mutanus the Devourer"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 6461 }, -- Slime-encrusted Pads
@@ -272,12 +277,12 @@ AtlasTW.InstanceData.WailingCaverns = {
         },
         {
             id = "WCNaralex",
-            name = L["Naralex"],
+            name = LB["Naralex"],
             color = Colors.GREY,
         },
         {
             id = "WCTrash",
-            name = L["Trash Mobs"].."-"..BZ["Wailing Caverns"],
+            name = L["Trash Mobs"].."-"..LZ["Wailing Caverns"],
             loot = {
                 { id = 10413, dropRate = 2 }, -- Gloves of the Fang
                 {},
@@ -287,7 +292,7 @@ AtlasTW.InstanceData.WailingCaverns = {
                 { id = 80862, dropRate = 30, container = { 80860, 80861 } }, -- Moontouched Wood
             }
         },
-        { name = BIS["Embrace of the Viper"], items = "Wailing" },
+        { name = LIS["Embrace of the Viper"], items = "Wailing" },
     },
 }
 

@@ -17,18 +17,21 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BS = AceLibrary("Babble-Spell-2.2a")
-local BIS = AceLibrary("Babble-ItemSet-2.2a")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LS = AtlasTW.Localization.Spells
+local LIS = AtlasTW.Localization.ItemSets
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 AtlasTW.InstanceData.HateforgeQuarry = {
-    Name = BZ["Hateforge Quarry"],
-    Location = BZ["Burning Steppes"],
+    Name = LZ["Hateforge Quarry"],
+    Location = LZ["Burning Steppes"],
     Level = { 48, 60 },
     Acronym = "HQ",
     MaxPlayers = 5,
@@ -40,7 +43,7 @@ AtlasTW.InstanceData.HateforgeQuarry = {
         {
             id = "HQHighForemanBargulBlackhammer",
             prefix = "1)",
-            name = BB["High Foreman Bargul Blackhammer"],
+            name = LB["High Foreman Bargul Blackhammer"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 60566 }, -- Visor of Command
@@ -64,13 +67,13 @@ AtlasTW.InstanceData.HateforgeQuarry = {
             id = "HQGemology",
             name = L["Gemology Plans"],
             loot = {
-                { id = 56106, disc = BS["Gemology"], dropRate = 100, container = { 56109, 70166, 56014 } }, -- Top Half of Advanced Gemology II
+                { id = 56106, disc = LS["Gemology"], dropRate = 100, container = { 56109, 70166, 56014 } }, -- Top Half of Advanced Gemology II
             },
         },
         {
             id = "HQEngineerFiggles",
             prefix = "2)",
-            name = BB["Engineer Figgles"],
+            name = LB["Engineer Figgles"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 60540 }, -- The Creator's Goggles
@@ -89,13 +92,13 @@ AtlasTW.InstanceData.HateforgeQuarry = {
         },
         {
             prefix = "a)",
-            name = L["Hateforge Chemistry Documents"],
+            name = LMD["Hateforge Chemistry Documents"],
             color = Colors.GREY,
         },
         {
             id = "HQCorrosis",
             prefix = "3)",
-            name = BB["Corrosis"],
+            name = LB["Corrosis"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 80672 }, -- Venomsight Mask
@@ -110,7 +113,7 @@ AtlasTW.InstanceData.HateforgeQuarry = {
         {
             id = "HQHatereaverAnnihilator",
             prefix = "4)",
-            name = BB["Hatereaver Annihilator"],
+            name = LB["Hatereaver Annihilator"],
             defaults = { dropRate = 20 },
             loot = {
                 { id = 60562 }, -- Ragereaver's Helm
@@ -128,7 +131,7 @@ AtlasTW.InstanceData.HateforgeQuarry = {
         {
             id = "HQHargeshDoomcaller",
             prefix = "5)",
-            name = BB["Har'gesh Doomcaller"],
+            name = LB["Har'gesh Doomcaller"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 51045 }, -- Toxic Talisman
@@ -152,7 +155,7 @@ AtlasTW.InstanceData.HateforgeQuarry = {
         },
         {
             id = "HQTrash",
-            name = L["Trash Mobs"].."-"..BZ["Hateforge Quarry"],
+            name = L["Trash Mobs"].."-"..LZ["Hateforge Quarry"],
             defaults = { dropRate = .005 },
             loot = {
                 { id = 84010, container = { 60576 } }, -- Plans: Hateforge Belt
@@ -168,7 +171,7 @@ AtlasTW.InstanceData.HateforgeQuarry = {
                 { id = 60612, dropRate = .0025 }, -- Mixologist Goggles
             }
         },
-        { name = BIS["Incendosaur Skin Armor"], items = "IncendosaurSkinArmor" },
+        { name = LIS["Incendosaur Skin Armor"], items = "IncendosaurSkinArmor" },
     }
 }
 

@@ -17,11 +17,14 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-local L = AtlasTW.Local
-local BZ = AceLibrary("Babble-Zone-2.2a")
-local BB = AceLibrary("Babble-Boss-2.2a")
-local BF = AceLibrary("Babble-Faction-2.2a")
-local BC = AceLibrary("Babble-Class-2.2")
+
+local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
+local LB = AtlasTW.Localization.Bosses
+local LC = AtlasTW.Localization.Classes
+local LF = AtlasTW.Localization.Factions
+local LMD = AtlasTW.Localization.MapData
+
 local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
@@ -73,8 +76,8 @@ local zGidol = {
 }
 
 AtlasTW.InstanceData.ZulGurub = {
-    Name = BZ["Zul'Gurub"],
-    Location = BZ["Stranglethorn Vale"],
+    Name = LZ["Zul'Gurub"],
+    Location = LZ["Stranglethorn Vale"],
     Level = { 51, 60 },
     Acronym = "ZG",
     MaxPlayers = 20,
@@ -83,17 +86,17 @@ AtlasTW.InstanceData.ZulGurub = {
         { letter = "A) ".. L["Entrance"] }
     },
     Reputation = {
-        { name = BF["Zandalar Tribe"], loot = "ZandalarTribe" }
+        { name = LF["Zandalar Tribe"], loot = "ZandalarTribe" }
     },
     Keys = {
-        { name = L["Gurubashi Mojo Madness"], loot = "VanillaKeys", info = L["Edge of Madness"] },
-        { name = L["Mudskunk Lure"], loot = "VanillaKeys", info = BB["Gahz'ranka"] },
+        { name = LMD["Gurubashi Mojo Madness"], loot = "VanillaKeys", info = LMD["Edge of Madness"] },
+        { name = LMD["Mudskunk Lure"], loot = "VanillaKeys", info = LB["Gahz'ranka"] },
     },
     Bosses = {
         {
             id = "HighPriestessJeklik",
             prefix = "1)",
-            name = BB["High Priestess Jeklik"],
+            name = LB["High Priestess Jeklik"],
             postfix = L["Bat"],
             defaults = { dropRate = 14 },
             loot = {
@@ -114,7 +117,7 @@ AtlasTW.InstanceData.ZulGurub = {
         {
             id = "HighPriestVenoxis",
             prefix = "2)",
-            name = BB["High Priest Venoxis"],
+            name = LB["High Priest Venoxis"],
             postfix = L["Snake"],
             defaults = { dropRate = 20 },
             loot = {
@@ -134,13 +137,13 @@ AtlasTW.InstanceData.ZulGurub = {
         },
         {
             prefix = "3)",
-            name = L["Zanza the Restless"],
+            name = LMD["Zanza the Restless"],
             loot = zGEnchants,
         },
         {
             id = "HighPriestessMarli",
             prefix = "4)",
-            name = BB["High Priestess Mar'li"],
+            name = LB["High Priestess Mar'li"],
             postfix = L["Spider"],
             defaults = { dropRate = 14 },
             loot = {
@@ -161,7 +164,7 @@ AtlasTW.InstanceData.ZulGurub = {
         {
             id = "BloodlordMandokir",
             prefix = "5)",
-            name = BB["Bloodlord Mandokir"],
+            name = LB["Bloodlord Mandokir"],
             postfix = L["Raptor"],
             defaults = { dropRate = 8 },
             loot = {
@@ -197,18 +200,18 @@ AtlasTW.InstanceData.ZulGurub = {
             }
         },
         {
-            name = L["Ohgan"],
+            name = LMD["Ohgan"],
             color = Colors.GREY
         },
         {
             prefix = "6)",
-            name = L["Edge of Madness"],
+            name = LMD["Edge of Madness"],
             postfix = L["Optional"],
             color = Colors.GREY
         },
         {
             id = "Grilek",
-            name = BB["Gri'lek"],
+            name = LB["Gri'lek"],
             postfix = L["Random"],
             defaults = { dropRate = 43 },
             loot = {
@@ -220,7 +223,7 @@ AtlasTW.InstanceData.ZulGurub = {
         },
         {
             id = "Hazzarah",
-            name = BB["Hazza'rah"],
+            name = LB["Hazza'rah"],
             postfix = L["Random"],
             loot = {
                 { id = 19967, dropRate = 45 }, -- Thoughtblighter
@@ -231,7 +234,7 @@ AtlasTW.InstanceData.ZulGurub = {
         },
         {
             id = "Renataki",
-            name = BB["Renataki"],
+            name = LB["Renataki"],
             postfix = L["Random"],
             loot = {
                 { id = 19964, dropRate = 40 }, -- Renataki's Soul Conduit
@@ -242,7 +245,7 @@ AtlasTW.InstanceData.ZulGurub = {
         },
         {
             id = "Wushoolay",
-            name = BB["Wushoolay"],
+            name = LB["Wushoolay"],
             postfix = L["Random"],
             loot = {
                 { id = 19993, dropRate = 45 }, -- Hoodoo Hunting Bow
@@ -254,7 +257,7 @@ AtlasTW.InstanceData.ZulGurub = {
         {
             id = "Gahzranka",
             prefix = "7)",
-            name = BB["Gahz'ranka"],
+            name = LB["Gahz'ranka"],
             postfix = L["Optional"],
             defaults = { dropRate = 25 },
             loot = {
@@ -279,7 +282,7 @@ AtlasTW.InstanceData.ZulGurub = {
         {
             id = "HighPriestThekal",
             prefix = "8)",
-            name = BB["High Priest Thekal"],
+            name = LB["High Priest Thekal"],
             postfix = L["Tiger"],
             defaults = { dropRate = 14 },
             loot = {
@@ -298,19 +301,19 @@ AtlasTW.InstanceData.ZulGurub = {
             }
         },
         {
-            name = L["Zealot Zath"],
-            postfix = BC["Rogue"],
+            name = LMD["Zealot Zath"],
+            postfix = LC["Rogue"],
             color = Colors.GREY
         },
         {
-            name = L["Zealot Lor'Khan"],
-            postfix = BC["Shaman"],
+            name = LMD["Zealot Lor'Khan"],
+            postfix = LC["Shaman"],
             color = Colors.GREY
         },
         {
             id = "HighPriestessArlokk",
             prefix = "9)",
-            name = BB["High Priestess Arlokk"],
+            name = LB["High Priestess Arlokk"],
             postfix = L["Panther"],
             defaults = { dropRate = 20 },
             loot = {
@@ -331,7 +334,7 @@ AtlasTW.InstanceData.ZulGurub = {
         {
             id = "JindotheHexxer",
             prefix = "10)",
-            name = BB["Jin'do the Hexxer"],
+            name = LB["Jin'do the Hexxer"],
             postfix = L["Optional"],
             defaults = { dropRate = 8 },
             loot = {
@@ -364,7 +367,7 @@ AtlasTW.InstanceData.ZulGurub = {
         {
             id = "Hakkar",
             prefix = "11)",
-            name = BB["Hakkar"],
+            name = LB["Hakkar"],
             defaults = { dropRate = 14 },
             loot = {
                 { id = 19876 }, -- Soul Corrupter's Necklace
@@ -388,7 +391,7 @@ AtlasTW.InstanceData.ZulGurub = {
         },
         {
             prefix = "1')",
-            name = L["Muddy Churning Waters"],
+            name = LMD["Muddy Churning Waters"],
             color = Colors.GREEN,
             loot = {
                 { id = 19975, disc = L["Used to summon boss"] }, -- Zulian Mudskunk
@@ -396,7 +399,7 @@ AtlasTW.InstanceData.ZulGurub = {
         },
         {
             prefix = "2')",
-            name = L["Jinxed Hoodoo Pile"],
+            name = LMD["Jinxed Hoodoo Pile"],
             color = Colors.GREEN,
             defaults = { dropRate = 11 },
             loot = {
@@ -415,7 +418,7 @@ AtlasTW.InstanceData.ZulGurub = {
         },
         {
             id = "ZGTrash",
-            name = L["Trash Mobs"].."-"..BZ["Zul'Gurub"],
+            name = L["Trash Mobs"].."-"..LZ["Zul'Gurub"],
             defaults = { dropRate = .03 },
             loot = {
                 { id = 20263 }, -- Gurubashi Helm
