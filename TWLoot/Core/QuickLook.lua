@@ -33,7 +33,7 @@ end
 --- @usage AtlasTW.QuickLook.ShowMenu(button)
 ---
 function AtlasTW.QuickLook.ShowMenu(button)
-	local Hewdrop = AceLibrary("Hewdrop-2.0")
+	local Hewdrop = _G.ATWHewdrop
 	if Hewdrop:IsOpen(button) then
 		Hewdrop:Close(1)
 	else

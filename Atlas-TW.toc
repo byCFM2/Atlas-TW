@@ -11,9 +11,7 @@
 ## SavedVariablesPerCharacter: AtlasTWCharDB
 ## OptionalDeps: LootLink, ItemSync, EquipCompare, EQCompare, pfQuest, pfUI
 
-Libs\AceLibrary\AceLibrary.lua
-Libs\AceOO-2.0\AceOO-2.0.lua
-Libs\Hewdrop-2.0\Hewdrop-2.0.lua
+Libs\Hewdrop.lua
 
 AtlasTWInit.xml
 TWLoot\LootInit.xml

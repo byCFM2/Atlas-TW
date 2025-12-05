@@ -3,12 +3,12 @@
 --- Provides dropdown registration and click handlers for loot browser navigation
 ---
 
---Make the Hewdrop menu in the standalone loot browser accessible here
-AtlasTWLoot_Hewdrop = AceLibrary("Hewdrop-2.0")
-
 -- Instance required libraries
 local _G = getfenv()
 AtlasTW = _G.AtlasTW
+
+--Make the Hewdrop menu in the standalone loot browser accessible here
+AtlasTWLoot_Hewdrop = _G.ATWHewdrop
 
 local L = AtlasTW.Localization.UI
 local LM = AtlasTW.Localization.MapData

@@ -218,14 +218,16 @@ function AtlasTW.SearchLib.Search(Text)
         end
         for key, tbl in pairs(AtlasTWLoot_Data) do
             if type(tbl) == "table" then
-                for i = 1, table.getn(tbl) do
+                local m = table.getn(tbl)
+                for i = 1, m do
                     local el = tbl[i]
                     if type(el) == "table" then
                         if el.id then
                             considerItem(el.id, key)
                         end
                         if el.container and type(el.container) == "table" then
-                            for j = 1, table.getn(el.container) do
+                            local n = table.getn(el.container)
+                            for j = 1, n do
                                 local c = el.container[j]
                                 if type(c) == "number" then
                                     considerItem(c, key)
@@ -252,7 +254,8 @@ function AtlasTW.SearchLib.Search(Text)
         if not AtlasTWLoot_Data then return nil end
         for key, tbl in pairs(AtlasTWLoot_Data) do
             if type(tbl) == "table" then
-                for i = 1, table.getn(tbl) do
+                local m = table.getn(tbl)
+                for i = 1, m do
                     local el = tbl[i]
                     if type(el) == "table" and el.id and el.id == spellID then
                         return key
@@ -292,10 +295,10 @@ function AtlasTW.SearchLib.Search(Text)
     -- Craft page locator: find first loot table where spellID occurs
     local function findFirstCraftLootPageForSpell(spellID)
         if not AtlasTWLoot_Data then return nil end
-        local m = table.getn(AtlasTWLoot_Data)
         for key, tbl in pairs(AtlasTWLoot_Data) do
             if type(tbl) == "table" then
                 -- Use table.getn since # is not supported in 1.12
+                local m = table.getn(tbl)
                 for i = 1, m do
                     local el = tbl[i]
                     if type(el) == "table" and el.id and el.id == spellID then
@@ -347,7 +350,7 @@ end
 --- @usage AtlasTW.SearchLib.ShowOptions(someButton)
 ---
 function AtlasTW.SearchLib.ShowOptions(button)
-	local Hewdrop = AceLibrary("Hewdrop-2.0")
+	local Hewdrop = _G.ATWHewdrop
 	if Hewdrop:IsOpen(button) then
 		Hewdrop:Close(1)
 	else
