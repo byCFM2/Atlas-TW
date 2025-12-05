@@ -66,6 +66,7 @@
     <Include file="PvP\ArathiBasin.lua"/>
     <Include file="PvP\AlteracValleyNorth.lua"/>
     <Include file="PvP\AlteracValleySouth.lua"/>
+    <Include file="PvP\ThornGorge.lua"/>
     <Include file="PvP\PVPRewards.lua"/>
 
     <!-- Tables data (load before menus) -->

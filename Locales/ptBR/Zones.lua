@@ -7,6 +7,7 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("Zones", "ptBR", {
+    ["Thorn Gorge"] = "Garganta Espinhosa",
     ["Timbermaw Hold"] = "O Refugio Timbermaw",
     ["Windhorn Canyon"] = "Cânion Chifre do Vento",
     ["Farraki Arena"] = "Arena Farraki",

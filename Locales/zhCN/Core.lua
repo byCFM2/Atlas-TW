@@ -153,6 +153,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     -- Items & Loot
     ["This item is not safe!"] = "此物品不安全！",
     ["Item not found in cache"] = "在缓存中未找到物品",
+    ["Old version of SuperWoW detected..."] = "检测到旧版本的 SuperWoW...",
     ["Slot Bag"] = "背包栏位",
     ["Various Locations"] = "多个地点",
     ["Vendor"] = "商人",

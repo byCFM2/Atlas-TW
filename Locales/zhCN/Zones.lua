@@ -7,6 +7,7 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("Zones", "zhCN", {
+    ["Thorn Gorge"] = "荆棘峡谷",
     ["Timbermaw Hold"] = "木喉要塞",
     ["Windhorn Canyon"] = "风角峡谷",
     ["Farraki Arena"] = "法拉基竞技场",

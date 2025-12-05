@@ -147,4 +147,5 @@ AtlasTW.Localization:RegisterNamespace("Zones", "enUS", {
     ["Balor"] = true,
     ["Stormwrought Ruins"] = true,
     ["Northwind"] = true,
+    ["Thorn Gorge"] = true,
 })

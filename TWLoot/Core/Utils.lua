@@ -152,7 +152,7 @@ function AtlasTW.LootUtils.CheckBagsForItems(id, qty)
     if not GetItemInfo then return (RED or "") .. (L and L["Unknown"] or "Unknown") end
 
     local itemName = GetItemInfo(id)
-    if not itemName then itemName = "Uncached" end
+    if not itemName then itemName = L["Unknown"] end
 
     for i = 0, NUM_BAG_FRAMES do
         for j = 1, GetContainerNumSlots(i) do

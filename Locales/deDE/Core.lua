@@ -204,6 +204,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     --************************************************
     ["This item is not safe!"] = "Dieser Gegenstand ist nicht sicher!",
     ["Item not found in cache"] = "Gegenstand nicht im Cache gefunden",
+    ["Old version of SuperWoW detected..."] = "Alte Version von SuperWoW erkannt...",
     ["Slot Bag"] = "Platz Behälter",
     ["Various Locations"] = "Verschiedene Orte",
     ["Vendor"] = "Händler",

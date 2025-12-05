@@ -234,7 +234,8 @@ function AtlasTW.PopulateDropdowns()
     local sortType = AtlasTW_DropDownSortOrder[AtlasTWOptions.AtlasSortBy]
     local subcatOrder = AtlasTW_DropDownGetLayoutOrder(sortType)
     local layouts = AtlasTW_DropDownGetLayout(sortType)
-    for n = 1, getn(subcatOrder) do
+	local m = getn(subcatOrder)
+    for n = 1, m do
         local subcatItems = layouts[subcatOrder[n]]
         AtlasTW.DropDowns[n] = {}
         for _,v in pairs(subcatItems) do
@@ -522,7 +523,8 @@ local function atlasFrameDropDownType_Initialize()
 	local info
     local sortType = AtlasTW_DropDownSortOrder[AtlasTWOptions.AtlasSortBy]
     local subcatOrder = AtlasTW_DropDownGetLayoutOrder(sortType)
-    for i = 1, getn(subcatOrder) do
+	local m = getn(subcatOrder)
+    for i = 1, m do
         info = {
             text = subcatOrder[i],
             func = atlasFrameDropDownType_OnClick

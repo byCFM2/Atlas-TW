@@ -105,7 +105,8 @@ function AtlasTW.Interactions.ChatSayItemReagents(id, color, name, safe)
             local chatline, itemCount = "", 0
             local reagents = spellData.reagents
             if reagents then
-                for j = 1, table.getn(reagents) do
+				local n = table.getn(reagents)
+                for j = 1, n do
                     local reagentCount = reagents[j][2] or 1
                     local reagentItem = reagents[j][1]
 
@@ -131,7 +132,8 @@ function AtlasTW.Interactions.ChatSayItemReagents(id, color, name, safe)
             local chatline, itemCount = "", 0
             local reagents = spellData.reagents
             if reagents then
-                for j = 1, table.getn(reagents) do
+				local n = table.getn(reagents)
+                for j = 1, n do
                     local reagentCount = reagents[j][2] or 1
                     local reagentItem = reagents[j][1]
 
@@ -191,7 +193,8 @@ local function BuildMaterialString(materials, isReagent)
     end
 
     local materialStrings = {}
-    for i = 1, table.getn(materials) do
+	local m = table.getn(materials)
+    for i = 1, m do
         local itemInfo = materials[i]
         local checkedItem
         if isReagent then
@@ -237,7 +240,8 @@ local function ShowSpellTooltip(link, elemID, anchor)
     }
 
     -- Dynamic addition of lines to tooltip
-    for i = 1, table.getn(tooltipLines) do
+	local n = table.getn(tooltipLines)
+    for i = 1, n do
         local lineInfo = tooltipLines[i]
         if lineInfo.text and lineInfo.text ~= "" then
             AtlasTWLootTooltip:AddLine((lineInfo.prefix or "") .. lineInfo.text, nil, nil, nil, lineInfo.wrap)
@@ -294,7 +298,7 @@ local function HandleEnchantTooltip(spellID, anchor)
     if SetAutoloot and (SUPERWOW_VERSION and (tonumber(SUPERWOW_VERSION)) < 1.2) then
         enchantLink = "spell:" .. spellID
         if not messageShown then
-            PrintA("Old version of SuperWoW detected...")
+            PrintA(L["Old version of SuperWoW detected..."])
             messageShown = true
         end
     end

@@ -54,7 +54,8 @@ function AtlasTWLoot_ShowWishList()
 		AtlasTWCharDB.WishList = {}
 	end
 
-	for i = 1, table.getn(AtlasTWCharDB.WishList) do
+	local m = table.getn(AtlasTWCharDB.WishList)
+	for i = 1, m do
 		local v = AtlasTWCharDB.WishList[i]
 		if v then
 			-- Normalize instance field: if name is recorded, replace with key
@@ -217,7 +218,8 @@ local function AtlasTWLoot_GetLootPageDisplayName(pageKey)
 	if AtlasTW.DataResolver.IsLootTableAvailable(pageKey) and AtlasTWLoot_Data and AtlasTWLoot_Data[pageKey] then
 		local page = AtlasTWLoot_Data[pageKey]
 		if type(page) == "table" then
-			for i = 1, table.getn(page) do
+			local m = table.getn(page)
+			for i = 1, m do
 				local e = page[i]
 				if type(e) == "table" and e.name and e.name ~= "" then
 					return e.name
@@ -236,9 +238,10 @@ end
 ---
 local function FindFirstCraftLootPageForSpell(spellID)
 	if not AtlasTWLoot_Data or not spellID then return nil end
+	local m = table.getn(AtlasTWLoot_Data)
 	for key, tbl in pairs(AtlasTWLoot_Data) do
 		if type(tbl) == "table" then
-			for i = 1, table.getn(tbl) do
+			for i = 1, m do
 				local el = tbl[i]
 				if type(el) == "table" and el.id and el.id == spellID then
 					return key
@@ -450,7 +453,8 @@ function AtlasTWLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, ty
 
 	-- Check for duplicate addition (by type+id pair)
 	local isDuplicate = false
-	for i = 1, table.getn(AtlasTWCharDB.WishList) do
+	local m = table.getn(AtlasTWCharDB.WishList)
+	for i = 1, m do
 		local w = AtlasTWCharDB.WishList[i]
 		if w and w.id == actualItemID then
 			local wtype = w.type or "item"
@@ -520,7 +524,8 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 
 	-- Go through list without sorting and add headers when category changes
 	local lastCategoryKey = nil
-	for i = 1, table.getn(wishList) do
+	local m = table.getn(wishList)
+	for i = 1, m do
 		local v = wishList[i]
 		local currentCategory
 
@@ -722,7 +727,8 @@ function AtlasTWLoot_DeleteFromWishList(elemID)
 	local removedName = nil
 	local removedType = nil
 	local newList = {}
-	for i = 1, table.getn(AtlasTWCharDB.WishList) do
+	local m = table.getn(AtlasTWCharDB.WishList)
+	for i = 1, m do
 		local v = AtlasTWCharDB.WishList[i]
 		if v then
 			local vId = v.id or v[1]

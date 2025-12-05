@@ -7,6 +7,7 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("Zones", "deDE", {
+    ["Thorn Gorge"] = "Dornenschlucht",
     ["Timbermaw Hold"] = "Holzschlundfeste",
     ["Windhorn Canyon"] = "Windhornschlucht",
     ["Farraki Arena"] = "Farraki Arena",

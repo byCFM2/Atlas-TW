@@ -6,9 +6,6 @@
 --- capture points, and battleground-specific rewards.
 ---
 --- Features:
---- • Resource control mechanics
---- • Strategic node locations
---- • Capture point data
 --- • Battleground objectives
 --- • PvP rewards and marks
 ---

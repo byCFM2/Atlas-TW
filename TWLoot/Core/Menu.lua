@@ -303,7 +303,8 @@ function AtlasTWLoot_HewdropClick(tablename, text, tabletype)
 			for typeIndex = 1, ddCount do
 				local dropDownData = AtlasTW.DropDowns[typeIndex]
 				if type(dropDownData) == "table" then
-					for zoneIndex = 1, table.getn(dropDownData) do
+					local m = table.getn(dropDownData)
+					for zoneIndex = 1, m do
 						if dropDownData[zoneIndex] == instKey then
 							AtlasTWOptions.AtlasType = typeIndex
 							AtlasTWOptions.AtlasZone = zoneIndex

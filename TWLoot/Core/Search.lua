@@ -292,10 +292,11 @@ function AtlasTW.SearchLib.Search(Text)
     -- Craft page locator: find first loot table where spellID occurs
     local function findFirstCraftLootPageForSpell(spellID)
         if not AtlasTWLoot_Data then return nil end
+        local m = table.getn(AtlasTWLoot_Data)
         for key, tbl in pairs(AtlasTWLoot_Data) do
             if type(tbl) == "table" then
                 -- Use table.getn since # is not supported in 1.12
-                for i = 1, table.getn(tbl) do
+                for i = 1, m do
                     local el = tbl[i]
                     if type(el) == "table" and el.id and el.id == spellID then
                         return key
