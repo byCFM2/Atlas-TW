@@ -23,7 +23,7 @@ function AtlasTW.QuickLook.ClearButton(button)
 	if not button or button == nil then return end
 	AtlasTWCharDB["QuickLooks"][button] = nil
 	AtlasTW.QuickLook.RefreshButtons()
-	print(BLUE.."AtlasTWLoot"..": "..WHITE..L["QuickLook"].." "..button.." "..L["has been reset!"])
+	PrintA(L["QuickLook"].." "..button.." "..L["has been reset!"])
 end
 
 ---

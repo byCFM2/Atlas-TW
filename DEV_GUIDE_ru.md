@@ -7,7 +7,7 @@
 - Для размеров фреймов применяйте SetWidth/SetHeight, не SetSize.
 - SetScript: локальная функция — SetScript("Event", "LocalFuncName"); глобальная/анонимная — SetScript("Event", function() ... end).
 - Не используйте #:len, string.match/gmatch — их нет в 1.12.
-- Для отладки используйте print("..."), без сложных форматтеров.
+- Для отладки используйте PrintA("..."), без сложных форматтеров.
 
 2) Архитектура модулей
 - Ядро/фрейм: Atlas.lua, AtlasUI.lua, AtlasUILogic.lua — окно карты, выпадающие списки, кнопка у миникарты, слайдеры скейла/прозрачности, слэш‑команда /atlas.
@@ -78,7 +78,7 @@ AtlasOptions.lua (обработчики опций)
 - Toggle окна:
   if AtlasTWFrame and AtlasTWFrame:IsShown() then AtlasTW.ToggleAtlas() else AtlasTW.ToggleAtlas() end
 - Принудительный рефреш после смены опций:
-  AtlasTW.Refresh(); print("Atlas: обновлено")
+  AtlasTW.Refresh(); PrintA("Atlas: обновлено")
 - Применить скейл/альфу при движении слайдера:
   AtlasTW.OptionsUpdateScale(); AtlasTW.OptionsUpdateAlpha()
 - Показать панель квестов и выбрать квест:
@@ -98,7 +98,7 @@ AtlasOptions.lua (обработчики опций)
 - Внутри длинных процедур: блочные комментарии для ключевых шагов.
 
 10) Отладка
-- Вставляйте print("AtlasTW: message") в критических ветках и обработчиках событий.
+- Вставляйте PrintA("message") в критических ветках и обработчиках событий.
 
 11) SavedVariables
 - Account-wide: AtlasTWOptions
@@ -272,7 +272,7 @@ ItemDB (Loot/Data/ItemDB.lua)
 
 19) Примеры
 - Включить безопасные ссылки и обновить UI:
-  AtlasTWOptions.LootSafeLinks = true; AtlasTWOptions.LootAllLinks = false; AtlasTW.Refresh(); print("Atlas: links updated")
+  AtlasTWOptions.LootSafeLinks = true; AtlasTWOptions.LootAllLinks = false; AtlasTW.Refresh(); PrintA("Atlas: links updated")
 - Переключить сторону панели квестов и заново выставить кнопки:
   AtlasTWOptions.QuestCurrentSide = "Right"; AtlasTW.Quest.Update();
 - Добавить быстрый просмотр (QuickLooks) текущей категории (примерно):
@@ -356,7 +356,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "ruRU", {
 Пример:
 ```lua
 local L = AtlasTW.Localization:GetNamespace("UI")
-print(L["Options"])
+PrintA(L["Options"])
 ```
 
 Доступные пространства имен:

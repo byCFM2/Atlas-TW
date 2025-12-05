@@ -332,7 +332,7 @@ function AtlasTW.SearchLib.Search(Text)
 
     AtlasTWLoot_InvalidateCategorizedList("SearchResult")
     if table.getn(AtlasTWCharDB.SearchResult) == 0 then
-        print(L["No match found for"].." \""..Text.."\".")
+        PrintA(L["No match found for"].." \""..Text.."\".")
     else
         -- Display all results, scroll is handled by loot frame
         AtlasTW.SearchLib.ShowResult()

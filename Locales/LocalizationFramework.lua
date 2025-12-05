@@ -33,7 +33,7 @@ end
 
 function AtlasTW.Localization:DebugMissing(limit)
     local frame = DEFAULT_CHAT_FRAME
-    local out = function(msg) if frame then frame:AddMessage(msg) else print(msg) end end
+    local out = function(msg) if frame then frame:AddMessage(msg) else PrintA(msg) end end
     limit = tonumber(limit) or 40
     out("|cff00ff00AtlasTW Missing Keys:|r " .. tostring(self.currentLocale))
     for name, ns in pairs(self.namespaces) do

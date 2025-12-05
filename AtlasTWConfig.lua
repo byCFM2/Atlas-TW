@@ -200,8 +200,8 @@ AtlasTW = {
 
 --- Prints text message to the default chat frame
 --- @param text string - the message to display in chat
---- @usage print("message")
-function print(msg)
+--- @usage printA("message")
+function PrintA(msg)
   local prefix = (AtlasTW.Colors and AtlasTW.Colors.DEFAULT or '|cffFFd200') .. 'Atlas-TW:|r '
   DEFAULT_CHAT_FRAME:AddMessage(prefix .. msg)
 end

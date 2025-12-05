@@ -38,7 +38,7 @@ AtlasTW.Version = GetAddOnMetadata(AtlasTW.Name, "Version")
 ---
 local function debug(info)
 	if AtlasTW.DEBUGMODE then
-		print("["..AtlasTW.Name.."] "..info)
+		PrintA(info)
 	end
 end
 
@@ -219,7 +219,7 @@ function AtlasTW.OnEvent()
 		end
 	elseif event == "PLAYER_ENTERING_WORLD" and loadingStartTime then
 		local loadingTime = (GetTime() - loadingStartTime) * 1000
-		--print(string.format("Load time: %.2f ", loadingTime))
+		--PrintA(string.format("Load time: %.2f ", loadingTime))
 		loadingStartTime = nil
 	end
 end

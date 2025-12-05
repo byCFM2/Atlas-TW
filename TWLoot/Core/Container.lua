@@ -38,7 +38,6 @@ end
 ---
 --- Shows or toggles the container frame display
 --- Manages container visibility and caching for item containers
---- @return void
 --- @usage AtlasTWLoot_ShowContainerFrame()
 ---
 function AtlasTWLoot_ShowContainerFrame()
@@ -167,7 +166,6 @@ end
 --- Sets up OnEnter and OnLeave scripts for item tooltip display
 --- @param frame table UI frame to add tooltip to
 --- @param itemID number Item ID for tooltip content
---- @return void
 --- @usage AtlasTWLoot_AddContainerItemTooltip(button, 12345)
 ---
 function AtlasTWLoot_AddContainerItemTooltip(frame ,itemID)
@@ -205,55 +203,4 @@ function AtlasTWLoot_AddContainerItemTooltip(frame ,itemID)
         AtlasTWLootTooltip:Hide()
         AtlasTWLootTooltip.itemID = nil
     end)
-end
-
----
---- Handles click events on container item buttons
---- Processes item links and chat output for container items
---- @param arg1 string Click type ("LeftButton", "RightButton", etc.)
---- @return void
---- @usage AtlasTWLoot_ContainerItem_OnClick("LeftButton") -- Called by container item clicks
----
-function AtlasTWLoot_ContainerItem_OnClick(arg1)
-	local itemID = this:GetID()
-	local name, link, quality, _, _, _, _, _, tex = GetItemInfo(itemID)
-	local _, _, _, color = GetItemQualityColor(quality)
-	tex = string.gsub(tex, "Interface\\Icons\\", "")
-	if IsShiftKeyDown() and arg1 == "LeftButton" then
-		if AtlasTWOptions.LootAllLinks then
-			if WIM_EditBoxInFocus then
-				WIM_EditBoxInFocus:Insert("\124"..string.sub(color, 2).."|Hitem:"..itemID.."\124h["..name.."]|h|r")
-			elseif ChatFrameEditBox:IsVisible() then
-				ChatFrameEditBox:Insert("\124"..string.sub(color, 2).."|Hitem:"..itemID.."\124h["..name.."]|h|r")
-			end
-		elseif AtlasTWOptions.LootSafeLinks then
-				if WIM_EditBoxInFocus then
-					WIM_EditBoxInFocus:Insert("["..name.."]")
-				elseif ChatFrameEditBox:IsVisible() then
-					ChatFrameEditBox:Insert("["..name.."]")
-				else
-					AtlasTW.Interactions.ChatSayItemReagents(this.itemID, nil, name, true)
-				end
-		end
-	elseif(IsControlKeyDown() and name) then
-		DressUpItemLink(link)
-	elseif(IsAltKeyDown() and (itemID ~= 0)) then
-		local ElemName = AtlasTWLootItemsFrame.StoredElement
-		local instKey = AtlasTWLootItemsFrame and AtlasTWLootItemsFrame.StoredMenu or nil
-
-		if ElemName == "WishList" then
-			AtlasTWLoot_DeleteFromWishList(this.itemID)
-		elseif ElemName == "SearchResult" then
-			AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemID))
-		else
-			local srcPage = nil
-			if ElemName and instKey then
-				srcPage = ElemName.."|"..instKey
-			elseif ElemName and AtlasTW.DataResolver.IsLootTableAvailable and AtlasTW.DataResolver.IsLootTableAvailable(ElemName) then
-				-- Craft/set/other loot table page without instanceKey
-				srcPage = ElemName
-			end
-			AtlasTWLoot_AddToWishlist(itemID, ElemName, instKey, "item", srcPage)
-		end
-	end
 end

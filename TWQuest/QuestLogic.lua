@@ -32,12 +32,12 @@ local Colors = AtlasTW.Colors
 ---
 function AtlasTW.Quest.OnItemEnter(itemIndex)
     if not itemIndex then
-        return print("AtlasTW.Quest.OnItemEnter failed itemIndex!")
+        return PrintA("AtlasTW.Quest.OnItemEnter failed itemIndex!")
     end
     local frame = this
     -- Get the frame that triggered this event
     if not frame then
-        return print("AtlasTW.Quest.OnItemEnter failed frame and name!")
+        return PrintA("AtlasTW.Quest.OnItemEnter failed frame and name!")
     end
     -- Get current quest data
     local instance = AtlasTW.QCurrentInstance
@@ -88,11 +88,11 @@ end
 ---
 function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
     if not itemIndex then
-        return print("AtlasTW.Quest.OnItemClick failed itemIndex!")
+        return PrintA("AtlasTW.Quest.OnItemClick failed itemIndex!")
     end
     local frame = this
     if not frame then
-        return print("AtlasTW.Quest.OnItemClick failed frame or name!")
+        return PrintA("AtlasTW.Quest.OnItemClick failed frame or name!")
     end
     -- Get current quest data
     local instance = AtlasTW.QCurrentInstance
@@ -130,7 +130,7 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
                 ChatFrameEditBox:Insert(itemLink)
             end
         else
-            print("Item unsafe! Right click to get the item ID")
+            PrintA("Item unsafe! Right click to get the item ID")
             ChatFrameEditBox:Insert(string.format("%s [%s]", Colors.GREY2, LU["Item not found in cache"]))
         end
         return
@@ -207,10 +207,10 @@ end
 --- @usage Called automatically when quest button is clicked
 ---
 function AtlasTW.Quest.OnQuestClick(questIndex)
-    if not questIndex then return print("AtlasTW.Quest.OnQuestClick without questIndex.") end
+    if not questIndex then return PrintA("AtlasTW.Quest.OnQuestClick without questIndex.") end
     AtlasTW.QCurrentQuest = questIndex
     if not AtlasTW.Quest.UI or not AtlasTW.Quest.UI.InsideAtlasFrame then
-        return print("AtlasTW.Quest.OnQuestClick: Quest UI not fully loaded.")
+        return PrintA("AtlasTW.Quest.OnQuestClick: Quest UI not fully loaded.")
     end
     if ChatFrameEditBox:IsVisible() and IsShiftKeyDown() then
         atlasTWQuestInsertQuestLink()
@@ -387,7 +387,7 @@ end
 ---
 function AtlasTW.Quest.OnQuestFrameShow()
     if not AtlasTW.Quest.UI_Main then
-        return print("AtlasTW.Quest.OnQuestFrameShow: Quest UI not fully loaded.")
+        return PrintA("AtlasTW.Quest.OnQuestFrameShow: Quest UI not fully loaded.")
     end
     AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(AtlasTW.isHorde)
     AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(not AtlasTW.isHorde)
@@ -434,7 +434,7 @@ end
 ---
 function AtlasTW.Quest.OnAllianceClick()
     if not AtlasTW.Quest.UI_Main then
-        return print("AtlasTW.Quest.OnAllianceClick: Quest UI not fully loaded.")
+        return PrintA("AtlasTW.Quest.OnAllianceClick: Quest UI not fully loaded.")
     end
 	AtlasTW.isHorde = false
     AtlasTW.Faction = "Alliance"
@@ -459,7 +459,7 @@ end
 ---
 function AtlasTW.Quest.OnHordeClick()
     if not AtlasTW.Quest.UI_Main then
-        return print("AtlasTW.Quest.OnHordeClick: Quest UI not fully loaded.")
+        return PrintA("AtlasTW.Quest.OnHordeClick: Quest UI not fully loaded.")
     end
 	AtlasTW.isHorde = true
     AtlasTW.Faction = "Horde"
@@ -526,6 +526,6 @@ function AtlasTW.Quest.OnEvent()
     if type(AtlasTWCharDB) == "table" then
         AtlasTW.Quest.LoadFinishedQuests()
     else
-        print(Colors.GREEN.."Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
+        PrintA(Colors.GREEN.."Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
     end
 end

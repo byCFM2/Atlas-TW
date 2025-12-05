@@ -178,7 +178,7 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 	end
 	--Check if dataID and dataSource are valid
  	if not dataID and not dataSource then
-		return print("AtlasTW.LootBrowserUI.ScrollBarLootUpdate: No dataID and No dataSource!")
+		return PrintA("AtlasTW.LootBrowserUI.ScrollBarLootUpdate: No dataID and No dataSource!")
 	end
 	-- Hide navigation buttons by default
 	_G["AtlasTWLootItemsFrame_BACK"]:Hide()
@@ -1120,7 +1120,6 @@ end
 --- @param frameName string Frame global name
 --- @param parentFrame table Parent frame
 --- @param debugName string|nil Optional name for debug prints
---- @return void
 --- @usage AtlasTW.LootBrowserUI.CreateLoadingFrame("AtlasTWLootScrollBarLoadingFrame", AtlasTWLootItemsFrame)
 ---
 function AtlasTW.LootBrowserUI.CreateLoadingFrame(frameName, parentFrame, debugName)
@@ -1165,7 +1164,7 @@ function AtlasTW.LootBrowserUI.CreateLoadingFrame(frameName, parentFrame, debugN
     end
     loadingFrame:Show()
     if debugName then
-        print("AtlasTWLoot: show " .. debugName .. " spinner")
+        PrintA("AtlasTWLoot: show " .. debugName .. " spinner")
     end
 end
 
@@ -1173,7 +1172,6 @@ end
 --- Hides a loading overlay frame
 --- @param frameName string Frame global name
 --- @param debugName string|nil Optional name for debug prints
---- @return void
 --- @usage AtlasTW.LootBrowserUI.HideLoadingFrame("AtlasTWLootScrollBarLoadingFrame")
 ---
 function AtlasTW.LootBrowserUI.HideLoadingFrame(frameName, debugName)
@@ -1181,14 +1179,13 @@ function AtlasTW.LootBrowserUI.HideLoadingFrame(frameName, debugName)
     if loadingFrame then
         loadingFrame:Hide()
         if debugName then
-            print("AtlasTWLoot: hide " .. debugName .. " spinner")
+            PrintA("AtlasTWLoot: hide " .. debugName .. " spinner")
         end
     end
 end
 
 ---
 --- Convenience wrapper to show scroll bar loading overlay
---- @return void
 --- @usage AtlasTW.LootBrowserUI.ShowScrollBarLoading()
 ---
 function AtlasTW.LootBrowserUI.ShowScrollBarLoading()
@@ -1197,7 +1194,6 @@ end
 
 ---
 --- Convenience wrapper to hide scroll bar loading overlay
---- @return void
 --- @usage AtlasTW.LootBrowserUI.HideScrollBarLoading()
 ---
 function AtlasTW.LootBrowserUI.HideScrollBarLoading()

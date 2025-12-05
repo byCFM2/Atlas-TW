@@ -125,7 +125,7 @@ function AtlasTW.OptionDefaultSettings()
 	AtlasTWCharDB["WishList"] = {}
 	AtlasTW.QuickLook.RefreshButtons()
 	AtlasTW.OptionsInit()
-	print(blue.."Atlas-TW"..": "..red..L["Default settings applied!"])
+	PrintA(red..L["Default settings applied!"])
 end
 
 --- Toggles the bottom loot panel visibility
@@ -224,10 +224,10 @@ function AtlasTW.OptionsCursorCoordsOnClick()
     if AtlasMapOverlay then
         if AtlasTWOptions.AtlasCursorCoords then
             AtlasMapOverlay:Show()
-            print("Atlas-TW: Cursor coordinates on map enabled")
+            PrintA("Cursor coordinates on map enabled")
         else
             AtlasMapOverlay:Hide()
-            print("Atlas-TW: Cursor coordinates on map disabled")
+            PrintA("Cursor coordinates on map disabled")
         end
     end
     if AtlasTWOptionCursorCoords then
@@ -243,7 +243,7 @@ end
 ---
 function AtlasTW.OptionsInit()
     if not AtlasTWOptions then
-        print(AtlasTW.Name..": Failed to initialize local references.")
+        PrintA("Failed to initialize local references.")
         return
     end
     if AtlasTWOptions.QuestWithAtlas then

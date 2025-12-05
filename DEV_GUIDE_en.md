@@ -63,7 +63,7 @@ AtlasOptions.lua (options handlers)
 - Toggle window:
   if AtlasTWFrame and AtlasTWFrame:IsShown() then AtlasTW.ToggleAtlas() else AtlasTW.ToggleAtlas() end
 - Force refresh after changing options:
-  AtlasTW.Refresh(); print("Atlas: refreshed")
+  AtlasTW.Refresh(); PrintA("Atlas: refreshed")
 - Apply live scale/alpha on slider move:
   AtlasTW.OptionsUpdateScale(); AtlasTW.OptionsUpdateAlpha()
 - Show quest panel and pick a quest:
@@ -83,7 +83,7 @@ AtlasOptions.lua (options handlers)
 - Inside long routines: block comments for key steps.
 
 10) Debugging
-- Place print("AtlasTW: message") in critical branches and event handlers.
+- Place PrintA("message") in critical branches and event handlers.
 
 11) SavedVariables
 - Account-wide: AtlasTWOptions
@@ -257,7 +257,7 @@ ItemDB (Loot/Data/ItemDB.lua)
 
 19) Examples
 - Enable safe links and refresh UI:
-  AtlasTWOptions.LootSafeLinks = true; AtlasTWOptions.LootAllLinks = false; AtlasTW.Refresh(); print("Atlas: links updated")
+  AtlasTWOptions.LootSafeLinks = true; AtlasTWOptions.LootAllLinks = false; AtlasTW.Refresh(); PrintA("Atlas: links updated")
 - Switch quest panel side and update buttons:
   AtlasTWOptions.QuestCurrentSide = "Right"; AtlasTW.Quest.Update();
 - Add a QuickLook for current category (rough sketch):
@@ -341,7 +341,7 @@ Use `AtlasTW.Localization:GetNamespace(namespaceName)`.
 Example:
 ```lua
 local L = AtlasTW.Localization:GetNamespace("UI")
-print(L["Options"])
+PrintA(L["Options"])
 ```
 
 Available Namespaces:

@@ -3,9 +3,6 @@
 --- Sets up SavedVariables, options, UISpecialFrames and integrations on VARIABLES_LOADED
 ---
 
--- Local references for performance and compatibility
-local _G = getfenv()
-
 local tinsert = table.insert
 
 ---

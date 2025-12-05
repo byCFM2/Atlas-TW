@@ -180,9 +180,9 @@ function AtlasTW.SlashCommand(msg)
 		AtlasTW.OptionsOnClick()
 	elseif msg == 'ver check' then
 		AtlasTW.VersionCheck.publishVersion()
-		print(format(L["Version check sent to %s"], AtlasTW.VersionCheck.channelName))
+		PrintA(format(L["Version check sent to %s"], AtlasTW.VersionCheck.channelName))
 	elseif msg == 'ver' then
-    	print(format(L["Version: %s"], AtlasTW.VersionCheck.getLocalVersionString()))
+    	PrintA(format(L["Version: %s"], AtlasTW.VersionCheck.getLocalVersionString()))
 	else
 		AtlasTW.ToggleAtlas()
 	end

@@ -305,7 +305,7 @@ end
 -- @function StartTimer
 -- @param delaySeconds number - Delay in seconds before executing callback
 -- @param callbackFunc function - Function to execute after delay
--- @usage StartTimer(2.0, function() print("Timer finished") end)
+-- @usage StartTimer(2.0, function() PrintA("Timer finished") end)
 ---
 function StartTimer(delaySeconds, callbackFunc)
     -- Create a unique frame for each timer

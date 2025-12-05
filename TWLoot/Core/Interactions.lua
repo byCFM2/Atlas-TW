@@ -277,7 +277,7 @@ end
 local function HandleSpellTooltip(elemID, anchor)
     local link = AtlasTW.SpellDB.craftspells[elemID]
     if not link then
-       -- print("AtlasTWLoot Error: Missing spell data for ID: " .. tostring(elemID))
+       -- PrintA("AtlasTWLoot Error: Missing spell data for ID: " .. tostring(elemID))
         return
     end
     ShowSpellTooltip(link, elemID, anchor)
@@ -294,7 +294,7 @@ local function HandleEnchantTooltip(spellID, anchor)
     if SetAutoloot and (SUPERWOW_VERSION and (tonumber(SUPERWOW_VERSION)) < 1.2) then
         enchantLink = "spell:" .. spellID
         if not messageShown then
-            print(BLUE .. "AtlasTWLoot" .. ": " .. WHITE .. "Old version of SuperWoW detected...")
+            PrintA("Old version of SuperWoW detected...")
             messageShown = true
         end
     end
@@ -343,13 +343,181 @@ local function FindBossIndexInScrollList(bossIdOrName)
 	for i = 1, table.getn(AtlasTW.ScrollList) do
 		local entry = AtlasTW.ScrollList[i]
 		if entry and (entry.id == bossIdOrName or entry.name == bossIdOrName) then
-			--print("FindBossIndexInScrollList: found boss " .. tostring(bossIdOrName) .. " at index " .. tostring(i))
+			--PrintA("FindBossIndexInScrollList: found boss " .. tostring(bossIdOrName) .. " at index " .. tostring(i))
 			return i
 		end
 	end
 
-	--print("FindBossIndexInScrollList: boss " .. tostring(bossIdOrName) .. " not found in ScrollList")
+	--PrintA("FindBossIndexInScrollList: boss " .. tostring(bossIdOrName) .. " not found in ScrollList")
 	return nil
+end
+
+---
+--- Builds the sourcePage value for adding items to WishList
+--- Handles both regular boss pages and menu pages (where StoredElement may be a table)
+--- @param dataID string|table The current StoredElement (boss name, table key, or menu table)
+--- @param instanceKey string|nil The current StoredMenu (instance key or menu function name)
+--- @return string|nil The constructed sourcePage, or nil if unable to determine
+--- @usage local srcPage = BuildSourcePage("Ragnaros", "MoltenCore") -- returns "Ragnaros|MoltenCore"
+---
+local function BuildSourcePage(dataID, instanceKey)
+	-- Case 1: Menu page - StoredElement is a table with menuName
+	-- This happens when viewing the menu listing, not a specific crafting page
+	if type(dataID) == "table" and dataID.menuName then
+		-- When on a menu page, instanceKey contains the menu function name
+		-- We cannot construct a meaningful sourcePage from here because
+		-- the user is viewing a menu, not a specific loot page
+		return nil
+	end
+
+	-- Case 2: Both dataID and instanceKey are strings
+	if type(dataID) == "string" and type(instanceKey) == "string" then
+		-- Check if instanceKey is an INSTANCE key (found in InstanceData)
+		-- Instance keys are like "MoltenCore", "BlackwingLair", etc.
+		if AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[instanceKey] then
+			-- This is a boss page like "Ragnaros|MoltenCore"
+			return dataID.."|"..instanceKey
+		end
+		
+		-- instanceKey is NOT an instance - could be menu function name or craft page key
+		-- Check if instanceKey is a direct loot table key (craft page like "Leatherworking5")
+		if AtlasTWLoot_Data and AtlasTWLoot_Data[instanceKey] then
+			-- For craft pages, return just the table key
+			return instanceKey
+		end
+		
+		-- Check if dataID itself is a loot table key
+		if AtlasTWLoot_Data and AtlasTWLoot_Data[dataID] then
+			return dataID
+		end
+	end
+
+	-- Case 3: Direct loot table page (craft, sets, etc.) - dataID is string, no valid instanceKey
+	if type(dataID) == "string" and AtlasTWLoot_Data and AtlasTWLoot_Data[dataID] then
+		return dataID
+	end
+
+	return nil
+end
+
+---
+--- Unified navigation helper for navigating from WishList/SearchResult to source page
+--- Handles both menu pages (direct loot table keys) and boss pages (boss|instance format)
+--- @param sourcePage string The source page identifier (can be "bossName|instanceKey" or just "lootTableKey")
+--- @return boolean True if navigation was successful, false otherwise
+--- @usage local success = NavigateFromSourcePage("Alchemy1") -- Navigate to crafting page
+---
+local function NavigateFromSourcePage(sourcePage)
+	if not sourcePage or sourcePage == "" then
+		return false
+	end
+
+	-- First check: Is this a direct loot table key (craft page, menu page, etc) without the | delimiter?
+	-- This handles menu pages like crafting, sets, etc.
+	if not string.find(sourcePage, "|") then
+		if AtlasTW.DataResolver.IsLootTableAvailable(sourcePage) then
+			AtlasTWLootItemsFrame.StoredElement = sourcePage
+			AtlasTWLootItemsFrame.StoredMenu = nil
+			AtlasTWLootItemsFrame.activeElement = nil
+			AtlasTWLootItemsFrame:Show()
+			AtlasTW.LootBrowserUI.ShowScrollBarLoading()
+			local lootTable = AtlasTWLoot_Data[sourcePage] or AtlasTW.DataResolver.GetLootByElemName(sourcePage)
+			AtlasTW.LootCache.CacheAllItems(lootTable, function()
+				AtlasTW.LootBrowserUI.HideScrollBarLoading()
+				AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+			end)
+			return true
+		end
+		return false
+	end
+
+	-- Second check: Parse boss|instance format
+	local bossName, instanceKey = AtlasTW.LootUtils.Strsplit("|", sourcePage)
+	-- Normalize Strsplit result (old Lua sometimes returns tables)
+	if type(bossName) == "table" then
+		if not instanceKey then instanceKey = bossName[2] end
+		bossName = bossName[1]
+	end
+	if type(instanceKey) == "table" then instanceKey = instanceKey[1] end
+
+	-- Check if we have valid data
+	if not bossName or not instanceKey then
+		return false
+	end
+
+	-- Try to get loot data
+	local hasLoot = AtlasTW.DataResolver.GetLootByElemName and AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
+
+	-- Fallback: if instanceKey turned out to be display name, not key - convert to key
+	if not hasLoot and instanceKey and AtlasTW and AtlasTW.InstanceData and not AtlasTW.InstanceData[instanceKey] then
+		for k, v in pairs(AtlasTW.InstanceData) do
+			if v and v.Name == instanceKey then
+				instanceKey = k
+				break
+			end
+		end
+		if bossName and instanceKey then
+			hasLoot = AtlasTW.DataResolver.GetLootByElemName and AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
+		end
+	end
+
+	if not hasLoot then
+		return false
+	end
+
+	-- Set target boss and instance
+	AtlasTWLootItemsFrame.StoredElement = bossName
+	AtlasTWLootItemsFrame.StoredMenu = instanceKey
+
+	-- Switch AtlasTW dropdown lists to needed instance
+	if AtlasTW and AtlasTW.DropDowns and AtlasTWOptions then
+		local function FindAndSet(instKey)
+			if not (AtlasTW and AtlasTW.DropDowns and instKey) then return false end
+			local ddCount = table.getn(AtlasTW.DropDowns)
+			for typeIndex = 1, ddCount do
+				local dropDownData = AtlasTW.DropDowns[typeIndex]
+				if type(dropDownData) == "table" then
+					for zoneIndex = 1, table.getn(dropDownData) do
+						if dropDownData[zoneIndex] == instKey then
+							AtlasTWOptions.AtlasType = typeIndex
+							AtlasTWOptions.AtlasZone = zoneIndex
+							AtlasTW.Refresh()
+							AtlasTW.FrameDropDownTypeOnShow()
+							AtlasTW.FrameDropDownOnShow()
+							return true
+						end
+					end
+				end
+			end
+			return false
+		end
+		if not FindAndSet(instanceKey) then
+			if AtlasTW.PopulateDropdowns then
+				AtlasTW.PopulateDropdowns()
+				FindAndSet(instanceKey)
+			end
+		end
+	end
+
+	-- Highlight boss in left list
+	local bossIndex = FindBossIndexInScrollList(bossName)
+	if bossIndex then
+		AtlasTWLootItemsFrame.activeElement = bossIndex
+		AtlasTW.LootBrowserUI.ScrollBarUpdate()
+	else
+		AtlasTWLootItemsFrame.activeElement = nil
+	end
+
+	-- Cache entire page before updating
+	AtlasTWLootItemsFrame:Show()
+	AtlasTW.LootBrowserUI.ShowScrollBarLoading()
+	local lootTable = AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
+	AtlasTW.LootCache.CacheAllItems(lootTable, function()
+		AtlasTW.LootBrowserUI.HideScrollBarLoading()
+		AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+	end)
+
+	return true
 end
 
 ---
@@ -471,96 +639,12 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemid))
 			else
 			-- Pass boss and instance context for correct categorization in WishList
-			local srcPage = nil
-			if dataID and instanceKeyClick then
-				srcPage = dataID.."|"..instanceKeyClick
-			elseif dataID and AtlasTW.DataResolver.IsLootTableAvailable and AtlasTW.DataResolver.IsLootTableAvailable(dataID) then
-				-- Craft/set/other loot table page without instanceKey
-				srcPage = dataID
-			end
+			local srcPage = BuildSourcePage(dataID, instanceKeyClick)
 				AtlasTWLoot_AddToWishlist(this.itemID, dataID, instanceKeyClick, "item", srcPage)
 		end
-		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
-			local bossName, instanceKey = AtlasTW.LootUtils.Strsplit("|", this.sourcePage)
-			-- Normalize Strsplit result (old Lua sometimes returns tables)
-			if type(bossName) == "table" then bossName = bossName[1] end
-			if type(instanceKey) == "table" then instanceKey = instanceKey[1] end
-			local hasLoot = bossName and instanceKey and AtlasTW.DataResolver.GetLootByElemName and AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
-			-- Fallback: if instanceKey turned out to be display name, not key - convert to key
-			if not hasLoot and instanceKey and AtlasTW and AtlasTW.InstanceData and not AtlasTW.InstanceData[instanceKey] then
-				for k, v in pairs(AtlasTW.InstanceData) do
-					if v and v.Name == instanceKey then
-						instanceKey = k
-						break
-					end
-				end
-				if bossName and instanceKey then
-					hasLoot = AtlasTW.DataResolver.GetLootByElemName and AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
-				end
-			end
-			if hasLoot then
-				-- Set target boss and instance
-				AtlasTWLootItemsFrame.StoredElement = bossName
-				AtlasTWLootItemsFrame.StoredMenu = instanceKey
-				-- Switch AtlasTW dropdown lists to needed instance
-				if AtlasTW and AtlasTW.DropDowns and AtlasTWOptions then
-					local function FindAndSet(instKey)
-						if not (AtlasTW and AtlasTW.DropDowns and instKey) then return false end
-						local ddCount = table.getn(AtlasTW.DropDowns)
-						for typeIndex = 1, ddCount do
-							local dropDownData = AtlasTW.DropDowns[typeIndex]
-							if type(dropDownData) == "table" then
-								for zoneIndex = 1, table.getn(dropDownData) do
-									if dropDownData[zoneIndex] == instKey then
-										AtlasTWOptions.AtlasType = typeIndex
-										AtlasTWOptions.AtlasZone = zoneIndex
-										AtlasTW.Refresh()
-										AtlasTW.FrameDropDownTypeOnShow()
-										AtlasTW.FrameDropDownOnShow()
-										return true
-									end
-								end
-							end
-						end
-						return false
-					end
-					if not FindAndSet(instanceKey) then
-						if AtlasTW.PopulateDropdowns then
-							AtlasTW.PopulateDropdowns()
-							FindAndSet(instanceKey)
-						end
-					end
-				end
-				-- Highlight boss in left list
-				local bossIndex = FindBossIndexInScrollList(bossName)
-				if bossIndex then
-					AtlasTWLootItemsFrame.activeElement = bossIndex
-					AtlasTW.LootBrowserUI.ScrollBarUpdate()
-				else
-					AtlasTWLootItemsFrame.activeElement = nil
-				end
-				-- Cache entire page before updating
-				AtlasTWLootItemsFrame:Show()
-				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
-				local lootTable = AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
-				AtlasTW.LootCache.CacheAllItems(lootTable, function()
-					AtlasTW.LootBrowserUI.HideScrollBarLoading()
-					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
-				end)
-			elseif dataID ~= "SearchResult" and dataID ~= "WishList" and AtlasTW.DataResolver.IsLootTableAvailable(this.sourcePage) then
-				-- sourcePage contains only table key (e.g., craft page)
-				AtlasTWLootItemsFrame.StoredElement = this.sourcePage
-				AtlasTWLootItemsFrame.StoredMenu = nil
-				AtlasTWLootItemsFrame.activeElement = nil
-				-- Cache entire page before updating
-				AtlasTWLootItemsFrame:Show()
-				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
-				local lootTable = AtlasTWLoot_Data[this.sourcePage] or AtlasTW.DataResolver.GetLootByElemName(this.sourcePage)
-				AtlasTW.LootCache.CacheAllItems(lootTable, function()
-					AtlasTW.LootBrowserUI.HideScrollBarLoading()
-					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
-				end)
-			end
+		elseif (dataID == "SearchResult" or dataID == "WishList") then
+			-- Use unified navigation helper
+			NavigateFromSourcePage(this.sourcePage)
 		elseif this.container and arg1 == "LeftButton" then
 			AtlasTWLoot_ShowContainerFrame()
 		end
@@ -574,78 +658,14 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(this.elemID))
 			else
 				-- Pass boss and instance context for correct categorization in WishList
-				local srcPage = nil
-				if dataID and instanceKeyClick then
-					srcPage = dataID.."|"..instanceKeyClick
-				elseif dataID and AtlasTW.DataResolver.IsLootTableAvailable and AtlasTW.DataResolver.IsLootTableAvailable(dataID) then
-					-- Craft/set/other loot table page without instanceKey
-					srcPage = dataID
-				end
+				local srcPage = BuildSourcePage(dataID, instanceKeyClick)
 				AtlasTWLoot_AddToWishlist(this.elemID, dataID, instanceKeyClick, "enchant", srcPage)
 			end
 		elseif IsControlKeyDown() then
 			DressUpItemLink("item:"..this.itemID..":0:0:0")
-		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
-			local bossName, instanceKey = AtlasTW.LootUtils.Strsplit("|", this.sourcePage)
-			-- Normalize Strsplit result
-			if type(bossName) == "table" then bossName = bossName[1] end
-			if type(instanceKey) == "table" then instanceKey = instanceKey[1] end
-			local hasLoot = bossName and instanceKey and AtlasTW.DataResolver.GetLootByElemName and AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
-			if not hasLoot and instanceKey and AtlasTW and AtlasTW.InstanceData and not AtlasTW.InstanceData[instanceKey] then
-				for k, v in pairs(AtlasTW.InstanceData) do
-					if v and v.Name == instanceKey then
-						instanceKey = k
-						break
-					end
-				end
-				if bossName and instanceKey then
-					hasLoot = AtlasTW.DataResolver.GetLootByElemName and AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
-				end
-			end
-			if hasLoot then
-				AtlasTWLootItemsFrame.StoredElement = bossName
-				AtlasTWLootItemsFrame.StoredMenu = instanceKey
-				if AtlasTW and AtlasTW.DropDowns and AtlasTWOptions then
-					for typeIndex, dropDownData in pairs(AtlasTW.DropDowns) do
-						for zoneIndex, zoneKey in pairs(dropDownData) do
-							if zoneKey == instanceKey then
-								AtlasTWOptions.AtlasType = typeIndex
-								AtlasTWOptions.AtlasZone = zoneIndex
-								AtlasTW.Refresh()
-								AtlasTW.FrameDropDownTypeOnShow()
-								AtlasTW.FrameDropDownOnShow()
-								break
-							end
-						end
-					end
-				end
-				local bossIndex = FindBossIndexInScrollList(bossName)
-				if bossIndex then
-					AtlasTWLootItemsFrame.activeElement = bossIndex
-					AtlasTW.LootBrowserUI.ScrollBarUpdate()
-				else
-					AtlasTWLootItemsFrame.activeElement = nil
-				end
-				-- Cache entire page before updating
-				AtlasTWLootItemsFrame:Show()
-				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
-				local lootTable = AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
-				AtlasTW.LootCache.CacheAllItems(lootTable, function()
-					AtlasTW.LootBrowserUI.HideScrollBarLoading()
-					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
-				end)
-			elseif AtlasTW.DataResolver.IsLootTableAvailable(this.sourcePage) then
-				AtlasTWLootItemsFrame.StoredElement = this.sourcePage
-				AtlasTWLootItemsFrame.StoredMenu = nil
-				AtlasTWLootItemsFrame.activeElement = nil
-				AtlasTWLootItemsFrame:Show()
-				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
-				local lootTable = AtlasTWLoot_Data[this.sourcePage] or AtlasTW.DataResolver.GetLootByElemName(this.sourcePage)
-				AtlasTW.LootCache.CacheAllItems(lootTable, function()
-					AtlasTW.LootBrowserUI.HideScrollBarLoading()
-					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
-				end)
-			end
+		elseif (dataID == "SearchResult" or dataID == "WishList") then
+			-- Use unified navigation helper
+			NavigateFromSourcePage(this.sourcePage)
 		elseif this.container and arg1 == "LeftButton" then
 			AtlasTWLoot_ShowContainerFrame()
 		end
@@ -701,81 +721,14 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(this.elemID))
 			else
 				-- Pass boss and instance context for correct categorization in WishList
-				local srcPage = nil
-				if dataID and instanceKeyClick then
-					srcPage = dataID.."|"..instanceKeyClick
-				elseif dataID and AtlasTW.DataResolver.IsLootTableAvailable and AtlasTW.DataResolver.IsLootTableAvailable(dataID) then
-					-- Craft/set/other loot table page without instanceKey
-					srcPage = dataID
-				end
+				local srcPage = BuildSourcePage(dataID, instanceKeyClick)
 				AtlasTWLoot_AddToWishlist(this.elemID, dataID, instanceKeyClick, "spell", srcPage)
 			end
 		elseif IsControlKeyDown() then
 			DressUpItemLink("item:"..this.itemID..":0:0:0")
-		elseif (dataID == "SearchResult" or dataID == "WishList") and this.sourcePage then
-			local bossName, instanceKey = AtlasTW.LootUtils.Strsplit("|", this.sourcePage)
-			-- Normalize Strsplit result: if table of parts returned, extract [1] and [2]
-			if type(bossName) == "table" then
-				if not instanceKey then instanceKey = bossName[2] end
-				bossName = bossName[1]
-			end
-			if type(instanceKey) == "table" then instanceKey = instanceKey[1] end
-			local hasLoot = bossName and instanceKey and AtlasTW.DataResolver.GetLootByElemName and AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
-			if not hasLoot and instanceKey and AtlasTW and AtlasTW.InstanceData and not AtlasTW.InstanceData[instanceKey] then
-				for k, v in pairs(AtlasTW.InstanceData) do
-					if v and v.Name == instanceKey then
-						instanceKey = k
-						break
-					end
-				end
-				if bossName and instanceKey then
-					hasLoot = AtlasTW.DataResolver.GetLootByElemName and AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
-				end
-			end
-			if hasLoot then
-				AtlasTWLootItemsFrame.StoredElement = bossName
-				AtlasTWLootItemsFrame.StoredMenu = instanceKey
-				if AtlasTW and AtlasTW.DropDowns and AtlasTWOptions then
-					for typeIndex, dropDownData in pairs(AtlasTW.DropDowns) do
-						for zoneIndex, zoneKey in pairs(dropDownData) do
-							if zoneKey == instanceKey then
-								AtlasTWOptions.AtlasType = typeIndex
-								AtlasTWOptions.AtlasZone = zoneIndex
-								AtlasTW.Refresh()
-								AtlasTW.FrameDropDownTypeOnShow()
-								AtlasTW.FrameDropDownOnShow()
-								break
-							end
-						end
-					end
-				end
-				local bossIndex = FindBossIndexInScrollList(bossName)
-				if bossIndex then
-					AtlasTWLootItemsFrame.activeElement = bossIndex
-					AtlasTW.LootBrowserUI.ScrollBarUpdate()
-				else
-					AtlasTWLootItemsFrame.activeElement = nil
-				end
-				-- Cache entire page before updating
-				AtlasTWLootItemsFrame:Show()
-				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
-				local lootTable = AtlasTW.DataResolver.GetLootByElemName(bossName, instanceKey)
-				AtlasTW.LootCache.CacheAllItems(lootTable, function()
-					AtlasTW.LootBrowserUI.HideScrollBarLoading()
-					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
-				end)
-			elseif AtlasTW.DataResolver.IsLootTableAvailable(this.sourcePage) then
-				AtlasTWLootItemsFrame.StoredElement = this.sourcePage
-				AtlasTWLootItemsFrame.StoredMenu = nil
-				AtlasTWLootItemsFrame.activeElement = nil
-				AtlasTWLootItemsFrame:Show()
-				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
-				local lootTable = AtlasTWLoot_Data[this.sourcePage] or AtlasTW.DataResolver.GetLootByElemName(this.sourcePage)
-				AtlasTW.LootCache.CacheAllItems(lootTable, function() 
-					AtlasTW.LootBrowserUI.HideScrollBarLoading()
-					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
-				end)
-			end
+		elseif (dataID == "SearchResult" or dataID == "WishList") then
+			-- Use unified navigation helper
+			NavigateFromSourcePage(this.sourcePage)
 		elseif this.container and arg1 == "LeftButton" then
 			AtlasTWLoot_ShowContainerFrame()
 		end
@@ -968,7 +921,7 @@ function AtlasTW.Interactions.NavButton_OnClick()
 	AtlasTWLootScrollBarScrollBar:SetValue(0)
 
 	if not this or not this.lootpage then
-		return print("NavButton_OnClick: out - no this or lootpage")
+		return PrintA("NavButton_OnClick: out - no this or lootpage")
 	end
 
 	-- Handle "Back" button to parent menu (case insensitive + fallback from title)
@@ -976,7 +929,7 @@ function AtlasTW.Interactions.NavButton_OnClick()
 		local lpLower = string.lower(this.lootpage or "")
 		if lpLower == "backtomenu" then
 			local targetMenu = AtlasTWLootItemsFrame.StoredBackMenuName or this.title
-			--print("Return to menu: "..tostring(targetMenu))
+			--PrintA("Return to menu: "..tostring(targetMenu))
 			if targetMenu then
 				AtlasTWLoot_OpenMenu(targetMenu)
 				AtlasTWLootItemsFrame.StoredBackMenuName = nil
@@ -1104,6 +1057,7 @@ end
 function AtlasTW.Interactions.ContainerItem_OnClick(arg1)
     local itemID = this:GetID()
     local name, link, quality, _, _, _, _, _, tex = GetItemInfo(itemID)
+	if not name then return end
     local _, _, _, color = GetItemQualityColor(quality)
     tex = string.gsub(tex, "Interface\\Icons\\", "")
 
@@ -1114,6 +1068,14 @@ function AtlasTW.Interactions.ContainerItem_OnClick(arg1)
             elseif ChatFrameEditBox:IsVisible() then
                 ChatFrameEditBox:Insert("\124"..string.sub(color, 2).."|Hitem:"..itemID.."\124h["..name.."]|h|r")
             end
+		else
+			if WIM_EditBoxInFocus then
+				WIM_EditBoxInFocus:Insert("["..name.."]")
+			elseif ChatFrameEditBox:IsVisible() then
+				ChatFrameEditBox:Insert("["..name.."]")
+			else
+				AtlasTW.Interactions.ChatSayItemReagents(this.itemID, nil, name, true)
+			end
         end
     elseif IsControlKeyDown() and name then
         DressUpItemLink(link)
@@ -1126,13 +1088,7 @@ function AtlasTW.Interactions.ContainerItem_OnClick(arg1)
         elseif ElemName == "SearchResult" then
             AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemID))
         else
-            local srcPage = nil
-            if ElemName and instKey then
-                srcPage = ElemName.."|"..instKey
-            elseif ElemName and AtlasTW.DataResolver.IsLootTableAvailable and AtlasTW.DataResolver.IsLootTableAvailable(ElemName) then
-                -- Craft/set/other loot table page without instanceKey
-                srcPage = ElemName
-            end
+            local srcPage = BuildSourcePage(ElemName, instKey)
             AtlasTWLoot_AddToWishlist(itemID, ElemName, instKey, "item", srcPage)
         end
     end

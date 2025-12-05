@@ -77,7 +77,7 @@ end
 -- @param dataSource table Loot data to cache
 -- @param callback function Optional callback to invoke after caching completes
 -- @return void
--- @usage AtlasTW.LootCache.CacheAllItems(lootData, function() print("Caching complete") end)
+-- @usage AtlasTW.LootCache.CacheAllItems(lootData, function() PrintA("Caching complete") end)
 -- @note Prefer this wrapper over direct CacheAllItems to get fallback and diagnostics in non-Core callers.
 ---
 function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
@@ -163,7 +163,7 @@ function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
     -- If timers are unavailable, fallback to force cache synchronously
     if type(StartTimer) ~= "function" then
         if not ATLASTWLOOT_DEBUG_FALLBACK_CACHE_REPORTED then
-            print("Atlas-TW: StartTimer not found, using fallback force cache")
+            PrintA("StartTimer not found, using fallback force cache")
             ATLASTWLOOT_DEBUG_FALLBACK_CACHE_REPORTED = true
         end
         for i = 1, table.getn(uncachedItems) do

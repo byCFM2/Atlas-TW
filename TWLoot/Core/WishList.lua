@@ -462,9 +462,9 @@ function AtlasTWLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, ty
 	end
 	if isDuplicate then
 		if name and name ~= "" then
-			print(name..L[" already in the WishList!"])
+			PrintA(name..L[" already in the WishList!"])
 		else
-			print(tostring(actualItemID)..L[" already in the WishList!"])
+			PrintA(tostring(actualItemID)..L[" already in the WishList!"])
 		end
 		return
 	end
@@ -474,9 +474,9 @@ function AtlasTWLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, ty
 
 	-- Chat message about addition
 	if name and name ~= "" then
-		print(name..L[" added to the WishList."])
+		PrintA(name..L[" added to the WishList."])
 	else
-		print(tostring(actualItemID)..L[" added to the WishList."])
+		PrintA(tostring(actualItemID)..L[" added to the WishList."])
 	end
 
 	-- Invalidate category cache for wish list
@@ -750,12 +750,12 @@ function AtlasTWLoot_DeleteFromWishList(elemID)
 
 	if removed then
 		if removedName and removedName ~= "" then
-			print(removedName..L[" deleted from the WishList."])
+			PrintA(removedName..L[" deleted from the WishList."])
 		else
-			print(tostring(elemID)..L[" deleted from the WishList."])
+			PrintA(tostring(elemID)..L[" deleted from the WishList."])
 		end
 	else
-		print(tostring(elemID)..L[" not found in the WishList."])
+		PrintA(tostring(elemID)..L[" not found in the WishList."])
 	end
 
 	-- Update display

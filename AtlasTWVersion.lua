@@ -112,7 +112,7 @@ local function checkRemoteVersion(remoteVersion)
     VC.nextPublishAt = nil -- Stop publishing
     AtlasTWVersionFrame:UnregisterEvent("CHAT_MSG_CHANNEL") -- Stop listening for version messages
     AtlasTWVersionFrame:SetScript('OnUpdate', nil) -- Stop periodic broadcasts
-    print(format(L["NewVersionAvailableFmt"], Colors.RED..L["Link"]))
+    PrintA(format(L["NewVersionAvailableFmt"], Colors.RED..L["Link"]))
     AtlasTW.UpdateMarkerRefresh()
   end
 end
