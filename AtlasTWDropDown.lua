@@ -373,13 +373,3 @@ end
 function AtlasTW_DropDownGetLayout(sortType)
     return AtlasTWDropDown:GetLayout(sortType)
 end
-
---- Manually rebuilds dropdown layouts and data structures
---- Clears existing layouts and rebuilds from scratch
---- @usage AtlasTW_DropDownRebuild() -- call after data changes
-
-function AtlasTW_DropDownRebuild()
-    AtlasTWDropDown.Layouts, AtlasTWDropDown.LayoutOrder = nil, nil
-    BuildDungeons()
-    AtlasTWDropDown:EnsureLayouts()
-end
