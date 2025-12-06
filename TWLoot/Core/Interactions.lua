@@ -344,7 +344,8 @@ local function FindBossIndexInScrollList(bossIdOrName)
 		return nil
 	end
 
-	for i = 1, table.getn(AtlasTW.ScrollList) do
+	local n = table.getn(AtlasTW.ScrollList)
+	for i = 1, n do
 		local entry = AtlasTW.ScrollList[i]
 		if entry and (entry.id == bossIdOrName or entry.name == bossIdOrName) then
 			--PrintA("FindBossIndexInScrollList: found boss " .. tostring(bossIdOrName) .. " at index " .. tostring(i))
@@ -481,7 +482,8 @@ local function NavigateFromSourcePage(sourcePage)
 			for typeIndex = 1, ddCount do
 				local dropDownData = AtlasTW.DropDowns[typeIndex]
 				if type(dropDownData) == "table" then
-					for zoneIndex = 1, table.getn(dropDownData) do
+					local n = table.getn(dropDownData)
+					for zoneIndex = 1, n do
 						if dropDownData[zoneIndex] == instKey then
 							AtlasTWOptions.AtlasType = typeIndex
 							AtlasTWOptions.AtlasZone = zoneIndex
@@ -833,7 +835,8 @@ function AtlasTW.Interactions.MenuItem_OnClick(button)
                 for typeIndex = 1, ddCount do
                     local dropDownData = AtlasTW.DropDowns[typeIndex]
                     if type(dropDownData) == "table" then
-                        for zoneIndex = 1, table.getn(dropDownData) do
+                        local n = table.getn(dropDownData)
+                        for zoneIndex = 1, n do
                             if dropDownData[zoneIndex] == instKey then
                                 AtlasTWOptions.AtlasType = typeIndex
                                 AtlasTWOptions.AtlasZone = zoneIndex

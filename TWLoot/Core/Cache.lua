@@ -90,7 +90,8 @@ function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
 
     -- Collect all item IDs for caching
     local itemsToCache = {}
-    for i = 1, table.getn(dataSource) do
+    local n = table.getn(dataSource)
+    for i = 1, n do
         local item = dataSource[i]
         local itemID = nil
         if item then
@@ -125,7 +126,8 @@ function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
 
     -- Memoization: skip repeated sets
     local itemsCopy = {}
-    for i = 1, table.getn(itemsToCache) do itemsCopy[i] = itemsToCache[i] end
+    local n = table.getn(itemsToCache)
+    for i = 1, n do itemsCopy[i] = itemsToCache[i] end
     local setHash = CreateItemSetHash(itemsCopy)
     if ATLASTWLOOT_CHECKED_SETS[setHash] then
         if callback then callback() end
@@ -166,7 +168,8 @@ function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
             PrintA("StartTimer not found, using fallback force cache")
             ATLASTWLOOT_DEBUG_FALLBACK_CACHE_REPORTED = true
         end
-        for i = 1, table.getn(uncachedItems) do
+        local m = table.getn(uncachedItems)
+        for i = 1, m do
             AtlasTW.LootCache.ForceCacheItem(uncachedItems[i], 1)
         end
         if callback then callback() end

@@ -133,7 +133,8 @@ local function GetScaledCursorPosition()
 end
 
 local function StartCounting(self, levelNum)
-	for i = levelNum, table.getn(levels) do
+	local n = table.getn(levels)
+	for i = levelNum, n do
 		if levels[i] then
 			levels[i].count = 3
 		end
@@ -269,8 +270,6 @@ local function CheckSize(self, level)
 end
 
 local Open
-local OpenSlider
-local OpenEditBox
 local Refresh
 local Clear
 local function ReleaseButton(self, level, index)
@@ -318,9 +317,6 @@ local function Scroll(self, level, down)
 	end
 end
 
-local sliderFrame
-local editBoxFrame
-
 local numButtons = 0
 local function AcquireButton(self, level)
 	if not levels[level] then
@@ -357,19 +353,9 @@ local function AcquireButton(self, level)
 		radioHighlight:Hide()
 		button:SetScript("OnEnter", function()
 			local this = this
-			if (sliderFrame and sliderFrame:IsShown() and sliderFrame.mouseDown and sliderFrame.level == this.level.num + 1) or (editBoxFrame and editBoxFrame:IsShown() and editBoxFrame.mouseDown and editBoxFrame.level == this.level.num + 1) then
-				for i = 1, this.level.num do
-					Refresh(self, levels[i])
-				end
-				return
-			end
 			self:Close(this.level.num + 1)
 			if not this.disabled then
-				if this.hasSlider then
-					OpenSlider(self, this)
-				elseif this.hasEditBox then
-					OpenEditBox(self, this)
-				elseif this.hasArrow then
+				if this.hasArrow then
 					Open(self, this, nil, this.level.num + 1, this.value)
 				end
 			end
@@ -432,7 +418,7 @@ local function AcquireButton(self, level)
 					ColorPickerFrame.func = function()
 						if func then
 							local r,g,b = ColorPickerFrame:GetColorRGB()
-							local a = hasOpacity and 1 - OpacitySliderFrame:GetValue() or nil
+							local a = hasOpacity or nil
 							if a1 == nil then
 								func(r, g, b, a)
 							elseif a2 == nil then
@@ -518,8 +504,9 @@ local function AcquireButton(self, level)
 		texture:SetPoint("CENTER", colorSwatch, "CENTER")
 		colorSwatch:SetPoint("RIGHT", button, "RIGHT", 0, 0)
 	else
-		button = buttons[table.getn(buttons)]
-		table.remove(buttons, table.getn(buttons))
+		local n = table.getn(buttons)
+		button = buttons[n]
+		table.remove(buttons, n)
 	end
 	button:ClearAllPoints()
 	button:SetParent(level)
@@ -527,10 +514,11 @@ local function AcquireButton(self, level)
 	button:SetFrameLevel(level:GetFrameLevel() + 1)
 	button:SetPoint("LEFT", level, "LEFT", 10, 0)
 	button:SetPoint("RIGHT", level, "RIGHT", -10, 0)
-	if table.getn(level.buttons) == 0 then
+	local n = table.getn(level.buttons)
+	if n == 0 then
 		button:SetPoint("TOP", level, "TOP", 0, -10)
 	else
-		button:SetPoint("TOP", level.buttons[table.getn(level.buttons)], "BOTTOM", 0, 0)
+		button:SetPoint("TOP", level.buttons[n], "BOTTOM", 0, 0)
 	end
 	button.text:SetPoint("LEFT", button, "LEFT", 24, 0)
 	button:Show()
@@ -569,7 +557,8 @@ end
 local numLevels = 0
 local function AcquireLevel(self, level)
 	if not levels[level] then
-		for i = table.getn(levels) + 1, level, -1 do
+		local n = table.getn(levels) + 1
+		for i = n, level, -1 do
 			local i = i
 			numLevels = numLevels + 1
 			local frame = CreateFrame("Button", "Hewdrop20Level" .. numLevels, nil)
@@ -764,12 +753,7 @@ function Open(self, parent, func, level, value, point, relativePoint, cursorX, c
 		baseFunc = func
 	end
 	levels[level].value = value
---	levels[level].parentText = parent.text and parent.text:GetText() or nil
---	levels[level].parentTooltipTitle = parent.tooltipTitle
---	levels[level].parentTooltipText = parent.tooltipText
---	levels[level].parentTooltipFunc = parent.tooltipFunc
 	if parent.arrow then
---		parent.arrow:SetVertexColor(0.2, 0.6, 0)
 		parent.arrow:SetHeight(24)
 		parent.arrow:SetWidth(24)
 	end
@@ -826,7 +810,7 @@ function Open(self, parent, func, level, value, point, relativePoint, cursorX, c
 		elseif cursorX then
 			local left = frame:GetLeft()
 			local width = frame:GetWidth()
-			local curX, curY = GetScaledCursorPosition()
+			local curX, _ = GetScaledCursorPosition()
 			frame:ClearAllPoints()
 			relativePoint = relativePoint or point
 			if point == "BOTTOM" or point == "TOP" then
@@ -987,7 +971,8 @@ end
 function Clear(self, level)
 	if level then
 		if level.buttons then
-			for i = table.getn(level.buttons), 1, -1 do
+			local n = table.getn(level.buttons)
+			for i = n, 1, -1 do
 				ReleaseButton(self, level, i)
 			end
 		end
@@ -1016,16 +1001,10 @@ function Hewdrop:Close(level)
 		for _,button in ipairs(buttons) do
 			button.arrow:SetWidth(16)
 			button.arrow:SetHeight(16)
---			button.arrow:SetVertexColor(1, 1, 1)
 		end
 	end
-	if sliderFrame and sliderFrame.level >= level then
-		sliderFrame:Hide()
-	end
-	if editBoxFrame and editBoxFrame.level >= level then
-		editBoxFrame:Hide()
-	end
-	for i = level, table.getn(levels) do
+	local n = table.getn(levels)
+	for i = level, n do
 		Clear(self, levels[level])
 		levels[level]:Hide()
 		levels[i]:ClearAllPoints()
@@ -1197,7 +1176,6 @@ function Hewdrop:AddLine(k1, v1, k2, v2, k3, v3, k4, v4, k5, v5, k6, v6, k7, v7,
 	button.arg4 = info.arg4
 	button.closeWhenClicked = info.closeWhenClicked
 	button.textHeight = info.textHeight or UIDROPDOWNMENU_DEFAULT_TEXT_HEIGHT or 10
-	local font,_ = button.text:GetFont()
 	button.text:SetFont(STANDARD_TEXT_FONT or "Fonts\\FRIZQT__.TTF", button.textHeight)
 	button:SetHeight(button.textHeight + 6)
 	button.text:SetPoint("RIGHT", button.arrow, (button.hasColorSwatch or button.hasArrow) and "LEFT" or "RIGHT")

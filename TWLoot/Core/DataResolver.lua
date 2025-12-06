@@ -337,7 +337,8 @@ function AtlasTW.DataResolver.GetMenuNavigation(current)
     end
 
     -- Scan all addon menus
-    for k = 1, table.getn(candidates) do
+    local n = table.getn(candidates)
+    for k = 1, n do
         local nav = findInMenu(candidates[k])
         if nav and (nav.Next_Page or nav.Prev_Page) then
             return nav

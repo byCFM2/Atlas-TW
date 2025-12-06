@@ -306,7 +306,8 @@ local function GenerateLayouts()
             local firstList = {}
             local secondList = {}
 
-            for i = 1, table.getn(allDungeons) do
+            local n = table.getn(allDungeons)
+            for i = 1, n do
                 if i <= splitIndex then
                     table.insert(firstList, allDungeons[i])
                 else

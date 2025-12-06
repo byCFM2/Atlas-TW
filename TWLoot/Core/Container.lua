@@ -50,7 +50,8 @@ function AtlasTWLoot_ShowContainerFrame()
 		lastSelectedButton = nil
 		return
 	end
-	for i = 1, table.getn(containerItems) do
+	local n = table.getn(containerItems)
+	for i = 1, n do
 		getglobal("AtlasTWLootContainerItem"..i):Hide()
 	end
 
