@@ -204,6 +204,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     --************************************************
     ["This item is not safe!"] = "¡Este objeto no es seguro!",
     ["Item not found in cache"] = "Objeto no encontrado en la caché",
+    ["The content patch isn't out yet"] = "El parche de contenido aún no ha salido",
     ["Old version of SuperWoW detected..."] = "Versión antigua de SuperWoW detectada...",
     ["Slot Bag"] = " - Bolsa",
     ["Various Locations"] = "Varias ubicaciones",
@@ -283,8 +284,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     --************************************************
     -- Instance Locations
     --************************************************
-    ["Showing all instances_1"] = "Mostrando todas las instancias_1",
-    ["Showing all instances_2"] = "Mostrando todas las instancias_2",
+    ["Instances"] = "Instancias",
 
     --************************************************
     -- Common Terms

@@ -241,7 +241,7 @@ function AtlasTW.PopulateDropdowns()
         for _,v in pairs(subcatItems) do
             table.insert(AtlasTW.DropDowns[n], v)
         end
-        if subcatOrder[n] ~= L["Showing all instances_1"] and subcatOrder[n] ~= L["Showing all instances_2"] and subcatOrder[n] ~= L["World"] then
+        if subcatOrder[n] ~= L["Instances"] and subcatOrder[n] ~= L["World"] then
             table.sort(AtlasTW.DropDowns[n], atlas_SortZonesAlpha)
         end
     end
@@ -273,8 +273,7 @@ local function atlasSwitchDD_Set(index)
 			end
 		end
 	end
-	AtlasTW.FrameDropDownTypeOnShow()
-	AtlasTW.FrameDropDownOnShow()
+	AtlasTW.UpdateDropdownLabels()
 	AtlasTW.Refresh()
 end
 
@@ -328,7 +327,16 @@ end
 --- @usage AtlasTW.Refresh() -- Called after changing maps or options
 ---
 function AtlasTW.Refresh()
-	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
+	-- Safety check for DropDowns table
+	local dropDownCategory = AtlasTW.DropDowns[AtlasTWOptions.AtlasType]
+	if not dropDownCategory then
+		return -- DropDowns not populated yet
+	end
+	local zoneID = dropDownCategory[AtlasTWOptions.AtlasZone]
+	if not zoneID then
+		return -- No zone selected
+	end
+
 	local data = AtlasTW.InstanceData
 	local base = {}
 
@@ -476,7 +484,7 @@ function AtlasTW.Refresh()
 			AtlasTWSwitchButton:SetText(L["Instance"])
 		end
 		AtlasTWSwitchButton:Show()
-		UIDropDownMenu_Initialize(AtlasTWSwitchDD, atlasSwitchDD_OnLoad)
+		-- Hewdrop menu is now opened on-demand in SwitchButtonOnClick
 	else
 		AtlasTWSwitchButton:Hide()
 	end
@@ -493,8 +501,8 @@ function AtlasTW.SwitchButtonOnClick()
 		--one link, so we can just go there right away
 		atlasSwitchDD_Set(1)
 	else
-		--more than one link, so it's dropdown menu time
-		ToggleDropDownMenu(1, nil, AtlasTWSwitchDD, "AtlasTWSwitchButton", 0, 0)
+		--more than one link, so use Hewdrop menu
+		AtlasTW.HewdropMenus:OpenSwitchMenu(AtlasTWSwitchButton, atlasTW_Ints_Ent_DropDown, atlasSwitchDD_Set)
 	end
 end
 
@@ -672,26 +680,22 @@ end
 
 ---
 --- Initializes and displays the map type dropdown menu
---- Sets up category dropdown with current selection and proper width
+--- Now uses Hewdrop - just updates button text label
 --- @return nil
 --- @usage Called automatically when dropdown is shown
 ---
 function AtlasTW.FrameDropDownTypeOnShow()
-	UIDropDownMenu_Initialize(AtlasTWFrameDropDownType, atlasFrameDropDownType_Initialize)
-	UIDropDownMenu_SetSelectedID(AtlasTWFrameDropDownType, AtlasTWOptions.AtlasType)
-	UIDropDownMenu_SetWidth(190, AtlasTWFrameDropDownType)
+	AtlasTW.UpdateDropdownLabels()
 end
 
 ---
 --- Initializes and displays the main instance dropdown menu
---- Sets up instance dropdown with current selection and proper width
+--- Now uses Hewdrop - just updates button text label
 --- @return nil
 --- @usage Called automatically when dropdown is shown
 ---
 function AtlasTW.FrameDropDownOnShow()
-	UIDropDownMenu_Initialize(AtlasTWFrameDropDown, atlasFrameDropDown_Initialize)
-	UIDropDownMenu_SetSelectedID(AtlasTWFrameDropDown, AtlasTWOptions.AtlasZone)
-	UIDropDownMenu_SetWidth(190, AtlasTWFrameDropDown)
+	AtlasTW.UpdateDropdownLabels()
 end
 
 ---
@@ -705,8 +709,7 @@ function AtlasTW.OnShow()
         atlasAutoSelect()
     end
 
-    AtlasTW.FrameDropDownTypeOnShow()
-    AtlasTW.FrameDropDownOnShow()
+    AtlasTW.UpdateDropdownLabels()
     AtlasTW.Refresh()
 
     --If a boss has been selected, show the loot frame

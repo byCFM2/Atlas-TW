@@ -97,19 +97,103 @@ do
     lockHighlight:SetAllPoints(lockButton)
     lockButton:SetHighlightTexture(lockHighlight)
 
-    -- Type dropdown
-    local dropDownType = CreateFrame("Button", "AtlasTWFrameDropDownType", atlasFrame, "UIDropDownMenuTemplate")
-    dropDownType:SetPoint("TOPLEFT", 60, -50)
+    -- Type dropdown (Hewdrop-based)
+    local dropDownType = CreateFrame("Button", "AtlasTWFrameDropDownType", atlasFrame)
+    dropDownType:SetWidth(210)
+    dropDownType:SetHeight(24)
+    dropDownType:SetPoint("TOPLEFT", 80, -55)
+
+    -- Background texture for dropdown button
+    local dropDownTypeBg = dropDownType:CreateTexture(nil, "BACKGROUND")
+    dropDownTypeBg:SetTexture("Interface\\Tooltips\\UI-Tooltip-Background")
+    dropDownTypeBg:SetVertexColor(0.1, 0.1, 0.1, 0.8)
+    dropDownTypeBg:SetAllPoints(dropDownType)
+--[[ 
+    -- Border texture
+    local dropDownTypeBorder = dropDownType:CreateTexture(nil, "BORDER")
+    dropDownTypeBorder:SetTexture("Interface\\Tooltips\\UI-Tooltip-Border")
+    dropDownTypeBorder:SetPoint("TOPLEFT", -3, 3)
+    dropDownTypeBorder:SetPoint("BOTTOMRIGHT", 3, -3) ]]
+
+    -- Text display for current selection
+    local dropDownTypeText = dropDownType:CreateFontString("AtlasTWFrameDropDownTypeText", "OVERLAY", "GameFontHighlightSmall")
+    dropDownTypeText:SetPoint("LEFT", dropDownType, "LEFT", 8, 0)
+    dropDownTypeText:SetPoint("RIGHT", dropDownType, "RIGHT", -20, 0)
+    dropDownTypeText:SetJustifyH("LEFT")
+
+    -- Arrow texture
+    local dropDownTypeArrow = dropDownType:CreateTexture(nil, "OVERLAY")
+    dropDownTypeArrow:SetTexture("Interface\\ChatFrame\\ChatFrameExpandArrow")
+    dropDownTypeArrow:SetWidth(16)
+    dropDownTypeArrow:SetHeight(16)
+    dropDownTypeArrow:SetPoint("RIGHT", dropDownType, "RIGHT", -2, 0)
+
+    -- Highlight texture
+    local dropDownTypeHighlight = dropDownType:CreateTexture(nil, "HIGHLIGHT")
+    dropDownTypeHighlight:SetTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
+    dropDownTypeHighlight:SetBlendMode("ADD")
+    dropDownTypeHighlight:SetAllPoints(dropDownType)
+
+    -- Label above dropdown
     local dropDownTypeLabel = dropDownType:CreateFontString("AtlasTWFrameDropDownTypeLabel", "BACKGROUND", "GameFontNormalSmall")
     dropDownTypeLabel:SetText(L["Select Category"])
-    dropDownTypeLabel:SetPoint("BOTTOMLEFT", dropDownType, "TOPLEFT", 21, 0)
+    dropDownTypeLabel:SetPoint("BOTTOMLEFT", dropDownType, "TOPLEFT", 0, 2)
 
-    -- Map dropdown
-    local dropDown = CreateFrame("Button", "AtlasTWFrameDropDown", atlasFrame, "UIDropDownMenuTemplate")
-    dropDown:SetPoint("LEFT", dropDownType, "RIGHT", 0, 0)
+    -- OnClick to open Hewdrop menu
+    dropDownType:SetScript("OnClick", function()
+        if AtlasTW.HewdropMenus:IsOpen(dropDownType) then
+            AtlasTW.HewdropMenus:Close()
+        else
+            AtlasTW.HewdropMenus:Close()
+            AtlasTW.HewdropMenus:OpenCategoryMenu(dropDownType)
+        end
+    end)
+
+    -- Map dropdown (Hewdrop-based)
+    local dropDown = CreateFrame("Button", "AtlasTWFrameDropDown", atlasFrame)
+    dropDown:SetWidth(210)
+    dropDown:SetHeight(24)
+    dropDown:SetPoint("LEFT", dropDownType, "RIGHT", 10, 0)
+
+    -- Background texture
+    local dropDownBg = dropDown:CreateTexture(nil, "BACKGROUND")
+    dropDownBg:SetTexture("Interface\\Tooltips\\UI-Tooltip-Background")
+    dropDownBg:SetVertexColor(0.1, 0.1, 0.1, 0.8)
+    dropDownBg:SetAllPoints(dropDown)
+
+    -- Text display for current selection
+    local dropDownText = dropDown:CreateFontString("AtlasTWFrameDropDownText", "OVERLAY", "GameFontHighlightSmall")
+    dropDownText:SetPoint("LEFT", dropDown, "LEFT", 8, 0)
+    dropDownText:SetPoint("RIGHT", dropDown, "RIGHT", -20, 0)
+    dropDownText:SetJustifyH("LEFT")
+
+    -- Arrow texture
+    local dropDownArrow = dropDown:CreateTexture(nil, "OVERLAY")
+    dropDownArrow:SetTexture("Interface\\ChatFrame\\ChatFrameExpandArrow")
+    dropDownArrow:SetWidth(16)
+    dropDownArrow:SetHeight(16)
+    dropDownArrow:SetPoint("RIGHT", dropDown, "RIGHT", -2, 0)
+
+    -- Highlight texture
+    local dropDownHighlight = dropDown:CreateTexture(nil, "HIGHLIGHT")
+    dropDownHighlight:SetTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
+    dropDownHighlight:SetBlendMode("ADD")
+    dropDownHighlight:SetAllPoints(dropDown)
+
+    -- Label above dropdown
     local dropDownLabel = dropDown:CreateFontString("AtlasTWFrameDropDownLabel", "BACKGROUND", "GameFontNormalSmall")
     dropDownLabel:SetText(L["Select Map"])
-    dropDownLabel:SetPoint("BOTTOMLEFT", dropDown, "TOPLEFT", 21, 0)
+    dropDownLabel:SetPoint("BOTTOMLEFT", dropDown, "TOPLEFT", 0, 2)
+
+    -- OnClick to open Hewdrop menu
+    dropDown:SetScript("OnClick", function()
+        if AtlasTW.HewdropMenus:IsOpen(dropDown) then
+            AtlasTW.HewdropMenus:Close()
+        else
+            AtlasTW.HewdropMenus:Close()
+            AtlasTW.HewdropMenus:OpenInstanceMenu(dropDown)
+        end
+    end)
 
     -- Search box
     local searchBox = CreateFrame("EditBox", "AtlasTWSearchEditBox", atlasFrame, "InputBoxTemplate")
@@ -126,8 +210,8 @@ do
         AtlasTW.LootBrowserUI.ScrollBarUpdate()
     end)
 
-    -- Switch dropdown
-    CreateFrame("Frame", "AtlasTWSwitchDD", atlasFrame, "UIDropDownMenuTemplate")
+
+    -- Switch dropdown is now handled by Hewdrop in AtlasTW.SwitchButtonOnClick()
 
     -- Switch button
     local switchButton = CreateFrame("Button", "AtlasTWSwitchButton", searchBox, "UIPanelButtonTemplate2")

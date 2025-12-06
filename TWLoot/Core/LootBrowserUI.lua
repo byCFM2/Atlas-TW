@@ -440,6 +440,7 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 						end
 
 						-- Set the description text
+						if not itemName then extratext = L["The content patch isn't out yet"] end
 						extraFrame:SetText(extratext or "")
 						extraFrame:Show()
 

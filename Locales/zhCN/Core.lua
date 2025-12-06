@@ -153,6 +153,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     -- Items & Loot
     ["This item is not safe!"] = "此物品不安全！",
     ["Item not found in cache"] = "在缓存中未找到物品",
+    ["The content patch isn't out yet"] = "内容补丁尚未发布",
     ["Old version of SuperWoW detected..."] = "检测到旧版本的 SuperWoW...",
     ["Slot Bag"] = "背包栏位",
     ["Various Locations"] = "多个地点",
@@ -218,8 +219,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     "左键打开 Atlas-TW。\n中键打开 Atlas-TW 选项。\n右键拖动移动此按钮。",
 
     -- Instance Locations
-    ["Showing all instances_1"] = "显示所有副本_1",
-    ["Showing all instances_2"] = "显示所有副本_2",
+    ["Instances"] = "副本",
 
     -- Common Terms
     ["Entrance"] = "入口",

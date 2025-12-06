@@ -201,8 +201,7 @@ local CategoryDefinitions = {
         { name = L["Raids"],    filter = function(d) return d.type == "Raid" end },
     },
     [SortType.ALL] = {
-        { name = L["Showing all instances_1"], filter = function(d) return d.type == "Dungeon" or d.type == "Raid" end },
-        { name = L["Showing all instances_2"], filter = function() return false end }, -- Placeholder for split
+        { name = L["Instances"], filter = function(d) return d.type == "Dungeon" or d.type == "Raid" end },
     }
 }
 
@@ -297,28 +296,7 @@ local function GenerateLayouts()
         ProcessCategoryList(layouts[sortName], layoutOrder[sortName], SpecialCategoryOrder, SpecialCategories, Dungeons)
     end
 
-    -- Special handling for the "All" category to split it into two columns if it's too long
-    local allDungeons = layouts[SortType.ALL][L["Showing all instances_1"]]
-    if allDungeons then
-        -- This split point can be adjusted if needed
-        local splitIndex = 40
-        if table.getn(allDungeons) > splitIndex then
-            local firstList = {}
-            local secondList = {}
-
-            local n = table.getn(allDungeons)
-            for i = 1, n do
-                if i <= splitIndex then
-                    table.insert(firstList, allDungeons[i])
-                else
-                    table.insert(secondList, allDungeons[i])
-                end
-            end
-
-            layouts[SortType.ALL][L["Showing all instances_1"]] = firstList
-            layouts[SortType.ALL][L["Showing all instances_2"]] = secondList
-        end
-    end
+    -- No longer need to split "All" category - Hewdrop supports scrollable menus with unlimited items
 
     return layouts, layoutOrder
 end

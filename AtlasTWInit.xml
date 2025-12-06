@@ -6,6 +6,7 @@
 	<Include file="AtlasTWDropDown.lua"/>
 	<Include file="AtlasTWUILogic.lua"/>
 	<Include file="AtlasTW.lua"/>
+	<Include file="AtlasTWHewdrop.lua"/>
 	<Include file="AtlasTWUI.lua"/>
 	<Include file="AtlasTWOptionsUI.lua"/>
 	<Include file="AtlasTWOptions.lua"/>
