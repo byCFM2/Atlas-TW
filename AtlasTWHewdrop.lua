@@ -1,8 +1,8 @@
 ---
 --- AtlasTWHewdrop.lua - Hewdrop-based dropdown menu system for Atlas-TW
 ---
---- This file provides wrapper functions for Hewdrop library to replace
---- the standard UIDropDownMenu which has a ~32 element limit.
+--- This file provides wrapper functions AND the minimized Hewdrop library itself
+--- to replace the standard UIDropDownMenu which has a ~32 element limit.
 --- Hewdrop supports unlimited elements with mouse wheel scrolling.
 ---
 --- @compatible World of Warcraft 1.12
@@ -11,15 +11,605 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 
--- Get the Hewdrop instance (loaded before us in TOC)
-local Hewdrop = ATWHewdrop
+-----------------------------------------------------------------------------
+-- Minimized Hewdrop Library Implementation (Embedded)
+-----------------------------------------------------------------------------
+
+local Hewdrop = {}
+local levels = {}
+local buttons = {}
+local START_LEVEL = 1000 -- Frame level start
+
+local lua51 = loadstring("return function(...) return ... end") and true or false
+
+-- Helper to create tables with specific keys
+local tmp
+do
+	local t = {}
+	function tmp(...)
+		for k in pairs(t) do t[k] = nil end
+        -- Handle table wrapper if first arg is table (legacy/compatibility)
+        if type(arg[1]) == "table" then
+            for k,v in pairs(arg[1]) do t[k] = v end
+            return t
+        end
+        -- Iterate varargs in pairs
+        for i = 1, arg.n, 2 do
+            local k = arg[i]
+            local v = arg[i+1]
+            if k then t[k] = v end
+        end
+		return t
+	end
+end
+
+local function StartCounting(self, levelNum)
+	local n = table.getn(levels)
+	for i = levelNum, n do
+		if levels[i] then
+			levels[i].count = 3
+		end
+	end
+end
+
+local function StopCounting(self, level)
+	for i = level, 1, -1 do
+		if levels[i] then
+			levels[i].count = nil
+		end
+	end
+end
+
+local function OnUpdate(self, arg1)
+	for _,level in ipairs(levels) do
+		if level.count then
+			level.count = level.count - arg1
+			if level.count < 0 then
+				level.count = nil
+				self:Close(level.num)
+			end
+		end
+	end
+end
+
+-- Forward declarations
+local Open, Refresh, Clear
+
+local function ReleaseButton(self, level, index)
+	if not level.buttons or not level.buttons[index] then return end
+	local button = level.buttons[index]
+	button:Hide()
+	if button.highlight then button.highlight:Hide() end
+	button.arrow:SetHeight(16)
+	button.arrow:SetWidth(16)
+	table.remove(level.buttons, index)
+	table.insert(buttons, button)
+	return true
+end
+
+local function Scroll(self, level, down)
+	if down then
+		if level:GetBottom() < 0 then
+			local point, parent, relativePoint, x, y = level:GetPoint(1)
+			level:SetPoint(point, parent, relativePoint, x, y + 50)
+			if level:GetBottom() > 0 then
+				level:SetPoint(point, parent, relativePoint, x, y + 50 - level:GetBottom())
+			end
+		end
+	else
+		if level:GetTop() > GetScreenHeight() then
+			local point, parent, relativePoint, x, y = level:GetPoint(1)
+			level:SetPoint(point, parent, relativePoint, x, y - 50)
+			if level:GetTop() < GetScreenHeight() then
+				level:SetPoint(point, parent, relativePoint, x, y - 50 + GetScreenHeight() - level:GetTop())
+			end
+		end
+	end
+end
+
+local numButtons = 0
+local function AcquireButton(self, level)
+	if not levels[level] then return end
+	level = levels[level]
+	if not level.buttons then level.buttons = {} end
+
+	local button
+	if table.getn(buttons) == 0 then
+		numButtons = numButtons + 1
+		button = CreateFrame("Button", "Hewdrop20Button" .. numButtons, nil)
+		button:SetFrameStrata("FULLSCREEN_DIALOG")
+		button:SetHeight(16)
+
+		local highlight = button:CreateTexture(nil, "HIGHLIGHT")
+		highlight:SetTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
+		button.highlight = highlight
+		highlight:SetBlendMode("ADD")
+		highlight:SetAllPoints(button)
+		highlight:Hide()
+
+		local check = button:CreateTexture(nil, "ARTWORK")
+		button.check = check
+		check:SetTexture("Interface\\Buttons\\UI-CheckBox-Check")
+		check:SetPoint("CENTER", button, "LEFT", 12, 0)
+		check:SetWidth(24)
+		check:SetHeight(24)
+
+		local radioHighlight = button:CreateTexture(nil, "ARTWORK")
+		button.radioHighlight = radioHighlight
+		radioHighlight:SetTexture("Interface\\Buttons\\UI-RadioButton")
+		radioHighlight:SetAllPoints(check)
+		radioHighlight:SetBlendMode("ADD")
+		radioHighlight:SetTexCoord(0.5, 0.75, 0, 1)
+		radioHighlight:Hide()
+
+		button:SetScript("OnEnter", function()
+			local this = this
+			self:Close(this.level.num + 1)
+			if not this.disabled and this.hasArrow then
+				Open(self, this, nil, this.level.num + 1, this.value)
+			end
+			if not this.level then return end
+			StopCounting(self, this.level.num + 1)
+			if not this.disabled then
+				highlight:Show()
+				if this.isRadio then button.radioHighlight:Show() end
+			end
+            if this.tooltipTitle or this.tooltipText then
+                GameTooltip_SetDefaultAnchor(GameTooltip, this)
+                if this.tooltipTitle then
+                    GameTooltip:SetText(this.tooltipTitle, 1, 1, 1, 1)
+                    if this.tooltipText then
+                        GameTooltip:AddLine(this.tooltipText, 1, 1, 1, 1)
+                    end
+                else
+                    GameTooltip:SetText(this.tooltipText, 1, 1, 1, 1)
+                end
+                GameTooltip:Show()
+            end
+		end)
+
+		button:SetScript("OnLeave", function()
+			highlight:Hide()
+			button.radioHighlight:Hide()
+            if this.hasArrow and this.arrow then
+                this.arrow:SetWidth(16)
+                this.arrow:SetHeight(16)
+            end
+			if this.level then StartCounting(self, this.level.num) end
+			GameTooltip:Hide()
+		end)
+
+		button:SetScript("OnClick", function()
+			if not this.disabled then
+				if this.func then
+                    this.func(this.arg1, this.arg2, this.arg3)
+                    if this.closeWhenClicked then
+                        self:Close()
+                    elseif level:IsShown() then
+                    end
+				elseif this.closeWhenClicked then
+					self:Close()
+				end
+			end
+		end)
+
+		local text = button:CreateFontString(nil, "ARTWORK")
+		button.text = text
+		text:SetFontObject(GameFontHighlightSmall)
+
+		local arrow = button:CreateTexture(nil, "ARTWORK")
+		button.arrow = arrow
+		arrow:SetPoint("LEFT", button, "RIGHT", -16, 0)
+		arrow:SetWidth(16)
+		arrow:SetHeight(16)
+		arrow:SetTexture("Interface\\ChatFrame\\ChatFrameExpandArrow")
+        arrow:SetAlpha(0) -- Default hidden
+	else
+		local n = table.getn(buttons)
+		button = buttons[n]
+		table.remove(buttons, n)
+	end
+
+	button:ClearAllPoints()
+	button:SetParent(level)
+	button:SetFrameStrata(level:GetFrameStrata())
+	button:SetFrameLevel(level:GetFrameLevel() + 1)
+	button:SetPoint("LEFT", level, "LEFT", 10, 0)
+	button:SetPoint("RIGHT", level, "RIGHT", -10, 0)
+
+	local n = table.getn(level.buttons)
+	if n == 0 then
+		button:SetPoint("TOP", level, "TOP", 0, -10)
+	else
+		button:SetPoint("TOP", level.buttons[n], "BOTTOM", 0, 0)
+	end
+
+	button.text:SetPoint("LEFT", button, "LEFT", 24, 0)
+	button:Show()
+	button.level = level
+	table.insert(level.buttons, button)
+
+	button:SetAlpha(1)
+	return button
+end
+
+local function CheckSize(self, level)
+	if not level.buttons then return end
+	local height = 20
+	for _, button in ipairs(level.buttons) do
+		height = height + button:GetHeight()
+	end
+	level:SetHeight(height)
+	local width = 160
+	for _, button in ipairs(level.buttons) do
+		local extra = 1
+		if not button.notCheckable then extra = extra + 24 end
+		if button.hasArrow then extra = extra + 16 end
+
+		button.text:SetFont(StandardTextFont or "Fonts\\FRIZQT__.TTF", 10)
+		if button.text:GetWidth() + extra > width then
+			width = button.text:GetWidth() + extra
+		end
+	end
+	level:SetWidth(width + 20)
+end
+
+
+local numLevels = 0
+local function AcquireLevel(self, level)
+	if not levels[level] then
+		local n = table.getn(levels) + 1
+		for i = n, level, -1 do
+			numLevels = numLevels + 1
+			local frame = CreateFrame("Button", "Hewdrop20Level" .. numLevels, nil)
+			levels[i] = frame
+			frame.num = i
+			frame:SetParent(UIParent)
+			frame:SetFrameStrata("FULLSCREEN_DIALOG")
+			frame:Hide()
+			frame:SetWidth(180)
+			frame:SetHeight(10)
+			frame:SetFrameLevel(i * 3 + START_LEVEL)
+			frame:SetScript("OnHide", function() self:Close(level + 1) end)
+			frame:EnableMouse(true)
+			frame:EnableMouseWheel(true)
+
+			local backdrop = CreateFrame("Frame", nil, frame)
+			backdrop:SetAllPoints(frame)
+			backdrop:SetBackdrop({
+				bgFile = "Interface\\ChatFrame\\ChatFrameBackground",
+				edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+				tile = true, tileSize = 16, edgeSize = 16,
+				insets = { left = 5, right = 5, top = 5, bottom = 5 }
+			})
+			backdrop:SetBackdropBorderColor(1, 1, 1)
+			backdrop:SetBackdropColor(0, 0, 0, 1)
+
+			frame:SetScript("OnClick", function() self:Close(i) end)
+			frame:SetScript("OnEnter", function() StopCounting(self, i) end)
+			frame:SetScript("OnLeave", function() StartCounting(self, i) end)
+			frame:SetScript("OnMouseWheel", function() Scroll(self, frame, arg1 < 0) end)
+
+			if i == 1 then
+				frame:SetScript("OnUpdate", function() OnUpdate(self, arg1) end)
+			end
+		end
+	end
+	return levels[level]
+end
+
+function Clear(self, level)
+	if level and level.buttons then
+		local n = table.getn(level.buttons)
+		for i = n, 1, -1 do
+			ReleaseButton(self, level, i)
+		end
+	end
+end
+
+local baseFunc, currentLevel
+
+function Refresh(self, level)
+	if type(level) == "number" then level = levels[level] end
+	if not level then return end
+
+	if baseFunc then
+		Clear(self, level)
+		currentLevel = level.num
+        -- Call the menu generation function
+		baseFunc(currentLevel, level.value)
+		currentLevel = nil
+		CheckSize(self, level)
+	end
+end
+
+function Open(self, parent, func, level, value, point, relativePoint)
+	self:Close(level)
+
+	local frame = AcquireLevel(self, level)
+	frame:ClearAllPoints()
+	frame.parent = parent
+	frame:SetPoint("LEFT", UIParent, "RIGHT", 10000, 0) -- Offscreen init
+	frame:Show()
+
+	if level == 1 then baseFunc = func end
+	levels[level].value = value
+
+    -- Arrow on parent
+	if parent.arrow then
+		parent.arrow:SetHeight(24)
+		parent.arrow:SetWidth(24)
+	end
+
+	Refresh(self, levels[level])
+
+	frame:ClearAllPoints()
+
+    -- Positioning logic
+    if point then
+         frame:SetPoint(point, parent, relativePoint or point)
+    else
+         -- Default positioning
+        if level == 1 then
+             frame:SetPoint("TOPLEFT", parent, "BOTTOMLEFT")
+             if frame:GetRight() and frame:GetRight() > GetScreenWidth() then
+                 frame:ClearAllPoints()
+                 frame:SetPoint("TOPRIGHT", parent, "BOTTOMRIGHT")
+             end
+             if frame:GetBottom() and frame:GetBottom() < 0 then
+                 frame:ClearAllPoints()
+                 frame:SetPoint("BOTTOMLEFT", parent, "TOPLEFT")
+                 if frame:GetRight() and frame:GetRight() > GetScreenWidth() then
+                     frame:ClearAllPoints()
+                     frame:SetPoint("BOTTOMRIGHT", parent, "TOPRIGHT")
+                 end
+             end
+             if frame:GetTop() and frame:GetTop() > GetScreenHeight() then
+                 frame:ClearAllPoints()
+                 frame:SetPoint("TOPLEFT", parent, "BOTTOMLEFT")
+                 if frame:GetBottom() and frame:GetBottom() < 0 then
+                     frame:ClearAllPoints()
+                     frame:SetPoint("BOTTOMLEFT", parent, "TOPLEFT")
+                 end
+             end
+        else
+             frame:SetPoint("TOPLEFT", parent, "TOPRIGHT", 0, 5)
+             local openedLeft = false
+             if frame:GetRight() and frame:GetRight() > GetScreenWidth() then
+                 frame:ClearAllPoints()
+                 frame:SetPoint("TOPRIGHT", parent, "TOPLEFT", 0, 5)
+                 openedLeft = true
+             end
+             if frame:GetLeft() and frame:GetLeft() < 0 then
+                 frame:ClearAllPoints()
+                 frame:SetPoint("TOPLEFT", parent, "TOPRIGHT", 0, 5)
+                 openedLeft = false
+             end
+             if frame:GetTop() and frame:GetTop() > GetScreenHeight() then
+                 frame:ClearAllPoints()
+                 if openedLeft then
+                     frame:SetPoint("BOTTOMRIGHT", parent, "BOTTOMLEFT", 0, -5)
+                 else
+                     frame:SetPoint("BOTTOMLEFT", parent, "BOTTOMRIGHT", 0, -5)
+                 end
+                 if frame:GetRight() and frame:GetRight() > GetScreenWidth() then
+                     frame:ClearAllPoints()
+                     frame:SetPoint("BOTTOMRIGHT", parent, "BOTTOMLEFT", 0, -5)
+                 elseif frame:GetLeft() and frame:GetLeft() < 0 then
+                     frame:ClearAllPoints()
+                     frame:SetPoint("BOTTOMLEFT", parent, "BOTTOMRIGHT", 0, -5)
+                 end
+             end
+            if frame:GetBottom() and frame:GetBottom() < 0 then
+                frame:ClearAllPoints()
+                if openedLeft then
+                    frame:SetPoint("BOTTOMRIGHT", parent, "BOTTOMLEFT", 0, -5)
+                else
+                    frame:SetPoint("BOTTOMLEFT", parent, "RIGHT", 0, -5)
+                end
+                -- Re-check horizontal bounds after vertical flip
+                if frame:GetRight() and frame:GetRight() > GetScreenWidth() then
+                    frame:ClearAllPoints()
+                    frame:SetPoint("BOTTOMRIGHT", parent, "BOTTOMLEFT", 0, -5)
+                elseif frame:GetLeft() and frame:GetLeft() < 0 then
+                    frame:ClearAllPoints()
+                    frame:SetPoint("BOTTOMLEFT", parent, "BOTTOMRIGHT", 0, -5)
+                end
+            end
+        end
+    end
+end
+-----------------------------------------------------------------------------
+
+local regTable = {}
+
+function Hewdrop:Register(parent, ...)
+    if not parent then return end
+    local info = tmp(unpack(arg))
+    regTable[parent] = {
+        children = info.children,
+        point = info.point,
+        relativePoint = info.relativePoint,
+        dontHook = info.dontHook
+    }
+
+    if not info.dontHook then
+        parent:SetScript("OnClick", function()
+             if self:IsOpen(parent) then
+                 self:Close()
+             else
+                 self:Open(parent)
+             end
+        end)
+    end
+end
+
+function Hewdrop:Unregister(parent)
+    if not parent then return end
+    regTable[parent] = nil
+end
+
+function Hewdrop:Open(parent, ...)
+    if not parent then return end
+    local info = tmp(unpack(arg))
+
+    -- Check if registered via Register(parent, ...)
+    -- Only check if no explicit args passed in info (e.g. just parent passed or parent+point args but no children)
+    if not info.children and regTable[parent] then
+        local reg = regTable[parent]
+        local children = reg.children
+        local point, relativePoint
+
+        if type(reg.point) == "function" then
+            point, relativePoint = reg.point()
+        else
+            point = reg.point
+            relativePoint = reg.relativePoint
+        end
+        -- Override if passed in args
+        if info.point then
+             if type(info.point) == 'function' then
+                 point, relativePoint = info.point(parent)
+             else
+                 point = info.point
+                 relativePoint = info.relativePoint
+             end
+        end
+
+        Open(self, parent, children, 1, nil, point, relativePoint)
+        return
+    end
+
+    local children = info.children
+
+    local point, relativePoint
+    if info.point then
+        if type(info.point) == "function" then
+             point, relativePoint = info.point(parent)
+        else
+             point = info.point
+             relativePoint = info.relativePoint
+        end
+    end
+
+    Open(self, parent, children, 1, nil, point, relativePoint)
+end
+
+function Hewdrop:Close(level)
+	if not level then level = 1 end
+	if level == 1 and levels[level] then levels[level].parented = false end
+
+    local n = table.getn(levels)
+	for i = level, n do
+		if levels[i] then
+			Clear(self, levels[i])
+			levels[i]:Hide()
+			levels[i]:ClearAllPoints()
+			levels[i]:SetPoint("CENTER", UIParent, "CENTER")
+		end
+	end
+
+    if level == 1 then baseFunc = nil end
+end
+
+function Hewdrop:AddLine(...)
+	local info = tmp(unpack(arg))
+    local level = currentLevel
+	local button = AcquireButton(self, level)
+
+    button.disabled = info.disabled or info.isTitle -- Removed `or info.notClickable` to be safe, as it usually only affects checkmark
+    button.isTitle = info.isTitle
+    button.notClickable = info.notClickable
+
+    if button.isTitle then
+        button.text:SetFontObject(GameFontNormalSmall)
+    else
+        button.text:SetFontObject(GameFontHighlightSmall)
+    end
+
+    if info.disabled then
+        button.text:SetTextColor(0.5, 0.5, 0.5)
+    else
+        if info.textR and info.textG and info.textB then
+            button.text:SetTextColor(info.textR, info.textG, info.textB)
+        else
+            button.text:SetTextColor(1, 1, 1)
+        end
+    end
+
+    button.notCheckable = info.notCheckable
+    button.text:SetPoint("LEFT", button, "LEFT", button.notCheckable and 0 or 24, 0)
+    button.checked = not info.notCheckable and info.checked
+    button.isRadio = not info.notCheckable and info.isRadio
+
+    if button.isRadio then
+        button.check:Show()
+        button.check:SetTexture("Interface\\Buttons\\UI-RadioButton")
+        button.check:SetWidth(16)
+        button.check:SetHeight(16)
+        if button.checked then
+            button.check:SetTexCoord(0.25, 0.5, 0, 1)
+            button.check:SetVertexColor(1, 1, 1, 1)
+        else
+            button.check:SetTexCoord(0, 0.25, 0, 1)
+            button.check:SetVertexColor(1, 1, 1, 0.5)
+        end
+    else
+        button.check:SetTexture("Interface\\Buttons\\UI-CheckBox-Check")
+        button.check:SetWidth(20) -- Slightly larger for checkbox
+        button.check:SetHeight(20)
+        button.check:SetTexCoord(0, 1, 0, 1)
+        if button.checked then
+             button.check:SetVertexColor(1, 1, 1, 1)
+        else
+             button.check:SetVertexColor(1, 1, 1, 0)
+        end
+    end
+
+    button.func = info.func
+    button.arg1 = info.arg1
+    button.arg2 = info.arg2
+    button.arg3 = info.arg3
+    button.closeWhenClicked = info.closeWhenClicked
+
+    button.hasArrow = info.hasArrow or false
+    if button.hasArrow then
+        button.arrow:SetAlpha(1)
+        button.value = info.value -- Store value for submenu
+    else
+        button.arrow:SetAlpha(0)
+    end
+
+    button.text:SetText(info.text)
+
+    -- Tooltip
+    button.tooltipTitle = info.tooltipTitle
+    button.tooltipText = info.tooltipText
+end
+
+function Hewdrop:IsOpen(parent)
+	return levels[1] and levels[1]:IsShown() and (not parent or parent == levels[1].parent)
+end
+
+-- Hook WorldFrame to close menu on click
+local WorldFrame_OnMouseDown = WorldFrame:GetScript("OnMouseDown")
+WorldFrame:SetScript("OnMouseDown", function()
+    if WorldFrame_OnMouseDown then WorldFrame_OnMouseDown() end
+    Hewdrop:Close()
+end)
+
+-- EXPORT FOR COMPATIBILITY
+_G.ATWHewdrop = Hewdrop
+_G.AtlasTWLoot_Hewdrop = Hewdrop -- Export for TWLoot compatibility
+
+-----------------------------------------------------------------------------
+-- Atlas-TW Wrapper
+-----------------------------------------------------------------------------
 
 -- Module namespace
 AtlasTW.HewdropMenus = {}
 
 --- Opens the category selection menu (Continent, Party Size, Level, Type, All)
---- @param parent frame The button/frame to anchor the menu to
---- @return nil
 function AtlasTW.HewdropMenus:OpenCategoryMenu(parent)
     -- Ensure data is initialized
     if not AtlasTW.DropDowns or not next(AtlasTW.DropDowns) then
@@ -30,14 +620,14 @@ function AtlasTW.HewdropMenus:OpenCategoryMenu(parent)
 
     local sortType = AtlasTW_DropDownSortOrder and AtlasTW_DropDownSortOrder[AtlasTWOptions.AtlasSortBy]
     if not sortType then return end
-    
+
     local subcatOrder = AtlasTW_DropDownGetLayoutOrder and AtlasTW_DropDownGetLayoutOrder(sortType)
     if not subcatOrder then return end
 
     Hewdrop:Open(parent,
         'children', function(level, value)
             for i, catName in ipairs(subcatOrder) do
-                local index = i -- Create local copy for closure
+                local index = i
                 local checked = (AtlasTWOptions.AtlasType == index)
                 Hewdrop:AddLine(
                     'text', catName,
@@ -59,8 +649,6 @@ function AtlasTW.HewdropMenus:OpenCategoryMenu(parent)
 end
 
 --- Opens the instance/map selection menu
---- @param parent frame The button/frame to anchor the menu to
---- @return nil
 function AtlasTW.HewdropMenus:OpenInstanceMenu(parent)
     -- Ensure DropDowns are populated
     if not AtlasTW.DropDowns or not next(AtlasTW.DropDowns) then
@@ -82,7 +670,7 @@ function AtlasTW.HewdropMenus:OpenInstanceMenu(parent)
     Hewdrop:Open(parent,
         'children', function(level, value)
             for i, v in ipairs(instances) do
-                local index = i -- Create local copy for closure
+                local index = i
                 local checked = (AtlasTWOptions.AtlasZone == index)
                 local instanceName = AtlasTW.InstanceData[v] and AtlasTW.InstanceData[v].Name or v
                 Hewdrop:AddLine(
@@ -104,10 +692,6 @@ function AtlasTW.HewdropMenus:OpenInstanceMenu(parent)
 end
 
 --- Opens the entrance/instance switch menu
---- @param parent frame The button/frame to anchor the menu to
---- @param switchData table Array of instance keys to switch between
---- @param onSelect function Callback function when item is selected (receives index)
---- @return nil
 function AtlasTW.HewdropMenus:OpenSwitchMenu(parent, switchData, onSelect)
     if not switchData or table.getn(switchData) == 0 then
         return
@@ -116,7 +700,7 @@ function AtlasTW.HewdropMenus:OpenSwitchMenu(parent, switchData, onSelect)
     Hewdrop:Open(parent,
         'children', function(level, value)
             for i, v in ipairs(switchData) do
-                local index = i -- Create local copy for closure
+                local index = i
                 local instanceName = AtlasTW.InstanceData[v] and AtlasTW.InstanceData[v].Name or v
                 Hewdrop:AddLine(
                     'text', instanceName,
@@ -136,21 +720,16 @@ function AtlasTW.HewdropMenus:OpenSwitchMenu(parent, switchData, onSelect)
 end
 
 --- Closes any open Hewdrop menu
---- @return nil
 function AtlasTW.HewdropMenus:Close()
     Hewdrop:Close()
 end
 
 --- Checks if a Hewdrop menu is currently open
---- @param parent frame Optional parent to check against
---- @return boolean True if menu is open
 function AtlasTW.HewdropMenus:IsOpen(parent)
     return Hewdrop:IsOpen(parent)
 end
 
 --- Updates the text labels on dropdown buttons to show current selection
---- Called after changing category or instance
---- @return nil
 function AtlasTW.UpdateDropdownLabels()
     -- Update category button text
     if AtlasTWFrameDropDownType and AtlasTWFrameDropDownTypeText then

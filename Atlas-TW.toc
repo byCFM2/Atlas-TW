@@ -11,8 +11,6 @@
 ## SavedVariablesPerCharacter: AtlasTWCharDB
 ## OptionalDeps: LootLink, ItemSync, EquipCompare, EQCompare, pfQuest, pfUI
 
-Libs\Hewdrop.lua
-
 AtlasTWInit.xml
 TWLoot\LootInit.xml
 TWQuest\QuestInit.xml

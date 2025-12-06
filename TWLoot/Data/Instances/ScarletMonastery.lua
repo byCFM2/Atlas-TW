@@ -155,6 +155,7 @@ AtlasTW.InstanceData.ScarletMonasteryArmory = {
         },
         {
             id = "SMQuartermasterDaghelm",
+            prefix = "2)",
             name = LB["Armory Quartermaster Daghelm"],
             defaults = { dropRate = 25 },
             loot = {

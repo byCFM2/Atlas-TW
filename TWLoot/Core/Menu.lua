@@ -250,6 +250,9 @@ function AtlasTWLoot_OpenMenu(menuName)
 			AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 		end
 	end
+	if AtlasTWLoot_Hewdrop and AtlasTWLoot_Hewdrop.Close then
+		AtlasTWLoot_Hewdrop:Close(1)
+	end
 	CloseDropDownMenus()
 end
 
