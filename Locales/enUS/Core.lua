@@ -255,7 +255,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Update available"] = true,
     ["Version: %s"] = true,
     ["Version check sent to %s"] = true,
-    ["NewVersionAvailableFmt"] = "Atlas-TW: |cffff0000New version available!|r |cff00ff00Download here:|r %s",
+    ["NewVersionAvailableFmt"] = "|cffff0000New version available!|r |cff00ff00Download here:|r %s",
     [" |cffA52A2Aloaded."] = true,
     ["NoticeText"] = "If you find anything missing, please report it at:|r",
     ["NoticeLink"] = "https://github.com/byCFM2/Atlas-TW/issues/|r",

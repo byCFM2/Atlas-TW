@@ -201,7 +201,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Update available"] = "有可用更新",
     ["Version: %s"] = "版本:%s",
     ["Version check sent to %s"] = "版本检查已发送给 %s",
-    ["NewVersionAvailableFmt"] = "Atlas-TW: |cffff0000有新版本可用！|r |cff00ff00在此下载:|r %s",
+    ["NewVersionAvailableFmt"] = "|cffff0000有新版本可用！|r |cff00ff00在此下载:|r %s",
     [" |cffA52A2Aloaded."] = " |cffA52A2A已加载。",
     ["NoticeText"] = "如果您发现任何缺失，请在此报告:|r",
 

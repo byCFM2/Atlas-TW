@@ -260,7 +260,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Update available"] = "Actualización disponible",
     ["Version: %s"] = "Versión: %s",
     ["Version check sent to %s"] = "Verificación de versión enviada a %s",
-    ["NewVersionAvailableFmt"] = "Atlas-TW: |cffff0000¡Nueva versión disponible!|r |cff00ff00Descarga aquí:|r %s",
+    ["NewVersionAvailableFmt"] = "|cffff0000¡Nueva versión disponible!|r |cff00ff00Descarga aquí:|r %s",
     [" |cffA52A2Aloaded."] = " |cffA52A2Acargado.",
     ["NoticeText"] = "Si encuentra algo que falta, infórmelo en:|r",
 
