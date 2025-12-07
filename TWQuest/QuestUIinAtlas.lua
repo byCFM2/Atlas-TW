@@ -116,14 +116,6 @@ for i, pos in ipairs(QUEST_ITEM_POSITIONS) do
     icon:SetHeight(30)
     icon:SetPoint("TOPLEFT", 0, 0)
 
- --[[    -- Quantity text
-    local quantity = frame:CreateFontString(frame:GetName().."_Quantity", "ARTWORK", "GameFontNormal")
-    quantity:SetWidth(25)
-    quantity:SetHeight(0)
-    quantity:SetFont("Fonts\\ARIALN.TTF", 12, "OUTLINE")
-    quantity:SetJustifyH("RIGHT")
-    quantity:SetPoint("BOTTOMRIGHT", icon, 0, 1) ]]
-
     local name = CreateText("", frame, "GameFontNormal", { "TOPLEFT", icon, "TOPRIGHT", 3, 0 }, 205, 12, "LEFT")
     local extra = CreateText("", frame, "GameFontNormalSmall", { "TOPLEFT", name, "BOTTOMLEFT", 0, -7 }, 205, 10, "LEFT")
     local quantity = CreateText("", frame, "GameFontNormal", { "BOTTOMRIGHT", icon, -3, 1 }, 0, 0, "RIGHT")

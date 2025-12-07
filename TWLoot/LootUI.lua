@@ -209,6 +209,7 @@ local function AtlasTWLoot_CreatePresetButtons(frame)
             AtlasTWLootItemsFrame.StoredElement = dataID
             AtlasTWLootItemsFrame.StoredMenu = storedMenu
             AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+            AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
         end)
 
         presetButton[i]:SetScript("OnShow", function()
@@ -269,6 +270,9 @@ local function AtlasTWLoot_CreateSearchElements(frame)
         AtlasTW.SearchLib.Search(AtlasTWLootSearchBox:GetText())
         AtlasTWLootSearchBox:ClearFocus()
         CloseDropDownMenus()
+        AtlasTWLootQuickLooksButton:Hide()
+        AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
+        AtlasTWLoot_QuickLooks:Hide()
     end)
 
     -- Search Options Button
@@ -318,6 +322,9 @@ local function AtlasTWLoot_CreateSearchElements(frame)
     lastResultButton:SetScript("OnClick", function()
         AtlasTW.SearchLib.ShowResult()
         CloseDropDownMenus()
+        AtlasTWLootQuickLooksButton:Hide()
+        AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
+        AtlasTWLoot_QuickLooks:Hide()
     end)
 
     -- WishList Button
@@ -328,6 +335,7 @@ local function AtlasTWLoot_CreateSearchElements(frame)
         AtlasTWLoot_ShowWishList()
         CloseDropDownMenus()
         AtlasTWLootQuickLooksButton:Hide()
+        AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
         AtlasTWLoot_QuickLooks:Hide()
     end)
 
