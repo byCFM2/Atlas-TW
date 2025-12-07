@@ -159,6 +159,9 @@ AtlasTW.InstanceData.RazorfenDowns = {
                 { id = 10761 }, -- Coldrage Dagger
                 { id = 10765 }, -- Bonefingers
                 {},
+                { id = 10420, container = { 10823, 10824 } }, -- Skull of the Coldbringer
+                { id = 61657, container = { 61660, 61661, 61662 } }, -- Obsidian Phylactery
+                {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },

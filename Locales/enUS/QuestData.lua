@@ -5397,7 +5397,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[4] = {
     Attain = 25,
     Aim = "Travel to the Crescent Grove and find the burned down home of Kalanar Brightshine. Then retrieve Kalanar's Mallet and return it to him in Astranaar.",
     Location = "Kalanar Brightshine (Ashenvale "..yellow.."36,52"..white..")",
-    Note = "Contained in Kalanar's Strongbox.",
+    Note = "Contained in 'Kalanar's Strongbox'"..yellow.." [a]",
 }
 kQuestInstanceData.TheCrescentGrove.Horde[1] = kQuestInstanceData.TheCrescentGrove.Alliance[1]
 kQuestInstanceData.TheCrescentGrove.Horde[2] = kQuestInstanceData.TheCrescentGrove.Alliance[2]

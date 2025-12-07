@@ -101,6 +101,8 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "deDE", {
     ["Mossheart"] = "Moosherz",
     ["Rotmaw"] = "Rotmaul",
     ["Grovetender Engryss"] = "Hainpfleger Engryss",
+    ["Elder Blackmaw"] = "Ältester Schwarzmaul",
+    ["Elder 'One Eye'"] = "Ältester 'Einauge'",
     ["Keeper Ranathos"] = "Hüter Ranathos",
     ["High Priestess A'lathea"] = "Hohepriesterin A'lathea",
     ["Fenektis the Deceiver"] = "Fenektis der Täuscher",

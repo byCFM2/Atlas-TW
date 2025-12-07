@@ -101,6 +101,8 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "zhCN", {
     ["Mossheart"] = "莫斯哈特",
     ["Rotmaw"] = "腐烂之喉",
     ["Grovetender Engryss"] = "护林员恩格里斯",
+    ["Elder Blackmaw"] = "黑喉长老",
+    ["Elder 'One Eye'"] = "“独眼”长老",
     ["Keeper Ranathos"] = "守护者拉纳苏斯",
     ["High Priestess A'lathea"] = "高阶女祭司阿勒西",
     ["Fenektis the Deceiver"] = "欺诈者弗纳克提斯",

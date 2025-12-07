@@ -41,7 +41,9 @@ AtlasTW.InstanceData.TheCrescentGrove = {
         {
             prefix = "a)",
             name = LMD["Kalanar's Strongbox"],
-            color = Colors.GREY,
+            loot = {
+                { id = 60472, dropRate = 100 }, -- Kalanar's Mallet
+            }
         },
         {
             id = "TCGGrovetenderEngryss",
@@ -59,6 +61,24 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 { id = 60176, dropRate = 100 }, -- Groveweald Badge
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
+            }
+        },
+        {
+            id = "TCGElderBlackmaw",
+            name = LB["Elder Blackmaw"],
+            defaults = { dropRate = 100 },
+            loot = {
+                { id = 60178, container = { 60179 } }, -- Paw of Elder Blackmaw
+                { id = 60176 }, --Groveweald Badge
+            }
+        },
+        {
+            id = "TCGElderOneEye",
+            name = LB["Elder 'One Eye'"],
+            defaults = { dropRate = 100 },
+            loot = {
+                { id = 60177, container = { 60179 } }, -- Paw of Elder 'One Eye'
+                { id = 60176 }, --Groveweald Badge
             }
         },
         {

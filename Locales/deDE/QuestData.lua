@@ -5394,7 +5394,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[4] = {
     Attain = 25,
     Aim = "Reist zum Mondsichelhain und findet das niedergebrannte Haus von Kalanar Hellschein. Holt dann Kalanars Schlegel und bringt ihn zu ihm nach Astranaar zurück.",
     Location = "Kalanar Glanzschein (Eschental "..yellow.."36,52"..white..")",
-    Note = "Contained in Kalanar's Strongbox.",
+    Note = "Enthalten in 'Kalanars Truhe'"..yellow.." [a]",
 }
 kQuestInstanceData.TheCrescentGrove.Horde[1] = kQuestInstanceData.TheCrescentGrove.Alliance[1]
 kQuestInstanceData.TheCrescentGrove.Horde[2] = kQuestInstanceData.TheCrescentGrove.Alliance[2]

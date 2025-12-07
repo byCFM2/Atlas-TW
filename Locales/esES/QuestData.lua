@@ -5394,7 +5394,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[4] = {
     Attain = 25,
     Aim = "Viaja a la Arboleda Creciente y encuentra la casa quemada de Kalanar Brightshine. Luego recupera el Mazo de Kalanar y devuélveselo a él en Astranaar.",
     Location = "Kalanar Brillo Brillante (Vallefresno "..yellow.."36,52"..white..")",
-    Note = "Contenido en la caja fuerte de Kalanar.",
+    Note = "Contenido en la caja fuerte de Kalanar"..yellow.." [a]",
 }
 kQuestInstanceData.TheCrescentGrove.Horde[1] = kQuestInstanceData.TheCrescentGrove.Alliance[1]
 kQuestInstanceData.TheCrescentGrove.Horde[2] = kQuestInstanceData.TheCrescentGrove.Alliance[2]

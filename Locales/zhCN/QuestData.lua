@@ -5323,7 +5323,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[4] = {
     Attain = 25,
     Aim = "前往新月林地，找到卡拉纳尔·亮光被烧毁的家。然后取回卡拉纳尔的木槌并将其归还给阿斯特兰纳的他。",
     Location = "卡拉纳尔·亮光 (灰谷 "..yellow.."36,52"..white..")",
-    Note = "在 卡拉纳尔的保险箱 中。",
+    Note = "在 卡拉纳尔的保险箱 中。"..yellow.." [a]",
 }
 kQuestInstanceData.TheCrescentGrove.Horde[1] = kQuestInstanceData.TheCrescentGrove.Alliance[1]
 kQuestInstanceData.TheCrescentGrove.Horde[2] = kQuestInstanceData.TheCrescentGrove.Alliance[2]

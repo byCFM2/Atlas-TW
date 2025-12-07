@@ -5394,7 +5394,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[4] = {
     Attain = 25,
     Aim = "Viaje para Crescent Grove e encontre a casa incendiada de Kalanar Brightshine. Em seguida, recupere o Marreta de Kalanar e devolva-o para ele em Astranaar.",
     Location = "Kalanar Brilhaluz (Vale Gris "..yellow.."36,52"..white..")",
-    Note = "Contained in Kalanar's Strongbox.",
+    Note = "Contido na 'Caixa Forte de Kalanar'"..yellow.." [a]",
 }
 kQuestInstanceData.TheCrescentGrove.Horde[1] = kQuestInstanceData.TheCrescentGrove.Alliance[1]
 kQuestInstanceData.TheCrescentGrove.Horde[2] = kQuestInstanceData.TheCrescentGrove.Alliance[2]

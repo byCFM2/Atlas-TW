@@ -101,6 +101,8 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "esES", {
     ["Mossheart"] = "Corazón de Musgo",
     ["Rotmaw"] = "Faucepodrida",
     ["Grovetender Engryss"] = "Cuidarbol Engryss",
+    ["Elder Blackmaw"] = "Cuidarbol Engryss",
+    ["Elder 'One Eye'"] = "Viejo 'Un Ojo'",
     ["Keeper Ranathos"] = "Guardián Ranathos",
     ["High Priestess A'lathea"] = "Suma Sacerdotisa A'lathea",
     ["Fenektis the Deceiver"] = "Fenektis el Engañador",
