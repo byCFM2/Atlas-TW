@@ -233,6 +233,20 @@ local function AcquireButton(self, level)
 	return button
 end
 
+local function CheckDualMonitor(self, frame)
+	local ratio = GetScreenWidth() / GetScreenHeight()
+	if ratio >= 2.4 and frame:GetRight() > GetScreenWidth() / 2 and frame:GetLeft() < GetScreenWidth() / 2 then
+		local offsetx
+		if GetCursorPosition() / GetScreenHeight() * 768 < GetScreenWidth() / 2 then
+			offsetx = GetScreenWidth() / 2 - frame:GetRight()
+		else
+			offsetx = GetScreenWidth() / 2 - frame:GetLeft()
+		end
+		local point, parent, relativePoint, x, y = frame:GetPoint(1)
+		frame:SetPoint(point, parent, relativePoint, (x or 0) + offsetx, y or 0)
+	end
+end
+
 local function CheckSize(self, level)
 	if not level.buttons then return end
 	local height = 20
@@ -243,8 +257,8 @@ local function CheckSize(self, level)
 	local width = 160
 	for _, button in ipairs(level.buttons) do
 		local extra = 1
+		if button.hasArrow or button.hasColorSwatch then extra = extra + 16 end
 		if not button.notCheckable then extra = extra + 24 end
-		if button.hasArrow then extra = extra + 16 end
 
 		button.text:SetFont(StandardTextFont or "Fonts\\FRIZQT__.TTF", 10)
 		if button.text:GetWidth() + extra > width then
@@ -252,6 +266,75 @@ local function CheckSize(self, level)
 		end
 	end
 	level:SetWidth(width + 20)
+
+	if level:GetLeft() and level:GetRight() and level:GetTop() and level:GetBottom() and (level:GetLeft() < 0 or level:GetRight() > GetScreenWidth() or level:GetTop() > GetScreenHeight() or level:GetBottom() < 0) then
+		level:ClearAllPoints()
+		if level.lastDirection == "RIGHT" then
+			if level.lastVDirection == "DOWN" then
+				level:SetPoint("TOPLEFT", level.parent or level:GetParent(), "TOPRIGHT", 5, 10)
+			else
+				level:SetPoint("BOTTOMLEFT", level.parent or level:GetParent(), "BOTTOMRIGHT", 5, -10)
+			end
+		else
+			if level.lastVDirection == "DOWN" then
+				level:SetPoint("TOPRIGHT", level.parent or level:GetParent(), "TOPLEFT", -5, 10)
+			else
+				level:SetPoint("BOTTOMRIGHT", level.parent or level:GetParent(), "BOTTOMLEFT", -5, -10)
+			end
+		end
+	end
+	local dirty = false
+	if not level:GetRight() then
+		self:Close()
+		return
+	end
+	if level:GetRight() > GetScreenWidth() and level.lastDirection == "RIGHT" then
+		level.lastDirection = "LEFT"
+		dirty = true
+	elseif level:GetLeft() < 0 and level.lastDirection == "LEFT" then
+		level.lastDirection = "RIGHT"
+		dirty = true
+	end
+	if level:GetTop() > GetScreenHeight() and level.lastVDirection == "UP" then
+		level.lastVDirection = "DOWN"
+		dirty = true
+	elseif level:GetBottom() < 0 and level.lastVDirection == "DOWN" then
+		level.lastVDirection = "UP"
+		dirty = true
+	end
+	if dirty then
+		level:ClearAllPoints()
+		if level.lastDirection == "RIGHT" then
+			if level.lastVDirection == "DOWN" then
+				level:SetPoint("TOPLEFT", level.parent or level:GetParent(), "TOPRIGHT", 5, 10)
+			else
+				level:SetPoint("BOTTOMLEFT", level.parent or level:GetParent(), "BOTTOMRIGHT", 5, -10)
+			end
+		else
+			if level.lastVDirection == "DOWN" then
+				level:SetPoint("TOPRIGHT", level.parent or level:GetParent(), "TOPLEFT", -5, 10)
+			else
+				level:SetPoint("BOTTOMRIGHT", level.parent or level:GetParent(), "BOTTOMLEFT", -5, -10)
+			end
+		end
+	end
+	if level:GetTop() > GetScreenHeight() then
+		local top = level:GetTop()
+		local point, parent, relativePoint, x, y = level:GetPoint(1)
+		level:ClearAllPoints()
+		level:SetPoint(point, parent, relativePoint, x or 0, (y or 0) + GetScreenHeight() - top)
+	elseif level:GetBottom() < 0 then
+		local bottom = level:GetBottom()
+		local point, parent, relativePoint, x, y = level:GetPoint(1)
+		level:ClearAllPoints()
+		level:SetPoint(point, parent, relativePoint, x or 0, (y or 0) - bottom)
+	end
+	CheckDualMonitor(self, level)
+	if math.mod(level.num, 5) == 0 then
+		local left, bottom = level:GetLeft(), level:GetBottom()
+		level:ClearAllPoints()
+		level:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", left, bottom)
+	end
 end
 
 
@@ -327,6 +410,13 @@ function Open(self, parent, func, level, value, point, relativePoint)
 	self:Close(level)
 
 	local frame = AcquireLevel(self, level)
+	if level == 1 then
+		frame.lastDirection = "RIGHT"
+		frame.lastVDirection = "DOWN"
+	else
+		frame.lastDirection = levels[level - 1].lastDirection or "RIGHT"
+		frame.lastVDirection = levels[level - 1].lastVDirection or "DOWN"
+	end
 	frame:ClearAllPoints()
 	frame.parent = parent
 	frame:SetPoint("LEFT", UIParent, "RIGHT", 10000, 0) -- Offscreen init
@@ -343,81 +433,33 @@ function Open(self, parent, func, level, value, point, relativePoint)
 
 	Refresh(self, levels[level])
 
-	frame:ClearAllPoints()
+	if point then
+		frame:ClearAllPoints()
+		frame:SetPoint(point, parent, relativePoint or point)
 
-    -- Positioning logic
-    if point then
-         frame:SetPoint(point, parent, relativePoint or point)
-    else
-         -- Default positioning
-        if level == 1 then
-             frame:SetPoint("TOPLEFT", parent, "BOTTOMLEFT")
-             if frame:GetRight() and frame:GetRight() > GetScreenWidth() then
-                 frame:ClearAllPoints()
-                 frame:SetPoint("TOPRIGHT", parent, "BOTTOMRIGHT")
-             end
-             if frame:GetBottom() and frame:GetBottom() < 0 then
-                 frame:ClearAllPoints()
-                 frame:SetPoint("BOTTOMLEFT", parent, "TOPLEFT")
-                 if frame:GetRight() and frame:GetRight() > GetScreenWidth() then
-                     frame:ClearAllPoints()
-                     frame:SetPoint("BOTTOMRIGHT", parent, "TOPRIGHT")
-                 end
-             end
-             if frame:GetTop() and frame:GetTop() > GetScreenHeight() then
-                 frame:ClearAllPoints()
-                 frame:SetPoint("TOPLEFT", parent, "BOTTOMLEFT")
-                 if frame:GetBottom() and frame:GetBottom() < 0 then
-                     frame:ClearAllPoints()
-                     frame:SetPoint("BOTTOMLEFT", parent, "TOPLEFT")
-                 end
-             end
-        else
-             frame:SetPoint("TOPLEFT", parent, "TOPRIGHT", 0, 5)
-             local openedLeft = false
-             if frame:GetRight() and frame:GetRight() > GetScreenWidth() then
-                 frame:ClearAllPoints()
-                 frame:SetPoint("TOPRIGHT", parent, "TOPLEFT", 0, 5)
-                 openedLeft = true
-             end
-             if frame:GetLeft() and frame:GetLeft() < 0 then
-                 frame:ClearAllPoints()
-                 frame:SetPoint("TOPLEFT", parent, "TOPRIGHT", 0, 5)
-                 openedLeft = false
-             end
-             if frame:GetTop() and frame:GetTop() > GetScreenHeight() then
-                 frame:ClearAllPoints()
-                 if openedLeft then
-                     frame:SetPoint("BOTTOMRIGHT", parent, "BOTTOMLEFT", 0, -5)
-                 else
-                     frame:SetPoint("BOTTOMLEFT", parent, "BOTTOMRIGHT", 0, -5)
-                 end
-                 if frame:GetRight() and frame:GetRight() > GetScreenWidth() then
-                     frame:ClearAllPoints()
-                     frame:SetPoint("BOTTOMRIGHT", parent, "BOTTOMLEFT", 0, -5)
-                 elseif frame:GetLeft() and frame:GetLeft() < 0 then
-                     frame:ClearAllPoints()
-                     frame:SetPoint("BOTTOMLEFT", parent, "BOTTOMRIGHT", 0, -5)
-                 end
-             end
-            if frame:GetBottom() and frame:GetBottom() < 0 then
-                frame:ClearAllPoints()
-                if openedLeft then
-                    frame:SetPoint("BOTTOMRIGHT", parent, "BOTTOMLEFT", 0, -5)
-                else
-                    frame:SetPoint("BOTTOMLEFT", parent, "RIGHT", 0, -5)
-                end
-                -- Re-check horizontal bounds after vertical flip
-                if frame:GetRight() and frame:GetRight() > GetScreenWidth() then
-                    frame:ClearAllPoints()
-                    frame:SetPoint("BOTTOMRIGHT", parent, "BOTTOMLEFT", 0, -5)
-                elseif frame:GetLeft() and frame:GetLeft() < 0 then
-                    frame:ClearAllPoints()
-                    frame:SetPoint("BOTTOMLEFT", parent, "BOTTOMRIGHT", 0, -5)
-                end
-            end
-        end
-    end
+		if string.sub(point, 1, 3) ~= string.sub(relativePoint or point, 1, 3) then
+			if frame:GetBottom() < 0 then
+				local point, parent, relativePoint, x, y = frame:GetPoint(1)
+				local change = GetScreenHeight() - frame:GetTop()
+				local otherChange = -frame:GetBottom()
+				if otherChange < change then
+					change = otherChange
+				end
+				frame:SetPoint(point, parent, relativePoint, x, y + change)
+			elseif frame:GetTop() > GetScreenHeight() then
+				local point, parent, relativePoint, x, y = frame:GetPoint(1)
+				local change = GetScreenHeight() - frame:GetTop()
+				local otherChange = -frame:GetBottom()
+				if otherChange < change then
+					change = otherChange
+				end
+				frame:SetPoint(point, parent, relativePoint, x, y + change)
+			end
+		end
+	end
+
+	CheckDualMonitor(self, frame)
+	StartCounting(self, level)
 end
 -----------------------------------------------------------------------------
 
