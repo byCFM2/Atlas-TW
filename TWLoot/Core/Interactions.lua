@@ -22,6 +22,7 @@ AtlasTW.Interactions = AtlasTW.Interactions or {}
 
 -- Local references for performance
 local L = AtlasTW.Localization.UI
+local LM = AtlasTW.Localization.MapData
 
 local WHITE = AtlasTW.Colors.WHITE
 local BLUE = AtlasTW.Colors.BLUE
