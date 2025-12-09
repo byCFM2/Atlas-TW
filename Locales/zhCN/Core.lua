@@ -213,6 +213,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Sets"] = "套装",
     ["Misc"] = "杂项",
     ["Dungeons & Raids"] = "地下城与团队副本",
+    ["Weapon Skills"] = "武器技能",
 
     -- Minimap Tooltip
     ["Left-click to open Atlas-TW.\nMiddle-click for Atlas-TW options.\nRight-click and drag to move this button."] =

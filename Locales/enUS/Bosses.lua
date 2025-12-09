@@ -577,4 +577,12 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Cho'Rush the Observer"] = true,
     ["Lord Hel'nurath"] = true,
     ["Pimgib"] = true,
+    ["Woo Ping"] = true,
+    ["Bixi Wobblebonk"] = true,
+    ["Buliwyf Stonehand"] = true,
+    ["Ilyenia Moonfire"] = true,
+    ["Hanashi"] = true,
+    ["Sayoc"] = true,
+    ["Archibald"] = true,
+    ["Ansekhwa"] = true,
 })

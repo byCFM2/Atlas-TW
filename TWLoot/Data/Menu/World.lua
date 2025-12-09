@@ -37,6 +37,7 @@ AtlasTW.MenuData.WorldBosses = {
     { name = LB["Moo"], extra = "Moomoo Grove", icon = "Interface\\Icons\\Spell_Nature_Polymorph_Cow", lootpage = "CowKing" },
     { name = LB["Cla'ckora"], extra = "Azshara", icon = "Interface\\Icons\\INV_Misc_Birdbeck_02", lootpage = "Clackora" },
     { name = L["Rare Mobs"], Extra = L["Various Locations"], icon = "Interface\\Icons\\INV_Misc_Head_Undead_01", lootpage = "RareMobs" },
+    { name = L["Weapon Skills"], icon = "Interface\\Icons\\INV_Sword_04", lootpage = "AtlasTWLootWeaponSkillsMenu" },
 }
 
 ---

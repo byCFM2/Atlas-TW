@@ -450,4 +450,12 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "deDE", {
     ["Rethilgore"] = "Rotkralle",
     ["Stratholme Courier"] = "Kurier von Stratholme",
     ["Master Craftsman Omarion"] = "Meisterhandwerker Omarion",
+    ["Woo Ping"] = "Woo Ping",
+    ["Bixi Wobblebonk"] = "Bixi Wobblebonk",
+    ["Buliwyf Stonehand"] = "Buliwyf Stonehand",
+    ["Ilyenia Moonfire"] = "Ilyenia Moonfire",
+    ["Hanashi"] = "Hanashi",
+    ["Sayoc"] = "Sayoc",
+    ["Archibald"] = "Archibald",
+    ["Ansekhwa"] = "Ansekhwa",
 })

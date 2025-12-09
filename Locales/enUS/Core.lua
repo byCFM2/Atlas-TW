@@ -271,6 +271,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Sets"] = true,
     ["Misc"] = true,
     ["Dungeons & Raids"] = true,
+    ["Weapon Skills"] = true,
 
     --************************************************
     -- Minimap Tooltip

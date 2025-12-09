@@ -25,6 +25,7 @@ local LocalizedStrings = {
     Factions = L["Factions"],
     WorldEvents = L["World Events"],
     Crafting = L["Crafting"],
+	WeaponSkills = L["Weapon Skills"],
     RareMobs = L["Rare Mobs"]
 }
 
@@ -204,6 +205,7 @@ function AtlasTWLoot_OpenMenu(menuName)
 		[LocalizedStrings.World] = "AtlasTWLoot_WorldMenu",
 		[LocalizedStrings.PvPRewards] = "AtlasTWLootPvPMenu",
 		[LocalizedStrings.WorldEvents] = "AtlasTWLootWorldEventMenu",
+		[LocalizedStrings.WeaponSkills] = "AtlasTWLootWeaponSkillsMenu",
 		[LocalizedStrings.Collections] = "AtlasTWLootSetMenu",
 		[LocalizedStrings.Factions] = "AtlasTWLootRepMenu",
 		[LocalizedStrings.DungeonsRaids] = "AtlasTWLoot_DungeonsMenu",

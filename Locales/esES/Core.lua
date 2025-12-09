@@ -274,6 +274,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Sets"] = "Conjuntos",
     ["Misc"] = "Varios",
     ["Dungeons & Raids"] = "Mazmorras y Bandas",
+    ["Weapon Skills"] = "Habilidades de Armas",
 
     --************************************************
     -- Minimap Tooltip

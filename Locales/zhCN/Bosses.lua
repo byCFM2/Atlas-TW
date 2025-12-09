@@ -450,4 +450,12 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "zhCN", {
     ["Rethilgore"] = "雷希戈尔",
     ["Stratholme Courier"] = "斯坦索姆信使",
     ["Master Craftsman Omarion"] = "大工匠奥玛里恩",
+    ["Woo Ping"] = "吴平",
+    ["Bixi Wobblebonk"] = "比克斯",
+    ["Buliwyf Stonehand"] = "布里维夫·石拳",
+    ["Ilyenia Moonfire"] = "娜玛拉的腰带",
+    ["Hanashi"] = "哈纳什",
+    ["Sayoc"] = "塞尤克",
+    ["Archibald"] = "阿基巴德",
+    ["Ansekhwa"] = "安塞瓦",
 })

@@ -273,6 +273,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Crafting"] = "Herstellung",
     ["Misc"] = "Verschiedenes",
     ["Dungeons & Raids"] = "Dungeons & Schlachtzüge",
+    ["Weapon Skills"] = "Waffenfähigkeiten",
     ["Sets"] = "Mengen",
 
     --************************************************

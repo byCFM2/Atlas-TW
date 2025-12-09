@@ -26,7 +26,7 @@ local LMD = AtlasTW.Localization.MapData
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 local ephemeralPendant = {
-    { id = 55482, dropRate = 7, disc = L["Neck"], container = { 47275, 47233, 47239, 47311, 47317, 47323, 47395, 47401, 47407, 47065, 47071, 47077, -- Ephemeral Pendant
+    { id = 55482, dropRate = 20, disc = L["Neck"], container = { 47275, 47233, 47239, 47311, 47317, 47323, 47395, 47401, 47407, 47065, 47071, 47077, -- Ephemeral Pendant
             47329, 47185, 47191, 47197, 47113, 47119 } },
 }
 
@@ -63,8 +63,6 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 { id = 55080 }, -- Bloodmoon, Sickle of the Murderous Flight
                 {},
                 { id = 55082 }, -- Idol of Laceration
-                {},
-                { id = 41485, dropRate = 3.25, disc = L["Reagent"] }, -- Pristine Ley Crystal
             }
         },
         {
@@ -90,7 +88,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 {},
                 { id = 41403, dropRate = 100, container = { 55133, 55134, 55135 } }, -- Enchanted Amethyst
                 {},
-                { id = 41485, dropRate = 3.25, disc = L["Reagent"] }, -- Pristine Ley Crystal
+                { id = 41485, dropRate = 3, disc = L["Reagent"] }, -- Pristine Ley Crystal
                 { id = 41373, disc = L["Quest Item"], dropRate = 100 }, -- Draconic Focus
             }
         },
@@ -111,7 +109,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 { id = 55096 }, -- Phase-shifting Crossbow
                 { id = 55279 }, -- Branch of Resolute Defense
                 {},
-                { id = 41485, dropRate = 3.25, disc = L["Reagent"] }, -- Pristine Ley Crystal
+                { id = 41485, dropRate = 3, disc = L["Reagent"] }, -- Pristine Ley Crystal
                 { id = 41412, dropRate = 100 }, -- Cosmic Residue
             }
         },
@@ -132,7 +130,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 {},
                 { id = 55276 }, -- Forgotten Raven's Mallet
                 {},
-                { id = 41485, dropRate = 3.25, disc = L["Reagent"] }, -- Pristine Ley Crystal
+                { id = 41485, dropRate = 3, disc = L["Reagent"] }, -- Pristine Ley Crystal
                 { id = 41414, dropRate = 100 }, -- Anima of the Guardian
             }
         },
@@ -140,7 +138,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
             id = "King",
             prefix = "5)",
             name = LB["King"] .. LMD[" (Chess fight)"],
-            defaults = { dropRate = 12.5 },
+            defaults = { dropRate = 13 },
             loot = {
                 { id = 55088 }, -- Dragonclaw Gauntlets
                 { id = 55102 }, -- Insomnius' Retribution
@@ -168,7 +166,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
             id = "SanvTasdal",
             prefix = "6)",
             name = LB["Sanv Tas'dal"],
-            defaults = { dropRate = 14.3 },
+            defaults = { dropRate = 14 },
             loot = {
                 { id = 55113 }, -- Dreadslayer Horns
                 { id = 55117 }, -- Girdle of the Faded Primals
@@ -196,7 +194,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
             id = "RupturanTheBroken",
             prefix = "7)",
             name = LB["Rupturan the Broken"],
-            defaults = { dropRate = 14.3 },
+            defaults = { dropRate = 14 },
             loot = {
                 { id = 55122 }, -- Earthquake Leggings
                 { id = 55125 }, -- Handwraps of Dead Winds
@@ -224,7 +222,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
             id = "Kruul",
             prefix = "8)",
             name = LB["Kruul"],
-            defaults = { dropRate = 11.1 },
+            defaults = { dropRate = 11 },
             loot = {
                 { id = 55132 }, -- Pendant of Purified Demon's Blood
                 { id = 55130 }, -- Wristwraps of Exiled Radiance
@@ -244,7 +242,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 { id = 55489, dropRate = 50, container = { 47273, 47231, 47237, 47309, 47315, 47393, 47399, 47405 } }, -- Brutal Leggings of Conquest
                 { id = 55490, dropRate = 50, container = { 47063, 47069, 47075, 47321, 47327, 47183, 47189, 47195, 47111, 47117 } }, -- Brutal Leggings of Ascendancy
                 {},
-                { id = 41485, dropRate = 100, disc = L["Reagent"] }, -- Pristine Ley Crystal
+                { id = 41485, dropRate = 3, disc = L["Reagent"] }, -- Pristine Ley Crystal
                 unpack(ephemeralPendant),
             }
         },
@@ -252,19 +250,19 @@ AtlasTW.InstanceData.TowerofKarazhan = {
             id = "Mephistroth",
             prefix = "9)",
             name = LB["Mephistroth"],
-            defaults = { dropRate = 19 },
+            defaults = { dropRate = 7 },
             loot = {
                 { id = 55351 }, -- Turalyon's Hope
                 { id = 55356 }, -- Netherwrought Bracers
                 { id = 55513 }, -- Tunic of Demonic Deception
-                { id = 55357, dropRate = 8 }, -- Sash of the Grand Betrayal
+                { id = 55357 }, -- Sash of the Grand Betrayal
                 { id = 55352 }, -- Cloak of Rapid Regeneration
                 { id = 55354 }, -- Khadgar's Guidance
                 { id = 55355 }, -- Memory of the Last Guardian
                 { id = 55512 }, -- Forgotten Hide Pauldrons
                 {},
-                { id = 55346, dropRate = 8 }, -- Rain of Spiders
-                { id = 55347, dropRate = 8 }, -- Thunderfall, Stormhammer of the Chief Thane
+                { id = 55346 }, -- Rain of Spiders
+                { id = 55347 }, -- Thunderfall, Stormhammer of the Chief Thane
                 { id = 55348 }, -- Kirel'narak, the Death Sentence
                 { id = 55349 }, -- Nethraka, Wing of Oblivion
                 { id = 55350 }, -- Censer of Soulwarding
@@ -275,8 +273,8 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 {},
                 unpack(ephemeralPendant),
                 {},
-                { id = 55491, dropRate = 50, container = { 47230, 47236, 47308, 47314, 47272, 47392, 47398, 47404 } }, -- Nathrezim Armor of Treachery
-                { id = 55492, dropRate = 50, container = { 47062, 47068, 47074, 47320, 47326, 47182, 47188, 47194, 47110, 47116 } }, -- Nathrezim Armor of Deceit
+                { id = 55491, dropRate = 100, container = { 47230, 47236, 47308, 47314, 47272, 47392, 47398, 47404 } }, -- Nathrezim Armor of Treachery
+                { id = 55492, dropRate = 100, container = { 47062, 47068, 47074, 47320, 47326, 47182, 47188, 47194, 47110, 47116 } }, -- Nathrezim Armor of Deceit
                 {},
                 { id = 41485, dropRate = 100, disc = L["Reagent"] }, -- Pristine Ley Crystal
                 { id = 41447, dropRate = 100 }, -- Soul of the Dreadlord
@@ -301,6 +299,8 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 { id = 55275 }, -- Slivers of Nullification
                 {},
                 { id = 55277 }, -- The End of All Ambitions
+                {},
+                { id = 41485, dropRate = .4, disc = L["Reagent"] }, -- Pristine Ley Crystal
             }
         },
         { name = LMD["Tower of Karazhan Sets"], items = "AtlasTWLootUKSetMenu" },

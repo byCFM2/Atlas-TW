@@ -75,11 +75,13 @@
     <Include file="Tables\Events.lua"/>
     <Include file="Tables\Sets.lua"/>
     <Include file="Tables\Crafting.lua"/>
+    <Include file="Tables\WeaponSkills.lua"/>
 
     <!-- Menu data -->
 	<Include file="Menu\Sets.lua"/>
 	<Include file="Menu\WorldEvents.lua"/>
 	<Include file="Menu\Crafting.lua"/>
+	<Include file="Menu\WeaponSkills.lua"/>
 	<Include file="Menu\Factions.lua"/>
 	<Include file="Menu\World.lua"/>
 	<Include file="Menu\PvP.lua"/>
