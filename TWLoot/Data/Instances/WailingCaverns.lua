@@ -116,10 +116,9 @@ AtlasTW.InstanceData.WailingCaverns = {
             name = LB["Lord Cobrahn"],
             defaults = { dropRate = 33 },
             loot = {
+                { id = 6465 }, -- Robe of the Moccasin
                 { id = 6460 }, -- Cobrahn's Grasp
                 { id = 10410 }, -- Leggings of the Fang
-                {},
-                { id = 6465 }, -- Robe of the Moccasin
                 {},
                 { id = 9738, dropRate = 100, container = { 6504, 6505 } }, -- Gem of Cobrahn
             }
@@ -130,12 +129,10 @@ AtlasTW.InstanceData.WailingCaverns = {
             name = LB["Lady Anacondra"],
             defaults = { dropRate = 25 },
             loot = {
+                { id = 6446 }, -- Snakeskin Bag
                 { id = 10412 }, -- Belt of the Fang
                 { id = 5404 }, -- Serpent's Shoulders
-                {},
                 { id = 80709 }, -- Guardian Staff
-                {},
-                { id = 6446 }, -- Snakeskin Bag
                 {},
                 { id = 23800, dropRate = .2 }, -- Violet Feral Raptor
                 {},
@@ -151,10 +148,11 @@ AtlasTW.InstanceData.WailingCaverns = {
             name = LB["Kresh"],
             defaults = { dropRate = 33 },
             loot = {
-                { id = 13245 }, -- Kresh's Back
                 { id = 6447 }, -- Worn Turtle Shell Shield
-                {},
                 { id = 80710 }, -- Turtle Scale Shoulderguards
+                { id = 13245 }, -- Kresh's Back
+                {},
+                { id = 49992, dropRate = .02, container = { 49991 } }, -- Sea Turtle Shell
                 {},
                 { id = 6443, dropRate = 80, container = { 6480, 918 } }, -- Deviate Hide
             }
@@ -179,7 +177,6 @@ AtlasTW.InstanceData.WailingCaverns = {
             defaults = { dropRate = 25 },
             loot = {
                 { id = 55371, dropRate = 50 }, -- Windborne Sash
-                {},
                 { id = 55369 }, -- Kolkar Marauder Gauntlets
                 { id = 55370 }, -- Totem of Static Charge
                 {},
@@ -194,7 +191,6 @@ AtlasTW.InstanceData.WailingCaverns = {
             loot = {
                 { id = 6473 }, -- Armor of the Fang
                 { id = 80711 }, -- Bracers of Wild Growth
-                {},
                 { id = 6472 }, -- Stinging Viper
                 {},
                 { id = 9740, dropRate = 100, container = { 6504, 6505 } }, -- Gem of Pythas
@@ -208,7 +204,6 @@ AtlasTW.InstanceData.WailingCaverns = {
             defaults = { dropRate = 33 },
             loot = {
                 { id = 6448 }, -- Tail Spike
-                {},
                 { id = 6449 }, -- Glowing Lizardscale Cloak
                 { id = 80712 }, -- Charged Leggings
                 {},
@@ -222,7 +217,6 @@ AtlasTW.InstanceData.WailingCaverns = {
             defaults = { dropRate = 25 },
             loot = {
                 { id = 55374, dropRate = 50 }, -- Enraging Waistwraps
-                {},
                 { id = 55372 }, -- Band of the Claw
                 { id = 55373 }, -- Idol of the Apex Predator
             }
@@ -234,10 +228,10 @@ AtlasTW.InstanceData.WailingCaverns = {
             postfix = L["Upper"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 6469 }, -- Venomstrike
                 { id = 5970 }, -- Serpent Gloves
                 { id = 10411 }, -- Footpads of the Fang
                 { id = 6459 }, -- Savage Trodders
+                { id = 6469 }, -- Venomstrike
                 {},
                 { id = 9741, dropRate = 100, container = { 6504, 6505 } }, -- Gem of Serpentis
                 { id = 80863, container = { 80860, 80861 } }, -- Crystal of the Serpent
@@ -251,7 +245,6 @@ AtlasTW.InstanceData.WailingCaverns = {
             defaults = { dropRate = 33 },
             loot = {
                 { id = 6629 }, -- Sporid Cape
-                {},
                 { id = 6630 }, -- Seedcloud Buckler
                 { id = 6631 }, -- Living Root
                 {},
@@ -286,7 +279,7 @@ AtlasTW.InstanceData.WailingCaverns = {
             loot = {
                 { id = 10413, dropRate = 2 }, -- Gloves of the Fang
                 {},
-                { id = 55381, dropRate = 25 }, -- Phytolance
+                { id = 55381, dropRate = .02 }, -- Phytolance
                 { id = 80807, dropRate = .02 }, -- Serpent's Bite
                 {},
                 { id = 80862, dropRate = 30, container = { 80860, 80861 } }, -- Moontouched Wood

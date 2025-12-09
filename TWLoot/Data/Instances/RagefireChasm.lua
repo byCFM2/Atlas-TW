@@ -21,6 +21,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Localization.UI
 local LZ = AtlasTW.Localization.Zones
 local LB = AtlasTW.Localization.Bosses
+local Colors = AtlasTW.Colors
 
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
@@ -45,8 +46,13 @@ AtlasTW.InstanceData.RagefireChasm = {
                 { id = 80701, dropRate = 35 }, -- Dusty Leather Pants
                 { id = 80702, dropRate = 30 }, -- Stitched Cloth Vest
                 {},
-                { id = 17041, disc = L["Level One Lunatic Challenge"], dropRate = 100 }, -- The Blazing Pan
+                { id = 17041, disc = L["Level One Lunatic Challenge"], dropRate = 125 }, -- The Blazing Pan
             }
+        },
+        {
+            id = "RFCRahauro",
+            name = LB["Maur Grimtotem"],
+            color = Colors.GREY,
         },
         {
             id = "RFCTaragaman",
@@ -58,7 +64,9 @@ AtlasTW.InstanceData.RagefireChasm = {
                 { id = 14148 }, -- Crystalline Cuffs
                 { id = 14145 }, -- Cursed Felblade
                 {},
-                { id = 64, disc = L["Level One Lunatic Challenge"], dropRate = 100 }, -- Fiery Cloak
+                { id = 14540, dropRate = 100 }, -- Taragaman the Hungerer's Heart
+                {},
+                { id = 64, disc = L["Level One Lunatic Challenge"], dropRate = 25 }, -- Fiery Cloak
             }
         },
         {
@@ -71,7 +79,8 @@ AtlasTW.InstanceData.RagefireChasm = {
                 { id = 14147 }, -- Cavedweller Bracers
                 { id = 14151 }, -- Chanting Blade
                 {},
-                { id = 80111, disc = L["Level One Lunatic Challenge"], dropRate = 100 }, -- Ash-Covered Tunic
+                { id = 55004, disc = L["Level One Lunatic Challenge"], dropRate = 25 }, -- Shattered Burning Blade Medallion
+                { id = 80111, disc = L["Level One Lunatic Challenge"], dropRate = 25 }, -- Ash-Covered Tunic
             }
         },
         {
@@ -84,6 +93,8 @@ AtlasTW.InstanceData.RagefireChasm = {
                 { id = 80704 }, -- Lavadrenched Chainmail
                 { id = 80703 }, -- Heated Leather Belt
                 {},
+                { id = 5212, dropRate = 25 }, -- Blazing Wand
+                {},
                 { id = 5235, disc = L["Level One Lunatic Challenge"], dropRate = 100 }, -- Cultist's Firestick
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
@@ -92,8 +103,12 @@ AtlasTW.InstanceData.RagefireChasm = {
         {
             id = "RFCTrash",
             name = L["Trash Mobs"].."-"..LZ["Ragefire Chasm"],
+            defaults = { dropRate = 25 },
             loot = {
-                { id = 12862, disc = L["Level One Lunatic Challenge"], dropRate = 25 }, -- Burning Blade Grimoire
+                { id = 14395, container = { 15449, 15450, 15451 } }, -- Spells of Shadow
+                { id = 14396, container = { 15449, 15450, 15451 } }, -- Incantations from the Nether
+                {},
+                { id = 12862, disc = L["Level One Lunatic Challenge"] }, -- Burning Blade Grimoire
             }
         },
     },

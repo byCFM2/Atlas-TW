@@ -263,56 +263,63 @@ local WorldEvents = {
 		{ id = 20574 }, -- Flimsy Female Undead Mask
 	},
 	Winterviel = {
-		{ id = 21525 }, -- Green Winter Hat
 		{ id = 21524 }, -- Red Winter Hat
+		{ id = 21525 }, -- Green Winter Hat
 		{},
-		{ id = 17712, disc = L["Misc"] }, -- Winter Veil Disguise Kit
+		{ id = 17712, disc = L["Quest Reward"] }, -- Winter Veil Disguise Kit
 		{ id = 17202, disc = L["Misc"] }, -- Snowball
 		{ id = 21212, disc = L["Misc"] }, -- Fresh Holly
 		{ id = 21519, disc = L["Misc"] }, -- Mistletoe
 		{},
 		{ name = LM["Gaily Wrapped Present"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 21301 }, -- Green Helper Box
-		{ id = 21308 }, -- Jingling Bell
 		{ id = 21305 }, -- Red Helper Box
-		{ id = 21309 }, -- Snowman Kit
+		{ id = 21308 }, -- Jingling Bell
+		{ id = 21309 }, -- Tiny Snowman
 		{},
 		{ name = L["Smokywood Pastures"], icon="INV_Holiday_Christmas_Present_01" },
 		{ name = L["Smokywood Pastures Special Gift"], icon="INV_Holiday_Christmas_Present_01" },
-		{ id = 17706 }, -- Plans: Edge of Winter
 		{ id = 17725 }, -- Formula: Enchant Weapon - Winter's Might
-		{ id = 17720 }, -- Schematic: Snowmaster 9000
-		{ id = 17722 }, -- Pattern: Gloves of the Greatfather
-		{ id = 17709 }, -- Recipe: Elixir of Frost Power
-		{ id = 17724 }, -- Pattern: Green Holiday Shirt
+		{ id = 17706, container = { 17704 } }, -- Plans: Edge of Winter
+		{ id = 17720, container = { 17716 } }, -- Schematic: Snowmaster 9000
+		{ id = 17722, container = { 17721 } }, -- Pattern: Gloves of the Greatfather
+		{ id = 17709, container = { 17708 } }, -- Recipe: Elixir of Frost Power
+		{ id = 17724, container = { 17723 } }, -- Pattern: Green Holiday Shirt
 		{},
 		{ id = 21325 }, -- Mechanical Greench
-		{ id = 21213, disc = L["Misc"] }, -- Preserved Holly
+		{ id = 21213, disc = L["Quest Reward"] }, -- Preserved Holly
 		{},
 		{ name = LM["Gently Shaken Gift"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 21235, disc = L["Consumable"] }, -- Winter Veil Roast
 		{ id = 21241, disc = L["Consumable"] }, -- Winter Veil Eggnog
 		{},
-		{ id = 17201, container = { 17198 } }, -- Recipe: Egg Nog
-		{ id = 17200, container = { 17197 } }, -- Recipe: Gingerbread Cookie
-		{ id = 17344, disc = L["Consumable"] }, -- Candy Cane
-		{ id = 17406, disc = L["Consumable"] }, -- Holiday Cheesewheel
-		{ id = 17407, disc = L["Consumable"] }, -- Graccu's Homemade Meat Pie
-		{ id = 17408, disc = L["Consumable"] }, -- Spicy Beefstick
-		{ id = 17404, disc = L["Consumable"] }, -- Blended Bean Brew
-		{ id = 17405, disc = L["Consumable"] }, -- Green Garden Tea
-		{ id = 17196, disc = L["Consumable"] }, -- Holiday Spirits
-		{ id = 17403, disc = L["Consumable"] }, -- Steamwheedle Fizzy Spirits
-		{ id = 17402, disc = L["Consumable"] }, -- Greatfather's Winter Ale
-		{ id = 17194, disc = L["Reagent"] }, -- Holiday Spices
-		{ id = 17303, disc = L["Misc"] }, -- Blue Ribboned Wrapping Paper
-		{ id = 17304, disc = L["Misc"] }, -- Green Ribboned Wrapping Paper
-		{ id = 17307, disc = L["Misc"] }, -- Purple Ribboned Wrapping Paper
+		{ id = 17200, disc = L["Vendor"], container = { 17197 } }, -- Recipe: Gingerbread Cookie
+		{ id = 17201, disc = L["Vendor"], container = { 17198 } }, -- Recipe: Egg Nog
+		{ id = 17344, disc = L["Vendor"]..", "..L["Consumable"] }, -- Candy Cane
+		{ id = 17406, disc = L["Vendor"]..", "..L["Consumable"] }, -- Holiday Cheesewheel
+		{ id = 17407, disc = L["Vendor"]..", "..L["Consumable"] }, -- Graccu's Homemade Meat Pie
+		{ id = 17408, disc = L["Vendor"]..", "..L["Consumable"] }, -- Spicy Beefstick
+		{ id = 17404, disc = L["Vendor"]..", "..L["Consumable"] }, -- Blended Bean Brew
+		{ id = 17405, disc = L["Vendor"]..", "..L["Consumable"] }, -- Green Garden Tea
+		{ id = 17196, disc = L["Vendor"]..", "..L["Consumable"] }, -- Holiday Spirits
+		{ id = 17403, disc = L["Vendor"]..", "..L["Consumable"] }, -- Steamwheedle Fizzy Spirits
+		{ id = 17402, disc = L["Vendor"]..", "..L["Consumable"] }, -- Greatfather's Winter Ale
+		{ id = 17194, disc = L["Vendor"]..", "..L["Reagent"] }, -- Holiday Spices
+		{ id = 17303, disc = L["Vendor"]..", "..L["Misc"] }, -- Blue Ribboned Wrapping Paper
+		{ id = 17304, disc = L["Vendor"]..", "..L["Misc"] }, -- Green Ribboned Wrapping Paper
+		{ id = 17307, disc = L["Vendor"]..", "..L["Misc"] }, -- Purple Ribboned Wrapping Paper
 		{ name = LM["Snowball"], icon="INV_Holiday_Christmas_Present_01" },
-		{ id = 51249 }, -- Snowball
+		{ id = 93080, disc = L["Quest Reward"] }, -- Sack of Winter Veil Presents
 		{},
 		{ name = LM["Festive Gift"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 21328, disc = L["Misc"] }, -- Wand of Holiday Cheer
+		{},
+		{ id = 51250, disc = L["Quest Reward"] }, -- Miniature Winter Veil Tree
+		{ id = 51251, disc = L["Quest Reward"] }, -- Hedwig
+		{ id = 51060, disc = L["Quest Reward"], container = { 21301, 21305, 21309, 21525, 50059, 50060, 21524, 50061, 51061, 51062 } }, -- Winter Veil Gift Box
+		{},
+		{ name = L["Smokywood Pastures"], icon="INV_Holiday_Christmas_Present_01" },
+		{ id = 21215, disc = L["Consumable"] }, -- Graccu's Mince Meat Fruitcake
 	},
 	Noblegarden = {
 		{ name = LM["Brightly Colored Egg"], icon="INV_Egg_03" },

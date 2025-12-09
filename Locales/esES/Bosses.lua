@@ -458,4 +458,5 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "esES", {
     ["Sayoc"] = "Sayoc",
     ["Archibald"] = "Archibald",
     ["Ansekhwa"] = "Ansekhwa",
+    ["Maur Grimtotem"] = "Maur Tótem Siniestro",
 })
