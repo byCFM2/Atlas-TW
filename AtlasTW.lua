@@ -704,16 +704,69 @@ end
 --- @return nil
 --- @usage Called automatically when Atlas frame is shown
 ---
+-- Helper to find boss index
+local function FindBossIndexInScrollList(bossIdOrName)
+	if not (AtlasTW and AtlasTW.ScrollList) or not bossIdOrName then return nil end
+	for i = 1, table.getn(AtlasTW.ScrollList) do
+		local entry = AtlasTW.ScrollList[i]
+		if entry and (entry.id == bossIdOrName or entry.name == bossIdOrName) then
+			return i
+		end
+	end
+	return nil
+end
+
 function AtlasTW.OnShow()
     if(AtlasTWOptions.AtlasAutoSelect) then
         atlasAutoSelect()
     end
 
+    -- Restore Last Opened State
+    if AtlasTWCharDB and AtlasTWCharDB.LastOpened and AtlasTWCharDB.LastOpened.StoredElement then
+         local stored = AtlasTWCharDB.LastOpened
+
+         -- Restore Map Choice if valid
+         if stored.AtlasType and stored.AtlasZone and AtlasTWOptions then
+              AtlasTWOptions.AtlasType = stored.AtlasType
+              AtlasTWOptions.AtlasZone = stored.AtlasZone
+         end
+    end
+
     AtlasTW.UpdateDropdownLabels()
     AtlasTW.Refresh()
 
-    --If a boss has been selected, show the loot frame
-    if AtlasTWLootItemsFrame.activeElement then
+    -- Restore Loot Page State
+    if AtlasTWCharDB and AtlasTWCharDB.LastOpened and AtlasTWCharDB.LastOpened.StoredElement then
+         local stored = AtlasTWCharDB.LastOpened
+
+         if AtlasTWLootItemsFrame then
+              AtlasTWLootItemsFrame.StoredElement = stored.StoredElement
+              AtlasTWLootItemsFrame.StoredMenu = stored.StoredMenu
+
+              -- Restore left-side selection
+              local bossIndex = FindBossIndexInScrollList(stored.StoredElement)
+              if bossIndex then
+                  AtlasTWLootItemsFrame.activeElement = bossIndex
+                  if AtlasTW.LootBrowserUI.ScrollBarUpdate then AtlasTW.LootBrowserUI.ScrollBarUpdate() end
+              end
+
+              -- Show Loot Frame
+              AtlasTWLootItemsFrame:Show()
+
+              -- Load Content (with caching)
+              local lootTable = AtlasTW.DataResolver.GetLootByElemName(stored.StoredElement, stored.StoredMenu)
+              if lootTable and AtlasTW.LootCache and AtlasTW.LootCache.CacheAllItems then
+                  AtlasTW.LootBrowserUI.ShowScrollBarLoading()
+                  AtlasTW.LootCache.CacheAllItems(lootTable, function()
+                        AtlasTW.LootBrowserUI.HideScrollBarLoading()
+                        AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+                  end)
+              else
+                  AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+              end
+         end
+    --If a boss has been selected (e.g. from AutoSelect or previous session without full restore), show the loot frame
+    elseif AtlasTWLootItemsFrame.activeElement then
         AtlasTWLootItemsFrame:Show()
     end
 end

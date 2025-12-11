@@ -47,6 +47,23 @@ do
     atlasFrame:SetScript("OnHide", function()
         atlasFrame:StopMovingOrSizing()
         atlasFrame.isMoving = false
+
+        -- Persist state (Last Opened Page)
+        -- Check if LootFrame is active (IsShown returns true if Show() was called, even if parent hidden)
+        if AtlasTWLootItemsFrame and AtlasTWLootItemsFrame:IsShown() and AtlasTWLootItemsFrame.StoredElement then
+             if not AtlasTWCharDB.LastOpened then AtlasTWCharDB.LastOpened = {} end
+             AtlasTWCharDB.LastOpened.StoredElement = AtlasTWLootItemsFrame.StoredElement
+             AtlasTWCharDB.LastOpened.StoredMenu = AtlasTWLootItemsFrame.StoredMenu
+             if AtlasTWOptions then
+                 AtlasTWCharDB.LastOpened.AtlasType = AtlasTWOptions.AtlasType
+                 AtlasTWCharDB.LastOpened.AtlasZone = AtlasTWOptions.AtlasZone
+             end
+        else
+            -- Clear if we are not on a loot page to avoid restoring old state when user consciously closed it
+             if AtlasTWCharDB and AtlasTWCharDB.LastOpened then
+                 AtlasTWCharDB.LastOpened = nil
+             end
+        end
     end)
 
     atlasFrame:SetScript("OnDragStart", function()
@@ -108,12 +125,6 @@ do
     dropDownTypeBg:SetTexture("Interface\\Tooltips\\UI-Tooltip-Background")
     dropDownTypeBg:SetVertexColor(0.1, 0.1, 0.1, 0.8)
     dropDownTypeBg:SetAllPoints(dropDownType)
---[[ 
-    -- Border texture
-    local dropDownTypeBorder = dropDownType:CreateTexture(nil, "BORDER")
-    dropDownTypeBorder:SetTexture("Interface\\Tooltips\\UI-Tooltip-Border")
-    dropDownTypeBorder:SetPoint("TOPLEFT", -3, 3)
-    dropDownTypeBorder:SetPoint("BOTTOMRIGHT", 3, -3) ]]
 
     -- Text display for current selection
     local dropDownTypeText = dropDownType:CreateFontString("AtlasTWFrameDropDownTypeText", "OVERLAY", "GameFontHighlightSmall")

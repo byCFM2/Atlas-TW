@@ -35,7 +35,6 @@ function AtlasTWLoot_OnEvent()
 	-- Apply addon integrations based on current options
 	AtlasTW.Integrations.ApplyEquipCompareIntegration()
 
-	-- Legacy Atlas load-on-demand support
 	if AtlasButton_LoadAtlas then
 		AtlasButton_LoadAtlas()
 	end
@@ -52,6 +51,7 @@ function AtlasTWLoot_InitializeCharacterDatabase()
 	if not AtlasTWCharDB["WishList"] then AtlasTWCharDB["WishList"] = {} end
 	if not AtlasTWCharDB["QuickLooks"] then AtlasTWCharDB["QuickLooks"] = {} end
 	if not AtlasTWCharDB["SearchResult"] then AtlasTWCharDB["SearchResult"] = {} end
+	if not AtlasTWCharDB["LastOpened"] then AtlasTWCharDB["LastOpened"] = nil end -- Explicitly nil init effectively
 
 	-- Invalidate category cache after initialization
 	if AtlasTWLoot_InvalidateCategorizedList then

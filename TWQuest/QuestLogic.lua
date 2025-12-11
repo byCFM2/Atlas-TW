@@ -130,7 +130,6 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
                 ChatFrameEditBox:Insert(itemLink)
             end
         else
-            PrintA("Item unsafe! Right click to get the item ID")
             ChatFrameEditBox:Insert(string.format("%s [%s]", Colors.GREY2, LU["Item not found in cache"]))
         end
         return
