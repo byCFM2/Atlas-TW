@@ -275,18 +275,13 @@ function AtlasTW.SearchLib.Search(Text)
                 nm = GetItemInfo(data.item)
             end
             if isMatch(nm) then
-                local bossName, instKey = findFirstLocationForId(spellID)
-                if bossName and instKey then
-                    addUnique({ spellID, bossName, instKey, "enchant", bossName.."|"..instKey })
+                -- Try to bind to craft/profession page if found
+                local lootPage = findCraftLootPageLocal(spellID)
+                if lootPage then
+                    addUnique({ spellID, "", "", "enchant", lootPage })
                 else
-                    -- Try to bind to craft/profession page if found
-                    local lootPage = findCraftLootPageLocal(spellID)
-                    if lootPage then
-                        addUnique({ spellID, "", "", "enchant", lootPage })
-                    else
-                        -- Without instance and craft page: remains empty
-                        addUnique({ spellID, "", "", "enchant" })
-                    end
+                    -- Without instance and craft page: remains empty
+                    addUnique({ spellID, "", "", "enchant" })
                 end
             end
         end
@@ -318,17 +313,12 @@ function AtlasTW.SearchLib.Search(Text)
                 nm = GetItemInfo(data.item)
             end
             if isMatch(nm) then
-                local bossName, instKey = findFirstLocationForId(spellID)
-                if bossName and instKey then
-                    addUnique({ spellID, bossName, instKey, "spell", bossName.."|"..instKey })
+                -- Try to bind to craft page if found
+                local lootPage = findFirstCraftLootPageForSpell(spellID)
+                if lootPage then
+                    addUnique({ spellID, "", "", "spell", lootPage })
                 else
-                    -- Try to bind to craft page if found
-                    local lootPage = findFirstCraftLootPageForSpell(spellID)
-                    if lootPage then
-                        addUnique({ spellID, "", "", "spell", lootPage })
-                    else
-                        addUnique({ spellID, "", "", "spell" })
-                    end
+                    addUnique({ spellID, "", "", "spell" })
                 end
             end
         end
