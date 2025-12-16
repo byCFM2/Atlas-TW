@@ -19,6 +19,7 @@ local _G = getfenv()
 AtlasTW = _G.AtlasTW
 
 local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
 local LIS = AtlasTW.Localization.ItemSets
 local LS = AtlasTW.Localization.Spells
 local LF = AtlasTW.Localization.Factions
@@ -2259,6 +2260,33 @@ Sets = {
 		{ id = 2100 }, -- Precisely Calibrated Boomstick
 		{ id = 1169 }, -- Blackskull Shield
 		{ id = 1979 }, -- Wall of the Dead
+	},
+	WorldEnchants = {
+		{ id = 11622, disc = L["Quest Reward"].." "..LZ["Burning Steppes"], container = { 11754, 11752, 11732, 8424 } }, -- Libram Arcanum of Rumination
+		{ id = 11642, disc = L["Quest Reward"].." "..LZ["Burning Steppes"], container = { 11754, 8411, 11733, {11952, 4} } }, -- Lesser Arcanum of Constitution
+		{ id = 11643, disc = L["Quest Reward"].." "..LZ["Burning Steppes"], container = { 11754, 11753, 11734, {11564, 4} } }, -- Libram Arcanum of Tenacity
+		{ id = 11644, disc = L["Quest Reward"].." "..LZ["Burning Steppes"], container = { 11754, 11751, 11736, {11567, 4} } }, -- Lesser Arcanum of Resilience
+		{ id = 11645, disc = L["Quest Reward"].." "..LZ["Burning Steppes"], container = { 11754, 11736, {11951, 4}, {11563, 4} } }, -- Libram Arcanum of Voracity +8 str
+		{ id = 11646, disc = L["Quest Reward"].." "..LZ["Burning Steppes"], container = { 11754, 11736, {11951, 4}, {11563, 4} } }, -- Libram Arcanum of Voracity +8 stam
+		{ id = 11647, disc = L["Quest Reward"].." "..LZ["Burning Steppes"], container = { 11754, 11736, {11951, 4}, {11563, 4} } }, -- Libram Arcanum of Voracity +8 agi
+		{ id = 11648, disc = L["Quest Reward"].." "..LZ["Burning Steppes"], container = { 11754, 11736, {11951, 4}, {11563, 4} } }, -- Libram Arcanum of Voracity +8 int
+		{ id = 11649, disc = L["Quest Reward"].." "..LZ["Burning Steppes"], container = { 11754, 11736, {11951, 4}, {11563, 4} } }, -- Libram Arcanum of Voracity +8 spirit
+		{},
+		{ id = 8410, disc = L["Quest Reward"].." "..LZ["Blasted Lands"], container = { {8391,3}, {8392,2}, 8393 } }, -- R.O.I.D.S.
+		{ id = 8411, disc = L["Quest Reward"].." "..LZ["Blasted Lands"], container = { {8392,3}, {8393,2}, 8394 } }, -- Lung Juice Cocktail
+		{ id = 8412, disc = L["Quest Reward"].." "..LZ["Blasted Lands"], container = { {8393,3}, {8396,2}, 8392 } }, -- Ground Scorpok Assay
+		{ id = 8423, disc = L["Quest Reward"].." "..LZ["Blasted Lands"], container = { {8394,10}, {8396,2} } }, -- Cerebral Cortex Compound
+		{ id = 8424, disc = L["Quest Reward"].." "..LZ["Blasted Lands"], container = { {8396,10}, {8391,2} } }, -- Gizzard Gum
+		{ id = 18329, disc = L["Quest Reward"].." "..LZ["Dire Maul"], container = { 18332, 18335, {14344, 2}, {12938, 2} } }, -- Arcanum of Rapidity
+		{ id = 18330, disc = L["Quest Reward"].." "..LZ["Dire Maul"], container = { 18333, 18335, {14344, 4}, {12753, 2} } }, -- Arcanum of Protection
+		{ id = 18331, disc = L["Quest Reward"].." "..LZ["Dire Maul"], container = { 18334, 18335, {14344, 2}, 12735 } }, -- Arcanum of Protection
+		{},
+		{ id = 11562, disc = L["Quest Reward"].." "..LZ["Un'Goro Crater"], container = { {11185,10}, {11188,10} } }, -- Crystal Restore
+		{ id = 11563, disc = L["Quest Reward"].." "..LZ["Un'Goro Crater"], container = { {11184,10}, {11185,10} } }, -- Crystal Force
+		{ id = 11564, disc = L["Quest Reward"].." "..LZ["Un'Goro Crater"], container = { {11185,10}, {11186,10} } }, -- Crystal Ward
+		{ id = 11565, disc = L["Quest Reward"].." "..LZ["Un'Goro Crater"], container = { {11184,10}, {11186,10} } }, -- Crystal Yield
+		{ id = 11566, disc = L["Quest Reward"].." "..LZ["Un'Goro Crater"], container = { {11186,10}, {11188,10} } }, -- Crystal Charge
+		{ id = 11567, disc = L["Quest Reward"].." "..LZ["Un'Goro Crater"], container = { {11184,10}, {11188,10} } }, -- Crystal Spire
 	},
 	RarePets = {
 		{ id = 13584, disc=L["Collector's Edition"] }, -- Diablo Stone

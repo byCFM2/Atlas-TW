@@ -136,9 +136,9 @@ function AtlasTWLoot_ApplyContainerItemTemplate(button)
     local quantity = button:CreateFontString(button:GetName().."_Quantity", "BACKGROUND", "GameFontNormal")
     quantity:SetWidth(25)
     quantity:SetHeight(0)
-    quantity:SetFont("Fonts\\ARIALN.TTF", 12, "OUTLINE")
+    quantity:SetFont("Fonts\\ARIALN.TTF", 11, "OUTLINE")
     quantity:SetJustifyH("RIGHT")
-    quantity:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 0, 1)
+    quantity:SetPoint("BOTTOMRIGHT", icon)
 
     -- Set click script
     button:SetScript("OnClick", function()

@@ -326,6 +326,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["PvP Mounts"] = "PvP 坐骑",
     ["Tabards"] = "徽章",
     ["World Epics"] = "世界掉落史诗",
+    ["World Enchants"] = "世界附魔",
     ["World Blues"] = "世界掉落稀有",
     ["Keys"] = "钥匙",
     ["Level One Lunatic Challenge"] = "一级狂人挑战", -- Events & Holidays

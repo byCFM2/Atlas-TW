@@ -340,6 +340,19 @@ local function FindItemSourceInMenuData(pageKey)
         AtlasTW.MenuData.PVP,
         AtlasTW.MenuData.PVPSets,
         AtlasTW.MenuData.Sets,
+        -- Profession Menus
+        AtlasTW.MenuData.Alchemy,
+        AtlasTW.MenuData.Smithing,
+        AtlasTW.MenuData.Enchanting,
+        AtlasTW.MenuData.Engineering,
+        AtlasTW.MenuData.Herbalism,
+        AtlasTW.MenuData.Leatherworking,
+        AtlasTW.MenuData.Mining,
+        AtlasTW.MenuData.Tailoring,
+        AtlasTW.MenuData.Jewelcrafting,
+        AtlasTW.MenuData.Cooking,
+        AtlasTW.MenuData.FirstAid,
+        AtlasTW.MenuData.Survival,
         -- Add others if needed
     }
 
@@ -368,19 +381,22 @@ local function FindItemSource(itemID)
 
     local finalSource = nil
 
-    -- 0. Check Quests (Top Priority)
+    -- 1. Check Quests (Top Priority)
     -- Returns "Instance Quest: Title"
     local questSource = FindItemQuestSource(itemID)
     if questSource then
         finalSource = questSource
     end
 
-    -- 1. Check Crafted/Enchants
+    -- 2. Check Crafted/Enchants
     if not finalSource then
         finalSource = FindItemSourceInProfessions(itemID)
     end
 
-    -- 2. Check Loot Tables (Instance/Boss/Generic)
+    -- 3. Check Sets (Prepare info)
+    local setCategory = GetItemSetCategory(itemID)
+
+    -- 4. Check Loot Tables (Instance/Boss/Generic)
     if not finalSource then
         local pageKey = AtlasTW.LootUtils.IterateAllLootItems(function(id, key)
             if id == itemID then return key end
@@ -397,18 +413,21 @@ local function FindItemSource(itemID)
                  if menuSource then
                      finalSource = menuSource
                  else
-                     -- Fallback to key
-                     finalSource = tostring(pageKey)
+                     -- Fallback to key ONLY if not belonging to a Set
+                     if not setCategory then
+                        finalSource = tostring(pageKey)
+                     end
                  end
              end
         end
     end
 
-    -- 3. Check Sets (Append info)
-    local setCategory = GetItemSetCategory(itemID)
+    -- 5. Append Set info if we have a source, or use Set as source if we don't
     if setCategory then
         if finalSource then
-            finalSource = finalSource .. " (" .. setCategory .. ")"
+            if finalSource ~= setCategory then
+                finalSource = finalSource .. " (" .. setCategory .. ")"
+            end
         else
             finalSource = setCategory
         end
@@ -465,7 +484,7 @@ end
 --- @return nil
 --- @usage ExtendTooltip(GameTooltip)
 ---
-local function ExtendTooltip(tooltip)-- TODO сэты и тд нужно отображать источник
+local function ExtendTooltip(tooltip)
     -- Add source information if enabled
     if AtlasTWOptions and AtlasTWOptions.LootShowSource then
         local itemID = tonumber(tooltip.itemID)

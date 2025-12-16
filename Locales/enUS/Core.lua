@@ -395,6 +395,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["PvP Mounts"] = true,
     ["Tabards"] = true,
     ["World Epics"] = true,
+    ["World Enchants"] = true,
     ["World Blues"] = true,
     ["Keys"] = true,
     ["Level One Lunatic Challenge"] = true,

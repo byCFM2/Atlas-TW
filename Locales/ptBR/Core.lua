@@ -400,6 +400,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["PvP Mounts"] = "Montarias JxJ",
     ["Tabards"] = "Tabardos",
     ["World Epics"] = "Épicos Mundiais",
+    ["World Enchants"] = "Encantamentos Mundiais",
     ["World Blues"] = "Raros Mundiais",
     ["Keys"] = "Chaves",
 

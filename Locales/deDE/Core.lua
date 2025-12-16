@@ -399,6 +399,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["PvP Mounts"] = "PvP-Reittiere",
     ["Tabards"] = "Gildenwappenröcke",
     ["World Epics"] = "Welt-Epics",
+    ["World Enchants"] = "Weltverzauberungen",
     ["World Blues"] = "Welt-Blues",
     ["Keys"] = "Schlüssel",
     ["Level One Lunatic Challenge"] = "Herausforderung des Wahnsinnigen, Stufe 1", --************************************************
