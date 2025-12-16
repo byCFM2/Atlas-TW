@@ -233,7 +233,7 @@ function AtlasTWLoot_OpenMenu(menuName)
 		[L["Zul'Gurub Sets"]] = "AtlasTWLootZGSetMenu",
 		[L["Temple of Ahn'Qiraj Sets"]] = "AtlasTWLootAQ40SetMenu",
 		[L["Ruins of Ahn'Qiraj Sets"]] = "AtlasTWLootAQ20SetMenu",
-		[L["Tower of Karazhan Sets"]] = "AtlasTWLootUKSetMenu",
+		[L["Tower of Karazhan Sets"]] = "AtlasTWLootT35SetMenu",
 		[L["Tier 0/0.5 Sets"]] = "AtlasTWLootT0SetMenu",
 		[L["Tier 1 Sets"]] = "AtlasTWLootT1SetMenu",
 		[L["Tier 2 Sets"]] = "AtlasTWLootT2SetMenu",

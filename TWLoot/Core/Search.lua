@@ -216,54 +216,16 @@ function AtlasTW.SearchLib.Search(Text)
                 addUnique({ itemID, "", "", "item", pageKey })
             end
         end
-        for key, tbl in pairs(AtlasTWLoot_Data) do
-            if type(tbl) == "table" then
-                local m = table.getn(tbl)
-                for i = 1, m do
-                    local el = tbl[i]
-                    if type(el) == "table" then
-                        if el.id then
-                            considerItem(el.id, key)
-                        end
-                        if el.container and type(el.container) == "table" then
-                            local n = table.getn(el.container)
-                            for j = 1, n do
-                                local c = el.container[j]
-                                if type(c) == "number" then
-                                    considerItem(c, key)
-                                elseif type(c) == "table" then
-                                    if c[1] then
-                                        considerItem(c[1], key)
-                                    elseif c.id then
-                                        considerItem(c.id, key)
-                                    end
-                                end
-                            end
-                        end
-                    elseif type(el) == "number" then
-                        considerItem(el, key)
-                    end
-                end
-            end
-        end
+        AtlasTW.LootUtils.IterateAllLootItems(considerItem)
     end
     searchItemsInLootTables()
 
     -- Craft/profession page locator: find first loot table where spellID occurs (local for use in enchants)
     local function findCraftLootPageLocal(spellID)
         if not AtlasTWLoot_Data then return nil end
-        for key, tbl in pairs(AtlasTWLoot_Data) do
-            if type(tbl) == "table" then
-                local m = table.getn(tbl)
-                for i = 1, m do
-                    local el = tbl[i]
-                    if type(el) == "table" and el.id and el.id == spellID then
-                        return key
-                    end
-                end
-            end
-        end
-        return nil
+        return AtlasTW.LootUtils.IterateAllLootItems(function(id, key)
+            if id == spellID then return key end
+        end)
     end
 
     -- Search for enchantments by name in new spell database
@@ -290,19 +252,9 @@ function AtlasTW.SearchLib.Search(Text)
     -- Craft page locator: find first loot table where spellID occurs
     local function findFirstCraftLootPageForSpell(spellID)
         if not AtlasTWLoot_Data then return nil end
-        for key, tbl in pairs(AtlasTWLoot_Data) do
-            if type(tbl) == "table" then
-                -- Use table.getn since # is not supported in 1.12
-                local m = table.getn(tbl)
-                for i = 1, m do
-                    local el = tbl[i]
-                    if type(el) == "table" and el.id and el.id == spellID then
-                        return key
-                    end
-                end
-            end
-        end
-        return nil
+        return AtlasTW.LootUtils.IterateAllLootItems(function(id, key)
+            if id == spellID then return key end
+        end)
     end
 
     -- Search for craft spells: by spell name if available, otherwise by created item name

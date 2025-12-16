@@ -6711,4 +6711,5 @@ kQuestInstanceData.TimbermawHold = {
     Alliance = {},
     Horde = {}
 }
+
 AtlasTW.Quest.DataBase = kQuestInstanceData

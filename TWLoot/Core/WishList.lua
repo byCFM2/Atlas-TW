@@ -238,18 +238,9 @@ end
 ---
 local function FindFirstCraftLootPageForSpell(spellID)
 	if not AtlasTWLoot_Data or not spellID then return nil end
-	for key, tbl in pairs(AtlasTWLoot_Data) do
-		if type(tbl) == "table" then
-			local m = table.getn(tbl)
-			for i = 1, m do
-				local el = tbl[i]
-				if type(el) == "table" and el.id and el.id == spellID then
-					return key
-				end
-			end
-		end
-	end
-	return nil
+	return AtlasTW.LootUtils.IterateAllLootItems(function(id, key)
+		if id == spellID then return key end
+	end)
 end
 
 ---

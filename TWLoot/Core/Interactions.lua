@@ -81,7 +81,7 @@ end
 --- @param color string
 --- @param name string
 --- @param safe boolean
---- @return void
+--- @return nil
 ---
 function AtlasTW.Interactions.ChatSayItemReagents(id, color, name, safe)
     if not id then return end
@@ -656,17 +656,29 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 			AtlasTWLoot_ShowContainerFrame()
 		end
 	elseif this.typeID == "enchant" then
+		local elemid = this.elemID
 		if IsShiftKeyDown() then
-			AtlasTW.Interactions.ChatSayItemReagents(this.elemID)
-		elseif IsAltKeyDown() and this.elemID ~= 0 then
+			local itemid = AtlasTW.SpellDB.enchants[elemid]["item"]
+			local itemlink = itemid and AtlasTW.LootUtils.GetChatLink(itemid)
+			local enchantName = AtlasTW.SpellDB.enchants[elemid]["name"] or GetItemInfo(itemid)
+			local enchantLink = YELLOW .. "|Henchant:" .. id .. ":0:0:0|h[" .. (enchantName or "Enchant") .. "]|h|r"
+
+			if WIM_EditBoxInFocus then
+				WIM_EditBoxInFocus:Insert(itemlink or enchantLink)
+			elseif ChatFrameEditBox:IsVisible() then
+				ChatFrameEditBox:Insert(itemlink or enchantLink)
+			else
+				AtlasTW.Interactions.ChatSayItemReagents(elemid)
+			end
+		elseif IsAltKeyDown() and elemid ~= 0 then
 			if dataID == "WishList" then
-				AtlasTWLoot_DeleteFromWishList(this.elemID)
+				AtlasTWLoot_DeleteFromWishList(elemid)
 			elseif dataID == "SearchResult" then
-				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(this.elemID))
+				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(elemid))
 			else
 				-- Pass boss and instance context for correct categorization in WishList
 				local srcPage = BuildSourcePage(dataID, instanceKeyClick)
-				AtlasTWLoot_AddToWishlist(this.elemID, dataID, instanceKeyClick, "enchant", srcPage)
+				AtlasTWLoot_AddToWishlist(elemid, dataID, instanceKeyClick, "enchant", srcPage)
 			end
 		elseif IsControlKeyDown() then
 			DressUpItemLink("item:"..this.itemID..":0:0:0")

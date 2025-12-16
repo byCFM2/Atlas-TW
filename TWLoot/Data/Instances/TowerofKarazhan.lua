@@ -303,7 +303,7 @@ AtlasTW.InstanceData.TowerofKarazhan = {
                 { id = 41485, dropRate = .4, disc = L["Reagent"] }, -- Pristine Ley Crystal
             }
         },
-        { name = LMD["Tower of Karazhan Sets"], items = "AtlasTWLootUKSetMenu" },
+        { name = LMD["Tower of Karazhan Sets"], items = "AtlasTWLootT35SetMenu" },
     }
 }
 

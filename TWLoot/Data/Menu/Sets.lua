@@ -33,7 +33,7 @@ AtlasTW.MenuData.Sets = {
     { name = L["Zul'Gurub Sets"],               icon = "Interface\\Icons\\INV_Sword_55",                 lootpage = "AtlasTWLootZGSetMenu" },
     { name = L["Ruins of Ahn'Qiraj Sets"],      icon = "Interface\\Icons\\INV_Axe_15",                   lootpage = "AtlasTWLootAQ20SetMenu" },
     { name = L["Temple of Ahn'Qiraj Sets"],     icon = "Interface\\Icons\\INV_Sword_59",                 lootpage = "AtlasTWLootAQ40SetMenu" },
-    { name = LMD["Tower of Karazhan Sets"],       icon = "Interface\\Icons\\INV_Staff_Medivh",             lootpage = "AtlasTWLootUKSetMenu" },
+    { name = LMD["Tower of Karazhan Sets"],       icon = "Interface\\Icons\\INV_Staff_Medivh",             lootpage = "AtlasTWLootT35SetMenu" },
     {},
     { name = Colors.Priest .. L["Priest Sets"], icon = "Interface\\Icons\\Spell_Holy_PowerWordShield",   lootpage = "AtlasTWLootPriestSetMenu" },
     { name = Colors.Mage .. L["Mage Sets"],     icon = "Interface\\Icons\\Spell_Frost_IceStorm",         lootpage = "AtlasTWLootMageSetMenu" },
@@ -382,8 +382,8 @@ end
 ---
 --- Tower of Karazhan sets menu function
 --- @return nil
---- @usage AtlasTWLootUKSetMenu()
+--- @usage AtlasTWLootT35SetMenu()
 ---
-function AtlasTWLootUKSetMenu()
+function AtlasTWLootT35SetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(LMD["Tower of Karazhan Sets"], AtlasTW.MenuData.T35Set, L["Collections"])
 end

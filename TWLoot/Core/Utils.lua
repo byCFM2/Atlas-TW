@@ -177,3 +177,128 @@ function AtlasTW.LootUtils.CheckBagsForItems(id, qty)
         return (RED or "") .. itemName .. " (" .. qty .. ")"
     end
 end
+
+
+--- Iterates over all items in AtlasTWLoot_Data and InstanceData
+--- @param callback function Function to call for each item (arg: itemID, pageKey). Return non-nil to stop.
+--- @return any The value returned by callback that stopped iteration, or nil.
+--- @usage AtlasTW.LootUtils.IterateAllLootItems(function(id, key) ... end)
+---
+function AtlasTW.LootUtils.IterateAllLootItems(callback)
+    if not callback then return end
+
+    -- Helper to iterate a single list of items
+    local function IterateList(list, key)
+        if type(list) ~= "table" then return end
+        local m = table.getn(list)
+        for i = 1, m do
+            local el = list[i]
+            if type(el) == "table" then
+                if el.id then
+                    local res = callback(el.id, key)
+                    if res then return res end
+                end
+                if el.container and type(el.container) == "table" then
+                    local n = table.getn(el.container)
+                    for j = 1, n do
+                        local c = el.container[j]
+                        if type(c) == "number" then
+                            local res = callback(c, key)
+                            if res then return res end
+                        elseif type(c) == "table" then
+                            if c[1] then
+                                local res = callback(c[1], key)
+                                if res then return res end
+                            elseif c.id then
+                                local res = callback(c.id, key)
+                                if res then return res end
+                            end
+                        end
+                    end
+                end
+            elseif type(el) == "number" then
+                local res = callback(el, key)
+                if res then return res end
+            end
+        end
+    end
+
+    -- 1. Iterate InstanceData (Bosses, etc.)
+    if AtlasTW.InstanceData then
+         for _, instanceData in pairs(AtlasTW.InstanceData) do
+            -- Bosses
+            if instanceData.Bosses then
+                for _, boss in ipairs(instanceData.Bosses) do
+                    -- Only iterate if items is a TABLE (unique to this boss), not a string reference
+                    local items = boss.items or boss.loot
+                    if type(items) == "table" and boss.id then
+                        local res = IterateList(items, boss.id)
+                        if res then return res end
+                    end
+                end
+            end
+            -- Additional categories (Reputation, Keys) usually use string keys pointing to AtlasTWLoot_Data, so skipped here
+        end
+    end
+
+    -- 2. Iterate AtlasTWLoot_Data
+    if AtlasTWLoot_Data then
+        for key, tbl in pairs(AtlasTWLoot_Data) do
+            local res = IterateList(tbl, key)
+            if res then return res end
+        end
+    end
+end
+
+
+---
+--- Resolves a loot table key to a human-readable source string (Instance - Boss)
+--- @param pageKey string The loot table key (e.g. "MCBoss1")
+--- @return string|nil Formatted source string or nil if not found
+--- @usage local source = AtlasTW.LootUtils.GetLootTableSource("MCBoss1")
+---
+function AtlasTW.LootUtils.GetLootTableSource(pageKey)
+    if not pageKey or not AtlasTW or not AtlasTW.InstanceData then return nil end
+
+    -- Search in InstanceData to find which instance/boss owns this pageKey
+    for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
+        local instanceName = instanceData.Name or instanceKey
+
+        -- Check Bosses
+        if instanceData.Bosses then
+            for _, boss in ipairs(instanceData.Bosses) do
+                local items = boss.items or boss.loot
+                if items == pageKey or boss.id == pageKey then
+                    local bossName = boss.name or boss.Name or "?"
+                    return instanceName .. " - " .. bossName
+                end
+            end
+        end
+
+        -- Check Reputation
+        if instanceData.Reputation then
+            for _, rep in pairs(instanceData.Reputation) do
+                local items = rep.items or rep.loot
+                if items == pageKey then
+                    local repName = rep.name or "Reputation"
+                    return instanceName .. " - " .. repName
+                end
+            end
+        end
+
+        -- Check Keys
+        if instanceData.Keys then
+            for _, keySrc in pairs(instanceData.Keys) do
+                local items = keySrc.items or keySrc.loot
+                if items == pageKey then
+                    local keyName = keySrc.name or "Keys"
+                    return instanceName .. " - " .. keyName
+                end
+            end
+        end
+
+        -- Check Collections/Sets if applicable (Add more categories as needed)
+    end
+
+    return nil
+end

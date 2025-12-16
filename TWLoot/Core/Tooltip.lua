@@ -20,8 +20,9 @@
 -- CONSTANTS AND CONFIGURATION
 -- ============================================================================
 
-local ADDON_NAME = "AtlasTWLootTip"
+local TIP_NAME = "AtlasTWLootTip"
 local GREY = AtlasTW.Colors.GREY
+local L = AtlasTW.Localization.UI
 local MAX_ITEM_SEARCH_RANGE = 99999
 local FASHION_COIN_ID = 51217
 
@@ -48,7 +49,7 @@ local IsAddOnLoaded = IsAddOnLoaded
 -- MODULE INITIALIZATION
 -- ============================================================================
 
-local AtlasTWLootTip = CreateFrame("Frame", ADDON_NAME, GameTooltip)
+local AtlasTWLootTip = CreateFrame("Frame", TIP_NAME, GameTooltip)
 
 -- ============================================================================
 -- STATE MANAGEMENT
@@ -111,193 +112,124 @@ end
 -- ITEM SEARCH FUNCTIONS
 -- ============================================================================
 
+
 ---
---- Searches for an item ID within a data table structure
---- @param data table - The data table to search in
+--- Finds item source in professions
 --- @param itemID number - The item ID to search for
---- @return boolean - True if item is found, false otherwise
---- @usage local found = FindItemInData(lootTable, 12345)
+--- @return string|nil - Formatted source string or nil if not found
 ---
-local function FindItemInData(data, itemID)
-    if type(data) ~= "table" or not itemID then
-        return false
-    end
-
+--- Recursively checks if an item ID exists in a loot page
+--- @param data table - The loot page data (list of items/tables)
+--- @param searchID number - The item ID to search for
+--- @return boolean - True if found
+---
+local function IsItemInPage(data, searchID)
+    if type(data) ~= "table" then return false end
     for _, item in pairs(data) do
-        if item then
-            -- Direct ID match (number or table with ID)
-            if item == itemID or
-               (type(item) == "table" and (item[1] == itemID or item.id == itemID)) then
-                return true
-            end
+        if type(item) == "table" then
+            -- Check item ID
+            if item.id == searchID then return true end
+            -- Check first element if it's an ID (legacy format)
+            if item[1] == searchID then return true end
 
-            -- Container search
-            if type(item) == "table" and item.container then
-                if FindItemInData(item.container, itemID) then
+            -- Recursive check for containers
+            if item.container and type(item.container) == "table" then
+                if IsItemInPage(item.container, searchID) then
                     return true
                 end
             end
+        elseif type(item) == "number" then
+            if item == searchID then return true end
         end
     end
-
     return false
 end
 
----
---- Gets display name for a source object
---- @param source table - The source object to get name from
---- @param fallback string - Fallback name if no name found
---- @return string - The display name for the source
---- @usage local name = GetSourceDisplayName(sourceObj, "Unknown")
----
-local function GetSourceDisplayName(source, fallback)
-    if source.name then
-        return source.name
-    elseif source.loot then
-        return source.loot
-    elseif source.id then
-        return tostring(source.id)
-    else
-        return fallback or "?"
-    end
-end
+local function FindItemSourceInProfessions(itemID)
+    if not itemID or not AtlasTW.SpellDB or not AtlasTW.SpellDB.craftspells or not AtlasTW.SpellDB.enchants then return nil end
 
----
---- Universal source search function for finding items in source lists
---- @param list table - The list of sources to search in
---- @param label string - Default label for sources without names
---- @param instanceName string - Name of the instance
---- @param itemID number - The item ID to search for
---- @return string|nil - Formatted source string or nil if not found
---- @usage local source = SearchInSourceList(repList, "Reputation", "Molten Core", 12345)
----
-local function SearchInSourceList(list, label, instanceName, itemID)
-    if type(list) ~= "table" then
-        return nil
-    end
+    local foundSpellID, foundSpellName = nil, nil
 
-    for _, source in pairs(list) do
-        if source then
-            local items = source.items or source.loot
-            local found = false
-
-            if type(items) == "string" then
-                -- Reference to AtlasTWLoot_Data
-                local data = AtlasTWLoot_Data and AtlasTWLoot_Data[items]
-                found = FindItemInData(data, itemID)
-            else
-                -- Direct items list
-                found = FindItemInData(items, itemID)
-            end
-
-            if found then
-                local displayName = GetSourceDisplayName(source, label)
-                return instanceName.." - "..tostring(displayName)
+    -- 1. Check Enchants (Reverse lookup for formulas/scrolls)
+    if not foundSpellID and AtlasTW.SpellDB.enchants then
+        for spellID, data in pairs(AtlasTW.SpellDB.enchants) do
+            if data.item == itemID then
+                foundSpellID = spellID
+                foundSpellName = data.name
+                if not foundSpellName then
+                    -- For enchants, name might be the enchant name itself
+                     foundSpellName = data.name
+                     if not foundSpellName and GetItemInfo then
+                        foundSpellName = GetItemInfo(data.item)
+                     end
+                end
+                break
             end
         end
     end
 
-    return nil
-end
-
--- ============================================================================
--- ITEM SOURCE LOOKUP
--- ============================================================================
-
----
---- Finds item source within a specific instance
---- @param instanceKey string - The instance key identifier
---- @param instance table - The instance data table
---- @param itemID number - The item ID to search for
---- @return string|nil - Formatted source string or nil if not found
---- @usage local source = FindItemSourceInInstance("MC", instanceData, 12345)
----
-local function FindItemSourceInInstance(instanceKey, instance, itemID)
-    if type(instance) ~= "table" then
-        return nil
-    end
-
-    local instanceName = instance.Name or instanceKey
-
-    -- Search in bosses
-    if instance.Bosses then
-        for _, boss in ipairs(instance.Bosses) do
-            local bossName = GetSourceDisplayName(boss, "?")
-            local items = boss.items or boss.loot
-            local found = false
-
-            if type(items) == "string" then
-                -- Reference to AtlasTWLoot_Data
-                local data = AtlasTWLoot_Data and AtlasTWLoot_Data[items]
-                found = FindItemInData(data, itemID)
-            else
-                -- Direct items list
-                found = FindItemInData(items, itemID)
-            end
-
-            if found then
-                return instanceName.." - "..tostring(bossName)
+    -- 2. Check Craft Spells (Reverse lookup)
+    if AtlasTW.SpellDB.craftspells then
+        for spellID, data in pairs(AtlasTW.SpellDB.craftspells) do
+            if data.item == itemID then
+                foundSpellID = spellID
+                foundSpellName = data.name
+                if not foundSpellName then
+                    foundSpellName = GetItemInfo(data.item)
+                end
+                break
             end
         end
     end
 
-    -- Search in other sources using unified function
-    local result = SearchInSourceList(instance.Reputation, "Reputation", instanceName, itemID)
-    if result then return result end
-
-    result = SearchInSourceList(instance.Keys, "Keys", instanceName, itemID)
-    if result then return result end
-
-    return nil
-end
-
----
---- Finds item source in AtlasTWLoot_Data tables
---- @param itemID number - The item ID to search for
---- @return string|nil - Formatted source string or nil if not found
---- @usage local source = FindItemSourceInAtlasTWLootData(12345)
----
-local function FindItemSourceInAtlasTWLootData(itemID)
-    if not AtlasTWLoot_Data then
-        return nil
-    end
-
-    for dataSource, sourceData in pairs(AtlasTWLoot_Data) do
-        if type(sourceData) == "table" then
-            for dataID, data in pairs(sourceData) do
-                if type(data) == "table" then
-                    for _, record in pairs(data) do
-                        if type(record) == "table" and type(record[1]) == "number" and record[1] == itemID then
-                            -- Try to find zone name in AtlasTW.InstanceData
-                            local zoneName = nil
-                            if AtlasTW and AtlasTW.InstanceData then
-                                for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
-                                    if instanceData.Bosses then
-                                        for _, bossData in ipairs(instanceData.Bosses) do
-                                            if bossData.id == dataID or bossData.name == dataID then
-                                                zoneName = instanceData.Name
-                                                break
-                                            end
-                                        end
-                                    end
-                                    if zoneName then break end
-                                end
-                            end
-
-                            if zoneName then
-                                return tostring(zoneName).." - "..tostring(dataID)
-                            else
-                                return tostring(dataSource).." - "..tostring(dataID)
-                            end
-                        end
+    if foundSpellID then
+        -- Find profession name via strictly prioritized search
+        if AtlasTW.MenuData then
+            -- Helper to search in a specific menu table (linear scan = priority based on index)
+            local function findInMenu(menuTable)
+                if type(menuTable) ~= "table" then return nil end
+                -- Iterate in ipairs to respect order (Apprentice -> Journeyman -> ... -> Misc)
+                for _, entry in ipairs(menuTable) do
+                    if type(entry) == "table" and entry.lootpage then
+                         local pageData = AtlasTWLoot_Data[entry.lootpage]
+                         if pageData and IsItemInPage(pageData, foundSpellID) then
+                            return entry.name
+                         end
                     end
                 end
+                return nil
             end
+
+            -- List of menu keys to check (most likely first)
+            -- Ordering of keys is less important than ordering WITHIN keys, but still good to keep main professions first
+            local menuKeysToCheck = {
+                "Alchemy", "Smithing", "Enchanting", "Engineering",
+                "Leatherworking", "Mining", "Tailoring", "Jewelcrafting",
+                "Cooking", "FirstAid", "Survival", "Crafting", "CraftedSet"
+            }
+
+            for _, key in ipairs(menuKeysToCheck) do
+                local name = findInMenu(AtlasTW.MenuData[key])
+                if name then
+                    return name
+                end
+            end
+        else
+            -- Fallback to old "any page" locator if MenuData missing (unlikely)
+            local pageKey = AtlasTW.LootUtils.IterateAllLootItems(function(id, key)
+                if id == foundSpellID then return key end
+            end)
+            if pageKey then return "Crafting: " .. tostring(pageKey) end
         end
+
+        return "Crafted: " .. (foundSpellName or "Unknown")
     end
 
     return nil
 end
+
+
+
 
 ---
 --- Main item source finder with caching support
@@ -305,33 +237,186 @@ end
 --- @return string|nil - Formatted source string or nil if not found
 --- @usage local source = FindItemSource(12345)
 ---
-local function FindItemSource(itemID)
-    if not itemID then
-        return nil
+---
+--- Checks if an item belongs to a Set Category in MenuData
+--- @param itemID number
+--- @return string|nil Localized Set Categpry Name (e.g. "Ruins of Ahn'Qiraj Sets")
+---
+local function GetItemSetCategory(itemID)
+    if not AtlasTW.MenuData or not AtlasTW.MenuData.Sets then return nil end
+
+    -- Helper to check a Menu Table (list of sub-pages)
+    local function checkMenuTable(menuTable)
+        if type(menuTable) ~= "table" then return false end
+        for _, entry in pairs(menuTable) do
+            if entry.lootpage and AtlasTWLoot_Data[entry.lootpage] then
+                if IsItemInPage(AtlasTWLoot_Data[entry.lootpage], itemID) then
+                    return true
+                end
+            end
+        end
+        return false
     end
 
+    for _, setCat in ipairs(AtlasTW.MenuData.Sets) do
+        if setCat.lootpage then
+            -- Try to Map string "AtlasTWLootXMenu" to AtlasTW.MenuData.X
+            local key = setCat.lootpage
+            local menuTable = nil
+
+            -- Regex extraction (WoW 1.12 compatible)
+            local _, _, shortName = strfind(key, "AtlasTWLoot(.+)Menu")
+            if shortName then
+                menuTable = AtlasTW.MenuData[shortName] -- e.g. "AQ20Set"
+                if not menuTable then
+                    -- Try removing "Set" suffix (e.g. "PriestSet" -> "Priest")
+                    local _, _, baseName = strfind(shortName, "^(.+)Set$")
+                    if baseName then
+                        menuTable = AtlasTW.MenuData[baseName]
+                    end
+                end
+            end
+
+            if menuTable and checkMenuTable(menuTable) then
+                return setCat.name -- Localized name
+            end
+        end
+    end
+    return nil
+end
+
+---
+--- Checks if an item determines from a Quest
+--- @param itemID number
+--- @return string|nil Quest Source string
+---
+local function FindItemQuestSource(itemID)
+    if not AtlasTW.Quest.DataBase then return nil end
+
+    for _, instanceData in pairs(AtlasTW.Quest.DataBase) do
+        -- Helper to check faction tables
+        local function checkFaction(questList)
+            if not questList then return nil end
+            for _, quest in pairs(questList) do
+                if quest.Rewards then
+                    for _, reward in pairs(quest.Rewards) do
+                        if type(reward) == "table" and reward.id == itemID then
+                            local instanceName = instanceData.Caption
+                            if instanceName and type(instanceName) == "table" then
+                                instanceName = instanceName[1]
+                            end
+
+                            local questTitle = quest.Title or "?"
+                            if instanceName ~= "" then
+                                return instanceName .. " " .. L["Quest"] .. ": " .. questTitle
+                            else
+                                return L["Quest"] .. ": " .. questTitle
+                            end
+                        end
+                    end
+                end
+            end
+            return nil
+        end
+
+        local source = checkFaction(instanceData.Alliance) or checkFaction(instanceData.Horde)
+        if source then return source end
+    end
+    return nil
+end
+
+---
+--- Searches for a page identifier in the MenuData tables to find a localized name
+--- @param pageKey string The loot table key
+--- @return string|nil Localized source name or nil
+---
+local function FindItemSourceInMenuData(pageKey)
+    if not AtlasTW.MenuData then return nil end
+
+    -- List of menu tables to check (Order matters slightly for performance, but keys should be unique)
+    local menuTablesToCheck = {
+        AtlasTW.MenuData.WorldEvents,
+        AtlasTW.MenuData.Factions,
+        AtlasTW.MenuData.PVP,
+        AtlasTW.MenuData.PVPSets,
+        AtlasTW.MenuData.Sets,
+        -- Add others if needed
+    }
+
+    for _, menuTable in pairs(menuTablesToCheck) do
+        if type(menuTable) == "table" then
+            for _, entry in pairs(menuTable) do
+                if type(entry) == "table" and entry.lootpage == pageKey and entry.name then
+                    -- Extract pure name if it contains color codes or extra info (optional)
+                    -- For now, return the name as is (formatting is usually stripped by tooltip anyway or acceptable)
+                    return entry.name
+                end
+            end
+        end
+    end
+
+    return nil
+end
+
+local function FindItemSource(itemID)
+    if not itemID then return nil end
     -- Check cache first
     local cached = SourceCache[itemID]
     if cached ~= nil then
         return cached ~= false and cached or nil
     end
 
-    -- Search in AtlasTW instance data
-    if AtlasTW and AtlasTW.InstanceData then
-        for instanceKey, instance in pairs(AtlasTW.InstanceData) do
-            local source = FindItemSourceInInstance(instanceKey, instance, itemID)
-            if source then
-                SourceCache[itemID] = source
-                return source
-            end
+    local finalSource = nil
+
+    -- 0. Check Quests (Top Priority)
+    -- Returns "Instance Quest: Title"
+    local questSource = FindItemQuestSource(itemID)
+    if questSource then
+        finalSource = questSource
+    end
+
+    -- 1. Check Crafted/Enchants
+    if not finalSource then
+        finalSource = FindItemSourceInProfessions(itemID)
+    end
+
+    -- 2. Check Loot Tables (Instance/Boss/Generic)
+    if not finalSource then
+        local pageKey = AtlasTW.LootUtils.IterateAllLootItems(function(id, key)
+            if id == itemID then return key end
+        end)
+
+        if pageKey then
+             -- Try to get source from InstanceData (Bosses, etc.)
+             local instanceSource = AtlasTW.LootUtils.GetLootTableSource(pageKey)
+             if instanceSource then
+                 finalSource = instanceSource
+             else
+                 -- Try to get localized name from MenuData (World Events, Factions, etc.)
+                 local menuSource = FindItemSourceInMenuData(pageKey)
+                 if menuSource then
+                     finalSource = menuSource
+                 else
+                     -- Fallback to key
+                     finalSource = tostring(pageKey)
+                 end
+             end
         end
     end
 
-    -- Search in AtlasTWLoot_Data
-    local source = FindItemSourceInAtlasTWLootData(itemID)
-    if source then
-        SourceCache[itemID] = source
-        return source
+    -- 3. Check Sets (Append info)
+    local setCategory = GetItemSetCategory(itemID)
+    if setCategory then
+        if finalSource then
+            finalSource = finalSource .. " (" .. setCategory .. ")"
+        else
+            finalSource = setCategory
+        end
+    end
+
+    if finalSource then
+        SourceCache[itemID] = finalSource
+        return finalSource
     end
 
     -- Cache negative result
@@ -380,7 +465,7 @@ end
 --- @return nil
 --- @usage ExtendTooltip(GameTooltip)
 ---
-local function ExtendTooltip(tooltip)
+local function ExtendTooltip(tooltip)-- TODO сэты и тд нужно отображать источник
     -- Add source information if enabled
     if AtlasTWOptions and AtlasTWOptions.LootShowSource then
         local itemID = tonumber(tooltip.itemID)
@@ -551,8 +636,3 @@ end
 
 -- Hook main tooltips
 HookTooltip(GameTooltip)
---HookTooltip(ItemRefTooltip)
---[[ 
-AtlasTWLootTip.HookAddonOrVariable("AtlasTWLootTooltip", function()
-    HookTooltip(AtlasTWLootTooltip)
-end) ]]
