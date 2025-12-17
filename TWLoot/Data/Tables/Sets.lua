@@ -2287,6 +2287,10 @@ Sets = {
 		{ id = 11565, disc = L["Quest Reward"].." "..LZ["Un'Goro Crater"], container = { {11184,10}, {11186,10} } }, -- Crystal Yield
 		{ id = 11566, disc = L["Quest Reward"].." "..LZ["Un'Goro Crater"], container = { {11186,10}, {11188,10} } }, -- Crystal Charge
 		{ id = 11567, disc = L["Quest Reward"].." "..LZ["Un'Goro Crater"], container = { {11184,10}, {11188,10} } }, -- Crystal Spire
+		{},
+		{ id = 20079, disc = L["Quest Reward"].." "..LZ["Stranglethorn Vale"], container = { 19858 } }, -- Spirit of Zanza
+		{ id = 20080, disc = L["Quest Reward"].." "..LZ["Stranglethorn Vale"], container = { 19858 } }, -- Sheen of Zanza
+		{ id = 20081, disc = L["Quest Reward"].." "..LZ["Stranglethorn Vale"], container = { 19858 } }, -- Swiftness of Zanza
 	},
 	RarePets = {
 		{ id = 13584, disc=L["Collector's Edition"] }, -- Diablo Stone
