@@ -3581,14 +3581,13 @@ local craftingTable = {
 		{ id=41776, skill={125,145,155,165} }, --Ring of Midnight
 		{ id=41059, skill={125,150,160,170} }, --Moonlight Staff
 		{ id=41568, skill={130,150,160,170} }, --Dazzling Moonstone Band
-		{ id=70113, skill={135,135,135,135} }, --Gleaming Silver Necklace
 		{ id=41760, skill={135,135,137,140} }, --Graceful Agate Gemstone
 		{ id=41069, skill={135,150,160,170} }, --Silver Medallion
 		{ id=41071, skill={135,155,165,175} }, --Ring of Purified Silver
 		{ id=41327, skill={135,155,165,175} }, --Gleaming Silver Necklace
 		{ id=41339, skill={135,155,165,175} }, --Circlet of Dampening
-		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41748, skill={135,155,165,175} }, --Totem of Self Preservation
+		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41583, skill={140,160,170,180} }, --Farraki Ceremony Totem
 		{ id=41728, skill={140,160,170,180} }, --Blackrock Ironclamps
 		{ id=41570, skill={145,165,175,185} }, --Harpy Talon Ring
@@ -3881,13 +3880,12 @@ local craftingTable = {
 		{ id=41325, skill={110,130,140,150} }, --Medallion of Flame
 		{ id=41055, skill={120,145,155,165} }, --Pendant of Midnight
 		{ id=41327, skill={135,155,165,175} }, --Gleaming Silver Necklace
-		{ id=70113, skill={135,135,135,135} }, --
 		{ id=41275, skill={160,160,180,200} }, --Gemmed Citrine Pendant
 		{ id=41331, skill={160,180,190,200} }, --Gem Encrusted Choker
 		{ id=41283, skill={1,175,192,210} }, --Astral Amulet
 		{ id=41333, skill={170,180,190,200} }, --Goldcrest Amulet
-		{ name = L["Amulets"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41217, skill={175,195,202,210} }, --Powerful Citrine Pendant
+		{ name = L["Amulets"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41556, skill={180,200,210,220} }, --Delicate Mithril Amulet
 		{ id=93, skill={185,185,185,185} }, -- Refined Dwarven Necklace 1.18
 		{ id=41223, skill={190,205,215,225} }, --Shimmering Gold Necklace
@@ -3901,8 +3899,8 @@ local craftingTable = {
 		{ id=41315, skill={1,275,285,295} }, --Moonlit Charm
 		{ id=41279, skill={280,280,300,320} }, --Voidheart Charm
 		{ id=41105, skill={280,300,305,310} }, --Pendant of Arcane Radiance
-		{ name = L["Amulets"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41287, skill={290,310,325,340} }, --Stormcloud Sigil
+		{ name = L["Amulets"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41722, skill={300,300,307,315} }, --Pendant of Instability
 		{ id=41704, skill={300,320,330,340} }, --Talisman of Hinderance
 	},

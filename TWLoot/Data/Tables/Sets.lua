@@ -2607,6 +2607,43 @@ Sets = {
 		{ id = 15052 }, -- Black Dragonscale Leggings
 		{ id = 16984 }, -- Black Dragonscale Boots
 	},
+	MidnightRegalia = {
+		{ name = LIS["Midnight Regalia"] },
+		{ id = 41312 }, -- Pendant of Midnight
+		{ id = 56091 }, -- Ring of Midnight
+	},
+	GoldmastersJewelry = {
+		{ name = LIS["Goldmaster's Jewelry"] },
+		{ id = 56050 }, -- Elaborate Golden Bracelets
+		{ id = 41340 }, -- Shimmering Gold Necklace
+		{ id = 56053 }, -- Golden Jade Ring
+	},
+	AquamarineJewelry = {
+		{ name = LIS["Aquamarine Jewelry"] },
+		{ id = 56048 }, -- Dazzling Aquamarine Loop
+		{ id = 55196 }, -- Aquamarine Pendant
+	},
+	OrnateMithrilJewelry = {
+		{ name = LIS["Ornate Mithril Jewelry"] },
+		{ id = 56089 }, -- Ornate Mithril Crown
+		{ id = 56070 }, -- Ornate Mithril Bracelets
+	},
+	SpellweaversAccessories = {
+		{ name = LIS["Spellweaver's Accessories"] },
+		{ id = 56090 }, -- Spellweaver Pendant
+		{ id = 55271 }, -- Spellweaver Rod
+	},
+	StormcloudJewelry = {
+		{ name = LIS["Stormcloud Jewelry"] },
+		{ id = 56035 }, -- Stormcloud Sigil
+		{ id = 56092 }, -- Stormcloud Shackles
+		{ id = 56093 }, -- Stormcloud Signet
+	},
+	MastercraftedDiamondJewelry = {
+		{ name = LIS["Mastercrafted Diamond Jewelry"] },
+		{ id = 56064 }, -- Mastercrafted Diamond Crown
+		{ id = 56096 }, -- Mastercrafted Diamond Bangles
+	},
 }
 
 for k, v in pairs(Sets) do

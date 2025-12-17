@@ -12,6 +12,13 @@ AtlasTW.Localization:RegisterNamespace("ItemSets", "enUS", {
     ["Dragonmaw Battlegarb"] = true,
     ["Arms of Thaurissan"] = true,
     -- 1.17
+    ["Stormcloud Jewelry"] = true,
+    ["Mastercrafted Diamond Jewelry"] = true,
+    ["Spellweaver's Accessories"] = true,
+    ["Ornate Mithril Jewelry"] = true,
+    ["Aquamarine Jewelry"] = true,
+    ["Goldmaster's Jewelry"] = true,
+    ["Midnight Regalia"] = true,
     ["Incendosaur Skin Armor"] = true,
     ["Greymane Armor"] = true,
     -- Blacksmithing Crafted Sets

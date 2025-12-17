@@ -6,6 +6,13 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("ItemSets", "zhCN", {
+    ["Stormcloud Jewelry"] = "雷云珠宝",
+    ["Mastercrafted Diamond Jewelry"] = "精制钻石珠宝",
+    ["Spellweaver's Accessories"] = "织法者配饰",
+    ["Ornate Mithril Jewelry"] = "精致秘银珠宝",
+    ["Aquamarine Jewelry"] = "青绿石珠宝",
+    ["Goldmaster's Jewelry"] = "黄金大师珠宝",
+    ["Midnight Regalia"] = "午夜礼服",
     ["Stormreaver Attire"] = "风暴掠夺者服饰", --TODO miss at base
     ["Dragonmaw Battlegarb"] = "龙喉战甲", --TODO miss at base
     ["Arms of Thaurissan"] = "索瑞森之臂", --TODO miss at base

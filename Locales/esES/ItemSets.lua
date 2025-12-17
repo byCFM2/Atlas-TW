@@ -6,6 +6,13 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("ItemSets", "esES", {
+    ["Stormcloud Jewelry"] = "Joyería de Nube de Tormenta",
+    ["Mastercrafted Diamond Jewelry"] = "Joyería de Diamante Magistral",
+    ["Spellweaver's Accessories"] = "Accesorios del Tejedor de Hechizos",
+    ["Ornate Mithril Jewelry"] = "Joyería de Mithril Ornamentada",
+    ["Aquamarine Jewelry"] = "Joyería Aguamarina",
+    ["Goldmaster's Jewelry"] = "Joyería del Maestro Dorado",
+    ["Midnight Regalia"] = "Atavío de Medianoche",
     ["Stormreaver Attire"] = "Atuendo de Tempestárea",
     ["Dragonmaw Battlegarb"] = "Atuendo Mandíbula de Dragón",
     ["Arms of Thaurissan"] = "Armas de Thaurissan",
