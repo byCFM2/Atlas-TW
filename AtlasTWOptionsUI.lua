@@ -182,7 +182,7 @@ do
 
     -- QuestOptionsText
     local questOptionText = optionsFrame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-    questOptionText:SetPoint("BOTTOM", title, "BOTTOM", 100, -25)
+    questOptionText:SetPoint("BOTTOM", title, "BOTTOM", 120, -25)
     questOptionText:SetText(L["Quest"])
 
     -- Quest Checkboxes Data
@@ -202,7 +202,7 @@ do
         for i, config in ipairs(questCheckboxes) do
             local checkbox = CreateFrame("CheckButton", config.name, optionsFrame, "OptionsCheckButtonTemplate")
             if i == 1 then
-                checkbox:SetPoint("BOTTOM", questOptionText, "BOTTOM", -145, -35)
+                checkbox:SetPoint("BOTTOM", questOptionText, "BOTTOM", -125, -35)
             else
                 checkbox:SetPoint("BOTTOM", previousCheckbox, "BOTTOM", 0, -25)
             end
@@ -242,7 +242,7 @@ do
                 checkbox:SetPoint("BOTTOM", previousCheckbox, "BOTTOM", 0, -25)
             else
                 local referenceCheckbox = lootCheckboxes[i - 6].name
-                checkbox:SetPoint("RIGHT", referenceCheckbox, "RIGHT", 195, 0)
+                checkbox:SetPoint("RIGHT", referenceCheckbox, "RIGHT", 235, 0)
             end
             _G[config.name .. "Text"]:SetText(config.text)
             checkbox:SetScript("OnClick", config.script)

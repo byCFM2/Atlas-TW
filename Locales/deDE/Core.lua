@@ -144,7 +144,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     --************************************************
     ["Select Category"] = "Kategorie auswählen",
     ["Select Map"] = "Karte auswählen",
-    ["Select Loot Table"] = "Beutetabelle auswählen",
+    ["Select Loot Table"] = "Beutetabelle",
     ["Show the Quest Panel with AtlasTW"] = "Questfenster mit AtlasTW anzeigen",
     ["Show Quest Panel on the Left"] = "Questfenster links anzeigen",
     ["Show Quest Panel on the Right"] = "Questfenster rechts anzeigen",
@@ -192,7 +192,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Not Available"] = "Nicht verfügbar",
     ["Search Result: %s"] = "Suchergebnis: %s",
     ["Search Result"] = "Suchergebnis",
-    ["Last Result"] = "Letztes Ergebnis",
+    ["Last Result"] = "Letz. Ergebnis",
     ["Search options"] = "Suchoptionen",
     ["Partial matching"] = "Teilweise Übereinstimmung",
     ["If checked, AtlasTWLoot searches item names for a partial match."] =
@@ -222,7 +222,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Loot Panel"] = "Beutefenster",
     ["WishList"] = "Wunschliste",
     ["ALT+Click to clear"] = "ALT+Klick zum Löschen",
-    ["QuickLook"] = "Schnellansicht",
+    ["QuickLook"] = "Ansicht",
     ["Add to QuickLooks"] = "Zu Schnellansichten hinzufügen",
     ["Assign this loot table to QuickLook"] = "Diese Beutetabelle Schnellansicht zuweisen",
     ["ALT+Click on item to add or remove it from WishList"] =
@@ -237,9 +237,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     --************************************************
     ["Button Position"] = "Schaltflächenposition",
     ["Button Radius"] = "Schaltflächenradius",
-    ["Reset Position"] = "Position zurücksetzen",
+    ["Reset Position"] = "Pos. zurücksetzen",
     ["has been reset!"] = "wurde zurückgesetzt!",
-    ["Reset Settings"] = "Einstellungen zurücksetzen",
+    ["Reset Settings"] = "Einst. zurücksetzen",
     ["Default settings applied!"] = "Standardeinstellungen übernommen!",
     ["Safe Chat Links |cff1eff00(recommended)|r"] = "Sichere Chatlinks |cff1eff00(empfohlen)|r",
     ["Enable all Chat Links"] = "Alle Chatlinks aktivieren",
@@ -272,7 +272,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["World Events"] = "Weltereignisse",
     ["Crafting"] = "Herstellung",
     ["Misc"] = "Verschiedenes",
-    ["Dungeons & Raids"] = "Dungeons & Schlachtzüge",
+    ["Dungeons & Raids"] = "DG & Schlachtzüge",
     ["Weapon Skills"] = "Waffenfähigkeiten",
     ["Sets"] = "Mengen",
 
@@ -381,7 +381,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Crafted Epic Weapons"] = "Hergestellte epische Waffen",
     ["Tier 0.5"] = "T 0.5",
     ["Tier 0.5 Summonable"] = "T 0.5 beschwörbar",
-    ["PvP Rewards"] = "PvP-Belohnungen",
+    ["PvP Rewards"] = "PvP",
     ["PvP Armor Sets"] = "PvP-Rüstungssets",
     ["PvP Weapons"] = "PvP-Waffen",
     ["PvP Accessories"] = "PvP-Zubehör",

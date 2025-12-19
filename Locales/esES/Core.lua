@@ -144,7 +144,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     --************************************************
     ["Select Category"] = "Seleccionar categoría",
     ["Select Map"] = "Seleccionar mapa",
-    ["Select Loot Table"] = "Seleccionar tabla de botín",
+    ["Select Loot Table"] = "Tabla de botín",
     ["Show the Quest Panel with AtlasTW"] = "Mostrar el panel de misiones con AtlasTW",
     ["Show Quest Panel on the Left"] = "Mostrar el panel de misiones a la izquierda",
     ["Show Quest Panel on the Right"] = "Mostrar el panel de misiones a la derecha",
@@ -160,7 +160,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Right-Click for World Map"] = "Clic derecho para mapa del mundo",
     ["Show Acronyms"] = "Mostrar acrónimos",
     ["Clamp window to screen"] = "Ajustar ventana a la pantalla",
-    ["Show Cursor Coordinates on Map"] = "Mostrar coordenadas del cursor en el mapa",
+    ["Show Cursor Coordinates on Map"] = "Mostrar coord. del cursor en el mapa",
     ["Scale"] = "Escala",
 
     --************************************************
@@ -192,7 +192,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Not Available"] = "No disponible",
     ["Search Result: %s"] = "Resultado de búsqueda: %s",
     ["Search Result"] = "Resultado de búsqueda",
-    ["Last Result"] = "Último resultado",
+    ["Last Result"] = "Último resul.",
     ["Search options"] = "Opciones de búsqueda",
     ["Partial matching"] = "Coincidencia parcial",
     ["If checked, AtlasTWLoot searches item names for a partial match."] =
@@ -220,7 +220,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     -- AtlasTW Loot
     --************************************************
     ["Loot Panel"] = "Panel de botín",
-    ["WishList"] = "Lista de deseos",
+    ["WishList"] = "Deseos",
     ["ALT+Click to clear"] = "ALT+Clic para limpiar",
     ["QuickLook"] = "Vista rápida",
     ["Add to QuickLooks"] = "Agregar a Vistas rápidas",
@@ -237,9 +237,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     --************************************************
     ["Button Position"] = "Posición del botón",
     ["Button Radius"] = "Radio del botón",
-    ["Reset Position"] = "Restablecer posición",
+    ["Reset Position"] = "Resetear posición",
     ["has been reset!"] = "¡Se ha restablecido!",
-    ["Reset Settings"] = "Restablecer configuración",
+    ["Reset Settings"] = "Resetear configuración",
     ["Default settings applied!"] = "¡Configuración predeterminada aplicada!",
     ["Safe Chat Links |cff1eff00(recommended)|r"] = "Enlaces de chat seguros |cff1eff00(recomendado)|r",
     ["Enable all Chat Links"] = "Habilitar todos los enlaces de chat",
@@ -269,11 +269,11 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     --************************************************
     ["Collections"] = "Colecciones",
     ["Factions"] = "Facciones",
-    ["World Events"] = "Eventos mundiales",
+    ["World Events"] = "Eventos",
     ["Crafting"] = "Fabricación",
     ["Sets"] = "Conjuntos",
     ["Misc"] = "Varios",
-    ["Dungeons & Raids"] = "Mazmorras y Bandas",
+    ["Dungeons & Raids"] = "Mazm. y Bandas",
     ["Weapon Skills"] = "Habilidades de Armas",
 
     --************************************************
@@ -382,7 +382,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Crafted Epic Weapons"] = "Armas épicas fabricadas",
     ["Tier 0.5"] = "Nivel 0.5",
     ["Tier 0.5 Summonable"] = "Nivel 0.5 invocable",
-    ["PvP Rewards"] = "Recompensas JcJ",
+    ["PvP Rewards"] = "Recomp. JxJ",
     ["PvP Armor Sets"] = "Conjuntos de armadura JcJ",
     ["PvP Weapons"] = "Armas JcJ",
     ["PvP Accessories"] = "Accesorios JcJ",

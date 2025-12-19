@@ -38,7 +38,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     -- Common UI Strings
     --************************************************
     ["Options"] = "Opções",
-    ["Search"] = "Pesquisar",
+    ["Search"] = "Buscar",
     ["Clear"] = "Limpar",
     ["Done"] = "Concluído",
     ["Yes"] = "Sim",
@@ -150,12 +150,12 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["Show Quest Panel on the Right"] = "Mostrar Painel de Missões à Direita",
     ["Color Quests by Level"] = "Colorir Missões por Nível",
     ["Color Quests from the Questlog"] = "Colorir Missões do Registro",
-    ["Auto-Query Unknown Items"] = "Consultar Itens Desconhecidos Automaticamente",
+    ["Auto-Query Unknown Items"] = "Consultar Itens Desconhecidos auto",
     ["Suppress Server Query Spam"] = "Suprimir Spam de Consultas ao Servidor",
     ["Show Loot Panel with AtlasTW"] = "Mostrar Painel de Saques com AtlasTW",
     ["Sort Instance by:"] = "Ordenar instância por:",
     ["Show Button on Minimap"] = "Mostrar botão no minimapa",
-    ["Auto-Select Instance Map"] = "Selecionar mapa de instância automaticamente",
+    ["Auto-Select Instance Map"] = "Selecionar mapa de instância auto",
     ["Transparency"] = "Transparência",
     ["Right-Click for World Map"] = "Clique direito para Mapa-múndi",
     ["Show Acronyms"] = "Mostrar acrônimos",
@@ -192,7 +192,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["Not Available"] = "Indisponível",
     ["Search Result: %s"] = "Resultado da Pesquisa: %s",
     ["Search Result"] = "Resultado da Pesquisa",
-    ["Last Result"] = "Último Resultado",
+    ["Last Result"] = "Último Resul.",
     ["Search options"] = "Opções de Pesquisa",
     ["Partial matching"] = "Correspondência parcial",
     ["If checked, AtlasTWLoot searches item names for a partial match."] =
@@ -219,8 +219,8 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     --************************************************
     -- AtlasTW Loot
     --************************************************
-    ["Loot Panel"] = "Painel de Saques",
-    ["WishList"] = "Lista de Desejos",
+    ["Loot Panel"] = "Saques",
+    ["WishList"] = "Desejos",
     ["ALT+Click to clear"] = "ALT+Clique para limpar",
     ["QuickLook"] = "Prévia",
     ["Add to QuickLooks"] = "Adicionar às Prévias",
@@ -262,18 +262,18 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["Version check sent to %s"] = "Verificação de versão enviada para %s",
     ["NewVersionAvailableFmt"] = "|cffff0000Nova versão disponível!|r |cff00ff00Baixe aqui:|r %s",
     [" |cffA52A2Aloaded."] = " |cffA52A2Acarregado.",
-    ["NoticeText"] = "Se você encontrar algo faltando, por favor relate em:|r",
+    ["NoticeText"] = "Encontrou algo faltando? Relate em:|r",
 
     --************************************************
     -- Categories & Menus
     --************************************************
     ["Collections"] = "Coleções",
     ["Factions"] = "Facções",
-    ["World Events"] = "Eventos Mundiais",
+    ["World Events"] = "Eventos",
     ["Crafting"] = "Criação",
     ["Sets"] = "Conjuntos",
     ["Misc"] = "Diversos",
-    ["Dungeons & Raids"] = "Masmorras e Raides",
+    ["Dungeons & Raids"] = "Masm. e Raides",
     ["Weapon Skills"] = "Habilidades de Armas",
 
     --************************************************
@@ -382,7 +382,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["Crafted Epic Weapons"] = "Armas Épicas Fabricadas",
     ["Tier 0.5"] = "Tier 0.5",
     ["Tier 0.5 Summonable"] = "Evocável de Tier 0.5",
-    ["PvP Rewards"] = "Recompensas de JxJ",
+    ["PvP Rewards"] = "Recomp. JxJ",
     ["PvP Armor Sets"] = "Conjuntos de Armadura JxJ",
     ["PvP Weapons"] = "Armas JxJ",
     ["PvP Accessories"] = "Acessórios JxJ",

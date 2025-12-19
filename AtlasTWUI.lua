@@ -299,14 +299,14 @@ do
     noSearch:SetTextColor(1, 1, 1, 0.4)
 
     local zoneText = atlasFrame:CreateFontString("AtlasTWZoneText", "OVERLAY", "GameFontHighlightLarge")
-    zoneText:SetWidth(350)
+    zoneText:SetWidth(295)
     zoneText:SetHeight(20)
     zoneText:SetAlpha(.8)
     zoneText:SetPoint("TOPLEFT", 546, -95)
     zoneText:SetJustifyH("LEFT")
 
     local locationText = atlasFrame:CreateFontString("AtlasTWLocationText", "OVERLAY", "GameFontNormal")
-    locationText:SetWidth(200)
+    locationText:SetWidth(188)
     locationText:SetHeight(15)
     locationText:SetPoint("TOPLEFT", zoneText, 0, -18)
     locationText:SetJustifyH("LEFT")

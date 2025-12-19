@@ -396,9 +396,30 @@ local function FindItemSource(itemID)
     -- 3. Check Sets (Prepare info)
     local setCategory = GetItemSetCategory(itemID)
 
+    -- Helper to check if a page key belongs to crafting pages (where IDs are SpellIDs, not ItemIDs)
+    local function IsCraftPage(pageKey)
+        if not pageKey or type(pageKey) ~= "string" then return false end
+        -- Known craft page prefixes where ID entries are SpellIDs
+        local craftPrefixes = {
+            "Alchemy", "Smithing", "Smith", "Enchanting", "Engineering", "Leatherworking",
+            "Tailoring", "Mining", "Jewelcraft", "Cooking", "FirstAid", "Survival",
+            "Armorsmith", "Weaponsmith", "Axesmith", "Hammersmith", "Swordsmith",
+            "Dragonscale", "Elemental", "Tribal", "Gnomish", "Goblin"
+        }
+        for _, prefix in ipairs(craftPrefixes) do
+            if strfind(pageKey, "^" .. prefix) then
+                return true
+            end
+        end
+        return false
+    end
+
     -- 4. Check Loot Tables (Instance/Boss/Generic)
     if not finalSource then
         local pageKey = AtlasTW.LootUtils.IterateAllLootItems(function(id, key)
+            -- Skip craft pages where 'id' is a SpellID, not an ItemID
+            -- This prevents false matches like SpellID 16987 matching ItemID 16987
+            if IsCraftPage(key) then return nil end
             if id == itemID then return key end
         end)
 
