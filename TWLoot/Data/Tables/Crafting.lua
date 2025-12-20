@@ -3338,27 +3338,30 @@ local craftingTable = {
 		{ id=8170, disc=L["Level: "].."45-62", quantity = {1,6} }, --Rugged Leather
 		{ id=8171, disc=L["Level: "].."47-63", quantity = {1,3} }, --Rugged Hide
 		{ name = L["Scales"], icon = "INV_Misc_MonsterScales_02" },
-		{ id=8154, disc=L["Level: "].."50-55", quantity = {1,2}, dropRate = 40 }, --Scorpid Scale
-		{ id=15408, disc=L["Level: "].."52-60", quantity = {1,2}, dropRate = 30 }, --Heavy Scorpid Scale
-		{ id=7392, disc=L["Level: "].."34-36 "..LZ["Swamp of Sorrows"], quantity = {1,2}, dropRate = 20 }, --Green Whelp Scale
-		{ id=7287, disc=L["Level: "].."23-38", quantity = {1,2}, dropRate = 15 }, --Red Whelp Scale
+		{ id=6470, disc=L["Level: "].."15-21 "..LZ["Wailing Caverns"], quantity = {1,2}, dropRate = 6 }, --Deviate Scale
+		{ id=6471, disc=L["Level: "].."15-21 "..LZ["Wailing Caverns"], quantity = {1,2}, dropRate = 7 }, --Perfect Deviate Scale
 		{ id=7286, disc=L["Level: "].."17-18 "..LZ["Redridge Mountains"], quantity = {1,2}, dropRate = 30 }, --Black Whelp Scale
-		{ id=15412, disc=L["Level: "].."41-63", quantity = {1,2}, dropRate = 20 }, --Green Dragonscale
-		{ id=15416, disc=L["Level: "].."50-63", quantity = {1,2}, dropRate = 20 }, --Black Dragonscale
+		{ id=7287, disc=L["Level: "].."23-38", quantity = {1,2}, dropRate = 15 }, --Red Whelp Scale
+		{ id=7392, disc=L["Level: "].."34-36 "..LZ["Swamp of Sorrows"], quantity = {1,2}, dropRate = 20 }, --Green Whelp Scale
+		{ id=8167, disc=L["Level: "].."36-54", quantity = {1,2}, dropRate = 50 }, --Turtle Scale
 		{ id=15415, disc=L["Level: "].."37-60", quantity = {1,2}, dropRate = 20 }, --Blue Dragonscale
-		{ id=15414, disc=L["Level: "].."57-63", quantity = {1,2}, dropRate = 20 }, --Red Dragonscale
+		{ id=15412, disc=L["Level: "].."41-63", quantity = {1,2}, dropRate = 20 }, --Green Dragonscale
 		{ id=8165, disc=L["Level: "].."41-63", quantity = {1,2}, dropRate = 10 }, --Worn Dragonscale
-		{ id=20381, disc=L["Level: "].."62-63".." "..LZ["Emerald Sanctum"], quantity = {1,2}, dropRate = 55 }, --Dreamscale
+		{ id=8154, disc=L["Level: "].."50-55", quantity = {1,2}, dropRate = 40 }, --Scorpid Scale
+		{ id=15416, disc=L["Level: "].."50-63", quantity = {1,2}, dropRate = 20 }, --Black Dragonscale
+		{ id=15408, disc=L["Level: "].."52-60", quantity = {1,2}, dropRate = 30 }, --Heavy Scorpid Scale
+		{ id=15414, disc=L["Level: "].."57-63", quantity = {1,2}, dropRate = 20 }, --Red Dragonscale
+		{ id=20381, disc=L["Level: "].."62-63 "..LZ["Emerald Sanctum"], quantity = {1,2}, dropRate = 55 }, --Dreamscale
+		{ id=15410, disc=L["Level: "].."63 "..LB["Onyxia"], quantity = {2,4}, dropRate = 100 }, --Scale of Onyxia
 		{},
 		{ name = L["Special"], icon = "INV_Misc_Pelt_Wolf_01" },
-		{ id=15417, disc=L["Level: "].."54-60 "..LZ["Un'goro Crater"], dropRate = 100 }, --Devilsaur Leather
-		{ id=15419, disc=L["Level: "].."51-61 "..LZ["Winterspring"].."...", quantity = {1,2}, dropRate = 15 }, --Warbear Leather
+		{ id=7428, disc=L["Level: "].."37-43 "..LZ["Stranglethorn Vale"].."...", quantity = {1,2}, dropRate = 15 }, --Shadowcat Hide
 		{ id=15423, disc=L["Level: "].."49-59 "..LZ["Winterspring"]..", "..LZ["Azshara"], quantity = {1,2}, dropRate = 29 }, --Chimera Leather
-		{ id=17012, disc=L["Level: "].."62-63 "..LZ["Molten Core"], quantity = {1,4}, dropRate = 100 }, --Core Leather
+		{ id=15419, disc=L["Level: "].."51-61 "..LZ["Winterspring"].."...", quantity = {1,2}, dropRate = 15 }, --Warbear Leather
+		{ id=15417, disc=L["Level: "].."54-60 "..LZ["Un'goro Crater"], dropRate = 100 }, --Devilsaur Leather
 		{ id=20498, disc=L["Level: "].."57-63 "..LZ["Silithus"], quantity = {1,3}, dropRate = 33 }, --Silithid Chitin
 		{ id=20500, disc=L["Level: "].."57-62 "..LZ["Silithus"], dropRate = 7 }, --Light Silithid Carapace
-		{ id=7428, disc=L["Level: "].."37-43 "..LZ["Stranglethorn Vale"].."...", quantity = {1,2}, dropRate = 15 }, --Shadowcat Hide
-		{ id=15410, disc=L["Level: "].."63 "..LB["Onyxia"], quantity = {2,4}, dropRate = 100 }, --Scale of Onyxia
+		{ id=17012, disc=L["Level: "].."62-63 "..LZ["Molten Core"], quantity = {1,4}, dropRate = 100 }, --Core Leather
 		{ id=12731, disc=L["Level: "].."63 "..LB["The Beast"], dropRate = 2 }, --Pristine Hide of the Beast
 	},
 
