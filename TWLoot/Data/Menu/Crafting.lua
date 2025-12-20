@@ -32,16 +32,16 @@ AtlasTW.MenuData.Crafting = {
     { name = LS["Blacksmithing"], icon = "Interface\\Icons\\Trade_BlackSmithing", lootpage = "AtlasTWLoot_SmithingMenu" },
     { name = LS["Enchanting"], icon = "Interface\\Icons\\Trade_Engraving", lootpage = "AtlasTWLoot_EnchantingMenu" },
     { name = LS["Engineering"], icon = "Interface\\Icons\\Trade_Engineering", lootpage = "AtlasTWLoot_EngineeringMenu" },
-    { name = LS["Herbalism"], icon = "Interface\\Icons\\Trade_Herbalism", lootpage = "Herbalism" },
+    { name = LS["Herbalism"], icon = "Interface\\Icons\\Trade_Herbalism", lootpage = "AtlasTWLoot_HerbalismMenu" },
     { name = LS["Leatherworking"], icon = "Interface\\Icons\\INV_Misc_ArmorKit_17", lootpage = "AtlasTWLoot_LeatherworkingMenu" },
     { name = LS["Mining"]..", "..LS["Smelting"], icon = "Interface\\Icons\\Trade_Mining", lootpage = "AtlasTWLoot_MiningMenu" },
     { name = LS["Tailoring"], icon = "Interface\\Icons\\Trade_Tailoring", lootpage = "AtlasTWLoot_TailoringMenu" },
     { name = LS["Jewelcrafting"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "AtlasTWLoot_JewelcraftingMenu" },
     { name = LS["Cooking"], icon = "Interface\\Icons\\INV_Misc_Food_15", lootpage = "AtlasTWLoot_CookingMenu" },
-    { name = LS["First Aid"], icon = "Interface\\Icons\\Spell_Holy_SealOfSacrifice", lootpage = "FirstAid" },
-    { name = LS["Survival"]..", "..LS["Gardening"], icon = "Interface\\Icons\\Trade_Survival", lootpage = "Survival" },
+    { name = LS["First Aid"], icon = "Interface\\Icons\\Spell_Holy_SealOfSacrifice", lootpage = "AtlasTWLoot_FirstAidMenu" },
+    { name = LS["Survival"]..", "..LS["Gardening"], icon = "Interface\\Icons\\Trade_Survival", lootpage = "AtlasTWLoot_SurvivalMenu" },
     {},
-    { name = LS["Poisons"], Extra = LC["Rogue"], icon = "Interface\\Icons\\Trade_BrewPoison", lootpage = "Poisons" },
+    { name = LS["Poisons"], Extra = LC["Rogue"], icon = "Interface\\Icons\\Trade_BrewPoison", lootpage = "AtlasTWLoot_PoisonsMenu" },
     {},
     { name = L["Crafted Sets"], icon = "Interface\\Icons\\INV_Box_01", lootpage = "AtlasTWLootCraftedSetMenu" },
     {},
@@ -119,7 +119,6 @@ function AtlasTWLootCraftedSetMenu()
 end
 
 AtlasTW.MenuData.Alchemy = {
-    {},
     { name = LS["Alchemy"]..": "..L["Apprentice"], lootpage = "AlchemyApprentice" },
     { name = LS["Alchemy"]..": "..L["Journeyman"], lootpage = "AlchemyJourneyman" },
     { name = LS["Alchemy"]..": "..L["Expert"], lootpage = "AlchemyExpert" },
@@ -132,6 +131,8 @@ AtlasTW.MenuData.Alchemy = {
     { name = LS["Alchemy"]..": "..L["Defensive Potions and Elixirs"], lootpage = "AlchemyDefensive" },
     { name = LS["Alchemy"]..": "..L["Offensive Potions and Elixirs"], lootpage = "AlchemyOffensive" },
     { name = LS["Alchemy"]..": "..L["Miscellaneous"], lootpage = "AlchemyMisc" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "AlchemyTrainers" },
 }
 
 ---
@@ -174,6 +175,8 @@ AtlasTW.MenuData.Smithing = {
     { name = LS["Blacksmithing"]..": "..L["Fist"], lootpage = "SmithingFist" },
     { name = LS["Blacksmithing"]..": "..L["Daggers"], lootpage = "SmithingDaggers" },
     { name = LS["Blacksmithing"]..": "..L["Misc"], lootpage = "SmithingMisc" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "BlacksmithingTrainers" },
 }
 
 ---
@@ -186,7 +189,6 @@ function AtlasTWLoot_SmithingMenu()
 end
 
 AtlasTW.MenuData.Enchanting = {
-    {},
     { name = LS["Enchanting"]..": "..L["Apprentice"], lootpage = "EnchantingApprentice" },
     { name = LS["Enchanting"]..": "..L["Journeyman"], lootpage = "EnchantingJourneyman" },
     { name = LS["Enchanting"]..": "..L["Expert"], lootpage = "EnchantingExpert" },
@@ -201,6 +203,8 @@ AtlasTW.MenuData.Enchanting = {
     { name = LS["Enchanting"]..": "..L["Weapon"], lootpage = "EnchantingWeapon" },
     { name = LS["Enchanting"]..": "..L["Shield"], lootpage = "EnchantingShield" },
     { name = LS["Enchanting"]..": "..L["Misc"], lootpage = "EnchantingMisc" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "EnchantingTrainers" },
 }
 
 ---
@@ -213,7 +217,6 @@ function AtlasTWLoot_EnchantingMenu()
 end
 
 AtlasTW.MenuData.Engineering = {
-    {},
     { name = LS["Engineering"]..": "..L["Apprentice"], lootpage = "EngineeringApprentice" },
     { name = LS["Engineering"]..": "..L["Journeyman"], lootpage = "EngineeringJourneyman" },
     { name = LS["Engineering"]..": "..L["Expert"], lootpage = "EngineeringExpert" },
@@ -235,6 +238,8 @@ AtlasTW.MenuData.Engineering = {
     { name = LS["Engineering"]..": "..L["Weapons"], lootpage = "EngineeringWeapons" },
     { name = LS["Engineering"]..": "..L["Parts"], lootpage = "EngineeringParts" },
     { name = LS["Engineering"]..": "..L["Misc"], lootpage = "EngineeringMisc" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "EngineeringTrainers" },
 }
 
 ---
@@ -247,7 +252,6 @@ function AtlasTWLoot_EngineeringMenu()
 end
 
 AtlasTW.MenuData.Leatherworking = {
-    {},
     { name = LS["Leatherworking"]..": "..L["Apprentice"], lootpage = "LeatherApprentice" },
     { name = LS["Leatherworking"]..": "..L["Journeyman"], lootpage = "LeatherJourneyman" },
     { name = LS["Leatherworking"]..": "..L["Expert"], lootpage = "LeatherExpert" },
@@ -275,6 +279,8 @@ AtlasTW.MenuData.Leatherworking = {
     {},
     { name = LS["Leatherworking"]..": "..L["Bags"], lootpage = "LeatherBags" },
     { name = LS["Leatherworking"]..": "..L["Misc"], lootpage = "LeatherMisc" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "LeatherworkingTrainers" },
 }
 
 ---
@@ -287,9 +293,10 @@ function AtlasTWLoot_LeatherworkingMenu()
 end
 
 AtlasTW.MenuData.Mining = {
-    {},
     { name = LS["Mining"], icon = "Interface\\Icons\\Trade_Mining", lootpage = "MiningTable" },
     { name = LS["Smelting"], icon = "Interface\\Icons\\Spell_Fire_FlameBlades", lootpage = "Smelting" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "MiningTrainers" },
 }
 
 ---
@@ -302,7 +309,6 @@ function AtlasTWLoot_MiningMenu()
 end
 
 AtlasTW.MenuData.Tailoring = {
-    {},
     { name = LS["Tailoring"]..": "..L["Apprentice"], lootpage = "TailoringApprentice" },
     { name = LS["Tailoring"]..": "..L["Journeyman"], lootpage = "TailoringJourneyman" },
     { name = LS["Tailoring"]..": "..L["Expert"], lootpage = "TailoringExpert" },
@@ -321,6 +327,8 @@ AtlasTW.MenuData.Tailoring = {
     { name = LS["Tailoring"]..": "..L["Shirt"], lootpage = "TailoringShirt" },
     { name = LS["Tailoring"]..": "..L["Bags"], lootpage = "TailoringBags" },
     { name = LS["Tailoring"]..": "..L["Misc"], lootpage = "TailoringMisc" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "TailoringTrainers" },
 }
 
 ---
@@ -333,7 +341,6 @@ function AtlasTWLoot_TailoringMenu()
 end
 
 AtlasTW.MenuData.Jewelcrafting = {
-    {},
     { name = LS["Jewelcrafting"]..": "..L["Apprentice"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingApprentice" },
     { name = LS["Jewelcrafting"]..": "..L["Journeyman"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingJourneyman" },
     { name = LS["Jewelcrafting"]..": "..L["Expert"], icon = "Interface\\Icons\\INV_Jewelry_Necklace_11", lootpage = "JewelcraftingExpert" },
@@ -358,6 +365,8 @@ AtlasTW.MenuData.Jewelcrafting = {
     { name = LS["Jewelcrafting"]..": "..L["Staff"], lootpage = "JewelcraftingStaves" },
     { name = LS["Jewelcrafting"]..": "..L["Trinkets"], lootpage = "JewelcraftingTrinkets" },
     { name = LS["Jewelcrafting"]..": "..L["Misc"], lootpage = "JewelcraftingMisc" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "JewelcraftingTrainers" },
 }
 
 ---
@@ -370,11 +379,12 @@ function AtlasTWLoot_JewelcraftingMenu()
 end
 
 AtlasTW.MenuData.Cooking = {
-    {},
     { name = LS["Cooking"]..": "..L["Apprentice"], lootpage = "CookingApprentice" },
     { name = LS["Cooking"]..": "..L["Journeyman"], lootpage = "CookingJourneyman" },
     { name = LS["Cooking"]..": "..L["Expert"], lootpage = "CookingExpert" },
     { name = LS["Cooking"]..": "..L["Artisan"], lootpage = "CookingArtisan" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "CookingTrainers" },
 }
 
 ---
@@ -384,4 +394,64 @@ AtlasTW.MenuData.Cooking = {
 
 function AtlasTWLoot_CookingMenu()
     AtlasTW.LootBrowserUI.PrepMenu(LS["Cooking"], AtlasTW.MenuData.Cooking, L["Crafting"], "Interface\\Icons\\INV_Misc_Food_15")
+end
+
+AtlasTW.MenuData.FirstAid = {
+    { name = LS["First Aid"], icon = "Interface\\Icons\\Spell_Holy_SealOfSacrifice", lootpage = "FirstAidTable" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "FirstAidTrainers" },
+}
+
+---
+--- Opens the First Aid menu in AtlasTWLoot
+--- @return nil
+--- @usage AtlasTWLoot_FirstAidMenu()
+
+function AtlasTWLoot_FirstAidMenu()
+    AtlasTW.LootBrowserUI.PrepMenu(LS["First Aid"], AtlasTW.MenuData.FirstAid, L["Crafting"], "Interface\\Icons\\Spell_Holy_SealOfSacrifice")
+end
+
+AtlasTW.MenuData.Herbalism = {
+    { name = LS["Herbalism"], icon = "Interface\\Icons\\Trade_Herbalism", lootpage = "HerbalismTable" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "HerbalismTrainers" },
+}
+
+---
+--- Opens the Herbalism menu in AtlasTWLoot
+--- @return nil
+--- @usage AtlasTWLoot_HerbalismMenu()
+
+function AtlasTWLoot_HerbalismMenu()
+    AtlasTW.LootBrowserUI.PrepMenu(LS["Herbalism"], AtlasTW.MenuData.Herbalism, L["Crafting"], "Interface\\Icons\\Trade_Herbalism")
+end
+
+AtlasTW.MenuData.Survival = {
+    { name = LS["Survival"]..", "..LS["Gardening"], lootpage = "SurvivalTable" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "SurvivalTrainers" },
+}
+
+---
+--- Opens the Survival menu in AtlasTWLoot
+--- @return nil
+--- @usage AtlasTWLoot_SurvivalMenu()
+
+function AtlasTWLoot_SurvivalMenu()
+    AtlasTW.LootBrowserUI.PrepMenu(LS["Survival"], AtlasTW.MenuData.Survival, L["Crafting"], "Interface\\Icons\\Trade_Survival")
+end
+
+AtlasTW.MenuData.Poisons = {
+    { name = LS["Poisons"], icon = "Interface\\Icons\\Trade_BrewPoison", lootpage = "PoisonsTable" },
+    {},
+    { name = L["Trainers"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "PoisonsTrainers" },
+}
+
+---
+--- Opens the Poisons menu in AtlasTWLoot
+--- @return nil
+--- @usage AtlasTWLoot_PoisonsMenu()
+
+function AtlasTWLoot_PoisonsMenu()
+    AtlasTW.LootBrowserUI.PrepMenu(LS["Poisons"], AtlasTW.MenuData.Poisons, L["Crafting"], "Interface\\Icons\\Trade_BrewPoison")
 end

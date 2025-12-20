@@ -2216,8 +2216,8 @@ Sets = {
 		{ id = 14554 }, -- Cloudkeeper Legplates
 		{ id = 2246 }, -- Myrmidon's Signet
 		{ id = 833 }, -- Lifestone
-		{ id = 18665 }, -- The Eye of Shadow
 		{ id = 14557 }, -- The Lion Horn of Stormwind
+		{ id = 80793 }, -- The Wolf Horn of Orgrimmar
 		{},
 		{ id = 2243 }, -- Hand of Edward the Odd *15
 		--40

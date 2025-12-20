@@ -275,6 +275,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Misc"] = "Varios",
     ["Dungeons & Raids"] = "Mazm. y Bandas",
     ["Weapon Skills"] = "Habilidades de Armas",
+    ["Trainers"] = "Instructores",
 
     --************************************************
     -- Minimap Tooltip

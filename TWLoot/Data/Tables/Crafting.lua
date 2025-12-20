@@ -24,7 +24,7 @@ local LS = AtlasTW.Localization.Spells
 AtlasTWLoot_Data = AtlasTWLoot_Data or {}
 
 local craftingTable = {
-	Poisons = {
+	PoisonsTable = {
 		{ name = LS["Poisons"], icon = "Trade_BrewPoison" },
 		{ id=8681, skill={1,125,150,175}}, --Instant Poison
 		{ id=8687, skill={120,165,190,215}}, --Instant Poison II
@@ -3316,7 +3316,7 @@ local craftingTable = {
 		{ id=45451, skill={300,310,315,320}, container = {61198, 3859, 20381} }, --Smelt Dreamsteel
 	},
 
-	Herbalism = {
+	HerbalismTable = {
 		{ name = L["Apprentice"], icon = "Trade_Herbalism" },
 		{ id=2447, quantity = {1,4}, skill={1,25,50,100} }, --Peacebloom
 		{ id=765, quantity = {1,3}, skill={1,25,50,100}, container = {5056} }, --Silverleaf, Root Sample
@@ -3469,7 +3469,7 @@ local craftingTable = {
 		{ id=49551, skill={300,325,345,365} }, --Empowering Herbal Salad
 	},
 
-	FirstAid = {
+	FirstAidTable = {
 		{ name = LS["First Aid"], icon = "Spell_Holy_SealOfSacrifice" },
 		{ id=3275, skill={1,30,45,60} }, --Linen Bandage
 		{ id=3276, skill={40,50,75,100} }, --Heavy Linen Bandage
@@ -3487,7 +3487,7 @@ local craftingTable = {
 		{ id=23787, skill={300,300,330,360} }, --Powerful Anti-Venom
 	},
 
-	Survival = {
+	SurvivalTable = {
 		{ name = L["Survival"], icon = "Trade_Survival" },
 		{ id=46064, skill={1,30,45,60} }, --Dim Torch
 		{ id=47101, skill={10,30,45,60} }, --Survivalist's Skinning Knife

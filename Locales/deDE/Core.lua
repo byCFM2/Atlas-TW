@@ -274,6 +274,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Misc"] = "Verschiedenes",
     ["Dungeons & Raids"] = "DG & Schlachtzüge",
     ["Weapon Skills"] = "Waffenfähigkeiten",
+    ["Trainers"] = "Lehrer",
     ["Sets"] = "Mengen",
 
     --************************************************
