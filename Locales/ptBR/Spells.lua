@@ -171,6 +171,8 @@ AtlasTW.Localization:RegisterNamespace("Spells", "ptBR", {
     ["Enchanting"] = "Encantamento",
     ["Engineering"] = "Engenharia",
     ["First Aid"] = "Primeiros Socorros",
+    ["Fishing"] = "Pesca",
+    ["Skinning"] = "Esfolamento",
     ["Food"] = "Comida",
     ["Gardening"] = "Jardinagem",
     ["Gemology"] = "Gemologia",

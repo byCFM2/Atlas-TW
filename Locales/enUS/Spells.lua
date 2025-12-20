@@ -170,6 +170,8 @@ AtlasTW.Localization:RegisterNamespace("Spells", "enUS", {
     ["Enchanting"] = true,
     ["Engineering"] = true,
     ["First Aid"] = true,
+    ["Fishing"] = true,
+    ["Skinning"] = true,
     ["Food"] = true,
     ["Gardening"] = true,
     ["Gemology"] = true,

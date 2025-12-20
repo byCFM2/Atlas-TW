@@ -170,6 +170,8 @@ AtlasTW.Localization:RegisterNamespace("Spells", "zhCN", {
     ["Enchanting"] = "附魔",
     ["Engineering"] = "工程学",
     ["First Aid"] = "急救",
+    ["Fishing"] = "钓鱼",
+    ["Skinning"] = "剥皮",
     ["Food"] = "食物",
     ["Gardening"] = "园艺",
     ["Gemology"] = "宝石学",

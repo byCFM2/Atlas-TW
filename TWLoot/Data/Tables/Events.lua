@@ -267,9 +267,11 @@ local WorldEvents = {
 		{ id = 21525 }, -- Green Winter Hat
 		{},
 		{ id = 17712, disc = L["Quest Reward"] }, -- Winter Veil Disguise Kit
+		{ id = 51253, disc = L["Quest Reward"] }, -- Tome of Disquise: Furbolg
 		{ id = 17202, disc = L["Misc"] }, -- Snowball
 		{ id = 21212, disc = L["Misc"] }, -- Fresh Holly
 		{ id = 21519, disc = L["Misc"] }, -- Mistletoe
+		{ id = 21721, disc = L["Quest Reward"] }, -- Moonglow 
 		{},
 		{ name = LM["Gaily Wrapped Present"], icon="INV_Holiday_Christmas_Present_01" },
 		{ id = 21301 }, -- Green Helper Box

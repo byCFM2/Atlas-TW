@@ -457,6 +457,8 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Explosives"] = "爆炸物",
     ["Parts"] = "零件",
     ["Amulets"] = "护符",
+    ["Scales"] = "鳞片",
+    ["Special"] = "特殊",
 
     -- Set Categories
     ["Tier 0/0.5 Sets"] = "T0/T0.5 套装",

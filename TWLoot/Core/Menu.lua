@@ -222,6 +222,8 @@ function AtlasTWLoot_OpenMenu(menuName)
 		[LS["Cooking"]] = "AtlasTWLoot_CookingMenu",
 		[LS["Poisons"]] = "AtlasTWLoot_PoisonsMenu",
 		[LS["Herbalism"]] = "AtlasTWLoot_HerbalismMenu",
+		[LS["Fishing"]] = "AtlasTWLoot_FishingMenu",
+		[LS["Skinning"]] = "AtlasTWLoot_SkinningMenu",
 		[L["Crafted Sets"]] = "AtlasTWLootCraftedSetMenu",
 		[L["PvP Armor Sets"]] = "AtlasTWLootPVPSetMenu",
 		[L["Priest Sets"]] = "AtlasTWLootPriestSetMenu",

@@ -533,6 +533,8 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Explosives"] = true,
     ["Parts"] = true,
     ["Amulets"] = true,
+    ["Scales"] = true,
+    ["Special"] = true,
 
     --************************************************
     -- Set Categories
