@@ -12,7 +12,7 @@
 --- • Performance-optimized tooltip rendering
 --- • Configurable tooltip options
 ---
---- @author Original by Otari98
+--- @author idea by Otari98
 --- @compatible World of Warcraft 1.12
 ---
 
@@ -266,13 +266,13 @@ local function BuildGlobalIndex()
                                     local item = data[i]
                                     if type(item) == "table" then
                                         local id = item.id or item[1]
-                                        if id and not itemToSetMap[id] then 
-                                            itemToSetMap[id] = setCat.name 
+                                        if id and not itemToSetMap[id] then
+                                            itemToSetMap[id] = setCat.name
                                         end
                                         if item.container then mapItems(item.container) end
                                     elseif type(item) == "number" then
-                                        if not itemToSetMap[item] then 
-                                            itemToSetMap[item] = setCat.name 
+                                        if not itemToSetMap[item] then
+                                            itemToSetMap[item] = setCat.name
                                         end
                                     end
                                 end
@@ -368,25 +368,6 @@ local function BuildGlobalIndex()
 end
 
 ---
---- Checks if an item determines from a Quest
---- @param itemID number
---- @return string|nil Quest Source string
----
-local function FindItemQuestSource(itemID)
-    if not itemID then return nil end
-    BuildGlobalIndex()
-    -- GlobalIndex.itemID already contains quest info if it was found during indexing
-    -- Note: Since we prioritized quests in indexing, this is fine.
-    return GlobalIndex.itemID[itemID]
-end
-
-local function FindItemSourceInProfessions(itemID)
-    if not itemID then return nil end
-    BuildGlobalIndex()
-    return GlobalIndex.itemID[itemID]
-end
-
----
 --- Checks if an item belongs to a Set Category in MenuData
 --- @param itemID number
 --- @return string|nil Localized Set Categpry Name (e.g. "Ruins of Ahn'Qiraj Sets")
@@ -436,7 +417,7 @@ end
 
 local function FindItemSource(itemID)
     if not itemID then return nil end
-    
+
     -- Check global index first
     BuildGlobalIndex()
     if GlobalIndex.itemID[itemID] then
@@ -483,7 +464,7 @@ end
 local function GetItemIDByName(name)
     if not name then return nil end
     BuildGlobalIndex()
-    
+
     local foundID = GlobalIndex.nameToID[name]
     if foundID then return foundID end
 
