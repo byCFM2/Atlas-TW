@@ -443,6 +443,22 @@ local function FindItemSource(itemID)
         return GlobalIndex.itemID[itemID]
     end
 
+    -- Support for Transmogrification (Custom IDs)
+    -- If the ID isn't in our database, try looking up the item by name
+    -- to see if it matches an existing item in our Atlas-TW index.
+    local name = GetItemInfo(itemID)
+    if name then
+        local originalID = GlobalIndex.nameToID[name]
+        if originalID and originalID ~= itemID then
+            local source = GlobalIndex.itemID[originalID]
+            if source then
+                -- Cache the result for this specific custom ID to speed up future hovers
+                GlobalIndex.itemID[itemID] = source
+                return source
+            end
+        end
+    end
+
     -- Check negative cache to avoid repeated failed lookups
     if NegativeCache[itemID] then return nil end
 
