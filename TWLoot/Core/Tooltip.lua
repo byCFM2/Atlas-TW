@@ -44,6 +44,23 @@ local CreateFrame = CreateFrame
 local IsShiftKeyDown = IsShiftKeyDown
 local IsControlKeyDown = IsControlKeyDown
 local IsAddOnLoaded = IsAddOnLoaded
+local GetLootRollItemLink = GetLootRollItemLink
+local GetLootSlotLink = GetLootSlotLink
+local GetMerchantItemLink = GetMerchantItemLink
+local GetQuestLogItemLink = GetQuestLogItemLink
+local GetQuestItemLink = GetQuestItemLink
+local GetContainerItemLink = GetContainerItemLink
+local GetInventoryItemLink = GetInventoryItemLink
+local GetCraftReagentItemLink = GetCraftReagentItemLink
+local GetCraftItemLink = GetCraftItemLink
+local GetTradeSkillReagentItemLink = GetTradeSkillReagentItemLink
+local GetTradeSkillItemLink = GetTradeSkillItemLink
+local GetAuctionItemLink = GetAuctionItemLink
+local GetAuctionSellItemInfo = GetAuctionSellItemInfo
+local GetTradePlayerItemLink = GetTradePlayerItemLink
+local GetTradeTargetItemLink = GetTradeTargetItemLink
+local SetTooltipMoney = SetTooltipMoney
+local GetInboxItem = GetInboxItem
 
 -- ============================================================================
 -- MODULE INITIALIZATION
@@ -66,11 +83,16 @@ local ModuleState = {
 -- CACHING SYSTEMS
 -- ============================================================================
 
--- Cache for item name to ID lookups
-local NameToIDCache = {}
+-- Global index for fast lookups (O(1) instead of O(N))
+local GlobalIndex = {
+    itemID = {},      -- itemID -> sourceString
+    spellID = {},     -- spellID -> sourceString
+    nameToID = {},    -- itemName -> itemID
+    isIndexed = false
+}
 
--- Cache for item source lookups
-local SourceCache = {}
+-- Cache for items not found in Atlas-TW database
+local NegativeCache = {}
 
 -- ============================================================================
 -- MONEY TOOLTIP HOOK
@@ -114,10 +136,6 @@ end
 
 
 ---
---- Finds item source in professions
---- @param itemID number - The item ID to search for
---- @return string|nil - Formatted source string or nil if not found
----
 --- Recursively checks if an item ID exists in a loot page
 --- @param data table - The loot page data (list of items/tables)
 --- @param searchID number - The item ID to search for
@@ -125,118 +143,183 @@ end
 ---
 local function IsItemInPage(data, searchID)
     if type(data) ~= "table" then return false end
-    for _, item in pairs(data) do
+    -- table.getn is used for compatibility with WoW 1.12
+    for i = 1, table.getn(data) do
+        local item = data[i]
         if type(item) == "table" then
-            -- Check item ID
-            if item.id == searchID then return true end
-            -- Check first element if it's an ID (legacy format)
-            if item[1] == searchID then return true end
-
-            -- Recursive check for containers
-            if item.container and type(item.container) == "table" then
-                if IsItemInPage(item.container, searchID) then
-                    return true
-                end
+            if item.id == searchID or item[1] == searchID then return true end
+            if item.container and IsItemInPage(item.container, searchID) then
+                return true
             end
-        elseif type(item) == "number" then
-            if item == searchID then return true end
+        elseif item == searchID then
+            return true
         end
     end
     return false
 end
 
-local function FindItemSourceInProfessions(itemID)
-    if not itemID or not AtlasTW.SpellDB or not AtlasTW.SpellDB.craftspells or not AtlasTW.SpellDB.enchants then return nil end
+---
+--- Searches for a page identifier in the MenuData tables to find a localized name
+--- @param pageKey string The loot table key
+--- @return string|nil Localized source name or nil
+---
+local function FindItemSourceInMenuData(pageKey)
+    if not AtlasTW.MenuData then return nil end
 
-    local foundSpellID, foundSpellName = nil, nil
+    -- List of menu tables to check (Order matters slightly for performance, but keys should be unique)
+    local menuTablesToCheck = {
+        AtlasTW.MenuData.WorldEvents,
+        AtlasTW.MenuData.Factions,
+        AtlasTW.MenuData.PVP,
+        AtlasTW.MenuData.PVPSets,
+        AtlasTW.MenuData.Sets,
+        -- Profession Menus
+        AtlasTW.MenuData.Alchemy,
+        AtlasTW.MenuData.Smithing,
+        AtlasTW.MenuData.Enchanting,
+        AtlasTW.MenuData.Engineering,
+        AtlasTW.MenuData.Herbalism,
+        AtlasTW.MenuData.Leatherworking,
+        AtlasTW.MenuData.Mining,
+        AtlasTW.MenuData.Tailoring,
+        AtlasTW.MenuData.Jewelcrafting,
+        AtlasTW.MenuData.Cooking,
+        AtlasTW.MenuData.FirstAid,
+        AtlasTW.MenuData.Survival,
+        AtlasTW.MenuData.Skinning,
+        AtlasTW.MenuData.Fishing,
+        AtlasTW.MenuData.Poisons,
+        -- Add others if needed
+    }
 
-    -- 1. Check Enchants (Reverse lookup for formulas/scrolls)
-    if not foundSpellID and AtlasTW.SpellDB.enchants then
-        for spellID, data in pairs(AtlasTW.SpellDB.enchants) do
-            if data.item == itemID then
-                foundSpellID = spellID
-                foundSpellName = data.name
-                if not foundSpellName then
-                    -- For enchants, name might be the enchant name itself
-                     foundSpellName = data.name
-                     if not foundSpellName and GetItemInfo then
-                        foundSpellName = GetItemInfo(data.item)
-                     end
+    for _, menuTable in pairs(menuTablesToCheck) do
+        if type(menuTable) == "table" then
+            for _, entry in pairs(menuTable) do
+                if type(entry) == "table" and entry.lootpage == pageKey and entry.name then
+                    -- Return pure name
+                    return entry.name
                 end
-                break
             end
         end
-    end
-
-    -- 2. Check Craft Spells (Reverse lookup)
-    if AtlasTW.SpellDB.craftspells then
-        for spellID, data in pairs(AtlasTW.SpellDB.craftspells) do
-            if data.item == itemID then
-                foundSpellID = spellID
-                foundSpellName = data.name
-                if not foundSpellName then
-                    foundSpellName = GetItemInfo(data.item)
-                end
-                break
-            end
-        end
-    end
-
-    if foundSpellID then
-        -- Find profession name via strictly prioritized search
-        if AtlasTW.MenuData then
-            -- Helper to search in a specific menu table (linear scan = priority based on index)
-            local function findInMenu(menuTable)
-                if type(menuTable) ~= "table" then return nil end
-                -- Iterate in ipairs to respect order (Apprentice -> Journeyman -> ... -> Misc)
-                for _, entry in ipairs(menuTable) do
-                    if type(entry) == "table" and entry.lootpage then
-                         local pageData = AtlasTWLoot_Data[entry.lootpage]
-                         if pageData and IsItemInPage(pageData, foundSpellID) then
-                            return entry.name
-                         end
-                    end
-                end
-                return nil
-            end
-
-            -- List of menu keys to check (most likely first)
-            -- Ordering of keys is less important than ordering WITHIN keys, but still good to keep main professions first
-            local menuKeysToCheck = {
-                "Alchemy", "Smithing", "Enchanting", "Engineering",
-                "Leatherworking", "Mining", "Tailoring", "Jewelcrafting",
-                "Cooking", "FirstAid", "Survival", "Crafting", "CraftedSet"
-            }
-
-            for _, key in ipairs(menuKeysToCheck) do
-                local name = findInMenu(AtlasTW.MenuData[key])
-                if name then
-                    return name
-                end
-            end
-        else
-            -- Fallback to old "any page" locator if MenuData missing (unlikely)
-            local pageKey = AtlasTW.LootUtils.IterateAllLootItems(function(id, key)
-                if id == foundSpellID then return key end
-            end)
-            if pageKey then return "Crafting: " .. tostring(pageKey) end
-        end
-
-        return "Crafted: " .. (foundSpellName or "Unknown")
     end
 
     return nil
 end
 
+local function BuildGlobalIndex()
+    if GlobalIndex.isIndexed then return end
 
+    -- 1. Index Quests
+    if AtlasTW.Quest and AtlasTW.Quest.DataBase then
+        for _, instanceData in pairs(AtlasTW.Quest.DataBase) do
+            local instanceName = instanceData.Caption
+            if type(instanceName) == "table" then instanceName = instanceName[1] end
 
+            local function indexQuests(questList)
+                if not questList then return end
+                for _, quest in pairs(questList) do
+                    if quest.Rewards then
+                        for _, reward in pairs(quest.Rewards) do
+                            if type(reward) == "table" and reward.id then
+                                local questTitle = quest.Title or "?"
+                                local source = (instanceName ~= "" and instanceName .. " " or "") .. L["Quest"] .. ": " .. questTitle
+                                if not GlobalIndex.itemID[reward.id] then
+                                    GlobalIndex.itemID[reward.id] = source
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+            indexQuests(instanceData.Alliance)
+            indexQuests(instanceData.Horde)
+        end
+    end
+
+    -- 2. Index Professions
+    if AtlasTW.SpellDB and AtlasTW.MenuData then
+        -- Map Profession Names to their loot pages
+        local profPages = {}
+        local menuKeys = {"Alchemy", "Smithing", "Enchanting", "Engineering", "Leatherworking", "Mining", "Tailoring", "Jewelcrafting", "Cooking", "FirstAid", "Survival", "Crafting", "CraftedSet"}
+        for _, key in ipairs(menuKeys) do
+            local menu = AtlasTW.MenuData[key]
+            if menu then
+                for _, entry in ipairs(menu) do
+                    if entry.lootpage then
+                        profPages[entry.lootpage] = entry.name
+                    end
+                end
+            end
+        end
+
+        -- Map SpellID -> Profession Name
+        local function indexProfItems(spellList)
+            if not spellList then return end
+            for spellID, data in pairs(spellList) do
+                for pageKey, profName in pairs(profPages) do
+                    if AtlasTWLoot_Data[pageKey] and IsItemInPage(AtlasTWLoot_Data[pageKey], spellID) then
+                        GlobalIndex.spellID[spellID] = profName
+                        break
+                    end
+                end
+                if data.item then GlobalIndex.itemID[data.item] = GlobalIndex.spellID[spellID] end
+            end
+        end
+
+        indexProfItems(AtlasTW.SpellDB.enchants)
+        indexProfItems(AtlasTW.SpellDB.craftspells)
+    end
+
+    -- 3. Index Loot Tables (Instance/Boss/Generic)
+    if AtlasTW.LootUtils and AtlasTW.LootUtils.IterateAllLootItems then
+        AtlasTW.LootUtils.IterateAllLootItems(function(itemID, pageKey)
+            if not GlobalIndex.itemID[itemID] then
+                -- Check if it's a craft page (id is spellID)
+                local isCraft = false
+                local craftPrefixes = {"Alchemy", "Smithing", "Smith", "Enchanting", "Engineering", "Leatherworking", "Tailoring", "Smelting", "Jewelcraft", "Cooking", "FirstAid", "Survival"}
+                for _, prefix in ipairs(craftPrefixes) do
+                    if strfind(pageKey, "^" .. prefix) then isCraft = true break end
+                end
+
+                if not isCraft then
+                    local source = AtlasTW.LootUtils.GetLootTableSource(pageKey)
+                    if not source and AtlasTW.MenuData then
+                        source = FindItemSourceInMenuData(pageKey)
+                    end
+                    GlobalIndex.itemID[itemID] = source or pageKey
+                end
+            end
+            -- While iterating, if we can get item name, populate nameToID
+            -- (Note: GetItemInfo might only work for cached items)
+            if GetItemInfo then
+                local name = GetItemInfo(itemID)
+                if name then GlobalIndex.nameToID[name] = itemID end
+            end
+        end)
+    end
+
+    GlobalIndex.isIndexed = true
+end
 
 ---
---- Main item source finder with caching support
---- @param itemID number - The item ID to find source for
---- @return string|nil - Formatted source string or nil if not found
---- @usage local source = FindItemSource(12345)
+--- Checks if an item determines from a Quest
+--- @param itemID number
+--- @return string|nil Quest Source string
 ---
+local function FindItemQuestSource(itemID)
+    if not itemID then return nil end
+    BuildGlobalIndex()
+    -- GlobalIndex.itemID already contains quest info if it was found during indexing
+    -- Note: Since we prioritized quests in indexing, this is fine.
+    return GlobalIndex.itemID[itemID]
+end
+
+local function FindItemSourceInProfessions(itemID)
+    if not itemID then return nil end
+    BuildGlobalIndex()
+    return GlobalIndex.itemID[itemID]
+end
+
 ---
 --- Checks if an item belongs to a Set Category in MenuData
 --- @param itemID number
@@ -285,182 +368,27 @@ local function GetItemSetCategory(itemID)
     return nil
 end
 
----
---- Checks if an item determines from a Quest
---- @param itemID number
---- @return string|nil Quest Source string
----
-local function FindItemQuestSource(itemID)
-    if not AtlasTW.Quest.DataBase then return nil end
-
-    for _, instanceData in pairs(AtlasTW.Quest.DataBase) do
-        -- Helper to check faction tables
-        local function checkFaction(questList)
-            if not questList then return nil end
-            for _, quest in pairs(questList) do
-                if quest.Rewards then
-                    for _, reward in pairs(quest.Rewards) do
-                        if type(reward) == "table" and reward.id == itemID then
-                            local instanceName = instanceData.Caption
-                            if instanceName and type(instanceName) == "table" then
-                                instanceName = instanceName[1]
-                            end
-
-                            local questTitle = quest.Title or "?"
-                            if instanceName ~= "" then
-                                return instanceName .. " " .. L["Quest"] .. ": " .. questTitle
-                            else
-                                return L["Quest"] .. ": " .. questTitle
-                            end
-                        end
-                    end
-                end
-            end
-            return nil
-        end
-
-        local source = checkFaction(instanceData.Alliance) or checkFaction(instanceData.Horde)
-        if source then return source end
-    end
-    return nil
-end
-
----
---- Searches for a page identifier in the MenuData tables to find a localized name
---- @param pageKey string The loot table key
---- @return string|nil Localized source name or nil
----
-local function FindItemSourceInMenuData(pageKey)
-    if not AtlasTW.MenuData then return nil end
-
-    -- List of menu tables to check (Order matters slightly for performance, but keys should be unique)
-    local menuTablesToCheck = {
-        AtlasTW.MenuData.WorldEvents,
-        AtlasTW.MenuData.Factions,
-        AtlasTW.MenuData.PVP,
-        AtlasTW.MenuData.PVPSets,
-        AtlasTW.MenuData.Sets,
-        -- Profession Menus
-        AtlasTW.MenuData.Alchemy,
-        AtlasTW.MenuData.Smithing,
-        AtlasTW.MenuData.Enchanting,
-        AtlasTW.MenuData.Engineering,
-        AtlasTW.MenuData.Herbalism,
-        AtlasTW.MenuData.Leatherworking,
-        AtlasTW.MenuData.Mining,
-        AtlasTW.MenuData.Tailoring,
-        AtlasTW.MenuData.Jewelcrafting,
-        AtlasTW.MenuData.Cooking,
-        AtlasTW.MenuData.FirstAid,
-        AtlasTW.MenuData.Survival,
-        -- Add others if needed
-    }
-
-    for _, menuTable in pairs(menuTablesToCheck) do
-        if type(menuTable) == "table" then
-            for _, entry in pairs(menuTable) do
-                if type(entry) == "table" and entry.lootpage == pageKey and entry.name then
-                    -- Extract pure name if it contains color codes or extra info (optional)
-                    -- For now, return the name as is (formatting is usually stripped by tooltip anyway or acceptable)
-                    return entry.name
-                end
-            end
-        end
-    end
-
-    return nil
-end
-
 local function FindItemSource(itemID)
     if not itemID then return nil end
-    -- Check cache first
-    local cached = SourceCache[itemID]
-    if cached ~= nil then
-        return cached ~= false and cached or nil
+    
+    -- Check global index first
+    BuildGlobalIndex()
+    if GlobalIndex.itemID[itemID] then
+        return GlobalIndex.itemID[itemID]
     end
 
-    local finalSource = nil
+    -- Check negative cache to avoid repeated failed lookups
+    if NegativeCache[itemID] then return nil end
 
-    -- 1. Check Quests (Top Priority)
-    -- Returns "Instance Quest: Title"
-    local questSource = FindItemQuestSource(itemID)
-    if questSource then
-        finalSource = questSource
-    end
-
-    -- 2. Check Crafted/Enchants
-    if not finalSource then
-        finalSource = FindItemSourceInProfessions(itemID)
-    end
-
-    -- 3. Check Sets (Prepare info)
+    -- For items not in Atlas database, they might be in sets
     local setCategory = GetItemSetCategory(itemID)
-
-    -- Helper to check if a page key belongs to crafting pages (where IDs are SpellIDs, not ItemIDs)
-    local function IsCraftPage(pageKey)
-        if not pageKey or type(pageKey) ~= "string" then return false end
-        -- Known craft page prefixes where ID entries are SpellIDs
-        local craftPrefixes = {
-            "Alchemy", "Smithing", "Smith", "Enchanting", "Engineering", "Leatherworking",
-            "Tailoring", "Mining", "Jewelcraft", "Cooking", "FirstAid", "Survival",
-            "Armorsmith", "Weaponsmith", "Axesmith", "Hammersmith", "Swordsmith",
-            "Dragonscale", "Elemental", "Tribal", "Gnomish", "Goblin"
-        }
-        for _, prefix in ipairs(craftPrefixes) do
-            if strfind(pageKey, "^" .. prefix) then
-                return true
-            end
-        end
-        return false
-    end
-
-    -- 4. Check Loot Tables (Instance/Boss/Generic)
-    if not finalSource then
-        local pageKey = AtlasTW.LootUtils.IterateAllLootItems(function(id, key)
-            -- Skip craft pages where 'id' is a SpellID, not an ItemID
-            -- This prevents false matches like SpellID 16987 matching ItemID 16987
-            if IsCraftPage(key) then return nil end
-            if id == itemID then return key end
-        end)
-
-        if pageKey then
-             -- Try to get source from InstanceData (Bosses, etc.)
-             local instanceSource = AtlasTW.LootUtils.GetLootTableSource(pageKey)
-             if instanceSource then
-                 finalSource = instanceSource
-             else
-                 -- Try to get localized name from MenuData (World Events, Factions, etc.)
-                 local menuSource = FindItemSourceInMenuData(pageKey)
-                 if menuSource then
-                     finalSource = menuSource
-                 else
-                     -- Fallback to key ONLY if not belonging to a Set
-                     if not setCategory then
-                        finalSource = tostring(pageKey)
-                     end
-                 end
-             end
-        end
-    end
-
-    -- 5. Append Set info if we have a source, or use Set as source if we don't
     if setCategory then
-        if finalSource then
-            if finalSource ~= setCategory then
-                finalSource = finalSource .. " (" .. setCategory .. ")"
-            end
-        else
-            finalSource = setCategory
-        end
+        GlobalIndex.itemID[itemID] = setCategory
+        return setCategory
     end
 
-    if finalSource then
-        SourceCache[itemID] = finalSource
-        return finalSource
-    end
-
-    -- Cache negative result
-    SourceCache[itemID] = false
+    -- If still not found, cache as missing
+    NegativeCache[itemID] = true
     return nil
 end
 
@@ -472,26 +400,15 @@ end
 ---
 local function GetItemIDByName(name)
     if not name then return nil end
+    BuildGlobalIndex()
+    
+    local foundID = GlobalIndex.nameToID[name]
+    if foundID then return foundID end
 
-    -- Check cache first
-    local cached = NameToIDCache[name]
-    if cached ~= nil then
-        return cached ~= false and cached or nil
-    end
-
-    -- Search through item IDs
-    local foundID = nil
-    for itemID = 1, MAX_ITEM_SEARCH_RANGE do
-        local itemName = GetItemInfo(itemID)
-        if itemName and itemName == name then
-            foundID = itemID
-            break
-        end
-    end
-
-    -- Cache result (false for not found, itemID for found)
-    NameToIDCache[name] = foundID or false
-    return foundID
+    -- If not in our index, we still avoid the 100k loop because it's too expensive.
+    -- We can try to use GetItemInfo dynamically if we encounter this name often,
+    -- but for now, we just return nil to protect performance.
+    return nil
 end
 
 -- ============================================================================
@@ -676,3 +593,8 @@ end
 
 -- Hook main tooltips
 HookTooltip(GameTooltip)
+
+-- Build global index on startup to avoid hover delays
+AtlasTWLootTip.HookAddonOrVariable("AtlasTW", function()
+    BuildGlobalIndex()
+end)

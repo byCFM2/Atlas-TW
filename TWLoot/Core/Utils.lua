@@ -194,27 +194,21 @@ function AtlasTW.LootUtils.IterateAllLootItems(callback)
         for i = 1, m do
             local el = list[i]
             if type(el) == "table" then
+                -- Check standard id
                 if el.id then
                     local res = callback(el.id, key)
                     if res then return res end
                 end
+                -- Check legacy/tuple format id
+                if el[1] and type(el[1]) == "number" then
+                     local res = callback(el[1], key)
+                     if res then return res end
+                end
+
+                -- Recursive check for containers
                 if el.container and type(el.container) == "table" then
-                    local n = table.getn(el.container)
-                    for j = 1, n do
-                        local c = el.container[j]
-                        if type(c) == "number" then
-                            local res = callback(c, key)
-                            if res then return res end
-                        elseif type(c) == "table" then
-                            if c[1] then
-                                local res = callback(c[1], key)
-                                if res then return res end
-                            elseif c.id then
-                                local res = callback(c.id, key)
-                                if res then return res end
-                            end
-                        end
-                    end
+                    local res = IterateList(el.container, key)
+                    if res then return res end
                 end
             elseif type(el) == "number" then
                 local res = callback(el, key)
