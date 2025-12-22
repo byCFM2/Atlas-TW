@@ -12,7 +12,7 @@ if GetLocale() ~= "esES" then return end
 AtlasTWSortIgnore = { "the (.+)", "el (.+)", "la (.+)", "los (.+)", "las (.+)" }
 
 AtlasTWZoneSubstitutions = {
-    ["The Temple of Atal'Hakkar"] = "Templo Sumergido"
+    ["El Templo de Atal'Hakkar"] = "Templo Sumergido"
 }
 
 ---
@@ -29,6 +29,97 @@ BINDING_NAME_ATLASTWLOOT_QL4 = "Vista Rápida 4"
 BINDING_NAME_ATLASTWLOOT_QL5 = "Vista Rápida 5"
 BINDING_NAME_ATLASTWLOOT_QL6 = "Vista Rápida 6"
 BINDING_NAME_ATLASTWLOOT_WISHLIST = "Lista de Deseos"
+
+AtlasTW = AtlasTW or {}
+
+--Default map to auto-select to when no SubZone data is available
+AtlasTW.AssocDefaults = {
+    ["La Masacre"] =					"DireMaulNorth",
+    ["Cumbre de Roca Negra"] =			"BlackrockSpireLower",
+    ["Monasterio Escarlata"] =			"ScarletMonasteryEnt"
+}
+--Links maps together that are part of the same instance
+AtlasTW.SubZoneAssoc = {
+    ["DireMaulNorth"] =				"La Masacre",
+    ["DireMaulEast"] =				"La Masacre",
+    ["DireMaulWest"] =				"La Masacre",
+    ["DireMaulEnt"] =				"La Masacre",
+    ["BlackrockSpireLower"] =		"Cumbre de Roca Negra",
+    ["BlackrockSpireUpper"] =		"Cumbre de Roca Negra",
+    ["BlackrockMountainEnt"] =		"Cumbre de Roca Negra",
+    ["ScarletMonasteryGraveyard"] =	"Monasterio Escarlata",
+    ["ScarletMonasteryLibrary"] =	"Monasterio Escarlata",
+    ["ScarletMonasteryArmory"] =	"Monasterio Escarlata",
+    ["ScarletMonasteryCathedral"] =	"Monasterio Escarlata",
+    ["ScarletMonasteryEnt"] =		"Monasterio Escarlata"
+}
+--Links SubZone values with specific instance maps
+AtlasTW.SubZoneData = {
+    ["Salones de la Destrucción"] =		"DireMaulNorth",
+    ["Asiento de Gordok"] =				"DireMaulNorth",
+    ["Barrio de la Madera Corrupta"] =			"DireMaulEast",
+    ["El Alcance Oculto"] =			"DireMaulEast",
+    ["El Conservatorio"] =			"DireMaulEast",
+    ["El Santuario de Eldretharr"] =	"DireMaulEast",
+    ["Jardines del Capital"] =			"DireMaulWest",
+    ["Corte de los Altos Elfos"] =	"DireMaulWest",
+    ["Prisión de Immol'thar"] =		"DireMaulWest",
+    ["El Ateneo"] =				"DireMaulWest",
+    ["Mok'Doom"] =					"BlackrockSpireLower",
+    ["Tazz'Alaor"] =				"BlackrockSpireLower",
+    ["Túneles de Telaraña Rastrilladora"] =		"BlackrockSpireLower",
+    ["El Almacén"] =			"BlackrockSpireLower",
+    ["Cámara de la Batalla"] =			"BlackrockSpireLower",
+    ["Salón Dragonspire"] =			"BlackrockSpireUpper",
+    ["Salón de la Vinculación"] =			"BlackrockSpireUpper",
+    ["La Colonia de Grajos"] =				"BlackrockSpireUpper",
+    ["Salón de Blackhand"] =			"BlackrockSpireUpper",
+    ["Estadio Roca Negra"] =			"BlackrockSpireUpper",
+    ["El Horno"] =				"BlackrockSpireUpper",
+    ["Ciudad Hordemar"] =				"BlackrockSpireUpper",
+    ["Trono de la Aguja"] =				"BlackrockSpireUpper",
+    ["Cámara de la Expiación"] =		"ScarletMonasteryGraveyard",
+    ["Claustro Abandonado"] =			"ScarletMonasteryGraveyard",
+    ["Tumba de Honor"] =				"ScarletMonasteryGraveyard",
+    ["Claustro del Cazador"] =		"ScarletMonasteryLibrary",
+    ["Galería de Tesoros"] =		"ScarletMonasteryLibrary",
+    ["Athenaeum"] =					"ScarletMonasteryLibrary",
+    ["Campo de Entrenamiento"] =			"ScarletMonasteryArmory",
+    ["Armería del Pié"] =			"ScarletMonasteryArmory",
+    ["Armería del Cruzado"] =			"ScarletMonasteryArmory",
+    ["Salón de los Campeones"] =			"ScarletMonasteryArmory",
+    ["Jardines de la Capilla"] =			"ScarletMonasteryCathedral",
+    ["Capilla del Cruzado"] =			"ScarletMonasteryCathedral",
+    ["El Gran Vestibulo"] =		"ScarletMonasteryEnt"
+}
+--Maps to auto-select to from outdoor zones.
+AtlasTW.OutdoorZoneToAtlas = {
+    ["Vallefresno"] =					"BlackfathomDeepsEnt",
+    ["Tierras Inhóspitas"] =					"UldamanEnt",
+    ["Montaña Roca Negra"] =		"BlackrockMountainEnt",
+    ["Las Estepas Ardientes"] = 			"HateforgeQuarry", -- TurtleWOW
+    ["Paso de la Muerte"] = 			"KarazhanCrypt",    -- TurtleWOW
+    ["Desolace"] =					"MaraudonEnt",
+    ["Dun Morogh"] =				"GnomereganEnt",
+    ["Feralas"] =					"DireMaulEnt",
+    ["La Garganta de Fuego"] =				"BlackrockMountainEnt",
+    ["Pantano de las Penas"] =			"TheSunkenTempleEnt",
+    ["Tanaris"] =					"ZulFarrak",
+    ["Los Baldíos"] =				"WailingCavernsEnt",
+    ["Gilneas"] =					"GilneasCity", -- TurtleWOW
+    ["Claros de Tirisfal"]	=			"ScarletMonasteryEnt",
+    ["Páramos de Poniente"] =					"TheDeadminesEnt",
+    ["Orgrimmar"] =					"RagefireChasm",
+    ["Marjal Revolcafango"] =			"OnyxiasLair",
+    ["Silithus"] =					"TheTempleofAhnQiraj",
+    ["Tierras de la Peste del Oeste"] =		"Scholomance",
+    ["Bosque de Argénteos"] =			"ShadowfangKeep",
+    ["Tierras de la Peste del Este"] =		"Stratholme",
+    ["Ciudad de Ventormenta"] =		"TheStockade",
+    ["Vega de Tuercespina"] =		"ZulGurub",
+    ["Balor"] =                     "StormwroughtRuins", -- TurtleWOW
+    ["Los Humedales"] =             "DragonmawRetreat" -- TurtleWOW
+}
 
 ---
 --- Register Core UI translations

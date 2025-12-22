@@ -293,7 +293,9 @@ local function BuildGlobalIndex()
             local menu = AtlasTW.MenuData[key]
             if menu then
                 for _, entry in ipairs(menu) do
-                    if entry.lootpage then profPages[entry.lootpage] = entry.name end
+                    if entry.lootpage and entry.name then
+                        table.insert(profPages, { pageKey = entry.lootpage, name = entry.name })
+                    end
                 end
             end
         end
@@ -301,7 +303,9 @@ local function BuildGlobalIndex()
         local function indexProfItems(spellList)
             if not spellList then return end
             for spellID, data in pairs(spellList) do
-                for pageKey, profName in pairs(profPages) do
+                for _, profEntry in ipairs(profPages) do
+                    local pageKey = profEntry.pageKey
+                    local profName = profEntry.name
                     if AtlasTWLoot_Data[pageKey] and IsItemInPage(AtlasTWLoot_Data[pageKey], spellID) then
                         GlobalIndex.spellID[spellID] = profName
                         break

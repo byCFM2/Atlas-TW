@@ -2191,6 +2191,7 @@ Sets = {
 	},
 	WorldEpics = {
 		{ name=L["Level"].." 30-39"},
+		{ id = 60786 }, -- The Night Watchman
 		{ id = 1981 }, -- Icemail Jerkin
 		{ id = 867 }, -- Gloves of Holy Might
 		{ id = 1980 }, -- Underworld Band
@@ -2203,8 +2204,7 @@ Sets = {
 		{ id = 1204 }, -- The Green Tower
 		{ id = 873 }, -- Staff of Jordan
 		{},
-		{ name=L["Level"].." 40-49"},
-		{ id = 14550 }, -- Bladebane Armguards *15
+		{ name=L["Level"].." 40-49"}, --*15
 		{ name=L["Level"].." 50-60"},
 		{ id = 60784 }, -- Breastplate of Beast Mastery
 		{ id = 2245 }, -- Helm of Narv
@@ -2221,6 +2221,7 @@ Sets = {
 		{},
 		{ id = 2243 }, -- Hand of Edward the Odd *15
 		--40
+		{ id = 14550 }, -- Bladebane Armguards
 		{ id = 3075 }, -- Eye of Flame
 		{ id = 1315 }, -- Lei of Lilies
 		{ id = 940 }, -- Robes of Insight
@@ -2234,8 +2235,7 @@ Sets = {
 		{ id = 809 }, -- Bloodrazor
 		{ id = 871 }, -- Flurry Axe
 		{ id = 2164 }, -- Gut Ripper
-		{ id = 2163 }, -- Shadowblade
-		{ id = 2291 }, -- Kang the Decapitator *15
+		{ id = 2163 }, -- Shadowblade *15
 		--50
 		{ id = 20698 }, -- Elemental Attuned Blade
 		{ id = 1728 }, -- Teebu's Blazing Longsword
@@ -2253,7 +2253,8 @@ Sets = {
 		{},
 		{},
 		--40
-		{ id = 2915 }, -- Taran Icebreaker *1
+		{ id = 2291 }, -- Kang the Decapitator *1
+		{ id = 2915 }, -- Taran Icebreaker
 		{ id = 812 }, -- Glowing Brightwood Staff
 		{ id = 943 }, -- Warden Staff
 		{ id = 2824 }, -- Hurricane

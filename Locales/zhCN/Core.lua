@@ -9,6 +9,119 @@
 if GetLocale() ~= "zhCN" then return end
 -- DEFAULT_CHAT_FRAME:AddMessage("AtlasTW: Loading zhCN Core...")
 
+-- Zone name substitutions (for display purposes)
+AtlasTWSortIgnore = { }
+
+AtlasTWZoneSubstitutions = {
+    ["阿塔哈卡神庙"] = "沉没的神庙"
+}
+
+---
+--- Key binding definitions for Atlas-TW addon
+---
+BINDING_HEADER_ATLASTW_TITLE = "Atlas-TW 快捷键"
+BINDING_NAME_ATLASTW_TOGGLE = "打开/关闭 Atlas-TW"
+BINDING_NAME_ATLASTW_OPTIONS = "打开/关闭选项"
+BINDING_HEADER_ATLASTWLOOT_TITLE = "AtlasTW 物品查询快捷键"
+BINDING_NAME_ATLASTWLOOT_QL1 = "快速查看 1"
+BINDING_NAME_ATLASTWLOOT_QL2 = "快速查看 2"
+BINDING_NAME_ATLASTWLOOT_QL3 = "快速查看 3"
+BINDING_NAME_ATLASTWLOOT_QL4 = "快速查看 4"
+BINDING_NAME_ATLASTWLOOT_QL5 = "快速查看 5"
+BINDING_NAME_ATLASTWLOOT_QL6 = "快速查看 6"
+BINDING_NAME_ATLASTWLOOT_WISHLIST = "心愿单"
+
+AtlasTW = AtlasTW or {}
+
+--Default map to auto-select to when no SubZone data is available
+AtlasTW.AssocDefaults = {
+    ["厄运之槌"] =			"DireMaulNorth",
+    ["黑石塔"] =		    "BlackrockSpireLower",
+    ["血色修道院"] =		"ScarletMonasteryEnt"
+}
+--Links maps together that are part of the same instance
+AtlasTW.SubZoneAssoc = {
+    ["DireMaulNorth"] =				"厄运之槌",
+    ["DireMaulEast"] =				"厄运之槌",
+    ["DireMaulWest"] =				"厄运之槌",
+    ["DireMaulEnt"] =				"厄运之槌",
+    ["BlackrockSpireLower"] =		"黑石塔",
+    ["BlackrockSpireUpper"] =		"黑石塔",
+    ["BlackrockMountainEnt"] =		"黑石塔",
+    ["ScarletMonasteryGraveyard"] =	"血色修道院",
+    ["ScarletMonasteryLibrary"] =	"血色修道院",
+    ["ScarletMonasteryArmory"] =	"血色修道院",
+    ["ScarletMonasteryCathedral"] =	"血色修道院",
+    ["ScarletMonasteryEnt"] =		"血色修道院"
+}
+--Links SubZone values with specific instance maps
+AtlasTW.SubZoneData = {
+    ["毁灭大厅"] =		"DireMaulNorth",
+    ["戈多克的王座"] =				"DireMaulNorth",
+    ["扭木广场"] =			"DireMaulEast",
+    ["密径"] =			"DireMaulEast",
+    ["温室"] =			"DireMaulEast",
+    ["艾德雷斯神殿"] =	"DireMaulEast",
+    ["中心花园"] =			"DireMaulWest",
+    ["上层精灵庭院"] =	"DireMaulWest",
+    ["伊莫塔尔的牢笼"] =		"DireMaulWest",
+    ["图书馆"] =				"DireMaulWest",
+    ["摩多姆"] =				"BlackrockSpireLower",
+    ["塔萨洛尔"] =				"BlackrockSpireLower",
+    ["蛛网隧道"] =		"BlackrockSpireLower",
+    ["仓库"] =			"BlackrockSpireLower",
+    ["战斗之厅"] =			"BlackrockSpireLower",
+    ["龙塔大厅"] =			"BlackrockSpireUpper",
+    ["禁锢之厅"] =			"BlackrockSpireUpper",
+    ["孵化间"] =				"BlackrockSpireUpper",
+    ["黑手大厅"] =			"BlackrockSpireUpper",
+    ["黑石竞技场"] =			"BlackrockSpireUpper",
+    ["熔炉"] =				"BlackrockSpireUpper",
+    ["霍德玛尔城"] =				"BlackrockSpireUpper",
+    ["尖塔王座"] =				"BlackrockSpireUpper",
+    ["忏悔室"] =		"ScarletMonasteryGraveyard",
+    ["荒废的回廊"] =			"ScarletMonasteryGraveyard",
+    ["荣耀之墓"] =				"ScarletMonasteryGraveyard",
+    ["猎手回廊"] =		"ScarletMonasteryLibrary",
+    ["珍宝陈列室"] =		"ScarletMonasteryLibrary",
+    ["图书馆"] =					"ScarletMonasteryLibrary",
+    ["训练场"] =			"ScarletMonasteryArmory",
+    ["步兵武器库"] =			"ScarletMonasteryArmory",
+    ["十字军武器库"] =			"ScarletMonasteryArmory",
+    ["勇士大厅"] =			"ScarletMonasteryArmory",
+    ["教堂花园"] =			"ScarletMonasteryCathedral",
+    ["十字军礼拜堂"] =			"ScarletMonasteryCathedral",
+    ["大门廊"] =		"ScarletMonasteryEnt"
+}
+--Maps to auto-select to from outdoor zones.
+AtlasTW.OutdoorZoneToAtlas = {
+    ["灰谷"] =			"BlackfathomDeepsEnt",
+    ["荒芜之地"] =		"UldamanEnt",
+    ["黑石山"] =		"BlackrockMountainEnt",
+    ["燃烧平原"] = 		"HateforgeQuarry", -- TurtleWOW
+    ["逆风小径"] = 		"KarazhanCrypt",    -- TurtleWOW
+    ["凄凉之地"] =		"MaraudonEnt",
+    ["丹莫罗"] =		"GnomereganEnt",
+    ["菲拉斯"] =		"DireMaulEnt",
+    ["灼热峡谷"] =		"BlackrockMountainEnt",
+    ["悲伤沼泽"] =		"TheSunkenTempleEnt",
+    ["塔纳利斯"] =		"ZulFarrak",
+    ["贫瘠之地"] =		"WailingCavernsEnt",
+    ["吉尔尼斯"] =		"GilneasCity", -- TurtleWOW
+    ["提瑞斯法林地"] =	"ScarletMonasteryEnt",
+    ["西部荒野"] =		"TheDeadminesEnt",
+    ["奥格瑞玛"] =		"RagefireChasm",
+    ["尘泥沼泽"] =		"OnyxiasLair",
+    ["希利苏斯"] =		"TheTempleofAhnQiraj",
+    ["西瘟疫之地"] =	"Scholomance",
+    ["银松森林"] =		"ShadowfangKeep",
+    ["东瘟疫之地"] =	"Stratholme",
+    ["暴风城"] =		"TheStockade",
+    ["荆棘谷"] =		"ZulGurub",
+    ["巴洛"] =        "StormwroughtRuins", -- TurtleWOW
+    ["湿地"] =          "DragonmawRetreat" -- TurtleWOW
+}
+
 AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     -- Common UI Strings
     ["Options"] = "选项",

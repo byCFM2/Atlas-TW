@@ -12,7 +12,7 @@ if GetLocale() ~= "deDE" then return end
 AtlasTWSortIgnore = { "the (.+)", "der (.+)", "die (.+)", "das (.+)" }
 
 AtlasTWZoneSubstitutions = {
-    ["The Temple of Atal'Hakkar"] = "Versunkener Tempel"
+    ["Der Tempel von Atal'Hakkar"] = "Versunkener Tempel"
 }
 
 ---
@@ -29,6 +29,97 @@ BINDING_NAME_ATLASTWLOOT_QL4 = "Schnellansicht 4"
 BINDING_NAME_ATLASTWLOOT_QL5 = "Schnellansicht 5"
 BINDING_NAME_ATLASTWLOOT_QL6 = "Schnellansicht 6"
 BINDING_NAME_ATLASTWLOOT_WISHLIST = "Wunschliste"
+
+AtlasTW = AtlasTW or {}
+
+--Default map to auto-select to when no SubZone data is available
+AtlasTW.AssocDefaults = {
+    ["Düsterbruch"] =					"DireMaulNorth",
+    ["Schwarzfelsspitze"] =			"BlackrockSpireLower",
+    ["Das Scharlachrote Kloster"] =			"ScarletMonasteryEnt"
+}
+--Links maps together that are part of the same instance
+AtlasTW.SubZoneAssoc = {
+    ["DireMaulNorth"] =				"Düsterbruch",
+    ["DireMaulEast"] =				"Düsterbruch",
+    ["DireMaulWest"] =				"Düsterbruch",
+    ["DireMaulEnt"] =				"Düsterbruch",
+    ["BlackrockSpireLower"] =		"Schwarzfelsspitze",
+    ["BlackrockSpireUpper"] =		"Schwarzfelsspitze",
+    ["BlackrockMountainEnt"] =		"Schwarzfelsspitze",
+    ["ScarletMonasteryGraveyard"] =	"Das Scharlachrote Kloster",
+    ["ScarletMonasteryLibrary"] =	"Das Scharlachrote Kloster",
+    ["ScarletMonasteryArmory"] =	"Das Scharlachrote Kloster",
+    ["ScarletMonasteryCathedral"] =	"Das Scharlachrote Kloster",
+    ["ScarletMonasteryEnt"] =		"Das Scharlachrote Kloster"
+}
+--Links SubZone values with specific instance maps
+AtlasTW.SubZoneData = {
+    ["Halls of Destruction"] =		"DireMaulNorth",
+    ["Gordok's Seat"] =				"DireMaulNorth",
+    ["Wucherborkenviertel"] =			"DireMaulEast",
+    ["Die versteckte Landzunge"] =			"DireMaulEast",
+    ["Das Konservatorium"] =			"DireMaulEast",
+    ["The Shrine of Eldretharr"] =	"DireMaulEast",
+    ["Capital Gardens"] =			"DireMaulWest",
+    ["Court of the Highborne"] =	"DireMaulWest",
+    ["Prison of Immol'thar"] =		"DireMaulWest",
+    ["Das Athenaeum"] =				"DireMaulWest",
+    ["Mok'Doom"] =					"BlackrockSpireLower",
+    ["Tazz'Alaor"] =				"BlackrockSpireLower",
+    ["Skitterweb Tunnels"] =		"BlackrockSpireLower",
+    ["Das Lagerhaus"] =			"BlackrockSpireLower",
+    ["Chamber of Battle"] =			"BlackrockSpireLower",
+    ["Dragonspire Hall"] =			"BlackrockSpireUpper",
+    ["Hall of Binding"] =			"BlackrockSpireUpper",
+    ["Der Krähenhorst"] =				"BlackrockSpireUpper",
+    ["Hall of Blackhand"] =			"BlackrockSpireUpper",
+    ["Blackrock Stadium"] =			"BlackrockSpireUpper",
+    ["Der Schmelzofen"] =				"BlackrockSpireUpper",
+    ["Hordemar City"] =				"BlackrockSpireUpper",
+    ["Spire Throne"] =				"BlackrockSpireUpper",
+    ["Chamber of Atonement"] =		"ScarletMonasteryGraveyard",
+    ["Forlorn Cloister"] =			"ScarletMonasteryGraveyard",
+    ["Honor's Tomb"] =				"ScarletMonasteryGraveyard",
+    ["Huntsman's Cloister"] =		"ScarletMonasteryLibrary",
+    ["Gallery of Treasures"] =		"ScarletMonasteryLibrary",
+    ["Athenaeum"] =					"ScarletMonasteryLibrary",
+    ["Ausbildungsgelände"] =			"ScarletMonasteryArmory",
+    ["Footman's Armory"] =			"ScarletMonasteryArmory",
+    ["Crusader's Armory"] =			"ScarletMonasteryArmory",
+    ["Hall of Champions"] =			"ScarletMonasteryArmory",
+    ["Chapel Gardens"] =			"ScarletMonasteryCathedral",
+    ["Crusader's Chapel"] =			"ScarletMonasteryCathedral",
+    ["Das große Vestibül"] =		"ScarletMonasteryEnt"
+}
+--Maps to auto-select to from outdoor zones.
+AtlasTW.OutdoorZoneToAtlas = {
+    ["Eschental"] =					"BlackfathomDeepsEnt",
+    ["Ödland"] =					"UldamanEnt",
+    ["Der Schwarzfels"] =		"BlackrockMountainEnt",
+    ["Brennende Steppe"] = 			"HateforgeQuarry", -- TurtleWOW
+    ["Gebirgspass der Totenwinde"] = 			"KarazhanCrypt",    -- TurtleWOW
+    ["Desolace"] =					"MaraudonEnt",
+    ["Dun Morogh"] =				"GnomereganEnt",
+    ["Feralas"] =					"DireMaulEnt",
+    ["Sengende Schlucht"] =				"BlackrockMountainEnt",
+    ["Sümpfe des Elends"] =			"TheSunkenTempleEnt",
+    ["Tanaris"] =					"ZulFarrak",
+    ["Brachland"] =				"WailingCavernsEnt",
+    ["Gilneas"] =					"GilneasCity", -- TurtleWOW
+    ["Tirisfal"]	=			"ScarletMonasteryEnt",
+    ["Westfall"] =					"TheDeadminesEnt",
+    ["Orgrimmar"] =					"RagefireChasm",
+    ["Düstermarschen"] =			"OnyxiasLair",
+    ["Silithus"] =					"TheTempleofAhnQiraj",
+    ["Westliche Pestländer"] =		"Scholomance",
+    ["Silberwald"] =			"ShadowfangKeep",
+    ["Östliche Pestländer"] =		"Stratholme",
+    ["Sturmwind"] =			        "TheStockade",
+    ["Schlingendorntal"] =		    "ZulGurub",
+    ["Balor"] =                     "StormwroughtRuins", -- TurtleWOW
+    ["Sumpfland"] =                 "DragonmawRetreat" -- TurtleWOW
+}
 
 ---
 --- Register Core UI translations
