@@ -363,11 +363,23 @@ end
 ---
 --- Gets original data from search result by item ID
 --- @param itemID number - The item ID to find data for
+--- @param elementType string|nil - Optional type filter ("item", "spell", "enchant")
 --- @return ... - Unpacked search result data (id, bossName, instanceKey, type, sourcePage)
 --- @usage local id, boss, instance = AtlasTW.SearchLib.GetOriginalDataFromSearchResult(12345)
 ---
-function AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemID)
+function AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemID, elementType)
+	local fallback = nil
 	for i, v in ipairs(AtlasTWCharDB.SearchResult) do
-		if v[1] == itemID then return unpack(v) end
+		if v and v[1] == itemID then
+			if elementType and v[4] == elementType then
+				return unpack(v)
+			end
+			if not fallback then
+				fallback = v
+			end
+		end
+	end
+	if fallback then
+		return unpack(fallback)
 	end
 end

@@ -643,12 +643,12 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 			if dataID == "WishList" then
 				AtlasTWLoot_DeleteFromWishList(itemid)
 			elseif dataID == "SearchResult" then
-				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemid))
+				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemid, "item"))
 			else
 			-- Pass boss and instance context for correct categorization in WishList
 			local srcPage = BuildSourcePage(dataID, instanceKeyClick)
 				AtlasTWLoot_AddToWishlist(this.itemID, dataID, instanceKeyClick, "item", srcPage)
-		end
+			end
 		elseif (dataID == "SearchResult" or dataID == "WishList") then
 			-- Use unified navigation helper
 			NavigateFromSourcePage(this.sourcePage)
@@ -674,7 +674,7 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 			if dataID == "WishList" then
 				AtlasTWLoot_DeleteFromWishList(elemid)
 			elseif dataID == "SearchResult" then
-				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(elemid))
+				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(elemid, "enchant"))
 			else
 				-- Pass boss and instance context for correct categorization in WishList
 				local srcPage = BuildSourcePage(dataID, instanceKeyClick)
@@ -737,7 +737,7 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 			if dataID == "WishList" then
 				AtlasTWLoot_DeleteFromWishList(this.elemID)
 			elseif dataID == "SearchResult" then
-				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(this.elemID))
+				AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(this.elemID, "spell"))
 			else
 				-- Pass boss and instance context for correct categorization in WishList
 				local srcPage = BuildSourcePage(dataID, instanceKeyClick)
@@ -1106,7 +1106,7 @@ function AtlasTW.Interactions.ContainerItem_OnClick(arg1)
         if ElemName == "WishList" then
             AtlasTWLoot_DeleteFromWishList(this.itemID)
         elseif ElemName == "SearchResult" then
-            AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemID))
+            AtlasTWLoot_AddToWishlist(AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemID, "item"))
         else
             local srcPage = BuildSourcePage(ElemName, instKey)
             AtlasTWLoot_AddToWishlist(itemID, ElemName, instKey, "item", srcPage)

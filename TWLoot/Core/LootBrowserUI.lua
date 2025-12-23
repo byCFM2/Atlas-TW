@@ -383,8 +383,14 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 							-- Set skill text coz same items have skill discription like herbalism
 							extratext = formSkillStyle(element.skill)
 							-- dont want set itemID from elemID coz same ID have items
-							if itemButton.typeID ~= "enchant" and not (element.skill and element.skill==0) then
-								itemID = itemID and itemID~=0 and itemID or elemID
+							if not (element.skill and element.skill==0) then
+								if itemButton.typeID == "item" then
+									itemID = elemID
+								elseif itemButton.typeID == "spell" then
+									-- Only use created item if the spell actually creates one.
+									-- Otherwise keep itemID as nil/0 to avoid picking up an unrelated item with the same ID.
+									itemID = (itemID and itemID ~= 0) and itemID or nil
+								end
 							end
 							--set quantity for items and spells
 							if itemButton.typeID == "item" then

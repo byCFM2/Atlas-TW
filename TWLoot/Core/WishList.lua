@@ -215,6 +215,41 @@ end
 ---
 local function AtlasTWLoot_GetLootPageDisplayName(pageKey)
 	if not pageKey or pageKey == "" then return nil end
+	-- Try to resolve display name from MenuData first (works for WorldBlues*/WorldEnchants etc.)
+	if AtlasTW and AtlasTW.MenuData then
+		local menuTablesToCheck = {
+			AtlasTW.MenuData.WorldEvents,
+			AtlasTW.MenuData.Factions,
+			AtlasTW.MenuData.PVP,
+			AtlasTW.MenuData.PVPSets,
+			AtlasTW.MenuData.Sets,
+			AtlasTW.MenuData.WorldBlues,
+			AtlasTW.MenuData.Alchemy,
+			AtlasTW.MenuData.Smithing,
+			AtlasTW.MenuData.Enchanting,
+			AtlasTW.MenuData.Engineering,
+			AtlasTW.MenuData.Herbalism,
+			AtlasTW.MenuData.Leatherworking,
+			AtlasTW.MenuData.Mining,
+			AtlasTW.MenuData.Tailoring,
+			AtlasTW.MenuData.Jewelcrafting,
+			AtlasTW.MenuData.Cooking,
+			AtlasTW.MenuData.FirstAid,
+			AtlasTW.MenuData.Survival,
+			AtlasTW.MenuData.Skinning,
+			AtlasTW.MenuData.Fishing,
+			AtlasTW.MenuData.Poisons,
+		}
+		for _, menuTable in pairs(menuTablesToCheck) do
+			if type(menuTable) == "table" then
+				for _, entry in pairs(menuTable) do
+					if type(entry) == "table" and entry.lootpage == pageKey and entry.name then
+						return entry.name
+					end
+				end
+			end
+		end
+	end
 	if AtlasTW.DataResolver.IsLootTableAvailable(pageKey) and AtlasTWLoot_Data and AtlasTWLoot_Data[pageKey] then
 		local page = AtlasTWLoot_Data[pageKey]
 		if type(page) == "table" then
