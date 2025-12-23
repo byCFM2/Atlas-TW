@@ -356,7 +356,11 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 						local elemID = element.id
 						local itemQuality = 0
 						if elemID and elemID ~= 0 then
-							link = AtlasTW.SpellDB.enchants[elemID] or AtlasTW.SpellDB.craftspells[elemID]
+							if not (element.type and element.type == "item") then
+								link = AtlasTW.SpellDB.enchants[elemID] or AtlasTW.SpellDB.craftspells[elemID]
+							else
+								link = nil
+							end
 							--spell or item
 							if element.skill and not (element.type and element.type=="item") then
 								-- Set original ID for itemButton (enchant or spell)
