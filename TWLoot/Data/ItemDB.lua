@@ -72,15 +72,12 @@ AtlasTW.ItemDB.ClassItems = {
 ---
 -- State caching for performance
 local PlayerAllowedLookup = nil
+local PlayerAllowedPatterns = nil
 local ColoredTextCache = {}
 local ParsedTooltipCache = {}
 local ParsedTooltipCacheSize = 0
 local ParsedSuitabilityCache = {}
 local MAX_CACHE_SIZE = 1000
-
--- Timer system optimization: reusing a single frame
-local activeTimers = {}
-local timerFrame = nil
 
 -- Static references for optimization
 local tooltipElementsCache = {}
@@ -104,11 +101,15 @@ local L_REQUIRES_LEN = string.len(L_REQUIRES)
 local function InitializeClassLookup()
     if PlayerAllowedLookup then return end
     PlayerAllowedLookup = {}
+    PlayerAllowedPatterns = {}
     local playerClass = AtlasTW.PlayerClass
     local classItems = AtlasTW.ItemDB.ClassItems[playerClass]
     if classItems then
         for _, item in ipairs(classItems) do
             PlayerAllowedLookup[item] = true
+            -- Optimization: Add everything to patterns for robustness, 
+            -- but we can skip checking them if exact match works.
+            table.insert(PlayerAllowedPatterns, item)
         end
     end
 end
@@ -168,13 +169,11 @@ local function getColoredText(text, typeText)
                 -- Fallback for partially matching strings or special combinations
                 -- e.g. "Two-Hand Mace" vs "Mace"
                 local isTwoHand = string.find(text, L["Two-Hand"], 1, true)
-                for item in pairs(PlayerAllowedLookup) do
+                for _, item in ipairs(PlayerAllowedPatterns) do
                     if isTwoHand then
                         -- For two-handed weapons, strict matching for ambiguous types (Sword, Mace, Axe)
-                        if item == text then
-                            canWear = true
-                            break
-                        elseif string.find(text, item, 1, true) then
+                        -- Note: "Two-Hand X" items are not in PyayerAllowedPatterns, so we match "X" here.
+                        if string.find(text, item, 1, true) then
                             -- If "item" is not an ambiguous type, we allow substring match (e.g. "Staff" in "Two-Hand Staff")
                             if item ~= L["Sword"] and item ~= L["Mace"] and item ~= L["Axe"] then
                                 canWear = true
@@ -208,19 +207,18 @@ local function getColoredText(text, typeText)
             if PlayerAllowedLookup[text] then
                 canWear = true
             else
+
                 local isTwoHand = string.find(text, L["Two-Hand"], 1, true)
-                for item in pairs(PlayerAllowedLookup) do
+                for _, item in ipairs(PlayerAllowedPatterns) do
                     if isTwoHand then
-                        if item == text then
-                            canWear = true
-                            break
-                        elseif string.find(text, item, 1, true) then
+                        if string.find(text, item, 1, true) then
                             if item ~= L["Sword"] and item ~= L["Mace"] and item ~= L["Axe"] then
                                 canWear = true
                                 break
                             end
                         end
                     else
+                        -- For one-handed, we allow finding the weapon type within the slot string
                         if string.find(text, item, 1, true) then
                             canWear = true
                             break
@@ -319,14 +317,8 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     tooltip:ClearLines()
 
     -- Fast hyperlink setup
-    local success = pcall(function()
-        tooltip:SetOwner(UIParent, "ANCHOR_NONE")
-        tooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
-    end)
-
-    if not success then
-        return extratext or ""
-    end
+    tooltip:SetOwner(UIParent, "ANCHOR_NONE")
+    tooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
 
     -- Check the first line
     local firstLine = _G[tooltipName .. "TextLeft1"]
@@ -357,74 +349,72 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     local tinsert = table.insert
 
     -- Optimized parsing
-    local parseSuccess = pcall(function()
-        for i = 1, 12 do
-            local line = tooltipElementsCache.leftElements[i]
-            local text = line and line:GetText()
+    for i = 1, 12 do
+        local line = tooltipElementsCache.leftElements[i]
+        local text = line and line:GetText()
 
-            if text and text ~= "" then
-                local line2 = tooltipElementsCache.rightElements[i]
-                local text2 = line2 and line2:GetText()
+        if text and text ~= "" then
+            local line2 = tooltipElementsCache.rightElements[i]
+            local text2 = line2 and line2:GetText()
 
-                -- Fast check for standalone exact matches first (Quest items)
-                if text == L["Quest Item"] or text == L["This Item Begins a Quest"] then
-                    tinsert(info, text)
-                else
-                    -- Only compute lowercase if exact match fails
-                    local lowerText = strlower(text)
+            -- Fast check for standalone exact matches first (Quest items)
+            if text == L["Quest Item"] or text == L["This Item Begins a Quest"] then
+                tinsert(info, text)
+            else
+                -- Only compute lowercase if exact match fails
+                local lowerText = strlower(text)
 
-                    -- Mount check (often terminates further parsing for this item)
-                    if strfind(lowerText, " "..L_MOUNT.." ", 1, true) then
-                        tinsert(info, L["Mount"])
-                        break
-                    elseif strfind(lowerText, " "..L_COMPANION.." ", 1, true) then
-                        tinsert(info, L["Pet"])
-                    elseif strfind(lowerText, L_BAG, 1, true) then
-                        tinsert(info, L["Bag"])
-                    elseif strfind(lowerText, L_GLYPH, 1, true) then
-                        tinsert(info, L["Glyph"])
-                    end
-                end
-
-                -- Optimized slot check
-                if SLOT_KEYWORDS[text] then
-                    local colorStr
-                    if text2 and SLOT2_KEYWORDS[text2] then
-                        colorStr = getColoredText(text.." "..text2, "slot")
-                    else
-                        colorStr = getColoredText(text, "slot")
-                    end
-                    if colorStr and strfind(colorStr, Colors.RED, 1, true) then suitability.class = false end
-                    tinsert(info, colorStr)
-                elseif SLOT2_KEYWORDS[text] then
-                    if text == L["Finger"] then
-                        tinsert(info, Colors.GREEN..L["Ring"].."|r")
-                    else
-                        local colorStr = getColoredText(text, "slot2")
-                        if colorStr and strfind(colorStr, Colors.RED, 1, true) then suitability.class = false end
-                        tinsert(info, colorStr)
-                    end
-                -- Classes (Prefix check is faster than find)
-                elseif strsub(text, 1, L_CLASSES_LEN) == L_CLASSES then
-                    local colorStr = getColoredText(text, "class")
-                    if colorStr and strfind(colorStr, Colors.RED, 1, true) then suitability.class = false end
-                    tinsert(info, colorStr)
-                -- Requirements (Prefix check is faster than find)
-                elseif strsub(text, 1, L_REQUIRES_LEN) == L_REQUIRES then
-                    local colorStr = getColoredText(text, "requires")
-                    if colorStr and strfind(colorStr, Colors.RED, 1, true) then suitability.level = false end
-                    tinsert(info, colorStr)
+                -- Mount check (often terminates further parsing for this item)
+                if strfind(lowerText, " "..L_MOUNT.." ", 1, true) then
+                    tinsert(info, L["Mount"])
+                    break
+                elseif strfind(lowerText, " "..L_COMPANION.." ", 1, true) then
+                    tinsert(info, L["Pet"])
+                elseif strfind(lowerText, L_BAG, 1, true) then
+                    tinsert(info, L["Bag"])
+                elseif strfind(lowerText, L_GLYPH, 1, true) then
+                    tinsert(info, L["Glyph"])
                 end
             end
+
+            -- Optimized slot check
+            if SLOT_KEYWORDS[text] then
+                local colorStr
+                if text2 and SLOT2_KEYWORDS[text2] then
+                    colorStr = getColoredText(text.." "..text2, "slot")
+                else
+                    colorStr = getColoredText(text, "slot")
+                end
+                if colorStr and strfind(colorStr, Colors.RED, 1, true) then suitability.class = false end
+                tinsert(info, colorStr)
+            elseif SLOT2_KEYWORDS[text] then
+                if text == L["Finger"] then
+                    tinsert(info, Colors.GREEN..L["Ring"].."|r")
+                else
+                    local colorStr = getColoredText(text, "slot2")
+                    if colorStr and strfind(colorStr, Colors.RED, 1, true) then suitability.class = false end
+                    tinsert(info, colorStr)
+                end
+            -- Classes (Prefix check is faster than find)
+            elseif strsub(text, 1, L_CLASSES_LEN) == L_CLASSES then
+                local colorStr = getColoredText(text, "class")
+                if colorStr and strfind(colorStr, Colors.RED, 1, true) then suitability.class = false end
+                tinsert(info, colorStr)
+            -- Requirements (Prefix check is faster than find)
+            elseif strsub(text, 1, L_REQUIRES_LEN) == L_REQUIRES then
+                local colorStr = getColoredText(text, "requires")
+                if colorStr and strfind(colorStr, Colors.RED, 1, true) then suitability.level = false end
+                tinsert(info, colorStr)
+            end
         end
-    end)
+    end
 
     -- Fast clear
     tooltip:Hide()
     tooltip:ClearLines()
 
     local result = extratext or ""
-    if parseSuccess and table.getn(info) > 0 then
+    if table.getn(info) > 0 then
         result = table.concat(info, ", ")
     end
 
@@ -463,51 +453,8 @@ function AtlasTW.ItemDB.IsItemSuitable(itemID, mode)
     return true
 end
 
----
--- Start a timer with specified delay and callback function
--- @function StartTimer
--- @param delaySeconds number - Delay in seconds before executing callback
--- @param callbackFunc function - Function to execute after delay
--- @usage StartTimer(2.0, function() PrintA("Timer finished") end)
----
-local function OnTimerUpdate()
-    local now = GetTime()
-    local i = 1
-    while i <= table.getn(activeTimers) do
-        local timer = activeTimers[i]
-        if now >= timer.time then
-            table.remove(activeTimers, i)
-            if timer.callback then
-                timer.callback()
-            end
-            -- Don't increment i, as we removed an element
-        else
-            i = i + 1
-        end
-    end
-    if table.getn(activeTimers) == 0 then
-        timerFrame:Hide()
-    end
-end
-
----
--- Start a timer with specified delay and callback function
--- @function StartTimer
--- @param delaySeconds number - Delay in seconds before executing callback
--- @param callbackFunc function - Function to execute after delay
----
-function StartTimer(delaySeconds, callbackFunc)
-    if not timerFrame then
-        timerFrame = CreateFrame("Frame")
-        timerFrame:SetScript("OnUpdate", OnTimerUpdate)
-    end
-
-    table.insert(activeTimers, {
-        time = GetTime() + delaySeconds,
-        callback = callbackFunc
-    })
-    timerFrame:Show()
-end
+-- [AtlasTW.Timer] System moved to Utils.lua to be shared. 
+-- ItemDB now uses AtlasTW.Timer or global StartTimer (compatibility wrapper provided in Utils).
 
 ---
 -- Force cache an item with delay between attempts
@@ -519,26 +466,11 @@ end
 -- @usage AtlasTWLoot_ForceCacheItemWithDelay(12345, 0.2, 5)
 ---
 function AtlasTWLoot_ForceCacheItemWithDelay(itemID, delayBetweenAttempts, maxAttempts)
-    if not itemID or itemID == 0 then
-        return false
+    -- Delegate to the central cache system
+    if AtlasTW and AtlasTW.LootCache and AtlasTW.LootCache.ForceCacheItem then
+        return AtlasTW.LootCache.ForceCacheItem(itemID, maxAttempts)
     end
-    maxAttempts = maxAttempts or 10
-    delayBetweenAttempts = delayBetweenAttempts or 0.1
-    local attempts = 0
-    local function tryCache()
-        if GetItemInfo(itemID) then
-            return true
-        end
-        GameTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
-        attempts = attempts + 1
-        if attempts < maxAttempts then
-            -- Schedule next attempt after a delay
-            StartTimer(delayBetweenAttempts, tryCache)
-        else
-            return false
-        end
-    end
-    tryCache()
+    return false
 end
 
 ---

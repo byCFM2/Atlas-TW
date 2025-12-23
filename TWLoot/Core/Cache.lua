@@ -163,9 +163,9 @@ function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
     end
 
     -- If timers are unavailable, fallback to force cache synchronously
-    if type(StartTimer) ~= "function" then
+    if not AtlasTW.Timer or not AtlasTW.Timer.Start then
         if not ATLASTWLOOT_DEBUG_FALLBACK_CACHE_REPORTED then
-            PrintA("StartTimer not found, using fallback force cache")
+            PrintA("AtlasTW.Timer not found, using fallback force cache")
             ATLASTWLOOT_DEBUG_FALLBACK_CACHE_REPORTED = true
         end
         local m = table.getn(uncachedItems)
@@ -205,7 +205,7 @@ function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
 
             if idx <= total then
                 local delay = (iteration == 1) and 0.07 or 0.09
-                StartTimer(delay, function()
+                AtlasTW.Timer.Start(delay, function()
                     processBatch()
                 end)
             else
@@ -229,7 +229,7 @@ function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
                     else
                         iteration = iteration + 1
                         local nextDelay = (iteration == 1) and 0.07 or 0.09
-                        StartTimer(nextDelay, function()
+                        AtlasTW.Timer.Start(nextDelay, function()
                             runIteration()
                         end)
                     end

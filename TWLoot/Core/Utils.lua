@@ -14,6 +14,55 @@ local L = AtlasTW.Localization.UI
 local RED = AtlasTW.Colors.RED
 local WHITE = AtlasTW.Colors.WHITE
 
+-- Timer system
+AtlasTW.Timer = {}
+local activeTimers = {}
+local timerFrame = nil
+
+local function OnTimerUpdate()
+    local now = GetTime()
+    local i = 1
+    while i <= table.getn(activeTimers) do
+        local timer = activeTimers[i]
+        if now >= timer.time then
+            table.remove(activeTimers, i)
+            if timer.callback then
+                pcall(timer.callback) -- Protected call needed for callbacks
+            end
+        else
+            i = i + 1
+        end
+    end
+    if table.getn(activeTimers) == 0 then
+        timerFrame:Hide()
+    end
+end
+
+---
+-- Start a timer with specified delay and callback function
+-- @function AtlasTW.Timer.Start
+-- @param delaySeconds number - Delay in seconds before executing callback
+-- @param callbackFunc function - Function to execute after delay
+-- @usage AtlasTW.Timer.Start(2.0, function() PrintA("Timer finished") end)
+---
+function AtlasTW.Timer.Start(delaySeconds, callbackFunc)
+    if not timerFrame then
+        timerFrame = CreateFrame("Frame", "AtlasTWTimerFrame")
+        timerFrame:SetScript("OnUpdate", OnTimerUpdate)
+    end
+
+    table.insert(activeTimers, {
+        time = GetTime() + delaySeconds,
+        callback = callbackFunc
+    })
+    timerFrame:Show()
+end
+
+-- Compatibility wrapper for modules expecting global StartTimer
+function StartTimer(delay, callback)
+    AtlasTW.Timer.Start(delay, callback)
+end
+
 ---
 -- @module AtlasTW.LootUtils
 -- @description Common string and link utilities for Atlas-TW Loot
