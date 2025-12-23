@@ -308,6 +308,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     -- AtlasTW Loot
     --************************************************
     ["Loot Panel"] = true,
+    ["Filter: No Filter"] = "Filter: No Filter",
+    ["Filter: My Class"] = "Filter: My Class",
+    ["Filter: Available"] = "Filter: Available",
     ["WishList"] = true,
     ["ALT+Click to clear"] = true,
     ["QuickLook"] = true,

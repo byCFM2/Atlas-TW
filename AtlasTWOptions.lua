@@ -118,7 +118,8 @@ function AtlasTW.OptionDefaultSettings()
         LootOpaque = true,
         LootItemIDs = true,
         LootItemSpam = true,
-        LootShowPanel = true
+        LootShowPanel = true,
+        LootFilterMode = 0
     }
 	AtlasTWCharDB.PartialMatching = true
 	AtlasTWCharDB["QuickLooks"] = {}
@@ -143,6 +144,35 @@ function AtlasTW.OptionShowPanelOnClick()
     end
     AtlasTWOptionShowPanel:SetChecked(AtlasTWOptions.LootShowPanel)
 	AtlasTW.OptionsInit()
+end
+
+--- Toggles loot filtering mode
+--- Cycles through 0: All, 1: My Class, 2: Available
+--- @return nil
+function AtlasTW.OptionFilterModeOnClick()
+    if not AtlasTWOptions.LootFilterMode then
+        AtlasTWOptions.LootFilterMode = 0
+    end
+    AtlasTWOptions.LootFilterMode = math.mod(AtlasTWOptions.LootFilterMode + 1, 3)
+
+    -- Update UI if button exists
+    if AtlasTWLootFilterButton then
+        local filterText = ""
+        if AtlasTWOptions.LootFilterMode == 0 then
+            filterText = L["Filter: No Filter"]
+        elseif AtlasTWOptions.LootFilterMode == 1 then
+            filterText = L["Filter: My Class"]
+        elseif AtlasTWOptions.LootFilterMode == 2 then
+            filterText = L["Filter: Available"]
+        end
+        AtlasTWLootFilterButton:SetText(filterText)
+    end
+
+    -- Refresh loot display
+    if AtlasTW.LootBrowserUI and AtlasTW.LootBrowserUI.ScrollBarLootUpdate then
+        AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+        AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
+    end
 end
 
 ---
@@ -295,6 +325,20 @@ function AtlasTW.OptionsInit()
 	AtlasTWOptionItemID:SetChecked(AtlasTWOptions.LootItemIDs)
 	AtlasTWOptionItemSpam:SetChecked(AtlasTWOptions.LootItemSpam)
     AtlasTWOptionShowPanel:SetChecked(AtlasTWOptions.LootShowPanel)
+
+    -- Update Loot Filter button text
+    if AtlasTWLootFilterButton then
+        local filterText = ""
+        local mode = AtlasTWOptions.LootFilterMode or 0
+        if mode == 0 then
+            filterText = L["Filter: No Filter"]
+        elseif mode == 1 then
+            filterText = L["Filter: My Class"]
+        elseif mode == 2 then
+            filterText = L["Filter: Available"]
+        end
+        AtlasTWLootFilterButton:SetText(filterText)
+    end
 end
 
 ---

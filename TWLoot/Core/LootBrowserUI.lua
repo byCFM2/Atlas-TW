@@ -469,6 +469,14 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 						itemButton.sourcePage = sourcePageVal
 
 						shouldShow = true
+
+						-- Apply loot filter
+						local filterMode = AtlasTWOptions.LootFilterMode or 0
+						if filterMode > 0 and itemID and itemID > 0 then
+							if not AtlasTW.ItemDB.IsItemSuitable(itemID, filterMode) then
+								shouldShow = false
+							end
+						end
 					end
 					if shouldShow then
 						itemButton:Show()

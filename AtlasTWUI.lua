@@ -259,14 +259,14 @@ do
     -- Options button
     local optionsButton = CreateFrame("Button", nil, atlasFrame, "OptionsButtonTemplate")
     optionsButton:SetWidth(80)
-    optionsButton:SetPoint("TOPRIGHT", -18, -60)
+    optionsButton:SetPoint("TOPRIGHT", -10, -60)
     optionsButton:SetText(L["Options"])
     optionsButton:SetScript("OnClick", function()
         AtlasTW.OptionsOnClick()
     end)
     -- Hide Quests button
     local questsToggleButton = CreateFrame("Button", nil, atlasFrame, "OptionsButtonTemplate")
-    questsToggleButton:SetPoint("LEFT", optionsButton, -95, 0)
+    questsToggleButton:SetPoint("LEFT", optionsButton, -90, 0)
     questsToggleButton:SetText(L["Quests"])
     questsToggleButton:SetScript("OnClick", function()
         AtlasTW.Quest.ToggleQuestFrame()
@@ -275,9 +275,17 @@ do
     -- Hide Loot Panel button
     local ShowPanelButton = CreateFrame("Button", nil, atlasFrame, "OptionsButtonTemplate")
     ShowPanelButton:SetText(L["Loot Panel"])
-    ShowPanelButton:SetPoint("LEFT", questsToggleButton, -95, 0)
+    ShowPanelButton:SetPoint("LEFT", questsToggleButton, -90, 0)
     ShowPanelButton:SetScript("OnClick", function()
         AtlasTW.OptionShowPanelOnClick()
+    end)
+
+    -- Loot Filter button
+    local filterButton = CreateFrame("Button", "AtlasTWLootFilterButton", atlasFrame, "OptionsButtonTemplate")
+    filterButton:SetWidth(130)
+    filterButton:SetPoint("LEFT", ShowPanelButton, -130, 0)
+    filterButton:SetScript("OnClick", function()
+        AtlasTW.OptionFilterModeOnClick()
     end)
 
     -- Scroll frame

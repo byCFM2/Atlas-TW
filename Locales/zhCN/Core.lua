@@ -280,6 +280,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
 
     -- AtlasTW Loot
     ["Loot Panel"] = "掉落面板",
+    ["Filter: No Filter"] = "过滤器：无",
+    ["Filter: My Class"] = "过滤器：我的职业",
+    ["Filter: Available"] = "过滤器：可用",
     ["WishList"] = "愿望清单",
     ["ALT+Click to clear"] = "ALT+点击清除",
     ["QuickLook"] = "快速查看",

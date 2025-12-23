@@ -311,6 +311,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     -- AtlasTW Loot
     --************************************************
     ["Loot Panel"] = "Beutefenster",
+    ["Filter: No Filter"] = "Filter: Kein Filter",
+    ["Filter: My Class"] = "Filter: Meine Klasse",
+    ["Filter: Available"] = "Filter: Verfügbar",
     ["WishList"] = "Wunschliste",
     ["ALT+Click to clear"] = "ALT+Klick zum Löschen",
     ["QuickLook"] = "Ansicht",

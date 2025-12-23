@@ -7,3 +7,4 @@ DONT_USE*
 # Остальные существующие правила
 .mailmap
 .agent/workflows/weapon_skills_plan.md
+OPTIMIZATION_PLAN.md
