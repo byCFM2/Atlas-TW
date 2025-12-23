@@ -158,7 +158,9 @@ function AtlasTW.SearchLib.Search(Text)
     local function searchItemsList(items, bossName, instanceName, instanceKey)
         if not items then return end
         if type(items) == "string" then
-            -- Skip old reference table formats
+            if AtlasTWLoot_Data and type(AtlasTWLoot_Data[items]) == "table" then
+                searchItemsList(AtlasTWLoot_Data[items], bossName, instanceName, instanceKey)
+            end
             return
         end
         if type(items) ~= "table" then return end
@@ -208,12 +210,51 @@ function AtlasTW.SearchLib.Search(Text)
     -- Additional search for items on craft/profession pages and other loot pages (AtlasTWLoot_Data)
     local function searchItemsInLootTables()
         if not AtlasTWLoot_Data then return end
+
+        local function resolveBossAndInstanceFromPageKey(pageKey)
+            if not pageKey or type(pageKey) ~= "string" or not AtlasTW or not AtlasTW.InstanceData then
+                return nil, nil
+            end
+            for instKey, inst in pairs(AtlasTW.InstanceData) do
+                if inst and inst.Bosses then
+                    for _, boss in ipairs(inst.Bosses) do
+                        local items = boss.items or boss.loot
+                        if boss and (boss.id == pageKey or items == pageKey) then
+                            return boss.name or boss.Name, instKey
+                        end
+                    end
+                end
+                if inst and inst.Reputation then
+                    for _, src in pairs(inst.Reputation) do
+                        local items = src.items or src.loot
+                        if items == pageKey then
+                            return src.name or "Reputation", instKey
+                        end
+                    end
+                end
+                if inst and inst.Keys then
+                    for _, src in pairs(inst.Keys) do
+                        local items = src.items or src.loot
+                        if items == pageKey then
+                            return src.name or "Keys", instKey
+                        end
+                    end
+                end
+            end
+            return nil, nil
+        end
+
         local function considerItem(itemID, pageKey)
             if not itemID or itemID == 0 then return end
             local itemName = GetItemInfo(itemID)
             if itemName and isMatch(itemName) then
-                -- [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage (page key)
-                addUnique({ itemID, "", "", "item", pageKey })
+                local bossName, instanceKey = resolveBossAndInstanceFromPageKey(pageKey)
+                if bossName and instanceKey and instanceKey ~= "" then
+                    addUnique({ itemID, bossName, instanceKey, "item", bossName.."|"..instanceKey })
+                else
+                    -- [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage (page key)
+                    addUnique({ itemID, "", "", "item", pageKey })
+                end
             end
         end
         AtlasTW.LootUtils.IterateAllLootItems(considerItem)
