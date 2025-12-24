@@ -261,12 +261,37 @@ function AtlasTW.SearchLib.Search(Text)
     end
     searchItemsInLootTables()
 
+    -- Find first loot table key in AtlasTWLoot_Data that contains the given ID.
+    -- Important: we scan AtlasTWLoot_Data only (not InstanceData), because the same numeric ID
+    -- may exist as a dropped item in instances and as a craft spell ID.
+    local function findFirstLootPageKeyInLootData(targetId)
+        if not AtlasTWLoot_Data or not targetId then return nil end
+        local function scanList(list)
+            if type(list) ~= "table" then return false end
+            local m = table.getn(list)
+            for i = 1, m do
+                local el = list[i]
+                if type(el) == "number" then
+                    if el == targetId then return true end
+                elseif type(el) == "table" then
+                    if el.id and el.id == targetId then return true end
+                    if el[1] and type(el[1]) == "number" and el[1] == targetId then return true end
+                    if el.container and scanList(el.container) then return true end
+                end
+            end
+            return false
+        end
+        for key, tbl in pairs(AtlasTWLoot_Data) do
+            if scanList(tbl) then
+                return key
+            end
+        end
+        return nil
+    end
+
     -- Craft/profession page locator: find first loot table where spellID occurs (local for use in enchants)
     local function findCraftLootPageLocal(spellID)
-        if not AtlasTWLoot_Data then return nil end
-        return AtlasTW.LootUtils.IterateAllLootItems(function(id, key)
-            if id == spellID then return key end
-        end)
+        return findFirstLootPageKeyInLootData(spellID)
     end
 
     -- Search for enchantments by name in new spell database
@@ -292,10 +317,7 @@ function AtlasTW.SearchLib.Search(Text)
 
     -- Craft page locator: find first loot table where spellID occurs
     local function findFirstCraftLootPageForSpell(spellID)
-        if not AtlasTWLoot_Data then return nil end
-        return AtlasTW.LootUtils.IterateAllLootItems(function(id, key)
-            if id == spellID then return key end
-        end)
+        return findFirstLootPageKeyInLootData(spellID)
     end
 
     -- Search for craft spells: by spell name if available, otherwise by created item name

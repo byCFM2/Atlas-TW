@@ -273,9 +273,27 @@ end
 ---
 local function FindFirstCraftLootPageForSpell(spellID)
 	if not AtlasTWLoot_Data or not spellID then return nil end
-	return AtlasTW.LootUtils.IterateAllLootItems(function(id, key)
-		if id == spellID then return key end
-	end)
+	local function scanList(list)
+		if type(list) ~= "table" then return false end
+		local m = table.getn(list)
+		for i = 1, m do
+			local el = list[i]
+			if type(el) == "number" then
+				if el == spellID then return true end
+			elseif type(el) == "table" then
+				if el.id and el.id == spellID then return true end
+				if el[1] and type(el[1]) == "number" and el[1] == spellID then return true end
+				if el.container and scanList(el.container) then return true end
+			end
+		end
+		return false
+	end
+	for key, tbl in pairs(AtlasTWLoot_Data) do
+		if scanList(tbl) then
+			return key
+		end
+	end
+	return nil
 end
 
 ---

@@ -320,7 +320,7 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 							if type(wlItemID) == "string" and string.len(wlItemID) > 1 then
 								elemNum = tonumber(string.sub(wlItemID, 2)) or wlItemID
 							end
-							element = { id = elemNum, skill = 1 }
+							element = { id = elemNum, skill = 1, _wlType = wlElementType }
 						else
 							-- For regular items explicitly mark the type
 							element = { id = wlItemID, type = "item" }
@@ -357,7 +357,13 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 						local itemQuality = 0
 						if elemID and elemID ~= 0 then
 							if not (element.type and element.type == "item") then
-								link = AtlasTW.SpellDB.enchants[elemID] or AtlasTW.SpellDB.craftspells[elemID]
+								if element._wlType == "enchant" then
+									link = AtlasTW.SpellDB.enchants[elemID]
+								elseif element._wlType == "spell" then
+									link = AtlasTW.SpellDB.craftspells[elemID]
+								else
+									link = AtlasTW.SpellDB.enchants[elemID] or AtlasTW.SpellDB.craftspells[elemID]
+								end
 							else
 								link = nil
 							end
@@ -366,7 +372,11 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 								-- Set original ID for itemButton (enchant or spell)
 								itemButton.elemID = elemID
 								-- Set type for itemButton (enchant or spell)
-								if AtlasTW.SpellDB.enchants[elemID] then
+								if element._wlType == "enchant" then
+									itemButton.typeID = "enchant"
+								elseif element._wlType == "spell" then
+									itemButton.typeID = "spell"
+								elseif AtlasTW.SpellDB.enchants[elemID] then
 									itemButton.typeID = "enchant"
 								elseif AtlasTW.SpellDB.craftspells[elemID] then
 									itemButton.typeID = "spell"
@@ -377,6 +387,9 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 								itemID = link and link.item
 								AtlasTW.LootCache.CacheAllItems(link and link.reagents)
 								AtlasTW.LootCache.CacheAllItems(link and link.tools)
+								if link and link.item then
+									AtlasTW.LootCache.CacheAllItems({ link.item })
+								end
 							else
 								itemButton.typeID = "item"
 							end
