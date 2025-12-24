@@ -256,6 +256,34 @@ local function AtlasTWLoot_CreateSearchElements(frame)
         this:ClearFocus()
     end)
 
+    searchBox:SetScript("OnTextChanged", function()
+        if not AtlasTWCharDB or AtlasTWCharDB.PredictSearch == false then
+            return
+        end
+        local t = this:GetText()
+        if not t or t == "" or string.len(t) < 2 then
+            this._predictPendingText = nil
+            this._predictElapsed = nil
+            this:SetScript("OnUpdate", nil)
+            return
+        end
+        this._predictPendingText = t
+        this._predictElapsed = 0
+        this:SetScript("OnUpdate", function()
+            this._predictElapsed = (this._predictElapsed or 0) + arg1
+            if this._predictElapsed >= 0.35 then
+                this:SetScript("OnUpdate", nil)
+                local textToSearch = this._predictPendingText
+                this._predictPendingText = nil
+                this._predictElapsed = nil
+                if textToSearch and textToSearch ~= "" and textToSearch ~= this._predictLastRunText then
+                    this._predictLastRunText = textToSearch
+                    AtlasTW.SearchLib.Search(textToSearch)
+                end
+            end
+        end)
+    end)
+
     -- Search Button
     local searchButton = CreateFrame("Button", nil, searchBox, "OptionsButtonTemplate")
     searchButton:SetWidth(55)

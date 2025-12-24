@@ -168,7 +168,15 @@ function AtlasTW.SearchLib.Search(Text)
             if type(it) == "number" then
                 addItemResult(it, bossName, instanceName, instanceKey)
             elseif type(it) == "table" then
-                if it.id then
+                local isExplicitItem = (it.type and it.type == "item")
+                local isSpellLike = false
+                if it.skill and not isExplicitItem then
+                    local sid = it.id
+                    if sid and AtlasTW and AtlasTW.SpellDB and ((AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[sid]) or (AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[sid])) then
+                        isSpellLike = true
+                    end
+                end
+                if it.id and not isSpellLike then
                     addItemResult(it.id, bossName, instanceName, instanceKey)
                 end
                 if it.container then
@@ -244,7 +252,7 @@ function AtlasTW.SearchLib.Search(Text)
             return nil, nil
         end
 
-        local function considerItem(itemID, pageKey)
+        local function addItemFromPage(itemID, pageKey)
             if not itemID or itemID == 0 then return end
             local itemName = GetItemInfo(itemID)
             if itemName and isMatch(itemName) then
@@ -257,7 +265,42 @@ function AtlasTW.SearchLib.Search(Text)
                 end
             end
         end
-        AtlasTW.LootUtils.IterateAllLootItems(considerItem)
+
+        local function scanList(list, pageKey)
+            if type(list) ~= "table" then return end
+            local m = table.getn(list)
+            for i = 1, m do
+                local el = list[i]
+                if type(el) == "number" then
+                    addItemFromPage(el, pageKey)
+                elseif type(el) == "table" then
+                    -- Treat as item only if this is a real item entry.
+                    -- Craft spells/enchants are also stored as {id=spellID, skill=...} and must NOT be searched as items.
+                    local isExplicitItem = (el.type and el.type == "item")
+                    local isSpellLike = false
+                    if el.skill and not isExplicitItem then
+                        local sid = el.id
+                        if sid and AtlasTW and AtlasTW.SpellDB and ((AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[sid]) or (AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[sid])) then
+                            isSpellLike = true
+                        end
+                    end
+                    if not isSpellLike then
+                        if el.id and type(el.id) == "number" then
+                            addItemFromPage(el.id, pageKey)
+                        elseif el[1] and type(el[1]) == "number" then
+                            addItemFromPage(el[1], pageKey)
+                        end
+                    end
+                    if el.container and type(el.container) == "table" then
+                        scanList(el.container, pageKey)
+                    end
+                end
+            end
+        end
+
+        for pageKey, tbl in pairs(AtlasTWLoot_Data) do
+            scanList(tbl, pageKey)
+        end
     end
     searchItemsInLootTables()
 
@@ -371,6 +414,14 @@ function AtlasTW.SearchLib.ShowOptions(button)
 				"tooltipTitle", L["Partial matching"],
 				"tooltipText", L["If checked, AtlasTWLoot searches item names for a partial match."],
 				"func", function() AtlasTWCharDB.PartialMatching = not AtlasTWCharDB.PartialMatching end
+			)
+			Hewdrop:AddLine(
+				"text", L["Predict search"] or "Predict search",
+				"checked", AtlasTWCharDB.PredictSearch ~= false,
+				"func", function()
+					local enabled = AtlasTWCharDB.PredictSearch ~= false
+					AtlasTWCharDB.PredictSearch = not enabled
+				end
 			)
 		end
 		Hewdrop:Open(button,
