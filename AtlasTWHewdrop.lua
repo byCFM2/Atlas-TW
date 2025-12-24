@@ -633,6 +633,10 @@ function Hewdrop:IsOpen(parent)
 	return levels[1] and levels[1]:IsShown() and (not parent or parent == levels[1].parent)
 end
 
+ function Hewdrop:Refresh(level)
+ 	Refresh(self, level)
+ end
+
 -- Hook WorldFrame to close menu on click
 local WorldFrame_OnMouseDown = WorldFrame:GetScript("OnMouseDown")
 WorldFrame:SetScript("OnMouseDown", function()

@@ -18,6 +18,100 @@
 local L = AtlasTW.Localization.UI
 local Colors = AtlasTW.Colors
 
+local function AtlasTWLoot_ClosePredictDropdown(searchBox)
+	if not searchBox then return end
+	if searchBox._predictDrop then
+		searchBox._predictDrop:Hide()
+	end
+	searchBox._predictSuggestions = nil
+	searchBox._predictSelectedIndex = nil
+end
+
+local function AtlasTWLoot_OpenPredictDropdown(searchBox)
+	if not searchBox or not searchBox._predictDrop then return end
+	if not searchBox._predictSuggestions or table.getn(searchBox._predictSuggestions) == 0 then
+		AtlasTWLoot_ClosePredictDropdown(searchBox)
+		return
+	end
+	searchBox._predictDrop:Show()
+end
+
+local function AtlasTWLoot_UpdatePredictDropdown(searchBox)
+	if not searchBox or not searchBox._predictDrop then return end
+	local drop = searchBox._predictDrop
+	local suggestions = searchBox._predictSuggestions or {}
+	local maxLines = drop._maxLines or 10
+	local count = table.getn(suggestions)
+	if count == 0 then
+		AtlasTWLoot_ClosePredictDropdown(searchBox)
+		return
+	end
+	for i = 1, maxLines do
+		local b = drop._buttons[i]
+		local s = suggestions[i]
+		if s then
+			b._entry = s
+			b:Show()
+			b.text:SetText(s.displayText or "")
+			if searchBox._predictSelectedIndex == i then
+				b.highlight:Show()
+			else
+				b.highlight:Hide()
+			end
+		else
+			b._entry = nil
+			b:Hide()
+		end
+	end
+	local visible = math.min(count, maxLines)
+	drop:SetHeight(visible * 16 + 10)
+	AtlasTWLoot_OpenPredictDropdown(searchBox)
+end
+
+local function AtlasTWLoot_BuildPredictSuggestionsFromSearchResult()
+	local suggestions = {}
+	local results = (AtlasTWCharDB and AtlasTWCharDB.SearchResult) or {}
+	local n = table.getn(results)
+	local max = 10
+	for i = 1, n do
+		local v = results[i]
+		if type(v) == "table" then
+			local id = v[1]
+			local elementType = v[4] or "item"
+			local sourcePage = v[5]
+			local name = nil
+			if elementType == "item" then
+				name = GetItemInfo(id)
+			elseif elementType == "spell" then
+				local data = AtlasTW and AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[id]
+				name = data and data.name
+				if (not name or name == "") and data and data.item then
+					name = GetItemInfo(data.item)
+				end
+			elseif elementType == "enchant" then
+				local data = AtlasTW and AtlasTW.SpellDB and AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[id]
+				name = data and data.name
+				if (not name or name == "") and data and data.item then
+					name = GetItemInfo(data.item)
+				end
+			end
+			if name and name ~= "" then
+				table.insert(suggestions, {
+					id = id,
+					type = elementType,
+					sourcePage = sourcePage,
+					searchText = name,
+					displayText = name
+				})
+				if table.getn(suggestions) >= max then
+					break
+				end
+			end
+		end
+	end
+	return suggestions
+end
+
 ---
 -- Function to copy properties from the parent template
 -- @function AtlasTWLoot_ApplyParentTemplate
@@ -252,21 +346,125 @@ local function AtlasTWLoot_CreateSearchElements(frame)
     searchBox:SetMaxLetters(100)
 
     searchBox:SetScript("OnEnterPressed", function()
-        AtlasTW.SearchLib.Search(this:GetText())
+        if this._predictDrop and this._predictDrop:IsShown() and this._predictSuggestions and table.getn(this._predictSuggestions) > 0 then
+            local idx = this._predictSelectedIndex or 1
+            local entry = this._predictSuggestions[idx]
+            if entry then
+                AtlasTW.SearchLib.Search(entry.searchText or entry.displayText or this:GetText())
+            end
+        else
+            AtlasTW.SearchLib.Search(this:GetText())
+        end
+        AtlasTWLoot_ClosePredictDropdown(this)
         this:ClearFocus()
     end)
 
+    searchBox:SetScript("OnEscapePressed", function()
+        AtlasTWLoot_ClosePredictDropdown(this)
+        this:ClearFocus()
+    end)
+
+    searchBox:SetScript("OnEditFocusLost", function()
+        AtlasTWLoot_ClosePredictDropdown(this)
+    end)
+
+    searchBox:SetScript("OnTabPressed", function()
+        AtlasTWLoot_ClosePredictDropdown(this)
+    end)
+
+    searchBox:SetScript("OnKeyDown", function()
+        if not this._predictDrop or not this._predictDrop:IsShown() then return end
+        local key = arg1
+        local suggestions = this._predictSuggestions or {}
+        local n = table.getn(suggestions)
+        if n == 0 then return end
+        if key == "UP" then
+            this._predictSelectedIndex = (this._predictSelectedIndex or 1) - 1
+            if this._predictSelectedIndex < 1 then this._predictSelectedIndex = n end
+            AtlasTWLoot_UpdatePredictDropdown(this)
+        elseif key == "DOWN" then
+            this._predictSelectedIndex = (this._predictSelectedIndex or 0) + 1
+            if this._predictSelectedIndex > n then this._predictSelectedIndex = 1 end
+            AtlasTWLoot_UpdatePredictDropdown(this)
+        end
+    end)
+
+    -- Predict dropdown (suggestions)
+    local drop = CreateFrame("Frame", nil, frame)
+    drop:SetFrameStrata("FULLSCREEN_DIALOG")
+    drop:SetWidth(214)
+    drop:SetHeight(10)
+    drop:SetPoint("TOPLEFT", searchBox, "BOTTOMLEFT", 0, -2)
+    drop:Hide()
+
+    local bg = CreateFrame("Frame", nil, drop)
+    bg:SetAllPoints(drop)
+    bg:SetBackdrop({
+        bgFile = "Interface\\ChatFrame\\ChatFrameBackground",
+        edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+        tile = true, tileSize = 16, edgeSize = 16,
+        insets = { left = 5, right = 5, top = 5, bottom = 5 }
+    })
+    bg:SetBackdropColor(0, 0, 0, 1)
+    bg:SetBackdropBorderColor(1, 1, 1)
+
+    drop._maxLines = 10
+    drop._buttons = {}
+    for i = 1, drop._maxLines do
+        local b = CreateFrame("Button", nil, drop)
+        b:SetHeight(16)
+        b:SetPoint("TOPLEFT", drop, "TOPLEFT", 8, -8 - ((i - 1) * 16))
+        b:SetPoint("TOPRIGHT", drop, "TOPRIGHT", -8, -8 - ((i - 1) * 16))
+        b:Hide()
+
+        local hl = b:CreateTexture(nil, "HIGHLIGHT")
+        hl:SetTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
+        hl:SetBlendMode("ADD")
+        hl:SetAllPoints(b)
+        hl:Hide()
+        b.highlight = hl
+
+        local textFS = b:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+        textFS:SetJustifyH("LEFT")
+        textFS:SetPoint("LEFT", b, "LEFT", 2, 0)
+        textFS:SetPoint("RIGHT", b, "RIGHT", -2, 0)
+        b.text = textFS
+
+        b:SetScript("OnEnter", function()
+            if searchBox then
+                searchBox._predictSelectedIndex = i
+                AtlasTWLoot_UpdatePredictDropdown(searchBox)
+            end
+        end)
+        b:SetScript("OnClick", function()
+            if not searchBox then return end
+            local entry = this._entry
+            if entry then
+                AtlasTW.SearchLib.Search(entry.searchText or entry.displayText or searchBox:GetText())
+                AtlasTWLoot_ClosePredictDropdown(searchBox)
+                searchBox:ClearFocus()
+            end
+        end)
+
+        table.insert(drop._buttons, b)
+    end
+
+    searchBox._predictDrop = drop
+
     searchBox:SetScript("OnTextChanged", function()
         if not AtlasTWCharDB or AtlasTWCharDB.PredictSearch == false then
+            AtlasTWLoot_ClosePredictDropdown(this)
             return
         end
         local t = this:GetText()
-        if not t or t == "" or string.len(t) < 2 then
+        if not t or t == "" or string.len(t) < 3 then
             this._predictPendingText = nil
             this._predictElapsed = nil
             this:SetScript("OnUpdate", nil)
+            AtlasTWLoot_ClosePredictDropdown(this)
             return
         end
+        AtlasTWLoot_ClosePredictDropdown(this)
         this._predictPendingText = t
         this._predictElapsed = 0
         this:SetScript("OnUpdate", function()
@@ -279,6 +477,9 @@ local function AtlasTWLoot_CreateSearchElements(frame)
                 if textToSearch and textToSearch ~= "" and textToSearch ~= this._predictLastRunText then
                     this._predictLastRunText = textToSearch
                     AtlasTW.SearchLib.Search(textToSearch)
+                    this._predictSuggestions = AtlasTWLoot_BuildPredictSuggestionsFromSearchResult()
+                    this._predictSelectedIndex = 1
+                    AtlasTWLoot_UpdatePredictDropdown(this)
                 end
             end
         end)

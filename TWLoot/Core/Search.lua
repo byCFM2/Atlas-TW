@@ -413,14 +413,20 @@ function AtlasTW.SearchLib.ShowOptions(button)
 				"checked", AtlasTWCharDB.PartialMatching,
 				"tooltipTitle", L["Partial matching"],
 				"tooltipText", L["If checked, AtlasTWLoot searches item names for a partial match."],
-				"func", function() AtlasTWCharDB.PartialMatching = not AtlasTWCharDB.PartialMatching end
+				"func", function()
+					AtlasTWCharDB.PartialMatching = not AtlasTWCharDB.PartialMatching
+					Hewdrop:Refresh(1)
+				end
 			)
 			Hewdrop:AddLine(
-				"text", L["Predict search"] or "Predict search",
+				"text", L["Predict search"],
 				"checked", AtlasTWCharDB.PredictSearch ~= false,
+				"tooltipTitle", L["Predict search"],
+				"tooltipText", L["If checked, AtlasTWLoot predicts search results."],
 				"func", function()
 					local enabled = AtlasTWCharDB.PredictSearch ~= false
 					AtlasTWCharDB.PredictSearch = not enabled
+					Hewdrop:Refresh(1)
 				end
 			)
 		end
