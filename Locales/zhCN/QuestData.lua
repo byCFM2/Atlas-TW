@@ -1385,6 +1385,18 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[6] = {
         { id = 15109 }, --Staff of Soran'ruk Staff
     }
 }
+kQuestInstanceData.BlackfathomDeeps.Alliance[7] = {
+    Title = "月神圣地废墟",
+    Level = 26,
+    Attain = 18,
+    Aim = "深入黑暗深渊，从月神圣地废墟中寻找“绽放之种”。找到后，返回灰谷佐拉姆海岸以东的艾伦妮娅·星之绽放那里。",
+    Location = "艾伦妮娅·星之绽放 (灰谷 "..yellow.."17,26"..white..")",
+    Note = "'绽放之种' 位于旁边那棵树下 "..yellow.."[4]",
+    Rewards = {
+        Text = "奖励：",
+        { id = 41919 }, --Starbloom Ring
+    }
+}
 kQuestInstanceData.BlackfathomDeeps.Horde[1] = {
     Title = "阿库麦尔水晶",
     Level = 22,
@@ -1452,6 +1464,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[6] = {
         { id = 16887 }, --Witch's Finger Held In Off-hand
     }
 }
+kQuestInstanceData.BlackfathomDeeps.Horde[7] = kQuestInstanceData.BlackfathomDeeps.Alliance[7]
 
 --------------- Lower Blackrock Spire ---------------
 kQuestInstanceData.BlackrockSpireLower = {

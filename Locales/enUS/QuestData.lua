@@ -1470,6 +1470,18 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[6] = {
         { id = 15109 }, --Staff of Soran'ruk Staff
     }
 }
+kQuestInstanceData.BlackfathomDeeps.Alliance[7] = {
+    Title = "The Moonshrine Ruins",
+    Level = 26,
+    Attain = 18,
+    Aim = "Traverse into the depths of Blackfathom Deeps and recover a 'Seed of Bloom' from within the Moonshrine Ruins. Once acquired, return to Aelennia Starbloom east of The Zoram Strand in Ashenvale.",
+    Location = "Aelennia Starbloom (Ashenvale "..yellow.."17,26"..white..")",
+    Note = "'Seed of Bloom' are located under the tree next to "..yellow.."[4]",
+    Rewards = {
+        Text = "Reward:",
+        { id = 41919 }, --Starbloom Ring
+    }
+}
 kQuestInstanceData.BlackfathomDeeps.Horde[1] = {
     Title = "The Essence of Aku'Mai",
     Level = 22,
@@ -1537,6 +1549,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[6] = {
         { id = 16887 }, --Witch's Finger Held In Off-hand
     }
 }
+kQuestInstanceData.BlackfathomDeeps.Horde[7] = kQuestInstanceData.BlackfathomDeeps.Alliance[7]
 
 --------------- Lower Blackrock Spire ---------------
 kQuestInstanceData.BlackrockSpireLower = {

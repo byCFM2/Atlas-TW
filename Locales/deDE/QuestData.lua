@@ -1469,6 +1469,18 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[6] = {
         { id = 15109 }, --Staff of Soran'ruk Staff
     }
 }
+kQuestInstanceData.BlackfathomDeeps.Alliance[7] = {
+    Title = "Die Ruinen des Mondschreins",
+    Level = 26,
+    Attain = 18,
+    Aim = "Durchqueren Sie die Tiefschwarzen Grotte und sammeln Sie "..yellow.."'Seed of Bloom'"..white.." aus den Ruinen des Mondschreins. Sobald Sie es gefunden haben, bringen Sie es zu Aelennia Starbloom im Ashenvale.",
+    Location = "Aelennia Starbloom (Eschental "..yellow.."17,26"..white..")",
+    Note = "'Seed of Bloom' sind unter dem Baum neben "..yellow.."[4]",
+    Rewards = {
+        Text = "Belohnung:",
+        { id = 41919 }, --Starbloom Ring
+    }
+}
 kQuestInstanceData.BlackfathomDeeps.Horde[1] = {
     Title = "Die Essenz von Aku'mai",
     Level = 22,
@@ -1536,6 +1548,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[6] = {
         { id = 16887 }, --Witch's Finger Held In Off-hand
     }
 }
+kQuestInstanceData.BlackfathomDeeps.Horde[7] = kQuestInstanceData.BlackfathomDeeps.Alliance[7]
 
 --------------- Lower Blackrock Spire ---------------
 kQuestInstanceData.BlackrockSpireLower = {

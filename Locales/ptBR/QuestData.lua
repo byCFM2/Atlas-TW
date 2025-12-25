@@ -1469,6 +1469,18 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[6] = {
         { id = 15109 }, --Staff of Soran'ruk Staff
     }
 }
+kQuestInstanceData.BlackfathomDeeps.Alliance[7] = {
+    Title = "As Ruínas do Santuário Lunar",
+    Level = 26,
+    Attain = 18,
+    Aim = "Aventure-se nas profundezas das Cavernas da Brazanegra e recupere uma 'Semente Florescente' das Ruínas do Santuário Lunar. Uma vez adquirida, retorne para Aelennia Florestelar a leste da Enseada Zoram em Valefresno.",
+    Location = "Aelennia Florastral (Vale Gris "..yellow.."17,26"..white..")",
+    Note = "'Semente da Floração' estão localizados sob a árvore ao lado "..yellow.."[4]",
+    Rewards = {
+        Text = "Recompensa:",
+        { id = 41919 }, --Starbloom Ring
+    }
+}
 kQuestInstanceData.BlackfathomDeeps.Horde[1] = {
     Title = "A Essência de Aku'Mai",
     Level = 22,
@@ -1536,6 +1548,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[6] = {
         { id = 16887 }, --Witch's Finger Held In Off-hand
     }
 }
+kQuestInstanceData.BlackfathomDeeps.Horde[7] = kQuestInstanceData.BlackfathomDeeps.Alliance[7]
 
 --------------- Lower Blackrock Spire ---------------
 kQuestInstanceData.BlackrockSpireLower = {
