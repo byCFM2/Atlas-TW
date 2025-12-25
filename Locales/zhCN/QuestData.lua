@@ -1402,6 +1402,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[2] = {
     Aim = "把潮湿的便笺交给灰谷的耶努·萨克雷。",
     Location = "潮湿的便笺 (掉落 - 见备注)",
     Note = "你从 黑暗深渊海潮女祭司 那里获得 潮湿的便笺 (5% 掉率)。然后把它带给 耶努·萨克雷 (灰谷 - 佐拉姆加前哨站 "..   yellow.."11,33"..white..")。洛古斯·杰特位于 "..yellow.."[6]"..white.."。",
+    Prequest = "上古之神的仆从",
     Rewards = {
         Text = "奖励：任选其一",
         { id = 17694 }, --Band of the Fist Ring

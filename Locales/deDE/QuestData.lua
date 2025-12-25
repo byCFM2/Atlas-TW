@@ -1486,6 +1486,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[2] = {
     Aim = "Bringt die durchfeuchtete Notiz zu Je'neu Sancrea im Eschental.",
     Location = "Feuchte Notiz (drop - see note)",
     Note = "Ihr bekommt die Feuchte Notiz von Gezeitenpriesterin der Tiefschwarzen Grotte (5% Droprate). Bringt sie dann zu Je'neu Sancrea (Eschental - Außenposten von Zoram'gar "..yellow.."11,33"..white.."). Lorgus Jett ist bei "..yellow.."[6]"..white..".",
+    Prequest = "Treue zu den Alten Göttern",
     Rewards = {
         Text = "Belohnung: Wählt eins aus",
         { id = 17694 }, --Band of the Fist Ring

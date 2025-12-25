@@ -285,6 +285,8 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Search options"] = true,
     ["Partial matching"] = true,
     ["If checked, AtlasTWLoot searches item names for a partial match."] = true,
+    ["Predict search"] = true,
+    ["If checked, AtlasTWLoot predicts search results."] = true,
     ["No match found for"] = true,
 
     --************************************************

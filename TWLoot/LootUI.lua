@@ -346,15 +346,7 @@ local function AtlasTWLoot_CreateSearchElements(frame)
     searchBox:SetMaxLetters(100)
 
     searchBox:SetScript("OnEnterPressed", function()
-        if this._predictDrop and this._predictDrop:IsShown() and this._predictSuggestions and table.getn(this._predictSuggestions) > 0 then
-            local idx = this._predictSelectedIndex or 1
-            local entry = this._predictSuggestions[idx]
-            if entry then
-                AtlasTW.SearchLib.Search(entry.searchText or entry.displayText or this:GetText())
-            end
-        else
-            AtlasTW.SearchLib.Search(this:GetText())
-        end
+        AtlasTW.SearchLib.Search(this:GetText())
         AtlasTWLoot_ClosePredictDropdown(this)
         this:ClearFocus()
     end)
@@ -411,6 +403,7 @@ local function AtlasTWLoot_CreateSearchElements(frame)
     drop._maxLines = 10
     drop._buttons = {}
     for i = 1, drop._maxLines do
+        local lineIndex = i
         local b = CreateFrame("Button", nil, drop)
         b:SetHeight(16)
         b:SetPoint("TOPLEFT", drop, "TOPLEFT", 8, -8 - ((i - 1) * 16))
@@ -432,7 +425,7 @@ local function AtlasTWLoot_CreateSearchElements(frame)
 
         b:SetScript("OnEnter", function()
             if searchBox then
-                searchBox._predictSelectedIndex = i
+                searchBox._predictSelectedIndex = lineIndex
                 AtlasTWLoot_UpdatePredictDropdown(searchBox)
             end
         end)

@@ -1486,6 +1486,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[2] = {
     Aim = "Lleva la Nota Húmeda a Je'neu Sancrea en Vallefresno.",
     Location = "Nota Empapada (drop - see note)",
     Note = "Obtienes la Nota Empapada de la Sacerdotisa de las Mareas Brazanegra (5% tasa de caída). Luego llévala a Je'neu Sancrea (Vallefresno - Avanzada Zoram'gar "..yellow.."11,33"..white.."). Lorgus Jett está en "..yellow.."[6]"..white..".",
+    Prequest = "Lealtad a los Dioses Antiguos",
     Rewards = {
         Text = "Recompensa: Elige uno",
         { id = 17694 }, --Band of the Fist Ring

@@ -261,6 +261,8 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Search options"] = "搜索选项",
     ["Partial matching"] = "部分匹配",
     ["If checked, AtlasTWLoot searches item names for a partial match."] = "选中后，AtlasTWLoot 将按物品名称进行部分匹配搜索。",
+    ["Predict search"] = "预测搜索",
+    ["If checked, AtlasTWLoot predicts search results."] = "选中后，AtlasTWLoot 会在你输入时显示搜索建议。",
     ["No match found for"] = "未找到匹配项：",
 
     -- Items & Loot

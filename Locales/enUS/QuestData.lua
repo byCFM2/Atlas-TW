@@ -1487,6 +1487,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[2] = {
     Aim = "Bring the Damp Note to Je'neu Sancrea in Ashenvale -> Kill Lorgus Jett in Blackfathom Deeps and then return to Je'neu Sancrea in Ashenvale.",
     Location = "Damp Note (drop - see note)",
     Note = "You get the Damp Note from Blackfathom Tide Priestess (5% drop rate). Then take it to Je'neu Sancrea (Ashenvale - Zoram'gar Outpost "..yellow.."11,33"..white.."). Lorgus Jett is at "..yellow.."[6]"..white..".",
+    Prequest = "Allegiance to the Old Gods",
     Rewards = {
         Text = "Reward: Pick One",
         { id = 17694 }, --Band of the Fist Ring

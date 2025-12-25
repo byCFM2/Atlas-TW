@@ -288,6 +288,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Partial matching"] = "Teilweise Übereinstimmung",
     ["If checked, AtlasTWLoot searches item names for a partial match."] =
     "Wenn aktiviert, durchsucht AtlasTWLoot Gegenstandsnamen nach teilweiser Übereinstimmung.",
+    ["Predict search"] = "Vorschau-Suche",
+    ["If checked, AtlasTWLoot predicts search results."] =
+    "Wenn aktiviert, zeigt AtlasTWLoot während der Eingabe Suchvorschläge.",
     ["No match found for"] = "Keine Übereinstimmung gefunden für",
 
     --************************************************

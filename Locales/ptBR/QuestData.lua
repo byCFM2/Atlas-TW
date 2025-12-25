@@ -1486,6 +1486,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[2] = {
     Aim = "Leve o Bilhete Úmido para Je'neu Sancrea no Vale Gris.",
     Location = "Nota Úmida (drop - see note)",
     Note = "Você pega a Nota Úmida de Sacerdotisa da Maré das Profundezas Negras (5% de chance de drop). Então leve-a para Je'neu Sancrea (Vale Gris - Posto Zoram'gar "..yellow.."11,33"..white.."). Lorgus Jett está em "..yellow.."[6]"..white..".",
+    Prequest = "Fidelidade aos Deuses Antigos",
     Rewards = {
         Text = "Recompensa: Escolha um",
         { id = 17694 }, --Band of the Fist Ring
