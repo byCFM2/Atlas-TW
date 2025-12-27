@@ -738,6 +738,7 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Nina Millson"] = true,
     ["Shazzlan"] = true,
     ["Slagg"] = true,
+    ["Verrus Trueshine"] = true,
     -- Fishing
     ["Nat Pagle"] = true,
     ["Old Man Heming"] = true,
@@ -766,6 +767,8 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Grubgar"] = true,
     ["Fishface Joe"] = true,
     ["Fisherman Shix"] = true,
+    ["Tanner Fralsh"] = true,
+    ["Sindor Packfuse"] = true,
     -- First Aid
     ["Michelle Belle"] = true,
     ["Byancie"] = true,
@@ -819,6 +822,7 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Ruw"] = true,
     ["Pinky Tosslehouse"] = true,
     ["Delarion Featherwing"] = true,
+    ["Sasha Linelight"] = true,
     -- Skinning
     ["Helene Peltskinner"] = true,
     ["Radnaal Maneweaver"] = true,

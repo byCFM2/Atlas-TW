@@ -238,6 +238,8 @@ local ProfessionTrainers = {
     -- COOKING
     -- ==========================================
     Cooking = {
+        -- Apprentice (1-75)
+        {name=LB["Verrus Trueshine"], loc=LM["Alah'Thalas"], faction=ALLIANCE, level=L["Apprentice"]},
         -- Journeyman (1-150)
         {name=LB["Cook Ghilm"], loc=LZ["Dun Morogh"], faction=ALLIANCE, level=L["Journeyman"]},
         {name=LB["Crystal Boughman"], loc=LZ["Redridge Mountains"].." "..LM["Lakeshire"], faction=ALLIANCE, level=L["Journeyman"]},
@@ -326,9 +328,10 @@ local ProfessionTrainers = {
     -- HERBALISM
     -- ==========================================
     Herbalism = {
-        -- Journeyman (1-150)
-        {name=LB["Delarion Featherwing"], loc=LM["Alah'Thalas"], faction=ALLIANCE, level=L["Journeyman"]},
-        -- Artisan (1-300)
+        -- Apprentice (1-75)
+        {name=LB["Delarion Featherwing"], loc=LM["Alah'Thalas"], faction=ALLIANCE, level=L["Apprentice"]},
+        {name=LB["Sasha Linelight"], loc=LZ["Blackstone Island"], faction=HORDE, level=L["Apprentice"]},
+        -- Artisan (150-300)
         {name=LB["Reyna Stonebranch"], loc=LZ["Ironforge"], faction=ALLIANCE, level=L["Artisan"]},
         {name=LB["Firodren Mooncaller"], loc=LZ["Darnassus"], faction=ALLIANCE, level=L["Artisan"]},
         {name=LB["Telurinon Moonshadow"], loc=LZ["Wetlands"].." "..LM["Menethil Harbor"], faction=ALLIANCE, level=L["Artisan"]},
@@ -380,8 +383,9 @@ local ProfessionTrainers = {
     -- Fishing
     -- ==========================================
     Fishing = {
-        -- Journeyman (1-150)
-        {name=LB["Talvas Whitesnake"], loc=LM["Alah'Thalas"], faction=ALLIANCE, level=L["Journeyman"]},
+        -- Apprentice (1-75)
+        {name=LB["Talvas Whitesnake"], loc=LM["Alah'Thalas"], faction=ALLIANCE, level=L["Apprentice"]},
+        {name=LB["Sindor Packfuse"], loc=LZ["Blackstone Island"], faction=HORDE, level=L["Apprentice"]},
         -- Journeyman (1-150)
         {name=LB["Arnold Leland"], loc=LZ["Stormwind City"], faction=ALLIANCE, level=L["Journeyman"]},
         {name=LB["Astaia"], loc=LZ["Darnassus"], faction=ALLIANCE, level=L["Journeyman"]},
