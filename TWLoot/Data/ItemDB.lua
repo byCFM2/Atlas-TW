@@ -74,14 +74,26 @@ AtlasTW.ItemDB.ClassItems = {
 local PlayerAllowedLookup = nil
 local PlayerAllowedPatterns = nil
 local ColoredTextCache = {}
-local ParsedTooltipCache = {}
+
+-- Simple cache system for tooltip data (no LRU - full reset is faster in WoW 1.12)
+local RawTooltipDataCache = {}      -- Stores raw parsed data (slot, slot2, class, requires, specials)
+local RawTooltipCacheSize = 0
+local ParsedTooltipCache = {}       -- Stores formatted strings with extratext
 local ParsedTooltipCacheSize = 0
 local ParsedSuitabilityCache = {}
-local MAX_CACHE_SIZE = 1000
+local MAX_CACHE_SIZE = 500          -- Keep reasonable size
 
 -- Static references for optimization
 local tooltipElementsCache = {}
 local sharedTooltip = nil
+
+-- Simple table creation (pooling disabled for stability)
+local function getPooledTable()
+    return {}
+end
+local function releasePooledTable(t)
+    -- no-op, let garbage collector handle it
+end
 
 -- Copy global keywords to local for much faster table lookups
 local SLOT_KEYWORDS = AtlasTW.ItemDB.SLOT_KEYWORDS
@@ -98,6 +110,16 @@ local L_CLASSES = L["Classes"]
 local L_CLASSES_LEN = string.len(L_CLASSES)
 local L_REQUIRES = L["Requires"]
 local L_REQUIRES_LEN = string.len(L_REQUIRES)
+
+-- Pre-cache localized strings for fast lookup
+local L_OFF_HAND = L["Off Hand"]
+local L_SHIELD = L["Shield"]
+local L_TWO_HAND = L["Two-Hand"]
+local L_SWORD = L["Sword"]
+local L_MACE = L["Mace"]
+local L_AXE = L["Axe"]
+local L_LEVEL = L["Level"]
+
 local function InitializeClassLookup()
     if PlayerAllowedLookup then return end
     PlayerAllowedLookup = {}
@@ -107,8 +129,6 @@ local function InitializeClassLookup()
     if classItems then
         for _, item in ipairs(classItems) do
             PlayerAllowedLookup[item] = true
-            -- Optimization: Add everything to patterns for robustness, 
-            -- but we can skip checking them if exact match works.
             table.insert(PlayerAllowedPatterns, item)
         end
     end
@@ -122,14 +142,16 @@ end
 -- @return string - Colored text with appropriate color codes
 ---
 local function getColoredText(text, typeText)
-    -- Color constants
+    if not text or type(text) ~= "string" then return nil end
+    
+    -- Color constants (cached locally)
     local COLOR_GREEN = Colors.GREEN
     local COLOR_RED = Colors.RED
     local COLOR_END = "|r"
     local playerClass = AtlasTW.PlayerClass
     local playerLevel = UnitLevel("player")
 
-    -- Handle text types with specific cache keys if they depend on state
+    -- Cache lookup
     local cacheKey = text .. "||" .. typeText
     if typeText == "requires" then
         cacheKey = cacheKey .. "||" .. playerLevel
@@ -144,45 +166,43 @@ local function getColoredText(text, typeText)
     -- Default to green
     local colorCode = COLOR_GREEN
 
-    -- Handle different text types
-    if typeText == "slot" then
+    -- Handle slot/slot2 types (inline for performance)
+    if typeText == "slot" or typeText == "slot2" then
         local canWear = false
-        -- Loop check for common items available to everyone (handles Cloth, Shirt, etc.)
-        for item in pairs(COMMON_ITEMS) do
-            if string.find(text, item, 1, true) then
-                canWear = true
-                break
+        
+        -- Quick check: direct lookup in common items
+        if COMMON_ITEMS[text] then
+            canWear = true
+        else
+            -- Substring check for common items (e.g. "Chest Cloth")
+            for item in pairs(COMMON_ITEMS) do
+                if string.find(text, item, 1, true) then
+                    canWear = true
+                    break
+                end
             end
         end
-
+        
         if not canWear then
-            -- Check for Dual Wield requirement if it's a weapon item in Off Hand slot
-            local isOffHand = string.find(text, L["Off Hand"], 1, true)
-            local isShield = string.find(text, L["Shield"], 1, true)
-
-            if isOffHand and not isShield and not PlayerAllowedLookup[L["Off Hand"]] then
-                -- Player doesn't have Dual Wield skill
+            -- Check Off Hand / Dual Wield
+            local isOffHand = string.find(text, L_OFF_HAND, 1, true)
+            local isShield = string.find(text, L_SHIELD, 1, true)
+            
+            if isOffHand and not isShield and not PlayerAllowedLookup[L_OFF_HAND] then
                 canWear = false
             elseif PlayerAllowedLookup[text] then
                 canWear = true
             else
-                -- Fallback for partially matching strings or special combinations
-                -- e.g. "Two-Hand Mace" vs "Mace"
-                local isTwoHand = string.find(text, L["Two-Hand"], 1, true)
+                -- Fallback for partial matches
+                local isTwoHand = string.find(text, L_TWO_HAND, 1, true)
                 for _, item in ipairs(PlayerAllowedPatterns) do
-                    if isTwoHand then
-                        -- For two-handed weapons, strict matching for ambiguous types (Sword, Mace, Axe)
-                        -- Note: "Two-Hand X" items are not in PyayerAllowedPatterns, so we match "X" here.
-                        if string.find(text, item, 1, true) then
-                            -- If "item" is not an ambiguous type, we allow substring match (e.g. "Staff" in "Two-Hand Staff")
-                            if item ~= L["Sword"] and item ~= L["Mace"] and item ~= L["Axe"] then
+                    if string.find(text, item, 1, true) then
+                        if isTwoHand then
+                            if item ~= L_SWORD and item ~= L_MACE and item ~= L_AXE then
                                 canWear = true
                                 break
                             end
-                        end
-                    else
-                        -- For one-handed, we allow finding the weapon type within the slot string
-                        if string.find(text, item, 1, true) then
+                        else
                             canWear = true
                             break
                         end
@@ -190,48 +210,12 @@ local function getColoredText(text, typeText)
                 end
             end
         end
-        if not canWear then
-            colorCode = COLOR_RED
-        end
-    elseif typeText == "slot2" then
-        local canWear = false
-        -- Loop check for common items available to everyone (handles Cloth, Shirt, etc.)
-        for item in pairs(COMMON_ITEMS) do
-            if string.find(text, item, 1, true) then
-                canWear = true
-                break
-            end
-        end
-
-        if not canWear then
-            if PlayerAllowedLookup[text] then
-                canWear = true
-            else
-
-                local isTwoHand = string.find(text, L["Two-Hand"], 1, true)
-                for _, item in ipairs(PlayerAllowedPatterns) do
-                    if isTwoHand then
-                        if string.find(text, item, 1, true) then
-                            if item ~= L["Sword"] and item ~= L["Mace"] and item ~= L["Axe"] then
-                                canWear = true
-                                break
-                            end
-                        end
-                    else
-                        -- For one-handed, we allow finding the weapon type within the slot string
-                        if string.find(text, item, 1, true) then
-                            canWear = true
-                            break
-                        end
-                    end
-                end
-            end
-        end
+        
         if not canWear then
             colorCode = COLOR_RED
         end
     elseif typeText == "class" then
-        local classText = string.gsub(text, L["Classes"]..": ", "")
+        local classText = string.gsub(text, L_CLASSES..": ", "")
         if not string.find(classText, playerClass, 1, true) then
             colorCode = COLOR_RED
         end
@@ -239,8 +223,8 @@ local function getColoredText(text, typeText)
         ColoredTextCache[cacheKey] = res
         return res
     elseif typeText == "requires" then
-        local levelText = string.gsub(text, L["Requires"].." ", "")
-        local levelString = string.gsub(levelText, L["Level"].." ", "") or "0"
+        local levelText = string.gsub(text, L_REQUIRES.." ", "")
+        local levelString = string.gsub(levelText, L_LEVEL.." ", "") or "0"
         local level = tonumber(levelString) or 0
         if playerLevel < level then
             colorCode = COLOR_RED
@@ -256,7 +240,19 @@ local function getColoredText(text, typeText)
 end
 
 ---
--- Clean up tooltip cache when it exceeds maximum size
+-- Clean up raw tooltip cache when it exceeds maximum size
+-- Simple full reset - fast and reliable in WoW 1.12
+-- @function CleanupRawTooltipCache
+---
+local function CleanupRawTooltipCache()
+    if RawTooltipCacheSize > MAX_CACHE_SIZE then
+        RawTooltipDataCache = {}
+        RawTooltipCacheSize = 0
+    end
+end
+
+---
+-- Clean up formatted tooltip cache when it exceeds maximum size
 -- @function CleanupTooltipCache
 ---
 local function CleanupTooltipCache()
@@ -265,6 +261,19 @@ local function CleanupTooltipCache()
         ParsedSuitabilityCache = {}
         ParsedTooltipCacheSize = 0
     end
+end
+
+---
+-- Add item to raw cache (simple O(1) operation)
+-- @param itemID number Item to cache
+-- @param data table Raw tooltip data
+---
+local function AddToRawCache(itemID, data)
+    if not RawTooltipDataCache[itemID] then
+        RawTooltipCacheSize = RawTooltipCacheSize + 1
+    end
+    RawTooltipDataCache[itemID] = data
+    CleanupRawTooltipCache()
 end
 
 ---
@@ -279,146 +288,232 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     if not itemID or itemID == 0 then
         return extratext or ""
     end
+    
     -- Create a suitability entry if it doesn't exist
     if not ParsedSuitabilityCache[itemID] then
         ParsedSuitabilityCache[itemID] = { class = true, level = true }
     end
     local suitability = ParsedSuitabilityCache[itemID]
-    -- Ensure the item is cached
+    
+    -- Ensure the item is cached by game client
     if not GetItemInfo(itemID) then
         return extratext or ""
     end
 
-    -- Create a cache key
+    -- Check formatted cache first (with extratext)
     local cacheKey = itemID .. "_" .. (extratext or "")
-
-    -- Check cache results
     if ParsedTooltipCache[cacheKey] then
         return ParsedTooltipCache[cacheKey]
     end
 
     CleanupTooltipCache()
 
-    local tooltipName = "AtlasTWLootHiddenTooltip"
-
-    -- Lazy-initialize the shared tooltip
-    if not sharedTooltip then
-        sharedTooltip = CreateFrame("GameTooltip", tooltipName, UIParent, "GameTooltipTemplate")
-        if not sharedTooltip then
-            return extratext or ""
-        end
-        sharedTooltip:SetOwner(UIParent, "ANCHOR_NONE")
-    end
-
-    local tooltip = sharedTooltip
-
-    -- Fast clear without protection (optimization)
-    tooltip:Hide()
-    tooltip:ClearLines()
-
-    -- Fast hyperlink setup
-    tooltip:SetOwner(UIParent, "ANCHOR_NONE")
-    tooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
-
-    -- Check the first line
-    local firstLine = _G[tooltipName .. "TextLeft1"]
-    if not firstLine or not firstLine:GetText() or firstLine:GetText() == "" then
-        return extratext or ""
-    end
-
-    local info = {}
-    if extratext and extratext ~= "" then
-        table.insert(info, extratext)
-    end
-
-    -- Cache UI elements on first access only
-    if not tooltipElementsCache.initialized then
-        tooltipElementsCache.leftElements = {}
-        tooltipElementsCache.rightElements = {}
-        for i = 1, 12 do
-            tooltipElementsCache.leftElements[i] = _G[tooltipName .. "TextLeft" .. i]
-            tooltipElementsCache.rightElements[i] = _G[tooltipName .. "TextRight" .. i]
-        end
-        tooltipElementsCache.initialized = true
-    end
-
     -- Local aliases for extreme performance in loops
     local strfind = string.find
     local strlower = string.lower
     local strsub = string.sub
     local tinsert = table.insert
+    
+    -- Check if we have raw data cached (avoids tooltip parsing!)
+    local rawData = RawTooltipDataCache[itemID]
+    
+    if not rawData then
+        -- Need to parse tooltip - this is the expensive operation
+        local tooltipName = "AtlasTWLootHiddenTooltip"
 
-    -- Optimized parsing
-    for i = 1, 12 do
-        local line = tooltipElementsCache.leftElements[i]
-        local text = line and line:GetText()
+        -- Lazy-initialize the shared tooltip
+        if not sharedTooltip then
+            sharedTooltip = CreateFrame("GameTooltip", tooltipName, UIParent, "GameTooltipTemplate")
+            if not sharedTooltip then
+                return extratext or ""
+            end
+            sharedTooltip:SetOwner(UIParent, "ANCHOR_NONE")
+        end
 
-        if text and text ~= "" then
-            local line2 = tooltipElementsCache.rightElements[i]
-            local text2 = line2 and line2:GetText()
+        local tooltip = sharedTooltip
 
-            -- Fast check for standalone exact matches first (Quest items)
-            if text == L["Quest Item"] or text == L["This Item Begins a Quest"] then
-                tinsert(info, text)
-            else
-                -- Only compute lowercase if exact match fails
-                local lowerText = strlower(text)
+        -- Fast clear without protection (optimization)
+        tooltip:Hide()
+        tooltip:ClearLines()
 
-                -- Mount check (often terminates further parsing for this item)
-                if strfind(lowerText, " "..L_MOUNT.." ", 1, true) then
-                    tinsert(info, L["Mount"])
-                    break
-                elseif strfind(lowerText, " "..L_COMPANION.." ", 1, true) then
-                    tinsert(info, L["Pet"])
-                elseif strfind(lowerText, L_BAG, 1, true) then
-                    tinsert(info, L["Bag"])
-                elseif strfind(lowerText, L_GLYPH, 1, true) then
-                    tinsert(info, L["Glyph"])
+        -- Fast hyperlink setup
+        tooltip:SetOwner(UIParent, "ANCHOR_NONE")
+        tooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
+
+        -- Check the first line
+        local firstLine = _G[tooltipName .. "TextLeft1"]
+        if not firstLine or not firstLine:GetText() or firstLine:GetText() == "" then
+            return extratext or ""
+        end
+
+        -- Cache UI elements on first access only
+        if not tooltipElementsCache.initialized then
+            tooltipElementsCache.leftElements = {}
+            tooltipElementsCache.rightElements = {}
+            for i = 1, 12 do
+                tooltipElementsCache.leftElements[i] = _G[tooltipName .. "TextLeft" .. i]
+                tooltipElementsCache.rightElements[i] = _G[tooltipName .. "TextRight" .. i]
+            end
+            tooltipElementsCache.initialized = true
+        end
+
+        -- Parse and store raw data
+        rawData = {
+            specials = {},      -- Quest Item, Mount, Pet, Bag, Glyph
+            slot = nil,         -- Main slot text
+            slot2 = nil,        -- Secondary slot text (armor type, weapon type)
+            classReq = nil,     -- Class restriction text
+            levelReq = nil      -- Level requirement text
+        }
+
+        -- Optimized parsing - extract raw data only
+        for i = 1, 12 do
+            local line = tooltipElementsCache.leftElements[i]
+            local text = line and line:GetText()
+
+            if text and text ~= "" then
+                local line2 = tooltipElementsCache.rightElements[i]
+                local text2 = line2 and line2:GetText()
+
+                -- Fast check for standalone exact matches first (Quest items)
+                if text == L["Quest Item"] or text == L["This Item Begins a Quest"] then
+                    tinsert(rawData.specials, text)
+                else
+                    -- Only compute lowercase if exact match fails
+                    local lowerText = strlower(text)
+
+                    -- Mount check (often terminates further parsing for this item)
+                    if strfind(lowerText, " "..L_MOUNT.." ", 1, true) then
+                        tinsert(rawData.specials, "mount")
+                        break -- Mount found, skip rest
+                    elseif strfind(lowerText, " "..L_COMPANION.." ", 1, true) then
+                        tinsert(rawData.specials, "pet")
+                    elseif strfind(lowerText, L_BAG, 1, true) then
+                        tinsert(rawData.specials, "bag")
+                    elseif strfind(lowerText, L_GLYPH, 1, true) then
+                        tinsert(rawData.specials, "glyph")
+                    end
+                end
+
+                -- Optimized slot check
+                if SLOT_KEYWORDS[text] then
+                    rawData.slot = text
+                    if text2 and SLOT2_KEYWORDS[text2] then
+                        rawData.slot2 = text2
+                    end
+                elseif SLOT2_KEYWORDS[text] then
+                    rawData.slot2 = text
+                -- Classes (Prefix check is faster than find)
+                elseif strsub(text, 1, L_CLASSES_LEN) == L_CLASSES then
+                    rawData.classReq = text
+                -- Requirements (Prefix check is faster than find)
+                elseif strsub(text, 1, L_REQUIRES_LEN) == L_REQUIRES then
+                    rawData.levelReq = text
                 end
             end
+        end
 
-            -- Optimized slot check
-            if SLOT_KEYWORDS[text] then
-                local colorStr
-                if text2 and SLOT2_KEYWORDS[text2] then
-                    colorStr = getColoredText(text.." "..text2, "slot")
-                else
-                    colorStr = getColoredText(text, "slot")
+        -- Fast clear tooltip
+        tooltip:Hide()
+        tooltip:ClearLines()
+
+        -- Store in LRU cache
+        AddToRawCache(itemID, rawData)
+    end
+
+    -- Now format the output using cached raw data (fast!)
+    local info = getPooledTable()
+    -- Ensure extratext is a string before inserting
+    if extratext and extratext ~= "" then
+        if type(extratext) == "string" then
+            tinsert(info, extratext)
+        elseif type(extratext) == "table" then
+            -- Skip table values
+        else
+            tinsert(info, tostring(extratext))
+        end
+    end
+
+    -- Process specials
+    for _, special in ipairs(rawData.specials) do
+        local specialStr = nil
+        if special == "mount" then
+            specialStr = L["Mount"]
+        elseif special == "pet" then
+            specialStr = L["Pet"]
+        elseif special == "bag" then
+            specialStr = L["Bag"]
+        elseif special == "glyph" then
+            specialStr = L["Glyph"]
+        elseif type(special) == "string" then
+            specialStr = special
+        elseif special ~= nil then
+            specialStr = tostring(special)
+        end
+        if specialStr and type(specialStr) == "string" then
+            tinsert(info, specialStr)
+        end
+    end
+
+    -- Process slot with coloring
+    if rawData.slot then
+        local colorStr
+        if rawData.slot2 then
+            colorStr = getColoredText(rawData.slot.." "..rawData.slot2, "slot")
+        else
+            colorStr = getColoredText(rawData.slot, "slot")
+        end
+        if colorStr then
+            if strfind(colorStr, Colors.RED, 1, true) then 
+                suitability.class = false 
+            end
+            tinsert(info, colorStr)
+        end
+    elseif rawData.slot2 then
+        if rawData.slot2 == L["Finger"] then
+            tinsert(info, Colors.GREEN..L["Ring"].."|r")
+        else
+            local colorStr = getColoredText(rawData.slot2, "slot2")
+            if colorStr then
+                if strfind(colorStr, Colors.RED, 1, true) then 
+                    suitability.class = false 
                 end
-                if colorStr and strfind(colorStr, Colors.RED, 1, true) then suitability.class = false end
-                tinsert(info, colorStr)
-            elseif SLOT2_KEYWORDS[text] then
-                if text == L["Finger"] then
-                    tinsert(info, Colors.GREEN..L["Ring"].."|r")
-                else
-                    local colorStr = getColoredText(text, "slot2")
-                    if colorStr and strfind(colorStr, Colors.RED, 1, true) then suitability.class = false end
-                    tinsert(info, colorStr)
-                end
-            -- Classes (Prefix check is faster than find)
-            elseif strsub(text, 1, L_CLASSES_LEN) == L_CLASSES then
-                local colorStr = getColoredText(text, "class")
-                if colorStr and strfind(colorStr, Colors.RED, 1, true) then suitability.class = false end
-                tinsert(info, colorStr)
-            -- Requirements (Prefix check is faster than find)
-            elseif strsub(text, 1, L_REQUIRES_LEN) == L_REQUIRES then
-                local colorStr = getColoredText(text, "requires")
-                if colorStr and strfind(colorStr, Colors.RED, 1, true) then suitability.level = false end
                 tinsert(info, colorStr)
             end
         end
     end
 
-    -- Fast clear
-    tooltip:Hide()
-    tooltip:ClearLines()
+    -- Process class restriction
+    if rawData.classReq then
+        local colorStr = getColoredText(rawData.classReq, "class")
+        if colorStr then
+            if strfind(colorStr, Colors.RED, 1, true) then 
+                suitability.class = false 
+            end
+            tinsert(info, colorStr)
+        end
+    end
+
+    -- Process level requirement
+    if rawData.levelReq then
+        local colorStr = getColoredText(rawData.levelReq, "requires")
+        if colorStr then
+            if strfind(colorStr, Colors.RED, 1, true) then 
+                suitability.level = false 
+            end
+            tinsert(info, colorStr)
+        end
+    end
 
     local result = extratext or ""
     if table.getn(info) > 0 then
         result = table.concat(info, ", ")
     end
+    
+    -- Release pooled table
+    releasePooledTable(info)
 
-    -- Save to cache
+    -- Save formatted result to cache
     ParsedTooltipCache[cacheKey] = result
     ParsedTooltipCacheSize = ParsedTooltipCacheSize + 1
 

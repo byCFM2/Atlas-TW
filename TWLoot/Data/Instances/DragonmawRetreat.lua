@@ -92,7 +92,7 @@ AtlasTW.InstanceData.DragonmawRetreat = {
                 { id = 41569 }, -- Tattered Orcish Shawl
                 { id = 41570 }, -- Idol of Nethalakk
                 {},
-                { id = 41874, disc = L["Quest Item"] }, -- Fragment of Algoron
+                { id = 41874, disc = L["Quest Item"], dropRate = 100 }, -- Fragment of Algoron
             }
         },
         {
