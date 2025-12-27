@@ -93,6 +93,8 @@ local GlobalIndex = {
 
 -- Cache for items not found in Atlas-TW database
 local NegativeCache = {}
+local NegativeCacheSize = 0
+local NEGATIVE_CACHE_LIMIT = 1000
 
 -- ============================================================================
 -- MONEY TOOLTIP HOOK
@@ -368,7 +370,10 @@ local function BuildGlobalIndex()
         end)
     end
 
-    GlobalIndex.isIndexed = true
+    -- Only mark as indexed if core dependencies are actually available
+    if AtlasTW.LootUtils and AtlasTW.LootUtils.IterateAllLootItems then
+        GlobalIndex.isIndexed = true
+    end
 end
 
 ---
@@ -456,6 +461,11 @@ local function FindItemSource(itemID)
 
     -- If still not found, cache as missing
     NegativeCache[itemID] = true
+    NegativeCacheSize = NegativeCacheSize + 1
+    if NegativeCacheSize > NEGATIVE_CACHE_LIMIT then
+        NegativeCache = {}
+        NegativeCacheSize = 0
+    end
     return nil
 end
 
@@ -537,14 +547,21 @@ local function CreateTooltipWrapper(tooltip, methodName, linkExtractor)
 
     tooltip[methodName] = function(self, arg1, arg2, arg3, arg4, arg5)
         ModuleState.insideHook = true
-        local result1, result2, result3 = originalMethod(self, arg1, arg2, arg3, arg4, arg5)
+        ModuleState.tooltipMoney = 0
+        -- Use pcall to guarantee insideHook reset even on error
+        local ok, r1, r2, r3, r4, r5 = pcall(originalMethod, self, arg1, arg2, arg3, arg4, arg5)
         ModuleState.insideHook = false
+
+        if not ok then
+            -- Error occurred, but hook state is safely reset
+            return
+        end
 
         -- Extract item ID using provided function
         self.itemID = linkExtractor(arg1, arg2, arg3, arg4, arg5)
         ExtendTooltip(self)
 
-        return result1, result2, result3
+        return r1, r2, r3, r4, r5
     end
 end
 

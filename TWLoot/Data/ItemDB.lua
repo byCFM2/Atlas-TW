@@ -19,7 +19,6 @@
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Localization.UI
-local LMD = AtlasTW.Localization.MapData
 
 local LS = AtlasTW.Localization.Spells
 local LC = AtlasTW.Localization.Classes
@@ -95,10 +94,16 @@ local function releasePooledTable(t)
     -- no-op, let garbage collector handle it
 end
 
--- Copy global keywords to local for much faster table lookups
 local SLOT_KEYWORDS = AtlasTW.ItemDB.SLOT_KEYWORDS
 local SLOT2_KEYWORDS = AtlasTW.ItemDB.SLOT2_KEYWORDS
 local COMMON_ITEMS = AtlasTW.ItemDB.CommonItems or {}
+
+-- Pre-build array for faster iteration in substring checks
+local COMMON_ITEMS_LIST = {}
+for item in pairs(COMMON_ITEMS) do
+    table.insert(COMMON_ITEMS_LIST, item)
+end
+
 -- Pre-cached lowercase strings for very fast keyword matching
 local L_MOUNT = string.lower(L["a mount"])
 local L_COMPANION = string.lower(L["a companion"])
@@ -143,7 +148,7 @@ end
 ---
 local function getColoredText(text, typeText)
     if not text or type(text) ~= "string" then return nil end
-    
+
     -- Color constants (cached locally)
     local COLOR_GREEN = Colors.GREEN
     local COLOR_RED = Colors.RED
@@ -169,25 +174,25 @@ local function getColoredText(text, typeText)
     -- Handle slot/slot2 types (inline for performance)
     if typeText == "slot" or typeText == "slot2" then
         local canWear = false
-        
+
         -- Quick check: direct lookup in common items
         if COMMON_ITEMS[text] then
             canWear = true
         else
-            -- Substring check for common items (e.g. "Chest Cloth")
-            for item in pairs(COMMON_ITEMS) do
+            -- Substring check for common items using pre-built list
+            for _, item in ipairs(COMMON_ITEMS_LIST) do
                 if string.find(text, item, 1, true) then
                     canWear = true
                     break
                 end
             end
         end
-        
+
         if not canWear then
             -- Check Off Hand / Dual Wield
             local isOffHand = string.find(text, L_OFF_HAND, 1, true)
             local isShield = string.find(text, L_SHIELD, 1, true)
-            
+
             if isOffHand and not isShield and not PlayerAllowedLookup[L_OFF_HAND] then
                 canWear = false
             elseif PlayerAllowedLookup[text] then
@@ -210,7 +215,7 @@ local function getColoredText(text, typeText)
                 end
             end
         end
-        
+
         if not canWear then
             colorCode = COLOR_RED
         end
@@ -288,13 +293,13 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     if not itemID or itemID == 0 then
         return extratext or ""
     end
-    
+
     -- Create a suitability entry if it doesn't exist
     if not ParsedSuitabilityCache[itemID] then
         ParsedSuitabilityCache[itemID] = { class = true, level = true }
     end
     local suitability = ParsedSuitabilityCache[itemID]
-    
+
     -- Ensure the item is cached by game client
     if not GetItemInfo(itemID) then
         return extratext or ""
@@ -313,13 +318,13 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     local strlower = string.lower
     local strsub = string.sub
     local tinsert = table.insert
-    
+
     -- Check if we have raw data cached (avoids tooltip parsing!)
     local rawData = RawTooltipDataCache[itemID]
-    
+
     if not rawData then
         -- Need to parse tooltip - this is the expensive operation
-        local tooltipName = "AtlasTWLootHiddenTooltip"
+        local tooltipName = "AtlasTW_ItemDB_HiddenTooltip"
 
         -- Lazy-initialize the shared tooltip
         if not sharedTooltip then
@@ -464,8 +469,8 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
             colorStr = getColoredText(rawData.slot, "slot")
         end
         if colorStr then
-            if strfind(colorStr, Colors.RED, 1, true) then 
-                suitability.class = false 
+            if strfind(colorStr, Colors.RED, 1, true) then
+                suitability.class = false
             end
             tinsert(info, colorStr)
         end
@@ -475,8 +480,8 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
         else
             local colorStr = getColoredText(rawData.slot2, "slot2")
             if colorStr then
-                if strfind(colorStr, Colors.RED, 1, true) then 
-                    suitability.class = false 
+                if strfind(colorStr, Colors.RED, 1, true) then
+                    suitability.class = false
                 end
                 tinsert(info, colorStr)
             end
@@ -487,8 +492,8 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     if rawData.classReq then
         local colorStr = getColoredText(rawData.classReq, "class")
         if colorStr then
-            if strfind(colorStr, Colors.RED, 1, true) then 
-                suitability.class = false 
+            if strfind(colorStr, Colors.RED, 1, true) then
+                suitability.class = false
             end
             tinsert(info, colorStr)
         end
@@ -498,8 +503,8 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     if rawData.levelReq then
         local colorStr = getColoredText(rawData.levelReq, "requires")
         if colorStr then
-            if strfind(colorStr, Colors.RED, 1, true) then 
-                suitability.level = false 
+            if strfind(colorStr, Colors.RED, 1, true) then
+                suitability.level = false
             end
             tinsert(info, colorStr)
         end
@@ -509,7 +514,7 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
     if table.getn(info) > 0 then
         result = table.concat(info, ", ")
     end
-    
+
     -- Release pooled table
     releasePooledTable(info)
 
@@ -579,8 +584,13 @@ function AtlasTW.CreateItemsFromLootTable(bossData)
     if not bossData.loot then return end
     local items = {}
     local defaults = bossData.defaults or {}
-    for _, itemData in ipairs(bossData.loot) do
-        -- Apply default values
+    for _, origItemData in ipairs(bossData.loot) do
+        -- Create a copy to avoid mutating original data
+        local itemData = {}
+        for k, v in pairs(origItemData) do
+            itemData[k] = v
+        end
+        -- Apply default values to the copy
         for key, value in pairs(defaults) do
             if itemData[key] == nil then
                 itemData[key] = value

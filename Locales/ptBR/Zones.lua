@@ -7,6 +7,7 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("Zones", "ptBR", {
+    ["Blackstone Island"] = "Ilha Negrito",
     ["Thorn Gorge"] = "Garganta Espinhosa",
     ["Timbermaw Hold"] = "O Refugio Timbermaw",
     ["Windhorn Canyon"] = "Cânion Chifre do Vento",

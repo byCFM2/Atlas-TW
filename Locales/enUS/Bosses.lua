@@ -610,6 +610,10 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Alchemist Narett"] = true,
     ["Serge Hinott"] = true,
     ["Jaxin Chong"] = true,
+    ["The Witch of Northwind"] = true,
+    ["Telina Shadehand"] = true,
+    ["Tammix Razzfire"] = true,
+    ["Yox Rackgadget"] = true,
     -- Blacksmithing
     ["Smith Argus"] = true,
     ["Tognus Flintfire"] = true,
@@ -628,6 +632,9 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Lilith the Lithe"] = true,
     ["Seril Scourgebane"] = true,
     ["Kilram"] = true,
+    ["Todd Bolder"] = true,
+    ["Smith Martin"] = true,
+    ["Guillaume Sorouy"] = true,
     -- Enchanting
     ["Alanna Raveneye"] = true,
     ["Gimble Thistlefuzz"] = true,
@@ -641,6 +648,8 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Hgarth"] = true,
     ["Annora"] = true,
     ["Xylinnia Starshine"] = true,
+    ["Magister Sylvus Silkspinner"] = true,
+    ["Enchantress Magilou"] = true,
     -- Engineering
     ["Bronk Guzzlegear"] = true,
     ["Deek Fizzlebizz"] = true,
@@ -654,6 +663,9 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Roxxik"] = true,
     ["Franklin Lloyd"] = true,
     ["Buzzek Bracketswing"] = true,
+    ["Geherion Whitesnake"] = true,
+    ["Jemma Quikswitch"] = true,
+    ["Tinkerer Ozzlo"] = true,
     -- Leatherworking
     ["Adele Fielder"] = true,
     ["Nadyia Maneweaver"] = true,
@@ -683,9 +695,10 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Timothy Worthington"] = true,
     ["Daryl Stack"] = true,
     ["Grarnik Goodstitch"] = true,
-    ["Jalane Ayrole"] = true,
-    ["Josephine Lister"] = true,
+    ["Georgio Bolero"] = true,
     ["Mahani"] = true,
+    ["Meilosh"] = true,
+    ["Velessa Brightstar"] = true,
     -- Mining
     ["Gelman Stonehand"] = true,
     ["Dank Drizzlecut"] = true,
@@ -696,6 +709,11 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Geofram Bouldertoe"] = true,
     ["Makaru"] = true,
     ["Pikkle"] = true,
+    ["Brindel Morningsun"] = true,
+    ["Brock Stoneseeker"] = true,
+    ["Matt Johnson"] = true,
+    ["Johan Focht"] = true,
+    ["Yarr Hammerstone"] = true,
     -- Cooking
     ["Tomas"] = true,
     ["Cook Ghilm"] = true,
@@ -714,6 +732,12 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Stephen Ryback"] = true,
     ["Daryl Riknussun"] = true,
     ["Dirge Quikcleave"] = true,
+    ["Chef Jenkel"] = true,
+    ["Cook Torka"] = true,
+    ["Linus Huxley"] = true,
+    ["Nina Millson"] = true,
+    ["Shazzlan"] = true,
+    ["Slagg"] = true,
     -- Fishing
     ["Nat Pagle"] = true,
     ["Old Man Heming"] = true,
@@ -736,6 +760,12 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Lui'Mala"] = true,
     ["Katoom the Angler"] = true,
     ["Lumak"] = true,
+    ["Talvas Whitesnake"] = true,
+    ["Rodfather"] = true,
+    ["Nannosh Tralhtar"] = true,
+    ["Grubgar"] = true,
+    ["Fishface Joe"] = true,
+    ["Fisherman Shix"] = true,
     -- First Aid
     ["Michelle Belle"] = true,
     ["Byancie"] = true,
@@ -752,6 +782,9 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Dannelor"] = true,
     ["Doctor Gustaf VanHowzen"] = true,
     ["Doctor Gregory Victor"] = true,
+    ["Thamner Pol"] = true,
+    ["Leyna Dayton"] = true,
+    ["Aelira Dawnhand"] = true,
     -- Jewelcrafting (TW)
     ["Kalnag"] = true,
     ["Tacknazz Copperfire"] = true,
@@ -784,6 +817,8 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Firodren Mooncaller"] = true,
     ["Malvor"] = true,
     ["Ruw"] = true,
+    ["Pinky Tosslehouse"] = true,
+    ["Delarion Featherwing"] = true,
     -- Skinning
     ["Helene Peltskinner"] = true,
     ["Radnaal Maneweaver"] = true,
@@ -797,6 +832,7 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Killian Hagey"] = true,
     ["Thuwd"] = true,
     ["Kulleg Stonehorn"] = true,
+    ["Daemar Swiftstrike"] = true,
     -- Profession Specialization Trainers
     -- Blacksmithing
     ["Myolor Sunderfury"] = true,
@@ -812,6 +848,9 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Se'Jib"] = true,
     ["Sarah Tanner"] = true,
     ["Brumn Winterhoof"] = true,
+    ["Narv Hidecrafter"] = true,
+    ["Shandlar Thethis"] = true,
+    ["Raz'Dag"] = true,
     -- Engineering
     ["Oglethorpe Obnoticus"] = true,
     ["Tinkmaster Overspark"] = true,

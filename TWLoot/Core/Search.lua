@@ -21,8 +21,17 @@ AtlasTW.SearchLib = AtlasTW.SearchLib or {}
 
 local L = AtlasTW.Localization.UI
 
-local RED = AtlasTW.Colors.RED
-local WHITE = AtlasTW.Colors.WHITE
+-- Cached global functions for performance
+local GetItemInfo = GetItemInfo
+local string_lower = string.lower
+local string_find = string.find
+local string_gsub = string.gsub
+local type = type
+local ipairs = ipairs
+local pairs = pairs
+local table_insert = table.insert
+local table_getn = table.getn
+local tostring = tostring
 
 ---
 --- Shows search results in the loot frame
@@ -70,9 +79,9 @@ function AtlasTW.SearchLib.Search(Text)
 
     local function isMatch(name)
         if not name then return false end
-        local ln = string.lower(name)
+        local ln = string_lower(name)
         if partial then
-            return string.find(ln, text, 1, true)
+            return string_find(ln, text, 1, true)
         else
             return ln == text
         end
@@ -85,61 +94,9 @@ function AtlasTW.SearchLib.Search(Text)
         local id = entry[1]
         local key = ty .. ":" .. tostring(id)
         if not seen[key] then
-            table.insert(AtlasTWCharDB.SearchResult, entry)
+            table_insert(AtlasTWCharDB.SearchResult, entry)
             seen[key] = true
         end
-    end
-
-    -- Search for first occurrence of id (item/spell/enchant) in instance database to get boss and instanceKey
-    local function findFirstLocationForId(targetId)
-        if not targetId or not AtlasTW or not AtlasTW.InstanceData then return nil, nil end
-        local function scanItems(items)
-            if not items then return false end
-            if type(items) == "string" then return false end
-            if type(items) ~= "table" then return false end
-            for _, it in ipairs(items) do
-                if type(it) == "number" then
-                    if it == targetId then return true end
-                elseif type(it) == "table" then
-                    if it.id and it.id == targetId then return true end
-                    if it.container then
-                        local f = scanItems(it.container)
-                        if f then return true end
-                    end
-                end
-            end
-            return false
-        end
-        for instKey, inst in pairs(AtlasTW.InstanceData) do
-            if inst.Bosses then
-                for _, boss in ipairs(inst.Bosses) do
-                    local bossName = boss.name or boss.Name or "?"
-                    local items = boss.items or boss.loot
-                    if scanItems(items) then
-                        return bossName, instKey
-                    end
-                end
-            end
-            if inst.Reputation then
-                for _, src in pairs(inst.Reputation) do
-                    local items = src.items or src.loot
-                    local label = (src.name or "Reputation")
-                    if scanItems(items) then
-                        return label, instKey
-                    end
-                end
-            end
-            if inst.Keys then
-                for _, src in pairs(inst.Keys) do
-                    local items = src.items or src.loot
-                    local label = (src.name or "Keys")
-                    if scanItems(items) then
-                        return label, instKey
-                    end
-                end
-            end
-        end
-        return nil, nil
     end
 
     local function addItemResult(itemID, bossName, instanceName, instanceKey)
@@ -149,7 +106,7 @@ function AtlasTW.SearchLib.Search(Text)
             -- In SearchResult we store: [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage (optional)
             local entry = { itemID, bossName, instanceKey, "item" }
             if instanceKey and instanceKey ~= "" then
-                table.insert(entry, (bossName or "").."|"..instanceKey)
+                table_insert(entry, (bossName or "").."|"..instanceKey)
             end
             addUnique(entry)
         end
@@ -219,16 +176,26 @@ function AtlasTW.SearchLib.Search(Text)
     local function searchItemsInLootTables()
         if not AtlasTWLoot_Data then return end
 
+        -- Local cache to avoid repeated scans of InstanceData
+        local pageKeyCache = {}
+
         local function resolveBossAndInstanceFromPageKey(pageKey)
             if not pageKey or type(pageKey) ~= "string" or not AtlasTW or not AtlasTW.InstanceData then
                 return nil, nil
+            end
+            -- Check cache first
+            if pageKeyCache[pageKey] then
+                local cached = pageKeyCache[pageKey]
+                return cached[1], cached[2]
             end
             for instKey, inst in pairs(AtlasTW.InstanceData) do
                 if inst and inst.Bosses then
                     for _, boss in ipairs(inst.Bosses) do
                         local items = boss.items or boss.loot
                         if boss and (boss.id == pageKey or items == pageKey) then
-                            return boss.name or boss.Name, instKey
+                            local bossName = boss.name or boss.Name
+                            pageKeyCache[pageKey] = {bossName, instKey}
+                            return bossName, instKey
                         end
                     end
                 end
@@ -236,7 +203,9 @@ function AtlasTW.SearchLib.Search(Text)
                     for _, src in pairs(inst.Reputation) do
                         local items = src.items or src.loot
                         if items == pageKey then
-                            return src.name or "Reputation", instKey
+                            local srcName = src.name or "Reputation"
+                            pageKeyCache[pageKey] = {srcName, instKey}
+                            return srcName, instKey
                         end
                     end
                 end
@@ -244,11 +213,15 @@ function AtlasTW.SearchLib.Search(Text)
                     for _, src in pairs(inst.Keys) do
                         local items = src.items or src.loot
                         if items == pageKey then
-                            return src.name or "Keys", instKey
+                            local srcName = src.name or "Keys"
+                            pageKeyCache[pageKey] = {srcName, instKey}
+                            return srcName, instKey
                         end
                     end
                 end
             end
+            -- Cache miss result too
+            pageKeyCache[pageKey] = {nil, nil}
             return nil, nil
         end
 
@@ -268,7 +241,7 @@ function AtlasTW.SearchLib.Search(Text)
 
         local function scanList(list, pageKey)
             if type(list) ~= "table" then return end
-            local m = table.getn(list)
+            local m = table_getn(list)
             for i = 1, m do
                 local el = list[i]
                 if type(el) == "number" then
@@ -311,7 +284,7 @@ function AtlasTW.SearchLib.Search(Text)
         if not AtlasTWLoot_Data or not targetId then return nil end
         local function scanList(list)
             if type(list) ~= "table" then return false end
-            local m = table.getn(list)
+            local m = table_getn(list)
             for i = 1, m do
                 local el = list[i]
                 if type(el) == "number" then
@@ -383,7 +356,7 @@ function AtlasTW.SearchLib.Search(Text)
     end
 
     AtlasTWLoot_InvalidateCategorizedList("SearchResult")
-    if table.getn(AtlasTWCharDB.SearchResult) == 0 then
+    if table_getn(AtlasTWCharDB.SearchResult) == 0 then
         PrintA(L["No match found for"].." \""..Text.."\".")
     else
         -- Display all results, scroll is handled by loot frame
@@ -399,6 +372,7 @@ end
 ---
 function AtlasTW.SearchLib.ShowOptions(button)
 	local Hewdrop = _G.ATWHewdrop
+	if not Hewdrop then return end
 	if Hewdrop:IsOpen(button) then
 		Hewdrop:Close(1)
 	else

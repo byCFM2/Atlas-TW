@@ -7,6 +7,7 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("Zones", "zhCN", {
+    ["Blackstone Island"] = "黑石岛",
     ["Thorn Gorge"] = "荆棘峡谷",
     ["Timbermaw Hold"] = "木喉要塞",
     ["Windhorn Canyon"] = "风角峡谷",

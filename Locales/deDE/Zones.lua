@@ -7,6 +7,7 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("Zones", "deDE", {
+    ["Blackstone Island"] = "Schwarzstein Insel",
     ["Thorn Gorge"] = "Dornenschlucht",
     ["Timbermaw Hold"] = "Holzschlundfeste",
     ["Windhorn Canyon"] = "Windhornschlucht",

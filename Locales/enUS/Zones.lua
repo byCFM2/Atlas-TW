@@ -137,6 +137,7 @@ AtlasTW.Localization:RegisterNamespace("Zones", "enUS", {
     ["Moomoo Grove"] = true,
     ["Blood Ring"] = true,
     ["Hyjal"] = true,
+    ["Blackstone Island"] = true,
 
     -- TW 1.18 Additions
     ["Timbermaw Hold"] = true,
