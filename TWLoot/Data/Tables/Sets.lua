@@ -2292,6 +2292,12 @@ Sets = {
 		{ id = 20079, disc = L["Quest Reward"].." "..LZ["Stranglethorn Vale"], container = { 19858 } }, -- Spirit of Zanza
 		{ id = 20080, disc = L["Quest Reward"].." "..LZ["Stranglethorn Vale"], container = { 19858 } }, -- Sheen of Zanza
 		{ id = 20081, disc = L["Quest Reward"].." "..LZ["Stranglethorn Vale"], container = { 19858 } }, -- Swiftness of Zanza
+		{},
+		{},
+		{ id = 61436, disc = L["Quest Reward"].." "..LZ["Hyjal"], container = { {61199, 5}, 61197 } }, -- Sigil of Leeching
+		{ id = 61437, disc = L["Quest Reward"].." "..LZ["Hyjal"], container = { {61199, 5}, 61197 } }, -- Sigil of Quickness
+		{ id = 61438, disc = L["Quest Reward"].." "..LZ["Hyjal"], container = { {61199, 5}, 61197 } }, -- Sigil of Penetration
+
 	},
 	RarePets = {
 		{ id = 13584, disc=L["Collector's Edition"] }, -- Diablo Stone
