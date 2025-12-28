@@ -321,8 +321,9 @@ local function BuildGlobalIndex()
     end
 
     -- 4. Index Loot Tables (Instances/Bosses)
-    if AtlasTW.LootUtils and AtlasTW.LootUtils.IterateAllLootItems then
-        AtlasTW.LootUtils.IterateAllLootItems(function(itemID, pageKey)
+    -- Modified to use safer iteration logic similar to Search.lua (filtering out spell IDs)
+    if AtlasTW.LootUtils then
+        local function processItem(itemID, pageKey)
             -- While iterating, update nameToID
             if GetItemInfo then
                 local name = GetItemInfo(itemID)
@@ -367,7 +368,61 @@ local function BuildGlobalIndex()
                     GlobalIndex.itemID[itemID] = source
                 end
             end
-        end)
+        end
+
+        local function scanList(list, pageKey)
+            if type(list) ~= "table" then return end
+            local m = table.getn(list)
+            for i = 1, m do
+                local el = list[i]
+                if type(el) == "number" then
+                    processItem(el, pageKey)
+                elseif type(el) == "table" then
+                    -- Filtering logic from Search.lua
+                    local isExplicitItem = (el.type and el.type == "item")
+                    local isSpellLike = false
+                    if el.skill and not isExplicitItem then
+                        local sid = el.id
+                        if sid and AtlasTW and AtlasTW.SpellDB and ((AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[sid]) or (AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[sid])) then
+                            isSpellLike = true
+                        end
+                    end
+
+                    if not isSpellLike then
+                        if el.id and type(el.id) == "number" then
+                            processItem(el.id, pageKey)
+                        elseif el[1] and type(el[1]) == "number" then
+                            processItem(el[1], pageKey)
+                        end
+                    end
+
+                    if el.container and type(el.container) == "table" then
+                        scanList(el.container, pageKey)
+                    end
+                end
+            end
+        end
+
+        -- 1. Iterate InstanceData (Bosses with direct tables)
+        if AtlasTW.InstanceData then
+             for _, instanceData in pairs(AtlasTW.InstanceData) do
+                if instanceData.Bosses then
+                    for _, boss in ipairs(instanceData.Bosses) do
+                        local items = boss.items or boss.loot
+                        if type(items) == "table" and boss.id then
+                            scanList(items, boss.id)
+                        end
+                    end
+                end
+            end
+        end
+
+        -- 2. Iterate AtlasTWLoot_Data
+        if AtlasTWLoot_Data then
+            for key, tbl in pairs(AtlasTWLoot_Data) do
+                scanList(tbl, key)
+            end
+        end
     end
 
     -- Only mark as indexed if core dependencies are actually available
