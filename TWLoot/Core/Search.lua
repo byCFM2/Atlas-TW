@@ -112,195 +112,96 @@ function AtlasTW.SearchLib.Search(Text)
         end
     end
 
-    local function searchItemsList(items, bossName, instanceName, instanceKey)
-        if not items then return end
-        if type(items) == "string" then
-            if AtlasTWLoot_Data and type(AtlasTWLoot_Data[items]) == "table" then
-                searchItemsList(AtlasTWLoot_Data[items], bossName, instanceName, instanceKey)
-            end
-            return
-        end
-        if type(items) ~= "table" then return end
-        for _, it in ipairs(items) do
-            if type(it) == "number" then
-                addItemResult(it, bossName, instanceName, instanceKey)
-            elseif type(it) == "table" then
-                local isExplicitItem = (it.type and it.type == "item")
-                local isSpellLike = false
-                if it.skill and not isExplicitItem then
-                    local sid = it.id
-                    if sid and AtlasTW and AtlasTW.SpellDB and ((AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[sid]) or (AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[sid])) then
-                        isSpellLike = true
-                    end
-                end
-                if it.id and not isSpellLike then
-                    addItemResult(it.id, bossName, instanceName, instanceKey)
-                end
-                if it.container then
-                    searchItemsList(it.container, bossName, instanceName, instanceKey)
-                end
-            end
-        end
-    end
-
-    -- Search for items in instances/bosses of new structure
-    if AtlasTW.InstanceData then
-        for instKey, inst in pairs(AtlasTW.InstanceData) do
-            local instanceName = inst.Name or instKey
-            if inst.Bosses then
-                for _, boss in ipairs(inst.Bosses) do
-                    local bossName = boss.name or boss.Name or "?"
-                    local items = boss.items or boss.loot
-                    searchItemsList(items, bossName, instanceName, instKey)
-                end
-            end
-            -- Additionally check auxiliary sources if specified
-            if inst.Reputation then
-                for _, src in pairs(inst.Reputation) do
-                    local items = src.items or src.loot
-                    local label = (src.name or "Reputation")
-                    searchItemsList(items, label, instanceName, instKey)
-                end
-            end
-            if inst.Keys then
-                for _, src in pairs(inst.Keys) do
-                    local items = src.items or src.loot
-                    local label = (src.name or "Keys")
-                    searchItemsList(items, label, instanceName, instKey)
-                end
-            end
-        end
-    end
-
-    -- Additional search for items on craft/profession pages and other loot pages (AtlasTWLoot_Data)
-    local function searchItemsInLootTables()
-        if not AtlasTWLoot_Data then return end
-
-        -- Local cache to avoid repeated scans of InstanceData
-        local pageKeyCache = {}
-
-        local function resolveBossAndInstanceFromPageKey(pageKey)
-            if not pageKey or type(pageKey) ~= "string" or not AtlasTW or not AtlasTW.InstanceData then
-                return nil, nil
-            end
-            -- Check cache first
-            if pageKeyCache[pageKey] then
-                local cached = pageKeyCache[pageKey]
-                return cached[1], cached[2]
-            end
-            for instKey, inst in pairs(AtlasTW.InstanceData) do
-                if inst and inst.Bosses then
-                    for _, boss in ipairs(inst.Bosses) do
-                        local items = boss.items or boss.loot
-                        if boss and (boss.id == pageKey or items == pageKey) then
-                            local bossName = boss.name or boss.Name
-                            pageKeyCache[pageKey] = {bossName, instKey}
-                            return bossName, instKey
-                        end
-                    end
-                end
-                if inst and inst.Reputation then
-                    for _, src in pairs(inst.Reputation) do
-                        local items = src.items or src.loot
-                        if items == pageKey then
-                            local srcName = src.name or "Reputation"
-                            pageKeyCache[pageKey] = {srcName, instKey}
-                            return srcName, instKey
-                        end
-                    end
-                end
-                if inst and inst.Keys then
-                    for _, src in pairs(inst.Keys) do
-                        local items = src.items or src.loot
-                        if items == pageKey then
-                            local srcName = src.name or "Keys"
-                            pageKeyCache[pageKey] = {srcName, instKey}
-                            return srcName, instKey
-                        end
-                    end
-                end
-            end
-            -- Cache miss result too
-            pageKeyCache[pageKey] = {nil, nil}
+    -- Local cache for page key resolution
+    local pageKeyCache = {}
+    local function resolveBossAndInstanceFromPageKey(pageKey)
+        if not pageKey or type(pageKey) ~= "string" or not AtlasTW or not AtlasTW.InstanceData then
             return nil, nil
         end
-
-        local function addItemFromPage(itemID, pageKey)
-            if not itemID or itemID == 0 then return end
-            local itemName = GetItemInfo(itemID)
-            if itemName and isMatch(itemName) then
-                local bossName, instanceKey = resolveBossAndInstanceFromPageKey(pageKey)
-                if bossName and instanceKey and instanceKey ~= "" then
-                    addUnique({ itemID, bossName, instanceKey, "item", bossName.."|"..instanceKey })
-                else
-                    -- [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage (page key)
-                    addUnique({ itemID, "", "", "item", pageKey })
+        -- Check cache first
+        if pageKeyCache[pageKey] then
+            local cached = pageKeyCache[pageKey]
+            return cached[1], cached[2]
+        end
+        for instKey, inst in pairs(AtlasTW.InstanceData) do
+            if inst and inst.Bosses then
+                for _, boss in ipairs(inst.Bosses) do
+                    local items = boss.items or boss.loot
+                    -- Check if boss.id matches pageKey (standard) or if items IS the key
+                    if boss and (boss.id == pageKey or items == pageKey) then
+                        local bossName = boss.name or boss.Name
+                        pageKeyCache[pageKey] = {bossName, instKey}
+                        return bossName, instKey
+                    end
                 end
             end
-        end
-
-        local function scanList(list, pageKey)
-            if type(list) ~= "table" then return end
-            local m = table_getn(list)
-            for i = 1, m do
-                local el = list[i]
-                if type(el) == "number" then
-                    addItemFromPage(el, pageKey)
-                elseif type(el) == "table" then
-                    -- Treat as item only if this is a real item entry.
-                    -- Craft spells/enchants are also stored as {id=spellID, skill=...} and must NOT be searched as items.
-                    local isExplicitItem = (el.type and el.type == "item")
-                    local isSpellLike = false
-                    if el.skill and not isExplicitItem then
-                        local sid = el.id
-                        if sid and AtlasTW and AtlasTW.SpellDB and ((AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[sid]) or (AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[sid])) then
-                            isSpellLike = true
-                        end
+            if inst and inst.Reputation then
+                for _, src in pairs(inst.Reputation) do
+                    local items = src.items or src.loot
+                    if items == pageKey then
+                        local srcName = src.name or "Reputation"
+                        pageKeyCache[pageKey] = {srcName, instKey}
+                        return srcName, instKey
                     end
-                    if not isSpellLike then
-                        if el.id and type(el.id) == "number" then
-                            addItemFromPage(el.id, pageKey)
-                        elseif el[1] and type(el[1]) == "number" then
-                            addItemFromPage(el[1], pageKey)
-                        end
-                    end
-                    if el.container and type(el.container) == "table" then
-                        scanList(el.container, pageKey)
+                end
+            end
+            if inst and inst.Keys then
+                for _, src in pairs(inst.Keys) do
+                    local items = src.items or src.loot
+                    if items == pageKey then
+                        local srcName = src.name or "Keys"
+                        pageKeyCache[pageKey] = {srcName, instKey}
+                        return srcName, instKey
                     end
                 end
             end
         end
-
-        for pageKey, tbl in pairs(AtlasTWLoot_Data) do
-            scanList(tbl, pageKey)
-        end
+        -- Cache miss result too
+        pageKeyCache[pageKey] = {nil, nil}
+        return nil, nil
     end
-    searchItemsInLootTables()
 
-    -- Find first loot table key in AtlasTWLoot_Data that contains the given ID.
-    -- Important: we scan AtlasTWLoot_Data only (not InstanceData), because the same numeric ID
-    -- may exist as a dropped item in instances and as a craft spell ID.
+    -- Main item search using IterateAllLootItems
+    if AtlasTW.LootUtils and AtlasTW.LootUtils.IterateAllLootItems then
+        AtlasTW.LootUtils.IterateAllLootItems(function(idOrItem, pageKey, itemData)
+            local itemID = idOrItem
+            if type(itemData) == "table" and itemData.id then itemID = itemData.id end
+            if not itemID or itemID == 0 then return end
+
+            -- Filtering logic
+            -- Treat as item only if this is a real item entry.
+            local isExplicitItem = (type(itemData) == "table" and itemData.type and itemData.type == "item")
+            local isSpellLike = false
+            if type(itemData) == "table" and itemData.skill and not isExplicitItem then
+                local sid = itemData.id
+                if sid and AtlasTW and AtlasTW.SpellDB and ((AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[sid]) or (AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[sid])) then
+                    isSpellLike = true
+                end
+            end
+
+            if not isSpellLike then
+                local itemName = GetItemInfo(itemID)
+                if itemName and isMatch(itemName) then
+                    local bossName, instanceKey = resolveBossAndInstanceFromPageKey(pageKey)
+                    if bossName and instanceKey and instanceKey ~= "" then
+                        -- [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage
+                        addUnique({ itemID, bossName, instanceKey, "item", bossName.."|"..instanceKey })
+                    else
+                        addUnique({ itemID, "", "", "item", pageKey })
+                    end
+                end
+            end
+        end)
+    end
+
+    -- Helper to find which loot page an item/spell belongs to
     local function findFirstLootPageKeyInLootData(targetId)
         if not AtlasTWLoot_Data or not targetId then return nil end
-        local function scanList(list)
-            if type(list) ~= "table" then return false end
-            local m = table_getn(list)
-            for i = 1, m do
-                local el = list[i]
-                if type(el) == "number" then
-                    if el == targetId then return true end
-                elseif type(el) == "table" then
-                    if el.id and el.id == targetId then return true end
-                    if el[1] and type(el[1]) == "number" and el[1] == targetId then return true end
-                    if el.container and scanList(el.container) then return true end
-                end
-            end
-            return false
-        end
-        for key, tbl in pairs(AtlasTWLoot_Data) do
-            if scanList(tbl) then
-                return key
-            end
+        if AtlasTW.LootUtils and AtlasTW.LootUtils.IterateAllLootItems then
+            return AtlasTW.LootUtils.IterateAllLootItems(function(id, key, itemData)
+                if id == targetId then return key end
+                if type(itemData) == "table" and itemData.id == targetId then return key end
+            end)
         end
         return nil
     end

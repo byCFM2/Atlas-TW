@@ -105,48 +105,75 @@ end
 --- @return string|nil, string|nil - The element name and instance key if found
 --- @usage local elem, inst = FindLocationById(12345)
 ---
+---
+--- Helper function: find first location of ID (numeric) in instance database
+--- @param targetId number - The target ID to search for
+--- @return string|nil, string|nil - The element name and instance key if found
+--- @usage local elem, inst = FindLocationById(12345)
+---
 local function FindLocationById(targetId)
-	if not targetId or not AtlasTW or not AtlasTW.InstanceData then return nil, nil end
-	local function scanItems(items)
-		if not items then return false end
-		if type(items) == "string" then return false end
-		if type(items) ~= "table" then return false end
-		for _, it in ipairs(items) do
-			if type(it) == "number" then
-				if it == targetId then return true end
-			elseif type(it) == "table" then
-				if it.id and it.id == targetId then return true end
-				if it.container then
-					if scanItems(it.container) then return true end
-				end
-			end
-		end
-		return false
-	end
-	for instKey, inst in pairs(AtlasTW.InstanceData) do
-		if inst.Reputation then
-			for _, src in ipairs(inst.Reputation) do
-				if scanItems(src.items or src.loot) then
-					return (src.name or "Reputation"), instKey
-				end
-			end
-		end
-		if inst.Keys then
-			for _, src in ipairs(inst.Keys) do
-				if scanItems(src.items or src.loot) then
-					return (src.name or "Keys"), instKey
-				end
-			end
-		end
-		if inst.Bosses then
-			for _, boss in ipairs(inst.Bosses) do
-				if scanItems(boss.items or boss.loot) then
-					return (boss.name or boss.Name or "?"), instKey
-				end
-			end
-		end
-	end
-	return nil, nil
+	if not targetId or not AtlasTW or not AtlasTW.InstanceData or not AtlasTW.LootUtils or not AtlasTW.LootUtils.IterateAllLootItems then return nil, nil end
+	
+    -- Local cache to resolve context from keys (similar to Search.lua)
+    local pageKeyToContext = {}
+    local function resolveContext(pageKey)
+        if pageKeyToContext[pageKey] then return unpack(pageKeyToContext[pageKey]) end
+        -- Note: IterateAllLootItems iterates EVERYTHING. 
+        -- To emulate FindLocationById's behavior (finding INSTANCE location),
+        -- we really only care about items that are linked to an Instance.
+        -- So we iterate InstanceData to build a map if needed, 
+        -- OR we can just scan InstanceData like before but supporting string keys?
+        -- Actually, IterateAllLootItems passes 'key' which is bossID or table key.
+        -- If we search for 12345, IterateAllLootItems finds it and gives us 'key'.
+        -- We then need to map 'key' -> 'Instance/Boss'.
+        -- If 'key' IS a bossID, we are good.
+        -- If 'key' is a loot page key (e.g. "MCBoss1"), we need to know it belongs to MC.
+        -- So we need the reverse lookup.
+        for instKey, inst in pairs(AtlasTW.InstanceData) do
+             if inst.Bosses then
+                for _, boss in ipairs(inst.Bosses) do
+                     local items = boss.items or boss.loot
+                     if boss.id == pageKey or items == pageKey then
+                         local res = {(boss.name or boss.Name or "?"), instKey}
+                         pageKeyToContext[pageKey] = res
+                         return unpack(res)
+                     end
+                end
+             end
+             if inst.Reputation then
+                 for _, src in pairs(inst.Reputation) do
+                     local items = src.items or src.loot
+                     if items == pageKey then
+                         local res = {(src.name or "Reputation"), instKey}
+                         pageKeyToContext[pageKey] = res
+                         return unpack(res)
+                     end
+                 end
+             end
+             if inst.Keys then
+                 for _, src in pairs(inst.Keys) do
+                     local items = src.items or src.loot
+                     if items == pageKey then
+                         local res = {(src.name or "Keys"), instKey}
+                         pageKeyToContext[pageKey] = res
+                         return unpack(res)
+                     end
+                 end
+             end
+        end
+        return nil, nil
+    end
+
+    return AtlasTW.LootUtils.IterateAllLootItems(function(id, key, itemData)
+        if id == targetId or (type(itemData)=="table" and itemData.id == targetId) then
+            -- We found the item in loot page 'key'.
+            -- Now check if 'key' belongs to an instance.
+            local elem, inst = resolveContext(key)
+            if elem and inst then
+                return elem, inst
+            end
+        end
+    end)
 end
 
 ---
@@ -273,26 +300,12 @@ end
 ---
 local function FindFirstCraftLootPageForSpell(spellID)
 	if not AtlasTWLoot_Data or not spellID then return nil end
-	local function scanList(list)
-		if type(list) ~= "table" then return false end
-		local m = table.getn(list)
-		for i = 1, m do
-			local el = list[i]
-			if type(el) == "number" then
-				if el == spellID then return true end
-			elseif type(el) == "table" then
-				if el.id and el.id == spellID then return true end
-				if el[1] and type(el[1]) == "number" and el[1] == spellID then return true end
-				if el.container and scanList(el.container) then return true end
-			end
-		end
-		return false
-	end
-	for key, tbl in pairs(AtlasTWLoot_Data) do
-		if scanList(tbl) then
-			return key
-		end
-	end
+    if AtlasTW.LootUtils and AtlasTW.LootUtils.IterateAllLootItems then
+        return AtlasTW.LootUtils.IterateAllLootItems(function(id, key, itemData)
+            if id == spellID then return key end
+            if type(itemData) == "table" and itemData.id == spellID then return key end
+        end)
+    end
 	return nil
 end
 

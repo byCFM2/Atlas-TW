@@ -233,6 +233,11 @@ end
 --- @return any The value returned by callback that stopped iteration, or nil.
 --- @usage AtlasTW.LootUtils.IterateAllLootItems(function(id, key) ... end)
 ---
+--- Iterates over all items in AtlasTWLoot_Data and InstanceData
+--- @param callback function Function to call for each item (arg: itemID, pageKey, itemData). Return non-nil to stop.
+--- @return any The value returned by callback that stopped iteration, or nil.
+--- @usage AtlasTW.LootUtils.IterateAllLootItems(function(id, key, data) ... end)
+---
 function AtlasTW.LootUtils.IterateAllLootItems(callback)
     if not callback then return end
 
@@ -245,12 +250,12 @@ function AtlasTW.LootUtils.IterateAllLootItems(callback)
             if type(el) == "table" then
                 -- Check standard id
                 if el.id then
-                    local res = callback(el.id, key)
+                    local res = callback(el.id, key, el)
                     if res then return res end
                 end
                 -- Check legacy/tuple format id
                 if el[1] and type(el[1]) == "number" then
-                     local res = callback(el[1], key)
+                     local res = callback(el[1], key, el)
                      if res then return res end
                 end
 
@@ -260,13 +265,13 @@ function AtlasTW.LootUtils.IterateAllLootItems(callback)
                     if res then return res end
                 end
             elseif type(el) == "number" then
-                local res = callback(el, key)
+                local res = callback(el, key, el)
                 if res then return res end
             end
         end
     end
 
-    -- 1. Iterate InstanceData (Bosses, etc.)
+    -- 1. Iterate InstanceData
     if AtlasTW.InstanceData then
          for _, instanceData in pairs(AtlasTW.InstanceData) do
             -- Bosses
@@ -280,7 +285,34 @@ function AtlasTW.LootUtils.IterateAllLootItems(callback)
                     end
                 end
             end
-            -- Additional categories (Reputation, Keys) usually use string keys pointing to AtlasTWLoot_Data, so skipped here
+            -- Reputation
+            if instanceData.Reputation then
+                for _, rep in pairs(instanceData.Reputation) do
+                    local items = rep.items or rep.loot
+                    if type(items) == "table" then
+                         -- Reputation usually doesn't have a unique ID like bosses, 
+                         -- but we can use "Reputation" or derived name if needed.
+                         -- However, IterateList requires a 'key'.
+                         -- Often these tables are referenced by string key in AtlasTWLoot_Data. 
+                         -- If 'items' is a table here, it means it's an inline table? 
+                         -- Typically Reputation items are string keys.
+                         -- If it IS a table, we should process it. 
+                         -- We'll use instance name or a placeholder if no specific key.
+                        local res = IterateList(items, rep.name or "Reputation")
+                        if res then return res end
+                    end
+                end
+            end
+            -- Keys
+            if instanceData.Keys then
+                for _, keySrc in pairs(instanceData.Keys) do
+                    local items = keySrc.items or keySrc.loot
+                    if type(items) == "table" then
+                        local res = IterateList(items, keySrc.name or "Keys")
+                        if res then return res end
+                    end
+                end
+            end
         end
     end
 
