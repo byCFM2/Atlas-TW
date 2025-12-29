@@ -106,7 +106,7 @@ AtlasTW.InstanceData.RazorfenKraul = {
                 { id = 58090 }, -- Seed of Writhing Growth
                 { id = 58091 }, -- Idol of the Thorned Grove
                 {},
-                { id = 41853, dropRate = 100 }, -- Tainted Brambleheart
+                { id = 41853, dropRate = 100, container = { 41854, 41855 } }, -- Tainted Brambleheart
             }
         },
         {
