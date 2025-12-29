@@ -617,6 +617,13 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
     local instanceKeyClick = AtlasTWLootItemsFrame and AtlasTWLootItemsFrame.StoredMenu or nil
   --  local dataSource = AtlasTW.DataResolver.GetLootByElemName(dataID, instanceKeyClick)
 
+    if arg1 == "RightButton" and not IsShiftKeyDown() and not IsControlKeyDown() and not IsAltKeyDown() then
+        if fullname then
+             AtlasTW.Integrations.SearchPfQuest(fullname)
+        end
+        return
+    end
+
 	if this.typeID == "item" then
 		local itemid = this.itemID
 		local itemName, itemLink, qualityId = GetItemInfo(itemid)
@@ -1080,6 +1087,13 @@ function AtlasTW.Interactions.ContainerItem_OnClick(arg1)
 	if not name then return end
     local _, _, _, color = GetItemQualityColor(quality)
     tex = string.gsub(tex, "Interface\\Icons\\", "")
+
+    if arg1 == "RightButton" and not IsShiftKeyDown() and not IsControlKeyDown() and not IsAltKeyDown() then
+         if name then
+             AtlasTW.Integrations.SearchPfQuest(name)
+         end
+         return
+    end
 
     if IsShiftKeyDown() and arg1 == "LeftButton" then
         if AtlasTWOptions.LootAllLinks then

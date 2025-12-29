@@ -235,6 +235,7 @@ function AtlasTWLoot_ApplyContainerItemTemplate(button)
     quantity:SetPoint("BOTTOMRIGHT", icon)
 
     -- Set click script
+    button:RegisterForClicks("LeftButtonUp", "RightButtonUp")
     button:SetScript("OnClick", function()
         AtlasTW.Interactions.ContainerItem_OnClick(arg1)
     end)

@@ -117,6 +117,15 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
     -- Extract item data
     local itemId = rewardItem.id
 
+    -- Handle right click - search in pfQuest
+    if mouseButton == "RightButton" and not IsShiftKeyDown() and not IsControlKeyDown() then
+         local itemName = GetItemInfo(itemId)
+         if itemName then
+             AtlasTW.Integrations.SearchPfQuest(itemName)
+         end
+         return
+    end
+
     -- Handle shift click - insert item link
     if IsShiftKeyDown() then
         local itemName, _, itemQuality = GetItemInfo(itemId)

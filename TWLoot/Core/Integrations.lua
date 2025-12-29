@@ -52,6 +52,31 @@ function AtlasTW.Integrations.HasItemSync()
 end
 
 ---
+--- Checks if pfQuest addon is available
+--- @return boolean True if pfQuest is loaded
+--- @usage local hasPfQuest = AtlasTW.Integrations.HasPfQuest()
+---
+function AtlasTW.Integrations.HasPfQuest()
+    return pfBrowser ~= nil
+end
+
+---
+--- Searches for a query in pfQuest
+--- @param query string The text to search for
+--- @return nil
+--- @usage AtlasTW.Integrations.SearchPfQuest("Hearthstone")
+---
+function AtlasTW.Integrations.SearchPfQuest(query)
+    local clearquery = AtlasTW.LootUtils.StripFormatting(query)
+    if AtlasTW.Integrations.HasPfQuest() and clearquery then
+        pfBrowser:Show()
+        if pfBrowser.input then
+             pfBrowser.input:SetText(clearquery)
+        end
+    end
+end
+
+---
 --- Registers tooltips with EquipCompare addon
 --- @param tooltip1 table First tooltip frame to register
 --- @param tooltip2 table Second tooltip frame to register
