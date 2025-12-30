@@ -25,9 +25,9 @@ local LZ = AtlasTW.Localization.Zones
 local Colors = AtlasTW.Colors
 
 AtlasTW.MenuData.Factions = {
+	{ name = LF["Darkmoon Faire"],        icon = "Interface\\Icons\\INV_Misc_Ticket_Tarot_Maelstrom_01",   lootpage = "DarkmoonFire",          Extra = LZ["Mulgore"]..", "..LZ["Elwynn Forest"]    },
 	{ name = LF["Argent Dawn"],           icon = "Interface\\Icons\\INV_Jewelry_Talisman_08",         	   lootpage = "ArgentDawn",		   Extra = LZ["Western Plaguelands"]..", "..LZ["Eastern Plaguelands"]  },
 	{ name = LF["Brood of Nozdormu"],     icon = "Interface\\Icons\\INV_Jewelry_Ring_40",             	   lootpage = "BroodOfNozdormu",	   Extra = LZ["Tanaris"]   },
-	{ name = LF["Darkmoon Faire"],        icon = "Interface\\Icons\\INV_Misc_Ticket_Tarot_Maelstrom_01",   lootpage = "DarkmoonFire",          Extra = LZ["Mulgore"]..", "..LZ["Elwynn Forest"]    },
 	{ name = LF["Hydraxian Waterlords"],  icon = "Interface\\Icons\\Spell_Frost_SummonWaterElemental_2",   lootpage = "HydroxianWaterLords",	   Extra = LZ["Azshara"]   },
 	{ name = LF["Thorium Brotherhood"],   icon = "Interface\\Icons\\INV_Ingot_Mithril",               	   lootpage = "ThoriumBrotherhood",	       Extra = LZ["Searing Gorge"]   },
 	{ name = LF["Wintersaber Trainers"],  icon = "Interface\\Icons\\Ability_Mount_PinkTiger",         	   lootpage = "WintersaberTrainers",      Extra = Colors.BLUE2..LF["Alliance"] },

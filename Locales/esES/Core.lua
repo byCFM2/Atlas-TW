@@ -658,4 +658,6 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Tier 1 Sets"] = "Conjuntos de nivel 1",
     ["Tier 2 Sets"] = "Conjuntos de nivel 2",
     ["Tier 3 Sets"] = "Conjuntos de nivel 3",
+    ["Item Level"] = "Nivel de Objeto",
+    ["Disenchanting"] = "Desencantar",
 })

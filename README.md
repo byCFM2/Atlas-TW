@@ -36,10 +36,15 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
 - Loot panel (bottom panel):
   - Sections: Dungeons & Raids, Collections, Factions, PvP Rewards, Crafting, World Events, Rare Mobs
   - Search, presets, quick navigation
+  - **pfQuest Integration**:
+    - Right-click on a item to search for it in the pfQuest database
 - Quests module:
   - Side panel with instance quests
   - In‑Atlas details panel with story/rewards
   - Faction toggle (Alliance/Horde), basic availability filtering
+  - **pfQuest Integration**:
+    - Right-click on a quest in the list to show its starter location on the map
+    - Right-click on a quest reward item to search for it in the pfQuest database
 - Enhanced item tooltips: adds loot source at the end of the tooltip and integrates with compare addons if enabled
 - Optional: cursor coordinates overlay on the default World Map (toggle in options)
 

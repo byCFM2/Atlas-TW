@@ -587,6 +587,8 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Tier 1 Sets"] = "T1 套装",
     ["Tier 2 Sets"] = "T2 套装",
     ["Tier 3 Sets"] = "T3 套装",
+    ["Item Level"] = "物品等级",
+    ["Disenchanting"] = "分解",
 })
 
 BINDING_HEADER_ATLASTW_TITLE = "Atlas-TW 快捷键"

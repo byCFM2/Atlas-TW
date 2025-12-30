@@ -203,6 +203,7 @@ AtlasTW.MenuData.Enchanting = {
     { name = LS["Enchanting"]..": "..L["Shield"], lootpage = "EnchantingShield" },
     { name = LS["Enchanting"]..": "..L["Misc"], lootpage = "EnchantingMisc" },
     {},
+    { name = L["Disenchanting"], icon = "Interface\\Icons\\Spell_Holy_RemoveCurse", lootpage = "EnchantingDisenchant" },
     { name = L["Trainers"]..": "..LS["Enchanting"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "EnchantingTrainers" },
 }
 

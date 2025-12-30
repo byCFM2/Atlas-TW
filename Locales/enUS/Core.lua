@@ -642,4 +642,6 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Tier 1 Sets"] = true,
     ["Tier 2 Sets"] = true,
     ["Tier 3 Sets"] = true,
+    ["Item Level"] = true,
+    ["Disenchanting"] = true,
 })

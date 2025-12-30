@@ -140,6 +140,38 @@ local Factions = {
 		{ id = 19292, container={{19182,10}} }, -- Last Month's Mutton
 		{ id = 19298, disc = L["Container"], container={{19182,5}} }, -- Minor Darkmoon Prize
 		{ id = 19295, container={{19182,5}} }, -- Darkmoon Flower
+		{ name = L["Quests"] },
+		-- Engineering
+		{ id = 4363, quantity = 5, container={{19182,1}}, disc = L["Engineering"] }, -- Copper Modulator
+		{ id = 4375, quantity = 7, container={{19182,4}}, disc = L["Engineering"] }, -- Whirring Bronze Gizmo
+		{ id = 9313, quantity = 36, container={{19182,8}}, disc = L["Engineering"] }, -- Green Fireworks
+		{ id = 11590, quantity = 6, container={{19182,12}}, disc = L["Engineering"] }, -- Mechanical Repair Kit
+		{ id = 15994, quantity = 6, container={{19182,20}}, disc = L["Engineering"] }, -- Thorium Widget
+		{},
+		-- Animal Parts
+		{ id = 5134, quantity = 5, container={{19182,1}}, disc = L["Misc"] }, -- Small Furry Paw
+		{ id = 11407, quantity = 5, container={{19182,4}}, disc = L["Misc"] }, -- Torn Bear Pelt
+		{ id = 4582, quantity = 5, container={{19182,8}}, disc = L["Misc"] }, -- Soft Bushy Tail
+		{ id = 5117, quantity = 5, container={{19182,12}}, disc = L["Misc"] }, -- Vibrant Plume
+		{ id = 11404, quantity = 10, container={{19182,20}}, disc = L["Misc"] }, -- Evil Bat Eye
+		{ id = 6522, quantity = 10, container={{19182,20}}, disc = L["Misc"] }, -- Glowing Scorpid Blood
+		{},
+		{},
+		{},
+		{ name = L["Quests"] },
+		-- Blacksmithing
+		{ id = 3240, quantity = 10, container={{19182,1}}, disc = L["Blacksmithing"] }, -- Coarse Weightstone
+		{ id = 3486, quantity = 7, container={{19182,4}}, disc = L["Blacksmithing"] }, -- Heavy Grinding Stone
+		{ id = 3835, quantity = 3, container={{19182,8}}, disc = L["Blacksmithing"] }, -- Green Iron Bracers
+		{ id = 7945, quantity = 1, container={{19182,12}}, disc = L["Blacksmithing"] }, -- Big Black Mace
+		{ id = 12644, quantity = 8, container={{19182,20}}, disc = L["Blacksmithing"] }, -- Dense Grinding Stone
+		{},
+		-- Leatherworking
+		{ id = 2300, quantity = 3, container={{19182,1}}, disc = L["Leatherworking"] }, -- Embossed Leather Vest
+		{ id = 2315, quantity = 3, container={{19182,4}}, disc = L["Leatherworking"] }, -- Toughened Leather Armor
+		{ id = 8185, quantity = 3, container={{19182,8}}, disc = L["Leatherworking"] }, -- Turtle Scale Leggings
+		{ id = 8196, quantity = 3, container={{19182,12}}, disc = L["Leatherworking"] }, -- Wicked Leather Headband
+		{ id = 15564, quantity = 8, container={{19182,20}}, disc = L["Leatherworking"] }, -- Rugged Armor Kit
 	},
     GelkisClanCentaur = {
 		{ name = LF["Neutral"], icon="INV_Misc_Head_Centaur_01" },

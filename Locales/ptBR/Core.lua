@@ -649,4 +649,6 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["Tier 1 Sets"] = "Conjuntos Tier 1",
     ["Tier 2 Sets"] = "Conjuntos Tier 2",
     ["Tier 3 Sets"] = "Conjuntos Tier 3",
+    ["Item Level"] = "Nível de Item",
+    ["Disenchanting"] = "Desencantar",
 })
