@@ -550,6 +550,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Shirt"] = "Camisa",
     ["Tabard"] = "Tabardo",
     ["Wrist"] = "Muñeca",
+    ["Demons"] = "Demonios",
     ["Hands"] = "Manos",
     ["Waist"] = "Cintura",
     ["Legs"] = "Piernas",

@@ -179,6 +179,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Nature"] = "Natur",
     ["Frost"] = "Frost",
     ["Shadow"] = "Schatten",
+    ["Demons"] = "Dämonen",
     ["Arcane"] = "Arkan",
     ["Physical"] = "Physisch",
 

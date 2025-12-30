@@ -602,6 +602,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["Fist Weapons"] = "Armas de Punho",
     ["Polearms"] = "Armas de haste",
     ["Staves"] = "Cajados",
+    ["Demons"] = "Demônios",
     ["Bows"] = "Arcos",
     ["Crossbows"] = "Bestas",
     ["Guns"] = "Armas de Fogo",

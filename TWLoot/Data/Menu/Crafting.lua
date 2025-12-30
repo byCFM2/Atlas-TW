@@ -324,6 +324,7 @@ AtlasTW.MenuData.Tailoring = {
     { name = LS["Tailoring"]..": "..L["Bags"], lootpage = "TailoringBags" },
     { name = LS["Tailoring"]..": "..L["Misc"], lootpage = "TailoringMisc" },
     {},
+    { name = LS["Cloth"], icon = "Interface\\Icons\\INV_Fabric_Linen_01", lootpage = "ClothTable" },
     { name = L["Trainers"]..": "..LS["Tailoring"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "TailoringTrainers" },
 }
 
@@ -392,6 +393,7 @@ end
 
 AtlasTW.MenuData.FirstAid = {
     { name = LS["First Aid"], icon = "Interface\\Icons\\Spell_Holy_SealOfSacrifice", lootpage = "FirstAidTable" },
+    { name = LS["Cloth"], icon = "Interface\\Icons\\INV_Fabric_Linen_01", lootpage = "ClothTable" },
     {},
     { name = L["Trainers"]..": "..LS["First Aid"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "FirstAidTrainers" },
 }

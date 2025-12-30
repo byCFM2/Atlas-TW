@@ -128,6 +128,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Options"] = true,
     ["Search"] = true,
     ["Clear"] = true,
+    ["Demons"] = true,
     ["Done"] = true,
     ["Yes"] = true,
     ["No"] = true,
