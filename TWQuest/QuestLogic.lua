@@ -214,12 +214,26 @@ end
 --- @return nil
 --- @usage Called automatically when quest button is clicked
 ---
-function AtlasTW.Quest.OnQuestClick(questIndex)
+function AtlasTW.Quest.OnQuestClick(questIndex, button)
     if not questIndex then return PrintA("AtlasTW.Quest.OnQuestClick without questIndex.") end
     AtlasTW.QCurrentQuest = questIndex
     if not AtlasTW.Quest.UI or not AtlasTW.Quest.UI.InsideAtlasFrame then
         return PrintA("AtlasTW.Quest.OnQuestClick: Quest UI not fully loaded.")
     end
+
+    -- Handle Right Click - Show in pfQuest
+    if button == "RightButton" then
+        local questData = AtlasTW.Quest.DataBase and
+                          AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance] and
+                          AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance][AtlasTW.Faction] and
+                          AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance][AtlasTW.Faction][questIndex]
+
+        if questData and questData.Title then
+             AtlasTW.Integrations.ShowQuestInPfQuest(questData.Title)
+        end
+        return
+    end
+
     if ChatFrameEditBox:IsVisible() and IsShiftKeyDown() then
         atlasTWQuestInsertQuestLink()
     else

@@ -77,6 +77,29 @@ function AtlasTW.Integrations.SearchPfQuest(query)
 end
 
 ---
+--- Shows a specific quest in pfQuest map
+--- @param questName string The name of the quest to show
+--- @return nil
+--- @usage AtlasTW.Integrations.ShowQuestInPfQuest("Quest Name")
+---
+function AtlasTW.Integrations.ShowQuestInPfQuest(questName)
+    if not AtlasTW.Integrations.HasPfQuest() then return end
+
+    -- Clean up quest name (remove level prefix if present)
+    -- Example: "14) Quest Name" -> "Quest Name"
+    local cleanName = string.gsub(questName, "^%d+%) ", "")
+
+    -- Search specifically for quest
+    local maps = pfDatabase:SearchQuest(cleanName)
+    if maps and next(maps) then
+        pfMap:ShowMapID(pfDatabase:GetBestMap(maps))
+        --PrintA(AtlasTW.Colors.GREEN .. "Found quest location in pfQuest: " .. AtlasTW.Colors.WHITE .. cleanName)
+    else
+       -- PrintA(AtlasTW.Colors.RED .. "Quest not found in pfQuest: " .. AtlasTW.Colors.WHITE .. cleanName)
+    end
+end
+
+---
 --- Registers tooltips with EquipCompare addon
 --- @param tooltip1 table First tooltip frame to register
 --- @param tooltip2 table Second tooltip frame to register

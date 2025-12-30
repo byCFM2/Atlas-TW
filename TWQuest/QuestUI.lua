@@ -155,7 +155,8 @@ for i = 1, AtlasTW.QMAXQUESTS do
     local yOffset = -60 - (i - 1) * 20
     local button = CreateElement("Button", "", frame, nil, 165, 20, { "TOPLEFT", 15, yOffset })
     button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
-    button:SetScript("OnClick", function() AtlasTW.Quest.OnQuestClick(index) end)
+    button:RegisterForClicks("LeftButtonUp", "RightButtonUp")
+    button:SetScript("OnClick", function() AtlasTW.Quest.OnQuestClick(index, arg1) end)
     button:SetScript("OnShow", setFrameLevelOnShow)
 
     local arrow = frame:CreateTexture("", "OVERLAY")

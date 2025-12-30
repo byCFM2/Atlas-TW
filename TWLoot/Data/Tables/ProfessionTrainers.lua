@@ -262,11 +262,11 @@ local ProfessionTrainers = {
         {name=LB["Nina Millson"], loc=LZ["Tirisfal Glades"], faction=HORDE, level=L["Journeyman"]},
         {name=LB["Shazzlan"], loc=LZ["Blackstone Island"], faction=HORDE, level=L["Journeyman"]},
         {name=LB["Slagg"], loc=LZ["Arathi Highlands"].." "..LM["Hammerfall"], faction=HORDE, level=L["Journeyman"]},
-        {name=LB["Derak Nightfall"].." - "..L["Vendor"], loc=LZ["Hillsbrad Foothills"].." "..LM["Tarren Mill"], faction=HORDE, level=L["Journeyman"]},
-        {name=LB["Kelsey Yance"].." - "..L["Vendor"], loc=LZ["Stranglethorn Vale"].." "..LM["Booty Bay"], faction=NEUTRAL, level=L["Journeyman"]},
+        {name=LB["Derak Nightfall"], loc=LZ["Hillsbrad Foothills"].." "..LM["Tarren Mill"]..", "..L["Vendor"], faction=HORDE, level=L["Journeyman"]},
+        {name=LB["Kelsey Yance"], loc=LZ["Stranglethorn Vale"].." "..LM["Booty Bay"]..", "..L["Vendor"], faction=NEUTRAL, level=L["Journeyman"]},
         -- Expert (150-225)
-        {name=LB["Shandrina"].." - "..L["Book"], loc=LZ["Ashenvale"], faction=ALLIANCE, level=L["Expert"]},
-        {name=LB["Wulan"].." - "..L["Book"], loc=LZ["Desolace"], faction=HORDE, level=L["Expert"]},
+        {name=LB["Shandrina"], loc=LZ["Ashenvale"]..", "..L["Book"], faction=ALLIANCE, level=L["Expert"]},
+        {name=LB["Wulan"], loc=LZ["Desolace"]..", "..L["Book"], faction=HORDE, level=L["Expert"]},
         -- Artisan (225-300)
         {name=LB["Dirge Quikcleave"], loc=LZ["Tanaris"]..", "..L["Quest"], faction=NEUTRAL, level=L["Artisan"]},
     },
@@ -293,8 +293,8 @@ local ProfessionTrainers = {
         {name=LB["Mary Edras"], loc=LZ["Undercity"], faction=HORDE, level=L["Journeyman"]},
         {name=LB["Leyna Dayton"], loc=LZ["Silverpine Forest"], faction=HORDE, level=L["Journeyman"]},
         -- Expert (150-225)
-        {name=LB["Deneb Walker"].."- "..L["Book"], loc=L["Arathi Highlands"], faction=ALLIANCE, level=L["Expert"]},
-        {name=LB["Balai Lok'Wein"].."- "..L["Book"], loc=L["Dustwallow Marsh"], faction=HORDE, level=L["Expert"]},
+        {name=LB["Deneb Walker"], loc=L["Arathi Highlands"]..", "..L["Book"], faction=ALLIANCE, level=L["Expert"]},
+        {name=LB["Balai Lok'Wein"], loc=L["Dustwallow Marsh"]..", "..L["Book"], faction=HORDE, level=L["Expert"]},
         -- Artisan (225-300)
         {name=LB["Doctor Gustaf VanHowzen"], loc=LZ["Dustwallow Marsh"]..", "..L["Quest"], faction=ALLIANCE, level=L["Artisan"]},
         {name=LB["Doctor Gregory Victor"], loc=LZ["Arathi Highlands"]..", "..L["Quest"], faction=HORDE, level=L["Artisan"]},
@@ -417,7 +417,7 @@ local ProfessionTrainers = {
         {name=LB["Rodfather"], loc=LZ["Hyjal"].." "..LM["Nordanaar"], faction=NEUTRAL, level=L["Journeyman"]},
         {name=LB["Fishface Joe"], loc=LZ["Stranglethorn Vale"], faction=NEUTRAL, level=L["Journeyman"]},
         -- Expert (150-225)
-        {name=LB["Old Man Heming"].." - "..L["Book"], loc=LZ["Stranglethorn Vale"].." "..LM["Booty Bay"], faction=NEUTRAL, level=L["Expert"]},
+        {name=LB["Old Man Heming"], loc=LZ["Stranglethorn Vale"].." "..LM["Booty Bay"]..", "..L["Book"], faction=NEUTRAL, level=L["Expert"]},
         -- Artisan (225-300)
         {name=LB["Nat Pagle"], loc=LZ["Dustwallow Marsh"]..", "..L["Quest"], faction=NEUTRAL, level=L["Artisan"]},
     },
