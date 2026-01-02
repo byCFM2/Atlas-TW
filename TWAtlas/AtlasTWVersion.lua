@@ -72,7 +72,7 @@ end
 --- Schedules next version publish time with a randomized delay.
 --- @return nil
 function VC.resetPublishDelay()
-  local minDelay, maxDelay = 100, 120
+  local minDelay, maxDelay = 10, 20
   local delay = math.random(minDelay, maxDelay)
   VC.nextPublishAt = time() + delay
 end
@@ -92,12 +92,13 @@ function VC.publishVersion()
   local id = getChannelIdByName(VC.channelName)
   if not id or id <= 0 then
     JoinChannelByName(VC.channelName)
-    return
+    return false
   end
   local versionNumber = VC.getVersionNumber()
   local payload = 'v' -- simple marker
   local message = VC.abbrev .. ':' .. tostring(versionNumber) .. ':' .. payload
   SendChatMessage(message, 'CHANNEL', nil, id)
+  return true
 end
 
 ---
@@ -156,7 +157,9 @@ verFrame:SetScript('OnUpdate', function()
     VC.joinAt = nil
   end
   if VC.shouldPublish() then
-    VC.publishVersion()
-    VC.resetPublishDelay()
+    if VC.publishVersion() then
+      VC.nextPublishAt = nil
+      this:SetScript('OnUpdate', nil)
+    end
   end
 end)

@@ -3680,8 +3680,8 @@ local craftingTable = {
 		{ id=41221, skill={185,200,210,220} }, --Ironsun Citrine Ring
 		{ id=41750, skill={185,200,207,215} }, --Facetted Moonstone Brooch
 		{ id=41589, skill={185,205,215,225} }, --Crystal Earring
-		{ id=41263, skill={190,190,210,230} }, --Ocean's Gaze
 		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41263, skill={190,190,210,230} }, --Ocean's Gaze
 		{ id=41223, skill={190,205,215,225} }, --Shimmering Gold Necklace
 		{ id=41225, skill={190,205,215,225} }, --Ironbloom Ring
 		{ id=41541, skill={190,210,220,230} }, --Dazzling Aquamarine Loop
@@ -3695,8 +3695,8 @@ local craftingTable = {
 		{ id=41738, skill={200,215,225,235} }, --Marine Root
 		{ id=41227, skill={200,220,230,240} }, --Ornate Mithril Scepter
 		{ id=41546, skill={200,220,230,240} }, --Alluring Citrine Choker
-		{ id=41548, skill={200,220,230,240} }, --Elaborate Golden Bracelets
 		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41548, skill={200,220,230,240} }, --Elaborate Golden Bracelets
 		{ id=41550, skill={200,220,230,240} }, --Heart of the Sea
 		{ id=41744, skill={200,220,230,240} }, --Bloodfire Circlet
 		{ id=41754, skill={200,220,230,240} }, --Smoldering Brooch
@@ -3710,8 +3710,8 @@ local craftingTable = {
 		{ id=41354, skill={210,280,290,300} }, --Skyfire Jewel 1.18
 		{ id=41352, skill={210,235,245,255} }, --Opaline Illuminator
 		{ id=41307, skill={1,235,245,255} }, --Gemkeeper's Folio
-		{ id=41235, skill={215,215,225,235} }, --Aquamarine Pendant
 		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41235, skill={215,215,225,235} }, --Aquamarine Pendant
 		{ id=41241, skill={215,235,245,255} }, --Royal Gemstone Staff
 		{ id=41277, skill={220,220,240,260} }, --Starforge Amulet
 		{ id=41243, skill={220,240,250,260} }, --Emberstone Idol
@@ -3725,8 +3725,8 @@ local craftingTable = {
 		{ id=41635, skill={235,235,237,240} }, --Brilliant Opal Gemstone
 		{ id=41770, skill={235,240,240,240}, container = { 12361, 12364, 12799, 12800, 12363 } }, --Dense Gemstone Cluster
 		{ id=41087, skill={235,245,250,255} }, --Rough Thorium Ring
-		{ id=41720, skill={240,260,275,290} }, --Regal Twilight Staff
 		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
+		{ id=41720, skill={240,260,275,290} }, --Regal Twilight Staff
 		{ id=41724, skill={245,245,265,285} }, --Ornament of Restraint
 		{ id=41089, skill={245,265,275,285} }, --Mithril Blackstone Necklace
 		{ id=41261, skill={250,250,270,290} }, --Sunburst Tiara
