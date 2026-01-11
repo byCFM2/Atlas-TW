@@ -147,6 +147,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Loot"] = "Beute",
     ["Previous"] = "Zurück",
     ["Next"] = "Weiter",
+    ["Group by Source"] = "Nach Quelle",
+    ["Default"] = "Standard",
+
 
     --************************************************
     -- Colors

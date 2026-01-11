@@ -154,6 +154,15 @@ end
 function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
     	--Load data for the current clicked element line
 	local dataID = AtlasTWLootItemsFrame.StoredElement
+
+	-- Hide sort dropdown by default if we're not in WishList
+	if AtlasTWLootWishListSortDropDown then
+		if dataID == "WishList" then
+			AtlasTWLootWishListSortDropDown:Show()
+		else
+			AtlasTWLootWishListSortDropDown:Hide()
+		end
+	end
 	local instanceKey = (AtlasTWLootItemsFrame and type(AtlasTWLootItemsFrame.StoredMenu)=="string") and AtlasTWLootItemsFrame.StoredMenu or nil
 	local dataSource = AtlasTW.DataResolver.GetLootByElemName(dataID, instanceKey) or AtlasTWLootItemsFrame.StoredMenu
 

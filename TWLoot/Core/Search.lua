@@ -39,15 +39,15 @@ local tostring = tostring
 --- @usage AtlasTWLoot.Search.ShowResult()
 ---
 function AtlasTW.SearchLib.ShowResult()
-	-- Reset scroll position
-	FauxScrollFrame_SetOffset(AtlasTWLootScrollBar, 0)
-	AtlasTWLootScrollBarScrollBar:SetValue(0)
-	-- Set data for displaying search results
-	AtlasTWLootItemsFrame.StoredElement = "SearchResult"
-	AtlasTWLootItemsFrame.StoredMenu = nil
-	AtlasTWLootItemsFrame.activeElement = nil
-	-- Update display
-	AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+    -- Reset scroll position
+    FauxScrollFrame_SetOffset(AtlasTWLootScrollBar, 0)
+    AtlasTWLootScrollBarScrollBar:SetValue(0)
+    -- Set data for displaying search results
+    AtlasTWLootItemsFrame.StoredElement = "SearchResult"
+    AtlasTWLootItemsFrame.StoredMenu = nil
+    AtlasTWLootItemsFrame.activeElement = nil
+    -- Update display
+    AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 end
 
 ---
@@ -57,7 +57,7 @@ end
 --- @usage local trimmed = strtrim(" hello ")
 ---
 local function strtrim(s)
-	return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
+    return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
 end
 ---
 --- Main search function for items, spells, and enchantments
@@ -106,7 +106,7 @@ function AtlasTW.SearchLib.Search(Text)
             -- In SearchResult we store: [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage (optional)
             local entry = { itemID, bossName, instanceKey, "item" }
             if instanceKey and instanceKey ~= "" then
-                table_insert(entry, (bossName or "").."|"..instanceKey)
+                table_insert(entry, (bossName or "") .. "|" .. instanceKey)
             end
             addUnique(entry)
         end
@@ -130,7 +130,7 @@ function AtlasTW.SearchLib.Search(Text)
                     -- Check if boss.id matches pageKey (standard) or if items IS the key
                     if boss and (boss.id == pageKey or items == pageKey) then
                         local bossName = boss.name or boss.Name
-                        pageKeyCache[pageKey] = {bossName, instKey}
+                        pageKeyCache[pageKey] = { bossName, instKey }
                         return bossName, instKey
                     end
                 end
@@ -140,7 +140,7 @@ function AtlasTW.SearchLib.Search(Text)
                     local items = src.items or src.loot
                     if items == pageKey then
                         local srcName = src.name or "Reputation"
-                        pageKeyCache[pageKey] = {srcName, instKey}
+                        pageKeyCache[pageKey] = { srcName, instKey }
                         return srcName, instKey
                     end
                 end
@@ -150,14 +150,14 @@ function AtlasTW.SearchLib.Search(Text)
                     local items = src.items or src.loot
                     if items == pageKey then
                         local srcName = src.name or "Keys"
-                        pageKeyCache[pageKey] = {srcName, instKey}
+                        pageKeyCache[pageKey] = { srcName, instKey }
                         return srcName, instKey
                     end
                 end
             end
         end
         -- Cache miss result too
-        pageKeyCache[pageKey] = {nil, nil}
+        pageKeyCache[pageKey] = { nil, nil }
         return nil, nil
     end
 
@@ -185,9 +185,10 @@ function AtlasTW.SearchLib.Search(Text)
                     local bossName, instanceKey = resolveBossAndInstanceFromPageKey(pageKey)
                     if bossName and instanceKey and instanceKey ~= "" then
                         -- [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage
-                        addUnique({ itemID, bossName, instanceKey, "item", bossName.."|"..instanceKey })
+                        addUnique({ itemID, bossName, instanceKey, "item", bossName .. "|" .. instanceKey })
                     else
-                        addUnique({ itemID, "", "", "item", pageKey })
+                        local displayName = AtlasTWLoot_GetLootPageDisplayName(pageKey)
+                        addUnique({ itemID, displayName, pageKey, "item", pageKey })
                     end
                 end
             end
@@ -223,7 +224,8 @@ function AtlasTW.SearchLib.Search(Text)
                 -- Try to bind to craft/profession page if found
                 local lootPage = findCraftLootPageLocal(spellID)
                 if lootPage then
-                    addUnique({ spellID, "", "", "enchant", lootPage })
+                    local displayName = AtlasTWLoot_GetLootPageDisplayName(lootPage)
+                    addUnique({ spellID, displayName, lootPage, "enchant", lootPage })
                 else
                     -- Without instance and craft page: remains empty
                     addUnique({ spellID, "", "", "enchant" })
@@ -248,7 +250,8 @@ function AtlasTW.SearchLib.Search(Text)
                 -- Try to bind to craft page if found
                 local lootPage = findFirstCraftLootPageForSpell(spellID)
                 if lootPage then
-                    addUnique({ spellID, "", "", "spell", lootPage })
+                    local displayName = AtlasTWLoot_GetLootPageDisplayName(lootPage)
+                    addUnique({ spellID, displayName, lootPage, "spell", lootPage })
                 else
                     addUnique({ spellID, "", "", "spell" })
                 end
@@ -258,7 +261,7 @@ function AtlasTW.SearchLib.Search(Text)
 
     AtlasTWLoot_InvalidateCategorizedList("SearchResult")
     if table_getn(AtlasTWCharDB.SearchResult) == 0 then
-        PrintA(L["No match found for"].." \""..Text.."\".")
+        PrintA(L["No match found for"] .. " \"" .. Text .. "\".")
     else
         -- Display all results, scroll is handled by loot frame
         AtlasTW.SearchLib.ShowResult()
@@ -272,46 +275,46 @@ end
 --- @usage AtlasTW.SearchLib.ShowOptions(someButton)
 ---
 function AtlasTW.SearchLib.ShowOptions(button)
-	local Hewdrop = _G.ATWHewdrop
-	if not Hewdrop then return end
-	if Hewdrop:IsOpen(button) then
-		Hewdrop:Close(1)
-	else
-		local setOptions = function()
-			Hewdrop:AddLine(
-				"text", L["Search options"],
-				"isTitle", true,
-				"notCheckable", true
-			)
-			Hewdrop:AddLine(
-				"text", L["Partial matching"],
-				"checked", AtlasTWCharDB.PartialMatching,
-				"tooltipTitle", L["Partial matching"],
-				"tooltipText", L["If checked, AtlasTWLoot searches item names for a partial match."],
-				"func", function()
-					AtlasTWCharDB.PartialMatching = not AtlasTWCharDB.PartialMatching
-					Hewdrop:Refresh(1)
-				end
-			)
-			Hewdrop:AddLine(
-				"text", L["Predict search"],
-				"checked", AtlasTWCharDB.PredictSearch ~= false,
-				"tooltipTitle", L["Predict search"],
-				"tooltipText", L["If checked, AtlasTWLoot predicts search results."],
-				"func", function()
-					local enabled = AtlasTWCharDB.PredictSearch ~= false
-					AtlasTWCharDB.PredictSearch = not enabled
-					Hewdrop:Refresh(1)
-				end
-			)
-		end
-		Hewdrop:Open(button,
-			'point', function(parent)
-				return "BOTTOMLEFT", "BOTTOMRIGHT"
-			end,
-			"children", setOptions
-		)
-	end
+    local Hewdrop = _G.ATWHewdrop
+    if not Hewdrop then return end
+    if Hewdrop:IsOpen(button) then
+        Hewdrop:Close(1)
+    else
+        local setOptions = function()
+            Hewdrop:AddLine(
+                "text", L["Search options"],
+                "isTitle", true,
+                "notCheckable", true
+            )
+            Hewdrop:AddLine(
+                "text", L["Partial matching"],
+                "checked", AtlasTWCharDB.PartialMatching,
+                "tooltipTitle", L["Partial matching"],
+                "tooltipText", L["If checked, AtlasTWLoot searches item names for a partial match."],
+                "func", function()
+                    AtlasTWCharDB.PartialMatching = not AtlasTWCharDB.PartialMatching
+                    Hewdrop:Refresh(1)
+                end
+            )
+            Hewdrop:AddLine(
+                "text", L["Predict search"],
+                "checked", AtlasTWCharDB.PredictSearch ~= false,
+                "tooltipTitle", L["Predict search"],
+                "tooltipText", L["If checked, AtlasTWLoot predicts search results."],
+                "func", function()
+                    local enabled = AtlasTWCharDB.PredictSearch ~= false
+                    AtlasTWCharDB.PredictSearch = not enabled
+                    Hewdrop:Refresh(1)
+                end
+            )
+        end
+        Hewdrop:Open(button,
+            'point', function(parent)
+                return "BOTTOMLEFT", "BOTTOMRIGHT"
+            end,
+            "children", setOptions
+        )
+    end
 end
 
 ---
@@ -322,18 +325,18 @@ end
 --- @usage local id, boss, instance = AtlasTW.SearchLib.GetOriginalDataFromSearchResult(12345)
 ---
 function AtlasTW.SearchLib.GetOriginalDataFromSearchResult(itemID, elementType)
-	local fallback = nil
-	for i, v in ipairs(AtlasTWCharDB.SearchResult) do
-		if v and v[1] == itemID then
-			if elementType and v[4] == elementType then
-				return unpack(v)
-			end
-			if not fallback then
-				fallback = v
-			end
-		end
-	end
-	if fallback then
-		return unpack(fallback)
-	end
+    local fallback = nil
+    for i, v in ipairs(AtlasTWCharDB.SearchResult) do
+        if v and v[1] == itemID then
+            if elementType and v[4] == elementType then
+                return unpack(v)
+            end
+            if not fallback then
+                fallback = v
+            end
+        end
+    end
+    if fallback then
+        return unpack(fallback)
+    end
 end

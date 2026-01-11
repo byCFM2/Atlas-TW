@@ -765,6 +765,69 @@ function AtlasTW.HewdropMenus:OpenSwitchMenu(parent, switchData, onSelect)
     )
 end
 
+--- Opens the WishList sorting menu
+function AtlasTW.HewdropMenus:OpenWishListSortMenu(parent)
+    local L = AtlasTW.Localization.UI
+    Hewdrop:Open(parent,
+        'children', function(level, value)
+            -- Default sorting
+            local isDefault = (AtlasTWCharDB.WishListSortMode == "Default")
+            Hewdrop:AddLine(
+                'text', L["Default"],
+                'checked', isDefault,
+                'isRadio', true,
+                'func', function()
+                    AtlasTWCharDB.WishListSortMode = "Default"
+                    AtlasTW.HewdropMenus.UpdateWishListSortLabel()
+                    if AtlasTWLoot_InvalidateCategorizedList then
+                        AtlasTWLoot_InvalidateCategorizedList("WishList")
+                    end
+                    if AtlasTW.LootBrowserUI and AtlasTW.LootBrowserUI.ScrollBarLootUpdate then
+                        AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+                    end
+                end,
+                'closeWhenClicked', true
+            )
+
+            -- Group by Source
+            local isSource = (AtlasTWCharDB.WishListSortMode == "Source" or AtlasTWCharDB.WishListSortMode == "Instance")
+            Hewdrop:AddLine(
+                'text', L["Group by Source"],
+                'checked', isSource,
+                'isRadio', true,
+                'func', function()
+                    AtlasTWCharDB.WishListSortMode = "Source"
+                    AtlasTW.HewdropMenus.UpdateWishListSortLabel()
+                    if AtlasTWLoot_InvalidateCategorizedList then
+                        AtlasTWLoot_InvalidateCategorizedList("WishList")
+                    end
+                    if AtlasTW.LootBrowserUI and AtlasTW.LootBrowserUI.ScrollBarLootUpdate then
+                        AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+                    end
+                end,
+                'closeWhenClicked', true
+            )
+        end,
+        'point', "TOPLEFT",
+        'relativePoint', "BOTTOMLEFT"
+    )
+end
+
+--- Updates the WishList sort dropdown label
+function AtlasTW.HewdropMenus.UpdateWishListSortLabel()
+    if AtlasTWLootWishListSortDropDown and AtlasTWLootWishListSortDropDownText then
+        local L = AtlasTW.Localization.UI
+        local mode = AtlasTWCharDB.WishListSortMode or "Default"
+        if mode == "Instance" then mode = "Source" end
+
+        local text = L["Default"]
+        if mode == "Source" then
+            text = L["Group by Source"]
+        end
+        AtlasTWLootWishListSortDropDownText:SetText(text)
+    end
+end
+
 --- Closes any open Hewdrop menu
 function AtlasTW.HewdropMenus:Close()
     Hewdrop:Close()

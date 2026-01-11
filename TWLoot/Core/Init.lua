@@ -52,6 +52,8 @@ function AtlasTWLoot_InitializeCharacterDatabase()
 	if not AtlasTWCharDB["QuickLooks"] then AtlasTWCharDB["QuickLooks"] = {} end
 	if not AtlasTWCharDB["SearchResult"] then AtlasTWCharDB["SearchResult"] = {} end
 	if not AtlasTWCharDB["LastOpened"] then AtlasTWCharDB["LastOpened"] = nil end -- Explicitly nil init effectively
+	if not AtlasTWCharDB["WishListSortMode"] then AtlasTWCharDB["WishListSortMode"] = "Default" end
+	if AtlasTWCharDB["WishListSortMode"] == "Instance" then AtlasTWCharDB["WishListSortMode"] = "Source" end
 
 	-- Invalidate category cache after initialization
 	if AtlasTWLoot_InvalidateCategorizedList then
@@ -71,7 +73,7 @@ function AtlasTWLoot_InitializeUIFrames()
 	tinsert(UISpecialFrames, "AtlasTWLootOptionsFrame")
 
 	-- Set up panel window configuration
-	UIPanelWindows['AtlasTWLootOptionsFrame'] = {area = 'center', pushable = 0}
+	UIPanelWindows['AtlasTWLootOptionsFrame'] = { area = 'center', pushable = 0 }
 end
 
 ---

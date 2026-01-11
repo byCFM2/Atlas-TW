@@ -143,6 +143,8 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Loot"] = "掉落",
     ["Previous"] = "上一页",
     ["Next"] = "下一页",
+    ["Group by Source"] = "按来源分组",
+    ["Default"] = "默认",
 
     -- Colors
     ["Purple"] = "紫色",

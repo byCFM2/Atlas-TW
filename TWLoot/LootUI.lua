@@ -1,10 +1,10 @@
 ---
 --- LootUI.lua - Atlas loot UI frame and component management
---- 
+---
 --- This file contains the loot UI frame creation and management for Atlas-TW.
 --- It handles loot window interface, item display components, frame templates,
 --- and provides the visual foundation for the Atlas loot browser system.
---- 
+---
 --- Features:
 --- - Loot frame creation and styling
 --- - Item display templates
@@ -19,97 +19,98 @@ local L = AtlasTW.Localization.UI
 local Colors = AtlasTW.Colors
 
 local function AtlasTWLoot_ClosePredictDropdown(searchBox)
-	if not searchBox then return end
-	if searchBox._predictDrop then
-		searchBox._predictDrop:Hide()
-	end
-	searchBox._predictSuggestions = nil
-	searchBox._predictSelectedIndex = nil
+    if not searchBox then return end
+    if searchBox._predictDrop then
+        searchBox._predictDrop:Hide()
+    end
+    searchBox._predictSuggestions = nil
+    searchBox._predictSelectedIndex = nil
 end
 
 local function AtlasTWLoot_OpenPredictDropdown(searchBox)
-	if not searchBox or not searchBox._predictDrop then return end
-	if not searchBox._predictSuggestions or table.getn(searchBox._predictSuggestions) == 0 then
-		AtlasTWLoot_ClosePredictDropdown(searchBox)
-		return
-	end
-	searchBox._predictDrop:Show()
+    if not searchBox or not searchBox._predictDrop then return end
+    if not searchBox._predictSuggestions or table.getn(searchBox._predictSuggestions) == 0 then
+        AtlasTWLoot_ClosePredictDropdown(searchBox)
+        return
+    end
+    searchBox._predictDrop:Show()
 end
 
 local function AtlasTWLoot_UpdatePredictDropdown(searchBox)
-	if not searchBox or not searchBox._predictDrop then return end
-	local drop = searchBox._predictDrop
-	local suggestions = searchBox._predictSuggestions or {}
-	local maxLines = drop._maxLines or 10
-	local count = table.getn(suggestions)
-	if count == 0 then
-		AtlasTWLoot_ClosePredictDropdown(searchBox)
-		return
-	end
-	for i = 1, maxLines do
-		local b = drop._buttons[i]
-		local s = suggestions[i]
-		if s then
-			b._entry = s
-			b:Show()
-			b.text:SetText(s.displayText or "")
-			if searchBox._predictSelectedIndex == i then
-				b.highlight:Show()
-			else
-				b.highlight:Hide()
-			end
-		else
-			b._entry = nil
-			b:Hide()
-		end
-	end
-	local visible = math.min(count, maxLines)
-	drop:SetHeight(visible * 16 + 10)
-	AtlasTWLoot_OpenPredictDropdown(searchBox)
+    if not searchBox or not searchBox._predictDrop then return end
+    local drop = searchBox._predictDrop
+    local suggestions = searchBox._predictSuggestions or {}
+    local maxLines = drop._maxLines or 10
+    local count = table.getn(suggestions)
+    if count == 0 then
+        AtlasTWLoot_ClosePredictDropdown(searchBox)
+        return
+    end
+    for i = 1, maxLines do
+        local b = drop._buttons[i]
+        local s = suggestions[i]
+        if s then
+            b._entry = s
+            b:Show()
+            b.text:SetText(s.displayText or "")
+            if searchBox._predictSelectedIndex == i then
+                b.highlight:Show()
+            else
+                b.highlight:Hide()
+            end
+        else
+            b._entry = nil
+            b:Hide()
+        end
+    end
+    local visible = math.min(count, maxLines)
+    drop:SetHeight(visible * 16 + 10)
+    AtlasTWLoot_OpenPredictDropdown(searchBox)
 end
 
 local function AtlasTWLoot_BuildPredictSuggestionsFromSearchResult()
-	local suggestions = {}
-	local results = (AtlasTWCharDB and AtlasTWCharDB.SearchResult) or {}
-	local n = table.getn(results)
-	local max = 10
-	for i = 1, n do
-		local v = results[i]
-		if type(v) == "table" then
-			local id = v[1]
-			local elementType = v[4] or "item"
-			local sourcePage = v[5]
-			local name = nil
-			if elementType == "item" then
-				name = GetItemInfo(id)
-			elseif elementType == "spell" then
-				local data = AtlasTW and AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[id]
-				name = data and data.name
-				if (not name or name == "") and data and data.item then
-					name = GetItemInfo(data.item)
-				end
-			elseif elementType == "enchant" then
-				local data = AtlasTW and AtlasTW.SpellDB and AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[id]
-				name = data and data.name
-				if (not name or name == "") and data and data.item then
-					name = GetItemInfo(data.item)
-				end
-			end
-			if name and name ~= "" then
-				table.insert(suggestions, {
-					id = id,
-					type = elementType,
-					sourcePage = sourcePage,
-					searchText = name,
-					displayText = name
-				})
-				if table.getn(suggestions) >= max then
-					break
-				end
-			end
-		end
-	end
-	return suggestions
+    local suggestions = {}
+    local results = (AtlasTWCharDB and AtlasTWCharDB.SearchResult) or {}
+    local n = table.getn(results)
+    local max = 10
+    for i = 1, n do
+        local v = results[i]
+        if type(v) == "table" then
+            local id = v[1]
+            local elementType = v[4] or "item"
+            local sourcePage = v[5]
+            local name = nil
+            if elementType == "item" then
+                name = GetItemInfo(id)
+            elseif elementType == "spell" then
+                local data = AtlasTW and AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and
+                    AtlasTW.SpellDB.craftspells[id]
+                name = data and data.name
+                if (not name or name == "") and data and data.item then
+                    name = GetItemInfo(data.item)
+                end
+            elseif elementType == "enchant" then
+                local data = AtlasTW and AtlasTW.SpellDB and AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[id]
+                name = data and data.name
+                if (not name or name == "") and data and data.item then
+                    name = GetItemInfo(data.item)
+                end
+            end
+            if name and name ~= "" then
+                table.insert(suggestions, {
+                    id = id,
+                    type = elementType,
+                    sourcePage = sourcePage,
+                    searchText = name,
+                    displayText = name
+                })
+                if table.getn(suggestions) >= max then
+                    break
+                end
+            end
+        end
+    end
+    return suggestions
 end
 
 ---
@@ -124,13 +125,13 @@ local function AtlasTWLoot_ApplyParentTemplate(frame)
     frame:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
 
     -- Icon texture
-    local icon = frame:CreateTexture(frame:GetName().."_Icon", "ARTWORK")
+    local icon = frame:CreateTexture(frame:GetName() .. "_Icon", "ARTWORK")
     icon:SetWidth(26)
     icon:SetHeight(26)
     icon:SetPoint("TOPLEFT", frame, 2, -2)
 
     -- Quantity text
-    local quantity = frame:CreateFontString(frame:GetName().."_Quantity", "ARTWORK", "GameFontNormal")
+    local quantity = frame:CreateFontString(frame:GetName() .. "_Quantity", "ARTWORK", "GameFontNormal")
     quantity:SetWidth(25)
     quantity:SetHeight(0)
     quantity:SetFont("Fonts\\ARIALN.TTF", 12, "OUTLINE")
@@ -138,14 +139,14 @@ local function AtlasTWLoot_ApplyParentTemplate(frame)
     quantity:SetPoint("BOTTOMRIGHT", icon, 0, 1)
 
     -- Name text
-    local name = frame:CreateFontString(frame:GetName().."_Name", "ARTWORK", "GameFontNormal")
+    local name = frame:CreateFontString(frame:GetName() .. "_Name", "ARTWORK", "GameFontNormal")
     name:SetWidth(205)
     name:SetHeight(12)
     name:SetJustifyH("LEFT")
     name:SetPoint("TOPLEFT", icon, "TOPRIGHT", 3, 0)
 
     -- Extra text
-    local extra = frame:CreateFontString(frame:GetName().."_Extra", "ARTWORK", "GameFontNormalSmall")
+    local extra = frame:CreateFontString(frame:GetName() .. "_Extra", "ARTWORK", "GameFontNormalSmall")
     extra:SetWidth(205)
     extra:SetHeight(10)
     extra:SetJustifyH("LEFT")
@@ -153,11 +154,11 @@ local function AtlasTWLoot_ApplyParentTemplate(frame)
     extra:Hide()
     -- Price elements (5 sets of text + icon)
     for i = 1, 5 do
-        local priceText = frame:CreateFontString(frame:GetName().."_PriceText"..i, "ARTWORK", "GameFontNormalSmall")
+        local priceText = frame:CreateFontString(frame:GetName() .. "_PriceText" .. i, "ARTWORK", "GameFontNormalSmall")
         priceText:SetJustifyH("RIGHT")
         priceText:Hide()
 
-        local priceIcon = frame:CreateTexture(frame:GetName().."_PriceIcon"..i, "ARTWORK")
+        local priceIcon = frame:CreateTexture(frame:GetName() .. "_PriceIcon" .. i, "ARTWORK")
         priceIcon:SetWidth(12)
         priceIcon:SetHeight(12)
         priceIcon:Hide()
@@ -170,8 +171,8 @@ local function AtlasTWLoot_ApplyParentTemplate(frame)
         priceText:SetPoint("TOPRIGHT", priceIcon, 2, 2)
     end
 
-    -- Border texture for item with container 
-    local border = frame:CreateTexture(frame:GetName().."Border", "BACKGROUND")
+    -- Border texture for item with container
+    local border = frame:CreateTexture(frame:GetName() .. "Border", "BACKGROUND")
     border:SetWidth(33)
     border:SetHeight(33)
     border:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasTWContainer-Border")
@@ -221,13 +222,13 @@ function AtlasTWLoot_ApplyContainerItemTemplate(button)
     })
 
     -- Create icon texture
-    local icon = button:CreateTexture(button:GetName().."Icon", "BACKGROUND")
+    local icon = button:CreateTexture(button:GetName() .. "Icon", "BACKGROUND")
     icon:SetWidth(32)
     icon:SetHeight(32)
     icon:SetPoint("TOPLEFT", button, "TOPLEFT", 4, -4)
 
     -- Create quantity text
-    local quantity = button:CreateFontString(button:GetName().."_Quantity", "BACKGROUND", "GameFontNormal")
+    local quantity = button:CreateFontString(button:GetName() .. "_Quantity", "BACKGROUND", "GameFontNormal")
     quantity:SetWidth(25)
     quantity:SetHeight(0)
     quantity:SetFont("Fonts\\ARIALN.TTF", 11, "OUTLINE")
@@ -251,12 +252,12 @@ end
 local function AtlasTWLoot_CreatePresetButtons(frame)
     local presetButton = {}
     for i = 1, 6 do
-        presetButton[i] = CreateFrame("Button", frame:GetName().."_Preset"..i, frame, "OptionsButtonTemplate")
-        presetButton[i]:SetText(L["QuickLook"].." "..i)
+        presetButton[i] = CreateFrame("Button", frame:GetName() .. "_Preset" .. i, frame, "OptionsButtonTemplate")
+        presetButton[i]:SetText(L["QuickLook"] .. " " .. i)
         if i == 1 then
             presetButton[i]:SetPoint("LEFT", 15, 1)
         else
-            presetButton[i]:SetPoint("LEFT", presetButton[i-1], "RIGHT", 0, 0)
+            presetButton[i]:SetPoint("LEFT", presetButton[i - 1], "RIGHT", 0, 0)
         end
 
         -- Use a local variable to capture the correct index
@@ -265,13 +266,14 @@ local function AtlasTWLoot_CreatePresetButtons(frame)
             if this:IsEnabled() then
                 GameTooltip:ClearLines()
                 GameTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 5)
-                local entry = AtlasTWCharDB and AtlasTWCharDB["QuickLooks"] and AtlasTWCharDB["QuickLooks"][buttonIndex] or nil
+                local entry = AtlasTWCharDB and AtlasTWCharDB["QuickLooks"] and AtlasTWCharDB["QuickLooks"][buttonIndex] or
+                    nil
                 if type(entry) == "table" and entry[3] then
                     GameTooltip:AddLine(entry[3])
                 elseif type(entry) == "string" then
                     GameTooltip:AddLine(entry)
                 end
-                GameTooltip:AddLine(Colors.GREY2..L["ALT+Click to clear"])
+                GameTooltip:AddLine(Colors.GREY2 .. L["ALT+Click to clear"])
                 GameTooltip:Show()
             end
         end)
@@ -395,7 +397,9 @@ local function AtlasTWLoot_CreateSearchElements(frame)
     bg:SetBackdrop({
         bgFile = "Interface\\ChatFrame\\ChatFrameBackground",
         edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-        tile = true, tileSize = 16, edgeSize = 16,
+        tile = true,
+        tileSize = 16,
+        edgeSize = 16,
         insets = { left = 5, right = 5, top = 5, bottom = 5 }
     })
     bg:SetBackdropColor(0, 0, 0, 1)
@@ -571,7 +575,7 @@ local function AtlasTWLoot_CreateSearchElements(frame)
         if this:IsEnabled() then
             GameTooltip:ClearLines()
             GameTooltip:SetOwner(this, "ANCHOR_RIGHT", -(this:GetWidth() / 2), 5)
-            GameTooltip:AddLine(Colors.WHITE..L["WishList"].."|r")
+            GameTooltip:AddLine(Colors.WHITE .. L["WishList"] .. "|r")
             GameTooltip:AddLine(L["ALT+Click on item to add or remove it from WishList"])
             GameTooltip:Show()
         end
@@ -581,13 +585,66 @@ local function AtlasTWLoot_CreateSearchElements(frame)
         GameTooltip:Hide()
     end)
 
+    -- WishList Sort DropDown (Custom Hewdrop-based)
+    local sortDropDown = CreateFrame("Button", "AtlasTWLootWishListSortDropDown", frame)
+    sortDropDown:SetWidth(110)
+    sortDropDown:SetHeight(20)
+    sortDropDown:SetPoint("TOPRIGHT", "AtlasTWLootItemsFrame", "TOPRIGHT", -60, -8)
+
+    -- Background texture
+    local dropDownBg = sortDropDown:CreateTexture(nil, "BACKGROUND")
+    dropDownBg:SetTexture("Interface\\Tooltips\\UI-Tooltip-Background")
+    dropDownBg:SetVertexColor(0.1, 0.1, 0.1, 0.8)
+    dropDownBg:SetAllPoints(sortDropDown)
+
+    -- Text display for current selection
+    local dropDownText = sortDropDown:CreateFontString("AtlasTWLootWishListSortDropDownText", "OVERLAY",
+    "GameFontHighlightSmall")
+    dropDownText:SetPoint("LEFT", sortDropDown, "LEFT", 8, 0)
+    dropDownText:SetPoint("RIGHT", sortDropDown, "RIGHT", -20, 0)
+    dropDownText:SetJustifyH("LEFT")
+
+    -- Arrow texture
+    local dropDownArrow = sortDropDown:CreateTexture(nil, "OVERLAY")
+    dropDownArrow:SetTexture("Interface\\ChatFrame\\ChatFrameExpandArrow")
+    dropDownArrow:SetWidth(16)
+    dropDownArrow:SetHeight(16)
+    dropDownArrow:SetPoint("RIGHT", sortDropDown, "RIGHT", -2, 0)
+
+    -- Highlight texture
+    local dropDownHighlight = sortDropDown:CreateTexture(nil, "HIGHLIGHT")
+    dropDownHighlight:SetTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
+    dropDownHighlight:SetBlendMode("ADD")
+    dropDownHighlight:SetAllPoints(sortDropDown)
+
+    sortDropDown:SetScript("OnClick", function()
+        if AtlasTWLoot_Hewdrop and AtlasTWLoot_Hewdrop:IsOpen(this) then
+            AtlasTWLoot_Hewdrop:Close()
+        else
+            if AtlasTW.HewdropMenus and AtlasTW.HewdropMenus.OpenWishListSortMenu then
+                AtlasTW.HewdropMenus:OpenWishListSortMenu(this)
+            end
+        end
+    end)
+
+    sortDropDown:SetScript("OnShow", function()
+        if not AtlasTWLootItemsFrame or AtlasTWLootItemsFrame.StoredElement ~= "WishList" then
+            this:Hide()
+            return
+        end
+        if AtlasTW.HewdropMenus and AtlasTW.HewdropMenus.UpdateWishListSortLabel then
+            AtlasTW.HewdropMenus.UpdateWishListSortLabel()
+        end
+    end)
+
     return {
         searchBox = searchBox,
         searchButton = searchButton,
         searchOptionsButton = searchOptionsButton,
         clearButton = clearButton,
         lastResultButton = lastResultButton,
-        wishListButton = wishListButton
+        wishListButton = wishListButton,
+        wishListSortDropDown = sortDropDown
     }
 end
 
@@ -600,7 +657,7 @@ end
 ---
 local function AtlasTWLoot_CreateFontStrings(frame)
     -- Selected Category text
-    local selectedCategory = frame:CreateFontString(frame:GetName().."_SelectedCategory", "OVERLAY", "GameFontNormal")
+    local selectedCategory = frame:CreateFontString(frame:GetName() .. "_SelectedCategory", "OVERLAY", "GameFontNormal")
     selectedCategory:SetPoint("TOP", "AtlasTWLootItemsFrame_Menu", "TOP", 0, 15)
     selectedCategory:SetText("")
 
@@ -616,7 +673,7 @@ end
 -- @usage local tooltips = AtlasTWLoot_CreateTooltips()
 ---
 local function AtlasTWLoot_CreateTooltips()
---[[     AtlasTWLootTooltip = GameTooltip
+    --[[     AtlasTWLootTooltip = GameTooltip
     AtlasTWLootTooltip2 = ItemRefTooltip ]]
     local tooltip1 = CreateFrame("GameTooltip", "AtlasTWLootTooltip", UIParent, "GameTooltipTemplate")
     tooltip1:Hide()
@@ -647,9 +704,10 @@ function AtlasTWLoot_CreateButtonFromTemplate(name, parent, templateType)
         button:RegisterForClicks("LeftButtonDown", "RightButtonDown")
         button:SetScript("OnEnter", function() AtlasTW.Interactions.Item_OnEnter() end)
         button:SetScript("OnLeave", function() AtlasTW.Interactions.Item_OnLeave() end)
-        button:SetScript("OnClick", function() AtlasTW.Interactions.Item_OnClick(arg1); CloseDropDownMenus() end)
+        button:SetScript("OnClick", function()
+            AtlasTW.Interactions.Item_OnClick(arg1); CloseDropDownMenus()
+        end)
         button:SetScript("OnShow", function() this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1) end)
-
     elseif templateType == "AtlasTWLootMenuItem_Template" then
         button = CreateFrame("Button", name, parent)
         AtlasTWLoot_ApplyParentTemplate(button)
@@ -657,7 +715,6 @@ function AtlasTWLoot_CreateButtonFromTemplate(name, parent, templateType)
         button:RegisterForClicks("LeftButtonDown", "RightButtonDown")
         button:SetScript("OnClick", function() AtlasTW.Interactions.MenuItem_OnClick(this) end)
         button:SetScript("OnShow", function() this:SetFrameLevel(this:GetParent():GetFrameLevel() + 1) end)
-
     elseif templateType == "AtlasTWLootNewBossLineTemplate" then
         button = CreateFrame("Button", name, parent)
         button:SetWidth(336)
@@ -665,20 +722,20 @@ function AtlasTWLoot_CreateButtonFromTemplate(name, parent, templateType)
         button:SetHighlightTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight", "ADD")
 
         -- Add elements as in the original template
-        local text = button:CreateFontString(button:GetName().."_Text", "ARTWORK", "GameFontNormal")
+        local text = button:CreateFontString(button:GetName() .. "_Text", "ARTWORK", "GameFontNormal")
         text:SetWidth(320)
         text:SetHeight(15)
         text:SetJustifyH("LEFT")
         text:SetPoint("LEFT", button, "LEFT")
 
-        local lootIcon = button:CreateTexture(button:GetName().."_Loot", "ARTWORK")
+        local lootIcon = button:CreateTexture(button:GetName() .. "_Loot", "ARTWORK")
         lootIcon:SetWidth(14)
         lootIcon:SetHeight(14)
         lootIcon:SetTexture("Interface\\Icons\\inv_holiday_christmas_present_02")
         lootIcon:SetPoint("RIGHT", button, "RIGHT")
         lootIcon:Hide()
 
-        local selectedIcon = button:CreateTexture(button:GetName().."_Selected", "ARTWORK")
+        local selectedIcon = button:CreateTexture(button:GetName() .. "_Selected", "ARTWORK")
         selectedIcon:SetWidth(16)
         selectedIcon:SetHeight(16)
         selectedIcon:SetTexture("Interface\\Icons\\spell_arcane_teleportorgrimmar")
@@ -703,10 +760,10 @@ local function AtlasTWLoot_CreateItemsFrame()
     local frame = CreateFrame("Frame", "AtlasTWLootItemsFrame", AtlasTWFrame)
     frame:SetWidth(510)
     frame:SetHeight(510)
-	frame:SetPoint("TOPLEFT", "AtlasTWFrame", "TOPLEFT", 18, -84)
+    frame:SetPoint("TOPLEFT", "AtlasTWFrame", "TOPLEFT", 18, -84)
     frame:EnableMouse(true)
     frame:EnableMouseWheel(true)
-	frame:RegisterEvent("VARIABLES_LOADED")
+    frame:RegisterEvent("VARIABLES_LOADED")
     frame:SetScript("OnEvent", function()
         AtlasTWLoot_OnEvent()
     end)
@@ -759,7 +816,7 @@ local function AtlasTWLoot_CreateItemsFrame()
     scrollHintTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasTWScrolldown")
 
     -- Background texture
-    local backTexture = frame:CreateTexture(frame:GetName().."_Back", "BACKGROUND")
+    local backTexture = frame:CreateTexture(frame:GetName() .. "_Back", "BACKGROUND")
     backTexture:SetAllPoints(frame)
     backTexture:SetVertexColor(0, 0, 0, 0.7)
 
@@ -778,7 +835,7 @@ local function AtlasTWLoot_CreateItemsFrame()
     quickLooks:SetPoint("BOTTOM", frame, "BOTTOM", -130, 8)
 
     -- Close button
-    local closeButton = CreateFrame("Button", frame:GetName().."_CloseButton", frame, "UIPanelCloseButton")
+    local closeButton = CreateFrame("Button", frame:GetName() .. "_CloseButton", frame, "UIPanelCloseButton")
     closeButton:SetPoint("TOPRIGHT", frame, -20, -5)
     closeButton:SetScript("OnClick", function()
         AtlasTW.Interactions.OnCloseButton()
@@ -801,7 +858,7 @@ local function AtlasTWLoot_CreateItemsFrame()
 
     quickLooksButton:SetScript("OnShow", function()
         if (AtlasTWLootItemsFrame.StoredElement == "SearchResult")
-        or (AtlasTWLootItemsFrame.StoredElement == "WishList") then
+            or (AtlasTWLootItemsFrame.StoredElement == "WishList") then
             this:Disable()
         else
             this:Enable()
@@ -822,7 +879,7 @@ local function AtlasTWLoot_CreateItemsFrame()
     end)
 
     -- Container frame
-    local container = CreateFrame("Frame", frame:GetName().."Container", frame)
+    local container = CreateFrame("Frame", frame:GetName() .. "Container", frame)
     container:SetWidth(40)
     container:SetHeight(40)
     container:SetPoint("TOPLEFT", frame, "TOPRIGHT", 0, 0)
@@ -847,7 +904,8 @@ local function AtlasTWLoot_CreateItemsFrame()
     -- Create 30 item buttons (2 columns, 15 rows each)
     local itemButtons = {}
     for i = 1, 30 do
-        local itemButton = AtlasTWLoot_CreateButtonFromTemplate("AtlasTWLootItem_"..i, frame, "AtlasTWLootItem_Template")
+        local itemButton = AtlasTWLoot_CreateButtonFromTemplate("AtlasTWLootItem_" .. i, frame,
+            "AtlasTWLootItem_Template")
         itemButton:SetID(i)
         itemButtons[i] = itemButton
         itemButton:SetAlpha(.85)
@@ -856,15 +914,16 @@ local function AtlasTWLoot_CreateItemsFrame()
         elseif i == 16 then
             itemButton:SetPoint("TOPLEFT", itemButtons[1], "TOPRIGHT", 0, 0)
         elseif i <= 15 then
-            itemButton:SetPoint("TOPLEFT", itemButtons[i-1], "BOTTOMLEFT")
+            itemButton:SetPoint("TOPLEFT", itemButtons[i - 1], "BOTTOMLEFT")
         else
-            itemButton:SetPoint("TOPLEFT", itemButtons[i-1], "BOTTOMLEFT")
+            itemButton:SetPoint("TOPLEFT", itemButtons[i - 1], "BOTTOMLEFT")
         end
     end
 
     -- Create 30 menu item buttons
     for i = 1, 30 do
-        local menuButton = AtlasTWLoot_CreateButtonFromTemplate("AtlasTWLootMenuItem_"..i, frame, "AtlasTWLootMenuItem_Template")
+        local menuButton = AtlasTWLoot_CreateButtonFromTemplate("AtlasTWLootMenuItem_" .. i, frame,
+            "AtlasTWLootMenuItem_Template")
         menuButton:SetID(i)
         menuButton:SetAlpha(.9)
         if i == 1 then
@@ -875,37 +934,37 @@ local function AtlasTWLoot_CreateItemsFrame()
             if i == 2 then
                 menuButton:SetPoint("TOPLEFT", itemButtons[1], "BOTTOMLEFT")
             else
-                menuButton:SetPoint("TOPLEFT", itemButtons[i-1], "BOTTOMLEFT")
+                menuButton:SetPoint("TOPLEFT", itemButtons[i - 1], "BOTTOMLEFT")
             end
         else
             if i == 17 then
                 menuButton:SetPoint("TOPLEFT", itemButtons[16], "BOTTOMLEFT")
             else
-                menuButton:SetPoint("TOPLEFT", itemButtons[i-1], "BOTTOMLEFT")
+                menuButton:SetPoint("TOPLEFT", itemButtons[i - 1], "BOTTOMLEFT")
             end
         end
     end
 
     -- Back button
-    local backButton = CreateFrame("Button", frame:GetName().."_BACK", frame, "OptionsButtonTemplate")
+    local backButton = CreateFrame("Button", frame:GetName() .. "_BACK", frame, "OptionsButtonTemplate")
     backButton:SetPoint("BOTTOM", frame, "BOTTOM", 40, 10)
     backButton:Hide()
     backButton:SetText(L["Back"])
     backButton:SetScript("OnEnter", function()
         GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
-        GameTooltip:SetText(L["Back"]..".")
+        GameTooltip:SetText(L["Back"] .. ".")
         GameTooltip:Show()
     end)
     backButton:SetScript("OnLeave", function()
         GameTooltip:Hide()
     end)
     backButton:SetScript("OnClick", function()
-       AtlasTW.Interactions.NavButton_OnClick()
+        AtlasTW.Interactions.NavButton_OnClick()
         CloseDropDownMenus()
     end)
 
     -- Prev button
-    local prevButton = CreateFrame("Button", frame:GetName().."_PREV", frame)
+    local prevButton = CreateFrame("Button", frame:GetName() .. "_PREV", frame)
     AtlasTWLoot_ApplyNavigationButtonTemplate(prevButton, "prev")
     prevButton:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 0, 5)
     prevButton:SetScript("OnEnter", function()
@@ -922,7 +981,7 @@ local function AtlasTWLoot_CreateItemsFrame()
     end)
 
     -- Next button
-    local nextButton = CreateFrame("Button", frame:GetName().."_NEXT", frame)
+    local nextButton = CreateFrame("Button", frame:GetName() .. "_NEXT", frame)
     AtlasTWLoot_ApplyNavigationButtonTemplate(nextButton, "next")
     nextButton:SetPoint("BOTTOMRIGHT", frame, -20, 5)
     nextButton:SetScript("OnEnter", function()
@@ -939,7 +998,7 @@ local function AtlasTWLoot_CreateItemsFrame()
     end)
 
     -- Menu button
-    local menuButton = CreateFrame("Button", frame:GetName().."_Menu", frame, "OptionsButtonTemplate")
+    local menuButton = CreateFrame("Button", frame:GetName() .. "_Menu", frame, "OptionsButtonTemplate")
     menuButton:SetWidth(120)
     menuButton:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 30, 10)
     menuButton:SetText(L["Select Loot Table"])
@@ -967,7 +1026,7 @@ local function AtlasTWLoot_CreatePanel()
     local frame = CreateFrame("Frame", "AtlasTWLootPanel", AtlasTWFrame)
     frame:SetWidth(689)
     frame:SetHeight(90)
-	frame:SetPoint("TOP", "AtlasTWFrame", "BOTTOM", 0, 9)
+    frame:SetPoint("TOP", "AtlasTWFrame", "BOTTOM", 0, 9)
     frame:Hide()
     frame:EnableMouse(true)
     frame:RegisterForDrag("LeftButton")
@@ -995,7 +1054,7 @@ local function AtlasTWLoot_CreatePanel()
     frame:SetBackdropBorderColor(0.80, 0.60, 0.25, 1)
 
     -- Top row buttons
-    local world = CreateFrame("Button", frame:GetName().."_Instances", frame, "OptionsButtonTemplate")
+    local world = CreateFrame("Button", frame:GetName() .. "_Instances", frame, "OptionsButtonTemplate")
     world:SetPoint("LEFT", frame, "LEFT", 15, 24)
     world:SetScript("OnClick", function()
         AtlasTWLoot_QuickLooks:Hide()
@@ -1016,7 +1075,7 @@ local function AtlasTWLoot_CreatePanel()
         GameTooltip:Hide()
     end)
 
-    local worldEvents = CreateFrame("Button", frame:GetName().."_WorldEvents", frame, "OptionsButtonTemplate")
+    local worldEvents = CreateFrame("Button", frame:GetName() .. "_WorldEvents", frame, "OptionsButtonTemplate")
     worldEvents:SetPoint("LEFT", world, "RIGHT", 0, 0)
     worldEvents:SetScript("OnClick", function()
         AtlasTWLoot_QuickLooks:Hide()
@@ -1037,7 +1096,7 @@ local function AtlasTWLoot_CreatePanel()
         GameTooltip:Hide()
     end)
 
-    local sets = CreateFrame("Button", frame:GetName().."_Sets", frame, "OptionsButtonTemplate")
+    local sets = CreateFrame("Button", frame:GetName() .. "_Sets", frame, "OptionsButtonTemplate")
     sets:SetPoint("LEFT", worldEvents, "RIGHT", 0, 0)
     sets:SetScript("OnClick", function()
         AtlasTWLoot_QuickLooks:Hide()
@@ -1058,7 +1117,7 @@ local function AtlasTWLoot_CreatePanel()
         GameTooltip:Hide()
     end)
 
-    local reputation = CreateFrame("Button", frame:GetName().."_Reputation", frame, "OptionsButtonTemplate")
+    local reputation = CreateFrame("Button", frame:GetName() .. "_Reputation", frame, "OptionsButtonTemplate")
     reputation:SetPoint("LEFT", sets, "RIGHT", 0, 0)
     reputation:SetScript("OnClick", function()
         AtlasTWLoot_QuickLooks:Hide()
@@ -1079,7 +1138,7 @@ local function AtlasTWLoot_CreatePanel()
         GameTooltip:Hide()
     end)
 
-    local pvp = CreateFrame("Button", frame:GetName().."_PvP", frame, "OptionsButtonTemplate")
+    local pvp = CreateFrame("Button", frame:GetName() .. "_PvP", frame, "OptionsButtonTemplate")
     pvp:SetPoint("LEFT", reputation, "RIGHT", 0, 0)
     pvp:SetScript("OnClick", function()
         AtlasTWLoot_QuickLooks:Hide()
@@ -1100,7 +1159,7 @@ local function AtlasTWLoot_CreatePanel()
         GameTooltip:Hide()
     end)
 
-    local crafting = CreateFrame("Button", frame:GetName().."_Crafting", frame, "OptionsButtonTemplate")
+    local crafting = CreateFrame("Button", frame:GetName() .. "_Crafting", frame, "OptionsButtonTemplate")
     crafting:SetPoint("LEFT", pvp, "RIGHT", 0, 0)
     crafting:SetScript("OnClick", function()
         AtlasTWLoot_QuickLooks:Hide()
@@ -1120,7 +1179,7 @@ local function AtlasTWLoot_CreatePanel()
     crafting:SetScript("OnLeave", function()
         GameTooltip:Hide()
     end)
-    local dungeons = CreateFrame("Button", frame:GetName().."_Dungeons", frame, "OptionsButtonTemplate")
+    local dungeons = CreateFrame("Button", frame:GetName() .. "_Dungeons", frame, "OptionsButtonTemplate")
     dungeons:SetWidth(120)
     dungeons:SetHeight(40)
     dungeons:SetPoint("LEFT", crafting, "RIGHT", 0, -20)
@@ -1180,22 +1239,22 @@ end
 --- @usage setupPfUITooltip() -- Called during initialization
 ---
 local function setupPfUITooltip()
-	if not IsAddOnLoaded("pfUI") then
-		return
-	end
-	-- Create pfUI tooltip backdrop
-	pfUI.api.CreateBackdrop(AtlasTWLootTooltip)
-	pfUI.api.CreateBackdropShadow(AtlasTWLootTooltip)
-	pfUI.api.CreateBackdrop(AtlasTWLootTooltip2)
-	pfUI.api.CreateBackdropShadow(AtlasTWLootTooltip2)
-	-- Setup equipment comparison if available
- 	if pfUI.eqcompare then
-		hookScript(AtlasTWLootTooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
-		hookScript(AtlasTWLootTooltip, "OnHide", function()
-			ShoppingTooltip1:Hide()
-			ShoppingTooltip2:Hide()
-		end)
-	end
+    if not IsAddOnLoaded("pfUI") then
+        return
+    end
+    -- Create pfUI tooltip backdrop
+    pfUI.api.CreateBackdrop(AtlasTWLootTooltip)
+    pfUI.api.CreateBackdropShadow(AtlasTWLootTooltip)
+    pfUI.api.CreateBackdrop(AtlasTWLootTooltip2)
+    pfUI.api.CreateBackdropShadow(AtlasTWLootTooltip2)
+    -- Setup equipment comparison if available
+    if pfUI.eqcompare then
+        hookScript(AtlasTWLootTooltip, "OnShow", pfUI.eqcompare.GameTooltipShow)
+        hookScript(AtlasTWLootTooltip, "OnHide", function()
+            ShoppingTooltip1:Hide()
+            ShoppingTooltip2:Hide()
+        end)
+    end
 end
 
 ---

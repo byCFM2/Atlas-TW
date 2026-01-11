@@ -147,6 +147,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Loot"] = "Botín",
     ["Previous"] = "Anterior",
     ["Next"] = "Siguiente",
+    ["Group by Source"] = "Agrupar por fuente",
+    ["Default"] = "Predeterminado",
+
 
     --************************************************
     -- Colors
