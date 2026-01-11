@@ -4489,6 +4489,19 @@ kQuestInstanceData.ZulFarrak.Alliance[8] = {
         { id = 60759 }, --Southmoon Pendant Neck
     }
 }
+kQuestInstanceData.ZulFarrak.Alliance[9] = {
+    Title = "法拉基先人",
+    Level = 46,
+    Attain = 40,
+    Aim = "前往祖尔法拉克，击杀年迈的泽尔杰布，然后回到祖尔法拉克南部的流浪者扎尔苏身边。",
+    Location = "流浪者扎尔苏 (塔纳利斯 "..yellow.."39,34"..white..")",
+    Note = "年迈的泽尔杰布 "..yellow.."[8]"..white.."。你需要 '法拉克之焰' "..yellow.."[6]"..white.." 才能击杀他。",
+    Rewards = {
+        Text = "奖励：任选其一",
+        { id = 41916 }, --Dune Wanderer's Hauberk
+        { id = 41917 }, --Desert Seeker's Pants
+    }
+}
 kQuestInstanceData.ZulFarrak.Horde[1] = {
     Title = "蜘蛛之神",
     Level = 45,
@@ -4499,10 +4512,10 @@ kQuestInstanceData.ZulFarrak.Horde[1] = {
     Prequest = "毒液瓶 -> 请教加德林大师",
     Folgequest = "召唤沙德拉",
 }
-for i = 2, 8 do
+for i = 2, 9 do
     kQuestInstanceData.ZulFarrak.Horde[i] = kQuestInstanceData.ZulFarrak.Alliance[i]
 end
-kQuestInstanceData.ZulFarrak.Horde[9] = {
+kQuestInstanceData.ZulFarrak.Horde[10] = {
     Title = "乌克兹·沙顶的尽头",
     Level = 48,
     Attain = 40,

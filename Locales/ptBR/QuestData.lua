@@ -4563,6 +4563,19 @@ kQuestInstanceData.ZulFarrak.Alliance[8] = {
         { id = 60759 }, --Southmoon Pendant Neck
     }
 }
+kQuestInstanceData.ZulFarrak.Alliance[9] = {
+    Title = "O Ancestral Farraki",
+    Level = 46,
+    Attain = 40,
+    Aim = "Aventure-se em Zul'Farrak e mate Zel'jeb, o Ancestral, então retorne a Zalsu, o Errante, que pode ser encontrado ao sul de Zul'Farrak.",
+    Location = "Zalsu, o Errante (Tanaris "..yellow.."39,34"..white..")",
+    Note = "Vá para Zel'jeb the Ancião "..yellow.."[8]"..white..". Você precisa de 'Chama de Farrak' "..yellow.."[6]"..white.." para matá-lo.",
+    Rewards = {
+        Text = "Recompensa: Escolha um",
+        { id = 41916 }, --Dune Wanderer's Hauberk
+        { id = 41917 }, --Desert Seeker's Pants
+    }
+}
 kQuestInstanceData.ZulFarrak.Horde[1] = {
     Title = "O Deus Aranha",
     Level = 45,
@@ -4573,10 +4586,10 @@ kQuestInstanceData.ZulFarrak.Horde[1] = {
     Prequest = "Garrafas de veneno -> Consulte Mestre Gadrin",
     Folgequest = "Invocando Shadra",
 }
-for i = 2, 8 do
+for i = 2, 9 do
     kQuestInstanceData.ZulFarrak.Horde[i] = kQuestInstanceData.ZulFarrak.Alliance[i]
 end
-kQuestInstanceData.ZulFarrak.Horde[9] = {
+kQuestInstanceData.ZulFarrak.Horde[10] = {
     Title = "Fim do Ukorz Sandscalp",
     Level = 48,
     Attain = 40,

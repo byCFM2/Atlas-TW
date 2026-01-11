@@ -4563,6 +4563,19 @@ kQuestInstanceData.ZulFarrak.Alliance[8] = {
         { id = 60759 }, --Southmoon Pendant Neck
     }
 }
+kQuestInstanceData.ZulFarrak.Alliance[9] = {
+    Title = "The Farraki Ancient", --TODO check database for correct translate
+    Level = 46,
+    Attain = 40,
+    Aim = "Venture in Zul'Farrak, and slay Zel'jeb der Uralte, then return to Zalsu the Wanderer, who can be found south of Zul'Farrak.",
+    Location = "Zalsu the Wanderer (Tanaris "..yellow.."39,34"..white..")",
+    Note = "Zel'jeb der Uralte "..yellow.."[8]"..white..". Du benötigst 'Flamme von Farrak' "..yellow.."[6]"..white.." um ihn zu töten.",
+    Rewards = {
+        Text = "Belohnung: Wählt eins aus",
+        { id = 41916 }, --Dune Wanderer's Hauberk
+        { id = 41917 }, --Desert Seeker's Pants
+    }
+}
 kQuestInstanceData.ZulFarrak.Horde[1] = {
     Title = "Der Spinnengott",
     Level = 45,
@@ -4573,10 +4586,10 @@ kQuestInstanceData.ZulFarrak.Horde[1] = {
     Prequest = "Giftflaschen -> Konsultiert Meister Gadrin",
     Folgequest = "Die Beschwörung von Shadra",
 }
-for i = 2, 8 do
+for i = 2, 9 do
     kQuestInstanceData.ZulFarrak.Horde[i] = kQuestInstanceData.ZulFarrak.Alliance[i]
 end
-kQuestInstanceData.ZulFarrak.Horde[9] = {
+kQuestInstanceData.ZulFarrak.Horde[10] = {
     Title = "Beendet Ukorz Sandkrall",
     Level = 48,
     Attain = 40,

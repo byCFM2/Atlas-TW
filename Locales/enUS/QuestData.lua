@@ -4566,6 +4566,19 @@ kQuestInstanceData.ZulFarrak.Alliance[8] = {
         { id = 60759 }, --Southmoon Pendant Neck
     }
 }
+kQuestInstanceData.ZulFarrak.Alliance[9] = {
+    Title = "The Farraki Ancient",
+    Level = 46,
+    Attain = 40,
+    Aim = "Venture in Zul'Farrak, and slay Zel'jeb the Ancient, then return to Zalsu the Wanderer, who can be found south of Zul'Farrak.",
+    Location = "Zalsu the Wanderer (Tanaris "..yellow.."39,34"..white..")",
+    Note = "Zel'jeb the Ancient "..yellow.."[8]"..white..". You need 'Flame of Farrak' "..yellow.."[6]"..white.." for kill him.",
+    Rewards = {
+        Text = "Reward: Pick One",
+        { id = 41916 }, --Dune Wanderer's Hauberk
+        { id = 41917 }, --Desert Seeker's Pants
+    }
+}
 kQuestInstanceData.ZulFarrak.Horde[1] = {
     Title = "The Spider God",
     Level = 45,
@@ -4576,10 +4589,10 @@ kQuestInstanceData.ZulFarrak.Horde[1] = {
     Prequest = "Venom Bottles -> Consult Master Gadrin",
     Folgequest = "Summoning Shadra",
 }
-for i = 2, 8 do
+for i = 2, 9 do
     kQuestInstanceData.ZulFarrak.Horde[i] = kQuestInstanceData.ZulFarrak.Alliance[i]
 end
-kQuestInstanceData.ZulFarrak.Horde[9] = {
+kQuestInstanceData.ZulFarrak.Horde[10] = {
     Title = "End Ukorz Sandscalp",
     Level = 48,
     Attain = 40,
