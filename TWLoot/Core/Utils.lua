@@ -332,6 +332,112 @@ end
 --- @return string|nil Formatted source string or nil if not found
 --- @usage local source = AtlasTW.LootUtils.GetLootTableSource("MCBoss1")
 ---
+---
+--- Iterates over ONLY craft/profession tables in AtlasTWLoot_Data (NOT InstanceData)
+--- Used for finding spell/enchant loot pages without accidentally matching dungeon boss items with same ID
+--- @param callback function Function to call for each item (arg: itemID, pageKey, itemData). Return non-nil to stop.
+--- @param primaryOnly boolean|nil If true, only iterate primary skill-level pages (Apprentice/Journeyman/Expert/Artisan)
+--- @return any The value returned by callback that stopped iteration, or nil.
+--- @usage AtlasTW.LootUtils.IterateCraftLootItems(function(id, key, data) ... end)
+---
+function AtlasTW.LootUtils.IterateCraftLootItems(callback, primaryOnly)
+    if not callback or not AtlasTWLoot_Data then return end
+
+    -- Primary page patterns (skill level based, not slot-based convenience pages)
+    -- These contain Apprentice, Journeyman, Expert, Artisan in their key names
+    local function isPrimaryPage(pageKey)
+        if not pageKey or type(pageKey) ~= "string" then return false end
+        -- Match patterns like: AlchemyJourneyman, LeatherExpert, SmithingArtisan, etc.
+        if string.find(pageKey, "Apprentice") then return true end
+        if string.find(pageKey, "Journeyman") then return true end
+        if string.find(pageKey, "Expert") then return true end
+        if string.find(pageKey, "Artisan") then return true end
+        -- Also include specialty/subclass pages that are NOT slot-based
+        if string.find(pageKey, "Table$") then return true end -- PoisonsTable, MiningTable, etc.
+        if string.find(pageKey, "Smelting") then return true end
+        return false
+    end
+
+    -- Helper to iterate a single list of items
+    local function IterateList(list, key)
+        if type(list) ~= "table" then return end
+        local m = table.getn(list)
+        for i = 1, m do
+            local el = list[i]
+            if type(el) == "table" then
+                -- Only process craft entries (those with skill field or explicit type)
+                -- This ensures we don't accidentally match dungeon boss items
+                if el.id and el.skill then
+                    local res = callback(el.id, key, el)
+                    if res then return res end
+                end
+                -- Also check items in container arrays (reagents/materials)
+                -- Container format: { itemID } or { {itemID, {qty}} }
+                if el.container and type(el.container) == "table" then
+                    local containerSize = table.getn(el.container)
+                    for j = 1, containerSize do
+                        local containerItem = el.container[j]
+                        local itemIDInContainer = nil
+                        
+                        if type(containerItem) == "number" then
+                            -- Simple format: { 13468 }
+                            itemIDInContainer = containerItem
+                        elseif type(containerItem) == "table" and containerItem[1] then
+                            -- Complex format: { {13468, {1,3}} }
+                            itemIDInContainer = containerItem[1]
+                        end
+                        
+                        if itemIDInContainer then
+                            local res = callback(itemIDInContainer, key, { id = itemIDInContainer, isContainer = true })
+                            if res then return res end
+                        end
+                    end
+                end
+                -- Recursive check for nested containers
+                if el.container and type(el.container) == "table" then
+                    local res = IterateList(el.container, key)
+                    if res then return res end
+                end
+            end
+        end
+    end
+
+    -- Only iterate AtlasTWLoot_Data (craft tables), NOT InstanceData
+    for key, tbl in pairs(AtlasTWLoot_Data) do
+        -- If primaryOnly flag is set, skip non-primary pages
+        if not primaryOnly or isPrimaryPage(key) then
+            local res = IterateList(tbl, key)
+            if res then return res end
+        end
+    end
+end
+
+---
+--- Finds the first craft/profession loot page containing a specific spell ID
+--- Only searches in AtlasTWLoot_Data craft tables (not instance bosses)
+--- Prioritizes primary skill-level pages (Apprentice/Journeyman/Expert/Artisan)
+--- over secondary convenience pages (Helm/Chest/Boots/etc.)
+--- @param spellID number The spell ID to search for
+--- @return string|nil The loot page key if found, nil otherwise
+--- @usage local pageKey = AtlasTW.LootUtils.FindCraftLootPageForSpell(2169)
+---
+function AtlasTW.LootUtils.FindCraftLootPageForSpell(spellID)
+    if not spellID then return nil end
+    -- First, search only in primary pages (skill-level based)
+    local primaryResult = AtlasTW.LootUtils.IterateCraftLootItems(function(id, key, itemData)
+        if id == spellID then return key end
+    end, true)  -- true = primaryOnly
+    
+    if primaryResult then
+        return primaryResult
+    end
+    
+    -- Fallback: search all pages (including secondary/convenience pages)
+    return AtlasTW.LootUtils.IterateCraftLootItems(function(id, key, itemData)
+        if id == spellID then return key end
+    end, false)  -- false = search all
+end
+
 function AtlasTW.LootUtils.GetLootTableSource(pageKey)
     if not pageKey or not AtlasTW or not AtlasTW.InstanceData then return nil end
 

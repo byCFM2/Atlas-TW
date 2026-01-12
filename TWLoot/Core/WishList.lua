@@ -338,18 +338,17 @@ function AtlasTWLoot_GetLootPageDisplayName(pageKey)
 end
 
 ---
---- New helper: find first craft loot page by spell ID
+--- Helper: find first craft loot page by spell ID
+--- Uses unified function from LootUtils that only searches craft tables
+--- This prevents spell IDs from matching dungeon item IDs with the same number
 --- @param spellID number - The spell ID to search for
 --- @return string|nil - The loot page key if found, nil otherwise
 --- @usage local pageKey = FindFirstCraftLootPageForSpell(12345)
 ---
 local function FindFirstCraftLootPageForSpell(spellID)
-	if not AtlasTWLoot_Data or not spellID then return nil end
-	if AtlasTW.LootUtils and AtlasTW.LootUtils.IterateAllLootItems then
-		return AtlasTW.LootUtils.IterateAllLootItems(function(id, key, itemData)
-			if id == spellID then return key end
-			if type(itemData) == "table" and itemData.id == spellID then return key end
-		end)
+	if not spellID then return nil end
+	if AtlasTW.LootUtils and AtlasTW.LootUtils.FindCraftLootPageForSpell then
+		return AtlasTW.LootUtils.FindCraftLootPageForSpell(spellID)
 	end
 	return nil
 end
@@ -642,6 +641,7 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 			if sortMode == "Instance" then sortMode = "Source" end -- Migration
 		elseif wishList == AtlasTWCharDB.SearchResult then
 			cacheKey = "SearchResult"
+			sortMode = "Source" -- Always sort search results by group
 		end
 	end
 	if cacheKey and AtlasTW and AtlasTW._CatCache and AtlasTW._CatRev then
@@ -662,7 +662,7 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 	end
 
 	-- Apply sorting if needed
-	if cacheKey == "WishList" and sortMode == "Source" then
+	if (cacheKey == "WishList" or cacheKey == "SearchResult") and sortMode == "Source" then
 		local function GetItemNameLocal(id, elementType)
 			if elementType == "spell" then
 				return (AtlasTW.SpellDB and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[id] and AtlasTW.SpellDB.craftspells[id].name) or
@@ -843,16 +843,56 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 
 		local currentCategoryKey = tostring(currentCategory or "") .. "||" .. tostring(extratext or "")
 
-		-- If category changed, add header
-		if currentCategoryKey ~= lastCategoryKey then
-			-- Add empty line between categories (except first)
-			if table.getn(result) > 0 then
-				table.insert(result, {})
-			end
+		-- Logic for header insertion (New Category or Continuation at column boundary)
+		local currentCount = table.getn(result)
+		local isNewCategory = (currentCategoryKey ~= lastCategoryKey)
+		local isBoundary = (currentCount > 0 and math.mod(currentCount, 15) == 0)
 
-			-- Add category header: boss/page name as header, instance/profession as extratext
-			table.insert(result, { 0, currentCategory, extratext })
+		if isNewCategory then
+			if currentCount > 0 then
+				-- Check if we are at the top of a column (16, 31, ...)
+				local targetIndentPos = currentCount + 1
+				local isIndentAtTop = (math.mod(targetIndentPos - 1, 15) == 0)
+
+				if isIndentAtTop then
+					-- At column start, skip indent to satisfy "no indent at top"
+					-- Header itself at the top acts as a separator
+					table.insert(result, { 0, currentCategory, extratext })
+				else
+					-- Normal case: ensure header doesn't end up at bottom of column
+					local targetHeaderPos = currentCount + 2
+					if math.mod(targetHeaderPos, 15) == 0 then
+						-- Push to next column
+						table.insert(result, {})
+						table.insert(result, {})
+						table.insert(result, { 0, currentCategory, extratext })
+					elseif math.mod(targetIndentPos, 15) == 0 then
+						-- Indent would be at bottom, header at top
+						table.insert(result, {})
+						table.insert(result, { 0, currentCategory, extratext })
+					else
+						table.insert(result, {})
+						table.insert(result, { 0, currentCategory, extratext })
+					end
+				end
+			else
+				-- First category header
+				table.insert(result, { 0, currentCategory, extratext })
+			end
 			lastCategoryKey = currentCategoryKey
+		elseif isBoundary then
+			-- Continuation of the same category at a column boundary
+			table.insert(result, { 0, currentCategory, extratext })
+		end
+
+		-- Before adding item, check if we need a continuation header at column start
+		-- This handles categories that span multiple columns (e.g., 15+ items)
+		local countBeforeItem = table.getn(result)
+		if countBeforeItem > 0 and math.mod(countBeforeItem, 15) == 0 and not isNewCategory and not isBoundary then
+			-- We're at a column boundary (15, 30, 45...) and about to add an item
+			-- This item would be the first in the new column
+			-- Insert header to maintain context
+			table.insert(result, { 0, currentCategory, extratext })
 		end
 
 		-- Add item considering element type

@@ -586,7 +586,7 @@ local function AtlasTWLoot_CreateSearchElements(frame)
     end)
 
     -- WishList Sort DropDown (Custom Hewdrop-based)
-    local sortDropDown = CreateFrame("Button", "AtlasTWLootWishListSortDropDown", frame)
+    local sortDropDown = CreateFrame("Button", "AtlasTWLootWishListSortDropDown", AtlasTWLootItemsFrame)
     sortDropDown:SetWidth(110)
     sortDropDown:SetHeight(20)
     sortDropDown:SetPoint("TOPRIGHT", "AtlasTWLootItemsFrame", "TOPRIGHT", -60, -8)

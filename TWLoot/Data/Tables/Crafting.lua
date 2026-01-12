@@ -3367,43 +3367,43 @@ local craftingTable = {
 
 	HerbalismTable = {
 		{ name = L["Apprentice"], icon = "Trade_Herbalism" },
-		{ id=2447, quantity = {1,4}, skill={1,25,50,100} }, --Peacebloom
-		{ id=765, quantity = {1,3}, skill={1,25,50,100}, container = {5056} }, --Silverleaf, Root Sample
-		{ id=2449, quantity = {1,3}, skill={15,40,65,115}, container = {5056} }, --Earthroot, Root Sample
-		{ id=785, quantity = {1,3}, skill={50,75,100,150}, container = {{2452,{1,3}}, 5056} }, --Mageroyal, Swiftthistle, Root Sample
-		{ id=2450, quantity = {1,3}, skill={70,95,120,170}, container = {{2452,{1,3}}, 5056} }, --Briarthorn, Swiftthistle, Root Sample
+		{ id=2447, quantity = {1,4}, skill={1,25,50,100}, type="item" }, --Peacebloom
+		{ id=765, quantity = {1,3}, skill={1,25,50,100}, container = {5056}, type="item" }, --Silverleaf, Root Sample
+		{ id=2449, quantity = {1,3}, skill={15,40,65,115}, container = {5056}, type="item" }, --Earthroot, Root Sample
+		{ id=785, quantity = {1,3}, skill={50,75,100,150}, container = {{2452,{1,3}}, 5056}, type="item" }, --Mageroyal, Swiftthistle, Root Sample
+		{ id=2450, quantity = {1,3}, skill={70,95,120,170}, container = {{2452,{1,3}}, 5056}, type="item" }, --Briarthorn, Swiftthistle, Root Sample
 		{},
 		{},
 		{ name = L["Expert"], icon = "Trade_Herbalism" },
 		{ id=3818, quantity = {1,3}, skill={160,190,210,260}, type="item" }, --Fadeleaf
-		{ id=3821, quantity = {1,3}, skill={170,195,220,270} }, --Goldthorn
-		{ id=3358, quantity = {1,3}, skill={185,210,235,285} }, --Khadgar's Whisker
-		{ id=3819, quantity = {1,3}, skill={195,225,245,295} }, --Wintersbite
-		{ id=4625, quantity = {1,3}, skill={205,235,255,305} }, --Firebloom
-		{ id=8831, quantity = {1,3}, skill={210,240,260,310}, container = {{8153,{1,3}},{19726,{1,3}}} }, --Purple Lotus, Wildvine, Bloodvine
+		{ id=3821, quantity = {1,3}, skill={170,195,220,270}, type="item" }, --Goldthorn
+		{ id=3358, quantity = {1,3}, skill={185,210,235,285}, type="item" }, --Khadgar's Whisker
+		{ id=3819, quantity = {1,3}, skill={195,225,245,295}, type="item" }, --Wintersbite
+		{ id=4625, quantity = {1,3}, skill={205,235,255,305}, type="item" }, --Firebloom
+		{ id=8831, quantity = {1,3}, skill={210,240,260,310}, container = {{8153,{1,3}},{19726,{1,3}}}, type="item" }, --Purple Lotus, Wildvine, Bloodvine
 		{ name = L["Journeyman"], icon = "Trade_Herbalism" },
-		{ id=3820, quantity = {1,3}, skill={85,115,135,185} }, --Stranglekelp
-		{ id=2453, quantity = {1,3}, skill={100,130,150,200} }, --Bruiseweed
-		{ id=3355, quantity = {1,3}, skill={115,145,165,215} }, --Wild Steelbloom
-		{ id=3369, quantity = {1,3}, skill={120,150,170,220} }, --Grave Moss
-		{ id=3356, quantity = {1,3}, skill={125,155,175,225} }, --Kingsblood
-		{ id=3357, quantity = {1,3}, skill={150,175,200,250} }, --Liferoot
+		{ id=3820, quantity = {1,3}, skill={85,115,135,185}, type="item" }, --Stranglekelp
+		{ id=2453, quantity = {1,3}, skill={100,130,150,200}, type="item" }, --Bruiseweed
+		{ id=3355, quantity = {1,3}, skill={115,145,165,215}, type="item" }, --Wild Steelbloom
+		{ id=3369, quantity = {1,3}, skill={120,150,170,220}, type="item" }, --Grave Moss
+		{ id=3356, quantity = {1,3}, skill={125,155,175,225}, type="item" }, --Kingsblood
+		{ id=3357, quantity = {1,3}, skill={150,175,200,250}, type="item" }, --Liferoot
 		{},
 		{ name = L["Artisan"], icon = "Trade_Herbalism" },
-		{ id=8838, quantity = {1,3}, skill={230,255,280,330}, container = {{11514,{1,3}},{19726,{1,3}}} }, --Sungrass, Fel Creep, Bloodvine
-		{ id=8839, quantity = {1,3}, skill={235,260,285,335} }, --Blindweed
-		{ id=8845, quantity = {1,3}, skill={245,270,295,345} }, --Ghost Mushroom
-		{ id=8846, quantity = {1,3}, skill={250,275,300,350}, container = {{11514,{1,3}}} }, --Gromsblood, Fel Creep
+		{ id=8838, quantity = {1,3}, skill={230,255,280,330}, container = {{11514,{1,3}},{19726,{1,3}}}, type="item" }, --Sungrass, Fel Creep, Bloodvine
+		{ id=8839, quantity = {1,3}, skill={235,260,285,335}, type="item" }, --Blindweed
+		{ id=8845, quantity = {1,3}, skill={245,270,295,345}, type="item" }, --Ghost Mushroom
+		{ id=8846, quantity = {1,3}, skill={250,275,300,350}, container = {{11514,{1,3}}}, type="item" }, --Gromsblood, Fel Creep
 		{ id=13464, quantity = {1,3}, skill={260,280,310,360}, container = {{11514,{1,3}},{19726,{1,3}}}, type="item" }, --Golden Sansam, Fel Creep, Bloodvine
-		{ id=13463, quantity = {1,3}, skill={270,295,320,370}, container = {{11514,{1,3}},{19726,{1,3}},13468} }, --Dreamfoil, Fel Creep, Bloodvine, Black Lotus
+		{ id=13463, quantity = {1,3}, skill={270,295,320,370}, container = {{11514,{1,3}},{19726,{1,3}},13468}, type="item" }, --Dreamfoil, Fel Creep, Bloodvine, Black Lotus
 		--Expert
-		{ id=8836, quantity = {1,3}, skill={220,250,270,320}, container = {{11514,{1,3}},13466} }, --Arthas' Tears, Fel Creep, Plaguebloom
+		{ id=8836, quantity = {1,3}, skill={220,250,270,320}, container = {{11514,{1,3}},13466}, type="item" }, --Arthas' Tears, Fel Creep, Plaguebloom
 		{},
 		{ name = L["Artisan"], icon = "Trade_Herbalism" },
-		{ id=13465, quantity = {1,3}, skill={280,305,330,380}, container = {{11514,{1,3}},{19726,{1,3}},13468} }, --Mountain Silversage, Fel Creep, Bloodvine, Black Lotus
-		{ id=13466, quantity = {1,3}, skill={285,310,335,385}, container = {{11514,{1,3}},13468} }, --Plaguebloom, Fel Creep, Black Lotus
-		{ id=13467, quantity = {1,3}, skill={290,315,340,390}, container = {13468} }, --Icecap, Black Lotus
-		{ id=13468, skill={300,345,375,400} }, --Black Lotus
+		{ id=13465, quantity = {1,3}, skill={280,305,330,380}, container = {{11514,{1,3}},{19726,{1,3}},13468}, type="item" }, --Mountain Silversage, Fel Creep, Bloodvine, Black Lotus
+		{ id=13466, quantity = {1,3}, skill={285,310,335,385}, container = {{11514,{1,3}},13468}, type="item" }, --Plaguebloom, Fel Creep, Black Lotus
+		{ id=13467, quantity = {1,3}, skill={290,315,340,390}, container = {13468}, type="item" }, --Icecap, Black Lotus
+		{ id=13468, skill={300,345,375,400}, type="item" }, --Black Lotus
 	},
 
 	CookingApprentice = {
@@ -3597,7 +3597,6 @@ local craftingTable = {
 		{ id=41321, skill={80,100,110,120} }, --Gleaming Chain
 		{ id=41035, skill={80,105,115,125} }, --Amberstone Pendant
 		{ id=41587, skill={80,160,170,180} }, --Gloomweed Bindings
-		{ id=41334, skill={80,100,110,120} }, --Shining Copper Cuffs
 		{ id=41037, skill={85,105,115,125} }, --Deepmist Choker
 		{ id=41562, skill={85,105,115,125} }, --The King's Conviction
 		{ id=41732, skill={85,105,115,125} }, --Shadowmoon Orb
@@ -3606,8 +3605,8 @@ local craftingTable = {
 		{ id=41041, skill={90,105,112,120} }, --Shimmering Bronze Ring
 		{ id=41043, skill={95,110,120,130} }, --Amber Orb
 		{ id=41045, skill={100,120,130,140} }, --Encrusted Bronze Staff
-		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41047, skill={100,120,130,140} }, --Earthrock Loop
+		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41564, skill={100,120,130,140} }, --Shadowfall Jewel
 		{ id=41581, skill={100,120,130,140} }, --Serpent's Coil Staff
 		{ id=41323, skill={100,125,135,145} }, --Talisman of Stone
@@ -3621,8 +3620,8 @@ local craftingTable = {
 		{ id=41337, skill={115,135,142,150} }, --Dawnbright Cuffs
 		{ id=41734, skill={120,140,150,160} }, --Fangclaw Relic
 		{ id=41055, skill={120,145,155,165} }, --Pendant of Midnight
-		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41067, skill={125,135,145,155} }, --Rough Silver Ring
+		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41065, skill={125,140,142,145}, container = { 1206, 1705, 55249 } }, --Coarse Gemstone Cluster
 		{ id=41057, skill={125,145,155,165} }, --Agatestone Crown
 		{ id=41061, skill={125,145,155,165} }, --Binding Signet
@@ -3636,8 +3635,8 @@ local craftingTable = {
 		{ id=41327, skill={135,155,165,175} }, --Gleaming Silver Necklace
 		{ id=41339, skill={135,155,165,175} }, --Circlet of Dampening
 		{ id=41748, skill={135,155,165,175} }, --Totem of Self Preservation
-		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41583, skill={140,160,170,180} }, --Farraki Ceremony Totem
+		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id=41728, skill={140,160,170,180} }, --Blackrock Ironclamps
 		{ id=41570, skill={145,165,175,185} }, --Harpy Talon Ring
 		{ id=41742, skill={145,165,175,185} }, --Venomspire Diadem

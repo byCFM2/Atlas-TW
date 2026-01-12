@@ -11942,15 +11942,6 @@ AtlasTW.SpellDB = {
 				{ 55152, 2 },
 			},
 		},
-		[41334] = {
-			tools = { 55155 },
-			item = 56044,
-			reagents = {
-				{ 2840, 6 },
-				{ 818 },
-				{ 55246 },
-			},
-		},
 		[41335] = { --1.18 Jewelcrafting: Shining Copper Cuffs
 			tools = { 55155 },
 			item = 56044,

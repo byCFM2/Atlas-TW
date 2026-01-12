@@ -87,12 +87,15 @@ function AtlasTW.SearchLib.Search(Text)
         end
     end
 
-    -- Local cache of already added results (uniqueness by type and id)
+    -- Local cache of already added results (uniqueness by type, id, AND source page)
+    -- This allows the same item to appear from multiple sources (e.g., Black Lotus from world AND Herbalism)
     local seen = {}
     local function addUnique(entry)
         local ty = entry[4] or "item"
         local id = entry[1]
-        local key = ty .. ":" .. tostring(id)
+        local sourcePage = entry[5] or entry[3] or ""
+        -- Include source page in uniqueness key so same item can appear from different sources
+        local key = ty .. ":" .. tostring(id) .. ":" .. tostring(sourcePage)
         if not seen[key] then
             table_insert(AtlasTWCharDB.SearchResult, entry)
             seen[key] = true
@@ -195,21 +198,33 @@ function AtlasTW.SearchLib.Search(Text)
         end)
     end
 
-    -- Helper to find which loot page an item/spell belongs to
-    local function findFirstLootPageKeyInLootData(targetId)
-        if not AtlasTWLoot_Data or not targetId then return nil end
-        if AtlasTW.LootUtils and AtlasTW.LootUtils.IterateAllLootItems then
-            return AtlasTW.LootUtils.IterateAllLootItems(function(id, key, itemData)
-                if id == targetId then return key end
-                if type(itemData) == "table" and itemData.id == targetId then return key end
-            end)
-        end
-        return nil
+    -- Search for items in craft table containers (materials/reagents like Black Lotus)
+    -- These items may not have skill field but are referenced in container arrays
+    if AtlasTW.LootUtils and AtlasTW.LootUtils.IterateCraftLootItems then
+        AtlasTW.LootUtils.IterateCraftLootItems(function(idOrItem, pageKey, itemData)
+            local itemID = idOrItem
+            if type(itemData) == "table" and itemData.id then itemID = itemData.id end
+            if not itemID or itemID == 0 then return end
+            
+            -- Only check if this is a container item (material/reagent)
+            if type(itemData) == "table" and itemData.isContainer then
+                local itemName = GetItemInfo(itemID)
+                if itemName and isMatch(itemName) then
+                    local displayName = AtlasTWLoot_GetLootPageDisplayName(pageKey)
+                    addUnique({ itemID, displayName, pageKey, "item", pageKey })
+                end
+            end
+        end, false)  -- Search all pages (primary and secondary)
     end
 
-    -- Craft/profession page locator: find first loot table where spellID occurs (local for use in enchants)
+    -- Use the unified craft page search function from LootUtils
+    -- This ensures we only search craft tables, not instance data
+    -- Prevents spell ID 2169 (Dark Leather Tunic) from matching item ID 2169 (Buzzer Blade in Deadmines)
     local function findCraftLootPageLocal(spellID)
-        return findFirstLootPageKeyInLootData(spellID)
+        if AtlasTW.LootUtils and AtlasTW.LootUtils.FindCraftLootPageForSpell then
+            return AtlasTW.LootUtils.FindCraftLootPageForSpell(spellID)
+        end
+        return nil
     end
 
     -- Search for enchantments by name in new spell database
@@ -234,9 +249,9 @@ function AtlasTW.SearchLib.Search(Text)
         end
     end
 
-    -- Craft page locator: find first loot table where spellID occurs
+    -- Craft page locator: use the unified function from LootUtils
     local function findFirstCraftLootPageForSpell(spellID)
-        return findFirstLootPageKeyInLootData(spellID)
+        return findCraftLootPageLocal(spellID)
     end
 
     -- Search for craft spells: by spell name if available, otherwise by created item name
