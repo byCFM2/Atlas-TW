@@ -344,17 +344,21 @@ function AtlasTW.LootUtils.IterateCraftLootItems(callback, primaryOnly)
     if not callback or not AtlasTWLoot_Data then return end
 
     -- Primary page patterns (skill level based, not slot-based convenience pages)
-    -- These contain Apprentice, Journeyman, Expert, Artisan in their key names
+    local PRIMARY_PATTERNS = {
+        "Apprentice", "Journeyman", "Expert", "Artisan",
+        "Table$", "Smelting", "Swordsmith", "Hammersmith",
+        "Axesmith", "Armorsmith", "Weaponsmith", "Tribal",
+        "Elemental", "Dragonscale", "Goblin", "Gnomish",
+        "JewelcraftingGemology", "JewelcraftingGoldsmithing"
+    }
+
     local function isPrimaryPage(pageKey)
         if not pageKey or type(pageKey) ~= "string" then return false end
-        -- Match patterns like: AlchemyJourneyman, LeatherExpert, SmithingArtisan, etc.
-        if string.find(pageKey, "Apprentice") then return true end
-        if string.find(pageKey, "Journeyman") then return true end
-        if string.find(pageKey, "Expert") then return true end
-        if string.find(pageKey, "Artisan") then return true end
-        -- Also include specialty/subclass pages that are NOT slot-based
-        if string.find(pageKey, "Table$") then return true end -- PoisonsTable, MiningTable, etc.
-        if string.find(pageKey, "Smelting") then return true end
+        for i = 1, table.getn(PRIMARY_PATTERNS) do
+            if string.find(pageKey, PRIMARY_PATTERNS[i]) then
+                return true
+            end
+        end
         return false
     end
 
@@ -378,7 +382,7 @@ function AtlasTW.LootUtils.IterateCraftLootItems(callback, primaryOnly)
                     for j = 1, containerSize do
                         local containerItem = el.container[j]
                         local itemIDInContainer = nil
-                        
+
                         if type(containerItem) == "number" then
                             -- Simple format: { 13468 }
                             itemIDInContainer = containerItem
@@ -386,7 +390,7 @@ function AtlasTW.LootUtils.IterateCraftLootItems(callback, primaryOnly)
                             -- Complex format: { {13468, {1,3}} }
                             itemIDInContainer = containerItem[1]
                         end
-                        
+
                         if itemIDInContainer then
                             local res = callback(itemIDInContainer, key, { id = itemIDInContainer, isContainer = true })
                             if res then return res end
@@ -427,11 +431,11 @@ function AtlasTW.LootUtils.FindCraftLootPageForSpell(spellID)
     local primaryResult = AtlasTW.LootUtils.IterateCraftLootItems(function(id, key, itemData)
         if id == spellID then return key end
     end, true)  -- true = primaryOnly
-    
+
     if primaryResult then
         return primaryResult
     end
-    
+
     -- Fallback: search all pages (including secondary/convenience pages)
     return AtlasTW.LootUtils.IterateCraftLootItems(function(id, key, itemData)
         if id == spellID then return key end

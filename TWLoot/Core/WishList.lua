@@ -822,11 +822,11 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 				if (type(ik) == "string" or type(ik) == "number") and ik ~= "" then
 					extratext = GetLootTableParent(b, ik) or ""
 				else
-					-- If this is craft page, subtitle is profession name
-					extratext = GetProfessionByLootPageKey(src) or ""
+					-- If this is craft page or special page, use Meta-Category name
+					extratext = GetLootTableParent(nil, src) or ""
 				end
 			end
-			-- Fallback: if subtitle is empty and this is spell/enchant, try to determine profession
+			-- Fallback: if subtitle is empty and this is spell/enchant, try to determine Meta-Category
 			if (not extratext or extratext == "") and (elementType == "spell" or elementType == "enchant") then
 				if predefinedExtraText and predefinedExtraText ~= "" then
 					extratext = predefinedExtraText
@@ -835,9 +835,20 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 				else
 					local lootPage = FindFirstCraftLootPageForSpell(elemId)
 					if lootPage then
-						extratext = GetProfessionByLootPageKey(lootPage) or ""
+						extratext = GetLootTableParent(nil, lootPage) or ""
 					end
 				end
+			end
+		end
+				
+		-- Ensure header and subheader don't duplicate each other (e.g. "Alchemy" and "Alchemy" -> "Alchemy" and "Crafting")
+		if currentCategory and extratext and currentCategory == extratext then
+			local pKey = src or (v and (v.sourcePage or v[5] or v[3]))
+			local metaCategory = GetLootTableParent(nil, pKey)
+			if metaCategory and metaCategory ~= currentCategory then
+				extratext = metaCategory
+			elseif GetProfessionByLootPageKey(pKey) then
+				extratext = L["Crafting"]
 			end
 		end
 
@@ -856,21 +867,51 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 
 				if isIndentAtTop then
 					-- At column start, skip indent to satisfy "no indent at top"
-					-- Header itself at the top acts as a separator
-					table.insert(result, { 0, currentCategory, extratext })
-				else
-					-- Normal case: ensure header doesn't end up at bottom of column
-					local targetHeaderPos = currentCount + 2
-					if math.mod(targetHeaderPos, 15) == 0 then
-						-- Push to next column
-						table.insert(result, {})
-						table.insert(result, {})
-						table.insert(result, { 0, currentCategory, extratext })
-					elseif math.mod(targetIndentPos, 15) == 0 then
-						-- Indent would be at bottom, header at top
+					-- UNLESS it's Page 2+ and the cell directly above has an item
+					local needsTopSpacer = false
+					if targetIndentPos > 16 then
+						local abovePos = targetIndentPos - 16
+						local aboveCell = result[abovePos]
+						if aboveCell and aboveCell[1] and aboveCell[1] ~= 0 then
+							needsTopSpacer = true
+						end
+					end
+
+					if needsTopSpacer then
 						table.insert(result, {})
 						table.insert(result, { 0, currentCategory, extratext })
 					else
+						-- Header itself at the top acts as a separator
+						table.insert(result, { 0, currentCategory, extratext })
+					end
+				else
+					-- Normal case: ensure header doesn't end up at bottom of column
+					local targetHeaderPos = currentCount + 2
+					local needsPush = (math.mod(targetHeaderPos, 15) == 0)
+					local isStandardTransfer = (math.mod(targetIndentPos, 15) == 0)
+
+					if needsPush or isStandardTransfer then
+						-- Determine which boundary we are crossing
+						local boundaryPos = needsPush and targetHeaderPos or targetIndentPos
+						local isCol2ToCol1 = (math.mod(boundaryPos, 30) == 0)
+
+						local numSpacers = 2
+						if isCol2ToCol1 then
+							-- Check if the bottom of the first column on this page has an element
+							local cell15Pos = boundaryPos - 15
+							local cell15 = result[cell15Pos]
+							local isElementAt15 = cell15 and cell15[1] and cell15[1] ~= 0
+							if isElementAt15 then
+								numSpacers = 3
+							end
+						end
+
+						for s = 1, numSpacers do
+							table.insert(result, {})
+						end
+						table.insert(result, { 0, currentCategory, extratext })
+					else
+						-- Normal case: 1 spacer + header
 						table.insert(result, {})
 						table.insert(result, { 0, currentCategory, extratext })
 					end
@@ -882,6 +923,20 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 			lastCategoryKey = currentCategoryKey
 		elseif isBoundary then
 			-- Continuation of the same category at a column boundary
+			-- If Page 2+ and cell above has an item, add spacer
+			local targetPos = currentCount + 1
+			local needsTopSpacer = false
+			if targetPos > 16 then
+				local abovePos = targetPos - 16
+				local aboveCell = result[abovePos]
+				if aboveCell and aboveCell[1] and aboveCell[1] ~= 0 then
+					needsTopSpacer = true
+				end
+			end
+
+			if needsTopSpacer then
+				table.insert(result, {})
+			end
 			table.insert(result, { 0, currentCategory, extratext })
 		end
 
@@ -1022,9 +1077,73 @@ end
 function GetLootTableParent(bossName, instanceName)
 	-- Return instance name as extratext (subtitle)
 	if instanceName and instanceName ~= "" then
+		-- 1. Check Meta-Categories (World Events, Factions, World, Crafting, etc.)
+		if AtlasTW and AtlasTW.MenuData then
+			local L = AtlasTW.Localization.UI
+			local MenuToMeta = {
+				WorldEvents = L["World Events"] or "World Events",
+				Factions = L["Factions"] or "Factions",
+				WorldBosses = L["World"] or "World",
+				PVP = L["PvP Rewards"] or "PvP Rewards",
+				PVPSets = L["PvP Rewards"] or "PvP Rewards",
+				Sets = L["Collections"] or "Collections",
+				-- Professions
+				Alchemy = L["Crafting"] or "Crafting",
+				Smithing = L["Crafting"] or "Crafting",
+				Enchanting = L["Crafting"] or "Crafting",
+				Engineering = L["Crafting"] or "Crafting",
+				Leatherworking = L["Crafting"] or "Crafting",
+				Mining = L["Crafting"] or "Crafting",
+				Tailoring = L["Crafting"] or "Crafting",
+				Jewelcrafting = L["Crafting"] or "Crafting",
+				Cooking = L["Crafting"] or "Crafting",
+				FirstAid = L["Crafting"] or "Crafting",
+				Poisons = L["Crafting"] or "Crafting",
+				Herbalism = L["Crafting"] or "Crafting",
+				Survival = L["Crafting"] or "Crafting",
+				Skinning = L["Crafting"] or "Crafting",
+				Fishing = L["Crafting"] or "Crafting",
+			}
+
+			-- Check if instanceName is a direct menu key
+			if MenuToMeta[instanceName] then return MenuToMeta[instanceName] end
+
+			-- Scan MenuData tables for the lootpage
+			for menuKey, metaName in pairs(MenuToMeta) do
+				local menuTable = AtlasTW.MenuData[menuKey]
+				if type(menuTable) == "table" then
+					local maxIdx = 0
+					for k, _ in pairs(menuTable) do if type(k) == "number" and k > maxIdx then maxIdx = k end end
+					for i = 1, maxIdx do
+						local entry = menuTable[i]
+						if entry and entry.lootpage == instanceName then
+							return metaName
+						end
+					end
+				end
+			end
+		end
+
+		-- 2. Check InstanceData
 		if AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[instanceName] and AtlasTW.InstanceData[instanceName].Name then
 			return AtlasTW.InstanceData[instanceName].Name
 		end
+
+		-- 3. Handle prefixes for WorldBlues, etc.
+		local specialPrefixes = {
+			WorldBlues = L["World Blues"] or "World Blues",
+			WorldEnchants = L["World Enchants"] or "World Enchants",
+			WorldEpics = L["World Epics"] or "World Epics",
+			WorldEvents = L["World Events"] or "World Events",
+			PVPRewards = L["PvP Rewards"] or "PvP Rewards",
+			PVP = L["PvP Rewards"] or "PvP Rewards",
+		}
+		for prefix, localizedName in pairs(specialPrefixes) do
+			if string.sub(instanceName, 1, string.len(prefix)) == prefix then
+				return localizedName
+			end
+		end
+
 		-- Fallback: check if instanceName is a loot page key
 		local displayName = AtlasTWLoot_GetLootPageDisplayName(instanceName)
 		if displayName and displayName ~= instanceName then
