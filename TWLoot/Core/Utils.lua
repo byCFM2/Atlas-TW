@@ -481,9 +481,383 @@ function AtlasTW.LootUtils.GetLootTableSource(pageKey)
                 end
             end
         end
-
-        -- Check Collections/Sets if applicable (Add more categories as needed)
     end
 
     return nil
+end
+
+-- ============================================================================
+-- Shared Header/Subtitle Resolution Utilities
+-- ============================================================================
+
+-- Cache for categorizing WishList/SearchResult results
+if not AtlasTW._CatCache then AtlasTW._CatCache = {} end
+if not AtlasTW._CatRev then AtlasTW._CatRev = {} end
+
+---
+--- Invalidates the categorized list cache for a specific key
+--- @param key string - The cache key to invalidate
+--- @return nil
+--- @usage AtlasTW.LootUtils.InvalidateCategorizedList("wishlist")
+---
+function AtlasTW.LootUtils.InvalidateCategorizedList(key)
+    if not key then return end
+    if not AtlasTW._CatRev then AtlasTW._CatRev = {} end
+    AtlasTW._CatRev[key] = (AtlasTW._CatRev[key] or 0) + 1
+    if AtlasTW._CatCache and AtlasTW._CatCache[key] then
+        AtlasTW._CatCache[key].data = nil
+        AtlasTW._CatCache[key].rev = AtlasTW._CatRev[key]
+    end
+end
+
+-- Global alias for backward compatibility
+function AtlasTWLoot_InvalidateCategorizedList(key)
+    AtlasTW.LootUtils.InvalidateCategorizedList(key)
+end
+
+---
+--- Gets instance key by name or returns key as is
+--- @param instName string - The instance name to look up
+--- @return string|nil - The instance key or nil if not found
+--- @usage local key = AtlasTW.LootUtils.GetInstanceKeyByName("Molten Core")
+---
+function AtlasTW.LootUtils.GetInstanceKeyByName(instName)
+    if not instName or instName == "" then return nil end
+    if AtlasTW and AtlasTW.InstanceData then
+        if AtlasTW.InstanceData[instName] then return instName end
+        for key, inst in pairs(AtlasTW.InstanceData) do
+            if inst and inst.Name == instName then
+                return key
+            end
+        end
+    end
+    return nil
+end
+
+---
+--- Returns localized profession name by loot page key (craft page)
+--- @param pageKey string - The loot page key to get profession for
+--- @return string|nil - The localized profession name if found
+--- @usage local profession = AtlasTW.LootUtils.GetProfessionByLootPageKey("Alchemy1")
+---
+function AtlasTW.LootUtils.GetProfessionByLootPageKey(pageKey)
+    if not pageKey or type(pageKey) ~= "string" then return nil end
+    if not AtlasTW or not AtlasTW.MenuData then return nil end
+
+    local LS = AtlasTW.Localization.Spells
+    local MenuData = AtlasTW.MenuData
+
+    -- Mapping menu table keys to localized profession names
+    local ProfByTableKey = {
+        Alchemy = LS["Alchemy"] or "Alchemy",
+        Smithing = LS["Blacksmithing"] or "Blacksmithing",
+        Enchanting = LS["Enchanting"] or "Enchanting",
+        Engineering = LS["Engineering"] or "Engineering",
+        Leatherworking = LS["Leatherworking"] or "Leatherworking",
+        Mining = LS["Mining"] or "Mining",
+        Tailoring = LS["Tailoring"] or "Tailoring",
+        Jewelcrafting = LS["Jewelcrafting"] or "Jewelcrafting",
+        Cooking = LS["Cooking"] or "Cooking",
+        FirstAid = LS["First Aid"] or "First Aid",
+        Poisons = LS["Poisons"] or "Poisons",
+        Herbalism = LS["Herbalism"] or "Herbalism",
+        Survival = LS["Survival"] or "Survival",
+    }
+
+    -- Local helper: safe traversal of sparse arrays
+    local function GetMaxNumericIndex(tbl)
+        local maxIndex = 0
+        for k, v in pairs(tbl) do
+            if type(k) == "number" and k > maxIndex and v then
+                maxIndex = k
+            end
+        end
+        return maxIndex
+    end
+
+    -- Local helper: attempt to find profession by menu table
+    local function TryResolveByTable(tableKey)
+        local t = MenuData[tableKey]
+        if not t or type(t) ~= "table" then return nil end
+        local maxIndex = GetMaxNumericIndex(t)
+        for i = 1, maxIndex do
+            local e = t[i]
+            if e and e.lootpage == pageKey then
+                -- If there's a prefix before colon in the name - use it
+                if e.name and type(e.name) == "string" then
+                    local pos = string.find(e.name, ":")
+                    if pos and pos > 1 then
+                        return string.sub(e.name, 1, pos - 1)
+                    end
+                end
+                return ProfByTableKey[tableKey]
+            end
+        end
+        return nil
+    end
+
+    -- 1) Direct match in main profession tables
+    for tableKey, _ in pairs(ProfByTableKey) do
+        local r = TryResolveByTable(tableKey)
+        if r and r ~= "" then return r end
+    end
+
+    -- 2) Match in top-level Crafting
+    if MenuData.Crafting and type(MenuData.Crafting) == "table" then
+        local maxIndex = GetMaxNumericIndex(MenuData.Crafting)
+        for i = 1, maxIndex do
+            local e = MenuData.Crafting[i]
+            if e and e.lootpage == pageKey then
+                if e.name and e.name ~= "" then
+                    return e.name
+                end
+                break
+            end
+        end
+    end
+
+    -- 3) Fallback to prefixes
+    for tableKey, localizedName in pairs(ProfByTableKey) do
+        if string.sub(pageKey, 1, string.len(tableKey)) == tableKey then
+            return localizedName
+        end
+    end
+
+    return nil
+end
+
+-- Global alias for backward compatibility
+function GetProfessionByLootPageKey(pageKey)
+    return AtlasTW.LootUtils.GetProfessionByLootPageKey(pageKey)
+end
+
+---
+--- Returns meta-category name for a menu/loot page (Crafting, Factions, World, etc.)
+--- @param instanceName string - The instance/page key to check
+--- @return string|nil - The meta-category name if found
+--- @usage local meta = AtlasTW.LootUtils.GetMetaCategoryForMenu("Darnassus")
+---
+function AtlasTW.LootUtils.GetMetaCategoryForMenu(instanceName)
+    if not instanceName or not AtlasTW or not AtlasTW.MenuData then return nil end
+
+    local L = AtlasTW.Localization.UI
+    local MenuToMeta = {
+        WorldEvents = L["World Events"] or "World Events",
+        Factions = L["Factions"] or "Factions",
+        WorldBosses = L["World"] or "World",
+        PVP = L["PvP Rewards"] or "PvP Rewards",
+        PVPSets = L["PvP Rewards"] or "PvP Rewards",
+        Sets = L["Collections"] or "Collections",
+        -- Professions
+        Alchemy = L["Crafting"] or "Crafting",
+        Smithing = L["Crafting"] or "Crafting",
+        Enchanting = L["Crafting"] or "Crafting",
+        Engineering = L["Crafting"] or "Crafting",
+        Leatherworking = L["Crafting"] or "Crafting",
+        Mining = L["Crafting"] or "Crafting",
+        Tailoring = L["Crafting"] or "Crafting",
+        Jewelcrafting = L["Crafting"] or "Crafting",
+        Cooking = L["Crafting"] or "Crafting",
+        FirstAid = L["Crafting"] or "Crafting",
+        Poisons = L["Crafting"] or "Crafting",
+        Herbalism = L["Crafting"] or "Crafting",
+        Survival = L["Crafting"] or "Crafting",
+        Skinning = L["Crafting"] or "Crafting",
+        Fishing = L["Crafting"] or "Crafting",
+    }
+
+    -- Check if instanceName is a direct menu key
+    if MenuToMeta[instanceName] then return MenuToMeta[instanceName] end
+
+    -- Scan MenuData tables for the lootpage
+    for menuKey, metaName in pairs(MenuToMeta) do
+        local menuTable = AtlasTW.MenuData[menuKey]
+        if type(menuTable) == "table" then
+            local maxIdx = 0
+            for k, _ in pairs(menuTable) do
+                if type(k) == "number" and k > maxIdx then maxIdx = k end
+            end
+            for i = 1, maxIdx do
+                local entry = menuTable[i]
+                if entry and entry.lootpage == instanceName then
+                    return metaName
+                end
+            end
+        end
+    end
+
+    return nil
+end
+
+-- Global alias for backward compatibility
+function AtlasTW_GetMetaCategoryForMenu(instanceName)
+    return AtlasTW.LootUtils.GetMetaCategoryForMenu(instanceName)
+end
+
+---
+--- Returns localized/readable name for loot page by its key
+--- @param pageKey string - The loot page key to get display name for
+--- @return string|nil - The display name if found, nil otherwise
+--- @usage local name = AtlasTW.LootUtils.GetLootPageDisplayName("BWL_Nefarian")
+---
+function AtlasTW.LootUtils.GetLootPageDisplayName(pageKey)
+    if not pageKey or pageKey == "" then return nil end
+
+    local L = AtlasTW.Localization.UI
+    local LS = AtlasTW.Localization.Spells
+
+    -- 0. Check if it's an instance key directly
+    if AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[pageKey] then
+        return AtlasTW.InstanceData[pageKey].Name or pageKey
+    end
+
+    -- 1. Try to resolve display name from MenuData first
+    if AtlasTW and AtlasTW.MenuData then
+        local menuTitles = {
+            Alchemy = LS["Alchemy"] or "Alchemy",
+            Smithing = LS["Blacksmithing"] or "Blacksmithing",
+            Enchanting = LS["Enchanting"] or "Enchanting",
+            Engineering = LS["Engineering"] or "Engineering",
+            Leatherworking = LS["Leatherworking"] or "Leatherworking",
+            Mining = LS["Mining"] or "Mining",
+            Tailoring = LS["Tailoring"] or "Tailoring",
+            Jewelcrafting = LS["Jewelcrafting"] or "Jewelcrafting",
+            Cooking = LS["Cooking"] or "Cooking",
+            FirstAid = LS["First Aid"] or "First Aid",
+            Survival = LS["Survival"] or "Survival",
+            Skinning = LS["Skinning"] or "Skinning",
+            Fishing = LS["Fishing"] or "Fishing",
+            Poisons = LS["Poisons"] or "Poisons",
+            Herbalism = LS["Herbalism"] or "Herbalism",
+            WorldBlues = L["World Blues"] or "World Blues",
+            WorldEvents = L["World Events"] or "World Events",
+            Factions = L["Factions"] or "Factions",
+            PVP = L["PvP Rewards"] or "PvP Rewards",
+            Sets = L["Collections"] or "Collections",
+        }
+        if menuTitles[pageKey] then
+            return menuTitles[pageKey]
+        end
+
+        local menuTablesToCheck = {
+            AtlasTW.MenuData.WorldEvents,
+            AtlasTW.MenuData.Factions,
+            AtlasTW.MenuData.PVP,
+            AtlasTW.MenuData.PVPSets,
+            AtlasTW.MenuData.Sets,
+            AtlasTW.MenuData.WorldBlues,
+            AtlasTW.MenuData.Alchemy,
+            AtlasTW.MenuData.Smithing,
+            AtlasTW.MenuData.Enchanting,
+            AtlasTW.MenuData.Engineering,
+            AtlasTW.MenuData.Herbalism,
+            AtlasTW.MenuData.Leatherworking,
+            AtlasTW.MenuData.Mining,
+            AtlasTW.MenuData.Tailoring,
+            AtlasTW.MenuData.Jewelcrafting,
+            AtlasTW.MenuData.Cooking,
+            AtlasTW.MenuData.FirstAid,
+            AtlasTW.MenuData.Survival,
+            AtlasTW.MenuData.Skinning,
+            AtlasTW.MenuData.Fishing,
+            AtlasTW.MenuData.Poisons,
+        }
+        for _, menuTable in pairs(menuTablesToCheck) do
+            if type(menuTable) == "table" then
+                for _, entry in pairs(menuTable) do
+                    if type(entry) == "table" and entry.lootpage == pageKey and entry.name then
+                        return entry.name
+                    end
+                end
+            end
+        end
+    end
+
+    -- 2. Check in Loot Data itself
+    if AtlasTW.DataResolver and AtlasTW.DataResolver.IsLootTableAvailable and AtlasTW.DataResolver.IsLootTableAvailable(pageKey) and AtlasTWLoot_Data and AtlasTWLoot_Data[pageKey] then
+        local page = AtlasTWLoot_Data[pageKey]
+        if type(page) == "table" then
+            local m = table.getn(page)
+            for i = 1, m do
+                local e = page[i]
+                if type(e) == "table" and e.name and e.name ~= "" then
+                    return e.name
+                end
+            end
+        end
+    end
+
+    return pageKey
+end
+
+-- Global alias for backward compatibility
+function AtlasTWLoot_GetLootPageDisplayName(pageKey)
+    return AtlasTW.LootUtils.GetLootPageDisplayName(pageKey)
+end
+
+---
+--- Gets the parent instance/category name for a loot table (used for subtitles)
+--- @param bossName string - The boss name
+--- @param instanceName string - The instance name
+--- @return string - The parent instance display name
+--- @usage local parent = AtlasTW.LootUtils.GetLootTableParent("Nefarian", "BWL")
+---
+function AtlasTW.LootUtils.GetLootTableParent(bossName, instanceName)
+    local L = AtlasTW.Localization.UI
+
+    -- Return instance name as extratext (subtitle)
+    if instanceName and instanceName ~= "" then
+        -- 1. Check Meta-Categories via shared function
+        local metaCategory = AtlasTW.LootUtils.GetMetaCategoryForMenu(instanceName)
+        if metaCategory then
+            return metaCategory
+        end
+
+        -- 2. Check InstanceData
+        if AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[instanceName] and AtlasTW.InstanceData[instanceName].Name then
+            return AtlasTW.InstanceData[instanceName].Name
+        end
+
+        -- 3. Handle prefixes for WorldBlues, etc.
+        local specialPrefixes = {
+            WorldBlues = L["World Blues"] or "World Blues",
+            WorldEnchants = L["World Enchants"] or "World Enchants",
+            WorldEpics = L["World Epics"] or "World Epics",
+            WorldEvents = L["World Events"] or "World Events",
+            PVPRewards = L["PvP Rewards"] or "PvP Rewards",
+            PVP = L["PvP Rewards"] or "PvP Rewards",
+        }
+        for prefix, localizedName in pairs(specialPrefixes) do
+            if string.sub(instanceName, 1, string.len(prefix)) == prefix then
+                return localizedName
+            end
+        end
+
+        -- Fallback: check if instanceName is a loot page key
+        local displayName = AtlasTW.LootUtils.GetLootPageDisplayName(instanceName)
+        if displayName and displayName ~= instanceName then
+            return displayName
+        end
+        return instanceName
+    end
+
+    -- If no instance name, try to find it by boss name
+    if bossName and AtlasTW.InstanceData then
+        for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
+            if instanceData.Bosses then
+                for _, bossData in ipairs(instanceData.Bosses) do
+                    if bossData.name == bossName then
+                        return instanceData.Name or instanceKey
+                    end
+                end
+            end
+        end
+    end
+
+    return L["Unknown"] or "Unknown"
+end
+
+-- Global alias for backward compatibility
+function GetLootTableParent(bossName, instanceName)
+    return AtlasTW.LootUtils.GetLootTableParent(bossName, instanceName)
 end

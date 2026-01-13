@@ -29,6 +29,66 @@ local LocalizedStrings = {
     RareMobs = L["Rare Mobs"]
 }
 
+-- Menu key to meta-category mapping (used for parent resolution)
+local MenuKeyToMetaCategory = {
+    WorldEvents = LocalizedStrings.WorldEvents,
+    Factions = LocalizedStrings.Factions,
+    WorldBosses = LocalizedStrings.World,
+    PVP = LocalizedStrings.PvPRewards,
+    PVPSets = LocalizedStrings.PvPRewards,
+    Sets = LocalizedStrings.Collections,
+    -- Professions (all map to Crafting)
+    Alchemy = LocalizedStrings.Crafting,
+    Smithing = LocalizedStrings.Crafting,
+    Enchanting = LocalizedStrings.Crafting,
+    Engineering = LocalizedStrings.Crafting,
+    Leatherworking = LocalizedStrings.Crafting,
+    Mining = LocalizedStrings.Crafting,
+    Tailoring = LocalizedStrings.Crafting,
+    Jewelcrafting = LocalizedStrings.Crafting,
+    Cooking = LocalizedStrings.Crafting,
+    FirstAid = LocalizedStrings.Crafting,
+    Poisons = LocalizedStrings.Crafting,
+    Herbalism = LocalizedStrings.Crafting,
+    Survival = LocalizedStrings.Crafting,
+    Skinning = LocalizedStrings.Crafting,
+    Fishing = LocalizedStrings.Crafting,
+}
+
+---
+--- Gets the meta-category for a menu key or lootpage
+--- @param key string - Menu key (e.g., "Alchemy") or lootpage identifier
+--- @return string|nil - Localized meta-category name, or nil if not found
+--- @usage local meta = AtlasTW_GetMetaCategoryForMenu("Alchemy") -- returns L["Crafting"]
+---
+function AtlasTW_GetMetaCategoryForMenu(key)
+    if not key or not AtlasTW or not AtlasTW.MenuData then return nil end
+
+    -- Direct menu key lookup
+    if MenuKeyToMetaCategory[key] then
+        return MenuKeyToMetaCategory[key]
+    end
+
+    -- Scan MenuData tables for the lootpage
+    for menuKey, metaName in pairs(MenuKeyToMetaCategory) do
+        local menuTable = AtlasTW.MenuData[menuKey]
+        if type(menuTable) == "table" then
+            local maxIdx = 0
+            for k, _ in pairs(menuTable) do
+                if type(k) == "number" and k > maxIdx then maxIdx = k end
+            end
+            for i = 1, maxIdx do
+                local entry = menuTable[i]
+                if entry and entry.lootpage == key then
+                    return metaName
+                end
+            end
+        end
+    end
+
+    return nil
+end
+
 --- Counts the maximum numeric index in a sparse array
 --- @param tbl table The table to analyze for maximum numeric index
 --- @return number The highest numeric key found in the table
