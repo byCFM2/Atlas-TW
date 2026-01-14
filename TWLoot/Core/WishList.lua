@@ -19,7 +19,7 @@ local L = AtlasTW.Localization.UI
 local LS = AtlasTW.Localization.Spells
 
 -- Forward declaration to use function before its definition
-local _GetInstanceKeyByName
+-- (Removed local _GetInstanceKeyByName as we use AtlasTW.LootUtils.GetInstanceKeyByName)
 
 ---
 --- Displays the WishList interface and normalizes wish list data
@@ -39,7 +39,7 @@ function AtlasTWLoot_ShowWishList()
 			-- Normalize instance field: if name is recorded, replace with key
 			if v.instance and v.instance ~= "" then
 				if not (AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[v.instance]) then
-					local k = _GetInstanceKeyByName(v.instance)
+					local k = AtlasTW.LootUtils.GetInstanceKeyByName(v.instance)
 					if k then v.instance = k end
 				end
 			end
@@ -48,7 +48,7 @@ function AtlasTWLoot_ShowWishList()
 				local bossName, instPart = AtlasTW.LootUtils.Strsplit("|", v.sourcePage)
 				if instPart and instPart ~= "" then
 					if not (AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[instPart]) then
-						local k = _GetInstanceKeyByName(instPart)
+						local k = AtlasTW.LootUtils.GetInstanceKeyByName(instPart)
 						if k then
 							v.sourcePage = (bossName or (v.element or "")) .. "|" .. k
 							if not v.instance or v.instance == "" then v.instance = k end
@@ -88,65 +88,8 @@ end
 --- @return string|nil, string|nil - The element name and instance key if found
 --- @usage local elem, inst = FindLocationById(12345)
 ---
----
---- Helper function: find first location of ID (numeric) in instance database
---- @param targetId number - The target ID to search for
---- @return string|nil, string|nil - The element name and instance key if found
---- @usage local elem, inst = FindLocationById(12345)
----
 local function FindLocationById(targetId)
-	if not targetId or not AtlasTW or not AtlasTW.InstanceData or not AtlasTW.LootUtils or not AtlasTW.LootUtils.IterateAllLootItems then
-		return
-			nil, nil
-	end
-
-	-- Local cache to resolve context from keys (similar to Search.lua)
-	local pageKeyToContext = {}
-	local function resolveContext(pageKey)
-		if pageKeyToContext[pageKey] then return unpack(pageKeyToContext[pageKey]) end
-		-- Note: IterateAllLootItems iterates EVERYTHING.
-		-- To emulate FindLocationById's behavior (finding INSTANCE location),
-		-- we really only care about items that are linked to an Instance.
-		-- So we iterate InstanceData to build a map if needed,
-		-- OR we can just scan InstanceData like before but supporting string keys?
-		-- Actually, IterateAllLootItems passes 'key' which is bossID or table key.
-		-- If we search for 12345, IterateAllLootItems finds it and gives us 'key'.
-		-- We then need to map 'key' -> 'Instance/Boss'.
-		-- If 'key' IS a bossID, we are good.
-		-- If 'key' is a loot page key (e.g. "MCBoss1"), we need to know it belongs to MC.
-		-- So we need the reverse lookup.
-		for instKey, inst in pairs(AtlasTW.InstanceData) do
-			if inst.Bosses then
-				for _, boss in ipairs(inst.Bosses) do
-					local items = boss.items or boss.loot
-					if boss.id == pageKey or items == pageKey then
-						local res = { (boss.name or boss.Name or "?"), instKey }
-						pageKeyToContext[pageKey] = res
-						return unpack(res)
-					end
-				end
-			end
-			if inst.Reputation then
-				for _, src in pairs(inst.Reputation) do
-					local items = src.items or src.loot
-					if items == pageKey then
-						local res = { (src.name or "Reputation"), instKey }
-						pageKeyToContext[pageKey] = res
-						return unpack(res)
-					end
-				end
-			end
-			if inst.Keys then
-				for _, src in pairs(inst.Keys) do
-					local items = src.items or src.loot
-					if items == pageKey then
-						local res = { (src.name or "Keys"), instKey }
-						pageKeyToContext[pageKey] = res
-						return unpack(res)
-					end
-				end
-			end
-		end
+	if not targetId or not AtlasTW or not AtlasTW.LootUtils or not AtlasTW.LootUtils.IterateAllLootItems then
 		return nil, nil
 	end
 
@@ -154,7 +97,7 @@ local function FindLocationById(targetId)
 		if id == targetId or (type(itemData) == "table" and itemData.id == targetId) then
 			-- We found the item in loot page 'key'.
 			-- Now check if 'key' belongs to an instance.
-			local elem, inst = resolveContext(key)
+			local elem, inst = AtlasTW.LootUtils.GetBossAndInstanceFromPageKey(key)
 			if elem and inst then
 				return elem, inst
 			end
@@ -220,21 +163,6 @@ local function FindInstanceByElemName(elemName)
 	return nil, elemName
 end
 
----
---- Helper: find first craft loot page by spell ID
---- Uses unified function from LootUtils that only searches craft tables
---- This prevents spell IDs from matching dungeon item IDs with the same number
---- @param spellID number - The spell ID to search for
---- @return string|nil - The loot page key if found, nil otherwise
---- @usage local pageKey = FindFirstCraftLootPageForSpell(12345)
----
-local function FindFirstCraftLootPageForSpell(spellID)
-	if not spellID then return nil end
-	if AtlasTW.LootUtils and AtlasTW.LootUtils.FindCraftLootPageForSpell then
-		return AtlasTW.LootUtils.FindCraftLootPageForSpell(spellID)
-	end
-	return nil
-end
 
 ---
 --- Adds an item to the player's wish list with context information
@@ -325,7 +253,7 @@ function AtlasTWLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, ty
 	-- If still no context, try to find it for spells/enchants
 	if (not currentElement or currentElement == "") and (not currentInstanceKey or currentInstanceKey == "") then
 		if (elementType == "spell" or elementType == "enchant") and actualItemID and actualItemID ~= 0 then
-			local lootPage = FindFirstCraftLootPageForSpell(actualItemID)
+			local lootPage = AtlasTW.LootUtils.FindCraftLootPageForSpell(actualItemID)
 			if lootPage then
 				currentInstanceKey = lootPage
 				currentElement = AtlasTWLoot_GetLootPageDisplayName(lootPage)
@@ -578,7 +506,7 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 			else
 				-- Try to calculate header/subtitle for spells/enchants by craft page
 				if (elementType == "spell" or elementType == "enchant") and elemId and elemId ~= 0 then
-					local lootPage = FindFirstCraftLootPageForSpell(elemId)
+					local lootPage = AtlasTW.LootUtils.FindCraftLootPageForSpell(elemId)
 					if lootPage then
 						local displayName = AtlasTWLoot_GetLootPageDisplayName(lootPage)
 						local headerName = displayName
@@ -623,14 +551,14 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 				elseif elementType == "enchant" then
 					extratext = LS and LS["Enchanting"] or "Enchanting"
 				else
-					local lootPage = FindFirstCraftLootPageForSpell(elemId)
+					local lootPage = AtlasTW.LootUtils.FindCraftLootPageForSpell(elemId)
 					if lootPage then
 						extratext = GetLootTableParent(nil, lootPage) or ""
 					end
 				end
 			end
 		end
-				
+
 		-- Ensure header and subheader don't duplicate each other (e.g. "Alchemy" and "Alchemy" -> "Alchemy" and "Crafting")
 		if currentCategory and extratext and currentCategory == extratext then
 			local pKey = src or (v and (v.sourcePage or v[5] or v[3]))
@@ -753,7 +681,7 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 		if not src2 and (elementType == "spell" or elementType == "enchant") then
 			local eid = (v.id ~= nil) and v.id or v[1]
 			if eid and eid ~= 0 then
-				local lp = FindFirstCraftLootPageForSpell(eid)
+				local lp = AtlasTW.LootUtils.FindCraftLootPageForSpell(eid)
 				if lp then
 					src2 = lp
 				end

@@ -25,7 +25,6 @@ local L = AtlasTW.Localization.UI
 local GetItemInfo = GetItemInfo
 local string_lower = string.lower
 local string_find = string.find
-local string_gsub = string.gsub
 local type = type
 local ipairs = ipairs
 local pairs = pairs
@@ -102,66 +101,25 @@ function AtlasTW.SearchLib.Search(Text)
         end
     end
 
-    local function addItemResult(itemID, bossName, instanceName, instanceKey)
-        if not itemID or itemID == 0 then return end
-        local itemName = GetItemInfo(itemID)
-        if itemName and isMatch(itemName) then
-            -- In SearchResult we store: [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage (optional)
-            local entry = { itemID, bossName, instanceKey, "item" }
-            if instanceKey and instanceKey ~= "" then
-                table_insert(entry, (bossName or "") .. "|" .. instanceKey)
-            end
-            addUnique(entry)
-        end
-    end
-
     -- Local cache for page key resolution
     local pageKeyCache = {}
     local function resolveBossAndInstanceFromPageKey(pageKey)
-        if not pageKey or type(pageKey) ~= "string" or not AtlasTW or not AtlasTW.InstanceData then
-            return nil, nil
-        end
+        if not pageKey or type(pageKey) ~= "string" then return nil, nil end
+
         -- Check cache first
         if pageKeyCache[pageKey] then
             local cached = pageKeyCache[pageKey]
             return cached[1], cached[2]
         end
-        for instKey, inst in pairs(AtlasTW.InstanceData) do
-            if inst and inst.Bosses then
-                for _, boss in ipairs(inst.Bosses) do
-                    local items = boss.items or boss.loot
-                    -- Check if boss.id matches pageKey (standard) or if items IS the key
-                    if boss and (boss.id == pageKey or items == pageKey) then
-                        local bossName = boss.name or boss.Name
-                        pageKeyCache[pageKey] = { bossName, instKey }
-                        return bossName, instKey
-                    end
-                end
-            end
-            if inst and inst.Reputation then
-                for _, src in pairs(inst.Reputation) do
-                    local items = src.items or src.loot
-                    if items == pageKey then
-                        local srcName = src.name or "Reputation"
-                        pageKeyCache[pageKey] = { srcName, instKey }
-                        return srcName, instKey
-                    end
-                end
-            end
-            if inst and inst.Keys then
-                for _, src in pairs(inst.Keys) do
-                    local items = src.items or src.loot
-                    if items == pageKey then
-                        local srcName = src.name or "Keys"
-                        pageKeyCache[pageKey] = { srcName, instKey }
-                        return srcName, instKey
-                    end
-                end
-            end
+
+        local bossName, instKey = nil, nil
+        if AtlasTW.LootUtils and AtlasTW.LootUtils.GetBossAndInstanceFromPageKey then
+            bossName, instKey = AtlasTW.LootUtils.GetBossAndInstanceFromPageKey(pageKey)
         end
-        -- Cache miss result too
-        pageKeyCache[pageKey] = { nil, nil }
-        return nil, nil
+
+        -- Cache result (even if nil, to avoid re-scanning)
+        pageKeyCache[pageKey] = { bossName, instKey }
+        return bossName, instKey
     end
 
     -- Main item search using IterateAllLootItems
@@ -205,7 +163,7 @@ function AtlasTW.SearchLib.Search(Text)
             local itemID = idOrItem
             if type(itemData) == "table" and itemData.id then itemID = itemData.id end
             if not itemID or itemID == 0 then return end
-            
+
             -- Only check if this is a container item (material/reagent)
             if type(itemData) == "table" and itemData.isContainer then
                 local itemName = GetItemInfo(itemID)

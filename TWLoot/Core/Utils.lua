@@ -68,15 +68,15 @@ end
 -- @description Common string and link utilities for Atlas-TW Loot
 ---
 function AtlasTW.LootUtils.GetChatLink(id)
-	local itemName, itemLink, itemQuality = GetItemInfo(tonumber(id))
-	if not itemName or not itemLink or not itemQuality then
-		-- If item is not cached, return simple link
-		return "[Item:" .. tostring(id) .. "]"
-	end
+    local itemName, itemLink, itemQuality = GetItemInfo(tonumber(id))
+    if not itemName or not itemLink or not itemQuality then
+        -- If item is not cached, return simple link
+        return "[Item:" .. tostring(id) .. "]"
+    end
 
-	local _, _, _, colorCode = GetItemQualityColor(itemQuality)
-	local colorHex = string.sub(colorCode, 2)
-	return "\124" .. colorHex .. "\124H" .. itemLink .. "\124h[" .. itemName .. "]\124h\124r"
+    local _, _, _, colorCode = GetItemQualityColor(itemQuality)
+    local colorHex = string.sub(colorCode, 2)
+    return "\124" .. colorHex .. "\124H" .. itemLink .. "\124h[" .. itemName .. "]\124h\124r"
 end
 
 ---
@@ -103,10 +103,10 @@ function AtlasTW.LootUtils.StripFormatting(text)
     -- Remove remaining single |
     text = string.gsub(text, "|", "")
     -- Remove all types of brackets and their content
-    text = string.gsub(text, "%(.-%)", "")  -- ()
-    text = string.gsub(text, "%[.-%]", "")  -- []
-    text = string.gsub(text, "%{.-%}", "")  -- {}
-    text = string.gsub(text, "%<.-%>", "")  -- <>
+    text = string.gsub(text, "%(.-%)", "") -- ()
+    text = string.gsub(text, "%[.-%]", "") -- []
+    text = string.gsub(text, "%{.-%}", "") -- {}
+    text = string.gsub(text, "%<.-%>", "") -- <>
     return text
 end
 
@@ -159,31 +159,31 @@ end
 --- @usage local a,b = AtlasTW.LootUtils.Strsplit("|", "a|b|c")
 ---
 function AtlasTW.LootUtils.Strsplit(delim, str, maxNb, onlyLast)
-	if not str or not delim then return { str } end
-	if string.find(str, delim) == nil then
-		return { str }
-	end
-	if maxNb == nil or maxNb < 1 then
-		maxNb = 0
-	end
-	local result = {}
-	local pat = "(.-)" .. delim .. "()"
-	local nb = 0
-	local lastPos
-	for part, pos in string.gfind(str, pat) do
-		nb = nb + 1
-		result[nb] = part
-		lastPos = pos
-		if nb == maxNb then break end
-	end
-	if nb ~= maxNb then
-		result[nb+1] = string.sub(str, lastPos)
-	end
-	if onlyLast then
-		return result[nb+1]
-	else
-		return result[1], result[2]
-	end
+    if not str or not delim then return { str } end
+    if string.find(str, delim) == nil then
+        return { str }
+    end
+    if maxNb == nil or maxNb < 1 then
+        maxNb = 0
+    end
+    local result = {}
+    local pat = "(.-)" .. delim .. "()"
+    local nb = 0
+    local lastPos
+    for part, pos in string.gfind(str, pat) do
+        nb = nb + 1
+        result[nb] = part
+        lastPos = pos
+        if nb == maxNb then break end
+    end
+    if nb ~= maxNb then
+        result[nb + 1] = string.sub(str, lastPos)
+    end
+    if onlyLast then
+        return result[nb + 1]
+    else
+        return result[1], result[2]
+    end
 end
 
 ---
@@ -227,7 +227,6 @@ function AtlasTW.LootUtils.CheckBagsForItems(id, qty)
     end
 end
 
-
 --- Iterates over all items in AtlasTWLoot_Data and InstanceData
 --- @param callback function Function to call for each item (arg: itemID, pageKey). Return non-nil to stop.
 --- @return any The value returned by callback that stopped iteration, or nil.
@@ -255,8 +254,8 @@ function AtlasTW.LootUtils.IterateAllLootItems(callback)
                 end
                 -- Check legacy/tuple format id
                 if el[1] and type(el[1]) == "number" then
-                     local res = callback(el[1], key, el)
-                     if res then return res end
+                    local res = callback(el[1], key, el)
+                    if res then return res end
                 end
 
                 -- Recursive check for containers
@@ -273,7 +272,7 @@ function AtlasTW.LootUtils.IterateAllLootItems(callback)
 
     -- 1. Iterate InstanceData
     if AtlasTW.InstanceData then
-         for _, instanceData in pairs(AtlasTW.InstanceData) do
+        for _, instanceData in pairs(AtlasTW.InstanceData) do
             -- Bosses
             if instanceData.Bosses then
                 for _, boss in ipairs(instanceData.Bosses) do
@@ -290,14 +289,14 @@ function AtlasTW.LootUtils.IterateAllLootItems(callback)
                 for _, rep in pairs(instanceData.Reputation) do
                     local items = rep.items or rep.loot
                     if type(items) == "table" then
-                         -- Reputation usually doesn't have a unique ID like bosses, 
-                         -- but we can use "Reputation" or derived name if needed.
-                         -- However, IterateList requires a 'key'.
-                         -- Often these tables are referenced by string key in AtlasTWLoot_Data. 
-                         -- If 'items' is a table here, it means it's an inline table? 
-                         -- Typically Reputation items are string keys.
-                         -- If it IS a table, we should process it. 
-                         -- We'll use instance name or a placeholder if no specific key.
+                        -- Reputation usually doesn't have a unique ID like bosses,
+                        -- but we can use "Reputation" or derived name if needed.
+                        -- However, IterateList requires a 'key'.
+                        -- Often these tables are referenced by string key in AtlasTWLoot_Data.
+                        -- If 'items' is a table here, it means it's an inline table?
+                        -- Typically Reputation items are string keys.
+                        -- If it IS a table, we should process it.
+                        -- We'll use instance name or a placeholder if no specific key.
                         local res = IterateList(items, rep.name or "Reputation")
                         if res then return res end
                     end
@@ -324,7 +323,6 @@ function AtlasTW.LootUtils.IterateAllLootItems(callback)
         end
     end
 end
-
 
 ---
 --- Resolves a loot table key to a human-readable source string (Instance - Boss)
@@ -430,7 +428,7 @@ function AtlasTW.LootUtils.FindCraftLootPageForSpell(spellID)
     -- First, search only in primary pages (skill-level based)
     local primaryResult = AtlasTW.LootUtils.IterateCraftLootItems(function(id, key, itemData)
         if id == spellID then return key end
-    end, true)  -- true = primaryOnly
+    end, true) -- true = primaryOnly
 
     if primaryResult then
         return primaryResult
@@ -439,23 +437,49 @@ function AtlasTW.LootUtils.FindCraftLootPageForSpell(spellID)
     -- Fallback: search all pages (including secondary/convenience pages)
     return AtlasTW.LootUtils.IterateCraftLootItems(function(id, key, itemData)
         if id == spellID then return key end
-    end, false)  -- false = search all
+    end, false) -- false = search all
 end
 
-function AtlasTW.LootUtils.GetLootTableSource(pageKey)
-    if not pageKey or not AtlasTW or not AtlasTW.InstanceData then return nil end
+---
+--- Recursively checks if an item ID exists in a loot page
+--- @param data table - The loot page data (list of items/tables)
+--- @param searchID number - The item ID to search for
+--- @return boolean - True if found
+---
+function AtlasTW.LootUtils.IsItemInLootPage(data, searchID)
+    if type(data) ~= "table" then return false end
+    -- table.getn is used for compatibility with WoW 1.12
+    for i = 1, table.getn(data) do
+        local item = data[i]
+        if type(item) == "table" then
+            if item.id == searchID or item[1] == searchID then return true end
+            if item.container and AtlasTW.LootUtils.IsItemInLootPage(item.container, searchID) then
+                return true
+            end
+        elseif item == searchID then
+            return true
+        end
+    end
+    return false
+end
+
+---
+--- Resolves a loot table key to boss name and instance key
+--- @param pageKey string The loot table key
+--- @return string|nil, string|nil Boss Name (localized) and Instance Key
+---
+function AtlasTW.LootUtils.GetBossAndInstanceFromPageKey(pageKey)
+    if not pageKey or not AtlasTW or not AtlasTW.InstanceData then return nil, nil end
 
     -- Search in InstanceData to find which instance/boss owns this pageKey
     for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
-        local instanceName = instanceData.Name or instanceKey
-
         -- Check Bosses
         if instanceData.Bosses then
             for _, boss in ipairs(instanceData.Bosses) do
                 local items = boss.items or boss.loot
                 if items == pageKey or boss.id == pageKey then
                     local bossName = boss.name or boss.Name or "?"
-                    return instanceName .. " - " .. bossName
+                    return bossName, instanceKey
                 end
             end
         end
@@ -466,7 +490,7 @@ function AtlasTW.LootUtils.GetLootTableSource(pageKey)
                 local items = rep.items or rep.loot
                 if items == pageKey then
                     local repName = rep.name or "Reputation"
-                    return instanceName .. " - " .. repName
+                    return repName, instanceKey
                 end
             end
         end
@@ -477,10 +501,22 @@ function AtlasTW.LootUtils.GetLootTableSource(pageKey)
                 local items = keySrc.items or keySrc.loot
                 if items == pageKey then
                     local keyName = keySrc.name or "Keys"
-                    return instanceName .. " - " .. keyName
+                    return keyName, instanceKey
                 end
             end
         end
+    end
+    return nil, nil
+end
+
+function AtlasTW.LootUtils.GetLootTableSource(pageKey)
+    local bossName, instanceKey = AtlasTW.LootUtils.GetBossAndInstanceFromPageKey(pageKey)
+    if bossName and instanceKey then
+        local instanceName = instanceKey
+        if AtlasTW.InstanceData[instanceKey] and AtlasTW.InstanceData[instanceKey].Name then
+            instanceName = AtlasTW.InstanceData[instanceKey].Name
+        end
+        return instanceName .. " - " .. bossName
     end
 
     return nil
@@ -640,7 +676,6 @@ end
 function AtlasTW.LootUtils.GetMetaCategoryForMenu(instanceName)
     if not instanceName or not AtlasTW or not AtlasTW.MenuData then return nil end
 
-    local L = AtlasTW.Localization.UI
     local MenuToMeta = {
         WorldEvents = L["World Events"] or "World Events",
         Factions = L["Factions"] or "Factions",
@@ -703,7 +738,6 @@ end
 function AtlasTW.LootUtils.GetLootPageDisplayName(pageKey)
     if not pageKey or pageKey == "" then return nil end
 
-    local L = AtlasTW.Localization.UI
     local LS = AtlasTW.Localization.Spells
 
     -- 0. Check if it's an instance key directly
@@ -803,8 +837,6 @@ end
 --- @usage local parent = AtlasTW.LootUtils.GetLootTableParent("Nefarian", "BWL")
 ---
 function AtlasTW.LootUtils.GetLootTableParent(bossName, instanceName)
-    local L = AtlasTW.Localization.UI
-
     -- Return instance name as extratext (subtitle)
     if instanceName and instanceName ~= "" then
         -- 1. Check Meta-Categories via shared function

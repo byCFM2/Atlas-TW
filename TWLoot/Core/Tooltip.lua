@@ -85,9 +85,9 @@ local ModuleState = {
 
 -- Global index for fast lookups (O(1) instead of O(N))
 local GlobalIndex = {
-    itemID = {},      -- itemID -> sourceString
-    spellID = {},     -- spellID -> sourceString
-    nameToID = {},    -- itemName -> itemID
+    itemID = {},   -- itemID -> sourceString
+    spellID = {},  -- spellID -> sourceString
+    nameToID = {}, -- itemName -> itemID
     isIndexed = false
 }
 
@@ -136,83 +136,8 @@ end
 -- ITEM SEARCH FUNCTIONS
 -- ============================================================================
 
-
----
---- Recursively checks if an item ID exists in a loot page
---- @param data table - The loot page data (list of items/tables)
---- @param searchID number - The item ID to search for
---- @return boolean - True if found
----
-local function IsItemInPage(data, searchID)
-    if type(data) ~= "table" then return false end
-    -- table.getn is used for compatibility with WoW 1.12
-    for i = 1, table.getn(data) do
-        local item = data[i]
-        if type(item) == "table" then
-            if item.id == searchID or item[1] == searchID then return true end
-            if item.container and IsItemInPage(item.container, searchID) then
-                return true
-            end
-        elseif item == searchID then
-            return true
-        end
-    end
-    return false
-end
-
----
---- Searches for a page identifier in the MenuData tables to find a localized name
---- @param pageKey string The loot table key
---- @return string|nil Localized source name or nil
----
-local function FindItemSourceInMenuData(pageKey)
-    if not AtlasTW.MenuData then return nil end
-
-    -- Helper to match pageKey with lootpage strings
-    -- Handles both direct match and "AtlasTWLoot[PageKey]Menu" pattern
-    local function isMatch(lootpage)
-        if not lootpage or not pageKey then return false end
-        if lootpage == pageKey then return true end
-        local _, _, shortName = strfind(lootpage, "AtlasTWLoot(.+)Menu")
-        if shortName == pageKey then return true end
-        return false
-    end
-
-    local menuTablesToCheck = {
-        AtlasTW.MenuData.WorldEvents,
-        AtlasTW.MenuData.Factions,
-        AtlasTW.MenuData.PVP,
-        AtlasTW.MenuData.PVPSets,
-        AtlasTW.MenuData.Sets,
-        AtlasTW.MenuData.Alchemy,
-        AtlasTW.MenuData.Smithing,
-        AtlasTW.MenuData.Enchanting,
-        AtlasTW.MenuData.Engineering,
-        AtlasTW.MenuData.Herbalism,
-        AtlasTW.MenuData.Leatherworking,
-        AtlasTW.MenuData.Mining,
-        AtlasTW.MenuData.Tailoring,
-        AtlasTW.MenuData.Jewelcrafting,
-        AtlasTW.MenuData.Cooking,
-        AtlasTW.MenuData.FirstAid,
-        AtlasTW.MenuData.Survival,
-        AtlasTW.MenuData.Skinning,
-        AtlasTW.MenuData.Fishing,
-        AtlasTW.MenuData.Poisons,
-    }
-
-    for _, menuTable in pairs(menuTablesToCheck) do
-        if type(menuTable) == "table" then
-            for _, entry in pairs(menuTable) do
-                if type(entry) == "table" and isMatch(entry.lootpage) and entry.name then
-                    return entry.name
-                end
-            end
-        end
-    end
-
-    return nil
-end
+-- IsItemInPage and FindItemSourceInMenuData have been moved to AtlasTW.LootUtils
+-- as IsItemInLootPage and GetLootPageDisplayName respectively.
 
 local function BuildGlobalIndex()
     if GlobalIndex.isIndexed then return end
@@ -231,7 +156,8 @@ local function BuildGlobalIndex()
                             local rID = type(reward) == "table" and reward.id or reward
                             if rID then
                                 local questTitle = quest.Title or "?"
-                                local source = (instanceName ~= "" and instanceName .. " " or "") .. L["Quest"] .. ": " .. questTitle
+                                local source = (instanceName ~= "" and instanceName .. " " or "") ..
+                                    L["Quest"] .. ": " .. questTitle
                                 if not GlobalIndex.itemID[rID] then
                                     GlobalIndex.itemID[rID] = source
                                 end
@@ -253,8 +179,8 @@ local function BuildGlobalIndex()
                 local _, _, shortName = strfind(setCat.lootpage, "AtlasTWLoot(.+)Menu")
                 local menuTable = AtlasTW.MenuData[shortName or setCat.lootpage]
                 if not menuTable and shortName then
-                     local _, _, baseName = strfind(shortName, "^(.+)Set$")
-                     if baseName then menuTable = AtlasTW.MenuData[baseName] end
+                    local _, _, baseName = strfind(shortName, "^(.+)Set$")
+                    if baseName then menuTable = AtlasTW.MenuData[baseName] end
                 end
 
                 if menuTable then
@@ -290,7 +216,8 @@ local function BuildGlobalIndex()
     -- 3. Index Professions
     if AtlasTW.SpellDB and AtlasTW.MenuData then
         local profPages = {}
-        local menuKeys = {"Alchemy", "Smithing", "Enchanting", "Engineering", "Leatherworking", "Mining", "Tailoring", "Jewelcrafting", "Cooking", "FirstAid", "Survival", "Crafting", "CraftedSet"}
+        local menuKeys = { "Alchemy", "Smithing", "Enchanting", "Engineering", "Leatherworking", "Mining", "Tailoring",
+            "Jewelcrafting", "Cooking", "FirstAid", "Survival", "Crafting", "CraftedSet" }
         for _, key in ipairs(menuKeys) do
             local menu = AtlasTW.MenuData[key]
             if menu then
@@ -308,7 +235,7 @@ local function BuildGlobalIndex()
                 for _, profEntry in ipairs(profPages) do
                     local pageKey = profEntry.pageKey
                     local profName = profEntry.name
-                    if AtlasTWLoot_Data[pageKey] and IsItemInPage(AtlasTWLoot_Data[pageKey], spellID) then
+                    if AtlasTWLoot_Data[pageKey] and AtlasTW.LootUtils.IsItemInLootPage(AtlasTWLoot_Data[pageKey], spellID) then
                         GlobalIndex.spellID[spellID] = profName
                         break
                     end
@@ -323,7 +250,6 @@ local function BuildGlobalIndex()
     -- 4. Index Loot Tables (Instances/Bosses)
     -- Modified to use safer iteration logic via centralized Utils
     if AtlasTW.LootUtils and AtlasTW.LootUtils.IterateAllLootItems then
-
         AtlasTW.LootUtils.IterateAllLootItems(function(idOrItem, pageKey, itemData)
             -- While iterating, update nameToID
             local itemID = idOrItem
@@ -350,9 +276,13 @@ local function BuildGlobalIndex()
 
             -- Continue with Source naming logic
             local isCraft = false
-            local craftPrefixes = {"Alchemy", "Smithing", "Smith", "Enchanting", "Engineering", "Leatherworking", "Tailoring", "Smelting", "Jewelcraft", "Cooking", "FirstAid", "Survival"}
+            local craftPrefixes = { "Alchemy", "Smithing", "Smith", "Enchanting", "Engineering", "Leatherworking",
+                "Tailoring", "Smelting", "Jewelcraft", "Cooking", "FirstAid", "Survival" }
             for _, prefix in ipairs(craftPrefixes) do
-                if strfind(pageKey, "^" .. prefix) then isCraft = true break end
+                if strfind(pageKey, "^" .. prefix) then
+                    isCraft = true
+                    break
+                end
             end
 
             if not isCraft then
@@ -361,7 +291,7 @@ local function BuildGlobalIndex()
                 if source then
                     isBoss = true
                 else
-                    source = FindItemSourceInMenuData(pageKey)
+                    source = AtlasTW.LootUtils.GetLootPageDisplayName(pageKey)
                 end
                 source = source or pageKey
 
@@ -405,7 +335,7 @@ local function GetItemSetCategory(itemID)
         if type(menuTable) ~= "table" then return false end
         for _, entry in pairs(menuTable) do
             if entry.lootpage and AtlasTWLoot_Data[entry.lootpage] then
-                if IsItemInPage(AtlasTWLoot_Data[entry.lootpage], itemID) then
+                if AtlasTW.LootUtils.IsItemInLootPage(AtlasTWLoot_Data[entry.lootpage], itemID) then
                     return true
                 end
             end
@@ -583,28 +513,28 @@ end
 
 -- Tooltip hook configuration table
 local TooltipHooks = {
-    {"SetLootRollItem", function(rollID) return ExtractItemID(GetLootRollItemLink(rollID)) end},
-    {"SetLootItem", function(slot) return ExtractItemID(GetLootSlotLink(slot)) end},
-    {"SetMerchantItem", function(merchantIndex) return ExtractItemID(GetMerchantItemLink(merchantIndex)) end},
-    {"SetQuestLogItem", function(itemType, index) return ExtractItemID(GetQuestLogItemLink(itemType, index)) end},
-    {"SetQuestItem", function(itemType, index) return ExtractItemID(GetQuestItemLink(itemType, index)) end},
-    {"SetHyperlink", function(link) return ExtractItemID(link) end},
-    {"SetBagItem", function(container, slot) return ExtractItemID(GetContainerItemLink(container, slot)) end},
-    {"SetInboxItem", function(mailID, attachmentIndex) return GetItemIDByName(GetInboxItem(mailID)) end},
-    {"SetInventoryItem", function(unit, slot) return ExtractItemID(GetInventoryItemLink(unit, slot)) end},
-    {"SetCraftItem", function(skill, slot) return ExtractItemID(GetCraftReagentItemLink(skill, slot)) end},
-    {"SetCraftSpell", function(slot) return ExtractItemID(GetCraftItemLink(slot)) end},
-    {"SetTradeSkillItem", function(skillIndex, reagentIndex)
+    { "SetLootRollItem",  function(rollID) return ExtractItemID(GetLootRollItemLink(rollID)) end },
+    { "SetLootItem",      function(slot) return ExtractItemID(GetLootSlotLink(slot)) end },
+    { "SetMerchantItem",  function(merchantIndex) return ExtractItemID(GetMerchantItemLink(merchantIndex)) end },
+    { "SetQuestLogItem",  function(itemType, index) return ExtractItemID(GetQuestLogItemLink(itemType, index)) end },
+    { "SetQuestItem",     function(itemType, index) return ExtractItemID(GetQuestItemLink(itemType, index)) end },
+    { "SetHyperlink",     function(link) return ExtractItemID(link) end },
+    { "SetBagItem",       function(container, slot) return ExtractItemID(GetContainerItemLink(container, slot)) end },
+    { "SetInboxItem",     function(mailID, attachmentIndex) return GetItemIDByName(GetInboxItem(mailID)) end },
+    { "SetInventoryItem", function(unit, slot) return ExtractItemID(GetInventoryItemLink(unit, slot)) end },
+    { "SetCraftItem",     function(skill, slot) return ExtractItemID(GetCraftReagentItemLink(skill, slot)) end },
+    { "SetCraftSpell",    function(slot) return ExtractItemID(GetCraftItemLink(slot)) end },
+    { "SetTradeSkillItem", function(skillIndex, reagentIndex)
         if reagentIndex then
             return ExtractItemID(GetTradeSkillReagentItemLink(skillIndex, reagentIndex))
         else
             return ExtractItemID(GetTradeSkillItemLink(skillIndex))
         end
-    end},
-    {"SetAuctionItem", function(atype, index) return ExtractItemID(GetAuctionItemLink(atype, index)) end},
-    {"SetAuctionSellItem", function() return GetItemIDByName(GetAuctionSellItemInfo()) end},
-    {"SetTradePlayerItem", function(index) return ExtractItemID(GetTradePlayerItemLink(index)) end},
-    {"SetTradeTargetItem", function(index) return ExtractItemID(GetTradeTargetItemLink(index)) end}
+    end },
+    { "SetAuctionItem",     function(atype, index) return ExtractItemID(GetAuctionItemLink(atype, index)) end },
+    { "SetAuctionSellItem", function() return GetItemIDByName(GetAuctionSellItemInfo()) end },
+    { "SetTradePlayerItem", function(index) return ExtractItemID(GetTradePlayerItemLink(index)) end },
+    { "SetTradeTargetItem", function(index) return ExtractItemID(GetTradeTargetItemLink(index)) end }
 }
 
 ---
