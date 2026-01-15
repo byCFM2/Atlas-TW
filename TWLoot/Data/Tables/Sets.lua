@@ -2297,6 +2297,8 @@ Sets = {
 		{ id = 61436, disc = L["Quest Reward"].." "..LZ["Hyjal"], container = { {61199, 5}, 61197 } }, -- Sigil of Leeching
 		{ id = 61437, disc = L["Quest Reward"].." "..LZ["Hyjal"], container = { {61199, 5}, 61197 } }, -- Sigil of Quickness
 		{ id = 61438, disc = L["Quest Reward"].." "..LZ["Hyjal"], container = { {61199, 5}, 61197 } }, -- Sigil of Penetration
+		{},
+		{ id = 12820, disc = LZ["Winterspring"], droprate = 15 }, -- Winterfall Firewater
 
 	},
 	RarePets = {
