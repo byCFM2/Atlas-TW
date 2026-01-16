@@ -1,10 +1,10 @@
 ---
 --- AtlasUI.lua - Atlas main UI frame and interface components
---- 
+---
 --- This file contains the main UI frame creation and management for Atlas-TW.
 --- It handles the primary Atlas window, frame positioning, event registration,
 --- and provides the foundation for all Atlas UI components and interactions.
---- 
+---
 --- Features:
 --- - Main Atlas frame creation and configuration
 --- - Frame positioning and movement handling
@@ -31,8 +31,8 @@ do
     atlasFrame:Hide()
     atlasFrame:SetMovable(true)
     atlasFrame:EnableMouse(true)
-	atlasFrame:RegisterForDrag("LeftButton")
-	atlasFrame:RegisterEvent("ADDON_LOADED")
+    atlasFrame:RegisterForDrag("LeftButton")
+    atlasFrame:RegisterEvent("ADDON_LOADED")
     atlasFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     -- Scripts
@@ -51,18 +51,18 @@ do
         -- Persist state (Last Opened Page)
         -- Check if LootFrame is active (IsShown returns true if Show() was called, even if parent hidden)
         if AtlasTWLootItemsFrame and AtlasTWLootItemsFrame:IsShown() and AtlasTWLootItemsFrame.StoredElement then
-             if not AtlasTWCharDB.LastOpened then AtlasTWCharDB.LastOpened = {} end
-             AtlasTWCharDB.LastOpened.StoredElement = AtlasTWLootItemsFrame.StoredElement
-             AtlasTWCharDB.LastOpened.StoredMenu = AtlasTWLootItemsFrame.StoredMenu
-             if AtlasTWOptions then
-                 AtlasTWCharDB.LastOpened.AtlasType = AtlasTWOptions.AtlasType
-                 AtlasTWCharDB.LastOpened.AtlasZone = AtlasTWOptions.AtlasZone
-             end
+            if not AtlasTWCharDB.LastOpened then AtlasTWCharDB.LastOpened = {} end
+            AtlasTWCharDB.LastOpened.StoredElement = AtlasTWLootItemsFrame.StoredElement
+            AtlasTWCharDB.LastOpened.StoredMenu = AtlasTWLootItemsFrame.StoredMenu
+            if AtlasTWOptions then
+                AtlasTWCharDB.LastOpened.AtlasType = AtlasTWOptions.AtlasType
+                AtlasTWCharDB.LastOpened.AtlasZone = AtlasTWOptions.AtlasZone
+            end
         else
             -- Clear if we are not on a loot page to avoid restoring old state when user consciously closed it
-             if AtlasTWCharDB and AtlasTWCharDB.LastOpened then
-                 AtlasTWCharDB.LastOpened = nil
-             end
+            if AtlasTWCharDB and AtlasTWCharDB.LastOpened then
+                AtlasTWCharDB.LastOpened = nil
+            end
         end
     end)
 
@@ -82,11 +82,11 @@ do
     end)
 
     --Allows Atlas to be closed with the Escape key
-	tinsert(UISpecialFrames, "AtlasTWFrame")
+    tinsert(UISpecialFrames, "AtlasTWFrame")
 
-	--Setting up slash commands involves referencing some strage auto-generated variables
-	SLASH_ATLASTW1 = "/atlastw"
-	SlashCmdList["ATLASTW"] = AtlasTW.SlashCommand
+    --Setting up slash commands involves referencing some strage auto-generated variables
+    SLASH_ATLASTW1 = "/atlastw"
+    SlashCmdList["ATLASTW"] = AtlasTW.SlashCommand
 
     -- Close button
     local closeButton = CreateFrame("Button", "", atlasFrame, "UIPanelCloseButton")
@@ -105,7 +105,7 @@ do
     local lockNorm = lockButton:CreateTexture("AtlasTWLockNorm", "BORDER")
     lockButton:SetNormalTexture(lockNorm)
     lockNorm:SetAllPoints(lockButton)
-    local lockPush  = lockButton:CreateTexture("AtlasTWLockPush", "BORDER")
+    local lockPush = lockButton:CreateTexture("AtlasTWLockPush", "BORDER")
     lockButton:SetPushedTexture(lockPush)
     lockPush:SetAllPoints(lockButton)
     local lockHighlight = lockButton:CreateTexture(nil, "HIGHLIGHT")
@@ -127,7 +127,8 @@ do
     dropDownTypeBg:SetAllPoints(dropDownType)
 
     -- Text display for current selection
-    local dropDownTypeText = dropDownType:CreateFontString("AtlasTWFrameDropDownTypeText", "OVERLAY", "GameFontHighlightSmall")
+    local dropDownTypeText = dropDownType:CreateFontString("AtlasTWFrameDropDownTypeText", "OVERLAY",
+        "GameFontHighlightSmall")
     dropDownTypeText:SetPoint("LEFT", dropDownType, "LEFT", 8, 0)
     dropDownTypeText:SetPoint("RIGHT", dropDownType, "RIGHT", -20, 0)
     dropDownTypeText:SetJustifyH("LEFT")
@@ -146,7 +147,8 @@ do
     dropDownTypeHighlight:SetAllPoints(dropDownType)
 
     -- Label above dropdown
-    local dropDownTypeLabel = dropDownType:CreateFontString("AtlasTWFrameDropDownTypeLabel", "BACKGROUND", "GameFontNormalSmall")
+    local dropDownTypeLabel = dropDownType:CreateFontString("AtlasTWFrameDropDownTypeLabel", "BACKGROUND",
+        "GameFontNormalSmall")
     dropDownTypeLabel:SetText(L["Select Category"])
     dropDownTypeLabel:SetPoint("BOTTOMLEFT", dropDownType, "TOPLEFT", 0, 2)
 
@@ -376,42 +378,42 @@ do
 
     -- Textures
     local topTexture = atlasFrame:CreateTexture("ARTWORK")
-    topTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasTWFrame-Top")
+    topTexture:SetTexture(AtlasTW.PATH .. "Images\\AtlasTWFrame-Top")
     topTexture:SetVertexColor(0.80, 0.60, 0.25)
     topTexture:SetWidth(512)
     topTexture:SetHeight(128)
     topTexture:SetPoint("TOPLEFT", 0, 0)
 
     local leftTexture = atlasFrame:CreateTexture("ARTWORK")
-    leftTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasTWFrame-Left")
+    leftTexture:SetTexture(AtlasTW.PATH .. "Images\\AtlasTWFrame-Left")
     leftTexture:SetVertexColor(0.80, 0.60, 0.25)
     leftTexture:SetWidth(32)
     leftTexture:SetHeight(256)
     leftTexture:SetPoint("TOPLEFT", 0, -128)
 
     local bottomTexture = atlasFrame:CreateTexture("ARTWORK")
-    bottomTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasTWFrame-Bottom")
+    bottomTexture:SetTexture(AtlasTW.PATH .. "Images\\AtlasTWFrame-Bottom")
     bottomTexture:SetVertexColor(0.80, 0.60, 0.25)
     bottomTexture:SetWidth(512)
     bottomTexture:SetHeight(256)
     bottomTexture:SetPoint("TOPLEFT", 0, -384)
 
     local bottom2Texture = atlasFrame:CreateTexture("ARTWORK")
-    bottom2Texture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasTWFrame-Bottom2")
+    bottom2Texture:SetTexture(AtlasTW.PATH .. "Images\\AtlasTWFrame-Bottom2")
     bottom2Texture:SetVertexColor(0.80, 0.60, 0.25)
     bottom2Texture:SetWidth(512)
     bottom2Texture:SetHeight(128)
     bottom2Texture:SetPoint("TOPLEFT", 512, -512)
 
     local rightTexture = atlasFrame:CreateTexture(nil, "ARTWORK")
-    rightTexture:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\AtlasTWFrame-Right")
+    rightTexture:SetTexture(AtlasTW.PATH .. "Images\\AtlasTWFrame-Right")
     rightTexture:SetVertexColor(0.80, 0.60, 0.25)
     rightTexture:SetWidth(512)
     rightTexture:SetHeight(512)
     rightTexture:SetPoint("TOPLEFT", 512, 0)
 
     local titleText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-    titleText:SetText(Colors.YELLOW..AtlasTW.Name)
+    titleText:SetText(Colors.YELLOW .. AtlasTW.Name)
     titleText:SetPoint("TOPLEFT", 200, -17)
 
     local versionText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall")
@@ -421,13 +423,13 @@ do
 
     -- Update marker (shown when a newer version is available)
     local updateMarker = atlasFrame:CreateFontString("AtlasTWUpdateMarker", "ARTWORK", "GameFontNormalSmall")
-    updateMarker:SetText(Colors.RED2..L["Update available"])
+    updateMarker:SetText(Colors.RED2 .. L["Update available"])
     updateMarker:SetPoint("RIGHT", titleText, "LEFT", -10, 0)
     updateMarker:Hide()
 
     -- Notice text
     local noticeText = atlasFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-    noticeText:SetText(Colors.RED..L["NoticeText"])
+    noticeText:SetText(Colors.RED .. L["NoticeText"])
     noticeText:SetPoint("TOP", -20, -17)
 
     -- Notice link
@@ -437,18 +439,18 @@ do
     noticeBox:SetPoint("TOP", 240, -15)
     noticeBox:SetMaxLetters(48)
     noticeBox:SetAutoFocus(false)
-    noticeBox:SetText(Colors.RED..L["NoticeLink"])
+    noticeBox:SetText(Colors.RED .. L["NoticeLink"])
     noticeBox:SetScript("OnTextChanged", function()
-        if noticeBox:GetText() ~= Colors.RED..L["NoticeLink"] then
-            noticeBox:SetText(Colors.RED..L["NoticeLink"])
+        if noticeBox:GetText() ~= Colors.RED .. L["NoticeLink"] then
+            noticeBox:SetText(Colors.RED .. L["NoticeLink"])
         end
     end)
 
     -- Map texture
     atlasFrame:CreateTexture("AtlasTWMap", "BACKGROUND")
-	AtlasTWMap:SetWidth(512)
-	AtlasTWMap:SetHeight(512)
-	AtlasTWMap:SetPoint("TOPLEFT", 18, -84)
+    AtlasTWMap:SetWidth(512)
+    AtlasTWMap:SetHeight(512)
+    AtlasTWMap:SetPoint("TOPLEFT", 18, -84)
 end
 
 do

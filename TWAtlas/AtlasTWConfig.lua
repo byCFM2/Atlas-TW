@@ -24,6 +24,7 @@ AtlasTW = {
     NUM_LINES = 24,
     LOOT_NUM_LINES = 30,
     DEBUGMODE = false,
+    PATH = "Interface\\AddOns\\Atlas-TW\\",
     MAPPATH = "Interface\\AddOns\\Atlas-TW\\Images\\Maps\\",
     Colors = {
         RED = "|cffff3333",       -- Common red

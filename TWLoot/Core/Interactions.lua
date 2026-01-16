@@ -384,14 +384,14 @@ local function BuildSourcePage(dataID, instanceKey)
 			-- This is a boss page like "Ragnaros|MoltenCore"
 			return dataID.."|"..instanceKey
 		end
-		
+
 		-- instanceKey is NOT an instance - could be menu function name or craft page key
 		-- Check if instanceKey is a direct loot table key (craft page like "Leatherworking5")
 		if AtlasTWLoot_Data and AtlasTWLoot_Data[instanceKey] then
 			-- For craft pages, return just the table key
 			return instanceKey
 		end
-		
+
 		-- Check if dataID itself is a loot table key
 		if AtlasTWLoot_Data and AtlasTWLoot_Data[dataID] then
 			return dataID
