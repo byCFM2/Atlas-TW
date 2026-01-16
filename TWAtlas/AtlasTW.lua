@@ -51,7 +51,6 @@ end
 --- @usage local results = PerformSearch(AtlasTWSearchEditBox.Data, "blackrock")
 ---
 local function PerformSearch(data, search_text)
-
 	local function makeBossLineText(items, new, n, searchText, format_line)
 		for _, item in ipairs(items or {}) do
 			local name, id = item.name, item.id
@@ -81,8 +80,9 @@ local function PerformSearch(data, search_text)
 	end)
 	n = makeBossLineText(data["Bosses"], new, n, search_text, function(item)
 		local color = item.color or Colors.WHITE
-		local text = (item.prefix and (item.prefix .. " ") or "   ") .. item.name.. (item.postfix and (Colors.PURPLE.." <".. item.postfix)..">" or "")
-		return  color .. text
+		local text = (item.prefix and (item.prefix .. " ") or "   ") ..
+			item.name .. (item.postfix and (Colors.PURPLE .. " <" .. item.postfix) .. ">" or "")
+		return color .. text
 	end)
 	return new
 end
@@ -97,7 +97,7 @@ end
 local function atlas_SanitizeName(text)
 	text = string.lower(text)
 	if AtlasTWSortIgnore then
-		for _,v in pairs(AtlasTWSortIgnore) do
+		for _, v in pairs(AtlasTWSortIgnore) do
 			local match
 			if string.gmatch then
 				match = string.gmatch(text, v)()
@@ -134,7 +134,7 @@ end
 --- @usage atlas_UpdateLock()
 ---
 local function atlas_UpdateLock()
-	if(AtlasTWOptions.AtlasLocked) then
+	if (AtlasTWOptions.AtlasLocked) then
 		AtlasTWLockNorm:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\LockButton-Locked-Up")
 		AtlasTWLockPush:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\LockButton-Locked-Down")
 	else
@@ -193,8 +193,8 @@ function AtlasTW.Search(text)
 
 	--populate the scroll frame entries list, the update func will do the rest
 	local i = 1
-	while ( data and data[i] and data[i].line ~= nil ) do
-		AtlasTW.ScrollList[i] = { line=data[i].line, name=data[i].name, id=data[i].id }
+	while (data and data[i] and data[i].line ~= nil) do
+		AtlasTW.ScrollList[i] = { line = data[i].line, name = data[i].name, id = data[i].id }
 		i = i + 1
 	end
 	AtlasTW.CurrentLine = i - 1
@@ -209,6 +209,23 @@ end
 function AtlasTW.OnEvent()
 	if arg1 == AtlasTW.Name then
 		Atlas_Init()
+
+		-- Compatibility hooks for AtlasFu2 and other Atlas-dependent addons
+		if not Atlas_Toggle then
+			Atlas_Toggle = AtlasTW.ToggleAtlas
+		end
+		if not AtlasFrame then
+			AtlasFrame = AtlasTWFrame
+		end
+		if not AtlasOptionsFrame then
+			AtlasOptionsFrame = AtlasTWOptionsFrame
+		end
+		if not AtlasOptions_Toggle then
+			AtlasOptions_Toggle = AtlasTW.OptionsOnClick
+		end
+		if not Atlas_Refresh then
+			Atlas_Refresh = AtlasTW.Refresh
+		end
 	elseif not arg1 then
 		AtlasTW.isHorde = UnitFactionGroup("player") == "Horde"
 		AtlasTW.Faction = AtlasTW.isHorde and "Horde" or "Alliance"
@@ -232,20 +249,20 @@ end
 --- @usage AtlasTW.PopulateDropdowns() -- Called during initialization
 ---
 function AtlasTW.PopulateDropdowns()
-    local sortType = AtlasTW_DropDownSortOrder[AtlasTWOptions.AtlasSortBy]
-    local subcatOrder = AtlasTW_DropDownGetLayoutOrder(sortType)
-    local layouts = AtlasTW_DropDownGetLayout(sortType)
+	local sortType = AtlasTW_DropDownSortOrder[AtlasTWOptions.AtlasSortBy]
+	local subcatOrder = AtlasTW_DropDownGetLayoutOrder(sortType)
+	local layouts = AtlasTW_DropDownGetLayout(sortType)
 	local m = getn(subcatOrder)
-    for n = 1, m do
-        local subcatItems = layouts[subcatOrder[n]]
-        AtlasTW.DropDowns[n] = {}
-        for _,v in pairs(subcatItems) do
-            table.insert(AtlasTW.DropDowns[n], v)
-        end
-        if subcatOrder[n] ~= L["Instances"] and subcatOrder[n] ~= L["World"] then
-            table.sort(AtlasTW.DropDowns[n], atlas_SortZonesAlpha)
-        end
-    end
+	for n = 1, m do
+		local subcatItems = layouts[subcatOrder[n]]
+		AtlasTW.DropDowns[n] = {}
+		for _, v in pairs(subcatItems) do
+			table.insert(AtlasTW.DropDowns[n], v)
+		end
+		if subcatOrder[n] ~= L["Instances"] and subcatOrder[n] ~= L["World"] then
+			table.sort(AtlasTW.DropDowns[n], atlas_SortZonesAlpha)
+		end
+	end
 end
 
 ---
@@ -266,8 +283,8 @@ end
 --- @usage atlasSwitchDD_Set(2)
 ---
 local function atlasSwitchDD_Set(index)
-	for k,v in pairs(AtlasTW.DropDowns) do
-		for k2,v2 in pairs(v) do
+	for k, v in pairs(AtlasTW.DropDowns) do
+		for k2, v2 in pairs(v) do
 			if v2 == atlasTW_Ints_Ent_DropDown[index] then
 				AtlasTWOptions.AtlasType = k
 				AtlasTWOptions.AtlasZone = k2
@@ -296,7 +313,7 @@ end
 ---
 local function atlasSwitchDD_OnLoad()
 	local info
-	for _,v in pairs(atlasTW_Ints_Ent_DropDown) do
+	for _, v in pairs(atlasTW_Ints_Ent_DropDown) do
 		info = {
 			text = AtlasTW.InstanceData[v].Name,
 			func = atlasSwitchDD_OnClick
@@ -356,7 +373,7 @@ function AtlasTW.Refresh()
 	end
 
 	--Display the selected texture
-	AtlasTWMap:SetTexture(zoneID and AtlasTW.MAPPATH..zoneID or "")
+	AtlasTWMap:SetTexture(zoneID and AtlasTW.MAPPATH .. zoneID or "")
 
 	--Update the quest frame
 	AtlasTW.CurrentMap = zoneID
@@ -367,7 +384,7 @@ function AtlasTW.Refresh()
 		local text = color or ""
 		if value then
 			if label then
-				text = text..L[label] .. ": "
+				text = text .. L[label] .. ": "
 			end
 			if type(value) == "table" then
 				text = text .. value[1] .. "-" .. value[2]
@@ -399,7 +416,7 @@ function AtlasTW.Refresh()
 	end
 	AtlasTWTextentr:SetText("")
 	for i = 1, 5 do
-		SetAtlasText(_G["AtlasTWTextentr"..i], nil, entranceText[i], Colors.BLUE)
+		SetAtlasText(_G["AtlasTWTextentr" .. i], nil, entranceText[i], Colors.BLUE)
 		if entranceText[i] then
 			AtlasTWTextentr:SetText(L["Entrances"])
 		end
@@ -422,28 +439,29 @@ function AtlasTW.Refresh()
 	AtlasTWSearchEditBox:SetText("")
 	AtlasTWSearchEditBox:ClearFocus()
 
-		--create and align any new entry buttons that we need
- 	for i = 1, AtlasTW.CurrentLine do
-		if not _G["AtlasTWBossLine"..i] then
-			frame = AtlasTWLoot_CreateButtonFromTemplate("AtlasTWBossLine"..i, AtlasTWFrame, "AtlasTWLootNewBossLineTemplate")
+	--create and align any new entry buttons that we need
+	for i = 1, AtlasTW.CurrentLine do
+		if not _G["AtlasTWBossLine" .. i] then
+			frame = AtlasTWLoot_CreateButtonFromTemplate("AtlasTWBossLine" .. i, AtlasTWFrame,
+				"AtlasTWLootNewBossLineTemplate")
 			if i ~= 1 then
-				frame:SetPoint("TOPLEFT", "AtlasTWBossLine"..(i-1), "BOTTOMLEFT")
+				frame:SetPoint("TOPLEFT", "AtlasTWBossLine" .. (i - 1), "BOTTOMLEFT")
 			else
 				frame:SetPoint("TOPLEFT", "AtlasTWScrollBar", "TOPLEFT", 16, -3)
 			end
-    		frame:SetAlpha(.8)
+			frame:SetAlpha(.8)
 			-- Limit buttons to the scrollbar's visible area (24 lines * 15 pixels = 360 pixels)
 			if i > 24 then
 				frame:EnableMouse(false)
 				frame:Hide()
 			end
 		else
-			_G["AtlasTWBossLine"..i.."_Loot"]:Hide()
-			_G["AtlasTWBossLine"..i.."_Selected"]:Hide()
+			_G["AtlasTWBossLine" .. i .. "_Loot"]:Hide()
+			_G["AtlasTWBossLine" .. i .. "_Selected"]:Hide()
 			-- Also limit existing buttons accordingly
 			if i > 24 then
-				_G["AtlasTWBossLine"..i]:EnableMouse(false)
-				_G["AtlasTWBossLine"..i]:Hide()
+				_G["AtlasTWBossLine" .. i]:EnableMouse(false)
+				_G["AtlasTWBossLine" .. i]:Hide()
 			end
 		end
 	end
@@ -457,14 +475,14 @@ function AtlasTW.Refresh()
 	--see if we should display the entrance/instance button or not, and decide what it should say
 	local matchFound = {}
 	local sayEntrance = nil
-	for k,v in pairs(AtlasTW.EntToInstMatches) do
+	for k, v in pairs(AtlasTW.EntToInstMatches) do
 		if k == zoneID then
 			matchFound = v
 			sayEntrance = false
 		end
 	end
 	if not matchFound[1] then
-		for k,v in pairs(AtlasTW.InstToEntMatches) do
+		for k, v in pairs(AtlasTW.InstToEntMatches) do
 			if k == zoneID then
 				matchFound = v
 				sayEntrance = true
@@ -475,7 +493,7 @@ function AtlasTW.Refresh()
 	--set the button's text, populate the dropdown menu, and show or hide the button
 	if matchFound[1] ~= nil then
 		atlasTW_Ints_Ent_DropDown = {}
-		for _,v in pairs(matchFound) do
+		for _, v in pairs(matchFound) do
 			table.insert(atlasTW_Ints_Ent_DropDown, v)
 		end
 		table.sort(atlasTW_Ints_Ent_DropDown, atlasSwitchDD_Sort)
@@ -530,16 +548,16 @@ end
 ---
 local function atlasFrameDropDownType_Initialize()
 	local info
-    local sortType = AtlasTW_DropDownSortOrder[AtlasTWOptions.AtlasSortBy]
-    local subcatOrder = AtlasTW_DropDownGetLayoutOrder(sortType)
+	local sortType = AtlasTW_DropDownSortOrder[AtlasTWOptions.AtlasSortBy]
+	local subcatOrder = AtlasTW_DropDownGetLayoutOrder(sortType)
 	local m = getn(subcatOrder)
-    for i = 1, m do
-        info = {
-            text = subcatOrder[i],
-            func = atlasFrameDropDownType_OnClick
-        }
-        UIDropDownMenu_AddButton(info)
-    end
+	for i = 1, m do
+		info = {
+			text = subcatOrder[i],
+			func = atlasFrameDropDownType_OnClick
+		}
+		UIDropDownMenu_AddButton(info)
+	end
 end
 
 ---
@@ -563,7 +581,7 @@ end
 ---
 local function atlasFrameDropDown_Initialize()
 	local info
-	for _,v in pairs(AtlasTW.DropDowns[AtlasTWOptions.AtlasType]) do
+	for _, v in pairs(AtlasTW.DropDowns[AtlasTWOptions.AtlasType]) do
 		info = {
 			text = AtlasTW.InstanceData[v].Name,
 			func = atlasFrameDropDown_OnClick
@@ -579,12 +597,12 @@ end
 --- @usage local zone = atlas_GetFixedZoneText()
 ---
 local function atlas_GetFixedZoneText()
-    local currentZone = GetRealZoneText()
-    local subs = AtlasTWZoneSubstitutions
-    if subs and subs[currentZone] then
-        return subs[currentZone]
-    end
-    return currentZone
+	local currentZone = GetRealZoneText()
+	local subs = AtlasTWZoneSubstitutions
+	if subs and subs[currentZone] then
+		return subs[currentZone]
+	end
+	return currentZone
 end
 
 ---
@@ -602,8 +620,8 @@ local function atlasAutoSelect()
 		debug("You're in a zone where SubZone data is relevant.")
 		if AtlasTW.SubZoneData[currentSubZone] then
 			debug("There's data for your current SubZone.")
-			for ka,va in pairs(AtlasTW.DropDowns) do
-				for kb,vb in pairs(va) do
+			for ka, va in pairs(AtlasTW.DropDowns) do
+				for kb, vb in pairs(va) do
 					if AtlasTW.SubZoneData[currentSubZone] == vb then
 						AtlasTWOptions.AtlasType = ka
 						AtlasTWOptions.AtlasZone = kb
@@ -619,8 +637,8 @@ local function atlasAutoSelect()
 				debug("You're in the same instance as the former map. Doing nothing.")
 				return
 			else
-				for ka,va in pairs(AtlasTW.DropDowns) do
-					for kb,vb in pairs(va) do
+				for ka, va in pairs(AtlasTW.DropDowns) do
+					for kb, vb in pairs(va) do
 						if AtlasTW.AssocDefaults[currentZone] == vb then
 							AtlasTWOptions.AtlasType = ka
 							AtlasTWOptions.AtlasZone = kb
@@ -636,8 +654,8 @@ local function atlasAutoSelect()
 		debug("SubZone data isn't relevant here.")
 		if AtlasTW.OutdoorZoneToAtlas[currentZone] then
 			debug("This world zone is associated with a map.")
-			for ka,va in pairs(AtlasTW.DropDowns) do
-				for kb,vb in pairs(va) do
+			for ka, va in pairs(AtlasTW.DropDowns) do
+				for kb, vb in pairs(va) do
 					if AtlasTW.OutdoorZoneToAtlas[currentZone] == vb then
 						AtlasTWOptions.AtlasType = ka
 						AtlasTWOptions.AtlasZone = kb
@@ -648,14 +666,14 @@ local function atlasAutoSelect()
 				end
 			end
 		elseif AtlasTW.InstToEntMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
-			for _,va in pairs(AtlasTW.InstToEntMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
+			for _, va in pairs(AtlasTW.InstToEntMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
 				if currentZone == AtlasTW.InstanceData[va].Name then
 					debug("Instance/entrance pair found. Doing nothing.")
 					return
 				end
 			end
 		elseif AtlasTW.EntToInstMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]] then
-			for _,va in pairs(AtlasTW.EntToInstMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
+			for _, va in pairs(AtlasTW.EntToInstMatches[AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]]) do
 				if currentZone == AtlasTW.InstanceData[va].Name then
 					debug("Instance/entrance pair found. Doing nothing.")
 					return
@@ -663,8 +681,8 @@ local function atlasAutoSelect()
 			end
 		end
 		debug("Searching through all maps for a Name match.")
-		for ka,va in pairs(AtlasTW.DropDowns) do
-			for kb,vb in pairs(va) do
+		for ka, va in pairs(AtlasTW.DropDowns) do
+			for kb, vb in pairs(va) do
 				-- Compare the currentZone to the new substr of ZoneName
 				if currentZone == strsub(AtlasTW.InstanceData[vb].Name, strlen(AtlasTW.InstanceData[vb].Name) - strlen(currentZone) + 1) then
 					AtlasTWOptions.AtlasType = ka
@@ -718,56 +736,56 @@ local function FindBossIndexInScrollList(bossIdOrName)
 end
 
 function AtlasTW.OnShow()
-    if(AtlasTWOptions.AtlasAutoSelect) then
-        atlasAutoSelect()
-    end
+	if (AtlasTWOptions.AtlasAutoSelect) then
+		atlasAutoSelect()
+	end
 
-    -- Restore Last Opened State
-    if AtlasTWCharDB and AtlasTWCharDB.LastOpened and AtlasTWCharDB.LastOpened.StoredElement then
-         local stored = AtlasTWCharDB.LastOpened
+	-- Restore Last Opened State
+	if AtlasTWCharDB and AtlasTWCharDB.LastOpened and AtlasTWCharDB.LastOpened.StoredElement then
+		local stored = AtlasTWCharDB.LastOpened
 
-         -- Restore Map Choice if valid
-         if stored.AtlasType and stored.AtlasZone and AtlasTWOptions then
-              AtlasTWOptions.AtlasType = stored.AtlasType
-              AtlasTWOptions.AtlasZone = stored.AtlasZone
-         end
-    end
+		-- Restore Map Choice if valid
+		if stored.AtlasType and stored.AtlasZone and AtlasTWOptions then
+			AtlasTWOptions.AtlasType = stored.AtlasType
+			AtlasTWOptions.AtlasZone = stored.AtlasZone
+		end
+	end
 
-    AtlasTW.UpdateDropdownLabels()
-    AtlasTW.Refresh()
+	AtlasTW.UpdateDropdownLabels()
+	AtlasTW.Refresh()
 
-    -- Restore Loot Page State
-    if AtlasTWCharDB and AtlasTWCharDB.LastOpened and AtlasTWCharDB.LastOpened.StoredElement then
-         local stored = AtlasTWCharDB.LastOpened
+	-- Restore Loot Page State
+	if AtlasTWCharDB and AtlasTWCharDB.LastOpened and AtlasTWCharDB.LastOpened.StoredElement then
+		local stored = AtlasTWCharDB.LastOpened
 
-         if AtlasTWLootItemsFrame then
-              AtlasTWLootItemsFrame.StoredElement = stored.StoredElement
-              AtlasTWLootItemsFrame.StoredMenu = stored.StoredMenu
+		if AtlasTWLootItemsFrame then
+			AtlasTWLootItemsFrame.StoredElement = stored.StoredElement
+			AtlasTWLootItemsFrame.StoredMenu = stored.StoredMenu
 
-              -- Restore left-side selection
-              local bossIndex = FindBossIndexInScrollList(stored.StoredElement)
-              if bossIndex then
-                  AtlasTWLootItemsFrame.activeElement = bossIndex
-                  if AtlasTW.LootBrowserUI.ScrollBarUpdate then AtlasTW.LootBrowserUI.ScrollBarUpdate() end
-              end
+			-- Restore left-side selection
+			local bossIndex = FindBossIndexInScrollList(stored.StoredElement)
+			if bossIndex then
+				AtlasTWLootItemsFrame.activeElement = bossIndex
+				if AtlasTW.LootBrowserUI.ScrollBarUpdate then AtlasTW.LootBrowserUI.ScrollBarUpdate() end
+			end
 
-              -- Show Loot Frame
-              AtlasTWLootItemsFrame:Show()
+			-- Show Loot Frame
+			AtlasTWLootItemsFrame:Show()
 
-              -- Load Content (with caching)
-              local lootTable = AtlasTW.DataResolver.GetLootByElemName(stored.StoredElement, stored.StoredMenu)
-              if lootTable and AtlasTW.LootCache and AtlasTW.LootCache.CacheAllItems then
-                  AtlasTW.LootBrowserUI.ShowScrollBarLoading()
-                  AtlasTW.LootCache.CacheAllItems(lootTable, function()
-                        AtlasTW.LootBrowserUI.HideScrollBarLoading()
-                        AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
-                  end)
-              else
-                  AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
-              end
-         end
-    --If a boss has been selected (e.g. from AutoSelect or previous session without full restore), show the loot frame
-    elseif AtlasTWLootItemsFrame.activeElement then
-        AtlasTWLootItemsFrame:Show()
-    end
+			-- Load Content (with caching)
+			local lootTable = AtlasTW.DataResolver.GetLootByElemName(stored.StoredElement, stored.StoredMenu)
+			if lootTable and AtlasTW.LootCache and AtlasTW.LootCache.CacheAllItems then
+				AtlasTW.LootBrowserUI.ShowScrollBarLoading()
+				AtlasTW.LootCache.CacheAllItems(lootTable, function()
+					AtlasTW.LootBrowserUI.HideScrollBarLoading()
+					AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+				end)
+			else
+				AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
+			end
+		end
+		--If a boss has been selected (e.g. from AutoSelect or previous session without full restore), show the loot frame
+	elseif AtlasTWLootItemsFrame.activeElement then
+		AtlasTWLootItemsFrame:Show()
+	end
 end
