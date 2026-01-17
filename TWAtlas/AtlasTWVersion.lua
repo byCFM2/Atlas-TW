@@ -54,7 +54,7 @@ end
 --- @usage local id = getChannelIdByName("LFT")
 local function getChannelIdByName(channelName)
   if type(channelName) ~= 'string' then return nil end
-  local id,_ = GetChannelName(channelName)
+  local id, _ = GetChannelName(channelName)
   if id and id > 0 then
     return id
   end
@@ -110,10 +110,10 @@ local function checkRemoteVersion(remoteVersion)
   if not remoteVersion then return end
   local localVersionNum = VC.getVersionNumber()
   if tonumber(remoteVersion) > localVersionNum then
-    VC.nextPublishAt = nil -- Stop publishing
+    VC.nextPublishAt = nil                                  -- Stop publishing
     AtlasTWVersionFrame:UnregisterEvent("CHAT_MSG_CHANNEL") -- Stop listening for version messages
-    AtlasTWVersionFrame:SetScript('OnUpdate', nil) -- Stop periodic broadcasts
-    PrintA(format(L["NewVersionAvailableFmt"], Colors.RED..L["Link"]))
+    AtlasTWVersionFrame:SetScript('OnUpdate', nil)          -- Stop periodic broadcasts
+    PrintA(format(L["NewVersionAvailableFmt"], Colors.RED .. L["Link"]))
     AtlasTW.UpdateMarkerRefresh()
   end
 end
@@ -135,7 +135,7 @@ verFrame:SetScript('OnEvent', function()
     -- Extract "channel base name" from arg4 like "3. LFT" without calling GetChannelName
     local channelName = string.gsub(arg4 or '', '^%d+%.%s*', '')
     if channelName and isOurChannel(channelName) then
-      local _, _, addonName, remoteVersionStr,_ = string.find(arg1 or '', '([^:]+):([^:]+):([^:]+)')
+      local _, _, addonName, remoteVersionStr, _ = string.find(arg1 or '', '([^:]+):([^:]+):([^:]+)')
       if addonName == VC.abbrev then
         checkRemoteVersion(tonumber(remoteVersionStr))
       end

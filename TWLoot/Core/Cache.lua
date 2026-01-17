@@ -59,7 +59,7 @@ function AtlasTW.LootCache.ForceCacheItem(itemID, maxAttempts)
         if GetItemInfo(itemID) then
             return true
         end
-        GameTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
+        AtlasTWLootTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
         attempts = attempts + 1
         if attempts < maxAttempts then
             -- Start next attempt
