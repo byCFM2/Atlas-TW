@@ -76,14 +76,28 @@ function AtlasTW.SearchLib.Search(Text)
 
     local partial = AtlasTWCharDB.PartialMatching
 
-    local function isMatch(name)
-        if not name then return false end
-        local ln = string_lower(name)
-        if partial then
-            return string_find(ln, text, 1, true)
-        else
-            return ln == text
+    local function isMatch(name, id)
+        local matchByName = false
+        if name then
+            local ln = string_lower(name)
+            if partial then
+                matchByName = string_find(ln, text, 1, true)
+            else
+                matchByName = (ln == text)
+            end
         end
+
+        local matchByID = false
+        if id then
+            local sid = tostring(id)
+            if partial then
+                matchByID = string_find(sid, text, 1, true)
+            else
+                matchByID = (sid == text)
+            end
+        end
+
+        return matchByName or matchByID
     end
 
     local seen = {}
@@ -143,7 +157,7 @@ function AtlasTW.SearchLib.Search(Text)
 
             if not isSpellLike then
                 local itemName = GetItemInfo(itemID)
-                if itemName and isMatch(itemName) then
+                if isMatch(itemName, itemID) then
                     local bossName, instanceKey = resolveBossAndInstanceFromPageKey(pageKey)
                     if bossName and instanceKey and instanceKey ~= "" then
                         -- [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage
@@ -168,12 +182,12 @@ function AtlasTW.SearchLib.Search(Text)
             -- Only check if this is a container item (material/reagent)
             if type(itemData) == "table" and itemData.isContainer then
                 local itemName = GetItemInfo(itemID)
-                if itemName and isMatch(itemName) then
+                if isMatch(itemName, itemID) then
                     local displayName = AtlasTWLoot_GetLootPageDisplayName(pageKey)
                     addUnique({ itemID, displayName, pageKey, "item", pageKey })
                 end
             end
-        end, false)  -- Search all pages (primary and secondary)
+        end, false) -- Search all pages (primary and secondary)
     end
 
     -- Use the unified craft page search function from LootUtils
@@ -194,7 +208,7 @@ function AtlasTW.SearchLib.Search(Text)
             if (not nm or nm == "") and data and data.item then
                 nm = GetItemInfo(data.item)
             end
-            if isMatch(nm) then
+            if isMatch(nm, spellID) then
                 -- Try to bind to craft/profession page if found
                 local lootPage = findCraftLootPageLocal(spellID)
                 if lootPage then
@@ -220,7 +234,7 @@ function AtlasTW.SearchLib.Search(Text)
             if not nm and data and data.item then
                 nm = GetItemInfo(data.item)
             end
-            if isMatch(nm) then
+            if isMatch(nm, spellID) then
                 -- Try to bind to craft page if found
                 local lootPage = findFirstCraftLootPageForSpell(spellID)
                 if lootPage then

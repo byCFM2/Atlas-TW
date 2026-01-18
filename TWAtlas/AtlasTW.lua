@@ -57,7 +57,7 @@ local function PerformSearch(data, search_text)
 			if name then
 				local line = format_line(item)
 				-- Если поисковый запрос пустой, показываем все элементы
-				if searchText == "" or string.find(string.lower(line), searchText) then
+				if searchText == "" or string.find(string.lower(line), searchText) or (id and string.find(tostring(id), searchText)) then
 					new[n] = {
 						line = line,
 						name = name,
