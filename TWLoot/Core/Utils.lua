@@ -258,7 +258,7 @@ function AtlasTW.LootUtils.IterateAllLootItems(callback)
     if not callback then return end
 
     -- Helper to iterate a single list of items
-    local function IterateList(list, key)
+    local function IterateList(list, key, isInsideContainer)
         if type(list) ~= "table" then return end
         local m = table.getn(list)
         for i = 1, m do
@@ -266,22 +266,22 @@ function AtlasTW.LootUtils.IterateAllLootItems(callback)
             if type(el) == "table" then
                 -- Check standard id
                 if el.id then
-                    local res = callback(el.id, key, el)
+                    local res = callback(el.id, key, isInsideContainer and { id = el.id, isContainer = true } or el)
                     if res then return res end
                 end
                 -- Check legacy/tuple format id
                 if el[1] and type(el[1]) == "number" then
-                    local res = callback(el[1], key, el)
+                    local res = callback(el[1], key, isInsideContainer and { id = el[1], isContainer = true } or el)
                     if res then return res end
                 end
 
                 -- Recursive check for containers
                 if el.container and type(el.container) == "table" then
-                    local res = IterateList(el.container, key)
+                    local res = IterateList(el.container, key, true)
                     if res then return res end
                 end
             elseif type(el) == "number" then
-                local res = callback(el, key, el)
+                local res = callback(el, key, isInsideContainer and { id = el, isContainer = true } or el)
                 if res then return res end
             end
         end
@@ -378,43 +378,31 @@ function AtlasTW.LootUtils.IterateCraftLootItems(callback, primaryOnly)
     end
 
     -- Helper to iterate a single list of items
-    local function IterateList(list, key)
+    local function IterateList(list, key, isInsideContainer)
         if type(list) ~= "table" then return end
         local m = table.getn(list)
         for i = 1, m do
             local el = list[i]
             if type(el) == "table" then
-                -- Only process craft entries (those with skill field or explicit type)
-                -- This ensures we don't accidentally match dungeon boss items
-                if el.id and el.skill then
-                    local res = callback(el.id, key, el)
-                    if res then return res end
-                end
-                -- Also check items in container arrays (reagents/materials)
-                -- Container format: { itemID } or { {itemID, {qty}} }
-                if el.container and type(el.container) == "table" then
-                    local containerSize = table.getn(el.container)
-                    for j = 1, containerSize do
-                        local containerItem = el.container[j]
-                        local itemIDInContainer = nil
+                -- Process entry
+                local itemID = el.id or (type(el[1]) == "number" and el[1])
 
-                        if type(containerItem) == "number" then
-                            -- Simple format: { 13468 }
-                            itemIDInContainer = containerItem
-                        elseif type(containerItem) == "table" and containerItem[1] then
-                            -- Complex format: { {13468, {1,3}} }
-                            itemIDInContainer = containerItem[1]
-                        end
-
-                        if itemIDInContainer then
-                            local res = callback(itemIDInContainer, key, { id = itemIDInContainer, isContainer = true })
-                            if res then return res end
-                        end
+                if itemID then
+                    -- If we are inside a container, or it's a craft entry (has skill)
+                    if isInsideContainer or (el.id and el.skill) then
+                        local res = callback(itemID, key, isInsideContainer and { id = itemID, isContainer = true } or el)
+                        if res then return res end
                     end
                 end
-                -- Recursive check for nested containers
+
+                -- Recursive check for containers
                 if el.container and type(el.container) == "table" then
-                    local res = IterateList(el.container, key)
+                    local res = IterateList(el.container, key, true)
+                    if res then return res end
+                end
+            elseif type(el) == "number" then
+                if isInsideContainer then
+                    local res = callback(el, key, { id = el, isContainer = true })
                     if res then return res end
                 end
             end

@@ -111,7 +111,7 @@ function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
             if type(item) == "table" then
                 if item.id then
                     itemID = item.id
-                    -- Map spells/enchants to item ids when needed
+                    -- Map spells/enchants to item ids when needed (item database format)
                     if item.skill and item.type ~= "item" then
                         if AtlasTW and AtlasTW.SpellDB and AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[itemID] then
                             itemID = AtlasTW.SpellDB.enchants[itemID].item
@@ -121,6 +121,17 @@ function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
                     end
                 elseif item[1] then
                     itemID = item[1]
+                    -- Map spells/enchants to item ids when needed (search result format)
+                    local itemType = item[4]
+                    if itemType == "spell" or itemType == "enchant" then
+                        if AtlasTW and AtlasTW.SpellDB then
+                            if itemType == "enchant" and AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[itemID] then
+                                itemID = AtlasTW.SpellDB.enchants[itemID].item
+                            elseif itemType == "spell" and AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[itemID] then
+                                itemID = AtlasTW.SpellDB.craftspells[itemID].item
+                            end
+                        end
+                    end
                 end
             elseif type(item) == "number" then
                 itemID = item
@@ -223,7 +234,7 @@ function AtlasTW.LootCache.CacheAllItems(dataSource, callback)
                 end)
             else
                 local delay = (iteration == 1) and 0.07 or 0.09
-                StartTimer(delay, function()
+                AtlasTW.Timer.Start(delay, function()
                     local remaining = {}
                     for i = 1, total do
                         local id = uncachedItems[i]

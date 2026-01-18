@@ -381,26 +381,51 @@ local function BuildGlobalIndex(incremental)
         end
     end)
 
+    -- Helper for recursive indexing
+    local function IndexList(list, source)
+        if not list then return end
+        for i = 1, table.getn(list) do
+            local el = list[i]
+            local id = type(el) == "table" and (el.id or el[1]) or el
+
+            if id and type(id) == "number" then
+                -- Name mapping for search
+                if GetItemInfo then
+                    local name = GetItemInfo(id)
+                    if name then GlobalIndex.nameToID[name] = id end
+                end
+
+                -- Source mapping
+                local itemSource = source
+                if itemToSetMap[id] then
+                    if not string.find(itemSource, itemToSetMap[id], 1, true) then
+                        itemSource = itemSource .. " (" .. itemToSetMap[id] .. ")"
+                    end
+                end
+                if not GlobalIndex.itemID[id] then GlobalIndex.itemID[id] = itemSource end
+            end
+
+            -- Recurse into containers
+            if type(el) == "table" and el.container then
+                IndexList(el.container, source)
+            end
+        end
+    end
+
     -- Step 4: Loot Tables (InstanceData)
     table.insert(steps, function()
         if AtlasTW.InstanceData then
             -- We'll process InstanceData in one go as it's usually smaller than AtlasTWLoot_Data
             for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
-                local function processList(list, key)
-                    if not list then return end
-                    for i = 1, table.getn(list) do
-                        local el = list[i]
-                        local id = type(el) == "table" and (el.id or el[1]) or el
-                        if id and type(id) == "number" then
-                            local source = AtlasTW.LootUtils.GetLootTableSource(key) or instanceKey
-                            if itemToSetMap[id] then source = source .. " (" .. itemToSetMap[id] .. ")" end
-                            if not GlobalIndex.itemID[id] then GlobalIndex.itemID[id] = source end
-                        end
-                    end
-                end
                 if instanceData.Bosses then
                     for _, boss in ipairs(instanceData.Bosses) do
-                        if type(boss.items) == "table" then processList(boss.items, boss.id) end
+                        if type(boss.items) == "table" then
+                            local source = AtlasTW.LootUtils.GetLootTableSource(boss.id) or instanceKey
+                            IndexList(boss.items, source)
+                        elseif type(boss.loot) == "table" then
+                            local source = AtlasTW.LootUtils.GetLootTableSource(boss.id) or instanceKey
+                            IndexList(boss.loot, source)
+                        end
                     end
                 end
             end
@@ -424,34 +449,21 @@ local function BuildGlobalIndex(incremental)
             local tbl = AtlasTWLoot_Data[key]
 
             if type(tbl) == "table" then
-                for i = 1, table.getn(tbl) do
-                    local el = tbl[i]
-                    local id = type(el) == "table" and (el.id or el[1]) or el
-                    if id and type(id) == "number" then
-                        -- Name mapping for search
-                        if GetItemInfo then
-                            local name = GetItemInfo(id)
-                            if name then GlobalIndex.nameToID[name] = id end
-                        end
-
-                        -- Source mapping
-                        local isCraft = false
-                        local craftPrefixes = { "Alchemy", "Smithing", "Smith", "Enchanting", "Engineering",
-                            "Leatherworking",
-                            "Tailoring", "Smelting", "Jewelcraft", "Cooking", "FirstAid", "Survival" }
-                        for _, prefix in ipairs(craftPrefixes) do
-                            if strfind(key, "^" .. prefix) then
-                                isCraft = true
-                                break
-                            end
-                        end
-
-                        if not isCraft then
-                            local source = AtlasTW.LootUtils.GetLootPageDisplayName(key) or key
-                            if itemToSetMap[id] then source = source .. " (" .. itemToSetMap[id] .. ")" end
-                            if not GlobalIndex.itemID[id] then GlobalIndex.itemID[id] = source end
-                        end
+                -- Source mapping
+                local isCraft = false
+                local craftPrefixes = { "Alchemy", "Smithing", "Smith", "Enchanting", "Engineering",
+                    "Leatherworking",
+                    "Tailoring", "Smelting", "Jewelcraft", "Cooking", "FirstAid", "Survival" }
+                for _, prefix in ipairs(craftPrefixes) do
+                    if strfind(key, "^" .. prefix) then
+                        isCraft = true
+                        break
                     end
+                end
+
+                if not isCraft then
+                    local source = AtlasTW.LootUtils.GetLootPageDisplayName(key) or key
+                    IndexList(tbl, source)
                 end
             end
 

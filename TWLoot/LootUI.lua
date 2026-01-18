@@ -474,10 +474,11 @@ local function AtlasTWLoot_CreateSearchElements(frame)
                 this._predictElapsed = nil
                 if textToSearch and textToSearch ~= "" and textToSearch ~= this._predictLastRunText then
                     this._predictLastRunText = textToSearch
-                    AtlasTW.SearchLib.Search(textToSearch)
-                    this._predictSuggestions = AtlasTWLoot_BuildPredictSuggestionsFromSearchResult()
-                    this._predictSelectedIndex = 1
-                    AtlasTWLoot_UpdatePredictDropdown(this)
+                    AtlasTW.SearchLib.Search(textToSearch, function()
+                        this._predictSuggestions = AtlasTWLoot_BuildPredictSuggestionsFromSearchResult()
+                        this._predictSelectedIndex = 1
+                        AtlasTWLoot_UpdatePredictDropdown(this)
+                    end)
                 end
             end
         end)

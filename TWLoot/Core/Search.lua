@@ -25,6 +25,9 @@ local L = AtlasTW.Localization.UI
 local GetItemInfo = GetItemInfo
 local string_lower = string.lower
 local string_find = string.find
+local string_gsub = string.gsub
+local string_sub = string.sub
+local string_len = string.len
 local type = type
 local ipairs = ipairs
 local pairs = pairs
@@ -56,48 +59,67 @@ end
 --- @usage local trimmed = strtrim(" hello ")
 ---
 local function strtrim(s)
-    return (string.gsub(s, "^%s*(.-)%s*$", "%1"))
+    return (string_gsub(s, "^%s*(.-)%s*$", "%1"))
 end
 ---
 --- Main search function for items, spells, and enchantments
 --- @param Text string - Search query text
+--- @param callback function|nil - Optional callback to invoke after search and caching completes
 --- @return nil
 --- @usage AtlasTW.SearchLib.Search("Thunderfury")
 ---
-function AtlasTW.SearchLib.Search(Text)
+function AtlasTW.SearchLib.Search(Text, callback)
     if not Text then return end
     Text = strtrim(Text)
     if Text == "" then return end
-    local text = string.lower(Text)
+    -- Prepare search text
+    local text = string_lower(Text)
+
+    -- Strip "id" or "ид" prefix if present for numeric search
+    -- We handle both ASCII "id" and localized "ид" (UTF-8 or CP1251)
+    local numericText = text
+    numericText = string_gsub(numericText, "^id", "")
+    numericText = string_gsub(numericText, "^ид", "") -- UTF-8 "ид"
+    -- If the above didn't work and it's CP1251, it might be different bytes,
+    -- but string_gsub with literal "ид" usually works if the file itself is saved in the same encoding.
+
+    -- Remove any leading spaces or special chars from numericText
+    numericText = strtrim(numericText)
+
+    -- If the resulting numericText is empty (user just typed "id"), fallback to original text
+    if numericText == "" then numericText = text end
 
     AtlasTWCharDB.SearchResult = {}
     AtlasTWLoot_InvalidateCategorizedList("SearchResult")
     AtlasTWCharDB.LastSearchedText = Text
 
     local partial = AtlasTWCharDB.PartialMatching
+    if string_len(text) < 3 then
+        partial = false
+    end
 
     local function isMatch(name, id)
-        local matchByName = false
-        if name then
-            local ln = string_lower(name)
-            if partial then
-                matchByName = string_find(ln, text, 1, true)
-            else
-                matchByName = (ln == text)
-            end
-        end
-
-        local matchByID = false
+        -- Priority: ID match (works for uncached items)
         if id then
             local sid = tostring(id)
             if partial then
-                matchByID = string_find(sid, text, 1, true)
+                if string_find(sid, numericText, 1, true) then return true end
             else
-                matchByID = (sid == text)
+                if sid == numericText then return true end
             end
         end
 
-        return matchByName or matchByID
+        -- Name match (only works for cached items)
+        if name then
+            local ln = string_lower(name)
+            if partial then
+                if string_find(ln, text, 1, true) then return true end
+            else
+                if ln == text then return true end
+            end
+        end
+
+        return false
     end
 
     local seen = {}
@@ -156,15 +178,26 @@ function AtlasTW.SearchLib.Search(Text)
             end
 
             if not isSpellLike then
-                local itemName = GetItemInfo(itemID)
-                if isMatch(itemName, itemID) then
+                -- Match by ID first (works for uncached items)
+                if isMatch(nil, itemID) then
                     local bossName, instanceKey = resolveBossAndInstanceFromPageKey(pageKey)
                     if bossName and instanceKey and instanceKey ~= "" then
-                        -- [1]=id, [2]=bossName, [3]=instanceKey, [4]=type, [5]=sourcePage
                         addUnique({ itemID, bossName, instanceKey, "item", bossName .. "|" .. instanceKey })
                     else
                         local displayName = AtlasTWLoot_GetLootPageDisplayName(pageKey)
                         addUnique({ itemID, displayName, pageKey, "item", pageKey })
+                    end
+                else
+                    -- Match by name (only for cached items)
+                    local itemName = GetItemInfo(itemID)
+                    if itemName and isMatch(itemName, nil) then
+                        local bossName, instanceKey = resolveBossAndInstanceFromPageKey(pageKey)
+                        if bossName and instanceKey and instanceKey ~= "" then
+                            addUnique({ itemID, bossName, instanceKey, "item", bossName .. "|" .. instanceKey })
+                        else
+                            local displayName = AtlasTWLoot_GetLootPageDisplayName(pageKey)
+                            addUnique({ itemID, displayName, pageKey, "item", pageKey })
+                        end
                     end
                 end
             end
@@ -181,10 +214,17 @@ function AtlasTW.SearchLib.Search(Text)
 
             -- Only check if this is a container item (material/reagent)
             if type(itemData) == "table" and itemData.isContainer then
-                local itemName = GetItemInfo(itemID)
-                if isMatch(itemName, itemID) then
+                -- Match by ID first
+                if isMatch(nil, itemID) then
                     local displayName = AtlasTWLoot_GetLootPageDisplayName(pageKey)
                     addUnique({ itemID, displayName, pageKey, "item", pageKey })
+                else
+                    -- Match by name
+                    local itemName = GetItemInfo(itemID)
+                    if itemName and isMatch(itemName, nil) then
+                        local displayName = AtlasTWLoot_GetLootPageDisplayName(pageKey)
+                        addUnique({ itemID, displayName, pageKey, "item", pageKey })
+                    end
                 end
             end
         end, false) -- Search all pages (primary and secondary)
@@ -250,9 +290,21 @@ function AtlasTW.SearchLib.Search(Text)
     AtlasTWLoot_InvalidateCategorizedList("SearchResult")
     if table_getn(AtlasTWCharDB.SearchResult) == 0 then
         PrintA(L["No match found for"] .. " \"" .. Text .. "\".")
+        if callback then
+            callback()
+        else
+            AtlasTW.SearchLib.ShowResult()
+        end
     else
         -- Display all results, scroll is handled by loot frame
-        AtlasTW.SearchLib.ShowResult()
+        -- Ensure all results are cached so names and icons appear
+        AtlasTW.LootCache.CacheAllItems(AtlasTWCharDB.SearchResult, function()
+            if callback then
+                callback()
+            else
+                AtlasTW.SearchLib.ShowResult()
+            end
+        end)
     end
 end
 
