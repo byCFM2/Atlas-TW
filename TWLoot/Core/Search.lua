@@ -86,18 +86,19 @@ function AtlasTW.SearchLib.Search(Text)
         end
     end
 
-    -- Local cache of already added results (uniqueness by type, id, AND source page)
-    -- This allows the same item to appear from multiple sources (e.g., Black Lotus from world AND Herbalism)
     local seen = {}
     local function addUnique(entry)
         local ty = entry[4] or "item"
         local id = entry[1]
         local sourcePage = entry[5] or entry[3] or ""
-        -- Include source page in uniqueness key so same item can appear from different sources
-        local key = ty .. ":" .. tostring(id) .. ":" .. tostring(sourcePage)
-        if not seen[key] then
+
+        -- Use nested table for O(1) lookup without string concatenation overhead
+        if not seen[ty] then seen[ty] = {} end
+        if not seen[ty][id] then seen[ty][id] = {} end
+
+        if not seen[ty][id][sourcePage] then
             table_insert(AtlasTWCharDB.SearchResult, entry)
-            seen[key] = true
+            seen[ty][id][sourcePage] = true
         end
     end
 

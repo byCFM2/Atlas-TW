@@ -1,13 +1,6 @@
-# Игнорировать любые файлы и папки, где в имени есть DONT_USE
 *DONT_USE*
-
-# Игнорировать имена, начинающиеся с DONT_USE (на всякий случай)
 DONT_USE*
 
-# Остальные существующие правила
 .mailmap
 .agent/workflows/weapon_skills_plan.md
 .qoder/
-OPTIMIZATION_PLAN.md
-IMPROVEMENT_PLAN.md
-IMPROVEMENT_PLAN2.md

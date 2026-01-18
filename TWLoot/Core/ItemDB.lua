@@ -86,12 +86,19 @@ local MAX_CACHE_SIZE = 500          -- Keep reasonable size
 local tooltipElementsCache = {}
 local sharedTooltip = nil
 
--- Simple table creation (pooling disabled for stability)
+-- Simple table creation with pooling to reduce GC pressure
+local tablePool = {}
 local function getPooledTable()
-    return {}
+    local t = table.remove(tablePool)
+    if not t then return {} end
+    return t
 end
 local function releasePooledTable(t)
-    -- no-op, let garbage collector handle it
+    if not t or type(t) ~= "table" then return end
+    -- Clean table for reuse
+    for k in pairs(t) do t[k] = nil end
+    if table.setn then table.setn(t, 0) end
+    table.insert(tablePool, t)
 end
 
 local SLOT_KEYWORDS = AtlasTW.ItemDB.SLOT_KEYWORDS
@@ -251,8 +258,15 @@ end
 ---
 local function CleanupRawTooltipCache()
     if RawTooltipCacheSize > MAX_CACHE_SIZE then
-        RawTooltipDataCache = {}
-        RawTooltipCacheSize = 0
+        -- Incremental cleanup: remove ~20% of entries (100 if size is 500)
+        local removeCount = math.floor(MAX_CACHE_SIZE * 0.2)
+        local count = 0
+        for k in pairs(RawTooltipDataCache) do
+            RawTooltipDataCache[k] = nil
+            count = count + 1
+            if count >= removeCount then break end
+        end
+        RawTooltipCacheSize = RawTooltipCacheSize - count
     end
 end
 
@@ -262,9 +276,16 @@ end
 ---
 local function CleanupTooltipCache()
     if ParsedTooltipCacheSize > MAX_CACHE_SIZE then
-        ParsedTooltipCache = {}
-        ParsedSuitabilityCache = {}
-        ParsedTooltipCacheSize = 0
+        -- Incremental cleanup: remove ~20% of entries
+        local removeCount = math.floor(MAX_CACHE_SIZE * 0.2)
+        local count = 0
+        for k in pairs(ParsedTooltipCache) do
+            ParsedTooltipCache[k] = nil
+            ParsedSuitabilityCache[k] = nil -- Sync suitability cache
+            count = count + 1
+            if count >= removeCount then break end
+        end
+        ParsedTooltipCacheSize = ParsedTooltipCacheSize - count
     end
 end
 
@@ -512,7 +533,17 @@ function AtlasTW.ItemDB.ParseTooltipForItemInfo(itemID, extratext)
 
     local result = extratext or ""
     if table.getn(info) > 0 then
-        result = table.concat(info, ", ")
+        -- Safe concatenation for WoW 1.12 to avoid "table contains non-strings" error
+        local strings = {}
+        for i = 1, table.getn(info) do
+            local val = info[i]
+            if val ~= nil then
+                table.insert(strings, tostring(val))
+            end
+        end
+        if table.getn(strings) > 0 then
+            result = table.concat(strings, ", ")
+        end
     end
 
     -- Release pooled table

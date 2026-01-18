@@ -187,13 +187,19 @@ function AtlasTW.Interactions.ChatSayItemReagents(id, color, name, safe)
     end
 end
 
+-- Local table for building material strings to reduce GC pressure
+local materialStrings = {}
+
 -- Helper function to create materials string (tools/reagents)
 local function BuildMaterialString(materials, isReagent)
     if not materials or type(materials) ~= "table" then
         return ""
     end
 
-    local materialStrings = {}
+    -- Clear previous values using table.setn for 1.12 compatibility
+	for k in pairs(materialStrings) do materialStrings[k] = nil end
+	table.setn(materialStrings, 0)
+
 	local m = table.getn(materials)
     for i = 1, m do
         local itemInfo = materials[i]
@@ -731,13 +737,8 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 						ChatFrameEditBox:Insert(name)
 					end
 				else
-					local chatnumber
-					if channel == "WHISPER" then
-						chatnumber = ChatFrameEditBox.tellTarget
-					elseif channel == "CHANNEL" then
-						chatnumber = ChatFrameEditBox.channelTarget
-					end
-					AtlasTW.Interactions.ChatSend(AtlasTW.LootUtils.GetChatLink(AtlasTW.SpellDB["craftspells"][this.elemID]["item"]),channel,nil,chatnumber)
+					local channel, chatnumber = AtlasTW.Interactions.ChatGetDefaultChannelTarget()
+					AtlasTW.Interactions.ChatSend(AtlasTW.LootUtils.GetChatLink(AtlasTW.SpellDB["craftspells"][this.elemID]["item"]),channel,chatnumber)
 				end
 			end
 		elseif IsAltKeyDown() and this.elemID ~= 0 then
@@ -808,6 +809,29 @@ function AtlasTW.Interactions.ElementList_OnClick(buttonName)
     end
 end
 
+-- Helper function to set current instance in dropdown lists for correct navigation
+local function FindAndSetAtlasIndicesByInstance(instKey)
+	if not (AtlasTW and AtlasTW.DropDowns and instKey) then return false end
+	local ddCount = table.getn(AtlasTW.DropDowns)
+	for typeIndex = 1, ddCount do
+		local dropDownData = AtlasTW.DropDowns[typeIndex]
+		if type(dropDownData) == "table" then
+			local n = table.getn(dropDownData)
+			for zoneIndex = 1, n do
+				if dropDownData[zoneIndex] == instKey then
+					AtlasTWOptions.AtlasType = typeIndex
+					AtlasTWOptions.AtlasZone = zoneIndex
+					AtlasTW.Refresh()
+					AtlasTW.FrameDropDownTypeOnShow()
+					AtlasTW.FrameDropDownOnShow()
+					return true
+				end
+			end
+		end
+	end
+	return false
+end
+
 ---
 --- Handles menu item click events in the loot browser
 --- Processes container display or loads loot data based on menu selection
@@ -848,28 +872,7 @@ function AtlasTW.Interactions.MenuItem_OnClick(button)
             TableSource = effectiveInstanceKey
             pagename = effectiveFirstBoss
             AtlasTWLootItemsFrame.StoredCurrentInstance = effectiveInstanceKey
-            -- Set current instance in dropdown lists for correct navigation (use numeric indices and rebuild if necessary)
-            local function FindAndSetAtlasIndicesByInstance(instKey)
-                if not (AtlasTW and AtlasTW.DropDowns and instKey) then return false end
-                local ddCount = table.getn(AtlasTW.DropDowns)
-                for typeIndex = 1, ddCount do
-                    local dropDownData = AtlasTW.DropDowns[typeIndex]
-                    if type(dropDownData) == "table" then
-                        local n = table.getn(dropDownData)
-                        for zoneIndex = 1, n do
-                            if dropDownData[zoneIndex] == instKey then
-                                AtlasTWOptions.AtlasType = typeIndex
-                                AtlasTWOptions.AtlasZone = zoneIndex
-                                AtlasTW.Refresh()
-								AtlasTW.FrameDropDownTypeOnShow()
-								AtlasTW.FrameDropDownOnShow()
-                                return true
-                            end
-                        end
-                    end
-                end
-                return false
-            end
+            -- Set current instance in dropdown lists
             local matched = FindAndSetAtlasIndicesByInstance(effectiveInstanceKey)
             if not matched then
                 if AtlasTW and AtlasTW.PopulateDropdowns then AtlasTW.PopulateDropdowns() end

@@ -83,17 +83,12 @@ local ModuleState = {
 
 -- Global index for fast lookups (O(1) instead of O(N))
 local GlobalIndex = {
-    itemID = {},   -- itemID -> sourceString
+    itemID = {},   -- itemID -> sourceString (or false if missing)
     spellID = {},  -- spellID -> sourceString
     nameToID = {}, -- itemName -> itemID
     isIndexed = false,
     isIndexing = false
 }
-
--- Cache for items not found in Atlas-TW database
-local NegativeCache = {}
-local NegativeCacheSize = 0
-local NEGATIVE_CACHE_LIMIT = 1000
 
 -- ============================================================================
 -- MONEY TOOLTIP HOOK
@@ -141,6 +136,67 @@ end
 -- Helper to populate itemToSetMap
 local itemToSetMap = {}
 
+-- ============================================================================
+-- GLOBAL INDEX HELPERS (Unpacked from BuildGlobalIndex for performance)
+-- ============================================================================
+
+local function indexQuests(questList, instanceName)
+    if not questList then return end
+    for _, quest in pairs(questList) do
+        if quest.Rewards then
+            for _, reward in pairs(quest.Rewards) do
+                local rID = type(reward) == "table" and reward.id or reward
+                if rID then
+                    local questTitle = quest.Title or "?"
+                    local source = (instanceName ~= "" and instanceName .. " " or "") ..
+                        L["Quest"] .. ": " .. questTitle
+                    if GlobalIndex.itemID[rID] == nil then
+                        GlobalIndex.itemID[rID] = source
+                    end
+                end
+            end
+        end
+    end
+end
+
+local function mapItems(data, setName)
+    if type(data) ~= "table" then return end
+    local n = table.getn(data)
+    for i = 1, n do
+        local item = data[i]
+        if type(item) == "table" then
+            local id = item.id or item[1]
+            if id and itemToSetMap[id] == nil then
+                itemToSetMap[id] = setName
+            end
+            if item.container then mapItems(item.container, setName) end
+        elseif type(item) == "number" then
+            if itemToSetMap[item] == nil then
+                itemToSetMap[item] = setName
+            end
+        end
+    end
+end
+
+local function indexProfItems(spellList, profPages)
+    if not spellList then return end
+    for spellID, data in pairs(spellList) do
+        for _, profEntry in ipairs(profPages) do
+            local pageKey = profEntry.pageKey
+            local profName = profEntry.name
+            if AtlasTWLoot_Data[pageKey] and AtlasTW.LootUtils.IsItemInLootPage(AtlasTWLoot_Data[pageKey], spellID) then
+                GlobalIndex.spellID[spellID] = profName
+                break
+            end
+        end
+        if data.item then 
+            if GlobalIndex.itemID[data.item] == nil then
+                GlobalIndex.itemID[data.item] = GlobalIndex.spellID[spellID]
+            end
+        end
+    end
+end
+
 local function BuildGlobalIndex(incremental)
     if GlobalIndex.isIndexed or GlobalIndex.isIndexing then return end
 
@@ -150,27 +206,8 @@ local function BuildGlobalIndex(incremental)
             for _, instanceData in pairs(AtlasTW.Quest.DataBase) do
                 local instanceName = instanceData.Caption
                 if type(instanceName) == "table" then instanceName = instanceName[1] end
-
-                local function indexQuests(questList)
-                    if not questList then return end
-                    for _, quest in pairs(questList) do
-                        if quest.Rewards then
-                            for _, reward in pairs(quest.Rewards) do
-                                local rID = type(reward) == "table" and reward.id or reward
-                                if rID then
-                                    local questTitle = quest.Title or "?"
-                                    local source = (instanceName ~= "" and instanceName .. " " or "") ..
-                                        L["Quest"] .. ": " .. questTitle
-                                    if not GlobalIndex.itemID[rID] then
-                                        GlobalIndex.itemID[rID] = source
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-                indexQuests(instanceData.Alliance)
-                indexQuests(instanceData.Horde)
+                indexQuests(instanceData.Alliance, instanceName)
+                indexQuests(instanceData.Horde, instanceName)
             end
         end
 
@@ -188,26 +225,7 @@ local function BuildGlobalIndex(incremental)
                     if menuTable then
                         for _, entry in pairs(menuTable) do
                             if entry.lootpage and AtlasTWLoot_Data[entry.lootpage] then
-                                local lootData = AtlasTWLoot_Data[entry.lootpage]
-                                local function mapItems(data)
-                                    if type(data) ~= "table" then return end
-                                    local n = table.getn(data)
-                                    for i = 1, n do
-                                        local item = data[i]
-                                        if type(item) == "table" then
-                                            local id = item.id or item[1]
-                                            if id and not itemToSetMap[id] then
-                                                itemToSetMap[id] = setCat.name
-                                            end
-                                            if item.container then mapItems(item.container) end
-                                        elseif type(item) == "number" then
-                                            if not itemToSetMap[item] then
-                                                itemToSetMap[item] = setCat.name
-                                            end
-                                        end
-                                    end
-                                end
-                                mapItems(lootData)
+                                mapItems(AtlasTWLoot_Data[entry.lootpage], setCat.name)
                             end
                         end
                     end
@@ -232,22 +250,8 @@ local function BuildGlobalIndex(incremental)
                 end
             end
 
-            local function indexProfItems(spellList)
-                if not spellList then return end
-                for spellID, data in pairs(spellList) do
-                    for _, profEntry in ipairs(profPages) do
-                        local pageKey = profEntry.pageKey
-                        local profName = profEntry.name
-                        if AtlasTWLoot_Data[pageKey] and AtlasTW.LootUtils.IsItemInLootPage(AtlasTWLoot_Data[pageKey], spellID) then
-                            GlobalIndex.spellID[spellID] = profName
-                            break
-                        end
-                    end
-                    if data.item then GlobalIndex.itemID[data.item] = GlobalIndex.spellID[spellID] end
-                end
-            end
-            indexProfItems(AtlasTW.SpellDB.enchants)
-            indexProfItems(AtlasTW.SpellDB.craftspells)
+            indexProfItems(AtlasTW.SpellDB.enchants, profPages)
+            indexProfItems(AtlasTW.SpellDB.craftspells, profPages)
         end
 
         -- 4. Index Loot Tables
@@ -298,7 +302,7 @@ local function BuildGlobalIndex(incremental)
                             end
                         end
                     end
-                    if not GlobalIndex.itemID[itemID] then
+                    if GlobalIndex.itemID[itemID] == nil then
                         GlobalIndex.itemID[itemID] = source
                     end
                 end
@@ -326,24 +330,8 @@ local function BuildGlobalIndex(incremental)
             for _, instanceData in pairs(AtlasTW.Quest.DataBase) do
                 local instanceName = instanceData.Caption
                 if type(instanceName) == "table" then instanceName = instanceName[1] end
-                local function indexQuests(questList)
-                    if not questList then return end
-                    for _, quest in pairs(questList) do
-                        if quest.Rewards then
-                            for _, reward in pairs(quest.Rewards) do
-                                local rID = type(reward) == "table" and reward.id or reward
-                                if rID then
-                                    local questTitle = quest.Title or "?"
-                                    local source = (instanceName ~= "" and instanceName .. " " or "") ..
-                                        L["Quest"] .. ": " .. questTitle
-                                    if not GlobalIndex.itemID[rID] then GlobalIndex.itemID[rID] = source end
-                                end
-                            end
-                        end
-                    end
-                end
-                indexQuests(instanceData.Alliance)
-                indexQuests(instanceData.Horde)
+                indexQuests(instanceData.Alliance, instanceName)
+                indexQuests(instanceData.Horde, instanceName)
             end
         end
     end)
@@ -362,22 +350,7 @@ local function BuildGlobalIndex(incremental)
                     if menuTable then
                         for _, entry in pairs(menuTable) do
                             if entry.lootpage and AtlasTWLoot_Data[entry.lootpage] then
-                                local lootData = AtlasTWLoot_Data[entry.lootpage]
-                                local function mapItems(data)
-                                    if type(data) ~= "table" then return end
-                                    local n = table.getn(data)
-                                    for i = 1, n do
-                                        local item = data[i]
-                                        if type(item) == "table" then
-                                            local id = item.id or item[1]
-                                            if id and not itemToSetMap[id] then itemToSetMap[id] = setCat.name end
-                                            if item.container then mapItems(item.container) end
-                                        elseif type(item) == "number" then
-                                            if not itemToSetMap[item] then itemToSetMap[item] = setCat.name end
-                                        end
-                                    end
-                                end
-                                mapItems(lootData)
+                                mapItems(AtlasTWLoot_Data[entry.lootpage], setCat.name)
                             end
                         end
                     end
@@ -403,22 +376,8 @@ local function BuildGlobalIndex(incremental)
                     end
                 end
             end
-            local function indexProfItems(spellList)
-                if not spellList then return end
-                for spellID, data in pairs(spellList) do
-                    for _, profEntry in ipairs(profPages) do
-                        local pageKey = profEntry.pageKey
-                        local profName = profEntry.name
-                        if AtlasTWLoot_Data[pageKey] and AtlasTW.LootUtils.IsItemInLootPage(AtlasTWLoot_Data[pageKey], spellID) then
-                            GlobalIndex.spellID[spellID] = profName
-                            break
-                        end
-                    end
-                    if data.item then GlobalIndex.itemID[data.item] = GlobalIndex.spellID[spellID] end
-                end
-            end
-            indexProfItems(AtlasTW.SpellDB.enchants)
-            indexProfItems(AtlasTW.SpellDB.craftspells)
+            indexProfItems(AtlasTW.SpellDB.enchants, profPages)
+            indexProfItems(AtlasTW.SpellDB.craftspells, profPages)
         end
     end)
 
@@ -575,8 +534,10 @@ local function FindItemSource(itemID)
 
     -- Check global index (start incremental build if not yet started)
     BuildGlobalIndex(true)
-    if GlobalIndex.itemID[itemID] then
-        return GlobalIndex.itemID[itemID]
+    
+    local cached = GlobalIndex.itemID[itemID]
+    if cached ~= nil then
+        return cached or nil -- Returns string source or nil if false (not found)
     end
 
     -- Support for Transmogrification (Custom IDs)
@@ -595,9 +556,6 @@ local function FindItemSource(itemID)
         end
     end
 
-    -- Check negative cache to avoid repeated failed lookups
-    if NegativeCache[itemID] then return nil end
-
     -- For items not in Atlas database, they might be in sets
     local setCategory = GetItemSetCategory(itemID)
     if setCategory then
@@ -605,13 +563,8 @@ local function FindItemSource(itemID)
         return setCategory
     end
 
-    -- If still not found, cache as missing
-    NegativeCache[itemID] = true
-    NegativeCacheSize = NegativeCacheSize + 1
-    if NegativeCacheSize > NEGATIVE_CACHE_LIMIT then
-        NegativeCache = {}
-        NegativeCacheSize = 0
-    end
+    -- If still not found, cache as missing (use false)
+    GlobalIndex.itemID[itemID] = false
     return nil
 end
 

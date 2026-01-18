@@ -106,6 +106,44 @@ local function formSkillStyle(skilltext)
 		GREEN .. skilltext[3] .. ", " .. GREY .. skilltext[4]
 end
 
+-- Helper function to count maximum numeric index (sparse array support)
+local function GetMaxNumericIndex(tbl)
+	local maxIndex = 0
+	for k, v in pairs(tbl) do
+		if type(k) == "number" and k > maxIndex and v then
+			maxIndex = k
+		end
+	end
+	return maxIndex
+end
+
+-- OnUpdate handler for triple blink
+local function AtlasTWLoot_Blink_OnUpdate()
+	this._blinkElapsed = (this._blinkElapsed or 0) + arg1
+	if this._blinkElapsed >= .7 then
+		if this._blinkPhase == "on" then
+			this:SetAlpha(0)
+			this._blinkPhase = "off"
+			this._blinkElapsed = 0
+		else
+			if (this._blinkRemaining or 0) > 1 then
+				this._blinkRemaining = this._blinkRemaining - 1
+				this._blinkPhase = "on"
+				this._blinkElapsed = 0
+				this:SetAlpha(1)
+			else
+				-- Final state: visible, stop OnUpdate to avoid CPU overhead
+				this._blinkElapsed = nil
+				this._blinkPhase = nil
+				this._blinkRemaining = nil
+				this._blinkActive = nil
+				this:SetScript("OnUpdate", nil)
+				this:SetAlpha(0)
+			end
+		end
+	end
+end
+
 -- Implement triple blink using OnUpdate (arg1 is elapsed time).
 -- Note: OnUpdate does not run while a frame is hidden in WoW 1.12,
 -- so we toggle alpha instead of Hide/Show to keep the handler active.
@@ -118,31 +156,7 @@ local function AtlasTWLoot_BlinkScrollHint()
 	f._blinkRemaining = 2 -- set to 2 for triple blink
 	f._blinkPhase = "on"
 	f._blinkElapsed = 0
-	f:SetScript("OnUpdate", function()
-		this._blinkElapsed = (this._blinkElapsed or 0) + arg1
-		if this._blinkElapsed >= .7 then
-			if this._blinkPhase == "on" then
-				this:SetAlpha(0)
-				this._blinkPhase = "off"
-				this._blinkElapsed = 0
-			else
-				if (this._blinkRemaining or 0) > 1 then
-					this._blinkRemaining = this._blinkRemaining - 1
-					this._blinkPhase = "on"
-					this._blinkElapsed = 0
-					this:SetAlpha(1)
-				else
-					-- Final state: visible, stop OnUpdate to avoid CPU overhead
-					this._blinkElapsed = nil
-					this._blinkPhase = nil
-					this._blinkRemaining = nil
-					this._blinkActive = nil
-					this:SetScript("OnUpdate", nil)
-					this:SetAlpha(0)
-				end
-			end
-		end
-	end)
+	f:SetScript("OnUpdate", AtlasTWLoot_Blink_OnUpdate)
 end
 
 ---
@@ -197,17 +211,6 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 	if type(dataSource) == "table" then
 		local LZ = AtlasTW.Localization.Zones
 		local quantityFrame, menuButton, extraText, defaultIcon, itemButton, iconFrame, nameFrame, extraFrame, borderFrame
-
-		-- Helper function to count maximum numeric index (sparse array support)
-		local function GetMaxNumericIndex(tbl)
-			local maxIndex = 0
-			for k, v in pairs(tbl) do
-				if type(k) == "number" and k > maxIndex and v then
-					maxIndex = k
-				end
-			end
-			return maxIndex
-		end
 
 		local totalItems = GetMaxNumericIndex(dataSource)
 
@@ -1166,6 +1169,19 @@ function AtlasTW.LootBrowserUI.SetMenuLine(lineIndex, itemData)
 	AtlasTW.LootBrowserUI.UpdateTextButton(button, itemData)
 end
 
+-- OnUpdate handler for spinner animation
+local function LoadingFrame_OnUpdate()
+	this.animTimer = this.animTimer + arg1
+	if this.animTimer >= 0.15 then
+		this.animTimer = 0
+		this.spinnerIndex = this.spinnerIndex + 1
+		if this.spinnerIndex > 4 then
+			this.spinnerIndex = 1
+		end
+		this.text:SetText(this.spinnerChars[this.spinnerIndex])
+	end
+end
+
 ---
 --- Creates a loading overlay frame with spinning indicator
 --- @param frameName string Frame global name
@@ -1199,17 +1215,7 @@ function AtlasTW.LootBrowserUI.CreateLoadingFrame(frameName, parentFrame, debugN
 		loadingFrame.animTimer = 0
 		loadingFrame.spinnerIndex = 1
 		loadingFrame.spinnerChars = { "|", "/", "-", "\\" }
-		loadingFrame:SetScript("OnUpdate", function()
-			this.animTimer = this.animTimer + arg1
-			if this.animTimer >= 0.15 then
-				this.animTimer = 0
-				this.spinnerIndex = this.spinnerIndex + 1
-				if this.spinnerIndex > 4 then
-					this.spinnerIndex = 1
-				end
-				this.text:SetText(this.spinnerChars[this.spinnerIndex])
-			end
-		end)
+		loadingFrame:SetScript("OnUpdate", LoadingFrame_OnUpdate)
 
 		setglobal(frameName, loadingFrame)
 	end

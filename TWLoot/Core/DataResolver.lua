@@ -221,6 +221,120 @@ function AtlasTW.DataResolver.GetBossNavigation(data)
 end
 
 ---
+--- Gets all menu data from AtlasTW.MenuData
+--- @return table Array of menu data tables
+---
+local function getAllMenuData()
+	local menus = {}
+	if AtlasTW and AtlasTW.MenuData then
+		for _, value in pairs(AtlasTW.MenuData) do
+			if type(value) == "table" and table.getn(value) > 0 then
+				table.insert(menus, value)
+			end
+		end
+	end
+	return menus
+end
+
+---
+--- Finds an element in a menu table and returns navigation links
+--- @param menu table The menu table to search in
+--- @param current string The element name or lootpage to find
+--- @return table|nil Navigation links or nil if not found
+---
+local function findInMenu(menu, current)
+	if not menu then return nil end
+	local size = table.getn(menu)
+	local idx = nil
+
+	local LU = AtlasTW.Localization.UI
+	local LM = AtlasTW.Localization.MapData
+
+	-- Search element by name (priority) or by lootpage (for compatibility)
+	for i = 1, size do
+		local e = menu[i]
+		if e and e.name then
+			-- Exact match first
+			if e.name == current then
+				idx = i
+				break
+			elseif string.find(e.name, "|c") then
+				-- Remove color codes and compare
+				local cleanName = string.gsub(e.name, "|c%x%x%x%x%x%x%x%x", "")
+				cleanName = string.gsub(cleanName, "|r", "")
+				if cleanName == current then
+					idx = i
+					break
+				end
+			end
+		end
+	end
+
+	-- If not found by name, try by lootpage for backward compatibility
+	if not idx then
+		for i = 1, size do
+			local e = menu[i]
+			if e and e.lootpage and e.lootpage == current then
+				idx = i
+				break
+			end
+		end
+	end
+
+	if not idx then
+		return nil
+	end
+
+	local result = {}
+	-- Search for previous item among valid elements
+	for j = idx - 1, 1, -1 do
+		local pe = menu[j]
+		if pe and pe.lootpage and not pe.isheader then
+			result.Prev_Page = pe.lootpage ~= LU["Rare Mobs"] and pe.lootpage or LM["Shade Mage"]
+			result.Prev_Title = pe.name ~= LU["Rare Mobs"] and pe.name or LM["Shade Mage"]
+			break
+		end
+	end
+	-- If not found, wrap around from the end
+	if not result.Prev_Page then
+		for j = size, 1, -1 do
+			if j ~= idx then
+				local pe = menu[j]
+				if pe and pe.lootpage and not pe.isheader then
+					result.Prev_Page = pe.lootpage ~= LU["Rare Mobs"] and pe.lootpage or LM["Shade Mage"]
+					result.Prev_Title = pe.name ~= LU["Rare Mobs"] and pe.name or LM["Shade Mage"]
+					break
+				end
+			end
+		end
+	end
+
+	-- Search for next item
+	for j = idx + 1, size do
+		local ne = menu[j]
+		if ne and ne.lootpage and not ne.isheader then
+			result.Next_Page = ne.lootpage ~= LU["Rare Mobs"] and ne.lootpage or LM["Shade Mage"]
+			result.Next_Title = ne.name ~= LU["Rare Mobs"] and ne.name or LM["Shade Mage"]
+			break
+		end
+	end
+	-- If not found, wrap around from the beginning
+	if not result.Next_Page then
+		for j = 1, size do
+			if j ~= idx then
+				local ne = menu[j]
+				if ne and ne.lootpage and not ne.isheader then
+					result.Next_Page = ne.lootpage ~= LU["Rare Mobs"] and ne.lootpage or LM["Shade Mage"]
+					result.Next_Title = ne.name ~= LU["Rare Mobs"] and ne.name or LM["Shade Mage"]
+					break
+				end
+			end
+		end
+	end
+	return result
+end
+
+---
 --- Gets navigation data for menu browsing
 --- Creates navigation structure for moving between different menu sections
 --- @param current string|table Current menu item name or loot table key
@@ -233,113 +347,12 @@ function AtlasTW.DataResolver.GetMenuNavigation(current)
         current = current.menuName
     end
 
-    local function getAllMenuData()
-        local menus = {}
-        if AtlasTW and AtlasTW.MenuData then
-            for _, value in pairs(AtlasTW.MenuData) do
-                if type(value) == "table" and table.getn(value) > 0 then
-                    table.insert(menus, value)
-                end
-            end
-        end
-        return menus
-    end
-
     local candidates = getAllMenuData()
-
-    local function findInMenu(menu)
-        if not menu then return nil end
-        local size = table.getn(menu)
-        local idx = nil
-
-        -- Search element by name (priority) or by lootpage (for compatibility)
-        for i = 1, size do
-            local e = menu[i]
-            if e and e.name then
-                -- Exact match first
-                if e.name == current then
-                    idx = i
-                    break
-                elseif string.find(e.name, "|c") then
-                    -- Remove color codes and compare
-                    local cleanName = string.gsub(e.name, "|c%x%x%x%x%x%x%x%x", "")
-                    cleanName = string.gsub(cleanName, "|r", "")
-                    if cleanName == current then
-                        idx = i
-                        break
-                    end
-                end
-            end
-        end
-
-        -- If not found by name, try by lootpage for backward compatibility
-        if not idx then
-            for i = 1, size do
-                local e = menu[i]
-                if e and e.lootpage and e.lootpage == current then
-                    idx = i
-                    break
-                end
-            end
-        end
-
-        if not idx then
-            return nil
-        end
-
-        local result = {}
-        -- Search for previous item among valid elements
-        for j = idx - 1, 1, -1 do
-            local pe = menu[j]
-            if pe and pe.lootpage and not pe.isheader then
-                result.Prev_Page = pe.lootpage ~= LU["Rare Mobs"] and pe.lootpage or LM["Shade Mage"]
-                result.Prev_Title = pe.name ~= LU["Rare Mobs"] and pe.name or LM["Shade Mage"]
-                break
-            end
-        end
-        -- If not found, wrap around from the end
-        if not result.Prev_Page then
-            for j = size, 1, -1 do
-                if j ~= idx then
-                    local pe = menu[j]
-                    if pe and pe.lootpage and not pe.isheader then
-                        result.Prev_Page = pe.lootpage ~= LU["Rare Mobs"] and pe.lootpage or LM["Shade Mage"]
-                        result.Prev_Title = pe.name ~= LU["Rare Mobs"] and pe.name or LM["Shade Mage"]
-                        break
-                    end
-                end
-            end
-        end
-
-        -- Search for next item
-        for j = idx + 1, size do
-            local ne = menu[j]
-            if ne and ne.lootpage and not ne.isheader then
-                result.Next_Page = ne.lootpage ~= LU["Rare Mobs"] and ne.lootpage or LM["Shade Mage"]
-                result.Next_Title = ne.name ~= LU["Rare Mobs"] and ne.name or LM["Shade Mage"]
-                break
-            end
-        end
-        -- If not found, wrap around from the beginning
-        if not result.Next_Page then
-            for j = 1, size do
-                if j ~= idx then
-                    local ne = menu[j]
-                    if ne and ne.lootpage and not ne.isheader then
-                        result.Next_Page = ne.lootpage ~= LU["Rare Mobs"] and ne.lootpage or LM["Shade Mage"]
-                        result.Next_Title = ne.name ~= LU["Rare Mobs"] and ne.name or LM["Shade Mage"]
-                        break
-                    end
-                end
-            end
-        end
-        return result
-    end
 
     -- Scan all addon menus
     local n = table.getn(candidates)
     for k = 1, n do
-        local nav = findInMenu(candidates[k])
+        local nav = findInMenu(candidates[k], current)
         if nav and (nav.Next_Page or nav.Prev_Page) then
             return nav
         end

@@ -21,18 +21,35 @@ local timerFrame = nil
 
 local function OnTimerUpdate()
     local now = GetTime()
-    local i = 1
-    while i <= table.getn(activeTimers) do
+    local count = table.getn(activeTimers)
+    if count == 0 then
+        timerFrame:Hide()
+        return
+    end
+
+    local keptTimers = {}
+    local expiredCallbacks = {}
+
+    -- Single pass to separate expired and active timers (O(N))
+    for i = 1, count do
         local timer = activeTimers[i]
         if now >= timer.time then
-            table.remove(activeTimers, i)
             if timer.callback then
-                pcall(timer.callback) -- Protected call needed for callbacks
+                table.insert(expiredCallbacks, timer.callback)
             end
         else
-            i = i + 1
+            table.insert(keptTimers, timer)
         end
     end
+
+    -- Update active timers with remaining ones
+    activeTimers = keptTimers
+
+    -- Execute callbacks after updating state to prevent re-entrancy issues
+    for i = 1, table.getn(expiredCallbacks) do
+        pcall(expiredCallbacks[i])
+    end
+
     if table.getn(activeTimers) == 0 then
         timerFrame:Hide()
     end

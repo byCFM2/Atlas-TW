@@ -49,25 +49,38 @@ end
 -- @param attempts number Optional attempts count for repeated tries (default 1)
 -- @return void
 ---
-function AtlasTW.LootCache.ForceCacheItem(itemID, maxAttempts)
+function AtlasTW.LootCache.ForceCacheItem(itemID, maxAttempts, callback)
     if not itemID or itemID == 0 then
+        if callback then callback(false) end
         return false
     end
+
+    if GetItemInfo(itemID) then
+        if callback then callback(true) end
+        return true
+    end
+
     maxAttempts = maxAttempts or 3
     local attempts = 0
+
     local function tryCache()
         if GetItemInfo(itemID) then
-            return true
+            if callback then callback(true) end
+            return
         end
+
+        -- Use a hidden tooltip to request item data from server
         AtlasTWLootTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
         attempts = attempts + 1
+
         if attempts < maxAttempts then
-            -- Start next attempt
-            tryCache()
+            -- Wait for client to receive data before retrying (0.15s is safer for server latency)
+            AtlasTW.Timer.Start(0.15, tryCache)
         else
-            return false
+            if callback then callback(false) end
         end
     end
+
     tryCache()
 end
 

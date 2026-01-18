@@ -73,11 +73,8 @@ function AtlasTW_GetMetaCategoryForMenu(key)
     for menuKey, metaName in pairs(MenuKeyToMetaCategory) do
         local menuTable = AtlasTW.MenuData[menuKey]
         if type(menuTable) == "table" then
-            local maxIdx = 0
-            for k, _ in pairs(menuTable) do
-                if type(k) == "number" and k > maxIdx then maxIdx = k end
-            end
-            for i = 1, maxIdx do
+			local n = table.getn(menuTable)
+            for i = 1, n do
                 local entry = menuTable[i]
                 if entry and entry.lootpage == key then
                     return metaName
