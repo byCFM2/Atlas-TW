@@ -66,7 +66,7 @@ AtlasTW.InstanceData.RagefireChasm = {
                 {},
                 { id = 14540, dropRate = 100 }, -- Taragaman the Hungerer's Heart
                 {},
-                { id = 64, disc = L["Level One Lunatic Challenge"], dropRate = 25 }, -- Fiery Cloak
+                { id = 5235, disc = L["Level One Lunatic Challenge"], dropRate = 100 }, -- Cultist's Firestick
             }
         },
         {
@@ -95,7 +95,7 @@ AtlasTW.InstanceData.RagefireChasm = {
                 {},
                 { id = 5212, dropRate = 25 }, -- Blazing Wand
                 {},
-                { id = 5235, disc = L["Level One Lunatic Challenge"], dropRate = 100 }, -- Cultist's Firestick
+                { id = 64, disc = L["Level One Lunatic Challenge"], dropRate = 100 }, -- Ash‑Covered Cape
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
             }

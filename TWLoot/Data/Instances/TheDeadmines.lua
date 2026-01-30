@@ -50,6 +50,8 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 55375, dropRate = 25 }, -- Corrosive Vial
                 {},
                 { id = 41429, dropRate = 100, container = { 70239, 70240 } }, -- Voss' Sizzling Brew
+                {},
+                { id = 107, disc = L["Level One Luntic Challenge"], dropRate = 100 }, -- Defias Longbow
             }
         },
         {
@@ -174,6 +176,7 @@ AtlasTW.InstanceData.TheDeadmines = {
                 { id = 51217, disc = L["Transmogrification"], dropRate = 1 }, -- Fashion Coin
                 {},
                 { id = 29980, disc = L["Level One Luntic Challenge"], dropRate = 100 }, -- Broken Stonemason's Guild Signet
+                { id = 108, disc = L["Level One Luntic Challenge"], dropRate = 100 }, -- Tattered Defias Rags
             }
         },
         {
