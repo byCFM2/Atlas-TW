@@ -343,9 +343,10 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["ItemSync Tooltips"] = true,
     ["Use EquipCompare"] = true,
     ["Make Loot Table Opaque"] = true,
-    ["Show IDs at all times"] = true,
     ["Suppress Text Spam"] = true,
     ["Show Source on Tooltips"] = true,
+    ["Show IDs in Tooltips"] = true,
+    ["Show Icon in Tooltips"] = true,
 
     --************************************************
     -- Version & Updates

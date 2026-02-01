@@ -348,7 +348,8 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["ItemSync Tooltips"] = "Descripciones de ItemSync",
     ["Use EquipCompare"] = "Usar EquipCompare",
     ["Make Loot Table Opaque"] = "Hacer opaca la tabla de botín",
-    ["Show IDs at all times"] = "Mostrar IDs en todo momento",
+    ["Show IDs in Tooltips"] = "Mostrar IDs en descripciones emergentes",
+    ["Show Icon in Tooltips"] = "Mostrar icono en descripciones emergentes",
     ["Suppress Text Spam"] = "Suprimir spam de texto",
     ["Show Source on Tooltips"] = "Mostrar origen en descripciones",
     ["Welcome to Atlas-TW Edition. Please take a moment to set your preferences."] =

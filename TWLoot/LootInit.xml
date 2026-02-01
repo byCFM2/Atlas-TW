@@ -10,6 +10,7 @@
 	<Include file="Core\WishList.lua"/>
 	<Include file="Core\Search.lua"/>
 	<Include file="Core\Tooltip.lua"/>
+	<Include file="Core\TooltipExtras.lua"/>
 	<Include file="Core\Container.lua"/>
 	
 	<!-- Initialization and menu (load last) -->

@@ -189,7 +189,7 @@ local function indexProfItems(spellList, profPages)
                 break
             end
         end
-        if data.item then 
+        if data.item then
             if GlobalIndex.itemID[data.item] == nil then
                 GlobalIndex.itemID[data.item] = GlobalIndex.spellID[spellID]
             end
@@ -546,7 +546,7 @@ local function FindItemSource(itemID)
 
     -- Check global index (start incremental build if not yet started)
     BuildGlobalIndex(true)
-    
+
     local cached = GlobalIndex.itemID[itemID]
     if cached ~= nil then
         return cached or nil -- Returns string source or nil if false (not found)
@@ -639,6 +639,16 @@ local function ExtendTooltip(tooltip)
         original_SetTooltipMoney(tooltip, ModuleState.tooltipMoney)
         tooltip:Show()
     end
+
+    -- Universal enhancements (Icon and ItemID)
+    if AtlasTW.TooltipExtras then
+        local itemID = tonumber(tooltip.itemID)
+        if itemID then
+            -- ONLY show icon for ItemRefTooltip (chat) as requested
+            local isItemRef = (tooltip:GetName() == "ItemRefTooltip")
+            AtlasTW.TooltipExtras.Extend(tooltip, itemID, isItemRef)
+        end
+    end
 end
 
 -- ============================================================================
@@ -655,6 +665,7 @@ end
 ---
 local function CreateTooltipWrapper(tooltip, methodName, linkExtractor)
     local originalMethod = tooltip[methodName]
+    if not originalMethod then return end
 
     tooltip[methodName] = function(self, arg1, arg2, arg3, arg4, arg5)
         ModuleState.insideHook = true
@@ -673,6 +684,33 @@ local function CreateTooltipWrapper(tooltip, methodName, linkExtractor)
         ExtendTooltip(self)
 
         return r1, r2, r3, r4, r5
+    end
+end
+
+---
+--- Creates a wrapper for tooltip methods that clear or reset content
+--- @param tooltip table - The tooltip frame to wrap
+--- @param methodName string - The method name to wrap
+--- @return nil
+---
+local function CreateTooltipClearWrapper(tooltip, methodName)
+    local originalMethod = tooltip[methodName]
+    if not originalMethod then return end
+
+    tooltip[methodName] = function(self, arg1, arg2, arg3, arg4, arg5)
+        -- Clear item state
+        self.itemID = nil
+        ModuleState.tooltipMoney = 0
+
+        -- Hide icon ONLY if this is the tooltip that was cleared
+        -- and only if AtlasTW.TooltipExtras is present
+        if AtlasTW.TooltipExtras and AtlasTW.TooltipExtras.HideIcon then
+            if AtlasTWTooltipIcon:GetParent() == self then
+                AtlasTW.TooltipExtras.HideIcon()
+            end
+        end
+
+        return originalMethod(self, arg1, arg2, arg3, arg4, arg5)
     end
 end
 
@@ -702,6 +740,18 @@ local TooltipHooks = {
     { "SetTradeTargetItem", function(index) return ExtractItemID(GetTradeTargetItemLink(index)) end }
 }
 
+-- Methods that clear or reset tooltip content (non-item methods)
+local ClearHooks = {
+    "ClearLines",
+    "SetUnit",
+    "SetUnitCharacter",
+    "SetAction",
+    "SetSpell",
+    "SetPetAction",
+    "SetText",
+    "SetOwner"
+}
+
 ---
 --- Hooks all tooltip methods to add custom functionality
 --- @param tooltip table - The tooltip frame to hook
@@ -717,12 +767,22 @@ local function HookTooltip(tooltip)
         if originalOnHide then originalOnHide() end
         this.itemID = nil
         ModuleState.tooltipMoney = 0
+        if AtlasTW.TooltipExtras and AtlasTW.TooltipExtras.HideIcon then
+            if AtlasTWTooltipIcon:GetParent() == this then
+                AtlasTW.TooltipExtras.HideIcon()
+            end
+        end
     end)
 
-    -- Hook all methods from configuration table
+    -- Hook all item methods from configuration table
     for _, hookData in ipairs(TooltipHooks) do
         local methodName, linkExtractor = hookData[1], hookData[2]
         CreateTooltipWrapper(tooltip, methodName, linkExtractor)
+    end
+
+    -- Hook all clear methods
+    for _, methodName in ipairs(ClearHooks) do
+        CreateTooltipClearWrapper(tooltip, methodName)
     end
 end
 
@@ -741,6 +801,13 @@ end
 local original_SetItemRef = SetItemRef
 function SetItemRef(link, text, button)
     local startIndex, _, id = strfind(link or "", "item:(%d+)")
+
+    -- Clear state first
+    ItemRefTooltip.itemID = nil
+    if AtlasTW.TooltipExtras and AtlasTW.TooltipExtras.HideIcon then
+        AtlasTW.TooltipExtras.HideIcon()
+    end
+
     ItemRefTooltip.itemID = tonumber(id)
     original_SetItemRef(link, text, button)
 
@@ -754,6 +821,9 @@ local original_ItemRefOnHide = ItemRefTooltip:GetScript("OnHide")
 ItemRefTooltip:SetScript("OnHide", function()
     if original_ItemRefOnHide then original_ItemRefOnHide() end
     ItemRefTooltip.itemID = nil
+    if AtlasTW.TooltipExtras and AtlasTW.TooltipExtras.HideIcon then
+        AtlasTW.TooltipExtras.HideIcon()
+    end
 end)
 
 -- ============================================================================

@@ -1,10 +1,10 @@
 ---
 --- AtlasOptionsUI.lua - Atlas options UI frame and components
---- 
+---
 --- This file contains the options UI frame creation and management for Atlas-TW.
 --- It handles the options window interface, UI controls, frame positioning,
 --- and provides the visual components for Atlas configuration settings.
---- 
+---
 --- Features:
 --- - Options frame creation and styling
 --- - UI control initialization
@@ -32,7 +32,7 @@ do
     optionsFrame:EnableMouse(true)
     optionsFrame:SetClampedToScreen(true)
     optionsFrame:Hide()
-	tinsert(UISpecialFrames, "AtlasTWOptionsFrame")
+    tinsert(UISpecialFrames, "AtlasTWOptionsFrame")
     optionsFrame:SetBackdrop({
         bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
         edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
@@ -70,12 +70,48 @@ do
 
     -- Atlas Options Checkboxes Data
     local atlasCheckboxes = {
-        { name = "AtlasTWOptionToggleButton", text = L["Show Button on Minimap"], script = function() AtlasTW.MinimapButtonOnClick() end },
-        { name = "AtlasTWOptionAutoSelect", text = L["Auto-Select Instance Map"], script = function() AtlasTW.OptionsAutoSelectOnClick() end },
-        { name = "AtlasTWOptionRightClick", text = L["Right-Click for World Map"], script = function() AtlasTW.OptionsWorldMapOnClick() end },
-        { name = "AtlasTWOptionAcronyms", text = L["Show Acronyms"], script = function() AtlasTW.OptionsAcronymsOnClick() end },
-        { name = "AtlasTWOptionClamped", text = L["Clamp window to screen"], script = function() AtlasTW.OptionsClampedOnClick() end },
-        { name = "AtlasTWOptionCursorCoords", text = L["Show Cursor Coordinates on Map"], script = function() AtlasTW.OptionsCursorCoordsOnClick() end }
+        {
+            name = "AtlasTWOptionToggleButton",
+            text = L["Show Button on Minimap"],
+            script = function()
+                AtlasTW.MinimapButtonOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionAutoSelect",
+            text = L["Auto-Select Instance Map"],
+            script = function()
+                AtlasTW.OptionsAutoSelectOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionRightClick",
+            text = L["Right-Click for World Map"],
+            script = function()
+                AtlasTW.OptionsWorldMapOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionAcronyms",
+            text = L["Show Acronyms"],
+            script = function()
+                AtlasTW.OptionsAcronymsOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionClamped",
+            text = L["Clamp window to screen"],
+            script = function()
+                AtlasTW.OptionsClampedOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionCursorCoords",
+            text = L["Show Cursor Coordinates on Map"],
+            script = function()
+                AtlasTW.OptionsCursorCoordsOnClick()
+            end
+        }
     }
 
     -- Optimized function to create atlas checkboxes
@@ -88,7 +124,7 @@ do
             else
                 checkbox:SetPoint("BOTTOM", previousElement, "BOTTOM", 0, -25)
             end
-            _G[checkbox:GetName().."Text"]:SetText(config.text)
+            _G[checkbox:GetName() .. "Text"]:SetText(config.text)
             checkbox:SetScript("OnClick", config.script)
             previousElement = checkbox
         end
@@ -97,14 +133,46 @@ do
 
     -- Atlas Options Sliders Data
     local atlasSliders = {
-        { name = "AtlasTWOptionSliderButtonPos", label = L["Button Position"], min = 0, max = 360, step = 1, value = 336,
-            option = "AtlasButtonPosition", updateFunc = AtlasTW.MinimapButtonUpdatePosition },
-        { name = "AtlasTWOptionSliderButtonRad", label = L["Button Radius"], min = 0, max = 200, step = 1, value = 78,
-            option = "AtlasButtonRadius", updateFunc = AtlasTW.MinimapButtonUpdatePosition },
-        { name = "AtlasTWOptionSliderAlpha", label = L["Transparency"], min = 0.25, max = 1.0, step = 0.01, value = 1.0,
-            option = "AtlasAlpha", updateFunc = AtlasTW.OptionsUpdateAlpha },
-        { name = "AtlasTWOptionSliderScale", label = L["Scale"], min = 0.25, max = 1.5, step = 0.01, value = 1.0,
-            option = "AtlasScale", updateFunc = AtlasTW.OptionsUpdateScale }
+        {
+            name = "AtlasTWOptionSliderButtonPos",
+            label = L["Button Position"],
+            min = 0,
+            max = 360,
+            step = 1,
+            value = 336,
+            option = "AtlasButtonPosition",
+            updateFunc = AtlasTW.MinimapButtonUpdatePosition
+        },
+        {
+            name = "AtlasTWOptionSliderButtonRad",
+            label = L["Button Radius"],
+            min = 0,
+            max = 200,
+            step = 1,
+            value = 78,
+            option = "AtlasButtonRadius",
+            updateFunc = AtlasTW.MinimapButtonUpdatePosition
+        },
+        {
+            name = "AtlasTWOptionSliderAlpha",
+            label = L["Transparency"],
+            min = 0.25,
+            max = 1.0,
+            step = 0.01,
+            value = 1.0,
+            option = "AtlasAlpha",
+            updateFunc = AtlasTW.OptionsUpdateAlpha
+        },
+        {
+            name = "AtlasTWOptionSliderScale",
+            label = L["Scale"],
+            min = 0.25,
+            max = 1.5,
+            step = 0.01,
+            value = 1.0,
+            option = "AtlasScale",
+            updateFunc = AtlasTW.OptionsUpdateScale
+        }
     }
     -- Creates slider controls for Atlas options
     -- @param startElement - The UI element to position sliders relative to
@@ -122,9 +190,9 @@ do
                 slider:SetMinMaxValues(config.min or 0, config.max or 1)
                 slider:SetValueStep(config.step or 0.01)
                 slider:SetValue(config.value or 0)
-                _G[slider:GetName().."Text"]:SetText(config.label.." ("..slider:GetValue()..")")
-                _G[slider:GetName().."Low"]:SetText(tostring(config.min or 0))
-                _G[slider:GetName().."High"]:SetText(tostring(config.max or 1))
+                _G[slider:GetName() .. "Text"]:SetText(config.label .. " (" .. slider:GetValue() .. ")")
+                _G[slider:GetName() .. "Low"]:SetText(tostring(config.min or 0))
+                _G[slider:GetName() .. "High"]:SetText(tostring(config.max or 1))
                 local sliderLabel = config.label
                 local optionName = config.option
                 local updateFunc = config.updateFunc
@@ -187,17 +255,59 @@ do
 
     -- Quest Checkboxes Data
     local questCheckboxes = {
-        { name = "AtlasTWOptionAutoshow", text = L["Show the Quest Panel with AtlasTW"], script = function() AtlasTW.OptionAutoshowOnClick() end },
-        { name = "AtlasTWOptionLeftSide", text = L["Show Quest Panel on the Left"], script = function() AtlasTW.OptionLeftSideOnClick() end },
-        { name = "AtlasTWOptionRightSide", text = L["Show Quest Panel on the Right"], script = function() AtlasTW.OptionRightSideOnClick() end },
-        { name = "AtlasTWOptionColor", text = L["Color Quests by Level"], script = function() AtlasTW.OptionColorOnClick() end },
-        { name = "AtlasTWOptionQuestlog", text = L["Color Quests from the Questlog"], script = function() AtlasTW.OptionQuestlogOnClick() end },
-        { name = "AtlasTWOptionAutoQuery", text = L["Auto-Query Unknown Items"], script = function() AtlasTW.OptionAutoQueryOnClick() end },
-        { name = "AtlasTWOptionQuerySpam", text = L["Suppress Server Query Spam"], script = function() AtlasTW.OptionQuerySpamOnClick() end },
+        {
+            name = "AtlasTWOptionAutoshow",
+            text = L["Show the Quest Panel with AtlasTW"],
+            script = function()
+                AtlasTW.OptionAutoshowOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionLeftSide",
+            text = L["Show Quest Panel on the Left"],
+            script = function()
+                AtlasTW.OptionLeftSideOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionRightSide",
+            text = L["Show Quest Panel on the Right"],
+            script = function()
+                AtlasTW.OptionRightSideOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionColor",
+            text = L["Color Quests by Level"],
+            script = function()
+                AtlasTW.OptionColorOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionQuestlog",
+            text = L["Color Quests from the Questlog"],
+            script = function()
+                AtlasTW.OptionQuestlogOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionAutoQuery",
+            text = L["Auto-Query Unknown Items"],
+            script = function()
+                AtlasTW.OptionAutoQueryOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionQuerySpam",
+            text = L["Suppress Server Query Spam"],
+            script = function()
+                AtlasTW.OptionQuerySpamOnClick()
+            end
+        },
     }
 
     -- Optimized function to create quest checkboxes
-	do
+    do
         local previousCheckbox = nil
         for i, config in ipairs(questCheckboxes) do
             local checkbox = CreateFrame("CheckButton", config.name, optionsFrame, "OptionsCheckButtonTemplate")
@@ -219,17 +329,90 @@ do
 
     -- Checkbox configuration
     local lootCheckboxes = {
-        { name = "AtlasTWOptionSafeLinks", text = L["Safe Chat Links |cff1eff00(recommended)|r"], script = function() AtlasTW.OptionSafeLinksOnClick() end },
-        { name = "AtlasTWOptionAllLinks", text = L["Enable all Chat Links"], script = function() AtlasTW.OptionAllLinksOnClick() end },
-        { name = "AtlasTWOptionDefaultTT", text = L["Default Tooltips"], script = function() AtlasTW.OptionDefaultTTOnClick() end },
-        { name = "AtlasTWOptionLootlinkTT", text = L["Lootlink Tooltips"], script = function() AtlasTW.OptionLootlinkTTOnClick() end },
-        { name = "AtlasTWOptionItemSyncTT", text = L["ItemSync Tooltips"], script = function() AtlasTW.OptionItemSyncTTOnClick() end },
-        { name = "AtlasTWOptionShowSource", text = L["Show Source on Tooltips"], script = function() AtlasTW.OptionShowSourceOnClick() end },
-        { name = "AtlasTWOptionShowPanel", text = L["Show Loot Panel with AtlasTW"], script = function() AtlasTW.OptionShowPanelOnClick() end},
-        { name = "AtlasTWOptionEquipCompare", text = L["Use EquipCompare"], script = function() AtlasTW.OptionEquipCompareOnClick() end },
-        { name = "AtlasTWOptionItemID", text = L["Show IDs at all times"], script = function() AtlasTW.OptionItemIDOnClick() end },
-        { name = "AtlasTWOptionOpaque", text = L["Make Loot Table Opaque"], script = function() AtlasTW.OptionOpaqueOnClick() end },
-        { name = "AtlasTWOptionItemSpam", text = L["Suppress Text Spam"], script = function() AtlasTW.OptionItemSpamOnClick() end }
+        {
+            name = "AtlasTWOptionSafeLinks",
+            text = L["Safe Chat Links |cff1eff00(recommended)|r"],
+            script = function()
+                AtlasTW.OptionSafeLinksOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionAllLinks",
+            text = L["Enable all Chat Links"],
+            script = function()
+                AtlasTW.OptionAllLinksOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionDefaultTT",
+            text = L["Default Tooltips"],
+            script = function()
+                AtlasTW.OptionDefaultTTOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionLootlinkTT",
+            text = L["Lootlink Tooltips"],
+            script = function()
+                AtlasTW.OptionLootlinkTTOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionItemSyncTT",
+            text = L["ItemSync Tooltips"],
+            script = function()
+                AtlasTW.OptionItemSyncTTOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionShowSource",
+            text = L["Show Source on Tooltips"],
+            script = function()
+                AtlasTW.OptionShowSourceOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionShowPanel",
+            text = L["Show Loot Panel with AtlasTW"],
+            script = function()
+                AtlasTW.OptionShowPanelOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionEquipCompare",
+            text = L["Use EquipCompare"],
+            script = function()
+                AtlasTW.OptionEquipCompareOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionOpaque",
+            text = L["Make Loot Table Opaque"],
+            script = function()
+                AtlasTW.OptionOpaqueOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionItemSpam",
+            text = L["Suppress Text Spam"],
+            script = function()
+                AtlasTW.OptionItemSpamOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionTooltipID",
+            text = L["Show IDs in Tooltips"],
+            script = function()
+                AtlasTW.OptionTooltipIDOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionTooltipIcon",
+            text = L["Show Icon in Tooltips"],
+            script = function()
+                AtlasTW.OptionTooltipIconOnClick()
+            end
+        }
     }
 
     do

@@ -175,7 +175,7 @@ function AtlasTWLoot_AddContainerItemTooltip(frame ,itemID)
         AtlasTWLootTooltip:SetHyperlink("item:"..tostring(itemID))
         AtlasTWLootTooltip.itemID = itemID
         local numLines = AtlasTWLootTooltip:NumLines()
-		if AtlasTWOptions.LootItemIDs then
+		if AtlasTWOptions.TooltipShowID then
 			if numLines and numLines > 0 then
 				local lastLine = getglobal("AtlasTWLootTooltipTextLeft"..numLines)
 				if lastLine and lastLine:GetText() then
