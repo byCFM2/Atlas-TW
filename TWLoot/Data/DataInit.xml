@@ -40,6 +40,7 @@
     <Include file="Instances\DragonmawRetreat.lua"/>
     <Include file="Instances\WindhornCanyon.lua"/>
     <Include file="Instances\TimbermawHold.lua"/>
+    <Include file="Instances\FrostmaneHollow.lua"/>
     <!-- World content data -->
     <Include file="World\Azuregos.lua"/>
     <Include file="World\FourDragons.lua"/>

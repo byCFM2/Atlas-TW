@@ -132,4 +132,5 @@ AtlasTW.Localization:RegisterNamespace("Zones", "deDE", {
     ["Winterspring"] = "Winterquell",
     ["Zul'Farrak"] = "Zul'Farrak",
     ["Zul'Gurub"] = "Zul'Gurub",
+    ["Frostmane Hollow"] = "Frostmane Hollow", --TODO translate
 })
