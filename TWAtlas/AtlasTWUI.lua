@@ -89,11 +89,11 @@ do
     SlashCmdList["ATLASTW"] = AtlasTW.SlashCommand
 
     -- Close button
-    local closeButton = CreateFrame("Button", "", atlasFrame, "UIPanelCloseButton")
+    local closeButton = CreateFrame("Button", "AtlasTWCloseButton", atlasFrame, "UIPanelCloseButton")
     closeButton:SetPoint("TOPRIGHT", 5, -7)
 
     -- Lock button
-    local lockButton = CreateFrame("Button", "", atlasFrame)
+    local lockButton = CreateFrame("Button", "AtlasTWLockButton", atlasFrame)
     lockButton:SetWidth(32)
     lockButton:SetHeight(32)
     lockButton:SetPoint("RIGHT", closeButton, "LEFT", 10, 0)

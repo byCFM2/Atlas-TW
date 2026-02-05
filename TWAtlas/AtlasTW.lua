@@ -131,15 +131,36 @@ end
 --- Updates the appearance of the lock button based on the Atlas lock status
 --- Changes button textures to reflect current locked/unlocked state
 --- @return nil
---- @usage atlas_UpdateLock()
+--- @usage AtlasTW.UpdateLock()
 ---
-local function atlas_UpdateLock()
-	if (AtlasTWOptions.AtlasLocked) then
-		AtlasTWLockNorm:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\LockButton-Locked-Up")
-		AtlasTWLockPush:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\LockButton-Locked-Down")
-	else
-		AtlasTWLockNorm:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\LockButton-Unlocked-Up")
-		AtlasTWLockPush:SetTexture("Interface\\AddOns\\Atlas-TW\\Images\\LockButton-Unlocked-Down")
+function AtlasTW.UpdateLock()
+	local locked = AtlasTWOptions.AtlasLocked
+	local status = locked and "Locked" or "Unlocked"
+	local textureUp = AtlasTW.PATH .. "Images\\LockButton-" .. status .. "-Up"
+	local textureDown = AtlasTW.PATH .. "Images\\LockButton-" .. status .. "-Down"
+
+	if AtlasTWLockNorm then
+		AtlasTWLockNorm:SetTexture(textureUp)
+	end
+	if AtlasTWLockPush then
+		AtlasTWLockPush:SetTexture(textureDown)
+	end
+
+	-- Also update the button directly in case pfUI or other mods changed the texture objects
+	if AtlasTWLockButton then
+		-- If we have the specific texture objects, prefer using them as NormalTexture/PushedTexture
+		-- This ensures we don't create duplicate textures or lose the layout properties (SetAllPoints)
+		if AtlasTWLockNorm then
+			AtlasTWLockButton:SetNormalTexture(AtlasTWLockNorm)
+		else
+			AtlasTWLockButton:SetNormalTexture(textureUp)
+		end
+
+		if AtlasTWLockPush then
+			AtlasTWLockButton:SetPushedTexture(AtlasTWLockPush)
+		else
+			AtlasTWLockButton:SetPushedTexture(textureDown)
+		end
 	end
 end
 
@@ -170,7 +191,7 @@ local function Atlas_Init()
 
 	--Now that saved variables have been loaded, update everything accordingly
 	AtlasTW.Refresh()
-	atlas_UpdateLock()
+	AtlasTW.UpdateLock()
 	AtlasTW.OptionsUpdateAlpha()
 	AtlasTWFrame:SetClampedToScreen(AtlasTWOptions.AtlasClamped)
 	AtlasTW.MinimapButtonUpdatePosition()
@@ -273,7 +294,7 @@ end
 ---
 function AtlasTW.ToggleLock()
 	AtlasTWOptions.AtlasLocked = not AtlasTWOptions.AtlasLocked
-	atlas_UpdateLock()
+	AtlasTW.UpdateLock()
 end
 
 ---
@@ -503,6 +524,11 @@ function AtlasTW.Refresh()
 			AtlasTWSwitchButton:SetText(L["Instance"])
 		end
 		AtlasTWSwitchButton:Show()
+
+		-- If pfUI is enabled, we need to ensure the button style is maintained
+		if AtlasTW.pfUI and AtlasTW.pfUI.RestyleButton then
+			AtlasTW.pfUI.RestyleButton("AtlasTWSwitchButton")
+		end
 		-- Hewdrop menu is now opened on-demand in SwitchButtonOnClick
 	else
 		AtlasTWSwitchButton:Hide()

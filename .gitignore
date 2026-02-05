@@ -4,3 +4,4 @@ DONT_USE*
 .mailmap
 .agent/workflows/weapon_skills_plan.md
 .qoder/
+pfUI/

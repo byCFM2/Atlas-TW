@@ -655,6 +655,51 @@ _G.AtlasTWLoot_Hewdrop = Hewdrop -- Export for TWLoot compatibility
 -- Module namespace
 AtlasTW.HewdropMenus = {}
 
+--- Opens the sorting selection menu (Continent, Level, etc)
+function AtlasTW.HewdropMenus:OpenSortByMenu(parent)
+    local dropDownOrder = AtlasTW_DropDownSortOrder
+    if not dropDownOrder then return end
+
+    Hewdrop:Open(parent,
+        'children', function(level, value)
+            for i, sortName in ipairs(dropDownOrder) do
+                local index = i
+                local checked = (AtlasTWOptions.AtlasSortBy == index)
+                Hewdrop:AddLine(
+                    'text', sortName,
+                    'checked', checked,
+                    'isRadio', true,
+                    'func', function()
+                        AtlasTWOptions.AtlasSortBy = index
+                        AtlasTWOptions.AtlasZone = 1
+                        AtlasTWOptions.AtlasType = 1
+                        AtlasTW.PopulateDropdowns()
+                        AtlasTW.Refresh()
+                        AtlasTW.UpdateDropdownLabels()
+                        if AtlasTW.HewdropMenus.UpdateSortByLabel then
+                            AtlasTW.HewdropMenus.UpdateSortByLabel()
+                        end
+                    end,
+                    'closeWhenClicked', true
+                )
+            end
+        end,
+        'point', "TOPLEFT",
+        'relativePoint', "BOTTOMLEFT"
+    )
+end
+
+--- Updates the sort by label in the options frame
+function AtlasTW.HewdropMenus:UpdateSortByLabel()
+    local dropDownOrder = AtlasTW_DropDownSortOrder
+    if not dropDownOrder then return end
+
+    local sortName = dropDownOrder[AtlasTWOptions.AtlasSortBy]
+    if sortName and AtlasTWOptionsFrameDropDownCatsText then
+        AtlasTWOptionsFrameDropDownCatsText:SetText(sortName)
+    end
+end
+
 --- Opens the category selection menu (Continent, Party Size, Level, Type, All)
 function AtlasTW.HewdropMenus:OpenCategoryMenu(parent)
     -- Ensure data is initialized

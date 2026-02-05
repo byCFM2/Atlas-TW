@@ -2,13 +2,11 @@
 --- Integrations.lua - Third-party addon integration management
 ---
 --- This module handles integration with external addons such as EquipCompare,
---- EQCompare, LootLink, and ItemSync. It provides centralized management of
+--- EQCompare. It provides centralized management of
 --- addon compatibility, tooltip registration, and option handling.
 ---
 --- Features:
 --- • EquipCompare/EQCompare tooltip registration
---- • LootLink tooltip integration
---- • ItemSync tooltip support
 --- • Addon availability detection
 --- • Option state management
 --- • Fallback handling for missing addons
@@ -31,24 +29,6 @@ local L = AtlasTW.Localization.UI
 ---
 function AtlasTW.Integrations.HasEquipCompare()
     return IsAddOnLoaded("EquipCompare") or IsAddOnLoaded("EQCompare")
-end
-
----
---- Checks if LootLink addon is available
---- @return boolean True if LootLink is loaded and functional
---- @usage local hasLootLink = AtlasTW.Integrations.HasLootLink()
----
-function AtlasTW.Integrations.HasLootLink()
-    return LootLink_SetTooltip ~= nil
-end
-
----
---- Checks if ItemSync addon is available
---- @return boolean True if ItemSync or ISync is loaded
---- @usage local hasItemSync = AtlasTW.Integrations.HasItemSync()
----
-function AtlasTW.Integrations.HasItemSync()
-    return ItemSync ~= nil or ISync ~= nil
 end
 
 ---
@@ -152,26 +132,6 @@ end
 --- @usage AtlasTW.Integrations.Initialize() -- Called during addon initialization
 ---
 function AtlasTW.Integrations.Initialize()
-    -- Disable LootLink option if addon is not available
-    if not AtlasTW.Integrations.HasLootLink() then
-        if AtlasTWOptionLootlinkTT then
-            AtlasTWOptionLootlinkTT:Disable()
-        end
-        if AtlasTWOptionLootlinkTTText then
-            AtlasTWOptionLootlinkTTText:SetText(GREY..L["Lootlink Tooltips"])
-        end
-    end
-
-    -- Disable ItemSync option if addon is not available
-    if not AtlasTW.Integrations.HasItemSync() then
-        if AtlasTWOptionItemSyncTT then
-            AtlasTWOptionItemSyncTT:Disable()
-        end
-        if AtlasTWOptionItemSyncTTText then
-            AtlasTWOptionItemSyncTTText:SetText(GREY..L["ItemSync Tooltips"])
-        end
-    end
-
     -- Disable EquipCompare option if addon is not available
     if not AtlasTW.Integrations.HasEquipCompare() then
         if AtlasTWOptionEquipCompare then
@@ -190,18 +150,6 @@ end
 --- @usage AtlasTW.Integrations.ValidateOptions() -- Called during option validation
 ---
 function AtlasTW.Integrations.ValidateOptions()
-    -- Disable LootLink option and fallback to default if addon is missing
-    if not AtlasTW.Integrations.HasLootLink() and AtlasTWOptions.LootlinkTT == true then
-        AtlasTWOptions.LootlinkTT = false
-        AtlasTWOptions.LootDefaultTT = true
-    end
-
-    -- Disable ItemSync option and fallback to default if addon is missing
-    if not AtlasTW.Integrations.HasItemSync() and AtlasTWOptions.LootItemSyncTT == true then
-        AtlasTWOptions.LootItemSyncTT = false
-        AtlasTWOptions.LootDefaultTT = true
-    end
-
     -- Disable EquipCompare option if addon is missing
     if not AtlasTW.Integrations.HasEquipCompare() and AtlasTWOptions.EquipCompare == true then
         AtlasTWOptions.LootEquipCompare = false

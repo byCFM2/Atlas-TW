@@ -42,93 +42,7 @@ local function round(num, idp)
     return math.floor(num * mult + 0.5) / mult
 end
 
---- Handles click events on category dropdown menu items
---- Updates sort settings and refreshes the Atlas interface
---- @return nil
---- @usage Called automatically by UI dropdown system
-local function atlasOptionsFrameDropDownCats_OnClick()
-    local thisID = this:GetID()
-    uIDropDownMenu_SetSelectedID(AtlasTWOptionsFrameDropDownCats, thisID)
-    AtlasTWOptions.AtlasSortBy = thisID
-    AtlasTWOptions.AtlasZone = 1
-    AtlasTWOptions.AtlasType = 1
 
-    -- Update the interface
-    AtlasTW.PopulateDropdowns()
-    AtlasTW.Refresh()
-    AtlasTW.FrameDropDownTypeOnShow()
-    AtlasTW.FrameDropDownOnShow()
-end
-
---- Initializes the category dropdown menu with sort options
---- Populates dropdown with available sorting categories
---- @return nil
---- @usage UIDropDownMenu_Initialize(dropdown, atlasOptionsFrameDropDownCats_Initialize)
-local function atlasOptionsFrameDropDownCats_Initialize()
-    local info
-    local dropDownOrder = AtlasTW_DropDownSortOrder
-
-    if not dropDownOrder then
-        return
-    end
-
-    for i = 1, getn(dropDownOrder) do
-        info = {
-            text = dropDownOrder[i],
-            func = atlasOptionsFrameDropDownCats_OnClick
-        }
-        UIDropDownMenu_AddButton(info)
-    end
-end
-
---- Sets default configuration options for Atlas-TW
---- Initializes all addon settings to their default values
---- @return nil
---- @usage AtlasTW.OptionDefaultSettings() -- Reset to defaults
-function AtlasTW.OptionDefaultSettings()
-    AtlasTWOptions = {
-        AtlasButtonPosition = 305,
-        AtlasButtonRadius = 76,
-        AtlasButtonShown = true,
-        AtlasRightClick = false,
-        AtlasType = 1,
-        AtlasScale = 1,
-        AtlasVersion = AtlasTW.Version,
-        AtlasZone = 1,
-        AtlasSortBy = 1,
-        AtlasAutoSelect = false,
-        AtlasLocked = false,
-        AtlasAlpha = 1.0,
-        AtlasAcronyms = true,
-        AtlasClamped = true,
-        AtlasCursorCoords = true,
-        QuestCurrentSide = "Left",
-        QuestWithAtlas = true,
-        QuestColourCheck = true,
-        QuestCheckQuestlog = true,
-        QuestAutoQuery = true,
-        QuestQuerySpam = true,
-        LootSafeLinks = true,
-        LootAllLinks = false,
-        LootDefaultTT = true,
-        LootlinkTT = false,
-        LootItemSyncTT = false,
-        LootShowSource = true,
-        LootEquipCompare = false,
-        LootOpaque = true,
-        LootItemSpam = true,
-        LootShowPanel = true,
-        LootFilterMode = 0,
-        TooltipShowID = true,
-        TooltipShowIcon = true
-    }
-    AtlasTWCharDB.PartialMatching = true
-    AtlasTWCharDB["QuickLooks"] = {}
-    AtlasTWCharDB["WishList"] = {}
-    AtlasTW.QuickLook.RefreshButtons()
-    AtlasTW.OptionsInit()
-    PrintA(red .. L["Default settings applied!"])
-end
 
 --- Toggles the bottom loot panel visibility
 --- Updates AtlasTWOptions.LootShowPanel and shows/hides AtlasTWLootPanel
@@ -187,14 +101,6 @@ function AtlasTW.OptionsOnClick()
         atlasOptionsFrame:Hide()
     else
         atlasOptionsFrame:Show()
-    end
-    -- Refresh tooltip settings to ensure they take effect immediately
-    if AtlasTWOptions.LootDefaultTT then
-        AtlasTW.OptionDefaultTTOnClick()
-    elseif AtlasTWOptions.LootlinkTT then
-        AtlasTW.OptionLootlinkTTOnClick()
-    elseif AtlasTWOptions.LootItemSyncTT then
-        AtlasTW.OptionItemSyncTTOnClick()
     end
 end
 
@@ -267,6 +173,26 @@ function AtlasTW.OptionsCursorCoordsOnClick()
 end
 
 ---
+--- Handles toggle of pfUI styling option
+--- Enables or disables pfUI integration styling
+--- @return nil
+--- @usage Called when user clicks pfUI styling checkbox
+---
+function AtlasTW.OptionsPfUIOnClick()
+    AtlasTWOptions.pfUIEnabled = not AtlasTWOptions.pfUIEnabled
+    if AtlasTWOptionPfUI then
+        AtlasTWOptionPfUI:SetChecked(AtlasTWOptions.pfUIEnabled)
+    end
+
+    -- Inform user that UI reload is required
+    if AtlasTWOptions.pfUIEnabled then
+        PrintA(L["pfUI styling enabled. Type /reload to apply changes."])
+    else
+        PrintA(L["pfUI styling disabled. Type /reload to apply changes."])
+    end
+end
+
+---
 --- Initializes all Atlas-TW option settings and UI elements
 --- Sets checkbox states, slider values, and frame visibility based on saved options
 --- @return nil
@@ -295,6 +221,16 @@ function AtlasTW.OptionsInit()
     AtlasTWOptionAcronyms:SetChecked(AtlasTWOptions.AtlasAcronyms)
     AtlasTWOptionClamped:SetChecked(AtlasTWOptions.AtlasClamped)
     AtlasTWOptionCursorCoords:SetChecked(AtlasTWOptions.AtlasCursorCoords)
+
+    -- pfUI option (only show if pfUI is loaded)
+    if IsAddOnLoaded("pfUI") and AtlasTWOptionPfUI then
+        AtlasTWOptionPfUI:SetChecked(AtlasTWOptions.pfUIEnabled)
+    elseif AtlasTWOptionPfUI then
+        -- Hide the checkbox if pfUI is not loaded
+        AtlasTWOptionPfUI:Hide()
+        _G[AtlasTWOptionPfUI:GetName() .. "Text"]:Hide()
+    end
+
     AtlasTWOptionSliderButtonPos:SetValue(AtlasTWOptions.AtlasButtonPosition)
     AtlasTWOptionSliderButtonRad:SetValue(AtlasTWOptions.AtlasButtonRadius)
     AtlasTWOptionSliderAlpha:SetValue(AtlasTWOptions.AtlasAlpha)
@@ -302,28 +238,22 @@ function AtlasTW.OptionsInit()
 
     -- Quest Options
     AtlasTWOptionAutoshow:SetChecked(AtlasTWOptions.QuestWithAtlas)
-    AtlasTWOptionLeftSide:SetChecked(AtlasTWOptions.QuestCurrentSide == "Left")
-    AtlasTWOptionRightSide:SetChecked(AtlasTWOptions.QuestCurrentSide == "Right")
-    if AtlasTWOptionRightSide:GetChecked() then
-        AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasTWFrame", 567, -36)
-    else
+    AtlasTWOptionLeftSide:SetChecked(AtlasTWOptions.QuestCurrentSide)
+    if AtlasTWOptionLeftSide:GetChecked() then
         AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasTWFrame", -556, -36)
+    else
+        AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasTWFrame", 567, -36)
     end
     AtlasTWOptionColor:SetChecked(AtlasTWOptions.QuestColourCheck)
     AtlasTWOptionQuestlog:SetChecked(AtlasTWOptions.QuestCheckQuestlog)
     AtlasTWOptionAutoQuery:SetChecked(AtlasTWOptions.QuestAutoQuery)
-    AtlasTWOptionQuerySpam:SetChecked(AtlasTWOptions.QuestQuerySpam)
 
     -- Loot Options
     AtlasTWOptionSafeLinks:SetChecked(AtlasTWOptions.LootSafeLinks)
     AtlasTWOptionAllLinks:SetChecked(AtlasTWOptions.LootAllLinks)
-    AtlasTWOptionDefaultTT:SetChecked(AtlasTWOptions.LootDefaultTT)
-    AtlasTWOptionLootlinkTT:SetChecked(AtlasTWOptions.LootlinkTT)
-    AtlasTWOptionItemSyncTT:SetChecked(AtlasTWOptions.LootItemSyncTT)
     AtlasTWOptionShowSource:SetChecked(AtlasTWOptions.LootShowSource)
     AtlasTWOptionEquipCompare:SetChecked(AtlasTWOptions.LootEquipCompare)
     AtlasTWOptionOpaque:SetChecked(AtlasTWOptions.LootOpaque)
-    AtlasTWOptionItemSpam:SetChecked(AtlasTWOptions.LootItemSpam)
     AtlasTWOptionShowPanel:SetChecked(AtlasTWOptions.LootShowPanel)
     AtlasTWOptionTooltipID:SetChecked(AtlasTWOptions.TooltipShowID)
     AtlasTWOptionTooltipIcon:SetChecked(AtlasTWOptions.TooltipShowIcon)
@@ -377,17 +307,60 @@ function AtlasOptions_UpdateSlider(text)
     end
 end
 
----
+--- Sets default configuration options for Atlas-TW
+--- Initializes all addon settings to their default values
+--- @return nil
+--- @usage AtlasTW.OptionDefaultSettings() -- Reset to defaults
+function AtlasTW.OptionDefaultSettings()
+    AtlasTWOptions = {
+        AtlasButtonPosition = 305,
+        AtlasButtonRadius = 76,
+        AtlasButtonShown = true,
+        AtlasRightClick = false,
+        AtlasType = 1,
+        AtlasScale = 1,
+        AtlasVersion = AtlasTW.Version,
+        AtlasZone = 1,
+        AtlasSortBy = 1,
+        AtlasAutoSelect = false,
+        AtlasLocked = false,
+        AtlasAlpha = 1.0,
+        AtlasAcronyms = true,
+        AtlasClamped = true,
+        AtlasCursorCoords = true,
+        QuestCurrentSide = "Left",
+        QuestWithAtlas = true,
+        QuestColourCheck = true,
+        QuestCheckQuestlog = true,
+        QuestAutoQuery = true,
+        LootSafeLinks = true,
+        LootAllLinks = false,
+        LootShowSource = true,
+        LootEquipCompare = false,
+        LootOpaque = true,
+        LootShowPanel = true,
+        LootFilterMode = 0,
+        TooltipShowID = true,
+        TooltipShowIcon = true,
+        pfUIEnabled = true
+    }
+    AtlasTWCharDB.PartialMatching = true
+    AtlasTWCharDB["QuickLooks"] = {}
+    AtlasTWCharDB["WishList"] = {}
+    AtlasTW.QuickLook.RefreshButtons()
+    AtlasTW.OptionsInit()
+    PrintA(red .. L["Default settings applied!"])
+end
+
 --- Shows and initializes the categories dropdown menu
 --- Sets up the dropdown with available sort categories and selects current option
 --- @return nil
 --- @usage AtlasTW.OptionFrameDropDownCatsOnShow() -- Called by dropdown OnShow event
 ---
 function AtlasTW.OptionFrameDropDownCatsOnShow()
-    local dropDownCats = AtlasTWOptionsFrameDropDownCats
-
-    UIDropDownMenu_Initialize(dropDownCats, atlasOptionsFrameDropDownCats_Initialize)
-    uIDropDownMenu_SetSelectedID(dropDownCats, AtlasTWOptions.AtlasSortBy)
+    if AtlasTW.HewdropMenus and AtlasTW.HewdropMenus.UpdateSortByLabel then
+        AtlasTW.HewdropMenus.UpdateSortByLabel()
+    end
 end
 
 -----------------------------------------------------------------------------
@@ -406,34 +379,17 @@ function AtlasTW.OptionAutoshowOnClick()
 end
 
 ---
---- Sets quest panel to right side position
---- Moves the quest UI frame to the right side of Atlas and updates settings
+--- Toggles quest panel position between left and right side
+--- Moves the quest UI frame and updates settings
 --- @return nil
---- @usage AtlasTW.OptionRightSideOnClick() -- Called by radio button click
----
-function AtlasTW.OptionRightSideOnClick()
-    AtlasTW.Quest.UI_Main.Frame:ClearAllPoints()
-    AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasTWFrame", 567, -36)
-    AtlasTWOptionRightSide:SetChecked(true)
-    AtlasTWOptionLeftSide:SetChecked(false)
-    AtlasTWOptions.QuestCurrentSide = "Right"
-    AtlasTW.OptionsInit()
-end
-
----
---- Sets quest panel to left side position
---- Moves the quest UI frame to the left side of Atlas and updates settings
---- @return nil
---- @usage AtlasTW.OptionLeftSideOnClick() -- Called by radio button click
+--- @usage AtlasTW.OptionLeftSideOnClick() -- Called by checkbox click
 ---
 function AtlasTW.OptionLeftSideOnClick()
-    if AtlasTWOptions.QuestCurrentSide == "Right" then
+    AtlasTWOptions.QuestCurrentSide = not AtlasTWOptions.QuestCurrentSide
+    if not AtlasTWOptions.QuestCurrentSide then
         AtlasTW.Quest.UI_Main.Frame:ClearAllPoints()
         AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasTWFrame", -556, -36)
     end
-    AtlasTWOptionRightSide:SetChecked(false)
-    AtlasTWOptionLeftSide:SetChecked(true)
-    AtlasTWOptions.QuestCurrentSide = "Left"
     AtlasTW.OptionsInit()
 end
 
@@ -476,18 +432,6 @@ function AtlasTW.OptionAutoQueryOnClick()
 end
 
 ---
---- Toggles query spam suppression feature
---- Enables or disables filtering of repeated quest query messages
---- @return nil
---- @usage AtlasTW.OptionQuerySpamOnClick() -- Called by checkbox click
----
-function AtlasTW.OptionQuerySpamOnClick()
-    AtlasTWOptions.QuestQuerySpam = not AtlasTWOptions.QuestQuerySpam
-    AtlasTWOptionQuerySpam:SetChecked(AtlasTWOptions.QuestQuerySpam)
-    AtlasTW.OptionsInit()
-end
-
----
 --- Toggles safe links feature for loot items
 --- Enables safe linking mode and disables all links mode when activated
 --- @return nil
@@ -516,45 +460,6 @@ function AtlasTW.OptionAllLinksOnClick()
     else
         AtlasTWOptions.LootSafeLinks = true
     end
-    AtlasTW.OptionsInit()
-end
-
----
---- Sets tooltip display to default mode
---- Enables default tooltips and disables other tooltip modes
---- @return nil
---- @usage AtlasTW.OptionDefaultTTOnClick() -- Called by radio button click
----
-function AtlasTW.OptionDefaultTTOnClick()
-    AtlasTWOptions.LootDefaultTT = true
-    AtlasTWOptions.LootlinkTT = false
-    AtlasTWOptions.LootItemSyncTT = false
-    AtlasTW.OptionsInit()
-end
-
----
---- Sets tooltip display to Lootlink mode
---- Enables Lootlink tooltips and disables other tooltip modes
---- @return nil
---- @usage AtlasTW.OptionLootlinkTTOnClick() -- Called by radio button click
----
-function AtlasTW.OptionLootlinkTTOnClick()
-    AtlasTWOptions.LootDefaultTT = false
-    AtlasTWOptions.LootlinkTT = true
-    AtlasTWOptions.LootItemSyncTT = false
-    AtlasTW.OptionsInit()
-end
-
----
---- Sets tooltip display to ItemSync mode
---- Enables ItemSync tooltips and disables other tooltip modes
---- @return nil
---- @usage AtlasTW.OptionItemSyncTTOnClick() -- Called by radio button click
----
-function AtlasTW.OptionItemSyncTTOnClick()
-    AtlasTWOptions.LootDefaultTT = false
-    AtlasTWOptions.LootlinkTT = false
-    AtlasTWOptions.LootItemSyncTT = true
     AtlasTW.OptionsInit()
 end
 
@@ -632,17 +537,6 @@ end
 ---
 function AtlasTW.OptionTooltipIconOnClick()
     AtlasTWOptions.TooltipShowIcon = not AtlasTWOptions.TooltipShowIcon
-    AtlasTW.OptionsInit()
-end
-
----
---- Toggles item spam prevention feature
---- Enables or disables filtering of repeated item messages
---- @return nil
---- @usage AtlasTW.OptionItemSpamOnClick() -- Called by checkbox click
----
-function AtlasTW.OptionItemSpamOnClick()
-    AtlasTWOptions.LootItemSpam = not AtlasTWOptions.LootItemSpam
     AtlasTW.OptionsInit()
 end
 

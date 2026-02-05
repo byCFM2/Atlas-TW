@@ -245,7 +245,6 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["Color Quests by Level"] = "Colorir Missões por Nível",
     ["Color Quests from the Questlog"] = "Colorir Missões do Registro",
     ["Auto-Query Unknown Items"] = "Consultar Itens Desconhecidos auto",
-    ["Suppress Server Query Spam"] = "Suprimir Spam de Consultas ao Servidor",
     ["Show Loot Panel with AtlasTW"] = "Mostrar Painel de Saques com AtlasTW",
     ["Sort Instance by:"] = "Ordenar instância por:",
     ["Show Button on Minimap"] = "Mostrar botão no minimapa",
@@ -255,6 +254,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["Show Acronyms"] = "Mostrar acrônimos",
     ["Clamp window to screen"] = "Fixar janela à tela",
     ["Show Cursor Coordinates on Map"] = "Mostrar coordenadas do cursor no mapa",
+    ["Enable pfUI Styling"] = "Ativar o estilo pfUI",
+    ["pfUI styling enabled. Type /reload to apply changes."] = "Estilo pfUI ativado. Digite /reload para aplicar as alterações.",
+    ["pfUI styling disabled. Type /reload to apply changes."] = "Estilo pfUI desativado. Digite /reload para aplicar as alterações.",
     ["Scale"] = "Escala",
 
     --************************************************
@@ -343,14 +345,10 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["Default settings applied!"] = "Configurações padrão aplicadas!",
     ["Safe Chat Links |cff1eff00(recommended)|r"] = "Links de Chat Seguros |cff1eff00(recomendado)|r",
     ["Enable all Chat Links"] = "Ativar todos os Links de Chat",
-    ["Default Tooltips"] = "Dicas padrão",
-    ["Lootlink Tooltips"] = "Dicas do Lootlink",
-    ["ItemSync Tooltips"] = "Dicas do ItemSync",
     ["Use EquipCompare"] = "Usar EquipCompare",
     ["Make Loot Table Opaque"] = "Tornar a Tabela de Saque opaca",
     ["Show IDs in Tooltips"] = "Mostrar IDs nas dicas",
     ["Show Icon in Tooltips"] = "Mostrar ícone nas dicas",
-    ["Suppress Text Spam"] = "Suprimir spam de texto",
     ["Show Source on Tooltips"] = "Mostrar origem nas dicas",
     ["Welcome to Atlas-TW Edition. Please take a moment to set your preferences."] =
     "Bem-vindo ao Atlas-TW Edition. Por favor, tome um momento para configurar suas preferências.",

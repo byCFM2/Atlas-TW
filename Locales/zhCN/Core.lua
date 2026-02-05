@@ -222,7 +222,6 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Color Quests by Level"] = "按等级为任务着色",
     ["Color Quests from the Questlog"] = "按任务日志为任务着色",
     ["Auto-Query Unknown Items"] = "自动查询未知物品",
-    ["Suppress Server Query Spam"] = "抑制服务器查询消息",
     ["Show Loot Panel with AtlasTW"] = "在 AtlasTW 显示掉落面板",
     ["Sort Instance by:"] = "副本排序依据：",
     ["Show Button on Minimap"] = "在小地图显示按钮",
@@ -232,6 +231,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Show Acronyms"] = "显示缩写",
     ["Clamp window to screen"] = "窗口限制在屏幕内",
     ["Show Cursor Coordinates on Map"] = "在地图上显示光标坐标",
+    ["Enable pfUI Styling"] = "启用 pfUI 样式",
+    ["pfUI styling enabled. Type /reload to apply changes."] = "pfUI 样式已启用。输入 /reload 以应用更改。",
+    ["pfUI styling disabled. Type /reload to apply changes."] = "pfUI 样式已禁用。输入 /reload 以应用更改。",
     ["Scale"] = "缩放",
 
     -- Quest Related
@@ -307,14 +309,10 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Default settings applied!"] = "已应用默认设置！",
     ["Safe Chat Links |cff1eff00(recommended)|r"] = "安全聊天链接 |cff1eff00（推荐）|r",
     ["Enable all Chat Links"] = "启用所有聊天链接",
-    ["Default Tooltips"] = "默认提示",
-    ["Lootlink Tooltips"] = "Lootlink 提示",
-    ["ItemSync Tooltips"] = "ItemSync 提示",
     ["Use EquipCompare"] = "使用 EquipCompare",
     ["Make Loot Table Opaque"] = "使掉落表不透明",
     ["Show IDs in Tooltips"] = "在提示中显示 ID",
     ["Show Icon in Tooltips"] = "在提示中显示图标",
-    ["Suppress Text Spam"] = "抑制文本刷屏",
     ["Show Source on Tooltips"] = "在提示中显示来源",
     ["Welcome to Atlas-TW Edition. Please take a moment to set your preferences."] = "欢迎使用 Atlas-TW 版本。请花点时间设置您的偏好。",
 

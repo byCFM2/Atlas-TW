@@ -9,7 +9,7 @@
 ## Author: CFM, Otari98, Dan Gilbert, Daviesh, pepopo, etc
 ## SavedVariables: AtlasTWOptions
 ## SavedVariablesPerCharacter: AtlasTWCharDB
-## OptionalDeps: LootLink, ItemSync, EquipCompare, EQCompare, pfQuest, pfUI
+## OptionalDeps: EquipCompare, EQCompare, pfQuest, pfUI
 
 TWAtlas\AtlasTWInit.xml
 TWLoot\LootInit.xml

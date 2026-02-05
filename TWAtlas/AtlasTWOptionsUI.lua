@@ -111,6 +111,13 @@ do
             script = function()
                 AtlasTW.OptionsCursorCoordsOnClick()
             end
+        },
+        {
+            name = "AtlasTWOptionPfUI",
+            text = L["Enable pfUI Styling"],
+            script = function()
+                AtlasTW.OptionsPfUIOnClick()
+            end
         }
     }
 
@@ -235,14 +242,47 @@ do
         AtlasTW.OptionsOnClick()
     end)
 
-    -- Categories dropdown
-    local dropDownCats = CreateFrame("Button", "AtlasTWOptionsFrameDropDownCats", optionsFrame, "UIDropDownMenuTemplate")
-    dropDownCats:SetPoint("TOP", doneButton, "TOP", 0, 30)
-    UIDropDownMenu_SetWidth(80, dropDownCats)
+    -- Categories dropdown (Hewdrop-based)
+    local dropDownCats = CreateFrame("Button", "AtlasTWOptionsFrameDropDownCats", optionsFrame)
+    dropDownCats:SetWidth(100)
+    dropDownCats:SetHeight(20)
+    dropDownCats:SetPoint("TOP", doneButton, "TOP", 5, 30)
+
+    -- Background texture
+    local dropDownCatsBg = dropDownCats:CreateTexture(nil, "BACKGROUND")
+    dropDownCatsBg:SetTexture("Interface\\Tooltips\\UI-Tooltip-Background")
+    dropDownCatsBg:SetVertexColor(0.1, 0.1, 0.1, 0.8)
+    dropDownCatsBg:SetAllPoints(dropDownCats)
+
+    -- Text display
+    local dropDownCatsText = dropDownCats:CreateFontString("AtlasTWOptionsFrameDropDownCatsText", "OVERLAY", "GameFontHighlightSmall")
+    dropDownCatsText:SetPoint("RIGHT", dropDownCats, "RIGHT", -20, 0)
+    dropDownCatsText:SetJustifyH("LEFT")
+
+    -- Arrow texture
+    local dropDownCatsArrow = dropDownCats:CreateTexture(nil, "OVERLAY")
+    dropDownCatsArrow:SetTexture("Interface\\ChatFrame\\ChatFrameExpandArrow")
+    dropDownCatsArrow:SetWidth(16)
+    dropDownCatsArrow:SetHeight(16)
+    dropDownCatsArrow:SetPoint("RIGHT", dropDownCats, "RIGHT", -2, 0)
+
+    -- Highlight
+    local dropDownCatsHighlight = dropDownCats:CreateTexture(nil, "HIGHLIGHT")
+    dropDownCatsHighlight:SetTexture("Interface\\QuestFrame\\UI-QuestTitleHighlight")
+    dropDownCatsHighlight:SetBlendMode("ADD")
+    dropDownCatsHighlight:SetAllPoints(dropDownCats)
+
+    dropDownCats:SetScript("OnClick", function()
+        if AtlasTW.HewdropMenus:IsOpen(dropDownCats) then
+            AtlasTW.HewdropMenus:Close()
+        else
+            AtlasTW.HewdropMenus:OpenSortByMenu(dropDownCats)
+        end
+    end)
 
     local dropDownCatsLabel = dropDownCats:CreateFontString(nil, "BACKGROUND", "GameFontNormalSmall")
     dropDownCatsLabel:SetText(L["Sort Instance by:"])
-    dropDownCatsLabel:SetPoint("TOP", 0, 10)
+    dropDownCatsLabel:SetPoint("TOP", 0, 12)
 
     dropDownCats:SetScript("OnShow", function()
         AtlasTW.OptionFrameDropDownCatsOnShow()
@@ -270,13 +310,6 @@ do
             end
         },
         {
-            name = "AtlasTWOptionRightSide",
-            text = L["Show Quest Panel on the Right"],
-            script = function()
-                AtlasTW.OptionRightSideOnClick()
-            end
-        },
-        {
             name = "AtlasTWOptionColor",
             text = L["Color Quests by Level"],
             script = function()
@@ -295,13 +328,6 @@ do
             text = L["Auto-Query Unknown Items"],
             script = function()
                 AtlasTW.OptionAutoQueryOnClick()
-            end
-        },
-        {
-            name = "AtlasTWOptionQuerySpam",
-            text = L["Suppress Server Query Spam"],
-            script = function()
-                AtlasTW.OptionQuerySpamOnClick()
             end
         },
     }
@@ -344,27 +370,6 @@ do
             end
         },
         {
-            name = "AtlasTWOptionDefaultTT",
-            text = L["Default Tooltips"],
-            script = function()
-                AtlasTW.OptionDefaultTTOnClick()
-            end
-        },
-        {
-            name = "AtlasTWOptionLootlinkTT",
-            text = L["Lootlink Tooltips"],
-            script = function()
-                AtlasTW.OptionLootlinkTTOnClick()
-            end
-        },
-        {
-            name = "AtlasTWOptionItemSyncTT",
-            text = L["ItemSync Tooltips"],
-            script = function()
-                AtlasTW.OptionItemSyncTTOnClick()
-            end
-        },
-        {
             name = "AtlasTWOptionShowSource",
             text = L["Show Source on Tooltips"],
             script = function()
@@ -393,13 +398,6 @@ do
             end
         },
         {
-            name = "AtlasTWOptionItemSpam",
-            text = L["Suppress Text Spam"],
-            script = function()
-                AtlasTW.OptionItemSpamOnClick()
-            end
-        },
-        {
             name = "AtlasTWOptionTooltipID",
             text = L["Show IDs in Tooltips"],
             script = function()
@@ -421,10 +419,10 @@ do
             local checkbox = CreateFrame("CheckButton", config.name, optionsFrame, "OptionsCheckButtonTemplate")
             if i == 1 then
                 checkbox:SetPoint("BOTTOM", lootOptionText, "BOTTOM", -78, -35)
-            elseif i <= 6 then
+            elseif i <= 5 then
                 checkbox:SetPoint("BOTTOM", previousCheckbox, "BOTTOM", 0, -25)
             else
-                local referenceCheckbox = lootCheckboxes[i - 6].name
+                local referenceCheckbox = lootCheckboxes[i - 5].name
                 checkbox:SetPoint("RIGHT", referenceCheckbox, "RIGHT", 235, 0)
             end
             _G[config.name .. "Text"]:SetText(config.text)

@@ -11,7 +11,7 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
 - Saved variables:
   - Account-wide: AtlasTWOptions
   - Per-character: AtlasTWCharDB
-- Optional dependencies (detected if installed): LootLink, ItemSync, EquipCompare, EQCompare, pfQuest, pfUI
+- Optional dependencies (detected if installed): EquipCompare, EQCompare, pfQuest, pfUI
 
 2) Installation
 - Copy the Atlas‑TW folder to Interface\AddOns
@@ -72,7 +72,6 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
 - Scale — Atlas window scale
 - Show Loot Panel with AtlasTW — show the bottom loot panel
 - Quests — embed the quests panel into the Atlas window
-- Tooltip modes (LootDefaultTT / LootlinkTT / LootItemSyncTT) — choose tooltip integration
 - Show cursor coordinates on World Map — toggle AtlasTWOptions.AtlasCursorCoords
 
 7) Commands
@@ -99,7 +98,7 @@ Overview: Atlas‑TW is a dungeon map browser with an integrated loot panel and 
 
 10) Tips
 - Auto‑select is handy when farming: the correct map opens automatically when you enter an instance
-- For item comparison, enable the appropriate tooltip integration (ItemSync/LootLink/EquipCompare)
+- For item comparison, enable the appropriate tooltip integration (EquipCompare)
 - Hide the loot panel temporarily to save space inside the Atlas window
 
 11) Localization

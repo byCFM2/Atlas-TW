@@ -591,22 +591,11 @@ end
 ---
 function AtlasTW.Interactions.Item_OnLeave()
 	-- Hide the necessary tooltips
-	if AtlasTWOptions.LootlinkTT then
+	if this.itemID ~= nil then
 		AtlasTWLootTooltip:Hide()
+		GameTooltip:Hide()
 		AtlasTWLootTooltip2:Hide()
-	elseif AtlasTWOptions.LootItemSyncTT then
-		if GameTooltip:IsVisible() then
-			GameTooltip:Hide()
-			AtlasTWLootTooltip2:Hide()
-		end
-	else
-		if this.itemID ~= nil then
-			AtlasTWLootTooltip:Hide()
-			GameTooltip:Hide()
-			AtlasTWLootTooltip2:Hide()
-		end
 	end
-
 	if ShoppingTooltip2:IsVisible() or ShoppingTooltip1.IsVisible then
 		ShoppingTooltip2:Hide()
 		ShoppingTooltip1:Hide()

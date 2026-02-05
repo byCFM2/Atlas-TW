@@ -270,7 +270,7 @@ AtlasTW.InstanceData.ZulGurub = {
                 {},
                 { id = 22739, dropRate = 15 }, -- Tome of Polymorph: Turtle
                 {},
-                { id = 56084, dropRate = 100, disc = L["Used to summon boss"] }, -- Middle Piece of an Ancient Idol
+                { id = 56084, dropRate = 30, disc = L["Used to summon boss"] }, -- Middle Piece of an Ancient Idol
                 {},
                 { id = 17962, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 3864, 55251, 55250, 7910, 7909, 1529, 12361 } }, -- Blue Sack of Gems
                 { id = 17963, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12364 } }, -- Green Sack of Gems
