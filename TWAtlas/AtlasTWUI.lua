@@ -227,7 +227,7 @@ do
     -- Switch dropdown is now handled by Hewdrop in AtlasTW.SwitchButtonOnClick()
 
     -- Switch button
-    local switchButton = CreateFrame("Button", "AtlasTWSwitchButton", searchBox, "UIPanelButtonTemplate2")
+    local switchButton = CreateFrame("Button", "AtlasTWSwitchButton", searchBox, "OptionsButtonTemplate")
     switchButton:SetWidth(80)
     switchButton:SetHeight(20)
     switchButton:SetPoint("RIGHT", searchBox, "LEFT", -6, 0)

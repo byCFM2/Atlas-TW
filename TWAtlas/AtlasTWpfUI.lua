@@ -211,19 +211,6 @@ local function StyleButtons()
             if not button.pfui_skinned then
                 pfUI.api.SkinButton(button)
                 button.pfui_skinned = true
-
-                -- Add OnShow hook to ensure it stays skinned if it's a template button
-                -- Templates like UIPanelButtonTemplate can restore textures on show
-                local originalOnShow = button:GetScript("OnShow")
-                button:SetScript("OnShow", function()
-                    if originalOnShow then originalOnShow() end
-                    AtlasTW.pfUI.RestyleButton(buttonName)
-                end)
-            end
-
-            -- Ensure textures are hidden if they were restored by templates
-            if button:GetNormalTexture() and button:GetNormalTexture():IsShown() then
-                button:GetNormalTexture():Hide()
             end
         end
     end
@@ -977,20 +964,21 @@ function AtlasTW.pfUI.RestyleFrame(frameName)
     pfUI.api.CreateBackdropShadow(frame)
 end
 
--- Register initialization hook
--- This will be called from AtlasTW.lua after the main frame is created
-if IsPfUILoaded() then
-    -- Schedule initialization after all frames are created
-    local init = CreateFrame("Frame")
-    init:RegisterEvent("ADDON_LOADED")
-    init:SetScript("OnEvent", function()
-        if arg1 == "Atlas-TW" then
-            -- Delay styling until next frame to ensure all UI is created
-            this:SetScript("OnUpdate", function()
-                AtlasTW.pfUI.Initialize()
-                this:SetScript("OnUpdate", nil)
-            end)
-            this:UnregisterAllEvents()
-        end
-    end)
-end
+local init = CreateFrame("Frame")
+init:RegisterEvent("ADDON_LOADED")
+init:RegisterEvent("PLAYER_ENTERING_WORLD")
+init:SetScript("OnEvent", function()
+    if arg1 == "Atlas-TW" then
+        this.atlasLoaded = true
+    elseif arg1 == "pfUI" then
+        this.pfuiLoaded = true
+    end
+
+    if (this.atlasLoaded or IsAddOnLoaded("Atlas-TW")) and (this.pfuiLoaded or IsAddOnLoaded("pfUI")) then
+        this:SetScript("OnUpdate", function()
+            AtlasTW.pfUI.Initialize()
+            this:SetScript("OnUpdate", nil)
+        end)
+        this:UnregisterAllEvents()
+    end
+end)

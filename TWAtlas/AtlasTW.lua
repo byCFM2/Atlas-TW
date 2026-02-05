@@ -525,10 +525,6 @@ function AtlasTW.Refresh()
 		end
 		AtlasTWSwitchButton:Show()
 
-		-- If pfUI is enabled, we need to ensure the button style is maintained
-		if AtlasTW.pfUI and AtlasTW.pfUI.RestyleButton then
-			AtlasTW.pfUI.RestyleButton("AtlasTWSwitchButton")
-		end
 		-- Hewdrop menu is now opened on-demand in SwitchButtonOnClick
 	else
 		AtlasTWSwitchButton:Hide()
