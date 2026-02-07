@@ -371,15 +371,29 @@ function AtlasTW.pfUI.SkinScrollBar(scrollFrame)
     if not scrollFrame then return end
     if scrollFrame.pfui_skinned then return end
 
+    -- Detect if this is a FauxScrollFrame or similar wrapper where the actual scrollbar is a child
+    local scrollBarWidget = scrollFrame
+    local name = scrollFrame:GetName()
+    if name then
+        -- Check for "ScrollBar" suffix child, which is standard for FauxScrollFrameTemplate
+        local childScrollBar = _G[name .. "ScrollBar"]
+        if childScrollBar then
+            scrollBarWidget = childScrollBar
+        end
+    end
+
     -- Use pfUI's built-in scrollbar skinner if available
     if pfUI.api.SkinScrollbar then
-        pfUI.api.SkinScrollbar(scrollFrame)
+        -- Wrap in pcall to prevent errors if the scrollbar structure is unexpected
+        -- Pass the widget that is likely the slider/scrollbar
+        local success, err = pcall(pfUI.api.SkinScrollbar, scrollBarWidget)
+        -- if not success then PrintA("AtlasTW: pfUI SkinScrollbar error: " .. tostring(err)) end
     else
         -- Manual fallback if pfUI doesn't expose SkinScrollbar
-        local name = scrollFrame:GetName()
-        if name then
-            local upButton = _G[name .. "ScrollUpButton"]
-            local downButton = _G[name .. "ScrollDownButton"]
+        local sbName = scrollBarWidget:GetName()
+        if sbName then
+            local upButton = _G[sbName .. "ScrollUpButton"]
+            local downButton = _G[sbName .. "ScrollDownButton"]
 
             if upButton then AtlasTW.pfUI.SkinArrowButton(upButton, "up") end
             if downButton then AtlasTW.pfUI.SkinArrowButton(downButton, "down") end
@@ -387,6 +401,10 @@ function AtlasTW.pfUI.SkinScrollBar(scrollFrame)
     end
 
     scrollFrame.pfui_skinned = true
+    -- Also mark the child as skinned to prevent double skinning if called directly later
+    if scrollBarWidget ~= scrollFrame then
+        scrollBarWidget.pfui_skinned = true
+    end
 end
 
 ---
@@ -397,11 +415,11 @@ local function StyleScrollBar()
     if AtlasTWScrollBar then
         -- Style scrollbar background
         pfUI.api.CreateBackdrop(AtlasTWScrollBar, nil, nil, 0.3)
-      --  AtlasTW.pfUI.SkinScrollBar(AtlasTWScrollBar)
+        AtlasTW.pfUI.SkinScrollBar(AtlasTWScrollBar)
     end
 
     if AtlasTWLootScrollBar then
-      --  AtlasTW.pfUI.SkinScrollBar(AtlasTWLootScrollBar)
+        AtlasTW.pfUI.SkinScrollBar(AtlasTWLootScrollBar)
     end
 end
 
@@ -925,22 +943,6 @@ local function StyleCheckboxes()
             end
         end
         SkinCheckboxesRecursive(AtlasTWOptionsFrame)
-    end
-
-    -- Style faction checkboxes in quest frame
-    if AtlasTW.Quest and AtlasTW.Quest.UI_Main then
-        local allianceCheck = AtlasTW.Quest.UI_Main.AllianceCheck
-        local hordeCheck = AtlasTW.Quest.UI_Main.HordeCheck
-
-        if allianceCheck and not allianceCheck.pfui_skinned then
-            pfUI.api.SkinCheckbox(allianceCheck)
-            allianceCheck.pfui_skinned = true
-        end
-
-        if hordeCheck and not hordeCheck.pfui_skinned then
-            pfUI.api.SkinCheckbox(hordeCheck)
-            hordeCheck.pfui_skinned = true
-        end
     end
 
     -- Style "Finished Quest" checkbox in embedded quest display

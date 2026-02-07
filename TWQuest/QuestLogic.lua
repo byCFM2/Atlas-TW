@@ -1,10 +1,10 @@
 ---
 --- QuestLogic.lua - Atlas quest logic and event handling
---- 
+---
 --- This file contains the quest logic and event handling for Atlas-TW.
 --- It handles quest item interactions, tooltip management, quest reward display,
 --- and provides the core logic for quest-related UI interactions.
---- 
+---
 --- Features:
 --- - Quest item event handling
 --- - Tooltip management for quest items
@@ -45,9 +45,9 @@ function AtlasTW.Quest.OnItemEnter(itemIndex)
 
     -- Get quest data from new database structure
     local questData = AtlasTW.Quest.DataBase and
-                      AtlasTW.Quest.DataBase[instance] and
-                      AtlasTW.Quest.DataBase[instance][faction] and
-                      AtlasTW.Quest.DataBase[instance][faction][AtlasTW.QCurrentQuest]
+        AtlasTW.Quest.DataBase[instance] and
+        AtlasTW.Quest.DataBase[instance][faction] and
+        AtlasTW.Quest.DataBase[instance][faction][AtlasTW.QCurrentQuest]
 
     if not questData or not questData.Rewards then
         return
@@ -64,7 +64,7 @@ function AtlasTW.Quest.OnItemEnter(itemIndex)
 
     -- Set up tooltip
     GameTooltip:SetOwner(frame, "ANCHOR_RIGHT", -(frame:GetWidth() / 2), 24)
-    GameTooltip:SetHyperlink("item:"..itemId..":0:0:0")
+    GameTooltip:SetHyperlink("item:" .. itemId .. ":0:0:0")
     GameTooltip:Show()
 end
 
@@ -100,9 +100,9 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
 
     -- Get quest data from new database structure
     local questData = AtlasTW.Quest.DataBase and
-                      AtlasTW.Quest.DataBase[instance] and
-                      AtlasTW.Quest.DataBase[instance][faction] and
-                      AtlasTW.Quest.DataBase[instance][faction][AtlasTW.QCurrentQuest]
+        AtlasTW.Quest.DataBase[instance] and
+        AtlasTW.Quest.DataBase[instance][faction] and
+        AtlasTW.Quest.DataBase[instance][faction][AtlasTW.QCurrentQuest]
 
     if questData and not questData.Rewards then
         return
@@ -119,11 +119,11 @@ function AtlasTW.Quest.OnItemClick(mouseButton, itemIndex)
 
     -- Handle right click - search in pfQuest
     if mouseButton == "RightButton" and not IsShiftKeyDown() and not IsControlKeyDown() then
-         local itemName = GetItemInfo(itemId)
-         if itemName then
-             AtlasTW.Integrations.SearchPfQuest(itemName)
-         end
-         return
+        local itemName = GetItemInfo(itemId)
+        if itemName then
+            AtlasTW.Integrations.SearchPfQuest(itemName)
+        end
+        return
     end
 
     -- Handle shift click - insert item link
@@ -162,7 +162,6 @@ function AtlasTW.Quest.CloseDetails()
     AtlasTW.Quest.ClearAll()
 end
 
-
 ---
 --- Inserts a quest link into the chat frame
 --- Creates a clickable quest link for sharing with other players
@@ -175,18 +174,18 @@ local function atlasTWQuestInsertQuestLink()
     local faction = AtlasTW.Faction
 
     local questData = AtlasTW.Quest.DataBase and
-                      AtlasTW.Quest.DataBase[instance] and
-                      AtlasTW.Quest.DataBase[instance][faction] and
-                      AtlasTW.Quest.DataBase[instance][faction][questID]
+        AtlasTW.Quest.DataBase[instance] and
+        AtlasTW.Quest.DataBase[instance][faction] and
+        AtlasTW.Quest.DataBase[instance][faction][questID]
 
     if questData and questData.Title then
         local questName = questData.Title
---        local levelPattern = "^%d+%) "
---        questName = string.gsub(questName, levelPattern, "")
+        --        local levelPattern = "^%d+%) "
+        --        questName = string.gsub(questName, levelPattern, "")
         if pfQuestCompat then
-            pfQuestCompat.InsertQuestLink(0,questName)
+            pfQuestCompat.InsertQuestLink(0, questName)
         else
-            ChatFrameEditBox:Insert("["..questName.."]")
+            ChatFrameEditBox:Insert("[" .. questName .. "]")
         end
     end
 end
@@ -224,12 +223,12 @@ function AtlasTW.Quest.OnQuestClick(questIndex, button)
     -- Handle Right Click - Show in pfQuest
     if button == "RightButton" then
         local questData = AtlasTW.Quest.DataBase and
-                          AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance] and
-                          AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance][AtlasTW.Faction] and
-                          AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance][AtlasTW.Faction][questIndex]
+            AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance] and
+            AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance][AtlasTW.Faction] and
+            AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance][AtlasTW.Faction][questIndex]
 
         if questData and questData.Title then
-             AtlasTW.Integrations.ShowQuestInPfQuest(questData.Title)
+            AtlasTW.Integrations.ShowQuestInPfQuest(questData.Title)
         end
         return
     end
@@ -241,7 +240,7 @@ function AtlasTW.Quest.OnQuestClick(questIndex, button)
         AtlasTW.Quest.UI.Story:SetText("")
         local button = AtlasTW.Quest.UI_Main.QuestButtons[questIndex].Button
         local highlightTexture = button:GetHighlightTexture()
-		AtlasTW.Quest.HideQuestButtonHighlights()
+        AtlasTW.Quest.HideQuestButtonHighlights()
         if AtlasTW.Quest.UI.InsideAtlasFrame:IsVisible() and AtlasTW.QCurrentButton == AtlasTW.QCurrentQuest then
             AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
             AtlasTW.QCurrentButton = nil
@@ -249,8 +248,8 @@ function AtlasTW.Quest.OnQuestClick(questIndex, button)
             AtlasTW.Quest.UI.InsideAtlasFrame:Show()
             AtlasTW.QCurrentButton = AtlasTW.QCurrentQuest
             AtlasTW.Quest.SetQuestText()
-			highlightTexture:Show()
-			button:LockHighlight()
+            highlightTexture:Show()
+            button:LockHighlight()
         end
     end
 end
@@ -263,8 +262,8 @@ end
 ---
 function AtlasTW.Quest.ToggleFinishedFilter()
     -- Build the quest key based on faction
-    local questKey = "Completed_"..AtlasTW.QCurrentInstance.."_Quest_"..AtlasTW.QCurrentQuest
-    questKey = questKey..(AtlasTW.isHorde and "_Horde" or "_Alliance")
+    local questKey = "Completed_" .. AtlasTW.QCurrentInstance .. "_Quest_" .. AtlasTW.QCurrentQuest
+    questKey = questKey .. (AtlasTW.isHorde and "_Horde" or "_Alliance")
     -- Update quest completion status
     AtlasTW.Q[questKey] = AtlasTW.Quest.UI.FinishedQuestCheckbox:GetChecked() and 1 or nil
     -- Save to player options
@@ -294,15 +293,15 @@ function AtlasTW.Quest.NextPage()
 
         if type(story) == "table" then
             -- Display current page content
-            AtlasTW.Quest.UI.Story:SetText(Colors.WHITE..story["Page"..AtlasTW.QCurrentPage])
-            AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..story["MaxPages"])
+            AtlasTW.Quest.UI.Story:SetText(Colors.WHITE .. story["Page" .. AtlasTW.QCurrentPage])
+            AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage .. "/" .. story["MaxPages"])
 
             -- Handle page-specific captions if available
             local pageCaption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption[AtlasTW.QCurrentPage]
-            AtlasTW.Quest.UI.QuestName:SetText(Colors.BLUE..(pageCaption or caption))
+            AtlasTW.Quest.UI.QuestName:SetText(Colors.BLUE .. (pageCaption or caption))
 
             -- Hide next button if we're on the last page
-            if not story["Page"..SideAfterThis] then
+            if not story["Page" .. SideAfterThis] then
                 AtlasTW.Quest.UI.NextPageButtonRight:Hide()
             else
                 AtlasTW.Quest.UI.NextPageButtonRight:Show()
@@ -321,8 +320,8 @@ function AtlasTW.Quest.NextPage()
             local pageCount = questData.Page[1] or 1
 
             if pageContent then
-                AtlasTW.Quest.UI.Story:SetText(Colors.WHITE..pageContent)
-                AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..pageCount)
+                AtlasTW.Quest.UI.Story:SetText(Colors.WHITE .. pageContent)
+                AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage .. "/" .. pageCount)
 
                 -- Hide next button if we're on the last page
                 if AtlasTW.QCurrentPage >= pageCount then
@@ -359,12 +358,12 @@ function AtlasTW.Quest.PreviousPage()
 
         if type(story) == "table" then
             -- Display current page content
-            AtlasTW.Quest.UI.Story:SetText(Colors.WHITE..story["Page"..AtlasTW.QCurrentPage])
-            AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..story["MaxPages"])
+            AtlasTW.Quest.UI.Story:SetText(Colors.WHITE .. story["Page" .. AtlasTW.QCurrentPage])
+            AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage .. "/" .. story["MaxPages"])
 
             -- Handle page-specific captions if available
             local pageCaption = AtlasTW.Quest.DataBase[AtlasTW.QCurrentInstance].Caption[AtlasTW.QCurrentPage]
-            AtlasTW.Quest.UI.QuestName:SetText(Colors.BLUE..(pageCaption or caption))
+            AtlasTW.Quest.UI.QuestName:SetText(Colors.BLUE .. (pageCaption or caption))
 
             -- Hide back button if we're on the first page
             if AtlasTW.QCurrentPage == 1 then
@@ -385,8 +384,8 @@ function AtlasTW.Quest.PreviousPage()
                 local pageContent = questData.Page[AtlasTW.QCurrentPage]
                 local pageCount = questData.Page[1] or 1
                 if pageContent then
-                    AtlasTW.Quest.UI.Story:SetText(Colors.WHITE..pageContent)
-                    AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage.."/"..pageCount)
+                    AtlasTW.Quest.UI.Story:SetText(Colors.WHITE .. pageContent)
+                    AtlasTW.Quest.UI.PageCount:SetText(AtlasTW.QCurrentPage .. "/" .. pageCount)
                 end
             end
         end
@@ -411,8 +410,15 @@ function AtlasTW.Quest.OnQuestFrameShow()
     if not AtlasTW.Quest.UI_Main then
         return PrintA("AtlasTW.Quest.OnQuestFrameShow: Quest UI not fully loaded.")
     end
-    AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(AtlasTW.isHorde)
-    AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(not AtlasTW.isHorde)
+
+    if AtlasTW.isHorde then
+        AtlasTW.Quest.UI_Main.HordeButton:SetAlpha(1.0)
+        AtlasTW.Quest.UI_Main.AllianceButton:SetAlpha(0.5)
+    else
+        AtlasTW.Quest.UI_Main.HordeButton:SetAlpha(0.5)
+        AtlasTW.Quest.UI_Main.AllianceButton:SetAlpha(1.0)
+    end
+
     AtlasTW.Quest.SetQuestButtons()
 end
 
@@ -429,17 +435,17 @@ end
 --- @usage Called when story button is clicked
 ---
 function AtlasTW.Quest.OnStoryClick()
-	AtlasTW.Quest.HideAtlasTWLootFrame()
-	if not AtlasTW.Quest.UI.InsideAtlasFrame:IsVisible() then
-		AtlasTW.Quest.UI.InsideAtlasFrame:Show()
-		AtlasTW.QCurrentButton = -1
-		AtlasTW.Quest.SetStoryText()
-	elseif AtlasTW.QCurrentButton == -1 then
-		AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
-	else
-		AtlasTW.QCurrentButton = -1
-		AtlasTW.Quest.SetStoryText()
-	end
+    AtlasTW.Quest.HideAtlasTWLootFrame()
+    if not AtlasTW.Quest.UI.InsideAtlasFrame:IsVisible() then
+        AtlasTW.Quest.UI.InsideAtlasFrame:Show()
+        AtlasTW.QCurrentButton = -1
+        AtlasTW.Quest.SetStoryText()
+    elseif AtlasTW.QCurrentButton == -1 then
+        AtlasTW.Quest.UI.InsideAtlasFrame:Hide()
+    else
+        AtlasTW.QCurrentButton = -1
+        AtlasTW.Quest.SetStoryText()
+    end
 end
 
 ---
@@ -458,10 +464,10 @@ function AtlasTW.Quest.OnAllianceClick()
     if not AtlasTW.Quest.UI_Main then
         return PrintA("AtlasTW.Quest.OnAllianceClick: Quest UI not fully loaded.")
     end
-	AtlasTW.isHorde = false
+    AtlasTW.isHorde = false
     AtlasTW.Faction = "Alliance"
-    AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(true)
-    AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(false)
+    AtlasTW.Quest.UI_Main.AllianceButton:SetAlpha(1.0)
+    AtlasTW.Quest.UI_Main.HordeButton:SetAlpha(0.5)
     AtlasTW.Quest.CloseDetails()
     AtlasTW.OptionsInit()
     AtlasTW.Quest.SetQuestButtons()
@@ -473,20 +479,14 @@ end
 --- @return nil
 --- @usage Called when Horde checkbox is clicked
 ---
----
---- Handles click events on the Horde faction button
---- Switches to Horde faction and refreshes quest display
---- @return nil
---- @usage Called when Horde checkbox is clicked
----
 function AtlasTW.Quest.OnHordeClick()
     if not AtlasTW.Quest.UI_Main then
         return PrintA("AtlasTW.Quest.OnHordeClick: Quest UI not fully loaded.")
     end
-	AtlasTW.isHorde = true
+    AtlasTW.isHorde = true
     AtlasTW.Faction = "Horde"
-    AtlasTW.Quest.UI_Main.AllianceCheck:SetChecked(false)
-    AtlasTW.Quest.UI_Main.HordeCheck:SetChecked(true)
+    AtlasTW.Quest.UI_Main.AllianceButton:SetAlpha(0.5)
+    AtlasTW.Quest.UI_Main.HordeButton:SetAlpha(1.0)
     AtlasTW.Quest.CloseDetails()
     AtlasTW.OptionsInit()
     AtlasTW.Quest.SetQuestButtons()
@@ -548,6 +548,6 @@ function AtlasTW.Quest.OnEvent()
     if type(AtlasTWCharDB) == "table" then
         AtlasTW.Quest.LoadFinishedQuests()
     else
-        PrintA(Colors.GREEN.."Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
+        PrintA(Colors.GREEN .. "Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
     end
 end

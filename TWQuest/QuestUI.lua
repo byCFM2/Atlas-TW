@@ -1,10 +1,10 @@
 ---
 --- QuestUI.lua - Atlas quest UI frame and component creation
---- 
+---
 --- This file contains the quest UI frame creation and management for Atlas-TW.
 --- It handles quest window interface, quest display components, frame layout,
 --- and provides the visual foundation for the Atlas quest browser system.
---- 
+---
 --- Features:
 --- - Quest frame creation and styling
 --- - Quest display components
@@ -113,37 +113,34 @@ end
 
 -- Close Button
 UI_Main.CloseButton = CreateElement("Button", "", frame, "UIPanelCloseButton", 27, 27, { "TOPLEFT", 10, -10 })
-UI_Main.CloseButton:SetScript("OnClick", function () AtlasTW.Quest.CloseQuestFrame() end)
+UI_Main.CloseButton:SetScript("OnClick", function() AtlasTW.Quest.CloseQuestFrame() end)
 UI_Main.CloseButton:SetScript("OnShow", setFrameLevelOnShow)
 
 -- Story Button
 UI_Main.StoryButton = CreateElement("Button", "", frame, "OptionsButtonTemplate", 70, 20, { "TOP", 0, -13 }, L["Story"])
-UI_Main.StoryButton:SetScript("OnClick", function () AtlasTW.Quest.OnStoryClick() end)
+UI_Main.StoryButton:SetScript("OnClick", function() AtlasTW.Quest.OnStoryClick() end)
 UI_Main.StoryButton:SetScript("OnShow", setFrameLevelOnShow)
 
--- Checkboxes
-UI_Main.AllianceCheck = CreateElement("CheckButton", "", frame, "OptionsCheckButtonTemplate", 30, 30, { "TOPLEFT", 12, -30 })
-UI_Main.AllianceCheck:SetHitRectInsets(0, 0, 0, 0)
-UI_Main.AllianceCheck:SetScript("OnClick", function () AtlasTW.Quest.OnAllianceClick() end)
-UI_Main.AllianceCheck:SetScript("OnShow", setFrameLevelOnShow)
+-- Faction Buttons
+UI_Main.AllianceButton = CreateElement("Button", "", frame, nil, 30, 30, { "TOPLEFT", 25, -25 })
+UI_Main.AllianceButton:SetNormalTexture("Interface\\TargetingFrame\\UI-PVP-Alliance")
+UI_Main.AllianceButton:GetNormalTexture():SetWidth(50)
+UI_Main.AllianceButton:GetNormalTexture():SetHeight(50)
+UI_Main.AllianceButton:GetNormalTexture():ClearAllPoints()
+UI_Main.AllianceButton:GetNormalTexture():SetPoint("CENTER", 8, -9)
+UI_Main.AllianceButton:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square", "ADD")
+UI_Main.AllianceButton:SetScript("OnClick", function() AtlasTW.Quest.OnAllianceClick() end)
+UI_Main.AllianceButton:SetScript("OnShow", setFrameLevelOnShow)
 
-UI_Main.HordeCheck = CreateElement("CheckButton", "", frame, "OptionsCheckButtonTemplate", 30, 30, { "TOPRIGHT", -12, -30 })
-UI_Main.HordeCheck:SetHitRectInsets(0, 0, 0, 0)
-UI_Main.HordeCheck:SetScript("OnClick", function () AtlasTW.Quest.OnHordeClick() end)
-UI_Main.HordeCheck:SetScript("OnShow", setFrameLevelOnShow)
-
--- Faction Textures
-UI_Main.AllianceTexture = frame:CreateTexture("", "OVERLAY")
-UI_Main.AllianceTexture:SetWidth(50)
-UI_Main.AllianceTexture:SetHeight(50)
-UI_Main.AllianceTexture:SetPoint("TOPLEFT", 38, -30)
-UI_Main.AllianceTexture:SetTexture("Interface\\TargetingFrame\\UI-PVP-Alliance")
-
-UI_Main.HordeTexture = frame:CreateTexture("", "OVERLAY")
-UI_Main.HordeTexture:SetWidth(50)
-UI_Main.HordeTexture:SetHeight(50)
-UI_Main.HordeTexture:SetPoint("TOPRIGHT", -26, -30)
-UI_Main.HordeTexture:SetTexture("Interface\\TargetingFrame\\UI-PVP-Horde")
+UI_Main.HordeButton = CreateElement("Button", "", frame, nil, 30, 30, { "TOPRIGHT", -25, -25 })
+UI_Main.HordeButton:SetNormalTexture("Interface\\TargetingFrame\\UI-PVP-Horde")
+UI_Main.HordeButton:GetNormalTexture():SetWidth(50)
+UI_Main.HordeButton:GetNormalTexture():SetHeight(50)
+UI_Main.HordeButton:GetNormalTexture():ClearAllPoints()
+UI_Main.HordeButton:GetNormalTexture():SetPoint("CENTER", 8, -9)
+UI_Main.HordeButton:SetHighlightTexture("Interface\\Buttons\\ButtonHilight-Square", "ADD")
+UI_Main.HordeButton:SetScript("OnClick", function() AtlasTW.Quest.OnHordeClick() end)
+UI_Main.HordeButton:SetScript("OnShow", setFrameLevelOnShow)
 
 -- Quest Counter Text
 UI_Main.QuestCounter = CreateText("", frame, "GameFontNormal", { "TOP", 0, -25 }, 60, 40)
@@ -173,8 +170,8 @@ end
 -- Register Events
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 frame:SetBackdropBorderColor(0.80, 0.60, 0.25, 1)
-frame:SetScript("OnEvent", function () AtlasTW.Quest.OnEvent() end)
-frame:SetScript("OnShow", function () AtlasTW.Quest.OnQuestFrameShow() end)
+frame:SetScript("OnEvent", function() AtlasTW.Quest.OnEvent() end)
+frame:SetScript("OnShow", function() AtlasTW.Quest.OnQuestFrameShow() end)
 
 -- Assign UI table to the global namespace
 AtlasTW.Quest.UI_Main = UI_Main
