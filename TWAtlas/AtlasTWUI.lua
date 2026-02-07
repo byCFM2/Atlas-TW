@@ -433,7 +433,7 @@ do
     noticeText:SetPoint("TOP", -20, -17)
 
     -- Notice link
-    local noticeBox = CreateFrame("EditBox", nil, atlasFrame, "InputBoxTemplate")
+    local noticeBox = CreateFrame("EditBox", "AtlasTWNoticeBox", atlasFrame, "InputBoxTemplate")
     noticeBox:SetWidth(230)
     noticeBox:SetHeight(16)
     noticeBox:SetPoint("TOP", 240, -15)

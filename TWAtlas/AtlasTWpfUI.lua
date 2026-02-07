@@ -353,29 +353,40 @@ local function StyleSearchBox()
     AtlasTW.pfUI.SkinEditBox(AtlasTWSearchEditBox)
     AtlasTWSearchEditBox:SetHeight(20) -- Fix height for pfUI style
 
-    -- Style the search and clear buttons next to the search box (main Atlas frame)
-    -- These are already handled by StyleButtons() which iterates over children of AtlasTWFrame
-    -- But we keep this for safety, ensuring they are marked as skinned.
-    if pfUI.api.SkinButton then
-        for _, child in ipairs({ AtlasTWSearchEditBox:GetChildren() }) do
-            if child:GetObjectType() == "Button" and not child.pfui_skinned then
-                pfUI.api.SkinButton(child)
-                child.pfui_skinned = true
-            end
-        end
+    if pfUI.api.SkinButton and AtlasTWNoticeBox then
+        AtlasTW.pfUI.SkinEditBox(AtlasTWNoticeBox)
     end
-
     -- Also style the search button in the loot panel (handled in StyleLootPanel, but just in case)
     if pfUI.api.SkinButton and AtlasTWLootSearchBox then
         AtlasTW.pfUI.SkinEditBox(AtlasTWLootSearchBox)
+    end
+end
 
-        for _, child in ipairs({ AtlasTWLootSearchBox:GetChildren() }) do
-            if child:GetObjectType() == "Button" and not child.pfui_skinned then
-                pfUI.api.SkinButton(child)
-                child.pfui_skinned = true
-            end
+---
+--- Skins a scrollbar with pfUI style
+--- @param scrollFrame ScrollFrame - The scrollframe to skin
+---
+function AtlasTW.pfUI.SkinScrollBar(scrollFrame)
+    if not IsPfUILoaded() then return end
+    if not scrollFrame then return end
+    if scrollFrame.pfui_skinned then return end
+
+    -- Use pfUI's built-in scrollbar skinner if available
+    if pfUI.api.SkinScrollbar then
+        pfUI.api.SkinScrollbar(scrollFrame)
+    else
+        -- Manual fallback if pfUI doesn't expose SkinScrollbar
+        local name = scrollFrame:GetName()
+        if name then
+            local upButton = _G[name .. "ScrollUpButton"]
+            local downButton = _G[name .. "ScrollDownButton"]
+
+            if upButton then AtlasTW.pfUI.SkinArrowButton(upButton, "up") end
+            if downButton then AtlasTW.pfUI.SkinArrowButton(downButton, "down") end
         end
     end
+
+    scrollFrame.pfui_skinned = true
 end
 
 ---
@@ -386,6 +397,11 @@ local function StyleScrollBar()
     if AtlasTWScrollBar then
         -- Style scrollbar background
         pfUI.api.CreateBackdrop(AtlasTWScrollBar, nil, nil, 0.3)
+      --  AtlasTW.pfUI.SkinScrollBar(AtlasTWScrollBar)
+    end
+
+    if AtlasTWLootScrollBar then
+      --  AtlasTW.pfUI.SkinScrollBar(AtlasTWLootScrollBar)
     end
 end
 
@@ -846,34 +862,45 @@ local function StyleTooltips()
 end
 
 ---
+--- Skins a Hewdrop menu level with pfUI style
+--- @param level number - The level number to skin
+---
+function AtlasTW.pfUI.StyleHewdropLevel(level)
+    if not IsPfUILoaded() then return end
+
+    local frame = _G["Hewdrop20Level" .. level]
+    if frame and not frame.pfui_styled then
+        -- The backdrop is a child frame created in AcquireLevel
+        -- It's the first child that is a frame and has a backdrop
+        for _, child in ipairs({ frame:GetChildren() }) do
+            if child:GetObjectType() == "Frame" and child.SetBackdrop then
+                -- Apply pfUI backdrop
+                pfUI.api.CreateBackdrop(child, nil, true, 0.95)
+                pfUI.api.CreateBackdropShadow(child)
+
+                -- Adjust color to match pfUI standard
+                if child.backdrop then
+                    local r, g, b, a = pfUI.api.GetStringColor(pfUI_config.appearance.border.background)
+                    child.backdrop:SetBackdropColor(r, g, b, 0.95)
+                end
+                break
+            end
+        end
+        frame.pfui_styled = true
+    end
+end
+
+---
 --- Applies pfUI styling to Hewdrop menu frames
 --- Styles dropdown menu popups
 ---
 local function StyleHewdropMenus()
     -- Hewdrop menus are created dynamically
-    -- We need to hook into their creation
-    if not AtlasTW.HewdropMenus then return end
+    -- We mainly rely on the hook in AtlasTWHewdrop.lua calling AtlasTW.pfUI.StyleHewdropLevel
+    -- But we check existing ones here just in case
 
-    -- Create a hook for when Hewdrop frames are shown
-    local function HookHewdropFrame(level)
-        local frame = _G["AtlasTW_Hewdrop_Level" .. level]
-        if frame and not frame.pfui_styled then
-            local backdrop = frame:GetChildren()
-            if backdrop then
-                -- Apply pfUI styling to the backdrop
-                pfUI.api.CreateBackdrop(backdrop, nil, true, 0.95)
-                pfUI.api.CreateBackdropShadow(backdrop)
-            end
-            frame.pfui_styled = true
-        end
-    end
-
-    -- Hook the menu opening to style frames as they're created
-    for i = 1, 5 do
-        local frame = _G["AtlasTW_Hewdrop_Level" .. i]
-        if frame then
-            HookHewdropFrame(i)
-        end
+    for i = 1, 10 do
+        AtlasTW.pfUI.StyleHewdropLevel(i)
     end
 end
 
@@ -1011,27 +1038,6 @@ function AtlasTW.pfUI.Initialize()
         StyleHewdropMenus()
         this:UnregisterAllEvents()
     end)
-end
-
----
---- Hook function to style Hewdrop menus when they open
---- Called by Hewdrop when creating menu levels
----
-function AtlasTW.pfUI.StyleHewdropLevel(level)
-    if not IsPfUILoaded() then return end
-
-    local frame = _G["AtlasTW_Hewdrop_Level" .. level]
-    if frame and not frame.pfui_styled then
-        -- Get the backdrop child frame
-        for _, child in ipairs({ frame:GetChildren() }) do
-            if child:GetObjectType() == "Frame" and child.SetBackdrop then
-                pfUI.api.CreateBackdrop(child, nil, true, 0.95)
-                pfUI.api.CreateBackdropShadow(child)
-                break
-            end
-        end
-        frame.pfui_styled = true
-    end
 end
 
 ---

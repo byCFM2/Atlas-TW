@@ -376,6 +376,11 @@ local function AcquireLevel(self, level)
 			if i == 1 then
 				frame:SetScript("OnUpdate", function() OnUpdate(self, arg1) end)
 			end
+
+            -- Hook for pfUI styling
+            if AtlasTW and AtlasTW.pfUI and AtlasTW.pfUI.StyleHewdropLevel then
+                AtlasTW.pfUI.StyleHewdropLevel(numLevels)
+            end
 		end
 	end
 	return levels[level]
