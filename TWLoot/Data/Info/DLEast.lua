@@ -202,5 +202,11 @@ AtlasTW.InstanceData.DLEast = {
             name = LZ["Stormwrought Ruins"],
             postfix = LZ["Balor"],
         },
+        {
+            id = "DLFrostmaneHollow",
+            prefix = "18)",
+            name = LZ["Frostmane Hollow"],
+            postfix = LZ["Dun Morogh"],
+        },
     },
 }

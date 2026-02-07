@@ -168,6 +168,103 @@ function AtlasTW.pfUI.RestyleButton(buttonName)
 end
 
 ---
+--- Skins an arrow button with pfUI style but keeps arrow indication
+--- @param button Button - The button to skin
+--- @param direction string - Direction of arrow ("left", "right", "up", "down")
+---
+function AtlasTW.pfUI.SkinArrowButton(button, direction)
+    if not IsPfUILoaded() then return end
+    if not button then return end
+
+    -- Fix button size (pfUI arrows are small, standard buttons might be too big)
+    button:SetWidth(18)
+    button:SetHeight(18)
+
+    -- Ensure no backdrop is applied (pfUI arrows are floating textures)
+    if button.backdrop then
+        button.backdrop:Hide()
+    end
+    button.pfui_skinned = true
+
+    -- Set pfUI arrow textures
+    -- Note: We assume standard pfUI directory structure
+    local texturePath = "Interface\\AddOns\\pfUI\\img\\"
+
+    if direction == "left" then
+        button:SetNormalTexture(texturePath .. "left")
+        button:SetPushedTexture(texturePath .. "left")
+        button:SetDisabledTexture(texturePath .. "left")
+    elseif direction == "right" then
+        button:SetNormalTexture(texturePath .. "right")
+        button:SetPushedTexture(texturePath .. "right")
+        button:SetDisabledTexture(texturePath .. "right")
+    elseif direction == "up" then
+        button:SetNormalTexture(texturePath .. "up")
+        button:SetPushedTexture(texturePath .. "up")
+        button:SetDisabledTexture(texturePath .. "up")
+    elseif direction == "down" then
+        button:SetNormalTexture(texturePath .. "down")
+        button:SetPushedTexture(texturePath .. "down")
+        button:SetDisabledTexture(texturePath .. "down")
+    end
+
+    -- Adjust Pushed/Disabled visual feedback
+    if button:GetPushedTexture() then
+        button:GetPushedTexture():SetVertexColor(0.5, 0.5, 0.5)
+        button:GetPushedTexture():SetPoint("TOPLEFT", 1, -1) -- Simulate button press offset
+    end
+
+    if button:GetDisabledTexture() then
+        button:GetDisabledTexture():SetDesaturated(true)
+        button:GetDisabledTexture():SetAlpha(0.5)
+    end
+
+    button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
+end
+
+---
+--- Skins an editbox with pfUI style
+--- @param editbox EditBox - The editbox to skin
+---
+function AtlasTW.pfUI.SkinEditBox(editbox)
+    if not IsPfUILoaded() then return end
+    if not editbox then return end
+    if editbox.pfui_skinned then return end
+
+    -- Hide standard WoW editbox textures to prevent "strange border" look
+    local name = editbox:GetName()
+    if name then
+        local left = _G[name .. "Left"]
+        local middle = _G[name .. "Middle"]
+        local right = _G[name .. "Right"]
+
+        if left then left:Hide() end
+        if middle then middle:Hide() end
+        if right then right:Hide() end
+    end
+
+    -- Also hide any textures attached directly to regions if they are standard borders
+    -- (This is a fallback if names don't match or for anonymous frames)
+    for _, region in ipairs({ editbox:GetRegions() }) do
+        if region:GetObjectType() == "Texture" then
+            local texture = region:GetTexture()
+            if texture then
+                -- Check for standard editbox textures
+                if string.find(texture, "Interface\\Common\\Common-Input-Border") or
+                    string.find(texture, "Interface\\ChatFrame\\UI-Chat-") then
+                    region:Hide()
+                end
+            end
+        end
+    end
+
+    if pfUI.api.CreateBackdrop then
+        pfUI.api.CreateBackdrop(editbox, nil, true)
+    end
+    editbox.pfui_skinned = true
+end
+
+---
 --- Applies pfUI styling to dropdown buttons
 --- Styles the category and map selection dropdowns
 ---
@@ -250,9 +347,11 @@ end
 --- Styles the loot search editbox WITHOUT backdrop (editboxes shouldn't have backdrop)
 ---
 local function StyleSearchBox()
-    -- Don't apply backdrop to EditBoxes - they should not have one
-    -- Just ensure the search/clear buttons next to it are styled
+    -- Style the main Atlas search editbox
     if not AtlasTWSearchEditBox then return end
+
+    AtlasTW.pfUI.SkinEditBox(AtlasTWSearchEditBox)
+    AtlasTWSearchEditBox:SetHeight(20) -- Fix height for pfUI style
 
     -- Style the search and clear buttons next to the search box (main Atlas frame)
     -- These are already handled by StyleButtons() which iterates over children of AtlasTWFrame
@@ -266,8 +365,10 @@ local function StyleSearchBox()
         end
     end
 
-    -- Also style the search button in the loot panel
+    -- Also style the search button in the loot panel (handled in StyleLootPanel, but just in case)
     if pfUI.api.SkinButton and AtlasTWLootSearchBox then
+        AtlasTW.pfUI.SkinEditBox(AtlasTWLootSearchBox)
+
         for _, child in ipairs({ AtlasTWLootSearchBox:GetChildren() }) do
             if child:GetObjectType() == "Button" and not child.pfui_skinned then
                 pfUI.api.SkinButton(child)
@@ -380,11 +481,12 @@ local function StyleLootItemsFrame()
         AtlasTWLootItemsFrame_Menu.pfui_skinned = true
     end
 
-    -- Style Back/Prev/Next buttons
+    -- Style Back/Prev/Next buttons and QuickLooks button
     local navButtons = {
         "AtlasTWLootItemsFrame_BACK",
         "AtlasTWLootItemsFrame_PREV",
-        "AtlasTWLootItemsFrame_NEXT"
+        "AtlasTWLootItemsFrame_NEXT",
+        "AtlasTWLootQuickLooksButton"
     }
 
     for _, btnName in ipairs(navButtons) do
@@ -392,20 +494,12 @@ local function StyleLootItemsFrame()
         if btn and not btn.pfui_skinned then
             if btnName == "AtlasTWLootItemsFrame_BACK" then
                 pfUI.api.SkinButton(btn)
-            else
-                -- PREV/NEXT buttons use textures for arrows.
-                -- pfUI SkinButton hides normal texture, so we use backdrop and restore textures.
-
-                if btnName == "AtlasTWLootItemsFrame_PREV" then
-                    btn:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-PrevPage-Up")
-                    btn:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-PrevPage-Down")
-                    btn:SetDisabledTexture("Interface\\Buttons\\UI-SpellbookIcon-PrevPage-Disabled")
-                else
-                    btn:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Up")
-                    btn:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Down")
-                    btn:SetDisabledTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Disabled")
-                end
-                btn:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
+            elseif btnName == "AtlasTWLootItemsFrame_PREV" then
+                AtlasTW.pfUI.SkinArrowButton(btn, "left")
+            elseif btnName == "AtlasTWLootItemsFrame_NEXT" then
+                AtlasTW.pfUI.SkinArrowButton(btn, "right")
+            elseif btnName == "AtlasTWLootQuickLooksButton" then
+                AtlasTW.pfUI.SkinArrowButton(btn, "down")
             end
             btn.pfui_skinned = true
         end
@@ -498,6 +592,9 @@ local function StyleLootPanel()
 
     -- Also style buttons that are children of the search box
     if pfUI.api.SkinButton and AtlasTWLootSearchBox then
+        -- Style the search box itself
+        AtlasTW.pfUI.SkinEditBox(AtlasTWLootSearchBox)
+
         for _, child in ipairs({ AtlasTWLootSearchBox:GetChildren() }) do
             if child:GetObjectType() == "Button" and not child.pfui_skinned then
                 pfUI.api.SkinButton(child)
@@ -511,23 +608,12 @@ local function StyleLootPanel()
                 for _, subchild in ipairs({ child:GetChildren() }) do
                     if subchild:GetObjectType() == "Button" and not subchild.pfui_skinned then
                         -- Check if this is the search options arrow button
-                        -- We want to preserve the arrow texture or style it appropriately
                         local normalTexture = subchild:GetNormalTexture()
                         local texPath = normalTexture and normalTexture:GetTexture() or ""
-                        if string.find(texPath, "NextPage") or string.find(texPath, "PrevPage") then
-                            -- This is likely an arrow button. pfUI SkinButton hides the normal texture.
-                            -- We want to keep it or replace it.
-                            -- Ensure texture stays visible
-                            if string.find(texPath, "NextPage") then
-                                subchild:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Up")
-                                subchild:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Down")
-                                subchild:SetDisabledTexture("Interface\\Buttons\\UI-SpellbookIcon-NextPage-Disabled")
-                            else
-                                subchild:SetNormalTexture("Interface\\Buttons\\UI-SpellbookIcon-PrevPage-Up")
-                                subchild:SetPushedTexture("Interface\\Buttons\\UI-SpellbookIcon-PrevPage-Down")
-                                subchild:SetDisabledTexture("Interface\\Buttons\\UI-SpellbookIcon-PrevPage-Disabled")
-                            end
-                            subchild:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
+                        if string.find(texPath, "NextPage") then
+                            AtlasTW.pfUI.SkinArrowButton(subchild, "right")
+                        elseif string.find(texPath, "PrevPage") then
+                            AtlasTW.pfUI.SkinArrowButton(subchild, "left")
                         else
                             pfUI.api.SkinButton(subchild)
                         end
