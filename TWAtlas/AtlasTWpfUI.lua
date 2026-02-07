@@ -42,6 +42,17 @@ local function IsPfUILoaded()
 end
 
 ---
+--- Gets the pfUI border background color safely
+--- @return number, number, number, number - r, g, b, a
+---
+local function GetPfUIBackgroundColor()
+    if pfUI_config and pfUI_config.appearance and pfUI_config.appearance.border and pfUI_config.appearance.border.background then
+        return pfUI.api.GetStringColor(pfUI_config.appearance.border.background)
+    end
+    return 0, 0, 0, 0.8 -- Default fallback
+end
+
+---
 --- Applies pfUI styling to the main Atlas frame
 --- Removes default textures and applies pfUI backdrop
 ---
@@ -49,10 +60,6 @@ local function StyleMainFrame()
     if not AtlasTWFrame then return end
 
     -- Hide default Atlas textures
-    local textures = {
-        "AtlasTWMap",
-    }
-
     -- Note: We keep the border textures visible as they define the Atlas window shape
     -- Only hide background if user wants full pfUI integration
 
@@ -176,9 +183,9 @@ function AtlasTW.pfUI.SkinArrowButton(button, direction)
     if not IsPfUILoaded() then return end
     if not button then return end
 
-    -- Fix button size (pfUI arrows are small, standard buttons might be too big)
-    button:SetWidth(18)
-    button:SetHeight(18)
+    -- Fix button size (increase clickbox size, was 18)
+    button:SetWidth(24)
+    button:SetHeight(24)
 
     -- Ensure no backdrop is applied (pfUI arrows are floating textures)
     if button.backdrop then
@@ -190,28 +197,31 @@ function AtlasTW.pfUI.SkinArrowButton(button, direction)
     -- Note: We assume standard pfUI directory structure
     local texturePath = "Interface\\AddOns\\pfUI\\img\\"
 
-    if direction == "left" then
-        button:SetNormalTexture(texturePath .. "left")
-        button:SetPushedTexture(texturePath .. "left")
-        button:SetDisabledTexture(texturePath .. "left")
-    elseif direction == "right" then
-        button:SetNormalTexture(texturePath .. "right")
-        button:SetPushedTexture(texturePath .. "right")
-        button:SetDisabledTexture(texturePath .. "right")
-    elseif direction == "up" then
-        button:SetNormalTexture(texturePath .. "up")
-        button:SetPushedTexture(texturePath .. "up")
-        button:SetDisabledTexture(texturePath .. "up")
-    elseif direction == "down" then
-        button:SetNormalTexture(texturePath .. "down")
-        button:SetPushedTexture(texturePath .. "down")
-        button:SetDisabledTexture(texturePath .. "down")
+    -- Helper to constrain texture size
+    local function SkinTexture(tex)
+        if tex then
+            tex:ClearAllPoints()
+            tex:SetPoint("CENTER", 0, 0)
+            tex:SetWidth(16)
+            tex:SetHeight(16)
+        end
+    end
+
+    if direction == "left" or direction == "right" or direction == "up" or direction == "down" then
+        local tex = texturePath .. direction
+        button:SetNormalTexture(tex)
+        button:SetPushedTexture(tex)
+        button:SetDisabledTexture(tex)
+
+        SkinTexture(button:GetNormalTexture())
+        SkinTexture(button:GetPushedTexture())
+        SkinTexture(button:GetDisabledTexture())
     end
 
     -- Adjust Pushed/Disabled visual feedback
     if button:GetPushedTexture() then
         button:GetPushedTexture():SetVertexColor(0.5, 0.5, 0.5)
-        button:GetPushedTexture():SetPoint("TOPLEFT", 1, -1) -- Simulate button press offset
+        button:GetPushedTexture():SetPoint("CENTER", 1, -1) -- Simulate button press offset
     end
 
     if button:GetDisabledTexture() then
@@ -435,10 +445,7 @@ local function StyleLootItemsFrame()
 
     -- Use pfUI background color if available, otherwise pure black
     if AtlasTWLootItemsFrame.backdrop then
-        local r, g, b, a = 0, 0, 0, 1
-        if pfUI_config and pfUI_config.appearance and pfUI_config.appearance.border and pfUI_config.appearance.border.background then
-            r, g, b, a = pfUI.api.GetStringColor(pfUI_config.appearance.border.background)
-        end
+        local r, g, b, a = GetPfUIBackgroundColor()
         AtlasTWLootItemsFrame.backdrop:SetBackdropColor(r, g, b, 1) -- Ensure alpha is 1 for "completely black"
     end
 
@@ -553,10 +560,7 @@ local function StyleLootPanel()
 
     -- Use pfUI background color if available, otherwise pure black
     if AtlasTWLootPanel.backdrop then
-        local r, g, b, a = 0, 0, 0, 1
-        if pfUI_config and pfUI_config.appearance and pfUI_config.appearance.border and pfUI_config.appearance.border.background then
-            r, g, b, a = pfUI.api.GetStringColor(pfUI_config.appearance.border.background)
-        end
+        local r, g, b, a = GetPfUIBackgroundColor()
         AtlasTWLootPanel.backdrop:SetBackdropColor(r, g, b, 1)
     end
 
@@ -699,10 +703,7 @@ local function StyleQuestFrame()
 
     -- Use pfUI background color if available, otherwise pure black
     if questFrame.backdrop then
-        local r, g, b, a = 0, 0, 0, 1
-        if pfUI_config and pfUI_config.appearance and pfUI_config.appearance.border and pfUI_config.appearance.border.background then
-            r, g, b, a = pfUI.api.GetStringColor(pfUI_config.appearance.border.background)
-        end
+        local r, g, b, a = GetPfUIBackgroundColor()
         questFrame.backdrop:SetBackdropColor(r, g, b, 1) -- Ensure alpha is 1 for "completely black"
     end
 
@@ -779,10 +780,7 @@ local function StyleInsideAtlasFrame()
 
     -- Use pfUI background color if available, otherwise pure black
     if frame.backdrop then
-        local r, g, b, a = 0, 0, 0, 1
-        if pfUI_config and pfUI_config.appearance and pfUI_config.appearance.border and pfUI_config.appearance.border.background then
-            r, g, b, a = pfUI.api.GetStringColor(pfUI_config.appearance.border.background)
-        end
+        local r, g, b, a = GetPfUIBackgroundColor()
         frame.backdrop:SetBackdropColor(r, g, b, 1) -- Ensure alpha is 1 for "completely black"
     end
 
@@ -898,7 +896,7 @@ function AtlasTW.pfUI.StyleHewdropLevel(level)
 
                 -- Adjust color to match pfUI standard
                 if child.backdrop then
-                    local r, g, b, a = pfUI.api.GetStringColor(pfUI_config.appearance.border.background)
+                    local r, g, b, a = GetPfUIBackgroundColor()
                     child.backdrop:SetBackdropColor(r, g, b, 0.95)
                 end
                 break
@@ -990,16 +988,6 @@ local function StyleOptionsFrame()
 end
 
 ---
---- Applies pfUI styling to minimap button
---- Styles the minimap icon WITHOUT backdrop (minimap buttons shouldn't have backdrop)
----
-local function StyleMinimapButton()
-    -- Don't apply backdrop to minimap buttons - they look better without one
-    -- The border texture is already part of the button design
-    return
-end
-
----
 --- Main initialization function
 --- Applies all pfUI styling when pfUI is detected
 ---
@@ -1023,7 +1011,6 @@ function AtlasTW.pfUI.Initialize()
     StyleHewdropMenus()
     StyleOptionsFrame()
     StyleCheckboxes()
-    StyleMinimapButton()
 
     -- Create a delayed hook for dynamically created frames
     -- Some frames are created after ADDON_LOADED
@@ -1040,22 +1027,6 @@ function AtlasTW.pfUI.Initialize()
         StyleHewdropMenus()
         this:UnregisterAllEvents()
     end)
-end
-
----
---- Re-applies pfUI styling to a specific frame
---- Useful for frames that reset their appearance
---- @param frameName string - Name of the frame to restyle
----
-function AtlasTW.pfUI.RestyleFrame(frameName)
-    if not IsPfUILoaded() then return end
-
-    local frame = _G[frameName]
-    if not frame then return end
-
-    -- Reapply backdrop
-    pfUI.api.CreateBackdrop(frame, nil, nil, 0.85)
-    pfUI.api.CreateBackdropShadow(frame)
 end
 
 local init = CreateFrame("Frame")
