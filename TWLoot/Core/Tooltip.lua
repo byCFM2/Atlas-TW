@@ -634,6 +634,90 @@ local function ExtendTooltip(tooltip)
         end
     end
 
+    -- Add recipe usage information
+    local itemID = tonumber(tooltip.itemID)
+    if itemID and AtlasTW.ReagentData and AtlasTW.ReagentData.GetRecipes then
+        local recipes = AtlasTW.ReagentData.GetRecipes(itemID)
+        if recipes and next(recipes) then
+            -- Filter recipes based on professions option
+            local filteredRecipes = {}
+            for _, recipe in ipairs(recipes) do
+                local key = recipe.professionKey or "Other"
+                local isEnabled = true
+                if AtlasTWOptions.ReagentProfessions and AtlasTWOptions.ReagentProfessions[key] == false then
+                    isEnabled = false
+                end
+
+                if isEnabled then
+                    table.insert(filteredRecipes, recipe)
+                end
+            end
+
+            if table.getn(filteredRecipes) > 0 then
+                local maxRows = AtlasTWOptions.ReagentRows or 20
+                local count = 0
+                local lastProfession = nil
+
+                for _, recipe in ipairs(filteredRecipes) do
+                    -- Check profession filter
+                    -- We need to check if the profession is enabled.
+                    -- Since we only have the localized name, we might have issues if languages differ.
+                    -- Ideally ReagentData should provide the key.
+                    -- Let's assume for now we skip filtering if key is missing, or rely on English match if playing in English.
+
+                    -- Check row limit
+                    if count >= maxRows then
+                        tooltip:AddLine(string.format(L["... %d more"], (table.getn(filteredRecipes) - count)), 0.5, 0.5,
+                            0.5)
+                        break
+                    end
+
+                    -- Grouping by profession
+                    local currentProfession = recipe.profession or L["Other"]
+                    if currentProfession ~= lastProfession then
+                        tooltip:AddLine(currentProfession, 0, 1, 0) -- Green Header
+                        lastProfession = currentProfession
+                    end
+
+                    local name = recipe.name
+                    if not name and recipe.itemID then
+                        name = GetItemInfo(recipe.itemID)
+                        if name then
+                            recipe.name = name -- Cache for future use
+                        elseif AtlasTW.LootCache and AtlasTW.LootCache.ForceCacheItem then
+                            AtlasTW.LootCache.ForceCacheItem(recipe.itemID)
+                        end
+                    end
+                    name = name or string.format(L["Recipe #%d"], recipe.spellID)
+
+                    -- Determine colors
+                    local r, g, b = 1, 0.2, 0.2 -- Default Red (Cannot learn/No profession)
+
+                    local professionSkill = AtlasTW.ReagentData.GetPlayerProfessionSkill(recipe.profession)
+
+                    -- Gray out if skill is significantly higher (likely known/trivial)
+                    -- 40 is a common threshold for recipes turning gray
+                    if professionSkill > 0 and recipe.skill then
+                        if professionSkill >= (recipe.skill + 40) then
+                            r, g, b = 0.5, 0.5, 0.5 -- Gray
+                        elseif professionSkill >= recipe.skill then
+                            r, g, b = 0, 1, 0       -- Green
+                        end
+                    end
+
+                    local rightText = ""
+                    if recipe.skill and recipe.skill > 0 then
+                        rightText = "(" .. recipe.skill .. ")"
+                    end
+
+                    tooltip:AddDoubleLine("-" .. name, rightText, r, g, b, r, g, b)
+                    count = count + 1
+                end
+                tooltip:Show()
+            end
+        end
+    end
+
     -- Add money information if present
     if ModuleState.tooltipMoney > 0 then
         original_SetTooltipMoney(tooltip, ModuleState.tooltipMoney)

@@ -19,6 +19,7 @@ local _G = getfenv()
 AtlasTW = AtlasTW or {}
 
 local L = AtlasTW.Localization.UI
+local LS = AtlasTW.Localization.Spells
 
 do
     -- Create the main options frame
@@ -56,6 +57,37 @@ do
     -- Set up frame show script to initialize values
     optionsFrame:SetScript("OnShow", function()
         AtlasTW.OptionsInit()
+
+        -- Reagent Options
+        if AtlasTWOptionReagentRowsSlider then
+            AtlasTWOptionReagentRowsSlider:SetValue(AtlasTWOptions.ReagentRows or 20)
+            AtlasOptions_UpdateSlider(L["Reagent Rows"])
+        end
+
+        if AtlasTWOptions.ReagentProfessions then
+            if AtlasTWOptionReagentAlchemy then AtlasTWOptionReagentAlchemy:SetChecked(AtlasTWOptions.ReagentProfessions
+                ["Alchemy"]) end
+            if AtlasTWOptionReagentBS then AtlasTWOptionReagentBS:SetChecked(AtlasTWOptions.ReagentProfessions
+                ["Blacksmithing"]) end
+            if AtlasTWOptionReagentEnchant then AtlasTWOptionReagentEnchant:SetChecked(AtlasTWOptions.ReagentProfessions
+                ["Enchanting"]) end
+            if AtlasTWOptionReagentEngi then AtlasTWOptionReagentEngi:SetChecked(AtlasTWOptions.ReagentProfessions
+                ["Engineering"]) end
+            if AtlasTWOptionReagentLW then AtlasTWOptionReagentLW:SetChecked(AtlasTWOptions.ReagentProfessions
+                ["Leatherworking"]) end
+            if AtlasTWOptionReagentTailor then AtlasTWOptionReagentTailor:SetChecked(AtlasTWOptions.ReagentProfessions
+                ["Tailoring"]) end
+            if AtlasTWOptionReagentCooking then AtlasTWOptionReagentCooking:SetChecked(AtlasTWOptions.ReagentProfessions
+                ["Cooking"]) end
+            if AtlasTWOptionReagentFirstAid then AtlasTWOptionReagentFirstAid:SetChecked(AtlasTWOptions
+                .ReagentProfessions["First Aid"]) end
+            if AtlasTWOptionReagentJC then AtlasTWOptionReagentJC:SetChecked(AtlasTWOptions.ReagentProfessions
+                ["Jewelcrafting"]) end
+            if AtlasTWOptionReagentMining then AtlasTWOptionReagentMining:SetChecked(AtlasTWOptions.ReagentProfessions
+                ["Mining"]) end
+            if AtlasTWOptionReagentPoisons then AtlasTWOptionReagentPoisons:SetChecked(AtlasTWOptions.ReagentProfessions
+                ["Poisons"]) end
+        end
     end)
 
     -- Title
@@ -255,7 +287,8 @@ do
     dropDownCatsBg:SetAllPoints(dropDownCats)
 
     -- Text display
-    local dropDownCatsText = dropDownCats:CreateFontString("AtlasTWOptionsFrameDropDownCatsText", "OVERLAY", "GameFontHighlightSmall")
+    local dropDownCatsText = dropDownCats:CreateFontString("AtlasTWOptionsFrameDropDownCatsText", "OVERLAY",
+        "GameFontHighlightSmall")
     dropDownCatsText:SetPoint("RIGHT", dropDownCats, "RIGHT", -20, 0)
     dropDownCatsText:SetJustifyH("LEFT")
 
@@ -429,5 +462,54 @@ do
             checkbox:SetScript("OnClick", config.script)
             previousCheckbox = checkbox
         end
+        -- Reagent Options Section
+        local reagentOptionText = optionsFrame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+        reagentOptionText:SetPoint("BOTTOM", title, "BOTTOM", 130, -170)
+        reagentOptionText:SetText(L["Reagent Tooltip Options"])
+
+        -- Reagent Rows Slider
+        local reagentRowsSlider = CreateFrame("Slider", "AtlasTWOptionReagentRowsSlider", optionsFrame,
+            "OptionsSliderTemplate")
+        reagentRowsSlider:SetPoint("TOPLEFT", reagentOptionText, "BOTTOMLEFT", -120, -25)
+        reagentRowsSlider:SetMinMaxValues(0, 30)
+        reagentRowsSlider:SetValueStep(1)
+        reagentRowsSlider:SetWidth(180)
+        _G[reagentRowsSlider:GetName() .. "Text"]:SetText(L["Reagent Rows"])
+        _G[reagentRowsSlider:GetName() .. "Low"]:SetText("0")
+        _G[reagentRowsSlider:GetName() .. "High"]:SetText("30")
+
+        reagentRowsSlider:SetScript("OnValueChanged", function()
+            AtlasOptions_UpdateSlider(L["Reagent Rows"])
+            AtlasTWOptions.ReagentRows = this:GetValue()
+        end)
+
+        -- Profession Filters
+        local function CreateProfCheckbox(name, text, key, x, y, anchor)
+            local cb = CreateFrame("CheckButton", "AtlasTWOptionReagent" .. name, optionsFrame,
+                "OptionsCheckButtonTemplate")
+            cb:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", x, y)
+            _G[cb:GetName() .. "Text"]:SetText(text)
+            cb:SetScript("OnClick", function()
+                AtlasTWOptions.ReagentProfessions[key] = this:GetChecked() and true or false
+            end)
+            return cb
+        end
+
+        local profAnchor = reagentRowsSlider
+        local col1X, col2X = -10, 100
+
+        local p1 = CreateProfCheckbox("Alchemy", LS["Alchemy"], "Alchemy", col1X, -15, profAnchor)
+        local p2 = CreateProfCheckbox("BS", LS["Blacksmithing"], "Blacksmithing", 0, -5, p1)
+        local p3 = CreateProfCheckbox("Enchant", LS["Enchanting"], "Enchanting", 0, -5, p2)
+        local p4 = CreateProfCheckbox("Engi", LS["Engineering"], "Engineering", 0, -5, p3)
+        p4:SetPoint("TOPLEFT", p1, "TOPLEFT", col2X, 0)
+        local p5 = CreateProfCheckbox("LW", LS["Leatherworking"], "Leatherworking", 0, -5, p4)
+        local p6 = CreateProfCheckbox("Tailor", LS["Tailoring"], "Tailoring", 0, -5, p5)
+        local p7 = CreateProfCheckbox("Cooking", LS["Cooking"], "Cooking", 0, -5, p6)
+        p7:SetPoint("TOPLEFT", p4, "TOPLEFT", col2X, 0)
+        local p8 = CreateProfCheckbox("FirstAid", LS["First Aid"], "First Aid", 0, -5, p7)
+        local p9 = CreateProfCheckbox("JC", LS["Jewelcrafting"], "Jewelcrafting", 0, -5, p8)
+        local p10 = CreateProfCheckbox("Mining", LS["Mining"], "Mining", 0, -5, p9)
+        local p11 = CreateProfCheckbox("Poisons", LS["Poisons"], "Poisons", 0, -5, p10)
     end
 end

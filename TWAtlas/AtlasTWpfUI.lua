@@ -756,6 +756,11 @@ local function StyleQuestFrame()
         pfUI.api.SkinButton(AtlasTW.Quest.UI_Main.StoryButton)
     end
 
+    -- Style the Check Completed Quests button
+    if AtlasTW.Quest.UI_Main.CheckCompletedQuestsButton and pfUI.api.SkinButton then
+        pfUI.api.SkinButton(AtlasTW.Quest.UI_Main.CheckCompletedQuestsButton)
+    end
+
     -- Style all quest buttons
     if AtlasTW.Quest.UI_Main.QuestButtons and pfUI.api.SkinButton then
         for i, questBtn in ipairs(AtlasTW.Quest.UI_Main.QuestButtons) do

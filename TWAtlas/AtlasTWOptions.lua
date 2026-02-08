@@ -203,6 +203,25 @@ function AtlasTW.OptionsInit()
         PrintA("Failed to initialize local references.")
         return
     end
+
+    -- Ensure Reagent options exist for old configs
+    if AtlasTWOptions.ReagentRows == nil then AtlasTWOptions.ReagentRows = 20 end
+    if AtlasTWOptions.ReagentProfessions == nil then
+        AtlasTWOptions.ReagentProfessions = {
+            ["Alchemy"] = true,
+            ["Blacksmithing"] = true,
+            ["Enchanting"] = true,
+            ["Engineering"] = true,
+            ["Leatherworking"] = true,
+            ["Tailoring"] = true,
+            ["Cooking"] = true,
+            ["First Aid"] = true,
+            ["Jewelcrafting"] = true,
+            ["Poisons"] = true,
+            ["Mining"] = true,
+        }
+    end
+
     if AtlasTWOptions.QuestWithAtlas then
         AtlasTW.Quest.UI_Main.Frame:Show()
     else
@@ -296,14 +315,19 @@ end
 --- Updates slider display text with current value
 --- Shows the slider label with current rounded value in parentheses
 --- @param text string The base text label for the slider
+--- @param frame table Optional frame to update, defaults to 'this'
 --- @return nil
 --- @usage AtlasOptions_UpdateSlider("Scale") -- Called by slider OnValueChanged
 ---
-function AtlasOptions_UpdateSlider(text)
-    local sliderName = this:GetName()
+function AtlasOptions_UpdateSlider(text, frame)
+    local slider = frame or this
+    if not slider or type(slider.GetValue) ~= "function" then
+        return
+    end
+    local sliderName = slider:GetName()
     local textElement = _G[sliderName .. "Text"]
     if textElement then
-        textElement:SetText(text .. " (" .. round(this:GetValue(), 2) .. ")")
+        textElement:SetText(text .. " (" .. round(slider:GetValue(), 2) .. ")")
     end
 end
 
@@ -340,6 +364,20 @@ function AtlasTW.OptionDefaultSettings()
         LootOpaque = true,
         LootShowPanel = true,
         LootFilterMode = 0,
+        ReagentRows = 20,
+        ReagentProfessions = {
+            ["Alchemy"] = true,
+            ["Blacksmithing"] = true,
+            ["Enchanting"] = true,
+            ["Engineering"] = true,
+            ["Leatherworking"] = true,
+            ["Tailoring"] = true,
+            ["Cooking"] = true,
+            ["First Aid"] = true,
+            ["Jewelcrafting"] = true,
+            ["Poisons"] = true,
+            ["Mining"] = true,
+        },
         TooltipShowID = true,
         TooltipShowIcon = true,
         pfUIEnabled = true

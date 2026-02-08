@@ -57,6 +57,7 @@ kQuestInstanceData.TheDeadmines = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[1] = {
     Title = "Pañuelos de Seda Roja",
+    Id = 214,
     Level = 17,
     Attain = 14,
     Aim = "La Exploradora Riell en la Torre de la Colina del Centinela quiere que le lleves 10 Pañuelos de Seda Roja.",
@@ -72,6 +73,7 @@ kQuestInstanceData.TheDeadmines.Alliance[1] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[2] = {
     Title = "Recolectando Recuerdos",
+    Id = 168,
     Level = 18,
     Attain = 14,
     Aim = "Recupera 4 tarjetas del Sindicato de Mineros y devuélveselos a Wilder Cardortiga en Ventormenta.",
@@ -85,6 +87,7 @@ kQuestInstanceData.TheDeadmines.Alliance[2] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[3] = {
     Title = "Oh, Hermano...",
+    Id = 167,
     Level = 20,
     Attain = 15,
     Aim = "Lleva la Insignia de la Liga de Expedicionarios de Capataz Cardortiga a Wilder Cardortiga en Ventormenta.",
@@ -97,6 +100,7 @@ kQuestInstanceData.TheDeadmines.Alliance[3] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[4] = {
     Title = "Asalto Subterráneo",
+    Id = 2040,
     Level = 20,
     Attain = 15,
     Aim = "Recupera el Gnoam Sprecklesprocket de las Minas de la Muerte y llévaselo a Shoni la Silenciosa en Ventormenta.",
@@ -111,6 +115,7 @@ kQuestInstanceData.TheDeadmines.Alliance[4] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[5] = {
     Title = "La Hermandad de los Defias",
+    Id = 166,
     Level = 22,
     Attain = 14,
     Aim = "Gryan Mantorrecio quiere que hables con Wiley en Villa del Lago.",
@@ -126,6 +131,7 @@ kQuestInstanceData.TheDeadmines.Alliance[5] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[6] = {
     Title = "La Prueba de la Rectitud",
+    Id = 1654,
     Level = 22,
     Attain = 20,
     Aim = "Habla con Jordan Stilwell en Forjaz.",
@@ -141,6 +147,7 @@ kQuestInstanceData.TheDeadmines.Alliance[6] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[7] = {
     Title = "La Carta No Enviada",
+    Id = 373,
     Level = 22,
     Attain = 16,
     Aim = "Entrega la Carta al Arquitecto de la Ciudad a Baros Alexston en Ventormenta.",
@@ -151,6 +158,7 @@ kQuestInstanceData.TheDeadmines.Alliance[7] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[8] = {
     Title = "La Venganza del Capitán Grayson",
+    Id = 40396,
     Level = 22,
     Attain = 15,
     Aim = "Acaba con Cookie.",
@@ -164,6 +172,7 @@ kQuestInstanceData.TheDeadmines.Alliance[8] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[9] = {
     Title = "El Misterio del Gólem de la Cosecha",
+    Id = 40478,
     Level = 19,
     Attain = 15,
     Aim = "Recolecta una Runa de Animación Agrietada para Christopher Hewen en Colina del Centinela.",
@@ -180,6 +189,7 @@ kQuestInstanceData.TheDeadmines.Alliance[9] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[10] = {
     Title = "Entrega de Venture Co.",
+    Id = 41392,
     Level = 20,
     Attain = 14,
     Aim = "Infiltrate en las Minas de la Muerte en los Páramos del Oeste y adquiere la Cerveza Chispeante de Voss.",
@@ -194,6 +204,7 @@ kQuestInstanceData.TheDeadmines.Alliance[10] = {
 }
 kQuestInstanceData.TheDeadmines.Horde[1] = {
     Title = "Robo de Prototipo",
+    Id = 55005,
     Level = 18,
     Attain = 16,
     Aim = "Lleva el Esquema del Prototipo Desmenuzadora X0-1 a Wrix Ozzlenut.",
@@ -207,6 +218,7 @@ kQuestInstanceData.TheDeadmines.Horde[1] = {
 }
 kQuestInstanceData.TheDeadmines.Horde[2] = {
     Title = "La Venganza del Capitán Grayson",
+    Id = 40396,
     Level = 22,
     Attain = 15,
     Aim = "Acaba con Cookie.",
@@ -220,6 +232,7 @@ kQuestInstanceData.TheDeadmines.Horde[2] = {
 }
 kQuestInstanceData.TheDeadmines.Horde[3] = {
     Title = "Hacha de Defensor de la Horda",
+    Id = 39998,
     Level = 18,
     Attain = 15,
     Aim = "Habla con un Guardia de la Horda en El Cruce.",
@@ -242,6 +255,7 @@ kQuestInstanceData.WailingCaverns = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[1] = {
     Title = "Pieles Desviadas",
+    Id = 1486,
     Level = 17,
     Attain = 13,
     Aim = "Nalpak en las Cuevas de los Lamentos quiere 20 Pieles Desviadas.",
@@ -255,6 +269,7 @@ kQuestInstanceData.WailingCaverns.Alliance[1] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[2] = {
     Title = "Problemas en los Muelles",
+    Id = 959,
     Level = 18,
     Attain = 14,
     Aim = "El Operador de Grúa Bigglefuzz en Ratchet quiere que recuperes la botella de Oporto Añejo de 99 Años de Mad Magglish, quien se esconde en las Cuevas de los Lamentos.",
@@ -263,6 +278,7 @@ kQuestInstanceData.WailingCaverns.Alliance[2] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[3] = {
     Title = "Bebidas Inteligentes",
+    Id = 1491,
     Level = 18,
     Attain = 13,
     Aim = "Lleva 6 Porciones de Esencia Lamentosa a Mebok Mizzyrix en Ratchet.",
@@ -272,6 +288,7 @@ kQuestInstanceData.WailingCaverns.Alliance[3] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[4] = {
     Title = "Erradicación Desviada",
+    Id = 1487,
     Level = 21,
     Attain = 15,
     Aim = "Ebru en las Cuevas de los Lamentos quiere que mates 7 Devastadores Descarriados, 7 Víbora Descarrriada, 7 Vagantes Descarrriados y 7 Colmillos del Terror Descarrriados.",
@@ -286,6 +303,7 @@ kQuestInstanceData.WailingCaverns.Alliance[4] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[5] = {
     Title = "El Fragmento Brillante",
+    Id = 6981,
     Level = 26,
     Attain = 15,
     Aim = "Viaja a Ratchet para encontrar el significado detrás del Fragmento de Pesadilla.",
@@ -300,6 +318,7 @@ kQuestInstanceData.WailingCaverns.Alliance[5] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[6] = {
     Title = "Flor de Serpiente",
+    Id = 60125,
     Level = 18,
     Attain = 16,
     Aim = "El Boticario Zamah en Cima del Trueno quiere que recolectes 10 Flores de Serpiente.",
@@ -313,6 +332,7 @@ kQuestInstanceData.WailingCaverns.Alliance[6] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[7] = {
     Title = "Atrapado en la Pesadilla",
+    Id = 60124,
     Level = 19,
     Attain = 16,
     Aim = "Alanndarian Nightsong quiere que te aventures en las Cuevas de los Lamentos en los Baldíos del Norte y liberes a Naralex de la Pesadilla. Encuentra a su Discípulo en las cavernas para saber cómo. Regresa con ella cuando liberes a Naralex.",
@@ -326,6 +346,7 @@ kQuestInstanceData.WailingCaverns.Alliance[7] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[8] = {
     Title = "Maleza Desenfrenada",
+    Id = 41363,
     Level = 20,
     Attain = 16,
     Aim = "Thundris Tejeviento en Auberdine necesita muestras de los Crecimientos Antinaturales en las Cuevas de los Lamentos.",
@@ -341,6 +362,7 @@ kQuestInstanceData.WailingCaverns.Horde[1] = kQuestInstanceData.WailingCaverns.A
 kQuestInstanceData.WailingCaverns.Horde[2] = kQuestInstanceData.WailingCaverns.Alliance[2]
 kQuestInstanceData.WailingCaverns.Horde[3] = {
     Title = "Flor de Serpiente",
+    Id = 962,
     Level = 18,
     Attain = 14,
     Aim = "El Boticario Zamah en Cima del Trueno quiere que recolectes 10 Flores de Serpiente.",
@@ -354,6 +376,7 @@ kQuestInstanceData.WailingCaverns.Horde[3] = {
 }
 kQuestInstanceData.WailingCaverns.Horde[4] = {
     Title = "Bebidas Inteligentes",
+    Id = 1491,
     Level = 18,
     Attain = 13,
     Aim = "Lleva 6 Porciones de Esencia Lamentosa a Mebok Mizzyrix en Ratchet.",
@@ -363,6 +386,7 @@ kQuestInstanceData.WailingCaverns.Horde[4] = {
 }
 kQuestInstanceData.WailingCaverns.Horde[5] = {
     Title = "Erradicación Desviada",
+    Id = 1487,
     Level = 21,
     Attain = 15,
     Aim = "Ebru en las Cuevas de los Lamentos quiere que mates 7 Devastadores Descarriados, 7 Víbora Descarrriada, 7 Vagantes Descarrriados y 7 Colmillos del Terror Descarrriados.",
@@ -377,6 +401,7 @@ kQuestInstanceData.WailingCaverns.Horde[5] = {
 }
 kQuestInstanceData.WailingCaverns.Horde[6] = {
     Title = "Líderes del Colmillo",
+    Id = 914,
     Level = 22,
     Attain = 11,
     Aim = "Lleva las Gemas de Cobrahn, Anacondra, Pythas y Serpentis a Nara Wildmane en Cima del Trueno.",
@@ -391,6 +416,7 @@ kQuestInstanceData.WailingCaverns.Horde[6] = {
 }
 kQuestInstanceData.WailingCaverns.Horde[7] = {
     Title = "El Fragmento Brillante",
+    Id = 6981,
     Level = 26,
     Attain = 15,
     Aim = "Viaja a Ratchet para encontrar el significado detrás del Fragmento de Pesadilla.",
@@ -405,6 +431,7 @@ kQuestInstanceData.WailingCaverns.Horde[7] = {
 }
 kQuestInstanceData.WailingCaverns.Horde[8] = {
     Title = "Brazos Arcanos",
+    Id = 80312,
     Level = 18,
     Attain = 14,
     Aim = "Lleva a Chok'Garok 5 piezas de Madera Toque Lunar, un Cristal de la Serpiente y una Esencia Cambiante de las Cuevas de los Lamentos.",
@@ -419,6 +446,7 @@ kQuestInstanceData.WailingCaverns.Horde[8] = {
 }
 kQuestInstanceData.WailingCaverns.Horde[9] = {
     Title = "Contra el Sueño de los Kolkar",
+    Id = 41367,
     Level = 23,
     Attain = 17,
     Aim = "Mata a Zandara Pezuña de Viento dentro de las Cuevas de los Lamentos, y lleva su cabeza de vuelta a Nalpak en los Baldíos.",
@@ -438,6 +466,7 @@ kQuestInstanceData.RagefireChasm = {
 }
 kQuestInstanceData.RagefireChasm.Horde[1] = {
     Title = "Probando la Fuerza de un Enemigo",
+    Id = 5723,
     Level = 15,
     Attain = 9,
     Aim = "Busca en Orgrimmar la Sima Ígnea, luego mata 8 Troggs de la Sima Ígnea y 8 Chamán de la Sima Ígnea antes de regresar con Rahauro en Cima del Trueno.",
@@ -446,6 +475,7 @@ kQuestInstanceData.RagefireChasm.Horde[1] = {
 }
 kQuestInstanceData.RagefireChasm.Horde[2] = {
     Title = "El Poder de Destruir...",
+    Id = 5725,
     Level = 16,
     Attain = 9,
     Aim = "Lleva los libros Hechizos de las Sombras y Conjuros del Vacío a Varimathras en Entrañas.",
@@ -460,6 +490,7 @@ kQuestInstanceData.RagefireChasm.Horde[2] = {
 }
 kQuestInstanceData.RagefireChasm.Horde[3] = {
     Title = "Buscando la Bolsa Perdida",
+    Id = 5722,
     Level = 16,
     Attain = 9,
     Aim = "Busca en la Sima Ígnea el cadáver de Maur Totem Siniestro y regístralo en busca de objetos de interés.",
@@ -474,6 +505,7 @@ kQuestInstanceData.RagefireChasm.Horde[3] = {
 }
 kQuestInstanceData.RagefireChasm.Horde[4] = {
     Title = "Enemigos Ocultos",
+    Id = 5728,
     Level = 16,
     Attain = 9,
     Aim = "Lleva una Insignia de Teniente a Thrall en Orgrimmar.",
@@ -491,6 +523,7 @@ kQuestInstanceData.RagefireChasm.Horde[4] = {
 }
 kQuestInstanceData.RagefireChasm.Horde[5] = {
     Title = "Matar a la Bestia",
+    Id = 5761,
     Level = 16,
     Attain = 9,
     Aim = "Entra en la Sima Ígnea y mata a Taragaman el Hambriento, luego lleva su corazón de vuelta a Neeru Hojafuego en Orgrimmar.",
@@ -507,6 +540,7 @@ kQuestInstanceData.Uldaman = {
 }
 kQuestInstanceData.Uldaman.Alliance[1] = {
     Title = "Una Señal de Esperanza",
+    Id = 721,
     Level = 35,
     Attain = 33,
     Aim = "Encuentra al Prospector Ryedol y hazle saber que Hammertoe Grez está vivo.",
@@ -517,6 +551,7 @@ kQuestInstanceData.Uldaman.Alliance[1] = {
 }
 kQuestInstanceData.Uldaman.Alliance[2] = {
     Title = "Amuleto de los Secretos",
+    Id = 722,
     Level = 40,
     Attain = 35,
     Aim = "Encuentra el Amuleto de Dedoduro y devuélveselo en Uldaman.",
@@ -527,6 +562,7 @@ kQuestInstanceData.Uldaman.Alliance[2] = {
 }
 kQuestInstanceData.Uldaman.Alliance[3] = {
     Title = "Las Tablas Perdidas de la Voluntad",
+    Id = 1139,
     Level = 45,
     Attain = 35,
     Aim = "Encuentra la Tablilla de la Voluntad y llévasela al Consejero Belgrum en Forjaz.",
@@ -540,6 +576,7 @@ kQuestInstanceData.Uldaman.Alliance[3] = {
 }
 kQuestInstanceData.Uldaman.Alliance[4] = {
     Title = "Piedras de Poder",
+    Id = 2418,
     Level = 36,
     Attain = 30,
     Aim = "Lleva 8 Piedras de Poder Dentrium y 8 Piedras de Poder An'Alleum a Rigglefuzz en las Tierras Inhóspitas.",
@@ -554,6 +591,7 @@ kQuestInstanceData.Uldaman.Alliance[4] = {
 }
 kQuestInstanceData.Uldaman.Alliance[5] = {
     Title = "El Destino de Agmond",
+    Id = 704,
     Level = 38,
     Attain = 30,
     Aim = "Lleva 4 Urnas de Piedra Talladas al Prospector Ironband en Loch Modan.",
@@ -567,6 +605,7 @@ kQuestInstanceData.Uldaman.Alliance[5] = {
 }
 kQuestInstanceData.Uldaman.Alliance[6] = {
     Title = "Solución para la Perdición",
+    Id = 709,
     Level = 40,
     Attain = 30,
     Aim = "Lleva la Tablilla de Ryun'eh a Theldurin el Perdido.",
@@ -580,6 +619,7 @@ kQuestInstanceData.Uldaman.Alliance[6] = {
 }
 kQuestInstanceData.Uldaman.Alliance[7] = {
     Title = "Los Enanos Perdidos",
+    Id = 2398,
     Level = 40,
     Attain = 35,
     Aim = "Encuentra a Baelog en Uldaman.",
@@ -589,6 +629,7 @@ kQuestInstanceData.Uldaman.Alliance[7] = {
 }
 kQuestInstanceData.Uldaman.Alliance[8] = {
     Title = "La Cámara Oculta",
+    Id = 2240,
     Level = 40,
     Attain = 35,
     Aim = "Lee el Diario de Baelog, explora la cámara oculta, luego informa al Prospector Pico Tormenta.",
@@ -603,6 +644,7 @@ kQuestInstanceData.Uldaman.Alliance[8] = {
 }
 kQuestInstanceData.Uldaman.Alliance[9] = {
     Title = "El Collar Destrozado",
+    Id = 2198,
     Level = 41,
     Attain = 37,
     Aim = "Busca al creador original del collar destrozado para conocer su valor potencial.",
@@ -612,6 +654,7 @@ kQuestInstanceData.Uldaman.Alliance[9] = {
 }
 kQuestInstanceData.Uldaman.Alliance[10] = {
     Title = "Regreso a Uldaman",
+    Id = 2200,
     Level = 42,
     Attain = 37,
     Aim = "Busca pistas sobre el paradero actual del collar de Talvash dentro de Uldaman. El paladín asesinado que mencionó fue la última persona que lo tuvo.",
@@ -622,6 +665,7 @@ kQuestInstanceData.Uldaman.Alliance[10] = {
 }
 kQuestInstanceData.Uldaman.Alliance[11] = {
     Title = "Encontrar las Gemas",
+    Id = 2201,
     Level = 43,
     Attain = 40,
     Aim = "Encuentra el rubí, el zafiro y el topacio que están esparcidos por Uldaman. Una vez adquiridos, contacta a Talvash del Kissel remotamente usando el Frasco de Videncia que te dio anteriormente.$B$BDel diario, sabes...$B* El rubí ha sido escondido en un área de los Forjatiniebla bloqueada.$B* El topacio ha sido escondido en una urna en una de las áreas de los Troggs, cerca de algunos enanos de la Alianza.$B$B* El zafiro ha sido reclamado por Grimlok, el líder de los troggs.",
@@ -632,6 +676,7 @@ kQuestInstanceData.Uldaman.Alliance[11] = {
 }
 kQuestInstanceData.Uldaman.Alliance[12] = {
     Title = "Restaurando el Collar",
+    Id = 2204,
     Level = 44,
     Attain = 37,
     Aim = "Consigue una fuente de poder del constructo más poderoso que puedas encontrar en Uldaman y entrégasela a Talvash del Kissel en Forjaz.",
@@ -645,6 +690,7 @@ kQuestInstanceData.Uldaman.Alliance[12] = {
 }
 kQuestInstanceData.Uldaman.Alliance[13] = {
     Title = "Componentes de Uldaman",
+    Id = 17,
     Level = 42,
     Attain = 36,
     Aim = "Lleva 12 Setas Magenta a Ghak Sanadón en Thelsamar.",
@@ -658,6 +704,7 @@ kQuestInstanceData.Uldaman.Alliance[13] = {
 }
 kQuestInstanceData.Uldaman.Alliance[14] = {
     Title = "Tesoros Recuperados",
+    Id = 1360,
     Level = 43,
     Attain = 33,
     Aim = "Consigue la posesión más preciada de Krom Brazorrecio de su cofre en la Sala Común Norte de Uldaman, y llévasela a él en Forjaz.",
@@ -666,6 +713,7 @@ kQuestInstanceData.Uldaman.Alliance[14] = {
 }
 kQuestInstanceData.Uldaman.Alliance[15] = {
     Title = "Los Discos de Platino",
+    Id = 2278,
     Level = 47,
     Attain = 40,
     Aim = "Habla con el vigía de piedra y aprende la antigua sabiduría que guarda. Una vez que hayas aprendido lo que tiene para ofrecer, activa los Discos de Norgannon.",
@@ -681,6 +729,7 @@ kQuestInstanceData.Uldaman.Alliance[15] = {
 }
 kQuestInstanceData.Uldaman.Alliance[16] = {
     Title = "Poder en Uldaman",
+    Id = 1956,
     Level = 40,
     Attain = 35,
     Aim = "Recupera una Fuente de Poder de Obsidiana y llévasela a Tabetha en Los Pantanos de Dustwallow.",
@@ -691,6 +740,7 @@ kQuestInstanceData.Uldaman.Alliance[16] = {
 }
 kQuestInstanceData.Uldaman.Alliance[17] = { --1.18
     Title = "Robando un Núcleo",
+    Id = 40129,
     Level = 45,
     Attain = 45,
     Aim = "Lleva un Núcleo de Energía Intacto de los Tesoros Antiguos de Uldaman a Torble Chisporroteo en los Baldíos del Sur.",
@@ -705,6 +755,7 @@ kQuestInstanceData.Uldaman.Alliance[17] = { --1.18
 }
 kQuestInstanceData.Uldaman.Horde[1] = {
     Title = "Piedras de Poder",
+    Id = 2418,
     Level = 36,
     Attain = 30,
     Aim = "Lleva 8 Piedras de Poder Dentrium y 8 Piedras de Poder An'Alleum a Rigglefuzz en las Tierras Inhóspitas.",
@@ -719,6 +770,7 @@ kQuestInstanceData.Uldaman.Horde[1] = {
 }
 kQuestInstanceData.Uldaman.Horde[2] = {
     Title = "Solución para la Perdición",
+    Id = 709,
     Level = 40,
     Attain = 30,
     Aim = "Lleva la Tablilla de Ryun'eh a Theldurin el Perdido.",
@@ -732,6 +784,7 @@ kQuestInstanceData.Uldaman.Horde[2] = {
 }
 kQuestInstanceData.Uldaman.Horde[3] = {
     Title = "Recuperación del Collar",
+    Id = 2283,
     Level = 41,
     Attain = 37,
     Aim = "Busca un collar valioso dentro del sitio de excavación de Uldaman y llévaselo a Dran Droffers en Orgrimmar. El collar puede estar dañado.",
@@ -741,6 +794,7 @@ kQuestInstanceData.Uldaman.Horde[3] = {
 }
 kQuestInstanceData.Uldaman.Horde[4] = {
     Title = "Recuperación del Collar, Toma 2",
+    Id = 2284,
     Level = 41,
     Attain = 37,
     Aim = "Encuentra una pista sobre el paradero de las gemas en las profundidades de Uldaman.",
@@ -751,6 +805,7 @@ kQuestInstanceData.Uldaman.Horde[4] = {
 }
 kQuestInstanceData.Uldaman.Horde[5] = {
     Title = "Traduciendo el Diario",
+    Id = 2318,
     Level = 42,
     Attain = 37,
     Aim = "Encuentra a alguien que pueda traducir el diario del paladín. El lugar más cercano donde podría haber alguien es Kargath, en las Tierras Inhóspitas.",
@@ -761,6 +816,7 @@ kQuestInstanceData.Uldaman.Horde[5] = {
 }
 kQuestInstanceData.Uldaman.Horde[6] = {
     Title = "Encontrar las Gemas y la Fuente de Poder",
+    Id = 2339,
     Level = 44,
     Attain = 37,
     Aim = "Recupera las tres gemas y una fuente de poder para el collar de Uldaman, y luego llévaselas a Jarkal Musgofusión en Kargath. Jarkal cree que una fuente de poder podría encontrarse en el constructo más fuerte presente en Uldaman.$B$BDel diario, sabes que...$B* El rubí ha sido escondido en un área de los Forjatiniebla bloqueada.$B* El topacio ha sido escondido en una urna en una de las áreas de los Troggs, cerca de algunos enanos de la Alianza.$B* El zafiro ha sido reclamado por Grimlok, el líder de los troggs.",
@@ -775,6 +831,7 @@ kQuestInstanceData.Uldaman.Horde[6] = {
 }
 kQuestInstanceData.Uldaman.Horde[7] = {
     Title = "Componentes de Uldaman",
+    Id = 2202,
     Level = 42,
     Attain = 36,
     Aim = "Lleva 12 Setas Magenta a Ghak Sanadón en Thelsamar.",
@@ -789,39 +846,25 @@ kQuestInstanceData.Uldaman.Horde[7] = {
 }
 kQuestInstanceData.Uldaman.Horde[8] = {
     Title = "Tesoros Recuperados",
+    Id = 2342,
     Level = 43,
     Attain = 33,
     Aim = "Consigue la posesión más preciada de Krom Brazorrecio de su cofre en la Sala Común Norte de Uldaman, y llévasela a él en Forjaz.",
     Location = "Patrick Garrett (Entrañas "..yellow.."72,48"..white..")",
     Note = "Encuentras el tesoro antes de entrar en la mazmorra. Está al final del túnel sur. En el mapa de entrada, está en "..yellow.."[5]"..white..".",
 }
-kQuestInstanceData.Uldaman.Horde[9] = {
-    Title = "Los Discos de Platino",
-    Level = 47,
-    Attain = 40,
-    Aim = "Habla con el vigía de piedra y aprende la antigua sabiduría que guarda. Una vez que hayas aprendido lo que tiene para ofrecer, activa los Discos de Norgannon.",
-    Location = "Los Discos de Norgannon (Uldaman "..yellow.."[11]"..white..")",
-    Note = "Después de recibir la misión, habla con el vigilante de piedra a la izquierda de los discos. Luego usa los discos de platino nuevamente para recibir discos en miniatura, que tendrás que llevar al Sabio Buscaverdad en Cima del Trueno ("..yellow.."34,46"..white.."). La siguiente misión comienza con otro PNJ que está cerca.",
-    Folgequest = "Presagios de Uldum",
-    Rewards = {
-        Text = "Recompensa: 1 o 2 o 3",
-        { id = 9587 }, --Thawpelt Sack Bag
-        { id = 3928, quantity = 5 }, --Superior Healing Potion Potion
-        { id = 6149, quantity = 5 }, --Greater Mana Potion Potion
+kQuestInstanceData.Uldaman.Horde[9] = createInheritedQuest(
+    kQuestInstanceData.Uldaman.Alliance[15],
+    {
+        Aim = "Habla con el vigía de piedra y aprende la antigua sabiduría que guarda. Una vez que hayas aprendido lo que tiene para ofrecer, activa los Discos de Norgannon.",
+        Note = "Después de recibir la misión, habla con el vigilante de piedra a la izquierda de los discos. Luego usa los discos de platino nuevamente para recibir discos en miniatura, que tendrás que llevar al Sabio Buscaverdad en Cima del Trueno ("..yellow.."34,46"..white.."). La siguiente misión comienza con otro PNJ que está cerca.",
     }
-}
-kQuestInstanceData.Uldaman.Horde[10] = {
-    Title = "Poder en Uldaman",
-    Level = 40,
-    Attain = 35,
-    Aim = "Recupera una Fuente de Poder de Obsidiana y llévasela a Tabetha en Los Pantanos de Dustwallow.",
-    Location = "Tabetha (Marjal Revolcafango "..yellow.."46,57"..white..")",
-    Note = red.."Solo Mago"..white..": La Fuente de Energía de Obsidiana cae del Centinela Obsidiano en "..yellow.."[5]"..white..".",
-    Prequest = "El Exorcismo",
-    Folgequest = "Oleadas de Maná",
-}
+)
+
+kQuestInstanceData.Uldaman.Horde[10] = kQuestInstanceData.Uldaman.Alliance[16]
 kQuestInstanceData.Uldaman.Horde[11] = {
     Title = "Requisando un Núcleo",
+    Id = 40131,
     Level = 45,
     Attain = 45,
     Aim = "Lleva un Núcleo de Energía Intacto de los Tesoros Antiguos de Uldaman a Kex Soplamaster en los Baldíos del Sur.",
@@ -844,6 +887,7 @@ kQuestInstanceData.BlackrockDepths = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[1] = {
     Title = "Legado Hierro Negro",
+    Id = 3802,
     Level = 52,
     Attain = 48,
     Aim = "Habla con Franclorn Forgewright si estás interesado en obtener una llave de la ciudad principal.",
@@ -857,6 +901,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[1] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[2] = {
     Title = "Ribbly Llavepig",
+    Id = 4136,
     Level = 53,
     Attain = 48,
     Aim = "Lleva la Cabeza de Ribbly a Yuka Llaverosca en las Estepas Ardientes.",
@@ -872,6 +917,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[2] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[3] = {
     Title = "La Poción del Amor",
+    Id = 4201,
     Level = 54,
     Attain = 50,
     Aim = "Lleva 4 Gromsblood, 10 Filones de Plata Gigantes y el Frasco Lleno de Nagmara a la Maestra Nagmara en las Profundidades de Roca Negra.",
@@ -885,6 +931,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[3] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[4] = {
     Title = "Hurley Negrálito",
+    Id = 4126,
     Level = 55,
     Attain = 50,
     Aim = "Lleva la Receta Perdida de Cebatruenos a Ragnar Thunderbrew en Kharanos.",
@@ -900,6 +947,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[4] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[5] = {
     Title = "¡Incendius!",
+    Id = 4263,
     Level = 56,
     Attain = 48,
     Aim = "¡Encuentra a Lord Incendius en las Profundidades de Roca Negra y destrúyelo!",
@@ -916,6 +964,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[5] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[6] = {
     Title = "El Corazón de la Montaña",
+    Id = 4123,
     Level = 55,
     Attain = 50,
     Aim = "Lleva el Corazón de la Montaña a Maxwort Uberglint en las Estepas Ardientes.",
@@ -924,6 +973,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[6] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[7] = {
     Title = "Lo Bueno",
+    Id = 4286,
     Level = 56,
     Attain = 50,
     Aim = "Viaja a las Profundidades de Roca Negra y recupera 20 Riñoneras Hierro Negro. Regresa con Oralius cuando hayas completado esta tarea. Asumes que los enanos Hierro Negro dentro de las Profundidades de Roca Negra llevan estos artefactos de 'riñonera'.",
@@ -936,6 +986,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[7] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[8] = {
     Title = "Mariscal Windsor",
+    Id = 4241,
     Level = 54,
     Attain = 48,
     Aim = "Viaja a la Montaña Roca Negra en el noroeste y entra en las Profundidades de Roca Negra. Averigua qué le pasó al Mariscal Windsor.$B$BRecuerdas que Ragged John habló de Windsor siendo arrastrado a una prisión.",
@@ -952,6 +1003,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[8] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[9] = {
     Title = "Una Nota Arrugada",
+    Id = 4264,
     Level = 58,
     Attain = 50,
     Aim = "Puede que hayas tropezado con algo que el Mariscal Windsor estaría interesado en ver. Puede que todavía haya esperanza.",
@@ -962,6 +1014,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[9] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[10] = {
     Title = "Un Jirón de Esperanza",
+    Id = 4282,
     Level = 58,
     Attain = 50,
     Aim = "Devuelve la Información Perdida del Mariscal Windsor.$B$BEl Mariscal Windsor cree que la información está en poder del Señor Gólem Argelmach y el General Forjirabia.",
@@ -972,6 +1025,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[10] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[11] = {
     Title = "¡Fuga de la Prisión!",
+    Id = 4322,
     Level = 58,
     Attain = 50,
     Aim = "Ayuda al Mariscal Windsor a recuperar su equipo y liberar a sus amigos. Regresa con el Mariscal Maxwell si tienes éxito.",
@@ -988,6 +1042,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[11] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[12] = {
     Title = "Un Gusto de Llama",
+    Id = 4024,
     Level = 58,
     Attain = 52,
     Aim = "Muéstrale a Cyrus Therepentous la Muda de la Facción del Dragón Negro que recibiste de Kalaran Viento de Hoja.",
@@ -1003,6 +1058,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[12] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[13] = {
     Title = "Kharan Martillazo",
+    Id = 4341,
     Level = 59,
     Attain = 50,
     Aim = "Viaja a las Profundidades de Roca Negra y encuentra a Kharan Mightyhammer.$B$BEl Rey mencionó que Kharan estaba prisionero allí - quizás deberías buscar en una prisión.",
@@ -1013,6 +1069,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[13] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[14] = {
     Title = "El Destino del Reino",
+    Id = 4362,
     Level = 59,
     Attain = 50,
     Aim = "Regresa a las Profundidades de Roca Negra y rescata a la Princesa Moira Barbabronce de las garras del malvado Emperador Dagran Thaurissan.",
@@ -1028,6 +1085,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[14] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[15] = {
     Title = "La Armonización con el Núcleo",
+    Id = 7848,
     Level = 60,
     Attain = 55,
     Aim = "Viaja al portal de entrada del Núcleo de Magma en las Profundidades de Roca Negra y recupera un Fragmento del Núcleo. Regresa con Lothos Riftwaker en la Montaña Roca Negra cuando hayas recuperado el Fragmento del Núcleo.",
@@ -1036,6 +1094,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[15] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[16] = {
     Title = "El Desafío",
+    Id = 9015,
     Level = 60,
     Attain = 58,
     Aim = "Viaja al Círculo de la Ley en las Profundidades de Roca Negra y coloca el Estandarte de la Provocación en su centro mientras eres sentenciado por el Alto Juez Grimstone. Mata a Theldren y sus gladiadores y regresa con Anthion Harmon en las Tierras de la Peste del Este con la primera pieza del amuleto de Lord Valthalak.",
@@ -1046,6 +1105,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[16] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[17] = {
     Title = "El Cáliz Espectral",
+    Id = 4083,
     Level = 55,
     Attain = 40,
     Aim = "Las gemas no hacen ruido al caer en las profundidades del cáliz... ",
@@ -1054,6 +1114,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[17] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[18] = {
     Title = "Operación Ayuda a Jabbey",
+    Id = 40757,
     Level = 58,
     Attain = 50,
     Aim = "Adéntrate en las Profundidades de Roca Negra y recupera el 'Rapé Extremadamente Potente' de Darneg Darkbeard cerca de la Domicilia, para Jabbey en Puerto Bonvapor en Tanaris.",
@@ -1069,6 +1130,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[18] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[19] = {
     Title = "El Profanador Hierro Negro",
+    Id = 40762,
     Level = 60,
     Attain = 55,
     Aim = "Recolecta un Rifle Hierro Negro, un Condensador de Magma, un Cañón de Arcanita Intrincado y un Fragmento Fundido para Bixxle Tuercafundida en el Almacén de Bixxle en Tel'Abim.",
@@ -1082,6 +1144,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[19] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[20] = {
     Title = "Venganza Senatorial",
+    Id = 40464,
     Level = 56,
     Attain = 45,
     Aim = "Mata 25 Senadores Forjatiniebla en lo profundo de las Profundidades de Roca Negra para Orvak Sternrock en el Paso Roca Negra en las Estepas Ardientes.",
@@ -1095,6 +1158,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[20] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[21] = {
     Title = "El Núcleo del Gólem Arcano",
+    Id = 40467,
     Level = 55,
     Attain = 45,
     Aim = "Encuentra y recolecta un Núcleo de Gólem Arcano del Señor de los Gólems Argelmach en las Profundidades de Roca Negra y llévaselo a Radgan Llama Profunda en el Paso de Roca Negra en las Estepas Ardientes.",
@@ -1108,6 +1172,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[21] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[22] = {
     Title = "Para Construir un Golpeador",
+    Id = 80401,
     Level = 60,
     Attain = 30,
     Aim = "Consigue el Servo Sintonizado de Torio de la Armería del Monasterio Escarlata, obtén el Núcleo de Gólem Perfecto en las Profundidades de Roca Negra de Lord Argelmach Gólem, encuentra la Vara de Adamantita en Stratholme. Regresa con Oglethorpe Obnoticus.",
@@ -1124,6 +1189,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[22] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[23] = {
     Title = "Cerveza del Festín de Invierno",
+    Id = 40748,
     Level = 55,
     Attain = 45,
     Aim = "Recupera el Barril del Festival de Invierno en las cavernas de las Profundidades de Roca Negra para Bomarn Hachafuego en el Valle del Festival de Invierno.",
@@ -1135,6 +1201,7 @@ for i = 1, 3 do
 end
 kQuestInstanceData.BlackrockDepths.Horde[4] = {
     Title = "Receta Perdida de Cebatruenos",
+    Id = 4134,
     Level = 55,
     Attain = 50,
     Aim = "Lleva la Receta Perdida de Cebatruenos a Vivian Lagrave en Kargath.",
@@ -1151,6 +1218,7 @@ kQuestInstanceData.BlackrockDepths.Horde[4] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[5] = {
     Title = "El Corazón de la Montaña",
+    Id = 4123,
     Level = 55,
     Attain = 50,
     Aim = "Lleva el Corazón de la Montaña a Maxwort Uberglint en las Estepas Ardientes.",
@@ -1159,6 +1227,7 @@ kQuestInstanceData.BlackrockDepths.Horde[5] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[6] = {
     Title = "MATAR AL VER: Enanos Hierro Negro",
+    Id = 4081,
     Level = 52,
     Attain = 48,
     Aim = "Viaja a las Profundidades de Roca Negra y destruye a los viles agresores.$B$BEl Señor de la Guerra Goretooth quiere que mates a 15 Guardias Yunque Colérico, 10 Celadores Yunque Colérico y 5 Soldados de Infantería Yunque Colérico. Regresa con él una vez completada tu tarea.",
@@ -1168,6 +1237,7 @@ kQuestInstanceData.BlackrockDepths.Horde[6] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[7] = {
     Title = "MATAR AL VER: Oficiales de Alto Rango Hierro Negro",
+    Id = 4082,
     Level = 54,
     Attain = 50,
     Aim = "Viaja a las Profundidades de Roca Negra y destruye a los viles agresores.$B$BEl Señor de la Guerra Goretooth quiere que mates a 10 Médicos Yunque Colérico, 10 Soldados Yunque Colérico y 10 Oficiales Yunque Colérico. Regresa con él una vez completada tu tarea.",
@@ -1178,6 +1248,7 @@ kQuestInstanceData.BlackrockDepths.Horde[7] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[8] = {
     Title = "Operación: Muerte a Forjira",
+    Id = 4132,
     Level = 58,
     Attain = 52,
     Aim = "Viaja a las Profundidades de Roca Negra y mata al General Angerforge. Regresa con el Señor de la Guerra Goretooth cuando hayas completado la tarea.",
@@ -1191,6 +1262,7 @@ kQuestInstanceData.BlackrockDepths.Horde[8] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[9] = {
     Title = "El Ascenso de las Máquinas",
+    Id = 4063,
     Level = 58,
     Attain = 52,
     Aim = "Viaja a las Estepas Ardientes y recupera 10 Fragmentos de Elemental Fracturado para la Hierofante Theodora Mulvadania.$B$BRecuerdas que Theodora mencionó que los golems y elementales de esa región son una fuente de estos fragmentos.",
@@ -1207,6 +1279,7 @@ kQuestInstanceData.BlackrockDepths.Horde[9] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[10] = {
     Title = "Un Gusto de Llama",
+    Id = 4024,
     Level = 58,
     Attain = 52,
     Aim = "Muéstrale a Cyrus Therepentous la Muda de la Facción del Dragón Negro que recibiste de Kalaran Viento de Hoja.",
@@ -1222,6 +1295,7 @@ kQuestInstanceData.BlackrockDepths.Horde[10] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[11] = {
     Title = "Desarmonía del Fuego",
+    Id = 3907,
     Level = 56,
     Attain = 48,
     Aim = "Entra en las Profundidades de Roca Negra y localiza a Lord Incendius. Mátalo y devuelve cualquier fuente de información que encuentres a Thunderheart.",
@@ -1238,6 +1312,7 @@ kQuestInstanceData.BlackrockDepths.Horde[11] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[12] = {
     Title = "The Last Element",
+    Id = 3911,
     Level = 54,
     Attain = 48,
     Aim = "Viaja a Profundidades de Roca Negra y recupera 10 Esencias de los Elementos. Tu primera inclinación es buscar a los gólems y creadores de gólems. Recuerdas que Vivian Lagrave también murmuraba algo sobre elementales.",
@@ -1251,6 +1326,7 @@ kQuestInstanceData.BlackrockDepths.Horde[12] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[13] = {
     Title = "Comandante Gor'shak",
+    Id = 3981,
     Level = 52,
     Attain = 48,
     Aim = "Encuentra al Comandante Gor'shak en las Profundidades de Roca Negra.$B$BRecuerdas que el dibujo tosco del orco incluía barras sobre el retrato. Quizás deberías buscar una prisión de algún tipo.",
@@ -1261,6 +1337,7 @@ kQuestInstanceData.BlackrockDepths.Horde[13] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[14] = {
     Title = "El Rescate Real",
+    Id = 4003,
     Level = 59,
     Attain = 48,
     Aim = "Mata al Emperador Dagran Thaurissan y libera a la Princesa Moira Barbabronce de su malvado hechizo.",
@@ -1296,6 +1373,7 @@ kQuestInstanceData.BlackwingLair = {
 }
 kQuestInstanceData.BlackwingLair.Alliance[1] = {
     Title = "La Corrupción de Nefarius",
+    Id = 8730,
     Level = 60,
     Attain = 60,
     Aim = "Mata a Nefarian y recupera el Fragmento del Cetro Rojo. Devuelve el Fragmento del Cetro Rojo a Anachronos en las Cavernas del Tiempo en Tanaris. Tienes 5 horas para completar esta tarea.",
@@ -1311,6 +1389,7 @@ kQuestInstanceData.BlackwingLair.Alliance[1] = {
 }
 kQuestInstanceData.BlackwingLair.Alliance[2] = {
     Title = "El Señor de Roca Negra",
+    Id = 7781,
     Level = 60,
     Attain = 60,
     Aim = "Devuelve la Cabeza de Nefarian al Alto Señor Bolvar Fordragón en Ventormenta.",
@@ -1326,6 +1405,7 @@ kQuestInstanceData.BlackwingLair.Alliance[2] = {
 }
 kQuestInstanceData.BlackwingLair.Alliance[3] = {
     Title = "Solo Uno Puede Alzarse",
+    Id = 8288,
     Level = 60,
     Attain = 60,
     Aim = "Devuelve la Cabeza del Señor de la Prole Lativeneno a Baristolth de las Arenas Cambiantes en el Bastión del Honor en Silithus.",
@@ -1336,6 +1416,7 @@ kQuestInstanceData.BlackwingLair.Alliance[3] = {
 }
 kQuestInstanceData.BlackwingLair.Alliance[4] = {
     Title = "La Única Receta",
+    Id = 8620,
     Level = 60,
     Attain = 60,
     Aim = "Recupera los 8 capítulos perdidos de Dracónico para Tontos y combínalos con la Encuadernación Mágica de Libros y devuelve el libro completo de Dracónico para Tontos: Volumen II a Narain Soothfancy en Tanaris.",
@@ -1350,6 +1431,7 @@ kQuestInstanceData.BlackwingLair.Alliance[4] = {
 }
 kQuestInstanceData.BlackwingLair.Alliance[5] = {
     Title = "La Llave de Karazhan IX",
+    Id = 40828,
     Level = 60,
     Attain = 58,
     Aim = "Encuentra 'Tratado sobre Cerraduras y Llaves Mágicas' y llévaselo a Vandol. Se rumorea que se guarda en el Cubil de Alanegra.",
@@ -1364,6 +1446,7 @@ kQuestInstanceData.BlackwingLair.Alliance[5] = {
 }
 kQuestInstanceData.BlackwingLair.Alliance[6] = {
     Title = "Guadaña de la Diosa",
+    Id = 41067,
     Level = 60,
     Attain = 58,
     Aim = "Mata a Clawlord Howlfang e informa a Lord Cerro Negro.",
@@ -1375,6 +1458,7 @@ kQuestInstanceData.BlackwingLair.Alliance[6] = {
 kQuestInstanceData.BlackwingLair.Horde[1] = kQuestInstanceData.BlackwingLair.Alliance[1]
 kQuestInstanceData.BlackwingLair.Horde[2] = {
     Title = "El Señor de Roca Negra",
+    Id = 7783,
     Level = 60,
     Attain = 60,
     Aim = "Devuelve la Cabeza de Nefarian al Alto Señor Bolvar Fordragón en Ventormenta.",
@@ -1396,6 +1480,7 @@ kQuestInstanceData.BlackfathomDeeps = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[1] = {
     Title = "Conocimiento en las Profundidades",
+    Id = 971,
     Level = 23,
     Attain = 10,
     Aim = "Lleva el Manuscrito de Lorgalis a Gerrig Bonegrip en la Caverna Forlorn en Forjaz.",
@@ -1408,6 +1493,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[1] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[2] = {
     Title = "Investigando la Corrupción",
+    Id = 1275,
     Level = 24,
     Attain = 18,
     Aim = "Gershala Susurro Nocturno en Auberdine quiere 8 Tallos Cerebrales Corruptos.",
@@ -1422,6 +1508,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[2] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[3] = {
     Title = "En Busca de Thaelrid",
+    Id = 1198,
     Level = 24,
     Attain = 18,
     Aim = "Busca al Guardia Argenta Thaelrid en las Cavernas de Brazanegra.",
@@ -1431,6 +1518,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[3] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[4] = {
     Title = "Villanía de Foso Negro",
+    Id = 1200,
     Level = 27,
     Attain = 18,
     Aim = "Lleva la cabeza del Señor Crepuscular Kelris a Dawnwatcher Selgorm en Darnassus.",
@@ -1445,6 +1533,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[4] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[5] = {
     Title = "Cae el Crepúsculo",
+    Id = 1199,
     Level = 25,
     Attain = 20,
     Aim = "Lleva 10 Colgantes Crepusculares al Guardia Argenta Manados en Darnassus.",
@@ -1458,6 +1547,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[5] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[6] = {
     Title = "El Orbe de Soran'ruk",
+    Id = 1740,
     Level = 25,
     Attain = 20,
     Aim = "Encuentra 3 Fragmentos de Soran'ruk y 1 Fragmento Grande de Soran'ruk y llévaselos a Doan Karhan en Los Baldíos.",
@@ -1471,6 +1561,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[6] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[7] = {
     Title = "Las Ruinas del Santuario Lunar",
+    Id = 41812,
     Level = 26,
     Attain = 18,
     Aim = "Adéntrate en las profundidades de las Cavernas de Brazanegra y recupera una 'Semilla de Floración' de las Ruinas del Santuario Lunar. Una vez adquirida, regresa con Aelennia Florestelar al este de La Ensenada Zoram en Vallefresno.",
@@ -1483,6 +1574,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[7] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Horde[1] = {
     Title = "La Esencia de Aku'Mai",
+    Id = 6563,
     Level = 22,
     Attain = 17,
     Aim = "Lleva 20 Zafiros de Aku'Mai a Je'neu Sancrea en Vallefresno.",
@@ -1493,6 +1585,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[1] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Horde[2] = {
     Title = "Lealtad a los Dioses Antiguos",
+    Id = 6565,
     Level = 26,
     Attain = 17,
     Aim = "Lleva la Nota Húmeda a Je'neu Sancrea en Vallefresno.",
@@ -1507,6 +1600,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[2] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Horde[3] = {
     Title = "Entre las Ruinas",
+    Id = 908,
     Level = 27,
     Attain = 21,
     Aim = "Lleva el Núcleo de las Profundidades a Je'neu Sancrea en el Campamento Zoram'gar, Vallefresno.",
@@ -1515,6 +1609,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[3] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Horde[4] = {
     Title = "Villanía de Foso Negro",
+    Id = 6561,
     Level = 27,
     Attain = 18,
     Aim = "Lleva la cabeza del Señor Crepuscular Kelris a Dawnwatcher Selgorm en Darnassus.",
@@ -1524,6 +1619,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[4] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Horde[5] = {
     Title = "El Orbe de Soran'ruk",
+    Id = 1740,
     Level = 25,
     Attain = 20,
     Aim = "Encuentra 3 Fragmentos de Soran'ruk y 1 Fragmento Grande de Soran'ruk y llévaselos a Doan Karhan en Los Baldíos.",
@@ -1537,6 +1633,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[5] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Horde[6] = {
     Title = "Barón Aquanis",
+    Id = 909,
     Level = 30,
     Attain = 21,
     Aim = "Lleva el Globo de Agua Extraño a Je'neu Sancrea en el Campamento Zoram'gar, Vallefresno.",
@@ -1559,6 +1656,7 @@ kQuestInstanceData.BlackrockSpireLower = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[1] = {
     Title = "Las Tablillas Finales",
+    Id = 4788,
     Level = 58,
     Attain = 40,
     Aim = "Lleva la Quinta y Sexta Tablillas Mosh'aru al Prospector Ironboot en Tanaris.",
@@ -1574,6 +1672,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[1] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[2] = {
     Title = "Mascotas Exóticas de Kibler",
+    Id = 4729,
     Level = 59,
     Attain = 55,
     Aim = "Viaja a la Cumbre de Roca Negra y encuentra Cachorros de Huargo Hacha de Sangre. Usa la jaula para transportar a las pequeñas bestias feroces. Devuelve un Cachorro de Huargo Enjaulado a Kibler.",
@@ -1586,6 +1685,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[2] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[3] = {
     Title = "E-N-A-Y-E-S-T-E-Y",
+    Id = 4862,
     Level = 59,
     Attain = 55,
     Aim = "Viaja a la Cumbre de Roca Negra y recolecta 15 Huevos de Araña de la Cumbre para Kibler.$B$BPor lo que parece, estos huevos podrían encontrarse cerca de arañas.",
@@ -1598,6 +1698,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[3] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[4] = {
     Title = "Leche de Madre",
+    Id = 4866,
     Level = 60,
     Attain = 55,
     Aim = "En el corazón de la Cumbre de Roca Negra encontrarás a Madre Telaraña Humeante. Enfréntate a ella y haz que te envenene. Es probable que también tengas que matarla. Regresa con John el Harapiento cuando estés envenenado para que pueda 'ordeñarte'.",
@@ -1610,6 +1711,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[4] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[5] = {
     Title = "Acaba con Ella",
+    Id = 4701,
     Level = 59,
     Attain = 55,
     Aim = "Viaja a la Cumbre de Roca Negra y destruye la fuente de la amenaza de los huargos. Cuando dejaste a Helendis, gritó un nombre: Halycon. Es a lo que los orcos se refieren en relación con el huargo.",
@@ -1624,6 +1726,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[5] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[6] = {
     Title = "Urok Aullador del Apocalipsis",
+    Id = 4867,
     Level = 60,
     Attain = 55,
     Aim = "Lee el Pergamino de Warosh. Llévale el Mojo de Warosh a Warosh.",
@@ -1636,6 +1739,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[6] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[7] = {
     Title = "Pertenencias de Bijou",
+    Id = 5001,
     Level = 59,
     Attain = 55,
     Aim = "Encuentra las Pertenecías de Bijou y devuélveselas. ¡Buena suerte!",
@@ -1645,6 +1749,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[7] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[8] = {
     Title = "La Misión de Maxwell",
+    Id = 5081,
     Level = 60,
     Attain = 55,
     Aim = "Viaja a la Cumbre de Roca Negra y destruye al Maestro de Guerra Voone, al Alto Señor Omokk y al Señor Supremo Wyrmthalak. Regresa con el Mariscal Maxwell cuando hayas completado el trabajo.",
@@ -1662,6 +1767,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[8] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[9] = {
     Title = "Sello de Ascensión",
+    Id = 4742,
     Level = 60,
     Attain = 57,
     Aim = "Encuentra las tres gemas de mando: la Gema de los Tronacuerno, la Gema de los Cumbrerroca y la Gema de los Hacha de Sangre. Devuélveselas, junto con el Sello de Ascensión sin Adornar, a Vaelan.$B$BLos Generales, como te dijo Vaelan, son: Maestro de Guerra Voone de los Tronacuerno, Alto Señor Omokk de los Cumbrerroca, y Señor Supremo Wyrmthalak de los Hacha de Sangre.",
@@ -1671,6 +1777,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[9] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[10] = {
     Title = "La Orden del General Drakkisath",
+    Id = 5089,
     Level = 60,
     Attain = 55,
     Aim = "Lleva la Orden del General Drakkisath al Mariscal Maxwell en las Estepas Ardientes.",
@@ -1680,6 +1787,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[10] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[11] = {
     Title = "La Pieza Izquierda del Amuleto de Lord Valthalak",
+    Id = 8966,
     Level = 60,
     Attain = 58,
     Aim = "Usa el Brasero de Invocación para convocar al espíritu de Mor Grayhoof y mátalo. Regresa con Bodley dentro de la Montaña Roca Negra con la Pieza Izquierda del Amuleto de Lord Valthalak y el Brasero de Invocación.",
@@ -1690,6 +1798,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[11] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[12] = {
     Title = "La Pieza Derecha del Amuleto de Lord Valthalak",
+    Id = 8989,
     Level = 60,
     Attain = 58,
     Aim = "Usa el Brasero de Invocación para convocar al espíritu de Mor Grayhoof y mátalo. Regresa con Bodley dentro de la Montaña Roca Negra con el Amuleto de Lord Valthalak recombinado y el Brasero de Invocación.",
@@ -1700,6 +1809,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[12] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[13] = {
     Title = "Piedra de Serpiente de la Cazadora de las Sombras",
+    Id = 5306,
     Level = 60,
     Attain = 50,
     Aim = "Viaja a la Cumbre de Roca Negra y mata a la Cazadora de las Sombras Vosh'gajin. Recupera la Piedra de Serpiente de Vosh'gajin y entrégasela a Kilram.",
@@ -1712,6 +1822,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[13] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[14] = {
     Title = "Muerte Ardiente",
+    Id = 5103,
     Level = 60,
     Attain = 60,
     Aim = "Alguien en este mundo debe saber qué hacer con estos guanteletes. ¡Buena suerte!",
@@ -1726,6 +1837,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[14] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[15] = {
     Title = "El Profanador Hierro Negro",
+    Id = 40762,
     Level = 60,
     Attain = 55,
     Aim = "Recolecta un Rifle Hierro Negro, un Condensador de Magma, un Cañón de Arcanita Intrincado y un Fragmento Fundido para Bixxle Tuercafundida en el Almacén de Bixxle en Tel'Abim.",
@@ -1742,6 +1854,7 @@ for i = 1, 4 do
 end
 kQuestInstanceData.BlackrockSpireLower.Horde[5] = {
     Title = "La Maestra de la Manada",
+    Id = 4724,
     Level = 59,
     Attain = 55,
     Aim = "Mata a Halycon, la maestra de manada de los huargos Hacha de Sangre.",
@@ -1752,6 +1865,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[5] = {
 kQuestInstanceData.BlackrockSpireLower.Horde[6] = kQuestInstanceData.BlackrockSpireLower.Alliance[6]
 kQuestInstanceData.BlackrockSpireLower.Horde[7] = {
     Title = "Operativa Bijou",
+    Id = 4981,
     Level = 59,
     Attain = 55,
     Aim = "Viaja a la Cumbre de Roca Negra y averigua qué le pasó a Bijou.",
@@ -1761,6 +1875,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[7] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Horde[8] = {
     Title = "Pertenencias de Bijou",
+    Id = 4982,
     Level = 59,
     Attain = 55,
     Aim = "Encuentra las Pertenecías de Bijou y devuélveselas. ¡Buena suerte!",
@@ -1777,6 +1892,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[8] = {
 kQuestInstanceData.BlackrockSpireLower.Horde[9] = kQuestInstanceData.BlackrockSpireLower.Alliance[9]
 kQuestInstanceData.BlackrockSpireLower.Horde[10] = {
     Title = "La Orden del Señor de la Guerra",
+    Id = 4903,
     Level = 60,
     Attain = 55,
     Aim = "Mata al Alto Señor Omokk, Maestro de Guerra Voone y Señor Supremo Wyrmthalak. Recupera Documentos Importantes de Roca Negra. Regresa con el Señor de la Guerra Goretooth en Kargath cuando hayas completado la misión.",
@@ -1797,6 +1913,7 @@ for i = 11, 15 do
 end
 kQuestInstanceData.BlackrockSpireLower.Horde[16] = {
     Title = "Escoria de los Forest Troll",
+    Id = 40495,
     Level = 60,
     Attain = 48,
     Location = "Capataz Ok'gog (Las Estepas Ardientes - Bastión Karfang "..yellow.."95.1,22.8"..white..")",
@@ -1809,6 +1926,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[16] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Horde[17] = {
     Title = "La Incursión del Asaltante",
+    Id = 40498,
     Level = 58,
     Attain = 50,
     Aim = "Mata a Gizrul el Esclavizador en la Cumbre de Roca Negra, luego informa a Asaltante Fargosh en el Bastión Karfang.",
@@ -1824,6 +1942,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[17] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Horde[18] = {
     Title = "La Grieta Final",
+    Id = 40509,
     Level = 59,
     Attain = 50,
     Location = "Karfang (Las Estepas Ardientes - Bastión Karfang "..yellow.."95.1,22.8"..white..")",
@@ -1844,6 +1963,7 @@ kQuestInstanceData.BlackrockSpireUpper = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[1] = {
     Title = "El Protectorado de la Matrona",
+    Id = 5160,
     Level = 60,
     Attain = 57,
     Aim = "Viaja a Cuna del Invierno y encuentra a Haleh. Entrégale la escama de Awbee.",
@@ -1853,6 +1973,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[1] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[2] = {
     Title = "Finkle Einhorn, ¡A Tu Servicio!",
+    Id = 5047,
     Level = 60,
     Attain = 55,
     Aim = "Habla con Malyfous Martilloscuro en Vista Eterna.",
@@ -1862,6 +1983,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[2] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[3] = {
     Title = "Congelación de Huevos",
+    Id = 4734,
     Level = 60,
     Attain = 57,
     Aim = "Usa el Prototipo de Huevoscopio en un huevo en la Crianza.",
@@ -1872,6 +1994,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[3] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[4] = {
     Title = "Ojo del Embrasen",
+    Id = 6821,
     Level = 60,
     Attain = 56,
     Aim = "Lleva el Ojo del Embrasador al Duque Hydraxis en Azshara.",
@@ -1882,6 +2005,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[4] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[5] = {
     Title = "La Muerte del General Drakkisath",
+    Id = 5102,
     Level = 60,
     Attain = 55,
     Aim = "Viaja a la Cumbre de Roca Negra y destruye al General Drakkisath. Regresa con el Mariscal Maxwell cuando hayas completado el trabajo.",
@@ -1897,6 +2021,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[5] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[6] = {
     Title = "El Broche de Doomrigger",
+    Id = 4764,
     Level = 60,
     Attain = 57,
     Aim = "Lleva el Broche de Malarregio a Mayara Alasol en las Estepas Ardientes.",
@@ -1912,6 +2037,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[6] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[7] = {
     Title = "Amuleto de Fuego de Dragón",
+    Id = 6502,
     Level = 60,
     Attain = 50,
     Aim = "Debes recuperar la Sangre del Campeón de Dragones Negros del General Drakkisath. Drakkisath se encuentra en su sala del trono detrás de las Salas de Ascensión en la Cumbre de Roca Negra.",
@@ -1925,6 +2051,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[7] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[8] = {
     Title = "La Orden de Puño Negro",
+    Id = 7761,
     Level = 60,
     Attain = 55,
     Aim = "Ese orco es un idiota. Parece que necesitas encontrar esta marca y obtener la Marca de Drakkisath para acceder al Orbe de Comando. La carta indica que el General Drakkisath guarda la marca. Quizás deberías investigar.",
@@ -1933,6 +2060,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[8] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[9] = {
     Title = "Preparativos Finales",
+    Id = 8994,
     Level = 60,
     Attain = 58,
     Aim = "Reúne 40 Brazales de Roca Negra y adquiere un Frasco de Poder Supremo. Devuélveselos a Bodley dentro de la Montaña Roca Negra.",
@@ -1943,6 +2071,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[9] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[10] = {
     Title = "Mea Culpa, Lord Valthalak",
+    Id = 8995,
     Level = 60,
     Attain = 58,
     Aim = "Usa el Brasero de Invocación para convocar a Lord Valthalak. Acaba con él y usa el Amuleto de Lord Valthalak en el cadáver. Luego, devuelve el Amuleto de Lord Valthalak al Espíritu de Lord Valthalak.",
@@ -1958,6 +2087,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[10] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[11] = {
     Title = "La Forja del Demonio",
+    Id = 5127,
     Level = 60,
     Attain = 55,
     Aim = "Viaja a la Cumbre de Roca Negra y encuentra a Goraluk Anvilcrack. Mátalo y luego usa la Pica Manchada de Sangre en su cadáver. Después de que su alma haya sido absorbida, la pica estará Manchada de Alma.$B$BTambién debes encontrar el Peto Cubierto de Runas sin Forjar.$B$BDevuelve tanto la Pica Manchada de Alma como el Peto Cubierto de Runas sin Forjar a Lorax en Cuna del Invierno.",
@@ -1973,6 +2103,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[11] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[12] = {
     Title = "La Unión Superior I",
+    Id = 41011,
     Level = 60,
     Attain = 55,
     Aim = "Reúne una Carga de Dragonante de los Dragonantes Negros dentro de la Cumbre de Roca Negra para Parnabus en Gilneas.",
@@ -1990,6 +2121,7 @@ for i = 1, 4 do
 end
 kQuestInstanceData.BlackrockSpireUpper.Horde[5] = {
     Title = "La Tablilla de Piedranegra",
+    Id = 4768,
     Level = 60,
     Attain = 57,
     Aim = "Lleva la Tablilla de Piedra Oscura a la Maga de las Sombras Vivian Lagrave en Kargath.",
@@ -2004,6 +2136,7 @@ kQuestInstanceData.BlackrockSpireUpper.Horde[5] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Horde[6] = {
     Title = "¡Por la Horda!",
+    Id = 4974,
     Level = 60,
     Attain = 55,
     Aim = "Viaja a la Cumbre de Roca Negra y mata al Jefe de Guerra Rend Blackhand. Toma su cabeza y regresa a Orgrimmar.",
@@ -2020,6 +2153,7 @@ kQuestInstanceData.BlackrockSpireUpper.Horde[6] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Horde[7] = {
     Title = "Ilusiones del Oculus",
+    Id = 6569,
     Level = 60,
     Attain = 55,
     Aim = "Viaja a la Cumbre de Roca Negra y recolecta 20 Ojos de Descendiente de Dragón Negro. Regresa con Myranda la Bruja cuando hayas completado la tarea.",
@@ -2030,6 +2164,7 @@ kQuestInstanceData.BlackrockSpireUpper.Horde[7] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Horde[8] = {
     Title = "Sangre del Campeón del Dragón Negro",
+    Id = 6602,
     Level = 60,
     Attain = 55,
     Aim = "Viaja a la Cumbre de Roca Negra y mata al General Drakkisath. Recolecta su sangre y entrégasela a Rexxar.",
@@ -2056,6 +2191,7 @@ kQuestInstanceData.DireMaulEast = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[1] = {
     Title = "Pusillin y el Anciano Azj'Tordin",
+    Id = 7441,
     Level = 58,
     Attain = 54,
     Aim = "Viaja a La Masacre y localiza al Diablillo, Pusillin. Convence a Pusillin de que te dé el Libro de Conjuros de Azj'Tordin por cualquier medio necesario.$B$BRegresa con Azj'Tordin en el Pabellón Lariss en Feralas si recuperas el Libro de Conjuros.",
@@ -2069,6 +2205,7 @@ kQuestInstanceData.DireMaulEast.Alliance[1] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[2] = {
     Title = "La Red de Lethtendris",
+    Id = 7488,
     Level = 57,
     Attain = 54,
     Aim = "Lleva la Tela de Lethtendris a Latronicus Lanzaspear en el Bastión Plumaluna en Feralas.",
@@ -2082,6 +2219,7 @@ kQuestInstanceData.DireMaulEast.Alliance[2] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[3] = {
     Title = "Fragmentos de la Vid de la Perdición",
+    Id = 5526,
     Level = 60,
     Attain = 56,
     Aim = "Encuentra la Felbruna en La Masacre y adquiere un fragmento de ella. Lo más probable es que solo puedas obtener uno con la muerte de Alzzin el Formaferal. Usa el Relicario de Pureza para sellar el fragmento de forma segura y llévaselo a Rabine Saturna en el Puesto de la Guardia Nocturna, Claro de la Luna.",
@@ -2096,6 +2234,7 @@ kQuestInstanceData.DireMaulEast.Alliance[3] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[4] = {
     Title = "La Pieza Izquierda del Amuleto de Lord Valthalak",
+    Id = 8967,
     Level = 60,
     Attain = 58,
     Aim = "Usa el Brasero de Invocación para convocar al espíritu de Mor Grayhoof y mátalo. Regresa con Bodley dentro de la Montaña Roca Negra con la Pieza Izquierda del Amuleto de Lord Valthalak y el Brasero de Invocación.",
@@ -2106,6 +2245,7 @@ kQuestInstanceData.DireMaulEast.Alliance[4] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[5] = {
     Title = "La Pieza Derecha del Amuleto de Lord Valthalak",
+    Id = 8990,
     Level = 60,
     Attain = 58,
     Aim = "Usa el Brasero de Invocación para convocar al espíritu de Mor Grayhoof y mátalo. Regresa con Bodley dentro de la Montaña Roca Negra con el Amuleto de Lord Valthalak recombinado y el Brasero de Invocación.",
@@ -2116,6 +2256,7 @@ kQuestInstanceData.DireMaulEast.Alliance[5] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[6] = {
     Title = "Ataduras de la Prisión",
+    Id = 7581,
     Level = 60,
     Attain = 60,
     Aim = "Viaja a La Masacre en Feralas y recupera 15 Sangre de Sátiro de los Sátiros Engendro Salvaje que habitan el Barrio Alabeo. Regresa con Daio en la Cicatriz Contaminada cuando hayas completado esto.",
@@ -2124,6 +2265,7 @@ kQuestInstanceData.DireMaulEast.Alliance[6] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[7] = {
     Title = "Refrigerio Arcano",
+    Id = 7463,
     Level = 60,
     Attain = 60,
     Aim = "Viaja al Barrio Alabeo de La Masacre y mata al elemental de agua, Hidrosaurio. Regresa con el Conservador de conocimientos Lydros en el Ateneo con la Esencia de Hidrosaurio.",
@@ -2137,6 +2279,7 @@ kQuestInstanceData.DireMaulEast.Alliance[7] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[8] = {
     Title = "El Transformador Salvaje",
+    Id = 41016,
     Level = 60,
     Attain = 55,
     Aim = "Lleva la Cabeza de Alzzin el Formaferal al Archidruida Dreamwind en Nordanaar en Hyjal.",
@@ -2150,6 +2293,7 @@ kQuestInstanceData.DireMaulEast.Alliance[8] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[9] = {
     Title = "Un Estudio de Árboles Mágicos",
+    Id = 41376,
     Level = 61,
     Attain = 60,
     Aim = "Lleva 5 Hojas Azules al Guardián del Conocimiento Lydros.",
@@ -2163,6 +2307,7 @@ kQuestInstanceData.DireMaulEast.Alliance[9] = {
 kQuestInstanceData.DireMaulEast.Horde[1] = kQuestInstanceData.DireMaulEast.Alliance[1]
 kQuestInstanceData.DireMaulEast.Horde[2] = {
     Title = "La Red de Lethtendris",
+    Id = 7489,
     Level = 57,
     Attain = 54,
     Aim = "Lleva la Tela de Lethtendris a Latronicus Lanzaspear en el Bastión Plumaluna en Feralas.",
@@ -2184,6 +2329,7 @@ kQuestInstanceData.DireMaulNorth = {
 }
 kQuestInstanceData.DireMaulNorth.Alliance[1] = {
     Title = "Una Trampa Rota",
+    Id = 1193,
     Level = 60,
     Attain = 56,
     Aim = "Repara la trampa.",
@@ -2192,6 +2338,7 @@ kQuestInstanceData.DireMaulNorth.Alliance[1] = {
 }
 kQuestInstanceData.DireMaulNorth.Alliance[2] = {
     Title = "El Traje de Ogro Gordok",
+    Id = 5518,
     Level = 60,
     Attain = 56,
     Aim = "Lleva 4 Piezas de Paño Rúnico, 8 Cuero Rugoso, 2 Hilos Rúnicos y Tanino de Ogro a Knot Thimblejack. Actualmente está encadenado en el ala Gordok de La Masacre.",
@@ -2204,6 +2351,7 @@ kQuestInstanceData.DireMaulNorth.Alliance[2] = {
 }
 kQuestInstanceData.DireMaulNorth.Alliance[3] = {
     Title = "¡Libera a Nudo!",
+    Id = 5525,
     Level = 60,
     Attain = 57,
     Aim = "Consigue una Llave de Grillete Gordok para Knot Thimblejack.",
@@ -2212,6 +2360,7 @@ kQuestInstanceData.DireMaulNorth.Alliance[3] = {
 }
 kQuestInstanceData.DireMaulNorth.Alliance[4] = {
     Title = "Asuntos Inconclusos de Gordok",
+    Id = 1318,
     Level = 60,
     Attain = 56,
     Aim = "Encuentra el Guantelete del Poderío de Gordok y llévaselo al Capitán Kromcrush en La Masacre.$B$BSegún Kromcrush, la 'historia antigua' dice que Tortheldrin, un elfo 'espeluznante' que se hacía llamar príncipe, lo robó de uno de los reyes Gordok.",
@@ -2238,6 +2387,7 @@ kQuestInstanceData.DireMaulWest = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[1] = {
     Title = "Leyendas Élficas",
+    Id = 7482,
     Level = 60,
     Attain = 54,
     Aim = "Busca en La Masacre a Kariel Winthalus. Informa al Sabio Korolusk en Campamento Mojache con cualquier información que puedas encontrar.",
@@ -2246,6 +2396,7 @@ kQuestInstanceData.DireMaulWest.Alliance[1] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[2] = {
     Title = "La Locura Interior",
+    Id = 7461,
     Level = 60,
     Attain = 56,
     Aim = "Debes destruir a los guardianes que rodean los 5 Pilones que alimentan la Prisión de Immol'thar. Una vez que los Pilones se hayan desactivado, el campo de fuerza que rodea a Immol'thar se disipará.$B$BEntra en la Prisión de Immol'thar y erradica al demonio vil que se encuentra en su corazón. Finalmente, enfréntate al Príncipe Tortheldrin en el Athenaeum.$B$BRegresa con el Anciano Shen'dralar en el patio si completas esta misión.",
@@ -2255,6 +2406,7 @@ kQuestInstanceData.DireMaulWest.Alliance[2] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[3] = {
     Title = "El Tesoro de los Shen'dralar",
+    Id = 7462,
     Level = 60,
     Attain = 56,
     Aim = "Regresa al Ateneo y encuentra el Tesoro de los Shen'dralar. ¡Reclama tu recompensa!",
@@ -2270,6 +2422,7 @@ kQuestInstanceData.DireMaulWest.Alliance[3] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[4] = {
     Title = "Corcel de Xoroth",
+    Id = 7631,
     Level = 60,
     Attain = 60,
     Aim = "Lee las Instrucciones de Mor'zul. Invoca un Corcel del Terror Xorothiano, derrótalo, luego ata su espíritu a ti.",
@@ -2279,6 +2432,7 @@ kQuestInstanceData.DireMaulWest.Alliance[4] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[5] = {
     Title = "El Sueño Esmeralda...",
+    Id = 7506,
     Level = 60,
     Attain = 54,
     Aim = "Devuelve el libro a sus legítimos dueños.",
@@ -2291,6 +2445,7 @@ kQuestInstanceData.DireMaulWest.Alliance[5] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[6] = {
     Title = "La Mejor Raza de Cazadores",
+    Id = 7503,
     Level = 60,
     Attain = 54,
     Aim = "Devuelve el libro a sus legítimos dueños.",
@@ -2303,6 +2458,7 @@ kQuestInstanceData.DireMaulWest.Alliance[6] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[7] = {
     Title = "El Libro de Cocina del Arcanista",
+    Id = 7500,
     Level = 60,
     Attain = 54,
     Aim = "Devuelve el libro a sus legítimos dueños.",
@@ -2315,6 +2471,7 @@ kQuestInstanceData.DireMaulWest.Alliance[7] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[8] = {
     Title = "La Luz y Cómo Blandirla",
+    Id = 7501,
     Level = 60,
     Attain = 54,
     Aim = "Devuelve el libro a sus legítimos dueños.",
@@ -2327,6 +2484,7 @@ kQuestInstanceData.DireMaulWest.Alliance[8] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[9] = {
     Title = "Boloña Sagrada: Lo que la Luz No Te Dirá",
+    Id = 7504,
     Level = 60,
     Attain = 56,
     Aim = "Devuelve el libro a sus legítimos dueños.",
@@ -2339,6 +2497,7 @@ kQuestInstanceData.DireMaulWest.Alliance[9] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[10] = {
     Title = "Garona: Un Estudio sobre el Sigilo y la Traición",
+    Id = 7498,
     Level = 60,
     Attain = 54,
     Aim = "Devuelve el libro a sus legítimos dueños.",
@@ -2351,6 +2510,7 @@ kQuestInstanceData.DireMaulWest.Alliance[10] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[11] = {
     Title = "Choque de Escarcha y Tú",
+    Id = 7505,
     Level = 60,
     Attain = 54,
     Aim = "Devuelve el libro a sus legítimos dueños.",
@@ -2363,6 +2523,7 @@ kQuestInstanceData.DireMaulWest.Alliance[11] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[12] = {
     Title = "Domando las Sombras",
+    Id = 7502,
     Level = 60,
     Attain = 54,
     Aim = "Devuelve el libro a sus legítimos dueños.",
@@ -2375,6 +2536,7 @@ kQuestInstanceData.DireMaulWest.Alliance[12] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[13] = {
     Title = "Códice de Defensa",
+    Id = 7499,
     Level = 60,
     Attain = 54,
     Aim = "Devuelve el libro a sus legítimos dueños.",
@@ -2387,6 +2549,7 @@ kQuestInstanceData.DireMaulWest.Alliance[13] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[14] = {
     Title = "Libram de Enfoque",
+    Id = 7479,
     Level = 60,
     Attain = 58,
     Aim = "Lleva un Libro de Foco, 1 Diamante Negro Pristino, 4 Fragmentos Grandes Brillantes y 2 Pieles de las Sombras al Guardián del Conocimiento Lydros en La Masacre para recibir un Arcanum de Foco.",
@@ -2399,6 +2562,7 @@ kQuestInstanceData.DireMaulWest.Alliance[14] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[15] = {
     Title = "Libram de Protección",
+    Id = 7480,
     Level = 60,
     Attain = 58,
     Aim = "Lleva un Libro de Protección, 1 Diamante Negro Pristino, 2 Fragmentos Grandes Brillantes y 1 Costura de Abominación Deshilachada al Guardián del Conocimiento Lydros en La Masacre para recibir un Arcanum de Protección.",
@@ -2411,6 +2575,7 @@ kQuestInstanceData.DireMaulWest.Alliance[15] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[16] = {
     Title = "Libram de Rapidez",
+    Id = 7478,
     Level = 60,
     Attain = 58,
     Aim = "Lleva un Libro de Rapidez, 1 Diamante Negro Pristino, 2 Fragmentos Grandes Brillantes y 2 Sangre de Héroes al Guardián del Conocimiento Lydros en La Masacre para recibir un Arcanum de Rapidez.",
@@ -2423,6 +2588,7 @@ kQuestInstanceData.DireMaulWest.Alliance[16] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[17] = {
     Title = "El Compendio de Foror",
+    Id = 7507,
     Level = 60,
     Attain = 60,
     Aim = "Devuelve el Compendio de Matanza de Dragones de Foror al Ateneo.",
@@ -2432,6 +2598,7 @@ kQuestInstanceData.DireMaulWest.Alliance[17] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[18] = {
     Title = "Manteniendo Secretos",
+    Id = 40254,
     Level = 58,
     Attain = 45,
     Aim = "Viaja a La Masacre y mata al gran ser maligno del que los Altonato están extrayendo energía, recolecta de él Esencia Ley Pura y regresa con Keeper Laena en Azshara.",
@@ -2446,6 +2613,7 @@ kQuestInstanceData.DireMaulWest.Alliance[18] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[19] = {
     Title = "La Unión Superior III",
+    Id = 41013,
     Level = 60,
     Attain = 55,
     Aim = "Reúne una Resonación Arcana Sobrecargada de los elementales arcanos de La Masacre para Parnabus en Gilneas.",
@@ -2460,6 +2628,7 @@ kQuestInstanceData.DireMaulWest.Alliance[19] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[20] = {
     Title = "La Llave de Karazhan VIII",
+    Id = 40827,
     Level = 60,
     Attain = 58,
     Aim = "Mata a Immol'thar en La Masacre y recupera gemas de su piel, luego regresa con Vandol.",
@@ -2470,6 +2639,7 @@ kQuestInstanceData.DireMaulWest.Alliance[20] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[21] = {
     Title = "Dentro del Sueño III",
+    Id = 40959,
     Level = 60,
     Attain = 58,
     Aim = "Reúne un Fragmento de Atadura de los Rompeacantiles en Azshara, un Prisma Arcano Sobrecargado de los Torrentes Arcanos en el ala occidental de La Masacre y un Fragmento del Durmiente de los Tejedores en el Templo Sumergido. Informa a Itharius en los Pantanos de las Penas con los objetos recolectados.",
@@ -2484,6 +2654,7 @@ kQuestInstanceData.DireMaulWest.Alliance[21] = {
 }
 kQuestInstanceData.DireMaulWest.Horde[1] = {
     Title = "Leyendas Élficas",
+    Id = 7481,
     Level = 60,
     Attain = 54,
     Aim = "Busca en La Masacre a Kariel Winthalus. Informa al Sabio Korolusk en Campamento Mojache con cualquier información que puedas encontrar.",
@@ -2503,6 +2674,7 @@ kQuestInstanceData.Maraudon = {
 }
 kQuestInstanceData.Maraudon.Alliance[1] = {
     Title = "Fragmentos de Sombrastilla",
+    Id = 7070,
     Level = 42,
     Attain = 38,
     Aim = "Recolecta 10 Fragmentos de Sombrarriostra de Maraudon y llévaselos a Uthel'nay en Orgrimmar.",
@@ -2516,6 +2688,7 @@ kQuestInstanceData.Maraudon.Alliance[1] = {
 }
 kQuestInstanceData.Maraudon.Alliance[2] = {
     Title = "Corrupción de Lenguavil",
+    Id = 7041,
     Level = 47,
     Attain = 41,
     Aim = "Llena el Vial Cerúleo Cubierto en el estanque de cristal naranja en Maraudon.$B$BUsa el Vial Cerúleo Lleno en las Enredaderas Vylestem para forzar a que emerja el Vástago Nocivo corrupto.$B$BCura 8 plantas matando a estos Vástagos Nocivos, luego regresa con Vark Cicatriz de Batalla en Aldea Cazasombras.",
@@ -2530,6 +2703,7 @@ kQuestInstanceData.Maraudon.Alliance[2] = {
 }
 kQuestInstanceData.Maraudon.Alliance[3] = {
     Title = "Maldiciones Retorcidas",
+    Id = 7028,
     Level = 47,
     Attain = 41,
     Aim = "Recolecta 25 Tallas de Cristal Theradric para Willow en Desolace.",
@@ -2545,6 +2719,7 @@ kQuestInstanceData.Maraudon.Alliance[3] = {
 }
 kQuestInstanceData.Maraudon.Alliance[4] = {
     Title = "Instrucciones del Paria",
+    Id = 7067,
     Level = 48,
     Attain = 39,
     Aim = "Lee las Instrucciones del Paria. Después, obtén el Amuleto de Unión de Maraudon y devuélveselo al Paria Centauro en el sur de Desolace.",
@@ -2558,6 +2733,7 @@ kQuestInstanceData.Maraudon.Alliance[4] = {
 }
 kQuestInstanceData.Maraudon.Alliance[5] = {
     Title = "Leyendas de Maraudon",
+    Id = 7044,
     Level = 49,
     Attain = 41,
     Aim = "Recupera las dos partes del Cetro de Celebras: la Vara Celebriana y el Diamante Celebriano.$B$BEncuentra una manera de hablar con Celebras.",
@@ -2567,6 +2743,7 @@ kQuestInstanceData.Maraudon.Alliance[5] = {
 }
 kQuestInstanceData.Maraudon.Alliance[6] = {
     Title = "El Cetro de Celebras",
+    Id = 7046,
     Level = 49,
     Attain = 41,
     Aim = "Asiste a Celebras el Redimido mientras crea el Cetro de Celebras.$B$BHabla con él cuando se complete el ritual.",
@@ -2580,6 +2757,7 @@ kQuestInstanceData.Maraudon.Alliance[6] = {
 }
 kQuestInstanceData.Maraudon.Alliance[7] = {
     Title = "Corrupción de la Tierra y la Semilla",
+    Id = 7065,
     Level = 51,
     Attain = 45,
     Aim = "Mata a la Princesa Theradras y regresa con Selendra cerca de la Aldea de los Pesares en Desolace.",
@@ -2595,6 +2773,7 @@ kQuestInstanceData.Maraudon.Alliance[7] = {
 }
 kQuestInstanceData.Maraudon.Alliance[8] = {
     Title = "Semilla de Vida",
+    Id = 7066,
     Level = 51,
     Attain = 45,
     Aim = "Busca a Remulos en Claro de la Luna y entrégale la Semilla de Vida.",
@@ -2604,6 +2783,7 @@ kQuestInstanceData.Maraudon.Alliance[8] = {
 }
 kQuestInstanceData.Maraudon.Alliance[9] = {
     Title = "Arnés de Quimera",
+    Id = 41052,
     Level = 48,
     Attain = 38,
     Aim = "Recupera el Arnés Quimérico de Maraudon y llévaselo a Velos Filocero en el Valle Quimera en Feralas.",
@@ -2617,6 +2797,7 @@ kQuestInstanceData.Maraudon.Alliance[9] = {
 }
 kQuestInstanceData.Maraudon.Alliance[10] = {
     Title = "¿Por Qué No Ambos?",
+    Id = 41142,
     Level = 50,
     Attain = 40,
     Aim = "Consigue el Corazón de Derrumbe de las profundidades de Maraudon, y la Esencia de Corrosis de la Cantera Forjodio para Frig Truenforja en Pico Nidal.",
@@ -2631,6 +2812,7 @@ kQuestInstanceData.Maraudon.Alliance[10] = {
 }
 kQuestInstanceData.Maraudon.Alliance[11] = {
     Title = "Preparación",
+    Id = 41281,
     Level = 48,
     Attain = 34,
     Aim = "Recupera un trozo del cuerpo de Avalancha de Maraudon y llévaselo a Thegren cerca de las Ruinas de Corthan en las Tierras Inhóspitas.",
@@ -2641,6 +2823,7 @@ kQuestInstanceData.Maraudon.Alliance[11] = {
 }
 kQuestInstanceData.Maraudon.Horde[1] = {
     Title = "Fragmentos de Sombrastilla",
+    Id = 7068,
     Level = 42,
     Attain = 38,
     Aim = "Recolecta 10 Fragmentos de Sombrarriostra de Maraudon y llévaselos a Uthel'nay en Orgrimmar.",
@@ -2650,6 +2833,7 @@ kQuestInstanceData.Maraudon.Horde[1] = {
 }
 kQuestInstanceData.Maraudon.Horde[2] = {
     Title = "Corrupción de Lenguavil",
+    Id = 7029,
     Level = 47,
     Attain = 41,
     Aim = "Llena el Vial Cerúleo Cubierto en el estanque de cristal naranja en Maraudon.$B$BUsa el Vial Cerúleo Lleno en las Enredaderas Vylestem para forzar a que emerja el Vástago Nocivo corrupto.$B$BCura 8 plantas matando a estos Vástagos Nocivos, luego regresa con Vark Cicatriz de Batalla en Aldea Cazasombras.",
@@ -2662,6 +2846,7 @@ for i = 3, 6 do
 end
 kQuestInstanceData.Maraudon.Horde[7] = {
     Title = "Corrupción de la Tierra y la Semilla",
+    Id = 7064,
     Level = 51,
     Attain = 45,
     Aim = "Mata a la Princesa Theradras y regresa con Selendra cerca de la Aldea de los Pesares en Desolace.",
@@ -2673,6 +2858,7 @@ kQuestInstanceData.Maraudon.Horde[7] = {
 kQuestInstanceData.Maraudon.Horde[8] = kQuestInstanceData.Maraudon.Alliance[8]
 kQuestInstanceData.Maraudon.Horde[9] = {
     Title = "Preparación",
+    Id = 41281,
     Level = 48,
     Attain = 34,
     Aim = "Recupera un trozo del cuerpo de Avalancha de Maraudon y llévaselo a Thegren cerca de las Ruinas de Corthan en las Tierras Inhóspitas.",
@@ -2691,6 +2877,7 @@ kQuestInstanceData.MoltenCore = {
 }
 kQuestInstanceData.MoltenCore.Alliance[1] = {
     Title = "El Núcleo de Magma",
+    Id = 6822,
     Level = 60,
     Attain = 57,
     Aim = "Mata 1 Señor del Fuego, 1 Gigante de Magma, 1 Can del Núcleo Antiguo y 1 Oleada de Lava, luego regresa con el Duque Hydraxis en Azshara.",
@@ -2701,6 +2888,7 @@ kQuestInstanceData.MoltenCore.Alliance[1] = {
 }
 kQuestInstanceData.MoltenCore.Alliance[2] = {
     Title = "Las Manos de los Enemigos",
+    Id = 6824,
     Level = 60,
     Attain = 60,
     Aim = "Lleva las Manos de Lucifron, Sulfuron, Gehennas y Shazzrah al Duque Hydraxis en Azshara.",
@@ -2712,6 +2900,7 @@ kQuestInstanceData.MoltenCore.Alliance[2] = {
 }
 kQuestInstanceData.MoltenCore.Alliance[3] = {
     Title = "Thunderaan el Buscavientos",
+    Id = 7786,
     Level = 60,
     Attain = 60,
     Aim = "Para liberar a Thunderaan el Buscavientos de su prisión, debes presentar las mitades derecha e izquierda de las Ataduras del Buscavientos, 10 barras de elementium y la Esencia del Señor del Fuego al Alto Señor Demitrian.",
@@ -2722,6 +2911,7 @@ kQuestInstanceData.MoltenCore.Alliance[3] = {
 }
 kQuestInstanceData.MoltenCore.Alliance[4] = {
     Title = "Un Contrato Vinculante",
+    Id = 7604,
     Level = 60,
     Attain = 60,
     Aim = "Entrega el Contrato de la Hermandad del Torio a Lokhtos Tratoscuro si deseas recibir los planos de Sulfuron.",
@@ -2734,6 +2924,7 @@ kQuestInstanceData.MoltenCore.Alliance[4] = {
 }
 kQuestInstanceData.MoltenCore.Alliance[5] = {
     Title = "La Hoja Antigua",
+    Id = 7632,
     Level = 60,
     Attain = 60,
     Aim = "Encuentra al dueño de la Hoja Antigua Petrificada. Buena suerte, $N, es un mundo grande.",
@@ -2743,6 +2934,7 @@ kQuestInstanceData.MoltenCore.Alliance[5] = {
 }
 kQuestInstanceData.MoltenCore.Alliance[6] = {
     Title = "La Única Receta",
+    Id = 8620,
     Level = 60,
     Attain = 60,
     Aim = "Recupera los 8 capítulos perdidos de Dracónico para Tontos y combínalos con la Encuadernación Mágica de Libros y devuelve el libro completo de Dracónico para Tontos: Volumen II a Narain Soothfancy en Tanaris.",
@@ -2757,6 +2949,7 @@ kQuestInstanceData.MoltenCore.Alliance[6] = {
 }
 kQuestInstanceData.MoltenCore.Alliance[7] = {
     Title = "¿Unas Gafas? ¡Sin Problemas!",
+    Id = 8578,
     Level = 60,
     Attain = 60,
     Aim = "Encuentra las Gafas de Visión de Narain y devuélveselas a Narain Hablacenteno en Tanaris.",
@@ -2782,6 +2975,7 @@ kQuestInstanceData.Naxxramas = {
 }
 kQuestInstanceData.Naxxramas.Alliance[1] = {
     Title = "La Caída de Kel'Thuzad",
+    Id = 9120,
     Level = 60,
     Attain = 60,
     Aim = "Lleva el Filacteria de Kel'Thuzad a la Capilla de la Esperanza de la Luz en las Tierras de la Peste del Este.",
@@ -2795,6 +2989,7 @@ kQuestInstanceData.Naxxramas.Alliance[1] = {
 }
 kQuestInstanceData.Naxxramas.Alliance[2] = {
     Title = "La Única Canción que Conozco...",
+    Id = 9232,
     Level = 60,
     Attain = 60,
     Aim = "El Artesano Wilhelm en la Capilla de la Esperanza de la Luz en las Tierras de la Peste del Este quiere que le traigas 2 Runas Congeladas, 2 Esencias de Agua, 2 Zafiros Azules y 30 piezas de oro.",
@@ -2810,6 +3005,7 @@ kQuestInstanceData.Naxxramas.Alliance[2] = {
 }
 kQuestInstanceData.Naxxramas.Alliance[3] = {
     Title = "Ecos de Guerra",
+    Id = 9033,
     Level = 60,
     Attain = 60,
     Aim = "El Comandante Eligor Albar en la Capilla de la Esperanza de la Luz en las Tierras de la Peste del Este quiere que mates 5 Monstruosidades Vivientes, 5 Gárgolas Pielpiedra, 8 Capitanes Caballero de la Muerte y 3 Acechadores Venenosos.",
@@ -2819,6 +3015,7 @@ kQuestInstanceData.Naxxramas.Alliance[3] = {
 }
 kQuestInstanceData.Naxxramas.Alliance[4] = {
     Title = "El Destino de Ramaladni",
+    Id = 9229,
     Level = 60,
     Attain = 60,
     Aim = "Entra en Naxxramas y descubre el Destino de Ramaladni.",
@@ -2828,6 +3025,7 @@ kQuestInstanceData.Naxxramas.Alliance[4] = {
 }
 kQuestInstanceData.Naxxramas.Alliance[5] = {
     Title = "El Apretón Helado de Ramaladni",
+    Id = 9230,
     Level = 60,
     Attain = 60,
     Aim = "Korfax en la Capilla de la Esperanza de la Luz en las Tierras de la Peste del Este quiere que le traigas 1 Runa Helada, 1 Zafiro Azul y 1 Barra de Arcanita.",
@@ -2852,6 +3050,7 @@ kQuestInstanceData.OnyxiasLair = {
 }
 kQuestInstanceData.OnyxiasLair.Alliance[1] = {
     Title = "La Forja de Quel'Serrar",
+    Id = 7509,
     Level = 60,
     Attain = 60,
     Aim = "Dale la Espada Elfa Deslustrada y Sin Filo al Guardián del Conocimiento Lydros.",
@@ -2865,6 +3064,7 @@ kQuestInstanceData.OnyxiasLair.Alliance[1] = {
 }
 kQuestInstanceData.OnyxiasLair.Alliance[2] = {
     Title = "La Única Receta",
+    Id = 8620,
     Level = 60,
     Attain = 60,
     Aim = "Recupera los 8 capítulos perdidos de Dracónico para Tontos y combínalos con la Encuadernación Mágica de Libros y devuelve el libro completo de Dracónico para Tontos: Volumen II a Narain Soothfancy en Tanaris.",
@@ -2879,6 +3079,7 @@ kQuestInstanceData.OnyxiasLair.Alliance[2] = {
 }
 kQuestInstanceData.OnyxiasLair.Alliance[3] = {
     Title = "Victoria para la Alianza",
+    Id = 7490,
     Level = 60,
     Attain = 60,
     Aim = "Lleva la Cabeza de Onyxia al Alto Señor Bolvar Fordragón en Ventormenta.",
@@ -2913,6 +3114,7 @@ kQuestInstanceData.RazorfenDowns = {
 }
 kQuestInstanceData.RazorfenDowns.Alliance[1] = {
     Title = "Un Anfitrión del Mal",
+    Id = 6626,
     Level = 35,
     Attain = 28,
     Aim = "Mata 8 Guardias de Batalla de los Baldíos, 8 Tejeespinas de los Baldíos y 8 Cultistas Cabeza de la Muerte y regresa con Myriam Cantoluna cerca de la entrada a las Cuevas de los Lamentos.",
@@ -2921,6 +3123,7 @@ kQuestInstanceData.RazorfenDowns.Alliance[1] = {
 }
 kQuestInstanceData.RazorfenDowns.Alliance[2] = {
     Title = "Extinguir el Ídolo",
+    Id = 3525,
     Level = 37,
     Attain = 32,
     Aim = "Escolta a Belnistrasz hasta el ídolo de los Quilboar en los Horados de Rajacieno.$B$BProtege a Belnistrasz mientras realiza el ritual para desactivar el ídolo.",
@@ -2934,6 +3137,7 @@ kQuestInstanceData.RazorfenDowns.Alliance[2] = {
 }
 kQuestInstanceData.RazorfenDowns.Alliance[3] = {
     Title = "Trae la Luz",
+    Id = 3636,
     Level = 42,
     Attain = 39,
     Aim = "El Arzobispo Bendictus quiere que mates a Amnennar el Portafrío en los Túmulos de Laderaguja.",
@@ -2948,6 +3152,7 @@ kQuestInstanceData.RazorfenDowns.Alliance[3] = {
 kQuestInstanceData.RazorfenDowns.Horde[1] = kQuestInstanceData.RazorfenDowns.Alliance[1]
 kQuestInstanceData.RazorfenDowns.Horde[2] = {
     Title = "Una Alianza Nefasta",
+    Id = 6521,
     Level = 36,
     Attain = 28,
     Aim = "Lleva la Cabeza del Embajador Malcin a Varimathras en Entrañas.",
@@ -2963,6 +3168,7 @@ kQuestInstanceData.RazorfenDowns.Horde[2] = {
 }
 kQuestInstanceData.RazorfenDowns.Horde[3] = {
     Title = "Extinguir el Ídolo",
+    Id = 3525,
     Level = 37,
     Attain = 32,
     Aim = "Escolta a Belnistrasz hasta el ídolo de los Quilboar en los Horados de Rajacieno.$B$BProtege a Belnistrasz mientras realiza el ritual para desactivar el ídolo.",
@@ -2976,6 +3182,7 @@ kQuestInstanceData.RazorfenDowns.Horde[3] = {
 }
 kQuestInstanceData.RazorfenDowns.Horde[4] = {
     Title = "Acaba con la Amenaza",
+    Id = 3341,
     Level = 42,
     Attain = 37,
     Aim = "Andrew Brownell quiere que mates a Amnennar el Portafrío y devuelvas su cráneo.",
@@ -2989,6 +3196,7 @@ kQuestInstanceData.RazorfenDowns.Horde[4] = {
 }
 kQuestInstanceData.RazorfenDowns.Horde[5] = {
     Title = "Los Poderes Más Allá",
+    Id = 40995,
     Level = 44,
     Attain = 38,
     Aim = "Adéntrate en las Cuevas de los Lamentos, mata a Amnennar el Portafrío y recupera su filacteria para el Obispo Oscuro Mordren en la Iglesia Stillward en Gilneas.",
@@ -3013,6 +3221,7 @@ kQuestInstanceData.RazorfenKraul = {
 }
 kQuestInstanceData.RazorfenKraul.Alliance[1] = {
     Title = "Los Tubérculos Hojazul",
+    Id = 1221,
     Level = 26,
     Attain = 20,
     Aim = "Toma una Caja con Agujeros.$BToma un Bastón de Mando de Hocicono.$BToma y lee el Manual del Dueño de Hocicono.$B$BEn Zanja Cardizal, usa la Caja con Agujeros para invocar un Hocicono, y usa el Bastón de Mando en el hocicono para hacer que busque Tubérculos.$B$BTrae 6 Tubérculos Hoja Azul, el Bastón de Mando de Hocicono y la Caja con Agujeros a Mebok Mizzyrix en Ratchet.",
@@ -3025,6 +3234,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[1] = {
 }
 kQuestInstanceData.RazorfenKraul.Alliance[2] = {
     Title = "La Mortalidad Disminuye",
+    Id = 1142,
     Level = 30,
     Attain = 25,
     Aim = "Encuentra y devuelve el Colgante de Treshala a Treshala Pardoluna en Darnassus.",
@@ -3038,6 +3248,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[2] = {
 }
 kQuestInstanceData.RazorfenKraul.Alliance[3] = {
     Title = "Willix el Importador",
+    Id = 1144,
     Level = 30,
     Attain = 23,
     Aim = "Escolta a Willix el Importador fuera de Rajacieno.",
@@ -3052,6 +3263,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[3] = {
 }
 kQuestInstanceData.RazorfenKraul.Alliance[4] = {
     Title = "La Bruja del Horado",
+    Id = 1101,
     Level = 34,
     Attain = 29,
     Aim = "Lleva el Medallón de Filocorto a Falfindel Errante en Thalanaar.",
@@ -3067,6 +3279,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[4] = {
 }
 kQuestInstanceData.RazorfenKraul.Alliance[5] = {
     Title = "Malla Endurecida por el Fuego",
+    Id = 1701,
     Level = 28,
     Attain = 20,
     Aim = "Reúne los materiales que Furen Barba Larga requiere y llévaselos a él en Ventormenta.",
@@ -3077,6 +3290,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[5] = {
 kQuestInstanceData.RazorfenKraul.Horde[1] = kQuestInstanceData.RazorfenKraul.Alliance[1]
 kQuestInstanceData.RazorfenKraul.Horde[2] = {
     Title = "Willix el Importador",
+    Id = 1144,
     Level = 30,
     Attain = 23,
     Aim = "Escolta a Willix el Importador fuera de Rajacieno.",
@@ -3091,6 +3305,7 @@ kQuestInstanceData.RazorfenKraul.Horde[2] = {
 }
 kQuestInstanceData.RazorfenKraul.Horde[3] = {
     Title = "Guano del Horado",
+    Id = 1109,
     Level = 33,
     Attain = 30,
     Aim = "Lleva 1 montón de Guano de Kraul al Maestro Boticario Faranell en Entrañas.",
@@ -3100,6 +3315,7 @@ kQuestInstanceData.RazorfenKraul.Horde[3] = {
 }
 kQuestInstanceData.RazorfenKraul.Horde[4] = {
     Title = "Un Destino Vengador",
+    Id = 1102,
     Level = 34,
     Attain = 29,
     Aim = "Lleva el Corazón de Filocorto a Auld Pico de Piedra en Cima del Trueno.",
@@ -3114,6 +3330,7 @@ kQuestInstanceData.RazorfenKraul.Horde[4] = {
 }
 kQuestInstanceData.RazorfenKraul.Horde[5] = {
     Title = "Armadura Brutal",
+    Id = 1838,
     Level = 30,
     Attain = 20,
     Aim = "Lleva a Thun'grim Firegaze 15 Lingotes de Hierro Ahumado, 10 Azurita en Polvo, 10 Barras de Hierro y un Frasco de Flogisto.",
@@ -3124,6 +3341,7 @@ kQuestInstanceData.RazorfenKraul.Horde[5] = {
 }
 kQuestInstanceData.RazorfenKraul.Horde[6] = {
     Title = "Corazón de zarza corrompido",
+    Id = 41758,
     Level = 30,
     Attain = 20,
     Aim = "Destruye la encarnación viva de la corrupción natural dentro de las profundidades de Razorfen Kraul y lleva el Corazón de Espinas Corrompido a Kym Wildmane en Cima del Trueno.",
@@ -3145,6 +3363,7 @@ kQuestInstanceData.ScarletMonasteryLibrary = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Alliance[1] = {
     Title = "En el Nombre de la Luz",
+    Id = 1053,
     Level = 40,
     Attain = 34,
     Aim = "Mata a la Gran Inquisidora Canisbia, al Comandante Escarlata Mograine, a Herod el Campeón Escarlata y al Maestro de canes Loksey, luego informa a Raleigh el Devoto en Costasur.",
@@ -3161,6 +3380,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Alliance[1] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Alliance[2] = {
     Title = "Mitología de los Titanes",
+    Id = 1050,
     Level = 38,
     Attain = 28,
     Aim = "Recupera la Mitología de los Titanes del Monasterio y llévasela a la Bibliotecaria Mae Polvovana en Forjaz.",
@@ -3173,6 +3393,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Alliance[2] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Alliance[3] = {
     Title = "Rituales de Poder",
+    Id = 1951,
     Level = 40,
     Attain = 30,
     Aim = "Lleva el libro Rituales de Poder a Tabetha en los Pantanos de Dustwallow.",
@@ -3183,6 +3404,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Alliance[3] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Horde[1] = {
     Title = "Corazones de Celos",
+    Id = 1113,
     Level = 33,
     Attain = 30,
     Aim = "El Maestro Boticario Faranell en Entrañas quiere 20 Corazones de Celador.",
@@ -3192,6 +3414,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Horde[1] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Horde[2] = {
     Title = "Al Monasterio Escarlata",
+    Id = 1048,
     Level = 42,
     Attain = 33,
     Aim = "Mata a la Gran Inquisidora Canisbia, al Comandante Escarlata Mograine, a Herod el Campeón Escarlata y al Maestro de canes Loksey, luego informa a Varimathras en Entrañas.",
@@ -3206,6 +3429,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Horde[2] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Horde[3] = {
     Title = "Compendio de los Caídos",
+    Id = 1049,
     Level = 38,
     Attain = 28,
     Aim = "Recupera el Compendio de los Caídos del Monasterio en los Claros de Tirisfal y llévaselo al Sabio Buscador de la Verdad en Cima del Trueno.",
@@ -3220,6 +3444,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Horde[3] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Horde[4] = {
     Title = "Prueba de Sabiduría",
+    Id = 1160,
     Level = 36,
     Attain = 25,
     Aim = "Encuentra a Braug Espíritu Tenue cerca de la entrada al Sendero Talondeep en las Montañas Filospada.",
@@ -3230,6 +3455,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Horde[4] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Horde[5] = {
     Title = "Rituales de Poder",
+    Id = 1951,
     Level = 40,
     Attain = 30,
     Aim = "Lleva el libro Rituales de Poder a Tabetha en los Pantanos de Dustwallow.",
@@ -3251,6 +3477,7 @@ kQuestInstanceData.ScarletMonasteryArmory.Horde[1] = kQuestInstanceData.ScarletM
 kQuestInstanceData.ScarletMonasteryArmory.Horde[2] = kQuestInstanceData.ScarletMonasteryLibrary.Horde[2]
 kQuestInstanceData.ScarletMonasteryArmory.Horde[3] = {
     Title = "Reminiscencia de Acero",
+    Id = 41368,
     Level = 39,
     Attain = 33,
     Aim = "Mata al Intendente del Arsenal Daghelm y devuelve el diario de Basil a él en Entrañas.",
@@ -3273,6 +3500,7 @@ kQuestInstanceData.ScarletMonasteryCathedral = {
 kQuestInstanceData.ScarletMonasteryCathedral.Alliance[1] = kQuestInstanceData.ScarletMonasteryLibrary.Alliance[1]
 kQuestInstanceData.ScarletMonasteryCathedral.Alliance[2] = {
     Title = "El Orbe de Kaladus",
+    Id = 40233,
     Level = 38,
     Attain = 30,
     Aim = "Adéntrate en el Monasterio Escarlata y encuentra el Orbe de Kaladus, recúperalo y devuélveselo al Guarda Paladín Janathos en el Bastión Penasur.",
@@ -3288,6 +3516,7 @@ kQuestInstanceData.ScarletMonasteryCathedral.Alliance[2] = {
 }
 kQuestInstanceData.ScarletMonasteryCathedral.Alliance[3] = {
     Title = "Corrupción Escarlata",
+    Id = 40935,
     Level = 44,
     Attain = 35,
     Aim = "Descubre la verdad sobre el destino del Alto Inquisidor Fairbanks para el Hermano Elias en la Taberna Sombría en Gilneas.",
@@ -3312,6 +3541,7 @@ kQuestInstanceData.ScarletMonasteryGraveyard = {
 kQuestInstanceData.ScarletMonasteryGraveyard.Horde[1] = kQuestInstanceData.ScarletMonasteryLibrary.Horde[1]
 kQuestInstanceData.ScarletMonasteryGraveyard.Horde[2] = {
     Title = "La Venganza de Vorrel",
+    Id = 1051,
     Level = 33,
     Attain = 25,
     Aim = "Devuelve el anillo de bodas de Vorrel Sengutz a Monika Sengutz en Molino Tarren.",
@@ -3326,6 +3556,7 @@ kQuestInstanceData.ScarletMonasteryGraveyard.Horde[2] = {
 }
 kQuestInstanceData.ScarletMonasteryGraveyard.Horde[3] = {
     Title = "Pinta las Rosas de Rojo",
+    Id = 60116,
     Level = 29,
     Attain = 27,
     Aim = "Elimina a las fuerzas Escarlata fuera del Monasterio Escarlata, luego regresa con el Guardia de la Muerte Burgess en Rémol.",
@@ -3349,6 +3580,7 @@ kQuestInstanceData.Scholomance = {
 }
 kQuestInstanceData.Scholomance.Alliance[1] = {
     Title = "Crías de la Plaga",
+    Id = 5529,
     Level = 58,
     Attain = 55,
     Aim = "Mata 20 Crías Apestadas, luego regresa con Betina Bigglezink en la Capilla de la Esperanza de la Luz.",
@@ -3358,6 +3590,7 @@ kQuestInstanceData.Scholomance.Alliance[1] = {
 }
 kQuestInstanceData.Scholomance.Alliance[2] = {
     Title = "Escama de Dragón Saludable",
+    Id = 5582,
     Level = 58,
     Attain = 55,
     Aim = "Lleva la Escama de Dragón Saludable a Betina Bigglezink en la Capilla de la Esperanza de la Luz en las Tierras de la Peste del Este.",
@@ -3367,6 +3600,7 @@ kQuestInstanceData.Scholomance.Alliance[2] = {
 }
 kQuestInstanceData.Scholomance.Alliance[3] = {
     Title = "Doctor Theolen Krastinov, el Carnicero",
+    Id = 5382,
     Level = 60,
     Attain = 55,
     Aim = "Encuentra al Doctor Theolen Krastinov dentro de Scholomance. Destrúyelo, luego quema los Restos de Eva Sarkhoff y los Restos de Lucien Sarkhoff. Regresa con Eva Sarkhoff cuando la tarea esté completa.",
@@ -3376,6 +3610,7 @@ kQuestInstanceData.Scholomance.Alliance[3] = {
 }
 kQuestInstanceData.Scholomance.Alliance[4] = {
     Title = "Krastinov's Bag of Horrors",
+    Id = 5515,
     Level = 60,
     Attain = 55,
     Aim = "Lleva el Saco de Horrores a Eva Sarkhoff en Castel Darrow.",
@@ -3386,6 +3621,7 @@ kQuestInstanceData.Scholomance.Alliance[4] = {
 }
 kQuestInstanceData.Scholomance.Alliance[5] = {
     Title = "Kirtonos el Heraldo",
+    Id = 5384,
     Level = 60,
     Attain = 55,
     Aim = "Regresa a Scholomance con la Sangre de los Inocentes. Encuentra el porche y coloca la Sangre de los Inocentes en el brasero. Kirtonos vendrá a alimentarse de tu alma.$B$B¡Lucha con valentía, no cedas ni un centímetro! Destruye a Kirtonos y regresa con Eva Sarkhoff.",
@@ -3402,6 +3638,7 @@ kQuestInstanceData.Scholomance.Alliance[5] = {
 }
 kQuestInstanceData.Scholomance.Alliance[6] = {
     Title = "Recuerdo Ligado al Alma",
+    Id = 5466,
     Level = 60,
     Attain = 57,
     Aim = "Encuentra a Ras Murmuhielo en Scholomance. Cuando lo encuentres, usa la Reliquia de Almas en su rostro no muerto. Si logras revertirlo a su forma mortal, mátalo y recupera la Cabeza Humana de Ras Murmuhielo. Lleva la cabeza de vuelta al Magistrado Marduke.",
@@ -3418,6 +3655,7 @@ kQuestInstanceData.Scholomance.Alliance[6] = {
 }
 kQuestInstanceData.Scholomance.Alliance[7] = {
     Title = "La Fortuna de la Familia Barov",
+    Id = 5343,
     Level = 60,
     Attain = 52,
     Aim = "Viaja a Scholomance y recupera la fortuna de la familia Barov. Esta fortuna consta de cuatro escrituras: La Escritura de Castel Darrow, La Escritura de Rémol, La Escritura de Molino Tarren y La Escritura de Costasur. Regresa con Alexi Barov cuando hayas completado esta tarea.",
@@ -3427,6 +3665,7 @@ kQuestInstanceData.Scholomance.Alliance[7] = {
 }
 kQuestInstanceData.Scholomance.Alliance[8] = {
     Title = "Gambito del Alba",
+    Id = 4771,
     Level = 60,
     Attain = 57,
     Aim = "Coloca la Jugada de Alba en la Sala de Observación de Scholomance. Derrota a Vectus, luego regresa con Betina Bigglezink.",
@@ -3441,6 +3680,7 @@ kQuestInstanceData.Scholomance.Alliance[8] = {
 }
 kQuestInstanceData.Scholomance.Alliance[9] = {
     Title = "Entrega de Diablillo",
+    Id = 7629,
     Level = 60,
     Attain = 60,
     Aim = "Lleva el Diablo en un Tarro al laboratorio de alquimia en Scholomance. Después de crear el pergamino, devuelve el tarro a Gorzeeki Wildeyes.",
@@ -3451,6 +3691,7 @@ kQuestInstanceData.Scholomance.Alliance[9] = {
 }
 kQuestInstanceData.Scholomance.Alliance[10] = {
     Title = "La Pieza Izquierda del Amuleto de Lord Valthalak",
+    Id = 8969,
     Level = 60,
     Attain = 58,
     Aim = "Usa el Brasero de Invocación para convocar al espíritu de Mor Grayhoof y mátalo. Regresa con Bodley dentro de la Montaña Roca Negra con la Pieza Izquierda del Amuleto de Lord Valthalak y el Brasero de Invocación.",
@@ -3461,6 +3702,7 @@ kQuestInstanceData.Scholomance.Alliance[10] = {
 }
 kQuestInstanceData.Scholomance.Alliance[11] = {
     Title = "La Pieza Derecha del Amuleto de Lord Valthalak",
+    Id = 8992,
     Level = 60,
     Attain = 58,
     Aim = "Usa el Brasero de Invocación para convocar al espíritu de Mor Grayhoof y mátalo. Regresa con Bodley dentro de la Montaña Roca Negra con el Amuleto de Lord Valthalak recombinado y el Brasero de Invocación.",
@@ -3471,6 +3713,7 @@ kQuestInstanceData.Scholomance.Alliance[11] = {
 }
 kQuestInstanceData.Scholomance.Alliance[12] = {
     Title = "Un Favor para Farsan",
+    Id = 40237,
     Level = 58,
     Attain = 55,
     Aim = "Adéntrate en Scholomance y recupera el libro 'Llamamiento y Mando del Fuego' para Strahad Farsan en Ratchet.",
@@ -3505,6 +3748,7 @@ kQuestInstanceData.ShadowfangKeep = {
 }
 kQuestInstanceData.ShadowfangKeep.Alliance[1] = {
     Title = "La Prueba de la Rectitud",
+    Id = 1654,
     Level = 22,
     Attain = 20,
     Aim = "Habla con Jordan Stilwell en Forjaz.",
@@ -3520,6 +3764,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[1] = {
 }
 kQuestInstanceData.ShadowfangKeep.Alliance[2] = {
     Title = "El Orbe de Soran'ruk",
+    Id = 1740,
     Level = 25,
     Attain = 20,
     Aim = "Encuentra 3 Fragmentos de Soran'ruk y 1 Fragmento Grande de Soran'ruk y llévaselos a Doan Karhan en Los Baldíos.",
@@ -3533,6 +3778,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[2] = {
 }
 kQuestInstanceData.ShadowfangKeep.Alliance[3] = {
     Title = "La Locura de Arugal",
+    Id = 99,
     Level = 27,
     Attain = 22,
     Location = "Sumo Hechicero Andromath (Ventormenta - El Barrio de los Magos, Torre de Magos)",
@@ -3544,6 +3790,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[3] = {
 }
 kQuestInstanceData.ShadowfangKeep.Alliance[4] = {
     Title = "El Hechicero Perdido",
+    Id = 60109,
     Level = 24,
     Attain = 22,
     Aim = "El Alto Hechicero Andromath quiere que viajes al Castillo de Colmillo Oscuro en el Bosque de Argénteos y descubras qué le pasó al Hechicero Ashcrombe.",
@@ -3552,6 +3799,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[4] = {
 }
 kQuestInstanceData.ShadowfangKeep.Alliance[5] = {
     Title = "Guadaña de la Diosa",
+    Id = 41378,
     Level = 60,
     Attain = 60,
     Aim = "Recoge sangre de huargen para Fandral Corzocelada. Necesita muestras de sangre de Karazhan, Ciudad de Gilneas y el Castillo de Colmillo Oscuro.",
@@ -3562,6 +3810,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[5] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[1] = {
     Title = "Mortacechadores en Castel Darrow",
+    Id = 1098,
     Level = 25,
     Attain = 18,
     Aim = "Encuentra a los Acechamuerte Adamant y Acechamuerte Vincent.",
@@ -3574,6 +3823,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[1] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[2] = {
     Title = "El Libro de Ur",
+    Id = 1013,
     Level = 26,
     Attain = 16,
     Aim = "Lleva el Libro de Ur a Guardián Bel'dugur en el Apothecarium en Entrañas.",
@@ -3587,6 +3837,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[2] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[3] = {
     Title = "Arugal debe morir",
+    Id = 1014,
     Level = 27,
     Attain = 18,
     Aim = "Mata a Arugal y lleva su cabeza a Dalar Tejealba en el Sepulcro.",
@@ -3599,6 +3850,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[3] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[4] = {
     Title = "El Orbe de Soran'ruk",
+    Id = 1740,
     Level = 25,
     Attain = 20,
     Aim = "Encuentra 3 Fragmentos de Soran'ruk y 1 Fragmento Grande de Soran'ruk y llévaselos a Doan Karhan en Los Baldíos.",
@@ -3611,6 +3863,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[4] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[5] = {
     Title = "En las Fauces",
+    Id = 40281,
     Level = 25,
     Attain = 15,
     Aim = "Encuentra las pertenencias de Melenas en la Biblioteca de Castillo de Colmillo Oscuro y devuélveselas a Pierce Shackleton en Entrañas.",
@@ -3626,6 +3879,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[5] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[6] = {
     Title = "Demasiado Tarde para el Prelado",
+    Id = 41366,
     Level = 22,
     Attain = 16,
     Aim = "Mata al Prelado Yelmoférreo y regresa con el Padre Brightcopf en Villa del Arroyo.",
@@ -3639,6 +3893,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[6] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[7] = {
     Title = "Guadaña de la Diosa",
+    Id = 41381,
     Level = 60,
     Attain = 60,
     Aim = "Recoge sangre de huargen para Fandral Corzocelada. Necesita muestras de sangre de Karazhan, Ciudad de Gilneas y el Castillo de Colmillo Oscuro.",
@@ -3657,6 +3912,7 @@ kQuestInstanceData.Stratholme = {
 }
 kQuestInstanceData.Stratholme.Alliance[1] = {
     Title = "La Carne No Miente",
+    Id = 5212,
     Level = 60,
     Attain = 55,
     Aim = "Recupera 20 muestras de carne infectada de Stratholme y llévaselas a Betina Bigglezink. Sospechas que cualquier criatura en Stratholme tendría dicha muestra de carne.",
@@ -3666,6 +3922,7 @@ kQuestInstanceData.Stratholme.Alliance[1] = {
 }
 kQuestInstanceData.Stratholme.Alliance[2] = {
     Title = "El Agente Activo",
+    Id = 5213,
     Level = 60,
     Attain = 55,
     Aim = "Viaja a Stratholme y busca en los zigurats. Encuentra y devuelve nuevos Datos de la Plaga a Betina Bigglezink.",
@@ -3680,6 +3937,7 @@ kQuestInstanceData.Stratholme.Alliance[2] = {
 }
 kQuestInstanceData.Stratholme.Alliance[3] = {
     Title = "Casas de lo Sagrado",
+    Id = 5243,
     Level = 60,
     Attain = 55,
     Aim = "Viaja a Stratholme, en el norte. Busca en las cajas de suministros que salpican la ciudad y recupera 5 Agua Bendita de Stratholme. Regresa con Leonid Barthalomew el Venerado cuando hayas recolectado suficiente del líquido bendito.",
@@ -3695,6 +3953,7 @@ kQuestInstanceData.Stratholme.Alliance[3] = {
 }
 kQuestInstanceData.Stratholme.Alliance[4] = {
     Title = "El Gran Halric Emberlain",
+    Id = 5214,
     Level = 60,
     Attain = 55,
     Aim = "Encuentra la tienda de tabaco de Halric Emberlain en Stratholme y recupera una caja de Tabaco Premium de Siabi. Regresa con Smokey LaRue cuando el trabajo esté hecho.",
@@ -3707,6 +3966,7 @@ kQuestInstanceData.Stratholme.Alliance[4] = {
 }
 kQuestInstanceData.Stratholme.Alliance[5] = {
     Title = "Las Almas Inquietas",
+    Id = 5282,
     Level = 60,
     Attain = 55,
     Aim = "Encuentra a Egan. Solo sabes que fue visto por última vez cerca de Stratholme.",
@@ -3720,6 +3980,7 @@ kQuestInstanceData.Stratholme.Alliance[5] = {
 }
 kQuestInstanceData.Stratholme.Alliance[6] = {
     Title = "De Amor y Familia",
+    Id = 5848,
     Level = 60,
     Attain = 52,
     Aim = "Viaja a la isla de Caer Darrow, en la región centro-sur de las Tierras de la Peste, y busca cualquier pista sobre el paradero de la pintura.",
@@ -3730,6 +3991,7 @@ kQuestInstanceData.Stratholme.Alliance[6] = {
 }
 kQuestInstanceData.Stratholme.Alliance[7] = {
     Title = "El Moribundo, Ras Frostwhisper",
+    Id = 5463,
     Level = 60,
     Attain = 57,
     Aim = "Viaja a Stratholme y encuentra el Regalo de Menethil. Coloca el Recuerdo del Recuerdo en el suelo profano.",
@@ -3740,6 +4002,7 @@ kQuestInstanceData.Stratholme.Alliance[7] = {
 }
 kQuestInstanceData.Stratholme.Alliance[8] = {
     Title = "La Venganza de Aurius",
+    Id = 5125,
     Level = 60,
     Attain = 55,
     Aim = "Mata al Barón.",
@@ -3753,6 +4016,7 @@ kQuestInstanceData.Stratholme.Alliance[8] = {
 }
 kQuestInstanceData.Stratholme.Alliance[9] = {
     Title = "El Archivista",
+    Id = 5251,
     Level = 60,
     Attain = 55,
     Aim = "Viaja a Stratholme y encuentra al Archivista Galford de la Cruzada Escarlata. Destrúyelo y quema el Archivo Escarlata.",
@@ -3762,6 +4026,7 @@ kQuestInstanceData.Stratholme.Alliance[9] = {
 }
 kQuestInstanceData.Stratholme.Alliance[10] = {
     Title = "La Verdad se Desmorona",
+    Id = 5262,
     Level = 60,
     Attain = 55,
     Aim = "Lleva la Cabeza de Balnazzar al Duque Nicholas Zverenhoff en las Tierras de la Peste del Este.",
@@ -3772,6 +4037,7 @@ kQuestInstanceData.Stratholme.Alliance[10] = {
 }
 kQuestInstanceData.Stratholme.Alliance[11] = {
     Title = "Más Allá",
+    Id = 5263,
     Level = 60,
     Attain = 55,
     Aim = "Viaja a Stratholme y destruye al Barón Osahendido. Toma su cabeza y devuélvesela al Duque Nicholas Zverenhoff.",
@@ -3787,6 +4053,7 @@ kQuestInstanceData.Stratholme.Alliance[11] = {
 }
 kQuestInstanceData.Stratholme.Alliance[12] = {
     Title = "Súplica de un Hombre Muerto",
+    Id = 8945,
     Level = 60,
     Attain = 58,
     Aim = "Entra en Stratholme y rescata a Ysida Harmon del Barón Osahendido.",
@@ -3797,6 +4064,7 @@ kQuestInstanceData.Stratholme.Alliance[12] = {
 }
 kQuestInstanceData.Stratholme.Alliance[13] = {
     Title = "La Pieza Izquierda del Amuleto de Lord Valthalak",
+    Id = 8968,
     Level = 60,
     Attain = 58,
     Aim = "Usa el Brasero de Invocación para convocar al espíritu de Mor Grayhoof y mátalo. Regresa con Bodley dentro de la Montaña Roca Negra con la Pieza Izquierda del Amuleto de Lord Valthalak y el Brasero de Invocación.",
@@ -3807,6 +4075,7 @@ kQuestInstanceData.Stratholme.Alliance[13] = {
 }
 kQuestInstanceData.Stratholme.Alliance[14] = {
     Title = "La Pieza Derecha del Amuleto de Lord Valthalak",
+    Id = 8991,
     Level = 60,
     Attain = 58,
     Aim = "Usa el Brasero de Invocación para convocar al espíritu de Mor Grayhoof y mátalo. Regresa con Bodley dentro de la Montaña Roca Negra con el Amuleto de Lord Valthalak recombinado y el Brasero de Invocación.",
@@ -3817,6 +4086,7 @@ kQuestInstanceData.Stratholme.Alliance[14] = {
 }
 kQuestInstanceData.Stratholme.Alliance[15] = {
     Title = "Atiesh, Gran Bastón del Guardián",
+    Id = 9257,
     Level = 60,
     Attain = 60,
     Aim = "Anachronos en las Cavernas del Tiempo en Tanaris quiere que lleves Atiesh, Gran Bastón del Guardián a Stratholme y lo uses en Tierra Consagrada. Derrota a la entidad que es exorcizada del bastón y regresa con él.",
@@ -3833,6 +4103,7 @@ kQuestInstanceData.Stratholme.Alliance[15] = {
 }
 kQuestInstanceData.Stratholme.Alliance[16] = {
     Title = "Corrupción",
+    Id = 5307,
     Level = 60,
     Attain = 50,
     Aim = "Encuentra al Forjador de Espadas de la Guardia Negra en Stratholme y destrúyelo. Recupera el Insignia de la Guardia Negra y llévasela a Seril Azotamuertos.",
@@ -3845,6 +4116,7 @@ kQuestInstanceData.Stratholme.Alliance[16] = {
 }
 kQuestInstanceData.Stratholme.Alliance[17] = {
     Title = "Dulce Serenidad",
+    Id = 5305,
     Level = 60,
     Attain = 50,
     Aim = "Viaja a Stratholme y mata al Herrero Martillo Carmesí. Recupera el Delantal del Herrero Martillo Carmesí y entrégaselo a Lilith.",
@@ -3857,6 +4129,7 @@ kQuestInstanceData.Stratholme.Alliance[17] = {
 }
 kQuestInstanceData.Stratholme.Alliance[18] = {
     Title = "Para Construir un Golpeador",
+    Id = 80401,
     Level = 60,
     Attain = 30,
     Aim = "Consigue el Servo Sintonizado de Torio de la Armería del Monasterio Escarlata, obtén el Núcleo de Gólem Perfecto en las Profundidades de Roca Negra de Lord Argelmach Gólem, encuentra la Vara de Adamantita en Stratholme. Regresa con Oglethorpe Obnoticus.",
@@ -3873,6 +4146,7 @@ kQuestInstanceData.Stratholme.Alliance[18] = {
 }
 kQuestInstanceData.Stratholme.Alliance[19] = {
     Title = "To Wake The Ashbringer",
+    Id = 20002,
     Level = 60,
     Attain = 60,
     Aim = "Recupera el Tabardo del Portador de Cenizas (mata al Gran Cruzado Dathrohan) y la Capa de Alexandros de Stratholme.",
@@ -3887,6 +4161,7 @@ kQuestInstanceData.Stratholme.Alliance[19] = {
 }
 kQuestInstanceData.Stratholme.Alliance[20] = {
     Title = "Broche de la Familia Rothlen",
+    Id = 41000,
     Level = 60,
     Attain = 55,
     Aim = "Recupera el Broche de la Familia Rothlen de Stratholme para el Duque Rothlen en Karazhan.",
@@ -3897,6 +4172,7 @@ kQuestInstanceData.Stratholme.Alliance[20] = {
 }
 kQuestInstanceData.Stratholme.Alliance[21] = {
     Title = "La Llave de Karazhan VII",
+    Id = 40826,
     Level = 60,
     Attain = 58,
     Aim = "Encuentra cuatro Ecos de Medivh. Podrían encontrarse en lugares de gran importancia para el mago. Luego regresa con Dolvan con la llave.",
@@ -3910,6 +4186,7 @@ for i = 1, 17 do
 end
 kQuestInstanceData.Stratholme.Horde[18] = {
     Title = "Ramstein",
+    Id = 6163,
     Level = 60,
     Attain = 56,
     Aim = "Viaja a Stratholme y mata a Ramstein el Empalador. Toma su cabeza como recuerdo para Nathanos.",
@@ -3924,6 +4201,7 @@ kQuestInstanceData.Stratholme.Horde[18] = {
 }
 kQuestInstanceData.Stratholme.Horde[19] = {
     Title = "Para Construir un Golpeador",
+    Id = 80401,
     Level = 60,
     Attain = 30,
     Aim = "Consigue el Servo Sintonizado de Torio de la Armería del Monasterio Escarlata, obtén el Núcleo de Gólem Perfecto en las Profundidades de Roca Negra de Lord Argelmach Gólem, encuentra la Vara de Adamantita en Stratholme. Regresa con Oglethorpe Obnoticus.",
@@ -3950,6 +4228,7 @@ kQuestInstanceData.TheRuinsofAhnQiraj = {
 }
 kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[1] = {
     Title = "La Caída de Ossirian",
+    Id = 8791,
     Level = 60,
     Attain = 60,
     Aim = "Entrega la Cabeza de Ossirian el Sin Cicatriz al Comandante Mar'alith en el Fuerte Cenarion en Silithus.",
@@ -3965,6 +4244,7 @@ kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[1] = {
 }
 kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[2] = {
     Title = "El Veneno Perfecto",
+    Id = 9023,
     Level = 60,
     Attain = 60,
     Aim = "Dirk Truenomad en el Bastión Cenarion quiere que le traigas el Saco de Veneno de Venoxis y el Saco de Veneno de Kurinnaxx.",
@@ -3982,6 +4262,7 @@ kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[2] = {
 }
 kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[3] = {
     Title = "Perdido en las Arenas",
+    Id = 70001,
     Level = 60,
     Attain = 60,
     Aim = "Lleva un Fragmento de Obsidiana Perfecto al Archimago Xylem.",
@@ -4006,6 +4287,7 @@ kQuestInstanceData.TheStockade = {
 }
 kQuestInstanceData.TheStockade.Alliance[1] = {
     Title = "Lo Que Va, Viene...",
+    Id = 386,
     Level = 25,
     Attain = 22,
     Aim = "Lleva la cabeza de Targorr el Temible al Guardia Berton en Villa del Lago.",
@@ -4019,6 +4301,7 @@ kQuestInstanceData.TheStockade.Alliance[1] = {
 }
 kQuestInstanceData.TheStockade.Alliance[2] = {
     Title = "Crimen y Castigo",
+    Id = 377,
     Level = 26,
     Attain = 22,
     Aim = "El Concejal Millstipe de Villa Oscura quiere que le lleves la mano de Dextren Ward.",
@@ -4032,6 +4315,7 @@ kQuestInstanceData.TheStockade.Alliance[2] = {
 }
 kQuestInstanceData.TheStockade.Alliance[3] = {
     Title = "Calmar el Levantamiento",
+    Id = 387,
     Level = 26,
     Attain = 22,
     Aim = "El Celador Thelwater de Ventormenta quiere que mates a 10 Prisioneros Defias, 8 Reos Defias y 8 Insurgentes Defias en Las Mazmorras.",
@@ -4039,6 +4323,7 @@ kQuestInstanceData.TheStockade.Alliance[3] = {
 }
 kQuestInstanceData.TheStockade.Alliance[4] = {
     Title = "El Color de la Sangre",
+    Id = 388,
     Level = 26,
     Attain = 22,
     Aim = "Nikova Raskol de Ventormenta quiere que recolectes 10 Pañuelos de Lana Roja.",
@@ -4047,6 +4332,7 @@ kQuestInstanceData.TheStockade.Alliance[4] = {
 }
 kQuestInstanceData.TheStockade.Alliance[5] = {
     Title = "La Furia es Profunda",
+    Id = 378,
     Level = 27,
     Attain = 22,
     Aim = "Motley Garmason quiere que le lleves la cabeza de Kam Furiahonda a Dun Modr.",
@@ -4061,6 +4347,7 @@ kQuestInstanceData.TheStockade.Alliance[5] = {
 }
 kQuestInstanceData.TheStockade.Alliance[6] = {
     Title = "Los Motines de Las Mazmorras",
+    Id = 391,
     Level = 29,
     Attain = 16,
     Aim = "Mata a Bazil Thredd y lleva su cabeza de vuelta al Alcaide Thelwater en Las Mazmorras.",
@@ -4071,6 +4358,7 @@ kQuestInstanceData.TheStockade.Alliance[6] = {
 }
 kQuestInstanceData.TheStockade.Alliance[7] = {
     Title = "The Stockade's Search",
+    Id = 55221,
     Level = 24,
     Attain = 18,
     Aim = "Adéntrate en Las Mazmorras y encuentra información sobre Marthin Corinth.",
@@ -4095,6 +4383,7 @@ kQuestInstanceData.TheSunkenTemple = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[1] = {
     Title = "En el Templo de Atal'Hakkar",
+    Id = 1475,
     Level = 50,
     Attain = 41,
     Aim = "Reúne 10 Tablillas Atal'ai para Brohann Barriga de Barril en Ventormenta.",
@@ -4108,6 +4397,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[1] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[2] = {
     Title = "Niebla del Mal",
+    Id = 4143,
     Level = 52,
     Attain = 47,
     Aim = "Recolecta 5 muestras de Niebla Atal'ai, luego regresa con Muigin en el Cráter de Un'Goro.",
@@ -4117,6 +4407,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[2] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[3] = {
     Title = "En las Profundidades",
+    Id = 3446,
     Level = 51,
     Attain = 46,
     Aim = "Encuentra el Altar de Hakkar en el Templo Sumergido en los Pantanos de las Penas.",
@@ -4127,6 +4418,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[3] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[4] = {
     Title = "El Secreto del Círculo",
+    Id = 3447,
     Level = 51,
     Attain = 46,
     Aim = "Viaja al Templo Sumergido y descubre el secreto oculto en el círculo de estatuas.",
@@ -4140,6 +4432,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[4] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[5] = {
     Title = "El Dios Hakkar",
+    Id = 3528,
     Level = 53,
     Attain = 40,
     Aim = "Lleva el Huevo Lleno de Hakkar a Yeh'kinya en Tanaris.",
@@ -4155,6 +4448,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[5] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[6] = {
     Title = "Jammal'an el Profeta",
+    Id = 1446,
     Level = 53,
     Attain = 38,
     Aim = "El Exiliado Atal'ai en las Tierras del Interior quiere la Cabeza de Jammal'an.",
@@ -4168,6 +4462,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[6] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[7] = {
     Title = "La Esencia de Eranikus",
+    Id = 3373,
     Level = 55,
     Attain = 48,
     Aim = "Coloca la Esencia de Eranikus en la Fuente de Esencia ubicada en esta guarida en el Templo Sumergido.",
@@ -4181,6 +4476,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[7] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[8] = {
     Title = "Trols de la Misma Pluma",
+    Id = 8422,
     Level = 52,
     Attain = 50,
     Aim = "Lleva un total de 6 Plumas Vudú de los trolls en el Templo Sumergido.",
@@ -4196,6 +4492,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[8] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[9] = {
     Title = "Plumas de Vudú",
+    Id = 8425,
     Level = 52,
     Attain = 50,
     Aim = "Lleva las Plumas Vudú de los trolls en el Templo Sumergido al Héroe Caído de la Horda.",
@@ -4211,6 +4508,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[9] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[10] = {
     Title = "Un Ingrediente Mejor",
+    Id = 9053,
     Level = 52,
     Attain = 50,
     Aim = "Recupera un Zarcillo Pútrido del guardián en el fondo del Templo Sumergido y llévaselo a Torwa Exploradora.",
@@ -4226,6 +4524,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[10] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[11] = {
     Title = "El Dracoleón Verde",
+    Id = 8232,
     Level = 52,
     Attain = 50,
     Aim = "Lleva el Diente de Morphaz a Ogtinc en Azshara. Ogtinc reside en lo alto de los acantilados al noreste de las Ruinas de Eldarath.",
@@ -4241,6 +4540,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[11] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[12] = {
     Title = "Destruir a Morphaz",
+    Id = 8253,
     Level = 52,
     Attain = 50,
     Aim = "Recupera el Fragmento Arcano de Morphaz y llévaselo al Archimago Xylem.",
@@ -4256,6 +4556,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[12] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[13] = {
     Title = "Sangre de Morphaz",
+    Id = 8257,
     Level = 52,
     Attain = 50,
     Aim = "Mata a Morphaz en el Templo Sumergido de Atal'Hakkar, y lleva su sangre a Greta Pezuñamusgo en Frondavil. La entrada al templo sumergido se encuentra en los Pantanos de las Penas.",
@@ -4271,6 +4572,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[13] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[14] = {
     Title = "La Llave de Azur",
+    Id = 8236,
     Level = 52,
     Attain = 50,
     Aim = "Devuelve la Llave de Azur a Lord Jorach Cuervo.",
@@ -4286,6 +4588,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[14] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[15] = {
     Title = "Eranikus, Tirano del Sueño",
+    Id = 8733,
     Level = 60,
     Attain = 60,
     Aim = "Viaja al continente de Teldrassil y encuentra al agente de Malfurion en algún lugar fuera de los muros de Darnassus.",
@@ -4296,6 +4599,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[15] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[16] = {
     Title = "Por Cualquier Medio Necesario IV",
+    Id = 40400,
     Level = 53,
     Attain = 47,
     Aim = "Viaja al Templo Sumergido, encuentra al Dragonkin Hazzas, mátalo y regresa el Corazón de Hazzas a Niremius Darkwind.",
@@ -4310,6 +4614,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[16] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[17] = {
     Title = "Forjando la Piedra de Poder",
+    Id = 8418,
     Level = 52,
     Attain = 50,
     Aim = "Lleva las plumas vudú a Ashlam Valorfist.",
@@ -4326,6 +4631,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[17] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[18] = {
     Title = "Dentro del Sueño III",
+    Id = 40959,
     Level = 60,
     Attain = 58,
     Aim = "Reúne un Fragmento de Atadura de los Rompeacantiles en Azshara, un Prisma Arcano Sobrecargado de los Torrentes Arcanos en el ala occidental de La Masacre y un Fragmento del Durmiente de los Tejedores en el Templo Sumergido. Informa a Itharius en los Pantanos de las Penas con los objetos recolectados.",
@@ -4340,6 +4646,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[18] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[19] = {
     Title = "El Bastón del Caminante de la Falla",
+    Id = 41323,
     Level = 54,
     Attain = 30,
     Aim = "Regresa con el Bastón de Abisario de Akh Z'ador y el Mojo de Jammal'an para Akh Z'ador en Azshara.",
@@ -4354,6 +4661,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[19] = {
 }
 kQuestInstanceData.TheSunkenTemple.Horde[1] = {
     Title = "El Templo de Atal'Hakkar",
+    Id = 1445,
     Level = 50,
     Attain = 38,
     Aim = "Recolecta 20 Fetiches de Hakkar y llévaselos a Fel'Zerul en Rocal.",
@@ -4364,6 +4672,7 @@ kQuestInstanceData.TheSunkenTemple.Horde[1] = {
 }
 kQuestInstanceData.TheSunkenTemple.Horde[2] = {
     Title = "Combustible para el Zapper",
+    Id = 4146,
     Level = 52,
     Attain = 47,
     Aim = "Entrega el Zapper Descargado y 5 muestras de Niebla Atal'ai a Larion en el Refugio de Marshal.",
@@ -4376,6 +4685,7 @@ for i = 3, 16 do
 end
 kQuestInstanceData.TheSunkenTemple.Horde[17] = {
     Title = "El Vudú",
+    Id = 8413,
     Level = 52,
     Attain = 50,
     Aim = "Lleva las plumas vudú a Bath'rah el Vigía del Viento.",
@@ -4391,6 +4701,7 @@ kQuestInstanceData.TheSunkenTemple.Horde[17] = {
 }
 kQuestInstanceData.TheSunkenTemple.Horde[18] = {
     Title = "La Crisis Maul'ogg VII",
+    Id = 40270,
     Level = 54,
     Attain = 45,
     Aim = "Adéntrate en las profundidades del Templo de Atal'Hakkar y consigue la Vara Atal'ai, llévasela a Insom'ni para completar el hechizo.",
@@ -4407,6 +4718,7 @@ kQuestInstanceData.TheSunkenTemple.Horde[18] = {
 }
 kQuestInstanceData.TheSunkenTemple.Horde[19] = {
     Title = "Dentro del Sueño III",
+    Id = 40959,
     Level = 60,
     Attain = 58,
     Aim = "Reúne un Fragmento de Atadura de los Rompeacantiles en Azshara, un Prisma Arcano Sobrecargado de los Torrentes Arcanos en el ala occidental de La Masacre y un Fragmento del Durmiente de los Tejedores en el Templo Sumergido. Informa a Itharius en los Pantanos de las Penas con los objetos recolectados.",
@@ -4421,6 +4733,7 @@ kQuestInstanceData.TheSunkenTemple.Horde[19] = {
 }
 kQuestInstanceData.TheSunkenTemple.Horde[20] = {
     Title = "El Bastón del Caminante de la Falla",
+    Id = 41323,
     Level = 54,
     Attain = 30,
     Aim = "Regresa con el Bastón de Abisario de Akh Z'ador y el Mojo de Jammal'an para Akh Z'ador en Azshara.",
@@ -4443,6 +4756,7 @@ kQuestInstanceData.TheTempleofAhnQiraj = {
 }
 kQuestInstanceData.TheTempleofAhnQiraj.Alliance[1] = {
     Title = "El Legado de C'Thun",
+    Id = 8801,
     Level = 60,
     Attain = 60,
     Aim = "Lleva el Ojo de C'Thun a Caelastrasz en el Templo de Ahn'Qiraj.",
@@ -4458,6 +4772,7 @@ kQuestInstanceData.TheTempleofAhnQiraj.Alliance[1] = {
 }
 kQuestInstanceData.TheTempleofAhnQiraj.Alliance[2] = {
     Title = "Secretos de los Qiraji",
+    Id = 8784,
     Level = 60,
     Attain = 60,
     Aim = "Lleva el Artefacto Qiraji Antiguo a los dragones escondidos cerca de la entrada del templo.",
@@ -4476,6 +4791,7 @@ kQuestInstanceData.ZulFarrak = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[1] = {
     Title = "El Medallón de Nekrum",
+    Id = 2991,
     Level = 47,
     Attain = 40,
     Aim = "Lleva el Medallón de Nekrum a Thadius Grimshade en las Tierras Devastadas.",
@@ -4486,6 +4802,7 @@ kQuestInstanceData.ZulFarrak.Alliance[1] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[2] = {
     Title = "Temperamento de Troll",
+    Id = 3042,
     Level = 45,
     Attain = 40,
     Aim = "Lleva 20 Viales de Temperamento de Troll a Trenton Lighthammer en Gadgetzan.",
@@ -4494,6 +4811,7 @@ kQuestInstanceData.ZulFarrak.Alliance[2] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[3] = {
     Title = "Caparazones de Escarabajo",
+    Id = 2865,
     Level = 45,
     Attain = 40,
     Aim = "Lleva 5 Caparazones de Escarabajo sin Romper a Tran'rek en Gadgetzan.",
@@ -4503,6 +4821,7 @@ kQuestInstanceData.ZulFarrak.Alliance[3] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[4] = {
     Title = "La Tiara de las Profundidades",
+    Id = 2846,
     Level = 46,
     Attain = 40,
     Aim = "Lleva la Tiara de las Profundidades a Tabetha en los Pantanos de Dustwallow.",
@@ -4517,6 +4836,7 @@ kQuestInstanceData.ZulFarrak.Alliance[4] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[5] = {
     Title = "La Profecía de Mosh'aru",
+    Id = 3527,
     Level = 47,
     Attain = 40,
     Aim = "Lleva la Primera y Segunda Tablillas Mosh'aru a Yeh'kinya en Tanaris.",
@@ -4527,6 +4847,7 @@ kQuestInstanceData.ZulFarrak.Alliance[5] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[6] = {
     Title = "Vara Divino-Mática",
+    Id = 2768,
     Level = 47,
     Attain = 40,
     Aim = "Lleva la Vara Divino-mática al Jefe Ingeniero Bilgewhizzle en Gadgetzan.",
@@ -4540,6 +4861,7 @@ kQuestInstanceData.ZulFarrak.Alliance[6] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[7] = {
     Title = "Gahz'rilla",
+    Id = 2770,
     Level = 50,
     Attain = 40,
     Aim = "Lleva la Escala Electrificada de Gahz'rilla a Wizzle Tornillos en Los Baldíos Brillantes.",
@@ -4553,6 +4875,7 @@ kQuestInstanceData.ZulFarrak.Alliance[7] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[8] = {
     Title = "Deriva a Través de la Arena",
+    Id = 40519,
     Level = 46,
     Attain = 40,
     Aim = "Adéntrate en Zul'Farrak y encuentra los Restos de Troll Antiguo, luego devuélveselos a Hansu Go'sha en las Ruinas de la Luna del Sur en Tanaris.",
@@ -4565,6 +4888,7 @@ kQuestInstanceData.ZulFarrak.Alliance[8] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[9] = {
     Title = "El Ancestro Farraki",
+    Id = 41811,
     Level = 46,
     Attain = 40,
     Aim = "Aventúrate en Zul'Farrak y mata a Zel'jeb el Ancestro, luego regresa con Zalsu el Errante, quien puede encontrarse al sur de Zul'Farrak.",
@@ -4578,6 +4902,7 @@ kQuestInstanceData.ZulFarrak.Alliance[9] = {
 }
 kQuestInstanceData.ZulFarrak.Horde[1] = {
     Title = "El Dios Araña",
+    Id = 2936,
     Level = 45,
     Attain = 40,
     Aim = "Lee de la Tablilla de Theka para aprender el nombre del dios araña Secacorteza, luego regresa con el Maestro Gadrin.",
@@ -4591,6 +4916,7 @@ for i = 2, 9 do
 end
 kQuestInstanceData.ZulFarrak.Horde[10] = {
     Title = "Termina con Ukorz Sandscalp",
+    Id = 40527,
     Level = 48,
     Attain = 40,
     Aim = "Mata a Ukorz Cabellera de Arena y a Ruuzlu dentro de Zul'Farrak para el Campeón Taza'go en la Aldea Sandmoon en Tanaris.",
@@ -4620,6 +4946,7 @@ kQuestInstanceData.ZulGurub = {
 }
 kQuestInstanceData.ZulGurub.Alliance[1] = {
     Title = "Una Colección de Cabezas",
+    Id = 8201,
     Level = 60,
     Attain = 58,
     Aim = "Ensarta 5 Cabezas de Canalizador, luego devuelve la Colección de Cabezas de Troll a Exzhal en la Isla Yojamba.",
@@ -4635,6 +4962,7 @@ kQuestInstanceData.ZulGurub.Alliance[1] = {
 }
 kQuestInstanceData.ZulGurub.Alliance[2] = {
     Title = "El Corazón de Hakkar",
+    Id = 8183,
     Level = 60,
     Attain = 58,
     Aim = "Lleva el Corazón de Hakkar a Molthor en la Isla Yojamba.",
@@ -4649,6 +4977,7 @@ kQuestInstanceData.ZulGurub.Alliance[2] = {
 }
 kQuestInstanceData.ZulGurub.Alliance[3] = {
     Title = "Cinta de Medir de Nat",
+    Id = 8227,
     Level = 60,
     Attain = 58,
     Aim = "Devuelve la Cinta Métrica de Nat a Nat Pagle en Los Baldíos.",
@@ -4657,6 +4986,7 @@ kQuestInstanceData.ZulGurub.Alliance[3] = {
 }
 kQuestInstanceData.ZulGurub.Alliance[4] = {
     Title = "El Veneno Perfecto",
+    Id = 9023,
     Level = 60,
     Attain = 60,
     Aim = "Dirk Truenomad en el Bastión Cenarion quiere que le traigas el Saco de Veneno de Venoxis y el Saco de Veneno de Kurinnaxx.",
@@ -4685,6 +5015,7 @@ kQuestInstanceData.Gnomeregan = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[1] = {
     Title = "¡Salvar el Cerebro de Techbot!",
+    Id = 2922,
     Level = 26,
     Attain = 20,
     Aim = "Lleva el Núcleo de Memoria de Tecnoide a Maestro Tragaldabas en la Instalación de Reclamación de Gnomeregan.",
@@ -4694,6 +5025,7 @@ kQuestInstanceData.Gnomeregan.Alliance[1] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[2] = {
     Title = "Gnogaine",
+    Id = 2926,
     Level = 27,
     Attain = 20,
     Aim = "Usa el Frasco de Colección de Plomo Vacío en Invasores Irradiados o Saqueadores Irradiados para recolectar lluvia radiactiva. Una vez esté lleno, llévaselo a Ozzie Togglevolt en Kharanos.",
@@ -4704,6 +5036,7 @@ kQuestInstanceData.Gnomeregan.Alliance[2] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[3] = {
     Title = "La Única Cura es Más Resplandor Verde",
+    Id = 2962,
     Level = 30,
     Attain = 20,
     Aim = "Viaja a Gnomeregan y trae de vuelta Lluvia Radiactiva de Alta Potencia. Ten cuidado, la lluvia es inestable y colapsará rápidamente.$B$BOzzie también requerirá tu Frasco de Colección de Plomo Pesado cuando la tarea esté completa.",
@@ -4713,6 +5046,7 @@ kQuestInstanceData.Gnomeregan.Alliance[3] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[4] = {
     Title = "Excavadores Girodrillmatic",
+    Id = 2928,
     Level = 30,
     Attain = 20,
     Aim = "Lleva veinticuatro Tripas Robo-mecánicas a Shoni en Ventormenta.",
@@ -4726,6 +5060,7 @@ kQuestInstanceData.Gnomeregan.Alliance[4] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[5] = {
     Title = "Artificiales Esenciales",
+    Id = 2924,
     Level = 30,
     Attain = 24,
     Aim = "Lleva 12 Artificiales Esenciales a Klockmort Spannerspan en la Instalación de Reclamación de Gnomeregan.",
@@ -4735,6 +5070,7 @@ kQuestInstanceData.Gnomeregan.Alliance[5] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[6] = {
     Title = "Rescate de Datos",
+    Id = 2930,
     Level = 30,
     Attain = 25,
     Aim = "Lleva una Tarjeta Perforada Prismática al Maestro Mecánico Castpipe en la Instalación de Reclamación de Gnomeregan en Dun Morogh.",
@@ -4749,6 +5085,7 @@ kQuestInstanceData.Gnomeregan.Alliance[6] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[7] = {
     Title = "Un Buen Lío",
+    Id = 2904,
     Level = 30,
     Attain = 24,
     Aim = "Escolta a Kernobee hasta la salida de la Ruta Mecánica y luego informa a Scooty en Bahía del Botín.",
@@ -4762,6 +5099,7 @@ kQuestInstanceData.Gnomeregan.Alliance[7] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[8] = {
     Title = "La Gran Traición",
+    Id = 2929,
     Level = 35,
     Attain = 25,
     Aim = "Viaja a Gnomeregan y mata al Mecánico Termochufe. Regresa con el Alto Tóquer Mekkatorque cuando hayas completado la tarea.",
@@ -4776,6 +5114,7 @@ kQuestInstanceData.Gnomeregan.Alliance[8] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[9] = {
     Title = "Anillo Cubierto de Mugre",
+    Id = 2945,
     Level = 34,
     Attain = 28,
     Aim = "Encuentra una manera de quitar la mugre del Anillo Cubierto de Mugre.",
@@ -4785,6 +5124,7 @@ kQuestInstanceData.Gnomeregan.Alliance[9] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[10] = {
     Title = "El Regreso del Anillo",
+    Id = 2947,
     Level = 34,
     Attain = 28,
     Aim = "Puedes quedarte con el anillo, o puedes encontrar a la persona responsable de la impresión y grabados en el interior de la banda.",
@@ -4799,6 +5139,7 @@ kQuestInstanceData.Gnomeregan.Alliance[10] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[11] = {
     Title = "Un Golpe en la Cabeza",
+    Id = 80398,
     Level = 30,
     Attain = 30,
     Aim = "Encuentra a alguien que pueda averiguar qué hacer con el Mainframe.",
@@ -4808,6 +5149,7 @@ kQuestInstanceData.Gnomeregan.Alliance[11] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[12] = {
     Title = "Regulador de Alta Energía",
+    Id = 40861,
     Level = 33,
     Attain = 25,
     Aim = "Encuentra el Esquema: Regulador de Alta Energía dentro de Gnomeregan y llévaselo a Weezan Pequeño Engranaje en las Instalaciones de Reclamación de Gnomeregan en Dun Morogh.",
@@ -4820,6 +5162,7 @@ kQuestInstanceData.Gnomeregan.Alliance[12] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[13] = {
     Title = "Activación del Sistema de Respaldo",
+    Id = 40856,
     Level = 33,
     Attain = 25,
     Aim = "Activa la Válvula del Canal Alfa y la Palanca del Canal de la Bomba de Reserva en lo profundo de Gnomeregan para el Maestro Técnico Wirespanner en Dun Morogh.",
@@ -4834,6 +5177,7 @@ kQuestInstanceData.Gnomeregan.Alliance[13] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[1] = {
     Title = "¡Gnomer-gooooone!",
+    Id = 2843,
     Level = 35,
     Attain = 20,
     Aim = "Espera a que Scooty calibre el Transpondedor Goblin.",
@@ -4843,6 +5187,7 @@ kQuestInstanceData.Gnomeregan.Horde[1] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[2] = {
     Title = "Un Buen Lío",
+    Id = 2904,
     Level = 30,
     Attain = 24,
     Aim = "Escolta a Kernobee hasta la salida de la Ruta Mecánica y luego informa a Scooty en Bahía del Botín.",
@@ -4856,6 +5201,7 @@ kQuestInstanceData.Gnomeregan.Horde[2] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[3] = {
     Title = "Guerras de Plataformas",
+    Id = 2841,
     Level = 35,
     Attain = 25,
     Aim = "Recupera los Planos de la Plataforma y la Combinación de la Caja Fuerte de Thermaplugg de Gnomeregan y llévaselos a Nogg en Orgrimmar.",
@@ -4870,6 +5216,7 @@ kQuestInstanceData.Gnomeregan.Horde[3] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[4] = {
     Title = "Anillo Cubierto de Mugre",
+    Id = 2945,
     Level = 34,
     Attain = 28,
     Aim = "Encuentra una manera de quitar la mugre del Anillo Cubierto de Mugre.",
@@ -4879,6 +5226,7 @@ kQuestInstanceData.Gnomeregan.Horde[4] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[5] = {
     Title = "El Regreso del Anillo",
+    Id = 2947,
     Level = 34,
     Attain = 28,
     Aim = "Puedes quedarte con el anillo, o puedes encontrar a la persona responsable de la impresión y grabados en el interior de la banda.",
@@ -4893,6 +5241,7 @@ kQuestInstanceData.Gnomeregan.Horde[5] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[6] = {
     Title = "Un Golpe en la Cabeza",
+    Id = 80398,
     Level = 30,
     Attain = 30,
     Aim = "Encuentra a alguien que pueda averiguar qué hacer con el Mainframe.",
@@ -4902,6 +5251,7 @@ kQuestInstanceData.Gnomeregan.Horde[6] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[7] = {
     Title = "Condensador de Respaldo",
+    Id = 55006,
     Level = 34,
     Attain = 29,
     Aim = "Lleva el Megaflux Capacitor al Técnico Grimzlow.",
@@ -4939,6 +5289,7 @@ kQuestInstanceData.FourDragons = {
 }
 kQuestInstanceData.FourDragons.Alliance[1] = {
     Title = "Cubierto por la Pesadilla",
+    Id = 8446,
     Level = 60,
     Attain = 60,
     Aim = "Encuentra a alguien capaz de descifrar el significado detrás del Objeto Envuelto en Pesadilla.$B$BTal vez un druida de gran poder pueda ayudarte.",
@@ -4961,6 +5312,7 @@ kQuestInstanceData.Azuregos = {
 }
 kQuestInstanceData.Azuregos.Alliance[1] = {
     Title = "Lámina Antigua Envuelta en Tendón",
+    Id = 7634,
     Level = 60,
     Attain = 60,
     Aim = "Hastat el Antiguo te ha pedido que le traigas un Tendón de Dragón Azul Maduro. Si encuentras este tendón, devuélveselo a Hastat en Frondavil.",
@@ -4974,6 +5326,7 @@ kQuestInstanceData.Azuregos.Alliance[1] = {
 }
 kQuestInstanceData.Azuregos.Alliance[2] = {
     Title = "El Libro de Cuentas Mágico de Azuregos",
+    Id = 8575,
     Level = 60,
     Attain = 60,
     Aim = "Entrega el Libro de Cuentas Mágico de Azuregos a Narain Soothfancy en Tanaris.",
@@ -5002,6 +5355,7 @@ kQuestInstanceData.BGAlteracValleyNorth = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[1] = {
     Title = "El Imperativo Soberano",
+    Id = 7261,
     Level = 60,
     Attain = 51,
     Aim = "Viaja al Valle de Alterac en las Tierras Altas de Trabalomas. Fuera del túnel de entrada, encuentra y habla con el Teniente Haggerdin.$B$B¡Por la gloria de Barbabronce!",
@@ -5011,6 +5365,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[1] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[2] = {
     Title = "Campos de Prueba",
+    Id = 7162,
     Level = 60,
     Attain = 51,
     Aim = "Viaja a la cueva Zarpa Salvaje ubicada al sureste de la base principal en el Valle de Alterac y encuentra el Estandarte Lobo Gélido. Devuelve el Estandarte Lobo Gélido al Maestro de guerra Laggrond.",
@@ -5026,6 +5381,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[2] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[3] = {
     Title = "La Batalla de Alterac",
+    Id = 7141,
     Level = 60,
     Attain = 51,
     Aim = "Entra en el Valle de Alterac, derrota al general de la Horda Drek'Thar y luego regresa con el Prospector Stonehewer en las Montañas de Alterac.",
@@ -5042,6 +5398,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[3] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[4] = {
     Title = "El Intendente",
+    Id = 7121,
     Level = 60,
     Attain = 51,
     Aim = "Habla con el Intendente Pico Tormenta.",
@@ -5050,6 +5407,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[4] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[5] = {
     Title = "Suministros de Colmillo Helado",
+    Id = 6982,
     Level = 60,
     Attain = 51,
     Aim = "Lleva 10 Suministros Colmillo Frío al Intendente de la Horda en la Fortaleza Lobo Gélido.",
@@ -5058,6 +5416,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[5] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[6] = {
     Title = "Suministros de Dentefrío",
+    Id = 5892,
     Level = 60,
     Attain = 51,
     Aim = "Lleva 10 Suministros de Ferrohondo al Intendente de la Alianza en Dun Baldar.",
@@ -5066,6 +5425,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[6] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[7] = {
     Title = "Fragmentos de Armadura",
+    Id = 7223,
     Level = 60,
     Attain = 51,
     Aim = "Lleva 20 Fragmentos de Armadura a Murgot Deepforge en Dun Baldar.",
@@ -5075,6 +5435,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[7] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[8] = {
     Title = "Captura una Mina",
+    Id = 7122,
     Level = 60,
     Attain = 51,
     Aim = "Captura una mina que no esté controlada por los Pico Tormenta, luego regresa con el Sargento Durgen Pico Tormenta en las Montañas de Alterac.",
@@ -5083,6 +5444,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[8] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[9] = {
     Title = "Torres y Bunkers",
+    Id = 7102,
     Level = 60,
     Attain = 51,
     Aim = "Captura una torre enemiga, luego regresa con el Cabo Teeka Sangre de Furia en las Montañas de Alterac.",
@@ -5091,6 +5453,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[9] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[10] = {
     Title = "Cementerios del Valle de Alterac",
+    Id = 7081,
     Level = 60,
     Attain = 51,
     Aim = "Asalta un cementerio, luego regresa con el Sargento Durgen Stormpike en las Montañas de Alterac.",
@@ -5099,6 +5462,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[10] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[11] = {
     Title = "Establos Vacíos",
+    Id = 7027,
     Level = 60,
     Attain = 51,
     Aim = "Localiza un Lobo Gélido en el Valle de Alterac. Usa el Bozal de Lobo Gélido cuando estés cerca del Lobo Gélido para 'domar' a la bestia. Una vez domado, el Lobo Gélido te seguirá hasta el Maestro de Establos Lobo Gélido. Habla con el Maestro de Establos Lobo Gélido para obtener crédito por la captura.",
@@ -5107,6 +5471,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[11] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[12] = {
     Title = "Arnés para Montar Carneros",
+    Id = 7026,
     Level = 60,
     Attain = 51,
     Aim = "null",
@@ -5115,6 +5480,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[12] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[13] = {
     Title = "Racimo de Cristal",
+    Id = 7386,
     Level = 60,
     Attain = 51,
     Aim = "null",
@@ -5123,6 +5489,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[13] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[14] = {
     Title = "Ivus el Señor del Bosque",
+    Id = 6881,
     Level = 60,
     Attain = 51,
     Aim = "El Clan Lobo Gélido está protegido por una corrupción de energía elemental. Sus chamanes se entrometen en poderes que seguramente nos destruirán a todos si no se controlan.\n\nLos soldados Lobo Gélido llevan amuletos elementales llamados cristales de tormenta. Podemos usar los amuletos para conjurar a Ivus. Aventúrate y reclama los cristales.",
@@ -5131,6 +5498,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[14] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[15] = {
     Title = "Llamado del Aire - Flota de Slidore",
+    Id = 6942,
     Level = 60,
     Attain = 51,
     Aim = "Mis grifos están listos para atacar las líneas del frente, pero no pueden hacer el ataque hasta que las líneas se debiliten.\n\nLos guerreros Lobo Gélido encargados de mantener las líneas del frente llevan medallas de servicio con orgullo en sus pechos. Arranca esas medallas de sus cadáveres podridos y tráelas aquí.\n\nUna vez que la línea del frente se haya debilitado lo suficiente, ¡daré la orden de ataque aéreo! ¡Muerte desde arriba!",
@@ -5139,6 +5507,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[15] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[16] = {
     Title = "Llamado del Aire - Flota de Vipore",
+    Id = 6941,
     Level = 60,
     Attain = 51,
     Aim = "¡Las unidades élite Lobo Gélido que protegen las líneas deben ser tratadas, soldado! Te encargo que reduzcas esa horda de salvajes. Regresa a mí con medallas de sus tenientes y legionarios. Cuando sienta que se ha tratado con suficiente gentuza, desplegaré el ataque aéreo.",
@@ -5147,6 +5516,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[16] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[17] = {
     Title = "Llamado del Aire - Flota de Ichman",
+    Id = 6943,
     Level = 60,
     Attain = 51,
     Aim = "Regresa al campo de batalla y ataca el corazón del mando de los Lobo Gélido. Acaba con sus comandantes y guardianes. ¡Regresa a mí con tantas de sus medallas como puedas meter en tu mochila! Te lo prometo, cuando mis grifos vean el botín y huelan la sangre de nuestros enemigos, ¡volarán de nuevo! ¡Ve ahora!",
@@ -5155,6 +5525,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[17] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[1] = {
     Title = "En Defensa de Lobo Gélido",
+    Id = 7241,
     Level = 60,
     Attain = 51,
     Aim = "Viaja al Valle de Alterac, ubicado en las Montañas de Alterac. Encuentra y habla con Maestro de Guerra Laggrond - que se encuentra fuera de la entrada del túnel - para comenzar tu carrera como soldado de los Lobo Gélido. Encontrarás el Valle de Alterac al norte de Molino Tarren, al pie de las Montañas de Alterac.",
@@ -5164,6 +5535,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[1] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[2] = {
     Title = "Campos de Prueba",
+    Id = 7161,
     Level = 60,
     Attain = 51,
     Aim = "Viaja a la cueva Zarpa Salvaje ubicada al sureste de la base principal en el Valle de Alterac y encuentra el Estandarte Lobo Gélido. Devuelve el Estandarte Lobo Gélido al Maestro de guerra Laggrond.",
@@ -5179,6 +5551,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[2] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[3] = {
     Title = "La Batalla por Alterac",
+    Id = 7142,
     Level = 60,
     Attain = 51,
     Aim = "Entra en el Valle de Alterac y derrota al general enano, Vanndar Pico Tormenta. Luego, regresa con Voggah Apretón Mortal en las Montañas de Alterac.",
@@ -5189,6 +5562,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[3] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[4] = {
     Title = "Habla con Nuestro Intendente",
+    Id = 7123,
     Level = 60,
     Attain = 51,
     Aim = "Habla con el Intendente Lobo Gélido.",
@@ -5197,6 +5571,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[4] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[5] = {
     Title = "Suministros de Colmillo Helado",
+    Id = 5893,
     Level = 60,
     Attain = 51,
     Aim = "Lleva 10 Suministros Colmillo Frío al Intendente de la Horda en la Fortaleza Lobo Gélido.",
@@ -5205,6 +5580,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[5] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[6] = {
     Title = "Suministros de Dentefrío",
+    Id = 6985,
     Level = 60,
     Attain = 51,
     Aim = "Lleva 10 Suministros de Ferrohondo al Intendente de la Alianza en Dun Baldar.",
@@ -5213,6 +5589,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[6] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[7] = {
     Title = "Botín del Enemigo",
+    Id = 7224,
     Level = 60,
     Attain = 51,
     Aim = "Lleva 20 Fragmentos de Armadura a Smith Regzar en la Aldea Lobo Gélido.",
@@ -5222,6 +5599,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[7] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[8] = {
     Title = "Captura una Mina",
+    Id = 7124,
     Level = 60,
     Attain = 51,
     Aim = "Captura una mina que no esté controlada por los Pico Tormenta, luego regresa con el Sargento Durgen Pico Tormenta en las Montañas de Alterac.",
@@ -5230,6 +5608,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[8] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[9] = {
     Title = "Torres y Bunkers",
+    Id = 7101,
     Level = 60,
     Attain = 51,
     Aim = "Captura una torre enemiga, luego regresa con el Cabo Teeka Sangre de Furia en las Montañas de Alterac.",
@@ -5238,6 +5617,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[9] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[10] = {
     Title = "Los Cementerios de Alterac",
+    Id = 7082,
     Level = 60,
     Attain = 51,
     Aim = "Asalta un cementerio, luego regresa con el Cabo Teeka Bloodsnarl en las Montañas de Alterac.",
@@ -5246,6 +5626,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[10] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[11] = {
     Title = "Establos Vacíos",
+    Id = 7001,
     Level = 60,
     Attain = 51,
     Aim = "Localiza un Lobo Gélido en el Valle de Alterac. Usa el Bozal de Lobo Gélido cuando estés cerca del Lobo Gélido para 'domar' a la bestia. Una vez domado, el Lobo Gélido te seguirá hasta el Maestro de Establos Lobo Gélido. Habla con el Maestro de Establos Lobo Gélido para obtener crédito por la captura.",
@@ -5254,6 +5635,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[11] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[12] = {
     Title = "Arnés de Piel de Carnero",
+    Id = 7002,
     Level = 60,
     Attain = 51,
     Aim = "null",
@@ -5262,6 +5644,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[12] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[13] = {
     Title = "Un Galón de Sangre",
+    Id = 7385,
     Level = 60,
     Attain = 51,
     Aim = "null",
@@ -5270,6 +5653,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[13] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[14] = {
     Title = "Lokholar el Señor del Hielo",
+    Id = 6801,
     Level = 60,
     Attain = 51,
     Aim = "Debes abatir a nuestros enemigos y traerme su sangre. Una vez que se haya reunido suficiente sangre, el ritual de invocación puede comenzar.\n\nLa victoria estará asegurada cuando el señor elemental sea liberado sobre el ejército Pico Tormenta.",
@@ -5278,6 +5662,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[14] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[15] = {
     Title = "Llamado del Aire - Flota de Guse",
+    Id = 6825,
     Level = 60,
     Attain = 51,
     Aim = "Mis jinetes están listos para hacer un ataque en el campo de batalla central; pero primero, debo abrir su apetito - preparándolos para el asalto.\n\nNecesito suficiente Carne de Soldado Pico Tormenta para alimentar una flota. ¡Cientos de libras! Seguramente puedes con eso, ¿verdad? ¡En marcha!",
@@ -5286,6 +5671,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[15] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[16] = {
     Title = "Llamado del Aire - Flota de Jeztor",
+    Id = 6826,
     Level = 60,
     Attain = 51,
     Aim = "Mis Jinetes de Guerra deben probar la carne de sus objetivos. ¡Esto asegurará un ataque quirúrgico contra nuestros enemigos!\n\nMi flota es la segunda más poderosa en nuestro mando aéreo. Por lo tanto, atacarán a los más poderosos de nuestros adversarios. Para esto, entonces, necesitan la carne de los Tenientes Pico Tormenta.",
@@ -5294,6 +5680,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[16] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[17] = {
     Title = "Llamado del Aire - Flota de Mulverick",
+    Id = 6827,
     Level = 60,
     Attain = 51,
     Aim = "Primero, mis jinetes de guerra necesitan objetivos a los que disparar - objetivos de alta prioridad. Voy a necesitar alimentarlos con la carne de Comandantes Pico Tormenta. Desafortunadamente, ¡esos pequeños están atrincherados profundamente detrás de las líneas enemigas! Definitivamente tienes mucho trabajo por delante.",
@@ -5310,6 +5697,7 @@ kQuestInstanceData.BGArathiBasin = {
 }
 kQuestInstanceData.BGArathiBasin.Alliance[1] = {
     Title = "¡La Batalla por la Cuenca de Arathi!",
+    Id = 8105,
     Level = 55,
     Attain = 50,
     Aim = "Asalta la mina, el aserradero, la herrería y la granja, luego regresa con el Mariscal de Campo Oslight en Refugio de la Zaga.",
@@ -5318,6 +5706,7 @@ kQuestInstanceData.BGArathiBasin.Alliance[1] = {
 }
 kQuestInstanceData.BGArathiBasin.Alliance[2] = {
     Title = "Controlar Cuatro Bases",
+    Id = 8114,
     Level = 60,
     Attain = 60,
     Aim = "Entra en la Cuenca de Arathi, captura y controla cuatro bases al mismo tiempo y luego regresa con el Mariscal de Campo Oslight en Refugio de la Zaga.",
@@ -5326,6 +5715,7 @@ kQuestInstanceData.BGArathiBasin.Alliance[2] = {
 }
 kQuestInstanceData.BGArathiBasin.Alliance[3] = {
     Title = "Controlar Cinco Bases",
+    Id = 8115,
     Level = 60,
     Attain = 60,
     Aim = "Controla 5 bases en la Cuenca de Arathi al mismo tiempo, luego regresa con el Mariscal de Campo Oslight en Refugio de la Zaga.",
@@ -5338,6 +5728,7 @@ kQuestInstanceData.BGArathiBasin.Alliance[3] = {
 }
 kQuestInstanceData.BGArathiBasin.Horde[1] = {
     Title = "¡La Batalla por la Cuenca de Arathi!",
+    Id = 8120,
     Level = 25,
     Attain = 25,
     Aim = "Asalta la mina, el aserradero, la herrería y la granja, luego regresa con el Mariscal de Campo Oslight en Refugio de la Zaga.",
@@ -5346,6 +5737,7 @@ kQuestInstanceData.BGArathiBasin.Horde[1] = {
 }
 kQuestInstanceData.BGArathiBasin.Horde[2] = {
     Title = "Tomar Cuatro Bases",
+    Id = 8121,
     Level = 60,
     Attain = 60,
     Aim = "Mantén cuatro bases al mismo tiempo en la Cuenca de Arathi, y luego regresa con Maestro de la Muerte Dwire en Grito de Guerra.",
@@ -5354,6 +5746,7 @@ kQuestInstanceData.BGArathiBasin.Horde[2] = {
 }
 kQuestInstanceData.BGArathiBasin.Horde[3] = {
     Title = "Tomar Cinco Bases",
+    Id = 8122,
     Level = 60,
     Attain = 60,
     Aim = "Mantén cinco bases en la Cuenca de Arathi al mismo tiempo, luego regresa con Maestro de la Muerte Dwire en Grito de Guerra.",
@@ -5382,6 +5775,7 @@ kQuestInstanceData.TheCrescentGrove = {
 }
 kQuestInstanceData.TheCrescentGrove.Alliance[1] = {
     Title = "Cabeza de la Manada",
+    Id = 40089,
     Level = 33,
     Attain = 26,
     Aim = "Adéntrate en la Arboleda Creciente y recolecta 8 Emblemas de Arboleda de los furbolgs del interior para Grol el Exiliado.",
@@ -5390,6 +5784,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[1] = {
 }
 kQuestInstanceData.TheCrescentGrove.Alliance[2] = {
     Title = "El Groveweald Desenfrenado",
+    Id = 40090,
     Level = 34,
     Attain = 26,
     Aim = "Lleva las garras del Anciano 'Un Ojo' y el Anciano Blackmaw desde la Arboleda Creciente a Grol el Exiliado.",
@@ -5402,6 +5797,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[2] = {
 }
 kQuestInstanceData.TheCrescentGrove.Alliance[3] = {
     Title = "Los Ancianos Imprudentes",
+    Id = 40091,
     Level = 37,
     Attain = 28,
     Aim = "Destruye la fuente de corrupción dentro de la Arboleda Creciente y regresa con Denatharion en Teldrassil.",
@@ -5417,6 +5813,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[3] = {
 }
 kQuestInstanceData.TheCrescentGrove.Alliance[4] = {
     Title = "El Mazo de Kalanar",
+    Id = 40326,
     Level = 33,
     Attain = 25,
     Aim = "Viaja a la Arboleda Creciente y encuentra la casa quemada de Kalanar Brightshine. Luego recupera el Mazo de Kalanar y devuélveselo a él en Astranaar.",
@@ -5427,6 +5824,7 @@ kQuestInstanceData.TheCrescentGrove.Horde[1] = kQuestInstanceData.TheCrescentGro
 kQuestInstanceData.TheCrescentGrove.Horde[2] = kQuestInstanceData.TheCrescentGrove.Alliance[2]
 kQuestInstanceData.TheCrescentGrove.Horde[3] = {
     Title = "Extirpando el Mal",
+    Id = 40147,
     Level = 37,
     Attain = 26,
     Aim = "Adéntrate en la Arboleda Creciente y elimina el mal que hay en su interior.",
@@ -5451,6 +5849,7 @@ kQuestInstanceData.KarazhanCrypt = {
 }
 kQuestInstanceData.KarazhanCrypt.Alliance[1] = {
     Title = "El Misterio de Karazhan VII",
+    Id = 40317,
     Level = 60,
     Attain = 58,
     Aim = "Adéntrate en las Criptas de Karazhan, una vez dentro mata a Alarus, el vigilante de las Criptas, para el Magus Ariden Dusktower en el Paso de la Muerte.",
@@ -5466,6 +5865,7 @@ kQuestInstanceData.KarazhanCrypt.Alliance[1] = {
 }
 kQuestInstanceData.KarazhanCrypt.Alliance[2] = {
     Title = "La Majestad de un Chef",
+    Id = 41374,
     Level = 61,
     Attain = 60,
     Aim = "Mata a los Strigoi Voraces en las Criptas de Karazhan y regresa con El Cocinero en los Pasillos Inferiores de Karazhan.",
@@ -5479,6 +5879,7 @@ kQuestInstanceData.KarazhanCrypt.Alliance[2] = {
 }
 kQuestInstanceData.KarazhanCrypt.Horde[1] = {
     Title = "Las Profundidades de Karazhan VII",
+    Id = 40310,
     Level = 60,
     Attain = 58,
     Aim = "Adéntrate en las Criptas de Karazhan, una vez dentro mata a Alarus, el vigilante de las Criptas, para Kor'gan en Rocal.",
@@ -5503,6 +5904,7 @@ kQuestInstanceData.CavernsOfTimeBlackMorass = {
 }
 kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[1] = {
     Title = "La Primera Apertura del Portal Oscuro",
+    Id = 80605,
     Level = 60,
     Attain = 60,
     Aim = "Entra en los Caminos del Tiempo en el pasado de la Ciénaga Negra y mata a Antnormi. Lleva su cabeza a Kheyna.",
@@ -5519,6 +5921,7 @@ kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[1] = {
 }
 kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[2] = {
     Title = "La Traición del Bronce",
+    Id = 40342,
     Level = 60,
     Attain = 58,
     Aim = "Mata a Chronar y lleva su cabeza a Tyvadrius en las Cavernas del Tiempo.",
@@ -5533,6 +5936,7 @@ kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[2] = {
 }
 kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[3] = {
     Title = "Arena Corrupta",
+    Id = 40340,
     Level = 60,
     Attain = 58,
     Aim = "Recolecta una Arena Corrupta para Dronormu en las Cavernas del Tiempo.",
@@ -5541,6 +5945,7 @@ kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[3] = {
 }
 kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[4] = {
     Title = "Arena a Granel",
+    Id = 40341,
     Level = 60,
     Attain = 58,
     Aim = "Recolecta 10 Arenas Corruptas para Dronormu en las Cavernas del Tiempo.",
@@ -5560,6 +5965,7 @@ kQuestInstanceData.HateforgeQuarry = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[1] = {
     Title = "Presencia Rival",
+    Id = 40458,
     Level = 54,
     Attain = 47,
     Aim = "Averigua qué están desenterrando en la Cantera Forjodio.",
@@ -5568,6 +5974,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[1] = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[2] = {
     Title = "Motín de la Unión de Mineros II",
+    Id = 40468,
     Level = 50,
     Attain = 45,
     Aim = "Mata 20 Mineros Forjodio en la Cantera Forjodio y regresa con Morgrim Pico de Fuego en el Paso Roca Negra en las Estepas Ardientes.",
@@ -5581,6 +5988,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[2] = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[3] = {
     Title = "El Verdadero Alto Capataz",
+    Id = 40463,
     Level = 51,
     Attain = 45,
     Aim = "Mata a Bargul Martillonegro y recupera las Órdenes del Senado para Orvak Rocaferrea en el Paso Roca Negra en las Estepas Ardientes.",
@@ -5596,6 +6004,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[3] = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[4] = {
     Title = "Sangre Reluciente",
+    Id = 41361,
     Level = 50,
     Attain = 50,
     Aim = "Encuentra a alguien que te enseñe sobre la gema abrasadora.",
@@ -5610,6 +6019,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[4] = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[5] = {
     Title = "Rumores de la Cerveza Hateforge",
+    Id = 40490,
     Level = 54,
     Attain = 45,
     Aim = "Adéntrate en la Cantera Forjodio y recupera un Frasco Hierro Negro y los Documentos de Química Forjodio, luego regresa con Varlag Barba Oscura en la Vigilia de Morgan en las Tierras Devastadas.",
@@ -5623,6 +6033,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[5] = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[6] = {
     Title = "Asaltando Hateforge",
+    Id = 40489,
     Level = 57,
     Attain = 45,
     Aim = "Adéntrate en la Cantera Hateforge y elimina la presencia del Martillo Crepuscular en su interior. Cuando hayas terminado, regresa con el Rey Magni Bronzebeard en Forjaz.",
@@ -5638,6 +6049,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[6] = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[7] = {
     Title = "¿Por Qué No Ambos?",
+    Id = 41142,
     Level = 50,
     Attain = 40,
     Aim = "Consigue el Corazón de Derrumbe de las profundidades de Maraudon, y la Esencia de Corrosis de la Cantera Forjodio para Frig Truenforja en Pico Nidal.",
@@ -5655,6 +6067,7 @@ for i = 1, 4 do
 end
 kQuestInstanceData.HateforgeQuarry.Horde[5] = {
     Title = "Cazando al Ingeniero Figgles",
+    Id = 40539,
     Level = 55,
     Attain = 48,
     Location = "Señora Katalla (Las Estepas Ardientes - Bastión Karfang "..yellow.."89.4,24.5"..white.." esquina noreste de Las Estepas Ardientes).",
@@ -5670,6 +6083,7 @@ kQuestInstanceData.HateforgeQuarry.Horde[5] = {
 }
 kQuestInstanceData.HateforgeQuarry.Horde[6] = {
     Title = "De Nuevo y Viejo IV",
+    Id = 40504,
     Level = 57,
     Attain = 45,
     Aim = "Adéntrate en la Cantera Hateforge y elimina la presencia del Martillo Crepuscular en su interior para Karfang en el Bastión Karfang.",
@@ -5693,6 +6107,7 @@ kQuestInstanceData.StormwindVault = {
 }
 kQuestInstanceData.StormwindVault.Alliance[1] = {
     Title = "Recuperando Grilletes de la Bóveda",
+    Id = 40426,
     Level = 63,
     Attain = 55,
     Aim = "Dentro de la Cámara de Ventormenta, mata Constructos Rúnicos para obtener 2 Grilletes Rúnicos y entrégaselos a Koli Steamheart.",
@@ -5701,6 +6116,7 @@ kQuestInstanceData.StormwindVault.Alliance[1] = {
 }
 kQuestInstanceData.StormwindVault.Alliance[2] = {
     Title = "Terminando con Arc'Tiras",
+    Id = 40427,
     Level = 63,
     Attain = 55,
     Aim = "Adéntrate en la Cámara de Ventormenta, encuentra a Arc'tiras y mátalo por el bien de Ventormenta. Cuando lo hayas hecho, regresa con Pepin Ainsworth.",
@@ -5715,6 +6131,7 @@ kQuestInstanceData.StormwindVault.Alliance[2] = {
 }
 kQuestInstanceData.StormwindVault.Alliance[3] = {
     Title = "El Enemigo Acecha",
+    Id = 41357,
     Level = 62,
     Attain = 60,
     Aim = "Lleva el Núcleo de Arc'Tiras de vuelta a Al'Dorel.",
@@ -5731,6 +6148,7 @@ kQuestInstanceData.StormwindVault.Alliance[3] = {
 }
 kQuestInstanceData.StormwindVault.Alliance[4] = {
     Title = "El Tomo de Intrincados Arcanos y Fenómenos Mágicos IX",
+    Id = 40425,
     Level = 63,
     Attain = 58,
     Aim = "Recupera el Tomo de Intrincados Arcanos y Fenómenos Mágicos IX para Mazen Mac'Nadir en Ventormenta.",
@@ -5754,6 +6172,7 @@ kQuestInstanceData.Ostarius = {
 }
 kQuestInstanceData.Ostarius.Alliance[1] = {
     Title = "Puertas de Uldum",
+    Id = 40107,
     Level = 60,
     Attain = 58,
     Aim = "Derrota a Ostarius. Regresa al Salón de los Expedicionarios e informa al Alto Expedicionario Magellas sobre los eventos ocurridos en la puerta.",
@@ -5763,6 +6182,7 @@ kQuestInstanceData.Ostarius.Alliance[1] = {
 }
 kQuestInstanceData.Ostarius.Horde[1] = {
     Title = "Uldum Espera",
+    Id = 40115,
     Level = 60,
     Attain = 58,
     Aim = "Derrota a Ostarius. Regresa a Cima del Trueno e informa al Sabio Buscador de la Verdad sobre los eventos ocurridos en la puerta.",
@@ -5780,6 +6200,7 @@ kQuestInstanceData.GilneasCity = {
 }
 kQuestInstanceData.GilneasCity.Alliance[1] = {
     Title = "El Juez y el Fantasma",
+    Id = 40975,
     Level = 46,
     Attain = 35,
     Aim = "Mata al Juez Sutherland dentro de la Ciudad de Gilneas para el Fantasma Enfurecido en la Granja Glaymore en Gilneas.",
@@ -5794,6 +6215,7 @@ kQuestInstanceData.GilneasCity.Alliance[1] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[2] = {
     Title = "Detrás del Muro",
+    Id = 40841,
     Level = 41,
     Attain = 36,
     Aim = "Adéntrate en la Ciudad de Gilneas y recupera los Planos del Alba para Therum Forjahonda en Ventormenta.",
@@ -5807,6 +6229,7 @@ kQuestInstanceData.GilneasCity.Alliance[2] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[3] = {
     Title = "La Escritura de Ravenshire",
+    Id = 40966,
     Level = 45,
     Attain = 38,
     Aim = "Encuentra la Escritura de Cuerval en la Ciudad de Gilneas y devuélvesela a Caliban Filargenta.",
@@ -5822,6 +6245,7 @@ kQuestInstanceData.GilneasCity.Alliance[3] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[4] = {
     Title = "La Ambición de Ravencroft",
+    Id = 41112,
     Level = 45,
     Attain = 40,
     Aim = "Recupera el Libro de Ur: Volumen Dos de la biblioteca en la Ciudad de Gilneas y devuélveselo a Ethan Ravencroft.",
@@ -5830,6 +6254,7 @@ kQuestInstanceData.GilneasCity.Alliance[4] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[5] = {
     Title = "Deshaciendo la Presencia Dracónica",
+    Id = 40943,
     Level = 47,
     Attain = 35,
     Aim = "Termina con la Influencia Dracónica sobre Gilneas matando a la Regente-Lady Celia Harlow y al Regente-Lord Mortimer Harlow para Magus Orelius en Cuerval en Gilneas.",
@@ -5844,6 +6269,7 @@ kQuestInstanceData.GilneasCity.Alliance[5] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[6] = {
     Title = "La Caída y Ascenso de Cringris",
+    Id = 40956,
     Level = 42,
     Attain = 35,
     Aim = "Salva a Genn y recupera la Corona de Cringris para Lord Darius Ravenwood en Cuerval de Gilneas.",
@@ -5860,6 +6286,7 @@ kQuestInstanceData.GilneasCity.Alliance[6] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[7] = {
     Title = "Manuscrito sobre Hidromancia II",
+    Id = 41114,
     Level = 45,
     Attain = 38,
     Aim = "Recupera el Manuscrito sobre Hidromancia II para el Magus Hallister en Theramore en los Pantanos de Dustwallow.",
@@ -5873,6 +6300,7 @@ kQuestInstanceData.GilneasCity.Alliance[7] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[8] = {
     Title = "Dejado en Mala Fe",
+    Id = 41285,
     Level = 44,
     Attain = 40,
     Aim = "Regresa con el collar del aventurero para Talvash del Kissel en Forjaz.",
@@ -5886,6 +6314,7 @@ kQuestInstanceData.GilneasCity.Alliance[8] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[9] = {
     Title = "Guadaña de la Diosa",
+    Id = 41378,
     Level = 60,
     Attain = 60,
     Aim = "Recoge sangre de huargen para Fandral Corzocelada. Necesita muestras de sangre de Karazhan, Ciudad de Gilneas y el Castillo de Colmillo Oscuro.",
@@ -5896,6 +6325,7 @@ kQuestInstanceData.GilneasCity.Alliance[9] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[10] = {
     Title = "Pricólico Gnarlmoon",
+    Id = 41385,
     Level = 60,
     Attain = 60,
     Aim = "Viaja a la Ciudad de Gilneas y busca el paradero del segundo Pricolich.",
@@ -5907,6 +6337,7 @@ kQuestInstanceData.GilneasCity.Alliance[10] = {
 kQuestInstanceData.GilneasCity.Horde[1] = kQuestInstanceData.GilneasCity.Alliance[1]
 kQuestInstanceData.GilneasCity.Horde[2] = {
     Title = "Asuntos de Ebonmere",
+    Id = 40979,
     Level = 45,
     Attain = 35,
     Aim = "Mata a Dustivan Cubrenegro y recupera la Escritura de Negropuente para Joshua Negropuente en la Granja Negropuente en Gilneas.",
@@ -5923,6 +6354,7 @@ kQuestInstanceData.GilneasCity.Horde[2] = {
 }
 kQuestInstanceData.GilneasCity.Horde[3] = {
     Title = "Un Robo Real",
+    Id = 41113,
     Level = 45,
     Attain = 40,
     Aim = "Roba la pintura de la biblioteca en la Ciudad de Gilneas y regresa con Luke Agamand en el Campamento de Blackthorn en Gilneas.",
@@ -5931,6 +6363,7 @@ kQuestInstanceData.GilneasCity.Horde[3] = {
 }
 kQuestInstanceData.GilneasCity.Horde[4] = {
     Title = "El Mal Me Hizo Hacerlo",
+    Id = 40881,
     Level = 46,
     Attain = 35,
     Aim = "Encuentra 'Sobre los Poderes de la Sangre' en Ciudad de Gilneas, luego regresa con Orvan Ojo Oscuro en las Ruinas de Greyshire en Gilneas.",
@@ -5945,6 +6378,7 @@ kQuestInstanceData.GilneasCity.Horde[4] = {
 }
 kQuestInstanceData.GilneasCity.Horde[5] = {
     Title = "¡Genn Cringris Debe Morir!",
+    Id = 40849,
     Level = 49,
     Attain = 40,
     Aim = "Entra en la Ciudad de Gilneas y mata a Genn Greymane, luego lleva su cabeza a Blackthorn en el Campamento de Blackthorn en Gilneas.",
@@ -5960,6 +6394,7 @@ kQuestInstanceData.GilneasCity.Horde[5] = {
 }
 kQuestInstanceData.GilneasCity.Horde[6] = {
     Title = "La Piedra de Cringris",
+    Id = 40996,
     Level = 47,
     Attain = 38,
     Aim = "Recupera el Fragmento de Medianoche para el Obispo Oscuro Mordren en la Iglesia del Reposo Eterno.",
@@ -5976,6 +6411,7 @@ kQuestInstanceData.GilneasCity.Horde[6] = {
 }
 kQuestInstanceData.GilneasCity.Horde[7] = {
     Title = "Conocimiento Extranjero",
+    Id = 41289,
     Level = 44,
     Attain = 34,
     Aim = "Busca un libro adecuado en la Ciudad de Gilneas y llévaselo a Jarkal Musgofusión en Kargath en las Tierras Inhóspitas.",
@@ -5989,6 +6425,7 @@ kQuestInstanceData.GilneasCity.Horde[7] = {
 }
 kQuestInstanceData.GilneasCity.Horde[8] = {
     Title = "Guadaña de la Diosa",
+    Id = 41381,
     Level = 60,
     Attain = 60,
     Aim = "Recoge sangre de huargen para Fandral Corzocelada. Necesita muestras de sangre de Karazhan, Ciudad de Gilneas y el Castillo de Colmillo Oscuro.",
@@ -6008,6 +6445,7 @@ kQuestInstanceData.LowerKarazhan = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[1] = {
     Title = "Alojamiento Adecuado",
+    Id = 41083,
     Level = 60,
     Attain = 55,
     Aim = "Encuentra una Almohada Cómoda para el Concejal Kyleson en Karazhan.",
@@ -6017,6 +6455,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[1] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[2] = {
     Title = "Una Bebida para Dormir",
+    Id = 41084,
     Level = 60,
     Attain = 55,
     Aim = "Habla con alguien que pueda saber cómo adquirir vino para el Concejal Kyleson.",
@@ -6027,6 +6466,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[2] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[3] = {
     Title = "Vino Espectral",
+    Id = 41085,
     Level = 60,
     Attain = 55,
     Aim = "Reúne 3 Esencias de Muerte, 5 Frascos de Oporto y una Seta Fantasma para El Cocinero en Karazhan.",
@@ -6037,6 +6477,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[3] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[4] = {
     Title = "Vino para Kyleson",
+    Id = 41086,
     Level = 60,
     Attain = 55,
     Location = "El Cocinero near ("..yellow.."[Lower Karazhan Halls- e]"..white..")",
@@ -6045,6 +6486,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[4] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[5] = {
     Title = "La Llave de Karazhan I",
+    Id = 40817,
     Level = 60,
     Attain = 58,
     Aim = "Escucha la historia de Lord Cerranegra.",
@@ -6053,6 +6495,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[5] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[6] = {
     Title = "La Llave de Karazhan II",
+    Id = 40818,
     Level = 60,
     Attain = 58,
     Location = "Lord Ebonlocke ("..yellow.."[Karazhan - d]"..white..")",
@@ -6062,6 +6505,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[6] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[7] = {
     Title = "La Llave de Karazhan III",
+    Id = 40819,
     Level = 60,
     Attain = 58,
     Aim = "Encuentra a alguien del Kirin Tor que pueda saber algo sobre Vandol. Dalaran podría ser un buen lugar para comenzar tu búsqueda.",
@@ -6072,6 +6516,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[7] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[8] = {
     Title = "Notas de Cocina Garabateadas",
+    Id = 40998,
     Level = 60,
     Attain = 55,
     Aim = "Encuentra a alguien que pueda saber algo sobre las Notas de Cocina Garabateadas.",
@@ -6081,6 +6526,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[8] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[9] = {
     Title = "Perdido y Encontrado",
+    Id = 40999,
     Level = 60,
     Attain = 55,
     Aim = "Recupera el Brazalete de Oro Grabado para el Duque Rothlen en Karazhan.",
@@ -6091,6 +6537,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[9] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[10] = {
     Title = "Broche de la Familia Rothlen",
+    Id = 41000,
     Level = 60,
     Attain = 55,
     Aim = "Recupera el Broche de la Familia Rothlen de Stratholme para el Duque Rothlen en Karazhan.",
@@ -6101,6 +6548,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[10] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[11] = {
     Title = "La Receta Secreta",
+    Id = 41001,
     Level = 60,
     Attain = 55,
     Location = "Duque Rothlen (Karazhan "..yellow.."[Karazhan - f]"..white..")",
@@ -6110,6 +6558,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[11] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[12] = {
     Title = "El Portero de Karazhan",
+    Id = 41002,
     Level = 60,
     Attain = 55,
     Aim = "Habla con el Portero Montigue en Karazhan.",
@@ -6120,6 +6569,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[12] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[13] = {
     Title = "Carga de Karazhan",
+    Id = 41003,
     Level = 60,
     Attain = 55,
     Aim = "Lleva 10 Esencias de No-Muerto, 10 Esencias Vivas y 25 de Oro a Doorman Montique en Karazhan.",
@@ -6130,6 +6580,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[13] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[14] = {
     Title = "Le Fishe Au Chocolat",
+    Id = 41004,
     Level = 60,
     Attain = 55,
     Location = "Portero Montigue"..blue.." "..white.."al comienzo de la mazmorra frente a las escaleras.",
@@ -6143,6 +6594,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[14] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[15] = {
     Title = "Guadaña de la Diosa",
+    Id = 41062,
     Level = 60,
     Attain = 60,
     Aim = "Mata a Clawlord Howlfang e informa a Lord Cerro Negro.",
@@ -6152,6 +6604,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[15] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[16] = {
     Title = "Contribución a la Iglesia",
+    Id = 41078,
     Level = 60,
     Attain = 55,
     Aim = "Reúne 15 Esencia Arcana, 20 Polvo de Ilusión y 10 Esencias Eternas Superiores para el Hierofante Nerseus en la iglesia fuera de Karazhan.",
@@ -6168,6 +6621,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[16] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[17] = {
     Title = "Vela Cómicamente Grande",
+    Id = 41344,
     Level = 61,
     Attain = 60,
     Aim = "Recupera la Vela Cómicamente Grande de Grizikil y llévasela a Bigotes Grandes en Karazhan Superior.",
@@ -6181,6 +6635,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[17] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[18] = {
     Title = "Guadaña de la Diosa",
+    Id = 41381,
     Level = 60,
     Attain = 60,
     Aim = "Recoge sangre de huargen para Fandral Corzocelada. Necesita muestras de sangre de Karazhan, Ciudad de Gilneas y el Castillo de Colmillo Oscuro.",
@@ -6220,6 +6675,7 @@ kQuestInstanceData.EmeraldSanctum = {
 }
 kQuestInstanceData.EmeraldSanctum.Alliance[1] = {
     Title = "Esencia Onírica Humeante",
+    Id = 40905,
     Level = 60,
     Attain = 55,
     Aim = "Lleva la Esencia de Sueño Humeante al Archidruida Dreamwind en Nordanaar en Hyjal.",
@@ -6233,6 +6689,7 @@ kQuestInstanceData.EmeraldSanctum.Alliance[1] = {
 }
 kQuestInstanceData.EmeraldSanctum.Alliance[2] = {
     Title = "Cabeza de Solnius",
+    Id = 40963,
     Level = 60,
     Attain = 58,
     Aim = "Lleva la Cabeza de Solnius a Ralathius en Nordanaar en Hyjal.",
@@ -6247,6 +6704,7 @@ kQuestInstanceData.EmeraldSanctum.Alliance[2] = {
 }
 kQuestInstanceData.EmeraldSanctum.Alliance[3] = {
     Title = "La Garra de Erennius",
+    Id = 41038,
     Level = 60,
     Attain = 55,
     Aim = "Lleva la Garra de Erennius a alguien que pueda encontrarla útil.",
@@ -6272,6 +6730,7 @@ kQuestInstanceData.TowerofKarazhan = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[1] = {
     Title = "Reminiscencia de Acero",
+    Id = 41369,
     Level = 60,
     Attain = 60,
     Aim = "Para restaurar el Cetro de Medivh, Anelace la Clarividente en la Parcela de Morgan en el Paso de la Muerte necesita una gran cantidad de energía arcana.",
@@ -6286,6 +6745,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[1] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[2] = {
     Title = "El Cetro de Medivh",
+    Id = 41370,
     Level = 60,
     Attain = 60,
     Aim = "Un fragmento de Medivh es necesario para imbuir el Cetro de Medivh. Llévalo a Anelace la Clarividente en la Parcela de Morgan fuera de Karazhan.",
@@ -6300,6 +6760,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[2] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[3] = {
     Title = "No Soy una Rata",
+    Id = 41343,
     Level = 61,
     Attain = 60,
     Aim = "Habla con el Portero Montigue en los Pasillos Inferiores de Karazhan.",
@@ -6309,6 +6770,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[3] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[4] = {
     Title = "Un Camino Abierto",
+    Id = 41373,
     Level = 60,
     Attain = 60,
     Aim = "Encuentra al Cocinero en las Salas Inferiores de Karazhan.",
@@ -6318,6 +6780,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[4] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[5] = {
     Title = "Fría es la Noche",
+    Id = 41353,
     Level = 62,
     Attain = 60,
     Aim = "Investiga los misterios de la Amatista Encantada.",
@@ -6327,6 +6790,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[5] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[6] = {
     Title = "No Hay Honor Entre Chefs",
+    Id = 41375,
     Level = 61,
     Attain = 60,
     Aim = "Viaja a La Masacre y busca al Conservador de conocimientos Lydros.",
@@ -6336,6 +6800,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[6] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[7] = {
     Title = "Guadaña de la Diosa",
+    Id = 41087,
     Level = 60,
     Attain = 60,
     Aim = "Mata a Clawlord Howlfang e informa a Lord Cerro Negro.",
@@ -6346,6 +6811,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[7] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[8] = {
     Title = "Sabiduría de Ur",
+    Id = 41384,
     Level = 60,
     Attain = 60,
     Aim = "Mata al Guardián Dienteluna. Puede encontrarse en las Cámaras Superiores de Karazhan.",
@@ -6356,6 +6822,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[8] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[9] = {
     Title = "Guadaña de la Diosa",
+    Id = 41394,
     Level = 60,
     Attain = 60,
     Aim = "Mata a Clawlord Howlfang e informa a Lord Cerro Negro.",
@@ -6381,6 +6848,7 @@ kQuestInstanceData.DragonmawRetreat = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[1] = {
     Title = "Pedestal de la Unidad",
+    Id = 41774,
     Level = 30,
     Attain = 25,
     Aim = "El Pedestal de la Unidad permanece intacto y libre de daños graves.",
@@ -6393,6 +6861,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[1] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[2] = {
     Title = "Derrota de Colmillomiedo",
+    Id = 41750,
     Level = 28,
     Attain = 20,
     Aim = "Venga a los gnolls Mosshide matando a su antiguo líder Gowlfang en el Reposo Faucedraco. Regresa con Grimbite en su campamento en El Cinturón Verde en Los Humedales después.",
@@ -6405,6 +6874,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[2] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[3] = {
     Title = "Recuperación de Gólems de Piedra",
+    Id = 41749,
     Level = 28,
     Attain = 22,
     Aim = "Consigue la piedra rúnica de un Gólem de Piedra Desmoronado dentro del Refugio Faucedraco y llévasela a Kixxle en el camino principal de Los Humedales.",
@@ -6419,6 +6889,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[3] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[4] = {
     Title = "La Camada Faucedraco",
+    Id = 41751,
     Level = 34,
     Attain = 24,
     Aim = "Nydiszanz en las Puertas Faucedraco en Los Humedales desea liberar a su hermano Searistrasz de su captura por los orcos Faucedraco en el Reposo Faucedraco.",
@@ -6433,6 +6904,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[4] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[5] = {
     Title = "Yugo de la Reina Dragón",
+    Id = 41785,
     Level = 30,
     Attain = 24,
     Aim = "Procure no Pântano por um dragão vermelho disposto a ouvir você.",
@@ -6447,6 +6919,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[5] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[6] = {
     Title = "Carta de Korlag Canciónfatal",
+    Id = 41657,
     Level = 35,
     Attain = 30,
     Aim = "Lleva la carta a alguien de alta autoridad en Los Territorios Sombríos.",
@@ -6462,6 +6935,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[6] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[7] = {
     Title = "Aplastar a los Faucedraco",
+    Id = 41756,
     Level = 29,
     Attain = 21,
     Aim = "Mata a veteranos Faucedraco en el Reposo Faucedraco y regresa con el Capitán Puño Fuerte en el Puerto de Menethil.",
@@ -6470,6 +6944,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[7] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[8] = {
     Title = "La Caída de Corazónoscuro",
+    Id = 41757,
     Level = 31,
     Attain = 23,
     Aim = "Llévale la cabeza del Señor de la Guerra Negrazón al Capitán Puño Fuerte en el Puerto de Menethil.",
@@ -6485,6 +6960,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[8] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[9] = {
     Title = "La Mentira de los Bandidos Rojo",
+    Id = 41754,
     Level = 28,
     Attain = 22,
     Aim = "Lleva la Tablilla Brandirroja a uno de los historiadores en La Biblioteca de Forjaz.",
@@ -6509,6 +6985,7 @@ kQuestInstanceData.DragonmawRetreat.Horde[6] = createInheritedQuest(
 )
 kQuestInstanceData.DragonmawRetreat.Horde[7] = {
     Title = "Extracto de Telaraña Cavernosa",
+    Id = 41752,
     Level = 27,
     Attain = 21,
     Aim = "Mata a la Madre de la Camada Cavernícola en el Reposo Faucedraco y entrega su saco de veneno a Okal en Quijaforte.",
@@ -6517,6 +6994,7 @@ kQuestInstanceData.DragonmawRetreat.Horde[7] = {
 }
 kQuestInstanceData.DragonmawRetreat.Horde[8] = {
     Title = "Un Fuego Inagotable",
+    Id = 41753,
     Level = 30,
     Attain = 24,
     Aim = "Recupera la Llama Eterna de dentro del Reposo Faucedraco y llévasela a Shara Blazen en Molino Tarren.",
@@ -6537,6 +7015,7 @@ kQuestInstanceData.StormwroughtRuins = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[1] = {
     Title = "El Difunto Duque Balor",
+    Id = 41814,
     Level = 34,
     Attain = 28,
     Aim = "Devuelve la Corona de Balor a Olmir Cuernomedio.",
@@ -6550,6 +7029,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[1] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[2] = {
     Title = "Calavera y Huesos",
+    Id = 41760,
     Level = 34,
     Attain = 28,
     Aim = "Entra en el Castillo Forjatormenta y recupera el Anillo de Sello de Balor para Lord Olivert Grahan en su mansión en el oeste de Balor.",
@@ -6562,6 +7042,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[2] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[3] = {
     Title = "Los Muertos No Pueden Quejarse",
+    Id = 41844,
     Level = 34,
     Attain = 28,
     Aim = "Rikki Fizmask quiere que saqueen las Ruinas Forjatormenta en Balor y regresen con ella en los restos del Alabarda del Gaviota.",
@@ -6574,6 +7055,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[3] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[4] = {
     Title = "La Voluntad de Balor",
+    Id = 41845,
     Level = 38,
     Attain = 32,
     Aim = "Mata a la súcubo que retiene el alma de Arthur y devuélvesela en la sala del trono del Castillo Forjatormenta.",
@@ -6582,6 +7064,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[4] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[5] = {
     Title = "Antigüedades",
+    Id = 41842,
     Level = 35,
     Attain = 29,
     Aim = "Recupera el 'Compendio de Comercio Exitoso' dentro del Castillo Forjatormenta para Noppsy Spickerspan en el puesto avanzado Si:7 en Balor.",
@@ -6595,6 +7078,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[5] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[6] = {
     Title = "Asesino en Entrenamiento",
+    Id = 41843,
     Level = 35,
     Attain = 29,
     Aim = "Reduce la cadena de mando dentro de las Ruinas Forjatormenta y regresa con Nippsy Spickerspan en el puesto avanzado Si:7 en Balor.",
@@ -6604,6 +7088,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[6] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[7] = {
     Title = "Corazón de la Oscuridad",
+    Id = 41787,
     Level = 38,
     Attain = 21,
     Aim = "Detén al Consejo de las Sombras en las Ruinas Forjatormenta.",
@@ -6620,6 +7105,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[7] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[8] = {
     Title = "Impresión Cristalina",
+    Id = 41879,
     Level = 38,
     Attain = 34,
     Aim = "Encuentra un Cristal Forjatormenta para Grukson Barba Pizarra en la forja Barba Pizarra.",
@@ -6632,6 +7118,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[8] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[9] = {
     Title = "Todo Lo Que Queda",
+    Id = 41840,
     Level = 38,
     Attain = 32,
     Aim = "Lleva la espada de juguete de madera a alguien que conociera a su dueño. Puedes tener suerte en Viento Norte, donde todo comenzó.",
@@ -6643,6 +7130,7 @@ for i = 1, 4 do
 end
 kQuestInstanceData.StormwroughtRuins.Horde[5] = {
     Title = "Inocencia Perdida",
+    Id = 41821,
     Level = 34,
     Attain = 28,
     Aim = "Mata los restos de los inocentes y regresa con O'jin en Punta Rompetormenta.",
@@ -6651,6 +7139,7 @@ kQuestInstanceData.StormwroughtRuins.Horde[5] = {
 }
 kQuestInstanceData.StormwroughtRuins.Horde[6] = {
     Title = "Mycellakos",
+    Id = 41824,
     Level = 33,
     Attain = 27,
     Aim = "Mata a Mycellakos y trae el Núcleo de Mycellakos de vuelta a Uda'pe Pastosol en Punta Rompetormenta.",
@@ -6667,6 +7156,7 @@ kQuestInstanceData.StormwroughtRuins.Horde[6] = {
 }
 kQuestInstanceData.StormwroughtRuins.Horde[7] = {
     Title = "El Poder de Uth'okk",
+    Id = 41730,
     Level = 38,
     Attain = 30,
     Aim = "Mata a Oronok Corazón Roto y recupera el Colgante de Uth'okk de las Ruinas Forjadas por la Tormenta para el Profeta Lejano Mothang en el Puesto Rompehoja en Los Territorios Sombríos.",
@@ -6681,6 +7171,7 @@ kQuestInstanceData.StormwroughtRuins.Horde[7] = {
 }
 kQuestInstanceData.StormwroughtRuins.Horde[8] = {
     Title = "No Puede Llover Todo el Tiempo",
+    Id = 41833,
     Level = 38,
     Attain = 32,
     Aim = "Mata a Dagar el Glotón, Oronok Corazón Destrozado, Ighal'for y regresa con Kilrogg Ojo Muerto en Punta Rompetormentas.",
@@ -6697,6 +7188,7 @@ kQuestInstanceData.StormwroughtRuins.Horde[8] = {
 }
 kQuestInstanceData.StormwroughtRuins.Horde[9] = {
     Title = "Artefacto de la Dama Oscura",
+    Id = 41841,
     Level = 38,
     Attain = 32,
     Aim = "Entrega el colgante de piedra de sangre a Lady Sylvanas Brisaveloz en Entrañas.",

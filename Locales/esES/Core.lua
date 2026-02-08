@@ -97,8 +97,8 @@ AtlasTW.OutdoorZoneToAtlas = {
     ["Vallefresno"] = "BlackfathomDeepsEnt",
     ["Tierras Inhóspitas"] = "UldamanEnt",
     ["Montaña Roca Negra"] = "BlackrockMountainEnt",
-    ["Las Estepas Ardientes"] = "HateforgeQuarry",    -- TurtleWOW
-    ["Paso de la Muerte"] = "KarazhanCrypt",          -- TurtleWOW
+    ["Las Estepas Ardientes"] = "HateforgeQuarry", -- TurtleWOW
+    ["Paso de la Muerte"] = "KarazhanCrypt",       -- TurtleWOW
     ["Desolace"] = "MaraudonEnt",
     ["Dun Morogh"] = "GnomereganEnt",
     ["Feralas"] = "DireMaulEnt",
@@ -106,7 +106,7 @@ AtlasTW.OutdoorZoneToAtlas = {
     ["Pantano de las Penas"] = "TheSunkenTempleEnt",
     ["Tanaris"] = "ZulFarrak",
     ["Los Baldíos"] = "WailingCavernsEnt",
-    ["Gilneas"] = "GilneasCity",     -- TurtleWOW
+    ["Gilneas"] = "GilneasCity", -- TurtleWOW
     ["Claros de Tirisfal"] = "ScarletMonasteryEnt",
     ["Páramos de Poniente"] = "TheDeadminesEnt",
     ["Orgrimmar"] = "RagefireChasm",
@@ -117,8 +117,8 @@ AtlasTW.OutdoorZoneToAtlas = {
     ["Tierras de la Peste del Este"] = "Stratholme",
     ["Ciudad de Ventormenta"] = "TheStockade",
     ["Vega de Tuercespina"] = "ZulGurub",
-    ["Balor"] = "StormwroughtRuins",                     -- TurtleWOW
-    ["Los Humedales"] = "DragonmawRetreat"               -- TurtleWOW
+    ["Balor"] = "StormwroughtRuins",       -- TurtleWOW
+    ["Los Humedales"] = "DragonmawRetreat" -- TurtleWOW
 }
 
 ---
@@ -147,8 +147,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Loot"] = "Botín",
     ["Previous"] = "Anterior",
     ["Next"] = "Siguiente",
-    ["Group by Source"] = "Agrupar por fuente",
+    ["Group by Source"] = "Agrupar por Fuente",
     ["Default"] = "Predeterminado",
+    ["Check Completed Quests"] = "Ver Misiones Completadas",
 
 
     --************************************************
@@ -665,4 +666,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Tier 3 Sets"] = "Conjuntos de nivel 3",
     ["Item Level"] = "Nivel de Objeto",
     ["Disenchanting"] = "Desencantar",
+    ["Reagent Tooltip Options"] = "Opciones de componentes",
+    ["Reagent Rows"] = "Filas de componentes",
+    ["Other"] = "Otro",
+    ["... %d more"] = "... %d más",
+    ["Recipe #%d"] = "Receta #%d",
 })

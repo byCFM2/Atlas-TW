@@ -169,9 +169,23 @@ end
 
 -- Register Events
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
+frame:RegisterEvent("CHAT_MSG_SYSTEM")
+frame:RegisterEvent("CHAT_MSG_ADDON")
 frame:SetBackdropBorderColor(0.80, 0.60, 0.25, 1)
-frame:SetScript("OnEvent", function() AtlasTW.Quest.OnEvent() end)
+frame:SetScript("OnEvent", function()
+    -- Debug print to verify script handler execution
+    -- if DEFAULT_CHAT_FRAME then DEFAULT_CHAT_FRAME:AddMessage("Atlas-TW: Frame OnEvent Triggered: " .. (event or "nil")) end
+    AtlasTW.Quest.OnEvent(event, arg1, arg2, arg3)
+end)
 frame:SetScript("OnShow", function() AtlasTW.Quest.OnQuestFrameShow() end)
+
+-- Check Completed Quests Button
+UI_Main.CheckCompletedQuestsButton = CreateElement("Button", "", frame, "OptionsButtonTemplate", 210, 20, { "TOP", 0, 20 }, L["Check Completed Quests"])
+UI_Main.CheckCompletedQuestsButton:SetScript("OnClick", function()
+    SendChatMessage(".queststatus")
+    this:Hide()
+end)
+UI_Main.CheckCompletedQuestsButton:SetScript("OnShow", setFrameLevelOnShow)
 
 -- Assign UI table to the global namespace
 AtlasTW.Quest.UI_Main = UI_Main

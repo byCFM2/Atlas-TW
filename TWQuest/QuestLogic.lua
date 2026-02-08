@@ -538,16 +538,119 @@ function AtlasTW.Quest.ToggleQuestFrame()
     AtlasTW.OptionsInit()
 end
 
+local SearchPattern = gsub(ERR_QUEST_COMPLETE_S, "%%s", "(.+)")
+
+---
+--- Marks a quest as completed by name
+--- @param questName string The name of the completed quest
+--- @return nil
+---
+function AtlasTW.Quest.MarkQuestComplete(questName)
+    if not questName or not AtlasTW.Quest.DataBase then return end
+
+    local found = false
+    -- We need to check both factions because the player might be tracking quests for the other faction
+    -- or the DB might be structured in a way where we need to search all.
+    -- However, usually we only care about the current faction's quests.
+    -- But let's be safe and check all instances.
+
+    for instanceName, instanceData in pairs(AtlasTW.Quest.DataBase) do
+        for _, faction in ipairs({ "Alliance", "Horde" }) do
+            if instanceData[faction] then
+                for i, quest in ipairs(instanceData[faction]) do
+                    -- Check exact match
+                    local match = (quest.Title == questName)
+
+                    -- Check with number stripping if exact match failed
+                    if not match then
+                        -- Escape special characters in title for pattern matching
+                        local escapedTitle = string.gsub(quest.Title, "([%(%)%.%%%+%-%*%?%[%^%$])", "%%%1")
+                        -- Check if questName matches "1. Title" pattern
+                        if string.find(questName, "^%d+%.%s*" .. escapedTitle .. "$") then
+                            match = true
+                        end
+                        -- Check if Title matches "1. questName" (unlikely but possible)
+                        if string.find(quest.Title, "^%d+%.%s*" .. string.gsub(questName, "([%(%)%.%%%+%-%*%?%[%^%$])", "%%%1") .. "$") then
+                            match = true
+                        end
+                    end
+
+                    if match then
+                        local questKey = "Completed_" .. instanceName .. "_Quest_" .. i .. "_" .. faction
+                        AtlasTWCharDB[questKey] = 1
+                        AtlasTW.Q[questKey] = 1
+                        found = true
+                        break
+                    end
+                end
+            end
+            if found then break end
+        end
+        if found then break end
+    end
+
+    if found and AtlasTW.QCurrentInstance then
+        AtlasTW.Quest.SetQuestButtons()
+    end
+end
+
+---
+--- Marks a quest as completed by ID
+--- @param questID number The ID of the completed quest
+--- @return nil
+---
+function AtlasTW.Quest.MarkQuestCompleteByID(questID)
+    if not questID or not AtlasTW.Quest.DataBase then return end
+
+    for instanceName, instanceData in pairs(AtlasTW.Quest.DataBase) do
+        for _, factionName in ipairs({ "Alliance", "Horde" }) do
+            if instanceData[factionName] then
+                for i, quest in ipairs(instanceData[factionName]) do
+                    if quest.Id == questID then
+                        local questKey = "Completed_" .. instanceName .. "_Quest_" .. i .. "_" .. factionName
+                        AtlasTWCharDB[questKey] = 1
+                        AtlasTW.Q[questKey] = 1
+
+                        if AtlasTW.QCurrentInstance == instanceName then
+                            AtlasTW.Quest.SetQuestButtons()
+                        end
+                        return -- Done for this ID
+                    end
+                end
+            end
+        end
+    end
+end
+
 ---
 --- Handles quest-related game events and initialization
 --- Loads finished quests and configures tooltip settings
 --- @return nil
 --- @usage Called automatically when the player starts the game
 ---
-function AtlasTW.Quest.OnEvent()
-    if type(AtlasTWCharDB) == "table" then
-        AtlasTW.Quest.LoadFinishedQuests()
-    else
-        PrintA(Colors.GREEN .. "Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
+function AtlasTW.Quest.OnEvent(event, arg1, arg2, arg3)
+    if not event and this then event = this.event end -- Fallback if not passed
+
+    if event == "PLAYER_ENTERING_WORLD" then
+        if type(AtlasTWCharDB) == "table" then
+            AtlasTW.Quest.LoadFinishedQuests()
+        else
+            PrintA(Colors.GREEN .. "Atlas-TW Quest:|r|cff00ffffAtlasTW not loaded!|r")
+        end
+    elseif event == "CHAT_MSG_SYSTEM" then
+        if (arg1 and strfind(arg1, SearchPattern)) then
+            local _, _, questName = strfind(arg1, SearchPattern)
+            AtlasTW.Quest.MarkQuestComplete(questName)
+        end
+    elseif event == "CHAT_MSG_ADDON" and arg1 == "TWQUEST" then
+        -- Parse IDs from arg2 (space separated)
+        if arg2 then
+            for id in string.gfind(arg2, "%S+") do
+                local questID = tonumber(id)
+                if questID then
+                    AtlasTW.Quest.MarkQuestCompleteByID(questID)
+                end
+            end
+        end
     end
 end

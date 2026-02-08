@@ -58,6 +58,7 @@ kQuestInstanceData.TheDeadmines = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[1] = {
     Title = "红色丝质面罩",
+    Id = 214,
     Level = 17,
     Attain = 14,
     Aim = "给哨兵岭哨塔的哨兵瑞尔带回10条红色丝质面罩。",
@@ -73,6 +74,7 @@ kQuestInstanceData.TheDeadmines.Alliance[1] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[2] = {
     Title = "收集记忆",
+    Id = 168,
     Level = 18,
     Attain = 14,
     Aim = "给暴风城的维尔德·蓟草带回4张矿业工会会员卡。",
@@ -86,6 +88,7 @@ kQuestInstanceData.TheDeadmines.Alliance[2] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[3] = {
     Title = "我的兄弟……",
+    Id = 167,
     Level = 20,
     Attain = 15,
     Aim = "将工头希斯耐特的探险者协会徽章交给暴风城的维尔德·蓟草。",
@@ -98,6 +101,7 @@ kQuestInstanceData.TheDeadmines.Alliance[3] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[4] = {
     Title = "地底突袭",
+    Id = 2040,
     Level = 20,
     Attain = 15,
     Aim = "从死亡矿井中带回小型高能发动机，将其带给暴风城矮人区中的沉默的舒尼。",
@@ -112,6 +116,7 @@ kQuestInstanceData.TheDeadmines.Alliance[4] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[5] = {
     Title = "迪菲亚兄弟会",
+    Id = 166,
     Level = 22,
     Attain = 14,
     Aim = "格里安·斯托曼要求你去和湖畔镇的威利谈一谈。",
@@ -127,6 +132,7 @@ kQuestInstanceData.TheDeadmines.Alliance[5] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[6] = {
     Title = "正义试炼",
+    Id = 1654,
     Level = 22,
     Attain = 20,
     Aim = "去和铁炉堡的乔丹·斯迪威尔谈一谈。",
@@ -142,6 +148,7 @@ kQuestInstanceData.TheDeadmines.Alliance[6] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[7] = {
     Title = "未寄出的信",
+    Id = 373,
     Level = 22,
     Attain = 16,
     Aim = "将艾德温·范克里夫的信交给巴隆斯·阿历克斯顿。",
@@ -152,6 +159,7 @@ kQuestInstanceData.TheDeadmines.Alliance[7] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[8] = {
     Title = "葛瑞森船长的复仇",
+    Id = 40396,
     Level = 22,
     Attain = 15,
     Aim = "结束曲奇的小命。",
@@ -165,6 +173,7 @@ kQuestInstanceData.TheDeadmines.Alliance[8] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[9] = {
     Title = "收获傀儡之谜之一",
+    Id = 40478,
     Level = 19,
     Attain = 15,
     Aim = "为哨兵岭的克里斯托弗·赫温收集1个破碎的魔像符文。",
@@ -181,6 +190,7 @@ kQuestInstanceData.TheDeadmines.Alliance[9] = {
 }
 kQuestInstanceData.TheDeadmines.Alliance[10] = {
     Title = "关上水龙头",
+    Id = 41392,
     Level = 20,
     Attain = 14,
     Aim = "潜入西部荒野的死亡矿井并获得维斯的热饮。",
@@ -195,6 +205,7 @@ kQuestInstanceData.TheDeadmines.Alliance[10] = {
 }
 kQuestInstanceData.TheDeadmines.Horde[1] = {
     Title = "原型机图纸",
+    Id = 55005,
     Level = 18,
     Attain = 16,
     Aim = "前往死亡矿井，把原型拆解者X0-1设计图带给乌雷克斯·奥兹尔纳特",
@@ -208,6 +219,7 @@ kQuestInstanceData.TheDeadmines.Horde[1] = {
 }
 kQuestInstanceData.TheDeadmines.Horde[2] = {
     Title = "葛瑞森船长的复仇",
+    Id = 40396,
     Level = 22,
     Attain = 15,
     Aim = "结束曲奇的小命。",
@@ -221,6 +233,7 @@ kQuestInstanceData.TheDeadmines.Horde[2] = {
 }
 kQuestInstanceData.TheDeadmines.Horde[3] = {
     Title = "部落防御者之斧",
+    Id = 39998,
     Level = 18,
     Attain = 15,
     Aim = "在十字路口与部落守卫交谈",
@@ -243,6 +256,7 @@ kQuestInstanceData.WailingCaverns = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[1] = {
     Title = "变异皮革",
+    Id = 1486,
     Level = 17,
     Attain = 13,
     Aim = "哀嚎洞穴的纳尔帕克想要20张变异皮革。",
@@ -256,6 +270,7 @@ kQuestInstanceData.WailingCaverns.Alliance[1] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[2] = {
     Title = "港口的麻烦",
+    Id = 959,
     Level = 18,
     Attain = 14,
     Aim = "棘齿城的起重机操作员比戈弗兹让你从疯狂的马格利什那儿取回一瓶99年波尔多陈酿，疯狂的马格利什就藏在哀嚎洞穴里。",
@@ -264,6 +279,7 @@ kQuestInstanceData.WailingCaverns.Alliance[2] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[3] = {
     Title = "智慧饮料",
+    Id = 1491,
     Level = 18,
     Attain = 13,
     Aim = "收集6份哀嚎香精，把它们交给棘齿城的麦伯克·米希瑞克斯。",
@@ -273,6 +289,7 @@ kQuestInstanceData.WailingCaverns.Alliance[3] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[4] = {
     Title = "清除变异者",
+    Id = 1487,
     Level = 21,
     Attain = 15,
     Aim = "哀嚎洞穴的厄布鲁要求你杀掉7只变异破坏者、7只剧毒飞蛇、7只变异蹒跚者和7只变异尖牙风蛇。",
@@ -287,6 +304,7 @@ kQuestInstanceData.WailingCaverns.Alliance[4] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[5] = {
     Title = "发光的碎片",
+    Id = 6981,
     Level = 26,
     Attain = 15,
     Aim = "寻找更多有关这块噩梦碎片的信息。",
@@ -301,6 +319,7 @@ kQuestInstanceData.WailingCaverns.Alliance[5] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[6] = {
     Title = "毒蛇花",
+    Id = 60125,
     Level = 18,
     Attain = 16,
     Aim = "为雷霆崖的药剂师扎玛收集10朵毒蛇花。",
@@ -314,6 +333,7 @@ kQuestInstanceData.WailingCaverns.Alliance[6] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[7] = {
     Title = "陷入梦魇",
+    Id = 60124,
     Level = 19,
     Attain = 16,
     Aim = "奥兰达利亚·夜歌想让你进入北贫瘠之地的哀嚎洞穴，将纳拉雷克斯从梦魇中解救出来。在山洞里找到他的弟子学习如何解救他。当你解救纳拉雷克斯时，回到奥兰达利亚·夜歌身边。",
@@ -327,6 +347,7 @@ kQuestInstanceData.WailingCaverns.Alliance[7] = {
 }
 kQuestInstanceData.WailingCaverns.Alliance[8] = {
     Title = "杂草丛生",
+    Id = 41363,
     Level = 20,
     Attain = 16,
     Aim = "奥伯丁的桑迪斯·织风需要哀嚎洞穴中的\"异常的狂野生长\"掉落的样本。",
@@ -342,6 +363,7 @@ kQuestInstanceData.WailingCaverns.Horde[1] = kQuestInstanceData.WailingCaverns.A
 kQuestInstanceData.WailingCaverns.Horde[2] = kQuestInstanceData.WailingCaverns.Alliance[2]
 kQuestInstanceData.WailingCaverns.Horde[3] = {
     Title = "毒蛇花",
+    Id = 962,
     Level = 18,
     Attain = 14,
     Aim = "为雷霆崖的药剂师扎玛收集10朵毒蛇花。",
@@ -357,6 +379,7 @@ kQuestInstanceData.WailingCaverns.Horde[4] = kQuestInstanceData.WailingCaverns.A
 kQuestInstanceData.WailingCaverns.Horde[5] = kQuestInstanceData.WailingCaverns.Alliance[4]
 kQuestInstanceData.WailingCaverns.Horde[6] = {
     Title = "尖牙德鲁伊",
+    Id = 914,
     Level = 22,
     Attain = 11,
     Aim = "将考布莱恩宝石、安娜科德拉宝石、皮萨斯宝石和瑟芬迪斯宝石交给雷霆崖的纳拉·蛮鬃。",
@@ -372,6 +395,7 @@ kQuestInstanceData.WailingCaverns.Horde[6] = {
 kQuestInstanceData.WailingCaverns.Horde[7] = kQuestInstanceData.WailingCaverns.Alliance[5]
 kQuestInstanceData.WailingCaverns.Horde[8] = {
     Title = "奥术武器",
+    Id = 80312,
     Level = 18,
     Attain = 14,
     Aim = "从哀嚎洞穴中给卓克盖洛克带去5块月光木材、一块巨蛇水晶和一份变换精华。",
@@ -386,6 +410,7 @@ kQuestInstanceData.WailingCaverns.Horde[8] = {
 }
 kQuestInstanceData.WailingCaverns.Horde[9] = {
     Title = "与科卡尔的梦对抗",
+    Id = 41367,
     Level = 23,
     Attain = 17,
     Aim = "在哀嚎洞穴中杀死赞达拉·风蹄，并将她的头带回贫瘠之地的纳尔帕克身边。",
@@ -405,6 +430,7 @@ kQuestInstanceData.RagefireChasm = {
 }
 kQuestInstanceData.RagefireChasm.Horde[1] = {
     Title = "试探敌人",
+    Id = 5723,
     Level = 15,
     Attain = 9,
     Aim = "在奥格瑞玛找到怒焰裂谷，杀掉8个怒焰穴居人和8个怒焰萨满祭司，然后向雷霆崖的拉哈罗复命。",
@@ -413,6 +439,7 @@ kQuestInstanceData.RagefireChasm.Horde[1] = {
 }
 kQuestInstanceData.RagefireChasm.Horde[2] = {
     Title = "毁灭之力",
+    Id = 5725,
     Level = 16,
     Attain = 9,
     Aim = "将《暗影法术研究》和《扭曲虚空的魔法》这两本书交给幽暗城的瓦里玛萨斯。",
@@ -427,6 +454,7 @@ kQuestInstanceData.RagefireChasm.Horde[2] = {
 }
 kQuestInstanceData.RagefireChasm.Horde[3] = {
     Title = "寻找背包",
+    Id = 5722,
     Level = 16,
     Attain = 9,
     Aim = "在怒焰裂谷搜寻玛尔·恐怖图腾的尸体以及他留下的东西。",
@@ -441,6 +469,7 @@ kQuestInstanceData.RagefireChasm.Horde[3] = {
 }
 kQuestInstanceData.RagefireChasm.Horde[4] = {
     Title = "隐藏的敌人",
+    Id = 5728,
     Level = 16,
     Attain = 9,
     Aim = "将军官的徽章交给奥格瑞玛的萨尔。",
@@ -458,6 +487,7 @@ kQuestInstanceData.RagefireChasm.Horde[4] = {
 }
 kQuestInstanceData.RagefireChasm.Horde[5] = {
     Title = "饥饿者塔拉加曼",
+    Id = 5761,
     Level = 16,
     Attain = 9,
     Aim = "进入怒焰裂谷，杀死饥饿者塔拉加曼，然后把他的心脏交给奥格瑞玛的尼尔鲁·火刃。",
@@ -475,6 +505,7 @@ kQuestInstanceData.Uldaman = {
 }
 kQuestInstanceData.Uldaman.Alliance[1] = {
     Title = "一线希望",
+    Id = 721,
     Level = 35,
     Attain = 33,
     Aim = "找到勘察员雷杜尔，告诉他铁趾格雷兹还活着。",
@@ -485,6 +516,7 @@ kQuestInstanceData.Uldaman.Alliance[1] = {
 }
 kQuestInstanceData.Uldaman.Alliance[2] = {
     Title = "铁趾的护符",
+    Id = 722,
     Level = 40,
     Attain = 35,
     Aim = "找到铁趾的护符，把它交给奥达曼的铁趾。",
@@ -495,6 +527,7 @@ kQuestInstanceData.Uldaman.Alliance[2] = {
 }
 kQuestInstanceData.Uldaman.Alliance[3] = {
     Title = "意志石板",
+    Id = 1139,
     Level = 45,
     Attain = 35,
     Aim = "找到意志石板，把它们交给铁炉堡的顾问贝尔格拉姆。",
@@ -508,6 +541,7 @@ kQuestInstanceData.Uldaman.Alliance[3] = {
 }
 kQuestInstanceData.Uldaman.Alliance[4] = {
     Title = "能量石",
+    Id = 2418,
     Level = 36,
     Attain = 30,
     Aim = "给荒芜之地的里格弗兹带去8块德提亚姆能量石和8块安纳洛姆能量石。",
@@ -522,6 +556,7 @@ kQuestInstanceData.Uldaman.Alliance[4] = {
 }
 kQuestInstanceData.Uldaman.Alliance[5] = {
     Title = "阿戈莫德的命运",
+    Id = 704,
     Level = 38,
     Attain = 30,
     Aim = "收集4个雕纹石罐，把它们交给洛克莫丹的勘察员基恩萨·铁环。",
@@ -535,6 +570,7 @@ kQuestInstanceData.Uldaman.Alliance[5] = {
 }
 kQuestInstanceData.Uldaman.Alliance[6] = {
     Title = "化解灾难",
+    Id = 709,
     Level = 40,
     Attain = 30,
     Aim = "把雷乌纳石板带给迷失者塞尔杜林。",
@@ -548,6 +584,7 @@ kQuestInstanceData.Uldaman.Alliance[6] = {
 }
 kQuestInstanceData.Uldaman.Alliance[7] = {
     Title = "失踪的矮人",
+    Id = 2398,
     Level = 40,
     Attain = 35,
     Aim = "在奥达曼找到巴尔洛戈。",
@@ -557,6 +594,7 @@ kQuestInstanceData.Uldaman.Alliance[7] = {
 }
 kQuestInstanceData.Uldaman.Alliance[8] = {
     Title = "密室",
+    Id = 2240,
     Level = 40,
     Attain = 35,
     Aim = "阅读巴尔洛戈的日记，探索密室，然后向铁炉堡的勘察员塔伯斯·雷矛汇报。",
@@ -571,6 +609,7 @@ kQuestInstanceData.Uldaman.Alliance[8] = {
 }
 kQuestInstanceData.Uldaman.Alliance[9] = {
     Title = "破碎的项链",
+    Id = 2198,
     Level = 41,
     Attain = 37,
     Aim = "找到破碎的项链的来源，从而了解其潜在的价值。",
@@ -580,6 +619,7 @@ kQuestInstanceData.Uldaman.Alliance[9] = {
 }
 kQuestInstanceData.Uldaman.Alliance[10] = {
     Title = "回到奥达曼",
+    Id = 2200,
     Level = 42,
     Attain = 37,
     Aim = "去奥达曼寻找塔瓦斯的魔法项链，被杀的圣骑士是最后一个拿着它的人。",
@@ -590,6 +630,7 @@ kQuestInstanceData.Uldaman.Alliance[10] = {
 }
 kQuestInstanceData.Uldaman.Alliance[11] = {
     Title = "寻找宝石",
+    Id = 2201,
     Level = 43,
     Attain = 40,
     Aim = "在奥达曼寻找红宝石、蓝宝石和黄宝石的下落。找到它们之后，通过塔瓦斯德给你的占卜之瓶和他进行联系。",
@@ -600,6 +641,7 @@ kQuestInstanceData.Uldaman.Alliance[11] = {
 }
 kQuestInstanceData.Uldaman.Alliance[12] = {
     Title = "修复项链",
+    Id = 2204,
     Level = 44,
     Attain = 37,
     Aim = "从奥达曼最强大的石人身上获得能量源，然后将其交给铁炉堡的塔瓦斯德。",
@@ -613,6 +655,7 @@ kQuestInstanceData.Uldaman.Alliance[12] = {
 }
 kQuestInstanceData.Uldaman.Alliance[13] = {
     Title = "奥达曼的蘑菇",
+    Id = 17,
     Level = 42,
     Attain = 36,
     Aim = "收集12颗紫色蘑菇，把它们交给塞尔萨玛的加克。",
@@ -626,6 +669,7 @@ kQuestInstanceData.Uldaman.Alliance[13] = {
 }
 kQuestInstanceData.Uldaman.Alliance[14] = {
     Title = "失而复得",
+    Id = 1360,
     Level = 43,
     Attain = 33,
     Aim = "到奥达曼的北部大厅去找到克罗姆·粗臂的箱子，从里面拿出他的宝贵财产，然后回到铁炉堡把东西交给他。",
@@ -635,6 +679,7 @@ kQuestInstanceData.Uldaman.Alliance[14] = {
 }
 kQuestInstanceData.Uldaman.Alliance[15] = {
     Title = "白金圆盘",
+    Id = 2278,
     Level = 47,
     Attain = 40,
     Aim = "和石头守护者交谈，从他那里了解更多古代的知识。一旦你了解到了所有的内容之后就激活诺甘农圆盘。",
@@ -652,6 +697,7 @@ kQuestInstanceData.Uldaman.Alliance[15] = {
 }
 kQuestInstanceData.Uldaman.Alliance[16] = {
     Title = "奥达曼的能量源",
+    Id = 1956,
     Level = 40,
     Attain = 35,
     Aim = "找到一个黑曜石能量源，将其交给尘泥沼泽的塔贝萨。",
@@ -662,6 +708,7 @@ kQuestInstanceData.Uldaman.Alliance[16] = {
 }
 kQuestInstanceData.Uldaman.Alliance[17] = { --1.18
     Title = "偷一个核心",
+    Id = 40129,
     Level = 45,
     Attain = 45,
     Aim = "从奥达曼的古代宝藏中获得完好的动力核心。",
@@ -678,6 +725,7 @@ kQuestInstanceData.Uldaman.Horde[1] = kQuestInstanceData.Uldaman.Alliance[4]
 kQuestInstanceData.Uldaman.Horde[2] = kQuestInstanceData.Uldaman.Alliance[6]
 kQuestInstanceData.Uldaman.Horde[3] = {
     Title = "搜寻项链",
+    Id = 2283,
     Level = 41,
     Attain = 37,
     Aim = "在奥达曼挖掘场中寻找一条珍贵的项链，然后将其交给奥格瑞玛的德兰·杜佛斯。项链有可能已经损坏。",
@@ -688,6 +736,7 @@ kQuestInstanceData.Uldaman.Horde[3] = {
 kQuestInstanceData.Uldaman.Horde[4] = kQuestInstanceData.Uldaman.Alliance[10]
 kQuestInstanceData.Uldaman.Horde[5] = {
     Title = "翻译日记",
+    Id = 2318,
     Level = 42,
     Attain = 37,
     Aim = "在荒芜之地的卡加斯哨所里寻找一个可以帮你翻译圣骑士日记的人。",
@@ -699,6 +748,7 @@ kQuestInstanceData.Uldaman.Horde[5] = {
 kQuestInstanceData.Uldaman.Horde[6] = kQuestInstanceData.Uldaman.Alliance[11]
 kQuestInstanceData.Uldaman.Horde[7] = {
     Title = "奥达曼的蘑菇",
+    Id = 2202,
     Level = 42,
     Attain = 36,
     Aim = "收集12颗紫色蘑菇，把它们交给塞尔萨玛的加克。",
@@ -713,30 +763,24 @@ kQuestInstanceData.Uldaman.Horde[7] = {
 }
 kQuestInstanceData.Uldaman.Horde[8] = {
     Title = "失而复得",
+    Id = 2342,
     Level = 43,
     Attain = 33,
     Aim = "到奥达曼的北部大厅去找到克罗姆·粗臂的箱子，从里面拿出他的宝贵财产，然后回到铁炉堡把东西交给他。",
     Location = "派翠克·加瑞特 (幽暗城 "..yellow.."72,48"..white..")",
     Note = "你可以在进入副本前找到宝藏。它位于南隧道的尽头。在入口地图上，它位于 "..       yellow.."[5]"..white.."。",
 }
-kQuestInstanceData.Uldaman.Horde[9] = {
-    Title = "白金圆盘",
-    Level = 47,
-    Attain = 40,
-    Aim = "和石头守护者交谈，从他那里了解更多古代的知识。一旦你了解到了所有的内容之后就激活诺甘农圆盘。",
-    Location = "诺甘农圆盘 (奥达曼 "..yellow.."[11]"..white..")",
-    Note = "接取任务后，与圆盘左侧的岩石看守者交谈。然后再次使用白金圆盘以获取微型圆盘，你需要将其带给 圣者图希克 (雷霆崖 ".. yellow.."34,46"..white..")。后续任务由附近的另一个NPC开始。",
-    Folgequest = "奥丹姆的线索",
-    Rewards = {
-        Text = "奖励：1 或 2 或 3",
-        { id = 9587 },               --Thawpelt Sack Bag
-        { id = 3928, quantity = 5 }, --Superior Healing Potion Potion
-        { id = 6149, quantity = 5 }, --Greater Mana Potion Potion
+kQuestInstanceData.Uldaman.Horde[9] = createInheritedQuest(
+    kQuestInstanceData.Uldaman.Alliance[15],
+    {
+        Aim = "和石头守护者交谈，从他那里了解更多古代的知识。一旦你了解到了所有的内容之后就激活诺甘农圆盘。",
+        Note = "接取任务后，与圆盘左侧的岩石看守者交谈。然后再次使用白金圆盘以获取微型圆盘，你需要将其带给 圣者图希克 (雷霆崖 ".. yellow.."34,46"..white..")。后续任务由附近的另一个NPC开始。",
     }
-}
+)
 kQuestInstanceData.Uldaman.Horde[10] = kQuestInstanceData.Uldaman.Alliance[16]
 kQuestInstanceData.Uldaman.Horde[11] = {
     Title = "征用一个核心",
+    Id = 40131,
     Level = 45,
     Attain = 45,
     Aim = "从奥达曼的古代宝藏中获得完好的动力核心。",
@@ -759,6 +803,7 @@ kQuestInstanceData.BlackrockDepths = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[1] = {
     Title = "黑铁的遗产",
+    Id = 3802,
     Level = 52,
     Attain = 48,
     Aim = "如果你想要得到进入这座城市主城区的钥匙，就去和弗兰克罗恩·铸铁谈一谈。",
@@ -772,6 +817,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[1] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[2] = {
     Title = "雷布里·斯库比格特",
+    Id = 4136,
     Level = 53,
     Attain = 48,
     Aim = "把雷布里的头颅交给燃烧平原的尤卡·斯库比格特。",
@@ -787,6 +833,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[2] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[3] = {
     Title = "爱情药水",
+    Id = 4201,
     Level = 54,
     Attain = 50,
     Aim = "将4份格罗姆之血、10块巨型银矿和装满水的娜玛拉之瓶交给黑石深渊的娜玛拉小姐。",
@@ -800,6 +847,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[3] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[4] = {
     Title = "霍尔雷·黑须",
+    Id = 4126,
     Level = 55,
     Attain = 50,
     Aim = "把遗失的雷酒秘方带给卡拉诺斯的拉格纳·雷酒。",
@@ -815,6 +863,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[4] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[5] = {
     Title = "伊森迪奥斯！",
+    Id = 4263,
     Level = 56,
     Attain = 48,
     Aim = "在黑石深渊里找到伊森迪奥斯，然后把他干掉！",
@@ -831,6 +880,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[5] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[6] = {
     Title = "山脉之心",
+    Id = 4123,
     Level = 55,
     Attain = 50,
     Aim = "把山脉之心交给燃烧平原的麦克斯沃特·尤博格林。",
@@ -839,6 +889,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[6] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[7] = {
     Title = "好东西",
+    Id = 4286,
     Level = 56,
     Attain = 50,
     Aim = "到黑石深渊去找到20个黑铁挎包。当你完成任务之后，回到奥拉留斯那里复命。你认为黑石深渊里的黑铁矮人应该会有这些黑铁挎包。",
@@ -851,6 +902,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[7] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[8] = {
     Title = "温德索尔元帅",
+    Id = 4241,
     Level = 54,
     Attain = 48,
     Aim = "到西北部的黑石山脉去，在黑石深渊中找到温德索尔元帅的下落。$B$B狼狈不堪的约翰曾告诉你说温德索尔被关进了一个监狱。",
@@ -867,6 +919,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[8] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[9] = {
     Title = "弄皱的便笺",
+    Id = 4264,
     Level = 58,
     Attain = 50,
     Aim = "温德索尔元帅也许会对你手中的东西感兴趣。毕竟，希望还没有被完全扼杀。",
@@ -877,6 +930,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[9] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[10] = {
     Title = "一丝希望",
+    Id = 4282,
     Level = 58,
     Attain = 50,
     Aim = "找回温德索尔元帅遗失的情报。$B$B温德索尔元帅确信那些情报在安格弗将军和傀儡统帅阿格曼奇的手里。",
@@ -887,6 +941,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[10] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[11] = {
     Title = "冲破牢笼！",
+    Id = 4322,
     Level = 58,
     Attain = 50,
     Aim = "帮助温德索尔元帅拿回他的装备并救出他的朋友。当你成功之后就回去向麦克斯韦尔元帅复命。",
@@ -903,6 +958,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[11] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[12] = {
     Title = "烈焰精华",
+    Id = 4024,
     Level = 58,
     Attain = 52,
     Aim = "向塞勒斯·萨雷芬图斯展示你从卡拉然·温布雷那里得到的黑龙皮。",
@@ -918,6 +974,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[12] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[13] = {
     Title = "卡兰·巨锤",
+    Id = 4341,
     Level = 59,
     Attain = 50,
     Aim = "去黑石深渊找到卡兰·巨锤。$B$B国王提到卡兰在那里负责看守囚犯——也许你应该在监狱附近寻找他。",
@@ -928,6 +985,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[13] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[14] = {
     Title = "王国的命运",
+    Id = 4362,
     Level = 59,
     Attain = 50,
     Aim = "回到黑石深渊，从达格兰·索瑞森大帝的魔掌中救出铁炉堡公主茉埃拉·铜须。",
@@ -943,6 +1001,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[14] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[15] = {
     Title = "熔火之心的传送门",
+    Id = 7848,
     Level = 60,
     Attain = 55,
     Aim = "进入黑石深渊，在通往熔火之心的传送门附近找到一块熔火碎片，然后回到黑石山脉的洛索斯·天痕那里",
@@ -951,6 +1010,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[15] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[16] = {
     Title = "挑战",
+    Id = 9015,
     Level = 60,
     Attain = 58,
     Aim = "到黑石深渊的竞技场去，在你被裁决者格里斯通宣判之后将挑战之旗插在场地中央。杀死瑟尔伦和他的角斗士，然后将瓦塔拉克饰品第一部分交给东瘟疫之地的安泰恩·哈尔蒙。",
@@ -961,6 +1021,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[16] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[17] = {
     Title = "鬼魂之杯",
+    Id = 4083,
     Level = 55,
     Attain = 40,
     Aim = "把这些找到的宝石放入鬼魂之杯",
@@ -969,6 +1030,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[17] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[18] = {
     Title = "行动：帮助杰比",
+    Id = 40757,
     Level = 58,
     Attain = 50,
     Aim = "前往黑石深渊，在住处附近找到达内格·暗须，从他那里夺回\"极度猛烈鼻烟\"，然后回到塔纳利斯的热砂港，将物品交给杰比。",
@@ -984,6 +1046,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[18] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[19] = {
     Title = "黑铁亵渎者",
+    Id = 40762,
     Level = 60,
     Attain = 55,
     Aim = "在泰拉比姆的比克瑟仓库，为比克瑟·螺熔收集一支黑铁步枪、一个熔岩冷凝器、一个复杂的奥金炮管和一个熔岩碎片。",
@@ -997,6 +1060,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[19] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[20] = {
     Title = "参议员复仇",
+    Id = 40464,
     Level = 56,
     Attain = 45,
     Aim = "为燃烧平原黑石小径的奥瓦克·严岩杀死黑石深渊深处的25名暗炉议员。",
@@ -1010,6 +1074,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[20] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[21] = {
     Title = "奥术傀儡核心",
+    Id = 40467,
     Level = 55,
     Attain = 45,
     Aim = "从黑石深渊的傀儡统帅阿格曼奇处找到并收集奥术魔像核心，然后返回燃烧平原黑石小径的拉德根·深焰身边。",
@@ -1023,6 +1088,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[21] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[22] = {
     Title = "建造一个重击者",
+    Id = 80401,
     Level = 60,
     Attain = 30,
     Aim = "从血色修道院的军械库中获取瑟银微调舵机，从傀儡统帅阿格曼奇处获得黑石深渊的完美魔像核心，在斯坦索姆找到精金棒，然后回到奥格索普·奥布诺提斯身边。",
@@ -1039,6 +1105,7 @@ kQuestInstanceData.BlackrockDepths.Alliance[22] = {
 }
 kQuestInstanceData.BlackrockDepths.Alliance[23] = {
     Title = "冬幕节酒。",
+    Id = 40748,
     Level = 55,
     Attain = 45,
     Aim = "在黑石深渊的洞穴中找回冬幕节酒桶，交给冬幕节谷的波马恩·烈斧。",
@@ -1050,6 +1117,7 @@ for i = 1, 3 do
 end
 kQuestInstanceData.BlackrockDepths.Horde[4] = {
     Title = "遗失的雷酒秘方",
+    Id = 4134,
     Level = 55,
     Attain = 50,
     Aim = "把遗失的雷酒秘方交给卡加斯的薇薇安·拉格雷。",
@@ -1066,6 +1134,7 @@ kQuestInstanceData.BlackrockDepths.Horde[4] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[5] = {
     Title = "山脉之心",
+    Id = 4123,
     Level = 55,
     Attain = 50,
     Aim = "把山脉之心交给燃烧平原的麦克斯沃特·尤博格林。",
@@ -1074,6 +1143,7 @@ kQuestInstanceData.BlackrockDepths.Horde[5] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[6] = {
     Title = "格杀勿论：黑铁矮人",
+    Id = 4081,
     Level = 52,
     Attain = 48,
     Aim = "到黑石深渊去消灭那些邪恶的侵略者！$B$B军官高图斯要你去杀死15个铁怒卫士、10个铁怒狱卒和5个铁怒步兵。完成任务之后回去向他复命。",
@@ -1083,6 +1153,7 @@ kQuestInstanceData.BlackrockDepths.Horde[6] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[7] = {
     Title = "格杀勿论：高阶黑铁军官",
+    Id = 4082,
     Level = 54,
     Attain = 50,
     Aim = "到黑石深渊去消灭那些邪恶的侵略者！$B$B高图斯军阀要你杀死10个铁怒医师，、10个铁怒士兵和10个铁怒军官。完成任务之后回去向他复命。",
@@ -1093,6 +1164,7 @@ kQuestInstanceData.BlackrockDepths.Horde[7] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[8] = {
     Title = "行动：杀死安格弗将军",
+    Id = 4132,
     Level = 58,
     Attain = 52,
     Aim = "到黑石深渊去杀掉安格弗将军！当任务完成之后向军官高图斯复命。",
@@ -1106,6 +1178,7 @@ kQuestInstanceData.BlackrockDepths.Horde[8] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[9] = {
     Title = "机器的崛起",
+    Id = 4063,
     Level = 58,
     Attain = 52,
     Aim = "到燃烧平原去为圣职者塞朵拉·穆瓦丹尼收集10块断裂的元素碎片。$b$b塞多拉曾经说过，那里的机械傀儡和元素生物是这种碎片的主要来源。",
@@ -1122,6 +1195,7 @@ kQuestInstanceData.BlackrockDepths.Horde[9] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[10] = {
     Title = "烈焰精华",
+    Id = 4024,
     Level = 58,
     Attain = 52,
     Aim = "向塞勒斯·萨雷芬图斯展示你从卡拉然·温布雷那里得到的黑龙皮。",
@@ -1137,6 +1211,7 @@ kQuestInstanceData.BlackrockDepths.Horde[10] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[11] = {
     Title = "不和谐的火焰",
+    Id = 3907,
     Level = 56,
     Attain = 48,
     Aim = "进入黑石深渊并找到伊森迪奥斯。杀掉它，然后把你找到的信息汇报给桑德哈特。",
@@ -1153,6 +1228,7 @@ kQuestInstanceData.BlackrockDepths.Horde[11] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[12] = {
     Title = "最后的元素",
+    Id = 3911,
     Level = 54,
     Attain = 48,
     Aim = "前往黑石深渊，找回10份元素精华。你首先会想到搜寻傀儡和傀儡制造者。你还记得薇薇安·拉格雷夫也曾嘟囔过一些关于元素生物的事情。",
@@ -1166,6 +1242,7 @@ kQuestInstanceData.BlackrockDepths.Horde[12] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[13] = {
     Title = "指挥官哥沙克",
+    Id = 3981,
     Level = 52,
     Attain = 48,
     Aim = "在黑石深渊里找到指挥官哥沙克。$B$B在那幅草图上画着的是一个铁栏后面的兽人，也许你应该到某个类似监狱的地方去找找看。",
@@ -1176,6 +1253,7 @@ kQuestInstanceData.BlackrockDepths.Horde[13] = {
 }
 kQuestInstanceData.BlackrockDepths.Horde[14] = {
     Title = "拯救公主",
+    Id = 4003,
     Level = 59,
     Attain = 48,
     Aim = "杀掉达格兰·索瑞森大帝，然后将铁炉堡公主茉埃拉·铜须从他的邪恶诅咒中拯救出来。",
@@ -1211,6 +1289,7 @@ kQuestInstanceData.BlackwingLair = {
 }
 kQuestInstanceData.BlackwingLair.Alliance[1] = {
     Title = "奈法里奥斯的腐蚀",
+    Id = 8730,
     Level = 60,
     Attain = 60,
     Aim = "干掉奈法利安并拿到红色节杖碎片。把红色节杖碎片带给塔纳利斯时光之穴门口的安纳克罗斯。你必须在一个半小时之内完成这个任务。",
@@ -1226,6 +1305,7 @@ kQuestInstanceData.BlackwingLair.Alliance[1] = {
 }
 kQuestInstanceData.BlackwingLair.Alliance[2] = {
     Title = "黑石之王",
+    Id = 7781,
     Level = 60,
     Attain = 60,
     Aim = "将奈法利安的头颅交给暴风城的伯瓦尔·弗塔根公爵。",
@@ -1241,6 +1321,7 @@ kQuestInstanceData.BlackwingLair.Alliance[2] = {
 }
 kQuestInstanceData.BlackwingLair.Alliance[3] = {
     Title = "唯一的领袖",
+    Id = 8288,
     Level = 60,
     Attain = 60,
     Aim = "带着勒西雷尔的头颅回到希利苏斯，到塞纳里奥城堡的流沙之地找巴里斯托尔斯。",
@@ -1251,6 +1332,7 @@ kQuestInstanceData.BlackwingLair.Alliance[3] = {
 }
 kQuestInstanceData.BlackwingLair.Alliance[4] = {
     Title = "唯一的方案",
+    Id = 8620,
     Level = 60,
     Attain = 60,
     Aim = "把8章《龙语傻瓜教程》的章节用魔法书封面合起来，然后把完整的《龙语傻瓜教程：第二卷》交给塔纳利斯的纳瑞安。",
@@ -1265,6 +1347,7 @@ kQuestInstanceData.BlackwingLair.Alliance[4] = {
 }
 kQuestInstanceData.BlackwingLair.Alliance[5] = {
     Title = "卡拉赞的钥匙之九",
+    Id = 40828,
     Level = 60,
     Attain = 58,
     Aim = "找到“魔法锁和钥匙的论文”并将其带回给多万·布雷斯温德。据传它被保存在黑翼之巢中。",
@@ -1279,6 +1362,7 @@ kQuestInstanceData.BlackwingLair.Alliance[5] = {
 }
 kQuestInstanceData.BlackwingLair.Alliance[6] = {
     Title = "女神的镰刀",
+    Id = 41067,
     Level = 60,
     Attain = 58,
     Aim = "杀死爪王嚎牙并向埃伯洛克领主报告。",
@@ -1290,6 +1374,7 @@ kQuestInstanceData.BlackwingLair.Alliance[6] = {
 kQuestInstanceData.BlackwingLair.Horde[1] = kQuestInstanceData.BlackwingLair.Alliance[1]
 kQuestInstanceData.BlackwingLair.Horde[2] = {
     Title = "黑石之王",
+    Id = 7783,
     Level = 60,
     Attain = 60,
     Aim = "将奈法利安的头颅交给暴风城的伯瓦尔·弗塔根公爵。",
@@ -1312,6 +1397,7 @@ kQuestInstanceData.BlackfathomDeeps = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[1] = {
     Title = "深渊中的知识",
+    Id = 971,
     Level = 23,
     Attain = 10,
     Aim = "把洛迦里斯手稿带给铁炉堡的葛利·硬骨。",
@@ -1324,6 +1410,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[1] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[2] = {
     Title = "研究堕落",
+    Id = 1275,
     Level = 24,
     Attain = 18,
     Aim = "奥伯丁的戈色拉·夜语需要8块堕落者的脑干。",
@@ -1338,6 +1425,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[2] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[3] = {
     Title = "寻找塞尔瑞德",
+    Id = 1198,
     Level = 24,
     Attain = 18,
     Aim = "到黑暗深渊去找到银月守卫塞尔瑞德。",
@@ -1347,6 +1435,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[3] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[4] = {
     Title = "黑暗深渊中的恶魔",
+    Id = 1200,
     Level = 27,
     Attain = 18,
     Aim = "把梦游者克尔里斯的头颅交给达纳苏斯的哨兵塞尔高姆。",
@@ -1361,6 +1450,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[4] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[5] = {
     Title = "暮光之锤的末日",
+    Id = 1199,
     Level = 25,
     Attain = 20,
     Aim = "收集10个暮光坠饰，把它们交给达纳苏斯的银月守卫玛纳杜斯。",
@@ -1374,6 +1464,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[5] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[6] = {
     Title = "索兰鲁克宝珠",
+    Id = 1740,
     Level = 25,
     Attain = 20,
     Aim = "找到3块索兰鲁克宝珠的碎片和1块索兰鲁克宝珠的大碎片，把它们交给贫瘠之地的杜安·卡汉。",
@@ -1387,6 +1478,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[6] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Alliance[7] = {
     Title = "月神圣地废墟",
+    Id = 41812,
     Level = 26,
     Attain = 18,
     Aim = "深入黑暗深渊，从月神圣地废墟中寻找“绽放之种”。找到后，返回灰谷佐拉姆海岸以东的艾伦妮娅·星之绽放那里。",
@@ -1399,6 +1491,7 @@ kQuestInstanceData.BlackfathomDeeps.Alliance[7] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Horde[1] = {
     Title = "阿库麦尔水晶",
+    Id = 6563,
     Level = 22,
     Attain = 17,
     Aim = "收集20颗阿库麦尔蓝宝石，把它们交给灰谷的耶努·萨克雷。",
@@ -1409,6 +1502,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[1] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Horde[2] = {
     Title = "上古之神的仆从",
+    Id = 6565,
     Level = 26,
     Attain = 17,
     Aim = "把潮湿的便笺交给灰谷的耶努·萨克雷。",
@@ -1423,6 +1517,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[2] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Horde[3] = {
     Title = "废墟之间",
+    Id = 908,
     Level = 27,
     Attain = 21,
     Aim = "把深渊之核交给灰谷佐拉姆加前哨站里的耶努·萨克雷。",
@@ -1431,6 +1526,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[3] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Horde[4] = {
     Title = "黑暗深渊中的恶魔",
+    Id = 6561,
     Level = 27,
     Attain = 18,
     Aim = "把梦游者克尔里斯的头颅交给达纳苏斯的哨兵塞尔高姆。",
@@ -1440,6 +1536,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[4] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Horde[5] = {
     Title = "索兰鲁克宝珠",
+    Id = 1740,
     Level = 25,
     Attain = 20,
     Aim = "找到3块索兰鲁克宝珠的碎片和1块索兰鲁克宝珠的大碎片，把它们交给贫瘠之地的杜安·卡汉。",
@@ -1453,6 +1550,7 @@ kQuestInstanceData.BlackfathomDeeps.Horde[5] = {
 }
 kQuestInstanceData.BlackfathomDeeps.Horde[6] = {
     Title = "阿奎尼斯男爵",
+    Id = 909,
     Level = 30,
     Attain = 21,
     Aim = "把奇怪的水球交给灰谷佐拉姆加前哨站的耶努·萨克雷。",
@@ -1476,6 +1574,7 @@ kQuestInstanceData.BlackrockSpireLower = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[1] = {
     Title = "最后的石板",
+    Id = 4788,
     Level = 58,
     Attain = 40,
     Aim = "将第五块和第六块摩沙鲁石板交给塔纳利斯的勘查员铁靴。",
@@ -1491,6 +1590,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[1] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[2] = {
     Title = "基布雷尔的特殊宠物",
+    Id = 4729,
     Level = 59,
     Attain = 55,
     Aim = "到黑石塔去找到血斧座狼幼崽。使用笼子来捕捉这些凶猛的小野兽，然后把笼中的座狼幼崽交给基布雷尔。",
@@ -1503,6 +1603,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[2] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[3] = {
     Title = "蜘蛛卵",
+    Id = 4862,
     Level = 59,
     Attain = 55,
     Aim = "到黑石塔去为基布雷尔收集15枚尖塔蜘蛛卵。$B$B听说那些蜘蛛周围有许多这样的卵。",
@@ -1515,6 +1616,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[3] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[4] = {
     Title = "蛛后的乳汁",
+    Id = 4866,
     Level = 60,
     Attain = 55,
     Aim = "你可以在黑石塔的中心地带找到烟网蛛后。与她战斗，让她在你体内注入毒汁。如果你有能力的话，就杀死她吧。当你中毒之后，回到狼狈不堪的约翰那儿，他会从你的身体里抽取这些“蛛后的乳汁”。",
@@ -1527,6 +1629,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[4] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[5] = {
     Title = "座狼之源",
+    Id = 4701,
     Level = 59,
     Attain = 55,
     Aim = "到黑石塔去摧毁那里的座狼源头。当你离开的时候，赫林迪斯喊出了一个名字：哈雷肯。这个词就是兽人语中“座狼”的意思。",
@@ -1541,6 +1644,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[5] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[6] = {
     Title = "乌洛克",
+    Id = 4867,
     Level = 60,
     Attain = 55,
     Aim = "阅读瓦罗什的卷轴。将瓦罗什的蟑螂交给他。",
@@ -1553,6 +1657,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[6] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[7] = {
     Title = "比修的装置",
+    Id = 5001,
     Level = 59,
     Attain = 55,
     Aim = "找到比修的装置并把它们还给她。你记得她说过她把装置藏在城市的最底层。",
@@ -1562,6 +1667,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[7] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[8] = {
     Title = "麦克斯韦尔的任务",
+    Id = 5081,
     Level = 60,
     Attain = 55,
     Aim = "到黑石塔去消灭指挥官沃恩、欧莫克大王和督军维姆萨拉克。完成任务之后回到麦克斯韦尔元帅处复命。",
@@ -1579,6 +1685,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[8] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[9] = {
     Title = "晋升印章",
+    Id = 4742,
     Level = 60,
     Attain = 57,
     Aim = "找到三块命令宝石：燃棘宝钻、尖石宝钻和血斧宝钻。把它们和原始晋升印章一起交给维埃兰。$B$B可能携带者三块宝石的将军是：燃棘氏族的指挥官沃恩、尖石氏族的欧莫克大王，以及血斧氏族的督军维姆萨拉克。",
@@ -1588,6 +1695,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[9] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[10] = {
     Title = "达基萨斯将军的命令",
+    Id = 5089,
     Level = 60,
     Attain = 55,
     Aim = "把达基萨斯将军的命令交给燃烧平原的麦克斯韦尔元帅。",
@@ -1597,6 +1705,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[10] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[11] = {
     Title = "瓦萨拉克护符的左半块",
+    Id = 8966,
     Level = 60,
     Attain = 58,
     Aim = "使用召唤火盆来召唤莫尔·灰蹄的灵魂并杀了他。带着瓦萨拉克护符的左半块和召唤火盆回到黑石山的布德利那里。",
@@ -1607,6 +1716,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[11] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[12] = {
     Title = "瓦萨拉克护符的右半块",
+    Id = 8989,
     Level = 60,
     Attain = 58,
     Aim = "使用召唤火盆召唤莫尔·灰蹄的灵魂并杀了他。带着重新组合的瓦萨拉克护符和召唤火盆回到黑石山的布德利那里。",
@@ -1617,6 +1727,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[12] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[13] = {
     Title = "沃什加斯的蛇石",
+    Id = 5306,
     Level = 60,
     Attain = 50,
     Aim = "到黑石塔去杀死暗影猎手沃什加斯，将沃什加斯的蛇石交给基尔拉姆。",
@@ -1629,6 +1740,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[13] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[14] = {
     Title = "火热的死亡",
+    Id = 5103,
     Level = 60,
     Attain = 60,
     Aim = "世界上一定有人知道关于这副手套的事情，祝你好运！",
@@ -1643,6 +1755,7 @@ kQuestInstanceData.BlackrockSpireLower.Alliance[14] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Alliance[15] = {
     Title = "黑铁亵渎者",
+    Id = 40762,
     Level = 60,
     Attain = 55,
     Aim = "在泰拉比姆的比克瑟仓库，为比克瑟·螺熔收集一支黑铁步枪、一个熔岩冷凝器、一个复杂的奥金炮管和一个熔岩碎片。",
@@ -1659,6 +1772,7 @@ for i = 1, 4 do
 end
 kQuestInstanceData.BlackrockSpireLower.Horde[5] = {
     Title = "座狼的首领",
+    Id = 4724,
     Level = 59,
     Attain = 55,
     Aim = "杀死血斧座狼的领袖，哈雷肯。",
@@ -1669,6 +1783,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[5] = {
 kQuestInstanceData.BlackrockSpireLower.Horde[6] = kQuestInstanceData.BlackrockSpireLower.Alliance[6]
 kQuestInstanceData.BlackrockSpireLower.Horde[7] = {
     Title = "特工比修",
+    Id = 4981,
     Level = 59,
     Attain = 55,
     Aim = "到黑石塔去查明比修的下落。",
@@ -1678,6 +1793,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[7] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Horde[8] = {
     Title = "比修的装置",
+    Id = 4982,
     Level = 59,
     Attain = 55,
     Aim = "找到比修的装置并把它们还给她。你记得她说过她把装置藏在城市的最底层。",
@@ -1694,6 +1810,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[8] = {
 kQuestInstanceData.BlackrockSpireLower.Horde[9] = kQuestInstanceData.BlackrockSpireLower.Alliance[9]
 kQuestInstanceData.BlackrockSpireLower.Horde[10] = {
     Title = "高图斯的命令",
+    Id = 4903,
     Level = 60,
     Attain = 55,
     Aim = "杀死欧莫克大王、指挥官沃恩和督军维姆萨拉克。找到重要的黑石文件，然后向卡加斯的军官高图斯汇报。",
@@ -1714,6 +1831,7 @@ for i = 11, 15 do
 end
 kQuestInstanceData.BlackrockSpireLower.Horde[16] = {
     Title = "森林巨魔的败类",
+    Id = 40495,
     Level = 60,
     Attain = 48,
     Location = "监工奥克戈格 (燃烧平原 - 卡方要塞 "..yellow.."95.1,22.8"..white..")",
@@ -1726,6 +1844,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[16] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Horde[17] = {
     Title = "掠夺者的突袭",
+    Id = 40498,
     Level = 58,
     Attain = 50,
     Aim = "杀死黑石塔的奴役者基兹卢尔，然后向卡方要塞的掠夺者法戈什报到。",
@@ -1741,6 +1860,7 @@ kQuestInstanceData.BlackrockSpireLower.Horde[17] = {
 }
 kQuestInstanceData.BlackrockSpireLower.Horde[18] = {
     Title = "最后的裂缝",
+    Id = 40509,
     Level = 59,
     Attain = 50,
     Location = "卡方 (燃烧平原 - 卡方要塞 "..yellow.."95.1,22.8"..white..")",
@@ -1762,6 +1882,7 @@ kQuestInstanceData.BlackrockSpireUpper = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[1] = {
     Title = "监护者",
+    Id = 5160,
     Level = 60,
     Attain = 57,
     Aim = "到冬泉谷去找到哈尔琳，把奥比的鳞片交给她。",
@@ -1771,6 +1892,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[1] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[2] = {
     Title = "芬克·恩霍尔，为您效劳！",
+    Id = 5047,
     Level = 60,
     Attain = 55,
     Aim = "与永望镇的玛雷弗斯·暗锤谈一谈。",
@@ -1780,6 +1902,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[2] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[3] = {
     Title = "冷冻龙蛋",
+    Id = 4734,
     Level = 60,
     Attain = 57,
     Aim = "在孵化间对着某颗龙蛋使用龙蛋冷冻器初号机。",
@@ -1790,6 +1913,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[3] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[4] = {
     Title = "艾博希尔之眼",
+    Id = 6821,
     Level = 60,
     Attain = 56,
     Aim = "将艾博希尔之眼交给艾萨拉的海达克西斯公爵。",
@@ -1800,6 +1924,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[4] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[5] = {
     Title = "达基萨斯将军之死",
+    Id = 5102,
     Level = 60,
     Attain = 55,
     Aim = "到黑石塔去杀掉达基萨斯将军，完成任务之后就回到麦克斯韦尔元帅那里复命。",
@@ -1815,6 +1940,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[5] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[6] = {
     Title = "末日扣环",
+    Id = 4764,
     Level = 60,
     Attain = 57,
     Aim = "将末日扣环交给燃烧平原的玛亚拉·布莱特文。",
@@ -1830,6 +1956,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[6] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[7] = {
     Title = "龙火护符",
+    Id = 6502,
     Level = 60,
     Attain = 50,
     Aim = "你必须从达基萨斯将军身上取回黑龙勇士之血，你可以在黑石塔的晋升大厅后面的房间里找到他。",
@@ -1843,6 +1970,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[7] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[8] = {
     Title = "黑手的命令",
+    Id = 7761,
     Level = 60,
     Attain = 55,
     Aim = "真是个愚蠢的兽人。看来你需要找到那枚烙印并获得达基萨斯徽记才可以使用命令宝珠。$B$B你从信中获知，达基萨斯将军守卫着烙印。也许你应该就此进行更深入的调查。",
@@ -1851,6 +1979,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[8] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[9] = {
     Title = "最后的准备",
+    Id = 8994,
     Level = 60,
     Attain = 58,
     Aim = "从黑石塔的兽人那儿收集40副黑石护腕，把它们和一瓶超级能量合剂一起交给黑石山的伯德雷。",
@@ -1861,6 +1990,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[9] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[10] = {
     Title = "瓦塔拉克公爵",
+    Id = 8995,
     Level = 60,
     Attain = 58,
     Aim = "在比斯巨兽的房间里使用召唤火盆，召唤瓦塔拉克公爵。杀死他，对尸体使用瓦塔拉克的饰品。然后将瓦塔拉克的饰品还给瓦塔拉克公爵之魂。",
@@ -1876,6 +2006,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[10] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[11] = {
     Title = "恶魔熔炉",
+    Id = 5127,
     Level = 60,
     Attain = 55,
     Aim = "到黑石塔去找到古拉鲁克。杀死他，然后用血污长矛刺入他的尸体。当他的灵魂被吸干后，这支矛就会成为穿魂长矛。$B$B你还必须找到未铸造的符文覆饰胸甲。$B$B将穿魂长矛和未铸造的符文覆饰胸甲都交给冬泉谷的罗拉克斯。",
@@ -1891,6 +2022,7 @@ kQuestInstanceData.BlackrockSpireUpper.Alliance[11] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Alliance[12] = {
     Title = "护腕的上半部分之一",
+    Id = 41011,
     Level = 60,
     Attain = 55,
     Aim = "为了吉尔尼斯的帕纳布斯从黑石塔的黑色龙人身上收集一块龙族能量。",
@@ -1908,6 +2040,7 @@ for i = 1, 4 do
 end
 kQuestInstanceData.BlackrockSpireUpper.Horde[5] = {
     Title = "黑暗石板",
+    Id = 4768,
     Level = 60,
     Attain = 57,
     Aim = "将黑暗石板交给卡加斯的暗法师薇薇安·拉格雷。",
@@ -1922,6 +2055,7 @@ kQuestInstanceData.BlackrockSpireUpper.Horde[5] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Horde[6] = {
     Title = "为部落而战！",
+    Id = 4974,
     Level = 60,
     Attain = 55,
     Aim = "去黑石塔杀死大酋长雷德·黑手，带着他的头颅返回奥格瑞玛。",
@@ -1938,6 +2072,7 @@ kQuestInstanceData.BlackrockSpireUpper.Horde[6] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Horde[7] = {
     Title = "黑龙幻象",
+    Id = 6569,
     Level = 60,
     Attain = 55,
     Aim = "到黑石塔去收集20颗黑色龙人的眼球，完成任务之后回到巫女米兰达那里。",
@@ -1948,6 +2083,7 @@ kQuestInstanceData.BlackrockSpireUpper.Horde[7] = {
 }
 kQuestInstanceData.BlackrockSpireUpper.Horde[8] = {
     Title = "黑龙勇士之血",
+    Id = 6602,
     Level = 60,
     Attain = 55,
     Aim = "到黑石塔去杀掉达基萨斯将军，把它的血交给雷克萨。",
@@ -1975,6 +2111,7 @@ kQuestInstanceData.DireMaulEast = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[1] = {
     Title = "普希林和埃斯托尔迪",
+    Id = 7441,
     Level = 58,
     Attain = 54,
     Aim = "到厄运之槌去找到小鬼普希林。你可以使用任何手段从小鬼那里得到埃斯托尔迪的咒术之书。$B$B找到咒术之书后，回到拉瑞斯小亭的埃斯托尔迪那里。",
@@ -1988,6 +2125,7 @@ kQuestInstanceData.DireMaulEast.Alliance[1] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[2] = {
     Title = "蕾瑟塔蒂丝的网",
+    Id = 7488,
     Level = 57,
     Attain = 54,
     Aim = "把蕾瑟塔蒂丝的网交给菲拉斯羽月要塞的拉托尼库斯·月矛。",
@@ -2001,6 +2139,7 @@ kQuestInstanceData.DireMaulEast.Alliance[2] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[3] = {
     Title = "魔藤碎片",
+    Id = 5526,
     Level = 60,
     Attain = 56,
     Aim = "在厄运之槌中找到魔藤，然后从它上面采集一块碎片。只有干掉了奥兹恩之后，你才能进行采集工作。使用净化之匣安全地封印碎片，然后将其交给月光林地永夜港的拉比恩·萨图纳。",
@@ -2015,6 +2154,7 @@ kQuestInstanceData.DireMaulEast.Alliance[3] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[4] = {
     Title = "瓦萨拉克护符的左半块",
+    Id = 8967,
     Level = 60,
     Attain = 58,
     Aim = "使用召唤火盆来召唤莫尔·灰蹄的灵魂并杀了他。带着瓦萨拉克护符的左半块和召唤火盆回到黑石山的布德利那里。",
@@ -2025,6 +2165,7 @@ kQuestInstanceData.DireMaulEast.Alliance[4] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[5] = {
     Title = "瓦萨拉克护符的右半块",
+    Id = 8990,
     Level = 60,
     Attain = 58,
     Aim = "使用召唤火盆召唤莫尔·灰蹄的灵魂并杀了他。带着重新组合的瓦萨拉克护符和召唤火盆回到黑石山的布德利那里。",
@@ -2035,6 +2176,7 @@ kQuestInstanceData.DireMaulEast.Alliance[5] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[6] = {
     Title = "监牢之链",
+    Id = 7581,
     Level = 60,
     Attain = 60,
     Aim = "到菲拉斯的厄运之槌去，从扭木广场的荒野萨特身上找到15份萨特之血，然后把它们交给腐烂之痕的戴奥。",
@@ -2043,6 +2185,7 @@ kQuestInstanceData.DireMaulEast.Alliance[6] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[7] = {
     Title = "久违的法师",
+    Id = 7463,
     Level = 60,
     Attain = 60,
     Aim = "到厄运之槌的扭木广场去杀掉水元素海多斯博恩。把海多斯博恩精华交给图书馆的博学者莱德罗斯。",
@@ -2056,6 +2199,7 @@ kQuestInstanceData.DireMaulEast.Alliance[7] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[8] = {
     Title = "狂野变形者",
+    Id = 41016,
     Level = 60,
     Attain = 55,
     Aim = "杀死奥兹恩，并为海加尔山诺达纳尔的大德鲁伊梦风带回他的头颅。",
@@ -2069,6 +2213,7 @@ kQuestInstanceData.DireMaulEast.Alliance[8] = {
 }
 kQuestInstanceData.DireMaulEast.Alliance[9] = {
     Title = "缠绕扭木",
+    Id = 41376,
     Level = 61,
     Attain = 60,
     Aim = "将5片蓝叶带给博学者莱德罗斯。",
@@ -2083,6 +2228,7 @@ kQuestInstanceData.DireMaulEast.Alliance[9] = {
 kQuestInstanceData.DireMaulEast.Horde[1] = kQuestInstanceData.DireMaulEast.Alliance[1]
 kQuestInstanceData.DireMaulEast.Horde[2] = {
     Title = "蕾瑟塔蒂丝的网",
+    Id = 7489,
     Level = 57,
     Attain = 54,
     Aim = "把蕾瑟塔蒂丝的网交给菲拉斯羽月要塞的拉托尼库斯·月矛。",
@@ -2104,6 +2250,7 @@ kQuestInstanceData.DireMaulNorth = {
 }
 kQuestInstanceData.DireMaulNorth.Alliance[1] = {
     Title = "破碎的陷阱",
+    Id = 1193,
     Level = 60,
     Attain = 56,
     Aim = "修理陷阱。",
@@ -2112,6 +2259,7 @@ kQuestInstanceData.DireMaulNorth.Alliance[1] = {
 }
 kQuestInstanceData.DireMaulNorth.Alliance[2] = {
     Title = "戈多克食人魔装",
+    Id = 5518,
     Level = 60,
     Attain = 56,
     Aim = "把4份符文布卷、8块硬甲皮、2卷符文线和一份食人魔鞣酸交给诺特·希姆加克。他现在被拴在厄运之槌的戈多克食人魔那边。",
@@ -2124,6 +2272,7 @@ kQuestInstanceData.DireMaulNorth.Alliance[2] = {
 }
 kQuestInstanceData.DireMaulNorth.Alliance[3] = {
     Title = "逃出生天！",
+    Id = 5525,
     Level = 60,
     Attain = 57,
     Aim = "为 诺特·希姆加克 收集一把 戈多克镣铐钥匙。",
@@ -2132,6 +2281,7 @@ kQuestInstanceData.DireMaulNorth.Alliance[3] = {
 }
 kQuestInstanceData.DireMaulNorth.Alliance[4] = {
     Title = "戈多克食人魔的事务",
+    Id = 1318,
     Level = 60,
     Attain = 56,
     Aim = "找到戈多克力量护手，并将它交给厄运之槌的克罗卡斯。$B根据克罗卡斯所说的，“传说”自称是王子的精灵托塞德林从一名戈多克食人魔手中偷走了那件神器。",
@@ -2158,6 +2308,7 @@ kQuestInstanceData.DireMaulWest = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[1] = {
     Title = "精灵的传说",
+    Id = 7482,
     Level = 60,
     Attain = 54,
     Aim = "到厄运之槌去寻找卡里尔·温萨鲁斯。向莫沙彻营地的先知科鲁拉克报告你所找到的信息。",
@@ -2166,6 +2317,7 @@ kQuestInstanceData.DireMaulWest.Alliance[1] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[2] = {
     Title = "伊莫塔尔的疯狂",
+    Id = 7461,
     Level = 60,
     Attain = 56,
     Aim =
@@ -2176,6 +2328,7 @@ kQuestInstanceData.DireMaulWest.Alliance[2] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[3] = {
     Title = "辛德拉的宝藏",
+    Id = 7462,
     Level = 60,
     Attain = 56,
     Aim = "返回图书馆去找到辛德拉的宝藏。拿取你的奖励吧！",
@@ -2191,6 +2344,7 @@ kQuestInstanceData.DireMaulWest.Alliance[3] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[4] = {
     Title = "克索诺斯恐惧战马",
+    Id = 7631,
     Level = 60,
     Attain = 60,
     Aim = "阅读莫苏尔的指南，并召唤出一匹克索诺斯恐惧战马，击败它，然后控制它的灵魂。",
@@ -2200,6 +2354,7 @@ kQuestInstanceData.DireMaulWest.Alliance[4] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[5] = {
     Title = "翡翠梦境……",
+    Id = 7506,
     Level = 60,
     Attain = 54,
     Aim = "将这本典籍交给它的主人。",
@@ -2212,6 +2367,7 @@ kQuestInstanceData.DireMaulWest.Alliance[5] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[6] = {
     Title = "最伟大的猎手",
+    Id = 7503,
     Level = 60,
     Attain = 54,
     Aim = "将这本典籍交给它的主人。",
@@ -2224,6 +2380,7 @@ kQuestInstanceData.DireMaulWest.Alliance[6] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[7] = {
     Title = "奥法师的食谱",
+    Id = 7500,
     Level = 60,
     Attain = 54,
     Aim = "将这本典籍交给它的主人。",
@@ -2236,6 +2393,7 @@ kQuestInstanceData.DireMaulWest.Alliance[7] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[8] = {
     Title = "圣光之力",
+    Id = 7501,
     Level = 60,
     Attain = 54,
     Aim = "将这本典籍交给它的主人。",
@@ -2248,6 +2406,7 @@ kQuestInstanceData.DireMaulWest.Alliance[8] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[9] = {
     Title = "光明不会告诉你的事情",
+    Id = 7504,
     Level = 60,
     Attain = 56,
     Aim = "将这本典籍交给它的主人。",
@@ -2260,6 +2419,7 @@ kQuestInstanceData.DireMaulWest.Alliance[9] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[10] = {
     Title = "迦罗娜：潜行与诡计研究",
+    Id = 7498,
     Level = 60,
     Attain = 54,
     Aim = "将这本典籍交给它的主人。",
@@ -2272,6 +2432,7 @@ kQuestInstanceData.DireMaulWest.Alliance[10] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[11] = {
     Title = "你与冰霜震击",
+    Id = 7505,
     Level = 60,
     Attain = 54,
     Aim = "将这本典籍交给它的主人。",
@@ -2284,6 +2445,7 @@ kQuestInstanceData.DireMaulWest.Alliance[11] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[12] = {
     Title = "束缚之影",
+    Id = 7502,
     Level = 60,
     Attain = 54,
     Aim = "将这本典籍交给它的主人。",
@@ -2296,6 +2458,7 @@ kQuestInstanceData.DireMaulWest.Alliance[12] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[13] = {
     Title = "防御宝典",
+    Id = 7499,
     Level = 60,
     Attain = 54,
     Aim = "将这本典籍交给它的主人。",
@@ -2308,6 +2471,7 @@ kQuestInstanceData.DireMaulWest.Alliance[13] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[14] = {
     Title = "专注圣契",
+    Id = 7479,
     Level = 60,
     Attain = 58,
     Aim = "将一本专注圣契、1颗原始黑钻石、4块大魔光碎片和2块暗影之皮带给厄运之槌的博学者莱德罗斯，以获得专注秘药。",
@@ -2320,6 +2484,7 @@ kQuestInstanceData.DireMaulWest.Alliance[14] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[15] = {
     Title = "防护圣契",
+    Id = 7480,
     Level = 60,
     Attain = 58,
     Aim = "将防护圣契、1颗原始黑钻石、2大块魔光碎片和1条磨损的憎恶缝合线带给厄运之槌的博学者莱德罗斯，以获得防护秘药。",
@@ -2332,6 +2497,7 @@ kQuestInstanceData.DireMaulWest.Alliance[15] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[16] = {
     Title = "急速圣契",
+    Id = 7478,
     Level = 60,
     Attain = 58,
     Aim = "将急速圣契、1颗原始黑钻石、2块大魔光碎片和2块英雄之血交给厄运之槌的博学者莱德罗斯，即可获得急速秘药。",
@@ -2344,6 +2510,7 @@ kQuestInstanceData.DireMaulWest.Alliance[16] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[17] = {
     Title = "弗洛尔的屠龙技术纲要",
+    Id = 7507,
     Level = 60,
     Attain = 60,
     Aim = "将《弗洛尔的屠龙技术纲要》还回图书馆。",
@@ -2353,6 +2520,7 @@ kQuestInstanceData.DireMaulWest.Alliance[17] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[18] = {
     Title = "保守秘密",
+    Id = 40254,
     Level = 58,
     Attain = 45,
     Aim = "前往厄运之槌，杀死上层精灵正在吸取能量的大恶魔，从中获取纯净魔之精华。回到艾萨拉的守护者拉恩那那里。",
@@ -2367,6 +2535,7 @@ kQuestInstanceData.DireMaulWest.Alliance[18] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[19] = {
     Title = "护腕的上半部分之三",
+    Id = 41013,
     Level = 60,
     Attain = 55,
     Aim = "为了吉尔尼斯的帕纳布斯从厄运之槌西的任意奥术元素身上收集一个奥术超载谐振器。",
@@ -2381,6 +2550,7 @@ kQuestInstanceData.DireMaulWest.Alliance[19] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[20] = {
     Title = "卡拉赞的钥匙之八",
+    Id = 40827,
     Level = 60,
     Attain = 58,
     Aim = "在厄运之槌中杀死伊莫塔尔，从他的皮肤上取回奥术宝石，然后返回多万·布雷斯温德身边。",
@@ -2391,6 +2561,7 @@ kQuestInstanceData.DireMaulWest.Alliance[20] = {
 }
 kQuestInstanceData.DireMaulWest.Alliance[21] = {
     Title = "寐入梦境之三",
+    Id = 40959,
     Level = 60,
     Attain = 58,
     Aim = "从艾萨拉的峭壁击碎者身上收集一片束缚碎片，从厄运之槌西的秘法洪流身上收集一个奥术过载棱镜，从沉没的神庙中的沉睡绿龙的身上收集一片沉睡者碎片。带着收集到的物品向悲伤沼泽的伊萨里奥斯报告。",
@@ -2405,6 +2576,7 @@ kQuestInstanceData.DireMaulWest.Alliance[21] = {
 }
 kQuestInstanceData.DireMaulWest.Horde[1] = {
     Title = "精灵的传说",
+    Id = 7481,
     Level = 60,
     Attain = 54,
     Aim = "到厄运之槌去寻找卡里尔·温萨鲁斯。向莫沙彻营地的先知科鲁拉克报告你所找到的信息。",
@@ -2425,6 +2597,7 @@ kQuestInstanceData.Maraudon = {
 }
 kQuestInstanceData.Maraudon.Alliance[1] = {
     Title = "暗影残片",
+    Id = 7070,
     Level = 42,
     Attain = 38,
     Aim = "从玛拉顿收集10块暗影残片，然后把它们交给奥格瑞玛的尤塞尔奈。",
@@ -2438,6 +2611,7 @@ kQuestInstanceData.Maraudon.Alliance[1] = {
 }
 kQuestInstanceData.Maraudon.Alliance[2] = {
     Title = "维利塔恩的污染",
+    Id = 7041,
     Level = 47,
     Attain = 41,
     Aim = "在玛拉顿里用天蓝水瓶在橙色水晶池中装满水。$B$B在维利斯塔姆藤蔓上使用装满水的天蓝水瓶，使堕落的诺克赛恩幼体出现。$B$B治疗8株植物并杀死那些诺克赛恩幼体，然后向葬影村的瓦克·战痕复命。",
@@ -2452,6 +2626,7 @@ kQuestInstanceData.Maraudon.Alliance[2] = {
 }
 kQuestInstanceData.Maraudon.Alliance[3] = {
     Title = "扭曲的邪恶",
+    Id = 7028,
     Level = 47,
     Attain = 41,
     Aim = "为凄凉之地的维洛收集15个瑟莱德丝水晶雕像。",
@@ -2467,6 +2642,7 @@ kQuestInstanceData.Maraudon.Alliance[3] = {
 }
 kQuestInstanceData.Maraudon.Alliance[4] = {
     Title = "贱民的指引",
+    Id = 7067,
     Level = 48,
     Attain = 39,
     Aim = "阅读贱民的指引，然后从玛拉顿得到联合坠饰，将其交给凄凉之地南部的半人马贱民。",
@@ -2480,6 +2656,7 @@ kQuestInstanceData.Maraudon.Alliance[4] = {
 }
 kQuestInstanceData.Maraudon.Alliance[5] = {
     Title = "玛拉顿的传说",
+    Id = 7044,
     Level = 49,
     Attain = 41,
     Aim = "找回塞雷布拉斯节杖的两个部分：塞雷布拉斯魔棒和塞雷布拉斯钻石。$B$B然后设法和塞雷布拉斯对话。",
@@ -2489,6 +2666,7 @@ kQuestInstanceData.Maraudon.Alliance[5] = {
 }
 kQuestInstanceData.Maraudon.Alliance[6] = {
     Title = "塞雷布拉斯节杖",
+    Id = 7046,
     Level = 49,
     Attain = 41,
     Aim = "帮助赎罪的塞雷布拉斯制作塞雷布拉斯节杖。$B$B当仪式完成之后再和他谈谈。",
@@ -2502,6 +2680,7 @@ kQuestInstanceData.Maraudon.Alliance[6] = {
 }
 kQuestInstanceData.Maraudon.Alliance[7] = {
     Title = "大地的污染",
+    Id = 7065,
     Level = 51,
     Attain = 45,
     Aim = "杀死瑟莱德丝公主，然后回到凄凉之地葬影村附近的瑟琳德拉那里复命。",
@@ -2517,6 +2696,7 @@ kQuestInstanceData.Maraudon.Alliance[7] = {
 }
 kQuestInstanceData.Maraudon.Alliance[8] = {
     Title = "生命之种",
+    Id = 7066,
     Level = 51,
     Attain = 45,
     Aim = "到月光林地去找到雷姆洛斯，将生命之种交给他。",
@@ -2526,6 +2706,7 @@ kQuestInstanceData.Maraudon.Alliance[8] = {
 }
 kQuestInstanceData.Maraudon.Alliance[9] = {
     Title = "奇美兰的挽具",
+    Id = 41052,
     Level = 48,
     Attain = 38,
     Aim = "从玛拉顿那里取回奇美兰的挽具，并将其带回菲拉斯奇美拉栖息谷的威罗斯·锐击处。",
@@ -2539,6 +2720,7 @@ kQuestInstanceData.Maraudon.Alliance[9] = {
 }
 kQuestInstanceData.Maraudon.Alliance[10] = {
     Title = "为什么不两者兼得？",
+    Id = 41142,
     Level = 50,
     Attain = 40,
     Aim = "从玛拉顿的深处获得山崩之心，从燃烧平原的仇恨熔炉采石场获得腐蚀精华，然后带给鹰巢山的弗里格·雷炉。",
@@ -2553,6 +2735,7 @@ kQuestInstanceData.Maraudon.Alliance[10] = {
 }
 kQuestInstanceData.Maraudon.Alliance[11] = {
     Title = "准备",
+    Id = 41281,
     Level = 48,
     Attain = 34,
     Aim = "从玛拉顿的兰斯利德身上取得大理石块，并交给荒芜之地科萨恩废墟附近的齐格伦。",
@@ -2563,6 +2746,7 @@ kQuestInstanceData.Maraudon.Alliance[11] = {
 }
 kQuestInstanceData.Maraudon.Horde[1] = {
     Title = "暗影残片",
+    Id = 7068,
     Level = 42,
     Attain = 38,
     Aim = "从玛拉顿收集10块暗影残片，然后把它们交给奥格瑞玛的尤塞尔奈。",
@@ -2572,6 +2756,7 @@ kQuestInstanceData.Maraudon.Horde[1] = {
 }
 kQuestInstanceData.Maraudon.Horde[2] = {
     Title = "维利塔恩的污染",
+    Id = 7029,
     Level = 47,
     Attain = 41,
     Aim = "在玛拉顿里用天蓝水瓶在橙色水晶池中装满水。$B$B在维利斯塔姆藤蔓上使用装满水的天蓝水瓶，使堕落的诺克赛恩幼体出现。$B$B治疗8株植物并杀死那些诺克赛恩幼体，然后向葬影村的瓦克·战痕复命。",
@@ -2584,6 +2769,7 @@ for i = 3, 6 do
 end
 kQuestInstanceData.Maraudon.Horde[7] = {
     Title = "大地的污染",
+    Id = 7064,
     Level = 51,
     Attain = 45,
     Aim = "杀死瑟莱德丝公主，然后回到凄凉之地葬影村附近的瑟琳德拉那里复命。",
@@ -2595,6 +2781,7 @@ kQuestInstanceData.Maraudon.Horde[7] = {
 kQuestInstanceData.Maraudon.Horde[8] = kQuestInstanceData.Maraudon.Alliance[8]
 kQuestInstanceData.Maraudon.Horde[9] = {
     Title = "准备",
+    Id = 41281,
     Level = 48,
     Attain = 34,
     Aim = "从玛拉顿的兰斯利德身上取得大理石块，并交给荒芜之地科萨恩废墟附近的齐格伦。",
@@ -2613,6 +2800,7 @@ kQuestInstanceData.MoltenCore = {
 }
 kQuestInstanceData.MoltenCore.Alliance[1] = {
     Title = "熔火之心",
+    Id = 6822,
     Level = 60,
     Attain = 57,
     Aim = "杀死一个火焰之王、一个熔岩巨人、一个上古熔火恶犬和一个熔岩奔腾者，然后回到艾萨拉的海达克西斯公爵那里。",
@@ -2623,6 +2811,7 @@ kQuestInstanceData.MoltenCore.Alliance[1] = {
 }
 kQuestInstanceData.MoltenCore.Alliance[2] = {
     Title = "敌人之手",
+    Id = 6824,
     Level = 60,
     Attain = 60,
     Aim = "将鲁西弗隆之手、萨弗隆之手、沙斯拉尔之手交给艾萨拉的海达克西斯公爵。",
@@ -2634,6 +2823,7 @@ kQuestInstanceData.MoltenCore.Alliance[2] = {
 }
 kQuestInstanceData.MoltenCore.Alliance[3] = {
     Title = "逐风者桑德兰",
+    Id = 7786,
     Level = 60,
     Attain = 60,
     Aim = "要想将逐风者桑德兰从他的监狱中解救出来，你就必须找到左右两个逐风者禁锢镣铐，10块源质锭，以及火焰之王的精华，把它们交给大领主德米提恩。",
@@ -2644,6 +2834,7 @@ kQuestInstanceData.MoltenCore.Alliance[3] = {
 }
 kQuestInstanceData.MoltenCore.Alliance[4] = {
     Title = "瑟银兄弟会契约",
+    Id = 7604,
     Level = 60,
     Attain = 60,
     Aim = "如果你愿意接受萨弗隆的设计图，请将瑟银兄弟会契约交给罗克图斯·暗契。",
@@ -2656,6 +2847,7 @@ kQuestInstanceData.MoltenCore.Alliance[4] = {
 }
 kQuestInstanceData.MoltenCore.Alliance[5] = {
     Title = "远古石叶",
+    Id = 7632,
     Level = 60,
     Attain = 60,
     Aim = "找到远古石叶的主人。祝你好运，$N。这个世界是很大的。",
@@ -2665,6 +2857,7 @@ kQuestInstanceData.MoltenCore.Alliance[5] = {
 }
 kQuestInstanceData.MoltenCore.Alliance[6] = {
     Title = "唯一的方案",
+    Id = 8620,
     Level = 60,
     Attain = 60,
     Aim = "把8章《龙语傻瓜教程》的章节用魔法书封面合起来，然后把完整的《龙语傻瓜教程：第二卷》交给塔纳利斯的纳瑞安。",
@@ -2679,6 +2872,7 @@ kQuestInstanceData.MoltenCore.Alliance[6] = {
 }
 kQuestInstanceData.MoltenCore.Alliance[7] = {
     Title = "占卜眼镜？没问题！",
+    Id = 8578,
     Level = 60,
     Attain = 60,
     Aim = "找到纳瑞安的占卜眼镜。",
@@ -2704,6 +2898,7 @@ kQuestInstanceData.Naxxramas = {
 }
 kQuestInstanceData.Naxxramas.Alliance[1] = {
     Title = "克尔苏加德的末日",
+    Id = 9120,
     Level = 60,
     Attain = 60,
     Aim = "将克尔苏加德的护符匣带往东瘟疫之地圣光之愿礼拜堂。",
@@ -2717,6 +2912,7 @@ kQuestInstanceData.Naxxramas.Alliance[1] = {
 }
 kQuestInstanceData.Naxxramas.Alliance[2] = {
     Title = "我只会唱这一首歌……",
+    Id = 9232,
     Level = 60,
     Attain = 60,
     Aim = "将2个冰冻符文、2个水之精华、2块蓝宝石和30金币交给东瘟疫之地圣光之愿礼拜堂的工匠威尔海姆。",
@@ -2732,6 +2928,7 @@ kQuestInstanceData.Naxxramas.Alliance[2] = {
 }
 kQuestInstanceData.Naxxramas.Alliance[3] = {
     Title = "战争的回响",
+    Id = 9033,
     Level = 60,
     Attain = 60,
     Aim = "东瘟疫之地圣光之愿礼拜堂的指挥官埃里戈尔·黎明使者要你杀死5个畸形妖、5只岩肤石像鬼、8个死亡骑士队长和3只毒性捕猎者。",
@@ -2741,6 +2938,7 @@ kQuestInstanceData.Naxxramas.Alliance[3] = {
 }
 kQuestInstanceData.Naxxramas.Alliance[4] = {
     Title = "拉玛兰迪的命运",
+    Id = 9229,
     Level = 60,
     Attain = 60,
     Aim = "进入纳克萨玛斯的宫殿，找到拉玛兰迪的下落。",
@@ -2750,6 +2948,7 @@ kQuestInstanceData.Naxxramas.Alliance[4] = {
 }
 kQuestInstanceData.Naxxramas.Alliance[5] = {
     Title = "拉玛兰迪的寒冰之握",
+    Id = 9230,
     Level = 60,
     Attain = 60,
     Aim = "东瘟疫之地圣光之愿礼拜堂的科尔法克斯要1个冰冻符文、1块蓝宝石和1块奥金锭。",
@@ -2774,6 +2973,7 @@ kQuestInstanceData.OnyxiasLair = {
 }
 kQuestInstanceData.OnyxiasLair.Alliance[1] = {
     Title = "铸造奎尔塞拉",
+    Id = 7509,
     Level = 60,
     Attain = 60,
     Aim = "把黯淡的精灵剑交给博学者莱德罗斯。",
@@ -2787,6 +2987,7 @@ kQuestInstanceData.OnyxiasLair.Alliance[1] = {
 }
 kQuestInstanceData.OnyxiasLair.Alliance[2] = {
     Title = "唯一的方案",
+    Id = 8620,
     Level = 60,
     Attain = 60,
     Aim = "把8章《龙语傻瓜教程》的章节用魔法书封面合起来，然后把完整的《龙语傻瓜教程：第二卷》交给塔纳利斯的纳瑞安。",
@@ -2801,6 +3002,7 @@ kQuestInstanceData.OnyxiasLair.Alliance[2] = {
 }
 kQuestInstanceData.OnyxiasLair.Alliance[3] = {
     Title = "联盟的胜利",
+    Id = 7490,
     Level = 60,
     Attain = 60,
     Aim = "将奥妮克希亚的头颅交给暴风城的伯瓦尔·弗塔根公爵。",
@@ -2835,6 +3037,7 @@ kQuestInstanceData.RazorfenDowns = {
 }
 kQuestInstanceData.RazorfenDowns.Alliance[1] = {
     Title = "邪恶之地",
+    Id = 6626,
     Level = 35,
     Attain = 28,
     Aim = "杀掉8个剃刀沼泽护卫者、8个剃刀沼泽织棘者和8个亡首教徒，然后向剃刀高地入口处的麦雷姆·月歌复命。",
@@ -2843,6 +3046,7 @@ kQuestInstanceData.RazorfenDowns.Alliance[1] = {
 }
 kQuestInstanceData.RazorfenDowns.Alliance[2] = {
     Title = "封印神像",
+    Id = 3525,
     Level = 37,
     Attain = 32,
     Aim = "保护奔尼斯特拉兹来到剃刀高地的野猪人神像处。$B$B当他在进行仪式封印神像时保护他。",
@@ -2856,6 +3060,7 @@ kQuestInstanceData.RazorfenDowns.Alliance[2] = {
 }
 kQuestInstanceData.RazorfenDowns.Alliance[3] = {
     Title = "与圣光同在",
+    Id = 3636,
     Level = 42,
     Attain = 39,
     Aim = "大主教本尼迪塔斯要你去杀死剃刀高地的寒冰之王亚门纳尔。",
@@ -2870,6 +3075,7 @@ kQuestInstanceData.RazorfenDowns.Alliance[3] = {
 kQuestInstanceData.RazorfenDowns.Horde[1] = kQuestInstanceData.RazorfenDowns.Alliance[1]
 kQuestInstanceData.RazorfenDowns.Horde[2] = {
     Title = "邪恶的盟友",
+    Id = 6521,
     Level = 36,
     Attain = 28,
     Aim = "把玛克林大使的头颅交给幽暗城的瓦里玛萨斯。",
@@ -2885,6 +3091,7 @@ kQuestInstanceData.RazorfenDowns.Horde[2] = {
 }
 kQuestInstanceData.RazorfenDowns.Horde[3] = {
     Title = "封印神像",
+    Id = 3525,
     Level = 37,
     Attain = 32,
     Aim = "保护奔尼斯特拉兹来到剃刀高地的野猪人神像处。$B$B当他在进行仪式封印神像时保护他。",
@@ -2898,6 +3105,7 @@ kQuestInstanceData.RazorfenDowns.Horde[3] = {
 }
 kQuestInstanceData.RazorfenDowns.Horde[4] = {
     Title = "寒冰之王",
+    Id = 3341,
     Level = 42,
     Attain = 37,
     Aim = "安德鲁·布隆奈尔要你杀了寒冰之王亚门纳尔并将其头骨带回来。",
@@ -2911,6 +3119,7 @@ kQuestInstanceData.RazorfenDowns.Horde[4] = {
 }
 kQuestInstanceData.RazorfenDowns.Horde[5] = {
     Title = "超越的力量",
+    Id = 40995,
     Level = 44,
     Attain = 38,
     Aim = "前往剃刀高地，为吉尔尼斯寂静守卫教堂的黑暗主教莫德伦杀死那里的寒冰之王亚门纳尔，并带回他的魂器。",
@@ -2935,6 +3144,7 @@ kQuestInstanceData.RazorfenKraul = {
 }
 kQuestInstanceData.RazorfenKraul.Alliance[1] = {
     Title = "蓝叶薯",
+    Id = 1221,
     Level = 26,
     Attain = 20,
     Aim = "找到一个开孔的箱子。$B找到一根地鼠指挥棒。$B找到并阅读《地鼠指挥手册》。$B$B在剃刀沼泽里用开孔的箱子召唤一只地鼠，然后用指挥棒驱使它去搜寻蓝叶薯。$B$B把地鼠指挥棒、开孔的箱子和6块蓝叶薯交给棘齿城的麦伯克·米希瑞克斯。",
@@ -2947,6 +3157,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[1] = {
 }
 kQuestInstanceData.RazorfenKraul.Alliance[2] = {
     Title = "临终遗言",
+    Id = 1142,
     Level = 30,
     Attain = 25,
     Aim = "将塔莎拉的坠饰带给达纳苏斯的塔莎拉·静水。",
@@ -2960,6 +3171,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[2] = {
 }
 kQuestInstanceData.RazorfenKraul.Alliance[3] = {
     Title = "进口商威利克斯",
+    Id = 1144,
     Level = 30,
     Attain = 23,
     Aim = "护送进口商威利克斯逃出剃刀沼泽。",
@@ -2974,6 +3186,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[3] = {
 }
 kQuestInstanceData.RazorfenKraul.Alliance[4] = {
     Title = "沼泽中的巫婆",
+    Id = 1101,
     Level = 34,
     Attain = 29,
     Aim = "把卡尔加·刺肋的徽章交给萨兰纳尔的法芬德尔·路卫。",
@@ -2989,6 +3202,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[4] = {
 }
 kQuestInstanceData.RazorfenKraul.Alliance[5] = {
     Title = "弗伦的铠甲",
+    Id = 1701,
     Level = 28,
     Attain = 20,
     Aim = "收集必需的材料，将它们交给暴风城的弗伦·长须。",
@@ -2999,6 +3213,7 @@ kQuestInstanceData.RazorfenKraul.Alliance[5] = {
 kQuestInstanceData.RazorfenKraul.Horde[1] = kQuestInstanceData.RazorfenKraul.Alliance[1]
 kQuestInstanceData.RazorfenKraul.Horde[2] = {
     Title = "进口商威利克斯",
+    Id = 1144,
     Level = 30,
     Attain = 23,
     Aim = "护送进口商威利克斯逃出剃刀沼泽。",
@@ -3013,6 +3228,7 @@ kQuestInstanceData.RazorfenKraul.Horde[2] = {
 }
 kQuestInstanceData.RazorfenKraul.Horde[3] = {
     Title = "蝙蝠的粪便",
+    Id = 1109,
     Level = 33,
     Attain = 30,
     Aim = "帮幽暗城的大药剂师法拉尼尔带回一堆沼泽蝙蝠的粪便。",
@@ -3022,6 +3238,7 @@ kQuestInstanceData.RazorfenKraul.Horde[3] = {
 }
 kQuestInstanceData.RazorfenKraul.Horde[4] = {
     Title = "奥尔德的报复",
+    Id = 1102,
     Level = 34,
     Attain = 29,
     Aim = "把卡尔加·刺肋的心脏交给雷霆崖的奥尔德·石塔。",
@@ -3036,6 +3253,7 @@ kQuestInstanceData.RazorfenKraul.Horde[4] = {
 }
 kQuestInstanceData.RazorfenKraul.Horde[5] = {
     Title = "野蛮护甲",
+    Id = 1838,
     Level = 30,
     Attain = 20,
     Aim = "为索恩格瑞姆收集15根烟雾铁锭、10份蓝铜粉、10块铁锭和1瓶燃素。",
@@ -3046,6 +3264,7 @@ kQuestInstanceData.RazorfenKraul.Horde[5] = {
 }
 kQuestInstanceData.RazorfenKraul.Horde[6] = {
     Title = "被污染的荆棘之心",
+    Id = 41758,
     Level = 30,
     Attain = 20,
     Aim = "摧毁剃刀沼泽深处的自然腐化的活化身，并将被污染的荆棘之心交给雷霆崖的凯姆·蛮鬃。",
@@ -3068,6 +3287,7 @@ kQuestInstanceData.ScarletMonasteryLibrary = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Alliance[1] = {
     Title = "以圣光之名",
+    Id = 1053,
     Level = 40,
     Attain = 34,
     Aim = "杀死大检察官怀特迈恩，血色十字军指挥官莫格莱尼，十字军的勇士赫洛德和驯犬者洛克希并向南海镇的莱雷恩复命。",
@@ -3084,6 +3304,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Alliance[1] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Alliance[2] = {
     Title = "泰坦神话",
+    Id = 1050,
     Level = 38,
     Attain = 28,
     Aim = "从修道院拿回《泰坦神话》，把它交给铁炉堡的图书馆员麦伊·苍尘。",
@@ -3096,6 +3317,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Alliance[2] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Alliance[3] = {
     Title = "能量仪祭",
+    Id = 1951,
     Level = 40,
     Attain = 30,
     Aim = "将《能量仪祭》交给尘泥沼泽的塔贝萨。",
@@ -3106,6 +3328,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Alliance[3] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Horde[1] = {
     Title = "狂热之心",
+    Id = 1113,
     Level = 33,
     Attain = 30,
     Aim = "幽暗城的大药剂师法拉尼尔需要20颗狂热之心。",
@@ -3115,6 +3338,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Horde[1] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Horde[2] = {
     Title = "深入血色修道院",
+    Id = 1048,
     Level = 42,
     Attain = 33,
     Aim = "杀掉大检察官怀特迈恩、血色十字军指挥官莫格莱尼、血色十字军勇士赫洛德和驯犬者洛克希，然后向幽暗城的瓦里玛萨斯回报。",
@@ -3130,6 +3354,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Horde[2] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Horde[3] = {
     Title = "堕落者纲要",
+    Id = 1049,
     Level = 38,
     Attain = 28,
     Aim = "从血色修道院里找到《堕落者纲要》，把它交给雷霆崖的圣者图希克。",
@@ -3144,6 +3369,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Horde[3] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Horde[4] = {
     Title = "知识的试炼",
+    Id = 1160,
     Level = 36,
     Attain = 25,
     Aim = "找到连接石爪山和灰谷的石爪小径里的布劳格·幽魂。",
@@ -3154,6 +3380,7 @@ kQuestInstanceData.ScarletMonasteryLibrary.Horde[4] = {
 }
 kQuestInstanceData.ScarletMonasteryLibrary.Horde[5] = {
     Title = "能量仪祭",
+    Id = 1951,
     Level = 40,
     Attain = 30,
     Aim = "将《能量仪祭》交给尘泥沼泽的塔贝萨。",
@@ -3175,6 +3402,7 @@ kQuestInstanceData.ScarletMonasteryArmory.Horde[1] = kQuestInstanceData.ScarletM
 kQuestInstanceData.ScarletMonasteryArmory.Horde[2] = kQuestInstanceData.ScarletMonasteryLibrary.Horde[2]
 kQuestInstanceData.ScarletMonasteryArmory.Horde[3] = {
     Title = "往日之钢",
+    Id = 41368,
     Level = 39,
     Attain = 33,
     Aim = "杀死军械库军需官达格海姆并将日记还给幽暗城的巴兹尔·弗莱伊。",
@@ -3197,6 +3425,7 @@ kQuestInstanceData.ScarletMonasteryCathedral = {
 kQuestInstanceData.ScarletMonasteryCathedral.Alliance[1] = kQuestInstanceData.ScarletMonasteryLibrary.Alliance[1]
 kQuestInstanceData.ScarletMonasteryCathedral.Alliance[2] = {
     Title = "卡拉杜斯的宝珠",
+    Id = 40233,
     Level = 38,
     Attain = 30,
     Aim = "冒险进入血色修道院，找到卡拉杜斯的宝珠，取回它，然后交给悲伤卫士要塞的守望圣骑加纳苏斯。",
@@ -3212,6 +3441,7 @@ kQuestInstanceData.ScarletMonasteryCathedral.Alliance[2] = {
 }
 kQuestInstanceData.ScarletMonasteryCathedral.Alliance[3] = {
     Title = "血色的堕落",
+    Id = 40935,
     Level = 44,
     Attain = 35,
     Aim = "为沙德摩尔旅店的修士埃利亚斯寻找法尔班克斯的真相",
@@ -3236,6 +3466,7 @@ kQuestInstanceData.ScarletMonasteryGraveyard = {
 kQuestInstanceData.ScarletMonasteryGraveyard.Horde[1] = kQuestInstanceData.ScarletMonasteryLibrary.Horde[1]
 kQuestInstanceData.ScarletMonasteryGraveyard.Horde[2] = {
     Title = "沃瑞尔的复仇",
+    Id = 1051,
     Level = 33,
     Attain = 25,
     Aim = "把沃瑞尔·森加斯的结婚戒指还给塔伦米尔的莫尼卡·森古特斯。",
@@ -3250,6 +3481,7 @@ kQuestInstanceData.ScarletMonasteryGraveyard.Horde[2] = {
 }
 kQuestInstanceData.ScarletMonasteryGraveyard.Horde[3] = {
     Title = "染红玫瑰",
+    Id = 60116,
     Level = 29,
     Attain = 27,
     Aim = "攻击血色修道院外的血色军队，杀死5个血色斥候、5个血色医师、10个血色哨兵，然后与布瑞尔的亡灵卫兵伯吉斯交谈。",
@@ -3274,6 +3506,7 @@ kQuestInstanceData.Scholomance = {
 }
 kQuestInstanceData.Scholomance.Alliance[1] = {
     Title = "瘟疫之龙",
+    Id = 5529,
     Level = 58,
     Attain = 55,
     Aim = "杀掉20只瘟疫龙崽，然后向圣光之愿礼拜堂的贝蒂娜·比格辛克复命。",
@@ -3283,6 +3516,7 @@ kQuestInstanceData.Scholomance.Alliance[1] = {
 }
 kQuestInstanceData.Scholomance.Alliance[2] = {
     Title = "健康的龙鳞",
+    Id = 5582,
     Level = 58,
     Attain = 55,
     Aim = "把健康的龙鳞交给东瘟疫之地圣光之愿礼拜堂中的贝蒂娜·比格辛克。",
@@ -3292,6 +3526,7 @@ kQuestInstanceData.Scholomance.Alliance[2] = {
 }
 kQuestInstanceData.Scholomance.Alliance[3] = {
     Title = "瑟尔林·卡斯迪诺夫教授",
+    Id = 5382,
     Level = 60,
     Attain = 55,
     Aim = "在通灵学院中找到瑟尔林·卡斯迪诺夫教授。杀死他，并烧毁艾瓦·萨克霍夫和卢森·萨克霍夫的遗体。任务完成后就回到艾瓦·萨克霍夫那儿。",
@@ -3301,6 +3536,7 @@ kQuestInstanceData.Scholomance.Alliance[3] = {
 }
 kQuestInstanceData.Scholomance.Alliance[4] = {
     Title = "卡斯迪诺夫的恐惧袋",
+    Id = 5515,
     Level = 60,
     Attain = 55,
     Aim = "把卡斯迪诺夫的恐惧袋带给艾瓦·萨克霍夫。",
@@ -3311,6 +3547,7 @@ kQuestInstanceData.Scholomance.Alliance[4] = {
 }
 kQuestInstanceData.Scholomance.Alliance[5] = {
     Title = "传令官基尔图诺斯",
+    Id = 5384,
     Level = 60,
     Attain = 55,
     Aim = "带着无辜者之血回到通灵学院，将它放在门廊的火盆下面，基尔图诺斯会前来吞噬你的灵魂。$B$B勇敢地战斗吧，不要退缩！杀死基尔图诺斯，然后回到艾瓦·萨克霍夫那儿。",
@@ -3327,6 +3564,7 @@ kQuestInstanceData.Scholomance.Alliance[5] = {
 }
 kQuestInstanceData.Scholomance.Alliance[6] = {
     Title = "巫妖莱斯·霜语",
+    Id = 5466,
     Level = 60,
     Attain = 57,
     Aim = "在通灵学院里找到莱斯·霜语。当你找到他之后，使用禁锢灵魂的遗物破除其亡灵的外壳。如果你成功地破除了他的不死之身，就杀掉他并拿到莱斯·霜语的头颅。把那个头颅交给马杜克镇长。",
@@ -3343,6 +3581,7 @@ kQuestInstanceData.Scholomance.Alliance[6] = {
 }
 kQuestInstanceData.Scholomance.Alliance[7] = {
     Title = "巴罗夫家族的宝藏",
+    Id = 5343,
     Level = 60,
     Attain = 52,
     Aim = "到通灵学院中去取得巴罗夫家族的宝藏。这份宝藏包括四份地契：凯尔达隆地契、布瑞尔地契、塔伦米尔地契，还有南海镇地契。完成任务之后就回到阿莱克斯·巴罗夫那儿去。",
@@ -3352,6 +3591,7 @@ kQuestInstanceData.Scholomance.Alliance[7] = {
 }
 kQuestInstanceData.Scholomance.Alliance[8] = {
     Title = "黎明先锋",
+    Id = 4771,
     Level = 60,
     Attain = 57,
     Aim = "将黎明先锋放在通灵学院的观察室里。打败维克图斯，然后回到贝蒂娜·比格辛克那里去。",
@@ -3366,6 +3606,7 @@ kQuestInstanceData.Scholomance.Alliance[8] = {
 }
 kQuestInstanceData.Scholomance.Alliance[9] = {
     Title = "瓶中的小鬼",
+    Id = 7629,
     Level = 60,
     Attain = 60,
     Aim = "把瓶中的小鬼带到通灵学院的炼金实验室中。在小鬼制造出羊皮纸之后，把瓶子还给戈瑟奇·邪眼。",
@@ -3376,6 +3617,7 @@ kQuestInstanceData.Scholomance.Alliance[9] = {
 }
 kQuestInstanceData.Scholomance.Alliance[10] = {
     Title = "瓦萨拉克护符的左半块",
+    Id = 8969,
     Level = 60,
     Attain = 58,
     Aim = "使用召唤火盆来召唤莫尔·灰蹄的灵魂并杀了他。带着瓦萨拉克护符的左半块和召唤火盆回到黑石山的布德利那里。",
@@ -3386,6 +3628,7 @@ kQuestInstanceData.Scholomance.Alliance[10] = {
 }
 kQuestInstanceData.Scholomance.Alliance[11] = {
     Title = "瓦萨拉克护符的右半块",
+    Id = 8992,
     Level = 60,
     Attain = 58,
     Aim = "使用召唤火盆召唤莫尔·灰蹄的灵魂并杀了他。带着重新组合的瓦萨拉克护符和召唤火盆回到黑石山的布德利那里。",
@@ -3396,6 +3639,7 @@ kQuestInstanceData.Scholomance.Alliance[11] = {
 }
 kQuestInstanceData.Scholomance.Alliance[12] = {
     Title = "帮法杉的忙。",
+    Id = 40237,
     Level = 58,
     Attain = 55,
     Aim = "冒险进入通灵学院，为棘齿城的斯坦哈德·法杉找回《召炎控制术》一书。",
@@ -3431,6 +3675,7 @@ kQuestInstanceData.ShadowfangKeep = {
 }
 kQuestInstanceData.ShadowfangKeep.Alliance[1] = {
     Title = "正义试炼",
+    Id = 1654,
     Level = 22,
     Attain = 20,
     Aim = "去和铁炉堡的乔丹·斯迪威尔谈一谈。",
@@ -3446,6 +3691,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[1] = {
 }
 kQuestInstanceData.ShadowfangKeep.Alliance[2] = {
     Title = "索兰鲁克宝珠",
+    Id = 1740,
     Level = 25,
     Attain = 20,
     Aim = "找到3块索兰鲁克宝珠的碎片和1块索兰鲁克宝珠的大碎片，把它们交给贫瘠之地的杜安·卡汉。",
@@ -3459,6 +3705,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[2] = {
 }
 kQuestInstanceData.ShadowfangKeep.Alliance[3] = {
     Title = "阿鲁高的愚行",
+    Id = 99,
     Level = 27,
     Attain = 22,
     Location = "高阶巫师安多玛斯 (暴风城 - 法师区, 法师塔)",
@@ -3470,6 +3717,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[3] = {
 }
 kQuestInstanceData.ShadowfangKeep.Alliance[4] = {
     Title = "失踪的巫师",
+    Id = 60109,
     Level = 24,
     Attain = 22,
     Aim = "高阶巫师安多玛斯要求你在银松森林的影牙城堡找到巫师阿克鲁比的踪迹。",
@@ -3478,6 +3726,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[4] = {
 }
 kQuestInstanceData.ShadowfangKeep.Alliance[5] = {
     Title = "沃根多尔之血",
+    Id = 41378,
     Level = 60,
     Attain = 60,
     Aim = "为范达尔·鹿盔收集狼人血液。他需要来自卡拉赞、吉尔尼斯城和影牙城堡的血液样本。",
@@ -3488,6 +3737,7 @@ kQuestInstanceData.ShadowfangKeep.Alliance[5] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[1] = {
     Title = "影牙城堡里的亡灵哨兵",
+    Id = 1098,
     Level = 25,
     Attain = 18,
     Aim = "找到亡灵哨兵阿达曼特和亡灵哨兵文森特。",
@@ -3500,6 +3750,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[1] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[2] = {
     Title = "乌尔之书",
+    Id = 1013,
     Level = 26,
     Attain = 16,
     Aim = "把乌尔之书交给幽暗城炼金区里的看守者贝尔杜加。",
@@ -3513,6 +3764,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[2] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[3] = {
     Title = "除掉阿鲁高",
+    Id = 1014,
     Level = 27,
     Attain = 18,
     Aim = "杀死阿鲁高，把他的头带给瑟伯切尔的达拉尔·道恩维沃尔。",
@@ -3525,6 +3777,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[3] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[4] = {
     Title = "索兰鲁克宝珠",
+    Id = 1740,
     Level = 25,
     Attain = 20,
     Aim = "找到3块索兰鲁克宝珠的碎片和1块索兰鲁克宝珠的大碎片，把它们交给贫瘠之地的杜安·卡汉。",
@@ -3537,6 +3790,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[4] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[5] = {
     Title = "虎口拔牙",
+    Id = 40281,
     Level = 25,
     Attain = 15,
     Aim = "在影牙城堡中找到迈雷纳斯的财产，并将其交给幽暗城中的皮尔斯·沙克尔顿。",
@@ -3552,6 +3806,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[5] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[6] = {
     Title = "主教末路",
+    Id = 41366,
     Level = 22,
     Attain = 16,
     Aim = "杀死艾隆迈恩主教并向格伦郡的布莱特科普夫神父报告。",
@@ -3565,6 +3820,7 @@ kQuestInstanceData.ShadowfangKeep.Horde[6] = {
 }
 kQuestInstanceData.ShadowfangKeep.Horde[7] = {
     Title = "狼、巫婆与镰刀",
+    Id = 41381,
     Level = 60,
     Attain = 60,
     Aim = "为玛加萨·恐怖图腾收集狼人血液。她需要来自卡拉赞、吉尔尼斯城和影牙城堡的血液样本。",
@@ -3583,6 +3839,7 @@ kQuestInstanceData.Stratholme = {
 }
 kQuestInstanceData.Stratholme.Alliance[1] = {
     Title = "血肉不会撒谎",
+    Id = 5212,
     Level = 60,
     Attain = 55,
     Aim = "从斯坦索姆找回20个瘟疫肉块，并把它们交给贝蒂娜·比格辛克。你觉得斯坦索姆中所有生物的肉大概都带点瘟疫……",
@@ -3592,6 +3849,7 @@ kQuestInstanceData.Stratholme.Alliance[1] = {
 }
 kQuestInstanceData.Stratholme.Alliance[2] = {
     Title = "活跃的探子",
+    Id = 5213,
     Level = 60,
     Attain = 55,
     Aim = "到斯坦索姆去探索那里的通灵塔。找到新的天灾军团档案，把它交给贝蒂娜·比格辛克。",
@@ -3606,6 +3864,7 @@ kQuestInstanceData.Stratholme.Alliance[2] = {
 }
 kQuestInstanceData.Stratholme.Alliance[3] = {
     Title = "神圣之屋",
+    Id = 5243,
     Level = 60,
     Attain = 55,
     Aim = "到北方的斯坦索姆去，寻找散落在城市中的补给箱，并收集5瓶斯坦索姆圣水。当你找到足够的圣水之后就回去向尊敬的莱尼德·巴萨罗梅复命。",
@@ -3621,6 +3880,7 @@ kQuestInstanceData.Stratholme.Alliance[3] = {
 }
 kQuestInstanceData.Stratholme.Alliance[4] = {
     Title = "哈尔里克·恩伯兰",
+    Id = 5214,
     Level = 60,
     Attain = 55,
     Aim = "找到哈尔里克·恩伯兰在斯坦索姆的烟草店，并从中找回一盒希亚比的烟草，把它交给烟鬼拉鲁恩。",
@@ -3633,6 +3893,7 @@ kQuestInstanceData.Stratholme.Alliance[4] = {
 }
 kQuestInstanceData.Stratholme.Alliance[5] = {
     Title = "永不安息的灵魂",
+    Id = 5282,
     Level = 60,
     Attain = 55,
     Aim = "找到埃根。你只知道他在斯坦索姆附近。",
@@ -3646,6 +3907,7 @@ kQuestInstanceData.Stratholme.Alliance[5] = {
 }
 kQuestInstanceData.Stratholme.Alliance[6] = {
     Title = "爱与家庭",
+    Id = 5848,
     Level = 60,
     Attain = 52,
     Aim = "到凯尔达隆岛去，寻找关于那副画的线索。凯尔达隆岛在瘟疫之地南部的湖中央。",
@@ -3656,6 +3918,7 @@ kQuestInstanceData.Stratholme.Alliance[6] = {
 }
 kQuestInstanceData.Stratholme.Alliance[7] = {
     Title = "米奈希尔的礼物",
+    Id = 5463,
     Level = 60,
     Attain = 57,
     Aim = "到斯坦索姆城里去找到米奈希尔的礼物，把巫妖生前的遗物放在那块邪恶的土地上。",
@@ -3666,6 +3929,7 @@ kQuestInstanceData.Stratholme.Alliance[7] = {
 }
 kQuestInstanceData.Stratholme.Alliance[8] = {
     Title = "奥里克斯的清算",
+    Id = 5125,
     Level = 60,
     Attain = 55,
     Aim = "杀死男爵。",
@@ -3679,6 +3943,7 @@ kQuestInstanceData.Stratholme.Alliance[8] = {
 }
 kQuestInstanceData.Stratholme.Alliance[9] = {
     Title = "档案管理员",
+    Id = 5251,
     Level = 60,
     Attain = 55,
     Aim = "在斯坦索姆城中找到血色十字军的档案管理员加尔福特，杀掉他，然后烧毁血色十字军档案。",
@@ -3688,6 +3953,7 @@ kQuestInstanceData.Stratholme.Alliance[9] = {
 }
 kQuestInstanceData.Stratholme.Alliance[10] = {
     Title = "可怕的真相",
+    Id = 5262,
     Level = 60,
     Attain = 55,
     Aim = "将巴纳扎尔的头颅交给东瘟疫之地的尼古拉斯·瑟伦霍夫公爵。",
@@ -3698,6 +3964,7 @@ kQuestInstanceData.Stratholme.Alliance[10] = {
 }
 kQuestInstanceData.Stratholme.Alliance[11] = {
     Title = "超越",
+    Id = 5263,
     Level = 60,
     Attain = 55,
     Aim = "到斯坦索姆去杀掉瑞文戴尔男爵，把他的头颅交给尼古拉斯·瑟伦霍夫公爵。",
@@ -3713,6 +3980,7 @@ kQuestInstanceData.Stratholme.Alliance[11] = {
 }
 kQuestInstanceData.Stratholme.Alliance[12] = {
     Title = "死人的请求",
+    Id = 8945,
     Level = 60,
     Attain = 58,
     Aim = "进入斯坦索姆，从瑞文戴尔男爵手中救出伊思达。",
@@ -3723,6 +3991,7 @@ kQuestInstanceData.Stratholme.Alliance[12] = {
 }
 kQuestInstanceData.Stratholme.Alliance[13] = {
     Title = "瓦萨拉克护符的左半块",
+    Id = 8968,
     Level = 60,
     Attain = 58,
     Aim = "使用召唤火盆来召唤莫尔·灰蹄的灵魂并杀了他。带着瓦萨拉克护符的左半块和召唤火盆回到黑石山的布德利那里。",
@@ -3733,6 +4002,7 @@ kQuestInstanceData.Stratholme.Alliance[13] = {
 }
 kQuestInstanceData.Stratholme.Alliance[14] = {
     Title = "瓦萨拉克护符的右半块",
+    Id = 8991,
     Level = 60,
     Attain = 58,
     Aim = "使用召唤火盆召唤莫尔·灰蹄的灵魂并杀了他。带着重新组合的瓦萨拉克护符和召唤火盆回到黑石山的布德利那里。",
@@ -3743,6 +4013,7 @@ kQuestInstanceData.Stratholme.Alliance[14] = {
 }
 kQuestInstanceData.Stratholme.Alliance[15] = {
     Title = "埃提耶什，守护者的传说之杖",
+    Id = 9257,
     Level = 60,
     Attain = 60,
     Aim = "塔纳利斯时光之穴的安纳克罗斯要你前往斯坦索姆，在神圣之地上使用埃提耶什，守护者的传说之杖。击败被驱赶出法杖的实体，然后回到安纳克罗斯那里去。",
@@ -3759,6 +4030,7 @@ kQuestInstanceData.Stratholme.Alliance[15] = {
 }
 kQuestInstanceData.Stratholme.Alliance[16] = {
     Title = "腐蚀",
+    Id = 5307,
     Level = 60,
     Attain = 50,
     Aim = "在斯坦索姆找到黑衣守卫铸剑师，然后杀死他。将黑色卫士徽记交给亡灵杀手瑟里尔。",
@@ -3771,6 +4043,7 @@ kQuestInstanceData.Stratholme.Alliance[16] = {
 }
 kQuestInstanceData.Stratholme.Alliance[17] = {
     Title = "甜美的平静",
+    Id = 5305,
     Level = 60,
     Attain = 50,
     Aim = "到斯坦索姆去杀死红衣铸锤师。将红衣铸锤师的围裙交给莉莉丝。",
@@ -3783,6 +4056,7 @@ kQuestInstanceData.Stratholme.Alliance[17] = {
 }
 kQuestInstanceData.Stratholme.Alliance[18] = {
     Title = "建造一个重击者",
+    Id = 80401,
     Level = 60,
     Attain = 30,
     Aim = "从血色修道院的军械库中获取瑟银微调舵机，从傀儡统帅阿格曼奇处获得黑石深渊的完美魔像核心，在斯坦索姆找到精金棒，然后回到奥格索普·奥布诺提斯身边。",
@@ -3799,6 +4073,7 @@ kQuestInstanceData.Stratholme.Alliance[18] = {
 }
 kQuestInstanceData.Stratholme.Alliance[19] = {
     Title = "To Wake The Ashbringer",
+    Id = 20002,
     Level = 60,
     Attain = 60,
     Aim = "从斯坦索姆找回灰烬使者战袍（杀死大十字军战士达索汉）和亚历山德罗斯的披风。",
@@ -3813,6 +4088,7 @@ kQuestInstanceData.Stratholme.Alliance[19] = {
 }
 kQuestInstanceData.Stratholme.Alliance[20] = {
     Title = "罗斯伦家族胸针",
+    Id = 41000,
     Level = 60,
     Attain = 55,
     Aim = "为卡拉赞的公爵罗斯伦找回罗斯伦家族胸针。",
@@ -3823,6 +4099,7 @@ kQuestInstanceData.Stratholme.Alliance[20] = {
 }
 kQuestInstanceData.Stratholme.Alliance[21] = {
     Title = "卡拉赞的钥匙之七",
+    Id = 40826,
     Level = 60,
     Attain = 58,
     Aim = "找到四个麦迪文的回响。它们可能出现在对法师来说具有重要意义的地方。然后带着钥匙回到多万·布雷斯温德身边。",
@@ -3836,6 +4113,7 @@ for i = 1, 17 do
 end
 kQuestInstanceData.Stratholme.Horde[18] = {
     Title = "吞咽者拉姆斯登",
+    Id = 6163,
     Level = 60,
     Attain = 56,
     Aim = "到斯坦索姆去，杀掉吞咽者拉姆斯登。把他的头颅交给纳萨诺斯。",
@@ -3850,6 +4128,7 @@ kQuestInstanceData.Stratholme.Horde[18] = {
 }
 kQuestInstanceData.Stratholme.Horde[19] = {
     Title = "建造一个重击者",
+    Id = 80401,
     Level = 60,
     Attain = 30,
     Aim = "从血色修道院的军械库中获取瑟银微调舵机，从傀儡统帅阿格曼奇处获得黑石深渊的完美魔像核心，在斯坦索姆找到精金棒，然后回到奥格索普·奥布诺提斯身边。",
@@ -3876,6 +4155,7 @@ kQuestInstanceData.TheRuinsofAhnQiraj = {
 }
 kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[1] = {
     Title = "奥斯瑞安之死",
+    Id = 8791,
     Level = 60,
     Attain = 60,
     Aim = "将无疤者奥斯瑞安的头颅交给希利苏斯塞纳里奥要塞的指挥官玛尔利斯。",
@@ -3891,6 +4171,7 @@ kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[1] = {
 }
 kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[2] = {
     Title = "完美的毒药",
+    Id = 9023,
     Level = 60,
     Attain = 60,
     Aim = "塞纳里奥要塞的德尔克·雷木让你把温诺希斯的毒囊和库林纳克斯的毒囊交给他。",
@@ -3908,6 +4189,7 @@ kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[2] = {
 }
 kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[3] = {
     Title = "遗失于沙漠之中",
+    Id = 70001,
     Level = 60,
     Attain = 60,
     Aim = "将一块完美黑曜石碎片带给大法师克希雷姆。",
@@ -3932,6 +4214,7 @@ kQuestInstanceData.TheStockade = {
 }
 kQuestInstanceData.TheStockade.Alliance[1] = {
     Title = "伸张正义",
+    Id = 386,
     Level = 25,
     Attain = 22,
     Aim = "把塔格尔的头颅带给湖畔镇的卫兵伯尔顿。",
@@ -3945,6 +4228,7 @@ kQuestInstanceData.TheStockade.Alliance[1] = {
 }
 kQuestInstanceData.TheStockade.Alliance[2] = {
     Title = "罪与罚",
+    Id = 377,
     Level = 26,
     Attain = 22,
     Aim = "夜色镇的米尔斯迪普议员要你杀死迪克斯特·瓦德，并把他的手带回来作为证明。",
@@ -3958,6 +4242,7 @@ kQuestInstanceData.TheStockade.Alliance[2] = {
 }
 kQuestInstanceData.TheStockade.Alliance[3] = {
     Title = "镇压暴动",
+    Id = 387,
     Level = 26,
     Attain = 22,
     Aim = "暴风城的典狱官塞尔沃特要求你杀死监狱中的10名迪菲亚囚徒、8名迪菲亚罪犯和8名迪菲亚叛军。",
@@ -3965,6 +4250,7 @@ kQuestInstanceData.TheStockade.Alliance[3] = {
 }
 kQuestInstanceData.TheStockade.Alliance[4] = {
     Title = "鲜血的颜色",
+    Id = 388,
     Level = 26,
     Attain = 22,
     Aim = "暴风城的尼科瓦·拉斯克要你取得10条红色毛纺面罩。",
@@ -3973,6 +4259,7 @@ kQuestInstanceData.TheStockade.Alliance[4] = {
 }
 kQuestInstanceData.TheStockade.Alliance[5] = {
     Title = "卡姆·深怒",
+    Id = 378,
     Level = 27,
     Attain = 22,
     Aim = "丹莫德的莫特雷·加玛森要求你把卡姆·深怒的头颅交给他。",
@@ -3987,6 +4274,7 @@ kQuestInstanceData.TheStockade.Alliance[5] = {
 }
 kQuestInstanceData.TheStockade.Alliance[6] = {
     Title = "监狱暴动",
+    Id = 391,
     Level = 29,
     Attain = 16,
     Aim = "杀死巴基尔·斯瑞德，把他的头带给监狱的典狱官塞尔沃特。",
@@ -3997,6 +4285,7 @@ kQuestInstanceData.TheStockade.Alliance[6] = {
 }
 kQuestInstanceData.TheStockade.Alliance[7] = {
     Title = "The Stockade's Search",
+    Id = 55221,
     Level = 24,
     Attain = 18,
     Aim = "深入监狱并找到关于马丁·柯林斯的信息。",
@@ -4021,6 +4310,7 @@ kQuestInstanceData.TheSunkenTemple = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[1] = {
     Title = "进入阿塔哈卡神庙",
+    Id = 1475,
     Level = 50,
     Attain = 41,
     Aim = "为暴风城的布罗哈恩·铁桶收集10块阿塔莱石板。",
@@ -4034,6 +4324,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[1] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[2] = {
     Title = "邪恶之雾",
+    Id = 4143,
     Level = 52,
     Attain = 47,
     Aim = "收集5份阿塔莱之雾的样本，然后向安戈洛环形山的穆尔金复命。",
@@ -4043,6 +4334,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[2] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[3] = {
     Title = "深入神庙",
+    Id = 3446,
     Level = 51,
     Attain = 46,
     Aim = "在悲伤沼泽沉没的神庙中找到哈卡祭坛。",
@@ -4053,6 +4345,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[3] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[4] = {
     Title = "雕像群的秘密",
+    Id = 3447,
     Level = 51,
     Attain = 46,
     Aim = "到沉没的神庙去，揭开雕像群中隐藏的秘密。",
@@ -4066,6 +4359,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[4] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[5] = {
     Title = "神灵哈卡",
+    Id = 3528,
     Level = 53,
     Attain = 40,
     Aim = "将装满的哈卡之卵交给塔纳利斯的叶基亚。",
@@ -4081,6 +4375,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[5] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[6] = {
     Title = "预言者迦玛兰",
+    Id = 1446,
     Level = 53,
     Attain = 38,
     Aim = "辛特兰的阿塔莱流放者要你给他带回迦玛兰的头。",
@@ -4094,6 +4389,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[6] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[7] = {
     Title = "伊兰尼库斯精华",
+    Id = 3373,
     Level = 55,
     Attain = 48,
     Aim = "把伊兰尼库斯精华放在精华之泉里，精华之泉就在沉没的神庙中，伊兰尼库斯的巢穴里。",
@@ -4107,6 +4403,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[7] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[8] = {
     Title = "巨魔的羽毛",
+    Id = 8422,
     Level = 52,
     Attain = 50,
     Aim = "到沉没的神庙去，从巨魔们身上获得6支巫毒羽毛。",
@@ -4122,6 +4419,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[8] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[9] = {
     Title = "巫毒羽毛",
+    Id = 8425,
     Level = 52,
     Attain = 50,
     Aim = "将你从沉没的神庙的巨魔身上得到的巫毒羽毛交给部落英雄的灵魂。",
@@ -4137,6 +4435,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[9] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[10] = {
     Title = "更好的材料",
+    Id = 9053,
     Level = 52,
     Attain = 50,
     Aim = "从沉没的神庙底部的守卫身上得到一些腐烂藤蔓，把它们交给托尔瓦·寻路者。",
@@ -4152,6 +4451,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[10] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[11] = {
     Title = "神庙中的绿龙",
+    Id = 8232,
     Level = 52,
     Attain = 50,
     Aim = "将摩弗拉斯的牙齿交给艾萨拉的奥汀克。他住在埃达拉斯废墟东北部悬崖的顶端。",
@@ -4167,6 +4467,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[11] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[12] = {
     Title = "毁灭摩弗拉斯",
+    Id = 8253,
     Level = 52,
     Attain = 50,
     Aim = "从摩弗拉斯身上取回奥术碎片，然后返回大法师克希雷姆那儿。",
@@ -4182,6 +4483,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[12] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[13] = {
     Title = "摩弗拉斯之血",
+    Id = 8257,
     Level = 52,
     Attain = 50,
     Aim = "前往沉没的阿塔哈卡神庙，杀死绿龙摩弗拉斯，将他的血液交给费伍德森林中的格雷塔·苔蹄。沉没的神庙的入口就在悲伤沼泽中。",
@@ -4197,6 +4499,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[13] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[14] = {
     Title = "碧蓝钥匙",
+    Id = 8236,
     Level = 52,
     Attain = 50,
     Aim = "将碧蓝钥匙交给乔拉齐·拉文霍德公爵。",
@@ -4212,6 +4515,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[14] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[15] = {
     Title = "伊兰尼库斯，梦境之暴君",
+    Id = 8733,
     Level = 60,
     Attain = 60,
     Aim = "到达纳苏斯的城墙外去找到玛法里奥的亲信。",
@@ -4222,6 +4526,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[15] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[16] = {
     Title = "采取必要的手段之四",
+    Id = 40400,
     Level = 53,
     Attain = 47,
     Aim = "前往沉没的神庙，找到龙族哈扎斯，杀死他，并将哈扎斯之心归还给尼雷米乌斯·暗风。",
@@ -4236,6 +4541,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[16] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[17] = {
     Title = "铸造力量之石",
+    Id = 8418,
     Level = 52,
     Attain = 50,
     Aim = "前往沉没的神庙，从巨魔守护者们身上取得巫毒羽毛，然后把它们交给阿什拉姆·瓦罗菲斯特。",
@@ -4252,6 +4558,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[17] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[18] = {
     Title = "寐入梦境之三",
+    Id = 40959,
     Level = 60,
     Attain = 58,
     Aim = "从艾萨拉的峭壁击碎者身上收集一片束缚碎片，从厄运之槌西的秘法洪流身上收集一个奥术过载棱镜，从沉没的神庙中的沉睡绿龙的身上收集一片沉睡者碎片。带着收集到的物品向悲伤沼泽的伊萨里奥斯报告。",
@@ -4266,6 +4573,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[18] = {
 }
 kQuestInstanceData.TheSunkenTemple.Alliance[19] = {
     Title = "裂隙行者法杖",
+    Id = 41323,
     Level = 54,
     Attain = 30,
     Aim = "将阿赫扎多尔的裂隙行者法杖和迦玛兰的魔精带回给艾萨拉的阿赫·扎多尔。",
@@ -4280,6 +4588,7 @@ kQuestInstanceData.TheSunkenTemple.Alliance[19] = {
 }
 kQuestInstanceData.TheSunkenTemple.Horde[1] = {
     Title = "阿塔哈卡神庙",
+    Id = 1445,
     Level = 50,
     Attain = 38,
     Aim = "收集20个哈卡神像，把它们带给斯通纳德的费泽鲁尔。",
@@ -4290,6 +4599,7 @@ kQuestInstanceData.TheSunkenTemple.Horde[1] = {
 }
 kQuestInstanceData.TheSunkenTemple.Horde[2] = {
     Title = "除草器的燃料",
+    Id = 4146,
     Level = 52,
     Attain = 47,
     Aim = "收集5份阿塔莱之雾的样本，然后将它们送到马绍尔营地的拉瑞安那里。",
@@ -4302,6 +4612,7 @@ for i = 3, 16 do
 end
 kQuestInstanceData.TheSunkenTemple.Horde[17] = {
     Title = "巫毒羽毛",
+    Id = 8413,
     Level = 52,
     Attain = 50,
     Aim = "将巫毒羽毛交给捕风者巴士拉。",
@@ -4317,6 +4628,7 @@ kQuestInstanceData.TheSunkenTemple.Horde[17] = {
 }
 kQuestInstanceData.TheSunkenTemple.Horde[18] = {
     Title = "莫尔奥格危机之七",
+    Id = 40270,
     Level = 54,
     Attain = 45,
     Aim = "冒险进入阿塔哈卡神庙的深处，拿到阿塔莱神杖，把它带给英桑姆尼完成咒语。",
@@ -4333,6 +4645,7 @@ kQuestInstanceData.TheSunkenTemple.Horde[18] = {
 }
 kQuestInstanceData.TheSunkenTemple.Horde[19] = {
     Title = "寐入梦境之三",
+    Id = 40959,
     Level = 60,
     Attain = 58,
     Aim = "从艾萨拉的峭壁击碎者身上收集一片束缚碎片，从厄运之槌西的秘法洪流身上收集一个奥术过载棱镜，从沉没的神庙中的沉睡绿龙的身上收集一片沉睡者碎片。带着收集到的物品向悲伤沼泽的伊萨里奥斯报告。",
@@ -4347,6 +4660,7 @@ kQuestInstanceData.TheSunkenTemple.Horde[19] = {
 }
 kQuestInstanceData.TheSunkenTemple.Horde[20] = {
     Title = "裂隙行者法杖",
+    Id = 41323,
     Level = 54,
     Attain = 30,
     Aim = "将阿赫扎多尔的裂隙行者法杖和迦玛兰的魔精带回给艾萨拉的阿赫·扎多尔。",
@@ -4369,6 +4683,7 @@ kQuestInstanceData.TheTempleofAhnQiraj = {
 }
 kQuestInstanceData.TheTempleofAhnQiraj.Alliance[1] = {
     Title = "克苏恩的遗产",
+    Id = 8801,
     Level = 60,
     Attain = 60,
     Aim = "将克苏恩之眼带给安其拉神庙的凯雷斯特拉兹。",
@@ -4384,6 +4699,7 @@ kQuestInstanceData.TheTempleofAhnQiraj.Alliance[1] = {
 }
 kQuestInstanceData.TheTempleofAhnQiraj.Alliance[2] = {
     Title = "其拉的秘密",
+    Id = 8784,
     Level = 60,
     Attain = 60,
     Aim = "把上古其拉神器交给隐藏在神殿入口处的龙类。",
@@ -4402,6 +4718,7 @@ kQuestInstanceData.ZulFarrak = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[1] = {
     Title = "耐克鲁姆的徽章",
+    Id = 2991,
     Level = 47,
     Attain = 40,
     Aim = "将耐克鲁姆的徽章交给诅咒之地的萨迪斯·酷影。",
@@ -4412,6 +4729,7 @@ kQuestInstanceData.ZulFarrak.Alliance[1] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[2] = {
     Title = "巨魔调和剂",
+    Id = 3042,
     Level = 45,
     Attain = 40,
     Aim = "收集20瓶巨魔调和剂，把它们交给加基森的特伦顿·轻锤。",
@@ -4420,6 +4738,7 @@ kQuestInstanceData.ZulFarrak.Alliance[2] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[3] = {
     Title = "圣甲虫的壳",
+    Id = 2865,
     Level = 45,
     Attain = 40,
     Aim = "给加基森的特兰雷克带去5个完整的圣甲虫壳。",
@@ -4429,6 +4748,7 @@ kQuestInstanceData.ZulFarrak.Alliance[3] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[4] = {
     Title = "深渊皇冠",
+    Id = 2846,
     Level = 46,
     Attain = 40,
     Aim = "将深渊皇冠交给尘泥沼泽的塔贝萨。",
@@ -4443,6 +4763,7 @@ kQuestInstanceData.ZulFarrak.Alliance[4] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[5] = {
     Title = "摩沙鲁的预言",
+    Id = 3527,
     Level = 47,
     Attain = 40,
     Aim = "将第一块和第二块摩沙鲁石板交给塔纳利斯的叶基亚。",
@@ -4453,6 +4774,7 @@ kQuestInstanceData.ZulFarrak.Alliance[5] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[6] = {
     Title = "探水棒",
+    Id = 2768,
     Level = 47,
     Attain = 40,
     Aim = "把探水棒交给加基森的首席工程师沙克斯·比格维兹。",
@@ -4466,6 +4788,7 @@ kQuestInstanceData.ZulFarrak.Alliance[6] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[7] = {
     Title = "加兹瑞拉",
+    Id = 2770,
     Level = 50,
     Attain = 40,
     Aim = "把加兹瑞拉的鳞片交给闪光平原的维兹尔·铜栓。",
@@ -4479,6 +4802,7 @@ kQuestInstanceData.ZulFarrak.Alliance[7] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[8] = {
     Title = "沙地漂流",
+    Id = 40519,
     Level = 46,
     Attain = 40,
     Aim = "前往祖尔法拉克冒险并找到上古巨魔遗骸，然后将它们归还给塔纳利斯南月废墟的汉苏·戈沙。",
@@ -4491,6 +4815,7 @@ kQuestInstanceData.ZulFarrak.Alliance[8] = {
 }
 kQuestInstanceData.ZulFarrak.Alliance[9] = {
     Title = "法拉基先人",
+    Id = 41811,
     Level = 46,
     Attain = 40,
     Aim = "前往祖尔法拉克，击杀年迈的泽尔杰布，然后回到祖尔法拉克南部的流浪者扎尔苏身边。",
@@ -4504,6 +4829,7 @@ kQuestInstanceData.ZulFarrak.Alliance[9] = {
 }
 kQuestInstanceData.ZulFarrak.Horde[1] = {
     Title = "蜘蛛之神",
+    Id = 2936,
     Level = 45,
     Attain = 40,
     Aim = "阅读塞卡石板，了解枯木巨魔的蜘蛛之神的名字，然后回到加德林大师那里。",
@@ -4517,6 +4843,7 @@ for i = 2, 9 do
 end
 kQuestInstanceData.ZulFarrak.Horde[10] = {
     Title = "乌克兹·沙顶的尽头",
+    Id = 40527,
     Level = 48,
     Attain = 40,
     Aim = "为塔纳利斯沙月村的勇猛的塔扎戈杀死祖尔法拉克内的乌克兹·沙顶和卢兹鲁。",
@@ -4546,6 +4873,7 @@ kQuestInstanceData.ZulGurub = {
 }
 kQuestInstanceData.ZulGurub.Alliance[1] = {
     Title = "祭司的头颅",
+    Id = 8201,
     Level = 60,
     Attain = 58,
     Aim = "将神圣之索穿上5颗导魔师的头颅，然后把这一串头颅交给尤亚姆巴岛上的伊克萨尔。",
@@ -4561,6 +4889,7 @@ kQuestInstanceData.ZulGurub.Alliance[1] = {
 }
 kQuestInstanceData.ZulGurub.Alliance[2] = {
     Title = "哈卡之心",
+    Id = 8183,
     Level = 60,
     Attain = 58,
     Aim = "把哈卡之心交给尤亚姆巴岛上的莫托尔。",
@@ -4575,6 +4904,7 @@ kQuestInstanceData.ZulGurub.Alliance[2] = {
 }
 kQuestInstanceData.ZulGurub.Alliance[3] = {
     Title = "纳特的卷尺",
+    Id = 8227,
     Level = 60,
     Attain = 58,
     Aim = "将纳特的卷尺交给尘泥沼泽的纳特·帕格。",
@@ -4583,6 +4913,7 @@ kQuestInstanceData.ZulGurub.Alliance[3] = {
 }
 kQuestInstanceData.ZulGurub.Alliance[4] = {
     Title = "完美的毒药",
+    Id = 9023,
     Level = 60,
     Attain = 60,
     Aim = "塞纳里奥要塞的德尔克·雷木让你把温诺希斯的毒囊和库林纳克斯的毒囊交给他。",
@@ -4611,6 +4942,7 @@ kQuestInstanceData.Gnomeregan = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[1] = {
     Title = "拯救尖端机器人！",
+    Id = 2922,
     Level = 26,
     Attain = 20,
     Aim = "将尖端机器人的存储器核心交给诺莫瑞根复兴城的工匠大师欧沃斯巴克。",
@@ -4620,6 +4952,7 @@ kQuestInstanceData.Gnomeregan.Alliance[1] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[2] = {
     Title = "诺恩",
+    Id = 2926,
     Level = 27,
     Attain = 20,
     Aim = "用空铅瓶对着辐射入侵者或者辐射抢劫者，从它们身上收集放射尘。瓶子装满之后，把它交给卡拉诺斯的奥齐·电环。",
@@ -4630,6 +4963,7 @@ kQuestInstanceData.Gnomeregan.Alliance[2] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[3] = {
     Title = "更多的辐射尘！",
+    Id = 2962,
     Level = 30,
     Attain = 20,
     Aim = "到诺莫瑞根去收集高强度辐射尘。要多加小心，这种辐射尘非常不稳定，很快就会分解。$B$B奥齐要求你把沉重的铅瓶也交给他。",
@@ -4639,6 +4973,7 @@ kQuestInstanceData.Gnomeregan.Alliance[3] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[4] = {
     Title = "陀螺式挖掘机",
+    Id = 2928,
     Level = 30,
     Attain = 20,
     Aim = "收集24副机械内胆，把它们交给暴风城的舒尼。",
@@ -4652,6 +4987,7 @@ kQuestInstanceData.Gnomeregan.Alliance[4] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[5] = {
     Title = "基础模组",
+    Id = 2924,
     Level = 30,
     Attain = 24,
     Aim = "收集12个基础模组，把它们交给诺莫瑞根复兴城的科劳莫特·钢尺。",
@@ -4661,6 +4997,7 @@ kQuestInstanceData.Gnomeregan.Alliance[5] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[6] = {
     Title = "抢救数据",
+    Id = 2930,
     Level = 30,
     Attain = 25,
     Aim = "将彩色穿孔卡片交给在丹莫罗的诺莫瑞根复兴城的大机械师卡斯派普。",
@@ -4675,6 +5012,7 @@ kQuestInstanceData.Gnomeregan.Alliance[6] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[7] = {
     Title = "一团混乱",
+    Id = 2904,
     Level = 30,
     Attain = 24,
     Aim = "将克努比护送到出口，然后向藏宝海湾的斯库提汇报。",
@@ -4688,6 +5026,7 @@ kQuestInstanceData.Gnomeregan.Alliance[7] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[8] = {
     Title = "大叛徒",
+    Id = 2929,
     Level = 35,
     Attain = 25,
     Aim = "到诺莫瑞根去杀掉制造者瑟玛普拉格。完成任务之后向大工匠梅卡托克报告。",
@@ -4702,6 +5041,7 @@ kQuestInstanceData.Gnomeregan.Alliance[8] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[9] = {
     Title = "脏兮兮的戒指",
+    Id = 2945,
     Level = 34,
     Attain = 28,
     Aim = "想方法把脏兮兮的戒指弄干净。",
@@ -4711,6 +5051,7 @@ kQuestInstanceData.Gnomeregan.Alliance[9] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[10] = {
     Title = "戒指归来",
+    Id = 2947,
     Level = 34,
     Attain = 28,
     Aim = "你要么自己留着这枚戒指，要么就按照戒指内侧刻着的名字找到它的主人。",
@@ -4725,6 +5066,7 @@ kQuestInstanceData.Gnomeregan.Alliance[10] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[11] = {
     Title = "一个沉重的大脑",
+    Id = 80398,
     Level = 30,
     Attain = 30,
     Aim = "寻找一位能够弄清楚如何处理主机的人。",
@@ -4734,6 +5076,7 @@ kQuestInstanceData.Gnomeregan.Alliance[11] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[12] = {
     Title = "高能调节器",
+    Id = 40861,
     Level = 33,
     Attain = 25,
     Aim = "找到诺莫瑞根内的结构图：高能调节器，并将其交给丹莫罗诺莫瑞根复兴城的威赞·小齿轮。",
@@ -4746,6 +5089,7 @@ kQuestInstanceData.Gnomeregan.Alliance[12] = {
 }
 kQuestInstanceData.Gnomeregan.Alliance[13] = {
     Title = "备份系统激活",
+    Id = 40856,
     Level = 33,
     Attain = 25,
     Aim = "为丹莫罗的技术大师维尔斯班纳激活诺莫瑞根深处的Alpha通道阀和备用的油泵杠杆。",
@@ -4760,6 +5104,7 @@ kQuestInstanceData.Gnomeregan.Alliance[13] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[1] = {
     Title = "出发！诺莫瑞根！",
+    Id = 2843,
     Level = 35,
     Attain = 20,
     Aim = "等斯库提调整好地精传送器。",
@@ -4769,6 +5114,7 @@ kQuestInstanceData.Gnomeregan.Horde[1] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[2] = {
     Title = "一团混乱",
+    Id = 2904,
     Level = 30,
     Attain = 24,
     Aim = "将克努比护送到出口，然后向藏宝海湾的斯库提汇报。",
@@ -4782,6 +5128,7 @@ kQuestInstanceData.Gnomeregan.Horde[2] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[3] = {
     Title = "设备之战",
+    Id = 2841,
     Level = 35,
     Attain = 25,
     Aim = "从诺莫瑞根拿到钻探设备蓝图和瑟玛普拉格的保险箱密码，把它们交给奥格瑞玛的诺格。",
@@ -4796,6 +5143,7 @@ kQuestInstanceData.Gnomeregan.Horde[3] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[4] = {
     Title = "脏兮兮的戒指",
+    Id = 2945,
     Level = 34,
     Attain = 28,
     Aim = "想方法把脏兮兮的戒指弄干净。",
@@ -4805,6 +5153,7 @@ kQuestInstanceData.Gnomeregan.Horde[4] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[5] = {
     Title = "戒指归来",
+    Id = 2947,
     Level = 34,
     Attain = 28,
     Aim = "你要么自己留着这枚戒指，要么就按照戒指内侧刻着的名字找到它的主人。",
@@ -4819,6 +5168,7 @@ kQuestInstanceData.Gnomeregan.Horde[5] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[6] = {
     Title = "一个沉重的大脑",
+    Id = 80398,
     Level = 30,
     Attain = 30,
     Aim = "寻找一位能够弄清楚如何处理主机的人。",
@@ -4828,6 +5178,7 @@ kQuestInstanceData.Gnomeregan.Horde[6] = {
 }
 kQuestInstanceData.Gnomeregan.Horde[7] = {
     Title = "后备电源",
+    Id = 55006,
     Level = 34,
     Attain = 29,
     Aim = "将诺莫瑞根的百万瓦电容器带给技术员格瑞姆兹鲁。",
@@ -4866,6 +5217,7 @@ kQuestInstanceData.FourDragons = {
 }
 kQuestInstanceData.FourDragons.Alliance[1] = {
     Title = "梦魇的缠绕",
+    Id = 8446,
     Level = 60,
     Attain = 60,
     Aim = "寻找能解读梦魇包裹的物品中所隐藏的信息的人。$B$B或许拥有强大力量的德鲁伊可以帮助你。",
@@ -4888,6 +5240,7 @@ kQuestInstanceData.Azuregos = {
 }
 kQuestInstanceData.Azuregos.Alliance[1] = {
     Title = "龙筋箭袋",
+    Id = 7634,
     Level = 60,
     Attain = 60,
     Aim = "费伍德森林的古树哈斯塔特要求你带回一块成年蓝龙的肌腱。",
@@ -4901,6 +5254,7 @@ kQuestInstanceData.Azuregos.Alliance[1] = {
 }
 kQuestInstanceData.Azuregos.Alliance[2] = {
     Title = "艾索雷葛斯的魔法账本",
+    Id = 8575,
     Level = 60,
     Attain = 60,
     Aim = "把魔法账本交给塔纳利斯的纳瑞安。",
@@ -4929,6 +5283,7 @@ kQuestInstanceData.BGAlteracValleyNorth = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[1] = {
     Title = "国王的命令",
+    Id = 7261,
     Level = 60,
     Attain = 51,
     Aim = "到希尔斯布莱德丘陵地区的奥特兰克山谷去。到那里之后，和哈格丁中尉谈谈。$B$B为了铜须的荣耀！",
@@ -4938,6 +5293,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[1] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[2] = {
     Title = "实验场",
+    Id = 7162,
     Level = 60,
     Attain = 51,
     Aim = "到主基地东南边的蛮爪洞穴中去找到霜狼军旗，然后把它交给战争大师拉格隆德。",
@@ -4953,6 +5309,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[2] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[3] = {
     Title = "奥特兰克的战斗",
+    Id = 7141,
     Level = 60,
     Attain = 51,
     Aim = "进入奥特兰克山谷，击败部落将军德雷克塔尔。然后回到勘查员塔雷·石镐那里。",
@@ -4969,6 +5326,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[3] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[4] = {
     Title = "军需官",
+    Id = 7121,
     Level = 60,
     Attain = 51,
     Aim = "与雷矛军需管谈一谈。",
@@ -4977,6 +5335,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[4] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[5] = {
     Title = "冷齿矿洞的补给",
+    Id = 6982,
     Level = 60,
     Attain = 51,
     Aim = "把10份冷齿矿洞补给品交给霜狼要塞的部落军需官。",
@@ -4985,6 +5344,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[5] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[6] = {
     Title = "深铁矿洞的补给",
+    Id = 5892,
     Level = 60,
     Attain = 51,
     Aim = "把10份深铁矿洞补给品交给丹巴达尔的联盟军需官。",
@@ -4993,6 +5353,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[6] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[7] = {
     Title = "护甲碎片",
+    Id = 7223,
     Level = 60,
     Attain = 51,
     Aim = "给丹巴达尔的莫高特·深炉带去20块护甲碎片。",
@@ -5002,6 +5363,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[7] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[8] = {
     Title = "占领矿洞",
+    Id = 7122,
     Level = 60,
     Attain = 51,
     Aim = "占领一座还没有被雷矛部族控制的矿洞，然后向丹巴达尔的雷矛军需官复命。",
@@ -5010,6 +5372,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[8] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[9] = {
     Title = "哨塔和碉堡",
+    Id = 7102,
     Level = 60,
     Attain = 51,
     Aim = "占领敌方的某座哨塔，然后向霜狼村的提卡·血牙复命。",
@@ -5018,6 +5381,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[9] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[10] = {
     Title = "奥特兰克山谷的墓地",
+    Id = 7081,
     Level = 60,
     Attain = 51,
     Aim = "占领一座墓地，然后向丹巴达尔的诺雷格·雷矛中尉复命。",
@@ -5026,6 +5390,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[10] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[11] = {
     Title = "补充坐骑",
+    Id = 7027,
     Level = 60,
     Attain = 51,
     Aim = "找到奥特兰克山谷中的霜狼。使用霜狼口套来驯服它们。被驯服的霜狼会跟随你回到兽栏管理员那里，然后与兽栏管理员谈话以获得你的奖励。",
@@ -5034,6 +5399,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[11] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[12] = {
     Title = "山羊坐具",
+    Id = 7026,
     Level = 60,
     Attain = 51,
     Aim = "你必须攻击我们敌人的基地，杀死他们用作坐骑的霜狼，并取下它们的皮。把它们的皮带回来给我，这样就可以为骑兵制作挽具了。去吧！",
@@ -5042,6 +5408,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[12] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[13] = {
     Title = "水晶簇",
+    Id = 7386,
     Level = 60,
     Attain = 51,
     Aim = "有时你可能会陷入长达数天或数周的战斗。在这些长时间的活动中，你可能会收集到大量的霜狼风暴水晶。\n\n议会接受此类供奉",
@@ -5050,6 +5417,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[13] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[14] = {
     Title = "森林之王伊弗斯",
+    Id = 6881,
     Level = 60,
     Attain = 51,
     Aim =    "霜狼氏族受到元素能量的腐蚀保护。他们的萨满祭司干预的力量，如果不加以制止，必将毁灭我们所有人。\n\n霜狼士兵携带着一种名为风暴水晶的元素护符。我们可以利用这些护符召唤伊弗斯。出发去夺取这些水晶吧。",
@@ -5058,6 +5426,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[14] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[15] = {
     Title = "天空的召唤—斯里多尔的空军",
+    Id = 6942,
     Level = 60,
     Attain = 51,
     Aim =
@@ -5067,6 +5436,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[15] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[16] = {
     Title = "天空的召唤—维波里的空军",
+    Id = 6941,
     Level = 60,
     Attain = 51,
     Aim =
@@ -5076,6 +5446,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[16] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Alliance[17] = {
     Title = "天空的召唤—艾克曼的空军",
+    Id = 6943,
     Level = 60,
     Attain = 51,
     Aim = "回到战场，直击霜狼指挥部的核心。干掉他们的指挥官和守卫者。尽可能多地把他们的勋章塞进你的背包带回来给我！我向你保证，当我的狮鹫看到战利品并闻到我们敌人的鲜血时，它们会再次飞翔！现在就去！",
@@ -5084,6 +5455,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[17] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[1] = {
     Title = "保卫霜狼氏族",
+    Id = 7241,
     Level = 60,
     Attain = 51,
     Aim = "到希尔斯布莱德丘陵地区的奥特兰克山谷去。找到拉格隆德并和他谈谈，然后成为霜狼氏族的士兵。",
@@ -5093,6 +5465,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[1] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[2] = {
     Title = "实验场",
+    Id = 7161,
     Level = 60,
     Attain = 51,
     Aim = "到主基地东南边的蛮爪洞穴中去找到霜狼军旗，然后把它交给战争大师拉格隆德。",
@@ -5108,6 +5481,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[2] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[3] = {
     Title = "为奥特兰克而战",
+    Id = 7142,
     Level = 60,
     Attain = 51,
     Aim = "进入奥特兰克山谷，击败矮人将军范达尔·雷矛。然后回到沃加·死爪那里。",
@@ -5118,6 +5492,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[3] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[4] = {
     Title = "霜狼军需官",
+    Id = 7123,
     Level = 60,
     Attain = 51,
     Aim = "与霜狼军需官谈一谈。",
@@ -5126,6 +5501,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[4] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[5] = {
     Title = "冷齿矿洞的补给",
+    Id = 5893,
     Level = 60,
     Attain = 51,
     Aim = "把10份冷齿矿洞补给品交给霜狼要塞的部落军需官。",
@@ -5134,6 +5510,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[5] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[6] = {
     Title = "深铁矿洞的补给",
+    Id = 6985,
     Level = 60,
     Attain = 51,
     Aim = "把10份深铁矿洞补给品交给丹巴达尔的联盟军需官。",
@@ -5142,6 +5519,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[6] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[7] = {
     Title = "敌人的物资",
+    Id = 7224,
     Level = 60,
     Attain = 51,
     Aim = "给霜狼村的铁匠雷格萨带去20块护甲碎片。",
@@ -5151,6 +5529,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[7] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[8] = {
     Title = "占领矿洞",
+    Id = 7124,
     Level = 60,
     Attain = 51,
     Aim = "占领一座还没有被雷矛部族控制的矿洞，然后向丹巴达尔的雷矛军需官复命。",
@@ -5159,6 +5538,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[8] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[9] = {
     Title = "哨塔和碉堡",
+    Id = 7101,
     Level = 60,
     Attain = 51,
     Aim = "占领敌方的某座哨塔，然后向霜狼村的提卡·血牙复命。",
@@ -5167,6 +5547,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[9] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[10] = {
     Title = "奥特兰克山谷的墓地",
+    Id = 7082,
     Level = 60,
     Attain = 51,
     Aim = "占领一座墓地，然后向霜狼村的亚斯拉复命。",
@@ -5175,6 +5556,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[10] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[11] = {
     Title = "补充坐骑",
+    Id = 7001,
     Level = 60,
     Attain = 51,
     Aim = "找到奥特兰克山谷中的霜狼。使用霜狼口套来驯服它们。被驯服的霜狼会跟随你回到兽栏管理员那里，然后与兽栏管理员谈话以获得你的奖励。",
@@ -5183,6 +5565,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[11] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[12] = {
     Title = "羊皮坐具",
+    Id = 7002,
     Level = 60,
     Attain = 51,
     Aim = "你必须攻击该地区的土著山羊。正是雷矛骑兵用作坐骑的那些山羊！\n\n杀死它们并把它们的皮带回来给我。一旦我们收集了足够的皮，我们将为骑手制作挽具。霜狼狼骑兵将再次骑行！",
@@ -5191,6 +5574,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[12] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[13] = {
     Title = "联盟之血",
+    Id = 7385,
     Level = 60,
     Attain = 51,
     Aim = "你可以选择提供更多从我们敌人身上获取的血液。我很乐意接受加仑大小的供品。",
@@ -5199,6 +5583,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[13] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[14] = {
     Title = "冰雪之王洛克霍拉",
+    Id = 6801,
     Level = 60,
     Attain = 51,
     Aim = "你必须击倒我们的敌人并把他们的血带给我。一旦收集了足够的血，召唤仪式就可以开始了。\n\n当元素领主被释放到雷矛军队身上时，胜利将得到保证。",
@@ -5207,6 +5592,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[14] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[15] = {
     Title = "天空的召唤—古斯的部队",
+    Id = 6825,
     Level = 60,
     Attain = 51,
     Aim = "我的骑手们准备对中央战场进行打击；但首先，我必须激起他们的胃口——让他们为攻击做好准备。\n\n我需要足够的雷矛士兵的肉来喂养一支舰队！几百磅！你肯定能搞定，对吧？快去！",
@@ -5215,6 +5601,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[15] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[16] = {
     Title = "天空的召唤—杰斯托的部队",
+    Id = 6826,
     Level = 60,
     Attain = 51,
     Aim = "我的战争骑手必须品尝他们目标的肉。这将确保对我们敌人的外科手术式打击！\n\n我的舰队是我们空中指挥部中第二强大的。因此，他们将打击我们对手中更强大的那些。为此，他们需要雷矛中尉的肉。",
@@ -5223,6 +5610,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Horde[16] = {
 }
 kQuestInstanceData.BGAlteracValleyNorth.Horde[17] = {
     Title = "天空的召唤—穆维里克的部队",
+    Id = 6827,
     Level = 60,
     Attain = 51,
     Aim = "首先，我的战争骑手需要攻击目标——高优先级目标。我需要用雷矛指挥官的肉喂养他们。不幸的是，那些小家伙深藏在敌后！你肯定有得忙了。",
@@ -5239,6 +5627,7 @@ kQuestInstanceData.BGArathiBasin = {
 }
 kQuestInstanceData.BGArathiBasin.Alliance[1] = {
     Title = "阿拉希盆地之战！",
+    Id = 8105,
     Level = 55,
     Attain = 50,
     Aim = "进攻矿洞、伐木场、铁匠铺和农场，然后向避难谷地的奥斯莱特元帅复命。",
@@ -5247,6 +5636,7 @@ kQuestInstanceData.BGArathiBasin.Alliance[1] = {
 }
 kQuestInstanceData.BGArathiBasin.Alliance[2] = {
     Title = "控制四座基地",
+    Id = 8114,
     Level = 60,
     Attain = 60,
     Aim = "进入阿拉希盆地，同时占据并控制四座基地，当任务完成之后向避难谷地的奥斯莱特元帅报告。",
@@ -5255,6 +5645,7 @@ kQuestInstanceData.BGArathiBasin.Alliance[2] = {
 }
 kQuestInstanceData.BGArathiBasin.Alliance[3] = {
     Title = "控制五座基地",
+    Id = 8115,
     Level = 60,
     Attain = 60,
     Aim = "同时控制阿拉希盆地中的五座基地，然后向避难谷地的奥斯莱特元帅复命。",
@@ -5267,6 +5658,7 @@ kQuestInstanceData.BGArathiBasin.Alliance[3] = {
 }
 kQuestInstanceData.BGArathiBasin.Horde[1] = {
     Title = "阿拉希盆地之战！",
+    Id = 8120,
     Level = 25,
     Attain = 25,
     Aim = "进攻矿洞、伐木场、铁匠铺和农场，然后向避难谷地的奥斯莱特元帅复命。",
@@ -5275,6 +5667,7 @@ kQuestInstanceData.BGArathiBasin.Horde[1] = {
 }
 kQuestInstanceData.BGArathiBasin.Horde[2] = {
     Title = "夺取四座基地",
+    Id = 8121,
     Level = 60,
     Attain = 60,
     Aim = "同时占据阿拉希盆地中的四座基地，然后向落锤镇的屠杀者杜维尔复命。",
@@ -5283,6 +5676,7 @@ kQuestInstanceData.BGArathiBasin.Horde[2] = {
 }
 kQuestInstanceData.BGArathiBasin.Horde[3] = {
     Title = "夺取五座基地",
+    Id = 8122,
     Level = 60,
     Attain = 60,
     Aim = "同时占据阿拉希盆地中的五座基地，然后向落锤镇的屠杀者杜维尔复命。",
@@ -5311,6 +5705,7 @@ kQuestInstanceData.TheCrescentGrove = {
 }
 kQuestInstanceData.TheCrescentGrove.Alliance[1] = {
     Title = "猖獗的原林熊怪",
+    Id = 40089,
     Level = 33,
     Attain = 26,
     Aim = "冒险进入新月林地，从里面的熊怪那里为流放者戈卢尔收集8个原林徽记。",
@@ -5319,6 +5714,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[1] = {
 }
 kQuestInstanceData.TheCrescentGrove.Alliance[2] = {
     Title = "不明智的长老",
+    Id = 40090,
     Level = 34,
     Attain = 26,
     Aim = "把“独眼”长老和喉长老的爪子从新月林地里拿出来，带给流放者戈卢尔。",
@@ -5331,6 +5727,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[2] = {
 }
 kQuestInstanceData.TheCrescentGrove.Alliance[3] = {
     Title = "新月林地",
+    Id = 40091,
     Level = 37,
     Attain = 28,
     Aim = "摧毁新月林地内的腐败之源，并返回泰达希尔的德纳萨里安身边。",
@@ -5346,6 +5743,7 @@ kQuestInstanceData.TheCrescentGrove.Alliance[3] = {
 }
 kQuestInstanceData.TheCrescentGrove.Alliance[4] = {
     Title = "卡拉纳尔之锤",
+    Id = 40326,
     Level = 33,
     Attain = 25,
     Aim = "前往新月林地，找到卡拉纳尔·亮光被烧毁的家。然后取回卡拉纳尔的木槌并将其归还给阿斯特兰纳的他。",
@@ -5356,6 +5754,7 @@ kQuestInstanceData.TheCrescentGrove.Horde[1] = kQuestInstanceData.TheCrescentGro
 kQuestInstanceData.TheCrescentGrove.Horde[2] = kQuestInstanceData.TheCrescentGrove.Alliance[2]
 kQuestInstanceData.TheCrescentGrove.Horde[3] = {
     Title = "根除邪恶",
+    Id = 40147,
     Level = 37,
     Attain = 26,
     Aim = "冒险进入新月林地，撃杀拉克西斯大师，根除里面的邪恶。",
@@ -5380,6 +5779,7 @@ kQuestInstanceData.KarazhanCrypt = {
 }
 kQuestInstanceData.KarazhanCrypt.Alliance[1] = {
     Title = "卡拉赞之谜之七",
+    Id = 40317,
     Level = 60,
     Attain = 58,
     Aim = "深入卡拉赞墓穴，为逆风小径的大法师艾瑞登·暗塔杀死墓穴看守阿拉鲁斯。",
@@ -5395,6 +5795,7 @@ kQuestInstanceData.KarazhanCrypt.Alliance[1] = {
 }
 kQuestInstanceData.KarazhanCrypt.Alliance[2] = {
     Title = "厨师中没有荣誉",
+    Id = 41374,
     Level = 61,
     Attain = 60,
     Aim = "在卡拉赞墓穴杀死饥饿的死催戈，然后返回卡拉赞下层大厅的厨师那里。﻿",
@@ -5408,6 +5809,7 @@ kQuestInstanceData.KarazhanCrypt.Alliance[2] = {
 }
 kQuestInstanceData.KarazhanCrypt.Horde[1] = {
     Title = "卡拉赞深渊之七",
+    Id = 40310,
     Level = 60,
     Attain = 58,
     Aim = "进入卡拉赞墓穴，为斯通纳德的科尔根杀死墓穴看守阿拉鲁斯。",
@@ -5432,6 +5834,7 @@ kQuestInstanceData.CavernsOfTimeBlackMorass = {
 }
 kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[1] = {
     Title = "黑暗之门的首次开启",
+    Id = 80605,
     Level = 60,
     Attain = 60,
     Aim = "进入黑色沼泽的过去时空，消灭安特诺米，并将她的头颅带给吉娜。",
@@ -5448,6 +5851,7 @@ kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[1] = {
 }
 kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[2] = {
     Title = "青铜的背叛",
+    Id = 40342,
     Level = 60,
     Attain = 58,
     Aim = "杀死克罗纳，并将他的头颅带给时光之穴的提瓦德瑞斯。",
@@ -5462,6 +5866,7 @@ kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[2] = {
 }
 kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[3] = {
     Title = "腐化之沙",
+    Id = 40340,
     Level = 60,
     Attain = 58,
     Aim = "在时光之穴中为德罗诺姆收集腐化之沙。",
@@ -5470,6 +5875,7 @@ kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[3] = {
 }
 kQuestInstanceData.CavernsOfTimeBlackMorass.Alliance[4] = {
     Title = "成堆沙子",
+    Id = 40341,
     Level = 60,
     Attain = 58,
     Aim = "在时光之穴中为德罗诺姆收集10颗腐化之沙。",
@@ -5489,6 +5895,7 @@ kQuestInstanceData.HateforgeQuarry = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[1] = {
     Title = "竞争对手的存在",
+    Id = 40458,
     Level = 54,
     Attain = 47,
     Aim = "了解仇恨熔炉采石场正在挖出什么。",
@@ -5497,6 +5904,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[1] = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[2] = {
     Title = "矿工工会叛变II",
+    Id = 40468,
     Level = 50,
     Attain = 45,
     Aim = "在仇恨熔炉采石场杀死20名仇恨熔炉矿工，然后返回燃烧平原黑石小径的莫格瑞姆·火矛身边。",
@@ -5510,6 +5918,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[2] = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[3] = {
     Title = "真正的高级工头",
+    Id = 40463,
     Level = 51,
     Attain = 45,
     Aim = "杀死巴古尔·黑锤，并为燃烧平原黑石小径的奥瓦克·严岩取回元老院命令。",
@@ -5525,6 +5934,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[3] = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[4] = {
     Title = "血光闪闪",
+    Id = 41361,
     Level = 50,
     Attain = 50,
     Aim = "找个人传授你关于这块滚烫的宝石的知识。",
@@ -5539,6 +5949,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[4] = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[5] = {
     Title = "仇恨熔炉啤酒的传闻",
+    Id = 40490,
     Level = 54,
     Attain = 45,
     Aim = "深入仇恨熔炉采石场并找回黑铁药瓶和仇恨熔炉化学文件，然后返回燃烧平原摩根的岗哨的瓦拉格·暮须。",
@@ -5552,6 +5963,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[5] = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[6] = {
     Title = "攻击仇恨熔炉",
+    Id = 40489,
     Level = 57,
     Attain = 45,
     Aim = "冒险进入仇恨熔炉采石场并在内部深处清除暮光之锤的存在，完成后返回铁炉堡的麦格尼·铜须国王那里。",
@@ -5567,6 +5979,7 @@ kQuestInstanceData.HateforgeQuarry.Alliance[6] = {
 }
 kQuestInstanceData.HateforgeQuarry.Alliance[7] = {
     Title = "为什么不两者兼得？",
+    Id = 41142,
     Level = 50,
     Attain = 40,
     Aim = "从玛拉顿的深处获得山崩之心，从燃烧平原的仇恨熔炉采石场获得腐蚀精华，然后带给鹰巢山的弗里格·雷炉。",
@@ -5584,6 +5997,7 @@ for i = 1, 4 do
 end
 kQuestInstanceData.HateforgeQuarry.Horde[5] = {
     Title = "猎杀工程师菲格尔斯",
+    Id = 40539,
     Level = 55,
     Attain = 48,
     Location = "卡塔拉女王 (燃烧平原 - 卡方要塞 "..yellow.."89.4,24.5"..white.." 燃烧平原东北角)。",
@@ -5599,6 +6013,7 @@ kQuestInstanceData.HateforgeQuarry.Horde[5] = {
 }
 kQuestInstanceData.HateforgeQuarry.Horde[6] = {
     Title = "新与旧之四",
+    Id = 40504,
     Level = 57,
     Attain = 45,
     Aim = "冒险进入仇恨熔炉采石场，为卡方要塞的卡方清除暮光之锤存在。",
@@ -5622,6 +6037,7 @@ kQuestInstanceData.StormwindVault = {
 }
 kQuestInstanceData.StormwindVault.Alliance[1] = {
     Title = "恢复地牢枷锁",
+    Id = 40426,
     Level = 63,
     Attain = 55,
     Aim = "在暴风城地牢中，杀死符文构造体以获得2个魔符枷锁，并将它们归还给考丽·司提姆哈特。",
@@ -5630,6 +6046,7 @@ kQuestInstanceData.StormwindVault.Alliance[1] = {
 }
 kQuestInstanceData.StormwindVault.Alliance[2] = {
     Title = "了结阿克提阿斯",
+    Id = 40427,
     Level = 63,
     Attain = 55,
     Aim = "深入暴风城地牢冒险，找到阿克提阿斯，并为了暴风城的利益而摧毁它。完成后，返回派平·恩斯沃斯身边。",
@@ -5644,6 +6061,7 @@ kQuestInstanceData.StormwindVault.Alliance[2] = {
 }
 kQuestInstanceData.StormwindVault.Alliance[3] = {
     Title = "敌众皆横卧",
+    Id = 41357,
     Level = 62,
     Attain = 60,
     Aim = "将阿克提阿斯之核带给阿尔多雷尔。",
@@ -5660,6 +6078,7 @@ kQuestInstanceData.StormwindVault.Alliance[3] = {
 }
 kQuestInstanceData.StormwindVault.Alliance[4] = {
     Title = "奥术精要与魔法现象IX",
+    Id = 40425,
     Level = 63,
     Attain = 58,
     Aim = "为暴风城的马森·马克纳迪尔找回《奥术精要与魔法现象IX》之书。",
@@ -5683,6 +6102,7 @@ kQuestInstanceData.Ostarius = {
 }
 kQuestInstanceData.Ostarius.Alliance[1] = {
     Title = "门卫",
+    Id = 40107,
     Level = 60,
     Attain = 58,
     Aim = "打败奥兹塔里亚斯。返回探险家大厅，将发生在大门前的事件告知资深探险家麦格拉斯。",
@@ -5692,6 +6112,7 @@ kQuestInstanceData.Ostarius.Alliance[1] = {
 }
 kQuestInstanceData.Ostarius.Horde[1] = {
     Title = "大门守护者",
+    Id = 40115,
     Level = 60,
     Attain = 58,
     Aim = "打败奥兹塔里亚斯。返回雷霆崖，告知圣者图希克在大门前发生的事件。",
@@ -5709,6 +6130,7 @@ kQuestInstanceData.GilneasCity = {
 }
 kQuestInstanceData.GilneasCity.Alliance[1] = {
     Title = "审判与幻影",
+    Id = 40975,
     Level = 46,
     Attain = 35,
     Aim = "为了住在吉尔尼斯的格莱摩尔农场的被激怒的幽灵杀死吉尔尼斯城内的萨瑟兰法官。",
@@ -5723,6 +6145,7 @@ kQuestInstanceData.GilneasCity.Alliance[1] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[2] = {
     Title = "墙后",
+    Id = 40841,
     Level = 41,
     Attain = 36,
     Aim = "前往吉尔尼斯城，为暴风城的的瑟鲁姆·深炉取回黎明石图纸。",
@@ -5736,6 +6159,7 @@ kQuestInstanceData.GilneasCity.Alliance[2] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[3] = {
     Title = "拉文郡地契",
+    Id = 40966,
     Level = 45,
     Attain = 38,
     Aim = "在吉尔尼斯城找到拉文郡地契，并将它归还给卡利班·席瓦莱恩。",
@@ -5751,6 +6175,7 @@ kQuestInstanceData.GilneasCity.Alliance[3] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[4] = {
     Title = "拉文克罗夫特的野心",
+    Id = 41112,
     Level = 45,
     Attain = 40,
     Aim = "从吉尔尼斯市的图书馆取回《乌尔之书：第二卷》并带给给伊森·拉文克罗夫特。",
@@ -5759,6 +6184,7 @@ kQuestInstanceData.GilneasCity.Alliance[4] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[5] = {
     Title = "抹除龙类的存在",
+    Id = 40943,
     Level = 47,
     Attain = 35,
     Aim = "为了结束龙类在吉尔尼斯的腐蚀，请为吉尔尼斯城拉文郡的大法师奥勒留斯消灭拉文郡摄政夫人西莉亚和摄政王莫蒂默。",
@@ -5773,6 +6199,7 @@ kQuestInstanceData.GilneasCity.Alliance[5] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[6] = {
     Title = "格雷迈恩的衰落与崛起",
+    Id = 40956,
     Level = 42,
     Attain = 35,
     Aim = "「救出」吉恩，并且为拉文郡的达瑞斯·拉文伍德勋爵找到格雷迈恩王冠。",
@@ -5789,6 +6216,7 @@ kQuestInstanceData.GilneasCity.Alliance[6] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[7] = {
     Title = "《水占术手稿II》",
+    Id = 41114,
     Level = 45,
     Attain = 38,
     Aim = "在尘泥沼泽的塞拉摩岛为大法师哈利斯特取回《水占术手稿II》。",
@@ -5802,6 +6230,7 @@ kQuestInstanceData.GilneasCity.Alliance[7] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[8] = {
     Title = "打破谣言",
+    Id = 41285,
     Level = 44,
     Attain = 40,
     Aim = "把冒险者的项链交给铁炉堡的塔瓦斯德·基瑟尔。",
@@ -5815,6 +6244,7 @@ kQuestInstanceData.GilneasCity.Alliance[8] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[9] = {
     Title = "沃根多尔之血",
+    Id = 41378,
     Level = 60,
     Attain = 60,
     Aim = "为范达尔·鹿盔收集狼人血液。他需要来自卡拉赞、吉尔尼斯城和影牙城堡的血液样本。",
@@ -5825,6 +6255,7 @@ kQuestInstanceData.GilneasCity.Alliance[9] = {
 }
 kQuestInstanceData.GilneasCity.Alliance[10] = {
     Title = "吉尔尼斯的普利克巫妖",
+    Id = 41385,
     Level = 60,
     Attain = 60,
     Aim = "冒险前往吉尔尼斯城，寻找第二个普利克巫妖的下落。",
@@ -5835,6 +6266,7 @@ kQuestInstanceData.GilneasCity.Alliance[10] = {
 kQuestInstanceData.GilneasCity.Horde[1] = kQuestInstanceData.GilneasCity.Alliance[1]
 kQuestInstanceData.GilneasCity.Horde[2] = {
     Title = "埃博米尔事务",
+    Id = 40979,
     Level = 45,
     Attain = 35,
     Aim = "为吉尔尼斯的埃博米尔农场的约书亚·埃博米尔杀死吉尔尼斯城内的达斯蒂万·布莱克考尔，并夺回埃博米尔的地契。",
@@ -5851,6 +6283,7 @@ kQuestInstanceData.GilneasCity.Horde[2] = {
 }
 kQuestInstanceData.GilneasCity.Horde[3] = {
     Title = "皇家抢劫案",
+    Id = 41113,
     Level = 45,
     Attain = 40,
     Aim = "从吉尔尼斯市的图书馆偷走这幅画，然后返回吉尔尼斯黑荆棘营地的卢克·阿加曼德那里。",
@@ -5859,6 +6292,7 @@ kQuestInstanceData.GilneasCity.Horde[3] = {
 }
 kQuestInstanceData.GilneasCity.Horde[4] = {
     Title = "邪恶让我这样做",
+    Id = 40881,
     Level = 46,
     Attain = 35,
     Aim = "在吉尔尼斯城找到“论血液的力量”，然后返回吉尔尼斯格雷郡遗址的奥万·黑眼身边。",
@@ -5873,6 +6307,7 @@ kQuestInstanceData.GilneasCity.Horde[4] = {
 }
 kQuestInstanceData.GilneasCity.Horde[5] = {
     Title = "吉恩·格雷迈恩必须死！",
+    Id = 40849,
     Level = 49,
     Attain = 40,
     Aim = "进入吉尔尼斯城并杀死吉恩·格雷迈恩，然后将他的头颅带到吉尔尼斯的黑荆棘营地的黑荆棘处。",
@@ -5888,6 +6323,7 @@ kQuestInstanceData.GilneasCity.Horde[5] = {
 }
 kQuestInstanceData.GilneasCity.Horde[6] = {
     Title = "格雷迈恩之石",
+    Id = 40996,
     Level = 47,
     Attain = 38,
     Aim = "为吉尔尼斯寂静守卫教堂的黑暗主教莫德伦找到午夜碎片",
@@ -5904,6 +6340,7 @@ kQuestInstanceData.GilneasCity.Horde[6] = {
 }
 kQuestInstanceData.GilneasCity.Horde[7] = {
     Title = "外来知识",
+    Id = 41289,
     Level = 44,
     Attain = 34,
     Aim = "在吉尔尼斯城找到这本书籍，并将其带给荒芜之地卡加斯的加卡尔·融苔。",
@@ -5917,6 +6354,7 @@ kQuestInstanceData.GilneasCity.Horde[7] = {
 }
 kQuestInstanceData.GilneasCity.Horde[8] = {
     Title = "狼、巫婆与镰刀",
+    Id = 41381,
     Level = 60,
     Attain = 60,
     Aim = "为玛加萨·恐怖图腾收集狼人血液。她需要来自卡拉赞、吉尔尼斯城和影牙城堡的血液样本。",
@@ -5927,6 +6365,7 @@ kQuestInstanceData.GilneasCity.Horde[8] = {
 }
 kQuestInstanceData.GilneasCity.Horde[9] = {
     Title = "吉尔尼斯的普利克巫妖",
+    Id = 41385,
     Level = 60,
     Attain = 60,
     Aim = "冒险前往吉尔尼斯城，寻找第二个普利克巫妖的下落。",
@@ -5945,6 +6384,7 @@ kQuestInstanceData.LowerKarazhan = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[1] = {
     Title = "合适的住宿",
+    Id = 41083,
     Level = 60,
     Attain = 55,
     Aim = "为卡拉赞的议员凯尔森寻找一个舒适的枕头。",
@@ -5954,6 +6394,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[1] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[2] = {
     Title = "一杯助眠饮品",
+    Id = 41084,
     Level = 60,
     Attain = 55,
     Aim = "与可能知道如何为议员凯尔森购买葡萄酒的人交谈。",
@@ -5964,6 +6405,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[2] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[3] = {
     Title = "幽灵酒",
+    Id = 41085,
     Level = 60,
     Attain = 55,
     Aim = "为卡拉赞的厨师收集3个死灵精华、5瓶波尔多酒和一个幽灵菇。",
@@ -5974,6 +6416,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[3] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[4] = {
     Title = "凯尔森的酒",
+    Id = 41086,
     Level = 60,
     Attain = 55,
     Location = "厨师 附近 ("..yellow.."[下层卡拉赞大厅- e]"..white..")",
@@ -5982,6 +6425,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[4] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[5] = {
     Title = "卡拉赞的钥匙之一",
+    Id = 40817,
     Level = 60,
     Attain = 58,
     Aim = "聆听埃伯洛克领主的故事。",
@@ -5990,6 +6434,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[5] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[6] = {
     Title = "卡拉赞的钥匙之二",
+    Id = 40818,
     Level = 60,
     Attain = 58,
     Location = "埃伯洛克领主 ("..yellow.."[卡拉赞 - d]"..white..")",
@@ -5999,6 +6444,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[6] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[7] = {
     Title = "卡拉赞的钥匙之三",
+    Id = 40819,
     Level = 60,
     Attain = 58,
     Aim = "寻找来自肯瑞托、可能了解范多尔的人。达拉然可能是开始您搜索的好地方。",
@@ -6009,6 +6455,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[7] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[8] = {
     Title = "被撕碎的烹饪笔记",
+    Id = 40998,
     Level = 60,
     Attain = 55,
     Aim = "找个可能了解这些破碎的烹饪笔记的人。",
@@ -6018,6 +6465,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[8] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[9] = {
     Title = "失而复得的手镯",
+    Id = 40999,
     Level = 60,
     Attain = 55,
     Aim = "为卡拉赞的公爵罗斯伦找回雕花金镯子",
@@ -6028,6 +6476,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[9] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[10] = {
     Title = "罗斯伦家族胸针",
+    Id = 41000,
     Level = 60,
     Attain = 55,
     Aim = "为卡拉赞的公爵罗斯伦找回罗斯伦家族胸针。",
@@ -6038,6 +6487,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[10] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[11] = {
     Title = "神秘配方",
+    Id = 41001,
     Level = 60,
     Attain = 55,
     Location = "公爵罗斯伦 (卡拉赞 "..yellow.."[卡拉赞 - f]"..white..")",
@@ -6047,6 +6497,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[11] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[12] = {
     Title = "卡拉赞门卫",
+    Id = 41002,
     Level = 60,
     Attain = 55,
     Aim = "与卡拉赞的看门人蒙蒂格对话",
@@ -6057,6 +6508,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[12] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[13] = {
     Title = "卡拉赞之怒",
+    Id = 41003,
     Level = 60,
     Attain = 55,
     Aim = "收集10个死灵精华、10个生命精华和25枚金币给卡拉赞的看门人蒙蒂格。",
@@ -6067,6 +6519,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[13] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[14] = {
     Title = "巧克力鱼",
+    Id = 41004,
     Level = 60,
     Attain = 55,
     Location = "看门人蒙蒂格"..blue.." "..white.."位于副本入口处的楼梯前。",
@@ -6080,6 +6533,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[14] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[15] = {
     Title = "女神的镰刀",
+    Id = 41062,
     Level = 60,
     Attain = 60,
     Aim = "杀死爪王嚎牙并向埃伯洛克领主报告。",
@@ -6089,6 +6543,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[15] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[16] = {
     Title = "为教会奉献",
+    Id = 41078,
     Level = 60,
     Attain = 55,
     Aim = "在卡拉赞外的小教堂为圣职者涅修斯收集15个奥术精华、20个幻影之尘和10个强效不灭精华。",
@@ -6105,6 +6560,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[16] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[17] = {
     Title = "滑稽的大蜡烛",
+    Id = 41344,
     Level = 61,
     Attain = 60,
     Aim = "从格里齐基尔那拿到滑稽的大蜡烛并交给卡拉赞上层的大吱吱。",
@@ -6118,6 +6574,7 @@ kQuestInstanceData.LowerKarazhan.Alliance[17] = {
 }
 kQuestInstanceData.LowerKarazhan.Alliance[18] = {
     Title = "沃根多尔之血",
+    Id = 41381,
     Level = 60,
     Attain = 60,
     Aim = "为范达尔·鹿盔收集狼人血液。他需要来自卡拉赞、吉尔尼斯城和影牙城堡的血液样本。",
@@ -6157,6 +6614,7 @@ kQuestInstanceData.EmeraldSanctum = {
 }
 kQuestInstanceData.EmeraldSanctum.Alliance[1] = {
     Title = "阴燃梦境精华",
+    Id = 40905,
     Level = 60,
     Attain = 55,
     Aim = "将阴燃梦境精华带给海加尔山诺达纳尔的大德鲁伊梦风。",
@@ -6170,6 +6628,7 @@ kQuestInstanceData.EmeraldSanctum.Alliance[1] = {
 }
 kQuestInstanceData.EmeraldSanctum.Alliance[2] = {
     Title = "索尔纽斯的首级",
+    Id = 40963,
     Level = 60,
     Attain = 58,
     Aim = "将索尔纽斯的头颅交给海加尔山诺达纳尔的拉拉修斯。",
@@ -6184,6 +6643,7 @@ kQuestInstanceData.EmeraldSanctum.Alliance[2] = {
 }
 kQuestInstanceData.EmeraldSanctum.Alliance[3] = {
     Title = "埃伦纽斯之爪",
+    Id = 41038,
     Level = 60,
     Attain = 55,
     Aim = "将埃伦纽斯之爪带给可能有用的人。",
@@ -6209,6 +6669,7 @@ kQuestInstanceData.TowerofKarazhan = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[1] = {
     Title = "麦迪文的权杖",
+    Id = 41369,
     Level = 60,
     Attain = 60,
     Aim = "为了修复麦迪文的权杖，逆风小径摩根墓场的千里眼亚妮拉丝需要大量的奥术能量。",
@@ -6223,6 +6684,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[1] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[2] = {
     Title = "提瑞斯法的遗迹",
+    Id = 41370,
     Level = 60,
     Attain = 60,
     Aim = "一个麦迪文的幻象是重新激活麦迪文的权杖所必需的。把可以充当替代品的东西带到卡拉赞郊外摩根墓场的千里眼亚妮拉丝那里。",
@@ -6237,6 +6699,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[2] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[3] = {
     Title = "吾非鼠辈",
+    Id = 41343,
     Level = 61,
     Attain = 60,
     Aim = "和卡拉赞下层大厅的看门人蒙蒂格交谈。",
@@ -6246,6 +6709,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[3] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[4] = {
     Title = "主厨的威严",
+    Id = 41373,
     Level = 60,
     Attain = 60,
     Aim = "找到卡拉赞下层大厅的那个厨师。",
@@ -6255,6 +6719,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[4] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[5] = {
     Title = "夜深寒气冷",
+    Id = 41353,
     Level = 62,
     Attain = 60,
     Aim = "调查魔法紫水晶的奥秘。",
@@ -6264,6 +6729,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[5] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[6] = {
     Title = "魔法树木研究",
+    Id = 41375,
     Level = 61,
     Attain = 60,
     Aim = "前往厄运之槌找到博学者莱德罗斯。",
@@ -6273,6 +6739,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[6] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[7] = {
     Title = "女神的镰刀",
+    Id = 41087,
     Level = 60,
     Attain = 60,
     Aim = "杀死爪王嚎牙并向埃伯洛克领主报告。",
@@ -6283,6 +6750,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[7] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[8] = {
     Title = "普利克巫妖纳尔穆恩",
+    Id = 41384,
     Level = 60,
     Attain = 60,
     Aim = "杀死守护者纳尔穆恩。他在卡拉赞的上层。",
@@ -6293,6 +6761,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[8] = {
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[9] = {
     Title = "女神的镰刀",
+    Id = 41394,
     Level = 60,
     Attain = 60,
     Aim = "杀死爪王嚎牙并向埃伯洛克领主报告。",
@@ -6319,6 +6788,7 @@ kQuestInstanceData.DragonmawRetreat = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[1] = {
     Title = "联合基座",
+    Id = 41774,
     Level = 30,
     Attain = 25,
     Aim = "基座完好无损，且未遭受严重破坏。",
@@ -6332,6 +6802,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[1] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[2] = {
     Title = "孤峰之败",
+    Id = 41750,
     Level = 28,
     Attain = 20,
     Aim = "为藓皮豺狼人复仇，在龙喉居所击杀他们的前任首领孤峰。之后返回湿地绿带草地附近冷酷之咬的营地。",
@@ -6344,6 +6815,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[2] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[3] = {
     Title = "石傀儡回收",
+    Id = 41749,
     Level = 28,
     Attain = 22,
     Aim = "在龙喉居所处从摇摇欲坠的石傀儡身上拿到一个符石，并将其交给湿地大路边上的吉克斯勒。",
@@ -6358,6 +6830,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[3] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[4] = {
     Title = "龙喉之巢",
+    Id = 41751,
     Level = 34,
     Attain = 24,
     Aim = "湿地龙喉大门的尼迪赞兹希望解救他的兄弟希瑞斯塔萨，他正被龙喉兽人在龙喉居所俘虏。",
@@ -6372,6 +6845,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[4] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[5] = {
     Title = "红龙女王的枷锁",
+    Id = 41785,
     Level = 30,
     Attain = 24,
     Aim = "在湿地中寻找一条愿意倾听你的话的红龙。",
@@ -6386,6 +6860,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[5] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[6] = {
     Title = "来自科尔拉格·末日之歌的信",
+    Id = 41657,
     Level = 35,
     Attain = 30,
     Aim = "把这封信带给冷酷海岸的某位掌权者。",
@@ -6401,6 +6876,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[6] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[7] = {
     Title = "粉碎龙喉",
+    Id = 41756,
     Level = 29,
     Attain = 21,
     Aim = "消灭龙喉居所的龙喉老兵，并向米奈希尔港的斯托菲队长回报。",
@@ -6409,6 +6885,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[7] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[8] = {
     Title = "黑心的毁灭",
+    Id = 41757,
     Level = 31,
     Attain = 23,
     Aim = "将黑心大王的首级带给米奈希尔港的斯托菲队长。",
@@ -6424,6 +6901,7 @@ kQuestInstanceData.DragonmawRetreat.Alliance[8] = {
 }
 kQuestInstanceData.DragonmawRetreat.Alliance[9] = {
     Title = "红标谎言",
+    Id = 41754,
     Level = 28,
     Attain = 22,
     Aim = "将红标石板交给铁炉堡图书馆的一位历史学家。",
@@ -6448,6 +6926,7 @@ kQuestInstanceData.DragonmawRetreat.Horde[6] = createInheritedQuest(
 )
 kQuestInstanceData.DragonmawRetreat.Horde[7] = {
     Title = "穴织精萃",
+    Id = 41752,
     Level = 27,
     Attain = 21,
     Aim = "在龙喉居所击杀穴织女王，并将她的毒囊交给落锤镇的奥库尔。",
@@ -6456,6 +6935,7 @@ kQuestInstanceData.DragonmawRetreat.Horde[7] = {
 }
 kQuestInstanceData.DragonmawRetreat.Horde[8] = {
     Title = "永不熄灭的烈焰",
+    Id = 41753,
     Level = 30,
     Attain = 24,
     Aim = "从龙喉居所取回永恒之火，并将其交给塔伦米尔的莎拉·布拉森。",
@@ -6477,6 +6957,7 @@ kQuestInstanceData.StormwroughtRuins = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[1] = {
     Title = "已故巴洛公爵",
+    Id = 41814,
     Level = 34,
     Attain = 28,
     Aim = "将巴洛之冠带给奥尔米尔·半角。",
@@ -6490,6 +6971,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[1] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[2] = {
     Title = "骷髅与骸骨",
+    Id = 41760,
     Level = 34,
     Attain = 28,
     Aim = "进入风暴城堡，为巴洛西部自家庄园的奥利弗特·格拉汉勋爵取回巴洛印戒。",
@@ -6502,6 +6984,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[2] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[3] = {
     Title = "死人没法抱怨",
+    Id = 41844,
     Level = 34,
     Attain = 28,
     Aim = "瑞琪·菲兹马斯克要你洗劫巴洛岛的风暴废墟，然后回到鸥翼号残骸那里交给她。",
@@ -6514,6 +6997,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[3] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[4] = {
     Title = "巴洛的意志",
+    Id = 41845,
     Level = 38,
     Attain = 32,
     Aim = "杀死控制着亚瑟灵魂的魅魔，并将其灵魂碎片带回风暴城堡的王座室交给他。",
@@ -6522,6 +7006,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[4] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[5] = {
     Title = "文物",
+    Id = 41842,
     Level = 35,
     Attain = 29,
     Aim = "在风暴城堡里为巴洛岛军情七处哨站的诺普西·斯皮斯潘找回《成功贸易概要》。",
@@ -6535,6 +7020,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[5] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[6] = {
     Title = "刺客培训",
+    Id = 41843,
     Level = 35,
     Attain = 29,
     Aim = "削弱风暴废墟中的指挥链，然后回到巴洛岛军情七处哨站的尼普西·斯皮斯潘那里。",
@@ -6544,6 +7030,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[6] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[7] = {
     Title = "黑暗之心",
+    Id = 41787,
     Level = 38,
     Attain = 21,
     Aim = "阻止风暴废墟中的暗影议会。",
@@ -6560,6 +7047,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[7] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[8] = {
     Title = "晶莹剔透的印象",
+    Id = 41879,
     Level = 38,
     Attain = 34,
     Aim = "为在岩须的锻炉的格鲁克森·岩须找到一颗风暴水晶石。",
@@ -6572,6 +7060,7 @@ kQuestInstanceData.StormwroughtRuins.Alliance[8] = {
 }
 kQuestInstanceData.StormwroughtRuins.Alliance[9] = {
     Title = "仅存之物",
+    Id = 41840,
     Level = 38,
     Attain = 32,
     Aim = "把这把木制玩具剑交给认识它主人的人。你可能会在北风领——这一切的起源地——碰碰运气。",
@@ -6583,6 +7072,7 @@ for i = 1, 4 do
 end
 kQuestInstanceData.StormwroughtRuins.Horde[5] = {
     Title = "无辜者之死",
+    Id = 41821,
     Level = 34,
     Attain = 28,
     Aim = "消灭无辜者的遗骸，并返回碎风哨站，向欧金回报。",
@@ -6591,6 +7081,7 @@ kQuestInstanceData.StormwroughtRuins.Horde[5] = {
 }
 kQuestInstanceData.StormwroughtRuins.Horde[6] = {
     Title = "麦塞拉克斯",
+    Id = 41824,
     Level = 33,
     Attain = 27,
     Aim = "消灭麦塞拉克斯，并将麦塞拉克斯的核心带回碎风哨站，交给乌达佩·日绿。",
@@ -6607,6 +7098,7 @@ kQuestInstanceData.StormwroughtRuins.Horde[6] = {
 }
 kQuestInstanceData.StormwroughtRuins.Horde[7] = {
     Title = "尤索克的力量",
+    Id = 41730,
     Level = 38,
     Attain = 30,
     Aim = "杀死欧鲁诺克·裂心，并从风暴废墟中为冷酷海岸的碎刃岗哨的先知莫唐夺取尤索克的坠饰。",
@@ -6621,6 +7113,7 @@ kQuestInstanceData.StormwroughtRuins.Horde[7] = {
 }
 kQuestInstanceData.StormwroughtRuins.Horde[8] = {
     Title = "雨不会一直下",
+    Id = 41833,
     Level = 38,
     Attain = 32,
     Aim = "消灭暴食的达加尔、欧鲁诺克·裂心和伊加尔弗，然后回到碎风哨站，向基尔罗格·死眼报告。",
@@ -6637,6 +7130,7 @@ kQuestInstanceData.StormwroughtRuins.Horde[8] = {
 }
 kQuestInstanceData.StormwroughtRuins.Horde[9] = {
     Title = "黑暗女王的神器",
+    Id = 41841,
     Level = 38,
     Attain = 32,
     Aim = "把血石吊坠交给幽暗城的希尔瓦娜斯·风行者女士。",

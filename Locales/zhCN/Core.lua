@@ -145,6 +145,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Next"] = "下一页",
     ["Group by Source"] = "按来源分组",
     ["Default"] = "默认",
+    ["Check Completed Quests"] = "查看已完成任务",
 
     -- Colors
     ["Purple"] = "紫色",
@@ -591,6 +592,11 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Tier 3 Sets"] = "T3 套装",
     ["Item Level"] = "物品等级",
     ["Disenchanting"] = "分解",
+    ["Reagent Tooltip Options"] = "材料提示选项",
+    ["Reagent Rows"] = "材料行数",
+    ["Other"] = "其他",
+    ["... %d more"] = "... 还有 %d 个",
+    ["Recipe #%d"] = "配方 #%d",
 })
 
 BINDING_HEADER_ATLASTW_TITLE = "Atlas-TW 快捷键"

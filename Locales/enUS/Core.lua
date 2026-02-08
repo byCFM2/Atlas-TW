@@ -147,6 +147,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Next"] = true,
     ["Group by Source"] = true,
     ["Default"] = true,
+    ["Check Completed Quests"] = true,
 
     --************************************************
     -- Colors
@@ -646,4 +647,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Tier 3 Sets"] = true,
     ["Item Level"] = true,
     ["Disenchanting"] = true,
+    ["Reagent Tooltip Options"] = true,
+    ["Reagent Rows"] = true,
+    ["Other"] = true,
+    ["... %d more"] = true,
+    ["Recipe #%d"] = true,
 })

@@ -258,7 +258,7 @@ function AtlasTW.OnEvent()
 		end
 	elseif event == "PLAYER_ENTERING_WORLD" and loadingStartTime then
 		local loadingTime = (GetTime() - loadingStartTime) * 1000
-		--PrintA(string.format("Load time: %.2f ", loadingTime))
+		PrintA(string.format("Load time: %.2f ", loadingTime))
 		loadingStartTime = nil
 	end
 end
