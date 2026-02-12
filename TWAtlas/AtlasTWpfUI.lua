@@ -25,11 +25,18 @@ AtlasTW.pfUI = {}
 
 ---
 --- Checks if pfUI addon is loaded and available
---- Also checks if the user has enabled pfUI styling in Atlas options
---- @return boolean - true if pfUI is loaded and enabled
+--- @return boolean - true if pfUI is loaded
 ---
-local function IsPfUILoaded()
-    if not (IsAddOnLoaded("pfUI") and pfUI and pfUI.api and pfUI.api.CreateBackdrop) then
+local function IsPfUIBaseLoaded()
+    return (IsAddOnLoaded("pfUI") and pfUI)
+end
+
+---
+--- Checks if pfUI addon is loaded and styling is enabled in Atlas options
+--- @return boolean - true if pfUI is loaded and styling is enabled
+---
+local function IsPfUIStylingEnabled()
+    if not IsPfUIBaseLoaded() or not pfUI.api or not pfUI.api.CreateBackdrop then
         return false
     end
 
@@ -149,7 +156,7 @@ end
 --- @param buttonName string - Name of the button to restyle
 ---
 function AtlasTW.pfUI.RestyleButton(buttonName)
-    if not IsPfUILoaded() then return end
+    if not IsPfUIStylingEnabled() then return end
     local button = _G[buttonName]
     if not button then return end
 
@@ -180,7 +187,7 @@ end
 --- @param direction string - Direction of arrow ("left", "right", "up", "down")
 ---
 function AtlasTW.pfUI.SkinArrowButton(button, direction)
-    if not IsPfUILoaded() then return end
+    if not IsPfUIStylingEnabled() then return end
     if not button then return end
 
     -- Fix button size (increase clickbox size, was 18)
@@ -237,7 +244,7 @@ end
 --- @param editbox EditBox - The editbox to skin
 ---
 function AtlasTW.pfUI.SkinEditBox(editbox)
-    if not IsPfUILoaded() then return end
+    if not IsPfUIStylingEnabled() then return end
     if not editbox then return end
     if editbox.pfui_skinned then return end
 
@@ -377,7 +384,7 @@ end
 --- @param scrollFrame ScrollFrame - The scrollframe to skin
 ---
 function AtlasTW.pfUI.SkinScrollBar(scrollFrame)
-    if not IsPfUILoaded() then return end
+    if not IsPfUIStylingEnabled() then return end
     if not scrollFrame then return end
     if scrollFrame.pfui_skinned then return end
 
@@ -866,11 +873,42 @@ local function StyleInsideAtlasFrame()
 end
 
 ---
+--- Adds comparison support to Atlas tooltips
+--- Works regardless of pfUI styling setting if pfUI is loaded
+---
+local function SetupTooltipComparison()
+    if not IsPfUIBaseLoaded() then return end
+
+    if AtlasTWLootTooltip then
+        -- Add comparison support
+        if pfUI.eqcompare and pfUI.eqcompare.GameTooltipShow then
+            -- Check if comparison is enabled in pfUI settings
+            -- In pfUI, if the module is active, eqcompare.GameTooltipShow exists.
+            -- We hook it directly.
+            local origOnShow = AtlasTWLootTooltip:GetScript("OnShow")
+            AtlasTWLootTooltip:SetScript("OnShow", function()
+                if origOnShow then origOnShow() end
+                pfUI.eqcompare.GameTooltipShow()
+            end)
+
+            local origOnHide = AtlasTWLootTooltip:GetScript("OnHide")
+            AtlasTWLootTooltip:SetScript("OnHide", function()
+                if origOnHide then origOnHide() end
+                if ShoppingTooltip1 then ShoppingTooltip1:Hide() end
+                if ShoppingTooltip2 then ShoppingTooltip2:Hide() end
+            end)
+        end
+    end
+end
+
+---
 --- Applies pfUI styling to tooltips
 --- Already handled in LootUI.lua via setupPfUITooltip()
 --- This function ensures consistency if tooltips are created later
 ---
 local function StyleTooltips()
+    if not IsPfUIStylingEnabled() then return end
+
     if AtlasTWLootTooltip then
         pfUI.api.CreateBackdrop(AtlasTWLootTooltip)
         pfUI.api.CreateBackdropShadow(AtlasTWLootTooltip)
@@ -887,7 +925,7 @@ end
 --- @param level number - The level number to skin
 ---
 function AtlasTW.pfUI.StyleHewdropLevel(level)
-    if not IsPfUILoaded() then return end
+    if not IsPfUIStylingEnabled() then return end
 
     local frame = _G["Hewdrop20Level" .. level]
     if frame and not frame.pfui_styled then
@@ -997,7 +1035,15 @@ end
 --- Applies all pfUI styling when pfUI is detected
 ---
 function AtlasTW.pfUI.Initialize()
-    if not IsPfUILoaded() then
+    if not IsPfUIBaseLoaded() then
+        return
+    end
+
+    -- Setup tooltip comparison (works even if styling is disabled)
+    SetupTooltipComparison()
+
+    -- Apply styling only if enabled in options
+    if not IsPfUIStylingEnabled() then
         return
     end
 

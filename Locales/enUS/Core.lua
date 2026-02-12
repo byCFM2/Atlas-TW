@@ -116,7 +116,8 @@ AtlasTW.OutdoorZoneToAtlas = {
     ["Stormwind City"] = "TheStockade",
     ["Stranglethorn Vale"] = "ZulGurub",
     ["Balor"] = "StormwroughtRuins",  -- TurtleWOW
-    ["Wetlands"] = "DragonmawRetreat" -- TurtleWOW
+    ["Wetlands"] = "DragonmawRetreat", -- TurtleWOW
+    --["Dun Morogh"] = "Frostmane Hollow", -- TurtleWOW
 }
 ---
 --- Register Core UI translations
