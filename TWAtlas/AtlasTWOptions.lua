@@ -258,10 +258,24 @@ function AtlasTW.OptionsInit()
     -- Quest Options
     AtlasTWOptionAutoshow:SetChecked(AtlasTWOptions.QuestWithAtlas)
     AtlasTWOptionLeftSide:SetChecked(AtlasTWOptions.QuestCurrentSide)
-    if AtlasTWOptionLeftSide:GetChecked() then
-        AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasTWFrame", -556, -36)
+
+    local function IsPfUIStylingEnabled()
+        return IsAddOnLoaded("pfUI") and pfUI and (not AtlasTWOptions or AtlasTWOptions.pfUIEnabled ~= false)
+    end
+
+    if IsPfUIStylingEnabled() then
+        AtlasTW.Quest.UI_Main.Frame:ClearAllPoints()
+        if AtlasTWOptionLeftSide:GetChecked() then
+            AtlasTW.Quest.UI_Main.Frame:SetPoint("TOPRIGHT", "AtlasTWFrame", "TOPLEFT", -1, 0)
+        else
+            AtlasTW.Quest.UI_Main.Frame:SetPoint("TOPLEFT", "AtlasTWFrame", "TOPRIGHT", 1, 0)
+        end
     else
-        AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasTWFrame", 567, -36)
+        if AtlasTWOptionLeftSide:GetChecked() then
+            AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasTWFrame", -556, -36)
+        else
+            AtlasTW.Quest.UI_Main.Frame:SetPoint("TOP", "AtlasTWFrame", 567, -36)
+        end
     end
     AtlasTWOptionColor:SetChecked(AtlasTWOptions.QuestColourCheck)
     AtlasTWOptionQuestlog:SetChecked(AtlasTWOptions.QuestCheckQuestlog)

@@ -600,7 +600,7 @@ local function AtlasTWLoot_CreateSearchElements(frame)
 
     -- Text display for current selection
     local dropDownText = sortDropDown:CreateFontString("AtlasTWLootWishListSortDropDownText", "OVERLAY",
-    "GameFontHighlightSmall")
+        "GameFontHighlightSmall")
     dropDownText:SetPoint("LEFT", sortDropDown, "LEFT", 8, 0)
     dropDownText:SetPoint("RIGHT", sortDropDown, "RIGHT", -20, 0)
     dropDownText:SetJustifyH("LEFT")
@@ -759,8 +759,8 @@ end
 ---
 local function AtlasTWLoot_CreateItemsFrame()
     local frame = CreateFrame("Frame", "AtlasTWLootItemsFrame", AtlasTWFrame)
-    frame:SetWidth(510)
-    frame:SetHeight(510)
+    frame:SetWidth(512)
+    frame:SetHeight(512)
     frame:SetPoint("TOPLEFT", "AtlasTWFrame", "TOPLEFT", 18, -84)
     frame:EnableMouse(true)
     frame:EnableMouseWheel(true)
@@ -1027,7 +1027,16 @@ local function AtlasTWLoot_CreatePanel()
     local frame = CreateFrame("Frame", "AtlasTWLootPanel", AtlasTWFrame)
     frame:SetWidth(689)
     frame:SetHeight(90)
-    frame:SetPoint("TOP", "AtlasTWFrame", "BOTTOM", 0, 9)
+
+    local function IsPfUIStylingEnabled()
+        return IsAddOnLoaded("pfUI") and pfUI and (not AtlasTWOptions or AtlasTWOptions.pfUIEnabled ~= false)
+    end
+
+    if IsPfUIStylingEnabled() then
+        frame:SetPoint("TOP", "AtlasTWFrame", "BOTTOM", 0, 1)
+    else
+        frame:SetPoint("TOP", "AtlasTWFrame", "BOTTOM", 0, 9)
+    end
     frame:Hide()
     frame:EnableMouse(true)
     frame:RegisterForDrag("LeftButton")

@@ -70,6 +70,33 @@ local function StyleMainFrame()
     -- Note: We keep the border textures visible as they define the Atlas window shape
     -- Only hide background if user wants full pfUI integration
 
+    local textures = {
+        "AtlasTWFrameTop",
+        "AtlasTWFrameLeft",
+        "AtlasTWFrameBottom",
+        "AtlasTWFrameBottom2",
+        "AtlasTWFrameRight"
+    }
+
+    for _, texName in ipairs(textures) do
+        local tex = _G[texName]
+        if tex then
+            tex:Hide()
+        end
+    end
+
+    -- Create pfUI backdrop
+    if pfUI.api.CreateBackdrop then
+        pfUI.api.CreateBackdrop(AtlasTWFrame, nil, nil, 0.9)
+        pfUI.api.CreateBackdropShadow(AtlasTWFrame)
+
+        -- Apply border color if available
+        if AtlasTWFrame.backdrop then
+            local r, g, b, a = GetPfUIBackgroundColor()
+            AtlasTWFrame.backdrop:SetBackdropColor(r, g, b, 0.9)
+        end
+    end
+
     -- Adjust frame strata to work with pfUI
     if AtlasTWFrame.backdrop then
         AtlasTWFrame.backdrop:SetFrameStrata("MEDIUM")
@@ -561,6 +588,10 @@ end
 local function StyleLootPanel()
     if not AtlasTWLootPanel then return end
 
+    -- Position Loot Panel relative to AtlasTWFrame for pfUI
+    AtlasTWLootPanel:ClearAllPoints()
+    AtlasTWLootPanel:SetPoint("TOP", "AtlasTWFrame", "BOTTOM", 0, 1)
+
     -- Apply pfUI backdrop
     pfUI.api.CreateBackdrop(AtlasTWLootPanel, nil, nil, 1.0)
     pfUI.api.CreateBackdropShadow(AtlasTWLootPanel)
@@ -700,6 +731,17 @@ local function StyleQuestFrame()
     -- Get the quest frame reference
     local questFrame = AtlasTW.Quest and AtlasTW.Quest.UI_Main and AtlasTW.Quest.UI_Main.Frame
     if not questFrame then return end
+
+    -- Position Quest frame relative to AtlasTWFrame for pfUI
+    -- We adjust this here because pfUI styling changes the visual borders
+    if questFrame:IsVisible() then
+        questFrame:ClearAllPoints()
+        if AtlasTWOptions and AtlasTWOptions.QuestCurrentSide then -- true is Left
+            questFrame:SetPoint("TOPRIGHT", "AtlasTWFrame", "TOPLEFT", -1, 0)
+        else
+            questFrame:SetPoint("TOPLEFT", "AtlasTWFrame", "TOPRIGHT", 1, 0)
+        end
+    end
 
     -- Clear existing backdrop if any (QuestUI.lua sets a DialogBox backdrop)
     questFrame:SetBackdrop(nil)
