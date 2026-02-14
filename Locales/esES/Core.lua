@@ -150,6 +150,8 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Group by Source"] = "Agrupar por Fuente",
     ["Default"] = "Predeterminado",
     ["Check Completed Quests"] = "Ver Misiones Completadas",
+    ["Lockpicking"] = "Ganzúa",
+    ["Doors"] = "Puertas",
 
 
     --************************************************

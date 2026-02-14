@@ -147,9 +147,11 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["Loot"] = "Saque",
     ["Previous"] = "Anterior",
     ["Next"] = "Próximo",
-    ["Group by Source"] = "Agrupar por Fonte",
+    ["Group by Source"] = "Agrupar por fonte",
     ["Default"] = "Padrão",
-    ["Check Completed Quests"] = "Ver Missões Concluídas",
+    ["Check Completed Quests"] = "Verificar missões concluídas",
+    ["Lockpicking"] = "Arrombamento",
+    ["Doors"] = "Portas",
 
 
     --************************************************

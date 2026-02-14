@@ -145,7 +145,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Next"] = "下一页",
     ["Group by Source"] = "按来源分组",
     ["Default"] = "默认",
-    ["Check Completed Quests"] = "查看已完成任务",
+    ["Check Completed Quests"] = "检查已完成的任务",
+    ["Lockpicking"] = "开锁",
+    ["Doors"] = "门",
 
     -- Colors
     ["Purple"] = "紫色",

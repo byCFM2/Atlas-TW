@@ -149,6 +149,8 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Group by Source"] = true,
     ["Default"] = true,
     ["Check Completed Quests"] = true,
+    ["Lockpicking"] = true,
+    ["Doors"] = true,
 
     --************************************************
     -- Colors

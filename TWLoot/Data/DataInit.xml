@@ -74,8 +74,6 @@
     <Include file="Tables\Events.lua"/>
     <Include file="Tables\Sets.lua"/>
     <Include file="Tables\Crafting.lua"/>
-    <Include file="Tables\Disenchanting.lua"/>
-    <Include file="Tables\Cloth.lua"/>
     <Include file="Tables\ProfessionTrainers.lua"/>
     <Include file="Tables\WeaponSkills.lua"/>
 
