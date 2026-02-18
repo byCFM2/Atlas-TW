@@ -256,6 +256,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Clamp window to screen"] = true,
     ["Show Cursor Coordinates on Map"] = true,
     ["Enable pfUI Styling"] = true,
+    ["Show Map Markers"] = true,
     ["pfUI styling enabled. Type /reload to apply changes."] = true,
     ["pfUI styling disabled. Type /reload to apply changes."] = true,
     ["Scale"] = true,

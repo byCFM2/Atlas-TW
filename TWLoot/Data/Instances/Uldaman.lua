@@ -36,7 +36,7 @@ AtlasTW.InstanceData.Uldaman = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A", info = L["Entrance"] },
-        { letter = "B", info = L["Back Door"] },
+        { letter = "B", info = LMD["Back"] },
     },
     Keys = {
         { name = LMD["Staff of Prehistoria"], loot = "VanillaKeys", info = LB["Ironaya"] }

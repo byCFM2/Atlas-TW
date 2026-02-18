@@ -376,6 +376,35 @@ do
     entrance5Text:SetPoint("TOPLEFT", zoneText, 190, -68)
     entrance5Text:SetJustifyH("LEFT")
 
+    -- Instance Type Icon Button (Dungeon/Raid)
+    local instanceTypeButton = CreateFrame("Button", "AtlasTWInstanceTypeButton", atlasFrame)
+    instanceTypeButton:SetWidth(32)
+    instanceTypeButton:SetHeight(32)
+    instanceTypeButton:SetPoint("RIGHT", entranceText, "LEFT", -5, -3)
+    instanceTypeButton:EnableMouse(true)
+    local instanceTypeTexture = instanceTypeButton:CreateTexture("AtlasTWInstanceTypeIcon", "ARTWORK")
+    instanceTypeTexture:SetAllPoints()
+    instanceTypeButton:SetNormalTexture(instanceTypeTexture)
+    instanceTypeButton:Hide()
+
+    instanceTypeButton:SetScript("OnEnter", function()
+        this:SetWidth(40)
+        this:SetHeight(40)
+        if this.tooltipText then
+            GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
+            GameTooltip:SetText(this.tooltipText)
+            GameTooltip:Show()
+        end
+    end)
+    instanceTypeButton:SetScript("OnLeave", function()
+        this:SetWidth(32)
+        this:SetHeight(32)
+        GameTooltip:Hide()
+    end)
+    instanceTypeButton:SetScript("OnClick", function()
+        AtlasTW.OnInstanceTypeClick()
+    end)
+
     -- Textures
     local topTexture = atlasFrame:CreateTexture("AtlasTWFrameTop", "ARTWORK")
     topTexture:SetTexture(AtlasTW.PATH .. "Images\\AtlasTWFrame-Top")

@@ -22,6 +22,7 @@ AtlasTW = _G.AtlasTW
 AtlasTW.UI = AtlasTW.UI or {}
 
 local L = AtlasTW.Localization.UI
+local LZ = AtlasTW.Localization.Zones
 
 local atlasTW_Ints_Ent_DropDown = {}
 local frame
@@ -85,6 +86,39 @@ local function PerformSearch(data, search_text)
 		return color .. text
 	end)
 	return new
+end
+
+---
+--- Handles click events on the instance type icon
+--- Opens the World Map at the instance location
+--- @return nil
+--- @usage AtlasTW.OnInstanceTypeClick() -- Called by instance type icon click
+---
+function AtlasTW.OnInstanceTypeClick()
+	local zoneID = AtlasTW.DropDowns[AtlasTWOptions.AtlasType][AtlasTWOptions.AtlasZone]
+	if not zoneID then return end
+
+	-- Find the marker data for this zone
+	if AtlasTW.MapMarkers and AtlasTW.MapMarkers.FindMarkerByZoneID then
+		local markerData = AtlasTW.MapMarkers.FindMarkerByZoneID(zoneID)
+		if markerData then
+			-- markerData = {continent, zone, x, y, ...}
+			local continent, zone, x, y = unpack(markerData)
+
+			-- Close Atlas
+			AtlasTWFrame:Hide()
+
+			-- Open World Map
+			ShowUIPanel(WorldMapFrame)
+			SetMapZoom(continent, zone)
+			-- We don't have a way to highlight or ping the map easily without Cartographer/TomTom,
+			-- but opening the correct zone is the main request.
+			return
+		end
+	end
+
+	-- Fallback if no marker found (try to guess from data or just open map)
+	-- This part is tricky without precise coordinates mapping for every instance
 end
 
 ---
@@ -440,6 +474,69 @@ function AtlasTW.Refresh()
 		SetAtlasText(_G["AtlasTWTextentr" .. i], nil, entranceText[i], Colors.BLUE)
 		if entranceText[i] then
 			AtlasTWTextentr:SetText(L["Entrances"])
+		end
+	end
+
+	-- Add/Update entrance icon next to the "Entrances" label
+	if AtlasTWInstanceTypeButton then
+		-- Removed the check for AtlasTWTextentr:GetText() so icons show even without entrances (e.g. World Bosses)
+		local mapData = AtlasTW.InstanceData[zoneID]
+		local isRaid = false
+		local isWorldBoss = false
+		local isValid = false
+
+		-- Determine type
+		if mapData then
+			-- Check for Dungeon/Raid
+			if mapData.MaxPlayers then
+				isValid = true -- Has player limit, likely an instance
+				if mapData.MaxPlayers > 5 then
+					if mapData.Name == LZ["Stratholme"] or mapData.Name == LZ["Scholomance"] or mapData.Name == LZ["Lower Blackrock Spire"] or mapData.Name == LZ["Upper Blackrock Spire"] then
+						isRaid = false
+					elseif string.sub(zoneID, 1, 2) == "BG" then
+						isRaid = false -- Force BGs to be dungeons
+					else
+						isRaid = true
+					end
+				end
+			end
+
+			-- World Boss check
+			if type(mapData.Level) == "table" and mapData.Level[1] == 1 and string.sub(zoneID, 1, 2) ~= "BG" then
+				isWorldBoss = true
+				isRaid = false
+				isValid = true
+			end
+		end
+
+		if isValid then
+			-- Use textures from Images/Markers/
+			local texture = "Interface\\Addons\\Atlas-TW\\Images\\Markers\\dungeon"
+			local tooltip = L["Dungeons"]
+
+			if isRaid then
+				texture = "Interface\\Addons\\Atlas-TW\\Images\\Markers\\raid"
+				tooltip = L["Raids"]
+			elseif isWorldBoss then
+				texture = "Interface\\Addons\\Atlas-TW\\Images\\Markers\\worldboss"
+				tooltip = L["World"]
+			elseif string.sub(zoneID, 1, 2) == "BG" then
+				tooltip = L["Battlegrounds"]
+			end
+
+			local icon = _G["AtlasTWInstanceTypeIcon"]
+			if icon then
+				icon:SetTexture(texture)
+			end
+
+			-- Set tooltip text
+			if AtlasTWInstanceTypeButton then
+				AtlasTWInstanceTypeButton.tooltipText = tooltip
+			end
+
+			AtlasTWInstanceTypeButton:Show()
+		else
+			AtlasTWInstanceTypeButton:Hide()
 		end
 	end
 

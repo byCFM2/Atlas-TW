@@ -5,7 +5,7 @@
 ## Notes-esES: navegador de mapas de mazmorras; muestra el botín posible de los jefes y las misiones de la mazmorra.
 ## Notes-ptBR: navegador de mapas de masmorras; mostra o saque possível dos chefes e as missões da masmorra.
 ## Notes-zhCN: 副本地图浏览器; 显示首领可能掉落的战利品以及该副本的任务。
-## Version: 1.47
+## Version: 1.48
 ## Author: CFM, Otari98, Dan Gilbert, Daviesh, pepopo, etc
 ## SavedVariables: AtlasTWOptions
 ## SavedVariablesPerCharacter: AtlasTWCharDB

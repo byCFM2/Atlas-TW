@@ -256,8 +256,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Right-Click for World Map"] = "Clic derecho para mapa del mundo",
     ["Show Acronyms"] = "Mostrar acrónimos",
     ["Clamp window to screen"] = "Ajustar ventana a la pantalla",
-    ["Show Cursor Coordinates on Map"] = "Mostrar coord. del cursor en el mapa",
-    ["Enable pfUI Styling"] = "Habilitar el estilo de pfUI",
+    ["Show Cursor Coordinates on Map"] = "Mostrar coordenadas del cursor en el mapa",
+    ["Show Map Markers"] = "Mostrar marcadores del mapa",
+    ["Enable pfUI Styling"] = "Habilitar estilo pfUI",
     ["pfUI styling enabled. Type /reload to apply changes."] =
     "Estilo pfUI activado. Escribe /reload para aplicar los cambios.",
     ["pfUI styling disabled. Type /reload to apply changes."] =

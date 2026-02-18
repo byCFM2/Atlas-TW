@@ -36,7 +36,6 @@ AtlasTW.InstanceData.TimbermawHold = {
     DamageType = L["Physical"],
     Entrances = {
         { letter = "A)"..L["Entrance"].." "..LMD["Front"] },
-    --    { letter = "B)"..L["Entrance"].." "..LMD["Back"] },
     },
     Keys = {
        -- { name = LMD["Key to Stormwrought Castle"], loot = "VanillaKeys", info = "6+" },

@@ -257,6 +257,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["Show Acronyms"] = "Mostrar acrônimos",
     ["Clamp window to screen"] = "Fixar janela à tela",
     ["Show Cursor Coordinates on Map"] = "Mostrar coordenadas do cursor no mapa",
+    ["Show Map Markers"] = "Mostrar marcadores no mapa",
     ["Enable pfUI Styling"] = "Ativar o estilo pfUI",
     ["pfUI styling enabled. Type /reload to apply changes."] =
     "Estilo pfUI ativado. Digite /reload para aplicar as alterações.",

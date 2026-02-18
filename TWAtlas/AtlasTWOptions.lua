@@ -193,6 +193,23 @@ function AtlasTW.OptionsPfUIOnClick()
 end
 
 ---
+--- Toggles map markers display
+--- Enables or disables icons on the World Map
+--- @return nil
+--- @usage AtlasTW.OptionMapMarkersOnClick() -- Called by checkbox click
+---
+function AtlasTW.OptionMapMarkersOnClick()
+    AtlasTWOptions.ShowMapMarkers = not AtlasTWOptions.ShowMapMarkers
+    if AtlasTWOptionMapMarkers then
+        AtlasTWOptionMapMarkers:SetChecked(AtlasTWOptions.ShowMapMarkers)
+    end
+
+    if AtlasTW.MapMarkers and AtlasTW.MapMarkers.UpdateMarkers then
+        AtlasTW.MapMarkers.UpdateMarkers()
+    end
+end
+
+---
 --- Initializes all Atlas-TW option settings and UI elements
 --- Sets checkbox states, slider values, and frame visibility based on saved options
 --- @return nil
@@ -254,6 +271,8 @@ function AtlasTW.OptionsInit()
     AtlasTWOptionSliderButtonRad:SetValue(AtlasTWOptions.AtlasButtonRadius)
     AtlasTWOptionSliderAlpha:SetValue(AtlasTWOptions.AtlasAlpha)
     AtlasTWOptionSliderScale:SetValue(AtlasTWOptions.AtlasScale)
+
+    AtlasTWOptionMapMarkers:SetChecked(AtlasTWOptions.ShowMapMarkers)
 
     -- Quest Options
     AtlasTWOptionAutoshow:SetChecked(AtlasTWOptions.QuestWithAtlas)

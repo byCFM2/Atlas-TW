@@ -257,7 +257,8 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Right-Click for World Map"] = "Rechtsklick für Weltkarte",
     ["Show Acronyms"] = "Akronyme anzeigen",
     ["Clamp window to screen"] = "Fenster an Bildschirm begrenzen",
-    ["Show Cursor Coordinates on Map"] = "Mauskoordinaten auf der Karte anzeigen",
+    ["Show Cursor Coordinates on Map"] = "Cursor-Koordinaten auf der Karte anzeigen",
+    ["Show Map Markers"] = "Kartenmarkierungen anzeigen",
     ["Enable pfUI Styling"] = "pfUI-Styling aktivieren",
     ["pfUI styling enabled. Type /reload to apply changes."] =
     "pfUI-Styling aktiviert. Gib /reload ein, um die Änderungen zu übernehmen.",

@@ -234,6 +234,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Show Acronyms"] = "显示缩写",
     ["Clamp window to screen"] = "窗口限制在屏幕内",
     ["Show Cursor Coordinates on Map"] = "在地图上显示光标坐标",
+    ["Show Map Markers"] = "显示地图标记",
     ["Enable pfUI Styling"] = "启用 pfUI 样式",
     ["pfUI styling enabled. Type /reload to apply changes."] = "pfUI 样式已启用。输入 /reload 以应用更改。",
     ["pfUI styling disabled. Type /reload to apply changes."] = "pfUI 样式已禁用。输入 /reload 以应用更改。",

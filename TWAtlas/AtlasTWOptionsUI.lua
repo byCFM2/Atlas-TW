@@ -25,8 +25,8 @@ do
     -- Create the main options frame
     local optionsFrame = CreateFrame("Frame", "AtlasTWOptionsFrame", UIParent)
     optionsFrame:SetFrameStrata("DIALOG")
-    optionsFrame:SetHeight(550)
-    optionsFrame:SetWidth(550)
+    optionsFrame:SetHeight(570)
+    optionsFrame:SetWidth(570)
     optionsFrame:SetPoint("CENTER", 0, 0)
     optionsFrame:SetMovable(true)
     optionsFrame:RegisterForDrag("LeftButton")
@@ -145,12 +145,19 @@ do
             end
         },
         {
+            name = "AtlasTWOptionMapMarkers",
+            text = L["Show Map Markers"],
+            script = function()
+                AtlasTW.OptionMapMarkersOnClick()
+            end
+        },
+        {
             name = "AtlasTWOptionPfUI",
             text = L["Enable pfUI Styling"],
             script = function()
                 AtlasTW.OptionsPfUIOnClick()
             end
-        }
+        },
     }
 
     -- Optimized function to create atlas checkboxes
