@@ -166,7 +166,7 @@ local function OpenAtlasPage(key)
                 AtlasTW.Refresh()
 
                 -- Close World Map if open
-                if WorldMapFrame:IsVisible() then
+                if WorldMapFrame:IsShown() then
                     HideUIPanel(WorldMapFrame)
                 end
                 return
@@ -174,6 +174,31 @@ local function OpenAtlasPage(key)
         end
     end
     PrintA("Key not found in DropDowns: " .. tostring(key))
+end
+
+local function ResetPinState(pin)
+    if not pin then
+        return
+    end
+    pin:SetScript("OnUpdate", nil)
+    local baseSize = pin.baseSize
+    if baseSize then
+        pin:SetWidth(baseSize)
+        pin:SetHeight(baseSize)
+    end
+    local parent = pin:GetParent()
+    if parent then
+        pin:SetFrameLevel(parent:GetFrameLevel() + 3)
+    end
+end
+
+local function ClearMarkers()
+    for _, pin in pairs(markers) do
+        ResetPinState(pin)
+        pin:Hide()
+        tinsert(pinPool, pin)
+    end
+    markers = {}
 end
 
 local function CreateMapPin(parent, x, y, size, texture, key, tooltipInfo)
@@ -185,6 +210,7 @@ local function CreateMapPin(parent, x, y, size, texture, key, tooltipInfo)
     end
 
     pin:SetParent(parent)
+    pin.baseSize = size
     pin:SetWidth(size)
     pin:SetHeight(size)
     pin:ClearAllPoints()
@@ -198,8 +224,7 @@ local function CreateMapPin(parent, x, y, size, texture, key, tooltipInfo)
         pin:SetWidth(size * 1.3)
         pin:SetHeight(size * 1.3)
         pin:SetFrameLevel(pin:GetParent():GetFrameLevel() + 5)
-
-        WorldMapTooltip:SetOwner(pin, "ANCHOR_BOTTOMRIGHT", -15, 15)
+        WorldMapTooltip:SetOwner(pin, "ANCHOR_RIGHT")
 
         local title = key
         if AtlasTW.InstanceData[key] then
@@ -220,25 +245,17 @@ local function CreateMapPin(parent, x, y, size, texture, key, tooltipInfo)
                 WorldMapTooltip:AddLine(L["Level"] .. ": " .. tooltipInfo, 1, 1, 0)
             end
         end
-
         WorldMapTooltip:Show()
     end)
 
     pin:SetScript("OnLeave", function()
-        pin:SetWidth(size)
-        pin:SetHeight(size)
-        pin:SetFrameLevel(pin:GetParent():GetFrameLevel() + 3)
-
+        ResetPinState(pin)
         WorldMapTooltip:Hide()
     end)
 
     pin:SetScript("OnClick", function()
-        -- Reset pin state manually since OnLeave might not fire if map closes
-        pin:SetWidth(size)
-        pin:SetHeight(size)
-        pin:SetFrameLevel(pin:GetParent():GetFrameLevel() + 3)
+        ResetPinState(pin)
         WorldMapTooltip:Hide()
-
         OpenAtlasPage(key)
     end)
 
@@ -250,7 +267,7 @@ end
 --- @return table|nil The marker data {continent, zoneID, x, y, key, type, info} or nil
 function AtlasTW.MapMarkers.FindMarkerByZoneID(searchKey)
     for _, data in pairs(MapPoints) do
-        local continent, zoneID, x, y, key, kind, info = unpack(data)
+        local _, _, _, _, key, _, _ = unpack(data)
         if key == searchKey then
             return data
         end
@@ -270,15 +287,12 @@ end
 
 function AtlasTW.MapMarkers.UpdateMarkers()
     if not AtlasTWOptions.ShowMapMarkers then
-        for _, pin in pairs(markers) do
-            pin:Hide()
-            tinsert(pinPool, pin)
-        end
-        markers = {}
+        ClearMarkers()
         return
     end
 
-    if not WorldMapFrame:IsVisible() then
+    if not WorldMapFrame:IsShown() then
+        ClearMarkers()
         return
     end
 
@@ -291,19 +305,15 @@ function AtlasTW.MapMarkers.UpdateMarkers()
     local currentZone = GetCurrentMapZone()
 
     -- Hide existing markers
-    for _, pin in pairs(markers) do
-        pin:Hide()
-        tinsert(pinPool, pin)
-    end
-    markers = {}
+    ClearMarkers()
 
     -- Only process markers for the current zone if any exist
     if ZoneMapPoints[currentContinent] and ZoneMapPoints[currentContinent][currentZone] then
         local worldMap = WorldMapDetailFrame
         local mapWidth, mapHeight = worldMap:GetWidth(), worldMap:GetHeight()
 
-        for i, data in ipairs(ZoneMapPoints[currentContinent][currentZone]) do
-            local cont, zoneID, x, y, key, kind, info = unpack(data)
+        for _, data in ipairs(ZoneMapPoints[currentContinent][currentZone]) do
+            local _, _, x, y, key, kind, info = unpack(data)
 
             local size = 30
             local texture = TEXTURE_MAP[kind] or TEXTURE_DUNGEON
@@ -340,11 +350,11 @@ frame:SetScript("OnEvent", function()
     AtlasTW.MapMarkers.UpdateMarkers()
 end)
 
--- Hook into WorldMapFrame Show to update markers
-local oldWorldMapFrame_OnShow = WorldMapFrame:GetScript("OnShow")
-WorldMapFrame:SetScript("OnShow", function()
-    if oldWorldMapFrame_OnShow then
-        oldWorldMapFrame_OnShow()
+-- Secure hook for WorldMapFrame.Hide if possible, or override
+local oldWorldMapFrameHide = WorldMapFrame.Hide
+WorldMapFrame.Hide = function(self)
+    ClearMarkers()
+    if oldWorldMapFrameHide then
+        oldWorldMapFrameHide(self)
     end
-    AtlasTW.MapMarkers.UpdateMarkers()
-end)
+end

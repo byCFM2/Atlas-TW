@@ -378,9 +378,9 @@ do
 
     -- Instance Type Icon Button (Dungeon/Raid)
     local instanceTypeButton = CreateFrame("Button", "AtlasTWInstanceTypeButton", atlasFrame)
-    instanceTypeButton:SetWidth(32)
-    instanceTypeButton:SetHeight(32)
-    instanceTypeButton:SetPoint("RIGHT", entranceText, "LEFT", -5, -3)
+    instanceTypeButton:SetWidth(30)
+    instanceTypeButton:SetHeight(30)
+    instanceTypeButton:SetPoint("RIGHT", entranceText, "LEFT")
     instanceTypeButton:EnableMouse(true)
     local instanceTypeTexture = instanceTypeButton:CreateTexture("AtlasTWInstanceTypeIcon", "ARTWORK")
     instanceTypeTexture:SetAllPoints()
@@ -388,8 +388,8 @@ do
     instanceTypeButton:Hide()
 
     instanceTypeButton:SetScript("OnEnter", function()
-        this:SetWidth(40)
-        this:SetHeight(40)
+        this:SetWidth(34)
+        this:SetHeight(34)
         if this.tooltipText then
             GameTooltip:SetOwner(this, "ANCHOR_RIGHT")
             GameTooltip:SetText(this.tooltipText)
@@ -397,8 +397,8 @@ do
         end
     end)
     instanceTypeButton:SetScript("OnLeave", function()
-        this:SetWidth(32)
-        this:SetHeight(32)
+        this:SetWidth(30)
+        this:SetHeight(30)
         GameTooltip:Hide()
     end)
     instanceTypeButton:SetScript("OnClick", function()
@@ -581,7 +581,7 @@ do
 
         WorldMapDetailFrame:SetScript("OnUpdate", function()
             -- Respect option and visibility
-            if not AtlasTWOptions or not AtlasTWOptions.AtlasCursorCoords or not WorldMapFrame:IsVisible() then
+            if not AtlasTWOptions or not AtlasTWOptions.AtlasCursorCoords or not WorldMapFrame:IsShown() then
                 wmCoordText:Hide()
                 return
             end
