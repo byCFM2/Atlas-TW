@@ -477,21 +477,42 @@ local function StyleLootItemsFrame()
     -- Apply backdrop to loot items frame
     pfUI.api.CreateBackdrop(AtlasTWLootItemsFrame, nil, nil, 1.0)
 
-    -- Use pfUI background color if available, otherwise pure black
+    -- Use pfUI background color if available
+    local r, g, b, a = GetPfUIBackgroundColor()
     if AtlasTWLootItemsFrame.backdrop then
-        local r, g, b, a = GetPfUIBackgroundColor()
-        AtlasTWLootItemsFrame.backdrop:SetBackdropColor(r, g, b, 1) -- Ensure alpha is 1 for "completely black"
+        -- Make the backdrop background transparent so we don't double-draw with the texture
+        AtlasTWLootItemsFrame.backdrop:SetBackdropColor(r, g, b, 0)
     end
 
-    -- Style the original background texture to match the backdrop
-    for _, region in ipairs({ AtlasTWLootItemsFrame:GetRegions() }) do
-        if region:GetObjectType() == "Texture" then
-            local r, g, b, a = 0, 0, 0, 1
-            if AtlasTWLootItemsFrame.backdrop then
-                r, g, b, a = AtlasTWLootItemsFrame.backdrop:GetBackdropColor()
+    -- Style the original background texture
+    -- We use the original texture but color it to match pfUI
+    local backTexture = _G["AtlasTWLootItemsFrame_Back"]
+    if backTexture then
+        -- Restore it if it was hidden
+        backTexture.Show = nil -- Remove the dummy function if present
+        backTexture:Show()
+
+        -- Reset vertex color to white so it doesn't tint our texture black
+        -- (LootUI.lua sets it to 0,0,0,0.7 which causes the "always black" issue)
+        backTexture:SetVertexColor(1, 1, 1, 1)
+
+        -- Set the texture to the pfUI background color
+        backTexture:SetTexture(r, g, b, a)
+        backTexture:SetAlpha(a)
+    end
+
+    -- Fallback: iterate and fix any other background textures if the named one wasn't found
+    -- (This part is just a safety measure)
+    if not backTexture then
+        for _, region in ipairs({ AtlasTWLootItemsFrame:GetRegions() }) do
+            if region:GetObjectType() == "Texture" and region:GetDrawLayer() == "BACKGROUND" then
+                local p1, p2, p3, p4, p5 = region:GetPoint()
+                if p1 == "TOPLEFT" or p1 == "BOTTOMLEFT" or p1 == "TOPRIGHT" or p1 == "BOTTOMRIGHT" or p1 == "CENTER" or p1 == "ALL" then
+                    region:SetVertexColor(1, 1, 1, 1)
+                    region:SetTexture(r, g, b, a)
+                    region:SetAlpha(a)
+                end
             end
-            region:SetTexture(r, g, b, 1) -- Set alpha to 1 for "completely black"
-            region:SetAlpha(1)
         end
     end
 

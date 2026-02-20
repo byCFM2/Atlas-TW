@@ -161,6 +161,9 @@ local function OpenAtlasPage(key)
                 AtlasTWOptions.AtlasType = typeIndex
                 AtlasTWOptions.AtlasZone = zoneIndex
 
+                -- Prevent OnShow from restoring last opened state
+                AtlasTW.SkipRestore = true
+
                 AtlasTWFrame:Show()
                 AtlasTW.UpdateDropdownLabels()
                 AtlasTW.Refresh()

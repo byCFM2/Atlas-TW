@@ -860,7 +860,8 @@ function AtlasTW.OnShow()
 	end
 
 	-- Restore Last Opened State
-	if AtlasTWCharDB and AtlasTWCharDB.LastOpened and AtlasTWCharDB.LastOpened.StoredElement then
+	-- Only restore if not explicitly opening a specific page (e.g. from World Map)
+	if not AtlasTW.SkipRestore and AtlasTWCharDB and AtlasTWCharDB.LastOpened and AtlasTWCharDB.LastOpened.StoredElement then
 		local stored = AtlasTWCharDB.LastOpened
 
 		-- Restore Map Choice if valid
@@ -869,6 +870,9 @@ function AtlasTW.OnShow()
 			AtlasTWOptions.AtlasZone = stored.AtlasZone
 		end
 	end
+
+	-- Reset the skip flag
+	AtlasTW.SkipRestore = nil
 
 	AtlasTW.UpdateDropdownLabels()
 	AtlasTW.Refresh()
