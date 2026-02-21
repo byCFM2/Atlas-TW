@@ -99,7 +99,8 @@ local function StyleMainFrame()
 
     -- Adjust frame strata to work with pfUI
     if AtlasTWFrame.backdrop then
-        AtlasTWFrame.backdrop:SetFrameStrata("MEDIUM")
+        AtlasTWFrame.backdrop:SetFrameStrata("HIGH")
+        AtlasTWFrame.backdrop:SetFrameLevel(AtlasTWFrame:GetFrameLevel() - 1)
     end
 
     -- Style the close button (X button)
@@ -158,7 +159,7 @@ local function StyleMainFrame()
         AtlasTWLockButton:SetWidth(20)
         AtlasTWLockButton:SetHeight(20)
         AtlasTWLockButton:ClearAllPoints()
-        AtlasTWLockButton:SetPoint("RIGHT", AtlasTWCloseButton, "LEFT", -2, 0)
+        AtlasTWLockButton:SetPoint("RIGHT", AtlasTWCloseButton, "LEFT", 0, 0)
 
         -- Hook the toggle function to update display
         local originalOnClick = AtlasTWLockButton:GetScript("OnClick")
@@ -542,7 +543,7 @@ local function StyleLootItemsFrame()
         itemsCloseButton:SetWidth(20)
         itemsCloseButton:SetHeight(20)
         itemsCloseButton:ClearAllPoints()
-        itemsCloseButton:SetPoint("TOPRIGHT", AtlasTWLootItemsFrame, "TOPRIGHT", -3, -3)
+        itemsCloseButton:SetPoint("TOPRIGHT", AtlasTWLootItemsFrame, "TOPRIGHT", -15, -3)
 
         -- Hover effect
         itemsCloseButton:SetScript("OnEnter", function()

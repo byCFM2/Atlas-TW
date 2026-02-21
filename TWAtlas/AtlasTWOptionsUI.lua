@@ -58,6 +58,10 @@ do
     optionsFrame:SetScript("OnShow", function()
         AtlasTW.OptionsInit()
 
+        if AtlasTWOptionProfessionInfo then
+            AtlasTWOptionProfessionInfo:SetChecked(AtlasTWOptions.ProfessionInfo)
+        end
+
         -- Reagent Options
         if AtlasTWOptionReagentRowsSlider then
             AtlasTWOptionReagentRowsSlider:SetValue(AtlasTWOptions.ReagentRows or 20)
@@ -449,6 +453,13 @@ do
             text = L["Show Icon in Tooltips"],
             script = function()
                 AtlasTW.OptionTooltipIconOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionProfessionInfo",
+            text = L["Enable Profession Info"],
+            script = function()
+                AtlasTW.OptionProfessionInfoOnClick()
             end
         }
     }

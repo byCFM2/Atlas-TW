@@ -2,6 +2,7 @@
 	<!-- Core processing modules -->
 	<Include file="Core\DataResolver.lua"/>
 	<Include file="Core\Integrations.lua"/>
+	<Include file="Core\ProfessionHooks.lua"/>
 	
 	<!-- Main functionality modules -->
 	<Include file="Core\QuickLook.lua"/>

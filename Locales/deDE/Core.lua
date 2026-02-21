@@ -97,8 +97,8 @@ AtlasTW.OutdoorZoneToAtlas = {
     ["Eschental"] = "BlackfathomDeepsEnt",
     ["Ödland"] = "UldamanEnt",
     ["Der Schwarzfels"] = "BlackrockMountainEnt",
-    ["Brennende Steppe"] = "HateforgeQuarry",            -- TurtleWOW
-    ["Gebirgspass der Totenwinde"] = "KarazhanCrypt",    -- TurtleWOW
+    ["Brennende Steppe"] = "HateforgeQuarry",         -- TurtleWOW
+    ["Gebirgspass der Totenwinde"] = "KarazhanCrypt", -- TurtleWOW
     ["Desolace"] = "MaraudonEnt",
     ["Dun Morogh"] = "GnomereganEnt",
     ["Feralas"] = "DireMaulEnt",
@@ -106,7 +106,7 @@ AtlasTW.OutdoorZoneToAtlas = {
     ["Sümpfe des Elends"] = "TheSunkenTempleEnt",
     ["Tanaris"] = "ZulFarrak",
     ["Brachland"] = "WailingCavernsEnt",
-    ["Gilneas"] = "GilneasCity",     -- TurtleWOW
+    ["Gilneas"] = "GilneasCity", -- TurtleWOW
     ["Tirisfal"] = "ScarletMonasteryEnt",
     ["Westfall"] = "TheDeadminesEnt",
     ["Orgrimmar"] = "RagefireChasm",
@@ -117,8 +117,8 @@ AtlasTW.OutdoorZoneToAtlas = {
     ["Östliche Pestländer"] = "Stratholme",
     ["Sturmwind"] = "TheStockade",
     ["Schlingendorntal"] = "ZulGurub",
-    ["Balor"] = "StormwroughtRuins",                     -- TurtleWOW
-    ["Sumpfland"] = "DragonmawRetreat"                   -- TurtleWOW
+    ["Balor"] = "StormwroughtRuins",   -- TurtleWOW
+    ["Sumpfland"] = "DragonmawRetreat" -- TurtleWOW
 }
 
 ---
@@ -128,6 +128,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     --************************************************
     -- Common UI Strings
     --************************************************
+    ["Rank Pattern"] = " %a+ %d+$",
     ["Options"] = "Optionen",
     ["Search"] = "Suchen",
     ["Clear"] = "Leeren",
@@ -150,6 +151,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Group by Source"] = "Nach Quelle sortieren",
     ["Default"] = "Standard",
     ["Check Completed Quests"] = "Abgeschlossene Quests prüfen",
+    ["Enable Profession Info"] = "Berufsinformationen aktivieren",
     ["Lockpicking"] = "Schlossknacken",
     ["Doors"] = "Türen",
 

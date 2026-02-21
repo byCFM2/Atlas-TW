@@ -238,6 +238,7 @@ function AtlasTW.OptionsInit()
             ["Mining"] = true,
         }
     end
+    if AtlasTWOptions.ProfessionInfo == nil then AtlasTWOptions.ProfessionInfo = true end
 
     if AtlasTWOptions.QuestWithAtlas then
         AtlasTW.Quest.UI_Main.Frame:Show()
@@ -608,6 +609,41 @@ end
 ---
 function AtlasTW.OptionTooltipIconOnClick()
     AtlasTWOptions.TooltipShowIcon = not AtlasTWOptions.TooltipShowIcon
+    AtlasTW.OptionsInit()
+end
+
+---
+--- Toggles the Profession Info feature
+--- Enables or disables displaying skill levels in profession frames
+--- @return nil
+--- @usage AtlasTW.OptionProfessionInfoOnClick() -- Called by checkbox click
+---
+function AtlasTW.OptionProfessionInfoOnClick()
+    AtlasTWOptions.ProfessionInfo = not AtlasTWOptions.ProfessionInfo
+
+    -- Trigger cache build if enabled
+    if AtlasTWOptions.ProfessionInfo and AtlasTW.ProfessionHooks and AtlasTW.ProfessionHooks.BuildCache then
+        AtlasTW.ProfessionHooks.BuildCache()
+    end
+
+    -- Update visibility of buttons immediately if frames are visible
+    if _G["TradeSkillFrameAtlasButton"] then
+        if AtlasTWOptions.ProfessionInfo then _G["TradeSkillFrameAtlasButton"]:Show() else _G["TradeSkillFrameAtlasButton"]:Hide() end
+    end
+    if _G["CraftFrameAtlasButton"] then
+        if AtlasTWOptions.ProfessionInfo then _G["CraftFrameAtlasButton"]:Show() else _G["CraftFrameAtlasButton"]:Hide() end
+    end
+
+    -- Refresh UI
+    if AtlasTW.ProfessionHooks then
+        if TradeSkillFrame and TradeSkillFrame:IsVisible() and AtlasTW.ProfessionHooks.OnTradeSkillUpdate then
+            AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
+        end
+        if CraftFrame and CraftFrame:IsVisible() and AtlasTW.ProfessionHooks.OnCraftUpdate then
+            AtlasTW.ProfessionHooks.OnCraftUpdate()
+        end
+    end
+
     AtlasTW.OptionsInit()
 end
 

@@ -115,7 +115,7 @@ AtlasTW.OutdoorZoneToAtlas = {
     ["Eastern Plaguelands"] = "Stratholme",
     ["Stormwind City"] = "TheStockade",
     ["Stranglethorn Vale"] = "ZulGurub",
-    ["Balor"] = "StormwroughtRuins",  -- TurtleWOW
+    ["Balor"] = "StormwroughtRuins",   -- TurtleWOW
     ["Wetlands"] = "DragonmawRetreat", -- TurtleWOW
     --["Dun Morogh"] = "Frostmane Hollow", -- TurtleWOW
 }
@@ -126,6 +126,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     --************************************************
     -- Common UI Strings
     --************************************************
+    ["Rank Pattern"] = " %a+ %d+$",
     ["Options"] = true,
     ["Search"] = true,
     ["Clear"] = true,
@@ -149,6 +150,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Group by Source"] = true,
     ["Default"] = true,
     ["Check Completed Quests"] = true,
+    ["Enable Profession Info"] = true,
     ["Lockpicking"] = true,
     ["Doors"] = true,
 

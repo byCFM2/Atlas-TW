@@ -55,7 +55,7 @@ local craftingTable = {
 		{ id = 51924,           skill = { 1, 280, 305, 330 } },                          --Corrosive Poison 1.18
 		{ id = 52576,           skill = { 1, 300, 325, 350 } },                          --Corrosive Poison II 1.18
 		{},
-		{ id = 5763,            skill = { 120, 150, 175, 200 } },                        --Mind-numbing Poison
+		{ id = 5763,            skill = { 1, 150, 175, 200 } },                        --Mind-numbing Poison
 		{ id = 8694,            skill = { 200, 215, 240, 265 } },                        --Mind-numbing Poison II
 		{ id = 11400,           skill = { 280, 285, 310, 335 } },                        --Mind-numbing Poison III
 		{},

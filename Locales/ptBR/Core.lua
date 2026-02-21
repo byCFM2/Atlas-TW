@@ -128,6 +128,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     --************************************************
     -- Common UI Strings
     --************************************************
+    ["Rank Pattern"] = " %a+ %d+$",
     ["Options"] = "Opções",
     ["Search"] = "Buscar",
     ["Clear"] = "Limpar",
@@ -150,6 +151,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "ptBR", {
     ["Group by Source"] = "Agrupar por fonte",
     ["Default"] = "Padrão",
     ["Check Completed Quests"] = "Verificar missões concluídas",
+    ["Enable Profession Info"] = "Ativar informações da profissão",
     ["Lockpicking"] = "Arrombamento",
     ["Doors"] = "Portas",
 

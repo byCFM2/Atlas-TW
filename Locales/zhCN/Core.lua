@@ -124,6 +124,7 @@ AtlasTW.OutdoorZoneToAtlas = {
 
 AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     -- Common UI Strings
+    ["Rank Pattern"] = "等级 %d+$",
     ["Options"] = "选项",
     ["Search"] = "搜索",
     ["Clear"] = "清除",
@@ -146,6 +147,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Group by Source"] = "按来源分组",
     ["Default"] = "默认",
     ["Check Completed Quests"] = "检查已完成的任务",
+    ["Enable Profession Info"] = "启用职业信息",
     ["Lockpicking"] = "开锁",
     ["Doors"] = "门",
 
