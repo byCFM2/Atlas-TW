@@ -28,13 +28,14 @@ AtlasTW.SpellDB = {
 	enchants = {
 		[44] = { name = LS["Enchant Bracer - Agility"] }, --1.18
 		[48] = { name = LS["Enchant Boots - Lesser Intellect"] }, --1.18
+		[7418] = { name = LS["Enchant Bracer - Minor Health"] },
 		[7420] = { name = LS["Enchant Chest - Minor Health"] },
 		[7421] = { item = 6218 },
 		[7426] = {
 			name = LS["Enchant Chest - Minor Absorption"],
 		},
 		[7428] = {
-			name = LS["Enchant Bracer - Minor Deflection"],
+			name = LS["Enchant Bracer - Minor Deflect"],
 		},
 		[7443] = {
 			name = LS["Enchant Chest - Minor Mana"],

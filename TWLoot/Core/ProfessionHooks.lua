@@ -83,7 +83,7 @@ function AtlasTW.ProfessionHooks.GetNamesFromID(id)
 end
 
 -- Helper: Format skill levels
-local function FormatSkillLevels(skillTable)
+local function FormatSkillLevels(skillTable, id)
     if not skillTable or type(skillTable) ~= "table" then return "" end
     local Colors = AtlasTW.Colors
     local O = Colors.ORANGE or "|cffFF8000"
@@ -111,7 +111,7 @@ local function ProcessQueue()
         local task = table.remove(processingQueue, 1)
 
         local names = AtlasTW.ProfessionHooks.GetNamesFromID(task.id)
-        local skillText = FormatSkillLevels(task.skill)
+        local skillText = FormatSkillLevels(task.skill, task.id)
 
         for _, name in ipairs(names) do
             skillLevelCache[name] = skillText
@@ -252,6 +252,10 @@ function AtlasTW.ProfessionHooks.UpdateSideTabs(frame)
         tab:SetChecked(currentName == prof.name)
 
         tab:SetScript("OnClick", function()
+            -- Force close current window to prevent overlap and state confusion
+            if TradeSkillFrame and TradeSkillFrame:IsVisible() then HideUIPanel(TradeSkillFrame) end
+            if CraftFrame and CraftFrame:IsVisible() then HideUIPanel(CraftFrame) end
+
             CastSpellByName(this.spellName)
         end)
     end
@@ -263,6 +267,9 @@ end
 
 -- Hook for TradeSkillFrame
 function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
+    -- Only update if frame is visible to prevent stealing tabs
+    if not TradeSkillFrame or not TradeSkillFrame:IsVisible() then return end
+
     AtlasTW.ProfessionHooks.UpdateSideTabs(TradeSkillFrame)
 
     local profName = GetTradeSkillLine()
@@ -283,21 +290,62 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
         local skillButton = _G["TradeSkillSkill" .. i]
         local skillText = _G["TradeSkillSkill" .. i .. "Text"]
 
+        -- Create icon if needed
+        if not skillButton.atlasIcon then
+            skillButton.atlasIcon = skillButton:CreateTexture(nil, "ARTWORK")
+            skillButton.atlasIcon:SetWidth(12)
+            skillButton.atlasIcon:SetHeight(12)
+        end
+        local icon = skillButton.atlasIcon
+        icon:Hide()
+
         if skillIndex <= numSkills then
             local skillName, skillType, numAvailable, isExpanded = GetTradeSkillInfo(skillIndex)
 
-            if skillType ~= "header" and skillLevelCache[skillName] then
-                local currentText = skillText:GetText()
-                if currentText and not string.find(currentText, "<") then
-                    skillText:SetText(currentText .. " " .. skillLevelCache[skillName])
+            if skillType ~= "header" then
+                -- Construct Text
+                local countText = ""
+                if numAvailable > 0 then
+                    countText = "[" .. numAvailable .. "] "
                 end
+
+                local nameText = skillName
+                if skillLevelCache[skillName] then
+                    nameText = nameText .. " " .. skillLevelCache[skillName]
+                end
+
+                local texture = GetTradeSkillIcon(skillIndex)
+                if texture then
+                    -- Add spacer for icon (7 spaces)
+                    local spacer = "       "
+
+                    -- Measure width of countText to position icon correctly
+                    skillText:SetText(countText)
+                    local width = skillText:GetStringWidth()
+
+                    skillText:SetText(countText .. spacer .. nameText)
+
+                    icon:SetTexture(texture)
+                    icon:ClearAllPoints()
+                    icon:SetPoint("LEFT", skillText, "LEFT", width, 0)
+                    icon:Show()
+                else
+                    skillText:SetText(countText .. nameText)
+                end
+            else
+                -- Header: ensure default text is kept (TradeSkillFrame_Update handles it)
             end
+        else
+            -- Empty button
         end
     end
 end
 
 -- Hook for CraftFrame
 function AtlasTW.ProfessionHooks.OnCraftUpdate()
+    -- Only update if frame is visible to prevent stealing tabs
+    if not CraftFrame or not CraftFrame:IsVisible() then return end
+
     AtlasTW.ProfessionHooks.UpdateSideTabs(CraftFrame)
 
     local profName = GetCraftDisplaySkillLine()
@@ -318,15 +366,53 @@ function AtlasTW.ProfessionHooks.OnCraftUpdate()
         local craftButton = _G["Craft" .. i]
         local craftText = _G["Craft" .. i .. "Text"]
 
+        -- Create icon if needed
+        if not craftButton.atlasIcon then
+            craftButton.atlasIcon = craftButton:CreateTexture(nil, "ARTWORK")
+            craftButton.atlasIcon:SetWidth(12)
+            craftButton.atlasIcon:SetHeight(12)
+        end
+        local icon = craftButton.atlasIcon
+        icon:Hide()
+
         if craftIndex <= numCrafts then
             local craftName, craftSubSpellName, craftType, numAvailable, isExpanded = GetCraftInfo(craftIndex)
 
-            if craftType ~= "header" and skillLevelCache[craftName] then
-                local currentText = craftText:GetText()
-                if currentText and not string.find(currentText, "<") then
-                    craftText:SetText(currentText .. " " .. skillLevelCache[craftName])
+            if craftType ~= "header" then
+                -- Construct Text
+                local countText = ""
+                if numAvailable > 0 then
+                    countText = "[" .. numAvailable .. "] "
                 end
+
+                local nameText = craftName
+                if skillLevelCache[craftName] then
+                    nameText = nameText .. " " .. skillLevelCache[craftName]
+                end
+
+                local texture = GetCraftIcon(craftIndex)
+                if texture then
+                    -- Add spacer for icon (7 spaces)
+                    local spacer = "       "
+
+                    -- Measure width of countText
+                    craftText:SetText(countText)
+                    local width = craftText:GetStringWidth()
+
+                    craftText:SetText(countText .. spacer .. nameText)
+
+                    icon:SetTexture(texture)
+                    icon:ClearAllPoints()
+                    icon:SetPoint("LEFT", craftText, "LEFT", width, 0)
+                    icon:Show()
+                else
+                    craftText:SetText(countText .. nameText)
+                end
+            else
+                -- Header
             end
+        else
+            -- Empty
         end
     end
 end

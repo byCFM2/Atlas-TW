@@ -461,7 +461,7 @@ local craftingTable = {
 	EnchantingApprentice = {
 		{ name = L["Apprentice"], icon = "Trade_Engraving" },
 		{ id = 7421,              skill = { 1, 5, 7, 10 } }, --Runed Copper Rod
-		--{ id=7418, skill={1,70,90,110} }, --Enchant Bracer - Minor Health
+		{ id = 7418,              skill = { 1, 70, 90, 110 } }, --Enchant Bracer - Minor Health
 		{ id = 7428,              skill = { 1, 80, 100, 120 } }, --Enchant Bracer - Minor Deflect
 		{ id = 14293,             skill = { 10, 75, 95, 115 } }, --Lesser Magic Wand
 		{ id = 7420,              skill = { 15, 70, 90, 110 } }, --Enchant Chest - Minor Health
