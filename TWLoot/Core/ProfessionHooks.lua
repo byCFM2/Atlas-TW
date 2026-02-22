@@ -533,15 +533,37 @@ end
 -- Initialize Hooks
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
+frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 frame:SetScript("OnEvent", function()
-    if arg1 == "Blizzard_TradeSkillUI" then
-        hooksecurefunc("TradeSkillFrame_Update", AtlasTW.ProfessionHooks.OnTradeSkillUpdate)
-        AtlasTW.ProfessionHooks.CreateAtlasButton(TradeSkillFrame)
-        ScanProfession("GLOBAL") -- Start scanning immediately when UI loads
-    elseif arg1 == "Blizzard_CraftUI" then
-        hooksecurefunc("CraftFrame_Update", AtlasTW.ProfessionHooks.OnCraftUpdate)
-        AtlasTW.ProfessionHooks.CreateAtlasButton(CraftFrame)
-        ScanProfession("GLOBAL")
+    if event == "ADDON_LOADED" then
+        if arg1 == "Blizzard_TradeSkillUI" then
+            hooksecurefunc("TradeSkillFrame_Update", AtlasTW.ProfessionHooks.OnTradeSkillUpdate)
+            AtlasTW.ProfessionHooks.CreateAtlasButton(TradeSkillFrame)
+            ScanProfession("GLOBAL") -- Start scanning immediately when UI loads
+        elseif arg1 == "Blizzard_CraftUI" then
+            hooksecurefunc("CraftFrame_Update", AtlasTW.ProfessionHooks.OnCraftUpdate)
+            AtlasTW.ProfessionHooks.CreateAtlasButton(CraftFrame)
+            ScanProfession("GLOBAL")
+        end
+    elseif event == "PLAYER_ENTERING_WORLD" then
+        -- Check if already loaded (e.g. if loaded before AtlasTW or reloaded)
+        if IsAddOnLoaded("Blizzard_TradeSkillUI") then
+            -- Only hook if not already hooked (we assume button existence implies hooked)
+            if not _G["TradeSkillFrameAtlasButton"] then
+                hooksecurefunc("TradeSkillFrame_Update", AtlasTW.ProfessionHooks.OnTradeSkillUpdate)
+            end
+            -- Ensure button is created and updated (visibility checks inside)
+            AtlasTW.ProfessionHooks.CreateAtlasButton(TradeSkillFrame)
+            ScanProfession("GLOBAL")
+        end
+
+        if IsAddOnLoaded("Blizzard_CraftUI") then
+            if not _G["CraftFrameAtlasButton"] then
+                hooksecurefunc("CraftFrame_Update", AtlasTW.ProfessionHooks.OnCraftUpdate)
+            end
+            AtlasTW.ProfessionHooks.CreateAtlasButton(CraftFrame)
+            ScanProfession("GLOBAL")
+        end
     end
 end)
 

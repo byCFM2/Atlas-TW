@@ -626,12 +626,17 @@ function AtlasTW.OptionProfessionInfoOnClick()
         AtlasTW.ProfessionHooks.BuildCache()
     end
 
-    -- Update visibility of buttons immediately if frames are visible
-    if _G["TradeSkillFrameAtlasButton"] then
-        if AtlasTWOptions.ProfessionInfo then _G["TradeSkillFrameAtlasButton"]:Show() else _G["TradeSkillFrameAtlasButton"]:Hide() end
-    end
-    if _G["CraftFrameAtlasButton"] then
-        if AtlasTWOptions.ProfessionInfo then _G["CraftFrameAtlasButton"]:Show() else _G["CraftFrameAtlasButton"]:Hide() end
+    -- Update visibility of buttons immediately
+    if AtlasTW.ProfessionHooks and AtlasTW.ProfessionHooks.CreateAtlasButton then
+        if AtlasTWOptions.ProfessionInfo then
+            -- Re-create/Update buttons if frames exist
+            if TradeSkillFrame then AtlasTW.ProfessionHooks.CreateAtlasButton(TradeSkillFrame) end
+            if CraftFrame then AtlasTW.ProfessionHooks.CreateAtlasButton(CraftFrame) end
+        else
+            -- Hide buttons if they exist
+            if _G["TradeSkillFrameAtlasButton"] then _G["TradeSkillFrameAtlasButton"]:Hide() end
+            if _G["CraftFrameAtlasButton"] then _G["CraftFrameAtlasButton"]:Hide() end
+        end
     end
 
     -- Refresh UI
