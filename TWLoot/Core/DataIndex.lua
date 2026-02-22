@@ -17,10 +17,11 @@ local L = AtlasTW.Localization.UI
 local Colors = AtlasTW.Colors or {}
 
 -- Caches
-DataIndex.SourceCache = {} -- itemID -> sourceString
-DataIndex.SkillCache = {}  -- name -> skillString (e.g. "<1/50/100/150>")
-DataIndex.NameToID = {}    -- name -> itemID
-DataIndex.SpellID = {}     -- spellID -> sourceString
+DataIndex.SourceCache = {}   -- itemID -> sourceString
+DataIndex.LocationCache = {} -- itemID -> list of { type, page, boss, inst, displayName }
+DataIndex.SkillCache = {}    -- name -> skillString (e.g. "<1/50/100/150>")
+DataIndex.NameToID = {}      -- name -> itemID
+DataIndex.SpellID = {}       -- spellID -> sourceString
 
 -- State
 DataIndex.isIndexed = false
@@ -156,20 +157,45 @@ local function indexQuests(questList, instanceName)
                     if DataIndex.SourceCache[rID] == nil then
                         DataIndex.SourceCache[rID] = source
                     end
+
+                    -- Populate LocationCache
+                    if not DataIndex.LocationCache[rID] then DataIndex.LocationCache[rID] = {} end
+                    local cache = DataIndex.LocationCache[rID]
+                    local exists = false
+                    for _, loc in ipairs(cache) do
+                        if loc.displayName == source and loc.type == "quest" then
+                            exists = true
+                            break
+                        end
+                    end
+                    if not exists then
+                        table.insert(cache, {
+                            type = "quest",
+                            page = "Quest",
+                            boss = "Quest",
+                            inst = instanceName,
+                            displayName = source
+                        })
+                    end
                 end
             end
         end
     end
 end
 
-local function indexProfItems(spellList, profPages)
+local function indexProfItems(spellList, profPages, typeName)
     if not spellList then return end
     for spellID, data in pairs(spellList) do
+        local foundPageKey = nil
+        local foundProfName = nil
+
         for _, profEntry in ipairs(profPages) do
             local pageKey = profEntry.pageKey
             local profName = profEntry.name
             if AtlasTWLoot_Data[pageKey] and AtlasTW.LootUtils.IsItemInLootPage(AtlasTWLoot_Data[pageKey], spellID) then
                 DataIndex.SpellID[spellID] = profName
+                foundPageKey = pageKey
+                foundProfName = profName
                 break
             end
         end
@@ -178,16 +204,79 @@ local function indexProfItems(spellList, profPages)
                 DataIndex.SourceCache[data.item] = DataIndex.SpellID[spellID]
             end
         end
+
+        -- Populate LocationCache
+        if foundPageKey then
+            -- For the spell itself
+            local spellKey = "s" .. spellID
+            if not DataIndex.LocationCache[spellKey] then DataIndex.LocationCache[spellKey] = {} end
+            local cache = DataIndex.LocationCache[spellKey]
+            local exists = false
+            for _, loc in ipairs(cache) do
+                if loc.page == foundPageKey and loc.type == typeName then
+                    exists = true
+                    break
+                end
+            end
+            if not exists then
+                table.insert(cache, {
+                    type = typeName,
+                    page = foundPageKey,
+                    boss = nil,
+                    inst = nil,
+                    displayName = foundProfName
+                })
+            end
+
+            -- For the created item
+            if data.item then
+                if not DataIndex.LocationCache[data.item] then DataIndex.LocationCache[data.item] = {} end
+                local iCache = DataIndex.LocationCache[data.item]
+                local iExists = false
+                for _, loc in ipairs(iCache) do
+                    if loc.page == foundPageKey and loc.type == "item" then
+                        iExists = true
+                        break
+                    end
+                end
+                if not iExists then
+                    table.insert(iCache, {
+                        type = "item",
+                        page = foundPageKey,
+                        boss = nil,
+                        inst = nil,
+                        displayName = foundProfName
+                    })
+                end
+            end
+        end
     end
 end
 
-local function IndexList(list, source)
+local function IndexList(list, source, locationInfo)
     if not list then return end
     for i = 1, table.getn(list) do
         local el = list[i]
         local id = type(el) == "table" and (el.id or el[1]) or el
 
         if id and type(id) == "number" then
+            -- Determine type and cache key
+            local actualType = locationInfo.type or "item"
+            if locationInfo.forceType then
+                actualType = locationInfo.forceType
+            elseif AtlasTW.SpellDB then
+                if AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[id] then
+                    actualType = "enchant"
+                elseif AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[id] then
+                    actualType = "spell"
+                end
+            end
+
+            local cacheKey = id
+            if actualType == "spell" or actualType == "enchant" then
+                cacheKey = "s" .. id
+            end
+
             -- Name mapping for search (optional, used by Tooltip logic)
             if GetItemInfo then
                 local name = GetItemInfo(id)
@@ -195,13 +284,85 @@ local function IndexList(list, source)
             end
 
             -- Source mapping
-            local itemSource = source
-            if itemToSetMap[id] then
-                if not string.find(itemSource, itemToSetMap[id], 1, true) then
-                    itemSource = itemSource .. " (" .. itemToSetMap[id] .. ")"
+            if source then
+                local itemSource = source
+                if itemToSetMap[id] then
+                    if not string.find(itemSource, itemToSetMap[id], 1, true) then
+                        itemSource = itemSource .. " (" .. itemToSetMap[id] .. ")"
+                    end
+                end
+                if not DataIndex.SourceCache[cacheKey] then DataIndex.SourceCache[cacheKey] = itemSource end
+
+                -- Also index the created item if this ID is a spell (e.g. Poisons, some Crafts)
+                if (actualType == "spell" or actualType == "enchant") and AtlasTW.SpellDB then
+                    local createdItem
+                    if AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[id] then
+                        createdItem = AtlasTW.SpellDB.craftspells[id].item
+                    elseif AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[id] then
+                        createdItem = AtlasTW.SpellDB.enchants[id].item
+                    end
+
+                    if createdItem and type(createdItem) == "number" then
+                        if not DataIndex.SourceCache[createdItem] then DataIndex.SourceCache[createdItem] = itemSource end
+                    end
                 end
             end
-            if not DataIndex.SourceCache[id] then DataIndex.SourceCache[id] = itemSource end
+
+            -- Location mapping
+            if locationInfo then
+                if not DataIndex.LocationCache[cacheKey] then DataIndex.LocationCache[cacheKey] = {} end
+                local cache = DataIndex.LocationCache[cacheKey]
+
+                local exists = false
+                for _, loc in ipairs(cache) do
+                    if loc.page == locationInfo.page and loc.boss == locationInfo.boss and loc.inst == locationInfo.inst then
+                        exists = true
+                        break
+                    end
+                end
+                if not exists then
+                    local entry = {
+                        page = locationInfo.page,
+                        boss = locationInfo.boss,
+                        inst = locationInfo.inst,
+                        displayName = locationInfo.displayName,
+                        type = actualType
+                    }
+                    table.insert(cache, entry)
+                end
+
+                -- Also index the created item if this ID is a spell
+                if (actualType == "spell" or actualType == "enchant") and AtlasTW.SpellDB then
+                    local createdItem
+                    if AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[id] then
+                        createdItem = AtlasTW.SpellDB.craftspells[id].item
+                    elseif AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[id] then
+                        createdItem = AtlasTW.SpellDB.enchants[id].item
+                    end
+
+                    if createdItem and type(createdItem) == "number" then
+                        if not DataIndex.LocationCache[createdItem] then DataIndex.LocationCache[createdItem] = {} end
+                        local cCache = DataIndex.LocationCache[createdItem]
+                        local cExists = false
+                        for _, loc in ipairs(cCache) do
+                            if loc.page == locationInfo.page and loc.boss == locationInfo.boss and loc.inst == locationInfo.inst then
+                                cExists = true
+                                break
+                            end
+                        end
+                        if not cExists then
+                            local cLoc = {
+                                page = locationInfo.page,
+                                boss = locationInfo.boss,
+                                inst = locationInfo.inst,
+                                type = "item",
+                                displayName = locationInfo.displayName
+                            }
+                            table.insert(cCache, cLoc)
+                        end
+                    end
+                end
+            end
 
             -- Skill Level Processing (from ProfessionHooks)
             if type(el) == "table" and el.skill then
@@ -223,7 +384,12 @@ local function IndexList(list, source)
 
         -- Recurse into containers
         if type(el) == "table" and el.container then
-            IndexList(el.container, source)
+            local containerLoc = {}
+            if locationInfo then
+                for k, v in pairs(locationInfo) do containerLoc[k] = v end
+            end
+            containerLoc.forceType = "item"
+            IndexList(el.container, source, containerLoc)
         end
     end
 end
@@ -231,12 +397,6 @@ end
 -- Main Indexing Function
 function DataIndex.BuildIndex(incremental)
     if DataIndex.isIndexed or DataIndex.isIndexing then return end
-
-    if not incremental then
-        -- Fast/Synchronous build not recommended for heavy data, but supported
-        -- (Implement synchronous logic if needed, or just force incremental)
-        incremental = true
-    end
 
     DataIndex.isIndexing = true
 
@@ -302,24 +462,77 @@ function DataIndex.BuildIndex(incremental)
                     end
                 end
             end
-            indexProfItems(AtlasTW.SpellDB.enchants, profPages)
-            indexProfItems(AtlasTW.SpellDB.craftspells, profPages)
+            indexProfItems(AtlasTW.SpellDB.enchants, profPages, "enchant")
+            indexProfItems(AtlasTW.SpellDB.craftspells, profPages, "spell")
         end
     end)
 
     -- Step 4: Loot Tables (InstanceData)
+    local pageBelongsToInstance = {}
+
     table.insert(steps, function()
         if AtlasTW.InstanceData then
             for instanceKey, instanceData in pairs(AtlasTW.InstanceData) do
+                -- Helper to process an entry (boss/rep/key)
+                local function ProcessEntry(entry, defaultName)
+                    local lootTable = nil
+                    local pageKey = nil
+                    local bossName = entry.name or entry.Name or defaultName or "?"
+
+                    -- Determine loot table and page key
+                    if type(entry.items) == "table" then
+                        lootTable = entry.items
+                    elseif type(entry.loot) == "table" then
+                        lootTable = entry.loot
+                    elseif type(entry.items) == "string" and AtlasTWLoot_Data[entry.items] then
+                        pageKey = entry.items
+                        lootTable = AtlasTWLoot_Data[pageKey]
+                    elseif type(entry.loot) == "string" and AtlasTWLoot_Data[entry.loot] then
+                        pageKey = entry.loot
+                        lootTable = AtlasTWLoot_Data[pageKey]
+                    elseif type(entry.id) == "string" and AtlasTWLoot_Data[entry.id] then
+                        pageKey = entry.id
+                        lootTable = AtlasTWLoot_Data[pageKey]
+                    end
+
+                    if lootTable then
+                        local source = AtlasTW.LootUtils.GetLootTableSource(pageKey) or instanceKey
+                        -- If we have a pageKey, use it to get a better source name if possible,
+                        -- otherwise construct one from Instance + Boss
+                        if not source or source == instanceKey then
+                            local instName = (instanceData.Name or instanceKey)
+                            source = instName .. " - " .. bossName
+                        end
+
+                        IndexList(lootTable, source, {
+                            type = "item",
+                            page = pageKey or (instanceKey .. "_" .. bossName), -- Fallback page key
+                            boss = bossName,
+                            inst = instanceKey,
+                            displayName = source
+                        })
+
+                        if pageKey then
+                            pageBelongsToInstance[pageKey] = true
+                        end
+                    end
+                end
+
                 if instanceData.Bosses then
                     for _, boss in ipairs(instanceData.Bosses) do
-                        if type(boss.items) == "table" then
-                            local source = AtlasTW.LootUtils.GetLootTableSource(boss.id) or instanceKey
-                            IndexList(boss.items, source)
-                        elseif type(boss.loot) == "table" then
-                            local source = AtlasTW.LootUtils.GetLootTableSource(boss.id) or instanceKey
-                            IndexList(boss.loot, source)
-                        end
+                        ProcessEntry(boss, "?")
+                    end
+                end
+
+                if instanceData.Reputation then
+                    for _, rep in pairs(instanceData.Reputation) do
+                        ProcessEntry(rep, "Reputation")
+                    end
+                end
+
+                if instanceData.Keys then
+                    for _, keyEntry in pairs(instanceData.Keys) do
+                        ProcessEntry(keyEntry, "Keys")
                     end
                 end
             end
@@ -332,62 +545,80 @@ function DataIndex.BuildIndex(incremental)
         for k in pairs(AtlasTWLoot_Data) do table.insert(lootKeys, k) end
     end
 
-    local currentKeyIndex = 1
-    local CHUNK_SIZE = 10 -- Slightly reduced chunk size as we do more work (skill indexing)
+    -- Helper for loot tables
+    local function IndexOneLootTable(key)
+        -- Skip if already indexed as part of an instance
+        if pageBelongsToInstance[key] then return end
 
-    local function IndexLootTablesChunk()
-        local count = 0
-        local n = table.getn(lootKeys)
-        while currentKeyIndex <= n and count < CHUNK_SIZE do
-            local key = lootKeys[currentKeyIndex]
-            local tbl = AtlasTWLoot_Data[key]
-
-            if type(tbl) == "table" then
-                -- Source mapping
-                local isCraft = false
-                local craftPrefixes = { "Alchemy", "Smithing", "Smith", "Enchanting", "Engineering",
-                    "Leatherworking",
-                    "Tailoring", "Smelting", "Jewelcraft", "Cooking", "FirstAid", "Survival" }
-                for _, prefix in ipairs(craftPrefixes) do
-                    if string.find(key, "^" .. prefix) then
-                        isCraft = true
-                        break
-                    end
-                end
-
-                if not isCraft then
-                    local source = AtlasTW.LootUtils.GetLootPageDisplayName(key) or key
-                    IndexList(tbl, source)
-                else
-                    -- For craft pages, we still iterate to find skills
-                    IndexList(tbl, key)
+        local tbl = AtlasTWLoot_Data[key]
+        if type(tbl) == "table" then
+            -- Source mapping
+            local isCraft = false
+            local craftPrefixes = { "Alchemy", "Smithing", "Smith", "Enchanting", "Engineering",
+                "Leatherworking",
+                "Tailoring", "Smelting", "Jewelcraft", "Cooking", "FirstAid", "Survival" }
+            for _, prefix in ipairs(craftPrefixes) do
+                if string.find(key, "^" .. prefix) then
+                    isCraft = true
+                    break
                 end
             end
 
-            currentKeyIndex = currentKeyIndex + 1
-            count = count + 1
-        end
-
-        if currentKeyIndex <= n then
-            AtlasTW.Timer.Start(0.02, IndexLootTablesChunk)
-        else
-            FinalizeIndexing()
+            if not isCraft then
+                local source = AtlasTW.LootUtils.GetLootPageDisplayName(key) or key
+                IndexList(tbl, source, { type = "item", page = key, displayName = source })
+            else
+                -- For craft pages, we still iterate to find skills
+                local displayName = AtlasTW.LootUtils.GetLootPageDisplayName(key) or key
+                IndexList(tbl, nil, { type = "item", page = key, displayName = displayName })
+            end
         end
     end
 
-    -- Start execution
-    local currentStep = 1
-    local function RunNextStep()
-        if currentStep > table.getn(steps) then
-            AtlasTW.Timer.Start(0.02, IndexLootTablesChunk)
-            return
-        end
-        steps[currentStep]()
-        currentStep = currentStep + 1
-        AtlasTW.Timer.Start(0.02, RunNextStep)
-    end
+    if incremental then
+        local currentKeyIndex = 1
+        local CHUNK_SIZE = 10 -- Slightly reduced chunk size as we do more work (skill indexing)
 
-    RunNextStep()
+        local function IndexLootTablesChunk()
+            local count = 0
+            local n = table.getn(lootKeys)
+            while currentKeyIndex <= n and count < CHUNK_SIZE do
+                local key = lootKeys[currentKeyIndex]
+                IndexOneLootTable(key)
+                currentKeyIndex = currentKeyIndex + 1
+                count = count + 1
+            end
+
+            if currentKeyIndex <= n then
+                AtlasTW.Timer.Start(0.02, IndexLootTablesChunk)
+            else
+                FinalizeIndexing()
+            end
+        end
+
+        -- Start execution
+        local currentStep = 1
+        local function RunNextStep()
+            if currentStep > table.getn(steps) then
+                AtlasTW.Timer.Start(0.02, IndexLootTablesChunk)
+                return
+            end
+            steps[currentStep]()
+            currentStep = currentStep + 1
+            AtlasTW.Timer.Start(0.02, RunNextStep)
+        end
+
+        RunNextStep()
+    else
+        -- Synchronous execution
+        for _, step in ipairs(steps) do
+            step()
+        end
+        for _, key in ipairs(lootKeys) do
+            IndexOneLootTable(key)
+        end
+        FinalizeIndexing()
+    end
 end
 
 -- API: Get Item Source
@@ -396,7 +627,7 @@ function DataIndex.GetItemSource(itemID)
 
     -- Auto-start indexing if not ready
     if not DataIndex.isIndexed and not DataIndex.isIndexing then
-        DataIndex.CheckAndBuildIndex()
+        DataIndex.BuildIndex(false) -- Force sync build for search
     end
 
     local cached = DataIndex.SourceCache[itemID]
@@ -484,3 +715,110 @@ frame:SetScript("OnEvent", function()
     -- But only if options require it
     DataIndex.CheckAndBuildIndex()
 end)
+
+-- API: Find items by text (Search)
+function DataIndex.FindItems(text, options)
+    if not text then return {} end
+    text = string.lower(text)
+    -- Trim
+    text = string.gsub(text, "^%s*(.-)%s*$", "%1")
+    if text == "" then return {} end
+
+    local partial = (options and options.partial)
+    if string.len(text) < 3 then
+        partial = false
+    end
+
+    local types = options and options.types -- nil means all
+
+    local results = {}
+
+    -- Numeric search prep
+    local numericText = text
+    numericText = string.gsub(numericText, "^id", "")
+    numericText = string.gsub(numericText, "^ид", "")
+    numericText = string.gsub(numericText, "^%s*(.-)%s*$", "%1")
+    if numericText == "" then numericText = text end
+
+    -- Helper: is match?
+    local function isMatch(name, id)
+        -- Priority: ID match
+        if id then
+            local sid = tostring(id)
+            if partial then
+                if string.find(sid, numericText, 1, true) then return true end
+            else
+                if sid == numericText then return true end
+            end
+        end
+
+        -- Name match
+        if name then
+            local ln = string.lower(name)
+            if partial then
+                if string.find(ln, text, 1, true) then return true end
+            else
+                if ln == text then return true end
+            end
+        end
+        return false
+    end
+
+    -- Auto-start indexing if not ready
+    if not DataIndex.isIndexed and not DataIndex.isIndexing then
+        DataIndex.CheckAndBuildIndex()
+    end
+
+    -- Iterate LocationCache
+    for k, locations in pairs(DataIndex.LocationCache) do
+        local name = nil
+        local id = k
+        local isSpellKey = false
+
+        if type(k) == "string" and string.sub(k, 1, 1) == "s" then
+            id = tonumber(string.sub(k, 2))
+            isSpellKey = true
+        end
+
+        -- Resolve name
+        if isSpellKey and AtlasTW.SpellDB then
+            -- Check spells
+            if AtlasTW.SpellDB.enchants and AtlasTW.SpellDB.enchants[id] then
+                name = AtlasTW.SpellDB.enchants[id].name
+            elseif AtlasTW.SpellDB.craftspells and AtlasTW.SpellDB.craftspells[id] then
+                name = AtlasTW.SpellDB.craftspells[id].name
+            end
+        elseif not isSpellKey and GetItemInfo then
+            name = GetItemInfo(id)
+        end
+
+        if isMatch(name, id) then
+            for _, loc in ipairs(locations) do
+                if not types or types[loc.type] then
+                    local entryName = loc.displayName
+                    local entryInst = loc.page
+                    local sourcePage = loc.page
+
+                    if loc.boss and loc.inst then
+                        entryName = loc.boss
+                        entryInst = loc.inst
+                        sourcePage = loc.boss .. "|" .. loc.inst
+                    end
+
+                    -- Ensure entryName is not nil
+                    if not entryName then entryName = "?" end
+
+                    table.insert(results, {
+                        id,
+                        entryName,
+                        entryInst,
+                        loc.type,
+                        sourcePage
+                    })
+                end
+            end
+        end
+    end
+
+    return results
+end

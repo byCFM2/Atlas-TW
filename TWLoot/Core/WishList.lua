@@ -83,88 +83,6 @@ function AtlasTWLoot_ShowWishList()
 end
 
 ---
---- Helper function: find first location of ID (numeric) in instance database
---- @param targetId number - The target ID to search for
---- @return string|nil, string|nil - The element name and instance key if found
---- @usage local elem, inst = FindLocationById(12345)
----
-local function FindLocationById(targetId)
-	if not targetId or not AtlasTW or not AtlasTW.LootUtils or not AtlasTW.LootUtils.IterateAllLootItems then
-		return nil, nil
-	end
-
-	return AtlasTW.LootUtils.IterateAllLootItems(function(id, key, itemData)
-		if id == targetId or (type(itemData) == "table" and itemData.id == targetId) then
-			-- We found the item in loot page 'key'.
-			-- Now check if 'key' belongs to an instance.
-			local elem, inst = AtlasTW.LootUtils.GetBossAndInstanceFromPageKey(key)
-			if elem and inst then
-				return elem, inst
-			end
-		end
-	end)
-end
-
----
---- Helper function to get instance key by name or return key as is
---- @param instName string - The instance name to look up
---- @return string|nil - The instance key or nil if not found
---- @usage local key = _GetInstanceKeyByName("Molten Core")
----
-_GetInstanceKeyByName = function(instName)
-	if not instName or instName == "" then return nil end
-	if AtlasTW and AtlasTW.InstanceData then
-		if AtlasTW.InstanceData[instName] then return instName end
-		for key, inst in pairs(AtlasTW.InstanceData) do
-			if inst and inst.Name == instName then
-				return key
-			end
-		end
-	end
-	return nil
-end
-
----
---- Finds instance by element name and returns instance key and normalized element name
---- @param elemName string - The element name to search for
---- @return string|nil, string - The instance key and normalized element name
---- @usage local instKey, elemName = FindInstanceByElemName("Thunderfury")
----
-local function FindInstanceByElemName(elemName)
-	if not elemName or not AtlasTW or not AtlasTW.InstanceData then
-		return nil, elemName
-	end
-	for instKey, instanceData in pairs(AtlasTW.InstanceData) do
-		-- Search in reputations
-		if instanceData.Reputation then
-			for _, v in ipairs(instanceData.Reputation) do
-				if v.name == elemName or v.loot == elemName then
-					return instKey, (v.name or elemName)
-				end
-			end
-		end
-		-- Search in keys
-		if instanceData.Keys then
-			for _, v in ipairs(instanceData.Keys) do
-				if v.name == elemName or v.loot == elemName then
-					return instKey, (v.name or elemName)
-				end
-			end
-		end
-		-- Search in bosses
-		if instanceData.Bosses then
-			for _, bossData in ipairs(instanceData.Bosses) do
-				if bossData.name == elemName or bossData.id == elemName then
-					return instKey, (bossData.name or elemName)
-				end
-			end
-		end
-	end
-	return nil, elemName
-end
-
-
----
 --- Adds an item to the player's wish list with context information
 --- @param itemID number - The item/spell/enchant ID to add
 --- @param elemFromSearch string|table - Element name from search results
@@ -263,14 +181,18 @@ function AtlasTWLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, ty
 
 	-- If nothing came from search, try to determine location and source only for items
 	if (not currentElement or currentElement == "") and (not currentInstanceKey or currentInstanceKey == "") and elementType == "item" then
-		local foundElem, foundInst = FindLocationById(actualItemID)
-		currentElement = foundElem
-		currentInstanceKey = foundInst
-		-- If not found by ID, try by name
-		if not currentElement then
-			local instKeyByName, normalizedElem = FindInstanceByElemName(name)
-			currentElement = normalizedElem
-			currentInstanceKey = instKeyByName
+		if AtlasTW.DataIndex and AtlasTW.DataIndex.LocationCache then
+			-- Use centralized index
+			if not AtlasTW.DataIndex.isIndexed and not AtlasTW.DataIndex.isIndexing then
+				AtlasTW.DataIndex.CheckAndBuildIndex()
+			end
+			local locs = AtlasTW.DataIndex.LocationCache[actualItemID]
+			if locs and locs[1] then
+				-- Pick first location
+				local loc = locs[1]
+				currentElement = loc.boss or loc.displayName
+				currentInstanceKey = loc.inst or loc.page
+			end
 		end
 	end
 
@@ -459,7 +381,12 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 			else
 				currentCategory = L["Unknown"] or "Unknown"
 			end
-			extratext = ""
+			-- Subtitle for source mode: try to get meta-category (Crafting, Factions, etc.)
+			if inst and inst ~= "" then
+				extratext = AtlasTW.LootUtils.GetMetaCategoryForMenu(inst) or ""
+			else
+				extratext = ""
+			end
 		elseif sortMode == "Default" or cacheKey == "SearchResult" then
 			-- Default grouping (by boss/page)
 			local elemOK = (elem ~= nil and elem ~= "")

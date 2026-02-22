@@ -88,8 +88,31 @@ function AtlasTW.Interactions.ChatSayItemReagents(id, color, name, safe)
 
 	local channel, chatnumber, tListActivity = AtlasTW.Interactions.ChatGetDefaultChannelTarget()
 
-	-- Handle craft spells
-	if AtlasTW.SpellDB.craftspells[id] then
+
+	-- Handle enchantments
+	if AtlasTW.SpellDB.enchants[id] then
+		local enchantData = AtlasTW.SpellDB.enchants[id]
+		local enchantItem = enchantData["item"]
+		local enchantName = enchantData["name"] or GetItemInfo(enchantItem)
+		local enchantLink = YELLOW .. "|Henchant:" .. id .. "|h[" .. (enchantName or "Enchant") .. "]|h|r"
+
+		local message
+		if enchantItem then
+			message = L["To craft "] ..
+				AtlasTW.LootUtils.GetChatLink(enchantItem) .. L[" you need this: "] .. enchantLink
+		else
+			message = enchantLink
+		end
+
+		if tListActivity[1] and WIM_Windows and WIM_Windows[tListActivity[1]].is_visible then
+			AtlasTW.Interactions.ChatSend(message, channel, chatnumber)
+		elseif ChatFrameEditBox:IsVisible() then
+			ChatFrameEditBox:Insert(message)
+		else
+			AtlasTW.Interactions.ChatSend(message, channel, chatnumber)
+		end
+		-- Handle craft spells
+	elseif AtlasTW.SpellDB.craftspells[id] then
 		local spellData = AtlasTW.SpellDB.craftspells[id]
 		local craftitem = spellData.item
 
@@ -129,7 +152,8 @@ function AtlasTW.Interactions.ChatSayItemReagents(id, color, name, safe)
 		else
 			-- Handle spells without items (reagents only)
 			local spellName = spellData.name
-			local castMessage = L["To cast "] .. spellName .. L[" the following items are needed:"]
+			local spellLink = YELLOW .. "|Henchant:" .. id .. "|h[" .. (spellName or "Spell") .. "]|h|r"
+			local castMessage = L["To cast "] .. spellLink .. L[" the following items are needed:"]
 			AtlasTW.Interactions.ChatSend(castMessage, channel, chatnumber)
 
 			local chatline, itemCount = "", 0
@@ -154,31 +178,7 @@ function AtlasTW.Interactions.ChatSayItemReagents(id, color, name, safe)
 				end
 			end
 		end
-
-		-- Handle enchantments
-	elseif AtlasTW.SpellDB.enchants[id] then
-		local enchantData = AtlasTW.SpellDB.enchants[id]
-		local enchantItem = enchantData["item"]
-		local enchantName = enchantData["name"] or GetItemInfo(enchantItem)
-		local enchantLink = YELLOW .. "|Henchant:" .. id .. ":0:0:0|h[" .. (enchantName or "Enchant") .. "]|h|r"
-
-		local message
-		if enchantItem then
-			message = L["To craft "] ..
-				AtlasTW.LootUtils.GetChatLink(enchantItem) .. L[" you need this: "] .. enchantLink
-		else
-			message = enchantLink
-		end
-
-		if tListActivity[1] and WIM_Windows and WIM_Windows[tListActivity[1]].is_visible then
-			AtlasTW.Interactions.ChatSend(message, channel, chatnumber)
-		elseif ChatFrameEditBox:IsVisible() then
-			ChatFrameEditBox:Insert(message)
-		else
-			AtlasTW.Interactions.ChatSend(message, channel, chatnumber)
-		end
-
-		-- Handle regular items
+		-- Handle regular items	
 	else
 		local itemMessage
 		if safe then
@@ -670,7 +670,7 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 			local itemid = AtlasTW.SpellDB.enchants[elemid]["item"]
 			local itemlink = itemid and AtlasTW.LootUtils.GetChatLink(itemid)
 			local enchantName = AtlasTW.SpellDB.enchants[elemid]["name"] or GetItemInfo(itemid)
-			local enchantLink = YELLOW .. "|Henchant:" .. id .. ":0:0:0|h[" .. (enchantName or "Enchant") .. "]|h|r"
+			local enchantLink = YELLOW .. "|Henchant:" .. elemid .. "|h[" .. (enchantName or "Enchant") .. "]|h|r"
 
 			if WIM_EditBoxInFocus then
 				WIM_EditBoxInFocus:Insert(itemlink or enchantLink)
@@ -706,14 +706,14 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 						WIM_EditBoxInFocus:Insert(AtlasTW.LootUtils.GetChatLink(AtlasTW.SpellDB["craftspells"]
 							[this.elemID]["item"]))
 					else
-						WIM_EditBoxInFocus:Insert(name)
+						WIM_EditBoxInFocus:Insert(YELLOW .. "|Henchant:" .. this.elemID .. "|h[" .. fullname .. "]|h|r")
 					end
 				elseif ChatFrameEditBox:IsVisible() then
 					local craftitem = AtlasTW.SpellDB["craftspells"][this.elemID]["item"]
 					if craftitem ~= nil and craftitem ~= "" then
 						ChatFrameEditBox:Insert(AtlasTW.LootUtils.GetChatLink(craftitem)) -- Fix for Gurky's discord chat bot
 					else
-						ChatFrameEditBox:Insert(name)
+						ChatFrameEditBox:Insert(YELLOW .. "|Henchant:" .. this.elemID .. "|h[" .. fullname .. "]|h|r")
 					end
 				else
 					AtlasTW.Interactions.ChatSayItemReagents(this.elemID)
@@ -725,7 +725,7 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 						WIM_EditBoxInFocus:Insert(AtlasTW.LootUtils.GetChatLink(AtlasTW.SpellDB["craftspells"]
 							[this.elemID]["item"]))
 					else
-						WIM_EditBoxInFocus:Insert(name)
+						WIM_EditBoxInFocus:Insert(YELLOW .. "|Henchant:" .. this.elemID .. "|h[" .. fullname .. "]|h|r")
 					end
 				elseif ChatFrameEditBox:IsVisible() then
 					local craftitem = AtlasTW.SpellDB["craftspells"][this.elemID]["item"]
@@ -733,7 +733,7 @@ function AtlasTW.Interactions.Item_OnClick(arg1)
 						ChatFrameEditBox:Insert(AtlasTW.LootUtils.GetChatLink(AtlasTW.SpellDB["craftspells"]
 							[this.elemID]["item"]))
 					else
-						ChatFrameEditBox:Insert(name)
+						ChatFrameEditBox:Insert(YELLOW .. "|Henchant:" .. this.elemID .. "|h[" .. fullname .. "]|h|r")
 					end
 				else
 					local channel, chatnumber = AtlasTW.Interactions.ChatGetDefaultChannelTarget()
@@ -1100,23 +1100,13 @@ function AtlasTW.Interactions.ContainerItem_OnClick(arg1)
 	end
 
 	if IsShiftKeyDown() and arg1 == "LeftButton" then
-		-- if AtlasTWOptions.LootAllLinks then
-			if WIM_EditBoxInFocus then
-				WIM_EditBoxInFocus:Insert("\124" .. string.sub(color, 2) .. "|Hitem:" .. itemID ..
-					"\124h[" .. name .. "]|h|r")
-			elseif ChatFrameEditBox:IsVisible() then
-				ChatFrameEditBox:Insert("\124" .. string.sub(color, 2) .. "|Hitem:" .. itemID .. "\124h[" ..
-					name .. "]|h|r")
-			end
---[[ 		else
-			if WIM_EditBoxInFocus then
-				WIM_EditBoxInFocus:Insert("[" .. name .. "]")
-			elseif ChatFrameEditBox:IsVisible() then
-				ChatFrameEditBox:Insert("[" .. name .. "]")
-			else
-				AtlasTW.Interactions.ChatSayItemReagents(this.itemID, nil, name, true)
-			end
-		end ]]
+		if WIM_EditBoxInFocus then
+			WIM_EditBoxInFocus:Insert("\124" .. string.sub(color, 2) .. "|Hitem:" .. itemID ..
+				"\124h[" .. name .. "]|h|r")
+		elseif ChatFrameEditBox:IsVisible() then
+			ChatFrameEditBox:Insert("\124" .. string.sub(color, 2) .. "|Hitem:" .. itemID .. "\124h[" ..
+				name .. "]|h|r")
+		end
 	elseif IsControlKeyDown() and name then
 		DressUpItemLink(link)
 	elseif IsAltKeyDown() and itemID ~= 0 then
