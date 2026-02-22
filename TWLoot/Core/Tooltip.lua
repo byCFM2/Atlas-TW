@@ -514,14 +514,14 @@ AtlasTWLootTip.HookAddonOrVariable("AtlasTW", function()
         local original_OnShow = AtlasTW.OnShow
         AtlasTW.OnShow = function()
             if original_OnShow then original_OnShow() end
-            if AtlasTW.DataIndex and AtlasTW.DataIndex.BuildIndex then
-                AtlasTW.DataIndex.BuildIndex(true)
+            if AtlasTW.DataIndex and AtlasTW.DataIndex.CheckAndBuildIndex then
+                AtlasTW.DataIndex.CheckAndBuildIndex()
             end
         end
     else
         -- Fallback if AtlasTW not fully initialized yet
-        if AtlasTW.DataIndex and AtlasTW.DataIndex.BuildIndex then
-            AtlasTW.DataIndex.BuildIndex(true)
+        if AtlasTW.DataIndex and AtlasTW.DataIndex.CheckAndBuildIndex then
+            AtlasTW.DataIndex.CheckAndBuildIndex()
         end
     end
 end)

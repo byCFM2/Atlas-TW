@@ -278,13 +278,13 @@ local ProfessionTrainers = {
         -- Apprentice 1-75
         {name=LB["Aelira Dawnhand"], loc=LM["Alah'Thalas"], faction=ALLIANCE, level=L["Apprentice"]},
         -- Journeyman (1-150)
-        {name=LB["Dannelor"], loc=LZ["Darnassus"], faction=ALLIANCE, level=L["Journeyman"]},
-        {name=LB["Fremal Doohickey"], loc=LZ["Wetlands"].." "..LM["Menethil Harbor"], faction=ALLIANCE, level=L["Journeyman"]},
+        {name=LB["Byancie"], loc=LZ["Teldrassil"], faction=ALLIANCE, level=L["Journeyman"]},
+        {name=LB["Thamner Pol"], loc=LZ["Dun Morogh"], faction=ALLIANCE, level=L["Journeyman"]},
         {name=LB["Michelle Belle"], loc=LZ["Elwynn Forest"], faction=ALLIANCE, level=L["Journeyman"]},
+        {name=LB["Fremal Doohickey"], loc=LZ["Wetlands"].." "..LM["Menethil Harbor"], faction=ALLIANCE, level=L["Journeyman"]},
         {name=LB["Shaina Fuller"], loc=LZ["Stormwind City"], faction=ALLIANCE, level=L["Journeyman"]},
         {name=LB["Nissa Firestone"], loc=LZ["Ironforge"], faction=ALLIANCE, level=L["Journeyman"]},
-        {name=LB["Byancie"], loc=LZ["Darnassus"], faction=ALLIANCE, level=L["Journeyman"]},
-        {name=LB["Thamner Pol"], loc=LZ["Dun Morogh"], faction=ALLIANCE, level=L["Journeyman"]},
+        {name=LB["Dannelor"], loc=LZ["Darnassus"], faction=ALLIANCE, level=L["Journeyman"]},
         {name=LB["Rawrk"], loc=LZ["Durotar"], faction=HORDE, level=L["Journeyman"]},
         {name=LB["Nurse Neela"], loc=LZ["Tirisfal Glades"], faction=HORDE, level=L["Journeyman"]},
         {name=LB["Vira Younghoof"], loc=LZ["Mulgore"], faction=HORDE, level=L["Journeyman"]},

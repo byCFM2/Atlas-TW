@@ -114,6 +114,19 @@ function AtlasTW.ProfessionHooks.UpdateSideTabs(frame)
         tab:SetChecked(currentName == prof.name)
 
         tab:SetScript("OnClick", function()
+            -- Save position of the current window
+            local currentFrame
+            if TradeSkillFrame and TradeSkillFrame:IsVisible() then
+                currentFrame = TradeSkillFrame
+            elseif CraftFrame and CraftFrame:IsVisible() then
+                currentFrame = CraftFrame
+            end
+
+            if currentFrame then
+                local point, relativeTo, relativePoint, xOfs, yOfs = currentFrame:GetPoint()
+                AtlasTW.ProfessionHooks.SavedPosition = { point, relativeTo, relativePoint, xOfs, yOfs }
+            end
+
             -- Force close current window to prevent overlap and state confusion
             if TradeSkillFrame and TradeSkillFrame:IsVisible() then HideUIPanel(TradeSkillFrame) end
             if CraftFrame and CraftFrame:IsVisible() then HideUIPanel(CraftFrame) end
@@ -131,6 +144,14 @@ end
 function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
     -- Only update if frame is visible to prevent stealing tabs
     if not TradeSkillFrame or not TradeSkillFrame:IsVisible() then return end
+
+    -- Restore position if switching professions
+    if AtlasTW.ProfessionHooks.SavedPosition then
+        local p = AtlasTW.ProfessionHooks.SavedPosition
+        TradeSkillFrame:ClearAllPoints()
+        TradeSkillFrame:SetPoint(p[1], p[2], p[3], p[4], p[5])
+        AtlasTW.ProfessionHooks.SavedPosition = nil
+    end
 
     AtlasTW.ProfessionHooks.UpdateSideTabs(TradeSkillFrame)
 
@@ -203,6 +224,14 @@ end
 function AtlasTW.ProfessionHooks.OnCraftUpdate()
     -- Only update if frame is visible to prevent stealing tabs
     if not CraftFrame or not CraftFrame:IsVisible() then return end
+
+    -- Restore position if switching professions
+    if AtlasTW.ProfessionHooks.SavedPosition then
+        local p = AtlasTW.ProfessionHooks.SavedPosition
+        CraftFrame:ClearAllPoints()
+        CraftFrame:SetPoint(p[1], p[2], p[3], p[4], p[5])
+        AtlasTW.ProfessionHooks.SavedPosition = nil
+    end
 
     AtlasTW.ProfessionHooks.UpdateSideTabs(CraftFrame)
 
