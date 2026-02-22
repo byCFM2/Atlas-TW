@@ -1100,7 +1100,7 @@ function AtlasTW.Interactions.ContainerItem_OnClick(arg1)
 	end
 
 	if IsShiftKeyDown() and arg1 == "LeftButton" then
-		if AtlasTWOptions.LootAllLinks then
+		-- if AtlasTWOptions.LootAllLinks then
 			if WIM_EditBoxInFocus then
 				WIM_EditBoxInFocus:Insert("\124" .. string.sub(color, 2) .. "|Hitem:" .. itemID ..
 					"\124h[" .. name .. "]|h|r")
@@ -1108,7 +1108,7 @@ function AtlasTW.Interactions.ContainerItem_OnClick(arg1)
 				ChatFrameEditBox:Insert("\124" .. string.sub(color, 2) .. "|Hitem:" .. itemID .. "\124h[" ..
 					name .. "]|h|r")
 			end
-		else
+--[[ 		else
 			if WIM_EditBoxInFocus then
 				WIM_EditBoxInFocus:Insert("[" .. name .. "]")
 			elseif ChatFrameEditBox:IsVisible() then
@@ -1116,7 +1116,7 @@ function AtlasTW.Interactions.ContainerItem_OnClick(arg1)
 			else
 				AtlasTW.Interactions.ChatSayItemReagents(this.itemID, nil, name, true)
 			end
-		end
+		end ]]
 	elseif IsControlKeyDown() and name then
 		DressUpItemLink(link)
 	elseif IsAltKeyDown() and itemID ~= 0 then

@@ -2,7 +2,6 @@ local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 AtlasTW.ProfessionHooks = AtlasTW.ProfessionHooks or {}
 
-local L = AtlasTW.Localization.UI
 local LS = AtlasTW.Localization.Spells
 
 -- Configuration
@@ -12,158 +11,21 @@ local TABS_ORDER = {
     "Cooking", "First Aid", "Mining", "Poisons", "Smelting"
 }
 
--- Cache for skill levels: Name -> "<1/50/100/150>"
-local skillLevelCache = {}
-local scannedProfessions = {}
-local processingQueue = {}
-local isProcessing = false
+-- Cache logic moved to Core/DataIndex.lua
+-- This module now only handles UI hooking and display
 
--- Tooltip scanner
-local scanner = CreateFrame("GameTooltip", "AtlasTWProfessionScanner", nil, "GameTooltipTemplate")
-scanner:SetOwner(WorldFrame, "ANCHOR_NONE")
-
--- Helper: Get Names from ID (returns list of potential names)
-function AtlasTW.ProfessionHooks.GetNamesFromID(id)
-    if not id then return {} end
-    local names = {}
-    local seen = {}
-
-    local function addName(n)
-        if n and n ~= "" and not seen[n] then
-            table.insert(names, n)
-            seen[n] = true
+-- Register callback to update UI when indexing progresses
+if AtlasTW.DataIndex and AtlasTW.DataIndex.RegisterCallback then
+    AtlasTW.DataIndex.RegisterCallback(function()
+        if TradeSkillFrame and TradeSkillFrame:IsVisible() then
+            AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
         end
-    end
-
-    -- 1. Check SpellDB
-    if AtlasTW.SpellDB then
-        local function checkDB(db)
-            if db and db[id] then
-                if db[id].name then
-                    addName(db[id].name)
-                elseif db[id].item then
-                    -- Use scanner to get item name (reliable even if not cached)
-                    scanner:SetOwner(WorldFrame, "ANCHOR_NONE")
-                    scanner:ClearLines()
-                    if pcall(scanner.SetHyperlink, scanner, "item:" .. db[id].item) then
-                        local textObj = _G["AtlasTWProfessionScannerTextLeft1"]
-                        if textObj then
-                            addName(textObj:GetText())
-                        end
-                    end
-                end
-            end
+        if CraftFrame and CraftFrame:IsVisible() then
+            AtlasTW.ProfessionHooks.OnCraftUpdate()
         end
-
-        checkDB(AtlasTW.SpellDB.enchants)
-        checkDB(AtlasTW.SpellDB.craftspells)
-    end
-
-    -- 2. Tooltip Scan (Spell)
-    scanner:SetOwner(WorldFrame, "ANCHOR_NONE")
-    scanner:ClearLines()
-    if scanner.SetHyperlink then
-        if pcall(scanner.SetHyperlink, scanner, "spell:" .. id) then
-            local textObj = _G["AtlasTWProfessionScannerTextLeft1"]
-            if textObj then
-                local text = textObj:GetText()
-                if text then
-                    addName(text)
-                    -- Try to strip Rank if present (e.g. "Instant Poison Rank 1" -> "Instant Poison")
-                    -- This helps matching with TradeSkill names which often omit rank
-                    local pattern = L["Rank Pattern"] or " %a+ %d+$"
-                    local noRank = string.gsub(text, pattern, "") -- Basic " Rank N" matching
-                    if noRank ~= text then addName(noRank) end
-                end
-            end
-        end
-    end
-
-    return names
+    end)
 end
 
--- Helper: Format skill levels
-local function FormatSkillLevels(skillTable, id)
-    if not skillTable or type(skillTable) ~= "table" then return "" end
-    local Colors = AtlasTW.Colors
-    local O = Colors.ORANGE or "|cffFF8000"
-    local Y = Colors.YELLOW or "|cffFFFF00"
-    local G = Colors.GREEN or "|cff00FF00"
-    local Gr = Colors.GREY or "|cff808080"
-    local W = "|r"
-
-    local s1 = (skillTable[1] and (O .. skillTable[1] .. W)) or "?"
-    local s2 = (skillTable[2] and (Y .. skillTable[2] .. W)) or "?"
-    local s3 = (skillTable[3] and (G .. skillTable[3] .. W)) or "?"
-    local s4 = (skillTable[4] and (Gr .. skillTable[4] .. W)) or "?"
-
-    return "<" .. s1 .. "/" .. s2 .. "/" .. s3 .. "/" .. s4 .. ">"
-end
-
--- Helper: Process Queue
-local function ProcessQueue()
-    if not isProcessing then return end
-
-    local startTime = GetTime()
-    local processed = 0
-
-    while table.getn(processingQueue) > 0 do
-        local task = table.remove(processingQueue, 1)
-
-        local names = AtlasTW.ProfessionHooks.GetNamesFromID(task.id)
-        local skillText = FormatSkillLevels(task.skill, task.id)
-
-        for _, name in ipairs(names) do
-            skillLevelCache[name] = skillText
-        end
-
-        processed = processed + 1
-
-        -- Yield every 20ms or 50 items to avoid freeze
-        if (GetTime() - startTime > 0.02) or (processed > 50) then
-            if AtlasTW.Timer and AtlasTW.Timer.Start then
-                AtlasTW.Timer.Start(0.05, ProcessQueue)
-            else
-                -- Fallback if Timer not available (shouldn't happen)
-                ProcessQueue()
-            end
-            return
-        end
-    end
-
-    isProcessing = false
-
-    -- Refresh UI when done
-    if TradeSkillFrame and TradeSkillFrame:IsVisible() then
-        AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
-    end
-    if CraftFrame and CraftFrame:IsVisible() then
-        AtlasTW.ProfessionHooks.OnCraftUpdate()
-    end
-end
-
--- Helper: Queue Profession for Scanning
-local function ScanProfession(profName)
-    if scannedProfessions[profName] then return end
-    scannedProfessions[profName] = true
-
-    if not AtlasTWLoot_Data then return end
-
-    for key, data in pairs(AtlasTWLoot_Data) do
-        if type(data) == "table" and type(key) == "string" then
-            for _, recipe in ipairs(data) do
-                if recipe.id and recipe.skill then
-                    table.insert(processingQueue, { id = recipe.id, skill = recipe.skill })
-                end
-            end
-        end
-    end
-
-    if not isProcessing and table.getn(processingQueue) > 0 then
-        isProcessing = true
-        ProcessQueue()
-    end
-end
 
 -- Side Tabs Implementation
 local sideTabs = {}
@@ -179,9 +41,9 @@ function AtlasTW.ProfessionHooks.UpdateSideTabs(frame)
 
     -- Scan spellbook
     for i = 1, numTabs do
-        local name, texture, offset, numSpells = GetSpellTabInfo(i)
+        local _, _, offset, numSpells = GetSpellTabInfo(i)
         for s = offset + 1, offset + numSpells do
-            local spellName, rank = GetSpellName(s, "BOOKTYPE_SPELL")
+            local spellName, _ = GetSpellName(s, "BOOKTYPE_SPELL")
             local texture = GetSpellTexture(s, "BOOKTYPE_SPELL")
 
             local found = false
@@ -272,11 +134,6 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
 
     AtlasTW.ProfessionHooks.UpdateSideTabs(TradeSkillFrame)
 
-    local profName = GetTradeSkillLine()
-    if profName and not scannedProfessions["GLOBAL"] then
-        ScanProfession("GLOBAL") -- Scan all
-    end
-
     -- Check if Profession Info option is enabled
     if not AtlasTWOptions or not AtlasTWOptions.ProfessionInfo then
         return
@@ -310,8 +167,9 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
                 end
 
                 local nameText = skillName
-                if skillLevelCache[skillName] then
-                    nameText = nameText .. " " .. skillLevelCache[skillName]
+                local levels = AtlasTW.DataIndex and AtlasTW.DataIndex.GetSkillLevels(skillName)
+                if levels then
+                    nameText = nameText .. " " .. levels
                 end
 
                 local texture = GetTradeSkillIcon(skillIndex)
@@ -348,11 +206,6 @@ function AtlasTW.ProfessionHooks.OnCraftUpdate()
 
     AtlasTW.ProfessionHooks.UpdateSideTabs(CraftFrame)
 
-    local profName = GetCraftDisplaySkillLine()
-    if profName and not scannedProfessions["GLOBAL"] then
-        ScanProfession("GLOBAL")
-    end
-
     -- Check if Profession Info option is enabled
     if not AtlasTWOptions or not AtlasTWOptions.ProfessionInfo then
         return
@@ -386,8 +239,9 @@ function AtlasTW.ProfessionHooks.OnCraftUpdate()
                 end
 
                 local nameText = craftName
-                if skillLevelCache[craftName] then
-                    nameText = nameText .. " " .. skillLevelCache[craftName]
+                local levels = AtlasTW.DataIndex and AtlasTW.DataIndex.GetSkillLevels(craftName)
+                if levels then
+                    nameText = nameText .. " " .. levels
                 end
 
                 local texture = GetCraftIcon(craftIndex)
@@ -539,11 +393,9 @@ frame:SetScript("OnEvent", function()
         if arg1 == "Blizzard_TradeSkillUI" then
             hooksecurefunc("TradeSkillFrame_Update", AtlasTW.ProfessionHooks.OnTradeSkillUpdate)
             AtlasTW.ProfessionHooks.CreateAtlasButton(TradeSkillFrame)
-            ScanProfession("GLOBAL") -- Start scanning immediately when UI loads
         elseif arg1 == "Blizzard_CraftUI" then
             hooksecurefunc("CraftFrame_Update", AtlasTW.ProfessionHooks.OnCraftUpdate)
             AtlasTW.ProfessionHooks.CreateAtlasButton(CraftFrame)
-            ScanProfession("GLOBAL")
         end
     elseif event == "PLAYER_ENTERING_WORLD" then
         -- Check if already loaded (e.g. if loaded before AtlasTW or reloaded)
@@ -554,7 +406,6 @@ frame:SetScript("OnEvent", function()
             end
             -- Ensure button is created and updated (visibility checks inside)
             AtlasTW.ProfessionHooks.CreateAtlasButton(TradeSkillFrame)
-            ScanProfession("GLOBAL")
         end
 
         if IsAddOnLoaded("Blizzard_CraftUI") then
@@ -562,7 +413,6 @@ frame:SetScript("OnEvent", function()
                 hooksecurefunc("CraftFrame_Update", AtlasTW.ProfessionHooks.OnCraftUpdate)
             end
             AtlasTW.ProfessionHooks.CreateAtlasButton(CraftFrame)
-            ScanProfession("GLOBAL")
         end
     end
 end)

@@ -345,8 +345,6 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["has been reset!"] = true,
     ["Reset Settings"] = true,
     ["Default settings applied!"] = true,
-    ["Safe Chat Links |cff1eff00(recommended)|r"] = true,
-    ["Enable all Chat Links"] = true,
     ["Use EquipCompare"] = true,
     ["Make Loot Table Opaque"] = true,
     ["Show Source on Tooltips"] = true,

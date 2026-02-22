@@ -400,27 +400,6 @@ do
     -- Checkbox configuration
     local lootCheckboxes = {
         {
-            name = "AtlasTWOptionSafeLinks",
-            text = L["Safe Chat Links |cff1eff00(recommended)|r"],
-            script = function()
-                AtlasTW.OptionSafeLinksOnClick()
-            end
-        },
-        {
-            name = "AtlasTWOptionAllLinks",
-            text = L["Enable all Chat Links"],
-            script = function()
-                AtlasTW.OptionAllLinksOnClick()
-            end
-        },
-        {
-            name = "AtlasTWOptionShowSource",
-            text = L["Show Source on Tooltips"],
-            script = function()
-                AtlasTW.OptionShowSourceOnClick()
-            end
-        },
-        {
             name = "AtlasTWOptionShowPanel",
             text = L["Show Loot Panel with AtlasTW"],
             script = function()
@@ -453,6 +432,13 @@ do
             text = L["Show Icon in Tooltips"],
             script = function()
                 AtlasTW.OptionTooltipIconOnClick()
+            end
+        },
+        {
+            name = "AtlasTWOptionShowSource",
+            text = L["Show Source on Tooltips"],
+            script = function()
+                AtlasTW.OptionShowSourceOnClick()
             end
         },
         {
@@ -499,6 +485,9 @@ do
         reagentRowsSlider:SetScript("OnValueChanged", function()
             AtlasOptions_UpdateSlider(L["Reagent Rows"])
             AtlasTWOptions.ReagentRows = this:GetValue()
+            if AtlasTW.DataIndex and AtlasTW.DataIndex.CheckAndBuildIndex then
+                AtlasTW.DataIndex.CheckAndBuildIndex()
+            end
         end)
 
         -- Profession Filters

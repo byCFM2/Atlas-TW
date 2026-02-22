@@ -313,8 +313,6 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["has been reset!"] = "已重置！",
     ["Reset Settings"] = "重置设置",
     ["Default settings applied!"] = "已应用默认设置！",
-    ["Safe Chat Links |cff1eff00(recommended)|r"] = "安全聊天链接 |cff1eff00（推荐）|r",
-    ["Enable all Chat Links"] = "启用所有聊天链接",
     ["Use EquipCompare"] = "使用 EquipCompare",
     ["Make Loot Table Opaque"] = "使掉落表不透明",
     ["Show IDs in Tooltips"] = "在提示中显示 ID",

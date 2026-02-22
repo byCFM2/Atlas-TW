@@ -238,7 +238,7 @@ function AtlasTW.OptionsInit()
             ["Mining"] = true,
         }
     end
-    if AtlasTWOptions.ProfessionInfo == nil then AtlasTWOptions.ProfessionInfo = true end
+    if AtlasTWOptions.ProfessionInfo == nil then AtlasTWOptions.ProfessionInfo = false end
 
     if AtlasTWOptions.QuestWithAtlas then
         AtlasTW.Quest.UI_Main.Frame:Show()
@@ -302,8 +302,6 @@ function AtlasTW.OptionsInit()
     AtlasTWOptionAutoQuery:SetChecked(AtlasTWOptions.QuestAutoQuery)
 
     -- Loot Options
-    AtlasTWOptionSafeLinks:SetChecked(AtlasTWOptions.LootSafeLinks)
-    AtlasTWOptionAllLinks:SetChecked(AtlasTWOptions.LootAllLinks)
     AtlasTWOptionShowSource:SetChecked(AtlasTWOptions.LootShowSource)
     AtlasTWOptionEquipCompare:SetChecked(AtlasTWOptions.LootEquipCompare)
     AtlasTWOptionOpaque:SetChecked(AtlasTWOptions.LootOpaque)
@@ -391,8 +389,6 @@ function AtlasTW.OptionDefaultSettings()
         QuestColourCheck = true,
         QuestCheckQuestlog = true,
         QuestAutoQuery = true,
-        LootSafeLinks = true,
-        LootAllLinks = false,
         LootShowSource = true,
         LootEquipCompare = false,
         LootOpaque = true,
@@ -500,38 +496,6 @@ end
 function AtlasTW.OptionAutoQueryOnClick()
     AtlasTWOptions.QuestAutoQuery = not AtlasTWOptions.QuestAutoQuery
     AtlasTWOptionAutoQuery:SetChecked(AtlasTWOptions.QuestAutoQuery)
-    AtlasTW.OptionsInit()
-end
-
----
---- Toggles safe links feature for loot items
---- Enables safe linking mode and disables all links mode when activated
---- @return nil
---- @usage AtlasTW.OptionSafeLinksOnClick() -- Called by checkbox click
----
-function AtlasTW.OptionSafeLinksOnClick()
-    AtlasTWOptions.LootSafeLinks = not AtlasTWOptions.LootSafeLinks
-    if AtlasTWOptions.LootSafeLinks then
-        AtlasTWOptions.LootAllLinks = false
-    else
-        AtlasTWOptions.LootAllLinks = true
-    end
-    AtlasTW.OptionsInit()
-end
-
----
---- Toggles all links feature for loot items
---- Enables all links mode and disables safe links mode when activated
---- @return nil
---- @usage AtlasTW.OptionAllLinksOnClick() -- Called by checkbox click
----
-function AtlasTW.OptionAllLinksOnClick()
-    AtlasTWOptions.LootAllLinks = not AtlasTWOptions.LootAllLinks
-    if AtlasTWOptions.LootAllLinks then
-        AtlasTWOptions.LootSafeLinks = false
-    else
-        AtlasTWOptions.LootSafeLinks = true
-    end
     AtlasTW.OptionsInit()
 end
 

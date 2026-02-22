@@ -1793,7 +1793,7 @@ local craftingTable = {
 		{ id = 10566,          skill = { 245, 265, 275, 285 } }, --Wild Leather Boots
 		{ id = 22331,          skill = { 250, 250, 250, 250 } }, --Rugged Leather
 		{ id = 19047,          skill = { 250, 250, 255, 260 } }, --Cured Rugged Hide
-		{ id = 19058,          skill = { 250, 255, 265, 275 } }, --Rugged Armor Kit
+		{ id = 19058,          skill = { 250, 255, 260, 275 } }, --Rugged Armor Kit
 		{ name = L["Artisan"], icon = "INV_Misc_ArmorKit_17" },
 		{ id = 10647,          skill = { 250, 270, 280, 290 } }, --Feathered Breastplate
 		{ id = 10570,          skill = { 250, 270, 280, 290 } }, --Tough Scorpid Helm
@@ -2292,7 +2292,7 @@ local craftingTable = {
 		{ id = 3780,        skill = { 150, 170, 180, 190 } }, --Heavy Armor Kit
 		{ id = 55,          skill = { 175, 175, 175, 175 } }, --Dragonmaw Armor Kit 1.18
 		{ id = 10487,       skill = { 200, 220, 230, 240 } }, --Thick Armor Kit
-		{ id = 19058,       skill = { 250, 255, 265, 275 } }, --Rugged Armor Kit
+		{ id = 19058,       skill = { 250, 255, 260, 275 } }, --Rugged Armor Kit
 		{ id = 22727,       skill = { 300, 320, 330, 340 } }, --Core Armor Kit
 		{ id = 57115,       skill = { 300, 320, 330, 340 } }, --Enchanted Armor Kit
 	},
