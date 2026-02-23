@@ -286,6 +286,13 @@ local function findInMenu(menu, current)
 	end
 
 	local result = {}
+	if menu[idx] and menu[idx].name then
+		-- Strip color codes for the title so it displays cleanly in the header
+		local cleanName = string.gsub(menu[idx].name, "|c%x%x%x%x%x%x%x%x", "")
+		cleanName = string.gsub(cleanName, "|r", "")
+		result.Title = cleanName
+	end
+
 	-- Search for previous item among valid elements
 	for j = idx - 1, 1, -1 do
 		local pe = menu[j]

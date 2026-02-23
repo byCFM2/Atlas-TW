@@ -163,7 +163,7 @@ function AtlasTWLoot_AddToWishlist(itemID, elemFromSearch, instKeyFromSearch, ty
 			else
 				-- It's just a loot page key (like craft)
 				currentInstanceKey = srcFromSearch
-				currentElement = AtlasTWLoot_GetLootPageDisplayName(srcFromSearch)
+				currentElement = AtlasTWLoot_GetLootPageDisplayName(srcFromSearch) or srcFromSearch
 			end
 		end
 	end
@@ -316,7 +316,22 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 			end
 		end
 
-		local function GetSourceNameLocal(instKey)
+		local function GetSourceNameLocal(v)
+			local instKey = v.instance or v[3]
+			local src = v.sourcePage or v[5]
+
+			if (not instKey or instKey == "") and src and src ~= "" then
+				if string.find(src, "|") then
+					local b, ik = AtlasTW.LootUtils.Strsplit("|", src)
+					if type(ik) == "table" then ik = ik[1] end
+					if type(ik) == "string" and ik ~= "" then
+						instKey = ik
+					end
+				else
+					instKey = src
+				end
+			end
+
 			if not instKey or instKey == "" then return L["Unknown"] or "Unknown" end
 
 			-- 1. Try InstanceData (for instances)
@@ -334,8 +349,8 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 		end
 
 		table.sort(listToProcess, function(a, b)
-			local instA = GetSourceNameLocal(a.instance or a[3])
-			local instB = GetSourceNameLocal(b.instance or b[3])
+			local instA = GetSourceNameLocal(a)
+			local instB = GetSourceNameLocal(b)
 			if instA ~= instB then
 				return instA < instB
 			end
@@ -369,21 +384,36 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 
 		if sortMode == "Source" and cacheKey == "WishList" then
 			-- Grouping by source
-			if inst and inst ~= "" then
+			local effectiveInst = inst
+
+			-- If inst is completely missing, try to extract it from src
+			if (not inst or inst == "") and src and src ~= "" then
+				if string.find(src, "|") then
+					local b, ik = AtlasTW.LootUtils.Strsplit("|", src)
+					if type(ik) == "table" then ik = ik[1] end
+					if type(ik) == "string" and ik ~= "" then
+						effectiveInst = ik
+					end
+				else
+					effectiveInst = src
+				end
+			end
+
+			if effectiveInst and effectiveInst ~= "" then
 				-- Try InstanceData first
-				if AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[inst] and AtlasTW.InstanceData[inst].Name then
-					currentCategory = AtlasTW.InstanceData[inst].Name
+				if AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[effectiveInst] and AtlasTW.InstanceData[effectiveInst].Name then
+					currentCategory = AtlasTW.InstanceData[effectiveInst].Name
 				else
 					-- Fallback to loot page display name (professions, events etc)
-					local displayName = AtlasTWLoot_GetLootPageDisplayName(inst)
-					currentCategory = displayName or inst
+					local displayName = AtlasTWLoot_GetLootPageDisplayName(effectiveInst)
+					currentCategory = displayName or effectiveInst
 				end
 			else
 				currentCategory = L["Unknown"] or "Unknown"
 			end
 			-- Subtitle for source mode: try to get meta-category (Crafting, Factions, etc.)
-			if inst and inst ~= "" then
-				extratext = AtlasTW.LootUtils.GetMetaCategoryForMenu(inst) or ""
+			if effectiveInst and effectiveInst ~= "" then
+				extratext = AtlasTW.LootUtils.GetMetaCategoryForMenu(effectiveInst) or ""
 			else
 				extratext = ""
 			end
@@ -451,6 +481,33 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 				end
 				-- If couldn't calculate - use neutral header
 				currentCategory = predefinedHeaderName or L["Search Result"]
+			end
+
+			-- Now that currentCategory is determined, securely prepend the profession name if needed
+			local workingInst = inst
+			if not workingInst or workingInst == "" then
+				-- If no inst, try extracting it similarly from src
+				if src and src ~= "" then
+					if string.find(src, "|") then
+						local b, ik = AtlasTW.LootUtils.Strsplit("|", src)
+						if type(ik) == "table" then ik = ik[1] end
+						if type(ik) == "string" and ik ~= "" then
+							workingInst = ik
+						end
+					else
+						workingInst = src
+					end
+				end
+			end
+			if workingInst and workingInst ~= "" then
+				local profName = GetProfessionByLootPageKey(workingInst)
+				if profName and profName ~= "" then
+					local prefix = profName .. ": "
+					if currentCategory and string.sub(currentCategory, 1, string.len(prefix)) ~= prefix then
+						currentCategory = prefix .. currentCategory
+					end
+					predefinedExtraText = profName
+				end
 			end
 
 			-- Pre-calculate extratext for forming category key
@@ -615,7 +672,7 @@ function AtlasTWLoot_CategorizeWishList(wishList)
 			end
 		end
 		if src2 then
-			table.insert(displayItem, src2)
+			displayItem[5] = src2
 		end
 		table.insert(result, displayItem)
 	end
@@ -648,6 +705,12 @@ function AtlasTWLoot_GetWishListSubheadingBoss(bossName, instanceName)
 		if AtlasTW and AtlasTW.InstanceData and AtlasTW.InstanceData[instanceName] and AtlasTW.InstanceData[instanceName].Name then
 			return AtlasTW.InstanceData[instanceName].Name
 		end
+
+		local displayName = AtlasTWLoot_GetLootPageDisplayName(instanceName)
+		if displayName and displayName ~= instanceName then
+			return displayName
+		end
+
 		return instanceName
 	end
 

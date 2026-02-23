@@ -178,7 +178,7 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 		end
 	end
 	local instanceKey = (AtlasTWLootItemsFrame and type(AtlasTWLootItemsFrame.StoredMenu) == "string") and
-	AtlasTWLootItemsFrame.StoredMenu or nil
+		AtlasTWLootItemsFrame.StoredMenu or nil
 	local dataSource = AtlasTW.DataResolver.GetLootByElemName(dataID, instanceKey) or AtlasTWLootItemsFrame.StoredMenu
 
 	-- Special handling for wish list and search results
@@ -220,7 +220,7 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 			AtlasTWLootScrollHint:SetAlpha(0)
 		end
 		-- Set scroll bar range
-		local scrollLines =  math.floor(totalItems / 30) * 15 + math.min(math.mod(totalItems, 30), 15)
+		local scrollLines = math.floor(totalItems / 30) * 15 + math.min(math.mod(totalItems, 30), 15)
 
 		AtlasTWLootScrollBar.scrollMax = math.max(0, scrollLines - 15)
 		FauxScrollFrame_Update(AtlasTWLootScrollBar, scrollLines, 15, 15)
@@ -575,9 +575,9 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 		_G["AtlasTWLootItemsFrame_BACK"].title = AtlasTWLootItemsFrame.StoredBackMenuName
 	end
 
+	local nav = nil
 	if dataID ~= "SearchResult" and dataID ~= "WishList" then
 		-- Navigation is handled except for Search/WishList
-		local nav = nil
 		-- Check if this is a rare mob
 		local rareMobsData = AtlasTW.InstanceData.RareMobs
 		if rareMobsData and rareMobsData.Bosses then
@@ -671,7 +671,9 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 	elseif dataID == "WishList" then
 		AtlasTWLoot_LootPageName:SetText(L["Wish List"])
 	else
-		AtlasTWLoot_LootPageName:SetText(dataID and type(dataID) == "string" and dataID or (dataID and dataID.menuName))
+		local pageTitle = nav and nav.Title or
+		(dataID and type(dataID) == "string" and dataID or (dataID and dataID.menuName))
+		AtlasTWLoot_LootPageName:SetText(pageTitle)
 	end
 
 	--Hide the container frame
