@@ -579,17 +579,17 @@ function AtlasTW.Quest.MarkQuestComplete(questName)
                         local questKey = "Completed_" .. instanceName .. "_Quest_" .. i .. "_" .. faction
                         AtlasTWCharDB[questKey] = 1
                         AtlasTW.Q[questKey] = 1
-                        found = true
+                        if AtlasTW.QCurrentInstance == instanceName then
+                            found = true
+                        end
                         break
                     end
                 end
             end
-            if found then break end
         end
-        if found then break end
     end
 
-    if found and AtlasTW.QCurrentInstance then
+    if found then
         AtlasTW.Quest.SetQuestButtons()
     end
 end
@@ -602,6 +602,8 @@ end
 function AtlasTW.Quest.MarkQuestCompleteByID(questID)
     if not questID or not AtlasTW.Quest.DataBase then return end
 
+    local needsUIUpdate = false
+
     for instanceName, instanceData in pairs(AtlasTW.Quest.DataBase) do
         for _, factionName in ipairs({ "Alliance", "Horde" }) do
             if instanceData[factionName] then
@@ -612,13 +614,17 @@ function AtlasTW.Quest.MarkQuestCompleteByID(questID)
                         AtlasTW.Q[questKey] = 1
 
                         if AtlasTW.QCurrentInstance == instanceName then
-                            AtlasTW.Quest.SetQuestButtons()
+                            needsUIUpdate = true
                         end
-                        return -- Done for this ID
+                        break -- Found for this faction, move to next
                     end
                 end
             end
         end
+    end
+
+    if needsUIUpdate then
+        AtlasTW.Quest.SetQuestButtons()
     end
 end
 
