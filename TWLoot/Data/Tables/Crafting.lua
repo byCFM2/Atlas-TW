@@ -4092,7 +4092,7 @@ local craftingTable = {
 		{ id = 41241,         skill = { 215, 235, 245, 255 } }, --Royal Gemstone Staff
 		{ id = 41720,         skill = { 240, 260, 275, 290 } }, --Regal Twilight Staff
 		{ id = 41097,         skill = { 265, 285, 292, 300 } }, --Spellweaver Rod
-		{ id = 41313,         skill = { 1, 290, 300, 310 } }, --Garnet Guardian Staff
+		{ id = 41313,         skill = { 290, 290, 300, 310 } }, --Garnet Guardian Staff
 		{ name = L["Staves"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41259,         skill = { 300, 320, 330, 340 } }, --Arcanum Baton
 		{ id = 41802,         skill = { 300, 325, 335, 345 } }, --Spire of Channeled Power

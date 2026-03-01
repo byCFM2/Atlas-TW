@@ -41,6 +41,75 @@ function AtlasTW.Integrations.HasPfQuest()
 end
 
 ---
+--- Checks if an item can be purchased from a vendor.
+--- Relies on pfQuest database or a small hardcoded lookup for common items.
+--- @param itemID number The item ID to check
+--- @return boolean True if it's a vendor item
+---
+local vendorItems = {
+    [2320] = true,  -- Coarse Thread
+    [2321] = true,  -- Fine Thread
+    [4291] = true,  -- Silken Thread
+    [8343] = true,  -- Heavy Silken Thread
+    [14341] = true, -- Rune Thread
+    [2324] = true,  -- Bleach
+    [2325] = true,  -- Black Dye
+    [2604] = true,  -- Red Dye
+    [2605] = true,  -- Green Dye
+    [4340] = true,  -- Gray Dye
+    [4341] = true,  -- Yellow Dye
+    [4342] = true,  -- Purple Dye
+    [6260] = true,  -- Blue Dye
+    [6261] = true,  -- Orange Dye
+    [10290] = true, -- Pink Dye
+    [818] = true,   -- Polishing Oil
+    [17020] = true, -- Shining Polish
+    [2880] = true,  -- Weak Flux
+    [3466] = true,  -- Strong Flux
+    [10271] = true, -- Phial of Phantasm
+    [3371] = true,  -- Empty Vial
+    [3372] = true,  -- Leaded Vial
+    [8925] = true,  -- Crystal Vial
+    [18256] = true, -- Imbued Vial
+    [4289] = true,  -- Salt
+    [2692] = true,  -- Hot Spices
+    [2678] = true,  -- Mild Spices
+    [3713] = true,  -- Soothing Spices
+    [8939] = true,  -- Holiday Spices
+    [17056] = true, -- Holiday Spirits
+    [2894] = true,  -- Rhapsody Malt
+    [159] = true,   -- Refreshing Spring Water
+    [2665] = true,  -- Stormwind Seasoning Herbs
+    [14491] = true, -- Simple Wood
+    [6217] = true,  -- Copper Rod
+}
+
+local vendorCache = {}
+
+function AtlasTW.Integrations.IsVendorItem(itemID)
+    if not itemID then return false end
+
+    if vendorCache[itemID] ~= nil then return vendorCache[itemID] end
+
+    if vendorItems[itemID] then
+        vendorCache[itemID] = true
+        return true
+    end
+
+--[[     -- pfQuest DB fallback
+    if pfDB and pfDB.items and pfDB.items.data then
+        local itemData = pfDB.items.data[itemID]
+        if itemData and type(itemData) == "table" and itemData["V"] then
+            vendorCache[itemID] = true
+            return true
+        end
+    end ]]
+
+    vendorCache[itemID] = false
+    return false
+end
+
+---
 --- Searches for a query in pfQuest
 --- @param query string The text to search for
 --- @return nil
@@ -51,7 +120,7 @@ function AtlasTW.Integrations.SearchPfQuest(query)
     if AtlasTW.Integrations.HasPfQuest() and clearquery then
         pfBrowser:Show()
         if pfBrowser.input then
-             pfBrowser.input:SetText(clearquery)
+            pfBrowser.input:SetText(clearquery)
         end
     end
 end
@@ -75,7 +144,7 @@ function AtlasTW.Integrations.ShowQuestInPfQuest(questName)
         pfMap:ShowMapID(pfDatabase:GetBestMap(maps))
         --PrintA(AtlasTW.Colors.GREEN .. "Found quest location in pfQuest: " .. AtlasTW.Colors.WHITE .. cleanName)
     else
-       -- PrintA(AtlasTW.Colors.RED .. "Quest not found in pfQuest: " .. AtlasTW.Colors.WHITE .. cleanName)
+        -- PrintA(AtlasTW.Colors.RED .. "Quest not found in pfQuest: " .. AtlasTW.Colors.WHITE .. cleanName)
     end
 end
 
@@ -138,7 +207,7 @@ function AtlasTW.Integrations.Initialize()
             AtlasTWOptionEquipCompare:Disable()
         end
         if AtlasTWOptionEquipCompareText then
-            AtlasTWOptionEquipCompareText:SetText(GREY..L["Use EquipCompare"])
+            AtlasTWOptionEquipCompareText:SetText(GREY .. L["Use EquipCompare"])
         end
     end
 end

@@ -69,7 +69,11 @@ function DataIndex.GetNamesFromID(id)
             if db and db[id] then
                 if db[id].name then
                     addName(db[id].name)
-                elseif db[id].item then
+                    -- Strip prefix like "Smelting: " to match GetCraftInfo
+                    local _, _, stripped = string.find(db[id].name, ":%s*(.+)$")
+                    if stripped then addName(stripped) end
+                end
+                if db[id].item then
                     -- Use scanner to get item name (reliable even if not cached)
                     scanner:SetOwner(WorldFrame, "ANCHOR_NONE")
                     scanner:ClearLines()
