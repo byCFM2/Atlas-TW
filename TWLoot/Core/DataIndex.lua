@@ -717,7 +717,14 @@ frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 frame:SetScript("OnEvent", function()
     -- Start indexing when player enters world to ensure all data is loaded
     -- But only if options require it
-    DataIndex.CheckAndBuildIndex()
+    -- FIX: Delay indexing to allow server data to propagate (fixes missing skills on login)
+    if AtlasTW and AtlasTW.Timer and AtlasTW.Timer.Start then
+        AtlasTW.Timer.Start(5, function() 
+            DataIndex.CheckAndBuildIndex()
+        end)
+    else
+        DataIndex.CheckAndBuildIndex()
+    end
 end)
 
 -- API: Find items by text (Search)
