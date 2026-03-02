@@ -114,6 +114,9 @@ function AtlasTW.ProfessionHooks.UpdateSideTabs(frame)
         tab:SetChecked(currentName == prof.name)
 
         tab:SetScript("OnClick", function()
+            -- Flag to prevent session termination
+            AtlasTW.ProfessionHooks.IsSwitching = true
+
             -- Save position of the current window
             local currentFrame
             if TradeSkillFrame and TradeSkillFrame:IsVisible() then
@@ -127,11 +130,19 @@ function AtlasTW.ProfessionHooks.UpdateSideTabs(frame)
                 AtlasTW.ProfessionHooks.SavedPosition = { point, relativeTo, relativePoint, xOfs, yOfs }
             end
 
-            -- Force close current window to prevent overlap and state confusion
-            if TradeSkillFrame and TradeSkillFrame:IsVisible() then HideUIPanel(TradeSkillFrame) end
-            if CraftFrame and CraftFrame:IsVisible() then HideUIPanel(CraftFrame) end
-
+            -- Let CastSpellByName handle the switch naturally
+            -- The IsSwitching flag will prevent OnHide hooks from calling CloseTradeSkill/CloseCraft
             CastSpellByName(this.spellName)
+
+            -- Reset flag after a short delay to ensure events are processed
+            if AtlasTW.Timer and AtlasTW.Timer.Start then
+                AtlasTW.Timer.Start(0.5, function()
+                    AtlasTW.ProfessionHooks.IsSwitching = false
+                end)
+            else
+                -- Fallback if Timer not available (should be loaded though)
+                AtlasTW.ProfessionHooks.IsSwitching = false
+            end
         end)
     end
 
@@ -747,3 +758,21 @@ if not hooksecurefunc then
         end
     end
 end
+
+-- Hook OnHide to prevent session termination during switch
+-- This mimics Artisan behavior where the session is kept alive
+local function HookOnHide(funcName)
+    local original = _G[funcName]
+    if original then
+        _G[funcName] = function()
+            if AtlasTW.ProfessionHooks.IsSwitching then
+                -- Skip calling CloseTradeSkill/CloseCraft
+                return
+            end
+            original()
+        end
+    end
+end
+
+HookOnHide("TradeSkillFrame_OnHide")
+HookOnHide("CraftFrame_OnHide")
