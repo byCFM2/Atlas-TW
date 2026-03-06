@@ -279,9 +279,87 @@ function AtlasTW.MapMarkers.FindMarkerByZoneID(searchKey)
 end
 
 -- Index markers by continent and zone for faster lookup
+local EnglishZoneNames = {
+    [1] = { -- Kalimdor
+        [1] = "Ashenvale",
+        [2] = "Azshara",
+        [5] = "Darkshore",
+        [7] = "Desolace",
+        [9] = "Durotar",
+        [10] = "Dustwallow Marsh",
+        [12] = "Feralas",
+        [15] = "Hyjal",
+        [20] = "Orgrimmar",
+        [21] = "Silithus",
+        [23] = "Tanaris",
+        [25] = "Teldrassil",
+        [26] = "The Barrens",
+        [28] = "Winterspring",
+    },
+    [2] = { -- Eastern Kingdoms
+        [1] = "Alah'Thalas",
+        [2] = "Alterac Valley",
+        [3] = "Arathi Highlands",
+        [4] = "Badlands",
+        [5] = "Balor",
+        [7] = "Blasted Lands",
+        [8] = "Burning Steppes",
+        [9] = "Deadwind Pass",
+        [10] = "Dun Morogh",
+        [11] = "Duskwood",
+        [12] = "Eastern Plaguelands",
+        [13] = "Elwynn Forest",
+        [15] = "Gilneas",
+        [19] = "Ironforge",
+        [26] = "Searing Gorge",
+        [27] = "Silverpine Forest",
+        [28] = "Stormwind City",
+        [29] = "Stranglethorn Vale",
+        [30] = "Swamp of Sorrows",
+        [33] = "The Hinterlands",
+        [34] = "Tirisfal Glades",
+        [37] = "Western Plaguelands",
+        [38] = "Westfall",
+        [39] = "Wetlands",
+    }
+}
+
+local ResolvedZoneIDs = {}
+
+--- Resolves a locale-dependent zone ID from an English-indexed one
+--- @param continent number The continent ID
+--- @param originalZoneID number The English-indexed zone ID
+--- @return number The resolved zone ID for the current locale
+function AtlasTW.MapMarkers.ResolveZoneID(continent, originalZoneID)
+    if GetLocale() == "enUS" then return originalZoneID end
+
+    local cacheKey = continent .. "_" .. originalZoneID
+    if ResolvedZoneIDs[cacheKey] then
+        return ResolvedZoneIDs[cacheKey]
+    end
+
+    local enName = EnglishZoneNames[continent] and EnglishZoneNames[continent][originalZoneID]
+    if enName then
+        local localizedName = LZ[enName]
+        if localizedName then
+            local zones = { GetMapZones(continent) }
+            for i, name in ipairs(zones) do
+                if name == localizedName then
+                    ResolvedZoneIDs[cacheKey] = i
+                    return i
+                end
+            end
+        end
+    end
+
+    return originalZoneID
+end
+
 local function BuildZoneIndex()
     for _, data in ipairs(MapPoints) do
-        local continent, zoneID = data[1], data[2]
+        local continent, originalZoneID = data[1], data[2]
+        local zoneID = AtlasTW.MapMarkers.ResolveZoneID(continent, originalZoneID)
+
         if not ZoneMapPoints[continent] then ZoneMapPoints[continent] = {} end
         if not ZoneMapPoints[continent][zoneID] then ZoneMapPoints[continent][zoneID] = {} end
         table.insert(ZoneMapPoints[continent][zoneID], data)

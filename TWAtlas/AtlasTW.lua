@@ -105,6 +105,11 @@ function AtlasTW.OnInstanceTypeClick()
 			-- markerData = {continent, zone, x, y, ...}
 			local continent, zone, x, y = unpack(markerData)
 
+			-- Resolve locale-dependent zone ID
+			if AtlasTW.MapMarkers.ResolveZoneID then
+				zone = AtlasTW.MapMarkers.ResolveZoneID(continent, zone)
+			end
+
 			-- Close Atlas
 			AtlasTWFrame:Hide()
 
