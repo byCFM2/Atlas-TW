@@ -107,7 +107,7 @@ AtlasTW.Localization:RegisterNamespace("Zones", "ptBR", {
     ["Silverpine Forest"] = "Floresta de Pinhaprata",
     ["The Stockade"] = "A Prisão",
     ["Stonetalon Mountains"] = "Montanhas Stonetalon",
-    ["Stormwind City"] = "Cidade Stormwind",
+    ["Stormwind City"] = "Ventobravo",
     ["Stranglethorn Vale"] = "Selva do Espinhaço",
     ["Stratholme"] = "Stratholme",
     ["Swamp of Sorrows"] = "Pântano das Mágoas",

@@ -128,6 +128,11 @@ function AtlasTW.ProfessionHooks.UpdateSideTabs(frame)
             if currentFrame then
                 local point, relativeTo, relativePoint, xOfs, yOfs = currentFrame:GetPoint()
                 AtlasTW.ProfessionHooks.SavedPosition = { point, relativeTo, relativePoint, xOfs, yOfs }
+
+                -- Close the current frame before switching
+                -- This prevents multiple profession frames from being open at once
+                -- (Enchanting uses CraftFrame, others use TradeSkillFrame)
+                HideUIPanel(currentFrame)
             end
 
             -- Let CastSpellByName handle the switch naturally
