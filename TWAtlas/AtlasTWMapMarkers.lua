@@ -313,7 +313,7 @@ local EnglishZoneNames = {
         [19] = "Ironforge",
         [26] = "Searing Gorge",
         [27] = "Silverpine Forest",
-        [28] = "Stormwind City",
+        [28] = "Stormwind",
         [29] = "Stranglethorn Vale",
         [30] = "Swamp of Sorrows",
         [33] = "The Hinterlands",
@@ -340,11 +340,23 @@ function AtlasTW.MapMarkers.ResolveZoneID(continent, originalZoneID)
 
     local enName = EnglishZoneNames[continent] and EnglishZoneNames[continent][originalZoneID]
     if enName then
-        local localizedName = LZ[enName]
+        local localizedName = LZ[enName] or LF[enName]
         if localizedName then
             local zones = { GetMapZones(continent) }
+            local cleanName = function(s) return string.lower(string.gsub(s or "", "[%s%p]", "")) end
+            local target = cleanName(localizedName)
+
             for i, name in ipairs(zones) do
-                if name == localizedName then
+                if cleanName(name) == target then
+                    ResolvedZoneIDs[cacheKey] = i
+                    return i
+                end
+            end
+
+            -- Second pass: check English name (some zones might be untranslated in map but translated in UI)
+            local targetEn = cleanName(enName)
+            for i, name in ipairs(zones) do
+                if cleanName(name) == targetEn then
                     ResolvedZoneIDs[cacheKey] = i
                     return i
                 end
@@ -352,7 +364,9 @@ function AtlasTW.MapMarkers.ResolveZoneID(continent, originalZoneID)
         end
     end
 
-    return originalZoneID
+    -- If we failed to resolve, we MUST NOT return originalZoneID if it might overlap with another zone
+    -- Return a negative ID or a safe out-of-bounds ID to avoid mixing markers
+    return -originalZoneID
 end
 
 local function BuildZoneIndex()

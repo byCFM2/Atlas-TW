@@ -190,7 +190,7 @@ tsScanFrame:SetScript("OnUpdate", function()
         idx = idx + 1
         local skillName, skillType, numAvailable = GetTradeSkillInfo(idx)
 
-        if skillType ~= "header" and numAvailable and numAvailable >= 0 then
+        if skillName and skillType ~= "header" and numAvailable and numAvailable >= 0 then
             local minCrafts = 99999
             local hasNonVendorReagent = false
 
@@ -310,20 +310,21 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
         if skillIndex <= numSkills then
             local skillName, skillType, numAvailable, isExpanded = GetTradeSkillInfo(skillIndex)
 
-            if skillType ~= "header" then
+            if skillName and skillType ~= "header" then
                 -- Read from async cache (nil means not yet computed or same as numAvailable)
-                local customAvailable = AtlasTW.ProfessionHooks.TSAvailCache[skillIndex] or numAvailable
+                local customAvailable = AtlasTW.ProfessionHooks.TSAvailCache[skillIndex] or numAvailable or 0
 
                 -- Construct Text
                 local countText = ""
+                local displayNum = numAvailable or 0
                 if customAvailable > 0 then
-                    if customAvailable > numAvailable then
-                        countText = "[" .. customAvailable .. "/" .. numAvailable .. "] "
+                    if customAvailable > displayNum then
+                        countText = "[" .. customAvailable .. "/" .. displayNum .. "] "
                     else
                         countText = "[" .. customAvailable .. "] "
                     end
-                elseif numAvailable > 0 then
-                    countText = "[" .. numAvailable .. "] "
+                elseif displayNum > 0 then
+                    countText = "[" .. displayNum .. "] "
                 end
 
                 local nameText = skillName
@@ -394,7 +395,7 @@ craftScanFrame:SetScript("OnUpdate", function()
         idx = idx + 1
         local craftName, craftSubSpellName, craftType, numAvailable = GetCraftInfo(idx)
 
-        if craftType ~= "header" and numAvailable and numAvailable >= 0 then
+        if craftName and craftType ~= "header" and numAvailable and numAvailable >= 0 then
             local minCrafts = 99999
             local hasNonVendorReagent = false
 
@@ -511,22 +512,23 @@ function AtlasTW.ProfessionHooks.OnCraftUpdate()
         icon:Hide()
 
         if craftIndex <= numCrafts then
-            local craftName, craftSubSpellName, craftType, numAvailable, isExpanded = GetCraftInfo(craftIndex)
+            local craftName, _, craftType, numAvailable, _ = GetCraftInfo(craftIndex)
 
-            if craftType ~= "header" then
+            if craftName and craftType ~= "header" then
                 -- Read from async cache
-                local customAvailable = AtlasTW.ProfessionHooks.CraftAvailCache[craftIndex] or numAvailable
+                local customAvailable = AtlasTW.ProfessionHooks.CraftAvailCache[craftIndex] or numAvailable or 0
 
                 -- Construct Text
                 local countText = ""
+                local displayNum = numAvailable or 0
                 if customAvailable > 0 then
-                    if customAvailable > numAvailable then
-                        countText = "[" .. customAvailable .. "/" .. numAvailable .. "] "
+                    if customAvailable > displayNum then
+                        countText = "[" .. customAvailable .. "/" .. displayNum .. "] "
                     else
                         countText = "[" .. customAvailable .. "] "
                     end
-                elseif numAvailable > 0 then
-                    countText = "[" .. numAvailable .. "] "
+                elseif displayNum > 0 then
+                    countText = "[" .. displayNum .. "] "
                 end
 
                 local nameText = craftName
