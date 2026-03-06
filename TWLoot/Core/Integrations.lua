@@ -76,6 +76,7 @@ local vendorItems = {
     [2678] = true,  -- Mild Spices
     [3713] = true,  -- Soothing Spices
     [8939] = true,  -- Holiday Spices
+    [4536] = true,  -- Shiny Red Apple
     [17056] = true, -- Holiday Spirits
     [2894] = true,  -- Rhapsody Malt
     [159] = true,   -- Refreshing Spring Water

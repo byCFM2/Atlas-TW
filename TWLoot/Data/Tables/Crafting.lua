@@ -41,7 +41,7 @@ local craftingTable = {
 		{ id = 45878,           skill = { 1, 285, 310, 335 } }, --Dissolvent Poison 1.18
 		{ id = 45882,           skill = { 1, 325, 350, 375 } }, --Dissolvent Poison II 1.18
 		{},
-		{ id = 13220,           skill = { 140, 185, 210, 235 } }, --Wound Poison
+		{ id = 13220,           skill = { 1, 185, 210, 235 } }, --Wound Poison
 		{ name = LS["Poisons"], icon = "Trade_BrewPoison" },
 		{ id = 2835,            skill = { 130, 175, 200, 225 } }, --Deadly Poison
 		{ id = 2837,            skill = { 170, 215, 240, 265 } }, --Deadly Poison II
@@ -56,10 +56,10 @@ local craftingTable = {
 		{ id = 52576,           skill = { 1, 300, 325, 350 } },                          --Corrosive Poison II 1.18
 		{},
 		{ id = 5763,            skill = { 1, 150, 175, 200 } },                        --Mind-numbing Poison
-		{ id = 8694,            skill = { 200, 215, 240, 265 } },                        --Mind-numbing Poison II
-		{ id = 11400,           skill = { 280, 285, 310, 335 } },                        --Mind-numbing Poison III
+		{ id = 8694,            skill = { 1, 215, 240, 265 } },                        --Mind-numbing Poison II
+		{ id = 11400,           skill = { 1, 285, 310, 335 } },                        --Mind-numbing Poison III
 		{},
-		{ id = 45611,           skill = { 290, 290, 300, 310 } },                        --Agitating Poison I
+		{ id = 45611,           skill = { 1, 290, 300, 310 } },                        --Agitating Poison I
 		{ name = L["Reagent"],  icon = "Trade_BrewPoison" },
 		{ id = 6510,            quantity = 3,                  skill = { 1, 170, 195, 220 } }, --Blinding Powder
 	},

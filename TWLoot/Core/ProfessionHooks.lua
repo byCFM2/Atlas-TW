@@ -139,6 +139,10 @@ function AtlasTW.ProfessionHooks.UpdateSideTabs(frame)
             -- The IsSwitching flag will prevent OnHide hooks from calling CloseTradeSkill/CloseCraft
             CastSpellByName(this.spellName)
 
+            -- Reset caches immediately to prevent showing old data
+            AtlasTW.ProfessionHooks.StartTSScan()
+            AtlasTW.ProfessionHooks.StartCraftScan()
+
             -- Reset flag after a short delay to ensure events are processed
             if AtlasTW.Timer and AtlasTW.Timer.Start then
                 AtlasTW.Timer.Start(0.5, function()
@@ -161,8 +165,10 @@ AtlasTW.ProfessionHooks.LinkCache = AtlasTW.ProfessionHooks.LinkCache or {}
 
 -- Async availability scanner for TradeSkill
 AtlasTW.ProfessionHooks.TSAvailCache = {}
+AtlasTW.ProfessionHooks.TSRealCache = {} -- Cache for real availability (accounting for all reagents)
 AtlasTW.ProfessionHooks.TSScanIndex = 0
 AtlasTW.ProfessionHooks.TSScanTotal = 0
+AtlasTW.ProfessionHooks.TSScanLine = nil
 AtlasTW.ProfessionHooks.TSScanActive = false
 
 local RECIPES_PER_FRAME = 2
@@ -181,11 +187,14 @@ tsScanFrame:SetScript("OnUpdate", function()
     end
 
     local numSkills = GetNumTradeSkills()
-    if numSkills ~= AtlasTW.ProfessionHooks.TSScanTotal then
-        -- Recipe list changed, restart
+    local currentLine = GetTradeSkillLine()
+    if numSkills ~= AtlasTW.ProfessionHooks.TSScanTotal or currentLine ~= AtlasTW.ProfessionHooks.TSScanLine then
+        -- Recipe list or profession changed, restart
         AtlasTW.ProfessionHooks.TSAvailCache = {}
+        AtlasTW.ProfessionHooks.TSRealCache = {}
         AtlasTW.ProfessionHooks.TSScanIndex = 0
         AtlasTW.ProfessionHooks.TSScanTotal = numSkills
+        AtlasTW.ProfessionHooks.TSScanLine = currentLine
     end
 
     local processed = 0
@@ -197,6 +206,7 @@ tsScanFrame:SetScript("OnUpdate", function()
 
         if skillName and skillType ~= "header" and numAvailable and numAvailable >= 0 then
             local minCrafts = 99999
+            local realMinCrafts = 99999
             local hasNonVendorReagent = false
 
             for r = 1, GetTradeSkillNumReagents(idx) do
@@ -210,11 +220,15 @@ tsScanFrame:SetScript("OnUpdate", function()
                         AtlasTW.ProfessionHooks.LinkCache[rLink] = rID or false
                     end
 
+                    local crafts = math.floor(playerRCount / rCount)
+                    if crafts < realMinCrafts then
+                        realMinCrafts = crafts
+                    end
+
                     if rID and AtlasTW.Integrations and AtlasTW.Integrations.IsVendorItem(rID) then
-                        -- skip vendor items
+                        -- skip vendor items for minCrafts
                     else
                         hasNonVendorReagent = true
-                        local crafts = math.floor(playerRCount / rCount)
                         if crafts < minCrafts then
                             minCrafts = crafts
                         end
@@ -223,10 +237,21 @@ tsScanFrame:SetScript("OnUpdate", function()
             end
 
             if not hasNonVendorReagent then
-                minCrafts = numAvailable
+                minCrafts = realMinCrafts
             end
 
-            if minCrafts ~= 99999 and minCrafts > numAvailable then
+            if realMinCrafts == 99999 then realMinCrafts = numAvailable end
+            if minCrafts == 99999 then minCrafts = realMinCrafts end
+
+            -- Cache real count if it differs from numAvailable
+            if realMinCrafts ~= numAvailable then
+                AtlasTW.ProfessionHooks.TSRealCache[idx] = realMinCrafts
+            else
+                AtlasTW.ProfessionHooks.TSRealCache[idx] = nil
+            end
+
+            -- Cache possible count if it differs from real count
+            if minCrafts ~= 99999 and minCrafts > realMinCrafts then
                 AtlasTW.ProfessionHooks.TSAvailCache[idx] = minCrafts
             else
                 AtlasTW.ProfessionHooks.TSAvailCache[idx] = nil
@@ -250,6 +275,7 @@ end)
 
 function AtlasTW.ProfessionHooks.StartTSScan()
     AtlasTW.ProfessionHooks.TSAvailCache = {}
+    AtlasTW.ProfessionHooks.TSRealCache = {}
     AtlasTW.ProfessionHooks.TSScanIndex = 0
     AtlasTW.ProfessionHooks.TSScanTotal = 0
     AtlasTW.ProfessionHooks.TSScanActive = true
@@ -260,6 +286,7 @@ end
 local tsEventFrame = CreateFrame("Frame")
 tsEventFrame:RegisterEvent("BAG_UPDATE")
 tsEventFrame:RegisterEvent("TRADE_SKILL_UPDATE")
+tsEventFrame:RegisterEvent("TRADE_SKILL_SHOW")
 tsEventFrame:SetScript("OnEvent", function()
     if TradeSkillFrame and TradeSkillFrame:IsVisible() then
         AtlasTW.ProfessionHooks.StartTSScan()
@@ -288,8 +315,9 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
         return
     end
 
-    -- Start async scan if not already running
-    if not AtlasTW.ProfessionHooks.TSScanActive and AtlasTW.ProfessionHooks.TSScanIndex == 0 then
+    -- Start async scan if not already running or profession changed
+    local currentLine = GetTradeSkillLine()
+    if not AtlasTW.ProfessionHooks.TSScanActive and (AtlasTW.ProfessionHooks.TSScanIndex == 0 or currentLine ~= AtlasTW.ProfessionHooks.TSScanLine) then
         AtlasTW.ProfessionHooks.StartTSScan()
     end
 
@@ -316,18 +344,22 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
             local skillName, skillType, numAvailable, isExpanded = GetTradeSkillInfo(skillIndex)
 
             if skillName and skillType ~= "header" then
-                -- Read from async cache (nil means not yet computed or same as numAvailable)
-                local customAvailable = AtlasTW.ProfessionHooks.TSAvailCache[skillIndex] or numAvailable or 0
+                -- Read from async cache
+                -- customAvailable: possible count (if all vendor reagents were present)
+                -- realAvailable: actual count player can craft right now
+                local customAvailable = AtlasTW.ProfessionHooks.TSAvailCache[skillIndex]
+                local realAvailable = AtlasTW.ProfessionHooks.TSRealCache[skillIndex] or numAvailable or 0
+
+                -- If we don't have a custom count, use realAvailable as the base
+                if not customAvailable then
+                    customAvailable = realAvailable
+                end
 
                 -- Construct Text
                 local countText = ""
-                local displayNum = numAvailable or 0
-                if customAvailable > 0 then
-                    if customAvailable > displayNum then
-                        countText = "[" .. customAvailable .. "/" .. displayNum .. "] "
-                    else
-                        countText = "[" .. customAvailable .. "] "
-                    end
+                local displayNum = realAvailable
+                if customAvailable > displayNum then
+                    countText = "[" .. customAvailable .. "/" .. displayNum .. "] "
                 elseif displayNum > 0 then
                     countText = "[" .. displayNum .. "] "
                 end
@@ -369,8 +401,10 @@ end
 
 -- Async availability scanner for CraftFrame
 AtlasTW.ProfessionHooks.CraftAvailCache = {}
+AtlasTW.ProfessionHooks.CraftRealCache = {} -- Cache for real availability
 AtlasTW.ProfessionHooks.CraftScanIndex = 0
 AtlasTW.ProfessionHooks.CraftScanTotal = 0
+AtlasTW.ProfessionHooks.CraftScanLine = nil
 AtlasTW.ProfessionHooks.CraftScanActive = false
 
 local craftScanFrame = CreateFrame("Frame")
@@ -387,10 +421,13 @@ craftScanFrame:SetScript("OnUpdate", function()
     end
 
     local numCrafts = GetNumCrafts()
-    if numCrafts ~= AtlasTW.ProfessionHooks.CraftScanTotal then
+    local currentLine = GetCraftDisplaySkillLine()
+    if numCrafts ~= AtlasTW.ProfessionHooks.CraftScanTotal or currentLine ~= AtlasTW.ProfessionHooks.CraftScanLine then
         AtlasTW.ProfessionHooks.CraftAvailCache = {}
+        AtlasTW.ProfessionHooks.CraftRealCache = {}
         AtlasTW.ProfessionHooks.CraftScanIndex = 0
         AtlasTW.ProfessionHooks.CraftScanTotal = numCrafts
+        AtlasTW.ProfessionHooks.CraftScanLine = currentLine
     end
 
     local processed = 0
@@ -402,6 +439,7 @@ craftScanFrame:SetScript("OnUpdate", function()
 
         if craftName and craftType ~= "header" and numAvailable and numAvailable >= 0 then
             local minCrafts = 99999
+            local realMinCrafts = 99999
             local hasNonVendorReagent = false
 
             for r = 1, GetCraftNumReagents(idx) do
@@ -415,11 +453,15 @@ craftScanFrame:SetScript("OnUpdate", function()
                         AtlasTW.ProfessionHooks.LinkCache[rLink] = rID or false
                     end
 
+                    local crafts = math.floor(playerRCount / rCount)
+                    if crafts < realMinCrafts then
+                        realMinCrafts = crafts
+                    end
+
                     if rID and AtlasTW.Integrations and AtlasTW.Integrations.IsVendorItem(rID) then
-                        -- skip vendor items
+                        -- skip vendor items for minCrafts
                     else
                         hasNonVendorReagent = true
-                        local crafts = math.floor(playerRCount / rCount)
                         if crafts < minCrafts then
                             minCrafts = crafts
                         end
@@ -428,10 +470,21 @@ craftScanFrame:SetScript("OnUpdate", function()
             end
 
             if not hasNonVendorReagent then
-                minCrafts = numAvailable
+                minCrafts = realMinCrafts
             end
 
-            if minCrafts ~= 99999 and minCrafts > numAvailable then
+            if realMinCrafts == 99999 then realMinCrafts = numAvailable end
+            if minCrafts == 99999 then minCrafts = realMinCrafts end
+
+            -- Cache real count if it differs from numAvailable
+            if realMinCrafts ~= numAvailable then
+                AtlasTW.ProfessionHooks.CraftRealCache[idx] = realMinCrafts
+            else
+                AtlasTW.ProfessionHooks.CraftRealCache[idx] = nil
+            end
+
+            -- Cache possible count if it differs from real count
+            if minCrafts ~= 99999 and minCrafts > realMinCrafts then
                 AtlasTW.ProfessionHooks.CraftAvailCache[idx] = minCrafts
             else
                 AtlasTW.ProfessionHooks.CraftAvailCache[idx] = nil
@@ -454,6 +507,7 @@ end)
 
 function AtlasTW.ProfessionHooks.StartCraftScan()
     AtlasTW.ProfessionHooks.CraftAvailCache = {}
+    AtlasTW.ProfessionHooks.CraftRealCache = {}
     AtlasTW.ProfessionHooks.CraftScanIndex = 0
     AtlasTW.ProfessionHooks.CraftScanTotal = 0
     AtlasTW.ProfessionHooks.CraftScanActive = true
@@ -464,6 +518,7 @@ end
 local craftEventFrame = CreateFrame("Frame")
 craftEventFrame:RegisterEvent("BAG_UPDATE")
 craftEventFrame:RegisterEvent("CRAFT_UPDATE")
+craftEventFrame:RegisterEvent("CRAFT_SHOW")
 craftEventFrame:SetScript("OnEvent", function()
     if CraftFrame and CraftFrame:IsVisible() then
         AtlasTW.ProfessionHooks.StartCraftScan()
@@ -492,8 +547,9 @@ function AtlasTW.ProfessionHooks.OnCraftUpdate()
         return
     end
 
-    -- Start async scan if not already running
-    if not AtlasTW.ProfessionHooks.CraftScanActive and AtlasTW.ProfessionHooks.CraftScanIndex == 0 then
+    -- Start async scan if not already running or profession changed
+    local currentLine = GetCraftDisplaySkillLine()
+    if not AtlasTW.ProfessionHooks.CraftScanActive and (AtlasTW.ProfessionHooks.CraftScanIndex == 0 or currentLine ~= AtlasTW.ProfessionHooks.CraftScanLine) then
         AtlasTW.ProfessionHooks.StartCraftScan()
     end
 
@@ -521,17 +577,18 @@ function AtlasTW.ProfessionHooks.OnCraftUpdate()
 
             if craftName and craftType ~= "header" then
                 -- Read from async cache
-                local customAvailable = AtlasTW.ProfessionHooks.CraftAvailCache[craftIndex] or numAvailable or 0
+                local customAvailable = AtlasTW.ProfessionHooks.CraftAvailCache[craftIndex]
+                local realAvailable = AtlasTW.ProfessionHooks.CraftRealCache[craftIndex] or numAvailable or 0
+
+                if not customAvailable then
+                    customAvailable = realAvailable
+                end
 
                 -- Construct Text
                 local countText = ""
-                local displayNum = numAvailable or 0
-                if customAvailable > 0 then
-                    if customAvailable > displayNum then
-                        countText = "[" .. customAvailable .. "/" .. displayNum .. "] "
-                    else
-                        countText = "[" .. customAvailable .. "] "
-                    end
+                local displayNum = realAvailable
+                if customAvailable > displayNum then
+                    countText = "[" .. customAvailable .. "/" .. displayNum .. "] "
                 elseif displayNum > 0 then
                     countText = "[" .. displayNum .. "] "
                 end
