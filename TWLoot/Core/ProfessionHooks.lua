@@ -129,10 +129,15 @@ function AtlasTW.ProfessionHooks.UpdateSideTabs(frame)
                 local point, relativeTo, relativePoint, xOfs, yOfs = currentFrame:GetPoint()
                 AtlasTW.ProfessionHooks.SavedPosition = { point, relativeTo, relativePoint, xOfs, yOfs }
 
-                -- Close the current frame before switching
-                -- This prevents multiple profession frames from being open at once
-                -- (Enchanting uses CraftFrame, others use TradeSkillFrame)
-                HideUIPanel(currentFrame)
+                -- Close the current frame before switching if we are changing type (TradeSkill vs Craft)
+                -- This prevents multiple profession frames from being open at once.
+                -- Using HideUIPanel is safe now because we've hooked CloseTradeSkill/CloseCraft.
+                local isTargetCraft = (this.spellName == LS["Enchanting"])
+                local isCurrentCraft = (currentFrame == CraftFrame)
+
+                if isTargetCraft ~= isCurrentCraft then
+                    HideUIPanel(currentFrame)
+                end
             end
 
             -- Let CastSpellByName handle the switch naturally
