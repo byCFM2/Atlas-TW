@@ -433,7 +433,7 @@ function AtlasTWLoot_SkinningMenu()
 end
 
 AtlasTW.MenuData.Fishing = {
-    --  { name = LS["Fishing"], icon = "Interface\\Icons\\Trade_Fishing", lootpage = "FishingTable" },
+    { name = LS["Fishing"],                          icon = "Interface\\Icons\\Trade_Fishing",    lootpage = "FishingTable" },
     {},
     { name = L["Trainers"] .. ": " .. LS["Fishing"], icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "FishingTrainers" },
 }

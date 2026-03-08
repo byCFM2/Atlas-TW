@@ -333,11 +333,13 @@ end
 -- Handler for "item" type
 local function HandleItemTooltip(itemID, dropRate, anchor)
 	AtlasTWLootTooltip:SetOwner(anchor, "ANCHOR_RIGHT")
-	AtlasTWLootTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
+	if itemID and tonumber(itemID) > 0 then
+		AtlasTWLootTooltip:SetHyperlink("item:" .. itemID .. ":0:0:0")
+	end
 	if dropRate then
 		AtlasTWLootTooltip:AddLine(L["Drop Rate:"] .. " " .. dropRate, 0, .5, .7)
 	end
-	if AtlasTWOptions.TooltipShowID then
+	if AtlasTWOptions.TooltipShowID and itemID and tonumber(itemID) > 0 then
 		AtlasTWLootTooltip:AddLine(L["ItemID:"] .. " " .. itemID, 0, .5, .7)
 	end
 	AtlasTWLootTooltip:Show()

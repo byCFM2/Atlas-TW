@@ -153,6 +153,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Enable Profession Info"] = true,
     ["Lockpicking"] = true,
     ["Doors"] = true,
+    ["Night"] = true,
+    ["Day"] = true,
+    ["Winter"] = true,
 
     --************************************************
     -- Colors

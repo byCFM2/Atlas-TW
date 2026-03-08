@@ -446,7 +446,7 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 							-- Clear itemButton data from item saves
 							itemButton.itemID = 0
 							itemButton.elemID = 0
-							itemButton.typeID = nil
+							itemButton.typeID = element.container and "item" or nil
 
 							local r, g, b = GetItemQualityColor(itemQuality)
 							nameFrame:SetTextColor(r, g, b)
@@ -672,7 +672,7 @@ function AtlasTW.LootBrowserUI.ScrollBarLootUpdate()
 		AtlasTWLoot_LootPageName:SetText(L["Wish List"])
 	else
 		local pageTitle = nav and nav.Title or
-		(dataID and type(dataID) == "string" and dataID or (dataID and dataID.menuName))
+			(dataID and type(dataID) == "string" and dataID or (dataID and dataID.menuName))
 		AtlasTWLoot_LootPageName:SetText(pageTitle)
 	end
 

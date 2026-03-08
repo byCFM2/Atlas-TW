@@ -154,6 +154,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Enable Profession Info"] = "Berufsinformationen aktivieren",
     ["Lockpicking"] = "Schlossknacken",
     ["Doors"] = "Türen",
+    ["Night"] = "Nacht",
+    ["Day"] = "Tag",
+    ["Winter"] = "Winter",
 
 
     --************************************************

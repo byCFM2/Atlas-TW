@@ -55,11 +55,11 @@ local craftingTable = {
 		{ id = 51924,           skill = { 1, 280, 305, 330 } },                          --Corrosive Poison 1.18
 		{ id = 52576,           skill = { 1, 300, 325, 350 } },                          --Corrosive Poison II 1.18
 		{},
-		{ id = 5763,            skill = { 1, 150, 175, 200 } },                        --Mind-numbing Poison
-		{ id = 8694,            skill = { 1, 215, 240, 265 } },                        --Mind-numbing Poison II
-		{ id = 11400,           skill = { 1, 285, 310, 335 } },                        --Mind-numbing Poison III
+		{ id = 5763,            skill = { 1, 150, 175, 200 } },                          --Mind-numbing Poison
+		{ id = 8694,            skill = { 1, 215, 240, 265 } },                          --Mind-numbing Poison II
+		{ id = 11400,           skill = { 1, 285, 310, 335 } },                          --Mind-numbing Poison III
 		{},
-		{ id = 45611,           skill = { 1, 290, 300, 310 } },                        --Agitating Poison I
+		{ id = 45611,           skill = { 1, 290, 300, 310 } },                          --Agitating Poison I
 		{ name = L["Reagent"],  icon = "Trade_BrewPoison" },
 		{ id = 6510,            quantity = 3,                  skill = { 1, 170, 195, 220 } }, --Blinding Powder
 	},
@@ -81,47 +81,80 @@ local craftingTable = {
 		{ name = LZ["Blackrock Depths"] .. " (" .. L["Doors"] .. ")", disc = L["Skill:"] .. " 280-300", icon = "Spell_Nature_MoonKey" },
 	},
 
+	FishingTable = {
+		{ name = L["Apprentice"] .. " (1-75)",   icon = "Trade_Fishing" },
+		{ id = 6291,                             disc = LZ["Elwynn Forest"] .. ", " .. LZ["Durotar"] .. ", " .. LZ["Teldrassil"] .. ", " .. LZ["Blackstone Island"],           container = { 6325 } }, -- Raw Brilliant Smallfish
+		{ id = 6289,                             disc = LZ["Elwynn Forest"] .. ", " .. LZ["Durotar"] .. ", " .. LZ["Teldrassil"] .. ", " .. LZ["Blackstone Island"],           container = { 6328 } }, -- Raw Longjaw Mud Snapper
+		{ id = 6522,                             disc = LZ["The Barrens"],                        					                                                           container = { 6661, 6663 } }, -- Deviate Fish
+		{ id = 21071,                            disc = LZ["Loch Modan"] .. ", " .. LZ["Silverpine Forest"],                                                                   container = { 21099 } }, -- Raw Sagefish
+		{ id = 6358,                             disc = LZ["Westfall"] .. ", " .. LZ["The Barrens"] .. ", " .. LZ["Silverpine Forest"] },                                                             -- Oily Blackmouth
+		{},
+		{ name = L["Journeyman"] .. " (75-150)", icon = "Trade_Fishing" },
+		{ id = 6361,                             disc = LZ["Westfall"] .. ", " .. LZ["The Barrens"] .. ", " .. LZ["Silverpine Forest"] .. ", " .. LZ["Thalassian Highlands"],  container = { 6368 } }, -- Raw Rainbow Fin Albacore
+		{ id = 6308,                             disc = LZ["Redridge Mountains"] .. ", " .. LZ["Loch Modan"] .. ", " .. LZ["Ashenvale"] .. ", " .. LZ["Thalassian Highlands"], container = { 6330 } }, -- Raw Bristle Whisker Catfish
+		{ id = 6359,                             disc = LZ["Hillsbrad Foothills"] .. ", " .. LZ["Wetlands"] .. ", " .. LZ["Stonetalon Mountains"] },                                                        -- Firefin Snapper
+		{},
+		{ name = L["Expert"] .. " (150-225)",    icon = "Trade_Fishing" },
+		{ id = 8365,                             disc = LZ["Arathi Highlands"] .. ", " .. LZ["Desolace"] .. ", " .. LZ["Stranglethorn Vale"] .. ", " .. LZ["Gilneas"],         container = { 17062 } }, -- Raw Mithril Head Trout
+		{ id = 6362,                             disc = LZ["Arathi Highlands"] .. ", " .. LZ["Desolace"] .. ", " .. LZ["Stranglethorn Vale"],                                  container = { 6369 } }, -- Raw Rockscale Cod
+		{ id = 21153,                            disc = LZ["Stranglethorn Vale"] .. ", " .. LZ["Alterac Mountains"],                                                           container = { 21219 } }, -- Raw Greater Sagefish
+		{},
+		{ name = L["Artisan"] .. " (225-300)",   icon = "Trade_Fishing" },
+		{ id = 4603,                             disc = LZ["Tanaris"] .. ", " .. LZ["Feralas"] .. ", " .. LZ["Stranglethorn Vale"] .. ", " .. LZ["Lapidis Isle"],              container = { 13939 } }, -- Raw Spotted Yellowtail
+		{ id = 13760,                            disc = LZ["Tanaris"] .. ", " .. LZ["Feralas"] .. ", " .. LZ["The Hinterlands"],                                               container = { 13946 } }, -- Raw Sunscale Salmon
+		{ id = 13759,                            disc = LZ["Feralas"] .. ", " .. LZ["The Hinterlands"] .. ", " .. LZ["Felwood"] .. " (" .. L["Night"] .. ")",                  container = { 13945 } }, -- Raw Nightfin Snapper
+		{ id = 13756,                            disc = LZ["Tanaris"] .. ", " .. LZ["Feralas"] .. ", " .. LZ["Stranglethorn Vale"] .. " (" .. L["Day"] .. ")",                 container = { 13943 } }, -- Raw Summer Bass
+		{ id = 13755,                            disc = LZ["Azshara"] .. ", " .. LZ["Tanaris"] .. ", " .. LZ["Feralas"] .. " (" .. L["Winter"] .. ")",                    	   container = { 13942 } }, -- Winter Squid
+		{ id = 13422,                            disc = LZ["Azshara"] .. ", " .. LZ["Tanaris"] .. ", " .. LZ["Feralas"] .. " (" .. L["Night"] .. ")" },                                                             -- Stonescale Eel
+		{ name = L["Artisan"] .. " (300+)",      icon = "Trade_Fishing" },
+		{ id = 13888,                            disc = LZ["Azshara"],                                          	                                  						   container = { 13947 } }, -- Darkclaw Lobster
+		{ id = 13889,                            disc = LZ["Azshara"] .. ", " .. LZ["Winterspring"] .. ", " .. LZ["Eastern Plaguelands"] .. ", " .. LZ["Tel'Abim"],            container = { 13949, 61666 } }, -- Raw Whitescale Salmon
+		{ id = 13890,                            disc = LZ["Silithus"] .. ", " .. LZ["Winterspring"] .. ", " .. LZ["Eastern Plaguelands"],                                     container = { 22524, 22523 } }, -- Plated Armorfish
+		{ id = 13893,                            disc = LZ["Azshara"],                                                                          							   container = { 13948 } }, -- Large Raw Mightfish
+		{ id = 13754,                            disc = LZ["Tanaris"] .. ", " .. LZ["Feralas"] .. ", " .. LZ["The Hinterlands"] .. ", " .. LZ["Northwind"],                    container = { 13940 } }, -- Raw Glossy Mightfish
+	},
+
 	ClothTable = {
-		{ id=2589, disc=L["Level: "].."1-15", dropRate = 80, quantity = {1,3} }, -- Linen Cloth
-		{ id=2592, disc=L["Level: "].."15-30", dropRate = 70, quantity = {1,3} }, -- Wool Cloth
-		{ id=4306, disc=L["Level: "].."30-45", dropRate = 60, quantity = {1,3} }, -- Silk Cloth
-		{ id=4338, disc=L["Level: "].."45-55", dropRate = 50, quantity = {1,3} }, -- Mageweave Cloth
-		{ id=14047, disc=L["Level: "].."50-60", dropRate = 40, quantity = {1,3} }, -- Runecloth
-		{ id=14256, disc=L["Level: "].."50-60 ("..L["Demons"]..")", dropRate = 5, quantity = {1,2} }, -- Felcloth
+		{ id = 2589,  disc = L["Level: "] .. "1-15",                          dropRate = 80, quantity = { 1, 3 } }, -- Linen Cloth
+		{ id = 2592,  disc = L["Level: "] .. "15-30",                         dropRate = 70, quantity = { 1, 3 } }, -- Wool Cloth
+		{ id = 4306,  disc = L["Level: "] .. "30-45",                         dropRate = 60, quantity = { 1, 3 } }, -- Silk Cloth
+		{ id = 4338,  disc = L["Level: "] .. "45-55",                         dropRate = 50, quantity = { 1, 3 } }, -- Mageweave Cloth
+		{ id = 14047, disc = L["Level: "] .. "50-60",                         dropRate = 40, quantity = { 1, 3 } }, -- Runecloth
+		{ id = 14256, disc = L["Level: "] .. "50-60 (" .. L["Demons"] .. ")", dropRate = 5,  quantity = { 1, 2 } }, -- Felcloth
 	},
 
 	EnchantingDisenchant = {
 		-- Dusts (Green Armor/Weapons)
-		{ id=10940, disc=L["Item Level"].." 1-20", dropRate = 80, quantity = {1,2} }, -- Strange Dust
-		{ id=11083, disc=L["Item Level"].." 21-30", dropRate = 75, quantity = {2,5} }, -- Soul Dust
-		{ id=11137, disc=L["Item Level"].." 31-40", dropRate = 75, quantity = {2,5} }, -- Vision Dust
-		{ id=11176, disc=L["Item Level"].." 41-50", dropRate = 75, quantity = {2,5} }, -- Dream Dust
-		{ id=16204, disc=L["Item Level"].." 51-60", dropRate = 75, quantity = {2,5} }, -- Illusion Dust
+		{ id = 10940, disc = L["Item Level"] .. " 1-20",  dropRate = 80, quantity = { 1, 2 } }, -- Strange Dust
+		{ id = 11083, disc = L["Item Level"] .. " 21-30", dropRate = 75, quantity = { 2, 5 } }, -- Soul Dust
+		{ id = 11137, disc = L["Item Level"] .. " 31-40", dropRate = 75, quantity = { 2, 5 } }, -- Vision Dust
+		{ id = 11176, disc = L["Item Level"] .. " 41-50", dropRate = 75, quantity = { 2, 5 } }, -- Dream Dust
+		{ id = 16204, disc = L["Item Level"] .. " 51-60", dropRate = 75, quantity = { 2, 5 } }, -- Illusion Dust
 		{},
 		-- Shards (Blue Items)
-		{ id=10978, disc=L["Item Level"].." 1-20", dropRate = 100 }, -- Small Glimmering Shard
-		{ id=11084, disc=L["Item Level"].." 21-25", dropRate = 100 }, -- Large Glimmering Shard
-		{ id=11138, disc=L["Item Level"].." 26-30", dropRate = 100 }, -- Small Glowing Shard
-		{ id=11139, disc=L["Item Level"].." 31-35", dropRate = 100 }, -- Large Glowing Shard
-		{ id=11177, disc=L["Item Level"].." 36-40", dropRate = 100 }, -- Small Radiant Shard
-		{ id=11178, disc=L["Item Level"].." 41-45", dropRate = 100 }, -- Large Radiant Shard
-		{ id=14343, disc=L["Item Level"].." 46-50", dropRate = 100 }, -- Small Brilliant Shard
-		{ id=14344, disc=L["Item Level"].." 51-60", dropRate = 100 }, -- Large Brilliant Shard
+		{ id = 10978, disc = L["Item Level"] .. " 1-20",  dropRate = 100 }, -- Small Glimmering Shard
+		{ id = 11084, disc = L["Item Level"] .. " 21-25", dropRate = 100 }, -- Large Glimmering Shard
+		{ id = 11138, disc = L["Item Level"] .. " 26-30", dropRate = 100 }, -- Small Glowing Shard
+		{ id = 11139, disc = L["Item Level"] .. " 31-35", dropRate = 100 }, -- Large Glowing Shard
+		{ id = 11177, disc = L["Item Level"] .. " 36-40", dropRate = 100 }, -- Small Radiant Shard
+		{ id = 11178, disc = L["Item Level"] .. " 41-45", dropRate = 100 }, -- Large Radiant Shard
+		{ id = 14343, disc = L["Item Level"] .. " 46-50", dropRate = 100 }, -- Small Brilliant Shard
+		{ id = 14344, disc = L["Item Level"] .. " 51-60", dropRate = 100 }, -- Large Brilliant Shard
 		{},
 		-- Essences (Green Weapons/Armor)
-		{ id=10938, disc=L["Item Level"].." 1-10", dropRate = 20, quantity = {1,2} }, -- Lesser Magic Essence
-		{ id=10939, disc=L["Item Level"].." 11-15", dropRate = 20, quantity = {1,2} }, -- Greater Magic Essence
-		{ id=10998, disc=L["Item Level"].." 16-20", dropRate = 20, quantity = {1,2} }, -- Lesser Astral Essence
-		{ id=11082, disc=L["Item Level"].." 21-25", dropRate = 20, quantity = {1,2} }, -- Greater Astral Essence
-		{ id=11134, disc=L["Item Level"].." 26-30", dropRate = 20, quantity = {1,2} }, -- Lesser Mystic Essence
-		{ id=11135, disc=L["Item Level"].." 31-35", dropRate = 20, quantity = {1,2} }, -- Greater Mystic Essence
-		{ id=11174, disc=L["Item Level"].." 36-40", dropRate = 20, quantity = {1,2} }, -- Lesser Nether Essence
-		{ id=11175, disc=L["Item Level"].." 41-45", dropRate = 20, quantity = {1,2} }, -- Greater Nether Essence
-		{ id=16202, disc=L["Item Level"].." 46-50", dropRate = 20, quantity = {1,2} }, -- Lesser Eternal Essence
-		{ id=16203, disc=L["Item Level"].." 51-60", dropRate = 20, quantity = {1,2} }, -- Greater Eternal Essence
+		{ id = 10938, disc = L["Item Level"] .. " 1-10",  dropRate = 20, quantity = { 1, 2 } }, -- Lesser Magic Essence
+		{ id = 10939, disc = L["Item Level"] .. " 11-15", dropRate = 20, quantity = { 1, 2 } }, -- Greater Magic Essence
+		{ id = 10998, disc = L["Item Level"] .. " 16-20", dropRate = 20, quantity = { 1, 2 } }, -- Lesser Astral Essence
+		{ id = 11082, disc = L["Item Level"] .. " 21-25", dropRate = 20, quantity = { 1, 2 } }, -- Greater Astral Essence
+		{ id = 11134, disc = L["Item Level"] .. " 26-30", dropRate = 20, quantity = { 1, 2 } }, -- Lesser Mystic Essence
+		{ id = 11135, disc = L["Item Level"] .. " 31-35", dropRate = 20, quantity = { 1, 2 } }, -- Greater Mystic Essence
+		{ id = 11174, disc = L["Item Level"] .. " 36-40", dropRate = 20, quantity = { 1, 2 } }, -- Lesser Nether Essence
+		{ id = 11175, disc = L["Item Level"] .. " 41-45", dropRate = 20, quantity = { 1, 2 } }, -- Greater Nether Essence
+		{ id = 16202, disc = L["Item Level"] .. " 46-50", dropRate = 20, quantity = { 1, 2 } }, -- Lesser Eternal Essence
+		{ id = 16203, disc = L["Item Level"] .. " 51-60", dropRate = 20, quantity = { 1, 2 } }, -- Greater Eternal Essence
 		{},
 		-- Crystals (Epic Items)
-		{ id=20725, disc=L["Item Level"].." 51+", dropRate = 100 }, -- Nexus Crystal
+		{ id = 20725, disc = L["Item Level"] .. " 51+",   dropRate = 100 }, -- Nexus Crystal
 	},
 
 	AlchemyApprentice = {

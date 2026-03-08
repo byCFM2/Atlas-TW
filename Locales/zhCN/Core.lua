@@ -150,6 +150,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Enable Profession Info"] = "启用职业信息",
     ["Lockpicking"] = "开锁",
     ["Doors"] = "门",
+    ["Night"] = "夜晚",
+    ["Day"] = "白天",
+    ["Winter"] = "冬天",
 
     -- Colors
     ["Purple"] = "紫色",
