@@ -42,7 +42,7 @@ AtlasTW.MenuData.Crafting = {
     { name = LS["Survival"] .. ", " .. LS["Gardening"], icon = "Interface\\Icons\\Trade_Survival",             lootpage = "AtlasTWLoot_SurvivalMenu" },
     { name = LS["Fishing"],                             icon = "Interface\\Icons\\Trade_Fishing",              lootpage = "AtlasTWLoot_FishingMenu" },
     { name = LS["Skinning"],                            icon = "Interface\\Icons\\INV_Misc_Pelt_Wolf_01",      lootpage = "AtlasTWLoot_SkinningMenu" },
-    { name = LS["Poisons"] .. ", " .. L["Lockpicking"], Extra = LC["Rogue"],                                   icon = "Interface\\Icons\\Trade_BrewPoison", lootpage = "AtlasTWLoot_PoisonsMenu" },
+    { name = LS["Poisons"] .. ", " .. L["Lockpicking"] .. ", " .. LS["Disguise"], Extra = LC["Rogue"],                                   icon = "Interface\\Icons\\Trade_BrewPoison", lootpage = "AtlasTWLoot_PoisonsMenu" },
     {},
     { name = L["Crafted Sets"],                         icon = "Interface\\Icons\\INV_Box_01",                 lootpage = "AtlasTWLootCraftedSetMenu" },
     {},
@@ -483,6 +483,7 @@ end
 AtlasTW.MenuData.Poisons = {
     { name = LS["Poisons"],                          icon = "Interface\\Icons\\Trade_BrewPoison",     lootpage = "PoisonsTable" },
     { name = L["Lockpicking"],                       icon = "Interface\\Icons\\Spell_Nature_MoonKey", lootpage = "LockpickingTable" },
+    { name = LS["Disguise"],                         icon = "Interface\\Icons\\Ability_Rogue_Disguise", lootpage = "DisguiseTable" },
     {},
     { name = L["Trainers"] .. ": " .. LS["Poisons"], icon = "Interface\\Icons\\INV_Misc_Book_09",     lootpage = "PoisonsTrainers" },
 }
@@ -493,5 +494,5 @@ AtlasTW.MenuData.Poisons = {
 --- @usage AtlasTWLoot_PoisonsMenu()
 
 function AtlasTWLoot_PoisonsMenu()
-    AtlasTW.LootBrowserUI.PrepMenu(LS["Poisons"]..", "..L["Lockpicking"], AtlasTW.MenuData.Poisons, L["Crafting"], "Interface\\Icons\\Trade_BrewPoison")
+    AtlasTW.LootBrowserUI.PrepMenu(LS["Poisons"]..", "..L["Lockpicking"] .. ", " .. LS["Disguise"], AtlasTW.MenuData.Poisons, L["Crafting"], "Interface\\Icons\\Trade_BrewPoison")
 end

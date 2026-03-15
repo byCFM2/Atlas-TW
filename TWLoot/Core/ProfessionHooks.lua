@@ -8,7 +8,8 @@ local LS = AtlasTW.Localization.Spells
 local TABS_ORDER = {
     "Alchemy", "Blacksmithing", "Enchanting", "Engineering",
     "Leatherworking", "Tailoring", "Jewelcrafting",
-    "Cooking", "First Aid", "Mining", "Poisons", "Smelting"
+    "Cooking", "First Aid", "Mining", "Poisons", "Smelting",
+    "Disguise"
 }
 
 -- Cache logic moved to Core/DataIndex.lua
@@ -132,7 +133,7 @@ function AtlasTW.ProfessionHooks.UpdateSideTabs(frame)
                 -- Close the current frame before switching if we are changing type (TradeSkill vs Craft)
                 -- This prevents multiple profession frames from being open at once.
                 -- Using HideUIPanel is safe now because we've hooked CloseTradeSkill/CloseCraft.
-                local isTargetCraft = (this.spellName == LS["Enchanting"])
+                local isTargetCraft = (this.spellName == LS["Enchanting"] or this.spellName == LS["Disguise"])
                 local isCurrentCraft = (currentFrame == CraftFrame)
 
                 if isTargetCraft ~= isCurrentCraft then

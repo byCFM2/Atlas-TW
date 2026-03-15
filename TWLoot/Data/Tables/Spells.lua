@@ -19,6 +19,7 @@ local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 
 local L = AtlasTW.Localization.UI
+local LF = AtlasTW.Localization.Factions
 local LS = AtlasTW.Localization.Spells
 local LMD = AtlasTW.Localization.MapData
 
@@ -28,6 +29,8 @@ AtlasTW.SpellDB = {
 	enchants = {
 		[44] = { name = LS["Enchant Bracer - Agility"] }, --1.18
 		[48] = { name = LS["Enchant Boots - Lesser Intellect"] }, --1.18
+		[5668] = { icon = "Ability_Rogue_Disguise", name = LS["Peasant Disguise"], extra = LF["Horde"] },
+		[5669] = { icon = "Ability_Rogue_Disguise", name = LS["Peon Disguise"], extra = LF["Alliance"] },
 		[7418] = { name = LS["Enchant Bracer - Minor Health"] },
 		[7420] = { name = LS["Enchant Chest - Minor Health"] },
 		[7421] = { item = 6218 },
@@ -3112,12 +3115,64 @@ AtlasTW.SpellDB = {
 				{ 3372 },
 			},
 		},
+		[5169] = {
+			tools = { 7997 },
+			item = 5126,
+			reagents = {
+				{ 2589 },
+			},
+		},
 		[5244] = {
 			item = 5081,
 			reagents = {
 				{ 5082, 3 },
 				{ 2318, 4 },
 				{ 2320 },
+			},
+		},
+		[5264] = {
+			tools = { 5107 },
+			item = 5127,
+			reagents = {
+				{ 2589 },
+			},
+		},
+		[5265] = {
+			tools = { 5109 },
+			item = 5131,
+			reagents = {
+				{ 2589 },
+			},
+		},
+		[5266] = {
+			tools = { 5113 },
+			item = 5132,
+			reagents = {
+				{ 2592 },
+			},
+		},
+		[5267] = {
+			tools = { 5110 },
+			item = 5130,
+			reagents = {
+				{ 2589 },
+			},
+		},
+		[5268] = {
+			tools = { 5108 },
+			item = 5129,
+			reagents = {
+				{ 2592 },
+			},
+		},
+		[5668] = {
+			reagents = {
+				{ 2589 },
+			},
+		},
+		[5669] = {
+			reagents = {
+				{ 2589 },
 			},
 		},
 		[5763] = {
@@ -7907,7 +7962,7 @@ AtlasTW.SpellDB = {
 			item = 14104,
 			reagents = {
 				{ 14048, 6 },
-				{ 2577,  4 },
+				{ 3577,  4 },
 				{ 14227 },
 				{ 14341 },
 			},

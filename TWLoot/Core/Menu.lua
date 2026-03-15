@@ -277,7 +277,7 @@ function AtlasTWLoot_OpenMenu(menuName)
 		[LS["Jewelcrafting"]] = "AtlasTWLoot_JewelcraftingMenu",
 		[LS["Cooking"]] = "AtlasTWLoot_CookingMenu",
 		[LS["Poisons"]] = "AtlasTWLoot_PoisonsMenu",
-		[LS["Poisons"] .. ", " .. L["Lockpicking"]] = "AtlasTWLoot_PoisonsMenu",
+		[LS["Poisons"] .. ", " .. L["Lockpicking"] .. ", " .. LS["Disguise"]] = "AtlasTWLoot_PoisonsMenu",
 		[LS["Herbalism"]] = "AtlasTWLoot_HerbalismMenu",
 		[LS["Fishing"]] = "AtlasTWLoot_FishingMenu",
 		[LS["Skinning"]] = "AtlasTWLoot_SkinningMenu",

@@ -19,6 +19,7 @@ local _G = getfenv()
 AtlasTW = _G.AtlasTW
 
 local L = AtlasTW.Localization.UI
+local LF = AtlasTW.Localization.Factions
 local LB = AtlasTW.Localization.Bosses
 local LS = AtlasTW.Localization.Spells
 local LZ = AtlasTW.Localization.Zones
@@ -62,6 +63,17 @@ local craftingTable = {
 		{ id = 45611,           skill = { 1, 290, 300, 310 } },                          --Agitating Poison I
 		{ name = L["Reagent"],  icon = "Trade_BrewPoison" },
 		{ id = 6510,            quantity = 3,                  skill = { 1, 170, 195, 220 } }, --Blinding Powder
+	},
+
+	DisguiseTable = {
+		{ id = 5668, skill = 0 }, -- Peasant Disguise
+		{ id = 5669, skill = 0 }, -- Peon Disguise
+		{ id = 5169, skill = 0, container = { 7997 } }, -- Defias Disguise
+		{ id = 5264, skill = 0, container = { 5107 } }, -- South Seas Pirate Disguise
+		{ id = 5265, skill = 0, container = { 5109 } }, -- Stonesplinter Trogg Disguise
+		{ id = 5266, skill = 0, container = { 5113 } }, -- Syndicate Disguise
+		{ id = 5267, skill = 0, container = { 5110 } }, -- Dalaran Wizard Disguise
+		{ id = 5268, skill = 0, container = { 5108 } }, -- Dark Iron Dwarf Disguise
 	},
 
 	LockpickingTable = {
