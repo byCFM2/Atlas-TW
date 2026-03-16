@@ -570,6 +570,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Helm"] = "头盔",
     ["Shoulders"] = "护肩",
     ["Bracers"] = "护腕",
+    ["Bracer"] = "护腕",
     ["Belt"] = "腰带",
     ["Pants"] = "护腿",
     ["Bags"] = "背包",
@@ -586,6 +587,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Demons"] = "恶魔",
     ["Scales"] = "鳞片",
     ["Special"] = "特殊",
+    ["Enchant weapon"] = "武器附魔",
+    ["mana oil"] = "法力之油",
+    ["wizard oil"] = "巫师之油",
 
     -- Set Categories
     ["Tier 0/0.5 Sets"] = "T0/T0.5 套装",

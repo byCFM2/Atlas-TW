@@ -1095,6 +1095,82 @@ local function StyleOptionsFrame()
 end
 
 ---
+--- Applies pfUI styling to profession frames and their Atlas components
+---
+function AtlasTW.pfUI.StyleProfessionFrames()
+    if not IsPfUIStylingEnabled() then return end
+
+    -- Style AtlasTW buttons in profession frames
+    if TradeSkillFrameAtlasButton then
+        AtlasTW.pfUI.RestyleButton("TradeSkillFrameAtlasButton")
+    end
+    if CraftFrameAtlasButton then
+        AtlasTW.pfUI.RestyleButton("CraftFrameAtlasButton")
+    end
+
+    -- Style CraftFilter elements
+    if AtlasTWCraftSearchBox and not AtlasTWCraftSearchBox.pfui_skinned then
+        AtlasTW.pfUI.SkinEditBox(AtlasTWCraftSearchBox)
+        AtlasTWCraftSearchBox.pfui_skinned = true
+    end
+    if AtlasTWCraftHaveMaterials and not AtlasTWCraftHaveMaterials.pfui_skinned then
+        pfUI.api.SkinCheckbox(AtlasTWCraftHaveMaterials)
+        AtlasTWCraftHaveMaterials.pfui_skinned = true
+    end
+    if AtlasTWCraftImprovesSkill and not AtlasTWCraftImprovesSkill.pfui_skinned then
+        pfUI.api.SkinCheckbox(AtlasTWCraftImprovesSkill)
+        AtlasTWCraftImprovesSkill.pfui_skinned = true
+    end
+    if AtlasTWCraftCategories and not AtlasTWCraftCategories.pfui_skinned then
+        pfUI.api.SkinCheckbox(AtlasTWCraftCategories)
+        AtlasTWCraftCategories.pfui_skinned = true
+    end
+    if AtlasTWCraftShowSkillLevels and not AtlasTWCraftShowSkillLevels.pfui_skinned then
+        pfUI.api.SkinCheckbox(AtlasTWCraftShowSkillLevels)
+        AtlasTWCraftShowSkillLevels.pfui_skinned = true
+    end
+    if AtlasTWTradeSkillShowLevels and not AtlasTWTradeSkillShowLevels.pfui_skinned then
+        pfUI.api.SkinCheckbox(AtlasTWTradeSkillShowLevels)
+        AtlasTWTradeSkillShowLevels.pfui_skinned = true
+    end
+
+    -- Style side tabs
+    for i = 1, 20 do -- Scan up to 20 potential tabs
+        local tab = _G["AtlasTWProfessionTab" .. i]
+        if tab then
+            if not tab.pfui_skinned then
+                if pfUI.api.CreateBackdrop then
+                    pfUI.api.CreateBackdrop(tab, nil, true)
+                end
+
+                -- Hide original background texture/textures
+                if tab.bg then tab.bg:Hide() end
+
+                -- The template uses these textures
+                local textures = {
+                    tab:GetNormalTexture(),
+                    tab:GetPushedTexture(),
+                    tab:GetHighlightTexture(),
+                    tab:GetDisabledTexture(),
+                    tab:GetCheckedTexture(),
+                }
+
+                for _, tex in ipairs(textures) do
+                    if tex then
+                        tex:SetTexCoord(0.08, 0.92, 0.08, 0.92)
+                        tex:ClearAllPoints()
+                        tex:SetPoint("TOPLEFT", tab, "TOPLEFT", 2, -2)
+                        tex:SetPoint("BOTTOMRIGHT", tab, "BOTTOMRIGHT", -2, 2)
+                    end
+                end
+
+                tab.pfui_skinned = true
+            end
+        end
+    end
+end
+
+---
 --- Main initialization function
 --- Applies all pfUI styling when pfUI is detected
 ---
@@ -1126,6 +1202,7 @@ function AtlasTW.pfUI.Initialize()
     StyleHewdropMenus()
     StyleOptionsFrame()
     StyleCheckboxes()
+    AtlasTW.pfUI.StyleProfessionFrames()
 
     -- Create a delayed hook for dynamically created frames
     -- Some frames are created after ADDON_LOADED
@@ -1152,6 +1229,10 @@ init:SetScript("OnEvent", function()
         this.atlasLoaded = true
     elseif arg1 == "pfUI" then
         this.pfuiLoaded = true
+    elseif arg1 == "Blizzard_TradeSkillUI" or arg1 == "Blizzard_CraftUI" then
+        if AtlasTW.pfUI and AtlasTW.pfUI.Initialize then
+            AtlasTW.pfUI.Initialize()
+        end
     end
 
     if (this.atlasLoaded or IsAddOnLoaded("Atlas-TW")) and (this.pfuiLoaded or IsAddOnLoaded("pfUI")) then

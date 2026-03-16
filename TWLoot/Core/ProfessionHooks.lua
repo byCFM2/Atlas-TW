@@ -3,13 +3,14 @@ AtlasTW = _G.AtlasTW or {}
 AtlasTW.ProfessionHooks = AtlasTW.ProfessionHooks or {}
 
 local LS = AtlasTW.Localization.Spells
+local L = AtlasTW.Localization.UI
 
 -- Configuration
 local TABS_ORDER = {
     "Alchemy", "Blacksmithing", "Enchanting", "Engineering",
     "Leatherworking", "Tailoring", "Jewelcrafting",
     "Cooking", "First Aid", "Mining", "Poisons", "Smelting",
-    "Disguise"
+    "Disguise", "Survival"
 }
 
 -- Cache logic moved to Core/DataIndex.lua
@@ -22,7 +23,7 @@ if AtlasTW.DataIndex and AtlasTW.DataIndex.RegisterCallback then
             AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
         end
         if CraftFrame and CraftFrame:IsVisible() then
-            AtlasTW.ProfessionHooks.OnCraftUpdate()
+            CraftFrame_Update()
         end
     end)
 end
@@ -95,12 +96,23 @@ function AtlasTW.ProfessionHooks.UpdateSideTabs(frame)
 
         local tab = sideTabs[i]
         tab:SetParent(frame)
-        -- Ensure frame level is high enough. TradeSkillFrame is usually around level 1-5.
-        -- We want to be above the frame and its standard children.
         tab:SetFrameLevel(frame:GetFrameLevel() + 5)
         tab:Show()
         tab:ClearAllPoints()
-        tab:SetPoint("TOPLEFT", frame, "TOPRIGHT", 0, -30 + (i - 1) * -50)
+        local closeBtn = _G[frame:GetName() .. "CloseButton"]
+        if closeBtn then
+            local firstTabXOffset = -3
+            if IsAddOnLoaded("pfUI") then
+                firstTabXOffset = 10
+            end
+            if i == 1 then
+                tab:SetPoint("TOPLEFT", closeBtn, "TOPRIGHT", firstTabXOffset, -22)
+            else
+                tab:SetPoint("TOPLEFT", sideTabs[i - 1], "BOTTOMLEFT", 0, -17)
+            end
+        else
+            tab:SetPoint("TOPLEFT", frame, "TOPRIGHT", -25, -30 + (i - 1) * -50)
+        end
 
         tab:SetNormalTexture(prof.texture)
         tab.spellName = prof.name
@@ -288,12 +300,27 @@ function AtlasTW.ProfessionHooks.StartTSScan()
     tsScanFrame:Show()
 end
 
+local function EnsureSingleProfessionFrame(shownEvent)
+    if shownEvent == "TRADE_SKILL_SHOW" then
+        if CraftFrame and CraftFrame:IsVisible() then
+            HideUIPanel(CraftFrame)
+        end
+    elseif shownEvent == "CRAFT_SHOW" then
+        if TradeSkillFrame and TradeSkillFrame:IsVisible() then
+            HideUIPanel(TradeSkillFrame)
+        end
+    end
+end
+
 -- Event-driven scan triggers
 local tsEventFrame = CreateFrame("Frame")
 tsEventFrame:RegisterEvent("BAG_UPDATE")
-tsEventFrame:RegisterEvent("TRADE_SKILL_UPDATE")
+--tsEventFrame:RegisterEvent("TRADE_SKILL_UPDATE")
 tsEventFrame:RegisterEvent("TRADE_SKILL_SHOW")
 tsEventFrame:SetScript("OnEvent", function()
+    if event == "TRADE_SKILL_SHOW" then
+        EnsureSingleProfessionFrame(event)
+    end
     if TradeSkillFrame and TradeSkillFrame:IsVisible() then
         AtlasTW.ProfessionHooks.StartTSScan()
     end
@@ -316,8 +343,51 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
 
     AtlasTW.ProfessionHooks.UpdateSideTabs(TradeSkillFrame)
 
+    -- Style with pfUI if present
+    if AtlasTW.pfUI and AtlasTW.pfUI.StyleProfessionFrames then
+        AtlasTW.pfUI.StyleProfessionFrames()
+    end
+
+    if not AtlasTWOptions then AtlasTWOptions = {} end
+    if AtlasTWOptions.TradeSkillShowLevels == nil then
+        AtlasTWOptions.TradeSkillShowLevels = true
+    end
+
+    local tradeSkillLevelToggle = _G["AtlasTWTradeSkillShowLevels"]
+    if not tradeSkillLevelToggle then
+        tradeSkillLevelToggle = CreateFrame("CheckButton", "AtlasTWTradeSkillShowLevels", TradeSkillFrame,
+            "UICheckButtonTemplate")
+        tradeSkillLevelToggle:SetWidth(20)
+        tradeSkillLevelToggle:SetHeight(20)
+        tradeSkillLevelToggle:SetScript("OnClick", function()
+            AtlasTWOptions.TradeSkillShowLevels = (this:GetChecked() == 1)
+            TradeSkillFrame_Update()
+        end)
+        local tradeSkillLevelToggleText = _G["AtlasTWTradeSkillShowLevelsText"]
+        tradeSkillLevelToggleText:SetText(string.gsub(L["Skill:"], "[:%s]", ""))
+        tradeSkillLevelToggleText:SetFontObject("GameFontHighlightSmall")
+    end
+
+    tradeSkillLevelToggle:ClearAllPoints()
+    if IsAddOnLoaded("pfUI") then
+        tradeSkillLevelToggle:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 0, 0)
+    else
+        local improvesSkillAnchor = _G["TradeSkillFrameExpandableFilterCheckButtonText"] or
+            _G["TradeSkillFrameExpandableFilterCheckButton"] or
+            _G["TradeSkillFrameAvailableFilterCheckButtonText"] or
+            _G["TradeSkillFrameAvailableFilterCheckButton"]
+        if improvesSkillAnchor then
+            tradeSkillLevelToggle:SetPoint("LEFT", improvesSkillAnchor, "RIGHT", 8, 0)
+        else
+            tradeSkillLevelToggle:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 250, -55)
+        end
+    end
+    tradeSkillLevelToggle:SetChecked(AtlasTWOptions.TradeSkillShowLevels and 1 or nil)
+    tradeSkillLevelToggle:Show()
+
     -- Check if Profession Info option is enabled
     if not AtlasTWOptions or not AtlasTWOptions.ProfessionInfo then
+        tradeSkillLevelToggle:Hide()
         return
     end
 
@@ -332,9 +402,12 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
     local numSkills = GetNumTradeSkills()
     local skillOffset = FauxScrollFrame_GetOffset(TradeSkillListScrollFrame)
 
-    for i = 1, TRADE_SKILLS_DISPLAYED do
-        local skillIndex = skillOffset + i
+    local numDisplayed = TRADE_SKILLS_DISPLAYED
+    while _G["TradeSkillSkill" .. (numDisplayed + 1)] do numDisplayed = numDisplayed + 1 end
+
+    for i = 1, numDisplayed do
         local skillButton = _G["TradeSkillSkill" .. i]
+        local skillIndex = skillButton:GetID()
         local skillText = _G["TradeSkillSkill" .. i .. "Text"]
 
         -- Create icon if needed
@@ -346,7 +419,7 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
         local icon = skillButton.atlasIcon
         icon:Hide()
 
-        if skillIndex <= numSkills then
+        if skillButton:IsShown() and skillIndex and skillIndex > 0 then
             local skillName, skillType, numAvailable, isExpanded = GetTradeSkillInfo(skillIndex)
 
             if skillName and skillType ~= "header" then
@@ -372,14 +445,17 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
 
                 local nameText = skillName
                 local levels = AtlasTW.DataIndex and AtlasTW.DataIndex.GetSkillLevels(skillName)
-                if levels then
+                if AtlasTWOptions.TradeSkillShowLevels and levels and levels ~= "" then
                     nameText = nameText .. " " .. levels
                 end
 
                 local texture = GetTradeSkillIcon(skillIndex)
                 if texture then
                     -- Add spacer for icon (7 spaces)
-                    local spacer = "       "
+                    local spacer = "    "
+                    if IsAddOnLoaded("pfUI") then
+                        spacer = "       "
+                    end
 
                     -- Measure width of countText to position icon correctly
                     skillText:SetText(countText)
@@ -441,7 +517,7 @@ craftScanFrame:SetScript("OnUpdate", function()
 
     while processed < RECIPES_PER_FRAME and idx < numCrafts do
         idx = idx + 1
-        local craftName, craftSubSpellName, craftType, numAvailable = GetCraftInfo(idx)
+        local craftName, _, craftType, numAvailable = GetCraftInfo(idx)
 
         if craftName and craftType ~= "header" and numAvailable and numAvailable >= 0 then
             local minCrafts = 99999
@@ -506,7 +582,7 @@ craftScanFrame:SetScript("OnUpdate", function()
         AtlasTW.ProfessionHooks.CraftScanActive = false
         craftScanFrame:Hide()
         if CraftFrame and CraftFrame:IsVisible() then
-            AtlasTW.ProfessionHooks.OnCraftUpdate()
+            CraftFrame_Update()
         end
     end
 end)
@@ -523,116 +599,16 @@ end
 -- Event-driven craft scan triggers
 local craftEventFrame = CreateFrame("Frame")
 craftEventFrame:RegisterEvent("BAG_UPDATE")
-craftEventFrame:RegisterEvent("CRAFT_UPDATE")
+-- craftEventFrame:RegisterEvent("CRAFT_UPDATE")
 craftEventFrame:RegisterEvent("CRAFT_SHOW")
 craftEventFrame:SetScript("OnEvent", function()
+    if event == "CRAFT_SHOW" then
+        EnsureSingleProfessionFrame(event)
+    end
     if CraftFrame and CraftFrame:IsVisible() then
         AtlasTW.ProfessionHooks.StartCraftScan()
     end
 end)
-
-function AtlasTW.ProfessionHooks.OnCraftUpdate()
-    -- Reentrancy guard: SetText() can trigger CraftFrame_Update again
-    if AtlasTW.ProfessionHooks._updatingCraft then return end
-
-    -- Only update if frame is visible to prevent stealing tabs
-    if not CraftFrame or not CraftFrame:IsVisible() then return end
-
-    -- Restore position if switching professions
-    if AtlasTW.ProfessionHooks.SavedPosition then
-        local p = AtlasTW.ProfessionHooks.SavedPosition
-        CraftFrame:ClearAllPoints()
-        CraftFrame:SetPoint(p[1], p[2], p[3], p[4], p[5])
-        AtlasTW.ProfessionHooks.SavedPosition = nil
-    end
-
-    AtlasTW.ProfessionHooks.UpdateSideTabs(CraftFrame)
-
-    -- Check if Profession Info option is enabled
-    if not AtlasTWOptions or not AtlasTWOptions.ProfessionInfo then
-        return
-    end
-
-    -- Start async scan if not already running or profession changed
-    local currentLine = GetCraftDisplaySkillLine()
-    if not AtlasTW.ProfessionHooks.CraftScanActive and (AtlasTW.ProfessionHooks.CraftScanIndex == 0 or currentLine ~= AtlasTW.ProfessionHooks.CraftScanLine) then
-        AtlasTW.ProfessionHooks.StartCraftScan()
-    end
-
-    AtlasTW.ProfessionHooks._updatingCraft = true
-
-    local numCrafts = GetNumCrafts()
-    local craftOffset = FauxScrollFrame_GetOffset(CraftListScrollFrame)
-
-    for i = 1, CRAFTS_DISPLAYED do
-        local craftIndex = craftOffset + i
-        local craftButton = _G["Craft" .. i]
-        local craftText = _G["Craft" .. i .. "Text"]
-
-        -- Create icon if needed
-        if not craftButton.atlasIcon then
-            craftButton.atlasIcon = craftButton:CreateTexture(nil, "ARTWORK")
-            craftButton.atlasIcon:SetWidth(12)
-            craftButton.atlasIcon:SetHeight(12)
-        end
-        local icon = craftButton.atlasIcon
-        icon:Hide()
-
-        if craftIndex <= numCrafts then
-            local craftName, _, craftType, numAvailable, _ = GetCraftInfo(craftIndex)
-
-            if craftName and craftType ~= "header" then
-                -- Read from async cache
-                local customAvailable = AtlasTW.ProfessionHooks.CraftAvailCache[craftIndex]
-                local realAvailable = AtlasTW.ProfessionHooks.CraftRealCache[craftIndex] or numAvailable or 0
-
-                if not customAvailable then
-                    customAvailable = realAvailable
-                end
-
-                -- Construct Text
-                local countText = ""
-                local displayNum = realAvailable
-                if customAvailable > displayNum then
-                    countText = "[" .. customAvailable .. "/" .. displayNum .. "] "
-                elseif displayNum > 0 then
-                    countText = "[" .. displayNum .. "] "
-                end
-
-                local nameText = craftName
-                local levels = AtlasTW.DataIndex and AtlasTW.DataIndex.GetSkillLevels(craftName)
-                if levels then
-                    nameText = nameText .. " " .. levels
-                end
-
-                local texture = GetCraftIcon(craftIndex)
-                if texture then
-                    -- Add spacer for icon (7 spaces)
-                    local spacer = "       "
-
-                    -- Measure width of countText
-                    craftText:SetText(countText)
-                    local width = craftText:GetStringWidth()
-
-                    craftText:SetText(countText .. spacer .. nameText)
-
-                    icon:SetTexture(texture)
-                    icon:ClearAllPoints()
-                    icon:SetPoint("LEFT", craftText, "LEFT", width, 0)
-                    icon:Show()
-                else
-                    craftText:SetText(countText .. nameText)
-                end
-            else
-                -- Header
-            end
-        else
-            -- Empty
-        end
-    end
-
-    AtlasTW.ProfessionHooks._updatingCraft = nil
-end
 
 -- Create Atlas Button
 function AtlasTW.ProfessionHooks.CreateAtlasButton(frame)
@@ -781,6 +757,521 @@ function AtlasTW.ProfessionHooks.HookReagentButtons(prefix)
     end
 end
 
+-- --- Craft Filter System ---
+AtlasTW.ProfessionHooks.CraftFilter = {
+    SearchText = "",
+    HaveMaterials = false,
+    ImprovesSkill = false,
+    ShowSkillLevels = true,
+    UseCategories = true,
+    ExpandedCategories = {},
+    List = {}
+}
+
+local CF = AtlasTW.ProfessionHooks.CraftFilter
+
+local L = AtlasTW.Localization.UI
+
+local patternsToHeaders = {
+    [string.lower(L["Bracer"])] = L["Bracer"],
+    [string.lower(L["Boots"])] = L["Boots"],
+    [string.lower(L["Gloves"])] = L["Gloves"],
+    [string.lower(L["2H Weapon"])] = L["2H Weapon"],
+    [string.lower(L["Enchant weapon"])] = L["Weapon"],
+    [string.lower(L["Wand"])] = L["Wand"],
+    [string.lower(L["Cloak"])] = L["Cloak"],
+    [string.lower(L["Chest"])] = L["Chest"],
+    [string.lower(L["Shield"])] = L["Shield"],
+    [string.lower(L["mana oil"])] = L["Consumable"],
+    [string.lower(L["wizard oil"])] = L["Consumable"],
+}
+
+local function GetCraftButtonsCount()
+    local count = 0
+    while true do
+        if not _G["Craft" .. (count + 1)] then
+            break
+        end
+        count = count + 1
+        if count >= 64 then
+            break
+        end
+    end
+
+    if count == 0 then
+        count = CRAFTS_DISPLAYED or 8
+    end
+
+    return count
+end
+
+function CF.BuildList()
+    CF.List = {}
+
+    -- Clear native filters to get ALL items
+    if CraftFrameFilterDropDown and UIDropDownMenu_GetSelectedID and UIDropDownMenu_GetSelectedID(CraftFrameFilterDropDown) ~= 1 then
+        UIDropDownMenu_SetSelectedID(CraftFrameFilterDropDown, 1)
+        if SetCraftFilter then SetCraftFilter(0) end
+    end
+
+    -- Aggressively expand all native categories to see all enchants
+    -- This is necessary on Turtle WoW as items are hidden inside native headers
+    local numNative = GetNumCrafts()
+    local expandedSomething = true
+    local safetyLimit = 0
+    while expandedSomething and safetyLimit < 50 do
+        expandedSomething = false
+        numNative = GetNumCrafts()
+        for i = 1, numNative do
+            local _, _, skillType, _, isExpanded = GetCraftInfo(i)
+            if skillType == "header" and not isExpanded then
+                ExpandCraftHeader(i)
+                expandedSomething = true
+                safetyLimit = safetyLimit + 1
+                -- One expansion per pass to let GetNumCrafts update correctly
+                break
+            end
+        end
+    end
+
+    local numNative = GetNumCrafts()
+    if numNative == 0 then return end
+
+    local filtered = {}
+    for i = 1, numNative do
+        local craftName, _, craftType, numAvailable = GetCraftInfo(i)
+
+        if craftName and craftType ~= "header" then
+            local keep = true
+
+            if CF.SearchText ~= "" then
+                if not string.find(string.lower(craftName), CF.SearchText) then
+                    keep = false
+                end
+            end
+
+            if CF.HaveMaterials and numAvailable <= 0 then
+                keep = false
+            end
+
+            if CF.ImprovesSkill and (craftType == "trivial" or craftType == "used" or craftType == "none") then
+                keep = false
+            end
+
+            if keep then
+                table.insert(filtered, {
+                    index = i,
+                    name = craftName,
+                    type = craftType,
+                    num = numAvailable
+                })
+            end
+        end
+    end
+
+    if CF.UseCategories then
+        local grouped = {}
+        for _, craft in ipairs(filtered) do
+            local cat = L["Miscellaneous"]
+            for p, h in pairs(patternsToHeaders) do
+                if string.find(string.lower(craft.name), p) then
+                    cat = h
+                    break
+                end
+            end
+            if not grouped[cat] then grouped[cat] = {} end
+            table.insert(grouped[cat], craft)
+        end
+
+        -- Sort categories alphabetically, but keep Miscellaneous at the end
+        local sortedCats = {}
+        local hasMisc = false
+        local miscName = L["Miscellaneous"]
+        for catName in pairs(grouped) do
+            if catName == miscName then
+                hasMisc = true
+            else
+                table.insert(sortedCats, catName)
+            end
+        end
+        table.sort(sortedCats)
+        if hasMisc then
+            table.insert(sortedCats, miscName)
+        end
+
+        -- Flatten the grouped list into our sequential display list
+        for _, catName in ipairs(sortedCats) do
+            local items = grouped[catName]
+            local expanded = CF.ExpandedCategories[catName]
+            if expanded == nil then expanded = true end
+
+            table.insert(CF.List, { isHeader = true, name = catName, expanded = expanded })
+            if expanded then
+                for _, craft in ipairs(items) do
+                    table.insert(CF.List,
+                        { isHeader = false, index = craft.index, name = craft.name, type = craft.type, num = craft.num })
+                end
+            end
+        end
+    else
+        for _, craft in ipairs(filtered) do
+            table.insert(CF.List,
+                { isHeader = false, index = craft.index, name = craft.name, type = craft.type, num = craft.num })
+        end
+    end
+end
+
+function CF.InitUI()
+    if CF.UIReady then return end
+    CF.UIReady = true
+
+    -- Search Box (styled to match TradeSkillFrame search bar)
+    -- No template to avoid background issues in pfUI
+    local searchBox = CreateFrame("EditBox", "AtlasTWCraftSearchBox", CraftFrame)
+    searchBox:SetHeight(20)
+    searchBox:SetAutoFocus(false)
+    searchBox:SetFontObject("ChatFontNormal")
+    searchBox:SetTextInsets(26, 20, 0, 0)
+
+    if IsAddOnLoaded("pfUI") then
+        searchBox:SetPoint("TOP", CraftFrame, "BOTTOM", 0, -8)
+        searchBox:SetWidth(330)
+    else
+        searchBox:SetWidth(170)
+        searchBox:SetPoint("BOTTOMLEFT", CraftFrame, 16, 82)
+    end
+
+    searchBox:SetFrameLevel(CraftFrame:GetFrameLevel() + 5)
+
+    -- Magnifying glass icon
+    local searchIcon = searchBox:CreateTexture(nil, "OVERLAY")
+    searchIcon:SetTexture("Interface\\Common\\UI-Searchbox-Icon")
+    searchIcon:SetWidth(14)
+    searchIcon:SetHeight(14)
+    searchIcon:SetPoint("LEFT", searchBox, "LEFT", 8, -1)
+    searchIcon:SetVertexColor(0.6, 0.6, 0.6)
+    searchBox.searchIcon = searchIcon
+
+    -- Placeholder
+    local placeholder = searchBox:CreateFontString(nil, "OVERLAY", "GameFontDisableSmall")
+    placeholder:SetPoint("LEFT", searchIcon, "RIGHT", 4, 0)
+    placeholder:SetText(L["Search"])
+    placeholder:SetTextColor(0.6, 0.6, 0.6)
+    searchBox.placeholder = placeholder
+
+    -- Clear button (X)
+    local clearBtn = CreateFrame("Button", nil, searchBox)
+    clearBtn:SetWidth(16)
+    clearBtn:SetHeight(16)
+    clearBtn:SetPoint("RIGHT", searchBox, "RIGHT", -6, 0)
+    clearBtn:SetFrameLevel(searchBox:GetFrameLevel() + 5)
+
+    local clearX = clearBtn:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    clearX:SetText("x")
+    clearX:SetPoint("CENTER", 0, 0)
+    clearX:SetTextColor(1, 0.1, 0.1) -- Bright red X
+    clearBtn.text = clearX
+
+    clearBtn:SetScript("OnEnter", function() this.text:SetTextColor(1, 1, 1) end)
+    clearBtn:SetScript("OnLeave", function() this.text:SetTextColor(1, 0.1, 0.1) end)
+
+    clearBtn:Hide()
+    clearBtn:SetScript("OnClick", function()
+        AtlasTWCraftSearchBox:SetText("")
+        AtlasTWCraftSearchBox:ClearFocus()
+    end)
+    searchBox.clearBtn = clearBtn
+
+    searchBox:SetScript("OnTextChanged", function()
+        local text = this:GetText()
+        CF.SearchText = string.lower(text)
+        -- Show/hide placeholder and clear button based on text
+        if text ~= "" then
+            this.placeholder:Hide()
+            this.clearBtn:Show()
+        else
+            if not this._hasFocus then
+                this.placeholder:Show()
+            end
+            this.clearBtn:Hide()
+        end
+        CraftFrame_Update()
+    end)
+    searchBox:SetScript("OnEditFocusGained", function()
+        this._hasFocus = true
+        this.placeholder:Hide()
+        this.searchIcon:SetVertexColor(1, 1, 1)
+    end)
+    searchBox:SetScript("OnEditFocusLost", function()
+        this._hasFocus = false
+        if this:GetText() == "" then
+            this.placeholder:Show()
+        end
+        this.searchIcon:SetVertexColor(0.6, 0.6, 0.6)
+    end)
+    searchBox:SetScript("OnEnterPressed", function()
+        this:ClearFocus()
+    end)
+    searchBox:SetScript("OnEscapePressed", function()
+        this:ClearFocus()
+    end)
+
+    -- Have Materials Checkbox
+    local matCheck = CreateFrame("CheckButton", "AtlasTWCraftHaveMaterials", CraftFrame, "UICheckButtonTemplate")
+    matCheck:SetWidth(20)
+    matCheck:SetHeight(20)
+
+    if IsAddOnLoaded("pfUI") then
+        matCheck:SetPoint("TOPLEFT", CraftFrame, 50, -5)
+    else
+        matCheck:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 75, -55)
+    end
+    matCheck:SetScript("OnClick", function()
+        CF.HaveMaterials = (this:GetChecked() == 1)
+        CraftFrame_Update()
+    end)
+    local matLabel = _G["AtlasTWCraftHaveMaterialsText"]
+    matLabel:SetText("1+")
+    matLabel:SetFontObject("GameFontHighlightSmall")
+
+    -- Improves Skill Checkbox
+    local skillCheck = CreateFrame("CheckButton", "AtlasTWCraftImprovesSkill", CraftFrame, "UICheckButtonTemplate")
+    skillCheck:SetWidth(20)
+    skillCheck:SetHeight(20)
+    skillCheck:SetPoint("LEFT", _G["AtlasTWCraftHaveMaterialsText"], "RIGHT", 5, 0)
+    skillCheck:SetScript("OnClick", function()
+        CF.ImprovesSkill = (this:GetChecked() == 1)
+        CraftFrame_Update()
+    end)
+    local skillLabel = _G["AtlasTWCraftImprovesSkillText"]
+    skillLabel:SetText("^^^")
+    skillLabel:SetFontObject("GameFontHighlightSmall")
+
+    -- Category Checkbox
+    local catCheck = CreateFrame("CheckButton", "AtlasTWCraftCategories", CraftFrame, "UICheckButtonTemplate")
+    catCheck:SetWidth(20)
+    catCheck:SetHeight(20)
+    catCheck:SetPoint("LEFT", _G["AtlasTWCraftImprovesSkillText"], "RIGHT", 5, 0)
+    catCheck:SetChecked(CF.UseCategories and 1 or nil)
+    catCheck:SetScript("OnClick", function()
+        CF.UseCategories = (this:GetChecked() == 1)
+        CraftFrame_Update()
+    end)
+    local catLabel = _G["AtlasTWCraftCategoriesText"]
+    catLabel:SetText(L["Type"])
+    catLabel:SetFontObject("GameFontHighlightSmall")
+
+    local showSkillCheck = CreateFrame("CheckButton", "AtlasTWCraftShowSkillLevels", CraftFrame, "UICheckButtonTemplate")
+    showSkillCheck:SetWidth(20)
+    showSkillCheck:SetHeight(20)
+    showSkillCheck:SetPoint("LEFT", _G["AtlasTWCraftCategoriesText"], "RIGHT", 5, 0)
+
+    if not AtlasTWOptions then AtlasTWOptions = {} end
+    if AtlasTWOptions.CraftSkillShowLevels == nil then
+        AtlasTWOptions.CraftSkillShowLevels = true
+    end
+    CF.ShowSkillLevels = AtlasTWOptions.CraftSkillShowLevels
+    showSkillCheck:SetChecked(CF.ShowSkillLevels and 1 or nil)
+    showSkillCheck:SetScript("OnClick", function()
+        CF.ShowSkillLevels = (this:GetChecked() == 1)
+        AtlasTWOptions.CraftSkillShowLevels = CF.ShowSkillLevels
+        CraftFrame_Update()
+    end)
+    local showSkillLabel = _G["AtlasTWCraftShowSkillLevelsText"]
+    showSkillLabel:SetText(string.gsub(L["Skill:"], "[:%s]", ""))
+    showSkillLabel:SetFontObject("GameFontHighlightSmall")
+
+    -- Style with pfUI if present
+    if AtlasTW.pfUI and AtlasTW.pfUI.StyleProfessionFrames then
+        AtlasTW.pfUI.StyleProfessionFrames()
+    end
+
+    -- Hook clicks on Craft Buttons
+    local numCraftsDisplayed = GetCraftButtonsCount()
+
+    for i = 1, numCraftsDisplayed do
+        local btn = _G["Craft" .. i]
+        if btn then
+            local origOnClick = btn:GetScript("OnClick")
+            btn:SetScript("OnClick", function()
+                local id = this:GetID()
+                if id == 0 and this.catName then
+                    -- It's our custom header! Toggle it.
+                    local cat = this.catName
+                    local isExpanded = CF.ExpandedCategories[cat]
+                    if isExpanded == nil then isExpanded = true end -- Default to expanded
+                    CF.ExpandedCategories[cat] = not isExpanded
+                    CraftFrame_Update()
+                    return -- skip native click
+                end
+                if origOnClick then origOnClick() end
+            end)
+        end
+    end
+end
+
+function CF.HookCraftFrameUpdate()
+    if AtlasTW.CraftFilter_Hooked then return end
+    AtlasTW.CraftFilter_Hooked = true
+
+    local orig_CraftFrame_Update = CraftFrame_Update
+    function CraftFrame_Update()
+        if AtlasTW.ProfessionHooks._updatingCraft then return end
+
+        AtlasTW.ProfessionHooks._updatingCraft = true
+        local scrollBar = _G[CraftListScrollFrame:GetName() .. "ScrollBar"]
+        local preUpdateScrollValue = CF.ScrollValue or 0
+        if scrollBar then
+            preUpdateScrollValue = scrollBar:GetValue() or preUpdateScrollValue
+        end
+
+        -- Let default logic run first so native state is updated (selection, ingredients)
+        orig_CraftFrame_Update()
+
+        -- Update Side Panel and Styling (Essential for visibility)
+        if CraftFrame:IsVisible() then
+            AtlasTW.ProfessionHooks.UpdateSideTabs(CraftFrame)
+            if AtlasTW.pfUI and AtlasTW.pfUI.StyleProfessionFrames then
+                AtlasTW.pfUI.StyleProfessionFrames()
+            end
+        end
+
+        if not CraftFrame:IsVisible() then
+            AtlasTW.ProfessionHooks._updatingCraft = nil
+            return
+        end
+
+        CF.InitUI()
+        CF.BuildList()
+
+        local numItems = table.getn(CF.List)
+        local numDisplayed = GetCraftButtonsCount()
+
+        local rowHeight = CRAFT_SKILL_HEIGHT or 16
+        if rowHeight < 1 then rowHeight = 16 end
+
+        local visibleItems = numItems
+
+        FauxScrollFrame_Update(CraftListScrollFrame, visibleItems, numDisplayed, rowHeight)
+         if scrollBar then
+            local minVal, maxVal = scrollBar:GetMinMaxValues()
+            local targetValue = preUpdateScrollValue
+            if targetValue < minVal then targetValue = minVal end
+            if targetValue > maxVal then targetValue = maxVal end
+            if math.abs((scrollBar:GetValue() or 0) - targetValue) > 0.5 then
+                scrollBar:SetValue(targetValue)
+            end
+        end
+
+        local craftOffset = FauxScrollFrame_GetOffset(CraftListScrollFrame)
+        local selectionIndex = GetCraftSelectionIndex()
+
+        if CraftHighlightFrame then CraftHighlightFrame:Hide() end
+
+        for i = 1, numDisplayed do
+            local itemIndex = i + craftOffset
+            local craftButton = _G["Craft" .. i]
+            local craftText = _G["Craft" .. i .. "Text"]
+
+            -- Create icon if needed (merged from OnCraftUpdate logic)
+            if not craftButton.atlasIcon then
+                craftButton.atlasIcon = craftButton:CreateTexture(nil, "ARTWORK")
+                craftButton.atlasIcon:SetWidth(12)
+                craftButton.atlasIcon:SetHeight(12)
+            end
+            local icon = craftButton.atlasIcon
+            icon:Hide()
+
+            if itemIndex and itemIndex <= numItems then
+                local data = CF.List[itemIndex]
+
+                if data.isHeader then
+                    craftButton:SetID(0)
+                    craftButton.catName = data.name
+                    craftText:ClearAllPoints()
+                    craftText:SetPoint("LEFT", craftButton, "LEFT", 16, 0)
+                    craftText:SetWidth(craftButton:GetWidth() - 14)
+                    craftText:SetText(data.name)
+                    craftText:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
+
+                    if data.expanded then
+                        craftButton:SetNormalTexture("Interface\\Buttons\\UI-MinusButton-Up")
+                    else
+                        craftButton:SetNormalTexture("Interface\\Buttons\\UI-PlusButton-Up")
+                    end
+                    _G["Craft" .. i .. "Highlight"]:SetTexture("Interface\\Buttons\\UI-PlusButton-Hilight")
+
+                    craftButton:Show()
+                else
+                    craftButton:SetID(data.index)
+                    craftButton.catName = nil
+
+                    craftText:ClearAllPoints()
+                    craftText:SetPoint("LEFT", craftButton, "LEFT")
+                    craftText:SetWidth(craftButton:GetWidth() - 14)
+
+                    -- Setup text with extra info (skill levels and counts)
+                    local _, _, _, numAvailable = GetCraftInfo(data.index)
+
+                    local customAvailable = AtlasTW.ProfessionHooks.CraftAvailCache[data.index]
+                    local realAvailable = AtlasTW.ProfessionHooks.CraftRealCache[data.index] or numAvailable or 0
+                    if not customAvailable then customAvailable = realAvailable end
+
+                    local countText = ""
+                    if customAvailable > realAvailable then
+                        countText = "[" .. customAvailable .. "/" .. realAvailable .. "] "
+                    elseif realAvailable > 0 then
+                        countText = "[" .. realAvailable .. "] "
+                    end
+
+                    local nameText = data.name
+                    local levels = AtlasTW.DataIndex and AtlasTW.DataIndex.GetSkillLevels(data.name)
+                    if CF.ShowSkillLevels and levels and levels ~= "" then
+                        nameText = nameText .. " " .. levels
+                    end
+
+                    local texture = GetCraftIcon(data.index)
+                    if texture then
+                        craftText:SetText(countText)
+                        craftText:SetText(countText .. nameText)
+
+                        icon:SetTexture(texture)
+                        icon:ClearAllPoints()
+                        icon:SetPoint("LEFT", craftText, "RIGHT")
+                        icon:Show()
+                    else
+                        craftText:SetText(countText .. nameText)
+                    end
+
+                    -- Setup color
+                    local color = CraftTypeColor[data.type] or { r = 1, g = 1, b = 1 }
+                    craftText:SetTextColor(color.r, color.g, color.b)
+
+                    -- Setup textures for normal buttons
+                    craftButton:SetNormalTexture("")
+                    _G["Craft" .. i .. "Highlight"]:SetTexture("")
+
+                    if selectionIndex == data.index then
+                        CraftHighlightFrame:SetPoint("TOPLEFT", craftButton, "TOPLEFT")
+                        CraftHighlightFrame:Show()
+                    end
+
+                    craftButton:Show()
+                end
+            else
+                craftButton:Hide()
+            end
+        end
+        if scrollBar then
+            CF.ScrollValue = scrollBar:GetValue() or preUpdateScrollValue
+        else
+            CF.ScrollValue = preUpdateScrollValue
+        end
+        --if scrollBar then CF.ScrollValue = scrollBar:GetValue() or 0 end
+        AtlasTW.ProfessionHooks._updatingCraft = nil
+    end
+end
+
 -- Initialize Hooks
 local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
@@ -792,7 +1283,8 @@ frame:SetScript("OnEvent", function()
             AtlasTW.ProfessionHooks.CreateAtlasButton(TradeSkillFrame)
             AtlasTW.ProfessionHooks.HookReagentButtons("TradeSkillReagent")
         elseif arg1 == "Blizzard_CraftUI" then
-            hooksecurefunc("CraftFrame_Update", AtlasTW.ProfessionHooks.OnCraftUpdate)
+            AtlasTW.ProfessionHooks.CraftFilter.HookCraftFrameUpdate()
+            -- hooksecurefunc("CraftFrame_Update", AtlasTW.ProfessionHooks.OnCraftUpdate) -- Removed to prevent conflict
             AtlasTW.ProfessionHooks.CreateAtlasButton(CraftFrame)
             AtlasTW.ProfessionHooks.HookReagentButtons("CraftReagent")
         end
@@ -810,7 +1302,8 @@ frame:SetScript("OnEvent", function()
 
         if IsAddOnLoaded("Blizzard_CraftUI") then
             if not _G["CraftFrameAtlasButton"] then
-                hooksecurefunc("CraftFrame_Update", AtlasTW.ProfessionHooks.OnCraftUpdate)
+                AtlasTW.ProfessionHooks.CraftFilter.HookCraftFrameUpdate()
+                -- hooksecurefunc("CraftFrame_Update", AtlasTW.ProfessionHooks.OnCraftUpdate) -- Removed to prevent conflict
                 AtlasTW.ProfessionHooks.HookReagentButtons("CraftReagent")
             end
             AtlasTW.ProfessionHooks.CreateAtlasButton(CraftFrame)

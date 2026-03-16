@@ -632,6 +632,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Helm"] = "Helm",
     ["Shoulders"] = "Schultern",
     ["Bracers"] = "Handgelenke",
+    ["Bracer"] = "Handgelenk",
     ["Belt"] = "Gürtel",
     ["Pants"] = "Hose",
     ["Bags"] = "Taschen",
@@ -647,6 +648,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["Amulets"] = "Amulette",
     ["Scales"] = "Schuppen",
     ["Special"] = "Spezial",
+    ["enchant weapon"] = "Waffenverzauberung",
+    ["mana oil"] = "Manaöl",
+    ["wizard oil"] = "Zauberöl",
 
     --************************************************
     -- Set Categories

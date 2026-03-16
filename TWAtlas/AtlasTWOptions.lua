@@ -608,8 +608,8 @@ function AtlasTW.OptionProfessionInfoOnClick()
         if TradeSkillFrame and TradeSkillFrame:IsVisible() and AtlasTW.ProfessionHooks.OnTradeSkillUpdate then
             AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
         end
-        if CraftFrame and CraftFrame:IsVisible() and AtlasTW.ProfessionHooks.OnCraftUpdate then
-            AtlasTW.ProfessionHooks.OnCraftUpdate()
+        if CraftFrame and CraftFrame:IsVisible() then
+            CraftFrame_Update()
         end
     end
 

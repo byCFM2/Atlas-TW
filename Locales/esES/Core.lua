@@ -643,6 +643,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Helm"] = "Yelmo",
     ["Shoulders"] = "Hombreras",
     ["Bracers"] = "Brazales",
+    ["Bracer"] = "Brazal",
     ["Belt"] = "Cinturón",
     ["Pants"] = "Pantalones",
     ["Bags"] = "Bolsas",
@@ -658,6 +659,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["Amulets"] = "Amuletos",
     ["Scales"] = "Escamas",
     ["Special"] = "Especial",
+    ["Enchant weapon"] = "Encantamiento de Arma",
+    ["mana oil"] = " de Maná",
+    ["wizard oil"] = " de Zahorí",
 
     --************************************************
     -- Set Categories

@@ -625,6 +625,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Helm"] = true,
     ["Shoulders"] = true,
     ["Bracers"] = true,
+    ["Bracer"] = true,
     ["Belt"] = true,
     ["Pants"] = true,
     ["Bags"] = true,
@@ -640,6 +641,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Amulets"] = true,
     ["Scales"] = true,
     ["Special"] = true,
+    ["Enchant weapon"] = true,
+    ["mana oil"] = true,
+    ["wizard oil"] = true,
 
     --************************************************
     -- Set Categories
