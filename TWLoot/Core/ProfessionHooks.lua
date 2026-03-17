@@ -1114,18 +1114,47 @@ function CF.HookCraftFrameUpdate()
     if AtlasTW.CraftFilter_Hooked then return end
     AtlasTW.CraftFilter_Hooked = true
 
+    local scrollBar = _G[CraftListScrollFrame:GetName() .. "ScrollBar"]
+    if not CF.ScrollHandlersHooked then
+        CF.ScrollHandlersHooked = true
+
+        local origOnVerticalScroll = CraftListScrollFrame:GetScript("OnVerticalScroll")
+        CraftListScrollFrame:SetScript("OnVerticalScroll", function()
+            if arg1 then
+                CF.ScrollValue = arg1
+            end
+            if origOnVerticalScroll then
+                origOnVerticalScroll()
+            end
+        end)
+
+        if scrollBar then
+            local origOnValueChanged = scrollBar:GetScript("OnValueChanged")
+            scrollBar:SetScript("OnValueChanged", function()
+                CF.ScrollValue = this:GetValue() or CF.ScrollValue or 0
+                if origOnValueChanged then
+                    origOnValueChanged()
+                end
+            end)
+        end
+    end
+
     local orig_CraftFrame_Update = CraftFrame_Update
     function CraftFrame_Update()
         if AtlasTW.ProfessionHooks._updatingCraft then return end
 
         AtlasTW.ProfessionHooks._updatingCraft = true
-        local scrollBar = _G[CraftListScrollFrame:GetName() .. "ScrollBar"]
+        scrollBar = _G[CraftListScrollFrame:GetName() .. "ScrollBar"]
         local preUpdateScrollValue = CF.ScrollValue or 0
-        if scrollBar then
+        if scrollBar and CF.ScrollValue == nil then
             preUpdateScrollValue = scrollBar:GetValue() or preUpdateScrollValue
         end
 
+        CF.InitUI()
+        CF.BuildList()
+
         -- Let default logic run first so native state is updated (selection, ingredients)
+        -- We run BuildList BEFORE this to ensure headers are expanded, preventing FauxScrollFrame from clamping to 0
         orig_CraftFrame_Update()
 
         -- Update Side Panel and Styling (Essential for visibility)
@@ -1141,9 +1170,6 @@ function CF.HookCraftFrameUpdate()
             return
         end
 
-        CF.InitUI()
-        CF.BuildList()
-
         local numItems = table.getn(CF.List)
         local numDisplayed = GetCraftButtonsCount()
 
@@ -1153,7 +1179,7 @@ function CF.HookCraftFrameUpdate()
         local visibleItems = numItems
 
         FauxScrollFrame_Update(CraftListScrollFrame, visibleItems, numDisplayed, rowHeight)
-         if scrollBar then
+        if scrollBar then
             local minVal, maxVal = scrollBar:GetMinMaxValues()
             local targetValue = preUpdateScrollValue
             if targetValue < minVal then targetValue = minVal end
@@ -1189,7 +1215,7 @@ function CF.HookCraftFrameUpdate()
                     craftButton:SetID(0)
                     craftButton.catName = data.name
                     craftText:ClearAllPoints()
-                    craftText:SetPoint("LEFT", craftButton, "LEFT", 16, 0)
+                    craftText:SetPoint("LEFT", craftButton, "LEFT", 18, 0)
                     craftText:SetWidth(craftButton:GetWidth() - 14)
                     craftText:SetText(data.name)
                     craftText:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
@@ -1267,7 +1293,6 @@ function CF.HookCraftFrameUpdate()
         else
             CF.ScrollValue = preUpdateScrollValue
         end
-        --if scrollBar then CF.ScrollValue = scrollBar:GetValue() or 0 end
         AtlasTW.ProfessionHooks._updatingCraft = nil
     end
 end
