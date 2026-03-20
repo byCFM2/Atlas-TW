@@ -40,8 +40,26 @@ AtlasTW.InstanceData.WindhornCanyon = {
     },
     Bosses = {
         {
-            id = "WHCAmbassadorVortalus",
+            id = "WHCPathunBuskhide",
             prefix = "1)",
+            name = LB["Pathun Buskhide"],
+            defaults = { dropRate = 25 },
+            loot = {
+                { id = 33026 }, -- Sacred Windhorn Shoulders
+            }
+        },
+        {
+            id = "WHCPathunBuskhide",
+            prefix = "2)",
+            name = LB["Ahgk'tos the Pure"],
+            defaults = { dropRate = 25 },
+            loot = {
+                { id = 33022 }, -- Windserpent Hauberk
+            }
+        },
+        {
+            id = "WHCAmbassadorVortalus",
+            prefix = "3)",
             name = LB["Ambassador Vortalus"],
             defaults = { dropRate = 25 },
             loot = {
@@ -50,7 +68,7 @@ AtlasTW.InstanceData.WindhornCanyon = {
         },
         {
             id = "WHCWalganBloodcaller",
-            prefix = "2)",
+            prefix = "4)",
             name = LB["Walgan Bloodcaller"],
             defaults = { dropRate = 25 },
             loot = {
@@ -59,7 +77,7 @@ AtlasTW.InstanceData.WindhornCanyon = {
         },
         {
             id = "WHCBonespeakerNarlgom",
-            prefix = "3)",
+            prefix = "5)",
             name = LB["Bonespeaker Narlgom"],
             defaults = { dropRate = 25 },
             loot = {
@@ -68,7 +86,7 @@ AtlasTW.InstanceData.WindhornCanyon = {
         },
         {
             id = "WHCProphetStormhoof",
-            prefix = "4)",
+            prefix = "6)",
             name = LB["Prophet Stormhoof"],
             defaults = { dropRate = 25 },
             loot = {
@@ -79,29 +97,11 @@ AtlasTW.InstanceData.WindhornCanyon = {
         },
         {
             id = "WHCChieftainShalkBlackwind",
-            prefix = "5)",
+            prefix = "7)",
             name = LB["Chieftain Shalk Blackwind"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 33047 }, -- Ar'pora, the Chieftain's Judgement]
-            }
-        },
-        {
-            id = "WHCPathunBuskhide",
-            prefix = "6)",
-            name = LB["Pathun Buskhide"],
-            defaults = { dropRate = 25 },
-            loot = {
-                { id = 33026 }, -- Sacred Windhorn Shoulders
-            }
-        },
-        {
-            id = "WHCPathunBuskhide",
-            prefix = "7)",
-            name = LB["Ahgk'tos the Pure"],
-            defaults = { dropRate = 25 },
-            loot = {
-                { id = 33022 }, -- Windserpent Hauberk
             }
         },
 --[[         {
