@@ -46,27 +46,29 @@ local TEXTURE_MAP = {
 local MapPoints = {
     -- Kalimdor Dungeons
     { 1, 1,  0.123, 0.128, "BlackfathomDeeps",          "dungeon",   "24-32" },
-    { 1, 23, 0.66,  0.49,  "CavernsOfTimeBlackMorass",  "dungeon",   "58-60" },
+    { 1, 24, 0.66,  0.49,  "CavernsOfTimeBlackMorass",  "dungeon",   "58-60" },
     { 1, 1,  0.51,  0.78,  "TheCrescentGrove",          "dungeon",   "32-38" },
     { 1, 12, 0.648, 0.303, "DireMaulEast",              "dungeon",   "55-58" },
     { 1, 12, 0.624, 0.249, "DireMaulNorth",             "dungeon",   "57-60" },
     { 1, 12, 0.604, 0.311, "DireMaulWest",              "dungeon",   "57-60" },
     { 1, 7,  0.29,  0.629, "Maraudon",                  "dungeon",   "46-55" },
     { 1, 20, 0.53,  0.486, "RagefireChasm",             "dungeon",   "13-18" },
-    { 1, 26, 0.488, 0.919, "RazorfenDowns",             "dungeon",   "37-46" },
-    { 1, 26, 0.407, 0.873, "RazorfenKraul",             "dungeon",   "29-38" },
-    { 1, 26, 0.462, 0.357, "WailingCaverns",            "dungeon",   "17-24" },
-    { 1, 23, 0.389, 0.184, "ZulFarrak",                 "dungeon",   "44-54" },
+    { 1, 27, 0.488, 0.919, "RazorfenDowns",             "dungeon",   "37-46" },
+    { 1, 27, 0.407, 0.873, "RazorfenKraul",             "dungeon",   "29-38" },
+    { 1, 27, 0.462, 0.357, "WailingCaverns",            "dungeon",   "17-24" },
+    { 1, 28, 0.65, 0.46,   "WindhornCanyon",            "dungeon",   "26-30" },
+    { 1, 24, 0.389, 0.184, "ZulFarrak",                 "dungeon",   "44-54" },
     -- Kalimdor Raids
     { 1, 15, 0.207, 0.592, "EmeraldSanctum",            "raid",      "60" },
     { 1, 10, 0.53,  0.76,  "OnyxiasLair",               "raid",      "60" },
-    { 1, 21, 0.30,  0.95,  "TheRuinsofAhnQiraj",        "raid",      "60" },
-    { 1, 21, 0.28,  0.95,  "TheTempleofAhnQiraj",       "raid",      "60" },
+    { 1, 22, 0.30,  0.95,  "TheRuinsofAhnQiraj",        "raid",      "60" },
+    { 1, 22, 0.28,  0.95,  "TheTempleofAhnQiraj",       "raid",      "60" },
+    { 1, 2,  0.38,  0.33,  "TimbermawHold",             "raid",      "60" },
     -- Kalimdor World Bosses
     { 1, 2,  0.535, 0.816, "Azuregos",                  "worldboss", "60" },
     { 1, 2,  0.69,  0.094, "Clackora",                  "worldboss", "60" },
     { 1, 7,  0.82,  0.80,  "Concavius",                 "worldboss", "60" },
-    { 1, 23, 0.361, 0.762, "Ostarius",                  "worldboss", "60" },
+    { 1, 24, 0.361, 0.762, "Ostarius",                  "worldboss", "60" },
     { 1, 1,  0.937, 0.355, "FourDragons",               "worldboss", "60" .. " (" .. LB["Ysondre"] .. ")" }, -- Emerald Dragon - Ysondre
     { 1, 12, 0.512, 0.108, "FourDragons",               "worldboss", "60" .. " (" .. LB["Taerar"] .. ")" },  -- Emerald Dragon - Taerar
     -- Kalimdor Transport
@@ -74,20 +76,21 @@ local MapPoints = {
     { 1, 9,  0.51,  0.115, "TransportRoutes",           "zepp",      LMD["Grom'Gol"] },                      -- Zeppelins to Grom'Gol
     { 1, 9,  0.41,  0.195, "TransportRoutes",           "zepp",      LZ["Thunder Bluff"] },                  -- Zeppelins to TB
     { 1, 9,  0.41,  0.165, "TransportRoutes",           "zepp",      LMD["Kargath"] },                       -- Zeppelins to Kargath
-    { 1, 28, 0.165, 0.230, "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                      -- Zeppelin to Orgrimmar
+    { 1, 29, 0.165, 0.230, "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                      -- Zeppelin to Orgrimmar
     { 1, 9,  0.598, 0.236, "TransportRoutes",           "boat",      LMD["Revantusk Village"] },             -- Boat to Revantusk Village
-    { 1, 26, 0.636, 0.389, "TransportRoutes",           "boat",      LZ["Booty Bay"] },                      -- Boat to Booty Bay
+    { 1, 27, 0.636, 0.389, "TransportRoutes",           "boat",      LZ["Booty Bay"] },                      -- Boat to Booty Bay
     { 1, 5,  0.324, 0.44,  "TransportRoutes",           "boat",      LF["Stormwind"] },                      -- Boat to Stormwind
     { 1, 5,  0.304, 0.41,  "TransportRoutes",           "boat",      LMD["Alah'Thalas"] },                   -- Boat to Alah'Thalas
     { 1, 5,  0.333, 0.399, "TransportRoutes",           "boat",      LMD["Rut'Theran Village"] },            -- Boat to Rut'Theran Village
     { 1, 10, 0.718, 0.566, "TransportRoutes",           "boat",      LZ["Menethil Harbor"] },                -- Boat to Menethil Harbor
-    { 1, 25, 0.552, 0.949, "TransportRoutes",           "boat",      LZ["Auberdine"] },                      -- Boat to Auberdine
+    { 1, 26, 0.552, 0.949, "TransportRoutes",           "boat",      LZ["Auberdine"] },                      -- Boat to Auberdine
     -- Eastern Kingdoms Dungeons
     { 2, 26, 0.375, 0.83,  "BlackrockDepths",           "dungeon",   "52-60" },
     { 2, 8,  0.33,  0.3,   "BlackrockDepths",           "dungeon",   "52-60" },
     { 2, 38, 0.423, 0.726, "TheDeadmines",              "dungeon",   "17-24" },
     { 2, 15, 0.30,  0.27,  "GilneasCity",               "dungeon",   "43-49" },
     { 2, 10, 0.23,  0.38,  "Gnomeregan",                "dungeon",   "29-38" },
+    { 2, 10, 0.66,  0.4,   "FrostmaneHollow",           "dungeon",   "13-20" },
     { 2, 8,  0.95,  0.53,  "HateforgeQuarry",           "dungeon",   "52-60" },
     { 2, 9,  0.45,  0.75,  "KarazhanCrypt",             "dungeon",   "58-60" },
     { 2, 8,  0.3,   0.3,   "BlackrockSpireLower",       "dungeon",   "55-60" },
@@ -289,12 +292,13 @@ local EnglishZoneNames = {
         [10] = "Dustwallow Marsh",
         [12] = "Feralas",
         [15] = "Hyjal",
-        [20] = "Orgrimmar",
-        [21] = "Silithus",
+        [21] = "Orgrimmar",
+        [22] = "Silithus",
         [23] = "Tanaris",
-        [25] = "Teldrassil",
-        [26] = "The Barrens",
-        [28] = "Thunder Bluff",
+        [26] = "Teldrassil",
+        [27] = "The Barrens",
+        [28] = "Thousand Needles",
+        [29] = "Thunder Bluff",
     },
     [2] = { -- Eastern Kingdoms
         [1] = "Alah'Thalas",

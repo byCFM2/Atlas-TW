@@ -409,7 +409,14 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
         local skillButton = _G["TradeSkillSkill" .. i]
         local skillIndex = skillButton:GetID()
         local skillText = _G["TradeSkillSkill" .. i .. "Text"]
-
+        -- Set button width like in CraftFrame
+        if TradeSkillListScrollFrame:IsVisible() then
+            skillButton:SetWidth(293)
+            skillText:SetWidth(290)
+        else
+            skillButton:SetWidth(323)
+            skillText:SetWidth(320)
+        end
         -- Create icon if needed
         if not skillButton.atlasIcon then
             skillButton.atlasIcon = skillButton:CreateTexture(nil, "ARTWORK")
@@ -845,7 +852,8 @@ function CF.BuildList()
             local keep = true
 
             if CF.SearchText ~= "" then
-                if not string.find(string.lower(craftName), CF.SearchText) then
+                -- Case-insensitive search with plain text matching (no regex)
+                if not string.find(strlower(craftName), CF.SearchText, 1, true) then
                     keep = false
                 end
             end
@@ -904,6 +912,11 @@ function CF.BuildList()
             local items = grouped[catName]
             local expanded = CF.ExpandedCategories[catName]
             if expanded == nil then expanded = true end
+
+            -- Force expand categories if search text is present to show matches
+            if CF.SearchText ~= "" then
+                expanded = true
+            end
 
             table.insert(CF.List, { isHeader = true, name = catName, expanded = expanded })
             if expanded then
@@ -984,7 +997,7 @@ function CF.InitUI()
 
     searchBox:SetScript("OnTextChanged", function()
         local text = this:GetText()
-        CF.SearchText = string.lower(text)
+        CF.SearchText = strlower(text)
         -- Show/hide placeholder and clear button based on text
         if text ~= "" then
             this.placeholder:Hide()
@@ -995,6 +1008,11 @@ function CF.InitUI()
             end
             this.clearBtn:Hide()
         end
+        -- Reset scroll position on search to see results
+        if CraftListScrollFrameScrollBar then
+            CraftListScrollFrameScrollBar:SetValue(0)
+        end
+        CF.ScrollValue = 0
         CraftFrame_Update()
     end)
     searchBox:SetScript("OnEditFocusGained", function()
@@ -1021,13 +1039,71 @@ function CF.InitUI()
     matCheck:SetWidth(20)
     matCheck:SetHeight(20)
 
+    local function ResetScroll()
+        if CraftListScrollFrameScrollBar then
+            CraftListScrollFrameScrollBar:SetValue(0)
+        end
+        CF.ScrollValue = 0
+    end
+
+    -- All (Collapse/Expand All) Button
+    local allBtn = CreateFrame("Button", "AtlasTWCraftCollapseAll", CraftFrame)
+    allBtn:SetWidth(44)
+    allBtn:SetHeight(16)
+    allBtn:SetNormalTexture("Interface\\Buttons\\UI-MinusButton-Up")
+    allBtn:SetPushedTexture("Interface\\Buttons\\UI-MinusButton-Down")
+    allBtn:SetHighlightTexture("Interface\\Buttons\\UI-PlusButton-Hilight")
+    allBtn:GetHighlightTexture():SetBlendMode("ADD")
+
+    local allText = allBtn:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+    allText:SetText(L["All"])
+    allText:SetPoint("LEFT", allBtn, "LEFT", 18, 0)
+    allText:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
+    allBtn.text = allText
+
+    allBtn:SetScript("OnClick", function()
+        local anyExpanded = false
+        -- Check if any category in the current list is expanded
+        for _, item in ipairs(CF.List) do
+            if item.isHeader and item.expanded then
+                anyExpanded = true
+                break
+            end
+        end
+
+        local newState = not anyExpanded
+
+        -- Force all categories in current list to the new state
+        for _, item in ipairs(CF.List) do
+            if item.isHeader then
+                CF.ExpandedCategories[item.name] = newState
+            end
+        end
+
+        -- Update button icon immediately
+        if newState then
+            this:SetNormalTexture("Interface\\Buttons\\UI-MinusButton-Up")
+            this:SetPushedTexture("Interface\\Buttons\\UI-MinusButton-Down")
+        else
+            this:SetNormalTexture("Interface\\Buttons\\UI-PlusButton-Up")
+            this:SetPushedTexture("Interface\\Buttons\\UI-PlusButton-Down")
+        end
+
+        ResetScroll()
+        CraftFrame_Update()
+    end)
+
     if IsAddOnLoaded("pfUI") then
+        allBtn:SetPoint("TOPLEFT", CraftFrame, 8, -45)
         matCheck:SetPoint("TOPLEFT", CraftFrame, 50, -5)
     else
+        allBtn:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 25, -80)
         matCheck:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 75, -55)
     end
+
     matCheck:SetScript("OnClick", function()
         CF.HaveMaterials = (this:GetChecked() == 1)
+        ResetScroll()
         CraftFrame_Update()
     end)
     local matLabel = _G["AtlasTWCraftHaveMaterialsText"]
@@ -1041,6 +1117,7 @@ function CF.InitUI()
     skillCheck:SetPoint("LEFT", _G["AtlasTWCraftHaveMaterialsText"], "RIGHT", 5, 0)
     skillCheck:SetScript("OnClick", function()
         CF.ImprovesSkill = (this:GetChecked() == 1)
+        ResetScroll()
         CraftFrame_Update()
     end)
     local skillLabel = _G["AtlasTWCraftImprovesSkillText"]
@@ -1055,6 +1132,7 @@ function CF.InitUI()
     catCheck:SetChecked(CF.UseCategories and 1 or nil)
     catCheck:SetScript("OnClick", function()
         CF.UseCategories = (this:GetChecked() == 1)
+        ResetScroll()
         CraftFrame_Update()
     end)
     local catLabel = _G["AtlasTWCraftCategoriesText"]
@@ -1075,6 +1153,7 @@ function CF.InitUI()
     showSkillCheck:SetScript("OnClick", function()
         CF.ShowSkillLevels = (this:GetChecked() == 1)
         AtlasTWOptions.CraftSkillShowLevels = CF.ShowSkillLevels
+        ResetScroll()
         CraftFrame_Update()
     end)
     local showSkillLabel = _G["AtlasTWCraftShowSkillLevelsText"]
@@ -1084,6 +1163,38 @@ function CF.InitUI()
     -- Style with pfUI if present
     if AtlasTW.pfUI and AtlasTW.pfUI.StyleProfessionFrames then
         AtlasTW.pfUI.StyleProfessionFrames()
+    end
+
+    -- Update All button icon based on state
+    local allBtn = _G["AtlasTWCraftCollapseAll"]
+    if allBtn then
+        local anyExpanded = false
+        local hasHeaders = false
+        for _, item in ipairs(CF.List) do
+            if item.isHeader then
+                hasHeaders = true
+                if item.expanded then
+                    anyExpanded = true
+                    break
+                end
+            end
+        end
+
+        -- Default to minus if list is empty or any header is expanded
+        if not hasHeaders or anyExpanded then
+            allBtn:SetNormalTexture("Interface\\Buttons\\UI-MinusButton-Up")
+            allBtn:SetPushedTexture("Interface\\Buttons\\UI-MinusButton-Down")
+        else
+            allBtn:SetNormalTexture("Interface\\Buttons\\UI-PlusButton-Up")
+            allBtn:SetPushedTexture("Interface\\Buttons\\UI-PlusButton-Down")
+        end
+
+        -- Check if Profession Info option is enabled
+        if not AtlasTWOptions or not AtlasTWOptions.ProfessionInfo then
+            allBtn:Hide()
+        else
+            allBtn:Show()
+        end
     end
 
     -- Hook clicks on Craft Buttons
@@ -1176,9 +1287,7 @@ function CF.HookCraftFrameUpdate()
         local rowHeight = CRAFT_SKILL_HEIGHT or 16
         if rowHeight < 1 then rowHeight = 16 end
 
-        local visibleItems = numItems
-
-        FauxScrollFrame_Update(CraftListScrollFrame, visibleItems, numDisplayed, rowHeight)
+        FauxScrollFrame_Update(CraftListScrollFrame, numItems, numDisplayed, rowHeight)
         if scrollBar then
             local minVal, maxVal = scrollBar:GetMinMaxValues()
             local targetValue = preUpdateScrollValue
@@ -1216,7 +1325,7 @@ function CF.HookCraftFrameUpdate()
                     craftButton.catName = data.name
                     craftText:ClearAllPoints()
                     craftText:SetPoint("LEFT", craftButton, "LEFT", 18, 0)
-                    craftText:SetWidth(craftButton:GetWidth() - 14)
+                   -- craftText:SetWidth(craftButton:GetWidth() - 14)
                     craftText:SetText(data.name)
                     craftText:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
 
@@ -1232,9 +1341,19 @@ function CF.HookCraftFrameUpdate()
                     craftButton:SetID(data.index)
                     craftButton.catName = nil
 
+
+                    -- Force update width for all buttons to prevent alignment issues
+                    if CraftListScrollFrame:IsVisible() then
+                        craftButton:SetWidth(293)
+                        craftText:SetWidth(290)
+                    else
+                        craftButton:SetWidth(323)
+                        craftText:SetWidth(320)
+                    end
+
                     craftText:ClearAllPoints()
-                    craftText:SetPoint("LEFT", craftButton, "LEFT")
-                    craftText:SetWidth(craftButton:GetWidth() - 14)
+                    craftText:SetPoint("LEFT", craftButton, "LEFT", 0, 0)
+                  --  craftText:SetWidth(craftButton:GetWidth() - 14)
 
                     -- Setup text with extra info (skill levels and counts)
                     local _, _, _, numAvailable = GetCraftInfo(data.index)
@@ -1258,12 +1377,12 @@ function CF.HookCraftFrameUpdate()
 
                     local texture = GetCraftIcon(data.index)
                     if texture then
-                        craftText:SetText(countText)
                         craftText:SetText(countText .. nameText)
 
                         icon:SetTexture(texture)
                         icon:ClearAllPoints()
-                        icon:SetPoint("LEFT", craftText, "RIGHT")
+                        -- Position icon on the right end of the button to keep them in a line
+                        icon:SetPoint("RIGHT", craftButton, "RIGHT", -2, 0)
                         icon:Show()
                     else
                         craftText:SetText(countText .. nameText)

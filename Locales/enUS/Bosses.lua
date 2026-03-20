@@ -12,6 +12,24 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     --************************************************
     ["Broodcommander Axelus"] = true,
     ["Ezzel Darkbrewer"] = true,
+    --************************************************
+    -- TW 1.18.1 Additions
+    --************************************************
+    --frostmane hollow
+    ["Handler Oboka"] = true, --1*
+    ["Tan'sha The Sleek"] = true, --1
+    ["Battlemaster Ubukaz"] = true, --2
+    ["Kan'za The Seer"] = true, --3
+    ["Hailar The Frigid"] = true, --4
+    --windhorn canyon
+    ["Ambassador Vortalus"] = true, -- 1
+    ["Walgan Bloodcaller"] = true, -- 2
+    ["Bonespeaker Narlgom"] = true, -- 3
+    ["Prophet Stormhoof"] = true, -- 4
+    ["Chieftain Shalk Blackwind"] = true, --5
+    ["Pathun Buskhide"] = true, --6
+    ["Ahgk'tos the Pure"] = true, --7
+
 
     --************************************************
     -- TW 1.18 Additions

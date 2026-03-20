@@ -19,6 +19,7 @@ local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
 
 local L = AtlasTW.Localization.UI
+local LB = AtlasTW.Localization.Bosses
 local LZ = AtlasTW.Localization.Zones
 local LIS = AtlasTW.Localization.ItemSets
 local LMD = AtlasTW.Localization.MapData
@@ -37,62 +38,80 @@ AtlasTW.InstanceData.WindhornCanyon = {
     Entrances = {
         { letter = "A)"..L["Entrance"] },
     },
-    Keys = {
-       -- { name = LMD["Key to Stormwrought Castle"], loot = "VanillaKeys", info = "6+" },
-    },
-    Bosses = {--[[ 
+    Bosses = {
         {
-            id = "WHC",
+            id = "WHCAmbassadorVortalus",
             prefix = "1)",
-            name = BB[""],
+            name = LB["Ambassador Vortalus"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 58135 }, -- Dagger of Whispered Madness
-                { id = 58136 }, -- Shadeweave Drape
-                { id = 58137 }, -- Netherbranch
-                { id = 58177 }, -- Stormreaver Robe
-                {},
-                { id = 41797, dropRate = 100, container = { 41798 } }, -- The Pendant of Uth'okk
+                { id = 33031 }, -- Thunderstrike Pike
             }
         },
         {
-            prefix = "a)",
-            name = L["Severs"],
-            color = Colors.GREEN,
+            id = "WHCWalganBloodcaller",
+            prefix = "2)",
+            name = LB["Walgan Bloodcaller"],
+            defaults = { dropRate = 25 },
+            loot = {
+                { id = 33035 }, -- Sacred Windhorn Pants
+            }
         },
         {
+            id = "WHCBonespeakerNarlgom",
+            prefix = "3)",
+            name = LB["Bonespeaker Narlgom"],
+            defaults = { dropRate = 25 },
+            loot = {
+                { id = 42276 }, -- Cloudrender Pants
+            }
+        },
+        {
+            id = "WHCProphetStormhoof",
+            prefix = "4)",
+            name = LB["Prophet Stormhoof"],
+            defaults = { dropRate = 25 },
+            loot = {
+                { id = 33042 }, -- Sacred Windhorn Headdress
+                {},
+                { id = 70244 }, -- Plans: Ceremonial Belt Buckle
+            }
+        },
+        {
+            id = "WHCChieftainShalkBlackwind",
+            prefix = "5)",
+            name = LB["Chieftain Shalk Blackwind"],
+            defaults = { dropRate = 25 },
+            loot = {
+                { id = 33047 }, -- Ar'pora, the Chieftain's Judgement]
+            }
+        },
+        {
+            id = "WHCPathunBuskhide",
+            prefix = "6)",
+            name = LB["Pathun Buskhide"],
+            defaults = { dropRate = 25 },
+            loot = {
+                { id = 33026 }, -- Sacred Windhorn Shoulders
+            }
+        },
+        {
+            id = "WHCPathunBuskhide",
+            prefix = "7)",
+            name = LB["Ahgk'tos the Pure"],
+            defaults = { dropRate = 25 },
+            loot = {
+                { id = 33022 }, -- Windserpent Hauberk
+            }
+        },
+--[[         {
             id = "WHCTrash",
             name = L["Trash Mobs"].."-"..LZ["Windhorn Canyon"],
             defaults = { dropRate = .1 },
             loot = {
-                { id = 70113, container = { 56040 } }, -- Plans: Gleaming Silver Necklace
-                { id = 58178, dropRate = 1.35 }, -- Stormreaver Boots
-                { id = 58131, dropRate = 1.35 }, -- Stormreaver Belt
-                { id = 1992 }, -- Swampchill Fetish
-                { id = 2262 }, -- Mark of Kern
-                { id = 5756 }, -- Sliverblade
-                { id = 5819 }, -- Sunblaze Coif
-                { id = 7727 }, -- Watchman Pauldrons
-                { id = 7728, dropRate = .04 }, -- Beguiler Robes
-                { id = 7729 }, -- Chesterfall Musket
-                { id = 7730 }, -- Cobalt Crusher
-                { id = 7736 }, -- Fight Club
-                { id = 7752 }, -- Dreamslayer
-                { id = 7753 }, -- Bloodspiller
-                { id = 7754, dropRate = .01 }, -- Harbinger Boots
-                { id = 7755 }, -- Flintrock Shoulders
-                { id = 7757 }, -- Windweaver Staff
-                { id = 7759 }, -- Archon Chestpiece
-                { id = 7760 }, -- Warchief Kilt
-                { id = 7761 }, -- Steelclaw Reaver
-                { id = 7786 }, -- Headsplitter
-                { id = 7787 }, -- Resplendent Guardian
-                { id = 8225 }, -- Tainted Pierce
-                { id = 8226 }, -- The Butcher
-                { id = 41941, dropRate = 70, disc = L["Quest Item"] }, -- Balorian Treasure
             }
-        },
-        { name = LIS["Stormreaver Attire"], items = "Stormreaver" },]]
+        }, ]]
+        { name = LIS["Sacred Windhorn Attire"], items = "SacredWindhorn" },
     },
 }
 

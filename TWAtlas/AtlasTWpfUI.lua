@@ -209,6 +209,56 @@ function AtlasTW.pfUI.RestyleButton(buttonName)
     end
 end
 
+function AtlasTW.pfUI.SkinCollapseAllButton(button)
+    if not IsPfUIStylingEnabled() then return end
+    if not button then return end
+
+    if pfUI.api.SkinCollapseButton and not button.pfui_collapse_base then
+        pfUI.api.SkinCollapseButton(button, true)
+        button.pfui_collapse_base = true
+    end
+
+    if not button.icon then return end
+
+    if button.icon.EnableMouse then
+        button.icon:EnableMouse(false)
+    end
+    button.icon:ClearAllPoints()
+    button.icon:SetPoint("LEFT", button, "LEFT", 2, 0)
+    button:SetHitRectInsets(0, 0, 0, 0)
+
+    if button.text then
+        button.text:ClearAllPoints()
+        button.text:SetPoint("LEFT", button, "LEFT", 18, 0)
+    end
+
+    if not button.pfui_set_normaltexture then
+        button.pfui_set_normaltexture = button.SetNormalTexture
+    end
+    if not button.pfui_set_pushedtexture then
+        button.pfui_set_pushedtexture = button.SetPushedTexture
+    end
+
+    local normalTexture = button:GetNormalTexture()
+    local currentTexture = normalTexture and normalTexture:GetTexture()
+
+    local function UpdateCollapseIcon(self, texture)
+        if not self.icon or not self.icon.text then return end
+        if not texture or texture == "" then
+            self.icon:Hide()
+            return
+        end
+        self.icon.text:SetText(strfind(texture, "MinusButton") and "-" or "+")
+        self.icon:Show()
+    end
+
+    button.pfui_set_normaltexture(button, nil)
+    button.pfui_set_pushedtexture(button, nil)
+    button.SetNormalTexture = UpdateCollapseIcon
+    button.SetPushedTexture = UpdateCollapseIcon
+    button:SetNormalTexture(currentTexture)
+end
+
 ---
 --- Skins an arrow button with pfUI style but keeps arrow indication
 --- @param button Button - The button to skin
@@ -1132,6 +1182,12 @@ function AtlasTW.pfUI.StyleProfessionFrames()
     if AtlasTWTradeSkillShowLevels and not AtlasTWTradeSkillShowLevels.pfui_skinned then
         pfUI.api.SkinCheckbox(AtlasTWTradeSkillShowLevels)
         AtlasTWTradeSkillShowLevels.pfui_skinned = true
+    end
+
+    local allBtn = _G["AtlasTWCraftCollapseAll"]
+    if allBtn then
+        AtlasTW.pfUI.SkinCollapseAllButton(allBtn)
+        allBtn.pfui_skinned = true
     end
 
     -- Style side tabs

@@ -1201,6 +1201,7 @@ local craftingTable = {
 		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id = 45465,          skill = { 300, 325, 337, 350 } }, --Dreamsteel Mantle
 		{ id = 102,            skill = { 300, 300, 300, 300 } }, --Obsidian Belt Buckle 1.18
+		{ id = 33083,           }, -- Elementium Sharpening Stone 1.18.1
 	},
 
 	Armorsmith = {
@@ -1948,6 +1949,7 @@ local craftingTable = {
 		{ id = 46659,                              skill = { 300, 315, 322, 330 } }, --Stormscale Leggings
 		{ id = 54013,                              skill = { 300, 315, 330, 345 } }, --Chromatic Leggings
 		{ id = 36911,                              skill = { 300, 300, 300, 300 } }, --Prismatic Scale Barbute 1.18
+		{ id = 33084,           }, -- Pristine Chromatic Scale 1.18.1
 	},
 
 	Elemental = {
@@ -3131,6 +3133,7 @@ local craftingTable = {
 		{ id = 45481,          skill = { 300, 320, 330, 340 } }, --Intricate Gyroscope Goggles
 		{ id = 52747,          skill = { 300, 300, 300, 300 } }, --Voltage-Neutralizing Nature Reflector 1.18
 		{ id = 52749,          skill = { 300, 300, 300, 300 } }, --Giga-Charged Arcane Reflector 1.18
+		{ id = 33085,           }, -- Over-Tinkered Lens 1.18.1
 	},
 
 	Gnomish = {

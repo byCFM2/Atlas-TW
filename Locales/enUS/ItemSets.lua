@@ -7,6 +7,8 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("ItemSets", "enUS", {
+    --1.18.1
+    ["Sacred Windhorn Attire"] = true,
     -- 1.18
     ["Stormreaver Attire"] = true,
     ["Dragonmaw Battlegarb"] = true,
@@ -110,6 +112,7 @@ AtlasTW.Localization:RegisterNamespace("ItemSets", "enUS", {
     ["Enigma Regalia"] = true,
     ["Regalia of the Oracle"] = true,
     ["Vestments of the Oracle"] = true,
+    ["Attire of the Oracle"] = true, --1.18.1
     ["Genesis Regalia"] = true,
     ["Genesis Raiment"] = true,
     ["Genesis Harness"] = true,
@@ -157,6 +160,7 @@ AtlasTW.Localization:RegisterNamespace("ItemSets", "enUS", {
     ["Earthfury Garb"] = true,
     ["Vestments of Prophecy"] = true,
     ["Regalia of Prophecy"] = true,
+    ["Attire of Prophecy"] = true, --1.18.1
     -- T2 Sets
     ["Battlegear of Wrath"] = true,
     ["Armor of Wrath"] = true,
@@ -177,6 +181,7 @@ AtlasTW.Localization:RegisterNamespace("ItemSets", "enUS", {
     ["The Ten Storms"] = true,
     ["Vestments of Transcendence"] = true,
     ["Regalia of Transcendence"] = true,
+    ["Attire of Transcendence"] = true, --1.18.1
     -- T3 Sets
     ["Bonescythe Armor"] = true,
     ["Cryptstalker Armor"] = true,
@@ -195,11 +200,13 @@ AtlasTW.Localization:RegisterNamespace("ItemSets", "enUS", {
     ["Earthshatterer's Garb"] = true,
     ["Vestments of Faith"] = true,
     ["Regalia of Faith"] = true,
+    ["Attire of Faith"] = true, --1.18.1
     ["Dreadnaught's Battlegear"] = true,
     ["Armor of the Dreadnought"] = true,
     -- T3.5 Sets
     ["Vestments of Pestilence"] = true,
     ["Regalia of Pestilence"] = true,
+    ["Attire of Pestilence"] = true, --1.18.1
     ["Regalia of the Guardian"] = true,
     ["Vestments of the Guardian"] = true,
     ["Nathrezim Attire"] = true,

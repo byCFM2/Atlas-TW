@@ -40,6 +40,8 @@ AtlasTW.Localization:RegisterNamespace("Factions", "enUS", {
     ["Durotar Labor Union"] = true,
     ["Wardens of Time"] = true,
     ["Shen'dralar"] = true,
+    ["Earthen Ring"] = true, --1.18.1
+    ["Draenei Exiles"] = true, --1.18.1
 
     -- Rep Levels
     ["Neutral"] = true,

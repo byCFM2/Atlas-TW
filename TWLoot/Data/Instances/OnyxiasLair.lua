@@ -97,9 +97,16 @@ AtlasTW.InstanceData.OnyxiasLair = {
             prefix = "4)",
             name = LB["Broodcommander Axelus"],
             postfix = L["Optional"],
-            defaults = { dropRate = 20 },
+            defaults = { dropRate = 0 },
             loot = {
-                --TODO Broodcommander Axelus loot
+                { id = 33150 }, -- Yoxtez, Black Breath of the Dragonflight
+                { id = 33151 }, --
+                { id = 33152 }, --
+                { id = 33153 }, -- Ignited Obsidian Scale
+                { id = 33154 }, --
+                { id = 33155 }, -- Scaleshield of Obsidian Flight
+                { id = 33156 }, --
+                { id = 33157 }, -- Broodwarden's Bulwarkblade 
             }
         }
     }

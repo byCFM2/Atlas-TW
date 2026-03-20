@@ -67,6 +67,14 @@ Sets = {
 		{ id = 41876}, --Lower Reserve Key
 		{ id = 41913}, --Key to Stormwrought Castle
 	},
+	SacredWindhorn = { --1.18.1
+		{ name = LIS["Sacred Windhorn Attire"] },
+		{ id = 33021 }, -- Sacred Windhorn Gloves
+		{ id = 33026 }, -- Sacred Windhorn Shoulders
+		{ id = 33029 }, -- Sacred Windhorn Footwraps
+		{ id = 33035 }, -- Sacred Windhorn Pants
+		{ id = 33042 }, -- Sacred Windhorn Headdress
+	},
 	Stormreaver = { --1.18
 		{ name = LIS["Stormreaver Attire"] },
 		{ id = 58131 }, -- Stormreaver Belt
@@ -277,6 +285,13 @@ Sets = {
 		{ id = 47237 }, -- Pants of Pestilence
 		{ id = 47238 }, -- Sandals of Pestilence
 		{ id = 47239 }, -- Pendant of Pestilence
+		{ name = LIS["Attire of Pestilence"], icon = "Spell_Holy_HolyNova" },
+		{ id = 33171 }, -- Crown of Pestilence
+		{ id = 33172 }, -- Epaulets of Pestilence
+		{ id = 33173 }, -- Vestments of Pestilence
+		{ id = 33174 }, -- Trousers of Pestilence
+		{ id = 33175 }, -- Slippers of Pestilence
+		{ id = 33176 }, -- Choker of Pestilence
 	},
 	T35Mage = {
 		{ name = LIS["Regalia of the Guardian"], icon = "Spell_Frost_IceStorm" },
@@ -477,10 +492,10 @@ Sets = {
 		{ id = 22516 }, -- Sandals of Faith
 		{ id = 23061 }, -- Ring of Faith
 		{},
-		{},
-		{},
-		{},
-		{},
+		{ name = LIS["Attire of Faith"], icon = "Spell_Holy_HolyNova" }, --1.18.1
+		{ id = 33162 },	-- Crown of Faith
+		{ id = 33163 },	-- Epaulets of Faith
+		{ id = 33164 },	-- Vestments of Faith
 		{ name = LIS["Regalia of Faith"], icon = "Spell_Shadow_Shadowform" },
 		{ id = 47219 }, -- Coronet of Faith
 		{ id = 47220 }, -- Shoulderpads of Faith
@@ -491,6 +506,17 @@ Sets = {
 		{ id = 47225 }, -- Pants of Faith
 		{ id = 47226 }, -- Slippers of Faith
 		{ id = 47227 }, -- Signet of Faith
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 33165 },	-- Wristbands of Faith
+		{ id = 33166 },	-- Handwraps of Faith
+		{ id = 33167 },	-- Cord of Faith
+		{ id = 33168 },	-- Trousers of Faith
+		{ id = 33169 },	-- Slippers of Faith
+		{ id = 33170 },	-- Signet of Faith
 	},
 	T3Rogue = {
 		{ name = LIS["Bonescythe Armor"], icon = "Ability_BackStab" },
@@ -694,11 +720,11 @@ Sets = {
 		{ id = 16922 }, -- Leggings of Transcendence
 		{ id = 16919 }, -- Boots of Transcendence
 		{},
-		{},
-		{},
-		{},
-		{},
-		{},
+		{ name = LIS["Attire of Transcendence"], icon = "Spell_Holy_HolyNova" }, --1.18.1
+		{ id = 33008 }, -- Crown of Transcendence
+		{ id = 33009 }, -- 
+		{ id = 33010 }, -- 
+		{ id = 33011 }, -- 
 		{ name = LIS["Regalia of Transcendence"], icon = "Spell_Shadow_Shadowform" },
 		{ id = 47206 }, -- Coronet of Transcendence
 		{ id = 47207 }, -- Shoulderpads of Transcendence
@@ -708,6 +734,15 @@ Sets = {
 		{ id = 47211 }, -- Sash of Transcendence
 		{ id = 47212 }, -- Pants of Transcendence
 		{ id = 47213 }, -- Sandals of Transcendence
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 33012 }, -- 
+		{ id = 33013 }, -- 
+		{ id = 33014 }, -- 
+		{ id = 33015 }, -- Slippers of Transcendence
 	},
 	T2Warlock = {
 		{ name = LIS["Nemesis Raiment"], icon = "Spell_Shadow_CurseOfTounges" },
@@ -928,12 +963,12 @@ Sets = {
 		{ id = 16814 }, -- Pants of Prophecy
 		{ id = 16811 }, -- Boots of Prophecy
 		{},
-		{},
-		{},
-		{},
-		{},
-		{},
-		{ name = LIS["Regalia of Prophecy"], icon = "Spell_Holy_PowerWordShield" },
+		{ name = LIS["Attire of Prophecy"], icon = "Spell_Holy_HolyNova" },
+		{ id = 33000 }, -- Crown of Prophecy
+		{ id = 33001 }, -- 
+		{ id = 33002 }, -- 
+		{ id = 33003 }, -- 
+		{ name = LIS["Regalia of Prophecy"], icon = "Spell_Shadow_Shadowform" },
 		{ id = 47198 }, -- Coronet of Prophecy
 		{ id = 47199 }, -- Shoulderpads of Prophecy
 		{ id = 47200 }, -- Raiments of Prophecy
@@ -942,6 +977,15 @@ Sets = {
 		{ id = 47203 }, -- Sash of Prophecy
 		{ id = 47204 }, -- Trousers of Prophecy
 		{ id = 47205 }, -- Sandals of Prophecy
+		{},
+		{},
+		{},
+		{},
+		{},
+		{ id = 33004 }, -- 
+		{ id = 33005 }, -- 
+		{ id = 33006 }, -- 
+		{ id = 33007 }, -- Slippers of Prophecy
 	},
 	T1Warlock = {
 		{ name = LIS["Felheart Raiment"], icon = "Spell_Shadow_CurseOfTounges" },
@@ -1444,7 +1488,7 @@ Sets = {
 		{ id = 21417 }, -- Ring of Unspoken Names
 	},
 	AQ20Priest = {
-		{ name = LIS["Finery of Infinite Wisdom"], icon = "Spell_Shadow_Shadowform" },
+		{ name = LIS["Finery of Infinite Wisdom"], icon = "Spell_Holy_PowerWordShield" },
 		{ id = 21410 }, -- Gavel of Infinite Wisdom
 		{ id = 21412 }, -- Shroud of Infinite Wisdom
 		{ id = 21411 }, -- Ring of Infinite Wisdom
@@ -1508,18 +1552,19 @@ Sets = {
 		{ id = 21352 }, -- Pants of the Oracle
 		{ id = 21349 }, -- Footwraps of the Oracle
 		{},
-		{ name = LIS["Vestments of the Oracle"], icon = "Spell_Holy_HolyNova" },
+		{ name = LIS["Attire of the Oracle"], icon = "Spell_Holy_HolyNova" },
 		{ id = 47214 }, -- Coronet of the Oracle
 		{ id = 47215 }, -- Spaulders of the Oracle
 		{ id = 47216 }, -- Vestments of the Oracle
 		{ id = 47217 }, -- Trousers of the Oracle
 		{ id = 47218 }, -- Treads of the Oracle
-		--1.18 deleted
-		--[[ { id = 70732 }, -- Coronet of the Oracle
-		{ id = 70733 }, -- Shoulderpads of the Oracle
-		{ id = 70734 }, -- Raiments of the Oracle
-		{ id = 70735 }, -- Pants of the Oracle
-		{ id = 70736 }, -- Sandals of the Oracle ]]
+		{},
+		{ name = LIS["Vestments of the Oracle"], icon = "Spell_Shadow_Shadowform" }, --1.18.1
+		{ id = 33016 }, -- Coronet of the Oracle
+		{ id = 33017 }, -- Shoulderpads of the Oracle
+		{ id = 33018 }, -- Raiments of the Oracle
+		{ id = 33019 }, -- Pants of the Oracle
+		{ id = 33020 }, -- Sandals of the Oracle
 	},
 	AQ40Warlock = {
 		{ name = LIS["Doomcaller's Raiment"], icon = "Spell_Shadow_CurseOfTounges" }, --Warlock
