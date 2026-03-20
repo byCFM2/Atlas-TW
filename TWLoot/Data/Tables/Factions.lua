@@ -265,6 +265,7 @@ local Factions = {
 		{ id = 16768 },
 		{ id = 16769 },
 		{ id = 19445 },
+		{ id = 42379 },
 		{ name = LF["Revered"], icon="INV_Misc_Horn_01" },
 		{ id = 19218, container={19050} },
 		{ id = 19327, container={19049} },

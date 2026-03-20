@@ -73,6 +73,7 @@ Sets = {
 		{ id = 33026 }, -- Sacred Windhorn Shoulders
 		{ id = 33029 }, -- Sacred Windhorn Footwraps
 		{ id = 33035 }, -- Sacred Windhorn Pants
+		{ id = 33037 }, -- Sacred Windhorn Robe
 		{ id = 33042 }, -- Sacred Windhorn Headdress
 	},
 	Stormreaver = { --1.18

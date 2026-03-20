@@ -22,15 +22,14 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Kan'za The Seer"] = true, --3
     ["Hailar The Frigid"] = true, --4
     --windhorn canyon
-    ["Ambassador Vortalus"] = true, -- 1
-    ["Walgan Bloodcaller"] = true, -- 2
-    ["Bonespeaker Narlgom"] = true, -- 3
-    ["Prophet Stormhoof"] = true, -- 4
-    ["Chieftain Shalk Blackwind"] = true, --5
-    ["Pathun Buskhide"] = true, --6
-    ["Ahgk'tos the Pure"] = true, --7
-
-
+    ["Pathun Buskhide"] = true, --1
+    ["Ahgk'tos the Pure"] = true, --2
+    ["Ambassador Vortalus"] = true, -- 3
+    ["Walgan Bloodcaller"] = true, -- 4
+    ["Bonespeaker Narlgom"] = true, -- 5
+    ["Prophet Stormhoof"] = true, -- 6
+    ["Grand Elder Skystider"] = true, --1'
+    ["Chieftain Shalk Blackwind"] = true, --7
     --************************************************
     -- TW 1.18 Additions
     --************************************************

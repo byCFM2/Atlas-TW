@@ -135,6 +135,7 @@ local MapPoints = {
     { 2, 33, 0.812, 0.794, "TransportRoutes",           "boat",      LMD["Sparkwater Port"] },                                                  -- Boat to Sparkwater Port
     { 2, 39, 0.068, 0.613, "TransportRoutes",           "boat",      LZ["Theramore Isle"] },                                                    -- Boat to Theramore Isle
     { 2, 28, 0.218, 0.563, "TransportRoutes",           "boat",      LZ["Auberdine"] },                                                         -- Boat to Auberdine
+    { 2, 28, 0.22, 0.413,  "TransportRoutes",           "boat",      LZ["Balor"] },                                                             -- Fly to Balor
     { 2, 29, 0.257, 0.73,  "TransportRoutes",           "boat",      LZ["Ratchet"] },                                                           -- Boat to Ratchet
     { 2, 34, 0.61,  0.58,  "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                                                         -- Zeppelins to Orgrimmar
     { 2, 34, 0.63,  0.58,  "TransportRoutes",           "zepp",      LZ["Grom'Gol"] },                                                          -- Zeppelins to Grom'Gol

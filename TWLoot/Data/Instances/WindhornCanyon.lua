@@ -45,16 +45,23 @@ AtlasTW.InstanceData.WindhornCanyon = {
             name = LB["Pathun Buskhide"],
             defaults = { dropRate = 25 },
             loot = {
+                { id = 33025 }, -- Blackwind Striker
                 { id = 33026 }, -- Sacred Windhorn Shoulders
+                { id = 33028 }, -- Hatchet of the Long Hunt
+                { id = 33027 }, -- Huntsman's Halfhorn
+               -- { id = 33036 }, -- Headsplitter Blunderbuss?
             }
         },
         {
-            id = "WHCPathunBuskhide",
+            id = "WHCAhgktosthePure",
             prefix = "2)",
             name = LB["Ahgk'tos the Pure"],
             defaults = { dropRate = 25 },
             loot = {
+                { id = 33021 }, -- Sacred Windhorn Gloves
                 { id = 33022 }, -- Windserpent Hauberk
+                { id = 33023 }, -- Coilscale Ring
+                { id = 33024 }, -- Tooth of Ahgk'tos
             }
         },
         {
@@ -63,7 +70,10 @@ AtlasTW.InstanceData.WindhornCanyon = {
             name = LB["Ambassador Vortalus"],
             defaults = { dropRate = 25 },
             loot = {
+                { id = 33029 }, -- Sacred Windhorn Footwraps
+                { id = 33030 }, -- Knuckles of Vortalus
                 { id = 33031 }, -- Thunderstrike Pike
+                { id = 33032 }, -- Galvanized Wrists
             }
         },
         {
@@ -72,7 +82,10 @@ AtlasTW.InstanceData.WindhornCanyon = {
             name = LB["Walgan Bloodcaller"],
             defaults = { dropRate = 25 },
             loot = {
+                { id = 33033 }, -- Footwraps of Perfect Form
                 { id = 33035 }, -- Sacred Windhorn Pants
+                { id = 33082 }, -- Bloodcaller's Decapitator
+                { id = 42275 }, -- Canyonhide Gloves
             }
         },
         {
@@ -81,6 +94,9 @@ AtlasTW.InstanceData.WindhornCanyon = {
             name = LB["Bonespeaker Narlgom"],
             defaults = { dropRate = 25 },
             loot = {
+                { id = 33037 }, -- Sacred Windhorn Robe
+                { id = 33038 }, -- Bonespeaker Cane
+                { id = 33040 }, -- Reedwoven Epaulets
                 { id = 42276 }, -- Cloudrender Pants
             }
         },
@@ -90,10 +106,16 @@ AtlasTW.InstanceData.WindhornCanyon = {
             name = LB["Prophet Stormhoof"],
             defaults = { dropRate = 25 },
             loot = {
+                { id = 33041 }, -- Deathtotem Relic
                 { id = 33042 }, -- Sacred Windhorn Headdress
-                {},
+                { id = 33043 }, -- Blackwind Facemask
+                { id = 33044 }, -- Elder Crone's Sigil Ring
                 { id = 70244 }, -- Plans: Ceremonial Belt Buckle
             }
+        },
+        {
+            prefix = "1')",
+            name = LB["Grand Elder Skystider"],
         },
         {
             id = "WHCChieftainShalkBlackwind",
@@ -101,16 +123,21 @@ AtlasTW.InstanceData.WindhornCanyon = {
             name = LB["Chieftain Shalk Blackwind"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 33047 }, -- Ar'pora, the Chieftain's Judgement]
+                { id = 33045 }, -- The Blackwind Pillar
+                { id = 33046 }, -- Canyon's Barricade
+                { id = 33047 }, -- Ar'pora, the Chieftain's Judgement
             }
         },
---[[         {
+        {
             id = "WHCTrash",
             name = L["Trash Mobs"].."-"..LZ["Windhorn Canyon"],
             defaults = { dropRate = .1 },
             loot = {
+                { id = 33034 }, -- Kodospine Crossbow
+                { id = 33039 }, -- Fleshrender
+                { id = 33181 }, -- Ancestral Greaves
             }
-        }, ]]
+        },
         { name = LIS["Sacred Windhorn Attire"], items = "SacredWindhorn" },
     },
 }
