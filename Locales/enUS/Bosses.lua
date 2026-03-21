@@ -24,6 +24,7 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Ambassador Vortalus"] = true, -- 3
     ["Walgan Bloodcaller"] = true, -- 4
     ["Bonespeaker Narlgom"] = true, -- 5
+    ["Spirit of Champion Rotag"] = true, -- 5'
     ["Prophet Stormhoof"] = true, -- 6
     ["Grand Elder Skystider"] = true, --1'
     ["Chieftain Shalk Blackwind"] = true, --7

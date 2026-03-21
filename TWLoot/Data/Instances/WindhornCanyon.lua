@@ -100,6 +100,7 @@ AtlasTW.InstanceData.WindhornCanyon = {
                 { id = 42276 }, -- Cloudrender Pants
             }
         },
+        { name = LB["Spirit of Champion Rotag"], color = Colors.GREY },
         {
             id = "WHCProphetStormhoof",
             prefix = "6)",
