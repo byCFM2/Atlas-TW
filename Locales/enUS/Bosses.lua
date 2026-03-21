@@ -10,6 +10,9 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     --************************************************
     -- TW 1.18.1 Additions
     --************************************************
+    --surv trainer
+    ["Nerean Stagtree"] = true,
+
     ["Broodcommander Axelus"] = true,
     ["Ezzel Darkbrewer"] = true,
     --frostmane hollow

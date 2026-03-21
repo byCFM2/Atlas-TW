@@ -117,6 +117,7 @@ AtlasTW.InstanceData.WindhornCanyon = {
         {
             prefix = "1')",
             name = LB["Grand Elder Skystider"],
+            color = Colors.GREEN,
         },
         {
             id = "WHCChieftainShalkBlackwind",
@@ -138,6 +139,7 @@ AtlasTW.InstanceData.WindhornCanyon = {
                 { id = 33034 }, -- Kodospine Crossbow
                 { id = 33039 }, -- Fleshrender
                 { id = 33181 }, -- Ancestral Greaves
+                { id = 33185 }, -- Sash of the Wind Serpents
             }
         },
         { name = LIS["Sacred Windhorn Attire"], items = "SacredWindhorn" },

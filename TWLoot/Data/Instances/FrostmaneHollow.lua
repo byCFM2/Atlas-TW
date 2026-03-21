@@ -82,15 +82,15 @@ AtlasTW.InstanceData.FrostmaneHollow = {
                 { id = 126 }, -- Band of Hailar
             }
         },
-        {
+--[[         {
             id = "FHTrash",
             name = L["Trash Mobs"].."-"..LZ["Frostmane Hollow"],
             defaults = { dropRate = .1 },
             loot = {
+                
             }
-        },
-       -- { name = LIS["Stormreaver Attire"], items = "Stormreaver" },
-    },
+        } ]]
+    }
 }
 
 for _, bossData in ipairs(AtlasTW.InstanceData.FrostmaneHollow.Bosses) do

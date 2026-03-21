@@ -428,6 +428,7 @@ local ProfessionTrainers = {
     Survival = {
         -- Apprentice+ (Neutral NPCs at Nesingwary's Expedition)
         { name = LB["Rufus Hardwick"], loc = LZ["Stranglethorn Vale"], faction = NEUTRAL, level = L["Apprentice"] },
+        { name = LB["Nerean Stagtree"], loc = LZ["Desolace"] .. " " .. LM["Nijel's Point"], faction = ALLIANCE, level = L["Expert"] },
     },
 
     -- ==========================================

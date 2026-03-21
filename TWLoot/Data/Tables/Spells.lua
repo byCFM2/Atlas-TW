@@ -27,15 +27,14 @@ local Colors = AtlasTW.Colors
 
 AtlasTW.SpellDB = {
 	enchants = {
-		--TODO need base reagents for tooltip info
 		[44] = {
 			name = LS["Enchant Bracer - Agility"],
 			tools = { 11130 },
 			reagents = {
-				{ 7067 },
 				{ 11134 },
+				{ 7067 },
 			},
-		}, --1.18
+		},
 		[48] = {
 			name = LS["Enchant Boots - Lesser Intellect"],
 			tools = { 11130 },
@@ -43,9 +42,23 @@ AtlasTW.SpellDB = {
 				{ 11083, 3 },
 				{ 11137 },
 			},
-		}, --1.18
-		[5668] = { icon = "Ability_Rogue_Disguise", name = LS["Peasant Disguise"], extra = LF["Horde"] },
-		[5669] = { icon = "Ability_Rogue_Disguise", name = LS["Peon Disguise"], extra = LF["Alliance"] },
+		},
+		[5668] = {
+			icon = "Ability_Rogue_Disguise",
+			name = LS["Peasant Disguise"],
+			extra = LF["Horde"],
+			reagents = {
+				{ 2589 },
+			},
+		},
+		[5669] = {
+			icon = "Ability_Rogue_Disguise",
+			name = LS["Peon Disguise"],
+			extra = LF["Alliance"],
+			reagents = {
+				{ 2589 },
+			},
+		},
 		[7418] = {
 			name = LS["Enchant Bracer - Minor Health"],
 			tools = { 6218 },
@@ -299,7 +312,7 @@ AtlasTW.SpellDB = {
 			tools = { 6339 },
 			reagents = {
 				{ 11082 },
-				{ 6048,  1 },
+				{ 6048 },
 			},
 		},
 		[13529] = {
@@ -339,7 +352,7 @@ AtlasTW.SpellDB = {
 			tools = { 6339 },
 			reagents = {
 				{ 11083 },
-				{ 2770,  3 },
+				{ 2772, 3 },
 			},
 		},
 		[13617] = {
@@ -347,7 +360,7 @@ AtlasTW.SpellDB = {
 			tools = { 6339 },
 			reagents = {
 				{ 11083 },
-				{ 3356,  3 },
+				{ 3356, 3 },
 			},
 		},
 		[13620] = {
@@ -355,7 +368,7 @@ AtlasTW.SpellDB = {
 			tools = { 6339 },
 			reagents = {
 				{ 11083 },
-				{ 6370,  3 },
+				{ 6370, 3 },
 			},
 		},
 		[13622] = {
@@ -378,7 +391,7 @@ AtlasTW.SpellDB = {
 			item = 11130,
 			reagents = {
 				{ 11128 },
-				{ 5500,  1 },
+				{ 5500 },
 				{ 11082, 2 },
 				{ 11083, 2 },
 			},
@@ -448,7 +461,7 @@ AtlasTW.SpellDB = {
 			tools = { 11130 },
 			reagents = {
 				{ 11134 },
-				{ 6631,  2 },
+				{ 5637, 2 },
 				{ 11138 },
 			},
 		},
@@ -457,7 +470,7 @@ AtlasTW.SpellDB = {
 			tools = { 11130 },
 			reagents = {
 				{ 11134 },
-				{ 7067,  1 },
+				{ 7067 },
 				{ 11138 },
 			},
 		},
@@ -466,7 +479,7 @@ AtlasTW.SpellDB = {
 			tools = { 11130 },
 			reagents = {
 				{ 11134 },
-				{ 7068,  1 },
+				{ 7068 },
 			},
 		},
 		[13659] = {
@@ -529,7 +542,7 @@ AtlasTW.SpellDB = {
 			tools = { 11130 },
 			reagents = {
 				{ 11137 },
-				{ 7392,  3 },
+				{ 7392, 3 },
 			},
 		},
 		[13700] = {
@@ -545,7 +558,7 @@ AtlasTW.SpellDB = {
 			item = 11145,
 			reagents = {
 				{ 11144 },
-				{ 7971,  1 },
+				{ 7971 },
 				{ 11135, 2 },
 				{ 11137, 2 },
 			},
@@ -598,7 +611,7 @@ AtlasTW.SpellDB = {
 			tools = { 11145 },
 			reagents = {
 				{ 11137, 3 },
-				{ 6037,  3 },
+				{ 6037, 3 },
 			},
 		},
 		[13846] = {
@@ -621,7 +634,7 @@ AtlasTW.SpellDB = {
 			tools = { 11145 },
 			reagents = {
 				{ 11137, 3 },
-				{ 8838,  3 },
+				{ 8838, 3 },
 			},
 		},
 		[13882] = {
@@ -644,7 +657,7 @@ AtlasTW.SpellDB = {
 			tools = { 11145 },
 			reagents = {
 				{ 11177 },
-				{ 7910,  1 },
+				{ 7909 },
 				{ 11174 },
 			},
 		},
@@ -653,7 +666,7 @@ AtlasTW.SpellDB = {
 			tools = { 11145 },
 			reagents = {
 				{ 11177, 4 },
-				{ 7078,  1 },
+				{ 7078 },
 			},
 		},
 		[13905] = {
@@ -670,7 +683,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 11177 },
 				{ 11176, 2 },
-				{ 9224,  1 },
+				{ 9224 },
 			},
 		},
 		[13917] = {
@@ -694,7 +707,7 @@ AtlasTW.SpellDB = {
 			tools = { 11145 },
 			reagents = {
 				{ 11178 },
-				{ 3829,  1 },
+				{ 3829 },
 			},
 		},
 		[13935] = {
@@ -757,85 +770,87 @@ AtlasTW.SpellDB = {
 			tools = { 11145 },
 			reagents = {
 				{ 11178, 2 },
-				{ 8153,  2 },
+				{ 8153, 2 },
 			},
 		},
 		[14293] = {
-			item = 11287,
 			tools = { 6218 },
+			item = 11287,
 			reagents = {
-				{ 2318,  1 },
+				{ 4470 },
 				{ 10938 },
 			},
 		},
 		[14807] = {
-			item = 11288,
 			tools = { 6218 },
+			item = 11288,
 			reagents = {
-				{ 2318,  1 },
+				{ 4470 },
 				{ 10939 },
 			},
 		},
 		[14809] = {
+			tools = { 11130 },
 			item = 11289,
-			tools = { 6339 },
 			reagents = {
-				{ 2318,  1 },
-				{ 10998 },
+				{ 42007 },
+				{ 11134 },
+				{ 11083 },
 			},
 		},
 		[14810] = {
+			tools = { 11130 },
 			item = 11290,
-			tools = { 6339 },
 			reagents = {
-				{ 2318,  1 },
-				{ 11082 },
+				{ 42007 },
+				{ 11135 },
+				{ 11137 },
 			},
 		},
 		[15596] = {
 			item = 11811,
-			tools = { 11130 },
 			reagents = {
-				{ 2318,  1 },
-				{ 11134 },
+				{ 11382 },
+				{ 7078 },
+				{ 14343, 3 },
 			},
 		},
 		[17180] = {
+			tools = { 11145 },
 			item = 12655,
-			tools = { 11130 },
 			reagents = {
-				{ 2318,  1 },
-				{ 11135 },
+				{ 12359 },
+				{ 16204, 3 },
 			},
 		},
 		[17181] = {
-			item = 12810,
 			tools = { 11145 },
+			item = 12810,
 			reagents = {
-				{ 2318,  1 },
-				{ 11174 },
+				{ 8170 },
+				{ 16202 },
 			},
 		},
 		[20008] = {
 			name = LS["Enchant Bracer - Greater Intellect"],
 			tools = { 11145 },
 			reagents = {
-				{ 11175, 3 },
+				{ 16202, 3 },
 			},
 		},
 		[20009] = {
 			name = LS["Enchant Bracer - Superior Spirit"],
 			tools = { 11145 },
 			reagents = {
-				{ 11175, 3 },
-				{ 111760 },
+				{ 16202, 3 },
+				{ 11176, 10 },
 			},
 		},
 		[20010] = {
 			name = LS["Enchant Bracer - Superior Strength"],
 			tools = { 11145 },
 			reagents = {
-				{ 162045 },
+				{ 16204, 6 },
 				{ 16203, 6 },
 			},
 		},
@@ -843,14 +858,14 @@ AtlasTW.SpellDB = {
 			name = LS["Enchant Bracer - Superior Stamina"],
 			tools = { 11145 },
 			reagents = {
-				{ 162045 },
+				{ 16204, 15 },
 			},
 		},
 		[20012] = {
 			name = LS["Enchant Gloves - Greater Agility"],
 			tools = { 11145 },
 			reagents = {
-				{ 16203, 3 },
+				{ 16202, 3 },
 				{ 16204, 3 },
 			},
 		},
@@ -858,8 +873,8 @@ AtlasTW.SpellDB = {
 			name = LS["Enchant Gloves - Greater Strength"],
 			tools = { 11145 },
 			reagents = {
-				{ 16203, 3 },
-				{ 16204, 3 },
+				{ 16203, 4 },
+				{ 16204, 4 },
 			},
 		},
 		[20014] = {
@@ -867,6 +882,11 @@ AtlasTW.SpellDB = {
 			tools = { 11145 },
 			reagents = {
 				{ 16202, 2 },
+				{ 7077 },
+				{ 7075 },
+				{ 7079 },
+				{ 7081 },
+				{ 7972 },
 			},
 		},
 		[20015] = {
@@ -888,14 +908,14 @@ AtlasTW.SpellDB = {
 			name = LS["Enchant Shield - Greater Stamina"],
 			tools = { 11145 },
 			reagents = {
-				{ 111760 },
+				{ 11176, 10 },
 			},
 		},
 		[20020] = {
 			name = LS["Enchant Boots - Greater Stamina"],
 			tools = { 11145 },
 			reagents = {
-				{ 111760 },
+				{ 11176, 10 },
 			},
 		},
 		[20023] = {
@@ -915,18 +935,18 @@ AtlasTW.SpellDB = {
 		},
 		[20025] = {
 			name = LS["Enchant Chest - Greater Stats"],
-			tools = { 11145 },
+			tools = { 16207 },
 			reagents = {
-				{ 14344, 2 },
-				{ 162045 },
-				{ 162030 },
+				{ 14344, 4 },
+				{ 16204, 15 },
+				{ 16203, 10 },
 			},
 		},
 		[20026] = {
 			name = LS["Enchant Chest - Major Health"],
 			tools = { 11145 },
 			reagents = {
-				{ 16204, 20 },
+				{ 16204, 6 },
 				{ 14343 },
 			},
 		},
@@ -934,7 +954,7 @@ AtlasTW.SpellDB = {
 			name = LS["Enchant Chest - Major Mana"],
 			tools = { 11145 },
 			reagents = {
-				{ 162030 },
+				{ 16203, 3 },
 				{ 14343 },
 			},
 		},
@@ -942,40 +962,40 @@ AtlasTW.SpellDB = {
 			name = LS["Enchant Weapon - Icy Chill"],
 			tools = { 11145 },
 			reagents = {
-				{ 14344, 2 },
-				{ 11175 },
-				{ 11174 },
-				{ 3829,  1 },
+				{ 14343, 4 },
+				{ 7080 },
+				{ 7082 },
+				{ 13467 },
 			},
 		},
 		[20030] = {
 			name = LS["Enchant 2H Weapon - Superior Impact"],
-			tools = { 11145 },
+			tools = { 16207 },
 			reagents = {
 				{ 14344, 4 },
-				{ 162040 },
+				{ 16204, 10 },
 			},
 		},
 		[20031] = {
 			name = LS["Enchant Weapon - Superior Striking"],
-			tools = { 11145 },
+			tools = { 16207 },
 			reagents = {
 				{ 14344, 2 },
-				{ 162030 },
+				{ 16203, 10 },
 			},
 		},
 		[20032] = {
 			name = LS["Enchant Weapon - Lifestealing"],
-			tools = { 11145 },
+			tools = { 16207 },
 			reagents = {
-				{ 14344, 2 },
-				{ 128080 },
-				{ 12811, 2 },
+				{ 14344, 6 },
+				{ 12808, 6 },
+				{ 12803, 6 },
 			},
 		},
 		[20033] = {
 			name = LS["Enchant Weapon - Unholy Weapon"],
-			tools = { 11145 },
+			tools = { 16207 },
 			reagents = {
 				{ 14344, 4 },
 				{ 12808, 4 },
@@ -983,25 +1003,25 @@ AtlasTW.SpellDB = {
 		},
 		[20034] = {
 			name = LS["Enchant Weapon - Crusader"],
-			tools = { 11145 },
+			tools = { 16207 },
 			reagents = {
-				{ 14344, 2 },
+				{ 14344, 4 },
 				{ 12811, 2 },
 			},
 		},
 		[20035] = {
 			name = LS["Enchant 2H Weapon - Major Spirit"],
-			tools = { 11145 },
+			tools = { 16207 },
 			reagents = {
-				{ 162032 },
+				{ 16203, 12 },
 				{ 14344, 2 },
 			},
 		},
 		[20036] = {
 			name = LS["Enchant 2H Weapon - Major Intellect"],
-			tools = { 11145 },
+			tools = { 16207 },
 			reagents = {
-				{ 162032 },
+				{ 16203, 12 },
 				{ 14344, 2 },
 			},
 		},
@@ -1009,9 +1029,10 @@ AtlasTW.SpellDB = {
 			item = 16207,
 			reagents = {
 				{ 16206 },
-				{ 13926, 2 },
-				{ 162040 },
+				{ 13926 },
+				{ 16204, 10 },
 				{ 16203, 4 },
+				{ 14343, 4 },
 				{ 14344, 2 },
 			},
 		},
@@ -1022,7 +1043,7 @@ AtlasTW.SpellDB = {
 				{ 11135, 3 },
 				{ 11137, 3 },
 				{ 11139 },
-				{ 3829,  1 },
+				{ 3819, 2 },
 			},
 		},
 		[22749] = {
@@ -1030,11 +1051,11 @@ AtlasTW.SpellDB = {
 			tools = { 16207 },
 			reagents = {
 				{ 14344, 4 },
-				{ 162032 },
-				{ 7078,  4 },
-				{ 7081,  4 },
-				{ 7080,  4 },
-				{ 12808, 4 },
+				{ 16203, 12 },
+				{ 7078, 4 },
+				{ 7080, 4 },
+				{ 7082, 4 },
+				{ 13926, 2 },
 			},
 		},
 		[22750] = {
@@ -1043,7 +1064,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 14344, 4 },
 				{ 16203, 8 },
-				{ 7081,  4 },
+				{ 12803, 6 },
+				{ 7080, 6 },
 				{ 12811 },
 			},
 		},
@@ -1051,25 +1073,29 @@ AtlasTW.SpellDB = {
 			name = LS["Enchant Weapon - Strength"],
 			tools = { 16207 },
 			reagents = {
-				{ 16204, 6 },
-				{ 16203, 2 },
+				{ 14344, 6 },
+				{ 16203, 6 },
+				{ 16204, 4 },
+				{ 7076, 2 },
 			},
 		},
 		[23800] = {
 			name = LS["Enchant Weapon - Agility"],
 			tools = { 16207 },
 			reagents = {
-				{ 16204, 6 },
-				{ 16203, 2 },
+				{ 14344, 6 },
+				{ 16203, 6 },
+				{ 16204, 4 },
+				{ 7082, 2 },
 			},
 		},
 		[23801] = {
 			name = LS["Enchant Bracer - Mana Regeneration"],
 			tools = { 16207 },
 			reagents = {
-				{ 162046 },
+				{ 16204, 16 },
 				{ 16203, 4 },
-				{ 7081,  2 },
+				{ 7080, 2 },
 			},
 		},
 		[23802] = {
@@ -1077,24 +1103,27 @@ AtlasTW.SpellDB = {
 			tools = { 16207 },
 			reagents = {
 				{ 14344, 2 },
+				{ 16204, 20 },
 				{ 16203, 4 },
-				{ 16202, 8 },
+				{ 12803, 6 },
 			},
 		},
 		[23803] = {
 			name = LS["Enchant Weapon - Mighty Spirit"],
 			tools = { 16207 },
 			reagents = {
+				{ 14344, 10 },
 				{ 16203, 8 },
-				{ 162025 },
+				{ 16204, 15 },
 			},
 		},
 		[23804] = {
 			name = LS["Enchant Weapon - Mighty Intellect"],
 			tools = { 16207 },
 			reagents = {
-				{ 162035 },
-				{ 162022 },
+				{ 14344, 15 },
+				{ 16203, 12 },
+				{ 16204, 20 },
 			},
 		},
 		[25072] = {
@@ -1103,7 +1132,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 20725, 4 },
 				{ 14344, 6 },
-				{ 19233, 8 },
+				{ 18512, 8 },
 			},
 		},
 		[25073] = {
@@ -1111,8 +1140,8 @@ AtlasTW.SpellDB = {
 			tools = { 16207 },
 			reagents = {
 				{ 20725, 3 },
-				{ 143440 },
-				{ 128080 },
+				{ 14344, 10 },
+				{ 12808, 6 },
 			},
 		},
 		[25074] = {
@@ -1120,8 +1149,8 @@ AtlasTW.SpellDB = {
 			tools = { 16207 },
 			reagents = {
 				{ 20725, 3 },
-				{ 143440 },
-				{ 7081,  10 },
+				{ 14344, 10 },
+				{ 7080, 4 },
 			},
 		},
 		[25078] = {
@@ -1129,8 +1158,8 @@ AtlasTW.SpellDB = {
 			tools = { 16207 },
 			reagents = {
 				{ 20725, 2 },
-				{ 143440 },
-				{ 7078,  10 },
+				{ 14344, 10 },
+				{ 7078, 4 },
 			},
 		},
 		[25079] = {
@@ -1139,7 +1168,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 20725, 3 },
 				{ 14344, 8 },
-				{ 12811, 2 },
+				{ 12811 },
 			},
 		},
 		[25080] = {
@@ -1148,7 +1177,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 20725, 3 },
 				{ 14344, 8 },
-				{ 7080,  15 },
+				{ 7082, 4 },
 			},
 		},
 		[25081] = {
@@ -1156,15 +1185,17 @@ AtlasTW.SpellDB = {
 			tools = { 16207 },
 			reagents = {
 				{ 20725, 3 },
-				{ 7078,  8 },
+				{ 14344, 8 },
+				{ 7078, 4 },
 			},
 		},
 		[25082] = {
 			name = LS["Enchant Cloak - Greater Nature Resistance"],
 			tools = { 16207 },
 			reagents = {
-				{ 20725, 3 },
-				{ 7080,  8 },
+				{ 20725, 2 },
+				{ 14344, 8 },
+				{ 12803, 4 },
 			},
 		},
 		[25083] = {
@@ -1172,17 +1203,17 @@ AtlasTW.SpellDB = {
 			tools = { 16207 },
 			reagents = {
 				{ 20725, 3 },
-				{ 16204, 8 },
-				{ 12808, 8 },
+				{ 14344, 8 },
+				{ 13468, 2 },
 			},
 		},
 		[25084] = {
 			name = LS["Enchant Cloak - Subtlety"],
 			tools = { 16207 },
 			reagents = {
-				{ 20725, 2 },
-				{ 14344, 8 },
-				{ 12811, 2 },
+				{ 20725, 4 },
+				{ 14344, 6 },
+				{ 11754, 2 },
 			},
 		},
 		[25086] = {
@@ -1191,75 +1222,96 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 20725, 3 },
 				{ 14344, 8 },
-				{ 1206,  1 },
+				{ 12809, 8 },
 			},
 		},
 		[25124] = {
-			item = 20744,
 			extra = Colors.WHITE .. "5 " .. L["Charges"],
+			tools = { 6218 },
+			item = 20744,
 			reagents = {
-				{ 16204 },
+				{ 10940, 2 },
+				{ 17034 },
+				{ 3371 },
 			},
 		},
 		[25125] = {
-			item = 20745,
 			extra = Colors.WHITE .. "5 " .. L["Charges"],
+			tools = { 6339 },
+			item = 20745,
 			reagents = {
-				{ 16204 },
+				{ 11083, 3 },
+				{ 17034, 2 },
+				{ 3372 },
 			},
 		},
 		[25126] = {
-			item = 20746,
 			extra = Colors.WHITE .. "5 " .. L["Charges"],
+			tools = { 11130 },
+			item = 20746,
 			reagents = {
-				{ 16204 },
+				{ 11137, 3 },
+				{ 17035, 2 },
+				{ 3372 },
 			},
 		},
 		[25127] = {
-			item = 20747,
 			extra = Colors.WHITE .. "5 " .. L["Charges"],
+			tools = { 11145 },
+			item = 20747,
 			reagents = {
-				{ 16204 },
+				{ 11176, 3 },
+				{ 8831, 2 },
+				{ 8925 },
 			},
 		},
 		[25128] = {
-			item = 20750,
 			extra = Colors.WHITE .. "5 " .. L["Charges"],
+			tools = { 11145 },
+			item = 20750,
 			reagents = {
-				{ 16204 },
+				{ 16204, 3 },
+				{ 4625, 2 },
+				{ 8925 },
 			},
 		},
 		[25129] = {
-			item = 20749,
 			extra = Colors.WHITE .. "5 " .. L["Charges"],
+			tools = { 16207 },
+			item = 20749,
 			reagents = {
-				{ 16204 },
+				{ 14344, 2 },
+				{ 4625, 3 },
+				{ 18256 },
 			},
 		},
 		[25130] = {
-			item = 20748,
 			extra = Colors.WHITE .. "5 " .. L["Charges"],
+			tools = { 16207 },
+			item = 20748,
 			reagents = {
-				{ 16204 },
+				{ 14344, 2 },
+				{ 8831, 3 },
+				{ 18256 },
 			},
 		},
 		[27837] = {
 			name = LS["Enchant 2H Weapon - Agility"],
 			tools = { 16207 },
 			reagents = {
-				{ 143440 },
+				{ 14344, 10 },
 				{ 16203, 6 },
-				{ 162044 },
-				{ 7080,  2 },
+				{ 16204, 14 },
+				{ 7082, 4 },
 			},
 		},
 		[41758] = {
+			tools = { 11145 },
 			item = 55248,
 			reagents = {
-				{ 3860,  4 },
-				{ 14344, 2 },
-				{ 16204, 8 },
-				{ 16203, 4 },
+				{ 55247 },
+				{ 16203 },
+				{ 11175 },
 			},
 		},
 		[45071] = {
@@ -1276,8 +1328,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 20725, 2 },
 				{ 14344, 4 },
-				{ 7082,  4 },
-				{ 7077,  4 },
+				{ 7076, 4 },
+				{ 7077, 4 },
 			},
 		},
 		[46601] = {
@@ -1285,7 +1337,7 @@ AtlasTW.SpellDB = {
 			tools = { 16207 },
 			reagents = {
 				{ 20725, 2 },
-				{ 143440 },
+				{ 14344, 10 },
 				{ 16203, 4 },
 			},
 		},
@@ -1294,9 +1346,9 @@ AtlasTW.SpellDB = {
 			tools = { 16207 },
 			reagents = {
 				{ 20725, 2 },
-				{ 143440 },
-				{ 7080,  2 },
-				{ 7082,  2 },
+				{ 14344, 10 },
+				{ 7082, 2 },
+				{ 7076, 2 },
 			},
 		},
 		[46603] = {
@@ -1304,7 +1356,7 @@ AtlasTW.SpellDB = {
 			tools = { 16207 },
 			reagents = {
 				{ 20725, 2 },
-				{ 143440 },
+				{ 14344, 10 },
 				{ 12811, 4 },
 			},
 		},
@@ -1312,7 +1364,7 @@ AtlasTW.SpellDB = {
 			name = LS["Enchant Boots - Major Intellect"],
 			tools = { 11145 },
 			reagents = {
-				{ 162045 },
+				{ 16204, 15 },
 				{ 16203, 4 },
 				{ 14344, 2 },
 				{ 20725 },
@@ -1323,9 +1375,9 @@ AtlasTW.SpellDB = {
 			tools = { 16207 },
 			reagents = {
 				{ 14344, 2 },
-				{ 162040 },
-				{ 7082,  3 },
-				{ 7080,  3 },
+				{ 16204, 10 },
+				{ 7076, 3 },
+				{ 7082, 3 },
 			},
 		},
 		[57030] = {
@@ -1334,8 +1386,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 14344, 3 },
 				{ 16203 },
-				{ 7080,  2 },
-				{ 7082,  2 },
+				{ 7082, 2 },
+				{ 7076, 2 },
 			},
 		},
 		[57117] = {
@@ -1359,51 +1411,50 @@ AtlasTW.SpellDB = {
 			name = LS["Enchant Boots - Superior Stamina"],
 			tools = { 16207 },
 			reagents = {
-				{ 16204, 20 },
-				{ 16203, 4 },
-				{ 14344, 4 },
+				{ 16203, 6 },
+				{ 8846, 2 },
 			},
 		},
 		[57142] = {
 			name = LS["Enchant Boots - Greater Spirit"],
-			tools = { 11145 },
+			tools = { 16207 },
 			reagents = {
-				{ 16203, 4 },
-				{ 162040 },
+				{ 16203, 5 },
 			},
 		},
 		[57144] = {
 			name = LS["Enchant Bracer - Greater Deflection"],
 			tools = { 16207 },
 			reagents = {
-				{ 162045 },
-				{ 16203, 2 },
-				{ 20725, 2 },
+				{ 14344 },
+				{ 61673, 2 },
+				{ 7076, 2 },
+				{ 16203, 4 },
 			},
 		},
 		[57146] = {
 			name = LS["Enchant Bracer - Vampirism"],
-			tools = { 16207 },
+			tools = { 11130 },
 			reagents = {
-				{ 16204, 20 },
-				{ 162030 },
-				{ 12811, 4 },
+				{ 11135 },
+				{ 5637, 2 },
 			},
 		},
 		[57148] = {
 			name = LS["Enchant Boots - Vampirism"],
 			tools = { 16207 },
 			reagents = {
-				{ 16204, 20 },
-				{ 162030 },
-				{ 12811, 4 },
+				{ 19933, 8 },
+				{ 12808, 4 },
+				{ 14344, 4 },
+				{ 16204, 10 },
 			},
 		},
 		[57518] = {
 			item = 61732,
 			reagents = {
 				{ 61197, 5 },
-				{ 61673,  25 },
+				{ 61673, 25 },
 				{ 61199, 25 },
 				{ 20725, 10 },
 				{ 13468, 5 },
@@ -1416,11 +1467,11 @@ AtlasTW.SpellDB = {
 			item = 55043,
 			reagents = {
 				{ 15407, 6 },
-				{ 128102 },
-				{ 7081,  20 },
-				{ 7082,  8 },
-				{ 5117,  15 },
-				{ 4480,  10 },
+				{ 12810, 12 },
+				{ 7081, 20 },
+				{ 7082, 8 },
+				{ 5117, 15 },
+				{ 4480, 10 },
 				{ 14341, 4 },
 			},
 		},
@@ -1432,20 +1483,20 @@ AtlasTW.SpellDB = {
 				{ 2321, 2 },
 			},
 		},
-		[57] = { --1.18
-			item = 131,
+		[57] = { --Steel Belt Buckle
 			requires = L["Anvil"],
 			tools = { 5956 },
+			item = 131,
 			reagents = {
 				{ 3859, 8 },
 				{ 7071 },
 				{ 7966 },
 			},
 		},
-		[69] = { --1.18
-			item = 66,
+		[69] = { --Gold Belt Buckle
 			requires = L["Anvil"],
 			tools = { 5956 },
+			item = 66,
 			reagents = {
 				{ 3577, 8 },
 				{ 7071 },
@@ -1455,26 +1506,26 @@ AtlasTW.SpellDB = {
 		[70] = { --1.18 Leatherworking: Dragonmaw Gloves
 			item = 58112,
 			reagents = {
-				{ 4234,  14 },
-				{ 7287,  4 },
-				{ 4236,  2 },
-				{ 5637,  2 },
-				{ 4402,  2 },
+				{ 4234, 14 },
+				{ 7287, 4 },
+				{ 4236, 2 },
+				{ 5637, 2 },
+				{ 4402, 2 },
 				{ 55249, 2 },
 			},
 		},
-		[74] = { --1.18
-			item = 67,
+		[74] = { --Dragonscale Belt Buckle
 			requires = L["Anvil"],
 			tools = { 5956 },
+			item = 67,
 			reagents = {
 				{ 12359, 4 },
 				{ 7071 },
-				{ 8165,  14 },
+				{ 8165, 14 },
 				{ 7966 },
 			},
 		},
-		[83] = { --1.18
+		[83] = { --Stormreaver Gloves
 			item = 58134,
 			reagents = {
 				{ 4305, 8 },
@@ -1485,10 +1536,10 @@ AtlasTW.SpellDB = {
 				{ 4291, 2 },
 			},
 		},
-		[85] = { --1.18
-			item = 82,
+		[85] = { --Dark Iron Belt Buckle
 			requires = L["Anvil"],
 			tools = { 5956 },
+			item = 82,
 			reagents = {
 				{ 11371, 2 },
 				{ 7071 },
@@ -1496,32 +1547,32 @@ AtlasTW.SpellDB = {
 				{ 12644, 2 },
 			},
 		},
-		[90] = { --1.18
-			item = 151,
+		[90] = { --Truesilver Belt Buckle
 			requires = L["Anvil"],
 			tools = { 5956 },
+			item = 151,
 			reagents = {
 				{ 6037, 8 },
 				{ 7071 },
 				{ 7966, 2 },
 			},
 		},
-		[93] = { --1.18
-			item = 156,
+		[93] = { --Refined Dwarven Necklace
 			requires = L["Anvil"],
-			tools = { 5956 },
+			tools = { 55155, 41326 },
+			item = 156,
 			reagents = {
-				{ 3860,  12 },
+				{ 3860, 12 },
 				{ 55249, 3 },
-				{ 6371,  3 },
-				{ 3466,  2 },
+				{ 6371, 3 },
+				{ 3466, 2 },
 				{ 55152, 2 },
 			},
 		},
-		[95] = { --1.18
-			item = 87,
+		[95] = { --Enchanted Thorium Belt Buckle
 			requires = L["Anvil"],
 			tools = { 5956 },
+			item = 87,
 			reagents = {
 				{ 12655, 2 },
 				{ 7071 },
@@ -1529,10 +1580,10 @@ AtlasTW.SpellDB = {
 				{ 12644 },
 			},
 		},
-		[102] = { --1.18
-			item = 103,
+		[102] = { --Obsidian Belt Buckle
 			requires = L["Anvil"],
 			tools = { 5956 },
+			item = 103,
 			reagents = {
 				{ 22203, 2 },
 				{ 7071 },
@@ -1542,16 +1593,16 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[104] = { --1.18 Jewelcrafting: Ancient Dwarven Gemstone
-			item = 56112,
 			requires = L["Anvil"],
-			tools = { 5956 },
+			tools = { 55155, 41326 },
+			item = 56112,
 			reagents = {
 				{ 3860 },
 				{ 55249 },
 				{ 55247 },
 			},
 		},
-		[115] = { --1.18
+		[115] = { --Elixir of Rapid Growth
 			item = 56113,
 			reagents = {
 				{ 4625 },
@@ -1561,9 +1612,9 @@ AtlasTW.SpellDB = {
 		},
 		[818] = {
 			name = LS["Basic Campfire"],
-			tools = { 4471 },
 			icon = "Spell_Fire_Fire",
 			text = LS["Builds a campfire that increases the spirits of those nearby by 4 and allows cooking."],
+			tools = { 4471 },
 			reagents = {
 				{ 4470 },
 			},
@@ -1598,8 +1649,8 @@ AtlasTW.SpellDB = {
 		[2159] = {
 			item = 2308,
 			reagents = {
-				{ 23180 },
-				{ 2320, 2 },
+				{ 2318, 10 },
+				{ 2321, 2 },
 			},
 		},
 		[2160] = {
@@ -1649,7 +1700,7 @@ AtlasTW.SpellDB = {
 		[2166] = {
 			item = 2314,
 			reagents = {
-				{ 23190 },
+				{ 2319, 10 },
 				{ 4231, 2 },
 				{ 2321, 2 },
 			},
@@ -1831,7 +1882,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 2997, 4 },
 				{ 2321, 2 },
-				{ 2318 },
+				{ 2318, 2 },
 			},
 		},
 		[2402] = {
@@ -1939,14 +1990,14 @@ AtlasTW.SpellDB = {
 			requires = L["Cooking Fire"],
 			item = 2685,
 			reagents = {
-				{ 2677 },
+				{ 2677, 2 },
 				{ 2692 },
 			},
 		},
 		[2549] = {
 			requires = L["Cooking Fire"],
-			item = 1017,
 			quantity = 3,
+			item = 1017,
 			reagents = {
 				{ 1015, 2 },
 				{ 2665 },
@@ -1971,8 +2022,8 @@ AtlasTW.SpellDB = {
 		[2659] = {
 			name = LS["Smelting: Smelt Bronze"],
 			requires = L["Forge"],
-			item = 2841,
 			quantity = 2,
+			item = 2841,
 			reagents = {
 				{ 2840 },
 				{ 3576 },
@@ -2013,7 +2064,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 2854,
 			reagents = {
-				{ 28400 },
+				{ 2840, 10 },
 				{ 3470, 3 },
 			},
 		},
@@ -2028,7 +2079,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 2857,
 			reagents = {
-				{ 28400 },
+				{ 2840, 10 },
 			},
 		},
 		[2667] = {
@@ -2036,7 +2087,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 2864,
 			reagents = {
-				{ 28402 },
+				{ 2840, 12 },
 				{ 1210 },
 				{ 3470, 2 },
 			},
@@ -2079,7 +2130,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 2869,
 			reagents = {
-				{ 28410 },
+				{ 2841, 10 },
 				{ 2842, 2 },
 				{ 3478, 2 },
 				{ 1705 },
@@ -2333,9 +2384,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 3487,
 			reagents = {
-				{ 28404 },
+				{ 2840, 14 },
 				{ 2880, 2 },
-				{ 818,  2 },
+				{ 818, 2 },
 				{ 2319, 2 },
 			},
 		},
@@ -2344,9 +2395,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 3488,
 			reagents = {
-				{ 28402 },
+				{ 2840, 12 },
 				{ 2880, 2 },
-				{ 774,  2 },
+				{ 774, 2 },
 				{ 3470, 2 },
 				{ 2318, 2 },
 			},
@@ -2356,7 +2407,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 3489,
 			reagents = {
-				{ 28400 },
+				{ 2840, 10 },
 				{ 2880, 2 },
 				{ 2842, 2 },
 				{ 3470, 2 },
@@ -2471,9 +2522,9 @@ AtlasTW.SpellDB = {
 		},
 		[3325] = {
 			requires = L["Anvil"],
+			extra = Colors.GREEN .. L["<Random enchantment>"],
 			tools = { 5956 },
 			item = 3474,
-			extra = Colors.GREEN .. L["<Random enchantment>"],
 			reagents = {
 				{ 2840, 8 },
 				{ 818 },
@@ -2564,8 +2615,8 @@ AtlasTW.SpellDB = {
 		},
 		[3371] = {
 			requires = L["Cooking Fire"],
-			item = 3220,
 			quantity = 2,
+			item = 3220,
 			reagents = {
 				{ 3173 },
 				{ 3172 },
@@ -2767,7 +2818,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 3852,
 			reagents = {
-				{ 35750 },
+				{ 3575, 10 },
 				{ 3577, 4 },
 				{ 1705, 2 },
 				{ 3466, 2 },
@@ -2805,7 +2856,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 3855,
 			reagents = {
-				{ 35754 },
+				{ 3575, 14 },
 				{ 3466, 2 },
 				{ 3486, 2 },
 				{ 3577, 4 },
@@ -2817,7 +2868,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 3856,
 			reagents = {
-				{ 38590 },
+				{ 3859, 10 },
 				{ 3466, 2 },
 				{ 3486, 3 },
 				{ 3864, 2 },
@@ -2839,7 +2890,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 3836,
 			reagents = {
-				{ 35752 },
+				{ 3575, 12 },
 				{ 3864 },
 				{ 2605 },
 			},
@@ -2889,7 +2940,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 3843,
 			reagents = {
-				{ 35750 },
+				{ 3575, 10 },
 				{ 3577, 2 },
 				{ 3486 },
 			},
@@ -2911,7 +2962,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 3845,
 			reagents = {
-				{ 38592 },
+				{ 3859, 12 },
 				{ 3577, 2 },
 				{ 3486, 4 },
 				{ 1529, 2 },
@@ -2933,7 +2984,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 3847,
 			reagents = {
-				{ 38590 },
+				{ 3859, 10 },
 				{ 3577, 4 },
 				{ 3486, 4 },
 				{ 3864 },
@@ -3025,7 +3076,7 @@ AtlasTW.SpellDB = {
 		[3764] = {
 			item = 4247,
 			reagents = {
-				{ 23194 },
+				{ 2319, 14 },
 				{ 2321, 4 },
 			},
 		},
@@ -3041,7 +3092,7 @@ AtlasTW.SpellDB = {
 		[3766] = {
 			item = 4249,
 			reagents = {
-				{ 2312 },
+				{ 4246 },
 				{ 4233 },
 				{ 2321, 2 },
 				{ 4340 },
@@ -3066,7 +3117,7 @@ AtlasTW.SpellDB = {
 		[3769] = {
 			item = 4252,
 			reagents = {
-				{ 23192 },
+				{ 2319, 12 },
 				{ 3390 },
 				{ 4340 },
 				{ 2321, 2 },
@@ -3102,9 +3153,9 @@ AtlasTW.SpellDB = {
 			item = 4256,
 			reagents = {
 				{ 4236, 2 },
-				{ 42342 },
+				{ 4234, 12 },
 				{ 3824 },
-				{ 2321 },
+				{ 2321, 2 },
 			},
 		},
 		[3774] = {
@@ -3254,10 +3305,10 @@ AtlasTW.SpellDB = {
 		[3847] = {
 			item = 4313,
 			reagents = {
-				{ 2997, 3 },
+				{ 2997, 4 },
 				{ 2318, 2 },
 				{ 2321 },
-				{ 2604 },
+				{ 2604, 2 },
 			},
 		},
 		[3848] = {
@@ -3474,16 +3525,16 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[3919] = {
-			item = 4358,
 			quantity = 2,
+			item = 4358,
 			reagents = {
 				{ 4357, 2 },
 				{ 2589 },
 			},
 		},
 		[3920] = {
-			item = 8067,
 			quantity = 200,
+			item = 8067,
 			reagents = {
 				{ 4357 },
 				{ 2840 },
@@ -3499,9 +3550,9 @@ AtlasTW.SpellDB = {
 		},
 		[3923] = {
 			requires = L["Anvil"],
+			quantity = 2,
 			tools = { 5956 },
 			item = 4360,
-			quantity = 2,
 			reagents = {
 				{ 2840 },
 				{ 4359 },
@@ -3556,16 +3607,16 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[3930] = {
-			item = 8068,
 			quantity = 200,
+			item = 8068,
 			reagents = {
 				{ 4364 },
 				{ 2840 },
 			},
 		},
 		[3931] = {
-			item = 4365,
 			quantity = { 1, 3 },
+			item = 4365,
 			reagents = {
 				{ 4364, 3 },
 				{ 2589 },
@@ -3596,7 +3647,7 @@ AtlasTW.SpellDB = {
 			item = 4368,
 			reagents = {
 				{ 2318, 6 },
-				{ 818,  2 },
+				{ 818, 2 },
 			},
 		},
 		[3936] = {
@@ -3612,9 +3663,9 @@ AtlasTW.SpellDB = {
 		},
 		[3937] = {
 			requires = L["Anvil"],
+			quantity = { 2, 4 },
 			tools = { 5956 },
 			item = 4370,
-			quantity = { 2, 4 },
 			reagents = {
 				{ 2840, 3 },
 				{ 4364, 4 },
@@ -3650,9 +3701,9 @@ AtlasTW.SpellDB = {
 		},
 		[3941] = {
 			requires = L["Anvil"],
+			quantity = { 1, 3 },
 			tools = { 5956 },
 			item = 4374,
-			quantity = { 1, 3 },
 			reagents = {
 				{ 4364, 4 },
 				{ 2841, 2 },
@@ -3671,9 +3722,9 @@ AtlasTW.SpellDB = {
 		},
 		[3944] = {
 			requires = L["Anvil"],
+			extra = Colors.WHITE .. "5 " .. L["Charges"],
 			tools = { 5956, 6219 },
 			item = 4376,
-			extra = Colors.WHITE .. "5 " .. L["Charges"],
 			reagents = {
 				{ 4375 },
 				{ 4402 },
@@ -3686,16 +3737,16 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[3946] = {
-			item = 4378,
 			quantity = { 1, 5 },
+			item = 4378,
 			reagents = {
 				{ 4377, 2 },
 				{ 2592 },
 			},
 		},
 		[3947] = {
-			item = 8069,
 			quantity = 200,
+			item = 8069,
 			reagents = {
 				{ 4377 },
 				{ 2841 },
@@ -3713,9 +3764,9 @@ AtlasTW.SpellDB = {
 		},
 		[3950] = {
 			requires = L["Anvil"],
+			quantity = { 2, 4 },
 			tools = { 5956, 6219 },
 			item = 4380,
-			quantity = { 2, 4 },
 			reagents = {
 				{ 4377, 2 },
 				{ 2841, 3 },
@@ -3723,8 +3774,8 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[3952] = {
-			item = 4381,
 			extra = Colors.WHITE .. "10 " .. L["Charges"],
+			item = 4381,
 			reagents = {
 				{ 4371 },
 				{ 4375, 2 },
@@ -3773,9 +3824,9 @@ AtlasTW.SpellDB = {
 		},
 		[3957] = {
 			requires = L["Anvil"],
+			extra = Colors.WHITE .. "5 " .. L["Charges"],
 			tools = { 5956, 6219 },
 			item = 4386,
-			extra = Colors.WHITE .. "5 " .. L["Charges"],
 			reagents = {
 				{ 4375 },
 				{ 3829 },
@@ -3791,9 +3842,9 @@ AtlasTW.SpellDB = {
 		},
 		[3959] = {
 			requires = L["Anvil"],
+			extra = Colors.WHITE .. "5 " .. L["Charges"],
 			tools = { 5956, 6219 },
 			item = 4388,
-			extra = Colors.WHITE .. "5 " .. L["Charges"],
 			reagents = {
 				{ 4375, 3 },
 				{ 4306, 2 },
@@ -3803,9 +3854,9 @@ AtlasTW.SpellDB = {
 		},
 		[3960] = {
 			requires = L["Anvil"],
+			extra = Colors.WHITE .. "8 " .. L["Charges"],
 			tools = { 5956, 6219 },
 			item = 4403,
-			extra = Colors.WHITE .. "8 " .. L["Charges"],
 			reagents = {
 				{ 4371, 4 },
 				{ 4387 },
@@ -3824,9 +3875,9 @@ AtlasTW.SpellDB = {
 		},
 		[3962] = {
 			requires = L["Anvil"],
+			quantity = { 2, 4 },
 			tools = { 5956 },
 			item = 4390,
-			quantity = { 2, 4 },
 			reagents = {
 				{ 3575 },
 				{ 4377 },
@@ -3856,7 +3907,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[3966] = {
-			tools = { 62190498 },
+			tools = { 6219, 10498 },
 			item = 4393,
 			reagents = {
 				{ 4234, 6 },
@@ -3865,9 +3916,9 @@ AtlasTW.SpellDB = {
 		},
 		[3967] = {
 			requires = L["Anvil"],
+			quantity = 2,
 			tools = { 5956, 6219 },
 			item = 4394,
-			quantity = 2,
 			reagents = {
 				{ 3575, 3 },
 				{ 4377, 3 },
@@ -3912,13 +3963,13 @@ AtlasTW.SpellDB = {
 			item = 4398,
 			reagents = {
 				{ 10505, 2 },
-				{ 4234,  2 },
+				{ 4234, 2 },
 				{ 159 },
 			},
 		},
 		[3973] = {
-			item = 4404,
 			quantity = 5,
+			item = 4404,
 			reagents = {
 				{ 2842 },
 			},
@@ -3941,7 +3992,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[3979] = {
-			tools = { 62190498 },
+			tools = { 6219, 10498 },
 			item = 4407,
 			reagents = {
 				{ 4371 },
@@ -3991,7 +4042,6 @@ AtlasTW.SpellDB = {
 		},
 		[5169] = {
 			tools = { 7997 },
-			item = 5126,
 			reagents = {
 				{ 2589 },
 			},
@@ -4006,35 +4056,30 @@ AtlasTW.SpellDB = {
 		},
 		[5264] = {
 			tools = { 5107 },
-			item = 5127,
 			reagents = {
 				{ 2589 },
 			},
 		},
 		[5265] = {
 			tools = { 5109 },
-			item = 5131,
 			reagents = {
 				{ 2589 },
 			},
 		},
 		[5266] = {
 			tools = { 5113 },
-			item = 5132,
 			reagents = {
 				{ 2592 },
 			},
 		},
 		[5267] = {
 			tools = { 5110 },
-			item = 5130,
 			reagents = {
 				{ 2589 },
 			},
 		},
 		[5268] = {
 			tools = { 5108 },
-			item = 5129,
 			reagents = {
 				{ 2592 },
 			},
@@ -4073,8 +4118,8 @@ AtlasTW.SpellDB = {
 		},
 		[6414] = {
 			requires = L["Cooking Fire"],
-			item = 5474,
 			quantity = 2,
+			item = 5474,
 			reagents = {
 				{ 5467 },
 				{ 2678 },
@@ -4082,8 +4127,8 @@ AtlasTW.SpellDB = {
 		},
 		[6415] = {
 			requires = L["Cooking Fire"],
-			item = 5476,
 			quantity = 2,
+			item = 5476,
 			reagents = {
 				{ 5468 },
 				{ 2678 },
@@ -4091,8 +4136,8 @@ AtlasTW.SpellDB = {
 		},
 		[6416] = {
 			requires = L["Cooking Fire"],
-			item = 5477,
 			quantity = 2,
+			item = 5477,
 			reagents = {
 				{ 5469 },
 				{ 4536 },
@@ -4100,16 +4145,16 @@ AtlasTW.SpellDB = {
 		},
 		[6417] = {
 			requires = L["Cooking Fire"],
-			item = 5478,
 			quantity = 2,
+			item = 5478,
 			reagents = {
 				{ 5051 },
 			},
 		},
 		[6418] = {
 			requires = L["Cooking Fire"],
-			item = 5479,
 			quantity = 2,
+			item = 5479,
 			reagents = {
 				{ 5470 },
 				{ 2692 },
@@ -4117,8 +4162,8 @@ AtlasTW.SpellDB = {
 		},
 		[6419] = {
 			requires = L["Cooking Fire"],
-			item = 5480,
 			quantity = 2,
+			item = 5480,
 			reagents = {
 				{ 5471 },
 				{ 2678, 4 },
@@ -4161,8 +4206,8 @@ AtlasTW.SpellDB = {
 		[6510] = {
 			name = LS["Blinding Powder"],
 			text = LS["Create the reagent for the Blind ability."],
-			item = 5530,
 			quantity = 3,
+			item = 5530,
 			reagents = {
 				{ 3818 },
 			},
@@ -4183,7 +4228,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 5541,
 			reagents = {
-				{ 28410 },
+				{ 2841, 10 },
 				{ 3466 },
 				{ 5500 },
 				{ 3478, 2 },
@@ -4225,7 +4270,7 @@ AtlasTW.SpellDB = {
 		[6661] = {
 			item = 5739,
 			reagents = {
-				{ 42344 },
+				{ 4234, 14 },
 				{ 2321, 2 },
 				{ 7071 },
 			},
@@ -4290,7 +4335,7 @@ AtlasTW.SpellDB = {
 		[6703] = {
 			item = 5781,
 			reagents = {
-				{ 57842 },
+				{ 5784, 12 },
 				{ 4231 },
 				{ 2318, 8 },
 				{ 2321 },
@@ -4299,18 +4344,18 @@ AtlasTW.SpellDB = {
 		[6704] = {
 			item = 5782,
 			reagents = {
-				{ 57852 },
+				{ 5785, 12 },
 				{ 4236 },
-				{ 42340 },
+				{ 4234, 10 },
 				{ 2321, 3 },
 			},
 		},
 		[6705] = {
 			item = 5783,
 			reagents = {
-				{ 57856 },
+				{ 5785, 16 },
 				{ 4236 },
-				{ 42344 },
+				{ 4234, 14 },
 				{ 4291 },
 			},
 		},
@@ -4332,7 +4377,7 @@ AtlasTW.SpellDB = {
 		[7135] = {
 			item = 5961,
 			reagents = {
-				{ 23192 },
+				{ 2319, 12 },
 				{ 4340 },
 				{ 2321 },
 			},
@@ -4340,7 +4385,7 @@ AtlasTW.SpellDB = {
 		[7147] = {
 			item = 5962,
 			reagents = {
-				{ 42342 },
+				{ 4234, 12 },
 				{ 4305, 2 },
 				{ 2321, 2 },
 			},
@@ -4348,7 +4393,7 @@ AtlasTW.SpellDB = {
 		[7149] = {
 			item = 5963,
 			reagents = {
-				{ 42340 },
+				{ 4234, 10 },
 				{ 2321, 2 },
 				{ 1206 },
 			},
@@ -4364,7 +4409,7 @@ AtlasTW.SpellDB = {
 		[7153] = {
 			item = 5965,
 			reagents = {
-				{ 42344 },
+				{ 4234, 14 },
 				{ 4305, 2 },
 				{ 4291, 2 },
 			},
@@ -4491,7 +4536,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 6214,
 			reagents = {
-				{ 28402 },
+				{ 2840, 12 },
 				{ 2880, 2 },
 				{ 2318, 2 },
 			},
@@ -4688,15 +4733,15 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[7934] = {
-			item = 6452,
 			quantity = 3,
+			item = 6452,
 			reagents = {
 				{ 1475 },
 			},
 		},
 		[7935] = {
-			item = 6453,
 			quantity = 3,
+			item = 6453,
 			reagents = {
 				{ 1288 },
 			},
@@ -4720,8 +4765,8 @@ AtlasTW.SpellDB = {
 		[7955] = {
 			item = 6468,
 			reagents = {
-				{ 64710 },
-				{ 64700 },
+				{ 6471, 10 },
+				{ 6470, 10 },
 				{ 2321, 2 },
 			},
 		},
@@ -4769,8 +4814,8 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[8339] = {
-			item = 6714,
 			quantity = { 1, 3 },
+			item = 6714,
 			reagents = {
 				{ 4364, 4 },
 				{ 2592 },
@@ -4778,10 +4823,11 @@ AtlasTW.SpellDB = {
 		},
 		[8366] = { --1.18 Blacksmithing: Ironforge Chain
 			requires = L["Anvil"],
+			tools = { 5956 },
 			item = 6730,
 			reagents = {
-				{ 28402 },
-				{ 774,  2 },
+				{ 2840, 12 },
+				{ 774, 2 },
 				{ 3470, 2 },
 			},
 		},
@@ -4790,12 +4836,13 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 6731,
 			reagents = {
-				{ 28406 },
-				{ 818,  2 },
+				{ 2840, 16 },
+				{ 818, 2 },
 				{ 3470, 3 },
 			},
 		},
 		[8368] = { --Blacksmithing: Ironforge Gauntlets 1.18
+			tools = { 5956 },
 			item = 6733,
 			reagents = {
 				{ 2841, 8 },
@@ -4889,9 +4936,9 @@ AtlasTW.SpellDB = {
 		[8760] = {
 			item = 7048,
 			reagents = {
-				{ 4305, 3 },
-				{ 3182 },
-				{ 2321, 2 },
+				{ 4305, 2 },
+				{ 6260, 2 },
+				{ 2321 },
 			},
 		},
 		[8762] = {
@@ -4921,9 +4968,9 @@ AtlasTW.SpellDB = {
 		},
 		[8768] = {
 			requires = L["Anvil"],
+			quantity = 2,
 			tools = { 5956 },
 			item = 7071,
-			quantity = 2,
 			reagents = {
 				{ 3575 },
 			},
@@ -4985,7 +5032,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 4305, 3 },
 				{ 4234, 2 },
-				{ 929,  4 },
+				{ 929, 4 },
 				{ 2321 },
 			},
 		},
@@ -5026,7 +5073,7 @@ AtlasTW.SpellDB = {
 			item = 7059,
 			reagents = {
 				{ 4305, 5 },
-				{ 6271, 2 },
+				{ 6371, 2 },
 				{ 2604, 2 },
 				{ 4291, 2 },
 			},
@@ -5097,8 +5144,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 10026 },
 				{ 10559, 2 },
-				{ 4234,  4 },
-				{ 9061,  2 },
+				{ 4234, 4 },
+				{ 9061, 2 },
 				{ 10560 },
 			},
 		},
@@ -5147,7 +5194,7 @@ AtlasTW.SpellDB = {
 		[9068] = {
 			item = 7282,
 			reagents = {
-				{ 23180 },
+				{ 2318, 10 },
 				{ 4231 },
 				{ 2321 },
 			},
@@ -5155,7 +5202,7 @@ AtlasTW.SpellDB = {
 		[9070] = {
 			item = 7283,
 			reagents = {
-				{ 72862 },
+				{ 7286, 12 },
 				{ 2319, 4 },
 				{ 2321 },
 			},
@@ -5171,7 +5218,7 @@ AtlasTW.SpellDB = {
 		[9074] = {
 			item = 7285,
 			reagents = {
-				{ 2357 },
+				{ 2457 },
 				{ 2319, 6 },
 				{ 2321 },
 			},
@@ -5203,7 +5250,7 @@ AtlasTW.SpellDB = {
 		[9148] = {
 			item = 7358,
 			reagents = {
-				{ 23190 },
+				{ 2319, 10 },
 				{ 5373, 2 },
 				{ 2321, 2 },
 			},
@@ -5211,7 +5258,7 @@ AtlasTW.SpellDB = {
 		[9149] = {
 			item = 7359,
 			reagents = {
-				{ 23192 },
+				{ 2319, 12 },
 				{ 7067, 2 },
 				{ 2997, 2 },
 				{ 2321, 2 },
@@ -5234,7 +5281,7 @@ AtlasTW.SpellDB = {
 		[9195] = {
 			item = 7373,
 			reagents = {
-				{ 42340 },
+				{ 4234, 10 },
 				{ 2325 },
 				{ 2321, 2 },
 			},
@@ -5242,7 +5289,7 @@ AtlasTW.SpellDB = {
 		[9196] = {
 			item = 7374,
 			reagents = {
-				{ 42340 },
+				{ 4234, 10 },
 				{ 3824 },
 				{ 2321, 2 },
 			},
@@ -5251,23 +5298,23 @@ AtlasTW.SpellDB = {
 			item = 7375,
 			reagents = {
 				{ 7392, 4 },
-				{ 42340 },
+				{ 4234, 10 },
 				{ 2321, 2 },
 			},
 		},
 		[9198] = {
 			item = 7377,
 			reagents = {
-				{ 4236, 2 },
-				{ 42342 },
-				{ 3824 },
-				{ 2321 },
+				{ 4234, 6 },
+				{ 7067, 2 },
+				{ 7070, 2 },
+				{ 2321, 2 },
 			},
 		},
 		[9201] = {
 			item = 7378,
 			reagents = {
-				{ 42346 },
+				{ 4234, 16 },
 				{ 2325 },
 				{ 4291, 2 },
 			},
@@ -5283,7 +5330,7 @@ AtlasTW.SpellDB = {
 		[9206] = {
 			item = 7387,
 			reagents = {
-				{ 42340 },
+				{ 4234, 10 },
 				{ 4305, 2 },
 				{ 2325, 2 },
 				{ 7071 },
@@ -5301,8 +5348,8 @@ AtlasTW.SpellDB = {
 		[9208] = {
 			item = 7391,
 			reagents = {
-				{ 42340 },
-				{ 2359, 2 },
+				{ 4234, 10 },
+				{ 2459, 2 },
 				{ 4337, 2 },
 				{ 4291 },
 			},
@@ -5314,14 +5361,14 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 2841, 6 },
 				{ 4375 },
-				{ 814,  2 },
+				{ 814, 2 },
 				{ 818 },
 				{ 774 },
 			},
 		},
 		[9271] = {
-			item = 6533,
 			quantity = 3,
+			item = 6533,
 			reagents = {
 				{ 2841, 2 },
 				{ 6530 },
@@ -5333,7 +5380,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 3575, 6 },
 				{ 4375, 2 },
-				{ 814,  2 },
+				{ 814, 2 },
 				{ 4306, 2 },
 				{ 1210, 2 },
 				{ 7191 },
@@ -5372,7 +5419,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7915,
 			reagents = {
-				{ 35750 },
+				{ 3575, 10 },
 				{ 5637, 2 },
 				{ 5635, 2 },
 			},
@@ -5382,9 +5429,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7916,
 			reagents = {
-				{ 35752 },
+				{ 3575, 12 },
 				{ 5637, 4 },
-				{ 818,  4 },
+				{ 818, 4 },
 				{ 3486, 2 },
 			},
 		},
@@ -5393,7 +5440,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7917,
 			reagents = {
-				{ 35754 },
+				{ 3575, 14 },
 				{ 3486, 3 },
 				{ 5637, 2 },
 			},
@@ -5403,7 +5450,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7963,
 			reagents = {
-				{ 38596 },
+				{ 3859, 16 },
 				{ 3486, 3 },
 			},
 		},
@@ -5449,7 +5496,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7920,
 			reagents = {
-				{ 38602 },
+				{ 3860, 12 },
 			},
 		},
 		[9933] = {
@@ -5457,7 +5504,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7921,
 			reagents = {
-				{ 38600 },
+				{ 3860, 10 },
 				{ 1705, 2 },
 			},
 		},
@@ -5466,7 +5513,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7922,
 			reagents = {
-				{ 38594 },
+				{ 3859, 14 },
 				{ 7966 },
 			},
 		},
@@ -5504,7 +5551,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7926,
 			reagents = {
-				{ 38602 },
+				{ 3860, 12 },
 				{ 6037 },
 				{ 7966 },
 				{ 7909 },
@@ -5515,7 +5562,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7927,
 			reagents = {
-				{ 38600 },
+				{ 3860, 10 },
 				{ 4338, 6 },
 				{ 6037 },
 				{ 7966 },
@@ -5526,7 +5573,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7928,
 			reagents = {
-				{ 38602 },
+				{ 3860, 12 },
 				{ 6037 },
 				{ 4304, 6 },
 			},
@@ -5536,7 +5583,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7938,
 			reagents = {
-				{ 38600 },
+				{ 3860, 10 },
 				{ 6037, 8 },
 				{ 7909, 3 },
 				{ 3864, 3 },
@@ -5549,7 +5596,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7929,
 			reagents = {
-				{ 38602 },
+				{ 3860, 12 },
 				{ 7067 },
 			},
 		},
@@ -5558,7 +5605,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7930,
 			reagents = {
-				{ 38606 },
+				{ 3860, 16 },
 			},
 		},
 		[9961] = {
@@ -5566,7 +5613,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7931,
 			reagents = {
-				{ 38600 },
+				{ 3860, 10 },
 				{ 4338, 6 },
 			},
 		},
@@ -5584,7 +5631,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7932,
 			reagents = {
-				{ 38604 },
+				{ 3860, 14 },
 				{ 4304, 4 },
 				{ 3864, 4 },
 			},
@@ -5594,7 +5641,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7933,
 			reagents = {
-				{ 38604 },
+				{ 3860, 14 },
 				{ 4304, 4 },
 			},
 		},
@@ -5603,7 +5650,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7934,
 			reagents = {
-				{ 38604 },
+				{ 3860, 14 },
 				{ 7909 },
 			},
 		},
@@ -5612,7 +5659,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7935,
 			reagents = {
-				{ 38606 },
+				{ 3860, 16 },
 				{ 6037, 6 },
 				{ 7077 },
 				{ 7966 },
@@ -5623,7 +5670,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7939,
 			reagents = {
-				{ 38602 },
+				{ 3860, 12 },
 				{ 6037, 24 },
 				{ 7910, 4 },
 				{ 7971, 4 },
@@ -5635,7 +5682,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7936,
 			reagents = {
-				{ 38604 },
+				{ 3860, 14 },
 				{ 6037, 2 },
 				{ 4304, 4 },
 				{ 7966 },
@@ -5647,7 +5694,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7937,
 			reagents = {
-				{ 38606 },
+				{ 3860, 16 },
 				{ 6037, 2 },
 				{ 7971 },
 				{ 7966 },
@@ -5658,7 +5705,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7955,
 			reagents = {
-				{ 28400 },
+				{ 2840, 10 },
 				{ 2880, 2 },
 				{ 3470 },
 				{ 2318 },
@@ -5679,7 +5726,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7957,
 			reagents = {
-				{ 28412 },
+				{ 2841, 12 },
 				{ 3466, 2 },
 				{ 2319, 2 },
 			},
@@ -5689,7 +5736,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7958,
 			reagents = {
-				{ 28414 },
+				{ 2841, 14 },
 				{ 3466 },
 				{ 2319, 2 },
 			},
@@ -5699,7 +5746,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7941,
 			reagents = {
-				{ 38602 },
+				{ 3860, 12 },
 				{ 3864, 2 },
 				{ 7966 },
 				{ 4234, 4 },
@@ -5710,7 +5757,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7942,
 			reagents = {
-				{ 38606 },
+				{ 3860, 16 },
 				{ 7909, 2 },
 				{ 7966 },
 				{ 4304, 4 },
@@ -5721,7 +5768,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7943,
 			reagents = {
-				{ 38604 },
+				{ 3860, 14 },
 				{ 6037, 4 },
 				{ 7966 },
 				{ 4304, 2 },
@@ -5732,7 +5779,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7945,
 			reagents = {
-				{ 38606 },
+				{ 3860, 16 },
 				{ 7971 },
 				{ 1210, 4 },
 				{ 7966 },
@@ -5758,7 +5805,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7944,
 			reagents = {
-				{ 38604 },
+				{ 3860, 14 },
 				{ 7909 },
 				{ 1705, 2 },
 				{ 1206, 2 },
@@ -5785,7 +5832,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7946,
 			reagents = {
-				{ 38608 },
+				{ 3860, 18 },
 				{ 7075, 2 },
 				{ 7966 },
 				{ 4304, 4 },
@@ -5797,8 +5844,8 @@ AtlasTW.SpellDB = {
 			item = 7959,
 			reagents = {
 				{ 3860, 28 },
-				{ 79720 },
-				{ 60370 },
+				{ 7972, 10 },
+				{ 6037, 10 },
 				{ 7966, 6 },
 				{ 4304, 6 },
 			},
@@ -5808,7 +5855,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 7947,
 			reagents = {
-				{ 38602 },
+				{ 3860, 12 },
 				{ 6037, 6 },
 				{ 7910, 2 },
 				{ 7966 },
@@ -5821,7 +5868,7 @@ AtlasTW.SpellDB = {
 			item = 7960,
 			reagents = {
 				{ 3860, 30 },
-				{ 60376 },
+				{ 6037, 16 },
 				{ 7910, 6 },
 				{ 7081, 4 },
 				{ 7966, 8 },
@@ -5861,7 +5908,7 @@ AtlasTW.SpellDB = {
 		[10490] = {
 			item = 8174,
 			reagents = {
-				{ 42342 },
+				{ 4234, 12 },
 				{ 4236, 2 },
 				{ 4291, 2 },
 			},
@@ -5892,7 +5939,7 @@ AtlasTW.SpellDB = {
 			item = 8189,
 			reagents = {
 				{ 4304, 6 },
-				{ 81672 },
+				{ 8167, 12 },
 				{ 8343 },
 			},
 		},
@@ -5908,14 +5955,14 @@ AtlasTW.SpellDB = {
 			item = 8198,
 			reagents = {
 				{ 4304, 8 },
-				{ 81672 },
+				{ 8167, 12 },
 				{ 8343 },
 			},
 		},
 		[10520] = {
 			item = 8200,
 			reagents = {
-				{ 43040 },
+				{ 4304, 10 },
 				{ 8151, 4 },
 				{ 8343 },
 			},
@@ -5923,16 +5970,16 @@ AtlasTW.SpellDB = {
 		[10525] = {
 			item = 8203,
 			reagents = {
-				{ 43042 },
-				{ 81512 },
+				{ 4304, 12 },
+				{ 8154, 12 },
 				{ 4291, 4 },
 			},
 		},
 		[10529] = {
-			item = 8210,
 			extra = Colors.GREEN .. L["<Random enchantment>"],
+			item = 8210,
 			reagents = {
-				{ 43040 },
+				{ 4304, 10 },
 				{ 8153 },
 				{ 8172 },
 			},
@@ -5948,8 +5995,8 @@ AtlasTW.SpellDB = {
 		[10533] = {
 			item = 8205,
 			reagents = {
-				{ 43040 },
-				{ 8151, 4 },
+				{ 4304, 10 },
+				{ 8154, 4 },
 				{ 4291, 2 },
 			},
 		},
@@ -5962,19 +6009,19 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[10544] = {
-			item = 8211,
 			extra = Colors.GREEN .. L["<Random enchantment>"],
+			item = 8211,
 			reagents = {
-				{ 43042 },
+				{ 4304, 12 },
 				{ 8153, 2 },
 				{ 8172 },
 			},
 		},
 		[10546] = {
-			item = 8214,
 			extra = Colors.GREEN .. L["<Random enchantment>"],
+			item = 8214,
 			reagents = {
-				{ 43040 },
+				{ 4304, 10 },
 				{ 8153, 2 },
 				{ 8172 },
 			},
@@ -5982,21 +6029,21 @@ AtlasTW.SpellDB = {
 		[10548] = {
 			item = 8193,
 			reagents = {
-				{ 43044 },
+				{ 4304, 14 },
 				{ 4291, 4 },
 			},
 		},
 		[10550] = {
 			item = 8195,
 			reagents = {
-				{ 43042 },
+				{ 4304, 12 },
 				{ 4291, 4 },
 			},
 		},
 		[10552] = {
 			item = 8191,
 			reagents = {
-				{ 43044 },
+				{ 4304, 14 },
 				{ 8167, 24 },
 				{ 8343 },
 			},
@@ -6004,15 +6051,15 @@ AtlasTW.SpellDB = {
 		[10554] = {
 			item = 8209,
 			reagents = {
-				{ 43042 },
-				{ 81542 },
+				{ 4304, 12 },
+				{ 8154, 12 },
 				{ 4291, 6 },
 			},
 		},
 		[10556] = {
 			item = 8185,
 			reagents = {
-				{ 43044 },
+				{ 4304, 14 },
 				{ 8167, 28 },
 				{ 8343 },
 			},
@@ -6020,14 +6067,14 @@ AtlasTW.SpellDB = {
 		[10558] = {
 			item = 8197,
 			reagents = {
-				{ 43046 },
+				{ 4304, 16 },
 				{ 8343, 2 },
 			},
 		},
 		[10560] = {
 			item = 8202,
 			reagents = {
-				{ 43040 },
+				{ 4304, 10 },
 				{ 8152, 6 },
 				{ 8343, 2 },
 			},
@@ -6035,7 +6082,7 @@ AtlasTW.SpellDB = {
 		[10562] = {
 			item = 8216,
 			reagents = {
-				{ 43044 },
+				{ 4304, 14 },
 				{ 8152, 4 },
 				{ 8343, 2 },
 			},
@@ -6043,16 +6090,16 @@ AtlasTW.SpellDB = {
 		[10564] = {
 			item = 8207,
 			reagents = {
-				{ 43042 },
-				{ 81546 },
+				{ 4304, 12 },
+				{ 8154, 16 },
 				{ 8343, 2 },
 			},
 		},
 		[10566] = {
-			item = 8213,
 			extra = Colors.GREEN .. L["<Random enchantment>"],
+			item = 8213,
 			reagents = {
-				{ 43044 },
+				{ 4304, 14 },
 				{ 8153, 4 },
 				{ 8172, 2 },
 			},
@@ -6060,7 +6107,7 @@ AtlasTW.SpellDB = {
 		[10568] = {
 			item = 8206,
 			reagents = {
-				{ 43044 },
+				{ 4304, 14 },
 				{ 8154, 8 },
 				{ 8343, 2 },
 			},
@@ -6068,25 +6115,25 @@ AtlasTW.SpellDB = {
 		[10570] = {
 			item = 8208,
 			reagents = {
-				{ 43040 },
+				{ 4304, 10 },
 				{ 8154, 20 },
 				{ 8343, 2 },
 			},
 		},
 		[10572] = {
-			item = 8212,
 			extra = Colors.GREEN .. L["<Random enchantment>"],
+			item = 8212,
 			reagents = {
-				{ 43046 },
+				{ 4304, 16 },
 				{ 8153, 6 },
 				{ 8172, 2 },
 			},
 		},
 		[10574] = {
-			item = 8215,
 			extra = Colors.GREEN .. L["<Random enchantment>"],
+			item = 8215,
 			reagents = {
-				{ 43046 },
+				{ 4304, 16 },
 				{ 8153, 6 },
 				{ 8172, 2 },
 			},
@@ -6095,7 +6142,7 @@ AtlasTW.SpellDB = {
 			item = 8347,
 			reagents = {
 				{ 4304, 24 },
-				{ 81652 },
+				{ 8165, 12 },
 				{ 8343, 4 },
 				{ 8172, 2 },
 			},
@@ -6103,7 +6150,7 @@ AtlasTW.SpellDB = {
 		[10621] = {
 			item = 8345,
 			reagents = {
-				{ 43048 },
+				{ 4304, 18 },
 				{ 8368, 2 },
 				{ 8146, 8 },
 				{ 8343, 4 },
@@ -6416,7 +6463,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 9366,
 			reagents = {
-				{ 38590 },
+				{ 3859, 10 },
 				{ 3577, 4 },
 				{ 3486, 4 },
 				{ 3864 },
@@ -6476,7 +6523,7 @@ AtlasTW.SpellDB = {
 		[12052] = {
 			item = 10002,
 			reagents = {
-				{ 4339,  3 },
+				{ 4339, 3 },
 				{ 10285, 2 },
 				{ 8343 },
 			},
@@ -6491,7 +6538,7 @@ AtlasTW.SpellDB = {
 		[12055] = {
 			item = 10004,
 			reagents = {
-				{ 4339,  3 },
+				{ 4339, 3 },
 				{ 10285, 2 },
 				{ 8343 },
 			},
@@ -6570,10 +6617,10 @@ AtlasTW.SpellDB = {
 		[12067] = {
 			item = 10019,
 			reagents = {
-				{ 4339,  4 },
-				{ 8153,  4 },
+				{ 4339, 4 },
+				{ 8153, 4 },
 				{ 10286, 2 },
-				{ 8343,  2 },
+				{ 8343, 2 },
 			},
 		},
 		[12068] = { --1.18 Tailoring: Stormcloth Vest
@@ -6595,18 +6642,18 @@ AtlasTW.SpellDB = {
 		[12070] = {
 			item = 10021,
 			reagents = {
-				{ 4339,  6 },
-				{ 8153,  6 },
+				{ 4339, 6 },
+				{ 8153, 6 },
 				{ 10286, 2 },
-				{ 8343,  2 },
+				{ 8343, 2 },
 			},
 		},
 		[12071] = {
 			item = 10023,
 			reagents = {
-				{ 4339,  5 },
+				{ 4339, 5 },
 				{ 10285, 5 },
-				{ 8343,  2 },
+				{ 8343, 2 },
 			},
 		},
 		[12072] = {
@@ -6642,9 +6689,9 @@ AtlasTW.SpellDB = {
 		[12076] = {
 			item = 10028,
 			reagents = {
-				{ 4339,  5 },
+				{ 4339, 5 },
 				{ 10285, 4 },
-				{ 8343,  2 },
+				{ 8343, 2 },
 			},
 		},
 		[12077] = {
@@ -6660,8 +6707,8 @@ AtlasTW.SpellDB = {
 			item = 10029,
 			reagents = {
 				{ 4339, 4 },
-				{ 2604 },
-				{ 8343 },
+				{ 2604, 2 },
+				{ 8343, 3 },
 			},
 		},
 		[12079] = {
@@ -6691,10 +6738,10 @@ AtlasTW.SpellDB = {
 		[12082] = {
 			item = 10031,
 			reagents = {
-				{ 4339,  6 },
+				{ 4339, 6 },
 				{ 10285, 6 },
-				{ 8343,  3 },
-				{ 4304,  2 },
+				{ 8343, 3 },
+				{ 4304, 2 },
 			},
 		},
 		[12083] = { --1.18 Tailoring: Stormcloth Headband
@@ -6717,14 +6764,13 @@ AtlasTW.SpellDB = {
 			item = 10034,
 			reagents = {
 				{ 4339, 4 },
-				{ 2604, 2 },
 				{ 8343, 2 },
 			},
 		},
 		[12087] = { --1.18 Tailoring: Stormcloth Shoulders
 			item = 10038,
 			reagents = {
-				{ 4339, 6 },
+				{ 4339, 5 },
 				{ 7079, 6 },
 				{ 8343, 3 },
 			},
@@ -6732,9 +6778,9 @@ AtlasTW.SpellDB = {
 		[12086] = {
 			item = 10025,
 			reagents = {
-				{ 4339,  2 },
+				{ 4339, 2 },
 				{ 10285, 8 },
-				{ 8343,  3 },
+				{ 8343, 2 },
 			},
 		},
 		[12088] = {
@@ -6773,10 +6819,10 @@ AtlasTW.SpellDB = {
 		[12092] = {
 			item = 10041,
 			reagents = {
-				{ 4339,  8 },
-				{ 8153,  4 },
+				{ 4339, 8 },
+				{ 8153, 4 },
 				{ 10286, 2 },
-				{ 8343,  3 },
+				{ 8343, 3 },
 				{ 6037 },
 				{ 1529 },
 			},
@@ -6793,7 +6839,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 10423,
 			reagents = {
-				{ 28412 },
+				{ 2841, 12 },
 				{ 2842, 4 },
 				{ 3478, 2 },
 			},
@@ -6808,9 +6854,9 @@ AtlasTW.SpellDB = {
 		},
 		[12584] = {
 			requires = L["Anvil"],
+			quantity = 3,
 			tools = { 5956, 6219 },
 			item = 10558,
-			quantity = 3,
 			reagents = {
 				{ 3577 },
 			},
@@ -6822,15 +6868,15 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[12586] = {
-			item = 10507,
 			quantity = 2,
+			item = 10507,
 			reagents = {
 				{ 10505 },
 				{ 4306 },
 			},
 		},
 		[12587] = {
-			tools = { 62190498 },
+			tools = { 6219, 10498 },
 			item = 10499,
 			reagents = {
 				{ 4234, 6 },
@@ -6864,7 +6910,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[12594] = {
-			tools = { 62190498 },
+			tools = { 6219, 10498 },
 			item = 10500,
 			reagents = {
 				{ 4385 },
@@ -6887,9 +6933,9 @@ AtlasTW.SpellDB = {
 		},
 		[12596] = {
 			requires = L["Anvil"],
+			quantity = 200,
 			tools = { 5956 },
 			item = 10512,
-			quantity = 200,
 			reagents = {
 				{ 3860 },
 				{ 10505 },
@@ -6915,9 +6961,9 @@ AtlasTW.SpellDB = {
 		},
 		[12603] = {
 			requires = L["Anvil"],
+			quantity = 3,
 			tools = { 5956, 6219 },
 			item = 10514,
-			quantity = 3,
 			reagents = {
 				{ 10561 },
 				{ 10560 },
@@ -6925,7 +6971,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[12607] = {
-			tools = { 62190498 },
+			tools = { 6219, 10498 },
 			item = 10501,
 			reagents = {
 				{ 4304, 4 },
@@ -6949,12 +6995,12 @@ AtlasTW.SpellDB = {
 				{ 10559, 2 },
 				{ 10560 },
 				{ 4400 },
-				{ 3860,  6 },
-				{ 3864,  2 },
+				{ 3860, 6 },
+				{ 3864, 2 },
 			},
 		},
 		[12615] = {
-			tools = { 62190498 },
+			tools = { 6219, 10498 },
 			item = 10502,
 			reagents = {
 				{ 4304, 4 },
@@ -6962,10 +7008,10 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[12616] = {
-			tools = { 62190498 },
+			tools = { 6219, 10498 },
 			item = 10518,
 			reagents = {
-				{ 4339,  4 },
+				{ 4339, 4 },
 				{ 10285, 2 },
 				{ 10560 },
 				{ 10505, 4 },
@@ -6979,12 +7025,12 @@ AtlasTW.SpellDB = {
 				{ 3860, 8 },
 				{ 10561 },
 				{ 6037 },
-				{ 818,  4 },
-				{ 774,  4 },
+				{ 818, 4 },
+				{ 774, 4 },
 			},
 		},
 		[12618] = {
-			tools = { 62190498 },
+			tools = { 6219, 10498 },
 			item = 10503,
 			reagents = {
 				{ 4304, 6 },
@@ -6993,9 +7039,9 @@ AtlasTW.SpellDB = {
 		},
 		[12619] = {
 			requires = L["Anvil"],
+			quantity = 4,
 			tools = { 5956, 6219 },
 			item = 10562,
-			quantity = 4,
 			reagents = {
 				{ 10561, 2 },
 				{ 10560 },
@@ -7014,24 +7060,24 @@ AtlasTW.SpellDB = {
 		},
 		[12621] = {
 			requires = L["Anvil"],
+			quantity = 200,
 			tools = { 5956 },
 			item = 10513,
-			quantity = 200,
 			reagents = {
-				{ 3860,  2 },
+				{ 3860, 2 },
 				{ 10505, 2 },
 			},
 		},
 		[12622] = {
-			tools = { 62190498 },
-			item = 10504,
 			extra = Colors.GREEN .. L["<Random enchantment>"],
+			tools = { 6219, 10498 },
+			item = 10504,
 			reagents = {
-				{ 4304,  8 },
-				{ 1529,  3 },
-				{ 7909,  3 },
+				{ 4304, 8 },
+				{ 1529, 3 },
+				{ 7909, 3 },
 				{ 10286, 2 },
-				{ 8153,  2 },
+				{ 8153, 2 },
 			},
 		},
 		[12624] = {
@@ -7039,7 +7085,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956, 6219 },
 			item = 10576,
 			reagents = {
-				{ 38604 },
+				{ 3860, 14 },
 				{ 7077, 4 },
 				{ 6037, 4 },
 				{ 9060, 2 },
@@ -7056,12 +7102,12 @@ AtlasTW.SpellDB = {
 		},
 		[12716] = {
 			requires = L["Anvil"],
+			extra = Colors.WHITE .. "6 " .. L["Charges"],
 			tools = { 5956, 6219 },
 			item = 10577,
-			extra = Colors.WHITE .. "6 " .. L["Charges"],
 			reagents = {
 				{ 10559, 2 },
-				{ 3860,  4 },
+				{ 3860, 4 },
 				{ 10505, 5 },
 				{ 10558 },
 				{ 7068 },
@@ -7088,6 +7134,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[12722] = { --1.18 Engineering: Goblin Radio
+			tools = { 5956, 6219 },
 			item = 10585,
 			reagents = {
 				{ 10561 },
@@ -7098,9 +7145,9 @@ AtlasTW.SpellDB = {
 		},
 		[12754] = {
 			requires = L["Anvil"],
+			quantity = 2,
 			tools = { 5956, 6219 },
 			item = 10586,
-			quantity = 2,
 			reagents = {
 				{ 10561 },
 				{ 9061 },
@@ -7115,9 +7162,9 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 10561, 2 },
 				{ 10505, 4 },
-				{ 6037,  6 },
+				{ 6037, 6 },
 				{ 10560 },
-				{ 4407,  2 },
+				{ 4407, 2 },
 			},
 		},
 		[12758] = {
@@ -7139,7 +7186,7 @@ AtlasTW.SpellDB = {
 				{ 10559, 2 },
 				{ 10560 },
 				{ 12808 },
-				{ 7972,  4 },
+				{ 7972, 4 },
 				{ 9060 },
 			},
 		},
@@ -7159,14 +7206,14 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[12897] = {
-			tools = { 62190498 },
+			tools = { 6219, 10498 },
 			item = 10545,
 			reagents = {
 				{ 10500 },
 				{ 10559 },
 				{ 10558, 2 },
-				{ 8151,  2 },
-				{ 4234,  2 },
+				{ 8151, 2 },
+				{ 4234, 2 },
 			},
 		},
 		[12899] = {
@@ -7188,9 +7235,9 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 10559 },
 				{ 10285, 2 },
-				{ 4337,  4 },
+				{ 4337, 4 },
 				{ 10505, 2 },
-				{ 3860,  4 },
+				{ 3860, 4 },
 			},
 		},
 		[12903] = {
@@ -7212,9 +7259,9 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 10026 },
 				{ 10559, 2 },
-				{ 4234,  4 },
+				{ 4234, 4 },
 				{ 10505, 8 },
-				{ 4389,  4 },
+				{ 4389, 4 },
 			},
 		},
 		[12906] = {
@@ -7235,7 +7282,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956, 6219 },
 			item = 10726,
 			reagents = {
-				{ 38600 },
+				{ 3860, 10 },
 				{ 6037, 4 },
 				{ 10558 },
 				{ 7910, 2 },
@@ -7248,16 +7295,16 @@ AtlasTW.SpellDB = {
 			item = 10727,
 			reagents = {
 				{ 10559, 2 },
-				{ 9061,  4 },
-				{ 3860,  6 },
-				{ 6037,  6 },
+				{ 9061, 4 },
+				{ 3860, 6 },
+				{ 6037, 6 },
 				{ 10560 },
 			},
 		},
 		[13028] = {
 			requires = L["Cooking Fire"],
-			item = 10841,
 			quantity = 4,
+			item = 10841,
 			reagents = {
 				{ 3821 },
 				{ 159 },
@@ -7297,10 +7344,10 @@ AtlasTW.SpellDB = {
 		},
 		[13240] = {
 			requires = L["Anvil"],
-			tools = { 5956, 6219 },
 			text = LS["Reloads an empty Goblin mortar."],
-			item = 10577,
 			extra = Colors.WHITE .. "6 " .. L["Charges"],
+			tools = { 5956, 6219 },
+			item = 10577,
 			reagents = {
 				{ 10577 },
 				{ 3860 },
@@ -7336,7 +7383,7 @@ AtlasTW.SpellDB = {
 		[14930] = {
 			item = 8217,
 			reagents = {
-				{ 43042 },
+				{ 4304, 12 },
 				{ 8172 },
 				{ 8949 },
 				{ 4291, 4 },
@@ -7345,7 +7392,7 @@ AtlasTW.SpellDB = {
 		[14932] = {
 			item = 8218,
 			reagents = {
-				{ 43040 },
+				{ 4304, 10 },
 				{ 8172 },
 				{ 8951 },
 				{ 4291, 6 },
@@ -7391,8 +7438,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 11608,
 			reagents = {
-				{ 113718 },
-				{ 7077,  4 },
+				{ 11371, 18 },
+				{ 7077, 4 },
 			},
 		},
 		[15293] = {
@@ -7400,8 +7447,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 11606,
 			reagents = {
-				{ 113710 },
-				{ 7077,  2 },
+				{ 11371, 10 },
+				{ 7077, 2 },
 			},
 		},
 		[15294] = {
@@ -7410,7 +7457,7 @@ AtlasTW.SpellDB = {
 			item = 11607,
 			reagents = {
 				{ 11371, 26 },
-				{ 7077,  4 },
+				{ 7077, 4 },
 			},
 		},
 		[15295] = {
@@ -7428,7 +7475,7 @@ AtlasTW.SpellDB = {
 			item = 11604,
 			reagents = {
 				{ 11371, 20 },
-				{ 7077,  8 },
+				{ 7077, 8 },
 			},
 		},
 		[15628] = {
@@ -7448,7 +7495,7 @@ AtlasTW.SpellDB = {
 			item = 11826,
 			reagents = {
 				{ 7075 },
-				{ 4389, 3 },
+				{ 4389, 2 },
 				{ 7191 },
 				{ 3860, 2 },
 				{ 6037 },
@@ -7487,8 +7534,8 @@ AtlasTW.SpellDB = {
 		},
 		[15861] = {
 			requires = L["Cooking Fire"],
-			item = 12212,
 			quantity = 2,
+			item = 12212,
 			reagents = {
 				{ 12202 },
 				{ 159 },
@@ -7522,8 +7569,8 @@ AtlasTW.SpellDB = {
 		},
 		[15910] = {
 			requires = L["Cooking Fire"],
-			item = 12215,
 			quantity = 2,
+			item = 12215,
 			reagents = {
 				{ 12204, 2 },
 				{ 3713 },
@@ -7559,7 +7606,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12259,
 			reagents = {
-				{ 38590 },
+				{ 3859, 10 },
 				{ 3466, 2 },
 				{ 1206 },
 				{ 7067 },
@@ -7571,7 +7618,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12260,
 			reagents = {
-				{ 38590 },
+				{ 3859, 10 },
 				{ 3577, 4 },
 				{ 7068, 2 },
 				{ 4234, 2 },
@@ -7609,7 +7656,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12405,
 			reagents = {
-				{ 123596 },
+				{ 12359, 16 },
 				{ 12361 },
 				{ 11188, 4 },
 			},
@@ -7619,7 +7666,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12406,
 			reagents = {
-				{ 123592 },
+				{ 12359, 12 },
 				{ 11186, 4 },
 			},
 		},
@@ -7628,7 +7675,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12408,
 			reagents = {
-				{ 123592 },
+				{ 12359, 12 },
 				{ 11184, 4 },
 			},
 		},
@@ -7637,8 +7684,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12416,
 			reagents = {
-				{ 123590 },
-				{ 7077,  2 },
+				{ 12359, 10 },
+				{ 7077, 2 },
 			},
 		},
 		[16646] = {
@@ -7647,8 +7694,8 @@ AtlasTW.SpellDB = {
 			item = 12428,
 			reagents = {
 				{ 12359, 24 },
-				{ 8170,  6 },
-				{ 3864,  2 },
+				{ 8170, 6 },
+				{ 3864, 2 },
 			},
 		},
 		[16647] = {
@@ -7657,7 +7704,7 @@ AtlasTW.SpellDB = {
 			item = 12424,
 			reagents = {
 				{ 12359, 22 },
-				{ 8170,  6 },
+				{ 8170, 6 },
 				{ 7909 },
 			},
 		},
@@ -7666,8 +7713,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12415,
 			reagents = {
-				{ 123598 },
-				{ 7077,  2 },
+				{ 12359, 18 },
+				{ 7077, 2 },
 				{ 7910 },
 			},
 		},
@@ -7688,7 +7735,7 @@ AtlasTW.SpellDB = {
 				{ 12359, 40 },
 				{ 12655, 2 },
 				{ 12803, 4 },
-				{ 8153,  4 },
+				{ 8153, 4 },
 				{ 12364 },
 			},
 		},
@@ -7699,7 +7746,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 4 },
 				{ 12644, 4 },
-				{ 7076,  2 },
+				{ 7076, 2 },
 			},
 		},
 		[16652] = {
@@ -7708,7 +7755,7 @@ AtlasTW.SpellDB = {
 			item = 12409,
 			reagents = {
 				{ 12359, 20 },
-				{ 8170,  8 },
+				{ 8170, 8 },
 				{ 11185, 4 },
 			},
 		},
@@ -7727,8 +7774,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12418,
 			reagents = {
-				{ 123598 },
-				{ 7077,  4 },
+				{ 12359, 18 },
+				{ 7077, 4 },
 			},
 		},
 		[16655] = {
@@ -7738,8 +7785,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 20 },
 				{ 12655, 6 },
-				{ 7078,  2 },
-				{ 7910,  4 },
+				{ 7078, 2 },
+				{ 7910, 4 },
 			},
 		},
 		[16656] = {
@@ -7747,8 +7794,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12419,
 			reagents = {
-				{ 123594 },
-				{ 7077,  4 },
+				{ 12359, 14 },
+				{ 7077, 4 },
 			},
 		},
 		[16657] = {
@@ -7767,7 +7814,7 @@ AtlasTW.SpellDB = {
 			item = 12427,
 			reagents = {
 				{ 12359, 34 },
-				{ 7910,  2 },
+				{ 7910, 2 },
 			},
 		},
 		[16659] = {
@@ -7775,8 +7822,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12417,
 			reagents = {
-				{ 123598 },
-				{ 7910,  4 },
+				{ 12359, 18 },
+				{ 7077, 4 },
 			},
 		},
 		[16660] = {
@@ -7787,7 +7834,7 @@ AtlasTW.SpellDB = {
 				{ 12359, 20 },
 				{ 12360, 4 },
 				{ 12364, 2 },
-				{ 7080,  2 },
+				{ 7080, 2 },
 			},
 		},
 		[16661] = {
@@ -7797,7 +7844,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 20 },
 				{ 12655, 4 },
-				{ 7080,  4 },
+				{ 7080, 4 },
 				{ 12361, 4 },
 			},
 		},
@@ -7816,7 +7863,7 @@ AtlasTW.SpellDB = {
 			item = 12422,
 			reagents = {
 				{ 12359, 40 },
-				{ 7910,  2 },
+				{ 7910, 2 },
 			},
 		},
 		[16664] = {
@@ -7826,7 +7873,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 20 },
 				{ 12360, 2 },
-				{ 3577,  6 },
+				{ 3577, 6 },
 			},
 		},
 		[16665] = {
@@ -7836,7 +7883,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 20 },
 				{ 12360, 2 },
-				{ 2842,  10 },
+				{ 2842, 10 },
 			},
 		},
 		[16667] = {
@@ -7845,9 +7892,9 @@ AtlasTW.SpellDB = {
 			item = 12628,
 			reagents = {
 				{ 12359, 40 },
-				{ 126620 },
+				{ 12662, 10 },
 				{ 12361, 4 },
-				{ 7910,  4 },
+				{ 7910, 4 },
 			},
 		},
 		[16724] = {
@@ -7857,8 +7904,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 20 },
 				{ 12655, 4 },
-				{ 6037,  6 },
-				{ 3577,  6 },
+				{ 6037, 6 },
+				{ 3577, 6 },
 				{ 12800, 2 },
 			},
 		},
@@ -7868,7 +7915,7 @@ AtlasTW.SpellDB = {
 			item = 12420,
 			reagents = {
 				{ 12359, 20 },
-				{ 7077,  4 },
+				{ 7077, 4 },
 			},
 		},
 		[16726] = {
@@ -7878,7 +7925,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 30 },
 				{ 12360, 2 },
-				{ 6037,  2 },
+				{ 6037, 2 },
 				{ 12364 },
 			},
 		},
@@ -7889,7 +7936,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 40 },
 				{ 12655, 4 },
-				{ 8168,  60 },
+				{ 8168, 60 },
 				{ 12799, 6 },
 				{ 12364, 2 },
 			},
@@ -7900,9 +7947,9 @@ AtlasTW.SpellDB = {
 			item = 12640,
 			reagents = {
 				{ 12359, 80 },
-				{ 123602 },
-				{ 8146,  40 },
-				{ 123610 },
+				{ 12360, 12 },
+				{ 8146, 40 },
+				{ 12361, 10 },
 				{ 12800, 4 },
 			},
 		},
@@ -7912,7 +7959,7 @@ AtlasTW.SpellDB = {
 			item = 12429,
 			reagents = {
 				{ 12359, 44 },
-				{ 7910,  2 },
+				{ 7910, 2 },
 			},
 		},
 		[16731] = {
@@ -7940,9 +7987,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12639,
 			reagents = {
-				{ 123605 },
+				{ 12360, 15 },
 				{ 12655, 20 },
-				{ 7076,  10 },
+				{ 7076, 10 },
 				{ 12361, 4 },
 				{ 12799, 4 },
 			},
@@ -7953,8 +8000,8 @@ AtlasTW.SpellDB = {
 			item = 12620,
 			reagents = {
 				{ 12360, 6 },
-				{ 126556 },
-				{ 7076,  6 },
+				{ 12655, 16 },
+				{ 7076, 6 },
 				{ 12799, 2 },
 				{ 12800 },
 			},
@@ -7964,9 +8011,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12619,
 			reagents = {
-				{ 123600 },
+				{ 12360, 10 },
 				{ 12655, 20 },
-				{ 7080,  6 },
+				{ 7080, 6 },
 				{ 12361, 2 },
 				{ 12364 },
 			},
@@ -7978,8 +8025,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12360, 8 },
 				{ 12655, 24 },
-				{ 7076,  4 },
-				{ 7080,  4 },
+				{ 7076, 4 },
+				{ 7080, 4 },
 				{ 12364, 2 },
 				{ 12800, 2 },
 			},
@@ -7989,19 +8036,20 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12641,
 			reagents = {
-				{ 12360, 30 },
-				{ 12655, 30 },
+				{ 12360, 20 },
+				{ 12655, 20 },
 				{ 12364, 6 },
 				{ 12800, 6 },
 			},
 		},
-		[16960] = {       --1.18 Blacksmithing: Thorium Greatsword
+		[16960] = { --1.18 Blacksmithing: Thorium Greatsword
 			requires = L["Anvil"], --TODO check
+			tools = { 5956 },
 			item = 12764,
 			reagents = {
-				{ 123596 },
+				{ 12359, 16 },
 				{ 12644, 2 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 			},
 		},
 		[16965] = {
@@ -8011,21 +8059,22 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 30 },
 				{ 12803, 6 },
-				{ 8153,  6 },
+				{ 8153, 6 },
 				{ 12799, 6 },
 				{ 12644, 2 },
-				{ 8170,  8 },
+				{ 8170, 8 },
 			},
 		},
-		[16967] = {       --1.18 Blacksmithing: Inlaid Thorium Hammer
+		[16967] = { --1.18 Blacksmithing: Inlaid Thorium Hammer
 			requires = L["Anvil"], --TODO check
+			tools = { 5956 },
 			item = 12772,
 			reagents = {
 				{ 12359, 30 },
-				{ 3577,  4 },
-				{ 6037,  2 },
+				{ 3577, 4 },
+				{ 6037, 2 },
 				{ 12361, 2 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 			},
 		},
 		[16969] = {
@@ -8036,7 +8085,7 @@ AtlasTW.SpellDB = {
 				{ 12359, 20 },
 				{ 12799, 2 },
 				{ 12644, 2 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 			},
 		},
 		[16970] = {
@@ -8046,10 +8095,10 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 30 },
 				{ 12655, 4 },
-				{ 7910,  4 },
+				{ 7910, 4 },
 				{ 12361, 4 },
 				{ 12644, 2 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 			},
 		},
 		[16971] = {
@@ -8059,7 +8108,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 40 },
 				{ 12644, 6 },
-				{ 8170,  6 },
+				{ 8170, 6 },
 			},
 		},
 		[16973] = {
@@ -8071,7 +8120,7 @@ AtlasTW.SpellDB = {
 				{ 12655, 6 },
 				{ 12364, 2 },
 				{ 12804, 4 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 			},
 		},
 		[16978] = {
@@ -8079,21 +8128,22 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12777,
 			reagents = {
-				{ 126550 },
-				{ 7078,  4 },
-				{ 7077,  4 },
+				{ 12655, 10 },
+				{ 7078, 4 },
+				{ 7077, 4 },
 				{ 12800, 2 },
 				{ 12644, 2 },
 			},
 		},
-		[16980] = {       --1.18 Blacksmithing: Rune Edge
+		[16980] = { --1.18 Blacksmithing: Rune Edge
 			requires = L["Anvil"], --TODO check
+			tools = { 5956 },
 			item = 12779,
 			reagents = {
 				{ 12359, 30 },
 				{ 12799, 2 },
 				{ 12644, 2 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 			},
 		},
 		[16983] = {
@@ -8115,9 +8165,9 @@ AtlasTW.SpellDB = {
 			item = 12792,
 			reagents = {
 				{ 12359, 30 },
-				{ 7077,  4 },
-				{ 7910,  4 },
-				{ 8170,  4 },
+				{ 7077, 4 },
+				{ 7910, 4 },
+				{ 8170, 4 },
 			},
 		},
 		[16985] = {
@@ -8127,11 +8177,11 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 40 },
 				{ 12360, 2 },
-				{ 126626 },
+				{ 12662, 16 },
 				{ 12808, 8 },
 				{ 12361, 2 },
 				{ 12644, 2 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 			},
 		},
 		[16986] = {
@@ -8139,12 +8189,11 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12795,
 			reagents = {
-				{ 126550 },
-				{ 123600 },
+				{ 12655, 10 },
+				{ 12360, 10 },
 				{ 12662, 8 },
-				{ 7910,  10 },
+				{ 7910, 10 },
 				{ 12644, 2 },
-				{ 8170,  8 },
 			},
 		},
 		[16987] = {
@@ -8165,10 +8214,10 @@ AtlasTW.SpellDB = {
 			item = 12796,
 			reagents = {
 				{ 12359, 50 },
-				{ 123605 },
+				{ 12360, 15 },
 				{ 12809, 4 },
 				{ 12810, 6 },
-				{ 7076,  10 },
+				{ 7076, 10 },
 			},
 		},
 		[16990] = {
@@ -8176,7 +8225,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12790,
 			reagents = {
-				{ 123605 },
+				{ 12360, 10 },
 				{ 12800, 8 },
 				{ 12811 },
 				{ 12799, 4 },
@@ -8190,8 +8239,8 @@ AtlasTW.SpellDB = {
 			item = 12798,
 			reagents = {
 				{ 12359, 40 },
-				{ 123602 },
-				{ 128080 },
+				{ 12360, 12 },
+				{ 12808, 10 },
 				{ 12364, 8 },
 				{ 12644, 2 },
 				{ 12810, 4 },
@@ -8202,10 +8251,10 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12797,
 			reagents = {
-				{ 123608 },
+				{ 12360, 18 },
 				{ 12361, 8 },
 				{ 12800, 8 },
-				{ 7080,  4 },
+				{ 7080, 4 },
 				{ 12644, 2 },
 				{ 12810, 4 },
 			},
@@ -8218,7 +8267,7 @@ AtlasTW.SpellDB = {
 				{ 12655, 20 },
 				{ 12364, 8 },
 				{ 12799, 8 },
-				{ 7076,  6 },
+				{ 7076, 6 },
 				{ 12810, 4 },
 			},
 		},
@@ -8227,7 +8276,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12784,
 			reagents = {
-				{ 12360, 20 },
+				{ 12360, 14 },
 				{ 12810, 6 },
 				{ 12644, 2 },
 			},
@@ -8237,10 +8286,10 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 12783,
 			reagents = {
-				{ 123600 },
-				{ 126550 },
+				{ 12360, 10 },
+				{ 12655, 10 },
 				{ 12810, 2 },
-				{ 7910,  6 },
+				{ 7910, 6 },
 				{ 12800, 6 },
 				{ 12799, 6 },
 				{ 12644, 4 },
@@ -8304,7 +8353,7 @@ AtlasTW.SpellDB = {
 		[17557] = {
 			item = 13453,
 			reagents = {
-				{ 8846,  2 },
+				{ 8846, 2 },
 				{ 13466, 2 },
 				{ 8925 },
 			},
@@ -8467,7 +8516,7 @@ AtlasTW.SpellDB = {
 			item = 13506,
 			reagents = {
 				{ 13423, 30 },
-				{ 134650 },
+				{ 13465, 10 },
 				{ 13468 },
 				{ 8925 },
 			},
@@ -8476,8 +8525,8 @@ AtlasTW.SpellDB = {
 			requires = LMD["Alchemy Lab"],
 			item = 13510,
 			reagents = {
-				{ 13464, 30 }, --Golden Sansam 1.18
-				{ 134230 },
+				{ 13464, 30 },
+				{ 13423, 10 },
 				{ 13468 },
 				{ 8925 },
 			},
@@ -8486,8 +8535,8 @@ AtlasTW.SpellDB = {
 			requires = LMD["Alchemy Lab"],
 			item = 13511,
 			reagents = {
-				{ 8838,  30 }, --Sungrass 1.18
-				{ 134670 },
+				{ 8838, 30 },
+				{ 13467, 10 },
 				{ 13468 },
 				{ 8925 },
 			},
@@ -8497,7 +8546,7 @@ AtlasTW.SpellDB = {
 			item = 13512,
 			reagents = {
 				{ 13463, 30 },
-				{ 134650 },
+				{ 13465, 10 },
 				{ 13468 },
 				{ 8925 },
 			},
@@ -8507,7 +8556,7 @@ AtlasTW.SpellDB = {
 			item = 13513,
 			reagents = {
 				{ 13467, 30 },
-				{ 134650 },
+				{ 13465, 10 },
 				{ 13468 },
 				{ 8925 },
 			},
@@ -8515,12 +8564,12 @@ AtlasTW.SpellDB = {
 		[17632] = {
 			item = 13503,
 			reagents = {
-				{ 7078,  8 },
-				{ 7076,  8 },
-				{ 7082,  8 },
-				{ 7080,  8 },
+				{ 7078, 8 },
+				{ 7076, 8 },
+				{ 7082, 8 },
+				{ 7080, 8 },
 				{ 12803, 8 },
-				{ 9262,  2 },
+				{ 9262, 2 },
 				{ 13468, 4 },
 			},
 		},
@@ -8619,7 +8668,7 @@ AtlasTW.SpellDB = {
 			item = 13869,
 			reagents = {
 				{ 14048, 5 },
-				{ 7079,  2 },
+				{ 7079, 2 },
 				{ 14341 },
 			},
 		},
@@ -8627,7 +8676,7 @@ AtlasTW.SpellDB = {
 			item = 13868,
 			reagents = {
 				{ 14048, 5 },
-				{ 7079,  2 },
+				{ 7079, 2 },
 				{ 14341 },
 			},
 		},
@@ -8635,7 +8684,7 @@ AtlasTW.SpellDB = {
 			item = 14046,
 			reagents = {
 				{ 14048, 5 },
-				{ 8170,  2 },
+				{ 8170, 2 },
 				{ 14341 },
 			},
 		},
@@ -8659,7 +8708,7 @@ AtlasTW.SpellDB = {
 			item = 14042,
 			reagents = {
 				{ 14048, 5 },
-				{ 7077,  3 },
+				{ 7077, 3 },
 				{ 14341 },
 			},
 		},
@@ -8675,7 +8724,7 @@ AtlasTW.SpellDB = {
 			item = 14143,
 			reagents = {
 				{ 14048, 3 },
-				{ 9210,  2 },
+				{ 9210, 2 },
 				{ 14227 },
 				{ 14341 },
 			},
@@ -8692,7 +8741,7 @@ AtlasTW.SpellDB = {
 			item = 14043,
 			reagents = {
 				{ 14048, 4 },
-				{ 7077,  3 },
+				{ 7077, 3 },
 				{ 14341 },
 			},
 		},
@@ -8700,7 +8749,7 @@ AtlasTW.SpellDB = {
 			item = 14142,
 			reagents = {
 				{ 14048, 4 },
-				{ 9210,  2 },
+				{ 9210, 2 },
 				{ 14227 },
 				{ 14341 },
 			},
@@ -8709,7 +8758,7 @@ AtlasTW.SpellDB = {
 			item = 14100,
 			reagents = {
 				{ 14048, 5 },
-				{ 3577,  2 },
+				{ 3577, 2 },
 				{ 14341 },
 			},
 		},
@@ -8717,7 +8766,7 @@ AtlasTW.SpellDB = {
 			item = 14101,
 			reagents = {
 				{ 14048, 4 },
-				{ 3577,  2 },
+				{ 3577, 2 },
 				{ 14341 },
 			},
 		},
@@ -8725,7 +8774,7 @@ AtlasTW.SpellDB = {
 			item = 14141,
 			reagents = {
 				{ 14048, 6 },
-				{ 9210,  4 },
+				{ 9210, 4 },
 				{ 14227 },
 				{ 14341 },
 			},
@@ -8734,7 +8783,7 @@ AtlasTW.SpellDB = {
 			item = 13863,
 			reagents = {
 				{ 14048, 4 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 				{ 14341 },
 			},
 		},
@@ -8758,7 +8807,7 @@ AtlasTW.SpellDB = {
 			item = 14103,
 			reagents = {
 				{ 14048, 4 },
-				{ 3577,  2 },
+				{ 3577, 2 },
 				{ 14341 },
 			},
 		},
@@ -8774,9 +8823,9 @@ AtlasTW.SpellDB = {
 			item = 14134,
 			reagents = {
 				{ 14048, 6 },
-				{ 7078,  4 },
-				{ 7077,  4 },
-				{ 7068,  4 },
+				{ 7078, 4 },
+				{ 7077, 4 },
+				{ 7068, 4 },
 				{ 14341 },
 			},
 		},
@@ -8785,7 +8834,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 14048, 4 },
 				{ 14227, 2 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 				{ 14341 },
 			},
 		},
@@ -8808,10 +8857,10 @@ AtlasTW.SpellDB = {
 		[18436] = {
 			item = 14136,
 			reagents = {
-				{ 140480 },
-				{ 142562 },
+				{ 14048, 10 },
+				{ 14256, 12 },
 				{ 12808, 4 },
-				{ 7080,  4 },
+				{ 7080, 4 },
 				{ 14341 },
 			},
 		},
@@ -8820,7 +8869,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 14048, 6 },
 				{ 14256, 4 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 				{ 14341 },
 			},
 		},
@@ -8836,7 +8885,7 @@ AtlasTW.SpellDB = {
 			item = 14104,
 			reagents = {
 				{ 14048, 6 },
-				{ 3577,  4 },
+				{ 3577, 4 },
 				{ 14227 },
 				{ 14341 },
 			},
@@ -8853,7 +8902,7 @@ AtlasTW.SpellDB = {
 			item = 14144,
 			reagents = {
 				{ 14048, 6 },
-				{ 9210,  4 },
+				{ 9210, 4 },
 				{ 14341 },
 			},
 		},
@@ -8910,7 +8959,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 14048, 7 },
 				{ 14227, 2 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 				{ 14341 },
 			},
 		},
@@ -8948,16 +8997,16 @@ AtlasTW.SpellDB = {
 				{ 14048, 7 },
 				{ 14256, 6 },
 				{ 12662, 4 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 				{ 14341, 2 },
 			},
 		},
 		[18454] = {
 			item = 14146,
 			reagents = {
-				{ 140480 },
-				{ 143420 },
-				{ 9210,  10 },
+				{ 14048, 10 },
+				{ 14342, 10 },
+				{ 9210, 10 },
 				{ 13926, 6 },
 				{ 12364, 6 },
 				{ 12810, 8 },
@@ -8968,7 +9017,7 @@ AtlasTW.SpellDB = {
 			item = 14156,
 			reagents = {
 				{ 14048, 8 },
-				{ 143422 },
+				{ 14342, 12 },
 				{ 14344, 2 },
 				{ 17012, 2 },
 				{ 14341, 2 },
@@ -8977,33 +9026,33 @@ AtlasTW.SpellDB = {
 		[18456] = {
 			item = 14154,
 			reagents = {
-				{ 140482 },
-				{ 143420 },
+				{ 14048, 12 },
+				{ 14342, 10 },
 				{ 12811, 4 },
 				{ 13926, 4 },
-				{ 9210,  10 },
+				{ 9210, 10 },
 				{ 14341, 2 },
 			},
 		},
 		[18457] = {
 			item = 14152,
 			reagents = {
-				{ 140482 },
-				{ 7078,  10 },
-				{ 7082,  10 },
-				{ 7076,  10 },
-				{ 7080,  10 },
+				{ 14048, 12 },
+				{ 7078, 10 },
+				{ 7082, 10 },
+				{ 7076, 10 },
+				{ 7080, 10 },
 				{ 14341, 2 },
 			},
 		},
 		[18458] = {
 			item = 14153,
 			reagents = {
-				{ 140482 },
+				{ 14048, 12 },
 				{ 12662, 20 },
 				{ 14256, 40 },
-				{ 7078,  12 },
-				{ 128082 },
+				{ 7078, 12 },
+				{ 12808, 12 },
 				{ 14341, 2 },
 			},
 		},
@@ -9036,7 +9085,7 @@ AtlasTW.SpellDB = {
 		[19048] = {
 			item = 15077,
 			reagents = {
-				{ 8170,  4 },
+				{ 8170, 4 },
 				{ 15408, 4 },
 				{ 14341 },
 			},
@@ -9052,7 +9101,7 @@ AtlasTW.SpellDB = {
 		[19050] = {
 			item = 15045,
 			reagents = {
-				{ 8170,  20 },
+				{ 8170, 20 },
 				{ 15412, 25 },
 				{ 14341, 2 },
 			},
@@ -9060,7 +9109,7 @@ AtlasTW.SpellDB = {
 		[19051] = {
 			item = 15076,
 			reagents = {
-				{ 8170,  6 },
+				{ 8170, 6 },
 				{ 15408, 6 },
 				{ 14341 },
 			},
@@ -9076,7 +9125,7 @@ AtlasTW.SpellDB = {
 		[19053] = {
 			item = 15074,
 			reagents = {
-				{ 8170,  6 },
+				{ 8170, 6 },
 				{ 15423, 6 },
 				{ 14341 },
 			},
@@ -9084,7 +9133,7 @@ AtlasTW.SpellDB = {
 		[19054] = {
 			item = 15047,
 			reagents = {
-				{ 8170,  40 },
+				{ 8170, 40 },
 				{ 15414, 30 },
 				{ 14341 },
 			},
@@ -9092,7 +9141,7 @@ AtlasTW.SpellDB = {
 		[19055] = {
 			item = 15091,
 			reagents = {
-				{ 8170,  10 },
+				{ 8170, 10 },
 				{ 14047, 6 },
 				{ 14341 },
 			},
@@ -9115,15 +9164,15 @@ AtlasTW.SpellDB = {
 		[19060] = {
 			item = 15046,
 			reagents = {
-				{ 8170,  20 },
+				{ 8170, 20 },
 				{ 15412, 25 },
-				{ 14341, 2 },
+				{ 14341 },
 			},
 		},
 		[19061] = {
 			item = 15061,
 			reagents = {
-				{ 8170,  12 },
+				{ 8170, 12 },
 				{ 12803, 4 },
 				{ 14341 },
 			},
@@ -9131,16 +9180,16 @@ AtlasTW.SpellDB = {
 		[19062] = {
 			item = 15067,
 			reagents = {
-				{ 8170,  24 },
+				{ 8170, 24 },
 				{ 15420, 80 },
-				{ 1529,  2 },
+				{ 1529, 2 },
 				{ 14341 },
 			},
 		},
 		[19063] = {
 			item = 15073,
 			reagents = {
-				{ 8170,  4 },
+				{ 8170, 4 },
 				{ 15423, 8 },
 				{ 14341 },
 			},
@@ -9148,7 +9197,7 @@ AtlasTW.SpellDB = {
 		[19064] = {
 			item = 15078,
 			reagents = {
-				{ 8170,  6 },
+				{ 8170, 6 },
 				{ 15408, 8 },
 				{ 14341 },
 			},
@@ -9156,7 +9205,7 @@ AtlasTW.SpellDB = {
 		[19065] = {
 			item = 15092,
 			reagents = {
-				{ 8170,  6 },
+				{ 8170, 6 },
 				{ 7971 },
 				{ 14047, 6 },
 				{ 14341 },
@@ -9165,7 +9214,7 @@ AtlasTW.SpellDB = {
 		[19066] = {
 			item = 15071,
 			reagents = {
-				{ 8170,  4 },
+				{ 8170, 4 },
 				{ 15422, 6 },
 				{ 14341 },
 			},
@@ -9173,7 +9222,7 @@ AtlasTW.SpellDB = {
 		[19067] = {
 			item = 15057,
 			reagents = {
-				{ 81706 },
+				{ 8170, 16 },
 				{ 7080, 2 },
 				{ 7082, 2 },
 				{ 14341 },
@@ -9182,15 +9231,15 @@ AtlasTW.SpellDB = {
 		[19068] = {
 			item = 15064,
 			reagents = {
-				{ 8170,  28 },
-				{ 154192 },
+				{ 8170, 28 },
+				{ 15419, 12 },
 				{ 14341 },
 			},
 		},
 		[19070] = {
 			item = 15082,
 			reagents = {
-				{ 8170,  6 },
+				{ 8170, 6 },
 				{ 15408, 8 },
 				{ 14341 },
 			},
@@ -9198,7 +9247,7 @@ AtlasTW.SpellDB = {
 		[19071] = {
 			item = 15086,
 			reagents = {
-				{ 81702 },
+				{ 8170, 12 },
 				{ 2325 },
 				{ 14341 },
 			},
@@ -9206,15 +9255,15 @@ AtlasTW.SpellDB = {
 		[19072] = {
 			item = 15093,
 			reagents = {
-				{ 8170,  12 },
-				{ 140470 },
+				{ 8170, 12 },
+				{ 14047, 10 },
 				{ 14341 },
 			},
 		},
 		[19073] = {
 			item = 15072,
 			reagents = {
-				{ 8170,  8 },
+				{ 8170, 8 },
 				{ 15423, 8 },
 				{ 14341 },
 			},
@@ -9222,7 +9271,7 @@ AtlasTW.SpellDB = {
 		[19074] = {
 			item = 15069,
 			reagents = {
-				{ 8170,  6 },
+				{ 8170, 6 },
 				{ 15422, 8 },
 				{ 14341 },
 			},
@@ -9230,8 +9279,8 @@ AtlasTW.SpellDB = {
 		[19075] = {
 			item = 15079,
 			reagents = {
-				{ 8170,  8 },
-				{ 154082 },
+				{ 8170, 8 },
+				{ 15408, 12 },
 				{ 14341 },
 			},
 		},
@@ -9247,7 +9296,7 @@ AtlasTW.SpellDB = {
 		[19077] = {
 			item = 15048,
 			reagents = {
-				{ 8170,  28 },
+				{ 8170, 28 },
 				{ 15415, 30 },
 				{ 15407 },
 				{ 14341 },
@@ -9256,7 +9305,7 @@ AtlasTW.SpellDB = {
 		[19078] = {
 			item = 15060,
 			reagents = {
-				{ 8170,  16 },
+				{ 8170, 16 },
 				{ 12803, 6 },
 				{ 15407 },
 				{ 14341 },
@@ -9265,7 +9314,7 @@ AtlasTW.SpellDB = {
 		[19079] = {
 			item = 15056,
 			reagents = {
-				{ 81706 },
+				{ 8170, 16 },
 				{ 7080, 3 },
 				{ 7082, 3 },
 				{ 15407 },
@@ -9275,40 +9324,40 @@ AtlasTW.SpellDB = {
 		[19080] = {
 			item = 15065,
 			reagents = {
-				{ 8170,  24 },
-				{ 154194 },
+				{ 8170, 24 },
+				{ 15419, 14 },
 				{ 14341 },
 			},
 		},
 		[19081] = {
 			item = 15075,
 			reagents = {
-				{ 81700 },
-				{ 12803 },
+				{ 8170, 10 },
+				{ 15423, 10 },
 				{ 14341 },
 			},
 		},
 		[19082] = {
 			item = 15094,
 			reagents = {
-				{ 8170,  14 },
-				{ 140470 },
+				{ 8170, 14 },
+				{ 14047, 10 },
 				{ 14341 },
 			},
 		},
 		[19083] = {
 			item = 15087,
 			reagents = {
-				{ 8170,  16 },
-				{ 154070 },
-				{ 2325,  3 },
+				{ 8170, 16 },
+				{ 15407 },
+				{ 2325, 3 },
 				{ 14341 },
 			},
 		},
 		[19084] = {
 			item = 15063,
 			reagents = {
-				{ 8170,  30 },
+				{ 8170, 30 },
 				{ 15417, 8 },
 				{ 14341 },
 			},
@@ -9316,8 +9365,8 @@ AtlasTW.SpellDB = {
 		[19085] = {
 			item = 15050,
 			reagents = {
-				{ 8170,  40 },
-				{ 15415, 60 },
+				{ 8170, 40 },
+				{ 15416, 60 },
 				{ 15407 },
 				{ 14341, 2 },
 			},
@@ -9325,8 +9374,8 @@ AtlasTW.SpellDB = {
 		[19086] = {
 			item = 15066,
 			reagents = {
-				{ 8170,  40 },
-				{ 1542020 },
+				{ 8170, 40 },
+				{ 15420, 120 },
 				{ 1529 },
 				{ 15407 },
 				{ 14341 },
@@ -9335,16 +9384,16 @@ AtlasTW.SpellDB = {
 		[19087] = {
 			item = 15070,
 			reagents = {
-				{ 8170,  6 },
-				{ 154220 },
+				{ 8170, 6 },
+				{ 15422, 10 },
 				{ 14341 },
 			},
 		},
 		[19088] = {
 			item = 15080,
 			reagents = {
-				{ 8170,  8 },
-				{ 154082 },
+				{ 8170, 8 },
+				{ 15408, 12 },
 				{ 15407 },
 				{ 14341 },
 			},
@@ -9352,7 +9401,7 @@ AtlasTW.SpellDB = {
 		[19089] = {
 			item = 15049,
 			reagents = {
-				{ 8170,  28 },
+				{ 8170, 28 },
 				{ 15415, 30 },
 				{ 12810, 2 },
 				{ 15407 },
@@ -9362,9 +9411,9 @@ AtlasTW.SpellDB = {
 		[19090] = {
 			item = 15058,
 			reagents = {
-				{ 8170,  12 },
-				{ 7080,  3 },
-				{ 7082,  3 },
+				{ 8170, 12 },
+				{ 7080, 3 },
+				{ 7082, 3 },
 				{ 12810, 2 },
 				{ 14341 },
 			},
@@ -9372,8 +9421,8 @@ AtlasTW.SpellDB = {
 		[19091] = {
 			item = 15095,
 			reagents = {
-				{ 8170,  18 },
-				{ 140472 },
+				{ 8170, 18 },
+				{ 14047, 12 },
 				{ 12810, 2 },
 				{ 14341 },
 			},
@@ -9381,8 +9430,8 @@ AtlasTW.SpellDB = {
 		[19092] = {
 			item = 15088,
 			reagents = {
-				{ 8170,  14 },
-				{ 2325,  2 },
+				{ 8170, 14 },
+				{ 2325, 2 },
 				{ 14341, 2 },
 			},
 		},
@@ -9397,7 +9446,7 @@ AtlasTW.SpellDB = {
 		[19094] = {
 			item = 15051,
 			reagents = {
-				{ 8170,  44 },
+				{ 8170, 44 },
 				{ 15416, 45 },
 				{ 12810, 2 },
 				{ 15407 },
@@ -9407,7 +9456,7 @@ AtlasTW.SpellDB = {
 		[19095] = {
 			item = 15059,
 			reagents = {
-				{ 8170,  16 },
+				{ 8170, 16 },
 				{ 12803, 8 },
 				{ 14342, 2 },
 				{ 15407 },
@@ -9417,8 +9466,8 @@ AtlasTW.SpellDB = {
 		[19097] = {
 			item = 15062,
 			reagents = {
-				{ 8170,  30 },
-				{ 154174 },
+				{ 8170, 30 },
+				{ 15417, 14 },
 				{ 15407 },
 				{ 14341 },
 			},
@@ -9426,18 +9475,18 @@ AtlasTW.SpellDB = {
 		[19098] = {
 			item = 15085,
 			reagents = {
-				{ 8170,  20 },
+				{ 8170, 20 },
 				{ 15407, 2 },
 				{ 14256, 6 },
-				{ 2325,  4 },
+				{ 2325, 4 },
 				{ 14341, 2 },
 			},
 		},
 		[19100] = {
 			item = 15081,
 			reagents = {
-				{ 8170,  14 },
-				{ 154084 },
+				{ 8170, 14 },
+				{ 15408, 14 },
 				{ 15407 },
 				{ 14341, 2 },
 			},
@@ -9445,7 +9494,7 @@ AtlasTW.SpellDB = {
 		[19101] = {
 			item = 15055,
 			reagents = {
-				{ 8170,  10 },
+				{ 8170, 10 },
 				{ 7078 },
 				{ 7076 },
 				{ 14341, 2 },
@@ -9454,9 +9503,9 @@ AtlasTW.SpellDB = {
 		[19102] = {
 			item = 15090,
 			reagents = {
-				{ 8170,  22 },
+				{ 8170, 22 },
 				{ 12810, 4 },
-				{ 140476 },
+				{ 14047, 16 },
 				{ 15407 },
 				{ 14341, 2 },
 			},
@@ -9464,9 +9513,9 @@ AtlasTW.SpellDB = {
 		[19103] = {
 			item = 15096,
 			reagents = {
-				{ 8170,  16 },
+				{ 8170, 16 },
 				{ 12810, 4 },
-				{ 140478 },
+				{ 14047, 18 },
 				{ 15407 },
 				{ 14341, 2 },
 			},
@@ -9474,8 +9523,8 @@ AtlasTW.SpellDB = {
 		[19104] = {
 			item = 15068,
 			reagents = {
-				{ 8170,  12 },
-				{ 154222 },
+				{ 8170, 12 },
+				{ 15422, 12 },
 				{ 15407 },
 				{ 14341, 2 },
 			},
@@ -9483,7 +9532,7 @@ AtlasTW.SpellDB = {
 		[19107] = {
 			item = 15052,
 			reagents = {
-				{ 8170,  40 },
+				{ 8170, 40 },
 				{ 15416, 60 },
 				{ 12810, 4 },
 				{ 15407 },
@@ -9495,7 +9544,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 14048, 6 },
 				{ 14342, 4 },
-				{ 7971,  2 },
+				{ 7971, 2 },
 				{ 14341 },
 			},
 		},
@@ -9512,9 +9561,9 @@ AtlasTW.SpellDB = {
 		},
 		[19666] = {
 			requires = L["Anvil"],
+			quantity = 2,
 			tools = { 5956 },
 			item = 15869,
-			quantity = 2,
 			reagents = {
 				{ 2842 },
 				{ 3470 },
@@ -9522,9 +9571,9 @@ AtlasTW.SpellDB = {
 		},
 		[19667] = {
 			requires = L["Anvil"],
+			quantity = 2,
 			tools = { 5956 },
 			item = 15870,
-			quantity = 2,
 			reagents = {
 				{ 3577 },
 				{ 3486 },
@@ -9532,9 +9581,9 @@ AtlasTW.SpellDB = {
 		},
 		[19668] = {
 			requires = L["Anvil"],
+			quantity = 2,
 			tools = { 5956 },
 			item = 15871,
-			quantity = 2,
 			reagents = {
 				{ 6037 },
 				{ 7966 },
@@ -9542,9 +9591,9 @@ AtlasTW.SpellDB = {
 		},
 		[19669] = {
 			requires = L["Anvil"],
+			quantity = 2,
 			tools = { 5956 },
 			item = 15872,
-			quantity = 2,
 			reagents = {
 				{ 12360 },
 				{ 12644 },
@@ -9558,9 +9607,9 @@ AtlasTW.SpellDB = {
 		},
 		[19790] = {
 			requires = L["Anvil"],
+			quantity = 3,
 			tools = { 5956 },
 			item = 15993,
-			quantity = 3,
 			reagents = {
 				{ 15994 },
 				{ 12359, 3 },
@@ -9601,11 +9650,11 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[19794] = {
-			tools = { 62190498 },
+			tools = { 6219, 10498 },
 			item = 15999,
 			reagents = {
 				{ 10502 },
-				{ 7910,  4 },
+				{ 7910, 4 },
 				{ 12810, 2 },
 				{ 14047, 8 },
 			},
@@ -9628,14 +9677,14 @@ AtlasTW.SpellDB = {
 				{ 10546, 2 },
 				{ 12361, 2 },
 				{ 12799, 2 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 			},
 		},
 		[19799] = {
 			requires = L["Anvil"],
+			quantity = 3,
 			tools = { 5956 },
 			item = 16005,
-			quantity = 3,
 			reagents = {
 				{ 15994, 2 },
 				{ 11371 },
@@ -9645,9 +9694,9 @@ AtlasTW.SpellDB = {
 		},
 		[19800] = {
 			requires = L["Anvil"],
+			quantity = 200,
 			tools = { 5956 },
 			item = 15997,
-			quantity = 200,
 			reagents = {
 				{ 12359, 2 },
 				{ 15992 },
@@ -9662,7 +9711,7 @@ AtlasTW.SpellDB = {
 				{ 16000 },
 				{ 15994, 2 },
 				{ 6037 },
-				{ 8170,  2 },
+				{ 8170, 2 },
 				{ 14047, 4 },
 			},
 		},
@@ -9687,7 +9736,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[19825] = {
-			tools = { 62190498 },
+			tools = { 6219, 10498 },
 			item = 16008,
 			reagents = {
 				{ 10500 },
@@ -9702,7 +9751,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 10576 },
 				{ 16006, 8 },
-				{ 126550 },
+				{ 12655, 10 },
 				{ 15994, 6 },
 				{ 10558, 4 },
 				{ 12810, 6 },
@@ -9710,9 +9759,9 @@ AtlasTW.SpellDB = {
 		},
 		[19831] = {
 			requires = L["Anvil"],
+			quantity = 3,
 			tools = { 5956 },
 			item = 16040,
-			quantity = 3,
 			reagents = {
 				{ 16006 },
 				{ 12359, 3 },
@@ -9724,10 +9773,10 @@ AtlasTW.SpellDB = {
 			tools = { 5956, 6219 },
 			item = 16007,
 			reagents = {
-				{ 123600 },
+				{ 12360, 10 },
 				{ 16000, 2 },
-				{ 7078,  2 },
-				{ 7076,  2 },
+				{ 7078, 2 },
+				{ 7076, 2 },
 				{ 12800, 2 },
 				{ 12810, 2 },
 			},
@@ -9743,8 +9792,8 @@ AtlasTW.SpellDB = {
 		},
 		[20626] = {
 			requires = L["Cooking Fire"],
-			item = 16766,
 			quantity = 2,
+			item = 16766,
 			reagents = {
 				{ 7974, 2 },
 				{ 2692 },
@@ -9784,7 +9833,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 14342, 4 },
 				{ 17010, 6 },
-				{ 7078,  4 },
+				{ 7078, 4 },
 				{ 12810, 2 },
 				{ 14341, 2 },
 			},
@@ -9801,7 +9850,7 @@ AtlasTW.SpellDB = {
 		[20854] = {
 			item = 16983,
 			reagents = {
-				{ 170125 },
+				{ 17012, 15 },
 				{ 17010, 3 },
 				{ 17011, 6 },
 				{ 14341, 2 },
@@ -9832,9 +9881,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 16988,
 			reagents = {
-				{ 113716 },
+				{ 11371, 10 },
 				{ 17010, 4 },
-				{ 17011, 5 },
+				{ 17011, 3 },
 			},
 		},
 		[20874] = {
@@ -9852,7 +9901,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 17013,
 			reagents = {
-				{ 113716 },
+				{ 11371, 16 },
 				{ 17010, 4 },
 				{ 17011, 6 },
 			},
@@ -9862,8 +9911,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 17015,
 			reagents = {
-				{ 113716 },
-				{ 170102 },
+				{ 11371, 10 },
+				{ 17010, 6 },
 				{ 11382, 2 },
 				{ 12810, 2 },
 			},
@@ -9873,10 +9922,10 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 17016,
 			reagents = {
-				{ 113718 },
-				{ 170112 },
+				{ 11371, 10 },
+				{ 17011, 6 },
 				{ 11382, 2 },
-				{ 12644, 2 },
+				{ 12810, 2 },
 			},
 		},
 		[20916] = {
@@ -9912,10 +9961,10 @@ AtlasTW.SpellDB = {
 				{ 17203, 8 },
 				{ 11371, 20 },
 				{ 12360, 50 },
-				{ 7078,  25 },
-				{ 113820 },
-				{ 170110 },
-				{ 170100 },
+				{ 7078, 25 },
+				{ 11382, 10 },
+				{ 17011, 10 },
+				{ 17010, 10 },
 			},
 		},
 		[21175] = {
@@ -9930,7 +9979,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 17704,
 			reagents = {
-				{ 38590 },
+				{ 3859, 10 },
 				{ 3829 },
 				{ 7070, 2 },
 				{ 7069, 2 },
@@ -9950,8 +9999,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956, 6219 },
 			item = 17716,
 			reagents = {
-				{ 3860,  8 },
-				{ 4389,  4 },
+				{ 3860, 8 },
+				{ 4389, 4 },
 				{ 17202, 4 },
 				{ 3829 },
 			},
@@ -9986,14 +10035,14 @@ AtlasTW.SpellDB = {
 				{ 3713 },
 			},
 		},
-		[22704] = { -- Field Repair Bot 74A
+		[22704] = { --Field Repair Bot 74A
 			requires = L["Anvil"],
 			tools = { 5956, 6219 },
 			item = 18232,
 			reagents = {
-				{ 123592 }, -- Thorium Bar
-				{ 7191,  2 }, -- Fused Wiring
-				{ 10558 }, -- Gold Power Core
+				{ 12359, 12 },
+				{ 7191, 2 },
+				{ 10558 },
 			},
 		},
 		[22711] = {
@@ -10018,15 +10067,15 @@ AtlasTW.SpellDB = {
 			item = 18253,
 			reagents = {
 				{ 10286 },
-				{ 13464, 4 },
-				{ 13463, 4 },
+				{ 13464, 3 },
+				{ 13463, 3 },
 				{ 18256 },
 			},
 		},
 		[22757] = {
 			item = 18262,
 			reagents = {
-				{ 7067,  2 },
+				{ 7067, 2 },
 				{ 12365, 3 },
 			},
 		},
@@ -10035,7 +10084,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 14342, 6 },
 				{ 17010, 8 },
-				{ 7078,  2 },
+				{ 7078, 2 },
 				{ 12810, 6 },
 				{ 14341, 4 },
 			},
@@ -10054,7 +10103,7 @@ AtlasTW.SpellDB = {
 			item = 18283,
 			reagents = {
 				{ 17011, 2 },
-				{ 7076,  2 },
+				{ 7076, 2 },
 				{ 16006, 4 },
 				{ 11371, 6 },
 				{ 16000 },
@@ -10079,9 +10128,9 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12360, 6 },
 				{ 16006, 2 },
-				{ 7082,  8 },
-				{ 128032 },
-				{ 7076,  8 },
+				{ 7082, 8 },
+				{ 12803, 12 },
+				{ 7076, 8 },
 			},
 		},
 		[22808] = {
@@ -10096,7 +10145,7 @@ AtlasTW.SpellDB = {
 			item = 18258,
 			reagents = {
 				{ 14048, 2 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 				{ 18240 },
 				{ 14341 },
 			},
@@ -10104,7 +10153,7 @@ AtlasTW.SpellDB = {
 		[22815] = {
 			item = 18258,
 			reagents = {
-				{ 8170,  4 },
+				{ 8170, 4 },
 				{ 14048, 2 },
 				{ 18240 },
 				{ 14341 },
@@ -10113,11 +10162,11 @@ AtlasTW.SpellDB = {
 		[22866] = {
 			item = 18405,
 			reagents = {
-				{ 140486 },
-				{ 9210,  10 },
-				{ 143420 },
-				{ 7080,  12 },
-				{ 7078,  12 },
+				{ 14048, 16 },
+				{ 9210, 10 },
+				{ 14342, 10 },
+				{ 7080, 12 },
+				{ 7078, 12 },
 				{ 14344, 6 },
 				{ 14341, 6 },
 			},
@@ -10125,7 +10174,7 @@ AtlasTW.SpellDB = {
 		[22867] = {
 			item = 18407,
 			reagents = {
-				{ 140482 },
+				{ 14048, 12 },
 				{ 14256, 20 },
 				{ 12662, 6 },
 				{ 12808, 8 },
@@ -10135,16 +10184,16 @@ AtlasTW.SpellDB = {
 		[22868] = {
 			item = 18408,
 			reagents = {
-				{ 140482 },
-				{ 7078,  10 },
-				{ 7910,  2 },
+				{ 14048, 12 },
+				{ 7078, 10 },
+				{ 7910, 2 },
 				{ 14341, 2 },
 			},
 		},
 		[22869] = {
 			item = 18409,
 			reagents = {
-				{ 140482 },
+				{ 14048, 12 },
 				{ 14342, 6 },
 				{ 13926, 2 },
 				{ 14341, 2 },
@@ -10153,7 +10202,7 @@ AtlasTW.SpellDB = {
 		[22870] = {
 			item = 18413,
 			reagents = {
-				{ 140482 },
+				{ 14048, 12 },
 				{ 12809, 4 },
 				{ 12360 },
 				{ 14341, 2 },
@@ -10171,8 +10220,8 @@ AtlasTW.SpellDB = {
 		[22921] = {
 			item = 18504,
 			reagents = {
-				{ 8170,  12 },
-				{ 128042 },
+				{ 8170, 12 },
+				{ 12804, 12 },
 				{ 15407, 2 },
 				{ 14341, 4 },
 			},
@@ -10180,8 +10229,8 @@ AtlasTW.SpellDB = {
 		[22922] = {
 			item = 18506,
 			reagents = {
-				{ 8170,  12 },
-				{ 7082,  6 },
+				{ 8170, 12 },
+				{ 7082, 6 },
 				{ 11754, 4 },
 				{ 15407, 2 },
 				{ 14341, 4 },
@@ -10190,7 +10239,7 @@ AtlasTW.SpellDB = {
 		[22923] = {
 			item = 18508,
 			reagents = {
-				{ 8170,  12 },
+				{ 8170, 12 },
 				{ 18512, 8 },
 				{ 15420, 60 },
 				{ 15407, 4 },
@@ -10200,8 +10249,8 @@ AtlasTW.SpellDB = {
 		[22926] = {
 			item = 18509,
 			reagents = {
-				{ 8170,  30 },
-				{ 126072 },
+				{ 8170, 30 },
+				{ 12607, 12 },
 				{ 15416, 30 },
 				{ 15414, 30 },
 				{ 15407, 5 },
@@ -10211,9 +10260,9 @@ AtlasTW.SpellDB = {
 		[22927] = {
 			item = 18510,
 			reagents = {
-				{ 8170,  30 },
-				{ 128032 },
-				{ 7080,  10 },
+				{ 8170, 30 },
+				{ 12803, 12 },
+				{ 7080, 10 },
 				{ 18512, 8 },
 				{ 15407, 3 },
 				{ 14341, 8 },
@@ -10222,8 +10271,8 @@ AtlasTW.SpellDB = {
 		[22928] = {
 			item = 18511,
 			reagents = {
-				{ 8170,  30 },
-				{ 7082,  12 },
+				{ 8170, 30 },
+				{ 7082, 12 },
 				{ 12753, 4 },
 				{ 12809, 8 },
 				{ 15407, 4 },
@@ -10236,30 +10285,30 @@ AtlasTW.SpellDB = {
 			item = 17771,
 			reagents = {
 				{ 18562 },
-				{ 123600 },
+				{ 12360, 10 },
 				{ 17010 },
 				{ 18567, 3 },
 			},
 		},
 		[23066] = {
-			item = 9318,
 			quantity = 3,
+			item = 9318,
 			reagents = {
 				{ 4377 },
 				{ 4234 },
 			},
 		},
 		[23067] = {
-			item = 9312,
 			quantity = 3,
+			item = 9312,
 			reagents = {
 				{ 4377 },
 				{ 4234 },
 			},
 		},
 		[23068] = {
-			item = 9313,
 			quantity = 3,
+			item = 9313,
 			reagents = {
 				{ 4377 },
 				{ 4234 },
@@ -10273,8 +10322,8 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[23070] = {
-			item = 18641,
 			quantity = 2,
+			item = 18641,
 			reagents = {
 				{ 15992, 2 },
 				{ 14047, 3 },
@@ -10298,8 +10347,8 @@ AtlasTW.SpellDB = {
 				{ 15994, 6 },
 				{ 18631, 2 },
 				{ 12361, 2 },
-				{ 7078,  4 },
-				{ 3829,  2 },
+				{ 7078, 4 },
+				{ 3829, 2 },
 				{ 13467, 4 },
 			},
 		},
@@ -10308,14 +10357,14 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 15994, 2 },
 				{ 18631, 2 },
-				{ 7191,  2 },
+				{ 7191, 2 },
 				{ 14227, 2 },
-				{ 7910,  2 },
+				{ 7910, 2 },
 			},
 		},
 		[23079] = {
-			item = 18637,
 			extra = Colors.WHITE .. "10 " .. L["Charges"],
+			item = 18637,
 			reagents = {
 				{ 16000, 2 },
 				{ 18631 },
@@ -10327,7 +10376,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 15994, 2 },
 				{ 15992, 3 },
-				{ 8170,  2 },
+				{ 8170, 2 },
 				{ 159 },
 			},
 		},
@@ -10338,8 +10387,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 11371, 4 },
 				{ 18631, 3 },
-				{ 7080,  6 },
-				{ 7910,  4 },
+				{ 7080, 6 },
+				{ 7910, 4 },
 				{ 12800, 2 },
 			},
 		},
@@ -10363,7 +10412,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 4 },
 				{ 15994, 2 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 				{ 7910 },
 				{ 7191 },
 			},
@@ -10402,7 +10451,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956, 6219 },
 			item = 18984,
 			reagents = {
-				{ 38600 },
+				{ 3860, 10 },
 				{ 18631 },
 				{ 7077, 4 },
 				{ 7910, 2 },
@@ -10414,17 +10463,17 @@ AtlasTW.SpellDB = {
 			tools = { 5956, 6219 },
 			item = 18986,
 			reagents = {
-				{ 3860,  12 },
+				{ 3860, 12 },
 				{ 18631, 2 },
-				{ 7075,  4 },
-				{ 7079,  2 },
-				{ 7909,  4 },
+				{ 7075, 4 },
+				{ 7079, 2 },
+				{ 7909, 4 },
 				{ 9060 },
 			},
 		},
 		[23507] = {
-			item = 19026,
 			quantity = 4,
+			item = 19026,
 			reagents = {
 				{ 15992, 2 },
 				{ 14047, 2 },
@@ -10436,8 +10485,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 19043,
 			reagents = {
-				{ 123592 },
-				{ 7076,  3 },
+				{ 12359, 12 },
+				{ 7076, 3 },
 				{ 12803, 3 },
 			},
 		},
@@ -10447,7 +10496,7 @@ AtlasTW.SpellDB = {
 			item = 19048,
 			reagents = {
 				{ 12360, 4 },
-				{ 7076,  6 },
+				{ 7076, 6 },
 				{ 12803, 6 },
 			},
 		},
@@ -10457,7 +10506,7 @@ AtlasTW.SpellDB = {
 			item = 19051,
 			reagents = {
 				{ 12359, 8 },
-				{ 6037,  6 },
+				{ 6037, 6 },
 				{ 12811 },
 			},
 		},
@@ -10467,7 +10516,7 @@ AtlasTW.SpellDB = {
 			item = 19057,
 			reagents = {
 				{ 12360, 2 },
-				{ 6037,  10 },
+				{ 6037, 10 },
 				{ 12811 },
 			},
 		},
@@ -10500,7 +10549,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 17011, 3 },
 				{ 17010, 6 },
-				{ 123602 },
+				{ 12360, 12 },
 				{ 11382 },
 				{ 11371, 4 },
 			},
@@ -10512,7 +10561,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 17011, 5 },
 				{ 17010, 2 },
-				{ 123606 },
+				{ 12360, 16 },
 				{ 11371, 6 },
 			},
 		},
@@ -10523,7 +10572,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 17011, 4 },
 				{ 17010, 7 },
-				{ 123602 },
+				{ 12360, 12 },
 				{ 11371, 8 },
 				{ 12800, 4 },
 			},
@@ -10535,9 +10584,9 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 17011, 6 },
 				{ 17010, 6 },
-				{ 123600 },
+				{ 12360, 10 },
 				{ 11371, 6 },
-				{ 128092 },
+				{ 12809, 12 },
 			},
 		},
 		[23653] = {
@@ -10547,8 +10596,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 17011, 8 },
 				{ 17010, 5 },
-				{ 123600 },
-				{ 113712 },
+				{ 12360, 10 },
+				{ 11371, 12 },
 				{ 12364, 4 },
 			},
 		},
@@ -10556,7 +10605,7 @@ AtlasTW.SpellDB = {
 			item = 19047,
 			reagents = {
 				{ 14048, 8 },
-				{ 7076,  3 },
+				{ 7076, 3 },
 				{ 12803, 3 },
 				{ 14227, 2 },
 			},
@@ -10565,7 +10614,7 @@ AtlasTW.SpellDB = {
 			item = 19050,
 			reagents = {
 				{ 14342, 5 },
-				{ 7076,  5 },
+				{ 7076, 5 },
 				{ 12803, 5 },
 				{ 14227, 2 },
 			},
@@ -10591,10 +10640,10 @@ AtlasTW.SpellDB = {
 		[23666] = {
 			item = 19156,
 			reagents = {
-				{ 143420 },
+				{ 14342, 10 },
 				{ 17010, 2 },
 				{ 17011, 3 },
-				{ 7078,  6 },
+				{ 7078, 6 },
 				{ 14227, 4 },
 			},
 		},
@@ -10604,14 +10653,14 @@ AtlasTW.SpellDB = {
 				{ 14342, 8 },
 				{ 17010, 5 },
 				{ 17011, 3 },
-				{ 7078,  10 },
+				{ 7078, 10 },
 				{ 14227, 4 },
 			},
 		},
 		[23703] = {
 			item = 19044,
 			reagents = {
-				{ 8170,  30 },
+				{ 8170, 30 },
 				{ 12804, 2 },
 				{ 12803, 4 },
 				{ 15407, 2 },
@@ -10631,9 +10680,9 @@ AtlasTW.SpellDB = {
 		[23705] = {
 			item = 19052,
 			reagents = {
-				{ 8170,  30 },
+				{ 8170, 30 },
 				{ 12809, 2 },
-				{ 7080,  4 },
+				{ 7080, 4 },
 				{ 15407, 2 },
 				{ 14341, 2 },
 			},
@@ -10671,8 +10720,8 @@ AtlasTW.SpellDB = {
 			item = 19162,
 			reagents = {
 				{ 17010, 8 },
-				{ 170122 },
-				{ 128100 },
+				{ 17012, 12 },
+				{ 12810, 10 },
 				{ 15407, 4 },
 				{ 14227, 4 },
 			},
@@ -10682,7 +10731,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 17010, 2 },
 				{ 17011, 7 },
-				{ 7076,  6 },
+				{ 7076, 6 },
 				{ 15407, 4 },
 				{ 14227, 4 },
 			},
@@ -10726,7 +10775,7 @@ AtlasTW.SpellDB = {
 		[24121] = {
 			item = 19685,
 			reagents = {
-				{ 197674 },
+				{ 19767, 14 },
 				{ 15407, 5 },
 				{ 12803, 4 },
 				{ 14341, 4 },
@@ -10735,7 +10784,7 @@ AtlasTW.SpellDB = {
 		[24122] = {
 			item = 19686,
 			reagents = {
-				{ 197670 },
+				{ 19767, 10 },
 				{ 15407, 4 },
 				{ 12803, 4 },
 				{ 14341, 3 },
@@ -10774,9 +10823,9 @@ AtlasTW.SpellDB = {
 			item = 19690,
 			reagents = {
 				{ 12359, 20 },
-				{ 197740 },
+				{ 19774, 10 },
 				{ 19726, 2 },
-				{ 7910,  2 },
+				{ 7910, 2 },
 			},
 		},
 		[24137] = {
@@ -10784,7 +10833,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 19691,
 			reagents = {
-				{ 123596 },
+				{ 12359, 16 },
 				{ 19774, 8 },
 				{ 19726, 2 },
 				{ 7910 },
@@ -10795,7 +10844,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 19692,
 			reagents = {
-				{ 123592 },
+				{ 12359, 12 },
 				{ 19774, 6 },
 				{ 19726, 2 },
 				{ 12810, 4 },
@@ -10807,7 +10856,7 @@ AtlasTW.SpellDB = {
 			item = 19693,
 			reagents = {
 				{ 12359, 20 },
-				{ 197744 },
+				{ 19774, 14 },
 				{ 12799, 2 },
 			},
 		},
@@ -10816,8 +10865,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 19694,
 			reagents = {
-				{ 123598 },
-				{ 197742 },
+				{ 12359, 18 },
+				{ 19774, 12 },
 				{ 12799, 2 },
 			},
 		},
@@ -10826,14 +10875,14 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 19695,
 			reagents = {
-				{ 123596 },
-				{ 197740 },
+				{ 12359, 16 },
+				{ 19774, 10 },
 				{ 12799 },
 			},
 		},
 		[24266] = {
-			item = 19931,
 			quantity = 3,
+			item = 19931,
 			reagents = {
 				{ 12938 },
 				{ 19943 },
@@ -10898,9 +10947,9 @@ AtlasTW.SpellDB = {
 		},
 		[24399] = {
 			requires = L["Black Anvil"],
+			extra = Colors.GREEN .. L["<Random enchantment>"],
 			tools = { 5956 },
 			item = 20039,
-			extra = Colors.GREEN .. L["<Random enchantment>"],
 			reagents = {
 				{ 17011, 3 },
 				{ 17010, 3 },
@@ -10919,7 +10968,7 @@ AtlasTW.SpellDB = {
 		[24654] = {
 			item = 20295,
 			reagents = {
-				{ 8170,  28 },
+				{ 8170, 28 },
 				{ 15415, 36 },
 				{ 15407, 2 },
 				{ 14341, 2 },
@@ -10928,7 +10977,7 @@ AtlasTW.SpellDB = {
 		[24655] = {
 			item = 20296,
 			reagents = {
-				{ 8170,  20 },
+				{ 8170, 20 },
 				{ 15412, 30 },
 				{ 15407 },
 				{ 14341, 2 },
@@ -10937,7 +10986,7 @@ AtlasTW.SpellDB = {
 		[24703] = {
 			item = 20380,
 			reagents = {
-				{ 128102 },
+				{ 12810, 12 },
 				{ 20381, 6 },
 				{ 12803, 4 },
 				{ 15407, 4 },
@@ -10957,7 +11006,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 20500 },
 				{ 20498, 20 },
-				{ 7078,  2 },
+				{ 7078, 2 },
 			},
 		},
 		[24847] = {
@@ -10965,7 +11014,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 20500, 2 },
 				{ 20498, 30 },
-				{ 7078,  2 },
+				{ 7078, 2 },
 				{ 15407 },
 			},
 		},
@@ -10974,7 +11023,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 20500, 3 },
 				{ 20498, 40 },
-				{ 7078,  2 },
+				{ 7078, 2 },
 				{ 15407, 2 },
 			},
 		},
@@ -11038,9 +11087,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 20549,
 			reagents = {
-				{ 123592 },
+				{ 12359, 12 },
 				{ 20520, 6 },
-				{ 6037,  6 },
+				{ 6037, 6 },
 				{ 12810, 2 },
 			},
 		},
@@ -11049,9 +11098,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 20551,
 			reagents = {
-				{ 123596 },
+				{ 12359, 16 },
 				{ 20520, 8 },
-				{ 6037,  8 },
+				{ 6037, 8 },
 				{ 11754 },
 			},
 		},
@@ -11061,8 +11110,8 @@ AtlasTW.SpellDB = {
 			item = 20550,
 			reagents = {
 				{ 12359, 20 },
-				{ 205200 },
-				{ 6037,  10 },
+				{ 20520, 10 },
+				{ 6037, 10 },
 			},
 		},
 		[24940] = {
@@ -11076,9 +11125,9 @@ AtlasTW.SpellDB = {
 		},
 		[25146] = {
 			name = LS["Transmute: Elemental Fire"],
+			quantity = 3,
 			tools = { 9149 },
 			item = 7068,
-			quantity = 3,
 			reagents = {
 				{ 7077 },
 			},
@@ -11092,8 +11141,8 @@ AtlasTW.SpellDB = {
 		},
 		[25659] = {
 			requires = L["Cooking Fire"],
-			item = 21023,
 			quantity = 5,
+			item = 21023,
 			reagents = {
 				{ 2692 },
 				{ 9061 },
@@ -11124,7 +11173,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 15407 },
 				{ 15994, 4 },
-				{ 7079,  2 },
+				{ 7079, 2 },
 				{ 18631, 2 },
 				{ 10558 },
 			},
@@ -11133,15 +11182,15 @@ AtlasTW.SpellDB = {
 			item = 21340,
 			reagents = {
 				{ 14048, 6 },
-				{ 8170,  4 },
-				{ 7972,  2 },
+				{ 8170, 4 },
+				{ 7972, 2 },
 				{ 14341 },
 			},
 		},
 		[26086] = {
 			item = 21341,
 			reagents = {
-				{ 142562 },
+				{ 14256, 12 },
 				{ 12810, 6 },
 				{ 20520, 2 },
 				{ 14227, 4 },
@@ -11151,9 +11200,9 @@ AtlasTW.SpellDB = {
 			item = 21342,
 			reagents = {
 				{ 14256, 20 },
-				{ 170126 },
+				{ 17012, 16 },
 				{ 19726, 8 },
-				{ 7078,  4 },
+				{ 7078, 4 },
 				{ 14227, 4 },
 			},
 		},
@@ -11169,8 +11218,8 @@ AtlasTW.SpellDB = {
 			item = 21278,
 			reagents = {
 				{ 12810, 6 },
-				{ 7080,  4 },
-				{ 7082,  4 },
+				{ 7080, 4 },
+				{ 7082, 4 },
 				{ 15407, 2 },
 				{ 14227, 2 },
 			},
@@ -11179,8 +11228,8 @@ AtlasTW.SpellDB = {
 			item = 21154,
 			reagents = {
 				{ 14048, 4 },
-				{ 4625,  2 },
-				{ 2604,  2 },
+				{ 4625, 2 },
+				{ 2604, 2 },
 				{ 14341 },
 			},
 		},
@@ -11188,102 +11237,102 @@ AtlasTW.SpellDB = {
 			item = 21542,
 			reagents = {
 				{ 14048, 4 },
-				{ 4625,  2 },
-				{ 2604,  2 },
+				{ 4625, 2 },
+				{ 2604, 2 },
 				{ 14341 },
 			},
 		},
 		[26416] = {
-			item = 21558,
 			quantity = 3,
+			item = 21558,
 			reagents = {
 				{ 4364 },
 				{ 2319 },
 			},
 		},
 		[26417] = {
-			item = 21559,
 			quantity = 3,
+			item = 21559,
 			reagents = {
 				{ 4364 },
 				{ 2319 },
 			},
 		},
 		[26418] = {
-			item = 21557,
 			quantity = 3,
+			item = 21557,
 			reagents = {
 				{ 4364 },
 				{ 2319 },
 			},
 		},
 		[26420] = {
-			item = 21589,
 			quantity = 3,
+			item = 21589,
 			reagents = {
 				{ 4377 },
 				{ 4234 },
 			},
 		},
 		[26421] = {
-			item = 21590,
 			quantity = 3,
+			item = 21590,
 			reagents = {
 				{ 4377 },
 				{ 4234 },
 			},
 		},
 		[26422] = {
-			item = 21592,
 			quantity = 3,
+			item = 21592,
 			reagents = {
 				{ 4377 },
 				{ 4234 },
 			},
 		},
 		[26423] = {
-			item = 21571,
 			quantity = 3,
+			item = 21571,
 			reagents = {
 				{ 10505 },
 				{ 4304 },
 			},
 		},
 		[26424] = {
-			item = 21574,
 			quantity = 3,
+			item = 21574,
 			reagents = {
 				{ 10505 },
 				{ 4304 },
 			},
 		},
 		[26425] = {
-			item = 21576,
 			quantity = 3,
+			item = 21576,
 			reagents = {
 				{ 10505 },
 				{ 4304 },
 			},
 		},
 		[26426] = {
-			item = 21714,
 			quantity = 3,
+			item = 21714,
 			reagents = {
 				{ 15992 },
 				{ 8170 },
 			},
 		},
 		[26427] = {
-			item = 21716,
 			quantity = 3,
+			item = 21716,
 			reagents = {
 				{ 15992 },
 				{ 8170 },
 			},
 		},
 		[26428] = {
-			item = 21718,
 			quantity = 3,
+			item = 21718,
 			reagents = {
 				{ 15992 },
 				{ 8170 },
@@ -11301,8 +11350,8 @@ AtlasTW.SpellDB = {
 		[26443] = {
 			item = 21570,
 			reagents = {
-				{ 9060,  4 },
-				{ 9061,  4 },
+				{ 9060, 4 },
+				{ 9061, 4 },
 				{ 18631, 2 },
 				{ 10561 },
 			},
@@ -11312,9 +11361,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 22197,
 			reagents = {
-				{ 222024 },
+				{ 22202, 14 },
 				{ 12655, 4 },
-				{ 7076,  2 },
+				{ 7076, 2 },
 			},
 		},
 		[27586] = {
@@ -11325,7 +11374,7 @@ AtlasTW.SpellDB = {
 				{ 22203, 8 },
 				{ 22202, 24 },
 				{ 12655, 8 },
-				{ 7076,  4 },
+				{ 7076, 4 },
 			},
 		},
 		[27587] = {
@@ -11333,10 +11382,10 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 22196,
 			reagents = {
-				{ 222038 },
+				{ 22203, 18 },
 				{ 22202, 40 },
-				{ 126552 },
-				{ 7076,  10 },
+				{ 12655, 12 },
+				{ 7076, 10 },
 				{ 12364, 4 },
 			},
 		},
@@ -11345,7 +11394,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 22195,
 			reagents = {
-				{ 222024 },
+				{ 22202, 14 },
 				{ 12810, 4 },
 			},
 		},
@@ -11365,19 +11414,19 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 22191,
 			reagents = {
-				{ 222035 },
+				{ 22203, 15 },
 				{ 22202, 36 },
-				{ 128102 },
-				{ 128090 },
+				{ 12810, 12 },
+				{ 12809, 10 },
 				{ 12800, 4 },
 			},
 		},
 		[27658] = {
 			item = 22246,
 			reagents = {
-				{ 4339,  4 },
+				{ 4339, 4 },
 				{ 11137, 4 },
-				{ 8343,  2 },
+				{ 8343, 2 },
 			},
 		},
 		[27659] = {
@@ -11401,7 +11450,7 @@ AtlasTW.SpellDB = {
 			item = 22251,
 			reagents = {
 				{ 14048, 5 },
-				{ 8831,  10 },
+				{ 8831, 10 },
 				{ 11040, 8 },
 				{ 14341, 2 },
 			},
@@ -11420,9 +11469,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 22385,
 			reagents = {
-				{ 123602 },
+				{ 12360, 12 },
 				{ 12655, 20 },
-				{ 7076,  10 },
+				{ 7076, 10 },
 				{ 13510, 2 },
 			},
 		},
@@ -11431,11 +11480,11 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 22384,
 			reagents = {
-				{ 123605 },
-				{ 113710 },
+				{ 12360, 15 },
+				{ 11371, 10 },
 				{ 12808, 20 },
 				{ 20520, 20 },
-				{ 154170 },
+				{ 15417, 10 },
 				{ 12753, 2 },
 			},
 		},
@@ -11444,7 +11493,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 22383,
 			reagents = {
-				{ 123602 },
+				{ 12360, 12 },
 				{ 20725, 2 },
 				{ 13512, 2 },
 				{ 12810, 4 },
@@ -11455,7 +11504,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 22682, 5 },
 				{ 14048, 4 },
-				{ 7080,  4 },
+				{ 7080, 4 },
 				{ 14227, 4 },
 			},
 		},
@@ -11464,7 +11513,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 22682, 7 },
 				{ 14048, 8 },
-				{ 7080,  6 },
+				{ 7080, 6 },
 				{ 14227, 8 },
 			},
 		},
@@ -11473,7 +11522,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 22682, 5 },
 				{ 14048, 4 },
-				{ 7080,  2 },
+				{ 7080, 2 },
 				{ 14227, 4 },
 			},
 		},
@@ -11482,7 +11531,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 22682, 4 },
 				{ 14048, 2 },
-				{ 7080,  2 },
+				{ 7080, 2 },
 				{ 14227, 4 },
 			},
 		},
@@ -11499,8 +11548,8 @@ AtlasTW.SpellDB = {
 			item = 22661,
 			reagents = {
 				{ 22682, 7 },
-				{ 128106 },
-				{ 7080,  2 },
+				{ 12810, 16 },
+				{ 7080, 2 },
 				{ 15407, 4 },
 				{ 14227, 4 },
 			},
@@ -11509,8 +11558,8 @@ AtlasTW.SpellDB = {
 			item = 22662,
 			reagents = {
 				{ 22682, 5 },
-				{ 128102 },
-				{ 7080,  2 },
+				{ 12810, 12 },
+				{ 7080, 2 },
 				{ 15407, 3 },
 				{ 14227, 4 },
 			},
@@ -11519,8 +11568,8 @@ AtlasTW.SpellDB = {
 			item = 22663,
 			reagents = {
 				{ 22682, 4 },
-				{ 128102 },
-				{ 7080,  2 },
+				{ 12810, 12 },
+				{ 7080, 2 },
 				{ 15407, 2 },
 				{ 14227, 4 },
 			},
@@ -11530,7 +11579,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 22682, 7 },
 				{ 15408, 24 },
-				{ 7080,  2 },
+				{ 7080, 2 },
 				{ 15407, 4 },
 				{ 14227, 4 },
 			},
@@ -11539,8 +11588,8 @@ AtlasTW.SpellDB = {
 			item = 22666,
 			reagents = {
 				{ 22682, 5 },
-				{ 154086 },
-				{ 7080,  2 },
+				{ 15408, 16 },
+				{ 7080, 2 },
 				{ 15407, 3 },
 				{ 14227, 4 },
 			},
@@ -11549,8 +11598,8 @@ AtlasTW.SpellDB = {
 			item = 22665,
 			reagents = {
 				{ 22682, 4 },
-				{ 154086 },
-				{ 7080,  2 },
+				{ 15408, 16 },
+				{ 7080, 2 },
 				{ 15407, 2 },
 				{ 14227, 4 },
 			},
@@ -11561,9 +11610,9 @@ AtlasTW.SpellDB = {
 			item = 22669,
 			reagents = {
 				{ 22682, 7 },
-				{ 123596 },
+				{ 12359, 16 },
 				{ 12360, 2 },
-				{ 7080,  4 },
+				{ 7080, 4 },
 			},
 		},
 		[28243] = {
@@ -11572,9 +11621,9 @@ AtlasTW.SpellDB = {
 			item = 22670,
 			reagents = {
 				{ 22682, 5 },
-				{ 123592 },
+				{ 12359, 12 },
 				{ 12360, 2 },
-				{ 7080,  2 },
+				{ 7080, 2 },
 			},
 		},
 		[28244] = {
@@ -11583,9 +11632,9 @@ AtlasTW.SpellDB = {
 			item = 22671,
 			reagents = {
 				{ 22682, 4 },
-				{ 123592 },
+				{ 12359, 12 },
 				{ 12360, 2 },
-				{ 7080,  2 },
+				{ 7080, 2 },
 			},
 		},
 		[28461] = {
@@ -11593,7 +11642,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 22762,
 			reagents = {
-				{ 126552 },
+				{ 12655, 12 },
 				{ 19726, 2 },
 				{ 12360, 2 },
 				{ 12803, 2 },
@@ -11621,7 +11670,7 @@ AtlasTW.SpellDB = {
 		[28472] = {
 			item = 22759,
 			reagents = {
-				{ 128102 },
+				{ 12810, 12 },
 				{ 19726, 2 },
 				{ 12803, 2 },
 				{ 15407, 2 },
@@ -11691,28 +11740,42 @@ AtlasTW.SpellDB = {
 				{ 2840, 4 },
 			},
 		},
-		[36901] = { --1.18
+		[30004] = { --Slowing Bolas
+			item = 106,
+			reagents = {
+				{ 2838, 3 },
+				{ 50231, 2 },
+			},
+		},
+		[36765] = { --Bundle of Simple Sticks
+			tools = { 42004 },
+			item = 42149,
+			reagents = {
+				{ 4470, 2 },
+			},
+		},
+		[36901] = { --Elixir of Greater Frost Power
 			item = 55046,
 			reagents = {
 				{ 13467, 3 },
 				{ 8925 },
 			},
 		},
-		[36903] = { --1.18
+		[36903] = { --Elixir of Greater Arcane Power
 			item = 55048,
 			reagents = {
 				{ 8831, 3 },
 				{ 8925 },
 			},
 		},
-		[36905] = { --1.18
-			item = 55060,
+		[36905] = { --Grandstaff of the Shen\\'dralar Elder","","","Großstab des Ältesten der Shen\\'dralar
 			requires = L["Anvil"],
 			tools = { 41328, 41326 },
+			item = 55060,
 			reagents = {
 				{ 55252, 4 },
 				{ 12360, 2 },
-				{ 126556 },
+				{ 12655, 16 },
 				{ 20725, 4 },
 				{ 11291, 20 },
 				{ 12800, 6 },
@@ -11720,48 +11783,48 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[36907] = { --1.18 Rune-Inscribed Plate Leggings
-			item = 55058,
 			requires = L["Anvil"],
 			tools = { 5956 },
+			item = 55058,
 			reagents = {
 				{ 12360, 3 },
-				{ 126552 },
+				{ 12655, 12 },
 				{ 12799, 4 },
 				{ 13926, 4 },
 				{ 14341, 8 },
-				{ 7080,  6 },
+				{ 7080, 6 },
 			},
 		},
 		[36909] = { --1.18 Essence Infused Leather Gloves
 			item = 55050,
 			reagents = {
-				{ 128100 },
+				{ 12810, 10 },
 				{ 61673, 4 },
 				{ 16203, 4 },
 				{ 14341, 6 },
 			},
 		},
-		[36911] = { --1.18
+		[36911] = { --Prismatic Scale Barbute
 			item = 55054,
 			reagents = {
-				{ 8165,  20 },
+				{ 8165, 20 },
 				{ 15414, 5 },
 				{ 15415, 5 },
 				{ 15412, 5 },
 				{ 15416, 5 },
-				{ 8170,  30 },
+				{ 8170, 30 },
 			},
 		},
-		[36913] = { --1.18
+		[36913] = { --Astronomer Raiments
 			item = 55052,
 			reagents = {
-				{ 140482 },
+				{ 14048, 12 },
 				{ 12361, 2 },
 				{ 55048, 5 },
-				{ 9210,  5 },
+				{ 9210, 5 },
 			},
 		},
-		[36915] = { --1.18
+		[36915] = { --Spellwoven Nobility Drape
 			item = 55056,
 			reagents = {
 				{ 14342, 3 },
@@ -11769,34 +11832,31 @@ AtlasTW.SpellDB = {
 				{ 20725 },
 				{ 16204, 40 },
 				{ 14341, 4 },
-				{ 9210,  10 },
+				{ 9210, 10 },
 			},
 		},
-		[36929] = { --1.18
-			item = 47410, --Concoction of the Emerald Mongoose
+		[36929] = { --Concoction of the Emerald Mongoose
+			item = 47410,
 			reagents = {
 				{ 13452 },
 				{ 61224 },
-				-- {8153, 6}, --Wildvine 03.09.25 deleted
-				{ 18256 }, --Imbued Vial 03.09.25
+				{ 18256 },
 			},
 		},
-		[36932] = { --1.18
-			item = 47412, --Concoction of the Arcane Giant
+		[36932] = { --Concoction of the Arcane Giant
+			item = 47412,
 			reagents = {
 				{ 9206 },
 				{ 13454 },
-				--{8831, 6}, --Purple Lotus 03.09.25 deleted
-				{ 18256 }, --Imbued Vial 03.09.25
+				{ 18256 },
 			},
 		},
-		[36935] = { --1.18
-			item = 47414, --Concoction of the Dreamwater
+		[36935] = { --Concoction of the Dreamwater
+			item = 47414,
 			reagents = {
-				{ 12820 }, --Winterfall Firewater
-				{ 61423 }, --Dreamtonic
-				--{8838, 6}, --Sungrass 03.09.25 deleted
-				{ 18256 }, --Imbued Vial 03.09.25
+				{ 12820 },
+				{ 61423 },
+				{ 18256 },
 			},
 		},
 		[41001] = {
@@ -11847,7 +11907,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55161,
 			reagents = {
-				{ 2840,  4 },
+				{ 2840, 4 },
 				{ 55245, 2 },
 				{ 774 },
 			},
@@ -11875,9 +11935,9 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55165,
 			reagents = {
-				{ 2840,  10 },
+				{ 2840, 10 },
 				{ 55150, 4 },
-				{ 5498,  2 },
+				{ 5498, 2 },
 			},
 		},
 		[41019] = {
@@ -11896,7 +11956,7 @@ AtlasTW.SpellDB = {
 				{ 55156 },
 				{ 55245 },
 				{ 1210 },
-				{ 159,  5 },
+				{ 159, 5 },
 			},
 		},
 		[41023] = {
@@ -11904,7 +11964,7 @@ AtlasTW.SpellDB = {
 			item = 81031,
 			reagents = {
 				{ 2840, 6 },
-				{ 774,  2 },
+				{ 774, 2 },
 				{ 55245 },
 			},
 		},
@@ -11959,7 +12019,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55172,
 			reagents = {
-				{ 2840,  6 },
+				{ 2840, 6 },
 				{ 81094, 3 },
 				{ 55245 },
 				{ 55150, 4 },
@@ -11969,7 +12029,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55173,
 			reagents = {
-				{ 2840,  8 },
+				{ 2840, 8 },
 				{ 5498 },
 				{ 818 },
 				{ 2880 },
@@ -11989,7 +12049,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 55174 },
 				{ 55246 },
-				{ 2880,  2 },
+				{ 2880, 2 },
 				{ 55151, 2 },
 			},
 		},
@@ -11997,7 +12057,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 41309,
 			reagents = {
-				{ 2841,  2 },
+				{ 2841, 2 },
 				{ 81094, 3 },
 				{ 55150, 4 },
 				{ 55245 },
@@ -12007,7 +12067,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55175,
 			reagents = {
-				{ 2841,  8 },
+				{ 2841, 8 },
 				{ 1210 },
 				{ 81094 },
 				{ 55151, 4 },
@@ -12028,8 +12088,8 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 41310,
 			reagents = {
-				{ 2841,  6 },
-				{ 2880,  2 },
+				{ 2841, 6 },
+				{ 2880, 2 },
 				{ 55245, 2 },
 			},
 		},
@@ -12046,7 +12106,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 41313,
 			reagents = {
-				{ 2841,  6 },
+				{ 2841, 6 },
 				{ 55246 },
 				{ 55151, 4 },
 			},
@@ -12065,9 +12125,9 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 41314,
 			reagents = {
-				{ 2841,  6 },
+				{ 2841, 6 },
 				{ 1206 },
-				{ 3466,  2 },
+				{ 3466, 2 },
 				{ 55151, 2 },
 			},
 		},
@@ -12094,16 +12154,16 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 41318,
 			reagents = {
-				{ 2842, 3 }, -- Silver Bar
-				{ 10998 }, -- Lesser Astral Essence
-				{ 1210 }, -- Shadowgem
+				{ 2842, 3 },
+				{ 10998 },
+				{ 1210 },
 			},
 		},
 		[41065] = {
 			tools = { 55155 },
 			item = 41320,
 			reagents = {
-				{ 2771,  2 },
+				{ 2771, 2 },
 				{ 55151, 2 },
 			},
 		},
@@ -12118,7 +12178,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 41325,
 			reagents = {
-				{ 2842,  5 },
+				{ 2842, 5 },
 				{ 3466 },
 				{ 55246, 2 },
 				{ 55151, 2 },
@@ -12129,15 +12189,16 @@ AtlasTW.SpellDB = {
 			item = 41329,
 			reagents = {
 				{ 41319 },
-				{ 3466,  2 },
+				{ 3466, 2 },
 				{ 55246, 4 },
 				{ 55151, 8 },
 				{ 55249, 3 },
-				{ 1206,  3 },
+				{ 1206, 3 },
 			},
 		},
 		[41073] = {
 			requires = L["Anvil"],
+			tools = { 6219, 5956 },
 			item = 41326,
 			reagents = {
 				{ 2841, 2 },
@@ -12149,6 +12210,7 @@ AtlasTW.SpellDB = {
 		},
 		[41077] = {
 			requires = L["Anvil"],
+			tools = { 6219, 5956 },
 			item = 41328,
 			reagents = {
 				{ 4389 },
@@ -12160,12 +12222,13 @@ AtlasTW.SpellDB = {
 		},
 		[41075] = {
 			requires = L["Anvil"],
+			tools = { 6219, 5956 },
 			item = 41327,
 			reagents = {
-				{ 4389 },
-				{ 3864 },
 				{ 10559, 2 },
+				{ 4389 },
 				{ 10561, 4 },
+				{ 3864 },
 				{ 7191 },
 			},
 		},
@@ -12204,7 +12267,7 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 41324,
 			reagents = {
-				{ 38600 },
+				{ 3860, 10 },
 				{ 7971, 3 },
 				{ 7909 },
 				{ 55247 },
@@ -12223,7 +12286,7 @@ AtlasTW.SpellDB = {
 			item = 55256,
 			reagents = {
 				{ 41321 },
-				{ 3466,  2 },
+				{ 3466, 2 },
 				{ 55251, 3 },
 				{ 55153, 3 },
 			},
@@ -12241,10 +12304,10 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41327 },
 			item = 55271,
 			reagents = {
-				{ 123592 },
-				{ 6037,  6 },
-				{ 7910,  3 },
-				{ 7909,  3 },
+				{ 12359, 12 },
+				{ 6037, 6 },
+				{ 7910, 3 },
+				{ 7909, 3 },
 				{ 3466 },
 			},
 		},
@@ -12252,19 +12315,19 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41327 },
 			item = 55268,
 			reagents = {
-				{ 6037,  4 },
+				{ 6037, 4 },
 				{ 12361, 2 },
 				{ 55247, 2 },
-				{ 7069,  4 },
+				{ 7069, 4 },
 			},
 		},
 		[41101] = {
 			tools = { 41328, 41327 },
 			item = 55273,
 			reagents = {
-				{ 123594 },
+				{ 12359, 14 },
 				{ 55154, 4 },
-				{ 3864,  3 },
+				{ 3864, 3 },
 				{ 55246 },
 			},
 		},
@@ -12272,7 +12335,7 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41327 },
 			item = 55267,
 			reagents = {
-				{ 123592 },
+				{ 12359, 12 },
 				{ 55154, 6 },
 				{ 12361 },
 				{ 3829 },
@@ -12299,7 +12362,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 41344,
 			reagents = {
-				{ 2772,  3 },
+				{ 2772, 3 },
 				{ 55152, 3 },
 			},
 		},
@@ -12327,7 +12390,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 55148,
 			reagents = {
-				{ 35752 },
+				{ 3575, 12 },
 				{ 1529, 2 },
 				{ 1705, 2 },
 				{ 3357, 2 },
@@ -12348,8 +12411,8 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55145,
 			reagents = {
-				{ 3575,  8 },
-				{ 3577,  2 },
+				{ 3575, 8 },
+				{ 3577, 2 },
 				{ 55249, 2 },
 			},
 		},
@@ -12367,7 +12430,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 55147,
 			reagents = {
-				{ 35752 },
+				{ 3575, 12 },
 				{ 3577, 4 },
 				{ 3864, 4 },
 				{ 1206, 2 },
@@ -12396,7 +12459,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 41340,
 			reagents = {
-				{ 3577,  8 },
+				{ 3577, 8 },
 				{ 55246, 3 },
 				{ 55152, 3 },
 			},
@@ -12406,8 +12469,8 @@ AtlasTW.SpellDB = {
 			item = 41342,
 			reagents = {
 				{ 41332 },
-				{ 3575,  2 },
-				{ 2838,  6 },
+				{ 3575, 2 },
+				{ 2838, 6 },
 				{ 3355 },
 				{ 55152, 2 },
 			},
@@ -12416,8 +12479,8 @@ AtlasTW.SpellDB = {
 			tools = { 41328 },
 			item = 41343,
 			reagents = {
-				{ 3860,  8 },
-				{ 4234,  2 },
+				{ 3860, 8 },
+				{ 4234, 2 },
 				{ 55152, 2 },
 			},
 		},
@@ -12450,8 +12513,8 @@ AtlasTW.SpellDB = {
 			tools = { 41328 },
 			item = 55196,
 			reagents = {
-				{ 3860,  8 },
-				{ 7909,  2 },
+				{ 3860, 8 },
+				{ 7909, 2 },
 				{ 55152, 2 },
 			},
 		},
@@ -12459,7 +12522,7 @@ AtlasTW.SpellDB = {
 			tools = { 41328 },
 			item = 56020,
 			reagents = {
-				{ 3858,  3 },
+				{ 3858, 3 },
 				{ 55153, 3 },
 			},
 		},
@@ -12478,10 +12541,10 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 41345,
 			reagents = {
-				{ 3860,  14 },
-				{ 3577,  4 },
+				{ 3860, 14 },
+				{ 3577, 4 },
 				{ 55251, 2 },
-				{ 7909,  2 },
+				{ 7909, 2 },
 				{ 55153, 4 },
 			},
 		},
@@ -12490,7 +12553,7 @@ AtlasTW.SpellDB = {
 			item = 41349,
 			reagents = {
 				{ 55250, 5 },
-				{ 6371,  3 },
+				{ 6371, 3 },
 				{ 7077 },
 				{ 7068 },
 			},
@@ -12574,8 +12637,8 @@ AtlasTW.SpellDB = {
 			item = 55272,
 			reagents = {
 				{ 12359, 28 },
-				{ 3577,  4 },
-				{ 7082,  2 },
+				{ 3577, 4 },
+				{ 7082, 2 },
 				{ 61673, 2 },
 				{ 55154, 8 },
 			},
@@ -12585,9 +12648,9 @@ AtlasTW.SpellDB = {
 			item = 55266,
 			reagents = {
 				{ 12359, 20 },
-				{ 7910,  2 },
+				{ 7910, 2 },
 				{ 55250, 2 },
-				{ 3466,  2 },
+				{ 3466, 2 },
 				{ 55246, 4 },
 			},
 		},
@@ -12596,8 +12659,8 @@ AtlasTW.SpellDB = {
 			item = 56023,
 			reagents = {
 				{ 41322 },
-				{ 7909,  3 },
-				{ 6372,  3 },
+				{ 7909, 3 },
+				{ 6372, 3 },
 				{ 55152, 3 },
 			},
 		},
@@ -12606,7 +12669,7 @@ AtlasTW.SpellDB = {
 			item = 55260,
 			reagents = {
 				{ 41321 },
-				{ 7910,  2 },
+				{ 7910, 2 },
 				{ 55246, 4 },
 				{ 55247 },
 			},
@@ -12616,10 +12679,10 @@ AtlasTW.SpellDB = {
 			item = 56032,
 			reagents = {
 				{ 56033 },
-				{ 7910,  12 },
-				{ 552502 },
-				{ 7078,  8 },
-				{ 7077,  12 },
+				{ 7910, 12 },
+				{ 55250, 12 },
+				{ 7078, 8 },
+				{ 7077, 12 },
 				{ 55248, 8 },
 			},
 		},
@@ -12630,7 +12693,7 @@ AtlasTW.SpellDB = {
 				{ 56033 },
 				{ 55252 },
 				{ 12364, 5 },
-				{ 7910,  5 },
+				{ 7910, 5 },
 				{ 12361, 5 },
 				{ 55248, 5 },
 			},
@@ -12639,9 +12702,9 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 56033,
 			reagents = {
-				{ 3577,  8 },
+				{ 3577, 8 },
 				{ 12360, 2 },
-				{ 3466,  2 },
+				{ 3466, 2 },
 			},
 		},
 		[41273] = {
@@ -12658,18 +12721,18 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 55202,
 			reagents = {
-				{ 3575,  6 },
+				{ 3575, 6 },
 				{ 3577 },
 				{ 55249, 2 },
-				{ 3864,  2 },
+				{ 3864, 2 },
 			},
 		},
 		[41277] = {
 			tools = { 55155, 41326 },
 			item = 55197,
 			reagents = {
-				{ 3860,  6 },
-				{ 7910,  2 },
+				{ 3860, 6 },
+				{ 7910, 2 },
 				{ 55249, 2 },
 				{ 55153, 4 },
 			},
@@ -12689,10 +12752,10 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 55204,
 			reagents = {
-				{ 6037,  12 },
-				{ 7075,  4 },
-				{ 7067,  4 },
-				{ 7068,  4 },
+				{ 6037, 12 },
+				{ 7075, 4 },
+				{ 7067, 4 },
+				{ 7068, 4 },
 				{ 55153, 8 },
 			},
 		},
@@ -12700,8 +12763,8 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 55195,
 			reagents = {
-				{ 3575,  6 },
-				{ 3864,  2 },
+				{ 3575, 6 },
+				{ 3864, 2 },
 				{ 55249, 2 },
 				{ 55152, 3 },
 			},
@@ -12711,7 +12774,7 @@ AtlasTW.SpellDB = {
 			item = 56034,
 			reagents = {
 				{ 55251, 2 },
-				{ 1705,  8 },
+				{ 1705, 8 },
 				{ 55246, 2 },
 				{ 55152, 4 },
 			},
@@ -12721,9 +12784,9 @@ AtlasTW.SpellDB = {
 			item = 56035,
 			reagents = {
 				{ 12655, 3 },
-				{ 7082,  3 },
-				{ 7069,  5 },
-				{ 7081,  5 },
+				{ 7082, 3 },
+				{ 7069, 5 },
+				{ 7081, 5 },
 			},
 		},
 		[41303] = {
@@ -12740,9 +12803,9 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 56036,
 			reagents = {
-				{ 3577,  8 },
-				{ 3860,  2 },
-				{ 4304,  2 },
+				{ 3577, 8 },
+				{ 3860, 2 },
+				{ 4304, 2 },
 				{ 55246, 6 },
 			},
 		},
@@ -12750,10 +12813,10 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 55243,
 			reagents = {
-				{ 3860,  18 },
+				{ 3860, 18 },
 				{ 55249, 3 },
 				{ 55251, 3 },
-				{ 3864,  3 },
+				{ 3864, 3 },
 				{ 55152, 6 },
 			},
 		},
@@ -12762,7 +12825,7 @@ AtlasTW.SpellDB = {
 			item = 55261,
 			reagents = {
 				{ 41321 },
-				{ 7910,  5 },
+				{ 7910, 5 },
 				{ 55154, 3 },
 				{ 55247 },
 			},
@@ -12784,7 +12847,7 @@ AtlasTW.SpellDB = {
 				{ 12359, 24 },
 				{ 12800, 2 },
 				{ 12799, 2 },
-				{ 7075,  2 },
+				{ 7075, 2 },
 				{ 55154, 4 },
 			},
 		},
@@ -12792,7 +12855,7 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 55198,
 			reagents = {
-				{ 3860,  12 },
+				{ 3860, 12 },
 				{ 55251, 4 },
 				{ 55247 },
 			},
@@ -12811,7 +12874,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 56037,
 			reagents = {
-				{ 2840,  5 },
+				{ 2840, 5 },
 				{ 55245, 2 },
 				{ 55150, 2 },
 			},
@@ -12820,8 +12883,8 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 56038,
 			reagents = {
-				{ 2841,  8 },
-				{ 2836,  4 },
+				{ 2841, 8 },
+				{ 2836, 4 },
 				{ 55151, 2 },
 			},
 		},
@@ -12838,7 +12901,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 56040,
 			reagents = {
-				{ 2842,  4 },
+				{ 2842, 4 },
 				{ 55249 },
 				{ 55246, 2 },
 				{ 55245, 2 },
@@ -12867,7 +12930,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 56043,
 			reagents = {
-				{ 3577,  8 },
+				{ 3577, 8 },
 				{ 3466 },
 				{ 55152, 2 },
 			},
@@ -12885,7 +12948,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 56045,
 			reagents = {
-				{ 2841,  5 },
+				{ 2841, 5 },
 				{ 81094, 2 },
 				{ 55245 },
 			},
@@ -12894,8 +12957,8 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 56046,
 			reagents = {
-				{ 2841,  4 },
-				{ 2842,  2 },
+				{ 2841, 4 },
+				{ 2842, 2 },
 				{ 3384 },
 				{ 55151, 3 },
 			},
@@ -12906,7 +12969,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 8 },
 				{ 55249, 4 },
-				{ 8956,  2 },
+				{ 8956, 2 },
 				{ 55153, 2 },
 			},
 		},
@@ -12925,30 +12988,31 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 55242,
 			reagents = {
-				{ 3860,  24 },
-				{ 3864,  6 },
+				{ 3860, 24 },
+				{ 3864, 6 },
 				{ 55249, 6 },
-				{ 7075,  2 },
+				{ 7075, 2 },
 				{ 55246, 4 },
 			},
 		},
 		[41354] = { --1.18 Jewelcrafting: Skyfire Jewel
+			tools = { 41328, 41326 },
 			item = 55255,
 			reagents = {
 				{ 41321 },
 				{ 55251, 3 },
-				{ 7069,  3 },
+				{ 7069, 3 },
 			},
 		},
 		[41356] = {
 			tools = { 55155 },
 			item = 55244,
 			reagents = {
-				{ 8170,  12 },
+				{ 8170, 12 },
 				{ 10648, 20 },
 				{ 16203, 2 },
 				{ 12655, 2 },
-				{ 7076,  3 },
+				{ 7076, 3 },
 			},
 		},
 		[41541] = {
@@ -12956,7 +13020,7 @@ AtlasTW.SpellDB = {
 			item = 56048,
 			reagents = {
 				{ 41322 },
-				{ 7909,  4 },
+				{ 7909, 4 },
 				{ 55246, 2 },
 				{ 55152, 2 },
 			},
@@ -12965,7 +13029,7 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 55155 },
 			item = 56049,
 			reagents = {
-				{ 38602 },
+				{ 3860, 12 },
 				{ 3864, 2 },
 			},
 		},
@@ -12973,8 +13037,8 @@ AtlasTW.SpellDB = {
 			tools = { 41326, 55155 },
 			item = 56050,
 			reagents = {
-				{ 3577,  10 },
-				{ 4234,  4 },
+				{ 3577, 10 },
+				{ 4234, 4 },
 				{ 55251, 2 },
 			},
 		},
@@ -12992,9 +13056,9 @@ AtlasTW.SpellDB = {
 			tools = { 41326, 55155 },
 			item = 56052,
 			reagents = {
-				{ 3860,  18 },
+				{ 3860, 18 },
 				{ 55249, 3 },
-				{ 7070,  2 },
+				{ 7070, 2 },
 				{ 55153, 6 },
 			},
 		},
@@ -13003,9 +13067,9 @@ AtlasTW.SpellDB = {
 			item = 56053,
 			reagents = {
 				{ 41331 },
-				{ 3577,  2 },
-				{ 1529,  6 },
-				{ 3821,  6 },
+				{ 3577, 2 },
+				{ 1529, 6 },
+				{ 3821, 6 },
 				{ 55247, 2 },
 			},
 		},
@@ -13013,8 +13077,8 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 56054,
 			reagents = {
-				{ 3860,  10 },
-				{ 3466,  2 },
+				{ 3860, 10 },
+				{ 3466, 2 },
 				{ 55152, 4 },
 			},
 		},
@@ -13032,7 +13096,7 @@ AtlasTW.SpellDB = {
 			item = 55316,
 			reagents = {
 				{ 55156 },
-				{ 2880,  3 },
+				{ 2880, 3 },
 				{ 55150, 2 },
 			},
 		},
@@ -13078,7 +13142,7 @@ AtlasTW.SpellDB = {
 			item = 55321,
 			reagents = {
 				{ 55174 },
-				{ 5635,  4 },
+				{ 5635, 4 },
 				{ 55151, 2 },
 			},
 		},
@@ -13098,9 +13162,9 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 41332 },
 				{ 55249, 4 },
-				{ 3864,  4 },
+				{ 3864, 4 },
 				{ 3391 },
-				{ 3466,  2 },
+				{ 3466, 2 },
 			},
 		},
 		[41577] = {
@@ -13125,7 +13189,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55326,
 			reagents = {
-				{ 28410 },
+				{ 2841, 10 },
 				{ 1210, 2 },
 				{ 2453, 2 },
 			},
@@ -13134,11 +13198,11 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 55327,
 			reagents = {
-				{ 2841,  12 },
-				{ 3575,  6 },
-				{ 7069,  2 },
-				{ 7068,  2 },
-				{ 3388,  2 },
+				{ 2841, 12 },
+				{ 3575, 6 },
+				{ 7069, 2 },
+				{ 7068, 2 },
+				{ 3388, 2 },
 				{ 55151, 4 },
 			},
 		},
@@ -13146,7 +13210,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 55328,
 			reagents = {
-				{ 35758 },
+				{ 3575, 18 },
 				{ 2838, 2 },
 				{ 3864, 2 },
 			},
@@ -13164,13 +13228,13 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 56047,
 			reagents = {
-				{ 3575,  4 },
+				{ 3575, 4 },
 				{ 55249, 5 },
-				{ 3466,  2 },
+				{ 3466, 2 },
 				{ 55152, 2 },
 			},
 		},
-		[41591] = { --1.18 Jewelcrafting: Specter's Shade Ring
+		[41591] = { --1.18 Jewelcrafting: Specter\\'s Shade Ring","","","Schattenring des Gespensts","幽灵戒指","Specter\\'s Shade Ring
 			tools = { 55155, 41326 },
 			item = 55324,
 			reagents = {
@@ -13395,9 +13459,9 @@ AtlasTW.SpellDB = {
 			item = 56059,
 			reagents = {
 				{ 56033 },
-				{ 6037,  8 },
-				{ 128000 },
-				{ 3466,  6 },
+				{ 6037, 8 },
+				{ 12800, 10 },
+				{ 3466, 6 },
 				{ 55154, 6 },
 				{ 55247, 6 },
 			},
@@ -13407,10 +13471,10 @@ AtlasTW.SpellDB = {
 			item = 56060,
 			reagents = {
 				{ 12360, 8 },
-				{ 552502 },
-				{ 7078,  6 },
-				{ 7077,  6 },
-				{ 7068,  6 },
+				{ 55250, 12 },
+				{ 7078, 6 },
+				{ 7077, 6 },
+				{ 7068, 6 },
 				{ 55248, 2 },
 			},
 		},
@@ -13419,10 +13483,10 @@ AtlasTW.SpellDB = {
 			item = 56061,
 			reagents = {
 				{ 12360, 4 },
-				{ 126552 },
-				{ 7910,  8 },
-				{ 7078,  4 },
-				{ 7068,  12 },
+				{ 12655, 12 },
+				{ 7910, 8 },
+				{ 7078, 4 },
+				{ 7068, 12 },
 				{ 55247, 6 },
 			},
 		},
@@ -13431,11 +13495,11 @@ AtlasTW.SpellDB = {
 			item = 56062,
 			reagents = {
 				{ 12360, 6 },
-				{ 3577,  28 },
+				{ 3577, 28 },
 				{ 15416, 32 },
 				{ 17010, 4 },
 				{ 55154, 8 },
-				{ 7078,  6 },
+				{ 7078, 6 },
 			},
 		},
 		[41704] = {
@@ -13443,10 +13507,10 @@ AtlasTW.SpellDB = {
 			item = 56063,
 			reagents = {
 				{ 12655, 20 },
-				{ 7082,  8 },
-				{ 7080,  8 },
-				{ 7076,  8 },
-				{ 7078,  8 },
+				{ 7082, 8 },
+				{ 7080, 8 },
+				{ 7076, 8 },
+				{ 7078, 8 },
 				{ 12803, 8 },
 			},
 		},
@@ -13455,10 +13519,10 @@ AtlasTW.SpellDB = {
 			item = 56064,
 			reagents = {
 				{ 12360, 8 },
-				{ 6037,  8 },
-				{ 128002 },
+				{ 6037, 8 },
+				{ 12800, 12 },
 				{ 61673, 4 },
-				{ 551542 },
+				{ 55154, 12 },
 				{ 55248, 4 },
 			},
 		},
@@ -13468,8 +13532,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 41321 },
 				{ 12799, 6 },
-				{ 7076,  6 },
-				{ 3356,  6 },
+				{ 7076, 6 },
+				{ 3356, 6 },
 				{ 55154, 8 },
 				{ 55247, 3 },
 			},
@@ -13480,7 +13544,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 56033 },
 				{ 12361, 5 },
-				{ 7080,  2 },
+				{ 7080, 2 },
 				{ 55247 },
 			},
 		},
@@ -13489,7 +13553,7 @@ AtlasTW.SpellDB = {
 			item = 56067,
 			reagents = {
 				{ 11371, 4 },
-				{ 7077,  8 },
+				{ 7077, 8 },
 				{ 11382, 2 },
 			},
 		},
@@ -13499,7 +13563,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 8 },
 				{ 12799, 4 },
-				{ 7081,  6 },
+				{ 7081, 6 },
 				{ 9187 },
 				{ 55153, 4 },
 			},
@@ -13508,20 +13572,20 @@ AtlasTW.SpellDB = {
 			tools = { 41326, 41328 },
 			item = 56069,
 			reagents = {
-				{ 3860,  20 },
-				{ 7971,  2 },
+				{ 3860, 20 },
+				{ 7971, 2 },
 				{ 55249, 4 },
 				{ 55251, 4 },
-				{ 3466,  8 },
+				{ 3466, 8 },
 			},
 		},
 		[41718] = {
 			tools = { 41326, 41328 },
 			item = 56070,
 			reagents = {
-				{ 3860,  8 },
-				{ 3466,  6 },
-				{ 3864,  4 },
+				{ 3860, 8 },
+				{ 3466, 6 },
+				{ 3864, 4 },
 				{ 55152, 4 },
 				{ 55246, 4 },
 			},
@@ -13530,10 +13594,10 @@ AtlasTW.SpellDB = {
 			tools = { 41326, 41328 },
 			item = 56071,
 			reagents = {
-				{ 3860,  12 },
-				{ 6037,  8 },
-				{ 7971,  4 },
-				{ 8839,  2 },
+				{ 3860, 12 },
+				{ 6037, 8 },
+				{ 7971, 4 },
+				{ 8839, 2 },
 				{ 55251, 4 },
 				{ 55153, 8 },
 			},
@@ -13542,7 +13606,7 @@ AtlasTW.SpellDB = {
 			tools = { 41326, 41328 },
 			item = 56072,
 			reagents = {
-				{ 126552 },
+				{ 12655, 12 },
 				{ 12363, 4 },
 				{ 61673, 8 },
 				{ 16203, 2 },
@@ -13554,9 +13618,9 @@ AtlasTW.SpellDB = {
 			item = 56073,
 			reagents = {
 				{ 12359, 8 },
-				{ 7971,  2 },
+				{ 7971, 2 },
 				{ 11175, 2 },
-				{ 7067,  4 },
+				{ 7067, 4 },
 				{ 55153, 4 },
 			},
 		},
@@ -13564,8 +13628,8 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55330,
 			reagents = {
-				{ 3576,  8 },
-				{ 2450,  2 },
+				{ 3576, 8 },
+				{ 2450, 2 },
 				{ 55151, 2 },
 			},
 		},
@@ -13573,7 +13637,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 55331,
 			reagents = {
-				{ 35750 },
+				{ 3575, 10 },
 				{ 1210, 2 },
 				{ 5500 },
 				{ 5635, 8 },
@@ -13593,7 +13657,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55333,
 			reagents = {
-				{ 2840,  5 },
+				{ 2840, 5 },
 				{ 81094, 2 },
 				{ 55150, 2 },
 			},
@@ -13602,20 +13666,20 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55334,
 			reagents = {
-				{ 2842,  4 },
-				{ 1206,  4 },
+				{ 2842, 4 },
+				{ 1206, 4 },
 				{ 55246, 2 },
 				{ 55151, 2 },
 				{ 3390 },
-				{ 5635,  8 },
+				{ 5635, 8 },
 			},
 		},
 		[41736] = {
 			tools = { 55155, 41326 },
 			item = 55335,
 			reagents = {
-				{ 3575,  6 },
-				{ 3864,  4 },
+				{ 3575, 6 },
+				{ 3864, 4 },
 				{ 55246, 2 },
 			},
 		},
@@ -13632,7 +13696,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55337,
 			reagents = {
-				{ 28410 },
+				{ 2841, 10 },
 				{ 1206, 2 },
 				{ 55245 },
 			},
@@ -13641,18 +13705,18 @@ AtlasTW.SpellDB = {
 			tools = { 55155, 41326 },
 			item = 55338,
 			reagents = {
-				{ 3575,  10 },
-				{ 1529,  2 },
+				{ 3575, 10 },
+				{ 1529, 2 },
 				{ 55245, 2 },
-				{ 1288,  6 },
-				{ 3466,  2 },
+				{ 1288, 6 },
+				{ 3466, 2 },
 			},
 		},
 		[41744] = {
 			tools = { 55155, 41326 },
 			item = 55339,
 			reagents = {
-				{ 3859,  7 },
+				{ 3859, 7 },
 				{ 55250, 2 },
 				{ 55245, 2 },
 			},
@@ -13672,8 +13736,8 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55341,
 			reagents = {
-				{ 2842,  2 },
-				{ 5498,  2 },
+				{ 2842, 2 },
+				{ 5498, 2 },
 				{ 55249, 4 },
 				{ 55246, 2 },
 				{ 55151, 2 },
@@ -13683,8 +13747,8 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55210,
 			reagents = {
-				{ 3859,  3 },
-				{ 1705,  2 },
+				{ 3859, 3 },
+				{ 1705, 2 },
 				{ 55152, 2 },
 			},
 		},
@@ -13692,8 +13756,8 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55211,
 			reagents = {
-				{ 3859,  4 },
-				{ 1529,  2 },
+				{ 3859, 4 },
+				{ 1529, 2 },
 				{ 55152, 2 },
 			},
 		},
@@ -13701,7 +13765,7 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55212,
 			reagents = {
-				{ 3860,  3 },
+				{ 3860, 3 },
 				{ 55250, 2 },
 				{ 55153, 2 },
 			},
@@ -13710,8 +13774,8 @@ AtlasTW.SpellDB = {
 			tools = { 55155 },
 			item = 55213,
 			reagents = {
-				{ 3860,  3 },
-				{ 9262,  2 },
+				{ 3860, 3 },
+				{ 9262, 2 },
 				{ 55153, 2 },
 			},
 		},
@@ -13765,7 +13829,7 @@ AtlasTW.SpellDB = {
 			item = 56090,
 			reagents = {
 				{ 12359, 6 },
-				{ 6037,  3 },
+				{ 6037, 3 },
 				{ 7910 },
 				{ 7909 },
 			},
@@ -13786,7 +13850,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12655, 2 },
 				{ 7082 },
-				{ 7081,  3 },
+				{ 7081, 3 },
 				{ 55154, 3 },
 			},
 		},
@@ -13796,8 +13860,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 41321 },
 				{ 12655, 6 },
-				{ 7082,  3 },
-				{ 7081,  6 },
+				{ 7082, 3 },
+				{ 7081, 6 },
 				{ 55154, 4 },
 				{ 55247, 4 },
 			},
@@ -13809,8 +13873,8 @@ AtlasTW.SpellDB = {
 				{ 56033 },
 				{ 12360, 2 },
 				{ 12655, 6 },
-				{ 205202 },
-				{ 7075,  20 },
+				{ 20520, 12 },
+				{ 7075, 20 },
 				{ 55248, 3 },
 			},
 		},
@@ -13820,9 +13884,9 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 41341 },
 				{ 55251, 8 },
-				{ 7079,  8 },
-				{ 7070,  12 },
-				{ 3358,  12 },
+				{ 7079, 8 },
+				{ 7070, 12 },
+				{ 3358, 12 },
 				{ 55247, 4 },
 			},
 		},
@@ -13830,7 +13894,7 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 56089,
 			reagents = {
-				{ 3860,  16 },
+				{ 3860, 16 },
 				{ 55152, 4 },
 				{ 3466 },
 				{ 55246, 4 },
@@ -13843,9 +13907,9 @@ AtlasTW.SpellDB = {
 				{ 56033 },
 				{ 55252, 2 },
 				{ 12364, 8 },
-				{ 127990 },
+				{ 12799, 10 },
 				{ 55248, 4 },
-				{ 7078,  6 },
+				{ 7078, 6 },
 			},
 		},
 		[41790] = {
@@ -13854,7 +13918,7 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 56033 },
 				{ 55252 },
-				{ 128036 },
+				{ 12803, 16 },
 				{ 18335, 4 },
 				{ 12799, 6 },
 				{ 55248, 4 },
@@ -13865,7 +13929,7 @@ AtlasTW.SpellDB = {
 			item = 55361,
 			reagents = {
 				{ 12360, 6 },
-				{ 123592 },
+				{ 12359, 12 },
 				{ 55252 },
 				{ 13926, 4 },
 				{ 12800, 8 },
@@ -13876,8 +13940,8 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 55362,
 			reagents = {
-				{ 123596 },
-				{ 5116,  12 },
+				{ 12359, 16 },
+				{ 5116, 12 },
 				{ 12361, 6 },
 				{ 12799, 6 },
 				{ 55247, 2 },
@@ -13887,10 +13951,10 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 55363,
 			reagents = {
-				{ 3577,  24 },
+				{ 3577, 24 },
 				{ 55252 },
-				{ 7080,  8 },
-				{ 7076,  8 },
+				{ 7080, 8 },
+				{ 7076, 8 },
 				{ 12800, 6 },
 				{ 55248, 4 },
 			},
@@ -13899,10 +13963,10 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 55364,
 			reagents = {
-				{ 3577,  32 },
-				{ 7082,  8 },
+				{ 3577, 32 },
+				{ 7082, 8 },
 				{ 12800, 8 },
-				{ 8152,  8 },
+				{ 8152, 8 },
 				{ 55247, 6 },
 			},
 		},
@@ -13912,8 +13976,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 28 },
 				{ 55252, 2 },
-				{ 123642 },
-				{ 7077,  8 },
+				{ 12364, 12 },
+				{ 7077, 8 },
 				{ 61673, 8 },
 				{ 18567 },
 				{ 55248, 6 },
@@ -13923,9 +13987,9 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 55366,
 			reagents = {
-				{ 123598 },
+				{ 12359, 18 },
 				{ 12360, 2 },
-				{ 127990 },
+				{ 12799, 10 },
 				{ 61673, 6 },
 				{ 55154, 6 },
 				{ 55247, 2 },
@@ -13935,7 +13999,7 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 55367,
 			reagents = {
-				{ 3577,  26 },
+				{ 3577, 26 },
 				{ 55252 },
 				{ 17011, 2 },
 				{ 12799, 8 },
@@ -13946,11 +14010,11 @@ AtlasTW.SpellDB = {
 			tools = { 41328, 41326 },
 			item = 55368,
 			reagents = {
-				{ 3577,  32 },
+				{ 3577, 32 },
 				{ 55252 },
 				{ 12364, 6 },
 				{ 12800, 8 },
-				{ 3466,  6 },
+				{ 3466, 6 },
 				{ 55248, 4 },
 			},
 		},
@@ -13959,7 +14023,7 @@ AtlasTW.SpellDB = {
 			item = 56096,
 			reagents = {
 				{ 12360, 6 },
-				{ 6037,  6 },
+				{ 6037, 6 },
 				{ 12800, 8 },
 				{ 61673, 4 },
 				{ 55154, 6 },
@@ -13971,7 +14035,7 @@ AtlasTW.SpellDB = {
 			item = 61818,
 			reagents = {
 				{ 11382 },
-				{ 7077,  6 },
+				{ 7077, 6 },
 				{ 55248 },
 				{ 55154, 2 },
 			},
@@ -13985,8 +14049,8 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[45057] = {
-			item = 51268,
 			quantity = { 1, 3 },
+			item = 51268,
 			reagents = {
 				{ 4359, 4 },
 				{ 2589, 2 },
@@ -13995,11 +14059,12 @@ AtlasTW.SpellDB = {
 		},
 		[45063] = {
 			requires = L["Anvil"], --TODO check
+			tools = { 5956 },
 			item = 51264,
 			reagents = {
-				{ 28402 },
+				{ 2840, 12 },
 				{ 3470, 2 },
-				{ 818,  2 },
+				{ 818, 2 },
 			},
 		},
 		[45066] = {
@@ -14013,6 +14078,10 @@ AtlasTW.SpellDB = {
 		[45069] = {
 			item = 51284,
 			reagents = {
+				{ 2318, 8 },
+				{ 2321, 2 },
+				{ 4231 },
+				{ 818 },
 			},
 		},
 		[45451] = {
@@ -14048,18 +14117,18 @@ AtlasTW.SpellDB = {
 				{ 14342, 6 },
 				{ 12810, 4 },
 				{ 14048, 40 },
-				{ 7082,  6 },
+				{ 7082, 6 },
 				{ 12803, 6 },
 			},
 		},
 		[45459] = {
 			item = 61361,
 			reagents = {
-				{ 612304 },
+				{ 61230, 14 },
 				{ 14342, 4 },
 				{ 14048, 24 },
-				{ 7082,  4 },
-				{ 7080,  4 },
+				{ 7082, 4 },
+				{ 7080, 4 },
 				{ 12803, 4 },
 			},
 		},
@@ -14068,8 +14137,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 61230, 8 },
 				{ 14342, 2 },
-				{ 7080,  2 },
-				{ 7082,  2 },
+				{ 7080, 2 },
+				{ 7082, 2 },
 			},
 		},
 		[45463] = {
@@ -14077,8 +14146,8 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 61230, 8 },
 				{ 14342, 4 },
-				{ 140482 },
-				{ 7082,  4 },
+				{ 14048, 12 },
+				{ 7082, 4 },
 				{ 12803, 4 },
 			},
 		},
@@ -14088,7 +14157,7 @@ AtlasTW.SpellDB = {
 			item = 61364,
 			reagents = {
 				{ 61216, 20 },
-				{ 128102 },
+				{ 12810, 12 },
 				{ 12360, 8 },
 				{ 12799, 8 },
 				{ 12644, 8 },
@@ -14100,7 +14169,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 61365,
 			reagents = {
-				{ 612164 },
+				{ 61216, 14 },
 				{ 12810, 8 },
 				{ 12655, 8 },
 				{ 12364, 8 },
@@ -14150,30 +14219,30 @@ AtlasTW.SpellDB = {
 		[45477] = {
 			item = 61358,
 			reagents = {
-				{ 612292 },
-				{ 128102 },
+				{ 61229, 12 },
+				{ 12810, 12 },
 				{ 15407, 4 },
 				{ 12803, 6 },
-				{ 7082,  6 },
+				{ 7082, 6 },
 			},
 		},
 		[45479] = {
 			item = 61359,
 			reagents = {
 				{ 61229, 8 },
-				{ 128102 },
+				{ 12810, 12 },
 				{ 15407, 2 },
 				{ 14341, 8 },
-				{ 7082,  8 },
+				{ 7082, 8 },
 			},
 		},
 		[45481] = {
 			requires = L["Anvil"],
-			tools = { 5956, 6219 },
+			tools = { 10498, 6219 },
 			item = 61187,
 			reagents = {
 				{ 16006, 8 },
-				{ 128100 },
+				{ 12810, 10 },
 				{ 12655, 8 },
 				{ 15994, 6 },
 				{ 10548, 2 },
@@ -14183,21 +14252,21 @@ AtlasTW.SpellDB = {
 		[45483] = {
 			item = 61188,
 			reagents = {
-				{ 128102 },
+				{ 12810, 12 },
 				{ 15407, 4 },
 				{ 12803, 4 },
-				{ 7076,  8 },
+				{ 7076, 8 },
 				{ 14341, 8 },
 			},
 		},
 		[45485] = {
 			item = 61186,
 			reagents = {
-				{ 140484 },
-				{ 9210,  10 },
+				{ 14048, 14 },
+				{ 9210, 10 },
 				{ 14344 },
 				{ 12810 },
-				{ 8846,  24 },
+				{ 8846, 24 },
 			},
 		},
 		[45487] = {
@@ -14205,12 +14274,12 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 61185,
 			reagents = {
-				{ 123606 },
+				{ 12360, 16 },
 				{ 12811, 6 },
 				{ 12800, 6 },
 				{ 12810, 6 },
 				{ 13926, 6 },
-				{ 126440 },
+				{ 12644, 10 },
 			},
 		},
 		[45611] = {
@@ -14274,16 +14343,16 @@ AtlasTW.SpellDB = {
 		[46066] = {
 			item = 65028,
 			reagents = {
-				{ 57856 },
-				{ 4234, 8 },
-				{ 8343, 2 },
-				{ 6370, 3 },
+				{ 2319, 4 },
+				{ 2321, 2 },
+				{ 5784, 8 },
 				{ 6372 },
+				{ 17058, 2 },
 			},
 		},
 		[46068] = {
-			item = 60001,
 			quantity = 2,
+			item = 60001,
 			reagents = {
 				{ 4306, 2 },
 				{ 9260 },
@@ -14293,41 +14362,43 @@ AtlasTW.SpellDB = {
 			item = 51283,
 			reagents = {
 				{ 4470, 5 },
-				{ 25890 },
+				{ 2589, 10 },
 				{ 50231 },
 			},
 		},
 		[46073] = {
+			tools = { 42004 },
 			item = 51282,
 			reagents = {
-				{ 4470,  20 },
-				{ 4359,  10 },
+				{ 4470, 20 },
+				{ 4359, 10 },
 				{ 17058, 2 },
 			},
 		},
 		[46074] = {
 			item = 51705,
 			reagents = {
-				{ 44700 },
+				{ 4470, 10 },
 				{ 4359, 4 },
 			},
 		},
 		[46075] = {
+			tools = { 5956 },
 			item = 2714,
 			reagents = {
-				{ 3575, 2 },
-				{ 814,  4 },
-				{ 2592, 5 },
+				{ 3575, 4 },
+				{ 2592, 8 },
+				{ 814, 4 },
 			},
 		},
 		[46077] = {
 			item = 65030,
 			reagents = {
-				{ 1630,  5 },
+				{ 1630, 5 },
 				{ 10561 },
 				{ 4359 },
 				{ 4375 },
-				{ 4404,  2 },
+				{ 4404, 2 },
 				{ 10558, 2 },
 			},
 		},
@@ -14345,14 +14416,16 @@ AtlasTW.SpellDB = {
 		},
 		[46600] = { --1.18 Blacksmithing: Lordaeron Breastplate
 			requires = L["Anvil"],
+			tools = { 5956 },
 			item = 46600,
 			reagents = {
-				{ 28406 },
-				{ 818,  2 },
+				{ 2840, 16 },
+				{ 818, 2 },
 				{ 3470, 3 },
 			},
 		},
 		[46608] = { --1.18 Engineering: Hypertech Battery Pack
+			tools = { 6219, 10498 },
 			item = 60098,
 			reagents = {
 				{ 10558 },
@@ -14361,15 +14434,15 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[46610] = {
-			tools = { 59560498 },
+			tools = { 10498, 5956 },
 			item = 60099,
 			reagents = {
 				{ 9449 },
-				{ 60098, 5 },
-				{ 814,   2 },
-				{ 7191,  4 },
+				{ 60098 },
+				{ 814, 2 },
+				{ 7191 },
 				{ 3829 },
-				{ 4375,  6 },
+				{ 4375, 6 },
 				{ 18631 },
 			},
 		},
@@ -14390,7 +14463,7 @@ AtlasTW.SpellDB = {
 		[46622] = {
 			item = 83403,
 			reagents = {
-				{ 42340 },
+				{ 4234, 10 },
 				{ 4291 },
 				{ 4236 },
 			},
@@ -14398,16 +14471,16 @@ AtlasTW.SpellDB = {
 		[46623] = {
 			item = 83402,
 			reagents = {
-				{ 43040 },
+				{ 4304, 10 },
 				{ 4234, 2 },
-				{ 4291, 4 },
+				{ 4291, 3 },
 				{ 2605 },
 			},
 		},
 		[46624] = {
 			item = 83401,
 			reagents = {
-				{ 43042 },
+				{ 4304, 12 },
 				{ 3575, 2 },
 				{ 4291, 4 },
 				{ 2605, 2 },
@@ -14427,7 +14500,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 83410,
 			reagents = {
-				{ 38594 },
+				{ 3859, 14 },
 				{ 7966, 2 },
 			},
 		},
@@ -14436,7 +14509,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 83411,
 			reagents = {
-				{ 38596 },
+				{ 3859, 16 },
 				{ 7966, 4 },
 			},
 		},
@@ -14445,7 +14518,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 83412,
 			reagents = {
-				{ 38598 },
+				{ 3859, 18 },
 				{ 7966, 2 },
 				{ 3864 },
 			},
@@ -14477,7 +14550,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 83415,
 			reagents = {
-				{ 38590 },
+				{ 3859, 10 },
 				{ 6037, 8 },
 				{ 3864, 4 },
 				{ 7966, 3 },
@@ -14497,7 +14570,7 @@ AtlasTW.SpellDB = {
 		[46634] = {
 			item = 83281,
 			reagents = {
-				{ 43390 },
+				{ 4339, 10 },
 				{ 8343, 4 },
 				{ 2842, 2 },
 				{ 2324 },
@@ -14607,7 +14680,7 @@ AtlasTW.SpellDB = {
 			item = 83292,
 			reagents = {
 				{ 14048, 5 },
-				{ 7068,  2 },
+				{ 7068, 2 },
 				{ 14341 },
 			},
 		},
@@ -14624,18 +14697,18 @@ AtlasTW.SpellDB = {
 			item = 83294,
 			reagents = {
 				{ 14048, 8 },
-				{ 7068,  3 },
+				{ 7068, 3 },
 				{ 14341, 4 },
-				{ 7078,  2 },
-				{ 4625,  4 },
-				{ 6037,  2 },
+				{ 7078, 2 },
+				{ 4625, 4 },
+				{ 6037, 2 },
 			},
 		},
 		[46648] = {
 			item = 83295,
 			reagents = {
 				{ 14048, 2 },
-				{ 7077,  4 },
+				{ 7077, 4 },
 				{ 14341 },
 			},
 		},
@@ -14643,7 +14716,7 @@ AtlasTW.SpellDB = {
 			item = 83296,
 			reagents = {
 				{ 14048, 2 },
-				{ 8170,  2 },
+				{ 8170, 2 },
 				{ 14341 },
 				{ 6371 },
 			},
@@ -14652,16 +14725,17 @@ AtlasTW.SpellDB = {
 			item = 83297,
 			reagents = {
 				{ 14048, 4 },
-				{ 7077,  4 },
+				{ 7077, 4 },
 				{ 14341, 2 },
 				{ 4625 },
 			},
 		},
 		[46651] = { --1.18 Blacksmithing: Bloodstone Warblade
+			tools = { 5956 },
 			item = 60294,
 			reagents = {
-				{ 38604 },
-				{ 42780 },
+				{ 3860, 14 },
+				{ 4278, 10 },
 				{ 7966, 4 },
 				{ 3864, 2 },
 			},
@@ -14672,7 +14746,7 @@ AtlasTW.SpellDB = {
 			item = 60293,
 			reagents = {
 				{ 12655, 25 },
-				{ 128080 },
+				{ 12808, 10 },
 				{ 20520, 8 },
 				{ 12810, 2 },
 				{ 12644, 6 },
@@ -14682,7 +14756,7 @@ AtlasTW.SpellDB = {
 		[46653] = {
 			item = 65000,
 			reagents = {
-				{ 8170,  35 },
+				{ 8170, 35 },
 				{ 15414, 40 },
 				{ 12810, 4 },
 				{ 12803, 6 },
@@ -14692,7 +14766,7 @@ AtlasTW.SpellDB = {
 		[46654] = {
 			item = 65001,
 			reagents = {
-				{ 8170,  30 },
+				{ 8170, 30 },
 				{ 15414, 30 },
 				{ 12810, 3 },
 				{ 12803, 4 },
@@ -14702,7 +14776,7 @@ AtlasTW.SpellDB = {
 		[46655] = {
 			item = 65002,
 			reagents = {
-				{ 8170,  30 },
+				{ 8170, 30 },
 				{ 15414, 25 },
 				{ 12810, 2 },
 				{ 12803, 4 },
@@ -14712,13 +14786,13 @@ AtlasTW.SpellDB = {
 		[46656] = {
 			item = 65003,
 			reagents = {
-				{ 140482 },
+				{ 14048, 12 },
 				{ 14256, 20 },
 				{ 12662, 20 },
 				{ 10285, 8 },
-				{ 7971,  4 },
+				{ 7971, 4 },
 				{ 14341 },
-				{ 205200 },
+				{ 20520, 10 },
 			},
 		},
 		[46657] = {
@@ -14726,34 +14800,34 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 65004,
 			reagents = {
-				{ 123604 },
-				{ 3577,  6 },
+				{ 12360, 14 },
+				{ 3577, 6 },
 				{ 12938 },
 				{ 11752 },
-				{ 8846,  10 },
+				{ 8846, 10 },
 				{ 11382, 2 },
 				{ 12644, 4 },
-				{ 4278,  10 },
 			},
 		},
 		[46659] = {
 			item = 65006,
 			reagents = {
-				{ 8170,  30 },
-				{ 128106 },
+				{ 8170, 30 },
+				{ 12810, 16 },
 				{ 20295 },
 				{ 15407, 4 },
 				{ 15415, 40 },
-				{ 7082,  12 },
+				{ 7082, 12 },
 			},
 		},
 		[46660] = { --Blacksmithing: Imperial Plate Gauntlets 1.18
 			requires = L["Anvil"],
+			tools = { 5956 },
 			item = 65007,
 			reagents = {
 				{ 12359, 24 },
 				{ 7910 },
-				{ 8170,  4 },
+				{ 8170, 4 },
 			},
 		},
 		[46661] = {
@@ -14761,11 +14835,11 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 65008,
 			reagents = {
-				{ 123604 },
-				{ 200020 },
-				{ 9197,  20 },
-				{ 128030 },
-				{ 123640 },
+				{ 12360, 14 },
+				{ 20002, 10 },
+				{ 9197, 20 },
+				{ 12803, 10 },
+				{ 12364, 10 },
 				{ 12644, 4 },
 			},
 		},
@@ -14781,6 +14855,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[46663] = {
+			tools = { 5956 },
 			item = 65010,
 			reagents = {
 				{ 2840, 8 },
@@ -14788,6 +14863,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[46664] = {
+			tools = { 5956 },
 			item = 65011,
 			reagents = {
 				{ 2840, 8 },
@@ -14796,6 +14872,7 @@ AtlasTW.SpellDB = {
 			},
 		},
 		[46665] = {
+			tools = { 5956 },
 			item = 65012,
 			reagents = {
 				{ 2841, 6 },
@@ -14805,26 +14882,28 @@ AtlasTW.SpellDB = {
 				{ 3391, 2 },
 			},
 		},
-		[46666] = {       --1.18 Blacksmithing: Frostbound Slasher
+		[46666] = { --1.18 Blacksmithing: Frostbound Slasher
 			requires = L["Anvil"], --TODO check
+			tools = { 5956 },
 			item = 65013,
 			reagents = {
-				{ 38590 },
+				{ 3859, 10 },
 				{ 3486, 4 },
 				{ 3466, 4 },
 				{ 3829, 2 },
 				{ 7070, 4 },
 			},
 		},
-		[46667] = {       --1.18 Blacksmithing: Pauldron of Deflection
+		[46667] = { --1.18 Blacksmithing: Pauldron of Deflection
 			requires = L["Anvil"], --TODO check
+			tools = { 5956 },
 			item = 65014,
 			reagents = {
-				{ 113710 },
-				{ 123600 },
+				{ 11371, 10 },
+				{ 12360, 10 },
 				{ 12809, 8 },
 				{ 22203, 4 },
-				{ 7076,  6 },
+				{ 7076, 6 },
 			},
 		},
 		[46695] = {
@@ -14839,7 +14918,7 @@ AtlasTW.SpellDB = {
 		[47015] = {
 			item = 81061,
 			reagents = {
-				{ 8170,  6 },
+				{ 8170, 6 },
 				{ 14047, 4 },
 				{ 14341 },
 			},
@@ -14847,7 +14926,7 @@ AtlasTW.SpellDB = {
 		[47016] = {
 			item = 81062,
 			reagents = {
-				{ 81702 },
+				{ 8170, 12 },
 				{ 12803 },
 				{ 14341 },
 			},
@@ -14855,7 +14934,7 @@ AtlasTW.SpellDB = {
 		[47017] = {
 			item = 81063,
 			reagents = {
-				{ 81700 },
+				{ 8170, 10 },
 				{ 7080 },
 				{ 12803 },
 				{ 14341 },
@@ -14864,7 +14943,7 @@ AtlasTW.SpellDB = {
 		[47018] = {
 			item = 81064,
 			reagents = {
-				{ 81702 },
+				{ 8170, 12 },
 				{ 8343, 2 },
 				{ 14341 },
 			},
@@ -14872,7 +14951,7 @@ AtlasTW.SpellDB = {
 		[47019] = {
 			item = 81066,
 			reagents = {
-				{ 8170,  24 },
+				{ 8170, 24 },
 				{ 12803, 4 },
 				{ 15407 },
 				{ 14341 },
@@ -14881,7 +14960,7 @@ AtlasTW.SpellDB = {
 		[47020] = {
 			item = 81065,
 			reagents = {
-				{ 8170,  8 },
+				{ 8170, 8 },
 				{ 14047, 4 },
 				{ 14341 },
 			},
@@ -14928,7 +15007,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 60291,
 			reagents = {
-				{ 123596 },
+				{ 12359, 16 },
 				{ 12655, 2 },
 				{ 20520, 2 },
 				{ 7080 },
@@ -14939,7 +15018,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 60292,
 			reagents = {
-				{ 123594 },
+				{ 12359, 14 },
 				{ 12655, 2 },
 				{ 20520, 3 },
 				{ 12810 },
@@ -14951,7 +15030,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 60287,
 			reagents = {
-				{ 123592 },
+				{ 12359, 12 },
 				{ 12655, 2 },
 				{ 20520, 2 },
 				{ 12810, 2 },
@@ -14984,7 +15063,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 60573,
 			reagents = {
-				{ 123596 },
+				{ 12359, 16 },
 				{ 11371 },
 				{ 11754, 6 },
 				{ 7078 },
@@ -14997,10 +15076,10 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 24 },
 				{ 11371 },
-				{ 117542 },
-				{ 8170,  6 },
+				{ 11754, 12 },
+				{ 8170, 6 },
 				{ 20520, 2 },
-				{ 7078,  2 },
+				{ 7078, 2 },
 			},
 		},
 		[47031] = {
@@ -15008,11 +15087,11 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 60575,
 			reagents = {
-				{ 123596 },
+				{ 12359, 20 },
 				{ 11371 },
-				{ 11754, 6 },
-				{ 7078,  2 },
-				{ 8170,  2 },
+				{ 11754, 8 },
+				{ 7078, 2 },
+				{ 8170, 4 },
 			},
 		},
 		[47032] = {
@@ -15020,8 +15099,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 60576,
 			reagents = {
-				{ 123592 },
-				{ 7078,  2 },
+				{ 12359, 12 },
+				{ 7078, 2 },
 				{ 11754, 5 },
 				{ 12810 },
 			},
@@ -15033,9 +15112,9 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 40 },
 				{ 11371, 8 },
-				{ 117548 },
+				{ 11754, 18 },
 				{ 12810, 8 },
-				{ 7078,  8 },
+				{ 7078, 8 },
 			},
 		},
 		[47034] = {
@@ -15043,33 +15122,34 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 60578,
 			reagents = {
-				{ 123592 },
-				{ 7077,  7 },
+				{ 12359, 12 },
+				{ 7077, 7 },
 				{ 11754, 5 },
 				{ 12810, 3 },
-				{ 7078,  2 },
+				{ 7078, 2 },
 			},
 		},
 		[47035] = {
 			item = 65021,
 			reagents = {
 				{ 8211 },
-				{ 128106 },
-				{ 200020 },
+				{ 12810, 16 },
+				{ 20002, 10 },
 				{ 12803, 20 },
 				{ 15407, 4 },
 				{ 14227, 4 },
 			},
 		},
-		[47101] = { --1.18 Survival: Survivalist's Skinning Knife
+		[47101] = { --1.18 Survival: Survivalist\\'s Skinning Knife","","","Überlebenskünstler-Kürschnermesser","生存剥皮刀","Survivalist\\'s Skinning Knife
 			item = 7009,
 			reagents = {
-				[1] = { 2835, 2 },
-				[2] = { 2320 },
-				[3] = { 2318 },
+				{ 2835, 2 },
+				{ 2320 },
+				{ 2318 },
 			},
 		},
 		[47103] = { --1.18 Survival: Driftwood Fishing Pole
+			tools = { 42004 },
 			item = 7010,
 			reagents = {
 				{ 2320, 2 },
@@ -15081,10 +15161,9 @@ AtlasTW.SpellDB = {
 			requires = L["Cooking Fire"],
 			item = 83309,
 			reagents = {
-				{ 8838 },
+				{ 36668 },
 				{ 22529 },
-				{ 51714, 2 }, -- 3->2 1.18
-				--{6370}.18
+				{ 42000, 2 },
 			},
 		},
 		[51924] = {
@@ -15103,7 +15182,8 @@ AtlasTW.SpellDB = {
 				{ 8925 },
 			},
 		},
-		[52747] = { --1.18
+		[52747] = { --Voltage-Neutralizing Nature Reflector
+			tools = { 5956, 6219 },
 			item = 58304,
 			reagents = {
 				{ 11371, 8 },
@@ -15113,21 +15193,22 @@ AtlasTW.SpellDB = {
 				{ 12800, 2 },
 			},
 		},
-		[52749] = { --1.18
+		[52749] = { --Giga-Charged Arcane Reflector
+			tools = { 5956, 6219 },
 			item = 58305,
 			reagents = {
 				{ 11371, 8 },
 				{ 18631, 4 },
-				{ 7910,  4 },
+				{ 7910, 4 },
 				{ 12803, 6 },
 				{ 12363, 2 },
-				{ 7076,  4 },
+				{ 7076, 4 },
 			},
 		},
 		[54001] = { --Blue Dragonscale Boots
 			item = 65015,
 			reagents = {
-				{ 8170,  24 },
+				{ 8170, 24 },
 				{ 15415, 25 },
 				{ 15407 },
 				{ 14341 },
@@ -15138,9 +15219,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 61648,
 			reagents = {
-				{ 123596 },
-				{ 7076,  3 },
-				{ 7078,  3 },
+				{ 12359, 16 },
+				{ 7076, 3 },
+				{ 7078, 3 },
 			},
 		},
 		[54005] = {
@@ -15148,18 +15229,18 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 61649,
 			reagents = {
-				{ 126552 },
+				{ 12655, 12 },
 				{ 12360, 2 },
-				{ 7076,  6 },
-				{ 7078,  6 },
+				{ 7076, 6 },
+				{ 7078, 6 },
 			},
 		},
 		[54007] = {
 			item = 65038,
 			reagents = {
 				{ 17010, 9 },
-				{ 170122 },
-				{ 128102 },
+				{ 17012, 12 },
+				{ 12810, 12 },
 				{ 12607, 6 },
 				{ 15407, 5 },
 				{ 14227, 4 },
@@ -15170,7 +15251,7 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 65039,
 			reagents = {
-				{ 113714 },
+				{ 11371, 14 },
 				{ 17010, 6 },
 				{ 17011, 5 },
 			},
@@ -15181,7 +15262,7 @@ AtlasTW.SpellDB = {
 				{ 14342, 6 },
 				{ 17010, 5 },
 				{ 17011, 4 },
-				{ 7078,  10 },
+				{ 7078, 10 },
 				{ 14227, 4 },
 			},
 		},
@@ -15202,7 +15283,7 @@ AtlasTW.SpellDB = {
 				{ 17011, 6 },
 				{ 17010, 3 },
 				{ 14227, 4 },
-				{ 7076,  6 },
+				{ 7076, 6 },
 				{ 12607, 6 },
 				{ 15407, 4 },
 			},
@@ -15211,7 +15292,7 @@ AtlasTW.SpellDB = {
 			item = 65022,
 			reagents = {
 				{ 4304, 40 },
-				{ 70752 },
+				{ 7075, 12 },
 				{ 8172, 3 },
 				{ 8343, 4 },
 			},
@@ -15220,7 +15301,7 @@ AtlasTW.SpellDB = {
 			item = 65023,
 			reagents = {
 				{ 4304, 20 },
-				{ 70810 },
+				{ 7081, 10 },
 				{ 8172 },
 				{ 8343, 4 },
 			},
@@ -15228,76 +15309,76 @@ AtlasTW.SpellDB = {
 		[57012] = {
 			item = 65024,
 			reagents = {
-				{ 8170,  20 },
+				{ 8170, 20 },
 				{ 15419, 20 },
 				{ 15407, 6 },
-				{ 7076,  20 },
-				{ 128090 },
+				{ 7076, 20 },
+				{ 12809, 10 },
 				{ 13455, 5 },
-				{ 8343,  2 },
+				{ 8343, 2 },
 			},
 		},
 		[57014] = {
 			item = 65025,
 			reagents = {
-				{ 8170,  20 },
-				{ 154175 },
+				{ 8170, 20 },
+				{ 15417, 15 },
 				{ 15407, 5 },
-				{ 7078,  25 },
+				{ 7078, 25 },
 				{ 11751, 2 },
 				{ 21546, 5 },
-				{ 8343,  2 },
+				{ 8343, 2 },
 			},
 		},
 		[57016] = {
 			item = 65026,
 			reagents = {
-				{ 8170,  15 },
+				{ 8170, 15 },
 				{ 15422, 20 },
 				{ 15407, 5 },
-				{ 7080,  20 },
-				{ 124570 },
-				{ 182940 },
-				{ 8343,  2 },
+				{ 7080, 20 },
+				{ 12457, 10 },
+				{ 18294, 10 },
+				{ 8343, 2 },
 			},
 		},
 		[57018] = {
 			item = 65027,
 			reagents = {
-				{ 8170,  10 },
+				{ 8170, 10 },
 				{ 15423, 20 },
 				{ 15407, 6 },
-				{ 7082,  20 },
+				{ 7082, 20 },
 				{ 12753, 6 },
-				{ 2459,  10 },
-				{ 8343,  2 },
+				{ 2459, 10 },
+				{ 8343, 2 },
 			},
 		},
 		[57020] = {
 			item = 60909,
 			reagents = {
-				{ 140480 },
+				{ 14048, 10 },
 				{ 12810, 6 },
-				{ 7076,  6 },
+				{ 7076, 6 },
 				{ 14344 },
 			},
 		},
 		[57022] = {
 			item = 60910,
 			reagents = {
-				{ 8170,  20 },
+				{ 8170, 20 },
 				{ 12810, 8 },
-				{ 7082,  2 },
+				{ 7082, 2 },
 				{ 7076 },
 			},
 		},
 		[57024] = {
 			item = 60907,
 			reagents = {
-				{ 140480 },
+				{ 14048, 10 },
 				{ 14344, 2 },
-				{ 7069,  16 },
-				{ 7082,  6 },
+				{ 7069, 16 },
+				{ 7082, 6 },
 			},
 		},
 		[57026] = {
@@ -15307,9 +15388,9 @@ AtlasTW.SpellDB = {
 			reagents = {
 				{ 12359, 40 },
 				{ 12810, 6 },
-				{ 7082,  6 },
-				{ 7076,  6 },
-				{ 3577,  2 },
+				{ 7082, 6 },
+				{ 7076, 6 },
+				{ 3577, 2 },
 			},
 		},
 		[57047] = {
@@ -15379,9 +15460,9 @@ AtlasTW.SpellDB = {
 		[57131] = {
 			item = 61224,
 			reagents = {
-				{ 61198 },
-				{ 11176 },
 				{ 8925 },
+				{ 11176 },
+				{ 61198 },
 			},
 		},
 		[57163] = {
@@ -15464,11 +15545,11 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 60007,
 			reagents = {
-				{ 126552 },
-				{ 123604 },
-				{ 113710 },
+				{ 12655, 12 },
+				{ 12360, 14 },
+				{ 11371, 10 },
 				{ 61673, 6 },
-				{ 3824,  8 },
+				{ 3824, 8 },
 			},
 		},
 		[57189] = {
@@ -15476,9 +15557,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 60008,
 			reagents = {
-				{ 126552 },
-				{ 123602 },
-				{ 113712 },
+				{ 12655, 12 },
+				{ 12360, 12 },
+				{ 11371, 12 },
 				{ 61673, 6 },
 				{ 22202, 6 },
 			},
@@ -15488,8 +15569,8 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 60009,
 			reagents = {
-				{ 126550 },
-				{ 123600 },
+				{ 12655, 10 },
+				{ 12360, 10 },
 				{ 11371, 8 },
 				{ 61673, 4 },
 				{ 12800, 4 },
@@ -15500,9 +15581,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 60010,
 			reagents = {
-				{ 126552 },
-				{ 123604 },
-				{ 113714 },
+				{ 12655, 12 },
+				{ 12360, 14 },
+				{ 11371, 14 },
 				{ 61673, 8 },
 				{ 22203, 2 },
 				{ 18335 },
@@ -15513,25 +15594,25 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 61810,
 			reagents = {
-				{ 123590 },
+				{ 12359, 10 },
 				{ 19933, 6 },
-				{ 8846,  6 },
+				{ 8846, 6 },
 			},
 		},
 		[57555] = {
 			name = LS["Transmute: Elemental Earth"],
+			quantity = 3,
 			tools = { 9149 },
 			item = 7067,
-			quantity = 3,
 			reagents = {
 				{ 7075 },
 			},
 		},
 		[57557] = {
 			name = LS["Transmute: Elemental Water"],
+			quantity = 3,
 			tools = { 9149 },
 			item = 7070,
-			quantity = 3,
 			reagents = {
 				{ 7079 },
 			},
@@ -15539,8 +15620,8 @@ AtlasTW.SpellDB = {
 		[57601] = {
 			item = 55518,
 			reagents = {
-				{ 61673, 5 },
 				{ 14342, 2 },
+				{ 61673, 5 },
 				{ 14048, 6 },
 				{ 14227, 3 },
 			},
@@ -15548,8 +15629,8 @@ AtlasTW.SpellDB = {
 		[57603] = {
 			item = 55519,
 			reagents = {
-				{ 61673, 4 },
 				{ 14342, 2 },
+				{ 61673, 4 },
 				{ 14048, 3 },
 				{ 14227, 4 },
 			},
@@ -15557,8 +15638,8 @@ AtlasTW.SpellDB = {
 		[57605] = {
 			item = 55520,
 			reagents = {
-				{ 61673, 7 },
 				{ 14342, 3 },
+				{ 61673, 7 },
 				{ 14048, 8 },
 				{ 14227, 2 },
 			},
@@ -15566,8 +15647,8 @@ AtlasTW.SpellDB = {
 		[57607] = {
 			item = 55521,
 			reagents = {
-				{ 61673, 7 },
 				{ 14342, 3 },
+				{ 61673, 7 },
 				{ 14048, 6 },
 				{ 14227, 2 },
 			},
@@ -15575,36 +15656,36 @@ AtlasTW.SpellDB = {
 		[57609] = {
 			item = 55522,
 			reagents = {
-				{ 61673, 5 },
 				{ 15407, 2 },
 				{ 12810, 8 },
+				{ 61673, 5 },
 				{ 14227 },
 			},
 		},
 		[57611] = {
 			item = 55523,
 			reagents = {
-				{ 61673, 4 },
 				{ 15407, 2 },
 				{ 12810, 7 },
+				{ 61673, 4 },
 				{ 14227, 2 },
 			},
 		},
 		[57613] = {
 			item = 55524,
 			reagents = {
-				{ 61673, 8 },
 				{ 15407, 4 },
-				{ 128102 },
+				{ 12810, 12 },
+				{ 61673, 8 },
 				{ 14227 },
 			},
 		},
 		[57615] = {
 			item = 55525,
 			reagents = {
-				{ 61673, 6 },
 				{ 15407, 3 },
-				{ 128103 },
+				{ 12810, 13 },
+				{ 61673, 6 },
 				{ 14227, 2 },
 			},
 		},
@@ -15613,9 +15694,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 55526,
 			reagents = {
-				{ 12359, 6 },
-				{ 12655 },
+				{ 15407 },
 				{ 12360 },
+				{ 61673, 6 },
 				{ 12607 },
 			},
 		},
@@ -15624,9 +15705,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 55527,
 			reagents = {
-				{ 12359, 5 },
-				{ 12655 },
+				{ 15407 },
 				{ 12360 },
+				{ 61673, 5 },
 				{ 12607, 3 },
 			},
 		},
@@ -15635,9 +15716,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 55528,
 			reagents = {
-				{ 12359, 6 },
-				{ 12655 },
-				{ 12360, 2 },
+				{ 15407, 2 },
+				{ 12360 },
+				{ 61673, 6 },
 				{ 12607, 2 },
 			},
 		},
@@ -15646,9 +15727,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 55529,
 			reagents = {
-				{ 12359, 7 },
-				{ 12655 },
-				{ 12360, 2 },
+				{ 15407, 2 },
+				{ 12360 },
+				{ 61673, 7 },
 				{ 12607, 2 },
 			},
 		},
@@ -15657,9 +15738,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 55530,
 			reagents = {
-				{ 12359, 6 },
 				{ 12360, 2 },
 				{ 12655, 7 },
+				{ 61673, 6 },
 			},
 		},
 		[57627] = {
@@ -15667,9 +15748,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 55531,
 			reagents = {
-				{ 12359, 7 },
 				{ 12360, 2 },
 				{ 12655, 9 },
+				{ 61673, 7 },
 			},
 		},
 		[57629] = {
@@ -15677,9 +15758,9 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 55532,
 			reagents = {
-				{ 12359, 5 },
 				{ 12360, 2 },
-				{ 126550 },
+				{ 12655, 10 },
+				{ 61673, 5 },
 			},
 		},
 		[57631] = {
@@ -15687,33 +15768,33 @@ AtlasTW.SpellDB = {
 			tools = { 5956 },
 			item = 55533,
 			reagents = {
-				{ 12359, 7 },
 				{ 12360, 2 },
-				{ 126552 },
+				{ 12655, 12 },
+				{ 61673, 7 },
 			},
 		},
 		[57633] = {
 			item = 55534,
 			reagents = {
-				{ 61673, 4 },
 				{ 14342, 2 },
-				{ 14048, 6 },
+				{ 61673, 4 },
 				{ 14227, 4 },
+				{ 14048, 6 },
 				{ 13926 },
 			},
 		},
 		[58044] = { --Cooking: Ambersap Glazed Boar Ribs 1.18
-			item = 41674,
 			requires = L["Cooking Fire"],
+			item = 41674,
 			reagents = {
 				{ 41675 },
 				{ 2677 },
 				{ 2692 },
 			},
 		},
-		[58046] = { --1.18
-			item = 41673,
+		[58046] = { --Crawford Apple Tarte
 			requires = L["Cooking Fire"],
+			item = 41673,
 			reagents = {
 				{ 4539 },
 				{ 41677 },

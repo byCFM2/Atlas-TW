@@ -3606,7 +3606,6 @@ local craftingTable = {
 	},
 
 	CookingArtisan = {
-		{ name = L["Artisan"], icon = "INV_Misc_Food_15" },
 		{ id = 18240,          skill = { 240, 280, 300, 320 } }, --Grilled Squid
 		{ id = 18242,          skill = { 240, 280, 300, 320 } }, --Hot Smoked Bass
 		{ id = 18243,          skill = { 250, 290, 310, 330 } }, --Nightfin Soup
@@ -3615,13 +3614,14 @@ local craftingTable = {
 		{ id = 18245,          skill = { 275, 315, 335, 355 } }, --Lobster Stew
 		{ id = 18246,          skill = { 275, 315, 335, 355 } }, --Mightfish Steak
 		{ id = 22761,          skill = { 275, 315, 335, 355 } }, --Runn Tum Tuber Surprise
+		{ id = 53019 },        --  skill = { 275, 275, 275, 275 } }, --Recipe: Squid Eel Skewer
+		{ id = 53020 },        --  skill = { 275, 275, 275, 275 } }, --Deep Sea Stew
 		{ id = 24801,          skill = { 285, 325, 345, 365 } }, --Smoked Desert Dumplings
 		{ id = 25659,          skill = { 300, 325, 345, 365 } }, --Dirge's Kickin' Chimaerok Chops
 		{ id = 57047,          skill = { 300, 300, 307, 315 } }, --Danonzo's Tel'Abim Surprise
 		{ id = 57049,          skill = { 300, 300, 307, 315 } }, --Danonzo's Tel'Abim Delight
 		{ id = 57051,          skill = { 300, 300, 307, 315 } }, --Danonzo's Tel'Abim Medley
 		{ id = 46085,          skill = { 300, 325, 345, 365 } }, --Gurubashi Gumbo
-		{ name = L["Artisan"], icon = "INV_Misc_Food_15" },
 		{ id = 45625,          skill = { 300, 300, 310, 320 } }, --Le Fishe Au Chocolat
 		{ id = 49551,          skill = { 300, 325, 345, 365 } }, --Empowering Herbal Salad
 	},
@@ -3646,8 +3646,11 @@ local craftingTable = {
 
 	SurvivalTable = {
 		{ name = L["Survival"],  icon = "Trade_Survival" },
-		{ id = 46064,            skill = { 1, 30, 45, 60 } }, --Dim Torch
-		{ id = 47101,            skill = { 10, 30, 45, 60 } }, --Survivalist's Skinning Knife
+		{ id = 46064,            skill = { 1, 30, 45, 60 } },   --Dim Torch
+		{ id = 36765,            skill = { 5, 5, 5, 5 } }, 		--Bundle of Simple Sticks
+		{ id = 30004,            skill = { 150, 150, 150, 150 } }, --Slowing Bolas
+		--old
+--[[ 		{ id = 47101,            skill = { 10, 30, 45, 60 } }, --Survivalist's Skinning Knife
 		{ id = 47103,            skill = { 10, 40, 55, 70 } }, --Driftwood Fishing Pole
 		{ id = 46072,            skill = { 50, 100, 125, 150 } }, --Traveler's Tent
 		{ id = 46074,            skill = { 75, 100, 112, 125 } }, --Simple Woodern Planter
@@ -3657,8 +3660,13 @@ local craftingTable = {
 		{ id = 46068,            skill = { 100, 150, 175, 200 } }, --Cleaning Cloth
 		{ id = 46066,            skill = { 120, 150, 162, 175 } }, --Murloc's Flippers
 		{ id = 46077,            skill = { 120, 120, 135, 150 } }, --Repaired Electro-Lantern
-		{},
-		{},
+		{}, ]]
+		--{ id = 114,              }, --[Simple Fishing Lure]
+		--{ id = 125,              }, --[Spicy Fishing Lure]
+		--{ id = 133,              }, --[Savory Fishing Lure]
+		--{ id = 145,              }, --[Premium Fishing Lure]
+		--{ id = 42231,              }, --Spirited Precision Sickle 
+
 		{},
 		{ name = L["Gardening"], icon = "Trade_Survival" },
 		{ id = 51706,            quantity = { 4, 10 },          container = { { 51710, { 3, 6 } }, { 51713, { 3, 6 } } } },                                                    --Country Pumpkin Seeds, Plump Country Pumpkin

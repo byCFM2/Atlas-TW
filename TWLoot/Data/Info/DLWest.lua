@@ -141,5 +141,11 @@ AtlasTW.InstanceData.DLWest = {
             name = LZ["Temple of Ahn'Qiraj"],
             postfix = LZ["Silithus"],
         },
+        {
+            id = "DLWindhornCanyon",
+            prefix = "14)",
+            name = LZ["Windhorn Canyon"],
+            postfix = LZ["Thousand Needles"],
+        },
     },
 }
