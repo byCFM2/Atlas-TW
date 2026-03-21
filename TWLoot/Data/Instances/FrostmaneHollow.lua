@@ -77,6 +77,7 @@ AtlasTW.InstanceData.FrostmaneHollow = {
             name = LB["Hailar The Frigid"],
             defaults = { dropRate = 25 },
             loot = {
+                { id = 116 }, -- Belt of Binding
                 { id = 126 }, -- Band of Hailar
             }
         },

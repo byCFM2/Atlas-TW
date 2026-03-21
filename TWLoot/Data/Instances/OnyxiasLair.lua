@@ -40,18 +40,8 @@ AtlasTW.InstanceData.OnyxiasLair = {
     },
     Bosses = {
         {
-            prefix = "1)",
-            name = LMD["Onyxian Warders"],
-            color = Colors.GREY,
-        },
-        {
-            prefix = "2)",
-            name = LMD["Whelp Eggs"],
-            color = Colors.GREY,
-        },
-        {
             id = "Onyxia",
-            prefix = "3)",
+            prefix = "1)",
             name = LB["Onyxia"],
             defaults = { dropRate = 13 },
             loot = {
@@ -94,7 +84,7 @@ AtlasTW.InstanceData.OnyxiasLair = {
         },
         {
             id = "BroodcommanderAxelus",
-            prefix = "4)",
+            prefix = "2)",
             name = LB["Broodcommander Axelus"],
             postfix = L["Optional"],
             defaults = { dropRate = 0 },

@@ -116,9 +116,6 @@ AtlasTW.Localization:RegisterNamespace("MapData", "enUS", {
     ["Shen'dralar Provisioner"] = true,
     ["Skeletal Remains of Kariel Winthalus"] = true,
     ["The Prince's Chest"] = true,
-    --Onyxia's Lair
-    ["Onyxian Warders"] = true,
-    ["Whelp Eggs"] = true,
     --Temple of Ahn'Qiraj
     ["Andorgos"] = true,
     ["Arygos"] = true,

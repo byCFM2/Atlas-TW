@@ -120,10 +120,6 @@ AtlasTW.Localization:RegisterNamespace("MapData", "ptBR", {
     ["Skeletal Remains of Kariel Winthalus"] = "Restos do Esqueleto de Kariel Winthalus",
     ["The Prince's Chest"] = "O Baú do Príncipe",
 
-    -- Onyxia's Lair
-    ["Onyxian Warders"] = "Guardas Onyxianos",
-    ["Whelp Eggs"] = "Ovos de Dragonete",
-
     -- Temple of Ahn'Qiraj
     ["Andorgos"] = "Andorgos",
     ["Arygos"] = "Arygos",

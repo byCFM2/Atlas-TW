@@ -152,8 +152,6 @@ AtlasTW.Localization:RegisterNamespace("MapData", "esES", {
     ["Shen'dralar Provisioner"] = "Proveedor Shen'dralar",
     ["Skeletal Remains of Kariel Winthalus"] = "Restos Esqueléticos de Kariel Winthalus",
     ["The Prince's Chest"] = "El Cofre del Príncipe",
-    ["Onyxian Warders"] = "Guardianes de Onyxia",
-    ["Whelp Eggs"] = "Huevos de cría",
     ["Andorgos"] = "Andorgos",
     ["Arygos"] = "Arygos",
     ["Vethsera"] = "Vethsera",

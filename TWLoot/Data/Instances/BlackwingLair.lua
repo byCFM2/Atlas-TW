@@ -37,8 +37,6 @@ AtlasTW.InstanceData.BlackwingLair = {
     DamageType = L["Fire"],
     Entrances = {
         { letter = "A) ".. L["Entrance"] },
-        { letter = "B) ".. L["Connection"] },
-        { letter = "C) ".. L["Connection"] }
     },
     Bosses = {
         {
@@ -173,7 +171,23 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 19395 }, -- Rejuvenating Gem
             }
         },
-        { prefix = "5)", name = LMD["Master Elemental Shaper Krixix"], color = Colors.GREY, },
+        {
+            id = "EzzelDarkbrewer",
+            prefix = "5)",
+            name = LB["Ezzel Darkbrewer"],
+            postfix = L["Optional"],
+            defaults = { dropRate = 0 },
+            loot = {
+                { id = 33150 }, -- Yoxtez, Black Breath of the Dragonflight
+                { id = 33151 }, --
+                { id = 33152 }, --
+                { id = 33153 }, -- Ignited Obsidian Scale
+                { id = 33154 }, --
+                { id = 33155 }, -- Scaleshield of Obsidian Flight
+                { id = 33156 }, --
+                { id = 33157 }, -- Broodwarden's Bulwarkblade 
+            }
+        },
         {
             id = "Ebonroc",
             prefix = "6)",
@@ -332,25 +346,9 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 17969, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12799 } }, -- Red Sack of Gems
             }
         },
-        {
-            id = "EzzelDarkbrewer",
-            prefix = "10)",
-            name = LB["Ezzel Darkbrewer"],
-            postfix = L["Optional"],
-            defaults = { dropRate = 0 },
-            loot = {
-                { id = 33150 }, -- Yoxtez, Black Breath of the Dragonflight
-                { id = 33151 }, --
-                { id = 33152 }, --
-                { id = 33153 }, -- Ignited Obsidian Scale
-                { id = 33154 }, --
-                { id = 33155 }, -- Scaleshield of Obsidian Flight
-                { id = 33156 }, --
-                { id = 33157 }, -- Broodwarden's Bulwarkblade 
-            }
-        },
         { prefix = "1)", name = LMD["Alchemy Lab"], color = Colors.GREEN },
         { prefix = "2)", name = LMD["Draconic for Dummies"], color = Colors.GREEN },
+        { prefix = "3'", name = LMD["Master Elemental Shaper Krixix"], color = Colors.GREEN, },
         {
             id = "BWLTrash",
             name = L["Trash Mobs"].."-"..LZ["Blackwing Lair"],

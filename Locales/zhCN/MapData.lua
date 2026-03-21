@@ -120,10 +120,6 @@ AtlasTW.Localization:RegisterNamespace("MapData", "zhCN", {
     ["Skeletal Remains of Kariel Winthalus"] = "卡里尔·温萨鲁斯的骸骨",
     ["The Prince's Chest"] = "王子的箱子",
 
-    -- Onyxia's Lair
-    ["Onyxian Warders"] = "奥妮克希亚守卫",
-    ["Whelp Eggs"] = "雏龙蛋",
-
     -- Temple of Ahn'Qiraj
     ["Andorgos"] = "安多格索",
     ["Arygos"] = "阿瑞戈斯",

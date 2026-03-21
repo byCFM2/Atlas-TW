@@ -52,7 +52,7 @@ local MapPoints = {
     { 1, 12, 0.624, 0.249, "DireMaulNorth",             "dungeon",   "57-60" },
     { 1, 12, 0.604, 0.311, "DireMaulWest",              "dungeon",   "57-60" },
     { 1, 7,  0.29,  0.629, "Maraudon",                  "dungeon",   "46-55" },
-    { 1, 20, 0.53,  0.486, "RagefireChasm",             "dungeon",   "13-18" },
+    { 1, 21, 0.53,  0.486, "RagefireChasm",             "dungeon",   "13-18" },
     { 1, 27, 0.488, 0.919, "RazorfenDowns",             "dungeon",   "37-46" },
     { 1, 27, 0.407, 0.873, "RazorfenKraul",             "dungeon",   "29-38" },
     { 1, 27, 0.462, 0.357, "WailingCaverns",            "dungeon",   "17-24" },

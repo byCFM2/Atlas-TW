@@ -12,9 +12,6 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     --************************************************
     ["Broodcommander Axelus"] = true,
     ["Ezzel Darkbrewer"] = true,
-    --************************************************
-    -- TW 1.18.1 Additions
-    --************************************************
     --frostmane hollow
     ["Handler Oboka"] = true, --1*
     ["Tan'sha The Sleek"] = true, --1
