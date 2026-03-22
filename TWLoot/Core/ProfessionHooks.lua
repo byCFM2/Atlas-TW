@@ -815,56 +815,51 @@ end
 function CF.BuildList()
     CF.List = {}
 
-    -- Clear native filters to get ALL items
-    if CraftFrameFilterDropDown and UIDropDownMenu_GetSelectedID and UIDropDownMenu_GetSelectedID(CraftFrameFilterDropDown) ~= 1 then
-        UIDropDownMenu_SetSelectedID(CraftFrameFilterDropDown, 1)
-        if SetCraftFilter then SetCraftFilter(0) end
-    end
-
-    -- Aggressively expand all native categories to see all enchants
-    -- This is necessary on Turtle WoW as items are hidden inside native headers
     local numNative = GetNumCrafts()
-    local expandedSomething = true
-    local safetyLimit = 0
-    while expandedSomething and safetyLimit < 50 do
-        expandedSomething = false
-        numNative = GetNumCrafts()
-        for i = 1, numNative do
-            local _, _, skillType, _, isExpanded = GetCraftInfo(i)
-            if skillType == "header" and not isExpanded then
-                ExpandCraftHeader(i)
-                expandedSomething = true
-                safetyLimit = safetyLimit + 1
-                -- One expansion per pass to let GetNumCrafts update correctly
-                break
+    if numNative == 0 then return end
+
+    -- Read native search text for auto-expansion
+    local searchBox = _G["CraftFrameSearchBox"] or _G["CraftFrameEditBox"]
+    local searchText = searchBox and searchBox:GetText() or ""
+    searchText = string.lower(searchText)
+
+    -- Detect standard filters
+    local hasMaterials = false
+    local improvesSkill = false
+    local matCheck = _G["CraftFrameAvailableFilterCheckButton"] or _G["CraftMatsCheckButton"] or _G["CraftFrameMatsCheckButton"]
+    local skillCheck = _G["CraftSkillCheckButton"] or _G["CraftFrameSkillCheckButton"]
+    if matCheck and matCheck:GetChecked() then hasMaterials = true end
+    if skillCheck and skillCheck:GetChecked() then improvesSkill = true end
+
+    -- If categories are ON, we need to expand all native headers to see all items
+    if CF.UseCategories then
+        local expandedSomething = true
+        local safetyLimit = 0
+        while expandedSomething and safetyLimit < 50 do
+            expandedSomething = false
+            numNative = GetNumCrafts()
+            for i = 1, numNative do
+                local _, _, skillType, _, isExpanded = GetCraftInfo(i)
+                if skillType == "header" and not isExpanded then
+                    ExpandCraftHeader(i)
+                    expandedSomething = true
+                    safetyLimit = safetyLimit + 1
+                    break
+                end
             end
         end
     end
 
-    local numNative = GetNumCrafts()
-    if numNative == 0 then return end
-
+    numNative = GetNumCrafts()
     local filtered = {}
     for i = 1, numNative do
         local craftName, _, craftType, numAvailable = GetCraftInfo(i)
 
         if craftName and craftType ~= "header" then
             local keep = true
-
-            if CF.SearchText ~= "" then
-                -- Case-insensitive search with plain text matching (no regex)
-                if not string.find(strlower(craftName), CF.SearchText, 1, true) then
-                    keep = false
-                end
-            end
-
-            if CF.HaveMaterials and numAvailable <= 0 then
-                keep = false
-            end
-
-            if CF.ImprovesSkill and (craftType == "trivial" or craftType == "used" or craftType == "none") then
-                keep = false
-            end
+            if hasMaterials and numAvailable <= 0 then keep = false end
+            if improvesSkill and (craftType == "trivial" or craftType == "used" or craftType == "none") then keep = false end
+            if searchText ~= "" and not string.find(string.lower(craftName), searchText, 1, true) then keep = false end
 
             if keep then
                 table.insert(filtered, {
@@ -914,7 +909,7 @@ function CF.BuildList()
             if expanded == nil then expanded = true end
 
             -- Force expand categories if search text is present to show matches
-            if CF.SearchText ~= "" then
+            if searchText ~= "" then
                 expanded = true
             end
 
@@ -927,9 +922,21 @@ function CF.BuildList()
             end
         end
     else
-        for _, craft in ipairs(filtered) do
-            table.insert(CF.List,
-                { isHeader = false, index = craft.index, name = craft.name, type = craft.type, num = craft.num })
+        -- If categories are disabled, we should include native headers to "not break standard"
+        for i = 1, numNative do
+            local craftName, _, craftType, numAvailable, isExpanded = GetCraftInfo(i)
+            if craftType == "header" then
+                table.insert(CF.List, { isHeader = true, name = craftName, expanded = isExpanded, isNativeHeader = true, index = i })
+            else
+                local keep = true
+                if hasMaterials and numAvailable <= 0 then keep = false end
+                if improvesSkill and (craftType == "trivial" or craftType == "used" or craftType == "none") then keep = false end
+                if searchText ~= "" and not string.find(string.lower(craftName), searchText, 1, true) then keep = false end
+
+                if keep then
+                    table.insert(CF.List, { isHeader = false, index = i, name = craftName, type = craftType, num = numAvailable })
+                end
+            end
         end
     end
 end
@@ -937,107 +944,6 @@ end
 function CF.InitUI()
     if CF.UIReady then return end
     CF.UIReady = true
-
-    -- Search Box (styled to match TradeSkillFrame search bar)
-    -- No template to avoid background issues in pfUI
-    local searchBox = CreateFrame("EditBox", "AtlasTWCraftSearchBox", CraftFrame)
-    searchBox:SetHeight(20)
-    searchBox:SetAutoFocus(false)
-    searchBox:SetFontObject("ChatFontNormal")
-    searchBox:SetTextInsets(26, 20, 0, 0)
-
-    if IsAddOnLoaded("pfUI") then
-        searchBox:SetPoint("TOP", CraftFrame, "BOTTOM", 0, -8)
-        searchBox:SetWidth(330)
-    else
-        searchBox:SetWidth(170)
-        searchBox:SetPoint("BOTTOMLEFT", CraftFrame, 16, 82)
-    end
-
-    searchBox:SetFrameLevel(CraftFrame:GetFrameLevel() + 5)
-
-    -- Magnifying glass icon
-    local searchIcon = searchBox:CreateTexture(nil, "OVERLAY")
-    searchIcon:SetTexture("Interface\\Common\\UI-Searchbox-Icon")
-    searchIcon:SetWidth(14)
-    searchIcon:SetHeight(14)
-    searchIcon:SetPoint("LEFT", searchBox, "LEFT", 8, -1)
-    searchIcon:SetVertexColor(0.6, 0.6, 0.6)
-    searchBox.searchIcon = searchIcon
-
-    -- Placeholder
-    local placeholder = searchBox:CreateFontString(nil, "OVERLAY", "GameFontDisableSmall")
-    placeholder:SetPoint("LEFT", searchIcon, "RIGHT", 4, 0)
-    placeholder:SetText(L["Search"])
-    placeholder:SetTextColor(0.6, 0.6, 0.6)
-    searchBox.placeholder = placeholder
-
-    -- Clear button (X)
-    local clearBtn = CreateFrame("Button", nil, searchBox)
-    clearBtn:SetWidth(16)
-    clearBtn:SetHeight(16)
-    clearBtn:SetPoint("RIGHT", searchBox, "RIGHT", -6, 0)
-    clearBtn:SetFrameLevel(searchBox:GetFrameLevel() + 5)
-
-    local clearX = clearBtn:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-    clearX:SetText("x")
-    clearX:SetPoint("CENTER", 0, 0)
-    clearX:SetTextColor(1, 0.1, 0.1) -- Bright red X
-    clearBtn.text = clearX
-
-    clearBtn:SetScript("OnEnter", function() this.text:SetTextColor(1, 1, 1) end)
-    clearBtn:SetScript("OnLeave", function() this.text:SetTextColor(1, 0.1, 0.1) end)
-
-    clearBtn:Hide()
-    clearBtn:SetScript("OnClick", function()
-        AtlasTWCraftSearchBox:SetText("")
-        AtlasTWCraftSearchBox:ClearFocus()
-    end)
-    searchBox.clearBtn = clearBtn
-
-    searchBox:SetScript("OnTextChanged", function()
-        local text = this:GetText()
-        CF.SearchText = strlower(text)
-        -- Show/hide placeholder and clear button based on text
-        if text ~= "" then
-            this.placeholder:Hide()
-            this.clearBtn:Show()
-        else
-            if not this._hasFocus then
-                this.placeholder:Show()
-            end
-            this.clearBtn:Hide()
-        end
-        -- Reset scroll position on search to see results
-        if CraftListScrollFrameScrollBar then
-            CraftListScrollFrameScrollBar:SetValue(0)
-        end
-        CF.ScrollValue = 0
-        CraftFrame_Update()
-    end)
-    searchBox:SetScript("OnEditFocusGained", function()
-        this._hasFocus = true
-        this.placeholder:Hide()
-        this.searchIcon:SetVertexColor(1, 1, 1)
-    end)
-    searchBox:SetScript("OnEditFocusLost", function()
-        this._hasFocus = false
-        if this:GetText() == "" then
-            this.placeholder:Show()
-        end
-        this.searchIcon:SetVertexColor(0.6, 0.6, 0.6)
-    end)
-    searchBox:SetScript("OnEnterPressed", function()
-        this:ClearFocus()
-    end)
-    searchBox:SetScript("OnEscapePressed", function()
-        this:ClearFocus()
-    end)
-
-    -- Have Materials Checkbox
-    local matCheck = CreateFrame("CheckButton", "AtlasTWCraftHaveMaterials", CraftFrame, "UICheckButtonTemplate")
-    matCheck:SetWidth(20)
-    matCheck:SetHeight(20)
 
     local function ResetScroll()
         if CraftListScrollFrameScrollBar then
@@ -1048,16 +954,49 @@ function CF.InitUI()
 
     -- All (Collapse/Expand All) Button
     local allBtn = CreateFrame("Button", "AtlasTWCraftCollapseAll", CraftFrame)
-    allBtn:SetWidth(44)
-    allBtn:SetHeight(20)
+    allBtn:SetWidth(60) -- Increased width for better click area
+    allBtn:SetHeight(16)
+
+    -- Save original methods to override them with texture constraints
+    local _SetNormalTexture = allBtn.SetNormalTexture
+    local _SetPushedTexture = allBtn.SetPushedTexture
+    local _SetHighlightTexture = allBtn.SetHighlightTexture
+
+    local function FixTexture(tex)
+        if tex then
+            tex:SetWidth(16)
+            tex:SetHeight(16)
+            tex:ClearAllPoints()
+            tex:SetPoint("LEFT", allBtn, "LEFT")
+        end
+    end
+
+    allBtn.SetNormalTexture = function(self, tex)
+        _SetNormalTexture(self, tex)
+        FixTexture(self:GetNormalTexture())
+    end
+
+    allBtn.SetPushedTexture = function(self, tex)
+        _SetPushedTexture(self, tex)
+        FixTexture(self:GetPushedTexture())
+    end
+
+    allBtn.SetHighlightTexture = function(self, tex)
+        _SetHighlightTexture(self, tex)
+        local ht = self:GetHighlightTexture()
+        if ht then
+            FixTexture(ht)
+            ht:SetBlendMode("ADD")
+        end
+    end
+
     allBtn:SetNormalTexture("Interface\\Buttons\\UI-MinusButton-Up")
     allBtn:SetPushedTexture("Interface\\Buttons\\UI-MinusButton-Down")
     allBtn:SetHighlightTexture("Interface\\Buttons\\UI-PlusButton-Hilight")
-    allBtn:GetHighlightTexture():SetBlendMode("ADD")
 
     local allText = allBtn:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
     allText:SetText(L["All"])
-    allText:SetPoint("LEFT", allBtn, "LEFT", 18, -5)
+    allText:SetPoint("LEFT", allBtn, "LEFT", 18, 0)
     allText:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
     allBtn.text = allText
 
@@ -1080,55 +1019,25 @@ function CF.InitUI()
             end
         end
 
-        -- Update button icon immediately
-        if newState then
-            this:SetNormalTexture("Interface\\Buttons\\UI-MinusButton-Up")
-            this:SetPushedTexture("Interface\\Buttons\\UI-MinusButton-Down")
-        else
-            this:SetNormalTexture("Interface\\Buttons\\UI-PlusButton-Up")
-            this:SetPushedTexture("Interface\\Buttons\\UI-PlusButton-Down")
-        end
-
         ResetScroll()
         CraftFrame_Update()
     end)
 
     if IsAddOnLoaded("pfUI") then
-        allBtn:SetPoint("TOPLEFT", CraftFrame, 8, -45)
-        matCheck:SetPoint("TOPLEFT", CraftFrame, 50, -5)
+        allBtn:SetPoint("TOPLEFT", CraftFrame, 10, -50)
     else
-        allBtn:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 25, -80)
-        matCheck:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 75, -55)
+        allBtn:SetPoint("TOPLEFT", CraftFrame, 25, -78)
     end
-
-    matCheck:SetScript("OnClick", function()
-        CF.HaveMaterials = (this:GetChecked() == 1)
-        ResetScroll()
-        CraftFrame_Update()
-    end)
-    local matLabel = _G["AtlasTWCraftHaveMaterialsText"]
-    matLabel:SetText("1+")
-    matLabel:SetFontObject("GameFontHighlightSmall")
-
-    -- Improves Skill Checkbox
-    local skillCheck = CreateFrame("CheckButton", "AtlasTWCraftImprovesSkill", CraftFrame, "UICheckButtonTemplate")
-    skillCheck:SetWidth(20)
-    skillCheck:SetHeight(20)
-    skillCheck:SetPoint("LEFT", _G["AtlasTWCraftHaveMaterialsText"], "RIGHT", 5, 0)
-    skillCheck:SetScript("OnClick", function()
-        CF.ImprovesSkill = (this:GetChecked() == 1)
-        ResetScroll()
-        CraftFrame_Update()
-    end)
-    local skillLabel = _G["AtlasTWCraftImprovesSkillText"]
-    skillLabel:SetText("^^^")
-    skillLabel:SetFontObject("GameFontHighlightSmall")
 
     -- Category Checkbox
     local catCheck = CreateFrame("CheckButton", "AtlasTWCraftCategories", CraftFrame, "UICheckButtonTemplate")
     catCheck:SetWidth(20)
     catCheck:SetHeight(20)
-    catCheck:SetPoint("LEFT", _G["AtlasTWCraftImprovesSkillText"], "RIGHT", 5, 0)
+    if IsAddOnLoaded("pfUI") then
+        catCheck:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 0, 0)
+    else
+        catCheck:SetPoint("TOP", CraftFrame, "TOP", 100, -15)
+    end
     catCheck:SetChecked(CF.UseCategories and 1 or nil)
     catCheck:SetScript("OnClick", function()
         CF.UseCategories = (this:GetChecked() == 1)
@@ -1167,6 +1076,9 @@ function CF.InitUI()
 
     -- Update All button icon based on state
     local allBtn = _G["AtlasTWCraftCollapseAll"]
+    local catCheck = _G["AtlasTWCraftCategories"]
+    local showSkillCheck = _G["AtlasTWCraftShowSkillLevels"]
+
     if allBtn then
         local anyExpanded = false
         local hasHeaders = false
@@ -1192,8 +1104,16 @@ function CF.InitUI()
         -- Check if Profession Info option is enabled
         if not AtlasTWOptions or not AtlasTWOptions.ProfessionInfo then
             allBtn:Hide()
+            catCheck:Hide()
+            showSkillCheck:Hide()
         else
-            allBtn:Show()
+            if CF.UseCategories then
+                allBtn:Show()
+            else
+                allBtn:Hide()
+            end
+            catCheck:Show()
+            showSkillCheck:Show()
         end
     end
 
@@ -1214,6 +1134,15 @@ function CF.InitUI()
                     CF.ExpandedCategories[cat] = not isExpanded
                     CraftFrame_Update()
                     return -- skip native click
+                end
+                if id > 0 and this.isNativeHeader then
+                    -- It's a native header! Toggle it.
+                    if this.expanded then
+                        CollapseCraftHeader(id)
+                    else
+                        ExpandCraftHeader(id)
+                    end
+                    return
                 end
                 if origOnClick then origOnClick() end
             end)
@@ -1253,6 +1182,22 @@ function CF.HookCraftFrameUpdate()
     local orig_CraftFrame_Update = CraftFrame_Update
     function CraftFrame_Update()
         if AtlasTW.ProfessionHooks._updatingCraft then return end
+
+        if not AtlasTWOptions or not AtlasTWOptions.ProfessionInfo then
+            orig_CraftFrame_Update()
+            if CraftFrame:IsVisible() then
+                AtlasTW.ProfessionHooks.UpdateSideTabs(CraftFrame)
+                if AtlasTW.pfUI and AtlasTW.pfUI.StyleProfessionFrames then
+                    AtlasTW.pfUI.StyleProfessionFrames()
+                end
+            end
+            if CF.UIReady then
+                if _G["AtlasTWCraftCollapseAll"] then _G["AtlasTWCraftCollapseAll"]:Hide() end
+                if _G["AtlasTWCraftCategories"] then _G["AtlasTWCraftCategories"]:Hide() end
+                if _G["AtlasTWCraftShowSkillLevels"] then _G["AtlasTWCraftShowSkillLevels"]:Hide() end
+            end
+            return
+        end
 
         AtlasTW.ProfessionHooks._updatingCraft = true
         scrollBar = _G[CraftListScrollFrame:GetName() .. "ScrollBar"]
@@ -1321,8 +1266,10 @@ function CF.HookCraftFrameUpdate()
                 local data = CF.List[itemIndex]
 
                 if data.isHeader then
-                    craftButton:SetID(0)
-                    craftButton.catName = data.name
+                    craftButton:SetID(data.isNativeHeader and data.index or 0)
+                    craftButton.catName = not data.isNativeHeader and data.name or nil
+                    craftButton.isNativeHeader = data.isNativeHeader
+                    craftButton.expanded = data.expanded
                     craftText:ClearAllPoints()
                     craftText:SetPoint("LEFT", craftButton, "LEFT", 18, 0)
                    -- craftText:SetWidth(craftButton:GetWidth() - 14)
@@ -1340,6 +1287,8 @@ function CF.HookCraftFrameUpdate()
                 else
                     craftButton:SetID(data.index)
                     craftButton.catName = nil
+                    craftButton.isNativeHeader = nil
+                    craftButton.expanded = nil
 
 
                     -- Force update width for all buttons to prevent alignment issues

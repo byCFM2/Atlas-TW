@@ -1158,19 +1158,7 @@ function AtlasTW.pfUI.StyleProfessionFrames()
         AtlasTW.pfUI.RestyleButton("CraftFrameAtlasButton")
     end
 
-    -- Style CraftFilter elements
-    if AtlasTWCraftSearchBox and not AtlasTWCraftSearchBox.pfui_skinned then
-        AtlasTW.pfUI.SkinEditBox(AtlasTWCraftSearchBox)
-        AtlasTWCraftSearchBox.pfui_skinned = true
-    end
-    if AtlasTWCraftHaveMaterials and not AtlasTWCraftHaveMaterials.pfui_skinned then
-        pfUI.api.SkinCheckbox(AtlasTWCraftHaveMaterials)
-        AtlasTWCraftHaveMaterials.pfui_skinned = true
-    end
-    if AtlasTWCraftImprovesSkill and not AtlasTWCraftImprovesSkill.pfui_skinned then
-        pfUI.api.SkinCheckbox(AtlasTWCraftImprovesSkill)
-        AtlasTWCraftImprovesSkill.pfui_skinned = true
-    end
+
     if AtlasTWCraftCategories and not AtlasTWCraftCategories.pfui_skinned then
         pfUI.api.SkinCheckbox(AtlasTWCraftCategories)
         AtlasTWCraftCategories.pfui_skinned = true
