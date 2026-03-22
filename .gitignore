@@ -4,7 +4,7 @@ DONT_USE*
 .mailmap
 .agent/workflows/weapon_skills_plan.md
 .qoder/
-.vscode/new items.txt
+.vscode/
 nampower/
 pfQuest/
 pfQuest-turtle/

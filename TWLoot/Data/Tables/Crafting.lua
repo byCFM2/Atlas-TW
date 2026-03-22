@@ -308,11 +308,12 @@ local craftingTable = {
 		{ id = 45989,          skill = { 300, 315, 322, 330 } },                         --Elixir of Greater Nature Power
 		{ id = 57111,          skill = { 300, 315, 322, 330 } },                         --Potion of Quickness
 		{ id = 17632,          skill = { 300, 315, 322, 330 } },                         --Alchemist's Stone
-		{ id = 36929,          skill = { 300, 300, 300, 300 } },                         --Concoction of the Emerald Mongoose 1.18
-		{ id = 36932,          skill = { 300, 300, 300, 300 } },                         --Concoction of the Arcane Giant 1.18
-		{ id = 36935,          skill = { 300, 300, 300, 300 } },                         --Concoction of the Dreamwater 1.18
-		{ id = 36901,          skill = { 300, 300, 300, 300 } },                         --Elixir of Greater Frost Power 1.18
-		{ id = 36903,          skill = { 300, 300, 300, 300 } },                         --Elixir of Greater Arcane Power 1.18
+		{ id = 36901,          skill = { 300, 300, 315, 330 } },                         --Elixir of Greater Frost Power 1.18
+		{ id = 36903,          skill = { 300, 300, 315, 330 } },                         --Elixir of Greater Arcane Power 1.18
+		{ id = 36929,          skill = { 300, 310, 330, 350 } },                         --Concoction of the Emerald Mongoose 1.18
+		{ id = 36932,          skill = { 300, 310, 330, 350 } },                         --Concoction of the Arcane Giant 1.18
+		{ id = 36935,          skill = { 300, 310, 330, 350 } },                         --Concoction of the Dreamwater 1.18
+		{ id = 36589,          skill = { 0, 330, 340, 350 } },                         --Mixologist Stone 1.18.1
 	},
 
 	AlchemyFlasks = {
@@ -697,6 +698,7 @@ local craftingTable = {
 		{ id = 57518,          skill = { 300, 300, 300, 300 } }, --Eternal Dreamstone Shard
 		{ id = 56543,          skill = { 300, 300, 300, 300 } }, --Enchant Boots - Major Intellect --1.18
 		{ id = 36942,          skill = { 300, 300, 300, 300 } }, --Enchant Weapon - Rift Tear --1.18.1
+		{ id = 36579,          skill = { 0, 310, 320, 330 } }, --Timberheart Dreamcatcher --1.18.1
 	},
 
 	EnchantingCloak = {
@@ -916,6 +918,7 @@ local craftingTable = {
 		{ id = 25128,       skill = { 275, 285, 295, 305 } }, --Wizard Oil
 		{},
 		{ id = 15596,       skill = { 265, 285, 305, 325 } }, --Smoking Heart of the Mountain
+		{ id = 36579,       skill = { 0, 310, 320, 330 } }, --Timberheart Dreamcatcher --1.18.1
 		{},
 		{ id = 57518,       skill = { 300, 300, 300, 300 } }, --Eternal Dreamstone Shard
 	},
@@ -981,6 +984,7 @@ local craftingTable = {
 		{ id = 2674,              skill = { 125, 125, 132, 140 } }, --Heavy Sharpening Stone
 		{ id = 3117,              skill = { 125, 125, 132, 140 } }, --Heavy Weightstone
 		{ id = 3337,              skill = { 125, 125, 137, 150 } }, --Heavy Grinding Stone
+		{ id = 34762,             skill = { 125, 145, 160, 175 } }, --Ceremonial Belt Buckle 1.18.1
 		{ id = 9985,              skill = { 125, 155, 170, 185 } }, --Bronze Warhammer
 		{ id = 3295,              skill = { 125, 155, 170, 185 } }, --Deadly Bronze Poniard
 		{ id = 3330,              skill = { 125, 155, 170, 185 } }, --Silvered Bronze Shoulders
@@ -1203,8 +1207,9 @@ local craftingTable = {
 		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id = 45465,          skill = { 300, 325, 337, 350 } }, --Dreamsteel Mantle
 		{ id = 102,            skill = { 300, 300, 300, 300 } }, --Obsidian Belt Buckle 1.18
-		{ id = 36948,               skill = { 300, 320, 330, 340 } }, --Bulwark of Unshaken Earth (1.18.1)
-		{ id = 33083,           }, -- Elementium Sharpening Stone 1.18.1
+		{ id = 36948,          skill = { 300, 320, 330, 340 } }, --Bulwark of Unshaken Earth (1.18.1)
+		{ id = 36593,          skill = { 0, 330, 340, 350 } }, --Denwatcher (1.18.1)
+        { id = 33083, 		   container = { 33093,33094 } }, 	 --Elementium Sharpening Stone (1.18.1)
 	},
 
 	Armorsmith = {
@@ -1535,6 +1540,7 @@ local craftingTable = {
 		{ id = 16971,       skill = { 280, 305, 317, 330 } }, --Huge Thorium Battleaxe
 		{ id = 16994,       skill = { 300, 320, 330, 340 } }, --Arcanite Reaper
 		{ id = 23653,       skill = { 300, 320, 330, 340 } }, --Nightfall
+		{ id = 36593,       skill = { 0, 330, 340, 350 } }, --Denwatcher (1.18.1)
 	},
 
 	SmithingSwords = {
@@ -1624,6 +1630,7 @@ local craftingTable = {
 		{ name = L["Belt Buckles"], icon = "Trade_BlackSmithing" },
 		{ id = 57163,               skill = { 25, 25, 37, 50 } }, --Copper Belt Buckle
 		{ id = 57166,               skill = { 90, 90, 97, 105 } }, --Bronze Belt Buckle
+		{ id = 34762,             	skill = { 125, 145, 160, 175 } }, --Ceremonial Belt Buckle 1.18.1
 		{ id = 57169,               skill = { 140, 140, 147, 155 } }, --Iron Belt Buckle
 		{ id = 69,                  skill = { 175, 175, 175, 175 } }, --Gold Belt Buckle 1.18
 		{ id = 57172,               skill = { 185, 190, 197, 205 } }, --Mithril Belt Buckle
@@ -1635,8 +1642,8 @@ local craftingTable = {
 		{ id = 57178,               skill = { 275, 275, 282, 290 } }, --Arcanite Belt Buckle
 		{ id = 95,                  skill = { 285, 285, 285, 285 } }, --Enchanted Thorium Belt Buckle 1.18
 		{ id = 57196,               skill = { 300, 300, 300, 300 } }, --Bloody Belt Buckle
-		{ id = 57181,               skill = { 300, 300, 305, 310 } }, --Dreamsteel Belt Buckle
 		{ name = L["Belt Buckles"], icon = "Trade_BlackSmithing" },
+		{ id = 57181,               skill = { 300, 300, 305, 310 } }, --Dreamsteel Belt Buckle
 		{ id = 102,                 skill = { 300, 300, 300, 300 } }, --Obsidian Belt Buckle 1.18
 		{ id = 36948,               skill = { 300, 320, 330, 340 } }, --Bulwark of Unshaken Earth (1.18.1)
 	},
@@ -1738,6 +1745,7 @@ local craftingTable = {
 		{ id = 3767,              skill = { 120, 145, 157, 170 } }, --Hillman's Belt
 		{ id = 9074,              skill = { 120, 145, 157, 170 } }, --Nimble Leather Gloves
 		{ id = 9072,              skill = { 120, 145, 157, 170 } }, --Red Whelp Gloves
+		{ id = 34760,             skill = { 0, 145, 160, 175 } }, --Grimtotem Bracers 1.18.1
 		{ id = 3765,              skill = { 120, 155, 167, 180 } }, --Dark Leather Gloves
 		{ id = 3766,              skill = { 125, 150, 162, 175 } }, --Dark Leather Belt
 		{ name = L["Journeyman"], icon = "INV_Misc_ArmorKit_17" },
@@ -1909,6 +1917,7 @@ local craftingTable = {
 		{ id = 57611,          skill = { 300, 315, 322, 330 } }, --Ethereal Shoulder Pads
 		{ id = 57613,          skill = { 300, 315, 322, 330 } }, --Ethereal Tunic
 		{ id = 57615,          skill = { 300, 315, 322, 330 } }, --Ethereal Leggings
+		{ id = 36585,          skill = { 0, 315, 325, 335 } }, --Timberclaw Bracers 1.18.1
 		{ id = 57115,          skill = { 300, 320, 330, 340 } }, --Enchanted Armor Kit
 		{ id = 28224,          skill = { 300, 320, 330, 340 } }, --Icy Scale Bracers
 		{ id = 28222,          skill = { 300, 320, 330, 340 } }, --Icy Scale Breastplate
@@ -1918,12 +1927,16 @@ local craftingTable = {
 		{ id = 28220,          skill = { 300, 320, 330, 340 } }, --Polar Gloves
 		{ id = 28219,          skill = { 300, 320, 330, 340 } }, --Polar Tunic
 		{ id = 45473,          skill = { 300, 320, 330, 340 } }, --Dreamhide Mantle
-		{ id = 45475,          skill = { 300, 320, 330, 340 } }, --Dreamhide Bracers
 		{ name = L["Artisan"], icon = "INV_Misc_ArmorKit_17" },
+		{ id = 45475,          skill = { 300, 320, 330, 340 } }, --Dreamhide Bracers
 		{ id = 45477,          skill = { 300, 320, 330, 340 } }, --Dreamhide Leggings
 		{ id = 45479,          skill = { 300, 320, 330, 340 } }, --Dreamhide Belt
 		{ id = 45483,          skill = { 300, 320, 330, 340 } }, --Inscribed Runic Bracers
 		{ id = 45455,          skill = { 300, 320, 330, 340 } }, --Dreamhide
+		{ id = 36755,          skill = { 0, 285, 295, 305 } }, --Hydracoil Gauntlets 1.18.1
+		{ id = 36757,          skill = { 0, 295, 305, 315 } }, --Hydracoil Spaulders 1.18.1
+		{ id = 36753,          skill = { 0, 300, 310, 320 } }, --Hydracoil Trousers 1.18.1
+		{ id = 36587,          skill = { 0, 320, 330, 340 } }, --Witherhide Gloves 1.18.1
 	},
 
 	Dragonscale = {
@@ -2048,6 +2061,7 @@ local craftingTable = {
 		{ id = 19100,            skill = { 300, 320, 330, 340 } }, --Heavy Scorpid Shoulders
 		{ id = 19103,            skill = { 300, 320, 330, 340 } }, --Runic Leather Shoulders
 		{ name = L["Shoulders"], icon = "INV_Misc_ArmorKit_17" },
+		{ id = 36757,          	 skill = { 0, 295, 305, 315 } }, --Hydracoil Spaulders 1.18.1
 		{ id = 19101,            skill = { 300, 320, 330, 340 } }, --Volcanic Shoulders
 		{ id = 24125,            skill = { 300, 320, 330, 340 } }, --Blood Tiger Shoulders
 		{ id = 23706,            skill = { 300, 320, 330, 340 } }, --Golden Mantle of the Dawn
@@ -2143,6 +2157,7 @@ local craftingTable = {
 		{ name = L["Bracers"], icon = "INV_Misc_ArmorKit_17" },
 		{ id = 9059,           skill = { 1, 40, 55, 70 } }, --Handstitched Leather Bracers
 		{ id = 9065,           skill = { 70, 100, 115, 130 } }, --Light Leather Bracers
+		{ id = 34760,          skill = { 0, 145, 160, 175 } }, --Grimtotem Bracers 1.18.1
 		{ id = 23399,          skill = { 155, 175, 185, 195 } }, --Barbaric Bracers
 		{ id = 3776,           skill = { 180, 200, 210, 220 } }, --Green Leather Bracers
 		{ id = 9201,           skill = { 185, 205, 215, 225 } }, --Dusky Bracers
@@ -2154,8 +2169,9 @@ local craftingTable = {
 		{ id = 19048,          skill = { 255, 275, 285, 295 } }, --Heavy Scorpid Bracers
 		{ id = 19052,          skill = { 265, 285, 295, 305 } }, --Wicked Leather Bracers
 		{ id = 19065,          skill = { 275, 295, 305, 315 } }, --Runic Leather Bracers
-		{ id = 24123,          skill = { 300, 320, 330, 340 } }, --Primal Batskin Bracers
 		{ name = L["Bracers"], icon = "INV_Misc_ArmorKit_17" },
+		{ id = 36585,          skill = { 0, 315, 325, 335 } }, --Timberclaw Bracers 1.18.1
+		{ id = 24123,          skill = { 300, 320, 330, 340 } }, --Primal Batskin Bracers
 		{ id = 24849,          skill = { 300, 320, 330, 340 } }, --Sandstalker Bracers
 		{ id = 24846,          skill = { 300, 320, 330, 340 } }, --Spitfire Bracers
 		{ id = 22923,          skill = { 300, 320, 330, 340 } }, --Swift Flight Bracers
@@ -2197,8 +2213,10 @@ local craftingTable = {
 		{ id = 19064,         skill = { 275, 295, 305, 315 } }, --Heavy Scorpid Gauntlets
 		{ id = 24655,         skill = { 280, 300, 310, 320 } }, --Green Dragonscale Gauntlets
 		{ name = L["Gloves"], icon = "INV_Misc_ArmorKit_17" },
+		{ id = 36755,         skill = { 0, 285, 295, 305 } }, --Hydracoil Gauntlets 1.18.1
 		{ id = 19084,         skill = { 290, 310, 320, 330 } }, --Devilsaur Gauntlets
 		{ id = 19087,         skill = { 295, 315, 325, 335 } }, --Frostsaber Gloves
+		{ id = 36909,         skill = { 1, 300, 305, 310 } }, --Essence Infused Leather Gloves 1.18
 		{ id = 24122,         skill = { 300, 320, 330, 340 } }, --Primal Batskin Gloves
 		{ id = 24850,         skill = { 300, 320, 330, 340 } }, --Sandstalker Gauntlets
 		{ id = 24847,         skill = { 300, 320, 330, 340 } }, --Spitfire Gauntlets
@@ -2208,7 +2226,7 @@ local craftingTable = {
 		{ id = 28223,         skill = { 300, 320, 330, 340 } }, --Icy Scale Gauntlets
 		{ id = 28220,         skill = { 300, 320, 330, 340 } }, --Polar Gloves
 		{ id = 54007,         skill = { 300, 315, 330, 345 } }, --Corehound Gloves
-		{ id = 36909,         skill = { 300, 300, 300, 300 } }, --Essence Infused Leather Gloves 1.18
+		{ id = 36587,         skill = { 0, 320, 330, 340 } }, --Witherhide Gloves 1.18.1
 	},
 
 	LeatherBelt = {
@@ -2271,6 +2289,7 @@ local craftingTable = {
 		{ id = 46653,        skill = { 295, 315, 322, 330 } }, --Red Dragonscale Leggings
 		{ id = 19091,        skill = { 300, 320, 330, 340 } }, --Runic Leather Pants
 		{ name = L["Pants"], icon = "INV_Misc_ArmorKit_17" },
+		{ id = 36753,        skill = { 0, 300, 310, 320 } }, --Hydracoil Trousers 1.18.1
 		{ id = 24654,        skill = { 300, 320, 330, 340 } }, --Blue Dragonscale Leggings
 		{ id = 19107,        skill = { 300, 320, 330, 340 } }, --Black Dragonscale Leggings
 		{ id = 19097,        skill = { 300, 320, 330, 340 } }, --Devilsaur Leggings
@@ -2646,6 +2665,7 @@ local craftingTable = {
 		{ id = 45453,          skill = { 300, 310, 315, 320 } }, --Dreamthread
 		{ id = 36913,          skill = { 300, 300, 300, 300 } }, --Astronomer Raiments 1.18
 		{ id = 36915,          skill = { 300, 300, 300, 300 } }, --Spellwoven Nobility Drape 1.18
+		{ id = 36583,          skill = { 0, 315, 330, 345 } }, --Deeproot Sash 1.18.1
 
 	},
 	TailoringHelm = {
@@ -2833,6 +2853,7 @@ local craftingTable = {
 		{ id = 57020,       skill = { 300, 315, 330, 345 } }, --Dustguider Sash
 		{ id = 24902,       skill = { 300, 315, 330, 345 } }, --Runed Stygian Belt
 		{ id = 22866,       skill = { 300, 315, 330, 345 } }, --Belt of the Archmage
+		{ id = 36583,       skill = { 0, 315, 330, 345 } }, --Deeproot Sash 1.18.1
 	},
 
 	TailoringPants = {
@@ -3138,6 +3159,8 @@ local craftingTable = {
 		{ id = 52747,          skill = { 300, 300, 300, 300 } }, --Voltage-Neutralizing Nature Reflector 1.18
 		{ id = 52749,          skill = { 300, 300, 300, 300 } }, --Giga-Charged Arcane Reflector 1.18
 		{ id = 36946,          skill = { 300, 300, 300, 300 } }, --Facetted Crystal Scope 1.18.1
+		{ id = 30069,          skill = { 0, 315, 325, 335 } }, -- Oil-Powered Cooker 1.18.1
+		{ id = 32310,          skill = { 300, 320, 330, 340 } }, -- Enchanted Thorium Shells 1.18.1
 		{ id = 33085,          container = { 33095 } }, -- Over-Tinkered Lens 1.18.1
 	},
 
@@ -3235,6 +3258,7 @@ local craftingTable = {
 		{ id = 23078,           skill = { 265, 285, 295, 305 } }, --Goblin Jumper Cables XL
 		{ id = 52747,           skill = { 300, 300, 300, 300 } }, --Voltage-Neutralizing Nature Reflector 1.18
 		{ id = 52749,           skill = { 300, 300, 300, 300 } }, --Giga-Charged Arcane Reflector 1.18
+		{ id = 30069,          skill = { 0, 315, 325, 335 } }, -- Oil-Powered Cooker 1.18.1
 	},
 
 	EngineeringExplosives = {
@@ -3648,9 +3672,11 @@ local craftingTable = {
 		{ id = 18629,             skill = { 260, 260, 290, 320 } }, --Runecloth Bandage
 		{ id = 18630,             skill = { 290, 290, 320, 350 } }, --Heavy Runecloth Bandage
 		{ id = 23787,             skill = { 300, 300, 330, 360 } }, --Powerful Anti-Venom
+		{ id = 30021,             skill = { 0, 300, 330, 360 } }, --Crystal Infused Bandage
+		{ id = 30047,             skill = { 0, 325, 345, 365 } }, --Crystal Throat Lozenge
 	},
 
-	SurvivalTable = {
+	SurvivalTable = { -- (1.18.1)
 		{ name = L["Apprentice"], icon = "Trade_Survival" },
 		{ id = 46064,            skill = { 1, 5, 10, 15 } },   		--Dim Torch
 		{ id = 36765,            skill = { 5, 10, 12, 15 } }, 		--Bundle of Simple Sticks
@@ -3718,6 +3744,7 @@ local craftingTable = {
 		{ id = 30017,            skill = { 180, 200, 210, 220 } }, 	--Sharpened Herb Sickle
 		{ id = 30022,            skill = { 185, 205, 215, 225 } }, 	--Lined Wintercloak
 		{ id = 30024,            skill = { 190, 210, 220, 230 } }, 	--Sleek Pinewood Bow
+		{ id = 36747,            skill = { 0, 215, 225, 235 } }, 	--Jungle Remedy
 		{ id = 30029,            skill = { 200, 220, 230, 240 } }, 	--Savory Fishing Lure
 		{ id = 30027,            skill = { 200, 220, 230, 240 } }, 	--Superior Healing Salve
 		{ id = 36795,            skill = { 205, 225, 235, 245 } }, 	--Nutritious Rations
@@ -3751,12 +3778,13 @@ local craftingTable = {
 		{ id = 30050,              skill = { 280, 300, 310, 320 } }, -- Miner's Rucksack
 		{ id = 30052,              skill = { 285, 305, 315, 325 } }, -- Herbalist's Knapsack
 		{ id = 30054,              skill = { 285, 305, 315, 325 } }, -- Skinner's Carryall
+		{ id = 30065,              skill = { 285, 305, 315, 325 } }, -- Fisherman's Backpack
 		{ id = 30057,              skill = { 290, 310, 320, 330 } }, -- Cooling Rations Bag
+		{ id = 30061,              skill = { 300, 320, 330, 340 } }, -- Starfeather Arrows
+		{ id = 30067,              skill = { 300, 320, 330, 340 } }, -- Starfeather Arrows
 		{ id = 30063,              skill = { 300, 320, 330, 340 } }, -- Major Healing Salve
-		{},
-		{},
-		{},
-		{},
+		{ id = 36749,              skill = { 300, 320, 330, 340 } }, -- Spirited Precision Sickle
+		{ id = 36751,              skill = { 300, 320, 330, 340 } }, -- Prospector's Magnifying Lens
 		{ name = L["Gardening"], icon = "Trade_Survival" },
 		{ id = 51706,            quantity = { 4, 10 },          container = { { 51710, { 3, 6 } }, { 51713, { 3, 6 } } } },                                                    --Country Pumpkin Seeds, Plump Country Pumpkin
 		{ id = 51707,            quantity = { 4, 10 },          container = { { 51711, { 3, 6 } }, { 51714, { 3, 6 } } } },                                                    --Mountain Berry Bush Seeds, Sweet Mountain Berry
@@ -3829,6 +3857,7 @@ local craftingTable = {
 		{ id = 41061,             skill = { 125, 145, 155, 165 } },                                     --Binding Signet
 		{ id = 41063,             skill = { 125, 145, 155, 165 } },                                     --Enchanted Bracelets
 		{ id = 41776,             skill = { 125, 145, 155, 165 } },                                     --Ring of Midnight
+		{ id = 34758,             skill = { 0, 145, 160, 175 } },                                     --Kodoheart Necklace 1.18.1
 		{ id = 41059,             skill = { 125, 150, 160, 170 } },                                     --Moonlight Staff
 		{ id = 41568,             skill = { 130, 150, 160, 170 } },                                     --Dazzling Moonstone Band
 		{ id = 41760,             skill = { 135, 135, 137, 140 } },                                     --Graceful Agate Gemstone
@@ -3837,8 +3866,8 @@ local craftingTable = {
 		{ id = 41327,             skill = { 135, 155, 165, 175 } },                                     --Gleaming Silver Necklace
 		{ id = 41339,             skill = { 135, 155, 165, 175 } },                                     --Circlet of Dampening
 		{ id = 41748,             skill = { 135, 155, 165, 175 } },                                     --Totem of Self Preservation
-		{ id = 41583,             skill = { 140, 160, 170, 180 } },                                     --Farraki Ceremony Totem
 		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
+		{ id = 41583,             skill = { 140, 160, 170, 180 } },                                     --Farraki Ceremony Totem
 		{ id = 41728,             skill = { 140, 160, 170, 180 } },                                     --Blackrock Ironclamps
 		{ id = 41570,             skill = { 145, 165, 175, 185 } },                                     --Harpy Talon Ring
 		{ id = 41742,             skill = { 145, 165, 175, 185 } },                                     --Venomspire Diadem
@@ -3986,6 +4015,7 @@ local craftingTable = {
 		{ name = L["Artisan"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41317,          skill = { 300, 320, 330, 340 } }, --Twilight Opal Cascade
 		{ id = 36905,          skill = { 300, 300, 300, 300 } }, --Grandstaff of the Shen'dralar Elder 1.18
+		{ id = 36591,          skill = { 0, 320, 330, 340 } }, --Crystalized Topaz 1.18.1
 	},
 
 	JewelcraftingGemology = {
@@ -4020,6 +4050,7 @@ local craftingTable = {
 		{ id = 41792,                skill = { 300, 330, 340, 350 } }, --Empowered Domination Rod
 		{ id = 41796,                skill = { 300, 330, 340, 350 } }, --Grail of Forgotten Memories
 		{ name = LS["Goldsmithing"], icon = "INV_Jewelry_Necklace_01" },
+		{ id = 36581,                skill = { 0, 300, 305, 310 } }, --Ceremonial Furbolg Pendant 1.18.1
 		{ id = 41800,                skill = { 300, 330, 340, 350 } }, --Rudeus' Focusing Cane
 	},
 
@@ -4051,6 +4082,7 @@ local craftingTable = {
 		{ id = 41613,            skill = { 285, 290, 292, 295 } }, --Flawless Black Gemstone
 		{ id = 41615,            skill = { 295, 300, 302, 305 } }, --Arcane Emerald Gemstone
 		{ id = 41619,            skill = { 300, 310, 315, 320 } }, --Stunning Imperial Gemstone
+		{ id = 36591,          	 skill = { 0, 320, 330, 340 } }, --Crystalized Topaz 1.18.1
 		{ id = 41821,            skill = { 300, 330, 345, 360 } }, --Gorgeous Mountain Gemstone
 	},
 
@@ -4129,13 +4161,14 @@ local craftingTable = {
 		{ id = 41323,          skill = { 100, 125, 135, 145 } }, --Talisman of Stone
 		{ id = 41325,          skill = { 110, 130, 140, 150 } }, --Medallion of Flame
 		{ id = 41055,          skill = { 120, 145, 155, 165 } }, --Pendant of Midnight
+		{ id = 34758,          skill = { 0, 145, 160, 175 } }, --Kodoheart Necklace 1.18.1
 		{ id = 41327,          skill = { 135, 155, 165, 175 } }, --Gleaming Silver Necklace
 		{ id = 41275,          skill = { 160, 160, 180, 200 } }, --Gemmed Citrine Pendant
 		{ id = 41331,          skill = { 160, 180, 190, 200 } }, --Gem Encrusted Choker
 		{ id = 41283,          skill = { 1, 175, 192, 210 } }, --Astral Amulet
 		{ id = 41333,          skill = { 170, 180, 190, 200 } }, --Goldcrest Amulet
-		{ id = 41217,          skill = { 175, 195, 202, 210 } }, --Powerful Citrine Pendant
 		{ name = L["Amulets"], icon = "INV_Jewelry_Necklace_01" },
+		{ id = 41217,          skill = { 175, 195, 202, 210 } }, --Powerful Citrine Pendant
 		{ id = 41556,          skill = { 180, 200, 210, 220 } }, --Delicate Mithril Amulet
 		{ id = 93,             skill = { 185, 185, 185, 185 } }, -- Refined Dwarven Necklace 1.18
 		{ id = 41223,          skill = { 190, 205, 215, 225 } }, --Shimmering Gold Necklace
@@ -4149,8 +4182,9 @@ local craftingTable = {
 		{ id = 41315,          skill = { 1, 275, 285, 295 } }, --Moonlit Charm
 		{ id = 41279,          skill = { 280, 280, 300, 320 } }, --Voidheart Charm
 		{ id = 41105,          skill = { 280, 300, 305, 310 } }, --Pendant of Arcane Radiance
-		{ id = 41287,          skill = { 290, 310, 325, 340 } }, --Stormcloud Sigil
 		{ name = L["Amulets"], icon = "INV_Jewelry_Necklace_01" },
+		{ id = 41287,          skill = { 290, 310, 325, 340 } }, --Stormcloud Sigil
+		{ id = 36581,          skill = { 0, 300, 305, 310 } }, --Ceremonial Furbolg Pendant 1.18.1
 		{ id = 41722,          skill = { 300, 300, 307, 315 } }, --Pendant of Instability
 		{ id = 41704,          skill = { 300, 320, 330, 340 } }, --Talisman of Hinderance
 	},
