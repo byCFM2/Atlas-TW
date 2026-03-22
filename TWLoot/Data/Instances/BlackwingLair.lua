@@ -178,14 +178,20 @@ AtlasTW.InstanceData.BlackwingLair = {
             postfix = L["Optional"],
             defaults = { dropRate = 0 },
             loot = {
-                { id = 33150 }, -- Yoxtez, Black Breath of the Dragonflight
-                { id = 33151 }, --
-                { id = 33152 }, --
-                { id = 33153 }, -- Ignited Obsidian Scale
-                { id = 33154 }, --
-                { id = 33155 }, -- Scaleshield of Obsidian Flight
-                { id = 33156 }, --
-                { id = 33157 }, -- Broodwarden's Bulwarkblade 
+                { id = 33073 }, -- 
+                { id = 33074, dropRate = 10 }, -- Taut Dragonhide Boots
+                { id = 33075, dropRate = 10 }, -- Staff of Cleansing Vapors
+                { id = 33076 }, -- 
+                { id = 33077 }, -- 
+                { id = 33078 }, -- 
+                { id = 33079 }, -- 
+                { id = 33080 }, -- 
+                { id = 33081 }, -- 
+                { id = 33083, container = { 33093,33094 } }, -- Elementium Sharpening Stone
+                { id = 33084, container = { 33096 } }, -- Pristine Chromatic Scale
+                { id = 33085, container = { 33095 }, dropRate = 10 }, -- Over-Tinkered Lens
+                { id = 33086 }, --
+                { id = 33087 }, --
             }
         },
         {

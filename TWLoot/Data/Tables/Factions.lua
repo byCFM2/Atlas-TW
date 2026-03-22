@@ -1424,7 +1424,7 @@ local Factions = {
 		{ id = 33130 }, -- Crackling Earthfury Claw
 		{ id = 33131 }, -- Ragefury Stompers
 		{ id = 33132 }, -- Totem of Calm Cascades
-		{ id = 33134 }, -- Plans: Bulwark of Unshaken Earth
+		{ id = 33134, container = { 33135 } }, -- Plans: Bulwark of Unshaken Earth
 	},
 	DraeneiExiles = {
 		{ name = LF["Friendly"], icon = "INV_Offhand_Draenei_A_02"},
@@ -1445,10 +1445,13 @@ local Factions = {
 		{ name = LF["Revered"], icon = "INV_Offhand_Draenei_A_02"},
 		{ id = 33144 }, -- Formula: Rift Tear
 		{ id = 33145, container = { 33146 } }, -- Schematic: Facetted Crystal Scope
+		{ id = 37071 }, -- Toothy
+		{ id = 37072 }, -- Palatinate Pebble
 		{},
 		{ name = LF["Exalted"], icon = "INV_Offhand_Draenei_A_02"},
 		{ id = 33147 }, -- Mar'kali, the Midnight Star
 		{ id = 33148 }, -- Alar'tar, Born from Hope
+		{ id = 30005 }, -- Swamp Riding Crocolisk
 	},
 }
 

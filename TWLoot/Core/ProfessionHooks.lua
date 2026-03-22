@@ -1049,7 +1049,7 @@ function CF.InitUI()
     -- All (Collapse/Expand All) Button
     local allBtn = CreateFrame("Button", "AtlasTWCraftCollapseAll", CraftFrame)
     allBtn:SetWidth(44)
-    allBtn:SetHeight(16)
+    allBtn:SetHeight(20)
     allBtn:SetNormalTexture("Interface\\Buttons\\UI-MinusButton-Up")
     allBtn:SetPushedTexture("Interface\\Buttons\\UI-MinusButton-Down")
     allBtn:SetHighlightTexture("Interface\\Buttons\\UI-PlusButton-Hilight")
@@ -1057,7 +1057,7 @@ function CF.InitUI()
 
     local allText = allBtn:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
     allText:SetText(L["All"])
-    allText:SetPoint("LEFT", allBtn, "LEFT", 18, 0)
+    allText:SetPoint("LEFT", allBtn, "LEFT", 18, -5)
     allText:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
     allBtn.text = allText
 

@@ -696,6 +696,7 @@ local craftingTable = {
 		{ id = 46086,          skill = { 300, 300, 300, 300 } }, --Enchant Gloves - Major Strength
 		{ id = 57518,          skill = { 300, 300, 300, 300 } }, --Eternal Dreamstone Shard
 		{ id = 56543,          skill = { 300, 300, 300, 300 } }, --Enchant Boots - Major Intellect --1.18
+		{ id = 36942,          skill = { 300, 300, 300, 300 } }, --Enchant Weapon - Rift Tear --1.18.1
 	},
 
 	EnchantingCloak = {
@@ -870,6 +871,7 @@ local craftingTable = {
 		{ id = 13503,         skill = { 140, 165, 185, 205 } }, --Enchant Weapon - Lesser Striking
 		{ id = 7788,          skill = { 90, 120, 140, 160 } }, --Enchant Weapon - Minor Striking
 		{ id = 7786,          skill = { 90, 120, 140, 160 } }, --Enchant Weapon - Minor Beastslayer
+		{ id = 36942,          skill = { 300, 300, 300, 300 } }, --Enchant Weapon - Rift Tear --1.18.1
 	},
 
 	EnchantingShield = {
@@ -1201,6 +1203,7 @@ local craftingTable = {
 		{ name = L["Artisan"], icon = "Trade_BlackSmithing" },
 		{ id = 45465,          skill = { 300, 325, 337, 350 } }, --Dreamsteel Mantle
 		{ id = 102,            skill = { 300, 300, 300, 300 } }, --Obsidian Belt Buckle 1.18
+		{ id = 36948,               skill = { 300, 320, 330, 340 } }, --Bulwark of Unshaken Earth (1.18.1)
 		{ id = 33083,           }, -- Elementium Sharpening Stone 1.18.1
 	},
 
@@ -1635,6 +1638,7 @@ local craftingTable = {
 		{ id = 57181,               skill = { 300, 300, 305, 310 } }, --Dreamsteel Belt Buckle
 		{ name = L["Belt Buckles"], icon = "Trade_BlackSmithing" },
 		{ id = 102,                 skill = { 300, 300, 300, 300 } }, --Obsidian Belt Buckle 1.18
+		{ id = 36948,               skill = { 300, 320, 330, 340 } }, --Bulwark of Unshaken Earth (1.18.1)
 	},
 
 	SmithingMisc = {
@@ -1949,7 +1953,7 @@ local craftingTable = {
 		{ id = 46659,                              skill = { 300, 315, 322, 330 } }, --Stormscale Leggings
 		{ id = 54013,                              skill = { 300, 315, 330, 345 } }, --Chromatic Leggings
 		{ id = 36911,                              skill = { 300, 300, 300, 300 } }, --Prismatic Scale Barbute 1.18
-		{ id = 33084,           }, -- Pristine Chromatic Scale 1.18.1
+		{ id = 33084, container = { 33096 } }, -- Pristine Chromatic Scale 1.18.1
 	},
 
 	Elemental = {
@@ -3133,7 +3137,8 @@ local craftingTable = {
 		{ id = 45481,          skill = { 300, 320, 330, 340 } }, --Intricate Gyroscope Goggles
 		{ id = 52747,          skill = { 300, 300, 300, 300 } }, --Voltage-Neutralizing Nature Reflector 1.18
 		{ id = 52749,          skill = { 300, 300, 300, 300 } }, --Giga-Charged Arcane Reflector 1.18
-		{ id = 33085,           }, -- Over-Tinkered Lens 1.18.1
+		{ id = 36946,          skill = { 300, 300, 300, 300 } }, --Facetted Crystal Scope 1.18.1
+		{ id = 33085,          container = { 33095 } }, -- Over-Tinkered Lens 1.18.1
 	},
 
 	Gnomish = {
@@ -3616,6 +3621,7 @@ local craftingTable = {
 		{ id = 22761,          skill = { 275, 315, 335, 355 } }, --Runn Tum Tuber Surprise
 		{ id = 32313,          skill = { 275, 315, 335, 355 } }, --Squid Eel Skewer (1.18.1)
 		{ id = 32314,          skill = { 275, 315, 335, 355 } }, --Deep Sea Stew (1.18.1)
+		{ id = 1207,           skill = { 275, 265, 285, 305 } }, --Fried Strider with a Side of Berries (1.18.1)
 		{ id = 24801,          skill = { 285, 325, 345, 365 } }, --Smoked Desert Dumplings
 		{ id = 25659,          skill = { 300, 325, 345, 365 } }, --Dirge's Kickin' Chimaerok Chops
 		{ id = 57047,          skill = { 300, 300, 307, 315 } }, --Danonzo's Tel'Abim Surprise

@@ -171,6 +171,7 @@ AtlasTW.Localization:RegisterNamespace("Spells", "enUS", {
     ["Enchant Weapon - Superior Striking"] = true,
     ["Enchant Weapon - Unholy Weapon"] = true,
     ["Enchant Weapon - Winter's Might"] = true,
+    ["Enchant Weapon - Rift Tear"] = true, --1.18.1
     ["Enchanting"] = true,
     ["Engineering"] = true,
     ["First Aid"] = true,

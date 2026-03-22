@@ -89,14 +89,15 @@ AtlasTW.InstanceData.OnyxiasLair = {
             postfix = L["Optional"],
             defaults = { dropRate = 0 },
             loot = {
+                { id = 33149, dropRate = 10 }, -- Battle Standard of the Broodcommander
                 { id = 33150 }, -- Yoxtez, Black Breath of the Dragonflight
-                { id = 33151 }, --
-                { id = 33152 }, --
+                { id = 33151 }, -- Onyxian Brood Egg
+                { id = 33152 }, -- Prestor's Rod of Command
                 { id = 33153 }, -- Ignited Obsidian Scale
-                { id = 33154 }, --
+                { id = 33154 }, -- Ring of Burning Talons
                 { id = 33155 }, -- Scaleshield of Obsidian Flight
-                { id = 33156 }, --
-                { id = 33157 }, -- Broodwarden's Bulwarkblade 
+                { id = 33156 }, -- Dragonhunter Javelin
+                { id = 33157 }, -- Broodwarden's Bulwarkblade
             }
         }
     }

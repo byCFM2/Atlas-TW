@@ -148,5 +148,7 @@ AtlasTW.Localization:RegisterNamespace("Zones", "enUS", {
     ["Balor"] = true,
     ["Stormwrought Ruins"] = true,
     ["Northwind"] = true,
+    -- TW 1.18.1 Additions
     ["Thorn Gorge"] = true,
+    ["Moonwhisper Coast"] = true,
 })
