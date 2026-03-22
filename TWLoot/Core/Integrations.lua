@@ -83,6 +83,12 @@ local vendorItems = {
     [2665] = true,  -- Stormwind Seasoning Herbs
     [14491] = true, -- Simple Wood
     [6217] = true,  -- Copper Rod
+    [4471] = true,  -- Unlit Poor Torch
+    [18288] = true,  -- Molasses Firewater
+    [50231] = true,  -- Sturdy Rope
+    [7011] = true,  -- Rugged String
+    [42006] = true,  -- Springy Rope
+    [42005] = true,  -- Remedy Herbs
 }
 
 local vendorCache = {}

@@ -91,6 +91,8 @@ do
                 ["Mining"]) end
             if AtlasTWOptionReagentPoisons then AtlasTWOptionReagentPoisons:SetChecked(AtlasTWOptions.ReagentProfessions
                 ["Poisons"]) end
+            if AtlasTWOptionReagentSurvival then AtlasTWOptionReagentSurvival:SetChecked(AtlasTWOptions.ReagentProfessions
+                ["Survival"]) end
         end
     end)
 
@@ -508,7 +510,8 @@ do
         local p1 = CreateProfCheckbox("Alchemy", LS["Alchemy"], "Alchemy", col1X, -15, profAnchor)
         local p2 = CreateProfCheckbox("BS", LS["Blacksmithing"], "Blacksmithing", 0, -5, p1)
         local p3 = CreateProfCheckbox("Enchant", LS["Enchanting"], "Enchanting", 0, -5, p2)
-        local p4 = CreateProfCheckbox("Engi", LS["Engineering"], "Engineering", 0, -5, p3)
+        local p12 = CreateProfCheckbox("Survival", LS["Survival"], "Survival", 0, -5, p3)
+        local p4 = CreateProfCheckbox("Engi", LS["Engineering"], "Engineering", 0, -5, p12)
         p4:SetPoint("TOPLEFT", p1, "TOPLEFT", col2X, 0)
         local p5 = CreateProfCheckbox("LW", LS["Leatherworking"], "Leatherworking", 0, -5, p4)
         local p6 = CreateProfCheckbox("Tailor", LS["Tailoring"], "Tailoring", 0, -5, p5)

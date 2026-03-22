@@ -10,9 +10,6 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     --************************************************
     -- TW 1.18.1 Additions
     --************************************************
-    --surv trainer
-    ["Nerean Stagtree"] = true,
-
     ["Broodcommander Axelus"] = true,
     ["Ezzel Darkbrewer"] = true,
     --frostmane hollow
@@ -816,6 +813,9 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Mayva Togview"] = true,
     -- Survival (TW custom)
     ["Rufus Hardwick"] = true,
+    ["Filadon Shieldarrow"] = true, --1.18.1
+    ["Nerean Stagtree"] = true, --1.18.1
+    ["Swampwalker Krug"] = true, --1.18.1
     -- Poisons (Rogue)
     ["Master Mathias Shaw"] = true,
     ["Shenthul"] = true,

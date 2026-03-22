@@ -145,7 +145,7 @@ local MapPoints = {
     { 2, 1,  0.531, 0.047, "TransportRoutes",           "boat",      LZ["Auberdine"] },                                                         -- Boat to Auberdine
     -- PVP Entrances
     { 1, 1,  0.61,  0.83,  "BGWarsongGulch",            "dungeon",   "1-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Alliance"] },  -- Warsong Gulch (Alliance)
-    { 1, 26, 0.47,  0.08,  "BGWarsongGulch",            "dungeon",   "1-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Horde"] },     -- Warsong Gulch (Horde)
+    { 1, 27, 0.47,  0.08,  "BGWarsongGulch",            "dungeon",   "1-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Horde"] },     -- Warsong Gulch (Horde)
     { 2, 3,  0.45,  0.46,  "BGArathiBasin",             "dungeon",   "20-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Alliance"] }, -- Arathi Basin (Alliance)
     { 2, 3,  0.73,  0.29,  "BGArathiBasin",             "dungeon",   "20-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Horde"] },    -- Arathi Basin (Horde)
     { 2, 2,  0.39,  0.81,  "BGAlteracValleyNorth",      "dungeon",   "51-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Alliance"] }, -- Alterac Valley (Alliance)

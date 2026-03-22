@@ -3614,15 +3614,15 @@ local craftingTable = {
 		{ id = 18245,          skill = { 275, 315, 335, 355 } }, --Lobster Stew
 		{ id = 18246,          skill = { 275, 315, 335, 355 } }, --Mightfish Steak
 		{ id = 22761,          skill = { 275, 315, 335, 355 } }, --Runn Tum Tuber Surprise
-		{ id = 53019 },        --  skill = { 275, 275, 275, 275 } }, --Recipe: Squid Eel Skewer
-		{ id = 53020 },        --  skill = { 275, 275, 275, 275 } }, --Deep Sea Stew
+		{ id = 32313,          skill = { 275, 315, 335, 355 } }, --Squid Eel Skewer (1.18.1)
+		{ id = 32314,          skill = { 275, 315, 335, 355 } }, --Deep Sea Stew (1.18.1)
 		{ id = 24801,          skill = { 285, 325, 345, 365 } }, --Smoked Desert Dumplings
 		{ id = 25659,          skill = { 300, 325, 345, 365 } }, --Dirge's Kickin' Chimaerok Chops
 		{ id = 57047,          skill = { 300, 300, 307, 315 } }, --Danonzo's Tel'Abim Surprise
 		{ id = 57049,          skill = { 300, 300, 307, 315 } }, --Danonzo's Tel'Abim Delight
 		{ id = 57051,          skill = { 300, 300, 307, 315 } }, --Danonzo's Tel'Abim Medley
-		{ id = 46085,          skill = { 300, 325, 345, 365 } }, --Gurubashi Gumbo
 		{ id = 45625,          skill = { 300, 300, 310, 320 } }, --Le Fishe Au Chocolat
+		{ id = 46085,          skill = { 300, 325, 345, 365 } }, --Gurubashi Gumbo
 		{ id = 49551,          skill = { 300, 325, 345, 365 } }, --Empowering Herbal Salad
 	},
 
@@ -3645,37 +3645,117 @@ local craftingTable = {
 	},
 
 	SurvivalTable = {
-		{ name = L["Survival"],  icon = "Trade_Survival" },
-		{ id = 46064,            skill = { 1, 30, 45, 60 } },   --Dim Torch
-		{ id = 36765,            skill = { 5, 5, 5, 5 } }, 		--Bundle of Simple Sticks
-		{ id = 30004,            skill = { 150, 150, 150, 150 } }, --Slowing Bolas
-		--old
---[[ 		{ id = 47101,            skill = { 10, 30, 45, 60 } }, --Survivalist's Skinning Knife
-		{ id = 47103,            skill = { 10, 40, 55, 70 } }, --Driftwood Fishing Pole
-		{ id = 46072,            skill = { 50, 100, 125, 150 } }, --Traveler's Tent
-		{ id = 46074,            skill = { 75, 100, 112, 125 } }, --Simple Woodern Planter
-		{ id = 46073,            skill = { 75, 125, 150, 175 } }, --Fishing Boat
+		{ name = L["Apprentice"], icon = "Trade_Survival" },
+		{ id = 46064,            skill = { 1, 5, 10, 15 } },   		--Dim Torch
+		{ id = 36765,            skill = { 5, 10, 12, 15 } }, 		--Bundle of Simple Sticks
+		{ id = 47103,            skill = { 10, 40, 55, 70 } }, 		--Driftwood Fishing Pole
+		{ id = 47101,            skill = { 10, 30, 45, 60 } }, 		--Survivalist's Skinning Knife
+		{ id = 36768,            skill = { 15, 25, 35, 45 } }, 		--Crude Hatchet
+		{ id = 36769,            skill = { 15, 25, 35, 45 } }, 		--Crude Hunting Bow
+		{ id = 36767,            skill = { 15, 25, 35, 45 } }, 		--Crude Machete
+		{ id = 36766,            skill = { 15, 25, 35, 45 } }, 		--Crude Walking Stick
+		{ id = 36770,            skill = { 20, 40, 50, 60 } }, 		--Copper Lantern
+		{ id = 36771,            skill = { 30, 50, 60, 70 } }, 		--Simple Slingshot
+		{ id = 36773,            skill = { 40, 60, 70, 80 } }, 		--Makeshift Rations Bag
+		{ id = 36772,            skill = { 40, 60, 70, 80 } }, 		--Simple Herbalist's Backpack
+		{ id = 36774,            skill = { 50, 70, 80, 90 } }, 		--Weak Healing Salve
+		{ id = 36785,            skill = { 60, 80, 90, 100 } }, 	--Makeshift Knife
+		{ id = 36786,            skill = { 65, 85, 95, 105 } }, 	--Gardening Gloves
+		{ id = 36787,            skill = { 70, 90, 100, 110 } }, 	--Crude Fishing Rod
 		{},
-		{ id = 46075,            skill = { 90, 90, 90, 90 } }, --Iron Lantern
-		{ id = 46068,            skill = { 100, 150, 175, 200 } }, --Cleaning Cloth
-		{ id = 46066,            skill = { 120, 150, 162, 175 } }, --Murloc's Flippers
-		{ id = 46077,            skill = { 120, 120, 135, 150 } }, --Repaired Electro-Lantern
-		{}, ]]
-		--{ id = 114,              }, --[Simple Fishing Lure]
-		--{ id = 125,              }, --[Spicy Fishing Lure]
-		--{ id = 133,              }, --[Savory Fishing Lure]
-		--{ id = 145,              }, --[Premium Fishing Lure]
-		--{ id = 42231,              }, --Spirited Precision Sickle 
-
+		{ name = L["Journeyman"], icon = "Trade_Survival" },
+		{ id = 46072,            skill = { 80, 100, 110, 120 } }, 	--Traveler's Tent
+		{ id = 36788,            skill = { 90, 110, 120, 130 } }, 	--Hunting Spear
+		{ id = 36789,            skill = { 95, 115, 125, 135 } }, 	--Gardening Broom
+		{ id = 36844,            skill = { 100, 120, 130, 140 } }, 	--Healing Salve
+		{ id = 36842,            skill = { 100, 120, 130, 140 } }, 	--Oakwood Bow
+		{ id = 36843,            skill = { 100, 120, 130, 140 } }, 	--Simple Fishing Lure
+		{ id = 36845,            skill = { 105, 125, 135, 145 } }, 	--Fishing Bag
+		{ id = 36846,            skill = { 110, 130, 140, 150 } }, 	--Skinner's Pack
+		{ id = 46073,            skill = { 115, 135, 145, 155 } }, 	--Fishing Boat
+		{ id = 36847,            skill = { 120, 140, 150, 160 } }, 	--Gardening Pitchfork
+		{ id = 30071,            skill = { 125, 145, 155, 165 } }, 	--Blackmouth Fishing Trap
+		{},
+		{ name = L["Journeyman"], icon = "Trade_Survival" },
+		{ id = 36849,            skill = { 125, 135, 140, 145 } }, 	--Bundle of Bright Wood Sticks
+		{ id = 36848,            skill = { 125, 145, 155, 165 } }, 	--Murloc Scale Coat
+		{ id = 46066,            skill = { 125, 145, 155, 165 } }, 	--Murloc's Flippers
+		{ id = 36853,            skill = { 130, 150, 160, 170 } }, 	--Sturdy Blade
+		{ id = 36851,            skill = { 130, 150, 160, 170 } }, 	--Sturdy Cane
+		{ id = 36852,            skill = { 130, 150, 160, 170 } }, 	--Sturdy Knife
+		{ id = 36850,            skill = { 130, 130, 135, 140 } }, 	--Sturdy Net
+		{ id = 36854,            skill = { 135, 155, 165, 175 } }, 	--Reliable Fishing Rod
+		{ id = 36856,            skill = { 140, 160, 170, 180 } }, 	--Hat of the Junior Chef
+		{ id = 30073,            skill = { 140, 160, 170, 180 } }, 	--Rugged Mining Sack
+		{ id = 36855,            skill = { 140, 160, 170, 180 } }, 	--Throwable Net
+		{ id = 36858,            skill = { 145, 165, 175, 185 } }, 	--Bright Wood Arrows
+		{ id = 36857,            skill = { 145, 165, 175, 185 } }, 	--Treasure Compass
+		{},
+		{ name = L["Journeyman"], icon = "Trade_Survival" },
+		{ id = 36860,            skill = { 150, 170, 180, 190 } }, 	--Potent Healing Salve
+		{ id = 36861,            skill = { 150, 170, 180, 190 } }, 	--Spicy Fishing Lure
+		{ id = 36859,            skill = { 150, 170, 180, 190 } }, 	--Studded Rations Bag
+		{},
+		{ name = L["Expert"], icon = "Trade_Survival" },
+		{ id = 30004,            skill = { 155, 175, 185, 195 } }, 	--Slowing Bolas
+		{ id = 46075,            skill = { 160, 180, 190, 200 } }, 	--Iron Lantern
+		{ id = 30078,            skill = { 160, 180, 190, 200 } }, 	--Snap Trap
+		{ id = 30006,            skill = { 165, 185, 195, 205 } }, 	--Edged Machete
+		{ id = 30008,            skill = { 165, 185, 195, 205 } }, 	--Iron Spear
+		{ id = 30010,            skill = { 170, 190, 200, 210 } }, 	--Reinforced Fishing Rod
+		{ id = 30015,            skill = { 175, 185, 190, 195 } }, 	--Bundle of Shade Wood Sticks
+		{ id = 30084,            skill = { 175, 195, 205, 215 } }, 	--Firefin Fishing Trap
+		{},
+		{ name = L["Expert"], icon = "Trade_Survival" },
+		{ id = 30013,            skill = { 175, 195, 205, 215 } }, 	--Water Trudgers
+		{ id = 46068,            skill = { 180, 200, 210, 220 } }, 	--Cleaning Cloth
+		{ id = 30017,            skill = { 180, 200, 210, 220 } }, 	--Sharpened Herb Sickle
+		{ id = 30022,            skill = { 185, 205, 215, 225 } }, 	--Lined Wintercloak
+		{ id = 30024,            skill = { 190, 210, 220, 230 } }, 	--Sleek Pinewood Bow
+		{ id = 30029,            skill = { 200, 220, 230, 240 } }, 	--Savory Fishing Lure
+		{ id = 30027,            skill = { 200, 220, 230, 240 } }, 	--Superior Healing Salve
+		{ id = 36795,            skill = { 205, 225, 235, 245 } }, 	--Nutritious Rations
+		{ id = 36796,            skill = { 205, 225, 235, 245 } }, 	--Shade Wood Arrows
+		{ id = 36798,            skill = { 215, 235, 245, 255 } }, 	--Hiking Staff
+		{ id = 36799,            skill = { 215, 235, 245, 255 } }, 	--Tree Hatchet
+		{ id = 36797,            skill = { 215, 235, 245, 255 } }, 	--Vine Cutter
+		{ id = 36800,            skill = { 225, 235, 240, 245 } }, 	--Bundle of Tropical Sticks
+		{},
+		{ name = L["Artisan"], icon = "Trade_Survival" },
+		{ id = 46077,              skill = { 230, 250, 260, 270 } }, -- Repaired Electro-Lantern
+		{ id = 36801,              skill = { 235, 255, 265, 275 } }, -- Sunshade Hat
+		{ id = 36802,              skill = { 235, 255, 265, 275 } }, -- Thick Rations Bag
+		{ id = 36805,              skill = { 240, 260, 270, 280 } }, -- Aromatic Berries
+		{ id = 36804,              skill = { 240, 260, 270, 280 } }, -- Spiced Berries
+		{ id = 36803,              skill = { 240, 260, 270, 280 } }, -- Warped Recurve Bow
+		{ id = 36806,              skill = { 245, 265, 275, 285 } }, -- Advanced Camouflage
+		{ id = 36807,              skill = { 250, 270, 280, 290 } }, -- Emergency Parachute
+		{ id = 36809,              skill = { 250, 270, 280, 290 } }, -- Premium Fishing Lure
+		{ id = 36808,              skill = { 250, 270, 280, 290 } }, -- Stabilizing Healing Salve
+		{ id = 30031,              skill = { 255, 275, 285, 295 } }, -- Smooth Ironfeather Arrows
+		{ id = 30033,              skill = { 260, 280, 285, 290 } }, -- Heavy Duty Machete
+		{ id = 30035,              skill = { 260, 280, 285, 290 } }, -- Thorium Edged Machete
+		{},
+		{ name = L["Artisan"], icon = "Trade_Survival" },
+		{ id = 30037,              skill = { 265, 285, 295, 305 } }, -- Thorium Spear
+		{ id = 30042,              skill = { 270, 275, 280, 285 } }, -- Bundle of Star Wood Sticks
+		{ id = 30039,              skill = { 270, 290, 300, 310 } }, -- Razor-sharp Skinning Knife
+		{ id = 30045,              skill = { 275, 295, 305, 315 } }, -- Mastercraft Fishing Rod
+		{ id = 30086,              skill = { 275, 295, 305, 315 } }, -- Stonescale Fishing Trap
+		{ id = 30050,              skill = { 280, 300, 310, 320 } }, -- Miner's Rucksack
+		{ id = 30052,              skill = { 285, 305, 315, 325 } }, -- Herbalist's Knapsack
+		{ id = 30054,              skill = { 285, 305, 315, 325 } }, -- Skinner's Carryall
+		{ id = 30057,              skill = { 290, 310, 320, 330 } }, -- Cooling Rations Bag
+		{ id = 30063,              skill = { 300, 320, 330, 340 } }, -- Major Healing Salve
+		{},
+		{},
+		{},
 		{},
 		{ name = L["Gardening"], icon = "Trade_Survival" },
 		{ id = 51706,            quantity = { 4, 10 },          container = { { 51710, { 3, 6 } }, { 51713, { 3, 6 } } } },                                                    --Country Pumpkin Seeds, Plump Country Pumpkin
-		{},
 		{ id = 51707,            quantity = { 4, 10 },          container = { { 51711, { 3, 6 } }, { 51714, { 3, 6 } } } },                                                    --Mountain Berry Bush Seeds, Sweet Mountain Berry
-		{},
 		{ id = 51708,            quantity = { 4, 10 },          container = { { 51712, { 3, 6 } }, { 51718, { 3, 6 } } } },                                                    --Striped Melon Seeds, Juicy Watermelon, Sweet Watermelon
-		{},
-		{ id = 51716,            quantity = 20,                 disc = L["Vendor"],                                      container = { { 51717, { 2, 5 } }, { 51720, { 2, 5 } } } }, --Magic Mushroom Spores, Hardened Mushroom, Power Mushroom
+		{ id = 51716,            quantity = 20,                 disc = L["Vendor"],                                container = { { 51717, { 2, 5 } }, { 51720, { 2, 5 } } } }, --Magic Mushroom Spores, Hardened Mushroom, Power Mushroom
 	},
 
 	JewelcraftingApprentice = {

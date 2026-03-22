@@ -236,6 +236,7 @@ function AtlasTW.OptionsInit()
             ["Jewelcrafting"] = true,
             ["Poisons"] = true,
             ["Mining"] = true,
+            ["Survival"] = true,
         }
     end
     if AtlasTWOptions.ProfessionInfo == nil then AtlasTWOptions.ProfessionInfo = false end
@@ -407,6 +408,7 @@ function AtlasTW.OptionDefaultSettings()
             ["Jewelcrafting"] = true,
             ["Poisons"] = true,
             ["Mining"] = true,
+            ["Survival"] = true,
         },
         TooltipShowID = true,
         TooltipShowIcon = true,

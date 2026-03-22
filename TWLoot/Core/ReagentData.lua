@@ -24,6 +24,7 @@ local function GetProfessionName(tableKey)
     if string.find(tableKey, "^Jewelcrafting") then return LS["Jewelcrafting"], "Jewelcrafting" end
     if string.find(tableKey, "^Poisons") then return LS["Poisons"], "Poisons" end
     if string.find(tableKey, "^Smelting") then return LS["Mining"], "Mining" end
+    if string.find(tableKey, "^Survival") then return LS["Survival"], "Survival" end
     return nil, nil
 end
 
