@@ -3676,8 +3676,7 @@ local craftingTable = {
 		{ id = 30047,             skill = { 0, 325, 345, 365 } }, --Crystal Throat Lozenge
 	},
 
-	SurvivalTable = { -- (1.18.1)
-		{ name = L["Apprentice"], icon = "Trade_Survival" },
+	SurvivalApprentice = {
 		{ id = 46064,            skill = { 1, 5, 10, 15 } },   		--Dim Torch
 		{ id = 36765,            skill = { 5, 10, 12, 15 } }, 		--Bundle of Simple Sticks
 		{ id = 47103,            skill = { 10, 40, 55, 70 } }, 		--Driftwood Fishing Pole
@@ -3694,8 +3693,8 @@ local craftingTable = {
 		{ id = 36785,            skill = { 60, 80, 90, 100 } }, 	--Makeshift Knife
 		{ id = 36786,            skill = { 65, 85, 95, 105 } }, 	--Gardening Gloves
 		{ id = 36787,            skill = { 70, 90, 100, 110 } }, 	--Crude Fishing Rod
-		{},
-		{ name = L["Journeyman"], icon = "Trade_Survival" },
+	},
+	SurvivalJourneyman = {
 		{ id = 46072,            skill = { 80, 100, 110, 120 } }, 	--Traveler's Tent
 		{ id = 36788,            skill = { 90, 110, 120, 130 } }, 	--Hunting Spear
 		{ id = 36789,            skill = { 95, 115, 125, 135 } }, 	--Gardening Broom
@@ -3707,8 +3706,6 @@ local craftingTable = {
 		{ id = 46073,            skill = { 115, 135, 145, 155 } }, 	--Fishing Boat
 		{ id = 36847,            skill = { 120, 140, 150, 160 } }, 	--Gardening Pitchfork
 		{ id = 30071,            skill = { 125, 145, 155, 165 } }, 	--Blackmouth Fishing Trap
-		{},
-		{ name = L["Journeyman"], icon = "Trade_Survival" },
 		{ id = 36849,            skill = { 125, 135, 140, 145 } }, 	--Bundle of Bright Wood Sticks
 		{ id = 36848,            skill = { 125, 145, 155, 165 } }, 	--Murloc Scale Coat
 		{ id = 46066,            skill = { 125, 145, 155, 165 } }, 	--Murloc's Flippers
@@ -3722,13 +3719,11 @@ local craftingTable = {
 		{ id = 36855,            skill = { 140, 160, 170, 180 } }, 	--Throwable Net
 		{ id = 36858,            skill = { 145, 165, 175, 185 } }, 	--Bright Wood Arrows
 		{ id = 36857,            skill = { 145, 165, 175, 185 } }, 	--Treasure Compass
-		{},
-		{ name = L["Journeyman"], icon = "Trade_Survival" },
 		{ id = 36860,            skill = { 150, 170, 180, 190 } }, 	--Potent Healing Salve
 		{ id = 36861,            skill = { 150, 170, 180, 190 } }, 	--Spicy Fishing Lure
 		{ id = 36859,            skill = { 150, 170, 180, 190 } }, 	--Studded Rations Bag
-		{},
-		{ name = L["Expert"], icon = "Trade_Survival" },
+	},
+	SurvivalExpert = {
 		{ id = 30004,            skill = { 155, 175, 185, 195 } }, 	--Slowing Bolas
 		{ id = 46075,            skill = { 160, 180, 190, 200 } }, 	--Iron Lantern
 		{ id = 30078,            skill = { 160, 180, 190, 200 } }, 	--Snap Trap
@@ -3737,8 +3732,6 @@ local craftingTable = {
 		{ id = 30010,            skill = { 170, 190, 200, 210 } }, 	--Reinforced Fishing Rod
 		{ id = 30015,            skill = { 175, 185, 190, 195 } }, 	--Bundle of Shade Wood Sticks
 		{ id = 30084,            skill = { 175, 195, 205, 215 } }, 	--Firefin Fishing Trap
-		{},
-		{ name = L["Expert"], icon = "Trade_Survival" },
 		{ id = 30013,            skill = { 175, 195, 205, 215 } }, 	--Water Trudgers
 		{ id = 46068,            skill = { 180, 200, 210, 220 } }, 	--Cleaning Cloth
 		{ id = 30017,            skill = { 180, 200, 210, 220 } }, 	--Sharpened Herb Sickle
@@ -3753,8 +3746,8 @@ local craftingTable = {
 		{ id = 36799,            skill = { 215, 235, 245, 255 } }, 	--Tree Hatchet
 		{ id = 36797,            skill = { 215, 235, 245, 255 } }, 	--Vine Cutter
 		{ id = 36800,            skill = { 225, 235, 240, 245 } }, 	--Bundle of Tropical Sticks
-		{},
-		{ name = L["Artisan"], icon = "Trade_Survival" },
+	},
+	SurvivalArtisan = {
 		{ id = 46077,              skill = { 230, 250, 260, 270 } }, -- Repaired Electro-Lantern
 		{ id = 36801,              skill = { 235, 255, 265, 275 } }, -- Sunshade Hat
 		{ id = 36802,              skill = { 235, 255, 265, 275 } }, -- Thick Rations Bag
@@ -3768,8 +3761,6 @@ local craftingTable = {
 		{ id = 30031,              skill = { 255, 275, 285, 295 } }, -- Smooth Ironfeather Arrows
 		{ id = 30033,              skill = { 260, 280, 285, 290 } }, -- Heavy Duty Machete
 		{ id = 30035,              skill = { 260, 280, 285, 290 } }, -- Thorium Edged Machete
-		{},
-		{ name = L["Artisan"], icon = "Trade_Survival" },
 		{ id = 30037,              skill = { 265, 285, 295, 305 } }, -- Thorium Spear
 		{ id = 30042,              skill = { 270, 275, 280, 285 } }, -- Bundle of Star Wood Sticks
 		{ id = 30039,              skill = { 270, 290, 300, 310 } }, -- Razor-sharp Skinning Knife
@@ -3785,7 +3776,9 @@ local craftingTable = {
 		{ id = 30063,              skill = { 300, 320, 330, 340 } }, -- Major Healing Salve
 		{ id = 36749,              skill = { 300, 320, 330, 340 } }, -- Spirited Precision Sickle
 		{ id = 36751,              skill = { 300, 320, 330, 340 } }, -- Prospector's Magnifying Lens
-		{ name = L["Gardening"], icon = "Trade_Survival" },
+	},
+
+	GardeningTable = {
 		{ id = 51706,            quantity = { 4, 10 },          container = { { 51710, { 3, 6 } }, { 51713, { 3, 6 } } } },                                                    --Country Pumpkin Seeds, Plump Country Pumpkin
 		{ id = 51707,            quantity = { 4, 10 },          container = { { 51711, { 3, 6 } }, { 51714, { 3, 6 } } } },                                                    --Mountain Berry Bush Seeds, Sweet Mountain Berry
 		{ id = 51708,            quantity = { 4, 10 },          container = { { 51712, { 3, 6 } }, { 51718, { 3, 6 } } } },                                                    --Striped Melon Seeds, Juicy Watermelon, Sweet Watermelon
@@ -3793,7 +3786,6 @@ local craftingTable = {
 	},
 
 	JewelcraftingApprentice = {
-		{ name = L["Apprentice"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 29728,             skill = { 1, 21, 25, 30 } },                                        --Rough Gritted Paper
 		{ id = 29730,             skill = { 1, 21, 30, 40 } },                                        --Rough Copper Ring
 		{ id = 29732,             skill = { 1, 21, 33, 45 } },                                        --Copper Bangle
@@ -3808,7 +3800,6 @@ local craftingTable = {
 		{ id = 41013,             skill = { 50, 70, 77, 85 } },                                       --Lesser Fortification Ring
 		{ id = 41015,             skill = { 50, 70, 77, 85 } },                                       --Tigercrest Ring
 		{ id = 41231,             skill = { 50, 70, 80, 90 } },                                       --Minor Trollblood Ring
-		{ name = L["Apprentice"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41017,             skill = { 55, 75, 82, 90 } },                                       --Small Pearlstone Staff
 		{ id = 41019,             skill = { 60, 80, 87, 95 } },                                       --Amber Ring
 		{ id = 41021,             skill = { 60, 80, 87, 95 } },                                       --Azure Ring
@@ -3821,7 +3812,6 @@ local craftingTable = {
 	},
 
 	JewelcraftingJourneyman = {
-		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41335,             skill = { 80, 100, 110, 120 } },                                      --Shining Copper Cuffs 1.18
 		{ id = 41033,             skill = { 80, 100, 110, 120 } },                                      --Lavish Gemmed Necklace
 		{ id = 41321,             skill = { 80, 100, 110, 120 } },                                      --Gleaming Chain
@@ -3836,7 +3826,6 @@ local craftingTable = {
 		{ id = 41043,             skill = { 95, 110, 120, 130 } },                                      --Amber Orb
 		{ id = 41045,             skill = { 100, 120, 130, 140 } },                                     --Encrusted Bronze Staff
 		{ id = 41047,             skill = { 100, 120, 130, 140 } },                                     --Earthrock Loop
-		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41564,             skill = { 100, 120, 130, 140 } },                                     --Shadowfall Jewel
 		{ id = 41581,             skill = { 100, 120, 130, 140 } },                                     --Serpent's Coil Staff
 		{ id = 41323,             skill = { 100, 125, 135, 145 } },                                     --Talisman of Stone
@@ -3851,7 +3840,6 @@ local craftingTable = {
 		{ id = 41734,             skill = { 120, 140, 150, 160 } },                                     --Fangclaw Relic
 		{ id = 41055,             skill = { 120, 145, 155, 165 } },                                     --Pendant of Midnight
 		{ id = 41067,             skill = { 125, 135, 145, 155 } },                                     --Rough Silver Ring
-		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41065,             skill = { 125, 140, 142, 145 },  container = { 1206, 1705, 55249 } }, --Coarse Gemstone Cluster
 		{ id = 41057,             skill = { 125, 145, 155, 165 } },                                     --Agatestone Crown
 		{ id = 41061,             skill = { 125, 145, 155, 165 } },                                     --Binding Signet
@@ -3866,7 +3854,6 @@ local craftingTable = {
 		{ id = 41327,             skill = { 135, 155, 165, 175 } },                                     --Gleaming Silver Necklace
 		{ id = 41339,             skill = { 135, 155, 165, 175 } },                                     --Circlet of Dampening
 		{ id = 41748,             skill = { 135, 155, 165, 175 } },                                     --Totem of Self Preservation
-		{ name = L["Journeyman"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41583,             skill = { 140, 160, 170, 180 } },                                     --Farraki Ceremony Totem
 		{ id = 41728,             skill = { 140, 160, 170, 180 } },                                     --Blackrock Ironclamps
 		{ id = 41570,             skill = { 145, 165, 175, 185 } },                                     --Harpy Talon Ring
@@ -3880,7 +3867,6 @@ local craftingTable = {
 	},
 
 	JewelcraftingExpert = {
-		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41205,         skill = { 155, 155, 160, 165 } },                                               --Goldfire Crystal Bracelet
 		{ id = 41207,         skill = { 155, 175, 185, 195 } },                                               --Quartz Halo
 		{ id = 41275,         skill = { 160, 160, 180, 200 } },                                               --Gemmed Citrine Pendant
@@ -3895,7 +3881,6 @@ local craftingTable = {
 		{ id = 41211,         skill = { 170, 190, 197, 205 } },                                               --Jade Harmony Circlet
 		{ id = 41585,         skill = { 170, 190, 200, 210 } },                                               --Sphinx's Wisdom Staff
 		{ id = 41574,         skill = { 170, 200, 210, 220 } },                                               --Ogre Bone Band
-		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41219,         skill = { 175, 175, 177, 180 } },                                               --Rough Mithril Ring
 		{ id = 41629,         skill = { 175, 180, 182, 185 } },                                               --Gleaming Jade Gemstone
 		{ id = 41623,         skill = { 175, 180, 182, 185 } },                                               --Pure Shining Moonstone
@@ -3910,7 +3895,6 @@ local craftingTable = {
 		{ id = 41221,         skill = { 185, 200, 210, 220 } },                                               --Ironsun Citrine Ring
 		{ id = 41750,         skill = { 185, 200, 207, 215 } },                                               --Facetted Moonstone Brooch
 		{ id = 41589,         skill = { 185, 205, 215, 225 } },                                               --Crystal Earring
-		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41263,         skill = { 190, 190, 210, 230 } },                                               --Ocean's Gaze
 		{ id = 41223,         skill = { 190, 205, 215, 225 } },                                               --Shimmering Gold Necklace
 		{ id = 41225,         skill = { 190, 205, 215, 225 } },                                               --Ironbloom Ring
@@ -3925,7 +3909,6 @@ local craftingTable = {
 		{ id = 41738,         skill = { 200, 215, 225, 235 } },                                               --Marine Root
 		{ id = 41227,         skill = { 200, 220, 230, 240 } },                                               --Ornate Mithril Scepter
 		{ id = 41546,         skill = { 200, 220, 230, 240 } },                                               --Alluring Citrine Choker
-		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41548,         skill = { 200, 220, 230, 240 } },                                               --Elaborate Golden Bracelets
 		{ id = 41550,         skill = { 200, 220, 230, 240 } },                                               --Heart of the Sea
 		{ id = 41744,         skill = { 200, 220, 230, 240 } },                                               --Bloodfire Circlet
@@ -3940,7 +3923,6 @@ local craftingTable = {
 		{ id = 41354,         skill = { 210, 280, 290, 300 } },                                               --Skyfire Jewel 1.18
 		{ id = 41352,         skill = { 210, 235, 245, 255 } },                                               --Opaline Illuminator
 		{ id = 41307,         skill = { 1, 235, 245, 255 } },                                                 --Gemkeeper's Folio
-		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41235,         skill = { 215, 215, 225, 235 } },                                               --Aquamarine Pendant
 		{ id = 41241,         skill = { 215, 235, 245, 255 } },                                               --Royal Gemstone Staff
 		{ id = 41277,         skill = { 220, 220, 240, 260 } },                                               --Starforge Amulet
@@ -3955,7 +3937,6 @@ local craftingTable = {
 		{ id = 41635,         skill = { 235, 235, 237, 240 } },                                               --Brilliant Opal Gemstone
 		{ id = 41770,         skill = { 235, 240, 240, 240 },  container = { 12361, 12364, 12799, 12800, 12363 } }, --Dense Gemstone Cluster
 		{ id = 41087,         skill = { 235, 245, 250, 255 } },                                               --Rough Thorium Ring
-		{ name = L["Expert"], icon = "INV_Jewelry_Necklace_01" },
 		{ id = 41720,         skill = { 240, 260, 275, 290 } },                                               --Regal Twilight Staff
 		{ id = 41724,         skill = { 245, 245, 265, 285 } },                                               --Ornament of Restraint
 		{ id = 41089,         skill = { 245, 265, 275, 285 } },                                               --Mithril Blackstone Necklace
