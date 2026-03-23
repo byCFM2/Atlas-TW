@@ -128,7 +128,8 @@ AtlasTW.InstanceData.WindhornCanyon = {
                 { id = 33045 }, -- The Blackwind Pillar
                 { id = 33046 }, -- Canyon's Barricade
                 { id = 33047 }, -- Ar'pora, the Chieftain's Judgement
-                { id = 42277, dropRate = 1 }, -- Hawkfeather Crown ???
+                {},
+                { id = 42277, dropRate = 1 }, -- Hawkfeather Crown TODO droprate
             }
         },
         {

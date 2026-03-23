@@ -45,6 +45,7 @@ AtlasTW.InstanceData.FrostmaneHollow = {
             name = LB["Tan'sha The Sleek"],
             defaults = { dropRate = 25 },
             loot = {
+                { id = 162 }, -- Frigid Cloak
                 { id = 184 }, -- Oboka's Axe
                 { id = 197 }, -- Vest of the Beastkeeper
             }
