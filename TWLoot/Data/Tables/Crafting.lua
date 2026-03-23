@@ -948,8 +948,8 @@ local craftingTable = {
 		{ id = 9986,              skill = { 130, 160, 175, 190 } }, --Bronze Greatsword
 		{ id = 3296,              skill = { 130, 160, 175, 190 } }, --Heavy Bronze Mace
 		{ id = 3331,              skill = { 130, 160, 175, 190 } }, --Silvered Bronze Boots
-		{ id = 2673,              skill = { 130, 160, 175, 190 } }, --Silvered Bronze Breastplate
 		{},
+		{ id = 2673,              skill = { 130, 160, 175, 190 } }, --Silvered Bronze Breastplate
 		{ id = 9987,              skill = { 135, 165, 180, 195 } }, --Bronze Battle Axe
 		{ id = 3333,              skill = { 135, 165, 180, 195 } }, --Silvered Bronze Gauntlets
 		{ id = 57169,             skill = { 140, 140, 147, 155 } }, --Iron Belt Buckle
@@ -1032,7 +1032,7 @@ local craftingTable = {
 		{},
 		{ id = 46627,         skill = { 220, 220, 220, 220 } }, --Steel Plate Gauntlets
 		{ id = 9942,          skill = { 220, 240, 250, 260 } }, --Mithril Scale Gloves
-		{ id = 90,            skill = { 225, 225, 225, 225 } }, --Truesilver Belt Buckle 1.18
+		{ id = 90,            skill = { 225, 225, 230, 235 } }, --Truesilver Belt Buckle 1.18
 		{ id = 9952,          skill = { 225, 245, 255, 265 } }, --Ornate Mithril Shoulders
 		{ id = 9997,          skill = { 225, 250, 262, 275 } }, --Wicked Mithril Blade
 		{ id = 46629,         skill = { 225, 225, 225, 225 } }, --Steel Plate Armor
@@ -1040,8 +1040,8 @@ local craftingTable = {
 		{ id = 46651,         skill = { 225, 260, 267, 275 } }, --Bloodstone Warblade 1.18
 	},
 	SmithingArtisan = {
-		{ id = 46631,          skill = { 230, 230, 230, 230 } }, --Steel Plate Barbute
-		{ id = 46630,          skill = { 230, 230, 230, 230 } }, --Steel Plate Pauldrons
+		{ id = 46631,          skill = { 230, 245, 255, 260 } }, --Steel Plate Barbute
+		{ id = 46630,          skill = { 230, 245, 230, 255 } }, --Steel Plate Pauldrons
 		{ id = 9959,           skill = { 230, 250, 260, 270 } }, --Heavy Mithril Breastplate
 		{ id = 9961,           skill = { 230, 250, 260, 270 } }, --Mithril Coif
 		{ id = 10001,          skill = { 230, 255, 267, 280 } }, --Big Black Mace

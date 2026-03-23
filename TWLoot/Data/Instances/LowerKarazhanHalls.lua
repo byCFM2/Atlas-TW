@@ -182,7 +182,7 @@ AtlasTW.InstanceData.LowerKarazhan = {
                 { id = 61294 }, -- Dark Rider's Signet
                 { id = 61255 }, -- Tuning Fork of Charged Lightning
                 { id = 61286 }, -- Bloodfang Effigy
-                {},
+                { id = 42166, dropRate = 10 }, -- Lord Blackwald II's Riding Whistle 1.18.1 TODO droprate
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
                 unpack(lKarazhanShare),
             }
