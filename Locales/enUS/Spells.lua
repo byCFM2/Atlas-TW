@@ -21,6 +21,12 @@ AtlasTW.Localization:RegisterNamespace("Spells", "enUS", {
     ["Disguise"] = true,
     ["Peasant Disguise"] = true,
     ["Peon Disguise"] = true,
+    ["Defias Disguise"] = true, --1.18.1
+    ["South Seas Pirate Disguise"] = true, --1.18.1
+    ["Stonesplinter Trogg Disguise"] = true, --1.18.1
+    ["Syndicate Disguise"] = true, --1.18.1
+    ["Dalaran Wizard Disguise"] = true, --1.18.1
+    ["Dark Iron Dwarf Disguise"] = true, --1.18.1
     ["Elemental Leatherworking"] = true,
     ["Enchant 2H Weapon - Agility"] = true,
     ["Enchant 2H Weapon - Greater Impact"] = true,
