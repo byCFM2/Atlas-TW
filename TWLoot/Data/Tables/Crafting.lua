@@ -1857,9 +1857,6 @@ local craftingTable = {
 		{ id = 45479,          skill = { 300, 320, 330, 340 } }, --Dreamhide Belt
 		{ id = 45483,          skill = { 300, 320, 330, 340 } }, --Inscribed Runic Bracers
 		{ id = 45455,          skill = { 300, 320, 330, 340 } }, --Dreamhide
-		{ id = 36755,          skill = { 0, 285, 295, 305 } }, --Hydracoil Gauntlets 1.18.1
-		{ id = 36757,          skill = { 0, 295, 305, 315 } }, --Hydracoil Spaulders 1.18.1
-		{ id = 36753,          skill = { 0, 300, 310, 320 } }, --Hydracoil Trousers 1.18.1
 		{ id = 36587,          skill = { 0, 320, 330, 340 } }, --Witherhide Gloves 1.18.1
 	},
 
@@ -1915,6 +1912,9 @@ local craftingTable = {
 		{ id = 54015,                            skill = { 300, 315, 330, 345 } }, --Molten Leggings
 		{ id = 37,                               skill = { 300, 300, 300, 300 } }, --Harness of the High Thane 1.18
 		{ id = 36909,                            skill = { 300, 300, 300, 300 } }, --Essence Infused Leather Gloves 1.18
+		{ id = 36755,          					 skill = { 0, 285, 295, 305 } }, --Hydracoil Gauntlets 1.18.1
+		{ id = 36757,          					 skill = { 0, 295, 305, 315 } }, --Hydracoil Spaulders 1.18.1
+		{ id = 36753,          					 skill = { 0, 300, 310, 320 } }, --Hydracoil Trousers 1.18.1
 	},
 
 	Tribal = {
