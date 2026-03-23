@@ -485,8 +485,8 @@ local craftingTable = {
 		{ id = 11460,                skill = { 230, 245, 265, 285 } }, --Elixir of Detect Undead
 		{ id = 11468,                skill = { 240, 255, 275, 295 } }, --Elixir of Dream Vision
 		{ id = 11478,                skill = { 250, 265, 285, 305 } }, --Elixir of Detect Demon
-		{},
 		{ id = 17632,                skill = { 300, 315, 322, 330 } }, --Alchemist's Stone
+		{ id = 36589,                skill = { 0, 330, 340, 350 } },   --Mixologist Stone 1.18.1
 	},
 
 	EnchantingApprentice = {
