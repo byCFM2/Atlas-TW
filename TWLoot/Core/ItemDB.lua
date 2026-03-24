@@ -185,7 +185,7 @@ local function InitializeClassLookup()
     if PlayerAllowedLookup then return end
     PlayerAllowedLookup = {}
     PlayerAllowedPatterns = {}
-    local playerClass = AtlasTW.PlayerClass
+    local playerClass = AtlasTW.PlayerClass or UnitClass("player")
     local classItems = AtlasTW.ItemDB.ClassItems[playerClass]
     if classItems then
         for _, item in ipairs(classItems) do
@@ -209,7 +209,7 @@ local function getColoredText(text, typeText)
     local COLOR_GREEN = Colors.GREEN
     local COLOR_RED = Colors.RED
     local COLOR_END = "|r"
-    local playerClass = AtlasTW.PlayerClass
+    local playerClass = AtlasTW.PlayerClass or UnitClass("player")
     local playerLevel = UnitLevel("player")
 
     -- Cache lookup
@@ -281,7 +281,7 @@ local function getColoredText(text, typeText)
         end
     elseif typeText == "class" then
         local classText = string.gsub(text, L_CLASSES .. ": ", "")
-        if not string.find(classText, playerClass, 1, true) then
+        if playerClass and not string.find(classText, playerClass, 1, true) then
             colorCode = COLOR_RED
         end
         local res = colorCode .. classText .. COLOR_END

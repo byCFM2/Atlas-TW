@@ -286,7 +286,7 @@ function AtlasTW.OnEvent()
 		if not Atlas_Refresh then
 			Atlas_Refresh = AtlasTW.Refresh
 		end
-	elseif not arg1 then
+	elseif not arg1 or event == "PLAYER_ENTERING_WORLD" then
 		AtlasTW.isHorde = UnitFactionGroup("player") == "Horde"
 		AtlasTW.Faction = AtlasTW.isHorde and "Horde" or "Alliance"
 		AtlasTW.PlayerClass = UnitClass("player")
