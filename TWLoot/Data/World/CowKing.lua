@@ -53,8 +53,8 @@ AtlasTW.InstanceData.CowKing = {
                 {},
                 { id = 51261, dropRate = 100 }, -- Little Cow
             },
-        },
-    },
+        }
+    }
 }
 
 -- Item initialization for all bosses
