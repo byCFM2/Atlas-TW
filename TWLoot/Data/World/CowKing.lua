@@ -52,9 +52,9 @@ AtlasTW.InstanceData.CowKing = {
                 { id = 60491, disc = L["Misc"], dropRate = 100 }, -- The Moo Stone
                 {},
                 { id = 51261, dropRate = 100 }, -- Little Cow
-}
-}
-}
+            },
+        },
+    },
 }
 
 -- Item initialization for all bosses

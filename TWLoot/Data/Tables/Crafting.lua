@@ -3021,7 +3021,6 @@ local craftingTable = {
 		{ id = 52747,          skill = { 300, 300, 300, 300 } }, --Voltage-Neutralizing Nature Reflector 1.18
 		{ id = 52749,          skill = { 300, 300, 300, 300 } }, --Giga-Charged Arcane Reflector 1.18
 		{ id = 36946,          skill = { 300, 300, 300, 300 } }, --Facetted Crystal Scope 1.18.1
-		{ id = 30069,          skill = { 0, 315, 325, 335 } }, -- Oil-Powered Cooker 1.18.1
 		{ id = 32310,          skill = { 300, 320, 330, 340 } }, -- Enchanted Thorium Shells 1.18.1
 		{ id = 33085,          container = { 33095 } }, -- Over-Tinkered Lens 1.18.1
 	},
@@ -3114,7 +3113,6 @@ local craftingTable = {
 		{ id = 23078,           skill = { 265, 285, 295, 305 } }, --Goblin Jumper Cables XL
 		{ id = 52747,           skill = { 300, 300, 300, 300 } }, --Voltage-Neutralizing Nature Reflector 1.18
 		{ id = 52749,           skill = { 300, 300, 300, 300 } }, --Giga-Charged Arcane Reflector 1.18
-		{ id = 30069,          skill = { 0, 315, 325, 335 } }, -- Oil-Powered Cooker 1.18.1
 	},
 
 	EngineeringExplosives = {
@@ -3577,7 +3575,7 @@ local craftingTable = {
 		{ id = 30017,            skill = { 180, 200, 210, 220 } }, 	--Sharpened Herb Sickle
 		{ id = 30022,            skill = { 185, 205, 215, 225 } }, 	--Lined Wintercloak
 		{ id = 30024,            skill = { 190, 210, 220, 230 } }, 	--Sleek Pinewood Bow
-		{ id = 36747,            skill = { 0, 215, 225, 235 } }, 	--Jungle Remedy
+		{ id = 36747,            skill = { 195, 215, 225, 235 } }, 	--Jungle Remedy
 		{ id = 30029,            skill = { 200, 220, 230, 240 } }, 	--Savory Fishing Lure
 		{ id = 30027,            skill = { 200, 220, 230, 240 } }, 	--Superior Healing Salve
 		{ id = 36795,            skill = { 205, 225, 235, 245 } }, 	--Nutritious Rations
@@ -3611,6 +3609,7 @@ local craftingTable = {
 		{ id = 30054,              skill = { 285, 305, 315, 325 } }, -- Skinner's Carryall
 		{ id = 30065,              skill = { 285, 305, 315, 325 } }, -- Fisherman's Backpack
 		{ id = 30057,              skill = { 290, 310, 320, 330 } }, -- Cooling Rations Bag
+		{ id = 30069,              skill = { 295, 315, 325, 335 } }, -- Oil-Powered Cooker
 		{ id = 30061,              skill = { 300, 320, 330, 340 } }, -- Starfeather Arrows
 		{ id = 30067,              skill = { 300, 320, 330, 340 } }, -- Starfeather Arrows
 		{ id = 30063,              skill = { 300, 320, 330, 340 } }, -- Major Healing Salve

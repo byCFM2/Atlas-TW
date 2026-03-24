@@ -80,6 +80,7 @@ local pvpRewards = {
 		{ id = 18826 }, -- High Warlord's Shield Wall
 		{ id = 23468 }, -- High Warlord's Tome of Destruction
 		{ id = 23469 }, -- High Warlord's Tome of Mending
+		{ id = 98731 }, -- Gladiator's Tunic
 	},
 	PvP60Accessories = {
 		{ name = LF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 1"}, --*1

@@ -140,8 +140,6 @@ AtlasTW.Localization:RegisterNamespace("Zones", "enUS", {
     ["Blackstone Island"] = true,
 
     -- TW 1.18 Additions
-    ["Timbermaw Hold"] = true,
-    ["Windhorn Canyon"] = true,
     ["Farraki Arena"] = true,
     ["Grim Reaches"] = true,
     ["Dragonmaw Retreat"] = true,
@@ -151,4 +149,7 @@ AtlasTW.Localization:RegisterNamespace("Zones", "enUS", {
     -- TW 1.18.1 Additions
     ["Thorn Gorge"] = true,
     ["Moonwhisper Coast"] = true,
+    ["Frostmane Hollow"] = true,
+    ["Timbermaw Hold"] = true,
+    ["Windhorn Canyon"] = true,
 })
