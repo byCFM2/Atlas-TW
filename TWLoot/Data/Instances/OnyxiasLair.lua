@@ -87,9 +87,11 @@ AtlasTW.InstanceData.OnyxiasLair = {
             prefix = "2)",
             name = LB["Broodcommander Axelus"],
             postfix = L["Optional"],
-            defaults = { dropRate = 0 },
+            defaults = { dropRate = 19 },
             loot = {
-                { id = 33149, dropRate = 10 }, -- Battle Standard of the Broodcommander
+                { id = 33087 }, -- Libram of Ardour
+                { id = 33098, dropRate = 9 }, -- Idol of Equilibrium
+                { id = 33149, dropRate = 19 }, -- Battle Standard of the Broodcommander
                 { id = 33150 }, -- Yoxtez, Black Breath of the Dragonflight
                 { id = 33151 }, -- Onyxian Brood Egg
                 { id = 33152 }, -- Prestor's Rod of Command

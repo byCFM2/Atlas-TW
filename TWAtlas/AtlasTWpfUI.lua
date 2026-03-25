@@ -101,6 +101,9 @@ local function StyleMainFrame()
     if AtlasTWFrame.backdrop then
         AtlasTWFrame.backdrop:SetFrameStrata("HIGH")
         AtlasTWFrame.backdrop:SetFrameLevel(AtlasTWFrame:GetFrameLevel() - 1)
+        
+        -- Ensure backdrop doesn't capture mouse if main frame is mouse-disabled (locked)
+        AtlasTWFrame.backdrop:EnableMouse(false)
     end
 
     -- Style the close button (X button)

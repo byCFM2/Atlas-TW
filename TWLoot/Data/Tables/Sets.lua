@@ -723,9 +723,9 @@ Sets = {
 		{},
 		{ name = LIS["Attire of Transcendence"], icon = "Spell_Holy_HolyNova" }, --1.18.1
 		{ id = 33008 }, -- Crown of Transcendence
-		{ id = 33009 }, -- 
-		{ id = 33010 }, -- 
-		{ id = 33011 }, -- 
+		{ id = 33009 }, -- Epaulets of Transcendence
+		{ id = 33010 }, -- Vestments of Transcendence
+		{ id = 33011 }, -- Wristbands of Transcendence
 		{ name = LIS["Regalia of Transcendence"], icon = "Spell_Shadow_Shadowform" },
 		{ id = 47206 }, -- Coronet of Transcendence
 		{ id = 47207 }, -- Shoulderpads of Transcendence
@@ -740,9 +740,10 @@ Sets = {
 		{},
 		{},
 		{},
-		{ id = 33012 }, -- 
-		{ id = 33013 }, -- 
-		{ id = 33014 }, -- 
+		{},
+		{ id = 33012 }, -- Handwraps of Transcendence
+		{ id = 33013 }, -- Cord of Transcendence
+		{ id = 33014 }, -- Leggings of Transcendence
 		{ id = 33015 }, -- Slippers of Transcendence
 	},
 	T2Warlock = {
@@ -966,9 +967,9 @@ Sets = {
 		{},
 		{ name = LIS["Attire of Prophecy"], icon = "Spell_Holy_HolyNova" },
 		{ id = 33000 }, -- Crown of Prophecy
-		{ id = 33001 }, -- 
-		{ id = 33002 }, -- 
-		{ id = 33003 }, -- 
+		{ id = 33001 }, -- Epaulets of Prophecy
+		{ id = 33002 }, -- Vestments of Prophecy
+		{ id = 33003 }, -- Bindings of Prophecy
 		{ name = LIS["Regalia of Prophecy"], icon = "Spell_Shadow_Shadowform" },
 		{ id = 47198 }, -- Coronet of Prophecy
 		{ id = 47199 }, -- Shoulderpads of Prophecy
@@ -983,9 +984,10 @@ Sets = {
 		{},
 		{},
 		{},
-		{ id = 33004 }, -- 
-		{ id = 33005 }, -- 
-		{ id = 33006 }, -- 
+		{},
+		{ id = 33004 }, -- Handwraps of Prophecy
+		{ id = 33005 }, -- Cord of Prophecy
+		{ id = 33006 }, -- Leggings of Prophecy
 		{ id = 33007 }, -- Slippers of Prophecy
 	},
 	T1Warlock = {
@@ -1559,6 +1561,7 @@ Sets = {
 		{ id = 47216 }, -- Vestments of the Oracle
 		{ id = 47217 }, -- Trousers of the Oracle
 		{ id = 47218 }, -- Treads of the Oracle
+		{},
 		{},
 		{ name = LIS["Vestments of the Oracle"], icon = "Spell_Shadow_Shadowform" }, --1.18.1
 		{ id = 33016 }, -- Coronet of the Oracle

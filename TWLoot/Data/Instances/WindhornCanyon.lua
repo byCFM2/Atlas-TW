@@ -49,7 +49,8 @@ AtlasTW.InstanceData.WindhornCanyon = {
                 { id = 33026 }, -- Sacred Windhorn Shoulders
                 { id = 33028 }, -- Hatchet of the Long Hunt
                 { id = 33027 }, -- Huntsman's Halfhorn
-               -- { id = 33036 }, -- Headsplitter Blunderbuss?
+               {},
+               { id = 70242, dropRate = 6 }, -- Plans: Kodoheart Necklace
             }
         },
         {
@@ -111,7 +112,8 @@ AtlasTW.InstanceData.WindhornCanyon = {
                 { id = 33042 }, -- Sacred Windhorn Headdress
                 { id = 33043 }, -- Blackwind Facemask
                 { id = 33044 }, -- Elder Crone's Sigil Ring
-                { id = 70244 }, -- Plans: Ceremonial Belt Buckle
+                {},
+                { id = 70244, dropRate = 6 }, -- Plans: Ceremonial Belt Buckle
             }
         },
         {
@@ -128,8 +130,11 @@ AtlasTW.InstanceData.WindhornCanyon = {
                 { id = 33045 }, -- The Blackwind Pillar
                 { id = 33046 }, -- Canyon's Barricade
                 { id = 33047 }, -- Ar'pora, the Chieftain's Judgement
+                { id = 33048 }, -- Heart of Windhorn
                 {},
-                { id = 42277, dropRate = 1 }, -- Hawkfeather Crown TODO droprate
+                { id = 70243, dropRate = 6 }, -- Plans: Grimtotem Bracers
+                {},
+                { id = 42277, dropRate = 1.3 }, -- Hawkfeather Crown
             }
         },
         {
@@ -138,6 +143,7 @@ AtlasTW.InstanceData.WindhornCanyon = {
             defaults = { dropRate = .1 },
             loot = {
                 { id = 33034 }, -- Kodospine Crossbow
+                { id = 33036 }, -- Headsplitter Blunderbuss
                 { id = 33039 }, -- Fleshrender
                 { id = 33179 }, -- Kodo Skull Crown TODO
                 { id = 33181 }, -- Ancestral Greaves

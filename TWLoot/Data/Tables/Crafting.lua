@@ -1673,8 +1673,8 @@ local craftingTable = {
 		{ id = 3767,              skill = { 120, 145, 157, 170 } }, --Hillman's Belt
 		{ id = 9074,              skill = { 120, 145, 157, 170 } }, --Nimble Leather Gloves
 		{ id = 9072,              skill = { 120, 145, 157, 170 } }, --Red Whelp Gloves
-		{ id = 34760,             skill = { 0, 145, 160, 175 } }, --Grimtotem Bracers 1.18.1
 		{ id = 3765,              skill = { 120, 155, 167, 180 } }, --Dark Leather Gloves
+		{ id = 34760,             skill = { 125, 145, 160, 175 } }, --Grimtotem Bracers 1.18.1
 		{ id = 3766,              skill = { 125, 150, 162, 175 } }, --Dark Leather Belt
 		{ id = 9145,              skill = { 125, 150, 162, 175 } }, --Fletcher's Gloves
 		{ id = 3768,              skill = { 130, 155, 167, 180 } }, --Hillman's Shoulders
@@ -2066,7 +2066,7 @@ local craftingTable = {
 	LeatherBracers = {
 		{ id = 9059,           skill = { 1, 40, 55, 70 } }, --Handstitched Leather Bracers
 		{ id = 9065,           skill = { 70, 100, 115, 130 } }, --Light Leather Bracers
-		{ id = 34760,          skill = { 0, 145, 160, 175 } }, --Grimtotem Bracers 1.18.1
+		{ id = 34760,          skill = { 125, 145, 160, 175 } }, --Grimtotem Bracers 1.18.1
 		{ id = 23399,          skill = { 155, 175, 185, 195 } }, --Barbaric Bracers
 		{ id = 3776,           skill = { 180, 200, 210, 220 } }, --Green Leather Bracers
 		{ id = 9201,           skill = { 185, 205, 215, 225 } }, --Dusky Bracers
@@ -3685,7 +3685,7 @@ local craftingTable = {
 		{ id = 41061,             skill = { 125, 145, 155, 165 } },                                     --Binding Signet
 		{ id = 41063,             skill = { 125, 145, 155, 165 } },                                     --Enchanted Bracelets
 		{ id = 41776,             skill = { 125, 145, 155, 165 } },                                     --Ring of Midnight
-		{ id = 34758,             skill = { 0, 145, 160, 175 } },                                     --Kodoheart Necklace 1.18.1
+		{ id = 34758,             skill = { 125, 145, 160, 175 } },                                     --Kodoheart Necklace 1.18.1
 		{ id = 41059,             skill = { 125, 150, 160, 170 } },                                     --Moonlight Staff
 		{ id = 41568,             skill = { 130, 150, 160, 170 } },                                     --Dazzling Moonstone Band
 		{ id = 41760,             skill = { 135, 135, 137, 140 } },                                     --Graceful Agate Gemstone
@@ -3978,7 +3978,7 @@ local craftingTable = {
 		{ id = 41323,          skill = { 100, 125, 135, 145 } }, --Talisman of Stone
 		{ id = 41325,          skill = { 110, 130, 140, 150 } }, --Medallion of Flame
 		{ id = 41055,          skill = { 120, 145, 155, 165 } }, --Pendant of Midnight
-		{ id = 34758,          skill = { 0, 145, 160, 175 } }, --Kodoheart Necklace 1.18.1
+		{ id = 34758,          skill = { 125, 145, 160, 175 } }, --Kodoheart Necklace 1.18.1
 		{ id = 41327,          skill = { 135, 155, 165, 175 } }, --Gleaming Silver Necklace
 		{ id = 41275,          skill = { 160, 160, 180, 200 } }, --Gemmed Citrine Pendant
 		{ id = 41331,          skill = { 160, 180, 190, 200 } }, --Gem Encrusted Choker

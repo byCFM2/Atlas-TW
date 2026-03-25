@@ -48,6 +48,8 @@ AtlasTW.InstanceData.FrostmaneHollow = {
                 { id = 162 }, -- Frigid Cloak
                 { id = 184 }, -- Oboka's Axe
                 { id = 197 }, -- Vest of the Beastkeeper
+                {},
+                { id = 42300, dropRate = 100 }, -- Flawless Leopard Pelt
             }
         },
         { name = LB["Handler Oboka"], color = Colors.GREY },

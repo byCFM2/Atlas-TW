@@ -176,22 +176,25 @@ AtlasTW.InstanceData.BlackwingLair = {
             prefix = "5)",
             name = LB["Ezzel Darkbrewer"],
             postfix = L["Optional"],
-            defaults = { dropRate = 0 },
+            defaults = { dropRate = 17 },
             loot = {
-                { id = 33073 }, -- 
+                { id = 33073 }, -- Philosopher's Barrier
                 { id = 33074, dropRate = 10 }, -- Taut Dragonhide Boots
                 { id = 33075, dropRate = 10 }, -- Staff of Cleansing Vapors
-                { id = 33076 }, -- 
-                { id = 33077 }, -- 
-                { id = 33078 }, -- 
-                { id = 33079 }, -- 
-                { id = 33080 }, -- 
-                { id = 33081 }, -- 
+                { id = 33076 }, -- Ichorus
+                { id = 33077 }, -- Apron of Fuming Protection
+                { id = 33078 }, -- Vials of Volatile Acid
+                { id = 33079 }, -- Philosopher's Stone Replica
+                { id = 33080 }, -- Wingbone Vambraces
+                { id = 33081 }, -- Flask of Petrified Gold
                 { id = 33083, container = { 33093,33094 } }, -- Elementium Sharpening Stone
                 { id = 33084, container = { 33096 } }, -- Pristine Chromatic Scale
-                { id = 33085, container = { 33095 }, dropRate = 10 }, -- Over-Tinkered Lens
-                { id = 33086 }, --
-                { id = 33087 }, --
+                { id = 33085, container = { 33095 }, dropRate = 25 }, -- Over-Tinkered Lens
+                { id = 33086 }, -- Libram of Hallowed Ground
+                { id = 33090 }, -- Totem of Distant Tremors
+                { id = 33097 }, -- Idol of Acidity
+                {},
+                { id = 42311, dropRate = 100 }, -- Transmutation Alloy
             }
         },
         {

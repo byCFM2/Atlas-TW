@@ -1405,15 +1405,15 @@ local Factions = {
 	},
 	EarthenRing = {
 		{ name = LF["Honored"], icon = "Spell_Nature_EarthBind"},
-		{ id = 33123 },
-		{ id = 33124 },
+		{ id = 33123 }, -- Loop of Shattered Earth
+		{ id = 33124 }, -- Warden's Bracers
         {},
 		{ name = LF["Revered"], icon = "Spell_Nature_EarthBind"},
-		{ id = 33125 },
-		{ id = 33126 },
-		{ id = 33127 },
-		{ id = 33128 },
-		{ id = 33129 },
+		{ id = 33125 }, -- Clasp of Molten Rage
+		{ id = 33126 }, -- Cyclone Hauberk
+		{ id = 33127 }, -- Wraps of the Spirit Guide
+		{ id = 33128 }, -- Wolfsong's Cowl
+		{ id = 33129 }, -- Drape of the Far Seer
         {},
         {},
         {},
@@ -1428,18 +1428,18 @@ local Factions = {
 	},
 	DraeneiExiles = {
 		{ name = LF["Friendly"], icon = "INV_Offhand_Draenei_A_02"},
-		{ id = 33136 }, -- 
-		{ id = 33137 }, -- 
-		{ id = 33177 }, -- 
-		{ id = 33178 }, -- 
+		{ id = 33136 }, -- Wraps of the Rift Traveler
+		{ id = 33137 }, -- Narak'la Padded Breastplate
+		{ id = 33177 }, -- Leggings of the Rift Traveler
+		{ id = 33178 }, -- Narak'la Padded Leggings
 		{},
 		{ name = LF["Honored"], icon = "INV_Offhand_Draenei_A_02"},
-		{ id = 33138 }, -- 
-		{ id = 33139 }, -- 
-		{ id = 33140 }, -- 
-		{ id = 33141 }, -- 
-		{ id = 33142 }, -- 
-		{ id = 33143 }, -- 
+		{ id = 33138 }, -- Draenethyst Kris
+		{ id = 33139 }, -- Draenethyst Blade
+		{ id = 33140 }, -- Draenethyst Juggernaut
+		{ id = 33141 }, -- Draenethyst Longbow
+		{ id = 33142 }, -- Draenethyst Scepter
+		{ id = 33143 }, -- Draenethyst Necklace
 		{},
 		{},
 		{ name = LF["Revered"], icon = "INV_Offhand_Draenei_A_02"},

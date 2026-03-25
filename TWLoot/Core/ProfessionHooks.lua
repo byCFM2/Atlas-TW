@@ -321,8 +321,28 @@ tsEventFrame:SetScript("OnEvent", function()
     if event == "TRADE_SKILL_SHOW" then
         EnsureSingleProfessionFrame(event)
     end
+    
+    -- Only scan if the frame is truly visible and not in combat/shapeshift spam
     if TradeSkillFrame and TradeSkillFrame:IsVisible() then
-        AtlasTW.ProfessionHooks.StartTSScan()
+        -- Throttle BAG_UPDATE to avoid spamming during rapid events (like Druid shapeshift)
+        if event == "BAG_UPDATE" then
+            if not AtlasTW.ProfessionHooks._tsBagThrottle then
+                AtlasTW.ProfessionHooks._tsBagThrottle = true
+                if AtlasTW.Timer and AtlasTW.Timer.Start then
+                    AtlasTW.Timer.Start(1.0, function()
+                        AtlasTW.ProfessionHooks._tsBagThrottle = nil
+                        if TradeSkillFrame and TradeSkillFrame:IsVisible() then
+                            AtlasTW.ProfessionHooks.StartTSScan()
+                        end
+                    end)
+                else
+                    AtlasTW.ProfessionHooks.StartTSScan()
+                    AtlasTW.ProfessionHooks._tsBagThrottle = nil
+                end
+            end
+        else
+            AtlasTW.ProfessionHooks.StartTSScan()
+        end
     end
 end)
 
@@ -612,8 +632,28 @@ craftEventFrame:SetScript("OnEvent", function()
     if event == "CRAFT_SHOW" then
         EnsureSingleProfessionFrame(event)
     end
+    
+    -- Only scan if the frame is truly visible and not in combat/shapeshift spam
     if CraftFrame and CraftFrame:IsVisible() then
-        AtlasTW.ProfessionHooks.StartCraftScan()
+        -- Throttle BAG_UPDATE to avoid spamming during rapid events (like Druid shapeshift)
+        if event == "BAG_UPDATE" then
+            if not AtlasTW.ProfessionHooks._craftBagThrottle then
+                AtlasTW.ProfessionHooks._craftBagThrottle = true
+                if AtlasTW.Timer and AtlasTW.Timer.Start then
+                    AtlasTW.Timer.Start(1.0, function()
+                        AtlasTW.ProfessionHooks._craftBagThrottle = nil
+                        if CraftFrame and CraftFrame:IsVisible() then
+                            AtlasTW.ProfessionHooks.StartCraftScan()
+                        end
+                    end)
+                else
+                    AtlasTW.ProfessionHooks.StartCraftScan()
+                    AtlasTW.ProfessionHooks._craftBagThrottle = nil
+                end
+            end
+        else
+            AtlasTW.ProfessionHooks.StartCraftScan()
+        end
     end
 end)
 
