@@ -150,5 +150,28 @@ AtlasTW.InstanceData.TransportRoutes = {
             postfix = LZ["Stranglethorn Vale"]..", "..LF["Neutral"],
             color = colors.YELLOW2,
         },
+        -- TW 1.18 Additions
+        {
+            id = "TRSI7Outpost",
+            prefix = "18)",
+            name = LM["SI:7 Outpost"],
+            postfix = LZ["Balor"]..", "..LF["Alliance"],
+            color = colors.BLUE,
+        },
+        -- TW 1.18.1 Additions
+        {
+            id = "TRMoonhoofVillage",
+            prefix = "19)",
+            name = LM["Moonhoof Village"],
+            postfix = LZ["Moonwhisper Coast"]..", "..LF["Horde"],
+            color = colors.RED,
+        },
+        {
+            id = "TRShadowpreyVillage",
+            prefix = "20)",
+            name = LM["Shadowprey Village"],
+            postfix = LZ["Desolace"]..", "..LF["Horde"],
+            color = colors.RED,
+        },
     },
 }

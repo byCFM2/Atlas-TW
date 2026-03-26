@@ -580,4 +580,7 @@ AtlasTW.Localization:RegisterNamespace("MapData", "enUS", {
     ["Kalanar's Strongbox"] = true,
     ["Chest of Dathronag"] = true,
     ["Lower Reserve Key"] = true,
+    ["Moonhoof Village"] = true, --1.18.1 TODO
+    ["Narvalis Point"] = true, --1.18.1 TODO
+    ["Shimmerstar Lake"] = true, --1.18.1 TODO
 })

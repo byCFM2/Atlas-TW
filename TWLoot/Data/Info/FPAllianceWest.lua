@@ -150,5 +150,18 @@ AtlasTW.InstanceData.FPAllianceWest = {
             name = LM["Tel Co. Basecamp"],
             postfix = LZ["Tel'Abim"],
         },
+        -- TW 1.18.1 Additions
+        {
+            id = "FPNarvalisPoint",
+            prefix = "20)",
+            name = LM["Narvalis Point"],
+            postfix = LZ["Moonwhisper Coast"]..", "..LF["Alliance"],
+        },
+        {
+            id = "FPShimmerstarLake",
+            prefix = "21)",
+            name = LM["Shimmerstar Lake"],
+            postfix = LZ["Moonwhisper Coast"]..", "..LF["Alliance"],
+        },
     },
 }

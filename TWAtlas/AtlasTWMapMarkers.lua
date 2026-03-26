@@ -84,6 +84,8 @@ local MapPoints = {
     { 1, 5,  0.333, 0.399, "TransportRoutes",           "boat",      LMD["Rut'Theran Village"] },            -- Boat to Rut'Theran Village
     { 1, 10, 0.718, 0.566, "TransportRoutes",           "boat",      LZ["Menethil Harbor"] },                -- Boat to Menethil Harbor
     { 1, 26, 0.552, 0.949, "TransportRoutes",           "boat",      LZ["Auberdine"] },                      -- Boat to Auberdine
+    { 1, 7,  .22,   .74,   "TransportRoutes",           "boat",      LZ["Moonhoof Village"] },               -- Boat to Moonhoof Village
+    { 1, 19,  .69,   .39,  "TransportRoutes",           "boat",      LZ["Shadowprey Village"] },             -- Boat to Shadowprey Village
     -- Eastern Kingdoms Dungeons
     { 2, 26, 0.375, 0.83,  "BlackrockDepths",           "dungeon",   "52-60" },
     { 2, 8,  0.33,  0.3,   "BlackrockDepths",           "dungeon",   "52-60" },
@@ -135,7 +137,7 @@ local MapPoints = {
     { 2, 33, 0.812, 0.794, "TransportRoutes",           "boat",      LMD["Sparkwater Port"] },                                                  -- Boat to Sparkwater Port
     { 2, 39, 0.068, 0.613, "TransportRoutes",           "boat",      LZ["Theramore Isle"] },                                                    -- Boat to Theramore Isle
     { 2, 28, 0.218, 0.563, "TransportRoutes",           "boat",      LZ["Auberdine"] },                                                         -- Boat to Auberdine
-    { 2, 28, 0.22, 0.413,  "TransportRoutes",           "boat",      LZ["Balor"] },                                                             -- Fly to Balor
+    { 2, 28, 0.22, 0.413,  "TransportRoutes",           "boat",      LMD["SI:7 Outpost"] },                                                     -- Fly to SI:7 Outpost
     { 2, 29, 0.257, 0.73,  "TransportRoutes",           "boat",      LZ["Ratchet"] },                                                           -- Boat to Ratchet
     { 2, 34, 0.61,  0.58,  "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                                                         -- Zeppelins to Orgrimmar
     { 2, 34, 0.63,  0.58,  "TransportRoutes",           "zepp",      LZ["Grom'Gol"] },                                                          -- Zeppelins to Grom'Gol

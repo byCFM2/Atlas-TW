@@ -90,6 +90,7 @@ AtlasTW.InstanceData.OnyxiasLair = {
             defaults = { dropRate = 19 },
             loot = {
                 { id = 33087 }, -- Libram of Ardour
+                { id = 33089 }, -- Totem of Thundercall
                 { id = 33098, dropRate = 9 }, -- Idol of Equilibrium
                 { id = 33149, dropRate = 19 }, -- Battle Standard of the Broodcommander
                 { id = 33150 }, -- Yoxtez, Black Breath of the Dragonflight
