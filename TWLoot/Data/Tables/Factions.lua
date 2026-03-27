@@ -423,7 +423,7 @@ local Factions = {
 		{ id = 58231 }, --Penchant of Humility
 		{ id = 58232 }, --Demonbane
 		{ id = 58233 }, --Bulwark of Holy Resolve
-        {},
+        { id = 33235 }, --Libram of Radiant Dawn
         {},
         {},
 		{ name = LF["Revered"], icon = "INV_Jewelry_Talisman_08"},
