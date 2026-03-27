@@ -3493,6 +3493,7 @@ local craftingTable = {
 		{ id = 45625,          skill = { 300, 300, 310, 320 } }, --Le Fishe Au Chocolat
 		{ id = 46085,          skill = { 300, 325, 345, 365 } }, --Gurubashi Gumbo
 		{ id = 49551,          skill = { 300, 325, 345, 365 } }, --Empowering Herbal Salad
+		{ id = 45999,          skill = { 300, 300, 320, 340 } }, --Honeycomb Delight (1.18.1)
 	},
 
 	FirstAidTable = {

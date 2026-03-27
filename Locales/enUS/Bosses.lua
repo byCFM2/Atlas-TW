@@ -16,6 +16,7 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Ormanos the Cracked"] = true,
     ["Loktanag the Vile"] = true,
     ["Archdruid Kronn"] = true,
+    ["Xavian Form"] = true,
     ["Trioch the Devourer"] = true,
     ["Karrsh the Sentinel"] = true,
     ["Selenaxx Foulheart"] = true,

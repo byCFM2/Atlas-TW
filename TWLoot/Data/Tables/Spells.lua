@@ -15329,6 +15329,13 @@ AtlasTW.SpellDB = {
 				{ 8925 },
 			},
 		},
+		[45999] = { --Honeycomb Delight
+			item = 42186,
+			reagents = {
+				{ 42293 },
+				{ 42016 },
+			},
+		},
 		[46064] = {
 			requires = L["Cooking Fire"],
 			item = 6182,
