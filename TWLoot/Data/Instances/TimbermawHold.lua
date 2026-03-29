@@ -45,6 +45,7 @@ AtlasTW.InstanceData.TimbermawHold = {
     Bosses = {
         {
             id = "THKarrshtheSentinel",
+            prefix = "1)",
             name = LB["Karrsh the Sentinel"],
             defaults = { dropRate = 0 },
             loot = {
@@ -57,11 +58,11 @@ AtlasTW.InstanceData.TimbermawHold = {
         },
         {
             id = "THRotgrowl",
-            prefix = " ",
+            prefix = "2)",
             name = LB["Rotgrowl"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 16768 }, -- Furbolg Medicine Pouch
+                { id = 33333 }, -- Furbolg Medicine Wristwraps
                 { id = 33245 }, -- Tealeaf Waistwrap
                 --! recipe: honeycomb delight
             }
@@ -71,18 +72,20 @@ AtlasTW.InstanceData.TimbermawHold = {
             name = LB["Kodiak"],
         },
         {
-            id = "THArchdruidKronn",
-            name = LB["Archdruid Kronn"],
+            id = "THLoktanagtheVile",
+            prefix = "3)",
+            name = LB["Loktanag the Vile"],
             defaults = { dropRate = 0 },
             loot = {
+                { id = 33251 }, -- Drape of Contagion
+                { id = 33340 }, -- Ritualistic Boots
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
             }
         },
         {
-            id = "THXavianForm",
-            name = LB["Xavian Form"],
-        },
-        {
             id = "THTriochtheDevourer",
+            prefix = "4)",
             name = LB["Trioch the Devourer"],
             defaults = { dropRate = 25 },
             loot = {
@@ -94,7 +97,7 @@ AtlasTW.InstanceData.TimbermawHold = {
         },
         {
             id = "THOrmanostheCracked",
-            prefix = " ",
+            prefix = "5)",
             name = LB["Ormanos the Cracked"],
             defaults = { dropRate = 0 },
             loot = {
@@ -105,18 +108,8 @@ AtlasTW.InstanceData.TimbermawHold = {
             }
         },
         {
-            id = "THLoktanagtheVile",
-            name = LB["Loktanag the Vile"],
-            defaults = { dropRate = 0 },
-            loot = {
-                { id = 33251 }, -- Drape of Contagion
-                { id = 33340 }, -- Ritualistic Boots
-                {},
-                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
-            }
-        },
-        {
             id = "THSelenaxxFoulheart",
+            prefix = "6)",
             name = LB["Selenaxx Foulheart"],
             defaults = { dropRate = 0 },
             loot = {
@@ -124,7 +117,36 @@ AtlasTW.InstanceData.TimbermawHold = {
         },
         {
             id = "THChieftainPartath",
+            prefix = "7)",
             name = LB["Chieftain Partath"],
+            defaults = { dropRate = 0 },
+            loot = {
+                { id = 33276 }, -- Unity of the Timbermaw
+                { id = 33335 }, -- Ritualistic Headdress
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
+            }
+        },
+        {
+            id = "THArchdruidKronn",
+            prefix = "8)",
+            name = LB["Archdruid Kronn"],
+            defaults = { dropRate = 0 },
+            loot = {
+                { id = 33267 }, -- Mantle of the Den Watcher
+                { id = 33345 }, -- Treads of the Pathfinder
+                {},
+                { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
+            }
+        },
+        {
+            id = "THXavianForm",
+            name = LB["Xavian Form"],
+        },
+        {
+            id = "THUrsol",
+            prefix = "9)",
+            name = LB["Ursol"],
             defaults = { dropRate = 0 },
             loot = {
             }

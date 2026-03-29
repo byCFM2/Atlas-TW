@@ -44,7 +44,7 @@ AtlasTW.MenuData.Factions = {
 	{ name = LF["Cenarion Circle"],       icon = "Interface\\Icons\\Spell_Nature_HealingTouch",            lootpage = "CenarionCircle",	       Extra = LZ["Silithus"]   },
 	{ name = LF["Gelkis Clan Centaur"],   icon = "Interface\\Icons\\INV_Misc_Head_Centaur_01",             lootpage = "GelkisClanCentaur",	   Extra = LZ["Desolace"]   },
 	{ name = LF["Magram Clan Centaur"],   icon = "Interface\\Icons\\INV_Misc_Head_Centaur_01",             lootpage = "MagramClanCentaur",	   Extra = LZ["Desolace"]   },
-	{ name = LZ["Timbermaw Hold"],        icon = "Interface\\Icons\\INV_Misc_Horn_01",                     lootpage = "TimbermawHoldRep",	       Extra = LZ["Felwood"]   },
+	{ name = LZ["Timbermaw Hold"]..", "..LZ["Felwood"],        icon = "Interface\\Icons\\INV_Misc_Horn_01",                     lootpage = "TimbermawHoldRep",	       Extra = LZ["Felwood"]   },
 	{ name = LF["Zandalar Tribe"],        icon = "Interface\\Icons\\INV_Misc_Coin_08",                     lootpage = "ZandalarTribe",	       Extra = LZ["Stranglethorn Vale"]   },
 	{ name = LF["Wardens of Time"],       icon = "Interface\\Icons\\INV_Misc_Head_Dragon_Bronze",          lootpage = "WardensofTime",	       Extra = LZ["The Black Morass"]   },
 	{ name = LF["Shen'dralar"],           icon = "Interface\\Icons\\INV_Misc_Book_10",          		   lootpage = "Shendralar",	       Extra = LZ["Dire Maul"]   },

@@ -519,27 +519,10 @@ end
 --- @usage AtlasTW.OptionEquipCompareOnClick() -- Called by checkbox click
 ---
 function AtlasTW.OptionEquipCompareOnClick()
-    AtlasTWOptions.LootEquipCompare = not AtlasTWOptions.LootEquipCompare
-    if AtlasTWOptions.LootEquipCompare then
-        -- Register tooltips if EquipCompare is enabled
-        if IsAddOnLoaded("EquipCompare") then
-            EquipCompare_RegisterTooltip(AtlasTWLootTooltip)
-            EquipCompare_RegisterTooltip(AtlasTWLootTooltip2)
-        end
-        if IsAddOnLoaded("EQCompare") then
-            EQCompare:RegisterTooltip(AtlasTWLootTooltip)
-            EQCompare:RegisterTooltip(AtlasTWLootTooltip2)
-        end
+    if AtlasTW.Integrations and AtlasTW.Integrations.ToggleEquipCompare then
+        AtlasTW.Integrations.ToggleEquipCompare()
     else
-        -- Unregister tooltips if EquipCompare is disabled
-        if IsAddOnLoaded("EquipCompare") then
-            EquipCompare_UnregisterTooltip(AtlasTWLootTooltip)
-            EquipCompare_UnregisterTooltip(AtlasTWLootTooltip2)
-        end
-        if IsAddOnLoaded("EQCompare") then
-            EQCompare:UnRegisterTooltip(AtlasTWLootTooltip)
-            EQCompare:UnRegisterTooltip(AtlasTWLootTooltip2)
-        end
+        AtlasTWOptions.LootEquipCompare = not AtlasTWOptions.LootEquipCompare
     end
     AtlasTW.OptionsInit()
 end

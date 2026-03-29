@@ -16,8 +16,8 @@
 
 local _G = getfenv()
 AtlasTW = _G.AtlasTW or {}
-AtlasTW.Integrations = {}
-local GREY = AtlasTW.Colors.GREY2
+AtlasTW.Integrations = AtlasTW.Integrations or {}
+local GREY = (AtlasTW.Colors and AtlasTW.Colors.GREY2) or "|cff808080"
 
 -- Local references for performance
 local L = AtlasTW.Localization.UI
@@ -28,7 +28,15 @@ local L = AtlasTW.Localization.UI
 --- @usage local hasEquipCompare = AtlasTW.Integrations.HasEquipCompare()
 ---
 function AtlasTW.Integrations.HasEquipCompare()
-    return IsAddOnLoaded("EquipCompare") or IsAddOnLoaded("EQCompare")
+    return IsAddOnLoaded("EquipCompare") or IsAddOnLoaded("EQCompare") or AtlasTW.Integrations.HasShaguTweaks()
+end
+
+---
+--- Checks if ShaguTweaks Equip Compare module is available and enabled
+--- @return boolean True if ShaguTweaks Equip Compare is enabled
+---
+function AtlasTW.Integrations.HasShaguTweaks()
+    return IsAddOnLoaded("ShaguTweaks") and ShaguTweaks_config and ShaguTweaks_config["Equip Compare"] == 1
 end
 
 ---
@@ -202,6 +210,176 @@ function AtlasTW.Integrations.UnregisterEquipCompareTooltips(tooltip1, tooltip2)
 end
 
 ---
+--- ShaguTweaks Comparison Integration
+--- This logic is adapted from ShaguTweaks/mods/equip-compare.lua
+---
+
+local shaguSlots = nil
+local shaguSlotsOther = nil
+
+local function InitializeShaguSlotTables()
+    if shaguSlots then return end
+
+    shaguSlots = {
+        [INVTYPE_2HWEAPON or "Two-Hand"] = "MainHandSlot",
+        [INVTYPE_BODY or "Shirt"] = "ShirtSlot",
+        [INVTYPE_CHEST or "Chest"] = "ChestSlot",
+        [INVTYPE_CLOAK or "Back"] = "BackSlot",
+        [INVTYPE_FEET or "Feet"] = "FeetSlot",
+        [INVTYPE_FINGER or "Finger"] = "Finger0Slot",
+        [INVTYPE_HAND or "Hands"] = "HandsSlot",
+        [INVTYPE_HEAD or "Head"] = "HeadSlot",
+        [INVTYPE_HOLDABLE or "Held In Off-hand"] = "SecondaryHandSlot",
+        [INVTYPE_LEGS or "Legs"] = "LegsSlot",
+        [INVTYPE_NECK or "Neck"] = "NeckSlot",
+        [INVTYPE_RANGED or "Ranged"] = "RangedSlot",
+        [INVTYPE_RELIC or "Relic"] = "RangedSlot",
+        [INVTYPE_ROBE or "Robe"] = "ChestSlot",
+        [INVTYPE_SHIELD or "Shield"] = "SecondaryHandSlot",
+        [INVTYPE_SHOULDER or "Shoulder"] = "ShoulderSlot",
+        [INVTYPE_TABARD or "Tabard"] = "TabardSlot",
+        [INVTYPE_TRINKET or "Trinket"] = "Trinket0Slot",
+        [INVTYPE_WAIST or "Waist"] = "WaistSlot",
+        [INVTYPE_WEAPON or "One-Hand"] = "MainHandSlot",
+        [INVTYPE_WEAPONMAINHAND or "Main-Hand"] = "MainHandSlot",
+        [INVTYPE_WEAPONOFFHAND or "Off-Hand"] = "SecondaryHandSlot",
+        [INVTYPE_WRIST or "Wrist"] = "WristSlot",
+        [INVTYPE_WAND or "Wand"] = "RangedSlot",
+        [INVTYPE_GUN or "Gun"] = "RangedSlot",
+        [INVTYPE_PROJECTILE or "Projectile"] = "AmmoSlot",
+        [INVTYPE_CROSSBOW or "Crossbow"] = "RangedSlot",
+        [INVTYPE_THROWN or "Thrown"] = "RangedSlot",
+    }
+
+    -- Add variants for multiple slots
+    shaguSlotsOther = {
+        [INVTYPE_FINGER or "Finger"] = "Finger1Slot",
+        [INVTYPE_TRINKET or "Trinket"] = "Trinket1Slot",
+        [INVTYPE_WEAPON or "One-Hand"] = "SecondaryHandSlot",
+    }
+end
+
+local function AddShaguHeader(tooltip)
+    local name = tooltip:GetName()
+    local sides = { "Left", "Right" }
+
+    -- shift all entries one line down
+    for i = tooltip:NumLines(), 1, -1 do
+        for _, side in pairs(sides) do
+            local current = _G[name .. "Text" .. side .. i]
+            local below = _G[name .. "Text" .. side .. i + 1]
+
+            if current and current:IsShown() then
+                local text = current:GetText()
+                local r, g, b = current:GetTextColor()
+
+                if text and text ~= "" then
+                    if tooltip:NumLines() < i + 1 then
+                        -- add new line if required
+                        tooltip:AddLine(text, r, g, b, true)
+                    else
+                        -- update existing lines
+                        below:SetText(text)
+                        below:SetTextColor(r, g, b)
+                        below:Show()
+
+                        -- hide processed line
+                        current:Hide()
+                    end
+                end
+            end
+        end
+    end
+
+    -- add label to first line
+    _G[name .. "TextLeft1"]:SetTextColor(.5, .5, .5, 1)
+    _G[name .. "TextLeft1"]:SetText(L["Currently Equipped"])
+    _G[name .. "TextLeft1"]:Show()
+
+    -- update tooltip sizes
+    tooltip:Show()
+end
+
+local function ShowShaguCompare(tooltip)
+    -- abort if shift is not pressed
+    if not IsShiftKeyDown() then
+        ShoppingTooltip1:Hide()
+        ShoppingTooltip2:Hide()
+        return
+    end
+
+    InitializeShaguSlotTables()
+
+    for i = 1, tooltip:NumLines() do
+        local tmpText = _G[tooltip:GetName() .. "TextLeft" .. i]
+        local slotType = tmpText:GetText()
+
+        if slotType and shaguSlots[slotType] then
+            local slotName = shaguSlots[slotType]
+            local slotID = GetInventorySlotInfo(slotName)
+
+            -- determine screen part
+            local x = GetCursorPosition() / UIParent:GetEffectiveScale()
+            local anchor = x < GetScreenWidth() / 2 and "TOPLEFT" or "TOPRIGHT"
+            local relative = x < GetScreenWidth() / 2 and "TOPRIGHT" or "TOPLEFT"
+
+            -- overwrite position for tooltips without owner
+            local pos, parent = tooltip:GetPoint()
+            if parent and parent == UIParent and pos == "TOPRIGHT" then
+                anchor = "TOPRIGHT"
+                relative = "TOPLEFT"
+            end
+
+            -- first tooltip
+            ShoppingTooltip1:SetOwner(tooltip, "ANCHOR_NONE")
+            ShoppingTooltip1:ClearAllPoints()
+            ShoppingTooltip1:SetPoint(anchor, tooltip, relative, 0, 0)
+            ShoppingTooltip1:SetInventoryItem("player", slotID)
+            ShoppingTooltip1:Show()
+            AddShaguHeader(ShoppingTooltip1)
+
+            -- second tooltip
+            if shaguSlotsOther[slotType] then
+                local slotID_other = GetInventorySlotInfo(shaguSlotsOther[slotType])
+                ShoppingTooltip2:SetOwner(tooltip, "ANCHOR_NONE")
+                ShoppingTooltip2:ClearAllPoints()
+                if ShoppingTooltip1:IsShown() then
+                    ShoppingTooltip2:SetPoint(anchor, ShoppingTooltip1, relative, 0, 0)
+                else
+                    ShoppingTooltip2:SetPoint(anchor, tooltip, relative, 0, 0)
+                end
+                ShoppingTooltip2:SetInventoryItem("player", slotID_other)
+                ShoppingTooltip2:Show()
+                AddShaguHeader(ShoppingTooltip2)
+            end
+            return -- Found and handled
+        end
+    end
+end
+
+local shaguHookFrame = nil
+
+function AtlasTW.Integrations.ApplyShaguTweaksIntegration()
+    if AtlasTW.Integrations.HasShaguTweaks() and AtlasTWOptions.LootEquipCompare == true then
+        if not shaguHookFrame then
+            shaguHookFrame = CreateFrame("Frame")
+            shaguHookFrame:SetScript("OnUpdate", function()
+                if AtlasTWLootTooltip and AtlasTWLootTooltip:IsShown() then
+                    ShowShaguCompare(AtlasTWLootTooltip)
+                end
+                if AtlasTWLootTooltip2 and AtlasTWLootTooltip2:IsShown() then
+                    ShowShaguCompare(AtlasTWLootTooltip2)
+                end
+            end)
+        else
+            shaguHookFrame:Show()
+        end
+    elseif shaguHookFrame then
+        shaguHookFrame:Hide()
+    end
+end
+
+---
 --- Initializes all addon integrations and sets up option states
 --- Disables unavailable addon options and provides fallback handling
 --- @return nil
@@ -216,6 +394,9 @@ function AtlasTW.Integrations.Initialize()
         if AtlasTWOptionEquipCompareText then
             AtlasTWOptionEquipCompareText:SetText(GREY .. L["Use EquipCompare"])
         end
+    else
+        -- Initialize integration if available
+        AtlasTW.Integrations.ApplyEquipCompareIntegration()
     end
 end
 
@@ -227,7 +408,7 @@ end
 ---
 function AtlasTW.Integrations.ValidateOptions()
     -- Disable EquipCompare option if addon is missing
-    if not AtlasTW.Integrations.HasEquipCompare() and AtlasTWOptions.EquipCompare == true then
+    if not AtlasTW.Integrations.HasEquipCompare() and AtlasTWOptions.LootEquipCompare == true then
         AtlasTWOptions.LootEquipCompare = false
     end
 end
@@ -239,15 +420,39 @@ end
 --- @usage AtlasTW.Integrations.ApplyEquipCompareIntegration() -- Called when options change
 ---
 function AtlasTW.Integrations.ApplyEquipCompareIntegration()
-    if AtlasTW.Integrations.HasEquipCompare() and AtlasTWOptions.EquipCompare == true then
-        AtlasTW.Integrations.RegisterEquipCompareTooltips(AtlasTWLootTooltip, AtlasTWLootTooltip2)
-    end
+    if AtlasTWOptions.LootEquipCompare == true then
+        -- Integration with ShaguTweaks
+        if AtlasTW.Integrations.HasShaguTweaks() then
+            AtlasTW.Integrations.ApplyShaguTweaksIntegration()
+        end
 
-    -- Handle EQCompare separately for compatibility
-    if IsAddOnLoaded("EQCompare") and AtlasTWOptions.LootEquipCompare == true then
-        if EQCompare and EQCompare.RegisterTooltip then
-            EQCompare:RegisterTooltip(AtlasTWLootTooltip)
-            EQCompare:RegisterTooltip(AtlasTWLootTooltip2)
+        -- Integration with EquipCompare/EQCompare
+        if IsAddOnLoaded("EquipCompare") then
+            AtlasTW.Integrations.RegisterEquipCompareTooltips(AtlasTWLootTooltip, AtlasTWLootTooltip2)
+        end
+
+        -- Handle EQCompare separately for compatibility
+        if IsAddOnLoaded("EQCompare") then
+            if EQCompare and EQCompare.RegisterTooltip then
+                EQCompare:RegisterTooltip(AtlasTWLootTooltip)
+                EQCompare:RegisterTooltip(AtlasTWLootTooltip2)
+            end
+        end
+    else
+        -- Unregister everything if disabled
+        if IsAddOnLoaded("EquipCompare") then
+            AtlasTW.Integrations.UnregisterEquipCompareTooltips(AtlasTWLootTooltip, AtlasTWLootTooltip2)
+        end
+
+        if IsAddOnLoaded("EQCompare") then
+            if EQCompare and EQCompare.UnRegisterTooltip then
+                EQCompare:UnRegisterTooltip(AtlasTWLootTooltip)
+                EQCompare:UnRegisterTooltip(AtlasTWLootTooltip2)
+            end
+        end
+
+        if shaguHookFrame then
+            shaguHookFrame:Hide()
         end
     end
 end
@@ -260,12 +465,5 @@ end
 ---
 function AtlasTW.Integrations.ToggleEquipCompare()
     AtlasTWOptions.LootEquipCompare = not AtlasTWOptions.LootEquipCompare
-
-    if AtlasTWOptions.LootEquipCompare then
-        -- Register tooltips if EquipCompare is enabled
-        AtlasTW.Integrations.RegisterEquipCompareTooltips(AtlasTWLootTooltip, AtlasTWLootTooltip2)
-    else
-        -- Unregister tooltips if EquipCompare is disabled
-        AtlasTW.Integrations.UnregisterEquipCompareTooltips(AtlasTWLootTooltip, AtlasTWLootTooltip2)
-    end
+    AtlasTW.Integrations.ApplyEquipCompareIntegration()
 end

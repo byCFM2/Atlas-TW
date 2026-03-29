@@ -128,6 +128,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     --************************************************
     -- Common UI Strings
     --************************************************
+    ["Currently Equipped"] = "Momentan angelegt",
     ["Rank Pattern"] = " %a+ %d+$",
     ["Options"] = "Optionen",
     ["Search"] = "Suchen",

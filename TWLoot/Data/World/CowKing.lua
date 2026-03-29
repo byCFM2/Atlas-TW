@@ -53,12 +53,7 @@ AtlasTW.InstanceData.CowKing = {
                 {},
                 { id = 51261, dropRate = 100 }, -- Little Cow
             },
-        },
---[[         {
-            name = "New Items",
-            loot = {
-            }
-        } ]]
+        }
     }
 }
 

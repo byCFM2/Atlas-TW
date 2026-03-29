@@ -124,6 +124,7 @@ AtlasTW.OutdoorZoneToAtlas = {
 
 AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     -- Common UI Strings
+    ["Currently Equipped"] = "当前装备",
     ["Rank Pattern"] = "等级 %d+$",
     ["Options"] = "选项",
     ["Search"] = "搜索",
