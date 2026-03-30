@@ -3018,8 +3018,8 @@ local craftingTable = {
 		{ id = 22795,          skill = { 300, 320, 330, 340 } }, --Core Marksman Rifle
 		{ id = 22797,          skill = { 300, 320, 330, 340 } }, --Force Reactive Disk
 		{ id = 45481,          skill = { 300, 320, 330, 340 } }, --Intricate Gyroscope Goggles
-		{ id = 52747,          skill = { 300, 300, 300, 300 } }, --Voltage-Neutralizing Nature Reflector 1.18
-		{ id = 52749,          skill = { 300, 300, 300, 300 } }, --Giga-Charged Arcane Reflector 1.18
+		{ id = 52747,          skill = { 290, 310, 320, 330 } }, --Voltage-Neutralizing Nature Reflector 1.18
+		{ id = 52749,          skill = { 290, 310, 320, 330 } }, --Giga-Charged Arcane Reflector 1.18
 		{ id = 36946,          skill = { 300, 300, 300, 300 } }, --Facetted Crystal Scope 1.18.1
 		{ id = 32310,          skill = { 300, 320, 330, 340 } }, -- Enchanted Thorium Shells 1.18.1
 		{ id = 33085,          container = { 33095 } }, -- Over-Tinkered Lens 1.18.1
@@ -3111,8 +3111,8 @@ local craftingTable = {
 		{ id = 12908,           skill = { 240, 260, 270, 280 } }, --Goblin Dragon Gun
 		{ id = 23486,           skill = { 260, 285, 295, 305 } }, --Dimensional Ripper - Everlook
 		{ id = 23078,           skill = { 265, 285, 295, 305 } }, --Goblin Jumper Cables XL
-		{ id = 52747,           skill = { 300, 300, 300, 300 } }, --Voltage-Neutralizing Nature Reflector 1.18
-		{ id = 52749,           skill = { 300, 300, 300, 300 } }, --Giga-Charged Arcane Reflector 1.18
+		{ id = 52747,           skill = { 290, 310, 320, 330 } }, --Voltage-Neutralizing Nature Reflector 1.18
+		{ id = 52749,           skill = { 290, 310, 320, 330 } }, --Giga-Charged Arcane Reflector 1.18
 	},
 
 	EngineeringExplosives = {

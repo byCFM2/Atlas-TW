@@ -195,6 +195,7 @@ AtlasTW.InstanceData.TimbermawHold = {
             defaults = { dropRate = .1 },
             loot = {
                 { id = 42016 }, -- Timbermaw Sap
+                { id = 58400, container = { 58304 } }, -- Schematic: Voltage-Neutralizing Nature Reflector
             }
         },
         -- { id = 33337, container = { 33676, 33382, 33388, 33394, 33400 }, disc = L["Chest"] = Ritualistic Tunic embrace of the
