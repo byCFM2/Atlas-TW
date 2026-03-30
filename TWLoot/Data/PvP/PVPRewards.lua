@@ -207,6 +207,36 @@ local pvpRewards = {
 		{ id = 22875, disc=L["Rank"].." 8" }, -- Legionnaire's Chain Legguards
 		{ id = 22843, disc=L["Rank"].." 7" }, -- Blood Guard's Chain Greaves
 	},
+	PVPHunter1181 = {
+		{ id = 33440 }, -- Combatant's Chain Helm
+		{ id = 33441 }, -- Combatant's Chain Spaulders
+		{ id = 33442 }, -- Combatant's Chain Breastplate
+		{ id = 33443 }, -- Combatant's Chain Grips
+		{ id = 33444 }, -- Combatant's Chain Legguards
+		{ id = 33445 }, -- Combatant's Chain Boots
+		{},
+		{ id = 33716 }, -- Combatant's Chain Helm
+		{ id = 33717 }, -- Combatant's Chain Spaulders
+		{ id = 33718 }, -- Combatant's Chain Breastplate
+		{ id = 33719 }, -- Combatant's Chain Grips
+		{ id = 33720 }, -- Combatant's Chain Legguards
+		{ id = 33721 }, -- Combatant's Chain Boots
+		{},
+		{},
+		{ id = 33446 }, -- Partisan's Chain Helm
+		{ id = 33447 }, -- Partisan's Chain Spaulders
+		{ id = 33448 }, -- Partisan's Chain Breastplate
+		{ id = 33449 }, -- Partisan's Chain Grips
+		{ id = 33450 }, -- Partisan's Chain Legguards
+		{ id = 33451 }, -- Partisan's Chain Boots
+		{},
+		{ id = 33722 }, -- Partisan's Chain Helm
+		{ id = 33723 }, -- Partisan's Chain Spaulders
+		{ id = 33724 }, -- Partisan's Chain Breastplate
+		{ id = 33725 }, -- Partisan's Chain Grips
+		{ id = 33726 }, -- Partisan's Chain Legguards
+		{ id = 33727 }, -- Partisan's Chain Boots
+	},
 	PVPMage = {
 		{ name=LIS["Field Marshal's Regalia"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
 		{ id = 16441, disc=L["Rank"].." 13" }, -- Field Marshal's Coronet
@@ -238,6 +268,36 @@ local pvpRewards = {
 		{ id = 22870, disc=L["Rank"].." 7" }, -- Blood Guard's Silk Handwraps
 		{ id = 22883, disc=L["Rank"].." 8" }, -- Legionnaire's Silk Legguards
 		{ id = 22860, disc=L["Rank"].." 7" }, -- Blood Guard's Silk Walkers
+	},
+	PVPMage1181 = {
+		{ id = 33422 }, -- Tactician's Coronet
+		{ id = 33423 }, -- Tactician's Silk Spaulders
+		{ id = 33424 }, -- Tactician's Silk Vestments
+		{ id = 33425 }, -- Tactician's Silk Gloves
+		{ id = 33426 }, -- Tactician's Silk Leggings
+		{ id = 33427 }, -- Tactician's Silk Footwraps
+		{},
+		{ id = 33698 }, -- Tactician's Coronet
+		{ id = 33699 }, -- Tactician's Silk Spaulders
+		{ id = 33700 }, -- Tactician's Silk Vestments
+		{ id = 33701 }, -- Tactician's Silk Gloves
+		{ id = 33702 }, -- Tactician's Silk Leggings
+		{ id = 33703 }, -- Tactician's Silk Footwraps
+		{},
+		{},
+		{ id = 33428 }, -- Strategist's Coronet
+		{ id = 33429 }, -- Strategist's Silk Spaulders
+		{ id = 33430 }, -- Strategist's Silk Vestments
+		{ id = 33431 }, -- Strategist's Silk Gloves
+		{ id = 33432 }, -- Strategist's Silk Leggings
+		{ id = 33433 }, -- Strategist's Silk Footwraps
+		{},
+		{ id = 33704 }, -- Strategist's Coronet
+		{ id = 33705 }, -- Strategist's Silk Spaulders
+		{ id = 33706 }, -- Strategist's Silk Vestments
+		{ id = 33707 }, -- Strategist's Silk Gloves
+		{ id = 33708 }, -- Strategist's Silk Leggings
+		{ id = 33709 }, -- Strategist's Silk Footwraps
 	},
 	PVPPriest = {
 		{ name=LIS["Field Marshal's Raiment"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },

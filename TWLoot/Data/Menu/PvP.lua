@@ -41,7 +41,7 @@ AtlasTW.MenuData.PVP = {
 	{},
 	{},
 	{},
-	{},
+	{ name = L["PvP Armor Sets"].." 1.18.1+", icon = "Interface\\Icons\\INV_Helmet_03", lootpage = "AtlasTWLootPVPSet1181Menu" },
 	{},
     { name = L["PvP Mounts"], Extra = L["Rank"].." 11", icon = "Interface\\Icons\\Ability_Mount_RidingHorse", lootpage = "PvPMountsPvP" },
     { name = L["PvP Accessories"], Extra = L["Rank"].." 2-9", icon = "Interface\\Icons\\INV_Jewelry_Talisman_09", lootpage = "PvP60Accessories" },
@@ -91,4 +91,38 @@ AtlasTW.MenuData.PVPSets = {
 ---
 function AtlasTWLootPVPSetMenu()
     AtlasTW.LootBrowserUI.PrepMenu(L["PvP Armor Sets"], AtlasTW.MenuData.PVPSets, L["PvP Rewards"])
+end
+
+
+AtlasTW.MenuData.PVPSets1181 = {
+    {},
+    {},
+    { name = Colors.Priest..LC["Priest"], icon = "Interface\\Icons\\Spell_Holy_PowerWordShield", lootpage = "PVPPriest1181" },
+    { name = Colors.Mage..LC["Mage"], icon = "Interface\\Icons\\Spell_Frost_IceStorm", lootpage = "PVPMage1181" },
+    { name = Colors.Warlock..LC["Warlock"], icon = "Interface\\Icons\\Spell_Shadow_CurseOfTounges", lootpage = "PVPWarlock1181" },
+    { name = Colors.Rogue..LC["Rogue"], icon = "Interface\\Icons\\Ability_BackStab", lootpage = "PVPRogue1181" },
+    { name = Colors.Druid..LC["Druid"], icon = "Interface\\Icons\\Spell_Nature_Regeneration", lootpage = "PVPDruid1181" },
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    { name = Colors.Hunter..LC["Hunter"], icon = "Interface\\Icons\\Ability_Hunter_RunningShot", lootpage = "PVPHunter1181" },
+    { name = Colors.Shaman..LC["Shaman"], icon = "Interface\\Icons\\Spell_FireResistanceTotem_01", lootpage = "PVPShaman1181" },
+    { name = Colors.Paladin..LC["Paladin"], icon = "Interface\\Icons\\Spell_Holy_SealOfMight", lootpage = "PVPPaladin1181" },
+    { name = Colors.Warrior..LC["Warrior"], icon = "Interface\\Icons\\INV_Shield_05", lootpage = "PVPWarrior1181" },
+}
+
+---
+--- Displays the PvP armor sets menu organized by class
+--- @return nil
+--- @usage AtlasTWLootPVPSet1181Menu()
+---
+function AtlasTWLootPVPSet1181Menu()
+    AtlasTW.LootBrowserUI.PrepMenu(L["PvP Armor Sets"].." 1.18.1+", AtlasTW.MenuData.PVPSets1181, L["PvP Rewards"])
 end
