@@ -187,8 +187,8 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 33079 }, -- Philosopher's Stone Replica
                 { id = 33080 }, -- Wingbone Vambraces
                 { id = 33081 }, -- Flask of Petrified Gold
-                { id = 33083, container = { 33093,33094 } }, -- Elementium Sharpening Stone
-                { id = 33084, container = { 33096 } }, -- Pristine Chromatic Scale
+               -- { id = 33083, container = { 33093,33094 } }, -- Elementium Sharpening Stone
+               -- { id = 33084, container = { 33096 } }, -- Pristine Chromatic Scale
                 { id = 33085, container = { 33095 }, dropRate = 25 }, -- Over-Tinkered Lens
                 { id = 33086 }, -- Libram of Hallowed Ground
                 { id = 33090 }, -- Totem of Distant Tremors

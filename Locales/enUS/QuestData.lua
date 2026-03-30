@@ -3503,6 +3503,21 @@ kQuestInstanceData.Maraudon.Horde[9] = {
     Prequest = "Mastering Gemology -> The Lifeblood -> Demonstration",
     Folgequest = "The Final Cut",
 }
+kQuestInstanceData.Maraudon.Horde[10] = { --TODO translate and check all
+    Title = "Foul Waters",
+    Id = 0,
+    Level = 50,
+    Attain = 40,
+    Aim = "Cleanse the corruptive waters and its source inside of Maraudon and return to Ohona Riverbend at the Earthen Ring in the Stonetalon Mountains.",
+    Location = "Ohona Riverbend (Stonetalon Mountains - The Earthen Ring " .. yellow .. "[52, 70]" .. white .. ").",
+    Note = "'Noxxion' is at " .. yellow .. "[2]" .. white .. ", 'Lord Vyletongue' is at " .. yellow .. "[5]" .. white .. ".",
+    Rewards = {
+        Text = "Reward: Pick One",
+        { id = 33863 }, -- Spiritwater Orb
+        { id = 33864 }, -- Drape of Elusiveness
+        { id = 33865 }, -- Tempestria's Crown
+    }
+}
 
 --------------- Molten Core ---------------
 kQuestInstanceData.MoltenCore = {
@@ -8721,5 +8736,13 @@ kQuestInstanceData.TimbermawHold = {
     Alliance = {},
     Horde = {}
 }
-
+kQuestInstanceData.TimbermawHold.Horde[1] = { --TODO id and check all
+    Title = "Loktanag the Pure",
+    Id = 0,
+    Level = 60,
+    Attain = 60,
+    Aim = "Vanquish Loktanag the Vile inside Timbermaw Hold and return to Muln Earthfury at the Earthen Ring in the Stonetalon Mountains.",
+    Location = "Muln Earthfury (Stonetalon Mountains - The Earthen Ring " .. yellow .. "49, 71" .. white .. ")",
+    Note = "'Loktanag the Vile' is at " .. yellow .. "[3]" .. white .. ".",
+}
 AtlasTW.Quest.DataBase = kQuestInstanceData

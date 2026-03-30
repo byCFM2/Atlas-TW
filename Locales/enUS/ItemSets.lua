@@ -8,7 +8,8 @@
 
 AtlasTW.Localization:RegisterNamespace("ItemSets", "enUS", {
     --1.18.1
-    ["Sacred Windhorn Attire"] = true,
+    ["Sacred Windhorn Attire"] = true, --TODO
+    ["Surrender to Madness"] = true, --TODO
     -- 1.18
     ["Stormreaver Attire"] = true,
     ["Dragonmaw Battlegarb"] = true,

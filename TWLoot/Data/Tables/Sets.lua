@@ -67,8 +67,50 @@ Sets = {
 		{ id = 41876}, --Lower Reserve Key
 		{ id = 41913}, --Key to Stormwrought Castle
 	},
+	SurrendertoMadness = { --1.18.1
+		{ id = 33269 }, -- Signet of Screaming Nightmares
+		{ id = 33275 }, -- Signet of Howling Nightmares
+	},
+	TimbermawHoldSets = { --1.18.1
+		{ name = LS["Cloth"] },
+		{ id = 33674 }, -- Guile of the Deer
+		{ id = 33675 }, -- Burden of the Deer
+		{ id = 33676 }, -- Embrace of the Deer
+		{ id = 33677 }, -- Grasp of the Deer
+		{ id = 33678 }, -- Vigor of the Deer
+		{ id = 33679 }, -- Path of the Deer
+		{},
+		{ id = 33380 }, -- Guile of the Stag
+		{ id = 33381 }, -- Burden of the Stag
+		{ id = 33382 }, -- Embrace of the Stag
+		{ id = 33383 }, -- Grasp of the Stag
+		{ id = 33384 }, -- Vigor of the Stag
+		{ id = 33385 }, -- Path of the Stag
+		{},
+		{ name = LS["Leather"] },
+		{ id = 33386 }, -- Guile of the Ursa
+		{ id = 33387 }, -- Burden of the Ursa
+		{ id = 33388 }, -- Embrace of the Ursa
+		{ id = 33389 }, -- Grasp of the Ursa
+		{ id = 33390 }, -- Vigor of the Ursa
+		{ id = 33391 }, -- Path of the Ursa
+		{},
+		{ name = LS["Mail"] },
+		{ id = 33392 }, -- Guile of the Hippogryph
+		{ id = 33393 }, -- Burden of the Hippogryph
+		{ id = 33394 }, -- Embrace of the Hippogryph
+		{ id = 33395 }, -- Grasp of the Hippogryph
+		{ id = 33396 }, -- Vigor of the Hippogryph
+		{ id = 33397 }, -- Path of the Hippogryph
+		{ name = LS["Plate"] },
+		{ id = 33398 }, -- Guile of the Moose
+		{ id = 33399 }, -- Burden of the Moose
+		{ id = 33400 }, -- Embrace of the Moose
+		{ id = 33401 }, -- Grasp of the Moose
+		{ id = 33402 }, -- Vigor of the Moose
+		{ id = 33403 }, -- Path of the Moose
+	},
 	SacredWindhorn = { --1.18.1
-		{ name = LIS["Sacred Windhorn Attire"] },
 		{ id = 33021 }, -- Sacred Windhorn Gloves
 		{ id = 33026 }, -- Sacred Windhorn Shoulders
 		{ id = 33029 }, -- Sacred Windhorn Footwraps
@@ -77,7 +119,6 @@ Sets = {
 		{ id = 33042 }, -- Sacred Windhorn Headdress
 	},
 	Stormreaver = { --1.18
-		{ name = LIS["Stormreaver Attire"] },
 		{ id = 58131 }, -- Stormreaver Belt
 		{ id = 75, container={ 58134 } }, --Pattern: Stormreaver Gloves
 		{ id = 58147 }, -- Stormreaver Mantle
@@ -86,12 +127,10 @@ Sets = {
 		{ id = 58178 }, -- Stormreaver Boots
 	},
 	ArmsofThaurissan = { --1.18
-		{ name = LIS["Arms of Thaurissan"] },
 		{ id = 11684 }, -- Ironfoe
 		{ id = 58214 }, -- Modrag'zan, Heart of the Mountain
 	},
 	DragonmawBattlegarb = { --1.18
-		{ name = LIS["Dragonmaw Battlegarb"] },
 		{ id = 41724 }, -- Dragonmaw Shoulders
 		{ id = 58099 }, -- Dragonmaw Helmet
 		{ id = 58111 }, -- Dragonmaw Hauberk
@@ -101,7 +140,6 @@ Sets = {
 		{ id = 58115 }, -- Dragonmaw Greaves
 	},
 	Deadmines = {
-		{ name = LIS["Defias Leather"] },
 		{ id = 81007 }, -- Blackened Defias Mask
 		{ id = 10399 }, -- Blackened Defias Armor
 		{ id = 10401 }, -- Blackened Defias Gloves
@@ -110,7 +148,6 @@ Sets = {
 		{ id = 10402 }, -- Blackened Defias Boots
 	},
 	Wailing = {
-		{ name = LIS["Embrace of the Viper"] },
 		{ id = 81006 }, -- Cowl of the Fang
 		{ id = 6473 }, -- Armor of the Fang
 		{ id = 10413 }, -- Gloves of the Fang
@@ -119,7 +156,6 @@ Sets = {
 		{ id = 10411 }, -- Footpads of the Fang
 	},
 	Scarlet = {
-		{ name = LIS["Chain of the Scarlet Crusade"] },
 		{ id = 10328 }, -- Scarlet Chestpiece
 		{ id = 10333 }, -- Scarlet Wristguards
 		{ id = 10331 }, -- Scarlet Gauntlets
@@ -128,7 +164,6 @@ Sets = {
 		{ id = 10332 }, -- Scarlet Boots
 	},
 	GreymaneArmor = {
-		{ name = LIS["Greymane Armor"] },
 		{ id = 61313 }, -- Greymane Helmet
 		{ id = 61324 }, -- Greymane Shoulders
 		{ id = 61376 }, -- Greymane Gauntlets
@@ -137,13 +172,11 @@ Sets = {
 		{ id = 61379 }, -- Greymane Vambraces
 	},
 	IncendosaurSkinArmor = {
-		{ name = LIS["Incendosaur Skin Armor"] },
 		{ id = 60572 }, -- Incendosaur Skin Pauldrons
 		{ id = 60568 }, -- Incendosaur Skin Boots
 		{ id = 60582 }, -- Incendosaur Skin Gloves
 	},
 	TheGladiator = {
-		{ name = LIS["The Gladiator"] },
 		{ id = 11729 }, -- Savage Gladiator Helm
 		{ id = 11726 }, -- Savage Gladiator Chain
 		{ id = 11730 }, -- Savage Gladiator Grips
@@ -151,7 +184,6 @@ Sets = {
 		{ id = 11731 }, -- Savage Gladiator Greaves
 	},
 	Ironweave = {
-		{ name = LIS["Ironweave Battlesuit"] },
 		{ id = 22302 }, -- Ironweave Cowl
 		{ id = 22305 }, -- Ironweave Mantle
 		{ id = 22301 }, -- Ironweave Robe
@@ -221,7 +253,6 @@ Sets = {
 		{ id = 23078 }, -- Gauntlets of Undead Slaying
 	},
 	ShardOfGods = {
-		{ name = LIS["Shard of the Gods"] },
 		{ id = 17082 }, -- Shard of the Flame
 		{ id = 17064 }, -- Shard of the Scale
 	},
@@ -243,29 +274,24 @@ Sets = {
 		{ id = 19893 }, -- Zanzil's Seal
 	},
 	SpiritofEskhandar = {
-		{ name = LIS["Spirit of Eskhandar"] },
 		{ id = 18204 }, -- Eskhandar's Pelt
 		{ id = 18205 }, -- Eskhandar's Collar
 		{ id = 18203 }, -- Eskhandar's Right Claw
 		{ id = 18202 }, -- Eskhandar's Left Claw
 	},
 	HakkariBlades = {
-		{ name = LIS["The Twin Blades of Hakkari"] },
 		{ id = 19865 }, -- Warblade of the Hakkari (Main Hand)
 		{ id = 19866 }, -- Warblade of the Hakkari (Off Hand)
 	},
 	PrimalBlessing = {
-		{ name = LIS["Primal Blessing"] },
 		{ id = 19896 }, -- Thekal's Grasp
 		{ id = 19910 }, -- Arlokk's Grasp
 	},
 	DalRend = {
-		{ name = LIS["Dal'Rend's Arms"] },
 		{ id = 12940 }, -- Dal'Rend's Sacred Charge
 		{ id = 12939 }, -- Dal'Rend's Tribal Guardian
 	},
 	SpiderKiss = {
-		{ name = LIS["Spider's Kiss"] },
 		{ id = 13218 }, -- Fang of the Crystal Spider
 		{ id = 13183 }, -- Venomspitter
 	},
@@ -1713,7 +1739,7 @@ Sets = {
 		{},
 		{ id = 22726 }, -- Splinter of Atiesh
 		{},
-		{},
+		{ id = 46603 }, -- Dirk of the Beast
 		{},
 		{},
 		{},
@@ -2451,7 +2477,6 @@ Sets = {
 		{ id = 65008 }, -- Dream's Herald
 	},
 	SteelPlate = {
-		{ name = LIS["Steel Plate Armor"] },
 		{ id = 83415 }, -- Steel Plate Barbute
 		{ id = 83414 }, -- Steel Plate Pauldrons
 		{ id = 83413 }, -- Steel Plate Armor
@@ -2460,7 +2485,6 @@ Sets = {
 		{ id = 83410 }, -- Steel Plate Boots
 	},
 	ImperialPlate = {
-		{ name = LIS["Imperial Plate"] },
 		{ id = 12427 }, -- Imperial Plate Helm
 		{ id = 12428 }, -- Imperial Plate Shoulders
 		{ id = 12422 }, -- Imperial Plate Chest
@@ -2470,7 +2494,6 @@ Sets = {
 		{ id = 12426 }, -- Imperial Plate Boots
 	},
 	RuneEtchedArmor = {
-		{ name = LIS["Rune-Etched Armor"] },
 		{ id = 60287 }, -- Rune-Etched Grips
 		{ id = 60288 }, -- Rune-Etched Greaves
 		{ id = 60289 }, -- Rune-Etched Legplates
@@ -2479,26 +2502,22 @@ Sets = {
 		{ id = 60292 }, -- Rune-Etched Mantle
 	},
 	TheDarksoul = {
-		{ name = LIS["The Darksoul"] },
 		{ id = 19695 }, -- Darksoul Shoulders
 		{ id = 19693 }, -- Darksoul Breastplate
 		{ id = 19694 }, -- Darksoul Leggings
 	},
 	DreamsteelArmor = {
-		{ name = LIS["Dreamsteel Armor"] },
 		{ id = 61364 }, -- Dreamsteel Mantle
 		{ id = 61365 }, -- Dreamsteel Leggings
 		{ id = 61366 }, -- Dreamsteel Bracers
 		{ id = 61367 }, -- Dreamsteel Boots
 	},
 	BloodsoulEmbrace = {
-		{ name = LIS["Bloodsoul Embrace"] },
 		{ id = 19691 }, -- Bloodsoul Shoulders
 		{ id = 19690 }, -- Bloodsoul Breastplate
 		{ id = 19692 }, -- Bloodsoul Gauntlets
 	},
 	HateforgeArmor = {
-		{ name = LIS["Hateforge Armor"] },
 		{ id = 60573 }, -- Hateforge Helmet
 		{ id = 60574 }, -- Hateforge Cuirass
 		{ id = 60575 }, -- Hateforge Leggings
@@ -2507,14 +2526,12 @@ Sets = {
 		{ id = 60578 }, -- Hateforge Boots
 	},
 	TowerforgeBattlegear = {
-		{ name = LIS["Towerforge Battlegear"] },
 		{ id = 60007 }, -- Towerforge Crown
 		{ id = 60008 }, -- Towerforge Breastplate
 		{ id = 60009 }, -- Towerforge Pauldrons
 		{ id = 60010 }, -- Towerforge Demolisher
 	},
 	AugerersAttire = {
-		{ name = LIS["Augerer's Attire"] },
 		{ id = 83288 }, -- Augerer's Boots
 		{ id = 83289 }, -- Augerer's Gloves
 		{ id = 83290 }, -- Augerer's Mantle
@@ -2523,7 +2540,6 @@ Sets = {
 		{ id = 83287 }, -- Augerer's Robe
 	},
 	DivinersGarments = {
-		{ name = LIS["Diviner's Garments"] },
 		{ id = 83283 }, -- Diviner's Boots
 		{ id = 83284 }, -- Diviner's Mitts
 		{ id = 83285 }, -- Diviner's Epaulets
@@ -2532,7 +2548,6 @@ Sets = {
 		{ id = 83281 }, -- Diviner's Robes
 	},
 	PillagersGarb = {
-		{ name = LIS["Pillager's Garb"] },
 		{ id = 83296 }, -- Pillager's Shoes
 		{ id = 83295 }, -- Pillager's Grips
 		{ id = 83297 }, -- Pillager's Pantaloons
@@ -2541,7 +2556,6 @@ Sets = {
 		{ id = 83294 }, -- Pillager's Robe
 	},
 	MoonclothRegalia = {
-		{ name = LIS["Mooncloth Regalia"] },
 		{ id = 14140 }, -- Mooncloth Circlet
 		{ id = 14139 }, -- Mooncloth Shoulders
 		{ id = 14138 }, -- Mooncloth Vest
@@ -2551,13 +2565,11 @@ Sets = {
 		{ id = 15802 }, -- Mooncloth Boots
 	},
 	BloodvineG = {
-		{ name = LIS["Bloodvine Garb"] },
 		{ id = 19682 }, -- Bloodvine Vest
 		{ id = 19683 }, -- Bloodvine Leggings
 		{ id = 19684 }, -- Bloodvine Boots
 	},
 	FlarecoreRegalia = {
-		{ name = LIS["Flarecore Regalia"] },
 		{ id = 16979 }, -- Flarecore Gloves
 		{ id = 19165 }, -- Flarecore Leggings
 		{ id = 16980 }, -- Flarecore Mantle
@@ -2566,14 +2578,12 @@ Sets = {
 		{ id = 65035 }, -- Flarecore Boots
 	},
 	DreamthreadRegalia = {
-		{ name = LIS["Dreamthread Regalia"] },
 		{ id = 61360 }, -- Dreamthread Mantle
 		{ id = 61361 }, -- Dreamthread Kilt
 		{ id = 61362 }, -- Dreamthread Bracers
 		{ id = 61363 }, -- Dreamthread Gloves
 	},
 	GriftersArmor = {
-		{ name = LIS["Grifter's Armor"] },
 		{ id = 83405 }, -- Grifter's Boots
 		{ id = 83404 }, -- Grifter's Gauntlets
 		{ id = 83403 }, -- Grifter's Belt
@@ -2582,7 +2592,6 @@ Sets = {
 		{ id = 83400 }, -- Grifter's Cover
 	},
 	PrimalistsTrappings = {
-		{ name = LIS["Primalist's Trappings"] },
 		{ id = 81065 }, -- Primalist's Boots
 		{ id = 81061 }, -- Primalist's Gloves
 		{ id = 81063 }, -- Primalist's Headdress
@@ -2591,114 +2600,95 @@ Sets = {
 		{ id = 81066 }, -- Primalist's Vest
 	},
 	VolcanicArmor = {
-		{ name = LIS["Volcanic Armor"] },
 		{ id = 15055 }, -- Volcanic Shoulders
 		{ id = 15053 }, -- Volcanic Breastplate
 		{ id = 15054 }, -- Volcanic Leggings
 	},
 	IronfeatherArmor = {
-		{ name = LIS["Ironfeather Armor"] },
 		{ id = 15067 }, -- Ironfeather Shoulders
 		{ id = 15066 }, -- Ironfeather Breastplate
 	},
 	StormshroudArmor = {
-		{ name = LIS["Stormshroud Armor"] },
 		{ id = 15058 }, -- Stormshroud Shoulders
 		{ id = 15056 }, -- Stormshroud Armor
 		{ id = 21278 }, -- Stormshroud Gloves
 		{ id = 15057 }, -- Stormshroud Pants
 	},
 	DevilsaurArmor = {
-		{ name = LIS["Devilsaur Armor"] },
 		{ id = 15063 }, -- Devilsaur Gauntlets
 		{ id = 15062 }, -- Devilsaur Leggings
 	},
 	BloodTigerH = {
-		{ name = LIS["Blood Tiger Harness"] },
 		{ id = 19689 }, -- Blood Tiger Shoulders
 		{ id = 19688 }, -- Blood Tiger Breastplate
 	},
 	PrimalBatskin = {
-		{ name = LIS["Primal Batskin"] },
 		{ id = 19685 }, -- Primal Batskin Jerkin
 		{ id = 19687 }, -- Primal Batskin Bracers
 		{ id = 19686 }, -- Primal Batskin Gloves
 	},
 	DreamhideBattlegarb = {
-		{ name = LIS["Dreamhide Battlegarb"] },
 		{ id = 61356 }, -- Dreamhide Mantle
 		{ id = 61357 }, -- Dreamhide Bracers
 		{ id = 61358 }, -- Dreamhide Leggings
 		{ id = 61359 }, -- Dreamhide Belt
 	},
 	ConvergenceoftheElements = {
-		{ name = LIS["Convergence of the Elements"] },
 		{ id = 65024 }, -- Earthguard Tunic
 		{ id = 65025 }, -- Flamewrath Leggings
 		{ id = 65026 }, -- Depthstalker Helm
 		{ id = 65027 }, -- Windwalker Boots
 	},
 	RedDragonM = {
-		{ name = LIS["Red Dragon Mail"] },
 		{ id = 65001 }, -- Red Dragonscale Shoulders
 		{ id = 15047 }, -- Red Dragonscale Breastplate
 		{ id = 65000 }, -- Red Dragonscale Leggings
 		{ id = 65002 }, -- Red Dragonscale Boots
 	},
 	GreenDragonM = {
-		{ name = LIS["Green Dragon Mail"] },
 		{ id = 15045 }, -- Green Dragonscale Breastplate
 		{ id = 20296 }, -- Green Dragonscale Gauntlets
 		{ id = 15046 }, -- Green Dragonscale Leggings
 	},
 	BlueDragonM = {
-		{ name = LIS["Blue Dragon Mail"] },
 		{ id = 15049 }, -- Blue Dragonscale Shoulders
 		{ id = 15048 }, -- Blue Dragonscale Breastplate
 		{ id = 20295 }, -- Blue Dragonscale Leggings
 		{ id = 65015 }, -- Blue Dragonscale Boots
 	},
 	BlackDragonM = {
-		{ name = LIS["Black Dragon Mail"] },
 		{ id = 15051 }, -- Black Dragonscale Shoulders
 		{ id = 15050 }, -- Black Dragonscale Breastplate
 		{ id = 15052 }, -- Black Dragonscale Leggings
 		{ id = 16984 }, -- Black Dragonscale Boots
 	},
 	MidnightRegalia = {
-		{ name = LIS["Midnight Regalia"] },
 		{ id = 41312 }, -- Pendant of Midnight
 		{ id = 56091 }, -- Ring of Midnight
 	},
 	GoldmastersJewelry = {
-		{ name = LIS["Goldmaster's Jewelry"] },
 		{ id = 56050 }, -- Elaborate Golden Bracelets
 		{ id = 41340 }, -- Shimmering Gold Necklace
 		{ id = 56053 }, -- Golden Jade Ring
 	},
 	AquamarineJewelry = {
-		{ name = LIS["Aquamarine Jewelry"] },
 		{ id = 56048 }, -- Dazzling Aquamarine Loop
 		{ id = 55196 }, -- Aquamarine Pendant
 	},
 	OrnateMithrilJewelry = {
-		{ name = LIS["Ornate Mithril Jewelry"] },
 		{ id = 56089 }, -- Ornate Mithril Crown
 		{ id = 56070 }, -- Ornate Mithril Bracelets
 	},
 	SpellweaversAccessories = {
-		{ name = LIS["Spellweaver's Accessories"] },
 		{ id = 56090 }, -- Spellweaver Pendant
 		{ id = 55271 }, -- Spellweaver Rod
 	},
 	StormcloudJewelry = {
-		{ name = LIS["Stormcloud Jewelry"] },
 		{ id = 56035 }, -- Stormcloud Sigil
 		{ id = 56092 }, -- Stormcloud Shackles
 		{ id = 56093 }, -- Stormcloud Signet
 	},
 	MastercraftedDiamondJewelry = {
-		{ name = LIS["Mastercrafted Diamond Jewelry"] },
 		{ id = 56064 }, -- Mastercrafted Diamond Crown
 		{ id = 56096 }, -- Mastercrafted Diamond Bangles
 	},

@@ -1162,7 +1162,6 @@ local craftingTable = {
 		{ id = 102,            skill = { 300, 300, 300, 300 } }, --Obsidian Belt Buckle 1.18
 		{},
 		{ id = 36948,          skill = { 300, 320, 330, 340 } }, --Bulwark of Unshaken Earth (1.18.1)
-		{ id = 36593,          skill = { 0, 330, 340, 350 } }, --Denwatcher (1.18.1)
         { id = 33083, 		   container = { 33093,33094 } }, 	 --Elementium Sharpening Stone (1.18.1)
 	},
 
@@ -1222,6 +1221,7 @@ local craftingTable = {
 		{ id = 16994,                  skill = { 300, 320, 330, 340 } }, --Arcanite Reaper
 		{ id = 20897,                  skill = { 300, 320, 330, 340 } }, --Dark Iron Destroyer
 		{ id = 23653,                  skill = { 300, 320, 330, 340 } }, --Nightfall
+		{ id = 36593,                  skill = { 300, 330, 340, 350 } }, --Denwatcher (1.18.1)
 	},
 
 	Hammersmith = {
@@ -1472,7 +1472,7 @@ local craftingTable = {
 		{ id = 16971,       skill = { 280, 305, 317, 330 } }, --Huge Thorium Battleaxe
 		{ id = 16994,       skill = { 300, 320, 330, 340 } }, --Arcanite Reaper
 		{ id = 23653,       skill = { 300, 320, 330, 340 } }, --Nightfall
-		{ id = 36593,       skill = { 0, 330, 340, 350 } }, --Denwatcher (1.18.1)
+		{ id = 36593,       skill = { 300, 330, 340, 350 } }, --Denwatcher (1.18.1)
 	},
 
 	SmithingSwords = {
@@ -1841,7 +1841,6 @@ local craftingTable = {
 		{},
 		{ id = 57613,          skill = { 300, 315, 322, 330 } }, --Ethereal Tunic
 		{ id = 57615,          skill = { 300, 315, 322, 330 } }, --Ethereal Leggings
-		{ id = 36585,          skill = { 0, 315, 325, 335 } }, --Timberclaw Bracers 1.18.1
 		{ id = 57115,          skill = { 300, 320, 330, 340 } }, --Enchanted Armor Kit
 		{ id = 28224,          skill = { 300, 320, 330, 340 } }, --Icy Scale Bracers
 		{ id = 28222,          skill = { 300, 320, 330, 340 } }, --Icy Scale Breastplate
@@ -1853,8 +1852,8 @@ local craftingTable = {
 		{ id = 45473,          skill = { 300, 320, 330, 340 } }, --Dreamhide Mantle
 		{ id = 45475,          skill = { 300, 320, 330, 340 } }, --Dreamhide Bracers
 		{ id = 45477,          skill = { 300, 320, 330, 340 } }, --Dreamhide Leggings
-		{},
 		{ id = 45479,          skill = { 300, 320, 330, 340 } }, --Dreamhide Belt
+		{},
 		{ id = 45483,          skill = { 300, 320, 330, 340 } }, --Inscribed Runic Bracers
 		{ id = 45455,          skill = { 300, 320, 330, 340 } }, --Dreamhide
 		{ id = 36587,          skill = { 0, 320, 330, 340 } }, --Witherhide Gloves 1.18.1
@@ -1938,6 +1937,7 @@ local craftingTable = {
 		{ id = 22927,                         skill = { 300, 320, 330, 340 } }, --Hide of the Wild
 		{ id = 47035,                         skill = { 300, 300, 320, 340 } }, --Verdant Dreamer's Breastplate
 		{ id = 54007,                         skill = { 300, 315, 330, 345 } }, --Corehound Gloves
+		{ id = 36585,                         skill = { 300, 315, 325, 335 } }, --Timberclaw Bracers 1.18.1
 	},
 
 	LeatherHelm = {
@@ -2078,7 +2078,7 @@ local craftingTable = {
 		{ id = 19048,          skill = { 255, 275, 285, 295 } }, --Heavy Scorpid Bracers
 		{ id = 19052,          skill = { 265, 285, 295, 305 } }, --Wicked Leather Bracers
 		{ id = 19065,          skill = { 275, 295, 305, 315 } }, --Runic Leather Bracers
-		{ id = 36585,          skill = { 0, 315, 325, 335 } }, --Timberclaw Bracers 1.18.1
+		{ id = 36585,          skill = { 300, 315, 325, 335 } }, --Timberclaw Bracers 1.18.1
 		{ id = 24123,          skill = { 300, 320, 330, 340 } }, --Primal Batskin Bracers
 		{ id = 24849,          skill = { 300, 320, 330, 340 } }, --Sandstalker Bracers
 		{ id = 24846,          skill = { 300, 320, 330, 340 } }, --Spitfire Bracers
@@ -3512,7 +3512,7 @@ local craftingTable = {
 		{ id = 18630,             skill = { 290, 290, 320, 350 } }, --Heavy Runecloth Bandage
 		{ id = 23787,             skill = { 300, 300, 330, 360 } }, --Powerful Anti-Venom
 		{ id = 30021,             skill = { 0, 300, 330, 360 } }, --Crystal Infused Bandage
-		{ id = 30047,             skill = { 0, 325, 345, 365 } }, --Crystal Throat Lozenge
+		{ id = 30047,             skill = { 0, 325, 345, 365 } }, --Crystal Flake Throat Lozenge
 	},
 
 	SurvivalApprentice = {
@@ -3789,7 +3789,7 @@ local craftingTable = {
 		{ id = 41261,         skill = { 250, 250, 270, 290 } },                                               --Sunburst Tiara
 		{ id = 41091,         skill = { 250, 260, 265, 270 } },                                               --Dense Gritted Paper
 		{ id = 41714,         skill = { 250, 280, 290, 300 } },                                               --Opal Guided Bangles
-		{ id = 41637,         skill = { 1, 250, 252, 255 } },                                                 --Elegant Emerald Gemstone
+		{ id = 41637,         skill = { 250, 250, 252, 255 } },                                                 --Elegant Emerald Gemstone
 		{ id = 41639,         skill = { 1, 250, 252, 255 } },                                                 --Shining Sapphire Gemstone
 	},
 
@@ -3840,7 +3840,7 @@ local craftingTable = {
 		{ id = 41317,          skill = { 300, 320, 330, 340 } }, --Twilight Opal Cascade
 		{ id = 36905,          skill = { 300, 300, 300, 300 } }, --Grandstaff of the Shen'dralar Elder 1.18
 		{},
-		{ id = 36591,          skill = { 0, 320, 330, 340 } }, --Crystalized Topaz 1.18.1
+		{ id = 36591,          skill = { 0, 320, 330, 340 } }, --Crystalized Topaz Gemstone 1.18.1
 	},
 
 	JewelcraftingGemology = {
@@ -3887,7 +3887,7 @@ local craftingTable = {
 		{ id = 41631,            skill = { 200, 205, 205, 205 } }, --Illuminated Gemstone
 		{ id = 41633,            skill = { 225, 225, 227, 230 } }, --Burning Star Gemstone
 		{ id = 41635,            skill = { 235, 235, 237, 240 } }, --Brilliant Opal Gemstone
-		{ id = 41637,            skill = { 1, 250, 252, 255 } }, --Elegant Emerald Gemstone
+		{ id = 41637,            skill = { 250, 250, 252, 255 } }, --Elegant Emerald Gemstone
 		{ id = 41639,            skill = { 1, 250, 252, 255 } }, --Shining Sapphire Gemstone
 		{ id = 41611,            skill = { 260, 265, 267, 270 } }, --Gloomy Diamond Gemstone
 		{ id = 41762,            skill = { 270, 270, 272, 275 } }, --Dreary Opal Gemstone
@@ -3902,7 +3902,7 @@ local craftingTable = {
 		{ id = 41613,            skill = { 285, 290, 292, 295 } }, --Flawless Black Gemstone
 		{ id = 41615,            skill = { 295, 300, 302, 305 } }, --Arcane Emerald Gemstone
 		{ id = 41619,            skill = { 300, 310, 315, 320 } }, --Stunning Imperial Gemstone
-		{ id = 36591,          	 skill = { 0, 320, 330, 340 } }, --Crystalized Topaz 1.18.1
+		{ id = 36591,          	 skill = { 0, 320, 330, 340 } }, --Crystalized Topaz Gemstone 1.18.1
 		{ id = 41821,            skill = { 300, 330, 345, 360 } }, --Gorgeous Mountain Gemstone
 	},
 
