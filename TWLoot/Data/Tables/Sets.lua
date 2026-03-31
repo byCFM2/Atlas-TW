@@ -2374,6 +2374,7 @@ Sets = {
 		{ id = 61438, disc = L["Quest Reward"].." "..LZ["Hyjal"], container = { {61199, 5}, 61197 } }, -- Sigil of Penetration
 		{},
 		{ id = 12820, disc = LZ["Winterspring"], droprate = 15 }, -- Winterfall Firewater
+		{ id = 42014, disc = LZ["Moonwhisper Coast"], droprate = 0 }, -- Blackroot Brew
 
 	},
 	RarePets = {

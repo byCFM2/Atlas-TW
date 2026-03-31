@@ -570,6 +570,23 @@ function DataIndex.BuildIndex(incremental)
 
             if not isCraft then
                 local source = AtlasTW.LootUtils.GetLootPageDisplayName(key) or key
+
+                -- Enhance short names for PvP Sets to prevent confusing tooltips like "Mage" or "PVPMage118"
+                if source and string.find(key, "^PVP") then
+                    local L_UI = AtlasTW.Localization and AtlasTW.Localization.UI or {}
+                    local meta = AtlasTW.LootUtils.GetMetaCategoryForMenu(key)
+                    if meta == (L_UI["PvP Rewards"] or "PvP Rewards") then
+                        local pvpPrefix = L_UI["PvP Armor Sets"] or "PvP Armor Sets"
+                        if string.find(key, "118") then
+                            pvpPrefix = pvpPrefix .. " 1.18"
+                        end
+                        local cleanSource = AtlasTW.LootUtils.StripFormatting(source)
+                        if cleanSource ~= key and cleanSource ~= "" and not string.find(string.lower(cleanSource), "pvp") then
+                            source = pvpPrefix .. " - " .. source
+                        end
+                    end
+                end
+
                 IndexList(tbl, source, { type = "item", page = key, displayName = source })
             else
                 -- For craft pages, we still iterate to find skills

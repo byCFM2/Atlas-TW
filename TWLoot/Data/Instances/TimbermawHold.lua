@@ -152,7 +152,7 @@ AtlasTW.InstanceData.TimbermawHold = {
                 { id = 33273 }, -- Sash of the Pathfinder
                 {},
                 { id = 33276 }, -- Unity of the Timbermaw
-                { id = 33277 }, -- Will of the Chieftain TODO CHECK
+                { id = 33277 }, -- Will of the Chieftain
                 {},
                 { id = 33335, dropRate = 100, container = { 33674, 33380, 33386, 33392, 33398 }, disc = L["Head"] }, -- Ritualistic Headdress guile of the
                 {},
