@@ -83,48 +83,48 @@ local pvpRewards = {
 		{ id = 98731 }, -- Gladiator's Tunic
 	},
 	PVPWeapons = {
-		{ id = 33883 }, -- Strategist's Stave
-		{ id = 33881 }, -- Strategist's Demolisher
-		{ id = 33894 }, -- Strategist's Mageblade
-		{ id = 33895 }, -- Strategist's Tome of Power
-		{ id = 33902 }, -- Strategist's Destroyer
-		{ id = 33904 }, -- Strategist's War Staff
-		{ id = 33915 }, -- Strategist's Spellblade
-		{ id = 33916 }, -- Strategist's Tome of Destruction
+		{ id = 33883, disc = LF["Alliance"] }, -- Strategist's Stave
+		{ id = 33881, disc = LF["Alliance"] }, -- Strategist's Demolisher
+		{ id = 33894, disc = LF["Alliance"] }, -- Strategist's Mageblade
+		{ id = 33895, disc = LF["Alliance"] }, -- Strategist's Tome of Power
+		{ id = 33902, disc = LF["Horde"] }, -- Strategist's Destroyer
+		{ id = 33904, disc = LF["Horde"] }, -- Strategist's War Staff
+		{ id = 33915, disc = LF["Horde"] }, -- Strategist's Spellblade
+		{ id = 33916, disc = LF["Horde"] }, -- Strategist's Tome of Destruction
 		{},
-		{ id = 33879 }, -- Partisan's Claymore
-		{ id = 33880 }, -- Partisan's Battle Hammer
-		{ id = 33882 }, -- Partisan's Sunderer
-		{ id = 33884 }, -- Partisan's Glaive
-		{ id = 33885 }, -- Partisan's Aegis
-		{ id = 33886 }, -- Partisan's Longsword
-		{ id = 33887 }, -- Partisan's Punisher
-		{ id = 33888 }, -- Partisan's Handaxe
-		{ id = 33892 }, -- Partisan's Swiftblade
-		{ id = 33893 }, -- Partisan's Dirk
-		{ id = 33897 }, -- Partisan's Hand Cannon
-		{ id = 33898 }, -- Partisan's Repeater
-		{ id = 33899 }, -- Partisan's Bullseye
-		{ id = 33900 }, -- Partisan's Greatsword
-		{ id = 33901 }, -- Partisan's Pulverizer
-		{ id = 33903 }, -- Partisan's Battle Axe
-		{ id = 33905 }, -- Partisan's Pig Sticker
-		{ id = 33906 }, -- Partisan's Shield Wall
-		{ id = 33907 }, -- Partisan's Blade
-		{ id = 33908 }, -- Partisan's Bludgeon
-		{ id = 33909 }, -- Partisan's Cleaver
-		{ id = 33910 }, -- Partisan's Left Claw
-		{ id = 33911 }, -- Partisan's Right Claw
-		{ id = 33913 }, -- Partisan's Quickblade
-		{ id = 33914 }, -- Partisan's Razor
-		{ id = 33918 }, -- Partisan's Street Sweeper
-		{ id = 33919 }, -- Partisan's Crossbow
-		{ id = 33920 }, -- Partisan's Recurve
+		{ id = 33879, disc = LF["Alliance"] }, -- Partisan's Claymore
+		{ id = 33880, disc = LF["Alliance"] }, -- Partisan's Battle Hammer
+		{ id = 33882, disc = LF["Alliance"] }, -- Partisan's Sunderer
+		{ id = 33884, disc = LF["Alliance"] }, -- Partisan's Glaive
+		{ id = 33885, disc = LF["Alliance"] }, -- Partisan's Aegis
+		{ id = 33886, disc = LF["Alliance"] }, -- Partisan's Longsword
+		{ id = 33887, disc = LF["Alliance"] }, -- Partisan's Punisher
+		{ id = 33888, disc = LF["Alliance"] }, -- Partisan's Handaxe
+		{ id = 33892, disc = LF["Alliance"] }, -- Partisan's Swiftblade
+		{ id = 33893, disc = LF["Alliance"] }, -- Partisan's Dirk
+		{ id = 33897, disc = LF["Alliance"] }, -- Partisan's Hand Cannon
+		{ id = 33898, disc = LF["Alliance"] }, -- Partisan's Repeater
+		{ id = 33899, disc = LF["Alliance"] }, -- Partisan's Bullseye
+		{ id = 33900, disc = LF["Horde"] }, -- Partisan's Greatsword
+		{ id = 33901, disc = LF["Horde"] }, -- Partisan's Pulverizer
+		{ id = 33903, disc = LF["Horde"] }, -- Partisan's Battle Axe
+		{ id = 33905, disc = LF["Horde"] }, -- Partisan's Pig Sticker
+		{ id = 33906, disc = LF["Horde"] }, -- Partisan's Shield Wall
+		{ id = 33907, disc = LF["Horde"] }, -- Partisan's Blade
+		{ id = 33908, disc = LF["Horde"] }, -- Partisan's Bludgeon
+		{ id = 33909, disc = LF["Horde"] }, -- Partisan's Cleaver
+		{ id = 33910, disc = LF["Horde"] }, -- Partisan's Left Claw
+		{ id = 33911, disc = LF["Horde"] }, -- Partisan's Right Claw
+		{ id = 33913, disc = LF["Horde"] }, -- Partisan's Quickblade
+		{ id = 33914, disc = LF["Horde"] }, -- Partisan's Razor
+		{ id = 33918, disc = LF["Horde"] }, -- Partisan's Street Sweeper
+		{ id = 33919, disc = LF["Horde"] }, -- Partisan's Crossbow
+		{ id = 33920, disc = LF["Horde"] }, -- Partisan's Recurve
 		{},
-		{ id = 33896 }, -- Physician's Tome of Restoration
-		{ id = 33891 }, -- Physician's Warhammer
-		{ id = 33912 }, -- Physician's Battle Mace
-		{ id = 33917 }, -- Physician's Tome of Mending
+		{ id = 33891, disc = LF["Alliance"] }, -- Physician's Warhammer
+		{ id = 33896, disc = LF["Alliance"] }, -- Physician's Tome of Restoration
+		{ id = 33912, disc = LF["Horde"] }, -- Physician's Battle Mace
+		{ id = 33917, disc = LF["Horde"] }, -- Physician's Tome of Mending
 	},
 	PvP60Accessories = {
 		{ name = LF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 1"}, --*1
