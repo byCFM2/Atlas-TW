@@ -622,13 +622,20 @@ local pvpRewards = {
 		{ id = 33780 }, -- Strategist's Dragonhide Leggings
 		{ id = 33781 }, -- Strategist's Dragonhide Boots
 		{},
-		{ id = 33548 }, -- Physician's Dragonhide Helmet
-		{ id = 33549 }, -- Physician's Dragonhide Epaulets
-		{ id = 33550 }, -- Physician's Dragonhide Hauberk
-		{ id = 33551 }, -- Physician's Dragonhide Gloves
-		{ id = 33552 }, -- Physician's Dragonhide Leggings
-		{ id = 33553 }, -- Physician's Dragonhide Boots
+		{ id = 33548 }, -- Tactician's Dragonhide Helmet
+		{ id = 33549 }, -- Tactician's Dragonhide Epaulets
+		{ id = 33550 }, -- Tactician's Dragonhide Hauberk
+		{ id = 33551 }, -- Tactician's Dragonhide Gloves
+		{ id = 33552 }, -- Tactician's Dragonhide Leggings
+		{ id = 33553 }, -- Tactician's Dragonhide Boots
 		{},
+		{},
+		{ id = 33566 }, -- Corpsman's Dragonhide Helmet
+		{ id = 33567 }, -- Corpsman's Dragonhide Epaulets
+		{ id = 33568 }, -- Corpsman's Dragonhide Hauberk
+		{ id = 33569 }, -- Corpsman's Dragonhide Gloves
+		{ id = 33570 }, -- Corpsman's Dragonhide Leggings
+		{ id = 33571 }, -- Corpsman's Dragonhide Boots
 		{},
 		{ id = 33788 }, -- Corpsman's Dragonhide Helmet
 		{ id = 33789 }, -- Corpsman's Dragonhide Epaulets
