@@ -421,12 +421,19 @@ local pvpRewards = {
 		{ id = 33829 }, -- Corpsman's Satin Sandals
 		{},
 		{},
-		{ id = 33645 }, -- Physician's Headdress
-		{ id = 33831 }, -- Physician's Satin Mantle
+		{ id = 33644 }, -- Physician's Headdress
+		{ id = 33645 }, -- Physician's Satin Mantle
 		{ id = 33646 }, -- Physician's Satin Vestments
+		{ id = 33647 }, -- Physician's Satin Gloves
+		{ id = 33648 }, -- Physician's Satin Pants
+		{ id = 33649 }, -- Physician's Satin Sandals
+		{},
+		{ id = 33830 }, -- Physician's Headdress
+		{ id = 33831 }, -- Physician's Satin Mantle
+		{ id = 33832 }, -- Physician's Satin Vestments
 		{ id = 33833 }, -- Physician's Satin Gloves
-		{ id = 33832 }, -- Physician's Satin Pants
-		{ id = 33834 }, -- Physician's Satin Sandals
+		{ id = 33834 }, -- Physician's Satin Pants
+		{ id = 33835 }, -- Physician's Satin Sandals
 	},
 	PVPWarlock118 = {
 		{ name=LIS["Field Marshal's Threads"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
@@ -600,13 +607,6 @@ local pvpRewards = {
 		{ id = 33757 }, -- Combatant's Dragonhide Boots
 		{},
 		{},
-		{ id = 33758 }, -- Partisan's Dragonhide Helmet
-		{ id = 33759 }, -- Partisan's Dragonhide Epaulets
-		{ id = 33760 }, -- Partisan's Dragonhide Hauberk
-		{ id = 33761 }, -- Partisan's Dragonhide Gloves
-		{ id = 33762 }, -- Partisan's Dragonhide Leggings
-		{ id = 33763 }, -- Partisan's Dragonhide Boots
-		{},
 		{ id = 33536 }, -- Partisan's Dragonhide Helmet
 		{ id = 33537 }, -- Partisan's Dragonhide Epaulets
 		{ id = 33538 }, -- Partisan's Dragonhide Hauberk
@@ -614,13 +614,28 @@ local pvpRewards = {
 		{ id = 33540 }, -- Partisan's Dragonhide Leggings
 		{ id = 33541 }, -- Partisan's Dragonhide Boots
 		{},
+		{ id = 33758 }, -- Partisan's Dragonhide Helmet
+		{ id = 33759 }, -- Partisan's Dragonhide Epaulets
+		{ id = 33760 }, -- Partisan's Dragonhide Hauberk
+		{ id = 33761 }, -- Partisan's Dragonhide Gloves
+		{ id = 33762 }, -- Partisan's Dragonhide Leggings
+		{ id = 33763 }, -- Partisan's Dragonhide Boots
+		{},
 		{},
 		{ id = 33554 }, -- Strategist's Dragonhide Helmet
+		{ id = 33555 }, -- Strategist's Dragonhide Epaulets
+		{ id = 33556 }, -- Strategist's Dragonhide Hauberk
+		{ id = 33557 }, -- Strategist's Dragonhide Gloves
+		{ id = 33558 }, -- Strategist's Dragonhide Leggings
+		{ id = 33559 }, -- Strategist's Dragonhide Boots
+		{},
+		{ id = 33776 }, -- Strategist's Dragonhide Helmet
 		{ id = 33777 }, -- Strategist's Dragonhide Epaulets
 		{ id = 33778 }, -- Strategist's Dragonhide Hauberk
 		{ id = 33779 }, -- Strategist's Dragonhide Gloves
 		{ id = 33780 }, -- Strategist's Dragonhide Leggings
 		{ id = 33781 }, -- Strategist's Dragonhide Boots
+		{},
 		{},
 		{ id = 33548 }, -- Tactician's Dragonhide Helmet
 		{ id = 33549 }, -- Tactician's Dragonhide Epaulets
@@ -628,6 +643,13 @@ local pvpRewards = {
 		{ id = 33551 }, -- Tactician's Dragonhide Gloves
 		{ id = 33552 }, -- Tactician's Dragonhide Leggings
 		{ id = 33553 }, -- Tactician's Dragonhide Boots
+		{},
+		{ id = 33770 }, -- Tactician's Dragonhide Helmet
+		{ id = 33771 }, -- Tactician's Dragonhide Epaulets
+		{ id = 33772 }, -- Tactician's Dragonhide Hauberk
+		{ id = 33773 }, -- Tactician's Dragonhide Gloves
+		{ id = 33774 }, -- Tactician's Dragonhide Leggings
+		{ id = 33775 }, -- Tactician's Dragonhide Boots
 		{},
 		{},
 		{ id = 33566 }, -- Corpsman's Dragonhide Helmet
@@ -643,6 +665,21 @@ local pvpRewards = {
 		{ id = 33791 }, -- Corpsman's Dragonhide Gloves
 		{ id = 33792 }, -- Corpsman's Dragonhide Leggings
 		{ id = 33793 }, -- Corpsman's Dragonhide Boots
+		{},
+		{},
+		{ id = 33572 }, -- Physician's Dragonhide Helmet
+		{ id = 33573 }, -- Physician's Dragonhide Epaulets
+		{ id = 33574 }, -- Physician's Dragonhide Hauberk
+		{ id = 33575 }, -- Physician's Dragonhide Gloves
+		{ id = 33576 }, -- Physician's Dragonhide Leggings
+		{ id = 33577 }, -- Physician's Dragonhide Boots
+		{},
+		{ id = 33794 }, -- Physician's Dragonhide Helmet
+		{ id = 33795 }, -- Physician's Dragonhide Epaulets
+		{ id = 33796 }, -- Physician's Dragonhide Hauberk
+		{ id = 33797 }, -- Physician's Dragonhide Gloves
+		{ id = 33798 }, -- Physician's Dragonhide Leggings
+		{ id = 33799 }, -- Physician's Dragonhide Boots
 	},
 	PVPShaman118 = {
 		{ name=LIS["Warlord's Earthshaker"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
