@@ -64,6 +64,12 @@ AtlasTW.Localization:RegisterNamespace("MapData", "enUS", {
     ["Barkskin Fisher"] = true,
     ["Crusader Larsarius"] = true,
     ["Shadeflayer Goliath"] = true,
+    ["Warbark"] = true, -- 1.18.1 TODO
+    ["Krybee"] = true, -- 1.18.1 TODO
+    ["Larnaea"] = true, -- 1.18.1 TODO
+    ["Glurgill"] = true, -- 1.18.1 TODO
+    ["Thundertusk"] = true, -- 1.18.1 TODO
+    ["Larexxa Foulheart"] = true, -- 1.18.1 TODO
     --Blackfathom Deeps
     ["Lorgalis Manuscript"] = true,
     ["Argent Guard Thaelrid"] = true,

@@ -38,8 +38,8 @@ AtlasTW.InstanceData.RareMobs = {
             loot = {
                 { id = 61500 }, -- Shadestaff
                 { id = 61501 }, -- Silent Sneakers
-}
-},
+            }
+        },
         {
             id = "GraypawAlpha",
             name = LMD["Graypaw Alpha"],
@@ -48,8 +48,8 @@ AtlasTW.InstanceData.RareMobs = {
             loot = {
                 { id = 60492 }, -- Graypaw Leggings
                 { id = 60493 }, -- Graypaw Boots
-}
-},
+            }
+        },
         {
             id = "EarthcallerRezengal",
             name = LMD["Earthcaller Rezengal"],
@@ -58,8 +58,8 @@ AtlasTW.InstanceData.RareMobs = {
             loot = {
                 { id = 61502 }, -- Earthcaller Staff
                 { id = 61503 }, -- Rezengal's Robe
-}
-},
+            }
+        },
         {
             id = "Blazespark",
             name = LMD["Blazespark"],
@@ -68,8 +68,8 @@ AtlasTW.InstanceData.RareMobs = {
             loot = {
                 { id = 61504 }, -- Wildfire Girdle
                 { id = 61505 }, -- Leggings of Fiery Temper
-}
-},
+            }
+        },
         {
             id = "FriarMontero",
             name = LMD["Friar Montero"],
@@ -78,8 +78,8 @@ AtlasTW.InstanceData.RareMobs = {
             loot = {
                 { id = 58010 }, -- Psalm of Righteous Fire
                 { id = 58011 }, -- Friar's Signet
-}
-},
+            }
+        },
         {
             id = "WitchDoctorTanzo",
             name = LMD["Witch Doctor Tan'zo"],
@@ -89,8 +89,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61507 }, -- Pendant of Wilderness
                 { id = 61506 }, -- Shard of Wild Hexes
                 { id = 61508, dropRate = 20 }, -- Thorned Branch
-}
-},
+            }
+        },
         {
             id = "Emastrasz",
             name = LMD["Emastrasz"],
@@ -99,8 +99,8 @@ AtlasTW.InstanceData.RareMobs = {
             loot = {
                 { id = 58159 }, -- Hood of Lifebinding
                 { id = 58160 }, -- Firebound Skull
-}
-},
+            }
+        },
         {
             id = "Dawnhowl",
             name = LMD["Dawnhowl"],
@@ -110,8 +110,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61580 }, -- Wolf's Skull
                 { id = 61581 }, -- Wolffur Armor
                 { id = 61582 }, -- Sharp Teeth Necklace
-}
-},
+            }
+        },
         {
             id = "WidowoftheWoods",
             name = LMD["Widow of the Woods"],
@@ -122,8 +122,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61576 }, -- Lover's Ring
                 {},
                 { id = 61589, dropRate = 20 }, -- Widow's Kiss
-}
-},
+            }
+        },
         {
             id = "Gnaws",
             name = LMD["Gnaws"],
@@ -134,8 +134,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 58058 }, -- Harpoon of Ahab
                 { id = 58059 }, -- Razertooth Fetish
                 { id = 58061 }, -- Sharkskin Sash
-}
-},
+            }
+        },
         {
             id = "MaltimorsPrototype",
             name = LMD["Maltimor's Prototype"],
@@ -146,8 +146,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61574 }, -- Polished Gear
                 {},
                 { id = 61572, dropRate = 20 }, -- Gartside Family Wrench
-}
-},
+            }
+        },
         {
             id = "Bonecruncher",
             name = LMD["Bonecruncher"],
@@ -157,8 +157,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61583 }, -- Light Ogre Belt
                 { id = 61584 }, -- Ogre Fighter's Bracers
                 { id = 61585, dropRate = 20 }, -- Brawling Trophy
-}
-},
+            }
+        },
         {
             id = "Duskskitterer",
             name = LMD["Duskskitterer"],
@@ -168,8 +168,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61610 }, -- Old Farmer's Pitchfork
                 { id = 61611 }, -- Emerald Pendant
                 { id = 61612 }, -- Holy Sword
-}
-},
+            }
+        },
         {
             id = "BaronPerenolde",
             name = LMD["Baron Perenolde"],
@@ -178,8 +178,8 @@ AtlasTW.InstanceData.RareMobs = {
             loot = {
                 { id = 61577 }, -- Lieutenant's Sword
                 { id = 61578 }, -- Old Knight's Leggings
-}
-},
+            }
+        },
         {
             id = "KinTozo",
             name = LMD["Kin'Tozo"],
@@ -192,8 +192,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 60441 }, -- The Mojo Ring
                 {},
                 { id = 60442, dropRate = 2 }, -- Hak'thalz of Legacy
-}
-},
+            }
+        },
         {
             id = "M0L1Y",
             name = LMD["M-0L1Y"],
@@ -204,8 +204,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 41295 }, -- Lost Excavation Pickaxe
                 { id = 41296 }, -- Damp Pauldrons
                 { id = 41298, dropRate = 10 }, -- Overloaded Heating Coil
-}
-},
+            }
+        },
         {
             id = "Grugthok",
             name = LMD["Grug'thok the Seer"],
@@ -217,8 +217,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 81382 }, -- Gordunni War Beads
                 { id = 81383 }, -- The Ogre Truncheon
                 { id = 81384, dropRate = 0.5 }, -- Grug'thok's Sash
-}
-},
+            }
+        },
         {
             id = "Ashbeard",
             name = LMD["Explorer Ashbeard"],
@@ -230,8 +230,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 83277 }, -- Dark Iron Adventurer Shawl
                 { id = 83278 }, -- Ash Explorer Pauldrons
                 { id = 83279 }, -- Everflame Torch
-}
-},
+            }
+        },
         {
             id = "Jalakar",
             name = LMD["Jal'akar"],
@@ -243,8 +243,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 51025 }, -- Vilebranch Seer's Dress
                 { id = 83273 }, -- The Dire Clasp
                 { id = 83274, dropRate = 0.5 }, -- Charmed Voodoo Collar
-}
-},
+            }
+        },
         {
             id = "Ripjaw",
             name = LMD["Ripjaw"],
@@ -255,8 +255,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61536 }, -- Mystical Girdle
                 {},
                 { id = 61537, dropRate = 20 }, -- Ripjaw's Tooth
-}
-},
+            }
+        },
         {
             id = "Rukthok",
             name = LMD["Ruk'thok the Pyromancer"],
@@ -266,8 +266,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61613 }, -- Burnt Explorer's Tunic
                 { id = 61614 }, -- Ruk'thok Slippers
                 { id = 61615 }, -- Burning Torch
-}
-},
+            }
+        },
         {
             id = "Embereye",
             name = LMD["Embereye"],
@@ -277,8 +277,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61538 }, -- Moonsteel Zweihander
                 { id = 61539 }, -- Scaleshard Shoulders
                 { id = 61540 }, -- Emberscale Shield
-}
-},
+            }
+        },
         {
             id = "Xalvic",
             name = LMD["Xalvic Blackclaw"],
@@ -290,8 +290,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 81372 }, -- The Black Claw
                 { id = 81373 }, -- Shawl of the Satyr
                 { id = 81374, dropRate = .5 }, -- Trickster's Necklace
-}
-},
+            }
+        },
         {
             id = "FirstbornofArugal",
             name = LMD["Firstborn of Arugal"],
@@ -302,8 +302,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61587 }, -- Old Hunter's Boots
                 {},
                 { id = 61588, dropRate = 20 }, -- Arugal Family Sigil
-}
-},
+            }
+        },
         {
             id = "MargontheMighty",
             name = LMD["Margon the Mighty"],
@@ -315,8 +315,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61534 }, -- Fisher's Harpoon
                 {},
                 { id = 61533, dropRate = 2 }, -- Ring of the Forgotten Hero
-}
-},
+            }
+        },
         {
             id = "WanderingKnight",
             name = LMD["The Wandering Knight"],
@@ -327,8 +327,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 83258 }, -- Coif of the Lost Soul
                 { id = 83259 }, -- Old Knighthood Blade
                 { id = 83260 }, -- Footman's Breastplate
-}
-},
+            }
+        },
         {
             id = "Letashaz",
             name = LMD["Letashaz"],
@@ -340,8 +340,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61544 }, -- Shawl of the Magician
                 {},
                 { id = 61541, dropRate = 2 }, -- Letashaz's Right Claw
-}
-},
+            }
+        },
         {
             id = "Aquitus",
             name = LMD["Aquitus"],
@@ -352,8 +352,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61530 }, -- Ring of the Deep Sea
                 {},
                 { id = 61528, dropRate = 20 }, -- Aquis' Bindings
-}
-},
+            }
+        },
         {
             id = "Stoneshell",
             name = LMD["Stoneshell"],
@@ -363,8 +363,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61509 }, -- Stoneshell Shield
                 { id = 61510 }, -- Stonehewn Pauldrons
                 { id = 61511, dropRate = 20 }, -- Scale of the Makrura
-}
-},
+            }
+        },
         {
             id = "Tarangos",
             name = LMD["Tarangos"],
@@ -375,8 +375,28 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 81361 }, -- Dampener's Pauldrons
                 { id = 81362 }, -- Azure-Scale Sabatons
                 { id = 81364 }, -- Scale of Malygos
-}
-},
+            }
+        },
+        {
+            id = "LarexxaFoulheart",
+            name = LMD["Larexxa Foulheart"],
+            postfix = "7k (55L) " .. LZ["Moonwhisper Coast"] .. " [76, 21]",
+            defaults = { dropRate = 50 },
+            loot = {
+                { id = 33203 }, -- Spire of Unwoven Mysteries
+                { id = 33204 }, -- Dreadful Grimoire
+            }
+        },
+        {
+            id = "Glurgill",
+            name = LMD["Glurgill"],
+            postfix = "7k (56L) " .. LZ["Moonwhisper Coast"] .. " [60, 14]",
+            defaults = { dropRate = 50 },
+            loot = {
+                { id = 33199 }, -- Bluetide Gauntles
+                { id = 33200 }, -- Spine of a Shipwrecked Pirate
+            }
+        },
         {
             id = "Zareth",
             name = LMD["Zareth Terrorblade"],
@@ -388,8 +408,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 83267 }, -- Bracers of the Demonic Hunt
                 { id = 83268 }, -- Demon Watcher's Ring
                 { id = 83269, dropRate = .5 }, -- Terrorblade Glaive
-}
-},
+            }
+        },
         {
             id = "HighvaleSilverback",
             name = LMD["Highvale Silverback"],
@@ -399,8 +419,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61518 }, -- Apefist Pummelers
                 { id = 61519 }, -- Tel Co. Chestguard
                 { id = 61520, dropRate = 20 }, -- The Golden Banana
-}
-},
+            }
+        },
         {
             id = "Mallon",
             name = LMD["Mallon The Moontouched"],
@@ -412,8 +432,38 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 81377 }, -- Enfused Moon Crown
                 { id = 81378 }, -- Eveningstar Gloves
                 { id = 81379, dropRate = .5 }, -- Shard of the Moon
-}
-},
+            }
+        },
+        {
+            id = "Thundertusk",
+            name = LMD["Thundertusk"],
+            postfix = "7k (58L) " .. LZ["Moonwhisper Coast"] .. " [82, 6]",
+            defaults = { dropRate = 50 },
+            loot = {
+                { id = 33201 }, -- Ancient Beast Sash
+                { id = 33202 }, -- Loop of the Mythical Beast
+            }
+        },
+        {
+            id = "Krybee",
+            name = LMD["Krybee"],
+            postfix = "9k (58L) " .. LZ["Moonwhisper Coast"] .. " [59, 16]",
+            defaults = { dropRate = 50 },
+            loot = {
+                { id = 33207 }, -- Nail of the Azure Whelpling
+                { id = 33208 }, -- Memory of Leywinds
+            }
+        },
+        {
+            id = "Warbark",
+            name = LMD["Warbark"],
+            postfix = "39k (58L) " .. LZ["Moonwhisper Coast"] .. " [63, 16]",
+            defaults = { dropRate = 50 },
+            loot = {
+                { id = 33209 }, -- Cloak of the Veteran
+                { id = 33210 }, -- Withered Bark Pauldrons
+            }
+        },
         {
             id = "ProfessorLysander",
             name = LMD["Professor Lysander"],
@@ -424,8 +474,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 41061 }, -- Frozen Rune of Naxxramas
                 { id = 41062 }, -- Peering Eyeball
                 { id = 41063 }, -- Doctor's Labcoat
-}
-},
+            }
+        },
         {
             id = "Kargron",
             name = LMD["Blademaster Kargron"],
@@ -436,8 +486,18 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 81367 }, -- Band of the Old Horde
                 { id = 81368 }, -- Blackshackle Bracers
                 { id = 81369, dropRate = .5 }, -- Blade of the Blademaster
-}
-},
+            }
+        },
+        {
+            id = "Larnaea",
+            name = LMD["Larnaea"],
+            postfix = "18k (60L) " .. LZ["Moonwhisper Coast"] .. " [57, 13]",
+            defaults = { dropRate = 50 },
+            loot = {
+                { id = 33205 }, -- Skull of Larnaea
+                { id = 33206 }, -- Tricolored Scalepants
+            }
+        },
         {
             id = "Azurebeak",
             name = LMD["Azurebeak"],
@@ -448,16 +508,16 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61551 }, -- Mathrengyl's Lost Staff
                 {},
                 { id = 61549, dropRate = 20 }, -- Swiftfeather Quiver
-}
-},
+            }
+        },
         {
             id = "BarkskinFisher",
             name = LMD["Barkskin Fisher"],
             postfix = "5k (60L) " .. LZ["Hyjal"] .. " [66, 53]",
             loot = {
                 { id = 84507, dropRate = 100 }, -- Barkskin Fisher
-}
-},
+            }
+        },
         {
             id = "AdmiralBareanWestwind",
             name = LMD["Admiral Barean Westwind"],
@@ -472,8 +532,8 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 60388 }, -- Mariner's Cuffs
                 { id = 60389, dropRate = 15 }, -- The Frigid Star Ring
                 { id = 60390, dropRate = 15 }, -- Jacket of the Scarlet Admiral
-}
-},
+            }
+        },
         {
             id = "ShadeflayerGoliath",
             name = LMD["Shadeflayer Goliath"],
@@ -485,8 +545,8 @@ AtlasTW.InstanceData.RareMobs = {
                 {},
                 { id = 61545, dropRate = 20 }, -- Shadeflayer's Sigil
                 { id = 61547, dropRate = 20 }, -- Totem of Bad Mojo
-}
-},
+            }
+        },
         {
             id = "CrusaderLarsarius",
             name = LMD["Crusader Larsarius"],
@@ -498,9 +558,9 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 83264 }, -- Ring of Sacrifice
                 { id = 83261 }, -- Tome of the First Scripture
                 { id = 83262 }, -- Scarlet Wanderer's Hammer
-}
-}
-}
+            }
+        },
+    }
 }
 
 -- Item initialization for all bosses

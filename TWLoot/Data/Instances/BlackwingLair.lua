@@ -111,7 +111,7 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 16957, container = { 47023, 47031 } }, -- Judgement Boots
                 { id = 16965, container = { 47255 } }, -- Sabatons of Wrath
                 {},
-                {},
+                { id = 33083, container = { 33093,33094 }, dropRate = 25 }, -- Elementium Sharpening Stone 1.18.1
                 {},
                 {},
                 { id = 19341, dropRate = 20 }, -- Lifegiving Gem
@@ -172,27 +172,27 @@ AtlasTW.InstanceData.BlackwingLair = {
             }
         },
         {
-            id = "EzzelDarkbrewer",
+            id = "EzzelDarkbrewer", -- 1.18.1
             prefix = "5)",
             name = LB["Ezzel Darkbrewer"],
             postfix = L["Optional"],
-            defaults = { dropRate = 17 },
+            defaults = { dropRate = 8 },
             loot = {
                 { id = 33073 }, -- Philosopher's Barrier
-                { id = 33074, dropRate = 10 }, -- Taut Dragonhide Boots
-                { id = 33075, dropRate = 10 }, -- Staff of Cleansing Vapors
+                { id = 33074 }, -- Taut Dragonhide Boots
+                { id = 33075 }, -- Staff of Cleansing Vapors
                 { id = 33076 }, -- Ichorus
                 { id = 33077 }, -- Apron of Fuming Protection
                 { id = 33078 }, -- Vials of Volatile Acid
                 { id = 33079 }, -- Philosopher's Stone Replica
                 { id = 33080 }, -- Wingbone Vambraces
                 { id = 33081 }, -- Flask of Petrified Gold
-               -- { id = 33083, container = { 33093,33094 } }, -- Elementium Sharpening Stone
-               -- { id = 33084, container = { 33096 } }, -- Pristine Chromatic Scale
-                { id = 33085, container = { 33095 }, dropRate = 25 }, -- Over-Tinkered Lens
+                {},
                 { id = 33086 }, -- Libram of Hallowed Ground
                 { id = 33090 }, -- Totem of Distant Tremors
                 { id = 33097 }, -- Idol of Acidity
+                {},
+                { id = 33085, container = { 33095 }, dropRate = 25 }, -- Over-Tinkered Lens
                 {},
                 { id = 42311, dropRate = 100, container = { 33330, 33331 } }, -- Transmutation Alloy
             }
@@ -289,7 +289,7 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 16953, container = { 47017, 47025 } }, -- Judgement Spaulders
                 { id = 16961, container = { 47249 } }, -- Pauldrons of Wrath
                 {},
-                {},
+                { id = 33084, container = { 33096 }, dropRate = 25 }, -- Pristine Chromatic Scale
                 {},
                 {},
                 {},

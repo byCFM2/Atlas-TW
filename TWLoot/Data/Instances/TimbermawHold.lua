@@ -281,9 +281,10 @@ AtlasTW.InstanceData.TimbermawHold = {
                 { id = 33316 }, -- Kilt of Futile Sacrifices
                 { id = 33317 }, -- Royal Highborne Guardbelt
                 {},
+                {},
+                {},
                 { id = 33309, dropRate = 10 }, -- Var'adel, Twig of the Dreamfountain
                 { id = 33312, dropRate = 10 }, -- The Herald of Nightmares
-                {},
                 { id = 42295, dropRate = 50, container = { 33332 } }, -- Mass of Writhing Tentacles
                 { id = 42307, dropRate = 50, container = { 33330, 33331 } }, -- Runed Elementium Key
             }
@@ -299,11 +300,6 @@ AtlasTW.InstanceData.TimbermawHold = {
                 {},
                 { id = 42171, dropRate = 100, container = { 42234 } }, -- Withermaw Totem
                 { id = 42181, dropRate = 40 }, -- Netherrich Demon Blood
-                { id = 61198, dropRate = 7 }, -- Small Dream Shard
-                { id = 61441, dropRate = 38, container = { 61199 } }, -- Ursa Battlehammer
-                { id = 61442, dropRate = 76, container = { 61199 } }, -- Barskin Pendant
-                { id = 61636, dropRate = 26 }, -- Barkskin Spirit Bead
-                { id = 61707, dropRate = 50 }, -- Shadeflayer Tribal Bracelet
             }
         },
         { name = LIS["Surrender to Madness"], items = "SurrendertoMadness" },
