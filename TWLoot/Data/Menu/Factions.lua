@@ -49,7 +49,7 @@ AtlasTW.MenuData.Factions = {
 	{ name = LF["Wardens of Time"],       icon = "Interface\\Icons\\INV_Misc_Head_Dragon_Bronze",          lootpage = "WardensofTime",	       Extra = LZ["The Black Morass"]   },
 	{ name = LF["Shen'dralar"],           icon = "Interface\\Icons\\INV_Misc_Book_10",          		   lootpage = "Shendralar",	       Extra = LZ["Dire Maul"]   },
 	{ name = LF["Draenei Exiles"],        icon = "Interface\\Icons\\INV_Offhand_Draenei_A_02",             lootpage = "DraeneiExiles",     Extra = LZ["Swamp of Sorrows"]..", "..LZ["Moonwhisper Coast"] }, --1.18.1
-	{ name = LF["Earthen Ring"],          icon = "Interface\\Icons\\Spell_Nature_EarthBind",               lootpage = "EarthenRing",    },-- Extra = LZ["Swamp of Sorrows"] }, --1.18.1
+	{ name = LF["Earthen Ring"],          icon = "Interface\\Icons\\Spell_Nature_EarthBind",               lootpage = "EarthenRing",       Extra = Colors.RED..LF["Horde"]..", "..LZ["Stonetalon Mountains"] }, --1.18.1
 	{},
 	{ name = LF["Frostwolf Clan"],        icon = "Interface\\Icons\\INV_Jewelry_FrostwolfTrinket_01",      lootpage = "StormpikeFrostwolf",Extra = Colors.RED..LF["Horde"] },
 	{ name = LF["Darkspear Trolls"],      icon = "Interface\\Icons\\Racial_Troll_Berserk",                 lootpage = "DarkspearTrolls",   Extra = Colors.RED..LF["Horde"] },
