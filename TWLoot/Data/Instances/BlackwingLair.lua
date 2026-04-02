@@ -194,7 +194,7 @@ AtlasTW.InstanceData.BlackwingLair = {
                 { id = 33090 }, -- Totem of Distant Tremors
                 { id = 33097 }, -- Idol of Acidity
                 {},
-                { id = 42311, dropRate = 100 }, -- Transmutation Alloy
+                { id = 42311, dropRate = 100, container = { 33330, 33331 } }, -- Transmutation Alloy
             }
         },
         {

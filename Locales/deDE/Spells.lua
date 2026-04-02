@@ -34,6 +34,8 @@ AtlasTW.Localization:RegisterNamespace("Spells", "deDE", {
     ["Enchant 2H Weapon - Minor Impact"] = "Zweihandwaffe verzaubern - Schwacher Einschlag",
     ["Enchant 2H Weapon - Minor Intellect"] = "Zweihandwaffe verzaubern - Schwache Intelligenz",
     ["Enchant 2H Weapon - Superior Impact"] = "Zweihandwaffe verzaubern - Überragender Einschlag",
+    ["Enchant 2H Weapon - Nature Damage"] = "Zweihandwaffe verzaubern - Naturschaden", --1.18.1
+    ["Enchant 2H Weapon - Shadow Damage"] = "Zweihandwaffe verzaubern - Schattenzauber", --1.18.1
     ["Enchant Boots - Agility"] = "Stiefel verzaubern - Agilität",
     ["Enchant Boots - Greater Agility"] = "Stiefel verzaubern - Große Agilität",
     ["Enchant Boots - Greater Spirit"] = "Stiefel verzaubern - Große Willenskraft",
@@ -118,6 +120,8 @@ AtlasTW.Localization:RegisterNamespace("Spells", "deDE", {
     ["Enchant Cloak - Stealth"] = "Umhang verzaubern - Verstohlenheit",
     ["Enchant Cloak - Subtlety"] = "Umhang verzaubern - Feingefühl",
     ["Enchant Cloak - Superior Defense"] = "Umhang verzaubern - Überragende Verteidigung",
+    ["Enchant Cloak - Agility"] = "Umhang verzaubern - Agilität",
+    ["Enchant Cloak - Greater Shadow Resistance"] = "Umhang verzaubern - Großer Schattenwiderstand",
     ["Enchant Gloves - Advanced Herbalism"] = "Handschuhe verzaubern - Hochentwickelte Kräuterkunde",
     ["Enchant Gloves - Advanced Mining"] = "Handschuhe verzaubern - Hochentwickelter Bergbau",
     ["Enchant Gloves - Agility"] = "Handschuhe verzaubern - Agilität",

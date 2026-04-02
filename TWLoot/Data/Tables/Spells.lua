@@ -1417,6 +1417,42 @@ AtlasTW.SpellDB = {
 				{ 12811, 4 },
 			},
 		},
+		[49016] = { -- 1.18.1
+			name = LS["Enchant Cloak - Agility"],
+			tools = { 16207 },
+			reagents = {
+				{ 20725, 2 },
+				{ 14344, 6 },
+				{ 7082, 2 },
+			},
+		},
+		[49018] = { -- 1.18.1
+			name = LS["Enchant Cloak - Greater Shadow Resistance"],
+			tools = { 16207 },
+			reagents = {
+				{ 20725, 3 },
+				{ 16204, 8 },
+				{ 20520, 2 },
+			},
+		},
+		[49020] = { -- 1.18.1
+			name = LS["Enchant 2H Weapon - Nature Damage"],
+			tools = { 16207 },
+			reagents = {
+				{ 16203, 8 },
+				{ 14344, 2 },
+				{ 12803, 6 },
+			},
+		},
+		[49022] = { -- 1.18.1
+			name = LS["Enchant 2H Weapon - Shadow Damage"],
+			tools = { 16207 },
+			reagents = {
+				{ 16203, 8 },
+				{ 14344, 2 },
+				{ 12808, 6 },
+			},
+		},
 		[56543] = {
 			name = LS["Enchant Boots - Major Intellect"],
 			tools = { 11145 },

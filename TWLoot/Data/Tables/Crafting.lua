@@ -305,7 +305,7 @@ local craftingTable = {
 		{ id = 36929,          skill = { 300, 310, 330, 350 } },                         --Concoction of the Emerald Mongoose 1.18
 		{ id = 36932,          skill = { 300, 310, 330, 350 } },                         --Concoction of the Arcane Giant 1.18
 		{ id = 36935,          skill = { 300, 310, 330, 350 } },                         --Concoction of the Dreamwater 1.18
-		{ id = 36589,          skill = { 0, 330, 340, 350 } },                         --Mixologist Stone 1.18.1
+		{ id = 36589,          skill = { 300, 330, 340, 350 } },                         --Mixologist Stone 1.18.1
 	},
 
 	AlchemyFlasks = {
@@ -486,7 +486,7 @@ local craftingTable = {
 		{ id = 11468,                skill = { 240, 255, 275, 295 } }, --Elixir of Dream Vision
 		{ id = 11478,                skill = { 250, 265, 285, 305 } }, --Elixir of Detect Demon
 		{ id = 17632,                skill = { 300, 315, 322, 330 } }, --Alchemist's Stone
-		{ id = 36589,                skill = { 0, 330, 340, 350 } },   --Mixologist Stone 1.18.1
+		{ id = 36589,                skill = { 300, 330, 340, 350 } }, --Mixologist Stone 1.18.1
 	},
 
 	EnchantingApprentice = {
@@ -651,6 +651,10 @@ local craftingTable = {
 		{ id = 25079,          skill = { 300, 320, 340, 360 } }, --Enchant Gloves - Healing Power
 		{ id = 25073,          skill = { 300, 320, 340, 360 } }, --Enchant Gloves - Shadow Power
 		{},
+		{ id = 57028,          skill = { 300, 300, 305, 310 } }, --Enchant Bracer - Spell Power
+		{ id = 57127,          skill = { 300, 300, 315, 330 } }, --Enchant Boots - Superior Stamina
+		{ id = 57142,          skill = { 300, 310, 315, 320 } }, --Enchant Boots - Greater Spirit
+		{ id = 57148,          skill = { 300, 310, 315, 320 } }, --Enchant Boots - Vampirism
 		{ id = 25080,          skill = { 300, 320, 340, 360 } }, --Enchant Gloves - Superior Agility
 		{ id = 25072,          skill = { 300, 320, 340, 360 } }, --Enchant Gloves - Threat
 		{ id = 20034,          skill = { 300, 320, 340, 360 } }, --Enchant Weapon - Crusader
@@ -660,32 +664,34 @@ local craftingTable = {
 		{ id = 23803,          skill = { 300, 320, 340, 360 } }, --Enchant Weapon - Mighty Spirit
 		{ id = 22749,          skill = { 300, 320, 340, 360 } }, --Enchant Weapon - Spell Power
 		{ id = 20031,          skill = { 300, 320, 340, 360 } }, --Enchant Weapon - Superior Striking
-		{ id = 57030,          skill = { 300, 300, 300, 300 } }, --Enchant Bracer - Greater Agility
-		{ id = 57028,          skill = { 300, 300, 300, 300 } }, --Enchant Bracer - Spell Power
-		{ id = 57142,          skill = { 300, 300, 300, 300 } }, --Enchant Boots - Greater Spirit
-		{ id = 57127,          skill = { 300, 300, 300, 300 } }, --Enchant Boots - Superior Stamina
-		{ id = 57148,          skill = { 300, 300, 300, 300 } }, --Enchant Boots - Vampirism
+		{ id = 57030,          skill = { 300, 320, 340, 360 } }, --Enchant Bracer - Greater Agility
 		{},
-		{ id = 57144,          skill = { 300, 300, 300, 300 } }, --Enchant Bracer - Greater Deflection
-		{ id = 57119,          skill = { 300, 300, 300, 300 } }, --Enchant Chest - Mighty Mana
-		{ id = 57117,          skill = { 300, 300, 300, 300 } }, --Enchant Cloak - Greater Arcane Resistance
-		{ id = 46601,          skill = { 300, 300, 300, 300 } }, --Enchant Gloves - Arcane Power
-		{ id = 46602,          skill = { 300, 300, 300, 300 } }, --Enchant Gloves - Nature Power
-		{ id = 46603,          skill = { 300, 300, 300, 300 } }, --Enchant Gloves - Holy Power
-		{ id = 46086,          skill = { 300, 300, 300, 300 } }, --Enchant Gloves - Major Strength
-		{ id = 57518,          skill = { 300, 300, 300, 300 } }, --Eternal Dreamstone Shard
-		{ id = 56543,          skill = { 300, 300, 300, 300 } }, --Enchant Boots - Major Intellect --1.18
-		{ id = 36942,          skill = { 300, 300, 300, 300 } }, --Enchant Weapon - Rift Tear --1.18.1
-		{ id = 36579,          skill = { 0, 310, 320, 330 } }, --Timberheart Dreamcatcher --1.18.1
+		{ id = 57119,          skill = { 300, 300, 315, 330 } }, --Enchant Chest - Mighty Mana
+		{ id = 57144,          skill = { 300, 310, 315, 320 } }, --Enchant Bracer - Greater Deflection
+		{ id = 57117,          skill = { 300, 310, 315, 320 } }, --Enchant Cloak - Greater Arcane Resistance
+		{ id = 46601,          skill = { 300, 310, 315, 320 } }, --Enchant Gloves - Arcane Power
+		{ id = 46602,          skill = { 300, 310, 315, 320 } }, --Enchant Gloves - Nature Power
+		{ id = 46603,          skill = { 300, 310, 315, 320 } }, --Enchant Gloves - Holy Power
+		{ id = 46086,          skill = { 300, 320, 340, 360 } }, --Enchant Gloves - Major Strength
+		{ id = 57518,          skill = { 300, 320, 340, 360 } }, --Eternal Dreamstone Shard
+		{ id = 56543,          skill = { 300, 315, 335, 355 } }, --Enchant Boots - Major Intellect --1.18
+		{ id = 49016,          skill = { 300, 300, 312, 325 } }, --Enchant Cloak - Agility 1.18.1
+		{ id = 49018,          skill = { 300, 300, 312, 325 } }, --Enchant Cloak - Greater Shadow Resistance 1.18.1
+		{ id = 49020,          skill = { 300, 300, 312, 325 } }, --Enchant 2H Weapon - Nature Damage 1.18.1
+		{ id = 49022,          skill = { 300, 300, 312, 325 } }, --Enchant 2H Weapon - Shadow Damage 1.18.1
+		{ id = 36942,          skill = { 300, 310, 315, 320 } }, --Enchant Weapon - Rift Tear --1.18.1
+		{ id = 36579,          skill = { 300, 310, 320, 330 } }, --Timberheart Dreamcatcher --1.18.1
 	},
 
 	EnchantingCloak = {
-		{ id = 57117,        skill = { 300, 300, 300, 300 } }, --Enchant Cloak - Greater Arcane Resistance
+		{ id = 49016,        skill = { 300, 300, 312, 325 } }, --Enchant Cloak - Agility 1.18.1
+		{ id = 49018,        skill = { 300, 300, 312, 325 } }, --Enchant Cloak - Greater Shadow Resistance 1.18.1
 		{ id = 25084,        skill = { 300, 320, 340, 360 } }, --Enchant Cloak - Subtlety
 		{ id = 25083,        skill = { 300, 320, 340, 360 } }, --Enchant Cloak - Stealth
 		{ id = 25082,        skill = { 300, 320, 340, 360 } }, --Enchant Cloak - Greater Nature Resistance
 		{ id = 25081,        skill = { 300, 320, 340, 360 } }, --Enchant Cloak - Greater Fire Resistance
 		{ id = 25086,        skill = { 300, 320, 340, 360 } }, --Enchant Cloak - Dodge
+		{ id = 57117,        skill = { 300, 310, 315, 320 } }, --Enchant Cloak - Greater Arcane Resistance
 		{ id = 20015,        skill = { 285, 305, 325, 345 } }, --Enchant Cloak - Superior Defense
 		{ id = 20014,        skill = { 265, 285, 305, 325 } }, --Enchant Cloak - Greater Resistance
 		{ id = 13882,        skill = { 225, 245, 265, 285 } }, --Enchant Cloak - Lesser Agility
@@ -702,7 +708,7 @@ local craftingTable = {
 	},
 
 	EnchantingChest = {
-		{ id = 57119,        skill = { 300, 300, 300, 300 } }, --Enchant Chest - Mighty Mana
+		{ id = 57119,        skill = { 300, 300, 315, 330 } }, --Enchant Chest - Mighty Mana
 		{ id = 20025,        skill = { 300, 320, 340, 360 } }, --Enchant Chest - Greater Stats
 		{ id = 20028,        skill = { 290, 310, 330, 350 } }, --Enchant Chest - Major Mana
 		{ id = 20026,        skill = { 275, 295, 315, 335 } }, --Enchant Chest - Major Health
@@ -724,11 +730,11 @@ local craftingTable = {
 	},
 
 	EnchantingBracer = {
-		{ id = 57144,         skill = { 300, 300, 300, 300 } }, --Enchant Bracer - Greater Deflection
-		{ id = 57028,         skill = { 300, 300, 300, 300 } }, --Enchant Bracer - Spell Power
-		{ id = 57030,         skill = { 300, 300, 300, 300 } }, --Enchant Bracer - Greater Agility
+		{ id = 57144,         skill = { 300, 310, 315, 320 } }, --Enchant Bracer - Greater Deflection
+		{ id = 57030,         skill = { 300, 320, 340, 360 } }, --Enchant Bracer - Greater Agility
 		{ id = 20011,         skill = { 300, 320, 340, 360 } }, --Enchant Bracer - Superior Stamina
 		{ id = 23802,         skill = { 300, 320, 340, 360 } }, --Enchant Bracer - Healing Power
+		{ id = 57028,         skill = { 300, 300, 305, 310 } }, --Enchant Bracer - Spell Power
 		{ id = 20010,         skill = { 295, 315, 335, 355 } }, --Enchant Bracer - Superior Strength
 		{ id = 23801,         skill = { 290, 310, 330, 350 } }, --Enchant Bracer - Mana Regeneration
 		{ id = 20009,         skill = { 270, 290, 310, 330 } }, --Enchant Bracer - Superior Spirit
@@ -757,16 +763,16 @@ local craftingTable = {
 	},
 
 	EnchantingGlove = {
-		{ id = 46086,         skill = { 300, 300, 300, 300 } }, --Enchant Gloves - Major Strength
-		{ id = 46603,         skill = { 300, 300, 300, 300 } }, --Enchant Gloves - Holy Power
-		{ id = 46602,         skill = { 300, 300, 300, 300 } }, --Enchant Gloves - Nature Power
-		{ id = 46601,         skill = { 300, 300, 300, 300 } }, --Enchant Gloves - Arcane Power
+		{ id = 46086,         skill = { 300, 320, 340, 360 } }, --Enchant Gloves - Major Strength
 		{ id = 25072,         skill = { 300, 320, 340, 360 } }, --Enchant Gloves - Threat
 		{ id = 25080,         skill = { 300, 320, 340, 360 } }, --Enchant Gloves - Superior Agility
 		{ id = 25073,         skill = { 300, 320, 340, 360 } }, --Enchant Gloves - Shadow Power
 		{ id = 25079,         skill = { 300, 320, 340, 360 } }, --Enchant Gloves - Healing Power
 		{ id = 25074,         skill = { 300, 320, 340, 360 } }, --Enchant Gloves - Frost Power
 		{ id = 25078,         skill = { 300, 320, 340, 360 } }, --Enchant Gloves - Fire Power
+		{ id = 46603,         skill = { 300, 310, 315, 320 } }, --Enchant Gloves - Holy Power
+		{ id = 46602,         skill = { 300, 310, 315, 320 } }, --Enchant Gloves - Nature Power
+		{ id = 46601,         skill = { 300, 310, 315, 320 } }, --Enchant Gloves - Arcane Power
 		{ id = 20013,         skill = { 295, 315, 335, 355 } }, --Enchant Gloves - Greater Strength
 		{ id = 20012,         skill = { 270, 290, 310, 330 } }, --Enchant Gloves - Greater Agility
 		{ id = 13947,         skill = { 250, 270, 290, 310 } }, --Enchant Gloves - Riding Skill
@@ -782,10 +788,10 @@ local craftingTable = {
 	},
 
 	EnchantingBoots = {
-		{ id = 56543,        skill = { 300, 300, 300, 300 } }, --Enchant Boots - Major Intellect 1.18
-		{ id = 57148,        skill = { 300, 300, 300, 300 } }, --Enchant Boots - Vampirism
-		{ id = 57127,        skill = { 300, 300, 300, 300 } }, --Enchant Boots - Superior Stamina
-		{ id = 57142,        skill = { 300, 300, 300, 300 } }, --Enchant Boots - Greater Spirit
+		{ id = 56543,        skill = { 300, 315, 335, 355 } }, --Enchant Boots - Major Intellect 1.18
+		{ id = 57148,        skill = { 300, 310, 315, 320 } }, --Enchant Boots - Vampirism
+		{ id = 57127,        skill = { 300, 300, 315, 330 } }, --Enchant Boots - Superior Stamina
+		{ id = 57142,        skill = { 300, 310, 315, 320 } }, --Enchant Boots - Greater Spirit
 		{ id = 20023,        skill = { 295, 315, 335, 355 } }, --Enchant Boots - Greater Agility
 		{ id = 20024,        skill = { 275, 295, 315, 335 } }, --Enchant Boots - Spirit
 		{ id = 20020,        skill = { 260, 280, 300, 320 } }, --Enchant Boots - Greater Stamina
@@ -801,6 +807,8 @@ local craftingTable = {
 	},
 
 	Enchanting2HWeapon = {
+		{ id = 49022,            skill = { 300, 300, 312, 325 } }, --Enchant 2H Weapon - Shadow Damage 1.18.1
+		{ id = 49020,            skill = { 300, 300, 312, 325 } }, --Enchant 2H Weapon - Nature Damage 1.18.1
 		{ id = 20035,            skill = { 300, 320, 340, 360 } }, --Enchant 2H Weapon - Major Spirit
 		{ id = 20036,            skill = { 300, 320, 340, 360 } }, --Enchant 2H Weapon - Major Intellect
 		{ id = 20030,            skill = { 295, 315, 335, 355 } }, --Enchant 2H Weapon - Superior Impact
@@ -880,9 +888,9 @@ local craftingTable = {
 		{ id = 25128,       skill = { 275, 285, 295, 305 } }, --Wizard Oil
 		{},
 		{ id = 15596,       skill = { 265, 285, 305, 325 } }, --Smoking Heart of the Mountain
-		{ id = 36579,       skill = { 0, 310, 320, 330 } }, --Timberheart Dreamcatcher --1.18.1
+		{ id = 36579,       skill = { 300, 310, 320, 330 } }, --Timberheart Dreamcatcher --1.18.1
 		{},
-		{ id = 57518,       skill = { 300, 300, 300, 300 } }, --Eternal Dreamstone Shard
+		{ id = 57518,       skill = { 300, 320, 340, 360 } }, --Eternal Dreamstone Shard
 	},
 
 	SmithingApprentice = {
@@ -1856,7 +1864,6 @@ local craftingTable = {
 		{},
 		{ id = 45483,          skill = { 300, 320, 330, 340 } }, --Inscribed Runic Bracers
 		{ id = 45455,          skill = { 300, 320, 330, 340 } }, --Dreamhide
-		{ id = 36587,          skill = { 0, 320, 330, 340 } }, --Witherhide Gloves 1.18.1
 	},
 
 	Dragonscale = {
@@ -1891,6 +1898,9 @@ local craftingTable = {
 		{ id = 10630,                            skill = { 230, 250, 260, 270 } }, --Gauntlets of the Sea
 		{ id = 10632,                            skill = { 250, 270, 280, 290 } }, --Helm of Fire
 		{ id = 57010,                            skill = { 255, 255, 255, 255 } }, --Boots of the Wind
+		{ id = 36755,          					 skill = { 0, 285, 295, 305 } }, --Hydracoil Gauntlets 1.18.1
+		{ id = 36757,          					 skill = { 0, 295, 305, 315 } }, --Hydracoil Spaulders 1.18.1
+		{ id = 36753,          					 skill = { 0, 300, 310, 320 } }, --Hydracoil Trousers 1.18.1
 		{ id = 19059,                            skill = { 270, 290, 300, 310 } }, --Volcanic Leggings
 		{ id = 19061,                            skill = { 270, 290, 300, 310 } }, --Living Shoulders
 		{ id = 19067,                            skill = { 275, 295, 305, 315 } }, --Stormshroud Pants
@@ -1911,9 +1921,7 @@ local craftingTable = {
 		{ id = 54015,                            skill = { 300, 315, 330, 345 } }, --Molten Leggings
 		{ id = 37,                               skill = { 300, 300, 300, 300 } }, --Harness of the High Thane 1.18
 		{ id = 36909,                            skill = { 300, 300, 300, 300 } }, --Essence Infused Leather Gloves 1.18
-		{ id = 36755,          					 skill = { 0, 285, 295, 305 } }, --Hydracoil Gauntlets 1.18.1
-		{ id = 36757,          					 skill = { 0, 295, 305, 315 } }, --Hydracoil Spaulders 1.18.1
-		{ id = 36753,          					 skill = { 0, 300, 310, 320 } }, --Hydracoil Trousers 1.18.1
+		{ id = 36587,          					 skill = { 300, 320, 330, 340 } }, --Witherhide Gloves 1.18.1
 	},
 
 	Tribal = {
@@ -2132,7 +2140,7 @@ local craftingTable = {
 		{ id = 28223,         skill = { 300, 320, 330, 340 } }, --Icy Scale Gauntlets
 		{ id = 28220,         skill = { 300, 320, 330, 340 } }, --Polar Gloves
 		{ id = 54007,         skill = { 300, 315, 330, 345 } }, --Corehound Gloves
-		{ id = 36587,         skill = { 0, 320, 330, 340 } }, --Witherhide Gloves 1.18.1
+		{ id = 36587,         skill = { 300, 320, 330, 340 } }, --Witherhide Gloves 1.18.1
 	},
 
 	LeatherBelt = {
@@ -2555,7 +2563,7 @@ local craftingTable = {
 		{ id = 45453,          skill = { 300, 310, 315, 320 } }, --Dreamthread
 		{ id = 36913,          skill = { 300, 300, 300, 300 } }, --Astronomer Raiments 1.18
 		{ id = 36915,          skill = { 300, 300, 300, 300 } }, --Spellwoven Nobility Drape 1.18
-		{ id = 36583,          skill = { 0, 315, 330, 345 } }, --Deeproot Sash 1.18.1
+		{ id = 36583,          skill = { 300, 315, 330, 345 } }, --Deeproot Sash 1.18.1
 
 	},
 	TailoringHelm = {
@@ -2731,7 +2739,7 @@ local craftingTable = {
 		{ id = 57020,       skill = { 300, 315, 330, 345 } }, --Dustguider Sash
 		{ id = 24902,       skill = { 300, 315, 330, 345 } }, --Runed Stygian Belt
 		{ id = 22866,       skill = { 300, 315, 330, 345 } }, --Belt of the Archmage
-		{ id = 36583,       skill = { 0, 315, 330, 345 } }, --Deeproot Sash 1.18.1
+		{ id = 36583,       skill = { 300, 315, 330, 345 } }, --Deeproot Sash 1.18.1
 	},
 
 	TailoringPants = {
@@ -3840,7 +3848,6 @@ local craftingTable = {
 		{ id = 41317,          skill = { 300, 320, 330, 340 } }, --Twilight Opal Cascade
 		{ id = 36905,          skill = { 300, 300, 300, 300 } }, --Grandstaff of the Shen'dralar Elder 1.18
 		{},
-		{ id = 36591,          skill = { 0, 320, 330, 340 } }, --Crystalized Topaz Gemstone 1.18.1
 	},
 
 	JewelcraftingGemology = {
@@ -3855,9 +3862,11 @@ local craftingTable = {
 		{ id = 41615,            skill = { 295, 300, 302, 305 } }, --Arcane Emerald Gemstone
 		{ id = 41619,            skill = { 300, 310, 315, 320 } }, --Stunning Imperial Gemstone
 		{ id = 41821,            skill = { 300, 330, 345, 360 } }, --Gorgeous Mountain Gemstone
+		{ id = 36591,          	 skill = { 0, 320, 330, 340 } }, --Crystalized Topaz Gemstone 1.18.1
 	},
 
 	JewelcraftingGoldsmithing = {
+		{ id = 36581,                skill = { 0, 300, 305, 310 } }, --Ceremonial Furbolg Pendant 1.18.1
 		{ id = 41782,                skill = { 285, 310, 320, 330 } }, --Golden Runed Ring
 		{ id = 41780,                skill = { 290, 310, 320, 330 } }, --Stormcloud Signet
 		{ id = 41710,                skill = { 290, 320, 330, 340 } }, --Deep Sapphire Circlet
@@ -3872,7 +3881,6 @@ local craftingTable = {
 		{ id = 41269,                skill = { 300, 330, 350, 370 } }, --Encrusted Gemstone Ring
 		{ id = 41792,                skill = { 300, 330, 340, 350 } }, --Empowered Domination Rod
 		{ id = 41796,                skill = { 300, 330, 340, 350 } }, --Grail of Forgotten Memories
-		{ id = 36581,                skill = { 0, 300, 305, 310 } }, --Ceremonial Furbolg Pendant 1.18.1
 		{ id = 41800,                skill = { 300, 330, 340, 350 } }, --Rudeus' Focusing Cane
 	},
 

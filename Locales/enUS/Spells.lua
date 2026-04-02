@@ -39,6 +39,8 @@ AtlasTW.Localization:RegisterNamespace("Spells", "enUS", {
     ["Enchant 2H Weapon - Minor Impact"] = true,
     ["Enchant 2H Weapon - Minor Intellect"] = true,
     ["Enchant 2H Weapon - Superior Impact"] = true,
+    ["Enchant 2H Weapon - Nature Damage"] = true, --1.18.1
+    ["Enchant 2H Weapon - Shadow Damage"] = true, --1.18.1
     ["Enchant Boots - Agility"] = true,
     ["Enchant Boots - Greater Agility"] = true,
     ["Enchant Boots - Greater Spirit"] = true,
@@ -123,6 +125,8 @@ AtlasTW.Localization:RegisterNamespace("Spells", "enUS", {
     ["Enchant Cloak - Stealth"] = true,
     ["Enchant Cloak - Subtlety"] = true,
     ["Enchant Cloak - Superior Defense"] = true,
+    ["Enchant Cloak - Agility"] = true, --1.18.1
+    ["Enchant Cloak - Greater Shadow Resistance"] = true, --1.18.1
     ["Enchant Gloves - Advanced Herbalism"] = true,
     ["Enchant Gloves - Advanced Mining"] = true,
     ["Enchant Gloves - Agility"] = true,

@@ -34,6 +34,8 @@ AtlasTW.Localization:RegisterNamespace("Spells", "esES", {
     ["Enchant 2H Weapon - Minor Impact"] = "Encantar Arma 2M: Impacto Menor",
     ["Enchant 2H Weapon - Minor Intellect"] = "Encantamiento de Arma 2M - Intelecto Menor",
     ["Enchant 2H Weapon - Superior Impact"] = "Encantar Arma 2M: Impacto Excelente",
+    ["Enchant 2H Weapon - Nature Damage"] = "Encantar Arma 2M: Daño de Naturaleza", --1.18.1
+    ["Enchant 2H Weapon - Shadow Damage"] = "Encantar Arma 2M: Daño de Sombra", --1.18.1
     ["Enchant Boots - Agility"] = "Encantar Botas: Agilidad",
     ["Enchant Boots - Greater Agility"] = "Encantar Botas: Agilidad Superior",
     ["Enchant Boots - Greater Spirit"] = "Encantar Botas - Espíritu Superior",
@@ -118,6 +120,8 @@ AtlasTW.Localization:RegisterNamespace("Spells", "esES", {
     ["Enchant Cloak - Stealth"] = "Encantar Capa: Sigilo",
     ["Enchant Cloak - Subtlety"] = "Encantar Capa: Sutileza",
     ["Enchant Cloak - Superior Defense"] = "Encantar Capa: Defensa Excelente",
+    ["Enchant Cloak - Agility"] = "Encantar Capa: Agilidad", --1.18.1
+    ["Enchant Cloak - Greater Shadow Resistance"] = "Encantar Capa: Resistencia a las Sombras Superior", --1.18.1
     ["Enchant Gloves - Advanced Herbalism"] = "Encantar Guantes: Herboristería Avanzada",
     ["Enchant Gloves - Advanced Mining"] = "Encantar Guantes: Minería Avanzada",
     ["Enchant Gloves - Agility"] = "Encantar Guantes: Agilidad",

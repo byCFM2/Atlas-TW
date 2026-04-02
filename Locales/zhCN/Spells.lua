@@ -33,6 +33,8 @@ AtlasTW.Localization:RegisterNamespace("Spells", "zhCN", {
     ["Enchant 2H Weapon - Minor Impact"] = "附魔双手武器 - 初级冲击",
     ["Enchant 2H Weapon - Minor Intellect"] = "附魔双手武器 - 初级智力",
     ["Enchant 2H Weapon - Superior Impact"] = "附魔双手武器 - 超强冲击",
+    ["Enchant 2H Weapon - Nature Damage"] = "附魔双手武器 - 自然伤害", --1.18.1
+    ["Enchant 2H Weapon - Shadow Damage"] = "附魔双手武器 - 暗影伤害", --1.18.1
     ["Enchant Boots - Agility"] = "附魔靴子 - 敏捷",
     ["Enchant Boots - Greater Agility"] = "附魔靴子 - 强效敏捷",
     ["Enchant Boots - Greater Spirit"] = "附魔靴子 - 强效精神",
@@ -117,6 +119,8 @@ AtlasTW.Localization:RegisterNamespace("Spells", "zhCN", {
     ["Enchant Cloak - Stealth"] = "附魔披风 - 潜行",
     ["Enchant Cloak - Subtlety"] = "附魔披风 - 狡诈",
     ["Enchant Cloak - Superior Defense"] = "附魔披风 - 超强防御",
+    ["Enchant Cloak - Agility"] = "附魔披风 - 敏捷", --1.18.1
+    ["Enchant Cloak - Greater Shadow Resistance"] = "附魔披风 - 强效暗影抗性", --1.18.1
     ["Enchant Gloves - Advanced Herbalism"] = "附魔手套 - 高级草药学",
     ["Enchant Gloves - Advanced Mining"] = "附魔手套 - 高级采矿",
     ["Enchant Gloves - Agility"] = "附魔手套 - 敏捷",

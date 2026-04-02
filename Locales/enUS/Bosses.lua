@@ -23,6 +23,7 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Chieftain Partath"] = true,
     ["Rotgrowl"] = true,
     ["Kodiak"] = true,
+    ["Ursol"] = true,
     ["Peroth'arn"] = true,
     --frostmane hollow
     ["Handler Oboka"] = true, --1*
