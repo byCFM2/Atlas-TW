@@ -6,6 +6,10 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("ItemSets", "zhCN", {
+    --1.18.1
+    ["Sacred Windhorn Attire"] = "神圣风角服饰",
+    ["Surrender to Madness"] = "屈服疯狂",
+
     ["Stormcloud Jewelry"] = "雷云珠宝",
     ["Mastercrafted Diamond Jewelry"] = "精制钻石珠宝",
     ["Spellweaver's Accessories"] = "织法者配饰",
@@ -13,9 +17,9 @@ AtlasTW.Localization:RegisterNamespace("ItemSets", "zhCN", {
     ["Aquamarine Jewelry"] = "青绿石珠宝",
     ["Goldmaster's Jewelry"] = "黄金大师珠宝",
     ["Midnight Regalia"] = "午夜礼服",
-    ["Stormreaver Attire"] = "风暴掠夺者服饰", --TODO miss at base
-    ["Dragonmaw Battlegarb"] = "龙喉战甲", --TODO miss at base
-    ["Arms of Thaurissan"] = "索瑞森之臂", --TODO miss at base
+    ["Stormreaver Attire"] = "暴掠套装",
+    ["Dragonmaw Battlegarb"] = "龙喉战装",
+    ["Arms of Thaurissan"] = "索瑞森之臂",
     ["Incendosaur Skin Armor"] = "火龙皮甲",
     ["Greymane Armor"] = "格雷迈恩护甲",
     ["Hateforge Armor"] = "仇恨锻造护甲",

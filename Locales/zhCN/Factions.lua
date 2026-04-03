@@ -35,6 +35,8 @@ AtlasTW.Localization:RegisterNamespace("Factions", "zhCN", {
     ["Revantusk Trolls"] = "恶齿巨魔",
     ["Durotar Labor Union"] = "杜隆塔尔工会",
     ["Wardens of Time"] = "时光守护者",
+    ["Earthen Ring"] = "大地之环", --1.18.1
+    ["Draenei Exiles"] = "德莱尼流亡者", --1.18.1
     ["Neutral"] = "中立",
     ["Friendly"] = "友好",
     ["Honored"] = "尊敬",

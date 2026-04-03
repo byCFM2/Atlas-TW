@@ -2,9 +2,8 @@
 DONT_USE*
 
 .mailmap
-.agent/workflows/weapon_skills_plan.md
+.agent/
 .qoder/
-.vscode/
 nampower/
 pfQuest/
 pfQuest-turtle/

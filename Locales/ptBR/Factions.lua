@@ -35,6 +35,8 @@ AtlasTW.Localization:RegisterNamespace("Factions", "ptBR", {
     ["Revantusk Trolls"] = "Trolls Revatusco",
     ["Durotar Labor Union"] = "Sindicato dos Trabalhadores de Durotar",
     ["Wardens of Time"] = "Guardião do Tempo",
+    ["Earthen Ring"] = "Círculo da Terra", --1.18.1
+    ["Draenei Exiles"] = "Exilados Draenei", --1.18.1 TODO
     ["Neutral"] = "Neutro",
     ["Friendly"] = "Amigável",
     ["Honored"] = "Honrado",

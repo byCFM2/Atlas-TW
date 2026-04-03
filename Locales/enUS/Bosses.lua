@@ -8,7 +8,7 @@
 
 AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     --************************************************
-    -- TW 1.18.1 Additions
+    -- TW 1.18.1 Additions TODO
     --************************************************
     ["Broodcommander Axelus"] = true,
     ["Ezzel Darkbrewer"] = true,

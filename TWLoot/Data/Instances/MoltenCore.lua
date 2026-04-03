@@ -350,8 +350,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 18805 }, -- Core Hound Tooth
                 { id = 18803 }, -- Finkle's Lava Dredger
                 {},
-                {},
-                {},
+                { id = 42178 }, -- Rite of Resurrection 1.18.1
+                { id = 42180 }, -- Twisting Rift Crystal 1.18.1
                 { id = 18703, dropRate = 50, container = { 18714, 18713, 18715 } }, -- Ancient Petrified Leaf
                 {},
                 { id = 18646, dropRate = 50, container = { 18608, 18609 } }, -- The Eye of Divinity
@@ -473,12 +473,13 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 19138, container = { 58088 } }, -- Band of Sulfuras
                 {},
                 { id = 17204, dropRate = 6, disc = L["Reagent"], container = { 17182 } }, -- Eye of Sulfuras
-                { id = 19017, dropRate = 20, container = { 19019 } }, -- Essence of the Firelord
+                { id = 19017, dropRate = 100, container = { 19019 } }, -- Essence of the Firelord
                 {},
                 { id = 70171, dropRate = 100, container = { 56060 } }, -- Plans: Crown of Molten Ascension
                 { id = 92080, dropRate = 1 }, -- Molten Corehound
                 {},
                 { id = 20951, dropRate = 1, container = { 18253 } }, -- Narain's Scrying Goggles
+                { id = 42241, dropRate = 100, container = { 55469 } }, -- Purging Flame 1.18.1
             }
         },
         {

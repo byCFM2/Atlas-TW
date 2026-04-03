@@ -62,7 +62,12 @@ AtlasTW.Localization:RegisterNamespace("MapData", "zhCN", {
     ["Barkskin Fisher"] = "树皮渔夫",
     ["Crusader Larsarius"] = "十字军拉萨里斯",
     ["Shadeflayer Goliath"] = "暗灭者歌利亚",
-
+    ["Warbark"] = "战争树皮", -- 1.18.1 TODO
+    ["Krybee"] = "克里比", -- 1.18.1 TODO
+    ["Larnaea"] = "拉尔内亚", -- 1.18.1 TODO
+    ["Glurgill"] = "格鲁吉尔", -- 1.18.1 TODO
+    ["Thundertusk"] = "雷牙", -- 1.18.1 TODO
+    ["Larexxa Foulheart"] = "拉雷克萨·邪心", -- 1.18.1 TODO
     -- Blackfathom Deeps
     ["Lorgalis Manuscript"] = "洛迦里斯手稿",
     ["Argent Guard Thaelrid"] = "银月守卫塞尔瑞德",
@@ -604,4 +609,7 @@ AtlasTW.Localization:RegisterNamespace("MapData", "zhCN", {
     ["Kalanar's Strongbox"] = "卡兰纳尔的强箱",
     ["Chest of Dathronag"] = "达斯罗纳格的宝箱",
     ["Lower Reserve Key"] = "下层储备钥匙",
+    ["Moonhoof Village"] = "月蹄村", --1.18.1
+    ["Narvalis Point"] = "纳瓦利斯哨站", --1.18.1
+    ["Shimmerstar Lake"] = "闪星湖", --1.18.1
 })

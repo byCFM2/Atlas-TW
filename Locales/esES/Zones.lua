@@ -7,10 +7,12 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("Zones", "esES", {
+    ["Frostmane Hollow"] = "Hondonada Peloescarcha", --1.18.1
+    ["Moonwhisper Coast"] = "Costa Susurrolunar", --1.18.1
+    ["Thorn Gorge"] = "Garganta Espinosa", --1.18.1
+    ["Timbermaw Hold"] = "Bastión de los Timbermaw", --1.18.1
+    ["Windhorn Canyon"] = "Cañón Cornaviento", --1.18.1
     ["Blackstone Island"] = "Isla Piedra Negra",
-    ["Thorn Gorge"] = "Garganta Espinosa",
-    ["Timbermaw Hold"] = "Bastión Fauces de Madera",
-    ["Windhorn Canyon"] = "Cañón Cuerno del Viento",
     ["Farraki Arena"] = "Arena Farraki",
     ["Grim Reaches"] = "Territorios Sombríos",
     ["Dragonmaw Retreat"] = "Refugio Faucedrago",
@@ -132,5 +134,4 @@ AtlasTW.Localization:RegisterNamespace("Zones", "esES", {
     ["Winterspring"] = "Cuna del Invierno",
     ["Zul'Farrak"] = "Zul'Farrak",
     ["Zul'Gurub"] = "Zul'Gurub",
-    ["Frostmane Hollow"] = "Frostmane Hollow", --TODO translate
 })

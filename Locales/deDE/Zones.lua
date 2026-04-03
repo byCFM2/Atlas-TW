@@ -7,10 +7,12 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("Zones", "deDE", {
+    ["Frostmane Hollow"] = "Frostmähnenhollow", --1.18.1 TODO
+    ["Moonwhisper Coast"] = "Mondgeflüsterküste", --1.18.1 TODO
+    ["Thorn Gorge"] = "Dornenschlucht", --1.18.1 TODO
+    ["Timbermaw Hold"] = "Holzschlundfeste", --1.18.1
+    ["Windhorn Canyon"] = "Windhornschlucht", --1.18.1 TODO
     ["Blackstone Island"] = "Schwarzstein Insel",
-    ["Thorn Gorge"] = "Dornenschlucht",
-    ["Timbermaw Hold"] = "Holzschlundfeste",
-    ["Windhorn Canyon"] = "Windhornschlucht",
     ["Farraki Arena"] = "Farraki Arena",
     ["Grim Reaches"] = "Düsterweiten",
     ["Dragonmaw Retreat"] = "Drachenmal Zuflucht",
@@ -132,5 +134,4 @@ AtlasTW.Localization:RegisterNamespace("Zones", "deDE", {
     ["Winterspring"] = "Winterquell",
     ["Zul'Farrak"] = "Zul'Farrak",
     ["Zul'Gurub"] = "Zul'Gurub",
-    ["Frostmane Hollow"] = "Frostmane Hollow", --TODO translate
 })

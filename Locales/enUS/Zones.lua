@@ -147,9 +147,9 @@ AtlasTW.Localization:RegisterNamespace("Zones", "enUS", {
     ["Stormwrought Ruins"] = true,
     ["Northwind"] = true,
     -- TW 1.18.1 Additions
-    ["Thorn Gorge"] = true, --1.18.1 TODO
-    ["Moonwhisper Coast"] = true, --1.18.1 TODO
-    ["Frostmane Hollow"] = true, --1.18.1 TODO
-    ["Timbermaw Hold"] = true, --1.18.1 TODO
-    ["Windhorn Canyon"] = true, --1.18.1 TODO
+    ["Thorn Gorge"] = true, --1.18.1
+    ["Moonwhisper Coast"] = true, --1.18.1
+    ["Frostmane Hollow"] = true, --1.18.1
+    ["Timbermaw Hold"] = true, --1.18.1
+    ["Windhorn Canyon"] = true, --1.18.1
 })

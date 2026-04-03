@@ -62,7 +62,12 @@ AtlasTW.Localization:RegisterNamespace("MapData", "ptBR", {
     ["Barkskin Fisher"] = "Pescador Cascadárvore",
     ["Crusader Larsarius"] = "Cruzado Larsário",
     ["Shadeflayer Goliath"] = "Golias Esfolassombra",
-
+    ["Warbark"] = "Casca de Guerra", -- 1.18.1 TODO
+    ["Krybee"] = "Krybee", -- 1.18.1 TODO
+    ["Larnaea"] = "Larnaea", -- 1.18.1 TODO
+    ["Glurgill"] = "Glurgill", -- 1.18.1 TODO
+    ["Thundertusk"] = "Presa Trovão", -- 1.18.1 TODO
+    ["Larexxa Foulheart"] = "Larexxa Coração Podre", -- 1.18.1 TODO
     -- Blackfathom Deeps
     ["Lorgalis Manuscript"] = "Manuscrito de Lorgalis",
     ["Argent Guard Thaelrid"] = "Guarda Argênteo Thaelrid",
@@ -605,4 +610,7 @@ AtlasTW.Localization:RegisterNamespace("MapData", "ptBR", {
     ["Kalanar's Strongbox"] = "Caixa Forte de Kalanar",
     ["Chest of Dathronag"] = "Truhe von Dathronag",
     ["Lower Reserve Key"] = "Chave Inferior de Reserva",
+    ["Moonhoof Village"] = "Aldeia Pezuñalunar", --1.18.1 TODO
+    ["Narvalis Point"] = "Ponto Narvalis", --1.18.1 TODO
+    ["Shimmerstar Lake"] = "Lago Resplandestelar", --1.18.1 TODO
 })

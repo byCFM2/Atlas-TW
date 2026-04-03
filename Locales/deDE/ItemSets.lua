@@ -7,6 +7,10 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("ItemSets", "deDE", {
+    --1.18.1
+    ["Sacred Windhorn Attire"] = "Gewand des heiligen Windhorns", --TODO
+    ["Surrender to Madness"] = "Hingabe an den Wahnsinn", --TODO
+
     ["Stormcloud Jewelry"] = "Sturmwolken Schmuck",
     ["Mastercrafted Diamond Jewelry"] = "Meisterlicher Diamanten Schmuck",
     ["Spellweaver's Accessories"] = "Zubehör des Zauberwebers",

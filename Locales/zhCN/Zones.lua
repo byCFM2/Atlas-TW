@@ -7,10 +7,12 @@
 ---
 
 AtlasTW.Localization:RegisterNamespace("Zones", "zhCN", {
+    ["Frostmane Hollow"] = "霜鬃谷", --1.18.1
+    ["Moonwhisper Coast"] = "月语海岸", --1.18.1
+    ["Thorn Gorge"] = "荆棘峡谷", --1.18.1
+    ["Timbermaw Hold"] = "木喉要塞", --1.18.1
+    ["Windhorn Canyon"] = "风角峡谷", --1.18.1
     ["Blackstone Island"] = "黑石岛",
-    ["Thorn Gorge"] = "荆棘峡谷",
-    ["Timbermaw Hold"] = "木喉要塞",
-    ["Windhorn Canyon"] = "风角峡谷",
     ["Farraki Arena"] = "法拉基竞技场",
     ["Grim Reaches"] = "冷酷海岸",
     ["Dragonmaw Retreat"] = "龙喉居所",
@@ -132,5 +134,4 @@ AtlasTW.Localization:RegisterNamespace("Zones", "zhCN", {
     ["Winterspring"] = "冬泉谷",
     ["Zul'Farrak"] = "祖尔法拉克",
     ["Zul'Gurub"] = "祖尔格拉布",
-    ["Frostmane Hollow"] = "Frostmane Hollow", --TODO translate
 })

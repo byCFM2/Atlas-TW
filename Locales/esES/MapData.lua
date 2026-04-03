@@ -515,4 +515,13 @@ AtlasTW.Localization:RegisterNamespace("MapData", "esES", {
     ["South of the path along Lake Elune'ara"] = "Al sur del sendero junto al Lago Elune'ara",
     [" Arena"] = " Arena",
     [" (Chess fight)"] = " (Batalla de ajedrez)",
+    ["Warbark"] = "Corteza de Guerra", -- 1.18.1 TODO
+    ["Krybee"] = "Krybee", -- 1.18.1 TODO
+    ["Larnaea"] = "Larnaea", -- 1.18.1 TODO
+    ["Glurgill"] = "Glurgill", -- 1.18.1 TODO
+    ["Thundertusk"] = "Colmillo de Trueno", -- 1.18.1 TODO
+    ["Larexxa Foulheart"] = "Larexxa Corazón Podrido", -- 1.18.1 TODO
+    ["Moonhoof Village"] = "Aldea Pezuñalunar", --1.18.1
+    ["Narvalis Point"] = "Punto Narvalis", --1.18.1
+    ["Shimmerstar Lake"] = "Lago Resplandestelar", --1.18.1
 })
