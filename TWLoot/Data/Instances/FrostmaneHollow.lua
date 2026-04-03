@@ -21,7 +21,6 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Localization.UI
 local LB = AtlasTW.Localization.Bosses
 local LZ = AtlasTW.Localization.Zones
-local LIS = AtlasTW.Localization.ItemSets
 local LMD = AtlasTW.Localization.MapData
 
 local Colors = AtlasTW.Colors
@@ -46,10 +45,10 @@ AtlasTW.InstanceData.FrostmaneHollow = {
             defaults = { dropRate = 33 },
             loot = {
                 { id = 162 }, -- Frigid Cloak
-                { id = 184 }, -- Oboka's Axe
                 { id = 197 }, -- Vest of the Beastkeeper
+                { id = 184 }, -- Oboka's Axe
                 {},
-                { id = 42300, dropRate = 100 }, -- Flawless Leopard Pelt
+                { id = 42300, dropRate = 100, container = { 158 } }, -- Flawless Leopard Pelt
             }
         },
         { name = LB["Handler Oboka"], color = Colors.GREY },
@@ -70,9 +69,9 @@ AtlasTW.InstanceData.FrostmaneHollow = {
             name = LB["Kan'za The Seer"],
             defaults = { dropRate = 33 },
             loot = {
-                { id = 205 }, -- Frost Seer Dirk
-                { id = 213 }, -- Ice-Stitched Cuffs TODO
+                { id = 213 }, -- Ice-Stitched Cuffs
                 { id = 241 }, -- Windcrest Pants
+                { id = 205 }, -- Frost Seer Dirk
             }
         },
         {
@@ -81,17 +80,31 @@ AtlasTW.InstanceData.FrostmaneHollow = {
             name = LB["Hailar The Frigid"],
             defaults = { dropRate = 33 },
             loot = {
-                { id = 110 }, -- Rak'uhz the Coldbinder
                 { id = 116 }, -- Belt of Binding
                 { id = 126 }, -- Band of Hailar
+                { id = 110 }, -- Rak'uhz the Coldbinder
             }
+        },
+        {
+            prefix = "1')",
+            name = LB["Ranix Crackbolt"],
+            color = Colors.GREEN,
+        },
+        {
+            prefix = "2')",
+            name = LB["Archaeologist Evenpike"],
+            color = Colors.GREEN,
+        },
+        {
+            prefix = "3')",
+            name = LMD["Tablet of Kaz'gan"],
+            color = Colors.GREEN,
         },
 --[[         {
             id = "FHTrash",
             name = L["Trash Mobs"].."-"..LZ["Frostmane Hollow"],
             defaults = { dropRate = .1 },
             loot = {
-                
             }
         } ]]
     }

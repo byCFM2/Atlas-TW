@@ -12,6 +12,7 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     --************************************************
     ["Broodcommander Axelus"] = true,
     ["Ezzel Darkbrewer"] = true,
+    ["High Speaker Jam'wahli"] = true,
     --Timbermaw Hold
     ["Ormanos the Cracked"] = true,
     ["Loktanag the Vile"] = true,
@@ -31,15 +32,17 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Battlemaster Ubukaz"] = true, --2
     ["Kan'za The Seer"] = true, --3
     ["Hailar The Frigid"] = true, --4
+    ["Ranix Crackbolt"] = true, --1'
+    ["Archaeologist Evenpike"] = true, --2'
     --windhorn canyon
-    ["Pathun Buskhide"] = true, --1
+    ["Pathun Duskhide"] = true, --1
     ["Ahgk'tos the Pure"] = true, --2
     ["Ambassador Vortalus"] = true, -- 3
     ["Walgan Bloodcaller"] = true, -- 4
     ["Bonespeaker Narlgom"] = true, -- 5
     ["Spirit of Champion Rotag"] = true, -- 5'
     ["Prophet Stormhoof"] = true, -- 6
-    ["Grand Elder Skystider"] = true, --1'
+    ["Grand Elder Skystrider"] = true, --1'
     ["Chieftain Shalk Blackwind"] = true, --7
     --************************************************
     -- TW 1.18 Additions

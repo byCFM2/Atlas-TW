@@ -446,6 +446,7 @@ AtlasTW.InstanceData.ZulGurub = {
                 { id = 19815 }, -- Punctured Voodoo Doll
                 { id = 19813 }, -- Punctured Voodoo Doll
                 {},
+                { id = 42236, dropRate = 100 }, -- Jam’wahli’s Tusks
                 { id = 37010, dropRate = 6 }, -- Razzashi Hatchling
             }
         },

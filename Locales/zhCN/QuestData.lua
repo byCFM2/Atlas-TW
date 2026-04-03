@@ -2983,6 +2983,21 @@ kQuestInstanceData.Maraudon.Horde[9] = {
     Prequest = "掌握宝石学 -> 生命之源 -> 展示",
     Folgequest = "最终的切割",
 }
+kQuestInstanceData.Maraudon.Horde[10] = { --TODO translate
+    Title = "被污染的水域",
+    Id = 41943,
+    Level = 47,
+    Attain = 41,
+    Aim = "净化玛拉顿内腐化的水域及其源头，并返回石爪山脉的萨尔玛大地之环向奥哈娜·河湾复命。",
+    Location = "奥哈娜·河湾 (石爪山脉 - 萨尔玛大地之环 " .. yellow .. "[52, 70]" .. white .. ").",
+    Note = "'诺克赛恩' 在 " .. yellow .. "[2]" .. white .. ", '维利塔恩' 在 " .. yellow .. "[5]" .. white .. ".",
+    Rewards = {
+        Text = "奖励：任选其一",
+        { id = 33863 }, -- 灵魂之水宝珠
+        { id = 33864 }, -- 隐秘斗篷
+        { id = 33865 }, -- 泰姆佩斯特里亚的王冠
+    }
+}
 
 --------------- Molten Core ---------------
 kQuestInstanceData.MoltenCore = {
@@ -5278,13 +5293,7 @@ kQuestInstanceData.ZulGurub.Alliance[4] = {
     Attain = 60,
     Aim = "塞纳里奥要塞的德尔克·雷木让你把温诺希斯的毒囊和库林纳克斯的毒囊交给他。",
     Location = "德尔克·雷木 (希利苏斯 - 塞纳里奥要塞 " .. yellow .. "52,39" .. white .. ")",
-    Note = "温诺希斯的毒囊 掉落自 " ..
-        yellow ..
-        "祖尔格拉布" ..
-        white ..
-        " 的 高阶祭司温诺希斯，位于 " ..
-        yellow .. "[2]" .. white .. "。 库林纳克斯的毒囊 掉落自 " .. yellow .. "安其拉废墟" .. white .. " 的 " .. yellow ..
-        "[1]" .. white .. "。",
+    Note = "温诺希斯的毒囊 掉落自 " .. yellow .. "祖尔格拉布" .. white .. " 的 高阶祭司温诺希斯，位于 " .. yellow .. "[2]" .. white .. "。 库林纳克斯的毒囊 掉落自 " .. yellow .. "安其拉废墟" .. white .. " 的 " .. yellow .. "[1]" .. white .. "。",
     Rewards = {
         Text = "奖励：任选其一",
         { id = 22378 }, --Ravenholdt Slicer One-Hand, Sword
@@ -5295,7 +5304,18 @@ kQuestInstanceData.ZulGurub.Alliance[4] = {
         { id = 22380 }, --Simone's Cultivating Hammer Main Hand, Mace
     }
 }
-for i = 1, 4 do
+kQuestInstanceData.ZulGurub.Alliance[5] = { --TODO translate
+    Title = "一计不成，再施一计",
+    Id = 41960,
+    Level = 60,
+    Attain = 60,
+    Aim = "潜入祖尔格拉布，带回大祭司贾姆瓦利的獠给吉尔吉姆岛附近的卡兹恩岛上的伊索姆尼。",
+    Location = "伊索姆尼 (吉尔吉姆岛 - 卡兹恩岛 " .. yellow .. "56,16" .. white .. ")",
+    Note = "前置任务从纳索克（棘齿城 " .. yellow .. "39, 20" .. white .. "）开始。'大祭司贾姆瓦利'（祖尔格拉布 - " .. yellow .. "0, 0" .. white .. "）掉落'贾姆瓦利的獠'。",
+    Prequest = "灵魂之笛",
+    Folgequest = "藏在眼皮底下",
+}
+for i = 1, 5 do
     kQuestInstanceData.ZulGurub.Horde[i] = kQuestInstanceData.ZulGurub.Alliance[i]
 end
 
@@ -7145,7 +7165,7 @@ kQuestInstanceData.TowerofKarazhan.Alliance[3] = {
     Level = 61,
     Attain = 60,
     Aim = "和卡拉赞下层大厅的看门人蒙蒂格交谈。",
-    Location = "大吱吱 (卡拉赞之塔 " .. yellow .. "0, 0" .. white .. ")",
+    Location = "大吱吱 (卡拉赞之塔 " .. yellow .. "50, 50" .. white .. ")",
     Note = red .. "仅法师" .. white .. ": 看门人蒙蒂格在下层卡拉赞大厅副本入口处的楼梯前。",
     Folgequest = "滑稽的大蜡烛",
 }
@@ -7599,19 +7619,281 @@ kQuestInstanceData.StormwroughtRuins.Horde[9] = {
 }
 --------------- Windhorn Canyon ---------------
 kQuestInstanceData.WindhornCanyon = {
-    Story =
-    "这座古老的峡谷一直是许多牛头人部落的家园，他们在过去的岁月里为争夺其流动的水源和庇护所而战，以抵御卡利姆多的危险。许多部落的文化和传统在风角峡谷中延续，这可以从雕刻在山腰的古老庇护所到牛头人觊觎的遗物中看出。最近，风角牛头人被征服它的恐怖图腾驱逐和赶走，并将其据为己有。",
+    Story = "这座古老的峡谷一直是许多牛头人部落的家园，他们在过去的岁月里为争夺其流动的水源和庇护所而战，以抵御卡利姆多的危险。许多部落的文化和传统在风角峡谷中延续，这可以从雕刻在山腰的古老庇护所到牛头人觊觎的遗物中看出。最近，风角牛头人被征服它的恐怖图腾驱逐和赶走，并将其据为己有。",
     Caption = "风角峡谷",
     Alliance = {},
     Horde = {}
 }
+kQuestInstanceData.WindhornCanyon.Alliance[1] = { --TODO translate
+    Title = "寻找牛头人遗物",
+    Id = 41976,
+    Level = 27,
+    Attain = 20,
+    Aim = "在风角峡谷内为铁炉堡的塔维格·尘眉收集8件风角遗物。",
+    Location = "塔维格·尘眉 (铁炉堡 - 探险者大厅 " .. yellow .. "72, 17" .. white .. ")",
+    Note = "“风角遗物”可以在整个地下城中找到。",
+}
+kQuestInstanceData.WindhornCanyon.Horde[1] = { --TODO translate
+    Title = "风角部落的遗物",
+    Id = 41977,
+    Level = 27,
+    Attain = 20,
+    Aim = "前往风角峡谷，为千针石林萨格居所的萨格找回8件风角遗物。",
+    Location = "萨格 (千针石林 " .. yellow .. "31, 45" .. white .. ")",
+    Note = "“风角遗物”可以在整个地下城中找到。",
+    Rewards = {
+        Text = "奖励：",
+        { id = 42263 }, -- Sagh's Pendant
+    }
+}
+kQuestInstanceData.WindhornCanyon.Horde[2] = { --TODO translate
+    Title = "摧毁死亡图腾",
+    Id = 41982,
+    Level = 28,
+    Attain = 24,
+    Aim = "杀死风角峡谷内死亡图腾的首领先知暴蹄，并返回雷霆崖交给凯恩·血蹄。",
+    Location = "凯恩·血蹄 (雷霆崖 " .. yellow .. "60, 52" .. white .. ")",
+    Note = "前置任务开始于“勇士月角”（千针石林 - 升降梯 " .. yellow .. "32, 22" .. white .. "）。“先知暴蹄”位于 " .. yellow .. "[6]" .. white .. "。",
+    Prequest = "传递给乱风岗的消息 -> 安抚半人马 -> 恐怖图腾的间谍活动 -> 关于死亡图腾的传闻 -> 给凯恩的信息",
+    Rewards = {
+        Text = "奖励：任选其一",
+        { id = 42268 }, -- Bloodhoof Sash
+        { id = 42269 }, -- Stormhoof Shackles
+        { id = 42270 }, -- Stonemane Boots
+    }
+}
+kQuestInstanceData.WindhornCanyon.Horde[3] = { --TODO translate
+    Title = "沃塔卢斯的法令",
+    Id = 41939,
+    Level = 26,
+    Attain = 20,
+    Aim = "放逐风角峡谷内的元素首领，并向石爪山脉大地之环的修夫回报。",
+    Location = "修夫 (石爪山脉 - 大地之环 " .. yellow .. "47, 72" .. white .. ")",
+    Note = red .. "仅限萨满！" .. white .. "前置任务开始于“风裂顶峰之石”，掉落自石爪山脉的雷佐古斯 (" .. yellow .. "30, 19" .. white .. ")。“大使沃塔卢斯”位于 " .. yellow .. "[3]" .. white .. "。",
+    Prequest = "风裂顶峰之石",
+    Rewards = {
+        Text = "奖励：任选其一",
+        { id = 58127 }, -- Hammer of Earthfury
+        { id = 58128 }, -- Axe of Raging Windsor
+        { id = 58129 }, -- Claw of Tempered Fire
+    }
+}
+--------------- Frostmane Hollow ---------------
+kQuestInstanceData.FrostmaneHollow = {
+    Story = "霜鬃洞穴是位于丹莫罗的一个副本地下城，就在铁炉堡机场的正南方。它是霜鬃氏族的圣所，也是丹莫罗所有巨魔种族的实际首都。",
+    Caption = "霜鬃洞穴",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[1] = { --TODO translate
+    Title = "严重的误会！",
+    Id = 42040,
+    Level = 13,
+    Attain = 8,
+    Aim = "在霜鬃洞穴内为拉尼克斯·克拉克波特找回卡兹甘石板。",
+    Location = "拉尼克斯·克拉克波特 (霜鬃洞穴 " .. yellow .. "[1']" .. white .. ")",
+    Note = "“卡兹甘石板”位于 " .. yellow .. "[3']" .. white .. "。",
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[2] = { --TODO translate
+    Title = "寻找考古学家埃文派克",
+    Id = 42006,
+    Level = 14,
+    Attain = 10,
+    Aim = "在丹莫罗的霜鬃洞穴内寻找考古学家埃文派克。",
+    Location = "布罗汉·桶腹 (暴风城 - 矮人区 " .. yellow .. "70, 40" .. white .. ")",
+    Note = "“考古学家埃文派克”位于 " .. green .. "[2']" .. white .. "。",
+    Folgequest = "破碎的圆盘"
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[3] = { --TODO translate
+    Title = "破碎的圆盘",
+    Id = 42007,
+    Level = 14,
+    Attain = 10,
+    Aim = "返回暴风城矮人区的布罗汉·桶腹处。",
+    Location = "考古学家埃文派克 (霜鬃洞穴 " .. yellow .. "29, 62" .. white .. ")",
+    Note = "“布罗汉·桶腹” (暴风城 - 矮人区 " .. yellow .. "70, 40" .. white .. ")",
+    Prequest = "寻找考古学家埃文派克",
+    Rewards = {
+        Text = "奖励：",
+        { id = 136 }, -- Archaeologist's Lantern
+    }
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[4] = { --TODO translate
+    Title = "最好的毛皮",
+    Id = 42008,
+    Level = 16,
+    Attain = 10,
+    Aim = "进入丹莫罗的霜鬃洞穴，为萨拉斯高地阿拉华拉斯的杉德拉·泰西斯获得一件无瑕的豹皮。你可以在铁炉堡机场附近找到霜鬃洞穴的入口。",
+    Location = "杉德拉·泰西斯 (萨拉斯高地 - 阿拉华拉斯 " .. yellow .. "45, 46" .. white .. ")",
+    Note = "“敏捷的探莎”位于 " .. yellow .. "[1]" .. white .. "。",
+    Rewards = {
+        Text = "奖励：",
+        { id = 158 }, -- Thalassian Silk Cape
+    }
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[5] = { --TODO translate
+    Title = "酋长乌布卡兹",
+    Id = 42039,
+    Level = 16,
+    Attain = 8,
+    Aim = "在霜鬃洞穴深处为丹莫罗铁炉堡机场的山地兵石须杀死战斗大师乌布卡兹。",
+    Location = "山地兵石须 (丹莫罗 - 铁炉堡机场 " .. yellow .. "71, 36" .. white .. ")",
+    Note = "“战斗大师乌布卡兹”位于 " .. yellow .. "[2]" .. white .. "。",
+    Prequest = "霜鬃战争",
+    Rewards = {
+        Text = "奖励：任选其一",
+        { id = 42323 }, -- Heavy Chain Bracers
+        { id = 42324 }, -- Sash of Illumination
+        { id = 42325 }, -- Deep-Thread Shawl
+    }
+}
+kQuestInstanceData.FrostmaneHollow.Horde[1] = kQuestInstanceData.FrostmaneHollow.Alliance[1]
+
 --------------- Timbermaw Hold ---------------
 kQuestInstanceData.TimbermawHold = {
-    Story =
-    "与卡利姆多本身一样古老，这个位于海加尔山下的神秘迷宫般的隧道和洞穴网络自大灾变之前就一直是熊怪的家园。它的大厅在部落中是神圣的，是崇拜他们的祖先——双神乌索克和乌索尔的地方。然而现在，只有一阵阵腐臭的蒸汽从腐烂的洞穴中逸出，崇拜邪恶之神的低语在木喉要塞中回荡……",
+    Story = "与卡利姆多本身一样古老，这个位于海加尔山下的神秘迷宫般的隧道和洞穴网络自大灾变之前就一直是熊怪的家园。它的大厅在部落中是神圣的，是崇拜他们的祖先——双神乌索克和乌索尔的地方。然而现在，只有一阵阵腐臭的蒸汽从腐烂的洞穴中逸出，崇拜邪恶之神的低语在木喉要塞中回荡……",
     Caption = "木喉要塞",
     Alliance = {},
     Horde = {}
 }
+kQuestInstanceData.TimbermawHold.Alliance[1] = { --TODO translate
+    Title = "吸纳水晶回收",
+    Id = 41953,
+    Level = 60,
+    Attain = 50,
+    Aim = "进入木喉要塞并取回受污染的吸纳水晶。如果你成功了，把它们交给月语海岸莫格拉村的裂隙大师拉尔佩克塔。",
+    Location = "裂隙大师拉尔佩克塔 (月语海岸 - 莫格拉村 " .. yellow .. "65, 63" .. white .. ")",
+    Note = "前置任务开始于 '' (" .. yellow .. "0, 0" .. white .. ")。“瑟琳娜·邪心”位于 " .. yellow .. "[7]" .. white .. "。",
+    Prequest = "莫格拉的阿利亚 -> 披着羊皮的狼 -> 不祥之兆 ->> 走出月光",
+    Rewards = {
+        Text = "奖励：任选其一",
+        { id = 33361 }, -- Bracelet of the Defender
+        { id = 33362 }, -- Bracelet of the Visionary
+        { id = 33363 }, -- Bracelet of the Ravager
+        { id = 33364 }, -- Bracelet of the Oracle
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[2] = { --TODO translate
+    Title = "信念的证明",
+    Id = 41930,
+    Level = 60,
+    Attain = 60,
+    Aim = "向艾萨拉乌索克之口的黑暗纳考格出示在木喉要塞杀死哨兵卡什的证明。",
+    Location = "黑暗纳考格 (艾萨拉 - 乌索克之口 " .. yellow .. "39, 21" .. white .. ")",
+    Note = "“哨兵坠饰”掉落自“哨兵卡什” (" .. yellow .. "[1]" .. white .. ")。",
+    Folgequest = "木喉要塞的腐蚀",
+}
+kQuestInstanceData.TimbermawHold.Alliance[3] = { --TODO translate
+    Title = "木喉要塞的腐蚀",
+    Id = 41931,
+    Level = 60,
+    Attain = 60,
+    Aim = "从木喉要塞内的枯喉萨满处收集枯喉图腾，并将其交给艾萨拉乌索克之口的黑暗纳考格。",
+    Location = "黑暗纳考格 (艾萨拉 - 乌索克之口 " .. yellow .. "39, 21" .. white .. ")",
+    Note = "可在木喉要塞内找到“枯喉萨满”。",
+    Prequest = "信念的证明",
+    Folgequest = "古代熊怪疗法",
+}
+kQuestInstanceData.TimbermawHold.Alliance[4] = { --TODO translate
+    Title = "古代熊怪疗法",
+    Id = 41932,
+    Level = 60,
+    Attain = 60,
+    Aim = "艾萨拉乌索克之口的黑暗纳考格需要特定材料来制作净化药膏。把它们带给他。",
+    Location = "黑暗纳考格 (艾萨拉 - 乌索克之口 " .. yellow .. "39, 21" .. white .. ")",
+    Note = "“尼玛斯拉之心”掉落自安戈洛环形山的“尼玛斯拉” (" .. yellow .. "35, 25" .. white .. ")，“格拉蒙之舌”来自菲拉斯的“永恒的格拉蒙” (" .. yellow .. "28, 95" .. white ..
+     ")，“净化药瓶”来自“潮汐领主鲁格兹” (尘泥沼泽 - " .. yellow .. "76, 20" .. white .. ")",
+    Prequest = "木喉要塞的腐蚀",
+    Folgequest = "无边的黑暗",
+}
+kQuestInstanceData.TimbermawHold.Alliance[5] = { --TODO translate
+    Title = "无边的黑暗",
+    Id = 41933,
+    Level = 60,
+    Attain = 60,
+    Aim = "从木喉要塞内取回纳考格的药袋和腐烂之花，交给艾萨拉乌索克之口的黑暗纳考格。",
+    Location = "黑暗纳考格 (艾萨拉 - 乌索克之口 " .. yellow .. "39, 21" .. white .. ")",
+    Note = "“纳考格的药袋”位于 " .. yellow .. "0, 0" .. white .. "，“腐烂之花”位于 " .. yellow .. "0, 0" .. white .. "。",
+    Prequest = "古代熊怪疗法",
+    Folgequest = "残余之物，净化精华，野性之神的皮",
+    Rewards = {
+        Text = "奖励：",
+        { id = 42234 }, -- Essence of Purification
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[6] = { --TODO translate
+    Title = "净化精华",
+    Id = 42021,
+    Level = 60,
+    Attain = 60,
+    Location = "黑暗纳考格 (艾萨拉 - 乌索克之口 " .. yellow .. "39, 21" .. white .. ")",
+    Note = "你需要带1份“木喉树液”、2份“大地精华”和2份“生命精华”给黑暗纳考格。",
+    Prequest = "无边的黑暗",
+    Rewards = {
+        Text = "奖励：",
+        { id = 42234 }, -- Essence of Purification
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[7] = { --TODO translate
+    Title = "残余之物",
+    Id = 41934,
+    Level = 60,
+    Attain = 60,
+    Aim = "在木喉要塞杀死乌索尔。之后向艾萨拉乌索克之口的黑暗纳考格回报。",
+    Location = "黑暗纳考格 (艾萨拉 - 乌索克之口 " .. yellow .. "39, 21" .. white .. ")",
+    Note = "“乌索尔”位于 " .. yellow .. "[9]" .. white .. "。",
+    Prequest = "无边的黑暗",
+    Rewards = {
+        Text = "奖励：",
+        { id = 42235 }, -- Eternal Essence of Purification
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[8] = { --TODO translate
+    Title = "野性之神的皮",
+    Id = 42022,
+    Level = 60,
+    Attain = 60,
+    Aim = "将乌索尔的皮交给艾萨拉乌索克之口的熊怪。",
+    Location = "受污染的乌索尔之皮 (木喉要塞 " .. yellow .. "[9]" .. white .. ")",
+    Note = "“勇敢的卡索尔”位于 (艾萨拉 - 乌索克之口" .. yellow .. "[39, 21]" .. white .. ")。",
+    Prequest = "无边的黑暗",
+    Rewards = {
+        Text = "奖励：任选其一",
+        { id = 33324 }, -- Breastplate of the Wild God
+        { id = 33325 }, -- Helmet of Natural Benevolence
+        { id = 33326 }, -- Leggings of Untamed Strength
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[9] = { --TODO translate
+    Title = "佩罗萨恩，梦魇先驱",
+    Id = 41966,
+    Level = 60,
+    Attain = 60,
+    Aim = "进入木喉要塞并摧毁佩罗萨恩。在你清理了困扰卡利姆多的腐蚀后，返回艾萨拉乌索克之口的黑暗纳考格处！",
+    Location = "独眼戈恩 (木喉隧道 " .. yellow .. "30, 64" .. white .. ")",
+    Note = "前置任务开始于纳索克 (艾萨拉 - 乌索克之口" .. yellow .. "39, 20" .. white .. ")。“佩罗萨恩”位于 " .. yellow .. "[10]" .. white .. "。",
+    Prequest = "清洗火焰 (熔火之心)", -- 41965
+    Rewards = {
+        Text = "奖励：",
+        { id = 42242 }, -- Sacred Timbermaw Satchel
+        { id = 13468, quantity = 3 }, -- Black Lotus
+        { id = 42016, quantity = 20 }, -- Timbermaw Sap
+        { id = 42243 }, -- Timbermaw Satchel
+        { id = 61197, quantity = 3 }, -- Fading Dream Fragment
+    }
+}
+for i = 1, 9 do
+    kQuestInstanceData.TimbermawHold.Horde[i] = kQuestInstanceData.TimbermawHold.Alliance[i]
+end
 
-AtlasTW.Quest.DataBase = kQuestInstanceData --module finisher
+kQuestInstanceData.TimbermawHold.Horde[10] = { --TODO translate
+    Title = "洛克塔纳格，纯洁者",
+    Id = 42009,
+    Level = 60,
+    Attain = 60,
+    Aim = "击败木喉要塞内的邪恶洛克塔纳格，并返回石爪山脉大地之环的穆恩·大地之怒处。",
+    Location = "穆恩·大地之怒 (石爪山脉 - 大地之环 " .. yellow .. "49, 71" .. white .. ")",
+    Note = "“邪恶洛克塔纳格”位于 " .. yellow .. "[4]" .. white .. "。",
+}
+
+AtlasTW.Quest.DataBase = kQuestInstanceData

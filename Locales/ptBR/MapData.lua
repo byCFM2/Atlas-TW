@@ -613,4 +613,5 @@ AtlasTW.Localization:RegisterNamespace("MapData", "ptBR", {
     ["Moonhoof Village"] = "Aldeia Pezuñalunar", --1.18.1 TODO
     ["Narvalis Point"] = "Ponto Narvalis", --1.18.1 TODO
     ["Shimmerstar Lake"] = "Lago Resplandestelar", --1.18.1 TODO
+    ["Tablet of Kaz'gan"] = "Tablete de Kaz'gan", -- 1.18.1 TODO
 })

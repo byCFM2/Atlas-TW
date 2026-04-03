@@ -9,6 +9,7 @@
 AtlasTW.Localization:RegisterNamespace("Bosses", "ptBR", {
     ["Broodcommander Axelus"] = "Comandante da Ninhada Axelus",
     ["Ezzel Darkbrewer"] = "Ezzel, o Cervejeiro Sombrio",
+    ["High Speaker Jam'wahli"] = "Alto Orador Jam'wahli", -- TODO
     ["Incindis"] = "Incindis",
     ["Sorcerer-Thane Thaurissan"] = "Feiticeiro-Tano Thaurissan",
     ["Smoldaris"] = "Smoldaris",

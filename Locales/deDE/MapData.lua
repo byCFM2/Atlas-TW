@@ -70,6 +70,7 @@ AtlasTW.Localization:RegisterNamespace("MapData", "deDE", {
     ["Glurgill"] = "Glurgill", -- 1.18.1 TODO
     ["Thundertusk"] = "Donnerzahn", -- 1.18.1 TODO
     ["Larexxa Foulheart"] = "Larexxa Faulherz", -- 1.18.1 TODO
+    ["Tablet of Kaz'gan"] = "Tafel von Kaz'gan", -- 1.18.1 TODO
     --Blackfathom Deeps
     ["Lorgalis Manuscript"] = "Manuskript von Lorgalis",
     ["Argent Guard Thaelrid"] = "Späher Thaelrid",

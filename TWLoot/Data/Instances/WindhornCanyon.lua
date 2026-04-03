@@ -40,9 +40,9 @@ AtlasTW.InstanceData.WindhornCanyon = {
     },
     Bosses = {
         {
-            id = "WHCPathunBuskhide",
+            id = "WHCPathunDuskhide",
             prefix = "1)",
-            name = LB["Pathun Buskhide"],
+            name = LB["Pathun Duskhide"],
             defaults = { dropRate = 25 },
             loot = {
                 { id = 33025 }, -- Blackwind Striker
@@ -85,7 +85,7 @@ AtlasTW.InstanceData.WindhornCanyon = {
             loot = {
                 { id = 33033 }, -- Footwraps of Perfect Form
                 { id = 33035 }, -- Sacred Windhorn Pants
-                { id = 33082 }, -- Bloodcaller's Decapitator
+                { id = 33082, container = { 33036 } }, -- Bloodcaller's Decapitator
                 { id = 42275 }, -- Canyonhide Gloves
             }
         },
@@ -118,7 +118,7 @@ AtlasTW.InstanceData.WindhornCanyon = {
         },
         {
             prefix = "1')",
-            name = LB["Grand Elder Skystider"],
+            name = LB["Grand Elder Skystrider"],
             color = Colors.GREEN,
         },
         {
@@ -134,20 +134,23 @@ AtlasTW.InstanceData.WindhornCanyon = {
                 {},
                 { id = 70243, dropRate = 6, container = { 42204 } }, -- Plans: Grimtotem Bracers
                 {},
-                { id = 42277, dropRate = 1.3 }, -- Hawkfeather Crown
+                { id = 42277, dropRate = 1.25 }, -- Hawkfeather Crown
             }
         },
         {
             id = "WHCTrash",
             name = L["Trash Mobs"].."-"..LZ["Windhorn Canyon"],
-            defaults = { dropRate = .1 },
+            defaults = { dropRate = .01 },
             loot = {
                 { id = 33034 }, -- Kodospine Crossbow
-               -- { id = 33036 }, -- Headsplitter Blunderbuss BOP
                 { id = 33039 }, -- Fleshrender
-                { id = 33179 }, -- Kodo Skull Crown TODO
+                { id = 33092 }, -- Totem of the Stonewall
+                { id = 33179 }, -- Kodo Skull Crown
+                { id = 33180 }, -- Chains of the Secluded Canyon
                 { id = 33181 }, -- Ancestral Greaves
+                { id = 33182 }, -- Deathtotem's Mark
                 { id = 33183 }, -- Horned Trophy Cord
+                { id = 33184 }, -- Windward Protector
                 { id = 33185 }, -- Sash of the Wind Serpents
             }
         },

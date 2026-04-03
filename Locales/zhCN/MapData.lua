@@ -612,4 +612,5 @@ AtlasTW.Localization:RegisterNamespace("MapData", "zhCN", {
     ["Moonhoof Village"] = "月蹄村", --1.18.1
     ["Narvalis Point"] = "纳瓦利斯哨站", --1.18.1
     ["Shimmerstar Lake"] = "闪星湖", --1.18.1
+    ["Tablet of Kaz'gan"] = "卡兹甘石板", -- 1.18.1
 })

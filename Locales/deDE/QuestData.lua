@@ -3531,16 +3531,27 @@ kQuestInstanceData.Maraudon.Horde[9] = {
     Id = 41281,
     Level = 48,
     Attain = 34,
-    Aim =
-    "Holt eine Platte von Erdrutschs Körper aus Maraudon und bringt sie zu Thegren nahe den Ruinen von Corthan im Ödland.",
+    Aim = "Holt eine Platte von Erdrutschs Körper aus Maraudon und bringt sie zu Thegren nahe den Ruinen von Corthan im Ödland.",
     Location = "Thegren <Artisan Gemologist> (Ödland - Ruinen von Corthan " .. yellow .. "[29, 27]" .. white .. ").",
-    Note = red ..
-        "Nur Juwelierskunst." ..
-        white .. " Questreihe für Gemmologen-Spezialisierung.\nErdrutsch ist bei " .. yellow .. "[8]" .. white .. ".",
+    Note = red .. "Nur Juwelierskunst." .. white .. " Questreihe für Gemmologen-Spezialisierung.\nErdrutsch ist bei " .. yellow .. "[8]" .. white .. ".",
     Prequest = "Meisterschaft in Edelsteinkunde -> Lebensblut -> Vorführung",
     Folgequest = "Der letzte Schliff",
 }
-
+kQuestInstanceData.Maraudon.Horde[10] = { --TODO translate
+    Title = "Verunreinigte Gewässer",
+    Id = 41943,
+    Level = 47,
+    Attain = 41,
+    Aim = "Reinigt das verderbte Wasser und seine Quelle in Maraudon und kehrt zu Ohona Riverbend am Erdenring in den Donnergratbergen zurück.",
+    Location = "Ohona Riverbend (Donnergratberge - Der Erdenring " .. yellow .. "[52, 70]" .. white .. ").",
+    Note = "'Noxxion' ist bei " .. yellow .. "[2]" .. white .. ", 'Lord Schlangenzunge' ist bei " .. yellow .. "[5]" .. white .. ".",
+    Rewards = {
+        Text = "Belohnung: Wählt eins aus",
+        { id = 33863 }, -- Spiritwater Orb
+        { id = 33864 }, -- Drape of Elusiveness
+        { id = 33865 }, -- Tempestria's Crown
+    }
+}
 --------------- Molten Core ---------------
 kQuestInstanceData.MoltenCore = {
     Story =
@@ -6167,15 +6178,7 @@ kQuestInstanceData.ZulGurub.Alliance[4] = {
     Attain = 60,
     Aim = "Dirk Donnerholz in der Burg Cenarius will, dass Ihr ihm Venoxis' Giftbeutel und Kurinnaxx' Giftbeutel bringt.",
     Location = "Langdolch Donnerholz (Silithus - Burg Cenarius " .. yellow .. "52,39" .. white .. ")",
-    Note = "Venoxis' Giftbeutel droppt von Hohepriester Venoxis in " ..
-        yellow ..
-        "Zul'Gurub" ..
-        white ..
-        " bei " ..
-        yellow ..
-        "[2]" ..
-        white ..
-        ". Kurinnaxx' Giftbeutel droppt in den " .. yellow ..
+    Note = "Venoxis' Giftbeutel droppt von Hohepriester Venoxis in " .. yellow .. "Zul'Gurub" .. white .. " bei " .. yellow .. "[2]" ..        white ..        ". Kurinnaxx' Giftbeutel droppt in den " .. yellow ..
         "Ruinen von Ahn'Qiraj" .. white .. " bei " .. yellow .. "[1]" .. white .. ".",
     Rewards = {
         Text = "Belohnung: Wählt eins aus",
@@ -6187,7 +6190,18 @@ kQuestInstanceData.ZulGurub.Alliance[4] = {
         { id = 22380 }, --Simone's Cultivating Hammer Main Hand, Mace
     }
 }
-for i = 1, 4 do
+kQuestInstanceData.ZulGurub.Alliance[5] = { --TODO translate
+    Title = "Ein guter Turnus verdient einen anderen",
+    Id = 41960,
+    Level = 60,
+    Attain = 60,
+    Aim = "Infiltriert Zul’Gurub und kehrt mit den Stoßzähnen von Hochsprecher Jam’wahli zu Insom’ni auf der Kazon-Insel nahe der Insel von Gillijim zurück.",
+    Location = "Insom'ni (Insel von Gillijim - Kazon-Insel " .. yellow .. "56,16" .. white .. ")",
+    Note = "Vorquest beginnt bei Nathok (Azshara " .. yellow .. "39, 20" .. white .. "). 'Hochsprecher Jam'wahli' (Zul'Gurub - " .. yellow .. "0, 0" .. white .. ") lässt die 'Stoßzähne von Jam’wahli' fallen.",
+    Prequest = "Die Flöte der Geister",
+    Folgequest = "Offensichtlich verborgen",
+}
+for i = 1, 5 do
     kQuestInstanceData.ZulGurub.Horde[i] = kQuestInstanceData.ZulGurub.Alliance[i]
 end
 
@@ -8327,10 +8341,8 @@ kQuestInstanceData.TowerofKarazhan.Alliance[3] = {
     Level = 61,
     Attain = 60,
     Aim = "Sprecht mit Türsteher Montigue in den Unteren Karazhan-Hallen.",
-    Location = "Großbart (Turm von Karazhan " .. yellow .. "0, 0" .. white .. ")",
-    Note = red ..
-        "Nur Magier" ..
-        white .. ": Türsteher Montigue in den Unteren Karazhan-Hallen am Anfang des Dungeons vor der Treppe.",
+    Location = "Großbart (Turm von Karazhan " .. yellow .. "50, 50" .. white .. ")",
+    Note = red .. "Nur Magier" .. white .. ": Türsteher Montigue in den Unteren Karazhan-Hallen am Anfang des Dungeons vor der Treppe.",
     Folgequest = "Komisch große Kerze",
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[4] = {
@@ -8834,20 +8846,283 @@ kQuestInstanceData.StormwroughtRuins.Horde[9] = {
         { id = 58278 }, --Ring of Judgement
     }
 }
+
 --------------- Windhorn Canyon ---------------
 kQuestInstanceData.WindhornCanyon = {
-    Story =
-    "Diese uralte Schlucht war die Heimat vieler Taurenstämme, die in der Vergangenheit um die Vorherrschaft über ihre fließenden Gewässer und den Schutz vor den Gefahren Kalimdors kämpften. Die Kulturen und Traditionen vieler haben in der Windhorn-Schlucht gelebt, was an den antiken Unterkünften zu sehen ist, die in die Bergseite gehauen wurden, bis zu den von den Tauren begehrten Relikten. Vor kurzem wurden die Windhorn-Tauren vertrieben und von den Grimmtotem vertrieben, die sie erobert und für sich beansprucht haben.",
+    Story = "Dieser uralte Canyon war die Heimat vieler Taurenstämme, die in vergangenen Zeiten um die Vorherrschaft über seine fließenden Gewässer und den Schutz vor den Gefahren Kalimdors kämpften. Die Kulturen und Traditionen vieler haben innerhalb des Windhorn-Canyons gelebt, was von den alten Unterkünften, die in die Berghänge gehauen wurden, bis zu den Relikten reicht, die von den Tauren begehrt wurden. In jüngster Zeit wurden die Windhorn-Tauren von den Grimtotem vertrieben und vertrieben, die sie erobert und für sich beansprucht haben.",
     Caption = "Windhorn Canyon",
     Alliance = {},
     Horde = {}
 }
+kQuestInstanceData.WindhornCanyon.Alliance[1] = { --TODO translate
+    Title = "Auf der Suche nach Tauren-Relikten",
+    Id = 41976,
+    Level = 27,
+    Attain = 20,
+    Aim = "Sammelt 8 Windhorn-Relikte für Tarwegg Dustbrow im Windhorn Canyon und kehrt zu ihm nach Eisenschmiede zurück.",
+    Location = "Tarwegg Dustbrow (Eisenschmiede - Halle der Entdecker " .. yellow .. "72, 17" .. white .. ")",
+    Note = "'Windhorn-Relikte' können im gesamten Dungeon gefunden werden.",
+}
+kQuestInstanceData.WindhornCanyon.Horde[1] = { --TODO translate
+    Title = "Relikte des Windhorn-Stammes",
+    Id = 41977,
+    Level = 27,
+    Attain = 20,
+    Aim = "Reist in den Windhorn Canyon und holt 8 Windhorn-Relikte für Sagh in Sagh's Zuflucht in Tausend Nadeln zurück.",
+    Location = "Sagh (Tausend Nadeln " .. yellow .. "31, 45" .. white .. ")",
+    Note = "'Windhorn-Relikte' können im gesamten Dungeon gefunden werden.",
+    Rewards = {
+        Text = "Belohnung:",
+        { id = 42263 }, -- Sagh's Pendant
+    }
+}
+kQuestInstanceData.WindhornCanyon.Horde[2] = { --TODO translate
+    Title = "Zerstört das Totem des Todes",
+    Id = 41982,
+    Level = 28,
+    Attain = 24,
+    Aim = "Tötet Prophet Sturmhuf, den Anführer der Totem des Todes im Windhorn Canyon, und kehrt zu Cairne Bluthuf in Donnerfels zurück.",
+    Location = "Cairne Bluthuf (Donnerfels " .. yellow .. "60, 52" .. white .. ")",
+    Note = "Pre-Quest beginnt bei 'Tapfere Mondhorn' (Tausend Nadeln - Der Große Aufzug " .. yellow .. "32, 22" .. white .. "). 'Prophet Sturmhuf' befindet sich bei " .. yellow .. "[6]" .. white .. ".",
+    Prequest = "Botschaft an den Freiwindposten -> Den Zentaur befrieden -> Grimmtotem-Spionage -> Gerüchte über das Totem des Todes -> Informationen für Cairne",
+    Rewards = {
+        Text = "Belohnung: Wählt eins",
+        { id = 42268 }, -- Bloodhoof Sash
+        { id = 42269 }, -- Stormhoof Shackles
+        { id = 42270 }, -- Stonemane Boots
+    }
+}
+kQuestInstanceData.WindhornCanyon.Horde[3] = { --TODO translate
+    Title = "Vortalus’ Edikt",
+    Id = 41939,
+    Level = 26,
+    Attain = 20,
+    Aim = "Verbann die elementare Galionsfigur im Windhorn Canyon und melde dich bei Shovu beim Irdenen Ring im Steinkrallengebirge.",
+    Location = "Shovu (Steinkrallengebirge - Irdener Ring " .. yellow .. "47, 72" .. white .. ")",
+    Note = red .. "Nur Schamanen! " .. white .. "Pre-Quest beginnt mit 'Vom Wind zerrissener Wappenstein', welcher von Razorgust im Steinkrallengebirge fällt (" .. yellow .. "30, 19" .. white .. "). 'Gesandter Vortalus' befindet sich bei " .. yellow .. "[3]" .. white .. ".",
+    Prequest = "Vom Wind zerrissener Wappenstein",
+    Rewards = {
+        Text = "Belohnung: Wählt eins",
+        { id = 58127 }, -- Hammer of Earthfury
+        { id = 58128 }, -- Axe of Raging Windsor
+        { id = 58129 }, -- Claw of Tempered Fire
+    }
+}
+--------------- Frostmane Hollow ---------------
+kQuestInstanceData.FrostmaneHollow = {
+    Story = "Die Frostmähnenhöhle ist ein Instanz-Dungeon in Dun Morogh, südlich der Flugplätze von Eisenschmiede. Sie ist das Heiligtum des Frostmähnenclans und eine De-facto-Hauptstadt für alle Trolle in Dun Morogh.",
+    Caption = "Frostmähnenhöhle",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[1] = { --TODO translate
+    Title = "Ein schweres Missverständnis!",
+    Id = 42040,
+    Level = 13,
+    Attain = 8,
+    Aim = "Beschafft die Tafel von Kaz'gan für Ranix Crackbolt in der Frostmähnenhöhle.",
+    Location = "Ranix Crackbolt (Frostmähnenhöhle " .. yellow .. "[1']" .. white .. ")",
+    Note = "'Tafel von Kaz'gan' befindet sich bei " .. yellow .. "[3']" .. white .. ".",
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[2] = { --TODO translate
+    Title = "Suche nach Archäologe Evenpike",
+    Id = 42006,
+    Level = 14,
+    Attain = 10,
+    Aim = "Sucht nach Archäologe Evenpike in der Frostmähnenhöhle in Dun Morogh.",
+    Location = "Brohann Fassbauch (Sturmwind - Das Zwergenviertel " .. yellow .. "70, 40" .. white .. ")",
+    Note = "'Archäologe Evenpike' befindet sich bei " .. green .. "[2']" .. white .. ".",
+    Folgequest = "Die zersplitterte Scheibe"
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[3] = { --TODO translate
+    Title = "Die zersplitterte Scheibe",
+    Id = 42007,
+    Level = 14,
+    Attain = 10,
+    Aim = "Kehrt zu Brohann Fassbauch im Zwergenviertel von Sturmwind zurück.",
+    Location = "Archäologe Evenpike (Frostmähnenhöhle " .. yellow .. "29, 62" .. white .. ")",
+    Note = "'Brohann Fassbauch' (Sturmwind - Das Zwergenviertel " .. yellow .. "70, 40" .. white .. ")",
+    Prequest = "Suche nach Archäologe Evenpike",
+    Rewards = {
+        Text = "Belohnung:",
+        { id = 136 }, -- Archaeologist's Lantern
+    }
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[4] = { --TODO translate
+    Title = "Der feinste Pelz",
+    Id = 42008,
+    Level = 16,
+    Attain = 10,
+    Aim = "Betretet die Frostmähnenhöhle in Dun Morogh and erlangt einen makellosen Leopardenpelz für Shandlar Thethis in Alah’thalas im thalassischen Hochland. Ihr findet den Eingang zur Frostmähnenhöhle in der Nähe der Flugplätze von Eisenschmiede.",
+    Location = "Shandlar Thethis (Thalassisches Hochland - Alah'thalas " .. yellow .. "45, 46" .. white .. ")",
+    Note = "'Tan'sha die Geschmeidige' befindet sich bei " .. yellow .. "[1]" .. white .. ".",
+    Rewards = {
+        Text = "Belohnung:",
+        { id = 158 }, -- Thalassian Silk Cape
+    }
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[5] = { --TODO translate
+    Title = "Häuptling Ubukaz",
+    Id = 42039,
+    Level = 16,
+    Attain = 8,
+    Aim = "Erschlagt Kampfmeister Ubukaz tief in der Frostmähnenhöhle für Bergläufer Granitbart am Flugplatz von Eisenschmiede in Dun Morogh.",
+    Location = "Bergläufer Granitbart (Dun Morogh - Flugplatz von Eisenschmiede " .. yellow .. "71, 36" .. white .. ")",
+    Note = "'Kampfmeister Ubukaz' befindet sich bei " .. yellow .. "[2]" .. white .. ".",
+    Prequest = "Der Frostmähnenkrieg",
+    Rewards = {
+        Text = "Belohnung: Wählt eins",
+        { id = 42323 }, -- Heavy Chain Bracers
+        { id = 42324 }, -- Sash of Illumination
+        { id = 42325 }, -- Deep-Thread Shawl
+    }
+}
+kQuestInstanceData.FrostmaneHollow.Horde[1] = kQuestInstanceData.FrostmaneHollow.Alliance[1]
+
 --------------- Timbermaw Hold ---------------
 kQuestInstanceData.TimbermawHold = {
-    Story =
-    "So alt wie Kalimdor selbst, ist dieses rätselhafte labyrinthische Netzwerk von Tunneln und Höhlen unter dem Berg Hyjal seit weit vor der Zerreißung die Heimat der Furbolgs. Seine Hallen sind unter den Stämmen heilig, ein Ort der Verehrung für ihre Ahnen, die Zwillingsgötter Ursoc und Ursol. Heutzutage jedoch entweichen nur Schwaden fauliger Dämpfe den verrotteten Höhlen und Flüstern über die Verehrung eines üblen Gottes hallen durch die Hügelklauenfeste...",
+    Story = "So alt wie Kalimdor selbst, ist dieses rätselhafte, labyrinthartige Netzwerk aus Tunneln und Höhlen unter dem Berg Hyjal seit langem die Heimat der Furbolgs, schon lange vor der Großen Teilung. Seine Hallen sind heilig unter den Stämmen, ein Ort der Anbetung ihrer Vorfahren, der Zwillingsgötter Ursoc und Ursol. Heutzutage entweichen jedoch nur noch übelriechende Dämpfe aus den verrotteten Höhlen und Flüstern der Anbetung eines abscheulichen Gottes hallen durch das Timbermaw-Gehege...",
     Caption = "Holzschlundfeste",
     Alliance = {},
     Horde = {}
+}
+kQuestInstanceData.TimbermawHold.Alliance[1] = { --TODO translate
+    Title = "Draenethyst-Rückgewinnung",
+    Id = 41953,
+    Level = 60,
+    Attain = 50,
+    Aim = "Betretet die Holzschlundfeste und beschafft den verderbten Draenethyst. Bringt ihn zu Rissmeister Ral’pekta im Dorf Moro’gai an der Mondflüsterküste, falls Ihr erfolgreich seid.",
+    Location = "Rissmeister Ral’pekta (Mondflüsterküste - Dorf Moro’gai " .. yellow .. "65, 63" .. white .. ")",
+    Note = "Pre-Quest beginnt bei '' (" .. yellow .. "0, 0" .. white .. "). 'Selenaxx Foulheart' befindet sich bei " .. yellow .. "[7]" .. white .. ".",
+    Prequest = "Ar'lia der Moro'gai -> Wolf im Schafspelz -> Ein schlechtes Omen ->> Heraus aus dem Mondschein",
+    Rewards = {
+        Text = "Belohnung: Wählt eins",
+        { id = 33361 }, -- Bracelet of the Defender
+        { id = 33362 }, -- Bracelet of the Visionary
+        { id = 33363 }, -- Bracelet of the Ravager
+        { id = 33364 }, -- Bracelet of the Oracle
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[2] = { --TODO translate
+    Title = "Beweis der Überzeugung",
+    Id = 41930,
+    Level = 60,
+    Attain = 60,
+    Aim = "Präsentiert Narkogg dem Dunklen im Schlund von Ursoc in Azshara den Beweis für die Tötung von Karrsh dem Wächter in der Holzschlundfeste.",
+    Location = "Narkogg der Dunkle (Azshara - Schlund von Ursoc " .. yellow .. "39, 21" .. white .. ")",
+    Note = "'Amulett des Wächters' fällt bei 'Karrsh dem Wächter' (" .. yellow .. "[1]" .. white .. ").",
+    Folgequest = "Die Verderbnis der Holzschlundfeste",
+}
+kQuestInstanceData.TimbermawHold.Alliance[3] = { --TODO translate
+    Title = "Die Verderbnis der Holzschlundfeste",
+    Id = 41931,
+    Level = 60,
+    Attain = 60,
+    Aim = "Sammelt Totems der Siechmarke von Schamanen der Siechmarke in der Holzschlundfeste und bringt sie zu Narkogg dem Dunklen im Schlund von Ursoc in Azshara.",
+    Location = "Narkogg der Dunkle (Azshara - Schlund von Ursoc " .. yellow .. "39, 21" .. white .. ")",
+    Note = "'Schamanen der Siechmarke' sind in der Holzschlundfeste zu finden.",
+    Prequest = "Beweis der Überzeugung",
+    Folgequest = "Uralte Heilmittel der Furbolgs",
+}
+kQuestInstanceData.TimbermawHold.Alliance[4] = { --TODO translate
+    Title = "Uralte Heilmittel der Furbolgs",
+    Id = 41932,
+    Level = 60,
+    Attain = 60,
+    Aim = "Narkogg der Dunkle im Schlund von Ursoc in Azshara benötigt bestimmte Materialien für die Reinigungssalbe. Bringt sie zu ihm.",
+    Location = "Narkogg der Dunkle (Azshara - Schlund von Ursoc " .. yellow .. "39, 21" .. white .. ")",
+    Note = "'Herz von Nemasra' fällt von 'Nemasra' im Krater von Un'Goro (" .. yellow .. "35, 25" .. white .. "), 'Grammons Zunge' von 'Grammon dem Zeitlosen' in Feralas (" .. yellow .. "28, 95" .. white ..
+     "), 'Fläschchen der Reinigung' von 'Gezeitenfürst Rrurgaz' (Düstermarschen - " .. yellow .. "76, 20" .. white .. ")",
+    Prequest = "Die Verderbnis der Holzschlundfeste",
+    Folgequest = "Zügellose Dunkelheit",
+}
+kQuestInstanceData.TimbermawHold.Alliance[5] = { --TODO translate
+    Title = "Zügellose Dunkelheit",
+    Id = 41933,
+    Level = 60,
+    Attain = 60,
+    Aim = "Beschafft Narkoggs Medizinbeutel und die Verfaulte Blume aus der Holzschlundfeste für Narkogg den Dunklen im Schlund von Ursoc in Azshara.",
+    Location = "Narkogg der Dunkle (Azshara - Schlund von Ursoc " .. yellow .. "39, 21" .. white .. ")",
+    Note = "'Narkoggs Medizinbeutel' ist bei " .. yellow .. "0, 0" .. white .. ", 'Verfaulte Blume' ist bei " .. yellow .. "0, 0" .. white .. ".",
+    Prequest = "Uralte Heilmittel der Furbolgs",
+    Folgequest = "Was bleibt, Essenz der Reinigung, Haut eines Wildgottes",
+    Rewards = {
+        Text = "Belohnung:",
+        { id = 42234 }, -- Essence of Purification
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[6] = { --TODO translate
+    Title = "Essenz der Reinigung",
+    Id = 42021,
+    Level = 60,
+    Attain = 60,
+    Location = "Narkogg der Dunkle (Azshara - Schlund von Ursoc " .. yellow .. "39, 21" .. white .. ")",
+    Note = "Ihr müsst 1x 'Holzschlundsaft', 2x 'Essenz der Erde' und 2x 'Lebendige Essenz' zu Narkogg dem Dunklen bringen.",
+    Prequest = "Zügellose Dunkelheit",
+    Rewards = {
+        Text = "Belohnung:",
+        { id = 42234 }, -- Essence of Purification
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[7] = { --TODO translate
+    Title = "Was bleibt",
+    Id = 41934,
+    Level = 60,
+    Attain = 60,
+    Aim = "Erschlagt Ursol in der Holzschlundfeste. Berichtet danach Narkogg dem Dunklen im Schlund von Ursoc in Azshara.",
+    Location = "Narkogg der Dunkle (Azshara - Schlund von Ursoc " .. yellow .. "39, 21" .. white .. ")",
+    Note = "'Ursol' ist bei " .. yellow .. "[9]" .. white .. ".",
+    Prequest = "Zügellose Dunkelheit",
+    Rewards = {
+        Text = "Belohnung:",
+        { id = 42235 }, -- Eternal Essence of Purification
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[8] = { --TODO translate
+    Title = "Haut eines Wildgottes",
+    Id = 42022,
+    Level = 60,
+    Attain = 60,
+    Aim = "Bringt die Haut von Ursol zu den Furbolgs im Schlund von Ursoc in Azshara.",
+    Location = "Verderbte Haut von Ursol (Holzschlundfeste " .. yellow .. "[9]" .. white .. ")",
+    Note = "'Kathor der Tapfere' befindet sich bei (Azshara - Schlund von Ursoc " .. yellow .. "[39, 21]" .. white .. ").",
+    Prequest = "Zügellose Dunkelheit",
+    Rewards = {
+        Text = "Belohnung: Wählt eins",
+        { id = 33324 }, -- Breastplate of the Wild God
+        { id = 33325 }, -- Helmet of Natural Benevolence
+        { id = 33326 }, -- Leggings of Untamed Strength
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[9] = { --TODO translate
+    Title = "Peroth’arn, Herold des Albtraums",
+    Id = 41966,
+    Level = 60,
+    Attain = 60,
+    Aim = "Betretet die Holzschlundfeste und vernichtet Peroth’arn. Kehrt zu Narkogg den Dunklen im Schlund von Ursoc in Azshara zurück, nachdem Ihr die Verderbnis gereinigt habt, die Kalimdor plagt!",
+    Location = "Gorn Einauge (Holzschlundtunnel " .. yellow .. "30, 64" .. white .. ")",
+    Note = "Pre-Quest beginnt bei Nathok (Azshara - Schlund von Ursoc " .. yellow .. "39, 20" .. white .. "). 'Peroth'arn' ist bei " .. yellow .. "[10]" .. white .. ".",
+    Prequest = "Läuternde Flammen (" .. yellow .. "Geschmolzener Kern" .. white .. ")", -- 41965
+    Rewards = {
+        Text = "Belohnung:",
+        { id = 42242 }, -- Sacred Timbermaw Satchel
+        { id = 13468, quantity = 3 }, -- Black Lotus
+        { id = 42016, quantity = 20 }, -- Timbermaw Sap
+        { id = 42243 }, -- Timbermaw Satchel
+        { id = 61197, quantity = 3 }, -- Fading Dream Fragment
+    }
+}
+for i = 1, 9 do
+    kQuestInstanceData.TimbermawHold.Horde[i] = kQuestInstanceData.TimbermawHold.Alliance[i]
+end
+
+kQuestInstanceData.TimbermawHold.Horde[10] = { --TODO translate
+    Title = "Loktanag der Reine",
+    Id = 42009,
+    Level = 60,
+    Attain = 60,
+    Aim = "Bezwinger Loktanag den Üblen in der Holzschlundfeste und kehrt zu Muln Earthfury beim Irdenen Ring im Steinkrallengebirge zurück.",
+    Location = "Muln Earthfury (Steinkrallengebirge - Der Irdene Ring " .. yellow .. "49, 71" .. white .. ")",
+    Note = "'Loktanag der Üble' ist bei " .. yellow .. "[4]" .. white .. ".",
 }
 AtlasTW.Quest.DataBase = kQuestInstanceData

@@ -73,12 +73,12 @@ Sets = {
 	},
 	TimbermawHoldSets = { --1.18.1
 		{ name = LS["Cloth"] },
-		{ id = 33674 }, -- Guile of the Deer
-		{ id = 33675 }, -- Burden of the Deer
-		{ id = 33676 }, -- Embrace of the Deer
-		{ id = 33677 }, -- Grasp of the Deer
-		{ id = 33678 }, -- Vigor of the Deer
-		{ id = 33679 }, -- Path of the Deer
+		{ id = 33674, container = { {55252, 2}, {15407, 3}, {12810, 6}, {33335} } }, -- Guile of the Deer
+		{ id = 33675, container = { {55252, 2}, {14342, 2}, {12810, 8}, {33336} } }, -- Burden of the Deer
+		{ id = 33676, container = { {55252, 3}, {15407, 4}, {12655, 8}, {33337} } }, -- Embrace of the Deer
+		{ id = 33677, container = { {55252, 2}, {14342}, {12810, 6}, {33338} } }, -- Grasp of the Deer
+		{ id = 33678, container = { {55252, 3}, {15407, 2}, {12655, 10}, {33339} } }, -- Vigor of the Deer
+		{ id = 33679, container = { {55252, 2}, {14342, 2}, {12810, 4}, {33340} } }, -- Path of the Deer
 		{},
 		{ id = 33380 }, -- Guile of the Stag
 		{ id = 33381 }, -- Burden of the Stag

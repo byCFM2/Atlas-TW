@@ -3552,6 +3552,21 @@ kQuestInstanceData.Maraudon.Horde[9] = {
     Prequest = "Dominando la Gemología -> La Sangre Vital -> Demostración",
     Folgequest = "El Corte Final",
 }
+kQuestInstanceData.Maraudon.Horde[10] = { --TODO translate
+    Title = "Aguas Contaminadas",
+    Id = 41943,
+    Level = 47,
+    Attain = 41,
+    Aim = "Limpia las aguas corruptoras y su fuente dentro de Maraudon y regresa con Ohona Riverbend en el Círculo de la Tierra en las Tierras Devastadas.",
+    Location = "Ohona Riverbend (Tierras Devastadas - El Círculo de la Tierra " .. yellow .. "[52, 70]" .. white .. ").",
+    Note = "'Noxxion' está en " .. yellow .. "[2]" .. white .. ", 'Lord Lenguavil' está en " .. yellow .. "[5]" .. white .. ".",
+    Rewards = {
+        Text = "Recompensa: Elige uno",
+        { id = 33863 }, -- Orbe de Agua Espiritual
+        { id = 33864 }, -- Capa de Elusividad
+        { id = 33865 }, -- Corona de Tempestria
+    }
+}
 
 --------------- Molten Core ---------------
 kQuestInstanceData.MoltenCore = {
@@ -6174,16 +6189,7 @@ kQuestInstanceData.ZulGurub.Alliance[4] = {
     Aim =
     "Dirk Truenomad en el Bastión Cenarion quiere que le traigas el Saco de Veneno de Venoxis y el Saco de Veneno de Kurinnaxx.",
     Location = "Puñal Truenedera (Silithus - Bastión Cenarion " .. yellow .. "52,39" .. white .. ")",
-    Note = "Saco de Veneno de Venoxis se obtiene de Sumo sacerdote Venoxis en " ..
-        yellow ..
-        "Zul'Gurub" ..
-        white ..
-        " en " ..
-        yellow ..
-        "[2]" ..
-        white ..
-        ". Saco de Veneno de Kurinnaxx se obtiene en las " ..
-        yellow .. "Ruinas de Ahn'Qiraj" .. white .. " en " .. yellow .. "[1]" .. white .. ".",
+    Note = "Saco de Veneno de Venoxis se obtiene de Sumo sacerdote Venoxis en " .. yellow .. "Zul'Gurub" .. white .. " en " .. yellow .. "[2]" .. white .. ". Saco de Veneno de Kurinnaxx se obtiene en las " .. yellow .. "Ruinas de Ahn'Qiraj" .. white .. " en " .. yellow .. "[1]" .. white .. ".",
     Rewards = {
         Text = "Recompensa: Elige uno",
         { id = 22378 }, --Ravenholdt Slicer One-Hand, Sword
@@ -6194,7 +6200,18 @@ kQuestInstanceData.ZulGurub.Alliance[4] = {
         { id = 22380 }, --Simone's Cultivating Hammer Main Hand, Mace
     }
 }
-for i = 1, 4 do
+kQuestInstanceData.ZulGurub.Alliance[5] = { --TODO translate
+    Title = "Un buen turno merece otro",
+    Id = 41960,
+    Level = 60,
+    Attain = 60,
+    Aim = "Infiltra Zul’Gurub y regresa con los Colmillos del Sumo Sacerdote Jam’wahli a Insom’ni en la Isla Kazon, cerca de la Isla de Gillijim.",
+    Location = "Insom'ni (Isla de Gillijim - Isla Kazon " .. yellow .. "56,16" .. white .. ")",
+    Note = "La prequest comienza en Nathok (Azshara " .. yellow .. "39, 20" .. white .. "). 'Sumo Sacerdote Jam'wahli' (Zul'Gurub - " .. yellow .. "0, 0" .. white .. ") suelta los 'Colmillos de Jam’wahli'.",
+    Prequest = "La Flauta de los Espíritus",
+    Folgequest = "Oculto a plena vista",
+}
+for i = 1, 5 do
     kQuestInstanceData.ZulGurub.Horde[i] = kQuestInstanceData.ZulGurub.Alliance[i]
 end
 
@@ -8335,11 +8352,8 @@ kQuestInstanceData.TowerofKarazhan.Alliance[3] = {
     Level = 61,
     Attain = 60,
     Aim = "Habla con el Portero Montigue en los Pasillos Inferiores de Karazhan.",
-    Location = "Grandes Bigotes (Torre de Karazhan " .. yellow .. "0, 0" .. white .. ")",
-    Note = red ..
-        "Solo mago" ..
-        white ..
-        ": Portero Montigue en las Salas Inferiores de Karazhan al comienzo de la mazmorra frente a las escaleras.",
+    Location = "Grandes Bigotes (Torre de Karazhan " .. yellow .. "50, 50" .. white .. ")",
+    Note = red .. "Solo mago" .. white .. ": Portero Montigue en las Salas Inferiores de Karazhan al comienzo de la mazmorra frente a las escaleras.",
     Folgequest = "Vela Cómicamente Grande",
 }
 kQuestInstanceData.TowerofKarazhan.Alliance[4] = {
@@ -8842,18 +8856,280 @@ kQuestInstanceData.StormwroughtRuins.Horde[9] = {
 }
 --------------- Windhorn Canyon ---------------
 kQuestInstanceData.WindhornCanyon = {
-    Story =
-    "Este antiguo cañón ha sido hogar de muchas tribus tauren que en años pasados lucharon por el dominio de sus aguas corrientes y refugio de los peligros de Kalimdor. Las culturas y tradiciones de muchos han vivido dentro del Cañón Cuerno de Viento, lo cual se puede ver desde los antiguos refugios tallados en la ladera de la montaña, hasta las reliquias codiciadas por los Tauren. Recientemente, los Tauren Cuerno de Viento fueron expulsados y alejados por los Tótem Siniestro que lo han conquistado y reclamado para sí mismos.",
+    Story = "Este antiguo cañón ha sido hogar de muchas tribus tauren que en años pasados lucharon por el dominio de sus aguas corrientes y refugio de los peligros de Kalimdor. Las culturas y tradiciones de muchos han vivido dentro del Cañón Cuerno de Viento, lo cual se puede ver desde los antiguos refugios tallados en la ladera de la montaña, hasta las reliquias codiciadas por los Tauren. Recientemente, los Tauren Cuerno de Viento fueron expulsados y alejados por los Tótem Siniestro que lo han conquistado y reclamado para sí mismos.",
     Caption = "Cañón Cuerno de Viento",
     Alliance = {},
     Horde = {}
 }
+kQuestInstanceData.WindhornCanyon.Alliance[1] = { --TODO translate
+    Title = "En Busca de Reliquias Tauren",
+    Id = 41976,
+    Level = 27,
+    Attain = 20,
+    Aim = "Recoge 8 Reliquias de Cuerno de Viento para Tarwegg Polvoriente dentro del Cañón Cuerno de Viento y regresa con él a Forjaz.",
+    Location = "Tarwegg Polvoriente (Forjaz - Salón de los Exploradores " .. yellow .. "72, 17" .. white .. ")",
+    Note = "'Reliquias de Cuerno de Viento' se pueden encontrar en toda la mazmorra.",
+}
+kQuestInstanceData.WindhornCanyon.Horde[1] = { --TODO translate
+    Title = "Reliquias de la Tribu Cuerno de Viento",
+    Id = 41977,
+    Level = 27,
+    Attain = 20,
+    Aim = "Viaja al Cañón Cuerno de Viento y recupera 8 Reliquias de Cuerno de Viento para Sagh en el Refugio de Sagh en Las Mil Agujas.",
+    Location = "Sagh (Las Mil Agujas " .. yellow .. "31, 45" .. white .. ")",
+    Note = "'Reliquias de Cuerno de Viento' se pueden encontrar en toda la mazmorra.",
+    Rewards = {
+        Text = "Recompensa:",
+        { id = 42263 }, -- Sagh's Pendant
+    }
+}
+kQuestInstanceData.WindhornCanyon.Horde[2] = { --TODO translate
+    Title = "Destruye el Tótem de la Muerte",
+    Id = 41982,
+    Level = 28,
+    Attain = 24,
+    Aim = "Mata al Profeta Cuerno de Tormenta, el líder de los Tótem de la Muerte dentro del Cañón Cuerno de Viento, y regresa con Cairne Pezuña Sangrienta en Cima del Trueno.",
+    Location = "Cairne Pezuña Sangrienta (Cima del Trueno " .. yellow .. "60, 52" .. white .. ")",
+    Note = "La pre-misión comienza en 'Brave Moonhorn' (Las Mil Agujas - El Gran Ascensor " .. yellow .. "32, 22" .. white .. "). 'Profeta Cuerno de Tormenta' está en " .. yellow .. "[6]" .. white .. ".",
+    Prequest = "Mensaje al Puesto Libre -> Pacificar al Centauro -> Espionaje de los Tótem Siniestros -> Rumores del Tótem de la Muerte -> Información para Cairne",
+    Rewards = {
+        Text = "Recompensa: Elige uno",
+        { id = 42268 }, -- Bloodhoof Sash
+        { id = 42269 }, -- Stormhoof Shackles
+        { id = 42270 }, -- Stonemane Boots
+    }
+}
+kQuestInstanceData.WindhornCanyon.Horde[3] = { --TODO translate
+    Title = "Edicto de Vortalus",
+    Id = 41939,
+    Level = 26,
+    Attain = 20,
+    Aim = "Desterrar al líder elemental dentro del Cañón Cuerno de Viento y regresar con Shovu en el Círculo de la Tierra en las Montañas de la Espina del Dragón.",
+    Location = "Shovu (Montañas de la Espina del Dragón - Círculo de la Tierra " .. yellow .. "47, 72" .. white .. ")",
+    Note = red .. "¡Solo chamanes! " .. white .. "La pre-misión comienza en 'Piedra de Cresta Viento', que cae de 'Razorgust' en las Montañas de la Espina del Dragón (" .. yellow .. "30, 19" .. white .. "). 'Embajador Vortalus' está en " .. yellow .. "[3]" .. white .. ".",
+    Prequest = "Piedra de Cresta Viento",
+    Rewards = {
+        Text = "Recompensa: Elige uno",
+        { id = 58127 }, -- Hammer of Earthfury
+        { id = 58128 }, -- Axe of Raging Windsor
+        { id = 58129 }, -- Claw of Tempered Fire
+    }
+}
+--------------- Frostmane Hollow ---------------
+kQuestInstanceData.FrostmaneHollow = {
+    Story = "La Guarida de los Colmillos de Escarcha es una mazmorra de instancia ubicada en Dun Morogh, justo al sur de los Campos de Aviación de Forjaz. Es el santuario del clan Colmillo de Escarcha y una capital de facto para todos los trols en Dun Morogh.",
+    Caption = "Guarida de los Colmillos de Escarcha",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[1] = { --TODO translate
+    Title = "Un Grave Malentendido",
+    Id = 42040,
+    Level = 13,
+    Attain = 8,
+    Aim = "Recupera la Tabla de Kaz'gan para Ranix Grietaagria dentro de la Guarida de los Colmillos de Escarcha.",
+    Location = "Ranix Grietaagria (Guarida de los Colmillos de Escarcha " .. yellow .. "[1']" .. white .. ")",
+    Note = "'Tabla de Kaz'gan' está en " .. yellow .. "[3']" .. white .. ".",
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[2] = { --TODO translate
+    Title = "Buscando al Arqueólogo Evenpike",
+    Id = 42006,
+    Level = 14,
+    Attain = 10,
+    Aim = "Busca al Arqueólogo Evenpike dentro de la Guarida de los Colmillos de Escarcha en Dun Morogh.",
+    Location = "Brohann Caskbelly (Ciudad de Ventormenta - El Distrito Enano " .. yellow .. "70, 40" .. white .. ")",
+    Note = "'Arqueólogo Evenpike' está en " .. green .. "[2']" .. white .. ".",
+    Folgequest = "El Disco Roto"
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[3] = { --TODO translate
+    Title = "El Disco Roto",
+    Id = 42007,
+    Level = 14,
+    Attain = 10,
+    Aim = "Regresa con Brohann Caskbelly en el Distrito Enano de Ventormenta.",
+    Location = "Arqueólogo Evenpike (Guarida de los Colmillos de Escarcha " .. yellow .. "29, 62" .. white .. ")",
+    Note = "'Brohann Caskbelly' (Ciudad de Ventormenta - El Distrito Enano " .. yellow .. "70, 40" .. white .. ")",
+    Prequest = "Buscando al Arqueólogo Evenpike",
+    Rewards = {
+        Text = "Recompensa:",
+        { id = 136 }, -- Archaeologist's Lantern
+    }
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[4] = { --TODO translate
+    Title = "La Piel Más Fina",
+    Id = 42008,
+    Level = 16,
+    Attain = 10,
+    Aim = "Entra en la Guarida de los Colmillos de Escarcha en Dun Morogh y consigue una piel de leopardo impecable para Shandlar Thethis en Alah'thalas en las Tierras de la Corona de Hielo. Puedes encontrar la entrada a la Guarida de los Colmillos de Escarcha cerca de los Campos de Aviación de Forjaz.",
+    Location = "Shandlar Thethis (Tierras de la Corona de Hielo - Alah'thalas " .. yellow .. "45, 46" .. white .. ")",
+    Note = "'Tan'sha The Sleek' está en " .. yellow .. "[1]" .. white .. ".",
+    Rewards = {
+        Text = "Recompensa:",
+        { id = 158 }, -- Thalassian Silk Cape
+    }
+}
+kQuestInstanceData.FrostmaneHollow.Alliance[5] = { --TODO translate
+    Title = "Jefe Ubukaz",
+    Id = 42039,
+    Level = 16,
+    Attain = 8,
+    Aim = "Mata al Maestro de Batalla Ubukaz en lo profundo de la Guarida de los Colmillos de Escarcha para el Montañero Barba de Granito en el Aeródromo de Forjaz en Dun Morogh.",
+    Location = "Montañero Barba de Granito (Dun Morogh - Aeródromo de Forjaz " .. yellow .. "71, 36" .. white .. ")",
+    Note = "'Maestro de Batalla Ubukaz' está en " .. yellow .. "[2]" .. white .. ".",
+    Prequest = "La Guerra de los Colmillos de Escarcha",
+    Rewards = {
+        Text = "Recompensa: Elige uno",
+        { id = 42323 }, -- Heavy Chain Bracers
+        { id = 42324 }, -- Sash of Illumination
+        { id = 42325 }, -- Deep-Thread Shawl
+    }
+}
+kQuestInstanceData.FrostmaneHollow.Horde[1] = kQuestInstanceData.FrostmaneHollow.Alliance[1]
+
 --------------- Timbermaw Hold ---------------
 kQuestInstanceData.TimbermawHold = {
-    Story =
-    "Tan antiguo como Kalimdor mismo, esta enigmática red laberíntica de túneles y cuevas bajo el Monte Hyjal ha sido el hogar de los Furbolgs desde mucho antes del Cataclismo. Sus salones son sagrados entre las tribus, un lugar de adoración a sus progenitores, los dioses gemelos Ursoc y Ursol. Sin embargo, en estos días, solo vaharadas de vapores pútridos escapan de las cavernas podridas y susurros de venerar a un dios inmundo resuenan por todo Timbermaw Hold…",
+    Story = "Tan antiguo como Kalimdor mismo, esta enigmática red laberíntica de túneles y cuevas bajo el Monte Hyjal ha sido el hogar de los Furbolgs desde mucho antes del Cataclismo. Sus salones son sagrados entre las tribus, un lugar de adoración a sus progenitores, los dioses gemelos Ursoc y Ursol. Sin embargo, en estos días, solo vaharadas de vapores pútridos escapan de las cavernas podridas y susurros de venerar a un dios inmundo resuenan por todo Timbermaw Hold…",
     Caption = "Bastión Fauces de Madera",
     Alliance = {},
     Horde = {}
+}
+kQuestInstanceData.TimbermawHold.Alliance[1] = { --TODO translate
+    Title = "Recuperación de Draenethyst",
+    Id = 41953,
+    Level = 60,
+    Attain = 50,
+    Aim = "Entra en el Bastión Fauces de Madera y recupera el draenethyst corrupto. Llévalos al Maestro de Grietas Ral’pekta en la Aldea de Moro’gai de la Costa Susurrante de la Luna si tienes éxito.",
+    Location = "Maestro de Grietas Ral’pekta (Costa Susurrante de la Luna - Aldea de Moro’gai " .. yellow .. "65, 63" .. white .. ")",
+    Note = "La pre-misión comienza en '' (" .. yellow .. "0, 0" .. white .. "). 'Selenaxx Foulheart' está en " .. yellow .. "[7]" .. white .. ".",
+    Prequest = "Ar'lia of the Moro'gai -> Wolf in Sheep's Clothing -> An Ill Omen ->> Out of the Moonlight",
+    Rewards = {
+        Text = "Recompensa: Elige uno",
+        { id = 33361 }, -- Bracelet of the Defender
+        { id = 33362 }, -- Bracelet of the Visionary
+        { id = 33363 }, -- Bracelet of the Ravager
+        { id = 33364 }, -- Bracelet of the Oracle
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[2] = { --TODO translate
+    Title = "Prueba de convicción",
+    Id = 41930,
+    Level = 60,
+    Attain = 60,
+    Aim = "Presenta a Narkogg el Oscuro en las Fauces de Ursoc en Azshara una prueba de haber matado a Karrsh el Centinela en el Bastión Fauces de Madera.",
+    Location = "Narkogg el Oscuro (Azshara - Fauces de Ursoc " .. yellow .. "39, 21" .. white .. ")",
+    Note = "El 'Colgante del Centinela' cae de 'Karrsh el Centinela' (" .. yellow .. "[1]" .. white .. ").",
+    Folgequest = "La corrupción del Bastión Fauces de Madera",
+}
+kQuestInstanceData.TimbermawHold.Alliance[3] = { --TODO translate
+    Title = "La corrupción del Bastión Fauces de Madera",
+    Id = 41931,
+    Level = 60,
+    Attain = 60,
+    Aim = "Reúne tótems Faucesmarchitas de los chamanes Faucesmarchitas dentro del Bastión Fauces de Madera y tráelos a Narkogg el Oscuro en las Fauces de Ursoc en Azshara.",
+    Location = "Narkogg el Oscuro (Azshara - Fauces de Ursoc " .. yellow .. "39, 21" .. white .. ")",
+    Note = "Se pueden encontrar 'Chamanes Faucesmarchitas' dentro del Bastión Fauces de Madera.",
+    Prequest = "Prueba de convicción",
+    Folgequest = "Antiguos remedios furbolg",
+}
+kQuestInstanceData.TimbermawHold.Alliance[4] = { --TODO translate
+    Title = "Antiguos remedios furbolg",
+    Id = 41932,
+    Level = 60,
+    Attain = 60,
+    Aim = "Narkogg el Oscuro en las Fauces de Ursoc en Azshara necesita materiales específicos para el ungüento de purificación. Tráeselos.",
+    Location = "Narkogg el Oscuro (Azshara - Fauces de Ursoc " .. yellow .. "39, 21" .. white .. ")",
+    Note = "El 'Corazón de Nemasra' cae de 'Nemasra' en el Cráter de Un'Goro (" .. yellow .. "35, 25" .. white .. "), la 'Lengua de Grammon' de 'Grammon el Eterno' Feralas (" .. yellow .. "28, 95" .. white ..
+     "), el 'Vial de purificación' del 'Señor de las mareas Rrurgaz' (Marjal Revolcafango - " .. yellow .. "76, 20" .. white .. ")",
+    Prequest = "La corrupción del Bastión Fauces de Madera",
+    Folgequest = "Oscuridad desenfrenada",
+}
+kQuestInstanceData.TimbermawHold.Alliance[5] = { --TODO translate
+    Title = "Oscuridad desenfrenada",
+    Id = 41933,
+    Level = 60,
+    Attain = 60,
+    Aim = "Recupera la bolsa de medicinas de Narkogg y la Flor pútrida de dentro del Bastión Fauces de Madera para Narkogg el Oscuro en las Fauces de Ursoc en Azshara.",
+    Location = "Narkogg el Oscuro (Azshara - Fauces de Ursoc " .. yellow .. "39, 21" .. white .. ")",
+    Note = "La 'Bolsa de medicinas de Narkogg' está en " .. yellow .. "0, 0" .. white .. ", la 'Flor pútrida' está en " .. yellow .. "0, 0" .. white .. ".",
+    Prequest = "Antiguos remedios furbolg",
+    Folgequest = "Lo que queda, Esencia de purificación, Piel de un dios salvaje",
+    Rewards = {
+        Text = "Recompensa:",
+        { id = 42234 }, -- Essence of Purification
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[6] = { --TODO translate
+    Title = "Esencia de purificación",
+    Id = 42021,
+    Level = 60,
+    Attain = 60,
+    Location = "Narkogg el Oscuro (Azshara - Fauces de Ursoc " .. yellow .. "39, 21" .. white .. ")",
+    Note = "Debes traer 1x 'Savia Fauces de Madera', 2x 'Esencia de tierra' y 2x 'Esencia viva' a Narkogg el Oscuro.",
+    Prequest = "Oscuridad desenfrenada",
+    Rewards = {
+        Text = "Recompensa:",
+        { id = 42234 }, -- Essence of Purification
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[7] = { --TODO translate
+    Title = "Lo que queda",
+    Id = 41934,
+    Level = 60,
+    Attain = 60,
+    Aim = "Mata a Ursol en el Bastión Fauces de Madera. Informa después a Narkogg el Oscuro en las Fauces de Ursoc en Azshara.",
+    Location = "Narkogg el Oscuro (Azshara - Fauces de Ursoc " .. yellow .. "39, 21" .. white .. ")",
+    Note = "'Ursol' está en " .. yellow .. "[9]" .. white .. ".",
+    Prequest = "Oscuridad desenfrenada",
+    Rewards = {
+        Text = "Recompensa:",
+        { id = 42235 }, -- Eternal Essence of Purification
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[8] = { --TODO translate
+    Title = "Piel de un dios salvaje",
+    Id = 42022,
+    Level = 60,
+    Attain = 60,
+    Aim = "Lleva la piel de Ursol al furbolg de las Fauces de Ursoc en Azshara.",
+    Location = "Piel corrupta de Ursol (Bastión Fauces de Madera " .. yellow .. "[9]" .. white .. ")",
+    Note = "'Kathor el Valiente' está en (Azshara - Fauces de Ursoc " .. yellow .. "[39, 21]" .. white .. ").",
+    Prequest = "Oscuridad desenfrenada",
+    Rewards = {
+        Text = "Recompensa: Elige una",
+        { id = 33324 }, -- Breastplate of the Wild God
+        { id = 33325 }, -- Helmet of Natural Benevolence
+        { id = 33326 }, -- Leggings of Untamed Strength
+    }
+}
+kQuestInstanceData.TimbermawHold.Alliance[9] = { --TODO translate
+    Title = "Peroth’arn, Heraldo de la Pesadilla",
+    Id = 41966,
+    Level = 60,
+    Attain = 60,
+    Aim = "Entra en el Bastión Fauces de Madera y destruye a Peroth'arn. ¡Regresa con Narkogg el Oscuro en las Fauces de Ursoc en Azshara después de haber limpiado la corrupción que asola Kalimdor!",
+    Location = "Gorn Tuerto (Túneles Fauces de Madera " .. yellow .. "30, 64" .. white .. ")",
+    Note = "La pre-misión comienza en Nathok (Azshara - Fauces de Ursoc " .. yellow .. "39, 20" .. white .. "). 'Peroth'arn' está en " .. yellow .. "[10]" .. white .. ".",
+    Prequest = "Llamas purificadoras (" .. yellow .. "Núcleo de Magma" .. white .. ")", -- 41965
+    Rewards = {
+        Text = "Recompensa:",
+        { id = 42242 }, -- Sacred Timbermaw Satchel
+        { id = 13468, quantity = 3 }, -- Black Lotus
+        { id = 42016, quantity = 20 }, -- Timbermaw Sap
+        { id = 42243 }, -- Timbermaw Satchel
+        { id = 61197, quantity = 3 }, -- Fading Dream Fragment
+    }
+}
+for i = 1, 9 do
+    kQuestInstanceData.TimbermawHold.Horde[i] = kQuestInstanceData.TimbermawHold.Alliance[i]
+end
+
+kQuestInstanceData.TimbermawHold.Horde[10] = { --TODO translate
+    Title = "Loktanag el Puro",
+    Id = 42009,
+    Level = 60,
+    Attain = 60,
+    Aim = "Vence a Loktanag el Vil dentro del Bastión Fauces de Madera y regresa con Muln Furia de Tierra en el Anillo de la Tierra en las Sierra Espolón.",
+    Location = "Muln Furia de Tierra (Sierra Espolón - El Anillo de la Tierra " .. yellow .. "49, 71" .. white .. ")",
+    Note = "'Loktanag el Vil' está en " .. yellow .. "[4]" .. white .. ".",
 }
 AtlasTW.Quest.DataBase = kQuestInstanceData

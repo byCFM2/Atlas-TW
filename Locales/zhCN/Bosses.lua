@@ -9,6 +9,7 @@
 AtlasTW.Localization:RegisterNamespace("Bosses", "zhCN", {
     ["Broodcommander Axelus"] = "巢群指挥官阿克塞勒斯",
     ["Ezzel Darkbrewer"] = "埃泽尔·暗酿",
+    ["High Speaker Jam'wahli"] = "高阶代言者 贾姆瓦利", -- TODO
     ["Incindis"] = "因辛迪斯",
     ["Sorcerer-Thane Thaurissan"] = "巫王索瑞森",
     ["Smoldaris"] = "斯摩达利斯",
