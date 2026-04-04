@@ -91,14 +91,14 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 { id = 61208 }, -- Staff of the Dreamer
                 {},
                 { id = 61215, dropRate = 100, container = { 61195, 61194, 61193 } }, -- Head of Solnius
-                { id = 61444, dropRate = 20, container = { 61445 } }, -- Smoldering Dream Essence
+                { id = 61444, dropRate = 35, container = { 61445 } }, -- Smoldering Dream Essence
                 {},
-                { id = 51361, dropRate = 14 }, -- Glyph of the Dreamkin
-                { id = 61196, dropRate = 15 }, -- Bag of Vast Consciousness
+                { id = 51361, dropRate = 15 }, -- Glyph of the Dreamkin
+                { id = 61196, dropRate = 25 }, -- Bag of Vast Consciousness
                 {},
                 { id = 30018, dropRate = 1.5 }, --Emerald Drake
                 {},
-                { id = 61733, dropRate = 1 }, -- Formula: Eternal Dreamstone Shard
+                { id = 61733, dropRate = 1.5 }, -- Formula: Eternal Dreamstone Shard
                 { id = 61217, dropRate = 4 }, -- Formula: Enchant Chest - Mighty Mana
                 { id = 70000, dropRate = 4 }, -- Formula: Enchant Gloves - Nature Power
                 {},
@@ -109,6 +109,7 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 { id = 61424, dropRate = 4, container = { 61364 } }, -- Plans: Dreamsteel Mantle
                 {},
                 { id = 41388, dropRate = 100, container = { 51064 } }, -- Jade Scale of the Dreamer
+                { id = 42298, dropRate = 100, container = { 33332 } }, -- Splinter of Aln
                 {},
                 { id = 17962, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 3864, 55251, 55250, 7910, 7909, 1529, 12361 } }, -- Blue Sack of Gems
                 { id = 17963, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12364 } }, -- Green Sack of Gems
@@ -131,14 +132,14 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 { id = 61525 }, -- Nature's Call
                 { id = 61526 }, -- Jadestone Protector
                 {},
+                { id = 42165, dropRate = 60 }, -- Wail of Ysera 1.18.1
+                {},
+                { id = 61169, dropRate = 100 }, -- Bag of Vast Consciousness 1.18.1
                 {},
                 {},
                 {},
                 {},
-                {},
-                {},
-                {},
-                { id = 61197, disc = L["Reagent"], dropRate = 48 }, -- Fading Dream Fragment
+                { id = 61197, disc = L["Reagent"], dropRate = 100 }, -- Fading Dream Fragment
             }
         },
         {

@@ -179,6 +179,7 @@ AtlasTW.InstanceData.TheRuinsofAhnQiraj = {
                 { id = 20886, container = { 21392, 21395, 21401, 21404, 21398 } }, -- Qiraji Spiked Hilt
                 {},
                 { id = 83005, disc = L["Quest Item"], dropRate = 100, container = { 83002 } }, -- Perfect Obsidian Shard
+                { id = 42169, dropRate = 30 }, -- Bursting Mana Shard
                 { id = 41987, container = { 41986 }, dropRate = 100 } -- Crest of Heroism
             }
         },

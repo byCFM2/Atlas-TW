@@ -4500,7 +4500,17 @@ kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[3] = {
         { id = 83002 }, --Tome of Refreshment Ritual Pattern
     }
 }
-for i = 1, 3 do
+kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[4] = {
+    Title = "蠕动的眼睛",
+    Id = 42002,
+    Level = 60,
+    Attain = 60,
+    Aim = "在安其拉废墟中找到那把剑。",
+    Location = "蠕动的触手团 (木喉要塞 - 佩罗萨恩" .. yellow .. "[10]" .. white .. ")",
+    Note = red .. "仅限术士！" .. white .. " 在沙埋银剑处交付 (安其拉废墟 " .. yellow .. "? " .. white .. ")。",
+    Folgequest = "银色之刃 -> 浸润能量 -> 裂隙的召唤",
+}
+for i = 1, 4 do
     kQuestInstanceData.TheRuinsofAhnQiraj.Horde[i] = kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[i]
 end
 
@@ -5636,12 +5646,108 @@ kQuestInstanceData.FourDragons.Alliance[1] = {
         { id = 20600 }, --Malfurion's Signet Ring Ring
     }
 }
-kQuestInstanceData.FourDragons.Horde[1] = kQuestInstanceData.FourDragons.Alliance[1]
+kQuestInstanceData.FourDragons.Alliance[2] = {
+    Title = "梦境之石，灰谷",
+    Id = 41923,
+    Level = 60,
+    Attain = 60,
+    Location = "梦境之石，灰谷（ " .. yellow .. "94, 38" .. white .. "）",
+    Note = "“伊瑟拉的哀嚎”掉落自“艾伦尼乌斯的恩赐”（索尔尼乌斯困难模式）（翡翠圣所 " .. yellow .. "[2]" .. white .. "）。",
+}
+kQuestInstanceData.FourDragons.Alliance[3] = {
+    Title = "梦境之石，菲拉斯",
+    Id = 41924,
+    Level = 60,
+    Attain = 60,
+    Location = "梦境之石，菲拉斯（ " .. yellow .. "51, 12" .. white .. "）",
+    Note = "“伊瑟拉的哀嚎”掉落自“艾伦尼乌斯的恩赐”（索尔尼乌斯困难模式）（翡翠圣所 " .. yellow .. "[2]" .. white .. "）。",
+}
+kQuestInstanceData.FourDragons.Alliance[4] = {
+    Title = "梦境之石，暮色森林",
+    Id = 41925,
+    Level = 60,
+    Attain = 60,
+    Location = "梦境之石，暮色森林（ " .. yellow .. "46, 39" .. white .. "）",
+    Note = "“伊瑟拉的哀嚎”掉落自“艾伦尼乌斯的恩赐”（索尔尼乌斯困难模式）（翡翠圣所 " .. yellow .. "[2]" .. white .. "）。",
+}
+kQuestInstanceData.FourDragons.Alliance[5] = {
+    Title = "梦境之石，辛特兰",
+    Id = 41926,
+    Level = 60,
+    Attain = 60,
+    Location = "梦境之石，辛特兰（ " .. yellow .. "64, 28" .. white .. "）",
+    Note = "“伊瑟拉的哀嚎”掉落自“艾伦尼乌斯的恩赐”（索尔尼乌斯困难模式）（翡翠圣所 " .. yellow .. "[2]" .. white .. "）。",
+}
+kQuestInstanceData.FourDragons.Alliance[6] = {
+    Title = "力量浸染",
+    Id = 42004,
+    Level = 60,
+    Attain = 60,
+    Location = "深渊祭坛（艾萨拉 " .. yellow .. "89, 56" .. white .. "）",
+    Note = red .. "仅限术士！" .. white .. " “被梦魇侵染的巨龙之心”掉落自四绿龙。",
+    Prequest = "银色之刃",
+    Folgequest = "裂隙的呼唤",
+}
+for i = 1, 6 do
+    kQuestInstanceData.FourDragons.Horde[i] = kQuestInstanceData.FourDragons.Alliance[i]
+end
+--------------- Dark Reaver of Karazhan ---------------
+kQuestInstanceData.Reaver = {
+    Story = "黑暗掠夺者徘徊在死亡之风小径的迷雾中，他是一个幽灵般的遗物收集者，以鲜血为代价换取宝物。他从普通的小偷被转化为不朽的幽灵，注定为一个早已离去的主人收集灵魂和财富。",
+    Caption = "卡拉赞的黑暗掠夺者",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.Reaver.Alliance[1] = {
+    Title = "黑森公爵二世的骑乘哨",
+    Id = 41927,
+    Level = 60,
+    Attain = 60,
+    Aim = "为复活仪式寻找用途。所提到的永生生物很可能就是在艾泽拉斯游荡的强大巨龙。",
+    Location = "黑森公爵二世的骑乘哨掉落自（卡拉赞下层大厅 - 黑森公爵二世 " .. yellow .. "[5] " .. white .. ")",
+    Note = "任务交给死亡之风小径的“正义的汉瓦尔” " .. yellow .. "[41, 79]" .. white .. "。",
+}
+kQuestInstanceData.Reaver.Horde[1] = kQuestInstanceData.Reaver.Alliance[1]
+
+--------------- Concavius ---------------
+kQuestInstanceData.Concavius = {
+    Story = "康卡维斯曾是一个在虚空风暴混沌气流中漂泊的次级元素灵体，后来被鲁莽的火刃氏族邪教徒从以太位面强行扯出，并束缚在凄凉之地荒芜的土地上。如今，他已化身为一个巨大的水晶虚空行者，依靠窃取的奥术能量维持形态。他在凄凉之地的盐沼地带游荡，破碎的意识驱使着他，让他对法力产生了一种永不满足的渴求，以此防止自己的实体崩解。",
+    Caption = "康卡维斯",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.Concavius.Alliance[1] = {
+    Title = "能量迸发的法力碎片",
+    Id = 41929,
+    Level = 60,
+    Attain = 60,
+    Aim = "找到碎片指引你前往的地点。你的直觉告诉你，去寻找那些亵渎之地的黑暗能量。",
+    Location = "'能量迸发的法力碎片' 掉落自 (安其拉废墟 - 莫阿姆 " .. yellow .. "[3] " .. white .. ")",
+    Note = "在凄凉之地的“祭坛”处交付任务 " .. yellow .. "[80, 80]" .. white .. "。",
+}
+kQuestInstanceData.Concavius.Horde[1] = kQuestInstanceData.Concavius.Alliance[1]
+
+--------------- Nerubian Overseer ---------------
+kQuestInstanceData.NerubianOverseer = {
+    Story = "地穴监督者是一个陨落帝国的冷酷哨兵，这位蛛型王国的顶级建筑师其古老的智慧已被亡灵的冰冷拥抱所扭曲。在他那甲壳覆盖的身躯内潜藏着阴险的恶意，受命在世界各地织就恐怖之网，以黑暗主宰之名诱捕生者。他既精通武技又擅长通灵诡计，守护着大地的阴影深处，静静地等待着，准备击杀任何敢于踏入他那神圣且丝网遍布领地的冒失者。",
+    Caption = "地穴监督者",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.NerubianOverseer.Alliance[1] = {
+    Title = "地穴领主的召唤",
+    Id = 41928,
+    Level = 60,
+    Attain = 60,
+    Aim = "将地穴领主的召唤交给一位强大的圣光使用者。",
+    Location = "'地穴领主的召唤' 掉落自 '阿努布雷坎'，位于 (纳克萨玛斯 - 蜘蛛区 " .. yellow .. "[1]" .. white .. "。",
+    Note = "在东瘟疫之地向 '提里奥·弗丁' 交付任务 " .. yellow .. "[6, 44]" .. white .. "。'神圣十字架' 掉落自西瘟疫之地和东瘟疫之地的血色精英怪。",
+}
+kQuestInstanceData.NerubianOverseer.Horde[1] = kQuestInstanceData.NerubianOverseer.Alliance[1]
 
 --------------- Azuregos ---------------
 kQuestInstanceData.Azuregos = {
-    Story =
-    "在大灾变之前，暗夜精灵城市艾达拉斯在现在被称为艾萨拉的土地上繁荣发展。据信许多古老而强大的上层精灵神器可能在曾经强大的据点废墟中被发现。无数代以来，蓝龙军团一直守护着强大的神器和魔法知识，确保它们不落入凡人手中。蓝龙艾索雷葛斯的存在似乎暗示，极其重要的物品，也许是传说中的永恒之瓶本身，可能在艾萨拉的荒野中被发现。无论艾索雷葛斯在寻找什么，有一件事是确定的：他将战斗至死以保卫艾萨拉的魔法宝藏。",
+    Story = "在大灾变之前，暗夜精灵城市艾达拉斯在现在被称为艾萨拉的土地上繁荣发展。据信许多古老而强大的上层精灵神器可能在曾经强大的据点废墟中被发现。无数代以来，蓝龙军团一直守护着强大的神器和魔法知识，确保它们不落入凡人手中。蓝龙艾索雷葛斯的存在似乎暗示，极其重要的物品，也许是传说中的永恒之瓶本身，可能在艾萨拉的荒野中被发现。无论艾索雷葛斯在寻找什么，有一件事是确定的：他将战斗至死以保卫艾萨拉的魔法宝藏。",
     Caption = "艾索雷葛斯",
     Alliance = {},
     Horde = {}
@@ -5652,7 +5758,7 @@ kQuestInstanceData.Azuregos.Alliance[1] = {
     Level = 60,
     Attain = 60,
     Aim = "费伍德森林的古树哈斯塔特要求你带回一块成年蓝龙的肌腱。",
-    Location = "古树哈斯塔特 (费伍德森林 - 铁木森林 " .. yellow .. "48,24" .. white .. ")",
+    Location = "古树哈斯塔特 (费伍德森林 - 铁木森林 " .. yellow .. "48, 24" .. white .. ")",
     Note = red .. "猎人限定" .. white .. ": 击杀艾索雷葛斯以获得成年蓝龙的肌腱。他在艾萨拉南部半岛中部" .. yellow .. "[1]" .. white .. "附近游荡。",
     Prequest = "远古石叶 (" .. yellow .. "Molten Core" .. white .. ")", -- 7632",
     Rewards = {
@@ -5666,27 +5772,45 @@ kQuestInstanceData.Azuregos.Alliance[2] = {
     Level = 60,
     Attain = 60,
     Aim = "把魔法账本交给塔纳利斯的纳瑞安。",
-    Location = "艾索雷葛斯之魂 (艾萨拉 " .. yellow .. "56,83" .. white .. ")",
-    Note = "你可以在塔纳利斯" .. yellow .. "65.17" .. white .. "找到纳瑞安。",
+    Location = "艾索雷葛斯之魂 (艾萨拉 " .. yellow .. "56, 83" .. white .. ")",
+    Note = "你可以在塔纳利斯" .. yellow .. "65, 17" .. white .. "找到纳瑞安。",
     Prequest = "巨龙军团的指控",
     Folgequest = "翻译龙语",
 }
-kQuestInstanceData.Azuregos.Horde[1] = kQuestInstanceData.Azuregos.Alliance[1]
-kQuestInstanceData.Azuregos.Horde[2] = kQuestInstanceData.Azuregos.Alliance[2]
+kQuestInstanceData.Azuregos.Alliance[3] = { --TODO translate
+    Title = "复生仪式",
+    Id = 41935,
+    Level = 60,
+    Attain = 60,
+    Aim = "为复生仪式找到用途。所提及的永生存在很可能就是游荡在艾泽拉斯的强大巨龙。",
+    Location = "复生仪式掉落于（熔火之心 - 管理者埃克索图斯 " .. yellow .. "[9]" .. white .. "）",
+    Note = "将任务交给艾萨拉的'艾索雷葛斯之魂' " .. yellow .. "[56, 83]" .. white .. ". “蓝龙精华”掉落自艾萨拉、冬泉谷和月语海岸的精英蓝龙及雏龙。",
+}
+for i = 1, 3 do
+    kQuestInstanceData.Azuregos.Horde[i] = kQuestInstanceData.Azuregos.Alliance[i]
+end
 
 --------------- Lord Kazzak ---------------
 kQuestInstanceData.LordKazzak = {
-    Story =
-    "在第三次战争结束时击败燃烧军团后，剩余的敌军在巨大的恶魔领主卡扎克的带领下撤退到诅咒之地。他们至今仍居住在那里一个叫做污染之痕的地区，等待着黑暗之门的重新开启。有传言称，一旦传送门重新开启，卡扎克将带着他的残余部队前往外域。外域曾经是兽人的故乡德拉诺，被兽人萨满耐奥祖创造的几个传送门同时激活而撕裂，现在作为一个破碎的世界存在，被暗夜精灵叛徒伊利丹指挥下的大批恶魔代理人占据。",
+    Story = "在第三次战争结束时击败燃烧军团后，剩余的敌军在巨大的恶魔领主卡扎克的带领下撤退到诅咒之地。他们至今仍居住在那里一个叫做污染之痕的地区，等待着黑暗之门的重新开启。有传言称，一旦传送门重新开启，卡扎克将带着他的残余部队前往外域。外域曾经是兽人的故乡德拉诺，被兽人萨满耐奥祖创造的几个传送门同时激活而撕裂，现在作为一个破碎的世界存在，被暗夜精灵叛徒伊利丹指挥下的大批恶魔代理人占据。",
     Caption = "卡扎克",
     Alliance = {},
     Horde = {}
 }
+kQuestInstanceData.LordKazzak.Alliance[1] = {
+    Title = "扭曲裂隙水晶",
+    Id = 41936,
+    Level = 60,
+    Attain = 60,
+    Aim = "将水晶交给一位强大的术士。",
+    Location = "扭曲裂隙水晶掉落于（熔火之心 - 管理者埃克索图斯 " .. yellow .. "[9]" .. white .. "）",
+    Note = "将任务交给诅咒之地的“衰朽者达伊奥” " .. yellow .. "[34, 50]" .. white .. "。“富含虚空能量的恶魔之血”掉落自诅咒之地、冬泉谷和海加尔的精英恶魔。",
+}
+kQuestInstanceData.LordKazzak.Horde[1] = kQuestInstanceData.LordKazzak.Alliance[1]
 
 --------------- Alterac Valley ---------------
 kQuestInstanceData.BGAlteracValleyNorth = {
-    Story =
-    "很久以前，在第一次战争之前，术士古尔丹将一个名为霜狼的兽人氏族流放到奥特拉克山脉深处的一个隐秘山谷。霜狼氏族就在这个山谷的南部地区勉强度日，直到萨尔的到来。\n在萨尔成功地统一了各个氏族之后，霜狼氏族，现在由兽人萨满德雷克塔尔领导，选择留在他们长期以来称之为家园的山谷。然而，最近，霜狼氏族相对平静的生活受到了矮人风暴之峰远征队的挑战。\n风暴之峰远征队在山谷中安营扎寨，寻找自然资源和古代遗迹。尽管他们的意图如此，矮人的存在却与南方的霜狼兽人引发了激烈的冲突，霜狼兽人发誓要将这些入侵者赶出他们的土地。",
+    Story = "很久以前，在第一次战争之前，术士古尔丹将一个名为霜狼的兽人氏族流放到奥特拉克山脉深处的一个隐秘山谷。霜狼氏族就在这个山谷的南部地区勉强度日，直到萨尔的到来。\n在萨尔成功地统一了各个氏族之后，霜狼氏族，现在由兽人萨满德雷克塔尔领导，选择留在他们长期以来称之为家园的山谷。然而，最近，霜狼氏族相对平静的生活受到了矮人风暴之峰远征队的挑战。\n风暴之峰远征队在山谷中安营扎寨，寻找自然资源和古代遗迹。尽管他们的意图如此，矮人的存在却与南方的霜狼兽人引发了激烈的冲突，霜狼兽人发誓要将这些入侵者赶出他们的土地。",
     Caption = "奥特兰克山谷",
     Alliance = {},
     Horde = {}
@@ -7106,7 +7230,21 @@ kQuestInstanceData.EmeraldSanctum.Alliance[3] = {
         { id = 61740 }, --Claw of Senthos Main Hand, Fist Weapon
     }
 }
-for i = 1, 3 do
+kQuestInstanceData.EmeraldSanctum.Alliance[4] = {
+    Title = "裂隙的呼唤",
+    Id = 42005,
+    Level = 60,
+    Attain = 60,
+    Aim = "击杀索尔尼乌斯，并在翡翠圣所内的阿尔恩之藤处，将提尔法罗与其持有的碎片重新结合。",
+    Location = "深渊祭坛（艾萨拉 " .. yellow .. "[89, 56]" .. white .. "）。",
+    Note = red .. "仅限术士！" .. white .. " 前置任务始于“蠕动的触须之团”，掉落于（木喉要塞 " .. yellow .. "[10]" .. white .. "）。‘索尔尼乌斯’位于 " .. yellow .. "[2]" .. white .. "。",
+    Prequest = "蠕动之眼 -> 银色之刃 -> 力量浸染",
+    Rewards = {
+        Text = "奖励：",
+        { id = 33332 }, --Thil'phoral，阿尔恩的预兆
+    }
+}
+for i = 1, 4 do
     kQuestInstanceData.EmeraldSanctum.Horde[i] = kQuestInstanceData.EmeraldSanctum.Alliance[i]
 end
 
@@ -7813,7 +7951,7 @@ kQuestInstanceData.TimbermawHold.Alliance[5] = { --TODO translate
     Attain = 60,
     Aim = "从木喉要塞内取回纳考格的药袋和腐烂之花，交给艾萨拉乌索克之口的黑暗纳考格。",
     Location = "黑暗纳考格 (艾萨拉 - 乌索克之口 " .. yellow .. "39, 21" .. white .. ")",
-    Note = "“纳考格的药袋”位于 " .. yellow .. "0, 0" .. white .. "，“腐烂之花”位于 " .. yellow .. "0, 0" .. white .. "。",
+    Note = "“纳考格的药袋”和“腐烂之花”位于木喉要塞。",
     Prequest = "古代熊怪疗法",
     Folgequest = "残余之物，净化精华，野性之神的皮",
     Rewards = {
@@ -7882,11 +8020,26 @@ kQuestInstanceData.TimbermawHold.Alliance[9] = { --TODO translate
         { id = 61197, quantity = 3 }, -- Fading Dream Fragment
     }
 }
-for i = 1, 9 do
+kQuestInstanceData.TimbermawHold.Alliance[10] = { --TODO translate
+    Title = "噩梦的终结",
+    Id = 41937,
+    Level = 60,
+    Attain = 60,
+    Aim = "将梦境吊坠交给月光林地的巨熊之灵。",
+    Location = "'梦境吊坠' 掉落自 '奥索尔'，位于 " .. yellow .. "[9]" .. white .. "。",
+    Note = "巨熊之灵 (月光林地 " .. yellow .. "39, 27" .. white .. ")",
+    Rewards = {
+        Text = "奖励：择一",
+        { id = 33327 }, -- 翡翠漫延之枝
+        { id = 33328 }, -- 编织小精灵之戒
+        { id = 33329 }, -- 梦皮护身符
+    }
+}
+for i = 1, 10 do
     kQuestInstanceData.TimbermawHold.Horde[i] = kQuestInstanceData.TimbermawHold.Alliance[i]
 end
 
-kQuestInstanceData.TimbermawHold.Horde[10] = { --TODO translate
+kQuestInstanceData.TimbermawHold.Horde[11] = { --TODO translate
     Title = "洛克塔纳格，纯洁者",
     Id = 42009,
     Level = 60,

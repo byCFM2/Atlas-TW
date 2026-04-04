@@ -5270,7 +5270,17 @@ kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[3] = {
         { id = 83002 }, --Tome of Refreshment Ritual Pattern
     }
 }
-for i = 1, 3 do
+kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[4] = {
+    Title = "Olhos Contorcidos",
+    Id = 42002,
+    Level = 60,
+    Attain = 60,
+    Aim = "Encontre a espada dentro das Ruínas de Ahn’Qiraj.",
+    Location = "Massa de Tentáculos Contorcidos (Bastion de Presamadeira - Peroth'arn" .. yellow .. "[10]" .. white .. ")",
+    Note = red .. "Apenas Bruxos!" .. white .. " Entregar em: Lâmina de Prata Enterrada na Areia (Ruínas de Ahn'Qiraj " .. yellow .. "? " .. white .. ").",
+    Folgequest = "A Lâmina de Prata -> Encharcado de Poder -> O Chamado da Fenda",
+}
+for i = 1, 4 do
     kQuestInstanceData.TheRuinsofAhnQiraj.Horde[i] = kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[i]
 end
 
@@ -6516,22 +6526,22 @@ kQuestInstanceData.Gnomeregan.Horde[7] = {
 kQuestInstanceData.FourDragons = {
     Story = {
         ["Page1"] =
-        "There is a disturbance at the Great Trees. A new threat menaces these secluded areas found in Ashenvale, Duskwood, Feralas, and Hinterlands. Four great guardians of the green Dragonflight have arrived from the Dream, but these once-proud protectors now seek only destruction and death. Take arms with your fellows and march to these hidden groves -- only you can defend Azeroth from the corruption they bring.",
+        "Há uma perturbação nas Grandes Árvores. Uma nova ameaça assola essas áreas isoladas em Vale Gris, Bosque do Crepúsculo, Feralas e Terras Agrestes. Quatro grandes guardiões do Voo Verde chegaram do Sonho, mas esses outrora orgulhosos protetores agora buscam apenas destruição e morte. Arme-se com seus aliados e marche até esses bosques ocultos — só você pode defender Azeroth da corrupção que eles trazem.",
         ["Page2"] =
-        "Ysera, the great Dreaming dragon Aspect rules over the enigmatic Green dragonflight. Her domain is the fantastic, mystical realm of the Emerald Dream - and it is said that from there she guides the evolutionary path of the world itself. She is the protector of nature and imagination, and it is the charge of her flight to guard all of the Great Trees across the world, which only druids use to enter the Dream itself. In recent times, Ysera's most trusted lieutenants have been warped by a dark new power within the Emerald Dream. Now these wayward sentinels have passed through the Great Trees into Azeroth, intending to spread madness and terror throughout the mortal kingdoms. Even the mightiest of adventurers would be well advised to give the dragons a wide berth, or suffer the consequences of their misguided wrath.",
+        "Ysera, o grande Aspecto dragônico do Sonho, governa o enigmático Voo Verde. Seu domínio é o fantástico e místico reino do Sonho Esmeralda — e dizem que de lá ela guia o próprio curso evolutivo do mundo. Ela é a protetora da natureza e da imaginação, e cabe ao seu voo guardar todas as Grandes Árvores do mundo, pelas quais apenas druidas entram no Sonho. Nos últimos tempos, os mais fiéis tenentes de Ysera foram corrompidos por um novo poder sombrio dentro do Sonho Esmeralda. Agora esses sentinelas desviados atravessaram as Grandes Árvores até Azeroth, com a intenção de espalhar loucura e terror pelos reinos mortais. Até mesmo os aventureiros mais poderosos fariam bem em evitar esses dragões, ou sofrer as consequências de sua fúria.",
         ["Page3"] =
-        "Lethon's exposure to the aberration within the Emerald Dream not only darkened the hue of the mighty dragon's scales, but also empowered him with the ability to extract malevolent shades from his enemies. Once joined with their master, the shades imbue the dragon with healing energies. It should come as no surprise, then, that Lethon is considered to be among the most formidable of Ysera's wayward lieutenants",
+        "A exposição de Lethon à aberração dentro do Sonho Esmeralda não apenas escureceu suas escamas, mas também lhe concedeu o poder de extrair sombras malignas de seus inimigos. Ao se unirem ao seu mestre, essas sombras o imbuem com energias curativas. Não é surpresa que Lethon seja considerado um dos mais formidáveis tenentes corrompidos de Ysera.",
         ["Page4"] =
-        "A  mysterious dark power within the Emerald Dream has transformed the once-majestic Emeriss into a rotting, diseased monstrosity. Reports from the few who have survived encounters with the dragon have told horrifying tales of putrid mushrooms erupting from the corpses of their dead companions. Emeriss is truly the most gruesome and appalling of Ysera's estranged green dragons.",
+        "Um misterioso poder sombrio dentro do Sonho Esmeralda transformou o outrora majestoso Emeriss em uma monstruosidade apodrecida e doente. Relatos dos poucos sobreviventes falam de cogumelos pútridos brotando dos corpos de seus companheiros caídos. Emeriss é, sem dúvida, o mais grotesco e aterrador dos dragões verdes corrompidos de Ysera.",
         ["Page5"] =
-        "Taerar was perhaps the most affected of Ysera's rogue lieutenants. His interaction with the dark force within the Emerald Dream shattered Taerar's sanity as well as his corporeal form. The dragon now exists as a specter with the ability to split into multiple entities, each of which possesses destructive magical powers. Taerar is a cunning and relentless foe who is intent on turning the madness of his existence into reality for the inhabitants of Azeroth.",
+        "Taerar foi talvez o mais afetado dos tenentes rebeldes de Ysera. Sua interação com a força sombria do Sonho Esmeralda destruiu sua sanidade e sua forma física. O dragão agora existe como um espectro capaz de se dividir em múltiplas entidades, cada uma com poderes mágicos devastadores. Taerar é um inimigo astuto e implacável, decidido a tornar real a loucura de sua existência em Azeroth.",
         ["Page6"] =
-        "Once one of Ysera's most trusted lieutenants, Ysondre has now gone rogue, sewing terror and chaos across the land of Azeroth. Her formerly beneficent healing powers have given way to dark magics, enabling her to cast smoldering lightning waves and summon the aid of fiendish druids. Ysondre and her kin also possess the ability to induce sleep, sending her unfortunate mortal foes to the realm of their most terrifying nightmares.",
+        "Outrora um dos tenentes mais confiáveis de Ysera, Ysondre agora se voltou contra tudo e espalha terror e caos por Azeroth. Seus antigos poderes de cura deram lugar a magias sombrias, permitindo-lhe conjurar ondas de relâmpagos incandescentes e invocar a ajuda de druidas corrompidos. Ysondre e seus aliados também podem induzir o sono, enviando seus inimigos para seus piores pesadelos.",
         ["MaxPages"] = "6",
     },
     Caption = {
-        "Dragons of Nightmare",
-        "Ysera and the Green Dragonflight",
+        "Dragões do Pesadelo",
+        "Ysera e o Voo Verde",
         "Lethon",
         "Emeriss",
         "Taerar",
@@ -6556,7 +6566,105 @@ kQuestInstanceData.FourDragons.Alliance[1] = {
         { id = 20600 }, --Malfurion's Signet Ring Ring
     }
 }
-kQuestInstanceData.FourDragons.Horde[1] = kQuestInstanceData.FourDragons.Alliance[1]
+kQuestInstanceData.FourDragons.Alliance[2] = {
+    Title = "Pedra dos Sonhos, Vale Gris",
+    Id = 41923,
+    Level = 60,
+    Attain = 60,
+    Location = "Pedra dos Sonhos, Vale Gris ( " .. yellow .. "94, 38" .. white .. ")",
+    Note = "'Lamento de Ysera' é obtido de 'Favor de Erennius' (Solnius no modo difícil) (Santuário Esmeralda " .. yellow .. "[2]" .. white .. ").",
+}
+kQuestInstanceData.FourDragons.Alliance[3] = {
+    Title = "Pedra dos Sonhos, Feralas",
+    Id = 41924,
+    Level = 60,
+    Attain = 60,
+    Location = "Pedra dos Sonhos, Feralas ( " .. yellow .. "51, 12" .. white .. ")",
+    Note = "'Lamento de Ysera' é obtido de 'Favor de Erennius' (Solnius no modo difícil) (Santuário Esmeralda " .. yellow .. "[2]" .. white .. ").",
+}
+kQuestInstanceData.FourDragons.Alliance[4] = {
+    Title = "Pedra dos Sonhos, Bosque do Crepúsculo",
+    Id = 41925,
+    Level = 60,
+    Attain = 60,
+    Location = "Pedra dos Sonhos, Bosque do Crepúsculo ( " .. yellow .. "46, 39" .. white .. ")",
+    Note = "'Lamento de Ysera' é obtido de 'Favor de Erennius' (Solnius no modo difícil) (Santuário Esmeralda " .. yellow .. "[2]" .. white .. ").",
+}
+kQuestInstanceData.FourDragons.Alliance[5] = {
+    Title = "Pedra dos Sonhos, Terras Agrestes",
+    Id = 41926,
+    Level = 60,
+    Attain = 60,
+    Location = "Pedra dos Sonhos, Terras Agrestes ( " .. yellow .. "64, 28" .. white .. ")",
+    Note = "'Lamento de Ysera' é obtido de 'Favor de Erennius' (Solnius no modo difícil) (Santuário Esmeralda " .. yellow .. "[2]" .. white .. ").",
+}
+kQuestInstanceData.FourDragons.Alliance[6] = {
+    Title = "Encharcado em Poder",
+    Id = 42004,
+    Level = 60,
+    Attain = 60,
+    Location = "Altar das Profundezas (Azshara " .. yellow .. "89, 56" .. white .. ")",
+    Note = red .. "Apenas para bruxos!" .. white .. " 'Coração de Dragão Tocada pelo Pesadelo' é obtido dos Quatro Dragões.",
+    Prequest = "A Lâmina Prateada",
+    Folgequest = "A Fenda Chama",
+}
+for i = 1, 6 do
+    kQuestInstanceData.FourDragons.Horde[i] = kQuestInstanceData.FourDragons.Alliance[i]
+end
+
+--------------- Dark Reaver of Karazhan ---------------
+kQuestInstanceData.Reaver = {
+    Story = "O Ceifador Sombrio assombra as brumas do Passo da Morte, um coletor espectral de relíquias pagas com sangue. Ele foi transformado de um ladrão comum em um fantasma imortal, destinado a colher almas e tesouros para um mestre que há muito partiu.",
+    Caption = "Ceifador Sombrio de Karazhan",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.Reaver.Alliance[1] = {
+    Title = "Apito de Montaria de Lord Blackwald II",
+    Id = 41927,
+    Level = 60,
+    Attain = 60,
+    Aim = "Encontre um uso para o Ritual da Ressurreição. Os seres atemporais mencionados podem muito bem ser os poderosos dragões que percorrem Azeroth.",
+    Location = "O Apito de Montaria de Lord Blackwald II dropa de (Salões Inferiores de Karazhan - Lord Blackwald II " .. yellow .. "[5] " .. white .. ")",
+    Note = "Entregue a missão para 'Hanvar, o Justo' no Passo da Morte " .. yellow .. "[41, 79]" .. white .. ".",
+}
+kQuestInstanceData.Reaver.Horde[1] = kQuestInstanceData.Reaver.Alliance[1]
+
+--------------- Nerubian Overseer ---------------
+kQuestInstanceData.NerubianOverseer = {
+    Story = "O Feitor Nerubiano ergue-se como um sentinela sombrio de um império caído, um arquiteto de alto escalão do reino das aranhas cujo intelecto ancestral foi distorcido pelo abraço frio do flagelo. Dentro de sua forma quitinosa habita uma malícia calculista, encarregada de tecer uma teia de pavor pelo mundo para enredar os vivos em nome de seus mestres sombrios. Mestre tanto da proeza marcial quanto da astúcia necromântica, ele guarda as profundezas sombrias da terra, esperando em silêncio para abater qualquer um que ouse invadir seu domínio sagrado e coberto de seda.",
+    Caption = "Feitor Nerubiano",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.NerubianOverseer.Alliance[1] = {
+    Title = "O Chamado do Lorde da Cripta",
+    Id = 41928,
+    Level = 60,
+    Attain = 60,
+    Aim = "Entregue o Chamado do Lorde da Cripta a um poderoso portador da Luz.",
+    Location = "O 'Chamado do Lorde da Cripta' dropa de 'Anub'Rekhan' em (Naxxramas - Ala das Aranhas " .. yellow .. "[1]" .. white .. ".",
+    Note = "Entregue a missão a 'Tirion Fordring' nas Terras Pestilentas Orientais " .. yellow .. "[6, 44]" .. white .. ". 'Cruz Sagrada' dropa de elites Escarlates nas Terras Pestilentas Ocidentais e Orientais.",
+}
+kQuestInstanceData.NerubianOverseer.Horde[1] = kQuestInstanceData.NerubianOverseer.Alliance[1]
+
+--------------- Concavius ---------------
+kQuestInstanceData.Concavius = {
+    Story = "Concavius, outrora um espírito elemental menor à deriva nas correntes caóticas da Treva Imaterial, foi arrancado de seu plano etéreo e forçosamente vinculado à paisagem desolada de Azeroth por cultistas imprudentes da Lâmina Ardente. Transformado em um enorme andarilho do caos cristalino alimentado por energia arcana roubada, ele agora assombra as planícies de sal de Desolace, movido por uma consciência fragmentada e uma fome insaciável de recuperar o mana que impede sua forma física de se despedaçar.",
+    Caption = "Concavius",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.Concavius.Alliance[1] = {
+    Title = "Fragmento de Mana Transbordante",
+    Id = 41929,
+    Level = 60,
+    Attain = 60,
+    Aim = "Encontre o local para o qual o fragmento está atraindo você. Sua mente diz para buscar as energias sombrias de áreas profanas.",
+    Location = "'Fragmento de Mana Transbordante' dropa de (Ruínas de Ahn'Qiraj - Moam " .. yellow .. "[3] " .. white .. ")",
+    Note = "Entregue a missão no 'Altar' em Desolace " .. yellow .. "[80, 80]" .. white .. ".",
+}
+kQuestInstanceData.Concavius.Horde[1] = kQuestInstanceData.Concavius.Alliance[1]
 
 --------------- Azuregos ---------------
 kQuestInstanceData.Azuregos = {
@@ -6596,22 +6704,40 @@ kQuestInstanceData.Azuregos.Alliance[2] = {
     Prequest = "Encomienda a los Vuelos",
     Folgequest = "Traduzindo o livro-razão",
 }
-kQuestInstanceData.Azuregos.Horde[1] = kQuestInstanceData.Azuregos.Alliance[1]
-kQuestInstanceData.Azuregos.Horde[2] = kQuestInstanceData.Azuregos.Alliance[2]
+kQuestInstanceData.Azuregos.Alliance[3] = {--TODO translate
+    Title = "Rito de Ressurreição",
+    Id = 41935,
+    Level = 60,
+    Attain = 60,
+    Aim = "Encontre um uso para o rito de ressurreição. As criaturas imortais mencionadas podem muito bem ser os poderosos dragões que percorrem Azeroth.",
+    Location = "O rito de ressurreição é obtido em (Núcleo Derretido - Senescal Executus " .. yellow .. "[9]" .. white .. ")",
+    Note = "Entregar a missão para 'Espírito de Azuregos' em Azshara " .. yellow .. "[56, 83]" .. white .. ". 'Essência de Dragão Azul' é obtida de dragões azuis de elite e filhotes em Azshara, Hibérnia e Costa Murmurlunar.",
+}
+for i = 1, 3 do
+    kQuestInstanceData.Azuregos.Horde[i] = kQuestInstanceData.Azuregos.Alliance[i]
+end
 
 --------------- Lord Kazzak ---------------
 kQuestInstanceData.LordKazzak = {
-    Story =
-    "Após a derrota da Legião Ardente no final da Terceira Guerra, as forças inimigas restantes, lideradas pelo colossal lorde demoníaco Kazzak, recuaram para as Terras Desoladas. Eles continuam a habitar lá até hoje em uma área chamada a Cicatriz Maculada, aguardando a reabertura do Portal das Trevas. Diz-se que uma vez que o Portal seja reaberto, Kazzak viajará com suas forças restantes para Terralém. Uma vez o mundo natal orc de Draenor, Terralém foi despedaçado pela ativação simultânea de vários portais criados pelo xamã orc Ner'zhul, e agora existe como um mundo despedaçado ocupado por legiões de agentes demoníacos sob o comando do traidor elfo noturno, Illidan.",
+    Story = "Após a derrota da Legião Ardente no final da Terceira Guerra, as forças inimigas restantes, lideradas pelo colossal lorde demoníaco Kazzak, recuaram para as Terras Desoladas. Eles continuam a habitar lá até hoje em uma área chamada a Cicatriz Maculada, aguardando a reabertura do Portal das Trevas. Diz-se que uma vez que o Portal seja reaberto, Kazzak viajará com suas forças restantes para Terralém. Uma vez o mundo natal orc de Draenor, Terralém foi despedaçado pela ativação simultânea de vários portais criados pelo xamã orc Ner'zhul, e agora existe como um mundo despedaçado ocupado por legiões de agentes demoníacos sob o comando do traidor elfo noturno, Illidan.",
     Caption = "Lorde Kazzak",
     Alliance = {},
     Horde = {}
 }
+kQuestInstanceData.LordKazzak.Alliance[1] = {
+    Title = "Cristal de Fenda Retorcida",
+    Id = 41936,
+    Level = 60,
+    Attain = 60,
+    Aim = "Entregue o cristal a um poderoso bruxo.",
+    Location = "O Cristal de Fenda Retorcida é obtido em (Núcleo Derretido - Senescal Executus " .. yellow .. "[9]" .. white .. ")",
+    Note = "Entregue a missão para 'Daio, o Decrépito' nas Terras Devastadas " .. yellow .. "[34, 50]" .. white .. ". 'Sangue Demoníaco Imbuído com Éter' é obtido de demônios de elite nas Terras Devastadas, Hibérnia e Hyjal.",
+}
+kQuestInstanceData.LordKazzak.Horde[1] = kQuestInstanceData.LordKazzak.Alliance[1]
 
 --------------- Alterac Valley ---------------
 kQuestInstanceData.BGAlteracValleyNorth = {
-    Story =
-    "Há muito tempo, antes da Primeira Guerra, o bruxo Gul'dan exilou um clã de orcs chamado Lobos Gélidos para um vale escondido no fundo do coração das Montanhas de Alterac. É aqui, nas regiões sul do vale, que os Lobos Gélidos conseguiram uma vida até a chegada de Thrall.\nApós a triunfante união dos clãs por Thrall, os Lobos Gélidos, agora liderados pelo Xamã Orc Drek'Thar, escolheram permanecer no vale que há tanto tempo chamavam de lar. Em tempos recentes, no entanto, a paz relativa dos Lobos Gélidos foi desafiada pela chegada da Expedição Anã Martelo Feroz.\nOs Martelo Feroz se estabeleceram no vale para procurar recursos naturais e relíquias antigas. Apesar de suas intenções, a presença Anã provocou conflito acirrado com os Orcs Lobo Gélido ao sul, que juraram expulsar os intrusos de suas terras. ",
+    Story = "Há muito tempo, antes da Primeira Guerra, o bruxo Gul'dan exilou um clã de orcs chamado Lobos Gélidos para um vale escondido no fundo do coração das Montanhas de Alterac. É aqui, nas regiões sul do vale, que os Lobos Gélidos conseguiram uma vida até a chegada de Thrall.\nApós a triunfante união dos clãs por Thrall, os Lobos Gélidos, agora liderados pelo Xamã Orc Drek'Thar, escolheram permanecer no vale que há tanto tempo chamavam de lar. Em tempos recentes, no entanto, a paz relativa dos Lobos Gélidos foi desafiada pela chegada da Expedição Anã Martelo Feroz.\nOs Martelo Feroz se estabeleceram no vale para procurar recursos naturais e relíquias antigas. Apesar de suas intenções, a presença Anã provocou conflito acirrado com os Orcs Lobo Gélido ao sul, que juraram expulsar os intrusos de suas terras. ",
     Caption = "Vale Alterac",
     Alliance = {},
     Horde = {}
@@ -8235,7 +8361,22 @@ kQuestInstanceData.EmeraldSanctum.Alliance[3] = {
         { id = 61740 }, --Claw of Senthos Main Hand, Fist Weapon
     }
 }
-for i = 1, 3 do
+
+kQuestInstanceData.EmeraldSanctum.Alliance[4] = {
+    Title = "A Fenda Chama",
+    Id = 42005,
+    Level = 60,
+    Attain = 60,
+    Aim = "Derrote Solnius e reúna Thil’phoral com o fragmento que ele possui na Vinha de Aln dentro do Santuário Esmeralda.",
+    Location = "Altar das Profundezas (Azshara " .. yellow .. "[89, 56]" .. white .. ").",
+    Note = red .. "Apenas para bruxos!" .. white .. " A missão prévia começa com 'Massa de Tentáculos Retorcidos', obtida em (Bastilha Presamadeira " .. yellow .. "[10]" .. white .. "). 'Solnius' está em " .. yellow .. "[2]" .. white .. ".",
+    Prequest = "Olhos Retorcidos -> A Lâmina Prateada -> Encharcado em Poder",
+    Rewards = {
+        Text = "Recompensa:",
+        { id = 33332 }, --Thil'phoral, o Presságio de Aln
+    }
+}
+for i = 1, 4 do
     kQuestInstanceData.EmeraldSanctum.Horde[i] = kQuestInstanceData.EmeraldSanctum.Alliance[i]
 end
 
@@ -9003,7 +9144,7 @@ kQuestInstanceData.TimbermawHold.Alliance[5] = { --TODO translate
     Attain = 60,
     Aim = "Recupere a Bolsa de Remédios de Narkogg e a Flor Pútrida de dentro do Bastião Presa de Madeira para Narkogg, o Sombrio, na Gorja de Ursoc em Azshara.",
     Location = "Narkogg, o Sombrio (Azshara - Gorja de Ursoc " .. yellow .. "39, 21" .. white .. ")",
-    Note = "'Bolsa de Remédios de Narkogg' está em " .. yellow .. "0, 0" .. white .. ", 'Flor Pútrida' está em " .. yellow .. "0, 0" .. white .. ".",
+    Note = "'Bolsa de Remédios de Narkogg' e 'Flor Pútrida' estão no Bastião Presa de Madeira.",
     Prequest = "Remédios Ancestrais dos Gorjelins",
     Folgequest = "O que Resta, Essência da Purificação, Couro de um Deus Selvagem",
     Rewards = {
@@ -9072,11 +9213,26 @@ kQuestInstanceData.TimbermawHold.Alliance[9] = { --TODO translate
         { id = 61197, quantity = 3 }, -- Fading Dream Fragment
     }
 }
-for i = 1, 9 do
+kQuestInstanceData.TimbermawHold.Alliance[10] = { --TODO translate
+    Title = "O Fim do Pesadelo",
+    Id = 41937,
+    Level = 60,
+    Attain = 60,
+    Aim = "Entregue o Pingente dos Sonhos ao Grande Espírito do Urso em Lua Prata.",
+    Location = "'Pingente dos Sonhos' dropa de 'Ursol' em " .. yellow .. "[9]" .. white .. ".",
+    Note = "Grande Espírito do Urso (Lua Prata " .. yellow .. "39, 27" .. white .. ")",
+    Rewards = {
+        Text = "Recompensa: Escolha uma",
+        { id = 33327 }, -- Ramo da Expansão Esmeralda
+        { id = 33328 }, -- Elo de Fogo-fátuo Tecido
+        { id = 33329 }, -- Amuleto de Casca-dos-sonhos
+    }
+}
+for i = 1, 10 do
     kQuestInstanceData.TimbermawHold.Horde[i] = kQuestInstanceData.TimbermawHold.Alliance[i]
 end
 
-kQuestInstanceData.TimbermawHold.Horde[10] = { --TODO translate
+kQuestInstanceData.TimbermawHold.Horde[11] = { --TODO translate
     Title = "Loktanag, o Puro",
     Id = 42009,
     Level = 60,

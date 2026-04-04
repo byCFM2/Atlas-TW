@@ -5170,8 +5170,7 @@ kQuestInstanceData.Stratholme.Horde[21] = kQuestInstanceData.Stratholme.Alliance
 
 --------------- Ruins of Ahn'Qiraj ---------------
 kQuestInstanceData.TheRuinsofAhnQiraj = {
-    Story =
-    "During the final hours of the War of the Shifting Sands, the combined forces of the night elves and the four dragonflights drove the battle to the very heart of the qiraji empire, to the fortress city of Ahn'Qiraj. Yet at the city gates, the armies of Kalimdor encountered a concentration of silithid war drones more massive than any they had encountered before. Ultimately the silithid and their qiraji masters were not defeated, but merely imprisoned inside a magical barrier, and the war left the cursed city in ruins. A thousand years have passed since that day, but the qiraji forces have not been idle. A new and terrible army has been spawned from the hives, and the ruins of Ahn'Qiraj are teeming once again with swarming masses of silithid and qiraji. This threat must be eliminated, or else all of Azeroth may fall before the terrifying might of the new qiraji army.",
+    Story = "During the final hours of the War of the Shifting Sands, the combined forces of the night elves and the four dragonflights drove the battle to the very heart of the qiraji empire, to the fortress city of Ahn'Qiraj. Yet at the city gates, the armies of Kalimdor encountered a concentration of silithid war drones more massive than any they had encountered before. Ultimately the silithid and their qiraji masters were not defeated, but merely imprisoned inside a magical barrier, and the war left the cursed city in ruins. A thousand years have passed since that day, but the qiraji forces have not been idle. A new and terrible army has been spawned from the hives, and the ruins of Ahn'Qiraj are teeming once again with swarming masses of silithid and qiraji. This threat must be eliminated, or else all of Azeroth may fall before the terrifying might of the new qiraji army.",
     Caption = "Ruins of Ahn'Qiraj",
     Alliance = {},
     Horde = {}
@@ -5222,18 +5221,25 @@ kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[3] = {
     Attain = 60,
     Aim = "Bring a Perfect Obsidian Shard to Archmage Xylem.",
     Location = "Archmage Xylem (Azshara " .. yellow .. "28,47" .. white .. ")",
-    Note = red ..
-        "Mage only" ..
-        white ..
-        ": pre-quest from Lorekeeper Lydros (Dire Maul - West or North " ..
-        yellow .. "[1] Library" .. white .. "). Perfect Obsidian Shard drop from " .. yellow .. "[3]" .. white .. ".",
+    Note = red .. "Mage only" .. white .. ": pre-quest from Lorekeeper Lydros (Dire Maul - West or North " .. yellow .. "[1] Library" .. white .. "). Perfect Obsidian Shard drop from " .. yellow .. "[3]" .. white .. ".",
     Prequest = "Arcane Refreshment -> A Special Kind of Summons",
     Rewards = {
         Text = "Reward:",
         { id = 83002 }, --Tome of Refreshment Ritual Pattern
     }
 }
-for i = 1, 3 do
+kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[4] = {
+    Title = "Writhing Eyes",
+    Id = 42002,
+    Level = 60,
+    Attain = 60,
+    Aim = "Find the sword inside the Ruins of Ahn’Qiraj.",
+    Location = "Mass of Writhing Tentacles (Timbermaw Hold - Peroth'arn" .. yellow .. "[10]" .. white .. ")",
+    Note = red .. "Warlock only!" .. white .. " Turn in at Sand-buried Silver Blade (Ruins of Ahn'Qiraj " .. yellow .. "? " .. white .. ").",
+    Folgequest = "The Silver Blade -> Drenched in Power -> The Rift Calls",
+}
+
+for i = 1, 4 do
     kQuestInstanceData.TheRuinsofAhnQiraj.Horde[i] = kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[i]
 end
 
@@ -6501,23 +6507,118 @@ kQuestInstanceData.FourDragons.Alliance[1] = {
     Id = 8446,
     Level = 60,
     Attain = 60,
-    Aim =
-    "Find someone capable of deciphering the meaning behind the Nightmare Engulfed Object.\n\nPerhaps a druid of great power could assist you.",
+    Aim = "Find someone capable of deciphering the meaning behind the Nightmare Engulfed Object.\n\nPerhaps a druid of great power could assist you.",
     Location = "Nightmare Engulfed Object (drops from Emeriss, Taerar, Lethon or Ysondre)",
-    Note = "Quest turns in to Keeper Remulos at (Moonglade - Shrine of Remulos " ..
-        yellow .. "36,41" .. white .. "). Reward listed is for the followup.",
+    Note = "Quest turns in to Keeper Remulos at (Moonglade - Shrine of Remulos " .. yellow .. "36,41" .. white .. "). Reward listed is for the followup.",
     Folgequest = "Waking Legends",
     Rewards = {
         Text = "Reward:",
         { id = 20600 }, --Malfurion's Signet Ring Ring
     }
 }
-kQuestInstanceData.FourDragons.Horde[1] = kQuestInstanceData.FourDragons.Alliance[1]
+kQuestInstanceData.FourDragons.Alliance[2] = {
+    Title = "Stone of Dreams, Ashenvale",
+    Id = 41923,
+    Level = 60,
+    Attain = 60,
+    Location = "Stone of Dreams, Ashenvale ( " .. yellow .. "94, 38" .. white .. ")",
+    Note = "'Wail of Ysera' drops from 'Favor of Erennius' Solnius hard mode (Emerald Sanctum " .. yellow .. "[2]" .. white .. ").",
+}
+kQuestInstanceData.FourDragons.Alliance[3] = {
+    Title = "Stone of Dreams, Feralas",
+    Id = 41924,
+    Level = 60,
+    Attain = 60,
+    Location = "Stone of Dreams, Feralas ( " .. yellow .. "51, 12" .. white .. ")",
+    Note = "'Wail of Ysera' drops from 'Favor of Erennius' Solnius hard mode (Emerald Sanctum " .. yellow .. "[2]" .. white .. ").",
+}
+kQuestInstanceData.FourDragons.Alliance[4] = {
+    Title = "Stone of Dreams, Duskwood",
+    Id = 41925,
+    Level = 60,
+    Attain = 60,
+    Location = "Stone of Dreams, Duskwood ( " .. yellow .. "46, 39" .. white .. ")",
+    Note = "'Wail of Ysera' drops from 'Favor of Erennius' Solnius hard mode (Emerald Sanctum " .. yellow .. "[2]" .. white .. ").",
+}
+kQuestInstanceData.FourDragons.Alliance[5] = {
+    Title = "Stone of Dreams, Hinterlands",
+    Id = 41926,
+    Level = 60,
+    Attain = 60,
+    Location = "Stone of Dreams, Hinterlands ( " .. yellow .. "64, 28" .. white .. ")",
+    Note = "'Wail of Ysera' drops from 'Favor of Erennius' Solnius hard mode (Emerald Sanctum " .. yellow .. "[2]" .. white .. ").",
+}
+kQuestInstanceData.FourDragons.Alliance[6] = {
+    Title = "Drenched in Power",
+    Id = 42004,
+    Level = 60,
+    Attain = 60,
+    Location = "Altar of Depths (Azshara " .. yellow .. "89, 56" .. white .. ")",
+    Note = red .. "Warlock Only!" .. white .. " 'Nightmare-touched Dragon Heart' drops from Four Dragons.",
+    Prequest = "The Silver Blade",
+    Folgequest = "The Rift Calls",
+}
+for i = 1, 6 do
+    kQuestInstanceData.FourDragons.Horde[i] = kQuestInstanceData.FourDragons.Alliance[i]
+end
+
+--------------- Dark Reaver of Karazhan ---------------
+kQuestInstanceData.Reaver = {
+    Story = "The Dark Reaver haunts the mists of Deadwind Pass, a spectral collector of relics paid for in blood. He was transformed from a common thief into an immortal phantom, destined to reap souls and treasures for a master who has long since departed.",
+    Caption = "Dark Reaver of Karazhan",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.Reaver.Alliance[1] = {
+    Title = "Lord Blackwald II’s Riding Whistle",
+    Id = 41927,
+    Level = 60,
+    Attain = 60,
+    Aim = "Find a use for the Rite of Resurrection. The ageless beings mentioned could very well be the mighty dragons roaming Azeroth.",
+    Location = "Lord Blackwald II’s Riding Whistle drops from (Lower Karazhan Halls - Lord Blackwald II " .. yellow .. "[5] " .. white .. ")",
+    Note = "Turn in the quest to 'Hanvar the Righteous' in Deadwind Pass " .. yellow .. "[41, 79]" .. white .. ".",
+}
+kQuestInstanceData.Reaver.Horde[1] = kQuestInstanceData.Reaver.Alliance[1]
+
+--------------- Concavius ---------------
+kQuestInstanceData.Concavius = {
+    Story = "Concavius, once a minor elemental spirit drifting through the chaotic currents of the Twisting Nether, was torn from his ethereal plane and forcibly bound to the desolate landscape of Azeroth by reckless Burning Blade cultists. Transformed into a massive, crystalline void walker fueled by stolen arcane energy, he now haunts the salt flats of Desolace, driven by a fractured consciousness and an insatiable hunger to reclaim the mana that keeps his physical form from shattering.",
+    Caption = "Concavius",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.Concavius.Alliance[1] = {
+    Title = "Bursting Mana Shard",
+    Id = 41929,
+    Level = 60,
+    Attain = 60,
+    Aim = "Find the location the shard is pulling you towards. Your mind tells you to seek the dark energies of profane areas.",
+    Location = "'Bursting Mana Shard' drops from (Ruins of Ahn'Qiraj - Moam " .. yellow .. "[3] " .. white .. ")",
+    Note = "Turn in the quest to 'Altar' in Desolace " .. yellow .. "[80, 80]" .. white .. ".",
+}
+kQuestInstanceData.Concavius.Horde[1] = kQuestInstanceData.Concavius.Alliance[1]
+
+--------------- Nerubian Overseer ---------------
+kQuestInstanceData.NerubianOverseer = {
+    Story = "The Nerubian Overseer stands as a grim sentinel of a fallen empire, a high-ranking architect of the spider-kingdom whose ancient intellect has been twisted by the cold embrace of undeath. Within his chitinous form dwells a calculating malice, charged with weaving a web of dread across the world to ensnare the living in the name of his dark masters. A master of both martial prowess and necromantic guile, he guards the shadowed depths of the earth, waiting in silence to strike down any who dare trespass upon his hallowed, silk-strewn domain.",
+    Caption = "Nerubian Overseer",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.NerubianOverseer.Alliance[1] = {
+    Title = "Crypt Lord’s Beckoning",
+    Id = 41928,
+    Level = 60,
+    Attain = 60,
+    Aim = "Deliver the Crypt Lord’s Beckoning to a powerful wielder of the Light.",
+    Location = "'Crypt Lord’s Beckoning' drops from 'Anub'Rekhan' in (Naxxramas - Spider Wing " .. yellow .. "[1]" .. white .. ".",
+    Note = "Turn in the quest to 'Tirion Fordring' in Eastern Plaguelands " .. yellow .. "[6, 44]" .. white .. ". 'Hallowed Cross' drops from Scarlet elite mobs in Western and Eastern Plaguelands.",
+}
+kQuestInstanceData.NerubianOverseer.Horde[1] = kQuestInstanceData.NerubianOverseer.Alliance[1]
 
 --------------- Azuregos ---------------
 kQuestInstanceData.Azuregos = {
-    Story =
-    "Before the Great Sundering, the night elf city of Eldarath flourished in the land that is now known as Azshara. It is believed that many ancient and powerful Highborne artifacts may be found among the ruins of the once-mighty stronghold. For countless generations, the Blue Dragon Flight has safeguarded powerful artifacts and magical lore, ensuring that they do not fall into mortal hands. The presence of Azuregos, the Blue dragon, seems to suggest that items of extreme significance, perhaps the fabled Vials of Eternity themselves, may be found in the wilderness of Azshara. Whatever Azuregos seeks, one thing is certain: he will fight to the death to defend Azshara's magical treasures.",
+    Story = "Before the Great Sundering, the night elf city of Eldarath flourished in the land that is now known as Azshara. It is believed that many ancient and powerful Highborne artifacts may be found among the ruins of the once-mighty stronghold. For countless generations, the Blue Dragon Flight has safeguarded powerful artifacts and magical lore, ensuring that they do not fall into mortal hands. The presence of Azuregos, the Blue dragon, seems to suggest that items of extreme significance, perhaps the fabled Vials of Eternity themselves, may be found in the wilderness of Azshara. Whatever Azuregos seeks, one thing is certain: he will fight to the death to defend Azshara's magical treasures.",
     Caption = "Azuregos",
     Alliance = {},
     Horde = {}
@@ -6527,14 +6628,9 @@ kQuestInstanceData.Azuregos.Alliance[1] = {
     Id = 7634,
     Level = 60,
     Attain = 60,
-    Aim =
-    "Hastat the Ancient has asked that you bring him a Mature Blue Dragon Sinew. Should you find this sinew, return it to Hastat in Felwood.",
+    Aim = "Hastat the Ancient has asked that you bring him a Mature Blue Dragon Sinew. Should you find this sinew, return it to Hastat in Felwood.",
     Location = "Hastat the Ancient (Felwood - Irontree Woods " .. yellow .. "48,24" .. white .. ")",
-    Note = red ..
-        "Hunter only" ..
-        white ..
-        ": Kill Azuregos to get the Mature Blue Dragon Sinew. He walks around the middle of the southern peninsula in Azshara near " ..
-        yellow .. "[1]" .. white .. ".",
+    Note = red .. "Hunter only" .. white .. ": Kill Azuregos to get the Mature Blue Dragon Sinew. He walks around the middle of the southern peninsula in Azshara near " .. yellow .. "[1]" .. white .. ".",
     Prequest = "The Ancient Leaf (" .. yellow .. "Molten Core" .. white .. ")", -- 7632",
     Rewards = {
         Text = "Reward:",
@@ -6547,13 +6643,23 @@ kQuestInstanceData.Azuregos.Alliance[2] = {
     Level = 60,
     Attain = 60,
     Aim = "Deliver Azuregos's Magical Ledger to Narain Soothfancy in Tanaris.",
-    Location = "Spirit of Azuregos (Azshara " .. yellow .. "56,83" .. white .. ")",
-    Note = "You can find Narain Soothfancy in Tanaris at " .. yellow .. "65.17" .. white .. ".",
+    Location = "Spirit of Azuregos (Azshara " .. yellow .. "56, 83" .. white .. ")",
+    Note = "You can find Narain Soothfancy in Tanaris at " .. yellow .. "65, 17" .. white .. ".",
     Prequest = "The Charge of the Dragonflights",
     Folgequest = "Translating the Ledger",
 }
-kQuestInstanceData.Azuregos.Horde[1] = kQuestInstanceData.Azuregos.Alliance[1]
-kQuestInstanceData.Azuregos.Horde[2] = kQuestInstanceData.Azuregos.Alliance[2]
+kQuestInstanceData.Azuregos.Alliance[3] = {
+    Title = "Rite of Resurrection",
+    Id = 41935,
+    Level = 60,
+    Attain = 60,
+    Aim = "Find a use for the Rite of Resurrection. The ageless beings mentioned could very well be the mighty dragons roaming Azeroth.",
+    Location = "Rite of Resurrection drops from (Molten Core - Majordomo Executus " .. yellow .. "[9]" .. white .. ")",
+    Note = "Turn in the quest to 'Spirit of Azuregos' in Azshara " .. yellow .. "[56, 83]" .. white .. ". 'Blue Dragon Essence' drops from elite blue dragons and whelps in Azshara, Winterspring and the Moonwhisper Coast.",
+}
+for i = 1, 3 do
+    kQuestInstanceData.Azuregos.Horde[i] = kQuestInstanceData.Azuregos.Alliance[i]
+end
 
 --------------- Lord Kazzak ---------------
 kQuestInstanceData.LordKazzak = {
@@ -6563,11 +6669,20 @@ kQuestInstanceData.LordKazzak = {
     Alliance = {},
     Horde = {}
 }
+kQuestInstanceData.LordKazzak.Alliance[1] = {
+    Title = "Twisting Rift Crystal",
+    Id = 41936,
+    Level = 60,
+    Attain = 60,
+    Aim = "Deliver the crystal to a powerful warlock.",
+    Location = "Twisting Rift Crystal drops from (Molten Core - Majordomo Executus " .. yellow .. "[9]" .. white .. ")",
+    Note = "Turn in the quest to 'Daio the Decrepit' in Blasted Lands " .. yellow .. "[34, 50]" .. white .. ". 'Netherrich Demon Blood' drops from elite demons in Blasted Lands, Winterspring and the Hyjal.",
+}
+kQuestInstanceData.LordKazzak.Horde[1] = kQuestInstanceData.LordKazzak.Alliance[1]
 
 --------------- Alterac Valley ---------------
 kQuestInstanceData.BGAlteracValleyNorth = {
-    Story =
-    "Long ago, before the First War, the warlock Gul'dan exiled a clan of orcs called the Frostwolves to a hidden valley deep in the heart of the Alterac Mountains. It is here in the valley's southern reaches that the Frostwolves eked out a living until the coming of Thrall.\nAfter Thrall's triumphant uniting of the clans, the Frostwolves, now led by the Orc Shaman Drek'Thar, chose to remain in the valley they had for so long called their home. In recent times, however, the relative peace of the Frostwolves has been challenged by the arrival of the Dwarven Stormpike Expedition.\nThe Stormpikes have set up residence in the valley to search for natural resources and ancient relics. Despite their intentions, the Dwarven presence has sparked heated conflict with the Frostwolf Orcs to the south, who have vowed to drive the interlopers from their lands. ",
+    Story = "Long ago, before the First War, the warlock Gul'dan exiled a clan of orcs called the Frostwolves to a hidden valley deep in the heart of the Alterac Mountains. It is here in the valley's southern reaches that the Frostwolves eked out a living until the coming of Thrall.\nAfter Thrall's triumphant uniting of the clans, the Frostwolves, now led by the Orc Shaman Drek'Thar, chose to remain in the valley they had for so long called their home. In recent times, however, the relative peace of the Frostwolves has been challenged by the arrival of the Dwarven Stormpike Expedition.\nThe Stormpikes have set up residence in the valley to search for natural resources and ancient relics. Despite their intentions, the Dwarven presence has sparked heated conflict with the Frostwolf Orcs to the south, who have vowed to drive the interlopers from their lands. ",
     Caption = "Alterac Valley",
     Alliance = {},
     Horde = {}
@@ -6577,8 +6692,7 @@ kQuestInstanceData.BGAlteracValleyNorth.Alliance[1] = {
     Id = 7261,
     Level = 60,
     Attain = 51,
-    Aim =
-    "Travel to Alterac Valley in the Hillsbrad Foothills. Outside of the entrance tunnel, find and speak with Lieutenant Haggerdin.",
+    Aim = "Travel to Alterac Valley in the Hillsbrad Foothills. Outside of the entrance tunnel, find and speak with Lieutenant Haggerdin.",
     Location = "Lieutenant Rotimer (Ironforge - The Commons " .. yellow .. "30,62" .. white .. ")",
     Note = "Lieutenant Haggerdin is at (Alterac Mountains " .. yellow .. "39,81" .. white .. ").",
     Folgequest = "Proving Grounds",
@@ -8185,14 +8299,27 @@ kQuestInstanceData.EmeraldSanctum.Alliance[3] = {
         { id = 61740 }, --Claw of Senthos Main Hand, Fist Weapon
     }
 }
-for i = 1, 3 do
+kQuestInstanceData.EmeraldSanctum.Alliance[4] = {
+    Title = "The Rift Calls",
+    Id = 42005,
+    Level = 60,
+    Attain = 60,
+    Aim = "Slay Solnius and reunite Thil’phoral with the splinter he possesses at the Vine of Aln inside the Emerald Sanctum.",
+    Location = "Altar of Depths  (Azshara " .. yellow .. "[89, 56]" .. white .. ").",
+    Note = red .. "Warlocks only!" .. white .. "Prequest starts from 'Mass of Writhing Tentacles' drops from (Timbermaw Hold " .. yellow .. "[10]" .. white .. "). 'Solnius' is at " .. yellow .. "[2]" .. white .. ".",
+    Prequest = "Writhing Eyes -> The Silver Blade -> Drenched in Power",
+    Rewards = {
+        Text = "Reward:",
+        { id = 33332 }, --Thil'phoral, the Omen of Aln
+    }
+}
+for i = 1, 4 do
     kQuestInstanceData.EmeraldSanctum.Horde[i] = kQuestInstanceData.EmeraldSanctum.Alliance[i]
 end
 
 --------------- Tower of Karazhan ---------------
 kQuestInstanceData.TowerofKarazhan = {
-    Story =
-    "Tower of Karazhan is an instance raid located in Deadwind Pass. Karazhan, once the towering stronghold of the former Guardian of Tirisfal, now hums with magical energy as it perches atop a powerful leyline. Its long-forgotten corridors, covered in dust, have become a haven for various creatures, though it appears that not all of its inhabitants have willingly departed.",
+    Story = "Tower of Karazhan is an instance raid located in Deadwind Pass. Karazhan, once the towering stronghold of the former Guardian of Tirisfal, now hums with magical energy as it perches atop a powerful leyline. Its long-forgotten corridors, covered in dust, have become a haven for various creatures, though it appears that not all of its inhabitants have willingly departed.",
     Caption = "Tower of Karazhan",
     Alliance = {},
     Horde = {}
@@ -8935,7 +9062,7 @@ kQuestInstanceData.TimbermawHold.Alliance[5] = { --TODO translate
     Attain = 60,
     Aim = "Retrieve Narkogg’s Medicine Pouch and the Putrid Flower from within Timbermaw Hold for Narkogg the Dark in the Maw of Ursoc in Azshara.",
     Location = "Narkogg the Dark (Azshara - Maw of Ursoc " .. yellow .. "39, 21" .. white .. ")",
-    Note = "'Narkogg’s Medicine Pouch' is at " .. yellow .. "0, 0" .. white .. ", 'Putrid Flower' is at " .. yellow .. "0, 0" .. white .. ".",
+    Note = "'Narkogg’s Medicine Pouch' and 'Putrid Flower' are at Timbermaw Hold.",
     Prequest = "Ancient Furbolg Remedies",
     Folgequest = "What Remains, Essence of Purification, Hide of a Wild God",
     Rewards = {
@@ -8977,7 +9104,7 @@ kQuestInstanceData.TimbermawHold.Alliance[8] = { --TODO translate
     Attain = 60,
     Aim = "Bring the Hide of Ursol to the furbolg of the Maw of Ursoc in Azshara.",
     Location = "Corrupted Hide of Ursol (Timbermaw Hold " .. yellow .. "[9]" .. white .. ")",
-    Note = "'Kathor the Brave' is at (Azshara - Maw of Ursoc" .. yellow .. "[39, 21]" .. white .. ").",
+    Note = "'Kathor the Brave' is at (Azshara - Maw of Ursoc " .. yellow .. "[39, 21]" .. white .. ").",
     Prequest = "Unbridled Darkness",
     Rewards = {
         Text = "Reward: Pick One",
@@ -8993,7 +9120,7 @@ kQuestInstanceData.TimbermawHold.Alliance[9] = { --TODO translate
     Attain = 60,
     Aim = "Enter Timbermaw Hold and destroy Peroth’arn. Return to Narkogg the Dark in the Maw of Ursoc in Azshara after you have cleansed the corruption plagueing Kalimdor!",
     Location = "Gorn One Eye (Timbermaw Tunnels " .. yellow .. "30, 64" .. white .. ")",
-    Note = "Prequest start at Nathok (Azshara - Maw of Ursoc" .. yellow .. "39, 20" .. white .. "). 'Peroth'arn' is at " .. yellow .. "[10]" .. white .. ".",
+    Note = "Prequest start at Nathok (Azshara - Maw of Ursoc " .. yellow .. "39, 20" .. white .. "). 'Peroth'arn' is at " .. yellow .. "[10]" .. white .. ".",
     Prequest = "Purging Flames (" .. yellow .. "Molten Core" .. white .. ")", -- 41965
     Rewards = {
         Text = "Reward:",
@@ -9004,11 +9131,26 @@ kQuestInstanceData.TimbermawHold.Alliance[9] = { --TODO translate
         { id = 61197, quantity = 3 }, -- Fading Dream Fragment
     }
 }
-for i = 1, 9 do
+kQuestInstanceData.TimbermawHold.Alliance[10] = { --TODO translate
+    Title = "Nightmare’s End",
+    Id = 41937,
+    Level = 60,
+    Attain = 60,
+    Aim = "Deliver the Pendant of Dreams to the Great Bear Spirit in Moonglade.",
+    Location = "'Pendant of Dreams' drops from 'Ursol' is at " .. yellow .. "[9]" .. white .. ".",
+    Note = "Great Bear Spirit (Moonglade " .. yellow .. "39, 27" .. white .. ")",
+    Rewards = {
+        Text = "Reward: Pick One",
+        { id = 33327 }, -- Branch of the Emerald Expanse
+        { id = 33328 }, -- Wispwoven Loop
+        { id = 33329 }, -- Dreambark Amulet
+    }
+}
+for i = 1, 10 do
     kQuestInstanceData.TimbermawHold.Horde[i] = kQuestInstanceData.TimbermawHold.Alliance[i]
 end
 
-kQuestInstanceData.TimbermawHold.Horde[10] = { --TODO translate
+kQuestInstanceData.TimbermawHold.Horde[11] = { --TODO translate
     Title = "Loktanag the Pure",
     Id = 42009,
     Level = 60,

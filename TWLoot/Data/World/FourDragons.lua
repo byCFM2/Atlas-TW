@@ -44,9 +44,10 @@ local ShareLoot = {
     { id = 17969, disc = L["Container"], dropRate = 20, container = { 13926, 7971, 55250, 7909, 3864, 55251, 7910, 1529, 12799 } }, -- Red Sack of Gems
     -- Rare items (shared for all dragons)
     {},
-    { id = 20580, dropRate = 8.93 }, -- Hammer of Bestial Fury
-    { id = 20581, dropRate = 9.70 }, -- Staff of Rampant Growth
+    { id = 20580, dropRate = 9 }, -- Hammer of Bestial Fury
+    { id = 20581, dropRate = 10 }, -- Staff of Rampant Growth
     {},
+    { id = 42297, dropRate = 100 }, -- Nightmare-touched Dragon Heart
     { id = 20381, disc = L["Reagent"], dropRate = 100 }, -- Dreamscale
 }
 -- Emerald dragons data

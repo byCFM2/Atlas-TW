@@ -5290,7 +5290,18 @@ kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[3] = {
         { id = 83002 }, --Tome of Refreshment Ritual Pattern
     }
 }
-for i = 1, 3 do
+kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[4] = {
+    Title = "Zuckende Augen",
+    Id = 42002,
+    Level = 60,
+    Attain = 60,
+    Aim = "Findet das Schwert in den Ruinen von Ahn’Qiraj.",
+    Location = "Haufen zuckender Tentakel (Holzschlundfeste - Peroth'arn" .. yellow .. "[10]" .. white .. ")",
+    Note = red .. "Nur für Hexenmeister!" .. white .. " Abgabe bei: Im Sand vergrabene Silberklinge (Ruinen von Ahn'Qiraj " .. yellow .. "? " .. white .. ").",
+    Folgequest = "Die Silberklinge -> In Macht getränkt -> Der Riss ruft",
+}
+
+for i = 1, 4 do
     kQuestInstanceData.TheRuinsofAhnQiraj.Horde[i] = kQuestInstanceData.TheRuinsofAhnQiraj.Alliance[i]
 end
 
@@ -6539,22 +6550,22 @@ kQuestInstanceData.Gnomeregan.Horde[7] = {
 kQuestInstanceData.FourDragons = {
     Story = {
         ["Page1"] =
-        "There is a disturbance at the Great Trees. A new threat menaces these secluded areas found in Ashenvale, Duskwood, Feralas, and Hinterlands. Four great guardians of the green Dragonflight have arrived from the Dream, but these once-proud protectors now seek only destruction and death. Take arms with your fellows and march to these hidden groves -- only you can defend Azeroth from the corruption they bring.",
+        "An den Großen Bäumen regt sich eine Störung. Eine neue Bedrohung sucht diese abgeschiedenen Gebiete in Eschental, Dämmerwald, Feralas und dem Hinterland heim. Vier große Wächter des grünen Drachenschwarms sind aus dem Traum zurückgekehrt, doch diese einst stolzen Beschützer streben nun nur noch nach Zerstörung und Tod. Ergreift mit euren Gefährten die Waffen und zieht in diese verborgenen Haine – nur ihr könnt Azeroth vor der Verderbnis bewahren, die sie bringen.",
         ["Page2"] =
-        "Ysera, the great Dreaming dragon Aspect rules over the enigmatic Green dragonflight. Her domain is the fantastic, mystical realm of the Emerald Dream - and it is said that from there she guides the evolutionary path of the world itself. She is the protector of nature and imagination, and it is the charge of her flight to guard all of the Great Trees across the world, which only druids use to enter the Dream itself. In recent times, Ysera's most trusted lieutenants have been warped by a dark new power within the Emerald Dream. Now these wayward sentinels have passed through the Great Trees into Azeroth, intending to spread madness and terror throughout the mortal kingdoms. Even the mightiest of adventurers would be well advised to give the dragons a wide berth, or suffer the consequences of their misguided wrath.",
+        "Ysera, die große träumende Drachenaspektin, herrscht über den geheimnisvollen grünen Drachenschwarm. Ihr Reich ist die fantastische, mystische Welt des Smaragdgrünen Traums – und man sagt, von dort aus lenke sie die Entwicklung der Welt selbst. Sie ist die Hüterin von Natur und Vorstellungskraft, und es ist die Aufgabe ihres Schwarms, alle Großen Bäume der Welt zu bewachen, durch die nur Druiden den Traum betreten. In jüngster Zeit wurden Yseras treueste Leutnants von einer neuen dunklen Macht im Smaragdgrünen Traum verdorben. Nun sind diese fehlgeleiteten Wächter durch die Großen Bäume nach Azeroth gelangt und beabsichtigen, Wahnsinn und Schrecken über die Reiche der Sterblichen zu bringen. Selbst die mächtigsten Abenteurer sind gut beraten, den Drachen aus dem Weg zu gehen – oder die Folgen ihres fehlgeleiteten Zorns zu tragen.",
         ["Page3"] =
-        "Lethon's exposure to the aberration within the Emerald Dream not only darkened the hue of the mighty dragon's scales, but also empowered him with the ability to extract malevolent shades from his enemies. Once joined with their master, the shades imbue the dragon with healing energies. It should come as no surprise, then, that Lethon is considered to be among the most formidable of Ysera's wayward lieutenants",
+        "Lethons Kontakt mit der Anomalie im Smaragdgrünen Traum verdunkelte nicht nur die Farbe seiner mächtigen Schuppen, sondern verlieh ihm auch die Fähigkeit, bösartige Schatten aus seinen Feinden zu reißen. Sobald sie sich mit ihrem Meister vereinen, durchströmen diese Schatten den Drachen mit heilenden Energien. Es überrascht daher nicht, dass Lethon zu den furchterregendsten von Yseras abtrünnigen Leutnants zählt.",
         ["Page4"] =
-        "A  mysterious dark power within the Emerald Dream has transformed the once-majestic Emeriss into a rotting, diseased monstrosity. Reports from the few who have survived encounters with the dragon have told horrifying tales of putrid mushrooms erupting from the corpses of their dead companions. Emeriss is truly the most gruesome and appalling of Ysera's estranged green dragons.",
+        "Eine geheimnisvolle dunkle Macht im Smaragdgrünen Traum hat den einst majestätischen Emeriss in ein faulendes, von Krankheiten zerfressenes Monstrum verwandelt. Berichte der wenigen Überlebenden schildern grauenvolle Szenen, in denen aus den Leibern gefallener Gefährten faulige Pilze sprießen. Emeriss ist zweifellos der widerwärtigste und erschreckendste von Yseras entfremdeten grünen Drachen.",
         ["Page5"] =
-        "Taerar was perhaps the most affected of Ysera's rogue lieutenants. His interaction with the dark force within the Emerald Dream shattered Taerar's sanity as well as his corporeal form. The dragon now exists as a specter with the ability to split into multiple entities, each of which possesses destructive magical powers. Taerar is a cunning and relentless foe who is intent on turning the madness of his existence into reality for the inhabitants of Azeroth.",
+        "Taerar wurde vielleicht am stärksten von Yseras abtrünnigen Leutnants beeinflusst. Seine Berührung mit der dunklen Macht im Smaragdgrünen Traum zerschmetterte sowohl seinen Verstand als auch seine körperliche Form. Der Drache existiert nun als Schemen und kann sich in mehrere Erscheinungen aufspalten, von denen jede zerstörerische magische Kräfte besitzt. Taerar ist ein listiger und unerbittlicher Gegner, der entschlossen ist, den Wahnsinn seiner Existenz über Azeroth zu bringen.",
         ["Page6"] =
-        "Once one of Ysera's most trusted lieutenants, Ysondre has now gone rogue, sewing terror and chaos across the land of Azeroth. Her formerly beneficent healing powers have given way to dark magics, enabling her to cast smoldering lightning waves and summon the aid of fiendish druids. Ysondre and her kin also possess the ability to induce sleep, sending her unfortunate mortal foes to the realm of their most terrifying nightmares.",
+        "Einst einer von Yseras treuesten Leutnants, ist Ysondre nun abtrünnig geworden und verbreitet Schrecken und Chaos über ganz Azeroth. Ihre einst wohltuenden Heilkräfte sind dunkler Magie gewichen, die es ihr erlaubt, sengende Blitzwellen zu wirken und die Hilfe verderbter Druiden zu beschwören. Ysondre und ihresgleichen vermögen es zudem, Schlaf herbeizuführen und ihre sterblichen Feinde in die Welt ihrer schlimmsten Albträume zu senden.",
         ["MaxPages"] = "6",
     },
     Caption = {
-        "Dragons of Nightmare",
-        "Ysera and the Green Dragonflight",
+        "Drachen des Alptraums",
+        "Ysera und der grüne Drachenschwarm",
         "Lethon",
         "Emeriss",
         "Taerar",
@@ -6579,12 +6590,109 @@ kQuestInstanceData.FourDragons.Alliance[1] = {
         { id = 20600 }, --Malfurion's Signet Ring Ring
     }
 }
-kQuestInstanceData.FourDragons.Horde[1] = kQuestInstanceData.FourDragons.Alliance[1]
+kQuestInstanceData.FourDragons.Alliance[2] = {
+    Title = "Traumstein, Eschental",
+    Id = 41923,
+    Level = 60,
+    Attain = 60,
+    Location = "Traumstein, Eschental ( " .. yellow .. "94, 38" .. white .. ")",
+    Note = "'Klage Yseras' droppt von 'Gunst von Erennius' (Solnius im schweren Modus) (Smaragdrefugium " .. yellow .. "[2]" .. white .. ").",
+}
+kQuestInstanceData.FourDragons.Alliance[3] = {
+    Title = "Traumstein, Feralas",
+    Id = 41924,
+    Level = 60,
+    Attain = 60,
+    Location = "Traumstein, Feralas ( " .. yellow .. "51, 12" .. white .. ")",
+    Note = "'Klage Yseras' droppt von 'Gunst von Erennius' (Solnius im schweren Modus) (Smaragdrefugium " .. yellow .. "[2]" .. white .. ").",
+}
+kQuestInstanceData.FourDragons.Alliance[4] = {
+    Title = "Traumstein, Dämmerwald",
+    Id = 41925,
+    Level = 60,
+    Attain = 60,
+    Location = "Traumstein, Dämmerwald ( " .. yellow .. "46, 39" .. white .. ")",
+    Note = "'Klage Yseras' droppt von 'Gunst von Erennius' (Solnius im schweren Modus) (Smaragdrefugium " .. yellow .. "[2]" .. white .. ").",
+}
+kQuestInstanceData.FourDragons.Alliance[5] = {
+    Title = "Traumstein, Hinterland",
+    Id = 41926,
+    Level = 60,
+    Attain = 60,
+    Location = "Traumstein, Hinterland ( " .. yellow .. "64, 28" .. white .. ")",
+    Note = "'Klage Yseras' droppt von 'Gunst von Erennius' (Solnius im schweren Modus) (Smaragdrefugium " .. yellow .. "[2]" .. white .. ").",
+}
+kQuestInstanceData.FourDragons.Alliance[6] = {
+    Title = "Von Macht durchdrungen",
+    Id = 42004,
+    Level = 60,
+    Attain = 60,
+    Location = "Altar der Tiefen (Azshara " .. yellow .. "89, 56" .. white .. ")",
+    Note = red .. "Nur für Hexenmeister!" .. white .. " 'Vom Alptraum berührtes Drachenherz' droppt von den Vier Drachen.",
+    Prequest = "Die Silberne Klinge",
+    Folgequest = "Der Riss ruft",
+}
+for i = 1, 6 do
+    kQuestInstanceData.FourDragons.Horde[i] = kQuestInstanceData.FourDragons.Alliance[i]
+end
+
+--------------- Dark Reaver of Karazhan ---------------
+kQuestInstanceData.Reaver = {
+    Story = "Der Dunkle Wiedergänger spukt durch die Nebel des Todeswinds, ein spektraler Sammler von Relikten, die mit Blut bezahlt wurden. Er wurde von einem gewöhnlichen Dieb in einen unsterblichen Phantom verwandelt, dazu bestimmt, Seelen und Schätze für einen Meister zu sammeln, der längst verschwunden ist.",
+    Caption = "Dunkler Wiedergänger von Karazhan",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.Reaver.Alliance[1] = {
+    Title = "Reithorn von Lord Blackwald II",
+    Id = 41927,
+    Level = 60,
+    Attain = 60,
+    Aim = "Finde einen Verwendungszweck für das Ritual der Wiederauferstehung. Die erwähnten zeitlosen Wesen könnten wohl die mächtigen Drachen sein, die Azeroth durchstreifen.",
+    Location = "Das Reithorn von Lord Blackwald II droppt aus (Untere Hallen von Karazhan - Lord Blackwald II " .. yellow .. "[5] " .. white .. ")",
+    Note = "Die Quest wird bei 'Hanvar der Rechtschaffene' im Todeswindpass " .. yellow .. "[41, 79]" .. white .. " abgegeben.",
+}
+kQuestInstanceData.Reaver.Horde[1] = kQuestInstanceData.Reaver.Alliance[1]
+
+--------------- Concavius ---------------
+kQuestInstanceData.Concavius = {
+    Story = "Concavius, einst ein niederer Elementargeist, der durch die chaotischen Strömungen des Wirbelnden Netzes trieb, wurde von rücksichtslosen Kultisten der Brennenden Klinge aus seiner ätherischen Ebene gerissen und gewaltsam an die trostlose Landschaft von Azeroth gebunden. Verwandelt in einen massiven, kristallinen Leerenwandler, der von gestohlener arkaner Energie angetrieben wird, sucht er nun die Salzebenen von Desolace heim, getrieben von einem zerrütteten Bewusstsein und einem unersättlichen Hunger, das Mana zurückzufordern, das seine physische Form vor dem Zerbrechen bewahrt.",
+    Caption = "Concavius",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.Concavius.Alliance[1] = {
+    Title = "Berstender Manasplitter",
+    Id = 41929,
+    Level = 60,
+    Attain = 60,
+    Aim = "Findet den Ort, zu dem der Splitter euch zieht. Euer Verstand sagt euch, dass Ihr die dunklen Energien entweihter Gebiete aufsuchen sollt.",
+    Location = "'Berstender Manasplitter' droppt von (Ruinen von Ahn'Qiraj - Moam " .. yellow .. "[3] " .. white .. ")",
+    Note = "Gebt die Quest beim 'Altar' in Desolace ab " .. yellow .. "[80, 80]" .. white .. ".",
+}
+kQuestInstanceData.Concavius.Horde[1] = kQuestInstanceData.Concavius.Alliance[1]
+
+--------------- Nerubian Overseer ---------------
+kQuestInstanceData.NerubianOverseer = {
+    Story = "Der nerubische Aufseher steht als düsterer Wächter eines gefallenen Reiches da, ein hochrangiger Architekt des Spinnenkönigreichs, dessen alter Verstand durch die kalte Umarmung des Untods korrumpiert wurde. In seiner chitinösen Gestalt wohnt eine berechnende Bosheit, beauftragt damit, ein Netz des Schreckens über die Welt zu weben, um die Lebenden im Namen seiner dunklen Meister zu fangen. Als Meister sowohl der kriegerischen Tüchtigkeit als auch der nekromantischen Arglist bewacht er die schattigen Tiefen der Erde und wartet schweigend darauf, jeden niederzustrecken, der es wagt, sein geheiligtes, mit Seide übersätes Reich zu betreten.",
+    Caption = "Nerubischer Aufseher",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.NerubianOverseer.Alliance[1] = {
+    Title = "Lockruf des Kryptolords",
+    Id = 41928,
+    Level = 60,
+    Attain = 60,
+    Aim = "Überbringt den Lockruf des Kryptolords einem mächtigen Träger des Lichts.",
+    Location = "'Lockruf des Kryptolords' droppt von 'Anub'Rekhan' in (Naxxramas - Spinnenviertel " .. yellow .. "[1]" .. white .. ".",
+    Note = "Gebt die Quest bei 'Tirion Fordring' in den Östlichen Pestländern ab " .. yellow .. "[6, 44]" .. white .. ". 'Geheiligtes Kreuz' droppt von Elite-Mobs des Scharlachroten Kreuzzugs in den Westlichen und Östlichen Pestländern.",
+}
+kQuestInstanceData.NerubianOverseer.Horde[1] = kQuestInstanceData.NerubianOverseer.Alliance[1]
 
 --------------- Azuregos ---------------
 kQuestInstanceData.Azuregos = {
-    Story =
-    "Vor der Großen Zerreißung blühte die Nachtelfenstadt Eldarath in dem Land, das heute als Azshara bekannt ist. Es wird geglaubt, dass viele alte und mächtige Hochgeborenen-Artefakte unter den Ruinen der einst mächtigen Festung gefunden werden können. Über unzählige Generationen hat der Blaue Drachenschwarm mächtige Artefakte und magisches Wissen bewacht und sichergestellt, dass sie nicht in sterbliche Hände fallen. Die Anwesenheit von Azuregos, dem blauen Drachen, scheint darauf hinzudeuten, dass Gegenstände von extremer Bedeutung, vielleicht die sagenumwobenen Phiolen der Ewigkeit selbst, in der Wildnis von Azshara gefunden werden könnten. Was auch immer Azuregos sucht, eines ist sicher: Er wird bis zum Tod kämpfen, um Azsharas magische Schätze zu verteidigen.",
+    Story = "Vor der Großen Zerreißung blühte die Nachtelfenstadt Eldarath in dem Land, das heute als Azshara bekannt ist. Es wird geglaubt, dass viele alte und mächtige Hochgeborenen-Artefakte unter den Ruinen der einst mächtigen Festung gefunden werden können. Über unzählige Generationen hat der Blaue Drachenschwarm mächtige Artefakte und magisches Wissen bewacht und sichergestellt, dass sie nicht in sterbliche Hände fallen. Die Anwesenheit von Azuregos, dem blauen Drachen, scheint darauf hinzudeuten, dass Gegenstände von extremer Bedeutung, vielleicht die sagenumwobenen Phiolen der Ewigkeit selbst, in der Wildnis von Azshara gefunden werden könnten. Was auch immer Azuregos sucht, eines ist sicher: Er wird bis zum Tod kämpfen, um Azsharas magische Schätze zu verteidigen.",
     Caption = "Azuregos",
     Alliance = {},
     Horde = {}
@@ -6614,22 +6722,41 @@ kQuestInstanceData.Azuregos.Alliance[2] = {
     Level = 60,
     Attain = 60,
     Aim = "Bringt Azuregos' magisches Buch zu Narain Pfauentraum in Tanaris.",
-    Location = "Geist von Azuregos (Azshara " .. yellow .. "56,83" .. white .. ")",
-    Note = "Ihr findet Narain Pfauentraum in Tanaris bei " .. yellow .. "65,17" .. white .. ".",
+    Location = "Geist von Azuregos (Azshara " .. yellow .. "56, 83" .. white .. ")",
+    Note = "Ihr findet Narain Pfauentraum in Tanaris bei " .. yellow .. "65, 17" .. white .. ".",
     Prequest = "Der Bund der Drachenschwärme",
     Folgequest = "Übersetzung des Buchs",
 }
-kQuestInstanceData.Azuregos.Horde[1] = kQuestInstanceData.Azuregos.Alliance[1]
-kQuestInstanceData.Azuregos.Horde[2] = kQuestInstanceData.Azuregos.Alliance[2]
+kQuestInstanceData.Azuregos.Alliance[3] = {--TODO translate
+    Title = "Ritus der Wiedererweckung",
+    Id = 41935,
+    Level = 60,
+    Attain = 60,
+    Aim = "Findet eine Verwendung für den Ritus der Wiedererweckung. Die erwähnten zeitlosen Wesen könnten die mächtigen Drachen sein, die Azeroth durchstreifen.",
+    Location = "Der Ritus der Wiedererweckung droppt in (Geschmolzener Kern - Majordomus Executus " .. yellow .. "[9]" .. white .. ")",
+    Note = "Quest abgeben bei 'Geist von Azuregos' in Azshara " .. yellow .. "[56, 83]" .. white .. ". 'Essenz eines blauen Drachen' droppt von Eliteblauen Drachen und Welpen in Azshara, Winterspring und der Mondflüsterküste.",
+}
+for i = 1, 3 do
+    kQuestInstanceData.Azuregos.Horde[i] = kQuestInstanceData.Azuregos.Alliance[i]
+end
 
 --------------- Lord Kazzak ---------------
 kQuestInstanceData.LordKazzak = {
-    Story =
-    "Nach der Niederlage der Brennenden Legion am Ende des Dritten Krieges zogen sich die verbleibenden feindlichen Streitkräfte, angeführt vom kolossalen Dämonenlord Kazzak, in die Verwüsteten Lande zurück. Sie verweilen bis heute dort in einem Gebiet namens Die Verseuchte Narbe und warten auf die Wiedereröffnung des Dunklen Portals. Es wird gemunkelt, dass Kazzak, sobald das Portal wieder geöffnet wird, mit seinen verbleibenden Streitkräften nach Outland reisen wird. Einst die Ork-Heimatwelt Draenor, wurde Outland durch die gleichzeitige Aktivierung mehrerer Portale, die vom Ork-Schamanen Ner'zhul erschaffen wurden, zerrissen und existiert nun als zerbrochene Welt, besetzt von Legionen dämonischer Agenten unter dem Kommando des Nachtelfen-Verräters Illidan.",
+    Story = "Nach der Niederlage der Brennenden Legion am Ende des Dritten Krieges zogen sich die verbleibenden feindlichen Streitkräfte, angeführt vom kolossalen Dämonenlord Kazzak, in die Verwüsteten Lande zurück. Sie verweilen bis heute dort in einem Gebiet namens Die Verseuchte Narbe und warten auf die Wiedereröffnung des Dunklen Portals. Es wird gemunkelt, dass Kazzak, sobald das Portal wieder geöffnet wird, mit seinen verbleibenden Streitkräften nach Outland reisen wird. Einst die Ork-Heimatwelt Draenor, wurde Outland durch die gleichzeitige Aktivierung mehrerer Portale, die vom Ork-Schamanen Ner'zhul erschaffen wurden, zerrissen und existiert nun als zerbrochene Welt, besetzt von Legionen dämonischer Agenten unter dem Kommando des Nachtelfen-Verräters Illidan.",
     Caption = "Lord Kazzak",
     Alliance = {},
     Horde = {}
 }
+kQuestInstanceData.LordKazzak.Alliance[1] = {
+    Title = "Wirbelnder Risskristall",
+    Id = 41936,
+    Level = 60,
+    Attain = 60,
+    Aim = "Bringt den Kristall zu einem mächtigen Hexenmeister.",
+    Location = "Der wirbelnde Risskristall droppt in (Geschmolzener Kern - Majordomus Executus " .. yellow .. "[9]" .. white .. ")",
+    Note = "Gebt die Quest bei 'Daio dem Verfallenen' in den Verwüsteten Landen ab " .. yellow .. "[34, 50]" .. white .. ". 'Nethergetränktes Dämonenblut' droppt von Elitedämonen in den Verwüsteten Landen, Winterspring und Hyjal.",
+}
+kQuestInstanceData.LordKazzak.Horde[1] = kQuestInstanceData.LordKazzak.Alliance[1]
 
 --------------- Alterac Valley ---------------
 kQuestInstanceData.BGAlteracValleyNorth = {
@@ -8272,7 +8399,21 @@ kQuestInstanceData.EmeraldSanctum.Alliance[3] = {
         { id = 61740 }, --Claw of Senthos Main Hand, Fist Weapon
     }
 }
-for i = 1, 3 do
+kQuestInstanceData.EmeraldSanctum.Alliance[4] = {
+    Title = "Der Riss ruft",
+    Id = 42005,
+    Level = 60,
+    Attain = 60,
+    Aim = "Tötet Solnius und vereint Thil’phoral mit dem Splitter, den er bei sich trägt, an der Ranke von Aln im Smaragdrefugium.",
+    Location = "Altar der Tiefen (Azshara " .. yellow .. "[89, 56]" .. white .. ").",
+    Note = red .. "Nur für Hexenmeister!" .. white .. " Vorquest beginnt mit der 'Masse windender Tentakel', die droppt in (Holzschlundfeste " .. yellow .. "[10]" .. white .. "). 'Solnius' befindet sich bei " .. yellow .. "[2]" .. white .. ".",
+    Prequest = "Windende Augen -> Die Silberne Klinge -> Getränkt in Macht",
+    Rewards = {
+        Text = "Belohnung:",
+        { id = 33332 }, --Thil'phoral, das Omen von Aln
+    }
+}
+for i = 1, 4 do
     kQuestInstanceData.EmeraldSanctum.Horde[i] = kQuestInstanceData.EmeraldSanctum.Alliance[i]
 end
 
@@ -9043,7 +9184,7 @@ kQuestInstanceData.TimbermawHold.Alliance[5] = { --TODO translate
     Attain = 60,
     Aim = "Beschafft Narkoggs Medizinbeutel und die Verfaulte Blume aus der Holzschlundfeste für Narkogg den Dunklen im Schlund von Ursoc in Azshara.",
     Location = "Narkogg der Dunkle (Azshara - Schlund von Ursoc " .. yellow .. "39, 21" .. white .. ")",
-    Note = "'Narkoggs Medizinbeutel' ist bei " .. yellow .. "0, 0" .. white .. ", 'Verfaulte Blume' ist bei " .. yellow .. "0, 0" .. white .. ".",
+    Note = "'Narkoggs Medizinbeutel' und 'Verfaulte Blume' sind in der Holzschlundfeste zu finden.",
     Prequest = "Uralte Heilmittel der Furbolgs",
     Folgequest = "Was bleibt, Essenz der Reinigung, Haut eines Wildgottes",
     Rewards = {
@@ -9112,11 +9253,26 @@ kQuestInstanceData.TimbermawHold.Alliance[9] = { --TODO translate
         { id = 61197, quantity = 3 }, -- Fading Dream Fragment
     }
 }
-for i = 1, 9 do
+kQuestInstanceData.TimbermawHold.Alliance[10] = { --TODO translate
+    Title = "Das Ende des Alptraums",
+    Id = 41937,
+    Level = 60,
+    Attain = 60,
+    Aim = "Überbringt den Anhänger der Träume dem Großen Bärengeist in der Mondlichtung.",
+    Location = "'Anhänger der Träume' droppt von 'Ursol' bei " .. yellow .. "[9]" .. white .. ".",
+    Note = "Großer Bärengeist (Mondlichtung " .. yellow .. "39, 27" .. white .. ")",
+    Rewards = {
+        Text = "Belohnung: Wählt eine",
+        { id = 33327 }, -- Ast der Smaragdgrünen Weite
+        { id = 33328 }, -- Irrlichtgewebte Schleife
+        { id = 33329 }, -- Traumborkenamulett
+    }
+}
+for i = 1, 10 do
     kQuestInstanceData.TimbermawHold.Horde[i] = kQuestInstanceData.TimbermawHold.Alliance[i]
 end
 
-kQuestInstanceData.TimbermawHold.Horde[10] = { --TODO translate
+kQuestInstanceData.TimbermawHold.Horde[11] = { --TODO translate
     Title = "Loktanag der Reine",
     Id = 42009,
     Level = 60,
