@@ -5371,7 +5371,7 @@ kQuestInstanceData.FourDragons.Alliance[1] = {
         { id = 20600 }, --Malfurion's Signet Ring Ring
     }
 }
-kQuestInstanceData.FourDragons.Alliance[2] = {
+kQuestInstanceData.FourDragons.Alliance[2] = { --TODO translate
     Title = "Traumstein, Eschental",
     Id = 41923,
     Level = 60,
@@ -5379,7 +5379,7 @@ kQuestInstanceData.FourDragons.Alliance[2] = {
     Location = "Traumstein, Eschental ( " .. yellow .. "94, 38" .. white .. ")",
     Note = "'Klage Yseras' droppt von 'Gunst von Erennius' (Solnius im schweren Modus) (Smaragdrefugium " .. yellow .. "[2]" .. white .. ").",
 }
-kQuestInstanceData.FourDragons.Alliance[3] = {
+kQuestInstanceData.FourDragons.Alliance[3] = { --TODO translate
     Title = "Traumstein, Feralas",
     Id = 41924,
     Level = 60,
@@ -5387,7 +5387,7 @@ kQuestInstanceData.FourDragons.Alliance[3] = {
     Location = "Traumstein, Feralas ( " .. yellow .. "51, 12" .. white .. ")",
     Note = "'Klage Yseras' droppt von 'Gunst von Erennius' (Solnius im schweren Modus) (Smaragdrefugium " .. yellow .. "[2]" .. white .. ").",
 }
-kQuestInstanceData.FourDragons.Alliance[4] = {
+kQuestInstanceData.FourDragons.Alliance[4] = { --TODO translate
     Title = "Traumstein, Dämmerwald",
     Id = 41925,
     Level = 60,
@@ -5395,7 +5395,7 @@ kQuestInstanceData.FourDragons.Alliance[4] = {
     Location = "Traumstein, Dämmerwald ( " .. yellow .. "46, 39" .. white .. ")",
     Note = "'Klage Yseras' droppt von 'Gunst von Erennius' (Solnius im schweren Modus) (Smaragdrefugium " .. yellow .. "[2]" .. white .. ").",
 }
-kQuestInstanceData.FourDragons.Alliance[5] = {
+kQuestInstanceData.FourDragons.Alliance[5] = { --TODO translate
     Title = "Traumstein, Hinterland",
     Id = 41926,
     Level = 60,
@@ -5403,7 +5403,7 @@ kQuestInstanceData.FourDragons.Alliance[5] = {
     Location = "Traumstein, Hinterland ( " .. yellow .. "64, 28" .. white .. ")",
     Note = "'Klage Yseras' droppt von 'Gunst von Erennius' (Solnius im schweren Modus) (Smaragdrefugium " .. yellow .. "[2]" .. white .. ").",
 }
-kQuestInstanceData.FourDragons.Alliance[6] = {
+kQuestInstanceData.FourDragons.Alliance[6] = { --TODO translate
     Title = "Von Macht durchdrungen",
     Id = 42004,
     Level = 60,
@@ -5424,7 +5424,7 @@ kQuestInstanceData.Reaver = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.Reaver.Alliance[1] = {
+kQuestInstanceData.Reaver.Alliance[1] = { --TODO translate
     Title = "Reithorn von Lord Blackwald II",
     Id = 41927,
     Level = 60,
@@ -5436,6 +5436,36 @@ kQuestInstanceData.Reaver.Alliance[1] = {
 kQuestInstanceData.Reaver.Horde[1] = kQuestInstanceData.Reaver.Alliance[1]
 
 --------------- Cla'ckora ---------------
+kQuestInstanceData.Clackora = {
+    Story = "Cla'ckora ist ein uraltes, furchteinflößendes Krustentier, das seit Anbeginn der Welt die Gezeiten des Großen Meeres heimsucht. Von den vordringenden Naga aus seinem jahrhundertelangen Schlummer geweckt, bewacht dieser Unhold nun die versunkenen Ruinen mit zermalmenden Scheren und einem Panzer, so hart wie verzauberter Adamant. Wer sich zu tief in die Fluten wagt, findet nicht bloß eine Bestie, sondern ein lebendiges Relikt des urzeitlichen Zorns der Ozeane.",
+    Caption = "Cla'ckora",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.Clackora.Alliance[1] = { --TODO translate
+    Title = "Ein moosiges Rätsel",
+    Id = 41346,
+    Level = 58,
+    Attain = 58,
+    Location = "Moosbedeckte Truhe (Tel'Abim " .. yellow .. "53, 56" .. white .. ")",
+    Note = "Benötigt einen 'Pockenbesetzten Schlüssel' vom Angeln.",
+    Rewards = {
+        Text = "Belohnung:",
+        { id = 56085 }, -- Unteres Stück eines uralten Idols
+    }
+}
+kQuestInstanceData.Clackora.Alliance[2] = { --TODO translate
+    Title = "Altar eines uralten Übels",
+    Id = 41345,
+    Level = 58,
+    Attain = 58,
+    Location = "Altar von Cla'ckora (Asshara " .. yellow .. "66, 9" .. white .. ")",
+    Note = "Um Cla'ckora zu beschwören, benötigt Ihr 3 Teile des 'Uralten Idols von Cla'ckora', 10x 'Elementarwasser' und 5x 'Blitzaal'.\n'Oberes Stück eines uralten Idols' befindet sich in 'Leuchtende arktische Äsche' vom Angeln.\n'Mittleres Stück eines uralten Idols' droppt von Zul'Gurub - Gahz'ranka " .. yellow .. "[7]" .. white ..
+         ",\n'Unteres Stück eines uralten Idols' ist die Belohnung für die Quest 'Ein moosiges Rätsel'.",
+}
+for i = 1, 2 do
+    kQuestInstanceData.Clackora.Horde[i] = kQuestInstanceData.Clackora.Alliance[i]
+end
 
 --------------- Concavius ---------------
 kQuestInstanceData.Concavius = {
@@ -5444,7 +5474,7 @@ kQuestInstanceData.Concavius = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.Concavius.Alliance[1] = {
+kQuestInstanceData.Concavius.Alliance[1] = { --TODO translate
     Title = "Berstender Manasplitter",
     Id = 41929,
     Level = 60,
@@ -5462,7 +5492,7 @@ kQuestInstanceData.Nerubian = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.Nerubian.Alliance[1] = {
+kQuestInstanceData.Nerubian.Alliance[1] = { --TODO translate
     Title = "Lockruf des Kryptolords",
     Id = 41928,
     Level = 60,
@@ -5525,7 +5555,7 @@ kQuestInstanceData.LordKazzak = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.LordKazzak.Alliance[1] = {
+kQuestInstanceData.LordKazzak.Alliance[1] = { --TODO translate
     Title = "Wirbelnder Risskristall",
     Id = 41936,
     Level = 60,

@@ -5282,7 +5282,7 @@ kQuestInstanceData.FourDragons.Alliance[1] = {
         { id = 20600 }, --Malfurion's Signet Ring Ring
     }
 }
-kQuestInstanceData.FourDragons.Alliance[2] = {
+kQuestInstanceData.FourDragons.Alliance[2] = { --TODO translate
     Title = "梦境之石，灰谷",
     Id = 41923,
     Level = 60,
@@ -5290,7 +5290,7 @@ kQuestInstanceData.FourDragons.Alliance[2] = {
     Location = "梦境之石，灰谷（ " .. yellow .. "94, 38" .. white .. "）",
     Note = "“伊瑟拉的哀嚎”掉落自“艾伦尼乌斯的恩赐”（索尔尼乌斯困难模式）（翡翠圣所 " .. yellow .. "[2]" .. white .. "）。",
 }
-kQuestInstanceData.FourDragons.Alliance[3] = {
+kQuestInstanceData.FourDragons.Alliance[3] = { --TODO translate
     Title = "梦境之石，菲拉斯",
     Id = 41924,
     Level = 60,
@@ -5306,7 +5306,7 @@ kQuestInstanceData.FourDragons.Alliance[4] = {
     Location = "梦境之石，暮色森林（ " .. yellow .. "46, 39" .. white .. "）",
     Note = "“伊瑟拉的哀嚎”掉落自“艾伦尼乌斯的恩赐”（索尔尼乌斯困难模式）（翡翠圣所 " .. yellow .. "[2]" .. white .. "）。",
 }
-kQuestInstanceData.FourDragons.Alliance[5] = {
+kQuestInstanceData.FourDragons.Alliance[5] = { --TODO translate
     Title = "梦境之石，辛特兰",
     Id = 41926,
     Level = 60,
@@ -5314,7 +5314,7 @@ kQuestInstanceData.FourDragons.Alliance[5] = {
     Location = "梦境之石，辛特兰（ " .. yellow .. "64, 28" .. white .. "）",
     Note = "“伊瑟拉的哀嚎”掉落自“艾伦尼乌斯的恩赐”（索尔尼乌斯困难模式）（翡翠圣所 " .. yellow .. "[2]" .. white .. "）。",
 }
-kQuestInstanceData.FourDragons.Alliance[6] = {
+kQuestInstanceData.FourDragons.Alliance[6] = { --TODO translate
     Title = "力量浸染",
     Id = 42004,
     Level = 60,
@@ -5334,7 +5334,7 @@ kQuestInstanceData.Reaver = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.Reaver.Alliance[1] = {
+kQuestInstanceData.Reaver.Alliance[1] = { --TODO translate
     Title = "黑森公爵二世的骑乘哨",
     Id = 41927,
     Level = 60,
@@ -5346,6 +5346,36 @@ kQuestInstanceData.Reaver.Alliance[1] = {
 kQuestInstanceData.Reaver.Horde[1] = kQuestInstanceData.Reaver.Alliance[1]
 
 --------------- Cla'ckora ---------------
+kQuestInstanceData.Clackora = {
+    Story = "克拉克拉是一只古老而令人胆寒的巨型甲壳生物，自世界年轻之时起便在无尽之海的潮汐中徘徊。由于娜迦的入侵，这个庞然大物从长达数世纪的沉睡中苏醒，如今它用那粉碎性的巨钳和坚如附魔精金的甲壳守护着沉没的遗迹。那些胆敢深入深海的人将会发现，它不仅仅是一头野兽，更是海洋原始愤怒的活化身。",
+    Caption = "克拉克拉",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.Clackora.Alliance[1] = { --TODO translate
+    Title = "苔藓之谜",
+    Id = 41346,
+    Level = 58,
+    Attain = 58,
+    Location = "长满苔藓的箱子 (特拉比姆 " .. yellow .. "53, 56" .. white .. ")",
+    Note = "需要通过钓鱼获得一把“长满藤壶的钥匙”。",
+    Rewards = {
+        Text = "奖励：",
+        { id = 56085 }, -- 远古神像的下半部分
+    }
+}
+kQuestInstanceData.Clackora.Alliance[2] = { --TODO translate
+    Title = "远古邪恶祭坛",
+    Id = 41345,
+    Level = 58,
+    Attain = 58,
+    Location = "克拉克拉祭坛 (艾萨拉 " .. yellow .. "66, 9" .. white .. ")",
+    Note = "要召唤克拉克拉，你需要“克拉克拉的远古神像”的3个部分、10个“元素之水”和5个“闪电鳗鱼”。\n“远古神像的上半部分”可通过钓鱼从“发光的极地灰鳞鱼”中获得。\n“远古神像的中间部分”掉落自祖尔格拉布 - 加兹兰卡 " .. yellow .. "[7]" .. white ..
+         ",\n“远古神像的下半部分”是任务“苔藓之谜”的奖励。",
+}
+for i = 1, 2 do
+    kQuestInstanceData.Clackora.Horde[i] = kQuestInstanceData.Clackora.Alliance[i]
+end
 
 --------------- Concavius ---------------
 kQuestInstanceData.Concavius = {
@@ -5354,7 +5384,7 @@ kQuestInstanceData.Concavius = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.Concavius.Alliance[1] = {
+kQuestInstanceData.Concavius.Alliance[1] = { --TODO translate
     Title = "能量迸发的法力碎片",
     Id = 41929,
     Level = 60,
@@ -5372,7 +5402,7 @@ kQuestInstanceData.Nerubian = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.Nerubian.Alliance[1] = {
+kQuestInstanceData.Nerubian.Alliance[1] = { --TODO translate
     Title = "地穴领主的召唤",
     Id = 41928,
     Level = 60,
@@ -5435,7 +5465,7 @@ kQuestInstanceData.LordKazzak = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.LordKazzak.Alliance[1] = {
+kQuestInstanceData.LordKazzak.Alliance[1] = { --TODO translate
     Title = "扭曲裂隙水晶",
     Id = 41936,
     Level = 60,

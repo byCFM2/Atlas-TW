@@ -5464,14 +5464,29 @@ kQuestInstanceData.Clackora = {
     Horde = {}
 }
 kQuestInstanceData.Clackora.Alliance[1] = {
+    Title = "A Mossy Mystery",
+    Id = 41346,
+    Level = 58,
+    Attain = 58,
+    Location = "Mosscovered Chest (Tel'Abim " .. yellow .. "53, 56" .. white .. ")",
+    Note = "Need a 'Barnacle Covered Key' from fishing.",
+    Rewards = {
+        Text = "Reward:",
+        { id = 56085 }, --Bottom Piece of an Ancient Idol
+    }
+}
+kQuestInstanceData.Clackora.Alliance[2] = {
     Title = "Altar of an Ancient Evil",
     Id = 41345,
     Level = 58,
     Attain = 58,
     Location = "Altar of Cla'ckora (Azshara " .. yellow .. "66, 9" .. white .. ")",
-    Note = "To summon Cla'ckora you need 'Ancient Idol of Cla'ckora',\n 'Middle Piece of an Ancient Idol' drops from Zul'Gurub - Gahz'ranka " .. yellow .. "[7]" .. white .. ",\n 10x 'Elemental Water', 5x 'Lightning Eel'.",
+    Note = "To summon Cla'ckora you need 3 parts of 'Ancient Idol of Cla'ckora', 10x 'Elemental Water' and 5x 'Lightning Eel'.\n'Top Piece of an Ancient Idol' is found inside 'Glowing Arctic Grayling' from fishing.\n'Middle Piece of an Ancient Idol' drops from Zul'Gurub - Gahz'ranka " .. yellow .. "[7]" .. white ..
+         ",\n'Bottom Piece of an Ancient Idol' is a reward from the quest 'A Mossy Mystery'.",
 }
-kQuestInstanceData.Clackora.Horde[1] = kQuestInstanceData.Clackora.Alliance[1]
+for i = 1, 2 do
+    kQuestInstanceData.Clackora.Horde[i] = kQuestInstanceData.Clackora.Alliance[i]
+end
 
 --------------- Concavius ---------------
 kQuestInstanceData.Concavius = {

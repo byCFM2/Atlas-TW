@@ -132,9 +132,9 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 { id = 61525 }, -- Nature's Call
                 { id = 61526 }, -- Jadestone Protector
                 {},
-                { id = 42165, dropRate = 60 }, -- Wail of Ysera 1.18.1
+                { id = 42165, dropRate = 60, disc = L["Used to summon boss"] }, -- Wail of Ysera 1.18.1
                 {},
-                { id = 61169, dropRate = 100 }, -- Bag of Vast Consciousness 1.18.1
+                { id = 61169, dropRate = 100 }, -- Bag of Vast Consciousness
                 {},
                 {},
                 {},

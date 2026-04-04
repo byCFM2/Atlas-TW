@@ -350,8 +350,8 @@ AtlasTW.InstanceData.MoltenCore = {
                 { id = 18805 }, -- Core Hound Tooth
                 { id = 18803 }, -- Finkle's Lava Dredger
                 {},
-                { id = 42178, dropRate = 30 }, -- Rite of Resurrection 1.18.1
-                { id = 42180, dropRate = 30 }, -- Twisting Rift Crystal 1.18.1
+                { id = 42178, dropRate = 30, disc = L["Used to summon boss"] }, -- Rite of Resurrection 1.18.1
+                { id = 42180, dropRate = 30, disc = L["Used to summon boss"] }, -- Twisting Rift Crystal 1.18.1
                 { id = 18703, dropRate = 50, container = { 18714, 18713, 18715 } }, -- Ancient Petrified Leaf
                 {},
                 { id = 18646, dropRate = 50, container = { 18608, 18609 } }, -- The Eye of Divinity

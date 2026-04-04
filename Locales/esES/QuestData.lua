@@ -5371,7 +5371,7 @@ kQuestInstanceData.FourDragons.Alliance[1] = {
         { id = 20600 }, --Malfurion's Signet Ring Ring
     }
 }
-kQuestInstanceData.FourDragons.Alliance[2] = {
+kQuestInstanceData.FourDragons.Alliance[2] = { --TODO translate
     Title = "Piedra de los Sueños, Vallefresno",
     Id = 41923,
     Level = 60,
@@ -5379,7 +5379,7 @@ kQuestInstanceData.FourDragons.Alliance[2] = {
     Location = "Piedra de los Sueños, Vallefresno ( " .. yellow .. "94, 38" .. white .. ")",
     Note = "'Lamento de Ysera' cae de 'Favor de Erennius' (Solnius en modo difícil) (Sagrario Esmeralda " .. yellow .. "[2]" .. white .. ").",
 }
-kQuestInstanceData.FourDragons.Alliance[3] = {
+kQuestInstanceData.FourDragons.Alliance[3] = { --TODO translate
     Title = "Piedra de los Sueños, Feralas",
     Id = 41924,
     Level = 60,
@@ -5387,7 +5387,7 @@ kQuestInstanceData.FourDragons.Alliance[3] = {
     Location = "Piedra de los Sueños, Feralas ( " .. yellow .. "51, 12" .. white .. ")",
     Note = "'Lamento de Ysera' cae de 'Favor de Erennius' (Solnius en modo difícil) (Sagrario Esmeralda " .. yellow .. "[2]" .. white .. ").",
 }
-kQuestInstanceData.FourDragons.Alliance[4] = {
+kQuestInstanceData.FourDragons.Alliance[4] = { --TODO translate
     Title = "Piedra de los Sueños, Bosque del Ocaso",
     Id = 41925,
     Level = 60,
@@ -5395,7 +5395,7 @@ kQuestInstanceData.FourDragons.Alliance[4] = {
     Location = "Piedra de los Sueños, Bosque del Ocaso ( " .. yellow .. "46, 39" .. white .. ")",
     Note = "'Lamento de Ysera' cae de 'Favor de Erennius' (Solnius en modo difícil) (Sagrario Esmeralda " .. yellow .. "[2]" .. white .. ").",
 }
-kQuestInstanceData.FourDragons.Alliance[5] = {
+kQuestInstanceData.FourDragons.Alliance[5] = { --TODO translate
     Title = "Piedra de los Sueños, Tierras del Interior",
     Id = 41926,
     Level = 60,
@@ -5403,7 +5403,7 @@ kQuestInstanceData.FourDragons.Alliance[5] = {
     Location = "Piedra de los Sueños, Tierras del Interior ( " .. yellow .. "64, 28" .. white .. ")",
     Note = "'Lamento de Ysera' cae de 'Favor de Erennius' (Solnius en modo difícil) (Sagrario Esmeralda " .. yellow .. "[2]" .. white .. ").",
 }
-kQuestInstanceData.FourDragons.Alliance[6] = {
+kQuestInstanceData.FourDragons.Alliance[6] = { --TODO translate
     Title = "Empapado de poder",
     Id = 42004,
     Level = 60,
@@ -5424,7 +5424,7 @@ kQuestInstanceData.Reaver = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.Reaver.Alliance[1] = {
+kQuestInstanceData.Reaver.Alliance[1] = { --TODO translate
     Title = "Silbato de Montura de Lord Blackwald II",
     Id = 41927,
     Level = 60,
@@ -5436,6 +5436,36 @@ kQuestInstanceData.Reaver.Alliance[1] = {
 kQuestInstanceData.Reaver.Horde[1] = kQuestInstanceData.Reaver.Alliance[1]
 
 --------------- Cla'ckora ---------------
+kQuestInstanceData.Clackora = {
+    Story = "Cla'ckora es un antiguo y terrorífico crustáceo que ha acechado las mareas del Mare Magnum desde que el mundo era joven. Despertado de un sueño de siglos por la incursión de los naga, este gigante custodia ahora las ruinas sumergidas con pinzas demoledoras y un caparazón tan duro como el adamantio encantado. Aquellos que se aventuran en las profundidades no encuentran solo a una bestia, sino a una reliquia viviente de la furia primordial del océano.",
+    Caption = "Cla'ckora",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.Clackora.Alliance[1] = { --TODO translate
+    Title = "Un misterio musgoso",
+    Id = 41346,
+    Level = 58,
+    Attain = 58,
+    Location = "Cofre cubierto de musgo (Tel'Abim " .. yellow .. "53, 56" .. white .. ")",
+    Note = "Necesitas una 'Llave cubierta de crustáceos' obtenida al pescar.",
+    Rewards = {
+        Text = "Recompensa:",
+        { id = 56085 }, -- Parte inferior de un ídolo antiguo
+    }
+}
+kQuestInstanceData.Clackora.Alliance[2] = { --TODO translate
+    Title = "Altar de un mal antiguo",
+    Id = 41345,
+    Level = 58,
+    Attain = 58,
+    Location = "Altar de Cla'ckora (Azshara " .. yellow .. "66, 9" .. white .. ")",
+    Note = "Para invocar a Cla'ckora necesitas las 3 partes del 'Ídolo antiguo de Cla'ckora', 10x 'Agua elemental' y 5x 'Anguila relámpago'.\nLa 'Parte superior de un ídolo antiguo' se encuentra dentro del 'Tímalo ártico resplandeciente' al pescar.\nLa 'Parte media de un ídolo antiguo' cae de Zul'Gurub - Gahz'ranka " .. yellow .. "[7]" .. white ..
+         ",\nla 'Parte inferior de un ídolo antiguo' es recompensa de la misión 'Un misterio musgoso'.",
+}
+for i = 1, 2 do
+    kQuestInstanceData.Clackora.Horde[i] = kQuestInstanceData.Clackora.Alliance[i]
+end
 
 --------------- Concavius ---------------
 kQuestInstanceData.Concavius = {
@@ -5444,7 +5474,7 @@ kQuestInstanceData.Concavius = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.Concavius.Alliance[1] = {
+kQuestInstanceData.Concavius.Alliance[1] = { --TODO translate
     Title = "Fragmento de maná rebosante",
     Id = 41929,
     Level = 60,
@@ -5462,7 +5492,7 @@ kQuestInstanceData.Nerubian = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.Nerubian.Alliance[1] = {
+kQuestInstanceData.Nerubian.Alliance[1] = { --TODO translate
     Title = "La llamada del Señor de la Cripta",
     Id = 41928,
     Level = 60,
@@ -5525,7 +5555,7 @@ kQuestInstanceData.LordKazzak = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.LordKazzak.Alliance[1] = {
+kQuestInstanceData.LordKazzak.Alliance[1] = { --TODO translate
     Title = "Cristal de falla retorcida",
     Id = 41936,
     Level = 60,

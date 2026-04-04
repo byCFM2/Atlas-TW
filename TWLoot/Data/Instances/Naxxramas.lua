@@ -177,7 +177,7 @@ AtlasTW.InstanceData.Naxxramas = {
                 {},
                 { id = 22939 }, -- Band of Unanswered Prayers
                 {},
-                { id = 42167, dropRate = 40 }, -- Crypt Lord's Beckoning
+                { id = 42167, dropRate = 40, disc = L["Used to summon boss"] }, -- Crypt Lord's Beckoning
                 { id = 22937 }, -- Gem of Nerubis
             }
         },

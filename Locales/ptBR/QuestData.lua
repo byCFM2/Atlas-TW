@@ -5454,6 +5454,36 @@ kQuestInstanceData.Nerubian.Alliance[1] = {
 kQuestInstanceData.Nerubian.Horde[1] = kQuestInstanceData.Nerubian.Alliance[1]
 
 --------------- Cla'ckora ---------------
+kQuestInstanceData.Clackora = {
+    Story = "Cla'ckora é um crustáceo antigo e aterrorizante que assombra as marés do Grande Mar desde que o mundo era jovem. Despertado de um sono de séculos pela invasão dos naga, este gigante agora guarda as ruínas submersas com garras esmagadoras e uma carapaça tão dura quanto o adamante encantado. Aqueles que se aventuram nas profundezas não encontram apenas uma besta, mas uma relíquia viva da fúria primordial do oceano.",
+    Caption = "Cla'ckora",
+    Alliance = {},
+    Horde = {}
+}
+kQuestInstanceData.Clackora.Alliance[1] = { --TODO translate
+    Title = "Um Mistério Musgoso",
+    Id = 41346,
+    Level = 58,
+    Attain = 58,
+    Location = "Baú Coberto de Musgo (Tel'Abim " .. yellow .. "53, 56" .. white .. ")",
+    Note = "Necessário uma 'Chave Coberta de Cracas' através da pesca.",
+    Rewards = {
+        Text = "Recompensa:",
+        { id = 56085 }, -- Parte Inferior de um Ídolo Antigo
+    }
+}
+kQuestInstanceData.Clackora.Alliance[2] = { --TODO translate
+    Title = "Altar de um Mal Antigo",
+    Id = 41345,
+    Level = 58,
+    Attain = 58,
+    Location = "Altar de Cla'ckora (Azshara " .. yellow .. "66, 9" .. white .. ")",
+    Note = "Para invocar Cla'ckora, você precisa das 3 partes do 'Ídolo Antigo de Cla'ckora', 10x 'Água Elemental' e 5x 'Enguia Relâmpago'.\n'Parte Superior de um Ídolo Antigo' é encontrada dentro de 'Peixe-sombra Ártico Brilhante' ao pescar.\n'Parte Central de um Ídolo Antigo' dropa de Zul'Gurub - Gahz'ranka " .. yellow .. "[7]" .. white ..
+         ",\n'Parte Inferior de um Ídolo Antigo' é recompensa da missão 'Um Mistério Musgoso'.",
+}
+for i = 1, 2 do
+    kQuestInstanceData.Clackora.Horde[i] = kQuestInstanceData.Clackora.Alliance[i]
+end
 
 --------------- Concavius ---------------
 kQuestInstanceData.Concavius = {
@@ -5525,7 +5555,7 @@ kQuestInstanceData.LordKazzak = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.LordKazzak.Alliance[1] = {
+kQuestInstanceData.LordKazzak.Alliance[1] = { --TODO translate
     Title = "Cristal de Fenda Retorcida",
     Id = 41936,
     Level = 60,
