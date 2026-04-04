@@ -5071,7 +5071,17 @@ kQuestInstanceData.ZulGurub.Alliance[5] = { --TODO translate
     Prequest = "Die Flöte der Geister",
     Folgequest = "Offensichtlich verborgen",
 }
-for i = 1, 5 do
+kQuestInstanceData.ZulGurub.Alliance[6] = { --TODO translate
+    Title = "Den Seelenschinder schwächen",
+    Id = 70003,
+    Level = 60,
+    Attain = 60,
+    Aim = "Erschlagt Hakkar den Seelenschinder und bringt die Brunnenessenz zurück zu Daio dem Dezenten.",
+    Location = "Daio der Dezente (Verwüstete Lande - Die Befleckte Narbe " .. yellow .. "34, 50" .. white .. ")",
+    Note = red.."Nur Hexenmeister! "..white.."'Hakkar' " .. yellow .. "[11]" .. white .. ") lässt die 'Brunnenessenz' fallen.",
+    Prequest = "Die Fesseln des Gefängnisses, Die Hülle des Gefängnisses -> Unterdrückung -> Die Führung eines Wahnsinnigen",
+}
+for i = 1, 6 do
     kQuestInstanceData.ZulGurub.Horde[i] = kQuestInstanceData.ZulGurub.Alliance[i]
 end
 

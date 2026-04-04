@@ -5071,7 +5071,17 @@ kQuestInstanceData.ZulGurub.Alliance[5] = { --TODO translate
     Prequest = "A Flauta dos Espíritos",
     Folgequest = "Escondido à vista de todos",
 }
-for i = 1, 5 do
+kQuestInstanceData.ZulGurub.Alliance[6] = {
+    Title = "Drenando o Esfolador de Almas",
+    Id = 70003,
+    Level = 60,
+    Attain = 60,
+    Aim = "Mate Hakkar, o Esfolador de Almas, e leve a Essência do Poço de volta para Daio, o Decrépito.",
+    Location = "Daio, o Decrépito (Barreira do Inferno - Cicatriz Maculada " .. yellow .. "34, 50" .. white .. ")",
+    Note = red.."Apenas Bruxos! "..white.."'Hakkar' " .. yellow .. "[11]" .. white .. ") dropa a 'Essência do Poço'.",
+    Prequest = "As Amarras da Prisão, O Revestimento da Prisão -> Supressão -> A Orientação de um Louco",
+}
+for i = 1, 6 do
     kQuestInstanceData.ZulGurub.Horde[i] = kQuestInstanceData.ZulGurub.Alliance[i]
 end
 

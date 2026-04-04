@@ -386,6 +386,7 @@ AtlasTW.InstanceData.ZulGurub = {
                 { id = 19859 }, -- Fang of the Faceless
                 { id = 19854 }, -- Zin'rokh, Destroyer of Worlds
                 { id = 41987, container = { 41986 }, dropRate = 100 }, -- Crest of Heroism
+                { id = 83006, container = { 83003 }, dropRate = 100 }, -- Well Essence
                 { id = 19802, dropRate = 100, container = { 19950, 19949, 19948 } }, -- Heart of Hakkar
             }
         },

@@ -5092,7 +5092,17 @@ kQuestInstanceData.ZulGurub.Alliance[5] = {
     Prequest = "The Flute of Spirits",
     Folgequest = "Hidden in Plain Sight",
 }
-for i = 1, 5 do
+kQuestInstanceData.ZulGurub.Alliance[6] = {
+    Title = "Draining the Soulflayer",
+    Id = 70003,
+    Level = 60,
+    Attain = 60,
+    Aim = "Slay Hakkar the Soulflayer and bring the Well Essence back to Daio the Decrepit.",
+    Location = "Daio the Decrepit (Blasted Lands - The Tainted Scar " .. yellow .. "34, 50" .. white .. ")",
+    Note = red.."Warlock Only! "..white.."'Hakkar' " .. yellow .. "[11]" .. white .. ") drop the 'Well Essence'.",
+    Prequest = "The Prison's Bindings, The Prison's Casing -> Suppression -> The Guidance of a Mad Man",
+}
+for i = 1, 6 do
     kQuestInstanceData.ZulGurub.Horde[i] = kQuestInstanceData.ZulGurub.Alliance[i]
 end
 

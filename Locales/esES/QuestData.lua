@@ -5071,7 +5071,17 @@ kQuestInstanceData.ZulGurub.Alliance[5] = { --TODO translate
     Prequest = "La Flauta de los Espíritus",
     Folgequest = "Oculto a plena vista",
 }
-for i = 1, 5 do
+kQuestInstanceData.ZulGurub.Alliance[6] = {
+    Title = "Drenar al Cazador de Almas",
+    Id = 70003,
+    Level = 60,
+    Attain = 60,
+    Aim = "Mata a Hakkar el Cazador de Almas y llévale la Esencia del pozo a Daio el Decrépito.",
+    Location = "Daio el Decrépito (Tierras Devastadas - La Cicatriz Impura " .. yellow .. "34, 50" .. white .. ")",
+    Note = red.."¡Solo Brujos! "..white.."'Hakkar' " .. yellow .. "[11]" .. white .. ") suelta la 'Esencia del pozo'.",
+    Prequest = "Las ligaduras de la prisión, El revestimiento de la prisión -> Supresión -> La guía de un loco",
+}
+for i = 1, 6 do
     kQuestInstanceData.ZulGurub.Horde[i] = kQuestInstanceData.ZulGurub.Alliance[i]
 end
 

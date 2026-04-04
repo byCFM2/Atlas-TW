@@ -4982,7 +4982,17 @@ kQuestInstanceData.ZulGurub.Alliance[5] = { --TODO translate
     Prequest = "灵魂之笛",
     Folgequest = "藏在眼皮底下",
 }
-for i = 1, 5 do
+kQuestInstanceData.ZulGurub.Alliance[6] = {
+    Title = "抽取夺灵者",
+    Id = 70003,
+    Level = 60,
+    Attain = 60,
+    Aim = "杀死夺灵者哈卡，并将井之精华带回给衰老的戴欧。",
+    Location = "衰老的戴欧 (诅咒之地 - 腐烂之痕 " .. yellow .. "34, 50" .. white .. ")",
+    Note = red.."仅限术士！"..white.."“哈卡” " .. yellow .. "[11]" .. white .. ") 掉落“井之精华”。",
+    Prequest = "监狱的束缚，监狱的壳体 -> 压制 -> 疯子的引导",
+}
+for i = 1, 6 do
     kQuestInstanceData.ZulGurub.Horde[i] = kQuestInstanceData.ZulGurub.Alliance[i]
 end
 
