@@ -829,7 +829,17 @@ AtlasTW.Localization:RegisterNamespace("Bosses", "enUS", {
     ["Mayva Togview"] = true,
     -- Survival (TW custom)
     ["Rufus Hardwick"] = true,
-    ["Filadon Shieldarrow"] = true, --1.18.1
+    ["Hellador Swiftluck"] = true, --1.18.1
+    ["Krennan Wildberry"] = true, --1.18.1
+    ["Karolina Cloven"] = true, --1.18.1
+    ["Nallaeth"] = true, --1.18.1
+    ["Dyrohrinn Boulderhorn"] = true, --1.18.1
+    ["Eissinn Cragbelly"] = true, --1.18.1
+    ["Brakan"] = true, --1.18.1
+    ["Cynthessa Grimblood"] = true, --1.18.1
+    ["Thonk"] = true, --1.18.1
+    ["Nasnan Hillcreek"] = true, --1.18.1
+    ["Feebeld"] = true, --1.18.1
     ["Nerean Stagtree"] = true, --1.18.1
     ["Swampwalker Krug"] = true, --1.18.1
     -- Poisons (Rogue)

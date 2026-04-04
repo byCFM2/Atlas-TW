@@ -134,7 +134,7 @@ AtlasTW.InstanceData.EmeraldSanctum = {
                 {},
                 { id = 42165, dropRate = 60, disc = L["Used to summon boss"] }, -- Wail of Ysera 1.18.1
                 {},
-                { id = 61169, dropRate = 100 }, -- Bag of Vast Consciousness
+                { id = 61196, dropRate = 100 }, -- Bag of Vast Consciousness
                 {},
                 {},
                 {},

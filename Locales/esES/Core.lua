@@ -513,9 +513,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "esES", {
     ["World Enchants"] = "Encantamientos del mundo",
     ["World Blues"] = "Azules del mundo",
     ["Keys"] = "Llaves",
-
     ["Level One Lunatic Challenge"] = "Desafío del lunático de nivel uno",
-
+    ["Honor: "] = "Honor: ", --1.18.1
+    ["Conquest Points: "] = "Puntos de Conquista: ", --1.18.1
 
     --************************************************
     -- Events & Holidays

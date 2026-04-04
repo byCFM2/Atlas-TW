@@ -428,6 +428,17 @@ local ProfessionTrainers = {
     Survival = {
         -- Apprentice+ (Neutral NPCs at Nesingwary's Expedition)
         { name = LB["Filadon Shieldarrow"], loc = LZ["Teldrassil"] .. " " .. LM["Dolanaar"], faction = ALLIANCE, level = L["Journeyman"] },
+        { name = LB["Nallaeth"], loc = LZ["Teldrassil"] .. " " .. LZ["Darnassus"], faction = ALLIANCE, level = L["Journeyman"] },
+        { name = LB["Dyrohrinn Boulderhorn"], loc = LZ["Dun Morogh"], faction = ALLIANCE, level = L["Journeyman"] },
+        { name = LB["Eissinn Cragbelly"], loc = LZ["Dun Morogh"] .. " " .. LM["Ironforge"], faction = ALLIANCE, level = L["Journeyman"] },
+        { name = LB["Hellador Swiftluck"], loc = LZ["Alah'Thalas"], faction = ALLIANCE, level = L["Journeyman"] },
+        { name = LB["Krennan Wildberry"], loc = LZ["Stormwind City"], faction = ALLIANCE, level = L["Journeyman"] },
+        { name = LB["Karolina Cloven"], loc = LZ["Tirisfal Glades"], faction = HORDE, level = L["Journeyman"] },
+        { name = LB["Brakan"], loc = LZ["Durotar"] .. " " .. LM["Orgrimmar"], faction = HORDE, level = L["Journeyman"] },
+        { name = LB["Cynthessa Grimblood"], loc = LZ["Undercity"], faction = HORDE, level = L["Journeyman"] },
+        { name = LB["Thonk"], loc = LZ["Durotar"], faction = HORDE, level = L["Journeyman"] },
+        { name = LB["Nasnan Hillcreek"], loc = LZ["Mulgore"], faction = HORDE, level = L["Journeyman"] },
+        { name = LB["Feebeld"], loc = LZ["The Barrens"], faction = HORDE, level = L["Journeyman"] },
         { name = LB["Nerean Stagtree"], loc = LZ["Desolace"] .. " " .. LM["Nijel's Point"], faction = ALLIANCE, level = L["Expert"] },
         { name = LB["Swampwalker Krug"], loc = LZ["Swamp of Sorrows"] .. " " .. LM["Stonard"], faction = HORDE, level = L["Expert"] },
         { name = LB["Rufus Hardwick"], loc = LZ["Stranglethorn Vale"], faction = NEUTRAL, level = L["Artisan"] },

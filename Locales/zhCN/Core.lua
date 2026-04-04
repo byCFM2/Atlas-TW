@@ -457,7 +457,11 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["World Enchants"] = "世界附魔",
     ["World Blues"] = "世界掉落稀有",
     ["Keys"] = "钥匙",
-    ["Level One Lunatic Challenge"] = "一级狂人挑战", -- Events & Holidays
+    ["Level One Lunatic Challenge"] = "一级狂人挑战",
+    ["Honor: "] = "荣誉: ", --1.18.1
+    ["Conquest Points: "] = "征服点数: ", --1.18.1
+
+    -- Events & Holidays
     ["Children's Week"] = "儿童周",
     ["Elemental Invasion"] = "元素入侵",
     ["Feast of Winter Veil"] = "冬幕节",

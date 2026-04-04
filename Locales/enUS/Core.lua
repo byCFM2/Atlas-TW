@@ -506,6 +506,8 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["World Blues"] = true,
     ["Keys"] = true,
     ["Level One Lunatic Challenge"] = true,
+    ["Honor: "] = true, --1.18.1
+    ["Conquest Points: "] = true, --1.18.1
     --************************************************
     -- Events & Holidays
     --************************************************

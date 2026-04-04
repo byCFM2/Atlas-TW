@@ -40,13 +40,14 @@ AtlasTW.MenuData.PVP = {
     {},
 	{},
 	{},
-    { name = L["PvP Weapons"], icon = "Interface\\Icons\\INV_Sword_10", lootpage = "PVPWeapons" },
+	{},
 	{ name = L["PvP Armor Sets"], icon = "Interface\\Icons\\INV_Helmet_03", lootpage = "AtlasTWLootPVPSetMenu" },
 	{},
     { name = L["PvP Mounts"], Extra = L["Rank"].." 11", icon = "Interface\\Icons\\Ability_Mount_RidingHorse", lootpage = "PvPMountsPvP" },
     { name = L["PvP Accessories"], Extra = L["Rank"].." 2-9", icon = "Interface\\Icons\\INV_Jewelry_Talisman_09", lootpage = "PvP60Accessories" },
     { name = L["PvP Armor Sets"].." 1.18", Extra = L["Rank"].." 7-13", icon = "Interface\\Icons\\INV_Helmet_05", lootpage = "AtlasTWLootPVPSet118Menu" },
-    { name = L["PvP Weapons"].." 1.18", Extra = L["Rank"].." 14", icon = "Interface\\Icons\\INV_Sword_11", lootpage = "PVPWeapons118" },
+    { name = L["PvP Weapons"], icon = "Interface\\Icons\\INV_Sword_11", lootpage = "PVPWeapons" },
+    -- { name = L["PvP Weapons"].." 1.18", Extra = L["Rank"].." 14", icon = "Interface\\Icons\\INV_Sword_11", lootpage = "PVPWeapons118" },
 }
 
 ---

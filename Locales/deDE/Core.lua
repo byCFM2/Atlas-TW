@@ -513,7 +513,9 @@ AtlasTW.Localization:RegisterNamespace("UI", "deDE", {
     ["World Enchants"] = "Weltverzauberungen",
     ["World Blues"] = "Welt-Blues",
     ["Keys"] = "Schlüssel",
-    ["Level One Lunatic Challenge"] = "Herausforderung des Wahnsinnigen, Stufe 1", --************************************************
+    ["Level One Lunatic Challenge"] = "Herausforderung des Wahnsinnigen, Stufe 1", 
+    ["Honor: "] = "Ehre: ", --1.18.1
+    ["Conquest Points: "] = "Eroberungspunkte: ", --1.18.1
     -- Events & Holidays
     --************************************************
     ["Children's Week"] = "Kinderwoche",
