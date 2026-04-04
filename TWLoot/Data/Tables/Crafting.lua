@@ -3632,12 +3632,11 @@ local craftingTable = {
 		{ id = 51708,            quantity = { 4, 10 },          container = { { 51712, { 3, 6 } }, { 51718, { 3, 6 } } } },                                                    --Striped Melon Seeds, Juicy Watermelon, Sweet Watermelon
 		{ id = 51716,            quantity = 20,                 disc = L["Vendor"],                                container = { { 51717, { 2, 5 } }, { 51720, { 2, 5 } } } }, --Magic Mushroom Spores, Hardened Mushroom, Power Mushroom
 		{},
-		{ id = 42157,            quantity = { 3, 6 } }, -- Sour Northwind Grapes 1.18.1
-		{ id = 42158,            quantity = { 3, 6 } }, -- Sweet Northwind Grapes 1.18.1
-		{ id = 42160,            quantity = { 3, 6 } }, -- Mealy Wildhammer Yam 1.18.1
-		{ id = 42159,            quantity = { 3, 6 } }, -- Sweet Wildhammer Yam 1.18.1
-		{ id = 42161,            quantity = { 3, 6 } }, -- Crunchy Sandwept Carrots 1.18.1
-		{ id = 42162,            quantity = { 3, 6 } }, -- Spicy Sandswept Carrots 1.18.1
+		{ id = 42068,            quantity = { 2, 3 }, container = { { 42157, { 3, 6 } }, { 42158, { 3, 6 } } } }, -- Wild Grape Seeds, Sour Northwind Grapes, Sweet Northwind Grapes 1.18
+		{ id = 42069,            quantity = { 2, 3 }, container = { { 42160, { 3, 6 } }, { 42159, { 3, 6 } } } }, -- Wildhammer Yam Roots, Mealy Wildhammer Yam, Sweet Wildhammer Yam 1.18
+		{ id = 42070,            quantity = { 2, 3 }, container = { { 42161, { 3, 6 } }, { 42162, { 3, 6 } } } }, -- Sandswept Carrot Seeds, Crunchy Sandwept Carrots, Spicy Sandswept Carrots 1.18
+		{},
+		{ id = 45000,            quantity = { 2, 3 } }, -- Ordinary Cabbage Seeds 1.18.1
 	},
 
 	JewelcraftingApprentice = {
