@@ -3631,6 +3631,13 @@ local craftingTable = {
 		{ id = 51707,            quantity = { 4, 10 },          container = { { 51711, { 3, 6 } }, { 51714, { 3, 6 } } } },                                                    --Mountain Berry Bush Seeds, Sweet Mountain Berry
 		{ id = 51708,            quantity = { 4, 10 },          container = { { 51712, { 3, 6 } }, { 51718, { 3, 6 } } } },                                                    --Striped Melon Seeds, Juicy Watermelon, Sweet Watermelon
 		{ id = 51716,            quantity = 20,                 disc = L["Vendor"],                                container = { { 51717, { 2, 5 } }, { 51720, { 2, 5 } } } }, --Magic Mushroom Spores, Hardened Mushroom, Power Mushroom
+		{},
+		{ id = 42157,            quantity = { 3, 6 } }, -- Sour Northwind Grapes 1.18.1
+		{ id = 42158,            quantity = { 3, 6 } }, -- Sweet Northwind Grapes 1.18.1
+		{ id = 42160,            quantity = { 3, 6 } }, -- Mealy Wildhammer Yam 1.18.1
+		{ id = 42159,            quantity = { 3, 6 } }, -- Sweet Wildhammer Yam 1.18.1
+		{ id = 42161,            quantity = { 3, 6 } }, -- Crunchy Sandwept Carrots 1.18.1
+		{ id = 42162,            quantity = { 3, 6 } }, -- Spicy Sandswept Carrots 1.18.1
 	},
 
 	JewelcraftingApprentice = {
