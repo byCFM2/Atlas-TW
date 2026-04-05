@@ -20,69 +20,10 @@ AtlasTW = _G.AtlasTW
 
 local L = AtlasTW.Localization.UI
 local LF = AtlasTW.Localization.Factions
-local LIS = AtlasTW.Localization.ItemSets
-
---Instance required libraries
 
 AtlasTWLoot_Data = AtlasTWLoot_Data or {}
 
 local pvpRewards = {
-	--[[ PVPWeapons118 = {
-		{ name = LF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 14"},
-		{ id = 18827 }, -- Veteran's Handaxe
-		{ id = 18830 }, -- Veteran's Sunderer
-		{ id = 18838 }, -- Veteran's Dirk
-		{ id = 23451 }, -- Executioner's Mageblade
-		{ id = 18843 }, -- Veteran's Right Hand Blade
-		{ id = 18847 }, -- Veteran's Left Hand Blade
-		{ id = 18865 }, -- Veteran's Punisher
-		{ id = 23454 }, -- Field Medic's Warhammer
-		{ id = 23455 }, -- Executioner's Demolisher
-		{ id = 18867 }, -- Veteran's Battle Hammer
-		{ id = 12584 }, -- Veteran's Longsword
-		{ id = 23456 }, -- Veteran's Swiftblade
-		{ id = 18876 }, -- Veteran's Claymore
-		{ id = 18869 }, -- Veteran's Glaive
-		{ name = LF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 14"},
-		{ id = 18828 }, -- Veteran's Cleaver
-		{ id = 18831 }, -- Veteran's Battle Axe
-		{ id = 18840 }, -- Veteran's Razor
-		{ id = 23466 }, -- Executioner's Spellblade
-		{ id = 18844 }, -- Veteran's Right Claw
-		{ id = 18848 }, -- Veteran's Left Claw
-		{ id = 18866 }, -- Veteran's Bludgeon
-		{ id = 23464 }, -- Field Medic's Battle Mace
-		{ id = 23465 }, -- Executioner's Destroyer
-		{ id = 18868 }, -- Veteran's Pulverizer
-		{ id = 16345 }, -- Veteran's Blade
-		{ id = 23467 }, -- Veteran's Quickblade
-		{ id = 18877 }, -- Veteran's Greatsword
-		{ id = 18871 }, -- Veteran's Pig Sticker
-
-		{ id = 18873 }, -- Executioner's Stave
-		{ id = 18833 }, -- Veteran's Bullseye
-		{ id = 18836 }, -- Veteran's Repeater
-		{ id = 18855 }, -- Veteran's Hand Cannon
-		{ id = 18825 }, -- Veteran's Aegis
-		{ id = 23452 }, -- Executioner's Tome of Power
-		{ id = 23453 }, -- Field Medic's Tome of Restoration
-		{},
-		{},
-		{},
-		{},
-		{},
-		{},
-		{},
-		{},
-		{ id = 18874 }, -- Executioner's War Staff
-		{ id = 18835 }, -- Veteran's Recurve
-		{ id = 18837 }, -- Veteran's Crossbow
-		{ id = 18860 }, -- Veteran's Street Sweeper
-		{ id = 18826 }, -- Veteran's Shield Wall
-		{ id = 23468 }, -- Executioner's Tome of Destruction
-		{ id = 23469 }, -- Field Medic's Tome of Mending
-		{ id = 98731 }, -- Gladiator's Tunic
-	}, ]]
 	PVPWeapons = {
 		{ id = 33883, disc = LF["Alliance"]..", "..L["Honor: "].." 18000" }, -- Strategist's Stave
 		{ id = 33881, disc = LF["Alliance"]..", "..L["Honor: "].." 18000" }, -- Strategist's Demolisher
@@ -92,6 +33,11 @@ local pvpRewards = {
 		{ id = 33902, disc = LF["Horde"]..", "..L["Honor: "].." 18000" }, -- Strategist's Destroyer
 		{ id = 33915, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Strategist's Spellblade
 		{ id = 33916, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Strategist's Tome of Destruction
+		{},
+		{ id = 33891, disc = LF["Alliance"]..", "..L["Honor: "].." 14000" }, -- Physician's Warhammer
+		{ id = 33896, disc = LF["Alliance"]..", "..L["Honor: "].." 14000" }, -- Physician's Tome of Restoration
+		{ id = 33912, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Physician's Battle Mace
+		{ id = 33917, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Physician's Tome of Mending
 		{},
 		{ id = 33879, disc = LF["Alliance"]..", "..L["Honor: "].." 18000" }, -- Partisan's Claymore
 		{ id = 33880, disc = LF["Alliance"]..", "..L["Honor: "].." 18000" }, -- Partisan's Battle Hammer
@@ -124,11 +70,6 @@ local pvpRewards = {
 		{ id = 33919, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Partisan's Crossbow
 		{ id = 33920, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Partisan's Recurve
 		{},
-		{ id = 33891, disc = LF["Alliance"]..", "..L["Honor: "].." 14000" }, -- Physician's Warhammer
-		{ id = 33896, disc = LF["Alliance"]..", "..L["Honor: "].." 14000" }, -- Physician's Tome of Restoration
-		{ id = 33912, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Physician's Battle Mace
-		{ id = 33917, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Physician's Tome of Mending
-		{},
 		{ id = 18873, disc = L["Alliance"]..", "..L["Honor: "].." 48000", container = { 33883 } }, -- Executioner's Stave
 		{ id = 23455, disc = L["Alliance"]..", "..L["Honor: "].." 48000", container = { 33881 } }, -- Executioner's Demolisher
 		{ id = 23451, disc = L["Alliance"]..", "..L["Honor: "].." 32000", container = { 33894 } }, -- Executioner's Mageblade
@@ -137,6 +78,11 @@ local pvpRewards = {
 		{ id = 23465, disc = L["Horde"]..", "..L["Honor: "].." 48000", container = { 33902 } }, -- Executioner's Destroyer
 		{ id = 23466, disc = L["Horde"]..", "..L["Honor: "].." 32000", container = { 33915 } }, -- Executioner's Spellblade
 		{ id = 23468, disc = L["Horde"]..", "..L["Honor: "].." 32000", container = { 33916 } }, -- Executioner's Tome of Destruction
+		{},
+		{ id = 23454, disc = L["Alliance"]..", "..L["Honor: "].." 32000", container = { 33891 } }, -- Field Medic's Warhammer
+		{ id = 23453, disc = L["Alliance"]..", "..L["Honor: "].." 32000", container = { 33896 } }, -- Field Medic's Tome of Restoration
+		{ id = 23464, disc = L["Horde"]..", "..L["Honor: "].." 32000", container = { 33912 } }, -- Field Medic's Battle Mace
+		{ id = 23469, disc = L["Horde"]..", "..L["Honor: "].." 32000", container = { 33917 } }, -- Field Medic's Tome of Mending
 		{},
 		{ id = 18876, disc = L["Alliance"]..", "..L["Honor: "].." 48000", container = { 33879 } }, -- Veteran's Claymore
 		{ id = 18867, disc = L["Alliance"]..", "..L["Honor: "].." 48000", container = { 33880 } }, -- Veteran's Battle Hammer
@@ -168,17 +114,12 @@ local pvpRewards = {
 		{ id = 18860, disc = L["Horde"]..", "..L["Honor: "].." 32000", container = { 33918 } }, -- Veteran's Street Sweeper
 		{ id = 18837, disc = L["Horde"]..", "..L["Honor: "].." 32000", container = { 33919 } }, -- Veteran's Crossbow
 		{ id = 18835, disc = L["Horde"]..", "..L["Honor: "].." 32000", container = { 33920 } }, -- Veteran's Recurve
-		{},
-		{ id = 23454, disc = L["Alliance"]..", "..L["Honor: "].." 32000", container = { 33891 } }, -- Field Medic's Warhammer
-		{ id = 23453, disc = L["Alliance"]..", "..L["Honor: "].." 32000", container = { 33896 } }, -- Field Medic's Tome of Restoration
-		{ id = 23464, disc = L["Horde"]..", "..L["Honor: "].." 32000", container = { 33912 } }, -- Field Medic's Battle Mace
-		{ id = 23469, disc = L["Horde"]..", "..L["Honor: "].." 32000", container = { 33917 } }, -- Field Medic's Tome of Mending
 	},
 	PvP60Accessories = {
+		{ id = 18839, disc=L["Consumable"] }, -- Combat Healing Potion+
+		{},
 		{ name = LF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 1"}, --*1
-		{ id = 15196 }, -- Private's Tabard
-		{ id = 18839, disc=L["Consumable"] }, -- Combat Healing Potion
-		{ id = 18841, disc=L["Consumable"] }, -- Combat Mana Potion
+		{ id = 15196 }, -- Private's Tabard+
 		{},
 		{ name = LF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 2"},
 		{ id = 18862 }, -- Insignia of the Alliance
@@ -190,10 +131,10 @@ local pvpRewards = {
 		{ id = 18864 }, -- Insignia of the Alliance
 		{ id = 18854 }, -- Insignia of the Alliance
 		{},
-		{ name = LF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 1"}, --*1
-		{ id = 15197 }, -- Scout's Tabard
-		{ id = 18839, disc=L["Consumable"] }, -- Combat Healing Potion
-		{ id = 18841, disc=L["Consumable"] }, -- Combat Mana Potion
+		{ id = 18841, disc=L["Consumable"] }, -- Combat Mana Potion --*1+
+		{},
+		{ name = LF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 1"},
+		{ id = 15197 }, -- Scout's Tabard+
 		{},
 		{ name = LF["Horde"], icon="INV_BannerPVP_01", extra=L["Rank"].." 2"},
 		{ id = 18851 }, -- Insignia of the Horde
@@ -269,38 +210,6 @@ local pvpRewards = {
 		{},
 		{ id = 98731 }, -- Gladiator's Tunic
 	},
-	PVPHunter118 = {
-		{ name=LIS["Field Marshal's Pursuit"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
-		{ id = 16465, disc=L["Rank"].." 13" }, -- Field Marshal's Chain Helm
-		{ id = 16468, disc=L["Rank"].." 13" }, -- Field Marshal's Chain Spaulders
-		{ id = 16466, disc=L["Rank"].." 13" }, -- Field Marshal's Chain Breastplate
-		{ id = 16463, disc=L["Rank"].." 12" }, -- Marshal's Chain Grips
-		{ id = 16467, disc=L["Rank"].." 12" }, -- Marshal's Chain Legguards
-		{ id = 16462, disc=L["Rank"].." 12" }, -- Marshal's Chain Boots
-		{},
-		{ name=LIS["Lieutenant Commander's Pursuance"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
-		{ id = 23306, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Chain Helm
-		{ id = 23307, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Chain Shoulders
-		{ id = 23292, disc=L["Rank"].." 8" }, -- Knight-Captain's Chain Hauberk
-		{ id = 23279, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Chain Vices
-		{ id = 23293, disc=L["Rank"].." 8" }, -- Knight-Captain's Chain Legguards
-		{ id = 23278, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Chain Greaves
-		{ name=LIS["Warlord's Pursuit"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
-		{ id = 16566, disc=L["Rank"].." 13" }, -- Warlord's Chain Helmet
-		{ id = 16568, disc=L["Rank"].." 13" }, -- Warlord's Chain Shoulders
-		{ id = 16565, disc=L["Rank"].." 13" }, -- Warlord's Chain Chestpiece
-		{ id = 16571, disc=L["Rank"].." 12" }, -- General's Chain Gloves
-		{ id = 16567, disc=L["Rank"].." 12" }, -- General's Chain Legguards
-		{ id = 16569, disc=L["Rank"].." 12" }, -- General's Chain Boots
-		{},
-		{ name=LIS["Champion's Pursuance"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
-		{ id = 23251, disc=L["Rank"].." 10" }, -- Champion's Chain Helm
-		{ id = 23252, disc=L["Rank"].." 10" }, -- Champion's Chain Shoulders
-		{ id = 22874, disc=L["Rank"].." 8" }, -- Legionnaire's Chain Hauberk
-		{ id = 22862, disc=L["Rank"].." 7" }, -- Blood Guard's Chain Vices
-		{ id = 22875, disc=L["Rank"].." 8" }, -- Legionnaire's Chain Legguards
-		{ id = 22843, disc=L["Rank"].." 7" }, -- Blood Guard's Chain Greaves
-	},
 	PVPHunter = {
 		{ id = 33440, disc = L["Honor: "].." 5000" }, -- Combatant's Chain Helm
 		{ id = 33441, disc = L["Honor: "].." 4000" }, -- Combatant's Chain Spaulders
@@ -346,38 +255,6 @@ local pvpRewards = {
 		{ id = 33732, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33726 } }, -- Veteran's Chain Legguards
 		{ id = 33733, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33727 } }, -- Veteran's Chain Boots
 	},
-	PVPMage118 = {
-		{ name=LIS["Field Marshal's Regalia"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
-		{ id = 16441, disc=L["Rank"].." 13" }, -- Field Marshal's Coronet
-		{ id = 16444, disc=L["Rank"].." 13" }, -- Field Marshal's Silk Spaulders
-		{ id = 16443, disc=L["Rank"].." 13" }, -- Field Marshal's Silk Vestments
-		{ id = 16440, disc=L["Rank"].." 12" }, -- Marshal's Silk Gloves
-		{ id = 16442, disc=L["Rank"].." 12" }, -- Marshal's Silk Leggings
-		{ id = 16437, disc=L["Rank"].." 12" }, -- Marshal's Silk Footwraps
-		{},
-		{ name=LIS["Lieutenant Commander's Arcanum"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
-		{ id = 23318, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Silk Cowl
-		{ id = 23319, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Silk Mantle
-		{ id = 23305, disc=L["Rank"].." 8" }, -- Knight-Captain's Silk Tunic
-		{ id = 23290, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Silk Handwraps
-		{ id = 23304, disc=L["Rank"].." 8" }, -- Knight-Captain's Silk Legguards
-		{ id = 23291, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Silk Walkers
-		{ name=LIS["Warlord's Regalia"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
-		{ id = 16533, disc=L["Rank"].." 13" }, -- Warlord's Silk Cowl
-		{ id = 16536, disc=L["Rank"].." 13" }, -- Warlord's Silk Amice
-		{ id = 16535, disc=L["Rank"].." 13" }, -- Warlord's Silk Raiment
-		{ id = 16540, disc=L["Rank"].." 12" }, -- General's Silk Handguards
-		{ id = 16534, disc=L["Rank"].." 12" }, -- General's Silk Trousers
-		{ id = 16539, disc=L["Rank"].." 12" }, -- General's Silk Boots
-		{},
-		{ name=LIS["Champion's Arcanum"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
-		{ id = 23263, disc=L["Rank"].." 10" }, -- Champion's Silk Cowl
-		{ id = 23264, disc=L["Rank"].." 10" }, -- Champion's Silk Mantle
-		{ id = 22886, disc=L["Rank"].." 8" }, -- Legionnaire's Silk Tunic
-		{ id = 22870, disc=L["Rank"].." 7" }, -- Blood Guard's Silk Handwraps
-		{ id = 22883, disc=L["Rank"].." 8" }, -- Legionnaire's Silk Legguards
-		{ id = 22860, disc=L["Rank"].." 7" }, -- Blood Guard's Silk Walkers
-	},
 	PVPMage = {
 		{ id = 33422, disc = L["Honor: "].." 5000" }, -- Tactician's Coronet
 		{ id = 33423, disc = L["Honor: "].." 4000" }, -- Tactician's Silk Spaulders
@@ -422,38 +299,6 @@ local pvpRewards = {
 		{ id = 33713, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33707 } }, -- Executor's Silk Gloves
 		{ id = 33714, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33708 } }, -- Executor's Silk Leggings
 		{ id = 33715, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33709 } }, -- Executor's Silk Footwraps
-	},
-	PVPPriest118 = {
-		{ name=LIS["Field Marshal's Raiment"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
-		{ id = 17602, disc=L["Rank"].." 13" }, -- Field Marshal's Headdress
-		{ id = 17604, disc=L["Rank"].." 13" }, -- Field Marshal's Satin Mantle
-		{ id = 17605, disc=L["Rank"].." 13" }, -- Field Marshal's Satin Vestments
-		{ id = 17608, disc=L["Rank"].." 12" }, -- Marshal's Satin Gloves
-		{ id = 17603, disc=L["Rank"].." 12" }, -- Marshal's Satin Pants
-		{ id = 17607, disc=L["Rank"].." 12" }, -- Marshal's Satin Sandals
-		{},
-		{ name=LIS["Lieutenant Commander's Investiture"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
-		{ id = 23316, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Satin Hood
-		{ id = 23317, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Satin Mantle
-		{ id = 23303, disc=L["Rank"].." 8" }, -- Knight-Captain's Satin Tunic
-		{ id = 23288, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Satin Handwraps
-		{ id = 23302, disc=L["Rank"].." 8" }, -- Knight-Captain's Satin Legguards
-		{ id = 23289, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Satin Walkers
-		{ name=LIS["Warlord's Raiment"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
-		{ id = 17623, disc=L["Rank"].." 13" }, -- Warlord's Satin Cowl
-		{ id = 17622, disc=L["Rank"].." 13" }, -- Warlord's Satin Mantle
-		{ id = 17624, disc=L["Rank"].." 13" }, -- Warlord's Satin Robes
-		{ id = 17620, disc=L["Rank"].." 12" }, -- General's Satin Gloves
-		{ id = 17625, disc=L["Rank"].." 12" }, -- General's Satin Leggings
-		{ id = 17618, disc=L["Rank"].." 12" }, -- General's Satin Boots
-		{},
-		{ name=LIS["Champion's Investiture"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
-		{ id = 23261, disc=L["Rank"].." 10" }, -- Champion's Satin Hood
-		{ id = 23262, disc=L["Rank"].." 10" }, -- Champion's Satin Mantle
-		{ id = 22885, disc=L["Rank"].." 8" }, -- Legionnaire's Satin Tunic
-		{ id = 22869, disc=L["Rank"].." 7" }, -- Blood Guard's Satin Handwraps
-		{ id = 22882, disc=L["Rank"].." 8" }, -- Legionnaire's Satin Legguards
-		{ id = 22859, disc=L["Rank"].." 7" }, -- Blood Guard's Satin Walkers
 	},
 	PVPPriest = {
 		{ id = 33620, disc = L["Honor: "].." 5000" }, -- Tactician's Headdress
@@ -545,38 +390,6 @@ local pvpRewards = {
 		{ id = 33840, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33834 } }, -- Field Medic's Satin Pants
 		{ id = 33841, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3000", container = { 33835 } }, -- Field Medic's Satin Sandals
 	},
-	PVPWarlock118 = {
-		{ name=LIS["Field Marshal's Threads"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
-		{ id = 17578, disc=L["Rank"].." 13" }, -- Field Marshal's Coronal
-		{ id = 17580, disc=L["Rank"].." 13" }, -- Field Marshal's Dreadweave Shoulders
-		{ id = 17581, disc=L["Rank"].." 13" }, -- Field Marshal's Dreadweave Robe
-		{ id = 17584, disc=L["Rank"].." 12" }, -- Marshal's Dreadweave Gloves
-		{ id = 17579, disc=L["Rank"].." 12" }, -- Marshal's Dreadweave Leggings
-		{ id = 17583, disc=L["Rank"].." 12" }, -- Marshal's Dreadweave Boots
-		{},
-		{ name=LIS["Lieutenant Commander's Dreadgear"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
-		{ id = 23310, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Dreadweave Cowl
-		{ id = 23311, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Dreadweave Spaulders
-		{ id = 23297, disc=L["Rank"].." 8" }, -- Knight-Captain's Dreadweave Tunic
-		{ id = 23282, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Dreadweave Handwraps
-		{ id = 23296, disc=L["Rank"].." 8" }, -- Knight-Captain's Dreadweave Legguards
-		{ id = 23283, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Dreadweave Walkers
-		{ name=LIS["Warlord's Threads"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
-		{ id = 17591, disc=L["Rank"].." 13" }, -- Warlord's Dreadweave Hood
-		{ id = 17590, disc=L["Rank"].." 13" }, -- Warlord's Dreadweave Mantle
-		{ id = 17592, disc=L["Rank"].." 13" }, -- Warlord's Dreadweave Robe
-		{ id = 17588, disc=L["Rank"].." 12" }, -- General's Dreadweave Gloves
-		{ id = 17593, disc=L["Rank"].." 12" }, -- General's Dreadweave Pants
-		{ id = 17586, disc=L["Rank"].." 12" }, -- General's Dreadweave Boots
-		{},
-		{ name=LIS["Champion's Dreadgear"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
-		{ id = 23255, disc=L["Rank"].." 10" }, -- Champion's Dreadweave Cowl
-		{ id = 23256, disc=L["Rank"].." 10" }, -- Champion's Dreadweave Spaulders
-		{ id = 22884, disc=L["Rank"].." 8" }, -- Legionnaire's Dreadweave Tunic
-		{ id = 22865, disc=L["Rank"].." 7" }, -- Blood Guard's Dreadweave Handwraps
-		{ id = 22881, disc=L["Rank"].." 8" }, -- Legionnaire's Dreadweave Legguards
-		{ id = 22855, disc=L["Rank"].." 7" }, -- Blood Guard's Dreadweave Walkers
-	},
 	PVPWarlock = {
 		{ id = 33458, disc = L["Honor: "].." 5000" }, -- Tactician's Coronal
 		{ id = 33459, disc = L["Honor: "].." 4000" }, -- Tactician's Dreadweave Shoulders
@@ -621,38 +434,6 @@ local pvpRewards = {
 		{ id = 33749, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33743 } }, -- Executor's Dreadweave Gloves
 		{ id = 33750, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33744 } }, -- Executor's Dreadweave Leggings
 		{ id = 33751, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33745 } }, -- Executor's Dreadweave Boots
-	},
-	PVPRogue118 = {
-		{ name=LIS["Field Marshal's Vestments"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
-		{ id = 16455, disc=L["Rank"].." 13" }, -- Field Marshal's Leather Mask
-		{ id = 16457, disc=L["Rank"].." 13" }, -- Field Marshal's Leather Epaulets
-		{ id = 16453, disc=L["Rank"].." 13" }, -- Field Marshal's Leather Chestpiece
-		{ id = 16454, disc=L["Rank"].." 12" }, -- Marshal's Leather Handgrips
-		{ id = 16456, disc=L["Rank"].." 12" }, -- Marshal's Leather Leggings
-		{ id = 16446, disc=L["Rank"].." 12" }, -- Marshal's Leather Footguards
-		{},
-		{ name=LIS["Lieutenant Commander's Guard"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
-		{ id = 23312, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Leather Helm
-		{ id = 23313, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Leather Shoulders
-		{ id = 23298, disc=L["Rank"].." 8" }, -- Knight-Captain's Leather Chestpiece
-		{ id = 23284, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Leather Grips
-		{ id = 23299, disc=L["Rank"].." 8" }, -- Knight-Captain's Leather Legguards
-		{ id = 23285, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Leather Walkers
-		{ name=LIS["Warlord's Vestments"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
-		{ id = 16561, disc=L["Rank"].." 13" }, -- Warlord's Leather Helm
-		{ id = 16562, disc=L["Rank"].." 13" }, -- Warlord's Leather Spaulders
-		{ id = 16563, disc=L["Rank"].." 13" }, -- Warlord's Leather Breastplate
-		{ id = 16560, disc=L["Rank"].." 12" }, -- General's Leather Mitts
-		{ id = 16564, disc=L["Rank"].." 12" }, -- General's Leather Legguards
-		{ id = 16558, disc=L["Rank"].." 12" }, -- General's Leather Treads
-		{},
-		{ name=LIS["Champion's Guard"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
-		{ id = 23257, disc=L["Rank"].." 10" }, -- Champion's Leather Helm
-		{ id = 23258, disc=L["Rank"].." 10" }, -- Champion's Leather Shoulders
-		{ id = 22879, disc=L["Rank"].." 8" }, -- Legionnaire's Leather Chestpiece
-		{ id = 22864, disc=L["Rank"].." 7" }, -- Blood Guard's Leather Grips
-		{ id = 22880, disc=L["Rank"].." 8" }, -- Legionnaire's Leather Legguards
-		{ id = 22856, disc=L["Rank"].." 7" }, -- Blood Guard's Leather Walkers
 	},
 	PVPRogue = {
 		{ id = 33656, disc = L["Honor: "].." 5000" }, -- Combatant's Leather Mask
@@ -699,221 +480,208 @@ local pvpRewards = {
 		{ id = 33858, disc = L["Honor: "].." 32000, ".. L["Conquest Points: "].." 1500", container = { 33852 } }, -- Veteran's Leather Leggings
 		{ id = 33859, disc = L["Honor: "].." 32000, ".. L["Conquest Points: "].." 1500", container = { 33853 } }, -- Veteran's Leather Footguards
 	},
-	PVPDruid118 = {
-		{ name=LIS["Field Marshal's Sanctuary"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
-		{ id = 16451, disc=L["Rank"].." 13" }, -- Field Marshal's Dragonhide Helmet
-		{ id = 16449, disc=L["Rank"].." 13" }, -- Field Marshal's Dragonhide Spaulders
-		{ id = 16452, disc=L["Rank"].." 13" }, -- Field Marshal's Dragonhide Breastplate
-		{ id = 16448, disc=L["Rank"].." 12" }, -- Marshal's Dragonhide Gauntlets
-		{ id = 16450, disc=L["Rank"].." 12" }, -- Marshal's Dragonhide Legguards
-		{ id = 16459, disc=L["Rank"].." 12" }, -- Marshal's Dragonhide Boots
-		{},
-		{ name=LIS["Lieutenant Commander's Refuge"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
-		{ id = 23308, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Dragonhide Headguard
-		{ id = 23309, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Dragonhide Shoulders
-		{ id = 23294, disc=L["Rank"].." 8" }, -- Knight-Captain's Dragonhide Chestpiece
-		{ id = 23280, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Dragonhide Grips
-		{ id = 23295, disc=L["Rank"].." 8" }, -- Knight-Captain's Dragonhide Leggings
-		{ id = 23281, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Dragonhide Treads
-		{ name=LIS["Warlord's Sanctuary"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
-		{ id = 16550, disc=L["Rank"].." 13" }, -- Warlord's Dragonhide Helmet
-		{ id = 16551, disc=L["Rank"].." 13" }, -- Warlord's Dragonhide Epaulets
-		{ id = 16549, disc=L["Rank"].." 13" }, -- Warlord's Dragonhide Hauberk
-		{ id = 16555, disc=L["Rank"].." 12" }, -- General's Dragonhide Gloves
-		{ id = 16552, disc=L["Rank"].." 12" }, -- General's Dragonhide Leggings
-		{ id = 16554, disc=L["Rank"].." 12" }, -- General's Dragonhide Boots
-		{},
-		{ name=LIS["Champion's Refuge"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
-		{ id = 23253, disc=L["Rank"].." 10" }, -- Champion's Dragonhide Headguard
-		{ id = 23254, disc=L["Rank"].." 10" }, -- Champion's Dragonhide Shoulders
-		{ id = 22877, disc=L["Rank"].." 8" }, -- Legionnaire's Dragonhide Chestpiece
-		{ id = 22863, disc=L["Rank"].." 7" }, -- Blood Guard's Dragonhide Grips
-		{ id = 22878, disc=L["Rank"].." 8" }, -- Legionnaire's Dragonhide Leggings
-		{ id = 22852, disc=L["Rank"].." 7" }, -- Blood Guard's Dragonhide Treads
-	},
 	PVPDruid = {
-		{ id = 33530 }, -- Combatant's Dragonhide Helmet
-		{ id = 33531 }, -- Combatant's Dragonhide Epaulets
-		{ id = 33532 }, -- Combatant's Dragonhide Hauberk
-		{ id = 33533 }, -- Combatant's Dragonhide Gloves
-		{ id = 33534 }, -- Combatant's Dragonhide Leggings
-		{ id = 33535 }, -- Combatant's Dragonhide Boots
+		{ id = 33530, disc = L["Honor: "].." 5000" }, -- Combatant's Dragonhide Helmet
+		{ id = 33531, disc = L["Honor: "].." 4000" }, -- Combatant's Dragonhide Epaulets
+		{ id = 33532, disc = L["Honor: "].." 5000" }, -- Combatant's Dragonhide Hauberk
+		{ id = 33533, disc = L["Honor: "].." 3000" }, -- Combatant's Dragonhide Gloves
+		{ id = 33534, disc = L["Honor: "].." 4000" }, -- Combatant's Dragonhide Leggings
+		{ id = 33535, disc = L["Honor: "].." 3000" }, -- Combatant's Dragonhide Boots
 		{},
-		{ id = 33752 }, -- Combatant's Dragonhide Helmet
-		{ id = 33753 }, -- Combatant's Dragonhide Shoulders
-		{ id = 33754 }, -- Combatant's Dragonhide Hauberk
-		{ id = 33755 }, -- Combatant's Dragonhide Gauntlets
-		{ id = 33756 }, -- Combatant's Dragonhide Leggings
-		{ id = 33757 }, -- Combatant's Dragonhide Boots
-		{},
-		{},
-		{ id = 33536 }, -- Partisan's Dragonhide Helmet
-		{ id = 33537 }, -- Partisan's Dragonhide Epaulets
-		{ id = 33538 }, -- Partisan's Dragonhide Hauberk
-		{ id = 33539 }, -- Partisan's Dragonhide Gloves
-		{ id = 33540 }, -- Partisan's Dragonhide Leggings
-		{ id = 33541 }, -- Partisan's Dragonhide Boots
-		{},
-		{ id = 33758 }, -- Partisan's Dragonhide Helmet
-		{ id = 33759 }, -- Partisan's Dragonhide Epaulets
-		{ id = 33760 }, -- Partisan's Dragonhide Hauberk
-		{ id = 33761 }, -- Partisan's Dragonhide Gloves
-		{ id = 33762 }, -- Partisan's Dragonhide Leggings
-		{ id = 33763 }, -- Partisan's Dragonhide Boots
+		{ id = 33752, disc = L["Honor: "].." 5000" }, -- Combatant's Dragonhide Helmet
+		{ id = 33753, disc = L["Honor: "].." 4000" }, -- Combatant's Dragonhide Shoulders
+		{ id = 33754, disc = L["Honor: "].." 5000" }, -- Combatant's Dragonhide Hauberk
+		{ id = 33755, disc = L["Honor: "].." 3000" }, -- Combatant's Dragonhide Gloves
+		{ id = 33756, disc = L["Honor: "].." 4000" }, -- Combatant's Dragonhide Leggings
+		{ id = 33757, disc = L["Honor: "].." 3000" }, -- Combatant's Dragonhide Boots
 		{},
 		{},
-		{ id = 33554 }, -- Strategist's Dragonhide Helmet
-		{ id = 33555 }, -- Strategist's Dragonhide Epaulets
-		{ id = 33556 }, -- Strategist's Dragonhide Hauberk
-		{ id = 33557 }, -- Strategist's Dragonhide Gloves
-		{ id = 33558 }, -- Strategist's Dragonhide Leggings
-		{ id = 33559 }, -- Strategist's Dragonhide Boots
+		{ id = 33536, disc = L["Honor: "].." 19000", container = { 33530 } }, -- Partisan's Dragonhide Helmet
+		{ id = 33537, disc = L["Honor: "].." 19000", container = { 33531 } }, -- Partisan's Dragonhide Epaulets
+		{ id = 33538, disc = L["Honor: "].." 22000", container = { 33532 } }, -- Partisan's Dragonhide Hauberk
+		{ id = 33539, disc = L["Honor: "].." 20000", container = { 33533 } }, -- Partisan's Dragonhide Gloves
+		{ id = 33540, disc = L["Honor: "].." 22000", container = { 33534 } }, -- Partisan's Dragonhide Leggings
+		{ id = 33541, disc = L["Honor: "].." 18000", container = { 33535 } }, -- Partisan's Dragonhide Boots
 		{},
-		{ id = 33776 }, -- Strategist's Dragonhide Helmet
-		{ id = 33777 }, -- Strategist's Dragonhide Epaulets
-		{ id = 33778 }, -- Strategist's Dragonhide Hauberk
-		{ id = 33779 }, -- Strategist's Dragonhide Gloves
-		{ id = 33780 }, -- Strategist's Dragonhide Leggings
-		{ id = 33781 }, -- Strategist's Dragonhide Boots
-		{},
-		{},
-		{ id = 33548 }, -- Tactician's Dragonhide Helmet
-		{ id = 33549 }, -- Tactician's Dragonhide Epaulets
-		{ id = 33550 }, -- Tactician's Dragonhide Hauberk
-		{ id = 33551 }, -- Tactician's Dragonhide Gloves
-		{ id = 33552 }, -- Tactician's Dragonhide Leggings
-		{ id = 33553 }, -- Tactician's Dragonhide Boots
-		{},
-		{ id = 33770 }, -- Tactician's Dragonhide Helmet
-		{ id = 33771 }, -- Tactician's Dragonhide Epaulets
-		{ id = 33772 }, -- Tactician's Dragonhide Hauberk
-		{ id = 33773 }, -- Tactician's Dragonhide Gloves
-		{ id = 33774 }, -- Tactician's Dragonhide Leggings
-		{ id = 33775 }, -- Tactician's Dragonhide Boots
+		{ id = 33758, disc = L["Honor: "].." 19000", container = { 33752 } }, -- Partisan's Dragonhide Helmet
+		{ id = 33759, disc = L["Honor: "].." 19000", container = { 33753 } }, -- Partisan's Dragonhide Epaulets
+		{ id = 33760, disc = L["Honor: "].." 22000", container = { 33754 } }, -- Partisan's Dragonhide Hauberk
+		{ id = 33761, disc = L["Honor: "].." 20000", container = { 33755 } }, -- Partisan's Dragonhide Gloves
+		{ id = 33762, disc = L["Honor: "].." 22000", container = { 33756 } }, -- Partisan's Dragonhide Leggings
+		{ id = 33763, disc = L["Honor: "].." 18000", container = { 33757 } }, -- Partisan's Dragonhide Boots
 		{},
 		{},
-		{ id = 33566 }, -- Corpsman's Dragonhide Helmet
-		{ id = 33567 }, -- Corpsman's Dragonhide Epaulets
-		{ id = 33568 }, -- Corpsman's Dragonhide Hauberk
-		{ id = 33569 }, -- Corpsman's Dragonhide Gloves
-		{ id = 33570 }, -- Corpsman's Dragonhide Leggings
-		{ id = 33571 }, -- Corpsman's Dragonhide Boots
+		{ id = 33542, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33536 } }, -- Veteran's Dragonhide Helmet
+		{ id = 33543, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33537 } }, -- Veteran's Dragonhide Epaulets
+		{ id = 33544, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33538 } }, -- Veteran's Dragonhide Hauberk
+		{ id = 33545, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33539 } }, -- Veteran's Dragonhide Gloves
+		{ id = 33546, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33540 } }, -- Veteran's Dragonhide Leggings
+		{ id = 33547, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33541 } }, -- Veteran's Dragonhide Boots
 		{},
-		{ id = 33788 }, -- Corpsman's Dragonhide Helmet
-		{ id = 33789 }, -- Corpsman's Dragonhide Epaulets
-		{ id = 33790 }, -- Corpsman's Dragonhide Hauberk
-		{ id = 33791 }, -- Corpsman's Dragonhide Gloves
-		{ id = 33792 }, -- Corpsman's Dragonhide Leggings
-		{ id = 33793 }, -- Corpsman's Dragonhide Boots
+		{ id = 33764, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33758 } }, -- Veteran's Dragonhide Helmet
+		{ id = 33765, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33759 } }, -- Veteran's Dragonhide Epaulets
+		{ id = 33766, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33760 } }, -- Veteran's Dragonhide Hauberk
+		{ id = 33767, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33761 } }, -- Veteran's Dragonhide Gloves
+		{ id = 33768, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33762 } }, -- Veteran's Dragonhide Leggings
+		{ id = 33769, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33763 } }, -- Veteran's Dragonhide Boots
 		{},
 		{},
-		{ id = 33572 }, -- Physician's Dragonhide Helmet
-		{ id = 33573 }, -- Physician's Dragonhide Epaulets
-		{ id = 33574 }, -- Physician's Dragonhide Hauberk
-		{ id = 33575 }, -- Physician's Dragonhide Gloves
-		{ id = 33576 }, -- Physician's Dragonhide Leggings
-		{ id = 33577 }, -- Physician's Dragonhide Boots
+		{ id = 33548, disc = L["Honor: "].." 5000" }, -- Tactician's Dragonhide Helmet
+		{ id = 33549, disc = L["Honor: "].." 4000" }, -- Tactician's Dragonhide Epaulets
+		{ id = 33550, disc = L["Honor: "].." 5000" }, -- Tactician's Dragonhide Hauberk
+		{ id = 33551, disc = L["Honor: "].." 3000" }, -- Tactician's Dragonhide Gloves
+		{ id = 33552, disc = L["Honor: "].." 4000" }, -- Tactician's Dragonhide Leggings
+		{ id = 33553, disc = L["Honor: "].." 3000" }, -- Tactician's Dragonhide Boots
 		{},
-		{ id = 33794 }, -- Physician's Dragonhide Helmet
-		{ id = 33795 }, -- Physician's Dragonhide Epaulets
-		{ id = 33796 }, -- Physician's Dragonhide Hauberk
-		{ id = 33797 }, -- Physician's Dragonhide Gloves
-		{ id = 33798 }, -- Physician's Dragonhide Leggings
-		{ id = 33799 }, -- Physician's Dragonhide Boots
-	},
-	PVPShaman118 = {
-		{ name=LIS["Warlord's Earthshaker"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
-		{ id = 16578, disc=L["Rank"].." 13" }, -- Warlord's Mail Helm
-		{ id = 16580, disc=L["Rank"].." 13" }, -- Warlord's Mail Spaulders
-		{ id = 16577, disc=L["Rank"].." 13" }, -- Warlord's Mail Armor
-		{ id = 16574, disc=L["Rank"].." 12" }, -- General's Mail Gauntlets
-		{ id = 16579, disc=L["Rank"].." 12" }, -- General's Mail Leggings
-		{ id = 16573, disc=L["Rank"].." 12" }, -- General's Mail Boots
+		{ id = 33770, disc = L["Honor: "].." 5000" }, -- Tactician's Dragonhide Helmet
+		{ id = 33771, disc = L["Honor: "].." 4000" }, -- Tactician's Dragonhide Epaulets
+		{ id = 33772, disc = L["Honor: "].." 5000" }, -- Tactician's Dragonhide Hauberk
+		{ id = 33773, disc = L["Honor: "].." 3000" }, -- Tactician's Dragonhide Gloves
+		{ id = 33774, disc = L["Honor: "].." 4000" }, -- Tactician's Dragonhide Leggings
+		{ id = 33775, disc = L["Honor: "].." 3000" }, -- Tactician's Dragonhide Boots
 		{},
-		{ name=LIS["Champion's Stormcaller"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
-		{ id = 23259, disc=L["Rank"].." 10" }, -- Champion's Mail Headguard
-		{ id = 23260, disc=L["Rank"].." 10" }, -- Champion's Mail Pauldrons
-		{ id = 22876, disc=L["Rank"].." 8" }, -- Legionnaire's Mail Hauberk
-		{ id = 22867, disc=L["Rank"].." 7" }, -- Blood Guard's Mail Vices
-		{ id = 22887, disc=L["Rank"].." 8" }, -- Legionnaire's Mail Legguards
-		{ id = 22857, disc=L["Rank"].." 7" }, -- Blood Guard's Mail Greaves
+		{},
+		{ id = 33554, disc = L["Honor: "].." 19000", container = { 33548 } }, -- Strategist's Dragonhide Helmet
+		{ id = 33555, disc = L["Honor: "].." 19000", container = { 33549 } }, -- Strategist's Dragonhide Epaulets
+		{ id = 33556, disc = L["Honor: "].." 22000", container = { 33550 } }, -- Strategist's Dragonhide Hauberk
+		{ id = 33557, disc = L["Honor: "].." 20000", container = { 33551 } }, -- Strategist's Dragonhide Gloves
+		{ id = 33558, disc = L["Honor: "].." 22000", container = { 33552 } }, -- Strategist's Dragonhide Leggings
+		{ id = 33559, disc = L["Honor: "].." 18000", container = { 33553 } }, -- Strategist's Dragonhide Boots
+		{},
+		{ id = 33776, disc = L["Honor: "].." 19000", container = { 33770 } }, -- Strategist's Dragonhide Helmet
+		{ id = 33777, disc = L["Honor: "].." 19000", container = { 33771 } }, -- Strategist's Dragonhide Epaulets
+		{ id = 33778, disc = L["Honor: "].." 22000", container = { 33772 } }, -- Strategist's Dragonhide Hauberk
+		{ id = 33779, disc = L["Honor: "].." 20000", container = { 33773 } }, -- Strategist's Dragonhide Gloves
+		{ id = 33780, disc = L["Honor: "].." 22000", container = { 33774 } }, -- Strategist's Dragonhide Leggings
+		{ id = 33781, disc = L["Honor: "].." 18000", container = { 33775 } }, -- Strategist's Dragonhide Boots
+		{},
+		{},
+		{ id = 33560, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33554 } }, -- Executor's Dragonhide Helmet
+		{ id = 33561, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33555 } }, -- Executor's Dragonhide Epaulets
+		{ id = 33562, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33556 } }, -- Executor's Dragonhide Hauberk
+		{ id = 33563, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33557 } }, -- Executor's Dragonhide Gloves
+		{ id = 33564, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33558 } }, -- Executor's Dragonhide Leggings
+		{ id = 33565, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33559 } }, -- Executor's Dragonhide Boots
+		{},
+		{ id = 33782, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33776 } }, -- Executor's Dragonhide Helmet
+		{ id = 33783, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33777 } }, -- Executor's Dragonhide Epaulets
+		{ id = 33784, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33778 } }, -- Executor's Dragonhide Hauberk
+		{ id = 33785, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33779 } }, -- Executor's Dragonhide Gloves
+		{ id = 33786, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33780 } }, -- Executor's Dragonhide Leggings
+		{ id = 33787, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33781 } }, -- Executor's Dragonhide Boots
+		{},
+		{},
+		{ id = 33566, disc = L["Honor: "].." 5000" }, -- Corpsman's Dragonhide Helmet
+		{ id = 33567, disc = L["Honor: "].." 4000" }, -- Corpsman's Dragonhide Epaulets
+		{ id = 33568, disc = L["Honor: "].." 5000" }, -- Corpsman's Dragonhide Hauberk
+		{ id = 33569, disc = L["Honor: "].." 3000" }, -- Corpsman's Dragonhide Gloves
+		{ id = 33570, disc = L["Honor: "].." 4000" }, -- Corpsman's Dragonhide Leggings
+		{ id = 33571, disc = L["Honor: "].." 3000" }, -- Corpsman's Dragonhide Boots
+		{},
+		{ id = 33788, disc = L["Honor: "].." 5000" }, -- Corpsman's Dragonhide Helmet
+		{ id = 33789, disc = L["Honor: "].." 4000" }, -- Corpsman's Dragonhide Epaulets
+		{ id = 33790, disc = L["Honor: "].." 5000" }, -- Corpsman's Dragonhide Hauberk
+		{ id = 33791, disc = L["Honor: "].." 3000" }, -- Corpsman's Dragonhide Gloves
+		{ id = 33792, disc = L["Honor: "].." 4000" }, -- Corpsman's Dragonhide Leggings
+		{ id = 33793, disc = L["Honor: "].." 3000" }, -- Corpsman's Dragonhide Boots
+		{},
+		{},
+		{ id = 33572, disc = L["Honor: "].." 19000", container = { 33566 } }, -- Physician's Dragonhide Helmet
+		{ id = 33573, disc = L["Honor: "].." 19000", container = { 33567 } }, -- Physician's Dragonhide Epaulets
+		{ id = 33574, disc = L["Honor: "].." 22000", container = { 33568 } }, -- Physician's Dragonhide Hauberk
+		{ id = 33575, disc = L["Honor: "].." 20000", container = { 33569 } }, -- Physician's Dragonhide Gloves
+		{ id = 33576, disc = L["Honor: "].." 22000", container = { 33570 } }, -- Physician's Dragonhide Leggings
+		{ id = 33577, disc = L["Honor: "].." 18000", container = { 33571 } }, -- Physician's Dragonhide Boots
+		{},
+		{ id = 33794, disc = L["Honor: "].." 19000", container = { 33788 } }, -- Physician's Dragonhide Helmet
+		{ id = 33795, disc = L["Honor: "].." 19000", container = { 33789 } }, -- Physician's Dragonhide Epaulets
+		{ id = 33796, disc = L["Honor: "].." 22000", container = { 33790 } }, -- Physician's Dragonhide Hauberk
+		{ id = 33797, disc = L["Honor: "].." 20000", container = { 33791 } }, -- Physician's Dragonhide Gloves
+		{ id = 33798, disc = L["Honor: "].." 22000", container = { 33792 } }, -- Physician's Dragonhide Leggings
+		{ id = 33799, disc = L["Honor: "].." 18000", container = { 33793 } }, -- Physician's Dragonhide Boots
+		{},
+		{},
+		{ id = 33578, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33572 } }, -- Field Medic's Dragonhide Helmet
+		{ id = 33579, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33573 } }, -- Field Medic's Dragonhide Epaulets
+		{ id = 33580, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33574 } }, -- Field Medic's Dragonhide Hauberk
+		{ id = 33581, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33575 } }, -- Field Medic's Dragonhide Gloves
+		{ id = 33582, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33576 } }, -- Field Medic's Dragonhide Leggings
+		{ id = 33583, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33577 } }, -- Field Medic's Dragonhide Boots
+		{},
+		{ id = 33800, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33794 } }, -- Field Medic's Dragonhide Helmet
+		{ id = 33801, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33795 } }, -- Field Medic's Dragonhide Epaulets
+		{ id = 33802, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33796 } }, -- Field Medic's Dragonhide Hauberk
+		{ id = 33803, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33797 } }, -- Field Medic's Dragonhide Gloves
+		{ id = 33804, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33798 } }, -- Field Medic's Dragonhide Leggings
+		{ id = 33805, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33799 } }, -- Field Medic's Dragonhide Boots
 	},
 	PVPShaman = {
-		{ id = 33476 }, -- Combatant's Mail Helm
-		{ id = 33477 }, -- Combatant's Mail Shoulders
-		{ id = 33478 }, -- Combatant's Mail Armor
-		{ id = 33479 }, -- Combatant's Mail Gauntlets
-		{ id = 33480 }, -- Combatant's Mail Leggings
-		{ id = 33481 }, -- Combatant's Mail Boots
+		{ id = 33476, disc = L["Honor: "].." 5000" }, -- Combatant's Mail Helm
+		{ id = 33477, disc = L["Honor: "].." 4000" }, -- Combatant's Mail Shoulders
+		{ id = 33478, disc = L["Honor: "].." 5000" }, -- Combatant's Mail Armor
+		{ id = 33479, disc = L["Honor: "].." 3000" }, -- Combatant's Mail Gauntlets
+		{ id = 33480, disc = L["Honor: "].." 4000" }, -- Combatant's Mail Leggings
+		{ id = 33481, disc = L["Honor: "].." 3000" }, -- Combatant's Mail Boots
 		{},
-		{ id = 33482 }, -- Partisan's Mail Helm
-		{ id = 33483 }, -- Partisan's Mail Shoulders
-		{ id = 33484 }, -- Partisan's Mail Armor
-		{ id = 33485 }, -- Partisan's Mail Gauntlets
-		{ id = 33486 }, -- Partisan's Mail Leggings
-		{ id = 33487 }, -- Partisan's Mail Boots
-		{},
-		{},
-		{ id = 33500 }, -- Strategist's Mail Helm
-		{ id = 33501 }, -- Strategist's Mail Shoulders
-		{ id = 33502 }, -- Strategist's Mail Armor
-		{ id = 33503 }, -- Strategist's Mail Gauntlets
-		{ id = 33504 }, -- Strategist's Mail Leggings
-		{ id = 33505 }, -- Strategist's Mail Boots
-		{},
-		{ id = 33518 }, -- Physician's Mail Helm
-		{ id = 33519 }, -- Physician's Mail Spaulders
-		{ id = 33520 }, -- Physician's Mail Armor
-		{ id = 33521 }, -- Physician's Mail Gauntlets
-		{ id = 33522 }, -- Physician's Mail Leggings
-		{ id = 33523 }, -- Physician's Mail Boots
+		{ id = 33482, disc = L["Honor: "].." 19000", container = { 33476 } }, -- Partisan's Mail Helm
+		{ id = 33483, disc = L["Honor: "].." 19000", container = { 33477 } }, -- Partisan's Mail Shoulders
+		{ id = 33484, disc = L["Honor: "].." 22000", container = { 33478 } }, -- Partisan's Mail Armor
+		{ id = 33485, disc = L["Honor: "].." 20000", container = { 33479 } }, -- Partisan's Mail Gauntlets
+		{ id = 33486, disc = L["Honor: "].." 22000", container = { 33480 } }, -- Partisan's Mail Leggings
+		{ id = 33487, disc = L["Honor: "].." 18000", container = { 33481 } }, -- Partisan's Mail Boots
 		{},
 		{},
-		{ id = 33512 }, -- Corpsman's Mail Helm
-		{ id = 33513 }, -- Corpsman's Mail Spaulders
-		{ id = 33514 }, -- Corpsman's Mail Armor
-		{ id = 33515 }, -- Corpsman's Mail Gauntlets
-		{ id = 33516 }, -- Corpsman's Mail Leggings
-		{ id = 33517 }, -- Corpsman's Mail Boots
+		{ id = 33488, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33482 } }, -- Veteran's Mail Helm
+		{ id = 33489, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33483 } }, -- Veteran's Mail Shoulders
+		{ id = 33490, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33484 } }, -- Veteran's Mail Armor
+		{ id = 33491, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33485 } }, -- Veteran's Mail Gauntlets
+		{ id = 33492, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33486 } }, -- Veteran's Mail Leggings
+		{ id = 33493, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33487 } }, -- Veteran's Mail Sabatons
 		{},
-		{ id = 33494 }, -- Tactician's Mail Helm
-		{ id = 33495 }, -- Tactician's Mail Spaulders
-		{ id = 33496 }, -- Tactician's Mail Armor
-		{ id = 33497 }, -- Tactician's Mail Gauntlets
-		{ id = 33498 }, -- Tactician's Mail Leggings
-		{ id = 33499 }, -- Tactician's Mail Boots
-	},
-	PVPWarrior118 = {
-		{ name=LIS["Field Marshal's Battlegear"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
-		{ id = 16478, disc=L["Rank"].." 13" }, -- Field Marshal's Plate Helm
-		{ id = 16480, disc=L["Rank"].." 13" }, -- Field Marshal's Plate Shoulderguards
-		{ id = 16477, disc=L["Rank"].." 13" }, -- Field Marshal's Plate Armor
-		{ id = 16484, disc=L["Rank"].." 12" }, -- Marshal's Plate Gauntlets
-		{ id = 16479, disc=L["Rank"].." 12" }, -- Marshal's Plate Legguards
-		{ id = 16483, disc=L["Rank"].." 12" }, -- Marshal's Plate Boots
+		{ id = 33494, disc = L["Honor: "].." 5000" }, -- Tactician's Mail Helm
+		{ id = 33495, disc = L["Honor: "].." 4000" }, -- Tactician's Mail Spaulders
+		{ id = 33496, disc = L["Honor: "].." 5000" }, -- Tactician's Mail Armor
+		{ id = 33497, disc = L["Honor: "].." 3000" }, -- Tactician's Mail Gauntlets
+		{ id = 33498, disc = L["Honor: "].." 4000" }, -- Tactician's Mail Leggings
+		{ id = 33499, disc = L["Honor: "].." 3000" }, -- Tactician's Mail Boots
 		{},
-		{ name=LIS["Lieutenant Commander's Battlearmor"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
-		{ id = 23314, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Plate Helm
-		{ id = 23315, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Plate Shoulders
-		{ id = 23300, disc=L["Rank"].." 8" }, -- Knight-Captain's Plate Hauberk
-		{ id = 23286, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Plate Gauntlets
-		{ id = 23301, disc=L["Rank"].." 8" }, -- Knight-Captain's Plate Leggings
-		{ id = 23287, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Plate Greaves
-		{ name=LIS["Warlord's Battlegear"], icon="INV_BannerPVP_01", extra=L["Epic Set"] },
-		{ id = 16542, disc=L["Rank"].." 13" }, -- Warlord's Plate Headpiece
-		{ id = 16544, disc=L["Rank"].." 13" }, -- Warlord's Plate Shoulders
-		{ id = 16541, disc=L["Rank"].." 13" }, -- Warlord's Plate Armor
-		{ id = 16548, disc=L["Rank"].." 12" }, -- General's Plate Gauntlets
-		{ id = 16543, disc=L["Rank"].." 12" }, -- General's Plate Leggings
-		{ id = 16545, disc=L["Rank"].." 12" }, -- General's Plate Boots
 		{},
-		{ name=LIS["Champion's Battlearmor"], icon="INV_BannerPVP_01", extra=L["Rare Set"] },
-		{ id = 23244, disc=L["Rank"].." 10" }, -- Champion's Plate Helm
-		{ id = 23243, disc=L["Rank"].." 10" }, -- Champion's Plate Shoulders
-		{ id = 22872, disc=L["Rank"].." 8" }, -- Legionnaire's Plate Hauberk
-		{ id = 22868, disc=L["Rank"].." 7" }, -- Blood Guard's Plate Gauntlets
-		{ id = 22873, disc=L["Rank"].." 8" }, -- Legionnaire's Plate Leggings
-		{ id = 22858, disc=L["Rank"].." 7" }, -- Blood Guard's Plate Greaves
+		{ id = 33500, disc = L["Honor: "].." 19000", container = { 33494 } }, -- Strategist's Mail Helm
+		{ id = 33501, disc = L["Honor: "].." 19000", container = { 33495 } }, -- Strategist's Mail Shoulders
+		{ id = 33502, disc = L["Honor: "].." 22000", container = { 33496 } }, -- Strategist's Mail Armor
+		{ id = 33503, disc = L["Honor: "].." 20000", container = { 33497 } }, -- Strategist's Mail Gauntlets
+		{ id = 33504, disc = L["Honor: "].." 22000", container = { 33498 } }, -- Strategist's Mail Leggings
+		{ id = 33505, disc = L["Honor: "].." 18000", container = { 33499 } }, -- Strategist's Mail Boots
+		{},
+		{ id = 33506, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33500 } }, -- Executor's Mail Helm
+		{ id = 33507, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33501 } }, -- Executor's Mail Shoulders
+		{ id = 33508, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33502 } }, -- Executor's Mail Armor
+		{ id = 33509, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33503 } }, -- Executor's Mail Gauntlets
+		{ id = 33510, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33504 } }, -- Executor's Mail Leggings
+		{ id = 33511, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33505 } }, -- Executor's Mail Sabatons
+		{},
+		{},
+		{ id = 33512, disc = L["Honor: "].." 5000" }, -- Corpsman's Mail Helm
+		{ id = 33513, disc = L["Honor: "].." 4000" }, -- Corpsman's Mail Spaulders
+		{ id = 33514, disc = L["Honor: "].." 5000" }, -- Corpsman's Mail Armor
+		{ id = 33515, disc = L["Honor: "].." 3000" }, -- Corpsman's Mail Gauntlets
+		{ id = 33516, disc = L["Honor: "].." 4000" }, -- Corpsman's Mail Leggings
+		{ id = 33517, disc = L["Honor: "].." 3000" }, -- Corpsman's Mail Boots
+		{},
+		{ id = 33518, disc = L["Honor: "].." 19000", container = { 33512 } }, -- Physician's Mail Helm
+		{ id = 33519, disc = L["Honor: "].." 19000", container = { 33513 } }, -- Physician's Mail Spaulders
+		{ id = 33520, disc = L["Honor: "].." 22000", container = { 33514 } }, -- Physician's Mail Armor
+		{ id = 33521, disc = L["Honor: "].." 20000", container = { 33515 } }, -- Physician's Mail Gauntlets
+		{ id = 33522, disc = L["Honor: "].." 22000", container = { 33516 } }, -- Physician's Mail Leggings
+		{ id = 33523, disc = L["Honor: "].." 18000", container = { 33517 } }, -- Physician's Mail Boots
+		{},
+		{},
+		{ id = 33524, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33518 } }, -- Field Medic's Mail Helmet
+		{ id = 33525, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33519 } }, -- Field Medic's Mail Shoulders
+		{ id = 33526, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33520 } }, -- Field Medic's Mail Armor
+		{ id = 33527, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33521 } }, -- Field Medic's Mail Gauntlets
+		{ id = 33528, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33522 } }, -- Field Medic's Mail Leggings
+		{ id = 33529, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33523 } }, -- Field Medic's Mail Boots
 	},
 	PVPWarrior = {
 		{ id = 33404, disc = L["Honor: "].." 5000" }, -- Combatant's Plate Helm
@@ -960,52 +728,50 @@ local pvpRewards = {
 		{ id = 33696, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33690 } }, -- Veteran's Plate Leggings
 		{ id = 33697, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33691 } }, -- Veteran's Plate Boots
 	},
-	PVPPaladin118 = {
-		{ name=LIS["Field Marshal's Aegis"], icon="INV_BannerPVP_02", extra=L["Epic Set"] },
-		{ id = 16474, disc=L["Rank"].." 13" }, -- Field Marshal's Lamellar Faceguard
-		{ id = 16476, disc=L["Rank"].." 13" }, -- Field Marshal's Lamellar Pauldrons
-		{ id = 16473, disc=L["Rank"].." 13" }, -- Field Marshal's Lamellar Chestplate
-		{ id = 16471, disc=L["Rank"].." 12" }, -- Marshal's Lamellar Gloves
-		{ id = 16475, disc=L["Rank"].." 12" }, -- Marshal's Lamellar Legplates
-		{ id = 16472, disc=L["Rank"].." 12" }, -- Marshal's Lamellar Boots
-		{},
-		{ name=LIS["Lieutenant Commander's Redoubt"], icon="INV_BannerPVP_02", extra=L["Rare Set"] },
-		{ id = 23276, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Lamellar Headguard
-		{ id = 23277, disc=L["Rank"].." 10" }, -- Lieutenant Commander's Lamellar Shoulders
-		{ id = 23272, disc=L["Rank"].." 8" }, -- Knight-Captain's Lamellar Breastplate
-		{ id = 23274, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Lamellar Gauntlets
-		{ id = 23273, disc=L["Rank"].." 8" }, -- Knight-Captain's Lamellar Leggings
-		{ id = 23275, disc=L["Rank"].." 7" }, -- Knight-Lieutenant's Lamellar Sabatons
-	},
 	PVPPaladin = {
-		{ id = 33584 }, -- Combatant's Lamellar Faceguard
-		{ id = 33585 }, -- Combatant's Lamellar Shoulders
-		{ id = 33586 }, -- Combatant's Lamellar Chestplate
-		{ id = 33587 }, -- Combatant's Lamellar Gauntlets
-		{ id = 33588 }, -- Combatant's Lamellar Legplates
-		{ id = 33589 }, -- Combatant's Lamellar Sabatons
+		{ id = 33584, disc = L["Honor: "].." 5000" }, -- Combatant's Lamellar Faceguard
+		{ id = 33585, disc = L["Honor: "].." 4000" }, -- Combatant's Lamellar Shoulders
+		{ id = 33586, disc = L["Honor: "].." 5000" }, -- Combatant's Lamellar Chestplate
+		{ id = 33587, disc = L["Honor: "].." 3000" }, -- Combatant's Lamellar Gauntlets
+		{ id = 33588, disc = L["Honor: "].." 4000" }, -- Combatant's Lamellar Legplates
+		{ id = 33589, disc = L["Honor: "].." 3000" }, -- Combatant's Lamellar Sabatons
 		{},
-		{ id = 33590 }, -- Partisan's Lamellar Faceguard
-		{ id = 33591 }, -- Partisan's Lamellar Shoulders
-		{ id = 33592 }, -- Partisan's Lamellar Chestplate
-		{ id = 33593 }, -- Partisan's Lamellar Gauntlets
-		{ id = 33594 }, -- Partisan's Lamellar Legplates
-		{ id = 33595 }, -- Partisan's Lamellar Sabatons
+		{ id = 33590, disc = L["Honor: "].." 19000", container = { 33584 } }, -- Partisan's Lamellar Faceguard
+		{ id = 33591, disc = L["Honor: "].." 19000", container = { 33585 } }, -- Partisan's Lamellar Shoulders
+		{ id = 33592, disc = L["Honor: "].." 22000", container = { 33586 } }, -- Partisan's Lamellar Chestplate
+		{ id = 33593, disc = L["Honor: "].." 20000", container = { 33587 } }, -- Partisan's Lamellar Gauntlets
+		{ id = 33594, disc = L["Honor: "].." 22000", container = { 33588 } }, -- Partisan's Lamellar Legplates
+		{ id = 33595, disc = L["Honor: "].." 18000", container = { 33589 } }, -- Partisan's Lamellar Sabatons
 		{},
 		{},
-		{ id = 33602 }, -- Corpsman's Lamellar Faceguard
-		{ id = 33603 }, -- Corpsman's Lamellar Pauldrons
-		{ id = 33604 }, -- Corpsman's Lamellar Chestplate
-		{ id = 33605 }, -- Corpsman's Lamellar Gloves
-		{ id = 33606 }, -- Corpsman's Lamellar Legplates
-		{ id = 33607 }, -- Corpsman's Lamellar Sabatons
+		{ id = 33596, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33590 } }, -- Veteran's Lamellar Faceguard
+		{ id = 33597, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33591 } }, -- Veteran's Lamellar Shoulders
+		{ id = 33598, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33592 } }, -- Veteran's Lamellar Chestplate
+		{ id = 33599, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33593 } }, -- Veteran's Lamellar Gauntlets
+		{ id = 33600, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33594 } }, -- Veteran's Lamellar Legplates
+		{ id = 33601, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33595 } }, -- Veteran's Lamellar Sabatons
 		{},
-		{ id = 33608 }, -- Physician's Lamellar Faceguard
-		{ id = 33609 }, -- Physician's Lamellar Pauldrons
-		{ id = 33610 }, -- Physician's Lamellar Chestplate
-		{ id = 33611 }, -- Physician's Lamellar Gloves
-		{ id = 33612 }, -- Physician's Lamellar Legplates
-		{ id = 33613 }, -- Physician's Lamellar Boots
+		{ id = 33602, disc = L["Honor: "].." 5000" }, -- Corpsman's Lamellar Faceguard
+		{ id = 33603, disc = L["Honor: "].." 4000" }, -- Corpsman's Lamellar Pauldrons
+		{ id = 33604, disc = L["Honor: "].." 5000" }, -- Corpsman's Lamellar Chestplate
+		{ id = 33605, disc = L["Honor: "].." 3000" }, -- Corpsman's Lamellar Gloves
+		{ id = 33606, disc = L["Honor: "].." 4000" }, -- Corpsman's Lamellar Legplates
+		{ id = 33607, disc = L["Honor: "].." 3000" }, -- Corpsman's Lamellar Sabatons
+		{},
+		{},
+		{ id = 33608, disc = L["Honor: "].." 19000", container = { 33602 } }, -- Physician's Lamellar Faceguard
+		{ id = 33609, disc = L["Honor: "].." 19000", container = { 33603 } }, -- Physician's Lamellar Pauldrons
+		{ id = 33610, disc = L["Honor: "].." 22000", container = { 33604 } }, -- Physician's Lamellar Chestplate
+		{ id = 33611, disc = L["Honor: "].." 20000", container = { 33605 } }, -- Physician's Lamellar Gloves
+		{ id = 33612, disc = L["Honor: "].." 22000", container = { 33606 } }, -- Physician's Lamellar Legplates
+		{ id = 33613, disc = L["Honor: "].." 18000", container = { 33607 } }, -- Physician's Lamellar Boots
+		{},
+		{ id = 33614, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33608 } }, -- Field Medic's Lamellar Faceguard
+		{ id = 33615, disc = L["Honor: "].." 65000, ".. L["Conquest Points: "].." 3500", container = { 33609 } }, -- Field Medic's Lamellar Shoulders
+		{ id = 33616, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33610 } }, -- Field Medic's Lamellar Chestplate
+		{ id = 33617, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33611 } }, -- Field Medic's Lamellar Gloves
+		{ id = 33618, disc = L["Honor: "].." 69000, ".. L["Conquest Points: "].." 4000", container = { 33612 } }, -- Field Medic's Lamellar Legplates
+		{ id = 33619, disc = L["Honor: "].." 54000, ".. L["Conquest Points: "].." 3000", container = { 33613 } }, -- Field Medic's Lamellar Sabatons
 	},
 	PvPMountsPvP = {
 		{ name = LF["Alliance"], icon="INV_BannerPVP_02", extra=L["Rank"].." 11"},
