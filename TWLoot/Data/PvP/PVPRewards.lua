@@ -60,6 +60,7 @@ local pvpRewards = {
 		{ id = 33905, disc = LF["Horde"]..", "..L["Honor: "].." 18000" }, -- Partisan's Pig Sticker
 		{ id = 33906, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Partisan's Shield Wall
 		{ id = 33907, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Partisan's Blade
+		{},
 		{ id = 33908, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Partisan's Bludgeon
 		{ id = 33909, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Partisan's Cleaver
 		{ id = 33910, disc = LF["Horde"]..", "..L["Honor: "].." 14000" }, -- Partisan's Left Claw
@@ -89,6 +90,7 @@ local pvpRewards = {
 		{ id = 18830, disc = L["Alliance"]..", "..L["Honor: "].." 48000", container = { 33882 } }, -- Veteran's Sunderer
 		{ id = 18869, disc = L["Alliance"]..", "..L["Honor: "].." 48000", container = { 33884 } }, -- Veteran's Glaive
 		{ id = 18825, disc = L["Alliance"]..", "..L["Honor: "].." 32000", container = { 33885 } }, -- Veteran's Aegis
+		{},
 		{ id = 12584, disc = L["Alliance"]..", "..L["Honor: "].." 32000", container = { 33886 } }, -- Veteran's Longsword
 		{ id = 18865, disc = L["Alliance"]..", "..L["Honor: "].." 32000", container = { 33887 } }, -- Veteran's Punisher
 		{ id = 18827, disc = L["Alliance"]..", "..L["Honor: "].." 32000", container = { 33888 } }, -- Veteran's Handaxe
