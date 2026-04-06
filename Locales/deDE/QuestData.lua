@@ -7519,6 +7519,21 @@ kQuestInstanceData.WindhornCanyon.Horde[3] = { --TODO translate
         { id = 58129 }, -- Claw of Tempered Fire
     }
 }
+kQuestInstanceData.WindhornCanyon.Horde[4] = { --TODO translate
+    Title = "Der Zorn von Malgan",
+    Id = 41978,
+    Level = 27,
+    Attain = 20,
+    Aim = "Tötet 20 Schwarzwind-Dorfbewohner im Auftrag von Malgan Windhorn im Sagh'schen Zufluchtsort in Tausend Nadeln.",
+    Location = "Malgan Windhorn (Tausend Nadeln - Sagh'scher Zufluchtsort " .. yellow .. "31, 45" .. white .. ")",
+    Note = "'Schwarzwind-Dorfbewohner' befinden sich im Dungeon.",
+    Rewards = {
+        Text = "Belohnung: Wählt eine",
+        { id = 42264 }, -- Hauberk of Bloodshed
+        { id = 42265 }, -- Cloudtotem Cloak
+    }
+}
+
 --------------- Frostmane Hollow ---------------
 kQuestInstanceData.FrostmaneHollow = {
     Story = "Die Frostmähnenhöhle ist ein Instanz-Dungeon in Dun Morogh, südlich der Flugplätze von Eisenschmiede. Sie ist das Heiligtum des Frostmähnenclans und eine De-facto-Hauptstadt für alle Trolle in Dun Morogh.",

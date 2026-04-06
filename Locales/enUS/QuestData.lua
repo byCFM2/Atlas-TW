@@ -7485,7 +7485,7 @@ kQuestInstanceData.WindhornCanyon = {
     Alliance = {},
     Horde = {}
 }
-kQuestInstanceData.WindhornCanyon.Alliance[1] = { --TODO translate
+kQuestInstanceData.WindhornCanyon.Alliance[1] = {
     Title = "In Search of Tauren Relics",
     Id = 41976,
     Level = 27,
@@ -7494,7 +7494,7 @@ kQuestInstanceData.WindhornCanyon.Alliance[1] = { --TODO translate
     Location = "Tarwegg Dustbrow (Ironforge - Hall of Explorers " .. yellow .. "72, 17" .. white .. ")",
     Note = "'Windhorn Relics' can be found throughout the entire dungeon.",
 }
-kQuestInstanceData.WindhornCanyon.Horde[1] = { --TODO translate
+kQuestInstanceData.WindhornCanyon.Horde[1] = {
     Title = "Relics of the Windhorn Tribe",
     Id = 41977,
     Level = 27,
@@ -7507,7 +7507,7 @@ kQuestInstanceData.WindhornCanyon.Horde[1] = { --TODO translate
         { id = 42263 }, -- Sagh's Pendant
     }
 }
-kQuestInstanceData.WindhornCanyon.Horde[2] = { --TODO translate
+kQuestInstanceData.WindhornCanyon.Horde[2] = {
     Title = "Destroy the Deathtotem",
     Id = 41982,
     Level = 28,
@@ -7523,7 +7523,7 @@ kQuestInstanceData.WindhornCanyon.Horde[2] = { --TODO translate
         { id = 42270 }, -- Stonemane Boots
     }
 }
-kQuestInstanceData.WindhornCanyon.Horde[3] = { --TODO translate
+kQuestInstanceData.WindhornCanyon.Horde[3] = {
     Title = "Vortalus’ Edict",
     Id = 41939,
     Level = 26,
@@ -7539,6 +7539,21 @@ kQuestInstanceData.WindhornCanyon.Horde[3] = { --TODO translate
         { id = 58129 }, -- Claw of Tempered Fire
     }
 }
+kQuestInstanceData.WindhornCanyon.Horde[4] = {
+    Title = "The Wrath of Malgan",
+    Id = 41978,
+    Level = 27,
+    Attain = 20,
+    Aim = "Slay 20 Blackwind Villagers on behalf of Malgan Windhorn at Sagh's Refuge in Thousand Needles.",
+    Location = "Malgan Windhorn (Thousand Needles - Sagh's Refuge " .. yellow .. "31, 45" .. white .. ")",
+    Note = "'Blackwind Villagers' are at dungeon.",
+    Rewards = {
+        Text = "Reward: Pick One",
+        { id = 42264 }, -- Hauberk of Bloodshed
+        { id = 42265 }, -- Cloudtotem Cloak
+    }
+}
+
 --------------- Frostmane Hollow ---------------
 kQuestInstanceData.FrostmaneHollow = {
     Story = "Frostmane Hollow is an instance dungeon located in Dun Morogh, just south of the Ironforge Airfields. It is the sanctum of the Frostmane clan and a de-facto capital for all of trollkind in Dun Morogh.",

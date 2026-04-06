@@ -7426,6 +7426,20 @@ kQuestInstanceData.WindhornCanyon.Horde[3] = { --TODO translate
         { id = 58129 }, -- Claw of Tempered Fire
     }
 }
+kQuestInstanceData.WindhornCanyon.Horde[4] = { --TODO translate
+    Title = "玛尔甘之怒",
+    Id = 41978,
+    Level = 27,
+    Attain = 20,
+    Aim = "代表玛尔甘·风角，在千针石林萨格避难所击杀20名黑风村民。",
+    Location = "玛尔甘·风角（千针石林 - 萨格避难所 " .. yellow .. "31, 45" .. white .. "）",
+    Note = "“黑风村民”位于地下城内。",
+    Rewards = {
+        Text = "奖励：选择一项",
+        { id = 42264 }, -- Hauberk of Bloodshed
+        { id = 42265 }, -- Cloudtotem Cloak
+    }
+}
 --------------- Frostmane Hollow ---------------
 kQuestInstanceData.FrostmaneHollow = {
     Story = "霜鬃洞穴是位于丹莫罗的一个副本地下城，就在铁炉堡机场的正南方。它是霜鬃氏族的圣所，也是丹莫罗所有巨魔种族的实际首都。",

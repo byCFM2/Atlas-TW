@@ -7517,6 +7517,20 @@ kQuestInstanceData.WindhornCanyon.Horde[3] = { --TODO translate
         { id = 58129 }, -- Claw of Tempered Fire
     }
 }
+kQuestInstanceData.WindhornCanyon.Horde[4] = { --TODO translate
+    Title = "A Ira de Malgan",
+    Id = 41978,
+    Level = 27,
+    Attain = 20,
+    Aim = "Mate 20 Aldeões Ventonegro em nome de Malgan Chifrevento no Refúgio de Sagh em Mil Agulhas.",
+    Location = "Malgan Chifrevento (Mil Agulhas - Refúgio de Sagh " .. yellow .. "31, 45" .. white .. ")",
+    Note = "Os 'Aldeões Ventonegro' estão na masmorra.",
+    Rewards = {
+        Text = "Recompensa: Escolha um",
+        { id = 42264 }, -- Hauberk of Bloodshed
+        { id = 42265 }, -- Cloudtotem Cloak
+    }
+}
 
 --------------- Frostmane Hollow ---------------
 kQuestInstanceData.FrostmaneHollow = {

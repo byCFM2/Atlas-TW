@@ -7507,6 +7507,21 @@ kQuestInstanceData.WindhornCanyon.Horde[3] = { --TODO translate
         { id = 58129 }, -- Claw of Tempered Fire
     }
 }
+kQuestInstanceData.WindhornCanyon.Horde[4] = { --TODO translate
+    Title = "La ira de Malgan",
+    Id = 41978,
+    Level = 27,
+    Attain = 20,
+    Aim = "Mata a 20 Aldeanos Vientonegro en nombre de Malgan Cuernoviento en el Refugio de Sagh en Las Mil Agujas.",
+    Location = "Malgan Cuernoviento (Las Mil Agujas - Refugio de Sagh " .. yellow .. "31, 45" .. white .. ")",
+    Note = "Los 'Aldeanos Vientonegro' están en la mazmorra.",
+    Rewards = {
+        Text = "Recompensa: Elige una",
+        { id = 42264 }, -- Hauberk of Bloodshed
+        { id = 42265 }, -- Cloudtotem Cloak
+    }
+}
+
 --------------- Frostmane Hollow ---------------
 kQuestInstanceData.FrostmaneHollow = {
     Story = "La Guarida de los Colmillos de Escarcha es una mazmorra de instancia ubicada en Dun Morogh, justo al sur de los Campos de Aviación de Forjaz. Es el santuario del clan Colmillo de Escarcha y una capital de facto para todos los trols en Dun Morogh.",
