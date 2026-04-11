@@ -590,4 +590,6 @@ AtlasTW.Localization:RegisterNamespace("MapData", "enUS", {
     ["Moonhoof Village"] = true, --1.18.1 TODO
     ["Narvalis Point"] = true, --1.18.1 TODO
     ["Shimmerstar Lake"] = true, --1.18.1 TODO
+    --Timbermaw Hold
+    ["Rune of Illumination"] = true,
 })

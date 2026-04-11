@@ -21,6 +21,7 @@ AtlasTW = _G.AtlasTW or {}
 local L = AtlasTW.Localization.UI
 local LB = AtlasTW.Localization.Bosses
 local LZ = AtlasTW.Localization.Zones
+local LMD = AtlasTW.Localization.MapData
 local LIS = AtlasTW.Localization.ItemSets
 local LS = AtlasTW.Localization.Spells
 
@@ -47,8 +48,8 @@ AtlasTW.InstanceData.TimbermawHold = {
     MaxPlayers = 20,
     DamageType = L["Physical"],
     Entrances = {
-        { letter = "A)"..L["Entrance"].." "..LZ["Azshara"] },
-        { letter = "B)"..L["Entrance"].." "..LZ["Felwood"] },
+        { letter = "A)"..L["Entrance"].." "..LZ["Azshara"]..", "..LZ["Moonwhisper Coast"] },
+        { letter = "B)"..L["Entrance"].." "..LZ["Felwood"].." ("..LMD["Rune of Illumination"].." )" },
     },
     Bosses = {
         {

@@ -614,4 +614,6 @@ AtlasTW.Localization:RegisterNamespace("MapData", "ptBR", {
     ["Narvalis Point"] = "Ponto Narvalis", --1.18.1 TODO
     ["Shimmerstar Lake"] = "Lago Resplandestelar", --1.18.1 TODO
     ["Tablet of Kaz'gan"] = "Tablete de Kaz'gan", -- 1.18.1 TODO
+    --Timbermaw Hold
+    ["Rune of Illumination"] = "Runas de Iluminação", -- 1.18.1 TODO
 })

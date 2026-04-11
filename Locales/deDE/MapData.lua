@@ -589,4 +589,6 @@ AtlasTW.Localization:RegisterNamespace("MapData", "deDE", {
     ["Moonhoof Village"] = "Mondhufdorf", --1.18.1 TODO
     ["Narvalis Point"] = "Narvalis-Außenposten", --1.18.1 TODO
     ["Shimmerstar Lake"] = "Schimmersternsee", --1.18.1 TODO
+    --Timbermaw Hold
+    ["Rune of Illumination"] = "Runen der Erleuchtung", --1.18.1 TODO
 })
