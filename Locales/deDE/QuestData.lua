@@ -5491,7 +5491,7 @@ kQuestInstanceData.Concavius.Alliance[1] = { --TODO translate
     Attain = 60,
     Aim = "Findet den Ort, zu dem der Splitter euch zieht. Euer Verstand sagt euch, dass Ihr die dunklen Energien entweihter Gebiete aufsuchen sollt.",
     Location = "'Berstender Manasplitter' droppt von (Ruinen von Ahn'Qiraj - Moam " .. yellow .. "[3] " .. white .. ")",
-    Note = "Gebt die Quest beim 'Altar' in Desolace ab " .. yellow .. "[80, 80]" .. white .. ".",
+    Note = "Gebt die Quest beim Buch 'Almanac of the Nether' in Desolace ab " .. yellow .. "[82.4, 81]" .. white .. ".",
 }
 kQuestInstanceData.Concavius.Horde[1] = kQuestInstanceData.Concavius.Alliance[1]
 

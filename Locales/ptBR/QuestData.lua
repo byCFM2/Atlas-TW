@@ -5509,7 +5509,7 @@ kQuestInstanceData.Concavius.Alliance[1] = {
     Attain = 60,
     Aim = "Encontre o local para o qual o fragmento está atraindo você. Sua mente diz para buscar as energias sombrias de áreas profanas.",
     Location = "'Fragmento de Mana Transbordante' dropa de (Ruínas de Ahn'Qiraj - Moam " .. yellow .. "[3] " .. white .. ")",
-    Note = "Entregue a missão no 'Altar' em Desolace " .. yellow .. "[80, 80]" .. white .. ".",
+    Note = "Entregue a missão no livro 'Almanaque do Vazio' em Desolace " .. yellow .. "[82.4, 81]" .. white .. ".",
 }
 kQuestInstanceData.Concavius.Horde[1] = kQuestInstanceData.Concavius.Alliance[1]
 

@@ -5491,7 +5491,7 @@ kQuestInstanceData.Concavius.Alliance[1] = { --TODO translate
     Attain = 60,
     Aim = "Encuentra el lugar hacia el que te atrae el fragmento. Tu mente te dice que busques las energías oscuras de zonas profanas.",
     Location = "El 'Fragmento de maná rebosante' cae de (Ruinas de Ahn'Qiraj - Moam " .. yellow .. "[3] " .. white .. ")",
-    Note = "Entrega la misión en el 'Altar' en Desolace " .. yellow .. "[80, 80]" .. white .. ".",
+    Note = "Entrega la misión en el libro 'Almanaque del Vacío' en Desolace " .. yellow .. "[82.4, 81]" .. white .. ".",
 }
 kQuestInstanceData.Concavius.Horde[1] = kQuestInstanceData.Concavius.Alliance[1]
 

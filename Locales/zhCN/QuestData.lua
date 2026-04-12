@@ -5401,7 +5401,7 @@ kQuestInstanceData.Concavius.Alliance[1] = { --TODO translate
     Attain = 60,
     Aim = "找到碎片指引你前往的地点。你的直觉告诉你，去寻找那些亵渎之地的黑暗能量。",
     Location = "'能量迸发的法力碎片' 掉落自 (安其拉废墟 - 莫阿姆 " .. yellow .. "[3] " .. white .. ")",
-    Note = "在凄凉之地的“祭坛”处交付任务 " .. yellow .. "[80, 80]" .. white .. "。",
+    Note = "在凄凉之地的“虚空之书”处交付任务 " .. yellow .. "[82.4, 81]" .. white .. "。",
 }
 kQuestInstanceData.Concavius.Horde[1] = kQuestInstanceData.Concavius.Alliance[1]
 

@@ -5512,7 +5512,7 @@ kQuestInstanceData.Concavius.Alliance[1] = {
     Attain = 60,
     Aim = "Find the location the shard is pulling you towards. Your mind tells you to seek the dark energies of profane areas.",
     Location = "'Bursting Mana Shard' drops from (Ruins of Ahn'Qiraj - Moam " .. yellow .. "[3] " .. white .. ")",
-    Note = "Turn in the quest to 'Altar' in Desolace " .. yellow .. "[80, 80]" .. white .. ".",
+    Note = "Turn in the quest to 'Almanac of the Nether' book in Desolace " .. yellow .. "[82.4, 81]" .. white .. ".",
 }
 kQuestInstanceData.Concavius.Horde[1] = kQuestInstanceData.Concavius.Alliance[1]
 
