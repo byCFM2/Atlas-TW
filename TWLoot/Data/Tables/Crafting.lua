@@ -3625,7 +3625,28 @@ local craftingTable = {
 		{ id = 36749,              skill = { 300, 320, 330, 340 } }, -- Spirited Precision Sickle
 		{ id = 36751,              skill = { 300, 320, 330, 340 } }, -- Prospector's Magnifying Lens
 	},
-
+	SurvivalWoodcutting = {
+        { name = L["Simple Wood Tree"], extra = "1+ " },
+		{ id = 4470, quantity = { 2, 4 }, container = { 42142, 37061, 37062 }, disc = LZ["Darkshore"]..", "..LZ["Mulgore"]..", "..LZ["Elwynn Forest"]..", "..LZ["The Barrens"] }, 	--Simple Wood
+		{},
+        { name = L["Bright Wood Tree"], extra = "125+ " },
+		{ id = 42007, quantity = { 2, 4 }, container = { 34001, 37063, 37064 }, disc = LZ["Ashenvale"]..", "..LZ["Stonetalon Mountains"]..", "..LZ["Hillsbrad Foothills"]..", "..LZ["Northwind"] }, 	--Bright Wood
+		{},
+        { name = L["Shade Wood Tree"], extra = "175+ " },
+		{ id = 42008, quantity = { 2, 4 }, container = { 42143, 37065, 37066 }, disc = LZ["Feralas"]..", "..LZ["Stranglethorn Vale"]..", "..LZ["The Hinterlands"]..", "..LZ["Desolace"] }, 	--Shade Wood
+		{},
+        { name = L["Tropical Wood Tree"], extra = "225+ " },
+		{ id = 42009, quantity = { 2, 4 }, container = { 42145, 37067, 37068 }, disc = LZ["Tel'Abim"]..", "..LZ["Un'Goro Crater"]..", "..LZ["Strangelthorn Vale"] }, 	--Tropical Wood
+		{},
+		{},
+		{},
+		{},
+        { name = L["Dead Wood Tree"], extra = "250+ " },
+		{ id = 11291, container = { 42146, 37069 }, disc = LZ["Felwood"]..", "..LZ["Eastern Plaguelands"]..", "..LZ["Silithus"] }, 	--Star Wood
+		{},
+        { name = L["Star Wood Tree"], extra = "270+ " },
+		{ id = 11291, quantity = { 2, 4 }, container = { 42146, 37070 }, disc = LZ["Winterspring"]..", "..LZ["Moonwhisper Coast"]..", "..LZ["Hyjal"] }, 	--Star Wood
+	},
 	GardeningTable = {
 		{ id = 51706,            quantity = { 4, 10 },          container = { { 51710, { 3, 6 } }, { 51713, { 3, 6 } } } },                                                    --Country Pumpkin Seeds, Plump Country Pumpkin
 		{ id = 51707,            quantity = { 4, 10 },          container = { { 51711, { 3, 6 } }, { 51714, { 3, 6 } } } },                                                    --Mountain Berry Bush Seeds, Sweet Mountain Berry

@@ -536,6 +536,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "enUS", {
     ["Goblin Engineering"] = true,
     ["Rank"] = true,
     ["Engineer"] = true,
+    ["Woodcutting"] = true,
 
     --************************************************
     -- Equipment Slots & Types

@@ -470,6 +470,8 @@ AtlasTW.MenuData.Survival = {
     { name = LS["Survival"] .. ": " .. L["Expert"],     lootpage = "SurvivalExpert" },
     { name = LS["Survival"] .. ": " .. L["Artisan"],    lootpage = "SurvivalArtisan" },
     {},
+    { name = LS["Survival"] .. ": " .. L["Woodcutting"],    lootpage = "SurvivalWoodcutting" },
+    {},
     { name = LS["Gardening"], lootpage = "GardeningTable" },
     {},
     { name = L["Trainers"] .. ": " .. LS["Survival"],   icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "SurvivalTrainers" },

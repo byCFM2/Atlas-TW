@@ -155,6 +155,10 @@ AtlasTW.InstanceData.TheCrescentGrove = {
                 { id = 83202, dropRate = .5 }, -- Grizzlehide Belt
                 { id = 83200 }, -- Verdant Cane
                 { id = 83205, dropRate = .5 }, -- Thornwood Claw
+                { id = 61552 }, -- Corrupted Sword
+                { id = 61553 }, -- Satyrkin Leggings
+                { id = 61554 }, -- Crescent Band
+                { id = 61555 }, -- Ancient Grove Reed
             }
         },
     },

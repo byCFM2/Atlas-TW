@@ -485,6 +485,7 @@ AtlasTW.Localization:RegisterNamespace("UI", "zhCN", {
     ["Goblin Engineering"] = "地精工程学",
     ["Rank"] = "军衔",
     ["Engineer"] = "工程师",
+    ["Woodcutting"] = "伐木",
 
     -- Equipment Slots & Types
     ["Head"] = "头盔",
