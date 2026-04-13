@@ -121,6 +121,7 @@ local function BuildDungeons()
             local mapType = getMapType(mapKey, mapData)
             if mapType then
                 Dungeons[mapKey] = {
+                    name = mapData.Name,
                     type = mapType,
                     continent = getContinent(mapData),
                     level = mapData.Level,
@@ -166,6 +167,11 @@ local function IsInRange(dungeonLevel, categoryMin, categoryMax)
     return (avgLevel >= categoryMin and avgLevel <= categoryMax)
 end
 
+local Level60Overrides = {
+    [LZ["Zul'Gurub"]] = true,
+    [LZ["Lower Karazhan Halls"]] = true,
+}
+
 -- Category definitions
 local CategoryDefinitions = {
     [SortType.CONTINENT] = {
@@ -191,9 +197,9 @@ local CategoryDefinitions = {
             (d.type == "Dungeon" or d.type == "Raid") end },
         { name = L["Instances level 40-49"], filter = function(d) return IsInRange(d.level, 40, 49) and
             (d.type == "Dungeon" or d.type == "Raid") end },
-        { name = L["Instances level 50-59"], filter = function(d) return IsInRange(d.level, 50, 59) and
+        { name = L["Instances level 50-59"], filter = function(d) return (IsInRange(d.level, 50, 59) and not Level60Overrides[d.name]) and
             (d.type == "Dungeon" or d.type == "Raid") end },
-        { name = L["Instances 60 level"],    filter = function(d) return IsInRange(d.level, 60, 60) and
+        { name = L["Instances 60 level"],    filter = function(d) return (IsInRange(d.level, 60, 60) or Level60Overrides[d.name]) and
             (d.type == "Dungeon" or d.type == "Raid") end },
     },
     [SortType.TYPE] = {
