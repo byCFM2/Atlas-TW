@@ -392,15 +392,7 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
     if IsAddOnLoaded("pfUI") then
         tradeSkillLevelToggle:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 0, 0)
     else
-        local improvesSkillAnchor = _G["TradeSkillFrameExpandableFilterCheckButtonText"] or
-            _G["TradeSkillFrameExpandableFilterCheckButton"] or
-            _G["TradeSkillFrameAvailableFilterCheckButtonText"] or
-            _G["TradeSkillFrameAvailableFilterCheckButton"]
-        if improvesSkillAnchor then
-            tradeSkillLevelToggle:SetPoint("LEFT", improvesSkillAnchor, "RIGHT", 8, 0)
-        else
-            tradeSkillLevelToggle:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 250, -55)
-        end
+        tradeSkillLevelToggle:SetPoint("TOP", TradeSkillFrame, "TOP", 150, -15)
     end
     tradeSkillLevelToggle:SetChecked(AtlasTWOptions.TradeSkillShowLevels and 1 or nil)
     tradeSkillLevelToggle:Show()
