@@ -1712,6 +1712,14 @@ AtlasTW.SpellDB = {
 				{ 4470 },
 			},
 		},
+		[1207] = { --1.18.1 Fried Strider with a Side of Berries
+			item = 68513,
+			reagents = {
+				{ 42010 },
+				{ 42000 },
+				{ 2692, 2 },
+			},
+		},
 		[2149] = {
 			item = 2302,
 			reagents = {
