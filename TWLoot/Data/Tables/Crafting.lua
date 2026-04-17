@@ -3657,7 +3657,7 @@ local craftingTable = {
 		{ id = 42069,            quantity = { 2, 3 }, container = { { 42160, { 3, 6 } }, { 42159, { 3, 6 } } } }, -- Wildhammer Yam Roots, Mealy Wildhammer Yam, Sweet Wildhammer Yam 1.18
 		{ id = 42070,            quantity = { 2, 3 }, container = { { 42161, { 3, 6 } }, { 42162, { 3, 6 } } } }, -- Sandswept Carrot Seeds, Crunchy Sandwept Carrots, Spicy Sandswept Carrots 1.18
 		{},
-		{ id = 45000,            quantity = { 2, 3 } }, -- Ordinary Cabbage Seeds 1.18.1
+		{ id = 45000,            quantity = { 2, 3 }, container = { { 36668, { 3, 6 } } } }, -- Ordinary Cabbage Seeds 1.18.1
 	},
 
 	JewelcraftingApprentice = {
