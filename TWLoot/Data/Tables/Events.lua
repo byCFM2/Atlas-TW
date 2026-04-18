@@ -325,13 +325,23 @@ local WorldEvents = {
 	},
 	Noblegarden = {
 		{ name = LM["Brightly Colored Egg"], icon="INV_Egg_03" },
-		{ id = 19028 }, -- Elegant Dress
-		{ id = 6833 }, -- White Tuxedo Shirt
-		{ id = 6835 }, -- Black Tuxedo Pants
+		{ id = 1, dropRate = .2 }, -- Spring White Rabbit Headband
+		{ id = 9, dropRate = 1.8 }, -- Spring Pink Rabbit Headband
+		{ id = 11, dropRate = 1.8 }, -- Spring Yellow Rabbit Headband
+		{ id = 14, dropRate = 1.8 }, -- Spring Brown Rabbit Headband
+		{ id = 22, dropRate = 1.8 }, -- Spring Blue Rabbit Headband
+		{ id = 29, dropRate = 1.8 }, -- Spring Black Rabbit Headband
+		{ id = 19028, dropRate = 1.8 }, -- Elegant Dress
+		{ id = 6833, dropRate = 1.8 }, -- White Tuxedo Shirt
+		{ id = 6835, dropRate = 1.8 }, -- Black Tuxedo Pants
 		{},
-		{ id = 7807, disc=L["Consumable"] }, -- Candy Bar
-		{ id = 7808, disc=L["Consumable"] }, -- Chocolate Square
-		{ id = 7806, disc=L["Consumable"] }, -- Lollipop
+		{ id = 92011, dropRate = 1.8 }, -- Lavender Spring Shirt
+		{ id = 92012, dropRate = 1.8 }, -- Mint Spring Shirt
+		{ id = 92013, dropRate = 1.8 }, -- Pink Spring Shirt
+		{ id = 92019, dropRate = 1.8 }, -- Green Spring Shirt
+		{ id = 7807, disc=L["Consumable"], dropRate = 33 }, -- Candy Bar
+		{ id = 7808, disc=L["Consumable"], dropRate = 33 }, -- Chocolate Square
+		{ id = 7806, disc=L["Consumable"], dropRate = 33 }, -- Lollipop
 	},
 	HarvestFestival = {
 		--{ id = 19697 }, -- Bounty of the Harvest
