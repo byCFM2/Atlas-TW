@@ -6,6 +6,7 @@
 ---
 
 local _G = getfenv()
+
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
 

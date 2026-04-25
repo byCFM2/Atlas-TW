@@ -20,7 +20,7 @@ AtlasTW.Integrations = AtlasTW.Integrations or {}
 local GREY = (AtlasTW.Colors and AtlasTW.Colors.GREY2) or "|cff808080"
 
 -- Local references for performance
-local L = AtlasTW.Localization.UI
+local L = (AtlasTW.Localization and AtlasTW.Localization.UI) or {}
 
 ---
 --- Checks if EquipCompare or EQCompare addon is available

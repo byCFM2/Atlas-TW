@@ -16,6 +16,7 @@
 ---
 
 local _G = getfenv()
+
 AtlasTW = _G.AtlasTW
 
 local L = AtlasTW.Localization.UI

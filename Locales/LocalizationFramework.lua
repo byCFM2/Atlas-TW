@@ -4,12 +4,16 @@
 --- Simplified and robust localization system.
 ---
 
+local _G = getfenv()
+
 AtlasTW = _G.AtlasTW or {}
 
-AtlasTW.Localization = {
-    currentLocale = GetLocale(),
-    namespaces = {}
-}
+if not AtlasTW.Localization then
+    AtlasTW.Localization = {
+        currentLocale = (GetLocale and GetLocale() or "enUS"),
+        namespaces = {}
+    }
+end
 
 ---
 --- Debug function to check loaded translations

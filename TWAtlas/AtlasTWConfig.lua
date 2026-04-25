@@ -108,7 +108,31 @@ AtlasTW = {
     QCurrentQuest = 0,
     QCurrentButton = 0,
     QCurrentInstance = nil,
+    Localization = {
+        namespaces = {},
+        currentLocale = (GetLocale and GetLocale() or "enUS"),
+    },
 }
+
+-- Initialize empty namespaces to prevent load-time crashes
+AtlasTW.Localization.UI = {}
+AtlasTW.Localization.Zones = {}
+AtlasTW.Localization.Bosses = {}
+AtlasTW.Localization.Spells = {}
+AtlasTW.Localization.Items = {}
+
+function AtlasTW.Localization:GetNamespace(name)
+    return self[name] or {}
+end
+
+function AtlasTW.Localization:RegisterNamespace(name, locale, data)
+    if not self.namespaces[name] then self.namespaces[name] = {} end
+    self.namespaces[name][locale] = data
+    -- Automatically set current if locale matches
+    if locale == self.currentLocale or (not self[name] and locale == "enUS") then
+        self[name] = data
+    end
+end
 
 --- Prints text message to the default chat frame
 --- @param text string - the message to display in chat

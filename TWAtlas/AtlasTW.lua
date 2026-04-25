@@ -173,7 +173,7 @@ end
 --- @usage AtlasTW.UpdateLock()
 ---
 function AtlasTW.UpdateLock()
-	local locked = AtlasTWOptions.AtlasLocked
+	local locked = AtlasTWOptions and AtlasTWOptions.AtlasLocked
 	local status = locked and "Locked" or "Unlocked"
 	local textureUp = AtlasTW.PATH .. "Images\\LockButton-" .. status .. "-Up"
 	local textureDown = AtlasTW.PATH .. "Images\\LockButton-" .. status .. "-Down"

@@ -15,8 +15,8 @@
 --- @compatible World of Warcraft 1.12
 ---
 
-local L = AtlasTW.Localization.UI
-local Colors = AtlasTW.Colors
+local L = (AtlasTW.Localization and AtlasTW.Localization.UI) or {}
+local Colors = AtlasTW.Colors or {}
 
 local function AtlasTWLoot_ClosePredictDropdown(searchBox)
     if not searchBox then return end

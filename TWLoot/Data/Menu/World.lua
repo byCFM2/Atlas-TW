@@ -15,6 +15,8 @@
 --- @compatible World of Warcraft 1.12
 ---
 
+local _G = getfenv()
+
 AtlasTW = _G.AtlasTW
 AtlasTW.MenuData = AtlasTW.MenuData or {}
 
