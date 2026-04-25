@@ -58,7 +58,7 @@ AtlasTW.InstanceData.DireMaulEast = {
     Bosses = {
         {
             prefix = "1)",
-            name = LB["Pusillin"].." <"..L["Chase Begins"]..">",
+            name = LB["Pusillin"] .. " <" .. L["Chase Begins"] .. ">",
             color = Colors.GREY,
         },
         {
@@ -68,11 +68,11 @@ AtlasTW.InstanceData.DireMaulEast = {
             postfix = L["Chase Ends"],
             defaults = { dropRate = 100 },
             loot = {
-                { id = 18267, container = { 18254 } }, -- Recipe: Runn Tum Tuber Surprise
+                { id = 18267, container = { 18254 } },                                       -- Recipe: Runn Tum Tuber Surprise
                 {},
-                { id = 18249, disc = "Key" }, -- Crescent Key
+                { id = 18249, disc = "Key" },                                                -- Crescent Key
                 {},
-                { id = 18261 }, -- Book of Incantations
+                { id = 18261 },                                                              -- Book of Incantations
                 {},
                 { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 1 }, -- Libram of Rapidity
                 { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 1 }, -- Libram of Focus
@@ -86,18 +86,17 @@ AtlasTW.InstanceData.DireMaulEast = {
             name = LB["Zevrim Thornhoof"],
             defaults = { dropRate = 20 },
             loot = {
-                { id = 18319 }, -- Fervent Helm
-                { id = 18313 }, -- Helm of Awareness
-                { id = 18323 }, -- Satyr's Bow
+                { id = 18319 },                                                              -- Fervent Helm
+                { id = 18313 },                                                              -- Helm of Awareness
+                { id = 18323 },                                                              -- Satyr's Bow
                 {},
-                { id = 18308 }, -- Clever Hat
-                { id = 18306 }, -- Gloves of Shadowy Mist
+                { id = 18308 },                                                              -- Clever Hat
+                { id = 18306 },                                                              -- Gloves of Shadowy Mist
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 1 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 1 }, -- Libram of Focus
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 }, dropRate = 1 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 }, dropRate = 1 }, -- Libram of Focus
                 {},
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                -- Fashion Coin
                 {},
                 unpack(ShareLoot),
             }
@@ -107,21 +106,20 @@ AtlasTW.InstanceData.DireMaulEast = {
             name = LB["Hydrospawn"],
             defaults = { dropRate = 20 },
             loot = {
-                { id = 18317 }, -- Tempest Talisman
-                { id = 18322 }, -- Waterspout Boots
-                { id = 18324 }, -- Waveslicer
+                { id = 18317 },                                                              -- Tempest Talisman
+                { id = 18322 },                                                              -- Waterspout Boots
+                { id = 18324 },                                                              -- Waveslicer
                 {},
-                { id = 19268, dropRate = 2, container = { 19289 } }, -- Ace of Elementals
+                { id = 19268, dropRate = 2,                   container = { 19289 } },       -- Ace of Elementals
                 {},
-                { id = 18305 }, -- Breakwater Legguards
-                { id = 18307 }, -- Riptide Shoes
+                { id = 18305 },                                                              -- Breakwater Legguards
+                { id = 18307 },                                                              -- Riptide Shoes
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 1 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 1 }, -- Libram of Focus
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 }, dropRate = 1 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 }, dropRate = 1 }, -- Libram of Focus
                 {},
-                { id = 18299, dropRate = 100 }, -- Hydrospawn Essence
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 18299, dropRate = 100 },                                              -- Hydrospawn Essence
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                -- Fashion Coin
                 unpack(ShareLoot),
             }
         },
@@ -130,18 +128,17 @@ AtlasTW.InstanceData.DireMaulEast = {
             name = LB["Lethtendris"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 18325 }, -- Felhide Cap
-                { id = 18311 }, -- Quel'dorei Channeling Rod
+                { id = 18325 },                                                              -- Felhide Cap
+                { id = 18311 },                                                              -- Quel'dorei Channeling Rod
                 {},
-                { id = 18301 }, -- Lethtendris's Wand
-                { id = 18302 }, -- Band of Vigor
+                { id = 18301 },                                                              -- Lethtendris's Wand
+                { id = 18302 },                                                              -- Band of Vigor
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 1 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 1 }, -- Libram of Focus
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 }, dropRate = 1 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 }, dropRate = 1 }, -- Libram of Focus
                 {},
-                { id = 18426, dropRate = 100 }, -- Lethtendris's Web
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 18426, dropRate = 100 },                                              -- Lethtendris's Web
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                -- Fashion Coin
                 {},
                 unpack(ShareLoot),
             }
@@ -150,7 +147,7 @@ AtlasTW.InstanceData.DireMaulEast = {
             id = "DMEPimgib",
             name = LB["Pimgib"],
             loot = {
-                { id = 18354, dropRate = 14 }, -- Pimgib's Collar
+                { id = 18354, dropRate = 14 },                                               -- Pimgib's Collar
                 {},
                 { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 1 }, -- Libram of Rapidity
                 { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 1 }, -- Libram of Focus
@@ -169,29 +166,27 @@ AtlasTW.InstanceData.DireMaulEast = {
             name = LB["Alzzin the Wildshaper"],
             defaults = { dropRate = 10 },
             loot = {
-                { id = 18328 }, -- Shadewood Cloak
-                { id = 18312 }, -- Energized Chestplate
-                { id = 18309 }, -- Gloves of Restoration
-                { id = 18326 }, -- Razor Gauntlets
-                { id = 18327 }, -- Whipvine Cord
-                { id = 18318 }, -- Merciful Greaves
-                { id = 18321 }, -- Energetic Rod
-                { id = 18310 }, -- Fiendish Machete
-                { id = 18314 }, -- Ring of Demonic Guile
-                { id = 18315 }, -- Ring of Demonic Potency
+                { id = 18328 },                                                              -- Shadewood Cloak
+                { id = 18312 },                                                              -- Energized Chestplate
+                { id = 18309 },                                                              -- Gloves of Restoration
+                { id = 18326 },                                                              -- Razor Gauntlets
+                { id = 18327 },                                                              -- Whipvine Cord
+                { id = 18318 },                                                              -- Merciful Greaves
+                { id = 18321 },                                                              -- Energetic Rod
+                { id = 18310 },                                                              -- Fiendish Machete
+                { id = 18314 },                                                              -- Ring of Demonic Guile
+                { id = 18315 },                                                              -- Ring of Demonic Potency
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 1 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 1 }, -- Libram of Focus
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 },       dropRate = 1 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 },       dropRate = 1 }, -- Libram of Focus
                 {},
-                { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
-                { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
-                { id = 83574, disc = L["Book"] }, -- Book of Wrath IX
-                { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
-                        70234, 70235, 70236, 70238 } },
-                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
-                { id = 61702, dropRate = 100, container = { 61199, 61703 } }, -- Head of Alzzin the Wildshaper
-                { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
+                { id = 47413, dropRate = 10,                  container = { 47412 } },       -- Recipe: Concoction of the Arcane Giant
+                { id = 47415, dropRate = 10,                  container = { 47414 } },       -- Recipe: Concoction of the Dreamwater
+                { id = 83574, disc = L["Book"] },                                            -- Book of Wrath IX
+                { id = 41985, quantity = 3,                   dropRate = 100,              container = { 41986 } }, -- Crest of Valor
+                { id = 41700, dropRate = 100,                 container = { 41704 } },       -- Lunar Token
+                { id = 61702, dropRate = 100,                 container = { 61199, 61703 } }, -- Head of Alzzin the Wildshaper
+                { id = 51217, disc = L["Transmogrification"], dropRate = 100 },              -- Fashion Coin
                 {},
                 unpack(ShareLoot),
             }
@@ -202,31 +197,31 @@ AtlasTW.InstanceData.DireMaulEast = {
             postfix = L["Summon"],
             defaults = { dropRate = 17 },
             loot = {
-                { id = 22304 }, -- Ironweave Gloves
-                { id = 22472 }, -- Boots of Ferocity
-                { id = 22401 }, -- Libram of Hope
-                { id = 22345 }, -- Totem of Rebirth
-                { id = 22315 }, -- Hammer of Revitalization
-                { id = 22314 }, -- Huntsman's Harpoon
+                { id = 22304 },                                               -- Ironweave Gloves
+                { id = 22472 },                                               -- Boots of Ferocity
+                { id = 22401 },                                               -- Libram of Hope
+                { id = 22345 },                                               -- Totem of Rebirth
+                { id = 22315 },                                               -- Hammer of Revitalization
+                { id = 22314 },                                               -- Huntsman's Harpoon
                 {},
-                { id = 21984, dropRate = 100, container = { 22057 } }, -- Left Piece of Lord Valthalak's Amulet
-                { id = 22046, dropRate = 100, container = { 22057 } }, -- Right Piece of Lord Valthalak's Amulet
+                { id = 21984, dropRate = 100,                 container = { 22057 } }, -- Left Piece of Lord Valthalak's Amulet
+                { id = 22046, dropRate = 100,                 container = { 22057 } }, -- Right Piece of Lord Valthalak's Amulet
                 {},
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
         {
             id = "DMETrash",
-            name = L["Trash Mobs"].."-"..LZ["Dire Maul (East)"],
+            name = L["Trash Mobs"] .. "-" .. LZ["Dire Maul (East)"],
             defaults = { dropRate = .5 },
             loot = {
-                { id = 18289 }, -- Barbed Thorn Necklace
-                { id = 18296, dropRate = .75 }, -- Marksman Bands
-                { id = 18298, dropRate = .75 }, -- Unbridled Leggings
-                { id = 18295, dropRate = .58 }, -- Phasing Boots
+                { id = 18289 },                                        -- Barbed Thorn Necklace
+                { id = 18296, dropRate = .75 },                        -- Marksman Bands
+                { id = 18298, dropRate = .75 },                        -- Unbridled Leggings
+                { id = 18295, dropRate = .58 },                        -- Phasing Boots
                 {},
                 { id = 18255, disc = L["Consumable"], dropRate = .3 }, -- Runn Tum Tuber
-                { id = 18297 }, -- Thornling Seed
+                { id = 18297 },                                        -- Thornling Seed
             }
         },
         {
@@ -261,7 +256,7 @@ AtlasTW.InstanceData.DireMaulWest = {
         { letter = "C) " .. LZ["Dire Maul (North)"] }
     },
     Keys = {
-        { name = LMD["Crescent Key"], loot = "VanillaKeys" },
+        { name = LMD["Crescent Key"],  loot = "VanillaKeys" },
         { name = LMD["J'eevee's Jar"], loot = "VanillaKeys", info = LB["Lord Hel'nurath"] }
     },
     Bosses = {
@@ -276,18 +271,17 @@ AtlasTW.InstanceData.DireMaulWest = {
             name = LB["Tendris Warpwood"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 18393 }, -- Warpwood Binding
-                { id = 18390 }, -- Tanglemoss Leggings
+                { id = 18393 },                                                              -- Warpwood Binding
+                { id = 18390 },                                                              -- Tanglemoss Leggings
                 {},
-                { id = 18352 }, -- Petrified Bark Shield
-                { id = 18353 }, -- Stoneflower Staff
+                { id = 18352 },                                                              -- Petrified Bark Shield
+                { id = 18353 },                                                              -- Stoneflower Staff
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
-                { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 }, dropRate = 2 }, -- Libram of Focus
+                { id = 18334, disc = L["Quest Item"],         container = { 18331 }, dropRate = 2 }, -- Libram of Protection
+                { id = 41985, dropRate = 100,                 container = { 41986 } },       -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                -- Fashion Coin
                 {},
                 unpack(ShareLoot),
             }
@@ -302,21 +296,20 @@ AtlasTW.InstanceData.DireMaulWest = {
             name = LB["Illyanna Ravenoak"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 18383 }, -- Force Imbued Gauntlets
-                { id = 18386 }, -- Padre's Trousers
+                { id = 18383 },                                                              -- Force Imbued Gauntlets
+                { id = 18386 },                                                              -- Padre's Trousers
                 {},
-                { id = 18349 }, -- Gauntlets of Accuracy
-                { id = 18347 }, -- Well Balanced Axe
+                { id = 18349 },                                                              -- Gauntlets of Accuracy
+                { id = 18347 },                                                              -- Well Balanced Axe
                 {},
-                { id = 55580, disc = L["Book"] }, -- Codex of Searing Shot V
+                { id = 55580, disc = L["Book"] },                                            -- Codex of Searing Shot V
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
-                { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 41457, dropRate = 100, container = { 70234 } }, -- Bow of Oaks
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 }, dropRate = 2 }, -- Libram of Focus
+                { id = 18334, disc = L["Quest Item"],         container = { 18331 }, dropRate = 2 }, -- Libram of Protection
+                { id = 41985, dropRate = 100,                 container = { 41986 } },       -- Crest of Valor
+                { id = 41457, dropRate = 100,                 container = { 70234 } },       -- Bow of Oaks
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                -- Fashion Coin
                 {},
                 unpack(ShareLoot),
             }
@@ -331,21 +324,20 @@ AtlasTW.InstanceData.DireMaulWest = {
             name = LB["Magister Kalendris"],
             defaults = { dropRate = 20 },
             loot = {
-                { id = 18374 }, -- Flamescarred Shoulders
-                { id = 18397 }, -- Elder Magus Pendant
-                { id = 18371 }, -- Mindtap Talisman
+                { id = 18374 },                                                              -- Flamescarred Shoulders
+                { id = 18397 },                                                              -- Elder Magus Pendant
+                { id = 18371 },                                                              -- Mindtap Talisman
                 {},
-                { id = 18350 }, -- Amplifying Cloak
-                { id = 18351 }, -- Magically Sealed Bracers
+                { id = 18350 },                                                              -- Amplifying Cloak
+                { id = 18351 },                                                              -- Magically Sealed Bracers
                 {},
-                { id = 22309, dropRate = 15, container = { 22249 } }, -- Pattern: Big Bag of Enchantment
+                { id = 22309, dropRate = 15,                  container = { 22249 } },       -- Pattern: Big Bag of Enchantment
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
-                { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 }, dropRate = 2 }, -- Libram of Focus
+                { id = 18334, disc = L["Quest Item"],         container = { 18331 }, dropRate = 2 }, -- Libram of Protection
+                { id = 41985, dropRate = 100,                 container = { 41986 } },       -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                -- Fashion Coin
                 {},
                 unpack(ShareLoot),
             }
@@ -368,28 +360,27 @@ AtlasTW.InstanceData.DireMaulWest = {
             name = LB["Immol'thar"],
             defaults = { dropRate = 10 },
             loot = {
-                { id = 18381 }, -- Evil Eye Pendant
-                { id = 18384 }, -- Bile-etched Spaulders
-                { id = 18389 }, -- Cloak of the Cosmos
-                { id = 18385 }, -- Robe of Everlasting Night
-                { id = 18394 }, -- Demon Howl Wristguards
-                { id = 18377 }, -- Quickdraw Gloves
-                { id = 18391 }, -- Eyestalk Cord
-                { id = 18379 }, -- Odious Greaves
-                { id = 18370 }, -- Vigilance Charm
-                { id = 18372 }, -- Blade of the New Moon
+                { id = 18381 },                                                              -- Evil Eye Pendant
+                { id = 18384 },                                                              -- Bile-etched Spaulders
+                { id = 18389 },                                                              -- Cloak of the Cosmos
+                { id = 18385 },                                                              -- Robe of Everlasting Night
+                { id = 18394 },                                                              -- Demon Howl Wristguards
+                { id = 18377 },                                                              -- Quickdraw Gloves
+                { id = 18391 },                                                              -- Eyestalk Cord
+                { id = 18379 },                                                              -- Odious Greaves
+                { id = 18370 },                                                              -- Vigilance Charm
+                { id = 18372 },                                                              -- Blade of the New Moon
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
-                { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
-                { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
-                { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
-                { id = 61232, dropRate = 100, container = { 61234 } }, -- Arcanized Gems
-                { id = 60332, dropRate = 100, container = { 60333, 60334 } }, -- Pure Ley Essence
-                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 },       dropRate = 2 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 },       dropRate = 2 }, -- Libram of Focus
+                { id = 18334, disc = L["Quest Item"],         container = { 18331 },       dropRate = 2 }, -- Libram of Protection
+                { id = 47413, dropRate = 10,                  container = { 47412 } },       -- Recipe: Concoction of the Arcane Giant
+                { id = 47415, dropRate = 10,                  container = { 47414 } },       -- Recipe: Concoction of the Dreamwater
+                { id = 41700, dropRate = 100,                 container = { 41704 } },       -- Lunar Token
+                { id = 61232, dropRate = 100,                 container = { 61234 } },       -- Arcanized Gems
+                { id = 60332, dropRate = 100,                 container = { 60333, 60334 } }, -- Pure Ley Essence
+                { id = 41985, quantity = 2,                   dropRate = 100,              container = { 41986 } }, -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                -- Fashion Coin
             }
         },
         {
@@ -410,21 +401,20 @@ AtlasTW.InstanceData.DireMaulWest = {
             name = LB["Prince Tortheldrin"],
             defaults = { dropRate = 10 },
             loot = {
-                { id = 18382 }, -- Fluctuating Cloak
-                { id = 18373 }, -- Chestplate of Tranquility
-                { id = 18375 }, -- Bracers of the Eclipse
-                { id = 18378 }, -- Silvermoon Leggings
-                { id = 18380 }, -- Eldritch Reinforced Legplates
-                { id = 18395 }, -- Emerald Flame Ring
-                { id = 18388 }, -- Stoneshatter
-                { id = 18396 }, -- Mind Carver
-                { id = 18376 }, -- Timeworn Mace
-                { id = 18392 }, -- Distracting Dagger
+                { id = 18382 },                                                      -- Fluctuating Cloak
+                { id = 18373 },                                                      -- Chestplate of Tranquility
+                { id = 18375 },                                                      -- Bracers of the Eclipse
+                { id = 18378 },                                                      -- Silvermoon Leggings
+                { id = 18380 },                                                      -- Eldritch Reinforced Legplates
+                { id = 18395 },                                                      -- Emerald Flame Ring
+                { id = 18388 },                                                      -- Stoneshatter
+                { id = 18396 },                                                      -- Mind Carver
+                { id = 18376 },                                                      -- Timeworn Mace
+                { id = 18392 },                                                      -- Distracting Dagger
                 {},
-                { id = 70226, disc = L["Quest Item"], dropRate = 3 }, -- Ancient Warfare Text
-                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 61461, dropRate = 100, container = { 61465 } }, -- Arcane Focus
-                { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
+                { id = 41985, quantity = 3,                   dropRate = 100,       container = { 41986 } }, -- Crest of Valor
+                { id = 61461, dropRate = 100,                 container = { 61465 } }, -- Arcane Focus
+                { id = 51217, disc = L["Transmogrification"], dropRate = 100 },      -- Fashion Coin
             }
         },
         {
@@ -445,12 +435,12 @@ AtlasTW.InstanceData.DireMaulWest = {
         },
         {
             id = "DMWTrash",
-            name = L["Trash Mobs"].."-"..LZ["Dire Maul (West)"],
+            name = L["Trash Mobs"] .. "-" .. LZ["Dire Maul (West)"],
             defaults = { dropRate = 1.4 },
             loot = {
-                { id = 18340, dropRate = 1.4 }, -- Eidolon Talisman
-                { id = 18344, dropRate = 0.66 }, -- Stonebark Gauntlets
-                { id = 18338, dropRate = 2 }, -- Wand of Arcane Potency
+                { id = 18340, dropRate = 1.4 },                    -- Eidolon Talisman
+                { id = 18344, dropRate = 0.66 },                   -- Stonebark Gauntlets
+                { id = 18338, dropRate = 2 },                      -- Wand of Arcane Potency
                 { id = 61673, disc = L["Reagent"], dropRate = 3 }, -- Arcane Essence
             }
         },
@@ -514,8 +504,8 @@ AtlasTW.InstanceData.DireMaulNorth = {
         { letter = "C) " .. LZ["Dire Maul (West)"] }
     },
     Keys = {
-        { name = LMD["Crescent Key"], loot = "VanillaKeys" },
-        { name = LMD["Gordok Courtyard Key"], loot = "VanillaKeys" },
+        { name = LMD["Crescent Key"],          loot = "VanillaKeys" },
+        { name = LMD["Gordok Courtyard Key"],  loot = "VanillaKeys" },
         { name = LMD["Gordok Inner Door Key"], loot = "VanillaKeys" }
     },
     Bosses = {
@@ -525,31 +515,30 @@ AtlasTW.InstanceData.DireMaulNorth = {
             name = LB["Guard Mol'dar"],
             defaults = { dropRate = 8 },
             loot = {
-                { id = 18494 }, -- Denwatcher's Shoulders
-                { id = 18493 }, -- Bulky Iron Spaulders
-                { id = 18496 }, -- Heliotrope Cloak
-                { id = 18497 }, -- Sublime Wristguards
-                { id = 18498 }, -- Hedgecutter
+                { id = 18494 },                                                                   -- Denwatcher's Shoulders
+                { id = 18493 },                                                                   -- Bulky Iron Spaulders
+                { id = 18496 },                                                                   -- Heliotrope Cloak
+                { id = 18497 },                                                                   -- Sublime Wristguards
+                { id = 18498 },                                                                   -- Hedgecutter
                 {},
-                { id = 18450 }, -- Robe of Combustion
-                { id = 18458 }, -- Modest Armguards
-                { id = 18459 }, -- Gallant's Wristguards
-                { id = 18451 }, -- Hyena Hide Belt
-                { id = 18462 }, -- Jagged Bone Fist
-                { id = 18463 }, -- Ogre Pocket Knife
-                { id = 18464 }, -- Gordok Nose Ring
-                { id = 18460 }, -- Unsophisticated Hand Cannon
+                { id = 18450 },                                                                   -- Robe of Combustion
+                { id = 18458 },                                                                   -- Modest Armguards
+                { id = 18459 },                                                                   -- Gallant's Wristguards
+                { id = 18451 },                                                                   -- Hyena Hide Belt
+                { id = 18462 },                                                                   -- Jagged Bone Fist
+                { id = 18463 },                                                                   -- Ogre Pocket Knife
+                { id = 18464 },                                                                   -- Gordok Nose Ring
+                { id = 18460 },                                                                   -- Unsophisticated Hand Cannon
                 {},
-                { id = 18250, disc = L["Key"], dropRate = 13 }, -- Gordok Shackle Key
-                { id = 18268, disc = L["Key"], dropRate = 100 }, -- Gordok Inner Door Key
+                { id = 18250, disc = L["Key"],                dropRate = 13 },                    -- Gordok Shackle Key
+                { id = 18268, disc = L["Key"],                dropRate = 100 },                   -- Gordok Inner Door Key
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
-                { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 21982, quantity = { 2, 3 }, dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 }, dropRate = 2 }, -- Libram of Focus
+                { id = 18334, disc = L["Quest Item"],         container = { 18331 }, dropRate = 2 }, -- Libram of Protection
+                { id = 41985, dropRate = 100,                 container = { 41986 } },            -- Crest of Valor
+                { id = 21982, quantity = { 2, 3 },            dropRate = 50,         container = { 22149, 22150 } }, -- Ogre Warbeads
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                     -- Fashion Coin
             }
         },
         {
@@ -557,19 +546,18 @@ AtlasTW.InstanceData.DireMaulNorth = {
             prefix = "2)",
             name = LB["Stomper Kreeg"],
             loot = {
-                { id = 18425, dropRate = 40 }, -- Kreeg's Mug
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
-                { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 21982, dropRate = 50, quantity = { 2, 3 }, container = { 22149, 22150 } }, -- Ogre Warbeads
+                { id = 18425, dropRate = 40 },                                                    -- Kreeg's Mug
+                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 },      -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 },      -- Libram of Focus
+                { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 },      -- Libram of Protection
+                { id = 41985, dropRate = 100,         container = { 41986 } },                    -- Crest of Valor
+                { id = 21982, dropRate = 50,          quantity = { 2, 3 },   container = { 22149, 22150 } }, -- Ogre Warbeads
                 {},
-                { id = 18269, disc = L["Vendor"] }, -- Gordok Green Grog
-                { id = 18284, disc = L["Vendor"] }, -- Kreeg's Stout Beatdown
-                { id = 18287, disc = L["Vendor"] }, -- Evermurky
-                { id = 18288, disc = L["Vendor"] }, -- Molasses Firewater
-                { id = 9260, disc = L["Vendor"] }, -- Volatile Rum
+                { id = 18269, disc = L["Vendor"] },                                               -- Gordok Green Grog
+                { id = 18284, disc = L["Vendor"] },                                               -- Kreeg's Stout Beatdown
+                { id = 18287, disc = L["Vendor"] },                                               -- Evermurky
+                { id = 18288, disc = L["Vendor"] },                                               -- Molasses Firewater
+                { id = 9260,  disc = L["Vendor"] },                                               -- Volatile Rum
             }
         },
         {
@@ -578,24 +566,23 @@ AtlasTW.InstanceData.DireMaulNorth = {
             name = LB["Guard Fengus"],
             defaults = { dropRate = 13 },
             loot = {
-                { id = 18450 }, -- Robe of Combustion
-                { id = 18458 }, -- Modest Armguards
-                { id = 18459 }, -- Gallant's Wristguards
-                { id = 18451 }, -- Hyena Hide Belt
-                { id = 18462 }, -- Jagged Bone Fist
-                { id = 18463 }, -- Ogre Pocket Knife
-                { id = 18464 }, -- Gordok Nose Ring
-                { id = 18460 }, -- Unsophisticated Hand Cannon
+                { id = 18450 },                                                              -- Robe of Combustion
+                { id = 18458 },                                                              -- Modest Armguards
+                { id = 18459 },                                                              -- Gallant's Wristguards
+                { id = 18451 },                                                              -- Hyena Hide Belt
+                { id = 18462 },                                                              -- Jagged Bone Fist
+                { id = 18463 },                                                              -- Ogre Pocket Knife
+                { id = 18464 },                                                              -- Gordok Nose Ring
+                { id = 18460 },                                                              -- Unsophisticated Hand Cannon
                 {},
-                { id = 18250, disc = L["Key"] }, -- Gordok Shackle Key
-                { id = 18266, disc = L["Key"], dropRate = 1.2 }, -- Gordok Courtyard Key
+                { id = 18250, disc = L["Key"] },                                             -- Gordok Shackle Key
+                { id = 18266, disc = L["Key"],                dropRate = 1.2 },              -- Gordok Courtyard Key
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
-                { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 }, dropRate = 2 }, -- Libram of Focus
+                { id = 18334, disc = L["Quest Item"],         container = { 18331 }, dropRate = 2 }, -- Libram of Protection
+                { id = 41985, dropRate = 100,                 container = { 41986 } },       -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                -- Fashion Coin
                 {},
                 unpack(ShareLoot)
             }
@@ -606,20 +593,20 @@ AtlasTW.InstanceData.DireMaulNorth = {
             name = LMD["Knot Thimblejack"],
             postfix = L["Cache"],
             loot = {
-                { id = 18414, dropRate = 2, container = { 18405 } }, -- Pattern: Belt of the Archmage
-                { id = 18517, dropRate = 2, container = { 18509 } }, -- Pattern: Chromatic Cloak
-                { id = 18518, dropRate = 2, container = { 18510 } }, -- Pattern: Hide of the Wild
-                { id = 18519, dropRate = 2, container = { 18511 } }, -- Pattern: Shifting Cloak
+                { id = 18414, dropRate = 2,     container = { 18405 } },                -- Pattern: Belt of the Archmage
+                { id = 18517, dropRate = 2,     container = { 18509 } },                -- Pattern: Chromatic Cloak
+                { id = 18518, dropRate = 2,     container = { 18510 } },                -- Pattern: Hide of the Wild
+                { id = 18519, dropRate = 2,     container = { 18511 } },                -- Pattern: Shifting Cloak
                 {},
-                { id = 18415, dropRate = 13, container = { 18407 } }, -- Pattern: Felcloth Gloves
-                { id = 18416, dropRate = 13, container = { 18408 } }, -- Pattern: Inferno Gloves
-                { id = 18417, dropRate = 13, container = { 18409 } }, -- Pattern: Mooncloth Gloves
-                { id = 18418, dropRate = 13, container = { 18413 } }, -- Pattern: Cloak of Warding
-                { id = 18514, dropRate = 13, container = { 18504 } }, -- Pattern: Girdle of Insight
-                { id = 18515, dropRate = 13, container = { 18506 } }, -- Pattern: Mongoose Boots
-                { id = 18516, dropRate = 13, container = { 18508 } }, -- Pattern: Swift Flight Bracers
+                { id = 18415, dropRate = 13,    container = { 18407 } },                -- Pattern: Felcloth Gloves
+                { id = 18416, dropRate = 13,    container = { 18408 } },                -- Pattern: Inferno Gloves
+                { id = 18417, dropRate = 13,    container = { 18409 } },                -- Pattern: Mooncloth Gloves
+                { id = 18418, dropRate = 13,    container = { 18413 } },                -- Pattern: Cloak of Warding
+                { id = 18514, dropRate = 13,    container = { 18504 } },                -- Pattern: Girdle of Insight
+                { id = 18515, dropRate = 13,    container = { 18506 } },                -- Pattern: Mongoose Boots
+                { id = 18516, dropRate = 13,    container = { 18508 } },                -- Pattern: Swift Flight Bracers
                 {},
-                { id = 18240, disc = L["Misc"], dropRate = 35, container = { 18258 } }, -- Ogre Tannin
+                { id = 18240, disc = L["Misc"], dropRate = 35,        container = { 18258 } }, -- Ogre Tannin
             }
         },
         {
@@ -627,30 +614,29 @@ AtlasTW.InstanceData.DireMaulNorth = {
             name = LB["Guard Slip'kik"],
             defaults = { dropRate = 8 },
             loot = {
-                { id = 18494 }, -- Denwatcher's Shoulders
-                { id = 18493 }, -- Bulky Iron Spaulders
-                { id = 18496 }, -- Heliotrope Cloak
-                { id = 18497 }, -- Sublime Wristguards
-                { id = 18498 }, -- Hedgecutter
+                { id = 18494 },                                                                   -- Denwatcher's Shoulders
+                { id = 18493 },                                                                   -- Bulky Iron Spaulders
+                { id = 18496 },                                                                   -- Heliotrope Cloak
+                { id = 18497 },                                                                   -- Sublime Wristguards
+                { id = 18498 },                                                                   -- Hedgecutter
                 {},
-                { id = 18450 }, -- Robe of Combustion
-                { id = 18458 }, -- Modest Armguards
-                { id = 18459 }, -- Gallant's Wristguards
-                { id = 18451 }, -- Hyena Hide Belt
-                { id = 18462 }, -- Jagged Bone Fist
-                { id = 18463 }, -- Ogre Pocket Knife
-                { id = 18464 }, -- Gordok Nose Ring
-                { id = 18460 }, -- Unsophisticated Hand Cannon
+                { id = 18450 },                                                                   -- Robe of Combustion
+                { id = 18458 },                                                                   -- Modest Armguards
+                { id = 18459 },                                                                   -- Gallant's Wristguards
+                { id = 18451 },                                                                   -- Hyena Hide Belt
+                { id = 18462 },                                                                   -- Jagged Bone Fist
+                { id = 18463 },                                                                   -- Ogre Pocket Knife
+                { id = 18464 },                                                                   -- Gordok Nose Ring
+                { id = 18460 },                                                                   -- Unsophisticated Hand Cannon
                 {},
-                { id = 18250, disc = L["Key"], dropRate = 13 }, -- Gordok Shackle Key
+                { id = 18250, disc = L["Key"],                dropRate = 13 },                    -- Gordok Shackle Key
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
-                { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 21982, dropRate = 50, quantity = { 2, 3 }, container = { 22149, 22150 } }, -- Ogre Warbeads
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 }, dropRate = 2 }, -- Libram of Focus
+                { id = 18334, disc = L["Quest Item"],         container = { 18331 }, dropRate = 2 }, -- Libram of Protection
+                { id = 41985, dropRate = 100,                 container = { 41986 } },            -- Crest of Valor
+                { id = 21982, dropRate = 50,                  quantity = { 2, 3 },   container = { 22149, 22150 } }, -- Ogre Warbeads
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                     -- Fashion Coin
                 {},
                 unpack(ShareLoot)
             }
@@ -661,20 +647,19 @@ AtlasTW.InstanceData.DireMaulNorth = {
             name = LB["Captain Kromcrush"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 18503 }, -- Kromcrush's Chestplate
-                { id = 18505 }, -- Mugger's Belt
-                { id = 18507 }, -- Boots of the Full Moon
-                { id = 18502 }, -- Monstrous Glaive
+                { id = 18503 },                                                              -- Kromcrush's Chestplate
+                { id = 18505 },                                                              -- Mugger's Belt
+                { id = 18507 },                                                              -- Boots of the Full Moon
+                { id = 18502 },                                                              -- Monstrous Glaive
                 {},
-                { id = 18250, disc = L["Key"], dropRate = 13 }, -- Gordok Shackle Key
+                { id = 18250, disc = L["Key"],                dropRate = 13 },               -- Gordok Shackle Key
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
-                { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 }, dropRate = 2 }, -- Libram of Focus
+                { id = 18334, disc = L["Quest Item"],         container = { 18331 }, dropRate = 2 }, -- Libram of Protection
                 {},
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 41985, dropRate = 100,                 container = { 41986 } },       -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                -- Fashion Coin
                 {},
                 unpack(ShareLoot)
             }
@@ -685,30 +670,28 @@ AtlasTW.InstanceData.DireMaulNorth = {
             name = LB["King Gordok"],
             defaults = { dropRate = 13 },
             loot = {
-                { id = 18526 }, -- Crown of the Ogre King
-                { id = 18525 }, -- Bracers of Prosperity
-                { id = 18527 }, -- Harmonious Gauntlets
-                { id = 18524 }, -- Leggings of Destruction
-                { id = 18521 }, -- Grimy Metal Boots
-                { id = 18522 }, -- Band of the Ogre King
-                { id = 18523 }, -- Brightly Glowing Stone
-                { id = 18520 }, -- Barbarous Blade
+                { id = 18526 },                                                                      -- Crown of the Ogre King
+                { id = 18525 },                                                                      -- Bracers of Prosperity
+                { id = 18527 },                                                                      -- Harmonious Gauntlets
+                { id = 18524 },                                                                      -- Leggings of Destruction
+                { id = 18521 },                                                                      -- Grimy Metal Boots
+                { id = 18522 },                                                                      -- Band of the Ogre King
+                { id = 18523 },                                                                      -- Brightly Glowing Stone
+                { id = 18520 },                                                                      -- Barbarous Blade
                 {},
-                { id = 19258, disc = L["Misc"], dropRate = 7, container = { 19287 } }, -- Ace of Warlords
-                { id = 18780, disc = L["Misc"], dropRate = 9, container = { 18769, 12727, 12618 } }, -- Top Half of Advanced Armorsmithing: Volume I
+                { id = 19258, disc = L["Misc"],               dropRate = 7,          container = { 19287 } }, -- Ace of Warlords
+                { id = 18780, disc = L["Misc"],               dropRate = 9,          container = { 18769, 12727, 12618 } }, -- Top Half of Advanced Armorsmithing: Volume I
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
-                { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
-                { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
-                { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 }, dropRate = 2 }, -- Libram of Focus
+                { id = 18334, disc = L["Quest Item"],         container = { 18331 }, dropRate = 2 }, -- Libram of Protection
+                { id = 47413, dropRate = 10,                  container = { 47412 } },               -- Recipe: Concoction of the Arcane Giant
+                { id = 47415, dropRate = 10,                  container = { 47414 } },               -- Recipe: Concoction of the Dreamwater
                 {},
-                { id = 70226, disc = L["Quest Item"], dropRate = 3, container = { 70227, 70228, 70229, 70230, 70231, 70232, 70233, -- Ancient Warfare Text
-                        70234, 70235, 70236, 70238 } },
-                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 21982, dropRate = 50, quantity = { 2, 3 }, container = { 22149, 22150 } }, -- Ogre Warbeads
-                { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
-                { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
+                { id = 41985, quantity = 3,                   dropRate = 100,        container = { 41986 } }, -- Crest of Valor
+                { id = 21982, dropRate = 50,                  quantity = { 2, 3 },   container = { 22149, 22150 } }, -- Ogre Warbeads
+                { id = 51217, disc = L["Transmogrification"], dropRate = 100 },                      -- Fashion Coin
+                { id = 41700, dropRate = 100,                 container = { 41704 } },               -- Lunar Token
                 {},
                 unpack(ShareLoot)
             }
@@ -718,17 +701,17 @@ AtlasTW.InstanceData.DireMaulNorth = {
             name = LB["Cho'Rush the Observer"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 18490 }, -- Insightful Hood
-                { id = 18483 }, -- Mana Channeling Wand
-                { id = 18485 }, -- Observer's Shield
-                { id = 18484 }, -- Cho'Rush's Blade
+                { id = 18490 },                                                                   -- Insightful Hood
+                { id = 18483 },                                                                   -- Mana Channeling Wand
+                { id = 18485 },                                                                   -- Observer's Shield
+                { id = 18484 },                                                                   -- Cho'Rush's Blade
                 {},
-                { id = 18332, disc = L["Quest Item"], container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
-                { id = 18333, disc = L["Quest Item"], container = { 18330 }, dropRate = 2 }, -- Libram of Focus
-                { id = 18334, disc = L["Quest Item"], container = { 18331 }, dropRate = 2 }, -- Libram of Protection
-                { id = 21982, dropRate = 50, quantity = { 2, 3 }, container = { 22149, 22150 } }, -- Ogre Warbeads
-                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 18332, disc = L["Quest Item"],         container = { 18329 }, dropRate = 2 }, -- Libram of Rapidity
+                { id = 18333, disc = L["Quest Item"],         container = { 18330 }, dropRate = 2 }, -- Libram of Focus
+                { id = 18334, disc = L["Quest Item"],         container = { 18331 }, dropRate = 2 }, -- Libram of Protection
+                { id = 21982, dropRate = 50,                  quantity = { 2, 3 },   container = { 22149, 22150 } }, -- Ogre Warbeads
+                { id = 41985, quantity = 2,                   dropRate = 100,        container = { 41986 } }, -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                     -- Fashion Coin
                 {},
                 unpack(ShareLoot)
             }
@@ -738,36 +721,36 @@ AtlasTW.InstanceData.DireMaulNorth = {
             name = LMD["Tribute Run"],
             defaults = { dropRate = 11 },
             loot = {
-                { id = 18538, dropRate = 1 }, -- Treant's Bane
+                { id = 18538, dropRate = 1 },          -- Treant's Bane
                 {},
-                { id = 18528, dropRate = 33 }, -- Cyclone Spaulders
-                { id = 18495, dropRate = 25 }, -- Redoubt Cloak
-                { id = 18532, dropRate = 23 }, -- Mindsurge Robe
-                { id = 18530, dropRate = 23 }, -- Ogre Forged Hauberk
-                { id = 18533, dropRate = 25 }, -- Gordok Bracers of Power
-                { id = 18529, dropRate = 33 }, -- Elemental Plate Girdle
-                { id = 18500, dropRate = 33 }, -- Tarnished Elven Ring
-                { id = 18537, dropRate = 25 }, -- Counterattack Lodestone
-                { id = 18499, dropRate = 23 }, -- Barrier Shield
-                { id = 18531, dropRate = 23 }, -- Unyielding Maul
-                { id = 18534, dropRate = 25 }, -- Rod of the Ogre Magi
+                { id = 18528, dropRate = 33 },         -- Cyclone Spaulders
+                { id = 18495, dropRate = 25 },         -- Redoubt Cloak
+                { id = 18532, dropRate = 23 },         -- Mindsurge Robe
+                { id = 18530, dropRate = 23 },         -- Ogre Forged Hauberk
+                { id = 18533, dropRate = 25 },         -- Gordok Bracers of Power
+                { id = 18529, dropRate = 33 },         -- Elemental Plate Girdle
+                { id = 18500, dropRate = 33 },         -- Tarnished Elven Ring
+                { id = 18537, dropRate = 25 },         -- Counterattack Lodestone
+                { id = 18499, dropRate = 23 },         -- Barrier Shield
+                { id = 18531, dropRate = 23 },         -- Unyielding Maul
+                { id = 18534, dropRate = 25 },         -- Rod of the Ogre Magi
                 {},
-                { id = 18479 }, -- Carrion Scorpid Helm
-                { id = 18480 }, -- Scarab Plate Helm
-                { id = 18478 }, -- Hyena Hide Jerkin
-                { id = 18475 }, -- Oddly Magical Belt
-                { id = 18477 }, -- Shaggy Leggings
-                { id = 18476 }, -- Mud Stained Boots
-                { id = 18482 }, -- Ogre Toothpick Shooter
-                { id = 18481 }, -- Skullcracking Mace
+                { id = 18479 },                        -- Carrion Scorpid Helm
+                { id = 18480 },                        -- Scarab Plate Helm
+                { id = 18478 },                        -- Hyena Hide Jerkin
+                { id = 18475 },                        -- Oddly Magical Belt
+                { id = 18477 },                        -- Shaggy Leggings
+                { id = 18476 },                        -- Mud Stained Boots
+                { id = 18482 },                        -- Ogre Toothpick Shooter
+                { id = 18481 },                        -- Skullcracking Mace
                 { id = 18655, container = { 18637 } }, -- Schematic: Major Recombobulator
             }
         },
         {
             id = "DMNTrash",
-            name = L["Trash Mobs"].."-"..LZ["Dire Maul (North)"],
+            name = L["Trash Mobs"] .. "-" .. LZ["Dire Maul (North)"],
             loot = {
-                { id = 18250, disc = L["Key"], dropRate = 4 }, -- Gordok Shackle Key
+                { id = 18250, disc = L["Key"],  dropRate = 4 }, -- Gordok Shackle Key
                 { id = 18640, disc = L["Misc"], dropRate = 2 }, -- Happy Fun Rock
             }
         },

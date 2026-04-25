@@ -85,7 +85,7 @@ AtlasTW.InstanceData.Scholomance = {
                 { id = 13523, disc = L["Used to summon boss"], dropRate = 100 }, -- Blood of Innocents
             }
         },
-        { name = LMD["The Deed to Southshore"], color = Colors.GREY },
+        { name = LMD["The Deed to Southshore"],   color = Colors.GREY },
         {
             id = "KirtonostheHerald",
             prefix = "2)",
@@ -93,17 +93,17 @@ AtlasTW.InstanceData.Scholomance = {
             postfix = L["Summon"],
             defaults = { dropRate = 11 },
             loot = {
-                { id = 16734, disc = L["Warrior"]..", T0", container = { 21995 } }, -- Boots of Valor
+                { id = 16734, disc = L["Warrior"] .. ", T0",  container = { 21995 } }, -- Boots of Valor
                 {},
-                { id = 13960 }, -- Heart of the Fiend
-                { id = 13967 }, -- Windreaver Greaves
-                { id = 13955 }, -- Stoneform Shoulders
-                { id = 13969 }, -- Loomguard Armbraces
-                { id = 13957 }, -- Gargoyle Slashers
-                { id = 13956 }, -- Clutch of Andros
-                { id = 13958 }, -- Wyrmthalak's Shackles
+                { id = 13960 },                                                     -- Heart of the Fiend
+                { id = 13967 },                                                     -- Windreaver Greaves
+                { id = 13955 },                                                     -- Stoneform Shoulders
+                { id = 13969 },                                                     -- Loomguard Armbraces
+                { id = 13957 },                                                     -- Gargoyle Slashers
+                { id = 13956 },                                                     -- Clutch of Andros
+                { id = 13958 },                                                     -- Wyrmthalak's Shackles
                 {},
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },       -- Fashion Coin
             }
         },
         {
@@ -112,26 +112,25 @@ AtlasTW.InstanceData.Scholomance = {
             name = LB["Jandice Barov"],
             defaults = { dropRate = 14 },
             loot = {
-                { id = 16701, disc = L["Warlock"]..", T0", container = { 22073 } }, -- Dreadmist Mantle
+                { id = 16701, disc = L["Warlock"] .. ", T0",   container = { 22073 } }, -- Dreadmist Mantle
                 {},
-                { id = 14548 }, -- Royal Cap Spaulders
-                { id = 18689 }, -- Phantasmal Cloak
-                { id = 14545 }, -- Ghostloom Leggings
-                { id = 18690 }, -- Wraithplate Leggings
-                { id = 14541 }, -- Barovian Family Sword
-                { id = 22394 }, -- Staff of Metanoia
+                { id = 14548 },                                                     -- Royal Cap Spaulders
+                { id = 18689 },                                                     -- Phantasmal Cloak
+                { id = 14545 },                                                     -- Ghostloom Leggings
+                { id = 18690 },                                                     -- Wraithplate Leggings
+                { id = 14541 },                                                     -- Barovian Family Sword
+                { id = 22394 },                                                     -- Staff of Metanoia
                 {},
                 {},
-                { id = 13523, disc = L["Used to summon boss"], dropRate = 100 }, -- Blood of Innocents
+                { id = 13523, disc = L["Used to summon boss"], dropRate = 100 },     -- Blood of Innocents
                 {},
-                { id = 13725, dropRate = 100, container = { 15805, 15806, 13544 } }, -- Krastinov's Bag of Horrors
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 13725, dropRate = 100,                  container = { 15805, 15806, 13544 } }, -- Krastinov's Bag of Horrors
+                { id = 41985, dropRate = 100,                  container = { 41986 } }, -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"],  dropRate = 5 },       -- Fashion Coin
             }
         },
         { name = LMD["Journal of Jandice Barov"], color = Colors.GREY },
-        { prefix = "4)", name = LMD["The Deed to Tarren Mill"], color = Colors.GREY },
+        { prefix = "4)",                          name = LMD["The Deed to Tarren Mill"], color = Colors.GREY },
         {
             id = "LordBlackwood",
             name = LB["Lord Blackwood"],
@@ -151,22 +150,21 @@ AtlasTW.InstanceData.Scholomance = {
             postfix = L["Lower"],
             defaults = { dropRate = 14 },
             loot = {
-                { id = 16711, disc = L["Rogue"]..", T0", container = { 22003 } }, -- Shadowcraft Boots
+                { id = 16711, disc = L["Rogue"] .. ", T0",    container = { 22003 } }, -- Shadowcraft Boots
                 {},
-                { id = 14539 }, -- Bone Ring Helm
-                { id = 14538 }, -- Deadwalker Mantle
-                { id = 18686 }, -- Bone Golem Shoulders
-                { id = 14537 }, -- Corpselight Greaves
-                { id = 14528 }, -- Rattlecage Buckler
-                { id = 14531 }, -- Frightskull Shaft
+                { id = 14539 },                                                     -- Bone Ring Helm
+                { id = 14538 },                                                     -- Deadwalker Mantle
+                { id = 18686 },                                                     -- Bone Golem Shoulders
+                { id = 14537 },                                                     -- Corpselight Greaves
+                { id = 14528 },                                                     -- Rattlecage Buckler
+                { id = 14531 },                                                     -- Frightskull Shaft
                 {},
-                { id = 18782, dropRate = 40, container = { 18770, 12726, 12619 } }, -- Top Half of Advanced Armorsmithing: Volume II
+                { id = 18782, dropRate = 40,                  container = { 18770, 12726, 12619 } }, -- Top Half of Advanced Armorsmithing: Volume II
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 13873, disc = L["Key"], dropRate = 100 }, -- Viewing Room Key
+                { id = 41985, dropRate = 100,                 container = { 41986 } }, -- Crest of Valor
+                { id = 13873, disc = L["Key"],                dropRate = 100 },     -- Viewing Room Key
                 {},
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },       -- Fashion Coin
             }
         },
         {
@@ -175,13 +173,13 @@ AtlasTW.InstanceData.Scholomance = {
             postfix = L["Summon"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 18760 }, -- Necromantic Band
+                { id = 18760 },                                               -- Necromantic Band
                 {},
-                { id = 18761 }, -- Oblivion's Touch
-                { id = 18758 }, -- Specter's Blade
-                { id = 18759 }, -- Malicious Axe
+                { id = 18761 },                                               -- Oblivion's Touch
+                { id = 18758 },                                               -- Specter's Blade
+                { id = 18759 },                                               -- Malicious Axe
                 {},
-                { id = 18749, dropRate = 100 }, -- Charger's Lost Soul
+                { id = 18749, dropRate = 100 },                               -- Charger's Lost Soul
                 { id = 18880, dropRate = 100, container = { 20134, 18807 } }, -- Darkreaver's Head
             }
         },
@@ -191,13 +189,12 @@ AtlasTW.InstanceData.Scholomance = {
             name = LB["Marduk Blackpool"],
             defaults = { dropRate = 7 },
             loot = {
-                { id = 18692 }, -- Death Knight Sabatons
+                { id = 18692 },                                               -- Death Knight Sabatons
                 {},
-                { id = 14576 }, -- Ebon Hilt of Marduk
+                { id = 14576 },                                               -- Ebon Hilt of Marduk
                 {},
-                { id = 41459, dropRate = 100, container = { 70228 } }, -- Mournblade
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 41459, dropRate = 100,                 container = { 70228 } }, -- Mournblade
+                { id = 41985, dropRate = 100,                 container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
@@ -206,11 +203,10 @@ AtlasTW.InstanceData.Scholomance = {
             name = LB["Vectus"],
             defaults = { dropRate = 4 },
             loot = {
-                { id = 18691 }, -- Dark Advisor's Pendant
-                { id = 14577 }, -- Skullsmoke Pants
+                { id = 18691 },                                               -- Dark Advisor's Pendant
+                { id = 14577 },                                               -- Skullsmoke Pants
                 {},
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 41985, dropRate = 100,                 container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
@@ -220,30 +216,29 @@ AtlasTW.InstanceData.Scholomance = {
             name = LB["Ras Frostwhisper"],
             defaults = { dropRate = 8 },
             loot = {
-                { id = 16689, disc = L["Mage"]..", T0", container = { 22068 } }, -- Magister's Mantle
+                { id = 16689, disc = L["Mage"] .. ", T0",     container = { 22068 } },      -- Magister's Mantle
                 {},
-                { id = 14503 }, -- Death's Clutch
-                { id = 14340 }, -- Freezing Lich Robes
-                { id = 18693 }, -- Shivery Handwraps
-                { id = 14525 }, -- Boneclenched Gauntlets
-                { id = 14502 }, -- Frostbite Girdle
-                { id = 14522 }, -- Maelstrom Leggings
-                { id = 18694 }, -- Shadowy Mail Greaves
-                { id = 18695 }, -- Spellbound Tome
-                { id = 18696 }, -- Intricately Runed Shield
-                { id = 13952 }, -- Iceblade Hacker
-                { id = 14487 }, -- Bonechill Hammer
-                { id = 13314, dropRate = 2 }, -- Alanna's Embrace
+                { id = 14503 },                                                             -- Death's Clutch
+                { id = 14340 },                                                             -- Freezing Lich Robes
+                { id = 18693 },                                                             -- Shivery Handwraps
+                { id = 14525 },                                                             -- Boneclenched Gauntlets
+                { id = 14502 },                                                             -- Frostbite Girdle
+                { id = 14522 },                                                             -- Maelstrom Leggings
+                { id = 18694 },                                                             -- Shadowy Mail Greaves
+                { id = 18695 },                                                             -- Spellbound Tome
+                { id = 18696 },                                                             -- Intricately Runed Shield
+                { id = 13952 },                                                             -- Iceblade Hacker
+                { id = 14487 },                                                             -- Bonechill Hammer
+                { id = 13314, dropRate = 2 },                                               -- Alanna's Embrace
                 {},
-                { id = 13521, dropRate = 3, container = { 13512 } }, -- Recipe: Flask of Supreme Power
+                { id = 13521, dropRate = 3,                   container = { 13512 } },      -- Recipe: Flask of Supreme Power
                 {},
-                { id = 13626, dropRate = 100, container = { 13982, 13986, 13984, 14002 } }, -- Human Head of Ras Frostwhisper
-                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 13626, dropRate = 100,                 container = { 13982, 13986, 13984, 14002 } }, -- Human Head of Ras Frostwhisper
+                { id = 41985, quantity = 2,                   dropRate = 100,                            container = { 41986 } }, -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },               -- Fashion Coin
             }
         },
-        { name = LMD["The Deed to Brill"], color = Colors.GREY },
+        { name = LMD["The Deed to Brill"],       color = Colors.GREY },
         {
             id = "Kormok",
             name = LB["Kormok"],
@@ -251,16 +246,16 @@ AtlasTW.InstanceData.Scholomance = {
             defaults = { dropRate = 20 },
             loot = {
                 { name = L["Tier 0.5 Summonable"], icon = "INV_Misc_Bag_09" },
-                { id = 22303 }, -- Ironweave Pants
-                { id = 22326 }, -- Amalgam's Band
-                { id = 22331 }, -- Band of the Steadfast Hero
-                { id = 22332 }, -- Blade of Necromancy
+                { id = 22303 },                                               -- Ironweave Pants
+                { id = 22326 },                                               -- Amalgam's Band
+                { id = 22331 },                                               -- Band of the Steadfast Hero
+                { id = 22332 },                                               -- Blade of Necromancy
                 {},
-                { id = 22333 }, -- Hammer of Divine Might
+                { id = 22333 },                                               -- Hammer of Divine Might
                 {},
-                { id = 21984, dropRate = 100, container = { 22048, 22057 } }, -- Left Piece of Lord Valthalak's Amulet
-                { id = 22046, dropRate = 100, container = { 22048, 22057 } }, -- Right Piece of Lord Valthalak's Amulet
-                { id = 22335 }, -- Specter's Blade
+                { id = 21984,                      dropRate = 100,          container = { 22048, 22057 } }, -- Left Piece of Lord Valthalak's Amulet
+                { id = 22046,                      dropRate = 100,          container = { 22048, 22057 } }, -- Right Piece of Lord Valthalak's Amulet
+                { id = 22335 },                                               -- Specter's Blade
             }
         },
         {
@@ -268,11 +263,10 @@ AtlasTW.InstanceData.Scholomance = {
             prefix = "8)",
             name = LB["Instructor Malicia"],
             loot = {
-                { id = 16710, disc = L["Rogue"]..", T0", container = { 22004 }, dropRate = 4 }, -- Shadowcraft Bracers
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 41386, disc = L["Quest Item"], dropRate = 100, container = { 70211 } }, -- Rune of Ferh
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 16710, disc = L["Rogue"] .. ", T0",    container = { 22004 }, dropRate = 4 }, -- Shadowcraft Bracers
+                { id = 41985, dropRate = 100,                 container = { 41986 } },          -- Crest of Valor
+                { id = 41386, disc = L["Quest Item"],         dropRate = 100,        container = { 70211 } }, -- Rune of Ferh
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                   -- Fashion Coin
                 {},
                 unpack(scholoShareLoot),
             }
@@ -282,11 +276,10 @@ AtlasTW.InstanceData.Scholomance = {
             prefix = "9)",
             name = LB["Doctor Theolen Krastinov"],
             loot = {
-                { id = 16684, disc = L["Mage"]..", T0", container = { 22066 }, dropRate = 14 }, -- Magister's Gloves
-                { id = 14617, disc = L["Shirt"], dropRate = 2 }, -- Sawbones Shirt
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 16684, disc = L["Mage"] .. ", T0",     container = { 22066 }, dropRate = 14 }, -- Magister's Gloves
+                { id = 14617, disc = L["Shirt"],              dropRate = 2 },                   -- Sawbones Shirt
+                { id = 41985, dropRate = 100,                 container = { 41986 } },          -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                   -- Fashion Coin
                 unpack(scholoShareLoot),
             }
         },
@@ -295,10 +288,9 @@ AtlasTW.InstanceData.Scholomance = {
             prefix = "10)",
             name = LB["Lorekeeper Polkelt"],
             loot = {
-                { id = 16705, disc = L["Warlock"]..", T0", container = { 22077 }, dropRate = 17 }, -- Dreadmist Wraps
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 16705, disc = L["Warlock"] .. ", T0",  container = { 22077 }, dropRate = 17 }, -- Dreadmist Wraps
+                { id = 41985, dropRate = 100,                 container = { 41986 } },             -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                      -- Fashion Coin
                 {},
                 unpack(scholoShareLoot),
             }
@@ -308,10 +300,9 @@ AtlasTW.InstanceData.Scholomance = {
             prefix = "11)",
             name = LB["The Ravenian"],
             loot = {
-                { id = 16716, disc = L["Druid"]..", T0", container = { 22106 }, dropRate = 17 }, -- Wildheart Belt
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 16716, disc = L["Druid"] .. ", T0",    container = { 22106 }, dropRate = 17 }, -- Wildheart Belt
+                { id = 41985, dropRate = 100,                 container = { 41986 } },           -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                    -- Fashion Coin
                 {},
                 unpack(scholoShareLoot),
             }
@@ -322,10 +313,9 @@ AtlasTW.InstanceData.Scholomance = {
             name = LB["Lord Alexei Barov"],
             defaults = { dropRate = 4 },
             loot = {
-                { id = 16722, disc = L["Paladin"]..", T0", container = { 22088 }, dropRate = 5 }, -- Lightforge Bracers
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
+                { id = 16722, disc = L["Paladin"] .. ", T0",  container = { 22088 }, dropRate = 5 }, -- Lightforge Bracers
+                { id = 41985, dropRate = 100,                 container = { 41986 } },            -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                     -- Fashion Coin
                 {},
                 unpack(scholoShareLoot),
             }
@@ -337,8 +327,7 @@ AtlasTW.InstanceData.Scholomance = {
             name = LB["Lady Illucia Barov"],
             defaults = { dropRate = 4 },
             loot = {
-                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 41985, dropRate = 100,                 container = { 41986 } }, -- Crest of Valor
                 { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
                 {},
                 {},
@@ -351,91 +340,90 @@ AtlasTW.InstanceData.Scholomance = {
             name = LB["Darkmaster Gandling"],
             defaults = { dropRate = 11 },
             loot = {
-                { id = 16693, disc = L["Priest"]..", T0", container = { 22080 } }, -- Devout Crown
-                { id = 16686, disc = L["Mage"]..", T0", container = { 22065 } }, -- Magister's Crown
-                { id = 16698, disc = L["Warlock"]..", T0", container = { 22074 } }, -- Dreadmist Mask
-                { id = 16707, disc = L["Rogue"]..", T0", container = { 22005 } }, -- Shadowcraft Cap
-                { id = 16720, disc = L["Druid"]..", T0", container = { 22109 } }, -- Wildheart Cowl
-                { id = 16677, disc = L["Hunter"]..", T0", container = { 22013 } }, -- Beaststalker's Cap
-                { id = 16667, disc = L["Shaman"]..", T0", container = { 22097 } }, -- Coif of Elements
-                { id = 16727, disc = L["Paladin"]..", T0", container = { 22091 } }, -- Lightforge Helm
-                { id = 16731, disc = L["Warrior"]..", T0", container = { 21999 } }, -- Helm of Valor
+                { id = 16693, disc = L["Priest"] .. ", T0",    container = { 22080 } },               -- Devout Crown
+                { id = 16686, disc = L["Mage"] .. ", T0",      container = { 22065 } },               -- Magister's Crown
+                { id = 16698, disc = L["Warlock"] .. ", T0",   container = { 22074 } },               -- Dreadmist Mask
+                { id = 16707, disc = L["Rogue"] .. ", T0",     container = { 22005 } },               -- Shadowcraft Cap
+                { id = 16720, disc = L["Druid"] .. ", T0",     container = { 22109 } },               -- Wildheart Cowl
+                { id = 16677, disc = L["Hunter"] .. ", T0",    container = { 22013 } },               -- Beaststalker's Cap
+                { id = 16667, disc = L["Shaman"] .. ", T0",    container = { 22097 } },               -- Coif of Elements
+                { id = 16727, disc = L["Paladin"] .. ", T0",   container = { 22091 } },               -- Lightforge Helm
+                { id = 16731, disc = L["Warrior"] .. ", T0",   container = { 21999 } },               -- Helm of Valor
                 {},
-                { id = 13944, dropRate = 14 }, -- Tombstone Breastplate
-                { id = 13951, dropRate = 14 }, -- Vigorsteel Vambraces
-                { id = 13950, dropRate = 14 }, -- Detention Strap
-                { id = 13398, dropRate = 14 }, -- Boots of the Shrieker
-                { id = 22433, dropRate = 14 }, -- Don Mauricio's Band of Domination
-                { id = 13938, dropRate = 14 }, -- Bonecreeper Stylus
-                { id = 13953, dropRate = 14 }, -- Silent Fang
-                { id = 13964, dropRate = 14 }, -- Witchblade
+                { id = 13944, dropRate = 14 },                                                        -- Tombstone Breastplate
+                { id = 13951, dropRate = 14 },                                                        -- Vigorsteel Vambraces
+                { id = 13950, dropRate = 14 },                                                        -- Detention Strap
+                { id = 13398, dropRate = 14 },                                                        -- Boots of the Shrieker
+                { id = 22433, dropRate = 14 },                                                        -- Don Mauricio's Band of Domination
+                { id = 13938, dropRate = 14 },                                                        -- Bonecreeper Stylus
+                { id = 13953, dropRate = 14 },                                                        -- Silent Fang
+                { id = 13964, dropRate = 14 },                                                        -- Witchblade
                 {},
-                { id = 13937, dropRate = 1 }, -- Headmaster's Charge
+                { id = 13937, dropRate = 1 },                                                         -- Headmaster's Charge
                 {},
-                { id = 13501, dropRate = 10, container = { 13444 } }, -- Recipe: Major Mana Potion
-                { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
-                { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
-                { id = 14514, dropRate = 7, container = { 14513 } }, -- Pattern: Robe of the Void
-                { id = 56107, LS["Gemology"], dropRate = 30, container = { 56108, 70166, 56014 } }, -- Bottom Half of Advanced Gemology II
+                { id = 13501, dropRate = 10,                   container = { 13444 } },               -- Recipe: Major Mana Potion
+                { id = 47413, dropRate = 10,                   container = { 47412 } },               -- Recipe: Concoction of the Arcane Giant
+                { id = 47415, dropRate = 10,                   container = { 47414 } },               -- Recipe: Concoction of the Dreamwater
+                { id = 14514, dropRate = 7,                    container = { 14513 } },               -- Pattern: Robe of the Void
+                { id = 56107, LS["Gemology"],                  dropRate = 30,        container = { 56108, 70166, 56014 } }, -- Bottom Half of Advanced Gemology II
                 {},
-                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
-                { id = 61460, dropRate = 100, container = { 61465 } }, -- Necromantic Potion
-                { id = 70226, disc = L["Quest Item"], dropRate = 3 }, -- Ancient Warfare Text
-                { id = 19276, disc = L["Darkmoon Faire Card"], dropRate = 3, container = { 19290 } }, -- Ace of Portals
-                { id = 51217, disc = L["Transmogrification"], dropRate = 100 }, -- Fashion Coin
+                { id = 41985, quantity = 3,                    dropRate = 100,       container = { 41986 } }, -- Crest of Valor
+                { id = 41700, dropRate = 100,                  container = { 41704 } },               -- Lunar Token
+                { id = 61460, dropRate = 100,                  container = { 61465 } },               -- Necromantic Potion
+                { id = 19276, disc = L["Darkmoon Faire Card"], dropRate = 3,         container = { 19290 } }, -- Ace of Portals
+                { id = 51217, disc = L["Transmogrification"],  dropRate = 100 },                      -- Fashion Coin
             }
         },
-        { prefix = "1')", name = LMD["Torch Lever"], color = Colors.GREEN },
+        { prefix = "1')", name = LMD["Torch Lever"],        color = Colors.GREEN },
         { prefix = "2')", name = LMD["Old Treasure Chest"], color = Colors.GREEN },
-        { prefix = "3')", name = LMD["Alchemy Lab"], color = Colors.GREEN },
+        { prefix = "3')", name = LMD["Alchemy Lab"],        color = Colors.GREEN },
         {
             id = "SCHOLOGoldsmithing",
-            name = L["Goldsmithing Plans"], --TODO CHECK PLACE
+            name = L["Goldsmithing Plans"],                                                                     --TODO CHECK PLACE
             loot = {
                 { id = 56100, disc = LS["Goldsmithing"], dropRate = 100, container = { 56110, 70211, 56094 } }, -- Bottom Half of Advanced Goldsmithing I
             },
         },
         {
             id = "SCHOLOTrash",
-            name = L["Trash Mobs"].."-"..LZ["Scholomance"],
+            name = L["Trash Mobs"] .. "-" .. LZ["Scholomance"],
             loot = {
-                { id = 16685, disc = L["Mage"]..", T0", container = { 22062 }, dropRate = 1.5 }, -- Magister's Belt
-                { id = 16702, disc = L["Warlock"]..", T0", container = { 22070 }, dropRate = 1.5 }, -- Dreadmist Belt
-                { id = 16710, disc = L["Rogue"]..", T0", container = { 22004 }, dropRate = 2 }, -- Shadowcraft Bracers
-                { id = 16714, disc = L["Druid"]..", T0", container = { 22108 }, dropRate = 1.75 }, -- Wildheart Bracers
-                { id = 16716, disc = L["Druid"]..", T0", container = { 22106 }, dropRate = 2 }, -- Wildheart Belt
-                { id = 16671, disc = L["Shaman"]..", T0", container = { 22095 }, dropRate = 1.5 }, -- Bindings of Elements
-                { id = 16722, disc = L["Paladin"]..", T0", container = { 22088 }, dropRate = 3 }, -- Lightforge Bracers
+                { id = 16685, disc = L["Mage"] .. ", T0",  container = { 22062 }, dropRate = 1.5 },             -- Magister's Belt
+                { id = 16702, disc = L["Warlock"] .. ", T0", container = { 22070 }, dropRate = 1.5 },           -- Dreadmist Belt
+                { id = 16710, disc = L["Rogue"] .. ", T0", container = { 22004 }, dropRate = 2 },               -- Shadowcraft Bracers
+                { id = 16714, disc = L["Druid"] .. ", T0", container = { 22108 }, dropRate = 1.75 },            -- Wildheart Bracers
+                { id = 16716, disc = L["Druid"] .. ", T0", container = { 22106 }, dropRate = 2 },               -- Wildheart Belt
+                { id = 16671, disc = L["Shaman"] .. ", T0", container = { 22095 }, dropRate = 1.5 },            -- Bindings of Elements
+                { id = 16722, disc = L["Paladin"] .. ", T0", container = { 22088 }, dropRate = 3 },             -- Lightforge Bracers
                 {},
-                { id = 12843 }, -- Corruptor's Scourgestone
-                { id = 12841 }, -- Invader's Scourgestone
-                { id = 12840 }, -- Minion's Scourgestone
+                { id = 12843 },                                                                                 -- Corruptor's Scourgestone
+                { id = 12841 },                                                                                 -- Invader's Scourgestone
+                { id = 12840 },                                                                                 -- Minion's Scourgestone
                 {},
-                { id = 20520, disc = L["Reagent"], dropRate = 25 }, -- Dark Rune
-                { id = 12753, disc = L["Reagent"], dropRate = 18 }, -- Skin of Shadow
+                { id = 20520, disc = L["Reagent"],         dropRate = 25 },                                     -- Dark Rune
+                { id = 12753, disc = L["Reagent"],         dropRate = 18 },                                     -- Skin of Shadow
                 {},
-                { id = 18698, dropRate = .04 }, -- Tattered Leather Hood
-                { id = 18699, dropRate = .03 }, -- Icy Tomb Spaulders
-                { id = 14536, dropRate = .04 }, -- Bonebrace Hauberk
-                { id = 18700, dropRate = .25 }, -- Malefic Bracers
-                { id = 18702, dropRate = .02 }, -- Belt of the Ordained
-                { id = 18697, dropRate = .2 }, -- Coldstone Slippers
-                { id = 18701, dropRate = .4 }, -- Innervating Band
+                { id = 18698, dropRate = .04 },                                                                 -- Tattered Leather Hood
+                { id = 18699, dropRate = .03 },                                                                 -- Icy Tomb Spaulders
+                { id = 14536, dropRate = .04 },                                                                 -- Bonebrace Hauberk
+                { id = 18700, dropRate = .25 },                                                                 -- Malefic Bracers
+                { id = 18702, dropRate = .02 },                                                                 -- Belt of the Ordained
+                { id = 18697, dropRate = .2 },                                                                  -- Coldstone Slippers
+                { id = 18701, dropRate = .4 },                                                                  -- Innervating Band
                 {},
-                { id = 16254, dropRate = 1 }, -- Formula: Enchant Weapon - Lifestealing
-                { id = 16255, dropRate = 2 }, -- Formula: Enchant 2H Weapon - Major Spirit
-                { id = 70163, dropRate = 1.5, container = { 56016 } }, -- Plans: Arcane Emerald Gemstone
-                { id = 56102, disc = LS["Goldsmithing"], dropRate = .03, container = { 56111, 70177, 56066 } }, -- Top Half of Advanced Goldsmithing II
-                { id = 15773, dropRate = 7, container = { 15085 } }, -- Pattern: Wicked Leather Armor
-                { id = 15776, dropRate = 4, container = { 15090 } }, -- Pattern: Runic Leather Armor
+                { id = 16254, dropRate = 1 },                                                                   -- Formula: Enchant Weapon - Lifestealing
+                { id = 16255, dropRate = 2 },                                                                   -- Formula: Enchant 2H Weapon - Major Spirit
+                { id = 70163, dropRate = 1.5,              container = { 56016 } },                             -- Plans: Arcane Emerald Gemstone
+                { id = 56102, disc = LS["Goldsmithing"],   dropRate = .03,        container = { 56111, 70177, 56066 } }, -- Top Half of Advanced Goldsmithing II
+                { id = 15773, dropRate = 7,                container = { 15085 } },                             -- Pattern: Wicked Leather Armor
+                { id = 15776, dropRate = 4,                container = { 15090 } },                             -- Pattern: Runic Leather Armor
                 {},
-                { id = 13920, dropRate = 6 }, -- Healthy Dragon Scale
+                { id = 13920, dropRate = 6 },                                                                   -- Healthy Dragon Scale
             }
         },
-        { name = LZ["Scholomance"].." "..L["Sets"], items = "Scholo" },
-        { name = LIS["Ironweave Battlesuit"], items = "Ironweave" },
-        { name = L["Tier 0/0.5 Sets"], items = "AtlasTWLootT0SetMenu" },
+        { name = LZ["Scholomance"] .. " " .. L["Sets"], items = "Scholo" },
+        { name = LIS["Ironweave Battlesuit"],       items = "Ironweave" },
+        { name = L["Tier 0/0.5 Sets"],              items = "AtlasTWLootT0SetMenu" },
     },
 }
 
