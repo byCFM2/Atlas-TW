@@ -69,7 +69,7 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61504 }, -- Wildfire Girdle
                 { id = 61505 }, -- Leggings of Fiery Temper
             }
-        },
+        },--[[ 
         {
             id = "FriarMontero",
             name = LMD["Friar Montero"],
@@ -79,7 +79,7 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 58010 }, -- Psalm of Righteous Fire
                 { id = 58011 }, -- Friar's Signet
             }
-        },
+        }, ]]
         {
             id = "WitchDoctorTanzo",
             name = LMD["Witch Doctor Tan'zo"],
@@ -90,7 +90,7 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 61506 }, -- Shard of Wild Hexes
                 { id = 61508, dropRate = 20 }, -- Thorned Branch
             }
-        },
+        },--[[ 
         {
             id = "Emastrasz",
             name = LMD["Emastrasz"],
@@ -100,7 +100,7 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 58159 }, -- Hood of Lifebinding
                 { id = 58160 }, -- Firebound Skull
             }
-        },
+        }, ]]
         {
             id = "Dawnhowl",
             name = LMD["Dawnhowl"],
@@ -123,7 +123,7 @@ AtlasTW.InstanceData.RareMobs = {
                 {},
                 { id = 61589, dropRate = 20 }, -- Widow's Kiss
             }
-        },
+        },--[[ 
         {
             id = "Gnaws",
             name = LMD["Gnaws"],
@@ -135,7 +135,7 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 58059 }, -- Razertooth Fetish
                 { id = 58061 }, -- Sharkskin Sash
             }
-        },
+        }, ]]
         {
             id = "MaltimorsPrototype",
             name = LMD["Maltimor's Prototype"],
@@ -193,7 +193,7 @@ AtlasTW.InstanceData.RareMobs = {
                 {},
                 { id = 60442, dropRate = 2 }, -- Hak'thalz of Legacy
             }
-        },
+        },--[[ 
         {
             id = "M0L1Y",
             name = LMD["M-0L1Y"],
@@ -205,7 +205,7 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 41296 }, -- Damp Pauldrons
                 { id = 41298, dropRate = 10 }, -- Overloaded Heating Coil
             }
-        },
+        }, ]]
         {
             id = "Grugthok",
             name = LMD["Grug'thok the Seer"],
@@ -376,7 +376,7 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 81362 }, -- Azure-Scale Sabatons
                 { id = 81364 }, -- Scale of Malygos
             }
-        },
+        },--[[ 
         {
             id = "LarexxaFoulheart",
             name = LMD["Larexxa Foulheart"],
@@ -396,7 +396,7 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 33199 }, -- Bluetide Gauntles
                 { id = 33200 }, -- Spine of a Shipwrecked Pirate
             }
-        },
+        },]]
         {
             id = "Zareth",
             name = LMD["Zareth Terrorblade"],
@@ -433,7 +433,7 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 81378 }, -- Eveningstar Gloves
                 { id = 81379, dropRate = .5 }, -- Shard of the Moon
             }
-        },
+        },--[[ 
         {
             id = "Thundertusk",
             name = LMD["Thundertusk"],
@@ -463,7 +463,7 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 33209 }, -- Cloak of the Veteran
                 { id = 33210 }, -- Withered Bark Pauldrons
             }
-        },
+        }, ]]
         {
             id = "ProfessorLysander",
             name = LMD["Professor Lysander"],
@@ -487,7 +487,7 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 81368 }, -- Blackshackle Bracers
                 { id = 81369, dropRate = .5 }, -- Blade of the Blademaster
             }
-        },
+        },--[[ 
         {
             id = "Larnaea",
             name = LMD["Larnaea"],
@@ -497,7 +497,7 @@ AtlasTW.InstanceData.RareMobs = {
                 { id = 33205 }, -- Skull of Larnaea
                 { id = 33206 }, -- Tricolored Scalepants
             }
-        },
+        }, ]]
         {
             id = "Azurebeak",
             name = LMD["Azurebeak"],

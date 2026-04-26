@@ -25,7 +25,7 @@ local LB = AtlasTW.Localization.Bosses
 AtlasTW.InstanceData = AtlasTW.InstanceData or {}
 
 -- World bosses data
-AtlasTW.InstanceData.Clackora = {
+--[[ AtlasTW.InstanceData.Clackora = {
     Name = LB["Cla'ckora"],
     Location = LZ["Azshara"],
     Level = { 1, 60 },
@@ -56,7 +56,7 @@ AtlasTW.InstanceData.Clackora = {
 }
 }
 }
-}
+} ]]
 
 -- Initialize items for all bosses
 for _, bossData in ipairs(AtlasTW.InstanceData.Clackora.Bosses) do
