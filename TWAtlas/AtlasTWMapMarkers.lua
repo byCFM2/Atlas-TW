@@ -80,7 +80,7 @@ local MapPoints = {
     { 1, "Darkshore",           0.304, 0.41,  "TransportRoutes",           "boat",      LMD["Alah'Thalas"] },                   -- Boat to Alah'Thalas
     { 1, "Darkshore",           0.333, 0.399, "TransportRoutes",           "boat",      LMD["Rut'Theran Village"] },            -- Boat to Rut'Theran Village
     { 1, "Dustwallow Marsh",    0.718, 0.566, "TransportRoutes",           "boat",      LZ["Menethil Harbor"] },                -- Boat to Menethil Harbor
-    { 1, "Darkshore",           0.552, 0.949, "TransportRoutes",           "boat",      LZ["Auberdine"] },                      -- Boat to Auberdine
+    { 1, "Teldrassil",           0.552, 0.949, "TransportRoutes",           "boat",      LZ["Auberdine"] },                      -- Boat to Auberdine
     -- Eastern Kingdoms Dungeons
     { 2, "Blackrock Mountain",  0.375, 0.83,  "BlackrockDepths",           "dungeon",   "52-60" },
     { 2, "Blackrock Mountain",  0.33,  0.3,   "BlackrockDepths",           "dungeon",   "52-60" },

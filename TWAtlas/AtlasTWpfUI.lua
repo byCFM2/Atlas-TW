@@ -1181,6 +1181,14 @@ function AtlasTW.pfUI.StyleProfessionFrames()
         allBtn.pfui_skinned = true
     end
 
+    -- Style search boxes
+    if AtlasTWTradeSkillSearchBox then
+        AtlasTW.pfUI.SkinEditBox(AtlasTWTradeSkillSearchBox)
+    end
+    if AtlasTWCraftSearchBox then
+        AtlasTW.pfUI.SkinEditBox(AtlasTWCraftSearchBox)
+    end
+
     -- Style side tabs
     for i = 1, 20 do -- Scan up to 20 potential tabs
         local tab = _G["AtlasTWProfessionTab" .. i]
