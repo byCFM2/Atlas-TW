@@ -73,12 +73,12 @@ local MapPoints = {
     { 1, "Durotar",             0.51,  0.115, "TransportRoutes",           "zepp",      LMD["Grom'Gol"] },                      -- Zeppelins to Grom'Gol
     { 1, "Durotar",             0.41,  0.195, "TransportRoutes",           "zepp",      LZ["Thunder Bluff"] },                  -- Zeppelins to TB
     { 1, "Durotar",             0.41,  0.165, "TransportRoutes",           "zepp",      LMD["Kargath"] },                       -- Zeppelins to Kargath
-    { 1, "Thousand Needles",    0.165, 0.230, "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                      -- Zeppelin to Orgrimmar
+    { 1, "Thunder Bluff",       0.165, 0.230, "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                      -- Zeppelin to Orgrimmar
     { 1, "Durotar",             0.598, 0.236, "TransportRoutes",           "boat",      LMD["Revantusk Village"] },             -- Boat to Revantusk Village
     { 1, "The Barrens",         0.636, 0.389, "TransportRoutes",           "boat",      LZ["Booty Bay"] },                      -- Boat to Booty Bay
-    { 1, "Teldrassil",          0.324, 0.44,  "TransportRoutes",           "boat",      LF["Stormwind"] },                      -- Boat to Stormwind
-    { 1, "Teldrassil",          0.304, 0.41,  "TransportRoutes",           "boat",      LMD["Alah'Thalas"] },                   -- Boat to Alah'Thalas
-    { 1, "Teldrassil",          0.333, 0.399, "TransportRoutes",           "boat",      LMD["Rut'Theran Village"] },            -- Boat to Rut'Theran Village
+    { 1, "Darkshore",           0.324, 0.44,  "TransportRoutes",           "boat",      LF["Stormwind"] },                      -- Boat to Stormwind
+    { 1, "Darkshore",           0.304, 0.41,  "TransportRoutes",           "boat",      LMD["Alah'Thalas"] },                   -- Boat to Alah'Thalas
+    { 1, "Darkshore",           0.333, 0.399, "TransportRoutes",           "boat",      LMD["Rut'Theran Village"] },            -- Boat to Rut'Theran Village
     { 1, "Dustwallow Marsh",    0.718, 0.566, "TransportRoutes",           "boat",      LZ["Menethil Harbor"] },                -- Boat to Menethil Harbor
     { 1, "Darkshore",           0.552, 0.949, "TransportRoutes",           "boat",      LZ["Auberdine"] },                      -- Boat to Auberdine
     -- Eastern Kingdoms Dungeons
@@ -99,7 +99,7 @@ local MapPoints = {
     { 2, "Silverpine Forest",   0.44,  0.67,  "ShadowfangKeep",            "dungeon",   "22-30" },
     { 2, "Stormwind City",      0.51,  0.675, "TheStockade",               "dungeon",   "24-31" },
     { 2, "Stormwind City",      0.63,  0.58,  "StormwindVault",            "dungeon",   "60" },
-    { 2, "Stormwind City",      0.29,  0.61,  "StormwindVault",            "dungeon",   "60" },                                  -- Horde Entrance
+    { 2, "Elwynn Forest",       0.29,  0.61,  "StormwindVault",            "dungeon",   "60" },                                  -- Horde Entrance
     { 2, "Eastern Plaguelands", 0.31,  0.14,  "Stratholme",                "dungeon",   "58-60" },
     { 2, "Eastern Plaguelands", 0.47,  0.24,  "Stratholme",                "dungeon",   "58-60" .. " (" .. LMD["Back"] .. ")" }, -- Back Gate
     { 2, "Swamp of Sorrows",    0.701, 0.55,  "TheSunkenTemple",           "dungeon",   "50-60" },
@@ -117,7 +117,7 @@ local MapPoints = {
     { 2, "Stranglethorn Vale",  0.53,  0.172, "ZulGurub",                  "raid",      "60" },
     -- Eastern Kingdoms World Bosses
     { 2, "Deadwind Pass",       0.471, 0.751, "Reaver",                    "worldboss", "60" },
-    { 2, "Eastern Plaguelands", 0.465, 0.357, "FourDragons",               "worldboss", "60" .. " (" .. LB["Lethon"] .. ")" },  -- Emerald Dragon - Lethon
+    { 2, "Duskwood",            0.465, 0.357, "FourDragons",               "worldboss", "60" .. " (" .. LB["Lethon"] .. ")" },  -- Emerald Dragon - Lethon
     { 2, "The Hinterlands",     0.632, 0.217, "FourDragons",               "worldboss", "60" .. " (" .. LB["Emeriss"] .. ")" }, -- Emerald Dragon - Emeriss
     { 2, "Blasted Lands",       0.36,  0.753, "LordKazzak",                "worldboss", "60" },
     { 2, "Eastern Plaguelands", 0.082, 0.38,  "Nerubian",                  "worldboss", "60" },
