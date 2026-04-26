@@ -44,16 +44,17 @@ AtlasTW.InstanceData.StormwindVault = {
             name = LB["Aszosh Grimflame"],
             defaults = { dropRate = 17 },
             loot = {
-                { id = 60504 },                                                      -- Dreadskin Gloves
-                { id = 60419 },                                                      -- Necrolyte's Visage
-                { id = 60425 },                                                      -- Shadowguard Robe
-                { id = 60434 },                                                      -- Greaves of the Elite Guard
+                { id = 60504 }, -- Dreadskin Gloves
+                { id = 60419 }, -- Necrolyte's Visage
+                { id = 60425 }, -- Shadowguard Robe
+                { id = 60434 }, -- Greaves of the Elite Guard
                 {},
-                { id = 60431 },                                                      -- Almanac of Savagery
-                { id = 60418 },                                                      -- Sealbreaker Staff
+                { id = 60431 }, -- Almanac of Savagery
+                { id = 60418 }, -- Sealbreaker Staff
                 {},
-                { id = 41985, quantity = 2,                   dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }         -- Fashion Coin
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
             }
         },
         {
@@ -62,16 +63,17 @@ AtlasTW.InstanceData.StormwindVault = {
             name = LB["Tham'Grarr"],
             defaults = { dropRate = 17 },
             loot = {
-                { id = 60502, disc = L["Random stats"] },                            -- Unstable Belt
-                { id = 60415 },                                                      -- Ring of Twin Regeneration
-                { id = 60424 },                                                      -- Grellskin Gloves
-                { id = 60435 },                                                      -- Sabatons of the Elite Guard
+                { id = 60502, disc = L["Random stats"] }, -- Unstable Belt
+                { id = 60415 }, -- Ring of Twin Regeneration
+                { id = 60424 }, -- Grellskin Gloves
+                { id = 60435 }, -- Sabatons of the Elite Guard
                 {},
-                { id = 60416 },                                                      -- Skull of Grarr
-                { id = 60417 },                                                      -- Skull of Tham
+                { id = 60416 }, -- Skull of Grarr
+                { id = 60417 }, -- Skull of Tham
                 {},
-                { id = 41985, quantity = 2,                   dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }         -- Fashion Coin
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
             }
         },
         {
@@ -80,15 +82,16 @@ AtlasTW.InstanceData.StormwindVault = {
             name = LB["Black Bride"],
             defaults = { dropRate = 20 },
             loot = {
-                { id = 60408 },                                                      -- Crown of Lost Memories
-                { id = 60409 },                                                      -- Banshee's Veil
-                { id = 60411 },                                                      -- Boots of Crying Rivers
-                { id = 60436 },                                                      -- Sightless Leather Hood
+                { id = 60408 }, -- Crown of Lost Memories
+                { id = 60409 }, -- Banshee's Veil
+                { id = 60411 }, -- Boots of Crying Rivers
+                { id = 60436 }, -- Sightless Leather Hood
                 {},
-                { id = 60410 },                                                      -- Willbreaker
+                { id = 60410 }, -- Willbreaker
                 {},
-                { id = 41985, quantity = 2,                   dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }         -- Fashion Coin
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
             }
         },
         { name = LMD["Tome of Arcane Intricacies and Magical Phenomenon IX"], color = Colors.GREY },
@@ -98,17 +101,18 @@ AtlasTW.InstanceData.StormwindVault = {
             name = LB["Damian"],
             defaults = { dropRate = 20 },
             loot = {
-                { id = 60421 },                                                      -- Damien's Sorrow
-                { id = 60423 },                                                      -- Bracers of Lost Souls
-                { id = 60433 },                                                      -- Pauldrons of the Elite Guard
-                { id = 60500 },                                                      -- Cloak of Atonement
+                { id = 60421 }, -- Damien's Sorrow
+                { id = 60423 }, -- Bracers of Lost Souls
+                { id = 60433 }, -- Pauldrons of the Elite Guard
+                { id = 60500 }, -- Cloak of Atonement
                 {},
-                { id = 60427 },                                                      -- Skullrattler
-                { id = 60422, dropRate = 1 },                                        -- The Ripper
+                { id = 60427 }, -- Skullrattler
+                { id = 60422, dropRate = 1 }, -- The Ripper
                 {},
-                { id = 41985, quantity = 2,                   dropRate = 100,       container = { 41986 } }, -- Crest of Valor
-                { id = 41463, dropRate = 100,                 container = { 70236 } }, -- Pouch of Surgical Daggers
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }         -- Fashion Coin
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 41463, dropRate = 100, container = { 70236 } }, -- Pouch of Surgical Daggers
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
             }
         },
         {
@@ -118,15 +122,16 @@ AtlasTW.InstanceData.StormwindVault = {
             postfix = L["Optional"],
             defaults = { dropRate = 20 },
             loot = {
-                { id = 60412 },                                                      -- Blackteeth Necklace
-                { id = 60414 },                                                      -- Blademaster's Blindfold
-                { id = 60432 },                                                      -- Gauntlets of the Elite Guard
-                { id = 60503 },                                                      -- Leggings of Alacrity
+                { id = 60412 }, -- Blackteeth Necklace
+                { id = 60414 }, -- Blademaster's Blindfold
+                { id = 60432 }, -- Gauntlets of the Elite Guard
+                { id = 60503 }, -- Leggings of Alacrity
                 {},
-                { id = 60413 },                                                      -- The Cruel Blade
+                { id = 60413 }, -- The Cruel Blade
                 {},
-                { id = 41985, quantity = 2,                   dropRate = 100, container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }         -- Fashion Coin
+                { id = 41985, quantity = 2, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 } -- Fashion Coin
             }
         },
         {
@@ -135,27 +140,27 @@ AtlasTW.InstanceData.StormwindVault = {
             name = LMD["Arc'tiras / Vault Armory Equipment"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 40003 },                                                      -- Vault's Defender
-                { id = 60505 },                                                      -- Ring of the Elder Warden
-                { id = 60506 },                                                      -- Vigilance
-                { id = 60501 },                                                      -- Whip of Encouragement
+                { id = 40003 }, -- Vault's Defender
+                { id = 60505 }, -- Ring of the Elder Warden
+                { id = 60506 }, -- Vigilance
+                { id = 60501 }, -- Whip of Encouragement
                 {},
-                { id = 60420 },                                                      -- Amulet of Warding
-                { id = 60426 },                                                      -- Guard-Captain's Chestplate
-                { id = 60429 },                                                      -- Arcanite Shackles
-                { id = 60430 },                                                      -- Runewarder's Boots
+                { id = 60420 }, -- Amulet of Warding
+                { id = 60426 }, -- Guard-Captain's Chestplate
+                { id = 60429 }, -- Arcanite Shackles
+                { id = 60430 }, -- Runewarder's Boots
                 {},
-                { id = 83570, dropRate = 15 },                                       -- Technique: Die by the Sword
+                { id = 83570, dropRate = 15 }, -- Technique: Die by the Sword
                 {},
-                { id = 41406, dropRate = 100,                 container = { 55133, 55134, 55135 } }, -- Core of Arc'Tiras
-                { id = 41985, quantity = 3,                   dropRate = 100,                     container = { 41986 } }, -- Crest of Valor
-                { id = 41700, dropRate = 100,                 container = { 41704 } }, -- Lunar Token
-                { id = 51217, disc = L["Transmogrification"], dropRate = 80 },       -- Fashion Coin
+                { id = 41406, dropRate = 100, container = { 55133, 55134, 55135 } }, -- Core of Arc'Tiras
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
+                { id = 51217, disc = L["Transmogrification"], dropRate = 80 }, -- Fashion Coin
             }
         },
         {
             id = "TrashMobs",
-            name = L["Trash Mobs"] .. "-" .. LZ["Stormwind Vault"],
+            name = L["Trash Mobs"].."-"..LZ["Stormwind Vault"],
             defaults = { dropRate = .02 },
             loot = {
                 { id = 61592 }, -- Arcanic Bracers
@@ -166,7 +171,7 @@ AtlasTW.InstanceData.StormwindVault = {
                 { id = 61563 }, -- Grimoire of Grells
                 {},
                 { id = 61594 }, -- Magus Blade
-                { id = 61595 }  -- Sharpened Iron Bar
+                { id = 61595 } -- Sharpened Iron Bar
             }
         }
     }

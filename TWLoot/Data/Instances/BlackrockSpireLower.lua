@@ -38,9 +38,9 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
     MaxPlayers = 10,
     DamageType = L["Physical"],
     Entrances = {
-        { letter = "A) " .. L["Entrance"] },
-        { letter = "B)",                  info = LZ["Upper Blackrock Spire"] },
-        { letter = "C-F)",                info = L["Connections"] }
+        { letter = "A) ".. L["Entrance"] },
+        { letter = "B)", info = LZ["Upper Blackrock Spire"] },
+        { letter = "C-F)", info = L["Connections"] }
     },
     Keys = {
         { name = LMD["Brazier of Invocation"], loot = "VanillaKeys", info = LMD["Tier 0.5 Summon"] }
@@ -89,21 +89,22 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             name = LB["Highlord Omokk"],
             defaults = { dropRate = 17 },
             loot = {
-                { id = 16670, disc = L["Shaman"] .. ", T0",    container = { 22096 } },                              -- Boots of Elements
+                { id = 16670, disc = L["Shaman"]..", T0", container = { 22096 } }, -- Boots of Elements
                 {},
-                { id = 13166 },                                                                                      -- Slamshot Shoulders
-                { id = 13168 },                                                                                      -- Plate of the Shaman King
-                { id = 13170 },                                                                                      -- Skyshroud Leggings
-                { id = 13169 },                                                                                      -- Tressermane Leggings
+                { id = 13166 }, -- Slamshot Shoulders
+                { id = 13168 }, -- Plate of the Shaman King
+                { id = 13170 }, -- Skyshroud Leggings
+                { id = 13169 }, -- Tressermane Leggings
                 {},
-                { id = 13167 },                                                                                      -- Fist of Omokk
+                { id = 13167 }, -- Fist of Omokk
                 {},
-                { id = 12534, disc = L["Used to summon boss"], dropRate = 100 },                                     -- Omokk's Head
+                { id = 12534, disc = L["Used to summon boss"], dropRate = 100 }, -- Omokk's Head
                 {},
-                { id = 41985, dropRate = 100,                  container = { 41986 } },                              -- Crest of Valor
-                { id = 12336, disc = L["Quest Item"],          dropRate = 25,        container = { 12344 } },        -- Gemstone of Spirestone
-                { id = 21982, quantity = { 2, 3 },             dropRate = 50,        container = { 22149, 22150 } }, -- Ogre Warbeads
-                { id = 51217, disc = L["Transmogrification"],  dropRate = 5 },                                       -- Fashion Coin
+                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 12336, disc = L["Quest Item"], dropRate = 25, container = { 12344 } }, -- Gemstone of Spirestone
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 21982, quantity = { 2,3 } , dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
         {
@@ -112,9 +113,9 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             name = LMD["Spirestone Battle Lord"],
             postfix = L["Rare"],
             loot = {
-                { id = 13284, dropRate = 40 },                               -- Swiftdart Battleboots
+                { id = 13284, dropRate = 40 }, -- Swiftdart Battleboots
                 {},
-                { id = 13285, dropRate = 60 },                               -- The Blackrock Slicer
+                { id = 13285, dropRate = 60 }, -- The Blackrock Slicer
                 {},
                 { id = 21982, dropRate = 14, container = { 22149, 22150 } }, -- Ogre Warbeads
             }
@@ -125,9 +126,9 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
-                { id = 13282 },                                              -- Ogreseer Tower Boots
-                { id = 13283 },                                              -- Magus Ring
-                { id = 13261 },                                              -- Globe of D'sak
+                { id = 13282 }, -- Ogreseer Tower Boots
+                { id = 13283 }, -- Magus Ring
+                { id = 13261 }, -- Globe of D'sak
                 { id = 21982, dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
             }
         },
@@ -137,18 +138,19 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             name = LB["Shadow Hunter Vosh'gajin"],
             defaults = { dropRate = 17 },
             loot = {
-                { id = 16712, disc = L["Rogue"] .. ", T0",    container = { 22002 } }, -- Shadowcraft Gloves
+                { id = 16712, disc = L["Rogue"]..", T0", container = { 22002 } }, -- Shadowcraft Gloves
                 {},
-                { id = 13257 },                                                        -- Demonic Runed Spaulders
-                { id = 12626 },                                                        -- Funeral Cuffs
-                { id = 13255 },                                                        -- Trueaim Gauntlets
-                { id = 12653 },                                                        -- Riphook
-                { id = 12651 },                                                        -- Blackcrow
-                { id = 12654, dropRate = 25 },                                         -- Doomshot
+                { id = 13257 }, -- Demonic Runed Spaulders
+                { id = 12626 }, -- Funeral Cuffs
+                { id = 13255 }, -- Trueaim Gauntlets
+                { id = 12653 }, -- Riphook
+                { id = 12651 }, -- Blackcrow
+                { id = 12654, dropRate = 25 }, -- Doomshot
                 {},
-                { id = 13352, dropRate = 100,                 container = { 12821 } }, -- Vosh'gajin's Snakestone
-                { id = 41985, dropRate = 100,                 container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },          -- Fashion Coin
+                { id = 13352, dropRate = 100, container = { 12821 } }, -- Vosh'gajin's Snakestone
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
         {
@@ -166,20 +168,21 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             name = LB["War Master Voone"],
             defaults = { dropRate = 17 },
             loot = {
-                { id = 16676, disc = L["Hunter"] .. ", T0",   container = { 22015 } },                       -- Beaststalker's Gloves
+                { id = 16676, disc = L["Hunter"]..", T0", container = { 22015 } }, -- Beaststalker's Gloves
                 {},
-                { id = 13177 },                                                                              -- Talisman of Evasion
-                { id = 13179 },                                                                              -- Brazecore Armguards
-                { id = 22231 },                                                                              -- Kayser's Boots of Precision
+                { id = 13177 }, -- Talisman of Evasion
+                { id = 13179 }, -- Brazecore Armguards
+                { id = 22231 }, -- Kayser's Boots of Precision
                 {},
-                { id = 13173, dropRate = 100 },                                                              -- Flightblade Throwing Axe
-                { id = 12582 },                                                                              -- Keris of Zul'Serak
+                { id = 13173, dropRate = 100 }, -- Flightblade Throwing Axe
+                { id = 12582 }, -- Keris of Zul'Serak
                 {},
-                { id = 12335, disc = L["Quest Item"],         dropRate = 20,        container = { 12344 } }, -- Gemstone of Smolderthorn
-                { id = 41454, disc = L["Quest Item"],         dropRate = 100 },                              -- Throwing Axes of the Amani
-                { id = 60714, disc = L["Quest Item"],         dropRate = 100 },                              -- War Master Voone's Tusks
-                { id = 41985, dropRate = 100,                 container = { 41986 } },                       -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                                -- Fashion Coin
+                { id = 12335, disc = L["Quest Item"], dropRate = 20, container = { 12344 } }, -- Gemstone of Smolderthorn
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 41454, disc = L["Quest Item"], dropRate = 100 }, -- Throwing Axes of the Amani
+                { id = 60714, disc = L["Quest Item"], dropRate = 100 }, -- War Master Voone's Tusks
+                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
         {
@@ -232,10 +235,10 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
-                { id = 12637 },                                      -- Backusarian Gauntlets
-                { id = 12634 },                                      -- Chiselbrand Girdle
+                { id = 12637 }, -- Backusarian Gauntlets
+                { id = 12634 }, -- Chiselbrand Girdle
                 {},
-                { id = 12621 },                                      -- Demonfork
+                { id = 12621 }, -- Demonfork
                 {},
                 { id = 12838, dropRate = 7, container = { 12784 } }, -- Plans: Arcanite Reaper
             }
@@ -246,17 +249,18 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             name = LB["Mother Smolderweb"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 16715, disc = L["Druid"] .. ", T0",    container = { 22107 } }, -- Wildheart Boots
+                { id = 16715, disc = L["Druid"]..", T0", container = { 22107 } }, -- Wildheart Boots
                 {},
-                { id = 13244 },                                                        -- Gilded Gauntlets
-                { id = 13213 },                                                        -- Smolderweb's Eye
+                { id = 13244 }, -- Gilded Gauntlets
+                { id = 13213 }, -- Smolderweb's Eye
                 {},
-                { id = 13183 },                                                        -- Venomspitter
+                { id = 13183 }, -- Venomspitter
                 {},
-                { id = 80758, dropRate = 40 },                                         -- Carapace of the Spider Queen
+                { id = 80758, dropRate = 40 }, -- Carapace of the Spider Queen
                 {},
-                { id = 41985, dropRate = 100,                 container = { 41986 } }, -- Crest of Valor
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },          -- Fashion Coin
+                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
         {
@@ -283,17 +287,18 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             postfix = L["Summon"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 13258 },                                                                                                   -- Slaghide Gauntlets
-                { id = 22232 },                                                                                                   -- Marksman's Girdle
-                { id = 13259 },                                                                                                   -- Ribsteel Footguards
-                { id = 13178 },                                                                                                   -- Rosewine Circle
+                { id = 13258 }, -- Slaghide Gauntlets
+                { id = 22232 }, -- Marksman's Girdle
+                { id = 13259 }, -- Ribsteel Footguards
+                { id = 13178 }, -- Rosewine Circle
                 {},
-                { id = 18784, dropRate = 16,                  container = { 18771, 12725, 12620 } },                              -- Top Half of Advanced Armorsmithing: Volume III
+                { id = 18784, dropRate = 16, container = { 18771, 12725, 12620 } }, -- Top Half of Advanced Armorsmithing: Volume III
                 {},
-                { id = 12712, disc = L["Quest Item"],         dropRate = 100,                     container = { 15867 } },        -- Warosh's Mojo
-                { id = 41985, dropRate = 100,                 container = { 41986 } },                                            -- Crest of Valor
-                { id = 21982, quantity = { 2, 3 },            dropRate = 50,                      container = { 22149, 22150 } }, -- Ogre Warbeads
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                                                     -- Fashion Coin
+                { id = 12712, disc = L["Quest Item"], dropRate = 100, container = { 15867 } }, -- Warosh's Mojo
+                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 21982, quantity = { 2,3 } , dropRate = 50, container = { 22149, 22150 } }, -- Ogre Warbeads
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
         {
@@ -302,22 +307,22 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             name = LB["Quartermaster Zigris"],
             defaults = { dropRate = 10 },
             loot = {
-                { id = 13253 },                                                                                            -- Hands of Power
-                { id = 13252 },                                                                                            -- Cloudrunner Girdle
+                { id = 13253 }, -- Hands of Power
+                { id = 13252 }, -- Cloudrunner Girdle
                 {},
-                { id = 12835, container = { 12798 } },                                                                     -- Plans: Annihilator
+                { id = 12835, container = { 12798 } }, -- Plans: Annihilator
                 {},
-                { id = 80759 },                                                                                            -- Cloak of the Protector
+                { id = 80759 }, -- Cloak of the Protector
                 {},
-                { id = 13446, quantity = 5,                   dropRate = 100 },                                            -- Major Healing Potion
-                { id = 13444, quantity = 5,                   dropRate = 100 },                                            -- Major Mana Potion
+                { id = 13446, quantity = 5, dropRate = 100  }, -- Major Healing Potion
+                { id = 13444, quantity = 5, dropRate = 100  }, -- Major Mana Potion
                 {},
-                { id = 56101, disc = LS["Goldsmithing"],      dropRate = 30,        container = { 56110, 70211, 56094 } }, -- Bottom Half of Advanced Goldsmithing I
-                { id = 22138, dropRate = 80 },                                                                             -- Blackrock Bracer
-                { id = 41478, dropRate = 100,                 container = { 41465 } },                                     -- Lower Half of the Thunderbrew Golden Lager Plans
-                { id = 41985, dropRate = 100,                 container = { 41986 } },                                     -- Crest of Valor
+                { id = 56101, disc = LS["Goldsmithing"], dropRate = 30, container = { 56110, 70211, 56094 } }, -- Bottom Half of Advanced Goldsmithing I
+                { id = 22138, dropRate = 80 }, -- Blackrock Bracer
+                { id = 41478, dropRate = 100, container = { 41465 } }, -- Lower Half of the Thunderbrew Golden Lager Plans
+                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 {},
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },                                              -- Fashion Coin
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
         {
@@ -326,14 +331,15 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             name = LB["Halycon"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 13212 },                                                        -- Halycon's Spiked Collar
-                { id = 22313 },                                                        -- Ironweave Bracers
-                { id = 13211 },                                                        -- Slashclaw Bracers
-                { id = 13210 },                                                        -- Pads of the Dread Wolf
+                { id = 13212 }, -- Halycon's Spiked Collar
+                { id = 22313 }, -- Ironweave Bracers
+                { id = 13211 }, -- Slashclaw Bracers
+                { id = 13210 }, -- Pads of the Dread Wolf
                 {},
-                { id = 41985, dropRate = 100,                 container = { 41986 } }, -- Crest of Valor
+                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
                 {},
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },          -- Fashion Coin
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
         {
@@ -341,18 +347,19 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             name = LB["Gizrul the Slavener"],
             defaults = { dropRate = 25 },
             loot = {
-                { id = 16718, disc = L["Druid"] .. ", T0",    container = { 22112 } }, -- Wildheart Spaulders
+                { id = 16718, disc = L["Druid"]..", T0", container = { 22112 } }, -- Wildheart Spaulders
                 {},
-                { id = 13208 },                                                        -- Bleak Howler Armguards
-                { id = 13206 },                                                        -- Wolfshear Leggings
+                { id = 13208 }, -- Bleak Howler Armguards
+                { id = 13206 }, -- Wolfshear Leggings
                 {},
-                { id = 13205 },                                                        -- Rhombeard Protector
+                { id = 13205 }, -- Rhombeard Protector
                 {},
-                { id = 83573, disc = L["Book"],               dropRate = 15 },         -- Book of Shred VI
+                { id = 83573, disc = L["Book"], dropRate = 15 }, -- Book of Shred VI
                 {},
-                { id = 41985, dropRate = 100,                 container = { 41986 } }, -- Crest of Valor
+                { id = 70226, disc = L["Quest Item"], dropRate = 1 }, -- Ancient Warfare Text
+                { id = 41985, dropRate = 100, container = { 41986 } }, -- Crest of Valor
                 {},
-                { id = 51217, disc = L["Transmogrification"], dropRate = 5 },          -- Fashion Coin
+                { id = 51217, disc = L["Transmogrification"], dropRate = 5 }, -- Fashion Coin
             }
         },
         {
@@ -362,10 +369,10 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             postfix = L["Rare"],
             defaults = { dropRate = 33 },
             loot = {
-                { id = 13203 },                                       -- Armswake Cloak
+                { id = 13203 }, -- Armswake Cloak
                 {},
-                { id = 13198 },                                       -- Hurd Smasher
-                { id = 13204 },                                       -- Bashguuder
+                { id = 13198 }, -- Hurd Smasher
+                { id = 13204 }, -- Bashguuder
                 {},
                 { id = 22138, dropRate = 80, container = { 22057 } }, -- Blackrock Bracer
             }
@@ -376,38 +383,38 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
             name = LB["Overlord Wyrmthalak"],
             defaults = { dropRate = 13 },
             loot = {
-                { id = 16679, disc = L["Hunter"] .. ", T0",   container = { 22016 } },                                                                 -- Beaststalker's Mantle
+                { id = 16679, disc = L["Hunter"]..", T0", container = { 22016 } }, -- Beaststalker's Mantle
                 {},
-                { id = 13162 },                                                                                                                        -- Reiver Claws
-                { id = 13164 },                                                                                                                        -- Heart of the Scale
-                { id = 22321 },                                                                                                                        -- Heart of Wyrmthalak
-                { id = 80760 },                                                                                                                        -- Spireblade Band
+                { id = 13162 }, -- Reiver Claws
+                { id = 13164 }, -- Heart of the Scale
+                { id = 22321 }, -- Heart of Wyrmthalak
+                { id = 80760 }, -- Spireblade Band
                 {},
-                { id = 13163 },                                                                                                                        -- Relentless Scythe
-                { id = 13148 },                                                                                                                        -- Chillpike
-                { id = 13161 },                                                                                                                        -- Trindlehaven Staff
+                { id = 13163 }, -- Relentless Scythe
+                { id = 13148 }, -- Chillpike
+                { id = 13161 }, -- Trindlehaven Staff
                 {},
-                { id = 12780, dropRate = 100,                 container = { 13966, 13968, 13965 } },                                                   -- General Drakkisath's Command
+                { id = 12780, dropRate = 100, container = { 13966, 13968, 13965 } }, -- General Drakkisath's Command
                 {},
-                { id = 13143, dropRate = 2 },                                                                                                          -- Mark of the Dragon Lord
+                { id = 13143, dropRate = 2 }, -- Mark of the Dragon Lord
                 {},
-                { id = 47413, dropRate = 10,                  container = { 47412 } },                                                                 -- Recipe: Concoction of the Arcane Giant
-                { id = 47415, dropRate = 10,                  container = { 47414 } },                                                                 -- Recipe: Concoction of the Dreamwater
-                { id = 56097, disc = L["Quest Item"],         dropRate = .5,                      container = { 56099, 70175, 56064, 70223, 56096 } }, -- Top Half of Advanced Jewelcrafting XI: Hard as Diamonds
-                { id = 12337, disc = L["Quest Item"],         dropRate = 30,                      container = { 12344 } },                             -- Gemstone of Bloodaxe
-                { id = 16786, dropRate = 80,                  quantity = 2,                       container = { 16309 } },                             -- Black Dragonspawn Eye
-                { id = 41985, quantity = 3,                   dropRate = 100,                     container = { 41986 } },                             -- Crest of Valor
-                { id = 41700, dropRate = 100,                 container = { 41704 } },                                                                 -- Lunar Token
-                { id = 61459, dropRate = 100,                 container = { 61465 } },                                                                 -- Eye of Wyrmthalak
+                { id = 47413, dropRate = 10, container = { 47412 } }, -- Recipe: Concoction of the Arcane Giant
+                { id = 47415, dropRate = 10, container = { 47414 } }, -- Recipe: Concoction of the Dreamwater
+                { id = 56097, disc = L["Quest Item"], dropRate = .5, container = { 56099, 70175, 56064, 70223, 56096 } }, -- Top Half of Advanced Jewelcrafting XI: Hard as Diamonds
+                { id = 12337, disc = L["Quest Item"], dropRate = 30, container = { 12344 } }, -- Gemstone of Bloodaxe
+                { id = 16786, dropRate = 80, quantity = 2, container = { 16309 } }, -- Black Dragonspawn Eye
+                { id = 41985, quantity = 3, dropRate = 100, container = { 41986 } }, -- Crest of Valor
+                { id = 41700, dropRate = 100, container = { 41704 } }, -- Lunar Token
+                { id = 61459, dropRate = 100, container = { 61465 } }, -- Eye of Wyrmthalak
                 {},
-                { id = 51217, disc = L["Transmogrification"], dropRate = 100,                     quantity = 2 },                                      -- Fashion Coin
+                { id = 51217, disc = L["Transmogrification"], dropRate = 100, quantity = 2 }, -- Fashion Coin
             }
         },
         {
             id = "LBRSFelguard",
             prefix = "1')",
             name = LMD["Burning Felguard"],
-            postfix = L["Rare"] .. ", " .. L["Summon"],
+            postfix = L["Rare"]..", "..L["Summon"],
             color = GREEN,
             defaults = { dropRate = 50 },
             loot = {
@@ -418,39 +425,39 @@ AtlasTW.InstanceData.BlackrockSpireLower = {
         },
         {
             id = "LBRSTrash",
-            name = L["Trash Mobs"] .. "-" .. LZ["Lower Blackrock Spire"],
+            name = L["Trash Mobs"].."-"..LZ["Lower Blackrock Spire"],
             defaults = { dropRate = 2 },
             loot = {
-                { id = 14513, dropRate = 10,                 container = { 14152 } },                                                       -- Pattern: Robe of the Archmage
+                { id = 14513, dropRate = 10, container = { 14152 } }, -- Pattern: Robe of the Archmage
                 {},
-                { id = 16696, disc = L["Priest"] .. ", T0",  container = { 22078 } },                                                       -- Devout Belt
-                { id = 16685, disc = L["Mage"] .. ", T0",    container = { 22062 } },                                                       -- Magister's Belt
-                { id = 16683, dropRate = 1,                  disc = L["Mage"] .. ", T0",   container = { 22063 } },                         -- Magister's Bindings
-                { id = 16703, disc = L["Warlock"] .. ", T0", container = { 22071 } },                                                       -- Dreadmist Bracers
-                { id = 16713, disc = L["Rogue"] .. ", T0",   container = { 22002 } },                                                       -- Shadowcraft Belt
-                { id = 16716, dropRate = 1,                  disc = L["Druid"] .. ", T0",  container = { 22106 } },                         -- Wildheart Belt
-                { id = 16680, dropRate = 1,                  disc = L["Hunter"] .. ", T0", container = { 22010 } },                         -- Beaststalker's Belt
-                { id = 16673, disc = L["Shaman"] .. ", T0",  container = { 22098 } },                                                       -- Cord of Elements
-                { id = 16736, disc = L["Warrior"] .. ", T0", container = { 21994 } },                                                       -- Belt of Valor
-                { id = 16735, disc = L["Warrior"] .. ", T0", container = { 21996 } },                                                       -- Bracers of Valor
+                { id = 16696, disc = L["Priest"]..", T0", container = { 22078 } }, -- Devout Belt
+                { id = 16685, disc = L["Mage"]..", T0", container = { 22062 } }, -- Magister's Belt
+                { id = 16683, dropRate = 1, disc = L["Mage"]..", T0", container = { 22063 } }, -- Magister's Bindings
+                { id = 16703, disc = L["Warlock"]..", T0", container = { 22071 } }, -- Dreadmist Bracers
+                { id = 16713, disc = L["Rogue"]..", T0", container = { 22002 } }, -- Shadowcraft Belt
+                { id = 16716, dropRate = 1, disc = L["Druid"]..", T0", container = { 22106 } }, -- Wildheart Belt
+                { id = 16680, dropRate = 1, disc = L["Hunter"]..", T0", container = { 22010 } }, -- Beaststalker's Belt
+                { id = 16673, disc = L["Shaman"]..", T0", container = { 22098 } }, -- Cord of Elements
+                { id = 16736, disc = L["Warrior"]..", T0", container = { 21994 } }, -- Belt of Valor
+                { id = 16735, disc = L["Warrior"]..", T0", container = { 21996 } }, -- Bracers of Valor
                 {},
-                { id = 9214,  disc = L["Book"],              dropRate = 5 },                                                                -- Grimoire of Inferno
+                { id = 9214, disc = L["Book"], dropRate = 5 }, -- Grimoire of Inferno
                 {},
-                { id = 70163, dropRate = 3,                  container = { 56016 } },                                                       -- Plans: Arcane Emerald Gemstone
-                { id = 56097, disc = L["Quest Item"],        dropRate = .5,                container = { 56099, 70175, 56064, 70223, 56096 } }, -- Top Half of Advanced Jewelcrafting XI: Hard as Diamonds
-                { id = 15749, dropRate = 5,                  container = { 15053 } },                                                       -- Pattern: Volcanic Breastplate
-                { id = 15775, dropRate = 23,                 container = { 15055 } },                                                       -- Pattern: Volcanic Shoulders
-                { id = 13494, container = { 13457 } },                                                                                      -- Recipe: Greater Fire Protection Potion
-                { id = 16250, dropRate = 3 },                                                                                               -- Formula: Enchant Weapon - Superior Striking
-                { id = 16244, dropRate = 10 },                                                                                              -- Formula: Enchant Gloves - Greater Strength
+                { id = 70163, dropRate = 3, container = { 56016 } }, -- Plans: Arcane Emerald Gemstone
+                { id = 56097, disc = L["Quest Item"], dropRate = .5, container = { 56099, 70175, 56064, 70223, 56096 } }, -- Top Half of Advanced Jewelcrafting XI: Hard as Diamonds
+                { id = 15749, dropRate = 5, container = { 15053 } }, -- Pattern: Volcanic Breastplate
+                { id = 15775, dropRate = 23, container = { 15055 } }, -- Pattern: Volcanic Shoulders
+                { id = 13494, container = { 13457 } }, -- Recipe: Greater Fire Protection Potion
+                { id = 16250, dropRate = 3 }, -- Formula: Enchant Weapon - Superior Striking
+                { id = 16244, dropRate = 10 }, -- Formula: Enchant Gloves - Greater Strength
                 {},
-                { id = 12219, disc = L["Quest Item"],        dropRate = 8,                 container = { 12344 } },                         -- Unadorned Seal of Ascension
-                { id = 12586, disc = L["Consumable"],        dropRate = 80 },                                                               -- Immature Venom Sac
+                { id = 12219, disc = L["Quest Item"], dropRate = 8, container = { 12344 } }, -- Unadorned Seal of Ascension
+                { id = 12586, disc = L["Consumable"], dropRate = 80 }, -- Immature Venom Sac
             }
         },
         { name = LIS["Ironweave Battlesuit"], items = "Ironweave" },
-        { name = LIS["Spider's Kiss"],        items = "SpiderKiss" },
-        { name = L["Tier 0/0.5 Sets"],        items = "AtlasTWLootT0SetMenu" },
+        { name = LIS["Spider's Kiss"], items = "SpiderKiss" },
+        { name = L["Tier 0/0.5 Sets"], items = "AtlasTWLootT0SetMenu" },
     }
 }
 
