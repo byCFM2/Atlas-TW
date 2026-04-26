@@ -3523,6 +3523,32 @@ local craftingTable = {
 		{ id = 30047,             skill = { 0, 325, 345, 365 } }, --Crystal Flake Throat Lozenge
 	},
 
+	SurvivalTable = {
+		{ name = L["Survival"],  icon = "Trade_Survival" },
+		{ id = 46064,            skill = { 1, 30, 45, 60 } }, --Dim Torch
+		{ id = 47101,            skill = { 10, 30, 45, 60 } }, --Survivalist's Skinning Knife
+		{ id = 47103,            skill = { 10, 40, 55, 70 } }, --Driftwood Fishing Pole
+		{ id = 46072,            skill = { 50, 100, 125, 150 } }, --Traveler's Tent
+		{ id = 46074,            skill = { 75, 100, 112, 125 } }, --Simple Woodern Planter
+		{ id = 46073,            skill = { 75, 125, 150, 175 } }, --Fishing Boat
+		{},
+		{ id = 46075,            skill = { 90, 90, 90, 90 } }, --Iron Lantern
+		{ id = 46068,            skill = { 100, 150, 175, 200 } }, --Cleaning Cloth
+		{ id = 46066,            skill = { 120, 150, 162, 175 } }, --Murloc's Flippers
+		{ id = 46077,            skill = { 120, 120, 135, 150 } }, --Repaired Electro-Lantern
+		{},
+		{},
+		{},
+		{ name = L["Gardening"], icon = "Trade_Survival" },
+		{ id = 51706,            quantity = { 4, 10 },          container = { { 51710, { 3, 6 } }, { 51713, { 3, 6 } } } },                                                    --Country Pumpkin Seeds, Plump Country Pumpkin
+		{},
+		{ id = 51707,            quantity = { 4, 10 },          container = { { 51711, { 3, 6 } }, { 51714, { 3, 6 } } } },                                                    --Mountain Berry Bush Seeds, Sweet Mountain Berry
+		{},
+		{ id = 51708,            quantity = { 4, 10 },          container = { { 51712, { 3, 6 } }, { 51718, { 3, 6 } } } },                                                    --Striped Melon Seeds, Juicy Watermelon, Sweet Watermelon
+		{},
+		{ id = 51716,            quantity = 20,                 disc = L["Vendor"],                                      container = { { 51717, { 2, 5 } }, { 51720, { 2, 5 } } } }, --Magic Mushroom Spores, Hardened Mushroom, Power Mushroom
+	},
+
 	SurvivalApprentice = {
 		{ id = 46064,            skill = { 1, 10, 12, 15 } },   	--Dim Torch
 		{ id = 36765,            skill = { 5, 10, 12, 15 } }, 		--Bundle of Simple Sticks

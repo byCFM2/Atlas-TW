@@ -467,16 +467,18 @@ function AtlasTWLoot_HerbalismMenu()
 end
 
 AtlasTW.MenuData.Survival = {
+    { name = LS["Survival"] .. ", " .. LS["Gardening"], lootpage = "SurvivalTable" },
+    --[[ 
     { name = LS["Survival"] .. ": " .. L["Apprentice"], lootpage = "SurvivalApprentice" },
     { name = LS["Survival"] .. ": " .. L["Journeyman"], lootpage = "SurvivalJourneyman" },
     { name = LS["Survival"] .. ": " .. L["Expert"],     lootpage = "SurvivalExpert" },
     { name = LS["Survival"] .. ": " .. L["Artisan"],    lootpage = "SurvivalArtisan" },
     {},
-    { name = LS["Survival"] .. ": " .. L["Woodcutting"],    lootpage = "SurvivalWoodcutting" },
-    {},
-    { name = LS["Gardening"], lootpage = "GardeningTable" },
-    {},
-    { name = L["Trainers"] .. ": " .. LS["Survival"],   icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "SurvivalTrainers" },
+    { name = LS["Survival"] .. ": " .. L["Woodcutting"],    lootpage = "SurvivalWoodcutting" }, ]]
+    --{},
+    --{ name = LS["Gardening"], lootpage = "GardeningTable" },
+    --{},
+    --{ name = L["Trainers"] .. ": " .. LS["Survival"],   icon = "Interface\\Icons\\INV_Misc_Book_09", lootpage = "SurvivalTrainers" },
 }
 
 ---
