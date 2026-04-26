@@ -7,7 +7,6 @@
     <Include file="Instances\Naxxramas.lua"/>
     <Include file="Instances\RuinsofAhnQiraj.lua"/>
     <Include file="Instances\TempleofAhnQiraj.lua"/>
-    <Include file="Instances\TowerofKarazhan.lua"/>
     <Include file="Instances\ZulGurub.lua"/>
     <Include file="Instances\BlackrockSpireUpper.lua"/>
     <Include file="Instances\LowerKarazhanHalls.lua"/>
@@ -36,11 +35,12 @@
     <Include file="Instances\BlackfathomDeeps.lua"/>
     <Include file="Instances\RazorfenKraul.lua"/>
     <Include file="Instances\ShadowfangKeep.lua"/>
+    <!--<Include file="Instances\TowerofKarazhan.lua"/>
     <Include file="Instances\StormwroughtRuins.lua"/>
     <Include file="Instances\DragonmawRetreat.lua"/>
     <Include file="Instances\WindhornCanyon.lua"/>
     <Include file="Instances\TimbermawHold.lua"/>
-    <Include file="Instances\FrostmaneHollow.lua"/>
+    <Include file="Instances\FrostmaneHollow.lua"/>-->
     <!-- World content data -->
     <Include file="World\Azuregos.lua"/>
     <Include file="World\FourDragons.lua"/>
@@ -50,7 +50,7 @@
     <Include file="World\Reaver.lua"/>
     <Include file="World\Concavius.lua"/>
     <Include file="World\Ostarius.lua"/>
-    <Include file="World\Clackora.lua"/>
+    <!--<Include file="World\Clackora.lua"/>-->
     <Include file="World\RareMobs.lua"/>
     <!-- Supplementary information -->
     <Include file="Info\FPAllianceEast.lua"/>
