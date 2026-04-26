@@ -45,109 +45,109 @@ local TEXTURE_MAP = {
 -- type: "dungeon", "raid", "worldboss", "zepp", "boat", "tram"
 local MapPoints = {
     -- Kalimdor Dungeons
-    { 1, 1,  0.123, 0.128, "BlackfathomDeeps",          "dungeon",   "24-32" },
-    { 1, 24, 0.66,  0.49,  "CavernsOfTimeBlackMorass",  "dungeon",   "58-60" },
-    { 1, 1,  0.51,  0.78,  "TheCrescentGrove",          "dungeon",   "32-38" },
+    { 1, 2,  0.123, 0.128, "BlackfathomDeeps",          "dungeon",   "24-32" },
+    { 1, 23, 0.66,  0.49,  "CavernsOfTimeBlackMorass",  "dungeon",   "58-60" },
+    { 1, 2,  0.51,  0.78,  "TheCrescentGrove",          "dungeon",   "32-38" },
     { 1, 12, 0.648, 0.303, "DireMaulEast",              "dungeon",   "55-58" },
     { 1, 12, 0.624, 0.249, "DireMaulNorth",             "dungeon",   "57-60" },
     { 1, 12, 0.604, 0.311, "DireMaulWest",              "dungeon",   "57-60" },
-    { 1, 7,  0.29,  0.629, "Maraudon",                  "dungeon",   "46-55" },
-    { 1, 21, 0.53,  0.486, "RagefireChasm",             "dungeon",   "13-18" },
-    { 1, 27, 0.488, 0.919, "RazorfenDowns",             "dungeon",   "37-46" },
-    { 1, 27, 0.407, 0.873, "RazorfenKraul",             "dungeon",   "29-38" },
-    { 1, 27, 0.462, 0.357, "WailingCaverns",            "dungeon",   "17-24" },
-    { 1, 28, 0.65, 0.46,   "WindhornCanyon",            "dungeon",   "26-30" },
-    { 1, 24, 0.389, 0.184, "ZulFarrak",                 "dungeon",   "44-54" },
+    { 1, 8,  0.29,  0.629, "Maraudon",                  "dungeon",   "46-55" },
+    { 1, 20, 0.53,  0.486, "RagefireChasm",             "dungeon",   "13-18" },
+    { 1, 26, 0.488, 0.919, "RazorfenDowns",             "dungeon",   "37-46" },
+    { 1, 26, 0.407, 0.873, "RazorfenKraul",             "dungeon",   "29-38" },
+    { 1, 26, 0.462, 0.357, "WailingCaverns",            "dungeon",   "17-24" },
+    --{ 1, 28, 0.65, 0.46,   "WindhornCanyon",            "dungeon",   "26-30" },
+    { 1, 23, 0.389, 0.184, "ZulFarrak",                 "dungeon",   "44-54" },
     -- Kalimdor Raids
     { 1, 15, 0.207, 0.592, "EmeraldSanctum",            "raid",      "60" },
     { 1, 10, 0.53,  0.76,  "OnyxiasLair",               "raid",      "60" },
-    { 1, 22, 0.30,  0.95,  "TheRuinsofAhnQiraj",        "raid",      "60" },
-    { 1, 22, 0.28,  0.95,  "TheTempleofAhnQiraj",       "raid",      "60" },
-    { 1, 2,  0.38,  0.33,  "TimbermawHold",             "raid",      "60" },
+    { 1, 21, 0.30,  0.95,  "TheRuinsofAhnQiraj",        "raid",      "60" },
+    { 1, 21, 0.28,  0.95,  "TheTempleofAhnQiraj",       "raid",      "60" },
+   -- { 1, 2,  0.38,  0.33,  "TimbermawHold",             "raid",      "60" },
     -- Kalimdor World Bosses
-    { 1, 2,  0.535, 0.816, "Azuregos",                  "worldboss", "60" },
-    { 1, 2,  0.69,  0.094, "Clackora",                  "worldboss", "60" },
-    { 1, 7,  0.82,  0.80,  "Concavius",                 "worldboss", "60" },
-    { 1, 24, 0.361, 0.762, "Ostarius",                  "worldboss", "60" },
-    { 1, 1,  0.937, 0.355, "FourDragons",               "worldboss", "60" .. " (" .. LB["Ysondre"] .. ")" }, -- Emerald Dragon - Ysondre
+    { 1, 3,  0.535, 0.816, "Azuregos",                  "worldboss", "60" },
+    --{ 1, 2,  0.69,  0.094, "Clackora",                  "worldboss", "60" },
+    { 1, 8,  0.82,  0.80,  "Concavius",                 "worldboss", "60" },
+    { 1, 23, 0.361, 0.762, "Ostarius",                  "worldboss", "60" },
+    { 1, 2,  0.937, 0.355, "FourDragons",               "worldboss", "60" .. " (" .. LB["Ysondre"] .. ")" }, -- Emerald Dragon - Ysondre
     { 1, 12, 0.512, 0.108, "FourDragons",               "worldboss", "60" .. " (" .. LB["Taerar"] .. ")" },  -- Emerald Dragon - Taerar
     -- Kalimdor Transport
     { 1, 9,  0.51,  0.145, "TransportRoutes",           "zepp",      LZ["Undercity"] },                      -- Zeppelins to UC
     { 1, 9,  0.51,  0.115, "TransportRoutes",           "zepp",      LMD["Grom'Gol"] },                      -- Zeppelins to Grom'Gol
     { 1, 9,  0.41,  0.195, "TransportRoutes",           "zepp",      LZ["Thunder Bluff"] },                  -- Zeppelins to TB
     { 1, 9,  0.41,  0.165, "TransportRoutes",           "zepp",      LMD["Kargath"] },                       -- Zeppelins to Kargath
-    { 1, 29, 0.165, 0.230, "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                      -- Zeppelin to Orgrimmar
+    { 1, 28, 0.165, 0.230, "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                      -- Zeppelin to Orgrimmar
     { 1, 9,  0.598, 0.236, "TransportRoutes",           "boat",      LMD["Revantusk Village"] },             -- Boat to Revantusk Village
-    { 1, 27, 0.636, 0.389, "TransportRoutes",           "boat",      LZ["Booty Bay"] },                      -- Boat to Booty Bay
-    { 1, 5,  0.324, 0.44,  "TransportRoutes",           "boat",      LF["Stormwind"] },                      -- Boat to Stormwind
-    { 1, 5,  0.304, 0.41,  "TransportRoutes",           "boat",      LMD["Alah'Thalas"] },                   -- Boat to Alah'Thalas
-    { 1, 5,  0.333, 0.399, "TransportRoutes",           "boat",      LMD["Rut'Theran Village"] },            -- Boat to Rut'Theran Village
+    { 1, 26, 0.636, 0.389, "TransportRoutes",           "boat",      LZ["Booty Bay"] },                      -- Boat to Booty Bay
+    { 1, 6,  0.324, 0.44,  "TransportRoutes",           "boat",      LF["Stormwind"] },                      -- Boat to Stormwind
+    { 1, 6,  0.304, 0.41,  "TransportRoutes",           "boat",      LMD["Alah'Thalas"] },                   -- Boat to Alah'Thalas
+    { 1, 6,  0.333, 0.399, "TransportRoutes",           "boat",      LMD["Rut'Theran Village"] },            -- Boat to Rut'Theran Village
     { 1, 10, 0.718, 0.566, "TransportRoutes",           "boat",      LZ["Menethil Harbor"] },                -- Boat to Menethil Harbor
-    { 1, 26, 0.552, 0.949, "TransportRoutes",           "boat",      LZ["Auberdine"] },                      -- Boat to Auberdine
-    { 1, 7,  .22,   .74,   "TransportRoutes",           "boat",      LZ["Moonhoof Village"] },               -- Boat to Moonhoof Village
-    { 1, 19,  .69,   .39,  "TransportRoutes",           "boat",      LZ["Shadowprey Village"] },             -- Boat to Shadowprey Village
+    { 1, 25, 0.552, 0.949, "TransportRoutes",           "boat",      LZ["Auberdine"] },                      -- Boat to Auberdine
+   -- { 1, 8,  .22,   .74,   "TransportRoutes",           "boat",      LZ["Moonhoof Village"] },               -- Boat to Moonhoof Village
+   -- { 1, 19,  .69,   .39,  "TransportRoutes",           "boat",      LZ["Shadowprey Village"] },             -- Boat to Shadowprey Village
     -- Eastern Kingdoms Dungeons
-    { 2, 26, 0.375, 0.83,  "BlackrockDepths",           "dungeon",   "52-60" },
-    { 2, 8,  0.33,  0.3,   "BlackrockDepths",           "dungeon",   "52-60" },
-    { 2, 38, 0.423, 0.726, "TheDeadmines",              "dungeon",   "17-24" },
-    { 2, 15, 0.30,  0.27,  "GilneasCity",               "dungeon",   "43-49" },
-    { 2, 10, 0.23,  0.38,  "Gnomeregan",                "dungeon",   "29-38" },
-    { 2, 10, 0.66,  0.4,   "FrostmaneHollow",           "dungeon",   "13-20" },
-    { 2, 8,  0.95,  0.53,  "HateforgeQuarry",           "dungeon",   "52-60" },
-    { 2, 9,  0.45,  0.75,  "KarazhanCrypt",             "dungeon",   "58-60" },
-    { 2, 8,  0.3,   0.3,   "BlackrockSpireLower",       "dungeon",   "55-60" },
-    { 2, 26, 0.364, 0.879, "BlackrockSpireLower",       "dungeon",   "55-60" },
-    { 2, 34, 0.85,  0.29,  "ScarletMonasteryGraveyard", "dungeon",   "26-36" },
-    { 2, 34, 0.87,  0.295, "ScarletMonasteryCathedral", "dungeon",   "35-45" },
-    { 2, 34, 0.87,  0.33,  "ScarletMonasteryArmory",    "dungeon",   "32-42" },
-    { 2, 34, 0.85,  0.34,  "ScarletMonasteryLibrary",   "dungeon",   "29-39" },
-    { 2, 37, 0.69,  0.74,  "Scholomance",               "dungeon",   "58-60" },
-    { 2, 27, 0.44,  0.67,  "ShadowfangKeep",            "dungeon",   "22-30" },
-    { 2, 28, 0.51,  0.675, "TheStockade",               "dungeon",   "24-31" },
-    { 2, 28, 0.63,  0.58,  "StormwindVault",            "dungeon",   "60" },
-    { 2, 13, 0.29,  0.61,  "StormwindVault",            "dungeon",   "60" },                                  -- Horde Entrance
-    { 2, 12, 0.31,  0.14,  "Stratholme",                "dungeon",   "58-60" },
-    { 2, 12, 0.47,  0.24,  "Stratholme",                "dungeon",   "58-60" .. " (" .. LMD["Back"] .. ")" }, -- Back Gate
-    { 2, 30, 0.701, 0.55,  "TheSunkenTemple",           "dungeon",   "50-60" },
+    { 2, 20, 0.375, 0.83,  "BlackrockDepths",           "dungeon",   "52-60" },
+    { 2, 6,  0.33,  0.3,   "BlackrockDepths",           "dungeon",   "52-60" },
+    { 2, 30, 0.423, 0.726, "TheDeadmines",              "dungeon",   "17-24" },
+    { 2, 13, 0.30,  0.27,  "GilneasCity",               "dungeon",   "43-49" },
+    { 2, 8, 0.23,  0.38,  "Gnomeregan",                "dungeon",   "29-38" },
+    --{ 2, 8, 0.66,  0.4,   "FrostmaneHollow",           "dungeon",   "13-20" },
+    { 2, 6,  0.95,  0.53,  "HateforgeQuarry",           "dungeon",   "52-60" },
+    { 2, 7,  0.45,  0.75,  "KarazhanCrypt",             "dungeon",   "58-60" },
+    { 2, 6,  0.3,   0.3,   "BlackrockSpireLower",       "dungeon",   "55-60" },
+    { 2, 20, 0.364, 0.879, "BlackrockSpireLower",       "dungeon",   "55-60" },
+    { 2, 27, 0.85,  0.29,  "ScarletMonasteryGraveyard", "dungeon",   "26-36" },
+    { 2, 27, 0.87,  0.295, "ScarletMonasteryCathedral", "dungeon",   "35-45" },
+    { 2, 27, 0.87,  0.33,  "ScarletMonasteryArmory",    "dungeon",   "32-42" },
+    { 2, 27, 0.85,  0.34,  "ScarletMonasteryLibrary",   "dungeon",   "29-39" },
+    { 2, 29, 0.69,  0.74,  "Scholomance",               "dungeon",   "58-60" },
+    { 2, 21, 0.44,  0.67,  "ShadowfangKeep",            "dungeon",   "22-30" },
+    { 2, 22, 0.51,  0.675, "TheStockade",               "dungeon",   "24-31" },
+    { 2, 22, 0.63,  0.58,  "StormwindVault",            "dungeon",   "60" },
+    { 2, 11, 0.29,  0.61,  "StormwindVault",            "dungeon",   "60" },                                  -- Horde Entrance
+    { 2, 10, 0.31,  0.14,  "Stratholme",                "dungeon",   "58-60" },
+    { 2, 10, 0.47,  0.24,  "Stratholme",                "dungeon",   "58-60" .. " (" .. LMD["Back"] .. ")" }, -- Back Gate
+    { 2, 24, 0.701, 0.55,  "TheSunkenTemple",           "dungeon",   "50-60" },
     { 2, 4,  0.429, 0.130, "Uldaman",                   "dungeon",   "41-51" },
     { 2, 4,  0.657, 0.438, "Uldaman",                   "dungeon",   "41-51" .. " (" .. LMD["Back"] .. ")" }, -- Back Entrance
-    { 2, 8,  0.32,  0.37,  "BlackrockSpireUpper",       "dungeon",   "55-60" },
-    { 2, 26, 0.39,  0.87,  "BlackrockSpireUpper",       "dungeon",   "55-60" },
-    { 2, 39, 0.67,  0.634, "DragonmawRetreat",          "dungeon",   "27-33" },
-    { 2, 5,  0.57,  0.598, "StormwroughtRuins",         "dungeon",   "35-41" },
-    { 2, 5,  0.561, 0.846, "StormwroughtRuins",         "dungeon",   "35-41" .. " (" .. LMD["Back"] .. ")" }, -- Back Entrance
+    { 2, 6,  0.32,  0.37,  "BlackrockSpireUpper",       "dungeon",   "55-60" },
+    { 2, 20, 0.39,  0.87,  "BlackrockSpireUpper",       "dungeon",   "55-60" },
+    --{ 2, 31, 0.67,  0.634, "DragonmawRetreat",          "dungeon",   "27-33" },
+    --{ 2, 5,  0.57,  0.598, "StormwroughtRuins",         "dungeon",   "35-41" },
+    --{ 2, 5,  0.561, 0.846, "StormwroughtRuins",         "dungeon",   "35-41" .. " (" .. LMD["Back"] .. ")" }, -- Back Entrance
     -- Eastern Kingdoms Raids
-    { 2, 26, 0.33,  0.83,  "BlackwingLair",             "raid",      "60" },
-    { 2, 8,  0.27,  0.3,   "BlackwingLair",             "raid",      "60" },
-    { 2, 9,  0.46,  0.70,  "LowerKarazhan",             "raid",      "58-60" },
-    { 2, 26, 0.336, 0.879, "MoltenCore",                "raid",      "60" },
-    { 2, 8,  0.275, 0.37,  "MoltenCore",                "raid",      "60" },
-    { 2, 12, 0.40,  0.28,  "Naxxramas",                 "raid",      "60" },
-    { 2, 9,  0.442, 0.719, "TowerofKarazhan",           "raid",      "60" },
-    { 2, 29, 0.53,  0.172, "ZulGurub",                  "raid",      "60" },
+    { 2, 20, 0.33,  0.83,  "BlackwingLair",             "raid",      "60" },
+    { 2, 6,  0.27,  0.3,   "BlackwingLair",             "raid",      "60" },
+    { 2, 7,  0.46,  0.70,  "LowerKarazhan",             "raid",      "58-60" },
+    { 2, 20, 0.336, 0.879, "MoltenCore",                "raid",      "60" },
+    { 2, 6,  0.275, 0.37,  "MoltenCore",                "raid",      "60" },
+    { 2, 10, 0.40,  0.28,  "Naxxramas",                 "raid",      "60" },
+    --{ 2, 7,  0.442, 0.719, "TowerofKarazhan",           "raid",      "60" },
+    { 2, 23, 0.53,  0.172, "ZulGurub",                  "raid",      "60" },
     -- Eastern Kingdoms World Bosses
-    { 2, 9,  0.471, 0.751, "Reaver",                    "worldboss", "60" },
-    { 2, 11, 0.465, 0.357, "FourDragons",               "worldboss", "60" .. " (" .. LB["Lethon"] .. ")" },  -- Emerald Dragon - Lethon
-    { 2, 33, 0.632, 0.217, "FourDragons",               "worldboss", "60" .. " (" .. LB["Emeriss"] .. ")" }, -- Emerald Dragon - Emeriss
-    { 2, 7,  0.36,  0.753, "LordKazzak",                "worldboss", "60" },
-    { 2, 12, 0.082, 0.38,  "Nerubian",                  "worldboss", "60" },
+    { 2, 7,  0.471, 0.751, "Reaver",                    "worldboss", "60" },
+    { 2, 9, 0.465, 0.357, "FourDragons",               "worldboss", "60" .. " (" .. LB["Lethon"] .. ")" },  -- Emerald Dragon - Lethon
+    { 2, 26, 0.632, 0.217, "FourDragons",               "worldboss", "60" .. " (" .. LB["Emeriss"] .. ")" }, -- Emerald Dragon - Emeriss
+    { 2, 5,  0.36,  0.753, "LordKazzak",                "worldboss", "60" },
+    { 2, 10, 0.082, 0.38,  "Nerubian",                  "worldboss", "60" },
     -- Eastern Kingdoms Transport
-    { 2, 28, 0.694, 0.294, "TransportRoutes",           "tram",      LZ["Ironforge"] },                                                         -- Tram to Ironforge
-    { 2, 19, 0.762, 0.511, "TransportRoutes",           "tram",      LZ["Stormwind"] },                                                         -- Tram to Stormwind
-    { 2, 33, 0.812, 0.794, "TransportRoutes",           "boat",      LMD["Sparkwater Port"] },                                                  -- Boat to Sparkwater Port
-    { 2, 39, 0.068, 0.613, "TransportRoutes",           "boat",      LZ["Theramore Isle"] },                                                    -- Boat to Theramore Isle
-    { 2, 28, 0.218, 0.563, "TransportRoutes",           "boat",      LZ["Auberdine"] },                                                         -- Boat to Auberdine
-    { 2, 28, 0.22, 0.413,  "TransportRoutes",           "boat",      LMD["SI:7 Outpost"] },                                                     -- Fly to SI:7 Outpost
-    { 2, 29, 0.257, 0.73,  "TransportRoutes",           "boat",      LZ["Ratchet"] },                                                           -- Boat to Ratchet
-    { 2, 34, 0.61,  0.58,  "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                                                         -- Zeppelins to Orgrimmar
-    { 2, 34, 0.63,  0.58,  "TransportRoutes",           "zepp",      LZ["Grom'Gol"] },                                                          -- Zeppelins to Grom'Gol
-    { 2, 29, 0.31,  0.265, "TransportRoutes",           "zepp",      LZ["Undercity"] },                                                         -- Zeppelins to UC
-    { 2, 29, 0.31,  0.29,  "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                                                         -- Zeppelins to Orgrimmar
+    { 2, 22, 0.694, 0.294, "TransportRoutes",           "tram",      LZ["Ironforge"] },                                                         -- Tram to Ironforge
+    { 2, 15, 0.762, 0.511, "TransportRoutes",           "tram",      LZ["Stormwind"] },                                                         -- Tram to Stormwind
+    { 2, 26, 0.812, 0.794, "TransportRoutes",           "boat",      LMD["Sparkwater Port"] },                                                  -- Boat to Sparkwater Port
+    { 2, 31, 0.068, 0.613, "TransportRoutes",           "boat",      LZ["Theramore Isle"] },                                                    -- Boat to Theramore Isle
+    { 2, 22, 0.218, 0.563, "TransportRoutes",           "boat",      LZ["Auberdine"] },                                                         -- Boat to Auberdine
+    --{ 2, 22, 0.22, 0.413,  "TransportRoutes",           "boat",      LMD["SI:7 Outpost"] },                                                     -- Fly to SI:7 Outpost
+    { 2, 23, 0.257, 0.73,  "TransportRoutes",           "boat",      LZ["Ratchet"] },                                                           -- Boat to Ratchet
+    { 2, 27, 0.61,  0.58,  "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                                                         -- Zeppelins to Orgrimmar
+    { 2, 27, 0.63,  0.58,  "TransportRoutes",           "zepp",      LZ["Grom'Gol"] },                                                          -- Zeppelins to Grom'Gol
+    { 2, 23, 0.31,  0.265, "TransportRoutes",           "zepp",      LZ["Undercity"] },                                                         -- Zeppelins to UC
+    { 2, 23, 0.31,  0.29,  "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                                                         -- Zeppelins to Orgrimmar
     { 2, 4,  0.075, 0.480, "TransportRoutes",           "zepp",      LZ["Orgrimmar"] },                                                         -- Zeppelin to Orgrimmar
     { 2, 1,  0.531, 0.047, "TransportRoutes",           "boat",      LZ["Auberdine"] },                                                         -- Boat to Auberdine
     -- PVP Entrances
-    { 1, 1,  0.61,  0.83,  "BGWarsongGulch",            "dungeon",   "1-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Alliance"] },  -- Warsong Gulch (Alliance)
-    { 1, 27, 0.47,  0.08,  "BGWarsongGulch",            "dungeon",   "1-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Horde"] },     -- Warsong Gulch (Horde)
+    { 1, 2,  0.61,  0.83,  "BGWarsongGulch",            "dungeon",   "1-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Alliance"] },  -- Warsong Gulch (Alliance)
+    { 1, 26, 0.47,  0.08,  "BGWarsongGulch",            "dungeon",   "1-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Horde"] },     -- Warsong Gulch (Horde)
     { 2, 3,  0.45,  0.46,  "BGArathiBasin",             "dungeon",   "20-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Alliance"] }, -- Arathi Basin (Alliance)
     { 2, 3,  0.73,  0.29,  "BGArathiBasin",             "dungeon",   "20-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Horde"] },    -- Arathi Basin (Horde)
     { 2, 2,  0.39,  0.81,  "BGAlteracValleyNorth",      "dungeon",   "51-60" .. " (" .. L["Battlegrounds"] .. ")" .. " - " .. LF["Alliance"] }, -- Alterac Valley (Alliance)
