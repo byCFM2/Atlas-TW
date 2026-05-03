@@ -321,7 +321,7 @@ tsEventFrame:SetScript("OnEvent", function()
     if event == "TRADE_SKILL_SHOW" then
         EnsureSingleProfessionFrame(event)
     end
-
+    
     -- Only scan if the frame is truly visible and not in combat/shapeshift spam
     if TradeSkillFrame and TradeSkillFrame:IsVisible() then
         -- Throttle BAG_UPDATE to avoid spamming during rapid events (like Druid shapeshift)
@@ -392,7 +392,15 @@ function AtlasTW.ProfessionHooks.OnTradeSkillUpdate()
     if IsAddOnLoaded("pfUI") then
         tradeSkillLevelToggle:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 0, 0)
     else
-        tradeSkillLevelToggle:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 65, -15)
+        local improvesSkillAnchor = _G["TradeSkillFrameExpandableFilterCheckButtonText"] or
+            _G["TradeSkillFrameExpandableFilterCheckButton"] or
+            _G["TradeSkillFrameAvailableFilterCheckButtonText"] or
+            _G["TradeSkillFrameAvailableFilterCheckButton"]
+        if improvesSkillAnchor then
+            tradeSkillLevelToggle:SetPoint("LEFT", improvesSkillAnchor, "RIGHT", 8, 0)
+        else
+            tradeSkillLevelToggle:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 250, -55)
+        end
     end
     tradeSkillLevelToggle:SetChecked(AtlasTWOptions.TradeSkillShowLevels and 1 or nil)
     tradeSkillLevelToggle:Show()
@@ -624,7 +632,7 @@ craftEventFrame:SetScript("OnEvent", function()
     if event == "CRAFT_SHOW" then
         EnsureSingleProfessionFrame(event)
     end
-
+    
     -- Only scan if the frame is truly visible and not in combat/shapeshift spam
     if CraftFrame and CraftFrame:IsVisible() then
         -- Throttle BAG_UPDATE to avoid spamming during rapid events (like Druid shapeshift)
@@ -796,342 +804,6 @@ function AtlasTW.ProfessionHooks.HookReagentButtons(prefix)
     end
 end
 
--- --- TradeSkill Filter System ---
-AtlasTW.ProfessionHooks.TradeSkillFilter = {
-    SearchText = "",
-    HaveMaterials = false,
-    ImprovesSkill = false,
-    ShowSkillLevels = true,
-    List = {}
-}
-
-local TSF = AtlasTW.ProfessionHooks.TradeSkillFilter
-
-function TSF.BuildList()
-    TSF.List = {}
-    local numNative = GetNumTradeSkills()
-    if numNative == 0 then return end
-
-    local searchText = TSF.SearchText or ""
-    local hasMaterials = TSF.HaveMaterials
-    local improvesSkill = TSF.ImprovesSkill
-
-    for i = 1, numNative do
-        local skillName, skillType, numAvailable, isExpanded = GetTradeSkillInfo(i)
-        if skillType == "header" then
-            table.insert(TSF.List, { isHeader = true, name = skillName, expanded = isExpanded, index = i })
-        else
-            local keep = true
-            if hasMaterials and numAvailable <= 0 then keep = false end
-            if improvesSkill and (skillType == "trivial" or skillType == "used" or skillType == "none") then keep = false end
-            if searchText ~= "" and not string.find(string.lower(skillName or ""), searchText, 1, true) then keep = false end
-
-            if keep then
-                table.insert(TSF.List,
-                    { isHeader = false, index = i, name = skillName, type = skillType, num = numAvailable })
-            end
-        end
-    end
-end
-
-function TSF.InitUI()
-    if TSF.UIReady then return end
-    TSF.UIReady = true
-
-    local function ResetScroll()
-        if TradeSkillListScrollFrameScrollBar then
-            TradeSkillListScrollFrameScrollBar:SetValue(0)
-        end
-        TSF.ScrollValue = 0
-    end
-
-    -- Search Box
-    local searchBox = _G["AtlasTWTradeSkillSearchBox"]
-    if not searchBox then
-        searchBox = CreateFrame("EditBox", "AtlasTWTradeSkillSearchBox", TradeSkillFrame)
-        searchBox:SetHeight(20)
-        searchBox:SetAutoFocus(false)
-        searchBox:SetFontObject("ChatFontNormal")
-        searchBox:SetTextInsets(26, 20, 0, 0)
-        searchBox:SetBackdrop({
-            bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
-            edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-            tile = true,
-            tileSize = 16,
-            edgeSize = 16,
-            insets = { left = 3, right = 3, top = 3, bottom = 3 }
-        })
-        searchBox:SetBackdropColor(0, 0, 0, 0.8)
-        searchBox:SetBackdropBorderColor(0.4, 0.4, 0.4)
-
-        if IsAddOnLoaded("pfUI") then
-            searchBox:SetPoint("TOP", TradeSkillFrame, "BOTTOM", 0, -8)
-            searchBox:SetWidth(330)
-            if AtlasTW.pfUI and AtlasTW.pfUI.SkinEditBox then
-                AtlasTW.pfUI.SkinEditBox(searchBox)
-            end
-        else
-            searchBox:SetWidth(170)
-            searchBox:SetPoint("BOTTOMLEFT", TradeSkillFrame, 16, 50)
-        end
-
-        searchBox:SetFrameLevel(TradeSkillFrame:GetFrameLevel() + 5)
-
-        local searchIcon = searchBox:CreateTexture(nil, "OVERLAY")
-        searchIcon:SetTexture("Interface\\Common\\UI-Searchbox-Icon")
-        searchIcon:SetWidth(14)
-        searchIcon:SetHeight(14)
-        searchIcon:SetPoint("LEFT", searchBox, "LEFT", 8, -1)
-        searchIcon:SetVertexColor(0.6, 0.6, 0.6)
-        searchBox.searchIcon = searchIcon
-
-        local placeholder = searchBox:CreateFontString(nil, "OVERLAY", "GameFontDisableSmall")
-        placeholder:SetPoint("LEFT", searchIcon, "RIGHT", 4, 0)
-        placeholder:SetText(L["Search"])
-        placeholder:SetTextColor(0.6, 0.6, 0.6)
-        searchBox.placeholder = placeholder
-
-        local clearBtn = CreateFrame("Button", nil, searchBox)
-        clearBtn:SetWidth(16)
-        clearBtn:SetHeight(16)
-        clearBtn:SetPoint("RIGHT", searchBox, "RIGHT", -6, 0)
-        clearBtn:SetFrameLevel(searchBox:GetFrameLevel() + 5)
-        local clearX = clearBtn:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-        clearX:SetText("x")
-        clearX:SetPoint("CENTER", 0, 0)
-        clearX:SetTextColor(1, 0.1, 0.1)
-        clearBtn.text = clearX
-        clearBtn:SetScript("OnClick", function()
-            AtlasTWTradeSkillSearchBox:SetText("")
-            AtlasTWTradeSkillSearchBox:ClearFocus()
-        end)
-        searchBox.clearBtn = clearBtn
-
-        searchBox:SetScript("OnTextChanged", function()
-            local text = this:GetText()
-            TSF.SearchText = string.lower(text)
-            if text ~= "" then
-                this.placeholder:Hide()
-                this.clearBtn:Show()
-            else
-                if not this._hasFocus then this.placeholder:Show() end
-                this.clearBtn:Hide()
-            end
-            ResetScroll()
-            TradeSkillFrame_Update()
-        end)
-        searchBox:SetScript("OnEditFocusGained", function()
-            this._hasFocus = true
-            this.placeholder:Hide()
-            this.searchIcon:SetVertexColor(1, 1, 1)
-        end)
-        searchBox:SetScript("OnEditFocusLost", function()
-            this._hasFocus = false
-            if this:GetText() == "" then this.placeholder:Show() end
-            this.searchIcon:SetVertexColor(0.6, 0.6, 0.6)
-        end)
-        searchBox:SetScript("OnEnterPressed", function() this:ClearFocus() end)
-        searchBox:SetScript("OnEscapePressed", function() this:ClearFocus() end)
-    end
-
-    -- Have Materials Checkbox
-    local matCheck = _G["AtlasTWTradeSkillHaveMaterials"]
-    if not matCheck then
-        matCheck = CreateFrame("CheckButton", "AtlasTWTradeSkillHaveMaterials", TradeSkillFrame, "UICheckButtonTemplate")
-        matCheck:SetWidth(20)
-        matCheck:SetHeight(20)
-
-        if IsAddOnLoaded("pfUI") then
-            matCheck:SetPoint("TOPLEFT", TradeSkillFrame, 90, 0)
-        else
-            matCheck:SetPoint("TOPLEFT", TradeSkillFrame, "TOPLEFT", 75, -50)
-        end
-
-        matCheck:SetScript("OnClick", function()
-            TSF.HaveMaterials = (this:GetChecked() == 1)
-            ResetScroll()
-            TradeSkillFrame_Update()
-        end)
-        local matLabel = _G["AtlasTWTradeSkillHaveMaterialsText"]
-        matLabel:SetText("1+")
-        matLabel:SetFontObject("GameFontHighlightSmall")
-    end
-
-    -- Improves Skill Checkbox
-    local skillCheck = _G["AtlasTWTradeSkillImprovesSkill"]
-    if not skillCheck then
-        skillCheck = CreateFrame("CheckButton", "AtlasTWTradeSkillImprovesSkill", TradeSkillFrame,
-            "UICheckButtonTemplate")
-        skillCheck:SetWidth(20)
-        skillCheck:SetHeight(20)
-        skillCheck:SetPoint("LEFT", _G["AtlasTWTradeSkillHaveMaterialsText"], "RIGHT", 5, 0)
-        skillCheck:SetScript("OnClick", function()
-            TSF.ImprovesSkill = (this:GetChecked() == 1)
-            ResetScroll()
-            TradeSkillFrame_Update()
-        end)
-        local skillLabel = _G["AtlasTWTradeSkillImprovesSkillText"]
-        skillLabel:SetText("^^^")
-        skillLabel:SetFontObject("GameFontHighlightSmall")
-    end
-end
-
-function TSF.HookTradeSkillFrameUpdate()
-    if AtlasTW.TradeSkillFilter_Hooked then return end
-    AtlasTW.TradeSkillFilter_Hooked = true
-
-    local scrollBar = _G["TradeSkillListScrollFrameScrollBar"]
-    if not TSF.ScrollHandlersHooked then
-        TSF.ScrollHandlersHooked = true
-        local origOnVerticalScroll = TradeSkillListScrollFrame:GetScript("OnVerticalScroll")
-        TradeSkillListScrollFrame:SetScript("OnVerticalScroll", function()
-            if arg1 then TSF.ScrollValue = arg1 end
-            if origOnVerticalScroll then origOnVerticalScroll() end
-        end)
-        if scrollBar then
-            local origOnValueChanged = scrollBar:GetScript("OnValueChanged")
-            scrollBar:SetScript("OnValueChanged", function()
-                TSF.ScrollValue = this:GetValue() or TSF.ScrollValue or 0
-                if origOnValueChanged then origOnValueChanged() end
-            end)
-        end
-    end
-
-    local orig_TradeSkillFrame_Update = TradeSkillFrame_Update
-    function TradeSkillFrame_Update()
-        if AtlasTW.ProfessionHooks._updatingTS then return end
-        if not AtlasTWOptions or not AtlasTWOptions.ProfessionInfo then
-            orig_TradeSkillFrame_Update()
-            return
-        end
-
-        AtlasTW.ProfessionHooks._updatingTS = true
-        TSF.InitUI()
-        TSF.BuildList()
-
-        orig_TradeSkillFrame_Update()
-
-        -- Start async scan if not already running or profession changed
-        local currentLine = GetTradeSkillLine()
-        if not AtlasTW.ProfessionHooks.TSScanActive and (AtlasTW.ProfessionHooks.TSScanIndex == 0 or currentLine ~= AtlasTW.ProfessionHooks.TSScanLine) then
-            AtlasTW.ProfessionHooks.StartTSScan()
-        end
-
-        -- Update Side Panel and Styling
-        if TradeSkillFrame:IsVisible() then
-            AtlasTW.ProfessionHooks.UpdateSideTabs(TradeSkillFrame)
-            if AtlasTW.pfUI and AtlasTW.pfUI.StyleProfessionFrames then
-                AtlasTW.pfUI.StyleProfessionFrames()
-            end
-        end
-
-        if not TradeSkillFrame:IsVisible() then
-            AtlasTW.ProfessionHooks._updatingTS = nil
-            return
-        end
-
-        local numItems = table.getn(TSF.List)
-        local numDisplayed = TRADE_SKILLS_DISPLAYED
-        while _G["TradeSkillSkill" .. (numDisplayed + 1)] do numDisplayed = numDisplayed + 1 end
-
-        local rowHeight = TRADE_SKILL_HEIGHT or 16
-        FauxScrollFrame_Update(TradeSkillListScrollFrame, numItems, numDisplayed, rowHeight)
-
-        local tsOffset = FauxScrollFrame_GetOffset(TradeSkillListScrollFrame)
-        local selectionIndex = GetTradeSkillSelectionIndex()
-
-        if TradeSkillHighlightFrame then TradeSkillHighlightFrame:Hide() end
-
-        for i = 1, numDisplayed do
-            local itemIndex = i + tsOffset
-            local skillButton = _G["TradeSkillSkill" .. i]
-            local skillText = _G["TradeSkillSkill" .. i .. "Text"]
-
-            if not skillButton.atlasIcon then
-                skillButton.atlasIcon = skillButton:CreateTexture(nil, "ARTWORK")
-                skillButton.atlasIcon:SetWidth(12)
-                skillButton.atlasIcon:SetHeight(12)
-            end
-            local icon = skillButton.atlasIcon
-            icon:Hide()
-
-            -- Set button width like in CraftFrame
-            if TradeSkillListScrollFrame:IsVisible() then
-                skillButton:SetWidth(293)
-                skillText:SetWidth(290)
-            else
-                skillButton:SetWidth(323)
-                skillText:SetWidth(320)
-            end
-
-            if itemIndex <= numItems then
-                local data = TSF.List[itemIndex]
-                if data.isHeader then
-                    skillButton:SetID(0)
-                    skillButton.isHeader = true
-                    skillButton:SetNormalTexture("Interface\\Buttons\\UI-MinusButton-Up")
-                    if not data.expanded then
-                        skillButton:SetNormalTexture("Interface\\Buttons\\UI-PlusButton-Up")
-                    end
-                    skillText:SetText(data.name)
-                    skillText:ClearAllPoints()
-                    skillText:SetPoint("LEFT", skillButton, "LEFT", 18, 0)
-                    skillText:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
-                    skillButton:Show()
-                else
-                    skillButton:SetID(data.index)
-                    skillButton.isHeader = false
-                    skillButton:SetNormalTexture("")
-
-                    local _, _, _, numAvailable = GetTradeSkillInfo(data.index)
-                    local customAvailable = AtlasTW.ProfessionHooks.TSAvailCache[data.index]
-                    local realAvailable = AtlasTW.ProfessionHooks.TSRealCache[data.index] or numAvailable or 0
-                    if not customAvailable then customAvailable = realAvailable end
-
-                    local countText = ""
-                    if customAvailable > realAvailable then
-                        countText = "[" .. customAvailable .. "/" .. realAvailable .. "] "
-                    elseif realAvailable > 0 then
-                        countText = "[" .. realAvailable .. "] "
-                    end
-
-                    local nameText = data.name
-                    local levels = AtlasTW.DataIndex and AtlasTW.DataIndex.GetSkillLevels(data.name)
-                    if AtlasTWOptions.TradeSkillShowLevels and levels and levels ~= "" then
-                        nameText = nameText .. " " .. levels
-                    end
-
-                    local texture = GetTradeSkillIcon(data.index)
-                    if texture then
-                        skillText:SetText(countText .. nameText)
-                        icon:SetTexture(texture)
-                        icon:ClearAllPoints()
-                        icon:SetPoint("RIGHT", skillButton, "RIGHT", -2, 0)
-                        icon:Show()
-                    else
-                        skillText:SetText(countText .. nameText)
-                    end
-
-                    skillText:ClearAllPoints()
-                    skillText:SetPoint("LEFT", skillButton, "LEFT", 0, 0)
-
-                    local color = TradeSkillTypeColor[data.type] or { r = 1, g = 1, b = 1 }
-                    skillText:SetTextColor(color.r, color.g, color.b)
-
-                    if selectionIndex == data.index then
-                        TradeSkillHighlightFrame:SetPoint("TOPLEFT", skillButton, "TOPLEFT")
-                        TradeSkillHighlightFrame:Show()
-                    end
-                    skillButton:Show()
-                end
-            else
-                skillButton:Hide()
-            end
-        end
-        AtlasTW.ProfessionHooks._updatingTS = nil
-    end
-end
-
 -- --- Craft Filter System ---
 AtlasTW.ProfessionHooks.CraftFilter = {
     SearchText = "",
@@ -1186,10 +858,18 @@ function CF.BuildList()
     local numNative = GetNumCrafts()
     if numNative == 0 then return end
 
-    -- Use custom filters
-    local searchText = CF.SearchText or ""
-    local hasMaterials = CF.HaveMaterials
-    local improvesSkill = CF.ImprovesSkill
+    -- Read native search text for auto-expansion
+    local searchBox = _G["CraftFrameSearchBox"] or _G["CraftFrameEditBox"]
+    local searchText = searchBox and searchBox:GetText() or ""
+    searchText = string.lower(searchText)
+
+    -- Detect standard filters
+    local hasMaterials = false
+    local improvesSkill = false
+    local matCheck = _G["CraftFrameAvailableFilterCheckButton"] or _G["CraftMatsCheckButton"] or _G["CraftFrameMatsCheckButton"]
+    local skillCheck = _G["CraftSkillCheckButton"] or _G["CraftFrameSkillCheckButton"]
+    if matCheck and matCheck:GetChecked() then hasMaterials = true end
+    if skillCheck and skillCheck:GetChecked() then improvesSkill = true end
 
     -- If categories are ON, we need to expand all native headers to see all items
     if CF.UseCategories then
@@ -1286,8 +966,7 @@ function CF.BuildList()
         for i = 1, numNative do
             local craftName, _, craftType, numAvailable, isExpanded = GetCraftInfo(i)
             if craftType == "header" then
-                table.insert(CF.List,
-                    { isHeader = true, name = craftName, expanded = isExpanded, isNativeHeader = true, index = i })
+                table.insert(CF.List, { isHeader = true, name = craftName, expanded = isExpanded, isNativeHeader = true, index = i })
             else
                 local keep = true
                 if hasMaterials and numAvailable <= 0 then keep = false end
@@ -1295,8 +974,7 @@ function CF.BuildList()
                 if searchText ~= "" and not string.find(string.lower(craftName), searchText, 1, true) then keep = false end
 
                 if keep then
-                    table.insert(CF.List,
-                        { isHeader = false, index = i, name = craftName, type = craftType, num = numAvailable })
+                    table.insert(CF.List, { isHeader = false, index = i, name = craftName, type = craftType, num = numAvailable })
                 end
             end
         end
@@ -1391,148 +1069,6 @@ function CF.InitUI()
         allBtn:SetPoint("TOPLEFT", CraftFrame, 25, -78)
     end
 
-    -- Search Box (styled to match TradeSkillFrame search bar)
-    local searchBox = _G["AtlasTWCraftSearchBox"]
-    if not searchBox then
-        searchBox = CreateFrame("EditBox", "AtlasTWCraftSearchBox", CraftFrame)
-        searchBox:SetHeight(20)
-        searchBox:SetAutoFocus(false)
-        searchBox:SetFontObject("ChatFontNormal")
-        searchBox:SetTextInsets(26, 20, 0, 0)
---[[         searchBox:SetBackdrop({
-            bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
-            edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-            tile = true,
-            tileSize = 16,
-            edgeSize = 16,
-            insets = { left = 3, right = 3, top = 3, bottom = 3 }
-        })
-        searchBox:SetBackdropColor(0, 0, 0, 0.8)
-        searchBox:SetBackdropBorderColor(0.4, 0.4, 0.4) ]]
-
-        if IsAddOnLoaded("pfUI") then
-            searchBox:SetPoint("TOP", CraftFrame, "BOTTOM", 0, -8)
-            searchBox:SetWidth(330)
-            if AtlasTW.pfUI and AtlasTW.pfUI.SkinEditBox then
-                AtlasTW.pfUI.SkinEditBox(searchBox)
-            end
-        else
-            searchBox:SetWidth(170)
-            searchBox:SetPoint("BOTTOMLEFT", CraftFrame, 16, 82)
-        end
-
-        searchBox:SetFrameLevel(CraftFrame:GetFrameLevel() + 5)
-
-        -- Magnifying glass icon
-        local searchIcon = searchBox:CreateTexture(nil, "OVERLAY")
-        searchIcon:SetTexture("Interface\\Common\\UI-Searchbox-Icon")
-        searchIcon:SetWidth(14)
-        searchIcon:SetHeight(14)
-        searchIcon:SetPoint("LEFT", searchBox, "LEFT", 8, -1)
-        searchIcon:SetVertexColor(0.6, 0.6, 0.6)
-        searchBox.searchIcon = searchIcon
-
-        -- Placeholder
-        local placeholder = searchBox:CreateFontString(nil, "OVERLAY", "GameFontDisableSmall")
-        placeholder:SetPoint("LEFT", searchIcon, "RIGHT", 4, 0)
-        placeholder:SetText(L["Search"])
-        placeholder:SetTextColor(0.6, 0.6, 0.6)
-        searchBox.placeholder = placeholder
-
-        -- Clear button (X)
-        local clearBtn = CreateFrame("Button", nil, searchBox)
-        clearBtn:SetWidth(16)
-        clearBtn:SetHeight(16)
-        clearBtn:SetPoint("RIGHT", searchBox, "RIGHT", -6, 0)
-        clearBtn:SetFrameLevel(searchBox:GetFrameLevel() + 5)
-
-        local clearX = clearBtn:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
-        clearX:SetText("x")
-        clearX:SetPoint("CENTER", 0, 0)
-        clearX:SetTextColor(1, 0.1, 0.1) -- Bright red X
-        clearBtn.text = clearX
-
-        clearBtn:SetScript("OnEnter", function() this.text:SetTextColor(1, 1, 1) end)
-        clearBtn:SetScript("OnLeave", function() this.text:SetTextColor(1, 0.1, 0.1) end)
-
-        clearBtn:Hide()
-        clearBtn:SetScript("OnClick", function()
-            AtlasTWCraftSearchBox:SetText("")
-            AtlasTWCraftSearchBox:ClearFocus()
-        end)
-        searchBox.clearBtn = clearBtn
-
-        searchBox:SetScript("OnTextChanged", function()
-            local text = this:GetText()
-            CF.SearchText = string.lower(text)
-            if text ~= "" then
-                this.placeholder:Hide()
-                this.clearBtn:Show()
-            else
-                if not this._hasFocus then
-                    this.placeholder:Show()
-                end
-                this.clearBtn:Hide()
-            end
-            ResetScroll()
-            CraftFrame_Update()
-        end)
-        searchBox:SetScript("OnEditFocusGained", function()
-            this._hasFocus = true
-            this.placeholder:Hide()
-            this.searchIcon:SetVertexColor(1, 1, 1)
-        end)
-        searchBox:SetScript("OnEditFocusLost", function()
-            this._hasFocus = false
-            if this:GetText() == "" then
-                this.placeholder:Show()
-            end
-            this.searchIcon:SetVertexColor(0.6, 0.6, 0.6)
-        end)
-        searchBox:SetScript("OnEnterPressed", function() this:ClearFocus() end)
-        searchBox:SetScript("OnEscapePressed", function() this:ClearFocus() end)
-    end
-
-    -- Have Materials Checkbox
-    local matCheck = _G["AtlasTWCraftHaveMaterials"]
-    if not matCheck then
-        matCheck = CreateFrame("CheckButton", "AtlasTWCraftHaveMaterials", CraftFrame, "UICheckButtonTemplate")
-        matCheck:SetWidth(20)
-        matCheck:SetHeight(20)
-
-        if IsAddOnLoaded("pfUI") then
-            matCheck:SetPoint("TOPLEFT", CraftFrame, 90, 0)
-        else
-            matCheck:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 75, -50)
-        end
-
-        matCheck:SetScript("OnClick", function()
-            CF.HaveMaterials = (this:GetChecked() == 1)
-            ResetScroll()
-            CraftFrame_Update()
-        end)
-        local matLabel = _G["AtlasTWCraftHaveMaterialsText"]
-        matLabel:SetText("1+")
-        matLabel:SetFontObject("GameFontHighlightSmall")
-    end
-
-    -- Improves Skill Checkbox
-    local skillCheck = _G["AtlasTWCraftImprovesSkill"]
-    if not skillCheck then
-        skillCheck = CreateFrame("CheckButton", "AtlasTWCraftImprovesSkill", CraftFrame, "UICheckButtonTemplate")
-        skillCheck:SetWidth(20)
-        skillCheck:SetHeight(20)
-        skillCheck:SetPoint("LEFT", _G["AtlasTWCraftHaveMaterialsText"], "RIGHT", 5, 0)
-        skillCheck:SetScript("OnClick", function()
-            CF.ImprovesSkill = (this:GetChecked() == 1)
-            ResetScroll()
-            CraftFrame_Update()
-        end)
-        local skillLabel = _G["AtlasTWCraftImprovesSkillText"]
-        skillLabel:SetText("^^^")
-        skillLabel:SetFontObject("GameFontHighlightSmall")
-    end
-
     -- Category Checkbox
     local catCheck = CreateFrame("CheckButton", "AtlasTWCraftCategories", CraftFrame, "UICheckButtonTemplate")
     catCheck:SetWidth(20)
@@ -1540,7 +1076,7 @@ function CF.InitUI()
     if IsAddOnLoaded("pfUI") then
         catCheck:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 0, 0)
     else
-        catCheck:SetPoint("TOPLEFT", CraftFrame, "TOPLEFT", 65, -15)
+        catCheck:SetPoint("TOP", CraftFrame, "TOP", 100, -15)
     end
     catCheck:SetChecked(CF.UseCategories and 1 or nil)
     catCheck:SetScript("OnClick", function()
@@ -1776,7 +1312,7 @@ function CF.HookCraftFrameUpdate()
                     craftButton.expanded = data.expanded
                     craftText:ClearAllPoints()
                     craftText:SetPoint("LEFT", craftButton, "LEFT", 18, 0)
-                    -- craftText:SetWidth(craftButton:GetWidth() - 14)
+                   -- craftText:SetWidth(craftButton:GetWidth() - 14)
                     craftText:SetText(data.name)
                     craftText:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
 
@@ -1806,7 +1342,7 @@ function CF.HookCraftFrameUpdate()
 
                     craftText:ClearAllPoints()
                     craftText:SetPoint("LEFT", craftButton, "LEFT", 0, 0)
-                    --  craftText:SetWidth(craftButton:GetWidth() - 14)
+                  --  craftText:SetWidth(craftButton:GetWidth() - 14)
 
                     -- Setup text with extra info (skill levels and counts)
                     local _, _, _, numAvailable = GetCraftInfo(data.index)
@@ -1876,25 +1412,34 @@ frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 frame:SetScript("OnEvent", function()
     if event == "ADDON_LOADED" then
         if arg1 == "Blizzard_TradeSkillUI" then
-            AtlasTW.ProfessionHooks.TradeSkillFilter.HookTradeSkillFrameUpdate()
+            hooksecurefunc("TradeSkillFrame_Update", AtlasTW.ProfessionHooks.OnTradeSkillUpdate)
             AtlasTW.ProfessionHooks.CreateAtlasButton(TradeSkillFrame)
             AtlasTW.ProfessionHooks.HookReagentButtons("TradeSkillReagent")
         elseif arg1 == "Blizzard_CraftUI" then
             AtlasTW.ProfessionHooks.CraftFilter.HookCraftFrameUpdate()
+            -- hooksecurefunc("CraftFrame_Update", AtlasTW.ProfessionHooks.OnCraftUpdate) -- Removed to prevent conflict
             AtlasTW.ProfessionHooks.CreateAtlasButton(CraftFrame)
             AtlasTW.ProfessionHooks.HookReagentButtons("CraftReagent")
         end
     elseif event == "PLAYER_ENTERING_WORLD" then
+        -- Check if already loaded (e.g. if loaded before AtlasTW or reloaded)
         if IsAddOnLoaded("Blizzard_TradeSkillUI") then
-            AtlasTW.ProfessionHooks.TradeSkillFilter.HookTradeSkillFrameUpdate()
+            -- Only hook if not already hooked (we assume button existence implies hooked)
+            if not _G["TradeSkillFrameAtlasButton"] then
+                hooksecurefunc("TradeSkillFrame_Update", AtlasTW.ProfessionHooks.OnTradeSkillUpdate)
+                AtlasTW.ProfessionHooks.HookReagentButtons("TradeSkillReagent")
+            end
+            -- Ensure button is created and updated (visibility checks inside)
             AtlasTW.ProfessionHooks.CreateAtlasButton(TradeSkillFrame)
-            AtlasTW.ProfessionHooks.HookReagentButtons("TradeSkillReagent")
         end
 
         if IsAddOnLoaded("Blizzard_CraftUI") then
-            AtlasTW.ProfessionHooks.CraftFilter.HookCraftFrameUpdate()
+            if not _G["CraftFrameAtlasButton"] then
+                AtlasTW.ProfessionHooks.CraftFilter.HookCraftFrameUpdate()
+                -- hooksecurefunc("CraftFrame_Update", AtlasTW.ProfessionHooks.OnCraftUpdate) -- Removed to prevent conflict
+                AtlasTW.ProfessionHooks.HookReagentButtons("CraftReagent")
+            end
             AtlasTW.ProfessionHooks.CreateAtlasButton(CraftFrame)
-            AtlasTW.ProfessionHooks.HookReagentButtons("CraftReagent")
         end
     end
 end)
